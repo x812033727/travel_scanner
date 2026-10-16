@@ -1,0 +1,46 @@
+{
+  "status": "INDEPENDENT_LOCAL_RECONSTRUCTION_VERIFIED_NOT_WORKER_REVIEW",
+  "episode": "A37",
+  "source_sha256": "63e6277c85cc573556651f686cbf7722d602c620265e7730a9f3f32b7d016d09",
+  "storyboard_sha256": "fac6450dac027e1645e21da9038d4cdf34673c2339e05313cfb6b517c1dd7d96",
+  "paragraphs": 48,
+  "original_spoken_units": 2152,
+  "applied_source_scope_changes": [
+    {
+      "id": "I03",
+      "after_sha256": "f51c4758e46be03b2870ce6635ad7584235822338165c84e68d0ee3f26930bb9"
+    },
+    {
+      "id": "E10",
+      "after_sha256": "4a3a6b98a2dddcfd702cd05b05f8959570038910d7f02a15df81da1ae34cc77e"
+    },
+    {
+      "id": "T01a",
+      "after_sha256": "7990259ecc16ee0ba1901db825cea60d026351322b920b60577c44476d87a38e"
+    }
+  ],
+  "spoken_units": 2136,
+  "shots": 86,
+  "illustrations": 72,
+  "cards": 14,
+  "unique_illustration_prompts": 69,
+  "max_consecutive_cards": 2,
+  "checks": [
+    "parse original six narration tables only",
+    "rebuild every paragraph once in exact order with no gaps or overlaps",
+    "exact source and storyboard hashes",
+    "all shot texts equal referenced slices",
+    "cards retain scope and source",
+    "series look, model and switchable CC"
+  ],
+  "does_not_prove": [
+    "formal chapter facts or listener review",
+    "actual TTS duration",
+    "generated images",
+    "render or playback",
+    "paid authorization"
+  ],
+  "host_calls": 0,
+  "model_calls": 0,
+  "paid_calls": 0
+}

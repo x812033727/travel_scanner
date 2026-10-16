@@ -1,0 +1,152 @@
+{
+  "key": "engine",
+  "title": "旅客提著箱子走過航站",
+  "scenes": [
+    {
+      "id": "engine-01",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a desk in a 1970s office, a generic clerk in a cardigan turning the page of a thick bound document with blank pages and simple line drawings of a box on rollers, the paper is the focal object, mild lamp light from the left, quiet and curious mood",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "3d52",
+          "text": "那段長路，就在大型航站裡。"
+        },
+        {
+          "id": "gtab",
+          "text": "Sadow 寫道，旅行大幅增加，搬行李的方式也跟著變了。"
+        }
+      ]
+    },
+    {
+      "id": "engine-02",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old railway station platform in the mid-twentieth century, one generic porter in a plain cap lifting a heavy unmarked leather trunk onto a hand cart, the trunk is the focal object, soft grey sky through a glass roof, calm nostalgic mood",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ij3c",
+          "text": "以前，行李多由搬運工替人處理。"
+        },
+        {
+          "id": "bgdh",
+          "text": "到了大型航站，常常變成乘客自己提。"
+        }
+      ]
+    },
+    {
+      "id": "engine-13",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at ankle height on a 1970s airport floor, one traveler dragging a flat unbranded suitcase lying on its back by a long soft strap, the low flat case is the focal object, overcast light through the windows, uncertain mood",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "traveler-heavy"
+        ]
+      },
+      "lines": [
+        {
+          "id": "w9bj",
+          "text": "箱子橫放著拖行，人在前面，它在後面佔著一段地面。"
+        },
+        {
+          "id": "tquw",
+          "text": "可是這種拖法，還有地方可以再改。"
+        }
+      ]
+    },
+    {
+      "id": "engine-14",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet 1970s terminal hall at evening, one traveler standing still and looking down thoughtfully at a flat wheeled suitcase at their feet, the suitcase is the focal object, soft grey sky beyond tall windows, lingering questioning mood",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "traveler-heavy"
+        ]
+      },
+      "lines": [
+        {
+          "id": "rs29",
+          "text": "箱子已經不必一路提著了，天天跑機場的人，為什麼還想換一種拉法？"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "e17",
+      "claim": "那段長路，就在大型航站裡；Sadow 寫道，旅行大幅增加，搬行李的方式也跟著變了",
+      "scene": "engine-01",
+      "source": 0,
+      "fact": 0,
+      "verdict": "PLAN",
+      "note": "3d52 對應 fact 0「大型航站讓乘客常得自己提行李、走很遠的路」。gtab 對應 fact 0「說明書寫到旅行大幅成長，以前行李由搬運工處理」。兩句沒有提到銷量因果，也沒有重量壓手臂的重述。未改字"
+    },
+    {
+      "id": "e1",
+      "claim": "以前，行李多由搬運工替人處理；到了大型航站，常常變成乘客自己提",
+      "scene": "engine-02",
+      "source": 0,
+      "fact": 0,
+      "verdict": "PLAN",
+      "note": "ij3c、bgdh 與 fact 0「以前行李由搬運工處理，如今的大型航站讓乘客常得自己提行李」一致。source 0 的 supports 也列出這段說明書敘述。未改"
+    },
+    {
+      "id": "e11",
+      "claim": "說明書並列航空、鐵路、巴士航站中的自行搬運需求",
+      "scene": "engine-04",
+      "source": 0,
+      "fact": null,
+      "verdict": "NOT FOUND",
+      "note": "本章現稿已沒有這一句，engine-04 場景也不在稿中，無行可刪。fact 0 與 source 0 的段落都沒有鐵路、巴士航站的說法"
+    },
+    {
+      "id": "e3",
+      "claim": "發明人形容行李搬運可能是搭機旅客最大的難題",
+      "scene": "engine-05",
+      "source": 0,
+      "fact": null,
+      "verdict": "NOT FOUND",
+      "note": "本章現稿已沒有這一句，engine-05 場景也不在稿中，無行可刪。fact 0 與 source 0 的段落都沒有「最大的難題」的說法"
+    },
+    {
+      "id": "e9",
+      "claim": "箱子橫放著拖行，人在前面，它在後面佔著一段地面。可是這種拖法，還有地方可以再改",
+      "scene": "engine-13",
+      "source": 5,
+      "fact": 8,
+      "verdict": "CONFIRMED",
+      "note": "各來源的依據如下：\n- source 5（USA TODAY）寫 Rollaboard 把箱子「from horizontal to vertical」，並說 Sadow 的設計「lacked the nimbleness」。\n- source 4（Wikipedia）寫「tow it behind him」與「flat like Sadow's model」。\n- source 0 專利寫「flexible transport strap」拉行。\n「還有地方可以再改」只是過場，翻倒、撞腳踝留給下一章，並歸給 Travelpro。claim 欄的文字已改成和現稿一致"
+    },
+    {
+      "id": "e19",
+      "claim": "箱子已經不必一路提著了，天天跑機場的人，為什麼還想換一種拉法？",
+      "scene": "engine-14",
+      "source": 1,
+      "fact": null,
+      "verdict": "CONFIRMED",
+      "note": "source 1（Travelpro）寫 Sadow 的設計讓旅客「no longer have to carry a heavy suitcase by the handle」，也寫機組員厭倦在機場拖著笨重的登機箱。本句是問句，沒有新的數字或名稱。claim 欄的文字已改成和現稿一致"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "rpvf",
+      "payoff": "3d52",
+      "what": "申請書裡哪段路使搬箱吃力"
+    },
+    {
+      "setup": "rs29",
+      "what": "常走機場的人為何想換拉法"
+    }
+  ],
+  "report": "### 第 6 輪\n\n## 第四章〈旅客提著箱子走過航站〉查核報告\n\n### 查核範圍\n本章共 4 個場景、7 行：3d52、gtab、ij3c、bgdh、w9bj、tquw、rs29。逐行對照了 plan 的 fact 0、fact 8、caveats，以及 source 0（專利）、1（Travelpro）、5（USA TODAY）、4（Wikipedia）的段落。\n\n### 結果\n- **航站長路與搬運工：** 3d52、gtab、ij3c、bgdh 都與 fact 0 一致，判 PLAN。\n  - 稿中只說使用情境，沒有把大型航站寫成銷量成長的原因，符合 caveats。\n- **橫拖姿態：** w9bj 有 USA TODAY 的「horizontal」、Wikipedia 的「tow it behind him」和專利的拖帶結構支持，判 CONFIRMED。\n- **改進空間：** tquw 只說「還有地方可以再改」，沒有把翻倒、撞腳踝當成定論說出來。競爭者的說法留給下一章，並以 Travelpro 的說法呈現。\n- **章末問句：** rs29 有 Travelpro「不必提著把手」與機組員厭倦拖箱的敘述支持，判 CONFIRMED。\n- **不在稿中的舊行：** e11、e3 指的句子都不在現稿，相關場景也已不存在，無行可刪，標為 NOT FOUND。\n\n### 修改\n- 旁白沒有修改，無 patch，無 drop。\n- 只把 e9、e19、e1 的 claim 欄文字改成和現稿旁白一致。\n\n### 存疑未改\n- gtab「搬行李的方式也跟著變了」是把說明書的敘述概括成一句。它的含意與 fact 0「以前由搬運工處理、如今乘客自己提」一致，所以保留。\n- 全章沒有提 Sadow 的職稱、阿魯巴之旅年份或 Samsonite 2004 年的說法，符合 caveats。"
+}

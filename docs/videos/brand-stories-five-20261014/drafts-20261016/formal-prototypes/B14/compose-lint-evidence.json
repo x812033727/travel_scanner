@@ -1,0 +1,490 @@
+{
+  "status": "SYNTHETIC_OFFLINE_FORMAT_EVIDENCE_NOT_PRODUCTION_APPROVAL",
+  "result": "story-five-ajinomoto-chip-film: the merged story fails lint in idea, engine, turn, now; the writer fixes them chapter by chapter",
+  "source_files_count": 43,
+  "source_files_unchanged": true,
+  "paragraphs": 48,
+  "narration_lines": 96,
+  "spoken_units": 2103,
+  "paragraphs_exact_reconstruction": true,
+  "full_concatenation_exact": true,
+  "paragraph_offsets_complete_no_overlap": true,
+  "scenes": 83,
+  "illustrated_stills": 75,
+  "cards": 8,
+  "active_claim_rows": 79,
+  "all_claims_unchecked": true,
+  "multi_source_rows_deliberately_null": [
+    "h6",
+    "e1",
+    "e2",
+    "t3",
+    "t4",
+    "n1",
+    "n2",
+    "n5",
+    "n6",
+    "n7"
+  ],
+  "multi_fact_rows_deliberately_null": [],
+  "source_cids": 34,
+  "source_indices_unchanged": true,
+  "must_verify_unchanged": true,
+  "loops": 9,
+  "full_payoff_windows_preserved_in_mapping": true,
+  "card_fields_exact": true,
+  "card_adapter": {
+    "native_template": "title",
+    "original_strings_visible_in_html": true,
+    "pixel_layout_checked": false
+  },
+  "image_prompts_and_camera_exact": true,
+  "planned_reuse_pairs": [
+    {
+      "original": {
+        "setup": 4,
+        "recovery": 22,
+        "setup_paragraph": "H03",
+        "recovery_paragraphs": [
+          "I01"
+        ],
+        "reason": "同一研究資料與素面調味罐圖回收安全疑問，不畫疾病或下毒暗示",
+        "setup_shot": "B14-S004",
+        "recovery_shot": "B14-S022",
+        "asset_key": "b14-hook-reuse-4"
+      },
+      "preview_scene": "hook-004",
+      "later_scene": "idea-022",
+      "synthetic_seed1_request_equal": true,
+      "synthetic_seed1_cache_key": "29827264d08cacea",
+      "actual_accepted_file_equal": null,
+      "limitation": "Native cache can reuse equal requests. Separate per-scene judge/retake choices can diverge; asset-key sidecar alone does not enforce final same-file identity."
+    },
+    {
+      "original": {
+        "setup": 5,
+        "recovery": 60,
+        "setup_paragraph": "H04",
+        "recovery_paragraphs": [
+          "T01"
+        ],
+        "reason": "同一薄膜與封裝基板示意圖回收1999上市，不把膜當晶片本體",
+        "setup_shot": "B14-S005",
+        "recovery_shot": "B14-S060",
+        "asset_key": "b14-hook-reuse-5"
+      },
+      "preview_scene": "hook-005",
+      "later_scene": "turn-060",
+      "synthetic_seed1_request_equal": true,
+      "synthetic_seed1_cache_key": "86a261714eec5a0a",
+      "actual_accepted_file_equal": null,
+      "limitation": "Native cache can reuse equal requests. Separate per-scene judge/retake choices can diverge; asset-key sidecar alone does not enforce final same-file identity."
+    },
+    {
+      "original": {
+        "setup": 6,
+        "recovery": 73,
+        "setup_paragraph": "H05",
+        "recovery_paragraphs": [
+          "T07"
+        ],
+        "reason": "同一訪談資料與材料模型圖回收2026市場預告，95%留到S075",
+        "setup_shot": "B14-S006",
+        "recovery_shot": "B14-S073",
+        "asset_key": "b14-hook-reuse-6"
+      },
+      "preview_scene": "hook-006",
+      "later_scene": "turn-073",
+      "synthetic_seed1_request_equal": true,
+      "synthetic_seed1_cache_key": "233bbc1c6e9ada04",
+      "actual_accepted_file_equal": null,
+      "limitation": "Native cache can reuse equal requests. Separate per-scene judge/retake choices can diverge; asset-key sidecar alone does not enforce final same-file identity."
+    }
+  ],
+  "actual_shot_reading": {
+    "shots": 75,
+    "traps": 0,
+    "by_kind": {}
+  },
+  "writer_answer_parser": {
+    "hook": {
+      "accepted": true,
+      "lossless": false,
+      "note": "Normalizer drops native claim IDs/verdict/notes; never use it as an authored bundle installer."
+    },
+    "origin": {
+      "accepted": false,
+      "problem": "scenes[5] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "idea": {
+      "accepted": false,
+      "problem": "scenes[2] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "engine": {
+      "accepted": false,
+      "problem": "scenes[8] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "turn": {
+      "accepted": false,
+      "problem": "scenes[7] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "now": {
+      "accepted": true,
+      "lossless": false,
+      "note": "Normalizer drops native claim IDs/verdict/notes; never use it as an authored bundle installer."
+    }
+  },
+  "lint": {
+    "errors": [
+      {
+        "path": "scenes[24].lines[0] (b14000u)",
+        "message": "\"FDA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[26].lines[0] (b14000w)",
+        "message": "\"FDA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[43].lines[0] (b14001h)",
+        "message": "\"CPU\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[45].lines[0] (b14001j)",
+        "message": "\"Shigeo\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[45].lines[0] (b14001j)",
+        "message": "\"Nakamura\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[50].lines[1] (b14001p)",
+        "message": "\"Nakamura\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[58].lines[0] (b14001x)",
+        "message": "\"Nakamura\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[58].lines[0] (b14001x)",
+        "message": "\"CPU\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[59].lines[0] (b14001y)",
+        "message": "\"ABF\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[65].lines[0] (b140024)",
+        "message": "\"ABF\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[69].lines[0] (b140029)",
+        "message": "\"Akito\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[69].lines[0] (b140029)",
+        "message": "\"Kitano\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[72].lines[0] (b14002c)",
+        "message": "\"Akito\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[72].lines[0] (b14002c)",
+        "message": "\"Kitano\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[73].lines[0] (b14002d)",
+        "message": "\"FC-BGA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[74].lines[0] (b14002e)",
+        "message": "\"ABF\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[78].lines[1] (b14002j)",
+        "message": "\"ABF\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      }
+    ],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"generic\" is in 75 of 75 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"face\" is in 44 of 75 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"sample\" is in 44 of 75 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.median: median shot 7.0 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.p90: 90th percentile shot 8.5 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-001, hook-002, hook-003, hook-004, hook-005, hook-006, origin-008, origin-009, … 73) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.longest: longest shot 9.2 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-003, hook-005, hook-006, origin-009, origin-010, engine-037, engine-038, turn-058, … 14) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.spread: long shots against short ones (90th ÷ 10th percentile) 1.3, target ≥ 2; every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-001, hook-002) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.opening30: shots that start in the first 30 s 4, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.median: median line length 24 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.long: lines over 20 characters 73%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-001, hook-003, hook-004, hook-005, hook-006, origin-008, origin-010, origin-011, … 63) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.face: faces (medium close-up and closer, over-the-shoulder) 39%, target ≥ 40%; the audience follows a face; give each turn of the scene a face that reacts (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.insert: inserts 0%, target 5%–25%; an insert answers a story question (which paper, whose hand); too few hides the proof, too many hides the people (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-001, hook-002, hook-003, hook-004, hook-005, hook-006, hook-007, origin-008, … 75) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.run: such shots in a row 75 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-001, hook-002, hook-003, hook-004, hook-005, hook-006, hook-007, origin-008, … 75) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-001, hook-002, hook-003) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft risk.decorative: shots with nobody in them that are not inserts 75% (56), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (hook-001, hook-002, hook-003, hook-004, hook-006, hook-007, origin-008, origin-009, … 56) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 00:53 and 02:32 (99 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 02:32 and 04:04 (92 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 06:47 and 08:53 (126 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "youtube",
+        "message": "youtube.tags: 12 tags; package keeps the first 10, so put the zh-TW terms and the English product names first"
+      },
+      {
+        "path": "thumbnail",
+        "message": "the headline repeats the title: 「調味料」 is in the title's first 10 characters; say what the title does not"
+      }
+    ],
+    "summary": {
+      "minutes": 9.894444444444444,
+      "lines": 96,
+      "spoken_units": 2103,
+      "billable_characters": 7344,
+      "chapters": [
+        "00:00 池田把湯裡的疑問帶進實驗室",
+        "00:53 一種味道，變成能製造的商品",
+        "02:32 食品問題之外，還有另一條研究線",
+        "04:04 工廠要的不只是能絕緣",
+        "06:47 薄膜上市之後，客戶的題目還在變",
+        "08:53 餐桌和封裝廠，留下了同一條線索"
+      ]
+    }
+  },
+  "cute_story_problems": [],
+  "timing": {
+    "basis": "Official estimateTimeline, default CPM and automatic line-boundary timing; not TTS measured.",
+    "total_body_estimated_seconds": 593.667,
+    "chapter_estimates": [
+      {
+        "title": "池田把湯裡的疑問帶進實驗室",
+        "seconds": 53
+      },
+      {
+        "title": "一種味道，變成能製造的商品",
+        "seconds": 99.4
+      },
+      {
+        "title": "食品問題之外，還有另一條研究線",
+        "seconds": 92.5
+      },
+      {
+        "title": "工廠要的不只是能絕緣",
+        "seconds": 162.267
+      },
+      {
+        "title": "薄膜上市之後，客戶的題目還在變",
+        "seconds": 126.567
+      },
+      {
+        "title": "餐桌和封裝廠，留下了同一條線索",
+        "seconds": 59.933
+      }
+    ],
+    "max_scene_seconds": 9.167,
+    "editorial_units": 2161,
+    "official_units": 2103,
+    "count_differences": [
+      {
+        "paragraph_id": "H01",
+        "editorial": 41,
+        "official": 40,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "H05",
+        "editorial": 35,
+        "official": 34,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "O04",
+        "editorial": 37,
+        "official": 36,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "O06",
+        "editorial": 44,
+        "official": 43,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "I02",
+        "editorial": 33,
+        "official": 32,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "I03",
+        "editorial": 58,
+        "official": 56,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "I04",
+        "editorial": 23,
+        "official": 22,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "E05a",
+        "editorial": 67,
+        "official": 64,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "E05b",
+        "editorial": 57,
+        "official": 47,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "E06a",
+        "editorial": 58,
+        "official": 52,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "T00",
+        "editorial": 61,
+        "official": 54,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "T01",
+        "editorial": 55,
+        "official": 54,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "T03",
+        "editorial": 52,
+        "official": 50,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "T03a",
+        "editorial": 65,
+        "official": 64,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "T05",
+        "editorial": 60,
+        "official": 52,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "T07",
+        "editorial": 79,
+        "official": 68,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "N05",
+        "editorial": 52,
+        "official": 51,
+        "zero_circles": 0
+      }
+    ],
+    "editorial_narration_only_seconds_250cpm": 518.64,
+    "editorial_narration_only_seconds_230cpm": 563.7391304347826,
+    "body_definition": "All six narrated chapters including hook; excludes branding. Official timing contains default line and scene gaps, and is not actual TTS.",
+    "actual_TTS_seconds": null,
+    "added_manual_pauses": 0
+  },
+  "branding": {
+    "default_intro_placement": "after_first_chapter",
+    "planned_intro_seconds": 5,
+    "planned_outro_seconds": 21,
+    "final_link_zone_seconds": 16,
+    "actual_asset_hashes": null,
+    "silent_bookends_not_added_as_fake_spoken_scenes": true
+  },
+  "subtitles_burn_in": false,
+  "synthetic_voice_only": true,
+  "synthetic_music_disabled": true,
+  "gates": {
+    "actual_verifier": "PENDING",
+    "actual_listener": "PENDING",
+    "actual_narrative": "PENDING",
+    "pilot": "PENDING",
+    "media": "NOT_STARTED",
+    "upload": "NOT_AUTHORIZED_BY_THIS_PROTOTYPE"
+  },
+  "external_calls": 0,
+  "media_calls": 0,
+  "repo_writes": 0,
+  "host_writes": 0
+}

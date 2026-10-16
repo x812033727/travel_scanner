@@ -1,0 +1,690 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_AUTHORED_CANDIDATE_WITH_REMAINING_WORK",
+  "result": "story-conveyor-belt-sushi-v2: the story merged again and passes lint",
+  "paragraphs": 24,
+  "editorial_units": 2294,
+  "official_spoken_units": 2285,
+  "narration_lines": 99,
+  "scenes": 96,
+  "illustrations": 77,
+  "cards": 19,
+  "original_cards_preserved": 16,
+  "source_overlays_adapted": 9,
+  "physical_illustration_percent": 80.20833333333334,
+  "max_consecutive_cards": 2,
+  "claims": 65,
+  "cross_scene_claims": [],
+  "loops": 11,
+  "exact_paragraph_reconstruction": true,
+  "narration_text_changed": false,
+  "lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"generic\" is in 77 of 77 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"neutral\" is in 77 of 77 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"focal\" is in 72 of 77 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes[3] (hook-s004)",
+        "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[93] (now-s101b)",
+        "message": "its prompt is nearly the same as now-s101's; two near-identical shots read as a stall"
+      },
+      {
+        "path": "scenes[94] (now-s102)",
+        "message": "its prompt is nearly the same as now-s101b's; two near-identical shots read as a stall"
+      },
+      {
+        "path": "scenes[95] (now-s103)",
+        "message": "its prompt is nearly the same as now-s102's; two near-identical shots read as a stall"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.median: median shot 6.8 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.p90: 90th percentile shot 8.5 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-s001, hook-s002, hook-s003, hook-s004, hook-s005, hook-s006, hook-s007, origin-s008, … 53) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.longest: longest shot 10.2 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-s004, origin-s008, origin-s014, origin-s020, idea-s023, idea-s026, idea-s031, engine-s042, … 12) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.spread: long shots against short ones (90th ÷ 10th percentile) 1.9, target ≥ 2; every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-s001, hook-s002) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.opening30: shots that start in the first 30 s 4, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.median: median line length 24 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.long: lines over 20 characters 68%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-s001, hook-s002, hook-s003, hook-s004, hook-s005, hook-s006, hook-s007, origin-s008, … 53) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.face: faces (medium close-up and closer, over-the-shoulder) 26%, target ≥ 40%; the audience follows a face; give each turn of the scene a face that reacts (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.insert: inserts 0%, target 5%–25%; an insert answers a story question (which paper, whose hand); too few hides the proof, too many hides the people (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.reestablish: longest run without a wide or group shot 11 shots, target ≤ 9; after a move, an entrance or a new beat, re-establish the room (turn-s091, now-s103) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-s001, hook-s002, hook-s003, hook-s004, hook-s005, hook-s006, hook-s007, origin-s008, … 77) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.run: such shots in a row 77 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-s001, hook-s002, hook-s003, hook-s004, hook-s005, hook-s006, hook-s007, origin-s008, … 77) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-s001, hook-s002, hook-s003) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft risk.decorative: shots with nobody in them that are not inserts 39% (30), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (hook-s001, hook-s002, hook-s004, origin-s008, origin-s016, origin-s020, origin-s022, idea-s023, … 30) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft risk.text_first: cards (title, chapter, quote …) against the shots 19 of 96 scenes, 21% of the time, target ≤ 2 cards, or ≤ 10% of the time; a drama is told in pictures: say it in a shot, with a line over it (origin-s010, origin-s012, idea-s027, idea-s032, idea-s033, idea-s038, engine-s041, engine-s044, … 19) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 02:21 and 04:11 (110 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 04:11 and 06:35 (144 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 07:28 and 09:19 (110 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "「二〇二三年」 is said in 3 lines (ecbc8805, 99e3065a, c7894785): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "youtube",
+        "message": "youtube.tags: 12 tags; package keeps the first 10, so put the zh-TW terms and the English product names first"
+      }
+    ],
+    "summary": {
+      "minutes": 10.79,
+      "lines": 99,
+      "spoken_units": 2285,
+      "billable_characters": 7812,
+      "chapters": [
+        "00:00 瓶子往前走，盤子卻還在等",
+        "00:52 便宜的立食壽司，先卡在人手",
+        "02:21 直線通了，轉角讓盤子掉下來",
+        "04:11 第一家店開了，做法開始有了主人",
+        "06:35 萬博讓人看見，權利到期讓人加入",
+        "09:19 一條送餐的路，成了機械遺產"
+      ]
+    }
+  },
+  "cute_errors": [],
+  "writer_reader": {
+    "hook": {
+      "accepted": true,
+      "problem": null
+    },
+    "origin": {
+      "accepted": false,
+      "problem": "scenes[2] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "idea": {
+      "accepted": false,
+      "problem": "scenes[4] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "engine": {
+      "accepted": false,
+      "problem": "scenes[0] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "turn": {
+      "accepted": false,
+      "problem": "scenes[0] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "now": {
+      "accepted": false,
+      "problem": "scenes[0] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    }
+  },
+  "shot_reading": {
+    "shots": 77,
+    "traps": 0,
+    "by_kind": {}
+  },
+  "scene_timing": [
+    {
+      "id": "hook-s001",
+      "template": "shot",
+      "estimated_seconds": 6.766666666666667
+    },
+    {
+      "id": "hook-s002",
+      "template": "shot",
+      "estimated_seconds": 6.066666666666666
+    },
+    {
+      "id": "hook-s003",
+      "template": "shot",
+      "estimated_seconds": 7.5
+    },
+    {
+      "id": "hook-s004",
+      "template": "shot",
+      "estimated_seconds": 10.2
+    },
+    {
+      "id": "hook-s005",
+      "template": "shot",
+      "estimated_seconds": 6.766666666666667
+    },
+    {
+      "id": "hook-s006",
+      "template": "shot",
+      "estimated_seconds": 7.266666666666667
+    },
+    {
+      "id": "hook-s007",
+      "template": "shot",
+      "estimated_seconds": 7.733333333333333
+    },
+    {
+      "id": "origin-s008",
+      "template": "shot",
+      "estimated_seconds": 8.466666666666667
+    },
+    {
+      "id": "origin-s009",
+      "template": "shot",
+      "estimated_seconds": 6.766666666666667
+    },
+    {
+      "id": "origin-s010",
+      "template": "title",
+      "estimated_seconds": 6.3
+    },
+    {
+      "id": "origin-s011",
+      "template": "shot",
+      "estimated_seconds": 6.066666666666666
+    },
+    {
+      "id": "origin-s012",
+      "template": "title",
+      "estimated_seconds": 4.6
+    },
+    {
+      "id": "origin-s014",
+      "template": "shot",
+      "estimated_seconds": 8.2
+    },
+    {
+      "id": "origin-s015",
+      "template": "shot",
+      "estimated_seconds": 6.3
+    },
+    {
+      "id": "origin-s016",
+      "template": "shot",
+      "estimated_seconds": 4.366666666666666
+    },
+    {
+      "id": "origin-s018",
+      "template": "shot",
+      "estimated_seconds": 5.8
+    },
+    {
+      "id": "origin-s019",
+      "template": "shot",
+      "estimated_seconds": 7.733333333333333
+    },
+    {
+      "id": "origin-s020",
+      "template": "shot",
+      "estimated_seconds": 8.933333333333334
+    },
+    {
+      "id": "origin-s021",
+      "template": "shot",
+      "estimated_seconds": 7.966666666666667
+    },
+    {
+      "id": "origin-s022",
+      "template": "shot",
+      "estimated_seconds": 7.733333333333333
+    },
+    {
+      "id": "idea-s023",
+      "template": "shot",
+      "estimated_seconds": 8.2
+    },
+    {
+      "id": "idea-s024",
+      "template": "shot",
+      "estimated_seconds": 6.766666666666667
+    },
+    {
+      "id": "idea-s025",
+      "template": "shot",
+      "estimated_seconds": 7.5
+    },
+    {
+      "id": "idea-s026",
+      "template": "shot",
+      "estimated_seconds": 9.166666666666666
+    },
+    {
+      "id": "idea-s027",
+      "template": "title",
+      "estimated_seconds": 7
+    },
+    {
+      "id": "idea-s028",
+      "template": "shot",
+      "estimated_seconds": 4.366666666666666
+    },
+    {
+      "id": "idea-s029",
+      "template": "shot",
+      "estimated_seconds": 5.1
+    },
+    {
+      "id": "idea-s030",
+      "template": "shot",
+      "estimated_seconds": 7.5
+    },
+    {
+      "id": "idea-s031",
+      "template": "shot",
+      "estimated_seconds": 8.7
+    },
+    {
+      "id": "idea-s032",
+      "template": "title",
+      "estimated_seconds": 8.466666666666667
+    },
+    {
+      "id": "idea-s033",
+      "template": "title",
+      "estimated_seconds": 4.866666666666666
+    },
+    {
+      "id": "idea-s034",
+      "template": "shot",
+      "estimated_seconds": 7
+    },
+    {
+      "id": "idea-s035",
+      "template": "shot",
+      "estimated_seconds": 4.366666666666666
+    },
+    {
+      "id": "idea-s037",
+      "template": "shot",
+      "estimated_seconds": 5.566666666666666
+    },
+    {
+      "id": "idea-s038",
+      "template": "title",
+      "estimated_seconds": 4.133333333333334
+    },
+    {
+      "id": "idea-s039",
+      "template": "shot",
+      "estimated_seconds": 7.733333333333333
+    },
+    {
+      "id": "idea-s040",
+      "template": "shot",
+      "estimated_seconds": 3.9
+    },
+    {
+      "id": "engine-s041",
+      "template": "title",
+      "estimated_seconds": 7.266666666666667
+    },
+    {
+      "id": "engine-s042",
+      "template": "shot",
+      "estimated_seconds": 9.4
+    },
+    {
+      "id": "engine-s043",
+      "template": "shot",
+      "estimated_seconds": 7.266666666666667
+    },
+    {
+      "id": "engine-s044",
+      "template": "title",
+      "estimated_seconds": 7.5
+    },
+    {
+      "id": "engine-s045",
+      "template": "shot",
+      "estimated_seconds": 7
+    },
+    {
+      "id": "engine-s046",
+      "template": "shot",
+      "estimated_seconds": 7.733333333333333
+    },
+    {
+      "id": "engine-s047",
+      "template": "shot",
+      "estimated_seconds": 7.5
+    },
+    {
+      "id": "engine-s048",
+      "template": "shot",
+      "estimated_seconds": 7
+    },
+    {
+      "id": "engine-s049",
+      "template": "title",
+      "estimated_seconds": 6.766666666666667
+    },
+    {
+      "id": "engine-s050",
+      "template": "shot",
+      "estimated_seconds": 7.966666666666667
+    },
+    {
+      "id": "engine-s051",
+      "template": "shot",
+      "estimated_seconds": 5.8
+    },
+    {
+      "id": "engine-s052",
+      "template": "shot",
+      "estimated_seconds": 7.733333333333333
+    },
+    {
+      "id": "engine-s053",
+      "template": "shot",
+      "estimated_seconds": 5.8
+    },
+    {
+      "id": "engine-s054",
+      "template": "shot",
+      "estimated_seconds": 7
+    },
+    {
+      "id": "engine-s055",
+      "template": "shot",
+      "estimated_seconds": 4.6
+    },
+    {
+      "id": "engine-s056",
+      "template": "shot",
+      "estimated_seconds": 4.366666666666666
+    },
+    {
+      "id": "engine-s057",
+      "template": "shot",
+      "estimated_seconds": 4.866666666666666
+    },
+    {
+      "id": "engine-s058",
+      "template": "shot",
+      "estimated_seconds": 5.1
+    },
+    {
+      "id": "engine-s059",
+      "template": "title",
+      "estimated_seconds": 6.533333333333333
+    },
+    {
+      "id": "engine-s060",
+      "template": "shot",
+      "estimated_seconds": 4.366666666666666
+    },
+    {
+      "id": "engine-s061",
+      "template": "title",
+      "estimated_seconds": 6.533333333333333
+    },
+    {
+      "id": "engine-s062",
+      "template": "shot",
+      "estimated_seconds": 5.8
+    },
+    {
+      "id": "turn-s063",
+      "template": "title",
+      "estimated_seconds": 7.5
+    },
+    {
+      "id": "turn-s065",
+      "template": "shot",
+      "estimated_seconds": 6.533333333333333
+    },
+    {
+      "id": "turn-s066",
+      "template": "shot",
+      "estimated_seconds": 6.533333333333333
+    },
+    {
+      "id": "turn-s068",
+      "template": "title",
+      "estimated_seconds": 8.466666666666667
+    },
+    {
+      "id": "turn-s070",
+      "template": "shot",
+      "estimated_seconds": 2.933333333333333
+    },
+    {
+      "id": "turn-s071",
+      "template": "title",
+      "estimated_seconds": 6.3
+    },
+    {
+      "id": "turn-s072",
+      "template": "shot",
+      "estimated_seconds": 3.1666666666666665
+    },
+    {
+      "id": "turn-s073",
+      "template": "title",
+      "estimated_seconds": 6.066666666666666
+    },
+    {
+      "id": "turn-s075",
+      "template": "shot",
+      "estimated_seconds": 5.333333333333333
+    },
+    {
+      "id": "turn-s076",
+      "template": "shot",
+      "estimated_seconds": 5.333333333333333
+    },
+    {
+      "id": "turn-s077",
+      "template": "shot",
+      "estimated_seconds": 6.3
+    },
+    {
+      "id": "turn-s078",
+      "template": "title",
+      "estimated_seconds": 9.166666666666666
+    },
+    {
+      "id": "turn-s079",
+      "template": "shot",
+      "estimated_seconds": 8.466666666666667
+    },
+    {
+      "id": "turn-s080",
+      "template": "shot",
+      "estimated_seconds": 4.866666666666666
+    },
+    {
+      "id": "turn-s081",
+      "template": "shot",
+      "estimated_seconds": 5.333333333333333
+    },
+    {
+      "id": "turn-s083",
+      "template": "shot",
+      "estimated_seconds": 7.966666666666667
+    },
+    {
+      "id": "turn-s084",
+      "template": "shot",
+      "estimated_seconds": 6.766666666666667
+    },
+    {
+      "id": "turn-s085",
+      "template": "shot",
+      "estimated_seconds": 7.266666666666667
+    },
+    {
+      "id": "turn-s086",
+      "template": "shot",
+      "estimated_seconds": 6.533333333333333
+    },
+    {
+      "id": "turn-s087",
+      "template": "shot",
+      "estimated_seconds": 7.733333333333333
+    },
+    {
+      "id": "turn-s088",
+      "template": "shot",
+      "estimated_seconds": 5.8
+    },
+    {
+      "id": "turn-s089",
+      "template": "shot",
+      "estimated_seconds": 5.566666666666666
+    },
+    {
+      "id": "turn-s090",
+      "template": "shot",
+      "estimated_seconds": 8.466666666666667
+    },
+    {
+      "id": "turn-s091",
+      "template": "shot",
+      "estimated_seconds": 8.933333333333334
+    },
+    {
+      "id": "turn-s092",
+      "template": "shot",
+      "estimated_seconds": 6.3
+    },
+    {
+      "id": "now-s093",
+      "template": "title",
+      "estimated_seconds": 5.8
+    },
+    {
+      "id": "now-s094",
+      "template": "shot",
+      "estimated_seconds": 7
+    },
+    {
+      "id": "now-s095",
+      "template": "title",
+      "estimated_seconds": 10.233333333333333
+    },
+    {
+      "id": "now-s096",
+      "template": "shot",
+      "estimated_seconds": 9.166666666666666
+    },
+    {
+      "id": "now-s097",
+      "template": "shot",
+      "estimated_seconds": 4.6
+    },
+    {
+      "id": "now-s098",
+      "template": "title",
+      "estimated_seconds": 9.966666666666667
+    },
+    {
+      "id": "now-s099",
+      "template": "shot",
+      "estimated_seconds": 7
+    },
+    {
+      "id": "now-s100",
+      "template": "shot",
+      "estimated_seconds": 7.266666666666667
+    },
+    {
+      "id": "now-s101",
+      "template": "shot",
+      "estimated_seconds": 6.066666666666666
+    },
+    {
+      "id": "now-s101b",
+      "template": "shot",
+      "estimated_seconds": 6.3
+    },
+    {
+      "id": "now-s102",
+      "template": "shot",
+      "estimated_seconds": 7.266666666666667
+    },
+    {
+      "id": "now-s103",
+      "template": "shot",
+      "estimated_seconds": 7.333333333333333
+    }
+  ],
+  "estimated_body_seconds": 647.4,
+  "measured_body_seconds": null,
+  "manual_pause_fields": 0,
+  "bookends_separate_seconds": 26,
+  "source_files_unchanged": true,
+  "source_file_count": 43,
+  "source_fetches": 0,
+  "model_calls": 0,
+  "external_calls": 0,
+  "media_calls": 0,
+  "host_access": false,
+  "worker_pass": false
+}

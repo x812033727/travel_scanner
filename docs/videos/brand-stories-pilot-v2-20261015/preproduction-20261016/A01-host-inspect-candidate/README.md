@@ -1,0 +1,20 @@
+# A01 local snapshot inspection candidate
+
+**Scope: read-only local inspection.** `inspect.mjs` reads a supplied local archive and prints one JSON gate report. It has no install, host, database, API, model, media, retry or STOP-changing mode. Even `LOCAL_SNAPSHOT_INTEGRITY_PASS` always reports `installation_allowed: false` and `paid_work_allowed: false`.
+
+The CLI rejects UNC snapshot roots and rejects archive paths containing Windows separators or drive syntax. A mapped network drive can still appear as a normal drive letter, so the operator must supply a trusted local copy; the program cannot prove the storage device is physically local.
+
+## Expected archive layout
+
+Supply an absolute directory containing both `docs/videos/story-rolling-suitcase-v2/` and `story-rolling-suitcase-v2/`, plus the shared `docs/videos/lexicon.json`. The work directory must include the original `manual-revisions/*/installation-receipt.json`, all `story/recheck-audit/<event>/index.json` and their bound evidence files, current `auto.json`, `review/narrative.json` and six `story/chapters/*.json`. Worker events bind archived journals; manual revision events bind `independent-review.json`, optional `author-manifest.json` and the revision's installation receipt. `story/reviews/script-review.json` and `verify-1.md` may be absent; absence is hashed as `null` in the source composite. Missing required files or symlinks are rejected.
+
+```powershell
+node docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-host-inspect-candidate/inspect.mjs --snapshot C:\path\to\complete-local-archive
+node --test docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-host-inspect-candidate/inspect.test.mjs
+```
+
+The default pins identify the **historical local archive captured 2026-10-16 03:50:53**, not current production: 80 events, install receipt SHA `24110fc8…`, tip index SHA `c7ddb6b5…`, source composite `cf39296d…`, plus an extra archive index manifest SHA `ada7ff18…`. The manifest is SHA-256 of `JSON.stringify([{id,index_sha256}, …])` for the 80 event directories sorted by name. It binds every index byte, including metadata that the host's before/after source-hash chain does not itself authenticate. Each event also must have the real directory format, valid before/after composite hashes and matching archived journal bytes. The chain starts at the installation receipt's installed files, must have exactly one successor per link, and must terminate at the supplied archive's current source snapshot.
+
+The repository does **not** contain a complete frozen production snapshot. The local historical archive used for analysis lacks `docs/videos/lexicon.json`; a run against that archive correctly returns `REJECTED`, `MISSING_FILE_OR_DIRECTORY`, relative path `docs/videos/lexicon.json`. Do not fill this gap with the present checkout's lexicon: its hash differs from the archived `ebfa590a…` hash. The tests create an explicitly synthetic 80-link fixture in the OS temporary directory and remove it afterward. Their pass proves the verifier's behavior, not the A01 host state.
+
+The JSON report exposes `chain.observed_links`, the tip index/source hashes, the local archive index manifest hash, recomputed `source.hashes` and `source.composite_sha256`, stable error codes and `required_live_evidence`. If a required source file is missing, the independently verified tip hash map can still be reported, while the recomputed source stays `null` and integrity is rejected. Nonzero exit means rejected local integrity; zero means only local integrity passed. It never means install or paid work may start. Before a production adapter is even considered, a separate fresh readback must establish deployed worker/rules hashes; actual docs/work and audit hashes; A01-specific and global STOP plus exclusive lease; DB project retry, stage/media jobs and every US$25 budget operation; unresolved run receipts; and existing visual/audio paid assets. Round 11 also still needs new narrative review and exact-file independent script review.

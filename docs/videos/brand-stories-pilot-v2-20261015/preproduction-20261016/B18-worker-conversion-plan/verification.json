@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "status": "VERIFIED_LOCAL_PLAN_INTEGRITY_ONLY",
+  "checked_at": "2026-10-16T03:10:31.971Z",
+  "node": "v24.13.0",
+  "checks": [
+    {
+      "name": "all 24 paragraphs exact v2 text/order/chapter/CID",
+      "result": "verified"
+    },
+    {
+      "name": "9 changed / 15 original-exact paragraphs, units 2294",
+      "result": "verified"
+    },
+    {
+      "name": "all 103 original shots and original paragraph reconstruction",
+      "result": "verified"
+    },
+    {
+      "name": "65 proposed claims remain UNCHECKED, source/fact scalar and exact text anchors",
+      "result": "verified"
+    },
+    {
+      "name": "all 16 card triples / 9 overlays / 3 hook reuse pairs preserved",
+      "result": "verified"
+    },
+    {
+      "name": "active row/compiled row unchanged; reviewed hook candidate distinct",
+      "result": "verified"
+    },
+    {
+      "name": "real writer reader rejects native title card",
+      "result": "verified"
+    },
+    {
+      "name": "all 16 native title card data schemas accept all three fields",
+      "result": "verified"
+    },
+    {
+      "name": "real composer preserves native title card data in memory",
+      "result": "verified"
+    },
+    {
+      "name": "real writer reader drops unsupported asset key and post overlay fields",
+      "result": "verified"
+    },
+    {
+      "name": "no production verdict or formal file implied",
+      "result": "verified"
+    },
+    {
+      "name": "all 30 pinned inputs still byte-exact after checks",
+      "result": "verified"
+    }
+  ],
+  "counts": {
+    "paragraphs": 24,
+    "original_shots": 103,
+    "original_illustrations": 87,
+    "original_cards": 16,
+    "original_source_overlays": 9,
+    "changed_paragraphs": 9,
+    "unchanged_paragraphs": 15,
+    "units": 2294,
+    "planned_claim_checklist_rows": 65
+  },
+  "ref_status_counts": {
+    "OLD_SPAN_EXACT": 55,
+    "TEXT_CHANGED_OR_REMOVED_RESEGMENT": 46,
+    "UNIQUE_TEXT_REANCHOR_CANDIDATE": 2
+  },
+  "source_pins_verified": 30,
+  "changed_paragraph_original_shot_count": 51,
+  "writer_card_probe_problem": "scenes[0] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)",
+  "official_full_draft_compose_or_lint": false,
+  "media_rendered": false,
+  "external_calls": 0,
+  "model_calls": 0,
+  "production_access": false,
+  "worker_pass": false,
+  "output_sha256": {
+    "README.md": "430d87851854c03829aa0a3265e654b9b72585f241b9a472c108bbb1ffc93115",
+    "schema-and-adoption.md": "375d6b9434922a2ff537f0af1005b613e1e181734ff5f7f94f9ff34cf33c7b16",
+    "conversion-plan.json": "8bc078f03bfaa05772081d2d17eea102b4d7cf90d7ea7657a7f91a462b3cf9a7",
+    "claim-checklist.json": "f5072f75bc67ab59404df5287c938a91be669e39327d4bdd42193325fd4676c7",
+    "shot-impact.json": "f41674f19c694caf012937eece8ebce5acfe6f40422ab17160705cd79872717b",
+    "paragraph-map.md": "8ee27abc96f16b4ca3608932ee631509137ac903e60abcc850d19c803bf3c3fa",
+    "source-pins.json": "7f192b62f359b58a2dba369260e76440d34c6b662cf86d5864124d1e8a0cca5e",
+    "verify.mjs": "6fd747b78dcd0904833417db883052b4260504e812d8b3d654cc7fc12778ea3b"
+  }
+}

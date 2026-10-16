@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "status": "MECHANICAL_ONLY_NO_NARRATIVE_JUDGE",
+  "renderer": {
+    "story_module_sha256": "f9825a7ce9649111d3e49ab33a2846a8be61111dd2cb2df40db3b68b974676f3",
+    "lint_module_sha256": "6cc1c1ee9cb425303d7a9f2ffa2d6aa5bddc3fa82c72314ede0060703316a386",
+    "timeline_module_sha256": "369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a"
+  },
+  "claim_schema": {
+    "row_id": "n1",
+    "exact_keys": [
+      "id",
+      "claim",
+      "scene",
+      "source",
+      "fact",
+      "verdict",
+      "note"
+    ],
+    "claim_only_structural_change": true,
+    "source_index_unchanged": 11,
+    "fact_index_unchanged": 9,
+    "verdict_unchanged": "PLAN",
+    "note_unchanged": true,
+    "all_other_chapter_bytes_unchanged_from_two_line": true,
+    "adjacent_lines_unchanged": true,
+    "claims_markdown_expected_to_change": true
+  },
+  "adjacency": {
+    "preceding_turn_last_scene": {
+      "id": "turn-15",
+      "lines": [
+        {
+          "id": "arxr",
+          "text": "但把箱子立起來之後，底下就只能留下兩個輪子嗎？"
+        },
+        {
+          "id": "4e5m",
+          "text": "想讓它站著推、推到身邊也能轉向，四輪還有位置嗎？"
+        }
+      ]
+    },
+    "now_01": {
+      "id": "now-01",
+      "lines": [
+        {
+          "id": "7asx",
+          "text": "從往後拉，到站著推，1997 年 Samsonite 發表了平衡四輪直立箱。"
+        },
+        {
+          "id": "kfiw",
+          "text": "要往後拉也行，不必先把箱子放平。"
+        }
+      ]
+    },
+    "following_now_02b": {
+      "id": "now-02b",
+      "lines": [
+        {
+          "id": "5tik",
+          "text": "到了 2000 年，同一家公司推出四輪萬向箱。"
+        }
+      ]
+    }
+  },
+  "no_model_or_host_calls": true,
+  "candidate": {
+    "lint_errors": [],
+    "cute_errors": [],
+    "warning_count": 37,
+    "warnings_identical_to_previous": true,
+    "estimated_seconds": 520.3333333333334,
+    "scenes": 63,
+    "lines": 92,
+    "composed_video_identical_to_previous": true,
+    "preview_video_sha256": "9e1f9ebd9e60cb1055093cddfa299d90e0870b08efb10d3b26dd12ea9f10eb42"
+  }
+}

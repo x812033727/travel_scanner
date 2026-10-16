@@ -93,11 +93,11 @@ em { font-style: normal; color: var(--orange); }
 .enter.mark { animation-name: glow; }
 
 /* title */
-.t-title { justify-content: center; align-items: center; text-align: center; gap: 36px; }
-.t-title .tag { font-size: 36px; font-weight: 700; color: var(--ground); background: var(--orange); padding: 10px 30px; border-radius: 999px; }
+.t-title { justify-content: center; align-items: center; text-align: center; gap: 24px; }
+.t-title .tag { max-width: 1600px; font-size: 64px; line-height: 1.2; font-weight: 700; color: var(--ground); background: var(--orange); padding: 10px 24px; border-radius: 36px; text-wrap: balance; word-break: keep-all; overflow-wrap: anywhere; }
 .t-title h1 { margin: 0; font-size: 112px; font-weight: 850; line-height: 1.15; max-width: 1600px; max-height: 400px; text-wrap: balance; }
 .t-title .rule { width: 160px; height: 8px; border-radius: 4px; background: var(--teal); }
-.t-title .subtitle { font-size: 46px; color: var(--muted); max-width: 1500px; max-height: 150px; text-wrap: balance; }
+.t-title .subtitle { font-size: 64px; line-height: 1.2; font-weight: 650; color: var(--paper); max-width: 1600px; max-height: 170px; text-wrap: balance; }
 
 /* chapter */
 .t-chapter { justify-content: center; gap: 12px; }

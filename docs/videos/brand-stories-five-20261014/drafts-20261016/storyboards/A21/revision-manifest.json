@@ -1,0 +1,681 @@
+{
+  "schema_version": 1,
+  "status": "AUTHOR_REVISION_PENDING_INDEPENDENT_RECHECK",
+  "revision": "r2",
+  "basis": "Root full-read detected subject ambiguity in T05→T06; exact T06 clarification only.",
+  "original_fullscript_sha256": "c250fb1f03f1b4868519a7d902af08247a214b2a228dc372efde8474b94cdc82",
+  "before_storyboard_sha256": "b36514c42ae2be57e4ab7a50a73bca7accf3b34d7db7465d0a40090862da399d",
+  "after_storyboard_sha256": "a5fab1e0e5932c34ed64e2731e2f40aafbea608dd57856758963ba4f117ccba3",
+  "before_active_narration_sha256": "e9916a207d781c8862c416cd3de16dddd0b6c8dc299b4bafbb4cb4931bd53ae6",
+  "after_active_narration_sha256": "80ace226e644630b604c40902f648ff32153fb24fe80e2dbe86e160fafc48193",
+  "paragraph_delta": {
+    "paragraph_id": "T06",
+    "before": "這回他們要說服上訴法院，高等法院把這句話讀得太窄，而最初稅務法庭的判斷應該恢復。",
+    "after": "這回，稅務機關要說服上訴法院，高等法院把這句話讀得太窄，而最初稅務法庭的判斷應該恢復。",
+    "reason": "T05 ends with P&G defending its High Court win; name the tax authority explicitly in T06 so the following appeal argument cannot be misread as P&G seeking to reverse that win. Original v3 fullscript and first storyboard remain preserved.",
+    "source_cids": [
+      "C22"
+    ],
+    "active_worker_source_indices_zero_based": [
+      3
+    ],
+    "review_status": "AUTHOR_CLARIFICATION_PENDING_INDEPENDENT_RECHECK",
+    "before_sha256": "e2d11b459e7f5b7a343f727952223a82df34db6831991fa396bb2f118ab87bde",
+    "after_sha256": "75c7cc7af952bdc4fda1ed3ace1f3221187aca074c3cf40e8372ae51cf1ab397"
+  },
+  "unchanged_paragraphs": [
+    "H01",
+    "H02",
+    "H03",
+    "H04",
+    "H05",
+    "O01",
+    "O02",
+    "O03",
+    "O04",
+    "O05",
+    "O06",
+    "O07",
+    "I01",
+    "I02",
+    "I03",
+    "I04",
+    "I05",
+    "I06",
+    "I07",
+    "I08",
+    "E01",
+    "E02",
+    "E02a",
+    "E03",
+    "E04",
+    "E05",
+    "E06",
+    "E07",
+    "E08",
+    "T01",
+    "T02",
+    "T03",
+    "T04",
+    "T05",
+    "T07",
+    "N01",
+    "N02",
+    "N03",
+    "N03a",
+    "N04",
+    "N05",
+    "N06",
+    "N07",
+    "N08",
+    "N09",
+    "N10"
+  ],
+  "unchanged_ids_and_order": true,
+  "all_active_paragraphs_reconstructed": true,
+  "v1_files_preserved": [
+    {
+      "name": "active-narration.txt",
+      "bytes": 7437,
+      "sha256": "9388d57b3668e01c8f71a0acc14c93ef00a417a4166352160e7a5d9cba121a9d"
+    },
+    {
+      "name": "adaptation-manifest.json",
+      "bytes": 253,
+      "sha256": "57381b96383eeadb1ff3e8ea9795faf61665435cb540b0b461a56e1dc3867c5b"
+    },
+    {
+      "name": "build-prep.mjs",
+      "bytes": 24042,
+      "sha256": "3762be4968e4ac1cd68f28fab6c242e50d2fa00adb00b5880a52e8e7280496aa"
+    },
+    {
+      "name": "checks.json",
+      "bytes": 1151,
+      "sha256": "a26281d932638f50bd9d0e571588586a202150e7d8e7bdce32c28dcc1fd83723"
+    },
+    {
+      "name": "complete-prep-template.mjs",
+      "bytes": 1219,
+      "sha256": "93c8e44d823fb1c2de0a48f6076abb4b9f34475abcdd09df24b6546e83d7ee9f"
+    },
+    {
+      "name": "config.mjs",
+      "bytes": 3243,
+      "sha256": "8a29ccca42d33b36530dec92b12d7094fa13c5a42f2df11d51a112c8e9728211"
+    },
+    {
+      "name": "HANDOFF.md",
+      "bytes": 2533,
+      "sha256": "b023bba1b4fb1ff832136ce701911fcdbfdab45ed17b5adf5252b7985d5a8478"
+    },
+    {
+      "name": "metrics.json",
+      "bytes": 3604,
+      "sha256": "7f376532d2e4d6e91c77e6dfb352ac3a926a8fbf4e18b7d38897ea53dcd6e958"
+    },
+    {
+      "name": "narration-segments.json",
+      "bytes": 91927,
+      "sha256": "d087beea434bf83986274aea6fe918bf4a470f4456dd328c0211b64e9c41811e"
+    },
+    {
+      "name": "official-shot-reading-cli.json",
+      "bytes": 49303,
+      "sha256": "bc1ce07af579b60e6f5bdcee287270d25a82ca18a8c8bd1fa27a3fe8c2811cee"
+    },
+    {
+      "name": "offline-shot-reading-input.json",
+      "bytes": 49999,
+      "sha256": "a9a0f8d39086657347c6e496eb1c57121a2c2514b9bc0c09b26eab627447b98a"
+    },
+    {
+      "name": "offline-verification.json",
+      "bytes": 1634,
+      "sha256": "27d193517487508869a32ec25333277e599330322d9536b3d30502d0d2a0a9a3"
+    },
+    {
+      "name": "original-paragraphs.json",
+      "bytes": 14690,
+      "sha256": "4f8032b85024ab78d982e72bd1e281bfc79b303bbdd81d3a1d72996e450b12b7"
+    },
+    {
+      "name": "paragraph-table.md",
+      "bytes": 10079,
+      "sha256": "ee98b46c2c3544c1b6d046385a01bd6beaa3edc28a9327cfc3ad8841ee9f9a1a"
+    },
+    {
+      "name": "paragraphs.json",
+      "bytes": 14690,
+      "sha256": "4f8032b85024ab78d982e72bd1e281bfc79b303bbdd81d3a1d72996e450b12b7"
+    },
+    {
+      "name": "README.md",
+      "bytes": 1436,
+      "sha256": "b20854f71a17f67ab71acbc25155fdcb409a9ca0cf4e5fd7106902102e0eb335"
+    },
+    {
+      "name": "run-offline-checks.mjs",
+      "bytes": 7827,
+      "sha256": "d2f0a6902450c2d550d3f999e010516d2c4c37623a8dd8130451a944762bb385"
+    },
+    {
+      "name": "shot-reading-report.json",
+      "bytes": 49416,
+      "sha256": "2657836c98cfb3f54e7f7696395096237ff45929af32325b968ba298e86c2c57"
+    },
+    {
+      "name": "source-map.json",
+      "bytes": 15561,
+      "sha256": "2a602d3c587ce5aec83ea0a295bc0ccc97f511ca10ff2e3efbb343e1b24c7695"
+    },
+    {
+      "name": "storyboard.json",
+      "bytes": 157288,
+      "sha256": "b36514c42ae2be57e4ab7a50a73bca7accf3b34d7db7465d0a40090862da399d"
+    },
+    {
+      "name": "storyboard.md",
+      "bytes": 50730,
+      "sha256": "1a2cd7e088ea50624acce023132207a218214d11f2b5a8a05d7a2a8c49ebf3a8"
+    },
+    {
+      "name": "visual-design.mjs",
+      "bytes": 21671,
+      "sha256": "6ef1abb409d5bc3b444b9552ee2c7807083fcd9ecbdf3ff0bda1ff8440738955"
+    }
+  ],
+  "source_pins_unchanged": [
+    {
+      "kind": "original_fullscript",
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-A21.md",
+      "sha256": "c250fb1f03f1b4868519a7d902af08247a214b2a228dc372efde8474b94cdc82"
+    },
+    {
+      "kind": "active_worker_row",
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-five-20261014/episodes/A21.json",
+      "sha256": "6adaed7d0b4df750a6edd8bd075b65df18f4f984945bfb49c569574cb0fc3476"
+    },
+    {
+      "kind": "independent_worker_row_review",
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-five-20261014/episodes/reviews/A21.json",
+      "sha256": "ea11c8e93f50b3beba7b4aeccc1037ee67a8cbb890ebbced82b557fab3d29321"
+    },
+    {
+      "kind": "corrected_metrics",
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/corrected-metrics-20261016.json",
+      "sha256": "e930a6d2654379103803f43014f9237996c0d6d2ff8035f702fa0e82787f82a7"
+    },
+    {
+      "kind": "integration_manifest",
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/worker-inputs-20261016/integration-verification.json",
+      "sha256": "5059c002d2876a26ab55857b50b874bc1ee8286adfaa5791b14f13314da2afdb"
+    }
+  ],
+  "claim_delta": {
+    "id": "C22",
+    "active_worker_source_indices_zero_based": [
+      3
+    ],
+    "source_facts_unchanged": true,
+    "review_status": "AUTHOR_CLARIFICATION_PENDING_INDEPENDENT_RECHECK"
+  },
+  "shot_deltas": [
+    {
+      "shot_id": "A21-S064",
+      "changes": {
+        "text": {
+          "before": "變成要守住高院勝訴的一方。這回他們要說服上訴法院，",
+          "after": "變成要守住高院勝訴的一方。這回，稅務機關要說服上訴法院，"
+        },
+        "narration_refs": {
+          "before": [
+            {
+              "paragraph_id": "T05",
+              "start_utf16": 32,
+              "end_utf16": 45,
+              "text": "變成要守住高院勝訴的一方。",
+              "source_cids": [
+                "C22"
+              ]
+            },
+            {
+              "paragraph_id": "T06",
+              "start_utf16": 0,
+              "end_utf16": 12,
+              "text": "這回他們要說服上訴法院，",
+              "source_cids": [
+                "C22"
+              ]
+            }
+          ],
+          "after": [
+            {
+              "paragraph_id": "T05",
+              "start_utf16": 32,
+              "end_utf16": 45,
+              "text": "變成要守住高院勝訴的一方。",
+              "source_cids": [
+                "C22"
+              ]
+            },
+            {
+              "paragraph_id": "T06",
+              "start_utf16": 0,
+              "end_utf16": 15,
+              "text": "這回，稅務機關要說服上訴法院，",
+              "source_cids": [
+                "C22"
+              ]
+            }
+          ]
+        },
+        "units": {
+          "before": 23,
+          "after": 25
+        },
+        "estimated_spoken_seconds": {
+          "before": {
+            "at_250_cpm": 5.52,
+            "at_230_cpm": 6
+          },
+          "after": {
+            "at_250_cpm": 6,
+            "at_230_cpm": 6.52
+          }
+        },
+        "prompt": {
+          "before": "Close-up at a legal preparation table, one generic advocate opens a response binder beside a closed prior case file, concentrated face, soft table-lamp light",
+          "after": "Close-up at a legal preparation table, one generic legal reader compares two open blank case folders, concentrated face, soft table-lamp light"
+        },
+        "visual_function": {
+          "before": "寶僑需守住高院結果，匿名法律工作者準備答辯",
+          "after": "銜接寶僑守住勝訴與稅務機關上訴；匿名讀者比較卷宗，不把同鏡兩方論點歸給一位律師"
+        }
+      }
+    },
+    {
+      "shot_id": "A21-S065",
+      "changes": {
+        "narration_refs": {
+          "before": [
+            {
+              "paragraph_id": "T06",
+              "start_utf16": 12,
+              "end_utf16": 40,
+              "text": "高等法院把這句話讀得太窄，而最初稅務法庭的判斷應該恢復。",
+              "source_cids": [
+                "C22"
+              ]
+            }
+          ],
+          "after": [
+            {
+              "paragraph_id": "T06",
+              "start_utf16": 15,
+              "end_utf16": 43,
+              "text": "高等法院把這句話讀得太窄，而最初稅務法庭的判斷應該恢復。",
+              "source_cids": [
+                "C22"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "timing_delta_note": "Only 2 extra nonpunctuation UTF-16 units in S064; later estimated start/end timestamps shift by 0.48–0.53 seconds through rounding. No extra pauses.",
+  "before_metrics": {
+    "status": "ESTIMATE_ONLY_NO_TTS",
+    "paragraphs": 47,
+    "units": 2281,
+    "original_source_units": 2281,
+    "hook_units": 164,
+    "body_units": 2281,
+    "after_hook_units": 2117,
+    "shots": 89,
+    "illustrations": 78,
+    "cards": 11,
+    "illustration_percentage": 87.64,
+    "max_consecutive_cards": 2,
+    "hook_estimate_seconds": {
+      "at_250_cpm": 39.36,
+      "at_230_cpm": 42.78
+    },
+    "body_estimate_seconds": {
+      "at_250_cpm": 547.44,
+      "at_230_cpm": 595.04
+    },
+    "after_hook_estimate_seconds": {
+      "at_250_cpm": 508.08,
+      "at_230_cpm": 552.26
+    },
+    "narration_estimate_seconds": {
+      "at_250_cpm": 547.44,
+      "at_230_cpm": 595.04
+    },
+    "branding_seconds": 26,
+    "total_estimate_seconds": {
+      "at_250_cpm": 573.44,
+      "at_230_cpm": 621.04
+    },
+    "body_below_8_minutes_at_any_estimated_rate": false,
+    "exceptions_5_to_8_seconds": [
+      {
+        "id": "A21-S005",
+        "units": 10,
+        "at_250_cpm": 2.4,
+        "at_230_cpm": 2.61
+      },
+      {
+        "id": "A21-S008",
+        "units": 12,
+        "at_250_cpm": 2.88,
+        "at_230_cpm": 3.13
+      },
+      {
+        "id": "A21-S010",
+        "units": 33,
+        "at_250_cpm": 7.92,
+        "at_230_cpm": 8.61
+      },
+      {
+        "id": "A21-S014",
+        "units": 20,
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      {
+        "id": "A21-S018",
+        "units": 19,
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      {
+        "id": "A21-S020",
+        "units": 18,
+        "at_250_cpm": 4.32,
+        "at_230_cpm": 4.7
+      },
+      {
+        "id": "A21-S022",
+        "units": 15,
+        "at_250_cpm": 3.6,
+        "at_230_cpm": 3.91
+      },
+      {
+        "id": "A21-S023",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A21-S025",
+        "units": 31,
+        "at_250_cpm": 7.44,
+        "at_230_cpm": 8.09
+      },
+      {
+        "id": "A21-S035",
+        "units": 19,
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      {
+        "id": "A21-S037",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A21-S041",
+        "units": 20,
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      {
+        "id": "A21-S045",
+        "units": 19,
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      {
+        "id": "A21-S057",
+        "units": 31,
+        "at_250_cpm": 7.44,
+        "at_230_cpm": 8.09
+      },
+      {
+        "id": "A21-S058",
+        "units": 33,
+        "at_250_cpm": 7.92,
+        "at_230_cpm": 8.61
+      },
+      {
+        "id": "A21-S060",
+        "units": 19,
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      {
+        "id": "A21-S066",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A21-S067",
+        "units": 18,
+        "at_250_cpm": 4.32,
+        "at_230_cpm": 4.7
+      },
+      {
+        "id": "A21-S071",
+        "units": 20,
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      {
+        "id": "A21-S083",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A21-S087",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A21-S089",
+        "units": 31,
+        "at_250_cpm": 7.44,
+        "at_230_cpm": 8.09
+      }
+    ],
+    "body_definition": "All six chapters including hook; excludes 5s intro and 21s outro. after_hook is an analysis subset, not the formal duration gate.",
+    "method": "Same UTF-16 nonpunctuation/nonseparator unit as corrected metrics; Latin letters count individually, so actual speech may differ. Visual cuts do not create narration pauses.",
+    "unique_planned_images": 75,
+    "hook_image_reuse_pairs": 3
+  },
+  "after_metrics": {
+    "status": "ESTIMATE_ONLY_NO_TTS",
+    "paragraphs": 47,
+    "units": 2283,
+    "original_source_units": 2281,
+    "hook_units": 164,
+    "body_units": 2283,
+    "after_hook_units": 2119,
+    "shots": 89,
+    "illustrations": 78,
+    "cards": 11,
+    "illustration_percentage": 87.64,
+    "max_consecutive_cards": 2,
+    "hook_estimate_seconds": {
+      "at_250_cpm": 39.36,
+      "at_230_cpm": 42.78
+    },
+    "body_estimate_seconds": {
+      "at_250_cpm": 547.92,
+      "at_230_cpm": 595.57
+    },
+    "after_hook_estimate_seconds": {
+      "at_250_cpm": 508.56,
+      "at_230_cpm": 552.78
+    },
+    "narration_estimate_seconds": {
+      "at_250_cpm": 547.92,
+      "at_230_cpm": 595.57
+    },
+    "branding_seconds": 26,
+    "total_estimate_seconds": {
+      "at_250_cpm": 573.92,
+      "at_230_cpm": 621.57
+    },
+    "body_below_8_minutes_at_any_estimated_rate": false,
+    "exceptions_5_to_8_seconds": [
+      {
+        "id": "A21-S005",
+        "units": 10,
+        "at_250_cpm": 2.4,
+        "at_230_cpm": 2.61
+      },
+      {
+        "id": "A21-S008",
+        "units": 12,
+        "at_250_cpm": 2.88,
+        "at_230_cpm": 3.13
+      },
+      {
+        "id": "A21-S010",
+        "units": 33,
+        "at_250_cpm": 7.92,
+        "at_230_cpm": 8.61
+      },
+      {
+        "id": "A21-S014",
+        "units": 20,
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      {
+        "id": "A21-S018",
+        "units": 19,
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      {
+        "id": "A21-S020",
+        "units": 18,
+        "at_250_cpm": 4.32,
+        "at_230_cpm": 4.7
+      },
+      {
+        "id": "A21-S022",
+        "units": 15,
+        "at_250_cpm": 3.6,
+        "at_230_cpm": 3.91
+      },
+      {
+        "id": "A21-S023",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A21-S025",
+        "units": 31,
+        "at_250_cpm": 7.44,
+        "at_230_cpm": 8.09
+      },
+      {
+        "id": "A21-S035",
+        "units": 19,
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      {
+        "id": "A21-S037",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A21-S041",
+        "units": 20,
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      {
+        "id": "A21-S045",
+        "units": 19,
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      {
+        "id": "A21-S057",
+        "units": 31,
+        "at_250_cpm": 7.44,
+        "at_230_cpm": 8.09
+      },
+      {
+        "id": "A21-S058",
+        "units": 33,
+        "at_250_cpm": 7.92,
+        "at_230_cpm": 8.61
+      },
+      {
+        "id": "A21-S060",
+        "units": 19,
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      {
+        "id": "A21-S066",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A21-S067",
+        "units": 18,
+        "at_250_cpm": 4.32,
+        "at_230_cpm": 4.7
+      },
+      {
+        "id": "A21-S071",
+        "units": 20,
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      {
+        "id": "A21-S083",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A21-S087",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A21-S089",
+        "units": 31,
+        "at_250_cpm": 7.44,
+        "at_230_cpm": 8.09
+      }
+    ],
+    "body_definition": "All six chapters including hook; excludes 5s intro and 21s outro. after_hook is an analysis subset, not the formal duration gate.",
+    "method": "Same UTF-16 nonpunctuation/nonseparator unit as corrected metrics; Latin letters count individually, so actual speech may differ. Visual cuts do not create narration pauses.",
+    "unique_planned_images": 75,
+    "hook_image_reuse_pairs": 3
+  }
+}

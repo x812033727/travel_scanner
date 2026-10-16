@@ -1,0 +1,1191 @@
+{
+  "schema_version": 3,
+  "as_of_local_date": "2026-10-16",
+  "status": "REVIEWABLE_QUOTE_PROPOSAL_ONLY_NOT_AUTHORIZED",
+  "read_repo_head": "8ef93836c401d84484c4f796475753ddedcd8c86",
+  "path_bases": {
+    "repository_root": "Checkout root; not embedded as an absolute local path",
+    "quote_directory": "Directory containing this v3 MD/JSON/index",
+    "external_working_archive": "Historical working files retained outside the portable bundle. Hash-only provenance; not required for portable source resolution."
+  },
+  "revision": {
+    "supersedes": [
+      {
+        "base": "external_working_archive",
+        "file": "B18-five-production-cost-proposal-v2.json",
+        "sha256": "5315d05346df83641535e690777ede2c17b25bf7b04cbbf710039368bb92f38e",
+        "portable_read_required": false
+      },
+      {
+        "base": "external_working_archive",
+        "file": "B18-five-production-cost-proposal-v2.md",
+        "sha256": "e29e163a898a9115d867c0ad6a2d529e24dc863e31ac0821d57857cd33d8031f",
+        "portable_read_required": false
+      }
+    ],
+    "reason": "Use frozen storyboard quantities and three exact reuse pairs per follow-on; replace every proposed USD25 new-film ceiling with USD5. B18 is separate USD5; five total USD25; combined USD30.",
+    "old_files_preserved": true
+  },
+  "assumptions": {
+    "currency": "USD",
+    "valuation": "Pay-as-you-go list-equivalent planning, not an invoice or assertion of extra subscription cash cost",
+    "speech_route": "one Traditional Chinese narrator; switchable zh-TW CC",
+    "image_model": "minimax/image-01",
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "clips": 0,
+    "image_generation_usd_each": 0.0035,
+    "image_judge_planning_allowance_usd_each": 0.01,
+    "judge_allowance_is_vendor_flat_price": false,
+    "initial_look_candidates_per_cast_entry": 3,
+    "illustration_retake_allowance_fraction": 0.5,
+    "audio_planning_seconds": 600,
+    "audio_planning_is_measured": false,
+    "tts_input_tokens_per_full_pass": 40000,
+    "tts_audio_output_tokens_per_second": 25,
+    "tts_input_usd_per_million": 0.5,
+    "tts_audio_output_usd_per_million": 9,
+    "transcription_narrated_lines_planning_only": 120,
+    "transcription_audio_input_tokens_per_second": 32,
+    "transcription_text_input_tokens_per_line": 500,
+    "transcription_output_including_thinking_tokens_per_line": 300,
+    "transcription_input_usd_per_million": 0.75,
+    "transcription_output_usd_per_million": 3.75,
+    "tts_transcription_retake_allowance_fraction": 0.5,
+    "jev_calls_including_policy_and_retry_allowance": 10,
+    "jev_input_tokens_upper_bound_per_call": 64000,
+    "jev_input_usd_per_million": 0.042,
+    "optional_music_selected_tracks": 1,
+    "optional_music_total_takes_allowance": 2,
+    "music_usd_per_take": 0.08,
+    "thumbnail_extra_generations": 0,
+    "thumbnail_method": "Compose existing accepted keyframes with post-produced headline; no separate image generation",
+    "intro_seconds": 5,
+    "outro_seconds": 21,
+    "branding_new_generations": 0,
+    "text_route": "Claude/Codex subscription route only; no metered API fallback in this quote",
+    "text_incremental_api_cash_cost_under_required_route": 0,
+    "subscription_balance_proof_waived_by_owner": true,
+    "price_valid_through": "2026-12-31",
+    "actual_cost_and_usage": null
+  },
+  "episodes": [
+    {
+      "id": "B18",
+      "slug": "story-conveyor-belt-sushi-v2",
+      "title": "壽司店缺人，老闆卻從啤酒工廠找到靈感？",
+      "quote_group": "separate_second_pilot",
+      "production_status": "Not authorized; follows accepted A01 pilot",
+      "source_pins": [
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-pilot-v2-20261015/stories.json",
+          "sha256": "3a87dff10ed597c68b01588244e5bd3443dfa69af13d97fbd8e411a81d32cd01"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-pilot-v2-20261015/scripts/B18.md",
+          "sha256": "5326bd6633ad69931fe542badd6cddd2378324ff0bcc4b0f05652941642dc724"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-pilot-v2-20261015/B18-shot-plan.md",
+          "sha256": "7c890e609d46d8536408045d84dc462bf363840fd679265ebbb76bd2e6843929"
+        }
+      ],
+      "visuals": {
+        "shots": 108,
+        "illustration_slots": 91,
+        "cards": 17,
+        "unique_illustration_budget": 91,
+        "unique_count_basis": "Conservative upper budget from shot-plan slots; no locked shot-level reuse receipt",
+        "hook_reuse_pairs_credited": 0,
+        "cast_entries": [
+          "sushi-chef"
+        ],
+        "cast_count": 1,
+        "thumbnail_extra_images": 0
+      },
+      "duration": {
+        "status": "PLAN_ESTIMATE_NOT_TTS",
+        "body_all_six_chapters_including_hook_seconds": [
+          546,
+          546
+        ],
+        "branding_seconds": 26,
+        "total_seconds": [
+          572,
+          572
+        ]
+      },
+      "hook_visual_reuse": [],
+      "reuse_pending": "Formal B18 board must bind its three preview callbacks to the same accepted images; no three-image saving credited before exact shot/prompt bindings exist.",
+      "cost": {
+        "first_pass_plus_check_allowances_usd": 1.72528,
+        "normal_retake_allowance_usd": 0.8757,
+        "modeled_total_with_normal_retakes_usd": 2.60098,
+        "proposed_hard_cap_usd": 5,
+        "unallocated_headroom_under_proposed_cap_usd": 2.39902,
+        "initial_unique_illustrations": 91,
+        "initial_cast_candidate_generations": 3,
+        "normal_extra_illustration_generations": 46,
+        "modeled_total_image_generations": 140,
+        "image_generation_usd": 0.49,
+        "image_judge_allowance_usd": 1.4,
+        "tts_with_normal_retakes_usd": 0.2325,
+        "transcription_with_normal_rechecks_usd": 0.2916,
+        "jev_allowance_usd": 0.02688,
+        "optional_music_two_takes_usd": 0.16,
+        "measured_cost_usd": null,
+        "approved_hard_cap_usd": null,
+        "new_spending_authorized": false
+      },
+      "current_local_cap": {
+        "in_pilot_slug_set": true,
+        "fixed_usd": 25,
+        "proposed_5_usd_enforceable": false,
+        "live_verified": false
+      }
+    },
+    {
+      "id": "A29",
+      "slug": "story-five-lego-legoland",
+      "title": "樂高連賺錢的樂園都賣了：當年到底缺什麼？",
+      "quote_group": "five_follow_ons",
+      "production_status": "Frozen storyboard preparation independently accepted by parent; formal chapter/output review still required",
+      "source_pins": [
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A29/storyboard.json",
+          "sha256": "1f03cea9c645b8592dbc6c2277dc1672e39b7a466244c7ea638caf7ae9a4ccfb"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A29/checks.json",
+          "sha256": "a472380ae6d7288877244837d4f62c7a0db0c8835451cf1783889e2e1927ccf0"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A29/metrics.json",
+          "sha256": "d5b1e8d19d75640f722d6a01803f7ad3a065c4641757773dd14b48757e25fa2f"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A29/revision-manifest.json",
+          "sha256": "63a166e85aa3f02af94aa505e1c27973b52f8bb931997282c8f9143dd22bc0e3"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-A29.md",
+          "sha256": "9d8d6ea834c526d3f6e5b452f01545a74c87873948c8392a1bc4bb8954056c11"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/episodes/A29.json",
+          "sha256": "8286478e9cb30c3f92dca246806c33589033b709f766db7c7b546c122d518aa4"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/episodes/reviews/A29.json",
+          "sha256": "928cfbf5e6a221b7632bcd7c502640aa05356dd47666f9c0b0b9bd112d2f41c5"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A29/independent-review.json",
+          "sha256": "090f7a24a181d492bdb7690020ee53c77bfb92b7ebaf5fda08b34c154f9e13d0"
+        }
+      ],
+      "original_fullscript_sha256": "9d8d6ea834c526d3f6e5b452f01545a74c87873948c8392a1bc4bb8954056c11",
+      "active_narration_sha256": null,
+      "adaptations": [],
+      "storyboard_parent_review_status": "Parent confirmed acceptance on 2026-10-16; any embedded author-time pending label is retained as source data and is not a fresh worker review",
+      "visuals": {
+        "shots": 83,
+        "illustration_slots": 72,
+        "cards": 11,
+        "unique_illustration_budget": 69,
+        "unique_count_basis": "Distinct image_asset_key; three exact prompt/camera reuse pairs checked",
+        "hook_reuse_pairs_credited": 3,
+        "cast_entries": [
+          "founder",
+          "executive"
+        ],
+        "cast_count": 2,
+        "thumbnail_extra_images": 0
+      },
+      "duration": {
+        "status": "CHARACTER_RATE_ESTIMATE_NOT_TTS",
+        "paragraphs": 65,
+        "active_spoken_units": 2201,
+        "body_all_six_chapters_including_hook_seconds": [
+          528.24,
+          574.17
+        ],
+        "branding_seconds": 26,
+        "total_seconds": [
+          554.24,
+          600.17
+        ]
+      },
+      "hook_visual_reuse": [
+        {
+          "setup_shot": "A29-S003",
+          "setup_paragraph": "H03",
+          "recovery_shot": "A29-S057",
+          "recovery_paragraphs": [
+            "T04",
+            "T05"
+          ],
+          "asset_key": "a29-company-folders",
+          "prompt_sha256": "b2909d5eadc55d0a59debdba4693b4b9757aa6cedfa45e92e59d7b60aa55991d",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        },
+        {
+          "setup_shot": "A29-S004",
+          "setup_paragraph": "H04",
+          "recovery_shot": "A29-S080",
+          "recovery_paragraphs": [
+            "N08",
+            "N09"
+          ],
+          "asset_key": "a29-bookmarked-ledger",
+          "prompt_sha256": "8795b576aea332042c6f432453db864f7edb9e7dc0da6b6654fed255f0860d28",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        },
+        {
+          "setup_shot": "A29-S005",
+          "setup_paragraph": "H05",
+          "recovery_shot": "A29-S073",
+          "recovery_paragraphs": [
+            "N03"
+          ],
+          "asset_key": "a29-family-portfolio",
+          "prompt_sha256": "7ee43afece6a28dd45f68adac6dae4e033789cb89e96fbd088cfcd137ff4f8a9",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        }
+      ],
+      "cost": {
+        "first_pass_plus_check_allowances_usd": 1.46878,
+        "normal_retake_allowance_usd": 0.7272,
+        "modeled_total_with_normal_retakes_usd": 2.19598,
+        "proposed_hard_cap_usd": 5,
+        "unallocated_headroom_under_proposed_cap_usd": 2.80402,
+        "initial_unique_illustrations": 69,
+        "initial_cast_candidate_generations": 6,
+        "normal_extra_illustration_generations": 35,
+        "modeled_total_image_generations": 110,
+        "image_generation_usd": 0.385,
+        "image_judge_allowance_usd": 1.1,
+        "tts_with_normal_retakes_usd": 0.2325,
+        "transcription_with_normal_rechecks_usd": 0.2916,
+        "jev_allowance_usd": 0.02688,
+        "optional_music_two_takes_usd": 0.16,
+        "measured_cost_usd": null,
+        "approved_hard_cap_usd": null,
+        "new_spending_authorized": false
+      },
+      "current_local_cap": {
+        "in_pilot_slug_set": false,
+        "fixed_usd": null,
+        "proposed_5_usd_enforceable": false,
+        "live_verified": false
+      }
+    },
+    {
+      "id": "A16",
+      "slug": "story-five-costco-hot-dog",
+      "title": "熱狗 40 年不漲價，Costco 靠什麼賺錢？",
+      "quote_group": "five_follow_ons",
+      "production_status": "Frozen storyboard preparation independently accepted by parent; formal chapter/output review still required",
+      "source_pins": [
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A16/storyboard.json",
+          "sha256": "43603cbe0ff25b57d530a1e44e7053ecb7c431d2ec9fb79a2bff59e0c8f88025"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A16/checks.json",
+          "sha256": "36cd9a6c9507a5d28b8b6b158998388ceea07794678f8c957abf9e1dcedd8763"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A16/metrics.json",
+          "sha256": "569fcf3c9653a29fb8da4f0a3baf1f9941b8eab39c52fc7b5c30ea0ed079eee0"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A16/adaptation-manifest.json",
+          "sha256": "eaa28f96f1946a8daa3d248ca74d28fed50f751f90252491693eb77d7735db40"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-A16.md",
+          "sha256": "66d164291d3d4af356bc92b5c0ad16ed8ef3831f9365c6e43989d207c30ed8f1"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/episodes/A16.json",
+          "sha256": "361a0572ac6cdc4774905c5bcd86fb909e6742a50fa195d5766b0325e3faa7b8"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/episodes/reviews/A16.json",
+          "sha256": "b58038cea2600dece820986845d8b460491be932da6f2478c87a711694f78639"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/corrected-metrics-20261016.json",
+          "sha256": "e930a6d2654379103803f43014f9237996c0d6d2ff8035f702fa0e82787f82a7"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/worker-inputs-20261016/integration-verification.json",
+          "sha256": "5059c002d2876a26ab55857b50b874bc1ee8286adfaa5791b14f13314da2afdb"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A16/independent-review.json",
+          "sha256": "9d2d9861150eb41093bbb7966e44c535dfc877171249555fb4e813c5f2f4d5e1"
+        }
+      ],
+      "original_fullscript_sha256": "66d164291d3d4af356bc92b5c0ad16ed8ef3831f9365c6e43989d207c30ed8f1",
+      "active_narration_sha256": "989370a5aee1517a791f16cece9604663e9b8d14949f34475b566cb4132b1bb7",
+      "adaptations": [],
+      "storyboard_parent_review_status": "Parent confirmed acceptance on 2026-10-16; any embedded author-time pending label is retained as source data and is not a fresh worker review",
+      "visuals": {
+        "shots": 83,
+        "illustration_slots": 67,
+        "cards": 16,
+        "unique_illustration_budget": 64,
+        "unique_count_basis": "Distinct image_asset_key; three exact prompt/camera reuse pairs checked",
+        "hook_reuse_pairs_credited": 3,
+        "cast_entries": [
+          "founder"
+        ],
+        "cast_count": 1,
+        "thumbnail_extra_images": 0
+      },
+      "duration": {
+        "status": "CHARACTER_RATE_ESTIMATE_NOT_TTS",
+        "paragraphs": 50,
+        "active_spoken_units": 2114,
+        "body_all_six_chapters_including_hook_seconds": [
+          507.36,
+          551.48
+        ],
+        "branding_seconds": 26,
+        "total_seconds": [
+          533.36,
+          577.48
+        ]
+      },
+      "hook_visual_reuse": [
+        {
+          "setup_shot": "A16-S006",
+          "setup_paragraph": "H4",
+          "recovery_shot": "A16-S012",
+          "recovery_paragraphs": [
+            "O2"
+          ],
+          "asset_key": "a16-hook-reuse-6",
+          "prompt_sha256": "5d402b9e289538abaefc300cab81303ab544060eb6c11f598cc31e09cb2d722e",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        },
+        {
+          "setup_shot": "A16-S007",
+          "setup_paragraph": "H5",
+          "recovery_shot": "A16-S041",
+          "recovery_paragraphs": [
+            "E1"
+          ],
+          "asset_key": "a16-hook-reuse-7",
+          "prompt_sha256": "c0a32440eceeb057424a0a9927445057915e6397f9eb166caf7a6e8736f8e4b2",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        },
+        {
+          "setup_shot": "A16-S008",
+          "setup_paragraph": "H6",
+          "recovery_shot": "A16-S060",
+          "recovery_paragraphs": [
+            "T4"
+          ],
+          "asset_key": "a16-hook-reuse-8",
+          "prompt_sha256": "6e3d1fce961ba37fc97e011a828758494e5afd5f99fee552de3c219576b9261d",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        }
+      ],
+      "cost": {
+        "first_pass_plus_check_allowances_usd": 1.36078,
+        "normal_retake_allowance_usd": 0.6867,
+        "modeled_total_with_normal_retakes_usd": 2.04748,
+        "proposed_hard_cap_usd": 5,
+        "unallocated_headroom_under_proposed_cap_usd": 2.95252,
+        "initial_unique_illustrations": 64,
+        "initial_cast_candidate_generations": 3,
+        "normal_extra_illustration_generations": 32,
+        "modeled_total_image_generations": 99,
+        "image_generation_usd": 0.3465,
+        "image_judge_allowance_usd": 0.99,
+        "tts_with_normal_retakes_usd": 0.2325,
+        "transcription_with_normal_rechecks_usd": 0.2916,
+        "jev_allowance_usd": 0.02688,
+        "optional_music_two_takes_usd": 0.16,
+        "measured_cost_usd": null,
+        "approved_hard_cap_usd": null,
+        "new_spending_authorized": false
+      },
+      "current_local_cap": {
+        "in_pilot_slug_set": false,
+        "fixed_usd": null,
+        "proposed_5_usd_enforceable": false,
+        "live_verified": false
+      }
+    },
+    {
+      "id": "A37",
+      "slug": "story-five-adidas-puma-brothers",
+      "title": "Adidas 與 Puma：兄弟拆了同一家鞋廠，小鎮為何跟著選邊？",
+      "quote_group": "five_follow_ons",
+      "production_status": "Frozen storyboard preparation independently accepted by parent; formal chapter/output review still required",
+      "source_pins": [
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A37/storyboard.json",
+          "sha256": "fac6450dac027e1645e21da9038d4cdf34673c2339e05313cfb6b517c1dd7d96"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A37/checks.json",
+          "sha256": "e464efd6a224d0c030d76167d58a12988dc6916b42098691b64801f956a42416"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A37/metrics.json",
+          "sha256": "029e4ae1e30ff61fa4923b0a742cee511881a4b51823b7b007b23fc156bb6d2c"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A37/adaptation-manifest.json",
+          "sha256": "d4c6523e863005caaaf0dc6c7bef11f6ed7f37df23d3aa7e4c99a56ed3788b36"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-A37.md",
+          "sha256": "63e6277c85cc573556651f686cbf7722d602c620265e7730a9f3f32b7d016d09"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/episodes/A37.json",
+          "sha256": "df32efa32d3b4bc0b629901255cb009d48a57629cac610a5eb163178712a7dad"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/episodes/reviews/A37.json",
+          "sha256": "5090c0ec290237fae1991c5e3c4a5b1a4b766d5112d75b4cac517e036707355d"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/corrected-metrics-20261016.json",
+          "sha256": "e930a6d2654379103803f43014f9237996c0d6d2ff8035f702fa0e82787f82a7"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/worker-inputs-20261016/integration-verification.json",
+          "sha256": "5059c002d2876a26ab55857b50b874bc1ee8286adfaa5791b14f13314da2afdb"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/worker-inputs-20261016/A37-source-access-addendum-v2.md",
+          "sha256": "d3aeb5e06caf9d37e5c2551cca8fe3364f281aecb4755fb3cdc4cae1e76ddc77"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/worker-inputs-20261016/A37-row-v2-manifest.json",
+          "sha256": "3bc3df7461483ab62c34cd80859b36b502b6321c75b43b45a2b21427e9b25702"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A37/independent-review.json",
+          "sha256": "8f9488459f09984e54d0bd10805e3e313927b7f8b457119f90cfad59fc7cd01f"
+        }
+      ],
+      "original_fullscript_sha256": "63e6277c85cc573556651f686cbf7722d602c620265e7730a9f3f32b7d016d09",
+      "active_narration_sha256": "6ac46a8cc8b78a96903cf30cb2a81de2b06467726511535e58ff3f996d916cce",
+      "adaptations": [
+        {
+          "paragraph_id": "I03",
+          "before": "到底是哪一次爭吵，讓他們走到這一步？後來的故事裡，有家庭生活的摩擦，也有戰爭帶來的壓力。",
+          "after": "到底是哪一次爭吵，讓他們走到這一步？後來的故事裡，有家庭生活的摩擦。",
+          "reason": "依active row v2來源addendum退役「戰爭帶來的壓力」，不新增私人起因。",
+          "before_sha256": "7a0db42af116f9570211247b117258c77bf17a5e69028c3c939f3fdf3a457a2a",
+          "after_sha256": "f51c4758e46be03b2870ce6635ad7584235822338165c84e68d0ee3f26930bb9"
+        },
+        {
+          "paragraph_id": "E10",
+          "before": "弟弟也在改足球鞋。Adidas的歷史資料記下，阿迪和西德國家隊密切合作。球隊一路踢進一九五四年世界盃決賽，等待他們的是匈牙利，還有一片下了雨的場地。",
+          "after": "弟弟也在改足球鞋。Adidas的官方紀錄提到，西德國家隊穿著它的球鞋。球隊一路踢進一九五四年世界盃決賽，等待他們的是匈牙利，還有一片下了雨的場地。",
+          "reason": "只述官方PDF可證的球鞋穿著，不描述合作程度或未記錄接觸。",
+          "before_sha256": "a8054ccc9a1cf2e21be4e040aabffee9b7144d91578f00d39b8cde78a2abe91f",
+          "after_sha256": "4a3a6b98a2dddcfd702cd05b05f8959570038910d7f02a15df81da1ae34cc77e"
+        },
+        {
+          "paragraph_id": "T01a",
+          "before": "Adidas描述那批球鞋時，提到鞋釘可以拆下，按天候換上適合的版本。哥哥在產品回顧裡說的調整需求，也出現在弟弟供應國家隊的鞋上。",
+          "after": "Adidas的官方紀錄，提到國家隊穿著旋入式鞋釘球鞋。哥哥在產品回顧裡說的鞋釘結構，也出現在弟弟供應國家隊的鞋上。",
+          "reason": "只作旋入式鞋釘結構對照，去除Adidas按天候換釘修飾；PUMA E08d原回憶仍保留。",
+          "before_sha256": "1ccffd426c1b0ac19dd04ccc7a97e4d0ff19d97bb092134855c2356c316fd8be",
+          "after_sha256": "7990259ecc16ee0ba1901db825cea60d026351322b920b60577c44476d87a38e"
+        }
+      ],
+      "storyboard_parent_review_status": "Parent confirmed acceptance on 2026-10-16; any embedded author-time pending label is retained as source data and is not a fresh worker review",
+      "visuals": {
+        "shots": 86,
+        "illustration_slots": 72,
+        "cards": 14,
+        "unique_illustration_budget": 69,
+        "unique_count_basis": "Distinct image_asset_key; three exact prompt/camera reuse pairs checked",
+        "hook_reuse_pairs_credited": 3,
+        "cast_entries": [
+          "elder-brother",
+          "younger-brother"
+        ],
+        "cast_count": 2,
+        "thumbnail_extra_images": 0
+      },
+      "duration": {
+        "status": "CHARACTER_RATE_ESTIMATE_NOT_TTS",
+        "paragraphs": 48,
+        "active_spoken_units": 2136,
+        "body_all_six_chapters_including_hook_seconds": [
+          512.64,
+          557.22
+        ],
+        "branding_seconds": 26,
+        "total_seconds": [
+          538.64,
+          583.22
+        ]
+      },
+      "hook_visual_reuse": [
+        {
+          "setup_shot": "A37-S004",
+          "setup_paragraph": "H03",
+          "recovery_shot": "A37-S024",
+          "recovery_paragraphs": [
+            "I02"
+          ],
+          "asset_key": "a37-hook-reuse-4",
+          "prompt_sha256": "9b6701562280d1e1b2e85440a6e6171d68044e25e0e68cde1e008fdcbd3e8ec1",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        },
+        {
+          "setup_shot": "A37-S005",
+          "setup_paragraph": "H04",
+          "recovery_shot": "A37-S040",
+          "recovery_paragraphs": [
+            "E06"
+          ],
+          "asset_key": "a37-hook-reuse-5",
+          "prompt_sha256": "31306c6832d90ba72df6b8afc4213ee2989c24375bb56263f20166efdb11dfba",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        },
+        {
+          "setup_shot": "A37-S006",
+          "setup_paragraph": "H05",
+          "recovery_shot": "A37-S082",
+          "recovery_paragraphs": [
+            "N07"
+          ],
+          "asset_key": "a37-hook-reuse-6",
+          "prompt_sha256": "89f7d907845c0b72452148594a0ffa01b266727589a7511984ff312ec0834958",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        }
+      ],
+      "cost": {
+        "first_pass_plus_check_allowances_usd": 1.46878,
+        "normal_retake_allowance_usd": 0.7272,
+        "modeled_total_with_normal_retakes_usd": 2.19598,
+        "proposed_hard_cap_usd": 5,
+        "unallocated_headroom_under_proposed_cap_usd": 2.80402,
+        "initial_unique_illustrations": 69,
+        "initial_cast_candidate_generations": 6,
+        "normal_extra_illustration_generations": 35,
+        "modeled_total_image_generations": 110,
+        "image_generation_usd": 0.385,
+        "image_judge_allowance_usd": 1.1,
+        "tts_with_normal_retakes_usd": 0.2325,
+        "transcription_with_normal_rechecks_usd": 0.2916,
+        "jev_allowance_usd": 0.02688,
+        "optional_music_two_takes_usd": 0.16,
+        "measured_cost_usd": null,
+        "approved_hard_cap_usd": null,
+        "new_spending_authorized": false
+      },
+      "current_local_cap": {
+        "in_pilot_slug_set": false,
+        "fixed_usd": null,
+        "proposed_5_usd_enforceable": false,
+        "live_verified": false
+      }
+    },
+    {
+      "id": "B14",
+      "slug": "story-five-ajinomoto-chip-film",
+      "title": "賣調味料的味之素，怎麼做出高階晶片裡的薄膜？",
+      "quote_group": "five_follow_ons",
+      "production_status": "Frozen storyboard preparation independently accepted by parent; formal chapter/output review still required",
+      "source_pins": [
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/B14/storyboard.json",
+          "sha256": "f79b820dc3c30bc5233941451bc1f9405b187bb848a94c8d40d907b2f18ca581"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/B14/checks.json",
+          "sha256": "1c1b4b6b510027edf99a1abefc4551685fe1b09339256cfd3221acb77880c6b7"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/B14/metrics.json",
+          "sha256": "c3db027f8940bfac8aca957052d75f0f8b5f815e9eb0bce16f03b0f58c64129b"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/B14/adaptation-manifest.json",
+          "sha256": "075cb6392de7b1fd125f7000159296b000f99c1ed0d58d380252e9f2f5aecd19"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-B14.md",
+          "sha256": "609d72a83af55bf3e1b59facd0e1500a0e86c5e0b1611d31cbcfeb0b7e8de2b5"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/episodes/B14.json",
+          "sha256": "7aca463a2caef950f9c28de4dc71debafcd47ca9ee709809dfd0e6566acf46f4"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/episodes/reviews/B14.json",
+          "sha256": "fd240d59a0abec04d0a45cfd0270b05549b4f116afb69424e4fa6acf7a4d16d9"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/corrected-metrics-20261016.json",
+          "sha256": "e930a6d2654379103803f43014f9237996c0d6d2ff8035f702fa0e82787f82a7"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/worker-inputs-20261016/integration-verification.json",
+          "sha256": "5059c002d2876a26ab55857b50b874bc1ee8286adfaa5791b14f13314da2afdb"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/B14/independent-review.json",
+          "sha256": "7abc5a5e9a8abe18a687a492309f01e5332da9f53d318d732c3363b10876e179"
+        }
+      ],
+      "original_fullscript_sha256": "609d72a83af55bf3e1b59facd0e1500a0e86c5e0b1611d31cbcfeb0b7e8de2b5",
+      "active_narration_sha256": "f04f9f1f2ee5921ac5dfcf2adb2f72cd2fb9d29f80447ae7f6d2796a239702de",
+      "adaptations": [],
+      "storyboard_parent_review_status": "Parent confirmed acceptance on 2026-10-16; any embedded author-time pending label is retained as source data and is not a fresh worker review",
+      "visuals": {
+        "shots": 83,
+        "illustration_slots": 75,
+        "cards": 8,
+        "unique_illustration_budget": 72,
+        "unique_count_basis": "Distinct image_asset_key; three exact prompt/camera reuse pairs checked",
+        "hook_reuse_pairs_credited": 3,
+        "cast_entries": [
+          "chemist",
+          "materials-engineer"
+        ],
+        "cast_count": 2,
+        "thumbnail_extra_images": 0
+      },
+      "duration": {
+        "status": "CHARACTER_RATE_ESTIMATE_NOT_TTS",
+        "paragraphs": 48,
+        "active_spoken_units": 2161,
+        "body_all_six_chapters_including_hook_seconds": [
+          518.64,
+          563.74
+        ],
+        "branding_seconds": 26,
+        "total_seconds": [
+          544.64,
+          589.74
+        ]
+      },
+      "hook_visual_reuse": [
+        {
+          "setup_shot": "B14-S004",
+          "setup_paragraph": "H03",
+          "recovery_shot": "B14-S022",
+          "recovery_paragraphs": [
+            "I01"
+          ],
+          "asset_key": "b14-hook-reuse-4",
+          "prompt_sha256": "9c6d1b88d1480f5eb1237c366641648266924de070ba4ea1394d64eedca88209",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        },
+        {
+          "setup_shot": "B14-S005",
+          "setup_paragraph": "H04",
+          "recovery_shot": "B14-S060",
+          "recovery_paragraphs": [
+            "T01"
+          ],
+          "asset_key": "b14-hook-reuse-5",
+          "prompt_sha256": "ea04ed1a7ec7b48fd4c92e2cf83fcc6e65fd0e2ec0009ade206db654ffb6fcb0",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        },
+        {
+          "setup_shot": "B14-S006",
+          "setup_paragraph": "H05",
+          "recovery_shot": "B14-S073",
+          "recovery_paragraphs": [
+            "T07"
+          ],
+          "asset_key": "b14-hook-reuse-6",
+          "prompt_sha256": "ac3288f452ff50bae823ddf9c03c7b72cfbe10ccc334b52075e671ac0ef8d1cd",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        }
+      ],
+      "cost": {
+        "first_pass_plus_check_allowances_usd": 1.50928,
+        "normal_retake_allowance_usd": 0.7407,
+        "modeled_total_with_normal_retakes_usd": 2.24998,
+        "proposed_hard_cap_usd": 5,
+        "unallocated_headroom_under_proposed_cap_usd": 2.75002,
+        "initial_unique_illustrations": 72,
+        "initial_cast_candidate_generations": 6,
+        "normal_extra_illustration_generations": 36,
+        "modeled_total_image_generations": 114,
+        "image_generation_usd": 0.399,
+        "image_judge_allowance_usd": 1.14,
+        "tts_with_normal_retakes_usd": 0.2325,
+        "transcription_with_normal_rechecks_usd": 0.2916,
+        "jev_allowance_usd": 0.02688,
+        "optional_music_two_takes_usd": 0.16,
+        "measured_cost_usd": null,
+        "approved_hard_cap_usd": null,
+        "new_spending_authorized": false
+      },
+      "current_local_cap": {
+        "in_pilot_slug_set": false,
+        "fixed_usd": null,
+        "proposed_5_usd_enforceable": false,
+        "live_verified": false
+      }
+    },
+    {
+      "id": "A21",
+      "slug": "story-five-pringles-vat-case",
+      "title": "品客為什麼打官司說自己不是洋芋片？三回合後誰贏了",
+      "quote_group": "five_follow_ons",
+      "production_status": "Frozen storyboard preparation independently accepted by parent; formal chapter/output review still required",
+      "source_pins": [
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A21/storyboard.json",
+          "sha256": "a5fab1e0e5932c34ed64e2731e2f40aafbea608dd57856758963ba4f117ccba3"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A21/checks.json",
+          "sha256": "ed12daa0dcf9aea12c82ae02ad2a01f90c83a17f765254692329fbe9a5e1baf9"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A21/metrics.json",
+          "sha256": "7b3fbef83d5175109e485c9c6bffc7fa73c5af1ee386b3a30d133b5c8e03cebe"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A21/adaptation-manifest.json",
+          "sha256": "c4880d6761c7da024855c77eac0f5b3110a0609a79d1c99e30308d8ffbd8548c"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-A21.md",
+          "sha256": "c250fb1f03f1b4868519a7d902af08247a214b2a228dc372efde8474b94cdc82"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/episodes/A21.json",
+          "sha256": "6adaed7d0b4df750a6edd8bd075b65df18f4f984945bfb49c569574cb0fc3476"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/episodes/reviews/A21.json",
+          "sha256": "ea11c8e93f50b3beba7b4aeccc1037ee67a8cbb890ebbced82b557fab3d29321"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/corrected-metrics-20261016.json",
+          "sha256": "e930a6d2654379103803f43014f9237996c0d6d2ff8035f702fa0e82787f82a7"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/worker-inputs-20261016/integration-verification.json",
+          "sha256": "5059c002d2876a26ab55857b50b874bc1ee8286adfaa5791b14f13314da2afdb"
+        },
+        {
+          "base": "repository_root",
+          "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A21/independent-review.json",
+          "sha256": "0369c4e6fb825f5dd234ef8ede38c7481e9fe4cd1de633197fc86b1bfc4e384b"
+        }
+      ],
+      "original_fullscript_sha256": "c250fb1f03f1b4868519a7d902af08247a214b2a228dc372efde8474b94cdc82",
+      "active_narration_sha256": "80ace226e644630b604c40902f648ff32153fb24fe80e2dbe86e160fafc48193",
+      "adaptations": [
+        {
+          "paragraph_id": "T06",
+          "before": "這回他們要說服上訴法院，高等法院把這句話讀得太窄，而最初稅務法庭的判斷應該恢復。",
+          "after": "這回，稅務機關要說服上訴法院，高等法院把這句話讀得太窄，而最初稅務法庭的判斷應該恢復。",
+          "reason": "T05 ends with P&G defending its High Court win; name the tax authority explicitly in T06 so the following appeal argument cannot be misread as P&G seeking to reverse that win. Original v3 fullscript and first storyboard remain preserved.",
+          "source_cids": [
+            "C22"
+          ],
+          "active_worker_source_indices_zero_based": [
+            3
+          ],
+          "review_status": "AUTHOR_CLARIFICATION_PENDING_INDEPENDENT_RECHECK",
+          "before_sha256": "e2d11b459e7f5b7a343f727952223a82df34db6831991fa396bb2f118ab87bde",
+          "after_sha256": "75c7cc7af952bdc4fda1ed3ace1f3221187aca074c3cf40e8372ae51cf1ab397"
+        }
+      ],
+      "storyboard_parent_review_status": "Parent confirmed acceptance on 2026-10-16; any embedded author-time pending label is retained as source data and is not a fresh worker review",
+      "visuals": {
+        "shots": 89,
+        "illustration_slots": 78,
+        "cards": 11,
+        "unique_illustration_budget": 75,
+        "unique_count_basis": "Distinct image_asset_key; three exact prompt/camera reuse pairs checked",
+        "hook_reuse_pairs_credited": 3,
+        "cast_entries": [],
+        "cast_count": 0,
+        "thumbnail_extra_images": 0
+      },
+      "duration": {
+        "status": "CHARACTER_RATE_ESTIMATE_NOT_TTS",
+        "paragraphs": 47,
+        "active_spoken_units": 2283,
+        "body_all_six_chapters_including_hook_seconds": [
+          547.92,
+          595.57
+        ],
+        "branding_seconds": 26,
+        "total_seconds": [
+          573.92,
+          621.57
+        ]
+      },
+      "hook_visual_reuse": [
+        {
+          "setup_shot": "A21-S004",
+          "setup_paragraph": "H03",
+          "recovery_shot": "A21-S035",
+          "recovery_paragraphs": [
+            "E01"
+          ],
+          "asset_key": "a21-hook-reuse-4",
+          "prompt_sha256": "6b6b3dddbf6d2859295b45e54622c0dbd6dff2f6db3fd711a58bfbbf8a118375",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        },
+        {
+          "setup_shot": "A21-S005",
+          "setup_paragraph": "H04",
+          "recovery_shot": "A21-S055",
+          "recovery_paragraphs": [
+            "T01"
+          ],
+          "asset_key": "a21-hook-reuse-5",
+          "prompt_sha256": "fc4766bee1effb9c614c779b7be95787020c61af06a8f26163ca1bbbcc5201e4",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        },
+        {
+          "setup_shot": "A21-S006",
+          "setup_paragraph": "H04",
+          "recovery_shot": "A21-S067",
+          "recovery_paragraphs": [
+            "N01"
+          ],
+          "asset_key": "a21-hook-reuse-6",
+          "prompt_sha256": "e05a407daca3d8575f85ec6c984020188c57c3bcb66f0138896c1b0b341d79fd",
+          "same_prompt_and_camera": true,
+          "actual_accepted_image_sha256": null
+        }
+      ],
+      "cost": {
+        "first_pass_plus_check_allowances_usd": 1.46878,
+        "normal_retake_allowance_usd": 0.7677,
+        "modeled_total_with_normal_retakes_usd": 2.23648,
+        "proposed_hard_cap_usd": 5,
+        "unallocated_headroom_under_proposed_cap_usd": 2.76352,
+        "initial_unique_illustrations": 75,
+        "initial_cast_candidate_generations": 0,
+        "normal_extra_illustration_generations": 38,
+        "modeled_total_image_generations": 113,
+        "image_generation_usd": 0.3955,
+        "image_judge_allowance_usd": 1.13,
+        "tts_with_normal_retakes_usd": 0.2325,
+        "transcription_with_normal_rechecks_usd": 0.2916,
+        "jev_allowance_usd": 0.02688,
+        "optional_music_two_takes_usd": 0.16,
+        "measured_cost_usd": null,
+        "approved_hard_cap_usd": null,
+        "new_spending_authorized": false
+      },
+      "current_local_cap": {
+        "in_pilot_slug_set": false,
+        "fixed_usd": null,
+        "proposed_5_usd_enforceable": false,
+        "live_verified": false
+      }
+    }
+  ],
+  "totals": {
+    "b18_separate": {
+      "episode_count": 1,
+      "illustration_slots": 91,
+      "unique_illustration_budget": 91,
+      "cast_entries": 1,
+      "image_generations_including_normal_retakes_and_cast": 140,
+      "first_pass_plus_check_allowances_usd": 1.72528,
+      "normal_retake_allowance_usd": 0.8757,
+      "modeled_total_with_normal_retakes_usd": 2.60098,
+      "proposed_hard_cap_sum_usd": 5,
+      "unallocated_headroom_usd": 2.39902,
+      "cross_episode_budget_borrowing": false,
+      "new_spending_authorized": false
+    },
+    "five_follow_ons": {
+      "episode_count": 5,
+      "illustration_slots": 364,
+      "unique_illustration_budget": 349,
+      "cast_entries": 7,
+      "image_generations_including_normal_retakes_and_cast": 546,
+      "first_pass_plus_check_allowances_usd": 7.2764,
+      "normal_retake_allowance_usd": 3.6495,
+      "modeled_total_with_normal_retakes_usd": 10.9259,
+      "proposed_hard_cap_sum_usd": 25,
+      "unallocated_headroom_usd": 14.0741,
+      "cross_episode_budget_borrowing": false,
+      "new_spending_authorized": false
+    },
+    "all_six": {
+      "episode_count": 6,
+      "illustration_slots": 455,
+      "unique_illustration_budget": 440,
+      "cast_entries": 8,
+      "image_generations_including_normal_retakes_and_cast": 686,
+      "first_pass_plus_check_allowances_usd": 9.00168,
+      "normal_retake_allowance_usd": 4.5252,
+      "modeled_total_with_normal_retakes_usd": 13.52688,
+      "proposed_hard_cap_sum_usd": 30,
+      "unallocated_headroom_usd": 16.47312,
+      "cross_episode_budget_borrowing": false,
+      "new_spending_authorized": false
+    },
+    "a01_excluded_existing_separate_authorization_usd": 25
+  },
+  "formulas": {
+    "initial_images": "I + 3*C",
+    "normal_extra_images": "ceil(0.5*I)",
+    "image_and_judge_allowance": "(ceil(1.5*I)+3*C)*(0.0035+0.01)",
+    "tts_single_pass": "(40000*0.50+600*25*9)/1000000 = 0.155",
+    "transcription_single_pass": "((600*32+120*500)*0.75+120*300*3.75)/1000000 = 0.1944",
+    "jev_including_policy_allowance": "10*64000*0.042/1000000 = 0.02688",
+    "first_pass_and_checks": "(I+3*C)*0.0135 + 0.155 + 0.1944 + 0.02688 + 0.08",
+    "normal_retake_allowance": "ceil(0.5*I)*0.0135 + 0.5*0.155 + 0.5*0.1944 + 0.08",
+    "modeled_total": "first_pass_and_checks + normal_retake_allowance",
+    "headroom": "5 - modeled_total"
+  },
+  "current_implementation_gap": {
+    "local_code_only": true,
+    "live_state_not_read": true,
+    "five_slugs_covered": false,
+    "b18_existing_fixed_cap_usd": 25,
+    "proposed_cap_usd_each": 5,
+    "all_six_proposed_caps_enforced": false,
+    "required_change": "Per-slug configurable all-in limits across media, text API if any, TTS, transcription, Jev and unresolved operations. B18 must also receive USD5 rather than its current fixed USD25. Preserve separately authorized A01 USD25.",
+    "open_task": "tasks/open/2026-10-15-extend-all-in-video-budget-to.md",
+    "task_scope_note": "Existing ticket covers five follow-ons; B18 policy scope and fixed-constraint/service changes need explicit tracking before implementation.",
+    "next_call_rule": "settled + reserved + uncertain + maximum next request <= that exact film approved cap; unknown route/price or missing account stops dispatch",
+    "illustrative_current_reservations_usd": {
+      "gemini_image_judge_or_transcribe": 1.032192,
+      "tts": 0.151552,
+      "jev": 0.002688
+    },
+    "reservation_warning": "Reservations are conservative maxima, not actual per-call charges. A USD5 cap may stop before all planned assets complete; never replace maxima with modeled USD0.01 judge cost."
+  },
+  "production_dependencies": [
+    "Finish A01 actual script/panel/audio/visual/full-cut QA, reconcile ledger and obtain owner viewing acceptance.",
+    "Complete and separately authorize B18 after A01; B18 full shot binding, actual chapters and final QA remain required.",
+    "Five follow-ons follow accepted A01/B18 pilots; fullscript/board preparation is not actual formal chapter approval.",
+    "Before any import/paid continuation, finalize/review this quote and obtain explicit owner approval of exact episode slugs and USD5 caps.",
+    "Implement, independently test and separately deploy the exact all-in caps; read back each fresh live ledger and ensure uncertain requests are reconciled.",
+    "Retain three exact accepted image bindings per follow-on; actual TTS can require visual recuts and a revised count. No automatic new purchases from this proposal."
+  ],
+  "scope_limits": [
+    "No clips; exact cute-mystery preset; >=70% illustration slots; <=3 consecutive information cards.",
+    "Only source-row cast entries fund setting-sheet candidates; generic background figures do not create extra cast.",
+    "Thumbnail uses existing accepted keyframes; one selected optional music track with up to two modeled takes, existing 5s intro/21s outro.",
+    "Single Traditional Chinese narration and switchable zh-TW CC. Foreign titles/CC/dubs, extra Shorts or uploads are not included production actions. Any later paid work still needs its own explicit scope and must fit an approved cap or be requoted.",
+    "Subscription text carries quota/time use; zero incremental API line requires subscription route. No silent paid API fallback. No renewed balance-proof request.",
+    "Published rates are pre-tax list equivalents. Any attributable surcharge or tax must also fit the approved cap; an unpriced route/fee stops before dispatch. Existing subscription/server overhead is not allocated per film.",
+    "Normal retake allowance is a finite planning model, not authorization for every tool maximum retry.",
+    "A29 legacy body_estimate_seconds means the after-hook subset; this quote consistently uses narration_estimate_seconds as the complete six-chapter body.",
+    "All times are estimates; none is measured TTS, rendered runtime or passed 480-second runtime gate."
+  ],
+  "primary_price_evidence": {
+    "checked": "2026-10-16 public official pages re-opened for v3; no account or secret inspected",
+    "sources": [
+      {
+        "url": "https://platform.minimax.io/docs/pricing/overview",
+        "section": "Image, line 168",
+        "finding": "image-01 USD0.0035/image"
+      },
+      {
+        "url": "https://ai.google.dev/gemini-api/docs/pricing",
+        "sections": "Gemini 3.8 Flash standard, Flash TTS standard, Lyria 3.5",
+        "finding": "2026 standard Flash USD0.75/3.75 per million input/output including thinking; TTS USD0.50/9 and 25 audio tokens/s; Lyria USD0.08/song; reprice after 2026-12-31"
+      },
+      {
+        "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "section": "Frontiers, Old and New cost table",
+        "finding": "USD0.042 per million input; output free"
+      }
+    ]
+  },
+  "evidence_files": [
+    {
+      "base": "repository_root",
+      "file": "apps/api/app/video_budget/models.py",
+      "sha256": "9e3d2bcb5dabe99611d673b8663e3a80aa55067fa30cd7debc8cbe4892107de2",
+      "supports": "33-48: four pilot slugs; fixed USD25 constraint"
+    },
+    {
+      "base": "repository_root",
+      "file": "apps/api/app/video_budget/service.py",
+      "sha256": "3a142c965674756d429ad99d02ea07fd4904f60d9c64bef89ac20c32cfc5c58f",
+      "supports": "66-67,92-93,149,207-211: only pilot set; fixed-limit account check; reserve before dispatch"
+    },
+    {
+      "base": "repository_root",
+      "file": "apps/api/app/video_budget/prices.py",
+      "sha256": "d7934b3c029f9a70f625ba4cf4d94b333df5c51ab329773ae3fe93646704f8fc",
+      "supports": "12: published price window through 2026-12-31"
+    },
+    {
+      "base": "repository_root",
+      "file": "apps/api/app/video_speech/admin_api.py",
+      "sha256": "287cb1ff1018dbecfb2744236e548dc1e3820df19809ebd740113538becb88f9",
+      "supports": "109-133: route-specific TTS, transcribe and Jev reservation ceilings"
+    },
+    {
+      "base": "repository_root",
+      "file": "apps/api/app/video_media/admin_api.py",
+      "sha256": "09ccb3affe22c3df705c7275e9a76dc6256644750715aeec3a194db14f45fbd6",
+      "supports": "98-112: image-judge maximum reservation is not actual usage"
+    },
+    {
+      "base": "repository_root",
+      "file": "tools/video/media/stages.mjs",
+      "sha256": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "supports": "29,117,322-327: local media judge allowance and media-only cap"
+    },
+    {
+      "base": "repository_root",
+      "file": "tools/video/media/cache.mjs",
+      "sha256": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "supports": "1-8,24-27,51-65: cache identity and file hash validation"
+    },
+    {
+      "base": "repository_root",
+      "file": "tools/video/media/keyframes.mjs",
+      "sha256": "9e0408b04f0785dd1219771268fee7573b6815281bf5f38afa501c54570e74e9",
+      "supports": "576,727-728: request identity and thumbnail source keyframe"
+    },
+    {
+      "base": "repository_root",
+      "file": "tools/video/media/look.mjs",
+      "sha256": "a1011cbae1bd5e990cf6252bf64ab658fc4f72a9da61eb0f68f25609c8242c88",
+      "supports": "23,95-118: first-round candidate count and two-round ceiling"
+    },
+    {
+      "base": "repository_root",
+      "file": "tools/video/assemble/branding.mjs",
+      "sha256": "8aab21f992abde6b70f92fd434033d53151a8598bbe00dfaf86f6aa449b9fe45",
+      "supports": "54-57: intro inserted inside the complete body timeline"
+    },
+    {
+      "base": "repository_root",
+      "file": "tools/video/assemble/cli.mjs",
+      "sha256": "0f3781cbdf0dd39faac6188f6795cc74233a9228fa7ef1a37e8ed5d16aa0cd92",
+      "supports": "body_frames follows timeline.total_frames"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/long-form/README.md",
+      "sha256": "dd639c0c85595881d1bda64541d28f29e8d90f1067e541c08eb28dc9c4543c3b",
+      "supports": "50: actual 480-second body timeline gate excludes branding"
+    },
+    {
+      "base": "repository_root",
+      "file": ".agents/skills/curio-episode/SKILL.md",
+      "sha256": "57c34a1e088e407c8102d4e28cb836e040baaaa94dc16dddec09e57ba7b3b12f",
+      "supports": "series preset, whole-film quote, still images and acceptance limits"
+    },
+    {
+      "base": "repository_root",
+      "file": ".agents/skills/youtube-video/references/story.md",
+      "sha256": "957d5859811bc161f661ec14f5cacf1e7e4ed81e34745c62f367ba2d2def5806",
+      "supports": "22,55,62: cast sheets only for row cast; thumbnail selected from chapter shot"
+    },
+    {
+      "base": "repository_root",
+      "file": "tasks/open/2026-10-15-extend-all-in-video-budget-to.md",
+      "sha256": "c676a0018fc438ace2ef1a75f7d42000434f61870f6edd35bb9030e1dd5ebd9d",
+      "supports": "open follow-on policy task; old proposal note is superseded by this v3"
+    },
+    {
+      "base": "repository_root",
+      "file": "tasks/open/2026-09-28-video-story-pilot.md",
+      "sha256": "664a43fc34c2c467015f3c8e6d6a235019ffcb02b4e69c3172f1942274254b87",
+      "supports": "147,171: only A01 paid authorization and pilot dependency"
+    }
+  ],
+  "author_validation": {
+    "all_five_pinned_storyboards_match": true,
+    "all_five_three_reuse_pairs_exact_prompt_and_camera": true,
+    "all_five_unique_image_counts_recomputed": true,
+    "source_pins_verified_on_disk": true,
+    "prior_quote_files_preserved": true,
+    "independent_quote_review": false,
+    "formal_worker_pass": false,
+    "owner_approval": false,
+    "paid_calls": 0,
+    "host_calls": 0,
+    "repo_mutations": 0
+  }
+}

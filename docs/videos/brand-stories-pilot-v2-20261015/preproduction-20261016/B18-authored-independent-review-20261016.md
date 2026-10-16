@@ -1,0 +1,21 @@
+# B18 authored six-chapter candidate: post-redaction independent review
+
+Date: 2026-10-16. Read-only review in `<repo>`, checkout HEAD `23f519f1389903379b81dfc79eb9896a826488d6` with the path-redaction changes present but not committed at the time of review. No repository edits, host, model, vendor or paid calls.
+
+## Verdict
+
+**PASS with limits for offline structural and provenance integrity. HOLD for worker adoption, factual/narrative approval, media and delivery.** This package may be included in #1510 as labelled **offline authored-candidate evidence only**; it does not authorize B18 import or any paid stage. The package itself still says `OFFLINE_AUTHORED_CANDIDATE_PENDING_INDEPENDENT_REVIEW`, `worker_pass=false`, `authorizes_production_write=false`, and `authorizes_media_generation=false`.
+
+## Exact evidence checked
+
+- Current `handoff-pins.json` SHA256: `c80d1a9d47a181341243996ab8c8ea42a3b1cfe8d4877127bec3656ae5615d1a`. Independently hashed all **37/37** listed files against this manifest; zero missing files or hash mismatches. `verification.json` SHA256 `47d431c3d4f1c4e1738b179f4da5f3be0684ea142d991fe1b7a8a2a1f08c4679`; `mapping.json` SHA256 `46f8a6c27e79c42e733fda1e91a57e07144094907e3184d6e59d5af43cddedbc`.
+- `node docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/B18-authored-chapters-candidate/verify-offline.mjs --repo .` exited 0, status `VERIFIED_OFFLINE_CANDIDATE_STRUCTURE_ONLY`: 43 source pins, exact six-chapter reconstruction, 65 UNCHECKED single-scene claims, official compose/lint/cute 0 errors and 30 warnings, 96 scenes, `worker_pass=false`.
+- `node docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/B18-worker-conversion-plan/verify.mjs --root .` exited 0, status `VERIFIED_LOCAL_PLAN_INTEGRITY_ONLY`: 30 source pins, 24 v2 paragraphs, 103 original storyboard shots, 65 planned UNCHECKED claims, 16 original cards, nine original overlays; confirms the ordinary writer rejects native title cards and drops unsupported image-key/overlay fields. It reports no formal draft compose, media, external calls or worker PASS.
+- Independently compared all 24 mapped paragraph objects in order against v2 `paragraphs.json`; all equal. Rechecked 65 native claims against UTF-16 paragraph spans and their single target scene's concatenated line text; all `UNCHECKED`, valid source index and valid or null fact index. Compared the candidate's 16 original card objects and nine overlay objects against original `B18-storyboard/storyboard.json`; all equal, with original text/scope present in the corresponding native HTML. Three additional source cards remain explicitly disclosed. These comparisons yielded **zero failures**.
+- Compared the four changed path-bearing files against `23f519f1389903379b81dfc79eb9896a826488d6`: `A01-round10-independent-review/evidence.json`, `B18-10min-narration-candidate-v2/hash-manifest.json`, `B18-10min-narration-candidate-v2/independent-review-v2-evidence.json`, and `B18-10min-narration-candidate/independent-review-v1-evidence.json`. For each, replacing only the old absolute repo prefix with `<repo>` and home prefix with `<home>` makes its old byte text equal the new file after line-ending normalization. All four returned **True**. The v2 README/review SHA changes and worker-plan source pins/verification are provenance updates for those redacted bytes; no narration text or original storyboard changes were found in this scoped review.
+
+## Remaining gates
+
+65 claims have no official checker verdict. The 30 warnings and narrative loops need substantive review; HTML field presence does not prove mobile card legibility or safe overlay timing. The estimated body is 647.4 seconds, plus 26 seconds of bookends (11:13.4 total), without measured TTS. No generated image proves the three callback images or ending shared-image identity. The candidate still needs a reviewed authored install/listener path, compiled-plan alignment, source readback, real checker/listener/narrative and new script-review receipts, voice/CC and pixel QA, media production and owner viewing. No old approval should be treated as B18 v2 approval.
+
+This verdict is bound to the current handoff-pins SHA and the uncommitted checkout bytes observed above. Recheck after any further edit, commit or merge that changes the 37-file package or its source pins.

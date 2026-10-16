@@ -1,0 +1,373 @@
+{
+  "status": "OFFLINE_PROMPT_ONLY_PENDING_INDEPENDENT_VISUAL_REVIEW",
+  "changed_scene_ids": [
+    "hook-01",
+    "hook-03",
+    "origin-06",
+    "origin-13",
+    "origin-15",
+    "engine-r12-04",
+    "turn-12"
+  ],
+  "scene_count": 79,
+  "spoken_line_count": 108,
+  "line_sha256_by_chapter": {
+    "hook": "d7661e2a692235d563dd985af4378cd1b21aff5ae0dae592dfe5d039948ea2a0",
+    "origin": "ca94989cbea8825d085844a594ef20de8492e38a179b08199a95ddf20812cc93",
+    "idea": "de66f0195196925a0df0544aa5a4d7c25d787634febcb79282fb7d5942aeaff4",
+    "engine": "0b567075b004c1f047dcfa797abfda46a1efda803ff6d61b0d19cea69243aa55",
+    "turn": "314bb9322f7127260a363f442d7f93bd001cd500fa7e7c78246ec08c05a02c0d",
+    "now": "48c8032472d2781d3e7cb801491f6b8321b61a4e85a8a72b2fd1b2b322893e0c"
+  },
+  "claims_sha256_by_chapter": {
+    "hook": "8305183d63383ac9d476244adccd46459bb4a5ce7b56e44f9b5cff9b68cf9086",
+    "origin": "4371965627813dc597617e16323ae27eb26dffc5d07d0faea7fd8947f705c2f9",
+    "idea": "3c39fe1f9384572d6d4e54e33df79bdaa0d01744230aed9085d690695eb5eabc",
+    "engine": "284f694000b9169112ea811fc83bfd062697c7118e660b88b2a9d012787eda74",
+    "turn": "7a2d907aca89a5df778ca1a313921ba372899e7ec3256a8b31d66db047ded836",
+    "now": "d075a4408d7f78f84da8b6a1c21c1814120c146149cd19ba1fe66b3be60f3938"
+  },
+  "series_sha256_unchanged": "809e9be8e7fa0ccd008e1e522e011f119a30bc653649e1d04f64f736f4554e78",
+  "source_map_sha256_unchanged": "373e79cb1372bfd1bc722ad3251288ea357efe78547bc5996f83d88f75726b74",
+  "effective_prompt_sha256": "8ef0ed280e2a34f7917eb9bc3811c265497cee80f41878130746f965789bac5c",
+  "effective_prompt_minimax_limit": 1500,
+  "effective_prompt_char_counts": [
+    {
+      "scene_id": "hook-01",
+      "cast_ids": [
+        "traveler-heavy"
+      ],
+      "chars": 1052
+    },
+    {
+      "scene_id": "hook-03",
+      "cast_ids": [
+        "traveler-heavy"
+      ],
+      "chars": 1191
+    },
+    {
+      "scene_id": "origin-06",
+      "cast_ids": [],
+      "chars": 769
+    },
+    {
+      "scene_id": "origin-13",
+      "cast_ids": [],
+      "chars": 737
+    },
+    {
+      "scene_id": "origin-15",
+      "cast_ids": [],
+      "chars": 709
+    },
+    {
+      "scene_id": "engine-r12-04",
+      "cast_ids": [],
+      "chars": 841
+    },
+    {
+      "scene_id": "turn-12",
+      "cast_ids": [
+        "traveler-upright"
+      ],
+      "chars": 1062
+    }
+  ],
+  "source_pins": [
+    {
+      "scene_id": "hook-01",
+      "claim_id": "h1",
+      "source_index": 6,
+      "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+      "verdict_inherited": "CONFIRMED"
+    },
+    {
+      "scene_id": "hook-03",
+      "claim_id": "h8",
+      "source_index": 6,
+      "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+      "verdict_inherited": "CONFIRMED"
+    },
+    {
+      "scene_id": "origin-06",
+      "claim_id": "o20",
+      "source_index": 8,
+      "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+      "verdict_inherited": "PENDING"
+    },
+    {
+      "scene_id": "origin-13",
+      "claim_id": "o11",
+      "source_index": 6,
+      "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+      "verdict_inherited": "PLAN"
+    },
+    {
+      "scene_id": "origin-15",
+      "claim_id": "o14",
+      "source_index": 0,
+      "source_url": "https://patents.google.com/patent/US3653474A/en",
+      "verdict_inherited": "PLAN"
+    },
+    {
+      "scene_id": "engine-r12-04",
+      "claim_id": "claim-r12e04",
+      "source_index": 0,
+      "source_url": "https://patents.google.com/patent/US3653474A/en",
+      "verdict_inherited": "PENDING"
+    },
+    {
+      "scene_id": "turn-12",
+      "claim_id": "t12",
+      "source_index": 2,
+      "source_url": "https://travelpro.com/pages/our-history",
+      "verdict_inherited": "CONFIRMED"
+    },
+    {
+      "scene_id": "turn-12",
+      "claim_id": "t13",
+      "source_index": 1,
+      "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+      "verdict_inherited": "PENDING"
+    }
+  ],
+  "lint_errors": [],
+  "lint_warning_count": 39,
+  "lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "\"suitcase\" is in 66 of 78 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"generic\" is in 53 of 78 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes[4] (hook-07)",
+      "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[8] (origin-r12-01)",
+      "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[9] (origin-03)",
+      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[21] (origin-13)",
+      "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[22] (origin-14)",
+      "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[23] (origin-15)",
+      "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[26] (idea-02)",
+      "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[30] (idea-06)",
+      "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[33] (idea-08)",
+      "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[35] (idea-10)",
+      "message": "about 11.7 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[39] (idea-13)",
+      "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[50] (turn-01)",
+      "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[60] (turn-09)",
+      "message": "about 11.6 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[71] (turn-12)",
+      "message": "about 11.9 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[72] (turn-15)",
+      "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[73] (now-01)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.median: median shot 7.7 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.p90: 90th percentile shot 10.9 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-01, hook-02, hook-02b, hook-03, hook-07, hook-04, hook-06, origin-r12-01, … 68) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.longest: longest shot 11.9 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-03, hook-07, hook-06, origin-r12-01, origin-03, origin-01, origin-10, origin-13, … 32) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.spread: long shots against short ones (90th ÷ 10th percentile) 2.0, target ≥ 2; every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-01, hook-02) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.opening30: shots that start in the first 30 s 4, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.median: median line length 21 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.long: lines over 20 characters 58%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-01, hook-02, hook-02b, hook-07, hook-06, origin-r12-01, origin-03, origin-01, … 61) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.face: faces (medium close-up and closer, over-the-shoulder) 36%, target ≥ 40%; the audience follows a face; give each turn of the scene a face that reacts (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.insert: inserts 1%, target 5%–25%; an insert answers a story question (which paper, whose hand); too few hides the proof, too many hides the people (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.reestablish: longest run without a wide or group shot 11 shots, target ≤ 9; after a move, an entrance or a new beat, re-establish the room (turn-r12-01, now-02b) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-01, hook-02, hook-02b, hook-03, hook-07, hook-04, hook-05, hook-06, … 78) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.run: such shots in a row 78 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-01, hook-02, hook-02b, hook-03, hook-07, hook-04, hook-05, hook-06, … 78) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-01, hook-02, hook-02b) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft risk.decorative: shots with nobody in them that are not inserts 18% (14), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (hook-04, origin-07, origin-10, origin-11, origin-13, idea-04, idea-07b, idea-12, … 14) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes[0]",
+      "message": "the opening chapter runs about 62 s; it is the condensation, 30 to 60 s before the first real chapter: one scene of the story told in order up to the first fact that makes no sense, ending on the question the whole video answers (script-writing.md §開場濃縮)"
+    },
+    {
+      "path": "scenes",
+      "message": "「1928」 is said in 3 lines (p5hs, r12o01, zc7k): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「1970」 is said in 3 lines (47gq, dgbq, amrq): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "youtube",
+      "message": "youtube.tags: 12 tags; package keeps the first 10, so put the zh-TW terms and the English product names first"
+    }
+  ],
+  "cute_story_visual_errors": [],
+  "estimated_timing_not_tts": {
+    "250": 653.3666666666667,
+    "300": 558.1,
+    "320": 530.3,
+    "long_stills_over_10_seconds_at_250": [
+      {
+        "id": "hook-07",
+        "estimated_seconds": 10.7
+      },
+      {
+        "id": "origin-r12-01",
+        "estimated_seconds": 10.6
+      },
+      {
+        "id": "origin-03",
+        "estimated_seconds": 11.17
+      },
+      {
+        "id": "origin-13",
+        "estimated_seconds": 10.9
+      },
+      {
+        "id": "origin-14",
+        "estimated_seconds": 10.43
+      },
+      {
+        "id": "origin-15",
+        "estimated_seconds": 11.4
+      },
+      {
+        "id": "idea-02",
+        "estimated_seconds": 11.4
+      },
+      {
+        "id": "idea-06",
+        "estimated_seconds": 10.67
+      },
+      {
+        "id": "idea-08",
+        "estimated_seconds": 10.93
+      },
+      {
+        "id": "idea-10",
+        "estimated_seconds": 11.73
+      },
+      {
+        "id": "idea-13",
+        "estimated_seconds": 10.93
+      },
+      {
+        "id": "turn-01",
+        "estimated_seconds": 10.43
+      },
+      {
+        "id": "turn-09",
+        "estimated_seconds": 11.63
+      },
+      {
+        "id": "turn-12",
+        "estimated_seconds": 11.9
+      },
+      {
+        "id": "turn-15",
+        "estimated_seconds": 11.43
+      },
+      {
+        "id": "now-01",
+        "estimated_seconds": 10.2
+      }
+    ]
+  },
+  "independent_visual_source_review": "NOT_RUN",
+  "three_shot_pilot": "PLAN_ONLY_NOT_GENERATED",
+  "generated_images_audio_or_video": 0,
+  "script_review_receipt": "NOT_ISSUED"
+}

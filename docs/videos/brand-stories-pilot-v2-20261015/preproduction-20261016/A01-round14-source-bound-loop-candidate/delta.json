@@ -1,0 +1,73 @@
+{
+  "status": "OFFLINE_EDITORIAL_DELTA_PENDING_INDEPENDENT_REVIEW",
+  "base": "A01-round13-loop-candidate",
+  "base_manifest_sha256": "00b120c9a2b83c03b6801ca859446028abcb70e66a0b935dc9eb9e1bceabe006",
+  "changes": [
+    {
+      "chapter": "hook",
+      "scene_id": "hook-07",
+      "line_id": "y9b6",
+      "old": "那只箱子後來去了哪裡？",
+      "new": "那家人的自製輪子箱，還有一只留到今天嗎？",
+      "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+      "source_location": "Before Her Time, museum caption names an Anita Willets-Burnham 1927 suitcase, WHS Object ID 2005.26.576; page does not identify it as the exact case carried on the 1928 trip",
+      "support": "question asks whether any family case survives, not the whereabouts of the pictured 1928 travel case"
+    },
+    {
+      "chapter": "origin",
+      "scene_id": "origin-06",
+      "line_id": "83ew",
+      "old": "開場那只自製輪子箱，後來留在溫尼特卡歷史學會的館藏裡。",
+      "new": "有。溫尼特卡歷史學會的館藏裡，保存著安妮塔的一只自製輪子箱。",
+      "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+      "source_location": "Before Her Time, museum caption names an Anita Willets-Burnham 1927 suitcase, WHS Object ID 2005.26.576; article describes it as her homemade rolling suitcase but does not identify it as the exact 1928 travel case",
+      "support": "museum holds one of Anita's wheeled cases, without claiming it is the exact case from the opening travel illustration"
+    }
+  ],
+  "loop_changes": [
+    {
+      "chapter": "hook",
+      "setup": "y9b6",
+      "old_what": "開場家庭自製輪子箱後來去哪裡",
+      "new_what": "那家人的自製輪子箱是否有一只留到今天"
+    },
+    {
+      "chapter": "origin",
+      "setup": "y9b6",
+      "old_payoff": "83ew",
+      "new_payoff": "83ew",
+      "old_what": "開場家庭自製輪子箱後來去哪裡",
+      "new_what": "那家人的自製輪子箱是否有一只留到今天"
+    },
+    {
+      "chapter": "origin",
+      "setup": "6h2q",
+      "old_payoff": "3zkh",
+      "new_payoff": "idiy",
+      "old_what": "Sadow 是否把輪板的省力辦法做成四腳輪與繩子的行李箱樣品",
+      "new_what": "Sadow 是否把輪板的省力辦法做成四腳輪與繩子的行李箱樣品"
+    }
+  ],
+  "series_plan_changes": [
+    {
+      "chapter": "hook",
+      "old_fragment": "1928 年一家人已拉著自製箱旅行，那只箱子後來去了哪裡",
+      "new_fragment": "1928 年一家人已拉著自製箱旅行，那家人的自製輪子箱是否有一只留到今天"
+    },
+    {
+      "chapter": "origin",
+      "old_fragment": "歷史學會保留箱子，點名回答它後來去了哪裡",
+      "new_fragment": "歷史學會保存安妮塔的一只自製輪子箱，回答是否有一只留到今天；館方未指認它就是 1928 年旅途中那只"
+    },
+    {
+      "chapter": "origin",
+      "old_fragment": "此處以輪板讓輪子承重明確回答開場搬重物的差別，不只重述裝輪子",
+      "new_fragment": "此處在四輪與繩子都講完後，回答開場能否把輪板的辦法用在行李箱上，不只重述裝輪子"
+    },
+    {
+      "chapter": "origin",
+      "old_fragment": "不寫丈夫意見、講學或1933遊記支線",
+      "new_fragment": "保留館方轉述的旅前發問、丈夫寧提重箱並開玩笑、旅後巡迴講旅行故事三句；不另展開 1933 年出書支線"
+    }
+  ]
+}

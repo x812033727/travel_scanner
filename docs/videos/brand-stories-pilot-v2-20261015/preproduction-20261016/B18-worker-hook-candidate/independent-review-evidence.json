@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "status": "INDEPENDENT_PLAN_REVIEW_ONLY",
+  "id": "B18",
+  "candidate_file_sha256": "b0c99c3d856180add1e23b604a38a3143061f4a831779232a26d824fbe568d04",
+  "canonical_story_sha256": "cf149a0d07f8a02d2914d8642237aa6117d67a53cd2758d9c68342ff48015fab",
+  "base_story_sha256": "f9be8cd707c30ac0260543f89bd5ce22960a3b5582d83c233fcce0db1633df23",
+  "manifest_sha256": "9cc08a0b365f1f6504e826d8aed6efb1e7681f2afe7aa1197559364c3a4553a4",
+  "original_inputs_sha256": {
+    "B18-base.json": "2150ff1b5a3a25d99ffadbe617ee746e42c93b3e24ef814a64d05f8149b00565",
+    "B18.json": "b0c99c3d856180add1e23b604a38a3143061f4a831779232a26d824fbe568d04",
+    "change-manifest.json": "9cc08a0b365f1f6504e826d8aed6efb1e7681f2afe7aa1197559364c3a4553a4",
+    "sha256.json": "8bcc4c8e465c57f53e13f5bb1215fa65c9df9e98c9d4202f723f06473164976c",
+    "source-bound-note.md": "0f74a1e6bde3d2efcc708d0b04e8e62d58c6734537cd413416cb236d3355e155"
+  },
+  "repository_inputs": [
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/episodes/B18.json",
+      "sha256": "2150ff1b5a3a25d99ffadbe617ee746e42c93b3e24ef814a64d05f8149b00565"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/episodes/reviews/B18.json",
+      "sha256": "3a7bb438fc9ad1717d2d7fd902a4b238d85804fa394328b54730ead05d986834"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/scripts/B18.md",
+      "sha256": "5326bd6633ad69931fe542badd6cddd2378324ff0bcc4b0f05652941642dc724"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/scripts/reviews/B18.md",
+      "sha256": "e05236ae3f66c4a5780abd431d8e8d21e95ad929978e472cef2defafb4ee31d8"
+    }
+  ],
+  "changed_paths": [
+    "/chapters/0/point"
+  ],
+  "inverse_equal": true,
+  "all_other_row_values_exact": true,
+  "h02_exact": true,
+  "sources_reopened": [
+    {
+      "index": 0,
+      "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "publisher": "中小企業基盤整備機構 J-Net21",
+      "access": "web open; article body explicitly read after navigation-heavy first view",
+      "body_locations": "Heading ビール工場のベルトコンベアでアイデアひらめく; paragraphs 1947/1948, 1957/1958, 万博, 1978失効",
+      "supports": "1948 factory visit; corner jams and prototype; first store; Expo participation and later attention; expiry and independent/new shops.",
+      "limits": "Uses 特許 loosely. Candidate retains the more precise 実用新案 classification from source 2. No claim that the worker pageReader succeeded in this review."
+    },
+    {
+      "index": 1,
+      "url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+      "publisher": "一般社団法人日本機械学会",
+      "access": "web open; full short body read",
+      "body_locations": "Mechanical heritage 112, opening history and designation paragraphs",
+      "supports": "April 1958 first store, beer-factory inspiration, 2021 designation of 1985 conveyor and separately preserved early plates.",
+      "limits": "Illustrations are generic explanations, not the actual designated machine or an authenticated reenactment."
+    },
+    {
+      "index": 2,
+      "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "publisher": "公益社団法人発明協会（戦後日本のイノベーション100選）",
+      "access": "web open; full historical body read",
+      "body_locations": "イノベーションに至る経緯 paragraphs on corner, 1958, 1962, 1970 and 1978",
+      "supports": "Corner problem and business-card account; first store; utility model; Expo attention; post-expiry market entry.",
+      "limits": "Business-card and playing-card origin versions remain attributed separately; expiry is not the sole cause of expansion."
+    }
+  ],
+  "source_count": 3,
+  "source3_wikipedia_not_reopened_or_needed": true,
+  "hook_image_pairs": [
+    {
+      "setup": "B18-S004",
+      "recovery": "B18-S023",
+      "prompt": "Medium shot in a Japanese workshop during the 1950s, one generic workshop operator inspecting a simple conveyor corner with a plate resting unevenly beside the bend, the compressed corner is the focal object, neutral soft light.",
+      "camera": "Medium shot, push in",
+      "image_asset_key": "b18-hook-reuse-1",
+      "same_fields": [
+        "prompt",
+        "camera",
+        "image_asset_key"
+      ],
+      "not_a_generated_asset": true
+    },
+    {
+      "setup": "B18-S005",
+      "recovery": "B18-S055",
+      "prompt": "Wide shot of an unbranded temporary dining counter at an Osaka exhibition in 1970, one generic visitor approaching a circulating food belt from an open aisle, a plain sushi tub on the belt is the focal object, neutral soft light.",
+      "camera": "Wide shot, pan right",
+      "image_asset_key": "b18-hook-reuse-2",
+      "same_fields": [
+        "prompt",
+        "camera",
+        "image_asset_key"
+      ],
+      "not_a_generated_asset": true
+    },
+    {
+      "setup": "B18-S006",
+      "recovery": "B18-S077",
+      "prompt": "Medium shot at a Japanese office desk in 1978, one generic restaurant operator closing an unmarked document folder beside an empty sushi plate, the final blank divider sheet is the focal object, neutral soft light.",
+      "camera": "Medium shot, pull out",
+      "image_asset_key": "b18-hook-reuse-3",
+      "same_fields": [
+        "prompt",
+        "camera",
+        "image_asset_key"
+      ],
+      "not_a_generated_asset": true
+    }
+  ],
+  "storyboard_file": {
+    "base": "five_next_temp",
+    "file": "B18-storyboard-prep/storyboard.json",
+    "sha256": "6e0ea8861c0ad795aa7d4c523cfe751a134b9a71273b699b3bc6c5e922a101b9",
+    "review_scope": "Only the three hook/recovery pairs; not all 103 shots."
+  },
+  "official_checks": {
+    "storyProblems": [],
+    "new_reviewProblems": [],
+    "old_review_rejection": [
+      "the story changed after this review: read it again and record the new hash (validate.mjs --hash <id>)"
+    ]
+  },
+  "blocking_findings": [],
+  "limits": [
+    "This receipt approves the exact candidate planning row only.",
+    "It does not transform the full reviewed screenplay or storyboard into formal worker chapters.",
+    "A reference to H03 and matching asset keys does not prove the worker consumed the frozen text or reused an accepted image file.",
+    "No worker reader result, current budget authorization, TTS duration, media/pilot PASS or upload is claimed."
+  ],
+  "host_calls": 0,
+  "model_calls": 0,
+  "paid_calls": 0,
+  "repository_writes": 0
+}

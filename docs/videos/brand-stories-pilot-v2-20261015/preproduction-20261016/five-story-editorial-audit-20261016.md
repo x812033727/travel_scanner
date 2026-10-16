@@ -1,0 +1,22 @@
+# 後五支品牌故事：唯讀編輯稽核（2026-10-16）
+
+**結論：HOLD，尚不能把五份備料當成已可製作或可上架的影片。** 本次只讀取儲存庫中的稿件、來源定位、獨立覆核、分鏡及成本文件；沒有重新抓取外部來源，也沒有改五支影片的稿件、row、分鏡、報價或正式環境。既有獨立編輯覆核已處理已知的主要史實與章序問題；本稽核沒有發現需要撤換五題或重寫完整敘事的新證據。點閱潛力仍是編輯假設，沒有 CTR 或觀看數實測。見[五集總索引](../../brand-stories-five-20261014/README.md#L3-L9)及[完整稿索引](../../brand-stories-five-20261014/drafts-20261016/README.md#L12-L22)。
+
+## 五集逐片保留的界線
+
+| 集數 | 說書主線與下階段必守的來源／敘事界線 |
+| --- | --- |
+| **A29 LEGO／LEGOLAND** | 「獲利的樂園為何出售」沿工廠訪客、園區擴張、玩具業務危機、2004 行動計畫、2005 出售、2019 家族再投資前進。2004 樂園營運獲利另有資產減損；2005「近半」指**各項資產出售占稅前獲利**，不是賣樂園單獨救公司；2019 KIRKBI 參與私有化也不是 LEGO Group 買回樂園。[稿件與來源口徑](../../brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-A29.md#L29-L36)、[尾章第一次揭曉](../../brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-A29.md#L130-L140)。正式稿須保存 PDF 頁碼及人工審核界線，不能把 worker 可開 URL 當成讀到 PDF 正文。[worker 輸入驗證](../../brand-stories-five-20261014/drafts-20261016/worker-inputs-20261016/README.md#L25-L26) |
+| **A16 Costco** | 價格反常 → 會員倉儲模式 → 自營熱狗工廠 → 2025 財報 → 會員續費，因果順序清楚。會員費 ÷ 營業利益約 51% 只是不同財報欄位的量級比較，**不是**會員費補貼每份熱狗的金額或單品毛利；US$1.50 也限於有日期的美國價格觀察。[當前旁白](../../brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-A16.md#L113-L133)、[獨立全文與 v4 差異覆核](../../brand-stories-five-20261014/drafts-20261016/A16-v4-diff-review.md#L10-L32) |
+| **A37 Adidas／Puma** | 1924 共同鞋廠 → 1948/1949 分立 → 球鞋競爭與城鎮社交 → 2009 員工混隊球賽。私人決裂的唯一原因未定，員工活動也不等於已故兄弟和解。**作者 v4 不是可直接配音的 active 文本**：現行 row／分鏡已收窄 I03「戰爭壓力」、E10「密切合作」、T01a「Adidas 按天候換釘」三處；採用時須核 active narration 的雜湊。[現行來源補充](../../brand-stories-five-20261014/drafts-20261016/worker-inputs-20261016/README.md#L12-L16)、[逐字差異](../../brand-stories-five-20261014/drafts-20261016/storyboards/A37/adaptation-manifest.json#L7-L26) |
+| **B14 味之素／ABF** | 昆布與鮮味 → 安全質疑短支線 → 材料研究 → 1996 客戶題目 → 1999 薄膜上市 → 後續應用。安全爭議不是 ABF 研發起因；舊製程副產物不是今日食品或薄膜配方。約 95% 是公司主管對**高效能電腦／伺服器 FC-BGA 類封裝絕緣材料市場**的說法，需在旁白同句保留歸屬與範圍。[當前旁白](../../brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-B14.md#L71-L109)、[獨立 v4 覆核](../../brand-stories-five-20261014/drafts-20261016/B14-v4-independent-diff-review.md#L8-L29) |
+| **A21 Pringles** | 1966 包裝專利 → 案中 2004 秋後 Regular Pringles → 2007/2008/2009 英國增值稅三回合。專利提供可能製法，不證明上市配方；2008 是寶僑暫時勝出，2009 是 **HMRC 上訴獲勝**，結論只及英國該案課稅分類。作者稿 T05 後的 T06「他們」易誤指寶僑；active 分鏡已明寫「稅務機關」，不得退回舊句。[作者稿與範圍](../../brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-A21.md#L91-L110)、[active T06 差異](../../brand-stories-five-20261014/drafts-20261016/storyboards/A21/adaptation-manifest.json#L7-L10) |
+
+## 仍須守住的 HOLD 關卡
+
+1. **稿件採用與實際審核。** 五份完整編輯稿已有來源知情的獨立覆核，五份 worker row 亦已通過本機結構檢查；普通 story 匯入只帶企劃，工人會重新撰章。現有 `readChapterAnswer` 不能直接接受含 `title` 卡的作者章檔，正式原型的 claim 仍為 `UNCHECKED`，因此沒有正式 verifier、listener、narrative PASS。需以精確 slug／來源／六章雜湊的安全採用流程處理，或對實際重寫章稿重新查核及盲評。[格式原型與剩餘差距](../../brand-stories-five-20261014/drafts-20261016/formal-prototypes/README.md#L3-L36)
+2. **聲音、正文長度與開場留人。** 五篇約 2,114–2,283 個編輯計數字，五集分鏡所列含首尾估片長約 **8:53–10:22**；這些不是 TTS、`ffprobe` 或播放器結果，正文至少八分鐘仍待量測。A16、A37、B14、A21 的本機字典樣本分別有 30、24、17、17 處錯誤；先讀正式字典、試聽人名與術語，再用實際音軌核 30–60 秒 hook、60–90 秒懸念間隔及章間承接。B14 的 hook 到薄膜預告前始終用「這家公司」，A21 到 hook 尾句才口播「品客」；這是**聽眾留存待測點**，宜盲聽前 20–30 秒是否能對上標題，而非把文字估時當作實測失敗。[分鏡估時](../../brand-stories-five-20261014/drafts-20261016/storyboards/README.md#L3-L21)、[B14 hook](../../brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-B14.md#L45-L50)、[A21 hook](../../brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-A21.md#L40-L44)
+3. **畫面與片尾可讀可點。** 424 鏡、349 張不同插畫只是規劃；目前各片分鏡的插畫比例均超過 70%，但沒有 MiniMax 實圖、圖像 judge、重用圖片的檔案 SHA 或全片視覺驗收。A16／A37／B14／A21 共 49 張來源字卡的候選已移除內部代碼，1920×1080 無裁切，但 320×180 下來源徽章和副標題約 6／7.7 px，**手機可讀性未通過**，候選尚未接正式 worker。繁中 CC、5 秒片頭與 21 秒片尾，以及最後 16 秒 Studio 真正可點的元素，都仍須成片後驗證。[分鏡索引](../../brand-stories-five-20261014/drafts-20261016/storyboards/README.md#L3-L18)、[字卡畫面檢查](../../brand-stories-five-20261014/drafts-20261016/formal-prototypes/readable-source-qa-20261016.md#L18-L26)、[片尾時間差異](../../brand-stories-five-20261014/README.md#L35-L43)
+4. **順序與成本。** 五集尚未正式匯入、配音、產圖或成片；先完成 A01／B18 試作並由站主看片。後五集估算成本約 US$10.93、提案每片硬上限 US$5／合計 US$25，**尚未取得付費核准**。既有成本稽核指出五個 follow-on slug 未受建議的全付費 US$5 帳本保護；其程式／DB 實作、部署及逐片 ledger readback 要先完成。A01 的 US$25 授權不延伸給 B18 或五支。[進度與順序](../../brand-stories-five-20261014/drafts-20261016/README.md#L40-L44)、[報價與實作缺口](../../brand-stories-five-20261014/drafts-20261016/cost-proposal/B18-five-production-cost-proposal-v3.md#L3-L16)。報價和預算程式狀態是該文件當時的快照，真正啟動前須按最新主線與正式帳本再讀。
+
+本報告不構成稿件 PASS、媒體驗收、付費授權、合併／部署核准、YouTube 上傳或站主收片。每一階段以當時實際輸出、雜湊與收據判定。

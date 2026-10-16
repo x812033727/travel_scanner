@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "reviewer": "codex-a01-repair-editor-independent-round10",
+  "status": "READ_ONLY_REVIEW_EVIDENCE_NOT_WORKER_APPROVAL",
+  "repo_root": "<repo>",
+  "source_snapshot": "<home>\\AppData\\Local\\Temp\\a01-switchable-cc-20261015-1421\\actual-20261016-035053",
+  "source_archive_sha256": "b988ed8af18e650985f85d6085d243c71032b0885172405645a40c86dc1a341a",
+  "source_composite_expected": "cf39296d597d36db3cafedc1c2ca5ae730dd104a34b1d1868fb5b83fc089c56b",
+  "source_composite_recomputed": false,
+  "source_round9_narrative_sha256": "dd458ee2b6eee90a3b358408c605620c108ca4387afb94249fd555abc01babab",
+  "round9_passed": false,
+  "round9_failed": [
+    "chapters_link",
+    "payoffs",
+    "one_thread"
+  ],
+  "chapter_checks": [
+    {
+      "key": "hook",
+      "actual_sha256": "6092f556e92e53c45cf12d0526eb108892529f109c6b1ab19da588d25c05e81c",
+      "frozen_sha256": "6092f556e92e53c45cf12d0526eb108892529f109c6b1ab19da588d25c05e81c",
+      "candidate_sha256": "6092f556e92e53c45cf12d0526eb108892529f109c6b1ab19da588d25c05e81c"
+    },
+    {
+      "key": "origin",
+      "actual_sha256": "0c449e490e86cb1f505e6e72fb9747f31cc7396729d86cb41c810ec432285080",
+      "frozen_sha256": "0c449e490e86cb1f505e6e72fb9747f31cc7396729d86cb41c810ec432285080",
+      "candidate_sha256": "750e8a98a86a4e51a9d63ea017c221be854a6110be43c2007efeda8e141ca0e7"
+    },
+    {
+      "key": "idea",
+      "actual_sha256": "4e29ec76e866cd953f09c7f46e0afdaccd97317f25b82fde094957d1fabe3d6f",
+      "frozen_sha256": "4e29ec76e866cd953f09c7f46e0afdaccd97317f25b82fde094957d1fabe3d6f",
+      "candidate_sha256": "4e29ec76e866cd953f09c7f46e0afdaccd97317f25b82fde094957d1fabe3d6f"
+    },
+    {
+      "key": "engine",
+      "actual_sha256": "554bcb689657745484429fc23604f1c44ad5fb8498374180a25f9a627e6da89c",
+      "frozen_sha256": "554bcb689657745484429fc23604f1c44ad5fb8498374180a25f9a627e6da89c",
+      "candidate_sha256": "554bcb689657745484429fc23604f1c44ad5fb8498374180a25f9a627e6da89c"
+    },
+    {
+      "key": "turn",
+      "actual_sha256": "9e7f29962e363dfafcffc94f7edede02ca38fdf99eae419f282741cccf650583",
+      "frozen_sha256": "9e7f29962e363dfafcffc94f7edede02ca38fdf99eae419f282741cccf650583",
+      "candidate_sha256": "9e7f29962e363dfafcffc94f7edede02ca38fdf99eae419f282741cccf650583"
+    },
+    {
+      "key": "now",
+      "actual_sha256": "dccf358d1e7ebeca5134b4f5b629c52597e2a8abd67883500d12fef9f6618e56",
+      "frozen_sha256": "dccf358d1e7ebeca5134b4f5b629c52597e2a8abd67883500d12fef9f6618e56",
+      "candidate_sha256": "fa71bce2b12f2d87975ce4625407bbd9aa53cd843a8a96f5ba3e1e03c1f93eed"
+    }
+  ],
+  "exact_structural_deltas": [
+    {
+      "path": "origin/scenes/0/lines/0/text",
+      "before": "開場那一家人，其實早就不必一路提箱子：1928 年出發時，母親拉著兒子做的箱子。",
+      "after": "1928 年，母親拉著兒子做的箱子出發；輪子有了，這卻還是一家人的自製品。"
+    },
+    {
+      "path": "now/scenes/0/lines/0/text",
+      "before": "有。1997 年，Samsonite 推出平衡四輪直立箱，箱子能站著推了。",
+      "after": "從往後拉，到站著推，1997 年 Samsonite 發表了平衡四輪直立箱。"
+    },
+    {
+      "path": "now/claims/0/claim",
+      "before": "從往後拉，到站著推，1997 年 Samsonite 推出了平衡四輪直立箱（不念型號）",
+      "after": "從往後拉，到站著推，1997 年 Samsonite 發表了平衡四輪直立箱（不念型號）"
+    }
+  ],
+  "line_count": 92,
+  "line_ids_order_unchanged": true,
+  "source_series_sha256": "53f9f4b71687bbca2ccc9d0d44ca2e7c7ac2efa9db3a36d1c9a0818ca6c8a3a6",
+  "winnetka_actual_cache": {
+    "path": "<home>\\AppData\\Local\\Temp\\a01-switchable-cc-20261015-1421\\actual-20261016-035053\\story-rolling-suitcase-v2\\story\\pages\\98a451f4018ca9a9.json",
+    "sha256": "65563f6879b0262a9642e38931b6616a1b207a5714c503fb2c6b9300d57b4d0f",
+    "read_at": "2026-10-15T07:39:02.967Z",
+    "status": 200,
+    "readable": true
+  },
+  "official_readonly_verify": {
+    "exit_code": 0,
+    "json_files": 25,
+    "files": 29,
+    "exact_reverse": true,
+    "lint_errors": 0,
+    "lint_warnings": 37,
+    "scenes": 63,
+    "lines": 92,
+    "estimated_seconds": 520.3333333333334,
+    "media_or_provider_calls": 0
+  },
+  "candidate_package_inventory": [
+    {
+      "path": "candidate/chapters/engine.json",
+      "sha256": "554bcb689657745484429fc23604f1c44ad5fb8498374180a25f9a627e6da89c"
+    },
+    {
+      "path": "candidate/chapters/hook.json",
+      "sha256": "6092f556e92e53c45cf12d0526eb108892529f109c6b1ab19da588d25c05e81c"
+    },
+    {
+      "path": "candidate/chapters/idea.json",
+      "sha256": "4e29ec76e866cd953f09c7f46e0afdaccd97317f25b82fde094957d1fabe3d6f"
+    },
+    {
+      "path": "candidate/chapters/now.json",
+      "sha256": "fa71bce2b12f2d87975ce4625407bbd9aa53cd843a8a96f5ba3e1e03c1f93eed"
+    },
+    {
+      "path": "candidate/chapters/origin.json",
+      "sha256": "750e8a98a86a4e51a9d63ea017c221be854a6110be43c2007efeda8e141ca0e7"
+    },
+    {
+      "path": "candidate/chapters/turn.json",
+      "sha256": "9e7f29962e363dfafcffc94f7edede02ca38fdf99eae419f282741cccf650583"
+    },
+    {
+      "path": "composed-preview/story-preview.json",
+      "sha256": "9e1f9ebd9e60cb1055093cddfa299d90e0870b08efb10d3b26dd12ea9f10eb42"
+    },
+    {
+      "path": "evidence/round9-brief.md",
+      "sha256": "c177663ea0b04234f5ed74f3f9646ff4e37b0803ba8a8beb861603fcbdb5e02f"
+    },
+    {
+      "path": "evidence/round9-composed-video.json",
+      "sha256": "16b290c78ea72bcd723cc99812ddae73dc838c8c461c64c7b4777c3ea4037abe"
+    },
+    {
+      "path": "evidence/round9-lexicon.json",
+      "sha256": "ebfa590a69b4328ed9bc0141832bb73d27cba51963fca78778258d404c3bc4c9"
+    },
+    {
+      "path": "evidence/round9-narrative.json",
+      "sha256": "dd458ee2b6eee90a3b358408c605620c108ca4387afb94249fd555abc01babab"
+    },
+    {
+      "path": "evidence/round9-series.json",
+      "sha256": "53f9f4b71687bbca2ccc9d0d44ca2e7c7ac2efa9db3a36d1c9a0818ca6c8a3a6"
+    },
+    {
+      "path": "files.sha256.json",
+      "sha256": "a05b7f27303ac0f751f89eceeff9b70d4ff2bf5d36b3f8c21e059340799dd4a2"
+    },
+    {
+      "path": "inverse-diff.json",
+      "sha256": "e72908a2b9edf81817418d08aca8f564d85a6df07c240fd8177046169c29e27e"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "839ea9093b259450c7fd3469d78eb404206e77a524d16bd8323e21227c427ee1"
+    },
+    {
+      "path": "prior-two-line/inverse-diff.json",
+      "sha256": "af832d8bab885c686083c3d87f20014d45d10ef155af04e0eb82753f901a3980"
+    },
+    {
+      "path": "prior-two-line/manifest.json",
+      "sha256": "765918231e36b6451ce4cd8c9e89d29d72003982a7eac33573010d26f720ded6"
+    },
+    {
+      "path": "prior-two-line/now.json",
+      "sha256": "a8781fd7777eabc07bdada1c97430f890d003571362b821c08571dacf7d00a01"
+    },
+    {
+      "path": "prior-two-line/validation.json",
+      "sha256": "f51c759d80cc6b7f1b7251be23cb5154dab3801e2e41e57dddeb00b63516c383"
+    },
+    {
+      "path": "README.md",
+      "sha256": "2aa95ea4530b0cf663430e0b9e1a331b68e82cb130edb576883d8dfa528fa6c4"
+    },
+    {
+      "path": "source/chapters/engine.json",
+      "sha256": "554bcb689657745484429fc23604f1c44ad5fb8498374180a25f9a627e6da89c"
+    },
+    {
+      "path": "source/chapters/hook.json",
+      "sha256": "6092f556e92e53c45cf12d0526eb108892529f109c6b1ab19da588d25c05e81c"
+    },
+    {
+      "path": "source/chapters/idea.json",
+      "sha256": "4e29ec76e866cd953f09c7f46e0afdaccd97317f25b82fde094957d1fabe3d6f"
+    },
+    {
+      "path": "source/chapters/now.json",
+      "sha256": "dccf358d1e7ebeca5134b4f5b629c52597e2a8abd67883500d12fef9f6618e56"
+    },
+    {
+      "path": "source/chapters/origin.json",
+      "sha256": "0c449e490e86cb1f505e6e72fb9747f31cc7396729d86cb41c810ec432285080"
+    },
+    {
+      "path": "source/chapters/turn.json",
+      "sha256": "9e7f29962e363dfafcffc94f7edede02ca38fdf99eae419f282741cccf650583"
+    },
+    {
+      "path": "validation.json",
+      "sha256": "f8059ca8b9288a429674989a07242fc548701a0f9a8bd46a09c2996d80675348"
+    },
+    {
+      "path": "verify.mjs",
+      "sha256": "815bda3634f852898b5cec7c7429da415608fd9276f01e11e035e4d40fe09a8d"
+    },
+    {
+      "path": "visual-warning-audit.md",
+      "sha256": "b6e678d3f910e53136dcf54909b0d8937bc4b01421ccd9822defb722038da97c"
+    }
+  ],
+  "external_reads": "Official-source web reads only. Winnetka direct open failed; official indexed full body and source-bound historical cache were read. Travelpro official page and Samsonite official PDF text read successfully. PDF screenshot tool failed; no pixel inspection claimed.",
+  "worker_fact_pass": false,
+  "worker_narrative_pass": false,
+  "pilot_pass": false,
+  "media_generation_authorized": false,
+  "publish_authorized": false
+}

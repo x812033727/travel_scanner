@@ -1,0 +1,111 @@
+{
+  "status": "AUTHOR_CANDIDATE_ONLY_INDEPENDENT_REVIEW_PENDING",
+  "id": "B18",
+  "source_pins": [
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/episodes/B18.json",
+      "sha256": "2150ff1b5a3a25d99ffadbe617ee746e42c93b3e24ef814a64d05f8149b00565"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/episodes/reviews/B18.json",
+      "sha256": "3a7bb438fc9ad1717d2d7fd902a4b238d85804fa394328b54730ead05d986834"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/scripts/B18.md",
+      "sha256": "5326bd6633ad69931fe542badd6cddd2378324ff0bcc4b0f05652941642dc724"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/scripts/reviews/B18.md",
+      "sha256": "e05236ae3f66c4a5780abd431d8e8d21e95ad929978e472cef2defafb4ee31d8"
+    }
+  ],
+  "base_file_sha256": "2150ff1b5a3a25d99ffadbe617ee746e42c93b3e24ef814a64d05f8149b00565",
+  "candidate_file_sha256": "b0c99c3d856180add1e23b604a38a3143061f4a831779232a26d824fbe568d04",
+  "base_story_sha256": "f9be8cd707c30ac0260543f89bd5ce22960a3b5582d83c233fcce0db1633df23",
+  "candidate_story_sha256": "cf149a0d07f8a02d2914d8642237aa6117d67a53cd2758d9c68342ff48015fab",
+  "changed_paths": [
+    "/chapters/0/point"
+  ],
+  "changes": [
+    {
+      "pointer": "/chapters/0/point",
+      "before": "先落在 1948 年大阪府吹田的一座啤酒工廠：據沿革記載，白石義明看著輸送帶把瓶子一個接一個送走，想到店裡等待壽司的客人；畫面用匿名參觀者示意。依時間預告三個未解的時刻：點子帶回小店，為何一到轉角盤子就卡住？1958 年第一家店開幕，一條輸送帶怎麼守得住生意？1978 年權利期滿，後來為何有更多業者進場？最後只問：一間缺人的壽司店怎麼走到今天？不要在 45 秒內先說扇形板、實用新案或新業者入場的答案。",
+      "after": "先落在 1948 年大阪府吹田的一座啤酒工廠：據沿革記載，白石義明看著輸送帶把瓶子一個接一個送走，想到店裡等待壽司的客人；畫面用匿名參觀者示意。依時間預告三個未解的時刻：「他把點子帶回小店，盤子卻在轉角卡住；一九五八年第一家店要開門，那道彎究竟怎麼走通？」「一九七〇年，這種吃法進了大阪萬博會場，會場的人會怎麼看？」「一九七八年，一項權利走到期限，接下來又會有誰走進這門生意？」最後沿用凍結稿 H03 的主線問題。不要先說扇形板、實用新案或新業者入場的答案；三個預告須與後文 I01、E05、T02 的回收畫面共用同一圖。",
+      "reason": "Align only the three preview questions and visual payoff order with the immutable reviewed H02; remove the obsolete 45-second instruction because timing remains measured later."
+    }
+  ],
+  "questions": [
+    {
+      "position": 1,
+      "text": "他把點子帶回小店，盤子卻在轉角卡住；一九五八年第一家店要開門，那道彎究竟怎麼走通？",
+      "original_paragraph": "H02",
+      "source_indices_zero_based": [
+        0,
+        2
+      ],
+      "payoff_paragraphs": [
+        "I01",
+        "I03",
+        "I04",
+        "E01"
+      ],
+      "same_image_setup_shot": "B18-S004",
+      "same_image_recovery_shot": "B18-S023"
+    },
+    {
+      "position": 2,
+      "text": "一九七〇年，這種吃法進了大阪萬博會場，會場的人會怎麼看？",
+      "original_paragraph": "H02",
+      "source_indices_zero_based": [
+        0,
+        2
+      ],
+      "payoff_paragraphs": [
+        "E05",
+        "T01"
+      ],
+      "same_image_setup_shot": "B18-S005",
+      "same_image_recovery_shot": "B18-S055"
+    },
+    {
+      "position": 3,
+      "text": "一九七八年，一項權利走到期限，接下來又會有誰走進這門生意？",
+      "original_paragraph": "H02",
+      "source_indices_zero_based": [
+        0,
+        2
+      ],
+      "payoff_paragraphs": [
+        "T02",
+        "T03"
+      ],
+      "same_image_setup_shot": "B18-S006",
+      "same_image_recovery_shot": "B18-S077"
+    }
+  ],
+  "preservation": {
+    "all_other_row_values_unchanged": true,
+    "original_row_exact_bytes_saved": true,
+    "source_urls_checked_dates_claims_caveats_unchanged": true,
+    "fullscript_unchanged": true,
+    "existing_review_not_copied_or_changed": true,
+    "repository_and_host_not_modified": true
+  },
+  "validation": {
+    "storyProblems": [],
+    "old_receipt_rejected_for_new_hash": [
+      "the story changed after this review: read it again and record the new hash (validate.mjs --hash <id>)"
+    ]
+  },
+  "not_completed": [
+    "Independent narrow review of candidate row and hash-bound receipt",
+    "Any repository integration or compiled stories.json build",
+    "Current worker-readable source fetch and all formal chapter/claim reviews",
+    "A01 acceptance and separately authorized B18 production with executable cap",
+    "TTS, images, media, owner review, upload"
+  ]
+}

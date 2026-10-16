@@ -1,0 +1,31 @@
+{
+  "status": "INDEPENDENT_LOCAL_RECONSTRUCTION_VERIFIED_NOT_WORKER_REVIEW",
+  "episode": "A16",
+  "source_sha256": "66d164291d3d4af356bc92b5c0ad16ed8ef3831f9365c6e43989d207c30ed8f1",
+  "storyboard_sha256": "43603cbe0ff25b57d530a1e44e7053ecb7c431d2ec9fb79a2bff59e0c8f88025",
+  "paragraphs": 50,
+  "spoken_units": 2114,
+  "shots": 83,
+  "illustrations": 67,
+  "cards": 16,
+  "unique_illustration_prompts": 64,
+  "max_consecutive_cards": 3,
+  "checks": [
+    "parse original six narration tables only",
+    "rebuild every paragraph once in exact order with no gaps or overlaps",
+    "exact source and storyboard hashes",
+    "all shot texts equal referenced slices",
+    "cards retain scope and source",
+    "series look, model and switchable CC"
+  ],
+  "does_not_prove": [
+    "formal chapter facts or listener review",
+    "actual TTS duration",
+    "generated images",
+    "render or playback",
+    "paid authorization"
+  ],
+  "host_calls": 0,
+  "model_calls": 0,
+  "paid_calls": 0
+}

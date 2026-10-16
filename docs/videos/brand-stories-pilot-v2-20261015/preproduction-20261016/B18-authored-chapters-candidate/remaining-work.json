@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_AUTHORED_CANDIDATE_PENDING_INDEPENDENT_REVIEW",
+  "author": "codex-a01-repair-editor",
+  "date": "2026-10-16",
+  "worker_pass": false,
+  "authorizes_production_write": false,
+  "authorizes_media_generation": false,
+  "source_text_edited": false,
+  "completed_scope": {
+    "native_chapters": ["hook", "origin", "idea", "engine", "turn", "now"],
+    "paragraphs_exact": 24,
+    "editorial_units": 2294,
+    "official_spoken_units": 2285,
+    "lines": 99,
+    "scenes": 96,
+    "illustrations": 77,
+    "native_title_cards": 19,
+    "original_cards_preserved": 16,
+    "original_source_overlays_adapted": 9,
+    "claims_unchecked": 65,
+    "canonical_loops": 11,
+    "unfinished_native_scenes": [],
+    "lint_errors": 0,
+    "cute_errors": 0,
+    "shot_reading_traps": 0,
+    "warnings_retained": 30,
+    "input_files_unchanged": 43,
+    "external_calls": 0,
+    "paid_calls": 0
+  },
+  "items": [
+    {
+      "id": "B18-R01",
+      "kind": "independent_review",
+      "status": "pending",
+      "scope": "candidate chapters, native card positions, loop windows and claim/source mapping",
+      "evidence": ["mapping.json", "READABLE-SCRIPT.md", "input-pins.json", "compose-lint-evidence.json"],
+      "required_next": "由獨立 reviewer 逐章核對 v2 原文、65 項原文 quote 與單一來源／fact 邊界，審查 9 組來源字樣搬移及 3 張新增來源卡。作者不得將本機 lint 當成獨立內容審查。"
+    },
+    {
+      "id": "B18-R02",
+      "kind": "worker_adoption_blocker",
+      "status": "not_implemented",
+      "scope": "ordinary writer parser and authored chapter installation",
+      "evidence": ["compose-lint-evidence.json", "../B18-worker-conversion-plan/schema-and-adoption.md"],
+      "required_next": "一般 import 會依 row 重新撰稿，不會採用本目錄。正式 compose 可用 title 卡，但 readChapterAnswer 只接受 shot/outro，現有 origin/idea/engine/turn/now 會被 writer parser 拒絕；hook 可讀。須先建立受審的作者稿採用及後續 listener/fix writer 相容方案，不能手改 written/counters 當成匯入完成。",
+      "affected_chapters": ["origin", "idea", "engine", "turn", "now"]
+    },
+    {
+      "id": "B18-R03",
+      "kind": "runtime_plan_alignment",
+      "status": "pending_separate_review",
+      "scope": "unchanged compiled B18 row and derived series plan",
+      "evidence": ["worker-row-reference.json", "series.json", "../B18-worker-conversion-plan/conversion-plan.json"],
+      "required_next": "本次刻意保留 compiled row／來源／must_verify 原值；舊 hook point 及 engine/turn 等章界尚未完全對齊 v2。另有已審 hook 候選不等於已匯入。須由 root 限定並獨立核對 metadata 採用範圍，避免後續 writer 恢復舊稿。不得在本格式轉換中偷偷修改 row。"
+    },
+    {
+      "id": "B18-R04",
+      "kind": "ending_contract",
+      "status": "adapter_pending",
+      "scope": "now-s101, now-s101b, now-s102, now-s103",
+      "evidence": ["mapping.json", "chapters/now.json"],
+      "required_next": "原最後三句保留相同圖片意圖，因句長拆成四個 still 位置；普通 writer 的 now-outro 約定與此形式尚未適配。需正式採用路徑明確保存同一張合格圖片並保留最後 16 秒連結區，再實看字幕／連結／同圖節奏；本候選沒有產生圖片或改寫末三句。"
+    },
+    {
+      "id": "B18-R05",
+      "kind": "visual_qa",
+      "status": "pixel_review_pending",
+      "scope": "19 native cards and 9 overlay adaptations",
+      "evidence": ["card-adapter-evidence.json", "mapping.json"],
+      "required_next": "HTML 已證明原 16 卡與來源範圍文字存在，尚未檢查像素排版、手機字級、換行、標題長度及來源標示搬到相鄰卡片是否仍清楚。只能使用原生 title/subtitle/tag；不依賴模型在插畫中畫出可讀文字。"
+    },
+    {
+      "id": "B18-R06",
+      "kind": "narrative_review",
+      "status": "genuine_review_pending",
+      "scope": "retained 30 actual warnings",
+      "evidence": ["compose-lint-evidence.json", "READABLE-SCRIPT.md"],
+      "required_next": "真全文審查須看 110／144／110 秒三段 open-loop 偵測間隔，以及二〇二三年三次出現；不能用格式 lint 消除敘事疑問。18 條角色漫劇 craft 提示不適用旁白品牌片，不因此加入對話或改寫原文。其餘原提示詞共詞、同圖收尾與 hook-s004 約 10.2 秒提示也保留。任何必要改稿另立版本並重審。"
+    },
+    {
+      "id": "B18-R07",
+      "kind": "duration",
+      "status": "measured_tts_pending",
+      "scope": "about ten minute target",
+      "estimated_body_seconds": 647.4,
+      "branding_seconds": 26,
+      "estimated_total_seconds": 673.4,
+      "measured_body_seconds": null,
+      "evidence": ["synthetic/timeline-estimate.json", "compose-lint-evidence.json"],
+      "required_next": "正文含 hook，官方估計包含 99 line、95 scene 的預設間隔；未加入人為停頓或慢播。正式 TTS 後才可確認約 10 分鐘及正文至少 8 分鐘。2294 與 2285 的差是 official spokenUnits 不計 9 個『〇』，不是遺漏旁白。"
+    },
+    {
+      "id": "B18-R08",
+      "kind": "asset_identity_and_voice",
+      "status": "media_not_started",
+      "scope": "three hook/payoff shared images, ending shared image, anonymous illustration and voice",
+      "evidence": ["mapping.json", "fixtures/lexicon.json", "input-pins.json"],
+      "required_next": "三組預告／回收的 prompt/camera/asset key 已相同，但 native shot 不支援 image_asset_key，仍須受審採用方案與真正圖片檔 SHA 證明共用。匿名人物配置與原提示詞在 sidecar，沒有生成真人造像或 look sheet。voice 與 2026-10-15 lexicon 為保存 fixture，非當前正式設定或聲音核准。"
+    },
+    {
+      "id": "B18-R09",
+      "kind": "worker_content_gates",
+      "status": "all_pending",
+      "scope": "verifier, listener, whole narrative and new pilot script review",
+      "evidence": ["synthetic/LOCAL-FIXTURE-NOT-PRODUCTION-STATE.json", "chapters/"],
+      "required_next": "65 claims 全部 UNCHECKED；正式 checker/listener/narrative 與對新實稿的 pilot review 尚未執行。舊 B18 原稿 hash 收據不能視為此候選的 PASS。synthetic fixture 不含正式 auto.json、verify-1、narrative、approvals 或 script-review，不可作為正式狀態授權。"
+    },
+    {
+      "id": "B18-R10",
+      "kind": "paid_execution_and_delivery",
+      "status": "not_authorized_by_this_artifact",
+      "scope": "root controlled batch authorization, execution cap and eventual media delivery",
+      "required_next": "沿既有使用者授權與 root 正在處理的每片限額執行規則前進，本候選不啟動付費或重新索取餘額。獲適用授權後仍需真 TTS／圖片／字幕／音畫 QA、片頭片尾與連結、成片及站主觀看；以上皆未開始。"
+    },
+    {
+      "id": "B18-R11",
+      "kind": "publication_metadata",
+      "status": "minor_followup",
+      "scope": "12 existing YouTube tags",
+      "evidence": ["compose-lint-evidence.json", "worker-row-reference.json"],
+      "required_next": "發布包工具提示會取前 10 個 tags；本次不更動原 12 tags 的 compiled row。發布包階段需核對實際採用值。"
+    }
+  ]
+}

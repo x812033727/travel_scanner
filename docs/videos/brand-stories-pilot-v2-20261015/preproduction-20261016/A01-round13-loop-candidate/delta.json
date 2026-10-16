@@ -1,0 +1,70 @@
+{
+  "status": "OFFLINE_EDITORIAL_DELTA_PENDING_INDEPENDENT_REVIEW",
+  "base": "A01-round12-candidate",
+  "changes": [
+    {
+      "chapter": "hook",
+      "scene_id": "hook-03",
+      "line_id": "6h2q",
+      "old": "同樣是搬重物，差別怎麼會這麼大？",
+      "new": "他能把輪板的辦法，搬到行李箱上嗎？",
+      "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+      "source_location": "Sadow interview, airport wheeled skid and first four-caster-and-rope prototype",
+      "support": "narrative question, not an assertion that the physical board became a suitcase"
+    },
+    {
+      "chapter": "origin",
+      "scene_id": "origin-r12-01",
+      "line_id": "r12o01",
+      "old": "溫尼特卡歷史學會引她的遊記說，1928 年出發前，安妮塔問：為什麼人要像馱馬一樣搬行李？",
+      "new": "1928 年出發前，安妮塔問：人為什麼得像馱馬一樣搬行李？這是溫尼特卡歷史學會引述她遊記的話。",
+      "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+      "source_location": "Before Her Time, paragraph beginning Why be a human truck horse?",
+      "support": "same attributed quotation, event before source label"
+    },
+    {
+      "chapter": "origin",
+      "scene_id": "origin-06",
+      "line_id": "83ew",
+      "old": "溫尼特卡歷史學會的館藏裡，如今還留著那只自製輪子箱。",
+      "new": "開場那只自製輪子箱，後來留在溫尼特卡歷史學會的館藏裡。",
+      "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+      "source_location": "Before Her Time, object caption WHS Object ID 2005.26.576",
+      "support": "explicit callback to the opening wheeled case"
+    },
+    {
+      "chapter": "idea",
+      "scene_id": "idea-07b",
+      "line_id": "76ur",
+      "old": "他要進貨。這只樣品，終於有機會走到顧客面前。",
+      "new": "那位試走的副總裁要 Macy's 進貨。這只樣品，終於有機會走到顧客面前。",
+      "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+      "source_location": "Sadow interview, Jerry Levy walks with sample and orders buyer to purchase",
+      "support": "names the decision maker and answers the prior stocking question"
+    }
+  ],
+  "loop_changes": [
+    {
+      "chapter": "hook",
+      "setup": "6h2q",
+      "old_what": "機器和行李搬運差別在哪裡",
+      "new_what": "眼前輪板的省力辦法能否用在行李箱上"
+    },
+    {
+      "chapter": "origin",
+      "setup": "6h2q",
+      "old_payoff": "3zkh",
+      "new_payoff": "3zkh",
+      "old_what": "開場重物搬運的差別在輪子承重，Sadow再把腳輪裝上箱底",
+      "new_what": "Sadow 是否把輪板的省力辦法做成四腳輪與繩子的行李箱樣品"
+    },
+    {
+      "chapter": "idea",
+      "setup": "b6mn",
+      "old_payoff": "j9sw",
+      "new_payoff": "76ur",
+      "old_what": "採購是否肯讓樣品上架",
+      "new_what": "商店先拒絕後，誰作出進貨決定"
+    }
+  ]
+}

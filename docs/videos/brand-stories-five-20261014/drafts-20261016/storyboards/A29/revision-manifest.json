@@ -1,0 +1,46 @@
+{
+  "revision": "r2",
+  "original_v1_backup": "previous/v1/backup-index.json",
+  "backup_included_in_portable_bundle": false,
+  "changes": [
+    "Three hook/recovery image pairs now share exact prompt and camera with explicit image asset binding",
+    "Source paths use repository_root relative paths; source file bytes unchanged",
+    "Unique planned image count 69; original narration remains identical"
+  ],
+  "hook_visual_reuse": [
+    {
+      "setup_shot": "A29-S003",
+      "setup_paragraph": "H03",
+      "recovery_shot": "A29-S057",
+      "recovery_paragraphs": [
+        "T04",
+        "T05"
+      ],
+      "asset_key": "a29-company-folders",
+      "reason": "The exact two separate blank company folders recur when the two fifteen-percent holders are distinguished; the hook shows no names or percentages."
+    },
+    {
+      "setup_shot": "A29-S004",
+      "setup_paragraph": "H04",
+      "recovery_shot": "A29-S080",
+      "recovery_paragraphs": [
+        "N08",
+        "N09"
+      ],
+      "asset_key": "a29-bookmarked-ledger",
+      "reason": "The same bookmarked blank ledger page returns just before the withheld asset-sale ratio is revealed in S081."
+    },
+    {
+      "setup_shot": "A29-S005",
+      "setup_paragraph": "H05",
+      "recovery_shot": "A29-S073",
+      "recovery_paragraphs": [
+        "N03"
+      ],
+      "asset_key": "a29-family-portfolio",
+      "reason": "The same anonymous portfolio binder with toy and park models returns when the family investment company is identified, without depicting a toy-company buyback."
+    }
+  ],
+  "original_fullscript_sha256": "9d8d6ea834c526d3f6e5b452f01545a74c87873948c8392a1bc4bb8954056c11",
+  "pending": "Independent r2 review and later real asset/hash binding"
+}

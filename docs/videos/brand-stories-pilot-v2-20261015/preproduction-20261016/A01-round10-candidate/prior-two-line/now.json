@@ -1,0 +1,193 @@
+{
+  "key": "now",
+  "title": "箱子站著轉向，仍有需要提起的時候",
+  "scenes": [
+    {
+      "id": "now-01",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, a late 1990s luggage shop with plain shelves, one generic adult shopper in simple 1990s casual clothes pushing an upright hard-shell suitcase forward with one hand, curious expression, the focal object is the upright suitcase standing on four small wheels, no labels or tags anywhere, mild overcast light from a window on the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "7asx",
+          "text": "從往後拉，到站著推，1997 年 Samsonite 發表了平衡四輪直立箱。"
+        },
+        {
+          "id": "kfiw",
+          "text": "要往後拉也行，不必先把箱子放平。"
+        }
+      ]
+    },
+    {
+      "id": "now-02b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a luggage shop around the year 2000. One generic adult shop worker gently turns an upright unbranded suitcase sideways, with its four swivel casters changing direction underneath. The worker looks down at the turning wheels with a curious smile. The suitcase occupies the middle third with space around it. Soft window light, no labels, text, logos or real likeness",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "5tik",
+          "text": "到了 2000 年，同一家公司推出四輪萬向箱。"
+        }
+      ]
+    },
+    {
+      "id": "now-03",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, a spacious airport hall around the year 2000 with tiled floor, one generic adult traveler in plain casual clothes sliding an upright four-wheeled suitcase sideways beside them with a relaxed smile, the focal object is the suitcase gliding on swiveling wheels, no signs or lettering, soft grey sky light through tall windows on the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fmd7",
+          "text": "它站著就能往好幾個方向滑，要挪位置的時候，也能往旁邊走。"
+        }
+      ]
+    },
+    {
+      "id": "now-04",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modern airport near a short stairway. One generic traveler pauses beside a closed ordinary upright wheeled suitcase and looks thoughtfully from its wheels toward the first step. The suitcase and step occupy the middle third. Soft window light, no logos or lettering",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "traveler-upright"
+        ]
+      },
+      "lines": [
+        {
+          "id": "kkjv",
+          "text": "可是走到樓梯前，輪子能替人減掉箱子的重量嗎？"
+        }
+      ]
+    },
+    {
+      "id": "now-06",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a short flight of terminal stairs. One generic traveler lifts a closed ordinary wheeled suitcase by its carrying handle, with the wheels hanging clear of the floor. The hand, suitcase and first step occupy the middle third. Soft lamp light, no other people, words or logos",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "tszs",
+          "text": "輪子能幫忙移動，卻不會減掉重量。"
+        }
+      ]
+    },
+    {
+      "id": "now-outro",
+      "template": "outro",
+      "data": {
+        "title": "會滾，還要帶得順手",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "g5b8",
+          "text": "開場問過，會滾的箱子還缺什麼？答案是有人把它放上貨架，還要讓人帶得順手。"
+        },
+        {
+          "id": "xjmb",
+          "text": "你用過的箱子裡，哪一次輪子或拉桿的改變，最明顯讓你少費力？"
+        },
+        {
+          "id": "ek2s",
+          "text": "想聽日用品背後這些有轉折的故事，歡迎訂閱。"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "n1",
+      "claim": "從往後拉，到站著推，1997 年 Samsonite 推出了平衡四輪直立箱（不念型號）",
+      "scene": "now-01",
+      "source": 11,
+      "fact": 9,
+      "verdict": "PLAN",
+      "note": "重查 7asx 新旁白：facts[9] 記 1997 年 Ultra Transporter 為可推可拉的平衡四輪直立箱，來源 11（read=plan）的 supports 也這樣寫。年份、品牌與箱型都和計畫一致，沒有型號清單，也沒有 2004 年的說法。「從往後拉」只承接前章的直立兩輪箱，沒有說 Plath 與 Samsonite 之間有傳承。未修改"
+    },
+    {
+      "id": "n2",
+      "claim": "要往後拉也可以，不必先把箱子放平",
+      "scene": "now-01",
+      "source": 11,
+      "fact": 9,
+      "verdict": "PLAN",
+      "note": "依 facts[9]「可推可拉」；「不必先放平」只是說明直立箱的意思，沒有新增事實。未修改"
+    },
+    {
+      "id": "n3",
+      "claim": "到了 2000 年，同一家公司推出四輪萬向箱",
+      "scene": "now-02b",
+      "source": 11,
+      "fact": 9,
+      "verdict": "PLAN",
+      "note": "依 facts[9]：2000 年推出四輪 Spinners，「同一家公司」指 Samsonite。沒有採用維基百科（來源 4）的 2004 年首款說法，符合 caveats。未修改"
+    },
+    {
+      "id": "n4",
+      "claim": "它站著就能往好幾個方向滑，要挪位置的時候，也能往旁邊走",
+      "scene": "now-03",
+      "source": 11,
+      "fact": 9,
+      "verdict": "PLAN",
+      "note": "依 facts[9]：招股書術語表把 Spinners 定義為可直立向多方向滑動的萬向輪行李箱，「往旁邊走」在多方向滑動的範圍內。未修改"
+    },
+    {
+      "id": "n13",
+      "claim": "（已刪）2010 年受訪空服員說有人把輪子箱塞得太滿、在航站拖得動便忽略重量、離地時搬不動",
+      "scene": "now-05",
+      "source": 6,
+      "fact": null,
+      "verdict": "NOT FOUND",
+      "note": "ABC（來源 6）的段落與 supports、facts 都沒有空服員或過量裝箱的內容，章節要點也禁止恢復。本稿沒有 now-05 場景，維持刪除"
+    },
+    {
+      "id": "n14",
+      "claim": "（已刪歸屬）僅留「輪子能幫忙移動，卻不會減掉重量。」",
+      "scene": "now-06",
+      "source": 6,
+      "fact": null,
+      "verdict": "NOT FOUND",
+      "note": "空服員的歸屬在任何段落都查不到，維持移除。tszs 剩下的是一般物理敘述，沒有數字、年份、人名或引語，也是章節要點指定的單次回答，保留未改"
+    },
+    {
+      "id": "n16",
+      "claim": "開場問過，會滾的箱子還缺什麼？答案是有人把它放上貨架，還要讓人帶得順手。",
+      "scene": "now-outro",
+      "source": 6,
+      "fact": 4,
+      "verdict": "PLAN",
+      "note": "這是回呼計畫的 question 與 takeaway。「放上貨架」依 facts[4]（Macy's 副總裁決定進貨、1970 年 10 月開賣），ABC 的 supports 也記載這段。「帶得順手」只呼應已講過的用途，沒有新的數字或品牌主張，也沒有說單一設計造成普及。未修改"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "x7r4",
+      "payoff": "g5b8",
+      "what": "已會滾的行李箱還要怎樣走進旅客日常：買得到，也帶得順手"
+    },
+    {
+      "setup": "4e5m",
+      "payoff": "7asx",
+      "what": "直立箱還能否使用四個輪子"
+    },
+    {
+      "setup": "kkjv",
+      "payoff": "tszs",
+      "what": "碰到階梯時輪子能否減掉箱子的重量"
+    }
+  ],
+  "report": "### 第 7 輪\n\n## 第六章（now）核對\n\n**查了什麼**\n- 逐行核對 7asx、kfiw、5tik、fmd7、kkjv、tszs、g5b8、xjmb、ek2s。\n- 對照的依據：facts[9]（Samsonite 2011 年招股書）、facts[4]，以及 caveats。\n- 讀過的來源：來源 11（read=plan，只依 supports）、來源 6（ABC）、來源 10（read=plan）、來源 1（Travelpro）、來源 4（維基百科）。\n\n**結果：沒有修改，也沒有刪除**\n- **7asx**（第 7 輪改寫的開場銜接）：1997 年、Samsonite、平衡四輪直立箱都和 facts[9] 一致。\n  - 沒有念型號 Ultra Transporter。\n  - 沒有「終於可以直立」，也沒有讓人以為 1987 年的直立箱不存在的句子。\n  - 「從往後拉，到站著推」只承接上章，沒有虛構 Plath 與 Samsonite 之間的傳承。\n  - 原列 UNCHECKED，重查後判為 PLAN。\n- **5tik、fmd7**：2000 年四輪萬向箱、可直立向多方向滑動，都依 facts[9]。\n  - 維基百科（來源 4）的「2004 年 Samsonite 首款 spinner」與官方年表衝突，caveats 也禁止使用，全稿沒有出現。\n- **kkjv、tszs**：一問一答，只答一次；不含可查核的數字或人物說法。\n  - ABC 空服員與過量裝箱的觀察沒有恢復（n13、n14 維持 NOT FOUND）。\n- **片尾三句**：\n  - g5b8 回呼計畫的 question 與 takeaway，「放上貨架」有 facts[4] 支持。\n  - xjmb 是留言題，ek2s 是訂閱邀請，都不含事實主張。\n  - 沒有口播來源或查核流程，也沒有預告下一支片。\n\n**其他已確認的事項**\n- 旁白沒有提到招股書，也沒有把舊資料推成「如今大多有輪子」的泛稱。\n\n**懷疑過但沒有改的地方**\n- 「同一家公司」依賴前一句已點名 Samsonite。句意清楚，所以沒有改。\n- 7asx 的「從往後拉」可能讓人聯想到前章的拉桿箱。這只是動作上的承接，不是傳承主張，所以保留。"
+}

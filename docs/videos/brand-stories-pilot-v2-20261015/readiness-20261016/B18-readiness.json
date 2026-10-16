@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "status": "READ_ONLY_PRODUCTION_READINESS_REPORT_NOT_NEW_SCRIPT_REVIEW",
+  "as_of_local_date": "2026-10-16",
+  "read_repo_head": "e15df0219e09c6591ce4eb56ba8017b8135c240a",
+  "id": "B18",
+  "slug": "story-conveyor-belt-sushi-v2",
+  "source_pins": [
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/scripts/B18.md",
+      "sha256": "5326bd6633ad69931fe542badd6cddd2378324ff0bcc4b0f05652941642dc724"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/scripts/reviews/B18.md",
+      "sha256": "e05236ae3f66c4a5780abd431d8e8d21e95ad929978e472cef2defafb4ee31d8"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/episodes/B18.json",
+      "sha256": "2150ff1b5a3a25d99ffadbe617ee746e42c93b3e24ef814a64d05f8149b00565"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/episodes/reviews/B18.json",
+      "sha256": "3a7bb438fc9ad1717d2d7fd902a4b238d85804fa394328b54730ead05d986834"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/stories.json",
+      "sha256": "3a87dff10ed597c68b01588244e5bd3443dfa69af13d97fbd8e411a81d32cd01"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/series.json",
+      "sha256": "b2cdb40dd5c6b9e7723ae76fd5fb9992ca66fc0baebabc4ae0f5caabdb38502b"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/B18-shot-plan.md",
+      "sha256": "7c890e609d46d8536408045d84dc462bf363840fd679265ebbb76bd2e6843929"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/B18-conveyor-belt-sushi.md",
+      "sha256": "d8b88934f1bb2aa1d24f6053d3e5ff780dd5937f4f424e6cebd89e69b05bf298"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/README.md",
+      "sha256": "2164925a36a72e87f6dae1f1cfab035618fe3d55d951ff1f53aea487e5e43a99"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-pilot-v2-20261015/build.mjs",
+      "sha256": "aca63359b111c6082aeb93f6ccbed75351d62dec65474a478cbbc7f1529d2162"
+    },
+    {
+      "base": "repository_root",
+      "file": "tools/video/automation/story.mjs",
+      "sha256": "f9825a7ce9649111d3e49ab33a2846a8be61111dd2cb2df40db3b68b974676f3"
+    },
+    {
+      "base": "repository_root",
+      "file": "tools/video/core/narrative.mjs",
+      "sha256": "0b9dce18b4df77d1872297ed5e971b19f74ce6b1245a661c2d91c50966565926"
+    },
+    {
+      "base": "repository_root",
+      "file": "tools/video/story-plans/plan.mjs",
+      "sha256": "5ec625989c2aa9f86ea837b6c03f189554746618825292ad1c30fad1b6988de5"
+    },
+    {
+      "base": "repository_root",
+      "file": ".agents/skills/youtube-video/references/story.md",
+      "sha256": "957d5859811bc161f661ec14f5cacf1e7e4ed81e34745c62f367ba2d2def5806"
+    },
+    {
+      "base": "repository_root",
+      "file": ".agents/skills/youtube-video/references/script-writing.md",
+      "sha256": "57c71ae9aebb453c90ca618cf7c208416b01f4082fd100ef4b28d307ade74a0c"
+    },
+    {
+      "base": "repository_root",
+      "file": ".agents/skills/curio-episode/SKILL.md",
+      "sha256": "57c34a1e088e407c8102d4e28cb836e040baaaa94dc16dddec09e57ba7b3b12f"
+    },
+    {
+      "base": "repository_root",
+      "file": "docs/videos/long-form/README.md",
+      "sha256": "dd639c0c85595881d1bda64541d28f29e8d90f1067e541c08eb28dc9c4543c3b"
+    }
+  ],
+  "matched_existing_reviews": {
+    "fullscript_sha256": "5326bd6633ad69931fe542badd6cddd2378324ff0bcc4b0f05652941642dc724",
+    "canonical_story_sha256": "f9be8cd707c30ac0260543f89bd5ce22960a3b5582d83c233fcce0db1633df23",
+    "fullscript_independent_reviewer": "Codex /root/pilot_a01_script",
+    "review_date": "2026-10-15",
+    "reopened_original_web_sources_in_this_readiness_check": false,
+    "new_fact_or_narrative_PASS_issued": false,
+    "current_worker_reference_constant_matches": true
+  },
+  "structural": {
+    "storyProblems": [],
+    "reviewProblems": [],
+    "seriesProblems": [],
+    "compiled_B18_exact_expected": true,
+    "compiled_series_exact": true
+  },
+  "duration": {
+    "status": "ESTIMATES_ONLY_NOT_MEASURED_TTS",
+    "paragraphs": 24,
+    "legacy_han_digit_count": 2728,
+    "current_comparable_units": 2729,
+    "legacy_300_han_digits_per_minute_seconds": 545.6,
+    "comparable_250_units_per_minute_seconds": 654.96,
+    "comparable_230_units_per_minute_seconds": 711.9130434782609,
+    "body_definition": "All six narrated chapters including hook; excludes 5-second intro and 21-second outro",
+    "current_worker_body_band_seconds": [
+      540,
+      660
+    ],
+    "absolute_longform_min_body_seconds": 480,
+    "branding_seconds": 26,
+    "quote_v3_audio_assumption_seconds": 600,
+    "quote_note": "The quote uses 600 seconds for cost planning, not a measured upper bound. Re-evaluate B18 after actual narration; source count at 230 cpm exceeds the 11-minute worker band. Do not shorten or slow down solely from this estimate.",
+    "chapters": [
+      {
+        "key": "hook",
+        "paragraph_ids": [
+          "H01",
+          "H02",
+          "H03"
+        ],
+        "comparable_units": 188
+      },
+      {
+        "key": "origin",
+        "paragraph_ids": [
+          "O01",
+          "O02",
+          "O03",
+          "O04"
+        ],
+        "comparable_units": 411
+      },
+      {
+        "key": "idea",
+        "paragraph_ids": [
+          "I01",
+          "I02",
+          "I03",
+          "I04"
+        ],
+        "comparable_units": 471
+      },
+      {
+        "key": "engine",
+        "paragraph_ids": [
+          "E01",
+          "E02",
+          "E03",
+          "E04",
+          "E05"
+        ],
+        "comparable_units": 574
+      },
+      {
+        "key": "turn",
+        "paragraph_ids": [
+          "T01",
+          "T01a",
+          "T02",
+          "T03",
+          "T04"
+        ],
+        "comparable_units": 770
+      },
+      {
+        "key": "now",
+        "paragraph_ids": [
+          "N01",
+          "N02",
+          "N03"
+        ],
+        "comparable_units": 315
+      }
+    ]
+  },
+  "current_spec": {
+    "series_target_minutes": 10,
+    "image_model": "image-01",
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "cast": [
+      "sushi-chef"
+    ],
+    "visual_tier": "stills",
+    "generated_clips": 0,
+    "subtitles": "Current composeStory sets burn_in:false; actual worker video.json must be inspected when available",
+    "category": "story",
+    "intro_at": "after_first_chapter",
+    "intro_seconds": 5,
+    "outro_seconds": 21,
+    "illustrated_ratio_min": 0.7,
+    "max_consecutive_cards": 3
+  },
+  "pending_free_prep": [
+    {
+      "id": "G1",
+      "priority": "before formal chapter production",
+      "files": [
+        "docs/videos/brand-stories-pilot-v2-20261015/episodes/B18.json",
+        "docs/videos/brand-stories-pilot-v2-20261015/B18-conveyor-belt-sushi.md",
+        "docs/videos/brand-stories-pilot-v2-20261015/scripts/B18.md"
+      ],
+      "finding": "Worker row hook uses separate corner / 1958 business-protection / 1978 entry questions, while frozen fullscript H02 merges corner with 1958 and previews 1970 Expo as the second question. Other row beats compress E05/T01 into engine and omit T01a onward detail.",
+      "minimal_action": "Use the frozen fullscript as the narration/reference authority. Produce a narrow worker-row delta or formal chapter-adaptation manifest to preserve H02 1958/1970/1978 order and current chapter content. A changed row needs a fresh hash-bound independent row review; do not claim old f9be8c receipt covers it. No need to rewrite the fullscript."
+    },
+    {
+      "id": "G2",
+      "priority": "before shot preparation",
+      "finding": "108 visual slots / 91 illustration slots / 17 cards are an aggregate schedule plus eight sample prompts, not a complete per-shot storyboard.",
+      "minimal_action": "Extract all 24 exact paragraphs with IDs/source references; design sequential visual cuts with original text slices, camera/prompt, source mapping and asset identities. Reconstruct exact original text and run offline structural/shot_reading checks. Do not force a new arbitrary shot total."
+    },
+    {
+      "id": "G3",
+      "priority": "before image quote credit and generation",
+      "finding": "Three textual hooks and payoffs exist, but no actual setup/recovery shot IDs, identical full request identity or accepted-image file/hash binding exists.",
+      "minimal_action": "Bind three H02 question spans to I01, E05 and T02 chapter images. Same prompt/camera/model/seed/size/references and same accepted file/hash later. Retain quote-v3 conservative 91 illustration budget until full board count is known; do not assume 91-3."
+    },
+    {
+      "id": "G4",
+      "priority": "before paid speech plan",
+      "finding": "The frozen 9:06 estimate uses 300 Han/digit units per minute from a previous pilot. It is not measured B18 speech and is not directly comparable to five-episode 230-250 all-unit estimates.",
+      "minimal_action": "Keep original script and review. Carry both counting methods explicitly; actual TTS controls the 9-11 minute worker band and minimum 8-minute body gate. Refresh cost duration/count assumptions before paid release or after measured resize; do not pad or preemptively rewrite to force 10:00."
+    },
+    {
+      "id": "G5",
+      "priority": "production notes",
+      "finding": "Pilot README and old treatment/shot-plan still describe USD25 for both films, balance proofs, an old PR deployment status and draft wording despite the existing B18 text receipt.",
+      "minimal_action": "On a separately authorized repository documentation edit, add current-status corrections tied to the latest quote/owner decision. B18 has no assumed paid approval here; subscription balance proof was waived. Keep historical estimates marked as historical rather than changing the frozen script."
+    }
+  ],
+  "existing_source_coverage": {
+    "basis": "Matched fullscript independent receipt, not a fresh primary-source review",
+    "source_indices_used_in_fullscript": [
+      0,
+      1,
+      2
+    ],
+    "reference_only_source_index": 3,
+    "urls": [
+      {
+        "index": 0,
+        "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+        "checked_field": "2026-09-28"
+      },
+      {
+        "index": 1,
+        "url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+        "checked_field": "2026-09-28"
+      },
+      {
+        "index": 2,
+        "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+        "checked_field": "2026-09-28"
+      },
+      {
+        "index": 3,
+        "url": "https://ja.wikipedia.org/wiki/%E7%99%BD%E7%9F%B3%E7%BE%A9%E6%98%8E",
+        "checked_field": "2026-09-28"
+      }
+    ],
+    "metadata_note": "sources.checked remains 2026-09-28; source receipt and fullscript review independently record re-opening on 2026-10-15. No new page-body hashes/readability evidence created here.",
+    "additional_already_reviewed_details_for_formal_claim_mapping": [
+      {
+        "paragraph": "O02",
+        "detail": "Explicit prices and about 30% cheaper",
+        "sources": [
+          0
+        ]
+      },
+      {
+        "paragraph": "I04",
+        "detail": "Rust-resistant material; attributed advance material payments and son conjecture",
+        "sources": [
+          0,
+          2
+        ]
+      },
+      {
+        "paragraph": "E03",
+        "detail": "1960 Dotonbori second store",
+        "sources": [
+          0,
+          2
+        ]
+      },
+      {
+        "paragraph": "E05",
+        "detail": "Expo location, growing queues, JPY300 tub set, son summer help",
+        "sources": [
+          0
+        ]
+      },
+      {
+        "paragraph": "T01a",
+        "detail": "1971 tea dispenser; 1974 combined equipment",
+        "sources": [
+          0,
+          2
+        ]
+      },
+      {
+        "paragraph": "T03-T04",
+        "detail": "Some later straight belts, direct sourcing, plate-color prices, mid/late-1980s store changes",
+        "sources": [
+          2
+        ]
+      }
+    ]
+  },
+  "proposed_hook_image_plan": {
+    "status": "CONCEPT_ONLY_NO_PROMPTS_OR_FORMAL_SHOT_IDS_NO_IMAGES",
+    "pairs": [
+      {
+        "id": "B18-prep-hook-1958",
+        "setup_paragraph": "H02",
+        "setup_sentence": 1,
+        "setup_text": "他把點子帶回小店，盤子卻在轉角卡住；一九五八年第一家店要開門，那道彎究竟怎麼走通？",
+        "recovery_paragraph": "I01",
+        "event_resolution_later": "I03-I04 then E01",
+        "image_concept": "Generic workshop worker examining one plate at a curved test conveyor corner; no fan-shaped solution visible in the preview",
+        "source_indices": [
+          0,
+          2
+        ],
+        "constraint": "Reuse in the chapter that explicitly recalls the opening corner; reveal fan-shaped boards only in later shots"
+      },
+      {
+        "id": "B18-prep-hook-1970",
+        "setup_paragraph": "H02",
+        "setup_sentence": 2,
+        "recovery_paragraph": "E05",
+        "event_resolution_later": "E05 then T01",
+        "image_concept": "Generic exhibition food-counter server beside one sushi tub and a moving belt; no logos, crowd statistics or outcome text",
+        "source_indices": [
+          0,
+          2
+        ],
+        "constraint": "Same image for Expo preview and E05; JPY300 overlay only when narrated, never confuse with JPY50 first-store plate"
+      },
+      {
+        "id": "B18-prep-hook-1978",
+        "setup_paragraph": "H02",
+        "setup_sentence": 3,
+        "recovery_paragraph": "T02",
+        "event_resolution_later": "T02-T03",
+        "image_concept": "Generic proprietor examining one blank rights folder beside a plain sushi plate in a late-1970s office; no literal certificate or ownership transfer",
+        "source_indices": [
+          0,
+          2
+        ],
+        "constraint": "Date/utility-model label added only in post; image itself does not reveal new entrants before the payoff"
+      }
+    ],
+    "additional_end_hold": "N03 final three sentences request the same image; a full board may split visual slots for lint while sharing one image asset. Count unique assets only after all bindings exist."
+  },
+  "authority_and_pending_production": {
+    "owner_A01_B18_first": true,
+    "B18_paid_approval_assumed": false,
+    "quote_v3_is_proposal_only": true,
+    "A01_original_25_usd_not_transferred": true,
+    "host_state_checked": false,
+    "production_imported_here": false,
+    "formal_worker_files_present_in_this_repo": false,
+    "formal_worker_files_to_review": [
+      "<VIDEO_WORKDIR>/<slug>/story/chapters/{hook,origin,idea,engine,turn,now}.json",
+      "<VIDEO_DOCS>/<slug>/{series.json,video.json,script.md,claims.md,verify-1.md}",
+      "<VIDEO_WORKDIR>/<slug>/review/narrative.json",
+      "<VIDEO_WORKDIR>/<slug>/story/reviews/script-review.json"
+    ],
+    "remaining": "A01 acceptance; B18 authorization and exact all-in cap; fresh exact-slug host preflight/import; actual writer/verifier/listener/narrative and independent reference review; TTS/media/full-cut QA; owner viewing; separate upload/end-screen validation"
+  },
+  "boundaries": {
+    "repo_mutations": 0,
+    "host_calls": 0,
+    "paid_calls": 0,
+    "fullscript_rewrites": 0,
+    "worker_PASS_receipts_created": 0,
+    "new_storyboard_authorship": false
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "status": "AUTHOR_FORMAT_CORRECTION_PENDING_INDEPENDENT_REVIEW",
+  "previous": {
+    "base": "external_working_archive",
+    "directory_label": "A37-formal-prototype",
+    "mapping_sha256": "e166f7c43a69ccc228699e49f0883611f44b1877f9a9d8aa960c59dea08ff58b",
+    "output_pins_sha256": "f21a0a454ed8b0f5aa7a63a7c77ec860b6f01fc964d9ce2dc641e6842f1ea264",
+    "evidence_copy": "previous-attempt/compose-lint-evidence.json",
+    "evidence_sha256": "0b98c36b2aaf5720df21c729f28d2d24d52d6f3abbf9828ef72cbb14652c05e9"
+  },
+  "changed_native_loops": [
+    {
+      "index": 0,
+      "before": {
+        "setup": "a37000l",
+        "payoff": "a37000p",
+        "what": "哥哥搬廠，口頭回呼再補十五名員工"
+      },
+      "after": {
+        "setup": "a370005",
+        "payoff": "a37000p",
+        "what": "哥哥搬廠，口頭回呼再補十五名員工"
+      }
+    }
+  ],
+  "original_loop_arrays_unchanged": true,
+  "all_scenes_lines_claims_unchanged": true,
+  "all_payoff_windows_unchanged": true,
+  "reason": "H03 is the original opening preview; O08 reinforces the same open question later. Anchoring only the final setup paragraph O08 hid this opening preview from native loop accounting. Native setup now uses the final line of H03; the full H03+O08 window remains in mapping. No added loop or narration.",
+  "opening_native_loops_after": 3,
+  "removed_warning": "the condensation plants 2 loops",
+  "remaining_narrative_warnings": [
+    {
+      "path": "scenes",
+      "message": "no open loop between 03:47 and 06:21 (154 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "no open loop between 06:21 and 08:22 (121 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    }
+  ]
+}

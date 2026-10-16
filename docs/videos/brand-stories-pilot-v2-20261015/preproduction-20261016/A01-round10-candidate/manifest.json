@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "status": "UNREVIEWED_OFFLINE_CANDIDATE",
+  "slug": "story-rolling-suitcase-v2",
+  "round9_archive_sha256": "b988ed8af18e650985f85d6085d243c71032b0885172405645a40c86dc1a341a",
+  "round9_source_composite_sha256": "cf39296d597d36db3cafedc1c2ca5ae730dd104a34b1d1868fb5b83fc089c56b",
+  "round9_narrative_sha256": "dd458ee2b6eee90a3b358408c605620c108ca4387afb94249fd555abc01babab",
+  "round9_failed": [
+    "chapters_link",
+    "payoffs",
+    "one_thread"
+  ],
+  "previous_two_line_manifest_sha256": "765918231e36b6451ce4cd8c9e89d29d72003982a7eac33573010d26f720ded6",
+  "previous_two_line_inverse_sha256": "af832d8bab885c686083c3d87f20014d45d10ef155af04e0eb82753f901a3980",
+  "source_chapters_sha256": {
+    "hook": "6092f556e92e53c45cf12d0526eb108892529f109c6b1ab19da588d25c05e81c",
+    "origin": "0c449e490e86cb1f505e6e72fb9747f31cc7396729d86cb41c810ec432285080",
+    "idea": "4e29ec76e866cd953f09c7f46e0afdaccd97317f25b82fde094957d1fabe3d6f",
+    "engine": "554bcb689657745484429fc23604f1c44ad5fb8498374180a25f9a627e6da89c",
+    "turn": "9e7f29962e363dfafcffc94f7edede02ca38fdf99eae419f282741cccf650583",
+    "now": "dccf358d1e7ebeca5134b4f5b629c52597e2a8abd67883500d12fef9f6618e56"
+  },
+  "previous_two_line_chapters_sha256": {
+    "hook": "6092f556e92e53c45cf12d0526eb108892529f109c6b1ab19da588d25c05e81c",
+    "origin": "750e8a98a86a4e51a9d63ea017c221be854a6110be43c2007efeda8e141ca0e7",
+    "idea": "4e29ec76e866cd953f09c7f46e0afdaccd97317f25b82fde094957d1fabe3d6f",
+    "engine": "554bcb689657745484429fc23604f1c44ad5fb8498374180a25f9a627e6da89c",
+    "turn": "9e7f29962e363dfafcffc94f7edede02ca38fdf99eae419f282741cccf650583",
+    "now": "a8781fd7777eabc07bdada1c97430f890d003571362b821c08571dacf7d00a01"
+  },
+  "candidate_chapters_sha256": {
+    "hook": "6092f556e92e53c45cf12d0526eb108892529f109c6b1ab19da588d25c05e81c",
+    "origin": "750e8a98a86a4e51a9d63ea017c221be854a6110be43c2007efeda8e141ca0e7",
+    "idea": "4e29ec76e866cd953f09c7f46e0afdaccd97317f25b82fde094957d1fabe3d6f",
+    "engine": "554bcb689657745484429fc23604f1c44ad5fb8498374180a25f9a627e6da89c",
+    "turn": "9e7f29962e363dfafcffc94f7edede02ca38fdf99eae419f282741cccf650583",
+    "now": "fa71bce2b12f2d87975ce4625407bbd9aa53cd843a8a96f5ba3e1e03c1f93eed"
+  },
+  "changes": [
+    {
+      "chapter": "origin",
+      "path": "scenes[0].lines[0].text",
+      "scene": "origin-01",
+      "line_id": "zc7k",
+      "byte_offset": 753,
+      "before": "開場那一家人，其實早就不必一路提箱子：1928 年出發時，母親拉著兒子做的箱子。",
+      "after": "1928 年，母親拉著兒子做的箱子出發；輪子有了，這卻還是一家人的自製品。",
+      "before_utf8_bytes": 110,
+      "after_utf8_bytes": 101,
+      "source_sha256": "0c449e490e86cb1f505e6e72fb9747f31cc7396729d86cb41c810ec432285080",
+      "candidate_sha256": "750e8a98a86a4e51a9d63ea017c221be854a6110be43c2007efeda8e141ca0e7",
+      "inverse_restores_exact_source_bytes": true
+    },
+    {
+      "chapter": "now",
+      "path": "scenes[0].lines[0].text",
+      "scene": "now-01",
+      "line_id": "7asx",
+      "byte_offset": 664,
+      "before": "有。1997 年，Samsonite 推出平衡四輪直立箱，箱子能站著推了。",
+      "after": "從往後拉，到站著推，1997 年 Samsonite 發表了平衡四輪直立箱。",
+      "before_utf8_bytes": 81,
+      "after_utf8_bytes": 82,
+      "source_sha256": "dccf358d1e7ebeca5134b4f5b629c52597e2a8abd67883500d12fef9f6618e56",
+      "candidate_sha256": "a8781fd7777eabc07bdada1c97430f890d003571362b821c08571dacf7d00a01",
+      "inverse_restores_exact_source_bytes": true
+    },
+    {
+      "chapter": "now",
+      "path": "claims[0].claim",
+      "claim_id": "n1",
+      "scene": "now-01",
+      "narration_line_id": "7asx",
+      "before": "從往後拉，到站著推，1997 年 Samsonite 推出了平衡四輪直立箱（不念型號）",
+      "after": "從往後拉，到站著推，1997 年 Samsonite 發表了平衡四輪直立箱（不念型號）",
+      "byte_offset": 4242,
+      "before_utf8_bytes": 97,
+      "after_utf8_bytes": 97,
+      "previous_two_line_sha256": "a8781fd7777eabc07bdada1c97430f890d003571362b821c08571dacf7d00a01",
+      "candidate_sha256": "fa71bce2b12f2d87975ce4625407bbd9aa53cd843a8a96f5ba3e1e03c1f93eed",
+      "inverse_restores_exact_previous_bytes": true
+    }
+  ],
+  "source": {
+    "samsonite_url": "https://corporate.samsonite.com/on/demandware.static/-/Sites-InvestorRelations-Library/default/dwa68533ea/PDF/announcements/2011/20110602100852_Samsonite_Final_Prospectus_en.pdf",
+    "samsonite_section": "HISTORY AND REORGANIZATION / Key Milestones, printed p.72, PDF P80, lines 3057-3058: presented Ultra Transporter, balanced four-wheel upright case, push or pull; p.72 line 3062 separately dates four-wheel Spinners to 2000; GLOSSARY printed p.40 / PDF P48 lines 1788-1790 defines multidirectional Spinner wheels",
+    "samsonite_limit": "2011 company retrospective explicitly says presented in 1997, not a contemporaneous launch or sales record; do not claim 1997 retail availability.",
+    "travelpro_url": "https://travelpro.com/pages/our-history",
+    "travelpro_section": "Our Story / The Origin, 1987, lines 279-288: two-wheeled upright suitcase pulled by an extendable handle",
+    "travelpro_limit": "No evidence of a direct Plath-to-Samsonite technical lineage.",
+    "winnetka_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+    "winnetka_limit": "Official site search index independently shows family-built case, son Bud fitting baby-carriage wheels and wooden handle before 1928 trip; direct page open timed out, so not an independently read live page."
+  },
+  "unchanged_claim_metadata": {
+    "id": "n1",
+    "scene": "now-01",
+    "source": 11,
+    "fact": 9,
+    "verdict": "PLAN",
+    "flags_and_note_unchanged": true
+  },
+  "claim_and_line_wording_aligned": true,
+  "validation_status": "MECHANICAL_ONLY_NO_NARRATIVE_JUDGE",
+  "validation_file_sha256": "f8059ca8b9288a429674989a07242fc548701a0f9a8bd46a09c2996d80675348",
+  "inverse_file_sha256": "e72908a2b9edf81817418d08aca8f564d85a6df07c240fd8177046169c29e27e",
+  "authorizes_pass_or_media": false
+}
