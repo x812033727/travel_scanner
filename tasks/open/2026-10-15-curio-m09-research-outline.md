@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-m09-research-outline
 title: Curio M09 research and outline
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-curio-h12-m09-verifier
+claimed_at: 2026-10-16T00:38:37Z
 created_at: 2026-10-15T16:34:56Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -71,3 +71,8 @@ scope:
 - 新增 S9：2016 前蓋原論文 p. 291 金星 462 年／289 會合週期，p. 294 土星 442 年／427 會合週期。正文只念原有年數。刪片尾 n5uu／g5ga／w2sg 年代和作者旁枝，ams3 直接帶出天文方法如何接成傳動；改句／畫面見 `revision-1.json`。
 - 修稿 SHA-256：`795ba47d4864702d6476b75653f27f0e4b09665d3d4d783c80c555498b3f5637`。93 景／95 句、87 插圖景，估 09:21（未合成）；schema／lint 0 error，2 個已說明的研究場景詞頻提示，Shorts 引用、主張表、開場同圖回收均通過。收據 `script-validation.json` 為作者機械驗證，不是獨立通過。
 - 下一位獨立查核者接手本 scope 寫 `verify-1.md`，另需新十三題盲評。初輪結果曾退修，本輪作者不自判通過。尚未正式劇本送審或付費：paid calls = 0、worker starts = 0；每集 US$6／整批 US$30 授權仍有效，但不跳過劇本核准。此票保留 open 待覆核，不 done。
+
+### 2026-10-16 正式稿獨立事實覆核第 1 輪
+
+- `docs/videos/curio-m09/verify-1.md` 逐列檢查 204 個旁白、畫面文字／提示及上架文字項目；**事實 PASS** 綁定 `video.json` SHA-256 `795ba47d4864702d6476b75653f27f0e4b09665d3d4d783c80c555498b3f5637`，未留事實阻斷。2016 前／背盤原論文已實讀，先前背盤小盤配置和原論文缺鏈問題均已解決；30 殘存齒輪、69 模型齒輪、十九年／223 月及 2024 孔數均分清。
+- 獨立 lint 0 error、2 個研究場景詞頻 warning。查核者未修改正式稿；此票仍 open，待協調者完成正式稿敘事／盲評收斂及站主劇本核准。
