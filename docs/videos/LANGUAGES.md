@@ -4,7 +4,7 @@
 
 ## 一句話
 
-每支影片先只做繁體中文。成片核准之後，站主在影片頁決定要不要加語言、加哪幾種、每種加什麼（標題與說明、CC、配音）。決定了、做好了，才排上架；上架之後還可以再加。
+每支影片先只做繁體中文。一般影片成片核准之後，站主在影片頁決定要不要加語言、加哪幾種、每種加什麼（標題與說明、CC、配音）。品牌故事可在成片前先儲存英／日／韓的選擇；目前這版繁中成片核准、完整 QA 通過且證明繁中 CC 可關閉之後，工人才開始製作所選語言。決定了、做好了，才排上架；上架之後還可以再加。
 
 ## 站主的要求（2026-09-27）
 
@@ -14,6 +14,7 @@
 | 製作好繁體中文版後，再讓我決定要不要製作哪些多國語言 | 語言面板在成片核准後出現；預設什麼都不勾；設定分頁的「語言預設」只是預先勾選 |
 | 決定後再發布 | 「可以上架」要等語言決定了、選了的部件都做好或有跳過的原因，才排上架時間 |
 | 多國語言指的是不同語言的標題跟 CC 還有語音等 | 三個部件各自可選；縮圖 YouTube 不能分語言，所以沒有這一項 |
+| 品牌故事可先勾英／日／韓配音，成片核准後才製作（2026-10-16） | 先儲存選擇；工人需讀回目前成片的完整 QA、未燒錄字幕證據與核准狀態，未達條件不開始翻譯、配音或重做 |
 
 配音「每支影片選、不是全域設定」是 2026-09-27 早先的決定（`DUBS.md` §每支影片的選擇），這份把它擴成三個部件。
 
@@ -32,7 +33,7 @@
 | CC（`captions`） | 翻每一句；有配音時字幕跟配音的時間軸（`DUBS.md`） | T8 的 `captions.insert`；T8 沒好之前站主上傳 `.srt` |
 | 配音（`dub`） | 同一個頻道聲音唸翻譯（`DUBS.md` 全套：視窗、加速、縮短、Jev） | 只能站主在 Studio「語言」頁上傳 |
 
-依賴：配音要先有 CC 的翻譯；勾了配音會自動連 CC 一起做（面板上會勾起來且不能取消）。標題與說明可以單獨勾。漫劇的配音可由站主手動選給分類是觀念解說（`explainer`）的旁白影片；品牌故事（`story`）還要有目前這版已核准成片的品管證據，證明正片不燒字幕、繁中由可關閉的 CC 提供，面板才開放。舊版已燒錄字幕的故事要先重做乾淨正片並重過審核，再製作外語配音。其他漫劇的配音是第二期（多角色要每個角色一個外語聲音，`DUBS.md` §已知限制），面板上灰掉。2026-10-01 起新漫劇對白全為可開關 CC，正片不燒字幕；這次十部先完成 zh-TW，再製作 ja／ko／en 配音與各自 CC，[製作規格](series-plans/production-20261001/profile.json) 的多角色多語狀態仍為待實作。
+依賴：配音要先有 CC 的翻譯；勾了配音會自動連 CC 一起做（面板上會勾起來且不能取消）。標題與說明可以單獨勾。漫劇的配音可由站主手動選給分類是觀念解說（`explainer`）的旁白影片；品牌故事（`story`）可先勾選，但**勾選只儲存意向**，不代表准許製作。目前這版繁中成片仍須通過審核與完整品管，證明正片不燒字幕、繁中由可關閉的 CC 提供，工人才可翻譯或配音。舊版已燒錄字幕的故事要先重做乾淨正片並重過審核；已核准乾淨成片換版時，舊版的配音選擇會撤回，站主可為新版本重新勾選。其他漫劇的配音是第二期（多角色要每個角色一個外語聲音，`DUBS.md` §已知限制），面板上灰掉。2026-10-01 起新漫劇對白全為可開關 CC，正片不燒字幕；這次十部先完成 zh-TW，再製作 ja／ko／en 配音與各自 CC，[製作規格](series-plans/production-20261001/profile.json) 的多角色多語狀態仍為待實作。
 
 ### 資料模型
 
@@ -42,15 +43,16 @@
 | `video_projects.locales_decided_at` | 站主第一次儲存語言面板的時間（含「只出繁體中文」）；`null` 就是還沒決定 |
 | `video_projects.dub_locales` | 不再讀寫；遷移把它搬進 `locales`（三個部件都 true），欄位留著不刪（同 `subscription_max_usage_percent` 的做法） |
 | 遷移 | 已在 YouTube 上的、或 `dub_locales` 非空的影片，`locales_decided_at` 設成遷移時間；其餘留 `null`，站主要決定一次 |
-| `PUT /admin/videos/{slug}/languages` | `{"locales": {…}}`；只收 en、ja、ko；勾 dub 就強制 captions；觀念解說（`explainer`）可選，品牌故事（`story`）只在目前成片通過無燒錄字幕品管與審核時可選，否則回 422 `video_locales_story_dub_requires_switchable_cc`；其他漫劇拒收 dub（422 `video_locales_dub_not_for_drama`）；寫 `locales_decided_at`（第一次）與 audit `video_locales_set`；已放棄的影片拒絕。取代 `PUT …/dubs` |
+| `PUT /admin/videos/{slug}/languages` | `{"locales": {…}}`；只收 en、ja、ko；勾 dub 就強制 captions；觀念解說（`explainer`）可選，品牌故事（`story`）可在成片前預選且只寫入選擇；其他漫劇拒收 dub（422 `video_locales_dub_not_for_drama`）；寫 `locales_decided_at`（第一次）與 audit `video_locales_set`；已放棄的影片拒絕。取代 `PUT …/dubs` |
 | `ProjectSummary`／`ProjectOut` | 帶 `locales`、`locales_decided_at`、`languages`（每個語言每個部件 `ready`｜`working`｜`skipped: <原因>`｜`uploaded`，伺服器從還算數的 `languages` 審核算出：等站主的與已核准的，舊到新，後面的批次蓋過前面的；被退回、被取代的不算）；工人從既有的影片清單就看得到。2026-10-10 起多兩欄 `dub_retries`、`dub_retry_blocked`（下面「跳過的配音再做一次」） |
+| `ProjectOut` 的故事配音旗標 | `story_dub_preselectable` 表示可在後台先儲存品牌故事配音意向；`dub_allowed` 表示目前成片已通過綁定雜湊的完整無燒錄字幕 QA，可開始製作。後者只供 worker 讀取，缺值視為不准製作 |
 | 審核 gate `languages` | 取代 `dubs`（`Gate` 留著 `dubs` 讓舊列讀得出來，CHECK 加 `languages`）。payload `{ locales: { en: { metadata: "ready", captions: "ready", dub: "ready" }, ja: { …, dub: "skipped", reason } } }`，檔案：說明欄 `.txt`、字幕 `.srt`、音軌（role `dub_<locale>`，m4a、mp3 或 wav，照配音做出來的格式），加上當下的 `metadata.json`（role `metadata`）與綁定核准來源的語言清單（role `languages_manifest`，雜湊就是審核的 content hash；YouTube 同步只收有這兩份的批次，見 [`APPROVED-LANGUAGE-PACKAGE.md`](APPROVED-LANGUAGE-PACKAGE.md)）。配音做好的語言，那一格旁邊還可能有 `kept_lines`（句子 id 的陣列：重錄塞不進視窗、沿用原本那次錄音的句子，`DUBS.md` 的 `--keep-fitting`）。**沒有配音的批次伺服器直接核准**（沒有站主要做的事）；有配音的等站主在 Studio 上傳後按「已上傳」 |
 | `video_projects.dub_retries` | JSON（不是 jsonb），預設 `{}`，migration 0131。每個語言一筆，只留最新的那次「再做一次」要求與它怎麼結束，見下面「跳過的配音再做一次」 |
 | 設定分頁 | `caption_locales` 與 `drama_caption_locales`（[`DRAMA-FLOW.md`](DRAMA-FLOW.md)）改成「語言面板預先勾選」：只影響面板打開時勾了什麼，不會自己做任何語言 |
 
 ### 後台：語言面板
 
-在影片頁「進度」下面、審核卡片上面，取代 `DubLanguages`，成片核准後才出現（之前顯示一行「成片核准後可以選語言」）：
+在影片頁「進度」下面、審核卡片上面，取代 `DubLanguages`。一般影片成片核准後才出現（之前顯示「成片核准後可以選語言」）；品牌故事提前顯示，讓站主預選英／日／韓，並標明繁中成片與可關閉 CC 驗收通過後才會製作：
 
 | 語言 | 標題與說明 | CC | 配音 |
 | --- | --- | --- | --- |

@@ -70,16 +70,18 @@ export type ProjectSummary = {
   dropped_at?: string | null; dropped_note?: string | null;
   retry_request_id?: string | null; retry_acknowledged_id?: string | null;
   format?: "slides" | "drama" | "shorts"; media_usd?: number; clip_seconds?: number;
-  // Detail response: the server has verified this cut can take a dub. An older API omits it;
-  // a story without an explicit true must stay locked because its subtitles may be burned in.
+  // Detail response: the server has verified this exact cut can enter paid dub production.
+  // A story may separately allow saving dub intent before its final cut passes that check.
+  // An older API omits the preselection flag, so the editor keeps early selection locked.
   dub_allowed?: boolean;
+  story_dub_preselectable?: boolean;
   // A Short (docs/videos/SHORTS.md) is a video whose content line is set: its series, the video it
   // was cut from, where it stands as the Shorts tab groups them, the slot it holds, and when the
   // site found it gone from YouTube. All absent from an API older than the Shorts tab.
   shorts_line?: "lab" | "cut" | "drama" | null; shorts_series?: string | null; source_slug?: string | null;
   shorts_state?: "making" | "needs_you" | "library" | "slotted" | "scheduled" | "published" | "missed" | "dropped" | null;
   slot_at?: string | null; youtube_removed_at?: string | null;
-  // The languages the owner chose after the final cut and what of each, when they first decided,
+  // The languages the owner chose (possibly before a brand story's final cut) and what of each,
   // where each chosen part stands, and the server's verdict on whether the video may be scheduled
   // (docs/videos/LANGUAGES.md); all absent from an API older than the language panel, which
   // only knew the dub languages.
@@ -177,8 +179,14 @@ export const finalApproved = (project: ProjectSummary & { reviews?: Review[] }) 
   // The API orders reviews newest first; an older approval cannot approve a newer imported cut.
   const currentFinal = reviews.find((review) => review.gate === "final" && !review.subject);
   if (currentFinal?.status === "pending" && currentFinal.payload.imported) return false;
+  // Locale choices can be saved before a final cut. Their timestamp never proves approval,
+  // including for a story recategorized as an explainer in a list row without the detail flag.
+  const story = project.category === "story" || project.story_dub_preselectable === true;
+  // A detail response includes reviews: the newest final wins over stale checklist/upload fields
+  // after a cut is replaced or sent back. A list row falls back to its current checklist.
+  if (story && project.reviews) return currentFinal?.status === "approved";
   return project.checklist.some((item) => item.key === "final_video_approved" && item.done)
-    || Boolean(project.publish_approved_at || project.locales_decided_at || project.youtube_video_id)
+    || Boolean(project.publish_approved_at || project.youtube_video_id)
     || reviews.some((review) => review.gate === "final" && review.status === "approved");
 };
 

@@ -3646,8 +3646,8 @@ export class Automation {
 
   /**
    * The zh-TW captions, cut from the approved narration. The other languages are no longer made
-   * here: the owner chooses them per video once the final cut is approved, and `languages` makes
-   * exactly those (docs/videos/LANGUAGES.md), so the final gate never waits on a translation.
+   * here: the owner chooses them per video, and `languages` makes exactly those only after the
+   * final cut is eligible (docs/videos/LANGUAGES.md). The final gate never waits on a translation.
    */
   async captions(state) {
     const result = await run(this.ctx, ["captions", "--slug", state.slug]);
@@ -3655,8 +3655,29 @@ export class Automation {
     return `${state.slug}: captions written`;
   }
 
+  storyDub(state, video = null) {
+    // The worker's series kind survives a category change on the site. The category also
+    // covers a standalone story, which has no series in auto.json.
+    const listed = video ?? (this.site ?? []).find((each) => each.slug === state.slug);
+    return state.series?.kind === "story" || state.category === "story" || listed?.category === "story";
+  }
+
+  async storyDubReady(state, video = null) {
+    if (!this.storyDub(state, video)) return true;
+    // A saved choice is intent, not permission to spend. The approved local final must be
+    // the exact cut whose current site review passed switchable-caption QA. A stale worker
+    // approval, replaced review or missing field fails closed.
+    const local = await approvalState({ gate: "final", docDir: docDir(state.slug, this.ctx.root), workdir: this.workdir(state.slug) });
+    if (local.status !== "approved" || !local.sha256) return false;
+    const project = await this.api.reviews(state.slug);
+    const final = Array.isArray(project?.reviews)
+      ? project.reviews.find((review) => review.gate === "final" && (review.subject ?? null) === null)
+      : null;
+    return project?.dub_allowed === true && final?.status === "approved" && final.content_sha256 === local.sha256;
+  }
+
   /**
-   * One unit of the languages work (docs/videos/LANGUAGES.md). Once the final cut is approved
+   * One unit of the languages work (docs/videos/LANGUAGES.md). Once the final cut is eligible
    * and the owner has chosen the video's languages on /admin/videos, the choice is copied into
    * the work directory (captions, package, qa and review-push read it there); then a round
    * translates one locale's chosen parts, or makes one locale's dub track (shortening and
@@ -3672,9 +3693,19 @@ export class Automation {
     const slug = state.slug;
     const video = (this.site ?? []).find((each) => each.slug === slug);
     if (!video || video.dropped_at || !video.locales_decided_at) return null;
+    // Story dubs may be selected before a final exists. Keep the whole language round,
+    // including an older retry request, idle until the current final has passed switchable-CC
+    // QA. A list row cannot grant that permission; only a fresh detail answer can.
+    const openStoryRetry = Object.values(video.dub_retries ?? {}).some((retry) => retry?.open);
+    const wantsStoryDub = this.storyDub(state, video) && (
+      Object.values(video.locales ?? {}).some((choice) => choice?.dub) || openStoryRetry
+    );
+    if (wantsStoryDub && !(await this.storyDubReady(state, video))) return null;
     // The owner's requests to make a given-up dub again come first (docs/videos/DUBS.md §再做一次).
     const asked = await this.dubRetries(state, video);
     if (asked) return asked;
+    // A retry's dry run can outlive the final review it started under.
+    if (wantsStoryDub && openStoryRetry && !(await this.storyDubReady(state, video))) return null;
     const dir = docDir(slug, ctx.root);
     const workdir = this.workdir(slug);
     if (!existsSync(path.join(dir, "video.json"))) return null;
@@ -3844,6 +3875,7 @@ export class Automation {
     const dir = docDir(slug, ctx.root);
     const workdir = this.workdir(slug);
     const refuse = (reason) => this.refuseDubRetry(state, locale, theirs.id, reason);
+    if (!(await this.storyDubReady(state, video))) return null;
     if (state.tidied_at) return refuse(tidiedDubRetry(state));
     if (!existsSync(path.join(dir, "video.json"))) return refuse("工人這裡找不到這支影片的腳本，沒辦法重做");
     if ((await approvalState({ gate: "final", docDir: dir, workdir })).status !== "approved") return refuse("成片在工人這裡對不上核准的版本（成片換過或還沒核准），現在做不了配音");
@@ -3868,6 +3900,9 @@ export class Automation {
     // The dry run only notes such lines and exits 0; the real run stops on them before it writes
     // fit.json, and makeDub would spend its shortening rounds on the earlier attempt's list.
     if (/lines have no current translation/.test(dry.out)) return refuse("這個語言有幾句翻譯已經不是現在的版本，要先補上翻譯才能再做配音；這條配音先不做");
+    // The final can be replaced while the retry's free checks run. Do not take the
+    // request, clear its skipped track or buy a take unless it is still eligible.
+    if (!(await this.storyDubReady(state, video))) return null;
     this.fence(slug, `taking the ${locale} dub request`);
     const seen = await report(ctx, this.api, state, this.shownStage(state), { dubRetries: { [locale]: { id: theirs.id, status: "taken" } } });
     const answer = seen?.dub_retries?.[locale];
@@ -3880,13 +3915,14 @@ export class Automation {
   }
 
   /** The end of a take the site confirmed (takeDubRetry): the skip goes, the record says taken, and the dub is made. */
-  startDubRetry(state, locale, id) {
+  async startDubRetry(state, locale, id) {
+    if (!(await this.storyDubReady(state))) return null;
     const workdir = this.workdir(state.slug);
     rmSync(dubArtifacts(workdir, locale).skipped, { force: true });
     state.dub_retries = { ...(state.dub_retries ?? {}), [locale]: { id, status: "taken", at: this.ctx.now().toISOString() } };
     state.notes.push(`${locale} dub asked for again by the owner`);
     saveState(workdir, state);
-    return this.makeDub(state, locale);
+    return this.makeDub(state, locale, { storyChecked: true });
   }
 
   /**
@@ -4043,6 +4079,11 @@ export class Automation {
   async translateLocale(state, locale, parts, video) {
     const { ctx } = this;
     const workdir = this.workdir(state.slug);
+    // A preselected story dub makes translation part of its paid language round. Check the
+    // exact final again before each model request; a replacement between worksheet units or
+    // between translation and caption review must not buy more work for the old cut.
+    const storyDubSelected = this.storyDub(state)
+      && Object.values(readLanguages(workdir)?.locales ?? {}).some((choice) => choice?.dub);
     const sheetResult = await run(ctx, ["i18n-sheet", "--slug", state.slug, "--locale", locale, "--parts", parts.join(",")]);
     if (sheetResult.code !== 0) return this.block(state, `i18n-sheet ${locale} failed: ${sheetResult.out.trim()}`);
     const sheetFile = path.join(workdir, "i18n", `${locale}.todo.json`);
@@ -4063,6 +4104,7 @@ export class Automation {
       if (kept[keys[index]]?.reviewed) continue;
       const label = whole ? locale : `${locale} part ${index + 1} of ${units.length}`;
       const ask = async (stage, worksheet) => {
+        if (storyDubSelected && !(await this.storyDubReady(state))) return null;
         try {
           return await this.stage(stage, state.slug, { locale, parts: whole ? parts : unit.parts, worksheet: withoutContext(worksheet), video: unitVideo(video, unit, whole), ...unitContext(context, unit), ...source }, 32_000, state.format);
         } catch (error) {
@@ -4074,6 +4116,7 @@ export class Automation {
       let draft = kept[keys[index]]?.translated ?? null;
       if (!draft) {
         const translated = await ask("translator", unit);
+        if (translated === null) return null;
         if (!Array.isArray(translated.worksheet?.lines)) return this.retryLater(state, "translator", `the ${label} translation returned no worksheet`);
         draft = keptWorksheet(translated.worksheet, unit, locale);
         const gaps = unitGaps(draft, unit);
@@ -4085,6 +4128,7 @@ export class Automation {
       // A review without its own worksheet leaves the translation kept, unreviewed, for the next
       // round's reviewer: it never goes in as if it had been read.
       const reviewed = await ask("caption_reviewer", draft);
+      if (reviewed === null) return null;
       if (!Array.isArray(reviewed.worksheet?.lines)) return this.retryLater(state, "caption_reviewer", `the ${label} review returned no worksheet; the translation waits for its review`);
       const checked = keptWorksheet(reviewed.worksheet, unit, locale, draft);
       const gaps = unitGaps(checked, unit);
@@ -4141,10 +4185,17 @@ export class Automation {
    * request whose answer was lost (speechUncertain) blocks the video: the locale is not given up
    * for a request that may well have worked, nor bought again without the owner.
    */
-  async makeDub(state, locale) {
+  async makeDub(state, locale, { storyChecked = false } = {}) {
+    // Re-read just before the first paid take. A previously approved local final alone does
+    // not authorize a story dub; its site review or QA may have changed since languages().
+    if (!storyChecked && !(await this.storyDubReady(state))) return null;
     const { ctx } = this;
     const slug = state.slug;
     const workdir = this.workdir(slug);
+    const guardedSpeech = async (command) => {
+      if (!(await this.storyDubReady(state))) return null;
+      return this.speech(slug, command);
+    };
     const rounds = { shorten: 0, retakes: 0, reword: 0, ...(state.languages?.[locale] ?? {}) };
     const remember = () => {
       state.languages = { ...(state.languages ?? {}), [locale]: rounds };
@@ -4203,17 +4254,24 @@ export class Automation {
     // The lines that kept their earlier take because the retake did not fit (fit.json `kept`).
     let kept = [];
     for (;;) {
-      let made = await this.speech(slug, dubArgs);
+      let made = await guardedSpeech(dubArgs);
+      if (!made) return null;
       while (made.code === 1 && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
         const over = overLines();
         if (!Array.isArray(over) || !over.length) break;
         rounds.shorten += 1;
         remember();
         const shortened = await this.shortenDub(state, locale, over);
+        if (shortened.paused) {
+          rounds.shorten -= 1;
+          remember();
+          return null;
+        }
         if (shortened.stopped) return shortened.stopped;
         // Nothing usable came back: the same windows would only be over again.
         if (!shortened.ids.length) break;
-        made = await this.speech(slug, dubArgs);
+        made = await guardedSpeech(dubArgs);
+        if (!made) return null;
       }
       if (made.code === ctx.EXIT.incomplete) return stopped("dub", made);
       if (made.code === 1) return this.giveUpDub(state, locale, unfit(overLines(), made, shortening()));
@@ -4221,7 +4279,8 @@ export class Automation {
       if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
       if (made.code === 4) return unfinished("dub", made);
       if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
-      let check = await this.speech(slug, checkArgs);
+      let check = await guardedSpeech(checkArgs);
+      if (!check) return null;
       let refit = false;
       while (check.code === 1 && rounds.retakes < MAX_DUB_RETAKE_ROUNDS) {
         rounds.retakes += 1;
@@ -4231,7 +4290,12 @@ export class Automation {
         // line its earlier take back (dub --keep-fitting): that take fitted, only its wording
         // was in doubt, and the locale goes out with those lines named rather than given up.
         const keep = rounds.shorten >= MAX_DUB_SHORTEN_ROUNDS;
-        const redo = await this.speech(slug, [...dubArgs, "--redo", flags, ...(keep ? ["--keep-fitting"] : [])]);
+        const redo = await guardedSpeech([...dubArgs, "--redo", flags, ...(keep ? ["--keep-fitting"] : [])]);
+        if (!redo) {
+          rounds.retakes -= 1;
+          remember();
+          return null;
+        }
         if (redo.code === ctx.EXIT.incomplete) return stopped("dub retake", redo);
         if (redo.code === 4) {
           if (flaggedTakes() === takes) rounds.retakes -= 1;
@@ -4250,7 +4314,8 @@ export class Automation {
         if (redo.code !== 0) return this.block(state, `dub ${locale} retake failed: ${lastLine(redo.out, 2)}`);
         kept = readJson(dubArtifacts(workdir, locale).fit, null)?.kept ?? [];
         if (kept.length) break;
-        check = await this.speech(slug, checkArgs);
+        check = await guardedSpeech(checkArgs);
+        if (!check) return null;
       }
       if (refit) continue;
       if (kept.length) break;
@@ -4258,6 +4323,11 @@ export class Automation {
         rounds.reword += 1;
         remember();
         const reworded = await this.rewordDub(state, locale);
+        if (reworded.paused) {
+          rounds.reword -= 1;
+          remember();
+          return null;
+        }
         if (reworded.stopped) return reworded.stopped;
         // Nothing usable came back: the same words would only be heard wrong again.
         if (reworded.ids.length) continue;
@@ -4328,6 +4398,7 @@ export class Automation {
       .filter((entry) => sources.has(entry.id) && typeof translation.lines?.[entry.id]?.text === "string")
       .map((entry) => ({ id: entry.id, source: sources.get(entry.id), text: translation.lines[entry.id].text, chars: entry.chars, max_chars: entry.max_chars, ...(entry.seconds === undefined ? {} : { seconds: entry.seconds }), window_over_seconds: entry.window_over_seconds }));
     if (!lines.length) return { ids: [], problems: ["no line to shorten has a current translation"] };
+    if (!(await this.storyDubReady(state))) return { paused: true };
     const answer = await this.stage("translator", slug, { locale, lines, video, ...sourceLocale(video) }, 16_000, state.format, "shorten");
     if (!Array.isArray(answer?.lines)) return { stopped: await this.retryLater(state, "translator", `the ${locale} shortening pass answered without a lines array`) };
     this.cleared(state, "translator");
@@ -4397,6 +4468,7 @@ export class Automation {
         return { id, source: sources.get(id), text, heard: String(heard[id]?.heard ?? ""), max_chars: Math.max(budget, [...text].length) };
       });
     if (!lines.length) return { ids: [], problems: ["no flagged line has a current translation"] };
+    if (!(await this.storyDubReady(state))) return { paused: true };
     const answer = await this.stage("translator", slug, { locale, lines, video, ...sourceLocale(video) }, 16_000, state.format, "reword");
     if (!Array.isArray(answer?.lines)) return { stopped: await this.retryLater(state, "translator", `the ${locale} rewording pass answered without a lines array`) };
     this.cleared(state, "translator");

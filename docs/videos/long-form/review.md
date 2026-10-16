@@ -5490,9 +5490,37 @@ Ran: Node v22.22.0 `tools/video/long-form/cli.mjs check` (FAIL on this one bindi
 Non-claims: this is a one-file incremental source duration review. It does not re-review the other 107 bound files, the unbound files the branch changes (`core/watermark.mjs`, the segment helpers, shorts, docs), the visual placement of the mark, or accept media, playback, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Brand story dub preselection duration increment: 11 files (2026-10-16)
+
+Reviewer: `codex-story-dub-independent-review-8a78`. Author: `codex-story-dub-preselect-8a78`. Scope: DURATION_ONLY for frozen branch `codex/story-dub-preselect-20261016`, task `2026-10-16-allow-brand-story-dub-preselection-while`. This reviewer did not author the implementation and changed only this report, its receipt and a separate task file.
+
+Baseline and binding: the existing receipt and report agree. Independent SHA-256 hashing found exactly 11 stale registered paths: two API files, the admin review card and its test, five admin locale catalogs, the automation test, and automation/flow.mjs. Their complete paths and exact new byte hashes are in the binding table below; the other 97 registered files still match their prior receipt hashes. No duration policy, plan, migration, timeline, assembler, QA-duration, or duration-regression file changed in this branch.
+
+Findings: the API distinguishes early saved brand-story dub intent from permission to make a dub; a current final with switchable zh-TW CC QA is still required. The worker binds its local approved final SHA-256 to the latest approved site final and rechecks before translation, each speech call and retry. The admin page reports early choices as waiting for final review; it does not treat a saved language timestamp as final approval, including a recategorized story list row. These paths alter gating and status only. The existing approximately 10-minute brand-story target, 600/780-second planning targets, eight-minute non-drama minimum, 480-second measured QA floor, `VIDEO_MIN_EPISODE_MINUTES`, `MIN_EPISODE_MINUTES`, `target_minutes`, `runtime_spec`, `action_seconds`, timeline estimation, source hashes, covered state, and measured body/final duration checks remain unchanged. No duration correction is required.
+
+Ownership: draft PR #1503 also has receipt edits on its own clean worktree; #1387 is an older open draft. This branch signs only its own frozen bytes. Whichever PR merges second must rebase, independently inspect the combined changes, and rebind any newly changed registered bytes.
+
+Ran: Node v24.13.0 `tools/video/long-form/cli.mjs check` passed all 473 plans, including the 600/780-second targets and 480-second measured floors; `node --test tools/video/long-form/review.test.mjs` passed 2/2. The 108 registry hashes and all report-table entries were independently checked after rebinding.
+
+Follow-up fixture rebinding after the final web test freeze: the external-final and skipped-dub fixture groups now declare `final_video_approved` in their checklists. They previously relied on `locales_decided_at` as an implicit final-approval signal; the explicit checklist matches their already-approved-final scenarios. This changes only `apps/web/components/admin-video-reviews.test.tsx`, from 290283942c9559ac0741d116012067335fe0ec74dcce09aaf44362080d224b69 to 231f41dc4e3b390b19b7d2bdab55e336891602315554b99b9715803023974286 (raw SHA-256). No production code, duration target, estimator, QA floor or duration assertion changed. The other 107 bindings remain byte-identical.
+
+Non-claims: this duration-only increment does not approve A01 narrative quality, media, paid production, deployment, upload, publication or live playback. It does not re-review the other 97 registered files.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
+## Brand story dub preselection rebase LF-normalization increment: 7 web files (2026-10-16)
+
+Reviewer: `codex-story-dub-independent-review-8a78`. Author: `codex-story-dub-preselect-8a78`. Scope: DURATION_ONLY for the rebased branch head `974ad0d39ff3de412eeacda7edf99366fb492279` on main `aa36ce02d`. This reviewer authored none of the seven web source or test files.
+
+Baseline and byte proof: `git diff --numstat 9b8bcf6b2 974ad0d39 --` the seven paths below is empty: their committed Git blobs are unchanged by the rebase. The earlier receipt hashed their CRLF working-tree bytes; `git ls-files --eol` now reports `i/lf w/lf` for each. Independently replacing every LF in each current file with CRLF reproduces its exact earlier raw SHA-256, and none of the current seven files contains a CR byte. Exactly those seven bindings were stale; the other 101 registry paths match the preceding receipt byte-for-byte. Their new raw LF SHA-256 values appear in the table below.
+
+Findings: this is a line-ending normalization only. The reviewed API, worker and UI behavior, 600/780-second planning targets, eight-minute non-drama minimum, 480-second measured QA floor, duration estimators, frame counts, source hashes and covered state are unchanged. No duration correction is required.
+
+Non-claims: this rebinding does not approve A01 media, paid work, deployment, upload, publication or live playback. It does not re-review the other 101 registered files.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the #1391/#1517 integration increment and the PR #1454 merge with main increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the brand story dub preselection rebase LF-normalization increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5506,8 +5534,8 @@ These 108 bindings describe the current reviewed bytes after the #1391/#1517 int
 | `apps/api/app/video_automation/schemas.py` | `d1af5e4597fd8135245bf95fee4a58779d652069ba69efae2d304b4a2493e050` |
 | `apps/api/app/video_automation/series.py` | `fe30ad598feadbb9329f737fe48218b3f5d1750763304f283111f56d52a45128` |
 | `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
-| `apps/api/app/video_reviews/admin_service.py` | `ee87791e7051949cea6a781fe70c71c8acc3339368a02f7ddb16505b10d11a44` |
-| `apps/api/app/video_reviews/schemas.py` | `1e5dea4e5ec298dbfa6ad497fdf1e1bad117e259284b3fab37e65bf97709bdb8` |
+| `apps/api/app/video_reviews/admin_service.py` | `bdf99e9e6160b6a1c2ac82222ab81e03feb1883613e1d6e83a1e115032ff931f` |
+| `apps/api/app/video_reviews/schemas.py` | `08e5269f4c34472ceaebcc01135c294a6a25da3e637477d9d58132704069e7fa` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
 | `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
@@ -5520,16 +5548,16 @@ These 108 bindings describe the current reviewed bytes after the #1391/#1517 int
 | `apps/api/tests/test_video_explainer_duration.py` | `45bdcbe9ec7c7c47e437b6d65ec967801e8553acbbf1c8285d734f8a7242eddc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac` |
-| `apps/web/components/admin-video-review-card.tsx` | `cf43f019d52bf11c370fe9a02703f3fc67145b218dcaa01edfba2481502a56cf` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `aca9f9821c56bee31de5fc28e8e403d1b1df11095f109ce3af14b5e3510124c6` |
+| `apps/web/components/admin-video-review-card.tsx` | `85d206ee1773f585d2478d82c84df52992e0c1e5cc34d2b099677ef40cadcb0e` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `46a04ad482d528ab576bf9411bb5f381c7600d982a709c3648c0368f3dda7b75` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `c64bfba40979fef3f8291ae2582a8cc2bb55644d4be0655ba75b39f767677d8a` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `0574fc16c2428897bd0a5cb0c4cf35e75178666e6fc702043fc1e1d2f5b8aace` |
-| `apps/web/messages/ja/admin.json` | `d32392e55fe47a9ae1df9e3463fd95a577b3da550e940a444d908b26aaa273a4` |
-| `apps/web/messages/ko/admin.json` | `8232fa2f2bd8a23016c67bd4e7556010d35a938e4d5dace64e79855e2c8358bd` |
-| `apps/web/messages/zh-CN/admin.json` | `499c73c44c2f8d01c96f925bdde50b23b547c20805e46a636ecd6c0dcda7566d` |
-| `apps/web/messages/zh-TW/admin.json` | `4d0767647450de8a95aac8dd5c49529cc0ecdbaa613a1a1cdeee92da84549105` |
+| `apps/web/messages/en/admin.json` | `7ebfb019378f34539c556be4b3d128dd0f43020328f4fd15da52c5a2b0eace15` |
+| `apps/web/messages/ja/admin.json` | `5e4963e40d87b04a12965071c5eac36a9a2121b89e158f3afe4e19926a871cbf` |
+| `apps/web/messages/ko/admin.json` | `33fb901076ee8c96c85103ac5e86e70d3b5680cbe72b2899a56fa7279af41a74` |
+| `apps/web/messages/zh-CN/admin.json` | `08156763a3b670bea42b498a082d9b9d0b581d8fab49c9a241cc9e71662c21a3` |
+| `apps/web/messages/zh-TW/admin.json` | `e77b8019e03019252befcb8094ca8158b775b7b0220b3c9efd7e68f271ff8f32` |
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
@@ -5546,9 +5574,9 @@ These 108 bindings describe the current reviewed bytes after the #1391/#1517 int
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `ef1b881cea4230b6db1b2cad4f8386f446b54f274b72352a3284681e664e8310` |
+| `tools/video/automation/automation.test.mjs` | `e9e944842f4bbb84582d3572643102fa8cacf7f992dffb5607cb364b540b1ee4` |
 | `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
-| `tools/video/automation/flow.mjs` | `dcf8725f3bef832a9d92c8f8f74b39557abaf201959716587d2c7cfc183c766b` |
+| `tools/video/automation/flow.mjs` | `df6fbafd66634d8d53697d23180781ae008cdfd0da3355b4fdd6c303a7fe2331` |
 | `tools/video/automation/prompts.mjs` | `7dc54920e590ffa674fc6436dacf96df5da477cd749f1be52877d89a8b500dbc` |
 | `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
 | `tools/video/automation/series.test.mjs` | `d133c2caf95e9919aa1df2f0c23dee80d2d20a47a5d8c1ae85e7506698399425` |
