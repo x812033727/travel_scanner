@@ -1,0 +1,241 @@
+{
+  "status": "OFFLINE_MECHANICAL_ONLY_HOLD_FULL_REVIEW",
+  "base_round16_manifest_sha256": "2f44419c43c64a2ea3762dd5d2053bb0febefcfd055f057e9c940c6c6d6249df",
+  "changed_lines": [
+    {
+      "chapter": "origin",
+      "scene_id": "origin-r12-03",
+      "line_id": "r12o03",
+      "old": "館方記載，旅程結束後，安妮塔巡迴講旅行故事，那只輪子箱也跟著她。",
+      "text": "館方記載，旅程結束後，安妮塔巡迴講旅行故事時，仍帶著輪子行李箱。",
+      "spoken_units_delta": 0
+    },
+    {
+      "chapter": "origin",
+      "scene_id": "origin-02",
+      "line_id": "4prs",
+      "old": "館方記述，沿途要換船、搭火車、換住處；每到一站，行李都得跟著搬。",
+      "text": "館方記述，在港口、車站和住處之間，行李得跟著搬。",
+      "spoken_units_delta": -6
+    },
+    {
+      "chapter": "engine",
+      "scene_id": "engine-r12-07",
+      "line_id": "r12e07",
+      "old": "遇到台階，旅客還能用原本的提把拿起箱子；拖帶也能拆下來。",
+      "text": "需要提起時，還能用原本的提把拿起箱子；拖帶也能拆下來。",
+      "spoken_units_delta": -1
+    }
+  ],
+  "changed_visual_prompts": [
+    {
+      "chapter": "origin",
+      "scene_id": "origin-r12-03"
+    },
+    {
+      "chapter": "engine",
+      "scene_id": "engine-r12-07"
+    }
+  ],
+  "added_source_matrix_lines": [
+    "9ij6",
+    "tszs"
+  ],
+  "added_must_verify_index": 14,
+  "scene_count": 79,
+  "line_count": 108,
+  "narration_sha256": "a3fdca01475e6c26fd5fde7d21c871b0c76a12d2f33478b670b4f8163eb0561e",
+  "lint_errors": [],
+  "lint_warning_count": 41,
+  "lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "1 of 78 pictures name no shot size (close-up, medium, wide, overhead, low angle, from behind…): say how close the camera is in engine-r12-04"
+    },
+    {
+      "path": "scenes",
+      "message": "\"suitcase\" is in 68 of 78 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"generic\" is in 52 of 78 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"lamp\" is in 28 of 78 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes[4] (hook-07)",
+      "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[8] (origin-r12-01)",
+      "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[9] (origin-03)",
+      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[21] (origin-13)",
+      "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[22] (origin-14)",
+      "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[23] (origin-15)",
+      "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[26] (idea-02)",
+      "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[30] (idea-06)",
+      "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[33] (idea-08)",
+      "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[35] (idea-10)",
+      "message": "about 11.7 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[39] (idea-13)",
+      "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[50] (turn-01)",
+      "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[60] (turn-09)",
+      "message": "about 11.6 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[71] (turn-12)",
+      "message": "about 11.9 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[72] (turn-15)",
+      "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[73] (now-01)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.median: median shot 7.7 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.p90: 90th percentile shot 10.9 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-01, hook-02, hook-02b, hook-03, hook-07, hook-04, hook-06, origin-r12-01, … 67) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.longest: longest shot 11.9 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-03, hook-07, hook-06, origin-r12-01, origin-03, origin-01, origin-10, origin-13, … 32) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.spread: long shots against short ones (90th ÷ 10th percentile) 2.0, target ≥ 2; every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-01, hook-02) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.opening30: shots that start in the first 30 s 4, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.median: median line length 21 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.long: lines over 20 characters 57%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-01, hook-02, hook-02b, hook-07, hook-06, origin-r12-01, origin-03, origin-01, … 60) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.face: faces (medium close-up and closer, over-the-shoulder) 36%, target ≥ 40%; the audience follows a face; give each turn of the scene a face that reacts (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.insert: inserts 1%, target 5%–25%; an insert answers a story question (which paper, whose hand); too few hides the proof, too many hides the people (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.reestablish: longest run without a wide or group shot 11 shots, target ≤ 9; after a move, an entrance or a new beat, re-establish the room (turn-r12-01, now-02b) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-01, hook-02, hook-02b, hook-03, hook-07, hook-04, hook-05, hook-06, … 78) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.run: such shots in a row 78 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-01, hook-02, hook-02b, hook-03, hook-07, hook-04, hook-05, hook-06, … 78) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-01, hook-02, hook-02b) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft risk.decorative: shots with nobody in them that are not inserts 19% (15), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (hook-04, origin-06, origin-07, origin-10, origin-11, origin-13, idea-04, idea-07b, … 15) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes[0]",
+      "message": "the opening chapter runs about 62 s; it is the condensation, 30 to 60 s before the first real chapter: one scene of the story told in order up to the first fact that makes no sense, ending on the question the whole video answers (script-writing.md §開場濃縮)"
+    },
+    {
+      "path": "scenes",
+      "message": "「1928」 is said in 3 lines (p5hs, r12o01, zc7k): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「1970」 is said in 3 lines (47gq, dgbq, amrq): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "youtube",
+      "message": "youtube.tags: 12 tags; package keeps the first 10, so put the zh-TW terms and the English product names first"
+    }
+  ],
+  "cute_errors": [],
+  "estimated_timing_not_tts": {
+    "250": {
+      "round16_seconds": 653.3666666666667,
+      "round17_seconds": 651.6666666666666
+    },
+    "300": {
+      "round16_seconds": 558.1,
+      "round17_seconds": 556.7
+    },
+    "320": {
+      "round16_seconds": 530.3,
+      "round17_seconds": 528.9666666666667
+    },
+    "340": {
+      "round16_seconds": 504.53333333333336,
+      "round17_seconds": 503.3
+    }
+  },
+  "independent_full_script_review": "NOT_RUN",
+  "genuine_narrative_panel": "NOT_RUN",
+  "script_review_receipt": "NOT_ISSUED",
+  "generated_images_or_audio": 0
+}
