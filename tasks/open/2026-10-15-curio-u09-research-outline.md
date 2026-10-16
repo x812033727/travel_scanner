@@ -88,3 +88,9 @@ scope:
 - 以上旁白待審描述為較早快照；站主其後已核准劇本與旁白，本輪 `status` 讀回兩關均核准。劇本 SHA `A6EBACD1…AF3F5A`、時間軸 SHA `D1D2C509…7F2EC` 未改。
 - 按 [定向修復計畫](../../docs/videos/curio-u09/keyframes-repair-plan-1.md) 對 37 鏡執行一次 `--takes 3` 補圖；詳細費用、雜湊、待修圖和目視證據見 [本輪 QA 收據](../../docs/videos/curio-u09/keyframes-qa-2.md)。更新後 91／91 有選圖、84／91 評審通過、7 張評審待修；另有 2 張評審通過但與旁白明確矛盾，均未送分鏡後台。
 - 本輪本機媒體帳本估算新增 US$0.874，低於已預留的 US$1.4985；主代理負責共享帳本核銷。沒有追加付費、合成成片或發布。
+
+### 九鏡提示詞修復：2026-10-16
+
+- 前輪 7 張評審待修，另有 `missed-session`、`beam-away` 兩張評審通過但畫面與旁白明確矛盾。本輪僅改這 9 個 `shot.data.prompt`，沒有改已核准的劇本、旁白、系列畫風或其他 82 鏡；詳細對應見 [第二輪修復計畫](../../docs/videos/curio-u09/keyframes-repair-plan-2.md)。
+- 新 `video.json` SHA-256 `E9C4173F6A808A820C3563C13FC3E751344AD5694A117D0BF878D515CAC9E03E`；`script.md` SHA 仍 `A6EBACD1…AF3F5A`。`lint` 為 0 errors／0 warnings。九鏡 `keyframes --takes 3 --dry-run` 通過，MiniMax image-01 1K，保守最多 US$0.3645；沒有付費產圖或後台送審。
+- 待主代理完成共享帳本上輪核銷與本輪預留後，限這九鏡重畫、評審、人工核對；91 鏡全過才送站主看聯絡表。
