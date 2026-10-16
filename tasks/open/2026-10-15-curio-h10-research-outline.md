@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h10-research-outline
 title: Prepare Curio H10 Franklin source refresh and outline choices
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-h10-fact-final
+claimed_at: 2026-10-16T01:27:27Z
 created_at: 2026-10-15T16:33:45Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -84,3 +84,9 @@ video SHA-256 `e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559`
 作者 `codex-gpt6-h10-freshness-coda` 依獨立查核的新鮮度 HOLD，直接閱讀 Waterloo 2026-05-06 公告，於 2024 Fitzjames 紙條簽名回收之後加兩句短後記：2026 年五月再辨認四名船員、累計六名。原 A 案 brief 完全未動；原劇本 80 句未改字；完整變更與邊界見 [freshness-coda.md](../../docs/videos/curio-h10/freshness-coda.md)。
 
 本版 `video.json` SHA-256 `4EF199C9FC35E0761004A64EF32434EEA483DFAF5B25AC4DB28D0C154C024680`；`script.md` SHA-256 `A4A64B02732D97C9DDB216B2CD42F789D95A0B0ADEB8AB3CE22B3C9CA679E596`。82 句、文字估時 9.829 分；lint 0 errors、2 個既有畫面警告，沒有付費呼叫。**第 2 輪 verify-2 的 HOLD 尚未解除**：須請新的獨立史料查核員做第 3 輪，並由獨立敘事盲評者針對新版劇本重新評分；兩者都通過才由主代理送站主正式劇本核准。本作者不送後台、不開始製作。
+
+## 2026-10-16 新版雙重覆核
+
+製作協調者未撰寫 H10 後記，對 `4EF199C9…` 的兩句新增台詞、數字卡、說明欄與原始 Waterloo 2026 發布重新核對；[verify-3.md](../../docs/videos/curio-h10/verify-3.md) 判史實 PASS，解除前版新鮮度 HOLD。未讀前版盲評的獨立讀者只看目前 `script.md`，十三題全部答是，含必答 12／12；答案在 `C:/Users/x8120/mokaair-work/videos/curio-next-five-20261016/review/blind-curio-h10-strict-r4.json`，主代理以 `narrative --answers` 匯入並讀回 passed。原有兩個畫面 lint warnings 仍在，不影響送審。下一步：執行 `script` 與 `review-push --gate script`，由站主審閱新版劇本；核准讀回前不得開始 H10 付費配音或產圖。
+
+已執行 `script --slug curio-h10`，正式 `script.md` SHA-256 仍為 `A4A64B02732D97C9DDB216B2CD42F789D95A0B0ADEB8AB3CE22B3C9CA679E596`；`review-push --gate script` 成功，隨後 `review-pull --gate script` 讀回 **waiting for the owner**。目前等待站主在 `/admin/videos` 核准這份劇本或提出改字；H10 尚未付費製作。
