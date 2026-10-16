@@ -116,10 +116,13 @@ async function problemOf(response) {
   }
 }
 
+// The longest the client sleeps between two tries of one request.
+const MAX_SLEEP_SECONDS = 120;
+
 function delayMs(response, attempt) {
   const header = Number(response?.headers.get("retry-after"));
-  if (Number.isFinite(header) && header > 0) return Math.min(header, 120) * 1000;
-  return Math.min(2 ** attempt * 5, 120) * 1000;
+  if (Number.isFinite(header) && header > 0) return Math.min(header, MAX_SLEEP_SECONDS) * 1000;
+  return Math.min(2 ** attempt * 5, MAX_SLEEP_SECONDS) * 1000;
 }
 
 /**
@@ -181,6 +184,10 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       if (Number.isFinite(after) && after > 0) last.retry_after = after;
       if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
       if (attempt === attempts - 1) throw last;
+      // A rate limit that opens later than the longest sleep refuses every try in between, and
+      // each try counts against the window: the topic lookup's four tries a round kept its hourly
+      // window full from 2026-10-13 to 10-16. The caller defers by retry_after instead.
+      if (response.status === 429 && last.retry_after > MAX_SLEEP_SECONDS) throw last;
       await sleep(delayMs(response, attempt));
     }
     throw last;
