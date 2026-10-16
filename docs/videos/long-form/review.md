@@ -5439,6 +5439,20 @@ Non-claims: this is an incremental source duration review, not a fresh review of
 
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1391 windows-video-validation merge with main increment: 2 files (2026-10-16)
+
+Reviewer: `claude-pr-review-1391`. Author: `codex-windows-video-validation`. Scope: DURATION_ONLY for `3cdbbd68b..4731143a5` (branch `codex/windows-video-validation-20261009` with `origin/main` `3cdbbd68b` merged in), covering `tools/video/automation/automation.test.mjs` and `tools/video/review/sync.test.mjs`. This reviewer did not author either change. The merge took main's `review.md` and `review.json`, so the branch's two earlier 2026-10-09 increments, written against an older baseline, are not carried; this increment supersedes them on top of main's report.
+
+Baseline: both touched files at `3cdbbd68b` have raw-byte SHA-256 values equal to their existing receipt bindings (`59fbe73c...` and `9660b355...`); the other 106 registered files are byte-identical between `3cdbbd68b` and `4731143a5` and match their recorded hashes. Earlier increments are retained in full.
+
+Findings: `automation.test.mjs` adds a `leaseTestChild` helper that spawns the lease-holding child process with piped stderr, rejects readiness when the child closes early or times out, bounds release with a timeout and kills the child in `t.after` cleanup; three new tests exercise an import failure, a child that never becomes ready and one that ignores release, and the held-project test now uses the helper and imports `project-lease.mjs` through a `file://` URL so Windows paths load. `sync.test.mjs` replaces a regex match of the lost-outline message with an exact line comparison whose `review/outline-lost.json` path is built with `path.join`, so the platform separator is accepted. These are test-harness timeouts and path forms, not video length. The changes do not alter the explainer 10-minute default or 8-20 range, drama 1-8 minutes, the brand-story 13-minute and 600/780-second targets, the eight-minute non-drama minimum, the 480-second / 14,400-frame QA floors, measured body/final floors, `target_minutes`, `MIN_EPISODE_MINUTES`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source hashes, covered status, the long-form anime policy, measurement evidence or `plans.json`. No duration correction is required.
+
+Ran: Node v22.22.0 `tools/video/long-form/cli.mjs check` (PASS) and `--test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), after rebinding these two files and the report.
+
+Non-claims: this is an incremental source duration review, not a fresh review of the 106 unchanged files, the unbound files the branch also changes, or acceptance of Windows test behavior, actual media, playback, paid production, deployment, upload or publication.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5495,7 +5509,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `59fbe73cb90d5cd187ce542d05e0371e82f6a5d84ff9ab1189a000cd14578d27` |
+| `tools/video/automation/automation.test.mjs` | `5d7e5ceb96a2bc594b753f73036a0bee2b03a5dc53783d16ffc9a6b5ec7b2055` |
 | `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
 | `tools/video/automation/flow.mjs` | `0d817f0faf180b3e3e65884b68da6fbabc42f401092168335c70b844adbca384` |
 | `tools/video/automation/prompts.mjs` | `7dc54920e590ffa674fc6436dacf96df5da477cd749f1be52877d89a8b500dbc` |
@@ -5546,7 +5560,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
 | `tools/video/qa/qa.test.mjs` | `6f2f77b1cf7cad0175282003b36d9d42dee7891ed168ad75ac21caed2aca5d88` |
 | `tools/video/review/sync.mjs` | `6f8ea2820b3eda1bc85e58e94ce11902d7fe2c7d590f10a1e73fe67200d33851` |
-| `tools/video/review/sync.test.mjs` | `9660b3554cd7d82ac70b2e99dd6e354733a61eabd610c4ee2364eff59bf5b0a8` |
+| `tools/video/review/sync.test.mjs` | `a006b98bf3c6b28f40fddd9c4d7a17202239959231ed52fc1a8573274c4a347b` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
