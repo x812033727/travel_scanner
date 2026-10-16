@@ -13,7 +13,9 @@ const C = Object.fromEntries(video.characters.map((c) => [c.id, c]));
 const STYLE = "3D Chinese donghua CG animation still, like a high-end Chinese 3D animated series or game cinematic, Unreal Engine 5 cinematic render: stylized semi-realistic characters with refined faces and slightly larger expressive eyes, detailed skin that is clearly CG and not a photograph, individually rendered hair strands, physically simulated cloth with wear, dust and grime; cool desaturated grey-blue palette with warm accents, volumetric light and haze, strong rim light, shallow depth of field, dramatic cinematic composition";
 const MODERN = "3D Chinese donghua CG animation still of a present-day city, Unreal Engine 5 cinematic render, stylized semi-realistic characters, cool desaturated palette with neon or daylight accents, volumetric light, strong rim light, shallow depth of field";
 const SET = [
-  [/dirt yard|farmhouse yard|in the yard|courtyard|yard gate|mud wall/i, "dh-set-xujia-yuan-t1"],
+  [/work shed|workshop|lean-to/i, "dh-set-gongpeng-t1"],
+  [/kitchen|stove/i, "dh-set-xujia-zao-t1"],
+  [/dirt yard|farmhouse yard|in the yard|morning yard|courtyard|yard gate|mud wall|woodpile|wooden gate|broken gate/i, "dh-set-xujia-yuan-t1"],
   [/inside (the|a) (poor )?(thatched )?(farmhouse|room|hut)|thatched room|farmhouse interior|inside the house|in the farmhouse/i, "dh-set-xujia-wu-t1"],
   [/stream|riverbank|river bank|willow|reeds/i, "dh-set-liuxi-he-t1"],
 ];
@@ -38,6 +40,17 @@ for (const scene of video.scenes) {
     people.push(c.name);
     cast.push(`${c.name}: ${named?.appearance ?? c.appearance}`);
   }
+  // Characters named in the prompt but missing from the list (the three brides behind Xu Yan in e1-s47) get their portraits too.
+  const NAMED = { xuyan: /Xu Yan/, aling: /A[- ]?[Ll]ing/, qinshuang: /Qin Shuang/, tangxiaotang: /Tang Xiaotang/, xiaohe: /Xiao ?[Hh]e/, erniu: /Wang Erniu|Erniu/, qianyuanwai: /Qian Yuanwai/, zhaobutou: /Zhao Butou/, laisan: /Lai San/ };
+  for (const [id, re] of Object.entries(NAMED)) {
+    if ((d.characters ?? []).includes(id) || !C[id]) continue;
+    const m = d.prompt.match(re);
+    if (!m || /^.{0,25}off (screen|frame)/.test(d.prompt.slice(m.index + m[0].length))) continue;
+    refs.push(`dh-${id}-portrait-t1`);
+    people.push(C[id].name);
+    cast.push(`${C[id].name}: ${C[id].appearance}`);
+  }
+  if (/three (young )?(women|brides)|the three (women|brides)/i.test(d.prompt)) for (const id of ["qinshuang", "aling", "tangxiaotang"]) if (!refs.includes(`dh-${id}-portrait-t1`)) { refs.push(`dh-${id}-portrait-t1`); people.push(C[id].name); cast.push(`${C[id].name}: ${C[id].appearance}`); }
   const modern = /meeting room|office|city street|modern|wastebasket|neon|asphalt|umbrella|street light|streetlight|city/i.test(d.prompt);
   const set = modern ? null : SET.find(([re]) => re.test(d.prompt))?.[1];
   if (set) refs.push(set);
