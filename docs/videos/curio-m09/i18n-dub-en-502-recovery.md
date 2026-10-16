@@ -8,7 +8,7 @@
 
 ## Host evidence, read only
 
-The saved PuTTY `hostinger2` session reached the production host. A filtered read of `/var/log/nginx/error.log` found **one** `/api/video/speech` error from 13:52:05 through 13:52:09 UTC:
+The saved PuTTY `<saved-session>` reached the production host. A filtered read of `/var/log/nginx/error.log` found **one** `/api/video/speech` error from 13:52:05 through 13:52:09 UTC:
 
 ```text
 2026/10/16 13:52:07 [error] ... connect() failed (111: Connection refused) while connecting to upstream, client: [redacted], server: mokaair.com, request: "POST /api/video/speech HTTP/1.1", upstream: "http://127.0.0.1:8091/api/video/speech", host: "mokaair.com"
@@ -19,7 +19,7 @@ The `travel_scanner-web-1` container's `StartedAt` was `2026-10-16T13:52:25.3305
 To repeat the filtered host read without displaying the client address, run the following in PowerShell with the existing saved PuTTY session:
 
 ```powershell
-& 'C:\Program Files\PuTTY\plink.exe' -batch -load hostinger2 -l root "grep -E '2026/10/16 13:52:0[5-9]' /var/log/nginx/error.log | grep -F '/api/video/speech' | sed -E 's/client: [^,]+,/client: [redacted],/'; docker inspect -f '{{.State.StartedAt}}' travel_scanner-web-1"
+& 'C:\Program Files\PuTTY\plink.exe' -batch -load '<saved-session>' -l root "grep -E '2026/10/16 13:52:0[5-9]' /var/log/nginx/error.log | grep -F '/api/video/speech' | sed -E 's/client: [^,]+,/client: [redacted],/'; docker inspect -f '{{.State.StartedAt}}' travel_scanner-web-1"
 ```
 
 ## Recovery boundary
