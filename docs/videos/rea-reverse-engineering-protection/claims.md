@@ -11,14 +11,14 @@
 ## 主張
 
 - c01｜REA 全名 Reverse Engineer Anything，是一個把逆向分析工具接給 AI agent 的 MCP｜REA README 標題與說明｜2026-10-16｜open, what-rea
-- c02｜REA 星數在 2026-10-16 約 27 萬（讀到 273,541 星、68,822 fork）｜`gh api repos/morluto/rea`｜2026-10-16｜open, stars
+- c02｜REA 星數在 2026-10-16 約 28 萬（讀到 276,024 星、69,538 fork）｜`gh api repos/morluto/rea`｜2026-10-16｜open, stars
 - c03｜報導稱 REA 2026-10-06 不到一萬星、10-12 破十萬、10-11 單日增三萬多｜dev.to/kdnuggets 報導（第三方，進稿前重核 star-history）｜2026-10-16｜stars
 - c04｜官方提醒只能從 morluto/rea、rea.tools、npm 套件 rea-agents 取得，名字相近的 repo 不算官方｜REA README IMPORTANT 區塊｜2026-10-16｜trust
 - c05｜REA 分析在本機跑、不上傳程式；DISCLAIMER 限分析自己擁有或被授權的軟體｜REA README FAQ「Does REA upload my app?」與 DISCLAIMER｜2026-10-16｜trust
 - c06｜安裝是一行 `npx rea-agents setup`，支援 Claude Code、Codex、Cursor、Gemini CLI 等｜REA README Quick start｜2026-10-16｜install, trust
 - c07｜本次用的 REA 版本是 6.5.0｜RUN [B2]｜2026-10-16｜install
-- c08｜NoteVault 是自寫的 90 行 C# 程式，模擬有 Pro 付費功能的筆記 App｜SRC｜2026-10-16｜note-app, three-bugs
-- c09｜它故意犯三個錯：授權用寫死密鑰在用戶端算、NV_INTERNAL_DEBUG=letmein 後門、region=EDU 隱藏四折｜SRC 第 39、27、70 行附近｜2026-10-16｜three-bugs, license-code
+- c08｜NoteVault 是自寫的約 80 行 C# 程式（原始碼 79 行），模擬有 Pro 付費功能的筆記 App｜SRC｜2026-10-16｜note-app, three-bugs
+- c09｜它故意犯三個錯：授權用寫死密鑰在用戶端算、NV_INTERNAL_DEBUG=letmein 後門、region=EDU 隱藏折扣打六折（NT$150→NT$90）｜SRC 第 39、25、69 行附近｜2026-10-16｜three-bugs, license-code
 - c10｜原版預設執行印出版本與月費 NT$150｜RUN [B1]｜2026-10-16｜note-app
 - c11｜一個 REA 指令 inspect-managed-members 靜態（不執行程式）就倒出全部 23 個字串常數，三個秘密全中｜RUN [B3]｜2026-10-16｜rea-strings, strings-out
 - c12｜看 .NET DLL 明文字串，最簡單用 strings 指令或文字檢視器就行，原版這樣就看得到密鑰｜一般工具知識；RUN [B3] 證明字串確實在檔內｜2026-10-16｜simple-way
@@ -33,5 +33,5 @@
 - c21｜前端仍可讀：兩個 fetch 端點 /api/travel/analytics/config、/api/travel/analytics/events｜RUN [W1]｜2026-10-16｜web-visible
 - c22｜REA 自述限制「server-side behavior may remain unknown」｜RUN [W1]；REA 輸出 limitations｜2026-10-16｜web-boundary, boundary
 - c23｜防守做法：授權／付費／權限判斷與秘密放伺服器，前端只收已批准結果｜SRC 對照（反例）；一般安全原則｜2026-10-16｜fix-code, checklist
-- c24｜改法示範：把 License.Check 從用戶端算改成只收伺服器回傳，重跑確認偽造 key 失效｜SRC；設計說明｜2026-10-16｜fix-code
+- c24｜改法示範：把 License.Check 從用戶端算改成只問伺服器；密鑰不在程式裡，偽造 key 無從通過（設計推論，未建伺服器實跑）｜SRC（反例）；設計說明｜2026-10-16｜fix-code
 - c25｜上線前清單：秘密不進前端／二進位、正式站關 source map、後端只回必要欄位、拔除錯後門｜RUN 各項對應一個實測失敗｜2026-10-16｜checklist

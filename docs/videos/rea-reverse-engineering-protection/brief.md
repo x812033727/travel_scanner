@@ -19,7 +19,7 @@
 
 製作路線：教學卡片。
 
-貫穿例子：一支我自己寫、自己編譯的 90 行小程式 **NoteVault**（模擬「有 Pro 付費功能的筆記 App」，所有秘密都是假的測試值）。它故意犯三個常見錯誤：授權檢查用寫死的密鑰在用戶端算、一個 `NV_INTERNAL_DEBUG=letmein` 除錯後門、一個 region=EDU 的隱藏折扣。原始碼與混淆設定收在 `test-target/`，執行紀錄在 `RUNLOG.md`。
+貫穿例子：一支我自己寫、自己編譯的約 80 行小程式 **NoteVault**（模擬「有 Pro 付費功能的筆記 App」，所有秘密都是假的測試值）。它故意犯三個常見錯誤：授權檢查用寫死的密鑰在用戶端算、一個 `NV_INTERNAL_DEBUG=letmein` 除錯後門、一個 region=EDU 的隱藏折扣。原始碼與混淆設定收在 `test-target/`，執行紀錄在 `RUNLOG.md`。
 
 - 有用的產出：對自己擁有的程式跑一次 REA，看到它會被怎麼讀。
 - 信任／風險（排在安裝之前）：REA 的分析在**本機**跑，不上傳程式；官方提醒只能從 `morluto/rea`、`rea.tools`、npm 套件 `rea-agents` 取得，名字相近的 repo 不算官方（搜尋結果裡就有一個抄 README 的假 repo）；DISCLAIMER 只允許分析自己擁有或被授權的軟體——這支影片分析的全是我們自己的東西。
@@ -38,7 +38,7 @@
 
 一句話角度：以「被逆向的那一方」為主角，從站主拿自己的網站與小程式實測出發，結論落在一份可照做的防守清單；跟市面上「用 REA 複製別人」的片正好相反。相對 B，A 更貼個人、敘事感強，開場就是站主的緊張。
 
-開場鉤子（20 秒內落地）：「REA 這個工具，十天從不到一萬顆星衝到二十七萬。大家都在用它複製別人的 App——那我做的網站呢？我把自己的程式丟給它，結果最讓我意外的不是它挖出了什麼，而是：我把程式碼混淆到人根本看不懂之後，付費鎖還是被同一招打開了。」
+開場鉤子（20 秒內落地）：「REA 這個工具，十天從不到一萬顆星衝到約二十八萬。大家都在用它複製別人的 App——那我做的網站呢？我把自己的程式丟給它，結果最讓我意外的不是它挖出了什麼，而是：我把程式碼混淆到人根本看不懂之後，付費鎖還是被同一招打開了。」
 
 案例與結果：「NoteVault（自己寫的付費筆記 App）＋ Mokaair 正式站；一個指令倒出全部 23 個字串、混淆後付費閘門照樣被繞過、網站 source map 已關但 API 介面仍可讀。證據狀態：RUN。」
 
@@ -73,7 +73,7 @@
 
 ## 會過期的事實
 
-- REA 星數與爆紅時間軸：錄製日用 `https://github.com/morluto/rea` 與 `https://star-history.com/#morluto/rea&Date` 重核（2026-10-16 讀到 273,541 星、68,822 fork；報導稱 10-06 不到 1 萬、10-12 破 10 萬、10-11 單日 +3 萬，進稿前再確認）。
+- REA 星數與爆紅時間軸：錄製日用 `https://github.com/morluto/rea` 與 `https://star-history.com/#morluto/rea&Date` 重核（2026-10-16 讀到 276,024 星、69,538 fork；報導稱 10-06 不到 1 萬、10-12 破 10 萬、10-11 單日 +3 萬，進稿前再確認）。
 - 安裝指令與支援的 agent：`https://github.com/morluto/rea`（README Quick start，`npx rea-agents setup`；支援 Claude Code、Codex、Cursor、Gemini CLI 等）。
 - Node.js 版本需求、原生分析要 Hopper／Ghidra／IDA：同上 README「What you can analyze」。
 - REA 版本：錄製日跑 `npx rea --version`（本次 6.5.0）。

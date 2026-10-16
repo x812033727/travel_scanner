@@ -10,11 +10,11 @@
 
 ## 靶一：自己編譯的小程式 NoteVault（.NET）
 
-一支約 90 行的 C# 主控台程式，模擬「有 Pro 付費功能的筆記 App」，故意犯三個常見錯誤，所有秘密都是假的測試值：
+一支約 80 行（79 行）的 C# 主控台程式，模擬「有 Pro 付費功能的筆記 App」，故意犯三個常見錯誤，所有秘密都是假的測試值：
 
 1. 授權檢查在**用戶端**：`License.Check` 用寫死的簽章密鑰 `nv-test-secret-7f3a9c` 算 HMAC 驗 key。
 2. 一個除錯後門：環境變數 `NV_INTERNAL_DEBUG=letmein` 直接解鎖全部 Pro。
-3. 一個隱藏折扣：region `EDU` 打四折（`NT$90`）；還有同步端點與一把假 API key `nvk_test_...` 寫在常數裡。
+3. 一個隱藏折扣：region `EDU` 打六折（`NT$90`，即 150→90，省四成）；還有同步端點與一把假 API key `nvk_test_...` 寫在常數裡。
 
 編譯成 Release（`NoteVault.dll`），再做兩個混淆版：
 - `bin-obf`：秘密寫成 `const string`（C# 會把 const 內嵌到每個使用點）。
@@ -39,7 +39,7 @@
 | --- | --- | --- | --- |
 | 偽造的授權 key → `Pro activated.` | ✅ | ✅ | ✅ |
 | `NV_INTERNAL_DEBUG=letmein` → 解鎖全部 Pro | ✅ | ✅ | ✅ |
-| `NV_REGION=EDU` → 偷到四折 `NT$90` | ✅ | ✅ | ✅ |
+| `NV_REGION=EDU` → 偷到六折 `NT$90` | ✅ | ✅ | ✅ |
 
 混淆把字串藏起來了，但沒有改變「判斷在用戶的機器上做」這件事，所以三種繞過在混淆版上一字不差地成功。
 
