@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import test from "node:test";
 
 import { dramaFixture, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyFixture, storySeries } from "./fixtures/load.mjs";
@@ -14,13 +15,18 @@ import {
   NARRATIVE_PANEL,
   narrationText,
   narrativeProblems,
+  narrativeRecord,
+  narrativeReviewMatches,
   NEXT_VIDEO,
   outroNextVideoProblems,
+  PANEL_INSTRUCTIONS,
+  PANEL_RULES_SHA256,
   panelPayload,
   panelVerdict,
   repeatedFactProblems,
   requiredLoops,
 } from "./narrative.mjs";
+import { scriptCheckMatches } from "./script-check.mjs";
 import { MIN_EPISODE_MINUTES } from "./schema.mjs";
 import { estimateTimeline, FPS } from "./timeline.mjs";
 
@@ -209,12 +215,58 @@ test("the panel passes only when every required question is yes; a missing or ma
   assert.equal(panelVerdict(null).failed.length, NARRATIVE_PANEL.filter((question) => question.required).length);
 });
 
-test("the panel asks for one protagonist carried end to end and for no detour, and either no sends the script back", () => {
+test("a narrative PASS is reusable only for the script and exact panel rules that judged it", () => {
+  const doc = fixture();
+  const verdict = panelVerdict({ answers: NARRATIVE_PANEL.map(({ id }) => ({
+    id, yes: true, evidence: "[k7p2] 被審查的逐字稿原句",
+  })) });
+  const current = narrativeRecord(doc, verdict, 1);
+  assert.equal(current.panel_rules_sha256, PANEL_RULES_SHA256);
+  assert.match(current.panel_narration_sha256, /^[a-f0-9]{64}$/);
+  assert.equal(narrativeReviewMatches(current, doc), true);
+
+  const legacy = { ...current };
+  delete legacy.panel_rules_sha256;
+  assert.equal(scriptCheckMatches(legacy, doc), true, "other script checks keep their existing binding");
+  assert.equal(narrativeReviewMatches(legacy, doc), false, "an old PASS without rules is stale");
+  const withoutNarration = { ...current };
+  delete withoutNarration.panel_narration_sha256;
+  assert.equal(narrativeReviewMatches(withoutNarration, doc), false, "an old PASS without its full panel input is stale");
+
+  const rulesHash = ({ instructions = PANEL_INSTRUCTIONS, questions = NARRATIVE_PANEL.map(({ id, question, required }) => ({ id, question, required })) } = {}) => createHash("sha256").update(JSON.stringify({
+    instructions,
+    questions,
+    verdict_version: 1,
+  })).digest("hex");
+  const changedQuestion = NARRATIVE_PANEL.map(({ id, question, required }) => ({
+    id, question: id === "payoffs" ? `${question} Additional requirement.` : question, required,
+  }));
+  const changedRequired = NARRATIVE_PANEL.map(({ id, question, required }) => ({
+    id, question, required: id === "payoffs" ? !required : required,
+  }));
+  for (const changedRulesHash of [
+    rulesHash({ questions: changedQuestion }),
+    rulesHash({ questions: changedRequired }),
+    rulesHash({ instructions: `${PANEL_INSTRUCTIONS}\nAdditional panel rule.` }),
+  ]) {
+    assert.notEqual(changedRulesHash, PANEL_RULES_SHA256);
+    assert.equal(narrativeReviewMatches({ ...current, panel_rules_sha256: changedRulesHash }, doc), false);
+  }
+  const changedDoc = structuredClone(doc);
+  changedDoc.scenes[0].lines[0].text += "又一句。";
+  assert.equal(narrativeReviewMatches(current, changedDoc), false);
+  const renamedVideo = structuredClone(doc);
+  renamedVideo.youtube.title += "：新版片名";
+  assert.equal(scriptCheckMatches(current, renamedVideo), true, "the shared script binding intentionally ignores title metadata");
+  assert.equal(narrativeReviewMatches(current, renamedVideo), false, "the title appears in the panel input and must invalidate its PASS");
+});
+
+test("the panel carries a concrete protagonist or problem end to end and still rejects detours", () => {
   // 2026-10-15: three AI videos switched example and metaphor from chapter to chapter, spent a
   // third of one on a detour and read lists out; the one thread they had was what read best.
   const byId = new Map(NARRATIVE_PANEL.map((question) => [question.id, question]));
   assert.equal(byId.get("one_thread")?.required, true);
-  assert.match(byId.get("one_thread").question, /一個主角/);
+  assert.match(byId.get("one_thread").question, /一個可辨認的主角或具體難題/);
   assert.match(byId.get("one_thread").question, /從開場一路帶到結尾/);
   assert.equal(byId.get("no_detour")?.required, true);
   assert.match(byId.get("no_detour").question, /沒有岔出去的段落/);
@@ -227,6 +279,47 @@ test("the panel asks for one protagonist carried end to end and for no detour, a
     assert.deepEqual(verdict.failed.map((each) => each.id), [id]);
     assert.match(verdict.problems[0], new RegExp(`^${id}：`));
   }
+});
+
+test("panel questions distinguish an adjacent answer from a distant callback without excusing missing answers", () => {
+  const byId = new Map(NARRATIVE_PANEL.map((entry) => [entry.id, entry.question]));
+  const payoff = byId.get("payoffs");
+  // Valid adjacent pair: 「顧客買不買帳？」→「據他回憶，顧客很快接受了。」
+  // Valid distant callback: the early suitcase question returns minutes later by naming that
+  // suitcase and telling what happened to it. Invalid: a question never answered, or merely
+  // repeated as 「那顧客究竟買不買帳呢？」.
+  assert.match(payoff, /緊鄰的問答可以直接回答，不必再用「還記得」點名/);
+  assert.match(payoff, /隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問/);
+  assert.match(payoff, /只重複問題、換句話說，或回答另一件事，都不算回收/);
+
+  const link = byId.get("chapters_link");
+  // Valid cold-open return: start at the earlier suitcase already previewed in the opening and
+  // show why it matters to the opening question. Invalid: 「回到 1928 年」 as a chapter label,
+  // or claiming that one inventor taught another when the sources establish no such link.
+  assert.match(link, /預告式開場之後可以回到更早的故事起點/);
+  assert.match(link, /第一句要讓觀眾聽懂它從哪裡接上開場的問題/);
+  assert.match(link, /重述剛問過的話/);
+  assert.match(link, /沒有來源支持卻硬說兩件事有因果/);
+});
+
+test("product-history thread must advance the same use problem, not merely share a category", () => {
+  const question = NARRATIVE_PANEL.find((entry) => entry.id === "one_thread").question;
+  // Valid product history: a heavy suitcase becomes movable, reaches the shelf, then changes
+  // shape when dragging through a terminal proves awkward. Invalid: three suitcases introduced
+  // only because they all have wheels, or an invented transfer of know-how between makers.
+  assert.match(question, /跨年代的產品故事可以追同一個使用難題/);
+  assert.match(question, /上一種用法留下什麼困難、下一個做法如何回應/);
+  assert.match(question, /只因同屬一類商品就連續換例子，不算同一條線/);
+  assert.match(question, /不能沒有來源就聲稱不同發明者彼此承襲或互相啟發/);
+
+  // Rewording the questions does not turn a previously recorded no into a yes. The reader must
+  // make a fresh judgment about the actual script using this new payload.
+  const failedIds = ["chapters_link", "payoffs", "one_thread"];
+  const previousNo = { answers: NARRATIVE_PANEL.map(({ id }) => ({
+    id, yes: !failedIds.includes(id), evidence: "[k7p2] 被審查的逐字稿原句",
+  })) };
+  assert.deepEqual(panelVerdict(previousNo).failed.map(({ id }) => id), failedIds);
+  assert.equal(panelVerdict(previousNo).passed, false);
 });
 
 test("a yes the reader quotes no line for is not a yes", () => {

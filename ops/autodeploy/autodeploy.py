@@ -9,8 +9,8 @@ rule 1, the flock, the rollback and the logs all keep working; this file only de
 whether to run it now. The gates, in order:
 
 1. ``/root/travel-scanner-autodeploy.paused`` exists: a previous automatic deploy
-   failed (the script rolled back on its own). Print the reason, do nothing, until a
-   person deletes the file.
+   failed. The deploy and video-ai-worker state require readback; do nothing until a
+   person reconciles them and deletes the file.
 2. ``origin/main`` is not ahead of the live ``HEAD``: nothing to do.
 3. The newest commit is younger than the quiet period: wait, so a run of merges
    becomes one rebuild (every deploy restarts every container, skill ``deploy``).
@@ -56,7 +56,11 @@ BRANCH = "main"
 WORKFLOW_NAME = "CI"
 REFUSED_EXIT = 3  # the deploy script's "NOT DEPLOYING: another release is in progress"
 FIRST_LINE_LIMIT = 600  # bytes; same convention as the deploy hold
-DEPLOY_TIMEOUT = 2 * 60 * 60  # a cold build is minutes, not hours; this is the safety net
+# The systemd unit has TimeoutStartSec=2h. Leave 30 minutes for this process to
+# catch a stuck warm drain, write its paused/failed receipt and notify the owner
+# before systemd can kill the entire cgroup without that receipt. The RQ stage
+# timeout is 20 minutes; an ordinary rebuild takes minutes.
+DEPLOY_TIMEOUT = 90 * 60
 TAIPEI = ZoneInfo("Asia/Taipei")
 
 _SHA = re.compile(r"[0-9a-f]{40}")
@@ -357,8 +361,8 @@ def write_paused(path: Path, *, sha: str, exit_code: int, log: Path, instant: dt
     """Two lines like the deploy hold: one for people within 600 bytes, one JSON."""
     first = one_line(
         f"autodeploy paused: the automatic deploy of {sha[:12]} exited {exit_code} at "
-        f"{_iso(instant)} and the deploy script rolled back on its own (log {log}); read the "
-        "log, fix forward on main, then delete this file to let the timer deploy again"
+        f"{_iso(instant)} (log {log}); deployment and video-ai-worker state require readback. "
+        "Automatic deploys stay paused until an operator reconciles the state and removes this file"
     )
     record = {"sha": sha, "exit": exit_code, "log": str(log), "created_at": _iso(instant)}
     fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o644)
@@ -633,7 +637,7 @@ class Poller:
             self.state["last_deploy"] = record
             self.notifier.post(
                 f"mokaair autodeploy FAILED: deploy of {target[:12]} exited {result.code}; "
-                f"the script rolled back; automatic deploys are paused until "
+                f"deployment and video-ai-worker state require readback; automatic deploys are paused until "
                 f"{self.paths.paused} is removed (log {log})"
             )
             return self._finish(
