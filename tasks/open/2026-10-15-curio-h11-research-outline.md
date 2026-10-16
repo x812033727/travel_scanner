@@ -114,3 +114,9 @@ H11 將材料定年、字詞分布、新聞稿撤下、背面透字、筆跡推�
 後台已保存英、日、韓各語的標題說明、字幕與配音，`locales_decided_at=2026-10-16T05:22:29.664767Z`；站主另核准 H11 多語 US$2.00，H11 估算停手上限 US$8.00。加上 H10 同額增額，五集目前合計 US$34.00；見 [multilingual-authorization-1.md](../../docs/videos/curio-h11/multilingual-authorization-1.md)。三語工作表已填，但未合併或配音。
 
 英文獨立審稿查到已核准繁中第 `v0e564e3` 句的「四頁」與 Hodgins 2009 原始定年報告的四「葉」不符，已在同一 H11 任務認領內將唯一這句改為「四葉」，同步主張表及來源登錄；原始樣本分別出自第 8、26、47、68 葉。新版 `script.md` SHA-256 `7000C074516D3A30484E794D9D490DFF9412E8A869AD4743D81915CDAC7D6238`，獨立史料及十三題敘事複核全過，lint 0／0；見 [修正收據](../../docs/videos/curio-h11/source-correction-1.md)及[複核收據](../../docs/videos/curio-h11/source-recheck-1.md)。已 `review-push --gate script` 送新版後台，`review-pull` 讀回等待站主；**舊劇本、旁白、成片及上傳包核准不得沿用**。先等新版劇本核准，再重建並送審後續媒體。英、日獨立翻譯審稿的 HOLD 及修項見各語 `i18n-review-*-1.md`；三語未付費合成、未上傳。
+
+## 2026-10-16 修正版旁白核准與新成片待站主
+
+站主已核准 `7000C074…D6238` 劇本與只重錄 `v0e564e3`「四葉」的新旁白；`review-pull` 分別讀回 script/audio approval recorded。重錄一個請求、25 計費字元，其餘舊 take 快取沿用；新版時間軸 SHA-256 `CCFF7C2723920387883243FC131FDFD1B6B8D57606DE39EF1A33587B96E36905`。重新合成的 9:34.3 成片 SHA-256 `54EFA17859D4359B84A9266799108B3C0DE0597DDFAAA2F1B4B3F556801FF1BC`，四語字幕已按新版繁中時間軸產出。完整媒體與 QA 收據見 [final-qa-2.md](../../docs/videos/curio-h11/final-qa-2.md)。
+
+`review-push --gate final --manual-review` 已送新版 720p 預覽；`review-pull` 讀回 **waiting for the owner**。QA 為 10／11，只有片尾同一卡停留 22 秒未過節奏門檻，已請站主審看新版。舊成片與上傳包核准不能沿用。H11 共用帳本目前保守估算 US$2.348／US$8，三語付費配音尚未開始，YouTube 未上傳。
