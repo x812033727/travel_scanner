@@ -18,7 +18,34 @@ export const BEATS = ["opening", "first_half", "midpoint", "second_half", "endin
 export const SATISFACTIONS = ["face_slap", "identity_reveal", "counter_kill", "level_up", "first_clear", "betrayer_punished", "villain_humbled", "hidden_power", "public_vindication", "rescue", "reversal"];
 // Words that get a public title or thumbnail limited (setting.json advertiser_safety).
 export const BANNED_TITLE_WORDS = ["血", "屍", "裸", "性感", "火辣", "慘死", "自殺", "自盡", "血洗", "屠"];
-const TEXT_KEYS = ["title", "youtube_title", "logline", "hook", "mid_hook", "conflict", "turn", "spectacle", "glamour_shot"];
+const TEXT_KEYS = ["title", "youtube_title", "logline", "hook", "conflict", "turn", "spectacle", "glamour_shot"];
+// The owner's rule (2026-10-16): besides the opening hook and the cliffhanger, at least three hooks
+// inside the episode, and never more than MAX_HOOK_GAP_S without one.
+export const MIN_HOOKS = 3;
+export const MAX_HOOK_GAP_S = 30;
+
+/** Problems with an episode's in-episode hooks: [{at_s, type, text, question}], in time order. */
+export function hookProblems(episode, who) {
+  const problems = [];
+  const hooks = episode.hooks;
+  if (episode.mid_hook !== undefined) problems.push(`${who}: mid_hook is replaced by hooks`);
+  if (!Array.isArray(hooks) || hooks.length < MIN_HOOKS) return [...problems, `${who} needs at least ${MIN_HOOKS} hooks inside the episode`];
+  let last = 0;
+  for (const [i, hook] of hooks.entries()) {
+    if (!Number.isInteger(hook?.at_s) || hook.at_s <= last || hook.at_s >= episode.duration_s) problems.push(`${who}: hooks[${i}].at_s must be a whole second after the one before and inside the episode`);
+    if (!HOOK_TYPES.includes(hook?.type)) problems.push(`${who}: hooks[${i}].type must be one of ${HOOK_TYPES.join(", ")}`);
+    if (!isText(hook?.text)) problems.push(`${who}: hooks[${i}] needs text`);
+    if (!isText(hook?.question) || hook.question.length > 30) problems.push(`${who}: hooks[${i}].question is the question it raises, 30 characters at most`);
+    if (Number.isInteger(hook?.at_s)) {
+      if (hook.at_s - last > MAX_HOOK_GAP_S) problems.push(`${who}: ${hook.at_s - last} s without a hook before hooks[${i}] (at most ${MAX_HOOK_GAP_S})`);
+      last = hook.at_s;
+    }
+  }
+  if (Number.isInteger(episode.duration_s) && episode.duration_s - last > MAX_HOOK_GAP_S) problems.push(`${who}: ${episode.duration_s - last} s from the last hook to the cliffhanger (at most ${MAX_HOOK_GAP_S})`);
+  const texts = [episode.hook, ...(hooks ?? []).map((h) => h?.text), episode.cliffhanger?.text].filter(isText);
+  if (new Set(texts).size !== texts.length) problems.push(`${who}: the opening hook, the hooks and the cliffhanger must be different things`);
+  return problems;
+}
 
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
 const pad = (n) => String(n).padStart(2, "0");
@@ -52,6 +79,7 @@ export function seasonProblems(season, { setting, outline, guestIds = new Set() 
     if (!Number.isInteger(episode.duration_s) || episode.duration_s < 50 || episode.duration_s > 180) problems.push(`${who}: duration_s must be 50–180`);
     if ((index + 1) % 10 === 0 && episode.duration_s < 120) problems.push(`${who}: a chapter finale runs at least 120 seconds`);
     if (!HOOK_TYPES.includes(episode.hook_type)) problems.push(`${who}: hook_type must be one of ${HOOK_TYPES.join(", ")}`);
+    problems.push(...hookProblems(episode, who));
     if (!LEAD_ARCS.includes(episode.lead_arc)) problems.push(`${who}: lead_arc must be one of ${LEAD_ARCS.join(", ")}`);
     const beats = episode.satisfaction;
     if (!Array.isArray(beats) || beats.length < 2) problems.push(`${who} needs at least two satisfaction beats`);

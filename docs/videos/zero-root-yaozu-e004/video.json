@@ -13,9 +13,9 @@
   },
   "look": {
     "preset": "custom",
-    "style": "photorealistic live-action Chinese fantasy costume drama, film still, natural cinematic light, realistic skin and fabric texture, shallow depth of field, warm lantern orange and mountain green palette",
-    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore",
-    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "style": "3D Chinese donghua CG animation, like a high-end Chinese 3D animated xianxia series or game cinematic, Unreal Engine 5 cinematic render, stylized semi-realistic characters with refined faces and slightly larger expressive eyes, clearly CG not a photograph, individually rendered hair, simulated cloth with wear; cool desaturated grey-blue palette with warm lantern accents, volumetric light and haze, strong rim light, shallow depth of field",
+    "negative": "photograph, live action, real person, photorealistic skin, text, subtitles, watermark, UI, logo, extra fingers, deformed hands, blood, gore",
+    "motion": "Smooth, natural 3D animated character motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
     "candidates": 2
   },
   "characters": [
@@ -69,7 +69,7 @@
     "data": {
       "headline": "盆裡\n兩顆",
       "tag": "長燈村",
-      "shot": "s23"
+      "shot": "s24"
     }
   },
   "scenes": [
@@ -78,13 +78,13 @@
       "chapter": "雞飼料的帳",
       "template": "shot",
       "action_seconds": 2,
-      "lines": [],
       "data": {
         "camera": "Insert of the oil lamp flame, slow push in",
         "prompt": "Insert of the oil lamp flame on the old wooden table at night, an old hand above it holding the last burning corner of a small slip of paper, a few black flakes of ash in the air",
         "motion": "Black flakes of paper ash drift down and settle on the lamp oil",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
       "id": "s02",
@@ -131,8 +131,8 @@
       "template": "shot",
       "data": {
         "camera": "Wide shot, locked",
-        "prompt": "Wide shot of the Hu family courtyard at night, a lantern under the eaves, the old wooden square table with the oil lamp, Lushi on screen left still seated at the table, Grandma Hu on screen right walking toward the dark doorway of the house, a bamboo chicken coop in the far corner with a cracked clay basin on the ground in front of it",
-        "motion": "Grandma Hu walks away into the dark house without looking back",
+        "prompt": "Wide shot of the Hu family courtyard at night, a lantern under the eaves, the old wooden square table with the oil lamp, Lushi on screen left still seated at the table, Grandma Hu on screen right in the dark doorway of the house with her head turned toward the shut wooden courtyard gate in the far wall, a bamboo chicken coop in the far corner with a cracked clay basin on the ground in front of it",
+        "motion": "Grandma Hu stops in the doorway and looks hard at the shut courtyard gate",
         "characters": [
           "lushi",
           "grandma"
@@ -142,8 +142,8 @@
         {
           "id": "e4a03",
           "speaker": "grandma",
-          "text": "睡覺。",
-          "emotion": "低沉，不給問"
+          "text": "睡覺。把門閂上。",
+          "emotion": "低沉，不給問，眼睛盯著院門"
         }
       ]
     },
@@ -171,20 +171,19 @@
       "id": "s06",
       "template": "shot",
       "action_seconds": 1,
-      "lines": [],
       "data": {
         "camera": "Insert of the clay basin, locked",
         "prompt": "Insert of a cracked old clay basin on the dirt floor of a courtyard at night, grain husks scattered in its bottom, a crack running down its side, a small glowing pale blue spirit stone falling into it",
         "motion": "The glowing stone drops into the basin and rolls to a stop in the middle",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
       "id": "s07",
       "chapter": "盆裡兩顆",
       "template": "shot",
       "action_seconds": 2,
-      "lines": [],
       "data": {
         "camera": "Wide shot, slow push in",
         "prompt": "Wide shot of the Hu family courtyard at dawn, pale gold morning light and thin mist, a brown hen on screen right pecking at the cracked clay basin in front of the bamboo chicken coop, Lushi on screen left stepping out of the house doorway in a yawn, arms stretched over his head",
@@ -192,19 +191,20 @@
         "characters": [
           "lushi"
         ]
-      }
+      },
+      "lines": []
     },
     {
       "id": "s08",
       "template": "shot",
       "action_seconds": 2,
-      "lines": [],
       "data": {
         "camera": "Insert of the basin at dawn, locked",
         "prompt": "Insert of the cracked clay basin at dawn, two identical small glowing pale blue spirit stones side by side among the grain husks, the beak of a brown hen pecking at them, pale gold morning light",
         "motion": "The hen's beak taps one stone and it rolls against the other with a click",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
       "id": "s09",
@@ -230,7 +230,6 @@
       "id": "s10",
       "template": "shot",
       "action_seconds": 1,
-      "lines": [],
       "data": {
         "camera": "Medium shot, locked",
         "prompt": "Medium shot of Lushi on screen left kneeling by the bamboo chicken coop at dawn, the brown hen on screen right flapping away from the cracked clay basin, pale gold morning light",
@@ -238,7 +237,8 @@
         "characters": [
           "lushi"
         ]
-      }
+      },
+      "lines": []
     },
     {
       "id": "s11",
@@ -305,36 +305,50 @@
       "chapter": "連裂紋都一樣",
       "template": "shot",
       "action_seconds": 3,
-      "lines": [],
       "data": {
         "camera": "Wide shot, locked",
         "prompt": "Wide shot of the Hu family courtyard at bright midday, laundry on a bamboo pole, the bamboo chicken coop and the cracked clay basin in the corner on screen right, Lushi on screen left standing in the middle of the yard holding two small stones up against the bright sky at arm's length",
-        "motion": "Lushi raises both stones higher against the bright sky, squinting one eye shut",
+        "motion": "Lushi raises both stones higher against the bright sky at arm's length",
         "characters": [
           "lushi"
         ]
-      }
+      },
+      "lines": []
     },
     {
       "id": "s15",
       "template": "shot",
+      "action_seconds": 1,
       "data": {
         "camera": "Insert of the two stones against the sky, locked",
-        "prompt": "Insert of two small pale blue spirit stones held up between sun-tanned fingers against the bright midday sky, the same thin crack running across each stone in exactly the same place; Lushi speaks off screen",
+        "prompt": "Insert of two small pale blue spirit stones held up between sun-tanned fingers against the bright midday sky, the same thin crack running across each stone in exactly the same place",
         "motion": "The fingers turn both stones together and the two matching cracks catch the light",
         "characters": []
+      },
+      "lines": []
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lushi's face on screen left in bright midday light in the courtyard, the two small pale blue spirit stones held up side by side right beside his eye, one eye squeezed shut, brows drawn together",
+        "motion": "Lushi brings the two stones closer to his open eye, his smile fading",
+        "characters": [
+          "lushi"
+        ]
       },
       "lines": [
         {
           "id": "e4a09",
           "speaker": "lushi",
-          "text": "連裂紋都長得一模一樣……",
+          "text": "連裂紋都一樣……",
           "emotion": "小聲，越看越不對"
         }
       ]
     },
     {
-      "id": "s16",
+      "id": "s17",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
@@ -354,7 +368,7 @@
       ]
     },
     {
-      "id": "s17",
+      "id": "s18",
       "template": "shot",
       "data": {
         "camera": "Close-up, slow push in",
@@ -374,7 +388,7 @@
       ]
     },
     {
-      "id": "s18",
+      "id": "s19",
       "chapter": "守夜",
       "template": "shot",
       "data": {
@@ -395,10 +409,9 @@
       ]
     },
     {
-      "id": "s19",
+      "id": "s20",
       "template": "shot",
-      "action_seconds": 2,
-      "lines": [],
+      "action_seconds": 1,
       "data": {
         "camera": "Wide shot, locked",
         "prompt": "Wide shot of the dark Hu family courtyard at midnight in cold moonlight, Lushi on screen left sitting hunched behind the bamboo chicken coop wrapped in a patched quilt, the cracked clay basin on the ground on screen right with a faint pale blue glow, hens asleep in the coop",
@@ -406,13 +419,13 @@
         "characters": [
           "lushi"
         ]
-      }
+      },
+      "lines": []
     },
     {
-      "id": "s20",
+      "id": "s21",
       "template": "shot",
       "action_seconds": 2,
-      "lines": [],
       "data": {
         "camera": "Medium shot, locked",
         "prompt": "Medium shot of the bamboo chicken coop at midnight in moonlight, Lushi on screen left asleep sitting up against the coop wrapped in the patched quilt, the hens inside the coop on screen right, a warm golden light rising from below frame",
@@ -420,22 +433,23 @@
         "characters": [
           "lushi"
         ]
-      }
+      },
+      "lines": []
     },
     {
-      "id": "s21",
+      "id": "s22",
       "template": "shot",
       "action_seconds": 3,
-      "lines": [],
       "data": {
         "camera": "Insert of the basin, slow push in",
         "prompt": "Insert of the cracked clay basin at midnight seen from above, two glowing pale blue stones and a copper coin in its bottom, rings of warm golden light rising from the clay like ripples on water",
         "motion": "Rings of golden light ripple slowly outward across the bottom of the basin",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
-      "id": "s22",
+      "id": "s23",
       "template": "shot",
       "data": {
         "camera": "Close-up, locked",
@@ -455,19 +469,19 @@
       ]
     },
     {
-      "id": "s23",
+      "id": "s24",
       "template": "shot",
       "action_seconds": 3,
-      "lines": [],
       "data": {
         "camera": "Insert of the basin from above, slow push in",
         "prompt": "Insert from above of the cracked clay basin filled with rings of golden light like ripples on water, two glowing pale blue spirit stones and one copper coin in the middle of the ripples",
         "motion": "The two glowing stones slowly divide into four and the coin into two inside the golden ripples",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
-      "id": "s24",
+      "id": "s25",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
@@ -487,7 +501,7 @@
       ]
     },
     {
-      "id": "s25",
+      "id": "s26",
       "chapter": "不能說",
       "template": "shot",
       "data": {
@@ -508,7 +522,7 @@
       ]
     },
     {
-      "id": "s26",
+      "id": "s27",
       "template": "shot",
       "data": {
         "camera": "Wide shot, locked",
@@ -529,7 +543,7 @@
       ]
     },
     {
-      "id": "s27",
+      "id": "s28",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
@@ -549,7 +563,7 @@
       ]
     },
     {
-      "id": "s28",
+      "id": "s29",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, slow push in",
@@ -569,7 +583,7 @@
       ]
     },
     {
-      "id": "s29",
+      "id": "s30",
       "template": "shot",
       "data": {
         "camera": "Close-up, locked",
@@ -589,7 +603,7 @@
       ]
     },
     {
-      "id": "s30",
+      "id": "s31",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
@@ -609,7 +623,7 @@
       ]
     },
     {
-      "id": "s31",
+      "id": "s32",
       "chapter": "刀",
       "template": "shot",
       "data": {
@@ -630,19 +644,19 @@
       ]
     },
     {
-      "id": "s32",
+      "id": "s33",
       "template": "shot",
       "action_seconds": 1,
-      "lines": [],
       "data": {
         "camera": "Insert of the tofu knife, locked",
         "prompt": "Insert of a gleaming polished tofu knife lying on a wooden chopping board beside a block of white tofu at the kitchen door at dusk, nobody at the board, warm orange light, a sun-tanned hand reaching in from screen left",
         "motion": "The sun-tanned hand slides the tofu knife off the chopping board",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
-      "id": "s33",
+      "id": "s34",
       "template": "shot",
       "data": {
         "camera": "Wide shot, locked",
@@ -662,7 +676,7 @@
       ]
     },
     {
-      "id": "s34",
+      "id": "s35",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, slow push in",
@@ -682,26 +696,27 @@
       ]
     },
     {
-      "id": "s35",
+      "id": "s36",
       "template": "shot",
       "action_seconds": 2,
-      "lines": [],
       "data": {
         "camera": "Insert of the knife tip on the rim, slow push in",
         "prompt": "Insert of the tip of a gleaming tofu knife held in a sun-tanned hand just above the cracked rim of the clay basin at dusk, four glowing pale blue stones in the basin",
         "motion": "The knife tip touches the rim and a faint golden ripple flickers across the bottom of the basin",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
-      "id": "s36",
+      "id": "s37",
       "template": "shot",
       "data": {
-        "camera": "Close-up, locked",
-        "prompt": "Close-up of Lushi's face on screen left at dusk, crouched with his back to the courtyard, the gleaming tofu knife in his hands at the bottom of frame, Grandma Hu off screen behind him on screen right",
-        "motion": "Lushi's shoulders jerk up and the knife stops in mid-air",
+        "camera": "Wide shot, slow push in",
+        "prompt": "Wide shot of the Hu family courtyard at dusk from behind the chicken coop, Lushi on screen left crouched over the glowing basin with the tofu knife in his hands and his back to the yard, Grandma Hu on screen right standing very straight in the middle of the yard, her long narrow eyes on him, the gold glow of the basin catching her face against the last orange light",
+        "motion": "Grandma Hu takes one slow step toward him",
         "characters": [
-          "lushi"
+          "lushi",
+          "grandma"
         ]
       },
       "lines": [
@@ -714,19 +729,18 @@
       ]
     },
     {
-      "id": "s37",
+      "id": "s38",
       "template": "shot",
       "action_seconds": 2,
-      "lines": [],
       "data": {
-        "camera": "Wide shot, slow push in",
-        "prompt": "Wide shot of the Hu family courtyard at dusk from behind the chicken coop, Lushi on screen left crouched over the glowing basin with the tofu knife in his hands and his back to the yard, Grandma Hu on screen right standing very straight in the middle of the yard, her face in shadow against the last orange light",
-        "motion": "Grandma Hu takes one slow step toward him",
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left at dusk, crouched with his back to the courtyard, eyes wide and frozen, gold light from the basin below flickering on his chin, the gleaming tofu knife held stiffly in his hands at the bottom of frame, Grandma Hu off screen behind him on screen right",
+        "motion": "Lushi turns his head slowly toward Grandma Hu off screen right",
         "characters": [
-          "lushi",
-          "grandma"
+          "lushi"
         ]
-      }
+      },
+      "lines": []
     }
   ]
 }

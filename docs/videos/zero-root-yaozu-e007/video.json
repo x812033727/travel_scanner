@@ -13,9 +13,9 @@
   },
   "look": {
     "preset": "custom",
-    "style": "photorealistic live-action Chinese fantasy costume drama, film still, natural cinematic light, realistic skin and fabric texture, shallow depth of field, warm lantern orange and mountain green palette",
-    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore",
-    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "style": "3D Chinese donghua CG animation, like a high-end Chinese 3D animated xianxia series or game cinematic, Unreal Engine 5 cinematic render, stylized semi-realistic characters with refined faces and slightly larger expressive eyes, clearly CG not a photograph, individually rendered hair, simulated cloth with wear; cool desaturated grey-blue palette with warm lantern accents, volumetric light and haze, strong rim light, shallow depth of field",
+    "negative": "photograph, live action, real person, photorealistic skin, text, subtitles, watermark, UI, logo, extra fingers, deformed hands, blood, gore",
+    "motion": "Smooth, natural 3D animated character motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
     "candidates": 2
   },
   "characters": [
@@ -94,7 +94,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "執事上門搜靈石，說宗主千金告他偷的，少年咬牙只說撿的｜長燈村 第7集",
-    "description": "玄穹宗執事錢通令牌一指，弟子把胡家翻了個底朝天；一個弟子抬腳要踢門口的燈籠，全村人同時往前一步。錢通抖開一封信：「雲師姐親口說，是你從她房裡偷的。」陸拾一個字都看不懂；他一說出雲師姐，她就得陪他受審。他咬牙只說「撿的」。《長燈村：零靈根的我被一村妖祖養大》第 7 集。",
+    "description": "玄穹宗執事錢通令牌一指，弟子把胡家翻了個底朝天，一隻靴子就踩在藏東西的那塊地磚上；一個弟子抬腳要踢門口的燈籠，全村人同時往前一步。搜不到東西，弟子脫口一句「長老那邊……」被錢通喝住。錢通說出三十二顆、說窗外的眼睛是他的人，又抖開一封信：「雲師姐親口說，是你從她房裡偷的。」陸拾一個字都看不懂，奶奶卻一直盯著那封信。他一說出雲師姐，她就得陪他受審；他咬牙只說「撿的」。錢通還要人記下這村的燈。《長燈村：零靈根的我被一村妖祖養大》第 7 集。",
     "tags": [
       "長燈村",
       "AI漫劇",
@@ -109,7 +109,7 @@
     "data": {
       "headline": "她說你偷的",
       "tag": "長燈村",
-      "shot": "s23"
+      "shot": "s28"
     }
   },
   "scenes": [
@@ -168,6 +168,32 @@
       "action_seconds": 2,
       "lines": [],
       "data": {
+        "camera": "Insert of the floor brick, low angle, locked",
+        "prompt": "Insert low on the bedroom floor in the afternoon where the bed stood, a loose floor brick with a thin dark gap round it, a brown cloth boot of a disciple stepping down onto it",
+        "motion": "The boot presses down on the loose brick, the brick rocks, and the boot steps away",
+        "characters": []
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Lushi on screen left in the bedroom doorway in the afternoon, eyes darting down to the floor where the bed stood, the overturned bed soft behind",
+        "motion": "Lushi presses his back against the doorframe and holds his breath",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
         "camera": "Insert of the rice vat, locked",
         "prompt": "Insert of a big glazed clay rice vat on the wooden floor of a village kitchen in the afternoon, a brown sleeve and hand at the edge of frame shoving it",
         "motion": "The rice vat topples over and white rice pours out across the floor",
@@ -175,7 +201,7 @@
       }
     },
     {
-      "id": "s05",
+      "id": "s07",
       "template": "shot",
       "data": {
         "camera": "Wide shot, locked",
@@ -196,7 +222,7 @@
       ]
     },
     {
-      "id": "s06",
+      "id": "s08",
       "template": "shot",
       "data": {
         "camera": "Two-shot, locked",
@@ -217,7 +243,7 @@
       ]
     },
     {
-      "id": "s07",
+      "id": "s09",
       "chapter": "燈籠",
       "template": "shot",
       "data": {
@@ -238,7 +264,7 @@
       ]
     },
     {
-      "id": "s08",
+      "id": "s10",
       "template": "shot",
       "action_seconds": 3,
       "lines": [],
@@ -252,7 +278,7 @@
       }
     },
     {
-      "id": "s09",
+      "id": "s11",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
@@ -272,7 +298,7 @@
       ]
     },
     {
-      "id": "s10",
+      "id": "s12",
       "template": "shot",
       "action_seconds": 2,
       "lines": [],
@@ -286,7 +312,7 @@
       }
     },
     {
-      "id": "s11",
+      "id": "s13",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, slow push in",
@@ -306,7 +332,48 @@
       ]
     },
     {
-      "id": "s12",
+      "id": "s14",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot in the Hu family courtyard in the afternoon, a disciple on screen left hurrying up from the house empty-handed, Qian Tong on screen right by the gate, a step apart",
+        "motion": "The disciple stops short in front of Qian Tong and bows his head",
+        "characters": [
+          "disciple",
+          "qian"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e7a07",
+          "speaker": "disciple",
+          "text": "執事，沒有。長老那邊……",
+          "emotion": "慌，壓低聲音"
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Qian Tong on screen right in the courtyard in the afternoon, the smile dropping off his face, a disciple off screen left",
+        "motion": "Qian Tong turns his head sharply and glares toward screen left",
+        "characters": [
+          "qian"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e7a08",
+          "speaker": "qian",
+          "text": "多嘴。",
+          "emotion": "冷，一個字壓下去"
+        }
+      ]
+    },
+    {
+      "id": "s16",
       "chapter": "信",
       "template": "shot",
       "data": {
@@ -320,7 +387,7 @@
       },
       "lines": [
         {
-          "id": "e7a07",
+          "id": "e7a09",
           "speaker": "qian",
           "text": "三十二顆，交出來。",
           "emotion": "客客氣氣，不容商量"
@@ -328,7 +395,7 @@
       ]
     },
     {
-      "id": "s13",
+      "id": "s17",
       "template": "shot",
       "data": {
         "camera": "Close-up, locked",
@@ -340,7 +407,7 @@
       },
       "lines": [
         {
-          "id": "e7a08",
+          "id": "e7a10",
           "speaker": "lushi",
           "text": "你怎麼知道……三十二？",
           "emotion": "一驚，想起窗外那隻眼睛"
@@ -348,7 +415,7 @@
       ]
     },
     {
-      "id": "s14",
+      "id": "s18",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
@@ -360,7 +427,7 @@
       },
       "lines": [
         {
-          "id": "e7a09",
+          "id": "e7a11",
           "speaker": "qian",
           "text": "我的人，看得清清楚楚。",
           "emotion": "得意，慢慢說"
@@ -368,7 +435,7 @@
       ]
     },
     {
-      "id": "s15",
+      "id": "s19",
       "template": "shot",
       "data": {
         "camera": "Medium shot, locked",
@@ -380,7 +447,7 @@
       },
       "lines": [
         {
-          "id": "e7a10",
+          "id": "e7a12",
           "speaker": "qian",
           "text": "雲師姐親口說——",
           "emotion": "拖長音，等著看他的臉"
@@ -388,17 +455,19 @@
       ]
     },
     {
-      "id": "s16",
+      "id": "s20",
       "template": "shot",
       "data": {
-        "camera": "Insert of the letter, slow push in",
-        "prompt": "Insert of a letter held open by a hand in a brown sleeve in the afternoon light, columns of faint brushwork too small and blurred to read, no legible writing; Qian Tong speaks off screen",
-        "motion": "The hand holds the letter up closer",
-        "characters": []
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Qian Tong's face on screen right in the wrecked bedroom, the open letter held up beside his cheek, faint brushwork on it too small and blurred to read, Lushi off screen left",
+        "motion": "Qian Tong tilts the letter toward Lushi off screen left",
+        "characters": [
+          "qian"
+        ]
       },
       "lines": [
         {
-          "id": "e7a11",
+          "id": "e7a13",
           "speaker": "qian",
           "text": "是你從她房裡偷的。",
           "emotion": "輕描淡寫，一刀"
@@ -406,7 +475,7 @@
       ]
     },
     {
-      "id": "s17",
+      "id": "s21",
       "template": "shot",
       "data": {
         "camera": "Close-up, slow push in",
@@ -418,7 +487,7 @@
       },
       "lines": [
         {
-          "id": "e7a12",
+          "id": "e7a14",
           "speaker": "lushi",
           "text": "一個字……都看不懂。",
           "emotion": "慌，不敢信"
@@ -426,7 +495,7 @@
       ]
     },
     {
-      "id": "s18",
+      "id": "s22",
       "template": "shot",
       "data": {
         "camera": "Two-shot, locked",
@@ -439,7 +508,7 @@
       },
       "lines": [
         {
-          "id": "e7a13",
+          "id": "e7a15",
           "speaker": "qian",
           "text": "零靈根，還是個睜眼瞎。",
           "emotion": "笑出聲，瞧不起"
@@ -447,7 +516,21 @@
       ]
     },
     {
-      "id": "s19",
+      "id": "s23",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Grandma Hu on screen left in the bedroom doorway in the afternoon, the gleaming tofu knife in her hand, her long narrow eyes fixed on the letter going into Qian Tong's sleeve off screen right",
+        "motion": "Grandma Hu takes one slow step forward into the room, her eyes never leaving the sleeve",
+        "characters": [
+          "grandma"
+        ]
+      }
+    },
+    {
+      "id": "s24",
       "chapter": "撿的",
       "template": "shot",
       "data": {
@@ -460,7 +543,7 @@
       },
       "lines": [
         {
-          "id": "e7a14",
+          "id": "e7a16",
           "speaker": "lushi",
           "text": "是雲師姐給——",
           "emotion": "急著辯，話衝出口"
@@ -468,7 +551,7 @@
       ]
     },
     {
-      "id": "s20",
+      "id": "s25",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, slow push in",
@@ -480,7 +563,7 @@
       },
       "lines": [
         {
-          "id": "e7a15",
+          "id": "e7a17",
           "speaker": "qian",
           "text": "說啊，她也得陪你受審。",
           "emotion": "眼睛一亮，等他上鉤"
@@ -488,19 +571,19 @@
       ]
     },
     {
-      "id": "s21",
+      "id": "s26",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
-        "prompt": "Medium close-up of Grandma Hu on screen left in the bedroom doorway, the gleaming tofu knife in her hand, her long narrow eyes on the letter in Qian Tong's sleeve off screen right",
-        "motion": "Grandma Hu's eyes narrow and her grip tightens on the tofu knife",
+        "prompt": "Medium close-up of Grandma Hu on screen left inside the bedroom door, the gleaming tofu knife in her hand, her long narrow eyes on Lushi off screen right",
+        "motion": "Grandma Hu's grip tightens on the tofu knife",
         "characters": [
           "grandma"
         ]
       },
       "lines": [
         {
-          "id": "e7a16",
+          "id": "e7a18",
           "speaker": "grandma",
           "text": "拾兒。",
           "emotion": "低低一聲，像在提醒"
@@ -508,7 +591,7 @@
       ]
     },
     {
-      "id": "s22",
+      "id": "s27",
       "template": "shot",
       "data": {
         "camera": "Close-up, slow push in",
@@ -520,7 +603,7 @@
       },
       "lines": [
         {
-          "id": "e7a17",
+          "id": "e7a19",
           "speaker": "lushi",
           "text": "撿的。",
           "emotion": "咬牙，一個字一個字"
@@ -528,7 +611,7 @@
       ]
     },
     {
-      "id": "s23",
+      "id": "s28",
       "template": "shot",
       "data": {
         "camera": "Wide shot, locked",
@@ -541,7 +624,7 @@
       },
       "lines": [
         {
-          "id": "e7a18",
+          "id": "e7a20",
           "speaker": "qian",
           "text": "又是撿的？",
           "emotion": "冷笑"
@@ -549,7 +632,7 @@
       ]
     },
     {
-      "id": "s24",
+      "id": "s29",
       "template": "shot",
       "data": {
         "camera": "Medium shot, locked",
@@ -561,7 +644,7 @@
       },
       "lines": [
         {
-          "id": "e7a19",
+          "id": "e7a21",
           "speaker": "disciple",
           "text": "這缸……搬不動！",
           "emotion": "憋紅了臉"
@@ -569,7 +652,7 @@
       ]
     },
     {
-      "id": "s25",
+      "id": "s30",
       "template": "shot",
       "data": {
         "camera": "Wide shot, locked",
@@ -582,7 +665,7 @@
       },
       "lines": [
         {
-          "id": "e7a20",
+          "id": "e7a22",
           "speaker": "lushi",
           "text": "要搜，自己看。",
           "emotion": "悶聲，不看他們"
@@ -590,7 +673,7 @@
       ]
     },
     {
-      "id": "s26",
+      "id": "s31",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
@@ -602,7 +685,7 @@
       },
       "lines": [
         {
-          "id": "e7a21",
+          "id": "e7a23",
           "speaker": "qian",
           "text": "零靈根……力氣倒不小。",
           "emotion": "笑僵住，又硬撐"
@@ -610,7 +693,27 @@
       ]
     },
     {
-      "id": "s27",
+      "id": "s32",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Medium shot of Qian Tong on screen right in the wet courtyard in the afternoon, the warm orange paper lantern on its wooden post soft in the background on screen left",
+        "motion": "Qian Tong turns his head slowly to look at the lantern on screen left",
+        "characters": [
+          "qian"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e7a24",
+          "speaker": "qian",
+          "text": "這村的燈……記下來。",
+          "emotion": "輕聲，像在記帳"
+        }
+      ]
+    },
+    {
+      "id": "s33",
       "chapter": "縛仙索",
       "template": "shot",
       "action_seconds": 1,
@@ -623,7 +726,7 @@
       }
     },
     {
-      "id": "s28",
+      "id": "s34",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
@@ -635,7 +738,7 @@
       },
       "lines": [
         {
-          "id": "e7a22",
+          "id": "e7a25",
           "speaker": "qian",
           "text": "交出靈石，或者——",
           "emotion": "慢慢說，留一半"
@@ -643,7 +746,7 @@
       ]
     },
     {
-      "id": "s29",
+      "id": "s35",
       "template": "shot",
       "data": {
         "camera": "Close-up, slow push in",
@@ -655,7 +758,7 @@
       },
       "lines": [
         {
-          "id": "e7a23",
+          "id": "e7a26",
           "speaker": "qian",
           "text": "回宗對質，她陪你受審。",
           "emotion": "壓低聲音，笑裡藏刀"
@@ -663,7 +766,7 @@
       ]
     },
     {
-      "id": "s30",
+      "id": "s36",
       "template": "shot",
       "action_seconds": 2,
       "lines": [],
@@ -675,7 +778,7 @@
       }
     },
     {
-      "id": "s31",
+      "id": "s37",
       "template": "shot",
       "data": {
         "camera": "Close-up, locked",
@@ -687,7 +790,7 @@
       },
       "lines": [
         {
-          "id": "e7a24",
+          "id": "e7a27",
           "speaker": "qian",
           "text": "想好了嗎？",
           "emotion": "不急，像在等魚上鉤"
@@ -695,7 +798,7 @@
       ]
     },
     {
-      "id": "s32",
+      "id": "s38",
       "template": "shot",
       "action_seconds": 3,
       "lines": [],

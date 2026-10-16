@@ -80,7 +80,7 @@ function seasonMd(season) {
         "",
         `- 一句話：${ep.logline}`,
         `- 前 3 秒（${HOOK[ep.hook_type]}）：${ep.hook}`,
-        `- 中段鉤子：${ep.mid_hook}`,
+        ...(ep.hooks ?? []).map((h, i) => `- 鉤子 ${i + 1}（${h.at_s} 秒，${HOOK[h.type]}）：${h.text}（${h.question}）`),
         `- 衝突：${ep.conflict}`,
         `- 轉折：${ep.turn}`,
         `- 爽點：${ep.satisfaction.map((beat) => `${BEAT[beat.beat]}・${SAT[beat.type]}${beat.what ? `（${beat.what}）` : ""}`).join("、")}`,

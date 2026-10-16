@@ -13,9 +13,9 @@
   },
   "look": {
     "preset": "custom",
-    "style": "photorealistic live-action Chinese fantasy costume drama, film still, natural cinematic light, realistic skin and fabric texture, shallow depth of field, warm lantern orange and mountain green palette",
-    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore",
-    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "style": "3D Chinese donghua CG animation, like a high-end Chinese 3D animated xianxia series or game cinematic, Unreal Engine 5 cinematic render, stylized semi-realistic characters with refined faces and slightly larger expressive eyes, clearly CG not a photograph, individually rendered hair, simulated cloth with wear; cool desaturated grey-blue palette with warm lantern accents, volumetric light and haze, strong rim light, shallow depth of field",
+    "negative": "photograph, live action, real person, photorealistic skin, text, subtitles, watermark, UI, logo, extra fingers, deformed hands, blood, gore",
+    "motion": "Smooth, natural 3D animated character motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
     "candidates": 2
   },
   "characters": [
@@ -100,7 +100,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "有人半夜偷看他的靈石，少年摸清寶盆規矩設下假靈石局｜長燈村 第6集",
-    "description": "陸拾推開窗，屋頂上的灰影竄下巷口，正好撞上扛柴的阿猙，一起滾進池塘，撈上來一條繡著玄穹宗雲紋的布。他連夜摸清破陶盆的規矩：一晚只認一次、活的東西不收；再用河石和螢火粉做出一袋假靈石，把真的藏進歸伯的魚簍。天一亮，村口銅鑼響起，玄穹宗執事錢通奉命追回「失竊靈石」，令牌直直指向他。《長燈村：零靈根的我被一村妖祖養大》第 6 集。",
+    "description": "陸拾推開窗，屋頂上的灰影竄下巷口，正好撞上扛柴的阿猙，一起滾進池塘，撈上來一條繡著雲紋的布——跟他靈石上的玄穹宗印一模一樣。他連夜摸清破陶盆的規矩：一晚只認一次、活的東西不收，盆底的金光還像眼睛一樣眨了一下。他用河石和螢火粉做出一袋假靈石，卻發現沾水就掉；真的藏進歸伯的魚簍。天一亮，村口銅鑼響起，玄穹宗執事錢通奉命追回「失竊靈石」，令牌直直指向他。《長燈村：零靈根的我被一村妖祖養大》第 6 集。",
     "tags": [
       "長燈村",
       "AI漫劇",
@@ -115,7 +115,7 @@
     "data": {
       "headline": "假靈石局",
       "tag": "長燈村",
-      "shot": "s24"
+      "shot": "s25"
     }
   },
   "scenes": [
@@ -273,12 +273,12 @@
     {
       "id": "s09",
       "template": "shot",
-      "action_seconds": 1,
+      "action_seconds": 2,
       "lines": [],
       "data": {
-        "camera": "Insert of the cloth strip, locked",
-        "prompt": "Insert of a sun-tanned hand holding a wet strip of brown cloth up to warm oil lamp light at night, a small cloud-shaped sigil embroidered on it in pale thread, no writing",
-        "motion": "The hand turns the cloth to the light and the cloud sigil glints",
+        "camera": "Insert of the stone and the cloth, slow push in",
+        "prompt": "Insert at night in warm oil lamp light of a sun-tanned hand holding a glowing pale blue spirit stone beside a wet strip of brown cloth, the same small cloud-shaped sigil carved on the stone and embroidered on the cloth in pale thread, no writing",
+        "motion": "The hand lifts the glowing stone up beside the cloth until the two cloud sigils line up",
         "characters": []
       }
     },
@@ -297,7 +297,7 @@
         {
           "id": "e6a05",
           "speaker": "lushi",
-          "text": "玄穹宗的人……一直在盯我。",
+          "text": "同一個印……衝著靈石來的。",
           "emotion": "壓低聲音，心一沉"
         }
       ]
@@ -476,11 +476,25 @@
     {
       "id": "s21",
       "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
       "data": {
         "camera": "Insert of the empty basin from above, slow push in",
-        "prompt": "Insert from above of the empty cracked clay basin at night, dark inside, a faint thin ring of golden light at the very bottom; Lushi speaks off screen",
+        "prompt": "Insert from above of the empty cracked clay basin at night, dark inside, a faint thin ring of golden light at the very bottom",
         "motion": "The faint golden ring at the bottom slowly opens wide and closes again, like an eye blinking",
         "characters": []
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left in moonlight, staring down at the basin below frame, the patched quilt clutched to his chest",
+        "motion": "Lushi pulls the quilt tight round himself, staring down at the basin",
+        "characters": [
+          "lushi"
+        ]
       },
       "lines": [
         {
@@ -492,7 +506,7 @@
       ]
     },
     {
-      "id": "s22",
+      "id": "s23",
       "chapter": "假靈石",
       "template": "shot",
       "data": {
@@ -513,7 +527,7 @@
       ]
     },
     {
-      "id": "s23",
+      "id": "s24",
       "template": "shot",
       "action_seconds": 3,
       "lines": [],
@@ -525,7 +539,7 @@
       }
     },
     {
-      "id": "s24",
+      "id": "s25",
       "template": "shot",
       "data": {
         "camera": "Close-up, slow push in",
@@ -545,7 +559,39 @@
       ]
     },
     {
-      "id": "s25",
+      "id": "s26",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the wet pebble, locked",
+        "prompt": "Insert of a row of glowing painted pebbles on a wooden table at night in oil lamp light, a single drop of water falling from a wet sleeve above onto one of them",
+        "motion": "The water drop lands and the pale blue glow runs off that pebble in a streak, leaving bare grey stone",
+        "characters": []
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Lushi on screen left at the wooden table at night, oil lamp light, a frown, his wet sleeve held away from the glowing pebbles below frame",
+        "motion": "Lushi wrings out his wet sleeve and frowns at the dull pebble",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a15",
+          "speaker": "lushi",
+          "text": "沾水就掉……只要別下雨。",
+          "emotion": "皺眉，自己安慰自己"
+        }
+      ]
+    },
+    {
+      "id": "s28",
       "template": "shot",
       "action_seconds": 2,
       "lines": [],
@@ -557,7 +603,7 @@
       }
     },
     {
-      "id": "s26",
+      "id": "s29",
       "template": "shot",
       "data": {
         "camera": "Wide shot, locked",
@@ -570,7 +616,7 @@
       },
       "lines": [
         {
-          "id": "e6a15",
+          "id": "e6a16",
           "speaker": "lushi",
           "text": "歸伯，借您魚簍。",
           "emotion": "壓低聲音，客氣"
@@ -578,7 +624,7 @@
       ]
     },
     {
-      "id": "s27",
+      "id": "s30",
       "template": "shot",
       "action_seconds": 1,
       "lines": [],
@@ -590,7 +636,7 @@
       }
     },
     {
-      "id": "s28",
+      "id": "s31",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
@@ -602,7 +648,7 @@
       },
       "lines": [
         {
-          "id": "e6a16",
+          "id": "e6a17",
           "speaker": "gui",
           "text": "魚，自己會來。",
           "emotion": "慢吞吞，眼睛不離水面"
@@ -610,7 +656,7 @@
       ]
     },
     {
-      "id": "s29",
+      "id": "s32",
       "chapter": "銅鑼",
       "template": "shot",
       "data": {
@@ -624,7 +670,7 @@
       },
       "lines": [
         {
-          "id": "e6a17",
+          "id": "e6a18",
           "speaker": "qian",
           "text": "玄穹宗執事錢通！",
           "emotion": "揚聲，拖著官腔"
@@ -632,7 +678,7 @@
       ]
     },
     {
-      "id": "s30",
+      "id": "s33",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, low angle, locked",
@@ -644,7 +690,7 @@
       },
       "lines": [
         {
-          "id": "e6a18",
+          "id": "e6a19",
           "speaker": "qian",
           "text": "奉命追回失竊靈石！",
           "emotion": "笑著，字字咬清楚"
@@ -652,7 +698,7 @@
       ]
     },
     {
-      "id": "s31",
+      "id": "s34",
       "template": "shot",
       "action_seconds": 3,
       "lines": [],
@@ -667,7 +713,27 @@
       }
     },
     {
-      "id": "s32",
+      "id": "s35",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Lushi on screen left at the edge of the crowd at the village gate in the morning, lanterns soft behind him, eyes going wide, Qian Tong off screen right",
+        "motion": "Lushi takes half a step back into the crowd",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a20",
+          "speaker": "lushi",
+          "text": "失竊……？",
+          "emotion": "愣住，不敢信"
+        }
+      ]
+    },
+    {
+      "id": "s36",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, slow push in",
@@ -679,7 +745,7 @@
       },
       "lines": [
         {
-          "id": "e6a19",
+          "id": "e6a21",
           "speaker": "qian",
           "text": "就是他。",
           "emotion": "輕，篤定"
