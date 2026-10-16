@@ -276,8 +276,8 @@ async function audition(args, ctx) {
   }).values;
   if (!values["text-file"]) throw new UsageError("audition needs --text-file: a UTF-8 file with the sample narration");
   if (values.slug && !/^[a-z0-9][a-z0-9-]{1,99}$/.test(values.slug)) throw new UsageError("audition --slug must be a valid video slug");
-  if (values.slug && /^(?:story-rolling-suitcase|story-conveyor-belt-sushi)/.test(values.slug) && !PILOT_SLUGS.has(values.slug)) {
-    throw new UsageError("audition --slug names a pilot family but is not one of the four budgeted pilot slugs");
+  if (values.slug && /^(?:story-rolling-suitcase|story-conveyor-belt-sushi|story-five-)/.test(values.slug) && !PILOT_SLUGS.has(values.slug)) {
+    throw new UsageError("audition --slug names a budgeted story family but is not an exact budgeted story slug");
   }
   const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
   const pilotSlugs = pilotAuditionSlugs(values["text-file"], workBase);

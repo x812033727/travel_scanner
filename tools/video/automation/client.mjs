@@ -31,11 +31,14 @@ export const POLICY_HOLD = POLICY_HOLD_CODE;
 // own request key before the first POST, so a lost submit, a lost body or a restart reconnects
 // to the same job instead of buying the unit again.
 export const DURABLE_STAGES = new Set(["writer", "translator", "caption_reviewer"]);
-// These first-run story films have an all-in budget reservation on the API. Every model
+// These story films have an all-in budget reservation on the API. Every model
 // stage needs the durable request key, including their chapter verifier and listener.
 const PILOT_STORY_SLUGS = new Set([
   "story-rolling-suitcase", "story-conveyor-belt-sushi",
   "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2",
+  "story-five-lego-legoland", "story-five-costco-hot-dog",
+  "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
+  "story-five-pringles-vat-case",
 ]);
 
 export class AutomationError extends Error {
