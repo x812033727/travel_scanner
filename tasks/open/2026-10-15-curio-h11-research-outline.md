@@ -108,3 +108,9 @@ H11 將材料定年、字詞分布、新聞稿撤下、背面透字、筆跡推�
 ## 2026-10-16 H11 成片核准與繁中基礎包
 
 站主在後台核准成片，`review-pull --gate final` 讀回 `approval recorded`。`package --slug curio-h11` 建出繁中基礎包，四項檢查全過，詳見 [upload-qa-1.md](../../docs/videos/curio-h11/upload-qa-1.md)；`review-push --gate publish` 已送審，`review-pull` 讀回 `publish: waiting for the owner`。後台語言選項尚未保存（`decided_at: null`）；站主表示要另選外語部件，選定後需按其設定製作並重新打包。未上傳或發布。
+
+## 2026-10-16 三語選擇與取樣單位修正
+
+後台已保存英、日、韓各語的標題說明、字幕與配音，`locales_decided_at=2026-10-16T05:22:29.664767Z`；站主另核准 H11 多語 US$2.00，H11 估算停手上限 US$8.00。加上 H10 同額增額，五集目前合計 US$34.00；見 [multilingual-authorization-1.md](../../docs/videos/curio-h11/multilingual-authorization-1.md)。三語工作表已填，但未合併或配音。
+
+英文獨立審稿查到已核准繁中第 `v0e564e3` 句的「四頁」與 Hodgins 2009 原始定年報告的四「葉」不符，已在同一 H11 任務認領內將唯一這句改為「四葉」，同步主張表及來源登錄；原始樣本分別出自第 8、26、47、68 葉。新版 `script.md` SHA-256 `7000C074516D3A30484E794D9D490DFF9412E8A869AD4743D81915CDAC7D6238`，獨立史料及十三題敘事複核全過，lint 0／0；見 [修正收據](../../docs/videos/curio-h11/source-correction-1.md)及[複核收據](../../docs/videos/curio-h11/source-recheck-1.md)。已 `review-push --gate script` 送新版後台，`review-pull` 讀回等待站主；**舊劇本、旁白、成片及上傳包核准不得沿用**。先等新版劇本核准，再重建並送審後續媒體。英、日獨立翻譯審稿的 HOLD 及修項見各語 `i18n-review-*-1.md`；三語未付費合成、未上傳。

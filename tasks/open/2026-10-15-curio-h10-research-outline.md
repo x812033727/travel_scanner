@@ -110,3 +110,7 @@ video SHA-256 `e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559`
 ## 2026-10-16 H10 繁中成片已送最終審核
 
 站主在 `/admin/videos` 核准新版 73 張分鏡，協調者以 `review-pull --gate storyboard` 讀回 approval recorded。`render`、`clips`、`assemble` 與 `captions` 已完成；成片 10:14.17，正文 9:48.17，102 段繁中 CC，成片 SHA-256 `912F39E5DF15E0FEC7AADE44FE6872B28E8C6E5E9EDA63F60EEECB7E4949017C`。最終 QA 10／11，唯一未過為片尾同一卡 17.4 秒超出 15 秒；已用 `--manual-review` 送後台，`review-pull --gate final` 讀回 **waiting for the owner**。詳見 [final-qa-1.md](../../docs/videos/curio-h10/final-qa-1.md)。本輪一次 Jev 最終 QA 估算 US$0.05，批次協調者已結算至共用帳本，H10 累計估算 US$2.569／US$6。站主核准成片前不做上傳包，語言尚未選定，未上傳 YouTube。
+
+## 2026-10-16 成片核准與三語授權
+
+站主已在後台核准 H10 繁中成片；`review-pull --gate final` 現場讀回 `final: approval recorded`。後台 `locales_decided_at` 為 `2026-10-16T06:05:13.839762Z`，英、日、韓均選標題說明、字幕、配音；本機已同步 `languages.json` 並產出各 82 句含 `max_chars` 的工作表。站主另核准 H10 多語 US$2.00，H10 停手上限改為 US$8.00；連同 H11 多語 US$2.00，五集合計停手上限 US$34.00。詳見 [multilingual-authorization-1.md](../../docs/videos/curio-h10/multilingual-authorization-1.md)。三語尚未翻譯／審稿／配音，未製成多語上傳包，未上傳 YouTube。
