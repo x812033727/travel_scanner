@@ -8,6 +8,7 @@ localization test holds for the whole package. Reached through apps/web/app/api/
 
 from __future__ import annotations
 
+from decimal import ROUND_UP, Decimal
 from typing import Annotated
 from uuid import UUID
 
@@ -27,6 +28,8 @@ from app.video_automation.settings import (
     slides_image_choice,
     slides_values,
 )
+from app.video_budget.models import PILOT_SLUGS
+from app.video_budget.service import is_pilot, mark_uncertain, release, reserve, settle, summary
 from app.video_media import meter, stock
 from app.video_media.catalog import find_model
 from app.video_media.jobs import (
@@ -57,6 +60,7 @@ from app.video_media.schemas import (
     LocateOut,
     MediaStatus,
     MusicJobIn,
+    PilotBudgetView,
     StockFetchIn,
     StockFetchOut,
     StockSearchIn,
@@ -92,6 +96,33 @@ DOWNLOADS_PER_HOUR = 600
 STOCK_CALLS_PER_HOUR = 150
 PRUNE_MARK = "video-media:prune-ran"
 PRUNE_EVERY_SECONDS = 3600
+# Gemini 3.8 Flash standard prices through 2026-12-31: $0.75/M input, $3.75/M
+# output including thinking. Even if the request-side maxOutputTokens is ignored,
+# the published model limits are 1,048,576 input and 65,536 output tokens, so one
+# standard-tier call cannot exceed 0.786432 + 0.245760 = $1.032192 at list price.
+# The budget service expires the quote after 2026-12-31.
+# https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash
+# https://ai.google.dev/gemini-api/docs/pricing
+PILOT_GEMINI_JUDGE_MAX_USD = Decimal("1.032192")
+
+
+def _pilot_judge_price(model: str) -> Decimal | None:
+    return PILOT_GEMINI_JUDGE_MAX_USD if model == "gemini-3.8-flash" else None
+
+
+def _pilot_judge_actual(input_tokens: int | None, total_tokens: int | None) -> Decimal | None:
+    if (
+        input_tokens is None
+        or total_tokens is None
+        or input_tokens < 0
+        or total_tokens < input_tokens
+    ):
+        return None
+    raw = (
+        Decimal(input_tokens) * Decimal("0.75")
+        + Decimal(total_tokens - input_tokens) * Decimal("3.75")
+    ) / Decimal(1_000_000)
+    return raw.quantize(Decimal("0.000001"), rounding=ROUND_UP)
 
 
 def media_store(media: MediaSettings) -> MediaStore:
@@ -173,6 +204,23 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
         )
 
     slides = slides_values(row)
+    pilot_budgets: dict[str, PilotBudgetView] = {}
+    for slug in sorted(PILOT_SLUGS):
+        account = await summary(session, slug)
+        if account is None:
+            raise AppError(503, "video_budget_missing_account", "試作影片的 25 美元帳戶尚未就緒")
+        pilot_budgets[slug] = PilotBudgetView(
+            limit_usd=str(account.limit_usd),
+            reserved_usd=str(account.reserved_usd),
+            settled_usd=str(account.settled_usd),
+            remaining_usd=str(account.remaining_usd),
+            uncertain_operations=account.uncertain_operations,
+            settled_operations=account.settled_operations,
+            released_operations=account.released_operations,
+            overrun_operations=account.overrun_operations,
+            total_over_limit=account.total_over_limit,
+            over_limit_usd=str(account.over_limit_usd),
+        )
     return MediaStatus(
         enabled=row.drama_enabled,
         music_enabled=row.music_enabled,
@@ -188,6 +236,7 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
         stock=stock.configured(ctx.runtime),
         models=media_options_view(),
         budgets=await meter.budgets_view(ctx.redis, row),
+        pilot_budgets=pilot_budgets,
         estimated_usd=await meter.month_usd(session, ctx.redis),
         max_usd_per_video=row.max_usd_per_video,
         max_clips_per_video=row.max_clips_per_video,
@@ -333,14 +382,67 @@ async def judge_media(payload: JudgeIn, tool: VideoTool, session: Session) -> Ju
     """Gemini scores a sheet, a keyframe or a clip against the rubric; one call, one budget unit."""
     await _limit("judge", tool.id, JUDGES_PER_HOUR)
     ctx = await _context(session, tool.id)
-    await _book_judge_call(ctx)
+    pilot = is_pilot(payload.slug)
+    operation = f"media-judge:{payload.operation_id}" if payload.operation_id else ""
+    if pilot and not payload.operation_id:
+        raise AppError(422, "video_pilot_budget_operation_required", "試作評審需要唯一操作代號")
+    held = (
+        await reserve(
+            session,
+            slug=payload.slug,
+            operation_id=operation,
+            category="media-judge",
+            provider="gemini",
+            model=ctx.runtime.hotspot_guide_gemini_model,
+            max_usd=_pilot_judge_price(ctx.runtime.hotspot_guide_gemini_model),
+        )
+        if pilot
+        else None
+    )
+    if held is not None and not held.dispatch_allowed:
+        raise AppError(409, "video_pilot_budget_operation_reused", "這次評審請求已送過，先核對結果")
+    try:
+        await _book_judge_call(ctx)
+    except AppError:
+        if held is not None:
+            await release(
+                session,
+                slug=payload.slug,
+                operation_id=operation,
+                reason="monthly judge quota refused before dispatch",
+            )
+        raise
     # The owner's threshold is the floor: a call may ask for a higher bar, never a lower one.
     min_score = max(payload.min_score or 0, ctx.row.judge_min_score)
     try:
-        return await judge(ctx.runtime, ctx.media, ctx.store, payload, min_score)
+        result = await judge(ctx.runtime, ctx.media, ctx.store, payload, min_score)
     except JudgeError as error:
-        await meter.release_judge_call(ctx.redis)
+        predispatch = error.code in {
+            "video_media_judge_unavailable",
+            "video_media_file_not_found",
+            "video_media_judge_too_large",
+            "video_media_invalid",
+            "video_pilot_budget_unknown_price",
+        }
+        if held is not None:
+            if predispatch:
+                await release(session, slug=payload.slug, operation_id=operation, reason=error.code)
+            else:
+                await mark_uncertain(session, slug=payload.slug, operation_id=operation)
+        if not pilot or predispatch:
+            await meter.release_judge_call(ctx.redis)
         raise _refused(error) from error
+    except Exception:
+        if held is not None:
+            await mark_uncertain(session, slug=payload.slug, operation_id=operation)
+        raise
+    if held is not None:
+        actual = _pilot_judge_actual(result.usage_input_tokens, result.usage_total_tokens)
+        if actual is None:
+            await mark_uncertain(session, slug=payload.slug, operation_id=operation)
+        else:
+            await settle(session, slug=payload.slug, operation_id=operation, actual_usd=actual)
+    return result
 
 
 @media_router.post("/locate", response_model=LocateOut)
@@ -352,12 +454,65 @@ async def locate_subjects(payload: LocateIn, tool: VideoTool, session: Session) 
     """
     await _limit("judge", tool.id, JUDGES_PER_HOUR)
     ctx = await _context(session, tool.id)
-    await _book_judge_call(ctx)
+    pilot = is_pilot(payload.slug)
+    operation = f"media-locate:{payload.operation_id}" if payload.operation_id else ""
+    if pilot and not payload.operation_id:
+        raise AppError(422, "video_pilot_budget_operation_required", "試作定位評審需要唯一操作代號")
+    held = (
+        await reserve(
+            session,
+            slug=payload.slug,
+            operation_id=operation,
+            category="media-locate",
+            provider="gemini",
+            model=ctx.runtime.hotspot_guide_gemini_model,
+            max_usd=_pilot_judge_price(ctx.runtime.hotspot_guide_gemini_model),
+        )
+        if pilot
+        else None
+    )
+    if held is not None and not held.dispatch_allowed:
+        raise AppError(409, "video_pilot_budget_operation_reused", "這次定位請求已送過，先核對結果")
     try:
-        return await locate(ctx.runtime, ctx.media, ctx.store, payload)
+        await _book_judge_call(ctx)
+    except AppError:
+        if held is not None:
+            await release(
+                session,
+                slug=payload.slug,
+                operation_id=operation,
+                reason="monthly judge quota refused before dispatch",
+            )
+        raise
+    try:
+        result = await locate(ctx.runtime, ctx.media, ctx.store, payload)
     except LocateError as error:
-        await meter.release_judge_call(ctx.redis)
+        predispatch = error.code in {
+            "video_media_locate_unavailable",
+            "video_media_file_not_found",
+            "video_media_judge_too_large",
+            "video_media_invalid",
+            "video_pilot_budget_unknown_price",
+        }
+        if held is not None:
+            if predispatch:
+                await release(session, slug=payload.slug, operation_id=operation, reason=error.code)
+            else:
+                await mark_uncertain(session, slug=payload.slug, operation_id=operation)
+        if not pilot or predispatch:
+            await meter.release_judge_call(ctx.redis)
         raise _refused(error) from error
+    except Exception:
+        if held is not None:
+            await mark_uncertain(session, slug=payload.slug, operation_id=operation)
+        raise
+    if held is not None:
+        actual = _pilot_judge_actual(result.usage_input_tokens, result.usage_total_tokens)
+        if actual is None:
+            await mark_uncertain(session, slug=payload.slug, operation_id=operation)
+        else:
+            await settle(session, slug=payload.slug, operation_id=operation, actual_usd=actual)
+    return result
 
 
 @media_router.post("/stock/search", response_model=StockSearchOut)

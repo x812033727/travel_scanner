@@ -247,6 +247,7 @@ export function sceneProblems(scene) {
   const spec = TEMPLATE_SPECS[scene.template];
   if (!spec) return [`unknown template ${scene.template}`];
   const problems = spec.check(scene.data ?? {}).filter(Boolean);
+  if (scene.data?.cc_safe !== undefined && typeof scene.data.cc_safe !== "boolean") problems.push("cc_safe must be a boolean");
   if (problems.length) return problems;
   const reveals = scene.lines.reduce((sum, line) => sum + (line.reveal ?? 0), 0);
   const capacity = spec.capacity(scene.data);
@@ -299,13 +300,18 @@ const PHOTO_CSS =
 // runs out over the print's left edge like a label stuck across it, instead of being cut short.
 const PHOTO_CREDIT_CSS = ".t-photo .print .credit{max-width:1400px}";
 
+// A marked slide reserves 80px beyond the theme's 132px bottom gap. On a 1080px
+// frame its content ends at y=868, above the lower 15% (which starts at y=918).
+const CC_SAFE_CSS = ":root{--safe-bottom:212px}";
+
 // CSS a template carries in its own page instead of the theme, so that adding the template moved
 // no other video's frame keys. A function takes the scene's data: a screenshot slide carries the
 // credit CSS only when it draws a credit, so every other screenshot page is byte for byte what it was.
 const TEMPLATE_CSS = { terminal: TERMINAL_CSS, screenshot: (data) => (data.credit ? CREDIT_CSS : ""), photo: (data) => PHOTO_CSS + (data.credit ? creditCss("photo") + PHOTO_CREDIT_CSS : "") };
 const templateCss = (scene) => {
   const own = TEMPLATE_CSS[scene.template];
-  return typeof own === "function" ? own(scene.data ?? {}) : own ?? "";
+  const css = typeof own === "function" ? own(scene.data ?? {}) : own ?? "";
+  return css + (scene.data?.cc_safe === true ? CC_SAFE_CSS : "");
 };
 
 const RENDERERS = {
