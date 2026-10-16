@@ -378,3 +378,8 @@ The [round20 metadata-only successor](../../docs/videos/brand-stories-pilot-v2-2
 - B18 改稿後的全片規劃費用 US$2.08798 稅前，已獨立覆核；B18 與五支各 US$5 的全包上限仍未獲核准。0133 是 #1510 的未合併 migration，正式機原始帳戶與操作未讀回；有效額度摘要可能在 0132 就顯示 US$5，不能當部署證據。五支新片的 A29 第一支與後四支都未正式生成配音、圖片、MP4 或上架。#1518 作者章稿採用仍是獨立草稿並有四項 P1 審查阻擋；不拿普通匯入重寫已審稿。
 - 新版費用、工具與雙集編譯候選已隔離提交到 #1510 草稿準備中；主線當前有後續更新，合併／部署、正式主機寫入、B18／五支付費啟動與 YouTube 均未執行。後續先處理 A01 真實審查和 B18 試作並由站主看片，再依已定 A29→A16→A37→B14→A21 順序逐支做。
 - 本輪 `npm run test:docs-videos` 為 297／298 通過；唯一失敗在未改動的 `docs/videos/imported-long-languages/runner.test.mjs:363`，Windows 子程序 `package-runtime.mjs` 退出碼 3221226505，沒有輸出。A01 新增的八項測試在整套與獨立定向執行均通過；整套仍不能稱全綠，後續以 PR 新 head 的 CI 再核對。
+
+### 2026-10-17 本機雙集輸入接入與 A01 唯讀提案閘門
+
+- B18 已將獨立審過的 85 景／88 句資料列和對應短版收據接入本機 `episodes/B18.json`、`episodes/reviews/B18.json`，並重編雙集 `stories.json`。接入前四檔與 SHA 保存在[備份](../../docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/B18-active-before-row-adoption-20261017/adoption-manifest.md)；獨立接入複核沒有 P1／P2。兩次編譯雜湊同為 `07a71fc18c3aa12d426dcc1c9ecd30e59c150079a1e83d868b7024c09670c999`，A01 序列化列未變，後端檢查兩列零問題，企劃測試 27／27。65 筆逐景主張仍全為 `UNCHECKED`；沒有正式匯入、工人審查、媒體或付費呼叫。舊 name-trim 候選的 `--check` 原本要求 active review 過期，接入新收據後此歷史斷言不再成立；應以封存舊檔隔離重播，不改舊候選。
+- [A01 round20 唯讀匯出提案閘門](../../docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-round20-host-export-plan-candidate/README.md)把 80→81 資料完整性讀回和 81→82 計畫綁在同一份提供的匯出；合成成功與拒絕案例 5／5、`node --check` 及獨立程式複核通過，無剩餘 P1／P2。程式沒有正式寫入入口，所有結果標示 `HOLD`。正式機尚需新的完整捕捉、共同排他寫入與雙掛載復原協定；現有[每故事不可變詞典任務](2026-10-16-bind-story-audits-and-narration-to.md)沒有涵蓋所有人工稽核寫入者。後台仍顯示 A01 第九輪敘事失敗，沒有成片。
