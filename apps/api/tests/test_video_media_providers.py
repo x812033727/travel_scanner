@@ -439,6 +439,7 @@ async def test_a_minimax_music_refusal_says_who_can_fix_it_and_names_the_access_
         (401, "key", True),
         (403, "key", True),
         (404, "invalid", True),
+        (410, "key", True),
         (429, "busy", False),
         (500, "failed", False),
         (400, "blocked", False),
@@ -454,6 +455,23 @@ async def test_a_minimax_music_http_refusal_names_the_rule_when_the_account_may_
             await MiniMaxMusic(MINIMAX, "k").submit(_music_request(), client)
     assert error.value.kind == kind and (MUSIC_RULE in error.value.message) is rule
     assert "VENDOR-TEXT" not in error.value.message
+
+
+@pytest.mark.asyncio
+async def test_a_minimax_music_410_is_the_closed_music_api_and_the_owners_to_fix() -> None:
+    """Production, 2026-10-16: HTTP 410 for music-3.0 and music-2.6 alike, the 2026-08-20 rule
+    shutting out an account that never bought music. A retake cannot fix it, so it fails as a
+    key error that names the rule rather than as a vendor failure."""
+    for model in ("music-3.0", "music-2.6"):
+        handler, seen = _music_answers(httpx.Response(410, json={"error": "VENDOR-TEXT"}))
+        async with _client(handler) as client:
+            with pytest.raises(MediaUpstreamError) as error:
+                await MiniMaxMusic(MINIMAX, "k").submit(_music_request(model=model), client)
+        assert (error.value.status, error.value.kind) == (502, "key")
+        assert error.value.retry_after is None
+        assert "HTTP 410" in error.value.message and MUSIC_RULE in error.value.message
+        assert "VENDOR-TEXT" not in error.value.message
+        assert len(seen) == 1
 
 
 @pytest.mark.asyncio
