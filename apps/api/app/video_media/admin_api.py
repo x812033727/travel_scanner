@@ -14,7 +14,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, Request, Response
 from fastapi.responses import FileResponse
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
@@ -28,8 +28,16 @@ from app.video_automation.settings import (
     slides_image_choice,
     slides_values,
 )
-from app.video_budget.models import PILOT_SLUGS
-from app.video_budget.service import is_pilot, mark_uncertain, release, reserve, settle, summary
+from app.video_budget.models import FOLLOWON_SLUGS, PILOT_SLUGS
+from app.video_budget.service import (
+    BudgetError,
+    is_pilot,
+    mark_uncertain,
+    release,
+    reserve,
+    settle,
+    summary,
+)
 from app.video_media import meter, stock
 from app.video_media.catalog import find_model
 from app.video_media.jobs import (
@@ -205,10 +213,23 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
 
     slides = slides_values(row)
     pilot_budgets: dict[str, PilotBudgetView] = {}
+    before_followon_accounts: bool | None = None
     for slug in sorted(PILOT_SLUGS):
-        account = await summary(session, slug)
+        try:
+            account = await summary(session, slug)
+        except BudgetError as error:
+            # The five follow-on accounts are seeded only by 0133. Keep 0132
+            # status readable while their paid paths already fail closed. A
+            # missing row after migration is a broken ledger, not an omission.
+            if slug in FOLLOWON_SLUGS and error.code == "video_budget_missing_account":
+                if before_followon_accounts is None:
+                    revision = await session.scalar(text("SELECT version_num FROM alembic_version"))
+                    before_followon_accounts = revision == "0132_video_pilot_budget"
+                if before_followon_accounts:
+                    continue
+            raise
         if account is None:
-            raise AppError(503, "video_budget_missing_account", "試作影片的 25 美元帳戶尚未就緒")
+            raise AppError(503, "video_budget_missing_account", "試作影片的費用帳戶尚未就緒")
         pilot_budgets[slug] = PilotBudgetView(
             limit_usd=str(account.limit_usd),
             reserved_usd=str(account.reserved_usd),

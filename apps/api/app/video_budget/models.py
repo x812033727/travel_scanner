@@ -31,21 +31,38 @@ def utcnow() -> datetime:
 
 
 PILOT_LIMIT_USD = Decimal("25.000000")
-PILOT_SLUGS = frozenset(
+FOLLOWON_LIMIT_USD = Decimal("5.000000")
+FOLLOWON_SLUGS = frozenset(
     (
-        # Keep the original pilot artifacts protected even when the remake uses isolated slugs.
-        "story-rolling-suitcase",
-        "story-conveyor-belt-sushi",
-        "story-rolling-suitcase-v2",
-        "story-conveyor-belt-sushi-v2",
+        "story-five-lego-legoland",
+        "story-five-costco-hot-dog",
+        "story-five-adidas-puma-brothers",
+        "story-five-ajinomoto-chip-film",
+        "story-five-pringles-vat-case",
     )
 )
+# Register follow-on stories before their accounts exist, so a rollback cannot silently
+# send one of their paid calls without a durable per-film reservation.
+PILOT_LIMITS_USD = {
+    "story-rolling-suitcase": PILOT_LIMIT_USD,
+    "story-conveyor-belt-sushi": PILOT_LIMIT_USD,
+    "story-rolling-suitcase-v2": PILOT_LIMIT_USD,
+    "story-conveyor-belt-sushi-v2": FOLLOWON_LIMIT_USD,
+    **{slug: FOLLOWON_LIMIT_USD for slug in FOLLOWON_SLUGS},
+}
+PILOT_SLUGS = frozenset(PILOT_LIMITS_USD)
 OPERATION_STATUSES = ("reserved", "uncertain", "settled", "released")
 
 
 class VideoPilotBudget(Base):
     __tablename__ = "video_pilot_budgets"
-    __table_args__ = (CheckConstraint("limit_usd = 25.000000", name="ck_video_pilot_budget_limit"),)
+    # This application release serves both the current 0132 schema and the reviewed
+    # 0133 rollback state. The actual database constraint is widened by 0133.
+    __table_args__ = (
+        CheckConstraint(
+            "limit_usd IN (5.000000, 25.000000)", name="ck_video_pilot_budget_limit"
+        ),
+    )
 
     slug: Mapped[str] = mapped_column(String(80), primary_key=True)
     limit_usd: Mapped[Decimal] = mapped_column(Numeric(12, 6), default=PILOT_LIMIT_USD)

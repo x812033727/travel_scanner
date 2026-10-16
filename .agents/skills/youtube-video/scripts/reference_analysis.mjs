@@ -88,7 +88,10 @@ export function parseRange(text) {
 /**
  * One ffmpeg pass does everything, so a long file is decoded once. The cut chain selects every
  * frame whose scene score reaches the floor, prints the score (stderr) and the frame (showinfo,
- * stderr); the motion chain samples the picture every `step` seconds, shrinks it to a grid, drops
+ * stderr), then consumes it in nullsink. A valid range may have no cut candidates: mapping that
+ * branch to an encoded output makes ffmpeg fail when its encoder receives no frame before EOF.
+ * The measurements live in the logs and need no encoded cut stream. The motion chain samples
+ * the picture every `step` seconds, shrinks it to a grid, drops
  * the bottom rows where burned-in subtitles change, and prints signalstats (stdout); the sound
  * chain runs silencedetect (stderr). Only the floor is in the graph: the threshold is applied to
  * the recorded scores afterwards, so the same pass answers for any threshold above the floor.
@@ -99,7 +102,7 @@ export function filterGraph(options, audio) {
   const rate = Math.round(1e6 / step) / 1e6;
   const chains = [
     "[0:v]split=2[cuts][motion]",
-    `[cuts]select='gt(scene,${Math.min(scene, floor)})',metadata=print:key=lavfi.scene_score,showinfo[cutsout]`,
+    `[cuts]select='gt(scene,${Math.min(scene, floor)})',metadata=print:key=lavfi.scene_score,showinfo,nullsink`,
     `[motion]fps=${rate},scale=${grid}:${grid}:flags=area,crop=${grid}:${rows}:0:0,signalstats,metadata=print:file=-[motionout]`,
   ];
   if (audio) chains.push(`[0:a]silencedetect=noise=${options.silenceDb}dB:d=${options.silenceMin}[soundout]`);
@@ -396,7 +399,7 @@ function sha256(file) {
 export async function analyzeRange(ffmpeg, file, probe, [from, to], options) {
   const args = ["-hide_banner", "-nostats", "-nostdin", "-loglevel", "info"];
   if (from > 0) args.push("-ss", String(from));
-  args.push("-t", String(round(to - from, 3)), "-i", file, "-filter_complex", filterGraph(options, probe.audio), "-map", "[cutsout]", "-map", "[motionout]");
+  args.push("-t", String(round(to - from, 3)), "-i", file, "-filter_complex", filterGraph(options, probe.audio), "-map", "[motionout]");
   if (probe.audio) args.push("-map", "[soundout]");
   args.push("-f", "null", "-");
   const { stdout, stderr } = await run(ffmpeg, args);

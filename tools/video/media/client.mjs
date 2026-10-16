@@ -117,6 +117,11 @@ const PILOT_SLUGS = new Set([
   "story-conveyor-belt-sushi",
   "story-rolling-suitcase-v2",
   "story-conveyor-belt-sushi-v2",
+  "story-five-lego-legoland",
+  "story-five-costco-hot-dog",
+  "story-five-adidas-puma-brothers",
+  "story-five-ajinomoto-chip-film",
+  "story-five-pringles-vat-case",
 ]);
 
 // A judge/locate request is itself the paid operation, unlike a generation's durable job.

@@ -27,7 +27,7 @@ import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
 from pydantic import ValidationError
-from sqlalchemy import event, insert, select
+from sqlalchemy import event, insert, select, text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.ai.jev import NoulAnswer
@@ -51,6 +51,7 @@ from app.video_automation.models import (
 )
 from app.video_automation.schemas import SeriesPatch
 from app.video_budget.models import (
+    FOLLOWON_SLUGS,
     PILOT_LIMIT_USD,
     PILOT_SLUGS,
     VideoPilotBudget,
@@ -257,9 +258,16 @@ async def db() -> AsyncIterator[async_sessionmaker[AsyncSession]]:
                 sync, tables=[model.__table__ for model in TABLES]
             )
         )
+        await connection.execute(text("CREATE TABLE alembic_version (version_num VARCHAR(32))"))
+        await connection.execute(
+            text("INSERT INTO alembic_version (version_num) VALUES ('0132_video_pilot_budget')")
+        )
         await connection.execute(
             insert(VideoPilotBudget),
-            [{"slug": slug, "limit_usd": PILOT_LIMIT_USD} for slug in PILOT_SLUGS],
+            [
+                {"slug": slug, "limit_usd": PILOT_LIMIT_USD}
+                for slug in PILOT_SLUGS - FOLLOWON_SLUGS
+            ],
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     async with factory() as session:

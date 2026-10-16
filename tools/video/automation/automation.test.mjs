@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { pathToFileURL } from "node:url";
 
 import { createHash, randomBytes } from "node:crypto";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
@@ -13,7 +15,8 @@ import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { cuePieces } from "../core/captions.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, lexiconProposals, sandbox } from "../core/fixtures/load.mjs";
-import { NARRATIVE_PANEL, PANEL_INSTRUCTIONS } from "../core/narrative.mjs";
+import { NARRATIVE_PANEL, PANEL_INSTRUCTIONS, PANEL_RULES_SHA256 } from "../core/narrative.mjs";
+import { scriptCheckBinding } from "../core/script-check.mjs";
 import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
 import { atomicWrite, docDir, readJson, ROOT, UsageError } from "../core/paths.mjs";
@@ -1020,6 +1023,70 @@ function losing(site, lost) {
 /** The owner presses 重試這支影片 on /admin/videos. */
 const ownerRetries = (site, slug) => Object.assign(site.listed.get(slug), { retry_request_id: "2b06f60f-1026-477a-9d40-28683b00a22e", retry_acknowledged_id: null });
 
+test("a scheduled draft whose topic lookup is rate-limited waits out the window instead of asking again every round", async () => {
+  // 2026-10-13 to 10-16 on the host: every round (about five minutes) asked the topics four
+  // times, each try counted against its twelve an hour, and no scheduled draft was written.
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+  let limited = true;
+  let lookups = 0;
+  const fetchImpl = async (url, init = {}) => {
+    if (new URL(url).pathname === "/api/video/automation/topics") {
+      lookups += 1;
+      if (limited) return Response.json({ code: "rate_limit_exceeded", detail: "請求過於頻繁，請稍後再試" }, { status: 429, headers: { "Retry-After": "1800" } });
+    }
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-10-07T09:00:00Z") };
+  const { ctx, out } = context(box, fetchImpl, clock);
+  const global = () => readJson(path.join(box.work, "auto-state.json"), {});
+  const planners = () => site.calls.run.filter((call) => call.stage === "planner");
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /draft: the topic lookup could not finish \(rate_limit_exceeded: 請求過於頻繁，請稍後再試\); the scheduled draft waits until 2026-10-07T09:30:00\.000Z/);
+  assert.equal(lookups, 1, "asked once: a limit that opens in half an hour is not tried again within the round");
+  assert.deepEqual(global(), { draft_waits_until: "2026-10-07T09:30:00.000Z" }, "the interval is not spent: no draft was written");
+  assert.equal(planners().length, 0);
+
+  // The next rounds inside the window do not ask at all.
+  clock.now += 10 * 60_000;
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.equal(lookups, 1);
+
+  // Once it opens, the draft is written and the wait is cleared with the interval spent.
+  limited = false;
+  clock.now = Date.parse("2026-10-07T09:31:00Z");
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.equal(lookups, 2);
+  assert.equal(planners().length, 1);
+  assert.deepEqual(Object.keys(global()), ["last_draft_at"]);
+  assert.equal(global().last_draft_at, "2026-10-07T09:31:00.000Z");
+});
+
+test("a scheduled draft whose topic lookup fails for now waits half an hour when the server names no wait, and any other refusal still ends the run", async () => {
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+  let answer = () => Response.json({ code: "rate_limit_unavailable", detail: "限流服務暫時無法使用" }, { status: 503 });
+  const fetchImpl = async (url, init = {}) => {
+    if (new URL(url).pathname === "/api/video/automation/topics") return answer();
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-10-07T09:00:00Z") };
+  const { ctx, out } = context(box, fetchImpl, clock);
+  const global = () => readJson(path.join(box.work, "auto-state.json"), {});
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  // Half an hour from the last of the client's tries (5, 10 and 20 seconds apart).
+  assert.match(out.stdout, /draft: the topic lookup could not finish \(rate_limit_unavailable: 限流服務暫時無法使用\); the scheduled draft waits until 2026-10-07T09:30:35\.000Z/);
+  assert.equal(global().last_draft_at, undefined);
+
+  // A refusal that is no passing trouble (the token revoked) is the run's, as before.
+  answer = () => Response.json({ code: "video_tool_token_revoked", detail: "revoked" }, { status: 401 });
+  clock.now = Date.parse("2026-10-07T09:31:00Z");
+  assert.notEqual(await main(["auto"], ctx), EXIT.ok);
+  assert.equal(global().draft_waits_until, "2026-10-07T09:30:35.000Z", "left as it was");
+});
+
 test("a scheduled draft whose planner answer is lost leaves a blocked video under the draft's slug instead of being bought again every round, and the owner's retry plans it once under that slug", async () => {
   const box = sandbox();
   const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
@@ -1939,6 +2006,14 @@ test("the storytelling panel reads the script blind between the listener and the
   const state = readJson(path.join(box.work, slug, "auto.json"));
   assert.equal(await automation.saveAndLint(state, { video: longExplainer() }), null);
 
+  // A legacy PASS for identical words lacks the panel rules version. It must be read again.
+  const panelFile = path.join(box.work, slug, "review", "narrative.json");
+  mkdirSync(path.dirname(panelFile), { recursive: true });
+  writeFileSync(panelFile, JSON.stringify({
+    ...scriptCheckBinding(readJson(path.join(box.root, "docs", "videos", slug, "video.json"))),
+    round: 0, passed: true, answers: [], failed: [], advisory: [],
+  }));
+
   // 1. It passes: the panel is asked once, blind, and the verdict is bound to the script it read.
   assert.match(await automation.narrativeGate(state), /the storytelling panel passed \(round 1\)/);
   const call = site.calls.run.at(-1);
@@ -1949,6 +2024,7 @@ test("the storytelling panel reads the script blind between the listener and the
   assert.equal(call.payload.questions.length, NARRATIVE_PANEL.length, "every question, the opening_hooks one included");
   const verdict = readJson(path.join(box.work, slug, "review", "narrative.json"));
   assert.deepEqual([verdict.passed, verdict.round, verdict.failed], [true, 1, []]);
+  assert.equal(verdict.panel_rules_sha256, PANEL_RULES_SHA256);
   assert.equal(await automation.narrativeGate(state), null, "a passed panel bound to this script is not asked again");
 
   // 2. A required "no" is a rewrite, and the script is verified, heard and read again.
@@ -6356,35 +6432,115 @@ function durableVideos(slugs) {
   return { box, ctx, site, server, clock, worker, journals, state: (slug) => automatedVideos(box.work).find((each) => each.slug === slug) };
 }
 
-test("a project another process holds is left alone with nothing sent or written, while the other videos move; it moves once that process lets go", async () => {
+// Observe failures and register cleanup before waiting for the child's lease marker.
+function leaseTestChild(t, script, { readyMs = 10_000, exitMs = 5_000 } = {}) {
+  const child = spawn(process.execPath, ["--input-type=module", "-e", script], { stdio: ["pipe", "pipe", "pipe"], windowsHide: true });
+  let stdout = "";
+  let stderr = "";
+  let failure;
+  let finished = false;
+  child.on("error", (error) => { failure = error; });
+  child.stdin.on("error", (error) => { failure = error; });
+  child.stderr.on("data", (chunk) => { stderr += chunk; });
+  const marked = new Promise((resolve) => {
+    child.stdout.on("data", (chunk) => {
+      stdout += chunk;
+      if (stdout.split(/\r?\n/).includes("held")) resolve();
+    });
+  });
+  const closed = new Promise((resolve) => child.on("close", (code, signal) => {
+    finished = true;
+    resolve({ code, signal });
+  }));
+  const problem = (message) => new Error(`${message}${failure ? `: ${failure.message}` : ""}${stderr ? `\n${stderr}` : ""}`);
+  const bounded = async (promise, ms, message) => {
+    let timer;
+    try {
+      return await Promise.race([promise, new Promise((_, reject) => {
+        timer = setTimeout(() => reject(problem(message)), ms);
+      })]);
+    } finally {
+      clearTimeout(timer);
+    }
+  };
+  t.after(async () => {
+    try {
+      if (!finished) {
+        child.kill("SIGKILL");
+        await bounded(closed, 5_000, "lease child did not close during cleanup");
+      }
+    } finally {
+      child.stdin.destroy();
+      child.stdout.destroy();
+      child.stderr.destroy();
+      if (!finished) child.unref();
+    }
+  });
+  return {
+    child,
+    closed,
+    ready: () => bounded(Promise.race([marked, closed.then(({ code, signal }) => {
+      throw problem(`lease child closed before ready (code=${code}, signal=${signal})`);
+    })]), readyMs, "lease child did not become ready"),
+    release: async () => {
+      if (finished) throw problem("lease child closed before release");
+      child.stdin.end("go\n");
+      const result = await bounded(closed, exitMs, "lease child did not close after release");
+      assert.deepEqual(result, { code: 0, signal: null }, problem("lease child failed after release").message);
+      if (failure) throw problem("lease child failed after release");
+    },
+  };
+}
+
+test("a lease child import failure rejects readiness with its diagnostic instead of hanging", async (t) => {
+  const missing = pathToFileURL(path.join(ROOT, "missing lease # 測試.mjs")).href;
+  const other = leaseTestChild(t, `import ${JSON.stringify(missing)};`);
+  await assert.rejects(other.ready(), /closed before ready.*code=1[\s\S]*ERR_MODULE_NOT_FOUND/);
+  assert.deepEqual(await other.closed, { code: 1, signal: null });
+});
+
+test("a lease child that never becomes ready is bounded and cleaned up", async (t) => {
+  let other;
+  await t.test("readiness times out", async (childTest) => {
+    other = leaseTestChild(childTest, "setInterval(() => {}, 1000);", { readyMs: 100 });
+    await assert.rejects(other.ready(), /did not become ready/);
+  });
+  assert.ok(other.child.exitCode !== null || other.child.signalCode !== null, "cleanup awaited child termination");
+});
+
+test("a lease child that ignores release is bounded and cleaned up", async (t) => {
+  let other;
+  await t.test("release times out", async (childTest) => {
+    other = leaseTestChild(childTest, 'process.stdout.write("held\\n"); setInterval(() => {}, 1000);', { exitMs: 100 });
+    await other.ready();
+    await assert.rejects(other.release(), /did not close after release/);
+  });
+  assert.ok(other.child.exitCode !== null || other.child.signalCode !== null, "cleanup awaited child termination");
+});
+
+test("a project another process holds is left alone with nothing sent or written, while the other videos move; it moves once that process lets go", async (t) => {
   const videos = durableVideos(["held-elsewhere", "free-video"]);
   // A manual recovery in another process holds the oldest video's project.
   const script = `
-    import { acquireProjectLease } from ${JSON.stringify(path.join(ROOT, "tools/video/core/project-lease.mjs"))};
+    import { acquireProjectLease } from ${JSON.stringify(pathToFileURL(path.join(ROOT, "tools/video/core/project-lease.mjs")).href)};
     const lease = acquireProjectLease(${JSON.stringify(path.join(videos.box.work, "held-elsewhere"))}, { owner: "manual recovery" });
     process.stdout.write("held\\n");
     process.stdin.on("data", () => { lease.release(); process.exit(0); });
   `;
-  const { spawn } = await import("node:child_process");
-  const other = spawn(process.execPath, ["--input-type=module", "-e", script], { stdio: ["pipe", "pipe", "inherit"] });
-  await new Promise((resolve) => other.stdout.on("data", (chunk) => String(chunk).includes("held") && resolve()));
-  const exited = new Promise((resolve) => other.on("exit", resolve));
+  const other = leaseTestChild(t, script);
+  await other.ready();
   const lease = path.join(videos.box.work, "held-elsewhere", "LEASE");
   const before = readFileSync(lease, "utf8");
-  try {
-    const worker = await videos.worker();
-    assert.equal(await worker.step(), "free-video: writer is still running; its saved receipt will be checked next round");
-    assert.equal(worker.halted, false);
-    assert.equal(await worker.step(), null, "the held video sits the run out");
-    assert.deepEqual(videos.journals("held-elsewhere"), [], "no request was prepared for it");
-    assert.equal(videos.server.jobs.size, 1, "one job, the free video's");
-    assert.equal(readFileSync(lease, "utf8"), before, "the other process's lease is untouched");
-    assert.equal(videos.state("held-elsewhere").status, "active", "held is neither blocked nor deferred");
-    assert.equal(videos.state("held-elsewhere").defer_count, undefined);
-  } finally {
-    other.stdin.write("go\n");
-    await exited;
-  }
+  const worker = await videos.worker();
+  assert.equal(await worker.step(), "free-video: writer is still running; its saved receipt will be checked next round");
+  assert.equal(worker.halted, false);
+  assert.equal(await worker.step(), null, "the held video sits the run out");
+  assert.deepEqual(videos.journals("held-elsewhere"), [], "no request was prepared for it");
+  assert.equal(videos.server.jobs.size, 1, "one job, the free video's");
+  assert.equal(readFileSync(lease, "utf8"), before, "the other process's lease is untouched");
+  assert.equal(videos.state("held-elsewhere").status, "active", "held is neither blocked nor deferred");
+  assert.equal(videos.state("held-elsewhere").defer_count, undefined);
+  await other.release();
   assert.equal(existsSync(lease), false);
   assert.equal(await (await videos.worker()).step(), "held-elsewhere: writer is still running; its saved receipt will be checked next round");
   assert.equal(videos.server.jobs.size, 2);
