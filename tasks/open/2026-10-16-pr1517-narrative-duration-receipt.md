@@ -1,11 +1,11 @@
 ---
 id: 2026-10-16-pr1517-narrative-duration-receipt
 title: Bind PR 1517 narrative panel changes in long-form duration receipt
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-pr-review-1517
-claimed_at: 2026-10-16T04:18:56Z
+owner:
+claimed_at:
 created_at: 2026-10-16T04:18:37Z
 completed_at:
 branch: codex/clarify-narrative-adjacent-20261016
@@ -79,6 +79,8 @@ those full suites are not claimed as passing. The scoped tests above exited 0.
 `npm run tasks -- done` wrote a done copy but failed to remove the open copy because
 Windows held it. The exact-path manual removal was blocked by automatic policy;
 do not retry it through another route. The done copy remains untracked and
-physically untouched in this worktree. This open ticket stays `in-progress` for
-later authorized cleanup. Only `review.md`, `review.json`, and this open ticket
-are submitted; the duplicate done copy is not staged or committed.
+physically untouched in this worktree. The review evidence is complete, but this
+ticket remains unfinished until the duplicate can be resolved by an authorized
+operation and `npm run check:tasks` passes locally. The claim is released so it
+does not hold the shared review scope. The duplicate done copy is not staged or
+committed.
