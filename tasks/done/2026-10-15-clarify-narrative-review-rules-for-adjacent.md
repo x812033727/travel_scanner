@@ -1,13 +1,13 @@
 ---
 id: 2026-10-15-clarify-narrative-review-rules-for-adjacent
 title: Clarify narrative review rules for adjacent answers and product histories
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-a01-gate
 claimed_at: 2026-10-16T00:07:46Z
 created_at: 2026-10-15T19:57:31Z
-completed_at:
+completed_at: 2026-10-16T06:48:35Z
 branch: codex/clarify-narrative-adjacent-20261016
 depends_on: []
 scope:
@@ -20,6 +20,7 @@ scope:
   - tools/video/automation/flow.mjs
   - tools/video/automation/automation.test.mjs
   - tasks/open/2026-10-15-clarify-narrative-review-rules-for-adjacent.md
+  - tasks/done/2026-10-15-clarify-narrative-review-rules-for-adjacent.md
 ---
 
 # Clarify narrative review rules for adjacent answers and product histories
@@ -41,7 +42,7 @@ A01's genuine narrative round 9 rejected `chapters_link`, `payoffs` and `one_thr
 - [x] Read the complete actual script and round 9 evidence; check live task/worktree ownership before editing the shared narrative module.
 - [x] Compare `payoffs`, `chapters_link` and `one_thread` with current writing guidance and the approved frozen story scope. Resolve semantics before requesting another unchanged panel.
 - [x] Propose the narrowest wording change with independent review and focused positive/negative tests. If writing guidance also changes, expand scope to both mirrored skill references before editing them.
-- [ ] Follow separate merge/deploy authority and actual per-script source/hash review. Do not start media or create a pilot receipt through this task.
+- [x] Hand off merge/deploy authority and actual per-script source/hash review as separate gates. The owner approved merge only for PR #1517; deployment and A01's fresh panel review remain in their separate release and trial workflows. This task started no media and created no pilot receipt.
 - [x] Bind only the narrative panel receipt to its rules hash across the story and general-video gates and read-only status; preserve the shared script/fact-check binding for other reviews.
 
 ## How to verify
@@ -65,3 +66,5 @@ Focused test `node --test tools/video/core/narrative.test.mjs` passed 13/13; `to
 2026-10-16 follow-up before release: independent review found a genuine old-PASS reuse hole. `scriptCheckBinding` contains narration/script hashes only; `narrativeRecord` omitted the panel rule version; `automation/story.mjs` and `flow.mjs` skip a saved PASS when only the script matches, while `core/state.mjs` also shows it as passed. This scope was expanded before code edits to add only a narrative-specific rules hash and its three consumers/tests, leaving the shared `scriptCheckMatches` unchanged. Existing completed videos must not be automatically reopened for paid work. The overlapping old task `2026-10-14-ai-and-tech-videos-tell-one` belongs to merged PR #1504, and `2026-10-14-support-10-minute-minimax-cute-brand` belongs to merged PR #1499; neither branch has an active worktree or open PR. `2026-10-16-video-worker-a-rate-limited-topic` still says in-progress and lists `flow.mjs`, but its named branch has no local worktree, remote head or open PR at this check. The edit is limited to the narrative gate near `flow.mjs:3318` and does not change that worker-rate-limit task's area. If that branch reappears, reconcile before merge.
 
 The rule digest binds the exact panel instructions, ordered question id/text/required fields and the current verdict contract version. A separate digest binds the rendered narration the panel actually reads, including title and timed chapter headings that the shared script check omits. Narrative consumers now reject missing or changed digests; the pilot's direct script-review attestation also checks the current narrative receipt, so re-signing a stale receipt cannot waive the panel. The shared script/fact-check binding is unchanged. Local tests prove a legacy PASS is re-judged in both flows, title-only edits invalidate it, status labels it stale, and a completed video's next move does not restart paid production. No live A01 judge call occurred: its existing round 9 FAIL remains the actual verdict.
+
+2026-10-16 closeout handoff: the rule and receipt-binding implementation has independent code review and focused local verification. PR #1517 has merge-only owner authorization; its final CI and merge are separate release gates. Deployment, paid work and A01's script/source-bound fresh panel review are outside this ticket. A01's last live round 9 narrative verdict remains FAIL; no new judge, media or pilot receipt was created by this task.
