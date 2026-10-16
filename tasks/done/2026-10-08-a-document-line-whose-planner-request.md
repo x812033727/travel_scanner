@@ -1,21 +1,21 @@
 ---
 id: 2026-10-08-a-document-line-whose-planner-request
 title: A document line whose planner request keeps waiting holds every discussion thread behind it
-status: open
+status: done
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-pr-tidy
+claimed_at: 2026-10-16T17:40:25Z
 created_at: 2026-10-08T02:24:31Z
-completed_at:
-branch:
+completed_at: 2026-10-16T17:42:07Z
+branch: claude/youthful-brahmagupta-1giys7
 depends_on: []
 scope:
   - tools/video/automation/discuss.mjs
   - tools/video/automation/discuss.test.mjs
-  - tools/video/automation/series.test.mjs
   - .agents/skills/youtube-video/references/series.md
-  - tools/video/automation/flow.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # A document line whose planner request keeps waiting holds every discussion thread behind it
@@ -45,30 +45,30 @@ are filed here against main's code. Found by the overlap comparison of the two P
 
 ## Definition of done
 
-- [ ] A document line whose planner request keeps waiting is answered once, after a bounded
+- [x] A document line whose planner request keeps waiting is answered once, after a bounded
       number of runs, with a reply that says the request kept failing and how to ask again; the
       threads behind it then move on. A line that gets through earlier clears its count.
-- [ ] A document line refused by the model service (502 `video_ai_upstream_failed`) is answered
+- [x] A document line refused by the model service (502 `video_ai_upstream_failed`) is answered
       once with the refusal (shorten the line, or check the AI settings), not asked every run.
-- [ ] The youtube-video skill's 討論串 section says what main does when a discussion's request
+- [x] The youtube-video skill's 討論串 section says what main does when a discussion's request
       fails, for screenplays and documents (lost answer, refusal, waits, held lines, the kept
       reply in `discussion-answer.json`), in main's terms.
 
 ## Steps
 
-- [ ] `discuss.mjs` `answerDocument`: a per-line count of "wait" runs kept under
+- [x] `discuss.mjs` `answerDocument`: a per-line count of "wait" runs kept under
       `_series/<slug>/` (beside `discussion-answer.json`, not in it), a `failingReply` posted
       through `postAnswer` at the limit (the worker's `DEFER_LIMIT` is 6; discuss.mjs cannot
       import flow.mjs, so pass it on the automation), the count dropped once the line is answered.
-- [ ] Answer `video_ai_upstream_failed` on a document line with `refusedReply` at once.
-- [ ] Also consider, from the same comparison (each low): a screenplay line on a video blocked
+- [x] Answer `video_ai_upstream_failed` on a document line with `refusedReply` at once.
+- [x] Also consider, from the same comparison (each low): a screenplay line on a video blocked
       `uncertain:writer` by the video's **own** writer stage is held by `heldBy` until the
       owner's retry, and every thread behind it waits that long, although main answers every
       other block with `blockedReply` for exactly that reason (#1361 held only this line's own
       `blocked_line` and `job_gone:writer`); and `lineFailed` sets `blocked_line` only after
       `requestFailed` has saved the block and awaited `reportBlocked`, so a worker killed in
       that PUT leaves a blocked video without the line it holds.
-- [ ] Tests in discuss.test.mjs or series.test.mjs (six runs of waiting, then the reply; a 502
+- [x] Tests in discuss.test.mjs or series.test.mjs (six runs of waiting, then the reply; a 502
       `video_ai_upstream_failed`); the skill bullet in
       `.agents/skills/youtube-video/references/series.md`, the only copy (only SKILL.md is copied
       under `.claude/skills`).
@@ -83,3 +83,41 @@ then `npm run test:tools`.
 #1361's versions for reference: commits d283fe24a and df6427a7d on its branch before the
 rebase (a70357543: `discuss.mjs` `threadNotes`, `failingReply`; `flow.mjs` `sortFailure`).
 Do not copy them: main has `postAnswer`/`takeUnposted`/`keepReply` and `lineFailed` instead.
+
+### 2026-10-16 fix (claude-opus-5-5-pr-tidy)
+
+`tools/video/automation/discuss.mjs` `answerDocument`:
+- A document line whose planner request fails with errorScope "wait" now counts its runs in
+  `_series/<slug>/discussion-waits.json`.
+  - From the `MAX_DOCUMENT_WAITS`th run (6), the owner is told once with `failingReply(runs, why)`
+    and the count goes, so the threads behind it move on.
+  - Every answered path clears the line's count: a reply, an unusable answer, a lost answer or a
+    refusal. A later wait counts from one again.
+- A 502 `video_ai_upstream_failed` (the model service's own refusal) is answered at once with
+  `refusedReply`, like a 4xx, instead of being sent and refused every run.
+- Within a run, `automation.waitingLines` still keeps the line from being asked twice, so the count
+  goes up once a run.
+
+The design follows what #1361 had: a per-line wait count, an answer after six runs, and an
+immediate refusal. The count lives in its own file beside the series' planner answers, not in
+`threads.json`.
+
+`.agents/skills/youtube-video/references/series.md` 討論串 gains a bullet on what main does when a
+document or screenplay discussion request fails: the lost answer, refusal, waits and failingReply
+for documents; uncertain or job_gone blocks, `blocked_line`, deferral and blockedReply for
+screenplays; and the kept reply in `discussion-answer.json`.
+
+Scope:
+- `flow.mjs` and `series.test.mjs` were not needed and left the scope.
+- The duration receipt files joined it, because `discuss.mjs` is in `REVIEW_FILES`. They overlap
+  only as the shared append-only receipt ledger, with no open PR on them, so the claim used
+  `--force`.
+- The receipt increment was written by an independent reviewer (`claude-pr-review-discuss-waits`).
+
+Ran:
+- `node --test tools/video/automation/discuss.test.mjs`: 13/13, two of them new.
+  - A line kept busy for six runs, each a fresh Automation, is answered on the sixth. A line that
+    got through on run six clears its count, and its next wait counts from one.
+  - A 502 `video_ai_upstream_failed` is answered at once, asked once.
+- `npm run test:tools`: 2389 passed. The one failure was the stale receipt before it was rebound.
+- `tools/video/long-form/cli.mjs check`: PASS after the receipt.
