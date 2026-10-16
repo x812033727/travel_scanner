@@ -125,3 +125,11 @@ TTS 已完成 89 請求、1,925 計費字元，正文時間軸 `14168/30 = 472.2
 站主授權在新增六景後只改 `poem-tease`、`sequence-unknown`、`coiled-rope`、`document-card`、`letter-reader` 五句，刪除重複的 `letter-fate` 一鏡，並使開場畫面提示避開飯菜與倒椅。修改及雜湊詳見 `revision-10.json`；現行 92 景／94 句、87 插畫景，`script.md` SHA-256 `F423202B4FB6856FE39FA1CA9BC01473B4923555FE5823768AAFE108BB209AE7`。獨立史料查核 `verify-8.md` 對同版劇本／畫面／主張表判 PASS，全新 script-only 十三題盲評 13／13 PASS，CLI 匯入後判 storytelling panel passed。`lint` 0 errors／5 warnings、估 8.9 分鐘；這仍不是合成後時長。
 
 最新版已送 `/admin/videos`，審核卡 `48a2ba6e-4da7-4234-83da-60617ad1f369`（2026-10-16 05:44:22 UTC）仍為 `pending`。站主回覆「已核准 H12 劇本」後再讀，後台實際已核准的是上一版 SHA `3B9FCEA7…` 的卡片，不能沿用到第十版。已請站主確認並核准 `F423202B…` 的卡片；在讀回該版核准前，不補錄、不跑付費 QA、不產圖。H12 已估 TTS US$0.20，音訊 QA US$0.50 仍僅預留；89 段舊音檔保留快取。正文八分鐘硬門檻仍待合成實測。
+
+## 2026-10-16 H12 第十版旁白已送站主試聽
+
+- 站主另行核准第十版；`approvals.json` 已讀回 `script.md` SHA-256 `F423202B4FB6856FE39FA1CA9BC01473B4923555FE5823768AAFE108BB209AE7` 的劇本核准，後台審核卡 `48a2ba6e-4da7-4234-83da-60617ad1f369` 也以唯讀 GET 確認 `approved`，決定時間 `2026-10-16T06:05:25.538745Z`。上節的 pending 是當時快照，不是現況。
+- Gemini Sulafat 依核准稿完成 94 句時間軸旁白；本輪只新合成 12 句、沿用 82 句快取，新增 295 計費字元。`timeline.json` 的 `speech_hash` 為 `94b607cde96975de`，總長 15,049／30 = **501.633 秒（08:21.633）**；片尾前正文 14,617／30 = **487.233 秒（08:07.233）**，比 480 秒門檻多 7.233 秒。這是旁白實測，成片片長仍待日後 QA。
+- `check-audio` 完成 94／94 句 Gemini 轉寫及一次 TypeSafe Jev 差異判讀：55 exact、10 sound、6 經 Jev 接受、23 句留旗標。另一套無稿 faster-whisper small 已逐句複核全部 23 旗標及六句未列旗標的原始差異；精確雜湊、分類及優先試聽句 `874p`、`wdik`、`3ncp`、`3w38` 見 `docs/videos/curio-h12/audio-qa-1.md`。兩套 ASR 不能代替站主聽感，尚未定向重錄。
+- 音訊試聽頁已在 `<home>/mokaair-work/videos/curio-h12/review/audio.html`。`review-push --gate audio` 送出的音訊審核卡為 `a4eb23a3-3422-4523-ab42-a18caa4f5755`，綁定 `timeline.json` SHA-256 `EA4FB643E12F8077F9538D68D52614F8A1051A85FBD06AFD4A2922BF0E643465`；後台唯讀 GET 於本次交接仍見 `pending`（建立 `2026-10-16T07:54:59.668841Z`），`status --slug curio-h12` 同時顯示 narration not approved。**下一步等站主試聽並核准或指出需重錄的句 ID；在後台讀回對應雜湊核准前，不開始 H12 插畫。**
+- 共用停手帳本對 H12 的保守費用估額為 **US$0.75／本集 US$6.00 上限**（首輪 TTS 0.20、音訊 QA 0.50、定向 TTS 0.05）；三筆均已列入估額結算，沒有仍佔用的 active reservation。這不是供應商最終美元帳單；其餘多語授權把五集合計上限提高到 US$34，不會改變 H12 本集 US$6 上限。
