@@ -37,7 +37,7 @@ The owner asked to continue the English, Japanese and Korean supplements for the
 
 ## How to verify
 
-Read the three locale rows at `https://studio.youtube.com/video/uZ9TlblvrCw/translations` after a fresh reload; distinguish processing from Published. Compare Studio caption texts against current `upload/captions/*.srt`, recording any limits to timestamp/download verification. Hash exact upload audio/caption files and compare backend stored attachments and native approved-package consumer results. Preserve the original final and Traditional Chinese source. Save evidence under `C:/Users/x8120/mokaair-work/video-language-uZ9TlblvrCw`; do not infer upload from backend declarations alone.
+Read the three locale rows at `https://studio.youtube.com/video/uZ9TlblvrCw/translations` after a fresh reload; distinguish processing from Published. Compare Studio caption texts against current `upload/captions/*.srt`, recording any limits to timestamp/download verification. Hash exact upload audio/caption files and compare backend stored attachments and native approved-package consumer results. Preserve the original final and Traditional Chinese source. Save evidence under `<home>/mokaair-work/video-language-uZ9TlblvrCw`; do not infer upload from backend declarations alone.
 
 ## Completed outcome
 

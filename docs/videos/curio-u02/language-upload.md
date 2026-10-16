@@ -21,7 +21,7 @@
 
 ## 固定交付檔案
 
-下表來自本輪直接讀取 `C:/Users/x8120/mokaair-work/videos/curio-u02/upload` 的實際位元組與 SHA-256。
+下表來自本輪直接讀取 `<home>/mokaair-work/videos/curio-u02/upload` 的實際位元組與 SHA-256。
 
 | 檔案 | Bytes | SHA-256 |
 | --- | ---: | --- |
@@ -58,10 +58,10 @@
 
 本輪內容測試 `docs-video-tests.log` 為 199/199 通過、0 failed／skipped，耗時約 32 秒；`task-check.log` 驗證 1,850 個任務檔，僅既有無關 stale-claim 警告。兩項實際 exit 0，root 的 diff check 亦通過；文件子任務沒有重跑測試。
 
-本輪私人 audit：`C:/Users/x8120/mokaair-work/video-language-uZ9TlblvrCw`。既有媒體：`C:/Users/x8120/mokaair-work/videos/curio-u02`。先前製作交接：`C:/Users/x8120/.codex/worktrees/bb7a/travel_scanㄐ/docs/videos/curio-language-delivery/README.md`；先前完整收據位於 `C:/Users/x8120/mokaair-work/videos/_audit/curio-backend-completion-20261012-bb7a`。不修改 bb7a 的稿件、狀態或任務。
+本輪私人 audit：`<home>/mokaair-work/video-language-uZ9TlblvrCw`。既有媒體：`<home>/mokaair-work/videos/curio-u02`。先前製作交接：`<home>/.codex/worktrees/bb7a/travel_scanㄐ/docs/videos/curio-language-delivery/README.md`；先前完整收據位於 `<home>/mokaair-work/videos/_audit/curio-backend-completion-20261012-bb7a`。不修改 bb7a 的稿件、狀態或任務。
 
 原影片維持私人；本輪尚未建立完整播放器試聽、公開發布或站主播放驗收證據。三張外語縮圖不是本次要求的 CC／音軌補件範圍。
 
-[approved-readback]: C:/Users/x8120/mokaair-work/video-language-uZ9TlblvrCw/u02-approved-readback-2026-10-12T04-55-10-408Z.json
-[studio-text]: C:/Users/x8120/mokaair-work/video-language-uZ9TlblvrCw/studio-text-and-metadata-readback.json
-[studio-published]: C:/Users/x8120/mokaair-work/video-language-uZ9TlblvrCw/studio-three-languages-published.json
+[approved-readback]: <home>/mokaair-work/video-language-uZ9TlblvrCw/u02-approved-readback-2026-10-12T04-55-10-408Z.json
+[studio-text]: <home>/mokaair-work/video-language-uZ9TlblvrCw/studio-text-and-metadata-readback.json
+[studio-published]: <home>/mokaair-work/video-language-uZ9TlblvrCw/studio-three-languages-published.json
