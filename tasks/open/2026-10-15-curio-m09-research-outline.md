@@ -4,8 +4,8 @@ title: Curio M09 research and outline
 status: in-progress
 priority: P2
 area: docs
-owner: codex-gpt6-m09-qa-recovery
-claimed_at: 2026-10-16T02:04:01Z
+owner: codex-gpt6-m09-final
+claimed_at: 2026-10-16T09:54:29Z
 created_at: 2026-10-15T16:34:56Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -106,3 +106,10 @@ scope:
 - 本機 manifest SHA-256 `7DC31CF579B3C8634279A0744050B27F1783BE2282CAF85E3B2D34E96B3E0251`：86／86 選圖、86／86 自動評審通過，86 個原圖檔的內容雜湊全吻合；四頁聯絡表逐頁目視，定向原圖放大與卡片來源、系列比例見 `docs/videos/curio-m09/keyframes-qa-4.md`。正文插圖 86／92＝93.48%，最長連卡 1；lint 0 error、2 個既有場景詞頻 warning。**圖像可送審，但劇本關卡尚未重核准；分鏡仍未送、未獲站主核准。**
 - `shot`→`big` 使現版 narrative hash 變為 `641e4a838667ec96`，舊 `script.md` 尾端仍是 `b4c3ba3318fe39b9`；`status` 顯示 storytelling panel stale。協調者將先重建正式劇本、獨立敘事複核並取得站主新版核准，之後再送分鏡；不能把舊劇本的後台核准套在數字卡新版。
 - 工具估算圖片與評審 US$3.034，連旁白／音訊 QA 本集 US$3.734／6.000；協調者仍須核銷暫留 US$0.0135。新版劇本核准後，由協調者 `review-push --gate storyboard`、`review-pull` 讀回並交四頁聯絡表供站主核准；之後才進成片。此票保留 open。
+
+### 2026-10-16 M09 數字卡劇本重核
+
+- 協調者已核銷卡片刷新預留 US$0.0135：新增 0 圖、0 圖評；M09 估算支出維持 US$3.734／6.000，媒體帳本 US$3.034。
+- `script --slug curio-m09` 重建正式稿，僅第 69 景標題加上 `（big）` 與 narrative hash `641e4a838667ec96`；95 句旁白及 speech hash `47918d790a391e31` 均未改。新版 `script.md` SHA-256 `36CC6ABA1DC4F639424A71E03DEF7D2C78A994542141F1DCDB026648EBCB0569`。
+- 獨立盲評 13／13 題答是（12／12 必答通過）；逐題引句答案見 `docs/videos/curio-m09/narrative-card-r2-answers.json`，新版 storytelling panel 已重跑 PASS。卡片主張與原句一致，圖文來源見 `keyframes-qa-4.md`。lint 0 error、2 個既有詞頻 warning。
+- `review-push --gate script` 已把新版送到 `/admin/videos`；`review-pull --gate script` 讀回 waiting for the owner。**分鏡仍未送審；待此 SHA 劇本核准後才送四頁聯絡表。**
