@@ -114,3 +114,7 @@ video SHA-256 `e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559`
 ## 2026-10-16 成片核准與三語授權
 
 站主已在後台核准 H10 繁中成片；`review-pull --gate final` 現場讀回 `final: approval recorded`。後台 `locales_decided_at` 為 `2026-10-16T06:05:13.839762Z`，英、日、韓均選標題說明、字幕、配音；本機已同步 `languages.json` 並產出各 82 句含 `max_chars` 的工作表。站主另核准 H10 多語 US$2.00，H10 停手上限改為 US$8.00；連同 H11 多語 US$2.00，五集合計停手上限 US$34.00。詳見 [multilingual-authorization-1.md](../../docs/videos/curio-h10/multilingual-authorization-1.md)。三語尚未翻譯／審稿／配音，未製成多語上傳包，未上傳 YouTube。
+
+## 2026-10-16 H10 英語配音三句定向修文
+
+H10 英語工作表已完成翻譯及前兩輪獨立審稿。首版英語配音的八個自動旗標裡，`h5cac1f4`、`h72b4789`、`hb624337` 的 `addition` 被 Gemini/Jev 與離線 Whisper 反覆轉成 `edition`；為避免把同張紙的補記聽成另一版本，只改這三句英語，`i18n/en.json` 的其餘 79 句與繁中核准劇本均未改。獨立審稿 [i18n-review-en-3.md](../../docs/videos/curio-h10/i18n-review-en-3.md) 對工作表 SHA-256 `12D3DBF03A11AD6DB89D616EDFA21FF44E2D98FA74F1D7172DE3C4B3983CD3A4` 判 PASS，三句各為 78／84、81／85、77／81 字；4 月 25 日只記錄翌日出發計畫，未宣稱實際成行。下一步僅重錄這三句、定向音訊 QA，並按本集多語新增 US$2.00 停手額度逐筆結算；原英語音訊旗標及尚未製成的多語上傳包仍待處理。
