@@ -40,7 +40,7 @@ scope:
 - [x] 主代理讀回站主已選原案 A，且每集 US$6／五集 US$30 上限已獲授權。
 - [x] 再認領原票展開正式稿，未新建重疊 scope；102 句與 14 loops 已建立。
 - [x] 修正分鏡多樣性與情緒 cue；本機 lint 0 errors／0 warnings。
-- [ ] 補格式新版 brief 由主代理重新送審並讀回核准，再送劇本。
+- [x] 補格式新版 brief 由主代理重新送審並讀回核准，再送劇本。
 
 ## How to verify
 
@@ -82,3 +82,9 @@ scope:
 - 外部估算停手帳本先預留 US$0.20 再合成繁中旁白；實得 102 句 WAV、正文 590 秒（9:50）、2,332 計費字元，無供應商 hold。此 US$0.20 為保守估算，不是供應商最終美元發票。
 - 再預留 US$0.50 執行 `check-audio`：102／102 句完成 Gemini 轉寫，1 次 TypeSafe Jev 差異判讀；58 句逐字吻合、25 句同音／語助詞、2 句 Jev 接受、17 句品質旗標。工具因旗標 exit 1，並非服務失敗。估算支出合計 US$0.70，仍在本集 US$6 上限內；帳本位於 `<home>/mokaair-work/videos/curio-next-five-20261016/review/spend-ledger.json`。
 - 17 句旗標詳見 `<home>/mokaair-work/videos/curio-u09/review/check-flags.json`；已委託獨立離線 Whisper 盲聽交叉判讀，不再次送付費轉寫。待確定誤讀範圍後僅定向重錄有依據的句子，其餘送站主逐句試聽與音訊核准。旁白尚未核准、插圖與成片未開始。
+
+### 插畫定向補圖與交接：2026-10-16
+
+- 以上旁白待審描述為較早快照；站主其後已核准劇本與旁白，本輪 `status` 讀回兩關均核准。劇本 SHA `A6EBACD1…AF3F5A`、時間軸 SHA `D1D2C509…7F2EC` 未改。
+- 按 [定向修復計畫](../../docs/videos/curio-u09/keyframes-repair-plan-1.md) 對 37 鏡執行一次 `--takes 3` 補圖；詳細費用、雜湊、待修圖和目視證據見 [本輪 QA 收據](../../docs/videos/curio-u09/keyframes-qa-2.md)。更新後 91／91 有選圖、84／91 評審通過、7 張評審待修；另有 2 張評審通過但與旁白明確矛盾，均未送分鏡後台。
+- 本輪本機媒體帳本估算新增 US$0.874，低於已預留的 US$1.4985；主代理負責共享帳本核銷。沒有追加付費、合成成片或發布。
