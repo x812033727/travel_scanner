@@ -145,6 +145,24 @@ describe("AdminNewsWorkspace", () => {
     expect(names).toEqual(["Stuck source", "Fine source", "Switched-off source"]);
   });
 
+  it("shows a scan's note in red only when the scan failed", async () => {
+    const source = (id: string, lastStatus: string, lastError: string) => ({
+      id, name: id, url: `https://${id}.example/feed`, format: "rss", role: "evidence", vertical: "ai",
+      is_first_party: true, enabled: true, scan_interval_minutes: 60, allowed_redirect_hosts: [], config: {},
+      etag: null, last_modified: null, last_scanned_at: "2026-10-15T16:33:00Z", next_scan_at: "2026-10-15T17:33:00Z",
+      last_status: lastStatus, last_error: lastError, consecutive_failures: 0,
+      created_at: "2026-09-01T00:00:00Z", updated_at: "2026-10-15T16:33:00Z",
+    });
+    sourceRows = [
+      source("deepmind", "succeeded", "Left out 11 feed entries older than 72 hours, without fetching them"),
+      source("cftc", "failed", "HTTPStatusError: Client error '403 Forbidden'"),
+    ];
+    window.history.replaceState(null, "", "/zh-TW/admin/news?tab=sources");
+    render(<AdminNewsWorkspace />);
+    expect((await screen.findByText(/Left out 11 feed entries/)).className).not.toContain("text-red-700");
+    expect(screen.getByText(/403 Forbidden/).className).toContain("text-red-700");
+  });
+
   it("explains a Jev hold in Chinese and publishes it with an audited reason", async () => {
     render(<AdminNewsWorkspace />);
     expect(await screen.findByRole("heading", { name: "AI 每小時自動新聞" })).toBeTruthy();

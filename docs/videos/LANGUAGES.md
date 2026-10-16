@@ -1,6 +1,6 @@
 # 影片產線：每支影片的語言與上架（設計）
 
-2026-09-27 起草。前提是 [`DESIGN.md`](DESIGN.md) 的四語 CC、[`DUBS.md`](DUBS.md) 的配音音軌（怎麼塞回時間軸、Studio 怎麼上傳）、[`HANDS-OFF.md`](HANDS-OFF.md) 的「可以上架」與 YouTube API 兩步，以及票 `2026-09-24-video-youtube-sync`（T8）。這份寫：一支影片的「語言」是什麼、站主在哪裡選、工人怎麼只做選了的、上架怎麼等語言做好。教學與漫劇都適用；漫劇的配音是第二期。票的 id 是 `2026-09-27-video-languages-*`，加上改寫的 `2026-09-26-video-dubs-worker` 與 T8。
+2026-09-27 起草。前提是 [`DESIGN.md`](DESIGN.md) 的四語 CC、[`DUBS.md`](DUBS.md) 的配音音軌（怎麼塞回時間軸、Studio 怎麼上傳）、[`HANDS-OFF.md`](HANDS-OFF.md) 的「可以上架」與 YouTube API 兩步，以及票 `2026-09-24-video-youtube-sync`（T8）。這份寫：一支影片的「語言」是什麼、站主在哪裡選、工人怎麼只做選了的、上架怎麼等語言做好。教學與漫劇都適用；有角色說話的漫劇的配音是第二期，分類是觀念解說（`explainer`）或品牌故事（`story`）、只有旁白說話的漫劇可以手動選配音（[`DUBS.md`](DUBS.md) §已知限制）。票的 id 是 `2026-09-27-video-languages-*`，加上改寫的 `2026-09-26-video-dubs-worker` 與 T8。
 
 ## 一句話
 
@@ -32,7 +32,7 @@
 | CC（`captions`） | 翻每一句；有配音時字幕跟配音的時間軸（`DUBS.md`） | T8 的 `captions.insert`；T8 沒好之前站主上傳 `.srt` |
 | 配音（`dub`） | 同一個頻道聲音唸翻譯（`DUBS.md` 全套：視窗、加速、縮短、Jev） | 只能站主在 Studio「語言」頁上傳 |
 
-依賴：配音要先有 CC 的翻譯；勾了配音會自動連 CC 一起做（面板上會勾起來且不能取消）。標題與說明可以單獨勾。漫劇的配音是第二期（多角色要重新混音，`DUBS.md` §已知限制），面板上灰掉。2026-10-01 起新漫劇對白全為可開關 CC，正片不燒字幕；這次十部先完成 zh-TW，再製作 ja／ko／en 配音與各自 CC，[製作規格](series-plans/production-20261001/profile.json) 的多角色多語狀態仍為待實作。
+依賴：配音要先有 CC 的翻譯；勾了配音會自動連 CC 一起做（面板上會勾起來且不能取消）。標題與說明可以單獨勾。漫劇的配音可由站主手動選給分類是觀念解說（`explainer`）的旁白影片；品牌故事（`story`）還要有目前這版已核准成片的品管證據，證明正片不燒字幕、繁中由可關閉的 CC 提供，面板才開放。舊版已燒錄字幕的故事要先重做乾淨正片並重過審核，再製作外語配音。其他漫劇的配音是第二期（多角色要每個角色一個外語聲音，`DUBS.md` §已知限制），面板上灰掉。2026-10-01 起新漫劇對白全為可開關 CC，正片不燒字幕；這次十部先完成 zh-TW，再製作 ja／ko／en 配音與各自 CC，[製作規格](series-plans/production-20261001/profile.json) 的多角色多語狀態仍為待實作。
 
 ### 資料模型
 
@@ -42,7 +42,7 @@
 | `video_projects.locales_decided_at` | 站主第一次儲存語言面板的時間（含「只出繁體中文」）；`null` 就是還沒決定 |
 | `video_projects.dub_locales` | 不再讀寫；遷移把它搬進 `locales`（三個部件都 true），欄位留著不刪（同 `subscription_max_usage_percent` 的做法） |
 | 遷移 | 已在 YouTube 上的、或 `dub_locales` 非空的影片，`locales_decided_at` 設成遷移時間；其餘留 `null`，站主要決定一次 |
-| `PUT /admin/videos/{slug}/languages` | `{"locales": {…}}`；只收 en、ja、ko；勾 dub 就強制 captions；漫劇拒收 dub；寫 `locales_decided_at`（第一次）與 audit `video_locales_set`；已放棄的影片拒絕。取代 `PUT …/dubs` |
+| `PUT /admin/videos/{slug}/languages` | `{"locales": {…}}`；只收 en、ja、ko；勾 dub 就強制 captions；觀念解說（`explainer`）可選，品牌故事（`story`）只在目前成片通過無燒錄字幕品管與審核時可選，否則回 422 `video_locales_story_dub_requires_switchable_cc`；其他漫劇拒收 dub（422 `video_locales_dub_not_for_drama`）；寫 `locales_decided_at`（第一次）與 audit `video_locales_set`；已放棄的影片拒絕。取代 `PUT …/dubs` |
 | `ProjectSummary`／`ProjectOut` | 帶 `locales`、`locales_decided_at`、`languages`（每個語言每個部件 `ready`｜`working`｜`skipped: <原因>`｜`uploaded`，伺服器從還算數的 `languages` 審核算出：等站主的與已核准的，舊到新，後面的批次蓋過前面的；被退回、被取代的不算）；工人從既有的影片清單就看得到。2026-10-10 起多兩欄 `dub_retries`、`dub_retry_blocked`（下面「跳過的配音再做一次」） |
 | 審核 gate `languages` | 取代 `dubs`（`Gate` 留著 `dubs` 讓舊列讀得出來，CHECK 加 `languages`）。payload `{ locales: { en: { metadata: "ready", captions: "ready", dub: "ready" }, ja: { …, dub: "skipped", reason } } }`，檔案：說明欄 `.txt`、字幕 `.srt`、音軌（role `dub_<locale>`，m4a、mp3 或 wav，照配音做出來的格式），加上當下的 `metadata.json`（role `metadata`）與綁定核准來源的語言清單（role `languages_manifest`，雜湊就是審核的 content hash；YouTube 同步只收有這兩份的批次，見 [`APPROVED-LANGUAGE-PACKAGE.md`](APPROVED-LANGUAGE-PACKAGE.md)）。配音做好的語言，那一格旁邊還可能有 `kept_lines`（句子 id 的陣列：重錄塞不進視窗、沿用原本那次錄音的句子，`DUBS.md` 的 `--keep-fitting`）。**沒有配音的批次伺服器直接核准**（沒有站主要做的事）；有配音的等站主在 Studio 上傳後按「已上傳」 |
 | `video_projects.dub_retries` | JSON（不是 jsonb），預設 `{}`，migration 0131。每個語言一筆，只留最新的那次「再做一次」要求與它怎麼結束，見下面「跳過的配音再做一次」 |
@@ -100,7 +100,7 @@
 | 1 | 沒有這支影片 | 404 `video_project_not_found` |
 | 2 | 影片已放棄 | 409 `video_project_dropped` |
 | 3 | 這個語言已經有一筆開著的要求 | 200，原樣回傳：不多記 audit、不再檢查額度（路由每次都會先讀一次用量，這裡只是不拿它來判斷；兩個人各按一次也只有一筆） |
-| 4 | 配音沒勾、不是「跳過」，或影片是 Short、漫劇 | 409 `video_dub_retry_not_skipped`「只有跳過的配音可以再做一次」 |
+| 4 | 配音沒勾、不是「跳過」，或影片是 Short（觀念解說以外的漫劇勾不了配音，也就沒有跳過的配音可以再做） | 409 `video_dub_retry_not_skipped`「只有跳過的配音可以再做一次」 |
 | 5 | 跳過的原因是「這是影片原本旁白的語言」 | 409 `video_dub_retry_narration` |
 | 6 | 工作檔已經清掉（`auto.json` 有 `tidied_at`，或跳過原因以「工作檔已在 」開頭） | 409 `video_dub_retry_tidied`，訊息帶清掉的日期 |
 | 7 | 網站上最新的上架確認（`publish` 審核）帶不了語言批次：被退回或被取代、根本沒有，或還在等而且之前沒有任何一張核准過、影片也還沒上 YouTube | 409 `video_dub_retry_publish_pending` |

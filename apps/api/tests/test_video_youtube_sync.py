@@ -407,6 +407,51 @@ async def test_an_interrupted_upload_resumes_its_session_instead_of_uploading_tw
     assert bytes(site.google.sessions[uri]) == MP4
 
 
+async def test_an_upload_stops_when_the_channel_already_has_a_video_of_that_title(
+    site: Site, launched: list[str]
+) -> None:
+    """curio-l08, 2026-10-12: uploaded in Studio, never pasted, then sent from the site."""
+    await site.link()
+    await _package(site)
+    _studio_video(site)
+    site.google.videos[STUDIO_ID]["snippet"]["title"] = (
+        "AI 模型怎麼挑？排行榜第一不一定最好用｜CC字幕"
+    )
+    await _request(site, _publish(mode="upload", url=None, accept_private_lock=True))
+    await sync.run_sync(SLUG, site.factory)
+    project = await _project(site)
+    assert project.youtube_sync is not None and project.youtube_sync["status"] == "failed"
+    upload = next(s for s in project.youtube_sync["steps"] if s["id"] == "upload")
+    assert STUDIO_ID in upload["detail"] and "已在 Studio 上傳" in upload["detail"]
+    assert site.google.sessions == {}, "no second video started"
+    assert project.youtube_video_id is None
+
+
+async def test_a_pasted_address_does_not_replace_a_recorded_video_still_on_the_channel(
+    site: Site, launched: list[str]
+) -> None:
+    await site.link()
+    await _package(site, youtube_video_id=UPLOADED_ID)
+    _studio_video(site)
+    site.google.videos[UPLOADED_ID] = {**site.google.videos[STUDIO_ID], "id": UPLOADED_ID}
+    await _request(site, _publish())
+    await sync.run_sync(SLUG, site.factory)
+    project = await _project(site)
+    assert project.youtube_sync is not None and project.youtube_sync["status"] == "failed"
+    assert UPLOADED_ID in str(project.youtube_sync["error"])
+    assert project.youtube_video_id == UPLOADED_ID
+    assert site.google.updates == []
+
+    # The owner deletes the extra one in Studio; the pasted video then takes its place.
+    del site.google.videos[UPLOADED_ID]
+    async with site.factory() as session:
+        await sync.retry_sync(session, SLUG, site.owner)
+    await sync.run_sync(SLUG, site.factory)
+    project = await _project(site)
+    assert project.youtube_sync is not None and project.youtube_sync["status"] == "done"
+    assert project.youtube_video_id == STUDIO_ID
+
+
 async def test_an_upload_before_the_audit_needs_the_owners_yes(
     site: Site, launched: list[str]
 ) -> None:

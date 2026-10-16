@@ -863,23 +863,25 @@ test("a script with no plan and no cue keeps the speech hash it had before the p
   // Recorded on 2026-10-05, before voice.performance and slides cues existed, so a timeline from
   // before them stays current and no narration is recorded again for the contract alone. A
   // fixture's narration or voice changing moves its hash on purpose: recompute it with
-  // speechHash(<fixture>(), fixtureLexicon()) and pin the new value here.
+  // speechHash(<fixture>(), fixtureLexicon()) and pin the new value here. The minimal,
+  // illustrated, explainer and story hashes moved on 2026-10-13, when their closes stopped
+  // naming the next video (core/narrative.mjs); the drama's and the English one's did not.
   for (const [doc, pinned] of [
-    [fixture(), "af5d5f5eb75aaa69"],
-    [illustratedFixture(), "24b8bd53672b91e8"],
+    [fixture(), "c6bdc8648dca2192"],
+    [illustratedFixture(), "0fe1156f1c0f79cd"],
     [dramaFixture(), "3701f1baabd22734"],
-    [explainerFixture(), "9fea1c4d8c68e0dc"],
-    [storyFixture(), "1a23e4d697759dd1"],
+    [explainerFixture(), "a9de6a0a3f4e7b83"],
+    [storyFixture(), "ffc7b6c0a5159abe"],
     [enFixture(), "01f2da6b69601188"],
   ]) {
     assert.equal(speechHash(doc, lexicon), pinned, doc.slug);
   }
   const plan = illustratedFixture();
   plan.voice.performance = "開場壓低";
-  assert.notEqual(speechHash(plan, lexicon), "24b8bd53672b91e8", "a plan records the narration again");
+  assert.notEqual(speechHash(plan, lexicon), "0fe1156f1c0f79cd", "a plan records the narration again");
   const cue = fixture();
   cue.scenes[0].lines[1].emotion = "放慢";
-  assert.notEqual(speechHash(cue, lexicon), "af5d5f5eb75aaa69", "a cue on a slides line is another take");
+  assert.notEqual(speechHash(cue, lexicon), "c6bdc8648dca2192", "a cue on a slides line is another take");
   const narrated = dramaFixture();
   narrated.voice.performance = "壓低";
   assert.notEqual(speechHash(narrated, lexicon), "3701f1baabd22734");

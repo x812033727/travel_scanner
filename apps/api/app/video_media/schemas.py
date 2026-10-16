@@ -140,6 +140,8 @@ class JudgeCriterion(StrictModel):
 
 class JudgeIn(StrictModel):
     slug: str = Field(pattern=SLUG_PATTERN)
+    # One paid judge request, stable for transport retries. Pilot slugs require this field.
+    operation_id: UUID | None = None
     kind: JudgeKind
     # Images to look at together (a keyframe and its character sheets), or one clip.
     files: list[JudgeFile] = Field(min_length=1, max_length=MAX_JUDGE_FILES)
@@ -178,12 +180,16 @@ class JudgeOut(StrictModel):
     problems: list[str]
     notes: str
     model: str
+    # Provider usage is kept server-side for the all-in pilot ledger, not returned to the tool.
+    usage_input_tokens: int | None = Field(default=None, exclude=True)
+    usage_total_tokens: int | None = Field(default=None, exclude=True)
 
 
 class LocateIn(StrictModel):
     """One stored picture to find the subjects in (``POST /locate``, locate.py)."""
 
     slug: str = Field(pattern=SLUG_PATTERN)
+    operation_id: UUID | None = None
     # A png, jpeg or webp in the media store; a clip is refused, the tool extracts a frame first.
     sha256: str = Field(pattern=SHA256_PATTERN)
     # What to look for, in the words of the script ("Jingwei", "the boat"); without any, the
@@ -209,6 +215,8 @@ class LocateOut(StrictModel):
     width: int
     height: int
     model: str
+    usage_input_tokens: int | None = Field(default=None, exclude=True)
+    usage_total_tokens: int | None = Field(default=None, exclude=True)
 
 
 class StockSearchIn(StrictModel):
@@ -298,6 +306,22 @@ class BudgetView(StrictModel):
     remaining: int
 
 
+class PilotBudgetView(StrictModel):
+    # Decimal amounts travel as strings so the operator sees the exact six-decimal ledger.
+    # Total includes both settled charges and outstanding reservations; per-operation
+    # overruns alone do not identify a late invoice that pushes the film over USD 25.
+    limit_usd: str
+    reserved_usd: str
+    settled_usd: str
+    remaining_usd: str
+    uncertain_operations: int
+    settled_operations: int
+    released_operations: int
+    overrun_operations: int
+    total_over_limit: bool
+    over_limit_usd: str
+
+
 class StoreView(StrictModel):
     used_bytes: int
     max_file_bytes: int
@@ -336,6 +360,7 @@ class MediaStatus(StrictModel):
     stock: dict[str, bool] = Field(default_factory=dict)
     models: MediaOptionsView
     budgets: dict[str, BudgetView]
+    pilot_budgets: dict[str, PilotBudgetView] = Field(default_factory=dict)
     # This month's jobs priced with the catalog, submitted or ready.
     estimated_usd: float
     max_usd_per_video: int

@@ -97,8 +97,11 @@ test("an error keeps the seconds of the server's Retry-After, for a stage run an
   // Before: only a durable writer's failed receipt carried it, so flow.mjs deferred every other request by its own clock.
   answer = refused(429, "rate_limit_exceeded", "900");
   await assert.rejects(client.run("verifier", "draft-example", "Check", {}), (error) => error.status === 429 && error.retry_after === 900);
-  assert.deepEqual(sleeps, [120_000], "the client's own sleeps stay capped at two minutes, and none follows the last attempt");
+  assert.deepEqual(sleeps, [], "a limit that opens after the longest sleep is not tried again: every try would count against it");
   await assert.rejects(client.reviews("draft-example"), (error) => error.code === "rate_limit_exceeded" && error.retry_after === 900);
+  answer = refused(429, "rate_limit_exceeded", "90");
+  await assert.rejects(client.run("verifier", "draft-example", "Check", {}), (error) => error.status === 429 && error.retry_after === 90);
+  assert.deepEqual(sleeps, [90_000], "one that opens within it is waited for, and none follows the last attempt");
   answer = refused(503, "video_ai_upstream_busy", "30");
   await assert.rejects(client.run("translator", "draft-example", "Translate", {}), (error) => error.code === "video_ai_upstream_busy" && error.retry_after === 30);
   // A refusal that is thrown at once keeps it too.
@@ -1147,6 +1150,32 @@ test("durable capability preserves the synchronous planner and bounded anime/sto
   }
   assert.deepEqual(paths, Array(3).fill("/api/video/automation/run"));
   assert.deepEqual(durableFiles(box, "draft-example"), []);
+});
+
+test("both original and v2 pilot story chapters always use saved jobs for writing and checks", async () => {
+  for (const slug of ["story-rolling-suitcase", "story-conveyor-belt-sushi", "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]) {
+    for (const stage of ["writer", "verifier", "listener"]) {
+      const box = sandbox(), routes = [];
+      const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+        const route = new URL(url).pathname;
+        if (route === "/api/video/automation/settings") return Response.json({ durable_stage_runs: false });
+        routes.push(route);
+        assert.equal(route, DURABLE_PATH, `${slug} ${stage} bypassed the durable budget gate`);
+        const body = JSON.parse(init.body);
+        const files = durableFiles(box, slug);
+        assert.equal(files.length, 1, "the request key is persisted before dispatch");
+        assert.equal(JSON.parse(readFileSync(files[0], "utf8")).request_key, body.request_key);
+        assert.equal(body.variant, "story");
+        assert.equal(body.stage, stage);
+        return Response.json(job(body));
+      } }, { durablePollMs: 5, durablePollIntervalMs: 5 });
+      await client.settings();
+      assert.deepEqual(await client.run(stage, slug, "Review one chapter", { chapter: "hook" }, 16_000, "drama", "story"), savedAnswer);
+      assert.deepEqual(routes, [DURABLE_PATH]);
+      client.settleRuns([slug]);
+      assert.deepEqual(durableFiles(box, slug), []);
+    }
+  }
 });
 
 test("the durable polling window caps at 25 seconds and leaves the paid operation saved for the next round", async () => {

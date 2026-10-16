@@ -166,16 +166,18 @@ export function localeCues(presented, texts, locale, narration, dub = null) {
 
 /**
  * A dub's lines as the timeline captions are cut on: the pause after a dubbed line belongs to
- * its cues, as the narration's does, so each line runs to the next dubbed line's start.
+ * its cues, as the narration's does, so each line runs to the next dubbed line's start. A line
+ * before an intro played after the first chapter runs at most to the intro (intro_at_frame).
  */
 export function captionTimelineOf(dub) {
   const lines = [...dub.lines].sort((a, b) => a.start_frame - b.start_frame);
   const contentEnd = dub.content_end_frame ?? dub.total_frames;
+  const introAt = dub.intro_at_frame ?? null;
   return {
     ...dub,
     lines: lines.map((line, index) => ({
       ...line,
-      end_frame: Math.min(contentEnd, Math.max(line.end_frame, index + 1 < lines.length ? lines[index + 1].start_frame : contentEnd)),
+      end_frame: Math.min(introAt !== null && line.start_frame < introAt ? introAt : contentEnd, Math.max(line.end_frame, index + 1 < lines.length ? lines[index + 1].start_frame : contentEnd)),
     })),
   };
 }

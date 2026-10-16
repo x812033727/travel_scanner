@@ -7,6 +7,7 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { readApprovals } from "../core/approvals.mjs";
@@ -14,6 +15,7 @@ import { clipsHash, drawnShotScenes, EXPLAINER_PRESET, hasCast, isExplainer, loo
 import { explainerFixture, lexiconProposals, sandbox, storyFixture, storySeries, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
 import { BRIEF_SECTIONS_DRAMA, briefSectionsFor } from "../core/lint.mjs";
+import { NARRATIVE_PANEL } from "../core/narrative.mjs";
 import { isStory } from "../core/story.mjs";
 import { readJson } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
@@ -31,17 +33,26 @@ import {
   applyPatch,
   CHAPTER_KEYS,
   chapterBudgets,
+  composeStory,
   factChapters,
   figuresIn,
   lengthBand,
   LENGTH_FIX_ROUNDS,
   OUTLINE_NOTE,
   passagesOf,
+  PILOT_SCRIPT_REFERENCES,
+  PILOT_SCRIPT_REVIEW_FILE,
+  pilotScriptReviewEvidence,
+  pilotScriptReviewProblem,
   readChapter,
   readChapterAnswer,
   SCRIPT_NOTE,
+  STORY_CHAPTERS_DIR,
   storyCast,
+  storyBrief,
+  cuteStoryVisualProblems,
   storyLineIds,
+  storySeriesFile,
   yearForms,
 } from "./story.mjs";
 
@@ -183,11 +194,12 @@ function listenAnswer(payload) {
 
 // --- the site ------------------------------------------------------------------------------------
 
-function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused = () => false, series = SERIES, held = null } = {}) {
+function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused = () => false, series = SERIES, plannedEpisode = EPISODE, held = null } = {}) {
   const calls = { run: [], episodes: [], reports: [], pages: [], answers: [] };
   const projects = new Map();
+  const stageJobs = new Map();
   const reviewsOf = (slug) => projects.get(slug) ?? projects.set(slug, []).get(slug);
-  const queue = jobs ?? [{ kind: "episode", series: SERIES, chapter_number: null, episode: EPISODE, previous: null, rewrites_left: 0, context: { series: SERIES, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: EPISODE, episodes: [{ ...EPISODE, beats: {} }], recaps: [], mysteries: [] } }];
+  const queue = jobs ?? [{ kind: "episode", series, chapter_number: null, episode: plannedEpisode, previous: null, rewrites_left: 0, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, episode: plannedEpisode, episodes: [{ ...plannedEpisode, beats: {} }], recaps: [], mysteries: [] } }];
   const current = {
     enabled: true, draft_interval_hours: 72, topics_per_run: 1, max_waiting_drafts: 3, topic_scope: ["AI"], topic_avoid: [], topic_from_site: true, topic_from_search: false,
     stage_models: {}, voice: { provider: "gemini", name: "Sulafat", style: "溫和的說書人語氣", model: null, rate: "+0%" }, target_minutes_min: 8, target_minutes_max: 12, caption_locales: [],
@@ -220,20 +232,31 @@ function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused 
       calls.episodes.push({ series: episode[1], number: Number(episode[2]), action: episode[3], ...(body ?? {}) });
       if (episode[3] !== "start") return json({ number: Number(episode[2]), status: episode[3] === "done" ? "done" : "started" });
       // The server's contract (apps/api/app/video_automation/series.py start_episode): a story starts under its planned slug.
-      if (body.slug !== EPISODE.slug) return json({ code: "video_series_story_slug", detail: `這個故事的影片代號是 ${EPISODE.slug}，不是 ${body.slug}` }, 409);
+      if (body.slug !== plannedEpisode.slug) return json({ code: "video_series_story_slug", detail: `這個故事的影片代號是 ${plannedEpisode.slug}，不是 ${body.slug}` }, 409);
       // A limit that took hold after next advertised the story (#918): the start is refused.
       if (held) return json({ code: "video_series_story_held", detail: held }, 409);
-      const started = { ...EPISODE, status: "started" };
-      return json({ request: { id: "b0c1d2e3-0000-4000-8000-000000000001", premise: `品牌故事 第 1 集：${EPISODE.title}\n${EPISODE.logline}\nquestion: ${PLAN.question}`, title: `品牌故事 第 1 集 ${EPISODE.title}`, source_guide: null, style_preset: "custom", target_minutes: 13, note: series.note, status: "started", slug: body.slug, series_slug: series.slug, episode_number: 1 }, episode: started, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: started, episodes: [{ ...started, beats: {} }], recaps: [], mysteries: [] } });
+      const started = { ...plannedEpisode, status: "started" };
+      return json({ request: { id: "b0c1d2e3-0000-4000-8000-000000000001", premise: `品牌故事 第 1 集：${plannedEpisode.title}\n${plannedEpisode.logline}\nquestion: ${PLAN.question}`, title: `品牌故事 第 1 集 ${plannedEpisode.title}`, source_guide: null, style_preset: "custom", target_minutes: series.target_minutes, note: series.note, status: "started", slug: body.slug, series_slug: series.slug, episode_number: 1 }, episode: started, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: started, episodes: [{ ...started, beats: {} }], recaps: [], mysteries: [] } });
     }
-    if (pathname === "/api/video/automation/run") {
+    if (pathname === "/api/video/automation/run" || pathname === "/api/video/automation/run/jobs") {
       calls.run.push(body);
       if (paused(body)) return json({ code: "video_ai_subscription_paused", detail: "every Claude account is at its cap" }, 429);
       const key = body.variant ? `${body.stage}:${body.variant}` : body.stage;
       const answer = answers[key]?.(body);
       const text = raw[key]?.(body) ?? JSON.stringify(answer ?? {});
-      return json({ text, provider: "anthropic", model: "claude-sonnet-5", input_tokens: 10, output_tokens: 5, usage: { tokens: 15, token_budget: 20_000_000, drafts: 0, draft_budget: 8, calls: 1, failed_calls: 0 } });
+      const result = { text, provider: "anthropic", model: "claude-sonnet-5", input_tokens: 10, output_tokens: 5, usage: { tokens: 15, token_budget: 20_000_000, drafts: 0, draft_budget: 8, calls: 1, failed_calls: 0 } };
+      if (pathname === "/api/video/automation/run") return json(result);
+      // Pilot chapters use the production saved-job transport. Return its receipt shape so
+      // the integration fixture exercises the same durable path without a paid provider.
+      const id = `00000000-0000-4000-8000-${String(stageJobs.size + 1).padStart(12, "0")}`;
+      const job = { id, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64),
+        provider: result.provider, model: result.model, status: "succeeded", result,
+        error_code: null, error_detail: null, error_status: null, retry_after: null };
+      stageJobs.set(id, job);
+      return json(job);
     }
+    const stageJob = /^\/api\/video\/automation\/run\/jobs\/([a-f0-9-]+)$/.exec(pathname);
+    if (stageJob) return stageJobs.has(stageJob[1]) ? json(stageJobs.get(stageJob[1])) : json({ code: "not_found", detail: pathname }, 404);
     const match = /^\/api\/video\/reviews\/([a-z0-9-]+)(\/reviews)?$/.exec(pathname);
     if (match) {
       const [, slug, sub] = match;
@@ -276,20 +299,25 @@ function context(box, fetchImpl) {
 
 const smallRefs = { script_writing: "一句一個意思，唸得出來。", formats: "", channel: "Mokaair", showcase: { scenes: [] }, minimal: {}, drama: "the drama route", drama_example: {}, drama_brief: "# brief", series: "the series route" };
 
+/** The storytelling panel's answer (core/narrative.mjs): every question yes unless `no` names one. */
+const panelAnswer = (no = []) => ({ answers: NARRATIVE_PANEL.map((question) => ({ id: question.id, yes: !no.includes(question.id), evidence: "[h1] 一把傘。" })) });
+
 const standardAnswers = (overrides = {}) => ({
   "writer:story": (body) => chapterAnswer(body.payload.chapter.key, body.payload),
   "verifier:story": (body) => checkAnswer(body.payload),
   "listener:story": (body) => listenAnswer(body.payload),
+  // The merged story is read blind by the panel before the narration is recorded.
+  "verifier:narrative": () => panelAnswer(),
   ...overrides,
 });
 
 /** A story's world: the site, the automation, the media stand-ins (tts writes a timeline of `seconds()` when set). */
-function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, settings = {}, paused, jobs = null, series, held = null, decide = () => ({ status: "approved" }) } = {}) {
+function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, settings = {}, paused, jobs = null, series, episode = EPISODE, held = null, decide = () => ({ status: "approved" }) } = {}) {
   const box = sandbox();
-  const site = storySite({ answers, raw, settings, paused, jobs, series, held });
+  const site = storySite({ answers, raw, settings, paused, jobs, series, plannedEpisode: episode, held });
   const { ctx, out } = context(box, site.fetchImpl);
-  const dir = path.join(box.root, "docs", "videos", SLUG);
-  const workdir = path.join(box.work, SLUG);
+  const dir = path.join(box.root, "docs", "videos", episode.slug);
+  const workdir = path.join(box.work, episode.slug);
   const runs = [];
   const lexicon = () => readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
   const video = () => readJson(path.join(dir, "video.json"));
@@ -349,12 +377,12 @@ function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, set
     }
     if (name === "review-push") {
       const gate = command[command.indexOf("--gate") + 1];
-      if (GATE_FILES[gate]) site.reviewsOf(SLUG).unshift({ id: `${gate}-${site.reviewsOf(SLUG).length}`, gate, choice: null, note: `${gate}：依設定自動核准`, decided_at: "2026-09-28T03:00:00Z", content_sha256: sha(path.join(workdir, GATE_FILES[gate])), payload: {}, ...decide(gate) });
+      if (GATE_FILES[gate]) site.reviewsOf(episode.slug).unshift({ id: `${gate}-${site.reviewsOf(episode.slug).length}`, gate, choice: null, note: `${gate}：依設定自動核准`, decided_at: "2026-09-28T03:00:00Z", content_sha256: sha(path.join(workdir, GATE_FILES[gate])), payload: {}, ...decide(gate) });
       return { code: 0, out: `${gate} submitted` };
     }
     if (name === "review-pull") {
       const { approve } = await import("../core/approvals.mjs");
-      for (const review of site.reviewsOf(SLUG).filter((each) => each.status === "approved" && GATE_FILES[each.gate])) {
+      for (const review of site.reviewsOf(episode.slug).filter((each) => each.status === "approved" && GATE_FILES[each.gate])) {
         const file = path.join(workdir, GATE_FILES[review.gate]);
         if (existsSync(file) && sha(file) === review.content_sha256 && !readApprovals(workdir).approvals.some((entry) => entry.gate === review.gate && entry.sha256 === review.content_sha256)) await approve({ gate: review.gate, docDir: dir, workdir, note: review.note });
       }
@@ -364,7 +392,7 @@ function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, set
   };
   const automation = new Automation(ctx, automationClient(ctx), site.settings);
   automation.refs = smallRefs;
-  const state = () => automatedVideos(box.work).find((each) => each.slug === SLUG);
+  const state = () => automatedVideos(box.work).find((each) => each.slug === episode.slug);
   return { box, site, ctx, out, automation, runs, dir, workdir, state, video, lexicon };
 }
 
@@ -388,14 +416,14 @@ async function steps(automation, count) {
 
 // --- the numbers ----------------------------------------------------------------------------------
 
-test("a 13-minute story is 3,250 characters over about 90 shots, the hook within 30 seconds and engine the longest; the narration may run 11:30 to 15:30", () => {
+test("a 13-minute story is 3,250 characters over about 90 shots, the hook a 30 to 60 second condensation and engine the longest; the narration may run 11:30 to 15:30", () => {
   const budgets = chapterBudgets(13);
   assert.deepEqual(budgets.map((budget) => budget.key), CHAPTER_KEYS);
   assert.equal(budgets.reduce((sum, budget) => sum + budget.seconds, 0), 13 * 60, "the seconds add up to the target");
   assert.equal(budgets.reduce((sum, budget) => sum + budget.chars, 0), 3_250, "250 characters a minute");
   const shots = budgets.reduce((sum, budget) => sum + budget.shots, 0);
   assert.ok(shots >= 85 && shots <= 100, `about 90 shots (${shots})`);
-  assert.ok(budgets[0].seconds <= 30, "the hook is said within 30 seconds");
+  assert.equal(budgets[0].seconds, 45, "the hook is given the middle of the condensation's 30 to 60 seconds");
   assert.equal(budgets.reduce((best, budget) => (budget.seconds > best.seconds ? budget : best)).key, "engine");
   for (const budget of budgets) assert.ok(budget.seconds / budget.shots >= 6 && budget.seconds / budget.shots <= 12, `${budget.key}: a shot holds 6 to 12 seconds`);
   assert.deepEqual(lengthBand(13), [11 * 60 + 30, 15 * 60 + 30]);
@@ -496,6 +524,351 @@ test("a writer's chapter is made the worker's: stills only, narrator lines, hand
 
 // --- the flow -------------------------------------------------------------------------------------------
 
+test("the five-film and v2 pilot visual gate counts body illustrations and cards at exact scene paths", () => {
+  const shot = (id) => ({ id, template: "shot" });
+  const card = (id) => ({ id, template: "stat" });
+  const bookend = (id, template) => ({ id, template });
+  const slug = "story-five-lego-legoland";
+  const look = { preset: "cute-mystery" };
+  const sevenShots = Array.from({ length: 7 }, (_, index) => shot(`s${index}`));
+  const sixShots = sevenShots.slice(0, 6);
+  const boundary = [bookend("title", "title"), ...sevenShots, card("c1"), card("c2"), bookend("chapter", "chapter"), card("c3"), bookend("outro", "outro")];
+  assert.deepEqual(cuteStoryVisualProblems({ slug, look, scenes: boundary }), [], "7/10 shots and three cards pass; chapter cards are excluded from the body");
+
+  const failing = [bookend("title", "title"), ...sixShots, card("c1"), card("c2"), card("c3"), bookend("chapter", "chapter"), card("c4"), bookend("outro", "outro")];
+  const problems = cuteStoryVisualProblems({ slug, look, scenes: failing });
+  assert.deepEqual(problems.map((problem) => problem.path), ["scenes[11]", "scenes[11]"], "both errors name the offending card's original scene index");
+  assert.match(problems[0].message, /6 of 10 body scenes.*60%.*at least 70%/);
+  assert.match(problems[1].message, /4 cards in a row \(c1 → c2 → c3 → c4\)/, "a chapter card does not break the card run");
+  assert.deepEqual(cuteStoryVisualProblems({ slug, look, scenes: [bookend("outro", "outro")] }).map((problem) => problem.path), ["scenes[0]"], "the body cannot be empty");
+  assert.deepEqual(cuteStoryVisualProblems({ slug, look: { ...look, negative: "photorealistic" }, scenes: boundary }).map((problem) => problem.path), ["look"], "a look override blocks the five-story route");
+  assert.deepEqual(cuteStoryVisualProblems({ slug, look: { preset: "custom", style: "cute" }, scenes: boundary }).map((problem) => problem.path), ["look"]);
+  for (const pilot of ["story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]) {
+    assert.deepEqual(cuteStoryVisualProblems({ slug: pilot, look, scenes: boundary }), [], `${pilot}: the boundary passes`);
+    assert.deepEqual(cuteStoryVisualProblems({ slug: pilot, look, scenes: failing }).map((problem) => problem.path), ["scenes[11]", "scenes[11]"], `${pilot}: the preimage gate blocks bad visual pacing`);
+    assert.deepEqual(cuteStoryVisualProblems({ slug: pilot, look: { ...look, style: "custom" }, scenes: boundary }).map((problem) => problem.path), ["look"]);
+  }
+  for (const legacy of [SLUG, "story-rolling-suitcase", "story-conveyor-belt-sushi"]) {
+    assert.deepEqual(cuteStoryVisualProblems({ slug: legacy, scenes: failing }), [], `${legacy}: the original custom story route keeps its own rules`);
+  }
+});
+
+test("a complete cute pilot script sends visual failures to the chapter before drawing keyframes", async () => {
+  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const episode = { ...EPISODE, slug: "story-rolling-suitcase-v2" };
+  const answers = standardAnswers({ "writer:story": (body) => {
+    const chapter = chapterAnswer(body.payload.chapter.key, body.payload);
+    chapter.scenes.forEach((scene, index) => { if (scene.template === "shot") scene.data.camera = index % 2 ? "slow pan left" : "slow push in"; });
+    return chapter;
+  } });
+  const world = storyWorld({ series, episode, answers });
+  await world.automation.step();
+  const written = await steps(world.automation, 6);
+  assert.match(written.at(-1), /six are merged into video\.json/, written.join("\n"));
+  assert.equal(world.state().story.chapters.idea.lint, null, "the six unedited chapters pass");
+
+  // Simulate a later saved-chapter edit. The writer currently writes only shots, but the merged
+  // script must still refuse a card-heavy chapter before the paid keyframes stage.
+  for (const key of ["origin", "idea"]) {
+    const file = path.join(world.workdir, STORY_CHAPTERS_DIR, `${key}.json`);
+    const chapter = readJson(file);
+    for (const scene of chapter.scenes) scene.template = "stat";
+    writeFileSync(file, JSON.stringify(chapter));
+  }
+  const result = await advanceStory(world.automation, world.state(), "script passes lint");
+  assert.match(result, /merged story fails lint in/);
+  const errors = world.state().story.chapters.idea.lint.join("\n");
+  assert.match(errors, /scenes\[5\]: 8 of 12 body scenes are illustrated shots \(66%\)/);
+  assert.match(errors, /scenes\[5\]: 4 cards in a row \(origin-01 → origin-02 → idea-01 → idea-02\)/);
+  assert.equal(world.runs.some((command) => command.startsWith("keyframes ")), false);
+});
+
+test("the two pilot editorial reference hashes still match their independently PASS-reviewed Markdown", () => {
+  for (const [slug, id] of [["story-rolling-suitcase-v2", "A01"], ["story-conveyor-belt-sushi-v2", "B18"]]) {
+    const script = fileURLToPath(new URL(`../../../docs/videos/brand-stories-pilot-v2-20261015/scripts/${id}.md`, import.meta.url));
+    const review = fileURLToPath(new URL(`../../../docs/videos/brand-stories-pilot-v2-20261015/scripts/reviews/${id}.md`, import.meta.url));
+    const hash = sha(script);
+    assert.equal(hash, PILOT_SCRIPT_REFERENCES[slug]);
+    assert.match(readFileSync(review, "utf8"), new RegExp(`SHA-256 .${hash}.`));
+    assert.match(readFileSync(review, "utf8"), /文字事實與敘事 PASS|逐字稿文字事實與敘事 PASS/);
+  }
+});
+
+const pilotAnswers = () => standardAnswers({ "writer:story": (body) => {
+  const chapter = chapterAnswer(body.payload.chapter.key, body.payload);
+  chapter.scenes.forEach((scene, index) => { if (scene.template === "shot") scene.data.camera = index % 2 ? "slow pan left" : "slow push in"; });
+  return chapter;
+} });
+
+test("a v2 pilot holds before TTS until an independent review binds the actual six chapters and reference", async () => {
+  const slug = "story-rolling-suitcase-v2";
+  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const episode = { ...EPISODE, slug };
+  const world = storyWorld({ series, episode, answers: pilotAnswers() });
+  const { automation, workdir } = world;
+  const progress = [];
+  for (let index = 0; index < 1 + 6 + 6 + 6; index++) {
+    try { progress.push(await automation.step()); }
+    catch (error) { throw new Error(`pilot step ${index + 1}: ${progress.join(" | ")}`, { cause: error }); }
+  }
+  assert.match(await automation.step(), /STOPPED_HOLD: .*script-review\.json is missing/);
+  assert.equal(world.state().status, "blocked");
+  assert.equal(world.state().blocked_kind, "pilot_script_review");
+  assert.equal(readApprovals(workdir).approvals.some((entry) => entry.gate === "script"), false);
+  assert.equal(world.runs.some((command) => command.startsWith("tts ")), false);
+
+  const places = { slug, root: world.box.root, workdir };
+  const receipt = {
+    schema_version: 1,
+    ...pilotScriptReviewEvidence(places),
+    status: "PASS",
+    reviewer_id: "editorial-reader-a01",
+    independent: true,
+    reviewed_at: "2026-10-15T00:00:00.000Z",
+    checks: { reference_alignment: "PASS", factual_claims: "PASS", narrative: "PASS" },
+  };
+  const receiptFile = path.join(workdir, PILOT_SCRIPT_REVIEW_FILE);
+  mkdirSync(path.dirname(receiptFile), { recursive: true });
+  const saveReceipt = () => writeFileSync(receiptFile, JSON.stringify(receipt));
+  assert.match(pilotScriptReviewProblem(places), /missing/);
+  receipt.slug = "story-conveyor-belt-sushi-v2";
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /matching slug/);
+  receipt.slug = slug;
+  receipt.reviewer_id = "worker:story";
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /independent reviewer/);
+  receipt.reviewer_id = "editorial-reader-a01";
+  receipt.reference_script_sha256 = "0".repeat(64);
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /frozen independently reviewed Markdown/);
+  receipt.reference_script_sha256 = PILOT_SCRIPT_REFERENCES[slug];
+  receipt.files["script.md"] = "0".repeat(64);
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /script\.md is missing or changed/);
+  receipt.files["script.md"] = sha(path.join(world.dir, "script.md"));
+  saveReceipt();
+  assert.equal(pilotScriptReviewProblem(places), null);
+  const scriptFile = path.join(world.dir, "script.md");
+  const originalScript = readFileSync(scriptFile, "utf8");
+  writeFileSync(scriptFile, `${originalScript}\n手動加上的旁白。`);
+  receipt.files["script.md"] = sha(scriptFile);
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /script\.md no longer matches the narration in video\.json/, "a reviewer cannot attest a detached text file as the worker's script");
+  writeFileSync(scriptFile, originalScript);
+  receipt.files["script.md"] = sha(scriptFile);
+  saveReceipt();
+  assert.equal(pilotScriptReviewProblem(places), null);
+
+  // A second reader's new hashes cannot bless a detached chapter: the spoken text in the
+  // chapter files must be the text that was actually merged into the video and screenplay.
+  const hookFile = path.join(workdir, STORY_CHAPTERS_DIR, "hook.json");
+  const originalHook = readFileSync(hookFile, "utf8");
+  const changedHook = JSON.parse(originalHook);
+  changedHook.scenes[0].lines[0].text = "審過章稿後才改掉的旁白。";
+  writeFileSync(hookFile, JSON.stringify(changedHook));
+  receipt.chapters.hook = sha(hookFile);
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /video\.json scenes no longer match the six reviewed chapter files/);
+  changedHook.scenes[0].lines[0].text = JSON.parse(originalHook).scenes[0].lines[0].text;
+  changedHook.scenes[0].data.prompt = "a different image prompt after the merged scene was reviewed";
+  writeFileSync(hookFile, JSON.stringify(changedHook));
+  receipt.chapters.hook = sha(hookFile);
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /video\.json scenes no longer match the six reviewed chapter files/);
+  writeFileSync(hookFile, originalHook);
+  receipt.chapters.hook = sha(hookFile);
+  saveReceipt();
+  assert.equal(pilotScriptReviewProblem(places), null);
+
+  // Normal non-scene metadata may be updated without changing the reviewed narration or shots.
+  const videoFile = path.join(world.dir, "video.json");
+  const originalVideo = readFileSync(videoFile, "utf8");
+  const videoWithId = JSON.parse(originalVideo);
+  videoWithId.youtube.video_id = "test-video-id";
+  writeFileSync(videoFile, JSON.stringify(videoWithId));
+  receipt.files["video.json"] = sha(videoFile);
+  saveReceipt();
+  assert.equal(pilotScriptReviewProblem(places), null);
+  writeFileSync(videoFile, originalVideo);
+  receipt.files["video.json"] = sha(videoFile);
+  saveReceipt();
+
+  // The owner retries only after the second reader has signed the current worker artifact.
+  const state = world.state();
+  state.status = "active";
+  delete state.blocked;
+  delete state.blocked_kind;
+  automation.persist(state);
+  assert.match(await automation.step(), /screenplay is approved here/);
+  assert.equal(world.runs.some((command) => command.startsWith("tts ")), false);
+  assert.match(await automation.step(), /narration synthesized/);
+  assert.equal(world.runs.filter((command) => command.startsWith("tts ")).length, 1);
+});
+
+test("a v2 pilot rechecks its review before downstream stages and holds when a chapter changes", async () => {
+  const slug = "story-conveyor-belt-sushi-v2";
+  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const world = storyWorld({ series, episode: { ...EPISODE, slug }, answers: pilotAnswers() });
+  const progress = [];
+  for (let index = 0; index < 1 + 6 + 6 + 6; index++) {
+    try { progress.push(await world.automation.step()); }
+    catch (error) { throw new Error(`pilot step ${index + 1}: ${progress.join(" | ")}`, { cause: error }); }
+  }
+  assert.match(await world.automation.step(), /STOPPED_HOLD/);
+  const receipt = {
+    schema_version: 1,
+    ...pilotScriptReviewEvidence({ slug, root: world.box.root, workdir: world.workdir }),
+    status: "PASS",
+    reviewer_id: "independent-reader-b18",
+    independent: true,
+    reviewed_at: "2026-10-15T00:00:00.000Z",
+    checks: { reference_alignment: "PASS", factual_claims: "PASS", narrative: "PASS" },
+  };
+  const file = path.join(world.workdir, PILOT_SCRIPT_REVIEW_FILE);
+  mkdirSync(path.dirname(file), { recursive: true });
+  writeFileSync(file, JSON.stringify(receipt));
+  const state = world.state();
+  state.status = "active";
+  delete state.blocked;
+  delete state.blocked_kind;
+  world.automation.persist(state);
+  assert.match(await world.automation.step(), /screenplay is approved here/);
+  const chapterFile = path.join(world.workdir, STORY_CHAPTERS_DIR, "origin.json");
+  writeFileSync(chapterFile, `${readFileSync(chapterFile, "utf8")} `);
+  assert.match(await world.automation.step(), /STOPPED_HOLD: chapter origin is missing or changed/);
+  assert.equal(world.runs.some((command) => command.startsWith("tts ")), false);
+});
+
+test("a flagged v2 pilot audio take waits for owner review instead of rewriting and paying TTS for unreviewed words", async () => {
+  const slug = "story-rolling-suitcase-v2";
+  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const world = storyWorld({
+    series,
+    episode: { ...EPISODE, slug },
+    answers: pilotAnswers(),
+    seconds: () => 600,
+    settings: { max_retake_rounds: 1 },
+    decide: (gate) => ({ status: gate === "audio" ? "pending" : "approved" }),
+  });
+  await steps(world.automation, 1 + 6 + 6 + 6);
+  assert.match(await world.automation.step(), /STOPPED_HOLD/);
+  const receipt = {
+    schema_version: 1,
+    ...pilotScriptReviewEvidence({ slug, root: world.box.root, workdir: world.workdir }),
+    status: "PASS",
+    reviewer_id: "independent-reader-a01",
+    independent: true,
+    reviewed_at: "2026-10-15T00:00:00.000Z",
+    checks: { reference_alignment: "PASS", factual_claims: "PASS", narrative: "PASS" },
+  };
+  const receiptFile = path.join(world.workdir, PILOT_SCRIPT_REVIEW_FILE);
+  mkdirSync(path.dirname(receiptFile), { recursive: true });
+  writeFileSync(receiptFile, JSON.stringify(receipt));
+  const state = world.state();
+  state.status = "active";
+  delete state.blocked;
+  delete state.blocked_kind;
+  world.automation.persist(state);
+  assert.match(await world.automation.step(), /screenplay is approved here/);
+  assert.match(await world.automation.step(), /narration synthesized/);
+
+  const originalRun = world.ctx.runCommand;
+  const flaggedId = world.video().scenes[0].lines[0].id;
+  world.ctx.runCommand = async (command) => {
+    const result = await originalRun(command);
+    if (command[0] !== "check-audio") return result;
+    const timeline = readJson(path.join(world.workdir, "timeline.json"));
+    const entries = Object.fromEntries(timeline.lines.map((line) => [line.id, {
+      match: line.id !== flaggedId,
+      match_kind: line.id === flaggedId ? null : "exact",
+      intended: "已審旁白",
+      heard: line.id === flaggedId ? "Jev 聽成另一句" : "已審旁白",
+      noul: line.id === flaggedId ? 0.2 : null,
+      clip: line.audio_sha256.slice(0, 16),
+    }]));
+    mkdirSync(path.join(world.workdir, "review"), { recursive: true });
+    writeFileSync(path.join(world.workdir, "review", "check.json"), JSON.stringify({ lines: entries }));
+    writeFileSync(path.join(world.workdir, "review", "check-flags.json"), JSON.stringify({ slug, speech_hash: timeline.speech_hash, flags: [flaggedId], notes: { [flaggedId]: "Jev 仍標記" } }));
+    return { code: 1, out: "one line still flagged" };
+  };
+
+  const checked = await world.automation.step();
+  assert.match(checked, /narration checked \(some lines flagged\) and sent for review; pilot audio waits for owner review/);
+  assert.equal(world.runs.filter((run) => run.startsWith("tts ") && run.includes("--redo")).length, 1, "only the same-script retake is paid");
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "listener" && call.variant === "rewrite").length, 0);
+  assert.equal(world.site.reviewsOf(slug).find((review) => review.gate === "audio")?.status, "pending");
+  assert.equal(pilotScriptReviewProblem({ slug, root: world.box.root, workdir: world.workdir }), null, "the approved script remains the spoken script");
+  assert.equal(await world.automation.advance(world.state()), null, "the worker waits for the owner to judge the flagged take");
+
+  const audioReview = world.site.reviewsOf(slug).find((review) => review.gate === "audio");
+  audioReview.status = "rejected";
+  audioReview.note = "這句改自然一點";
+  assert.match(await world.automation.advance(world.state()), /the owner sent the narration back .*listener goes over the six chapters/);
+  for (let index = 0; index < 6; index++) await world.automation.advance(world.state());
+  assert.match(await world.automation.advance(world.state()), /STOPPED_HOLD: .*changed since the pilot script review/, "a chapter listener edit needs a new independent script receipt before TTS");
+  assert.equal(world.runs.filter((run) => run.startsWith("tts ") && !run.includes("--redo")).length, 1);
+
+  // The hold has a finite recovery: independently review the newly merged script, write its
+  // current hashes, and explicitly retry. Only then may the new words reach TTS.
+  Object.assign(receipt, pilotScriptReviewEvidence({ slug, root: world.box.root, workdir: world.workdir }));
+  writeFileSync(receiptFile, JSON.stringify(receipt));
+  const retry = world.state();
+  retry.status = "active";
+  delete retry.blocked;
+  delete retry.blocked_kind;
+  world.automation.persist(retry);
+  assert.match(await world.automation.advance(world.state()), /screenplay is approved here/);
+  assert.match(await world.automation.advance(world.state()), /narration synthesized/);
+  assert.equal(world.runs.filter((run) => run.startsWith("tts ") && !run.includes("--redo")).length, 2);
+});
+
+test("the ten-minute preset is preserved by the story file and video composer", () => {
+  const cute = { ...SERIES, target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const info = storySeriesFile({ series: cute, episode: EPISODE, plan: PLAN, cast: [] });
+  assert.deepEqual(info.look, { preset: "cute-mystery" });
+  assert.equal(info.image_model, "image-01");
+  assert.match(storyBrief({ episode: EPISODE, plan: PLAN, cast: [], look: info.look }), /## 問題\n[^\n]+\n\n## 一句答案\n[^\n]+/);
+  assert.doesNotMatch(storyBrief({ episode: EPISODE, plan: PLAN, cast: [], look: LOOK }), /## 問題\n|## 一句答案\n/, "the original custom brief keeps its drama sections");
+  const cuteBudgets = chapterBudgets(10, info.look);
+  assert.equal(cuteBudgets.reduce((seconds, chapter) => seconds + chapter.seconds, 0), 600);
+  assert.equal(cuteBudgets.reduce((shots, chapter) => shots + chapter.shots, 0), 80, "7.5 seconds per picture gives 75–120 illustrations");
+  assert.equal(chapterBudgets(13).reduce((shots, chapter) => shots + chapter.shots, 0), 90, "the original 13-minute route keeps its pace");
+  assert.deepEqual(lengthBand(10, info.look), [540, 660]);
+  assert.deepEqual(lengthBand(13), [690, 930]);
+  const video = composeStory({ slug: SLUG, info, chapters: {}, voice: SERIES.voice, root: "." });
+  assert.deepEqual(video.look, { preset: "cute-mystery" });
+  assert.deepEqual(video.target_minutes, [9, 11]);
+  assert.deepEqual(video.subtitles, { burn_in: false, style: "drama" }, "new brand stories use switchable zh-TW CC");
+});
+
+test("a ten-minute story carries the exact MiniMax cute look from series to video", async () => {
+  const cute = { ...SERIES, target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const answers = standardAnswers({ "writer:story": (body) => {
+    const chapter = chapterAnswer(body.payload.chapter.key, body.payload);
+    chapter.scenes.forEach((scene, index) => { if (scene.template === "shot") scene.data.camera = index % 2 ? "slow pan left" : "slow push in"; });
+    return chapter;
+  } });
+  const world = storyWorld({ series: cute, answers });
+  assert.match(await world.automation.step(), /^story brand-stories:/);
+  const info = readJson(path.join(world.dir, "series.json"));
+  assert.equal(info.target_minutes, 10);
+  assert.equal(info.image_model, "image-01");
+  assert.deepEqual(info.look, { preset: "cute-mystery" });
+  const brief = readFileSync(path.join(world.dir, "brief.md"), "utf8");
+  assert.match(brief, /## 問題\n[^\n]+\n\n## 一句答案\n[^\n]+/);
+  assert.equal(world.state().style_preset, "custom", "the six-chapter story writer stays in use");
+  assert.equal(world.state().target_minutes, 10);
+  const written = await steps(world.automation, 6);
+  assert.match(written.at(-1), /six are merged into video\.json/, written.join("\n"));
+  const video = world.video();
+  assert.deepEqual(video.look, { preset: "cute-mystery" });
+  assert.deepEqual(video.target_minutes, [9, 11]);
+  assert.equal(video.category, "story");
+  assert.equal(video.subtitles.burn_in, false, "the merged script keeps zh-TW captions switchable");
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, 6);
+});
+
 test("a story goes from the site's job to its first media step: started from its plan, written, checked and heard a chapter a call, the script gate approved here, then tts", async () => {
   const world = storyWorld();
   const { automation, site, dir, workdir, state } = world;
@@ -530,7 +903,7 @@ test("a story goes from the site's job to its first media step: started from its
   const hook = writers[0].payload;
   assert.equal(hook.chapter.key, "hook");
   assert.equal(hook.chapter.point, POINTS.hook);
-  assert.deepEqual(hook.chapter.budget, { seconds: 30, chars: 125, shots: 3 });
+  assert.deepEqual(hook.chapter.budget, { seconds: 45, chars: 188, shots: 5 });
   assert.equal(hook.plan.chapters.length, 6, "every point, for context");
   assert.deepEqual(hook.facts.map((fact) => [fact.index, fact.attributed ?? false, fact.reviewer_only ?? false]), [[0, false, false], [1, false, false], [2, true, false], [3, false, true]]);
   assert.equal(hook.caveats, PLAN.caveats);
@@ -612,9 +985,10 @@ test("a story goes from the site's job to its first media step: started from its
   status = await pipelineStatus({ slug: SLUG, root: world.box.root, workdir });
   assert.equal(status.steps.some((step) => step.id === "look generated"), false);
 
-  // Eighteen model calls, one per step, each under the story's own variant (never counted as a draft).
-  assert.equal(site.calls.run.length, 18);
-  assert.deepEqual(site.calls.run.map((call) => `${call.stage}:${call.variant}`), [...Array(6).fill("writer:story"), ...Array(6).fill("verifier:story"), ...Array(6).fill("listener:story")]);
+  // Nineteen model calls, each under its own variant (never counted as a draft): six a chapter for
+  // the writer, the checker and the listener, then the storytelling panel on the merged story.
+  assert.equal(site.calls.run.length, 19);
+  assert.deepEqual(site.calls.run.map((call) => `${call.stage}:${call.variant}`), [...Array(6).fill("writer:story"), ...Array(6).fill("verifier:story"), ...Array(6).fill("listener:story"), "verifier:narrative"]);
   for (const call of site.calls.run) {
     assert.equal(call.format, "drama");
     assert.ok(call.max_output_tokens <= 32_000);
@@ -649,6 +1023,48 @@ test("past the script, a story takes the drama's own steps to the upload: Jev's 
   assert.equal(runs.some((run) => run.startsWith("look ")), false, "no cast, no character sheets");
   assert.equal(runs.some((run) => run.startsWith("music ")), false, "music is off on the settings tab");
   assert.equal(site.reviewsOf(SLUG).some((review) => review.gate === "script" || review.gate === "outline"), false, "neither the outline nor the script went to the owner");
+});
+
+test("a loop one chapter plants and a later one pays off survives into the merged script", async () => {
+  // A story is written a chapter a call, so the chapter that plants a hook cannot write its payoff
+  // and the chapter that pays it does not own the setup line. Both halves used to be thrown away —
+  // the planting chapter's for having no payoff, the paying chapter's for a setup that is not one
+  // of its own lines — so every cross-chapter loop vanished from video.json and lint then warned
+  // that the story had none (PR #1478 review, 2026-10-13). A loop inside one chapter is the weak
+  // kind; these are the ones the rules ask for.
+  let planted = null;
+  let open = null;
+  const world = storyWorld({
+    answers: standardAnswers({
+      "writer:story": (body) => {
+        const answer = chapterAnswer(body.payload.chapter.key, body.payload);
+        if (body.payload.chapter.key === "hook") {
+          planted = answer.scenes[0].lines[0].id;
+          return { ...answer, loops: [{ setup: planted, what: "那把傘為什麼等了三千年" }] };
+        }
+        if (body.payload.chapter.key === "now") {
+          // The writer learns what is still hanging from its payload, not from the test.
+          open = body.payload.loops_open;
+          const hanging = open[0];
+          const last = answer.scenes.at(-1).lines.at(-1).id;
+          return { ...answer, loops: [{ setup: hanging.setup, payoff: last, what: hanging.what }] };
+        }
+        return answer;
+      },
+    }),
+  });
+  const { automation, video } = world;
+  await steps(automation, 20);
+  const doc = video();
+  assert.ok(doc, "the script was merged");
+  assert.deepEqual(open, [{ setup: planted, what: "那把傘為什麼等了三千年", chapter: "hook" }], "the later chapter was told the hook was still hanging");
+  assert.equal(doc.loops.length, 1, "one loop, not two halves and not none");
+  const [loop] = doc.loops;
+  assert.equal(loop.setup, planted, "the setup is the line the hook planted");
+  assert.equal(loop.what, "那把傘為什麼等了三千年");
+  const order = new Map(doc.scenes.flatMap((scene) => scene.lines).map((line, index) => [line.id, index]));
+  assert.ok(order.get(loop.payoff) > order.get(loop.setup), "and the payoff is spoken after it");
+  assert.ok(order.get(loop.setup) < 5, "the setup is in the opening chapter");
 });
 
 test("a chapter the writer answers badly is asked for again once, then the video is blocked", async () => {

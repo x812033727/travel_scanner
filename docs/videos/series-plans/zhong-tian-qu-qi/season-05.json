@@ -1,0 +1,4367 @@
+{
+  "number": 5,
+  "title": "天下歸心",
+  "theme": "系統給你的是起點，天下給你的才是答案。",
+  "start_state": "國師挾幼帝投奔南楚；南楚女帝姬瑤隔江說出她知道系統；許硯握著半個天下，六位妻子在他身邊。",
+  "end_state": "許硯收服南楚、娶女帝姬瑤為第七位妻子；系統的來歷與「天下歸心」的真相揭開；國師的奪運系統崩潰，他被回現代的門帶走；許硯選擇關上門留下，登基稱帝，與七位妻子回到柳溪村的飯桌。最後一格，系統跳出新任務：「海外。」",
+  "guest_cast": [
+    {
+      "id": "s05-youdi",
+      "name": "蕭念（幼帝）",
+      "role": "大衡幼帝，阿令同父異母的三歲弟弟（即第四季的 s04-xiao-nian），被國師挾往南楚當作籌碼與運庫",
+      "appearance": "東亞幼兒男孩，三歲，圓臉、白嫩、大眼睛長睫毛、頭頂紮一個小髻繫明黃絲帶，穿明黃小襖，畫面上始終安穩無傷；被國師控制時瞳孔裡有一點暗紅，醒來後眼神清亮、笑起來很乖"
+    },
+    {
+      "id": "s05-huo-cang",
+      "name": "霍滄",
+      "role": "南楚大司馬，主戰派首領；剛硬好面子，但心疼自己挨餓的兵，被國師利用後倒戈",
+      "appearance": "東亞男性，三十八歲，英挺剛硬：濃眉壓眼、高鼻、下頜線分明、短鬚修整，膚色古銅，身材高大，穿銀黑魚鱗甲外披赭紅戰袍，手持一桿長戟，站姿像一根釘進甲板的樁"
+    },
+    {
+      "id": "s05-su-suo",
+      "name": "素梭",
+      "role": "姬瑤的貼身女官兼暗衛，替女帝傳話、開門、放人",
+      "appearance": "東亞年輕女性，二十四歲，清麗俐落：細長眉、丹鳳眼、薄唇，膚白，黑髮高束成髻插一根銀簪，穿黑色窄袖束腰長衣、腰佩一柄細劍，走路沒有聲音"
+    },
+    {
+      "id": "s05-wen-boyan",
+      "name": "溫伯言",
+      "role": "南楚老丞相，主和派，第一個在朝堂上對許硯點頭的人",
+      "appearance": "東亞老年男性，六十三歲，清瘦儒雅、白鬚垂胸、眼神溫和而精明，穿靛青楚式寬袖官袍、戴竹冠，手裡總握一卷竹簡"
+    },
+    {
+      "id": "s05-xuan-qi",
+      "name": "玄七",
+      "role": "國師黑衣門人的首領，替國師放火、傳令、偷冊子（即第三季的 s03-xuan-qi）",
+      "appearance": "東亞年輕男性，二十八歲，冷峻俊秀、劍眉、眼神淡漠、膚色蒼白，黑髮高束，穿黑底銀線星紋的窄袖勁裝與同紋外袍，身手輕得落地無聲"
+    },
+    {
+      "id": "s05-xinger",
+      "name": "杏兒",
+      "role": "唐小棠的貼身丫鬟，嘴快手巧；第五季被王二牛（跪錯方向地）求親，自己挑了他",
+      "appearance": "東亞年輕女性，十九歲，清秀可愛：圓臉、彎彎笑眼、小巧鼻頭、膚色白裡透粉，梳雙丫髻、鬢邊常插一朵小黃花，穿杏黃短襦配淺綠長裙，說話又快又脆"
+    },
+    {
+      "id": "s05-a-xi",
+      "name": "阿汐",
+      "role": "金陵江灘的漁家小女孩，災民之一，和許小禾分了一個饅頭成了朋友",
+      "appearance": "東亞小女孩，九歲，瘦小、曬得微黑、眼睛又大又亮，頭髮編成一條小辮綁藍布條，穿洗舊的靛藍粗布短衣長褲，笑起來露出兩顆小虎牙"
+    },
+    {
+      "id": "s05-mama",
+      "name": "許硯的媽媽",
+      "role": "現代世界裡許硯的母親；只在光門後的現代廚房燈光裡出現，多半只聞其聲",
+      "appearance": "東亞中年女性，五十二歲，溫和慈祥：齊耳短捲髮、眼角笑紋、戴細框眼鏡，穿米色針織衫繫一條格子圍裙，站在暖黃色的現代廚房燈下"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s05-t01",
+      "question": "姬瑤怎麼知道系統？",
+      "setup_episode": 241,
+      "payoff_episode": 263
+    },
+    {
+      "id": "s05-t02",
+      "question": "國師答應了南楚什麼？",
+      "setup_episode": 242,
+      "payoff_episode": 248
+    },
+    {
+      "id": "s05-t03",
+      "question": "幼帝在南楚過得好不好？",
+      "setup_episode": 243,
+      "payoff_episode": 247
+    },
+    {
+      "id": "s05-t04",
+      "question": "姬瑤為什麼放他走？",
+      "setup_episode": 251,
+      "payoff_episode": 260
+    },
+    {
+      "id": "s05-t05",
+      "question": "南楚主戰派背後是不是國師？",
+      "setup_episode": 253,
+      "payoff_episode": 257
+    },
+    {
+      "id": "s05-t06",
+      "question": "輪槳船能不能逆流？",
+      "setup_episode": 254,
+      "payoff_episode": 259
+    },
+    {
+      "id": "s05-t07",
+      "question": "皇后冊子被撕掉的頁在誰手上、為什麼撕？",
+      "setup_episode": 262,
+      "payoff_episode": 269
+    },
+    {
+      "id": "s05-t08",
+      "question": "皇后是怎麼死的？",
+      "setup_episode": 264,
+      "payoff_episode": 267
+    },
+    {
+      "id": "s05-t09",
+      "question": "皇后說「國師是我帶來的」是什麼意思？",
+      "setup_episode": 270,
+      "payoff_episode": 276
+    },
+    {
+      "id": "s05-t10",
+      "question": "奪運系統的弱點是什麼？",
+      "setup_episode": 272,
+      "payoff_episode": 279
+    },
+    {
+      "id": "s05-t11",
+      "question": "阿令還能醒來嗎？",
+      "setup_episode": 280,
+      "payoff_episode": 293
+    },
+    {
+      "id": "s05-t12",
+      "question": "許硯會不會後悔沒回去？系統的最後一個獎勵是什麼？",
+      "setup_episode": 292,
+      "payoff_episode": 299
+    }
+  ],
+  "episodes": [
+    {
+      "number": 241,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "隔江一笑",
+      "youtube_title": "南楚女帝隔江一句話，青州王腦中系統當場報警：她竟然知道他最大的祕密",
+      "duration_s": 95,
+      "logline": "許硯想弄清楚南楚女帝姬瑤為什麼知道系統，可她只准他帶兩個人渡江，國師還在對岸等著他。",
+      "hook": "江霧裡樓船頂上，姬瑤朱唇一勾；許硯眼前的藍框第一次跳出紅字：「警告：知情者。」",
+      "hook_type": "image",
+      "mid_hook": "一支箭釘上帥帳桌面，箭書只有一行：只許帶兩人。封泥上壓的，竟是系統面板上那顆藍色愛心。",
+      "conflict": "渡江出使還是發兵過江：秦霜要打，阿蘭朵要騎兵繞道，許硯要先弄清楚對方知道多少；六位妻子還在吵誰跟他去。",
+      "turn": "愛心印讓所有人以為姬瑤也有系統；許硯湊近一看，印是手刻的，刻歪了一角——她只是「見過」，不是擁有。系統跟著彈出強制任務：七日內姬瑤好感達 20，失敗抹去一段記憶。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小船行到江心，大霧裡一座樓船的船頭壓到頭頂，一排弩手同時探身：「北邊的王，」「跪著上船。」",
+        "question": "跪還是不跪？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "長江北岸許家軍營帳連綿到天邊，對岸霧中浮出一整排南楚樓船的剪影。",
+      "glamour_shot": "秦霜高馬尾、黑紅輕甲，在江風裡回身挑槍，挑落南楚箭使的帽纓，披風被風整片吹開。",
+      "setups": [
+        "s05-t01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜當眾挑落嘲笑「北人不會划船」的南楚箭使帽纓",
+        "決定只帶阿令（為了弟弟）與唐小棠（懂南楚米市）渡江",
+        "接下強制任務：七日內姬瑤好感 20"
+      ],
+      "characters": [
+        "xu-yan",
+        "ji-yao",
+        "qin-shuang",
+        "a-ling",
+        "tang-xiaotang",
+        "a-landuo",
+        "xitong"
+      ],
+      "locations": [
+        "長江北岸許家軍大營",
+        "長江江心"
+      ],
+      "state": {
+        "time": "第五季第一天黃昏，渡江途中",
+        "knowledge": "姬瑤見過系統的圖樣但沒有系統；七日任務開始倒數",
+        "carry_forward": "樓船上的弩手與那句「跪著上船」"
+      }
+    },
+    {
+      "number": 242,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "站著上船",
+      "youtube_title": "南楚大船逼他下跪，他只掀開一袋米，滿船弩手全放下了弓",
+      "duration_s": 90,
+      "logline": "許硯要在南楚的地盤上不跪、不失禮地走進金陵，卻在碼頭撞見國師成了南楚的上賓。",
+      "hook": "弩箭對著小船，許硯一刀劃開麻袋，白米嘩地倒在燈下：「我是來送米的。」",
+      "hook_type": "line",
+      "mid_hook": "金陵碼頭上，國師墨塵搖著拂塵迎上來：「許兄，好久不見。」暗紅光框掃過阿令，許硯看見她的好感度條被別人「讀」了一遍。",
+      "conflict": "不下跪又不能翻臉：小船三個人，對面一整船弩手。",
+      "turn": "弩手看見米先嚥口水——南楚在鬧饑荒，校尉自己放下了梯子；許硯以為國師是逃犯，結果南楚百官見了國師都行禮，他在這裡是上賓，還對一個官員低聲說：答應你們的，我記得。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "金陵宮的珠簾捲起，姬瑤斜倚鳳座，開口第一句：「許硯，農學碩士。」",
+        "question": "她怎麼知道他上輩子的學歷？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "goxue",
+        "xiju"
+      ],
+      "spectacle": "霧中金陵的水巷，小船穿過一座座石拱橋，兩岸吊腳樓的燈一盞盞亮起。",
+      "glamour_shot": "姬瑤墨綠金色深衣斜倚鳳座，珠簾後半張臉被燭光照亮，眼尾那抹紅一挑。",
+      "setups": [
+        "s05-t02"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "不跪而入金陵，樓船校尉親手放梯",
+        "唐小棠一眼看出碼頭糧倉是空的",
+        "撞見國師與南楚官員的私下約定"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "tang-xiaotang",
+        "mo-chen",
+        "ji-yao",
+        "s05-su-suo",
+        "xitong"
+      ],
+      "locations": [
+        "南楚樓船",
+        "金陵碼頭",
+        "金陵宮"
+      ],
+      "state": {
+        "time": "第一天夜裡",
+        "knowledge": "國師在南楚是上賓、答應了南楚某件事；姬瑤知道他穿越前的身分",
+        "carry_forward": "姬瑤的試探"
+      }
+    },
+    {
+      "number": 243,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "一行藍字",
+      "youtube_title": "女帝一開口就說出他的系統，連國師的臉都白了：她到底是誰的人",
+      "duration_s": 105,
+      "logline": "許硯要過姬瑤的試探又不能說謊，阿令要用長公主的身分逼南楚讓她見弟弟。",
+      "hook": "姬瑤身子微傾：「你眼前，有藍字吧？」話音剛落，許硯眼前真的跳出一行藍字。",
+      "hook_type": "question",
+      "mid_hook": "姬瑤一口氣說出「好感度、獎勵箱、強制任務」，滿朝南楚官員聽得一頭霧水——國師的拂塵卻停在半空，他的臉比許硯還白。",
+      "conflict": "承認就落人把柄，否認就被系統判說謊；阿令還得在南楚禮官的冷眼裡爭到見弟弟的權利。",
+      "turn": "觀眾以為姬瑤的情報是國師給的，國師的反應卻說明他也不知道她知道；許硯不答反問一句「那妳眼前有嗎」，姬瑤第一次收起了笑。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "偏殿門開，幼帝蕭念坐在國師膝上，瞳孔裡一點暗紅，抬頭看著阿令：「姊姊，妳是誰？」",
+        "question": "幼帝怎麼會不認得親姊姊？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "goxue",
+        "xiju"
+      ],
+      "spectacle": "南楚朝堂上百官兩列，同時回頭看向北來的三個人。",
+      "glamour_shot": "阿令月白宮裝在南楚殿上抬頭，白玉步搖一晃，眼神冷得像霜，亮出長公主玉牌。",
+      "setups": [
+        "s05-t03"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令以大衡長公主身分壓住叫她「罪奴」的南楚禮官，爭到見幼帝的權利",
+        "確認姬瑤的情報不是國師給的"
+      ],
+      "characters": [
+        "xu-yan",
+        "ji-yao",
+        "a-ling",
+        "tang-xiaotang",
+        "mo-chen",
+        "s05-youdi",
+        "xitong"
+      ],
+      "locations": [
+        "金陵宮朝堂",
+        "金陵宮偏殿"
+      ],
+      "state": {
+        "time": "第二天上午",
+        "knowledge": "姬瑤另有情報來源；幼帝不認得阿令",
+        "carry_forward": "幼帝瞳孔裡的暗紅"
+      }
+    },
+    {
+      "number": 244,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "四十天的米",
+      "youtube_title": "長公主要當場搶回弟弟，他一把按住她的刀：真正的局在米市",
+      "duration_s": 95,
+      "logline": "阿令要當場奪回弟弟，許硯要她等；唐小棠在米市發現南楚的饑荒是有人養出來的。",
+      "hook": "阿令袖中匕首滑出半寸，許硯先一步握住她手腕：「現在不行。」",
+      "hook_type": "danger",
+      "mid_hook": "唐小棠在金陵米市撥完算盤，臉一下子白了：南楚的糧，只夠吃四十天。",
+      "conflict": "搶人就中國師的埋伏；不搶，阿令眼看弟弟被吞運。",
+      "turn": "國師笑著放他們走，像是示威；唐小棠卻發現全城囤糧的米行，是國師門人化名開的——饑荒有人在養。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半夜客館院門被撞開，火把照亮一排長戟，南楚大司馬霍滄一腳踏進來：「北人奸細，拿下！」",
+        "question": "霍滄是誰派來的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "quanmou",
+        "shuang"
+      ],
+      "spectacle": "金陵米市一整條街的空米缸，只有街尾一間鋪子的米堆到房梁。",
+      "glamour_shot": "唐小棠桃粉襦裙在米市撥金算盤，算完抬眼一笑，梨渦深深。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "國師埋在偏殿門後的弩手白等一場",
+        "阿令好感 +5（他攔下她，低聲說「我會帶他回家」）",
+        "唐小棠三句話把哄抬米價的掌櫃算到當眾改價",
+        "查到南楚糧只剩四十天、囤糧的是國師的人"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "tang-xiaotang",
+        "mo-chen",
+        "s05-youdi",
+        "s05-huo-cang",
+        "xitong"
+      ],
+      "locations": [
+        "金陵宮偏殿",
+        "金陵米市",
+        "北使客館"
+      ],
+      "state": {
+        "time": "第二天深夜",
+        "knowledge": "南楚的饑荒是國師養的",
+        "carry_forward": "霍滄的長戟"
+      }
+    },
+    {
+      "number": 245,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "朝堂賭約",
+      "youtube_title": "大司馬帶兵夜闖要抓人，他端出一鍋炒飯，女帝的人反倒送來一場豪賭",
+      "duration_s": 90,
+      "logline": "霍滄指控許硯是奸細，許硯要不動手脫身，姬瑤卻趁機丟下一場朝堂賭約。",
+      "hook": "長戟抵到許硯鼻尖，他端著一鍋剛起鍋的蛋炒飯：「大司馬，先吃？」",
+      "hook_type": "line",
+      "mid_hook": "女官素梭踏進院子，一句「陛下有旨」壓下長戟，遞上一卷琴譜，裡面夾著一行字：明日朝堂辯一場，輸了，留下一個人。",
+      "conflict": "霍滄拿唐小棠畫的糧價圖當奸細證據，副將拔刀要拿人。",
+      "turn": "觀眾以為霍滄是國師的狗，他看糧價圖時眼眶卻紅了——他的兵也在挨餓；以為素梭是來解圍，其實女帝是來下注的。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "系統彈出：接受賭約？阿令與唐小棠同時往前一步：「留我。」許硯抬起手——",
+        "question": "他要拿誰去賭？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "goxue",
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "夜裡客館院中，火把與長戟圍成一圈，正中間一口冒著熱氣的鐵鍋。",
+      "glamour_shot": "素梭一身黑衣束腰持劍，從月洞門逆光走進來，髮帶被夜風揚起。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令一招卸下霍滄副將的刀",
+        "看出霍滄的兵也在挨餓，日後可以說動",
+        "拿到明日朝堂辯論的機會"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "tang-xiaotang",
+        "s05-huo-cang",
+        "s05-su-suo",
+        "xitong"
+      ],
+      "locations": [
+        "北使客館"
+      ],
+      "state": {
+        "time": "第三天凌晨",
+        "knowledge": "姬瑤要在朝堂上試他；輸了要留人",
+        "carry_forward": "賭注"
+      }
+    },
+    {
+      "number": 246,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "舌戰南楚",
+      "youtube_title": "南楚百官笑他北人只會種麥，他一卷圖鋪滿大殿，工部大官當場跪了",
+      "duration_s": 110,
+      "logline": "許硯把自己押上賭桌，要在南楚朝堂上用江南稻作與治水說服滿朝，唐小棠負責算帳。",
+      "hook": "金陵朝堂，許硯開口第一句：「賭注是我自己。」百官譁然。",
+      "hook_type": "line",
+      "mid_hook": "工部侍郎捧出治水帳冊，說水災是天譴；唐小棠的算盤響了三聲：「這帳不對。」",
+      "conflict": "南楚百官要證明北人不懂江南、不配談治水；許硯要用圩田與稻田養魚讓滿朝閉嘴。",
+      "turn": "大家以為在吵農事，唐小棠當場算出工部修堤的銀子少了七成——堤是爛的，水災是人禍；工部侍郎腿一軟跪下，老丞相溫伯言第一個對許硯點頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "姬瑤正要宣布輸贏，殿外傳令兵撲進來：「北岸發兵了！」滿朝目光刷地轉向許硯。",
+        "question": "秦霜真的過江打過來了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "shuang",
+        "zhongtian",
+        "xiju"
+      ],
+      "spectacle": "許硯在南楚大殿中央鋪開一張畫滿圩田的長卷，從殿首一路鋪到殿尾。",
+      "glamour_shot": "許硯玄青繡金禾穗王袍在殿中轉身，燭光打在側臉，嘴角一點不正經的笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "贏下朝堂辯論",
+        "揭穿工部侍郎貪堤銀",
+        "老丞相溫伯言開始站在主和這邊"
+      ],
+      "characters": [
+        "xu-yan",
+        "tang-xiaotang",
+        "a-ling",
+        "ji-yao",
+        "s05-wen-boyan",
+        "mo-chen"
+      ],
+      "locations": [
+        "金陵宮朝堂"
+      ],
+      "state": {
+        "time": "第三天午時",
+        "knowledge": "南楚水災是貪堤人禍；有人謊報北岸發兵",
+        "carry_forward": "北岸軍報"
+      }
+    },
+    {
+      "number": 247,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "幼帝的琴",
+      "youtube_title": "南楚謊報他的大軍過江，他看一眼國師就笑了：北岸的狼煙是假的",
+      "duration_s": 105,
+      "logline": "許硯要拆穿假軍報，再趁夜去看幼帝究竟過得好不好。",
+      "hook": "傳令兵話音剛落，許硯先看國師——國師在笑。許硯也笑了：「北岸沒發兵。」",
+      "hook_type": "reversal",
+      "mid_hook": "北岸烽台，秦霜一槍挑下一面假旗，旗下趴著兩個國師門人正在點狼煙；她把煙改成三長兩短：「告訴王爺，假的。」",
+      "conflict": "拆穿假軍報保住談判；夜裡帶阿令潛進金陵宮看幼帝。",
+      "turn": "大家以為幼帝被關被餓，結果他住得好、吃得飽，姬瑤每天親自教他彈琴；真正在吃他的，是國師每晚按在他頭頂的那隻手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "窗紙上映出國師的影子，暗紅光框罩進來，阿令的好感度條往下掉了一格；門外國師輕聲：「長公主，怎麼不打招呼？」",
+        "question": "他們出得了這間琴房嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "ganren",
+        "goxue"
+      ],
+      "spectacle": "深夜的琴房，一大一小兩個人影在月光下撥同一張琴；窗外一道暗紅光慢慢爬上窗紙。",
+      "glamour_shot": "秦霜黑紅輕甲在北岸狼煙前回身，高馬尾甩過肩頭，槍尖還挑著那面假旗。",
+      "setups": [],
+      "payoffs": [
+        "s05-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜在北岸抓到點假狼煙的國師門人",
+        "知道幼帝被姬瑤善待、被國師吞運"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "s05-youdi",
+        "ji-yao",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "長江北岸烽台",
+        "金陵宮琴房"
+      ],
+      "state": {
+        "time": "第三天深夜",
+        "knowledge": "幼帝是國師的運庫；國師能吞阿令的好感",
+        "carry_forward": "門外的國師"
+      }
+    },
+    {
+      "number": 248,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "一本雨量冊",
+      "youtube_title": "國師答應女帝三個月止雨，他翻出一本雨冊：雨就是跟著國師下的",
+      "duration_s": 110,
+      "logline": "許硯要讓姬瑤看清國師給南楚的承諾是騙局，好讓北岸的糧船能靠岸。",
+      "hook": "門被推開的一瞬，後窗也開了，素梭探進半張臉：「走水路。」",
+      "hook_type": "danger",
+      "mid_hook": "姬瑤終於說出國師的條件：他答應她，三個月內讓南楚的雨停下來。",
+      "conflict": "許硯要送糧救災，國師在朝上說北米有毒；姬瑤手上有國師的承諾，不肯輕易翻臉。",
+      "turn": "大家以為國師是來避難的，其實他拿「止雨」換了南楚的庇護；許硯和唐小棠翻遍欽天監的雨冊——國師走到哪裡，雨就下到哪裡，他吃的就是南楚的運。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "北岸信鴿落上窗台，秦霜的字：糧船已發。底下一行歪歪扭扭的小字：「小禾也在船上。」",
+        "question": "小禾怎麼混上糧船的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "goxue",
+        "zhongtian",
+        "xiju"
+      ],
+      "spectacle": "欽天監頂樓一整面牆的雨量冊攤開，一條紅線跟著國師的行蹤畫過南楚地圖。",
+      "glamour_shot": "姬瑤倚窗聽他說話，手指停在琴弦上，燭光在她狐狸眼裡一跳。",
+      "setups": [],
+      "payoffs": [
+        "s05-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "素梭帶他們從水路脫身",
+        "揭開國師拿止雨換庇護的騙局",
+        "姬瑤好感 0→8（他沒開條件，先拆穿騙她的人）",
+        "阿蘭朵的馬隊一天一夜把青州的米運到北岸渡口"
+      ],
+      "characters": [
+        "xu-yan",
+        "ji-yao",
+        "tang-xiaotang",
+        "a-ling",
+        "mo-chen",
+        "s05-su-suo",
+        "a-landuo",
+        "xitong"
+      ],
+      "locations": [
+        "金陵水巷",
+        "欽天監觀雨樓",
+        "長江北岸渡口"
+      ],
+      "state": {
+        "time": "第四天",
+        "knowledge": "國師的承諾是騙局；糧船出發，小禾偷偷在船上",
+        "carry_forward": "糧船與小禾"
+      }
+    },
+    {
+      "number": 249,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "岸邊跪下的人",
+      "youtube_title": "封江鐵索攔住救命糧船，山寨女王一斧斬斷，整片江灘的百姓跪了",
+      "duration_s": 115,
+      "logline": "唐家糧船要穿過霍滄的封鎖靠岸，岸邊的災民已經三天沒吃東西。",
+      "hook": "江面上唐家糧船朝封鎖線衝來，船頭一個缺門牙的小女孩揮著草兔子：「哥——」",
+      "hook_type": "image",
+      "mid_hook": "糧船靠岸，災民湧上來，系統跳出一條誰都沒見過的新進度條：民心・南楚，3%——它不屬於任何一位妻子。",
+      "conflict": "霍滄的戰船橫江扣船，攔江鐵索擋在糧船前面，岸上的人等不了。",
+      "turn": "霍滄本要下令扣船，看見岸上跪著的是自己兵的爹娘，親手收了令旗；觀眾以為姬瑤會趁機搶糧，她卻下令開城門讓災民進來領米。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "人群裡幼帝溜出來，接過小禾的饅頭，眼裡的紅光淡了一點，望著阿令：「姊姊？」——一隻黑袖子按上他的肩。",
+        "question": "他終於認出姊姊了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "goxue",
+        "tianchong",
+        "zhongtian"
+      ],
+      "spectacle": "一艘糧船靠岸，整片江灘的百姓一排排跪下，米袋從船上一路傳到城門。",
+      "glamour_shot": "柳三娘站在船頭甩辮大笑，雙彎刀反手收鞘，額前黑鳳布巾被江風吹起。",
+      "setups": [
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "柳三娘帶山民斬斷攔江鐵索",
+        "葉知秋在江灘搭棚，先給餓久的人喝稀粥，救下一灘人",
+        "南楚災民吃上第一碗飯",
+        "姬瑤好感 8→14（他把米先給了百姓）",
+        "小禾與漁家女孩阿汐分了一個饅頭"
+      ],
+      "characters": [
+        "xu-yan",
+        "xu-xiaohe",
+        "tang-wanjin",
+        "liu-sanniang",
+        "ye-zhiqiu",
+        "s05-huo-cang",
+        "ji-yao",
+        "s05-youdi",
+        "a-ling",
+        "mo-chen",
+        "s05-a-xi",
+        "xitong"
+      ],
+      "locations": [
+        "金陵江灘"
+      ],
+      "state": {
+        "time": "第五天",
+        "knowledge": "南楚的民心可以爭；幼帝心裡還記得阿令",
+        "carry_forward": "國師按在幼帝肩上的手"
+      }
+    },
+    {
+      "number": 250,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "一杯酒",
+      "youtube_title": "國師當眾說他靠娶妻吞運，三個老婆一句話翻盤，女帝卻推來一杯婚酒",
+      "duration_s": 140,
+      "logline": "七日任務只剩最後一個時辰，國師在夜宴上當眾抹黑許硯的妻子們，姬瑤要他說一句真話。",
+      "hook": "黑袖子按住幼帝，阿令的匕首已經頂上國師手腕：「放開他。」",
+      "hook_type": "danger",
+      "mid_hook": "夜宴上七日期限只剩一個時辰，姬瑤的好感停在 18，系統倒數跳到 00:59。",
+      "conflict": "國師說許硯的系統「靠娶妻吞運」、他的妻子全是工具，南楚貴族紛紛避席；許硯要在倒數結束前讓姬瑤動心，又不能說謊討好。",
+      "turn": "國師以為一句話能讓南楚人唾棄許硯，唐小棠拍桌說出自己是逃婚、自己選的他；許硯被要求說一句真話，他說的不是情話，是「我想回家種田」——姬瑤反而笑了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "姬瑤把一杯酒推到他面前：「嫁給我，南楚歸你。」頓了頓：「不嫁，你出不了金陵。」",
+        "question": "這杯酒，他喝還是不喝？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "tianchong",
+        "goxue",
+        "shuang"
+      ],
+      "spectacle": "金陵宮夜宴，百盞水燈漂在殿前池上，姬瑤在燈海中央撫琴。",
+      "glamour_shot": "姬瑤墨綠金色深衣、金絲鳳冠，推酒杯時抬眼一笑，燭光落在她眼尾那抹紅上。",
+      "setups": [],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令逼國師鬆手，幼帝被素梭抱回姬瑤身邊",
+        "唐小棠當眾翻盤：唐家的錢替先皇后守了二十年，她嫁誰自己選",
+        "強制任務完成：姬瑤好感 20（他說了真話）",
+        "獎勵：圩田水利圖（工匠與石料要自己找）"
+      ],
+      "characters": [
+        "xu-yan",
+        "ji-yao",
+        "a-ling",
+        "tang-xiaotang",
+        "mo-chen",
+        "s05-youdi",
+        "s05-su-suo",
+        "xitong"
+      ],
+      "locations": [
+        "金陵宮夜宴"
+      ],
+      "state": {
+        "time": "第七天夜",
+        "knowledge": "姬瑤要拿南楚換一場婚事",
+        "carry_forward": "那杯酒"
+      }
+    },
+    {
+      "number": 251,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "我不喝這杯",
+      "youtube_title": "女帝拿一國當嫁妝逼婚，他把酒推回去：我的妻子不是籌碼",
+      "duration_s": 100,
+      "logline": "許硯拒絕拿婚事換南楚，被軟禁在江心水榭，國師趁機要把兩國推進戰爭。",
+      "hook": "許硯把酒杯推回去：「我不喝。」滿殿的水燈同時晃了一下。",
+      "hook_type": "line",
+      "mid_hook": "軟禁的水榭裡，國師搖著拂塵進來，笑著問了一句：「北方人，會游泳嗎？」",
+      "conflict": "拒婚的代價是被關在四面是水的江心水榭；北岸不知道他出事，國師已經在動。",
+      "turn": "觀眾以為拒婚會讓姬瑤翻臉，她只笑著說了句「關起來」；真正要動手的是國師——他要逼南楚開戰，好在亂裡吞運。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "唐小棠掀開水榭地板，底下一條暗渠，渠裡竟泊著一艘小船，船頭掛著南楚皇家的鳳紋燈。",
+        "question": "是誰替他們備好了逃船？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "江心水榭被四面燈船圍住，像一朵浮在黑水上的燈花。",
+      "glamour_shot": "阿令月白衣裙倚在水榭欄邊，夜風吹動髮絲，聽見他那句話時唇角極輕地一動。",
+      "setups": [
+        "s05-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令、唐小棠好感各 +5（他當眾說「她們不是籌碼」）",
+        "唐小棠用唐家商號暗號從水榭傳出消息"
+      ],
+      "characters": [
+        "xu-yan",
+        "ji-yao",
+        "a-ling",
+        "tang-xiaotang",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "金陵宮夜宴",
+        "江心水榭"
+      ],
+      "state": {
+        "time": "第八天夜",
+        "knowledge": "國師要逼南楚開戰；有人暗中備了逃船",
+        "carry_forward": "水榭下的小船"
+      }
+    },
+    {
+      "number": 252,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "女裝出城",
+      "youtube_title": "青州王扮成漁婦逃出金陵，守門老頭一看長公主的玉環當場跪下",
+      "duration_s": 90,
+      "logline": "阿令和唐小棠要在三更天把許硯帶出金陵，水門有守軍，暗渠有國師的黑船。",
+      "hook": "暗渠鐵柵前，阿令拔下髮簪，三下挑開鐵鎖：「上船。」",
+      "hook_type": "line",
+      "mid_hook": "水門口，阿令遞出父皇留給她的半枚玉環，守門老吏翻過來一看，撲通跪下：「等您十年了。」",
+      "conflict": "三更出城：許硯被迫穿上漁婦衣裙蒙頭划船，後面國師門人的黑船越追越近。",
+      "turn": "觀眾以為老吏要喊人，結果他是先帝十年前就安插在南楚、專等長公主的人；黑船追到水門，城樓上的姬瑤抬手——弓手全放下了弓（觀眾看見，許硯沒看見）。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "天亮靠上北岸，秦霜還來不及開口，江上鼓聲炸響，一百艘南楚樓船同時升帆。",
+        "question": "南楚真的要開戰了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "quanmou",
+        "shachang"
+      ],
+      "spectacle": "晨霧裡一百艘樓船同時升起赭紅帆，鼓聲震得整片江面起波。",
+      "glamour_shot": "唐小棠鵝黃襦裙站在船尾笑彎了腰，看許硯穿漁婦裙划船，雙環髻上的粉絲帶在晨風裡飛。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三人逃回北岸",
+        "找到先帝替女兒埋在南楚的暗樁"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "tang-xiaotang",
+        "ji-yao",
+        "qin-shuang",
+        "mo-chen"
+      ],
+      "locations": [
+        "金陵暗渠",
+        "金陵水門",
+        "長江北岸"
+      ],
+      "state": {
+        "time": "第九天清晨",
+        "knowledge": "姬瑤放了他們；國師推動南楚出兵",
+        "carry_forward": "一百艘樓船"
+      }
+    },
+    {
+      "number": 253,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "輪槳船圖紙",
+      "youtube_title": "北方兵一上船就吐，女寨主拍桌要砍光整座山，系統卻掉下一張神圖",
+      "duration_s": 110,
+      "logline": "北方兵不會水戰，霍滄的樓船七天就能壓到北岸，許硯手上只有幾十條漁船。",
+      "hook": "鼓聲裡阿蘭朵看著滿江帆影，臉一白，扶著船舷吐了：「這江會動！」",
+      "hook_type": "image",
+      "mid_hook": "獎勵箱彈開，金光裡是一張輪槳船圖紙——底下一行小字：工匠三百，工期九天。霍滄只要七天。",
+      "conflict": "要船沒船、要水手沒水手：柳三娘拍桌說要把黑鳳山的樹全砍了造船。",
+      "turn": "許硯搖頭說「只砍老樹」，柳三娘愣住，好感度一跳撞開獎勵箱；可大家以為有了船就能贏，打開才知道只是一張紙；俘虜的南楚斥候腰上又搜出一塊黑玉牌——開戰令，可能不是姬瑤下的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "秦霜把長槍插進沙灘：「給我兩天，我去灘頭擋。」許硯看著只有三百人的名冊。",
+        "question": "他要讓秦霜去擋這兩天嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "quanmou",
+        "xiju",
+        "zhongtian"
+      ],
+      "spectacle": "系統獎勵箱在許硯眼前炸開金色光點，一張發光的輪槳船圖在空中轉動。",
+      "glamour_shot": "柳三娘暗紅皮甲、額前黑鳳布巾，一腳踩上長凳拍桌大笑。",
+      "setups": [
+        "s05-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "柳三娘好感跨過 80（他寧可少造船也不砍光她的山）",
+        "拿到輪槳船圖紙（木料、匠人、桐油全要自己找）",
+        "從斥候身上搜出國師的黑玉牌"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "a-landuo",
+        "qin-shuang",
+        "tang-xiaotang",
+        "wang-erniu",
+        "xitong"
+      ],
+      "locations": [
+        "長江北岸許家軍大營"
+      ],
+      "state": {
+        "time": "第九天",
+        "knowledge": "只有圖紙沒有船，九天對七天",
+        "carry_forward": "秦霜的請命"
+      }
+    },
+    {
+      "number": 254,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "它倒著走",
+      "youtube_title": "三百工匠拚了五天造出神船，一踩踏板全場傻眼：船往後退",
+      "duration_s": 85,
+      "logline": "九天的船要七天造出來：山民和兵吵架、木料不夠、桐油被南楚商人封鎖。",
+      "hook": "許硯握住秦霜的槍桿：「兩天，一刻都不多。」她咧嘴一笑，轉身就走。",
+      "hook_type": "line",
+      "mid_hook": "第一艘輪槳船試水，二十個兵一起踩下踏板——船往後退了。全場安靜，王二牛小聲說：「王爺，它倒著走。」",
+      "conflict": "趕工：山民要用山裡的榫法，兵要用軍營的釘法，吵到要打架；桐油還被斷貨。",
+      "turn": "大家以為圖紙錯了，許硯一看是齒輪裝反；修好後第二次試水真的逆流衝出去；唐小棠早就一口氣包下三個縣的桐油，商人的封鎖成了笑話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "歡呼聲還沒停，斥候滾下馬：「霍滄前鋒，提前兩天到了！」——秦霜的人才剛上灘頭。",
+        "question": "秦霜那兩天還守得住嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "zhongtian",
+        "shachang"
+      ],
+      "spectacle": "江灘上幾百個工匠連夜開工，火把照著一排排船骨架延到天邊。",
+      "glamour_shot": "王二牛扛著大斧回頭對杏兒憨笑；杏兒捂嘴偷笑，鬢邊一朵小黃花。",
+      "setups": [
+        "s05-t06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "第一艘輪槳船試水成功",
+        "唐小棠包下三縣桐油，打破封鎖",
+        "王二牛想在杏兒面前一個人踩船，出了糗也出了名"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "tang-xiaotang",
+        "wang-erniu",
+        "s05-xinger"
+      ],
+      "locations": [
+        "北岸造船灘"
+      ],
+      "state": {
+        "time": "開戰前第五天",
+        "knowledge": "輪槳船能動了，但只有一艘",
+        "carry_forward": "霍滄的前鋒"
+      }
+    },
+    {
+      "number": 255,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "灘頭兩日",
+      "youtube_title": "三百人擋一百艘戰船，女將軍只聽他一句話退到第三根木樁，敵船全擱淺",
+      "duration_s": 95,
+      "logline": "秦霜帶三百人在灘頭擋霍滄的前鋒兩天，給造船灘爭時間。",
+      "hook": "灘頭晨霧散開，秦霜眼前密密麻麻全是船頭；她把紅纓槍一橫：「誰先上來？」",
+      "hook_type": "danger",
+      "mid_hook": "許硯飛馬送來一句話：「退到第三根木樁。」秦霜不懂——直到潮水退下去，南楚的大船一艘艘卡在剛露出的沙洲上。",
+      "conflict": "三百人對一整支前鋒：硬守必敗，退了造船灘就沒了。",
+      "turn": "大家以為秦霜要死守，結果她夜裡點滿假營火，阿蘭朵的騎兵沿岸搖銀鈴裝成千軍萬馬，霍滄不敢夜登；第二天許硯算準退潮，樓船全擱淺。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第二天黃昏，霍滄親自帶小船從沙洲後面繞上灘，秦霜的槍桿「喀」一聲斷了，四面長戟圍上來。",
+        "question": "斷了槍的秦霜要怎麼脫身？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "quanmou",
+        "tianchong"
+      ],
+      "spectacle": "退潮後江心露出的沙洲上，十幾艘巨大樓船歪斜擱淺，夕陽拉長它們的影子。",
+      "glamour_shot": "阿蘭朵紅白騎裝策馬沿江飛奔，滿頭彩繩小辮與銀鈴一起甩起來。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蘭朵的銀鈴疑兵嚇住霍滄一夜",
+        "擋住霍滄前鋒兩天",
+        "秦霜好感 +5（他算準潮水，沒讓她白白拚命）"
+      ],
+      "characters": [
+        "qin-shuang",
+        "xu-yan",
+        "a-landuo",
+        "s05-huo-cang"
+      ],
+      "locations": [
+        "北岸灘頭",
+        "江心沙洲"
+      ],
+      "state": {
+        "time": "開戰第二天黃昏",
+        "knowledge": "霍滄親自登灘",
+        "carry_forward": "秦霜斷槍被圍"
+      }
+    },
+    {
+      "number": 256,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "三娘夜救",
+      "youtube_title": "女將軍被長戟圍死，蘆葦裡飛出一把彎刀：山寨女王來還二十年前的債",
+      "duration_s": 90,
+      "logline": "柳三娘要把斷槍的秦霜從霍滄的包圍裡帶回來，系統卻在這時壓下一個殘酷任務。",
+      "hook": "長戟壓下來的一瞬，一把彎刀從背後飛來撞開戟頭，柳三娘從蘆葦裡跳出來：「霜妹子，借道！」",
+      "hook_type": "line",
+      "mid_hook": "回到營裡，系統彈出強制任務：三日內輪槳船逆流十里，失敗——封存農學知識一年。",
+      "conflict": "救人、退兵、還要在三天內讓整支船隊學會逆流。",
+      "turn": "觀眾以為兩個女將要互相不服到底，柳三娘一句「我爹欠你爹一命」讓秦霜紅了眼——她爹當年是秦家軍的斥候；同時唐小棠在繳獲的軍需裡翻出一本霍滄的軍餉帳。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "唐小棠的算盤珠停在最後一格，她抬頭：「這筆軍餉，是國師出的。」",
+        "question": "南楚這一仗，是國師花錢買的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "夜色蘆葦盪裡，柳三娘雙刀反光，一排火把在水面上追著她們的小船。",
+      "glamour_shot": "葉知秋淡青長衫在燈下替脫力的秦霜下針，低頭時髮絲垂到臉側，唇邊一顆小痣。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "柳三娘救回秦霜，兩人和好",
+        "葉知秋三根銀針讓脫力的秦霜站起來",
+        "接下強制任務：三日內逆流十里"
+      ],
+      "characters": [
+        "liu-sanniang",
+        "qin-shuang",
+        "ye-zhiqiu",
+        "tang-xiaotang",
+        "xu-yan",
+        "s05-huo-cang",
+        "xitong"
+      ],
+      "locations": [
+        "江邊蘆葦盪",
+        "北岸大營"
+      ],
+      "state": {
+        "time": "開戰第二夜",
+        "knowledge": "霍滄的軍餉是國師出的",
+        "carry_forward": "那本軍餉帳"
+      }
+    },
+    {
+      "number": 257,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "一封箭書",
+      "youtube_title": "他把敵軍的帳本射回敵營，大司馬當眾拆開，副將的袖口露了餡",
+      "duration_s": 100,
+      "logline": "許硯不打先分：他要讓霍滄自己看見，他打的是國師的仗。",
+      "hook": "帳冊攤在桌上，許硯提起筆：「這帳，寄給霍滄。」滿帳的人都愣了。",
+      "hook_type": "line",
+      "mid_hook": "箭書射進霍滄帥船，他當著眾將拆開——國師的黑玉印清清楚楚蓋在開戰令上；站在他身邊的副將腿一軟，袖口露出同一塊黑玉。",
+      "conflict": "怎麼讓一個好面子的武人相信自己被利用。",
+      "turn": "大家以為霍滄看完就會退兵，他卻把箭書一拍：「打完這仗，再找他算。」——武人的面子比真相重；但國師安插的副將被他當場拿下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "霍滄回了一支箭，箭上綁著一塊白布：「後夜江心，你我一戰。」",
+        "question": "許硯接不接這場江心之戰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "shachang"
+      ],
+      "spectacle": "霍滄帥船燈火通明，一支箭破窗釘進他面前的木桌，箭尾還在顫。",
+      "glamour_shot": "霍滄銀黑魚鱗甲站在船頭，濃眉壓著眼，把箭書捏成一團。",
+      "setups": [],
+      "payoffs": [
+        "s05-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐小棠把軍餉帳算到每一兩銀子",
+        "證實南楚主戰派背後是國師",
+        "霍滄拿下國師安插的副將"
+      ],
+      "characters": [
+        "xu-yan",
+        "tang-xiaotang",
+        "s05-huo-cang"
+      ],
+      "locations": [
+        "北岸大營",
+        "霍滄帥船"
+      ],
+      "state": {
+        "time": "開戰第三天",
+        "knowledge": "霍滄知道被利用，仍要打",
+        "carry_forward": "江心之約"
+      }
+    },
+    {
+      "number": 258,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "霧要來了",
+      "youtube_title": "強制任務只剩一天，三十艘船串成長龍逆流衝刺，對岸卻傳來皇后的歌",
+      "duration_s": 95,
+      "logline": "強制任務最後一天，輪槳船還沒逆流十里；許硯還要準備霧夜奇襲。",
+      "hook": "許硯盯著白布：「後夜？」他抬頭看天，嘴角翹起來：「後夜有霧。」",
+      "hook_type": "line",
+      "mid_hook": "半夜江面飄來琴聲，是許硯那晚在金陵隨口哼過的曲子；阿令聽了三句，臉色變了：「這是母后的歌。」",
+      "conflict": "船夫踩到腿軟也踩不到十里；不完成，他會忘掉所有農學知識一年。",
+      "turn": "大家以為踩船靠力氣，王二牛一個人踩到腿抽筋都不行；許硯把三十艘船用纜繩串起來輪班踩，第十里的浮標在午夜前被撞倒——任務完成。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "獎勵箱剛打開，江面一下子白了——霧提前一夜來了，對岸戰鼓同時響起。",
+        "question": "船還沒備齊，這一夜打不打？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "xiju",
+        "quanmou"
+      ],
+      "spectacle": "午夜江面三十艘輪槳船串成一條長龍逆流而上，槳輪打出一排白浪。",
+      "glamour_shot": "姬瑤在對岸樓船頂上撫琴，月光照著她的側臉，金絲鳳冠一閃。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "許硯用溫差算出霧夜",
+        "強制任務完成，保住農學知識；獎勵：霧中鑼燈號令法",
+        "阿令認出對岸的琴聲是母后的歌"
+      ],
+      "characters": [
+        "xu-yan",
+        "wang-erniu",
+        "a-ling",
+        "a-landuo",
+        "ji-yao",
+        "s05-xinger",
+        "xitong"
+      ],
+      "locations": [
+        "長江江面",
+        "北岸造船灘"
+      ],
+      "state": {
+        "time": "開戰第三夜",
+        "knowledge": "霧提前來了；姬瑤會彈皇后的歌",
+        "carry_forward": "霧夜開戰"
+      }
+    },
+    {
+      "number": 259,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "霧夜逆流",
+      "youtube_title": "沒帆沒槳的船逆流衝進水寨，南楚兵大喊鬼船，大司馬眼裡竟冒紅光",
+      "duration_s": 100,
+      "logline": "大霧夜，輪槳船要逆流衝進南楚水寨，在霍滄的樓船合圍之前打散他們。",
+      "hook": "白霧裡什麼都看不見，許硯敲了三下鑼：「全軍，逆流。」",
+      "hook_type": "line",
+      "mid_hook": "秦霜跳上霍滄的帥船，才發現霍滄的眼睛裡浮著暗紅——他被國師的光框控住了。",
+      "conflict": "霧裡看不見敵我，水寨有鐵柵與火船，霍滄的帥船要合圍。",
+      "turn": "觀眾以為霍滄鐵了心要打，原來他從箭書那夜起就被國師的暗紅光框罩著；秦霜一槍挑斷他帥船上國師給的護身符，紅光散了，霍滄跪在甲板上大口喘氣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "水寨四角同時起火，火線直撲姬瑤的樓船；國師的門人站在火光外：「燒了，算北人的。」",
+        "question": "姬瑤逃得出這片火海嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "quanmou"
+      ],
+      "spectacle": "大霧裡數十艘輪槳船逆流破浪衝進水寨，火光把整片霧染成橘紅。",
+      "glamour_shot": "秦霜黑紅輕甲踏上帥船船舷，披風在火光裡揚起，紅纓槍一抖。",
+      "setups": [],
+      "payoffs": [
+        "s05-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "輪槳船第一次實戰逆流破寨",
+        "霍滄被救出國師的控制"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "s05-huo-cang",
+        "s05-xuan-qi",
+        "wang-erniu",
+        "a-landuo"
+      ],
+      "locations": [
+        "長江南岸水寨"
+      ],
+      "state": {
+        "time": "霧夜",
+        "knowledge": "國師要燒死姬瑤再嫁禍北人",
+        "carry_forward": "火海裡的樓船"
+      }
+    },
+    {
+      "number": 260,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "看完再打",
+      "youtube_title": "打贏了他卻下令全軍掉頭衝進火海救敵兵，女帝的船不逃，丟下一本舊冊子",
+      "duration_s": 135,
+      "logline": "火海裡有幾千南楚水兵和姬瑤；救了，北軍可能被反咬，不救，這場勝仗就是一場吞掉幾千條命的大火。",
+      "hook": "火線撲到樓船前，許硯吼了一聲「救人！」，所有輪槳船掉頭衝進火裡。",
+      "hook_type": "danger",
+      "mid_hook": "阿蘭朵用套馬索從火船上套下國師門人首領玄七，他手裡的火摺子還亮著：「國師要的，是她死。」",
+      "conflict": "打贏還是救人；放火的人還在火裡。",
+      "turn": "觀眾以為姬瑤會趁亂逃，她的樓船一動不動停在火光裡；她說她放許硯出金陵，就是想看他回來時帶的是火還是船——他帶的是救人的船。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "姬瑤沒有逃，她把一本舊冊子丟過船舷，正落在許硯腳邊：「看完再打。」",
+        "question": "那本舊冊子裡寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "quanmou",
+        "ganren"
+      ],
+      "spectacle": "火光映紅整片江面，輪槳船一艘艘逆著火衝進去拉人。",
+      "glamour_shot": "姬瑤立在火光中的樓船頂上，墨綠衣袖被熱風掀起，抬手一拋冊子。",
+      "setups": [],
+      "payoffs": [
+        "s05-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "柳三娘的山民從水裡拉起幾千南楚水兵，葉知秋在甲板上一個個救回來",
+        "阿蘭朵抓到國師門人首領玄七",
+        "南楚兵第一次向北軍抱拳",
+        "知道姬瑤是故意放他走、在試他",
+        "姬瑤好感 20→25（他掉頭救她的兵）"
+      ],
+      "characters": [
+        "xu-yan",
+        "ji-yao",
+        "liu-sanniang",
+        "ye-zhiqiu",
+        "a-landuo",
+        "s05-xuan-qi",
+        "qin-shuang",
+        "s05-huo-cang"
+      ],
+      "locations": [
+        "長江南岸水寨"
+      ],
+      "state": {
+        "time": "霧夜將盡",
+        "knowledge": "姬瑤一直在試他；國師要她死",
+        "carry_forward": "舊冊子"
+      }
+    },
+    {
+      "number": 261,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "母后的字",
+      "youtube_title": "女帝丟來一本舊冊子，長公主一眼認出是死去母后的字，系統當場有反應",
+      "duration_s": 110,
+      "logline": "兩岸休兵一夜，阿令要知道母后的冊子為什麼在南楚女帝手上，系統卻先認出了它。",
+      "hook": "冊子落在甲板上翻開，阿令彎腰去撿，手指僵住：「這是母后的字。」",
+      "hook_type": "line",
+      "mid_hook": "船艙燭火下，冊子的紙頁浮出淡藍色的圖樣——跟系統面板一模一樣；許硯眼前同時跳出一行字：偵測到創建者筆跡。",
+      "conflict": "姬瑤下令南楚全軍退十里，兩岸休兵一夜；冊子能不能信、該不該停戰，全看今晚讀出什麼。",
+      "turn": "大家以為這只是姬瑤從大衡宮裡偷來的舊物；系統卻說寫冊子的人是它的「創建者」——系統不是天上掉下來的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阿令翻開第一頁，第一行寫著：「給我的女兒令儀。」她拿著冊子的手開始抖。",
+        "question": "母后要對阿令說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "quanmou"
+      ],
+      "spectacle": "燭火下舊冊子的紙頁浮出藍色光紋，一圈圈映在阿令的臉上。",
+      "glamour_shot": "阿令月白衣裙跪坐在艙中燭火前，低頭時白玉步搖輕晃，睫毛上沾著一點光。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "兩岸休兵一夜",
+        "確認冊子是阿令母后所寫，而且與系統有關"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "ji-yao",
+        "s05-huo-cang",
+        "xitong"
+      ],
+      "locations": [
+        "北軍旗艦船艙"
+      ],
+      "state": {
+        "time": "停火第一夜",
+        "knowledge": "系統的創建者是阿令的母后",
+        "carry_forward": "冊子的第一頁"
+      }
+    },
+    {
+      "number": 262,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "被撕掉的頁",
+      "youtube_title": "長公主母后的冊子裡全是現代字，他看傻了：大衡皇后也是穿越來的",
+      "duration_s": 105,
+      "logline": "許硯和阿令要讀懂皇后的冊子；兩岸談停戰，主戰派還想翻盤。",
+      "hook": "「給我的女兒令儀」底下，是一整頁現代人才寫得出的簡體字與算式；許硯看傻了：「皇后也是穿越的？」",
+      "hook_type": "question",
+      "mid_hook": "讀到一半，許硯發現冊子中間少了十幾頁，撕口很整齊——撕的人刻意留下了前後頁。",
+      "conflict": "冊子寫得斷斷續續，一半是母親寫給女兒的話，一半是許硯才看得懂的設計圖。",
+      "turn": "大家以為皇后是大衡的國母、死在深宮裡；冊子卻寫她二十年前流亡到南楚，還親手畫了良緣系統的第一張設計圖。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半夜一道黑影從艙頂翻下，一把搶過冊子撞破窗跳上鄰船；阿令抓起匕首就追了上去。",
+        "question": "阿令追得回母后的冊子嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "quanmou",
+        "ganren"
+      ],
+      "spectacle": "冊子攤開，一頁手繪的藍色面板設計圖與系統面板在許硯眼前重疊成一張。",
+      "glamour_shot": "阿蘭朵側耳聽風，手腕銀鈴一動不動，彩繩小辮垂在肩上，眼神一凝。",
+      "setups": [
+        "s05-t07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "知道皇后是穿越者、系統由她設計",
+        "阿蘭朵聽出艙頂有人，搶先示警"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "a-landuo",
+        "ji-yao",
+        "xitong"
+      ],
+      "locations": [
+        "北軍旗艦船艙",
+        "江心議和船"
+      ],
+      "state": {
+        "time": "停火第二夜",
+        "knowledge": "皇后是系統的作者；冊子少了十幾頁",
+        "carry_forward": "被搶走的冊子"
+      }
+    },
+    {
+      "number": 263,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "她見過皇后",
+      "youtube_title": "長公主追賊踏過十條船頂，女帝終於說出她為什麼知道系統：答案是一場大水",
+      "duration_s": 125,
+      "logline": "阿令要搶回母后的冊子；姬瑤終於說出她為什麼知道系統。",
+      "hook": "黑影踩著一排船頂狂奔，阿令的匕首擦著他耳邊釘進桅杆：「放下。」",
+      "hook_type": "danger",
+      "mid_hook": "阿令搶回冊子，黑影跳江逃了；姬瑤看著冊子的封皮，第一次沒有笑：「這冊子，是她親手給我的。」",
+      "conflict": "冊子搶回來了，可許硯要知道姬瑤的底：她到底是敵是友。",
+      "turn": "大家以為姬瑤是靠偷、靠查才知道系統；其實她七歲那年南楚大水，是流亡的大衡皇后把她從水裡撈起來、教她識字，臨走留下這本冊子——她認得許硯，因為冊子裡寫過「會有人來」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "姬瑤翻到一頁，指給許硯看：「她說，」「會有種田的人來。」下一行，被撕掉了。",
+        "question": "皇后等的那個人，是許硯嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "quanmou",
+        "tianchong"
+      ],
+      "spectacle": "月下一排停泊的樓船頂上，一道月白身影追著黑影一路踏過去。",
+      "glamour_shot": "姬瑤卸下鳳冠，散著長髮坐在窗邊說起七歲那年，眼尾那抹紅被淚光沾濕。",
+      "setups": [],
+      "payoffs": [
+        "s05-t01",
+        "m10"
+      ],
+      "reveals": [
+        "m10"
+      ],
+      "general_payoffs": [
+        "阿令從船頂搶回冊子",
+        "知道姬瑤為什麼知道系統：皇后救過她、留下冊子",
+        "姬瑤好感 25→35（他沒逼問，等她自己說）"
+      ],
+      "characters": [
+        "a-ling",
+        "ji-yao",
+        "xu-yan",
+        "xitong"
+      ],
+      "locations": [
+        "江心議和船船頂",
+        "姬瑤樓船"
+      ],
+      "state": {
+        "time": "停火第三夜",
+        "knowledge": "姬瑤是皇后救過的孩子；皇后在等一個種田的人",
+        "carry_forward": "被撕掉的那一行"
+      }
+    },
+    {
+      "number": 264,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "母后是我送走的",
+      "youtube_title": "國師一隻紙鶴飛進船艙，一句話讓冷面長公主拿起刀：你母后是我送走的",
+      "duration_s": 100,
+      "logline": "國師要用皇后的死擊垮阿令；許硯要穩住她，又不想攔下她該做的事。",
+      "hook": "撕口邊還留著半個字，許硯湊近燭火——一隻暗紅色的紙鶴從窗縫飄進來，落在桌上。",
+      "hook_type": "image",
+      "mid_hook": "紙鶴自己展開，國師的字：你母后，是我送走的。阿令的好感度條在許硯眼前一口氣往下掉了十格。",
+      "conflict": "國師用一句話挑撥；奪運順著阿令的恨意，吞她的好感。",
+      "turn": "大家以為阿令會崩潰，她反而異常安靜地坐下來磨匕首；許硯這才看懂——她不是要哭，是要去殺人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "阿令把匕首插回袖中，站到他面前：「我要殺他。你攔不攔？」",
+        "question": "他攔下阿令，還是陪她去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "quanmou"
+      ],
+      "spectacle": "一隻泛著暗紅光的紙鶴穿過江霧，落在燭台旁，自己一摺一摺展開。",
+      "glamour_shot": "阿令在燭下磨匕首，刀光映在她鳳眼裡，冷得發亮。",
+      "setups": [
+        "s05-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "許硯從紙鶴摺法看出國師就在南岸三里內",
+        "秦霜循紙鶴回飛的方向，挑掉國師埋在江邊的傳信樁"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "北軍旗艦船艙",
+        "南岸江邊"
+      ],
+      "state": {
+        "time": "停火第四夜",
+        "knowledge": "國師承認送走皇后；阿令的好感被吞掉十格",
+        "carry_forward": "阿令要殺國師"
+      }
+    },
+    {
+      "number": 265,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "停戰桌上的黑玉",
+      "youtube_title": "南楚主戰派拍桌要三座城，她一張帳讓全場閉嘴，他再看一眼對方的手指",
+      "duration_s": 100,
+      "logline": "停戰談判上，南楚主戰派獅子大開口，許硯要讓兩岸都下得了台。",
+      "hook": "許硯握住阿令拿刀的手，只說一句：「我陪妳去——明天。」",
+      "hook_type": "line",
+      "mid_hook": "談到一半，唐小棠攤開一張南楚戰費帳：再打一個月，南楚國庫見底、北軍也虧三成——「誰贏都是輸。」",
+      "conflict": "主戰派要賠款與北岸三座城，老丞相溫伯言主和，霍滄沉著臉不說話。",
+      "turn": "主戰派的發言人說得慷慨激昂，許硯卻盯著他的指節——一圈黑玉扳指的勒痕；當年把北疆關防圖送去朔漠的，也是戴這種扳指的國師門人。發言人當場被拿下，霍滄親手折斷了自己的佩刀。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "霍滄把斷刀放在桌上：「末將，願停戰。」全場還沒回神，姬瑤卻站了起來：「朕不簽。」",
+        "question": "姬瑤為什麼突然不簽？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "goxue",
+        "shuang"
+      ],
+      "spectacle": "江心一艘議和船上，兩國官員隔著長桌對坐，桌上攤開一張巨大的長江圖。",
+      "glamour_shot": "唐小棠在議和桌上一把攤開帳冊，金算盤一撥，抬起下巴一笑。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐小棠一張戰費帳讓主戰派啞口",
+        "揪出主戰派裡的國師門人",
+        "霍滄願意停戰"
+      ],
+      "characters": [
+        "xu-yan",
+        "tang-xiaotang",
+        "s05-huo-cang",
+        "s05-wen-boyan",
+        "ji-yao",
+        "a-ling"
+      ],
+      "locations": [
+        "江心議和船"
+      ],
+      "state": {
+        "time": "停火第五天",
+        "knowledge": "霍滄願停戰；姬瑤卻不簽",
+        "carry_forward": "姬瑤的理由"
+      }
+    },
+    {
+      "number": 266,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "一盤番茄炒蛋",
+      "youtube_title": "女帝說長公主沒哭完就不簽停戰，他半夜做了一盤菜，系統裡傳出死去皇后的聲音",
+      "duration_s": 120,
+      "logline": "阿令把自己關在艙裡讀母后的冊子一整夜，許硯想陪她又不能逼她。",
+      "hook": "姬瑤看著阿令：「她還沒哭過。」轉身走了，「哭完，朕再簽。」",
+      "hook_type": "line",
+      "mid_hook": "冊子裡夾著一張皇后手寫的菜單：令儀愛吃番茄炒蛋——這個世界沒有番茄；素梭卻提來一籃紅果子：「陛下種了二十年。」",
+      "conflict": "阿令一夜不開門；停戰卡在一個沒哭出來的人身上。",
+      "turn": "大家以為姬瑤拿阿令的悲傷當籌碼，其實她二十年都在替皇后照顧那片番茄；許硯半夜下廚，滿船的人聞到香味都醒了，阿令的艙門終於開了一條縫。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阿令吃下第一口，系統突然播出一個女人溫柔的聲音：「令儀，別哭。」她手裡的筷子掉了。",
+        "question": "皇后的聲音，為什麼藏在系統裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "goxue"
+      ],
+      "spectacle": "一籃在燭光下發亮的紅番茄放上船艙小灶，鍋裡蛋液金黃翻起。",
+      "glamour_shot": "阿令散著長髮坐在艙門口，端著一盤番茄炒蛋，燭光照著她第一次哭紅的眼睛。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "知道姬瑤替皇后種了二十年的番茄",
+        "阿令好感 +20（他半夜下廚，做她母后的菜），獎勵箱解鎖：皇后的留聲"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "ji-yao",
+        "s05-su-suo",
+        "xitong"
+      ],
+      "locations": [
+        "北軍旗艦船艙"
+      ],
+      "state": {
+        "time": "停火第六夜",
+        "knowledge": "系統裡藏著皇后的聲音",
+        "carry_forward": "皇后的留聲"
+      }
+    },
+    {
+      "number": 267,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "皇后是怎麼死的",
+      "youtube_title": "系統裡傳出死去皇后的聲音，她說她不是病死的，是運被人一口口吃掉",
+      "duration_s": 130,
+      "logline": "阿令要聽完母后留在系統裡的最後一段話，國師卻在江對岸豎起耳朵。",
+      "hook": "「令儀，別哭。」聲音還在，阿令抓住許硯的袖子：「讓她說完。」",
+      "hook_type": "line",
+      "mid_hook": "留聲說到一半，皇后的聲音開始斷斷續續：「我的運，快被他吃完了。」",
+      "conflict": "留聲只放一次；帳外有國師的紙鶴在偷聽。",
+      "turn": "大家以為皇后是病逝，其實是國師一點一點吞光了她的氣運；她在最後幾天把剩下的運全灌進系統，讓它帶著她的心意活下去、等一個人來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "留聲剛停，秦霜衝進艙：「幼帝高燒！」「國師要長公主獨自過江！」",
+        "question": "阿令要一個人去見國師嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "goxue",
+        "quanmou"
+      ],
+      "spectacle": "許硯眼前的藍色面板第一次變成一張女人的側臉輪廓，一邊說話一邊散成光點。",
+      "glamour_shot": "阿令抱膝坐在燭光裡聽母親的聲音，白玉步搖垂在肩邊，眼淚一顆顆落下卻沒出聲。",
+      "setups": [],
+      "payoffs": [
+        "s05-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道皇后死於國師的奪運",
+        "秦霜在帳外抓到偷聽的紙鶴，反手燒了",
+        "阿令好感跨過 80"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "xitong"
+      ],
+      "locations": [
+        "北軍旗艦船艙"
+      ],
+      "state": {
+        "time": "停火第七天清晨",
+        "knowledge": "皇后被奪運吞死；系統是她留下的心意",
+        "carry_forward": "幼帝高燒"
+      }
+    },
+    {
+      "number": 268,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "兩岸降旗",
+      "youtube_title": "國師拿幼帝的高燒逼長公主過江，女神醫三針扎下：這不是病",
+      "duration_s": 105,
+      "logline": "國師用幼帝的高燒逼阿令獨身過江，還想在停戰儀式上鬧出人命讓兩岸重開戰。",
+      "hook": "阿令已經站在船頭，許硯一把拉住她：「一起去。」",
+      "hook_type": "line",
+      "mid_hook": "葉知秋按住幼帝的脈，臉色一沉：「不是病，」「是有人在抽他的運。」",
+      "conflict": "停戰儀式就在今天；幼帝要是在儀式上倒下，所有人都會說是北人下的毒。",
+      "turn": "大家以為國師要拿幼帝換阿令，其實他要幼帝在儀式上發病、嫁禍北人；葉知秋當眾施針，幼帝睜眼說「姊姊，我餓」，國師的局破了，兩岸同時降下戰旗。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "戰旗降到一半，姬瑤把一疊撕下的紙頁放進許硯手裡：「撕頁的人，是我。」",
+        "question": "姬瑤為什麼要撕皇后的冊子？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "quanmou",
+        "goxue",
+        "xiju"
+      ],
+      "spectacle": "江心兩岸同時降下戰旗，北岸的禾穗旗與南楚的鳳旗在同一陣風裡落下。",
+      "glamour_shot": "葉知秋淡青長衫、白紗在江風裡飄，抬手捻針，指尖一點草藥綠。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "幼帝醒來、眼裡的紅退去",
+        "兩岸正式停戰",
+        "柳三娘的山民一夜搭好江心浮台",
+        "王二牛在降旗時跪錯方向向杏兒求親，杏兒笑著答應"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "ye-zhiqiu",
+        "s05-youdi",
+        "ji-yao",
+        "mo-chen",
+        "wang-erniu",
+        "s05-xinger",
+        "liu-sanniang"
+      ],
+      "locations": [
+        "江心浮台"
+      ],
+      "state": {
+        "time": "停火第七天正午",
+        "knowledge": "兩岸停戰；撕頁的人是姬瑤",
+        "carry_forward": "撕下的頁"
+      }
+    },
+    {
+      "number": 269,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "為什麼是我",
+      "youtube_title": "被撕掉的十幾頁終於找到，他才知道自己穿越不是意外：是有人點名要他",
+      "duration_s": 140,
+      "logline": "許硯讀撕下的頁，終於知道自己為什麼會來到這個世界。",
+      "hook": "許硯捏著那疊紙：「為什麼撕？」姬瑤看著他：「怕你不配。」",
+      "hook_type": "line",
+      "mid_hook": "撕下的頁寫著：系統要去找一個與原主同名同八字、懂種田的人——許硯手裡的紙開始發燙。",
+      "conflict": "他一直以為穿越是觸電意外；姬瑤手上有答案，但她要先看他接不接得住。",
+      "turn": "原來是皇后臨死前讓系統去找的人——一個肯種田的人，因為她相信亂世要靠糧食收拾；姬瑤撕頁，是要先看他配不配。許硯聽完第一句問的是：「那她最後快樂嗎？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "姬瑤把最後一頁收回袖裡，笑了：「這一頁，要娶我才給。」",
+        "question": "為了最後一頁，他要答應嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "quanmou",
+        "tianchong"
+      ],
+      "spectacle": "撕下的紙頁在燭火中浮出一張星圖般的藍光網，網的盡頭亮著一個小小的人影。",
+      "glamour_shot": "姬瑤倚在船窗邊，月光從背後勾出鳳冠的輪廓，袖中露出一角泛黃的紙。",
+      "setups": [],
+      "payoffs": [
+        "s05-t07"
+      ],
+      "reveals": [
+        "m01"
+      ],
+      "general_payoffs": [
+        "知道自己為什麼穿越：皇后的系統點名找他",
+        "姬瑤好感跨過 40（他先問的是皇后快不快樂），獎勵：江南稻種譜"
+      ],
+      "characters": [
+        "xu-yan",
+        "ji-yao",
+        "a-ling",
+        "tang-xiaotang",
+        "xitong"
+      ],
+      "locations": [
+        "姬瑤樓船"
+      ],
+      "state": {
+        "time": "停戰當夜",
+        "knowledge": "他是皇后選來的人",
+        "carry_forward": "最後一頁"
+      }
+    },
+    {
+      "number": 270,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "最後一頁",
+      "youtube_title": "女帝拿最後一頁逼婚，他老婆一路殺價殺到一頓飯，翻開只有一行字",
+      "duration_s": 145,
+      "logline": "許硯要拿到皇后冊子的最後一頁；全家第一次在南楚的船上和姬瑤同桌吃飯。",
+      "hook": "唐小棠一把搶過話頭，金算盤往桌上一放：「陛下，這頁我們買。」",
+      "hook_type": "line",
+      "mid_hook": "姬瑤真的坐下來吃飯了：七雙筷子同時伸向同一盤魚，空氣凝住一秒。",
+      "conflict": "姬瑤開價一年的糧和十座圩田的工匠；全家都在看許硯怎麼接。",
+      "turn": "唐小棠一路殺價殺到「一頓飯」，大家以為姬瑤會翻臉；她吃完那頓飯，竟說「夠了」——她要的只是坐上這張桌子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "最後一頁攤開，空白的紙上只剩一行字：「國師，是我帶來的。」",
+        "question": "皇后為什麼要把國師帶來？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "xiju",
+        "goxue",
+        "quanmou"
+      ],
+      "spectacle": "夕陽下的長江上，一艘樓船甲板擺開一張長桌，兩岸的船都在看。",
+      "glamour_shot": "七位女子同桌：月白、黑紅、桃粉、暗紅、紅白、淡青、墨綠，同時舉筷看向許硯。",
+      "setups": [
+        "s05-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "唐小棠把天價殺成一頓飯",
+        "全家與姬瑤同桌吃第一頓飯，姬瑤好感 +8（他讓她坐上飯桌）",
+        "拿到皇后冊子的最後一頁"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "a-landuo",
+        "ye-zhiqiu",
+        "ji-yao",
+        "xu-xiaohe"
+      ],
+      "locations": [
+        "姬瑤樓船甲板"
+      ],
+      "state": {
+        "time": "停戰第二天黃昏",
+        "knowledge": "國師是皇后帶來的",
+        "carry_forward": "最後一頁那行字"
+      }
+    },
+    {
+      "number": 271,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "七條往下掉",
+      "youtube_title": "停戰才三天，他眼前所有老婆的好感度同時往下掉：國師開始吞人了",
+      "duration_s": 100,
+      "logline": "國師趁停戰發動全力奪運，許硯要先弄清楚掉的是什麼、怎麼止住。",
+      "hook": "紙上那行字還沒讀完——許硯眼前所有好感度條同時閃紅，一條接一條往下掉。",
+      "hook_type": "image",
+      "mid_hook": "江對岸的夜空裂出一道暗紅光柱，金陵城裡的燈一盞盞暗下去——國師在吞整座城的運。",
+      "conflict": "停戰剛簽，國師就藏進金陵城下開壇；北岸的人一個接一個變得心不在焉。",
+      "turn": "大家以為國師早就逃了，他其實就在金陵城下的地底祭壇，借停戰的鬆懈開啟奪運；第一批被吞的不是許硯，是他身邊的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "秦霜握著長槍走到他面前，眼神陌生，槍尖抵住他喉嚨：「你是誰？」",
+        "question": "秦霜真的把他忘了？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "shachang",
+        "ganren"
+      ],
+      "spectacle": "七條好感度條在藍色面板上同時往下掉，背後江對岸一道暗紅光柱衝上夜空。",
+      "glamour_shot": "姬瑤立在金陵城頭，風吹起墨綠深衣，抬手下令封門，眼神冷到底。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "葉知秋把脈發現所有人的脈同時變慢——是運在流失",
+        "姬瑤下令封鎖金陵九門，把國師的門人困在城裡"
+      ],
+      "characters": [
+        "xu-yan",
+        "ye-zhiqiu",
+        "ji-yao",
+        "qin-shuang",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "姬瑤樓船甲板",
+        "金陵城頭"
+      ],
+      "state": {
+        "time": "停戰第三夜",
+        "knowledge": "國師在金陵城下吞身邊人的運；秦霜忘了他",
+        "carry_forward": "秦霜的槍尖"
+      }
+    },
+    {
+      "number": 272,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "你是誰",
+      "youtube_title": "老婆拿槍指著他問你是誰，他沒退，只說了一句當年她最恨聽的話",
+      "duration_s": 110,
+      "logline": "秦霜忘了為什麼嫁他，許硯要在奪運吞完之前把她重新追回來。",
+      "hook": "槍尖抵在喉頭，許硯沒退：「我是說妳槍法爛的人。」",
+      "hook_type": "line",
+      "mid_hook": "系統懲罰跳出：秦霜好感跌破零，懲罰——今日只能說真話。許硯一張嘴就把「其實我很怕妳」說了出來。",
+      "conflict": "秦霜不記得他、只記得自己有仇要報；硬喚只會讓她更警戒。",
+      "turn": "大家以為要靠回憶硬叫醒她，許硯乾脆跟她重新比一次槍，故意輸，再當面說出她父親當年在狼牙關立的誓；葉知秋在旁邊把脈：「她一想起家，脈就穩一點。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "秦霜收槍，眼神還是陌生，卻低聲說：「我不記得你，」「可我記得這碗湯。」——那是她進門第一天他煮的湯。",
+        "question": "秦霜還想得起來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "校場上許硯空手站在秦霜的槍陣中央，四周落葉被槍風捲成一圈。",
+      "glamour_shot": "秦霜高馬尾、黑紅輕甲，收槍時回眸，眼神從冰冷裂開一道縫。",
+      "setups": [
+        "s05-t10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜好感從負數回到 15（他當面說出她父親的誓）",
+        "葉知秋發現想起家人時脈會穩"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "ye-zhiqiu",
+        "xitong"
+      ],
+      "locations": [
+        "北岸大營校場"
+      ],
+      "state": {
+        "time": "停戰第四天",
+        "knowledge": "想起家人能讓脈穩；秦霜好感 15",
+        "carry_forward": "秦霜記得那碗湯"
+      }
+    },
+    {
+      "number": 273,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "一夜倒七家",
+      "youtube_title": "江南首富七家鋪子一夜被擠兌，他把銀子堆成一面牆，排隊的人全回頭存錢",
+      "duration_s": 95,
+      "logline": "國師的門人在各州散謠言，唐家商號擠兌，唐小棠被吞了運，連算盤都打錯。",
+      "hook": "秦霜捧著那碗湯還沒喝完，帳簾被撞開，唐萬金哭著衝進來：「閨女，」「七家鋪子被擠兌了！」",
+      "hook_type": "line",
+      "mid_hook": "唐小棠撥算盤，第一次算錯了；她盯著自己的手發抖：「我怎麼算不出來？」",
+      "conflict": "擠兌的人越排越長，唐小棠算不出帳，唐家撐不過三天。",
+      "turn": "大家以為唐家要倒，唐萬金打開祕庫——那是先皇后當年交給他保管的銀子；許硯讓他把銀子在州城門口堆成一面牆、立一塊牌「存多少，領多少」，擠兌的人反而回頭存錢；許硯再用一座假銀庫釣出放謠言的門人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "被抓的門人被按在地上，卻笑出聲：「商號只是幌子，」「國師要的是柳溪堡。」",
+        "question": "國師為什麼要柳溪堡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "shuang"
+      ],
+      "spectacle": "州城門口白花花的銀錠堆成一堵牆，排隊擠兌的人群一下子安靜。",
+      "glamour_shot": "唐小棠桃粉襦裙在銀牆前站定，深吸一口氣，重新撥起算盤，梨渦回來了。",
+      "setups": [],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "平掉唐家擠兌",
+        "唐小棠好感止跌回升（他把她的算盤一顆顆擦乾淨放回她手裡，說「慢慢算」）",
+        "抓到放謠言的國師門人"
+      ],
+      "characters": [
+        "tang-xiaotang",
+        "tang-wanjin",
+        "xu-yan",
+        "xitong"
+      ],
+      "locations": [
+        "青州城門",
+        "唐家錢莊"
+      ],
+      "state": {
+        "time": "停戰第五天",
+        "knowledge": "國師下一個目標是柳溪堡",
+        "carry_forward": "柳溪堡"
+      }
+    },
+    {
+      "number": 274,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "忘了怎麼種田",
+      "youtube_title": "流寇火燒萬畝稻田，系統卻在這時封了他的農學知識，八歲小妹牽起他的手",
+      "duration_s": 90,
+      "logline": "許硯趕回柳溪堡救火，卻在最需要的時候被系統罰掉了所有農學知識。",
+      "hook": "許硯翻身上馬要回柳溪堡，系統彈出紅字：懲罰——農學知識封存一日。",
+      "hook_type": "danger",
+      "mid_hook": "流寇放火燒堡外的稻田，許硯衝到田邊，看著稻子——他突然認不出那是什麼。",
+      "conflict": "國師收買的流寇圍攻柳溪堡，王二牛守門；沒有知識的許硯什麼都想不起來。",
+      "turn": "大家以為沒有知識的許硯沒用了，小禾牽著他的手，一句一句教他「哥哥你教過我的」——全堡的人都記得他教過的東西，溝渠、防火帶、水車自己動了起來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "稻田的火被溝渠攔下，堡牆後卻傳來小禾的叫聲——流寇頭子翻牆搶走了她的草兔子，她追出了堡門。",
+        "question": "小禾追出堡門，會出事嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "夜裡柳溪堡外的稻田起火，一道道溝渠把火線攔在半路，像一張發光的網。",
+      "glamour_shot": "王二牛藏青棉甲、大斧扛肩，站在堡門前大笑，火光照亮一口白牙。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "王二牛一斧劈斷流寇的撞木，守住堡門",
+        "柳溪堡百姓用他教過的法子自救",
+        "許硯看見：人心記得的東西，奪運吞不走"
+      ],
+      "characters": [
+        "xu-yan",
+        "wang-erniu",
+        "xu-xiaohe",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡"
+      ],
+      "state": {
+        "time": "停戰第六夜",
+        "knowledge": "許硯失去農學知識一天；百姓記得他教的一切",
+        "carry_forward": "小禾追出堡門"
+      }
+    },
+    {
+      "number": 275,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "秦霜的槍",
+      "youtube_title": "八歲小妹被流寇追，一桿長槍從天而降，失憶的女將軍握住亡父的玉佩想起一切",
+      "duration_s": 105,
+      "logline": "還沒找回記憶的秦霜追著許硯回到柳溪堡，要救小禾、擊退流寇。",
+      "hook": "小禾衝出堡門，流寇頭子轉身伸手——一桿紅纓槍從天而降，釘在兩人中間。",
+      "hook_type": "image",
+      "mid_hook": "秦霜把小禾護在身後，小禾把一枚舊玉佩塞進她手裡：「嫂嫂，這是妳爹的。」——那是秦家的鎮北調兵令。",
+      "conflict": "秦霜不記得許硯，卻本能地擋在小禾前面；流寇還有幾百人。",
+      "turn": "大家以為秦霜會被許硯的話喚醒，其實喚醒她的是父親的調兵令和一聲「嫂嫂」；她記起來了——更記起她為什麼嫁他：他當年撿到這枚玉佩，沒拿去換官，還給了秦家。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "秦霜話還沒說完，兩封急報同時到：秦烈山被叛軍圍在西山口；阿令的好感掉到 30。",
+        "question": "先救秦霜的父親，還是先回阿令身邊？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "紅纓槍從堡牆上空劃出一道弧線，釘進泥地，槍纓還在晃。",
+      "glamour_shot": "秦霜單膝跪地把小禾護在披風裡，抬頭時眼眶發紅，高馬尾被夜風吹起。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜救下小禾、擊退流寇",
+        "秦霜記起一切，好感衝回 80（他當年把調兵令還給秦家，沒拿去換官）"
+      ],
+      "characters": [
+        "qin-shuang",
+        "xu-xiaohe",
+        "xu-yan",
+        "wang-erniu",
+        "qin-lieshan"
+      ],
+      "locations": [
+        "柳溪堡外",
+        "京城西山口"
+      ],
+      "state": {
+        "time": "停戰第七天",
+        "knowledge": "秦烈山被圍；阿令好感 30",
+        "carry_forward": "兩頭告急"
+      }
+    },
+    {
+      "number": 276,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "二十年前那扇門",
+      "youtube_title": "國師脫下道袍，裡面竟是一件現代格子襯衫：二十年前，他是被皇后帶來的",
+      "duration_s": 130,
+      "logline": "許硯要弄清「國師是我帶來的」的真相，國師點名要他單身入金陵祭壇。",
+      "hook": "許硯一咬牙：「分兵。」秦霜的槍騎剛衝出營門，一隻暗紅紙鶴落上他的馬鞍：「想救她？來金陵。」",
+      "hook_type": "image",
+      "mid_hook": "金陵地底祭壇，國師把道袍往下一褪，裡面是一件二十年前的現代格子襯衫：「認得吧？」",
+      "conflict": "秦霜帶槍騎去西山口救父，許硯單身入祭壇；他要真相，國師要拖住他。",
+      "turn": "大家以為國師是皇后的仇人，真相是：二十年前他們在同一間實驗室，皇后穿過那扇門時，他抓住了她的手，被一起帶了過來——國師一直想回去，皇后一直想留下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "國師伸手在空中一劃，暗紅光框裡浮出柳溪堡的阿令：她站在院子裡，好感度條只剩 9。",
+        "question": "阿令還撐得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "shachang",
+        "ganren",
+        "goxue"
+      ],
+      "spectacle": "金陵城下的地底祭壇，一圈暗紅符光中央，站著穿格子襯衫的國師。",
+      "glamour_shot": "墨塵黑底銀線星紋道袍半褪掛在臂彎，蒼白的臉在紅光裡帶笑。",
+      "setups": [],
+      "payoffs": [
+        "s05-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜的槍騎從山脊衝下，與父親秦烈山背靠背殺出西山口",
+        "知道國師與皇后是同一扇門帶來的"
+      ],
+      "characters": [
+        "xu-yan",
+        "mo-chen",
+        "qin-shuang",
+        "qin-lieshan",
+        "a-ling",
+        "xitong"
+      ],
+      "locations": [
+        "金陵地底祭壇",
+        "京城西山口"
+      ],
+      "state": {
+        "time": "停戰第八天",
+        "knowledge": "國師與皇后同時穿越；他要回去",
+        "carry_forward": "阿令好感 9"
+      }
+    },
+    {
+      "number": 277,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "阿蘭朵要回家",
+      "youtube_title": "草原公主忘了為什麼留在中原牽馬要走，他不攔，反而備好馬陪她北上",
+      "duration_s": 95,
+      "logline": "阿蘭朵的好感被吞到只剩十，不記得自己為什麼留下；朔漠叛部又被國師收買南下，蘇赫一人頂在互市關口。",
+      "hook": "國師笑著讓開路：「去吧，看你追得回幾個。」許硯一出祭壇，就看見阿蘭朵牽著馬往北走。",
+      "hook_type": "image",
+      "mid_hook": "蘇赫的鷹落在阿蘭朵肩上，帶來一根斷了的狼牙箭：互市關口快守不住了。",
+      "conflict": "阿蘭朵要走；她哥哥那邊告急；許硯手上的兵分不出去。",
+      "turn": "大家以為許硯會攔她，他反而替她備好馬與乾糧，掏出一顆舊銀鈴——她當年來刺殺他時掉的，他一直帶在身上；阿蘭朵握著銀鈴，想起來了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿蘭朵趕到互市關口，叛部騎兵像黑潮漫過地平線；蘇赫回頭吼：「妹子，帶了多少人？」她身後只有五十輛推車。",
+        "question": "五十輛車，擋得住萬騎嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "shachang",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "草原關口，蘇赫一人一馬橫在城門前，背後狼煙，前方萬騎揚塵。",
+      "glamour_shot": "阿蘭朵紅白騎裝策馬回頭，滿頭彩繩小辮甩開，手腕銀鈴叮的一聲。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蘭朵好感回到 60（他把她當年掉的那顆銀鈴一直帶在身上）",
+        "許硯撥出火器營五十輛車給她北上"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "su-he",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "金陵地底祭壇",
+        "長江北岸渡口",
+        "朔漠互市關口"
+      ],
+      "state": {
+        "time": "停戰第九天",
+        "knowledge": "阿蘭朵記起來了；互市關口告急",
+        "carry_forward": "五十輛車對萬騎"
+      }
+    },
+    {
+      "number": 278,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "一桌人的脈",
+      "youtube_title": "五十輛車嚇退一萬騎兵，女神醫把了三百人的脈，找到國師系統的破綻",
+      "duration_s": 100,
+      "logline": "葉知秋在柳溪堡替所有人把脈，想找出奪運吞人的規律。",
+      "hook": "黑潮衝到關前一百步，五十輛火器車同時點響——不是砲，是滿天的響雷與白煙，馬群掉頭狂奔。",
+      "hook_type": "image",
+      "mid_hook": "葉知秋把到第三百個人的脈，抬起頭：同一桌吃飯的一家人，運掉得最慢——「他們的脈，是一起跳的。」",
+      "conflict": "沒有人知道奪運怎麼挑人；不知道就只能等著被吞。",
+      "turn": "大家以為奪運是隨機吞人，葉知秋的脈案顯示它專挑心散的、害怕的、孤單的人；柳三娘把山民一家家聚到大鍋邊吃飯，那一片的運真的不掉了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "各地天上的暗紅光突然像退潮一樣收回去——全部朝柳溪堡一個方向匯過去。",
+        "question": "國師要把所有力氣用在誰身上？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "草原上五十道白煙同時炸開，萬騎掉頭，地平線揚起一整片塵浪。",
+      "glamour_shot": "葉知秋在油燈下翻著厚厚的脈案，桃花眼微瞇，一縷髮落在藥箱上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蘭朵的五十輛響雷車嚇退叛部，蘇赫趁勢守住互市",
+        "葉知秋找出奪運的規律",
+        "柳三娘讓山民一家家同鍋吃飯，那一片的運止跌"
+      ],
+      "characters": [
+        "a-landuo",
+        "su-he",
+        "ye-zhiqiu",
+        "liu-sanniang"
+      ],
+      "locations": [
+        "朔漠互市關口",
+        "柳溪堡藥廬"
+      ],
+      "state": {
+        "time": "停戰第十天",
+        "knowledge": "奪運專吞散掉的心；國師把力氣收向柳溪堡",
+        "carry_forward": "柳溪堡"
+      }
+    },
+    {
+      "number": 279,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "奪運的弱點",
+      "youtube_title": "國師的紅光從四面八方撲向一座城，他下令：全城三千桌，一起吃飯",
+      "duration_s": 105,
+      "logline": "許硯要在國師的光到達之前，把柳溪堡的人心聚起來，護住阿令。",
+      "hook": "暗紅光像潮水一樣從四面八方匯向柳溪堡，阿令站在院中抬頭：「衝我來的。」",
+      "hook_type": "image",
+      "mid_hook": "許硯讀懂葉知秋的脈案，系統同時彈出一行字：已解鎖——奪運只能吞散掉的心。",
+      "conflict": "沒有時間打仗，也打不了光；三千戶人家要在天黑前聚起來。",
+      "turn": "大家以為要擺陣護人，許硯卻下令全堡開伙——三千張桌子同時擺開，所有人一起吃飯；暗紅光撞上堡牆就碎成火星，國師的臉第一次變了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "國師的聲音從天上落下：「好，那我只吞一個。」暗紅光細成一根針對準阿令；阿令推開許硯：「你去顧大家。」",
+        "question": "他要護住全堡，還是護住阿令？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "shachang",
+        "tianchong"
+      ],
+      "spectacle": "夜裡柳溪堡三千張桌子燈火連成一片，暗紅光潮撞上堡牆碎成火星。",
+      "glamour_shot": "阿令月白衣裙站在院中燈火裡抬頭，步搖不晃，眼神比光還冷。",
+      "setups": [],
+      "payoffs": [
+        "s05-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道奪運的弱點：人心齊就吞不動",
+        "王二牛帶人一個時辰在堡裡擺開三千張桌",
+        "柳溪堡擋住國師的光潮"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "wang-erniu",
+        "xu-xiaohe",
+        "ye-zhiqiu",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡"
+      ],
+      "state": {
+        "time": "停戰第十一夜",
+        "knowledge": "弱點是人心齊；國師只吞阿令",
+        "carry_forward": "對準阿令的紅針"
+      }
+    },
+    {
+      "number": 280,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "阿令歸零",
+      "youtube_title": "全城齊心擋住國師，紅光卻專挑她心裡最孤單的那一夜，冷面公主倒在他懷裡",
+      "duration_s": 150,
+      "logline": "國師把全部奪運集中在阿令一人身上，許硯要用全堡的心護住她。",
+      "hook": "許硯沒選——他兩樣都要：拉著阿令坐上最中間那張桌，對全堡喊：「一起吃！」",
+      "hook_type": "line",
+      "mid_hook": "暗紅細針穿不進堡牆，國師轉從阿令心裡下手：光框裡放出她母后死去那一夜，她一個人跪在空蕩蕩的宮裡。",
+      "conflict": "全堡的心擋得住外面的光，擋不住阿令心裡那一塊。",
+      "turn": "大家以為一頓飯能護住所有人，可奪運找到的是阿令心裡最孤單的地方；她怕光波及全堡，自己站起來走出了桌邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "暗紅光框罩住阿令，她的好感度條歸零，人倒在許硯懷裡，最後一句輕得像氣：「傻子……」",
+        "question": "阿令還會醒來嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        5,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "shachang",
+        "tianchong"
+      ],
+      "spectacle": "柳溪堡上空暗紅光柱罩下，一道月白身影在燈海中慢慢倒下。",
+      "glamour_shot": "阿令倒在許硯懷裡，白玉步搖滑落，月光落在她蒼白安靜的臉上。",
+      "setups": [
+        "s05-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全堡齊心把暗紅光擋成兩半",
+        "阿令最後一刀劈偏紅針，護住撲過來的小禾",
+        "柳溪堡所有人保住了運"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "xu-xiaohe",
+        "mo-chen",
+        "ye-zhiqiu",
+        "qin-shuang",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡"
+      ],
+      "state": {
+        "time": "停戰第十一夜三更",
+        "knowledge": "阿令好感歸零、昏迷",
+        "carry_forward": "阿令能不能醒"
+      }
+    },
+    {
+      "number": 281,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "灰色的那一行",
+      "youtube_title": "老婆昏迷不醒，他對著系統吼了一夜，終於亮出第一季就鎖著的那一行字",
+      "duration_s": 115,
+      "logline": "阿令昏睡不醒，國師吞飽了運北上京城，許硯要先撐住自己，找出下一步。",
+      "hook": "阿令在他懷裡冷得像霜，葉知秋把完脈抬頭：「還有氣，心是空的。」",
+      "hook_type": "line",
+      "mid_hook": "許硯對著面板吼了一夜，系統終於回了一行他從沒見過的灰字：終極任務・天下歸心，進度 4%。",
+      "conflict": "阿令不醒；國師帶著叛軍與幼帝往京城壓；許硯想殺去金陵，又離不開床邊。",
+      "turn": "大家以為許硯會失控殺去金陵，他卻在阿令床邊坐了一整夜；天亮時小禾一句「姊姊說，」「你最會讓大家吃飽」，讓他第一次把那行灰字跟柳溪堡的三千張桌子連在一起。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "灰字下面跳出第二行：說明解鎖條件——問對問題。許硯開口：「天下，指的是——」",
+        "question": "天下歸心，到底要歸誰的心？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "shachang"
+      ],
+      "spectacle": "床邊燭火燒了一夜，窗外柳溪堡家家戶戶為阿令點著燈，一盞都沒熄。",
+      "glamour_shot": "葉知秋白紗衣袖挽起，在燭光下替阿令下針，眉心微蹙，唇邊小痣。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "葉知秋的銀針保住阿令一口氣",
+        "終極任務的進度條第一次出現"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "ye-zhiqiu",
+        "xu-xiaohe",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡阿令房中"
+      ],
+      "state": {
+        "time": "阿令昏迷第一天",
+        "knowledge": "天下歸心有進度條，現在 4%",
+        "carry_forward": "系統的答案"
+      }
+    },
+    {
+      "number": 282,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "七條路",
+      "youtube_title": "系統終於說出終極任務的真相：七個老婆不是獎品，是通往天下的七條路",
+      "duration_s": 130,
+      "logline": "許硯要弄懂「天下歸心」到底要他做什麼，國師的大軍已經在路上。",
+      "hook": "系統的電子聲第一次放得很慢：「天下，是百姓。」",
+      "hook_type": "line",
+      "mid_hook": "面板在夜空裡展開成一張地圖：七位妻子的名字各連著一條路——民、兵、錢、山林、草原、醫、江南——全指向地圖上千千萬萬個小光點。",
+      "conflict": "他以為終極任務是七個老婆好感滿分；可阿令歸零了，任務還在。",
+      "turn": "許硯一直以為終極任務是後宮滿分，原來七位妻子是七條路，路的盡頭是百姓的心；國師吞的運，就是百姓散掉的心——要贏，就得把心聚回來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "唐小棠攤開帳冊：開倉放糧，北軍的糧只夠撐二十天——國師的大軍十五天就到京城。",
+        "question": "糧給百姓，還是留給打仗？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shuang",
+        "shachang"
+      ],
+      "spectacle": "藍色面板在夜空中展開成一整張天下地圖，七條光路從柳溪堡射向四方。",
+      "glamour_shot": "唐小棠抱著帳冊站在地圖的光影裡，梨渦不見了，眼神亮得驚人。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [
+        "m08"
+      ],
+      "general_payoffs": [
+        "知道天下歸心的真意：七位妻子是七條路，終點是百姓",
+        "第一道命令下去，進度從 4% 跳到 9%"
+      ],
+      "characters": [
+        "xu-yan",
+        "tang-xiaotang",
+        "qin-shuang",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡議事堂"
+      ],
+      "state": {
+        "time": "阿令昏迷第二天",
+        "knowledge": "天下歸心要的是百姓的心；軍糧只夠二十天",
+        "carry_forward": "開不開倉"
+      }
+    },
+    {
+      "number": 283,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "開倉",
+      "youtube_title": "老臣說免稅國庫會空，首富千金一筆帳當場算給他看，打開糧倉卻是一倉沙",
+      "duration_s": 95,
+      "logline": "許硯要開倉放糧、免三年賦稅，朝中舊臣反對，囤糧大戶暗中藏糧。",
+      "hook": "許硯把帳冊合上：「開倉，全開。」",
+      "hook_type": "line",
+      "mid_hook": "開倉第一天，州府大糧倉的門拉開——裡面一半是沙。",
+      "conflict": "舊臣說免三年稅國庫會空；倉裡的糧被人換了；百姓已經排到城外。",
+      "turn": "大家以為是州官貪了糧，唐小棠一路查帳，查到運糧船的船東是國師舊黨；她把囤糧大戶的倉一間間封了，糧照樣發到每一戶。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "發糧的車隊剛出城，國師的叛軍前鋒繞過山口，直撲沒有一兵一卒的糧車。",
+        "question": "百姓的糧車保得住嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shuang",
+        "shachang",
+        "ganren"
+      ],
+      "spectacle": "州府大糧倉的門一扇扇打開，金黃的米從倉口傾瀉而下。",
+      "glamour_shot": "唐小棠鵝黃襦裙站在倉頂，金算盤高高舉起，對下面排隊的百姓笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "開倉放糧、免三年賦稅",
+        "唐小棠一筆鹽鐵帳讓反對的舊臣閉嘴",
+        "抓出換沙的州官與國師舊黨"
+      ],
+      "characters": [
+        "xu-yan",
+        "tang-xiaotang",
+        "wang-erniu"
+      ],
+      "locations": [
+        "青州州府糧倉"
+      ],
+      "state": {
+        "time": "阿令昏迷第五天",
+        "knowledge": "國師舊黨在暗中搗亂",
+        "carry_forward": "糧車遇襲"
+      }
+    },
+    {
+      "number": 284,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "每個縣都有種子",
+      "youtube_title": "叛軍劫糧車一掀米袋全是伏兵，七條路同時出發，天下的心一格一格回來",
+      "duration_s": 110,
+      "logline": "許硯要把種子與圖紙送到每一個縣：路遠、匪多、人少。",
+      "hook": "叛軍前鋒衝到糧車前，一把掀開米袋——底下全是秦霜的兵。",
+      "hook_type": "reversal",
+      "mid_hook": "七條路同時動起來：阿蘭朵的馬隊一天跑三百里，柳三娘的山民翻山把水車圖送進深山村，葉知秋的醫隊沿路看病——面板上的進度一格一格往上跳。",
+      "conflict": "種子要送到天下每一個縣，國師的叛軍到處劫路。",
+      "turn": "大家以為秦霜只是護糧，她早算到國師會劫，布下空車陣反吃了叛軍前鋒；種子一到村裡，連原本跟著國師的流民都扛著鋤頭回家了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "進度衝到 41% 的那一刻，北岸江面出現一整支南楚水師，船頭站著姬瑤。",
+        "question": "姬瑤帶水師北上，是來打還是來幫？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "ganren",
+        "shuang"
+      ],
+      "spectacle": "空拍：一條條小路上馬隊、山民、醫隊同時出發，像光絲從青州散向天下。",
+      "glamour_shot": "阿蘭朵紅白騎裝在晨光裡揚鞭，馬背上的種子袋一路飛奔。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜的空車陣吃掉叛軍前鋒",
+        "種子與圖紙送到上百個縣",
+        "天下歸心進度 41%，藍光第一次壓過暗紅"
+      ],
+      "characters": [
+        "qin-shuang",
+        "xu-yan",
+        "a-landuo",
+        "liu-sanniang",
+        "ye-zhiqiu",
+        "ji-yao",
+        "xitong"
+      ],
+      "locations": [
+        "青州山口",
+        "天下各縣",
+        "長江北岸"
+      ],
+      "state": {
+        "time": "阿令昏迷第八天",
+        "knowledge": "進度 41%",
+        "carry_forward": "姬瑤的水師"
+      }
+    },
+    {
+      "number": 285,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "這次我嫁你",
+      "youtube_title": "南楚女帝帶整支水師渡江，跳下船第一句話全場愣住：這次，我嫁你",
+      "duration_s": 120,
+      "logline": "姬瑤帶南楚來歸附；許硯要確定這不是又一場拿國土換婚事的交易。",
+      "hook": "樓船靠岸，姬瑤第一個跳下船，繡鞋踩進北岸的泥裡：「朕來借稻種。」",
+      "hook_type": "line",
+      "mid_hook": "姬瑤當著兩岸將士開口：「這次，我嫁你。」——不談條件。全場安靜，秦霜的槍「噹」一聲掉在地上。",
+      "conflict": "南楚來了一整支水師，北軍不知是敵是友；許硯不肯再拿婚事當交易。",
+      "turn": "大家以為她又要拿南楚換婚事，她卻說南楚百姓早就自己種上北岸的稻種，心已經過江了；她來，是因為她自己想坐上那張桌子——她手上還有皇后冊子裡夾著的一張紙：給種田的人，替我照顧他們。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "許硯還沒開口，系統先跳出一行：迎娶第七位妻子？他回頭——五位妻子臉上五種表情。",
+        "question": "許硯會答應姬瑤嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shuang",
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "長江北岸，南楚樓船一字排開，降下鳳旗、升起禾穗旗。",
+      "glamour_shot": "姬瑤墨綠金色深衣踩上北岸，江風吹起裙擺，抬眼一笑，眼尾那抹紅。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "南楚百姓舉著北岸的稻種向許硯拜謝",
+        "南楚歸附",
+        "姬瑤好感 60→80（他寧可不要南楚也不拿婚事做交易）"
+      ],
+      "characters": [
+        "ji-yao",
+        "xu-yan",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "a-landuo",
+        "ye-zhiqiu",
+        "s05-huo-cang",
+        "xitong"
+      ],
+      "locations": [
+        "長江北岸"
+      ],
+      "state": {
+        "time": "阿令昏迷第十天",
+        "knowledge": "南楚歸附；姬瑤要嫁",
+        "carry_forward": "第七位妻子"
+      }
+    },
+    {
+      "number": 286,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "第七張椅子",
+      "youtube_title": "第七個老婆進門，五個老婆排家規，新娘卻提琴跑去昏迷的長公主床邊",
+      "duration_s": 115,
+      "logline": "第七位妻子的婚禮：修羅場、家規，和一張空著的椅子。",
+      "hook": "許硯開口：「好——」柳三娘先一拍桌：「慢著，排行怎麼算？」",
+      "hook_type": "line",
+      "mid_hook": "婚宴最熱鬧的時候，姬瑤不見了——她提著琴去了阿令的床邊。",
+      "conflict": "五位妻子要給新人立家規；主桌留著一張阿令的空椅子。",
+      "turn": "大家以為姬瑤是來搶位子的，她卻在阿令床邊彈了一整夜的琴——那是皇后當年在南楚哄她睡的歌；洞房夜，許硯在門外聽著琴聲靠著柱子睡著了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "琴聲停的那一刻，阿令的手指動了一下，好感度條從 0 跳到 1。",
+        "question": "阿令要醒了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "柳溪堡辦喜事，主桌擺了八張椅子，第八張空著，椅背上搭著一件月白外衫。",
+      "glamour_shot": "姬瑤卸下鳳冠，散著長髮坐在阿令床邊撫琴，燭光柔下她的眉眼。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "系統綁定第七位妻子，獎勵：江南水利總圖",
+        "五位妻子一人一條家規，姬瑤全接下，還加一條「不准誰一個人扛」",
+        "阿令好感從 0 到 1"
+      ],
+      "characters": [
+        "xu-yan",
+        "ji-yao",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "a-landuo",
+        "ye-zhiqiu",
+        "a-ling",
+        "xu-xiaohe",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡"
+      ],
+      "state": {
+        "time": "阿令昏迷第十二天",
+        "knowledge": "阿令有反應了；國師大軍將到京城",
+        "carry_forward": "京城"
+      }
+    },
+    {
+      "number": 287,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "京城外",
+      "youtube_title": "國師十萬大軍兵臨京城，女將軍抬頭一看：舉旗的人穿的全是草鞋",
+      "duration_s": 100,
+      "logline": "京城外決戰：國師挾幼帝，許家軍、南楚水師、蘇赫騎兵三路會合。",
+      "hook": "阿令的手指剛動，葉知秋還來不及喊人，京城急報撞門而入：國師十萬叛軍兵臨城下，幼帝被押在帥旗下的車裡。",
+      "hook_type": "danger",
+      "mid_hook": "秦霜在陣前抬頭，十萬叛軍的旗海裡，一大半舉旗的人腳上穿的是農民的草鞋。",
+      "conflict": "要救京城、救幼帝，國師的兵比許家軍多三倍。",
+      "turn": "大家以為這是一場硬仗，許硯看出國師的十萬兵大半是被吞了運、被抓來的農民；他下令不放箭，改喊話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "許硯的喊話才開頭，國師一揮拂塵，十萬叛軍的眼睛同時亮起暗紅，齊步往前壓。",
+        "question": "被控制的農民，要怎麼喊得醒？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang",
+        "ganren"
+      ],
+      "spectacle": "京城外平原上十萬旗海，城頭、運河、北方地平線三路援軍同時出現。",
+      "glamour_shot": "秦霜黑紅輕甲騎在陣前，披風翻飛，紅纓槍斜指前方。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "霍滄的南楚樓船順運河北上，截斷叛軍糧道",
+        "秦烈山、蘇赫三路會師"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "s05-huo-cang",
+        "su-he",
+        "mo-chen",
+        "s05-youdi",
+        "qin-lieshan"
+      ],
+      "locations": [
+        "京城外平原",
+        "京城運河"
+      ],
+      "state": {
+        "time": "阿令昏迷第十四天",
+        "knowledge": "叛軍大半是被控制的農民",
+        "carry_forward": "紅眼的十萬人"
+      }
+    },
+    {
+      "number": 288,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "家裡分到田了",
+      "youtube_title": "十萬紅眼大軍壓上來，他只拿起喇叭念村名，敵兵的鋤頭一把把掉在地上",
+      "duration_s": 105,
+      "logline": "許硯不殺被控制的農民，要把他們喊醒；同時要救出押在帥旗下的幼帝。",
+      "hook": "紅眼的十萬人壓上來，許硯沒退，舉起鐵皮喇叭：「你們家，分到田了！」",
+      "hook_type": "line",
+      "mid_hook": "前排一個老農聽見自己的村名，眼裡的紅光閃了一下——他手裡的鋤頭掉了。",
+      "conflict": "射箭就是殺自己的百姓；不射，十萬人就壓到城下。",
+      "turn": "大家以為喊話沒用，可許硯念的是每個村子剛分到的田與種子——念到誰的村，誰眼裡的紅就退；十萬人一片一片放下兵器；阿蘭朵趁亂單騎衝到帥旗下，抱起幼帝回頭狂奔。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "進度條衝到 88%，忽然整條倒退——國師開始吞自己門人的運，把三百人捏成一道光。",
+        "question": "國師的最後一擊衝著誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang",
+        "ganren"
+      ],
+      "spectacle": "平原上十萬雙眼裡的紅光一片一片熄滅，兵器落地的聲音像一場雨。",
+      "glamour_shot": "阿蘭朵抱著幼帝策馬回奔，彩繩小辮與銀鈴在風中飛起。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "十萬被控制的農民放下兵器回家",
+        "阿蘭朵救出幼帝，幼帝懷裡揣著先帝留給他的護身玉符"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "s05-youdi",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "京城外平原"
+      ],
+      "state": {
+        "time": "阿令昏迷第十四天午後",
+        "knowledge": "國師開始吞自己人",
+        "carry_forward": "國師的最後一擊"
+      }
+    },
+    {
+      "number": 289,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "藍光壓過暗紅",
+      "youtube_title": "國師捏出最後一道紅光，天下各縣同時升起藍光，他的系統卻開始吞他自己",
+      "duration_s": 110,
+      "logline": "國師最後的光與天下歸心的藍光正面相撞。",
+      "hook": "三百門人化成一道暗紅光柱撞過來，許硯身後忽然亮起一片藍——是天下各縣升起的光。",
+      "hook_type": "image",
+      "mid_hook": "國師眼前的暗紅光框閃出一行字：宿主氣運不足——連他自己都看傻了。",
+      "conflict": "紅光直衝許家軍；藍光從四面八方湧來，誰先到誰贏。",
+      "turn": "大家以為國師還有後手，他的奪運系統找不到人可吞，開始回頭吞他自己；他扔下黑玉拂塵，往觀星台的廢墟逃。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "許硯追進觀星台廢墟，牆上浮出一道人高的光門，門縫裡傳出一聲汽車喇叭。",
+        "question": "那道門，真的通回現代嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang",
+        "ganren"
+      ],
+      "spectacle": "京城外天地之間，藍色光潮如海浪壓過暗紅光柱，暗紅一寸寸碎成光點散去。",
+      "glamour_shot": "許硯玄青禾穗王袍立在藍光潮頭，回頭時衣袍與髮帶被光風吹起。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "國師大軍潰散",
+        "阿令的好感回到 30（全堡每天在她床邊一起吃飯）"
+      ],
+      "characters": [
+        "xu-yan",
+        "mo-chen",
+        "ye-zhiqiu",
+        "a-ling",
+        "xitong"
+      ],
+      "locations": [
+        "京城外平原",
+        "觀星台廢墟"
+      ],
+      "state": {
+        "time": "阿令昏迷第十四天黃昏",
+        "knowledge": "國師的系統開始吞他自己；廢墟裡有一道門",
+        "carry_forward": "光門"
+      }
+    },
+    {
+      "number": 290,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "跟我回去",
+      "youtube_title": "國師打開一道通往現代的門，對他伸出手：這裡不是你的世界，跟我回去",
+      "duration_s": 150,
+      "logline": "國師最後的籌碼不是兵，是那道回現代的門；他要許硯一起走。",
+      "hook": "門縫裡的喇叭聲越來越響，國師背對著門，第一次不笑了：「你也聽見了吧？」",
+      "hook_type": "question",
+      "mid_hook": "門開了一半，門後是夜裡的現代城市：便利商店的燈、斑馬線，還有許硯當年面試的那棟大樓。",
+      "conflict": "國師眾叛親離，卻握著許硯最想不到的一樣東西：回家的路。",
+      "turn": "大家以為國師要拚命，他卻放軟聲音說出真心：二十年他只想回家；他說許硯也一樣——系統是皇后的，留下來的人生是別人替他選的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "國師站在發光的門前回頭，對許硯伸出手：「跟我回去。」頓了一下：「這裡不是你的世界。」",
+        "question": "許硯會握住那隻手嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shachang",
+        "shuang"
+      ],
+      "spectacle": "京城外的黃昏裡打開一道發光的門，門後是夜晚的現代城市，兩個世界的光在門框上交界。",
+      "glamour_shot": "墨塵站在光門前回頭伸手，黑長髮被門裡的風吹起，蒼白的臉第一次不帶笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "國師的門人跪的跪、逃的逃，他身邊一個人都不剩",
+        "確認回現代的門真的存在"
+      ],
+      "characters": [
+        "xu-yan",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "觀星台廢墟"
+      ],
+      "state": {
+        "time": "阿令昏迷第十四天入夜",
+        "knowledge": "門通回現代",
+        "carry_forward": "國師伸出的手"
+      }
+    },
+    {
+      "number": 291,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "門後的城市",
+      "youtube_title": "通往現代的門後傳來媽媽的聲音，他一回頭，七個老婆和全村人都追來了",
+      "duration_s": 110,
+      "logline": "許硯站在回家的門前，一邊是媽媽的聲音，一邊是追到廢墟外的一家人。",
+      "hook": "許硯的手停在半空，門後傳來一個女人的聲音：「小硯，吃飯了沒？」——是他媽媽。",
+      "hook_type": "line",
+      "mid_hook": "他回頭——七位妻子、小禾、王二牛、柳溪堡的人全追到了廢墟外，秦霜和柳三娘抬著昏睡的阿令，小禾抱著草兔子站在最前面。",
+      "conflict": "回去還是留下；國師的手還伸在半空。",
+      "turn": "系統亮出一行字：最後獎勵——回家之門，已就緒。原來門也是系統的；大家以為許硯會猶豫很久，可他才回頭一眼，門就發瘋似的往裡吸——國師的奪運在搶最後一口運，連門外的人都被往裡拖。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "門的吸力暴漲，小禾腳下一滑，草兔子先飛進門裡，她伸手去追——整個人往門口滑過去。",
+        "question": "小禾會被吸進門裡嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shachang",
+        "tianchong"
+      ],
+      "spectacle": "門後的現代城市與門前的古代廢墟並排，一邊是霓虹，一邊是火把。",
+      "glamour_shot": "七位妻子在廢墟外並肩站成一排，七種衣色同時被門光照亮。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全家追到廢墟外",
+        "秦霜一槍插地，一手撐住阿令的擔架、一手拉住被吸過去的唐小棠"
+      ],
+      "characters": [
+        "xu-yan",
+        "s05-mama",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "a-landuo",
+        "ye-zhiqiu",
+        "ji-yao",
+        "xu-xiaohe",
+        "wang-erniu",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "觀星台廢墟"
+      ],
+      "state": {
+        "time": "決戰當夜",
+        "knowledge": "門是系統的最後獎勵；國師在搶最後一口運",
+        "carry_forward": "小禾"
+      }
+    },
+    {
+      "number": 292,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "放手",
+      "youtube_title": "一手是國師和回家的門，一手是八歲小妹，他只能抓緊一個",
+      "duration_s": 130,
+      "logline": "許硯一手被國師攥著、一手抓住小禾，回家的門只剩十息。",
+      "hook": "許硯撲過去一把抓住小禾的手腕——另一隻手還被國師死死攥著。",
+      "hook_type": "danger",
+      "mid_hook": "系統彈出：回家之門，保持開啟十息。十息之後，這道門永遠關上。",
+      "conflict": "國師要拉他進門；小禾在往門口滑；他只有兩隻手。",
+      "turn": "大家以為他會在兩邊之間掙扎，他根本沒掙扎——他鬆開了國師的手；國師的奪運找不到人可吞，回頭吞了他自己，門把他整個捲了進去，他最後只說了一句：「我只是想回家。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "國師的身影消失在門裡，門卻沒關——門後媽媽的聲音又響了一次：「小硯？」系統：剩餘三息。",
+        "question": "他要走進去，還是親手關門？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shachang"
+      ],
+      "spectacle": "光門像漩渦一樣把一身黑袍的國師捲進現代城市的夜色，他伸出的手最後碰到斑馬線的白光。",
+      "glamour_shot": "許硯單膝跪地把小禾抱在懷裡，回頭望門，門光把他的側臉照成一半藍一半金。",
+      "setups": [
+        "s05-t12"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "救回小禾",
+        "國師被自己的奪運反噬、被門帶回現代"
+      ],
+      "characters": [
+        "xu-yan",
+        "xu-xiaohe",
+        "mo-chen",
+        "s05-mama",
+        "xitong"
+      ],
+      "locations": [
+        "觀星台廢墟"
+      ],
+      "state": {
+        "time": "決戰當夜",
+        "knowledge": "國師走了，門還開著",
+        "carry_forward": "三息"
+      }
+    },
+    {
+      "number": 293,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "我留下",
+      "youtube_title": "回家的門只剩三息，他對著門裡的媽媽說了一句話，親手把門關上",
+      "duration_s": 130,
+      "logline": "許硯要親手關上回家的門；昏迷的阿令能不能醒，就看這一刻。",
+      "hook": "系統：剩餘三息。許硯對著門裡輕聲說：「媽，我在這裡很好。」",
+      "hook_type": "line",
+      "mid_hook": "門關上的那一瞬，暗紅色從天下散盡——擔架上阿令的好感度條開始自己往上跳：30、60、90……",
+      "conflict": "關上門，就再也回不去了；不關，國師留下的奪運還纏在阿令身上。",
+      "turn": "大家以為留下是一種犧牲，系統卻說門關上的那一刻他「選了這裡」——天下歸心的進度一口氣跳到 99%；阿令睜開眼，第一句話又是那兩個字：「傻子。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿令的第二句話還沒說完，秦霜掀簾進來：「幼帝捧著傳國璽，」「跪在全軍前面。」",
+        "question": "幼帝要把江山交給誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "光門在廢墟中央慢慢闔上，門縫裡最後一道現代城市的光收成一條線，熄滅。",
+      "glamour_shot": "阿令在擔架上睜眼，月光落在她睫毛上，嘴角極淡地一彎。",
+      "setups": [],
+      "payoffs": [
+        "s05-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "親手關上回家的門",
+        "阿令醒來，好感 100（他留下了）",
+        "葉知秋第一個摸到阿令的脈回來",
+        "天下歸心 99%"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "ye-zhiqiu",
+        "s05-mama",
+        "xitong"
+      ],
+      "locations": [
+        "觀星台廢墟"
+      ],
+      "state": {
+        "time": "決戰後第一個清晨",
+        "knowledge": "天下歸心 99%",
+        "carry_forward": "傳國璽"
+      }
+    },
+    {
+      "number": 294,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "傳國璽",
+      "youtube_title": "三歲幼帝捧著玉璽跪在十萬人面前：請姊夫當皇帝，他卻只想回家種田",
+      "duration_s": 115,
+      "logline": "許硯只想種田，天下卻要一個人收拾；系統說，缺的最後 1% 在他自己身上。",
+      "hook": "軍前，三歲的幼帝雙手捧著傳國璽跪下，奶聲奶氣：「請姊夫當皇帝。」",
+      "hook_type": "image",
+      "mid_hook": "百官將士全跪下了，系統卻跳出一行：天下歸心 99%——缺的 1%，是你。",
+      "conflict": "他不想當皇帝；可不當，天下就沒人收拾。",
+      "turn": "大家以為最後 1% 是哪個還沒歸心的地方，系統說缺的是許硯自己——他心裡還留著一條回去的路；全場只有阿令沒跪，她看著他說：「你不想，就不要。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "夜裡小禾抱著新的草兔子爬上他膝蓋：「哥哥，你還會走嗎？」許硯的手摸到懷裡那張舊紙條。",
+        "question": "他心裡還留著回去的路嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "京城外十萬將士與百姓同時跪下，旗海中央一個小小的身影高舉傳國璽。",
+      "glamour_shot": "阿令換回月白繡銀鳳宮裝，站在跪倒的人群中央，唯一沒跪，眼神清亮。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "幼帝自願讓位",
+        "阿令給了他退路",
+        "知道最後 1% 是自己：懷裡那張第一季寫下的現代地址紙條"
+      ],
+      "characters": [
+        "xu-yan",
+        "s05-youdi",
+        "a-ling",
+        "xu-xiaohe",
+        "xitong"
+      ],
+      "locations": [
+        "京城外",
+        "京城行營"
+      ],
+      "state": {
+        "time": "決戰後第三天",
+        "knowledge": "缺的 1% 是他自己",
+        "carry_forward": "那張紙條"
+      }
+    },
+    {
+      "number": 295,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "試袍",
+      "youtube_title": "登基前夜七個老婆各捧一件龍袍逼他選，刺客從殿頂倒掛下來全被老婆收拾",
+      "duration_s": 90,
+      "logline": "登基前夜，七位妻子給他試袍；國師留下的最後一批門人要在預演時行刺。",
+      "hook": "許硯握緊紙條，對小禾說：「哥哥不走。」話音剛落，簾子一掀，七位妻子各捧一件龍袍：「選一件。」",
+      "hook_type": "line",
+      "mid_hook": "預演時大殿頂上瓦片一響，十幾個黑衣人倒掛下來——國師最後的門人。",
+      "conflict": "選誰的袍子都得罪六個；刺客挑在他最沒防備的時候。",
+      "turn": "大家以為七位妻子在比誰的袍子好看，原來她們早分好工：每件袍子裡都縫著一樣東西——秦霜的護心鏡、葉知秋的解毒香囊、唐小棠的金算珠……七件合成一件；刺客一落地，秦霜、柳三娘、阿蘭朵三面迎上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "最後一個門人被按倒前手一揚，一點暗紅火星飛向掛在大殿正中的那張配婚令——紙角燒了起來。",
+        "question": "那張配婚令保得住嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "shachang",
+        "tianchong"
+      ],
+      "spectacle": "大殿頂上十幾道黑影倒掛而下，殿中七位妻子同時轉身。",
+      "glamour_shot": "柳三娘雙彎刀交叉擋在殿門，粗辮甩過肩頭，額前黑鳳布巾一飄。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "七件龍袍合成一件，每位妻子縫進自己的護身之物",
+        "擒下國師最後的門人"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "a-landuo",
+        "tang-xiaotang",
+        "ye-zhiqiu",
+        "ji-yao",
+        "a-ling"
+      ],
+      "locations": [
+        "玉京皇宮大殿"
+      ],
+      "state": {
+        "time": "登基前一天",
+        "knowledge": "國師的門人清乾淨了",
+        "carry_forward": "著火的配婚令"
+      }
+    },
+    {
+      "number": 296,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "二牛娶親",
+      "youtube_title": "配婚令差點燒掉，憨兄弟一口茶救下，自己的婚禮上新娘卻說：我自己挑的",
+      "duration_s": 100,
+      "logline": "許硯要救下配婚令；王二牛和杏兒的婚禮上，許硯想通了明天的第一道聖旨。",
+      "hook": "紙角的火苗竄起來，許硯伸手去抓——王二牛比他更快，一口茶噴了上去。",
+      "hook_type": "line",
+      "mid_hook": "王二牛的婚禮上，他照老規矩要等官差來「配」，杏兒一把搶過話：「我自己挑的。」——全場的人都轉頭看許硯。",
+      "conflict": "配婚令救下來了，可它代表的東西還在：明天登基，第一道聖旨寫什麼。",
+      "turn": "大家以為配婚令是許硯的好運，他卻在二牛的婚禮上明白：他這些妻子沒有一個是官府配得來的——是每個人自己留下的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "喜宴正熱鬧，唐萬金把一封密信塞進許硯手裡：「十三家大戶聯名，」「反對你登基。」",
+        "question": "這十三家，憑什麼反對？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "京城行營裡擺開幾十張喜桌，紅燈籠一路掛到城門。",
+      "glamour_shot": "杏兒一身紅嫁衣回頭一笑，鬢邊還插著那朵小黃花。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "救下配婚令",
+        "王二牛娶杏兒",
+        "天下歸心 99.5%"
+      ],
+      "characters": [
+        "xu-yan",
+        "wang-erniu",
+        "s05-xinger",
+        "tang-xiaotang",
+        "tang-wanjin",
+        "a-ling"
+      ],
+      "locations": [
+        "京城行營"
+      ],
+      "state": {
+        "time": "登基前夜",
+        "knowledge": "十三家大戶反對登基",
+        "carry_forward": "聯名信"
+      }
+    },
+    {
+      "number": 297,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "第一道聖旨",
+      "youtube_title": "十三家大戶在登基大典上鬧事，她念出一本帳，全場跪下，他提筆寫下第一個字",
+      "duration_s": 125,
+      "logline": "登基大典上，十三家大戶跪在丹陛下要保住強制配婚；許硯要寫下新朝第一道聖旨。",
+      "hook": "聯名信攤開，許硯掃了一眼名單，笑了：「這十三家，」「都賣過配婚名冊。」",
+      "hook_type": "line",
+      "mid_hook": "大典正中，十三家的家主跪在丹陛下高喊：「配婚令是祖制！」百官開始動搖。",
+      "conflict": "十三家二十年靠買賣配婚名冊發財，要新皇帝保住這條律法。",
+      "turn": "大家以為許硯會當場治罪，他只讓唐小棠念了一本帳——十三家二十年賣了多少個名字；接著七位妻子一個個走上丹陛，各說一句自己的本事，百官再沒人說話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "許硯提起硃筆，滿殿屏息等第一道聖旨——筆尖落在紙上，第一個字寫的是「廢」。",
+        "question": "他要廢的到底是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shuang",
+        "tianchong"
+      ],
+      "spectacle": "登基大典：玉京皇宮丹陛之下萬人跪拜，七位皇后依序走上丹陛。",
+      "glamour_shot": "七位妻子各穿自己顏色的大典禮服並肩立在丹陛上，晨光從殿頂斜照。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "許硯登基",
+        "十三家賣名冊的帳當眾曝光",
+        "七位妻子在百官面前各說自己的本事"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "a-landuo",
+        "ye-zhiqiu",
+        "ji-yao",
+        "s05-youdi"
+      ],
+      "locations": [
+        "玉京皇宮大殿"
+      ],
+      "state": {
+        "time": "登基當日",
+        "knowledge": "新朝第一道聖旨",
+        "carry_forward": "硃筆下的字"
+      }
+    },
+    {
+      "number": 298,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "裱起來的配婚令",
+      "youtube_title": "新皇帝第一道聖旨廢了強制配婚，把當年那張配婚令裱起來掛在大殿上",
+      "duration_s": 120,
+      "logline": "聖旨頒下，配婚令被裱起來掛在大殿；七位妻子各領一份差事，也各自說出為什麼留下。",
+      "hook": "硃筆一路寫下去：「廢強制配婚。」宮牆外百姓的歡呼一路湧進大殿。",
+      "hook_type": "line",
+      "mid_hook": "裱框掛上的時候，阿令輕聲問他：「廢了它，後悔嗎？」——她問的不是配婚令。",
+      "conflict": "廢了配婚令，七位妻子的名分還算不算數。",
+      "turn": "大家以為廢了配婚令，七位妻子的名分就不穩了；七個人卻一個一個說出自己為什麼「自己選」留下——七條好感度同時滿格。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "七條好感全滿的一瞬，天下歸心的進度還是停在 99%——系統跳出一行：最後 1%，請回到起點。",
+        "question": "起點，是柳溪村那間破屋嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "大殿正中，燒焦一角的配婚令被裝進金框高高掛起，殿外萬民歡呼。",
+      "glamour_shot": "阿令鳳冠、月白皇后禮服，站在配婚令前回頭看他，淺淺一笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "廢除強制配婚",
+        "七位妻子各領差事：阿令議政、秦霜大將軍、唐小棠戶部、柳三娘山林、阿蘭朵互市、葉知秋太醫署、姬瑤江南",
+        "七條好感度同時滿格"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "a-landuo",
+        "ye-zhiqiu",
+        "ji-yao",
+        "xitong"
+      ],
+      "locations": [
+        "玉京皇宮大殿"
+      ],
+      "state": {
+        "time": "登基後第一天",
+        "knowledge": "最後 1% 要回到起點",
+        "carry_forward": "回柳溪村"
+      }
+    },
+    {
+      "number": 299,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "回到起點",
+      "youtube_title": "當了皇帝他回到當年那間破屋，把一張寫著現代地址的紙埋在門檻下",
+      "duration_s": 125,
+      "logline": "許硯回到柳溪村的破屋，要補上天下歸心的最後 1%。",
+      "hook": "一輛馬車停在柳溪村口，許硯跳下車，看著那間比記憶裡還小的破屋：「到了。」",
+      "hook_type": "image",
+      "mid_hook": "許硯從懷裡掏出那張寫著現代地址的紙條，系統問：確認放下？放下，就再也想不起這個地址。",
+      "conflict": "最後 1% 要他放下過去；可那是他媽媽住的地方。",
+      "turn": "大家以為他會把紙燒了，他卻把紙埋在破屋門檻下，在上面插了一株稻；系統說：不用忘記，記得也可以留下。進度跳到 100%，最後的獎勵箱打開：一粒在任何土地都能發芽的稻種。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "獎勵箱的光裡響起一個溫柔的女聲：「謝謝你留下。」阿令站在門檻邊，第一次喊出聲：「母后？」",
+        "question": "阿令聽見母親的聲音了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "夕陽下柳溪村破屋的門檻邊，一株新插的稻苗被金光照亮。",
+      "glamour_shot": "唐小棠在村口給當年的鄉親發喜糖，雙環髻粉絲帶飄，梨渦深深。",
+      "setups": [],
+      "payoffs": [
+        "s05-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "全村出門迎接當年欠債的窮秀才",
+        "天下歸心 100%",
+        "最後獎勵：萬土稻種",
+        "皇后的最後一句留聲"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "xu-xiaohe",
+        "tang-xiaotang",
+        "qin-shuang",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪村破屋"
+      ],
+      "state": {
+        "time": "登基後第十天黃昏",
+        "knowledge": "他留下了；系統還在結算",
+        "carry_forward": "長桌"
+      }
+    },
+    {
+      "number": 300,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "長桌",
+      "youtube_title": "從窮秀才到皇帝，他帶七個老婆回村吃飯，系統卻在舉杯那一刻亮了",
+      "duration_s": 170,
+      "logline": "柳溪村的長桌全家團圓，許硯最後一次確定自己的選擇，系統卻還沒說完。",
+      "hook": "阿令對著門檻輕聲說：「母后，妳聽見了嗎？」身後小禾大喊：「開飯囉！」",
+      "hook_type": "line",
+      "mid_hook": "敬酒前，系統彈出一行從沒見過的字：結算中，請勿離席。許硯的手一抖——系統是不是要走了？",
+      "conflict": "一張從村頭擺到村尾的長桌：七位妻子、小禾、王二牛和杏兒、秦烈山、唐萬金、蘇赫、霍滄、幼帝、全村人；他要說一句話給這一家人。",
+      "turn": "大家以為系統結算完就會消失，結算畫面卻是一份清單：天下每一個縣的稻田、每一個被救下的人——最後一行寫著：宿主，留下。許硯把第一集那張配婚令的抄本放在桌中央：「這是我們家的起點。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "全家舉杯的那一刻，藍色面板再次亮起：天下歸心，完成。下一行跳出來：下一個任務——海外。許硯的酒杯停在半空。",
+        "question": "海外，又有什麼在等著他？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "柳溪村溪邊一張從村頭擺到村尾的長桌，夕陽、稻浪、滿桌燈火。",
+      "glamour_shot": "七位妻子在長桌兩側同時舉杯看向許硯，七種顏色的衣袖在晚風裡輕輕飄。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "全村人舉杯敬「許秀才」",
+        "全家團圓",
+        "天下歸心完成"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "a-landuo",
+        "ye-zhiqiu",
+        "ji-yao",
+        "xu-xiaohe",
+        "wang-erniu",
+        "s05-xinger",
+        "qin-lieshan",
+        "tang-wanjin",
+        "su-he",
+        "s05-huo-cang",
+        "s05-youdi",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪村溪邊長桌"
+      ],
+      "state": {
+        "time": "登基後第十天夜",
+        "knowledge": "天下歸心完成；新任務：海外",
+        "carry_forward": "第二部：海外"
+      }
+    }
+  ]
+}

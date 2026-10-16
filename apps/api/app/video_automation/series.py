@@ -1532,6 +1532,28 @@ def patch_problem(
         )
     if "look" in changes and changes["look"] is None:
         return SeriesRefused(422, "video_series_story_look", "品牌故事要留著每個故事共用的畫風")
+    if {"look", "target_minutes", "image_model", "style_preset"} & changes.keys():
+        # PATCH carries only changed fields. Check the complete route before persisting it,
+        # including a switch between the original custom look and the MiniMax preset.
+        look = changes.get("look", series.look)
+        minutes = changes.get("target_minutes", series.target_minutes)
+        image_model = changes.get("image_model", series.image_model)
+        style_preset = changes.get("style_preset", series.style_preset)
+        if look == {"preset": "cute-mystery"}:
+            if (minutes, image_model, style_preset) != (10, "image-01", "custom"):
+                return SeriesRefused(
+                    422,
+                    "video_series_story_cute_route",
+                    "可愛懸疑品牌故事須為 10 分鐘、image-01，且敘事風格為 custom",
+                )
+        elif series.look == {"preset": "cute-mystery"} and (
+            minutes is None or not 12 <= minutes <= 15 or style_preset != "custom"
+        ):
+            return SeriesRefused(
+                422,
+                "video_series_story_custom_route",
+                "改回自訂品牌故事畫風時，須同時設定 12–15 分鐘且敘事風格為 custom",
+            )
     if "episodes_per_chapter" in changes:
         return SeriesRefused(409, "video_series_story_fixed", "品牌故事沒有篇章，不分每篇集數")
     return None

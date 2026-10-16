@@ -7,11 +7,15 @@
 // A paid request (speech, speech/transcribe, speech/judge) is sent again only when it never reached
 // the API or the API settled it; one that went out and lost its answer stops (SPEECH_UNCERTAIN).
 import { AsyncLocalStorage } from "node:async_hooks";
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { NARRATION_LOCALE } from "../core/schema.mjs";
 import { toNarrationRate } from "./wav.mjs";
 
 export const USER_AGENT = "Mokaair-video-cli/1.0 (https://mokaair.com; support@mokaair.com)";
+export const PILOT_SLUGS = new Set([
+  "story-rolling-suitcase", "story-conveyor-belt-sushi",
+  "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2",
+]);
 
 // A paid request was sent and no answer came back: the connection dropped after it went out, a
 // gateway or the web route answered instead of the API, or the answer broke off on the way. The
@@ -177,7 +181,12 @@ export async function speechStatus(options) {
  * paid for, so it is SPEECH_UNCERTAIN like a lost one, never sent again.
  */
 async function postPaid(options, path, body, read) {
-  const init = { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) };
+  // One operation ID covers this logical request, including any HTTP retry after a response
+  // that proves the provider did not charge. The API never re-dispatches an uncertain ID.
+  const attributed = PILOT_SLUGS.has(options.videoSlug)
+    ? { ...body, video_slug: options.videoSlug, operation_id: randomUUID() }
+    : body;
+  const init = { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(attributed) };
   const response = await call({ ...defaults(options), path, init, paid: true });
   try {
     return await read(response);

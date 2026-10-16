@@ -56,8 +56,12 @@ function RetryVideo({ project, canManage, onRequested }: { project: Project; can
   </section>;
 }
 
-/** Stop a video for good, with a reason; the pipeline leaves it and its topic stays taken. */
-function DropVideo({ slug, onDropped }: { slug: string; onDropped: () => void }) {
+/**
+ * Stop a video for good, with a reason; the pipeline leaves it and its topic stays taken. A video
+ * linked to a YouTube upload can be dropped too (a duplicate the owner deleted in Studio); the
+ * panel says that YouTube itself is left as it is.
+ */
+function DropVideo({ slug, onYoutube, onDropped }: { slug: string; onYoutube: boolean; onDropped: () => void }) {
   const t = useTranslations("admin.videoReviews");
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
@@ -79,6 +83,7 @@ function DropVideo({ slug, onDropped }: { slug: string; onDropped: () => void })
     <summary className="cursor-pointer font-bold">{t("dropTitle")}</summary>
     <div className="mt-3 grid gap-3">
       <p className="text-sm leading-6 text-[var(--muted)]">{t("dropDetail")}</p>
+      {onYoutube && <p className="text-sm leading-6 text-[var(--muted)]">{t("dropYoutubeNote")}</p>}
       <label className="grid gap-2 text-sm font-semibold">{t("dropReason")}
         <textarea className={control} rows={2} value={note} disabled={busy} placeholder={t("dropPlaceholder")} onChange={(event) => setNote(event.target.value)} />
       </label>
@@ -113,7 +118,8 @@ type LanguageDefaults = { caption_locales?: string[]; drama?: { drama_caption_lo
  * descriptions, closed captions, a dub track (docs/videos/LANGUAGES.md). The owner decides once
  * the final cut is approved; the worker then makes only what is ticked and reports each part back,
  * and the video is not scheduled until every chosen part is made. A dub track is timed with its
- * captions, so ticking it ticks them; a drama cannot be dubbed yet (docs/videos/DUBS.md). The panel
+  * captions, so ticking it ticks them; the server marks a drama dubbable only when its category and
+  * current cut qualify (docs/videos/DUBS.md), its box greyed out otherwise. The panel
  * stays after the video is public: more can be ticked, and unticking only holds for what is not on
  * YouTube yet. A dub track the worker gave up on can be asked for again from its cell
  * (docs/videos/DUBS.md): the cell says where that request stands, how the last one ended, and why
@@ -123,6 +129,11 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const t = useTranslations("admin.videoReviews");
   const when = useWhen();
   const drama = (project.format ?? "slides") === "drama";
+  // The detail response is authoritative: category alone cannot show whether a story's current
+  // cut has burned subtitles. A previous API omits the flag; retain its explainer behavior while
+  // keeping stories locked until the server explicitly verifies a switchable-CC cut.
+  const dramaDubOff = drama && !(project.dub_allowed ?? (project.category === "explainer"));
+  const storyDubOff = dramaDubOff && project.category === "story";
   // The boxes follow the saved choice whenever it changes (a save, or another admin's), while an
   // edit in progress survives the page's minute-by-minute reads that bring the same choice back.
   const saved = choicesOf(project.locales);
@@ -262,16 +273,17 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
     {!finalApproved(project) ? <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesLater")}</p> : <>
       <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesHelp")}</p>
       <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languageProgressHelp")}</p>
+      {storyDubOff && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("dubStoryNeedsSwitchableCC")}</p>}
       {project.youtube_video_id && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesAfterPublish")}</p>}
       <table className="mt-3 w-full text-sm">
         <thead><tr><th scope="col" className="sr-only">{t("languageColumn")}</th>{LOCALE_PARTS.map((part) => <th key={part} scope="col" className="py-1 text-left font-semibold">{t(`parts.${part}`)}</th>)}</tr></thead>
         <tbody>{LOCALES.map((locale) => <tr key={locale} className="border-t border-[var(--line)]">
           <th scope="row" className="py-2 pr-3 text-left font-semibold">{t(`locales.${locale}`)}</th>
           {LOCALE_PARTS.map((part) => {
-            const dubOff = part === "dub" && drama;
+            const dubOff = part === "dub" && dramaDubOff;
             const state = saved[locale][part] ? project.languages?.[locale]?.[part] : undefined;
             return <td key={part} className="py-2 align-top">
-              <label className="inline-flex min-h-8 flex-wrap items-center gap-2" title={dubOff ? t("dubDramaLater") : undefined}>
+              <label className="inline-flex min-h-8 flex-wrap items-center gap-2" title={dubOff ? t(storyDubOff ? "dubStoryNeedsSwitchableCC" : "dubDramaLater") : undefined}>
                 <input type="checkbox" aria-label={`${t(`locales.${locale}`)} ${t(`parts.${part}`)}`} checked={chosen[locale][part]} disabled={locked || dubOff} onChange={(event) => toggle(locale, part, event.target.checked)} />
                 {state && <span className="text-xs text-[var(--muted)]">{partStateLabel(t, state.state, state.reason)}</span>}
               </label>
@@ -396,6 +408,10 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
     : undefined);
   const retired = project ? mp4Retired(project) : false;
   const state = project ? publishState(project) : null;
+  const currentFinal = project?.reviews.find((review) => review.gate === "final" && !review.subject);
+  const pendingFinal = Boolean(currentFinal?.status === "pending"
+    && currentFinal.payload.imported && typeof currentFinal.payload.imported === "object" && !Array.isArray(currentFinal.payload.imported)
+    && /^[0-9a-f]{64}$/i.test(currentFinal.content_sha256) && currentFinal.files.some((file) => file.role === "preview"));
   // A Short is nine by sixteen, and its languages are the Shorts settings', not this video's.
   const short = Boolean(project?.shorts_line);
   // The owner may upload the final cut as private as soon as the upload confirmation is approved;
@@ -416,7 +432,7 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
         {project.youtube_video_id && <p className="text-sm">
           {t("youtube", { id: project.youtube_video_id })}
           {project.youtube_publish_at && ` · ${t("scheduledAt", { time: when(project.youtube_publish_at) })}`}
-          <span className="block text-[var(--muted)]">{retired ? t("mp4Retired") : t("previewsGone")}</span>
+          {state !== "linked" && project.publish_approved_at && <span className="block text-[var(--muted)]">{retired ? t("mp4Retired") : t("previewsGone")}</span>}
         </p>}
         {project.dropped_at && <p role="status" className="rounded-xl bg-[var(--paper)] p-3 text-sm leading-6">
           <strong>{t("droppedAt", { time: when(project.dropped_at) })}</strong>
@@ -432,7 +448,9 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
       <AdminVideoRenewal key={project.slug} project={project} canManage={manage.allowed} onSubmitted={load} />
       {project.youtube_sync && <YoutubeSyncPanel slug={slug} sync={project.youtube_sync} canManage={manage.allowed && !dropped} onChange={load} />}
       {readyToUpload(project) && manage.allowed && <SendToYoutube slug={slug} confirmation={approvedPackage(project.reviews)} connection={connection} sync={project.youtube_sync} mp4Gone={retired} onSent={load} />}
-      {project.youtube_video_id && !dropped && manage.allowed && connection?.linked && !syncRunning(project.youtube_sync) && <details className="rounded-2xl border border-[var(--line)] p-4">
+      {pendingFinal && !dropped && !short && !project.youtube_video_id && !approvedPackage(project.reviews) && !syncRunning(project.youtube_sync) && connection?.linked && manage.allowed
+        && <UploadedForm slug={slug} onLinked={load} privateOnly />}
+      {project.youtube_video_id && !dropped && manage.allowed && connection?.linked && approvedPackage(project.reviews) && !syncRunning(project.youtube_sync) && <details className="rounded-2xl border border-[var(--line)] p-4">
         <summary className="cursor-pointer font-bold">{ty("resendTitle")}</summary>
         <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{ty("resendHelp")}</p>
         <div className="mt-3"><YoutubePublishForm key={project.youtube_sync?.finished_at ?? "resend"} slug={slug} review={approvedPackage(project.reviews)} connection={connection} canUpload={false} videoId={project.youtube_video_id} previous={project.youtube_sync?.request ?? null} onSent={load} /></div>
@@ -443,7 +461,7 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
       {past.length > 0 && <details className="grid gap-4" open={readyToUpload(project)}><summary className="cursor-pointer font-bold">{t("history")}</summary>
         <div className="mt-4 grid gap-4">{past.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={false} onDecided={load} mp4Gone={retired} discussion={discussion(review)} vertical={short} />)}</div>
       </details>}
-      {manage.allowed && !dropped && !project.youtube_video_id && <DropVideo slug={slug} onDropped={load} />}
+      {manage.allowed && !dropped && <DropVideo slug={slug} onYoutube={Boolean(project.youtube_video_id)} onDropped={load} />}
     </>}
   </section>;
 }

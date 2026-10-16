@@ -260,7 +260,7 @@ export function compilationLayout(doc, episodes, { branding = null } = {}) {
       frame += CARD_FRAMES;
     }
     if (!Number.isInteger(episode.frames) || episode.frames <= 0) throw new Error(`episode ${episode.slug} has no frame count`);
-    layout.push({ kind: "episode", id: episode.slug, slug: episode.slug, episode: n, start_frame: frame, frames: episode.frames, ...(episode.file ? { file: episode.file } : {}), ...(episode.sha256 ? { sha256: episode.sha256 } : {}), ...(episode.body_sha256 ? { body_sha256: episode.body_sha256, branding_hash: episode.branding_hash, intro_frames: episode.intro_frames } : {}) });
+    layout.push({ kind: "episode", id: episode.slug, slug: episode.slug, episode: n, start_frame: frame, frames: episode.frames, ...(episode.file ? { file: episode.file } : {}), ...(episode.sha256 ? { sha256: episode.sha256 } : {}), ...(episode.body_sha256 ? { body_sha256: episode.body_sha256, branding_hash: episode.branding_hash, intro_frames: episode.intro_frames, ...(episode.intro_at_frame ? { intro_at_frame: episode.intro_at_frame } : {}) } : {}) });
     frame += episode.frames;
   });
   // Channel branding supplies the single closing card for the whole compilation.
@@ -342,12 +342,18 @@ export function shiftCues(cues, offsetMs) {
 /**
  * The episodes' caption files as one track: each file's cues moved to where its episode starts.
  * `perEpisode` is [{ srt, offsetMs, introMs? }] in play order. Branded episode captions already
- * include their own intro, which is removed before placing the body in the compilation.
+ * include their own intro, which is removed before placing the body in the compilation. An
+ * episode whose intro played after its first chapter (`introAtMs`, the intro's body time) keeps
+ * the cues before it and removes the intro only from the cues after it.
  * An episode's cues end inside its own
  * length (captions never outlive their line), so the merged track never overlaps at a seam.
  */
 export function mergeCaptions(perEpisode) {
-  return perEpisode.flatMap(({ srt, offsetMs, introMs = 0 }) => shiftCues(parseSrt(srt), offsetMs - introMs));
+  return perEpisode.flatMap(({ srt, offsetMs, introMs = 0, introAtMs = 0 }) => {
+    const cues = parseSrt(srt);
+    if (!introAtMs) return shiftCues(cues, offsetMs - introMs);
+    return cues.flatMap((cue) => shiftCues([cue], cue.start_ms < introAtMs ? offsetMs : offsetMs - introMs));
+  });
 }
 
 /**
