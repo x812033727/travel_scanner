@@ -81,3 +81,9 @@
 - 按站主核准的定向修訂，`57dd9251` 改為「波束的細部物理機制，今天仍在研究中」。獨立史料覆核另抓到首篇論文只詳述第一個來源，故 `049813c5` 收窄為「團隊先把第一個來源的觀測寫成論文，一九六八年二月二十四日在《自然》刊出。」完整差異與來源見 [第二輪史料覆核](verify-2.md)。
 - 新 `video.json` SHA-256 `A54C8962F3941599A0FCBDC8DCDB74A1B72F315A873384C3BF76EFAC1F1C2F7F`；全新盲評者只讀新版口播與十三題，**13／13 yes**。答案在 repo 外 `<home>/mokaair-work/videos/curio-u09/review/narrative-r7-answers.json`，SHA-256 `B0CE39E19E3D43DBD42BCCEB895756133071E5D0F10758CA128122D6DC53BC4F`；`narrative --answers` exit 0。`lint --json` 0 errors、1 個 `later-support` 約 10.1 秒的畫面延長警告。
 - `script --slug curio-u09` 重建 `script.md`，SHA-256 `2EE64BCE3C457A29F4C434F04D76DB53CECB03911FC28238FB32669C7832FC33`；已 `review-push --gate script`，`review-pull` 讀回舊核准已失效、**新版等待站主**。未重錄、未重製分鏡或成片，沒有本輪付費呼叫。
+
+## 更新到 main 後的現行送審版（2026-10-16）
+
+- 分支已接上新增的敘事審核規則與影片台標。前一版敘事收據依新規則標為 stale；全新盲評先判 `no_recap` 未過，指出 `1dfdcacf` 重述相鄰的接收器結論。只把這一句收窄成「那串脈衝究竟來自多遠？」；獨立差異史料複核再次 **PASS**，見 [verify-2.md](verify-2.md)。
+- 現行 `video.json` SHA-256 `719CFEA737CFCF0C21D704CB91B3085F28F83B46DCD10682A704A62996617E17`；另一位全新盲評者按 main 的十三題判 **13／13 yes**。答案在 repo 外 `<home>/mokaair-work/videos/curio-u09/review/narrative-newrules-r2-answers.json`，SHA-256 `E13F957C3ED2D1E7FC88C31E643B30C2A8FA4D9DDC530A52D6DC5C5800E2833E`；`narrative --answers` exit 0。
+- 生成稿 `script.md` SHA-256 `9D29AB194E348DEEF820A4FD8816DE71447B7113EDC6BDEB18789F48FB5B56D8`；`lint` 0 errors、1 個約 10.1 秒畫面延長提醒。已重新 `review-push --gate script`，`review-pull` 仍是**現行版等待站主**；舊版核准及較早送審卡不得代替。沒有重錄或額外付費。

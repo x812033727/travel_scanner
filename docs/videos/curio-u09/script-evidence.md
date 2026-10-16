@@ -47,7 +47,7 @@
 | 2ec7abc8 | wrong-transit | 原來是把來源經過觀測位置的時間，算錯了。 | C12 |
 | a0f8a979 | independent-result | 這次用的是一套獨立的接收系統。 | C11 |
 | eea8a036 | failure-narrows | 要怪第一台儀器自己出錯，現在就很難說得通了。 | C11 |
-| 1dfdcacf | distance-question | 接收端的疑點縮小了，但發射端究竟有多遠？ | C16 |
+| 1dfdcacf | distance-question | 那串脈衝究竟來自多遠？ | C16 |
 | 2f829cd6 | dispersion-measure | 皮爾金頓接著比較，同一訊號在不同頻率的到達時間。 | C16 |
 | a88f7286 | travel-delay | 電波穿過星際物質，不同頻率會留下不同的延遲。 | C29 |
 | 6461789b | outside-system | 從這個差異估算，來源落在太陽系外。 | C16 |

@@ -111,3 +111,8 @@ scope:
 - 四鏡最後一批實做 7 圖／7 評審、估算 US$0.0945，已依共享帳本核銷；`brief-window`、`line-of-sight` 收下，`more-marks`、`beam-away` 停止付費重試、改來源卡。[第四份逐圖收據](../../docs/videos/curio-u09/keyframes-qa-4.md)記錄選圖 SHA、退回理由、插畫占比與舊 manifest。整集估算已用 US$4.2235／US$6。
 - [新版差異史料複核](../../docs/videos/curio-u09/verify-2.md)解除首篇論文的誤導句；現版 `video.json` SHA `A54C8962…7F`。第 `57dd9251` 句依站主授權收窄未解之處。全新十三題盲評 13／13 yes，`narrative --answers` 通過；`script.md` SHA `2EE64BCE…3FC33`。詳見 [劇本狀態](../../docs/videos/curio-u09/script-status.md)。
 - `review-push --gate script` 已送新版後台；`review-pull` 讀回前版核准失效、**新版等待站主**。在新版核准前不重錄，也不把舊音訊／分鏡當成新版交付。
+
+### 接上 main 新規則：2026-10-16
+
+- main 新敘事題目使上一版收據失效；新盲評抓到 `1dfdcacf` 對接收器結論的相鄰重述。僅改這句為「那串脈衝究竟來自多遠？」；獨立事實差異複核與另一位全新盲評者 13／13 均通過，詳見 [現行劇本狀態](../../docs/videos/curio-u09/script-status.md)。
+- 現行 `video.json` SHA `719CFEA7…17E17`、生成稿 SHA `9D29AB19…B56D8`，已重新送劇本後台，讀回仍等待站主。沒有本輪付費重錄／圖像／成片；現有旁白時間軸及舊分鏡均不可當作新版核准。

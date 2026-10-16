@@ -14,4 +14,4 @@
 
 兩個退回鏡頭已超過系列規則建議的補圖輪數，因此停止付費重畫。`more-marks` 改為一張 `stats` 卡，只寫「同一卷紙帶／2 處相隔很遠的怪痕跡」；[Bell Burnell 1977 第一人稱記述](https://www.bigear.org/vol1no1/burnell.htm)說同一張圖紙上在不同位置又出現兩處痕跡。`beam-away` 改為一張 `compare` 卡，對照波束掃過地球時記到一次脈衝、轉開時暫收不到；[NASA Science〈Pulsars〉](https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-pulsars/)支持視線與脈衝的關係。兩張卡皆不假裝是已生成插畫，也不引入新的口播史實。
 
-目前正文 100 景中保留 89 張獨立插畫，插畫比例 89%；連續內容卡最多兩張，符合系列底線。這兩張卡使舊 manifest 與後續修訂的 `video.json` 不相容；本收據定稿時的 `video.json` SHA-256 為 `A54C8962F3941599A0FCBDC8DCDB74A1B72F315A873384C3BF76EFAC1F1C2F7F`。劇本哈希也因卡片型別及定向修稿改變；目前**沒有新版劇本核准，也沒有有效的新分鏡核准**。待獨立敘事、史料及站主劇本關卡通過，再以當版重建 manifest、檢查 89 張圖與兩張卡的逐景綁定，製作新版聯絡表送站主。
+目前正文 100 景中保留 89 張獨立插畫，插畫比例 89%；連續內容卡最多兩張，符合系列底線。這兩張卡使舊 manifest 與後續修訂的 `video.json` 不相容；本收據定稿時的 `video.json` SHA-256 為 `719CFEA737CFCF0C21D704CB91B3085F28F83B46DCD10682A704A62996617E17`。劇本哈希也因卡片型別及定向修稿改變；目前**沒有新版劇本核准，也沒有有效的新分鏡核准**。待獨立敘事、史料及站主劇本關卡通過，再以當版重建 manifest、檢查 89 張圖與兩張卡的逐景綁定，製作新版聯絡表送站主。
