@@ -209,12 +209,12 @@ test("the panel passes only when every required question is yes; a missing or ma
   assert.equal(panelVerdict(null).failed.length, NARRATIVE_PANEL.filter((question) => question.required).length);
 });
 
-test("the panel asks for one protagonist carried end to end and for no detour, and either no sends the script back", () => {
+test("the panel carries a concrete protagonist or problem end to end and still rejects detours", () => {
   // 2026-10-15: three AI videos switched example and metaphor from chapter to chapter, spent a
   // third of one on a detour and read lists out; the one thread they had was what read best.
   const byId = new Map(NARRATIVE_PANEL.map((question) => [question.id, question]));
   assert.equal(byId.get("one_thread")?.required, true);
-  assert.match(byId.get("one_thread").question, /一個主角/);
+  assert.match(byId.get("one_thread").question, /一個可辨認的主角或具體難題/);
   assert.match(byId.get("one_thread").question, /從開場一路帶到結尾/);
   assert.equal(byId.get("no_detour")?.required, true);
   assert.match(byId.get("no_detour").question, /沒有岔出去的段落/);
@@ -227,6 +227,47 @@ test("the panel asks for one protagonist carried end to end and for no detour, a
     assert.deepEqual(verdict.failed.map((each) => each.id), [id]);
     assert.match(verdict.problems[0], new RegExp(`^${id}：`));
   }
+});
+
+test("panel questions distinguish an adjacent answer from a distant callback without excusing missing answers", () => {
+  const byId = new Map(NARRATIVE_PANEL.map((entry) => [entry.id, entry.question]));
+  const payoff = byId.get("payoffs");
+  // Valid adjacent pair: 「顧客買不買帳？」→「據他回憶，顧客很快接受了。」
+  // Valid distant callback: the early suitcase question returns minutes later by naming that
+  // suitcase and telling what happened to it. Invalid: a question never answered, or merely
+  // repeated as 「那顧客究竟買不買帳呢？」.
+  assert.match(payoff, /緊鄰的問答可以直接回答，不必再用「還記得」點名/);
+  assert.match(payoff, /隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問/);
+  assert.match(payoff, /只重複問題、換句話說，或回答另一件事，都不算回收/);
+
+  const link = byId.get("chapters_link");
+  // Valid cold-open return: start at the earlier suitcase already previewed in the opening and
+  // show why it matters to the opening question. Invalid: 「回到 1928 年」 as a chapter label,
+  // or claiming that one inventor taught another when the sources establish no such link.
+  assert.match(link, /預告式開場之後可以回到更早的故事起點/);
+  assert.match(link, /第一句要讓觀眾聽懂它從哪裡接上開場的問題/);
+  assert.match(link, /重述剛問過的話/);
+  assert.match(link, /沒有來源支持卻硬說兩件事有因果/);
+});
+
+test("product-history thread must advance the same use problem, not merely share a category", () => {
+  const question = NARRATIVE_PANEL.find((entry) => entry.id === "one_thread").question;
+  // Valid product history: a heavy suitcase becomes movable, reaches the shelf, then changes
+  // shape when dragging through a terminal proves awkward. Invalid: three suitcases introduced
+  // only because they all have wheels, or an invented transfer of know-how between makers.
+  assert.match(question, /跨年代的產品故事可以追同一個使用難題/);
+  assert.match(question, /上一種用法留下什麼困難、下一個做法如何回應/);
+  assert.match(question, /只因同屬一類商品就連續換例子，不算同一條線/);
+  assert.match(question, /不能沒有來源就聲稱不同發明者彼此承襲或互相啟發/);
+
+  // Rewording the questions does not turn a previously recorded no into a yes. The reader must
+  // make a fresh judgment about the actual script using this new payload.
+  const failedIds = ["chapters_link", "payoffs", "one_thread"];
+  const previousNo = { answers: NARRATIVE_PANEL.map(({ id }) => ({
+    id, yes: !failedIds.includes(id), evidence: "[k7p2] 被審查的逐字稿原句",
+  })) };
+  assert.deepEqual(panelVerdict(previousNo).failed.map(({ id }) => id), failedIds);
+  assert.equal(panelVerdict(previousNo).passed, false);
 });
 
 test("a yes the reader quotes no line for is not a yes", () => {
