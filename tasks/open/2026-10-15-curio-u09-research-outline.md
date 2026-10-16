@@ -4,8 +4,8 @@ title: Curio U09 research outline
 status: in-progress
 priority: P2
 area: docs
-owner: codex-gpt6-u09-fact
-claimed_at: 2026-10-16T00:35:54Z
+owner: codex-gpt6-u09-production
+claimed_at: 2026-10-16T01:13:24Z
 created_at: 2026-10-15T16:35:08Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -27,7 +27,7 @@ scope:
 - [x] 未參與撰稿者獨立覆核後可供站主選大綱。
 - [x] 站主選擇 A／B 並完成本批費用授權後，交接後續正式稿製作。
 - [x] 依核准 A 案完成正式稿、video.json、逐句證據與 loops，通過本機 lint。
-- [ ] 正式稿獨立史料覆核、十三題盲評與站主劇本核准；媒體製作另按關卡接續。
+- [x] 正式稿獨立史料覆核、十三題盲評與站主劇本核准；媒體製作另按關卡接續。
 
 ## Steps
 
@@ -75,3 +75,10 @@ scope:
 - 依主代理指示釋出作者認領，任務維持 open，交由獨立史料查核者認領並撰寫 `docs/videos/curio-u09/verify-1.md`。本次只更新任務交接，不改任何稿件、brief 或媒體；沒有付費／後台／push。
 - 2026-10-16 獨立史料覆核讀回：正式稿仍綁定 `video.json` SHA `CCD845B56DAE53A5828DFD1B93881D273E8BDA963D74B61327F074ACAC9FE50D`；`verify-1.md` 對 C01–C31、所有內容卡、縮圖與後台文案逐項核查，31 項主張確認、0 項事實改動／阻斷。原 1968 年 2 月 Nature 論文印頁 709、713 本輪重新視讀，Gold 原文及 Bell／Hewish 回憶也已核對。現版 lint 0 errors／0 warnings；`narrative --answers` 收據 13 題全過。仍待劇本送後台及站主核准；沒有付費製作。
 - 主代理隨後執行 `script --slug curio-u09`，生成稿 SHA `A6EBACD14E9986B8422316ABAEC6178FF039D063F31FE33A1A01D14233AF3F5A`；`review-push --gate script` 成功，`review-pull --gate script` 讀回 `waiting for the owner`。正式劇本已送後台待站主核准，未啟動任何付費媒體製作。
+
+### 繁中旁白續作：2026-10-16
+
+- 站主在後台核准正式劇本，主代理以 `review-pull --gate script` 讀回 `approval recorded` 後才啟動付費製作。先以 `tts --dry-run` 核對 101 次 Gemini Sulafat 合成請求／2,332 計費字元、`keyframes --dry-run` 核對 91 張 image-01 插圖；圖像尚未生成。
+- 外部估算停手帳本先預留 US$0.20 再合成繁中旁白；實得 102 句 WAV、正文 590 秒（9:50）、2,332 計費字元，無供應商 hold。此 US$0.20 為保守估算，不是供應商最終美元發票。
+- 再預留 US$0.50 執行 `check-audio`：102／102 句完成 Gemini 轉寫，1 次 TypeSafe Jev 差異判讀；58 句逐字吻合、25 句同音／語助詞、2 句 Jev 接受、17 句品質旗標。工具因旗標 exit 1，並非服務失敗。估算支出合計 US$0.70，仍在本集 US$6 上限內；帳本位於 `C:/Users/x8120/mokaair-work/videos/curio-next-five-20261016/review/spend-ledger.json`。
+- 17 句旗標詳見 `C:/Users/x8120/mokaair-work/videos/curio-u09/review/check-flags.json`；已委託獨立離線 Whisper 盲聽交叉判讀，不再次送付費轉寫。待確定誤讀範圍後僅定向重錄有依據的句子，其餘送站主逐句試聽與音訊核准。旁白尚未核准、插圖與成片未開始。
