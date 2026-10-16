@@ -9,7 +9,7 @@ import { isDrama, isExplainer } from "./drama.mjs";
 import { eachLine } from "./schema.mjs";
 import { scriptCheckBinding, scriptCheckMatches } from "./script-check.mjs";
 import { isStory } from "./story.mjs";
-import { chapterList, formatClock, frameToSeconds } from "./timeline.mjs";
+import { chapterList, estimateTimeline, formatClock, frameToSeconds } from "./timeline.mjs";
 
 /** Where a video's panel verdict is kept, under its work directory. */
 export const NARRATIVE_REVIEW = ["review", "narrative.json"];
@@ -293,8 +293,16 @@ export const PANEL_RULES_SHA256 = createHash("sha256").update(JSON.stringify({
   verdict_version: 1,
 })).digest("hex");
 
+// Bind the exact rendered narration sent to the blind panel. The shared script check omits
+// metadata such as the title, even though the panel reads it above every chapter.
+function panelNarrationSha256(doc) {
+  return createHash("sha256").update(narrationText(doc, estimateTimeline(doc))).digest("hex");
+}
+
 export function narrativeReviewMatches(check, doc) {
-  return Boolean(check?.panel_rules_sha256 === PANEL_RULES_SHA256 && scriptCheckMatches(check, doc));
+  return Boolean(check?.panel_rules_sha256 === PANEL_RULES_SHA256
+    && scriptCheckMatches(check, doc)
+    && check.panel_narration_sha256 === panelNarrationSha256(doc));
 }
 
 /** The panel's payload: the script as text and the questions, nothing a reader could lean on. */
@@ -347,6 +355,7 @@ export function narrativeRecord(doc, verdict, round) {
   return {
     ...scriptCheckBinding(doc),
     panel_rules_sha256: PANEL_RULES_SHA256,
+    panel_narration_sha256: panelNarrationSha256(doc),
     round,
     passed: verdict.passed,
     answers: verdict.answers,

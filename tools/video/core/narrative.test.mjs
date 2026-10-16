@@ -222,12 +222,16 @@ test("a narrative PASS is reusable only for the script and exact panel rules tha
   })) });
   const current = narrativeRecord(doc, verdict, 1);
   assert.equal(current.panel_rules_sha256, PANEL_RULES_SHA256);
+  assert.match(current.panel_narration_sha256, /^[a-f0-9]{64}$/);
   assert.equal(narrativeReviewMatches(current, doc), true);
 
   const legacy = { ...current };
   delete legacy.panel_rules_sha256;
   assert.equal(scriptCheckMatches(legacy, doc), true, "other script checks keep their existing binding");
   assert.equal(narrativeReviewMatches(legacy, doc), false, "an old PASS without rules is stale");
+  const withoutNarration = { ...current };
+  delete withoutNarration.panel_narration_sha256;
+  assert.equal(narrativeReviewMatches(withoutNarration, doc), false, "an old PASS without its full panel input is stale");
 
   const rulesHash = ({ instructions = PANEL_INSTRUCTIONS, questions = NARRATIVE_PANEL.map(({ id, question, required }) => ({ id, question, required })) } = {}) => createHash("sha256").update(JSON.stringify({
     instructions,
@@ -251,6 +255,10 @@ test("a narrative PASS is reusable only for the script and exact panel rules tha
   const changedDoc = structuredClone(doc);
   changedDoc.scenes[0].lines[0].text += "又一句。";
   assert.equal(narrativeReviewMatches(current, changedDoc), false);
+  const renamedVideo = structuredClone(doc);
+  renamedVideo.youtube.title += "：新版片名";
+  assert.equal(scriptCheckMatches(current, renamedVideo), true, "the shared script binding intentionally ignores title metadata");
+  assert.equal(narrativeReviewMatches(current, renamedVideo), false, "the title appears in the panel input and must invalidate its PASS");
 });
 
 test("the panel carries a concrete protagonist or problem end to end and still rejects detours", () => {
