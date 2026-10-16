@@ -177,6 +177,29 @@ export function matchKind(heard, line, lexicon, locale = NARRATION_LOCALE) {
   return null;
 }
 
+// Words the voice has read aloud before a line, a stray token rather than the script: on
+// 2026-10-15 the English dubs of H05 and H06 opened lines with "thought", glued to the sentence
+// ("thoughtIt proves ...") or on a line of its own. Jev passed one of them; a viewer hears it.
+export const LEAKED_WORDS = ["thought"];
+
+/**
+ * The leaked word a transcript opens with, as heard, or null: a word of LEAKED_WORDS at the very
+ * start, followed by nothing, a space or newline, punctuation or a capital letter (glued to the
+ * sentence), when the line itself does not start with that word. "Thoughtful" is no leak.
+ */
+export function leakedWord(heard, line) {
+  const said = String(heard ?? "").trimStart();
+  // The line's first word, past any opening quote or bracket.
+  const first = (spokenText(line).match(/[\p{L}\p{N}']+/u)?.[0] ?? "").toLowerCase();
+  for (const word of LEAKED_WORDS) {
+    if (first === word || said.slice(0, word.length).toLowerCase() !== word) continue;
+    // Case-sensitive on purpose: with the i flag \p{Lu} would take "thoughtful"'s f as well.
+    const next = said.slice(word.length, word.length + 1);
+    if (next === "" || /^[\s\p{Lu}]$/u.test(next) || /^[^\p{L}\p{N}']$/u.test(next)) return said.slice(0, word.length);
+  }
+  return null;
+}
+
 export function matches(heard, line, lexicon, locale) {
   return matchKind(heard, line, lexicon, locale) !== null;
 }
@@ -363,6 +386,7 @@ export async function checkAudio(args, ctx, options) {
   // The lines Jev still doubts go to the second transcriber, once per clip (the entry is the clip's).
   const doubts = () => Object.entries(results).filter(([, entry]) => !entry.match && entry.noul < threshold);
   const byLine = new Map(lines.map(({ line }) => [line.id, line]));
+  const order = new Map(lines.map(({ line }, index) => [line.id, index]));
   let secondFailed = null;
   if (second) {
     const name = secondOpinionName(second);
@@ -395,11 +419,23 @@ export async function checkAudio(args, ctx, options) {
   const exact = entries.filter(([, entry]) => entry.match_kind === "exact").length;
   const alike = entries.filter(([, entry]) => entry.match && entry.match_kind !== "exact").length;
   const doubted = doubts();
-  const cleared = doubted.filter(([, entry]) => clearedBySecond(entry));
-  const flagged = doubted.filter(([, entry]) => !clearedBySecond(entry));
-  const judgedFine = entries.length - exact - alike - doubted.length;
+  // A leaked word is flagged whatever Jev or a second transcript says: the clip says it.
+  const leaks = new Map(entries.flatMap(([id, entry]) => {
+    const word = leakedWord(entry.heard, byLine.get(id));
+    return word ? [[id, word]] : [];
+  }));
+  const cleared = doubted.filter(([id, entry]) => clearedBySecond(entry) && !leaks.has(id));
+  const doubtedIds = new Set(doubted.map(([id]) => id));
+  const leakedOnly = entries.filter(([id]) => leaks.has(id) && !doubtedIds.has(id));
+  const flagged = [...doubted.filter(([id, entry]) => !clearedBySecond(entry) || leaks.has(id)), ...leakedOnly]
+    .sort(([a], [b]) => order.get(a) - order.get(b));
+  const judgedFine = entries.length - exact - alike - doubted.length - leakedOnly.length;
   const flagsFile = path.join(workdir, files.flags);
-  const notes = Object.fromEntries(flagged.map(([id, entry]) => [id, `Jev ${entry.noul.toFixed(2)}: heard 「${entry.heard}」`]));
+  const jevNote = (entry) => (typeof entry.noul === "number" ? `Jev ${entry.noul.toFixed(2)}` : "Jev not asked");
+  const noteOf = (id, entry) => (leaks.has(id)
+    ? `leaked word 「${leaks.get(id)}」 before the line (${jevNote(entry)}): heard 「${entry.heard}」`
+    : `${jevNote(entry)}: heard 「${entry.heard}」`);
+  const notes = Object.fromEntries(flagged.map(([id, entry]) => [id, noteOf(id, entry)]));
   // A dub's flags name their track, and the translation the dub was read from.
   const provenance = dub ? { locale, translation_hash: timeline.translation_hash } : {};
   atomicWrite(flagsFile, `${JSON.stringify({ slug: doc.slug, ...provenance, speech_hash: timeline.speech_hash, flags: flagged.map(([id]) => id), notes }, null, 2)}\n`);
@@ -416,6 +452,7 @@ export async function checkAudio(args, ctx, options) {
       judged: judgedFine + doubted.length,
       ...(cleared.length ? { cleared: cleared.length } : {}),
       flagged: flagged.length,
+      ...(leaks.size ? { leaked: leaks.size } : {}),
       unchecked: missing,
       transcribed,
       jev_calls: jevCalls,
@@ -424,8 +461,9 @@ export async function checkAudio(args, ctx, options) {
   );
 
   const clearedText = cleared.length ? `, ${cleared.length} cleared by a second transcript` : "";
+  const leakText = leaks.size ? `, ${leaks.size} of them for a leaked word` : "";
   ctx.stdout.write(
-    `${dub ? `${locale} dub: ` : ""}${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters or filler words, ${judgedFine} judged fine by Jev${clearedText}, ${flagged.length} flagged (below ${threshold})\n`,
+    `${dub ? `${locale} dub: ` : ""}${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters or filler words, ${judgedFine} judged fine by Jev${clearedText}, ${flagged.length} flagged (below ${threshold}${leakText})\n`,
   );
   ctx.stdout.write(`${transcribed} clips transcribed now, ${jevCalls} Jev calls; details in ${cacheFile}\n`);
   if (journal.reused) ctx.stdout.write(`${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
@@ -439,7 +477,8 @@ export async function checkAudio(args, ctx, options) {
   if (secondFailed) ctx.stdout.write(`the second transcriber failed (${secondFailed}); the flags below stand\n`);
   for (const [id, entry] of flagged) {
     const other = entry.second ? `\n    ${entry.second.by}: ${entry.second.heard}` : "";
-    ctx.stdout.write(`  ${id}  Jev ${entry.noul.toFixed(2)}\n    script: ${entry.intended}\n    heard:  ${entry.heard}${other}\n`);
+    const why = leaks.has(id) ? `leaked word 「${leaks.get(id)}」, ${jevNote(entry)}` : jevNote(entry);
+    ctx.stdout.write(`  ${id}  ${why}\n    script: ${entry.intended}\n    heard:  ${entry.heard}${other}\n`);
   }
   if (flagged.length) {
     ctx.stdout.write(`next: fix the dictionary or the ${dub ? "translation" : "line"}, then node tools/video/cli.mjs ${remake} --redo ${flagsFile}\n`);
