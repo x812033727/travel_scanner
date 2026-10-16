@@ -1020,6 +1020,70 @@ function losing(site, lost) {
 /** The owner presses 重試這支影片 on /admin/videos. */
 const ownerRetries = (site, slug) => Object.assign(site.listed.get(slug), { retry_request_id: "2b06f60f-1026-477a-9d40-28683b00a22e", retry_acknowledged_id: null });
 
+test("a scheduled draft whose topic lookup is rate-limited waits out the window instead of asking again every round", async () => {
+  // 2026-10-13 to 10-16 on the host: every round (about five minutes) asked the topics four
+  // times, each try counted against its twelve an hour, and no scheduled draft was written.
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+  let limited = true;
+  let lookups = 0;
+  const fetchImpl = async (url, init = {}) => {
+    if (new URL(url).pathname === "/api/video/automation/topics") {
+      lookups += 1;
+      if (limited) return Response.json({ code: "rate_limit_exceeded", detail: "請求過於頻繁，請稍後再試" }, { status: 429, headers: { "Retry-After": "1800" } });
+    }
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-10-07T09:00:00Z") };
+  const { ctx, out } = context(box, fetchImpl, clock);
+  const global = () => readJson(path.join(box.work, "auto-state.json"), {});
+  const planners = () => site.calls.run.filter((call) => call.stage === "planner");
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /draft: the topic lookup could not finish \(rate_limit_exceeded: 請求過於頻繁，請稍後再試\); the scheduled draft waits until 2026-10-07T09:30:00\.000Z/);
+  assert.equal(lookups, 1, "asked once: a limit that opens in half an hour is not tried again within the round");
+  assert.deepEqual(global(), { draft_waits_until: "2026-10-07T09:30:00.000Z" }, "the interval is not spent: no draft was written");
+  assert.equal(planners().length, 0);
+
+  // The next rounds inside the window do not ask at all.
+  clock.now += 10 * 60_000;
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.equal(lookups, 1);
+
+  // Once it opens, the draft is written and the wait is cleared with the interval spent.
+  limited = false;
+  clock.now = Date.parse("2026-10-07T09:31:00Z");
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.equal(lookups, 2);
+  assert.equal(planners().length, 1);
+  assert.deepEqual(Object.keys(global()), ["last_draft_at"]);
+  assert.equal(global().last_draft_at, "2026-10-07T09:31:00.000Z");
+});
+
+test("a scheduled draft whose topic lookup fails for now waits half an hour when the server names no wait, and any other refusal still ends the run", async () => {
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+  let answer = () => Response.json({ code: "rate_limit_unavailable", detail: "限流服務暫時無法使用" }, { status: 503 });
+  const fetchImpl = async (url, init = {}) => {
+    if (new URL(url).pathname === "/api/video/automation/topics") return answer();
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-10-07T09:00:00Z") };
+  const { ctx, out } = context(box, fetchImpl, clock);
+  const global = () => readJson(path.join(box.work, "auto-state.json"), {});
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  // Half an hour from the last of the client's tries (5, 10 and 20 seconds apart).
+  assert.match(out.stdout, /draft: the topic lookup could not finish \(rate_limit_unavailable: 限流服務暫時無法使用\); the scheduled draft waits until 2026-10-07T09:30:35\.000Z/);
+  assert.equal(global().last_draft_at, undefined);
+
+  // A refusal that is no passing trouble (the token revoked) is the run's, as before.
+  answer = () => Response.json({ code: "video_tool_token_revoked", detail: "revoked" }, { status: 401 });
+  clock.now = Date.parse("2026-10-07T09:31:00Z");
+  assert.notEqual(await main(["auto"], ctx), EXIT.ok);
+  assert.equal(global().draft_waits_until, "2026-10-07T09:30:35.000Z", "left as it was");
+});
+
 test("a scheduled draft whose planner answer is lost leaves a blocked video under the draft's slug instead of being bought again every round, and the owner's retry plans it once under that slug", async () => {
   const box = sandbox();
   const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
