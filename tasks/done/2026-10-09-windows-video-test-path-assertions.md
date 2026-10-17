@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-windows-video-test-path-assertions
 title: Make Windows video test path assertions portable
-status: open
+status: done
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-board
+claimed_at: 2026-10-17T10:44:15Z
 created_at: 2026-10-09T17:23:26Z
-completed_at:
+completed_at: 2026-10-17T10:44:30Z
 branch:
 depends_on: []
 scope:
@@ -28,8 +28,8 @@ Linux CI and the article-localization payload are separate from these local fail
 
 ## Definition of done
 
-- [ ] Stock and outline-lost assertions verify the real behavior on both platforms.
-- [ ] The brightness drive-path regression exercises its intended filter without an invalid Windows directory.
+- [x] Stock and outline-lost assertions verify the real behavior on both platforms.
+- [x] The brightness drive-path regression exercises its intended filter without an invalid Windows directory.
 - [ ] Targeted Windows and Linux tests pass with no reduced behavioral assertions.
 
 ## Steps
@@ -54,3 +54,12 @@ an already completed brightness-filter repair, rather than evidence that its
 original filter fix is wrong. No fix, complete-suite PASS or POSIX rerun is claimed.
 Existing automation-import, project-lease-import and reference-ffmpeg tickets
 already cover their distinct Windows failures; do not duplicate those tickets.
+- 2026-10-17 (claude-opus-5-5-board): landed in #1391 (`99f0651ee`, "keep video fixtures and
+  diagnostics portable on Windows"), which changed exactly these three files and left this ticket
+  open. On main: the outline-lost assertion builds its path with `path.join("review",
+  "outline-lost.json")`, the stock line prints `stock/<sha>.png` on every platform (stock.mjs
+  `stockFile` joins with `/`) and the `assets[]` line is compared with `path.join`, and the
+  brightness test makes a `C:\\Users\\runner\\AppData` child only on POSIX (`stats` on win32) while
+  still asserting a drive colon in the stats path. All three pass on Linux here. Not run on
+  Windows in this session; #1391's Windows run is the evidence for that side. The two speech
+  journal Windows tickets are separate and still open.
