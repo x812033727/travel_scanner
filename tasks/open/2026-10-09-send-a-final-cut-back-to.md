@@ -1,11 +1,11 @@
 ---
 id: 2026-10-09-send-a-final-cut-back-to
 title: Send a final cut back to the writer when its demonstration score fails, instead of to the owner
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-demo-gate
+claimed_at: 2026-10-17T04:53:40Z
 created_at: 2026-10-09T02:41:25Z
 completed_at:
 branch:
@@ -14,6 +14,10 @@ scope:
   - apps/api/app/video_automation/judge.py
   - tools/video/automation/flow.mjs
   - tools/video/qa
+  - tools/video/automation/automation.test.mjs
+  - docs/videos/HANDS-OFF.md
+  - docs/videos/long-form/review.json
+  - docs/videos/long-form/review.md
 ---
 
 # Send a final cut back to the writer when its demonstration score fails, instead of to the owner
@@ -33,17 +37,17 @@ after every paid stage.
 
 ## Definition of done
 
-- [ ] A script whose demonstration score is under the threshold goes back to the writer with
+- [x] A script whose demonstration score is under the threshold goes back to the writer with
   the judge's reason, before narration and pictures are paid for.
-- [ ] The owner is asked only when the writer's revisions are used up, and the card says so.
-- [ ] A video already at the final gate is not sent back by this change.
+- [x] The owner is asked only when the writer's revisions are used up, and the card says so.
+- [x] A video already at the final gate is not sent back by this change.
 
 ## Steps
 
-- [ ] Find where the script could be scored between `lint` and `tts` (the outline judge and the
+- [x] Find where the script could be scored between `lint` and `tts` (the outline judge and the
   final policy judge are both in `apps/api/app/video_automation/judge.py`).
-- [ ] Decide with the owner how many revisions before it becomes theirs.
-- [ ] Tests for both paths, and the duration receipt if a bound file changes.
+- [x] Decide with the owner how many revisions before it becomes theirs.
+- [x] Tests for both paths, and the duration receipt if a bound file changes.
 
 ## How to verify
 
@@ -56,3 +60,14 @@ with the reason on the card after the last revision; a script that passes is unt
   PR 1392). Those rules are prompt text: this task is the gate that makes them hold.
 - Changing who decides at a gate is the owner's call (`docs/videos/HANDS-OFF.md`); ask before
   building.
+- 2026-10-17 (claude-opus-5-5-demo-gate): the owner answered 「退回兩次」. Built as `demoGate` in
+  flow.mjs, right after the storytelling panel and before `script approved` and every paid stage:
+  the narration goes to the existing `POST /video/automation/judge/policy` (no server change; the
+  site still picks the question set, so explainers and stories answer `demo: null`), a demo under
+  `SCRIPT_MIN_DEMO` (0.6) goes back through `fixScript(..., "Jev", "demo")`, whose
+  `MAX_PROMPT_FIX_ROUNDS` (2) gives the two revisions and then blocks with the note
+  (`prompt_fixes:demo`; the owner's retry resets it). The verdict is kept in
+  `review/demo-check.json`, bound to the narration's SHA-256, so an unchanged rewrite is not
+  asked again. Skipped once `narration synthesized` is done, for drama, stories and
+  compilations, and when the site answers 409 (no stance) or 404. Tests in
+  automation.test.mjs; the receipt is re-issued by an independent reviewer.

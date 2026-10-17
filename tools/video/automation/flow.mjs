@@ -43,6 +43,7 @@ import { localizationPlan, writeLocalizationRetention } from "../production/rete
 import { buildSheet, SHEET_PARTS, sheetContext, withoutContext } from "../i18n/cli.mjs";
 import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
 import { imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "../media/prompt-budget.mjs";
+import { policyRequest } from "../qa/policy.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID, PAUSE_CODES, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { acquireProjectLease, ProjectLeaseError } from "../core/project-lease.mjs";
@@ -91,6 +92,11 @@ export const MAX_STAGE_FAILURES = 2;
 // A drama's failed sheets, keyframes or clips are handed to the writer to fix the prompts, this
 // many times per kind, before the video is blocked for a person (docs/videos/DRAMA.md).
 export const MAX_PROMPT_FIX_ROUNDS = 2;
+// The demonstration a tutorial's script must show before its narration and pictures are paid for:
+// the final gate's own threshold (apps/api/app/video_automation/judge.py POLICY_MIN_DEMO), asked
+// earlier (demoGate). Its verdict is kept beside the review files, bound to the narration it read.
+export const SCRIPT_MIN_DEMO = 0.6;
+export const DEMO_CHECK = ["review", "demo-check.json"];
 // The media stages that take `--seed-offset` (media/keyframes.mjs): an owner retry of a video
 // the server stopped answering for (every seed's request hash spent its attempts) shifts the
 // stage's seeds, and `media()` passes the shift from state.seed_offsets.
@@ -2656,6 +2662,9 @@ export class Automation {
       const panelled = await this.narrativeGate(state);
       if (panelled) return panelled;
     }
+    // A tutorial's script is asked for its demonstration before anything is recorded or drawn.
+    const demonstrated = await this.demoGate(state, status);
+    if (demonstrated) return demonstrated;
     // An episode of a series: the owner reads the screenplay before any image or clip is paid for.
     if (next === "script approved") return this.scriptGate(state);
 
@@ -3358,6 +3367,51 @@ export class Automation {
     }
     state.narrative = { passed: false, rounds: round, failed: verdict.failed.map((each) => each.id) };
     return this.fixScript(state, `說故事檢查沒過：${verdict.problems.join("；")}`, "the storytelling panel", "narrative");
+  }
+
+  /**
+   * The demonstration check (ticket 2026-10-09-send-a-final-cut-back-to): a slides video's script
+   * is read by the final gate's policy judge before its narration is synthesized, and a script
+   * whose demonstration scores under SCRIPT_MIN_DEMO goes back to the writer with Jev's note, two
+   * times (MAX_PROMPT_FIX_ROUNDS); what still fails after that stops for the owner with the note,
+   * before narration or pictures are paid for. The site decides which videos are asked (an
+   * explainer or a story answers `demo: null` and passes). A video whose narration is already
+   * synthesized is past this point and is not sent back; a site with no stance or no judge leaves
+   * the check to the final gate as before. Only the demonstration is acted on here: the other
+   * answers are the final gate's.
+   */
+  async demoGate(state, status) {
+    if (state.format === "drama" || state.story || state.compilation) return null;
+    if (status.steps.some((step) => step.id === "narration synthesized" && step.done)) return null;
+    const dir = docDir(state.slug, this.ctx.root);
+    const briefFile = path.join(dir, "brief.md");
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const request = policyRequest({ doc: { ...video, slug: state.slug }, brief: existsSync(briefFile) ? readFileSync(briefFile, "utf8") : "" });
+    const script_sha256 = createHash("sha256").update(request.script).digest("hex");
+    const file = path.join(this.workdir(state.slug), ...DEMO_CHECK);
+    let verdict = readJson(file, null);
+    if (verdict?.script_sha256 !== script_sha256) {
+      let answer;
+      try {
+        answer = await this.api.judgePolicy(request);
+      } catch (error) {
+        if (!(error instanceof AutomationError)) throw error;
+        if ((error.status === 409 && error.code === "video_judge_not_enabled") || error.status === 404) return null;
+        if (error.code === RUN_UNCERTAIN) return this.unanswered(state, Object.assign(error, { stage: "judge", unit: "Jev's demonstration check" }));
+        if (error.who === "owner") throw error;
+        return this.defer(state, `Jev could not check the script's demonstration (${error.message})`, { what: "judge", everyone: Boolean(everyones(error)) });
+      }
+      if (typeof answer?.passed !== "boolean") return this.defer(state, "Jev checked the script's demonstration without a verdict", { what: "judge" });
+      const demo = typeof answer.demo === "number" ? answer.demo : null;
+      const note = typeof answer.note === "string" && answer.note.trim() ? answer.note.trim() : `有示範 ${demo?.toFixed(2) ?? "—"}`;
+      verdict = { script_sha256, demo, passed: demo === null || demo >= SCRIPT_MIN_DEMO, note, checked_at: this.ctx.now().toISOString() };
+      mkdirSync(path.dirname(file), { recursive: true });
+      atomicWrite(file, `${JSON.stringify(verdict, null, 2)}\n`);
+      this.cleared(state, "judge");
+      if (verdict.passed) return `${state.slug}: Jev found a demonstration in the script (${verdict.note})`;
+    }
+    if (verdict.passed) return null;
+    return this.fixScript(state, `示範不足（有示範低於 ${SCRIPT_MIN_DEMO}）：${verdict.note}`, "Jev", "demo");
   }
 
   /** series.json as lint reads it (a brand story is known by its `kind`), or null. */

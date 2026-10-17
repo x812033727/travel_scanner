@@ -214,8 +214,8 @@ function jevPick(choice, { passed = true, stance = 0.9, demo = 0.8, advice = 0.1
  * `judge(body)` answers the outline judgement (an object, or a Response for an error) once the
  * stance is written and the switch on; otherwise the site answers 409 as it does.
  */
-function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused = false, videos = [], dramaRequests = [], slidesRequests = [], judge = null } = {}) {
-  const calls = { run: [], reviews: [], reports: [], details: [], pages: [], drama: [], slides: [], topics: 0, judge: [] };
+function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused = false, videos = [], dramaRequests = [], slidesRequests = [], judge = null, policy = null } = {}) {
+  const calls = { run: [], reviews: [], reports: [], details: [], pages: [], drama: [], slides: [], topics: 0, judge: [], policy: [] };
   const files = new Map();
   const requests = dramaRequests.map((request) => ({ status: "queued", slug: null, ...request }));
   const slides = slidesRequests.map((request) => ({ status: "queued", slug: null, title: null, note: null, ...request }));
@@ -309,6 +309,12 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
       calls.judge.push(body);
       if (!current.auto_pick_outline || !current.channel_stance.trim()) return json({ code: "video_judge_not_enabled", detail: "頻道立場還是空白，或「由 Jev 挑大綱」關著；大綱照舊等站主" }, 409);
       const answer = judge ? judge(body) : json({ code: "not_found", detail: pathname }, 404);
+      return answer instanceof Response ? answer : json(answer);
+    }
+    // The policy judge (judge.py judge_policy), when a test gives one: an answer object or a Response.
+    if (pathname === "/api/video/automation/judge/policy" && policy) {
+      calls.policy.push(body);
+      const answer = policy(body);
       return answer instanceof Response ? answer : json(answer);
     }
     if (pathname === "/api/video/automation/topics") {
@@ -2816,6 +2822,76 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
     upload: (...parts) => path.join(workdir, "upload", ...parts),
   };
 }
+
+// Ticket 2026-10-09-send-a-final-cut-back-to: a script whose demonstration Jev scores low goes
+// back to its writer twice, then stops for the owner, before narration or pictures are paid for.
+const policyAnswer = (demo) => ({ stance: 0.85, demo, advice: 0.02, sponsored: 0.05, passed: demo === null || demo >= 0.6, note: `Jev：符合立場 0.85、${demo === null ? "有示範：不適用（解說）" : `有示範 ${demo.toFixed(2)}`}、建議 0.02、業配 0.05`, questions: demo === null ? "explainer" : "tutorial" });
+
+async function demoChecked(policy) {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug, { applies: "1、2" }), settings: { channel_stance: STANCE }, judge: () => jevPick("B"), policy });
+  const clock = { now: Date.parse("2026-10-17T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const workdir = path.join(box.work, slug);
+  const docFile = path.join(box.root, "docs", "videos", slug, "video.json");
+  const recorded = [];
+  ctx.runCommand = async (command, runCtx) => {
+    if (command[0] === "tts") {
+      recorded.push(command.join(" "));
+      mkdirSync(workdir, { recursive: true });
+      writeSyntheticNarration(readJson(docFile), readJson(path.join(box.root, "docs", "videos", "lexicon.json")), workdir);
+      return { code: 0, out: "narration" };
+    }
+    const { main: cli } = await import("../cli.mjs");
+    let out = "";
+    const sink = { write: (text) => (out += text) };
+    const code = await cli(command, { ...runCtx, stdout: sink, stderr: sink });
+    return { code, out };
+  };
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  for (const expected of [/Jev picked outline B/, /Jev chose outline B/, /script drafted/, /fact-check round 1/, /listener edit/]) assert.match(await automation.step(), expected);
+  return { site, automation, recorded, workdir, state: () => automatedVideos(box.work)[0], writerFixes: () => site.calls.run.filter((call) => call.stage === "writer" && call.payload.fix) };
+}
+
+test("a script whose demonstration Jev scores low goes back to the writer twice, then stops for the owner before narration is paid for", async () => {
+  const video = await demoChecked(() => policyAnswer(0.45));
+  const lines = [];
+  for (let round = 0; round < 30 && video.state().status !== "blocked"; round++) lines.push(await video.automation.step());
+  assert.equal(video.state().status, "blocked", lines.join("\n"));
+  assert.match(video.state().blocked, /^Jev sent the screenplay back 3 times: 示範不足（有示範低於 0\.6）：Jev：符合立場 0\.85、有示範 0\.45/);
+  assert.equal(video.state().blocked_kind, "prompt_fixes:demo");
+  assert.equal(video.writerFixes().length, 2, "two revisions");
+  assert.match(video.writerFixes()[0].payload.fix.problems[0], /^示範不足/);
+  assert.ok(lines.some((line) => /screenplay rewritten after Jev's note \(round 2\)/.test(line)));
+  assert.equal(video.site.calls.policy.length, 1, "an unchanged script is not asked again");
+  assert.deepEqual(Object.keys(video.site.calls.policy[0]).sort(), ["script", "slug", "viewpoint"]);
+  assert.deepEqual(video.recorded, [], "nothing was recorded");
+  const kept = readJson(path.join(video.workdir, "review", "demo-check.json"));
+  assert.deepEqual([kept.passed, kept.demo], [false, 0.45]);
+});
+
+test("a script that shows its demonstration, or an explainer's that is not asked, goes on to narration once", async () => {
+  for (const demo of [0.91, null]) {
+    const video = await demoChecked(() => policyAnswer(demo));
+    assert.match(await video.automation.step(), demo === null ? /Jev found a demonstration in the script \(Jev：符合立場 0\.85、有示範：不適用（解說）/ : /Jev found a demonstration in the script \(Jev：.*有示範 0\.91/);
+    assert.match(await video.automation.step(), /narration synthesized/);
+    assert.equal(video.writerFixes().length, 0);
+    // Past narration the check is not asked again, whatever it would say now.
+    rmSync(path.join(video.workdir, "review", "demo-check.json"));
+    await video.automation.step();
+    assert.equal(video.site.calls.policy.length, 1);
+  }
+});
+
+test("a site with no stance or no judge leaves the demonstration to the final gate", async () => {
+  for (const answer of [() => Response.json({ code: "video_judge_not_enabled", detail: "頻道立場還是空白" }, { status: 409 }), null]) {
+    const video = await demoChecked(answer);
+    assert.match(await video.automation.step(), /narration synthesized/);
+    assert.equal(video.writerFixes().length, 0);
+  }
+});
 
 test("a requested slides video tells the site its request is done once the upload is confirmed, and never as a drama request", async () => {
   const video = await finishedVideo({ slidesRequest: SLIDES_REQUEST });
