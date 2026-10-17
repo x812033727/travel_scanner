@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_CANDIDATE_HOLD",
+  "parent_candidate_manifest_sha256": "88ce01e6108927a6d22a59d14196719139010bd086478dcb2a62d1c27bf5eba1",
+  "named_changes": [
+    {
+      "location": "row.chapters.idea.point",
+      "before": "直線能走，轉彎卻讓壽司盤卡住。",
+      "after": "直線能走，轉角的輸送帶卻會壅塞，壽司盤跟著掉落。"
+    },
+    {
+      "location": "row.must_verify[3].claim",
+      "before": "轉彎卡盤約花十年解決；",
+      "after": "轉角輸送帶壅塞、壽司盤掉落的難題約花十年解決；"
+    },
+    {
+      "location": "series.chapters.idea.point",
+      "before": "直線能走，轉彎卻讓壽司盤卡住。",
+      "after": "直線能走，轉角的輸送帶卻會壅塞，壽司盤跟著掉落。"
+    },
+    {
+      "location": "series.must_verify[3].claim",
+      "before": "轉彎卡盤約花十年解決；",
+      "after": "轉角輸送帶壅塞、壽司盤掉落的難題約花十年解決；"
+    },
+    {
+      "location": "hook-s004.lines[75ea529f]",
+      "before": "他把點子帶回小店，盤子卻在轉角卡住；",
+      "after": "他把點子帶回小店，輸送帶卻在轉角堵住，盤子掉下來；"
+    },
+    {
+      "location": "hook.claims.h5.claim",
+      "before": "盤子卻在轉角卡住",
+      "after": "轉角的輸送帶壅塞，盤子掉落"
+    },
+    {
+      "location": "hook.loops.H02.what",
+      "before": "轉角卡住如何解開",
+      "after": "轉角堵帶掉盤的難題如何解開"
+    },
+    {
+      "location": "idea.loops.H02.what",
+      "before": "轉角卡住如何解開",
+      "after": "轉角堵帶掉盤的難題如何解開"
+    },
+    {
+      "location": "coverage.h5.claim",
+      "before": "盤子卻在轉角卡住",
+      "after": "轉角的輸送帶壅塞，盤子掉落"
+    },
+    {
+      "location": "engine-s041.data.tag",
+      "before": "機械學會／發明協會",
+      "after": "J-Net21／發明協會"
+    }
+  ],
+  "source_files": {
+    "B18.json": {
+      "before_sha256": "21122b7db5f97957ca89399b249a02e47e0b4465003e3653efbbf422b6043e9d",
+      "after_sha256": "aea048c910ce2041bd119c4585f24726a0d57fdea610656ab52bbf4bd09ccec3",
+      "changed": true
+    },
+    "series-adoption.json": {
+      "before_sha256": "971ae5310578f6395ef68352e0a86e61f49fcc4d6b30c14bb66ded6a8511f7a9",
+      "after_sha256": "76fb1266a84442ba92017e8d3e2817b94ce93889bd87da144bf909d53f72d440",
+      "changed": true
+    },
+    "claim-coverage.json": {
+      "before_sha256": "634af45cf3a43e84146a6f290933e34d481bdc2a1959271bcd629da705b2e662",
+      "after_sha256": "6c0ae4b8d4ab77c1d0d2903201ce4dcd692aa3ed87c986d15f4912b08c5b2f14",
+      "changed": true
+    },
+    "remapped-chapters/hook.json": {
+      "before_sha256": "a010545967b656c5ed43027b65e8e6ff8878790258bf194382a2816d71c699b3",
+      "after_sha256": "cb671336135ced6466e91ba7e33fd3a8f9629cf7bfb7f2c3d1dfca5689f747d1",
+      "changed": true
+    },
+    "remapped-chapters/origin.json": {
+      "before_sha256": "8d464a318133bf04ca804e3e4576fa6705ba483803277dc1c1664aae7bc32328",
+      "after_sha256": "8d464a318133bf04ca804e3e4576fa6705ba483803277dc1c1664aae7bc32328",
+      "changed": false
+    },
+    "remapped-chapters/idea.json": {
+      "before_sha256": "a2146a09a266d4dc851a1d74a2366a1421089007ea462aa104c8f9a60e6a18a0",
+      "after_sha256": "b1274f7a3f1635897c71e6263209a240c50194945b40c4eb36c9fa86d9d0d774",
+      "changed": true
+    },
+    "remapped-chapters/engine.json": {
+      "before_sha256": "cca8c696d25aa58a60e318945c4bf367d2d890052b1bd6fcef432473b63e866f",
+      "after_sha256": "06230be169b62b87d11eeab6dfc6ad419a3563f1c324e55a52acee31ddfbad99",
+      "changed": true
+    },
+    "remapped-chapters/turn.json": {
+      "before_sha256": "db8f192fa749637889831ecbdd482079e0d70d78d999c2e5fd841833d0fb3618",
+      "after_sha256": "db8f192fa749637889831ecbdd482079e0d70d78d999c2e5fd841833d0fb3618",
+      "changed": false
+    },
+    "remapped-chapters/now.json": {
+      "before_sha256": "03bf4603984b6404f73c31a6a60ceff92a70d3604b5da0f151374c72cf7fe00f",
+      "after_sha256": "03bf4603984b6404f73c31a6a60ceff92a70d3604b5da0f151374c72cf7fe00f",
+      "changed": false
+    }
+  },
+  "active_row_sha256": "21122b7db5f97957ca89399b249a02e47e0b4465003e3653efbbf422b6043e9d",
+  "active_review_sha256": "06012b65e0e3a9b911dda1432c9de61f73f01f28a91fb5b23a7fad0354e794ed",
+  "canonical_story_sha256_before": "da692f3833f3d5448e3ec7603f0549a4f9b1afe2828c00aa8ee657618584a5e1",
+  "canonical_story_sha256_after": "4585c9e5a2826cc1d1a4b2436958b17edad9c405dd81e195026d221deef80280",
+  "old_review_valid_for_new_story": false
+}

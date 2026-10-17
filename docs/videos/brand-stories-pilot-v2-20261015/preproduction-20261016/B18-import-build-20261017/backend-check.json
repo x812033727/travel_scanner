@@ -1,0 +1,29 @@
+{
+  "kind": "in-memory-diagnostic-not-compiled-import-file",
+  "story_ids": [
+    "A01",
+    "B18"
+  ],
+  "caveat_lengths": {
+    "A01": 528,
+    "B18": 821
+  },
+  "series_equal_to_active_compiled": true,
+  "A01_equal_to_active_compiled": true,
+  "B18_changed_compiled_keys": [
+    "caveats",
+    "chapters",
+    "logline",
+    "must_verify",
+    "names",
+    "sources",
+    "takeaway"
+  ],
+  "problems": [
+    "B18: caveats must be text of at most 800 characters"
+  ],
+  "refused": [
+    "B18"
+  ],
+  "ignored": []
+}

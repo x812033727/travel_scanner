@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "status": "UNREVIEWED_OFFLINE_CANDIDATE",
+  "slug": "story-rolling-suitcase-v2",
+  "round9_archive_sha256": "b988ed8af18e650985f85d6085d243c71032b0885172405645a40c86dc1a341a",
+  "round9_source_composite_sha256": "cf39296d597d36db3cafedc1c2ca5ae730dd104a34b1d1868fb5b83fc089c56b",
+  "round9_narrative_sha256": "dd458ee2b6eee90a3b358408c605620c108ca4387afb94249fd555abc01babab",
+  "round9_failed": [
+    "chapters_link",
+    "payoffs",
+    "one_thread"
+  ],
+  "sources": {
+    "zc7k": {
+      "url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+      "section": "paragraphs on the 1928 trip, family-made rolling cases, and son Bud fitting baby-carriage wheels with a telescoping wooden handle",
+      "read_limit": "Current direct open timed out; official site search cache and archived plan were readable. Source-bound editorial proposal, pending independent approval."
+    },
+    "7asx-samsonite": {
+      "url": "https://corporate.samsonite.com/on/demandware.static/-/Sites-InvestorRelations-Library/default/dwa68533ea/PDF/announcements/2011/20110602100852_Samsonite_Final_Prospectus_en.pdf",
+      "section": "HISTORY AND REORGANIZATION / Key Milestones, printed p.72, PDF P80, lines 3057-3058: presented Ultra Transporter, balanced four-wheel upright case, push or pull; p.72 line 3062 separately dates four-wheel Spinners to 2000; GLOSSARY printed p.40 / PDF P48 lines 1788-1790 defines multidirectional Spinner wheels",
+      "read_limit": "2011 company retrospective primary document, not a 1997 sales record"
+    },
+    "7asx-travelpro": {
+      "url": "https://travelpro.com/pages/our-history",
+      "section": "Our Story / The Origin, 1987, lines 279-288: two-wheeled upright suitcase pulled by an extendable handle",
+      "read_limit": "Company account; does not assert a technical lineage into Samsonite"
+    }
+  },
+  "changes": [
+    {
+      "chapter": "origin",
+      "path": "scenes[0].lines[0].text",
+      "scene": "origin-01",
+      "line_id": "zc7k",
+      "byte_offset": 753,
+      "before": "開場那一家人，其實早就不必一路提箱子：1928 年出發時，母親拉著兒子做的箱子。",
+      "after": "1928 年，母親拉著兒子做的箱子出發；輪子有了，這卻還是一家人的自製品。",
+      "before_utf8_bytes": 110,
+      "after_utf8_bytes": 101,
+      "source_sha256": "0c449e490e86cb1f505e6e72fb9747f31cc7396729d86cb41c810ec432285080",
+      "candidate_sha256": "750e8a98a86a4e51a9d63ea017c221be854a6110be43c2007efeda8e141ca0e7",
+      "inverse_restores_exact_source_bytes": true
+    },
+    {
+      "chapter": "now",
+      "path": "scenes[0].lines[0].text",
+      "scene": "now-01",
+      "line_id": "7asx",
+      "byte_offset": 664,
+      "before": "有。1997 年，Samsonite 推出平衡四輪直立箱，箱子能站著推了。",
+      "after": "從往後拉，到站著推，1997 年 Samsonite 發表了平衡四輪直立箱。",
+      "before_utf8_bytes": 81,
+      "after_utf8_bytes": 82,
+      "source_sha256": "dccf358d1e7ebeca5134b4f5b629c52597e2a8abd67883500d12fef9f6618e56",
+      "candidate_sha256": "a8781fd7777eabc07bdada1c97430f890d003571362b821c08571dacf7d00a01",
+      "inverse_restores_exact_source_bytes": true
+    }
+  ],
+  "source_chapters_sha256": {
+    "hook": "6092f556e92e53c45cf12d0526eb108892529f109c6b1ab19da588d25c05e81c",
+    "origin": "0c449e490e86cb1f505e6e72fb9747f31cc7396729d86cb41c810ec432285080",
+    "idea": "4e29ec76e866cd953f09c7f46e0afdaccd97317f25b82fde094957d1fabe3d6f",
+    "engine": "554bcb689657745484429fc23604f1c44ad5fb8498374180a25f9a627e6da89c",
+    "turn": "9e7f29962e363dfafcffc94f7edede02ca38fdf99eae419f282741cccf650583",
+    "now": "dccf358d1e7ebeca5134b4f5b629c52597e2a8abd67883500d12fef9f6618e56"
+  },
+  "candidate_chapters_sha256": {
+    "hook": "6092f556e92e53c45cf12d0526eb108892529f109c6b1ab19da588d25c05e81c",
+    "origin": "750e8a98a86a4e51a9d63ea017c221be854a6110be43c2007efeda8e141ca0e7",
+    "idea": "4e29ec76e866cd953f09c7f46e0afdaccd97317f25b82fde094957d1fabe3d6f",
+    "engine": "554bcb689657745484429fc23604f1c44ad5fb8498374180a25f9a627e6da89c",
+    "turn": "9e7f29962e363dfafcffc94f7edede02ca38fdf99eae419f282741cccf650583",
+    "now": "a8781fd7777eabc07bdada1c97430f890d003571362b821c08571dacf7d00a01"
+  },
+  "source_series_sha256": "53f9f4b71687bbca2ccc9d0d44ca2e7c7ac2efa9db3a36d1c9a0818ca6c8a3a6",
+  "source_video_sha256": "16b290c78ea72bcd723cc99812ddae73dc838c8c461c64c7b4777c3ea4037abe",
+  "source_lexicon_sha256": "ebfa590a69b4328ed9bc0141832bb73d27cba51963fca78778258d404c3bc4c9",
+  "source_brief_sha256": "c177663ea0b04234f5ed74f3f9646ff4e37b0803ba8a8beb861603fcbdb5e02f",
+  "preparation_script_sha256": "ef01e5b004b47d9e6f27aa0d0a2d77d866c18d2020d412bcdd615d6048da9570",
+  "unmodified_ids_visuals_loops_claims_flags": true,
+  "known_claim_text_drift": "now.json claims row for 7asx still says 推出了 while candidate narration says 發表了; held unchanged by two-line-only scope and requires independent fact/claim review before live use.",
+  "authorizes_pass_or_media": false,
+  "validation_status": "MECHANICAL_ONLY_NO_NARRATIVE_JUDGE",
+  "validation_file_sha256": "f51c759d80cc6b7f1b7251be23cb5154dab3801e2e41e57dddeb00b63516c383"
+}

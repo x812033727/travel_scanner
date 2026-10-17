@@ -61,6 +61,7 @@ const OWNER_CODES = new Set([
   "video_budget_operation_conflict",
   "video_budget_operation_reused",
   "video_budget_missing_account",
+  "video_budget_invalid_account",
   "video_pilot_durable_required",
   "video_ai_subscription_cli_outdated",
   "video_automation_settings_invalid",

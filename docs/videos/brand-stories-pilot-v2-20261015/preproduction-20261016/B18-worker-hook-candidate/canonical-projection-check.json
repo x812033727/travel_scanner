@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "status": "OFFICIAL_PILOT_PROJECTION_CONFIRMED_NO_BUILD",
+  "cause": "Initial reviewer check incorrectly hashed the whole compiled episode row. The official pilot builder first projects STORY_KEYS and strips must_verify.reviewer_only; number/publish are independently guarded row fields. There is no code or budget schema drift.",
+  "implementations": {
+    "plan_mjs_sha256": "5ec625989c2aa9f86ea837b6c03f189554746618825292ad1c30fad1b6988de5",
+    "other_worktree_plan_mjs_sha256": "5ec625989c2aa9f86ea837b6c03f189554746618825292ad1c30fad1b6988de5",
+    "pilot_build_mjs_sha256": "aca63359b111c6082aeb93f6ccbed75351d62dec65474a478cbbc7f1529d2162"
+  },
+  "hashes": {
+    "old_whole_row": "fcde3e82b5bd17406311c289bc542e85f3d81bda5b6057038f630b41da64bbba",
+    "new_whole_row": "16466f60a43a633a3eeab55c0cc4b374dd5f356f93adeb1e5477da1892378e2e",
+    "old_official_source": "f9be8cd707c30ac0260543f89bd5ce22960a3b5582d83c233fcce0db1633df23",
+    "new_official_source": "cf149a0d07f8a02d2914d8642237aa6117d67a53cd2758d9c68342ff48015fab"
+  },
+  "review": {
+    "file": "reviews/B18.json",
+    "sha256": "999890bb2b74f8b632bd9dce60e106a0fb4c8964b54ce6bdc15368d3a11f21ac",
+    "source_count": 3,
+    "notes_characters": 342,
+    "combined_caveats_characters": 792
+  },
+  "official_validation": {
+    "storyProblems": [],
+    "reviewProblems": [],
+    "old_review_on_old_source": [],
+    "old_review_on_new_source": [
+      "the story changed after this review: read it again and record the new hash (validate.mjs --hash <id>)"
+    ]
+  },
+  "immutable_original_review_sha256": "3a7bb438fc9ad1717d2d7fd902a4b238d85804fa394328b54730ead05d986834",
+  "new_note_draft_history": {
+    "file": "reviews/B18-draft-before-caveat-trim.json",
+    "sha256": "5a00613aca9c5a79424be6099f40816d613dbce867220b32bd70d90fc9d997c7",
+    "reason": "Only shorten reviewer prose so original448-character caveats plus review notes stay within official800-character combined gate; no candidate or factual wording change."
+  },
+  "repo_build_executed": false,
+  "repository_writes": 0,
+  "host_calls": 0,
+  "paid_calls": 0
+}

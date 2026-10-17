@@ -1,0 +1,126 @@
+{
+  "status": "READ_ONLY_SCHEMA_INVENTORY_NOT_CONTENT_REVIEW",
+  "episodes": [
+    {
+      "id": "A16",
+      "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A16/storyboard.json",
+      "sha256": "43603cbe0ff25b57d530a1e44e7053ecb7c431d2ec9fb79a2bff59e0c8f88025",
+      "shots": 83,
+      "cards": 16,
+      "card_shapes": [
+        "scope,source,text"
+      ],
+      "missing_scope_shots": [],
+      "loops": 9,
+      "all_setup_and_payoff_arrays": true,
+      "image_placements": 67,
+      "planned_unique_image_keys": 64,
+      "hook_reuse_pairs": [
+        [
+          "A16-S006",
+          "A16-S012"
+        ],
+        [
+          "A16-S007",
+          "A16-S041"
+        ],
+        [
+          "A16-S008",
+          "A16-S060"
+        ]
+      ]
+    },
+    {
+      "id": "A37",
+      "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A37/storyboard.json",
+      "sha256": "fac6450dac027e1645e21da9038d4cdf34673c2339e05313cfb6b517c1dd7d96",
+      "shots": 86,
+      "cards": 14,
+      "card_shapes": [
+        "scope,source,text"
+      ],
+      "missing_scope_shots": [],
+      "loops": 10,
+      "all_setup_and_payoff_arrays": true,
+      "image_placements": 72,
+      "planned_unique_image_keys": 69,
+      "hook_reuse_pairs": [
+        [
+          "A37-S004",
+          "A37-S024"
+        ],
+        [
+          "A37-S005",
+          "A37-S040"
+        ],
+        [
+          "A37-S006",
+          "A37-S082"
+        ]
+      ]
+    },
+    {
+      "id": "B14",
+      "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/B14/storyboard.json",
+      "sha256": "f79b820dc3c30bc5233941451bc1f9405b187bb848a94c8d40d907b2f18ca581",
+      "shots": 83,
+      "cards": 8,
+      "card_shapes": [
+        "scope,source,text"
+      ],
+      "missing_scope_shots": [],
+      "loops": 9,
+      "all_setup_and_payoff_arrays": true,
+      "image_placements": 75,
+      "planned_unique_image_keys": 72,
+      "hook_reuse_pairs": [
+        [
+          "B14-S004",
+          "B14-S022"
+        ],
+        [
+          "B14-S005",
+          "B14-S060"
+        ],
+        [
+          "B14-S006",
+          "B14-S073"
+        ]
+      ]
+    },
+    {
+      "id": "A21",
+      "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/storyboards/A21/storyboard.json",
+      "sha256": "a5fab1e0e5932c34ed64e2731e2f40aafbea608dd57856758963ba4f117ccba3",
+      "shots": 89,
+      "cards": 11,
+      "card_shapes": [
+        "scope,source,text"
+      ],
+      "missing_scope_shots": [],
+      "loops": 8,
+      "all_setup_and_payoff_arrays": true,
+      "image_placements": 78,
+      "planned_unique_image_keys": 75,
+      "hook_reuse_pairs": [
+        [
+          "A21-S004",
+          "A21-S035"
+        ],
+        [
+          "A21-S005",
+          "A21-S055"
+        ],
+        [
+          "A21-S006",
+          "A21-S067"
+        ]
+      ]
+    }
+  ],
+  "native_limitations": [
+    "Native loops accept scalar line IDs setup/payoff and what; original array windows require sidecar mapping.",
+    "image_asset_key is not a scene/shot field. Native data.source clips an earlier clip and cannot bind a still.",
+    "Identical image request parameters may hit cache; final independently selected image files can still differ and require file SHA comparison."
+  ]
+}

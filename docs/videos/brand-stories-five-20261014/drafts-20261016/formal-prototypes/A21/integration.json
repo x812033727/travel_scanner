@@ -1,0 +1,111 @@
+{
+  "kind": "offline-formal-prototype-with-open-gates",
+  "episode": "A21",
+  "verified_at": "2026-10-15T20:01:44.783Z",
+  "files": [
+    {
+      "file": "card-adapter-evidence.json",
+      "sha256": "dc602564d5cf249a1dd1371d1239caef9d564b984467173fe0664c53cec17c45",
+      "bytes": 8829
+    },
+    {
+      "file": "chapters/engine.json",
+      "sha256": "ccd3e666f2b9cc7a4ea2a475084ab88ab2fe6903f54615707292c3d5ce483730",
+      "bytes": 24131
+    },
+    {
+      "file": "chapters/hook.json",
+      "sha256": "57c8d03a1d477a3bb9f95e77b7a2770cdc64343cbfe8db77993d38d98d979250",
+      "bytes": 7451
+    },
+    {
+      "file": "chapters/idea.json",
+      "sha256": "1c7ef4c85fda6b7c469367f3c77485b8a03b8fa3b235f64ad699cafbb505f2b9",
+      "bytes": 15918
+    },
+    {
+      "file": "chapters/now.json",
+      "sha256": "44041e24d69ccf1f7d70d7668854453c12ef8ef265e6468e83fd35abf69693b7",
+      "bytes": 25197
+    },
+    {
+      "file": "chapters/origin.json",
+      "sha256": "23c72addcf3deb608cf64f36b5490b7faed81cfed53d1bca2085f47ea884d7f2",
+      "bytes": 12019
+    },
+    {
+      "file": "chapters/turn.json",
+      "sha256": "7e8a4ba747ba2490beb277d4e79b1924ed2cb867871acdbf2375cfa928c1ec90",
+      "bytes": 12957
+    },
+    {
+      "file": "compose-lint-evidence.json",
+      "sha256": "ca9c97b2d0cf343252eeb4bd70b61aa7fc0cdf34ce869ce9f6f49d75cd9c798a",
+      "bytes": 15081
+    },
+    {
+      "file": "HANDOFF.md",
+      "sha256": "6bf0701c4e40b3e7a2d4552a9bd801c6a013c98da2a7d40c435d1ba2896797f4",
+      "bytes": 6387
+    },
+    {
+      "file": "input-pins.json",
+      "sha256": "d8ac724e7b7eea8a3af0b406cc1e958b77368f07d055ac844300dac521ab2cc0",
+      "bytes": 8742
+    },
+    {
+      "file": "mapping.json",
+      "sha256": "a599e4898a74f5f52f446a7c023d3f53d5d161a374d19679075223fe312ad5cf",
+      "bytes": 286557
+    },
+    {
+      "file": "output-pins.json",
+      "sha256": "d2f577ac343f1ce9319a138e7008c791655b480e75c7a73fbd57dd1fdc721a19",
+      "bytes": 7390
+    },
+    {
+      "file": "series-input.json",
+      "sha256": "bb0ee910153cf20473fdabfbd486b4299394329fb09ae7ee4bf0a80dca991264",
+      "bytes": 827
+    },
+    {
+      "file": "series.json",
+      "sha256": "73fce18c2405578042c574302e2df27a34d9e0e49b0cd97947e368a6187fa4f9",
+      "bytes": 12720
+    },
+    {
+      "file": "shot-reading-evidence.json",
+      "sha256": "7026dfe89f7617795cc3cf1a64c9a9b50c7cfdf0782ad7dc55f6d37a42bd25c5",
+      "bytes": 49435
+    },
+    {
+      "file": "worker-row.json",
+      "sha256": "6363bcf1274110d26b0c590f76f7ff5606c348021f48ba59ef301e91d87d457c",
+      "bytes": 11225
+    },
+    {
+      "file": "sha256.json",
+      "sha256": "c254d28ddc024b916cde8e94fd3cf8488d8e89f087314586de1ab6b146f34283",
+      "bytes": 7674
+    }
+  ],
+  "historical_input_snapshots": [],
+  "independent_readback": {
+    "all_handoff_pins_match": true,
+    "input_pins_match": 53,
+    "paragraphs": 47,
+    "lines": 103,
+    "scenes": 89,
+    "all_narration_exact": true,
+    "all_claims_unchecked": true,
+    "all_cards_preserve_original_text_scope_source": true,
+    "all_image_prompt_camera_fields_preserved": true
+  },
+  "limitations": [
+    "Synthetic runtime files and card HTML/PNGs stay in the external work area. Original output/handoff indices also reference these omitted local artifacts.",
+    "Official tool reports are preserved including blocking lexicon errors and all warnings. This is no production or media PASS.",
+    "Actual source verification, accepted asset identity, TTS/audio, measured runtime and owner viewing remain pending."
+  ],
+  "host_calls": 0,
+  "paid_calls": 0
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "proposal_only": true,
+  "files": [
+    {
+      "base": "quote_directory",
+      "file": "B18-five-production-cost-proposal-v3.md",
+      "sha256": "4e0c47d6fd78159aae82ccce7d25bd39c19e6132d4a8549c1fa17292aeb23a83"
+    },
+    {
+      "base": "quote_directory",
+      "file": "B18-five-production-cost-proposal-v3.json",
+      "sha256": "08686ceef4bea59cfc87de8c1028e8671c931ee0267a14daa80f7b345699a816"
+    }
+  ],
+  "checks": {
+    "expected_five_unique_images": 349,
+    "actual_five_unique_images": 349,
+    "all_five_three_reuse_pairs_exact": true,
+    "source_pins_match": true,
+    "cost_arithmetic_checked": true,
+    "prior_v2_files_unchanged": true,
+    "no_absolute_local_paths": true,
+    "a21_final_editorial_review": "Parent independent storyboard review pinned; not a formal chapter or media PASS"
+  },
+  "external_working_archive": {
+    "builder": {
+      "file": "build-cost-proposal-v3.mjs",
+      "sha256": "ff693b15f857cf00e28832493754cc73d92a9663fda5e9e6566392c102ac83a9",
+      "portable_read_required": false
+    }
+  }
+}

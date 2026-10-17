@@ -1,0 +1,33 @@
+{
+  "status": "INDEPENDENT_LOCAL_RECONSTRUCTION_VERIFIED_NOT_WORKER_REVIEW",
+  "episode": "B14",
+  "source_sha256": "609d72a83af55bf3e1b59facd0e1500a0e86c5e0b1611d31cbcfeb0b7e8de2b5",
+  "storyboard_sha256": "f79b820dc3c30bc5233941451bc1f9405b187bb848a94c8d40d907b2f18ca581",
+  "paragraphs": 48,
+  "original_spoken_units": 2161,
+  "applied_source_scope_changes": [],
+  "spoken_units": 2161,
+  "shots": 83,
+  "illustrations": 75,
+  "cards": 8,
+  "unique_illustration_prompts": 72,
+  "max_consecutive_cards": 2,
+  "checks": [
+    "parse original six narration tables only",
+    "rebuild every paragraph once in exact order with no gaps or overlaps",
+    "exact source and storyboard hashes",
+    "all shot texts equal referenced slices",
+    "cards retain scope and source",
+    "series look, model and switchable CC"
+  ],
+  "does_not_prove": [
+    "formal chapter facts or listener review",
+    "actual TTS duration",
+    "generated images",
+    "render or playback",
+    "paid authorization"
+  ],
+  "host_calls": 0,
+  "model_calls": 0,
+  "paid_calls": 0
+}

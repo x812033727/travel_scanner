@@ -1,0 +1,791 @@
+{
+  "status": "OFFLINE_MECHANICAL_ONLY_HOLD_UNREVIEWED",
+  "source_snapshot": "A01-20261017-afternoon-fe35369c/snapshot-104",
+  "r2_manifest_sha256": "d25ad9e97a94c2c6172b05df2ff046de281832fde7df163a22fab024491aa78d",
+  "scenes": 69,
+  "lines": 79,
+  "claims": 74,
+  "narration_spoken_units": 1902,
+  "narration_characters_including_punctuation": 2426,
+  "added_scene_ids": [
+    "now-consumer-question",
+    "origin-1939-case",
+    "now-1993-test",
+    "now-1993-retail",
+    "now-1993-cabin",
+    "now-1993-limit"
+  ],
+  "changed_line_ids": [
+    "r17h01",
+    "r12o03",
+    "r15n01"
+  ],
+  "added_line_ids": [
+    "r3o01",
+    "r3n01",
+    "r3n02",
+    "r3n03",
+    "r3n04",
+    "r3n05"
+  ],
+  "loops": 10,
+  "lint_errors": [],
+  "lint_warning_count": 37,
+  "lint_warnings": [
+    {
+      "path": "scenes[7].lines[0] (r14o01)",
+      "message": "45 spoken units; split sentences longer than 40"
+    },
+    {
+      "path": "scenes[29].lines[0] (r17e01)",
+      "message": "42 spoken units; split sentences longer than 40"
+    },
+    {
+      "path": "scenes[40].lines[0] (r16e01)",
+      "message": "41 spoken units; split sentences longer than 40"
+    },
+    {
+      "path": "scenes",
+      "message": "24 of 68 pictures name no shot size (close-up, medium, wide, overhead, low angle, from behind…): say how close the camera is in hook-anita, origin-budget, origin-sketches, origin-r12-03 and 20 more"
+    },
+    {
+      "path": "scenes",
+      "message": "\"logo\" is in 39 of 68 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"suitcase\" is in 38 of 68 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"generic\" is in 31 of 68 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes[6] (hook-06)",
+      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[7] (origin-budget)",
+      "message": "about 11.8 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[9] (origin-03)",
+      "message": "about 10.5 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[28] (engine-02)",
+      "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[29] (engine-porter)",
+      "message": "about 11.1 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[35] (engine-08)",
+      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[38] (engine-wobble-01)",
+      "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[40] (engine-10b)",
+      "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.median: median shot 7.3 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.p90: 90th percentile shot 10.6 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-01, hook-02b, hook-anita, hook-04, hook-06, origin-budget, origin-r12-01, origin-03, … 57) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.longest: longest shot 11.8 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-anita, hook-06, origin-budget, origin-03, origin-sketches, origin-r12-03, origin-1939-case, idea-14, … 18) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-01, hook-02) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.opening30: shots that start in the first 30 s 5, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.median: median line length 25 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.long: lines over 20 characters 68%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-01, hook-02b, hook-anita, hook-06, origin-budget, origin-r12-01, origin-03, origin-01b, … 52) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.named: shots that name no shot size 44%, target ≤ 20%; start `camera` with the size: Wide, Medium shot, Medium close-up, Close-up, Insert … (hook-01, hook-anita, origin-budget, origin-sketches, origin-r12-03, origin-1939-case, origin-06, idea-memory, … 30) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.face: faces (medium close-up and closer, over-the-shoulder) 39%, target ≥ 40%; the audience follows a face; give each turn of the scene a face that reacts (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.insert: inserts 3%, target 5%–25%; an insert answers a story question (which paper, whose hand); too few hides the proof, too many hides the people (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.reestablish: longest run without a wide or group shot 21 shots, target ≤ 9; after a move, an entrance or a new beat, re-establish the room (turn-06, now-06) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-01, hook-02, hook-02b, hook-03, hook-anita, hook-04, hook-06, origin-budget, … 68) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.run: such shots in a row 68 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-01, hook-02, hook-02b, hook-03, hook-anita, hook-04, hook-06, origin-budget, … 68) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-01, hook-02, hook-02b) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft risk.decorative: shots with nobody in them that are not inserts 10% (7), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (idea-r12-02, idea-r12-06, engine-07, engine-07b, turn-emmer-07, turn-r12-01, turn-09) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "about 8.8 minutes; the target is 9-11"
+    },
+    {
+      "path": "scenes",
+      "message": "no open loop between 05:11 and 06:42 (91 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「1928」 is said in 3 lines (r17h01, r12o01, r13o02): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「1970」 is said in 3 lines (47gq, dgbq, amrq): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "youtube",
+      "message": "youtube.tags: 12 tags; package keeps the first 10, so put the zh-TW terms and the English product names first"
+    }
+  ],
+  "cute_visual_errors": [],
+  "estimated_timing_not_tts": {
+    "250": {
+      "r2_seconds": 480.8,
+      "candidate_seconds": 530.3,
+      "added_seconds": 49.5,
+      "shortfall_to_540_seconds": 9.7,
+      "six_chapter_seconds": [
+        {
+          "scene_id": "hook-01",
+          "seconds": 50.7
+        },
+        {
+          "scene_id": "origin-budget",
+          "seconds": 82.7
+        },
+        {
+          "scene_id": "idea-memory",
+          "seconds": 66.6
+        },
+        {
+          "scene_id": "engine-01",
+          "seconds": 111.7
+        },
+        {
+          "scene_id": "turn-04",
+          "seconds": 91.4
+        },
+        {
+          "scene_id": "now-crew-request",
+          "seconds": 127.4
+        }
+      ],
+      "added_line_seconds": {
+        "r3o01": 8.2,
+        "r3n01": 7.3,
+        "r3n02": 8,
+        "r3n03": 7.5,
+        "r3n04": 8.9,
+        "r3n05": 8.9
+      },
+      "loops": [
+        {
+          "setup": "r17h01",
+          "payoff": "r3o01",
+          "gap_seconds": 84.5
+        },
+        {
+          "setup": "b6mn",
+          "payoff": "76ur",
+          "gap_seconds": 212
+        },
+        {
+          "setup": "jtmg",
+          "payoff": "3zwf",
+          "gap_seconds": 351.6
+        },
+        {
+          "setup": "r14i02",
+          "payoff": "idiy",
+          "gap_seconds": 17.7
+        },
+        {
+          "setup": "zaky",
+          "payoff": "76ur",
+          "gap_seconds": 51.6
+        },
+        {
+          "setup": "r17e01",
+          "payoff": "8n2r",
+          "gap_seconds": 12.4
+        },
+        {
+          "setup": "r12t01",
+          "payoff": "3zwf",
+          "gap_seconds": 24.9
+        },
+        {
+          "setup": "3zwf",
+          "payoff": "r15n01",
+          "gap_seconds": 14
+        },
+        {
+          "setup": "r15n02",
+          "payoff": "jspd",
+          "gap_seconds": 25.4
+        },
+        {
+          "setup": "r3n01",
+          "payoff": "r3n05",
+          "gap_seconds": 40.9
+        }
+      ],
+      "explicit_question_cadence_45": {
+        "rule": "declared later-payoff voiced questions only",
+        "max_gap_seconds": 204,
+        "gaps_over_45_seconds": [
+          {
+            "from": "body:start",
+            "to": "r17e01",
+            "seconds": 176.1
+          },
+          {
+            "from": "r17e01",
+            "to": "r3n01",
+            "seconds": 204
+          },
+          {
+            "from": "r3n01",
+            "to": "body:end",
+            "seconds": 80.8
+          }
+        ],
+        "devices": [
+          {
+            "at": 50.666666666666664,
+            "id": "body:start"
+          },
+          {
+            "at": 226.76666666666668,
+            "id": "r17e01"
+          },
+          {
+            "at": 430.8,
+            "id": "r3n01"
+          },
+          {
+            "at": 511.56666666666666,
+            "id": "body:end"
+          }
+        ]
+      },
+      "action_proxy_cadence_45_not_pass": {
+        "rule": "unreviewed declared action/question arcs; visual anti-spoiler review required",
+        "max_gap_seconds": 144.5,
+        "gaps_over_45_seconds": [
+          {
+            "from": "body:start",
+            "to": "r14i02",
+            "seconds": 95.5
+          },
+          {
+            "from": "r14i02",
+            "to": "zaky",
+            "seconds": 53.7
+          },
+          {
+            "from": "r17e01",
+            "to": "r12t01",
+            "seconds": 144.5
+          },
+          {
+            "from": "r3n01",
+            "to": "body:end",
+            "seconds": 80.8
+          }
+        ],
+        "devices": [
+          {
+            "at": 50.666666666666664,
+            "id": "body:start"
+          },
+          {
+            "at": 146.16666666666666,
+            "id": "r14i02"
+          },
+          {
+            "at": 199.9,
+            "id": "zaky"
+          },
+          {
+            "at": 226.76666666666668,
+            "id": "r17e01"
+          },
+          {
+            "at": 371.26666666666665,
+            "id": "r12t01"
+          },
+          {
+            "at": 402.96666666666664,
+            "id": "3zwf"
+          },
+          {
+            "at": 410.23333333333335,
+            "id": "r15n02"
+          },
+          {
+            "at": 430.8,
+            "id": "r3n01"
+          },
+          {
+            "at": 511.56666666666666,
+            "id": "body:end"
+          }
+        ]
+      },
+      "legacy_hook_cadence_warnings": [
+        {
+          "path": "scenes",
+          "message": "no open loop between 05:11 and 06:42 (91 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)"
+        }
+      ]
+    },
+    "275": {
+      "r2_seconds": 443.5,
+      "candidate_seconds": 489,
+      "added_seconds": 45.5,
+      "shortfall_to_540_seconds": 51,
+      "six_chapter_seconds": [
+        {
+          "scene_id": "hook-01",
+          "seconds": 46.8
+        },
+        {
+          "scene_id": "origin-budget",
+          "seconds": 76.1
+        },
+        {
+          "scene_id": "idea-memory",
+          "seconds": 61.6
+        },
+        {
+          "scene_id": "engine-01",
+          "seconds": 102.9
+        },
+        {
+          "scene_id": "turn-04",
+          "seconds": 84.3
+        },
+        {
+          "scene_id": "now-crew-request",
+          "seconds": 117.3
+        }
+      ],
+      "added_line_seconds": {
+        "r3o01": 7.6,
+        "r3n01": 6.7,
+        "r3n02": 7.3,
+        "r3n03": 6.9,
+        "r3n04": 8.2,
+        "r3n05": 8.2
+      },
+      "loops": [
+        {
+          "setup": "r17h01",
+          "payoff": "r3o01",
+          "gap_seconds": 77.8
+        },
+        {
+          "setup": "b6mn",
+          "payoff": "76ur",
+          "gap_seconds": 195.5
+        },
+        {
+          "setup": "jtmg",
+          "payoff": "3zwf",
+          "gap_seconds": 324.2
+        },
+        {
+          "setup": "r14i02",
+          "payoff": "idiy",
+          "gap_seconds": 16.4
+        },
+        {
+          "setup": "zaky",
+          "payoff": "76ur",
+          "gap_seconds": 47.6
+        },
+        {
+          "setup": "r17e01",
+          "payoff": "8n2r",
+          "gap_seconds": 11.4
+        },
+        {
+          "setup": "r12t01",
+          "payoff": "3zwf",
+          "gap_seconds": 23
+        },
+        {
+          "setup": "3zwf",
+          "payoff": "r15n01",
+          "gap_seconds": 13
+        },
+        {
+          "setup": "r15n02",
+          "payoff": "jspd",
+          "gap_seconds": 23.5
+        },
+        {
+          "setup": "r3n01",
+          "payoff": "r3n05",
+          "gap_seconds": 37.7
+        }
+      ],
+      "explicit_question_cadence_45": {
+        "rule": "declared later-payoff voiced questions only",
+        "max_gap_seconds": 188.2,
+        "gaps_over_45_seconds": [
+          {
+            "from": "body:start",
+            "to": "r17e01",
+            "seconds": 162.4
+          },
+          {
+            "from": "r17e01",
+            "to": "r3n01",
+            "seconds": 188.2
+          },
+          {
+            "from": "r3n01",
+            "to": "body:end",
+            "seconds": 74.4
+          }
+        ],
+        "devices": [
+          {
+            "at": 46.8,
+            "id": "body:start"
+          },
+          {
+            "at": 209.2,
+            "id": "r17e01"
+          },
+          {
+            "at": 397.3666666666667,
+            "id": "r3n01"
+          },
+          {
+            "at": 471.73333333333335,
+            "id": "body:end"
+          }
+        ]
+      },
+      "action_proxy_cadence_45_not_pass": {
+        "rule": "unreviewed declared action/question arcs; visual anti-spoiler review required",
+        "max_gap_seconds": 133.2,
+        "gaps_over_45_seconds": [
+          {
+            "from": "body:start",
+            "to": "r14i02",
+            "seconds": 88
+          },
+          {
+            "from": "r14i02",
+            "to": "zaky",
+            "seconds": 49.7
+          },
+          {
+            "from": "r17e01",
+            "to": "r12t01",
+            "seconds": 133.2
+          },
+          {
+            "from": "r3n01",
+            "to": "body:end",
+            "seconds": 74.4
+          }
+        ],
+        "devices": [
+          {
+            "at": 46.8,
+            "id": "body:start"
+          },
+          {
+            "at": 134.76666666666668,
+            "id": "r14i02"
+          },
+          {
+            "at": 184.46666666666667,
+            "id": "zaky"
+          },
+          {
+            "at": 209.2,
+            "id": "r17e01"
+          },
+          {
+            "at": 342.3666666666667,
+            "id": "r12t01"
+          },
+          {
+            "at": 371.6666666666667,
+            "id": "3zwf"
+          },
+          {
+            "at": 378.3666666666667,
+            "id": "r15n02"
+          },
+          {
+            "at": 397.3666666666667,
+            "id": "r3n01"
+          },
+          {
+            "at": 471.73333333333335,
+            "id": "body:end"
+          }
+        ]
+      },
+      "legacy_hook_cadence_warnings": []
+    },
+    "300": {
+      "r2_seconds": 411,
+      "candidate_seconds": 453.2,
+      "added_seconds": 42.2,
+      "shortfall_to_540_seconds": 86.8,
+      "six_chapter_seconds": [
+        {
+          "scene_id": "hook-01",
+          "seconds": 43.4
+        },
+        {
+          "scene_id": "origin-budget",
+          "seconds": 70.5
+        },
+        {
+          "scene_id": "idea-memory",
+          "seconds": 57.1
+        },
+        {
+          "scene_id": "engine-01",
+          "seconds": 95.3
+        },
+        {
+          "scene_id": "turn-04",
+          "seconds": 78.2
+        },
+        {
+          "scene_id": "now-crew-request",
+          "seconds": 108.7
+        }
+      ],
+      "added_line_seconds": {
+        "r3o01": 7,
+        "r3n01": 6.2,
+        "r3n02": 6.8,
+        "r3n03": 6.4,
+        "r3n04": 7.6,
+        "r3n05": 7.6
+      },
+      "loops": [
+        {
+          "setup": "r17h01",
+          "payoff": "r3o01",
+          "gap_seconds": 72.1
+        },
+        {
+          "setup": "b6mn",
+          "payoff": "76ur",
+          "gap_seconds": 181.2
+        },
+        {
+          "setup": "jtmg",
+          "payoff": "3zwf",
+          "gap_seconds": 300.5
+        },
+        {
+          "setup": "r14i02",
+          "payoff": "idiy",
+          "gap_seconds": 15.2
+        },
+        {
+          "setup": "zaky",
+          "payoff": "76ur",
+          "gap_seconds": 44.1
+        },
+        {
+          "setup": "r17e01",
+          "payoff": "8n2r",
+          "gap_seconds": 10.6
+        },
+        {
+          "setup": "r12t01",
+          "payoff": "3zwf",
+          "gap_seconds": 21.4
+        },
+        {
+          "setup": "3zwf",
+          "payoff": "r15n01",
+          "gap_seconds": 12
+        },
+        {
+          "setup": "r15n02",
+          "payoff": "jspd",
+          "gap_seconds": 21.7
+        },
+        {
+          "setup": "r3n01",
+          "payoff": "r3n05",
+          "gap_seconds": 34.9
+        }
+      ],
+      "explicit_question_cadence_45": {
+        "rule": "declared later-payoff voiced questions only",
+        "max_gap_seconds": 174.4,
+        "gaps_over_45_seconds": [
+          {
+            "from": "body:start",
+            "to": "r17e01",
+            "seconds": 150.5
+          },
+          {
+            "from": "r17e01",
+            "to": "r3n01",
+            "seconds": 174.4
+          },
+          {
+            "from": "r3n01",
+            "to": "body:end",
+            "seconds": 68.9
+          }
+        ],
+        "devices": [
+          {
+            "at": 43.4,
+            "id": "body:start"
+          },
+          {
+            "at": 193.9,
+            "id": "r17e01"
+          },
+          {
+            "at": 368.3,
+            "id": "r3n01"
+          },
+          {
+            "at": 437.2,
+            "id": "body:end"
+          }
+        ]
+      },
+      "action_proxy_cadence_45_not_pass": {
+        "rule": "unreviewed declared action/question arcs; visual anti-spoiler review required",
+        "max_gap_seconds": 123.4,
+        "gaps_over_45_seconds": [
+          {
+            "from": "body:start",
+            "to": "r14i02",
+            "seconds": 81.5
+          },
+          {
+            "from": "r14i02",
+            "to": "zaky",
+            "seconds": 46.1
+          },
+          {
+            "from": "r17e01",
+            "to": "r12t01",
+            "seconds": 123.4
+          },
+          {
+            "from": "r3n01",
+            "to": "body:end",
+            "seconds": 68.9
+          }
+        ],
+        "devices": [
+          {
+            "at": 43.4,
+            "id": "body:start"
+          },
+          {
+            "at": 124.9,
+            "id": "r14i02"
+          },
+          {
+            "at": 171,
+            "id": "zaky"
+          },
+          {
+            "at": 193.9,
+            "id": "r17e01"
+          },
+          {
+            "at": 317.3,
+            "id": "r12t01"
+          },
+          {
+            "at": 344.5,
+            "id": "3zwf"
+          },
+          {
+            "at": 350.7,
+            "id": "r15n02"
+          },
+          {
+            "at": 368.3,
+            "id": "r3n01"
+          },
+          {
+            "at": 437.2,
+            "id": "body:end"
+          }
+        ]
+      },
+      "legacy_hook_cadence_warnings": []
+    }
+  },
+  "duration_540_gate": "HOLD",
+  "explicit_45_second_gate": "HOLD",
+  "independent_fact_review": "NOT_RUN",
+  "independent_listener_review": "NOT_RUN",
+  "independent_visual_review": "NOT_RUN",
+  "script_review_receipt": "NOT_ISSUED",
+  "actual_tts_or_media": "NOT_RUN",
+  "production_or_paid_work": "NOT_RUN"
+}

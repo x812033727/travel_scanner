@@ -1,0 +1,133 @@
+{
+  "kind": "offline-formal-prototype-with-open-gates",
+  "episode": "A16",
+  "verified_at": "2026-10-15T19:54:44.650Z",
+  "files": [
+    {
+      "file": "card-adapter-evidence.json",
+      "sha256": "73081a80748e5dbdd15b26e32ea86c60c4175bef4ff299fda10bdcb32945b7d6",
+      "bytes": 8916
+    },
+    {
+      "file": "chapters/engine.json",
+      "sha256": "ae37412a01d19c76f710d7a8aeae9fa81dc4117aca0de368db83ff01fbf68027",
+      "bytes": 13994
+    },
+    {
+      "file": "chapters/hook.json",
+      "sha256": "7da98d7a6f132528a5588026c6eb7ffca8e313892f4a854878ae8816a7db663f",
+      "bytes": 8195
+    },
+    {
+      "file": "chapters/idea.json",
+      "sha256": "185d0c8def498a601f132e3bd2ebbda1051baca16d893185513fb577cf91985f",
+      "bytes": 13176
+    },
+    {
+      "file": "chapters/now.json",
+      "sha256": "ff5817676b71e99ae6954334659108250cb71105bf1cc515bcc3f0ed5c826202",
+      "bytes": 13827
+    },
+    {
+      "file": "chapters/origin.json",
+      "sha256": "d1d5c5751879a23de7aeab382d662cc0b06f2c0b0f567247775b6d656e996450",
+      "bytes": 12090
+    },
+    {
+      "file": "chapters/turn.json",
+      "sha256": "071f2d9422e0cdaedfcc223a5e6fd8b83b1db794ed1d3413fed1558d097f66be",
+      "bytes": 15705
+    },
+    {
+      "file": "compose-lint-evidence.json",
+      "sha256": "599f1586ec0909174b14a251f0b260625bf8812e66c5b997d67ca530efdfa4b6",
+      "bytes": 21991
+    },
+    {
+      "file": "input-pins.json",
+      "sha256": "a0608f3b354984ec635fe20aa98516939f136267284920a620bd3c649a10013c",
+      "bytes": 7372
+    },
+    {
+      "file": "mapping.json",
+      "sha256": "bfece270b9994b6d1e9a5a9b8fa61c3fe1fb20fa2a4af656157e4bbaac671daa",
+      "bytes": 219427
+    },
+    {
+      "file": "output-pins.json",
+      "sha256": "b9c17f7dd6e3dd191a575521beab7b0b4253f96f8967dca465a535e0adf74085",
+      "bytes": 3468
+    },
+    {
+      "file": "readiness.json",
+      "sha256": "c971fceffb0e432bfd9fb22dd71e6d53f3b97496012acfe27f3754bb3835b15e",
+      "bytes": 16567
+    },
+    {
+      "file": "READINESS.md",
+      "sha256": "85b94f9a7991709f29f462aa5dd309f5ad4ceee2670f61a66d763e2929768a36",
+      "bytes": 4547
+    },
+    {
+      "file": "remaining-schema-inventory.json",
+      "sha256": "afba2fc8a5ba0dcccc5e649a1d72f7a2c6d9647a0ac6f48639186b184a22916d",
+      "bytes": 3328
+    },
+    {
+      "file": "series-input.json",
+      "sha256": "bb0ee910153cf20473fdabfbd486b4299394329fb09ae7ee4bf0a80dca991264",
+      "bytes": 827
+    },
+    {
+      "file": "series.json",
+      "sha256": "cdcf9a153e26173f308077a1dbf3ee53d916dd74f07d72114173c4906b71dd37",
+      "bytes": 14472
+    },
+    {
+      "file": "shot-reading-evidence.json",
+      "sha256": "a261bba263f1d137d233eddb6cf463dc8e6476b8d6a61762422c3f75ba331203",
+      "bytes": 42526
+    },
+    {
+      "file": "worker-row.json",
+      "sha256": "a45fe422e1e8b9cdf266d68e51bcc12e5d6d083bd7af87f2f029eba774a055d8",
+      "bytes": 12364
+    },
+    {
+      "file": "handoff-pins.json",
+      "sha256": "faa8b61b7c9cbb484d46d7018f023d630ffac0de330b48a7ccd6bde3829c4be4",
+      "bytes": 4001
+    },
+    {
+      "file": "source-context/formal-prototypes-README.md",
+      "sha256": "8f3c277a923b92097416cfbcd8dcecdc532e56e0a638179bd8558c977ec5402f",
+      "bytes": 2770
+    }
+  ],
+  "historical_input_snapshots": [
+    {
+      "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/formal-prototypes/README.md",
+      "sha256": "8f3c277a923b92097416cfbcd8dcecdc532e56e0a638179bd8558c977ec5402f",
+      "snapshot": "source-context/formal-prototypes-README.md",
+      "reason": "Informational README was updated after this prototype was authored; narrative and executable inputs still match current files."
+    }
+  ],
+  "independent_readback": {
+    "all_handoff_pins_match": true,
+    "input_pins_match": 45,
+    "paragraphs": 50,
+    "lines": 95,
+    "scenes": 83,
+    "all_narration_exact": true,
+    "all_claims_unchecked": true,
+    "all_cards_preserve_original_text_scope_source": true,
+    "all_image_prompt_camera_fields_preserved": true
+  },
+  "limitations": [
+    "Synthetic runtime files and card HTML/PNGs stay in the external work area. Original output/handoff indices also reference these omitted local artifacts.",
+    "Official tool reports are preserved including blocking lexicon errors and all warnings. This is no production or media PASS.",
+    "Actual source verification, accepted asset identity, TTS/audio, measured runtime and owner viewing remain pending."
+  ],
+  "host_calls": 0,
+  "paid_calls": 0
+}

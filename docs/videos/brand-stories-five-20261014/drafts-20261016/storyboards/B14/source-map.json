@@ -1,0 +1,426 @@
+{
+  "sources": [
+    {
+      "alias": "S1",
+      "active_worker_source_index_zero_based": 0,
+      "url": "https://www.umamiinfo.jp/ikedakikunae/",
+      "publisher": "うま味インフォメーションセンター，池田菊苗歷史頁",
+      "kind": "reference",
+      "supports": "S1 昆布からうま味成分を発見：1907春妻子買昆布、池田在東京帝大研究；麩胺酸／鮮味、調低酸味、比較鹽類選鈉及易溶性。旁白保留中心歸屬，不是當年目擊錄音或操作教學。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "S2",
+      "active_worker_source_index_zero_based": 1,
+      "url": "https://www.ajinomoto.co.jp/company/jp/aboutus/history/chronology/index.html",
+      "publisher": "味之素，官方年表",
+      "kind": "official",
+      "supports": "S2 1908/1909段：1908年7月取得調味料製法專利、9月池田與鈴木共有權利、12月製造；1909-05-20一般販售。未採世界第一，未延伸7月到特定日。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "S3",
+      "active_worker_source_index_zero_based": 2,
+      "url": "https://www.ajinomoto.co.jp/company/jp/aboutus/history/story/09/",
+      "publisher": "味之素100年史第7章，1969–1980",
+      "kind": "official",
+      "supports": "S3 あらすじ首段：公司社史記1969美國安全質疑、實驗與向各地說明，1980 FDA等機構認可。1980歸屬公司，不能當FDA問答自己列的年份。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "S4",
+      "active_worker_source_index_zero_based": 3,
+      "url": "https://www.fda.gov/food/food-additives-petitions/questions-and-answers-monosodium-glutamate-msg",
+      "publisher": "U.S. FDA，MSG問答（頁面日期2012-11-19）",
+      "kind": "official",
+      "supports": "S4 Is MSG safe及adverse reports段：添加MSG屬GRAS；1990年代委託審查認安全，少數敏感者未伴食物≥3g可短暫、通常輕微不適，非GRAS附加條件。製法段說今日植物原料發酵，不能套舊製程副產物。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "S5",
+      "active_worker_source_index_zero_based": 4,
+      "url": "https://www.ajinomoto.com/stories/the-ajinomoto-groups-unexpected-role-in-semiconductor-manufacturing-the-insulating-film-abf-born-from-aminoscience",
+      "publisher": "Ajinomoto Group，ABF團隊專訪，2026年3月",
+      "kind": "official",
+      "supports": "S5用途／副產物／製程／客需段：樹脂路線、1999 ABF、液態塗布兩面等乾、2010起需求多樣、設計階段技術支援與產業協作。Kitano約95%限HPC／伺服器FC-BGA類封裝絕緣材料，公司自述非獨立調查。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "S6",
+      "active_worker_source_index_zero_based": 5,
+      "url": "https://www.ajinomoto.com/innovation/our_innovation/buildupfilm",
+      "publisher": "Ajinomoto Group，Innovation Story：ABF",
+      "kind": "official",
+      "supports": "S6 Integration／Precision circuitry／Processing段：有機樹脂、硬化劑與無機微粒混合分散，熱固性薄膜與1999採用，雷射／鍍銅及熱膨脹、加工評估、反覆測試；不把副產物直接當配方、不自造溫度或材料比例。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "S7",
+      "active_worker_source_index_zero_based": 6,
+      "url": "https://www.ajinomoto.com/stories/sprinting-a-marathon-the-pioneering-technology-behind-todays-computer-brains",
+      "publisher": "Ajinomoto Group，ABF開發回顧，2020年5月",
+      "kind": "official",
+      "supports": "S7開發段：1996 CPU廠提出薄膜需求、Shigeo Nakamura原研究電路板絕緣、強度柔韌性難題、需深冷樹脂、週末到設備商測層壓；1999供應商介紹CPU廠。未具名不猜品牌，四個月不延伸量產。",
+      "checked": "2026-10-16"
+    }
+  ],
+  "claims": {
+    "C01": {
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "source_aliases": [
+        "S1"
+      ],
+      "original_fullscript_boundary": "H01/H02，1907昆布／妻子／研究 | S1段82–87；旁白保留歸屬，插畫不當照片",
+      "active_scope_override": null
+    },
+    "C02": {
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "source_aliases": [
+        "S3"
+      ],
+      "original_fullscript_boundary": "H03/I01，1969安全疑問 | S3行6，公司歷史，不列傳聞為事實",
+      "active_scope_override": null
+    },
+    "C03": {
+      "active_worker_source_indices_zero_based": [
+        4,
+        5
+      ],
+      "source_aliases": [
+        "S5",
+        "S6"
+      ],
+      "original_fullscript_boundary": "H04/T01，1999上市 | S5行103、S6行86採用；上市不等於膜是晶片",
+      "active_scope_override": null
+    },
+    "C04": {
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "source_aliases": [
+        "S5"
+      ],
+      "original_fullscript_boundary": "H05/T07，2026約95% | S5行94–97及149；FC-BGA絕緣材料範圍、HPC／伺服器及公司自述均進旁白，不稱全部封裝／晶片全球市占",
+      "active_scope_override": null
+    },
+    "C05": {
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "source_aliases": [
+        "S1"
+      ],
+      "original_fullscript_boundary": "O01，麩胺酸與鮮味 | S1行84；不用更精確發現日",
+      "active_scope_override": null
+    },
+    "C06": {
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "source_aliases": [
+        "S1"
+      ],
+      "original_fullscript_boundary": "O02/O03，中和與鈉鹽 | S1行87；只說原記述比較與選擇，不給化學實驗操作教學",
+      "active_scope_override": null
+    },
+    "C07": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "O04，1908年7月專利及9月共有 | S2行32–33；第二項是新稿新增來源事實，舊review未批准",
+      "active_scope_override": null
+    },
+    "C08": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "O05，1908年12月製造 | S2行36，工廠逗子但旁白不堆地名",
+      "active_scope_override": null
+    },
+    "C09": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "O06，1909-05-20販售 | S2行46；不寫世界第一",
+      "active_scope_override": null
+    },
+    "C10": {
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "source_aliases": [
+        "S3"
+      ],
+      "original_fullscript_boundary": "I02，1980認可 | S3公司社史說法，FDA原頁無該年份",
+      "active_scope_override": null
+    },
+    "C11": {
+      "active_worker_source_indices_zero_based": [
+        3
+      ],
+      "source_aliases": [
+        "S4"
+      ],
+      "original_fullscript_boundary": "I03，1990年代審查與敏感者 | S4行86–87；≥3g、沒有伴隨食物、部分敏感者、短暫且通常輕微全保留，非一般每餐必發；不寫為GRAS的附加條件",
+      "active_scope_override": null
+    },
+    "C12": {
+      "active_worker_source_indices_zero_based": [
+        3
+      ],
+      "source_aliases": [
+        "S4"
+      ],
+      "original_fullscript_boundary": "I04，添加MSG屬GRAS | S4行69，2012頁於當前仍可讀，不稱當年FDA認可日",
+      "active_scope_override": null
+    },
+    "C13": {
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "source_aliases": [
+        "S5"
+      ],
+      "original_fullscript_boundary": "I06，氯化石蠟舊製程副產物 | S5行102；不追加副產物起始年或指現今MSG製法",
+      "active_scope_override": null
+    },
+    "C14": {
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "source_aliases": [
+        "S5"
+      ],
+      "original_fullscript_boundary": "I07，功能材料／硬化劑／接著劑 | S5行102–103，公司受訪者敘述",
+      "active_scope_override": null
+    },
+    "C15": {
+      "active_worker_source_indices_zero_based": [
+        4,
+        5
+      ],
+      "source_aliases": [
+        "S5",
+        "S6"
+      ],
+      "original_fullscript_boundary": "E01，封裝基板層間絕緣 | S5行92、S6行89–90；泛化道路為比喻",
+      "active_scope_override": null
+    },
+    "C16": {
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "source_aliases": [
+        "S5"
+      ],
+      "original_fullscript_boundary": "E03，液態塗布不均／氣泡／乾燥 | S5行114–118；公司說法，不說所有液體製程必失敗",
+      "active_scope_override": null
+    },
+    "C17": {
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "source_aliases": [
+        "S5"
+      ],
+      "original_fullscript_boundary": "E04，兩面塗布乾燥四步 | S5行117；示意不是特定廠實拍",
+      "active_scope_override": null
+    },
+    "C18": {
+      "active_worker_source_indices_zero_based": [
+        5
+      ],
+      "source_aliases": [
+        "S6"
+      ],
+      "original_fullscript_boundary": "E06/E07，混合配方與分散 | S6行85–86，新稿新增技術細節；不說直接壓副產物",
+      "active_scope_override": null
+    },
+    "C19": {
+      "active_worker_source_indices_zero_based": [
+        5
+      ],
+      "source_aliases": [
+        "S6"
+      ],
+      "original_fullscript_boundary": "E07，熱環境／加工要求 | S6行86/94–95；沒有自創溫度／材料比例，T04不再重列性能",
+      "active_scope_override": null
+    },
+    "C20": {
+      "active_worker_source_indices_zero_based": [
+        5
+      ],
+      "source_aliases": [
+        "S6"
+      ],
+      "original_fullscript_boundary": "E09，熱固性膜、雷射／鍍銅 | S6行86/89；膜配合加工，不是膜本身導電來做運算",
+      "active_scope_override": null
+    },
+    "C21": {
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "source_aliases": [
+        "S5"
+      ],
+      "original_fullscript_boundary": "T01，Ajinomoto Build-up Film | S5行86及92–95；中文採描述性譯名，製作字典只念ABF",
+      "active_scope_override": null
+    },
+    "C22": {
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "source_aliases": [
+        "S5"
+      ],
+      "original_fullscript_boundary": "T02，薄膜改善液態工序 | S5行118；不宣稱所有製程完全免乾燥或完全零缺陷",
+      "active_scope_override": null
+    },
+    "C23": {
+      "active_worker_source_indices_zero_based": [
+        5
+      ],
+      "source_aliases": [
+        "S6"
+      ],
+      "original_fullscript_boundary": "T03/T04，反覆研發／測試跟進需求 | S6行94–95；不加未核效能成長數字",
+      "active_scope_override": null
+    },
+    "C24": {
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "source_aliases": [
+        "S5"
+      ],
+      "original_fullscript_boundary": "T05/T06，Kitano技術支援／早期合作 | S5行106–109；原英文頁列Akito Kitano，只用原拼名，不猜日文漢字。",
+      "active_scope_override": null
+    },
+    "C25": {
+      "active_worker_source_indices_zero_based": [
+        3,
+        4
+      ],
+      "source_aliases": [
+        "S4",
+        "S5"
+      ],
+      "original_fullscript_boundary": "N02，現今MSG植物原料發酵 | S4行66／S5行103註；不推出所有企業只用單一植物",
+      "active_scope_override": null
+    },
+    "C26": {
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "source_aliases": [
+        "S5"
+      ],
+      "original_fullscript_boundary": "N03，產業合作 | S5行143受訪者說法；不是集團全包半導體",
+      "active_scope_override": null
+    },
+    "C27": {
+      "active_worker_source_indices_zero_based": [
+        4,
+        5
+      ],
+      "source_aliases": [
+        "S5",
+        "S6"
+      ],
+      "original_fullscript_boundary": "N05，材料經驗接上需求 | S5行102–105＋S6；編輯綜合，食品安全爭議沒有被當因果",
+      "active_scope_override": null
+    },
+    "C28": {
+      "active_worker_source_indices_zero_based": [
+        6
+      ],
+      "source_aliases": [
+        "S7"
+      ],
+      "original_fullscript_boundary": "E05a，1996 CPU廠提出薄膜需求 | S7行66；公司2020回顧，未指名CPU廠",
+      "active_scope_override": null
+    },
+    "C29": {
+      "active_worker_source_indices_zero_based": [
+        6
+      ],
+      "source_aliases": [
+        "S7"
+      ],
+      "original_fullscript_boundary": "E05b，Nakamura背景、強度與柔韌性難題 | S7行73；只用Shigeo Nakamura原拼字，不猜漢字、性格或對話",
+      "active_scope_override": null
+    },
+    "C30": {
+      "active_worker_source_indices_zero_based": [
+        6
+      ],
+      "source_aliases": [
+        "S7"
+      ],
+      "original_fullscript_boundary": "E06a，需要深度冷藏的樹脂、找層壓機 | S7行73；後來回憶，不給材料化學理由，不把原文四個月延伸成全部量產時程",
+      "active_scope_override": null
+    },
+    "C31": {
+      "active_worker_source_indices_zero_based": [
+        6
+      ],
+      "source_aliases": [
+        "S7"
+      ],
+      "original_fullscript_boundary": "E07a，週末到機台製造商反覆測試 | S7行74；不是臆測具體工廠設備／測試溫度；後半為工序含義",
+      "active_scope_override": null
+    },
+    "C32": {
+      "active_worker_source_indices_zero_based": [
+        6
+      ],
+      "source_aliases": [
+        "S7"
+      ],
+      "original_fullscript_boundary": "T00，1999供應商介紹CPU廠 | S7行79；不將未具名公司指定成Intel，也不把引介說成唯一採用原因",
+      "active_scope_override": null
+    },
+    "C33": {
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "source_aliases": [
+        "S5"
+      ],
+      "original_fullscript_boundary": "T03，PC與伺服器要求不同、2010起多樣化 | S5行106–109；原文為Since 2010，不增添特定月份／客戶",
+      "active_scope_override": null
+    },
+    "C34": {
+      "active_worker_source_indices_zero_based": [
+        5
+      ],
+      "source_aliases": [
+        "S6"
+      ],
+      "original_fullscript_boundary": "T03a，材料性能研究與評估 | S6行94–95及86；熱膨脹／加工適性為具體項目，不說各客戶具體配方或未核測試數值",
+      "active_scope_override": null
+    }
+  },
+  "scope_notes": [
+    "食品安全線與材料研究線分開；1969爭議不是ABF研發已證起因。",
+    "1980認可是公司社史說法；FDA問答的GRAS與1990年代受委託審查、少數敏感者未伴食物一次≥3g短暫輕微不適，分開呈現。",
+    "舊製程氯化石蠟副產物只是歷史研究起點；不是現今MSG或ABF配方，不畫食品倒進晶片。",
+    "晶片、封裝基板、絕緣層、線路分清。圖用大型教學模型／工序示意，不讓AI生成精確工程剖面或可讀線路標籤。",
+    "1996客戶需求、深冷樹脂、週末測試與1999引介來自公司2020回顧，不猜客戶品牌、化學原因或四個月完成量產。",
+    "約95%只限2026公司主管所述高效能電腦／資料中心伺服器FC-BGA類封裝的絕緣材料市場，不是所有晶片／封裝市占。",
+    "T03a/T04受審原文保留，以同一測試流程視覺段落銜接；active row提出的正式章稿合併要求仍待後續編輯與審查，不補字。"
+  ]
+}

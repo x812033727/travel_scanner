@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "base": "frozen-round9",
+  "steps_in_forward_order": [
+    {
+      "chapter": "origin",
+      "path": "scenes[0].lines[0].text",
+      "scene": "origin-01",
+      "line_id": "zc7k",
+      "byte_offset": 753,
+      "before": "開場那一家人，其實早就不必一路提箱子：1928 年出發時，母親拉著兒子做的箱子。",
+      "after": "1928 年，母親拉著兒子做的箱子出發；輪子有了，這卻還是一家人的自製品。",
+      "before_utf8_bytes": 110,
+      "after_utf8_bytes": 101,
+      "source_sha256": "0c449e490e86cb1f505e6e72fb9747f31cc7396729d86cb41c810ec432285080",
+      "candidate_sha256": "750e8a98a86a4e51a9d63ea017c221be854a6110be43c2007efeda8e141ca0e7",
+      "inverse_restores_exact_source_bytes": true
+    },
+    {
+      "chapter": "now",
+      "path": "scenes[0].lines[0].text",
+      "scene": "now-01",
+      "line_id": "7asx",
+      "byte_offset": 664,
+      "before": "有。1997 年，Samsonite 推出平衡四輪直立箱，箱子能站著推了。",
+      "after": "從往後拉，到站著推，1997 年 Samsonite 發表了平衡四輪直立箱。",
+      "before_utf8_bytes": 81,
+      "after_utf8_bytes": 82,
+      "source_sha256": "dccf358d1e7ebeca5134b4f5b629c52597e2a8abd67883500d12fef9f6618e56",
+      "candidate_sha256": "a8781fd7777eabc07bdada1c97430f890d003571362b821c08571dacf7d00a01",
+      "inverse_restores_exact_source_bytes": true
+    },
+    {
+      "chapter": "now",
+      "path": "claims[0].claim",
+      "claim_id": "n1",
+      "scene": "now-01",
+      "narration_line_id": "7asx",
+      "before": "從往後拉，到站著推，1997 年 Samsonite 推出了平衡四輪直立箱（不念型號）",
+      "after": "從往後拉，到站著推，1997 年 Samsonite 發表了平衡四輪直立箱（不念型號）",
+      "byte_offset": 4242,
+      "before_utf8_bytes": 97,
+      "after_utf8_bytes": 97,
+      "previous_two_line_sha256": "a8781fd7777eabc07bdada1c97430f890d003571362b821c08571dacf7d00a01",
+      "candidate_sha256": "fa71bce2b12f2d87975ce4625407bbd9aa53cd843a8a96f5ba3e1e03c1f93eed",
+      "inverse_restores_exact_previous_bytes": true
+    }
+  ],
+  "reverse_order": [
+    "now.claims[0].claim",
+    "now.scenes[0].lines[0].text",
+    "origin.scenes[0].lines[0].text"
+  ]
+}

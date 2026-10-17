@@ -1,0 +1,105 @@
+{
+  "narrative_hash": "d6f9db3856e37466",
+  "script_hash": "f1e21ad1e14221a731fbd4eac1b145693d5be9c62c3dda43f2a06c5602d2f083",
+  "round": 9,
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[3rdw] 據 Sadow 回憶，那天在波多黎各機場，他手上提著兩個沉重的箱子。"
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[emju] 據他回憶，Macy's 有人要親手試一試。"
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[j9sw] 結果，開頭那次推銷，據 Sadow 回憶，各家都拒絕了。"
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[x7r4] 箱子早就能滾著走，還缺什麼，才能走進旅客的日常？"
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章的第一句是不是上一章的後果或答案（事情接著發生），而不是一句標籤、一句總結，或把上一章最後一句再講一次？（上一章最後幾秒才埋下的事，下一章開頭用「還記得…嗎」接回來，是複述不是銜接；點名的回呼要留給隔了幾分鐘的掛鉤。）",
+      "required": true,
+      "yes": false,
+      "evidence": "[zc7k] 開場那一家人，其實早就不必一路提箱子：1928 年出發時，母親拉著兒子做的箱子。"
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[dkkz] 這個辦法要變成商品，會有店家願意賣嗎？"
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有回答，而且回答時點名了它（還記得那…）？",
+      "required": true,
+      "yes": false,
+      "evidence": "[eghq] 那麼，顧客買不買帳？"
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": true,
+      "evidence": "[jm3w] 1987 年，Plath 就在開場那間車庫裡，做出了 Rollaboard。"
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[3d52] 那段長路，就在大型航站裡。"
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[ek2s] 想聽日用品背後這些有轉折的故事，歡迎訂閱。"
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[y9b6] 那只箱子後來去了哪裡？"
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個主角（一個人、一個團隊、一張圖、一筆帳、一個專案、一艘船）從開場一路帶到結尾，每一章都讓它往前走，而不是換了幾個不相干的例子？",
+      "required": true,
+      "yes": false,
+      "evidence": "[7asx] 有。1997 年，Samsonite 推出平衡四輪直立箱，箱子能站著推了。"
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": true,
+      "evidence": "[agam] 要進貨，採購得先相信，顧客真的肯拉著箱子走路。"
+    }
+  ],
+  "failed": [
+    "chapters_link",
+    "payoffs",
+    "one_thread"
+  ],
+  "advisory": []
+}

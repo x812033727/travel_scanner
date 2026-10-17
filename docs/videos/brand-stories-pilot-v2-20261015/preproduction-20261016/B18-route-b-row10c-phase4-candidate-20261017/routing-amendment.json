@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_PHASE4_AUDIBLE_ATTRIBUTION_ROUTE_HOLD",
+  "historical_route_b_plan_sha256": "3b3183525d995950bc9366ecffd82595938817eca09a8a4d6ca95100d1e88985",
+  "phase4_manifest_sha256": "efdf3994152db18892d70c35f6ae10ba3f1d4a9076078922a8a988ee0bbd7422",
+  "reason": "Current story-plans schema caps must_verify at 10. Keep attributed fact 9 limited to backroom routing; Phase4 T06 audibly names JIII, and its extra pricing claim stays source 2/fact null.",
+  "old_design_fact_indexes_not_created": [
+    10,
+    11
+  ],
+  "future_review_reviewer_only": [
+    4
+  ],
+  "claim_fact_route_overrides": [
+    {
+      "id": "t3",
+      "source": 3,
+      "historical_plan_fact": 10,
+      "successor_fact": 4,
+      "reason": "Court P8 1967 expansion joins court P10 1972 expiry as one limited legal timeline."
+    },
+    {
+      "id": "t18",
+      "source": 2,
+      "historical_plan_fact": 11,
+      "successor_fact": null,
+      "target_paragraph": "T06",
+      "target_scene": "turn-s088",
+      "future_claim": "發明協會沿革記後來有店用盤色或裝飾區分價位；不得說所有店同時採用。",
+      "pre_verifier_chapter_write_required": {
+        "scene": "turn-s088",
+        "source": 2,
+        "fact": null,
+        "verdict": "UNCHECKED"
+      },
+      "post_verifier_persisted_readback_required": {
+        "scene": "turn-s088",
+        "source": 2,
+        "fact": null,
+        "audible_attribution": "發明協會的沿革"
+      },
+      "final_description_source_url_required": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "reason": "Rewrite and save the turn chapter row before verifier: story.mjs checkedRows falls back to old fact 7 if a verifier-only patch returns null. Read back the saved null route and audible attribution; check the full source URL in the final description separately."
+    }
+  ],
+  "existing_65_scene_claims_changed": false,
+  "review_required_before_row_adoption": true
+}

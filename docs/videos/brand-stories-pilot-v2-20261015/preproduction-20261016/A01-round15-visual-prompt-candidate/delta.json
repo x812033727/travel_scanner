@@ -1,0 +1,56 @@
+{
+  "status": "OFFLINE_VISUAL_PROMPT_DELTA_PENDING_INDEPENDENT_REVIEW",
+  "base": "A01-round14-source-bound-loop-candidate",
+  "base_manifest_sha256": "9c2b6a69360c0f701fb28043e2e1179b6cda83c6e90a91253e14224b66245162",
+  "changes": [
+    {
+      "chapter": "hook",
+      "scene_id": "hook-01",
+      "old": "Medium-wide shot of a 1970s airport concourse with a long tiled floor. On the right, one generic adult traveler strains forward, carrying two heavy, overstuffed plain suitcases by their handles, face tense with effort and visible to the viewer. On the left, a tall window shows a pale moon in a soft grey dusk sky, with open empty space for a headline. Mild overcast window light mixed with soft lamp light inside. The mood is tired and quietly comic.",
+      "new": "Medium-wide shot in a generic 1970s airport concourse. One anonymous adult traveler strains forward with a heavy plain suitcase in each hand, shoulders lowered and face clearly tense. The two hand-carried cases and the effort in the traveler's face are the focal subjects. A plain open wall on the left leaves space for an added headline. Soft diffuse terminal light through tall frosted windows.",
+      "reason": "Remove invented moon and dusk; retain the two heavy hand-carried cases and readable effort."
+    },
+    {
+      "chapter": "hook",
+      "scene_id": "hook-03",
+      "old": "Close-up at floor level in a 1970s airport: small metal wheels under a low wooden skid rolling past, beside two heavy plain suitcases still held in the hands of one generic traveler. The traveler bends slightly to stare at the rolling wheels, looking surprised. Soft lamp light from above and a mild grey glow from a window.",
+      "new": "Medium close-up at floor level in a generic 1970s airport corridor. In the foreground, cropped anonymous adult hands push a heavy grey machine on a low generic wheeled skid; the small wheels are visibly fixed beneath the skid. In the separated right background, one anonymous adult traveler in plain 1970s casual clothes faces the viewer while hand-carrying one heavy plain suitcase above the floor. The suitcase has a flat, uninterrupted bottom. A clear gap of bare tiled floor separates it from the wheeled skid. Soft terminal light.",
+      "reason": "Keep the frozen traveler-heavy cast visible with one hand-carried case while separating that case from the wheels beneath a generic machine skid; no unsourced board material or worker role."
+    },
+    {
+      "chapter": "origin",
+      "scene_id": "origin-06",
+      "old": "Close-up, a quiet local history archive room, one generic museum keeper in plain clothes gently slides out the wooden telescoping handle of an old leather suitcase with two small wheels resting on a shelf, careful expression, the wooden handle as the focal object, mild lamp light from the left.",
+      "new": "Medium close-up of a generic illustrative display against a plain neutral background. One simple closed old-style suitcase with a smooth unmarked body and small wheels sits on a low undecorated platform. An anonymous observer beside the platform looks toward the case. Soft even light keeps the simple wheeled case as the clear focal object.",
+      "reason": "Use an explicitly generic illustrative display of one wheeled case, without a staged museum room, precise preserved-object fittings or a claim that the earlier 1928 travel case is the same object."
+    },
+    {
+      "chapter": "origin",
+      "scene_id": "origin-13",
+      "old": "Close-up, a factory workbench around 1970, one generic worker in an apron screws a fourth small metal caster onto the bottom of an upturned plain suitcase, focused expression, the casters as the focal object, warm lamp light from above.",
+      "new": "Medium close-up at a simple workbench around 1970. One anonymous maker steadies an upturned plain suitcase with four small caster wheels already mounted on its underside; a loose length of rope lies beside it. The maker's focused face and the four wheels are clearly visible, with soft work light from above.",
+      "reason": "Show the reported four casters and rope while avoiding an unsupported screw-fastening action."
+    },
+    {
+      "chapter": "origin",
+      "scene_id": "origin-15",
+      "old": "Close-up, a patent examiner's wooden desk around 1970, one generic clerk in a cardigan lays an old 1940s line drawing of a wheeled suitcase beside a newer drawing of a flat suitcase on casters, surprised expression, the two drawings as the focal object, mild lamp light from the right.",
+      "new": "Medium close-up at a generic reading desk. One anonymous person places a worn, blank-labeled folder beside a newer blank-labeled folder, with a questioning expression. The two plain folders are the focal objects; their pages remain closed. Soft desk-lamp light comes from the right.",
+      "reason": "Use a symbolic earlier/later comparison, not invented patent pages or a fictitious examiner event."
+    },
+    {
+      "chapter": "engine",
+      "scene_id": "engine-r12-04",
+      "old": "Low three-quarter view of a generic horizontal suitcase as a patent design example, not an identified manufactured artifact. The case is closed with its seam clear: two small roller assemblies under the lid half and two under the body half. Soft side light, no text, labels or logos.",
+      "new": "Close-up overhead view of the underside of a generic closed horizontal suitcase resting upside-down on a plain workbench. A clear seam divides the narrow lid-bottom strip from the wider body-bottom strip. Two small roller assemblies are fixed to the lid strip and two to the body strip, four separate assemblies visible around the case bottom. The case fills the frame in soft side light against a bare workbench.",
+      "reason": "Specify a close-up and place the patent example's two-plus-two rollers on the correct bottom sections, without presenting a real manufactured artifact."
+    },
+    {
+      "chapter": "turn",
+      "scene_id": "turn-12",
+      "old": "Medium shot of an early-1990s terminal, not a reconstruction of a specific day. In the foreground an anonymous civilian rolls a plain upright two-wheel suitcase; beside the route, an unmarked airline pilot cap rests on a modest desk next to several unbranded cases, suggesting a move from flying to full-time luggage work. Period clothing and terminal furnishings, no identified person, readable signs, text or logos.",
+      "new": "Medium shot in a generic early-1990s airport concourse. One anonymous civilian in plain casual clothes faces partly toward the viewer while pulling a plain upright two-wheel suitcase by its extended handle. The person's face remains visible and glances curiously down at the handle. The unbranded rolling case and that hand are the focal action against a sparse terminal background, under soft window light.",
+      "reason": "Match the frozen traveler-upright cast's civilian, face and pulling action while leaving the separate 1991 career change to narration, with no pilot-cap or Plath-event tableau."
+    }
+  ]
+}

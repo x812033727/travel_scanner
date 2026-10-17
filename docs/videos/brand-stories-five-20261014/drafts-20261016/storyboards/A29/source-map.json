@@ -1,0 +1,397 @@
+{
+  "status": "SOURCE_INDEX_REUSE_WITHOUT_NEW_FACTS",
+  "sources": [
+    {
+      "alias": "R99",
+      "worker_source_index_zero_based": 0,
+      "url": "https://www.lego.com/cdn/cs/aboutus/assets/bltee71fb73e23a587a/Annual_Report_1999_ENG.pdf",
+      "publisher": "LEGO Group，1999年度帳目",
+      "kind": "official",
+      "supports": "R99：實體PDF第3頁中央損益表／Financial Key Figures，1998年度結果為−194百萬丹麥克朗；只支持當年虧損，不宣稱歷史首次。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "R03",
+      "worker_source_index_zero_based": 1,
+      "url": "https://www.lego.com/cdn/cs/aboutus/assets/blte6c97bc4718a1848/Annual_Report_2003_ENG.pdf",
+      "publisher": "LEGO Group，2003年年報",
+      "kind": "official",
+      "supports": "R03：PDF3通路庫存、前個聖誕季及電影聯名跌幅占總減少逾半；PDF6得寶／EXPLORE及恢復名字；PDF25年度表：2000虧損、2003營收8433/11426與稅前−1432百萬丹麥克朗。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "R04",
+      "worker_source_index_zero_based": 2,
+      "url": "https://www.lego.com/cdn/cs/aboutus/assets/blt07abb4b8a3da3f39/Annual_Report_2004_ENG.pdf",
+      "publisher": "LEGO Group，2004年年報",
+      "kind": "official",
+      "supports": "R04：實體PDF2年表塑膠與1958專利；7、11–13管理／行動計畫、過剩產能、外包、成本減20%與千人；12樂園稅後20百萬及資本需求，7/11另列減損；26兩欄接續為8億債務轉七年期次順位貸款、貸方不可取消。命名1934與新官方專文衝突，不採。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "R05",
+      "worker_source_index_zero_based": 3,
+      "url": "https://www.lego.com/cdn/cs/aboutus/assets/blt6eacf5a8b7af1359/Annual_Report_2005_ENG.pdf",
+      "publisher": "LEGO Group，2005年年報",
+      "kind": "official",
+      "supports": "R05實體PDF13：2004秋決定、2005七月交易、8/24核准；29：3.75億歐元、新公司70/15/15及部分售園款還銀行債；16品牌／投資；27淨利505百萬、重編營收增12%；10/12供應鏈與零售商；7總稅前702百萬，各項資產出售近半。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "L0",
+      "worker_source_index_zero_based": 4,
+      "url": "https://www.lego.com/en-us/history/articles/b-the-beginning-of-the-lego-group",
+      "publisher": "LEGO Group，The beginning of the LEGO Group",
+      "kind": "official",
+      "supports": "L0：1932木頭玩具、小汽車／飛機／溜溜球、原有梯子／燙衣板及LEg GOdt名字含義。命名段寫1935年底決定、1936年1月正式用名，與R04年表1934不一；本稿不念命名年份。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "L1",
+      "worker_source_index_zero_based": 5,
+      "url": "https://www.lego.com/en-us/history/articles/e-the-first-legoland-park",
+      "publisher": "LEGO Group，The first LEGOLAND park",
+      "kind": "official",
+      "supports": "L1：1960年代中約兩萬年訪客、展場不足轉戶外、櫥窗設計師／小火車／駕駛學校；1968開園、首季625000人；Going global列溫莎1996、加州1999、德國2002。該頁後續交易年份不採，2019以M19為準。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "M19",
+      "worker_source_index_zero_based": 6,
+      "url": "https://www.merlinentertainments.biz/media/3068/merlin-entertainments-annual-report-and-accounts-2019.pdf",
+      "publisher": "Merlin Entertainments，2019年年報",
+      "kind": "official",
+      "supports": "M19：實體PDF6（印刷4）2019-11-04私有化生效下市及KIRKBI／Blackstone／CPP Investments聯盟；PDF8（印刷6）家族投資公司身分、LEGO Group75%及相關商標與投資關係。只描述2019。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "L19",
+      "worker_source_index_zero_based": 7,
+      "url": "https://www.lego.com/cdn/cs/aboutus/assets/blt55a9aaa4253b2fa5/Annual_Report_2019_ENG.pdf.pdf",
+      "publisher": "LEGO Group，2019年年報",
+      "kind": "official",
+      "supports": "L19：實體／印刷PDF48，Note5.6 Related parties，Identity of related parties：KIRKBI持LEGO A/S75%，基金會全資子公司25%；Merlin為KIRKBI關聯公司。不能推成2026仍相同。",
+      "checked": "2026-10-16"
+    }
+  ],
+  "claims": {
+    "C01": {
+      "source_aliases": [
+        "R05",
+        "R04"
+      ],
+      "worker_source_indices_zero_based": [
+        3,
+        2
+      ],
+      "boundary": "R05 PDF13／印刷11的2004秋出售決定；R04總部比隆。開場僅為文件示意場景，沒有虛構實際會議或人物對話。"
+    },
+    "C02": {
+      "source_aliases": [
+        "R04"
+      ],
+      "worker_source_indices_zero_based": [
+        2
+      ],
+      "boundary": "R04 PDF12／印刷10業務敘述、稅後2,000萬；同報PDF7／印刷5與PDF11／印刷9另列樂園資產減損。E05將範圍說給觀眾聽，不擴為全部減損後仍獲利，也不把含KOMPAN的終止業務合計當成樂園獨立損失。"
+    },
+    "C03": {
+      "source_aliases": [
+        "R05"
+      ],
+      "worker_source_indices_zero_based": [
+        3
+      ],
+      "boundary": "R05 PDF13／印刷11：七月交易及8月24日最終批准分開。T01避免只用單一「完成日」。"
+    },
+    "C04": {
+      "source_aliases": [
+        "R05"
+      ],
+      "worker_source_indices_zero_based": [
+        3
+      ],
+      "boundary": "R05 PDF27／印刷25全年淨利；hook只承諾後續轉變，不透露金額。"
+    },
+    "C05": {
+      "source_aliases": [
+        "M19"
+      ],
+      "worker_source_indices_zero_based": [
+        6
+      ],
+      "boundary": "M19 PDF6／印刷4，2019買方名單；十四年為2005→2019年度差。"
+    },
+    "C06": {
+      "source_aliases": [
+        "L0"
+      ],
+      "worker_source_indices_zero_based": [
+        4
+      ],
+      "boundary": "L0首段及命名段，1932玩具；名字含義沿用。新增產品細節、刪確切命名年，需新稿審查。"
+    },
+    "C07": {
+      "source_aliases": [
+        "L0"
+      ],
+      "worker_source_indices_zero_based": [
+        4
+      ],
+      "boundary": "L0首段及命名段，1932玩具；名字含義沿用。新增產品細節、刪確切命名年，需新稿審查。"
+    },
+    "C08": {
+      "source_aliases": [
+        "R04"
+      ],
+      "worker_source_indices_zero_based": [
+        2
+      ],
+      "boundary": "R04 PDF2年表：1949塑膠產品、1958管柱拼接專利。"
+    },
+    "C09": {
+      "source_aliases": [
+        "L1"
+      ],
+      "worker_source_indices_zero_based": [
+        5
+      ],
+      "boundary": "L1展示／戶外樂園段；1968另對R04年表。新增遊客數與起因，不把公司敘述當獨立客流實測。"
+    },
+    "C10": {
+      "source_aliases": [
+        "L1",
+        "R04"
+      ],
+      "worker_source_indices_zero_based": [
+        5,
+        2
+      ],
+      "boundary": "L1展示／戶外樂園段；1968另對R04年表。新增遊客數與起因，不把公司敘述當獨立客流實測。"
+    },
+    "C11": {
+      "source_aliases": [
+        "L1"
+      ],
+      "worker_source_indices_zero_based": [
+        5
+      ],
+      "boundary": "L1擴張年表；R99 PDF3確認1998虧損，R03 PDF25確認2000虧損。不用「首次」、不稱開園造成虧損。"
+    },
+    "C12": {
+      "source_aliases": [
+        "L1",
+        "R99"
+      ],
+      "worker_source_indices_zero_based": [
+        5,
+        0
+      ],
+      "boundary": "L1擴張年表；R99 PDF3確認1998虧損，R03 PDF25確認2000虧損。不用「首次」、不稱開園造成虧損。"
+    },
+    "C13": {
+      "source_aliases": [
+        "L1",
+        "R03"
+      ],
+      "worker_source_indices_zero_based": [
+        5,
+        1
+      ],
+      "boundary": "L1擴張年表；R99 PDF3確認1998虧損，R03 PDF25確認2000虧損。不用「首次」、不稱開園造成虧損。"
+    },
+    "C14": {
+      "source_aliases": [
+        "R03"
+      ],
+      "worker_source_indices_zero_based": [
+        1
+      ],
+      "boundary": "R03 PDF3／印刷3，零售庫存與聖誕銷售；I05為相鄰原文的因果摘要。"
+    },
+    "C14a": {
+      "source_aliases": [
+        "R03"
+      ],
+      "worker_source_indices_zero_based": [
+        1
+      ],
+      "boundary": "R03 PDF3／印刷3，電影聯名產品因無新片而未達期待，相關產品銷售下滑占整體銷售減少超過50%；不是占營收超過50%。"
+    },
+    "C15": {
+      "source_aliases": [
+        "R03"
+      ],
+      "worker_source_indices_zero_based": [
+        1
+      ],
+      "boundary": "R03 PDF25：8,433／11,426實算下降26.19%，稅前−1,432百萬；字幕與後製來源註明「2003年報口徑」。"
+    },
+    "C16": {
+      "source_aliases": [
+        "R03"
+      ],
+      "worker_source_indices_zero_based": [
+        1
+      ],
+      "boundary": "R03 PDF6／印刷6，得寶／EXPLORE變更及公司自述的溝通失敗。不要寫得寶產品被停產。"
+    },
+    "C17": {
+      "source_aliases": [
+        "R04"
+      ],
+      "worker_source_indices_zero_based": [
+        2
+      ],
+      "boundary": "R04 PDF7、12–13／印刷5、10–11：管理、計畫、約千人、20%、10月交棒。減成本同時包含較低活動量，不全部歸因裁員。"
+    },
+    "C17a": {
+      "source_aliases": [
+        "R04"
+      ],
+      "worker_source_indices_zero_based": [
+        2
+      ],
+      "boundary": "R04 PDF11／印刷9：原預期每年成長8–10%而出現過剩產能；電腦遊戲、影片製作外包及集中業務。候選不再堆8–10數字。"
+    },
+    "C18": {
+      "source_aliases": [
+        "R04"
+      ],
+      "worker_source_indices_zero_based": [
+        2
+      ],
+      "boundary": "R04 PDF7、12–13／印刷5、10–11：管理、計畫、約千人、20%、10月交棒。減成本同時包含較低活動量，不全部歸因裁員。"
+    },
+    "C19": {
+      "source_aliases": [
+        "R04"
+      ],
+      "worker_source_indices_zero_based": [
+        2
+      ],
+      "boundary": "R04 PDF7、12–13／印刷5、10–11：管理、計畫、約千人、20%、10月交棒。減成本同時包含較低活動量，不全部歸因裁員。"
+    },
+    "C20": {
+      "source_aliases": [
+        "R04"
+      ],
+      "worker_source_indices_zero_based": [
+        2
+      ],
+      "boundary": "R04 PDF12／印刷10對資本投入及出售理由的敘述；E08是一般財務機制解說，不作投資建議。"
+    },
+    "C21": {
+      "source_aliases": [
+        "R04"
+      ],
+      "worker_source_indices_zero_based": [
+        2
+      ],
+      "boundary": "R04 PDF26／印刷24兩欄接續；8億債務轉換、貸款期限七年、貸方不能取消。沒有比較舊債期限，不稱展期；次順位不等於免還。"
+    },
+    "C22": {
+      "source_aliases": [
+        "R05"
+      ],
+      "worker_source_indices_zero_based": [
+        3
+      ],
+      "boundary": "R05 PDF13／印刷11及PDF29／印刷27：四園與Merlin業務進入新共同持有公司 Merlin Entertainments Group Luxemburg S.à r.l.。3.75億歐元是交易價格。70／15／15則是2005交易後該新公司的股權比例，不是玩具公司或2019梅林股權；樂高集團及KIRKBI各持15%，不說保留新公司原股。"
+    },
+    "C23": {
+      "source_aliases": [
+        "R05"
+      ],
+      "worker_source_indices_zero_based": [
+        3
+      ],
+      "boundary": "R05 PDF13／印刷11及PDF29／印刷27：四園與Merlin業務進入新共同持有公司 Merlin Entertainments Group Luxemburg S.à r.l.。3.75億歐元是交易價格。70／15／15則是2005交易後該新公司的股權比例，不是玩具公司或2019梅林股權；樂高集團及KIRKBI各持15%，不說保留新公司原股。"
+    },
+    "C24": {
+      "source_aliases": [
+        "R05",
+        "L1"
+      ],
+      "worker_source_indices_zero_based": [
+        3,
+        5
+      ],
+      "boundary": "R05 PDF16／印刷14敘述投資與品牌關係；L1後續園區仍叫LEGOLAND。沒有宣稱商標隨園區出售。"
+    },
+    "C24a": {
+      "source_aliases": [
+        "R05"
+      ],
+      "worker_source_indices_zero_based": [
+        3
+      ],
+      "boundary": "R05 PDF29／印刷27「Long-term debts」：年初長期銀行債務部分因賣園資金、部分因按揭借款而償還。稿只說出售資金的部分貢獻，不說全數靠賣園還清。"
+    },
+    "C25": {
+      "source_aliases": [
+        "R05",
+        "R04"
+      ],
+      "worker_source_indices_zero_based": [
+        3,
+        2
+      ],
+      "boundary": "R05 PDF27／印刷25：全年淨利5.05億、可比較營收12%；2004淨損可見R04 PDF3，但本稿不再堆數字。"
+    },
+    "C26": {
+      "source_aliases": [
+        "R05"
+      ],
+      "worker_source_indices_zero_based": [
+        3
+      ],
+      "boundary": "R05 PDF27／印刷25：全年淨利5.05億、可比較營收12%；2004淨損可見R04 PDF3，但本稿不再堆數字。"
+    },
+    "C27": {
+      "source_aliases": [
+        "R05"
+      ],
+      "worker_source_indices_zero_based": [
+        3
+      ],
+      "boundary": "R05 PDF10、12／印刷8、10：供應鏈、生產規劃和零售客戶；只用當年計畫／進展，不聲稱精確效益。"
+    },
+    "C28": {
+      "source_aliases": [
+        "R05"
+      ],
+      "worker_source_indices_zero_based": [
+        3
+      ],
+      "boundary": "R05 PDF7／印刷5：各項資產出售近半**總稅前獲利**；只在N09首次念比例。不是單獨賣樂園近半、不是售價除淨利。"
+    },
+    "C29": {
+      "source_aliases": [
+        "M19"
+      ],
+      "worker_source_indices_zero_based": [
+        6
+      ],
+      "boundary": "M19 PDF6、8／印刷4、6；當年生效日、聯盟、KIRKBI身分及商標。"
+    },
+    "C30": {
+      "source_aliases": [
+        "M19"
+      ],
+      "worker_source_indices_zero_based": [
+        6
+      ],
+      "boundary": "M19 PDF6、8／印刷4、6；當年生效日、聯盟、KIRKBI身分及商標。"
+    },
+    "C31": {
+      "source_aliases": [
+        "L19"
+      ],
+      "worker_source_indices_zero_based": [
+        7
+      ],
+      "boundary": "L19 PDF48／印刷48；N05為法人結構推論。只描述2019，不說2026現況。"
+    }
+  }
+}

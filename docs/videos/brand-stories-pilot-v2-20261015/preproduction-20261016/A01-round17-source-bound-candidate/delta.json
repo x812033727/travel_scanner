@@ -1,0 +1,104 @@
+{
+  "status": "OFFLINE_SOURCE_BOUND_DELTA_PENDING_INDEPENDENT_REVIEW",
+  "base": "A01-round16-origin-plan-alignment-candidate",
+  "base_manifest_sha256": "2f44419c43c64a2ea3762dd5d2053bb0febefcfd055f057e9c940c6c6d6249df",
+  "line_changes": [
+    {
+      "chapter": "origin",
+      "scene_id": "origin-r12-03",
+      "line_id": "r12o03",
+      "claim_id": "claim-r12o03",
+      "old": "館方記載，旅程結束後，安妮塔巡迴講旅行故事，那只輪子箱也跟著她。",
+      "new": "館方記載，旅程結束後，安妮塔巡迴講旅行故事時，仍帶著輪子行李箱。",
+      "source_location": "Before Her Time, final paragraph on post-trip lectures with rolling luggage; does not establish that the lecture case, 1928 illustrated case and museum object are one item",
+      "support_type": "attributed_lectures_case_identity_unconfirmed"
+    },
+    {
+      "chapter": "origin",
+      "scene_id": "origin-02",
+      "line_id": "4prs",
+      "claim_id": "o17",
+      "old": "館方記述，沿途要換船、搭火車、換住處；每到一站，行李都得跟著搬。",
+      "new": "館方記述，在港口、車站和住處之間，行李得跟著搬。",
+      "source_location": "Before Her Time, paragraph on moving luggage between shipping ports, train stations and housing; does not state that every stop required the same action",
+      "support_type": "attributed_archive_summary_limited"
+    },
+    {
+      "chapter": "engine",
+      "scene_id": "engine-r12-07",
+      "line_id": "r12e07",
+      "claim_id": "claim-r12e07",
+      "old": "遇到台階，旅客還能用原本的提把拿起箱子；拖帶也能拆下來。",
+      "new": "需要提起時，還能用原本的提把拿起箱子；拖帶也能拆下來。",
+      "source_location": "US3653474A, SUMMARY and SPECIFIC EXAMPLE on original handle 16 and detachable strap; claim 1 allows carry or roll, with no reported stair-use test",
+      "support_type": "patent_design_conditional_not_observed_use"
+    }
+  ],
+  "prompt_changes": [
+    {
+      "chapter": "origin",
+      "scene_id": "origin-r12-03",
+      "old": "Wide shot outside a modest early-1930s lecture hall, one anonymous woman in a plain travel coat pulls a small old wheeled trunk toward an open doorway. The same ordinary rolling trunk is the focal object, soft cloudy daylight, no posters, text or real-person likeness.",
+      "new": "Wide shot outside a modest early-1930s lecture hall. One anonymous woman in a plain travel coat pulls an ordinary unbranded wheeled suitcase toward an open doorway. The figures are illustrative, not a reconstruction of a particular surviving or previously shown case. Soft cloudy daylight, no posters, readable text, logos or real-person likeness."
+    },
+    {
+      "chapter": "engine",
+      "scene_id": "engine-r12-07",
+      "old": "Medium shot at the edge of a small curb in a generic mid-century terminal. One anonymous traveler grips the fixed top handle and lifts a plain four-roller suitcase clear of the step; its detached soft pull strap hangs loosely from the traveler’s other wrist and the end loop is empty. The lift is the only action, neutral daylight, no signs or logos.",
+      "new": "Medium shot of a plain unbranded four-roller suitcase resting on a flat floor. Its original carry handle is clearly visible on top, while a removable soft pull strap lies separately beside the small attachment loop. Keep the case, handle, loop and strap distinct; no traveler, stair, curb, sign, readable text or logo. Neutral daylight."
+    }
+  ],
+  "series_plan_changes": [
+    {
+      "chapter": "origin",
+      "old_fragment": "保留館方轉述的旅前發問、丈夫寧提重箱並開玩笑、旅後巡迴講旅行故事三句；不另展開 1933 年出書支線",
+      "new_fragment": "保留館方轉述的旅前發問、丈夫寧提重箱並開玩笑、旅後巡迴講旅行故事時仍帶輪子行李箱三句；不指認它是旅程或館藏裡的同一只，不另展開 1933 年出書支線"
+    },
+    {
+      "chapter": "engine",
+      "old_fragment": "平地拖帶與台階手提",
+      "new_fragment": "平地拖帶與需要提起時使用原提把"
+    }
+  ],
+  "series_source_supports_change": {
+    "source_index": 8,
+    "old_fragment": "第二次旅行後，她巡迴演講時仍帶著輪子箱。",
+    "new_fragment": "第二次旅行後，她巡迴演講時仍帶著輪子行李箱，未確認那只與旅程或館藏箱相同；館方保存安妮塔的一只自製輪子箱（藏品 2005.26.576），也未指認它是片頭 1928 年旅程示意中的同一只。"
+  },
+  "must_verify_append": {
+    "claim": "溫尼特卡歷史學會保存安妮塔的一只自製輪子箱（藏品 2005.26.576）；館方資料沒有明確指認它就是片頭 1928 年旅程示意中的同一只。",
+    "sources": [8],
+    "attributed": true
+  },
+  "claim_source_changes": [
+    {
+      "chapter": "now",
+      "claim_id": "n14",
+      "old_source": 6,
+      "new_source": null,
+      "reason": "General physical statement; ABC 2010 supplies a separate interview anecdote, not proof that wheels change weight."
+    }
+  ],
+  "source_matrix_additions": [
+    {
+      "chapter": "origin",
+      "scene_id": "origin-03",
+      "line_id": "9ij6",
+      "claim_id": "o2",
+      "source_index": 8,
+      "fact_index": 5,
+      "source_location": "Before Her Time, son Bud made a rolling case using old baby-carriage wheels and a telescoping wooden handle; o2 covers both lines of this scene",
+      "support_type": "attributed_archive_record"
+    },
+    {
+      "chapter": "now",
+      "scene_id": "now-06",
+      "line_id": "tszs",
+      "claim_id": "n14",
+      "source_index": null,
+      "fact_index": null,
+      "source_location": "General physical reasoning: wheels change how weight is carried or moved, not the mass of the suitcase and contents; ABC 2010 interview is context only, not a physics citation",
+      "support_type": "general_physical_reasoning_not_interview_proof"
+    }
+  ]
+}

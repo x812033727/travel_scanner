@@ -1,0 +1,325 @@
+{
+  "status": "PENDING_INDEPENDENT_REVIEW",
+  "derives_from_r3_manifest_sha256": "91b53e3f86d2a9f22cbf987d717ea700184dbd31bd0dc149ae1a0f67003d314d",
+  "derives_from_r3_source_map_sha256": "aaec5ae5d7c8875d368c66207d034be98e1954fccdd16bd4569486e4e88df22f",
+  "derives_from_r2_manifest_sha256": "d25ad9e97a94c2c6172b05df2ff046de281832fde7df163a22fab024491aa78d",
+  "derives_from_r2_source_map_sha256": "3d673cb8b44b93d11fdebaa5a8c8ef9b3d017d671ccb3e106fbf28c47df36350",
+  "source_snapshot": "A01-20261017-afternoon-fe35369c/snapshot-104",
+  "prior_review_not_inherited": true,
+  "sources": [
+    {
+      "url": "https://newspapers.swco.ttu.edu/bitstreams/b9cd84b8-2ba7-4506-9eff-7cca3e5c6376/download",
+      "date": "1939-02-09",
+      "page": "PDF p. 4",
+      "checked_on": "2026-10-18",
+      "kind": "contemporary newspaper",
+      "scope": "one 1939-02-08 lecture appearance only"
+    },
+    {
+      "url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+      "date": "1993-08-01",
+      "checked_on": "2026-10-18",
+      "kind": "contemporary first-person travel test",
+      "scope": "four product lines plus reporter’s own Travelpro packing counterexample"
+    }
+  ],
+  "changed_lines": [
+    {
+      "scene_id": "hook-anita",
+      "line_id": "r17h01",
+      "prior": "旅程結束後，母親還會帶著它走嗎？",
+      "now": "旅程結束後，母親還會帶輪子箱出門嗎？",
+      "reason": "do not assert 1939 case is the same physical object",
+      "verdict": "PENDING"
+    },
+    {
+      "scene_id": "origin-r12-03",
+      "line_id": "r12o03",
+      "source_url": "https://newspapers.swco.ttu.edu/bitstreams/b9cd84b8-2ba7-4506-9eff-7cca3e5c6376/download",
+      "source_location": "1939-02-09 PDF p. 4",
+      "reason": "contemporary scene replaces generic retrospective lecture statement",
+      "verdict": "PENDING"
+    },
+    {
+      "scene_id": "now-passenger",
+      "line_id": "r15n01",
+      "reason": "withhold the market outcome until the 1993 contemporary retail report; retains attributed passenger sighting",
+      "verdict": "PENDING"
+    }
+  ],
+  "added_question_line": {
+    "scene_id": "now-consumer-question",
+    "line_id": "r3n01",
+    "candidate_text": "如果外袋多裝了衣物和平裝書，登機後還放得進座位下或頭頂櫃嗎？",
+    "candidate_prompt": "Cute early-1990s preflight illustration: an anonymous traveler puts extra folded clothes and some paperback books into the expandable outside pocket of an unbranded two-wheel carry-on. The pocket is not depicted as full or bulging; no cabin storage outcome is shown. No shop window, readable text, logos or real-person likeness.",
+    "source_context": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+    "question_scope": "extra clothes and paperbacks in the expandable outside pocket: will this specific bag still stow?",
+    "retail_context_not_answer": "r3n03",
+    "general_cabin_context_not_answer": "r3n04",
+    "payoff": "r4n01",
+    "verdict": "PENDING_ANTI_SPOILER_REVIEW"
+  },
+  "added_scenes": [
+    {
+      "scene_id": "origin-1939-case",
+      "line_id": "r3o01",
+      "claim_id": "o34",
+      "source_url": "https://newspapers.swco.ttu.edu/bitstreams/b9cd84b8-2ba7-4506-9eff-7cca3e5c6376/download",
+      "source_location": "The Midland Reporter-Telegram, 1939-02-09, PDF p. 4, Modern Study Club guest-day tea report",
+      "evidence_type": "contemporary local report; one observed appearance",
+      "caution": "not the identified 1928 object or every lecture",
+      "candidate_text": "報導說，她披著黑色斗篷，戴著實用的帽子；身旁還有一只帶輪子的行李箱。",
+      "candidate_prompt": "Cute illustrative detail at a modest 1939 Texas study-club tea: an anonymous woman in a plain dark cape and practical travel hat stands beside one unbranded wheeled suitcase and a small extra bag. These are details recorded in a contemporary local report, not a reconstruction of the surviving museum object or proof of every lecture. No readable text, logos or real-person likeness.",
+      "verdict": "PENDING_INDEPENDENT_SOURCE_AND_IMAGE_REVIEW"
+    },
+    {
+      "scene_id": "now-1993-test",
+      "line_id": "r3n02",
+      "claim_id": "n55",
+      "source_url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+      "source_location": "Judi Dash, LA Times, 1993-08-01, first-person four-brand comparison",
+      "evidence_type": "contemporary reporter test",
+      "caution": "not a market-wide controlled study",
+      "candidate_text": "到了 1993 年，《洛杉磯時報》一位記者，真的把四家輪子登機箱帶上路測試。",
+      "candidate_prompt": "Cute 1993 travel-gear illustration: an anonymous newspaper reporter compares four plain two-wheel carry-on bags on the ground and before a trip. Four generic shapes evoke a hands-on comparison, not a measured laboratory result. No brand marks, readable newspaper text, store labels or real-person likeness.",
+      "verdict": "PENDING_INDEPENDENT_SOURCE_AND_IMAGE_REVIEW"
+    },
+    {
+      "scene_id": "now-1993-retail",
+      "line_id": "r3n03",
+      "claim_id": "n56",
+      "source_url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+      "source_location": "Judi Dash, 1993, mail-order origin and current department/specialty retail paragraph",
+      "evidence_type": "contemporary distribution report",
+      "caution": "no sales total or exact retail launch date",
+      "candidate_text": "她寫，Travelpro 起初靠郵購；到了這時，百貨和行李店也能選到不同品牌。",
+      "candidate_prompt": "Cute illustrative 1993 luggage-shop counter with several anonymous rolling carry-on cases available for customers to inspect. A small mail-order parcel sits to one side as a visual transition, without implying a specific sale or exact inventory in one shop. No readable signage, prices, brands or real-person likeness.",
+      "verdict": "PENDING_INDEPENDENT_SOURCE_AND_IMAGE_REVIEW"
+    },
+    {
+      "scene_id": "now-1993-cabin",
+      "line_id": "r3n04",
+      "claim_id": "n57",
+      "source_url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+      "source_location": "Judi Dash, 1993, most aisles and most under-seat/overhead storage with suitable bag size",
+      "evidence_type": "first-person and contemporary product report",
+      "caution": "not every plane or every loading configuration",
+      "candidate_text": "她說，這類箱子能穿過多數機艙走道；尺寸合適時，也能收進座位下或多數頭頂櫃。",
+      "candidate_prompt": "Cute illustrative early-1990s aircraft cabin: an anonymous traveler rolls a modestly packed two-wheel carry-on through a narrow aisle toward a seat. The bag is not shown as fitting every aircraft or every overhead bin. No airline branding, readable markings or real-person likeness.",
+      "verdict": "PENDING_INDEPENDENT_SOURCE_AND_IMAGE_REVIEW"
+    },
+    {
+      "scene_id": "now-1993-limit",
+      "line_id": "r3n05",
+      "claim_id": "n58",
+      "source_url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+      "source_location": "Judi Dash, 1993, extra clothes and paperback books placed in Travelpro expandable outside pockets",
+      "evidence_type": "first-person packing action",
+      "caution": "source does not say the pocket was full or overfilled",
+      "candidate_text": "她把額外衣物和平裝書，放進 Travelpro 可擴充的外袋。",
+      "candidate_prompt": "Cute illustration of an anonymous 1993 travel reporter placing extra folded clothes and paperback books into the expandable outside pocket of a plain two-wheel carry-on before flying. Do not make the pocket look full or bulging, and do not reveal the cabin-stowage result yet. No readable text, logos or real-person likeness.",
+      "verdict": "PENDING_INDEPENDENT_SOURCE_AND_IMAGE_REVIEW"
+    },
+    {
+      "scene_id": "now-1993-stow",
+      "line_id": "r4n01",
+      "claim_id": "n59",
+      "source_url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+      "source_location": "Judi Dash, 1993, added pocket items prevented under-seat/overhead stowage until pocket was emptied",
+      "evidence_type": "first-person practical result",
+      "caution": "her Travelpro case, not all bags or flights",
+      "candidate_text": "結果座位下和頭頂櫃都放不進；她先清空外袋，才把箱子收好。",
+      "candidate_prompt": "Cute illustrative early-1990s aircraft cabin: an anonymous traveler removes the added clothes and paperback books from a carry-on outside pocket after finding that this expanded bag will not fit under the seat or in the overhead bin. One reporter experience only; no angry crew, blocked aisle, universal airline rule, readable text, logos or real-person likeness.",
+      "verdict": "PENDING_INDEPENDENT_SOURCE_AND_IMAGE_REVIEW"
+    }
+  ],
+  "revised_scene": {
+    "scene_id": "origin-r12-03",
+    "line_id": "r12o03",
+    "claim_id": "o27",
+    "candidate_text": "到了 1939 年，安妮塔在德州米德蘭一場茶會上談旅行；當地報紙記下她的出場。",
+    "candidate_prompt": "Cute historical illustration of an anonymous woman speaking about travel at a modest Midland, Texas study-club guest-day tea in 1939. A small listening group is present; this scene shows the speaking engagement without revealing the wheeled luggage yet. No readable newspaper, signs, logos, quotation text or real-person likeness.",
+    "source_url": "https://newspapers.swco.ttu.edu/bitstreams/b9cd84b8-2ba7-4506-9eff-7cca3e5c6376/download",
+    "source_location": "1939-02-09 PDF p. 4",
+    "verdict": "PENDING_INDEPENDENT_SOURCE_AND_IMAGE_REVIEW"
+  },
+  "r4_review_fixes": {
+    "changed_line_ids_from_r3": [
+      "r3n01",
+      "r3n05",
+      "83ew",
+      "r14i01"
+    ],
+    "added_scene_ids_from_r3": [
+      "now-1993-stow"
+    ],
+    "added_line_ids_from_r3": [
+      "r4n01"
+    ],
+    "added_claim_ids_from_r3": [
+      "n59"
+    ],
+    "removed_scene_ids_from_r3": [
+      "now-overhead"
+    ],
+    "removed_claim_ids_from_r3": [
+      "n28",
+      "o20"
+    ],
+    "visual_changes_from_r3": [
+      "now-consumer-question",
+      "now-1993-limit",
+      "now-1993-stow",
+      "origin-06"
+    ],
+    "reviewer_findings": [
+      "Retail availability is context, not the answer to a question about pocket contents and cabin stowage.",
+      "The 1993 report says extra clothes and some paperback books were added to expandable exterior pockets; it does not say full or overfilled.",
+      "The undated airline overhead-bin retrospective could imply a post-1993 change if placed after the 1993 test, so the beat is removed.",
+      "The museum display immediately after the 1939 lecture could imply an unproved same physical suitcase, so the visual now cuts to a separate Sadow-era family."
+    ]
+  },
+  "loops": [
+    {
+      "setup": "r17h01",
+      "payoff": "r3o01",
+      "what": "父親嘲笑後，1939 年報紙仍記錄 Anita 帶輪箱出席講座",
+      "setup_scene": "hook-anita",
+      "payoff_scene": "origin-1939-case",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 72.1,
+      "verdict": "PENDING_NARRATIVE_AND_VISUAL_ANTI_SPOILER_REVIEW"
+    },
+    {
+      "setup": "b6mn",
+      "payoff": "76ur",
+      "what": "樣品能否真正上架；經首輪拒絕後，Macy 副總裁試拉並決定進貨",
+      "setup_scene": "hook-04",
+      "payoff_scene": "engine-07b",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 178.4,
+      "verdict": "PENDING_NARRATIVE_AND_VISUAL_ANTI_SPOILER_REVIEW"
+    },
+    {
+      "setup": "jtmg",
+      "payoff": "3zwf",
+      "what": "冷開場機師把箱子帶進車庫，沒有露完成品；後段揭示直立雙輪拉桿的公司記述",
+      "setup_scene": "hook-06",
+      "payoff_scene": "turn-09b",
+      "explicit_question": false,
+      "timing_300_gap_seconds": 297.7,
+      "verdict": "PENDING_NARRATIVE_AND_VISUAL_ANTI_SPOILER_REVIEW"
+    },
+    {
+      "setup": "r14i02",
+      "payoff": "idiy",
+      "what": "Sadow 想把輪子裝進行李箱；回廠試裝四腳輪再加拖繩",
+      "setup_scene": "idea-wife",
+      "payoff_scene": "idea-13b",
+      "explicit_question": false,
+      "timing_300_gap_seconds": 15.2,
+      "verdict": "PENDING_NARRATIVE_AND_VISUAL_ANTI_SPOILER_REVIEW"
+    },
+    {
+      "setup": "zaky",
+      "payoff": "76ur",
+      "what": "Sadow 帶著樣品赴紐約找買家；碰壁後有副總裁親手試拉並決定進貨",
+      "setup_scene": "idea-16",
+      "payoff_scene": "engine-07b",
+      "explicit_question": false,
+      "timing_300_gap_seconds": 44.1,
+      "verdict": "PENDING_NARRATIVE_AND_VISUAL_ANTI_SPOILER_REVIEW"
+    },
+    {
+      "setup": "r17e01",
+      "payoff": "8n2r",
+      "what": "採購以已有搬運工質疑需求；另一位百貨主管願意親自試拉樣品",
+      "setup_scene": "engine-porter",
+      "payoff_scene": "engine-06",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 10.6,
+      "verdict": "PENDING_NARRATIVE_AND_VISUAL_ANTI_SPOILER_REVIEW"
+    },
+    {
+      "setup": "r12t01",
+      "payoff": "3zwf",
+      "what": "後來專利記下外置推車反覆拆綁的限制；Travelpro 記述另一個一體直立設計",
+      "setup_scene": "turn-r12-01",
+      "payoff_scene": "turn-09b",
+      "explicit_question": false,
+      "timing_300_gap_seconds": 21.4,
+      "verdict": "PENDING_NARRATIVE_AND_VISUAL_ANTI_SPOILER_REVIEW"
+    },
+    {
+      "setup": "3zwf",
+      "payoff": "r15n01",
+      "what": "一體直立箱在公司記述中成形；同機師要求製作、機組用起來後旅客在航站看見",
+      "setup_scene": "turn-09b",
+      "payoff_scene": "now-passenger",
+      "explicit_question": false,
+      "timing_300_gap_seconds": 12,
+      "verdict": "PENDING_NARRATIVE_AND_VISUAL_ANTI_SPOILER_REVIEW"
+    },
+    {
+      "setup": "r15n02",
+      "payoff": "jspd",
+      "what": "其他機師見箱請 Plath 製作；公司說需求增加，車庫不夠而搬倉",
+      "setup_scene": "now-crew-request",
+      "payoff_scene": "now-11",
+      "explicit_question": false,
+      "timing_300_gap_seconds": 22.1,
+      "verdict": "PENDING_NARRATIVE_AND_VISUAL_ANTI_SPOILER_REVIEW"
+    },
+    {
+      "setup": "r3n01",
+      "payoff": "r4n01",
+      "what": "外袋加放衣物和書後，記者的箱子在機艙放不進",
+      "setup_scene": "now-consumer-question",
+      "payoff_scene": "now-1993-stow",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 39.9,
+      "verdict": "PENDING_NARRATIVE_AND_VISUAL_ANTI_SPOILER_REVIEW"
+    }
+  ],
+  "host_migration": "SPEC_ONLY_SIX_CHAPTER_SOURCES_AND_SERIES_PLAN_REQUIRE_SEPARATE_REVIEW",
+  "caveats": [
+    "1939 report records a wheeled suitcase at one study-club appearance; it does not identify the same 1928 homemade case or prove wheeled luggage at every lecture.",
+    "The 1993 report is a contemporary reporter’s own comparison; mail-order-to-retail wording does not establish exact launch dates, overall sales or universal cabin compatibility.",
+    "The 1993 report says extra clothes and paperback books went into expandable exterior pockets, making her Travelpro fail under-seat/overhead stowage until emptied. It does not say the pocket was full.",
+    "The new question concerns cabin stowage after adding those items. Retail availability and general cabin fit are context, not a payoff for that specific packing question. The loop still needs blind listening and picture anti-spoiler review.",
+    "The undated airline overhead-bin retrospective is removed from r4 narration after 1993; no chronology or causal link from the reporter test to airline modifications is asserted.",
+    "The Anita museum-case beat is removed from narration and imagery. The Midland report does not establish that its 1939 case is the surviving 1928 family object.",
+    "All prior r2 source, chronology and visual caveats remain binding; see the frozen r2 source-map and validation under base/.",
+    "Travelpro dates the upright Rollaboard design to 1987 and Smithsonian dates its carry-on impact to 1987, while Plath’s 2024 first-person alumni note says he invented it in 1988. These sources conflict; the existing attributed Travelpro narration is unchanged and the year is not settled.",
+    "The 1939 newspaper describes a black cape, not a shawl; o34 claim metadata now matches the already-correct narration and illustration."
+  ],
+  "derives_from_r4_manifest_sha256": "e56db0625c2b48c43b732351c1c073dee3e3034c41eb9726c142bec214cfeac0",
+  "r5_metadata_only": true,
+  "year_conflict_review_note": {
+    "status": "UNRESOLVED_INDEPENDENT_REVIEW_REQUIRED",
+    "affected_claim_ids": [
+      "h6",
+      "t7",
+      "t31"
+    ],
+    "narration_and_visuals_unchanged": true,
+    "evidence": [
+      {
+        "url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+        "location": "How Today’s Wheeled Suitcase Was Invented; What Is A Rollaboard Suitcase?",
+        "statement_scope": "company retrospective dates upright Rollaboard design to 1987"
+      },
+      {
+        "url": "https://www.smithsonianmag.com/history/history-humble-suitcase-180951376/",
+        "location": "The History of the Humble Suitcase, carry-on paragraph",
+        "statement_scope": "retrospective dates Rollaboard transformation of carry-on luggage to 1987; not independent evidence for garage build date"
+      },
+      {
+        "url": "https://wshsalumniassociation.org/wp-content/uploads/2024/05/Chinook-May-2024.pdf",
+        "location": "Chinook, May 2024, p. 17, Robert Plath first-person alumni entry",
+        "statement_scope": "Plath dates his invention of vertical rolling Travelpro Rollaboard to 1988"
+      }
+    ],
+    "editorial_boundary": "Keep existing attributed Travelpro 1987 narration as an attributed claim; do not assert that 1987 or 1988 is the settled single year."
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "kind": "offline-formal-prototype-with-open-gates",
+  "episode": "B14",
+  "verified_at": "2026-10-15T19:58:45.897Z",
+  "files": [
+    {
+      "file": "card-adapter-evidence.json",
+      "sha256": "39f4728a20f42a8457db7a65f4294089edd66bb2fcfc726f0529ab36bfbdd606",
+      "bytes": 4708
+    },
+    {
+      "file": "chapters/engine.json",
+      "sha256": "a183190abf2c36262a978bf5903db1adc92339322a4b053fae0d1cf82264fc16",
+      "bytes": 23525
+    },
+    {
+      "file": "chapters/hook.json",
+      "sha256": "ae8bb0c924ec7253c15605810b4a8c6aa23290f9fc96f20f70a86348f367e934",
+      "bytes": 7684
+    },
+    {
+      "file": "chapters/idea.json",
+      "sha256": "e89cd85d914f4a9a06f13b06e0c9ab148755a88bb3c6a33fa3c1f19cba4a4969",
+      "bytes": 12290
+    },
+    {
+      "file": "chapters/now.json",
+      "sha256": "5635f01b59d11c9790adc2d592808e679fd1a2eb5b957b22d02be7994a6f77bf",
+      "bytes": 8170
+    },
+    {
+      "file": "chapters/origin.json",
+      "sha256": "2e2661c2a7f91b1cdb84067524fced58da68efe2e2eea03ab17dc55f31eb6677",
+      "bytes": 13772
+    },
+    {
+      "file": "chapters/turn.json",
+      "sha256": "74eaa35a0a758aa4bdf8d33c27993dd0e6db967b2f100963310c89d424e403a3",
+      "bytes": 19884
+    },
+    {
+      "file": "compose-lint-evidence.json",
+      "sha256": "86425d44f6eb8ee91b2661da7c907510967b6b5de1090777f4e9f1efa50a76cf",
+      "bytes": 19480
+    },
+    {
+      "file": "correction-manifest.json",
+      "sha256": "6291bf02832c1290acc4d5691218a548200794d3058831d5b8970919703c9875",
+      "bytes": 1485
+    },
+    {
+      "file": "fullscript-reconstruction.json",
+      "sha256": "971e297734b6614be36ae72cd82dcc0e5179c1c992e0d2ecc9bba1b09d5f7842",
+      "bytes": 14435
+    },
+    {
+      "file": "input-pins.json",
+      "sha256": "0f707bd2bf14dda11f209537b2727ae76a04789b220d65a5a04dd40c77ee8d85",
+      "bytes": 7202
+    },
+    {
+      "file": "mapping.json",
+      "sha256": "3118c014dcd9acda3cd7b6957592525eb2d5520678a2ea98d6d711ead2695043",
+      "bytes": 253820
+    },
+    {
+      "file": "output-pins.json",
+      "sha256": "b08263e4d245992301d1b37572155c54081b83adf96db0786b0614a235e00159",
+      "bytes": 3523
+    },
+    {
+      "file": "readiness.json",
+      "sha256": "1f2661c5683d91a206968b962cde8511056960aee16f4e7d9089a846391d92da",
+      "bytes": 15614
+    },
+    {
+      "file": "READINESS.md",
+      "sha256": "d938ea164be527162838d1428c6dcfff7f7fa130ba0960ce1ebf650b67283b22",
+      "bytes": 4971
+    },
+    {
+      "file": "row-fullscript-adoption-gap.json",
+      "sha256": "eba83e71cf4e33aae9c1564e32457314cf0a03ea59e8887417492136ffa2036d",
+      "bytes": 2778
+    },
+    {
+      "file": "series-input.json",
+      "sha256": "bb0ee910153cf20473fdabfbd486b4299394329fb09ae7ee4bf0a80dca991264",
+      "bytes": 827
+    },
+    {
+      "file": "series.json",
+      "sha256": "f235727dfdf5b98257d85c780c60b22652d03aea4ddcae7bb90bf4e029dbae7a",
+      "bytes": 17688
+    },
+    {
+      "file": "shot-reading-evidence.json",
+      "sha256": "80d93cadcc2291a28ec50a59c03c16de068442acd569fd0205369723762b6c7a",
+      "bytes": 47576
+    },
+    {
+      "file": "worker-row.json",
+      "sha256": "da34be314b719632e49b2f7f9afa3e9923a9ec5e410ee2dc1f60956b5468ff3d",
+      "bytes": 14479
+    },
+    {
+      "file": "handoff-pins.json",
+      "sha256": "32e63d683d3761e433ececa8cd67673127530a1f8fd008edb3f26f267a317adf",
+      "bytes": 5817
+    }
+  ],
+  "historical_input_snapshots": [],
+  "independent_readback": {
+    "all_handoff_pins_match": true,
+    "input_pins_match": 44,
+    "paragraphs": 48,
+    "lines": 96,
+    "scenes": 83,
+    "all_narration_exact": true,
+    "all_claims_unchecked": true,
+    "all_cards_preserve_original_text_scope_source": true,
+    "all_image_prompt_camera_fields_preserved": true
+  },
+  "limitations": [
+    "Synthetic runtime files and card HTML/PNGs stay in the external work area. Original output/handoff indices also reference these omitted local artifacts.",
+    "Official tool reports are preserved including blocking lexicon errors and all warnings. This is no production or media PASS.",
+    "Actual source verification, accepted asset identity, TTS/audio, measured runtime and owner viewing remain pending."
+  ],
+  "host_calls": 0,
+  "paid_calls": 0
+}

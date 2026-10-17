@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_VISUAL_HEAD_INTEGRATION_CANDIDATE",
+  "base_pins": {
+    "series.json": "54152ce70772ffb1890ef83fdc0dec8dfd8071afe75db976b7b08975cfea5c97",
+    "chapters/hook.json": "eb502bc4436ecf5b82edd49f6fd0f31502565d54b61145fb2e5a8465665691a2",
+    "chapters/origin.json": "8d464a318133bf04ca804e3e4576fa6705ba483803277dc1c1664aae7bc32328",
+    "chapters/idea.json": "60c5f60fb7548e7ec670cb8c5fa18372a00f58613a8b525eb4ea8b27a258a70b",
+    "chapters/engine.json": "37610084a186c8d0774e63ea5f182a46952ce6104320baaa7afee1227ab8ed1d",
+    "chapters/turn.json": "0a236c80489249634e5bb3aa716d9256b71813d9abea25756100eac86b7e1e37",
+    "chapters/now.json": "324d3e43542206466ab03b389f3ff8ccecfc80edc5f098ecc8fe65df7c1c65a2"
+  },
+  "old_card_variant_sha256": "6dda79642d299c933fa56c63d74ac95b97f947918764ad56b9705ff02cb96a24",
+  "old_reuse_mapping_sha256": "46f8a6c27e79c42e733fda1e91a57e07144094907e3184d6e59d5af43cddedbc",
+  "chapter_changes": [
+    {
+      "chapter": "idea",
+      "scene": "idea-s027",
+      "field": "data.subtitle",
+      "before": "兩份沿革記載\nJ-Net21 記載\n發明協會記載",
+      "after": "兩份資料，兩種說法"
+    }
+  ],
+  "reuse_intent_changes": {
+    "prior_hook_payoff_same_file_intents": [
+      "b18-hook-reuse-1",
+      "b18-hook-reuse-2",
+      "b18-hook-reuse-3"
+    ],
+    "candidate_hook_payoff_treatment": "separate_illustrations_with_story_motif_callback",
+    "prior_ending_same_file_intent": "b18-three-sentence-end-hold",
+    "candidate_ending_treatment": "four_distinct_illustrative_moments",
+    "runtime_alias_change": false
+  }
+}

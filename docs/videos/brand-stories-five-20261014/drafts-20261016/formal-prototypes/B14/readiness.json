@@ -1,0 +1,316 @@
+{
+  "status": "OFFLINE_FORMAT_PROTOTYPE_WITH_REAL_LEXICON_AND_FORMAT_BLOCKS",
+  "source_pins_verified": 44,
+  "primary_source_collection_count": 43,
+  "additional_voice_fixture_pinned": true,
+  "previous_outputs_verified": 29,
+  "fullscript_paragraphs_exact": 48,
+  "formal_lines": 96,
+  "scenes": 83,
+  "claims_unchecked": 79,
+  "source_cids": 34,
+  "loops": 9,
+  "hook_reuse_pairs": 3,
+  "illustrations": 75,
+  "cards": 8,
+  "unique_planned_illustrations": 72,
+  "lexicon_fixture": {
+    "file": "synthetic/docroot/docs/videos/lexicon.json",
+    "sha256": "ebfa590a69b4328ed9bc0141832bb73d27cba51963fca78778258d404c3bc4c9",
+    "observation": "Saved A29/A16 fixture; not a fresh live-host reading.",
+    "errors": 17,
+    "unique_terms": [
+      "FDA",
+      "CPU",
+      "Shigeo",
+      "Nakamura",
+      "ABF",
+      "Akito",
+      "Kitano",
+      "FC-BGA"
+    ],
+    "not_silenced_with_null": true,
+    "actual_pronunciation_review": "PENDING"
+  },
+  "lint": {
+    "full_errors": [
+      {
+        "path": "scenes[24].lines[0] (b14000u)",
+        "message": "\"FDA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[26].lines[0] (b14000w)",
+        "message": "\"FDA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[43].lines[0] (b14001h)",
+        "message": "\"CPU\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[45].lines[0] (b14001j)",
+        "message": "\"Shigeo\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[45].lines[0] (b14001j)",
+        "message": "\"Nakamura\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[50].lines[1] (b14001p)",
+        "message": "\"Nakamura\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[58].lines[0] (b14001x)",
+        "message": "\"Nakamura\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[58].lines[0] (b14001x)",
+        "message": "\"CPU\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[59].lines[0] (b14001y)",
+        "message": "\"ABF\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[65].lines[0] (b140024)",
+        "message": "\"ABF\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[69].lines[0] (b140029)",
+        "message": "\"Akito\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[69].lines[0] (b140029)",
+        "message": "\"Kitano\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[72].lines[0] (b14002c)",
+        "message": "\"Akito\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[72].lines[0] (b14002c)",
+        "message": "\"Kitano\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[73].lines[0] (b14002d)",
+        "message": "\"FC-BGA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[74].lines[0] (b14002e)",
+        "message": "\"ABF\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[78].lines[1] (b14002j)",
+        "message": "\"ABF\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      }
+    ],
+    "all_errors_are_fixture_lexicon": true,
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"generic\" is in 75 of 75 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"face\" is in 44 of 75 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"sample\" is in 44 of 75 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.median: median shot 7.0 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.p90: 90th percentile shot 8.5 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-001, hook-002, hook-003, hook-004, hook-005, hook-006, origin-008, origin-009, … 73) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.longest: longest shot 9.2 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-003, hook-005, hook-006, origin-009, origin-010, engine-037, engine-038, turn-058, … 14) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.spread: long shots against short ones (90th ÷ 10th percentile) 1.3, target ≥ 2; every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-001, hook-002) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.opening30: shots that start in the first 30 s 4, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.median: median line length 24 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.long: lines over 20 characters 73%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-001, hook-003, hook-004, hook-005, hook-006, origin-008, origin-010, origin-011, … 63) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.face: faces (medium close-up and closer, over-the-shoulder) 39%, target ≥ 40%; the audience follows a face; give each turn of the scene a face that reacts (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.insert: inserts 0%, target 5%–25%; an insert answers a story question (which paper, whose hand); too few hides the proof, too many hides the people (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-001, hook-002, hook-003, hook-004, hook-005, hook-006, hook-007, origin-008, … 75) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.run: such shots in a row 75 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-001, hook-002, hook-003, hook-004, hook-005, hook-006, hook-007, origin-008, … 75) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-001, hook-002, hook-003) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft risk.decorative: shots with nobody in them that are not inserts 75% (56), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (hook-001, hook-002, hook-003, hook-004, hook-006, hook-007, origin-008, origin-009, … 56) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 00:53 and 02:32 (99 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 02:32 and 04:04 (92 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 06:47 and 08:53 (126 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "youtube",
+        "message": "youtube.tags: 12 tags; package keeps the first 10, so put the zh-TW terms and the English product names first"
+      },
+      {
+        "path": "thumbnail",
+        "message": "the headline repeats the title: 「調味料」 is in the title's first 10 characters; say what the title does not"
+      }
+    ],
+    "narrative_warnings": [
+      {
+        "path": "scenes",
+        "message": "no open loop between 00:53 and 02:32 (99 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 02:32 and 04:04 (92 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 06:47 and 08:53 (126 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      }
+    ]
+  },
+  "native_title": {
+    "cards": 8,
+    "original_visible_fields_preserved": true,
+    "html_saved": true,
+    "pixel_layout_review": "PENDING",
+    "source_alias_expansion": "Each original card includes readable publication/company text plus internal S1-S7 alias. Alias remains preserved; final visible attribution/pixel presentation requires review."
+  },
+  "writer_parser_rejects_title_chapters": [
+    "origin",
+    "idea",
+    "engine",
+    "turn"
+  ],
+  "writer_parser_other_chapters_lossless": false,
+  "shot_reading": {
+    "shots": 75,
+    "traps": 0,
+    "by_kind": {}
+  },
+  "counting": {
+    "editorial_units": 2161,
+    "official_units": 2103,
+    "zero_circles_omitted_by_official_regex": 11,
+    "latin_token_count": 17,
+    "latin_compression_difference": 47,
+    "words_omitted": false
+  },
+  "timing": {
+    "editorial_narration_only_body_seconds": {
+      "at_250_cpm": 518.64,
+      "at_230_cpm": 563.74
+    },
+    "official_default_timeline_body_seconds": 593.667,
+    "official_hook_seconds": 53,
+    "maximum_scene_seconds": 9.167,
+    "line_fragments": 96,
+    "default_pause_ms_per_fragment": 300,
+    "scene_gap_ms": 700,
+    "tail_ms": 1500,
+    "manual_pauses_added": 0,
+    "measured_TTS_seconds": null,
+    "body_includes_hook": true,
+    "branding_separate_seconds": 26
+  },
+  "fact_mapping": {
+    "status": "AUTHOR_MAPPING_PENDING_INDEPENDENT_REVIEW",
+    "details_file": "mapping.json",
+    "native_multi_source_null_rows": [
+      "h6",
+      "e1",
+      "e2",
+      "t3",
+      "t4",
+      "n1",
+      "n2",
+      "n5",
+      "n6",
+      "n7"
+    ],
+    "native_multi_fact_null_rows": [],
+    "all_native_verdicts": "UNCHECKED",
+    "no_arbitrary_multi_source_selection": true
+  },
+  "format_limitations": [
+    "Ordinary story row import writes a plan and then calls writer; this author bundle has no supported production import path.",
+    "Writer parser rejects title scenes in origin/idea/engine/turn and normalizes away claim metadata in hook/now. Do not use it as an installer.",
+    "Ten claim rows have multiple source candidates and retain source=null with complete original evidence in sidecar. Native single-index facts are author mappings pending independent review.",
+    "Nine original paragraph-array loops use terminal native line anchors; the entire setup/payoff windows remain in mapping.",
+    "Three image_asset_key reuse plans remain sidecar-only. Equal synthetic requests are not accepted-file identity.",
+    "Compiled cast of chemist/materials-engineer is preserved but no scene data.characters binding is invented; no historical person portrait is generated.",
+    "No real verifier/listener/narrative/pilot/owner/upload pass exists."
+  ],
+  "calls": {
+    "external": 0,
+    "model": 0,
+    "media": 0,
+    "host": 0,
+    "repo_writes": 0
+  },
+  "production_ready": false,
+  "editorial_advice": {
+    "status": "OPTIONAL_NOT_A_HARD_GATE",
+    "paragraphs": [
+      "T03a",
+      "T04"
+    ],
+    "words_unchanged": true,
+    "observation": "The original independent review and worker source-map say these adjacent passages may be combined; this is optional refinement, not a requirement already violated. Do not add repetitive text to restore length.",
+    "details_file": "row-fullscript-adoption-gap.json"
+  }
+}

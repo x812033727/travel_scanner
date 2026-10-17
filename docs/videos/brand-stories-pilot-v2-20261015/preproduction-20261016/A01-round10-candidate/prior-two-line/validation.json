@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "status": "MECHANICAL_ONLY_NO_NARRATIVE_JUDGE",
+  "renderer": {
+    "story_module_sha256": "f9825a7ce9649111d3e49ab33a2846a8be61111dd2cb2df40db3b68b974676f3",
+    "lint_module_sha256": "6cc1c1ee9cb425303d7a9f2ffa2d6aa5bddc3fa82c72314ede0060703316a386",
+    "timeline_module_sha256": "369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a"
+  },
+  "baseline": {
+    "frozen_video_exact": true,
+    "lint_errors": [],
+    "cute_errors": [],
+    "warning_count": 36,
+    "estimated_seconds": 520.8333333333334,
+    "scenes": 63,
+    "lines": 92
+  },
+  "candidate": {
+    "lint_errors": [],
+    "cute_errors": [],
+    "warning_count": 37,
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"generic\" is in 59 of 62 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"suitcase\" is in 53 of 62 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"lamp\" is in 28 of 62 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes[11] (origin-03)",
+        "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[18] (origin-13)",
+        "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[19] (origin-14)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[20] (origin-15)",
+        "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[23] (idea-02)",
+        "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[27] (idea-06)",
+        "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[30] (idea-08)",
+        "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[32] (idea-10)",
+        "message": "about 11.7 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[36] (idea-13)",
+        "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[41] (turn-01)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[51] (turn-09)",
+        "message": "about 11.6 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[55] (turn-12)",
+        "message": "about 10.5 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[56] (turn-15)",
+        "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[57] (now-01)",
+        "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.median: median shot 7.7 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.p90: 90th percentile shot 10.9 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-01, hook-02, hook-02b, hook-03, hook-07, hook-04, hook-06, origin-01, … 51) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.longest: longest shot 11.7 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-03, hook-07, hook-06, origin-01, origin-03, origin-10, origin-13, origin-14, … 27) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.spread: long shots against short ones (90th ÷ 10th percentile) 2.0, target ≥ 2; every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-01, hook-02) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.opening30: shots that start in the first 30 s 4, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.median: median line length 20 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.long: lines over 20 characters 49%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-01, hook-02, hook-02b, hook-07, hook-06, origin-01, origin-02, origin-03, … 44) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.face: faces (medium close-up and closer, over-the-shoulder) 35%, target ≥ 40%; the audience follows a face; give each turn of the scene a face that reacts (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.insert: inserts 0%, target 5%–25%; an insert answers a story question (which paper, whose hand); too few hides the proof, too many hides the people (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.wide: wide and group shots 34%, target 5%–30%; show where everyone stands, briefly, then go back in (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-01, hook-02, hook-02b, hook-03, hook-07, hook-04, hook-05, hook-06, … 62) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.run: such shots in a row 62 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-01, hook-02, hook-02b, hook-03, hook-07, hook-04, hook-05, hook-06, … 62) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-01, hook-02, hook-02b) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft risk.decorative: shots with nobody in them that are not inserts 18% (11), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (hook-04, origin-06, origin-07, origin-10, origin-11, origin-13, idea-01, idea-04, … 11) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "about 8.7 minutes; the target is 9-11"
+      },
+      {
+        "path": "scenes",
+        "message": "「1970」 is said in 3 lines (47gq, dgbq, amrq): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "youtube",
+        "message": "youtube.tags: 12 tags; package keeps the first 10, so put the zh-TW terms and the English product names first"
+      }
+    ],
+    "estimated_seconds": 520.3333333333334,
+    "estimated_delta_seconds": -0.5,
+    "scenes": 63,
+    "lines": 92,
+    "loops_unchanged": true,
+    "ids_unchanged": true,
+    "preview_video_sha256": "9e1f9ebd9e60cb1055093cddfa299d90e0870b08efb10d3b26dd12ea9f10eb42"
+  },
+  "no_model_or_host_calls": true
+}

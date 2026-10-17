@@ -1,0 +1,403 @@
+{
+  "schema_version": 1,
+  "purpose": "Source-access candidate only; not an independent review or worker/media PASS",
+  "created_at": "2026-10-15T18:16:53.494Z",
+  "original_sha256": "42c232614376c1dfac93606d8758bb8a637bcc598312c3687b61ae307b295421",
+  "candidate_sha256": "df32efa32d3b4bc0b629901255cb009d48a57629cac610a5eb163178712a7dad",
+  "original_story_sha256": "cb5603bac2af9fba7854de5bb342bce944b3140754e8cbb2745612182da83786",
+  "candidate_story_sha256": "07eb8e786b9d6d0ac1c6ccb25991a5ba5b5da89ac30c330d8009d1b902b966c1",
+  "protected_originals_before": {
+    "worker-candidates/A37.json": "42c232614376c1dfac93606d8758bb8a637bcc598312c3687b61ae307b295421",
+    "worker-candidates/fetch-A37-B14-A21.json": "4a200d97ab516c7c434fb2c961695e0dd303de543e4ad4b684f2c81cd90b7f90",
+    "worker-candidates/fetch-A37-host.json": "e58a13a8432368e1883754e70b9b1e5224d0d6248d232fb78aa74ac4bdf5833a",
+    "source-refresh-and-outline-A37.md": "63e6277c85cc573556651f686cbf7722d602c620265e7730a9f3f32b7d016d09",
+    "A37-v4-independent-diff-review.md": "dbc85788b45050bd48d96743586bf52a2981ad878d172b7ff936a33a738455f4",
+    "worker-candidates/A37-source-map.md": "dc27a27845514cd66499b19895dc2610a5176b968e8e44ec4168f4fdeb4a1918"
+  },
+  "protected_originals_after": {
+    "worker-candidates/A37.json": "42c232614376c1dfac93606d8758bb8a637bcc598312c3687b61ae307b295421",
+    "worker-candidates/fetch-A37-B14-A21.json": "4a200d97ab516c7c434fb2c961695e0dd303de543e4ad4b684f2c81cd90b7f90",
+    "worker-candidates/fetch-A37-host.json": "e58a13a8432368e1883754e70b9b1e5224d0d6248d232fb78aa74ac4bdf5833a",
+    "source-refresh-and-outline-A37.md": "63e6277c85cc573556651f686cbf7722d602c620265e7730a9f3f32b7d016d09",
+    "A37-v4-independent-diff-review.md": "dbc85788b45050bd48d96743586bf52a2981ad878d172b7ff936a33a738455f4",
+    "worker-candidates/A37-source-map.md": "dc27a27845514cd66499b19895dc2610a5176b968e8e44ec4168f4fdeb4a1918"
+  },
+  "originals_unchanged": true,
+  "source_index_old_to_new": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": null,
+    "4": 3,
+    "5": 4,
+    "6": 5,
+    "7": 6,
+    "8": 7,
+    "9": 8
+  },
+  "appended_source_index": {
+    "9": "https://report.adidas-group.com/2019/en/at-a-glance/2019-stories/70-years-of-adidas-new-work-spaces.html"
+  },
+  "retired_source": {
+    "old_index": 3,
+    "value": {
+      "url": "https://www.adidas-group.com/en/magazine/innovation/the-history-of-adidas-a-background-of-collaboration-and-innovation",
+      "publisher": "Adidas Group，歷史文章2021-08-03",
+      "kind": "official",
+      "supports": "S4早期史及1954段：戰時壓力後1948分開；阿迪與西德隊密切合作、可替換鞋釘。Owens穿鞋證據未定，作省略支線依據；不採鞋重比例、首創或半場實際換釘。",
+      "checked": "2026-10-16"
+    },
+    "reason": "No pageReader-readable equivalent found; original v4 manual evidence remains intact."
+  },
+  "manual_review_proposal": {
+    "must_verify_indexes": [
+      0
+    ],
+    "rationale": "This claim cites only the official linked PDF. Worker returned HTTP 200 but not a text page; independent root reading/review remains required. No reviewer_only field was added by this author."
+  },
+  "claim_mapping": [
+    {
+      "old": 0,
+      "new": [
+        0,
+        2
+      ],
+      "change": "PDF laundry/Lina to 0; museum registration/specialist shoes to 2. New 0 also receives old 6 PDF 1954 shoe fact."
+    },
+    {
+      "old": 1,
+      "new": [
+        1
+      ],
+      "change": "Keep attributed HISTORY family/roles; retire wartime strain modifier from active worker inputs."
+    },
+    {
+      "old": 2,
+      "new": [
+        2
+      ],
+      "change": "All existing PUMA timeline facts preserved; add museum facts transferred from old 0."
+    },
+    {
+      "old": 3,
+      "new": [
+        3
+      ],
+      "change": "Claim text identical; exact registration date/name now supported by readable annual report 2019."
+    },
+    {
+      "old": 4,
+      "new": [
+        4
+      ],
+      "change": "Text identical; source7→6."
+    },
+    {
+      "old": 5,
+      "new": [
+        5
+      ],
+      "change": "Text identical; source7→6."
+    },
+    {
+      "old": 6,
+      "new": [
+        0,
+        6
+      ],
+      "change": "1954 shoe fact to manual PDF claim0; match facts stay6; omit unneeded collaboration/weather-adjustment modifiers."
+    },
+    {
+      "old": 7,
+      "new": [
+        7
+      ],
+      "change": "Text identical; source4→3."
+    },
+    {
+      "old": 8,
+      "new": [
+        8
+      ],
+      "change": "Text identical; source4→3."
+    },
+    {
+      "old": 9,
+      "new": [
+        9
+      ],
+      "change": "Text identical; source5→4."
+    }
+  ],
+  "exact_delta": [
+    {
+      "path": "chapters.3.point",
+      "before": "RUDA於1948-06-01開工，10-01登記PUMA商標，1949-01-14列商業登記，分別交代不重述。口頭回呼開場弟弟新登記，給1949-08-18及Adolf Dassler／Adidas名字。兄弟各有公司後仍送鞋入場。據PUMA2006回顧：1951資深球員試穿；工匠回憶舊鞋釘磨損露釘頭的風險；1952 SUPER ATOM量產、1952/53交貨、下一季BRASIL；球員回憶依天候選長中短鞋釘。阿迪亦與西德隊合作，把時間推到1954決賽，對手匈牙利與雨場成為下章問題。",
+      "after": "RUDA於1948-06-01開工，10-01登記PUMA商標，1949-01-14列商業登記，分別交代不重述。口頭回呼開場弟弟新登記，給1949-08-18及Adolf Dassler／Adidas名字。兄弟各有公司後仍送鞋入場。據PUMA2006回顧：1951資深球員試穿；工匠回憶舊鞋釘磨損露釘頭的風險；1952 SUPER ATOM量產、1952/53交貨、下一季BRASIL；球員回憶依天候選長中短鞋釘。西德隊穿著Adidas球鞋進入1954決賽，對手匈牙利與雨場成為下章問題。"
+    },
+    {
+      "path": "chapters.4.point",
+      "before": "1954-07-04伯恩，依德國足協記錄，雨天西德先0:2落後；Adidas史料說國家隊鞋釘可依天候替換，和哥哥回顧作功能對照，不裁決首創、不造半場換釘。18分鐘追平2:2，84分鐘Rahn進球，終場3:2奪冠，不歸因鞋獨力致勝。產品試驗小結後拉回鎮上：HISTORY描述工廠河兩岸，Nick Smith談部分麵包店／學校偏向，限定社交傾向非全鎮禁令。據同報導，兄弟1974／1978過世、未和好、墓園兩端。人物到終點，公司還能否同場？",
+      "after": "1954-07-04伯恩，依德國足協記錄，雨天西德先0:2落後；Adidas新聞稿記國家隊穿旋入式鞋釘球鞋，與哥哥回顧作鞋釘結構對照，不裁決首創、不造半場換釘。18分鐘追平2:2，84分鐘Rahn進球，終場3:2奪冠，不歸因鞋獨力致勝。產品試驗小結後拉回鎮上：HISTORY描述工廠河兩岸，Nick Smith談部分麵包店／學校偏向，限定社交傾向非全鎮禁令。據同報導，兄弟1974／1978過世、未和好、墓園兩端。人物到終點，公司還能否同場？"
+    },
+    {
+      "path": "must_verify.0.claim",
+      "before": "1924-07-01兄弟共同登記；此前阿迪曾在母親洗衣間做鞋。市立博物館列多用途專鞋；Adidas記1928 Lina Radke穿兄弟鞋拿女子800m金牌，不說勝利全靠鞋。",
+      "after": "Adidas 2024新聞稿：阿迪曾在母親洗衣間做鞋；1928 Lina Radke穿兄弟鞋拿800m金牌；1954德國國家隊穿旋入式鞋釘球鞋。不把金牌或比賽勝利全歸給鞋。"
+    },
+    {
+      "path": "must_verify.0.sources.0",
+      "before": 0,
+      "after": 1
+    },
+    {
+      "path": "must_verify.0.sources.1",
+      "before": 1,
+      "after": null
+    },
+    {
+      "path": "must_verify.0.sources.2",
+      "before": 2,
+      "after": null
+    },
+    {
+      "path": "must_verify.1.claim",
+      "before": "HISTORY受訪作者對兄弟製鞋／銷售分工、兩對夫妻同住及私人爭執未定的描述；Adidas歷史文記戰時壓力後1948分開。不能選定唯一分裂原因或添加戰時事件。",
+      "after": "HISTORY受訪作者對兄弟製鞋／銷售分工、兩對夫妻同住及私人爭執未定的描述。不能選定唯一分裂原因或添加戰時事件。"
+    },
+    {
+      "path": "must_verify.1.sources.0",
+      "before": 4,
+      "after": 3
+    },
+    {
+      "path": "must_verify.1.sources.1",
+      "before": 3,
+      "after": null
+    },
+    {
+      "path": "must_verify.2.claim",
+      "before": "PUMA年表：1948年1月登記RUDA，同年分開，魯道夫與15員工改另一家族建築為廠；6月1日開工，10月1日PUMA商標，1949年1月14日商業登記。省略本次無據1948年12月節點。",
+      "after": "市立博物館記1924-07-01兄弟共同登記及足球、拳擊、滑雪、田徑專鞋。PUMA年表記1948-01登記RUDA，同年分開、15員工改家族另一建築為廠；6/1營運、10/1PUMA商標、1949-01-14商業登記。不補無據1948-12節點。"
+    },
+    {
+      "path": "must_verify.3.sources.0",
+      "before": 1,
+      "after": 9
+    },
+    {
+      "path": "must_verify.3.sources.2",
+      "before": 6,
+      "after": 5
+    },
+    {
+      "path": "must_verify.4.sources.0",
+      "before": 7,
+      "after": 6
+    },
+    {
+      "path": "must_verify.5.sources.0",
+      "before": 7,
+      "after": 6
+    },
+    {
+      "path": "must_verify.6.claim",
+      "before": "Adidas記阿迪與西德隊合作、1954隊鞋可換釘。DFB列7月4日伯恩雨天決賽對匈牙利，西德0:2落後、18分鐘2:2、84分鐘Rahn進球、終場3:2。功能與過程並列，不證首創或鞋獨力致勝。",
+      "after": "DFB列1954-07-04伯恩雨天決賽對匈牙利，西德0:2落後、18分鐘2:2、84分鐘Rahn進球、終場3:2。比賽過程不證任何品牌首創、決賽當天換釘或鞋獨力致勝。"
+    },
+    {
+      "path": "must_verify.6.sources.0",
+      "before": 3,
+      "after": 7
+    },
+    {
+      "path": "must_verify.6.sources.1",
+      "before": 1,
+      "after": 8
+    },
+    {
+      "path": "must_verify.6.sources.2",
+      "before": 8,
+      "after": null
+    },
+    {
+      "path": "must_verify.6.sources.3",
+      "before": 9,
+      "after": null
+    },
+    {
+      "path": "must_verify.7.sources.0",
+      "before": 4,
+      "after": 3
+    },
+    {
+      "path": "must_verify.8.sources.0",
+      "before": 4,
+      "after": 3
+    },
+    {
+      "path": "must_verify.9.sources.0",
+      "before": 5,
+      "after": 4
+    },
+    {
+      "path": "sources.1.url",
+      "before": "https://www.adidas-group.com/en/media/press-releases/adidas-celebrates-75-years-of-innovation-and-sports-history",
+      "after": "https://res.cloudinary.com/confirmed-web/image/upload/v1723530968/adidas-group/media/press_releases/2024/20240813_Press_Release_adidas_75_Anniversary_EN_qvrqgp.pdf"
+    },
+    {
+      "path": "sources.1.publisher",
+      "before": "Adidas Group，75週年新聞稿2024-08-13",
+      "after": "Adidas Group，75週年新聞稿官方PDF2024-08-13"
+    },
+    {
+      "path": "sources.1.supports",
+      "before": "S2早期史：阿迪在母親洗衣間、1928 Lina Radke穿兄弟鞋拿800m金牌、1949-08-18新公司登記、1954國家隊鞋。不把洗衣間主詞擴成兄弟，也不認定鞋是唯一勝因。",
+      "after": "S2同一新聞稿官方連出PDF，第1頁第2–3段：阿迪母親洗衣間、1928 Lina Radke的800m金牌、1949-08-18登記、1954德國隊旋入式鞋釘。兩頁已人工實讀；worker不支援PDF，不據此聲稱密切合作、按天候換釘或唯一勝因。"
+    },
+    {
+      "path": "sources.3.url",
+      "before": "https://www.adidas-group.com/en/magazine/innovation/the-history-of-adidas-a-background-of-collaboration-and-innovation",
+      "after": "https://www.history.com/articles/adidas-puma-rivalry-dassler"
+    },
+    {
+      "path": "sources.3.publisher",
+      "before": "Adidas Group，歷史文章2021-08-03",
+      "after": "HISTORY／Julia Carpenter，2026-05-06"
+    },
+    {
+      "path": "sources.3.kind",
+      "before": "official",
+      "after": "news"
+    },
+    {
+      "path": "sources.3.supports",
+      "before": "S4早期史及1954段：戰時壓力後1948分開；阿迪與西德隊密切合作、可替換鞋釘。Owens穿鞋證據未定，作省略支線依據；不採鞋重比例、首創或半場實際換釘。",
+      "after": "S5作者訪談：製鞋／銷售分工、兩對夫妻同住與私人分裂事件未定；工廠河兩岸、Nick Smith談部分麵包店／學校偏向；1974／1978死亡、未和好與墓園兩端。全保留歸屬，不採Owens或彎脖子綽號。"
+    },
+    {
+      "path": "sources.4.url",
+      "before": "https://www.history.com/articles/adidas-puma-rivalry-dassler",
+      "after": "https://about.puma.com/en/newsroom/news/adidas-and-puma-together-peace-employees-play-football-global-peace-day-2009"
+    },
+    {
+      "path": "sources.4.publisher",
+      "before": "HISTORY／Julia Carpenter，2026-05-06",
+      "after": "PUMA，和平日活動原始新聞稿2009-09-22"
+    },
+    {
+      "path": "sources.4.kind",
+      "before": "news",
+      "after": "official"
+    },
+    {
+      "path": "sources.4.supports",
+      "before": "S5作者訪談：製鞋／銷售分工、兩對夫妻同住與私人分裂事件未定；工廠河兩岸、Nick Smith談部分麵包店／學校偏向；1974／1978死亡、未和好與墓園兩端。全保留歸屬，不採Owens或彎脖子綽號。",
+      "after": "S6活動段：星期一全球和平日2009-09-21踢球、翌日發稿；兩CEO中場／守門，約700員工支持，兩企員工混隊，黑7:5白，象徵握手與和平倡議。少數記者也上場，不稱全是員工或兄弟本人和解。"
+    },
+    {
+      "path": "sources.5.url",
+      "before": "https://about.puma.com/en/newsroom/news/adidas-and-puma-together-peace-employees-play-football-global-peace-day-2009",
+      "after": "https://www.herzogenaurach.de/stadtraum/wirtschaft/wirtschaftsgeschichte"
+    },
+    {
+      "path": "sources.5.publisher",
+      "before": "PUMA，和平日活動原始新聞稿2009-09-22",
+      "after": "Herzogenaurach市政府，經濟史"
+    },
+    {
+      "path": "sources.5.supports",
+      "before": "S6活動段：星期一全球和平日2009-09-21踢球、翌日發稿；兩CEO中場／守門，約700員工支持，兩企員工混隊，黑7:5白，象徵握手與和平倡議。少數記者也上場，不稱全是員工或兄弟本人和解。",
+      "after": "S7 Zwei Sportkonzerne erobern die Welt：兩企業與同鎮的關係。僅支援C16同鎮主線背景；新版正文刪除當前總部支線，不能再加入即時排名、營收或持股。"
+    },
+    {
+      "path": "sources.6.url",
+      "before": "https://www.herzogenaurach.de/stadtraum/wirtschaft/wirtschaftsgeschichte",
+      "after": "https://about.puma.com/en/newsroom/corporate-news/2006/23-05-2006-puma-rewriting-football-history"
+    },
+    {
+      "path": "sources.6.publisher",
+      "before": "Herzogenaurach市政府，經濟史",
+      "after": "PUMA，足球鞋研發回顧2006-05-23"
+    },
+    {
+      "path": "sources.6.supports",
+      "before": "S7 Zwei Sportkonzerne erobern die Welt：兩企業與同鎮的關係。僅支援C16同鎮主線背景；新版正文刪除當前總部支線，不能再加入即時排名、營收或持股。",
+      "after": "S8產品回顧：1951球員試穿，工匠Hetzler談磨損釘頭風險；1952 SUPER ATOM量產、1952/53交貨及下一季BRASIL；Gehrke回憶按天候選長中短釘。不採世界第一或1954決賽換釘推論。"
+    },
+    {
+      "path": "sources.7.url",
+      "before": "https://about.puma.com/en/newsroom/corporate-news/2006/23-05-2006-puma-rewriting-football-history",
+      "after": "https://www.dfb.de/news/wm-1954-das-wunder-von-bern"
+    },
+    {
+      "path": "sources.7.publisher",
+      "before": "PUMA，足球鞋研發回顧2006-05-23",
+      "after": "Deutscher Fußball-Bund，1954決賽回顧2026-05-22"
+    },
+    {
+      "path": "sources.7.supports",
+      "before": "S8產品回顧：1951球員試穿，工匠Hetzler談磨損釘頭風險；1952 SUPER ATOM量產、1952/53交貨及下一季BRASIL；Gehrke回憶按天候選長中短釘。不採世界第一或1954決賽換釘推論。",
+      "after": "S9比賽段：1954-07-04伯恩決賽下雨、比分進程。只採日期／地點／天候與比賽，不採只有匈牙利滑倒或鞋釘是秘密武器等因果。"
+    },
+    {
+      "path": "sources.8.url",
+      "before": "https://www.dfb.de/news/wm-1954-das-wunder-von-bern",
+      "after": "https://datencenter.dfb.de/datencenter/weltmeisterschaft/1954-in-der-schweiz/finale/deutschland-ungarn-136877"
+    },
+    {
+      "path": "sources.8.publisher",
+      "before": "Deutscher Fußball-Bund，1954決賽回顧2026-05-22",
+      "after": "Deutscher Fußball-Bund，1954決賽紀錄"
+    },
+    {
+      "path": "sources.8.supports",
+      "before": "S9比賽段：1954-07-04伯恩決賽下雨、比分進程。只採日期／地點／天候與比賽，不採只有匈牙利滑倒或鞋釘是秘密武器等因果。",
+      "after": "S10頁首場次及進球表：西德對匈牙利0:2，18分鐘2:2，Rahn於84分鐘進球，終場3:2。root web逾時後已實讀同日HTML，hash見獨立覆核；不把進球歸給鞋。"
+    },
+    {
+      "path": "sources.9.url",
+      "before": "https://datencenter.dfb.de/datencenter/weltmeisterschaft/1954-in-der-schweiz/finale/deutschland-ungarn-136877",
+      "after": "https://report.adidas-group.com/2019/en/at-a-glance/2019-stories/70-years-of-adidas-new-work-spaces.html"
+    },
+    {
+      "path": "sources.9.publisher",
+      "before": "Deutscher Fußball-Bund，1954決賽紀錄",
+      "after": "Adidas，2019官方年報：70 Years of adidas"
+    },
+    {
+      "path": "sources.9.supports",
+      "before": "S10頁首場次及進球表：西德對匈牙利0:2，18分鐘2:2，Rahn於84分鐘進球，終場3:2。root web逾時後已實讀同日HTML，hash見獨立覆核；不把進球歸給鞋。",
+      "after": "新增S11，70 Years of adidas首段：1949-08-18，Adi Dassler在Herzogenaurach登記Adolf Dassler adidas Sportschuhfabrik。僅補精確登記日期與公司名，不採2019員工數、總部擴建或賽場合作說法。"
+    },
+    {
+      "path": "caveats",
+      "before": "阿迪洗衣間、1924共同登記分開說。私人分裂唯一原因未定；Owens官方說法衝突整段省略，image_notes舊1936例示不授權新增該場。RUDA四節點依新年表，無據1948-12不補。1951試穿／1952量產及選釘是PUMA2006回顧，不裁決首創、不造1954半場換釘或鞋獨力致勝。河兩岸、部分店家學校、死亡與墓園據HISTORY歸屬，非全鎮禁令。2009-09-21員工賽、9/22發稿；700是支持者，混隊有少數記者。末句才揭混隊比分，不能當兄弟生前和解。新row無沿用reviewer_only或PASS，待獨立核對。",
+      "after": "阿迪洗衣間、1924共同登記分開說。私人分裂唯一原因未定；Owens官方說法衝突整段省略，image_notes舊1936例示不授權新增該場。RUDA四節點依新年表，無據1948-12不補。1951試穿／1952量產及選釘是PUMA2006回顧，不裁決首創、不造1954半場換釘或鞋獨力致勝。河兩岸、部分店家學校、死亡與墓園據HISTORY歸屬，非全鎮禁令。2009-09-21員工賽、9/22發稿；700是支持者，混隊有少數記者。末句才揭混隊比分，不能當兄弟生前和解。75週年PDF不證戰時壓力、阿迪與西德隊密切合作或按天候換釘，新row省略這些修飾。PDF專屬事實獨列must_verify[0]，待另一位人工覆核，未自行加reviewer_only或PASS。"
+    }
+  ],
+  "local_schema": {
+    "storyProblems": [],
+    "source_count": 10,
+    "claim_count": 10,
+    "chapter_count": 6,
+    "point_lengths": [
+      147,
+      178,
+      167,
+      244,
+      221,
+      203
+    ],
+    "claim_max": 123,
+    "supports_max": 139
+  },
+  "pdf": {
+    "path": "A37-reader-alternatives/adidas-75th-20240813.pdf",
+    "sha256": "70007cfe29d79f348fec65d6bb6de2279d4353fb1a246e367f2a463368328c3c",
+    "pages": 2,
+    "downloaded_bytes": 67724,
+    "manually_read_both_pages": true,
+    "pageReader_readable": false
+  }
+}

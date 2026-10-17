@@ -1,0 +1,579 @@
+{
+  "status": "SYNTHETIC_OFFLINE_FORMAT_EVIDENCE_NOT_PRODUCTION_APPROVAL",
+  "result": "story-five-adidas-puma-brothers: the merged story fails lint in origin, idea, engine, turn, now; the writer fixes them chapter by chapter",
+  "source_files_count": 48,
+  "source_files_unchanged": true,
+  "reconstruction_basis": "Active editorial narration with the three previously independently accepted scope adaptations; not the unchanged original v4 text",
+  "original_fullscript_sha256": "63e6277c85cc573556651f686cbf7722d602c620265e7730a9f3f32b7d016d09",
+  "active_narration_sha256": "6ac46a8cc8b78a96903cf30cb2a81de2b06467726511535e58ff3f996d916cce",
+  "already_reviewed_adaptations": [
+    {
+      "paragraph_id": "I03",
+      "before": "到底是哪一次爭吵，讓他們走到這一步？後來的故事裡，有家庭生活的摩擦，也有戰爭帶來的壓力。",
+      "after": "到底是哪一次爭吵，讓他們走到這一步？後來的故事裡，有家庭生活的摩擦。",
+      "reason": "依active row v2來源addendum退役「戰爭帶來的壓力」，不新增私人起因。",
+      "before_sha256": "7a0db42af116f9570211247b117258c77bf17a5e69028c3c939f3fdf3a457a2a",
+      "after_sha256": "f51c4758e46be03b2870ce6635ad7584235822338165c84e68d0ee3f26930bb9"
+    },
+    {
+      "paragraph_id": "E10",
+      "before": "弟弟也在改足球鞋。Adidas的歷史資料記下，阿迪和西德國家隊密切合作。球隊一路踢進一九五四年世界盃決賽，等待他們的是匈牙利，還有一片下了雨的場地。",
+      "after": "弟弟也在改足球鞋。Adidas的官方紀錄提到，西德國家隊穿著它的球鞋。球隊一路踢進一九五四年世界盃決賽，等待他們的是匈牙利，還有一片下了雨的場地。",
+      "reason": "只述官方PDF可證的球鞋穿著，不描述合作程度或未記錄接觸。",
+      "before_sha256": "a8054ccc9a1cf2e21be4e040aabffee9b7144d91578f00d39b8cde78a2abe91f",
+      "after_sha256": "4a3a6b98a2dddcfd702cd05b05f8959570038910d7f02a15df81da1ae34cc77e"
+    },
+    {
+      "paragraph_id": "T01a",
+      "before": "Adidas描述那批球鞋時，提到鞋釘可以拆下，按天候換上適合的版本。哥哥在產品回顧裡說的調整需求，也出現在弟弟供應國家隊的鞋上。",
+      "after": "Adidas的官方紀錄，提到國家隊穿著旋入式鞋釘球鞋。哥哥在產品回顧裡說的鞋釘結構，也出現在弟弟供應國家隊的鞋上。",
+      "reason": "只作旋入式鞋釘結構對照，去除Adidas按天候換釘修飾；PUMA E08d原回憶仍保留。",
+      "before_sha256": "1ccffd426c1b0ac19dd04ccc7a97e4d0ff19d97bb092134855c2356c316fd8be",
+      "after_sha256": "7990259ecc16ee0ba1901db825cea60d026351322b920b60577c44476d87a38e"
+    }
+  ],
+  "new_narration_changes": [],
+  "paragraphs": 48,
+  "narration_lines": 90,
+  "spoken_units": 2055,
+  "paragraphs_exact_reconstruction": true,
+  "full_concatenation_exact": true,
+  "paragraph_offsets_complete_no_overlap": true,
+  "scenes": 86,
+  "illustrated_stills": 72,
+  "cards": 14,
+  "active_claim_rows": 75,
+  "all_claims_unchecked": true,
+  "multi_source_rows_deliberately_null": [
+    "h1",
+    "h2",
+    "h3",
+    "o8",
+    "o9",
+    "i3",
+    "i4",
+    "i5",
+    "e10",
+    "e11",
+    "e23",
+    "e24",
+    "e25",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5",
+    "t6",
+    "t7",
+    "t8"
+  ],
+  "multi_fact_rows_deliberately_null": [
+    "h2",
+    "h3",
+    "i5",
+    "e23",
+    "e24",
+    "e25",
+    "t3",
+    "t4",
+    "t7",
+    "t8"
+  ],
+  "source_cids": 30,
+  "source_indices_unchanged": true,
+  "must_verify_unchanged": true,
+  "loops": 10,
+  "full_payoff_windows_preserved_in_mapping": true,
+  "card_fields_exact": true,
+  "card_adapter": {
+    "native_template": "title",
+    "original_strings_visible_in_html": true,
+    "pixel_layout_checked": false
+  },
+  "image_prompts_and_camera_exact": true,
+  "planned_reuse_pairs": [
+    {
+      "original": {
+        "setup": 4,
+        "recovery": 24,
+        "setup_paragraph": "H03",
+        "recovery_paragraphs": [
+          "I02"
+        ],
+        "reason": "同一搬工具的工廠圖回收哥哥搬廠，不把一名示意工人當成全部十五人",
+        "setup_shot": "A37-S004",
+        "recovery_shot": "A37-S024",
+        "asset_key": "a37-hook-reuse-4"
+      },
+      "preview_scene": "hook-004",
+      "later_scene": "idea-024",
+      "synthetic_seed1_request_equal": true,
+      "synthetic_seed1_cache_key": "b165f85c4d0a8fbe",
+      "actual_accepted_file_equal": null,
+      "limitation": "Native cache can reuse equal requests. Separate per-scene judge/retake choices can diverge; asset-key sidecar alone does not enforce final same-file identity."
+    },
+    {
+      "original": {
+        "setup": 5,
+        "recovery": 40,
+        "setup_paragraph": "H04",
+        "recovery_paragraphs": [
+          "E06"
+        ],
+        "reason": "同一無字登記文件圖回收弟弟的新登記，日期名稱只由後製或旁白交代",
+        "setup_shot": "A37-S005",
+        "recovery_shot": "A37-S040",
+        "asset_key": "a37-hook-reuse-5"
+      },
+      "preview_scene": "hook-005",
+      "later_scene": "engine-040",
+      "synthetic_seed1_request_equal": true,
+      "synthetic_seed1_cache_key": "b753688d5cbf2606",
+      "actual_accepted_file_equal": null,
+      "limitation": "Native cache can reuse equal requests. Separate per-scene judge/retake choices can diverge; asset-key sidecar alone does not enforce final same-file identity."
+    },
+    {
+      "original": {
+        "setup": 6,
+        "recovery": 82,
+        "setup_paragraph": "H05",
+        "recovery_paragraphs": [
+          "N07"
+        ],
+        "reason": "同一場邊觀眾圖回收該替哪邊加油，黑白混隊與比分留到下一鏡",
+        "setup_shot": "A37-S006",
+        "recovery_shot": "A37-S082",
+        "asset_key": "a37-hook-reuse-6"
+      },
+      "preview_scene": "hook-006",
+      "later_scene": "now-082",
+      "synthetic_seed1_request_equal": true,
+      "synthetic_seed1_cache_key": "506081a1cc68028f",
+      "actual_accepted_file_equal": null,
+      "limitation": "Native cache can reuse equal requests. Separate per-scene judge/retake choices can diverge; asset-key sidecar alone does not enforce final same-file identity."
+    }
+  ],
+  "actual_shot_reading": {
+    "shots": 72,
+    "traps": 0,
+    "by_kind": {}
+  },
+  "writer_answer_parser": {
+    "hook": {
+      "accepted": true,
+      "lossless": false,
+      "note": "Normalizer drops native claim IDs/verdict/notes; never use it as an authored bundle installer."
+    },
+    "origin": {
+      "accepted": false,
+      "problem": "scenes[5] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "idea": {
+      "accepted": false,
+      "problem": "scenes[0] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "engine": {
+      "accepted": false,
+      "problem": "scenes[2] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "turn": {
+      "accepted": false,
+      "problem": "scenes[0] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "now": {
+      "accepted": false,
+      "problem": "scenes[0] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    }
+  },
+  "lint": {
+    "errors": [
+      {
+        "path": "scenes[11].lines[0] (a37000d)",
+        "message": "\"Adidas\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[15].lines[0] (a37000h)",
+        "message": "\"HISTORY\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[20].lines[0] (a37000m)",
+        "message": "\"RUDA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[22].lines[0] (a37000o)",
+        "message": "\"PUMA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[25].lines[0] (a37000r)",
+        "message": "\"HISTORY\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[31].lines[1] (a37000z)",
+        "message": "\"RUDA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[33].lines[0] (a370011)",
+        "message": "\"RUDA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[35].lines[0] (a370013)",
+        "message": "\"PUMA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[40].lines[0] (a370019)",
+        "message": "\"Adolf\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[40].lines[0] (a370019)",
+        "message": "\"Dassler\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[40].lines[0] (a370019)",
+        "message": "\"Adidas\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[45].lines[0] (a37001e)",
+        "message": "\"PUMA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[49].lines[0] (a37001i)",
+        "message": "\"SUPER\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[49].lines[0] (a37001i)",
+        "message": "\"ATOM\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[51].lines[0] (a37001k)",
+        "message": "\"BRASIL\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[54].lines[0] (a37001n)",
+        "message": "\"Adidas\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[59].lines[0] (a37001s)",
+        "message": "\"Adidas\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[65].lines[0] (a37001y)",
+        "message": "\"HISTORY\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[67].lines[0] (a370020)",
+        "message": "\"Adidas\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[68].lines[0] (a370021)",
+        "message": "\"PUMA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[71].lines[0] (a370024)",
+        "message": "\"HISTORY\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[76].lines[0] (a370029)",
+        "message": "\"PUMA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[82].lines[0] (a37002f)",
+        "message": "\"Adidas\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[82].lines[0] (a37002f)",
+        "message": "\"PUMA\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      }
+    ],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"generic\" is in 72 of 72 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"expression\" is in 41 of 72 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"face\" is in 31 of 72 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.median: median shot 6.8 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.p90: 90th percentile shot 8.0 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-001, hook-002, hook-003, hook-004, hook-005, hook-006, hook-007, origin-009, … 55) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.longest: longest shot 8.7 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-001, hook-005, idea-025, engine-047, turn-059, now-081, now-084) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.spread: long shots against short ones (90th ÷ 10th percentile) 1.4, target ≥ 2; every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-001, hook-002) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.opening30: shots that start in the first 30 s 5, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.median: median line length 23 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.long: lines over 20 characters 69%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-001, hook-002, hook-004, hook-005, hook-006, hook-007, origin-009, origin-010, … 52) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.face: faces (medium close-up and closer, over-the-shoulder) 33%, target ≥ 40%; the audience follows a face; give each turn of the scene a face that reacts (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.insert: inserts 0%, target 5%–25%; an insert answers a story question (which paper, whose hand); too few hides the proof, too many hides the people (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.wide: wide and group shots 38%, target 5%–30%; show where everyone stands, briefly, then go back in (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-001, hook-002, hook-003, hook-004, hook-005, hook-006, hook-007, origin-008, … 72) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.run: such shots in a row 72 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-001, hook-002, hook-003, hook-004, hook-005, hook-006, hook-007, origin-008, … 72) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-001, hook-002, hook-003) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft risk.decorative: shots with nobody in them that are not inserts 81% (58), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (hook-002, hook-003, hook-006, hook-007, origin-008, origin-009, origin-010, origin-011, … 58) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft risk.text_first: cards (title, chapter, quote …) against the shots 14 of 86 scenes, 16% of the time, target ≤ 2 cards, or ≤ 10% of the time; a drama is told in pictures: say it in a shot, with a line over it (origin-013, idea-021, engine-036, engine-039, engine-041, engine-046, engine-050, turn-058, … 14) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 03:47 and 06:21 (154 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 06:21 and 08:22 (121 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "loops",
+        "message": "the condensation plants 2 loops; after its one scene it teases at least 3 later moments, each cut off before its result and paid off where the body reaches it (script-writing.md §開場濃縮)",
+        "kind": "narrative"
+      },
+      {
+        "path": "youtube",
+        "message": "youtube.tags: 12 tags; package keeps the first 10, so put the zh-TW terms and the English product names first"
+      }
+    ],
+    "summary": {
+      "minutes": 9.704444444444444,
+      "lines": 90,
+      "spoken_units": 2055,
+      "billable_characters": 7071,
+      "chapters": [
+        "00:00 兩個名字寫在同一份登記上",
+        "00:51 成品鞋走上奧運跑道",
+        "02:17 哥哥先登記了RUDA",
+        "03:47 先開工，再把新名字登記下來",
+        "06:21 球場需要的鞋，穿進小鎮日常",
+        "08:27 這場球賽，該替哪一邊加油"
+      ]
+    }
+  },
+  "cute_story_problems": [],
+  "timing": {
+    "basis": "Official estimateTimeline, default CPM and automatic line-boundary timing; not TTS measured.",
+    "total_body_estimated_seconds": 582.267,
+    "chapter_estimates": [
+      {
+        "title": "兩個名字寫在同一份登記上",
+        "seconds": 51.867
+      },
+      {
+        "title": "成品鞋走上奧運跑道",
+        "seconds": 85.333
+      },
+      {
+        "title": "哥哥先登記了RUDA",
+        "seconds": 90.333
+      },
+      {
+        "title": "先開工，再把新名字登記下來",
+        "seconds": 153.967
+      },
+      {
+        "title": "球場需要的鞋，穿進小鎮日常",
+        "seconds": 126.467
+      },
+      {
+        "title": "這場球賽，該替哪一邊加油",
+        "seconds": 74.3
+      }
+    ],
+    "max_scene_seconds": 8.7,
+    "editorial_units": 2136,
+    "official_units": 2055,
+    "count_differences": [
+      {
+        "paragraph_id": "O03",
+        "editorial": 52,
+        "official": 49,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "O06",
+        "editorial": 53,
+        "official": 48,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "I01",
+        "editorial": 48,
+        "official": 46,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "I02",
+        "editorial": 54,
+        "official": 52,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "I04",
+        "editorial": 50,
+        "official": 45,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "I07",
+        "editorial": 44,
+        "official": 42,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "E01",
+        "editorial": 42,
+        "official": 40,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "E02",
+        "editorial": 46,
+        "official": 44,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "E06",
+        "editorial": 53,
+        "official": 41,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "E08a",
+        "editorial": 58,
+        "official": 54,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "E08c",
+        "editorial": 64,
+        "official": 55,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "E10",
+        "editorial": 67,
+        "official": 63,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "T01a",
+        "editorial": 53,
+        "official": 49,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "T03",
+        "editorial": 57,
+        "official": 52,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "T04",
+        "editorial": 51,
+        "official": 46,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "T09",
+        "editorial": 55,
+        "official": 50,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "N01",
+        "editorial": 53,
+        "official": 49,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "N08",
+        "editorial": 58,
+        "official": 52,
+        "zero_circles": 0
+      }
+    ],
+    "editorial_narration_only_seconds_250cpm": 512.64,
+    "editorial_narration_only_seconds_230cpm": 557.2173913043479,
+    "body_definition": "All six narrated chapters including hook; excludes branding. Official timing contains default line and scene gaps, and is not actual TTS.",
+    "actual_TTS_seconds": null,
+    "added_manual_pauses": 0
+  },
+  "branding": {
+    "default_intro_placement": "after_first_chapter",
+    "planned_intro_seconds": 5,
+    "planned_outro_seconds": 21,
+    "final_link_zone_seconds": 16,
+    "actual_asset_hashes": null,
+    "silent_bookends_not_added_as_fake_spoken_scenes": true
+  },
+  "subtitles_burn_in": false,
+  "synthetic_voice_only": true,
+  "synthetic_music_disabled": true,
+  "gates": {
+    "actual_verifier": "PENDING",
+    "actual_listener": "PENDING",
+    "actual_narrative": "PENDING",
+    "pilot": "PENDING",
+    "media": "NOT_STARTED",
+    "upload": "NOT_AUTHORIZED_BY_THIS_PROTOTYPE"
+  },
+  "external_calls": 0,
+  "media_calls": 0,
+  "repo_writes": 0,
+  "host_writes": 0
+}

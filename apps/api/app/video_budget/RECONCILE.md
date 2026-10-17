@@ -1,6 +1,8 @@
 # Pilot budget reconciliation
 
-This is a host-only operator procedure for the four A01/B18 original and v2 slugs. The
+This is a host-only operator procedure for the exact A01/B18 original and v2 pilots and
+five brand-story follow-ons protected by the shared ledger. A01 original/v2 and B18
+original retain USD 25 ceilings; B18 v2 and each follow-on have USD 5 ceilings. The
 ledger counts `reserved` and `uncertain` at their full ceiling until a real provider record
 settles the charge or proves no charge. A timeout, failed job, missing output, old age, or
 empty wallet screen is not no-charge evidence. Do not manually update the database or
@@ -57,14 +59,14 @@ repair needs a separate idempotent receipt so a repeated operator command cannot
 
 After any `--apply`, rerun inspection and compare the account totals and media state.
 `overrun_operations` counts individual charges above their reservation; it can remain zero
-when a late invoice makes settled charges plus outstanding holds exceed USD 25. Check
+when a late invoice makes settled charges plus outstanding holds exceed that film's `limit_usd`. Check
 `total_over_limit`, `over_limit_usd`, and `remaining_usd` as well. A settlement above its
 reservation is recorded as an overrun and stops new spending; the CLI exits nonzero and
 inspection confirms the persisted charge. Any unresolved or unavailable provider evidence
 keeps the full hold. No reconciliation action calls a media provider.
 
 Finished-film acceptance requires no unresolved reservations or uncertain operations,
-settled total at or below USD 25, `total_over_limit=false`, and a match to the provider's
+settled total at or below its returned `limit_usd`, `total_over_limit=false`, and a match to the provider's
 billing statement for every paid operation. A zero `overrun_operations` count alone is not
 evidence that the film stayed within budget.
 

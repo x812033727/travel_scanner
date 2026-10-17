@@ -1,11 +1,19 @@
 {
   "id": "A29",
-  "reviewed": "2026-10-15",
-  "reviewer": "Codex GPT-6 (independent A29 source and narrative review)",
-  "story_sha256": "61c2d43d80306280bd03c0564546b561d858a74a58a1919ed7afd15096d5210b",
+  "reviewed": "2026-10-16",
+  "reviewer": "Codex /root independent refreshed worker-row source and narrative review",
+  "story_sha256": "252e7be678ba262255304f74f6da2edc6cbda83468a6c054d60d378744877572",
   "verdict": "pass",
-  "sources_opened": 6,
+  "sources_opened": 7,
   "changes": [],
-  "notes": "逐章對照新 treatment、母企劃／母 review，實際開啟 sources[3] LEGO 1999、[2] 2003、[0] 2004、[1] 2005 年報、[4] LEGO 沿革及 [6] Merlin 2019 年報。2004 年報 PDF 第 11 頁列樂園稅後獲利 2,000 萬丹麥克朗及出售理由、第 25 頁列 KIRKBI 8 億次順位貸款；2005 年報第 12 頁區分 7 月執行與 8 月 24 日最終核准、第 28 頁列 3.75 億歐元及 70／15／15、第 6 頁稱近半稅前獲利來自各項資產出售。1999、2003 年報第 2 頁也須人工核數。實跑 validate --only A29 --fetch：15 個來源中 6 個 PDF 無正文、9 個 HTML 可讀；每個 must_verify 至少引用一個可讀 HTML，依 fetchProblems 定義 reviewer_only 必須為空。但可讀不代表 HTML 支持複合主張中的每個數字，逐字稿仍須按上述 PDF 頁碼核對。新章點由 1932 順推至 2019；KIRKBI 參與 Merlin 私有化不等於 LEGO Group 買回樂園。",
-  "reviewer_only": []
+  "notes": "獨立核對新row與A29 v3全文／差異審查，實讀六份官方年報及LEGO起源頁，重看2004貸款與2005交易／獲利頁圖。2004稅後獲利需連同另列減損；8億是債務轉換；2005總稅前7.02億的近半來自各項資產出售。新fetch八來源全200，六PDF無正文、兩HTML可讀；reviewer_only為2/3/4/5/6/8/9。含HTML的複合項不因此免核PDF數字；逐字稿仍需人工核財報。命名年份省略、2019法人範圍與三預告回收保留。此為製作輸入審查，非後續生成稿或媒體批准。",
+  "reviewer_only": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9
+  ]
 }

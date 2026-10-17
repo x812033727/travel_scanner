@@ -1,0 +1,433 @@
+{
+  "status": "SYNTHETIC_OFFLINE_FORMAT_EVIDENCE_NOT_PRODUCTION_APPROVAL",
+  "result": "story-five-pringles-vat-case: the merged story fails lint in origin, idea, engine, turn, now; the writer fixes them chapter by chapter",
+  "source_files_count": 53,
+  "source_files_unchanged": true,
+  "reconstruction_basis": "Active editorial narration with the one previously independently accepted T06 pronoun clarification; not the unchanged original v3 text",
+  "original_fullscript_sha256": "c250fb1f03f1b4868519a7d902af08247a214b2a228dc372efde8474b94cdc82",
+  "active_narration_sha256": "80ace226e644630b604c40902f648ff32153fb24fe80e2dbe86e160fafc48193",
+  "already_reviewed_adaptations": [
+    {
+      "paragraph_id": "T06",
+      "before": "這回他們要說服上訴法院，高等法院把這句話讀得太窄，而最初稅務法庭的判斷應該恢復。",
+      "after": "這回，稅務機關要說服上訴法院，高等法院把這句話讀得太窄，而最初稅務法庭的判斷應該恢復。",
+      "reason": "T05 ends with P&G defending its High Court win; name the tax authority explicitly in T06 so the following appeal argument cannot be misread as P&G seeking to reverse that win. Original v3 fullscript and first storyboard remain preserved.",
+      "source_cids": [
+        "C22"
+      ],
+      "active_worker_source_indices_zero_based": [
+        3
+      ],
+      "review_status": "AUTHOR_CLARIFICATION_PENDING_INDEPENDENT_RECHECK",
+      "before_sha256": "e2d11b459e7f5b7a343f727952223a82df34db6831991fa396bb2f118ab87bde",
+      "after_sha256": "75c7cc7af952bdc4fda1ed3ace1f3221187aca074c3cf40e8372ae51cf1ab397"
+    }
+  ],
+  "new_narration_changes": [],
+  "paragraphs": 47,
+  "narration_lines": 103,
+  "spoken_units": 2187,
+  "paragraphs_exact_reconstruction": true,
+  "full_concatenation_exact": true,
+  "paragraph_offsets_complete_no_overlap": true,
+  "scenes": 89,
+  "illustrated_stills": 78,
+  "cards": 11,
+  "active_claim_rows": 97,
+  "all_claims_unchecked": true,
+  "multi_source_rows_deliberately_null": [
+    "h6",
+    "h7",
+    "i4",
+    "i5",
+    "i6",
+    "i7",
+    "i8",
+    "i9",
+    "i10",
+    "i11",
+    "i12",
+    "i13",
+    "i14",
+    "i15",
+    "i16",
+    "e24",
+    "e25",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5",
+    "t6"
+  ],
+  "multi_fact_rows_deliberately_null": [
+    "h6",
+    "h7",
+    "e1",
+    "e2",
+    "e3",
+    "e24",
+    "e25"
+  ],
+  "source_cids": 33,
+  "source_indices_unchanged": true,
+  "must_verify_unchanged": true,
+  "loops": 8,
+  "full_payoff_windows_preserved_in_mapping": true,
+  "card_fields_exact": true,
+  "card_adapter": {
+    "native_template": "title",
+    "original_strings_visible_in_html": true,
+    "pixel_layout_checked": false
+  },
+  "image_prompts_and_camera_exact": true,
+  "planned_reuse_pairs": [
+    {
+      "original": {
+        "setup": 4,
+        "recovery": 35,
+        "setup_paragraph": "H03",
+        "recovery_paragraphs": [
+          "E01"
+        ],
+        "reason": "同一稅務法庭案卷與匿名書記官圖；首次只預告審理，E01 才展開第一回合。",
+        "setup_shot": "A21-S004",
+        "recovery_shot": "A21-S035",
+        "asset_key": "a21-hook-reuse-4"
+      },
+      "preview_scene": "hook-004",
+      "later_scene": "engine-035",
+      "synthetic_seed1_request_equal": true,
+      "synthetic_seed1_cache_key": "a9b4883ea231884f",
+      "actual_accepted_file_equal": null,
+      "limitation": "Native cache can reuse equal requests. Separate per-scene judge/retake choices can diverge; asset-key sidecar alone does not enforce final same-file identity."
+    },
+    {
+      "original": {
+        "setup": 5,
+        "recovery": 55,
+        "setup_paragraph": "H04",
+        "recovery_paragraphs": [
+          "T01"
+        ],
+        "reason": "同一高院讀卷示意圖；H04 不放結果，T01 才接新讀法。",
+        "setup_shot": "A21-S005",
+        "recovery_shot": "A21-S055",
+        "asset_key": "a21-hook-reuse-5"
+      },
+      "preview_scene": "hook-005",
+      "later_scene": "turn-055",
+      "synthetic_seed1_request_equal": true,
+      "synthetic_seed1_cache_key": "010b46cfc3a37860",
+      "actual_accepted_file_equal": null,
+      "limitation": "Native cache can reuse equal requests. Separate per-scene judge/retake choices can diverge; asset-key sidecar alone does not enforce final same-file identity."
+    },
+    {
+      "original": {
+        "setup": 6,
+        "recovery": 67,
+        "setup_paragraph": "H04",
+        "recovery_paragraphs": [
+          "N01"
+        ],
+        "reason": "同一上訴法院三份文件圖；不畫三人互動，末章才給勝負。",
+        "setup_shot": "A21-S006",
+        "recovery_shot": "A21-S067",
+        "asset_key": "a21-hook-reuse-6"
+      },
+      "preview_scene": "hook-006",
+      "later_scene": "now-067",
+      "synthetic_seed1_request_equal": true,
+      "synthetic_seed1_cache_key": "0447c547bce07feb",
+      "actual_accepted_file_equal": null,
+      "limitation": "Native cache can reuse equal requests. Separate per-scene judge/retake choices can diverge; asset-key sidecar alone does not enforce final same-file identity."
+    }
+  ],
+  "actual_shot_reading": {
+    "shots": 78,
+    "traps": 0,
+    "by_kind": {}
+  },
+  "writer_answer_parser": {
+    "hook": {
+      "accepted": true,
+      "lossless": false,
+      "note": "Normalizer drops native claim IDs/verdict/notes; never use it as an authored bundle installer."
+    },
+    "origin": {
+      "accepted": false,
+      "problem": "scenes[0] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "idea": {
+      "accepted": false,
+      "problem": "scenes[3] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "engine": {
+      "accepted": false,
+      "problem": "scenes[15] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "turn": {
+      "accepted": false,
+      "problem": "scenes[5] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "now": {
+      "accepted": false,
+      "problem": "scenes[1] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    }
+  },
+  "lint": {
+    "errors": [
+      {
+        "path": "scenes[8].lines[0] (a21000a)",
+        "message": "\"Fredric\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[8].lines[0] (a21000a)",
+        "message": "\"Baur\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[8].lines[0] (a21000a)",
+        "message": "\"Harold\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[8].lines[0] (a21000a)",
+        "message": "\"Hawley\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[20].lines[0] (a21000m)",
+        "message": "\"Regular\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[20].lines[0] (a21000m)",
+        "message": "\"Pringles\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[22].lines[0] (a21000o)",
+        "message": "\"Regular\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[22].lines[0] (a21000o)",
+        "message": "\"Pringles\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[23].lines[0] (a21000p)",
+        "message": "\"Dippers\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[51].lines[0] (a21001o)",
+        "message": "\"Regular\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[51].lines[0] (a21001o)",
+        "message": "\"Pringles\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[54].lines[0] (a21001s)",
+        "message": "\"Warren\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[62].lines[0] (a210020)",
+        "message": "\"HMRC\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[67].lines[0] (a210026)",
+        "message": "\"HMRC\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[81].lines[0] (a21002m)",
+        "message": "\"HMRC\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[86].lines[0] (a21002r)",
+        "message": "\"Sensations\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[86].lines[0] (a21002r)",
+        "message": "\"Poppadoms\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      }
+    ],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"generic\" is in 78 of 78 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"face\" is in 55 of 78 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"window\" is in 34 of 78 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 03:46 and 06:01 (136 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 08:23 and 10:10 (108 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "「二〇〇九年」 is said in 3 lines (a210007, a210025, a21002m): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "youtube",
+        "message": "youtube.tags: 12 tags; package keeps the first 10, so put the zh-TW terms and the English product names first"
+      }
+    ],
+    "summary": {
+      "minutes": 10.337222222222222,
+      "lines": 103,
+      "spoken_units": 2187,
+      "billable_characters": 7788,
+      "chapters": [
+        "00:00 一只圓筒罐送進專利局",
+        "00:45 薄片先有了能互相靠住的形狀",
+        "02:06 配方碰上英國稅法的例外",
+        "03:46 同一片零食，放進哪一類",
+        "06:09 油鍋裡的另一種讀法",
+        "07:36 上訴法院把問題拉回整體判斷"
+      ]
+    }
+  },
+  "cute_story_problems": [],
+  "timing": {
+    "basis": "Official estimateTimeline, default CPM and automatic line-boundary timing; not TTS measured.",
+    "total_body_estimated_seconds": 620.233,
+    "chapter_estimates": [
+      {
+        "title": "一只圓筒罐送進專利局",
+        "seconds": 45.767
+      },
+      {
+        "title": "薄片先有了能互相靠住的形狀",
+        "seconds": 81.033
+      },
+      {
+        "title": "配方碰上英國稅法的例外",
+        "seconds": 99.9
+      },
+      {
+        "title": "同一片零食，放進哪一類",
+        "seconds": 143.233
+      },
+      {
+        "title": "油鍋裡的另一種讀法",
+        "seconds": 86.7
+      },
+      {
+        "title": "上訴法院把問題拉回整體判斷",
+        "seconds": 163.6
+      }
+    ],
+    "max_scene_seconds": 9.567,
+    "editorial_units": 2283,
+    "official_units": 2187,
+    "count_differences": [
+      {
+        "paragraph_id": "H03",
+        "editorial": 27,
+        "official": 25,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "H04",
+        "editorial": 37,
+        "official": 35,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "O01",
+        "editorial": 40,
+        "official": 24,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "I01",
+        "editorial": 57,
+        "official": 44,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "I02",
+        "editorial": 61,
+        "official": 43,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "E01",
+        "editorial": 58,
+        "official": 56,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "E07",
+        "editorial": 43,
+        "official": 32,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "T01",
+        "editorial": 49,
+        "official": 43,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "T05",
+        "editorial": 41,
+        "official": 39,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "N01",
+        "editorial": 47,
+        "official": 43,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "N06",
+        "editorial": 59,
+        "official": 55,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "N08",
+        "editorial": 63,
+        "official": 47,
+        "zero_circles": 1
+      }
+    ],
+    "editorial_narration_only_seconds_250cpm": 547.92,
+    "editorial_narration_only_seconds_230cpm": 595.5652173913044,
+    "body_definition": "All six narrated chapters including hook; excludes branding. Official timing contains default line and scene gaps, and is not actual TTS.",
+    "actual_TTS_seconds": null,
+    "added_manual_pauses": 0
+  },
+  "branding": {
+    "default_intro_placement": "after_first_chapter",
+    "planned_intro_seconds": 5,
+    "planned_outro_seconds": 21,
+    "final_link_zone_seconds": 16,
+    "actual_asset_hashes": null,
+    "silent_bookends_not_added_as_fake_spoken_scenes": true
+  },
+  "subtitles_burn_in": false,
+  "synthetic_voice_only": true,
+  "synthetic_music_disabled": true,
+  "gates": {
+    "actual_verifier": "PENDING",
+    "actual_listener": "PENDING",
+    "actual_narrative": "PENDING",
+    "pilot": "PENDING",
+    "media": "NOT_STARTED",
+    "upload": "NOT_AUTHORIZED_BY_THIS_PROTOTYPE"
+  },
+  "external_calls": 0,
+  "media_calls": 0,
+  "repo_writes": 0,
+  "host_writes": 0
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_EDITORIAL_REUSE_INTENT_ONLY",
+  "prior_mapping_sha256": "46f8a6c27e79c42e733fda1e91a57e07144094907e3184d6e59d5af43cddedbc",
+  "visual_head_sha256_manifest": "1fa55f086c06a402d8d8ca501b35bf427e8a2093c66ed84c6ce274171e0f1f2c",
+  "production_alias_installed": false,
+  "old_mapping_unchanged": true,
+  "adoption_requires_explicit_reconciliation": true,
+  "must_not_claim_same_file_for_this_candidate": true,
+  "generated_images": 0,
+  "accepted_asset_sha256": null,
+  "hook_payoff": [
+    {
+      "setup_scene_id": "hook-s004",
+      "payoff_scene_id": "idea-s023",
+      "prior_asset_key": "b18-hook-reuse-1",
+      "visual_head_prompt_equal": false,
+      "visual_head_camera_equal": true,
+      "candidate_treatment": "separate_illustrations_with_story_motif_callback",
+      "same_file_required_by_this_candidate": false,
+      "accepted_asset_sha256": null
+    },
+    {
+      "setup_scene_id": "hook-s005",
+      "payoff_scene_id": "engine-s055",
+      "prior_asset_key": "b18-hook-reuse-2",
+      "visual_head_prompt_equal": false,
+      "visual_head_camera_equal": true,
+      "candidate_treatment": "separate_illustrations_with_story_motif_callback",
+      "same_file_required_by_this_candidate": false,
+      "accepted_asset_sha256": null
+    },
+    {
+      "setup_scene_id": "hook-s006",
+      "payoff_scene_id": "turn-s077",
+      "prior_asset_key": "b18-hook-reuse-3",
+      "visual_head_prompt_equal": false,
+      "visual_head_camera_equal": true,
+      "candidate_treatment": "separate_illustrations_with_story_motif_callback",
+      "same_file_required_by_this_candidate": false,
+      "accepted_asset_sha256": null
+    }
+  ],
+  "ending": {
+    "scene_ids": [
+      "now-s101",
+      "now-s101b",
+      "now-s102",
+      "now-s103"
+    ],
+    "prior_asset_key": "b18-three-sentence-end-hold",
+    "visual_head_distinct_prompts": true,
+    "candidate_treatment": "four_distinct_illustrative_moments",
+    "same_file_required_by_this_candidate": false,
+    "accepted_asset_sha256": null
+  },
+  "note": "This candidate withdraws the old same-file promise for its distinct scene prompts. It does not change the original mapping, install worker aliases, or prove generated-media identity. A later decision to require exact same files needs a new pinned visual and runtime change."
+}

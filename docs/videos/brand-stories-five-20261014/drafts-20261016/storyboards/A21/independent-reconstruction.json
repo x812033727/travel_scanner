@@ -1,0 +1,38 @@
+{
+  "status": "INDEPENDENT_LOCAL_RECONSTRUCTION_VERIFIED_NOT_WORKER_REVIEW",
+  "episode": "A21",
+  "source_sha256": "c250fb1f03f1b4868519a7d902af08247a214b2a228dc372efde8474b94cdc82",
+  "storyboard_sha256": "a5fab1e0e5932c34ed64e2731e2f40aafbea608dd57856758963ba4f117ccba3",
+  "paragraphs": 47,
+  "original_spoken_units": 2281,
+  "applied_source_scope_changes": [
+    {
+      "id": "T06",
+      "after_sha256": "75c7cc7af952bdc4fda1ed3ace1f3221187aca074c3cf40e8372ae51cf1ab397"
+    }
+  ],
+  "spoken_units": 2283,
+  "shots": 89,
+  "illustrations": 78,
+  "cards": 11,
+  "unique_illustration_prompts": 75,
+  "max_consecutive_cards": 2,
+  "checks": [
+    "parse original six narration tables only",
+    "rebuild every paragraph once in exact order with no gaps or overlaps",
+    "exact source and storyboard hashes",
+    "all shot texts equal referenced slices",
+    "cards retain scope and source",
+    "series look, model and switchable CC"
+  ],
+  "does_not_prove": [
+    "formal chapter facts or listener review",
+    "actual TTS duration",
+    "generated images",
+    "render or playback",
+    "paid authorization"
+  ],
+  "host_calls": 0,
+  "model_calls": 0,
+  "paid_calls": 0
+}

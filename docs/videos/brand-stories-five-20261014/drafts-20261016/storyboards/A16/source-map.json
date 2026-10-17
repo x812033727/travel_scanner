@@ -1,0 +1,356 @@
+{
+  "sources": [
+    {
+      "alias": "S1",
+      "active_worker_source_index_zero_based": 0,
+      "url": "https://www.costco.com/f/-/company-information",
+      "publisher": "Costco Wholesale，Company Information",
+      "kind": "official",
+      "supports": "S1 The History of Costco：1976聖地牙哥改建飛機棚、Price Club最初小企業及非商業會員購買力量；Sinegal商品／配送／行銷；1983共同創辦、西雅圖首店；1993合併206店、年銷售160億美元。不採世界第一。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "S2",
+      "active_worker_source_index_zero_based": 1,
+      "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm",
+      "publisher": "Costco FY2025 Form10-K，SEC EDGAR",
+      "kind": "official",
+      "supports": "S2印刷3–5頁：低價／有限品項／周轉、8100萬付費會員含少量過期、美加92.3%續約口徑；24頁會員影響獲利；26–27頁會員費期間認列及2024-09-01美加年費調整；37頁損益（百萬美元），FY截至2025-08-31。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "S3",
+      "active_worker_source_index_zero_based": 2,
+      "url": "https://www.opb.org/article/2024/06/04/costco-hot-dogs-have-cost-1-50-since-the-1980s-here-s-why-prices-aren-t-changing/",
+      "publisher": "NPR／Rachel Treisman，OPB轉載2024-06-04",
+      "kind": "news",
+      "supports": "S3：價格／CFO段落為2024-05-30新財務長首次季度會議澄清；1980年代中期US$1.50。工廠段：Hebrew National、2008自營；後段引Jelinek2018回憶Sinegal拒漲狠話。不是原對話錄音／年份或今天單品損益。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "S4",
+      "active_worker_source_index_zero_based": 3,
+      "url": "https://www.foxbusiness.com/lifestyle/why-costco-hot-dogs-have-kept-1-50-price-tag-since-1985",
+      "publisher": "Fox Business／Stephen Sorace，2024-02-25",
+      "kind": "news",
+      "supports": "S4正文自製工廠後的短轉述：Jelinek說已有合理回報（fair return）。只用這項歷史歸屬，不採永久承諾、不證明今天單品獲利；全文E10，不是舊E12。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "S5",
+      "active_worker_source_index_zero_based": 4,
+      "url": "https://www.costco.com/f/-/my-life-membership-hacks",
+      "publisher": "Costco Wholesale，Membership Hacks",
+      "kind": "official",
+      "supports": "S5列表第19項，美國官網仍列US$1.50 hot dog and soda；未署發布日期，2026-10-16實讀可見，不代表各國／每店POS或永久價格。",
+      "checked": "2026-10-16"
+    },
+    {
+      "alias": "S6",
+      "active_worker_source_index_zero_based": 5,
+      "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000084/costex9918-k92426.htm",
+      "publisher": "Costco Wholesale，FY2026 Results，SEC Form8-K Exhibit99.1，2026-09-24",
+      "kind": "official",
+      "supports": "S6同一發行人FY2026結果原件，SEC Exhibit99.1：2026-09-24公布、截至2026-08-30、未經查核損益表；僅確認FY2025不是最新年度，不混用數字。investor原URL在worker讀取403，改此官方同文。",
+      "checked": "2026-10-16"
+    }
+  ],
+  "claims": {
+    "C01": {
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "source_aliases": [
+        "S3"
+      ],
+      "original_fullscript_boundary": "H1：2024年5月新CFO首次季度電話會議澄清 | S3行46–47；發布2024-06-04，所述前一週四為5/30；不仿現場錄音，不造食客目擊",
+      "active_scope_override": null
+    },
+    "C02": {
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "source_aliases": [
+        "S3"
+      ],
+      "original_fullscript_boundary": "H2/I8：mid-1980s 至 2024 的 US$1.50 套餐 | S3 行 40；不說全球同價、不硬選 1984 或 1985",
+      "active_scope_override": null
+    },
+    "C03": {
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "source_aliases": [
+        "S3"
+      ],
+      "original_fullscript_boundary": "H1/H2：Gary Millerchip 當時說價格安全 | S3 行 46–47；2024 年說法，不保證未來",
+      "active_scope_override": null
+    },
+    "C04": {
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "source_aliases": [
+        "S1"
+      ],
+      "original_fullscript_boundary": "H4/O1/O2：1976 Price Club 聖地牙哥改建飛機棚 | S1 History 第 1 段；不是 Costco 首店",
+      "active_scope_override": null
+    },
+    "C05": {
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "source_aliases": [
+        "S1"
+      ],
+      "original_fullscript_boundary": "O1/O8：Costco 1983 才開店，與 1976 相隔 7 年 | S1；7 為年份相減，不聲稱精確天數",
+      "active_scope_override": null
+    },
+    "C06": {
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "source_aliases": [
+        "S1"
+      ],
+      "original_fullscript_boundary": "O2：起初小企業 | S1；不杜撰當年的年費",
+      "active_scope_override": null
+    },
+    "C07": {
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "source_aliases": [
+        "S1"
+      ],
+      "original_fullscript_boundary": "O4：納入非商業會員增加購買力量 | S1 自述，不把因果量化成採購折扣",
+      "active_scope_override": null
+    },
+    "C08": {
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "source_aliases": [
+        "S1"
+      ],
+      "original_fullscript_boundary": "O6：Sinegal 在 Price Club 的職務範圍 | S1；O7 為編輯解釋",
+      "active_scope_override": null
+    },
+    "C09": {
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "source_aliases": [
+        "S1"
+      ],
+      "original_fullscript_boundary": "I1：1983 Sinegal/Brotman 創立、Seattle 首店 | S1；不採未刷新到全文的精確開幕日期",
+      "active_scope_override": null
+    },
+    "C10": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "I2/I4：有限品項、低價、周轉／配送 | S2 印刷頁 3–4；不把現今策略精確數字倒填 1983",
+      "active_scope_override": null
+    },
+    "C11": {
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "source_aliases": [
+        "S1"
+      ],
+      "original_fullscript_boundary": "I6：1993 合併，206 店、$16b annual sales | S1；$16b = 160 億美元",
+      "active_scope_override": null
+    },
+    "C12": {
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "source_aliases": [
+        "S3"
+      ],
+      "original_fullscript_boundary": "H5/E1：2008 起自營熱狗工廠減供應鏈成本 | S3 行 75，須歸屬 NPR，不補月日或工廠地址",
+      "active_scope_override": null
+    },
+    "C13": {
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "source_aliases": [
+        "S3"
+      ],
+      "original_fullscript_boundary": "E1：原供應商 Hebrew National | S3 行 75；不聲稱全球所有門市曾採同供應商",
+      "active_scope_override": null
+    },
+    "C14": {
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "source_aliases": [
+        "S3"
+      ],
+      "original_fullscript_boundary": "E5/E6：Jelinek 2018 回憶、狠話拒絕漲價 | S3 行 83–86；忠實歸屬轉述，不模仿原音；原始U1未取得，談話日期不明，不稱2018當場發生或據此推定2008工廠因果時序",
+      "active_scope_override": null
+    },
+    "C15": {
+      "active_worker_source_indices_zero_based": [
+        3
+      ],
+      "source_aliases": [
+        "S4"
+      ],
+      "original_fullscript_boundary": "E10/E11：自製後「合理回報」 | S4 行 175 的事後轉述；非現在逐份利潤",
+      "active_scope_override": null
+    },
+    "C16": {
+      "active_worker_source_indices_zero_based": [
+        1,
+        5
+      ],
+      "source_aliases": [
+        "S2",
+        "S6"
+      ],
+      "original_fullscript_boundary": "H6/T1：FY2025，2025-08-31 結算 | S2 頁 3/37；最新 FY2026 已出，這只是明定年度算例",
+      "active_scope_override": null
+    },
+    "C17": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "T2：269912、239886、相減30026 USD million | S2 頁 37；語音取整，畫面精確值",
+      "active_scope_override": null
+    },
+    "C18": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "T3：SG&A24966 USD million | S2 頁 37；不可稱這一列全是工資、房租或現金支出",
+      "active_scope_override": null
+    },
+    "C19": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "T4：membership fees5323 USD million | S2 頁 26/37；期間認列，不等於本期收到現金",
+      "active_scope_override": null
+    },
+    "C20": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "T5：operating income10383 USD million | S2 頁 37；不可叫稅後淨利",
+      "active_scope_override": null
+    },
+    "C21": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "T6/T7：5323/10383=51.266...% | 作者算式；比較量級，不是利潤來源分解",
+      "active_scope_override": null
+    },
+    "C22": {
+      "active_worker_source_indices_zero_based": [
+        1,
+        2,
+        3
+      ],
+      "source_aliases": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "original_fullscript_boundary": "E11/T7：未得逐份熱狗獨立損益 | 本次已讀資料的限制，不聲稱全世界永無公開資料",
+      "active_scope_override": null
+    },
+    "C23": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "T9/N3：會員制收入與續約對獲利影響 | S2 頁 24，web行673；T10 為敘事設問",
+      "active_scope_override": null
+    },
+    "C24": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "N1：81.0m paid memberships 及過期口徑 | S2 頁 5，行 192–204",
+      "active_scope_override": null
+    },
+    "C25": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "N2：US/Canada92.3% renewal | S2 頁 5，行 205；排除 business affiliates，計算覆蓋報告日前7–18月的續約，近6月到期未納入；細節入字幕／說明，不把它寫成全體即期比例",
+      "active_scope_override": null
+    },
+    "C26": {
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "source_aliases": [
+        "S2"
+      ],
+      "original_fullscript_boundary": "N5：2024-09-01 美國加拿大年費調整 | S2 頁 27，行 760；不套其他國家",
+      "active_scope_override": null
+    },
+    "C27": {
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "source_aliases": [
+        "S5"
+      ],
+      "original_fullscript_boundary": "N7：官方仍列 US$1.50 | S5 第 19 項，2026-10-16 查閱；不是即時POS逐店抽查",
+      "active_scope_override": null
+    },
+    "C28": {
+      "active_worker_source_indices_zero_based": [
+        1,
+        2
+      ],
+      "source_aliases": [
+        "S2",
+        "S3"
+      ],
+      "original_fullscript_boundary": "N9：成本管理＋會員低價動機的合答 | C10/C12/C23 的編輯綜合推論；沒有證明熱狗造成某續約率或會員費直接補貼它",
+      "active_scope_override": null
+    }
+  },
+  "scope_notes": [
+    "美國 US$1.50；只指 2026-10-16 查閱官網，不是全球或永久承諾。",
+    "2008 自營工廠來源是 NPR；2018 是事後回憶的發表年，原對話日期未知，不把拒漲狠話當建廠起因。",
+    "FY2025 是截至 2025-08-31 的特定年度算例；FY2026 已出，新 active S6 是 SEC Exhibit 99.1，舊全文 S6 入口只作歷史基準。",
+    "2699.12 + 53.23 − 2398.86 − 249.66 = 103.83 億美元。53.23/103.83 ≈ 51.3% 只比較量級，沒有會員成本分攤，也不算熱狗補貼。",
+    "81.0m paid members 含少量過期未續；92.3% 只指美加的公司期間續約算法，不是全球／當天持卡人的比率。",
+    "完整合答只在 N9；每份熱狗今日損益仍無此包可用的獨立數據。"
+  ]
+}

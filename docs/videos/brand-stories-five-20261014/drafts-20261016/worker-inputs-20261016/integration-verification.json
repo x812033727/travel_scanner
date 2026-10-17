@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "integrated_at": "2026-10-15T18:26:43.654Z",
+  "status": "LOCAL_COMPILED_REVIEWED_INPUT_ONLY",
+  "backup_manifest_sha256": "b937e1a3fb38e6aa15472d260ca8cbcac26a162bc68f43a08447b87e404e727a",
+  "backup_files": 14,
+  "rows": [
+    {
+      "id": "A29",
+      "row_sha256": "8286478e9cb30c3f92dca246806c33589033b709f766db7c7b546c122d518aa4",
+      "review_sha256": "928cfbf5e6a221b7632bcd7c502640aa05356dd47666f9c0b0b9bd112d2f41c5",
+      "story_sha256": "252e7be678ba262255304f74f6da2edc6cbda83468a6c054d60d378744877572"
+    },
+    {
+      "id": "A16",
+      "row_sha256": "361a0572ac6cdc4774905c5bcd86fb909e6742a50fa195d5766b0325e3faa7b8",
+      "review_sha256": "b58038cea2600dece820986845d8b460491be932da6f2478c87a711694f78639",
+      "story_sha256": "67e77475d6db8e3fe2ff24782c39681e1132a6d13fde50743e23ee802e072d79"
+    },
+    {
+      "id": "A37",
+      "row_sha256": "df32efa32d3b4bc0b629901255cb009d48a57629cac610a5eb163178712a7dad",
+      "review_sha256": "5090c0ec290237fae1991c5e3c4a5b1a4b766d5112d75b4cac517e036707355d",
+      "story_sha256": "07eb8e786b9d6d0ac1c6ccb25991a5ba5b5da89ac30c330d8009d1b902b966c1"
+    },
+    {
+      "id": "B14",
+      "row_sha256": "7aca463a2caef950f9c28de4dc71debafcd47ca9ee709809dfd0e6566acf46f4",
+      "review_sha256": "fd240d59a0abec04d0a45cfd0270b05549b4f116afb69424e4fa6acf7a4d16d9",
+      "story_sha256": "e0e26fdc4d529ad4323177ba80c7c41a6582ab24897a3f009403e1d6049cf846"
+    },
+    {
+      "id": "A21",
+      "row_sha256": "6adaed7d0b4df750a6edd8bd075b65df18f4f984945bfb49c569574cb0fc3476",
+      "review_sha256": "ea11c8e93f50b3beba7b4aeccc1037ee67a8cbb890ebbced82b557fab3d29321",
+      "story_sha256": "4f7c0a0864dbf5f4659d4f07915990d13013bff9f44faf9d6b3d32497d5753f7"
+    }
+  ],
+  "compiled": {
+    "file": "stories.json",
+    "bytes": 72773,
+    "sha256": "66dd968b2495e15f9509be02cd944d8cec68f506cc24bfe0fdd9953563ad7297"
+  },
+  "original_100_sha256_unchanged": "c8fb18102634459c62f556022139e0bdc733ef432321c412ff810faed0ac0194",
+  "precheck": {
+    "rows": 5,
+    "problems": [],
+    "refused": [],
+    "ignored": []
+  },
+  "postcheck": {
+    "rows": 5,
+    "problems": [],
+    "refused": [],
+    "ignored": []
+  },
+  "build_stdout": "stories.json: five rows, structural checks passed; five independent reviews bound",
+  "source_fetch_check": {
+    "problems": [],
+    "sources": 37,
+    "reports": {
+      "A29": "fetch-A29-A16.json",
+      "A16": "fetch-A16.json",
+      "A37": "fetch-A37-v2.json",
+      "B14": "fetch-A37-B14-A21.json",
+      "A21": "fetch-A37-B14-A21.json"
+    },
+    "scope": "Offline validation of fresh recorded reader results, not a new host fetch"
+  },
+  "evidence": [
+    {
+      "file": "change-map.md",
+      "bytes": 48617,
+      "sha256": "fd9af1f3427cc4f683d71c7b2203fd5191056a2e6ae50b69338f9e87109a405e"
+    },
+    {
+      "file": "A37-source-map.md",
+      "bytes": 19796,
+      "sha256": "dc27a27845514cd66499b19895dc2610a5176b968e8e44ec4168f4fdeb4a1918"
+    },
+    {
+      "file": "B14-source-map.md",
+      "bytes": 19647,
+      "sha256": "989fd0a20502afdb64be452342b04ffdd09aba6e0d32494d600628fd73af34d7"
+    },
+    {
+      "file": "A21-change-map.json",
+      "bytes": 1653,
+      "sha256": "d823ee0ae97d7d89bcf5d5d07bd1f738c826ad7f66e7e07c108aaca9f0d352bc"
+    },
+    {
+      "file": "A21-independent-row-review.md",
+      "bytes": 3599,
+      "sha256": "da13dc34a7174378e66bf3bd0b4a2cd45b59eb23764f8af9afd9358f93edb50e"
+    },
+    {
+      "file": "A16-worker-candidate-v1.json",
+      "bytes": 11849,
+      "sha256": "96b4b4bb6cadbe6ed35f04adb790a32de519c6e3157846103e400e1401d75cf4"
+    },
+    {
+      "file": "A37-worker-candidate-v1.json",
+      "bytes": 14420,
+      "sha256": "42c232614376c1dfac93606d8758bb8a637bcc598312c3687b61ae307b295421"
+    },
+    {
+      "file": "A37-source-access-addendum-v2.md",
+      "bytes": 9184,
+      "sha256": "d3aeb5e06caf9d37e5c2551cca8fe3364f281aecb4755fb3cdc4cae1e76ddc77"
+    },
+    {
+      "file": "A37-row-v2-manifest.json",
+      "bytes": 20274,
+      "sha256": "3bc3df7461483ab62c34cd80859b36b502b6321c75b43b45a2b21427e9b25702"
+    },
+    {
+      "file": "A37-row-v2-handoff.json",
+      "bytes": 7589,
+      "sha256": "b3530709bcc77eabd8a38e7445452c945cda95e55654aac4d513fc6661a49610"
+    },
+    {
+      "file": "A37-row-v2-fetch.json",
+      "bytes": 2685,
+      "sha256": "77ba41de0cba64a35d970ebdaadfb5262f46b94634ee0c08c20a8bb2afe97106"
+    },
+    {
+      "file": "fetch-A16.json",
+      "bytes": 1181,
+      "sha256": "a94c840ebe6e183f65e7417dcebfd97dd589d3f71c3bd44fce49c08e16620284"
+    },
+    {
+      "file": "fetch-A29-A16.json",
+      "bytes": 3168,
+      "sha256": "eb69aa31d9cc2ff5b24569265aca3940ccd278ea7c2fab0fc6e8434c739abf0b"
+    },
+    {
+      "file": "fetch-A37-B14-A21.json",
+      "bytes": 4503,
+      "sha256": "4a200d97ab516c7c434fb2c961695e0dd303de543e4ad4b684f2c81cd90b7f90"
+    },
+    {
+      "file": "fetch-A37-host.json",
+      "bytes": 2170,
+      "sha256": "e58a13a8432368e1883754e70b9b1e5224d0d6248d232fb78aa74ac4bdf5833a"
+    },
+    {
+      "file": "fetch-A37-v2.json",
+      "bytes": 2127,
+      "sha256": "c24d85d80a1f70b572543e09222545ecdd1c84a694457b9dbb90ab2b5521b8e2"
+    },
+    {
+      "file": "A37-reader-alternatives-metadata.json",
+      "bytes": 6850,
+      "sha256": "c680b9d0602960836eaa5683ac5c8c96d79d0bc001e40eddd7334d2416419a3f"
+    }
+  ],
+  "formal_worker_scripts": false,
+  "tts": false,
+  "media": false,
+  "host_import": false,
+  "final_readback": {
+    "row_files": 5,
+    "matching_review_files": 5,
+    "backup_files": 14,
+    "unchanged_fullscripts": 5,
+    "evidence_files": 17,
+    "markdown_files_checked": 11,
+    "local_links_checked": 87,
+    "broken_local_links": [],
+    "git_diff_check": "exit 0; existing CRLF normalization warnings only",
+    "original100_unchanged": true,
+    "compiled_hash_matches": true
+  },
+  "test_limits": {
+    "original_bank": {
+      "problems": 0,
+      "existing_thumbnail_warnings": 70
+    },
+    "docs_videos": {
+      "tests": 215,
+      "passed": 214,
+      "failed": 1,
+      "failed_case": "audio check uses cached transcripts/Jev and binds the aligned outputs without claiming owner approval",
+      "failure": "Windows EPERM atomic speech-journal rename; exact single-case rerun also failed",
+      "task": "2026-10-09-windows-speech-journal-rename-failures"
+    },
+    "task_check": {
+      "passed": false,
+      "reason": "unrelated duplicate A21 task ID in open and untracked done file; untouched"
+    }
+  }
+}

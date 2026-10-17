@@ -1,0 +1,1901 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_INDEPENDENT_EDITORIAL_FACT_AUDIT_HOLD",
+  "as_of": "2026-10-16",
+  "scope": "B18 authored 65 claims; not a formal worker verifier, listener, narrative or script-review receipt",
+  "input_sha256": {
+    "planning_checklist": "f5072f75bc67ab59404df5287c938a91be669e39327d4bdd42193325fd4676c7",
+    "authored_mapping": "46f8a6c27e79c42e733fda1e91a57e07144094907e3184d6e59d5af43cddedbc"
+  },
+  "counts": {
+    "ATTRIBUTION_REQUIRED": 9,
+    "HOLD_CAUSAL_CHAIN": 2,
+    "HOLD_SOURCE_CONFLICT": 3,
+    "SOURCE_POINTER_FIX": 1,
+    "SOURCE_VARIANT": 3,
+    "SUPPORTED": 43,
+    "SUPPORTED_WITH_CONTEXT": 1,
+    "TRANSLATION_NOTE": 3
+  },
+  "source_conflict": "Official court judgment finds basic utility-model 579776 expired in 1972, contrary to J-Net21 and Japan Institute of Invention and Innovation 1978 summaries; another utility model 851953 is mentioned but its expiry was not established.",
+  "rows": [
+    {
+      "planning_id": "B18-PC-H01-1",
+      "chapter": "hook",
+      "paragraph_id": "H01",
+      "claim_id": "h1",
+      "scene_id": "hook-s001",
+      "line_ids": [
+        "b75d7f13"
+      ],
+      "exact_spoken_quote": "一九四八年，大阪府吹田的一座啤酒工廠",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 1,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1205",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1205"
+        }
+      ],
+      "note": "1948、吹田、啤酒工廠均有記載；廠牌仍不明。"
+    },
+    {
+      "planning_id": "B18-PC-H01-2",
+      "chapter": "hook",
+      "paragraph_id": "H01",
+      "claim_id": "h2",
+      "scene_id": "hook-s002",
+      "line_ids": [
+        "ee6a7294"
+      ],
+      "exact_spoken_quote": "壽司店老闆白石義明",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 1,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1204",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「ビール工場のベルトコンベアでアイデアひらめく」第1段；網頁 L1204"
+        },
+        {
+          "key": "J1205",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1205"
+        }
+      ],
+      "note": "白石身份與工廠參訪相合。"
+    },
+    {
+      "planning_id": "B18-PC-H01-3",
+      "chapter": "hook",
+      "paragraph_id": "H01",
+      "claim_id": "h3",
+      "scene_id": "hook-s003",
+      "line_ids": [
+        "ac2b5931"
+      ],
+      "exact_spoken_quote": "靠師傅遞盤的難題",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 2,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1205",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1205"
+        }
+      ],
+      "note": "手遞壽司耗時是原文的經營瓶頸。"
+    },
+    {
+      "planning_id": "B18-PC-H02-1",
+      "chapter": "hook",
+      "paragraph_id": "H02",
+      "claim_id": "h4",
+      "scene_id": "hook-s004",
+      "line_ids": [
+        "75ea529f"
+      ],
+      "exact_spoken_quote": "一九五八年第一家店要開門",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 0,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1215",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第3段；網頁 L1215"
+        },
+        {
+          "key": "M19",
+          "source_title": "日本機械學會，機械遺產第112號（2021）",
+          "url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+          "location": "首店及創辦人／啤酒線靈感；網頁 L18-L19"
+        }
+      ],
+      "note": "1958年4月首店另由機械學會佐證。"
+    },
+    {
+      "planning_id": "B18-PC-H02-2",
+      "chapter": "hook",
+      "paragraph_id": "H02",
+      "claim_id": "h5",
+      "scene_id": "hook-s004",
+      "line_ids": [
+        "75ea529f"
+      ],
+      "exact_spoken_quote": "盤子卻在轉角卡住",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 3,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1212",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「町工場の経営者が協力」第1段；網頁 L1212"
+        }
+      ],
+      "note": "屬反覆開發難題；不可畫成可查證的一次事故。"
+    },
+    {
+      "planning_id": "B18-PC-H02-3",
+      "chapter": "hook",
+      "paragraph_id": "H02",
+      "claim_id": "h6",
+      "scene_id": "hook-s005",
+      "line_ids": [
+        "fba7c9c9"
+      ],
+      "exact_spoken_quote": "一九七〇年，這種吃法進了大阪萬博會場",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 7,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1222",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「モノレール駅前に出店」第1段；網頁 L1222"
+        },
+        {
+          "key": "I38",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節萬博與240家段；網頁 L38"
+        },
+        {
+          "key": "C508",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第9頁（0-based P8），L499-L508：早期擴張及萬博出店"
+        }
+      ],
+      "note": "1970萬博出店；法院亦載實際出店。"
+    },
+    {
+      "planning_id": "B18-PC-H02-4",
+      "chapter": "hook",
+      "paragraph_id": "H02",
+      "claim_id": "h7",
+      "scene_id": "hook-s006",
+      "line_ids": [
+        "a1485302"
+      ],
+      "exact_spoken_quote": "一九七八年，一項權利走到期限",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 4,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "HOLD_SOURCE_CONFLICT",
+      "evidence": [
+        {
+          "key": "I43",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節1978／新業者／採購段；網頁 L43"
+        },
+        {
+          "key": "J1234",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1234"
+        },
+        {
+          "key": "K182",
+          "source_title": "Kindai Picks，白石博志第一人稱訪談（2023-03-23）",
+          "url": "https://kindaipicks.com/article/002589",
+          "location": "訪談 L180-L182：博志稱1978年「特許」到期；未提供權利號"
+        },
+        {
+          "key": "C469",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第9頁（0-based P8），L466-L469：1960申請、1962登錄、579776號"
+        },
+        {
+          "key": "C575",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第11頁（0-based P10），L574-L578：本件實用新案1972年期滿、此後已有其他經營者"
+        }
+      ],
+      "note": "發明協會、J-Net21及博志回憶說1978；法院認定同名基本實用新案579776於1972期滿，不能把1978當確定日期。"
+    },
+    {
+      "planning_id": "B18-PC-O01-1",
+      "chapter": "origin",
+      "paragraph_id": "O01",
+      "claim_id": "o1",
+      "scene_id": "origin-s008",
+      "line_ids": [
+        "22e482e7"
+      ],
+      "exact_spoken_quote": "一九四七年，白石從愛媛搬到大阪布施，開了一間料理店",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1204",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「ビール工場のベルトコンベアでアイデアひらめく」第1段；網頁 L1204"
+        }
+      ],
+      "note": "1947愛媛到布施先開料理店，非1958迴轉首店。"
+    },
+    {
+      "planning_id": "B18-PC-O01-2",
+      "chapter": "origin",
+      "paragraph_id": "O01",
+      "claim_id": "o2",
+      "scene_id": "origin-s009",
+      "line_ids": [
+        "4c86c469"
+      ],
+      "exact_spoken_quote": "附近工廠的年輕工人和學生",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1204",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「ビール工場のベルトコンベアでアイデアひらめく」第1段；網頁 L1204"
+        }
+      ],
+      "note": "工廠青年與學生為立食壽司客群。"
+    },
+    {
+      "planning_id": "B18-PC-O01-3",
+      "chapter": "origin",
+      "paragraph_id": "O01",
+      "claim_id": "o3",
+      "scene_id": "origin-s010",
+      "line_ids": [
+        "bf23cd5d"
+      ],
+      "exact_spoken_quote": "一盤四貫，二十日圓",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 2,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1204",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「ビール工場のベルトコンベアでアイデアひらめく」第1段；網頁 L1204"
+        },
+        {
+          "key": "I31",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "「イノベーションに至る経緯」第2段；網頁 L31"
+        }
+      ],
+      "note": "早期立食店四貫20日圓，與首店50日圓分開。"
+    },
+    {
+      "planning_id": "B18-PC-O02-1",
+      "chapter": "origin",
+      "paragraph_id": "O02",
+      "claim_id": "o4",
+      "scene_id": "origin-s011",
+      "line_ids": [
+        "eee43a98"
+      ],
+      "exact_spoken_quote": "當年壽司常是節慶才吃的料理",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1204",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「ビール工場のベルトコンベアでアイデアひらめく」第1段；網頁 L1204"
+        }
+      ],
+      "note": "節慶料理是報導中的時代背景。"
+    },
+    {
+      "planning_id": "B18-PC-O02-2",
+      "chapter": "origin",
+      "paragraph_id": "O02",
+      "claim_id": "o5",
+      "scene_id": "origin-s011",
+      "line_ids": [
+        "eee43a98"
+      ],
+      "exact_spoken_quote": "白石把價錢寫清楚",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1204",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「ビール工場のベルトコンベアでアイデアひらめく」第1段；網頁 L1204"
+        }
+      ],
+      "note": "明示價格有記載。"
+    },
+    {
+      "planning_id": "B18-PC-O02-3",
+      "chapter": "origin",
+      "paragraph_id": "O02",
+      "claim_id": "o6",
+      "scene_id": "origin-s012",
+      "line_ids": [
+        "9ed6e615"
+      ],
+      "exact_spoken_quote": "比別家便宜約三成",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1204",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「ビール工場のベルトコンベアでアイデアひらめく」第1段；網頁 L1204"
+        }
+      ],
+      "note": "比其他店便宜約三成有記載。"
+    },
+    {
+      "planning_id": "B18-PC-O02-4",
+      "chapter": "origin",
+      "paragraph_id": "O02",
+      "claim_id": "o7",
+      "scene_id": "origin-s012",
+      "line_ids": [
+        "9ed6e615"
+      ],
+      "exact_spoken_quote": "客人多了起來",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1204",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「ビール工場のベルトコンベアでアイデアひらめく」第1段；網頁 L1204"
+        }
+      ],
+      "note": "原報導描述生意興旺。"
+    },
+    {
+      "planning_id": "B18-PC-O03-1",
+      "chapter": "origin",
+      "paragraph_id": "O03",
+      "claim_id": "o8",
+      "scene_id": "origin-s015",
+      "line_ids": [
+        "2c7a8232"
+      ],
+      "exact_spoken_quote": "發明協會記載，湧進的訂單已超過師傅能握壽司的量",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "I31",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "「イノベーションに至る経緯」第2段；網頁 L31"
+        }
+      ],
+      "note": "發明協會記載訂單超出師傅握製能力。"
+    },
+    {
+      "planning_id": "B18-PC-O03-2",
+      "chapter": "origin",
+      "paragraph_id": "O03",
+      "claim_id": "o9",
+      "scene_id": "origin-s016",
+      "line_ids": [
+        "7ffa5342"
+      ],
+      "exact_spoken_quote": "年輕師傅工作太累，沒多久就離開",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 2,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1205",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1205"
+        }
+      ],
+      "note": "年輕師傅因忙碌很快離職。"
+    },
+    {
+      "planning_id": "B18-PC-O04-1",
+      "chapter": "origin",
+      "paragraph_id": "O04",
+      "claim_id": "o10",
+      "scene_id": "origin-s020",
+      "line_ids": [
+        "e4111cd5"
+      ],
+      "exact_spoken_quote": "開場那條會送瓶子的路",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 1,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1205",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1205"
+        },
+        {
+          "key": "I31",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "「イノベーションに至る経緯」第2段；網頁 L31"
+        }
+      ],
+      "note": "工廠線與將輸送方式搬到壽司店的想法有記載。"
+    },
+    {
+      "planning_id": "B18-PC-O04-2",
+      "chapter": "origin",
+      "paragraph_id": "O04",
+      "claim_id": "o11",
+      "scene_id": "origin-s020",
+      "line_ids": [
+        "e4111cd5"
+      ],
+      "exact_spoken_quote": "一盤盤壽司沿著吧台繞一圈",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SOURCE_POINTER_FIX",
+      "evidence": [
+        {
+          "key": "J1205",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1205"
+        },
+        {
+          "key": "M19",
+          "source_title": "日本機械學會，機械遺產第112號（2021）",
+          "url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+          "location": "首店及創辦人／啤酒線靈感；網頁 L18-L19"
+        }
+      ],
+      "note": "循環吧台由J-Net21／機械學會支持；目前綁source=2的發明協會該段只說送盤，應補可讀來源指向。"
+    },
+    {
+      "planning_id": "B18-PC-I01-1",
+      "chapter": "idea",
+      "paragraph_id": "I01",
+      "claim_id": "i1",
+      "scene_id": "idea-s024",
+      "line_ids": [
+        "9538ed4b"
+      ],
+      "exact_spoken_quote": "一到轉角，帶子擠在一起，盤子就可能掉下來",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 3,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1212",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「町工場の経営者が協力」第1段；網頁 L1212"
+        }
+      ],
+      "note": "轉角擁塞掉盤是原文的開發難題；不要當單次現場紀錄。"
+    },
+    {
+      "planning_id": "B18-PC-I01-2",
+      "chapter": "idea",
+      "paragraph_id": "I01",
+      "claim_id": "i2",
+      "scene_id": "idea-s025",
+      "line_ids": [
+        "d180a390"
+      ],
+      "exact_spoken_quote": "白石找附近小工廠的經營者",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 3,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1212",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「町工場の経営者が協力」第1段；網頁 L1212"
+        },
+        {
+          "key": "I31",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "「イノベーションに至る経緯」第2段；網頁 L31"
+        }
+      ],
+      "note": "附近工廠經營者／鐵工所合作有記載。"
+    },
+    {
+      "planning_id": "B18-PC-I02-1",
+      "chapter": "idea",
+      "paragraph_id": "I02",
+      "claim_id": "i3",
+      "scene_id": "idea-s028",
+      "line_ids": [
+        "60c8882e"
+      ],
+      "exact_spoken_quote": "白石看見孩子把撲克牌攤成扇形",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 3,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "ATTRIBUTION_REQUIRED",
+      "evidence": [
+        {
+          "key": "J1212",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「町工場の経営者が協力」第1段；網頁 L1212"
+        }
+      ],
+      "note": "撲克牌說法只可明指J-Net21版本。"
+    },
+    {
+      "planning_id": "B18-PC-I02-2",
+      "chapter": "idea",
+      "paragraph_id": "I02",
+      "claim_id": "i4",
+      "scene_id": "idea-s029",
+      "line_ids": [
+        "bd81544c"
+      ],
+      "exact_spoken_quote": "寫的是他攤開一疊名片",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 3,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "ATTRIBUTION_REQUIRED",
+      "evidence": [
+        {
+          "key": "I31",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "「イノベーションに至る経緯」第2段；網頁 L31"
+        }
+      ],
+      "note": "名片說法只可明指發明協會版本；兩說不可合併為同一現場。"
+    },
+    {
+      "planning_id": "B18-PC-I03-1",
+      "chapter": "idea",
+      "paragraph_id": "I03",
+      "claim_id": "i5",
+      "scene_id": "idea-s031",
+      "line_ids": [
+        "28713224"
+      ],
+      "exact_spoken_quote": "最後用來轉彎的，是一片片扇形的板子",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 3,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1212",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「町工場の経営者が協力」第1段；網頁 L1212"
+        },
+        {
+          "key": "I31",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "「イノベーションに至る経緯」第2段；網頁 L31"
+        }
+      ],
+      "note": "扇形板片可通過轉角；源版本描述角度不同但結果相容。"
+    },
+    {
+      "planning_id": "B18-PC-I03-2",
+      "chapter": "idea",
+      "paragraph_id": "I03",
+      "claim_id": "i6",
+      "scene_id": "idea-s032",
+      "line_ids": [
+        "3f5899d2"
+      ],
+      "exact_spoken_quote": "這種板子後來被叫作「魚鱗板」",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 3,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "TRANSLATION_NOTE",
+      "evidence": [
+        {
+          "key": "J1212",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「町工場の経営者が協力」第1段；網頁 L1212"
+        },
+        {
+          "key": "M20",
+          "source_title": "日本機械學會，機械遺產第112號（2021）",
+          "url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+          "location": "1985年現用機與另存早期板片；網頁 L20"
+        }
+      ],
+      "note": "來源稱ウロコ／うろこ；魚鱗板是中文解說名，正式卡片宜保留原日文。"
+    },
+    {
+      "planning_id": "B18-PC-I04-1",
+      "chapter": "idea",
+      "paragraph_id": "I04",
+      "claim_id": "i7",
+      "scene_id": "idea-s033",
+      "line_ids": [
+        "464491bc"
+      ],
+      "exact_spoken_quote": "前後約十年",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 3,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1212",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「町工場の経営者が協力」第1段；網頁 L1212"
+        },
+        {
+          "key": "I31",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "「イノベーションに至る経緯」第2段；網頁 L31"
+        }
+      ],
+      "note": "約十年是機構常見記述，不寫精確開發年數。"
+    },
+    {
+      "planning_id": "B18-PC-I04-2",
+      "chapter": "idea",
+      "paragraph_id": "I04",
+      "claim_id": "i8",
+      "scene_id": "idea-s034",
+      "line_ids": [
+        "4932b9e1"
+      ],
+      "exact_spoken_quote": "一九五七年，白石與附近工廠做出「輸送帶旋轉式餐台」試作機",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 3,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1213",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1213"
+        }
+      ],
+      "note": "1957試作機及原日文機名見J-Net21。"
+    },
+    {
+      "planning_id": "B18-PC-I04-3",
+      "chapter": "idea",
+      "paragraph_id": "I04",
+      "claim_id": "i9",
+      "scene_id": "idea-s035",
+      "line_ids": [
+        "94d1a564"
+      ],
+      "exact_spoken_quote": "選不易生鏽的材料",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1213",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1213"
+        }
+      ],
+      "note": "材料防鏽考量有記載。"
+    },
+    {
+      "planning_id": "B18-PC-I04-4",
+      "chapter": "idea",
+      "paragraph_id": "I04",
+      "claim_id": "i10",
+      "scene_id": "idea-s037",
+      "line_ids": [
+        "efb71c9b"
+      ],
+      "exact_spoken_quote": "兒子博志回憶，父親預先付材料費給協作工廠",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "ATTRIBUTION_REQUIRED",
+      "evidence": [
+        {
+          "key": "J1213",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1213"
+        }
+      ],
+      "note": "材料費預付為兒子博志追述。"
+    },
+    {
+      "planning_id": "B18-PC-I04-5",
+      "chapter": "idea",
+      "paragraph_id": "I04",
+      "claim_id": "i11",
+      "scene_id": "idea-s038",
+      "line_ids": [
+        "0599d12e"
+      ],
+      "exact_spoken_quote": "他認為這或許讓對方願意幫忙",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "ATTRIBUTION_REQUIRED",
+      "evidence": [
+        {
+          "key": "J1213",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1213"
+        }
+      ],
+      "note": "工廠願合作的原因是博志推測，旁白不可升格為確定動機。"
+    },
+    {
+      "planning_id": "B18-PC-E01-1",
+      "chapter": "engine",
+      "paragraph_id": "E01",
+      "claim_id": "e1",
+      "scene_id": "engine-s041",
+      "line_ids": [
+        "5904fcf3"
+      ],
+      "exact_spoken_quote": "一九五八年四月，近鐵布施站附近，「廻る元禄寿司」第一家店開門",
+      "existing_source_index": 1,
+      "existing_source_url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+      "existing_fact_index": 0,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1215",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第3段；網頁 L1215"
+        },
+        {
+          "key": "M19",
+          "source_title": "日本機械學會，機械遺產第112號（2021）",
+          "url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+          "location": "首店及創辦人／啤酒線靈感；網頁 L18-L19"
+        }
+      ],
+      "note": "1958年4月布施首店，機械學會支持。"
+    },
+    {
+      "planning_id": "B18-PC-E01-2",
+      "chapter": "engine",
+      "paragraph_id": "E01",
+      "claim_id": "e2",
+      "scene_id": "engine-s042",
+      "line_ids": [
+        "e9927856"
+      ],
+      "exact_spoken_quote": "店大約二十坪，只有吧台座位",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 6,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "I32",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節首店段；網頁 L32"
+        }
+      ],
+      "note": "約20坪且只有吧台座位。"
+    },
+    {
+      "planning_id": "B18-PC-E02-1",
+      "chapter": "engine",
+      "paragraph_id": "E02",
+      "claim_id": "e3",
+      "scene_id": "engine-s044",
+      "line_ids": [
+        "d428ad00"
+      ],
+      "exact_spoken_quote": "一盤四貫、五十日圓",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 6,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "I32",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節首店段；網頁 L32"
+        },
+        {
+          "key": "S54",
+          "source_title": "石野集團／北日本カコー官方沿革",
+          "url": "https://www.ishino-group.com/history/",
+          "location": "1958年元祿首店每盤50日圓；網頁 L50-L57"
+        }
+      ],
+      "note": "迴轉首店四貫50日圓；早期立食20日圓另有來源。"
+    },
+    {
+      "planning_id": "B18-PC-E02-2",
+      "chapter": "engine",
+      "paragraph_id": "E02",
+      "claim_id": "e4",
+      "scene_id": "engine-s046",
+      "line_ids": [
+        "128aabfa"
+      ],
+      "exact_spoken_quote": "從店外還看得見輸送帶在轉",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1215",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第3段；網頁 L1215"
+        }
+      ],
+      "note": "店外可見輸送帶轉動。"
+    },
+    {
+      "planning_id": "B18-PC-E03-1",
+      "chapter": "engine",
+      "paragraph_id": "E03",
+      "claim_id": "e5",
+      "scene_id": "engine-s048",
+      "line_ids": [
+        "8d903637"
+      ],
+      "exact_spoken_quote": "一九六〇年，第二家店開到大阪道頓堀",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "HOLD_SOURCE_CONFLICT",
+      "evidence": [
+        {
+          "key": "J1215",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第3段；網頁 L1215"
+        },
+        {
+          "key": "K270",
+          "source_title": "Kindai Picks，白石博志第一人稱訪談（2023-03-23）",
+          "url": "https://kindaipicks.com/article/002589",
+          "location": "訪談 L264-L270：博志稱道頓堀店1960年開幕"
+        },
+        {
+          "key": "C473",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第9頁（0-based P8），L470-L474：道頓堀店1962年4月"
+        }
+      ],
+      "note": "J-Net21和博志第一人稱訪談說1960年道頓堀第二店；法院認定原告道頓堀店1962年4月。未釐清店名／法人是否指不同店前不可確定旁白。"
+    },
+    {
+      "planning_id": "B18-PC-E03-2",
+      "chapter": "engine",
+      "paragraph_id": "E03",
+      "claim_id": "e6",
+      "scene_id": "engine-s049",
+      "line_ids": [
+        "8789a7bb"
+      ],
+      "exact_spoken_quote": "一九六二年，輸送帶系統以白石個人名義登記為「實用新案」",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 4,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "I34",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節實用新案登錄段；網頁 L34"
+        },
+        {
+          "key": "C469",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第9頁（0-based P8），L466-L469：1960申請、1962登錄、579776號"
+        }
+      ],
+      "note": "1962年白石名義的實用新案，法院並確認579776號；J-Net21稱特許屬分類衝突。"
+    },
+    {
+      "planning_id": "B18-PC-E03-3",
+      "chapter": "engine",
+      "paragraph_id": "E03",
+      "claim_id": "e7",
+      "scene_id": "engine-s050",
+      "line_ids": [
+        "9af5eda1"
+      ],
+      "exact_spoken_quote": "名字叫「附輸送帶的料理台」",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 4,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "TRANSLATION_NOTE",
+      "evidence": [
+        {
+          "key": "I34",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節實用新案登錄段；網頁 L34"
+        },
+        {
+          "key": "C469",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第9頁（0-based P8），L466-L469：1960申請、1962登錄、579776號"
+        }
+      ],
+      "note": "正式日文權利名為コンベヤ附調理食台；中文譯名只作說明，不冒充登錄原名。"
+    },
+    {
+      "planning_id": "B18-PC-E04-1",
+      "chapter": "engine",
+      "paragraph_id": "E04",
+      "claim_id": "e8",
+      "scene_id": "engine-s052",
+      "line_ids": [
+        "b4d30dda"
+      ],
+      "exact_spoken_quote": "在東京和大阪聘律師及專利代理人，發出警告",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 5,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1232",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「市場規模は7500億円に」第1段；網頁 L1232"
+        }
+      ],
+      "note": "東京大阪聘律師與弁理士警告類似店，J-Net21有記載。"
+    },
+    {
+      "planning_id": "B18-PC-E04-2",
+      "chapter": "engine",
+      "paragraph_id": "E04",
+      "claim_id": "e9",
+      "scene_id": "engine-s053",
+      "line_ids": [
+        "6176048a"
+      ],
+      "exact_spoken_quote": "幾乎就是提到元祿壽司",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "ATTRIBUTION_REQUIRED",
+      "evidence": [
+        {
+          "key": "I36",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節加盟與品牌段；網頁 L36"
+        },
+        {
+          "key": "C575",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第11頁（0-based P10），L574-L578：本件實用新案1972年期滿、此後已有其他經營者"
+        }
+      ],
+      "note": "發明協會說一度幾乎等於元祿品牌；法院亦認定1972後其他業者已入場，須限定時期。"
+    },
+    {
+      "planning_id": "B18-PC-E05-1",
+      "chapter": "engine",
+      "paragraph_id": "E05",
+      "claim_id": "e10",
+      "scene_id": "engine-s056",
+      "line_ids": [
+        "d877e0f4"
+      ],
+      "exact_spoken_quote": "地方商工會議所邀請東大阪業者",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1222",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「モノレール駅前に出店」第1段；網頁 L1222"
+        }
+      ],
+      "note": "地方商工會議所徵求東大阪參展業者，白石接受。"
+    },
+    {
+      "planning_id": "B18-PC-E05-2",
+      "chapter": "engine",
+      "paragraph_id": "E05",
+      "claim_id": "e11",
+      "scene_id": "engine-s057",
+      "line_ids": [
+        "9d162c5d"
+      ],
+      "exact_spoken_quote": "會場單軌列車西口站前",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1222",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「モノレール駅前に出店」第1段；網頁 L1222"
+        }
+      ],
+      "note": "場內單軌列車西口站前。"
+    },
+    {
+      "planning_id": "B18-PC-E05-3",
+      "chapter": "engine",
+      "paragraph_id": "E05",
+      "claim_id": "e12",
+      "scene_id": "engine-s059",
+      "line_ids": [
+        "cb76ddb1"
+      ],
+      "exact_spoken_quote": "把三百日圓的握壽司套組裝進壽司桶",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1222",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「モノレール駅前に出店」第1段；網頁 L1222"
+        }
+      ],
+      "note": "300日圓握壽司套組置壽司桶並上輸送帶；非首店單盤價。"
+    },
+    {
+      "planning_id": "B18-PC-E05-4",
+      "chapter": "engine",
+      "paragraph_id": "E05",
+      "claim_id": "e13",
+      "scene_id": "engine-s061",
+      "line_ids": [
+        "f7104e65"
+      ],
+      "exact_spoken_quote": "兒子博志回憶，自己暑假去幫忙，剝蝦、剪海苔都忙個不停",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SOURCE_VARIANT",
+      "evidence": [
+        {
+          "key": "J1222",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「モノレール駅前に出店」第1段；網頁 L1222"
+        },
+        {
+          "key": "K157",
+          "source_title": "Kindai Picks，白石博志第一人稱訪談（2023-03-23）",
+          "url": "https://kindaipicks.com/article/002589",
+          "location": "訪談 L155-L157、L216-L218：博志稱1970年曾在海外讀到萬博新聞"
+        }
+      ],
+      "note": "J-Net21記博志暑假赴萬博幫忙；Kindai訪談中博志說1970年身在海外、靠報紙得知萬博盛況。可能期間不同，但現有來源未排清，避免當確定且連續的現場回憶。"
+    },
+    {
+      "planning_id": "B18-PC-T01-1",
+      "chapter": "turn",
+      "paragraph_id": "T01",
+      "claim_id": "t1",
+      "scene_id": "turn-s063",
+      "line_ids": [
+        "fe3cdc95"
+      ],
+      "exact_spoken_quote": "萬博出店受到表彰",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 7,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "I38",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節萬博與240家段；網頁 L38"
+        }
+      ],
+      "note": "萬博出店受表彰；法院證明出店但未證表彰。"
+    },
+    {
+      "planning_id": "B18-PC-T01-2",
+      "chapter": "turn",
+      "paragraph_id": "T01",
+      "claim_id": "t2",
+      "scene_id": "turn-s063",
+      "line_ids": [
+        "fe3cdc95"
+      ],
+      "exact_spoken_quote": "發明協會說，迴轉壽司因此在全國打開知名度",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 7,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "ATTRIBUTION_REQUIRED",
+      "evidence": [
+        {
+          "key": "I38",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節萬博與240家段；網頁 L38"
+        },
+        {
+          "key": "C548",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第10頁（0-based P9），L543-L548：萬博不足以證明商標全國著名"
+        }
+      ],
+      "note": "發明協會稱全國認識吃法；法院只否定由萬博單獨證明商標法律上全國著名，兩種命題不同，旁白維持明確歸屬。"
+    },
+    {
+      "planning_id": "B18-PC-T01-3",
+      "chapter": "turn",
+      "paragraph_id": "T01",
+      "claim_id": "t3",
+      "scene_id": "turn-s065",
+      "line_ids": [
+        "35ac5df8"
+      ],
+      "exact_spoken_quote": "會場迎來外國客人",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1225",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第3段；網頁 L1225"
+        }
+      ],
+      "note": "J-Net21報導外國訪客；不是精確人數。"
+    },
+    {
+      "planning_id": "B18-PC-T01-4",
+      "chapter": "turn",
+      "paragraph_id": "T01",
+      "claim_id": "t4",
+      "scene_id": "turn-s068",
+      "line_ids": [
+        "2317894a"
+      ],
+      "exact_spoken_quote": "約兩百四十家",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 7,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SOURCE_VARIANT",
+      "evidence": [
+        {
+          "key": "I38",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節萬博與240家段；網頁 L38"
+        },
+        {
+          "key": "J1232",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「市場規模は7500億円に」第1段；網頁 L1232"
+        }
+      ],
+      "note": "發明協會約240店，J-Net21報導高峰含直營約250店；本稿明示發明協會口徑。"
+    },
+    {
+      "planning_id": "B18-PC-T01a-1",
+      "chapter": "turn",
+      "paragraph_id": "T01a",
+      "claim_id": "t5",
+      "scene_id": "turn-s071",
+      "line_ids": [
+        "bb08c911"
+      ],
+      "exact_spoken_quote": "一九七一年，石野製作所供應元祿壽司自動給茶裝置",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SOURCE_VARIANT",
+      "evidence": [
+        {
+          "key": "I44",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節1971／1974設備與後期店型段；網頁 L44"
+        },
+        {
+          "key": "S72",
+          "source_title": "石野集團／北日本カコー官方沿革",
+          "url": "https://www.ishino-group.com/history/",
+          "location": "1970-1974年設備沿革；網頁 L58-L86"
+        },
+        {
+          "key": "K153",
+          "source_title": "Kindai Picks，白石博志第一人稱訪談（2023-03-23）",
+          "url": "https://kindaipicks.com/article/002589",
+          "location": "訪談照片說明 L152-L153：給茶裝置1973年開發的另一日期"
+        }
+      ],
+      "note": "發明協會說1971供應元祿自動給茶；石野官方沿革記1970開發、1971賣附給茶裝置輸送機，Kindai照片說明稱1973年開發，應區分裝置／整機／安裝年份。"
+    },
+    {
+      "planning_id": "B18-PC-T01a-2",
+      "chapter": "turn",
+      "paragraph_id": "T01a",
+      "claim_id": "t6",
+      "scene_id": "turn-s073",
+      "line_ids": [
+        "86198f0e"
+      ],
+      "exact_spoken_quote": "一九七四年，這家公司把它和輸送帶組成一套設備",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "I44",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節1971／1974設備與後期店型段；網頁 L44"
+        },
+        {
+          "key": "S72",
+          "source_title": "石野集團／北日本カコー官方沿革",
+          "url": "https://www.ishino-group.com/history/",
+          "location": "1970-1974年設備沿革；網頁 L58-L86"
+        }
+      ],
+      "note": "發明協會及石野官網均記1974整合設備。"
+    },
+    {
+      "planning_id": "B18-PC-T02-1",
+      "chapter": "turn",
+      "paragraph_id": "T02",
+      "claim_id": "t7",
+      "scene_id": "turn-s078",
+      "line_ids": [
+        "5d0a1084"
+      ],
+      "exact_spoken_quote": "一九七八年，它期滿了",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 4,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "HOLD_SOURCE_CONFLICT",
+      "evidence": [
+        {
+          "key": "I43",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節1978／新業者／採購段；網頁 L43"
+        },
+        {
+          "key": "J1234",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1234"
+        },
+        {
+          "key": "K182",
+          "source_title": "Kindai Picks，白石博志第一人稱訪談（2023-03-23）",
+          "url": "https://kindaipicks.com/article/002589",
+          "location": "訪談 L180-L182：博志稱1978年「特許」到期；未提供權利號"
+        },
+        {
+          "key": "C469",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第9頁（0-based P8），L466-L469：1960申請、1962登錄、579776號"
+        },
+        {
+          "key": "C575",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第11頁（0-based P10），L574-L578：本件實用新案1972年期滿、此後已有其他經營者"
+        }
+      ],
+      "note": "法院判決理由認定同名1962基本實用新案1972年期滿；1978的回顧說法不能確定指此權利。"
+    },
+    {
+      "planning_id": "B18-PC-T02-2",
+      "chapter": "turn",
+      "paragraph_id": "T02",
+      "claim_id": "t8",
+      "scene_id": "turn-s079",
+      "line_ids": [
+        "230c59db"
+      ],
+      "exact_spoken_quote": "大批新業者進入迴轉壽司市場",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 5,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "HOLD_CAUSAL_CHAIN",
+      "evidence": [
+        {
+          "key": "I43",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節1978／新業者／採購段；網頁 L43"
+        },
+        {
+          "key": "C575",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第11頁（0-based P10），L574-L578：本件實用新案1972年期滿、此後已有其他經營者"
+        }
+      ],
+      "note": "發明協會寫1978後大批進場；法院認定1972基本權利屆滿後已有多家獨立業者，不能呈現1978才打開市場。"
+    },
+    {
+      "planning_id": "B18-PC-T02-3",
+      "chapter": "turn",
+      "paragraph_id": "T02",
+      "claim_id": "t9",
+      "scene_id": "turn-s079",
+      "line_ids": [
+        "230c59db"
+      ],
+      "exact_spoken_quote": "原本的加盟店，也有人獨立，換上自己的招牌",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 5,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "HOLD_CAUSAL_CHAIN",
+      "evidence": [
+        {
+          "key": "J1234",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1234"
+        },
+        {
+          "key": "C575",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第11頁（0-based P10），L574-L578：本件實用新案1972年期滿、此後已有其他經營者"
+        }
+      ],
+      "note": "J-Net21寫加盟店獨立掛新招牌；放在1978唯一轉折後會誤導，須另核對年份與法律／加盟關係。"
+    },
+    {
+      "planning_id": "B18-PC-T03-1",
+      "chapter": "turn",
+      "paragraph_id": "T03",
+      "claim_id": "t10",
+      "scene_id": "turn-s081",
+      "line_ids": [
+        "d8ecd870"
+      ],
+      "exact_spoken_quote": "萬博已讓許多人認識，元祿壽司也早在展店",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": 7,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED_WITH_CONTEXT",
+      "evidence": [
+        {
+          "key": "I36",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節加盟與品牌段；網頁 L36"
+        },
+        {
+          "key": "I38",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節萬博與240家段；網頁 L38"
+        },
+        {
+          "key": "J1232",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「市場規模は7500億円に」第1段；網頁 L1232"
+        },
+        {
+          "key": "C548",
+          "source_title": "日本法院判決，昭和59年(ワ)5473號等，官方掃描",
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "判決理由，PDF第10頁（0-based P9），L543-L548：萬博不足以證明商標全國著名"
+        }
+      ],
+      "note": "萬博先於權利爭議且店已擴張；法院不承認僅由萬博可證全國商標著名，避免此推論。"
+    },
+    {
+      "planning_id": "B18-PC-T03-2",
+      "chapter": "turn",
+      "paragraph_id": "T03",
+      "claim_id": "t11",
+      "scene_id": "turn-s083",
+      "line_ids": [
+        "ba2ba154"
+      ],
+      "exact_spoken_quote": "有些店把繞吧台的輸送帶改成直線，從後場送到用餐區",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "I44",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節1971／1974設備與後期店型段；網頁 L44"
+        }
+      ],
+      "note": "一些新業者開發從後場出餐的直線輸送帶；不是所有店。"
+    },
+    {
+      "planning_id": "B18-PC-T04-1",
+      "chapter": "turn",
+      "paragraph_id": "T04",
+      "claim_id": "t12",
+      "scene_id": "turn-s086",
+      "line_ids": [
+        "ed0c5c6c"
+      ],
+      "exact_spoken_quote": "把魚料從漁民或漁協直接買來",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "I43",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節1978／新業者／採購段；網頁 L43"
+        }
+      ],
+      "note": "部分業者改直接向漁民或漁協進貨。"
+    },
+    {
+      "planning_id": "B18-PC-T04-2",
+      "chapter": "turn",
+      "paragraph_id": "T04",
+      "claim_id": "t13",
+      "scene_id": "turn-s087",
+      "line_ids": [
+        "9c345945"
+      ],
+      "exact_spoken_quote": "用不同顏色的盤子標明價位",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "I44",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節1971／1974設備與後期店型段；網頁 L44"
+        }
+      ],
+      "note": "用盤色／裝飾分不同價位。"
+    },
+    {
+      "planning_id": "B18-PC-T04-3",
+      "chapter": "turn",
+      "paragraph_id": "T04",
+      "claim_id": "t14",
+      "scene_id": "turn-s089",
+      "line_ids": [
+        "10565e2b"
+      ],
+      "exact_spoken_quote": "八〇年代中期，郊區出現更大的迴轉壽司店",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "I44",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節1971／1974設備與後期店型段；網頁 L44"
+        },
+        {
+          "key": "S134",
+          "source_title": "石野集團／北日本カコー官方沿革",
+          "url": "https://www.ishino-group.com/history/",
+          "location": "1984年郊區家庭型店記載；網頁 L130-L137"
+        }
+      ],
+      "note": "1980年代中期郊區大店；石野官方也列1984郊區家庭店。"
+    },
+    {
+      "planning_id": "B18-PC-T04-4",
+      "chapter": "turn",
+      "paragraph_id": "T04",
+      "claim_id": "t15",
+      "scene_id": "turn-s090",
+      "line_ids": [
+        "eed19791"
+      ],
+      "exact_spoken_quote": "八〇年代後期，它也成了家庭一起用餐的地方",
+      "existing_source_index": 2,
+      "existing_source_url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+      "existing_fact_index": null,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "I49",
+          "source_title": "公益社團法人發明協會，戰後日本創新100選「回転寿司」",
+          "url": "https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii",
+          "location": "同節1980年代後期家庭客段；網頁 L49"
+        },
+        {
+          "key": "S134",
+          "source_title": "石野集團／北日本カコー官方沿革",
+          "url": "https://www.ishino-group.com/history/",
+          "location": "1984年郊區家庭型店記載；網頁 L130-L137"
+        }
+      ],
+      "note": "發明協會說80年代後期成家庭用餐地；石野官方記1984已有家庭型郊區店，採漸變敘述。"
+    },
+    {
+      "planning_id": "B18-PC-N01-1",
+      "chapter": "now",
+      "paragraph_id": "N01",
+      "claim_id": "n1",
+      "scene_id": "now-s093",
+      "line_ids": [
+        "233e1a3a"
+      ],
+      "exact_spoken_quote": "一九九一年，「迴轉壽司」這個詞收進《廣辭苑》第四版",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 8,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "J1235",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第3段；網頁 L1235"
+        },
+        {
+          "key": "S173",
+          "source_title": "石野集團／北日本カコー官方沿革",
+          "url": "https://www.ishino-group.com/history/",
+          "location": "1991年《廣辭苑》第四版記載；網頁 L165-L173"
+        }
+      ],
+      "note": "1991《廣辭苑》第四版收入，石野官方沿革亦記。"
+    },
+    {
+      "planning_id": "B18-PC-N01-2",
+      "chapter": "now",
+      "paragraph_id": "N01",
+      "claim_id": "n2",
+      "scene_id": "now-s095",
+      "line_ids": [
+        "bb7022f4"
+      ],
+      "exact_spoken_quote": "二〇二一年，日本機械學會把一台一九八五年製造",
+      "existing_source_index": 1,
+      "existing_source_url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+      "existing_fact_index": 8,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "M14",
+          "source_title": "日本機械學會，機械遺產第112號（2021）",
+          "url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+          "location": "頁首認定號及年份；網頁 L14-L16"
+        },
+        {
+          "key": "M20",
+          "source_title": "日本機械學會，機械遺產第112號（2021）",
+          "url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+          "location": "1985年現用機與另存早期板片；網頁 L20"
+        }
+      ],
+      "note": "2021認定，機器製於1985。"
+    },
+    {
+      "planning_id": "B18-PC-N01-3",
+      "chapter": "now",
+      "paragraph_id": "N01",
+      "claim_id": "n3",
+      "scene_id": "now-s095",
+      "line_ids": [
+        "bb7022f4"
+      ],
+      "exact_spoken_quote": "當時仍在元祿壽司堺東店使用的輸送機",
+      "existing_source_index": 1,
+      "existing_source_url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+      "existing_fact_index": 8,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "M20",
+          "source_title": "日本機械學會，機械遺產第112號（2021）",
+          "url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+          "location": "1985年現用機與另存早期板片；網頁 L20"
+        }
+      ],
+      "note": "2021認定時堺東店仍使用該1985機器；不外推今天仍在使用。"
+    },
+    {
+      "planning_id": "B18-PC-N01-4",
+      "chapter": "now",
+      "paragraph_id": "N01",
+      "claim_id": "n4",
+      "scene_id": "now-s096",
+      "line_ids": [
+        "1585ea8b"
+      ],
+      "exact_spoken_quote": "第一百一十二號機械遺產",
+      "existing_source_index": 1,
+      "existing_source_url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+      "existing_fact_index": 8,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "key": "M14",
+          "source_title": "日本機械學會，機械遺產第112號（2021）",
+          "url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+          "location": "頁首認定號及年份；網頁 L14-L16"
+        }
+      ],
+      "note": "機械遺產第112號。"
+    },
+    {
+      "planning_id": "B18-PC-N01-5",
+      "chapter": "now",
+      "paragraph_id": "N01",
+      "claim_id": "n5",
+      "scene_id": "now-s096",
+      "line_ids": [
+        "1585ea8b"
+      ],
+      "exact_spoken_quote": "還有早期那種叫「魚鱗板」的轉彎板片",
+      "existing_source_index": 1,
+      "existing_source_url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+      "existing_fact_index": 8,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "TRANSLATION_NOTE",
+      "evidence": [
+        {
+          "key": "M20",
+          "source_title": "日本機械學會，機械遺產第112號（2021）",
+          "url": "https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html",
+          "location": "1985年現用機與另存早期板片；網頁 L20"
+        },
+        {
+          "key": "J1212",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「町工場の経営者が協力」第1段；網頁 L1212"
+        }
+      ],
+      "note": "機械學會指另由元祿產業保存的早期うろこ／三日月板片；不是1985機上零件。魚鱗板是中文說明。"
+    },
+    {
+      "planning_id": "B18-PC-N02-1",
+      "chapter": "now",
+      "paragraph_id": "N02",
+      "claim_id": "n6",
+      "scene_id": "now-s098",
+      "line_ids": [
+        "99e3065a"
+      ],
+      "exact_spoken_quote": "二〇二二年市場規模是七千兩百五十二億日圓",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 9,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "ATTRIBUTION_REQUIRED",
+      "evidence": [
+        {
+          "key": "J1234",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1234"
+        }
+      ],
+      "note": "2023年J-Net21轉述富士經濟之2022年7252億日圓數；原調查未取得，需保持轉述。"
+    },
+    {
+      "planning_id": "B18-PC-N02-2",
+      "chapter": "now",
+      "paragraph_id": "N02",
+      "claim_id": "n7",
+      "scene_id": "now-s098",
+      "line_ids": [
+        "99e3065a",
+        "4de7a6df"
+      ],
+      "exact_spoken_quote": "二〇二三年超過七千五百億，是當時的預估",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 9,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "ATTRIBUTION_REQUIRED",
+      "evidence": [
+        {
+          "key": "J1234",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "同節第2段；網頁 L1234"
+        }
+      ],
+      "note": "超過7500億為2023年當時預估，非實績或2026現值。"
+    },
+    {
+      "planning_id": "B18-PC-N03-1",
+      "chapter": "now",
+      "paragraph_id": "N03",
+      "claim_id": "n8",
+      "scene_id": "now-s101b",
+      "line_ids": [
+        "c7894785"
+      ],
+      "exact_spoken_quote": "二〇二三年的報導記下，日本已有四千多家迴轉壽司店",
+      "existing_source_index": 0,
+      "existing_source_url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "existing_fact_index": 9,
+      "worker_verdict_unchanged": "UNCHECKED",
+      "audit_verdict": "ATTRIBUTION_REQUIRED",
+      "evidence": [
+        {
+          "key": "J1242",
+          "source_title": "J-Net21 / 中小企業基盤整備機構，元祿產業報導（2023-11-13）",
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "「今も変わらぬコンベア機」第1段；網頁 L1242"
+        }
+      ],
+      "note": "超過4000店是2023年J-Net21當時報導，不能當今天店數。"
+    }
+  ]
+}

@@ -54,3 +54,27 @@ were EPERM rename from a temporary journal file to its final JSON; stacks name
 core/paths.mjs:60, tts/speech-journal.mjs:77 and :318. No targeted rerun or cause
 determination was made in the localization task. Earlier atomic-write fixes are
 already done, but these new failures remain unverified follow-up work.
+
+### 2026-10-16 additional docs-video reproduction
+
+While validating the five brand-story document package in worktree `8a78`, the
+bundled Windows Node runtime returned exit 1 from `test:docs-videos`: 215 tests,
+214 passed, one failed. The failing test was
+`docs/videos/curio-five-recuts-20261012/speech.test.mjs:101`,
+`audio check uses cached transcripts/Jev and binds the aligned outputs without claiming owner approval`.
+Its mock `zh-TW/audio/speech-journal/<hash>.json.<pid>.tmp` rename to `<hash>.json`
+failed with `EPERM` (`errno -4048`). The stack was `core/paths.mjs:60 atomicWrite`,
+`tts/speech-journal.mjs:77 durableWrite`, and `:318 sendOnce`.
+
+A single isolated rerun using `node --test --test-name-pattern
+"audio check uses cached transcripts/Jev"
+docs/videos/curio-five-recuts-20261012/speech.test.mjs` also exited 1 with the same
+stack, this time under the mock `ko/audio/speech-journal` directory. This is a
+second observed failure, not a passing retry; the lock holder and root cause
+remain unknown. No production provider or journal was used, and no implementation
+change was made. Add this exact test path to scope before a repair touches it.
+
+Evidence retained locally under
+`%TEMP%/a01-switchable-cc-20261015-1421/five-next/`:
+`docs-videos-check.log` and `docs-videos-failed-case-rerun.log`.
+The follow-up stays open; this note only adds reproduction evidence.

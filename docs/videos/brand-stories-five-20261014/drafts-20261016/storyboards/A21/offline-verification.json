@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "status": "LOCAL_STRUCTURAL_CHECKS_NOT_PRODUCTION_APPROVAL",
+  "command": [
+    "node",
+    ".agents/skills/animation-camera/scripts/shot_reading.mjs",
+    "offline-shot-reading-input.json",
+    "--json",
+    "--strict"
+  ],
+  "working_directory": "this storyboard preparation directory",
+  "node": "v24.19.0",
+  "tool_pin": {
+    "base": "repository_root",
+    "file": ".agents/skills/animation-camera/scripts/shot_reading.mjs",
+    "sha256": "aaedca31944308a5fd43497cea1a0ec4308a7be7b8e870b18a74217f478cf7b0"
+  },
+  "exit_code": 0,
+  "stderr_empty": true,
+  "source_pins_unchanged": true,
+  "paragraph_ids_order_and_utf16_contiguity": true,
+  "all_47_active_paragraphs_verbatim": true,
+  "original_46_other_paragraphs_unchanged": true,
+  "original_ids_and_order_preserved": true,
+  "v1_preparation_files_preserved": true,
+  "narration_changes": 1,
+  "changed_paragraph": "T06",
+  "claim_review_status": "AUTHOR_CLARIFICATION_PENDING_INDEPENDENT_RECHECK",
+  "source_CID_map": "33 claims to 6 active zero-based source indices; paragraph scope preserved",
+  "shots": 89,
+  "illustrations": 78,
+  "cards": 11,
+  "unique_planned_images": 75,
+  "hook_exact_prompt_camera_asset_reuse_pairs": 3,
+  "all_cards_scope_source_present": true,
+  "no_internal_fetch_status_on_cards": true,
+  "end_screen_last_16_seconds_reserved": true,
+  "shot_reading": {
+    "shots": 78,
+    "traps": 0,
+    "by_kind": {}
+  },
+  "official_cli_output_sha256": "0235d0eef49fd00a191ec79ae8689250183457d05ce134622ecf2ebdd7622cdd",
+  "storyboard_sha256": "a5fab1e0e5932c34ed64e2731e2f40aafbea608dd57856758963ba4f117ccba3",
+  "no_tts_or_media_generated": true,
+  "paid_calls": 0,
+  "external_network_calls": 0,
+  "scope_note": "This runs local parsing/structural checks only. No content review, model judge, TTS measurement, image acceptance, production gate, or publication is implied."
+}

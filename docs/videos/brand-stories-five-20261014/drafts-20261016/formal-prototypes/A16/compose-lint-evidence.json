@@ -1,0 +1,556 @@
+{
+  "status": "SYNTHETIC_OFFLINE_FORMAT_EVIDENCE_NOT_PRODUCTION_APPROVAL",
+  "result": "story-five-costco-hot-dog: the merged story fails lint in hook, origin, idea, engine, now; the writer fixes them chapter by chapter",
+  "source_files_count": 44,
+  "source_files_unchanged": true,
+  "paragraphs": 50,
+  "narration_lines": 95,
+  "spoken_units": 1995,
+  "paragraphs_exact_reconstruction": true,
+  "full_concatenation_exact": true,
+  "paragraph_offsets_complete_no_overlap": true,
+  "scenes": 83,
+  "illustrated_stills": 67,
+  "cards": 16,
+  "active_claim_rows": 68,
+  "all_claims_unchecked": true,
+  "multi_source_rows_deliberately_null": [
+    "h7",
+    "e10",
+    "e11",
+    "t1",
+    "t2",
+    "t13",
+    "t14",
+    "n12",
+    "n13"
+  ],
+  "multi_fact_rows_deliberately_null": [
+    "h7",
+    "e10",
+    "e11",
+    "t1",
+    "t2"
+  ],
+  "source_cids": 28,
+  "source_indices_unchanged": true,
+  "must_verify_unchanged": true,
+  "loops": 9,
+  "full_payoff_windows_preserved_in_mapping": true,
+  "card_fields_exact": true,
+  "card_adapter": {
+    "native_template": "title",
+    "original_strings_visible_in_html": true,
+    "pixel_layout_checked": false
+  },
+  "image_prompts_and_camera_exact": true,
+  "planned_reuse_pairs": [
+    {
+      "original": {
+        "setup": 6,
+        "recovery": 12,
+        "setup_paragraph": "H4",
+        "recovery_paragraphs": [
+          "O2"
+        ],
+        "reason": "同一飛機棚倉儲圖回收會員賣場起點",
+        "setup_shot": "A16-S006",
+        "recovery_shot": "A16-S012",
+        "asset_key": "a16-hook-reuse-6"
+      },
+      "preview_scene": "hook-006",
+      "later_scene": "origin-012",
+      "synthetic_seed1_request_equal": true,
+      "synthetic_seed1_cache_key": "5049328fe03b0d31",
+      "actual_accepted_file_equal": null,
+      "limitation": "Native cache can reuse equal requests. Separate per-scene judge/retake choices can diverge; asset-key sidecar alone does not enforce final same-file identity."
+    },
+    {
+      "original": {
+        "setup": 7,
+        "recovery": 41,
+        "setup_paragraph": "H5",
+        "recovery_paragraphs": [
+          "E1"
+        ],
+        "reason": "同一自家工廠圖回收供應方式改變",
+        "setup_shot": "A16-S007",
+        "recovery_shot": "A16-S041",
+        "asset_key": "a16-hook-reuse-7"
+      },
+      "preview_scene": "hook-007",
+      "later_scene": "engine-041",
+      "synthetic_seed1_request_equal": true,
+      "synthetic_seed1_cache_key": "9b6a14de97adb7ff",
+      "actual_accepted_file_equal": null,
+      "limitation": "Native cache can reuse equal requests. Separate per-scene judge/retake choices can diverge; asset-key sidecar alone does not enforce final same-file identity."
+    },
+    {
+      "original": {
+        "setup": 8,
+        "recovery": 60,
+        "setup_paragraph": "H6",
+        "recovery_paragraphs": [
+          "T4"
+        ],
+        "reason": "同一空白帳本與雙文件盤圖回收第二行收入；hook不生成名稱或數字",
+        "setup_shot": "A16-S008",
+        "recovery_shot": "A16-S060",
+        "asset_key": "a16-hook-reuse-8"
+      },
+      "preview_scene": "hook-008",
+      "later_scene": "turn-060",
+      "synthetic_seed1_request_equal": true,
+      "synthetic_seed1_cache_key": "90464843f0018020",
+      "actual_accepted_file_equal": null,
+      "limitation": "Native cache can reuse equal requests. Separate per-scene judge/retake choices can diverge; asset-key sidecar alone does not enforce final same-file identity."
+    }
+  ],
+  "actual_shot_reading": {
+    "shots": 67,
+    "traps": 0,
+    "by_kind": {}
+  },
+  "writer_answer_parser": {
+    "hook": {
+      "accepted": false,
+      "problem": "scenes[2] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "origin": {
+      "accepted": false,
+      "problem": "scenes[1] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "idea": {
+      "accepted": false,
+      "problem": "scenes[0] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "engine": {
+      "accepted": false,
+      "problem": "scenes[0] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "turn": {
+      "accepted": false,
+      "problem": "scenes[1] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    },
+    "now": {
+      "accepted": false,
+      "problem": "scenes[0] is a \"title\": a story's scene is a shot (the last chapter ends with an outro card)"
+    }
+  },
+  "lint": {
+    "errors": [
+      {
+        "path": "scenes[0].lines[0] (a160001)",
+        "message": "\"Costco\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[6].lines[0] (a160007)",
+        "message": "\"Costco\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[9].lines[0] (a16000a)",
+        "message": "\"Price\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[9].lines[0] (a16000a)",
+        "message": "\"Club\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[10].lines[0] (a16000b)",
+        "message": "\"Costco\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[17].lines[0] (a16000l)",
+        "message": "\"Jim\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[17].lines[0] (a16000l)",
+        "message": "\"Sinegal\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[17].lines[0] (a16000l)",
+        "message": "\"Price\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[17].lines[0] (a16000l)",
+        "message": "\"Club\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[21].lines[0] (a16000q)",
+        "message": "\"Costco\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[22].lines[0] (a16000r)",
+        "message": "\"Sinegal\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[22].lines[0] (a16000r)",
+        "message": "\"Jeff\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[22].lines[0] (a16000r)",
+        "message": "\"Brotman\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[22].lines[0] (a16000r)",
+        "message": "\"Costco\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[27].lines[0] (a16000x)",
+        "message": "\"Costco\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[31].lines[0] (a160011)",
+        "message": "\"Costco\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[31].lines[0] (a160011)",
+        "message": "\"Price\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[31].lines[0] (a160011)",
+        "message": "\"Club\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[38].lines[0] (a160019)",
+        "message": "\"NPR\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[39].lines[0] (a16001a)",
+        "message": "\"Hebrew\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[39].lines[0] (a16001a)",
+        "message": "\"National\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[40].lines[0] (a16001b)",
+        "message": "\"Costco\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[42].lines[0] (a16001d)",
+        "message": "\"Costco\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[46].lines[0] (a16001h)",
+        "message": "\"NPR\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[46].lines[0] (a16001h)",
+        "message": "\"Craig\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[46].lines[0] (a16001h)",
+        "message": "\"Jelinek\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[47].lines[0] (a16001i)",
+        "message": "\"Sinegal\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[50].lines[0] (a16001m)",
+        "message": "\"Fox\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[77].lines[0] (a16002h)",
+        "message": "\"Costco\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      },
+      {
+        "path": "scenes[80].lines[0] (a16002l)",
+        "message": "\"Costco\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+      }
+    ],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"generic\" is in 67 of 67 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"face\" is in 37 of 67 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"expression\" is in 30 of 67 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.median: median shot 6.8 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.p90: 90th percentile shot 8.5 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-002, hook-004, hook-005, hook-006, hook-007, hook-008, origin-012, origin-013, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.longest: longest shot 9.4 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-005, origin-015, origin-017, origin-019, origin-021, engine-052, turn-067, turn-068, … 10) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft pace.spread: long shots against short ones (90th ÷ 10th percentile) 1.5, target ≥ 2; every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-001, hook-002) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.opening30: shots that start in the first 30 s 4, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.median: median line length 21 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.long: lines over 20 characters 52%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-002, hook-004, hook-005, hook-006, hook-007, hook-008, origin-012, origin-013, … 40) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.face: faces (medium close-up and closer, over-the-shoulder) 37%, target ≥ 40%; the audience follows a face; give each turn of the scene a face that reacts (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft size.insert: inserts 0%, target 5%–25%; an insert answers a story question (which paper, whose hand); too few hides the proof, too many hides the people (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-001, hook-002, hook-004, hook-005, hook-006, hook-007, hook-008, hook-009, … 67) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.run: such shots in a row 67 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-001, hook-002, hook-004, hook-005, hook-006, hook-007, hook-008, hook-009, … 67) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-001, hook-002, hook-004) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft risk.decorative: shots with nobody in them that are not inserts 73% (49), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (hook-001, hook-002, hook-005, hook-007, hook-008, origin-010, origin-013, origin-014, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "craft risk.text_first: cards (title, chapter, quote …) against the shots 16 of 83 scenes, 19% of the time, target ≤ 2 cards, or ≤ 10% of the time; a drama is told in pictures: say it in a shot, with a line over it (hook-003, origin-011, idea-023, idea-033, engine-039, engine-047, turn-056, turn-057, … 16) (.agents/skills/youtube-video/references/drama-craft.md)"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 00:59 and 02:30 (91 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "no open loop between 02:43 and 04:16 (92 s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every 90 s (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "youtube",
+        "message": "youtube.tags: 12 tags; package keeps the first 10, so put the zh-TW terms and the English product names first"
+      },
+      {
+        "path": "thumbnail",
+        "message": "the headline repeats the title: 「熱狗40年」 is in the title's first 10 characters; say what the title does not"
+      }
+    ],
+    "summary": {
+      "minutes": 9.455,
+      "lines": 95,
+      "spoken_units": 1995,
+      "billable_characters": 7153,
+      "chapters": [
+        "00:00 一塊五還在價目表上",
+        "00:59 飛機棚先開了門",
+        "02:30 少一些選擇，做大一個循環",
+        "04:16 價牌沒動，供應方式先動",
+        "06:01 兩行收入，不能讀成一筆補貼",
+        "07:49 下一次續費，才輪到會員回答"
+      ]
+    }
+  },
+  "cute_story_problems": [],
+  "timing": {
+    "basis": "Official estimateTimeline, default CPM and automatic line-boundary timing; not TTS measured.",
+    "total_body_estimated_seconds": 567.3,
+    "chapter_estimates": [
+      {
+        "title": "一塊五還在價目表上",
+        "seconds": 59.233
+      },
+      {
+        "title": "飛機棚先開了門",
+        "seconds": 91.667
+      },
+      {
+        "title": "少一些選擇，做大一個循環",
+        "seconds": 105.1
+      },
+      {
+        "title": "價牌沒動，供應方式先動",
+        "seconds": 105.133
+      },
+      {
+        "title": "兩行收入，不能讀成一筆補貼",
+        "seconds": 108.567
+      },
+      {
+        "title": "下一次續費，才輪到會員回答",
+        "seconds": 97.6
+      }
+    ],
+    "max_scene_seconds": 9.4,
+    "editorial_units": 2114,
+    "official_units": 1995,
+    "count_differences": [
+      {
+        "paragraph_id": "H1",
+        "editorial": 42,
+        "official": 37,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "H2",
+        "editorial": 44,
+        "official": 43,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "H5",
+        "editorial": 32,
+        "official": 28,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "H6",
+        "editorial": 25,
+        "official": 24,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "O1",
+        "editorial": 42,
+        "official": 33,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "O6",
+        "editorial": 54,
+        "official": 43,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "O8",
+        "editorial": 37,
+        "official": 33,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "I1",
+        "editorial": 46,
+        "official": 30,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "I4",
+        "editorial": 56,
+        "official": 52,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "I6",
+        "editorial": 52,
+        "official": 43,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "E1",
+        "editorial": 74,
+        "official": 57,
+        "zero_circles": 2
+      },
+      {
+        "paragraph_id": "E2",
+        "editorial": 49,
+        "official": 45,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "E5",
+        "editorial": 60,
+        "official": 45,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "E10",
+        "editorial": 26,
+        "official": 19,
+        "zero_circles": 0
+      },
+      {
+        "paragraph_id": "T1",
+        "editorial": 48,
+        "official": 47,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "N1",
+        "editorial": 55,
+        "official": 54,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "N5",
+        "editorial": 52,
+        "official": 51,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "N7",
+        "editorial": 55,
+        "official": 50,
+        "zero_circles": 1
+      },
+      {
+        "paragraph_id": "N9",
+        "editorial": 42,
+        "official": 38,
+        "zero_circles": 0
+      }
+    ],
+    "editorial_narration_only_seconds_250cpm": 507.36,
+    "editorial_narration_only_seconds_230cpm": 551.4782608695652,
+    "body_definition": "All six narrated chapters including hook; excludes branding. Official timing contains default line and scene gaps, and is not actual TTS.",
+    "actual_TTS_seconds": null,
+    "added_manual_pauses": 0
+  },
+  "branding": {
+    "default_intro_placement": "after_first_chapter",
+    "planned_intro_seconds": 5,
+    "planned_outro_seconds": 21,
+    "final_link_zone_seconds": 16,
+    "actual_asset_hashes": null,
+    "silent_bookends_not_added_as_fake_spoken_scenes": true
+  },
+  "subtitles_burn_in": false,
+  "synthetic_voice_only": true,
+  "synthetic_music_disabled": true,
+  "gates": {
+    "actual_verifier": "PENDING",
+    "actual_listener": "PENDING",
+    "actual_narrative": "PENDING",
+    "pilot": "PENDING",
+    "media": "NOT_STARTED",
+    "upload": "NOT_AUTHORIZED_BY_THIS_PROTOTYPE"
+  },
+  "external_calls": 0,
+  "media_calls": 0,
+  "repo_writes": 0,
+  "host_writes": 0
+}

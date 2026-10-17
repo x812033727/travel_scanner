@@ -1,6 +1,14 @@
-# A21 五集版輸入｜來源與變更
+# A21 目前輸入證據
 
-- 母檔：[A21.json](../../story-plans/brand-stories-100/stories/A21.json)；對應 [獨立審稿](../../story-plans/brand-stories-100/reviews/A21.json) 綁定的 `story_sha256` 為 `35f8de6e6f2c5ecbd56931a801aec89d58f663168a9f335882ba5d21e3eec34b`。
-- [五集版 row](A21.json) 從已編譯的原 100 題 row 複製 `sources`、`must_verify`、`names`、`cast`、`caveats` 等，另設集數 5、新 slug `story-five-pringles-vat-case`、第 5 天中午時段；六個 `chapters.point` 按[10 分鐘 treatment](../A21-pringles.md)重排，將 2007、2008、2009 年三回合各留明確章節。
-- 敘事邊界：1966 年是專利**申請**、1970 年是核准文本；核准文本容許切片或麵團，不能推回當年上市配方。英國案件只審 2004 年秋後 Regular Pringles；2008 年是寶僑暫勝，2009 年由 HMRC 上訴獲勝。稅額只說判決所載律師估算，與寶僑稱已保護性繳稅分開。
-- 五集版六章另由 [A21 新審稿](reviews/A21.json)逐句核對來源，`story_sha256=2e9cda60de361f4d72d8e9d0fcae00ef377391c717a8f982fb3a37d40f96b507`、`reviewProblems=[]`。已與其餘四題編成[五集本機輸入](../stories.json)，原母題庫 hash 並未拿來冒充新審稿。正式站尚未 dry-run、apply、生成或上傳；逐字稿及媒體仍須另過查核與品管。
+2026-10-16。本頁索引目前已整合的 worker 輸入及獨立 row review。它們不是正式 worker 章稿、敘事 panel、媒體或站主看片收據；沒有正式站匯入。舊版本頁與其他原始輸入已按精確 bytes 保存於 [前版備份](../drafts-20261016/previous-worker-inputs-20261015/sha256.json)。
+
+| ID | Row SHA-256 | Review SHA-256 | Story hash |
+| --- | --- | --- | --- |
+| [A21](A21.json) | `6adaed7d0b4df750a6edd8bd075b65df18f4f984945bfb49c569574cb0fc3476` | `ea11c8e93f50b3beba7b4aeccc1037ee67a8cbb890ebbced82b557fab3d29321` | `4f7c0a0864dbf5f4659d4f07915990d13013bff9f44faf9d6b3d32497d5753f7` |
+
+## 全稿對照與來源
+
+- [全文 v3](../drafts-20261016/source-refresh-and-outline-A21.md)：47 段、2,281 字、33 claims；[v3 獨立覆核](../drafts-20261016/A21-v3-independent-diff-review.md)解決前版 R1–R5，新增原判決主張 C30–C33。
+- [Row 對照](../drafts-20261016/worker-inputs-20261016/A21-change-map.json)10 組覆蓋 33 CIDs；[另一位審者的 row 審查](../drafts-20261016/worker-inputs-20261016/A21-independent-row-review.md)綁目前 row hash。
+- 專利提供馬鈴薯薄片／麵團等替代做法，不當實際商品配方。涉案範圍限 2004 秋後 Pringles Regular。2008 判決是 made-from-potato 理由讓公司勝訴，similarity 只是在假設條件下要求另審，不能說該項已判定不像洋芋片。2009 最終 HMRC 勝；估額與公司所稱已繳分別歸屬。2025 判決日期與公開日期分開，不宣稱品客重判免稅。
+- 六來源 reader HTTP 200／可讀；部分 reader 回傳有截斷，原判決全文另經人工實讀。reviewer_only 為空。[讀取紀錄](../drafts-20261016/worker-inputs-20261016/fetch-A37-B14-A21.json)不等於逐字正式章稿已通過真 worker。

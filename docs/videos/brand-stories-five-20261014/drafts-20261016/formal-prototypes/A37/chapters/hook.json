@@ -1,0 +1,195 @@
+{
+  "key": "hook",
+  "title": "兩個名字寫在同一份登記上",
+  "scenes": [
+    {
+      "id": "hook-001",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a German registry desk in 1924, one generic clerk places a blank company folder beside two plain sports shoes, attentive face, soft window light",
+        "camera": "Close-up, push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "a370001",
+          "text": "一九二四年七月一日，德國黑措根奧拉赫，達斯勒兄弟把共同鞋廠登記下來。"
+        }
+      ]
+    },
+    {
+      "id": "hook-002",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a small shoe workshop, one generic shoemaker aligns two pairs of plain shoes on one workbench, thoughtful expression, mild lamp light",
+        "camera": "Medium shot, pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "a370002",
+          "text": "哥哥魯道夫、弟弟阿迪，兩個名字，現在屬於同一家公司。"
+        }
+      ]
+    },
+    {
+      "id": "hook-003",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an early German laundry room, one generic young shoemaker stitches a plain shoe at a small table beside folded washing, focused face, overcast window light",
+        "camera": "Wide shot, pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "a370003",
+          "text": "此前，阿迪已經在母親的洗衣間做過鞋。"
+        },
+        {
+          "id": "a370004",
+          "text": "二十四年後，"
+        }
+      ]
+    },
+    {
+      "id": "hook-004",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a converted family building in 1948, one generic worker carries a shoe-making toolbox toward a new workbench, attentive face, diffuse doorway light",
+        "camera": "Wide shot, pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "a370005",
+          "text": "哥哥搬進另一棟家族建築，帶著一群員工，準備掛上自己的名字。"
+        }
+      ]
+    },
+    {
+      "id": "hook-005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a registry counter in 1949, one generic clerk slides a blank company folder into an open document tray, concentrated expression, soft desk light",
+        "camera": "Medium close-up, push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "a370006",
+          "text": "隔年，弟弟也完成新的公司登記。兩個招牌都留在這座鎮上，競爭開始走出工廠。"
+        }
+      ]
+    },
+    {
+      "id": "hook-006",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a small football field in 2009, one generic adult supporter holds a plain scarf above an empty bench, questioning face, soft overcast light",
+        "camera": "Medium shot, pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "a370007",
+          "text": "六十年後，兩家公司的人站上同一座球場，這次該替哪一邊加油？"
+        }
+      ]
+    },
+    {
+      "id": "hook-007",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a modest German town street, one generic pedestrian carries a plain shoe box past two unmarked workshop doorways, curious expression, grey daylight",
+        "camera": "Wide shot, tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "a370008",
+          "text": "一家兄弟鞋廠，究竟怎麼走成兩個品牌，連小鎮的日常也跟著選邊？"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "h1",
+      "claim": "一九二四年七月一日，德國黑措根奧拉赫，達斯勒兄弟把共同鞋廠登記下來。",
+      "scene": "hook-001",
+      "source": null,
+      "fact": 2,
+      "verdict": "UNCHECKED",
+      "note": "作者格式映射待實際查核；原段 H01；CID C01；候選來源索引 0,2。同段若跨鏡，claim 保留完整原段以供上下文查核，並非新增旁白。"
+    },
+    {
+      "id": "h2",
+      "claim": "哥哥魯道夫、弟弟阿迪，兩個名字，現在屬於同一家公司。此前，阿迪已經在母親的洗衣間做過鞋。",
+      "scene": "hook-002",
+      "source": null,
+      "fact": null,
+      "verdict": "UNCHECKED",
+      "note": "作者格式映射待實際查核；原段 H02；CID C02；候選來源索引 1,2。同段若跨鏡，claim 保留完整原段以供上下文查核，並非新增旁白。"
+    },
+    {
+      "id": "h3",
+      "claim": "哥哥魯道夫、弟弟阿迪，兩個名字，現在屬於同一家公司。此前，阿迪已經在母親的洗衣間做過鞋。",
+      "scene": "hook-003",
+      "source": null,
+      "fact": null,
+      "verdict": "UNCHECKED",
+      "note": "作者格式映射待實際查核；原段 H02；CID C02；候選來源索引 1,2。同段若跨鏡，claim 保留完整原段以供上下文查核，並非新增旁白。"
+    },
+    {
+      "id": "h4",
+      "claim": "二十四年後，哥哥搬進另一棟家族建築，帶著一群員工，準備掛上自己的名字。",
+      "scene": "hook-003",
+      "source": 2,
+      "fact": 2,
+      "verdict": "UNCHECKED",
+      "note": "作者格式映射待實際查核；原段 H03；CID C03；候選來源索引 2。同段若跨鏡，claim 保留完整原段以供上下文查核，並非新增旁白。"
+    },
+    {
+      "id": "h5",
+      "claim": "二十四年後，哥哥搬進另一棟家族建築，帶著一群員工，準備掛上自己的名字。",
+      "scene": "hook-004",
+      "source": 2,
+      "fact": 2,
+      "verdict": "UNCHECKED",
+      "note": "作者格式映射待實際查核；原段 H03；CID C03；候選來源索引 2。同段若跨鏡，claim 保留完整原段以供上下文查核，並非新增旁白。"
+    },
+    {
+      "id": "h6",
+      "claim": "隔年，弟弟也完成新的公司登記。兩個招牌都留在這座鎮上，競爭開始走出工廠。",
+      "scene": "hook-005",
+      "source": 9,
+      "fact": 3,
+      "verdict": "UNCHECKED",
+      "note": "作者格式映射待實際查核；原段 H04；CID C04；候選來源索引 9。同段若跨鏡，claim 保留完整原段以供上下文查核，並非新增旁白。"
+    },
+    {
+      "id": "h7",
+      "claim": "六十年後，兩家公司的人站上同一座球場，這次該替哪一邊加油？",
+      "scene": "hook-006",
+      "source": 4,
+      "fact": 9,
+      "verdict": "UNCHECKED",
+      "note": "作者格式映射待實際查核；原段 H05；CID C05；候選來源索引 4。同段若跨鏡，claim 保留完整原段以供上下文查核，並非新增旁白。"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "a370005",
+      "what": "哥哥搬廠，口頭回呼再補十五名員工"
+    },
+    {
+      "setup": "a370006",
+      "what": "弟弟新登記，口頭回呼並補日期與名稱"
+    },
+    {
+      "setup": "a370007",
+      "what": "同場該替誰加油，最後才揭黑白混隊與7:5"
+    }
+  ],
+  "thumbnail_shot": "hook-001"
+}

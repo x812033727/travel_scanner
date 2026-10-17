@@ -1,0 +1,4748 @@
+{
+  "schema": "editorial-storyboard-prep-v1",
+  "status": "EDITORIAL_PREPARATION_ONLY_NOT_FORMAL_CHAPTERS",
+  "id": "A16",
+  "slug": "story-five-costco-hot-dog",
+  "title": "熱狗 40 年不漲價，Costco 靠什麼賺錢？",
+  "source_pins": [
+    {
+      "kind": "original_fullscript",
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/source-refresh-and-outline-A16.md",
+      "sha256": "66d164291d3d4af356bc92b5c0ad16ed8ef3831f9365c6e43989d207c30ed8f1"
+    },
+    {
+      "kind": "active_worker_row",
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-five-20261014/episodes/A16.json",
+      "sha256": "361a0572ac6cdc4774905c5bcd86fb909e6742a50fa195d5766b0325e3faa7b8"
+    },
+    {
+      "kind": "independent_worker_row_review",
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-five-20261014/episodes/reviews/A16.json",
+      "sha256": "b58038cea2600dece820986845d8b460491be932da6f2478c87a711694f78639"
+    },
+    {
+      "kind": "corrected_metrics",
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/corrected-metrics-20261016.json",
+      "sha256": "e930a6d2654379103803f43014f9237996c0d6d2ff8035f702fa0e82787f82a7"
+    },
+    {
+      "kind": "integration_manifest",
+      "base": "repository_root",
+      "file": "docs/videos/brand-stories-five-20261014/drafts-20261016/worker-inputs-20261016/integration-verification.json",
+      "sha256": "5059c002d2876a26ab55857b50b874bc1ee8286adfaa5791b14f13314da2afdb"
+    }
+  ],
+  "active_narration_sha256": "989370a5aee1517a791f16cece9604663e9b8d14949f34475b566cb4132b1bb7",
+  "original_fullscript_sha256": "66d164291d3d4af356bc92b5c0ad16ed8ef3831f9365c6e43989d207c30ed8f1",
+  "adaptations": [],
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "image_model": "image-01",
+  "subtitles": {
+    "burn_in": false,
+    "zh_TW_CC": "switchable"
+  },
+  "narration_policy": "Original IDs retained. Text unchanged except explicit adaptation manifest if present. Cuts preserve continuous speech; diagnostic IDs are not production line IDs.",
+  "source_boundaries": [
+    "美國 US$1.50；只指 2026-10-16 查閱官網，不是全球或永久承諾。",
+    "2008 自營工廠來源是 NPR；2018 是事後回憶的發表年，原對話日期未知，不把拒漲狠話當建廠起因。",
+    "FY2025 是截至 2025-08-31 的特定年度算例；FY2026 已出，新 active S6 是 SEC Exhibit 99.1，舊全文 S6 入口只作歷史基準。",
+    "2699.12 + 53.23 − 2398.86 − 249.66 = 103.83 億美元。53.23/103.83 ≈ 51.3% 只比較量級，沒有會員成本分攤，也不算熱狗補貼。",
+    "81.0m paid members 含少量過期未續；92.3% 只指美加的公司期間續約算法，不是全球／當天持卡人的比率。",
+    "完整合答只在 N9；每份熱狗今日損益仍無此包可用的獨立數據。"
+  ],
+  "hook_visual_reuse": [
+    {
+      "setup": 6,
+      "recovery": 12,
+      "setup_paragraph": "H4",
+      "recovery_paragraphs": [
+        "O2"
+      ],
+      "reason": "同一飛機棚倉儲圖回收會員賣場起點",
+      "setup_shot": "A16-S006",
+      "recovery_shot": "A16-S012",
+      "asset_key": "a16-hook-reuse-6"
+    },
+    {
+      "setup": 7,
+      "recovery": 41,
+      "setup_paragraph": "H5",
+      "recovery_paragraphs": [
+        "E1"
+      ],
+      "reason": "同一自家工廠圖回收供應方式改變",
+      "setup_shot": "A16-S007",
+      "recovery_shot": "A16-S041",
+      "asset_key": "a16-hook-reuse-7"
+    },
+    {
+      "setup": 8,
+      "recovery": 60,
+      "setup_paragraph": "H6",
+      "recovery_paragraphs": [
+        "T4"
+      ],
+      "reason": "同一空白帳本與雙文件盤圖回收第二行收入；hook不生成名稱或數字",
+      "setup_shot": "A16-S008",
+      "recovery_shot": "A16-S060",
+      "asset_key": "a16-hook-reuse-8"
+    }
+  ],
+  "image_binding_policy": "Pairs must bind one accepted image file/hash. Equal prompt, camera, preset, model, size, seed and cast/references are required for cache identity; no cache hit is claimed before assets exist.",
+  "chapters": [
+    {
+      "key": "hook",
+      "paragraph_ids": [
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5",
+        "H6",
+        "H7"
+      ],
+      "shot_ids": [
+        "A16-S001",
+        "A16-S002",
+        "A16-S003",
+        "A16-S004",
+        "A16-S005",
+        "A16-S006",
+        "A16-S007",
+        "A16-S008",
+        "A16-S009"
+      ],
+      "units": 220,
+      "active_worker_point": "2024年五月，新財務長Gary Millerchip首次季度財報電話會議澄清漲價傳聞，說美國US$1.50熱狗套餐價格安全，這是1980年代中期沿用的價格。成本不會因此消失。預告三個未解時刻：1976聖地牙哥飛機棚開出會員賣場、後來Costco開始自營熱狗工廠、2025年報兩行收入。停在這門生意如何撐住；先不揭會員費或比例答案，五秒片頭後接飛機棚。"
+    },
+    {
+      "key": "origin",
+      "paragraph_ids": [
+        "O1",
+        "O2",
+        "O3",
+        "O4",
+        "O5",
+        "O6",
+        "O7",
+        "O8"
+      ],
+      "shot_ids": [
+        "A16-S010",
+        "A16-S011",
+        "A16-S012",
+        "A16-S013",
+        "A16-S014",
+        "A16-S015",
+        "A16-S016",
+        "A16-S017",
+        "A16-S018",
+        "A16-S019",
+        "A16-S020",
+        "A16-S021",
+        "A16-S022"
+      ],
+      "units": 346,
+      "active_worker_point": "接住飛機棚：1976開的是Price Club，當時Costco還沒開店。依公司沿革，聖地牙哥改建飛機棚起初服務小企業，納入部分非商業會員後增加購買力量。用一般採買示意解釋集中需求，不虛構顧客證詞。Sinegal在Price Club負責商品、配送、行銷，大採購還要接上成交與回頭客；七年後，這份經驗帶到西雅圖，Costco才登場。"
+    },
+    {
+      "key": "idea",
+      "paragraph_ids": [
+        "I1",
+        "I2",
+        "I3",
+        "I4",
+        "I5",
+        "I6",
+        "I7",
+        "I8",
+        "I9"
+      ],
+      "shot_ids": [
+        "A16-S023",
+        "A16-S024",
+        "A16-S025",
+        "A16-S026",
+        "A16-S027",
+        "A16-S028",
+        "A16-S029",
+        "A16-S030",
+        "A16-S031",
+        "A16-S032",
+        "A16-S033",
+        "A16-S034",
+        "A16-S035",
+        "A16-S036",
+        "A16-S037",
+        "A16-S038"
+      ],
+      "units": 397,
+      "active_worker_point": "1983年Sinegal與Jeff Brotman共同創辦Costco，西雅圖首店開門。大賣場為何少品項？用集中採購示意接年報對有限選擇、低價、大銷量、快周轉與有效配送的說明，不把今天精確品項數倒填1983。1993與Price Club合併，官方列206據點、年銷售160億美元，會員倉儲網路擴大。但套餐價格被留在原地，成本要從櫃台後面的供應方式處理。"
+    },
+    {
+      "key": "engine",
+      "paragraph_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E10",
+        "E11",
+        "E12"
+      ],
+      "shot_ids": [
+        "A16-S039",
+        "A16-S040",
+        "A16-S041",
+        "A16-S042",
+        "A16-S043",
+        "A16-S044",
+        "A16-S045",
+        "A16-S046",
+        "A16-S047",
+        "A16-S048",
+        "A16-S049",
+        "A16-S050",
+        "A16-S051",
+        "A16-S052",
+        "A16-S053",
+        "A16-S054"
+      ],
+      "units": 411,
+      "active_worker_point": "回收自家工廠：NPR記述早期供應商Hebrew National，2008年Costco開始經營自己的熱狗工廠，降低供應鏈成本；自製仍要設備、原料、人手。再問為何如此在意價牌，NPR引述Jelinek在2018年的回憶：Sinegal曾放話漲價就要殺了他；原對話日期未知，不能硬接2008建廠原因。Fox Business另轉述自製後有合理回報；這些不是今天逐份損益。接下來要問整間賣場為何重視低價。"
+    },
+    {
+      "key": "turn",
+      "paragraph_ids": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T6",
+        "T7",
+        "T9",
+        "T10"
+      ],
+      "shot_ids": [
+        "A16-S055",
+        "A16-S056",
+        "A16-S057",
+        "A16-S058",
+        "A16-S059",
+        "A16-S060",
+        "A16-S061",
+        "A16-S062",
+        "A16-S063",
+        "A16-S064",
+        "A16-S065",
+        "A16-S066",
+        "A16-S067",
+        "A16-S068",
+        "A16-S069"
+      ],
+      "units": 386,
+      "active_worker_point": "承接價牌，打開截至2025-08-31的FY2025年報，這不是最新年度。商品銷售2699.12億美元減商品成本2398.86億剩300.26億，還要扣249.66億銷售一般管理費用；回收開場第二行收入：會員費53.23億。兩收入扣兩費用得營業利益103.83億。會員費除以營業利益約51.3%，只比較量級，不做成本分攤，不是半數利潤或熱狗補貼；旁白依全文取整，精確值留畫面。這筆收入如何持續，轉向會員明年是否續費。"
+    },
+    {
+      "key": "now",
+      "paragraph_ids": [
+        "N1",
+        "N2",
+        "N3",
+        "N5",
+        "N7",
+        "N9",
+        "N10",
+        "N11"
+      ],
+      "shot_ids": [
+        "A16-S070",
+        "A16-S071",
+        "A16-S072",
+        "A16-S073",
+        "A16-S074",
+        "A16-S075",
+        "A16-S076",
+        "A16-S077",
+        "A16-S078",
+        "A16-S079",
+        "A16-S080",
+        "A16-S081",
+        "A16-S082",
+        "A16-S083"
+      ],
+      "units": 354,
+      "active_worker_point": "同一FY2025年報列8100萬付費會員，含少量過期未續；美加續約率92.3%是公司期間算法，不是年底全體持卡人的即期比例。年報說會員成長／續約影響獲利，美加年費曾於2024年9月調整；套餐不漲不等於所有收費凍結。2026年10月查閱美國官網仍列US$1.50套餐，不保證未來。最後三句合答：自製管理成本、願續費的會員使低價有商業理由；問觀眾是否因熟悉低價再次續會；邀請訂閱。之後21秒片尾，不預告下集。"
+    }
+  ],
+  "bookends": [
+    {
+      "id": "intro",
+      "duration_seconds": 5,
+      "after_shot": "A16-S009",
+      "asset": "Existing approved channel intro, hash to bind later",
+      "narration": "none"
+    },
+    {
+      "id": "outro",
+      "duration_seconds": 21,
+      "after_shot": "A16-S083",
+      "asset": "Existing approved v4-endscreen, hash to bind later",
+      "narration": "none",
+      "links": "Actual existing-video/subscription end-screen targets pending upload package; no next-episode spoken teaser"
+    }
+  ],
+  "look_plans": [
+    {
+      "id": "generic_warehouse_worker",
+      "purpose": "飛機棚與倉儲的貨物流動以一般職員串接；不是 Sinegal 或任何真實人物肖像。"
+    },
+    {
+      "id": "generic_customer",
+      "purpose": "開場與收尾的一般用餐會員可維持同一素色外套、無字會員卡；不是受訪者或當年的顧客證詞。"
+    }
+  ],
+  "loops": [
+    {
+      "setup": [
+        "H4"
+      ],
+      "payoff": [
+        "O4",
+        "O6",
+        "I1"
+      ],
+      "purpose": "飛機棚 → 會員倉儲與商品流通經驗"
+    },
+    {
+      "setup": [
+        "H5"
+      ],
+      "payoff": [
+        "E1",
+        "E2"
+      ],
+      "purpose": "自家工廠 → 供應方式與成本管理，保留 NPR 歸屬"
+    },
+    {
+      "setup": [
+        "H6"
+      ],
+      "payoff": [
+        "T2",
+        "T4",
+        "T5"
+      ],
+      "purpose": "兩行收入 → 商品與會員費並排，但不當單品補貼"
+    },
+    {
+      "setup": [
+        "H3",
+        "H7"
+      ],
+      "payoff": [
+        "N9"
+      ],
+      "purpose": "最後才把成本管理與會員低價動機完整合答"
+    },
+    {
+      "setup": [
+        "O5",
+        "I2"
+      ],
+      "payoff": [
+        "I3",
+        "I4"
+      ],
+      "purpose": "少品項、集中量與快周轉"
+    },
+    {
+      "setup": [
+        "E4"
+      ],
+      "payoff": [
+        "E5",
+        "E6"
+      ],
+      "purpose": "明示 NPR 轉述的回憶，不重演未知日期的原對話"
+    },
+    {
+      "setup": [
+        "T6"
+      ],
+      "payoff": [
+        "T7"
+      ],
+      "purpose": "51% 的量級界線"
+    },
+    {
+      "setup": [
+        "T9",
+        "T10"
+      ],
+      "payoff": [
+        "N1",
+        "N2",
+        "N3"
+      ],
+      "purpose": "收入延續連回會員的續費選擇"
+    },
+    {
+      "setup": [
+        "N5"
+      ],
+      "payoff": [
+        "N7",
+        "N9"
+      ],
+      "purpose": "年費曾調整，個別套餐仍在官網價目"
+    }
+  ],
+  "metrics": {
+    "status": "ESTIMATE_ONLY_NO_TTS",
+    "paragraphs": 50,
+    "units": 2114,
+    "original_source_units": 2114,
+    "hook_units": 220,
+    "body_units": 2114,
+    "after_hook_units": 1894,
+    "shots": 83,
+    "illustrations": 67,
+    "cards": 16,
+    "illustration_percentage": 80.72,
+    "max_consecutive_cards": 3,
+    "hook_estimate_seconds": {
+      "at_250_cpm": 52.8,
+      "at_230_cpm": 57.39
+    },
+    "body_estimate_seconds": {
+      "at_250_cpm": 507.36,
+      "at_230_cpm": 551.48
+    },
+    "after_hook_estimate_seconds": {
+      "at_250_cpm": 454.56,
+      "at_230_cpm": 494.09
+    },
+    "narration_estimate_seconds": {
+      "at_250_cpm": 507.36,
+      "at_230_cpm": 551.48
+    },
+    "branding_seconds": 26,
+    "total_estimate_seconds": {
+      "at_250_cpm": 533.36,
+      "at_230_cpm": 577.48
+    },
+    "body_below_8_minutes_at_any_estimated_rate": false,
+    "exceptions_5_to_8_seconds": [
+      {
+        "id": "A16-S001",
+        "units": 19,
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      {
+        "id": "A16-S003",
+        "units": 20,
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      {
+        "id": "A16-S005",
+        "units": 33,
+        "at_250_cpm": 7.92,
+        "at_230_cpm": 8.61
+      },
+      {
+        "id": "A16-S007",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A16-S009",
+        "units": 20,
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      {
+        "id": "A16-S015",
+        "units": 31,
+        "at_250_cpm": 7.44,
+        "at_230_cpm": 8.09
+      },
+      {
+        "id": "A16-S016",
+        "units": 19,
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      {
+        "id": "A16-S019",
+        "units": 31,
+        "at_250_cpm": 7.44,
+        "at_230_cpm": 8.09
+      },
+      {
+        "id": "A16-S021",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A16-S023",
+        "units": 34,
+        "at_250_cpm": 8.16,
+        "at_230_cpm": 8.87
+      },
+      {
+        "id": "A16-S027",
+        "units": 19,
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      {
+        "id": "A16-S031",
+        "units": 19,
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      {
+        "id": "A16-S034",
+        "units": 20,
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      {
+        "id": "A16-S044",
+        "units": 18,
+        "at_250_cpm": 4.32,
+        "at_230_cpm": 4.7
+      },
+      {
+        "id": "A16-S052",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A16-S064",
+        "units": 18,
+        "at_250_cpm": 4.32,
+        "at_230_cpm": 4.7
+      },
+      {
+        "id": "A16-S067",
+        "units": 31,
+        "at_250_cpm": 7.44,
+        "at_230_cpm": 8.09
+      },
+      {
+        "id": "A16-S070",
+        "units": 20,
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      {
+        "id": "A16-S071",
+        "units": 35,
+        "at_250_cpm": 8.4,
+        "at_230_cpm": 9.13
+      },
+      {
+        "id": "A16-S076",
+        "units": 32,
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      {
+        "id": "A16-S077",
+        "units": 20,
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      }
+    ],
+    "body_definition": "All six chapters including hook; excludes 5s intro and 21s outro. after_hook is an analysis subset, not the formal duration gate.",
+    "method": "Same UTF-16 nonpunctuation/nonseparator unit as corrected metrics; Latin letters count individually, so actual speech may differ. Visual cuts do not create narration pauses.",
+    "unique_planned_images": 64,
+    "hook_image_reuse_pairs": 3
+  },
+  "paragraphs": [
+    {
+      "id": "H1",
+      "chapter": "hook",
+      "text": "二〇二四年五月，Costco 的新任財務長，在首次季度財報電話會議上，主動澄清熱狗漲價的傳聞。",
+      "claim_label": "C01/C03，公開發言事件",
+      "source_cids": [
+        "C01",
+        "C03"
+      ],
+      "units": 42
+    },
+    {
+      "id": "H2",
+      "chapter": "hook",
+      "text": "他確認，美國一塊五美元的熱狗套餐價格很安全。這個從一九八〇年代中期留下的價錢，又一次被說了出來。",
+      "claim_label": "C02/C03",
+      "source_cids": [
+        "C02",
+        "C03"
+      ],
+      "units": 44
+    },
+    {
+      "id": "H3",
+      "chapter": "hook",
+      "text": "可是，食物、工廠和員工，都不會因為一句話就不用花錢。這張價牌後面，還藏著什麼？",
+      "claim_label": "常識鋪陳／問題",
+      "source_cids": [],
+      "units": 33
+    },
+    {
+      "id": "H4",
+      "chapter": "hook",
+      "text": "一九七六年，聖地牙哥一座飛機棚，先開出了一家會員賣場。",
+      "claim_label": "C04，預告不解答",
+      "source_cids": [
+        "C04"
+      ],
+      "units": 24
+    },
+    {
+      "id": "H5",
+      "chapter": "hook",
+      "text": "幾十年後，Costco開始經營自己的熱狗工廠。這和那張價牌有什麼關係？",
+      "claim_label": "C12，預告不解答",
+      "source_cids": [
+        "C12"
+      ],
+      "units": 32
+    },
+    {
+      "id": "H6",
+      "chapter": "hook",
+      "text": "再到二〇二五年的年報，兩筆收入會讓整個問題換一個問法。",
+      "claim_label": "C16，預告不解答",
+      "source_cids": [
+        "C16"
+      ],
+      "units": 25
+    },
+    {
+      "id": "H7",
+      "chapter": "hook",
+      "text": "四十年左右不漲價，這門生意究竟是怎麼撐住的？",
+      "claim_label": "主問題",
+      "source_cids": [],
+      "units": 20
+    },
+    {
+      "id": "O1",
+      "chapter": "origin",
+      "text": "那座飛機棚裡開的，叫 Price Club。先記住這個名字，因為一九七六年，Costco 還沒開店。",
+      "claim_label": "C04/C05",
+      "source_cids": [
+        "C04",
+        "C05"
+      ],
+      "units": 42
+    },
+    {
+      "id": "O2",
+      "chapter": "origin",
+      "text": "依公司沿革，它位在聖地牙哥，原本的飛機棚改成了倉儲賣場，最初服務的對象是小企業。",
+      "claim_label": "C04/C06",
+      "source_cids": [
+        "C04",
+        "C06"
+      ],
+      "units": 36
+    },
+    {
+      "id": "O3",
+      "chapter": "origin",
+      "text": "想像你要替店裡補貨，關心的是東西能不能一直買到、價格能不能壓低，不需要每一袋用品都有漂亮的展示櫃。",
+      "claim_label": "原創說明，非真實顧客證詞",
+      "source_cids": [],
+      "units": 45
+    },
+    {
+      "id": "O4",
+      "chapter": "origin",
+      "text": "會員先取得採買資格，賣場再把大量需求集中起來。公司後來發現，把一部分非商業會員也納進來，可以增加採購的力量。",
+      "claim_label": "C07",
+      "source_cids": [
+        "C07"
+      ],
+      "units": 49
+    },
+    {
+      "id": "O5",
+      "chapter": "origin",
+      "text": "人多了，能買的量也變大。但大採購不會自動變成好生意；東西買進來，還得運到對的地方、賣得出去。",
+      "claim_label": "常識因果",
+      "source_cids": [],
+      "units": 40
+    },
+    {
+      "id": "O6",
+      "chapter": "origin",
+      "text": "Jim Sinegal 當時就在 Price Club，負責商品、配送和行銷。這三件事，恰好連著一件商品從進貨到離開貨架的路。",
+      "claim_label": "C08",
+      "source_cids": [
+        "C08"
+      ],
+      "units": 54
+    },
+    {
+      "id": "O7",
+      "chapter": "origin",
+      "text": "他面對的問題，不只是找到便宜供應商。進貨量、倉庫裡的選擇，以及會員下一次還願不願意來，都得接得上。",
+      "claim_label": "依職務與模式的編輯解釋",
+      "source_cids": [],
+      "units": 43
+    },
+    {
+      "id": "O8",
+      "chapter": "origin",
+      "text": "七年後，他把這份經驗帶到西雅圖。這次，賣場門口的名字才變成我們熟悉的 Costco。",
+      "claim_label": "C05/C09",
+      "source_cids": [
+        "C05",
+        "C09"
+      ],
+      "units": 37
+    },
+    {
+      "id": "I1",
+      "chapter": "idea",
+      "text": "一九八三年，Sinegal 和 Jeff Brotman 共同創立 Costco，第一間倉儲店在西雅圖開門。",
+      "claim_label": "C09",
+      "source_cids": [
+        "C09"
+      ],
+      "units": 46
+    },
+    {
+      "id": "I2",
+      "chapter": "idea",
+      "text": "這種賣場有個看起來矛盾的選擇：空間很大，商品卻不是越多越好。少一些品項，到底少掉了什麼？",
+      "claim_label": "C10，懸念",
+      "source_cids": [
+        "C10"
+      ],
+      "units": 39
+    },
+    {
+      "id": "I3",
+      "chapter": "idea",
+      "text": "先拿同一種日用品來想像。如果採購的力氣分散到很多尺寸和款式，每款只買一點，集中買一大批的優勢就會變小。",
+      "claim_label": "編輯示意，非公司採購實測",
+      "source_cids": [],
+      "units": 47
+    },
+    {
+      "id": "I4",
+      "chapter": "idea",
+      "text": "Costco 在年報裡解釋，有限品項配上低價，是為了形成大銷量，讓貨品更快流動。大量採購和有效率的配送，再替這個循環省下成本。",
+      "claim_label": "C10",
+      "source_cids": [
+        "C10"
+      ],
+      "units": 56
+    },
+    {
+      "id": "I5",
+      "chapter": "idea",
+      "text": "所以，低價不能只是一張海報。貨進得來，架上周轉得動，前面少收的那一點，才有機會靠整套做法承受。",
+      "claim_label": "編輯解釋，不稱每件虧損",
+      "source_cids": [],
+      "units": 41
+    },
+    {
+      "id": "I6",
+      "chapter": "idea",
+      "text": "一九九三年，Costco 和 Price Club 合併。官方沿革記載，合併後共有兩百零六個據點，年銷售額一百六十億美元。",
+      "claim_label": "C11",
+      "source_cids": [
+        "C11"
+      ],
+      "units": 52
+    },
+    {
+      "id": "I7",
+      "chapter": "idea",
+      "text": "當年那個飛機棚，接上了更大的採購與銷售網路。故事到這裡，已經能看出倉儲賣場為什麼敢把價格壓低。",
+      "claim_label": "編輯連接",
+      "source_cids": [],
+      "units": 43
+    },
+    {
+      "id": "I8",
+      "chapter": "idea",
+      "text": "可是，熱狗又多了一個限制：商品可以換、採購可以談，這份套餐的售價卻一直被留在原地。",
+      "claim_label": "C02，編輯設問",
+      "source_cids": [
+        "C02"
+      ],
+      "units": 36
+    },
+    {
+      "id": "I9",
+      "chapter": "idea",
+      "text": "當成本往上走，要守住它，就不能只要求櫃台上的價牌別動。真正要動手的地方，在櫃台後面。",
+      "claim_label": "通向工廠",
+      "source_cids": [],
+      "units": 37
+    },
+    {
+      "id": "E1",
+      "chapter": "engine",
+      "text": "開頭提到的自家工廠，正是供應方式的轉變。NPR 報導，早期供應商是 Hebrew National；到了二〇〇八年，Costco 開始經營自己的熱狗工廠，降低供應鏈成本。",
+      "claim_label": "C12/C13，回收H5",
+      "source_cids": [
+        "C12",
+        "C13"
+      ],
+      "units": 74
+    },
+    {
+      "id": "E2",
+      "chapter": "engine",
+      "text": "這一步改變了問題的位置。原來是拿著供應商的報價，回頭想套餐該賣多少；現在，Costco 得自己處理生產這一端。",
+      "claim_label": "編輯解釋",
+      "source_cids": [],
+      "units": 49
+    },
+    {
+      "id": "E3",
+      "chapter": "engine",
+      "text": "工廠也不是免費的。它需要設備、原料和人手，所以「自己做」不等於成本消失，而是把更多能調整的環節放回自己手上。",
+      "claim_label": "一般生產常識／推論",
+      "source_cids": [],
+      "units": 47
+    },
+    {
+      "id": "E4",
+      "chapter": "engine",
+      "text": "為什麼連一份熱狗都要這麼費心？這件事後來有了一段很有名的回憶。",
+      "claim_label": "懸念",
+      "source_cids": [],
+      "units": 29
+    },
+    {
+      "id": "E5",
+      "chapter": "engine",
+      "text": "NPR 引述前執行長 Craig Jelinek 二〇一八年的回憶：他曾提出漲價問題，Sinegal 甚至放話，要是把熱狗漲價，就要殺了他。",
+      "claim_label": "C14，歸屬轉述；不仿真聲音",
+      "source_cids": [
+        "C14"
+      ],
+      "units": 60
+    },
+    {
+      "id": "E6",
+      "chapter": "engine",
+      "text": "這段事後回憶裡，拒絕改價並沒有解決成本問題；它把難題留給經營者：價錢先留著，其他環節要怎麼改？",
+      "claim_label": "C14 的有限解釋，不填對話年月",
+      "source_cids": [
+        "C14"
+      ],
+      "units": 42
+    },
+    {
+      "id": "E10",
+      "chapter": "engine",
+      "text": "Fox Business 也轉述他說，自製之後已有合理回報。",
+      "claim_label": "C15",
+      "source_cids": [
+        "C15"
+      ],
+      "units": 26
+    },
+    {
+      "id": "E11",
+      "chapter": "engine",
+      "text": "這可以補上歷史的一角，卻不是今天每份熱狗的損益表。每賣一份到底剩多少，這些公開資料沒有交出答案。",
+      "claim_label": "C15/C22 的限制",
+      "source_cids": [
+        "C15",
+        "C22"
+      ],
+      "units": 44
+    },
+    {
+      "id": "E12",
+      "chapter": "engine",
+      "text": "但我們還有更大的問題沒解開：就算熱狗成本有辦法管理，整間賣場為什麼要把低價看得這麼重？",
+      "claim_label": "轉入公司層次",
+      "source_cids": [],
+      "units": 40
+    },
+    {
+      "id": "T1",
+      "chapter": "turn",
+      "text": "那張價牌所在的賣場，收入並不只一種。二〇二五財年的年報，把它們各自列了出來；這一年的結算日，是八月三十一日。",
+      "claim_label": "C16，承接價牌",
+      "source_cids": [
+        "C16"
+      ],
+      "units": 48
+    },
+    {
+      "id": "T2",
+      "chapter": "turn",
+      "text": "商品銷售，約兩千七百億美元；商品本身的成本，約兩千四百億。兩個大數相減，剩下約三百億。",
+      "claim_label": "C17，取整說明",
+      "source_cids": [
+        "C17"
+      ],
+      "units": 37
+    },
+    {
+      "id": "T3",
+      "chapter": "turn",
+      "text": "聽起來很多，但這還不是營業利益。賣場要運作，還有銷售、一般與管理費用；那一年，這一欄約兩百五十億美元。",
+      "claim_label": "C18",
+      "source_cids": [
+        "C18"
+      ],
+      "units": 44
+    },
+    {
+      "id": "T4",
+      "chapter": "turn",
+      "text": "和商品銷售並排的另一筆收入，就是開頭提到的第二行：會員費，五十三點二三億美元。",
+      "claim_label": "C19，回收H6",
+      "source_cids": [
+        "C19"
+      ],
+      "units": 35
+    },
+    {
+      "id": "T5",
+      "chapter": "turn",
+      "text": "將商品銷售與會員費合起來，再扣掉剛才那些費用，列出的營業利益是一百零三點八三億美元。",
+      "claim_label": "C20",
+      "source_cids": [
+        "C20"
+      ],
+      "units": 39
+    },
+    {
+      "id": "T6",
+      "chapter": "turn",
+      "text": "畫面上如果把會員費拿來除以營業利益，答案約是百分之五十一。這個比例，讓會員費的量級一下變得很醒目。",
+      "claim_label": "C21",
+      "source_cids": [
+        "C21"
+      ],
+      "units": 45
+    },
+    {
+      "id": "T7",
+      "chapter": "turn",
+      "text": "這比較的是收入和營業利益的量級，沒有替會員服務分攤成本；它算不出哪一半利潤來自會員，更算不出每份熱狗得到多少補貼。",
+      "claim_label": "C21/C22，單一口徑限定",
+      "source_cids": [
+        "C21",
+        "C22"
+      ],
+      "units": 53
+    },
+    {
+      "id": "T9",
+      "chapter": "turn",
+      "text": "這張表讓我們看見的是，公司除了賣東西，也有持續收取會員費的收入來源。要維持這一行，下一個關鍵就藏在續費的人身上。",
+      "claim_label": "C23，下一章問題",
+      "source_cids": [
+        "C23"
+      ],
+      "units": 51
+    },
+    {
+      "id": "T10",
+      "chapter": "turn",
+      "text": "一個人今年交了錢，明年還會不會回來？價目表之外，還有一次選擇，得由會員自己做。",
+      "claim_label": "主線轉移",
+      "source_cids": [],
+      "units": 34
+    },
+    {
+      "id": "N1",
+      "chapter": "now",
+      "text": "同一份二〇二五年報，列出八千一百萬付費會員。這個數字包含少量已過期、尚未續約的會員，不能直接說八千一百萬人當天都還有效。",
+      "claim_label": "C24",
+      "source_cids": [
+        "C24"
+      ],
+      "units": 55
+    },
+    {
+      "id": "N2",
+      "chapter": "now",
+      "text": "公司計算的美國與加拿大續約率，是百分之九十二點三。這是依一段時間的續約紀錄計算，並不是把年底全部持卡人拿來投票。",
+      "claim_label": "C25",
+      "source_cids": [
+        "C25"
+      ],
+      "units": 52
+    },
+    {
+      "id": "N3",
+      "chapter": "now",
+      "text": "公司在年報裡直說，會員成長和續約情況會影響獲利。對這樣的生意來說，讓人願意再回來，本身就是經營要完成的工作。",
+      "claim_label": "C23，來源加有限解釋",
+      "source_cids": [
+        "C23"
+      ],
+      "units": 49
+    },
+    {
+      "id": "N5",
+      "chapter": "now",
+      "text": "而價格也不是全部凍住。美國和加拿大的年費，從二〇二四年九月起有過調整。守住某一份套餐，不等於公司所有收費永遠不動。",
+      "claim_label": "C26",
+      "source_cids": [
+        "C26"
+      ],
+      "units": 52
+    },
+    {
+      "id": "N7",
+      "chapter": "now",
+      "text": "到二〇二六年十月，Costco 美國官網的美食區說明，仍列著一塊五的熱狗加汽水。它證明這項價格還在，卻沒有替未來寫下保證。",
+      "claim_label": "C27，查閱日期字卡 2026-10-16",
+      "source_cids": [
+        "C27"
+      ],
+      "units": 55
+    },
+    {
+      "id": "N9",
+      "chapter": "now",
+      "text": "自製幫忙管理熱狗成本，而願意續費的會員，讓 Costco 持續選擇低價的做法有了商業上的理由。",
+      "claim_label": "首次完整合答；推論 C28",
+      "source_cids": [
+        "C28"
+      ],
+      "units": 42
+    },
+    {
+      "id": "N10",
+      "chapter": "now",
+      "text": "你曾經為了一項熟悉的低價，願意再去同一家店、再續一次會員嗎？",
+      "claim_label": "留言提問",
+      "source_cids": [],
+      "units": 27
+    },
+    {
+      "id": "N11",
+      "chapter": "now",
+      "text": "想看懂熟悉品牌的價格背後怎麼運作，訂閱這個系列。",
+      "claim_label": "訂閱邀請",
+      "source_cids": [],
+      "units": 22
+    }
+  ],
+  "shots": [
+    {
+      "id": "A16-S001",
+      "chapter": "hook",
+      "narration_refs": [
+        {
+          "paragraph_id": "H1",
+          "start_utf16": 0,
+          "end_utf16": 22,
+          "text": "二〇二四年五月，Costco 的新任財務長，",
+          "source_cids": [
+            "C01",
+            "C03"
+          ]
+        }
+      ],
+      "text": "二〇二四年五月，Costco 的新任財務長，",
+      "units": 19,
+      "source_cids": [
+        "C01",
+        "C03"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      "type": "illustrated_still",
+      "visual_function": "以電話會議的資料桌建立公開澄清事件；不扮演財務長",
+      "camera": "Medium shot, push in",
+      "prompt": "Medium shot in a 2024 office, one generic analyst places a blank earnings folder beside a speakerphone, attentive face, soft window light",
+      "visual": "still",
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 0,
+        "at_230_cpm": 0
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      "image_asset_key": "a16-s001-image"
+    },
+    {
+      "id": "A16-S002",
+      "chapter": "hook",
+      "narration_refs": [
+        {
+          "paragraph_id": "H1",
+          "start_utf16": 22,
+          "end_utf16": 47,
+          "text": "在首次季度財報電話會議上，主動澄清熱狗漲價的傳聞。",
+          "source_cids": [
+            "C01",
+            "C03"
+          ]
+        }
+      ],
+      "text": "在首次季度財報電話會議上，主動澄清熱狗漲價的傳聞。",
+      "units": 23,
+      "source_cids": [
+        "C01",
+        "C03"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.52,
+        "at_230_cpm": 6
+      },
+      "type": "illustrated_still",
+      "visual_function": "傳聞與澄清留在旁白，電話不是偽造錄音",
+      "camera": "Close-up, pan left",
+      "prompt": "Close-up at an office desk, one generic listener touches the speakerphone volume dial, curious face above it, mild desk light",
+      "visual": "still",
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 10.08,
+        "at_230_cpm": 10.96
+      },
+      "image_asset_key": "a16-s002-image"
+    },
+    {
+      "id": "A16-S003",
+      "chapter": "hook",
+      "narration_refs": [
+        {
+          "paragraph_id": "H2",
+          "start_utf16": 0,
+          "end_utf16": 22,
+          "text": "他確認，美國一塊五美元的熱狗套餐價格很安全。",
+          "source_cids": [
+            "C02",
+            "C03"
+          ]
+        }
+      ],
+      "text": "他確認，美國一塊五美元的熱狗套餐價格很安全。",
+      "units": 20,
+      "source_cids": [
+        "C02",
+        "C03"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      "type": "number_or_source_card",
+      "visual_function": "美國價格與年份範圍先說清",
+      "card": {
+        "text": "US$1.50",
+        "scope": "美國熱狗＋汽水・2024 年說法",
+        "source": "NPR／OPB 2024-06-04（S3）"
+      },
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 10.08,
+        "at_230_cpm": 10.96
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 14.88,
+        "at_230_cpm": 16.17
+      }
+    },
+    {
+      "id": "A16-S004",
+      "chapter": "hook",
+      "narration_refs": [
+        {
+          "paragraph_id": "H2",
+          "start_utf16": 22,
+          "end_utf16": 48,
+          "text": "這個從一九八〇年代中期留下的價錢，又一次被說了出來。",
+          "source_cids": [
+            "C02",
+            "C03"
+          ]
+        }
+      ],
+      "text": "這個從一九八〇年代中期留下的價錢，又一次被說了出來。",
+      "units": 24,
+      "source_cids": [
+        "C02",
+        "C03"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.76,
+        "at_230_cpm": 6.26
+      },
+      "type": "illustrated_still",
+      "visual_function": "價格延續以當代套餐呈現，不畫四十年前價牌證物",
+      "camera": "Medium shot, pull out",
+      "prompt": "Medium shot at an American warehouse food counter, one generic customer lifts a plain tray holding a hot dog and unmarked soda cup, pleased face, soft overhead light",
+      "visual": "still",
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 14.88,
+        "at_230_cpm": 16.17
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 20.64,
+        "at_230_cpm": 22.43
+      },
+      "image_asset_key": "a16-s004-image"
+    },
+    {
+      "id": "A16-S005",
+      "chapter": "hook",
+      "narration_refs": [
+        {
+          "paragraph_id": "H3",
+          "start_utf16": 0,
+          "end_utf16": 39,
+          "text": "可是，食物、工廠和員工，都不會因為一句話就不用花錢。這張價牌後面，還藏著什麼？",
+          "source_cids": []
+        }
+      ],
+      "text": "可是，食物、工廠和員工，都不會因為一句話就不用花錢。這張價牌後面，還藏著什麼？",
+      "units": 33,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 7.92,
+        "at_230_cpm": 8.61
+      },
+      "type": "illustrated_still",
+      "visual_function": "成本從櫃台後面浮現；不偷揭會員費",
+      "camera": "Wide shot, pan right",
+      "prompt": "Wide shot behind a simple food counter, one generic worker carries a plain ingredient carton toward a preparation bench, serious expression, mild window light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 20.64,
+        "at_230_cpm": 22.43
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 28.56,
+        "at_230_cpm": 31.04
+      },
+      "image_asset_key": "a16-s005-image"
+    },
+    {
+      "id": "A16-S006",
+      "chapter": "hook",
+      "narration_refs": [
+        {
+          "paragraph_id": "H4",
+          "start_utf16": 0,
+          "end_utf16": 27,
+          "text": "一九七六年，聖地牙哥一座飛機棚，先開出了一家會員賣場。",
+          "source_cids": [
+            "C04"
+          ]
+        }
+      ],
+      "text": "一九七六年，聖地牙哥一座飛機棚，先開出了一家會員賣場。",
+      "units": 24,
+      "source_cids": [
+        "C04"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.76,
+        "at_230_cpm": 6.26
+      },
+      "type": "illustrated_still",
+      "visual_function": "飛機棚預告；與S012同圖回收",
+      "camera": "Wide shot, push in",
+      "prompt": "Wide shot inside a converted aircraft hangar in San Diego in 1976, one generic warehouse clerk rolls a carton trolley along tall storage shelves, attentive face, diffuse high-window light",
+      "visual": "still",
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 28.56,
+        "at_230_cpm": 31.04
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 34.32,
+        "at_230_cpm": 37.3
+      },
+      "image_asset_key": "a16-hook-reuse-6",
+      "reuse_binding": {
+        "same_image_as": "A16-S012"
+      }
+    },
+    {
+      "id": "A16-S007",
+      "chapter": "hook",
+      "narration_refs": [
+        {
+          "paragraph_id": "H5",
+          "start_utf16": 0,
+          "end_utf16": 35,
+          "text": "幾十年後，Costco開始經營自己的熱狗工廠。這和那張價牌有什麼關係？",
+          "source_cids": [
+            "C12"
+          ]
+        }
+      ],
+      "text": "幾十年後，Costco開始經營自己的熱狗工廠。這和那張價牌有什麼關係？",
+      "units": 32,
+      "source_cids": [
+        "C12"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      "type": "illustrated_still",
+      "visual_function": "自營工廠預告；與S041同圖回收",
+      "camera": "Medium shot, tilt down",
+      "prompt": "Medium shot in a food factory in 2008, one generic production worker checks a tray of plain sausages beside a simple conveyor, focused face, soft ceiling light",
+      "visual": "still",
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 34.32,
+        "at_230_cpm": 37.3
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 42,
+        "at_230_cpm": 45.65
+      },
+      "image_asset_key": "a16-hook-reuse-7",
+      "reuse_binding": {
+        "same_image_as": "A16-S041"
+      }
+    },
+    {
+      "id": "A16-S008",
+      "chapter": "hook",
+      "narration_refs": [
+        {
+          "paragraph_id": "H6",
+          "start_utf16": 0,
+          "end_utf16": 27,
+          "text": "再到二〇二五年的年報，兩筆收入會讓整個問題換一個問法。",
+          "source_cids": [
+            "C16"
+          ]
+        }
+      ],
+      "text": "再到二〇二五年的年報，兩筆收入會讓整個問題換一個問法。",
+      "units": 25,
+      "source_cids": [
+        "C16"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6,
+        "at_230_cpm": 6.52
+      },
+      "type": "illustrated_still",
+      "visual_function": "兩行收入只露空白帳頁；與S060同圖回收",
+      "camera": "Close-up, pan right",
+      "prompt": "Close-up at a financial reading desk, one generic analyst opens a blank ledger beside two separate plain document trays, curious face above the page, soft table-lamp light",
+      "visual": "still",
+      "source_aliases": [
+        "S2",
+        "S6"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1,
+        5
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 42,
+        "at_230_cpm": 45.65
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 48,
+        "at_230_cpm": 52.17
+      },
+      "image_asset_key": "a16-hook-reuse-8",
+      "reuse_binding": {
+        "same_image_as": "A16-S060"
+      }
+    },
+    {
+      "id": "A16-S009",
+      "chapter": "hook",
+      "narration_refs": [
+        {
+          "paragraph_id": "H7",
+          "start_utf16": 0,
+          "end_utf16": 22,
+          "text": "四十年左右不漲價，這門生意究竟是怎麼撐住的？",
+          "source_cids": []
+        }
+      ],
+      "text": "四十年左右不漲價，這門生意究竟是怎麼撐住的？",
+      "units": 20,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      "type": "illustrated_still",
+      "visual_function": "套餐成為全文的主物件，答案留在正文",
+      "camera": "Medium close-up, pull out",
+      "prompt": "Medium close-up at a warehouse dining table, one generic customer studies a hot dog beside a plain soda cup, puzzled expression, diffuse window light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 48,
+        "at_230_cpm": 52.17
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 52.8,
+        "at_230_cpm": 57.39
+      },
+      "image_asset_key": "a16-s009-image"
+    },
+    {
+      "id": "A16-S010",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O1",
+          "start_utf16": 0,
+          "end_utf16": 30,
+          "text": "那座飛機棚裡開的，叫 Price Club。先記住這個名字，",
+          "source_cids": [
+            "C04",
+            "C05"
+          ]
+        }
+      ],
+      "text": "那座飛機棚裡開的，叫 Price Club。先記住這個名字，",
+      "units": 25,
+      "source_cids": [
+        "C04",
+        "C05"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6,
+        "at_230_cpm": 6.52
+      },
+      "type": "illustrated_still",
+      "visual_function": "回到飛機棚外建立新起點，招牌不生成文字",
+      "camera": "Wide shot, pan left",
+      "prompt": "Wide shot outside a converted aircraft hangar in 1976, one generic shopkeeper approaches the open loading entrance with an empty trolley, curious face, overcast light",
+      "visual": "still",
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 57.8,
+        "at_230_cpm": 62.39
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 63.8,
+        "at_230_cpm": 68.91
+      },
+      "image_asset_key": "a16-s010-image"
+    },
+    {
+      "id": "A16-S011",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O1",
+          "start_utf16": 30,
+          "end_utf16": 50,
+          "text": "因為一九七六年，Costco 還沒開店。",
+          "source_cids": [
+            "C04",
+            "C05"
+          ]
+        },
+        {
+          "paragraph_id": "O2",
+          "start_utf16": 0,
+          "end_utf16": 14,
+          "text": "依公司沿革，它位在聖地牙哥，",
+          "source_cids": [
+            "C04",
+            "C06"
+          ]
+        }
+      ],
+      "text": "因為一九七六年，Costco 還沒開店。依公司沿革，它位在聖地牙哥，",
+      "units": 29,
+      "source_cids": [
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.96,
+        "at_230_cpm": 7.57
+      },
+      "type": "number_or_source_card",
+      "visual_function": "兩家公司時間分開，避免1976誤稱Costco首店",
+      "card": {
+        "text": "1976",
+        "scope": "Price Club・聖地牙哥",
+        "source": "Costco 公司沿革（S1）"
+      },
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 63.8,
+        "at_230_cpm": 68.91
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 70.76,
+        "at_230_cpm": 76.48
+      }
+    },
+    {
+      "id": "A16-S012",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O2",
+          "start_utf16": 14,
+          "end_utf16": 40,
+          "text": "原本的飛機棚改成了倉儲賣場，最初服務的對象是小企業。",
+          "source_cids": [
+            "C04",
+            "C06"
+          ]
+        }
+      ],
+      "text": "原本的飛機棚改成了倉儲賣場，最初服務的對象是小企業。",
+      "units": 24,
+      "source_cids": [
+        "C04",
+        "C06"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.76,
+        "at_230_cpm": 6.26
+      },
+      "type": "illustrated_still",
+      "visual_function": "飛機棚回收、第一次看清倉儲與小企業採買",
+      "camera": "Wide shot, push in",
+      "prompt": "Wide shot inside a converted aircraft hangar in San Diego in 1976, one generic warehouse clerk rolls a carton trolley along tall storage shelves, attentive face, diffuse high-window light",
+      "visual": "still",
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 70.76,
+        "at_230_cpm": 76.48
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 76.52,
+        "at_230_cpm": 82.74
+      },
+      "image_asset_key": "a16-hook-reuse-6",
+      "reuse_binding": {
+        "same_image_as": "A16-S006"
+      }
+    },
+    {
+      "id": "A16-S013",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O3",
+          "start_utf16": 0,
+          "end_utf16": 32,
+          "text": "想像你要替店裡補貨，關心的是東西能不能一直買到、價格能不能壓低，",
+          "source_cids": []
+        }
+      ],
+      "text": "想像你要替店裡補貨，關心的是東西能不能一直買到、價格能不能壓低，",
+      "units": 29,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.96,
+        "at_230_cpm": 7.57
+      },
+      "type": "illustrated_still",
+      "visual_function": "一般小店補貨的想像，不充當真實顧客證詞",
+      "camera": "Medium shot, tilt down",
+      "prompt": "Medium shot in a small shop storeroom, one generic shopkeeper checks a nearly empty shelf with a blank list, practical expression, mild window light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 76.52,
+        "at_230_cpm": 82.74
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 83.48,
+        "at_230_cpm": 90.3
+      },
+      "image_asset_key": "a16-s013-image"
+    },
+    {
+      "id": "A16-S014",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O3",
+          "start_utf16": 32,
+          "end_utf16": 49,
+          "text": "不需要每一袋用品都有漂亮的展示櫃。",
+          "source_cids": []
+        },
+        {
+          "paragraph_id": "O4",
+          "start_utf16": 0,
+          "end_utf16": 10,
+          "text": "會員先取得採買資格，",
+          "source_cids": [
+            "C07"
+          ]
+        }
+      ],
+      "text": "不需要每一袋用品都有漂亮的展示櫃。會員先取得採買資格，",
+      "units": 25,
+      "source_cids": [
+        "C07"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6,
+        "at_230_cpm": 6.52
+      },
+      "type": "illustrated_still",
+      "visual_function": "從不重展示接採買資格，無字會員卡作識別",
+      "camera": "Medium close-up, pan right",
+      "prompt": "Medium close-up at a warehouse entrance counter, one generic customer raises a plain membership card beside a simple trolley, expectant face, soft overhead light",
+      "visual": "still",
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 83.48,
+        "at_230_cpm": 90.3
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 89.48,
+        "at_230_cpm": 96.83
+      },
+      "image_asset_key": "a16-s014-image"
+    },
+    {
+      "id": "A16-S015",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O4",
+          "start_utf16": 10,
+          "end_utf16": 44,
+          "text": "賣場再把大量需求集中起來。公司後來發現，把一部分非商業會員也納進來，",
+          "source_cids": [
+            "C07"
+          ]
+        }
+      ],
+      "text": "賣場再把大量需求集中起來。公司後來發現，把一部分非商業會員也納進來，",
+      "units": 31,
+      "source_cids": [
+        "C07"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 7.44,
+        "at_230_cpm": 8.09
+      },
+      "type": "illustrated_still",
+      "visual_function": "集中多種需求以成批箱貨解釋，不畫未證人潮數",
+      "camera": "Wide shot, pull out",
+      "prompt": "Wide shot in a warehouse loading area, one generic receiver positions a large stack of plain cartons beside a low pallet, focused expression, grey doorway light",
+      "visual": "still",
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 89.48,
+        "at_230_cpm": 96.83
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 96.92,
+        "at_230_cpm": 104.91
+      },
+      "image_asset_key": "a16-s015-image"
+    },
+    {
+      "id": "A16-S016",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O4",
+          "start_utf16": 44,
+          "end_utf16": 54,
+          "text": "可以增加採購的力量。",
+          "source_cids": [
+            "C07"
+          ]
+        },
+        {
+          "paragraph_id": "O5",
+          "start_utf16": 0,
+          "end_utf16": 12,
+          "text": "人多了，能買的量也變大。",
+          "source_cids": []
+        }
+      ],
+      "text": "可以增加採購的力量。人多了，能買的量也變大。",
+      "units": 19,
+      "source_cids": [
+        "C07"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      "type": "illustrated_still",
+      "visual_function": "數量集中成單一批次，與前鏡貨物延續",
+      "camera": "Close-up, push in",
+      "prompt": "Close-up beside a pallet, one generic warehouse clerk fastens a plain strap around a stack of cartons, attentive face partly visible, soft ceiling light",
+      "visual": "still",
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 96.92,
+        "at_230_cpm": 104.91
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 101.48,
+        "at_230_cpm": 109.87
+      },
+      "image_asset_key": "a16-s016-image"
+    },
+    {
+      "id": "A16-S017",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O5",
+          "start_utf16": 12,
+          "end_utf16": 46,
+          "text": "但大採購不會自動變成好生意；東西買進來，還得運到對的地方、賣得出去。",
+          "source_cids": []
+        }
+      ],
+      "text": "但大採購不會自動變成好生意；東西買進來，還得運到對的地方、賣得出去。",
+      "units": 30,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 7.2,
+        "at_230_cpm": 7.83
+      },
+      "type": "illustrated_still",
+      "visual_function": "採購之後還需送貨與成交，物件開始移動",
+      "camera": "Wide shot, pan left",
+      "prompt": "Wide shot at a loading bay, one generic driver guides a carton trolley toward an open delivery van, focused face, overcast daylight",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 101.48,
+        "at_230_cpm": 109.87
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 108.68,
+        "at_230_cpm": 117.7
+      },
+      "image_asset_key": "a16-s017-image"
+    },
+    {
+      "id": "A16-S018",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O6",
+          "start_utf16": 0,
+          "end_utf16": 28,
+          "text": "Jim Sinegal 當時就在 Price Club，",
+          "source_cids": [
+            "C08"
+          ]
+        }
+      ],
+      "text": "Jim Sinegal 當時就在 Price Club，",
+      "units": 23,
+      "source_cids": [
+        "C08"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.52,
+        "at_230_cpm": 6
+      },
+      "type": "illustrated_still",
+      "visual_function": "職務歸屬由旁白說；圖中是一般職員而非Sinegal肖像",
+      "camera": "Medium shot, pull out",
+      "prompt": "Medium shot in a late-1970s warehouse office, one generic coordinator opens a plain goods folder beside a shelf of sample boxes, thoughtful face, mild lamp light",
+      "visual": "still",
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 108.68,
+        "at_230_cpm": 117.7
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 114.2,
+        "at_230_cpm": 123.7
+      },
+      "image_asset_key": "a16-s018-image"
+    },
+    {
+      "id": "A16-S019",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O6",
+          "start_utf16": 28,
+          "end_utf16": 63,
+          "text": "負責商品、配送和行銷。這三件事，恰好連著一件商品從進貨到離開貨架的路。",
+          "source_cids": [
+            "C08"
+          ]
+        }
+      ],
+      "text": "負責商品、配送和行銷。這三件事，恰好連著一件商品從進貨到離開貨架的路。",
+      "units": 31,
+      "source_cids": [
+        "C08"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 7.44,
+        "at_230_cpm": 8.09
+      },
+      "type": "illustrated_still",
+      "visual_function": "一件貨從進貨到上架，連接商品配送行銷",
+      "camera": "Wide shot, tilt down",
+      "prompt": "Wide shot along a warehouse aisle, one generic employee transfers a plain carton from a trolley to a shelf, purposeful expression, diffuse overhead light",
+      "visual": "still",
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 114.2,
+        "at_230_cpm": 123.7
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 121.64,
+        "at_230_cpm": 131.78
+      },
+      "image_asset_key": "a16-s019-image"
+    },
+    {
+      "id": "A16-S020",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O7",
+          "start_utf16": 0,
+          "end_utf16": 29,
+          "text": "他面對的問題，不只是找到便宜供應商。進貨量、倉庫裡的選擇，",
+          "source_cids": []
+        }
+      ],
+      "text": "他面對的問題，不只是找到便宜供應商。進貨量、倉庫裡的選擇，",
+      "units": 25,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6,
+        "at_230_cpm": 6.52
+      },
+      "type": "illustrated_still",
+      "visual_function": "採購的取捨聚焦同類貨物，不只看單價",
+      "camera": "Medium close-up, pan right",
+      "prompt": "Medium close-up at a stock-planning bench, one generic buyer compares two plain sample boxes with a blank order sheet, thoughtful face, soft window light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 121.64,
+        "at_230_cpm": 131.78
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 127.64,
+        "at_230_cpm": 138.3
+      },
+      "image_asset_key": "a16-s020-image"
+    },
+    {
+      "id": "A16-S021",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O7",
+          "start_utf16": 29,
+          "end_utf16": 49,
+          "text": "以及會員下一次還願不願意來，都得接得上。",
+          "source_cids": []
+        },
+        {
+          "paragraph_id": "O8",
+          "start_utf16": 0,
+          "end_utf16": 16,
+          "text": "七年後，他把這份經驗帶到西雅圖。",
+          "source_cids": [
+            "C05",
+            "C09"
+          ]
+        }
+      ],
+      "text": "以及會員下一次還願不願意來，都得接得上。七年後，他把這份經驗帶到西雅圖。",
+      "units": 32,
+      "source_cids": [
+        "C05",
+        "C09"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      "type": "illustrated_still",
+      "visual_function": "回頭客接下一座城市，保留匿名示意",
+      "camera": "Medium shot, push in",
+      "prompt": "Medium shot near a warehouse exit, one generic customer folds an empty reusable bag beside a plain trolley, content expression, grey daylight through the door",
+      "visual": "still",
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 127.64,
+        "at_230_cpm": 138.3
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 135.32,
+        "at_230_cpm": 146.65
+      },
+      "image_asset_key": "a16-s021-image"
+    },
+    {
+      "id": "A16-S022",
+      "chapter": "origin",
+      "narration_refs": [
+        {
+          "paragraph_id": "O8",
+          "start_utf16": 16,
+          "end_utf16": 42,
+          "text": "這次，賣場門口的名字才變成我們熟悉的 Costco。",
+          "source_cids": [
+            "C05",
+            "C09"
+          ]
+        }
+      ],
+      "text": "這次，賣場門口的名字才變成我們熟悉的 Costco。",
+      "units": 23,
+      "source_cids": [
+        "C05",
+        "C09"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.52,
+        "at_230_cpm": 6
+      },
+      "type": "illustrated_still",
+      "visual_function": "西雅圖新店外觀建立，不生成招牌或實際建築複製",
+      "camera": "Wide shot, pull out",
+      "prompt": "Wide shot outside a generic warehouse store in Seattle in 1983, one generic worker raises an unmarked entrance shutter, hopeful expression, overcast morning light",
+      "visual": "still",
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 135.32,
+        "at_230_cpm": 146.65
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 140.84,
+        "at_230_cpm": 152.65
+      },
+      "image_asset_key": "a16-s022-image"
+    },
+    {
+      "id": "A16-S023",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I1",
+          "start_utf16": 0,
+          "end_utf16": 41,
+          "text": "一九八三年，Sinegal 和 Jeff Brotman 共同創立 Costco，",
+          "source_cids": [
+            "C09"
+          ]
+        }
+      ],
+      "text": "一九八三年，Sinegal 和 Jeff Brotman 共同創立 Costco，",
+      "units": 34,
+      "source_cids": [
+        "C09"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 8.16,
+        "at_230_cpm": 8.87
+      },
+      "type": "number_or_source_card",
+      "visual_function": "共同創辦兩人與成立年度由後製名稱卡交代",
+      "card": {
+        "text": "1983",
+        "scope": "Jim Sinegal・Jeff Brotman／Costco",
+        "source": "官方公司沿革（S1）"
+      },
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 140.84,
+        "at_230_cpm": 152.65
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 149,
+        "at_230_cpm": 161.52
+      }
+    },
+    {
+      "id": "A16-S024",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I1",
+          "start_utf16": 41,
+          "end_utf16": 54,
+          "text": "第一間倉儲店在西雅圖開門。",
+          "source_cids": [
+            "C09"
+          ]
+        },
+        {
+          "paragraph_id": "I2",
+          "start_utf16": 0,
+          "end_utf16": 15,
+          "text": "這種賣場有個看起來矛盾的選擇：",
+          "source_cids": [
+            "C10"
+          ]
+        }
+      ],
+      "text": "第一間倉儲店在西雅圖開門。這種賣場有個看起來矛盾的選擇：",
+      "units": 26,
+      "source_cids": [
+        "C09",
+        "C10"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.24,
+        "at_230_cpm": 6.78
+      },
+      "type": "illustrated_still",
+      "visual_function": "大空間與有限選擇同框，問題自然出現",
+      "camera": "Wide shot, pan left",
+      "prompt": "Wide shot inside a spacious warehouse store, one generic customer pauses beside shelves holding a few kinds of plain bulk packages, curious expression, soft skylight",
+      "visual": "still",
+      "source_aliases": [
+        "S1",
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0,
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 149,
+        "at_230_cpm": 161.52
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 155.24,
+        "at_230_cpm": 168.3
+      },
+      "image_asset_key": "a16-s024-image"
+    },
+    {
+      "id": "A16-S025",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I2",
+          "start_utf16": 15,
+          "end_utf16": 44,
+          "text": "空間很大，商品卻不是越多越好。少一些品項，到底少掉了什麼？",
+          "source_cids": [
+            "C10"
+          ]
+        }
+      ],
+      "text": "空間很大，商品卻不是越多越好。少一些品項，到底少掉了什麼？",
+      "units": 25,
+      "source_cids": [
+        "C10"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6,
+        "at_230_cpm": 6.52
+      },
+      "type": "illustrated_still",
+      "visual_function": "少品項是採購選擇，不是缺貨或空店",
+      "camera": "Medium shot, push in",
+      "prompt": "Medium shot at a well-stocked warehouse shelf, one generic buyer selects one plain package from a neat repeating row, focused face, mild overhead light",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 155.24,
+        "at_230_cpm": 168.3
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 161.24,
+        "at_230_cpm": 174.83
+      },
+      "image_asset_key": "a16-s025-image"
+    },
+    {
+      "id": "A16-S026",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I3",
+          "start_utf16": 0,
+          "end_utf16": 30,
+          "text": "先拿同一種日用品來想像。如果採購的力氣分散到很多尺寸和款式，",
+          "source_cids": []
+        }
+      ],
+      "text": "先拿同一種日用品來想像。如果採購的力氣分散到很多尺寸和款式，",
+      "units": 28,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.72,
+        "at_230_cpm": 7.3
+      },
+      "type": "illustrated_still",
+      "visual_function": "同一用品的多款式作一般採購示意",
+      "camera": "Medium close-up, tilt down",
+      "prompt": "Medium close-up at a buying desk, one generic planner spreads several differently sized plain sample boxes across a small tray, puzzled expression, soft window light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 161.24,
+        "at_230_cpm": 174.83
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 167.96,
+        "at_230_cpm": 182.13
+      },
+      "image_asset_key": "a16-s026-image"
+    },
+    {
+      "id": "A16-S027",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I3",
+          "start_utf16": 30,
+          "end_utf16": 51,
+          "text": "每款只買一點，集中買一大批的優勢就會變小。",
+          "source_cids": []
+        }
+      ],
+      "text": "每款只買一點，集中買一大批的優勢就會變小。",
+      "units": 19,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      "type": "illustrated_still",
+      "visual_function": "每款少量的分散形狀對比下一鏡集中，沒有杜撰折扣",
+      "camera": "Close-up, pull out",
+      "prompt": "Close-up at the same buying desk, one generic planner lifts a small stack of plain packages from one of several separate trays, thoughtful face, mild lamp light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 167.96,
+        "at_230_cpm": 182.13
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 172.52,
+        "at_230_cpm": 187.09
+      },
+      "image_asset_key": "a16-s027-image"
+    },
+    {
+      "id": "A16-S028",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I4",
+          "start_utf16": 0,
+          "end_utf16": 32,
+          "text": "Costco 在年報裡解釋，有限品項配上低價，是為了形成大銷量，",
+          "source_cids": [
+            "C10"
+          ]
+        }
+      ],
+      "text": "Costco 在年報裡解釋，有限品項配上低價，是為了形成大銷量，",
+      "units": 28,
+      "source_cids": [
+        "C10"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.72,
+        "at_230_cpm": 7.3
+      },
+      "type": "illustrated_still",
+      "visual_function": "集中一款成批進貨，配合年報模式而非倒填1983品項數",
+      "camera": "Medium shot, pan right",
+      "prompt": "Medium shot in a warehouse receiving area, one generic buyer checks a large pallet of matching plain packages, attentive face, diffuse doorway light",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 172.52,
+        "at_230_cpm": 187.09
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 179.24,
+        "at_230_cpm": 194.39
+      },
+      "image_asset_key": "a16-s028-image"
+    },
+    {
+      "id": "A16-S029",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I4",
+          "start_utf16": 32,
+          "end_utf16": 63,
+          "text": "讓貨品更快流動。大量採購和有效率的配送，再替這個循環省下成本。",
+          "source_cids": [
+            "C10"
+          ]
+        }
+      ],
+      "text": "讓貨品更快流動。大量採購和有效率的配送，再替這個循環省下成本。",
+      "units": 28,
+      "source_cids": [
+        "C10"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.72,
+        "at_230_cpm": 7.3
+      },
+      "type": "illustrated_still",
+      "visual_function": "商品快流動，以物流動作接續同批貨",
+      "camera": "Wide shot, push in",
+      "prompt": "Wide shot along a warehouse corridor, one generic employee steers a loaded trolley toward the store floor, focused expression, soft ceiling light",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 179.24,
+        "at_230_cpm": 194.39
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 185.96,
+        "at_230_cpm": 201.7
+      },
+      "image_asset_key": "a16-s029-image"
+    },
+    {
+      "id": "A16-S030",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I5",
+          "start_utf16": 0,
+          "end_utf16": 26,
+          "text": "所以，低價不能只是一張海報。貨進得來，架上周轉得動，",
+          "source_cids": []
+        }
+      ],
+      "text": "所以，低價不能只是一張海報。貨進得來，架上周轉得動，",
+      "units": 22,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.28,
+        "at_230_cpm": 5.74
+      },
+      "type": "illustrated_still",
+      "visual_function": "前端貨架確實補上，價格不是孤立口號",
+      "camera": "Medium shot, tilt down",
+      "prompt": "Medium shot beside a warehouse shelf, one generic stocker slides a plain carton into a newly cleared shelf space, purposeful face, mild overhead light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 185.96,
+        "at_230_cpm": 201.7
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 191.24,
+        "at_230_cpm": 207.43
+      },
+      "image_asset_key": "a16-s030-image"
+    },
+    {
+      "id": "A16-S031",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I5",
+          "start_utf16": 26,
+          "end_utf16": 47,
+          "text": "前面少收的那一點，才有機會靠整套做法承受。",
+          "source_cids": []
+        }
+      ],
+      "text": "前面少收的那一點，才有機會靠整套做法承受。",
+      "units": 19,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 4.56,
+        "at_230_cpm": 4.96
+      },
+      "type": "illustrated_still",
+      "visual_function": "整套作法支持低價；不畫每件虧錢",
+      "camera": "Medium close-up, pan left",
+      "prompt": "Medium close-up at a checkout lane, one generic customer places a bulk package on the counter, relaxed expression, an unmarked price stand beside it, soft store light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 191.24,
+        "at_230_cpm": 207.43
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 195.8,
+        "at_230_cpm": 212.39
+      },
+      "image_asset_key": "a16-s031-image"
+    },
+    {
+      "id": "A16-S032",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I6",
+          "start_utf16": 0,
+          "end_utf16": 29,
+          "text": "一九九三年，Costco 和 Price Club 合併。",
+          "source_cids": [
+            "C11"
+          ]
+        }
+      ],
+      "text": "一九九三年，Costco 和 Price Club 合併。",
+      "units": 23,
+      "source_cids": [
+        "C11"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.52,
+        "at_230_cpm": 6
+      },
+      "type": "illustrated_still",
+      "visual_function": "合併用兩組貨物流入同一倉儲示意，沒有假握手會議",
+      "camera": "Wide shot, pull out",
+      "prompt": "Wide shot at a warehouse receiving dock in 1993, one generic receiver guides a pallet toward a bay containing two groups of plain cartons, focused face, overcast light",
+      "visual": "still",
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 195.8,
+        "at_230_cpm": 212.39
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 201.32,
+        "at_230_cpm": 218.39
+      },
+      "image_asset_key": "a16-s032-image"
+    },
+    {
+      "id": "A16-S033",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I6",
+          "start_utf16": 29,
+          "end_utf16": 61,
+          "text": "官方沿革記載，合併後共有兩百零六個據點，年銷售額一百六十億美元。",
+          "source_cids": [
+            "C11"
+          ]
+        }
+      ],
+      "text": "官方沿革記載，合併後共有兩百零六個據點，年銷售額一百六十億美元。",
+      "units": 29,
+      "source_cids": [
+        "C11"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.96,
+        "at_230_cpm": 7.57
+      },
+      "type": "number_or_source_card",
+      "visual_function": "合併時規模，不能當2026數據",
+      "card": {
+        "text": "206 據點｜US$160 億",
+        "scope": "1993 合併後・年銷售額",
+        "source": "Costco 官方沿革（S1）"
+      },
+      "source_aliases": [
+        "S1"
+      ],
+      "active_worker_source_indices_zero_based": [
+        0
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 201.32,
+        "at_230_cpm": 218.39
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 208.28,
+        "at_230_cpm": 225.96
+      }
+    },
+    {
+      "id": "A16-S034",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I7",
+          "start_utf16": 0,
+          "end_utf16": 22,
+          "text": "當年那個飛機棚，接上了更大的採購與銷售網路。",
+          "source_cids": []
+        }
+      ],
+      "text": "當年那個飛機棚，接上了更大的採購與銷售網路。",
+      "units": 20,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      "type": "illustrated_still",
+      "visual_function": "把飛機棚源頭接到物流網路，避免單純重念數字",
+      "camera": "Wide shot, pan right",
+      "prompt": "Wide shot inside a larger warehouse distribution hall, one generic dispatcher opens a plain loading gate beside organized carton rows, attentive face, soft grey daylight",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 208.28,
+        "at_230_cpm": 225.96
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 213.08,
+        "at_230_cpm": 231.17
+      },
+      "image_asset_key": "a16-s034-image"
+    },
+    {
+      "id": "A16-S035",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I7",
+          "start_utf16": 22,
+          "end_utf16": 47,
+          "text": "故事到這裡，已經能看出倉儲賣場為什麼敢把價格壓低。",
+          "source_cids": []
+        }
+      ],
+      "text": "故事到這裡，已經能看出倉儲賣場為什麼敢把價格壓低。",
+      "units": 23,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.52,
+        "at_230_cpm": 6
+      },
+      "type": "illustrated_still",
+      "visual_function": "買得到的低價回到會員手上，結清倉儲機制",
+      "camera": "Medium shot, push in",
+      "prompt": "Medium shot in a warehouse aisle, one generic member places a bulk household package into a trolley, pleased expression, diffuse overhead light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 213.08,
+        "at_230_cpm": 231.17
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 218.6,
+        "at_230_cpm": 237.17
+      },
+      "image_asset_key": "a16-s035-image"
+    },
+    {
+      "id": "A16-S036",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I8",
+          "start_utf16": 0,
+          "end_utf16": 25,
+          "text": "可是，熱狗又多了一個限制：商品可以換、採購可以談，",
+          "source_cids": [
+            "C02"
+          ]
+        }
+      ],
+      "text": "可是，熱狗又多了一個限制：商品可以換、採購可以談，",
+      "units": 21,
+      "source_cids": [
+        "C02"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.04,
+        "at_230_cpm": 5.48
+      },
+      "type": "illustrated_still",
+      "visual_function": "轉回套餐，從可以改採購到售價固定",
+      "camera": "Medium close-up, pull out",
+      "prompt": "Medium close-up at a food counter, one generic clerk sets a hot dog tray beside a plain price stand, thoughtful expression, mild ceiling light",
+      "visual": "still",
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 218.6,
+        "at_230_cpm": 237.17
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 223.64,
+        "at_230_cpm": 242.65
+      },
+      "image_asset_key": "a16-s036-image"
+    },
+    {
+      "id": "A16-S037",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I8",
+          "start_utf16": 25,
+          "end_utf16": 41,
+          "text": "這份套餐的售價卻一直被留在原地。",
+          "source_cids": [
+            "C02"
+          ]
+        },
+        {
+          "paragraph_id": "I9",
+          "start_utf16": 0,
+          "end_utf16": 12,
+          "text": "當成本往上走，要守住它，",
+          "source_cids": []
+        }
+      ],
+      "text": "這份套餐的售價卻一直被留在原地。當成本往上走，要守住它，",
+      "units": 25,
+      "source_cids": [
+        "C02"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6,
+        "at_230_cpm": 6.52
+      },
+      "type": "illustrated_still",
+      "visual_function": "價牌不動只由旁白說，圖上不生成價格",
+      "camera": "Close-up, pan left",
+      "prompt": "Close-up at the same food counter, one generic worker wipes the base of a blank price stand beside the hot dog tray, concerned face partly visible, soft window light",
+      "visual": "still",
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 223.64,
+        "at_230_cpm": 242.65
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 229.64,
+        "at_230_cpm": 249.17
+      },
+      "image_asset_key": "a16-s037-image"
+    },
+    {
+      "id": "A16-S038",
+      "chapter": "idea",
+      "narration_refs": [
+        {
+          "paragraph_id": "I9",
+          "start_utf16": 12,
+          "end_utf16": 42,
+          "text": "就不能只要求櫃台上的價牌別動。真正要動手的地方，在櫃台後面。",
+          "source_cids": []
+        }
+      ],
+      "text": "就不能只要求櫃台上的價牌別動。真正要動手的地方，在櫃台後面。",
+      "units": 27,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.48,
+        "at_230_cpm": 7.04
+      },
+      "type": "illustrated_still",
+      "visual_function": "跟著視線走到櫃台後面的供應工作",
+      "camera": "Wide shot, tilt down",
+      "prompt": "Wide shot behind a warehouse food counter, one generic worker opens a plain ingredient cupboard, focused face, preparation equipment visible beside it, neutral overhead light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 229.64,
+        "at_230_cpm": 249.17
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 236.12,
+        "at_230_cpm": 256.22
+      },
+      "image_asset_key": "a16-s038-image"
+    },
+    {
+      "id": "A16-S039",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E1",
+          "start_utf16": 0,
+          "end_utf16": 27,
+          "text": "開頭提到的自家工廠，正是供應方式的轉變。NPR 報導，",
+          "source_cids": [
+            "C12",
+            "C13"
+          ]
+        }
+      ],
+      "text": "開頭提到的自家工廠，正是供應方式的轉變。NPR 報導，",
+      "units": 23,
+      "source_cids": [
+        "C12",
+        "C13"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.52,
+        "at_230_cpm": 6
+      },
+      "type": "number_or_source_card",
+      "visual_function": "先落實報導歸屬，未知的私人對話留到後面",
+      "card": {
+        "text": "2008",
+        "scope": "開始自營熱狗工廠",
+        "source": "NPR／OPB 2024-06-04（S3）"
+      },
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 236.12,
+        "at_230_cpm": 256.22
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 241.64,
+        "at_230_cpm": 262.22
+      }
+    },
+    {
+      "id": "A16-S040",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E1",
+          "start_utf16": 27,
+          "end_utf16": 58,
+          "text": "早期供應商是 Hebrew National；到了二〇〇八年，",
+          "source_cids": [
+            "C12",
+            "C13"
+          ]
+        }
+      ],
+      "text": "早期供應商是 Hebrew National；到了二〇〇八年，",
+      "units": 27,
+      "source_cids": [
+        "C12",
+        "C13"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.48,
+        "at_230_cpm": 7.04
+      },
+      "type": "illustrated_still",
+      "visual_function": "原供應商名稱旁白／CC處理，不在包裝畫商標",
+      "camera": "Medium shot, pan right",
+      "prompt": "Medium shot at a food receiving dock, one generic clerk checks plain sausage cartons on a delivery trolley, attentive face, soft grey doorway light",
+      "visual": "still",
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 241.64,
+        "at_230_cpm": 262.22
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 248.12,
+        "at_230_cpm": 269.26
+      },
+      "image_asset_key": "a16-s040-image"
+    },
+    {
+      "id": "A16-S041",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E1",
+          "start_utf16": 58,
+          "end_utf16": 85,
+          "text": "Costco 開始經營自己的熱狗工廠，降低供應鏈成本。",
+          "source_cids": [
+            "C12",
+            "C13"
+          ]
+        }
+      ],
+      "text": "Costco 開始經營自己的熱狗工廠，降低供應鏈成本。",
+      "units": 24,
+      "source_cids": [
+        "C12",
+        "C13"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.76,
+        "at_230_cpm": 6.26
+      },
+      "type": "illustrated_still",
+      "visual_function": "同圖回收開場工廠，自製是供應環節改變",
+      "camera": "Medium shot, tilt down",
+      "prompt": "Medium shot in a food factory in 2008, one generic production worker checks a tray of plain sausages beside a simple conveyor, focused face, soft ceiling light",
+      "visual": "still",
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 248.12,
+        "at_230_cpm": 269.26
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 253.88,
+        "at_230_cpm": 275.52
+      },
+      "image_asset_key": "a16-hook-reuse-7",
+      "reuse_binding": {
+        "same_image_as": "A16-S007"
+      }
+    },
+    {
+      "id": "A16-S042",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E2",
+          "start_utf16": 0,
+          "end_utf16": 24,
+          "text": "這一步改變了問題的位置。原來是拿著供應商的報價，",
+          "source_cids": []
+        }
+      ],
+      "text": "這一步改變了問題的位置。原來是拿著供應商的報價，",
+      "units": 22,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.28,
+        "at_230_cpm": 5.74
+      },
+      "type": "illustrated_still",
+      "visual_function": "報價端到生產端的問題位置先建立",
+      "camera": "Medium close-up, push in",
+      "prompt": "Medium close-up at a purchasing desk, one generic buyer unfolds a blank quotation sheet beside a plain food carton, thoughtful expression, mild desk light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 253.88,
+        "at_230_cpm": 275.52
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 259.16,
+        "at_230_cpm": 281.26
+      },
+      "image_asset_key": "a16-s042-image"
+    },
+    {
+      "id": "A16-S043",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E2",
+          "start_utf16": 24,
+          "end_utf16": 55,
+          "text": "回頭想套餐該賣多少；現在，Costco 得自己處理生產這一端。",
+          "source_cids": []
+        }
+      ],
+      "text": "回頭想套餐該賣多少；現在，Costco 得自己處理生產這一端。",
+      "units": 27,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.48,
+        "at_230_cpm": 7.04
+      },
+      "type": "illustrated_still",
+      "visual_function": "自己處理生產，不畫成本直接歸零",
+      "camera": "Wide shot, pull out",
+      "prompt": "Wide shot in a food factory, one generic supervisor inspects a simple conveyor carrying plain sausage trays, concentrated face, soft overhead light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 259.16,
+        "at_230_cpm": 281.26
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 265.64,
+        "at_230_cpm": 288.3
+      },
+      "image_asset_key": "a16-s043-image"
+    },
+    {
+      "id": "A16-S044",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E3",
+          "start_utf16": 0,
+          "end_utf16": 21,
+          "text": "工廠也不是免費的。它需要設備、原料和人手，",
+          "source_cids": []
+        }
+      ],
+      "text": "工廠也不是免費的。它需要設備、原料和人手，",
+      "units": 18,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 4.32,
+        "at_230_cpm": 4.7
+      },
+      "type": "illustrated_still",
+      "visual_function": "設備原料人手仍需費用，物件只列具體成本環節",
+      "camera": "Medium shot, pan left",
+      "prompt": "Medium shot at a food preparation station, one generic worker lifts a plain ingredient sack beside a small processing machine, focused expression, diffuse ceiling light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 265.64,
+        "at_230_cpm": 288.3
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 269.96,
+        "at_230_cpm": 293
+      },
+      "image_asset_key": "a16-s044-image"
+    },
+    {
+      "id": "A16-S045",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E3",
+          "start_utf16": 21,
+          "end_utf16": 54,
+          "text": "所以「自己做」不等於成本消失，而是把更多能調整的環節放回自己手上。",
+          "source_cids": []
+        }
+      ],
+      "text": "所以「自己做」不等於成本消失，而是把更多能調整的環節放回自己手上。",
+      "units": 29,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.96,
+        "at_230_cpm": 7.57
+      },
+      "type": "illustrated_still",
+      "visual_function": "能調整環節增加，以普通生產控制動作說明",
+      "camera": "Close-up, tilt down",
+      "prompt": "Close-up at a factory control station, one generic technician adjusts an unmarked control dial beside a tray of sausages, attentive face, mild lamp light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 269.96,
+        "at_230_cpm": 293
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 276.92,
+        "at_230_cpm": 300.57
+      },
+      "image_asset_key": "a16-s045-image"
+    },
+    {
+      "id": "A16-S046",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E4",
+          "start_utf16": 0,
+          "end_utf16": 31,
+          "text": "為什麼連一份熱狗都要這麼費心？這件事後來有了一段很有名的回憶。",
+          "source_cids": []
+        }
+      ],
+      "text": "為什麼連一份熱狗都要這麼費心？這件事後來有了一段很有名的回憶。",
+      "units": 29,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.96,
+        "at_230_cpm": 7.57
+      },
+      "type": "illustrated_still",
+      "visual_function": "轉入回憶前，套餐作閱讀線索而非戲劇衝突重建",
+      "camera": "Medium shot, pull out",
+      "prompt": "Medium shot at an archive desk, one generic researcher opens a blank report folder beside a small hot dog tray photograph with no text, curious expression, soft window light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 276.92,
+        "at_230_cpm": 300.57
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 283.88,
+        "at_230_cpm": 308.13
+      },
+      "image_asset_key": "a16-s046-image"
+    },
+    {
+      "id": "A16-S047",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E5",
+          "start_utf16": 0,
+          "end_utf16": 34,
+          "text": "NPR 引述前執行長 Craig Jelinek 二〇一八年的回憶：",
+          "source_cids": [
+            "C14"
+          ]
+        }
+      ],
+      "text": "NPR 引述前執行長 Craig Jelinek 二〇一八年的回憶：",
+      "units": 29,
+      "source_cids": [
+        "C14"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.96,
+        "at_230_cpm": 7.57
+      },
+      "type": "number_or_source_card",
+      "visual_function": "2018是回憶發表年，避免當成原對話日期",
+      "card": {
+        "text": "2018",
+        "scope": "Jelinek 事後回憶・原對話日期未知",
+        "source": "NPR 2024 引述 Jelinek 2018 回憶（S3）"
+      },
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 283.88,
+        "at_230_cpm": 308.13
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 290.84,
+        "at_230_cpm": 315.7
+      }
+    },
+    {
+      "id": "A16-S048",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E5",
+          "start_utf16": 34,
+          "end_utf16": 64,
+          "text": "他曾提出漲價問題，Sinegal 甚至放話，要是把熱狗漲價，",
+          "source_cids": [
+            "C14"
+          ]
+        }
+      ],
+      "text": "他曾提出漲價問題，Sinegal 甚至放話，要是把熱狗漲價，",
+      "units": 26,
+      "source_cids": [
+        "C14"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.24,
+        "at_230_cpm": 6.78
+      },
+      "type": "illustrated_still",
+      "visual_function": "狠話由已歸屬的旁白轉述，不畫威脅行為或兩人對話",
+      "camera": "Medium close-up, pan right",
+      "prompt": "Medium close-up in an archive study, one generic researcher raises a blank report page beside a plain food tray, surprised expression, soft desk-lamp light",
+      "visual": "still",
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 290.84,
+        "at_230_cpm": 315.7
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 297.08,
+        "at_230_cpm": 322.48
+      },
+      "image_asset_key": "a16-s048-image"
+    },
+    {
+      "id": "A16-S049",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E5",
+          "start_utf16": 64,
+          "end_utf16": 70,
+          "text": "就要殺了他。",
+          "source_cids": [
+            "C14"
+          ]
+        },
+        {
+          "paragraph_id": "E6",
+          "start_utf16": 0,
+          "end_utf16": 22,
+          "text": "這段事後回憶裡，拒絕改價並沒有解決成本問題；",
+          "source_cids": [
+            "C14"
+          ]
+        }
+      ],
+      "text": "就要殺了他。這段事後回憶裡，拒絕改價並沒有解決成本問題；",
+      "units": 25,
+      "source_cids": [
+        "C14"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6,
+        "at_230_cpm": 6.52
+      },
+      "type": "illustrated_still",
+      "visual_function": "回憶結尾接成本問題，仍以閱讀者反應呈現",
+      "camera": "Close-up, push in",
+      "prompt": "Close-up at the archive desk, one generic reader rests a finger beside a blank paragraph on the page, thoughtful face, mild window light",
+      "visual": "still",
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 297.08,
+        "at_230_cpm": 322.48
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 303.08,
+        "at_230_cpm": 329
+      },
+      "image_asset_key": "a16-s049-image"
+    },
+    {
+      "id": "A16-S050",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E6",
+          "start_utf16": 22,
+          "end_utf16": 47,
+          "text": "它把難題留給經營者：價錢先留著，其他環節要怎麼改？",
+          "source_cids": [
+            "C14"
+          ]
+        }
+      ],
+      "text": "它把難題留給經營者：價錢先留著，其他環節要怎麼改？",
+      "units": 22,
+      "source_cids": [
+        "C14"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.28,
+        "at_230_cpm": 5.74
+      },
+      "type": "illustrated_still",
+      "visual_function": "價錢留下，生產端問題仍在；不硬接2008的原因",
+      "camera": "Medium shot, tilt down",
+      "prompt": "Medium shot at a planning bench, one generic analyst places a plain price stand beside an ingredient tray, puzzled expression, soft overhead light",
+      "visual": "still",
+      "source_aliases": [
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 303.08,
+        "at_230_cpm": 329
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 308.36,
+        "at_230_cpm": 334.74
+      },
+      "image_asset_key": "a16-s050-image"
+    },
+    {
+      "id": "A16-S051",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E10",
+          "start_utf16": 0,
+          "end_utf16": 30,
+          "text": "Fox Business 也轉述他說，自製之後已有合理回報。",
+          "source_cids": [
+            "C15"
+          ]
+        }
+      ],
+      "text": "Fox Business 也轉述他說，自製之後已有合理回報。",
+      "units": 26,
+      "source_cids": [
+        "C15"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.24,
+        "at_230_cpm": 6.78
+      },
+      "type": "illustrated_still",
+      "visual_function": "合理回報是新聞轉述，空白報告不假裝今日損益表",
+      "camera": "Medium close-up, pull out",
+      "prompt": "Medium close-up at a reading desk, one generic analyst turns a blank report page beside a plain factory folder, attentive expression, mild table-lamp light",
+      "visual": "still",
+      "source_aliases": [
+        "S4"
+      ],
+      "active_worker_source_indices_zero_based": [
+        3
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 308.36,
+        "at_230_cpm": 334.74
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 314.6,
+        "at_230_cpm": 341.52
+      },
+      "image_asset_key": "a16-s051-image"
+    },
+    {
+      "id": "A16-S052",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E11",
+          "start_utf16": 0,
+          "end_utf16": 35,
+          "text": "這可以補上歷史的一角，卻不是今天每份熱狗的損益表。每賣一份到底剩多少，",
+          "source_cids": [
+            "C15",
+            "C22"
+          ]
+        }
+      ],
+      "text": "這可以補上歷史的一角，卻不是今天每份熱狗的損益表。每賣一份到底剩多少，",
+      "units": 32,
+      "source_cids": [
+        "C15",
+        "C22"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      "type": "illustrated_still",
+      "visual_function": "歷史報導與今天單品帳分開，不能給假盈虧數",
+      "camera": "Medium shot, pan left",
+      "prompt": "Medium shot at a study desk, one generic researcher separates a closed archive folder from an empty ledger, careful expression, soft window light",
+      "visual": "still",
+      "source_aliases": [
+        "S4",
+        "S2",
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        3,
+        1,
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 314.6,
+        "at_230_cpm": 341.52
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 322.28,
+        "at_230_cpm": 349.87
+      },
+      "image_asset_key": "a16-s052-image"
+    },
+    {
+      "id": "A16-S053",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E11",
+          "start_utf16": 35,
+          "end_utf16": 48,
+          "text": "這些公開資料沒有交出答案。",
+          "source_cids": [
+            "C15",
+            "C22"
+          ]
+        },
+        {
+          "paragraph_id": "E12",
+          "start_utf16": 0,
+          "end_utf16": 14,
+          "text": "但我們還有更大的問題沒解開：",
+          "source_cids": []
+        }
+      ],
+      "text": "這些公開資料沒有交出答案。但我們還有更大的問題沒解開：",
+      "units": 25,
+      "source_cids": [
+        "C15",
+        "C22"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6,
+        "at_230_cpm": 6.52
+      },
+      "type": "illustrated_still",
+      "visual_function": "由單品損益缺口拉遠到整店經營問題",
+      "camera": "Wide shot, push in",
+      "prompt": "Wide shot from the edge of a warehouse food court, one generic customer carries a hot dog tray toward a table overlooking store shelves, curious face, diffuse skylight",
+      "visual": "still",
+      "source_aliases": [
+        "S4",
+        "S2",
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        3,
+        1,
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 322.28,
+        "at_230_cpm": 349.87
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 328.28,
+        "at_230_cpm": 356.39
+      },
+      "image_asset_key": "a16-s053-image"
+    },
+    {
+      "id": "A16-S054",
+      "chapter": "engine",
+      "narration_refs": [
+        {
+          "paragraph_id": "E12",
+          "start_utf16": 14,
+          "end_utf16": 43,
+          "text": "就算熱狗成本有辦法管理，整間賣場為什麼要把低價看得這麼重？",
+          "source_cids": []
+        }
+      ],
+      "text": "就算熱狗成本有辦法管理，整間賣場為什麼要把低價看得這麼重？",
+      "units": 27,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.48,
+        "at_230_cpm": 7.04
+      },
+      "type": "illustrated_still",
+      "visual_function": "整間賣場重視低價的疑問，以套餐和採買車同框",
+      "camera": "Medium shot, pull out",
+      "prompt": "Medium shot beside a warehouse dining table, one generic member sets a plain hot dog tray next to a loaded shopping trolley, thoughtful expression, soft ceiling light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 328.28,
+        "at_230_cpm": 356.39
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 334.76,
+        "at_230_cpm": 363.43
+      },
+      "image_asset_key": "a16-s054-image"
+    },
+    {
+      "id": "A16-S055",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T1",
+          "start_utf16": 0,
+          "end_utf16": 28,
+          "text": "那張價牌所在的賣場，收入並不只一種。二〇二五財年的年報，",
+          "source_cids": [
+            "C16"
+          ]
+        }
+      ],
+      "text": "那張價牌所在的賣場，收入並不只一種。二〇二五財年的年報，",
+      "units": 25,
+      "source_cids": [
+        "C16"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6,
+        "at_230_cpm": 6.52
+      },
+      "type": "illustrated_still",
+      "visual_function": "打開明定FY2025算例，不稱最新年報",
+      "camera": "Medium close-up, pan right",
+      "prompt": "Medium close-up at a financial desk, one generic reader opens a blank annual report beside a plain membership card, attentive face, soft lamp light",
+      "visual": "still",
+      "source_aliases": [
+        "S2",
+        "S6"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1,
+        5
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 334.76,
+        "at_230_cpm": 363.43
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 340.76,
+        "at_230_cpm": 369.96
+      },
+      "image_asset_key": "a16-s055-image"
+    },
+    {
+      "id": "A16-S056",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T1",
+          "start_utf16": 28,
+          "end_utf16": 54,
+          "text": "把它們各自列了出來；這一年的結算日，是八月三十一日。",
+          "source_cids": [
+            "C16"
+          ]
+        }
+      ],
+      "text": "把它們各自列了出來；這一年的結算日，是八月三十一日。",
+      "units": 23,
+      "source_cids": [
+        "C16"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.52,
+        "at_230_cpm": 6
+      },
+      "type": "number_or_source_card",
+      "visual_function": "年度及結算日先顯示，與後續數字卡同口徑",
+      "card": {
+        "text": "FY2025｜2025-08-31",
+        "scope": "FY2025 財報算例",
+        "source": "Costco FY2025 Form 10-K（S2）"
+      },
+      "source_aliases": [
+        "S2",
+        "S6"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1,
+        5
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 340.76,
+        "at_230_cpm": 369.96
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 346.28,
+        "at_230_cpm": 375.96
+      }
+    },
+    {
+      "id": "A16-S057",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T2",
+          "start_utf16": 0,
+          "end_utf16": 29,
+          "text": "商品銷售，約兩千七百億美元；商品本身的成本，約兩千四百億。",
+          "source_cids": [
+            "C17"
+          ]
+        }
+      ],
+      "text": "商品銷售，約兩千七百億美元；商品本身的成本，約兩千四百億。",
+      "units": 25,
+      "source_cids": [
+        "C17"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6,
+        "at_230_cpm": 6.52
+      },
+      "type": "number_or_source_card",
+      "visual_function": "先顯商品收入與商品成本的精確值",
+      "card": {
+        "text": "2,699.12 − 2,398.86 = 300.26",
+        "scope": "商品銷售 − 商品成本／億美元・FY2025",
+        "source": "S2 印刷37頁"
+      },
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 346.28,
+        "at_230_cpm": 375.96
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 352.28,
+        "at_230_cpm": 382.48
+      }
+    },
+    {
+      "id": "A16-S058",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T2",
+          "start_utf16": 29,
+          "end_utf16": 43,
+          "text": "兩個大數相減，剩下約三百億。",
+          "source_cids": [
+            "C17"
+          ]
+        },
+        {
+          "paragraph_id": "T3",
+          "start_utf16": 0,
+          "end_utf16": 16,
+          "text": "聽起來很多，但這還不是營業利益。",
+          "source_cids": [
+            "C18"
+          ]
+        }
+      ],
+      "text": "兩個大數相減，剩下約三百億。聽起來很多，但這還不是營業利益。",
+      "units": 26,
+      "source_cids": [
+        "C17",
+        "C18"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.24,
+        "at_230_cpm": 6.78
+      },
+      "type": "illustrated_still",
+      "visual_function": "差額300.26後製輔助可延續前卡，插畫打斷連卡；不畫成利潤",
+      "camera": "Close-up, tilt down",
+      "prompt": "Close-up at a financial demonstration desk, one generic analyst moves a plain subtotal tray away from two larger document stacks, thoughtful face, mild desk light",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 352.28,
+        "at_230_cpm": 382.48
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 358.52,
+        "at_230_cpm": 389.26
+      },
+      "image_asset_key": "a16-s058-image"
+    },
+    {
+      "id": "A16-S059",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T3",
+          "start_utf16": 16,
+          "end_utf16": 51,
+          "text": "賣場要運作，還有銷售、一般與管理費用；那一年，這一欄約兩百五十億美元。",
+          "source_cids": [
+            "C18"
+          ]
+        }
+      ],
+      "text": "賣場要運作，還有銷售、一般與管理費用；那一年，這一欄約兩百五十億美元。",
+      "units": 30,
+      "source_cids": [
+        "C18"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 7.2,
+        "at_230_cpm": 7.83
+      },
+      "type": "number_or_source_card",
+      "visual_function": "SG&A仍要扣；不擅自拆成工資租金",
+      "card": {
+        "text": "249.66 億美元",
+        "scope": "銷售、一般與管理費用／FY2025",
+        "source": "S2 印刷37頁"
+      },
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 358.52,
+        "at_230_cpm": 389.26
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 365.72,
+        "at_230_cpm": 397.09
+      }
+    },
+    {
+      "id": "A16-S060",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T4",
+          "start_utf16": 0,
+          "end_utf16": 25,
+          "text": "和商品銷售並排的另一筆收入，就是開頭提到的第二行：",
+          "source_cids": [
+            "C19"
+          ]
+        }
+      ],
+      "text": "和商品銷售並排的另一筆收入，就是開頭提到的第二行：",
+      "units": 23,
+      "source_cids": [
+        "C19"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.52,
+        "at_230_cpm": 6
+      },
+      "type": "illustrated_still",
+      "visual_function": "同圖回收第二行收入預告，仍由旁白命名會員費",
+      "camera": "Close-up, pan right",
+      "prompt": "Close-up at a financial reading desk, one generic analyst opens a blank ledger beside two separate plain document trays, curious face above the page, soft table-lamp light",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 365.72,
+        "at_230_cpm": 397.09
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 371.24,
+        "at_230_cpm": 403.09
+      },
+      "image_asset_key": "a16-hook-reuse-8",
+      "reuse_binding": {
+        "same_image_as": "A16-S008"
+      }
+    },
+    {
+      "id": "A16-S061",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T4",
+          "start_utf16": 25,
+          "end_utf16": 39,
+          "text": "會員費，五十三點二三億美元。",
+          "source_cids": [
+            "C19"
+          ]
+        },
+        {
+          "paragraph_id": "T5",
+          "start_utf16": 0,
+          "end_utf16": 13,
+          "text": "將商品銷售與會員費合起來，",
+          "source_cids": [
+            "C20"
+          ]
+        }
+      ],
+      "text": "會員費，五十三點二三億美元。將商品銷售與會員費合起來，",
+      "units": 24,
+      "source_cids": [
+        "C19",
+        "C20"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.76,
+        "at_230_cpm": 6.26
+      },
+      "type": "number_or_source_card",
+      "visual_function": "會員費是收入與期間認列，非全數淨利",
+      "card": {
+        "text": "53.23 億美元",
+        "scope": "會員費收入／FY2025・期間認列",
+        "source": "S2 印刷26、37頁"
+      },
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 371.24,
+        "at_230_cpm": 403.09
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 377,
+        "at_230_cpm": 409.35
+      }
+    },
+    {
+      "id": "A16-S062",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T5",
+          "start_utf16": 13,
+          "end_utf16": 42,
+          "text": "再扣掉剛才那些費用，列出的營業利益是一百零三點八三億美元。",
+          "source_cids": [
+            "C20"
+          ]
+        }
+      ],
+      "text": "再扣掉剛才那些費用，列出的營業利益是一百零三點八三億美元。",
+      "units": 27,
+      "source_cids": [
+        "C20"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.48,
+        "at_230_cpm": 7.04
+      },
+      "type": "number_or_source_card",
+      "visual_function": "完整算式與營業利益必須分清，不稱稅後淨利",
+      "card": {
+        "text": "2,699.12 + 53.23 − 2,398.86 − 249.66 = 103.83",
+        "scope": "收入兩行 − 費用兩行 = 營業利益／億美元・FY2025",
+        "source": "S2 印刷37頁；後製分行排版"
+      },
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 377,
+        "at_230_cpm": 409.35
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 383.48,
+        "at_230_cpm": 416.39
+      }
+    },
+    {
+      "id": "A16-S063",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T6",
+          "start_utf16": 0,
+          "end_utf16": 29,
+          "text": "畫面上如果把會員費拿來除以營業利益，答案約是百分之五十一。",
+          "source_cids": [
+            "C21"
+          ]
+        }
+      ],
+      "text": "畫面上如果把會員費拿來除以營業利益，答案約是百分之五十一。",
+      "units": 27,
+      "source_cids": [
+        "C21"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.48,
+        "at_230_cpm": 7.04
+      },
+      "type": "number_or_source_card",
+      "visual_function": "比值只比較量級，卡上也加同一限定",
+      "card": {
+        "text": "53.23 ÷ 103.83 ≈ 51.3%",
+        "scope": "會員費收入／營業利益・非利潤分攤",
+        "source": "由S2 FY2025數字計算"
+      },
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 383.48,
+        "at_230_cpm": 416.39
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 389.96,
+        "at_230_cpm": 423.43
+      }
+    },
+    {
+      "id": "A16-S064",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T6",
+          "start_utf16": 29,
+          "end_utf16": 49,
+          "text": "這個比例，讓會員費的量級一下變得很醒目。",
+          "source_cids": [
+            "C21"
+          ]
+        }
+      ],
+      "text": "這個比例，讓會員費的量級一下變得很醒目。",
+      "units": 18,
+      "source_cids": [
+        "C21"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 4.32,
+        "at_230_cpm": 4.7
+      },
+      "type": "illustrated_still",
+      "visual_function": "從比值回到兩種會計項目，不用半個熱狗或錢幣補貼圖",
+      "camera": "Medium close-up, pull out",
+      "prompt": "Medium close-up at a finance desk, one generic reader holds two separate blank sheets at different heights, thoughtful face, neutral lamp light",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 389.96,
+        "at_230_cpm": 423.43
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 394.28,
+        "at_230_cpm": 428.13
+      },
+      "image_asset_key": "a16-s064-image"
+    },
+    {
+      "id": "A16-S065",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T7",
+          "start_utf16": 0,
+          "end_utf16": 28,
+          "text": "這比較的是收入和營業利益的量級，沒有替會員服務分攤成本；",
+          "source_cids": [
+            "C21",
+            "C22"
+          ]
+        }
+      ],
+      "text": "這比較的是收入和營業利益的量級，沒有替會員服務分攤成本；",
+      "units": 26,
+      "source_cids": [
+        "C21",
+        "C22"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.24,
+        "at_230_cpm": 6.78
+      },
+      "type": "illustrated_still",
+      "visual_function": "分攤尚未做，兩份資料保持分離",
+      "camera": "Medium shot, pan left",
+      "prompt": "Medium shot at a study table, one generic analyst sets a plain membership folder beside a closed operating-results ledger, careful expression, soft window light",
+      "visual": "still",
+      "source_aliases": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1,
+        2,
+        3
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 394.28,
+        "at_230_cpm": 428.13
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 400.52,
+        "at_230_cpm": 434.91
+      },
+      "image_asset_key": "a16-s065-image"
+    },
+    {
+      "id": "A16-S066",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T7",
+          "start_utf16": 28,
+          "end_utf16": 57,
+          "text": "它算不出哪一半利潤來自會員，更算不出每份熱狗得到多少補貼。",
+          "source_cids": [
+            "C21",
+            "C22"
+          ]
+        }
+      ],
+      "text": "它算不出哪一半利潤來自會員，更算不出每份熱狗得到多少補貼。",
+      "units": 27,
+      "source_cids": [
+        "C21",
+        "C22"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.48,
+        "at_230_cpm": 7.04
+      },
+      "type": "illustrated_still",
+      "visual_function": "比值不能推成單品補貼，圖上不把錢流向熱狗",
+      "camera": "Close-up, push in",
+      "prompt": "Close-up at a finance table, one generic researcher places a plain divider between an annual ledger and a hot dog tray, serious face, mild ceiling light",
+      "visual": "still",
+      "source_aliases": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1,
+        2,
+        3
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 400.52,
+        "at_230_cpm": 434.91
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 407,
+        "at_230_cpm": 441.96
+      },
+      "image_asset_key": "a16-s066-image"
+    },
+    {
+      "id": "A16-S067",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T9",
+          "start_utf16": 0,
+          "end_utf16": 34,
+          "text": "這張表讓我們看見的是，公司除了賣東西，也有持續收取會員費的收入來源。",
+          "source_cids": [
+            "C23"
+          ]
+        }
+      ],
+      "text": "這張表讓我們看見的是，公司除了賣東西，也有持續收取會員費的收入來源。",
+      "units": 31,
+      "source_cids": [
+        "C23"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 7.44,
+        "at_230_cpm": 8.09
+      },
+      "type": "illustrated_still",
+      "visual_function": "會員收入落到會員業務，不突然斷成財務課",
+      "camera": "Wide shot, tilt down",
+      "prompt": "Wide shot at a warehouse membership counter, one generic attendant organizes plain membership cards in a tray, attentive expression, soft overhead light",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 407,
+        "at_230_cpm": 441.96
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 414.44,
+        "at_230_cpm": 450.04
+      },
+      "image_asset_key": "a16-s067-image"
+    },
+    {
+      "id": "A16-S068",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T9",
+          "start_utf16": 34,
+          "end_utf16": 56,
+          "text": "要維持這一行，下一個關鍵就藏在續費的人身上。",
+          "source_cids": [
+            "C23"
+          ]
+        },
+        {
+          "paragraph_id": "T10",
+          "start_utf16": 0,
+          "end_utf16": 9,
+          "text": "一個人今年交了錢，",
+          "source_cids": []
+        }
+      ],
+      "text": "要維持這一行，下一個關鍵就藏在續費的人身上。一個人今年交了錢，",
+      "units": 28,
+      "source_cids": [
+        "C23"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.72,
+        "at_230_cpm": 7.3
+      },
+      "type": "illustrated_still",
+      "visual_function": "今年交費後，焦點移到下一次選擇",
+      "camera": "Medium shot, pan right",
+      "prompt": "Medium shot at a home desk, one generic member places a plain membership card beside a closed calendar with blank pages, thoughtful face, mild window light",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 414.44,
+        "at_230_cpm": 450.04
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 421.16,
+        "at_230_cpm": 457.35
+      },
+      "image_asset_key": "a16-s068-image"
+    },
+    {
+      "id": "A16-S069",
+      "chapter": "turn",
+      "narration_refs": [
+        {
+          "paragraph_id": "T10",
+          "start_utf16": 9,
+          "end_utf16": 39,
+          "text": "明年還會不會回來？價目表之外，還有一次選擇，得由會員自己做。",
+          "source_cids": []
+        }
+      ],
+      "text": "明年還會不會回來？價目表之外，還有一次選擇，得由會員自己做。",
+      "units": 26,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.24,
+        "at_230_cpm": 6.78
+      },
+      "type": "illustrated_still",
+      "visual_function": "會員自己選擇是否再來，畫面保留問題",
+      "camera": "Medium close-up, pull out",
+      "prompt": "Medium close-up near a warehouse entrance, one generic customer holds a plain membership card above an open wallet, undecided expression, soft grey daylight",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 421.16,
+        "at_230_cpm": 457.35
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 427.4,
+        "at_230_cpm": 464.13
+      },
+      "image_asset_key": "a16-s069-image"
+    },
+    {
+      "id": "A16-S070",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N1",
+          "start_utf16": 0,
+          "end_utf16": 22,
+          "text": "同一份二〇二五年報，列出八千一百萬付費會員。",
+          "source_cids": [
+            "C24"
+          ]
+        }
+      ],
+      "text": "同一份二〇二五年報，列出八千一百萬付費會員。",
+      "units": 20,
+      "source_cids": [
+        "C24"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      "type": "number_or_source_card",
+      "visual_function": "明定2025且包含少量過期，不擴成當前有效人數",
+      "card": {
+        "text": "8,100 萬",
+        "scope": "FY2025付費會員列報・含少量過期未續",
+        "source": "S2 印刷5頁"
+      },
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 427.4,
+        "at_230_cpm": 464.13
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 432.2,
+        "at_230_cpm": 469.35
+      }
+    },
+    {
+      "id": "A16-S071",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N1",
+          "start_utf16": 22,
+          "end_utf16": 60,
+          "text": "這個數字包含少量已過期、尚未續約的會員，不能直接說八千一百萬人當天都還有效。",
+          "source_cids": [
+            "C24"
+          ]
+        }
+      ],
+      "text": "這個數字包含少量已過期、尚未續約的會員，不能直接說八千一百萬人當天都還有效。",
+      "units": 35,
+      "source_cids": [
+        "C24"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 8.4,
+        "at_230_cpm": 9.13
+      },
+      "type": "illustrated_still",
+      "visual_function": "名冊與即時有效卡不同；無字卡不是錯誤到期日",
+      "camera": "Medium shot, push in",
+      "prompt": "Medium shot at a membership desk, one generic clerk places a plain card into a separate review tray beside other cards, careful expression, mild ceiling light",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 432.2,
+        "at_230_cpm": 469.35
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 440.6,
+        "at_230_cpm": 478.48
+      },
+      "image_asset_key": "a16-s071-image"
+    },
+    {
+      "id": "A16-S072",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N2",
+          "start_utf16": 0,
+          "end_utf16": 25,
+          "text": "公司計算的美國與加拿大續約率，是百分之九十二點三。",
+          "source_cids": [
+            "C25"
+          ]
+        }
+      ],
+      "text": "公司計算的美國與加拿大續約率，是百分之九十二點三。",
+      "units": 23,
+      "source_cids": [
+        "C25"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.52,
+        "at_230_cpm": 6
+      },
+      "type": "number_or_source_card",
+      "visual_function": "續約率保留地區及期間算法",
+      "card": {
+        "text": "92.3%",
+        "scope": "FY2025美國／加拿大・公司期間續約率",
+        "source": "S2 印刷5頁；非全球或即期持卡比例"
+      },
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 440.6,
+        "at_230_cpm": 478.48
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 446.12,
+        "at_230_cpm": 484.48
+      }
+    },
+    {
+      "id": "A16-S073",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N2",
+          "start_utf16": 25,
+          "end_utf16": 56,
+          "text": "這是依一段時間的續約紀錄計算，並不是把年底全部持卡人拿來投票。",
+          "source_cids": [
+            "C25"
+          ]
+        }
+      ],
+      "text": "這是依一段時間的續約紀錄計算，並不是把年底全部持卡人拿來投票。",
+      "units": 29,
+      "source_cids": [
+        "C25"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.96,
+        "at_230_cpm": 7.57
+      },
+      "type": "illustrated_still",
+      "visual_function": "一段期間累積紀錄，不畫投票人群",
+      "camera": "Close-up, pan left",
+      "prompt": "Close-up at a records desk, one generic clerk flips through a thick blank membership ledger with several bookmarks, focused face, soft table light",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 446.12,
+        "at_230_cpm": 484.48
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 453.08,
+        "at_230_cpm": 492.04
+      },
+      "image_asset_key": "a16-s073-image"
+    },
+    {
+      "id": "A16-S074",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N3",
+          "start_utf16": 0,
+          "end_utf16": 24,
+          "text": "公司在年報裡直說，會員成長和續約情況會影響獲利。",
+          "source_cids": [
+            "C23"
+          ]
+        }
+      ],
+      "text": "公司在年報裡直說，會員成長和續約情況會影響獲利。",
+      "units": 22,
+      "source_cids": [
+        "C23"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.28,
+        "at_230_cpm": 5.74
+      },
+      "type": "illustrated_still",
+      "visual_function": "年報揭會員影響獲利，以文件連到會員卡",
+      "camera": "Medium shot, pull out",
+      "prompt": "Medium shot at a study desk, one generic reader sets a plain membership card beside an open blank annual report, attentive face, diffuse window light",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 453.08,
+        "at_230_cpm": 492.04
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 458.36,
+        "at_230_cpm": 497.78
+      },
+      "image_asset_key": "a16-s074-image"
+    },
+    {
+      "id": "A16-S075",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N3",
+          "start_utf16": 24,
+          "end_utf16": 54,
+          "text": "對這樣的生意來說，讓人願意再回來，本身就是經營要完成的工作。",
+          "source_cids": [
+            "C23"
+          ]
+        }
+      ],
+      "text": "對這樣的生意來說，讓人願意再回來，本身就是經營要完成的工作。",
+      "units": 27,
+      "source_cids": [
+        "C23"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.48,
+        "at_230_cpm": 7.04
+      },
+      "type": "illustrated_still",
+      "visual_function": "會員回來需要經營，普通上架動作接主線",
+      "camera": "Wide shot, tilt down",
+      "prompt": "Wide shot in a warehouse aisle, one generic employee replenishes a shelf with plain bulk goods, purposeful expression, soft skylight",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 458.36,
+        "at_230_cpm": 497.78
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 464.84,
+        "at_230_cpm": 504.83
+      },
+      "image_asset_key": "a16-s075-image"
+    },
+    {
+      "id": "A16-S076",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N5",
+          "start_utf16": 0,
+          "end_utf16": 35,
+          "text": "而價格也不是全部凍住。美國和加拿大的年費，從二〇二四年九月起有過調整。",
+          "source_cids": [
+            "C26"
+          ]
+        }
+      ],
+      "text": "而價格也不是全部凍住。美國和加拿大的年費，從二〇二四年九月起有過調整。",
+      "units": 32,
+      "source_cids": [
+        "C26"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 7.68,
+        "at_230_cpm": 8.35
+      },
+      "type": "number_or_source_card",
+      "visual_function": "年費調整的日期及地區，不偷換成套餐漲價",
+      "card": {
+        "text": "2024-09-01",
+        "scope": "美國／加拿大年費調整",
+        "source": "S2 印刷27頁"
+      },
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 464.84,
+        "at_230_cpm": 504.83
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 472.52,
+        "at_230_cpm": 513.17
+      }
+    },
+    {
+      "id": "A16-S077",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N5",
+          "start_utf16": 35,
+          "end_utf16": 57,
+          "text": "守住某一份套餐，不等於公司所有收費永遠不動。",
+          "source_cids": [
+            "C26"
+          ]
+        }
+      ],
+      "text": "守住某一份套餐，不等於公司所有收費永遠不動。",
+      "units": 20,
+      "source_cids": [
+        "C26"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 4.8,
+        "at_230_cpm": 5.22
+      },
+      "type": "illustrated_still",
+      "visual_function": "年費與套餐兩個價格分離；不讓圖暗示全店凍價",
+      "camera": "Medium close-up, pan right",
+      "prompt": "Medium close-up at a warehouse desk, one generic member lays a plain membership card apart from a hot dog tray, thoughtful expression, mild window light",
+      "visual": "still",
+      "source_aliases": [
+        "S2"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 472.52,
+        "at_230_cpm": 513.17
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 477.32,
+        "at_230_cpm": 518.39
+      },
+      "image_asset_key": "a16-s077-image"
+    },
+    {
+      "id": "A16-S078",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N7",
+          "start_utf16": 0,
+          "end_utf16": 27,
+          "text": "到二〇二六年十月，Costco 美國官網的美食區說明，",
+          "source_cids": [
+            "C27"
+          ]
+        }
+      ],
+      "text": "到二〇二六年十月，Costco 美國官網的美食區說明，",
+      "units": 24,
+      "source_cids": [
+        "C27"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.76,
+        "at_230_cpm": 6.26
+      },
+      "type": "illustrated_still",
+      "visual_function": "2026查閱官網不是逐店POS實測，不畫未取得真實網頁",
+      "camera": "Medium shot, push in",
+      "prompt": "Medium shot at a home desk in October 2026, one generic reader points toward a blank browser window on a simple monitor, attentive face, soft lamp light",
+      "visual": "still",
+      "source_aliases": [
+        "S5"
+      ],
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 477.32,
+        "at_230_cpm": 518.39
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 483.08,
+        "at_230_cpm": 524.65
+      },
+      "image_asset_key": "a16-s078-image"
+    },
+    {
+      "id": "A16-S079",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N7",
+          "start_utf16": 27,
+          "end_utf16": 50,
+          "text": "仍列著一塊五的熱狗加汽水。它證明這項價格還在，",
+          "source_cids": [
+            "C27"
+          ]
+        }
+      ],
+      "text": "仍列著一塊五的熱狗加汽水。它證明這項價格還在，",
+      "units": 21,
+      "source_cids": [
+        "C27"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.04,
+        "at_230_cpm": 5.48
+      },
+      "type": "number_or_source_card",
+      "visual_function": "收回當前美國官網價，標明查閱日",
+      "card": {
+        "text": "US$1.50",
+        "scope": "美國官網熱狗＋汽水・查閱2026-10-16",
+        "source": "官方Membership Hacks第19項（S5）"
+      },
+      "source_aliases": [
+        "S5"
+      ],
+      "active_worker_source_indices_zero_based": [
+        4
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 483.08,
+        "at_230_cpm": 524.65
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 488.12,
+        "at_230_cpm": 530.13
+      }
+    },
+    {
+      "id": "A16-S080",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N7",
+          "start_utf16": 50,
+          "end_utf16": 61,
+          "text": "卻沒有替未來寫下保證。",
+          "source_cids": [
+            "C27"
+          ]
+        },
+        {
+          "paragraph_id": "N9",
+          "start_utf16": 0,
+          "end_utf16": 20,
+          "text": "自製幫忙管理熱狗成本，而願意續費的會員，",
+          "source_cids": [
+            "C28"
+          ]
+        }
+      ],
+      "text": "卻沒有替未來寫下保證。自製幫忙管理熱狗成本，而願意續費的會員，",
+      "units": 28,
+      "source_cids": [
+        "C27",
+        "C28"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.72,
+        "at_230_cpm": 7.3
+      },
+      "type": "illustrated_still",
+      "visual_function": "最後合答從成本與會員串起，沒有單品補貼箭頭",
+      "camera": "Medium shot, pull out",
+      "prompt": "Medium shot at a food preparation counter, one generic worker sets a hot dog tray beside a plain ingredient box, calm expression, soft overhead light",
+      "visual": "still",
+      "source_aliases": [
+        "S5",
+        "S2",
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        4,
+        1,
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 488.12,
+        "at_230_cpm": 530.13
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 494.84,
+        "at_230_cpm": 537.43
+      },
+      "image_asset_key": "a16-s080-image"
+    },
+    {
+      "id": "A16-S081",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N9",
+          "start_utf16": 20,
+          "end_utf16": 47,
+          "text": "讓 Costco 持續選擇低價的做法有了商業上的理由。",
+          "source_cids": [
+            "C28"
+          ]
+        }
+      ],
+      "text": "讓 Costco 持續選擇低價的做法有了商業上的理由。",
+      "units": 24,
+      "source_cids": [
+        "C28"
+      ],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.76,
+        "at_230_cpm": 6.26
+      },
+      "type": "illustrated_still",
+      "visual_function": "低價的商業理由回到願再來的會員，不新增實驗因果",
+      "camera": "Wide shot, pan left",
+      "prompt": "Wide shot at a warehouse exit, one generic member carries a bag of plain household goods beside an empty food tray, content expression, diffuse grey daylight",
+      "visual": "still",
+      "source_aliases": [
+        "S2",
+        "S3"
+      ],
+      "active_worker_source_indices_zero_based": [
+        1,
+        2
+      ],
+      "estimated_start_seconds": {
+        "at_250_cpm": 494.84,
+        "at_230_cpm": 537.43
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 500.6,
+        "at_230_cpm": 543.7
+      },
+      "image_asset_key": "a16-s081-image"
+    },
+    {
+      "id": "A16-S082",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N10",
+          "start_utf16": 0,
+          "end_utf16": 30,
+          "text": "你曾經為了一項熟悉的低價，願意再去同一家店、再續一次會員嗎？",
+          "source_cids": []
+        }
+      ],
+      "text": "你曾經為了一項熟悉的低價，願意再去同一家店、再續一次會員嗎？",
+      "units": 27,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 6.48,
+        "at_230_cpm": 7.04
+      },
+      "type": "illustrated_still",
+      "visual_function": "留言題留給觀眾自己的選擇",
+      "camera": "Medium close-up, push in",
+      "prompt": "Medium close-up at a dining table, one generic customer holds a plain membership card beside a hot dog tray, reflective expression toward the viewer, soft window light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 500.6,
+        "at_230_cpm": 543.7
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 507.08,
+        "at_230_cpm": 550.74
+      },
+      "image_asset_key": "a16-s082-image"
+    },
+    {
+      "id": "A16-S083",
+      "chapter": "now",
+      "narration_refs": [
+        {
+          "paragraph_id": "N11",
+          "start_utf16": 0,
+          "end_utf16": 24,
+          "text": "想看懂熟悉品牌的價格背後怎麼運作，訂閱這個系列。",
+          "source_cids": []
+        }
+      ],
+      "text": "想看懂熟悉品牌的價格背後怎麼運作，訂閱這個系列。",
+      "units": 22,
+      "source_cids": [],
+      "estimated_spoken_seconds": {
+        "at_250_cpm": 5.28,
+        "at_230_cpm": 5.74
+      },
+      "type": "illustrated_still",
+      "visual_function": "收在同一套餐與會員卡，交既有片尾",
+      "camera": "Wide shot, pull out",
+      "prompt": "Wide shot at the same dining table, one generic customer closes a wallet beside the plain membership card and hot dog tray, relaxed face, mild table light",
+      "visual": "still",
+      "source_aliases": [],
+      "active_worker_source_indices_zero_based": [],
+      "estimated_start_seconds": {
+        "at_250_cpm": 507.08,
+        "at_230_cpm": 550.74
+      },
+      "estimated_end_seconds": {
+        "at_250_cpm": 512.36,
+        "at_230_cpm": 556.48
+      },
+      "image_asset_key": "a16-s083-image"
+    }
+  ],
+  "pending": [
+    "Independent review of this editorial storyboard",
+    "Formal chapter JSON and claim/line mapping, real verifier/listener/narrative checks",
+    "Actual TTS duration; body length must be checked without padding or slowing speech",
+    "Concrete full-film quote before paid work; no paid authorization provided by this package",
+    "Image judge, branding asset binding, render, playback and owner review",
+    "Owner-selected languages and separate upload/end-screen targets"
+  ]
+}

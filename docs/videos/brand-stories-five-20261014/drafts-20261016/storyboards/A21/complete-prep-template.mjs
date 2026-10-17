@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+const dir=path.dirname(fileURLToPath(import.meta.url)),p=path.join(dir,'build-prep.mjs');
+let s=fs.readFileSync(p,'utf8');
+const needle='const checks={status:';
+const addition="Object.assign(storyboard.bookends[1],{end_screen_link_zone:{start_seconds_within_outro:5,duration_seconds:16,ends_with_outro:true,targets:'pending existing-video/subscription selections',asset_binding:'pending approved v4-endscreen file/hash',policy:'Reserve final 16 seconds for actual YouTube end-screen elements; no generated text or painted fake links.'}});\n";
+assert.ok(s.includes(needle));assert.ok(!s.includes('end_screen_link_zone'));
+s=s.replace(needle,addition+needle);
+const old='後接既有 **21 秒**片尾；連結目標與資產 hash 留到正式上架包，這裡未設定可點連結。';
+const replacement='後接既有 **21 秒**片尾；最後 **16 秒**保留實際影片／訂閱連結區（片尾第 5–21 秒）。連結目標與資產 hash 留到正式上架包，這裡未設定可點連結。';
+assert.ok(s.includes(old));s=s.replace(old,replacement);
+fs.writeFileSync(p,s);

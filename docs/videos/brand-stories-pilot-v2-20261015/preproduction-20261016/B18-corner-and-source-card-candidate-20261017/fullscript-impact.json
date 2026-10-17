@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "MAPPING_ONLY_OLD_FULLSCRIPT_AND_REVIEW_STALE",
+  "historical_script_sha256": "5326bd6633ad69931fe542badd6cddd2378324ff0bcc4b0f05652941642dc724",
+  "historical_script_review_sha256": "1583b36311fde688a49f70aa546bb1c30b53ab294afeb1119bb576c73a479cdb",
+  "narrow_phrase_swap_sha256_not_current_script": "9b35bc60f00e689d265d5fd65309b9867875701912b3295e8f01db5fe910e377",
+  "exact_phrase_map": [
+    {
+      "before": "盤子卻在轉角卡住",
+      "after": "輸送帶卻在轉角堵住，盤子掉下來",
+      "occurrence_count": 1
+    },
+    {
+      "before": "開場那個會卡住的轉角",
+      "after": "開場那個輸送帶壅塞、盤子掉落的轉角",
+      "occurrence_count": 1
+    },
+    {
+      "before": "H02「轉角卡住；一九五八年第一家店要開門」",
+      "after": "H02「轉角堵帶、盤子掉落；一九五八年第一家店要開門」",
+      "occurrence_count": 1
+    },
+    {
+      "before": "卡在轉角的盤子怎麼真的走進首店？",
+      "after": "轉角堵帶、盤子掉落的難題怎麼解開，讓首店開門？",
+      "occurrence_count": 1
+    }
+  ],
+  "stale_reasons": [
+    "H02/I01 narrator wording differs from candidate",
+    "historical 1978 expiry narration conflicts with current court-bound fact 4",
+    "new row story hash invalidates prior row review"
+  ],
+  "reviewed_fullscript_for_new_candidate": false
+}

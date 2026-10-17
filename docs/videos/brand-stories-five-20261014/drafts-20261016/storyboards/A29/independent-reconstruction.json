@@ -1,0 +1,31 @@
+{
+  "status": "INDEPENDENT_LOCAL_RECONSTRUCTION_VERIFIED_NOT_WORKER_REVIEW",
+  "episode": "A29",
+  "source_sha256": "9d8d6ea834c526d3f6e5b452f01545a74c87873948c8392a1bc4bb8954056c11",
+  "storyboard_sha256": "1f03cea9c645b8592dbc6c2277dc1672e39b7a466244c7ea638caf7ae9a4ccfb",
+  "paragraphs": 65,
+  "spoken_units": 2201,
+  "shots": 83,
+  "illustrations": 72,
+  "cards": 11,
+  "unique_illustration_prompts": 69,
+  "max_consecutive_cards": 2,
+  "checks": [
+    "parse original six narration tables only",
+    "rebuild every paragraph once in exact order with no gaps or overlaps",
+    "exact source and storyboard hashes",
+    "all shot texts equal referenced slices",
+    "cards retain scope and source",
+    "series look, model and switchable CC"
+  ],
+  "does_not_prove": [
+    "formal chapter facts or listener review",
+    "actual TTS duration",
+    "generated images",
+    "render or playback",
+    "paid authorization"
+  ],
+  "host_calls": 0,
+  "model_calls": 0,
+  "paid_calls": 0
+}

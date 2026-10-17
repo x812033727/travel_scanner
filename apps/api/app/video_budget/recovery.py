@@ -101,7 +101,7 @@ async def inspect(
 ) -> dict[str, Any]:
     """Read the account, exact ledger rows and related media state without mutation."""
     if not service.is_pilot(slug):
-        raise service.BudgetError(422, "video_budget_not_pilot", "請指定四個試作 slug 之一")
+        raise service.BudgetError(422, "video_budget_not_pilot", "請指定受預算保護的影片 slug")
     account = await service.summary(session, slug)
     assert account is not None
     rows = await _rows(session, slug, operation_id)
@@ -139,7 +139,7 @@ async def reconcile(
     locks are additionally checked, but their absence alone cannot prove the worker stopped.
     """
     if not service.is_pilot(slug):
-        raise service.BudgetError(422, "video_budget_not_pilot", "請指定四個試作 slug 之一")
+        raise service.BudgetError(422, "video_budget_not_pilot", "請指定受預算保護的影片 slug")
     if action not in {"settle", "release"}:
         raise service.BudgetError(422, "video_budget_invalid_action", "只支援 settle 或 release")
     evidence_ref = _evidence(evidence_ref)

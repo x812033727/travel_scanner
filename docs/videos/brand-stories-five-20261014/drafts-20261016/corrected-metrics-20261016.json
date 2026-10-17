@@ -1,0 +1,2190 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-16",
+  "status": "COUNT_CORRECTION_ONLY_NOT_CONTENT_OR_MEDIA_APPROVAL",
+  "method": "Explicit unique H2 boundaries + exactly six named H3 chapters + actual 旁白 header; only that column is counted. Outside table audit explains legacy extra rows.",
+  "counting_unit": "Compatibility with prior metrics: JavaScript UTF-16 .length after removing Unicode punctuation, symbols, separators and whitespace. Latin letters and numerals each count; not a tokenizer, phonetic syllable count or TTS measurement.",
+  "source_report_sha256": "36c6f154c3c093faf5e5643d7d9b7a165f190b33c1217e7ed83340fa9c050533",
+  "independent_root_recount": "exact section boundaries, six narration tables, all IDs/text/counts and source hashes match",
+  "episodes": [
+    {
+      "id": "A29",
+      "file": "source-refresh-and-outline-A29.md",
+      "source_sha256": "9d8d6ea834c526d3f6e5b452f01545a74c87873948c8392a1bc4bb8954056c11",
+      "old_metrics_sha256": "8ba562f7ca880ee25bc334b1c2dfe5d70b7b6ae493a7f69b84a4332b23035d6c",
+      "scope": {
+        "start_heading": "## 二、六章完整旁白候選",
+        "start_heading_line": 39,
+        "end_heading_excluded": "## 三、主張與原件索引",
+        "end_heading_line": 144,
+        "narration_column": "旁白",
+        "chapter_order": [
+          "hook",
+          "origin",
+          "idea",
+          "engine",
+          "turn",
+          "now"
+        ]
+      },
+      "old": {
+        "paragraphs": 73,
+        "spoken_chars_excluding_punctuation": 2240,
+        "chapter_chars": {
+          "H": 190,
+          "O": 373,
+          "I": 373,
+          "E": 472,
+          "T": 471,
+          "N": 361
+        },
+        "estimated_seconds_at_250_chars_per_min": 537.6,
+        "estimated_seconds_at_230_chars_per_min": 584.3478260869565
+      },
+      "corrected": {
+        "paragraphs": 65,
+        "spoken_chars_excluding_punctuation": 2201,
+        "chapter_chars": {
+          "H": 169,
+          "O": 370,
+          "I": 367,
+          "E": 466,
+          "T": 468,
+          "N": 361
+        },
+        "estimated_seconds_at_250_chars_per_min": 528.24,
+        "estimated_seconds_at_230_chars_per_min": 574.1739130434783,
+        "actual_tts_seconds": null
+      },
+      "changed": true,
+      "excess_rows": 8,
+      "excess_characters": 39,
+      "extra_seconds_at_250": 9.36,
+      "extra_seconds_at_230": 10.17391304347826,
+      "duplicate_narration_ids": [],
+      "duplicate_exact_narration_text": [],
+      "excluded_rows_previously_miscounted": [
+        {
+          "line": 178,
+          "section": "## 四、Loops與敘事接口",
+          "id": "H02",
+          "incorrectly_counted_column": "E05–E08",
+          "incorrect_chars": 6,
+          "full_table_row": "| H02 | E05–E08 | 獲利樂園為何要賣：重資本與流動性 |",
+          "reason": "Outside narration section: loop setup ID made legacy global matcher count payoff as narration"
+        },
+        {
+          "line": 179,
+          "section": "## 四、Loops與敘事接口",
+          "id": "H03",
+          "incorrectly_counted_column": "T03–T04",
+          "incorrect_chars": 6,
+          "full_table_row": "| H03 | T03–T04 | 股權表上會留下誰 |",
+          "reason": "Outside narration section: loop setup ID made legacy global matcher count payoff as narration"
+        },
+        {
+          "line": 180,
+          "section": "## 四、Loops與敘事接口",
+          "id": "H04",
+          "incorrectly_counted_column": "N09",
+          "incorrect_chars": 3,
+          "full_table_row": "| H04 | N09 | 2005獲利轉變中資產出售的比例 |",
+          "reason": "Outside narration section: loop setup ID made legacy global matcher count payoff as narration"
+        },
+        {
+          "line": 181,
+          "section": "## 四、Loops與敘事接口",
+          "id": "H05",
+          "incorrectly_counted_column": "N03–N05",
+          "incorrect_chars": 6,
+          "full_table_row": "| H05 | N03–N05 | 家族再投資是否等於玩具公司買回 |",
+          "reason": "Outside narration section: loop setup ID made legacy global matcher count payoff as narration"
+        },
+        {
+          "line": 182,
+          "section": "## 四、Loops與敘事接口",
+          "id": "O10",
+          "incorrectly_counted_column": "I01",
+          "incorrect_chars": 3,
+          "full_table_row": "| O10 | I01 | 擴張後帳本的警訊 |",
+          "reason": "Outside narration section: loop setup ID made legacy global matcher count payoff as narration"
+        },
+        {
+          "line": 183,
+          "section": "## 四、Loops與敘事接口",
+          "id": "I09",
+          "incorrectly_counted_column": "E01–E03",
+          "incorrect_chars": 6,
+          "full_table_row": "| I09 | E01–E03 | 收入縮小後公司怎麼調整規模 |",
+          "reason": "Outside narration section: loop setup ID made legacy global matcher count payoff as narration"
+        },
+        {
+          "line": 184,
+          "section": "## 四、Loops與敘事接口",
+          "id": "E11",
+          "incorrectly_counted_column": "T01–T02",
+          "incorrect_chars": 6,
+          "full_table_row": "| E11 | T01–T02 | 出售何時成為實際交易 |",
+          "reason": "Outside narration section: loop setup ID made legacy global matcher count payoff as narration"
+        },
+        {
+          "line": 185,
+          "section": "## 四、Loops與敘事接口",
+          "id": "T11",
+          "incorrectly_counted_column": "N09",
+          "incorrect_chars": 3,
+          "full_table_row": "| T11 | N09 | 各項資產出售在轉盈裡占多少 |",
+          "reason": "Outside narration section: loop setup ID made legacy global matcher count payoff as narration"
+        }
+      ],
+      "narration_rows": [
+        {
+          "id": "H01",
+          "chapter": "hook",
+          "line": 49,
+          "count": 27,
+          "text_sha256": "3e50b317c01acbdbd422bc6f408958a672d00f08d92096f7b66d70b64b1f88c4"
+        },
+        {
+          "id": "H02",
+          "chapter": "hook",
+          "line": 50,
+          "count": 29,
+          "text_sha256": "73985f9ca49153424a246b42eacf47b7e83f1c0972a175b1461cf3820a12b513"
+        },
+        {
+          "id": "H03",
+          "chapter": "hook",
+          "line": 51,
+          "count": 26,
+          "text_sha256": "4f5cd6a7deca714c2240910e89655b3510caab300130cce98fd035a658385ff8"
+        },
+        {
+          "id": "H04",
+          "chapter": "hook",
+          "line": 52,
+          "count": 25,
+          "text_sha256": "189b96d0707df0eb71e1c995255ee9a05a7a136b08ab764a7d7e135b7df9a955"
+        },
+        {
+          "id": "H05",
+          "chapter": "hook",
+          "line": 53,
+          "count": 35,
+          "text_sha256": "11d06933d4034f14e39ac0e8207e906f443c669b02999c4f213540e140e7e7dd"
+        },
+        {
+          "id": "H06",
+          "chapter": "hook",
+          "line": 54,
+          "count": 27,
+          "text_sha256": "ed30a6f59db89d993b7202893c449ac77ba4d07b9bff2ab0051e1c2623284df4"
+        },
+        {
+          "id": "O01",
+          "chapter": "origin",
+          "line": 62,
+          "count": 25,
+          "text_sha256": "32077e219eeb84f09005f688818fbdc41e94af0b55f82ea94409676faaba5976"
+        },
+        {
+          "id": "O02",
+          "chapter": "origin",
+          "line": 63,
+          "count": 32,
+          "text_sha256": "c1e67e2340c115a7823b261b37e0ee9a1c932c9ecb09ea75df19f1c41d2fa4d7"
+        },
+        {
+          "id": "O03",
+          "chapter": "origin",
+          "line": 64,
+          "count": 30,
+          "text_sha256": "93f89176f7e0445be68a637763b71be52a1c207ed3b630e67589dca9eeea59c7"
+        },
+        {
+          "id": "O04",
+          "chapter": "origin",
+          "line": 65,
+          "count": 32,
+          "text_sha256": "dd01d1c8a55e16ca39a3422f1aec23a14b75db54bd469a5dc5a610232c7f3df2"
+        },
+        {
+          "id": "O05",
+          "chapter": "origin",
+          "line": 66,
+          "count": 33,
+          "text_sha256": "38f729f4ed484dde284d0bb8d276a444e714d64cfa91015ccf3b780b35d83895"
+        },
+        {
+          "id": "O06",
+          "chapter": "origin",
+          "line": 67,
+          "count": 36,
+          "text_sha256": "52ee4529dc7a5f7955c5fdd430632c99f97fb66c14ce3013925e97e8cc6dd617"
+        },
+        {
+          "id": "O07",
+          "chapter": "origin",
+          "line": 68,
+          "count": 38,
+          "text_sha256": "34f96fb44ac9f6c6216049ffb5fbdddc35268fcce490ecbb384171f8e1d99362"
+        },
+        {
+          "id": "O07a",
+          "chapter": "origin",
+          "line": 69,
+          "count": 40,
+          "text_sha256": "7eee1e04936cea66d02c12057289b8577553e9d47b2ce4ffd776f7b2bf8c6329"
+        },
+        {
+          "id": "O08",
+          "chapter": "origin",
+          "line": 70,
+          "count": 28,
+          "text_sha256": "3509892b3601e6a42f6ceb70104e7b644ff372bff8659ff534c4f039fd0ec635"
+        },
+        {
+          "id": "O09",
+          "chapter": "origin",
+          "line": 71,
+          "count": 41,
+          "text_sha256": "f48bb52f4da64e609a7d4a3818b91fe8c1b385a0dcd8a6a238a87f9fa54e62a0"
+        },
+        {
+          "id": "O10",
+          "chapter": "origin",
+          "line": 72,
+          "count": 35,
+          "text_sha256": "e0a427ada591ba0e3ea787670410fdcb9d79e92618ddd6df5a61d4aa9893ad82"
+        },
+        {
+          "id": "I01",
+          "chapter": "idea",
+          "line": 78,
+          "count": 34,
+          "text_sha256": "a0d98e6e879fa79f69be3e05cc977d3b0cae68d7c9a8406af270f2b445a15fe9"
+        },
+        {
+          "id": "I02",
+          "chapter": "idea",
+          "line": 79,
+          "count": 36,
+          "text_sha256": "550769131b9d3dcae7fa8a8a5a55627b0d913f83f00fe562bd773e02c5ee1b33"
+        },
+        {
+          "id": "I03",
+          "chapter": "idea",
+          "line": 80,
+          "count": 38,
+          "text_sha256": "b653707a0c12f98c5b7de9ccdeaa9fd2bec0e847aaaf39f54b6d56d6e1e81ce0"
+        },
+        {
+          "id": "I04",
+          "chapter": "idea",
+          "line": 81,
+          "count": 38,
+          "text_sha256": "5fa23d83037b2499cac2def43c4c6fc8a981eb0af7ad5cca137218f2d2a8c2fa"
+        },
+        {
+          "id": "I05",
+          "chapter": "idea",
+          "line": 82,
+          "count": 33,
+          "text_sha256": "0800607ebf1f1067ca47de9c6ef56fd26f26d83c1e4434f606f61bfe20b32142"
+        },
+        {
+          "id": "I05a",
+          "chapter": "idea",
+          "line": 83,
+          "count": 41,
+          "text_sha256": "99892299ac7bc1f7ebefba3417e0928d6593bb1b66bea895967cc788ec0afd11"
+        },
+        {
+          "id": "I06",
+          "chapter": "idea",
+          "line": 84,
+          "count": 34,
+          "text_sha256": "cb64d37fe1d9c03d3ad1991f4cde54e30a6089099daf3987455d6de647fd55c3"
+        },
+        {
+          "id": "I07",
+          "chapter": "idea",
+          "line": 85,
+          "count": 35,
+          "text_sha256": "34e6c9d4a00b45c42645beb926995328e5867ce42f97d60cf4c9260df45195f7"
+        },
+        {
+          "id": "I08",
+          "chapter": "idea",
+          "line": 86,
+          "count": 40,
+          "text_sha256": "370debdc47ad33840e15c4dc3110417562a2cd4c4daf3d034621df2bbd9983ef"
+        },
+        {
+          "id": "I09",
+          "chapter": "idea",
+          "line": 87,
+          "count": 38,
+          "text_sha256": "8f97ec489292689e7ebd2546bb2daae98e1ea7def2da7fff25c857b5beb06d01"
+        },
+        {
+          "id": "E01",
+          "chapter": "engine",
+          "line": 93,
+          "count": 33,
+          "text_sha256": "559e2fe7038a40c4c5c67c05e2d8fda33fbe10bc6dd3f4fb6734c2e4d27f514e"
+        },
+        {
+          "id": "E02",
+          "chapter": "engine",
+          "line": 94,
+          "count": 38,
+          "text_sha256": "bc9c4648408e8a33309e1fac14aa255cf449a26d77dd086345694b7fbfcfacf2"
+        },
+        {
+          "id": "E02a",
+          "chapter": "engine",
+          "line": 95,
+          "count": 40,
+          "text_sha256": "c52fc96fdbd10c196d60ac4152d232ec96562bf9e1006cc4a3f2e77d67a7aa9d"
+        },
+        {
+          "id": "E02b",
+          "chapter": "engine",
+          "line": 96,
+          "count": 40,
+          "text_sha256": "fd07398d51f5538df3650222fea9e42df6b17593fff5355af69026ac2c2229a5"
+        },
+        {
+          "id": "E03",
+          "chapter": "engine",
+          "line": 97,
+          "count": 31,
+          "text_sha256": "2490a1c979d8d4edfbc54977af62e8eb359561a52722b334fdfba6fc5510fa09"
+        },
+        {
+          "id": "E04",
+          "chapter": "engine",
+          "line": 98,
+          "count": 39,
+          "text_sha256": "9917c950735fca814f839b20b1e7fdd678d9c2099b9759151c11fac8b789d04a"
+        },
+        {
+          "id": "E05",
+          "chapter": "engine",
+          "line": 99,
+          "count": 54,
+          "text_sha256": "7d48e4cdf6e88b5925105750bd07a4e3d1490c168b4dd908f4f1da6488dc0cb4"
+        },
+        {
+          "id": "E06",
+          "chapter": "engine",
+          "line": 100,
+          "count": 32,
+          "text_sha256": "d7368c4ffde2b09a0fe27f8fbfdece3b7d94bd4de72ca6fa308dca68a8ca6952"
+        },
+        {
+          "id": "E07",
+          "chapter": "engine",
+          "line": 101,
+          "count": 34,
+          "text_sha256": "6f0bb78cdddcead33bdaa66233c9c840e00666679e39c9870c81cca1e22039e8"
+        },
+        {
+          "id": "E08",
+          "chapter": "engine",
+          "line": 102,
+          "count": 31,
+          "text_sha256": "5c2a30241c8cef72fd8fcb8fbfbde7b1f3907eb28f46f26013fab1d67ff13c0e"
+        },
+        {
+          "id": "E09",
+          "chapter": "engine",
+          "line": 103,
+          "count": 28,
+          "text_sha256": "9c9b5f39af99c3314a20aa3611201a0c888ae9f140fc02a15b2b1231bf8b6a20"
+        },
+        {
+          "id": "E10",
+          "chapter": "engine",
+          "line": 104,
+          "count": 24,
+          "text_sha256": "76d98a0b35861fb169edb142181876787a22488db4520cbb07e2a91c14b2f361"
+        },
+        {
+          "id": "E11",
+          "chapter": "engine",
+          "line": 105,
+          "count": 42,
+          "text_sha256": "ed3a4ce0938351db48ba989500190edb0d2f83abcbed3c5f5f444e36b4b730ed"
+        },
+        {
+          "id": "T01",
+          "chapter": "turn",
+          "line": 111,
+          "count": 35,
+          "text_sha256": "31b0ec762e0761b03716613bea32eb411447cbf59db5ea64e34e489d456b8a82"
+        },
+        {
+          "id": "T02",
+          "chapter": "turn",
+          "line": 112,
+          "count": 38,
+          "text_sha256": "f81e30889fed5f6cb6b664ecbd30492118ae29b80dbce761b309e2569269c6fb"
+        },
+        {
+          "id": "T03",
+          "chapter": "turn",
+          "line": 113,
+          "count": 28,
+          "text_sha256": "1cea47f4305954c39c28bcca3e654ca96497b95e977f46d9ac53fd3c726475a6"
+        },
+        {
+          "id": "T04",
+          "chapter": "turn",
+          "line": 114,
+          "count": 34,
+          "text_sha256": "f7f5cdfe12130bc28bca9ddb87dc8e21935e082c15c19e0b59b03b138140d1f6"
+        },
+        {
+          "id": "T05",
+          "chapter": "turn",
+          "line": 115,
+          "count": 37,
+          "text_sha256": "684dca5ac64656e704d5ec56d8887dd7cf1f850118add7277c1150567ff0a2a4"
+        },
+        {
+          "id": "T05a",
+          "chapter": "turn",
+          "line": 116,
+          "count": 43,
+          "text_sha256": "191e6cb3a23324065192fca716f6677e2da8ce94a4d6e337c2f05cc913597f62"
+        },
+        {
+          "id": "T06",
+          "chapter": "turn",
+          "line": 117,
+          "count": 34,
+          "text_sha256": "9c22c59da3d4a3a5daa687c39d160fdcf01552a42662b13ffc5719242b1f73d7"
+        },
+        {
+          "id": "T07",
+          "chapter": "turn",
+          "line": 118,
+          "count": 18,
+          "text_sha256": "b14dade1c61e40868ca9e8a0a78ecb4ae98931c145152d699e3f183c12f4ec39"
+        },
+        {
+          "id": "T08",
+          "chapter": "turn",
+          "line": 119,
+          "count": 37,
+          "text_sha256": "7d12d1c8060c124b41a066ed1a1251a5f7a664b63ab690bb4eda85be1b14db59"
+        },
+        {
+          "id": "T09",
+          "chapter": "turn",
+          "line": 120,
+          "count": 35,
+          "text_sha256": "b4b5e3cef8e0ec781d19c5092e7064628ad76c5bc0d92c3822ada2d44e9b55b0"
+        },
+        {
+          "id": "T09a",
+          "chapter": "turn",
+          "line": 121,
+          "count": 39,
+          "text_sha256": "57bca2c37b312d679f11b094ec9c39dd061dbee09e7cae2de9ad419ede928e61"
+        },
+        {
+          "id": "T10",
+          "chapter": "turn",
+          "line": 122,
+          "count": 26,
+          "text_sha256": "ab16f39cdef89f3fe537e58e1a9570b46d4331c057b74d0af0fd4c5f94f728e7"
+        },
+        {
+          "id": "T11",
+          "chapter": "turn",
+          "line": 123,
+          "count": 25,
+          "text_sha256": "661882aff67239dc984c72d7bfff8f0c0838e1853124317335dec5e78791facb"
+        },
+        {
+          "id": "T12",
+          "chapter": "turn",
+          "line": 124,
+          "count": 39,
+          "text_sha256": "60929f07bfd2ca5153e5895ae7e21330757b1935aac436e5be9f1bf6237bbfb6"
+        },
+        {
+          "id": "N01",
+          "chapter": "now",
+          "line": 130,
+          "count": 34,
+          "text_sha256": "cc3415af0c30ec1c6fa919d79c55b143810e1247c33b7a00d32311b8305490e8"
+        },
+        {
+          "id": "N02",
+          "chapter": "now",
+          "line": 131,
+          "count": 30,
+          "text_sha256": "876249acae8bd5560bdf2c61db04a1228dde49db546f74c92b2c3794abc34cb9"
+        },
+        {
+          "id": "N03",
+          "chapter": "now",
+          "line": 132,
+          "count": 27,
+          "text_sha256": "332bc6f9e05dbf0c528e370d50a170f10aa8210d3ae68d373e367d61a6fcdf7f"
+        },
+        {
+          "id": "N04",
+          "chapter": "now",
+          "line": 133,
+          "count": 43,
+          "text_sha256": "14980fbd94c0c67ee96fb22bf5352456567f56b4f2b527e842531f2904cdf7ae"
+        },
+        {
+          "id": "N05",
+          "chapter": "now",
+          "line": 134,
+          "count": 38,
+          "text_sha256": "c7e29920e62f3130fa82a2fe8d283b92ea9f5a1e14704081952badd5f7713e06"
+        },
+        {
+          "id": "N06",
+          "chapter": "now",
+          "line": 135,
+          "count": 40,
+          "text_sha256": "9ec995208cc2bbb8f78750547e9d84bc9b5bf0374555a8b3df1a2efdc83498fe"
+        },
+        {
+          "id": "N07",
+          "chapter": "now",
+          "line": 136,
+          "count": 29,
+          "text_sha256": "b62768a632afbccbe640bea7b17da881691dfe4f4be715ebb5da40bcb0d243a1"
+        },
+        {
+          "id": "N08",
+          "chapter": "now",
+          "line": 137,
+          "count": 36,
+          "text_sha256": "217203e18f84b5c39027147d99ffc6b2dfd276e59ae34b8e6d564baf4a658994"
+        },
+        {
+          "id": "N09",
+          "chapter": "now",
+          "line": 138,
+          "count": 41,
+          "text_sha256": "f30ff765891ce1c826efe4a5407fca645bee853df23c4627c9d316c79e2b1493"
+        },
+        {
+          "id": "N10",
+          "chapter": "now",
+          "line": 139,
+          "count": 25,
+          "text_sha256": "e91cc2561d9383595a412dda66e555b857381cb8dcea2e5a0869d2525c7d1b3d"
+        },
+        {
+          "id": "N11",
+          "chapter": "now",
+          "line": 140,
+          "count": 18,
+          "text_sha256": "15b94abc1b0315fe75f3dcf8aa7040b3d34fc1e79e30e9388428e5727a93c895"
+        }
+      ]
+    },
+    {
+      "id": "A16",
+      "file": "source-refresh-and-outline-A16.md",
+      "source_sha256": "66d164291d3d4af356bc92b5c0ad16ed8ef3831f9365c6e43989d207c30ed8f1",
+      "old_metrics_sha256": "4c5762b0ffb15743f7cef4d7280d5f41e03f87d480f63f9190a84182833cdf4a",
+      "scope": {
+        "start_heading": "## 3. 六章旁白完整初稿",
+        "start_heading_line": 50,
+        "end_heading_excluded": "## 4. 主張索引（作者對照，不是 verifier 判定）",
+        "end_heading_line": 138,
+        "narration_column": "旁白",
+        "chapter_order": [
+          "hook",
+          "origin",
+          "idea",
+          "engine",
+          "turn",
+          "now"
+        ]
+      },
+      "old": {
+        "paragraphs": 50,
+        "spoken_chars_excluding_punctuation": 2114,
+        "chapter_chars": {
+          "H": 220,
+          "O": 346,
+          "I": 397,
+          "E": 411,
+          "T": 386,
+          "N": 354
+        },
+        "estimated_seconds_at_250_chars_per_min": 507.35999999999996,
+        "estimated_seconds_at_230_chars_per_min": 551.4782608695652
+      },
+      "corrected": {
+        "paragraphs": 50,
+        "spoken_chars_excluding_punctuation": 2114,
+        "chapter_chars": {
+          "H": 220,
+          "O": 346,
+          "I": 397,
+          "E": 411,
+          "T": 386,
+          "N": 354
+        },
+        "estimated_seconds_at_250_chars_per_min": 507.35999999999996,
+        "estimated_seconds_at_230_chars_per_min": 551.4782608695652,
+        "actual_tts_seconds": null
+      },
+      "changed": false,
+      "excess_rows": 0,
+      "excess_characters": 0,
+      "extra_seconds_at_250": 0,
+      "extra_seconds_at_230": 0,
+      "duplicate_narration_ids": [],
+      "duplicate_exact_narration_text": [],
+      "excluded_rows_previously_miscounted": [],
+      "narration_rows": [
+        {
+          "id": "H1",
+          "chapter": "hook",
+          "line": 58,
+          "count": 42,
+          "text_sha256": "92e8409082476b5370339bfa268747f6453eb13baacb418b59d9d472f7ef5d89"
+        },
+        {
+          "id": "H2",
+          "chapter": "hook",
+          "line": 59,
+          "count": 44,
+          "text_sha256": "ee9c57275ea03ef1b7bf7360f103c0277f185422b8383644e060640be852c1bb"
+        },
+        {
+          "id": "H3",
+          "chapter": "hook",
+          "line": 60,
+          "count": 33,
+          "text_sha256": "dc19bb3c5489f65412efd99782b3c2d84ab0be3958162b0a40d997c75bf56794"
+        },
+        {
+          "id": "H4",
+          "chapter": "hook",
+          "line": 61,
+          "count": 24,
+          "text_sha256": "878376d74cc3d5b0b5788ab64b81a02f7704148645d134471226fde9949f908b"
+        },
+        {
+          "id": "H5",
+          "chapter": "hook",
+          "line": 62,
+          "count": 32,
+          "text_sha256": "e92f83c3f7e60dee44f04d19279518b0eaa4aefd190089a3987533dbeaa976d9"
+        },
+        {
+          "id": "H6",
+          "chapter": "hook",
+          "line": 63,
+          "count": 25,
+          "text_sha256": "51b360b0a9c620945c756e79ebf432177c42a6e589a85196690b4499882513f4"
+        },
+        {
+          "id": "H7",
+          "chapter": "hook",
+          "line": 64,
+          "count": 20,
+          "text_sha256": "43f35bf8bb96a26f79cb373af740663e001f61af5c15edd31c53cd220745a9c2"
+        },
+        {
+          "id": "O1",
+          "chapter": "origin",
+          "line": 72,
+          "count": 42,
+          "text_sha256": "edc5a6a887e51078759bea46be3acef3674f01efaab8907b743f5e084747b25a"
+        },
+        {
+          "id": "O2",
+          "chapter": "origin",
+          "line": 73,
+          "count": 36,
+          "text_sha256": "2b99a77d582c668f03a6d3caeea4f070e7e8cc95ad56f11d6f04f7b6c0075cdf"
+        },
+        {
+          "id": "O3",
+          "chapter": "origin",
+          "line": 74,
+          "count": 45,
+          "text_sha256": "3c97731b2c42e593cbdd389ed77901c559459befe13173308b2766acdb9cb946"
+        },
+        {
+          "id": "O4",
+          "chapter": "origin",
+          "line": 75,
+          "count": 49,
+          "text_sha256": "f6f43ac7d354274ee39a5ea88993713db76bd690c2aeb7eedec9f1ea99462526"
+        },
+        {
+          "id": "O5",
+          "chapter": "origin",
+          "line": 76,
+          "count": 40,
+          "text_sha256": "3cea361390e048d1a1621d7b50c0db8a289f358de5eb76f83c06c9304bf7d742"
+        },
+        {
+          "id": "O6",
+          "chapter": "origin",
+          "line": 77,
+          "count": 54,
+          "text_sha256": "161b65aa2f4689982fc647a608268d9e4ae53bd268bb3c54e0c9bc5bd37c4e89"
+        },
+        {
+          "id": "O7",
+          "chapter": "origin",
+          "line": 78,
+          "count": 43,
+          "text_sha256": "7d6ced274153ec5de30fcfd9078e2e492f34d781afa333f95e591bcbd0ca76f3"
+        },
+        {
+          "id": "O8",
+          "chapter": "origin",
+          "line": 79,
+          "count": 37,
+          "text_sha256": "cf97fcd87aeefe3e6f20fe503b2d87bdd51839ff8aa0639bc7b5822826604d00"
+        },
+        {
+          "id": "I1",
+          "chapter": "idea",
+          "line": 85,
+          "count": 46,
+          "text_sha256": "90732fa3e1d0d95e21a2f93ca0978f0c37fe55848fc5372830d4a00e08af31d3"
+        },
+        {
+          "id": "I2",
+          "chapter": "idea",
+          "line": 86,
+          "count": 39,
+          "text_sha256": "fdaa56b02b0c43f4fcd126e458c77016e2103a3f9c9eebf09c24828008a32351"
+        },
+        {
+          "id": "I3",
+          "chapter": "idea",
+          "line": 87,
+          "count": 47,
+          "text_sha256": "b47624b3832b8be54c87f102c48b589b4d0aea2f893b45462c1fbf93f945c930"
+        },
+        {
+          "id": "I4",
+          "chapter": "idea",
+          "line": 88,
+          "count": 56,
+          "text_sha256": "0d5f5f5f94cdad46e146debf0c988a6c36ce50e39dc58603e36a9211cd5a4733"
+        },
+        {
+          "id": "I5",
+          "chapter": "idea",
+          "line": 89,
+          "count": 41,
+          "text_sha256": "c53d54df4ef0b2c3939f0638659e0ed5ca450e401af421a0fd2c69ba3cf9f999"
+        },
+        {
+          "id": "I6",
+          "chapter": "idea",
+          "line": 90,
+          "count": 52,
+          "text_sha256": "23987828a741120b7a0b3da2108f1ba4543be553f8dbe433c242845deadf76c5"
+        },
+        {
+          "id": "I7",
+          "chapter": "idea",
+          "line": 91,
+          "count": 43,
+          "text_sha256": "42d36ba0fba7887928e80b02cc81cbe7270da2cc55db597f24e337eeb1a9b9a6"
+        },
+        {
+          "id": "I8",
+          "chapter": "idea",
+          "line": 92,
+          "count": 36,
+          "text_sha256": "66d9ad347e623e5c490ca3a5d32577392d228c2ea3004e66ac41423a20895363"
+        },
+        {
+          "id": "I9",
+          "chapter": "idea",
+          "line": 93,
+          "count": 37,
+          "text_sha256": "346035bc5a333629ab42c40489602d2e4ccdeae70292201d7a9a8b0ae6b4d28f"
+        },
+        {
+          "id": "E1",
+          "chapter": "engine",
+          "line": 99,
+          "count": 74,
+          "text_sha256": "47751e768410d8977f9a98b3fa22326c6dba180982077ebf7de04f09c3ad0b51"
+        },
+        {
+          "id": "E2",
+          "chapter": "engine",
+          "line": 100,
+          "count": 49,
+          "text_sha256": "185db0bf9f0947579f6476a831a132fdfb27ae263651d5fed076fe3d3e401677"
+        },
+        {
+          "id": "E3",
+          "chapter": "engine",
+          "line": 101,
+          "count": 47,
+          "text_sha256": "a15888b44cc30f4a107fe8991576bef5a240596577dab829f6b4285c229087d8"
+        },
+        {
+          "id": "E4",
+          "chapter": "engine",
+          "line": 102,
+          "count": 29,
+          "text_sha256": "1aff3c457803d0822f71ab65c109963cbbed47980ace24faad8dddd820893e3d"
+        },
+        {
+          "id": "E5",
+          "chapter": "engine",
+          "line": 103,
+          "count": 60,
+          "text_sha256": "01de30f3176a1e407da307703c082da154eb831d6041e81ed6706a3f386ecdd5"
+        },
+        {
+          "id": "E6",
+          "chapter": "engine",
+          "line": 104,
+          "count": 42,
+          "text_sha256": "421fbf860c27a45df69246b4b2067d76619e8c4aca6b57b69eed7033e6fa4c5f"
+        },
+        {
+          "id": "E10",
+          "chapter": "engine",
+          "line": 105,
+          "count": 26,
+          "text_sha256": "fb83b0763786510eed163977039b1f1cb0cb33333160db63cb43d662ca1fb2ea"
+        },
+        {
+          "id": "E11",
+          "chapter": "engine",
+          "line": 106,
+          "count": 44,
+          "text_sha256": "bf386086bd40b89f3b32223a6174ceb72c165beb2c8c034c807c81101863388b"
+        },
+        {
+          "id": "E12",
+          "chapter": "engine",
+          "line": 107,
+          "count": 40,
+          "text_sha256": "034debffbacc3c71ed6e260951cdc98ef505ea31a7be74f433d6c5557de29b19"
+        },
+        {
+          "id": "T1",
+          "chapter": "turn",
+          "line": 113,
+          "count": 48,
+          "text_sha256": "ca962e8c3d980ae8c06fbc3a079218d3d0347f7bb114f83129bf362628eaa9e0"
+        },
+        {
+          "id": "T2",
+          "chapter": "turn",
+          "line": 114,
+          "count": 37,
+          "text_sha256": "93b4c94b972163001a53ecaca3e7eda89a6aa3c12dee8c9b6b6036d6f913f8b4"
+        },
+        {
+          "id": "T3",
+          "chapter": "turn",
+          "line": 115,
+          "count": 44,
+          "text_sha256": "5f7a727915873164fac892c04ddc5ba304c66df9d503552a2e3ffa6b412ef6b5"
+        },
+        {
+          "id": "T4",
+          "chapter": "turn",
+          "line": 116,
+          "count": 35,
+          "text_sha256": "50e12c49322dba4f25217b7e1d4c6c006150370cde0eb20e01650844c13d56bc"
+        },
+        {
+          "id": "T5",
+          "chapter": "turn",
+          "line": 117,
+          "count": 39,
+          "text_sha256": "7590648aa97cd6d7b5a8bdb953b3be38d1c0b12525363ca03a4d6b1d11c078be"
+        },
+        {
+          "id": "T6",
+          "chapter": "turn",
+          "line": 118,
+          "count": 45,
+          "text_sha256": "f3cd7ac119b0db6aed35c5e3804bab1df189287c80c9728ac4d6c5311d5fa54c"
+        },
+        {
+          "id": "T7",
+          "chapter": "turn",
+          "line": 119,
+          "count": 53,
+          "text_sha256": "d6cae4a054b07a8eb00d987d65a9d92d4e8cf26e40552c8d81aa84ac3d11edc3"
+        },
+        {
+          "id": "T9",
+          "chapter": "turn",
+          "line": 120,
+          "count": 51,
+          "text_sha256": "44d315f3181993c84ab3258ce58545b7796ee69a8b001163e41c5293f1db1cbe"
+        },
+        {
+          "id": "T10",
+          "chapter": "turn",
+          "line": 121,
+          "count": 34,
+          "text_sha256": "31a0f9539fbaf94dc24a96e7da3b6cf56fb624429b4eccd8e5078b8fc92aa997"
+        },
+        {
+          "id": "N1",
+          "chapter": "now",
+          "line": 127,
+          "count": 55,
+          "text_sha256": "f343aa6b7c94c7e1b63de95de4d28fd47d828b798426c25e6e0c095ea915ce87"
+        },
+        {
+          "id": "N2",
+          "chapter": "now",
+          "line": 128,
+          "count": 52,
+          "text_sha256": "5a105ef2d618ce625c035897d23fbe94e34170eb9b2f16e446811018b57db67e"
+        },
+        {
+          "id": "N3",
+          "chapter": "now",
+          "line": 129,
+          "count": 49,
+          "text_sha256": "54765a774c0ff56a089593740d4df9be3ad55c5b0b68c46d8b4201458ed90e8c"
+        },
+        {
+          "id": "N5",
+          "chapter": "now",
+          "line": 130,
+          "count": 52,
+          "text_sha256": "2502c8a712d0ba8449ebfd2a9f57a98ad949f1ffd1144b15f53beb3bf19c2f3f"
+        },
+        {
+          "id": "N7",
+          "chapter": "now",
+          "line": 131,
+          "count": 55,
+          "text_sha256": "f2b2c00f628044804b38dffe502b0990e84f1952981bd29bc33aab99d2dc33eb"
+        },
+        {
+          "id": "N9",
+          "chapter": "now",
+          "line": 132,
+          "count": 42,
+          "text_sha256": "ba6871dde46256fdff4033bbf92ffe9a6f54454736304a2eb7791f9ce79580e8"
+        },
+        {
+          "id": "N10",
+          "chapter": "now",
+          "line": 133,
+          "count": 27,
+          "text_sha256": "8b2ac16af30beb00ef8944fd20256c82771658bb5cecee51105f26a4841833d9"
+        },
+        {
+          "id": "N11",
+          "chapter": "now",
+          "line": 134,
+          "count": 22,
+          "text_sha256": "b18ee16bb01c71994bcd2d1f3f0ba9bb81131a860da33d205b4ce3aeefb0f781"
+        }
+      ]
+    },
+    {
+      "id": "A37",
+      "file": "source-refresh-and-outline-A37.md",
+      "source_sha256": "63e6277c85cc573556651f686cbf7722d602c620265e7730a9f3f32b7d016d09",
+      "old_metrics_sha256": "13ceba06a8dea5ab020855c4ef8011d51a139f6a3d26713c692fac985ec3553b",
+      "scope": {
+        "start_heading": "## 二、六章完整旁白候選",
+        "start_heading_line": 39,
+        "end_heading_excluded": "## 三、主張表（作者索引，未獨立判定）",
+        "end_heading_line": 123,
+        "narration_column": "旁白",
+        "chapter_order": [
+          "hook",
+          "origin",
+          "idea",
+          "engine",
+          "turn",
+          "now"
+        ]
+      },
+      "old": {
+        "paragraphs": 48,
+        "spoken_chars_excluding_punctuation": 2152,
+        "chapter_chars": {
+          "H": 185,
+          "O": 309,
+          "I": 339,
+          "E": 573,
+          "T": 476,
+          "N": 270
+        },
+        "estimated_seconds_at_250_chars_per_min": 516.48,
+        "estimated_seconds_at_230_chars_per_min": 561.391304347826
+      },
+      "corrected": {
+        "paragraphs": 48,
+        "spoken_chars_excluding_punctuation": 2152,
+        "chapter_chars": {
+          "H": 185,
+          "O": 309,
+          "I": 339,
+          "E": 573,
+          "T": 476,
+          "N": 270
+        },
+        "estimated_seconds_at_250_chars_per_min": 516.48,
+        "estimated_seconds_at_230_chars_per_min": 561.391304347826,
+        "actual_tts_seconds": null
+      },
+      "changed": false,
+      "excess_rows": 0,
+      "excess_characters": 0,
+      "extra_seconds_at_250": 0,
+      "extra_seconds_at_230": 0,
+      "duplicate_narration_ids": [],
+      "duplicate_exact_narration_text": [],
+      "excluded_rows_previously_miscounted": [],
+      "narration_rows": [
+        {
+          "id": "H01",
+          "chapter": "hook",
+          "line": 47,
+          "count": 31,
+          "text_sha256": "cbb4a342a6603436988cf0d0828cf46d936b943896766b989dbfe97db237ae12"
+        },
+        {
+          "id": "H02",
+          "chapter": "hook",
+          "line": 48,
+          "count": 38,
+          "text_sha256": "8e56b01aaa2a8d11d7a9c882a9e2a3a9bc81206b3495d1bb9643c5a86853f697"
+        },
+        {
+          "id": "H03",
+          "chapter": "hook",
+          "line": 49,
+          "count": 31,
+          "text_sha256": "a1ccb2dec86b878bb1ea1e566696c179b9c89c611d40adb35eae57895f5cf54a"
+        },
+        {
+          "id": "H04",
+          "chapter": "hook",
+          "line": 50,
+          "count": 32,
+          "text_sha256": "237b90d6cf7cbc25cda5100cf93524df2ea5f1b0eb819ae75c5c45aa74b110ae"
+        },
+        {
+          "id": "H05",
+          "chapter": "hook",
+          "line": 51,
+          "count": 26,
+          "text_sha256": "77cf673ebce3641ca08893e2e17856ec9ebff74f29663c28a4e2ab6c4639127c"
+        },
+        {
+          "id": "H06",
+          "chapter": "hook",
+          "line": 52,
+          "count": 27,
+          "text_sha256": "6bb2cb5106c67a615b3429da1bfae8f2c99cc64d5eb64088b3a3a557ffbf3485"
+        },
+        {
+          "id": "O01",
+          "chapter": "origin",
+          "line": 60,
+          "count": 42,
+          "text_sha256": "c365bd8ca060678d336abfd46a2c005f9f08160f91c4470341fd93b1df994568"
+        },
+        {
+          "id": "O02",
+          "chapter": "origin",
+          "line": 61,
+          "count": 48,
+          "text_sha256": "318a48d0cf2087c66a4b15e3b30bb0fd6bb1afe956d20737e48077ae815c1607"
+        },
+        {
+          "id": "O03",
+          "chapter": "origin",
+          "line": 62,
+          "count": 52,
+          "text_sha256": "7684504a6b872bac0c659e5ebc9089a87696538d26a1e53190b40e623c81d51f"
+        },
+        {
+          "id": "O04",
+          "chapter": "origin",
+          "line": 63,
+          "count": 29,
+          "text_sha256": "3228268dc62174ee24df446f914dc8ada6366ccb6768ece559b61b9c52503b02"
+        },
+        {
+          "id": "O06",
+          "chapter": "origin",
+          "line": 64,
+          "count": 53,
+          "text_sha256": "6ae6cccf50889cc32c3d105628d83cff0a648f400e8b6b43b75b0fdf55c2116b"
+        },
+        {
+          "id": "O07",
+          "chapter": "origin",
+          "line": 65,
+          "count": 43,
+          "text_sha256": "a4f1cc613654903d0d396f657f3744fd4e24bdd58c7b74d67670253f4ca728fe"
+        },
+        {
+          "id": "O08",
+          "chapter": "origin",
+          "line": 66,
+          "count": 42,
+          "text_sha256": "d9013f62d2cbb08ce6881b73014c44b4a327980e7b7a6ad2102711dbbc7e8708"
+        },
+        {
+          "id": "I01",
+          "chapter": "idea",
+          "line": 72,
+          "count": 48,
+          "text_sha256": "0d84fbca95b6a7f28e26f4741184a8284c8c772888a28e555e7a5f2a12783326"
+        },
+        {
+          "id": "I02",
+          "chapter": "idea",
+          "line": 73,
+          "count": 54,
+          "text_sha256": "20ffa934c7fd4609df63203663d4c8bb91c9ba18c091110d2cb6fa63cf69f0a1"
+        },
+        {
+          "id": "I03",
+          "chapter": "idea",
+          "line": 74,
+          "count": 39,
+          "text_sha256": "7a0db42af116f9570211247b117258c77bf17a5e69028c3c939f3fdf3a457a2a"
+        },
+        {
+          "id": "I04",
+          "chapter": "idea",
+          "line": 75,
+          "count": 50,
+          "text_sha256": "21a82c97adac4c4c720712ce7b96de345b1d4cf660afc24d972a59a2c6a94303"
+        },
+        {
+          "id": "I05",
+          "chapter": "idea",
+          "line": 76,
+          "count": 55,
+          "text_sha256": "01c4992100bf01228696466565b0c547cc74da53f36b035596eec7ef76e7d009"
+        },
+        {
+          "id": "I06",
+          "chapter": "idea",
+          "line": 77,
+          "count": 49,
+          "text_sha256": "3848c4ec5263707ba39ab80be9f0480b1c4c93b88ce2c7a14f8722250a68d2f7"
+        },
+        {
+          "id": "I07",
+          "chapter": "idea",
+          "line": 78,
+          "count": 44,
+          "text_sha256": "1dbf2ecb33bb8ee143547c6de9c1fc14d31af995a04b229ca6bd1b9055bc80c6"
+        },
+        {
+          "id": "E01",
+          "chapter": "engine",
+          "line": 84,
+          "count": 42,
+          "text_sha256": "58f29883cf5f73d5e17c24c175fb6d37f877ac0224b17beb5c4677bd95026581"
+        },
+        {
+          "id": "E02",
+          "chapter": "engine",
+          "line": 85,
+          "count": 46,
+          "text_sha256": "65bc07643583d461e98f69ff76fafc660a9e666c0674d7da95454125d7157c24"
+        },
+        {
+          "id": "E03",
+          "chapter": "engine",
+          "line": 86,
+          "count": 34,
+          "text_sha256": "28f1bc8ebd8066e1dc6139815a8ef253a26b8b7cccc51c439e155264663d3bcf"
+        },
+        {
+          "id": "E04",
+          "chapter": "engine",
+          "line": 87,
+          "count": 22,
+          "text_sha256": "1c6cd57788cbec269e883f895c1fefff362bcccb7e5f2f007e45daeea41e2039"
+        },
+        {
+          "id": "E06",
+          "chapter": "engine",
+          "line": 88,
+          "count": 53,
+          "text_sha256": "72b821905ecb4d353a080f63b269001b1914a3c2a5a5b93e73974db4d154f634"
+        },
+        {
+          "id": "E07",
+          "chapter": "engine",
+          "line": 89,
+          "count": 46,
+          "text_sha256": "cf293db843be218acaf92e97ab6d5ac31f1a0915f70e6d19a46534977ef575b1"
+        },
+        {
+          "id": "E08",
+          "chapter": "engine",
+          "line": 90,
+          "count": 39,
+          "text_sha256": "f18119ee07d58221fca00cf58b0ab61580d2726558999b715b79ecdc75a2d177"
+        },
+        {
+          "id": "E08a",
+          "chapter": "engine",
+          "line": 91,
+          "count": 58,
+          "text_sha256": "85ec9564ff8718eb3def8eaaf0d8f5a7ef4d65d42e10a5fd5ca26ca3d3037d9c"
+        },
+        {
+          "id": "E08b",
+          "chapter": "engine",
+          "line": 92,
+          "count": 55,
+          "text_sha256": "23a01f1115542f5769b96543bdb968e343b9389916836fb0502e8528e114c35b"
+        },
+        {
+          "id": "E08c",
+          "chapter": "engine",
+          "line": 93,
+          "count": 64,
+          "text_sha256": "3fbad7636029de1bd619dfcb061c1f1a670dc413d9d55b34641219409ef02b81"
+        },
+        {
+          "id": "E08d",
+          "chapter": "engine",
+          "line": 94,
+          "count": 46,
+          "text_sha256": "ad672961522884dd0bfda824b420084bb7170c26040a7d94ac2d1e02698ff297"
+        },
+        {
+          "id": "E10",
+          "chapter": "engine",
+          "line": 95,
+          "count": 68,
+          "text_sha256": "a8054ccc9a1cf2e21be4e040aabffee9b7144d91578f00d39b8cde78a2abe91f"
+        },
+        {
+          "id": "T01",
+          "chapter": "turn",
+          "line": 101,
+          "count": 56,
+          "text_sha256": "fce6fb39003a8578acead031715f843370f79fcf4365a47fe2a4506a35fcba29"
+        },
+        {
+          "id": "T01a",
+          "chapter": "turn",
+          "line": 102,
+          "count": 59,
+          "text_sha256": "1ccffd426c1b0ac19dd04ccc7a97e4d0ff19d97bb092134855c2356c316fd8be"
+        },
+        {
+          "id": "T01b",
+          "chapter": "turn",
+          "line": 103,
+          "count": 51,
+          "text_sha256": "4607cf2bb32cfd09a8e8e9d88ccd11d2ccdbdd354966cff850dfc0ab7610f50e"
+        },
+        {
+          "id": "T01c",
+          "chapter": "turn",
+          "line": 104,
+          "count": 58,
+          "text_sha256": "98ebfb680b13d5eda12eb9795690b626bfc2e3d601b06b4b9bd876f813e80a7c"
+        },
+        {
+          "id": "T03",
+          "chapter": "turn",
+          "line": 105,
+          "count": 57,
+          "text_sha256": "fb6f39f6b1d13d6f28b3828a3eb0bc90d7e32ae567fe9c0130910c6b63463693"
+        },
+        {
+          "id": "T04",
+          "chapter": "turn",
+          "line": 106,
+          "count": 51,
+          "text_sha256": "9157eb08b83ec464ffa935272a4c96bd2524824a44f2b8869483ef3c24428fbb"
+        },
+        {
+          "id": "T05",
+          "chapter": "turn",
+          "line": 107,
+          "count": 49,
+          "text_sha256": "b25ed92bfeaca3cc467c767c1c9c6d5a2a13c8e9c836f8206aeb4d5b2993281c"
+        },
+        {
+          "id": "T09",
+          "chapter": "turn",
+          "line": 108,
+          "count": 55,
+          "text_sha256": "6fbade6dc53cb9d9f5f140a463fb82063c8497eb8c03b364d381e39f179ba2fe"
+        },
+        {
+          "id": "T10",
+          "chapter": "turn",
+          "line": 109,
+          "count": 40,
+          "text_sha256": "737387053a93ac78d7620f5b532edc7208b66828391f93489fb01234fa535c95"
+        },
+        {
+          "id": "N01",
+          "chapter": "now",
+          "line": 115,
+          "count": 53,
+          "text_sha256": "a59c893685a50975f1d195bf086e6df26dbe18a58ea0452ea895c5a1fcaac031"
+        },
+        {
+          "id": "N02",
+          "chapter": "now",
+          "line": 116,
+          "count": 39,
+          "text_sha256": "5795a37d725683d9c57b8a3d9c529c6c9d90f8214329ca46427eccd4f5211b4f"
+        },
+        {
+          "id": "N03",
+          "chapter": "now",
+          "line": 117,
+          "count": 55,
+          "text_sha256": "7d826fd861723f1e0bcd4d5eb56ceda88fccd94d43529aaabe1bc7a2fb30cc99"
+        },
+        {
+          "id": "N07",
+          "chapter": "now",
+          "line": 118,
+          "count": 21,
+          "text_sha256": "0ff5dce9ded7bbcb883f0dee920201131a0885f9bdb82308450e4322fdac92c0"
+        },
+        {
+          "id": "N08",
+          "chapter": "now",
+          "line": 119,
+          "count": 58,
+          "text_sha256": "17b01e0a8d6b21b8c534923b2af982d298446f8382d75dff976d43fa4c2d7203"
+        },
+        {
+          "id": "N09",
+          "chapter": "now",
+          "line": 120,
+          "count": 22,
+          "text_sha256": "e2231fc70251c851b91848dd8c3ae04d27b383f2ea3dde234168dd43895e7575"
+        },
+        {
+          "id": "N10",
+          "chapter": "now",
+          "line": 121,
+          "count": 22,
+          "text_sha256": "0e9a3d8a01b83fbe6563978afe9f4c8a68bc6440b210de68db2233f11b12acb5"
+        }
+      ]
+    },
+    {
+      "id": "B14",
+      "file": "source-refresh-and-outline-B14.md",
+      "source_sha256": "609d72a83af55bf3e1b59facd0e1500a0e86c5e0b1611d31cbcfeb0b7e8de2b5",
+      "old_metrics_sha256": "be50b6e65f8f3a16a3dde57e0ee2bfe1024f66a5398f80c56e43455d9b02a250",
+      "scope": {
+        "start_heading": "## 二、六章完整旁白候選",
+        "start_heading_line": 37,
+        "end_heading_excluded": "## 三、主張索引（作者，不是獨立判定）",
+        "end_heading_line": 121,
+        "narration_column": "旁白",
+        "chapter_order": [
+          "hook",
+          "origin",
+          "idea",
+          "engine",
+          "turn",
+          "now"
+        ]
+      },
+      "old": {
+        "paragraphs": 48,
+        "spoken_chars_excluding_punctuation": 2161,
+        "chapter_chars": {
+          "H": 192,
+          "O": 352,
+          "I": 333,
+          "E": 593,
+          "T": 480,
+          "N": 211
+        },
+        "estimated_seconds_at_250_chars_per_min": 518.64,
+        "estimated_seconds_at_230_chars_per_min": 563.7391304347826
+      },
+      "corrected": {
+        "paragraphs": 48,
+        "spoken_chars_excluding_punctuation": 2161,
+        "chapter_chars": {
+          "H": 192,
+          "O": 352,
+          "I": 333,
+          "E": 593,
+          "T": 480,
+          "N": 211
+        },
+        "estimated_seconds_at_250_chars_per_min": 518.64,
+        "estimated_seconds_at_230_chars_per_min": 563.7391304347826,
+        "actual_tts_seconds": null
+      },
+      "changed": false,
+      "excess_rows": 0,
+      "excess_characters": 0,
+      "extra_seconds_at_250": 0,
+      "extra_seconds_at_230": 0,
+      "duplicate_narration_ids": [],
+      "duplicate_exact_narration_text": [],
+      "excluded_rows_previously_miscounted": [],
+      "narration_rows": [
+        {
+          "id": "H01",
+          "chapter": "hook",
+          "line": 45,
+          "count": 41,
+          "text_sha256": "e1b11d4fcf01604b97c50ff1de22f76be644a52d0c5bbfea4c3171fb4597f979"
+        },
+        {
+          "id": "H02",
+          "chapter": "hook",
+          "line": 46,
+          "count": 42,
+          "text_sha256": "8d432bf48159f0885df46ebf50ae17b26aa7f2a4627bd2a82199579550e72fe6"
+        },
+        {
+          "id": "H03",
+          "chapter": "hook",
+          "line": 47,
+          "count": 26,
+          "text_sha256": "96bc51dd4cbd7a0b21b7373ee7c9ed3bdf7cb2b9b95e9e980cccc51ef2320824"
+        },
+        {
+          "id": "H04",
+          "chapter": "hook",
+          "line": 48,
+          "count": 32,
+          "text_sha256": "aafd6cd18d1006f6ef00a97a419e065c0ef050604a8cc0455e0985acb5b8596c"
+        },
+        {
+          "id": "H05",
+          "chapter": "hook",
+          "line": 49,
+          "count": 35,
+          "text_sha256": "88a310c97ae291b7c8b5d2f35ce852b090cfff4e214e3aba2db68b6350459d1a"
+        },
+        {
+          "id": "H06",
+          "chapter": "hook",
+          "line": 50,
+          "count": 16,
+          "text_sha256": "245b1bfed2a791b0fb72485bdf553935809b704e558e11166b2eeb55a32be9c0"
+        },
+        {
+          "id": "O01",
+          "chapter": "origin",
+          "line": 58,
+          "count": 42,
+          "text_sha256": "17fe3ca9a7ef0c9c97f184b520a4a664320e8e4b69cd87d2e89a1bf5378ca35e"
+        },
+        {
+          "id": "O02",
+          "chapter": "origin",
+          "line": 59,
+          "count": 45,
+          "text_sha256": "b4d141ccff1ed5fe68a859bbbdc59ca837e6d101e5c04525949112024d3024cd"
+        },
+        {
+          "id": "O03",
+          "chapter": "origin",
+          "line": 60,
+          "count": 48,
+          "text_sha256": "9b9782e443d4782bbb5feb56fac825b3a2a493446796c482a946891ee48c76ea"
+        },
+        {
+          "id": "O04",
+          "chapter": "origin",
+          "line": 61,
+          "count": 37,
+          "text_sha256": "42e4f569ce7717fbc64e9b0ea544724d68ec9b9e5a456da60e88b77cfd44a3d5"
+        },
+        {
+          "id": "O05",
+          "chapter": "origin",
+          "line": 62,
+          "count": 41,
+          "text_sha256": "1432e53e4b27fef555a0def25800da452783ed2b3bcc4bb15328551a9cd57d66"
+        },
+        {
+          "id": "O06",
+          "chapter": "origin",
+          "line": 63,
+          "count": 44,
+          "text_sha256": "00280c4ad13ecf3d665e4f52629fa052df72a64b11dfcf3f7fa83e1733f30bde"
+        },
+        {
+          "id": "O07",
+          "chapter": "origin",
+          "line": 64,
+          "count": 56,
+          "text_sha256": "c278f6995b5c723082a8f3b3d1bf5efbaa97e412a8a4412b89a20320b091ec9c"
+        },
+        {
+          "id": "O08",
+          "chapter": "origin",
+          "line": 65,
+          "count": 39,
+          "text_sha256": "5d5e77100aee8532efd0c9d084506f44c59e4f977952f3988e02d10027148c17"
+        },
+        {
+          "id": "I01",
+          "chapter": "idea",
+          "line": 71,
+          "count": 52,
+          "text_sha256": "f2fac1cd181744025713d2da40c995d4c2015426f7ebfe38cb65e3436b9e5c58"
+        },
+        {
+          "id": "I02",
+          "chapter": "idea",
+          "line": 72,
+          "count": 33,
+          "text_sha256": "54c33ed95e1952b6b1702ae79cb81d4d355374fff6342ada16c649e8b7dcb3fb"
+        },
+        {
+          "id": "I03",
+          "chapter": "idea",
+          "line": 73,
+          "count": 58,
+          "text_sha256": "47d57a635c2c72c1938feef912088e7a3842521dee0714e75b79b8d65a21da34"
+        },
+        {
+          "id": "I04",
+          "chapter": "idea",
+          "line": 74,
+          "count": 23,
+          "text_sha256": "6a7c2231d469fbd55c49bbd7a92eb198d762cb7722b2433551e61231eb6eeb29"
+        },
+        {
+          "id": "I05",
+          "chapter": "idea",
+          "line": 75,
+          "count": 21,
+          "text_sha256": "30c94b60deef151b752fe0c144289d2ce40f8ee43d64dbe7aa2d29f23f16c4e1"
+        },
+        {
+          "id": "I06",
+          "chapter": "idea",
+          "line": 76,
+          "count": 52,
+          "text_sha256": "d043c3cca2773ac2c1eac74d7607bed5cd6333a67c33aa4f4797ef2216235c41"
+        },
+        {
+          "id": "I07",
+          "chapter": "idea",
+          "line": 77,
+          "count": 56,
+          "text_sha256": "52cd182ac4002a29dbe65f1ec0c3fa0df1a5432f6d078264cf02888efc168dab"
+        },
+        {
+          "id": "I08",
+          "chapter": "idea",
+          "line": 78,
+          "count": 38,
+          "text_sha256": "e512849e88469bfa2eb8066821f985b233ad3c273bffe9b2267f714f0a42f0f3"
+        },
+        {
+          "id": "E01",
+          "chapter": "engine",
+          "line": 84,
+          "count": 46,
+          "text_sha256": "fdeaf038c0eb3fc2d5ab7ea355d5e18f48afe1a88680e5d7ac85fced96a04134"
+        },
+        {
+          "id": "E02",
+          "chapter": "engine",
+          "line": 85,
+          "count": 40,
+          "text_sha256": "efc090991841d38c3c3441ce3a71acdb5f65fd4c20981abf70a93d688501815d"
+        },
+        {
+          "id": "E03",
+          "chapter": "engine",
+          "line": 86,
+          "count": 49,
+          "text_sha256": "326ca21fe3397478bbf131e7ff37724f96b78fe03428cf6ba8bc294ec25392dd"
+        },
+        {
+          "id": "E04",
+          "chapter": "engine",
+          "line": 87,
+          "count": 39,
+          "text_sha256": "c6c663c1c20656c4927b05d53aef02dbb83b69ff2a3bc23fc0b5ff6b8bbc2a14"
+        },
+        {
+          "id": "E05",
+          "chapter": "engine",
+          "line": 88,
+          "count": 43,
+          "text_sha256": "5c74994630500ffd34719ce8ae7129d4abcb1c012029c157d19ec89257145aad"
+        },
+        {
+          "id": "E05a",
+          "chapter": "engine",
+          "line": 89,
+          "count": 67,
+          "text_sha256": "5ba36cddfa4ff233f623e0850396bbe4274a23b54fc678e7532e0a56bc675e4d"
+        },
+        {
+          "id": "E05b",
+          "chapter": "engine",
+          "line": 90,
+          "count": 57,
+          "text_sha256": "bc8ceebb738434c3e7917929c71b420dfb28e49a6f3e4d564bd74af771e89e9a"
+        },
+        {
+          "id": "E06",
+          "chapter": "engine",
+          "line": 91,
+          "count": 49,
+          "text_sha256": "4364cb2fe5a4e84f044dab162cffdde8525ee08e2e0f8e38067b9564a466a19b"
+        },
+        {
+          "id": "E07",
+          "chapter": "engine",
+          "line": 92,
+          "count": 44,
+          "text_sha256": "e2da7daae699639c798722b45c25abdda617afad6ae790c0247d131f961b743e"
+        },
+        {
+          "id": "E06a",
+          "chapter": "engine",
+          "line": 93,
+          "count": 58,
+          "text_sha256": "148cc37ba975425821a8fcb2cfafcbf2f91fe15777aa9ae6415928ba48a022f0"
+        },
+        {
+          "id": "E07a",
+          "chapter": "engine",
+          "line": 94,
+          "count": 53,
+          "text_sha256": "285a916eb182ee52f459342939bb4d2a7f1782c0bcacbbd19873bcf694c4cd8b"
+        },
+        {
+          "id": "E09",
+          "chapter": "engine",
+          "line": 95,
+          "count": 48,
+          "text_sha256": "b34e2b7a0fc81b0e40ed4f7cb5eba9a2c89ba65be4d293b15879965370a0ce6b"
+        },
+        {
+          "id": "T00",
+          "chapter": "turn",
+          "line": 101,
+          "count": 61,
+          "text_sha256": "ac4014c7cdba0a4b0eea4c625f4b675fb39f8f3d651f53711eb2ddce4a5ce04c"
+        },
+        {
+          "id": "T01",
+          "chapter": "turn",
+          "line": 102,
+          "count": 55,
+          "text_sha256": "e134214da1040aa658bb12b93e21fafc465b5eecce2494cc15f067ddd3da83ca"
+        },
+        {
+          "id": "T02",
+          "chapter": "turn",
+          "line": 103,
+          "count": 45,
+          "text_sha256": "65e9856cf0ac4115644a0e3ee0c85e8485a5db02b845a6898e0d8f0b096367e3"
+        },
+        {
+          "id": "T03",
+          "chapter": "turn",
+          "line": 104,
+          "count": 52,
+          "text_sha256": "db60b08308d7b51a9b61562e304ea07878651c6f77cf8c2605f5a82e983d8531"
+        },
+        {
+          "id": "T03a",
+          "chapter": "turn",
+          "line": 105,
+          "count": 65,
+          "text_sha256": "1952cd2844ae8260ac907fc4e18216ad9d6cfdb6a6867cbb6d062a5b1a3604d0"
+        },
+        {
+          "id": "T04",
+          "chapter": "turn",
+          "line": 106,
+          "count": 37,
+          "text_sha256": "b4b83a585a45e567045f9a740bbe19392da6828a3d31401f18a31f9519a9719b"
+        },
+        {
+          "id": "T05",
+          "chapter": "turn",
+          "line": 107,
+          "count": 60,
+          "text_sha256": "57c8efdbf98209e8186f75225f33e283f7ac12c65a2d3f300451fcba662b19f7"
+        },
+        {
+          "id": "T06",
+          "chapter": "turn",
+          "line": 108,
+          "count": 26,
+          "text_sha256": "4664cd582348a36f6d36a95a60748145f7ba48f2b6e2cc7a850da6cdfb33e4eb"
+        },
+        {
+          "id": "T07",
+          "chapter": "turn",
+          "line": 109,
+          "count": 79,
+          "text_sha256": "ca961bf9ecf402c0480fbc36affb540e17449ac2f3979d582c0b88fa08ae282b"
+        },
+        {
+          "id": "N02",
+          "chapter": "now",
+          "line": 115,
+          "count": 54,
+          "text_sha256": "81b233aa72814ba21b75871b280d328cd3383eaad8203c80ea345376a8c81877"
+        },
+        {
+          "id": "N03",
+          "chapter": "now",
+          "line": 116,
+          "count": 53,
+          "text_sha256": "c3811635c97dcc5cfdb18363573a82c26ab02e6b4a1405fffaf0ef8c2ff0e88c"
+        },
+        {
+          "id": "N05",
+          "chapter": "now",
+          "line": 117,
+          "count": 52,
+          "text_sha256": "8fcde48f0f67085387e03e0658478c2619fb4680fdf01c85309aef0b6cca106c"
+        },
+        {
+          "id": "N06",
+          "chapter": "now",
+          "line": 118,
+          "count": 32,
+          "text_sha256": "e188dcc277e4f022fee3bb37b8bff77c161aefd52b740ed9cad35759359baeb7"
+        },
+        {
+          "id": "N07",
+          "chapter": "now",
+          "line": 119,
+          "count": 20,
+          "text_sha256": "1b9da15fc02b76268e12af6d41b9faeb7d850f1ec8bdd770a7e250156c9296a4"
+        }
+      ]
+    },
+    {
+      "id": "A21",
+      "file": "source-refresh-and-outline-A21.md",
+      "source_sha256": "c250fb1f03f1b4868519a7d902af08247a214b2a228dc372efde8474b94cdc82",
+      "old_metrics_sha256": "8e11c5061cd2785b6170465dd166dc1184592196f4b17e6b01c8c85466cc69f2",
+      "scope": {
+        "start_heading": "## 二、六章完整旁白候選",
+        "start_heading_line": 32,
+        "end_heading_excluded": "## 三、逐句主張索引",
+        "end_heading_line": 115,
+        "narration_column": "旁白",
+        "chapter_order": [
+          "hook",
+          "origin",
+          "idea",
+          "engine",
+          "turn",
+          "now"
+        ]
+      },
+      "old": {
+        "paragraphs": 47,
+        "spoken_chars_excluding_punctuation": 2281,
+        "chapter_chars": {
+          "H": 164,
+          "O": 303,
+          "I": 380,
+          "E": 519,
+          "T": 315,
+          "N": 600
+        },
+        "estimated_seconds_at_250_chars_per_min": 547.44,
+        "estimated_seconds_at_230_chars_per_min": 595.0434782608695
+      },
+      "corrected": {
+        "paragraphs": 47,
+        "spoken_chars_excluding_punctuation": 2281,
+        "chapter_chars": {
+          "H": 164,
+          "O": 303,
+          "I": 380,
+          "E": 519,
+          "T": 315,
+          "N": 600
+        },
+        "estimated_seconds_at_250_chars_per_min": 547.44,
+        "estimated_seconds_at_230_chars_per_min": 595.0434782608695,
+        "actual_tts_seconds": null
+      },
+      "changed": false,
+      "excess_rows": 0,
+      "excess_characters": 0,
+      "extra_seconds_at_250": 0,
+      "extra_seconds_at_230": 0,
+      "duplicate_narration_ids": [],
+      "duplicate_exact_narration_text": [],
+      "excluded_rows_previously_miscounted": [],
+      "narration_rows": [
+        {
+          "id": "H01",
+          "chapter": "hook",
+          "line": 40,
+          "count": 40,
+          "text_sha256": "d4cb5b54eaac64eea0bd23f6f61e2a743b0b2ce96f47f9162b56bcfe19ce7947"
+        },
+        {
+          "id": "H02",
+          "chapter": "hook",
+          "line": 41,
+          "count": 34,
+          "text_sha256": "8a26f3f93755c7e49952923899de15432f2f4334678590122eee16566b2a1812"
+        },
+        {
+          "id": "H03",
+          "chapter": "hook",
+          "line": 42,
+          "count": 27,
+          "text_sha256": "6027ba87f55124ce85da06f9463aa3deda3119a886cedb47c6c0f9843533fc11"
+        },
+        {
+          "id": "H04",
+          "chapter": "hook",
+          "line": 43,
+          "count": 37,
+          "text_sha256": "0583a933c3d59f1f8f833450ec55ffd52b9900cc3a245f0bd3cc361ea357126a"
+        },
+        {
+          "id": "H05",
+          "chapter": "hook",
+          "line": 44,
+          "count": 26,
+          "text_sha256": "19bd232a06fa5d6c8a5a929c3a6b5b39607c9d19594f4cb4fbe4db4f9d344fe7"
+        },
+        {
+          "id": "O01",
+          "chapter": "origin",
+          "line": 52,
+          "count": 40,
+          "text_sha256": "ca66ac6212e2431326cad069dbaaecc98b23c1b825552055060a0386650a5ab2"
+        },
+        {
+          "id": "O02",
+          "chapter": "origin",
+          "line": 53,
+          "count": 33,
+          "text_sha256": "e68319a7c635884826a55f6b5bb7c6e161f53344426aadee636963ff814145f9"
+        },
+        {
+          "id": "O03",
+          "chapter": "origin",
+          "line": 54,
+          "count": 53,
+          "text_sha256": "9dd804d5ec819ada64578c155e40c3c0c969c4b5351a16dfebadf8b1bb341537"
+        },
+        {
+          "id": "O04",
+          "chapter": "origin",
+          "line": 55,
+          "count": 47,
+          "text_sha256": "4f4eb4c6c03cb4b45ea896ed8e3303fd192456d31d47450fbcb9d2a5600cd279"
+        },
+        {
+          "id": "O05",
+          "chapter": "origin",
+          "line": 56,
+          "count": 56,
+          "text_sha256": "44657e2d752aceb9642daae1864b2ad9c05b98d725d1435eb43d748d4caed2d9"
+        },
+        {
+          "id": "O06",
+          "chapter": "origin",
+          "line": 57,
+          "count": 29,
+          "text_sha256": "2460a0ee025bfc6f4263325b56ea41efc6072426205ee03c943f01d61dd008fd"
+        },
+        {
+          "id": "O07",
+          "chapter": "origin",
+          "line": 58,
+          "count": 45,
+          "text_sha256": "094f01df3902f48d584cdc1229329de4433a963cc55647a2f4cb3e9d545bfacf"
+        },
+        {
+          "id": "I01",
+          "chapter": "idea",
+          "line": 64,
+          "count": 57,
+          "text_sha256": "04042345a7a3c259d5bc2e688c765855f779108944d09993ae9df96fd109fdfd"
+        },
+        {
+          "id": "I02",
+          "chapter": "idea",
+          "line": 65,
+          "count": 61,
+          "text_sha256": "32924721d07ef7631d802cfd5fcb1047140cde7c4b3f340cdf9845c40a1efb6b"
+        },
+        {
+          "id": "I03",
+          "chapter": "idea",
+          "line": 66,
+          "count": 31,
+          "text_sha256": "d7db03185c6e76039843b09b704f94dceb492cc9626f7a2ce7717a1f15699984"
+        },
+        {
+          "id": "I04",
+          "chapter": "idea",
+          "line": 67,
+          "count": 39,
+          "text_sha256": "f5b3fb3cd2c65034b52eff05d977f1c485a02e0b12fc9fd1595ec92688de6430"
+        },
+        {
+          "id": "I05",
+          "chapter": "idea",
+          "line": 68,
+          "count": 65,
+          "text_sha256": "8bd1f73e21b0c6eb8edebd00caba6a4373a8575374b755ea4d8b35d128c5926d"
+        },
+        {
+          "id": "I06",
+          "chapter": "idea",
+          "line": 69,
+          "count": 44,
+          "text_sha256": "3834799f5b04b14d0ded596390b3f10c19ffc5ef23e78076d93e9d8545526a2f"
+        },
+        {
+          "id": "I07",
+          "chapter": "idea",
+          "line": 70,
+          "count": 44,
+          "text_sha256": "54d6bf6a751d96536ab8d51e11b0640a7315172d9feb1448d99035e67b56d925"
+        },
+        {
+          "id": "I08",
+          "chapter": "idea",
+          "line": 71,
+          "count": 39,
+          "text_sha256": "bd7ea6fa0258cc4350a0923637ae9b38aaa95650bd0b17c8d28793244324a699"
+        },
+        {
+          "id": "E01",
+          "chapter": "engine",
+          "line": 77,
+          "count": 58,
+          "text_sha256": "0660edc2fd525f5da1b7347a6d5b3bc43d8f63164d92d3065c3b3c03314f2a91"
+        },
+        {
+          "id": "E02",
+          "chapter": "engine",
+          "line": 78,
+          "count": 42,
+          "text_sha256": "5fea0f6f9ace561fd7dc15d88857b29d2b0c6414b9e91cc1142a64aaa4a4db70"
+        },
+        {
+          "id": "E02a",
+          "chapter": "engine",
+          "line": 79,
+          "count": 72,
+          "text_sha256": "d22af29e814038253f560b6ca7c7b7798ff5515810ea96e342ce9652ade2e840"
+        },
+        {
+          "id": "E03",
+          "chapter": "engine",
+          "line": 80,
+          "count": 79,
+          "text_sha256": "067bd8f29a315d89a4e9831c0e6a7daf6219d3169edc12aca36a998d6b6e1bbe"
+        },
+        {
+          "id": "E04",
+          "chapter": "engine",
+          "line": 81,
+          "count": 55,
+          "text_sha256": "0e3fdcc3da5b1dbc32e5eeebe00f838529f92024112dc29a2f9b6fb2c9f5b50c"
+        },
+        {
+          "id": "E05",
+          "chapter": "engine",
+          "line": 82,
+          "count": 59,
+          "text_sha256": "20ce55053c7e05019d5a59c94ca105450ba17d6afc1b26cccbe7dc8e6f223f85"
+        },
+        {
+          "id": "E06",
+          "chapter": "engine",
+          "line": 83,
+          "count": 59,
+          "text_sha256": "bb9f9da7470d0c7f186fe3d3afb37b9294ce44e7f86ac855c8e980b04fbe7dda"
+        },
+        {
+          "id": "E07",
+          "chapter": "engine",
+          "line": 84,
+          "count": 43,
+          "text_sha256": "a5d0023e125d684143a2b15a266a1be62d8799d436fb477bbd83d870f1936aa5"
+        },
+        {
+          "id": "E08",
+          "chapter": "engine",
+          "line": 85,
+          "count": 52,
+          "text_sha256": "fea9c8aed484ca049fc3afd1f7ead1b615a2e98692d79bd8b87324b92dbf0175"
+        },
+        {
+          "id": "T01",
+          "chapter": "turn",
+          "line": 91,
+          "count": 49,
+          "text_sha256": "c83f12a25e6df85f8a1a5766877bd2bf1b078b9b21e0b994ee5df3b6e9e9a4ea"
+        },
+        {
+          "id": "T02",
+          "chapter": "turn",
+          "line": 92,
+          "count": 64,
+          "text_sha256": "4b958ea08a8cac5c224442a1675b371855073d82ae720c189d184aad4357e14c"
+        },
+        {
+          "id": "T03",
+          "chapter": "turn",
+          "line": 93,
+          "count": 41,
+          "text_sha256": "6390e70d106e6a22c53a3a94f639d31e6f750b2436cb3c869e5118d9eb5885ad"
+        },
+        {
+          "id": "T04",
+          "chapter": "turn",
+          "line": 94,
+          "count": 51,
+          "text_sha256": "2aad267162fc85e69fa915f51909046c1c955caa192b3031ccb4a8c0ac8307f5"
+        },
+        {
+          "id": "T05",
+          "chapter": "turn",
+          "line": 95,
+          "count": 41,
+          "text_sha256": "498c21707eecae3af4b1a8f710289c714af624753393fd02a18df2a1235273c8"
+        },
+        {
+          "id": "T06",
+          "chapter": "turn",
+          "line": 96,
+          "count": 37,
+          "text_sha256": "e2d11b459e7f5b7a343f727952223a82df34db6831991fa396bb2f118ab87bde"
+        },
+        {
+          "id": "T07",
+          "chapter": "turn",
+          "line": 97,
+          "count": 32,
+          "text_sha256": "278b0752dd19e40d191a6ecc9ae8f47fc7128bc161868bd4634a97a7e35a9662"
+        },
+        {
+          "id": "N01",
+          "chapter": "now",
+          "line": 103,
+          "count": 47,
+          "text_sha256": "955ee391fc0de47dede21c9c7d05b882497be831a397740977480e6106541a09"
+        },
+        {
+          "id": "N02",
+          "chapter": "now",
+          "line": 104,
+          "count": 68,
+          "text_sha256": "0ef00f40301ea341a12da682cff4494a5cb6c90c286be3ff118b88845a420e7b"
+        },
+        {
+          "id": "N03",
+          "chapter": "now",
+          "line": 105,
+          "count": 62,
+          "text_sha256": "4d1f40303aa9a1ece66e18950b066eb84623b230c46f0c67dacabfede5fcfcc8"
+        },
+        {
+          "id": "N03a",
+          "chapter": "now",
+          "line": 106,
+          "count": 68,
+          "text_sha256": "41b535e81a123395c1dda7f82a85cc00834b29b285dd37f2e7f2356dc6ef2fac"
+        },
+        {
+          "id": "N04",
+          "chapter": "now",
+          "line": 107,
+          "count": 61,
+          "text_sha256": "caa0795c55a4fcadd35b03bd80c97afed84fbd713d21fe4bd61b074a9c06506f"
+        },
+        {
+          "id": "N05",
+          "chapter": "now",
+          "line": 108,
+          "count": 66,
+          "text_sha256": "9cef3bb470f789630248c56823cf84fecf7907a8b0e0b408ccca8214968007ae"
+        },
+        {
+          "id": "N06",
+          "chapter": "now",
+          "line": 109,
+          "count": 59,
+          "text_sha256": "7644d113e030d1b1ff97d5f7520164d0d01ad36aa7b7807cd0d8f0803cd74b58"
+        },
+        {
+          "id": "N07",
+          "chapter": "now",
+          "line": 110,
+          "count": 55,
+          "text_sha256": "4abe5cd293f7f57cc7656ff10e8e70abd4bf248828ffba2bcd5db61dbe0b4783"
+        },
+        {
+          "id": "N08",
+          "chapter": "now",
+          "line": 111,
+          "count": 63,
+          "text_sha256": "63c59310da4c45f7592834c7ed485b514afe6469bb38fa237292e0a3c5659e2d"
+        },
+        {
+          "id": "N09",
+          "chapter": "now",
+          "line": 112,
+          "count": 27,
+          "text_sha256": "8ecf969b95748eecff343e7bff76f66111a4f0e49b5893fb3b080192ef1b3438"
+        },
+        {
+          "id": "N10",
+          "chapter": "now",
+          "line": 113,
+          "count": 24,
+          "text_sha256": "ff056e29df021c6208fa0bf310ac42c11ec5cafc57d37906c40df9cc43dc31eb"
+        }
+      ]
+    }
+  ]
+}
