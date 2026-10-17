@@ -231,9 +231,11 @@ class CutoverTest(unittest.TestCase):
 
     def test_release_state_requires_autodeploy_units_absent(self) -> None:
         driver = module.Driver(plan(), "a" * 64)
+        # CI cannot traverse /root; only the unit-state callback is under test.
         with (
             patch.object(module, "HOLD_PATH", Path("/nonexistent/hold")),
             patch.object(driver, "check_autodeploy_idle") as idle,
+            patch.object(module.Path, "exists", return_value=False),
             patch.object(module.Path, "glob", return_value=[]),
         ):
             driver.check_release_state()
