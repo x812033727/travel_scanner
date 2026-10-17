@@ -1,0 +1,599 @@
+{
+  "title": "What Is an LLM? Why Fluent Answers Aren't Proof of a Lookup | AI Terms in Ten Minutes",
+  "description": "How does a large language model (LLM) generate text? Why isn't a complete answer proof that information was actually found?\nFor people who use chat tools but often mix up models, data lookup and tool execution. No coding knowledge is needed.\n\nWe rerun three questions offline using six fictional lost-property records: an evidence-based lookup, missing data and a tool count. Six items total, four unclaimed, two unclaimed umbrellas; counts include their conditions and IDs. The story, chat bubbles and wrong answers are editorial illustrations, not actual outputs from any language model. The Python standard-library program makes no network or model calls. It verifies only data and counts, not model capability.\n\nSix demo records: L001 umbrella / north counter / unclaimed; L002 water bottle / east shelf / claimed; L003 umbrella / west basket / unclaimed; L004 scarf / south hook / unclaimed; L005 hat / east shelf / claimed; L006 gloves / west basket / unclaimed. There are no owner-name or phone fields.\nActual offline output: looking up L001 returns north counter and unclaimed; asking for owner_phone returns UNKNOWN; unclaimed IDs are L001, L003, L004, L006; unclaimed umbrella IDs are L001, L003.\n\nThe three columns check an answer's evidence and execution records, not mutually exclusive abilities. Even with data or tool results, the final wording may still be model-generated. Leave unsupported parts unknown. If tools were used, check their conditions and actual results.\n\nFull article and diagrams: https://mokaair.com/zh-TW/life/what-is-a-large-language-model\nAI terms index: https://mokaair.com/zh-TW/life/ai-terms-index?utm_source=youtube&utm_medium=video&utm_campaign=ai-term-large-language-model",
+  "tags": [
+    "Large Language Model",
+    "LLM",
+    "AI terms",
+    "Language models and tools",
+    "Context",
+    "Text generation",
+    "AI Terms in Ten Minutes",
+    "Mokaair"
+  ],
+  "chapters": {
+    "hook": "Fluent Doesn't Mean Found",
+    "counter-arrival": "One Answer, Three Jobs",
+    "generation-chapter": "How Models Generate Text",
+    "training-chapter": "Training vs. Pasting Data",
+    "demo-chapter": "Six Items, Three Offline Tasks",
+    "tools-chapter": "Chat Products and Tools",
+    "errors-chapter": "Three Traps in Fluent Answers",
+    "action-chapter": "Check Answers in Three Columns"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook": "4306b4c141a8",
+      "counter-arrival": "f58f85fc4011",
+      "generation-chapter": "aa44a600978d",
+      "training-chapter": "2596d9ff9184",
+      "demo-chapter": "417e9605c06b",
+      "tools-chapter": "5d574547534d",
+      "errors-chapter": "d9b26061b025",
+      "action-chapter": "33d103bcf9f8"
+    },
+    "title": "f663c103dc90",
+    "description": "16ef1a87867a",
+    "tags": "eceaf6558038",
+    "thumbnail": "d42ff7342860"
+  },
+  "lines": {
+    "bard": {
+      "source_hash": "ba1ecf26c063",
+      "text": "Does a complete answer mean anything was actually found?"
+    },
+    "kwdm": {
+      "source_hash": "dc6bc3720ddc",
+      "text": "Completing a reply is no proof of a lookup. How do we find evidence?"
+    },
+    "2btx": {
+      "source_hash": "337a8e769cd2",
+      "text": "An umbrella, an owner: the counter just needs a trustworthy answer."
+    },
+    "gimi": {
+      "source_hash": "7ebf024a4a79",
+      "text": "This list names items and locations, but not their owners."
+    },
+    "m7vv": {
+      "source_hash": "e29ef666540c",
+      "text": "You think a confident answer means each detail has support."
+    },
+    "f7qb": {
+      "source_hash": "abc97197eeb2",
+      "text": "But the list has neither the owner's name nor a phone number."
+    },
+    "62uc": {
+      "source_hash": "d7f60f153168",
+      "text": "That record places the umbrella at the north counter."
+    },
+    "2vvx": {
+      "source_hash": "06248a3a2836",
+      "text": "Adding Mr. Wang and a phone is our deliberate error illustration."
+    },
+    "2iii": {
+      "source_hash": "526eade19881",
+      "text": "Location and ownership need different kinds of evidence."
+    },
+    "sh23": {
+      "source_hash": "bdb37e7e0c40",
+      "text": "Turning known data into a sentence makes it easier to read."
+    },
+    "jqag": {
+      "source_hash": "ebaa6e57c9dd",
+      "text": "To count unclaimed umbrellas, first check which remain unclaimed."
+    },
+    "q7mz": {
+      "source_hash": "51997e4e6b7f",
+      "text": "One answer can combine generated text, lookup and tool counts."
+    },
+    "xy5h": {
+      "source_hash": "a1c038e43491",
+      "text": "After data or tool results, a model may write the final text."
+    },
+    "eyiz": {
+      "source_hash": "ff7bb5c16f6f",
+      "text": "Three columns check evidence and execution, not exclusive skill types."
+    },
+    "n44i": {
+      "source_hash": "ad1fb913274f",
+      "text": "These three jobs can work together. A confident reply cannot replace them."
+    },
+    "jrff": {
+      "source_hash": "68e376a68d1e",
+      "text": "The dog wants the hat; the counter's list can't prove ownership."
+    },
+    "dymg": {
+      "source_hash": "72a32c709d1b",
+      "text": "How does that fluent model generate the words we see?"
+    },
+    "9n5m": {
+      "source_hash": "33127dd1becf",
+      "text": "Think of a text generator trained on many language patterns."
+    },
+    "uidq": {
+      "source_hash": "12fdda99a326",
+      "text": "Large language model, often shortened to LLM, is a model category."
+    },
+    "3wka": {
+      "source_hash": "7f257524ca84",
+      "text": "Input text is usually split into small processing units."
+    },
+    "mjwt": {
+      "source_hash": "8a330280c109",
+      "text": "Called tokens, they aren't always one Chinese character each."
+    },
+    "gu98": {
+      "source_hash": "094f648c66df",
+      "text": "There is no universal text-to-token count conversion."
+    },
+    "tx7f": {
+      "source_hash": "05c3203974dd",
+      "text": "Dough is just an analogy here; we aren't counting text."
+    },
+    "r75c": {
+      "source_hash": "bcab5764a9ad",
+      "text": "Common generative models use current input to produce the next token."
+    },
+    "ba5g": {
+      "source_hash": "f4671526e764",
+      "text": "The new output becomes input for the words that follow."
+    },
+    "cvvb": {
+      "source_hash": "7b1560a00bbd",
+      "text": "The next token depends on prior text and generation choices."
+    },
+    "m2hw": {
+      "source_hash": "cb3a054d434c",
+      "text": "This is common causal generation, not every architecture."
+    },
+    "c9pm": {
+      "source_hash": "24f0d9aea4ed",
+      "text": "It cannot peek at text it has yet to generate."
+    },
+    "kdby": {
+      "source_hash": "f5e48bdbbc5c",
+      "text": "Don't claim this means all language models work the same way."
+    },
+    "k54b": {
+      "source_hash": "6d9ca8b90d13",
+      "text": "Who refers to whom in prior text also affects this round."
+    },
+    "5azz": {
+      "source_hash": "d2ed9c26b8d1",
+      "text": "In \"she took his cup,\" the word \"she\" alone doesn't identify the person."
+    },
+    "7yja": {
+      "source_hash": "8acf8cf92a8e",
+      "text": "Common attention mechanisms use math to weigh input relationships."
+    },
+    "gb26": {
+      "source_hash": "df4f84085ffc",
+      "text": "They help process context and input relationships."
+    },
+    "w4q8": {
+      "source_hash": "49d4a1ee9ee5",
+      "text": "They cannot guarantee every reference is correct."
+    },
+    "jxrk": {
+      "source_hash": "4bc193678cb9",
+      "text": "Ingredient amounts are an analogy; no baker lives inside the model."
+    },
+    "4g2w": {
+      "source_hash": "79359d729ccd",
+      "text": "How do its learned abilities differ from the data you just pasted?"
+    },
+    "6wh6": {
+      "source_hash": "898afa73bf68",
+      "text": "Training shapes ability; this round's input supplies information."
+    },
+    "58sy": {
+      "source_hash": "3a815582b564",
+      "text": "A potter's practiced touch doesn't mean knowing every customer's cup."
+    },
+    "zsri": {
+      "source_hash": "eda75fc29c0b",
+      "text": "Training adjusts many numerical values, usually called parameters."
+    },
+    "fbw8": {
+      "source_hash": "8b07f72a3368",
+      "text": "Parameters work together in calculations, not a searchable lost-property log."
+    },
+    "caid": {
+      "source_hash": "0557af6759ae",
+      "text": "Training adjusts parameters; context is this round's available input."
+    },
+    "kibv": {
+      "source_hash": "b22b7ebe900d",
+      "text": "Pasting data and retraining the model are two different things."
+    },
+    "8gwq": {
+      "source_hash": "2baaf541c8ae",
+      "text": "New clay changes what you're working on this time."
+    },
+    "d34y": {
+      "source_hash": "d493e28db82c",
+      "text": "Pasting the lost-item list supplies data; it doesn't retrain the model."
+    },
+    "948s": {
+      "source_hash": "afd6b11455c8",
+      "text": "A later chat sees it only if the system supplies it again."
+    },
+    "g42q": {
+      "source_hash": "648302b30fa8",
+      "text": "Treat the model, current input and external tools as three roles."
+    },
+    "kmr4": {
+      "source_hash": "888da5b338f3",
+      "text": "Asking for a table changes this round's task instructions."
+    },
+    "c5rj": {
+      "source_hash": "b3dc6cfd5e6a",
+      "text": "Asking to fill every field may yield data the source lacks."
+    },
+    "q5ee": {
+      "source_hash": "d0653acc8341",
+      "text": "Ask: use only this list; mark unverifiable fields unknown."
+    },
+    "ufjr": {
+      "source_hash": "0f26bf8c0460",
+      "text": "That's your requirement; still check whether it was followed."
+    },
+    "q4ek": {
+      "source_hash": "ba73d227f470",
+      "text": "Stepwise generation is a mechanism, not a full reasoning ability test."
+    },
+    "uuy8": {
+      "source_hash": "feb84a3e1edd",
+      "text": "Judge task completion by that task's results and standards."
+    },
+    "cvde": {
+      "source_hash": "e95c428d29e9",
+      "text": "Before testing models, can we run what this list actually establishes?"
+    },
+    "kcsa": {
+      "source_hash": "4ef9eb2c144a",
+      "text": "Offline, we run three tasks: find a location, check a missing field, count."
+    },
+    "ck4v": {
+      "source_hash": "6ffcfd79f634",
+      "text": "Six fictional lost items: umbrellas, a bottle, scarf, hat and gloves."
+    },
+    "22ge": {
+      "source_hash": "8fb95079c9e8",
+      "text": "Item one: umbrella, unclaimed. Two: bottle, claimed. They differ."
+    },
+    "6irv": {
+      "source_hash": "eb3795c9d1a4",
+      "text": "Item three, umbrella, and four, scarf: unclaimed."
+    },
+    "pzys": {
+      "source_hash": "e337d56047ee",
+      "text": "5: hat claimed; 6: gloves unclaimed. Six records."
+    },
+    "mvew": {
+      "source_hash": "13ba0eea7dc3",
+      "text": "Don't count all six: the question sets the filter."
+    },
+    "4ex8": {
+      "source_hash": "56702c3fe05f",
+      "text": "Claimed records stay to show why filtering matters."
+    },
+    "czzw": {
+      "source_hash": "a0d0203738ee",
+      "text": "IDs and locations are traceable; no real owner data is used."
+    },
+    "wbdt": {
+      "source_hash": "d84f42815956",
+      "text": "First: locate the first umbrella. The code first finds its ID."
+    },
+    "byqu": {
+      "source_hash": "a7b72a01025e",
+      "text": "Line one identifies fictional data and says no language model was called."
+    },
+    "ebcw": {
+      "source_hash": "48e0508275de",
+      "text": "Line two finds the first umbrella: north counter, unclaimed."
+    },
+    "n4uz": {
+      "source_hash": "c8d94ebca421",
+      "text": "This answer relies on the location record actually in the data."
+    },
+    "sa2k": {
+      "source_hash": "012abd10099c",
+      "text": "Second: the owner's phone. The code first checks for that field."
+    },
+    "wbi3": {
+      "source_hash": "f7e92caa2540",
+      "text": "It checks the owner-phone field, not elsewhere for a phone number."
+    },
+    "bcam": {
+      "source_hash": "27e0f9119676",
+      "text": "The result is unknown because that field does not exist here."
+    },
+    "x483": {
+      "source_hash": "d9c4e350081d",
+      "text": "Missing here doesn't mean no phone exists; this data just cannot answer."
+    },
+    "c5a6": {
+      "source_hash": "d25697521114",
+      "text": "Third: how many unclaimed? The code sorts records into two status groups."
+    },
+    "6wxm": {
+      "source_hash": "25716996253b",
+      "text": "The bottle and hat are claimed, no longer awaiting owners."
+    },
+    "fkta": {
+      "source_hash": "6202bab23dec",
+      "text": "Of six records, two are claimed, leaving four that match unclaimed."
+    },
+    "cwn4": {
+      "source_hash": "aa108266f713",
+      "text": "Line two lists those four IDs; check each against the list."
+    },
+    "ks7c": {
+      "source_hash": "a2c5b4129b18",
+      "text": "Filter the unclaimed items for umbrellas: two remain, along with their IDs."
+    },
+    "qizd": {
+      "source_hash": "1f992f6be664",
+      "text": "One list: six items total, four unclaimed, two unclaimed umbrellas."
+    },
+    "ph6c": {
+      "source_hash": "6ab2eb1cb750",
+      "text": "Filters and IDs with counts help locate the counting error."
+    },
+    "ujfe": {
+      "source_hash": "075d4701e04c",
+      "text": "The linked article has diagrams; these six records have their own demo log."
+    },
+    "d6ut": {
+      "source_hash": "912881acdd1b",
+      "text": "This proves the code counts by condition, not that any model is error-free."
+    },
+    "y9ff": {
+      "source_hash": "699de3256a5e",
+      "text": "For a chat tool to do these steps, which other roles are needed?"
+    },
+    "x95w": {
+      "source_hash": "0e2389032421",
+      "text": "A model can request a tool call; the program must send it for execution."
+    },
+    "hwde": {
+      "source_hash": "5b210036dfa1",
+      "text": "Asking a vendor to count stock won't make the boxes count themselves."
+    },
+    "jb7z": {
+      "source_hash": "1b9a0b1875c0",
+      "text": "The tool gets a request, handles data and returns results to the workflow."
+    },
+    "77dr": {
+      "source_hash": "b98d87ef70aa",
+      "text": "Check the request: all records or unclaimed ones?"
+    },
+    "2sqz": {
+      "source_hash": "b016af572684",
+      "text": "Check execution: missing access or files may halt it midway."
+    },
+    "kcrb": {
+      "source_hash": "3dcdcde1add3",
+      "text": "Check tool output; the model saying \"I counted\" isn't proof."
+    },
+    "736v": {
+      "source_hash": "f625dee83725",
+      "text": "If an empty-box query returns nothing, the model must not fill it in."
+    },
+    "h7e9": {
+      "source_hash": "2a4fc85c317c",
+      "text": "It can put returned data into words, but may still omit conditions."
+    },
+    "ucjp": {
+      "source_hash": "bccad647f47b",
+      "text": "The chat product you see usually includes more than just that text model."
+    },
+    "8ppe": {
+      "source_hash": "f4fe593bb342",
+      "text": "The model handles this input; the product handles data, tools and display."
+    },
+    "zpm2": {
+      "source_hash": "96f7c67c58d0",
+      "text": "The same model may therefore do different things in different products."
+    },
+    "hfed": {
+      "source_hash": "ccfbf6e3b9db",
+      "text": "Can it read your file? Check whether the product supplied its contents."
+    },
+    "3qvj": {
+      "source_hash": "7a0931db297f",
+      "text": "Can it check stock? Check tool connections and what stock it can access."
+    },
+    "w4hk": {
+      "source_hash": "e035beee5cd7",
+      "text": "\"Remembered\" on screen doesn't mean the model's parameters were retrained."
+    },
+    "g4ds": {
+      "source_hash": "6da600ab86ba",
+      "text": "A product can save input and supply it to later chats."
+    },
+    "xhwk": {
+      "source_hash": "ece03868d128",
+      "text": "What it saves and when: check the product's instructions."
+    },
+    "jh6k": {
+      "source_hash": "06de99b445b0",
+      "text": "The fluent vendor and stock-counting helper each still need checking."
+    },
+    "ch7h": {
+      "source_hash": "768aa8b0182f",
+      "text": "Request, output and final words must agree for this task to be complete."
+    },
+    "zvsm": {
+      "source_hash": "b70f17557a95",
+      "text": "With data and tools, why might the final answer still be wrong?"
+    },
+    "hfmb": {
+      "source_hash": "0fdd0601731d",
+      "text": "Trap one: fill nonexistent fields. Trap two: change the question's conditions."
+    },
+    "sxn6": {
+      "source_hash": "04f2f7c3a777",
+      "text": "You think filling every table cell makes a report more reliable."
+    },
+    "9fyu": {
+      "source_hash": "db4e9ce37b29",
+      "text": "But no owner is listed. Adding Mr. Wang just makes the error more complete."
+    },
+    "4d2z": {
+      "source_hash": "7c252cfb5930",
+      "text": "This erroneous draft invents an owner and changes unclaimed to claimed."
+    },
+    "255x": {
+      "source_hash": "e3c95660274a",
+      "text": "However fluent, neither ADDITION is supported by the list."
+    },
+    "apws": {
+      "source_hash": "3aa403b38c82",
+      "text": "Trap two: you ask for unclaimed items but get the total record count."
+    },
+    "5qgt": {
+      "source_hash": "9869926fac5a",
+      "text": "Six, four and two are in the same data, but answer different questions."
+    },
+    "yyfc": {
+      "source_hash": "289e12449f88",
+      "text": "All records? Six, including two claimed records."
+    },
+    "xa8z": {
+      "source_hash": "5851cd904217",
+      "text": "Unclaimed items? Four: exclude those two claimed records."
+    },
+    "zd74": {
+      "source_hash": "3a3074df0d49",
+      "text": "Unclaimed umbrellas? Two: also exclude the scarf and gloves."
+    },
+    "9rgr": {
+      "source_hash": "681151e6c304",
+      "text": "Trap three: repeat the question and treat repetition as independent evidence."
+    },
+    "mbv2": {
+      "source_hash": "17f8b59e7bd6",
+      "text": "Two identical texts may both repeat the same unsupported claim."
+    },
+    "643y": {
+      "source_hash": "d1b9d07e9343",
+      "text": "We need sources, data and execution evidence, not just another answer."
+    },
+    "ic9d": {
+      "source_hash": "413188ed15c8",
+      "text": "Check the source; missing fields stay unverified."
+    },
+    "qd94": {
+      "source_hash": "6a8c2126d2dc",
+      "text": "Check the same conditions; match each ID and status."
+    },
+    "ntgg": {
+      "source_hash": "b34f129daf01",
+      "text": "Check whether results actually came back; keep failure messages too."
+    },
+    "8duc": {
+      "source_hash": "76a52a8b1139",
+      "text": "Even a source passage must support what you're actually saying."
+    },
+    "e5ah": {
+      "source_hash": "baa75776749a",
+      "text": "Likewise, model ability must be checked by task and criteria."
+    },
+    "25k7": {
+      "source_hash": "12323ac9451e",
+      "text": "Now you know three traps. How can you check your next answer right away?"
+    },
+    "jmxp": {
+      "source_hash": "4f3d2954b093",
+      "text": "Use three columns: generated text, then data and tool results."
+    },
+    "7cws": {
+      "source_hash": "8a05afef8c87",
+      "text": "No full architecture knowledge needed to split this into three jobs."
+    },
+    "mf9z": {
+      "source_hash": "521e9c84e40e",
+      "text": "Column one: generated text. Forming sentences doesn't prove facts."
+    },
+    "megm": {
+      "source_hash": "9b1f4a777619",
+      "text": "First identify words being organized; fluency isn't evidence."
+    },
+    "zzw9": {
+      "source_hash": "6a7a84a89ea7",
+      "text": "Column two: lookup. Name the record or source passage."
+    },
+    "beye": {
+      "source_hash": "7a1643619652",
+      "text": "Column three: tool counts. Conditions, execution and output must agree."
+    },
+    "pvtj": {
+      "source_hash": "303ffd75b694",
+      "text": "Column two: traceable records. Match place and status to the source."
+    },
+    "bj2g": {
+      "source_hash": "c211456afb2b",
+      "text": "Column three holds actual run results, not just \"I've counted it for you.\""
+    },
+    "2ctv": {
+      "source_hash": "3a466690d743",
+      "text": "Leave any column without evidence unknown; don't fill it from another."
+    },
+    "w9t3": {
+      "source_hash": "a282e427f806",
+      "text": "Ask: use only this data; cite the supporting records."
+    },
+    "eysm": {
+      "source_hash": "702575849466",
+      "text": "Mark gaps unknown; say what data is missing."
+    },
+    "t7h8": {
+      "source_hash": "221dab569344",
+      "text": "For counts, list conditions, actual results and traceable IDs."
+    },
+    "ya9q": {
+      "source_hash": "5951bc32c0d6",
+      "text": "These three prompts don't guarantee truth. Open and check evidence."
+    },
+    "vayd": {
+      "source_hash": "0891028a1626",
+      "text": "If more data is needed, supply it; don't first demand more confidence."
+    },
+    "yqvc": {
+      "source_hash": "a15d7ae5df20",
+      "text": "Tokens are processing units; context is input; training tunes parameter values."
+    },
+    "daab": {
+      "source_hash": "9118398ef60e",
+      "text": "Separate model and context: do you need data or a different task?"
+    },
+    "pzcj": {
+      "source_hash": "ff792b291669",
+      "text": "Retrieval finds material; tools process it. Their results still need checking."
+    },
+    "zfi9": {
+      "source_hash": "1fba03703deb",
+      "text": "You need a verifiable task result, not an answer that sounds expert."
+    },
+    "5ku5": {
+      "source_hash": "60a89b0a32ad",
+      "text": "Next time, find which claims have data and which numbers have tool results."
+    },
+    "w852": {
+      "source_hash": "50363545d415",
+      "text": "If tools were used, check returned results before handing work over."
+    },
+    "tgi3": {
+      "source_hash": "8b48f4ac902e",
+      "text": "A complete answer doesn't prove a lookup; trustworthy answers need evidence."
+    }
+  },
+  "thumbnail": {
+    "tag": "AI Terms: 10 Min",
+    "headline": "LLM",
+    "sub": "Fluent. Did it find data?"
+  }
+}
