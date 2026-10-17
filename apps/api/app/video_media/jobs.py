@@ -42,6 +42,11 @@ from app.video_automation.models import (
 from app.video_budget.service import is_pilot, mark_uncertain, reserve, settle
 from app.video_media import meter
 from app.video_media.catalog import MEDIA_VENDORS, MediaModel, find_model
+from app.video_media.dispatch_fence import (
+    PINNED_JOB_ID,
+    DispatchFenceError,
+    inspect_installed_fence,
+)
 from app.video_media.models import LIVE_STATUSES, MAX_ATTEMPTS, VideoMediaJob
 from app.video_media.providers import (
     USER_AGENT,
@@ -96,6 +101,25 @@ class MediaJobFailed(Exception):
         self.code = code
         self.detail = detail
         self.retry_after = retry_after
+
+
+def _refuse_fenced_dispatch(ctx: MediaContext, job: VideoMediaJob) -> None:
+    """Keep the incident's exact DB row unchanged before any vendor or retry transition."""
+    if job.id != PINNED_JOB_ID:
+        return
+    try:
+        inspect_installed_fence(job, ctx.runtime.video_work_dir)
+    except DispatchFenceError as error:
+        raise MediaJobFailed(
+            503,
+            "video_media_dispatch_fence_invalid",
+            f"這筆媒體工作的派送護欄無法核對（{error.reason}）；保持暫停",
+        ) from error
+    raise MediaJobFailed(
+        423,
+        "video_media_dispatch_fenced",
+        "這筆媒體工作已暫停派送；需要獨立核對後另行解除",
+    )
 
 
 @dataclass
@@ -385,6 +409,7 @@ async def submit_job(
     units = meter.units_of(kind, seconds)
     meter_name = meter.METER_BY_KIND[kind]
     if existing is not None:
+        _refuse_fenced_dispatch(ctx, existing)
         if existing.status in LIVE_STATUSES:
             await ctx.session.commit()
             await advance_job(ctx, existing)
@@ -462,6 +487,7 @@ async def advance_job(ctx: MediaContext, job: VideoMediaJob) -> VideoMediaJob:
     """Move the job one step, under a short lock so two polls do not both call the vendor."""
     if job.status in TERMINAL:
         return job
+    _refuse_fenced_dispatch(ctx, job)
     lock = f"video-media:lock:{job.id}"
     if not await ctx.redis.set(lock, "1", nx=True, ex=LOCK_TTL_SECONDS):
         job.retry_after_seconds = LOCK_RETRY_SECONDS  # type: ignore[attr-defined]

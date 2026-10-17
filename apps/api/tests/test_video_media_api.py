@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import json
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -23,6 +24,13 @@ from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAuto
 from app.video_budget.models import FOLLOWON_SLUGS
 from app.video_budget.service import BudgetError, BudgetSummary, Reservation
 from app.video_media import admin_api, meter
+from app.video_media import jobs as media_jobs
+from app.video_media.dispatch_fence import (
+    PINNED_JOB_ID,
+    PINNED_REQUEST_HASH,
+    expected_manifest,
+    fence_path,
+)
 from app.video_media.jobs import MediaContext
 from app.video_media.models import VideoMediaJob
 from app.video_media.schemas import JudgeOut
@@ -377,6 +385,80 @@ async def test_a_job_can_be_polled_and_an_unknown_one_is_404(
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
         missing = await client.get(f"/api/v1/video/media/jobs/{uuid4()}")
     assert missing.status_code == 404 and missing.json()["code"] == "video_media_job_not_found"
+
+
+@pytest.mark.asyncio
+async def test_exact_fence_refuses_get_and_repeated_post_without_vendor_or_row_change(
+    media: dict[str, Any], monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    slug = "google-project-suncatcher-prototype-what-it-tests"
+    payload = {"slug": slug, "purpose": "keyframe", "prompt": "orbital mirror"}
+    media["row"] = _row(image_provider="minimax", image_model="image-01")
+    # The live request body is deliberately not stored in this test. The hash lookup is
+    # pinned to the observed existing row so both POSTs exercise its dedupe branch.
+    monkeypatch.setattr(media_jobs, "request_hash", lambda _fields: PINNED_REQUEST_HASH)
+    job = VideoMediaJob(
+        id=PINNED_JOB_ID,
+        slug=slug,
+        kind="image",
+        purpose="keyframe",
+        provider="minimax",
+        model="image-01",
+        request={},
+        request_hash=PINNED_REQUEST_HASH,
+        status="queued",
+        attempts=1,
+        polls=0,
+        seconds=0,
+        usd_estimate=Decimal("0.0035"),
+    )
+    from datetime import UTC, datetime
+
+    job.created_at = datetime.now(UTC)
+    path = fence_path(tmp_path)
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps(expected_manifest(job), sort_keys=True) + "\n", encoding="utf-8")
+    session_obj = AsyncMock()
+
+    async def scalar(statement: Any) -> Any:
+        return job if "video_media_jobs" in str(statement) else None
+
+    session_obj.scalar = AsyncMock(side_effect=scalar)
+    app = _app(_token())
+
+    async def session() -> Any:
+        yield session_obj
+
+    app.dependency_overrides[get_session] = session
+
+    async def context(session: Any, token_id: Any) -> MediaContext:
+        return MediaContext(
+            session=session,
+            redis=media["redis"],
+            store=media["store"],
+            runtime=Settings(minimax_api_key="m", video_work_dir=str(tmp_path)),
+            media=media["settings"],
+            row=media["row"],
+            token_id=token_id,
+        )
+
+    monkeypatch.setattr(admin_api, "_context", context)
+    monkeypatch.setattr(
+        media_jobs,
+        "provider_for",
+        lambda *_args: pytest.fail("fenced job reached the vendor adapter"),
+    )
+    original = (job.status, job.attempts, job.polls, job.vendor_ref, dict(job.request))
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
+        got = await client.get(f"/api/v1/video/media/jobs/{job.id}")
+        repeated = [
+            await client.post("/api/v1/video/media/images", json=payload) for _ in range(2)
+        ]
+    for response in [got, *repeated]:
+        assert response.status_code == 423
+        assert response.json()["code"] == "video_media_dispatch_fenced"
+    assert (job.status, job.attempts, job.polls, job.vendor_ref, job.request) == original
+    session_obj.commit.assert_not_awaited()
 
 
 @pytest.mark.asyncio

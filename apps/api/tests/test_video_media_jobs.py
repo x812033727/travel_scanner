@@ -24,6 +24,7 @@ from app.video_budget.service import Reservation
 from app.video_media import jobs as service
 from app.video_media import meter
 from app.video_media.catalog import find_model
+from app.video_media.dispatch_fence import PINNED_JOB_ID, expected_manifest, fence_path
 from app.video_media.jobs import MediaContext, MediaJobFailed, advance_job, job_view, submit_job
 from app.video_media.models import VideoMediaJob
 from app.video_media.providers import Download, MediaRequest, MediaUpstreamError, Polled, Submitted
@@ -224,6 +225,85 @@ def _image(**extra: Any) -> ImageJobIn:
     return ImageJobIn.model_validate(
         {"slug": "v", "purpose": "keyframe", "prompt": "a ridge at dawn", **extra}
     )
+
+
+def _pinned_queued_job() -> VideoMediaJob:
+    return VideoMediaJob(
+        id=PINNED_JOB_ID,
+        slug="google-project-suncatcher-prototype-what-it-tests",
+        kind="image",
+        purpose="keyframe",
+        provider="minimax",
+        model="image-01",
+        request={},
+        request_hash="52b39c04a45f39b4101bcd7e401c31cd0e6083f3c8390b729afd2a83569379e6",
+        status="queued",
+        attempts=1,
+        polls=0,
+        seconds=0,
+        usd_estimate=Decimal("0.0035"),
+    )
+
+
+def _install_pinned_fence(root: Path, job: VideoMediaJob) -> None:
+    path = fence_path(root)
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps(expected_manifest(job), sort_keys=True) + "\n", encoding="utf-8")
+
+
+@pytest.mark.asyncio
+async def test_exact_queued_job_is_fenced_before_get_or_repeated_post_mutates_it(
+    tmp_path: Path, fake_provider: FakeProvider
+) -> None:
+    job = _pinned_queued_job()
+    ctx = _context(
+        tmp_path,
+        fake_provider,
+        row=_row(image_provider="minimax", image_model="image-01"),
+    )
+    ctx.runtime = Settings(minimax_api_key="m", video_work_dir=str(tmp_path))
+    ctx.session.found = job  # type: ignore[attr-defined]
+    _install_pinned_fence(tmp_path, job)
+    original = (job.status, job.attempts, job.polls, job.vendor_ref, dict(job.request))
+    for _ in range(2):
+        with pytest.raises(MediaJobFailed) as refused:
+            await advance_job(ctx, job)
+        assert (refused.value.status, refused.value.code) == (423, "video_media_dispatch_fenced")
+        with pytest.raises(MediaJobFailed) as repeated:
+            await submit_job(
+                ctx,
+                "image",
+                _image(slug=job.slug, prompt="a reflective panel above earth"),
+            )
+        assert repeated.value.code == "video_media_dispatch_fenced"
+    assert (job.status, job.attempts, job.polls, job.vendor_ref, job.request) == original
+    assert ctx.session.commits == 0  # type: ignore[attr-defined]
+    assert fake_provider.requests == []
+    assert await ctx.redis.exists(f"video-media:lock:{job.id}") == 0
+
+
+@pytest.mark.asyncio
+async def test_pinned_job_missing_marker_fails_closed_but_other_job_still_dispatches(
+    tmp_path: Path, fake_provider: FakeProvider
+) -> None:
+    ctx = _context(
+        tmp_path,
+        fake_provider,
+        row=_row(image_provider="minimax", image_model="image-01"),
+    )
+    ctx.runtime = Settings(minimax_api_key="m", video_work_dir=str(tmp_path))
+    job = _pinned_queued_job()
+    with pytest.raises(MediaJobFailed) as refused:
+        await advance_job(ctx, job)
+    assert (refused.value.status, refused.value.code) == (
+        503,
+        "video_media_dispatch_fence_invalid",
+    )
+    assert job.status == "queued" and ctx.session.commits == 0  # type: ignore[attr-defined]
+    fake_provider.submit_result = Submitted(inline=PNG, content_type="image/png")
+    other, created = await submit_job(ctx, "image", _image(prompt="another film"))
+    assert created and other.id != PINNED_JOB_ID and other.status == "ready"
+    assert len(fake_provider.requests) == 1
 
 
 @pytest.mark.asyncio
