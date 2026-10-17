@@ -47,6 +47,7 @@ from app.video_media.jobs import (
     job_view,
     key_for,
     prune,
+    refuse_b25_cutover_media,
     submit_job,
 )
 from app.video_media.judge import JudgeError, judge
@@ -161,6 +162,14 @@ def _refused(error: MediaJobFailed | JudgeError | LocateError | stock.StockError
         error.detail,
         headers={"Retry-After": error.retry_after} if error.retry_after else None,
     )
+
+
+def _guard_b25_direct_intake(slug: str) -> None:
+    """Reject paid direct routes before rate, budget, session or vendor work."""
+    try:
+        refuse_b25_cutover_media(slug)
+    except MediaJobFailed as error:
+        raise _refused(error) from error
 
 
 def _storage_refused(error: StorageRefused) -> AppError:
@@ -302,6 +311,7 @@ async def _submit(
     payload: ImageJobIn | ClipJobIn | MusicJobIn,
     response: Response,
 ) -> JobOut:
+    _guard_b25_direct_intake(payload.slug)
     if kind == "image":
         await _limit("submit_image", tool_id, IMAGE_SUBMITS_PER_HOUR)
     else:
@@ -401,6 +411,7 @@ async def download_file(slug: str, sha256: str, tool: VideoTool) -> FileResponse
 @media_router.post("/judge", response_model=JudgeOut)
 async def judge_media(payload: JudgeIn, tool: VideoTool, session: Session) -> JudgeOut:
     """Gemini scores a sheet, a keyframe or a clip against the rubric; one call, one budget unit."""
+    _guard_b25_direct_intake(payload.slug)
     await _limit("judge", tool.id, JUDGES_PER_HOUR)
     ctx = await _context(session, tool.id)
     pilot = is_pilot(payload.slug)
@@ -473,6 +484,7 @@ async def locate_subjects(payload: LocateIn, tool: VideoTool, session: Session) 
     A clip is refused with ``video_media_invalid`` before the budget is touched again: the tool
     extracts a frame and uploads it first.
     """
+    _guard_b25_direct_intake(payload.slug)
     await _limit("judge", tool.id, JUDGES_PER_HOUR)
     ctx = await _context(session, tool.id)
     pilot = is_pilot(payload.slug)

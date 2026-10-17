@@ -54,6 +54,7 @@ def plan(release_dir: str = "/root/mokaair-a01-media-fence-123456abcdef") -> dic
             "incoming-docker-compose.prod.yml": digest,
             "deploy-travel-scanner.sh": module.PATCHED_DEPLOY_SHA,
             "jobs.py": digest,
+            "admin_api.py": digest,
             "dispatch_fence.py": digest,
             "dispatch_fence_cli.py": digest,
         },
@@ -84,6 +85,27 @@ class CutoverTest(unittest.TestCase):
             path.write_bytes(data)
             with self.assertRaisesRegex(module.Stop, "invalid_old_api_id"):
                 module.parse_plan(path, module.sha_bytes(data))
+            missing_admin_hash = plan()
+            del missing_admin_hash["source_sha256"]["admin_api.py"]
+            data = json.dumps(missing_admin_hash).encode()
+            path.write_bytes(data)
+            with self.assertRaisesRegex(module.Stop, "source_hash_keys"):
+                module.parse_plan(path, module.sha_bytes(data))
+
+    def test_new_api_b25_receipt_requires_exact_slug_and_route_source(self) -> None:
+        sources = {"admin_api.py": "a" * 64}
+        proof = {
+            "b25_direct_intake": {
+                "slug": module.B25_SLUG,
+                "compiled_guard": True,
+            },
+            "code": {"admin_api_sha256": "a" * 64},
+        }
+        module.verify_b25_direct_receipt(proof, sources)
+        with self.assertRaisesRegex(module.Stop, "new_api_b25_direct_intake_guard_missing"):
+            module.verify_b25_direct_receipt({**proof, "b25_direct_intake": {}}, sources)
+        with self.assertRaisesRegex(module.Stop, "new_api_b25_direct_source_hash_drift"):
+            module.verify_b25_direct_receipt({**proof, "code": {}}, sources)
 
     def test_dry_run_cannot_enter_apply_path(self) -> None:
         class DryDriver(module.Driver):

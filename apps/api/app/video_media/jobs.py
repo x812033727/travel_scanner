@@ -82,6 +82,7 @@ SUBMITTED_TTL = timedelta(hours=24)
 MAX_REFERENCE_BYTES = 7_000_000
 MAX_REFERENCES_TOTAL_BYTES = 20_000_000
 TERMINAL = ("ready", "failed", "expired")
+B25_CUTOVER_SLUG = "story-adapt-seiko-quartz-astron"
 ERROR_CODES = {
     "blocked": "video_media_rejected",
     "key": "video_media_upstream_rejected_key",
@@ -101,6 +102,20 @@ class MediaJobFailed(Exception):
         self.code = code
         self.detail = detail
         self.retry_after = retry_after
+
+
+def refuse_b25_cutover_media(slug: str) -> None:
+    """Keep the unrelated B25 producer quiet throughout the A01 cutover.
+
+    This compiled pin covers a direct API client even if the worker's project STOP is
+    absent or bypassed. A later, separately reviewed code change must resume B25.
+    """
+    if slug == B25_CUTOVER_SLUG:
+        raise MediaJobFailed(
+            423,
+            "video_media_b25_cutover_paused",
+            "這支影片的媒體製作已因 A01 切換暫停；需核對後另行恢復",
+        )
 
 
 def _refuse_fenced_dispatch(ctx: MediaContext, job: VideoMediaJob) -> None:
@@ -348,6 +363,7 @@ async def submit_job(
     ctx: MediaContext, kind: str, payload: ImageJobIn | ClipJobIn | MusicJobIn
 ) -> tuple[VideoMediaJob, bool]:
     """Create (or find) the job for this request and advance it once; returns (job, created)."""
+    refuse_b25_cutover_media(payload.slug)
     row = ctx.row
     # An illustrated slides video (docs/videos/ILLUSTRATED.md) draws under the slides' own switch
     # and image model, or under the drama's switch while the slides' is off; a video the site
@@ -487,6 +503,7 @@ async def advance_job(ctx: MediaContext, job: VideoMediaJob) -> VideoMediaJob:
     """Move the job one step, under a short lock so two polls do not both call the vendor."""
     if job.status in TERMINAL:
         return job
+    refuse_b25_cutover_media(job.slug)
     _refuse_fenced_dispatch(ctx, job)
     lock = f"video-media:lock:{job.id}"
     if not await ctx.redis.set(lock, "1", nx=True, ex=LOCK_TTL_SECONDS):

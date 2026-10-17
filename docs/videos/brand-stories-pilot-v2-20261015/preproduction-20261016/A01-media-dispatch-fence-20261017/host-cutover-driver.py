@@ -30,6 +30,7 @@ from typing import Any
 
 JOB_ID = "b721a65d-8c8d-4ae8-834c-391cfc267a6f"
 JOB_SLUG = "google-project-suncatcher-prototype-what-it-tests"
+B25_SLUG = "story-adapt-seiko-quartz-astron"
 REQUEST_HASH = "52b39c04a45f39b4101bcd7e401c31cd0e6083f3c8390b729afd2a83569379e6"
 MARKER_SHA = "6d6a64a88f066ce62d3ccf2145ab59e052dee0bf76e4da7b68385d93ea6827a5"
 KEY = f"video-media:lock:{JOB_ID}"
@@ -74,6 +75,20 @@ def require(test: bool, reason: str) -> None:
 
 def sha_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
+
+
+def verify_b25_direct_receipt(proof: dict[str, Any], sources: dict[str, str]) -> None:
+    require(
+        proof.get("b25_direct_intake")
+        == {"slug": B25_SLUG, "compiled_guard": True},
+        "new_api_b25_direct_intake_guard_missing",
+    )
+    code = proof.get("code")
+    require(
+        isinstance(code, dict)
+        and code.get("admin_api_sha256") == sources["admin_api.py"],
+        "new_api_b25_direct_source_hash_drift",
+    )
 
 
 def safe_file(path: Path, expected: str | None = None) -> bytes:
@@ -206,6 +221,7 @@ def parse_plan(path: Path, expected_sha: str) -> dict[str, Any]:
             "incoming-docker-compose.prod.yml",
             "deploy-travel-scanner.sh",
             "jobs.py",
+            "admin_api.py",
             "dispatch_fence.py",
             "dispatch_fence_cli.py",
         },
@@ -330,7 +346,7 @@ class Driver:
             "release_dir_must_be_root_0700",
         )
         for name, digest in self.sources.items():
-            if name in ("jobs.py", "dispatch_fence.py", "dispatch_fence_cli.py"):
+            if name in ("jobs.py", "admin_api.py", "dispatch_fence.py", "dispatch_fence_cli.py"):
                 content = self.cmd(
                     "git",
                     "-C",
@@ -1359,6 +1375,7 @@ class Driver:
             and proof.get("active_media_count") == 1,
             "new_api_held_mode_fence_failed",
         )
+        verify_b25_direct_receipt(proof, self.sources)
         job = proof.get("job", {})
         for key, expected in {
             "id": JOB_ID,

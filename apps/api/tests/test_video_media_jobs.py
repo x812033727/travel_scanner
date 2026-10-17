@@ -307,6 +307,35 @@ async def test_pinned_job_missing_marker_fails_closed_but_other_job_still_dispat
 
 
 @pytest.mark.asyncio
+async def test_b25_direct_generation_and_poll_refuse_before_any_state_or_vendor_change(
+    tmp_path: Path, fake_provider: FakeProvider
+) -> None:
+    ctx = _context(tmp_path, fake_provider)
+    job = _pinned_queued_job()
+    job.id = uuid4()
+    job.slug = service.B25_CUTOVER_SLUG
+    original = (job.status, job.attempts, job.polls, job.vendor_ref, dict(job.request))
+    for _ in range(2):
+        with pytest.raises(MediaJobFailed) as polled:
+            await advance_job(ctx, job)
+        assert (polled.value.status, polled.value.code) == (
+            423,
+            "video_media_b25_cutover_paused",
+        )
+        with pytest.raises(MediaJobFailed) as submitted:
+            await submit_job(ctx, "image", _image(slug=job.slug))
+        assert (submitted.value.status, submitted.value.code) == (
+            423,
+            "video_media_b25_cutover_paused",
+        )
+    assert (job.status, job.attempts, job.polls, job.vendor_ref, job.request) == original
+    assert ctx.session.commits == 0 and ctx.session.added == []  # type: ignore[attr-defined]
+    assert fake_provider.requests == []
+    assert await ctx.redis.exists(f"video-media:lock:{job.id}") == 0
+    assert await meter.used(ctx.redis, meter.IMAGES) == 0
+
+
+@pytest.mark.asyncio
 async def test_a_synchronous_image_is_stored_and_ready_after_one_call(
     tmp_path: Path, fake_provider: FakeProvider
 ) -> None:

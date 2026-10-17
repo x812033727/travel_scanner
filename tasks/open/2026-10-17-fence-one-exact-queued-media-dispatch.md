@@ -12,6 +12,7 @@ branch: codex/a01-exact-media-dispatch-fence-20261017
 depends_on: []
 scope:
   - apps/api/app/video_media/jobs.py
+  - apps/api/app/video_media/admin_api.py
   - apps/api/app/video_media/dispatch_fence.py
   - apps/api/app/video_media/dispatch_fence_cli.py
   - apps/api/app/video_media/dispatch_fence_cutover.py
@@ -46,6 +47,9 @@ call is currently in flight or that there was never a historical charge.
   their existing behavior.
 - [x] Local tests cover GET, repeated POST, direct advance, malformed/missing marker,
   non-target job and the Redis nonce helper without a vendor call.
+- [x] Proposed new API refuses direct B25 image/clip/music POST, live-job GET,
+  judge and locate before quota, budget or vendor work; the read-only receipt
+  pins the API route source hash. This does not fence the deployed old API.
 - [ ] Independently review the bounded old-API stop, durable Redis hold, marker
   installation, deploy and held-mode CLI plus exact nonce-owner receipt; obtain site-owner approval
   before any production write or transient API outage.
@@ -119,3 +123,14 @@ a project STOP does not fence direct media API clients. It is not imported by
 the cutover driver, installed, approved for a host write or a reason to lift
 `b25_producer_proof_missing`. The separate direct-intake and full-window
 cutover proof remains open.
+
+On 2026-10-18, `admin_api.py` had no active task or open PR touching it under
+the task-board scope audit, so this ticket's scope was extended to that exact
+file. The proposed new API now compiles a B25 slug refusal in `jobs.py` and
+applies it before direct `/judge` and `/locate` booking in `admin_api.py`.
+Focused tests verify all five POST routes plus live GET and direct job calls
+without a quota, database write, Redis reservation or vendor call. The CLI
+reports the B25 guard and `admin_api.py` hash; the driver requires both pins.
+This is a local, unmerged candidate. The old API can still take direct B25
+requests before graceful exit; keep the driver's hard STOP until the B25
+worker pause and complete old/new API transition have independent proof.

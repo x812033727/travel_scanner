@@ -171,6 +171,11 @@ async def test_cli_proposes_validates_and_checks_without_advancing(
     }
     assert len(checked["code"]["jobs_sha256"]) == 64
     assert len(checked["code"]["dispatch_fence_sha256"]) == 64
+    assert len(checked["code"]["admin_api_sha256"]) == 64
+    assert checked["b25_direct_intake"] == {
+        "slug": "story-adapt-seiko-quartz-astron",
+        "compiled_guard": True,
+    }
     lock_present[0] = 1
     held = await dispatch_fence_cli.run(
         argparse.Namespace(action="check", job_id=job.id, expect_operator_lock=True)
@@ -192,6 +197,14 @@ async def test_cli_rejects_missing_or_wrong_job_without_a_fence_read(tmp_path: P
         await dispatch_fence_cli.run(argparse.Namespace(action="check", job_id=uuid4()))
     with pytest.raises(dispatch_fence.DispatchFenceError, match="marker_directory_missing"):
         dispatch_fence.inspect_installed_fence(_job(), tmp_path)
+
+
+def test_b25_cli_receipt_fails_closed_when_compiled_refusal_is_missing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(dispatch_fence_cli, "refuse_b25_cutover_media", lambda _slug: None)
+    with pytest.raises(dispatch_fence.DispatchFenceError, match="b25_direct_guard_missing"):
+        dispatch_fence_cli.b25_guard_receipt()
 
 
 class FakeCutoverRedis:

@@ -29,6 +29,7 @@ from app.video_media.dispatch_fence import (
     inspect_installed_fence,
     inspect_manifest,
 )
+from app.video_media.jobs import B25_CUTOVER_SLUG, MediaJobFailed, refuse_b25_cutover_media
 from app.video_media.models import VideoMediaJob
 
 
@@ -52,6 +53,19 @@ def canonical_manifest(job: VideoMediaJob) -> str:
         )
         + "\n"
     )
+
+
+def b25_guard_receipt() -> dict[str, str | bool]:
+    """Exercise the compiled, read-only B25 refusal without touching a job or vendor."""
+    try:
+        refuse_b25_cutover_media(B25_CUTOVER_SLUG)
+    except MediaJobFailed as error:
+        if (error.status, error.code) != (423, "video_media_b25_cutover_paused"):
+            raise DispatchFenceError("b25_direct_guard_changed") from error
+    else:
+        raise DispatchFenceError("b25_direct_guard_missing")
+    refuse_b25_cutover_media("a01-fence-control-slug")
+    return {"slug": B25_CUTOVER_SLUG, "compiled_guard": True}
 
 
 async def run(args: argparse.Namespace) -> dict[str, Any] | str:
@@ -103,6 +117,7 @@ async def run(args: argparse.Namespace) -> dict[str, Any] | str:
             "media_lock_absent": lock_absent,
             "operator_lock_expected": bool(getattr(args, "expect_operator_lock", False)),
             "active_media_count": active_media_count,
+            "b25_direct_intake": b25_guard_receipt(),
             "job": {
                 "id": str(job.id),
                 "slug": job.slug,
@@ -120,6 +135,9 @@ async def run(args: argparse.Namespace) -> dict[str, Any] | str:
                 ).hexdigest(),
                 "dispatch_fence_sha256": hashlib.sha256(
                     (Path(__file__).with_name("dispatch_fence.py")).read_bytes()
+                ).hexdigest(),
+                "admin_api_sha256": hashlib.sha256(
+                    (Path(__file__).with_name("admin_api.py")).read_bytes()
                 ).hexdigest(),
             },
         }

@@ -15,6 +15,17 @@ write. Production needs separately reviewed, authoritative proof that the B25
 producer has completed or is durably paused. Do not use a prior A01
 paid-production approval to stop an unrelated API or write this marker.
 
+The proposed new API also compiles a temporary refusal for B25 slug
+`story-adapt-seiko-quartz-astron`: image/clip/music POST and live-job GET refuse
+in `jobs.py`, and direct paid `/judge` and `/locate` refuse before quota or
+budget booking in `admin_api.py`. The read-only fence CLI exercises the B25
+refusal and reports both code hashes; the cutover driver pins and checks them.
+This protects **only the proposed new API**. The old API has no B25 guard and
+can still accept a direct request until it exits gracefully. The driver's
+`b25_producer_proof_missing` STOP remains in force; the B25 worker STOP,
+old-API drain, exact post-drain state and whole-window proof still need
+independent review before any production apply.
+
 ## Scope and invariant
 
 The sole target is `b721a65d-8c8d-4ae8-834c-391cfc267a6f`, slug
@@ -189,7 +200,8 @@ while waiting means stop, leave the hold, and re-audit.
    run `python -m app.video_media.dispatch_fence_cli check --job-id
    b721a65d-8c8d-4ae8-834c-391cfc267a6f --expect-operator-lock`.
    This read-only held-mode receipt must show `enforced=true`, exact tuple,
-   `active_media_count=1`, marker SHA, source hashes, and
+   `active_media_count=1`, marker SHA, source hashes (including `admin_api.py`),
+   and the exact B25 compiled refusal receipt,
    `media_lock_absent=false`; held mode **does not** verify nonce ownership.
    Separately `inspect` the private receipt through the helper, compare the
    nonce hash, and ensure the host watcher still observes the same Redis ID.
@@ -213,7 +225,8 @@ DB/Redis exits 4. The **held-mode** check JSON fields are `schema_version=1`,
 `enforced=true`, `fence_sha256`, `fence_path`, `media_lock_absent=false`,
 `operator_lock_expected=true`, `active_media_count=1`, `job` with exact
 `id/slug/request_hash/kind/provider/model/status/vendor_ref/submitted_at`, and
-`code` with `jobs_sha256/dispatch_fence_sha256`. Held mode checks only Redis
+`code` with `jobs_sha256/admin_api_sha256/dispatch_fence_sha256`, and
+`b25_direct_intake={slug,compiled_guard:true}`. Held mode checks only Redis
 key presence; the private receipt and host watcher separately prove nonce
 ownership. A normal `check` requires absent lock and is **not** the A01
 cutover receipt while the durable nonce remains.
