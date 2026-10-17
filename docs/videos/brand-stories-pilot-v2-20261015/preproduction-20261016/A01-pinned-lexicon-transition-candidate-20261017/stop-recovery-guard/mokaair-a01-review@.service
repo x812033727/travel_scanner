@@ -1,0 +1,21 @@
+[Unit]
+Description=One supervised A01 round 12 review phase (%i) with project STOP crash recovery
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=exec
+WorkingDirectory=/root/travel_scanner
+# Only validate/fault-test/listener/manual/facts/panel are accepted by this runner. Its
+# incomplete manifest refuses all work until the exact phase pins are filled.
+ExecStart=/usr/bin/python3 /usr/local/sbin/a01_phase_runner.py %i
+# Recovery kills the one-off and restores project STOP; it never starts auto.
+ExecStopPost=/usr/bin/python3 /usr/local/sbin/a01_phase_recover.py
+KillMode=control-group
+# A hung paid phase must eventually trigger ExecStopPost. The direct Docker
+# call is separately limited to 60 minutes; no automatic retry follows.
+TimeoutStartSec=120s
+RuntimeMaxSec=90min
+TimeoutStopSec=90s
+# Never automatically repeat a paid or possibly dispatched phase.
+Restart=no

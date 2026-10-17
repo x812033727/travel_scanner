@@ -1,0 +1,41 @@
+# Independent A01 one-off guard review, r4 — 2026-10-17
+
+**Disposable Docker test correction:** The first apparent empty stdout from
+`docker compose run --rm --detach` was a Windows/WSL one-liner quoting error.
+A rerun from a real script returned a full 64-character ID. Therefore that
+observation is **not** an r4 P1. The actual Docker/Compose 29.1.3/2.40.3 test
+confirmed `oneoff=True`, `AutoRemove=true`, `restart=no`, and that Compose
+`ps --all` includes both original and one-off containers. R4 remains only a
+conditional static review; the successor's exact name/label lookup is a
+defensive improvement, and the full disposable systemd fault suite is still
+required before production.
+
+## Scope and verdict
+
+I independently reviewed the frozen `stop-recovery-guard/SHA256SUMS.txt` with SHA-256 `b473b07d9ec53bb739300eede153f99447249924ba88b287703d0b45decbf41f`. The exact listed files passed `sha256sum -c`. This is a static and WSL Linux review only: no production host write, systemd/Docker integration test, model call or paid phase occurred.
+
+**Conditional code review: no remaining static P1 found in r4 under the stated boundary, but do not install, lift STOP or run a phase yet.** Promotion requires disposable Linux/systemd/Docker fault receipts for this exact package, new action-time host preflight, a filled and separately hashed phase manifest, and named site-owner approval for the exact host writes and model phase. The supplied manifest intentionally has blank pins and `fault_test_allowed=false`; it must refuse execution.
+
+The boundary is ordinary auto selection, owner UI Retry, container crash automatic restart and host reboot. An out-of-band privileged root manually running `docker compose up/start/restart` during the maintenance window is excluded; that exclusion must be explicit in the owner approval and operator instructions. No host-only helper can fence arbitrary root actions. The original `video-worker` and Shorts are intentionally unavailable while each phase runs, and `video-ai-worker` loses automatic crash restart. This site impact also needs named approval.
+
+## Resolved P1 findings from prior snapshots
+
+- `a01_phase_runner.py:437-452` now treats a live `node tools/video/cli.mjs auto` as **not drained**. After the global STOP is fsynced, the runner waits for jobs, LEASEs, Retry state and process quietness before stopping the exact original worker (`:561-574`). A late auto process cannot enter a paid unit while global STOP exists; the original worker must be stopped and read back before A01 STOP is lifted. If the 120-second drain fails, the global STOP and release hold remain for reconciliation.
+- `a01_phase_recover.py:45-120` now parses the one-off marker separately from Docker label enumeration. A missing, truncated or malformed marker does not skip label-based one-off discovery and kill. A malformed marker still causes the service to fail after attempting STOP restoration. Docker daemon errors and timeouts are not accepted as proof that a container stopped.
+- `a01_phase_runner.py:195-214` now identifies the original worker via exact Compose project, service and `com.docker.compose.oneoff=False` labels and requires one full ID. This fixes r3's `docker compose ps --all` query, which would include the new same-service one-off. The fresh host read-only labels were reported as capital `False`; the disposable test must confirm the same Docker/Compose behavior.
+- The installed service now has `WorkingDirectory=/root/travel_scanner`, `RuntimeMaxSec=90min`, and `TimeoutStopSec=90s`. Runner commands default to 120 seconds; direct paid `docker exec` is limited to 60 minutes; recovery Docker commands are limited to 10 seconds each. A timeout is an uncertain outcome, not a no-charge or successful phase receipt. The runbook uses `systemctl start --no-block`, pins a new `InvocationID`, polls the existing unit to a terminal result, and forbids a repeated start after SSH loss.
+
+## Remaining gates and P2 risks
+
+1. **P1 promotion gate — no real fault proof.** The 26 WSL unit tests exercise helpers and mocked subprocesses, but no real Docker/Compose/systemd integration, MainPID SIGKILL, daemon restart or VM reboot was run. Execute `FAULT_TEST_PLAN.md` on an isolated Linux VM with the production Docker/Compose/systemd versions, disposable A01 volume and no provider credentials. Require kill-before-restore ordering, exact STOP hash/inode readback, original worker/AI worker restart policies and ID readback, and no one-off after SIGKILL. Test marker truncation, global STOP drain, after-arm STOP loss, Docker command timeout, daemon restart and full VM reboot. A test failure blocks production. `fault-test` itself remains disabled in the production manifest and would need separate owner approval on production.
+2. **P2 — installer partial completion needs action-time readback.** `install-host-guard.sh` publishes complete files by hardlink and removes newly created files on ordinary failure; SIGKILL can leave a complete helper or temporary file. Before every phase, compare installed helper/unit hashes with the exact approved manifest and verify `systemd-analyze`, unit `FragmentPath`, no old Docker boot dependency, STOP, and no prior markers/labels. Do not infer successful installation from a command exit or source-tree SHA alone.
+3. **P2 — long service and network outcomes require operator watch.** The 90-minute cap and subprocess timeouts prevent indefinite unit activity, but a killed host Docker CLI does not prove an in-container Node job or vendor request stopped. `ExecStopPost` must kill and prove the labelled one-off stopped before STOP restoration; a failed recovery leaves the original auto stopped at `restart=no`, project marker and release hold retained. Reconcile stage jobs, journals and budget with vendor evidence before any retry. A hung Docker daemon can still defeat the 90-second recovery window; the disposable fault test must measure it and the operator must keep all video containers down until manual STOP restoration is verified.
+4. **P2 — no automatic release-hold completion.** The first phase creates the four-phase hold. The runner leaves it after success, correctly blocking deployment between phases. A failed first phase may leave the hold even if no model was called; any clear requires inspection under the four locks and a separate receipt. Later phase source hashes and exact paid-phase authorizations are not prefilled.
+
+## Evidence and exact next gate
+
+- Independent WSL run on r4: `sha256sum -c SHA256SUMS.txt` all pass; `python3 -m unittest discover -v -p 'test_a01_*.py'` **26/26 pass**; Bash syntax and Python compilation pass. Local WSL has systemd 259 but no Docker command, so these tests cannot establish container/reboot behavior.
+- Reviewed archive SHA-256 `ae7483b2867bd0dd479fe6177c7261be2e7abb47d6fe53c3c21bb89943833792`; manifest says 979 regular files. Runner checks the pinned archive, all extracted host files/directories, then all one-off copied bytes before a phase. Its one-off image ID, tag, named volumes, network, `AutoRemove`, `restart=no`, hostname, label and internal site are read back. Actual live behavior still needs the disposable integration run.
+- Prior A01 US$25 limit and manuscript receipt permission do not authorize installing systemd helpers, changing Docker policies, stopping/starting the worker, creating an isolated container, lifting project STOP, or making new paid model calls. The repository `prod-host-ops`, `deploy` and `ops/release` rules require named owner approval after the exact VM fault evidence and action-time preflight. Do not count saved audit data or the no-model `validate` as a manuscript PASS or finished video.
+
+Official behavior references: [Docker restart policy](https://docs.docker.com/engine/containers/start-containers-automatically/), [Docker policy update](https://docs.docker.com/reference/cli/docker/container/update/), [Compose one-off run](https://docs.docker.com/reference/cli/docker/compose/run/), [Compose project and `.env` resolution](https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation), [systemctl start and `--wait`](https://www.man7.org/linux/man-pages/man1/systemctl.1%40%40systemd.html).
