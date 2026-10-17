@@ -29,3 +29,12 @@
 - 頁面上：`localStorage.ztdhsrc` 讓 `__zt.drive(["dh1"])` 吃 `ztffdh1`、標籤 `a1-`；影片頁把 `ztep` 設成 `dh1`、`zturls` 補 `edh1-sNN-t1` 別名，`localStorage.dhclipsrc` 的 `__dhc.one(id)` 一支一支送、卡號記在 `ztcmapdh`。
 - 第 1 集實際花費：參考圖 12 張 ≈ 241、首格 33＋重畫 2 ≈ 780、片段 33 × 48 = 1,584，合計約 2,600 點。
 - 坑：圖片頁卡片只列最近 30 張，早送的 s06／s49 掉出清單又找不到卡號，只好重畫（t2）；送圖時要記卡號（commonInfo.id）。窗格隱藏時分頁跑久會整個卡死，要關掉開新分頁（登入沒掉）。
+
+### 第 6–10 集（2026-10-17）
+
+- 片段排隊常要 40–55 分鐘；完成時卡片已被首格圖擠出建立頁的 30 張清單，`__dhq.clipsdone()` 看不到。
+  補救：`ztcidh` 存了每支的卡號，開 `my-work-detail/ai-video/<卡號>`，從 `button.ant-dropdown-trigger`
+  的 React fiber 往上找 `targetDetailItem`，讀 `downloadURLWithoutWatermark`。被彈回首頁表示還沒算完。
+  卡片 `<video>` 的 `video_raw_….mp4` 是浮水印版，不能拿來用。
+- 驅動 `__dhq.run()` 偶爾停在上傳那一步不再寫 log；最後一筆超過 4 分鐘就再呼叫一次（gen token 會讓舊的那個自己結束）。
+- 隱藏窗格下，單次 `await __v3zt.sleep()` 超過約 25 秒容易讓工具逾時，打氣迴圈用 20 秒一段。
