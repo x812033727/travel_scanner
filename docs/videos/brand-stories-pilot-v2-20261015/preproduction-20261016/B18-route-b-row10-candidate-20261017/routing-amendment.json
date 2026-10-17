@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_SUCCESSOR_TO_REVIEWED_DESIGN_HOLD",
+  "historical_route_b_plan_sha256": "3b3183525d995950bc9366ecffd82595938817eca09a8a4d6ca95100d1e88985",
+  "reason": "Current story-plans schema caps must_verify at 10; preserve existing indexes 0–9 and combine two source-coherent fact pairs pending independent source review.",
+  "old_design_fact_indexes_not_created": [
+    10,
+    11
+  ],
+  "future_review_reviewer_only": [
+    4
+  ],
+  "claim_fact_route_overrides": [
+    {
+      "id": "t3",
+      "source": 3,
+      "historical_plan_fact": 10,
+      "successor_fact": 4,
+      "reason": "Court P8 1967 expansion joins court P10 1972 expiry as one limited legal timeline."
+    },
+    {
+      "id": "t18",
+      "source": 2,
+      "historical_plan_fact": 11,
+      "successor_fact": 9,
+      "reason": "JIII plate-color pricing joins JIII later-operator backroom route as a bounded later-practice fact."
+    }
+  ],
+  "existing_65_scene_claims_changed": false,
+  "review_required_before_row_adoption": true
+}
