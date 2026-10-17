@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-16",
+  "kind": "author-local-validation",
+  "revision": 3,
+  "previous_video_sha256": "236e94b49168e52e57f6c063c9cd377fdf2086cc91fb0907932a3d13fc3389ac",
+  "video_sha256": "4ef199c9fc35e0761004a64ef32434eea483dfaf5b25ac4db28d0c154c024680",
+  "brief_sha256": "ab081206f4055046c18b7a89016f05c9f885aa6bdd37ea3c2e2c661f2d74aa0d",
+  "command": "node tools/video/cli.mjs lint --slug curio-h10 --json",
+  "exit_code": 0,
+  "lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"historical\" is in 32 of 73 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"modern\" is in 30 of 73 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      }
+    ],
+    "summary": {
+      "minutes": 9.828888888888889,
+      "lines": 82,
+      "spoken_units": 2113,
+      "billable_characters": 6942,
+      "chapters": [
+        "00:00 兩艘船離開碼頭",
+        "00:44 船被留在冰裡",
+        "02:18 紙邊多了一個計畫",
+        "04:01 有人把口述畫上海圖",
+        "05:47 岸上的鐵讓搜尋改道",
+        "07:11 另一份見聞指向另一個海灣",
+        "08:53 紙上的簽名得到另一份證據"
+      ]
+    }
+  },
+  "independent_script_review": "2026_coda_awaiting_fresh_independent_fact_and_narrative_review",
+  "paid_calls": 0,
+  "audio_measured": false
+}
