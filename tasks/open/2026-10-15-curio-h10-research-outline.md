@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h10-research-outline
 title: Prepare Curio H10 Franklin source refresh and outline choices
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-curio-five-h10
+claimed_at: 2026-10-17T09:33:24Z
 created_at: 2026-10-15T16:33:45Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -150,3 +150,11 @@ H10 英語工作表已完成翻譯及前兩輪獨立審稿。首版英語配音�
 站主明確確認 `h93d6e3d` 實際聽到正確的「9 月 18 日」，並回覆除 `he2b2172` 的舊音檔外，其餘日語旁白可以。獨立只讀覆核確認這幾句的日文稿與繁中來源一致；不因機械轉寫差異重錄其他句。收據見 [i18n-audio-qa-ja-1.md](../../docs/videos/curio-h10/i18n-audio-qa-ja-1.md) 的 10／17 補記。
 
 `dub --slug curio-h10 --locale ja --dry-run` 顯示只需重錄 `he2b2172` 一句、約 37 計費字元，其他請求可沿用快取。H10 多語 US$2.00 原上限已估列 US$1.99，且 `youtube-video` 要求重錄後轉寫／Jev 差異 QA；已向站主提出只增加 US$0.20 的估算停手額度，回覆前不送付費請求。未重錄、未製作新版日語字幕與四語上傳包，也未送後台語言／上傳包審核。
+
+## 2026-10-17 H10 日語補錄與四語上傳包
+
+站主核准 H10 多語新增 US$0.20，五集估算上限改為 US$41.70。共用帳本先預留再執行；只重錄日語 `he2b2172` 一句，新增 1 次轉寫、0 次 Jev 呼叫。轉寫逐字吻合，其他 23 個自動旗標均為先前試聽接受的舊句；站主已確認新句旁白可以。四語字幕全部無問題且三語均對應配音時間軸，四語上傳包通過 4／4。詳細證據與 SHA 見 [delivery-handoff-2.md](../../docs/videos/curio-h10/delivery-handoff-2.md)。
+
+最新版 `publish` 與 `languages` 兩張後台卡已送出，讀回仍待站主核准。九個多語項目顯示 ready；YouTube ID 仍空、尚未上傳。站主核准後再讀回，接著由站主在 Studio 私人上傳與試播；不可把本機包或送審當作已完成影片。
+
+站主隨後在對話中核准上傳包。後台 `publish` 卡已實際確認，`review-pull` 讀回 `upload package approved`，頁面顯示「可以上架」。`languages` 卡的操作語義是確認三語配音已在 Studio 上傳；目前尚無 YouTube ID，所以保留 pending，不代按。已把私人 Studio 上傳、貼回影片網址、四語試播的交接送給站主；H10 尚未完成上傳與播放驗收。
