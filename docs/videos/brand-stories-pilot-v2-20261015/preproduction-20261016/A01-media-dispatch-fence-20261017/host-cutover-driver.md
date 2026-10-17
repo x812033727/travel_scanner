@@ -6,35 +6,55 @@ The local candidate now makes the API read `video_work/.a01-paid-intake/marker.j
 on every paid media POST and active-job GET. A missing, malformed, symlinked or
 non-root-owned marker returns `video_media_cutover_paused` (423). The only
 pre-cutover open state is an explicitly installed `BOOTSTRAP_ALLOW` marker.
-Writing the no-clobber, durable `armed.json` first immediately invalidates that
-state; an interval between that write and an atomic `PAUSED_ALL` replacement
-also returns 423. `PAUSED_ALL` rejects every slug. `ALLOW_A01_ONLY` accepts
+Writing the no-clobber, durable `armed.json` first invalidates that state
+while the root-owned volume and intact armed file persist; an interval between
+that write and an atomic `PAUSED_ALL` replacement also returns 423.
+`PAUSED_ALL` rejects every slug. `ALLOW_A01_ONLY` accepts
 only `story-rolling-suitcase-v2` while the exact Suncatcher Redis nonce still
 has its pinned hash and no expiry. In `PAUSED_ALL` and `ALLOW_A01_ONLY`, removing
-or corrupting either file closes the gate. Never remove `armed.json`: it is the
-no-return proof against a stale bootstrap marker. The global marker lives outside `.ops` because the existing exact-job
-installer refuses a pre-existing `.ops` parent.
+or corrupting either file closes the gate. Never remove `armed.json`: while it
+remains intact, it prevents a stale bootstrap marker from reopening intake.
+A host root user can still remove or replace the file, so this is not an
+unconditional no-return guarantee. The global marker lives outside `.ops`
+because the existing exact-job installer refuses a pre-existing `.ops` parent.
 
 This is **not an executable production cutover**. There is no reviewed host
 installer for the bootstrap/armed/paused files, no old-API live 423 proof, and
-the current driver still raises `b25_producer_proof_missing` before writing.
+no settled in-flight paid-request ledger proof. The driver has two unconditional
+pre-write stops: `b25_producer_proof_missing` followed by
+`global_paid_intake_cutover_proof_missing`. Its read-only old-API source and
+`BOOTSTRAP_ALLOW` inspection is only a necessary preliminary check. It does
+not install or arm the global marker, prove a live route's response, or pause
+existing paid requests.
 The presently deployed old API does not read this marker. A separate initial
 deployment of gate-aware API code with a preinstalled bootstrap marker is
 required; only after verifying its exact container/image and source hashes may
 the plan be regenerated with that API as `old_live_sha`. The plan requires a
-different `target_sha`. The old API must then prove `PAUSED_ALL` on the live
-image/clip/music, judge/locate and active-GET routes before SIGTERM. A 423
-response proves a fresh request was refused; it does not prove that a request
-which passed `BOOTSTRAP_ALLOW` earlier has finished. Wait for graceful old-API
-exit before the database/Redis snapshot. Keep the armed file and pause marker
-through deploy; check new API source hashes, image/container identity, and live
-423 responses before any handoff.
+different `target_sha`. A separately reviewed root-only cutover must install
+and durably read back `armed.json` **before** atomically replacing the marker
+with `PAUSED_ALL`. With both files pinned, authenticated live probes must
+receive 423 from the actual old API on image/clip/music, judge/locate and
+active-GET routes before SIGTERM. Merely inspecting marker state or calling an
+in-container CLI cannot substitute for those HTTP probes. A 423 response
+proves a fresh request was refused; it does not prove that a request which
+passed `BOOTSTRAP_ALLOW` earlier has finished. The out-of-band second paid
+intake check in the candidate API closes one race but is not an atomic barrier
+for a request already past that check. A reviewed drain must reconcile every
+admitted in-flight paid request with vendor and database/Redis ledger evidence
+after normal old-API exit. An exit code of zero is necessary but insufficient.
+Keep the armed file and pause marker through deploy; the new API must prove its
+exact source/image identity and live 423 responses **before exposure** to
+production callers. The present stock Compose start can expose the new API
+before the driver's later `verify_new_api()` checks; a separate barrier is
+required. Until then, remain at `PAUSED_ALL` and HOLD.
 
 Before changing to `ALLOW_A01_ONLY`, a reviewed root-only transition must
 recheck that the old API cannot run, the new API has the exact target image and
 source hashes, the marker/armed bytes and owner/mode are pinned, and the Redis
 nonce and watcher are still owned. Repeat those checks at every A01 handoff
-checkpoint. The API cannot infer its Git SHA from the existing stock deploy:
+checkpoint. This transition is not implemented by this driver, and the root
+checks need durable receipts for the exact marker bytes, image, and watcher.
+The API cannot infer its Git SHA from the existing stock deploy:
 Compose's `RELEASE_SHA` defaults to `local`, and stock rollback rebuilds under
 the same environment. The environment tag alone is not source proof. An early
 `ALLOW_A01_ONLY` marker on the preliminary API is therefore unsafe and a STOP.
@@ -50,7 +70,9 @@ also requires authoritative proof that the B25 producer has completed or is
 durably paused and cannot queue another job. That control is not yet verified;
 the current package remains blocked for production. The current `--apply`
 path explicitly stops with `b25_producer_proof_missing` before any host write;
-that stop may be removed only with a reviewed authoritative proof. An independent
+if that gate is later implemented, the separate global cutover stop still
+prevents host writes. Neither stop may be removed on the strength of a plan
+assertion; the implementation must obtain and verify live proof. An independent
 review, a merged target commit, fresh host evidence and site-owner approval
 naming the exact plan SHA and API outage are required before `--apply`.
 
@@ -142,8 +164,10 @@ failure leaves the old API running and the hold in place. It waits indefinitely 
 --signal=SIGTERM --timeout=-1` on the **pinned old API ID**. Every 30 seconds
 the root-private event log records that the graceful stop is still waiting.
 An observer can read the unit, hold, old API status and event log; **do not
-SIGKILL** a slow stop. Only after its exact exit does the driver use the
-reviewed helper in the pinned `video-ai-worker` to `SET NX` a no-expiry exact
+SIGKILL** a slow stop. The driver checks normal exit status, but that alone
+does not settle admitted vendor calls or the paid ledger. Only after its exact
+exit does the driver use the reviewed helper in the pinned `video-ai-worker`
+to `SET NX` a no-expiry exact
 job lock and obtain same-connection `WAITAOF` proof. An ambiguous helper result
 leaves the private receipt and hold for recovery. There is no automatic retry.
 If staging fails, inspect the exact `/tmp/a01-media-cutover-<sha12>.py` path in

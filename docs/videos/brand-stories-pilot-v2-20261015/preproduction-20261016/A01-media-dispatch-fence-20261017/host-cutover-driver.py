@@ -790,6 +790,65 @@ class Driver:
                 "api_port_mapping_drift",
             )
 
+    def check_old_api_gate_bootstrap(self) -> None:
+        """Necessary read-only proof that the *running* old API has the gate.
+
+        This is not a live 423 route probe and cannot prove that admitted paid
+        requests have settled. Both remain separate, blocking cutover gates.
+        """
+        container = self.pins["old_api_id"]
+        for relative in (
+            "app/main.py",
+            "app/video_media/admin_api.py",
+            "app/video_media/jobs.py",
+            "app/video_media/cutover_intake.py",
+        ):
+            expected = sha_bytes(
+                self.cmd(
+                    "git",
+                    "-C",
+                    str(ROOT),
+                    "show",
+                    f"{self.plan['old_live_sha']}:apps/api/{relative}",
+                )
+            )
+            observed = self.cmd(
+                "docker", "exec", container, "sha256sum", f"/app/{relative}"
+            ).decode().split()
+            require(
+                len(observed) == 2 and observed[0] == expected,
+                f"old_api_gate_source_drift:{relative}",
+            )
+        state = json.loads(
+            self.cmd(
+                "docker",
+                "exec",
+                container,
+                "python",
+                "-c",
+                "import json; from app.config import get_settings; "
+                "from app.video_media.cutover_intake import inspect_intake; "
+                "s=inspect_intake(get_settings().video_work_dir); "
+                "print(json.dumps({'state':s.state,'bootstrap_id':s.bootstrap_id,"
+                "'armed_sha256':s.armed_sha256,'plan_sha256':s.plan_sha256,"
+                "'target_sha':s.target_sha,'nonce_sha256':s.nonce_sha256,"
+                "'marker_sha256':s.marker_sha256}))",
+            )
+        )
+        require(
+            isinstance(state, dict)
+            and state.get("state") == "BOOTSTRAP_ALLOW"
+            and isinstance(state.get("bootstrap_id"), str)
+            and bool(HEX64.fullmatch(state["bootstrap_id"]))
+            and isinstance(state.get("marker_sha256"), str)
+            and bool(HEX64.fullmatch(state["marker_sha256"]))
+            and all(
+                state.get(name) is None
+                for name in ("armed_sha256", "plan_sha256", "target_sha", "nonce_sha256")
+            ),
+            "old_api_bootstrap_gate_not_proven",
+        )
+
     def preflight(self, *, after_hold: bool = False) -> None:
         self.check_source_hashes()
         live = self.cmd("git", "-C", str(ROOT), "rev-parse", "HEAD").decode().strip()
@@ -854,6 +913,7 @@ class Driver:
             and mounts[0].get("Source") == self.pins["video_work_mount"],
             "api_video_work_mount_drift",
         )
+        self.check_old_api_gate_bootstrap()
         self.check_db()
         self.check_redis(locked=False)
         require(
@@ -1026,10 +1086,14 @@ class Driver:
             finished.set()
             thread.join(timeout=2)
         info = self.inspect(self.pins["old_api_id"])
+        state = info.get("State", {})
         require(
-            info.get("State", {}).get("Running") is False
-            and info.get("State", {}).get("Pid") == 0,
-            "old_api_exit_unproven",
+            state.get("Running") is False
+            and state.get("Pid") == 0
+            and state.get("ExitCode") == 0
+            and state.get("OOMKilled") is False
+            and state.get("Error") == "",
+            "old_api_normal_exit_unproven",
         )
         require(
             not self.compose("ps", "-q", "api").strip(), "another_api_container_present"
@@ -1037,7 +1101,9 @@ class Driver:
         self.check_port_binding(info, stopped=True)
         self.check_db()
         self.check_redis(locked=False)
-        self.event("old_api_gracefully_exited", api_id=self.pins["old_api_id"])
+        # Exit status alone cannot prove that every request which passed the
+        # bootstrap gate settled its vendor result and database ledger.
+        self.event("old_api_normal_exit_observed", api_id=self.pins["old_api_id"])
 
     def helper_paths(self) -> tuple[str, str]:
         name = self.release.name.rsplit("-", 1)[-1]
@@ -1510,6 +1576,7 @@ class Driver:
                         "preflight_passed": True,
                         "production_ready": False,
                         "blocking_reason": "b25_producer_proof_missing",
+                        "additional_blocking_reason": "global_paid_intake_cutover_proof_missing",
                         "plan_sha256": self.plan_sha,
                         "target_sha": self.plan["target_sha"],
                         "job_id": JOB_ID,
@@ -1519,6 +1586,7 @@ class Driver:
             )
             return
         self.verify_b25_producer_quiescence()
+        self.verify_global_pause_cutover_ready()
         require(os.geteuid() == 0, "apply_requires_root")
         # A transient systemd service survives SSH loss. A shell invocation is
         # refused, because SIGINT/HUP could orphan the stop/cutover midway.
@@ -1581,6 +1649,15 @@ class Driver:
         # until an authoritative producer completion/pause receipt is designed,
         # implemented and independently reviewed.
         raise Stop("b25_producer_proof_missing")
+
+    def verify_global_pause_cutover_ready(self) -> None:
+        # A bootstrap-state source check is necessary but not sufficient. There
+        # is no reviewed root-owned armed/PAUSED_ALL transition, authenticated
+        # live 423 probe, settled-in-flight proof, or new-image pre-exposure
+        # barrier. The API's out-of-band second paid-intake check is not an
+        # atomic barrier for a request already past that check. Do not enter
+        # the host-writing path until all are integrated and proven live.
+        raise Stop("global_paid_intake_cutover_proof_missing")
 
 
 def main(argv: list[str] | None = None) -> int:

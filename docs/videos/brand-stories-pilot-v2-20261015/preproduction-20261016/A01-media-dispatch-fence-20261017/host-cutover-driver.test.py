@@ -158,6 +158,62 @@ class CutoverTest(unittest.TestCase):
         with self.assertRaisesRegex(module.Stop, "b25_producer_proof_missing"):
             driver.run()
 
+    def test_global_cutover_missing_proof_stops_before_write(self) -> None:
+        class BlockedDriver(module.Driver):
+            def preflight(self, *, after_hold: bool = False) -> None:
+                pass
+
+            def verify_b25_producer_quiescence(self) -> None:
+                pass
+
+            def acquire_locks(self) -> None:
+                raise AssertionError("apply reached host write")
+
+        driver = BlockedDriver(plan(), "a" * 64, dry_run=False)
+        with self.assertRaisesRegex(
+            module.Stop, "global_paid_intake_cutover_proof_missing"
+        ):
+            driver.run()
+
+    def test_old_api_bootstrap_source_and_marker_proof_is_read_only(self) -> None:
+        state = {
+            "state": "BOOTSTRAP_ALLOW",
+            "bootstrap_id": "b" * 64,
+            "marker_sha256": "c" * 64,
+            "armed_sha256": None,
+            "plan_sha256": None,
+            "target_sha": None,
+            "nonce_sha256": None,
+        }
+
+        class BootstrapDriver(module.Driver):
+            def __init__(self) -> None:
+                super().__init__(plan(), "a" * 64)
+                self.source_drift = False
+
+            def cmd(self, *parts: str, **kwargs: object) -> bytes:
+                if parts[:3] == ("git", "-C", str(module.ROOT)):
+                    return b"pinned old API bytes"
+                if parts[:3] == ("docker", "exec", self.pins["old_api_id"]):
+                    if parts[3] == "sha256sum":
+                        digest = "0" * 64 if self.source_drift else module.sha_bytes(
+                            b"pinned old API bytes"
+                        )
+                        return f"{digest}  {parts[4]}\n".encode()
+                    if parts[3] == "python":
+                        return json.dumps(state).encode()
+                raise AssertionError(f"unexpected command: {parts}")
+
+        driver = BootstrapDriver()
+        driver.check_old_api_gate_bootstrap()
+        driver.source_drift = True
+        with self.assertRaisesRegex(module.Stop, "old_api_gate_source_drift"):
+            driver.check_old_api_gate_bootstrap()
+        driver.source_drift = False
+        state["state"] = "PAUSED_ALL"
+        with self.assertRaisesRegex(module.Stop, "old_api_bootstrap_gate_not_proven"):
+            driver.check_old_api_gate_bootstrap()
+
     def test_locked_preflight_rechecks_full_release_state_before_hold(self) -> None:
         class DriftDriver(module.Driver):
             def __init__(self) -> None:
@@ -166,6 +222,9 @@ class CutoverTest(unittest.TestCase):
                 self.surveys: list[tuple[bool, bool]] = []
 
             def verify_b25_producer_quiescence(self) -> None:
+                pass
+
+            def verify_global_pause_cutover_ready(self) -> None:
                 pass
 
             def preflight(self, *, after_hold: bool = False) -> None:
@@ -190,9 +249,16 @@ class CutoverTest(unittest.TestCase):
 
     def test_old_api_stop_is_indefinite_and_rechecks_row(self) -> None:
         class StopDriver(module.Driver):
-            def __init__(self) -> None:
+            def __init__(self, state: dict | None = None) -> None:
                 super().__init__(plan(), "a" * 64, dry_run=False)
                 self.calls: list[str] = []
+                self.stop_state = state or {
+                    "Running": False,
+                    "Pid": 0,
+                    "ExitCode": 0,
+                    "OOMKilled": False,
+                    "Error": "",
+                }
 
             def event(self, phase: str, **fields: object) -> None:
                 self.calls.append(phase)
@@ -208,7 +274,7 @@ class CutoverTest(unittest.TestCase):
                 assert kwargs.get("timeout") is None
 
             def inspect(self, container: str) -> dict:
-                return {"State": {"Running": False, "Pid": 0}}
+                return {"State": self.stop_state}
 
             def compose(self, *parts: str) -> bytes:
                 return b""
@@ -235,6 +301,12 @@ class CutoverTest(unittest.TestCase):
         self.assertLess(
             driver.calls.index("db_rechecked"), driver.calls.index("redis_rechecked")
         )
+        for abnormal in ({"ExitCode": 137}, {"OOMKilled": True}, {"Error": "crash"}):
+            bad_state = {**driver.stop_state, **abnormal}
+            failed = StopDriver(bad_state)
+            with self.assertRaisesRegex(module.Stop, "old_api_normal_exit_unproven"):
+                failed.stop_old_api()
+            self.assertNotIn("db_rechecked", failed.calls)
 
     def test_watcher_execstart_requires_exact_command(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -363,6 +435,9 @@ class CutoverTest(unittest.TestCase):
             def verify_b25_producer_quiescence(self) -> None:
                 pass
 
+            def verify_global_pause_cutover_ready(self) -> None:
+                pass
+
             def acquire_locks(self) -> None:
                 self.steps.append("locks")
 
@@ -411,6 +486,9 @@ class CutoverTest(unittest.TestCase):
                 pass
 
             def verify_b25_producer_quiescence(self) -> None:
+                pass
+
+            def verify_global_pause_cutover_ready(self) -> None:
                 pass
 
             def acquire_locks(self) -> None:
@@ -645,6 +723,9 @@ class CutoverTest(unittest.TestCase):
                 self.steps.append("preflight")
 
             def verify_b25_producer_quiescence(self) -> None:
+                pass
+
+            def verify_global_pause_cutover_ready(self) -> None:
                 pass
 
             def acquire_locks(self) -> None:

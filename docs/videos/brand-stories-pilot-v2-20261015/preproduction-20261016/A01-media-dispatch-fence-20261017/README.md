@@ -30,12 +30,15 @@ The follow-up local candidate adds an all-slug paid-media intake gate for
 image/clip/music POST, judge/locate and active-job GET. It reads a root-owned
 marker from the API's read-only video-work mount on every request. A missing or
 invalid marker refuses paid intake. `BOOTSTRAP_ALLOW` must be deliberately
-installed before the first gate-aware deployment; a durable `armed.json`
-permanently invalidates bootstrap, `PAUSED_ALL` closes all media intake, and
+installed before the first gate-aware deployment; an intact `armed.json` on
+the root-owned volume invalidates bootstrap while those bytes persist,
+`PAUSED_ALL` closes all media intake, and
 `ALLOW_A01_ONLY` requires the exact A01 slug and durable Redis nonce. See
 [host-cutover-driver.md](host-cutover-driver.md) for the two-stage prerequisite
 and remaining STOPs. This candidate has no reviewed host marker installer or
-old-API live-ingress proof, and the current driver still blocks `--apply`.
+old-API live-ingress proof, settled in-flight paid-request ledger proof, or
+pre-exposure new-API barrier. The current driver still blocks `--apply` before
+any host write on both B25 producer and global cutover proof.
 
 ## Scope and invariant
 
