@@ -75,7 +75,7 @@ Found by the review of the official-topics change on 2026-10-10. Neither was fix
 - [x] `replan()`: `requested?.source_guide ?? (drama ? answer.source_guide ??
       state.source_guide : answer.source_guide || null)`, or the equivalent that leaves the
       drama and the slides request as they are.
-- [ ] The two tests; the document; the receipt increment.
+- [x] The two tests; the document; the receipt increment.
 
 ## How to verify
 
