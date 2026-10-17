@@ -5610,16 +5610,29 @@ Ran: Node v22, Linux: `node --test tools/video/review/*.test.mjs tools/video/aut
 Non-claims: this is a three-file incremental source duration review. It does not re-review the other 105 bound files or the unbound files the commit changes; the mark is set by the tool, so a forged `auto.json` or a removed mark bypasses it (HANDS-OFF.md says so); Shorts sent with `shorts push` and cuts sent with `import` submit outside `review-push` and are not marked (an imported final carries no quality report and is not approved on arrival; a Short made outside the worker is still held only to the Shorts checks); the API tests cover the outline and narration gates and the mark's type, not each of the other six guards; and it does not cover the worker's behaviour on the host, media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Hand-pushed film skill sentence increment: 2 files (2026-10-17)
+
+Reviewer: `claude-pr-review-hand-pushed`. Author: `claude-opus-5-5-hand-pushed`. Scope: DURATION_ONLY for `.agents/skills/youtube-video/SKILL.md` and `.claude/skills/youtube-video/SKILL.md` at `23873840a` ("docs(video): the youtube-video skill says hand-pushed films wait for the owner, and points at the closed ticket"), task `2026-10-11-hand-driven-film-approved-on-its`, on `27349c535`, reviewed as `git diff 23873840a~1 23873840a` (+1/−1 in each file). The reviewer wrote none of the text and edits only this report and review.json.
+
+Baseline: `git show 23873840a~1:<path> | sha256sum` gives `c5fc4286becde5eb6bb60733c1cec1fbd6436e1f8cdaee139c560338a3dc6738` for both files, equal to the existing bindings and table rows. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding:` for exactly these two paths; the other 106 registered files are byte-identical to the receipt. Earlier increments are retained in full.
+
+Findings. Both files (26,511 → 26,618 bytes) stay byte-identical to each other (`cmp`). The one changed sentence, after the step table of the automated route, no longer tells an agent to add `--manual-review` at the final gate and no longer says the server cannot tell a hand push apart; it says a video an agent pushes by hand waits for the owner at every gate, because `review-push` marks the submission `hand_pushed` when the work directory has no worker `auto.json` and the site then approves no gate on arrival. That matches `tools/video/review/sync.mjs` `reviewPush` (`WORKER_STATE_FILE`), `apps/api/app/video_reviews/admin_service.py` `submit_review` (`owner_decides`) at this revision, and `docs/videos/HANDS-OFF.md` §手動推送的影片一律等站主, which it now cites; the ticket link moves to `tasks/done/2026-10-11-hand-driven-film-approved-on-its.md`, which exists. The only time figure, 「43 分鐘」, is the elapsed time of the three automatic approvals in the incident and appears unchanged in both the removed and the added line. None of the changed lines touches the 600/780-second targets, the 480-second floor, the eight-minute minimum, `target_minutes`, `MIN_EPISODE*`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source hashes, covered state, the explainer 8-20 or drama 1-8 minute ranges, or frame counts. No duration correction is required.
+
+Ran: Node v22.22.0, Linux: `cmp` of the two mirrors (identical); `node tools/video/long-form/cli.mjs check` before any edit (stale for exactly these two paths). The CLI check, the long-form receipt tests and `npm run test:tools` are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims: this is a two-file incremental source duration review of one sentence. It does not re-review the rest of either skill file or the other 106 bound files, and it does not accept media, paid production, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the hand-pushed film owner gate increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the hand-pushed film skill sentence increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `c5fc4286becde5eb6bb60733c1cec1fbd6436e1f8cdaee139c560338a3dc6738` |
+| `.agents/skills/youtube-video/SKILL.md` | `c5455e5bd70496f255ad37ff60c6770b3fbebd633c368d22895bb822329d73ab` |
 | `.agents/skills/youtube-video/references/automated.md` | `b61781312530de1895f381ea57ec26cc7f1cf31c89f9d5969c9aeb8221759cc1` |
 | `.agents/skills/youtube-video/references/formats.md` | `b27b230728c1c6513fd4567cdba04797f552fd920bed33833ae9f97b70d74087` |
-| `.claude/skills/youtube-video/SKILL.md` | `c5fc4286becde5eb6bb60733c1cec1fbd6436e1f8cdaee139c560338a3dc6738` |
+| `.claude/skills/youtube-video/SKILL.md` | `c5455e5bd70496f255ad37ff60c6770b3fbebd633c368d22895bb822329d73ab` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `4cb2769af63fb5ad295f6f9c301c9015255eb6c335b62217978f73ddf6360023` |
 | `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
