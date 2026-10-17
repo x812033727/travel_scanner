@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, lstatSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { proposeRebaseline } from '../A01-lexicon-rebaseline-e640-candidate/rebaseline.mjs';
+import { proposeRebaseline } from './supported-baseline.mjs';
 import { planInitialStoryLexicon, readStoryLexicon } from './snapshot-format.mjs';
 
 const SLUG = 'story-rolling-suitcase-v2';

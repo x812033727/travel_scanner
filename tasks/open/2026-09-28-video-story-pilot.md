@@ -473,3 +473,19 @@ The reviewed Row10c plan is now assembled into a deterministic local import cand
 - Added read-only inspect-pinned.mjs exact before/after capture entry; no write/apply route, failed CLI exit 2, all successful integrity reports retain production HOLD and release/paid/installation false.
 - Five focused tests pass, including actual spawned CLI exit, tampered-review receipt binding and partial-capture refusal. Independent inspector review reports 0 P1/P2; original review remains preserved. Actual 80-event same-root check remains HOLD because no real 81st append exists.
 - Remaining: guarded cross-volume host adoption/recovery, fresh evidence and uncertain job disposition, actual host authority, pinned 81-to-82 narrative bridge and normal script/media gates. No production write or paid call.
+
+### 2026-10-17 guarded host adoption preparation
+
+- Owner requested completing production data handoff/review then A01 production. Read-only host preflight at 08:04Z and 08:09Z found another deployment lock; the first also had a running stage job. No host writes were made.
+- #1548 old head240462df passed all hosted checks. Rebased to main4a0e7a134 (#1542 narrative timestamp quoting), new head2d510196606c962d3f53f75cbdad388890f2c187; independent byte comparison confirms all21 changed files identical and473plans PASS. New CI and owner exact-version merge/deploy decision pending.
+- Added guarded adopt-pinned API with exact deployed runtime pins, project/shared leases, scoped STOP retention, docs/work intents, exact held source readback and committed-only recovery. Independent3/3 tests PASS cover7interruption phases; review0P1/P2 in local API scope. No actual81st event, host call or paid action.
+- Host caller/external deploy-lock DB/job gates, genuine evidence/authority, fresh capture, pinned81-to82 chapter transition and real verifier/listener/narrative checks remain required. Do not mark pilot done.
+
+### 2026-10-17 afternoon capture and manuscript gates
+
+- Deployment finished4a0e7a134;08:13Z preflight lockfree/no runningstage. Fresh capture A01-20261017-afternoon-fe35369c has199files; sharedlexicon alone gained4exact terms (Nieman/Daniel/Roberts/One),198otherfiles unchanged. SQL/budget hashes match morning,109succeeded+1uncertain,0media,US$25unused. Original planner correctly refused new hash before the supported-baseline extension.
+- Read-only supported-baseline accepts only exact e640/4d3 captures (23/27 additions) under old80pins; independent review0P1/P2, both actual plans reproduced, unknown/mismatched hashes rejected,10/10 focusedtests pass. Current plan3a08217137dabd3ca57256cb12f73ae6b9ced9e86cf66704b17fd4ea64f21220.
+- Isolated round21 deletes one redundant clause; isolated round22 clarifies5spoken callbacks/Travelpro.79scenes108lines,lint0cute0,other narration and source references unchanged. Source/code review and offline manuscript review are separate, not genuine verifier/listener/narrative. Per90second intervals remain unmeasured untilTTS.
+- Pinned82model now bindsround22; actual82scope must include fresh sixchapter checker/lint cycles(counter0,changed removed withpriorrecord), not merely pronunciationpin. Narrativefail/round9/narrative_fixes2 preserved. Real81/82install, uncertainjob disposition, hostcaller gates and formalworkerreview still unfinished. #1548 exact merge/deploy authorization remains pending; no hostwrite/model/paidcall made.
+
+- Owner subsequently approved conditional merge/deploy of #1548 exact2d510196606c962d3f53f75cbdad388890f2c187. Onlyfull-stack-smoke remains pending at latestread; no merge untilallgreen. Latest round22 offlineincrement manuscript report12PASS/1NOT_MEASURED, no_recapFAIL withdrawn as repeated component reference/new mechanism rather than repeated conclusion; original headingsFAIL corrected for export error. It is not formalpanel/TTSproof. Narrow Travelpro primarysource attribution was reread and saved without upgrading claimverdicts.
