@@ -16,8 +16,8 @@ retry, STOP/LEASE or paid-work command. Every result keeps production on `HOLD`.
 - Host-origin 2026-10-17 read-only capture: tar SHA-256
   `02b8631af6133227088a86d6eae7bff0bd152aa2e72b48198cec30741e964499`;
   mounted lexicon `e6403c824aac13b4c0a1ae737e8a597a8bf60c353e9faf0cc4915c3214114a30`,
-  318 terms. The capture and raw SQL/budget outputs are outside Git at
-  `C:/Users/x8120/.codex/captures/A01-20261017-095816-2a72b1e1/`.
+  318 terms. The capture and raw SQL/budget outputs remain outside Git; the
+  tracked `A01-live-readback-20261017.md` records their sanitized receipt.
 - Only 23 exact terms were added. No old term was removed or edited. The exact
   names and values are frozen in `EXPECTED_ADDITIONS`; several have non-null
   spoken forms. The 80-link inspector must reject the current capture for
