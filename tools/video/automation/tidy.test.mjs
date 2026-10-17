@@ -113,6 +113,45 @@ function assertUntouched(dir) {
   assert.equal(autoJson(dir).tidied_at, undefined);
 }
 
+for (const dryRun of [false, true]) for (const count of [0, 200]) {
+  test(`a video omitted from the site's ${count}-entry list keeps its bytes despite old local approval (dry run: ${dryRun})`, () => {
+    const where = place();
+    const slug = "omitted-old-video";
+    const dir = finishedVideo(where.work, slug, { published: daysAgo(90) });
+    const files = [...Object.keys(MEDIA), ...RECORDS, "approvals.json", STATE_FILE];
+    const before = files.map((name) => [name, readFileSync(path.join(dir, ...name.split("/")))]);
+    const site = Array.from({ length: count }, (_, i) => listing(`newer-${i}`));
+
+    const result = round(where, { site, dryRun });
+
+    assert.equal(result.cleared, null);
+    assert.equal(result.due.length, 0, "missing metadata cannot make an old cut due");
+    assert.deepEqual(result.held.map((entry) => entry.slug), [slug]);
+    assert.match(result.held[0].why, /list has no entry.*publish time and languages are unknown/);
+    assert.ok(roundLines(result, { verbose: true }).some((line) => line.includes(slug) && /list has no entry/.test(line)));
+    for (const [name, bytes] of before) assert.deepEqual(readFileSync(path.join(dir, ...name.split("/"))), bytes, `${name} stays byte for byte`);
+    assertUntouched(dir);
+  });
+}
+
+test("an omitted video becomes eligible only after current site metadata establishes its retention date", () => {
+  const where = place();
+  const slug = "listed-again";
+  const dir = finishedVideo(where.work, slug, { published: daysAgo(90) });
+
+  assert.equal(round(where, { site: [] }).cleared, null);
+  assertUntouched(dir);
+  const recent = round(where, { site: [listing(slug, { publish_approved_at: daysAgo(3) })] });
+  assert.equal(recent.cleared, null, "the old local date cannot shorten current site retention");
+  assert.equal(recent.waiting[0].slug, slug);
+  assertUntouched(dir);
+
+  const old = round(where, { site: [listing(slug, { publish_approved_at: daysAgo(8) })] });
+  assert.equal(old.cleared.slug, slug);
+  assert.equal(autoJson(dir).tidied_at, NOW.toISOString());
+  for (const name of Object.keys(MEDIA)) assert.ok(!exists(dir, name), `${name} is removed once current metadata permits it`);
+});
+
 const localizationProduction = () => ({ source_binding: { source_sha256: "a".repeat(64) }, profile: { phases: { primary: { locale: "zh-TW" }, localization: { locales: ["ja", "ko", "en"], start_after: "approved-chinese-final", readiness: "planned-not-implemented-for-drama" } } } });
 
 test("Chinese-first source media survives a decided empty language choice, old age and a later drop", () => {
