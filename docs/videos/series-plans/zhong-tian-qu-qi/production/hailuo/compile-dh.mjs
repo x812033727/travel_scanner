@@ -3,7 +3,7 @@
 // subtitled with the range), then joined with one chapter per episode and one merged CC track.
 //   node compile-dh.mjs <first> <last> <out.mp4>
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const [first, last, out] = [Number(process.argv[2]), Number(process.argv[3]), path.resolve(process.argv[4])];
@@ -24,7 +24,8 @@ for (let n = first; n <= last; n++) {
   const D = path.join(R, `docs/videos/zhong-tian-qu-qi-e${e}`);
   const W = `C:/Users/x8120/mokaair-work/videos/zhong-tian-qu-qi-e${e}-dh`;
   const mp4 = path.join(tmp, `e${e}.mp4`);
-  execFileSync("node", [path.join(H, "assemble-v4.mjs"), path.join(D, "video.json"), path.join(D, "overlays.json"), editFile, W, mp4], { stdio: ["ignore", "ignore", "inherit"] });
+  // REUSE=1 keeps a part already cut (delete the part of an episode that changed).
+  if (!(process.env.REUSE === "1" && existsSync(mp4) && existsSync(mp4.replace(/\.mp4$/, ".zh-TW.srt")))) execFileSync("node", [path.join(H, "assemble-v4.mjs"), path.join(D, "video.json"), path.join(D, "overlays.json"), editFile, W, mp4], { stdio: ["ignore", "ignore", "inherit"] });
   parts.push({ n, mp4, srt: mp4.replace(/\.mp4$/, ".zh-TW.srt"), dur: probe(mp4) });
   console.log(`e${e} ${parts.at(-1).dur.toFixed(2)}s`);
 }
