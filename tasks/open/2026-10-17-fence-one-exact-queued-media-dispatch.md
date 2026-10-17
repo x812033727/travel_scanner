@@ -92,3 +92,17 @@ production receipts. The driver's `--apply` path still stops at
 `b25_producer_proof_missing` before any host write until the unrelated B25
 producer is authoritatively completed or durably paused. No installation,
 deployment, API stop, nonce, marker, A01 paid stage or vendor call occurred.
+
+Independent read-only producer audit on 2026-10-18 found no safe snapshot-only
+condition that can remove this hard STOP. B25 is made by `video-worker`, while
+the cutover candidate pins only `video-ai-worker`; B25's producer can release
+and reacquire its project LEASE between image units. A moment with no LEASE,
+queued DB row or media process, or an `auto.json` done/blocked value, cannot
+prove it will not send again. The four deployment locks do not fence that
+producer. Before any proposed apply, a separately reviewed, durable B25
+producer pause or terminal mechanism must be established with its own host
+authorization, then rechecked under the release locks and throughout deploy
+and A01 handoff alongside actual `video-worker` identity, work volume,
+pending media jobs and ledger state. Do not clear or rewrite B25 records to
+manufacture quiescence; retain `b25_producer_proof_missing` until the contract
+exists.
