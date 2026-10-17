@@ -43,6 +43,7 @@ import { localizationPlan, writeLocalizationRetention } from "../production/rete
 import { buildSheet, SHEET_PARTS, sheetContext, withoutContext } from "../i18n/cli.mjs";
 import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
 import { imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "../media/prompt-budget.mjs";
+import { policyRequest } from "../qa/policy.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID, PAUSE_CODES, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { acquireProjectLease, ProjectLeaseError } from "../core/project-lease.mjs";
@@ -91,6 +92,11 @@ export const MAX_STAGE_FAILURES = 2;
 // A drama's failed sheets, keyframes or clips are handed to the writer to fix the prompts, this
 // many times per kind, before the video is blocked for a person (docs/videos/DRAMA.md).
 export const MAX_PROMPT_FIX_ROUNDS = 2;
+// The demonstration a tutorial's script must show before its narration and pictures are paid for:
+// the final gate's own threshold (apps/api/app/video_automation/judge.py POLICY_MIN_DEMO), asked
+// earlier (demoGate). Its verdict is kept beside the review files, bound to the narration it read.
+export const SCRIPT_MIN_DEMO = 0.6;
+export const DEMO_CHECK = ["review", "demo-check.json"];
 // The media stages that take `--seed-offset` (media/keyframes.mjs): an owner retry of a video
 // the server stopped answering for (every seed's request hash spent its attempts) shifts the
 // stage's seeds, and `media()` passes the shift from state.seed_offsets.
@@ -240,6 +246,25 @@ export function automatedVideos(workBase) {
     .sort((a, b) => String(a.created_at).localeCompare(String(b.created_at)));
 }
 
+/**
+ * The pages earlier automated videos rest on without a site article: each one's first
+ * `source_urls` entry when its `source_guide` is empty, dropped videos included and `ownSlug`
+ * left out. Only the first URL counts; later ones may be shared between videos. An official page
+ * (topics.py `official_topics`) stays among the candidates for 14 days, so without this a page
+ * made into one video would be offered to every draft after it.
+ */
+export function usedPages(workBase, ownSlug = null) {
+  return new Set(automatedVideos(workBase)
+    .filter((state) => state.slug !== ownSlug && !state.source_guide && !state.unplanned)
+    .map((state) => state.source_urls?.[0])
+    .filter((url) => typeof url === "string" && url));
+}
+
+/** The topics a scheduled draft may plan from: none whose page an earlier video rests on. */
+function freshTopics(topics, pages) {
+  return (topics ?? []).filter((topic) => !pages.has(topic?.url));
+}
+
 function saveState(workdir, state) {
   mkdirSync(workdir, { recursive: true });
   atomicWrite(path.join(workdir, STATE_FILE), `${JSON.stringify(state, null, 2)}\n`);
@@ -352,9 +377,10 @@ export function siteSources(sourceGuide, urls = [], root = ROOT) {
  * channel stance, 站主觀點 must open by naming the stance points it applies (core/lint.mjs
  * stanceProblems); the local `lint` has no stance and does not check this. `requiredGuide` is
  * the site article the owner asked a slides video of (draftSlides): the brief must retell that
- * one, whatever earlier video used it.
+ * one, whatever earlier video used it. `pages` are the pages earlier videos rest on without a
+ * site article (usedPages): a plan with no site article may not open on one of them.
  */
-export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null, requiredGuide = null) {
+export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null, requiredGuide = null, pages = new Set()) {
   if (!plan || typeof plan !== "object") return "the answer is not an object";
   if (!SLUG.test(plan.slug ?? "")) return `slug "${plan.slug}" is not lowercase kebab-case of at most 60 characters`;
   if (taken.has(plan.slug)) return `slug "${plan.slug}" is already used by an earlier video`;
@@ -369,6 +395,7 @@ export function planProblem(plan, taken, usedGuides = new Set(), format = "slide
   if (requiredGuide && plan.source_guide !== requiredGuide) return `source_guide must be "${requiredGuide}", the site article the owner asked for (requested_guide)`;
   const guide = mainGuide(plan);
   if (guide && usedGuides.has(guide)) return `the site article "${guide}" is what an earlier video retells (see used_guides); pick another topic`;
+  if (!guide && pages.has(plan.source_urls[0])) return `the page ${plan.source_urls[0]} is what an earlier video rests on; pick another topic`;
   return null;
 }
 
@@ -1956,13 +1983,15 @@ export class Automation {
     } catch (error) {
       return this.draftWaits(error, "the topic lookup");
     }
-    const { topics, notes } = found;
+    const { notes } = found;
     const now = this.ctx.now().toISOString();
     const draftSlug = `draft-${now.slice(0, 16).replace(/[-:T]/g, "")}`;
     const earlier = this.earlierVideos();
     const taken = new Set(earlier.map((video) => video.slug));
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
-    const { plan, problem, lost } = await this.firstPlan(draftSlug, (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), (answer) => planProblem(answer, taken, usedGuides, "slides", this.stance));
+    const pages = usedPages(this.workBase);
+    const topics = freshTopics(found.topics, pages);
+    const { plan, problem, lost } = await this.firstPlan(draftSlug, (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), (answer) => planProblem(answer, taken, usedGuides, "slides", this.stance, null, null, pages));
     // Written whatever came of it: a failed draft waits for the next interval like a good one.
     this.markDrafted();
     if (lost) return this.unanswered(this.unplannedVideo({ slug: draftSlug, format: "slides", title: `排程草稿 ${now.slice(0, 16).replace("T", " ")} UTC`, source_guide: null }, "draft"), lost);
@@ -2633,6 +2662,9 @@ export class Automation {
       const panelled = await this.narrativeGate(state);
       if (panelled) return panelled;
     }
+    // A tutorial's script is asked for its demonstration before anything is recorded or drawn.
+    const demonstrated = await this.demoGate(state, status);
+    if (demonstrated) return demonstrated;
     // An episode of a series: the owner reads the screenplay before any image or clip is paid for.
     if (next === "script approved") return this.scriptGate(state);
 
@@ -2770,8 +2802,10 @@ export class Automation {
     } else if (state.unplanned === "drama") {
       ask = { payload: await this.dramaPlanPayload(state, earlier), check: (answer) => planProblem(own(answer), taken, state.source_guide ? new Set() : usedGuides, "drama", this.stance, state.style_preset ?? null), options: { maxOutputTokens: 16_000, format: "drama", variant: this.variantOf(state) } };
     } else {
-      const { topics, notes } = await this.api.topics();
-      ask = { payload: (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), check: (answer) => planProblem(own(answer), taken, usedGuides, "slides", this.stance) };
+      const { topics: offered, notes } = await this.api.topics();
+      const pages = usedPages(this.workBase, state.slug);
+      const topics = freshTopics(offered, pages);
+      ask = { payload: (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), check: (answer) => planProblem(own(answer), taken, usedGuides, "slides", this.stance, null, null, pages) };
     }
     const { plan, problem, lost } = await this.firstPlan(state.slug, ask.payload, ask.check, ask.options);
     if (lost) throw lost;
@@ -2803,14 +2837,16 @@ export class Automation {
     const drama = state.format === "drama";
     // An owner's slides request keeps its article through every re-plan (draftSlides): no topics.
     const requested = state.slides_request ?? null;
-    const { topics } = drama || requested ? { topics: [] } : await this.api.topics();
+    const pages = drama || requested ? new Set() : usedPages(this.workBase, state.slug);
+    const { topics: offered } = drama || requested ? { topics: [] } : await this.api.topics();
+    const topics = freshTopics(offered, pages);
     if (drama) state.target_minutes = hasAnimePolicy(state) ? requireAnimePolicy(state.series).body_target_seconds / 60 : episodeMinutes(state.target_minutes, state.style_preset);
     const extra = drama
       ? { premise: state.premise, target_minutes: [state.target_minutes, state.target_minutes], source_guide: state.source_guide, ...this.dramaPayload(state) }
       : { topics, ...(requested ? { requested_guide: this.requestedGuide(requested) } : {}) };
     const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format, drama ? this.variantOf(state) : null);
     const chosen = (drama && state.source_guide) || requested;
-    const problem = planProblem({ ...answer, slug: state.slug }, taken, chosen ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null, requested?.source_guide ?? null);
+    const problem = planProblem({ ...answer, slug: state.slug }, taken, chosen ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null, requested?.source_guide ?? null, pages);
     state.replans += 1;
     state.notes.push(`outline sent back by ${by}: ${note}`);
     saveState(this.workdir(state.slug), state);
@@ -2818,7 +2854,9 @@ export class Automation {
     this.cleared(state, "planner");
     writeFileSync(path.join(dir, "brief.md"), answer.brief.endsWith("\n") ? answer.brief : `${answer.brief}\n`);
     state.source_urls = (answer.source_urls ?? state.source_urls).slice(0, 12);
-    state.source_guide = requested?.source_guide ?? answer.source_guide ?? state.source_guide;
+    // A drama adaptation and an owner's slides request keep their article; a scheduled draft takes
+    // the planner's answer as given, so a re-plan onto an official page records no article.
+    state.source_guide = requested?.source_guide ?? (drama ? answer.source_guide ?? state.source_guide : answer.source_guide || null);
     saveState(this.workdir(state.slug), state);
     return `brief rewritten after ${by === "Jev" ? "Jev's" : "the owner's"} note (round ${state.replans}); ${await this.submitOutline(state)}`;
   }
@@ -3329,6 +3367,54 @@ export class Automation {
     }
     state.narrative = { passed: false, rounds: round, failed: verdict.failed.map((each) => each.id) };
     return this.fixScript(state, `說故事檢查沒過：${verdict.problems.join("；")}`, "the storytelling panel", "narrative");
+  }
+
+  /**
+   * The demonstration check (ticket 2026-10-09-send-a-final-cut-back-to): a slides video's script
+   * is read by the final gate's policy judge before its narration is synthesized, and a script
+   * whose demonstration scores under SCRIPT_MIN_DEMO goes back to the writer with Jev's note, two
+   * times (MAX_PROMPT_FIX_ROUNDS); what still fails after that stops for the owner with the note,
+   * before narration or pictures are paid for. The site decides which videos are asked (an
+   * explainer or a story answers `demo: null` and passes). A video whose narration is already
+   * synthesized is past this point and is not sent back; a site with no stance or no judge leaves
+   * the check to the final gate as before. Only the demonstration is acted on here: the other
+   * answers are the final gate's.
+   */
+  async demoGate(state, status) {
+    if (state.format === "drama" || state.story || state.compilation) return null;
+    // Ever recorded, not only current: a narration made stale later (a line edited after the owner
+    // sent the audio back, a lexicon reading changed at the final cut) was paid for, and so may the
+    // pictures be, so the script is not sent back from there.
+    if (existsSync(path.join(this.workdir(state.slug), "timeline.json")) || status.steps.some((step) => step.id === "narration synthesized" && step.done)) return null;
+    const dir = docDir(state.slug, this.ctx.root);
+    const briefFile = path.join(dir, "brief.md");
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const request = policyRequest({ doc: { ...video, slug: state.slug }, brief: existsSync(briefFile) ? readFileSync(briefFile, "utf8") : "" });
+    const script_sha256 = createHash("sha256").update(request.script).digest("hex");
+    const file = path.join(this.workdir(state.slug), ...DEMO_CHECK);
+    let verdict = readJson(file, null);
+    if (verdict?.script_sha256 !== script_sha256) {
+      let answer;
+      try {
+        answer = await this.api.judgePolicy(request);
+      } catch (error) {
+        if (!(error instanceof AutomationError)) throw error;
+        if ((error.status === 409 && error.code === "video_judge_not_enabled") || error.status === 404) return null;
+        if (error.code === RUN_UNCERTAIN) return this.unanswered(state, Object.assign(error, { stage: "judge", unit: "Jev's demonstration check" }));
+        if (error.who === "owner") throw error;
+        return this.defer(state, `Jev could not check the script's demonstration (${error.message})`, { what: "judge", everyone: Boolean(everyones(error)) });
+      }
+      if (typeof answer?.passed !== "boolean") return this.defer(state, "Jev checked the script's demonstration without a verdict", { what: "judge" });
+      const demo = typeof answer.demo === "number" ? answer.demo : null;
+      const note = typeof answer.note === "string" && answer.note.trim() ? answer.note.trim() : `有示範 ${demo?.toFixed(2) ?? "—"}`;
+      verdict = { script_sha256, demo, passed: demo === null || demo >= SCRIPT_MIN_DEMO, note, checked_at: this.ctx.now().toISOString() };
+      mkdirSync(path.dirname(file), { recursive: true });
+      atomicWrite(file, `${JSON.stringify(verdict, null, 2)}\n`);
+      this.cleared(state, "judge");
+      if (verdict.passed) return `${state.slug}: Jev found a demonstration in the script (${verdict.note})`;
+    }
+    if (verdict.passed) return null;
+    return this.fixScript(state, `示範不足（有示範低於 ${SCRIPT_MIN_DEMO}）：${verdict.note}`, "Jev", "demo");
   }
 
   /** series.json as lint reads it (a brand story is known by its `kind`), or null. */

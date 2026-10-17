@@ -107,6 +107,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
   - 工人自己做過的影片；
   - `/admin/videos` 上的每一支影片，包括分支上做的、已放棄的。
 - 企劃的主要文章（`source_guide`，沒有的話取它引用的第一篇站內文章）如果跟前面任何一支相同，這份企劃就不採用。
+- 沒有站內文章的影片（例如官方頁面做成的），以它 `source_urls` 的第一個網址為準（2026-10-17 加，`flow.mjs` 的 `usedPages`）：工人做過的影片裡，`source_guide` 是空的那些，第一個網址就算用過了，放棄的也算。排程草稿、站主重試的草稿與退回重寫時，候選題目裡網址相同的先拿掉，企劃模型看不到；企劃沒有站內文章、第一個網址又是用過的，這份企劃不採用，跟站內文章重複一樣再問一次。只比第一個網址，後面引用的網址可以跟別支重複。
 - 分支上的影片用 `review-push --report-only` 登記到審核頁，這個指令不會送出任何審核項目。
 
 **官方頁面當題目**（2026-10-10 加；站主要從官方的更新與教學貼文做影片）：
@@ -115,10 +116,10 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 - **順序**：站上文章 → 官方頁面 → 搜尋結果；搜尋結果裡跟官方頁面同一個網址的會丟掉。
 - **開關**：沒有後台勾選框。在 `apps/api/app/news_automation/sources.json` 把來源的 `config` 加上 `video_topics: true`，再到主機載入（[`news-automation.md`](../news-automation.md) 的 Sources 一節）。沒有任何來源帶這個鍵時，選題跟以前完全一樣。對主機上已經有的來源加上或拿掉這個鍵，算一次設定變更：載入時會從主機重新驗證那個來源，驗證被拒的話那個新聞來源會被關掉，所以載入後要讀回報、把被拒的再載一次。這個改動比來源先部署的話，五個來源是新增，不會多驗一輪。第一批帶鍵的是 Claude blog、Claude developer blog、Anthropic engineering、GitHub Changelog、Cursor changelog（2026-10-10；`tests/test_video_automation_topics.py` 會對照檔案）。OpenAI 與 Gemini 的更新頁目前掃描器讀不到，所以不在裡面。各家官方頁面與對應的來源在 [`official-ai-accounts.md`](../official-ai-accounts.md)。
 - **企劃怎麼處理**：提示詞要它把官方頁面排在搜尋結果前面，`source_guide` 回 `null`、網址放 `source_urls` 第一個，更新類的內容照含金量規則的四步講。
-- **三個限制**：
+- **兩個限制與一條規則**：
   - 只有被判成不算新聞的頁面會出現。已經發成新聞的走站上文章那條路；停在待審查或需重寫的不會出現。
   - 自動路線還不能實際操作工具（票 `2026-10-09-give-the-automated-route-a-way`），所以官方題目做出來的是「這次更新改了什麼、現在該怎麼做」的說明片，依據是官方頁面上的範例。要實作示範的教學仍然走手動路線。
-  - 〈不重複選題〉的程式檢查只管站上文章。官方頁面做過影片（或那支被放棄）之後，14 天內仍然在候選裡，只靠企劃模型讀 `earlier_videos` 避開；退回重寫時企劃改選官方頁面，影片記的 `source_guide` 也還是原來那篇文章。兩件事都在票 `2026-10-10-refuse-a-second-video-of-an`。
+  - 官方頁面做過影片（或那支被放棄）之後，14 天內仍然在題目來源裡，但〈不重複選題〉會把它從候選拿掉，企劃也不能再以它開頭（2026-10-17 起由程式檢查）。排程草稿退回重寫時，企劃改選官方頁面，影片記的 `source_guide` 就是空的，不再沿用原來那篇文章；漫劇改編與站主指定文章的教學照舊保留自己的文章。
 - **先跳過的來源**：以 feed 摘要當依據的來源（Claude Code 更新紀錄、Claude Platform 更新紀錄）。它們每一則都指向同一個共用頁面的錨點，工人讀到的會是整頁的開頭（前 40,000 字），不是那一則；Claude Code 更新紀錄那一頁還有 4.8 MB，超過工人 3 MB 的讀頁上限，整頁都讀不了。這種來源帶了鍵也不會出題目，`notes` 會寫原因（票 `2026-10-10-let-the-video-worker-read-one`）。
 
 ## 站主指定文章的教學影片（2026-10-05 加）

@@ -342,6 +342,32 @@ describe("AdminNewsWorkspace", () => {
     expect(actionButtons()).toEqual(["確認發布，翻譯其他語言", "重新執行", "退件"]);
   });
 
+  // Ticket 2026-10-11-show-final-judge-holds-on-news: a Flock story sat at news_ready_to_publish
+  // while its latest judge verdict asked for the company's response, and the page said every
+  // check had passed.
+  it("says the AI judge holds a ready article back instead of saying every check passed", async () => {
+    const ready = { ...summary, id: "00000000-0000-4000-8000-000000000045", source_title: "A ready story the judge held", error_code: "news_ready_to_publish", judge_decision: "manual" };
+    serveRows(ready);
+    withAssessments(ready, judgeRow("j1", "manual", "final", "news_ready_to_publish", ["文章沒有寫出公司對誤認指控的回應"]));
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /A ready story the judge held/ }));
+    const verdict = await screen.findByRole("heading", { name: "AI 代審（claude-opus-5-5）：需要人判斷" });
+    expect(within(verdict.parentElement!).getByRole("listitem").textContent).toBe("文章沒有寫出公司對誤認指控的回應");
+    expect(screen.getByText(/AI 代審讀過後要求修改，沒有放行/)).toBeTruthy();
+    expect(screen.queryByText(/已通過所有檢查/)).toBeNull();
+    // The correction route is offered; publishing stays the owner's explicit call.
+    expect(actionButtons().sort()).toEqual(["五語發布", "重新查核", "退件"].sort());
+  });
+
+  it("keeps an ordinary ready article as it was", async () => {
+    const ready = { ...summary, id: "00000000-0000-4000-8000-000000000046", source_title: "A ready story", error_code: "news_ready_to_publish", judge_decision: null };
+    serveRows(ready);
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /A ready story/ }));
+    expect(await screen.findByText(/已通過所有檢查/)).toBeTruthy();
+    expect(actionButtons()).toEqual(["五語發布", "重新查核", "退件"]);
+  });
+
   it("shows the AI judge's verdict on a story whose publication was refused because the sources changed", async () => {
     // The judge read Jev's last-call hold and answered publish; the refusal moved the row to
     // the changed-evidence hold, and the verdict keeps the hold it read plus the refusal.
