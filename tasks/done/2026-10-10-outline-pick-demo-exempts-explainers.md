@@ -1,13 +1,13 @@
 ---
 id: 2026-10-10-outline-pick-demo-exempts-explainers
 title: Outline pick: an explainer or story video is not asked for a demonstration either
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-outline-demo
 claimed_at: 2026-10-17T00:24:10Z
 created_at: 2026-10-10T14:52:56Z
-completed_at:
+completed_at: 2026-10-17T00:41:25Z
 branch:
 depends_on: []
 scope:
