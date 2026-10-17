@@ -99,3 +99,8 @@ Independent review of the first guard head found that named constraints could re
 The three affected JS suites passed together with bundled Node 24.19: 67/67. The guard unit suite passed 5 tests, while the true PostgreSQL test remains skipped locally. Targeted ruff and mypy passed. The CI PostgreSQL result on the tightened head and independent re-review remain required; the preceding #1521 head has neither approval nor deployment status.
 
 The first true PostgreSQL CI run exposed that asyncpg decodes `pg_constraint.contype` and `confdeltype` as byte values. String-only checks would reject a valid 0133 database. The guard now normalizes these single-byte catalog fields before comparing exact constraints, and the integration test normalizes its own independent catalog readback. A byte-valued unit fixture guards this driver behavior; a new CI PostgreSQL run must prove the whole rollback path.
+
+
+### 2026-10-17 owner-authorized claim release
+
+Implementation in #1521 is merged. The owner authorized releasing this obsolete claim for independent A01 lexicon integration. This ticket remains open only pending archival; do not reimplement the merged work. No production action is authorized by this metadata change.

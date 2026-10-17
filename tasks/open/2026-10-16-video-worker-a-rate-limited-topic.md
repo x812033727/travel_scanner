@@ -76,3 +76,8 @@ On the host after the deploy: `docker logs --since 1h travel_scanner-video-worke
   one lookup a round and the draft waiting out the window, 12 is enough.
 - The owner asked for this on 2026-10-16 after the post-deploy check of #1516 showed the worker
   exiting 4 every round.
+
+
+### 2026-10-17 owner-authorized claim release
+
+Implementation in #1520 is merged. The owner authorized releasing this obsolete claim for independent A01 lexicon integration. This ticket remains open only pending archival; do not reimplement the merged work. No production action is authorized by this metadata change.
