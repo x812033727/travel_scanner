@@ -63,6 +63,12 @@ NONCE_WATCHER_SCRIPT_PATH = re.compile(
 NONCE_HEARTBEAT = Path("/run/a01-media-dispatch-fence/heartbeat.json")
 NONCE_WATCHER_UNIT = "a01-media-dispatch-fence-watch.service"
 MAX_HEARTBEAT_AGE_SECONDS = 15
+CUTOVER_HANDOFF_PATH = re.compile(
+    r"^/root/mokaair-a01-media-fence-[0-9a-f]{12}/handoff\.json$"
+)
+CUTOVER_HOLD_OWNER = "a01-media-fence"
+CUTOVER_HOLD_PHASES = ["api-drain", "nonce", "deploy", "verify"]
+CUTOVER_HOLD_PATH = Path("/root/travel-scanner-deploy.hold")
 API_SOURCE_PATHS = {
     "jobs_sha256": "/app/app/video_media/jobs.py",
     "dispatch_fence_sha256": "/app/app/video_media/dispatch_fence.py",
@@ -213,6 +219,12 @@ def config() -> dict:
              "nonce watcher script path is not pinned beside receipt")
         pinned(m.get("nonce_watcher_script_sha256"), "nonce watcher script SHA")
         pinned(m.get("nonce_watcher_execstart_sha256"), "nonce watcher ExecStart SHA")
+        handoff_path = m.get("cutover_handoff_path")
+        need(isinstance(handoff_path, str)
+             and bool(CUTOVER_HANDOFF_PATH.fullmatch(handoff_path))
+             and Path(handoff_path).parent == Path(m["nonce_receipt_path"]).parent,
+             "cutover handoff path is not pinned beside nonce receipt")
+        pinned(m.get("cutover_handoff_sha256"), "cutover handoff SHA")
     need(m.get("next_phase") in PHASES, "next_phase is not pinned")
     need(isinstance(m.get("owner_approval_ref"), str) and len(m["owner_approval_ref"]) >= 16,
          "owner approval reference is missing")
@@ -358,6 +370,100 @@ def private_receipt(m: dict) -> tuple[dict, bytes]:
     need(hmac.compare_digest(hashlib.sha256(encoded).hexdigest(), m["nonce_sha256"]),
          "private nonce SHA drift")
     return data, encoded
+
+
+def cutover_handoff(m: dict) -> dict:
+    """Bind R9 to the exact root-private API cutover receipt, not a fresh hold."""
+    path = Path(m["cutover_handoff_path"])
+    parent = path.parent.lstat()
+    need(stat.S_ISDIR(parent.st_mode) and parent.st_uid == 0
+         and stat.S_IMODE(parent.st_mode) == 0o700,
+         "cutover handoff directory ownership or mode drift")
+    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
+    try:
+        info = os.fstat(fd)
+        need(stat.S_ISREG(info.st_mode) and info.st_uid == 0
+             and stat.S_IMODE(info.st_mode) == 0o600
+             and info.st_nlink == 1 and 0 < info.st_size <= 16384,
+             "cutover handoff file ownership, mode or size drift")
+        raw = os.read(fd, 16385)
+        need(len(raw) == info.st_size, "cutover handoff changed while reading")
+    finally:
+        os.close(fd)
+    need(hmac.compare_digest(hashlib.sha256(raw).hexdigest(), m["cutover_handoff_sha256"]),
+         "cutover handoff SHA drift")
+    data = json.loads(raw)
+    need(isinstance(data, dict) and data.get("schema_version") == 1,
+         "cutover handoff schema drift")
+    expected = {
+        "target_sha": m["expected_head"],
+        "job_id": FENCED_MEDIA_JOB_ID,
+        "redis_id": m["redis_container_id"],
+        "redis_image": m["redis_image_id"],
+        "api_id": m["api_container_id"],
+        "api_image": m["api_image_id"],
+        "watcher_unit": m["nonce_watcher_unit"],
+        "watcher_main_pid": m["nonce_watcher_pid"],
+        "nonce_watcher_script_path": m["nonce_watcher_script_path"],
+        "nonce_watcher_script_sha256": m["nonce_watcher_script_sha256"],
+        "nonce_watcher_execstart_sha256": m["nonce_watcher_execstart_sha256"],
+        "nonce_sha256": m["nonce_sha256"],
+        "nonce_receipt_sha256": m["nonce_receipt_sha256"],
+        "nonce_receipt_path": m["nonce_receipt_path"],
+        "nonce_heartbeat_path": m["nonce_heartbeat_path"],
+        "nonce_retained": True,
+        "hold_path": str(CUTOVER_HOLD_PATH),
+        "hold_release_dir": str(path.parent),
+        "hold_owner": CUTOVER_HOLD_OWNER,
+        "hold_phases": CUTOVER_HOLD_PHASES,
+        "marker_sha256": m["media_dispatch_fence_sha256"],
+        "dispatch_fence_cli_sha256": m["api_code"]["dispatch_fence_cli_sha256"],
+    }
+    need(all(data.get(key) == value for key, value in expected.items()),
+         "cutover handoff identity or result drift")
+    pinned(data.get("plan_sha256"), "cutover plan SHA")
+    pinned(data.get("hold_sha256"), "cutover hold SHA")
+    created = data.get("hold_created_at")
+    need(isinstance(created, str), "cutover hold creation time missing")
+    try:
+        moment = datetime.fromisoformat(created)
+    except ValueError as error:
+        raise RuntimeError("cutover hold creation time invalid") from error
+    need(moment.tzinfo is not None, "cutover hold creation time lacks timezone")
+    return data
+
+
+def verify_cutover_hold(m: dict) -> dict:
+    """Require the unchanged cutover hold under the four release locks."""
+    handoff = cutover_handoff(m)
+    fd = os.open(CUTOVER_HOLD_PATH, os.O_RDONLY | os.O_NOFOLLOW)
+    try:
+        info = os.fstat(fd)
+        need(stat.S_ISREG(info.st_mode) and info.st_uid == 0
+             and stat.S_IMODE(info.st_mode) == 0o644
+             and info.st_nlink == 1 and 0 < info.st_size <= 4096,
+             "cutover hold ownership, mode or size drift")
+        raw = os.read(fd, 4097)
+        need(len(raw) == info.st_size, "cutover hold changed while reading")
+    finally:
+        os.close(fd)
+    need(hmac.compare_digest(hashlib.sha256(raw).hexdigest(), handoff["hold_sha256"]),
+         "cutover hold bytes changed")
+    lines = raw.decode("utf-8").splitlines()
+    need(len(lines) == 2, "cutover hold record shape drift")
+    record = json.loads(lines[1])
+    expected = {
+        "target": m["expected_head"],
+        "release_dir": handoff["hold_release_dir"],
+        "owner": handoff["hold_owner"],
+        "phases": handoff["hold_phases"],
+        "created_at": handoff["hold_created_at"],
+    }
+    need(record == expected, "cutover hold metadata drift")
+    need(hold.verify(handoff["hold_release_dir"], m["expected_head"],
+                     hold_path=CUTOVER_HOLD_PATH) == expected,
+         "cutover hold contract drift")
+    return handoff
 
 
 def redis_private_read(redis_id: str, verb: str) -> bytes:
@@ -781,12 +887,28 @@ def durable_pending(phase: str, source: str, stop_sha: str) -> None:
 
 def guarded_direct_phase(m: dict, site_before: dict, oneoff: str, chosen: str) -> str:
     """Recheck the paid-dispatch gates after all one-off and recovery writes."""
+    if m.get("fenced_media_job") is not None:
+        verify_cutover_hold(m)
     jobs(m)
     budget()
     no_leases()
     need(site_row() == site_before, "site Retry/stage changed before phase")
     return direct_node(oneoff, m["driver_container_path"], PHASES[chosen][1],
                        timeout_seconds=3600)
+
+
+def ensure_phase_hold(m: dict, chosen: str) -> None:
+    """Continue the cutover hold or the ordinary round-specific hold."""
+    if m.get("fenced_media_job") is not None:
+        # The cutover owns this same hold through deploy, review, and media.
+        verify_cutover_hold(m)
+    elif chosen == "listener":
+        need(not CUTOVER_HOLD_PATH.exists(), "another release hold exists")
+        need(hold.acquire(str(RELEASE), m["expected_head"], "codex-a01-round12-review",
+                          ["listener", "manual", "facts", "panel"]) == "created",
+             "hold not newly acquired")
+    else:
+        hold.verify(str(RELEASE), m["expected_head"])
 
 
 def phase_main(phase: str) -> int:
@@ -800,6 +922,8 @@ def phase_main(phase: str) -> int:
         need(command("git", "-C", str(ROOT), "rev-parse", "HEAD") == m["expected_head"],
              "live HEAD drift")
         need(not command("git", "-C", str(ROOT), "status", "--porcelain"), "live repo dirty")
+        if m.get("fenced_media_job") is not None:
+            verify_cutover_hold(m)
         check_unit()
         need(digest(a01_stop_guard.Paths().stop) == m["expected_stop_sha256"], "A01 STOP hash drift")
         need(not a01_stop_guard.Paths().marker.exists() and not a01_stop_guard.Paths().held.exists()
@@ -836,13 +960,7 @@ def phase_main(phase: str) -> int:
             print(json.dumps({"event": "A01_NO_MODEL_VALIDATION_PASS", "source": progress["source_sha256"],
                               "bounded_host_write": True}), flush=True)
             return 0
-        hold_file = Path("/root/travel-scanner-deploy.hold")
-        if chosen == "listener":
-            need(not hold_file.exists(), "another release hold exists")
-            need(hold.acquire(str(RELEASE), m["expected_head"], "codex-a01-round12-review",
-                              ["listener", "manual", "facts", "panel"]) == "created", "hold not newly acquired")
-        else:
-            hold.verify(str(RELEASE), m["expected_head"])
+        ensure_phase_hold(m, chosen)
         # STOP stays present until both video containers cannot auto restart.
         # A short-lived global STOP prevents a new Shorts tick or auto unit
         # while we wait for any in-flight child to finish before docker stop.
@@ -891,6 +1009,8 @@ def phase_main(phase: str) -> int:
         command("python3", "/usr/local/sbin/a01_phase_recover.py")
         oneoff_stopped()
         need(digest(a01_stop_guard.Paths().stop) == m["expected_stop_sha256"], "restored STOP differs")
+        if m.get("fenced_media_job") is not None:
+            verify_cutover_hold(m)
         jobs(m); budget(); no_leases()
         site_after = site_row(require_blocked=False)
         need(site_after.get("request") == site_before.get("request")

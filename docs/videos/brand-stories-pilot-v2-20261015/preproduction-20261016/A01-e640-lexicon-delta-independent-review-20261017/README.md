@@ -13,7 +13,7 @@
 | `A01-round20-i17-fact-index-candidate/manifest.json` | `4d701779891e1076c3729788cc82165901d71140bfbd77c07fa9b1c060b32549` |
 | 本機比對所用 `tools/video/core/lexicon.mjs` | `b9869497afbbd8dfbfce273e9856fab45beadf7b341aa3da17c6685b4509386d` |
 
-本機擷取保存在 `C:/Users/x8120/.codex/captures/A01-20261017-095816-2a72b1e1/`，未放入 Git。`A01-live-readback-20261017.md` 記錄主機取得方式、199/199 檔案雜湊讀回及兩次相同的 SQL／預算；我此輪沒有再次連上主機，因此不能把快照當作當下仍不變的正式機狀態。
+本機擷取保存在 `<home>/.codex/captures/A01-20261017-095816-2a72b1e1/`，未放入 Git。`A01-live-readback-20261017.md` 記錄主機取得方式、199/199 檔案雜湊讀回及兩次相同的 SQL／預算；我此輪沒有再次連上主機，因此不能把快照當作當下仍不變的正式機狀態。
 
 新增鍵及值逐筆如下；`null` 是沒有指定發音替換，不代表沒有術語匹配影響：
 
@@ -36,7 +36,7 @@
 
 ```powershell
 $old = (Resolve-Path -LiteralPath 'docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-round10-candidate/evidence/round9-lexicon.json').Path
-$capture = 'C:/Users/x8120/.codex/captures/A01-20261017-095816-2a72b1e1'
+$capture = Join-Path ([Environment]::GetFolderPath('UserProfile')) '.codex/captures/A01-20261017-095816-2a72b1e1'
 node docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-lexicon-rebaseline-e640-candidate/rebaseline.mjs --snapshot "$capture/snapshot-80" --old-lexicon $old
 node docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-e640-round20-offline-bridge-20261017/capture-gate.mjs --receipt "$capture/capture-receipt.json"
 Get-FileHash -Algorithm SHA256 -LiteralPath $old,"$capture/snapshot-80/docs/videos/lexicon.json","$capture/capture-receipt.json",'docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-round20-i17-fact-index-candidate/manifest.json'

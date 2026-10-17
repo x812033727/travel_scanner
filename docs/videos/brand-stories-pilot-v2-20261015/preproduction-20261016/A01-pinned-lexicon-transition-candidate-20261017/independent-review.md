@@ -23,7 +23,7 @@ Evidence fields are structurally and cryptographically bound to the plan and the
 
 Using bundled Node 24.19, ran `node --test transition.test.mjs`: **4 passed, 0 failed**. Cases cover intact 80-to-81 pin and original counters; mutation/addition of old evidence; incomplete snapshot publication, extra optional approval and shared drift; reused reviewer/operator identity and old state mutation. The test named “a changed review” does not separately mutate review bytes; review bytes and receipt hash binding were inspected in code, so this report does not claim a separate tampered-review fixture.
 
-Also independently invoked `planPinnedTransition` against the existing read-only local capture `C:/Users/x8120/.codex/captures/A01-20261017-095816-2a72b1e1/snapshot-80`, with historical bytes from `A01-round10-candidate/evidence/round9-lexicon.json`. Results:
+Also independently invoked `planPinnedTransition` against the existing read-only local capture `<home>/.codex/captures/A01-20261017-095816-2a72b1e1/snapshot-80`, with historical bytes from `A01-round10-candidate/evidence/round9-lexicon.json`. Results:
 
 - Plan SHA-256: `f269a6337f6a7900a02b6a8b0860b055b4e19c203ecab85675026dd17455a41f`, matching the recorded summary.
 - 80 historical events and 185 historical evidence files validated.

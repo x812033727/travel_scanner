@@ -1,6 +1,6 @@
 # A01 製作前唯讀關卡與成本重算（2026-10-17）
 
-本報告只讀取 `snapshot-104` 與本機程式，沒有向供應商送出請求、修改正式機或核准劇本／媒體。報告的現稿基準是 A01 來源鏈 tip `e1499cd695f2f414d9379a8917b6b5b36e50ea0d046de495938157d8ff97add7`、104 筆完整鏈結，`video.json` SHA-256 `66fa192bc314a787a0ab66ec2a93976b4110138f4184747de7d3bfda2c5a6812`；檔案取自 `C:/Users/x8120/.codex/captures/A01-20261017-afternoon-fe35369c/snapshot-104/`，校驗結果見同層 `verified-review104.json`。本機程式分析取 `8a78` worktree HEAD `37e635dedcc3f7cb48be4d07b2f4f3dc67998ac8`；實際主機版本與設定要在發送付費請求前另查。後述刪除 `turn-08` 是編輯候選，**未套用到此快照**。
+本報告只讀取 `snapshot-104` 與本機程式，沒有向供應商送出請求、修改正式機或核准劇本／媒體。報告的現稿基準是 A01 來源鏈 tip `e1499cd695f2f414d9379a8917b6b5b36e50ea0d046de495938157d8ff97add7`、104 筆完整鏈結，`video.json` SHA-256 `66fa192bc314a787a0ab66ec2a93976b4110138f4184747de7d3bfda2c5a6812`；檔案取自 `<home>/.codex/captures/A01-20261017-afternoon-fe35369c/snapshot-104/`，校驗結果見同層 `verified-review104.json`。本機程式分析取 `8a78` worktree HEAD `37e635dedcc3f7cb48be4d07b2f4f3dc67998ac8`；實際主機版本與設定要在發送付費請求前另查。後述刪除 `turn-08` 是編輯候選，**未套用到此快照**。
 
 ## 現稿與媒體容量
 

@@ -73,7 +73,7 @@ and its own operations review.
 
 ## Candidate and checks
 
-Package: `C:/Users/x8120/.codex/worktrees/a01-branch-sync/travel_scanㄐ/docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-pinned-lexicon-transition-candidate-20261017/stop-recovery-guard/`.
+Package: `<repo>/docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-pinned-lexicon-transition-candidate-20261017/stop-recovery-guard/`.
 
 | File | SHA-256 |
 | --- | --- |

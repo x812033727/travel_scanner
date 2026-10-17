@@ -2,7 +2,7 @@
 
 日期：2026-10-17。
 
-受審文本：`C:/Users/x8120/.codex/captures/A01-20261017-afternoon-fe35369c/A01-round22-script-only.txt`。
+受審文本：`<home>/.codex/captures/A01-20261017-afternoon-fe35369c/A01-round22-script-only.txt`。
 
 已核對文本 SHA256：`a173950b715bc832572a1ae2526d9f766e31931af615ec2dad51f6d65b1a1166`。
 

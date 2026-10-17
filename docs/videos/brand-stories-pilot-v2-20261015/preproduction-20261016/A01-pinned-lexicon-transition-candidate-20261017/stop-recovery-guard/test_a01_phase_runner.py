@@ -300,7 +300,197 @@ class HeldNonceTests(unittest.TestCase):
             self.assertNotIn(self.nonce.decode(), str(caught.exception))
 
 
+class CutoverHoldTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.directory = "/root/mokaair-a01-media-fence-123456789abc"
+        self.manifest = {
+            "expected_head": "a" * 40,
+            "cutover_handoff_path": self.directory + "/handoff.json",
+            "nonce_receipt_path": self.directory + "/nonce-receipt.json",
+            "fenced_media_job": {"id": runner.FENCED_MEDIA_JOB_ID},
+            "redis_container_id": "b" * 64,
+            "redis_image_id": "sha256:" + "c" * 64,
+            "api_container_id": "d" * 64,
+            "api_image_id": "sha256:" + "e" * 64,
+            "nonce_watcher_unit": runner.NONCE_WATCHER_UNIT,
+            "nonce_watcher_pid": 1234,
+            "nonce_watcher_script_path": self.directory + "/monitor-lock.sh",
+            "nonce_watcher_script_sha256": "1" * 64,
+            "nonce_watcher_execstart_sha256": "2" * 64,
+            "nonce_sha256": "3" * 64,
+            "nonce_receipt_sha256": "4" * 64,
+            "nonce_heartbeat_path": str(runner.NONCE_HEARTBEAT),
+            "media_dispatch_fence_sha256": "5" * 64,
+            "api_code": {"dispatch_fence_cli_sha256": "6" * 64},
+        }
+        self.hold_record = {
+            "target": self.manifest["expected_head"],
+            "release_dir": self.directory,
+            "owner": runner.CUTOVER_HOLD_OWNER,
+            "phases": runner.CUTOVER_HOLD_PHASES,
+            "created_at": "2026-10-17T16:00:00+00:00",
+        }
+        self.hold_raw = ("owned by A01\n" + json.dumps(self.hold_record) + "\n").encode()
+        self.handoff = {
+            "schema_version": 1,
+            "target_sha": self.manifest["expected_head"],
+            "plan_sha256": "7" * 64,
+            "job_id": runner.FENCED_MEDIA_JOB_ID,
+            "redis_id": self.manifest["redis_container_id"],
+            "redis_image": self.manifest["redis_image_id"],
+            "api_id": self.manifest["api_container_id"],
+            "api_image": self.manifest["api_image_id"],
+            "watcher_unit": self.manifest["nonce_watcher_unit"],
+            "watcher_main_pid": self.manifest["nonce_watcher_pid"],
+            "nonce_watcher_script_path": self.manifest["nonce_watcher_script_path"],
+            "nonce_watcher_script_sha256": self.manifest["nonce_watcher_script_sha256"],
+            "nonce_watcher_execstart_sha256": self.manifest["nonce_watcher_execstart_sha256"],
+            "nonce_sha256": self.manifest["nonce_sha256"],
+            "nonce_receipt_sha256": self.manifest["nonce_receipt_sha256"],
+            "nonce_receipt_path": self.manifest["nonce_receipt_path"],
+            "nonce_heartbeat_path": self.manifest["nonce_heartbeat_path"],
+            "nonce_retained": True,
+            "hold_path": str(runner.CUTOVER_HOLD_PATH),
+            "hold_release_dir": self.directory,
+            "hold_sha256": hashlib.sha256(self.hold_raw).hexdigest(),
+            "hold_owner": runner.CUTOVER_HOLD_OWNER,
+            "hold_phases": runner.CUTOVER_HOLD_PHASES,
+            "hold_created_at": self.hold_record["created_at"],
+            "marker_sha256": self.manifest["media_dispatch_fence_sha256"],
+            "dispatch_fence_cli_sha256": self.manifest["api_code"]["dispatch_fence_cli_sha256"],
+        }
+
+    def verify(self, *, handoff: dict | None = None, hold_raw: bytes | None = None,
+               mode: int = 0o644, pinned_handoff_sha256: str | None = None) -> dict:
+        handoff_raw = (json.dumps(self.handoff if handoff is None else handoff) + "\n").encode()
+        hold_bytes = self.hold_raw if hold_raw is None else hold_raw
+        manifest = {**self.manifest,
+                    "cutover_handoff_sha256": (pinned_handoff_sha256
+                                                or hashlib.sha256(handoff_raw).hexdigest())}
+        directory = SimpleNamespace(st_mode=stat.S_IFDIR | 0o700, st_uid=0)
+        handoff_info = SimpleNamespace(st_mode=stat.S_IFREG | 0o600, st_uid=0,
+                                       st_nlink=1, st_size=len(handoff_raw))
+        hold_info = SimpleNamespace(st_mode=stat.S_IFREG | mode, st_uid=0,
+                                    st_nlink=1, st_size=len(hold_bytes))
+        with patch.object(Path, "lstat", return_value=directory), \
+             patch.object(runner.os, "open", side_effect=[3, 4]), \
+             patch.object(runner.os, "fstat", side_effect=[handoff_info, hold_info]), \
+             patch.object(runner.os, "read", side_effect=[handoff_raw, hold_bytes]), \
+             patch.object(runner.os, "close"), \
+             patch.object(runner.hold, "verify", return_value=self.hold_record) as upstream:
+            result = runner.verify_cutover_hold(manifest)
+            upstream.assert_called_once_with(self.directory, manifest["expected_head"],
+                                             hold_path=runner.CUTOVER_HOLD_PATH)
+            return result
+
+    def test_exact_handoff_and_same_hold_are_accepted(self) -> None:
+        self.assertEqual(self.verify()["hold_sha256"], self.handoff["hold_sha256"])
+
+    def test_changed_hold_bytes_or_mode_are_refused(self) -> None:
+        with self.assertRaisesRegex(RuntimeError, "hold bytes changed"):
+            self.verify(hold_raw=self.hold_raw + b"tampered")
+        with self.assertRaisesRegex(RuntimeError, "hold ownership, mode"):
+            self.verify(mode=0o600)
+
+    def test_handoff_cannot_name_another_release_or_nonce(self) -> None:
+        with self.assertRaisesRegex(RuntimeError, "handoff identity"):
+            self.verify(handoff={**self.handoff, "hold_release_dir": "/root/other"})
+        with self.assertRaisesRegex(RuntimeError, "handoff identity"):
+            self.verify(handoff={**self.handoff, "nonce_sha256": "0" * 64})
+
+    def test_handoff_sha_and_target_are_pinned(self) -> None:
+        with self.assertRaisesRegex(RuntimeError, "handoff SHA drift"):
+            self.verify(pinned_handoff_sha256="0" * 64)
+        with self.assertRaisesRegex(RuntimeError, "handoff identity"):
+            self.verify(handoff={**self.handoff, "target_sha": "0" * 40})
+
+    def test_handoff_owner_phases_and_creation_time_are_pinned(self) -> None:
+        changed = (
+            ("hold_owner", "another-owner", "handoff identity"),
+            ("hold_phases", ["api-drain", "nonce", "deploy"], "handoff identity"),
+            ("hold_created_at", "2026-10-18T16:00:00+00:00", "hold metadata drift"),
+        )
+        for field, value, message in changed:
+            with self.subTest(field=field), self.assertRaisesRegex(RuntimeError, message):
+                self.verify(handoff={**self.handoff, field: value})
+        with self.assertRaisesRegex(RuntimeError, "creation time invalid"):
+            self.verify(handoff={**self.handoff, "hold_created_at": "not-a-time"})
+
+    def test_rebound_hold_sha_cannot_hide_metadata_drift(self) -> None:
+        changes = (
+            ("target", "0" * 40),
+            ("owner", "another-owner"),
+            ("phases", ["api-drain", "nonce", "deploy"]),
+            ("created_at", "2026-10-18T16:00:00+00:00"),
+        )
+        for field, value in changes:
+            record = {**self.hold_record, field: value}
+            raw = ("owned by A01\n" + json.dumps(record) + "\n").encode()
+            rebound = {**self.handoff, "hold_sha256": hashlib.sha256(raw).hexdigest()}
+            with self.subTest(field=field), self.assertRaisesRegex(RuntimeError,
+                                                                   "hold metadata drift"):
+                self.verify(handoff=rebound, hold_raw=raw)
+
+
+class PhaseHoldRoutingTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.manifest = {"expected_head": "a" * 40}
+
+    def test_fenced_listener_and_later_phase_reuse_cutover_hold(self) -> None:
+        fenced = {**self.manifest, "fenced_media_job": {"id": runner.FENCED_MEDIA_JOB_ID}}
+        with patch.object(runner, "verify_cutover_hold") as cutover, \
+             patch.object(runner.hold, "acquire") as acquire, \
+             patch.object(runner.hold, "verify") as legacy:
+            for phase in ("listener", "manual", "facts", "panel"):
+                runner.ensure_phase_hold(fenced, phase)
+            self.assertEqual(cutover.call_count, 4)
+            acquire.assert_not_called()
+            legacy.assert_not_called()
+
+    def test_unfenced_listener_acquires_only_ordinary_hold(self) -> None:
+        with patch.object(Path, "exists", return_value=False), \
+             patch.object(runner, "verify_cutover_hold") as cutover, \
+             patch.object(runner.hold, "acquire", return_value="created") as acquire, \
+             patch.object(runner.hold, "verify") as legacy:
+            runner.ensure_phase_hold(self.manifest, "listener")
+            acquire.assert_called_once_with(str(runner.RELEASE), self.manifest["expected_head"],
+                                            "codex-a01-round12-review",
+                                            ["listener", "manual", "facts", "panel"])
+            cutover.assert_not_called()
+            legacy.assert_not_called()
+
+    def test_unfenced_listener_refuses_existing_hold(self) -> None:
+        with patch.object(Path, "exists", return_value=True), \
+             patch.object(runner.hold, "acquire") as acquire:
+            with self.assertRaisesRegex(RuntimeError, "another release hold exists"):
+                runner.ensure_phase_hold(self.manifest, "listener")
+            acquire.assert_not_called()
+
+    def test_unfenced_later_phase_verifies_only_ordinary_hold(self) -> None:
+        with patch.object(runner, "verify_cutover_hold") as cutover, \
+             patch.object(runner.hold, "acquire") as acquire, \
+             patch.object(runner.hold, "verify") as legacy:
+            runner.ensure_phase_hold(self.manifest, "manual")
+            legacy.assert_called_once_with(str(runner.RELEASE), self.manifest["expected_head"])
+            cutover.assert_not_called()
+            acquire.assert_not_called()
+
+
 class PaidDispatchCheckpointTests(unittest.TestCase):
+    def test_cutover_hold_drift_prevents_direct_model_phase(self) -> None:
+        manifest = {"fenced_media_job": {"id": runner.FENCED_MEDIA_JOB_ID},
+                    "driver_container_path": "/tmp/a01-round12-20261017-fe35369c/payload/driver.mjs"}
+        before = {"slug": "story-rolling-suitcase-v2", "stage": "blocked"}
+        with patch.object(runner, "verify_cutover_hold",
+                          side_effect=RuntimeError("cutover hold bytes changed")) as held, \
+             patch.object(runner, "jobs") as jobs, \
+             patch.object(runner, "direct_node") as direct:
+            with self.assertRaisesRegex(RuntimeError, "cutover hold bytes changed"):
+                runner.guarded_direct_phase(manifest, before, "oneoff", "listener")
+            held.assert_called_once_with(manifest)
+            jobs.assert_not_called()
+            direct.assert_not_called()
+
     def test_late_media_fence_drift_prevents_direct_model_phase(self) -> None:
         manifest = {"driver_container_path": "/tmp/a01-round12-20261017-fe35369c/payload/driver.mjs"}
         before = {"slug": "story-rolling-suitcase-v2", "stage": "blocked"}
