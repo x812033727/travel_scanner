@@ -351,6 +351,17 @@ test("a yes the reader quotes no line for is not a yes", () => {
   for (const evidence of ["[a1] 一句。", "[tg7af] 一句。", "[q1-ex] 一句。", "前面說過 [ro101] 這句"]) {
     assert.equal(panelVerdict(every({ yes: true, evidence })).passed, true, evidence);
   }
+  // The narration prints each line as [id start], so a reader copying a line exactly as shown
+  // quotes it with its time (story-adapt-seiko-quartz-astron round 9 failed all 13 questions on
+  // "[48m5 00:00] …"). Only a clock may follow the id: words in brackets still quote no line.
+  for (const evidence of ["[48m5 00:00] 一句。", "[q1-ex 12:34] 一句。", "[ro101 1:02:03] 一句。"]) {
+    assert.equal(panelVerdict(every({ yes: true, evidence })).passed, true, evidence);
+  }
+  for (const evidence of ["[是 整支片] 很好", "[a1 很好] 一句。", "[a1 12:34 很好] 一句。", "[a1 1:2] 一句。"]) {
+    const verdict = panelVerdict(every({ yes: true, evidence }));
+    assert.equal(verdict.passed, false, evidence);
+    assert.equal(verdict.failed[0].evidence, `no line id quoted: ${evidence}`, evidence);
+  }
   // A no still records what the reader quoted, so the writer knows which line to look at.
   const no = every({ yes: false, evidence: "[mc5b] 不見的，是船上唯一那艘小艇。" });
   assert.equal(panelVerdict(no).failed[0].evidence, "[mc5b] 不見的，是船上唯一那艘小艇。");

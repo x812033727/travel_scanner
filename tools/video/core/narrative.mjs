@@ -317,8 +317,12 @@ const isObject = (value) => value !== null && typeof value === "object" && !Arra
  * answered otherwise or malformed is a "no" (as the checker's missing verdict is a problem in
  * series.mjs scriptVerdict). `problems` are the lines the writer is sent.
  */
-/** A line id in brackets, as the panel's own answer format prints it: `[mc1a] …`. */
-const EVIDENCE_LINE_ID = /\[[A-Za-z0-9_-]{2,}\]/;
+/**
+ * A line id in brackets, as the panel's own answer format prints it (`[mc1a] …`) or as
+ * narrationText prints the line, with its start after the id (`[mc1a 01:02] …`, `[mc1a 1:02:03] …`,
+ * formatClock's mm:ss or h:mm:ss). A reader copying the line exactly as it was shown quotes it.
+ */
+const EVIDENCE_LINE_ID = /\[[A-Za-z0-9_-]{2,}(?: (?:\d+:)?\d{2}:\d{2})?\]/;
 
 export function panelVerdict(answer) {
   const given = new Map();
