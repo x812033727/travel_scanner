@@ -21,6 +21,11 @@ const SET = [
   [/Qian manor gate/i, "dh-set-qianfu-men-t1"],
   [/Qian manor hall|Qian manor/i, "dh-set-qianfu-ting-t1"],
   [/village entrance/i, "dh-set-cunkou-t1"],
+  [/bamboo grove|nameless grave/i, "dh-set-zhulin-fen-t1"],
+  [/carpenter's workshop/i, "dh-set-mujiang-fang-t1"],
+  [/threshing ground/i, "dh-set-dagu-chang-t1"],
+  [/spring field|muddy field|ploughed field|plowed field/i, "dh-set-chuntian-t1"],
+  [/stone bridge/i, "dh-set-shiqiao-t1"],
   [/work shed|workshop|lean-to/i, "dh-set-gongpeng-t1"],
   [/kitchen/i, "dh-set-xujia-zao-t1"],
   [/dirt yard|farmhouse yard|in the yard|morning yard|courtyard|yard gate|mud wall|woodpile|wooden gate|broken gate/i, "dh-set-xujia-yuan-t1"],
@@ -28,8 +33,8 @@ const SET = [
   [/stream|riverbank|river bank|willow|reeds/i, "dh-set-liuxi-he-t1"],
 ];
 // Characters with a 3D portrait (refs-dh-jobs*.json); others are described in the prompt only.
-const DH = new Set(["xuyan", "aling", "qinshuang", "tangxiaotang", "xiaohe", "erniu", "qianyuanwai", "zhaobutou", "mianshiguan", "laisan", "sunzhanggui", "huxianling"]);
-const EN = { sunzhanggui: "Sun Zhanggui", huxianling: "Magistrate Hu", xuyan: "Xu Yan", aling: "A-ling", qinshuang: "Qin Shuang", tangxiaotang: "Tang Xiaotang", xiaohe: "little Xiaohe", erniu: "Wang Erniu", qianyuanwai: "Qian Yuanwai", zhaobutou: "Zhao Butou", mianshiguan: "the interviewer", laisan: "Lai San" };
+const DH = new Set(["xuyan", "aling", "qinshuang", "tangxiaotang", "xiaohe", "erniu", "qianyuanwai", "zhaobutou", "mianshiguan", "laisan", "sunzhanggui", "huxianling", "shimujiang"]);
+const EN = { shimujiang: "Carpenter Shi", sunzhanggui: "Sun Zhanggui", huxianling: "Magistrate Hu", xuyan: "Xu Yan", aling: "A-ling", qinshuang: "Qin Shuang", tangxiaotang: "Tang Xiaotang", xiaohe: "little Xiaohe", erniu: "Wang Erniu", qianyuanwai: "Qian Yuanwai", zhaobutou: "Zhao Butou", mianshiguan: "the interviewer", laisan: "Lai San" };
 const HER = new Set(["aling", "qinshuang", "tangxiaotang", "xiaohe", "mianshiguan"]);
 const P = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] ";
 const S = " 3D Chinese donghua CG animation with smooth, weighty, expressive character animation; the camera keeps moving slowly the whole time; faces, hair and costumes stay the same; no morphing, no cuts. Keep the supplied first frame's composition, art style, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A";
@@ -52,7 +57,7 @@ for (const scene of video.scenes) {
     cast.push(`${c.name}: ${named?.appearance ?? c.appearance}`);
   }
   // Characters named in the prompt but missing from the list (the three brides behind Xu Yan in e1-s47) get their portraits too.
-  const NAMED = { sunzhanggui: /Sun Zhanggui/, huxianling: /Magistrate Hu/, xuyan: /Xu Yan/, aling: /A[- ]?[Ll]ing/, qinshuang: /Qin Shuang/, tangxiaotang: /Tang Xiaotang/, xiaohe: /Xiao ?[Hh]e/, erniu: /Wang Erniu|Erniu/, qianyuanwai: /Qian Yuanwai/, zhaobutou: /Zhao Butou/, laisan: /Lai San/ };
+  const NAMED = { shimujiang: /Carpenter Shi/, sunzhanggui: /Sun Zhanggui/, huxianling: /Magistrate Hu/, xuyan: /Xu Yan/, aling: /A[- ]?[Ll]ing/, qinshuang: /Qin Shuang/, tangxiaotang: /Tang Xiaotang/, xiaohe: /Xiao ?[Hh]e/, erniu: /Wang Erniu|Erniu/, qianyuanwai: /Qian Yuanwai/, zhaobutou: /Zhao Butou/, laisan: /Lai San/ };
   for (const [id, re] of Object.entries(NAMED)) {
     if ((d.characters ?? []).includes(id) || !C[id]) continue;
     const m = d.prompt.match(re);
