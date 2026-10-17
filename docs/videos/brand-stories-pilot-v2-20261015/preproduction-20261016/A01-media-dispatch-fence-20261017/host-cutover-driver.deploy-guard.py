@@ -208,6 +208,7 @@ def main() -> None:
                 candidate.decode("utf-8").splitlines(keepends=True),
                 fromfile="deploy-travel-scanner.sh.live-c8bb3559",
                 tofile="deploy-travel-scanner.sh.expected-main-env-hold",
+                n=0,
             )
         )
         if args.patch_output.exists():

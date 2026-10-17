@@ -53,9 +53,12 @@ create A01 media, or infer that no earlier vendor charge occurred.
 
 The new API compiles the ID and tuple. For that ID, both direct GET advancement
 and repeated POST refuse **before** any provider call or database transition.
-A matching regular on-volume manifest gives `video_media_dispatch_fenced` (423);
-a missing, malformed or mismatched manifest gives
-`video_media_dispatch_fence_invalid` (503). Both leave the row unchanged.
+After the global paid-intake gate accepts the request, a matching regular
+on-volume manifest gives `video_media_dispatch_fenced` (423); a missing,
+malformed or mismatched exact-job manifest gives
+`video_media_dispatch_fence_invalid` (503). A missing or invalid global marker
+instead refuses first with `video_media_cutover_paused` (423). All three leave
+the row unchanged.
 Other IDs follow the existing code. Deleting the marker cannot resume this ID;
 removal needs a separate reviewed code change and owner decision.
 
