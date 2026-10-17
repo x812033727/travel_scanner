@@ -5022,7 +5022,21 @@ What was verified:
 1. Bindings. All 108 paths in review.json `reviewed_files` hash (SHA-256 of the working-tree file, equal to the merge commit's blob) to their bound values, and the table below lists the same 108 paths with the same hashes. Both parents' receipts list the same 108 keys, and each parent's receipt was current for its own tree (every binding equal to that parent's blob, and each parent's `report_sha256` equal to its own review.md).
 2. What the merge changed. `git diff dec59b7c5^1 dec59b7c5 --stat` lists 20 files, exactly the 20 that `git diff <merge-base> dec59b7c5^2` lists. Of these, the bound ones are only the five that main's #1481 increment covers: `tools/video/assemble/cli.mjs`, `tools/video/core/branding.mjs`, `tools/video/core/branding.test.mjs`, `tools/video/core/stages.test.mjs` and `tools/video/dubs/dubs.test.mjs`. For each, the merge's bytes equal `dec59b7c5^2`'s, this branch never touched it (`dec59b7c5^1` equals the merge base), and the bound hash is the "->" value of that increment. Every other bound file is byte-identical to `dec59b7c5^1`. The only path changed on both sides apart from the two receipt files is `tools/video/cli.mjs`, which git merged without conflict and which is not bound.
 3. Conflicted binding rows. Of the 20 bindings that differ between the two parents' receipts, the merged receipt takes main's value for the five #1481 files and this branch's value for the other 15 (among them `tools/video/core/state.mjs`), in each case the value equal to the merged file's bytes. The review.json header fields other than the ones this increment rewrites were this branch's.
-4. The report. Everything before "## Reviewed SHA256 bindings" in the merged report is byte-identical to `dec59b7c5^1`'s report up to that heading followed by main's "Channel intro after the opening condensation increment" section byte-identical to `dec59b7c5^2`'s; main's report is the merge base's report plus that section only, so no earlier section was dropped or altered on either side. After the heading, the table has the same 115 lines as each parent; it differs from `dec59b7c5^1` in exactly the five #1481 rows and from `dec59b7c5^2` in exactly the 15 rows of this branch's increments, and every row equals one parent's row.
+4. The report. Everything before "## Branch a01-lexicon-integration increment: 3 files (2026-10-17)
+
+Reviewer: `codex-independent-a01-lexicon-1017`. Author: `codex-gpt6-a01-lexicon`. Scope: DURATION_ONLY for `tools/video/automation/flow.mjs`, `tools/video/core/state.mjs` and `tools/video/tts/tts.test.mjs`, reviewed as `git diff 66092d968..80b3aeaf2346cc45b6b9d04635b459cd25ff268c`. The reviewer authored no implementation and changes only this report and its receipt.
+
+Baseline: all three bound file hashes at main baseline `66092d968` equal the existing receipt and table. Their baseline SHA-256 values are `2df203591c2639b1ba4f48c6d9741e2b663bbada79006e51110e1f36798f27f8` (flow.mjs), `4b2414429dfcf0d4005fa199e750138c192c7ce29fbd48c225f5db819a6bbc38` (state.mjs), and `85de2438461cd1325d4734a2452b92ad7cf93d0ed67aa54b9c29a801d936e212` (tts.test.mjs).
+
+Findings: flow.mjs routes shared dictionary additions through the common writer admission and reads a pinned story dictionary for script/listener payloads, holding story advance when initialization is unsafe. state.mjs selects the strict immutable dictionary when its snapshot directory exists. The added TTS regression requires a legacy story without a pinned dictionary to stop before any server request. None changes the 600/780-second targets, 480-second measured floor, eight-minute minimum, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, source hashes or covered state. The separate runtime review also inspected the complete strict reader, publisher, two-volume intents, committed-only recovery, proposal/revision behavior, worker consumers, TTS/audio/dub guards and the missing-series category guard amendment. No further P1/P2 was found within this draft scope. Existing A01 is explicitly held: the actual 80-event legacy migration and audit/source inspector integration are deferred release requirements in story-lexicon-integration.md.
+
+Ran: bundled Node 24.19; `node --test tools/video/core/story-lexicon.test.mjs tools/video/core/lexicon-store.test.mjs` (18 passed, zero failed, before the two-line category fixture amendment); `node --test --test-name-pattern='legacy story without a pinned dictionary|story saves a writer' tools/video/tts/tts.test.mjs tools/video/automation/story.test.mjs` (2 passed, zero failed, amended tree). The long-form CLI and receipt tests run after rebinding; their results are reported in the hand-off so this report hash remains stable.
+
+Non-claims: the runtime inspection and fixtures do not prove power-loss behavior on the production filesystem, migrate A01, dispose its uncertain job, approve source/script/media, establish actual narration duration, or authorize host writes, paid calls, deployment, upload or publication. The other 105 existing duration bindings are retained without a new substantive review. Full affected suites and hosted CI remain separate author/release gates.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
+## Reviewed SHA256 bindings" in the merged report is byte-identical to `dec59b7c5^1`'s report up to that heading followed by main's "Channel intro after the opening condensation increment" section byte-identical to `dec59b7c5^2`'s; main's report is the merge base's report plus that section only, so no earlier section was dropped or altered on either side. After the heading, the table has the same 115 lines as each parent; it differs from `dec59b7c5^1` in exactly the five #1481 rows and from `dec59b7c5^2` in exactly the 15 rows of this branch's increments, and every row equals one parent's row.
 
 Ran (in the worktree at `dec59b7c5`, Node on Windows): `node tools/video/long-form/cli.mjs check` before any edit; a script kept outside the repository that hashes the working tree and the blobs of the merge, both parents and the merge base, and compares both receipts and both reports as in 1 to 4; `git ls-files --eol` (LF in index and worktree for both receipt files). The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
 
@@ -5585,7 +5599,7 @@ Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the script demonstration gate increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the A01 lexicon integration increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5641,7 +5655,7 @@ These 108 bindings describe the current reviewed bytes after the script demonstr
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
 | `tools/video/automation/automation.test.mjs` | `753394051d441ec0112d7a3261e008994d42c87ad51789e8b974260378bd24af` |
 | `tools/video/automation/discuss.mjs` | `4a987fa874307bf50e5047db5e8c1b2d9357ef4b5d50e1c93ec292344c16f046` |
-| `tools/video/automation/flow.mjs` | `2df203591c2639b1ba4f48c6d9741e2b663bbada79006e51110e1f36798f27f8` |
+| `tools/video/automation/flow.mjs` | `394954833450ac9cc4b65209e107f4ec997d23c0f740378b9fb997a66b8bc3af` |
 | `tools/video/automation/prompts.mjs` | `7dc54920e590ffa674fc6436dacf96df5da477cd749f1be52877d89a8b500dbc` |
 | `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
 | `tools/video/automation/series.test.mjs` | `d133c2caf95e9919aa1df2f0c23dee80d2d20a47a5d8c1ae85e7506698399425` |
@@ -5664,7 +5678,7 @@ These 108 bindings describe the current reviewed bytes after the script demonstr
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
 | `tools/video/core/stages.test.mjs` | `c4583dba313415355131a854f3da6f568862c3ea83808313b2f1acda5c017523` |
-| `tools/video/core/state.mjs` | `4b2414429dfcf0d4005fa199e750138c192c7ce29fbd48c225f5db819a6bbc38` |
+| `tools/video/core/state.mjs` | `7626ccf4a0421774e87d3bfbe1a00d6e19e271cd697c2071b57430abcbd35edd` |
 | `tools/video/core/state.test.mjs` | `1afa10f7887db57788ea83ab80a823bbaf45f36588dacdc296b1480ab7265c3e` |
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
@@ -5696,4 +5710,4 @@ These 108 bindings describe the current reviewed bytes after the script demonstr
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
 | `tools/video/tts/check.test.mjs` | `0b4e2e68cb1aa38cfa0a5971df1b029e788850b3bac0461709a79b467801499b` |
 | `tools/video/tts/synthesis.mjs` | `589ebe665bd281aaefba6749d61148f4c7011f71c962513efd5a6cd6830f3cb3` |
-| `tools/video/tts/tts.test.mjs` | `85de2438461cd1325d4734a2452b92ad7cf93d0ed67aa54b9c29a801d936e212` |
+| `tools/video/tts/tts.test.mjs` | `9430c36b0c1e2f19cb3233cfb99e86d6904fa54ae2a5e72f7c1dea3205e920ad` |
