@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h12-research-outline
 title: Curio H12 research and outline
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-h12-final
-claimed_at: 2026-10-16T12:09:31Z
+owner:
+claimed_at:
 created_at: 2026-10-15T16:34:42Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -173,3 +173,11 @@ TTS 已完成 89 請求、1,925 計費字元，正文時間軸 `14168/30 = 472.2
 - 91／91 段成片及 97 cue 繁中字幕完成；8:44.6、`final.mp4` SHA-256 `2B24B5DF98A459CD587364C24D80FB0A7AFADFF4519DE86001B4A7D0E11D047D`。獨立抽看與合成收據無解碼、黑畫面或削波問題；詳細資料見 `docs/videos/curio-h12/final-qa-1.md`。
 - 最終 QA 9／11：語言尚未選定時的英／日／韓字幕缺件，及 TypeSafe Jev「業配」0.36 超過 0.30。後台 final 卡 `9abacb14-5708-43c1-9f15-310908f4e6e3` 綁同一成片 SHA，唯讀 GET 與 `review-pull` 均確認 `pending`。已送站主人工審核，未核准前不製作上傳包。
 - 此次 Jev 一次呼叫以 US$0.05 保守估額結算；H12 累計 US$4.235／6、五集累計 US$26.2295／39。供應商最終帳單未取得。
+
+## 2026-10-17 H12 四語交接與聽感關卡
+
+- 站主已核准同一繁中成片 `final.mp4` SHA-256 `2B24B5DF98A459CD587364C24D80FB0A7AFADFF4519DE86001B4A7D0E11D047D`，且後台選定 en／ja／ko 三語各自的標題說明、字幕與配音。站主另核准 H12 多語估算停手額度 US$2.50，使本集上限 US$8.50、五集上限 US$41.50；與原繁中授權分開記帳。三語 93 句文稿及 7 章已完成獨立複核，見 `i18n-translation-1.md`。
+- 英、日、韓各 93／93 句配音成音，均 0 句超時間槽；四語字幕與三語標題說明、縮圖本機預檢見 `i18n-local-preflight-20261017.md`。未改已核准的繁中成片，沒有建立上傳包或上傳 YouTube。
+- 三語 `check-audio` 均完成 93／93：英 12、日 27、韓 20 句自動旗標。英語 Gemini／離線兩套均疑第 `9jra` 句 them／him，待站主回答；日語優先 `cuxc`、`ds8v`、`dvmg`、`2d4b`、`cbd8`／`i3cg`、`wpvq`，待站主試聽。韓語 20 旗標的逐句頁與離線複核已整理，站主對韓語 93 句試聽問題回覆原文「OK」，記為韓語聽感接受、不重錄；原旗標仍保留。完整分流見 `i18n-audio-qa-en-1.md`、`i18n-audio-qa-ja-held.md`、`i18n-audio-qa-ja-1.md`、`i18n-audio-qa-ko-1.md`。
+- 日語前次 `s4hn` 轉寫回應不明，後來按站主逐筆授權受控續跑，`s4hn`／`fgbf`／`ey9a` 各一次成功、journal 已清空；可能重複計費按最壞情況 US$0.20 保守計入。外部共享帳本在本次交接時 H12 估算 US$6.435／8.50，其中新增多語 US$2.20／2.50；五集估算 US$28.4295／41.50。供應商發票仍不可見；後續定向重錄及 QA 必須先核餘額。
+- 下一步先讀站主英、日兩語逐句聽感；只對確定有問題的句子定向修文、重錄、重跑 QA／字幕。英、日聽感未定前不送 `publish`／`languages` 上傳包卡，也不把三語成音或韓語「OK」當成 Studio 上傳、後台核准或公開發布。

@@ -80,3 +80,5 @@ H09 PR #1503 head bff1f1a65 has no new CI run because main conflicts in docs/vid
 後台重新讀回：H11、U09 最新 publish／languages 卡均 approved，兩片記為私人、已連結 YouTube、未排程公開。站主其後明確回覆已在 Studio 試播兩集的繁中／英／日／韓音軌與字幕，四語均正常；這是站主驗收，與後台 `dub=uploaded` 按鈕狀態分開。H12 最新 final 卡已 approved，但本機未拉回；後台選了三語所有部件，尚無 H12 多語增額或目前認領的移交。H10、M09 final approved，仍無上傳包；H10 日語譯文與站主所說錯句、M09 日韓聽感仍待處理。五集尚未結案，也沒有任何一集的公開播放／排程證據。
 
 H11、U09 後台已有 YouTube ID，而本機手動專案 `video.json` 仍空；CLI `youtube-sync` 目前指向不存在的實作。已另開 `2026-10-17-sync-manually-uploaded-video-ids-into` 追蹤安全同步，未修改他人認領的單集檔案。PR #1515 目前 head `1f7f4c854` 的檢查全數成功，仍是 draft 並帶 `no-auto-merge`，沒有合併。
+
+站主其後要求完成 H10、H12、M09，明確同意移交三集目前認領的 `docs/videos/curio-h10`、`docs/videos/curio-h12`、`docs/videos/curio-m09` 範圍；H12 三語新增 US$2.50 估算停手額度，五集總上限 US$41.50。M09 日、韓旁白已由站主試聽接受；H10 其餘日語錯句 ID 由站主稍後提供。三集代理各自按看板流程接手，不能把 M09 音訊接受或 H12 額度當成 publish／languages 卡核准。

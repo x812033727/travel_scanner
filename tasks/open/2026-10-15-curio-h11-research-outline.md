@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h11-research-outline
 title: Prepare Curio H11 Voynich source refresh and outline choices
-status: blocked
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-h11-package-close
-claimed_at: 2026-10-16T14:24:28Z
+owner:
+claimed_at:
 created_at: 2026-10-15T16:34:00Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -142,3 +142,11 @@ H11 將材料定年、字詞分布、新聞稿撤下、背面透字、筆跡推�
 本機四語上傳包九項 SHA 與 [upload-qa-2.md](../../docs/videos/curio-h11/upload-qa-2.md) 一致；`package --slug curio-h11` exit 0、4／4，`metadata.json` SHA `E89C18865BDDA4D49E031455FF46CF39B67B7B212D3CB84F7CF59CD88D50BF34`，成片 SHA `54EFA17859D4359B84A9266799108B3C0DE0597DDFAAA2F1B4B3F556801FF1BC`。新版 `review-push --gate publish` 與 `review-push --gate languages` 均送審成功；各自 `review-pull` 讀回 `waiting for the owner`。下一步由站主在 `/admin/videos` 審閱這兩張最新版卡片，再由站主親自在 YouTube Studio 處理私人上傳與三語音軌；後續須讀回核准與 Studio 狀態，不可把送審當成上傳或發布。
 
 唯讀後台列核對最新版 `publish` review ID `78c54776-53db-4f4c-b902-536f871f30dd`／SHA `E89C18865BDDA4D49E031455FF46CF39B67B7B212D3CB84F7CF59CD88D50BF34`、最新版 `languages` review ID `fef69bcd-548f-4837-af28-5d8108d287ac`／SHA `8B35A601DE8F5A705E44AD5DF2946A09404C43CF36BB9F51923902216E4521AB`，兩者目前均 `pending`。舊繁中基礎包 publish ID `52c30ba2-0309-4879-bf36-331366d74e8a` 已 `superseded`。本票改為 `blocked`，理由是等待站主審核與其自行操作 Studio；沒有活躍產製工作。
+
+## 2026-10-17 H11 語言縮圖補件
+
+站主指出 H11 缺少語言專用縮圖。原任務持有者已結束工作；先前站主已同意 H11 範圍移交，此次又直接要求修正 H11。查無其他 H11 工作樹、遠端分支或開啟中的獨立 PR；先將原本因站主／Studio 關卡而 `blocked` 的票改回 `open`，再以 `--force` 將本範圍認領給 `codex-gpt6-h11-thumbnail`，只處理縮圖。詳見 [thumbnail-locales-20261017.md](../../docs/videos/curio-h11/thumbnail-locales-20261017.md)。
+
+已用 `render --thumbnails-only` 補齊英、日、韓三張 1280×720 語言專用縮圖，逐張及 320×180 預覽核對，三語文案來源雜湊均 current。`lint` 0／0、`package` 4／4；新版 `upload/metadata.json` SHA `301E34A22EEF16AF3EE38906FD448CAC059795D4F9ED54BA0FCB1D8AD50D2192`，主繁中縮圖與已核准成片 SHA 均未變、三語音軌未重錄。後台讀回最新 `publish` 卡 `8be04d82-9f4a-43f0-b177-c082dbb7ff65`／SHA `301E34A22EEF16AF3EE38906FD448CAC059795D4F9ED54BA0FCB1D8AD50D2192` 與 `languages` 卡 `cd3f9fe3-7f02-4df2-98e8-c928d9bd1b49`／SHA `CA1BE987B9EEC6B31C1270B4DAC132B4D59467D5C2D2375AD9A5E946E032E2FE` 皆 `pending`；既有私人影片 ID `9Gn00ib57OA`，英／日／韓 dub state 仍為 uploaded。下一步是站主核准這兩張新卡，開啟 `https://studio.youtube.com/video/9Gn00ib57OA/edit` 的「語言」頁，分別點 en／ja／ko，在各語「縮圖」按新增，上傳媒體工作目錄的 `upload/thumbnails/en.jpg`、`ja.jpg`、`ko.jpg`，按「更新」，重新整理後逐語切換驗證畫面。沒有付費呼叫，也未改公開狀態。
+
+站主回覆「OK」後，2026-10-17 03:14 UTC 現場後台讀回上述兩張最新卡皆 approved；`review-pull --gate publish`／`languages` 已記錄到本機 `approvals.json`，各自 SHA 與上傳包一致。已將三張 Studio 語言縮圖路徑交站主；尚待其實際上傳與逐語顯示確認，不把後台核准或既有配音 uploaded 狀態當作語言縮圖上傳證據。

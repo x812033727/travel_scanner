@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-m09-research-outline
 title: Curio M09 research and outline
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-m09-pr-final
-claimed_at: 2026-10-16T16:25:06Z
+owner:
+claimed_at:
 created_at: 2026-10-15T16:34:56Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -151,3 +151,12 @@ scope:
 ### 2026-10-17 M09 scope transfer
 
 - 站主同意把已結束的 `codex-gpt6-m09-final` 任務認領移交；`npm run tasks -- claim ... --force` 讀回新 owner `codex-gpt6-m09-pr-final`。本次只將四份多語 QA／502 收據中的本機使用者絕對路徑改成 `<home>/mokaair-work/...`，不改評審、配音或已核准成片。JA／KO 仍等站主聽感，不製作上傳包。
+
+### 2026-10-17 M09 四語上傳包
+
+- 站主已試聽並接受日語、韓語旁白；英語先前已接受。自動旗標仍保留（日 24、韓 19），沒有據此改稿、重錄或新增付費呼叫。收據見 `docs/videos/curio-m09/i18n-owner-listening-20261017.md`。
+- 站主再次要求完成剩餘三集，已結束的前任務認領移交給 `codex-gpt6-m09-completion`；只在 M09 檔案範圍與本機 M09 工作目錄作業。
+- `captions` 產出四語各 95 cues；`package` 組成已核准的 9:19 成片、四語標題說明與字幕、三語配音及各語縮圖，4／4 上傳包檢查通過。`upload/metadata.json` SHA-256 `14939DCCAC842FF400C493301BBEF04039CEA00B6473C0B2E25F483A9FE94802`。
+- `publish`、`languages` 已送後台並唯讀讀回最新卡：`publish` `3fa63c7c-4b46-4289-bd68-7c629758b90b`／`14939DCC…94802`，`languages` `cc8e7ea3-3164-466c-8ee1-473850532ecd`／`DB2141C2…5749F`；兩張均 `pending`。尚未在 YouTube Studio 上傳或驗收播放。
+
+- 站主其後在後台逐張核准；2026-10-17T01:58Z 唯讀 API 讀回上述兩張**相同 ID 與雜湊**均為 `approved`，`review-pull --gate publish`／`languages` 已寫入本機 `approvals.json`。`status` 仍明示 `on YouTube` 未完成，這兩張核准不代表影片或三語音軌已傳到 Studio。四語上傳檔與操作說明在 `<home>/mokaair-work/videos/curio-m09/upload/`，已交站主以私人影片上傳並回填網址；待網址及 Studio 試播讀回後才可結案。

@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h10-research-outline
 title: Prepare Curio H10 Franklin source refresh and outline choices
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-h10-production
-claimed_at: 2026-10-16T01:56:12Z
+owner:
+claimed_at:
 created_at: 2026-10-15T16:33:45Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -131,4 +131,16 @@ H10 英語工作表已完成翻譯及前兩輪獨立審稿。首版英語配音�
 
 英語六句旗標送站主試聽後，站主回覆「英語旁白可以」；已補記於 [i18n-audio-qa-en-2.md](../../docs/videos/curio-h10/i18n-audio-qa-en-2.md)。這是英語音軌的人工聽感結論，不等於多語上傳包或發布核准。
 
-韓語 82 句的首輪 `check-audio` 為 61 exact、5 Jev 接受、16 旗標。兩組離線 Whisper small 已覆核 16／16 旗標，逐句證據見 [i18n-audio-qa-ko-1.md](../../docs/videos/curio-h10/i18n-audio-qa-ko-1.md)；本機 `review/dub-ko.html` 可逐句聽全部 82 句，預設顯示 16 旗標。`ha4fd3dc` 的「口述」被兩套辨為「珠子」，列最高優先試聽；`h323f98d` 的「補記」兩套辨識都不穩。船名、人名也列於收據。韓語 `h93d6e3d` 的 9 月 18 日被兩套正確辨出，沒有日語版的日期疑慮。尚無站主對韓語的聽後判定，未改韓文稿或重錄。H10 多語估算帳本已用 US$1.99／US$2.00，這次離線工作 US$0；若有實際錯音，先核對追加額度，不能直接付費重錄或 QA。多語上傳包尚未送審／上傳。
+韓語 82 句的首輪 `check-audio` 為 61 exact、5 Jev 接受、16 旗標。兩組離線 Whisper small 已覆核 16／16 旗標，逐句證據見 [i18n-audio-qa-ko-1.md](../../docs/videos/curio-h10/i18n-audio-qa-ko-1.md)；本機 `review/dub-ko.html` 可逐句聽全部 82 句，預設顯示 16 旗標。`ha4fd3dc` 的「口述」被兩套辨為「珠子」，列最高優先試聽；`h323f98d` 的「補記」兩套辨識都不穩。船名、人名也列於收據。韓語 `h93d6e3d` 的 9 月 18 日被兩套正確辨出，沒有日語版的日期疑慮。本段離線複核當時尚無站主聽後判定；站主後續已回覆「韓語旁白可以」。未改韓文稿或重錄。H10 多語估算帳本已用 US$1.99／US$2.00，這次離線工作 US$0；若有實際錯音，先核對追加額度，不能直接付費重錄或 QA。多語上傳包尚未送審／上傳。
+
+## 2026-10-17 日語句子定向修正（待重錄）
+
+站主同意把 `docs/videos/curio-h10` 的認領移交給本次製作，並表示會另提供日語錯句 ID。`tasks claim --force` 從原持有人移交給 `codex-gpt6-h10-final`；移交依站主授權執行。
+
+只修改日語 `he2b2172`：原文「它怎麼來到這個海灣」曾譯成不成句的「どう湾へ来て」；現改為「この湾へ来た経緯も、沈没時期も未解明です」。其餘 81 句、繁中劇本與來源雜湊未改。新版 `i18n/ja.json` SHA-256 為 `CABCECA4F4E7409392C78F68D33EF604D8547539CA319AD18F7B2CD8C9CC6B43`；改句 37／51 字，82／82 ID 可對回劇本，`lint` 0 errors／原有 2 warnings，`git diff --check` 通過。先前獨立分流也指出同一語病並建議此措辭；本次未重跑付費音訊 QA。
+
+**日語舊配音與字幕仍對應舊文稿，不能當新版交付。** 站主尚未給其他錯句 ID；在指定範圍確定前只保留現有音檔，不猜測重錄。H10 多語估算已用 US$1.99／US$2.00，這次 US$0；如需 Gemini 定向重錄及 QA，須先取得新增停手額度。下一步：收齊站主所指錯句、獨立審新日文稿、預留額度、只重錄有依據的句子，然後重做音訊與上傳包關卡。
+
+## 2026-10-17 英／韓無付費交付預檢
+
+在 H10 認領下，只改英、韓縮圖標題，重建選定語系字幕及本機縮圖。英、韓字幕皆採各自配音時間軸且無問題，標題說明唯讀組合檢查亦無問題；兩張縮圖經獨立目視通過。全部檔案與雜湊、檢查指令、日語停點記於 [delivery-preflight-1.md](../../docs/videos/curio-h10/delivery-preflight-1.md)。站主已回覆「韓語旁白可以」，原有 16 句旗標證據保留；日語配音對新版譯稿已過期，且站主尚未給日語錯句 ID。本輪 US$0、沒有執行 `package`、沒有送審或上傳，也不標記 H10 完成。
