@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-send-a-final-cut-back-to
 title: Send a final cut back to the writer when its demonstration score fails, instead of to the owner
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-demo-gate
 claimed_at: 2026-10-17T04:53:40Z
 created_at: 2026-10-09T02:41:25Z
-completed_at:
+completed_at: 2026-10-17T05:08:20Z
 branch:
 depends_on: []
 scope:
