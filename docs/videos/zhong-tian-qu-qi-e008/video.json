@@ -1,0 +1,839 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e008",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Pulcherrima",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的颯爽女子，說話直、爽快、嗓門不小，帶一點不屑"
+      }
+    },
+    {
+      "id": "sunzhanggui",
+      "name": "孫掌櫃",
+      "appearance": "East Asian man of forty-five, round and plump with fair smooth skin, narrow smiling eyes that are always half closed, a dark green silk robe with a jade belt hook, two jade balls turning in one hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的商行掌櫃，笑咪咪、慢條斯理、話裡藏刀"
+      }
+    },
+    {
+      "id": "qianyuanwai",
+      "name": "錢員外",
+      "appearance": "East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, a dark gold silk robe with roundel patterns, three gold rings on his fingers, two servants behind him",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的鄉下財主，油滑、愛冷笑、拖長音"
+      }
+    },
+    {
+      "id": "zongbiaotou",
+      "name": "總鏢頭",
+      "appearance": "East Asian man of forty-five, burly and broad-chested, a weathered square face with a short bristly black beard, thick forearms, a dark blue escort's short jacket with rolled sleeves and a red sash, a leather wrist guard",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的鏢局總鏢頭，嗓門大、豪爽、說話直"
+      }
+    },
+    {
+      "id": "menfang",
+      "name": "門房",
+      "appearance": "East Asian man of fifty, thin and stooped, a sallow narrow face with a sparse goatee, a grey servant's robe and a small black cap, hands tucked in his sleeves",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的錢府門房，尖酸、愛冷笑、狗仗人勢"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Despina",
+        "style": "標準國語，咬字清楚；平板、沒有情緒的電子女聲，像手機語音提示，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a poised plucked guqin motif with soft strings at the start, turning into a driving taiko and erhu chase with galloping percussion, a heavy drum hit and a bright brass-like suona flourish at the gate, triumphant swelling strings in the hall, then a hushed mysterious low flute and a sudden sharp string sting at the very end, ancient Chinese farming comedy, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "五十兩不賣方子，錢府關了門，他一指：太陽還沒落｜種田娶妻打天下 第8集",
+    "description": "魏記商行的孫掌櫃拿五十兩買肥皂方子，許硯一口回絕。還差二兩、十里路、只剩一個時辰：唐小棠一句「不香不要錢」讓鏢局總鏢頭包下一整箱，三人一路狂奔趕到錢府，大門卻已關上。門房說申時已過，許硯回頭一指——山頭上還掛著半個太陽。秦霜一腳踹開大門，二十兩碎銀拍在錢員外桌上，字據當面撕掉。走出錢府，系統彈出隱藏任務：洞房花燭。《種田娶妻打天下》第 8 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "日落前一刻",
+      "tag": "種田娶妻打天下",
+      "shot": "s16"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "不賣",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a01",
+          "speaker": "xuyan",
+          "text": "方子不賣。",
+          "emotion": "平靜，一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, slow push in",
+        "prompt": "Two-shot in the back alley of a silk shop in the late afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk on bamboo poles overhead, a wooden soap table with small piles of silver pieces, the sun low and orange over the tiled rooftops, long shadows: on screen right Sun Zhanggui standing at the soap table, two jade balls in one hand, a big silver ingot on the table in front of him; on screen left Xu Yan standing across the table, two fingers resting on the silver ingot, calm and unhurried; Tang Xiaotang just behind his left shoulder, her small gold abacus in her hands",
+        "motion": "Xu Yan speaks a short Mandarin line, 「方子不賣」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while he slides the silver ingot back across the table to Sun Zhanggui with two fingers and lifts his hand away",
+        "characters": [
+          "xuyan",
+          "sunzhanggui",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a02",
+          "speaker": "xitong",
+          "text": "好感，加三。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Tang Xiaotang's face on screen left in the back alley of a silk shop in the late afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk on bamboo poles overhead, a wooden soap table with small piles of silver pieces, the sun low and orange over the tiled rooftops, long shadows, her small gold abacus held under her chin, big round eyes on Xu Yan off screen right, peach-pink lips parted in surprise, pink silk ribbons lit by the sun",
+        "motion": "Tang Xiaotang's fingers freeze on the abacus beads, then a dimpled smile spreads slowly across her face and she bites her lower lip",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a03",
+          "speaker": "sunzhanggui",
+          "text": "還差二兩，",
+          "emotion": "笑咪咪，慢條斯理"
+        },
+        {
+          "id": "zq8a04",
+          "speaker": "sunzhanggui",
+          "text": "十里路，趕得上嗎？",
+          "emotion": "話裡藏刀"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Sun Zhanggui on screen right in the back alley of a silk shop in the late afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk on bamboo poles overhead, a wooden soap table with small piles of silver pieces, the sun low and orange over the tiled rooftops, long shadows, round fair face, narrow smiling half-closed eyes, picking the silver ingot up off the table in his plump hand, two jade balls turning in the other, looking off screen left at Xu Yan",
+        "motion": "Sun Zhanggui speaks 2 short Mandarin lines, 「還差二兩，」 then 「十里路，趕得上嗎？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while he tucks the silver ingot into his wide sleeve and keeps the jade balls turning, smiling without showing his teeth",
+        "characters": [
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a05",
+          "speaker": "tangxiaotang",
+          "text": "去鏢局！",
+          "emotion": "一秒算好，眼睛發亮"
+        },
+        {
+          "id": "zq8a06",
+          "speaker": "tangxiaotang",
+          "text": "他們天天一身臭汗！",
+          "emotion": "快，像撿到寶"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Tang Xiaotang on screen left in the back alley of a silk shop in the late afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk on bamboo poles overhead, a wooden soap table with small piles of silver pieces, the sun low and orange over the tiled rooftops, long shadows, her small gold abacus in both hands, sparkling eyes, pink silk ribbons and pearl pins in her looped buns, sunlight on her cheek",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「去鏢局！」 then 「他們天天一身臭汗！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while she flicks the abacus beads in a blur and snaps her head up toward Xu Yan off screen right",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "chapter": "二兩",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a07",
+          "speaker": "zongbiaotou",
+          "text": "又賣肥皂？",
+          "emotion": "不耐煩，大嗓門"
+        },
+        {
+          "id": "zq8a08",
+          "speaker": "zongbiaotou",
+          "text": "不用不用！",
+          "emotion": "揮手趕人"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow pan left",
+        "prompt": "Wide shot in the escort agency courtyard in late afternoon, packed earth ground, racks of spears and staves along a grey wall, wooden cargo carts and iron-banded chests, a long stone wash trough, warm slanting light: on screen left the escort chief, a burly middle-aged man with a short bristly black beard in a dark blue short jacket and red sash, standing with thick arms crossed beside an iron-banded chest, escorts in sweat-stained jackets behind him; entering from screen right Tang Xiaotang holding up a white bar of soap, and Qin Shuang carrying a wooden crate of soap bars on her shoulder",
+        "motion": "the escort chief speaks 2 short Mandarin lines, 「又賣肥皂？」 then 「不用不用！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while he looks the two women up and down, and Tang Xiaotang and Qin Shuang walk in toward him",
+        "characters": [
+          "zongbiaotou",
+          "tangxiaotang",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a09",
+          "speaker": "tangxiaotang",
+          "text": "洗一次，",
+          "emotion": "甜"
+        },
+        {
+          "id": "zq8a10",
+          "speaker": "tangxiaotang",
+          "text": "不香不要錢。",
+          "emotion": "篤定，歪頭一笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Tang Xiaotang on screen right in the escort agency courtyard in late afternoon, packed earth ground, racks of spears and staves along a grey wall, wooden cargo carts and iron-banded chests, a long stone wash trough, warm slanting light, holding a white bar of soap out toward screen left, head tilted, dimpled confident smile, peach-pink lips, pink silk ribbons",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「洗一次，」 then 「不香不要錢」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while she steps forward and presses the bar of soap toward screen left, tilting her head with a sweet smile",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a11",
+          "speaker": "zongbiaotou",
+          "text": "香！",
+          "emotion": "一聞，愣住"
+        },
+        {
+          "id": "zq8a12",
+          "speaker": "zongbiaotou",
+          "text": "這箱我全包了！",
+          "emotion": "豪爽大笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of the escort chief on screen left in the escort agency courtyard in late afternoon, packed earth ground, racks of spears and staves along a grey wall, wooden cargo carts and iron-banded chests, a long stone wash trough, warm slanting light, a burly middle-aged man with a short bristly black beard in a dark blue short jacket and red sash, standing at the stone wash trough, his big calloused hands thick with white soap foam",
+        "motion": "the escort chief speaks 2 short Mandarin lines, 「香！」 then 「這箱我全包了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while he lifts his foamy hands to his nose, sniffs, bursts out laughing and slaps the wooden crate beside him",
+        "characters": [
+          "zongbiaotou"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a13",
+          "speaker": "tangxiaotang",
+          "text": "七十塊，二兩一錢，",
+          "emotion": "精明，一秒算好"
+        },
+        {
+          "id": "zq8a14",
+          "speaker": "tangxiaotang",
+          "text": "全湊齊了！",
+          "emotion": "得意"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Tang Xiaotang's face on screen right in the escort agency courtyard in late afternoon, packed earth ground, racks of spears and staves along a grey wall, wooden cargo carts and iron-banded chests, a long stone wash trough, warm slanting light, catching a small cloth money pouch in both hands, her small gold abacus hanging at her waist, rosy cheeks, triumphant dimpled grin",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「七十塊，二兩一錢，」 then 「全湊齊了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while she weighs the pouch in her palm and lifts her chin proudly",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a15",
+          "speaker": "tangxiaotang",
+          "text": "慢點！",
+          "emotion": "被顛得尖叫"
+        },
+        {
+          "id": "zq8a16",
+          "speaker": "tangxiaotang",
+          "text": "我的髮髻都要散了！",
+          "emotion": "哀叫"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, tracking left",
+        "prompt": "Wide side-on tracking shot on the mountain road toward the village entrance at sunset, a dirt road winding between golden fields and dark hills, a low red sun just above the ridge: Xu Yan running in front on screen left, clutching a small cloth money pouch to his chest, his blue-grey robe flapping; behind him Qin Shuang running hard with Tang Xiaotang riding piggyback on her back, Tang's pink silk ribbons streaming, long shadows on the road",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「慢點！」 then 「我的髮髻都要散了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while Tang Xiaotang clutches her hair buns with one hand and Qin Shuang's shoulder with the other, all three running toward screen left",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a17",
+          "speaker": "qinshuang",
+          "text": "抓穩！",
+          "emotion": "喘著氣，爽快"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, tracking",
+        "prompt": "Medium close-up tracking on the mountain road toward the village entrance at sunset, a dirt road winding between golden fields and dark hills, a low red sun just above the ridge, Qin Shuang running with Tang Xiaotang on her back, bold brows set, high ponytail whipping, sweat on her brow, the old chopping knife at her belt, the low red sun behind them",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「抓穩！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while she hitches Tang Xiaotang higher on her back and lengthens her stride without slowing",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, slow pan left",
+        "prompt": "Wide shot from high on the mountain road toward the village entrance at sunset, a dirt road winding between golden fields and dark hills, a low red sun just above the ridge: three tiny figures racing along the winding dirt road between golden fields, one in a blue-grey robe in front and a tall woman with a girl in peach-pink on her back behind, long shadows stretching across the road, the huge red sun now touching the ridge",
+        "motion": "The three small figures race along the bend of the road toward screen left as the red sun sinks to touch the ridge and their long shadows sweep across the fields",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "chapter": "日落",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a18",
+          "speaker": "menfang",
+          "text": "時辰到了，",
+          "emotion": "冷笑，拖長音"
+        },
+        {
+          "id": "zq8a19",
+          "speaker": "menfang",
+          "text": "申時已過！",
+          "emotion": "狗仗人勢"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, low angle, locked",
+        "prompt": "Medium shot from low at the Qian manor gate at sunset, tall vermilion-lacquered double doors with brass studs, worn stone steps, a pair of stone lions, a high whitewashed wall with grey roof tiles, red-gold sunset light: the gatekeeper on the top step, a thin stooped man in a grey servant's robe and small black cap, with a sparse goatee; behind him two servants push the big vermilion doors shut",
+        "motion": "the gatekeeper speaks 2 short Mandarin lines, 「時辰到了，」 then 「申時已過！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while the doors boom shut behind him and he tucks his hands into his sleeves with a cold sneer, looking down the steps toward screen left",
+        "characters": [
+          "menfang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a20",
+          "speaker": "xuyan",
+          "text": "太陽，還沒落。",
+          "emotion": "喘著氣，一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Xu Yan on screen left at the foot of the stone steps at the Qian manor gate at sunset, tall vermilion-lacquered double doors with brass studs, worn stone steps, a pair of stone lions, a high whitewashed wall with grey roof tiles, red-gold sunset light, panting, sweat on his temples, the cloth money pouch in one hand, looking up toward the top of the steps on screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「太陽，還沒落」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while he catches his breath, turns half around and points up behind him toward the western hills",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot over the shoulder, slow tilt up",
+        "prompt": "Wide shot over Xu Yan's shoulder from behind, his raised pointing arm in the foreground on screen left, looking west across dark fields to a ridge of hills where half of a huge red sun still hangs above the hilltop, a flock of birds crossing it, red-gold light on his sleeve",
+        "motion": "The camera tilts up slowly along his pointing arm to the half sun as the birds cross it and his sleeve stirs in the wind",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a21",
+          "speaker": "tangxiaotang",
+          "text": "字據寫的是日落，",
+          "emotion": "甜，但寸步不讓"
+        },
+        {
+          "id": "zq8a22",
+          "speaker": "tangxiaotang",
+          "text": "不是申時！",
+          "emotion": "加重"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Tang Xiaotang on screen left at the foot of the steps at the Qian manor gate at sunset, tall vermilion-lacquered double doors with brass studs, worn stone steps, a pair of stone lions, a high whitewashed wall with grey roof tiles, red-gold sunset light, holding up an unfolded sheet of old paper covered in dense rows of tiny black brush strokes with a red thumbprint at the bottom, her eyes fixed on the top of the steps toward screen right, sweet face set firm",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「字據寫的是日落，」 then 「不是申時！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while she snaps the paper open with both hands and holds it up high toward screen right",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a23",
+          "speaker": "qinshuang",
+          "text": "讓開。",
+          "emotion": "冷，只兩個字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Qin Shuang on screen left at the Qian manor gate at sunset, tall vermilion-lacquered double doors with brass studs, worn stone steps, a pair of stone lions, a high whitewashed wall with grey roof tiles, red-gold sunset light, stepping up past Tang Xiaotang onto the stone steps, bold straight brows, sharp eyeliner, high ponytail, eyes locked on the vermilion doors at the top of the steps",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「讓開」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while she rolls her shoulders and cracks her knuckles, climbing one step toward the doors",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, low angle, slow motion",
+        "prompt": "Medium shot from low at the Qian manor gate at sunset, tall vermilion-lacquered double doors with brass studs, worn stone steps, a pair of stone lions, a high whitewashed wall with grey roof tiles, red-gold sunset light: Qin Shuang on the top step in mid-kick, one leather boot striking the closed vermilion doors, her high ponytail swinging in an arc through the red-gold sunset light, the old chopping knife in her hand held flat at her side, the thin gatekeeper in grey scrambling aside on screen right",
+        "motion": "Qin Shuang's kick bursts the double doors open inward, her ponytail sweeps through the light in slow motion, and she plants her foot and stands square with the chopping knife at her side while the gatekeeper stumbles off the step",
+        "characters": [
+          "qinshuang",
+          "menfang"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, low angle, slow motion",
+        "prompt": "Medium shot from low at the Qian manor gate at sunset, tall vermilion-lacquered double doors with brass studs, worn stone steps, a pair of stone lions, a high whitewashed wall with grey roof tiles, red-gold sunset light: Qin Shuang standing square on the top step before the burst-open vermilion doors, the old chopping knife held flat at her side, her high ponytail settling, the thin gatekeeper sprawled on his backside on the steps on screen right",
+        "motion": "Qin Shuang stands still with the knife at her side as her ponytail settles, and the gatekeeper scrambles backwards on the steps",
+        "characters": [
+          "qinshuang",
+          "menfang"
+        ],
+        "source": {
+          "shot": "s17",
+          "from_s": 3
+        }
+      }
+    },
+    {
+      "id": "s19",
+      "chapter": "錢府",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a24",
+          "speaker": "qianyuanwai",
+          "text": "誰讓你們進來的？",
+          "emotion": "拖長音，惱怒"
+        },
+        {
+          "id": "zq8a25",
+          "speaker": "qianyuanwai",
+          "text": "來人！",
+          "emotion": "拍桌喊人"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Wide shot in the Qian manor hall at sunset, dark carved wooden pillars, a heavy rosewood table with a porcelain tea set, a painted screen behind, a long beam of red-gold sunset light falling through the open doors: Qian Yuanwai seated behind the rosewood table on screen right, a teacup halfway to his thin moustache, two servants behind him; Xu Yan striding in through the beam of light from screen left; Qin Shuang in the burst-open doorway behind him with the chopping knife at her side",
+        "motion": "Qian Yuanwai speaks 2 short Mandarin lines, 「誰讓你們進來的？」 then 「來人！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while he slams the teacup down and half rises, and Xu Yan keeps walking straight toward the table",
+        "characters": [
+          "qianyuanwai",
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a26",
+          "speaker": "xuyan",
+          "text": "二十兩，",
+          "emotion": "不卑不亢"
+        },
+        {
+          "id": "zq8a27",
+          "speaker": "xuyan",
+          "text": "一錢不少。",
+          "emotion": "一掌拍下"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan on screen left at the rosewood table in the Qian manor hall at sunset, dark carved wooden pillars, a heavy rosewood table with a porcelain tea set, a painted screen behind, a long beam of red-gold sunset light falling through the open doors, the cloth money pouch raised in one hand above the table, eyes steady on Qian Yuanwai off screen right, sunset light on his face",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「二十兩，」 then 「一錢不少」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he slams the pouch down on the table and it bursts open at the seam",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow motion",
+        "prompt": "Close-up of Qian Yuanwai on screen right behind the rosewood table in the Qian manor hall at sunset, dark carved wooden pillars, a heavy rosewood table with a porcelain tea set, a painted screen behind, a long beam of red-gold sunset light falling through the open doors, small shrewd eyes, thin eight-shaped moustache, gold rings on his fingers, a burst cloth pouch on the table in front of him, the long beam of sunset light across his face",
+        "motion": "Dozens of small pieces of broken silver spring up off the table in slow motion, glittering in the sunset beam and bouncing harmlessly off his cheeks and moustache, and he flinches and screws his eyes shut",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a28",
+          "speaker": "qianyuanwai",
+          "text": "過了申時，",
+          "emotion": "擦臉，冷笑"
+        },
+        {
+          "id": "zq8a29",
+          "speaker": "qianyuanwai",
+          "text": "這筆不算！",
+          "emotion": "死不認帳"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Qian Yuanwai on screen right behind the rosewood table in the Qian manor hall at sunset, dark carved wooden pillars, a heavy rosewood table with a porcelain tea set, a painted screen behind, a long beam of red-gold sunset light falling through the open doors, a small piece of silver caught in his thin moustache, scattered silver across the table, face twisting into a sneer, looking off screen left at Xu Yan",
+        "motion": "Qian Yuanwai speaks 2 short Mandarin lines, 「過了申時，」 then 「這筆不算！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while he plucks the piece of silver out of his moustache and flicks it onto the table",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a30",
+          "speaker": "xuyan",
+          "text": "欠債還錢，",
+          "emotion": "不卑不亢"
+        },
+        {
+          "id": "zq8a31",
+          "speaker": "xuyan",
+          "text": "字據拿來。",
+          "emotion": "壓低聲音，篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Xu Yan on screen left leaning forward with both hands flat on the rosewood table among the scattered silver in the Qian manor hall at sunset, dark carved wooden pillars, a heavy rosewood table with a porcelain tea set, a painted screen behind, a long beam of red-gold sunset light falling through the open doors, back straight, steady eyes on Qian Yuanwai off screen right, the red sunset beam behind him through the open doors",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「欠債還錢，」 then 「字據拿來」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while he leans in over the table without lowering his head, then holds out one open palm",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a32",
+          "speaker": "xitong",
+          "text": "好感加五。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Qin Shuang on screen left leaning in the burst-open doorway in the Qian manor hall at sunset, dark carved wooden pillars, a heavy rosewood table with a porcelain tea set, a painted screen behind, a long beam of red-gold sunset light falling through the open doors, the red sunset behind her, the old chopping knife resting against her shoulder, watching Xu Yan off screen right",
+        "motion": "Qin Shuang folds her arms with the knife against her shoulder and the corner of her mouth lifts in a reluctant approving smirk",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a33",
+          "speaker": "xitong",
+          "text": "負債清零。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the paper on the table, slow push in",
+        "prompt": "Insert in the Qian manor hall at sunset, dark carved wooden pillars, a heavy rosewood table with a porcelain tea set, a painted screen behind, a long beam of red-gold sunset light falling through the open doors of a plump hand with three gold rings slapping a folded sheet of old paper with dense rows of tiny black brush strokes and a red thumbprint onto the rosewood table among scattered silver, a hand in a faded blue-grey sleeve reaching in from the left, Xu Yan himself off screen left",
+        "motion": "The hand in the blue-grey sleeve picks up the paper and tears it in half, then in half again, the pieces fluttering down through the sunset beam",
+        "characters": []
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a34",
+          "speaker": "qianyuanwai",
+          "text": "許硯，",
+          "emotion": "咬牙"
+        },
+        {
+          "id": "zq8a35",
+          "speaker": "qianyuanwai",
+          "text": "你給我等著！",
+          "emotion": "氣到發抖"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Qian Yuanwai on screen right in the Qian manor hall at sunset, dark carved wooden pillars, a heavy rosewood table with a porcelain tea set, a painted screen behind, a long beam of red-gold sunset light falling through the open doors, his round face flushed dark red with rage, the eight-shaped moustache quivering, small eyes bulging at Xu Yan off screen left, gold rings on his clenched fist",
+        "motion": "Qian Yuanwai speaks 2 short Mandarin lines, 「許硯，」 then 「你給我等著！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while he pounds his fist on the table so the scattered silver jumps",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "chapter": "洞房",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a36",
+          "speaker": "xuyan",
+          "text": "紅繩草帽……",
+          "emotion": "愣住，壓低聲音"
+        },
+        {
+          "id": "zq8a37",
+          "speaker": "xuyan",
+          "text": "河邊那頂？",
+          "emotion": "心裡一沉"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking right",
+        "prompt": "Medium shot at the Qian manor gate at dusk, outside the high whitewashed wall with grey roof tiles, the last orange glow fading behind dark hills, the first lanterns being lit: Xu Yan walking along the wall toward screen right past a small plain side door, the relaxed smile on his face, his empty hands loose at his sides",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「紅繩草帽……」 then 「河邊那頂？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while he slows, stops beside the side door and turns his head toward it, the smile fading",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the hat on the peg, slow push in",
+        "prompt": "Insert at the Qian manor gate at dusk, outside the high whitewashed wall with grey roof tiles, the last orange glow fading behind dark hills, the first lanterns being lit of an old woven straw hat tied with a thin red string, hanging on a wooden peg beside the small side door in the whitewashed wall, lantern light just catching its brim",
+        "motion": "The red string on the straw hat stirs in the evening breeze and the hat turns slightly on its peg",
+        "characters": []
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a38",
+          "speaker": "xitong",
+          "text": "隱藏任務：洞房花燭。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Group shot, locked",
+        "prompt": "Group shot on the stone steps at the Qian manor gate at dusk, outside the high whitewashed wall with grey roof tiles, the last orange glow fading behind dark hills, the first lanterns being lit: Xu Yan on screen left standing still on the top step, face lit warm by a newly lit lantern; below him on screen right Tang Xiaotang and Qin Shuang already halfway down the steps, the Qian servants lighting lanterns off screen right",
+        "motion": "Xu Yan flinches as if something flashed in front of his eyes and stares at the empty air, while Tang Xiaotang and Qin Shuang stop and turn back to look up at him",
+        "characters": [
+          "xuyan",
+          "tangxiaotang",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a39",
+          "speaker": "xitong",
+          "text": "今夜，任一妻好感加十。",
+          "emotion": "平板，一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, slow push in",
+        "prompt": "Two-shot on the stone steps at the Qian manor gate at dusk, outside the high whitewashed wall with grey roof tiles, the last orange glow fading behind dark hills, the first lanterns being lit: Tang Xiaotang on screen left and Qin Shuang on screen right, both turned back looking up at Xu Yan off screen left, Tang's pink silk ribbons and Qin's high ponytail lifted by the evening breeze, warm lantern light on their faces",
+        "motion": "Tang Xiaotang tilts her head with a puzzled dimpled smile while Qin Shuang raises one bold eyebrow and rests her hand on the knife at her belt",
+        "characters": [
+          "tangxiaotang",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq8a40",
+          "speaker": "xuyan",
+          "text": "種田也扣？",
+          "emotion": "崩潰"
+        },
+        {
+          "id": "zq8a41",
+          "speaker": "xuyan",
+          "text": "今晚……洞房？",
+          "emotion": "聲音發顫"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "Extreme close-up of Xu Yan's face at the Qian manor gate at dusk, outside the high whitewashed wall with grey roof tiles, the last orange glow fading behind dark hills, the first lanterns being lit, lantern light flickering on his skin, eyes wide with panic, a bead of sweat on his temple, mouth half open",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「種田也扣？」 then 「今晚……洞房？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, while his eyebrows shoot up in disbelief",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}

@@ -14,6 +14,8 @@
     bar() { const b = [...document.querySelectorAll("button")].find((x) => x.innerText.trim() === "創建"); let q = b; for (let i = 0; i < 4 && q; i++) q = q.parentElement; return q?.innerText.replace(/\s+/g, " ").trim(); },
     groups() { return [...document.querySelectorAll("[id^=media-group-]")].map((g) => g.id.replace("media-group-", "")); },
     refs() { return (document.body.innerText.match(/参考图\s*\((\d+)\/16\)/) || [])[1]; },
+    // A fresh profile or a reload can reset the output count to 4 (four images, 80 points): set it to 1.
+    async one() { if (/^1 /.test(this.bar() || "")) return this.bar(); const b = [...document.querySelectorAll("button")].find((x) => x.innerText.trim() === "創建"); let q = b; for (let i = 0; i < 4 && q; i++) q = q.parentElement; const react = (el) => { for (let i = 0; i < 6 && el; i++) { const pk = Object.keys(el).find((k) => k.startsWith("__reactProps")); if (pk && typeof el[pk].onClick === "function") { el[pk].onClick({ stopPropagation() {}, preventDefault() {}, currentTarget: el, target: el }); return true; } el = el.parentElement; } return false; }; react([...q.querySelectorAll("span")].find((e) => /^[2-4]$/.test(e.textContent.trim()))); await sleep(1200); react([...document.querySelectorAll("div")].find((e) => e.children.length === 0 && e.textContent.trim() === "1" && !e.closest("[id^=media-group-]"))); await sleep(800); document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })); return this.bar(); },
     async aspect(a) {
       const chip = [...document.querySelectorAll("span,div")].find((e) => e.children.length === 0 && /^(21:9|16:9|3:4|4:3|9:16|1:1|2:3|3:2|4:5|5:4)$/.test(e.textContent.trim()) && !e.closest("[id^=media-group-]") && !e.closest(".grid"));
       if (chip?.textContent.trim() === a) return a;
@@ -44,6 +46,7 @@
     async go(label, prompt, n, aspect) {
       if (Object.values(this.map()).includes(label)) return "already " + label;
       if (__yz.chip()[0] !== aspect) await __yz.aspect(aspect);
+      if (!/^1 /.test(__yz.bar() || "")) await __yz.one();
       const want = "1 " + (20 + n) + " 創建"; const t = performance.now();
       while ((__yz.bar() !== want || __yz.refs() !== String(n)) && performance.now() - t < 90000) await sleep(700);
       const chip = __yz.chip(); const bar = __yz.bar();

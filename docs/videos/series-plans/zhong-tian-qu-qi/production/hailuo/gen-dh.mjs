@@ -20,7 +20,7 @@ const SET = [
   [/escort agency/i, "dh-set-biaoju-t1"],
   [/Qian manor gate/i, "dh-set-qianfu-men-t1"],
   [/Qian manor hall|Qian manor/i, "dh-set-qianfu-ting-t1"],
-  [/village entrance|mountain road/i, "dh-set-cunkou-t1"],
+  [/village entrance/i, "dh-set-cunkou-t1"],
   [/work shed|workshop|lean-to/i, "dh-set-gongpeng-t1"],
   [/kitchen/i, "dh-set-xujia-zao-t1"],
   [/dirt yard|farmhouse yard|in the yard|morning yard|courtyard|yard gate|mud wall|woodpile|wooden gate|broken gate/i, "dh-set-xujia-yuan-t1"],
@@ -80,7 +80,7 @@ for (const scene of video.scenes) {
   for (const l of on) (by[l.speaker] ??= []).push(`「${l.text.replace(/[。]$/, "")}」`);
   const talk = Object.entries(by).map(([id, ls]) => `${EN[id] ?? id} speaks ${ls.length > 1 ? `${ls.length} short Mandarin lines, ${ls.join(" then ")}` : `a short Mandarin line, ${ls[0]}`}, ${HER.has(id) ? "her" : "his"} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes`).join("; ");
   const text = `${P}${talk && !/ speaks /.test(orig) ? `${talk}, while: ` : ""}${orig}${S}`;
-  clips[`a${ep}-${scene.id}`] = [text, createHash("sha256").update(text).digest("hex").slice(0, 16), 4];
+  if (d.visual !== "still") clips[`a${ep}-${scene.id}`] = [text, createHash("sha256").update(text).digest("hex").slice(0, 16), 4];
 }
 writeFileSync(ffOut, JSON.stringify(ff, null, 1));
 writeFileSync(clipOut, JSON.stringify(clips));
