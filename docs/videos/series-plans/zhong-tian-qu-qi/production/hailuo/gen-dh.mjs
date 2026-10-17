@@ -13,6 +13,9 @@ const C = Object.fromEntries(video.characters.map((c) => [c.id, c]));
 const STYLE = "3D Chinese donghua CG animation still, like a high-end Chinese 3D animated series or game cinematic, Unreal Engine 5 cinematic render: stylized semi-realistic characters with refined faces and slightly larger expressive eyes, detailed skin that is clearly CG and not a photograph, individually rendered hair strands, physically simulated cloth with wear, dust and grime; cool desaturated grey-blue palette with warm accents, volumetric light and haze, strong rim light, shallow depth of field, dramatic cinematic composition";
 const MODERN = "3D Chinese donghua CG animation still of a present-day city, Unreal Engine 5 cinematic render, stylized semi-realistic characters, cool desaturated palette with neon or daylight accents, volumetric light, strong rim light, shallow depth of field";
 const SET = [
+  [/county academy gate|academy gate/i, "dh-set-shuyuan-t1"],
+  [/Xu family shop/i, "dh-set-xuji-pu-t1"],
+  [/roof of the farmhouse|farmhouse roof/i, "dh-set-wuding-t1"],
   [/county yamen|yamen gate|yamen hall/i, "dh-set-xianya-t1"],
   [/teahouse/i, "dh-set-chalou-t1"],
   [/market street|county town market/i, "dh-set-shiji-t1"],
@@ -33,8 +36,8 @@ const SET = [
   [/stream|riverbank|river bank|willow|reeds/i, "dh-set-liuxi-he-t1"],
 ];
 // Characters with a 3D portrait (refs-dh-jobs*.json); others are described in the prompt only.
-const DH = new Set(["xuyan", "aling", "qinshuang", "tangxiaotang", "xiaohe", "erniu", "qianyuanwai", "zhaobutou", "mianshiguan", "laisan", "sunzhanggui", "huxianling", "shimujiang"]);
-const EN = { shimujiang: "Carpenter Shi", sunzhanggui: "Sun Zhanggui", huxianling: "Magistrate Hu", xuyan: "Xu Yan", aling: "A-ling", qinshuang: "Qin Shuang", tangxiaotang: "Tang Xiaotang", xiaohe: "little Xiaohe", erniu: "Wang Erniu", qianyuanwai: "Qian Yuanwai", zhaobutou: "Zhao Butou", mianshiguan: "the interviewer", laisan: "Lai San" };
+const DH = new Set(["xuyan", "aling", "qinshuang", "tangxiaotang", "xiaohe", "erniu", "qianyuanwai", "zhaobutou", "mianshiguan", "laisan", "sunzhanggui", "huxianling", "shimujiang", "hanbo", "weishaoqing"]);
+const EN = { hanbo: "Elder Han", weishaoqing: "Wei Shaoqing", shimujiang: "Carpenter Shi", sunzhanggui: "Sun Zhanggui", huxianling: "Magistrate Hu", xuyan: "Xu Yan", aling: "A-ling", qinshuang: "Qin Shuang", tangxiaotang: "Tang Xiaotang", xiaohe: "little Xiaohe", erniu: "Wang Erniu", qianyuanwai: "Qian Yuanwai", zhaobutou: "Zhao Butou", mianshiguan: "the interviewer", laisan: "Lai San" };
 const HER = new Set(["aling", "qinshuang", "tangxiaotang", "xiaohe", "mianshiguan"]);
 const P = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] ";
 const S = " 3D Chinese donghua CG animation with smooth, weighty, expressive character animation; the camera keeps moving slowly the whole time; faces, hair and costumes stay the same; no morphing, no cuts. Keep the supplied first frame's composition, art style, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A";
@@ -57,7 +60,7 @@ for (const scene of video.scenes) {
     cast.push(`${c.name}: ${named?.appearance ?? c.appearance}`);
   }
   // Characters named in the prompt but missing from the list (the three brides behind Xu Yan in e1-s47) get their portraits too.
-  const NAMED = { shimujiang: /Carpenter Shi/, sunzhanggui: /Sun Zhanggui/, huxianling: /Magistrate Hu/, xuyan: /Xu Yan/, aling: /A[- ]?[Ll]ing/, qinshuang: /Qin Shuang/, tangxiaotang: /Tang Xiaotang/, xiaohe: /Xiao ?[Hh]e/, erniu: /Wang Erniu|Erniu/, qianyuanwai: /Qian Yuanwai/, zhaobutou: /Zhao Butou/, laisan: /Lai San/ };
+  const NAMED = { hanbo: /Elder Han/, weishaoqing: /Wei Shaoqing/, shimujiang: /Carpenter Shi/, sunzhanggui: /Sun Zhanggui/, huxianling: /Magistrate Hu/, xuyan: /Xu Yan/, aling: /A[- ]?[Ll]ing/, qinshuang: /Qin Shuang/, tangxiaotang: /Tang Xiaotang/, xiaohe: /Xiao ?[Hh]e/, erniu: /Wang Erniu|Erniu/, qianyuanwai: /Qian Yuanwai/, zhaobutou: /Zhao Butou/, laisan: /Lai San/ };
   for (const [id, re] of Object.entries(NAMED)) {
     if ((d.characters ?? []).includes(id) || !C[id]) continue;
     const m = d.prompt.match(re);
