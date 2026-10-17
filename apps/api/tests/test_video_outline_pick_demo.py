@@ -1,5 +1,5 @@
-"""An outline pick asks for a demonstration only of a tutorial-shaped video (docs/videos/HANDS-OFF.md
-§Jev 挑大綱; ticket 2026-10-10-outline-pick-demo-exempts-explainers).
+"""An outline pick asks for a demonstration only of a tutorial-shaped video
+(docs/videos/HANDS-OFF.md §Jev 挑大綱; ticket 2026-10-10-outline-pick-demo-exempts-explainers).
 
 The first MiniMax episode of 原來如此事務所, an explainer, was picked with certainty (A, 1.00;
 stance 0.92, advice 0.02) and still waited for the owner because 「有示範 0.33 低於 0.6」. The
@@ -53,7 +53,9 @@ BODY = {
 }
 # What sothatswhy-b26 scored: a certain pick, a demonstration nobody could find in an explainer.
 SCORES = {"stance_A": 0.92, "demo_A": 0.33, "stance_B": 0.7, "demo_B": 0.2, "advice": 0.02}
-NOT_ASKED_NOTE = "Jev 挑了 A（1.00）：符合立場 0.92、有示範：不適用（解說）、建議 0.02，依設定自動核准"
+NOT_ASKED_NOTE = (
+    "Jev 挑了 A（1.00）：符合立場 0.92、有示範：不適用（解說）、建議 0.02，依設定自動核准"
+)
 ASKED_NOTE = (
     "Jev 挑了 A（1.00）：符合立場 0.92、有示範 0.33、建議 0.02；沒過關（有示範 0.33 低於 0.6）"
 )
@@ -148,7 +150,10 @@ async def test_an_explainer_or_a_story_outline_is_picked_on_stance_and_advice(
     assert response.status_code == 200, response.text
     assert asked == [["pick", "stance_A", "stance_B", "advice"]]
     pick = response.json()
-    assert pick["options"] == {"A": {"stance": 0.92, "demo": None}, "B": {"stance": 0.7, "demo": None}}
+    assert pick["options"] == {
+        "A": {"stance": 0.92, "demo": None},
+        "B": {"stance": 0.7, "demo": None},
+    }
     assert pick["passed"] is True
     assert pick["note"] == NOT_ASKED_NOTE
 

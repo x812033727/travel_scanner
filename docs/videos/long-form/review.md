@@ -5531,9 +5531,22 @@ Ran: Node v22.22.0, Linux, node_modules installed: the baseline hashing of all 1
 Non-claims: this is a one-file incremental source duration review. It does not re-review the other 107 bound files, the unbound files the commit changes, or the worker's behaviour on the host, and it does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Outline pick demonstration exemption increment: 3 files (2026-10-17)
+
+Reviewer: `claude-pr-review-outline-demo`. Author: `claude-opus-5-5-outline-demo`. Scope: DURATION_ONLY for `apps/api/app/video_automation/judge.py`, `apps/api/app/video_automation/settings.py` and `apps/api/app/video_reviews/admin_service.py` at `1c938ca32` ("fix(video): an explainer or story outline pick is not asked for a demonstration"), task `2026-10-10-outline-pick-demo-exempts-explainers`, on main `8f295eb61` (#1539), reviewed as `git diff 8f295eb61 1c938ca32` (judge.py +65/−21, settings.py +8/−3, admin_service.py +3/−2). The commit also changes the unbound `apps/api/app/video_automation/admin_api.py`, the new `apps/api/tests/test_video_outline_pick_demo.py`, `docs/videos/HANDS-OFF.md` and the task file. The reviewer wrote none of the code and edits only this report and review.json.
+
+Baseline: `git show 8f295eb61:<path> | sha256sum` gives `6e6cccb6ede540957c1815c2daff10437db37f5d4b46e55e458ac91f21941b54` (judge.py), `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` (settings.py) and `bdf99e9e6160b6a1c2ac82222ab81e03feb1883613e1d6e83a1e115032ff931f` (admin_service.py), equal to the existing bindings and table rows. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding:` for exactly these three paths; the other 105 registered files are byte-identical to the receipt. Earlier increments are retained in full.
+
+Findings. judge.py (40,328 → 42,222 bytes, 981 → 1,019 lines): `judge_outline` now takes `session` and `slug` and asks `outline_demo_asked(session, slug)`, which reads `VideoProject.category` for that slug and returns `demo_asked_of(category)` (`category not in NO_DEMO_CATEGORIES`, i.e. not `explainer`/`story`); a missing row or a null category is still asked. With demo off, `outline_questions` omits every `demo_<key>` noul, `read_outline_answers` stores `demo: None`, `_pick_passes` and `pick_note` skip the demo threshold and print 「有示範：不適用（解說）」 (the existing `DEMO_NOT_ASKED`). `outline_pick_passed(payload, demo=True)` and `pick_reason(payload, demo=True)` take the flag from the caller, not the payload: with demo on, a payload `demo` that is null, missing or below 0.6 still fails; `pick_reason` reads `value.get("demo") or 0`, so a null demo on a non-chosen option no longer raises. settings.py (28,229 → 28,424 bytes): `auto_picks_outline(session, payload, category=None)` passes `demo_asked_of(category)`; the default keeps every other caller on the tutorial rule. admin_service.py (118,820 → 118,890 bytes): `submit_review` passes `project.category`, the locked project row, to both `auto_picks_outline` and `pick_reason`. `JudgeOutlineIn` is a strict model, so a request carrying `category` or `demo` is refused with 422 (tested). The worker (`tools/video/review/sync.mjs` `pickFrom`) copies `options` through unchanged, so a null `demo` reaches the payload intact. None of the changed lines touches the 600/780-second targets, the 480-second floor, the eight-minute minimum, `target_minutes`, `MIN_EPISODE*`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source hashes, covered state, the explainer 8-20 or drama 1-8 minute ranges, or frame counts; a changed-line scan for duration terms over the three files finds none. No duration correction is required.
+
+Ran: Node v22.22.0, Linux, uv: `uv run mypy app` (479 files, no issues), `uv run mypy tests` (401 files, no issues), `uv run pytest -q tests/test_video_outline_pick_demo.py tests/test_video_judge.py tests/test_video_automation_judge.py tests/test_video_reviews.py tests/test_video_automation_settings.py` (164 passed, 3 skipped). `uv run ruff check .` reports 3 E501 lines over 100 characters, all in the unbound new test file `apps/api/tests/test_video_outline_pick_demo.py` (lines 1, 56, 151); none is in a bound file, and the author must wrap them before CI. The CLI check is run again after rebinding, and its result is in the hand-off so this report's hash stays stable.
+
+Non-claims: this is a three-file incremental source duration review. It does not re-review the other 105 bound files, the unbound files the commit changes, the admin review card's local `pickBelow` hint (it still reads a null `demo` as below the threshold on a pending review), or the judge's behaviour on the host, and it does not accept media, paid production, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the branch youthful-brahmagupta document-discussion waits increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the outline pick demonstration exemption increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5542,12 +5555,12 @@ These 108 bindings describe the current reviewed bytes after the branch youthful
 | `.agents/skills/youtube-video/references/formats.md` | `b27b230728c1c6513fd4567cdba04797f552fd920bed33833ae9f97b70d74087` |
 | `.claude/skills/youtube-video/SKILL.md` | `c5fc4286becde5eb6bb60733c1cec1fbd6436e1f8cdaee139c560338a3dc6738` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
-| `apps/api/app/video_automation/judge.py` | `6e6cccb6ede540957c1815c2daff10437db37f5d4b46e55e458ac91f21941b54` |
+| `apps/api/app/video_automation/judge.py` | `4cb2769af63fb5ad295f6f9c301c9015255eb6c335b62217978f73ddf6360023` |
 | `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
 | `apps/api/app/video_automation/schemas.py` | `d1af5e4597fd8135245bf95fee4a58779d652069ba69efae2d304b4a2493e050` |
 | `apps/api/app/video_automation/series.py` | `fe30ad598feadbb9329f737fe48218b3f5d1750763304f283111f56d52a45128` |
-| `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
-| `apps/api/app/video_reviews/admin_service.py` | `bdf99e9e6160b6a1c2ac82222ab81e03feb1883613e1d6e83a1e115032ff931f` |
+| `apps/api/app/video_automation/settings.py` | `2b4f44d7e0094e32847f62c2df25e600eca5bcf2e1423606b0ff31d77c82e323` |
+| `apps/api/app/video_reviews/admin_service.py` | `9583b59ff36b2996de84de1aff51c087df4bfc7a62a15500b53dfd295897f27b` |
 | `apps/api/app/video_reviews/schemas.py` | `08e5269f4c34472ceaebcc01135c294a6a25da3e637477d9d58132704069e7fa` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
