@@ -55,6 +55,7 @@ from app.video_automation.judge import (
     SCRIPT_AUTO_APPROVED_NOTE,
     SHORTS_PACKAGE_AUTO_APPROVED_NOTE,
     SHORTS_QA_AUTO_APPROVED_NOTE,
+    demo_asked_of,
     final_qa_passed,
     pick_choice,
     pick_reason,
@@ -1749,9 +1750,9 @@ async def submit_review(
     elif (
         not manual_anime
         and payload.gate == "outline"
-        and await auto_picks_outline(session, payload.payload)
+        and await auto_picks_outline(session, payload.payload, project.category)
     ):
-        auto_note = pick_reason(payload.payload)
+        auto_note = pick_reason(payload.payload, demo_asked_of(project.category))
         review.choice = pick_choice(payload.payload)
     # A Short is held to its own twelve checks and reads its own switch
     # (docs/videos/SHORTS.md §自動品管); a long video's report never approves one, so the

@@ -1,19 +1,25 @@
 ---
 id: 2026-10-10-outline-pick-demo-exempts-explainers
 title: Outline pick: an explainer or story video is not asked for a demonstration either
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-outline-demo
+claimed_at: 2026-10-17T00:24:10Z
 created_at: 2026-10-10T14:52:56Z
-completed_at:
+completed_at: 2026-10-17T00:41:25Z
 branch:
 depends_on: []
 scope:
   - apps/api/app/video_automation/judge.py
   - apps/api/tests/test_video_judge.py
+  - apps/api/tests/test_video_outline_pick_demo.py
+  - apps/api/app/video_automation/admin_api.py
+  - apps/api/app/video_automation/settings.py
+  - apps/api/app/video_reviews/admin_service.py
   - docs/videos/HANDS-OFF.md
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Outline pick: an explainer or story video is not asked for a demonstration either
@@ -34,22 +40,22 @@ more than in its narration.
 
 ## Definition of done
 
-- [ ] The outline pick of a video whose own row says `explainer` or `story` is decided on
+- [x] The outline pick of a video whose own row says `explainer` or `story` is decided on
       stance and advice only: the `demo` question is not asked (or its score is not required),
       decided from the site's row as `policy_questions_for` does, never from the request body.
-- [ ] The pick's note reads 「有示範：不適用（解說）」 for those videos, as the policy note does.
-- [ ] A tutorial-shaped video, a video with no row and a video with no category are judged
+- [x] The pick's note reads 「有示範：不適用（解說）」 for those videos, as the policy note does.
+- [x] A tutorial-shaped video, a video with no row and a video with no category are judged
       exactly as today.
-- [ ] `docs/videos/HANDS-OFF.md` says which categories the outline pick asks for a
+- [x] `docs/videos/HANDS-OFF.md` says which categories the outline pick asks for a
       demonstration.
 
 ## Steps
 
-- [ ] Read how #1424 threaded the category (`policy_questions_for`, the `explainer` question
+- [x] Read how #1424 threaded the category (`policy_questions_for`, the `explainer` question
       set) and whether the row already exists when the outline is pushed (the worker reports
       the category from `video.json`; a local `review-push --gate outline` creates the row).
-- [ ] Tests beside `apps/api/tests/test_video_judge.py`'s policy cases.
-- [ ] `judge.py` is bound by the duration receipt: an independent reviewer re-issues it.
+- [x] Tests beside `apps/api/tests/test_video_judge.py`'s policy cases.
+- [x] `judge.py` is bound by the duration receipt: an independent reviewer re-issues it.
 
 ## How to verify
 
@@ -60,3 +66,11 @@ note does not hold the video back for 「有示範」.
 ## Notes
 
 - 2026-10-10 filed from `sothatswhy-b26` (ticket `2026-10-10-sothatswhy-minimax-images`).
+- 2026-10-17 (claude-opus-5-5-outline-demo): claimed with `--force` over
+  `2026-10-14-enforce-usd-25-all-in-cap`, whose judge.py change already landed in #1508.
+  The endpoint asks `outline_demo_asked(session, slug)` (the row's category, as
+  `policy_questions_for` reads it) and leaves the `demo_<key>` questions out; the server's rule
+  takes the category from the project row at submit time (`auto_picks_outline(session,
+  payload, project.category)`), so a payload's `demo: null` approves nothing on a tutorial.
+  Tests in the new `tests/test_video_outline_pick_demo.py`; the bound settings.py and
+  admin_service.py changed too, so the receipt re-issue covers all three.
