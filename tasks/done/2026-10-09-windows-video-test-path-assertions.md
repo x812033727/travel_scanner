@@ -59,7 +59,7 @@ already cover their distinct Windows failures; do not duplicate those tickets.
   open. On main: the outline-lost assertion builds its path with `path.join("review",
   "outline-lost.json")`, the stock line prints `stock/<sha>.png` on every platform (stock.mjs
   `stockFile` joins with `/`) and the `assets[]` line is compared with `path.join`, and the
-  brightness test makes a `C:\\Users\\runner\\AppData` child only on POSIX (`stats` on win32) while
+  brightness test makes a Windows-looking drive-letter child directory only on POSIX (`stats` on win32) while
   still asserting a drive colon in the stats path. All three pass on Linux here. Not run on
   Windows in this session; #1391's Windows run is the evidence for that side. The two speech
   journal Windows tickets are separate and still open.
