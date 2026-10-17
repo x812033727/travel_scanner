@@ -2852,7 +2852,7 @@ async function demoChecked(policy) {
   const automation = new Automation(ctx, automationClient(ctx), site.settings);
   automation.refs = smallRefs;
   for (const expected of [/Jev picked outline B/, /Jev chose outline B/, /script drafted/, /fact-check round 1/, /listener edit/]) assert.match(await automation.step(), expected);
-  return { site, automation, recorded, workdir, state: () => automatedVideos(box.work)[0], writerFixes: () => site.calls.run.filter((call) => call.stage === "writer" && call.payload.fix) };
+  return { box, site, automation, recorded, workdir, state: () => automatedVideos(box.work)[0], writerFixes: () => site.calls.run.filter((call) => call.stage === "writer" && call.payload.fix) };
 }
 
 test("a script whose demonstration Jev scores low goes back to the writer twice, then stops for the owner before narration is paid for", async () => {
@@ -2883,6 +2883,22 @@ test("a script that shows its demonstration, or an explainer's that is not asked
     await video.automation.step();
     assert.equal(video.site.calls.policy.length, 1);
   }
+});
+
+test("a narrated video whose script changes later is not sent back for its demonstration", async () => {
+  let demo = 0.91;
+  const video = await demoChecked(() => policyAnswer(demo));
+  assert.match(await video.automation.step(), /Jev found a demonstration/);
+  assert.match(await video.automation.step(), /narration synthesized/);
+  // The recorded narration goes stale (a line edited after the audio was sent back), and Jev would now say no.
+  const docFile = path.join(video.box.root, "docs", "videos", "chatgpt-ads-off", "video.json");
+  const doc = readJson(docFile);
+  doc.scenes[1].lines[0].text = `${doc.scenes[1].lines[0].text}這句改過了。`;
+  writeFileSync(docFile, `${JSON.stringify(doc, null, 2)}\n`);
+  demo = 0.45;
+  for (let round = 0; round < 3; round++) await video.automation.step();
+  assert.equal(video.site.calls.policy.length, 1, "Jev is not asked again");
+  assert.equal(video.writerFixes().length, 0, "the script is not sent back");
 });
 
 test("a site with no stance or no judge leaves the demonstration to the final gate", async () => {

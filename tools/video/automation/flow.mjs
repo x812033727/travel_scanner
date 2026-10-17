@@ -3382,7 +3382,10 @@ export class Automation {
    */
   async demoGate(state, status) {
     if (state.format === "drama" || state.story || state.compilation) return null;
-    if (status.steps.some((step) => step.id === "narration synthesized" && step.done)) return null;
+    // Ever recorded, not only current: a narration made stale later (a line edited after the owner
+    // sent the audio back, a lexicon reading changed at the final cut) was paid for, and so may the
+    // pictures be, so the script is not sent back from there.
+    if (existsSync(path.join(this.workdir(state.slug), "timeline.json")) || status.steps.some((step) => step.id === "narration synthesized" && step.done)) return null;
     const dir = docDir(state.slug, this.ctx.root);
     const briefFile = path.join(dir, "brief.md");
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));

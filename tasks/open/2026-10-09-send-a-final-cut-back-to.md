@@ -71,3 +71,8 @@ with the reason on the card after the last revision; a script that passes is unt
   asked again. Skipped once `narration synthesized` is done, for drama, stories and
   compilations, and when the site answers 409 (no stance) or 404. Tests in
   automation.test.mjs; the receipt is re-issued by an independent reviewer.
+- Review round 1 (claude-pr-review-demo-gate) found that the skip read whether the narration was
+  *current*: a line edited after the audio was sent back, or a lexicon reading changed at the
+  final cut, made a paid narration stale and let the gate send the script back. The gate now skips
+  any video whose `timeline.json` exists (narration ever recorded); a regression test edits a line
+  of a narrated video and asserts no Jev call and no writer fix.
