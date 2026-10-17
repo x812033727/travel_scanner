@@ -60,6 +60,8 @@ test("an audited legacy story cannot be initialized or paid for and retains all 
   for (let i = 0; i < 80; i++) { const file = path.join(audit, `${i}.json`); writeFileSync(file, json({ index: i })); hashes.push(sha(readFileSync(file))); }
   assert.throws(() => initializeStoryLexicon(b), error("STORY_LEXICON_MIGRATION_REQUIRED"));
   assert.throws(() => requireStorySpeechLexicon(loadProject({ root: b.root, slug }), b.workdir), error("STORY_LEXICON_MIGRATION_REQUIRED"));
+  const identifiedByCategory = { ...loadProject({ root: b.root, slug }), series: null, doc: { ...b.doc, category: "story" } };
+  assert.throws(() => requireStorySpeechLexicon(identifiedByCategory, b.workdir), error("STORY_LEXICON_MIGRATION_REQUIRED"));
   assert.deepEqual(hashes, Array.from({ length: 80 }, (_, i) => sha(readFileSync(path.join(audit, `${i}.json`)))));
   assert.equal(existsSync(path.join(b.dir, "story-lexicon")), false);
 });

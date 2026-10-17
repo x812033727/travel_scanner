@@ -77,7 +77,8 @@ export function videoLexicon({ root, slug, dir = docDir(slug, root), workdir, re
 
 /** Paid callers check under their project lease, including an intent left only on the work volume. */
 export function requireStorySpeechLexicon(project, workdir) {
-  if (project.series?.kind !== "story") return;
+  if (project.series?.kind !== "story" && project.doc.category !== "story"
+      && !existsSync(path.join(project.dir, STORY_LEXICON_DIRECTORY))) return;
   const current = videoLexicon({ slug: project.doc.slug, dir: project.dir, workdir, requireSnapshot: true });
   if (JSON.stringify(current.lexicon) !== JSON.stringify(project.shelfLexicon)) fail("LEXICON_PROJECT_STALE");
 }
