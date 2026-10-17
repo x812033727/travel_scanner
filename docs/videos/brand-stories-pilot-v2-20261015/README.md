@@ -1,10 +1,12 @@
 # A01／B18 品牌故事新版試作｜奇聞檔案局規格
 
-> 2026-10-17 最新實況：#1548 已合併部署；A01 歷史發音表固定（80→81）及 round22 六章採用（81→82）已在正式機提交並完成讀回。來源收據見 [81／82 採用與驗證](preproduction-20261016/A01-pinned-lexicon-transition-candidate-20261017/README.md)。六章真正工人查核與 listener 已完成；整體 narrative 第10輪只剩 one_line 未過，單句修訂待重審，獨立 script-review 尚未通過，也尚無配音、MiniMax 圖片或成片。B18 與後五支的付費製作未啟動。
+> 2026-10-18 A01 片長決定：站主選擇 A01 正文約 7–8 分鐘、保留緊湊有鉤子的故事；[r9 離線候選](preproduction-20261016/A01-duration-decision-20261018-r9/README.md)只把該集 `target_minutes` 改為 `[7, 8]`，保留 r8 凍結稿及其獨立增量審查。B18 與後五集仍約 10 分鐘，試作系列仍為 10 分鐘。r9 也繼承 r8 `video.json.sources` 不完整且含無關來源的 **P1／HOLD**，不能匯入。文字估時不是 TTS 實測；正式工人九至十一分鐘關卡尚未作 A01 限定調整，六章、實稿、音檔及成片審核都未因此通過。以下 10/17 段落是當時快照，當前正式機狀態須重新讀回。
+
+> 2026-10-17 當時實況：#1548 已合併部署；A01 歷史發音表固定（80→81）及 round22 六章採用（81→82）已在正式機提交並完成讀回。來源收據見 [81／82 採用與驗證](preproduction-20261016/A01-pinned-lexicon-transition-candidate-20261017/README.md)。六章真正工人查核與 listener 已完成；整體 narrative 第10輪只剩 one_line 未過，單句修訂待重審，獨立 script-review 尚未通過，也尚無配音、MiniMax 圖片或成片。B18 與後五支的付費製作未啟動。
 
 2026-10-17 較早的狀態快照（A01 寫回資訊由上方實況取代）。**A01 已匯入正式站，但整片敘事第 9 輪仍有三項未通過，尚未進入配音、插畫或成片。後續來源與敘事修正仍是隔離的離線候選，尚未寫回正式機。B18 的 85 景企劃資料列、獨立來源審稿收據與雙集匯入檔已接入本機套件；65 筆逐景主張仍是 `UNCHECKED`，沒有正式匯入或啟動付費製作。** 這次本機採用的[備份及讀回收據](preproduction-20261016/B18-active-before-attribution-flow-20261017/adoption-manifest.md)綁定 canonical story `d0a9e19d311def1130c50cf6ba83a9ffb7f58c435e7c2460901abb211fe03648`。[新版說書節奏完整稿](preproduction-20261016/B18-spoken-source-cadence-candidate-20261017/README.md)已取得僅限離線文字的獨立事實與敘事 PASS；它還須與 85 景正式章稿對齊、查核 65 筆主張並測 TTS，不能視為成片或正式工人收據。[逐景對齊方案](preproduction-20261016/B18-fullscript-route-b-plan-20261017/README.md)及[符合十項事實上限的後繼 Row10b](preproduction-20261016/B18-route-b-row10b-candidate-20261017/README.md)仍只是隔離設計，未改現用企劃或工人章稿。企劃審查不代替主機實稿或成片驗收。部署與主機證據見 [A01／B18 試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)。舊 100 題庫及其審稿維持原樣。
 
-站主已選定品牌故事改成奇聞檔案局新版規格：MiniMax `image-01`、精確 `look: {"preset":"cute-mystery"}`、每支旁白正文約 10 分鐘；先完成 A01／B18 試作及站主看片，再做[已選的五支](../brand-stories-five-20261014/README.md)。**目前只有 A01 獲明確授權，所有付費項目合計最多 US$25。** [最新報價 v3](../brand-stories-five-20261014/drafts-20261016/cost-proposal/B18-five-production-cost-proposal-v3.md)提議 B18 與後五集每集最多 US$5、六集共 US$30，仍待站主答覆；正式機也要先具備相符的逐片限額。站主已免除訂閱／供應商餘額證明，不再要求帳務截圖。既有全片帳本、預留／結算與未確認支出仍須核對。
+站主已選定品牌故事改成奇聞檔案局新版規格：MiniMax `image-01`、精確 `look: {"preset":"cute-mystery"}`；A01 正文單獨改為 7–8 分鐘，B18 與後五集正文仍約 10 分鐘。先完成 A01／B18 試作及站主看片，再做[已選的五支](../brand-stories-five-20261014/README.md)。**目前只有 A01 獲明確授權，所有付費項目合計最多 US$25。** [最新報價 v3](../brand-stories-five-20261014/drafts-20261016/cost-proposal/B18-five-production-cost-proposal-v3.md)提議 B18 與後五集每集最多 US$5、六集共 US$30，仍待站主答覆；正式機也要先具備相符的逐片限額。站主已免除訂閱／供應商餘額證明，不再要求帳務截圖。既有全片帳本、預留／結算與未確認支出仍須核對。
 
 B18 的既有全文、收據、工人輸入與剩餘差距已做[準備度核對](readiness-20261016/B18-readiness.md)。該報告固定在 `e15df0219` 的檔案版本，17 個來源檔案已逐一對照 Git 內容雜湊；本頁的狀態與費用文字在其後更新。
 
