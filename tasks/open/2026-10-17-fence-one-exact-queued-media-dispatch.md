@@ -21,6 +21,10 @@ scope:
   - apps/api/tests/test_video_media_api.py
   - apps/api/tests/test_video_media_cutover_intake.py
   - apps/api/tests/test_video_media_dispatch_fence.py
+  - apps/api/tests/test_scoped_drama.py
+  - apps/api/tests/test_video_media_locate.py
+  - apps/api/tests/test_video_story_policy.py
+  - apps/api/tests/test_video_media_integration.py
   - docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-media-dispatch-fence-20261017
   - tasks/open/2026-10-17-fence-one-exact-queued-media-dispatch.md
 ---
@@ -152,3 +156,12 @@ API binary is the target. The root-only transition, initial bootstrap marker
 installer, old/new live ingress checks and repeated image/source proof are
 still missing. Do not deploy or use `ALLOW_A01_ONLY` from this candidate;
 `b25_producer_proof_missing` remains an unconditional apply STOP.
+
+The first CI run on `17b70365a` found 17 unrelated media tests still using the
+production default `/var/lib/mokaair/video-work` without an intake marker.
+Those tests exercise scoped drama, locate booking, story model/limits and the
+PostgreSQL media integration path, rather than the cutover gate. The four exact
+test files above were added to this task after checking for active claims and
+open PR overlap. Their fixtures explicitly mock an allowed intake only for
+those cases; the dedicated cutover tests continue to exercise the real,
+fail-closed gate. No production default or gate behavior is relaxed.
