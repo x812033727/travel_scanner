@@ -1,0 +1,771 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e007",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "qianyuanwai",
+      "name": "錢員外",
+      "appearance": "East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, a dark gold silk robe with roundel patterns, three gold rings on his fingers, two servants behind him",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的鄉下財主，油滑、愛冷笑、拖長音"
+      }
+    },
+    {
+      "id": "laisan",
+      "name": "賴三",
+      "appearance": "East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, a grey-brown short jacket and an old cloth head wrap",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的家丁，油嘴滑舌、心虛"
+      }
+    },
+    {
+      "id": "sunzhanggui",
+      "name": "孫掌櫃",
+      "appearance": "East Asian man of forty-five, round and plump with fair smooth skin, narrow smiling eyes that are always half closed, a dark green silk robe with a jade belt hook, two jade balls turning in one hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的商行掌櫃，笑咪咪、慢條斯理、話裡藏刀"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a smug slow pipa and low drum at the start, turning into a quick playful bamboo flute and wood block market tune for a scheming shopping comedy, a sudden tense pause with a single plucked string, a bright triumphant swell, then low suspenseful strings and a ticking wood block at the very end, ancient Chinese comedy, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "市集被封不讓賣，老婆一招不賣只送，後巷排出長龍｜種田娶妻打天下 第7集",
+    "description": "錢員外把縣城市集每個攤位都釘上木板，倚著茶樓欄杆等許硯日落還不出二十兩。唐小棠算盤一撥：不在市集賣。她繞到綢緞莊後門、鏢局洗衣房、茶樓後廚，「洗一次，不香不要錢」，後巷排出一條捧著木盆的長龍。人群裡有人大喊「這肥皂爛手」，她當眾洗手舉到陽光下，秦霜一把揪出錢府的賴三。數到十八兩時，魏記商行的孫掌櫃把一錠銀子放上桌：方子賣我，五十兩。《種田娶妻打天下》第 7 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "不賣只送",
+      "tag": "種田娶妻打天下",
+      "shot": "s19"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "封街",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a01",
+          "speaker": "qianyuanwai",
+          "text": "許秀才——",
+          "emotion": "倚著欄杆，拖長音"
+        },
+        {
+          "id": "zq7a02",
+          "speaker": "qianyuanwai",
+          "text": "日落，你歸我。",
+          "emotion": "冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, low angle, slow push in",
+        "prompt": "Medium shot from a low angle in the county teahouse, on its open upstairs balcony with a red lacquered railing high above a stone-paved street, tiled rooftops beyond, bright afternoon sun: Qian Yuanwai leaning his elbows on the railing on screen right, a small white wine cup between his ringed fingers, two servants standing behind him, looking down over the railing toward the street below on the left with a smug smile",
+        "motion": "Qian Yuanwai speaks 2 short Mandarin lines, 「許秀才——」 then 「日落，你歸我。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then tips the wine cup toward the street below and smirks",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a03",
+          "speaker": "tangxiaotang",
+          "text": "那就不在市集賣。",
+          "emotion": "抬頭，甜甜一笑，篤定"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up in the county town market street on a bright afternoon, a stone-paved street lined with wooden stalls all boarded shut with rough planks nailed across their fronts, faded cloth awnings, tiled two-storey shopfronts, a few passers-by keeping their distance: Tang Xiaotang's face on screen left tilted up toward the balcony high above on the right, big sparkling eyes, glossy peach-pink lips, pink silk ribbons in her looped buns, the small gold abacus raised beside her cheek",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「那就不在市集賣。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then flicks one gold bead on the abacus with a fingertip and smiles with her dimples",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a04",
+          "speaker": "xuyan",
+          "text": "不在市集，賣給誰？",
+          "emotion": "愣住，攤手"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot in the county town market street on a bright afternoon, a stone-paved street lined with wooden stalls all boarded shut with rough planks nailed across their fronts, faded cloth awnings, tiled two-storey shopfronts, a few passers-by keeping their distance: in the middle of the empty street a wooden handcart stacked with white soap bars wrapped in green leaves, Xu Yan standing beside the cart in the centre, Tang Xiaotang on screen left with her abacus, Qin Shuang on screen right with her arms folded, an empty upstairs balcony with a red railing at the top right of frame",
+        "motion": "Xu Yan speaks a short Mandarin line, 「不在市集，賣給誰？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then spreads both hands toward the boarded-up stalls and turns to Tang Xiaotang",
+        "characters": [
+          "xuyan",
+          "tangxiaotang",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a05",
+          "speaker": "qianyuanwai",
+          "text": "三錢一塊，誰敢買？",
+          "emotion": "居高臨下，慢悠悠"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up in the county teahouse, on its open upstairs balcony with a red lacquered railing high above a stone-paved street, tiled rooftops beyond, bright afternoon sun: Qian Yuanwai's round face on screen right above the red railing, thin eight-shaped moustache, small shrewd eyes looking down toward the street below on the left, the wine cup at his lips",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「三錢一塊，誰敢買？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then sips from the cup and chuckles, his moustache twitching",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a06",
+          "speaker": "qinshuang",
+          "text": "我上去掀他的桌！",
+          "emotion": "火大，嗓門大"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up in the county town market street on a bright afternoon, a stone-paved street lined with wooden stalls all boarded shut with rough planks nailed across their fronts, faded cloth awnings, tiled two-storey shopfronts, a few passers-by keeping their distance: Qin Shuang on screen right, sleek high ponytail, sharp eyeliner, glaring up toward the balcony high above on the right, one hand on the old chopping knife tucked in her wide leather belt",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「我上去掀他的桌！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then grips the knife handle and takes one hard step forward, her ponytail swinging",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a07",
+          "speaker": "tangxiaotang",
+          "text": "掀桌，不賺錢。",
+          "emotion": "笑嘻嘻拉住她"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up in the county town market street on a bright afternoon, a stone-paved street lined with wooden stalls all boarded shut with rough planks nailed across their fronts, faded cloth awnings, tiled two-storey shopfronts, a few passers-by keeping their distance: Tang Xiaotang on screen left catching a dark brown sleeve at the right frame edge with one hand, grinning, the small gold abacus swinging at her waist",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「掀桌，不賺錢。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then tugs the dark brown sleeve back toward her and pats it twice",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a08",
+          "speaker": "xitong",
+          "text": "任務：日落前，還清二十兩。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up in the county town market street on a bright afternoon, a stone-paved street lined with wooden stalls all boarded shut with rough planks nailed across their fronts, faded cloth awnings, tiled two-storey shopfronts, a few passers-by keeping their distance: Xu Yan's face on screen left, squinting up past the boarded stalls at the bright afternoon sun, a few strands of hair on his forehead; the system voice Xitong speaks off screen",
+        "motion": "Xu Yan shades his eyes with one hand against the sun, then wipes the sweat off his forehead with the back of his wrist",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "chapter": "不香不要錢",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a09",
+          "speaker": "tangxiaotang",
+          "text": "洗一次，不香不要錢。",
+          "emotion": "笑咪咪，推銷"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: Tang Xiaotang on screen left at the half-open red back door, holding up a white soap bar wrapped in a green leaf, a young maid in a pale green jacket peeking out through the gap of the door on screen right",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「洗一次，不香不要錢。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then lets the maid take the soap bar through the gap and turns her head to wink toward Xu Yan behind her on the right",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the hands in the basin, locked",
+        "prompt": "Insert in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: a pair of slender hands with a jade bangle and lavender silk cuffs rubbing a white soap bar in a wooden basin of clear water, sunlight on the water",
+        "motion": "The slender hands rub the soap faster and a thick white foam swells up over the rim of the basin, bubbles drifting into the sunlight",
+        "characters": []
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a10",
+          "speaker": "xuyan",
+          "text": "一口氣二十塊？",
+          "emotion": "又驚又喜"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: Xu Yan on screen right, a heavy cloth purse of coins just dropped into his open palms, eyebrows shooting up, looking off screen left toward the back door",
+        "motion": "Xu Yan speaks a short Mandarin line, 「一口氣二十塊？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then bounces the heavy purse once in his palms and breaks into a grin",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: Tang Xiaotang on screen left at the half-open red back door, her hand now empty, a young maid in a pale green jacket at the gap of the door on screen right holding the leaf-wrapped soap bar",
+        "motion": "Tang Xiaotang winks over her shoulder with a dimpled smile while the maid hurries inside with the soap bar",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "source": {
+          "shot": "s08",
+          "from_s": 2.2
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a11",
+          "speaker": "qinshuang",
+          "text": "洗不乾淨，我賠！",
+          "emotion": "拍胸脯，爽快"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot in the escort agency courtyard on a sunny afternoon, a packed-earth courtyard with weapon racks, a stone well, big wooden washing tubs and lines of dark travel clothes hung to dry: Qin Shuang in the centre beside a big wooden washing tub full of foam, a basket of white soap bars at her feet, three burly escort guards in plain grey short jackets standing on screen right with their arms crossed, doubtful",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「洗不乾淨，我賠！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then plants one boot on the rim of the tub and folds her arms, and the guards lean back",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the sleeve in the tub, slow push in",
+        "prompt": "Insert in the escort agency courtyard on a sunny afternoon, a packed-earth courtyard with weapon racks, a stone well, big wooden washing tubs and lines of dark travel clothes hung to dry: a big rough hand scrubbing a filthy dark travel-jacket sleeve with a white soap bar in a wooden washing tub, the foam turning grey",
+        "motion": "The rough hand lifts the sleeve out of the tub and shakes it, and the cloth comes up clean, water and foam sliding off it",
+        "characters": []
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a12",
+          "speaker": "xitong",
+          "text": "已賺，六兩。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the purse on the board, locked",
+        "prompt": "Insert in the county teahouse back kitchen, a smoky kitchen with big iron woks, greasy chopping boards and rising steam, afternoon light through a lattice window: on a worn chopping board a cloth purse, and a slender hand in a flowing peach-pink silk sleeve dropping small pieces of silver into it, a cook's freshly washed hands at the top of frame; the system voice Xitong speaks off screen",
+        "motion": "The peach-pink sleeved hand drops three pieces of silver into the purse one by one and pulls the drawstring tight",
+        "characters": []
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Wide shot in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: a long queue of elegant ladies and young women in pastel silk dresses winding down the lane, each holding a small wooden basin, soap bubbles floating in the warm sunlight; at the front Tang Xiaotang behind a small wooden table stacked with leaf-wrapped soap bars, Xu Yan beside her taking coins",
+        "motion": "The queue shuffles forward, a young lady blows a cloud of bubbles off her palm, and Tang Xiaotang hands a leaf-wrapped soap bar across the table",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a13",
+          "speaker": "xuyan",
+          "text": "你跟誰學的？",
+          "emotion": "佩服，壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: Xu Yan on screen left behind the soap table, a fistful of copper coins in one hand, leaning toward Tang Xiaotang off screen right with an impressed half grin",
+        "motion": "Xu Yan speaks a short Mandarin line, 「你跟誰學的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then drops the coins into a box with a clink without looking",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a14",
+          "speaker": "tangxiaotang",
+          "text": "從小算我爹的帳。",
+          "emotion": "得意，甜"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: Tang Xiaotang's face on screen right, rosy dimpled cheeks, glossy peach-pink lips, pink ribbons in her looped buns catching the sunlight, looking off screen left at Xu Yan, the gold abacus at her chin",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「從小算我爹的帳。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then runs a fingertip across three abacus beads in one quick flick and raises her chin",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Wide shot in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: a long queue of elegant ladies and young women in pastel silk dresses winding down the lane, each holding a small wooden basin, soap bubbles floating in the warm sunlight; at the front Tang Xiaotang behind a small wooden table stacked with leaf-wrapped soap bars, Xu Yan beside her taking coins",
+        "motion": "The queue keeps shuffling forward through the floating bubbles and Tang Xiaotang hands out another leaf-wrapped soap bar",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "source": {
+          "shot": "s15",
+          "from_s": 2.2
+        }
+      }
+    },
+    {
+      "id": "s19",
+      "chapter": "爛手",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a15",
+          "speaker": "laisan",
+          "text": "這肥皂爛手！",
+          "emotion": "躲在人群裡，扯著嗓子喊"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Medium shot in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: Lai San on screen right squeezed in among the ladies in the queue, his old cloth head wrap pulled low over his brow, cupping one hand beside his mouth, the ladies around him holding wooden basins",
+        "motion": "Lai San speaks a short Mandarin line, 「這肥皂爛手！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then ducks his head down behind the ladies' shoulders",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, locked",
+        "prompt": "Wide shot from a high angle in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: the long queue of ladies in pastel silks holding wooden basins, Tang Xiaotang behind the soap table on screen left, Xu Yan beside her, and Lai San in his grey-brown short jacket half hidden in the crowd on screen right",
+        "motion": "The ladies flinch back from the table clutching their basins and half of the queue hurries away down the lane, while Tang Xiaotang stands frozen behind the table",
+        "characters": [
+          "tangxiaotang",
+          "xuyan",
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a16",
+          "speaker": "tangxiaotang",
+          "text": "爛手？我洗給你看。",
+          "emotion": "笑容不變，眼睛一瞇"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: Tang Xiaotang's face on screen left, her sweet smile unchanged but her big eyes narrowing, looking off screen right toward the crowd, one hand at the cuff of her flowing peach-pink sleeve",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「爛手？我洗給你看。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then pushes her sleeve back to the forearm with one neat tug",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the hands in the basin, slow push in",
+        "prompt": "Insert in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: two slender hands with peach-pink silk sleeves pushed back to the forearm, working a white soap bar in a wooden basin on the table, the leaf wrapper beside it",
+        "motion": "The hands lather the soap into a thick white foam, rinse in the clear water and lift out shining clean",
+        "characters": []
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow arc around her",
+        "prompt": "Medium shot in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: Tang Xiaotang in the centre behind the table raising both freshly washed hands up into a shaft of sunlight, her peach-pink sleeves pushed back to the forearm, dimpled smile, soap bubbles floating around her, the ladies of the queue blurred behind",
+        "motion": "Tang Xiaotang turns one full graceful circle with her hands raised in the sunlight, her pink silk ribbons and flowing skirt swinging out, and stops smiling at the crowd",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a17",
+          "speaker": "qinshuang",
+          "text": "錢府的賴三！",
+          "emotion": "一把揪住，大聲拆穿"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: Qin Shuang on screen left pushing through the ladies of the queue, her sleek high ponytail swinging, her hand grabbing the collar of a grey-brown short jacket at the right frame edge, fierce confident eyes",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「錢府的賴三！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then hauls the grey-brown collar toward her with one strong pull and shoves it away again",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a18",
+          "speaker": "laisan",
+          "text": "我、我路過……",
+          "emotion": "心虛，陪笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: Lai San's face on screen right, his old cloth head wrap knocked crooked, a woman's hand in a dark brown sleeve gripping his collar from the left frame edge, ladies with basins blurred behind him",
+        "motion": "Lai San speaks a short Mandarin line, 「我、我路過……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then forces a crooked grin and tries to wriggle his collar free",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: Qin Shuang on screen left pushing through the ladies of the queue, her sleek high ponytail swinging, her hand just letting go of a grey-brown collar at the right frame edge, fierce confident eyes",
+        "motion": "Qin Shuang shoves the grey-brown collar away out of frame and dusts off her hands with a scornful flick of her ponytail",
+        "characters": [
+          "qinshuang"
+        ],
+        "source": {
+          "shot": "s24",
+          "from_s": 2.2
+        }
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a19",
+          "speaker": "xitong",
+          "text": "已賺，十二兩。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "Wide shot in the back alley of a silk shop on a sunny afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk drying on bamboo poles overhead: the ladies of the queue laughing behind their sleeves, Lai San in his grey-brown short jacket limping fast away down the lane on screen right, Qin Shuang with her hands on her hips in the centre, Tang Xiaotang behind the soap table on screen left; the system voice Xitong speaks off screen",
+        "motion": "Lai San limps off down the lane as the camera pans right after him, and the ladies hurry back into line holding their basins high",
+        "characters": [
+          "laisan",
+          "qinshuang",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "chapter": "五十兩",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a20",
+          "speaker": "tangxiaotang",
+          "text": "十七兩……",
+          "emotion": "邊撥算盤邊數"
+        },
+        {
+          "id": "zq7a21",
+          "speaker": "tangxiaotang",
+          "text": "十八兩！",
+          "emotion": "越數越興奮"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up in the back alley of a silk shop in the late afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk on bamboo poles overhead, the sun low and orange over the tiled rooftops, long shadows: Tang Xiaotang on screen left at the soap table, small piles of silver pieces in front of her, the gold abacus in one hand, warm orange light on her face",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「十七兩……」 then 「十八兩！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then slaps the last bead across the abacus and beams",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a22",
+          "speaker": "xitong",
+          "text": "距日落，一個時辰。",
+          "emotion": "平板，倒數"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up in the back alley of a silk shop in the late afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk on bamboo poles overhead, the sun low and orange over the tiled rooftops, long shadows: Xu Yan's face on screen right in warm orange light, a relieved grin on his lips, looking up off screen right at the low sun over the rooftops; the system voice Xitong speaks off screen",
+        "motion": "Xu Yan's grin fades, he squints at the sinking sun and swallows, his hand tightening on the edge of the table",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the ingot on the table, locked",
+        "prompt": "Insert in the back alley of a silk shop in the late afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk on bamboo poles overhead, the sun low and orange over the tiled rooftops, long shadows: the soap table top with small piles of silver pieces and the gold abacus, long orange light across the wood",
+        "motion": "A plump fair hand in a dark green silk sleeve sets a big silver ingot down hard among the piles, and the small silver pieces jump",
+        "characters": []
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a23",
+          "speaker": "sunzhanggui",
+          "text": "方子，賣我。",
+          "emotion": "笑咪咪，慢條斯理"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up in the back alley of a silk shop in the late afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk on bamboo poles overhead, the sun low and orange over the tiled rooftops, long shadows: Sun Zhanggui on screen right standing at the soap table, narrow eyes half closed in a smile, two jade balls turning in one hand, his other hand resting on a big silver ingot on the table",
+        "motion": "Sun Zhanggui speaks a short Mandarin line, 「方子，賣我。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then slides the silver ingot an inch forward with one finger and keeps smiling",
+        "characters": [
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a24",
+          "speaker": "sunzhanggui",
+          "text": "五十兩。",
+          "emotion": "輕輕吐出，話裡藏刀"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up in the back alley of a silk shop in the late afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk on bamboo poles overhead, the sun low and orange over the tiled rooftops, long shadows: Tang Xiaotang's face on screen left, her fingertip frozen on an abacus bead under her chin, glossy peach-pink lips parted, looking off screen right at the silver ingot; Sun Zhanggui speaks off screen",
+        "motion": "Tang Xiaotang's eyes go wide, she slowly lowers the abacus and turns her head to look at Xu Yan beside her",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up in the back alley of a silk shop in the late afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk on bamboo poles overhead, the sun low and orange over the tiled rooftops, long shadows: Sun Zhanggui on screen right standing at the soap table, narrow eyes half closed in a smile, two jade balls turning in one hand, one finger still on the big silver ingot he has just pushed forward on the table",
+        "motion": "Sun Zhanggui keeps his finger on the pushed silver ingot, turns the jade balls slowly in his other hand and smiles wider",
+        "characters": [
+          "sunzhanggui"
+        ],
+        "source": {
+          "shot": "s31",
+          "from_s": 2.2
+        }
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq7a25",
+          "speaker": "xitong",
+          "text": "賣方子，還是賭日落？",
+          "emotion": "平板電子音，冷冷地"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "Extreme close-up in the back alley of a silk shop in the late afternoon, a narrow stone-paved lane behind a whitewashed wall, a small red back door, bolts of coloured silk on bamboo poles overhead, the sun low and orange over the tiled rooftops, long shadows: Xu Yan's eyes and brow in the low orange sunset light, a bead of sweat at his temple; the system voice Xitong speaks off screen",
+        "motion": "Xu Yan's eyes flick down to the silver ingot, then up to the sinking sun, and his jaw tightens",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}
