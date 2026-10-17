@@ -1,13 +1,13 @@
 ---
 id: 2026-10-17-narrative-panel-rejects-evidence-quoted-with
 title: Narrative panel rejects evidence quoted with its timestamp
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-narrative-fix
 claimed_at: 2026-10-17T02:17:31Z
 created_at: 2026-10-17T02:16:17Z
-completed_at:
+completed_at: 2026-10-17T02:20:21Z
 branch: claude/narrative-panel-timestamp-evidence
 depends_on: []
 scope:
