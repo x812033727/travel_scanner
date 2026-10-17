@@ -1,13 +1,13 @@
 ---
 id: 2026-10-10-refuse-a-second-video-of-an
 title: Refuse a second video of an official page and reset the article on a re-plan
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-official-repeat
 claimed_at: 2026-10-17T02:59:27Z
 created_at: 2026-10-10T14:10:30Z
-completed_at:
+completed_at: 2026-10-17T03:09:59Z
 branch:
 depends_on: []
 scope:
@@ -61,7 +61,7 @@ Found by the review of the official-topics change on 2026-10-10. Neither was fix
 - [x] Tests for both in `tools/video/automation/automation.test.mjs`.
 - [x] `docs/videos/AUTOMATION.md` moves the third limit of 官方頁面當題目 into 不重複選題 as
       a rule the code enforces.
-- [ ] The duration receipt is re-bound for `flow.mjs` and `automation.test.mjs` (both
+- [x] The duration receipt is re-bound for `flow.mjs` and `automation.test.mjs` (both
       bound) by an independent reviewer.
 
 ## Steps
