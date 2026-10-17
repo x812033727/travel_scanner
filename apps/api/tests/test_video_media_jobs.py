@@ -224,6 +224,60 @@ def _context(
     return ctx
 
 
+def _pause_intake(root: Path) -> None:
+    folder = root / cutover_intake.INTAKE_DIR
+    (folder / cutover_intake.ARMED).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": "b" * 64,
+                "target_sha": "c" * 40,
+            }
+        )
+    )
+    (folder / cutover_intake.MARKER).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "state": "PAUSED_ALL",
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": "b" * 64,
+                "target_sha": "c" * 40,
+                "nonce_sha256": None,
+            }
+        )
+    )
+
+
+async def _allow_a01_intake(root: Path, redis: Any) -> None:
+    nonce = b"durable-suncatcher-hold"
+    await redis.set(cutover_intake.NONCE_KEY, nonce)
+    folder = root / cutover_intake.INTAKE_DIR
+    (folder / cutover_intake.ARMED).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": "b" * 64,
+                "target_sha": "c" * 40,
+            }
+        )
+    )
+    (folder / cutover_intake.MARKER).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "state": "ALLOW_A01_ONLY",
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": "b" * 64,
+                "target_sha": "c" * 40,
+                "nonce_sha256": hashlib.sha256(nonce).hexdigest(),
+            }
+        )
+    )
+
+
 @pytest.fixture(autouse=True)
 def local_marker_owner(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     if os.name == "posix":
@@ -235,6 +289,111 @@ def fake_provider(monkeypatch: pytest.MonkeyPatch) -> FakeProvider:
     provider = FakeProvider()
     monkeypatch.setattr(service, "provider_for", lambda runtime, vendor, kind: provider)
     return provider
+
+
+@pytest.mark.asyncio
+async def test_allow_a01_closing_during_pilot_reserve_stops_submit_without_uncertain_charge(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    ctx = _context(
+        tmp_path,
+        fake_provider,
+        row=_row(image_provider="minimax", image_model="image-01"),
+    )
+    await _allow_a01_intake(tmp_path, ctx.redis)
+    released = AsyncMock()
+    uncertain = AsyncMock()
+    monkeypatch.setattr(service, "release", released)
+    monkeypatch.setattr(service, "mark_uncertain", uncertain)
+
+    async def reserve_then_pause(
+        _session: Any, *, slug: str, operation_id: str, max_usd: Decimal, **_rest: Any
+    ) -> Reservation:
+        _pause_intake(tmp_path)
+        return Reservation(slug, operation_id, max_usd, "reserved", True, True, 1)
+
+    monkeypatch.setattr(service, "reserve", reserve_then_pause)
+    with pytest.raises(MediaJobFailed) as refused:
+        await submit_job(ctx, "image", _image(slug="story-rolling-suitcase-v2"))
+    assert (refused.value.status, refused.value.code) == (423, "video_media_cutover_paused")
+    assert fake_provider.requests == []
+    queued = ctx.session.added[0]  # type: ignore[attr-defined]
+    assert queued.status == "queued" and "pilot_budget_operation_id" not in queued.request
+    assert await meter.used(ctx.redis, meter.IMAGES) == 1, "queued job keeps its monthly slot"
+    assert released.await_args.kwargs["reason"] == "paid intake paused before vendor dispatch"
+    uncertain.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_bootstrap_closing_while_lock_is_acquired_stops_queued_submit(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    ctx = _context(tmp_path, fake_provider)
+    original_set = ctx.redis.set
+
+    async def set_then_pause(key: Any, *args: Any, **kwargs: Any) -> Any:
+        result = await original_set(key, *args, **kwargs)
+        if str(key).startswith("video-media:lock:"):
+            _pause_intake(tmp_path)
+        return result
+
+    monkeypatch.setattr(ctx.redis, "set", set_then_pause)
+    with pytest.raises(MediaJobFailed) as refused:
+        await submit_job(ctx, "image", _image())
+    assert refused.value.code == "video_media_cutover_paused"
+    assert fake_provider.requests == []
+    assert ctx.session.added[0].status == "queued"  # type: ignore[attr-defined]
+    assert await meter.used(ctx.redis, meter.IMAGES) == 1
+
+
+@pytest.mark.asyncio
+async def test_submitted_poll_rechecks_after_lock_wait(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    ctx = _context(tmp_path, fake_provider)
+    job = VideoMediaJob(
+        id=uuid4(), slug="v", kind="image", purpose="keyframe", provider="minimax",
+        model="image-01", request={}, request_hash="h", status="submitted", attempts=1,
+        polls=0, seconds=0, usd_estimate=Decimal("0.0035"), vendor_ref="task-1",
+    )
+    fake_provider.polls = [Polled("running")]
+    original_set = ctx.redis.set
+
+    async def set_then_pause(key: Any, *args: Any, **kwargs: Any) -> Any:
+        result = await original_set(key, *args, **kwargs)
+        if str(key).startswith("video-media:lock:"):
+            _pause_intake(tmp_path)
+        return result
+
+    monkeypatch.setattr(ctx.redis, "set", set_then_pause)
+    with pytest.raises(MediaJobFailed) as refused:
+        await advance_job(ctx, job)
+    assert refused.value.code == "video_media_cutover_paused"
+    assert fake_provider.polls == [Polled("running")]
+    assert job.status == "submitted" and job.vendor_ref == "task-1"
+
+
+@pytest.mark.asyncio
+async def test_completed_vendor_poll_cannot_start_download_after_pause(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    ctx = _context(tmp_path, fake_provider)
+    job = VideoMediaJob(
+        id=uuid4(), slug="v", kind="image", purpose="keyframe", provider="minimax",
+        model="image-01", request={}, request_hash="h", status="submitted", attempts=1,
+        polls=0, seconds=0, usd_estimate=Decimal("0.0035"), vendor_ref="task-1",
+    )
+
+    async def poll_then_pause(_ref: str, _client: httpx.AsyncClient) -> Polled:
+        _pause_intake(tmp_path)
+        return Polled("done", download=Download("https://example.com/p.png"))
+
+    monkeypatch.setattr(fake_provider, "poll", poll_then_pause)
+    with pytest.raises(MediaJobFailed) as refused:
+        await advance_job(ctx, job)
+    assert refused.value.code == "video_media_cutover_paused"
+    assert job.status == "submitted" and job.vendor_ref == "task-1"
+    assert job.file_sha256 is None
 
 
 def _sheet(store: MediaStore, data: bytes = PNG) -> str:

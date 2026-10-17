@@ -202,6 +202,28 @@ async def _book_judge_call(ctx: MediaContext) -> None:
         )
 
 
+async def _recheck_paid_direct_intake_after_booking(
+    ctx: MediaContext,
+    session: AsyncSession,
+    slug: str,
+    operation: str,
+    pilot_hold: bool,
+) -> None:
+    """Close a cutover race before Gemini; release only proven pre-dispatch bookings."""
+    try:
+        await _guard_paid_direct_intake(slug)
+    except AppError:
+        if pilot_hold:
+            await release(
+                session,
+                slug=slug,
+                operation_id=operation,
+                reason="paid intake paused before vendor dispatch",
+            )
+        await meter.release_judge_call(ctx.redis)
+        raise
+
+
 async def _prune_sometimes(ctx: MediaContext) -> None:
     """Expire and delete old files at most once an hour, from a request that is writing anyway."""
     try:
@@ -456,6 +478,9 @@ async def judge_media(payload: JudgeIn, tool: VideoTool, session: Session) -> Ju
         raise
     # The owner's threshold is the floor: a call may ask for a higher bar, never a lower one.
     min_score = max(payload.min_score or 0, ctx.row.judge_min_score)
+    await _recheck_paid_direct_intake_after_booking(
+        ctx, session, payload.slug, operation, held is not None
+    )
     try:
         result = await judge(ctx.runtime, ctx.media, ctx.store, payload, min_score)
     except JudgeError as error:
@@ -527,6 +552,9 @@ async def locate_subjects(payload: LocateIn, tool: VideoTool, session: Session) 
                 reason="monthly judge quota refused before dispatch",
             )
         raise
+    await _recheck_paid_direct_intake_after_booking(
+        ctx, session, payload.slug, operation, held is not None
+    )
     try:
         result = await locate(ctx.runtime, ctx.media, ctx.store, payload)
     except LocateError as error:

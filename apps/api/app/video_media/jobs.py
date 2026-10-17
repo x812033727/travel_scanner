@@ -39,7 +39,7 @@ from app.video_automation.models import (
     VideoDramaEpisode,
     VideoDramaSeries,
 )
-from app.video_budget.service import is_pilot, mark_uncertain, reserve, settle
+from app.video_budget.service import is_pilot, mark_uncertain, release, reserve, settle
 from app.video_media import meter
 from app.video_media.catalog import MEDIA_VENDORS, MediaModel, find_model
 from app.video_media.cutover_intake import IntakeFenceError, enforce_paid_intake
@@ -602,6 +602,27 @@ async def _submit(ctx: MediaContext, job: VideoMediaJob, provider: MediaProvider
                 "video_pilot_budget_operation_reused",
                 "這個媒體工作可能已送出供應商；先核對舊操作，不能自動重送",
             )
+    # Reservation and its commits can await while the operator arms PAUSED_ALL.
+    # This is the last gate check before the provider coroutine starts. A refused
+    # queued job retains its monthly reservation for a later advance; its pilot
+    # hold is provably pre-dispatch and can be released and replaced on resume.
+    try:
+        await refuse_unapproved_paid_intake(ctx, job.slug)
+    except MediaJobFailed:
+        if pilot and operation:
+            await release(
+                ctx.session,
+                slug=job.slug,
+                operation_id=operation,
+                reason="paid intake paused before vendor dispatch",
+            )
+            job.request = {
+                key: value
+                for key, value in job.request.items()
+                if key != "pilot_budget_operation_id"
+            }
+            await ctx.session.commit()
+        raise
     client, owned = _client(ctx, ctx.media.video_media_submit_timeout_seconds)
     try:
         submitted = await provider.submit(request, client)
@@ -672,6 +693,7 @@ async def _poll(ctx: MediaContext, job: VideoMediaJob, provider: MediaProvider) 
         job.updated_at = now
         await ctx.session.commit()
         return
+    await refuse_unapproved_paid_intake(ctx, job.slug)
     client, owned = _client(ctx, ctx.media.video_media_poll_timeout_seconds)
     try:
         polled = await provider.poll(job.vendor_ref or "", client)
@@ -710,6 +732,7 @@ async def _download(
         # The vendor made the file: billed, so no refund; the tool may ask again.
         await _fail(ctx, job, error, refund=False)
         return
+    await refuse_unapproved_paid_intake(ctx, job.slug)
     client, owned = _client(ctx, ctx.media.video_media_fetch_timeout_seconds)
     try:
         async with client.stream(

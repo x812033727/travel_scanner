@@ -634,6 +634,71 @@ async def test_global_pause_refuses_live_get_before_poll_quota(
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("route", "fields"),
+    [
+        (
+            "judge",
+            {
+                "kind": "keyframe",
+                "files": [{"sha256": "a" * 64, "label": "kf"}],
+                "rubric": [{"key": "identity", "question": "same subject?"}],
+            },
+        ),
+        ("locate", {"sha256": "a" * 64}),
+    ],
+)
+@pytest.mark.parametrize("pilot", [False, True])
+async def test_paid_direct_route_rechecks_after_awaited_booking(
+    media: dict[str, Any],
+    monkeypatch: pytest.MonkeyPatch,
+    route: str,
+    fields: dict[str, Any],
+    pilot: bool,
+) -> None:
+    slug = "story-rolling-suitcase-v2" if pilot else "another-film"
+    release_mock = AsyncMock()
+    uncertain_mock = AsyncMock()
+    vendor_mock = AsyncMock(side_effect=AssertionError("paid Gemini call escaped pause"))
+    monkeypatch.setattr(admin_api, "release", release_mock)
+    monkeypatch.setattr(admin_api, "mark_uncertain", uncertain_mock)
+    monkeypatch.setattr(admin_api, route, vendor_mock)
+    if pilot:
+
+        async def reserve_then_pause(
+            _session: Any, *, operation_id: str, max_usd: Decimal, **_rest: Any
+        ) -> Reservation:
+            _pause_intake(media)
+            return Reservation(slug, operation_id, max_usd, "reserved", True, True, 1)
+
+        monkeypatch.setattr(admin_api, "reserve", reserve_then_pause)
+    else:
+        original_book = admin_api._book_judge_call
+
+        async def book_then_pause(ctx: MediaContext) -> None:
+            await original_book(ctx)
+            _pause_intake(media)
+
+        monkeypatch.setattr(admin_api, "_book_judge_call", book_then_pause)
+
+    body = {"slug": slug, "operation_id": str(uuid4()), **fields}
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_token())), base_url="http://t"
+    ) as client:
+        result = await client.post(f"/api/v1/video/media/{route}", json=body)
+    assert result.status_code == 423 and result.json()["code"] == "video_media_cutover_paused"
+    vendor_mock.assert_not_awaited()
+    uncertain_mock.assert_not_awaited()
+    assert await meter.used(media["redis"], meter.JUDGE_CALLS) == 0
+    if pilot:
+        assert release_mock.await_args.kwargs["reason"] == (
+            "paid intake paused before vendor dispatch"
+        )
+    else:
+        release_mock.assert_not_awaited()
+
+
+@pytest.mark.asyncio
 async def test_b25_direct_poll_refuses_before_vendor_or_row_change(
     media: dict[str, Any], monkeypatch: pytest.MonkeyPatch
 ) -> None:

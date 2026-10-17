@@ -2,8 +2,9 @@
 
 The API's video-work mount is read-only. A bootstrap marker must be installed
 *before* this code is deployed; missing or invalid files refuse paid intake.
-Arming is monotonic: a durable, no-clobber ``armed.json`` is written before
-``PAUSED_ALL``, and its presence permanently invalidates ``BOOTSTRAP_ALLOW``.
+Within the root-owned volume trust boundary, arming is monotonic: a durable,
+no-clobber ``armed.json`` is written before ``PAUSED_ALL``, and its presence
+invalidates ``BOOTSTRAP_ALLOW`` for as long as that file remains intact.
 """
 
 from __future__ import annotations
