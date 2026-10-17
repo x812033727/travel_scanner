@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "author-extracted exact tool output; independent verification pending",
+  "source_run": "lesson-01-cli/session-01",
+  "recorded_on": "2026-10-11",
+  "original_hashes": {
+    "receipt_sha256": "09265676823f4d7e4800ab128b058bfc4e24c195d858301d7143737e8384c9f0",
+    "events_sha256": "d0a9e83323a264c326aa46e8d48fdc1fab9071951ca682f825ae3f59312fcc89",
+    "prompt_sha256": "c351e426dea6f39dbfd9fd3346aeb2acf79c134c9c9bc9939c5bc05dd538c4a8",
+    "answer_sha256": "076f2ea395a12da48a45d3604cb876e18f421bc5a61357f1b1dfc049f8b5badc"
+  },
+  "invocation": {
+    "kind": "codex exec",
+    "sandbox": "read-only",
+    "ephemeral": true,
+    "outer_exit_code": 0,
+    "cli_version": "codex-cli 0.162.0-alpha.17.2",
+    "node_version": "v24.13.0",
+    "event_count": 24
+  },
+  "excerpts": [
+    {
+      "event_item": "item_3",
+      "kind": "file-list",
+      "exact_output": "style.css\nindex.html\ncore.test.mjs\ncore.mjs\napp.js\n"
+    },
+    {
+      "event_item": "item_7",
+      "kind": "test-summary",
+      "command": "node --test core.test.mjs",
+      "exit_code": 1,
+      "exact_selected_lines": [
+        "ℹ tests 3",
+        "ℹ suites 0",
+        "ℹ pass 2",
+        "ℹ fail 1",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0"
+      ]
+    },
+    {
+      "event_item": "item_7",
+      "kind": "failure-location-and-values",
+      "file": "core.test.mjs",
+      "line": 17,
+      "actual": [
+        "a",
+        "b"
+      ],
+      "expected": [
+        "b"
+      ],
+      "label": "structured extraction from real assertion; not literal terminal text"
+    },
+    {
+      "event_item": "item_10",
+      "kind": "node-version",
+      "exact_output": "v24.13.0\r\n"
+    }
+  ],
+  "answer_excerpt": "只讀檢查已完成，未修改任何檔案，也未修正刻意保留的失敗。",
+  "file_hash_check": [
+    {
+      "file": "app.js",
+      "sha256": "001e6fc55774b50732e6878bb336d1d4346e4d4f49739f659d570cfab5e1cf3c",
+      "unchanged": true
+    },
+    {
+      "file": "core.mjs",
+      "sha256": "547831a8cf66422104f88bd17a903579cc1a6fba5c3aaf53cc4f7d6573f68c12",
+      "unchanged": true
+    },
+    {
+      "file": "core.test.mjs",
+      "sha256": "111187cc469b5d2bf551126d72b8584589f97ac7bab6816f899502c6b498ebc1",
+      "unchanged": true
+    },
+    {
+      "file": "index.html",
+      "sha256": "5740079d2988294ef077375172d2b34845f5798d465c03dcea9f18d2c4e64a07",
+      "unchanged": true
+    },
+    {
+      "file": "style.css",
+      "sha256": "8fa375135810ed68890ee1bae3a331cf78690dafcd8ef8d8e711df80e115327c",
+      "unchanged": true
+    }
+  ],
+  "author_reference": {
+    "evidence_kind": "author-built reference; not model-generated",
+    "receipt": {
+      "start_exit": 1,
+      "reference_exit": 0,
+      "node_version": "v24.13.0"
+    },
+    "reference_log_sha256": "03ff6b5087c4466904dae7302aa030252d7c720dd62927900ef5b34dcb7b0a05",
+    "reference_exact_summary": [
+      "ℹ tests 3",
+      "ℹ suites 0",
+      "ℹ pass 3",
+      "ℹ fail 0",
+      "ℹ cancelled 0",
+      "ℹ skipped 0",
+      "ℹ todo 0"
+    ]
+  },
+  "website": {
+    "receipt_sha256": "862915e4fb5a45d522d0ceff699011f919e365cda7085dbffff0b62f5819ddf3",
+    "receipt": {
+      "schema_version": 1,
+      "checked_on": "2026-10-10T17:20:49.393Z",
+      "evidence_kind": "actual-Edge-learner-website; not-native-Codex-App",
+      "browser_version": "155.0.4283.45",
+      "node_version": "v24.19.0",
+      "checks": [
+        {
+          "variant": "start",
+          "name": "file-url-module-loading",
+          "error_count": 2,
+          "cors_observed": true,
+          "classification": "observed-startup-failure; use-local-HTTP"
+        },
+        {
+          "variant": "start",
+          "name": "active-filter",
+          "observed": 2,
+          "classification": "intentional-unimplemented-filter"
+        },
+        {
+          "variant": "start",
+          "name": "reload-preserves-all-tasks-and-completion",
+          "classification": "pass"
+        },
+        {
+          "variant": "start",
+          "name": "same-title-delete-targets-selected-identity",
+          "classification": "pass"
+        },
+        {
+          "variant": "start",
+          "name": "markup-is-literal-text",
+          "classification": "pass"
+        },
+        {
+          "variant": "start",
+          "name": "390px-no-horizontal-overflow",
+          "classification": "pass"
+        },
+        {
+          "variant": "start",
+          "name": "damaged-storage-preserved-and-reset-scoped",
+          "classification": "pass"
+        },
+        {
+          "variant": "reference",
+          "name": "active-filter",
+          "observed": 1,
+          "classification": "pass"
+        },
+        {
+          "variant": "reference",
+          "name": "reload-preserves-all-tasks-and-completion",
+          "classification": "pass"
+        },
+        {
+          "variant": "reference",
+          "name": "same-title-delete-targets-selected-identity",
+          "classification": "pass"
+        },
+        {
+          "variant": "reference",
+          "name": "markup-is-literal-text",
+          "classification": "pass"
+        },
+        {
+          "variant": "reference",
+          "name": "390px-no-horizontal-overflow",
+          "classification": "pass"
+        },
+        {
+          "variant": "reference",
+          "name": "damaged-storage-preserved-and-reset-scoped",
+          "classification": "pass"
+        }
+      ]
+    },
+    "attribution": "author separate Edge website check; not Codex model browser run; not native App"
+  }
+}

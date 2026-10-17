@@ -1,0 +1,26 @@
+{
+  "id": 8,
+  "title": "Git、PR 說明與還原",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [],
+  "manualChecks": [],
+  "steps": [
+    "先讀docs/git-lab.md，確認是獨立練習庫、不含正式遠端。",
+    "跑node git-lab.mjs，讀當次真的Git結果；腳本在暫存庫完成並清理。",
+    "手動另建全新庫，提交baseline，建立codex/title-practice分支。",
+    "改index標題並留獨立CSS註記，只stage index；對照cached與worktree差異。",
+    "提交index後revert；核對歷史3 commits、原標題恢復且CSS註記保留。",
+    "寫docs/pull-request.md包含問題、修改與實際驗證；未開PR明示。"
+  ],
+  "transferExercise": null,
+  "expectedReport": null
+}

@@ -1,0 +1,36 @@
+{
+  "id": 15,
+  "title": "隔離 worktree",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [],
+  "manualChecks": [],
+  "steps": [
+    "複製整課到全新Git練習庫，提交baseline；不在正式庫操作。",
+    "依docs/worktree-lab.md建立practice-ui與practice-report兩路，記錄各自路徑/分支/狀態。",
+    "A只改index.html加入可見篩選說明；B只改report.mjs並新增tests/report-compact.test.mjs。",
+    "B先寫單行/預設pretty/數字與來源不變的測試，再實作--compact；兩路各跑node --test。",
+    "主庫留KEEP-MY-NOTE，證明新worktree不帶入未提交註記且原檔保留。",
+    "逐路只暫存指定檔再提交；回主庫cherry-pick並實測新介面與兩種報表輸出。",
+    "challenge兩路改同一句UI說明，保留衝突輸出、手動保留雙方需求再驗收；乾淨且保存成果才移除明確工作樹。"
+  ],
+  "transferExercise": null,
+  "expectedReport": {
+    "revision": "weekly-report-v2",
+    "timezone": "Asia/Taipei",
+    "weekStart": "2026-10-05",
+    "weekEnd": "2026-10-11",
+    "total": 5,
+    "completedInWeek": 2,
+    "pending": 1,
+    "unknownCompleted": 1
+  }
+}

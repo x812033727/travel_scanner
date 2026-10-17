@@ -1,0 +1,26 @@
+{
+  "id": 2,
+  "title": "把需求變成 Plan",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [],
+  "manualChecks": [],
+  "steps": [
+    "在start跑node --test，確認本課資料是v1、程式保持不變。",
+    "讀docs/task-brief.md，把更好用拆成Read/read、空白、中文、狀態交集的例子。",
+    "在Codex進Plan，先問會改變規格的問題，寫輸入與完成條件。",
+    "把順序、同名ID、儲存值保留列為限制；只列core與新測試為下一輪範圍。",
+    "把步驟、測試、人工驗收與還原寫入docs/plan.md；本課不實作。",
+    "用challenge的模糊需求再寫一份計畫；最後才比對作者reference。"
+  ],
+  "transferExercise": null,
+  "expectedReport": null
+}

@@ -1,0 +1,28 @@
+{
+  "id": 7,
+  "title": "審查 diff 與交付",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [],
+  "manualChecks": [
+    "literal-markup-in-real-DOM"
+  ],
+  "steps": [
+    "先跑既有Node核心，綠燈仍沒有DOM驗收。",
+    "讀候選app的title.innerHTML，對照需求只要標題文字。",
+    "HTTP新增<img src=x>，核對img元素與可見文字，保存修前故障。",
+    "列问题到docs/review.md；只改app回textContent，保持事件/ID/儲存。",
+    "重跑核心；HTTP另驗literal文字、reload及同名刪除，未跑UI記NOT RUN。",
+    "最後核對必要diff；不新增keyword字串測試冒充DOM驗收。"
+  ],
+  "transferExercise": null,
+  "expectedReport": null
+}

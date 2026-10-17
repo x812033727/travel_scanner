@@ -1,0 +1,35 @@
+{
+  "id": 12,
+  "title": "接手與上下文",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [],
+  "manualChecks": [],
+  "steps": [
+    "讀docs/handoff.md的完成3項假說，不先改來源。",
+    "讀fixtures及契約，跑report得到5/2/1/1；確認UTC22:00跨台北日期。",
+    "用同一資料跑node --test，保存版本與實際exit code。",
+    "把「已驗證、假說、未驗證、下一步」分欄寫新handoff。",
+    "在獨立新聊天只給目前檔案與交接，要求重新核對而非信任舊數字。",
+    "challenge說明為何不能把boundary日期改成符合舊筆記。"
+  ],
+  "transferExercise": null,
+  "expectedReport": {
+    "revision": "weekly-report-v2",
+    "timezone": "Asia/Taipei",
+    "weekStart": "2026-10-05",
+    "weekEnd": "2026-10-11",
+    "total": 5,
+    "completedInWeek": 2,
+    "pending": 1,
+    "unknownCompleted": 1
+  }
+}

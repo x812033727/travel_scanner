@@ -1,0 +1,35 @@
+{
+  "id": 13,
+  "title": "可重用驗收 Skill",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [],
+  "manualChecks": [],
+  "steps": [
+    "讀本課驗收清單，確認技能只適用Small Steps交付檢查。",
+    "在.agents/skills/verify-delivery/SKILL.md寫name/description、輸入、命令、真值與停止條件。",
+    "從本專案新聊天呼叫verify-delivery，保存實際讀到的技能與檢查。",
+    "要求只驗收、不修功能，PASS/FAIL/NOT RUN都有來源與命令。",
+    "用另一個缺core的空練習目錄測缺檔回報，不改全域技能。",
+    "最後比對作者reference：是否能照做、是否偷偷重寫測試。"
+  ],
+  "transferExercise": null,
+  "expectedReport": {
+    "revision": "weekly-report-v2",
+    "timezone": "Asia/Taipei",
+    "weekStart": "2026-10-05",
+    "weekEnd": "2026-10-11",
+    "total": 5,
+    "completedInWeek": 2,
+    "pending": 1,
+    "unknownCompleted": 1
+  }
+}

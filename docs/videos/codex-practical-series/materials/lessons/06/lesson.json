@@ -1,0 +1,28 @@
+{
+  "id": 6,
+  "title": "寫會抓出問題的測試",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [
+    "challenge"
+  ],
+  "manualChecks": [],
+  "steps": [
+    "先跑start既有測試：可綠但meaningful只有TODO，不能宣稱已驗All原地reverse。",
+    "在tests/meaningful.test.mjs自己寫[a,b,c]顺序、原輸入與Object.freeze斷言。",
+    "只加測試，先跑出真正失敗；保留原測試/輸出，不倒轉預期或刪斷言。",
+    "再修core使All保序且不修改輸入；各filter空清單一起核對。",
+    "重跑同一回歸與完整node --test，解釋新測試抓的是使用者要求。",
+    "challenge用混合完成/同名的Active核對未顯示任務不變；作者強案例不冒充這輪學生撰寫。"
+  ],
+  "transferExercise": null,
+  "expectedReport": null
+}

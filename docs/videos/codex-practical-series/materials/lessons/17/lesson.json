@@ -1,0 +1,36 @@
+{
+  "id": 17,
+  "title": "排程／批次週報",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [],
+  "manualChecks": [],
+  "steps": [
+    "先手動執行report CLI得到5/2/1/1；固定期間不是今天動態本週。",
+    "CLI先node exec-run.mjs --dry-run，核對argv/schema/input/from/to及modelInvoked=false。",
+    "已登入才用node exec-run.mjs --run run-01；新目錄保留status/input/prompt/schema/events/final/stderr。",
+    "node verify-result.mjs run-01核對退出、完成turn、實際參數及目前來源hash，再獨立計算真值。",
+    "變式用--from 2026-10-12 --to 2026-10-18和新run ID；另以--input fixtures/missing.json留preflight_failed收據、不呼叫provider。",
+    "App依docs/app-schedule建立週報、讀回設定、核對第一次結果；練習後停用並讀回。",
+    "錯數3/timeout的synthetic測試只驗證器單元教學，不冒充模型；不自動重跑。"
+  ],
+  "transferExercise": null,
+  "expectedReport": {
+    "revision": "weekly-report-v2",
+    "timezone": "Asia/Taipei",
+    "weekStart": "2026-10-05",
+    "weekEnd": "2026-10-11",
+    "total": 5,
+    "completedInWeek": 2,
+    "pending": 1,
+    "unknownCompleted": 1
+  }
+}

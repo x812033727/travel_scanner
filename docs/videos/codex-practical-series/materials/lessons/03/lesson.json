@@ -1,0 +1,29 @@
+{
+  "id": 3,
+  "title": "篩選與搜尋",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [
+    "start",
+    "challenge"
+  ],
+  "manualChecks": [],
+  "steps": [
+    "跑node --test，保存現有篩選與搜尋失敗。",
+    "讀index選單與app事件，確認控制項已存在，修改範圍為core。",
+    "先寫三種filter、trim/case/中文、空查詢與同名ID的預期。",
+    "只實作visibleTasks，返回新清單、保留順序及原資料。",
+    "同一測試重跑到綠，再用HTTP畫面檢查搜尋與篩選交集。",
+    "challenge輸入「  Read 」重現trim缺口，再說明修正理由。"
+  ],
+  "transferExercise": "保留教材 challenge 的「  Read 」trim 缺口。課綱補充：新增 id=report-a「寫報告」未完成、report-b「報告校對」已完成、lunch「買午餐」未完成；查詢「 報告 」分別用 All/Active/Completed，先預測 IDs/count，再加自己的Unicode斷言及實際畫面。",
+  "expectedReport": null
+}

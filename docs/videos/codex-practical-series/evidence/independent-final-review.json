@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-10T17:53:02.345Z",
+  "reviewer": "codex_feasibility; did not author lesson materials",
+  "evidence_kind": "independent curriculum/source review plus targeted runtime checks",
+  "snapshot_root": "<home>/mokaair-work/codex-practical-series/runs/materials-final-audit-20261011",
+  "no_provider_or_model_calls": true,
+  "native_codex_app_observed": false,
+  "broad_suite_not_repeated": true,
+  "checks": [
+    {
+      "lesson": 7,
+      "kind": "Node",
+      "start": {
+        "command": "node --test",
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "exit_code": 0
+      },
+      "reference": {
+        "command": "node --test",
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "lesson": 7,
+      "kind": "actual-Chrome-CUA-learner-website; not native Codex App",
+      "input": [
+        "<img src=x>",
+        "<b>Read</b>",
+        "中文 & 符號"
+      ],
+      "procedure": "Created a new tab on fresh localhost origin; added all three titles in start, then navigated to reference with the same browser storage.",
+      "start": {
+        "images": 1,
+        "bold_elements": 1,
+        "title_text": [
+          "",
+          "Read",
+          "中文 & 符號"
+        ]
+      },
+      "reference": {
+        "images": 0,
+        "bold_elements": 0,
+        "title_text": [
+          "<img src=x>",
+          "<b>Read</b>",
+          "中文 & 符號"
+        ]
+      },
+      "screenshot_status": "API timeout; no screenshot artifact obtained",
+      "cleanup": {
+        "own_tab_closed": true,
+        "http_server_stopped": true
+      }
+    },
+    {
+      "lesson": 11,
+      "kind": "CLI invalid-calendar behavior",
+      "command": "node report.mjs fixtures/tasks.json --from 2026-02-30 --to 2026-03-08",
+      "start": {
+        "exit_code": 1,
+        "stderr": "calendar-date"
+      },
+      "reference": {
+        "exit_code": 1,
+        "stderr": "calendar-date"
+      }
+    },
+    {
+      "lesson": 17,
+      "kind": "package dry run",
+      "args": [
+        "--dry-run",
+        "--input",
+        "fixtures/tasks.json",
+        "--from",
+        "2026-10-12",
+        "--to",
+        "2026-10-18"
+      ],
+      "modelInvoked": false,
+      "prompt_dates_match": true
+    },
+    {
+      "lesson": 17,
+      "kind": "package deterministic weekly report",
+      "command": "node report.mjs fixtures/tasks.json --from 2026-10-12 --to 2026-10-18",
+      "exit_code": 0,
+      "result": {
+        "total": 5,
+        "completedInWeek": 0,
+        "pending": 1,
+        "unknownCompleted": 1
+      }
+    },
+    {
+      "lesson": 17,
+      "kind": "source synthetic unit fixtures; not actual model execution",
+      "command": "node --test docs/videos/codex-practical-series/materials/source/tests/automation.test.mjs",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "exit_code": 0,
+      "coverage": [
+        "explicit next-week dry run",
+        "invalid calendar rejected",
+        "receipt-date truth computed",
+        "false completed count rejected",
+        "source bytes tamper rejected",
+        "timeout rejected",
+        "missing completion event rejected",
+        "missing input calls no provider",
+        "existing run preserves failed receipt"
+      ]
+    },
+    {
+      "lesson": 17,
+      "kind": "persistent missing-input failure reproduction",
+      "run": "<home>\\mokaair-work\\codex-practical-series\\runs\\independent-final-check-20261010174917347\\missing-input",
+      "args": [
+        "--run",
+        "missing-input",
+        "--input",
+        "missing-for-audit.json",
+        "--from",
+        "2026-10-12",
+        "--to",
+        "2026-10-18",
+        "--codex",
+        "never-invoke-a-model-from-this-audit.exe"
+      ],
+      "state": "preflight_failed",
+      "modelInvoked": false,
+      "errorCode": "ENOENT",
+      "events_empty": true,
+      "final_present": false,
+      "existing_run_refused": true,
+      "status_bytes_preserved": true
+    }
+  ],
+  "snapshot_hashes": [
+    {
+      "path": "07/start/app.mjs",
+      "sha256": "0b00baca189ecfc37748fa7df569fdce35b7e2f837c1fefa3f630ddb6cf83c68"
+    },
+    {
+      "path": "07/reference/app.mjs",
+      "sha256": "5bd134a06ce60572da71c261b2701c8957c6d90cebdc47cd85c5f376805931c9"
+    },
+    {
+      "path": "07/start/core.mjs",
+      "sha256": "c85ca871962d5b2db8a9a0f97024458928dc146d13c9c62d2c9c7715fcacabe6"
+    },
+    {
+      "path": "07/reference/core.mjs",
+      "sha256": "c85ca871962d5b2db8a9a0f97024458928dc146d13c9c62d2c9c7715fcacabe6"
+    },
+    {
+      "path": "07/start/core.test.mjs",
+      "sha256": "111187cc469b5d2bf551126d72b8584589f97ac7bab6816f899502c6b498ebc1"
+    },
+    {
+      "path": "07/start/tests/feature.test.mjs",
+      "sha256": "107b0222f6e4bcd27b4e5a1b9b38de78d846e957b7b1cd5fcc26c89d3bf1728d"
+    },
+    {
+      "path": "07/start/tests/identity.test.mjs",
+      "sha256": "166e9f3e71077cd195fba26dbc458ff4959ff4bf131772ed5b2881ddea52c6f2"
+    },
+    {
+      "path": "07/start/tests/meaningful.test.mjs",
+      "sha256": "1b0a1ff668e5ec11fc573f96d2920e53b0a330d7214210eb61f4d8212e053048"
+    },
+    {
+      "path": "11/start/report.mjs",
+      "sha256": "723ed02d199695ec6111ffd48c4d900fa6b097052b30a6efdead7fdf8621c2a5"
+    },
+    {
+      "path": "11/reference/report.mjs",
+      "sha256": "11ae6bf86b7eb8f34e4b1758bfcf236f30558e11ec5f1e3392fcb99629ac72e4"
+    },
+    {
+      "path": "11/start/core.mjs",
+      "sha256": "89f331f771fd0801b468e9bfa2a1e53327e7629a0481dbe1a93fafa44bf89456"
+    },
+    {
+      "path": "11/reference/core.mjs",
+      "sha256": "89f331f771fd0801b468e9bfa2a1e53327e7629a0481dbe1a93fafa44bf89456"
+    },
+    {
+      "path": "11/start/fixtures/tasks.json",
+      "sha256": "8b7f93180fea6331137e98328131028248af23b907c839f9ab37c65812dcac1c"
+    },
+    {
+      "path": "17/start/exec-run.mjs",
+      "sha256": "d87a8ec978a9d19398b113bb25c6f31999196af2cdf6fdf3eb3d90e4f4eb1d14"
+    },
+    {
+      "path": "17/start/verify-result.mjs",
+      "sha256": "0faaee0008fbbc3f61ca8e06de82035086bedcf494bdc49708cd358906c9fa05"
+    },
+    {
+      "path": "17/start/core.mjs",
+      "sha256": "89f331f771fd0801b468e9bfa2a1e53327e7629a0481dbe1a93fafa44bf89456"
+    },
+    {
+      "path": "17/start/tests/automation.test.mjs",
+      "sha256": "5a118bbb6b062a79238d074fd2a254f4737e41fc776d975890d8257a49c3734d"
+    },
+    {
+      "path": "17/start/fixtures/tasks.json",
+      "sha256": "8b7f93180fea6331137e98328131028248af23b907c839f9ab37c65812dcac1c"
+    }
+  ],
+  "repository_hashes": [
+    {
+      "path": "tools/codex-practical/labs.mjs",
+      "sha256": "e55e44c94ff97ab41029efc33e4027fac7c271f31a22db8fc3d76b424064d985"
+    },
+    {
+      "path": "docs/videos/codex-practical-series/materials/source/exec-run.mjs",
+      "sha256": "d87a8ec978a9d19398b113bb25c6f31999196af2cdf6fdf3eb3d90e4f4eb1d14"
+    },
+    {
+      "path": "docs/videos/codex-practical-series/materials/source/verify-result.mjs",
+      "sha256": "0faaee0008fbbc3f61ca8e06de82035086bedcf494bdc49708cd358906c9fa05"
+    },
+    {
+      "path": "docs/videos/codex-practical-series/materials/source/tests/automation.test.mjs",
+      "sha256": "5a118bbb6b062a79238d074fd2a254f4737e41fc776d975890d8257a49c3734d"
+    },
+    {
+      "path": "docs/videos/codex-practical-series/lessons/18.md",
+      "sha256": "0b791e977bd30e7bbf3462e0123958626b390c860a7261b6a756b5dc4aa1e59c"
+    },
+    {
+      "path": "docs/videos/codex-practical-series/episodes/codex-practical-18-app/brief.md",
+      "sha256": "22734be0d2c14317e1f421722a3da78ce8dea194079b1c5e04a9cce7d571d471"
+    },
+    {
+      "path": "docs/videos/codex-practical-series/episodes/codex-practical-18-cli/brief.md",
+      "sha256": "70f69e042b94f4c5b49b346af4861ce8ece727402bdb797862fbd2dfd656e35e"
+    }
+  ],
+  "review_findings": {
+    "corrected": [
+      "06 weak green start leaves regression test to learner",
+      "07 removes prewritten keyword guard; browser finds missed behavior",
+      "09 supplied IO scaffold identified; new boundary tests allowed",
+      "11 invalid calendar error behavior preserved",
+      "15 actual UI plus compact delivery; new test labeled pending",
+      "17 configurable input/dates plus failed preflight receipt",
+      "18 core TODO is actual new business-rule work"
+    ],
+    "remaining_at_receipt": [],
+    "resolved_after_receipt": [
+      {
+        "lesson": 18,
+        "status": "independent reread passed",
+        "scope": "core.mjs/archiveTasks TODO plus allowed CLI/CI files and new tests/archive-boundary.test.mjs; existing tests and fixtures unchanged",
+        "provided_scaffold": "archive.mjs/restore.mjs IO plus CI example explicitly author-provided",
+        "paths": [
+          "docs/videos/codex-practical-series/lessons/18.md",
+          "docs/videos/codex-practical-series/episodes/codex-practical-18-app/brief.md",
+          "docs/videos/codex-practical-series/episodes/codex-practical-18-cli/brief.md"
+        ]
+      }
+    ]
+  },
+  "finalized_on": "2026-10-10T17:55:23.160Z",
+  "consistency_status": "No outstanding identified consistency defects after final 18 scope synchronization; runtime/model/App/media status remains separately gated.",
+  "post_test_line_ending_normalization": {
+    "checked_on": "2026-10-10T18:01:31.664Z",
+    "method": "Exact UTF-8 comparison after replacing CRLF with LF only; historical tested byte hashes retained in snapshot_hashes/repository_hashes.",
+    "all_three_exact_equal": true,
+    "no_provider_model_browser_or_test_reruns": true,
+    "results": [
+      {
+        "file": "exec-run.mjs",
+        "original_snapshot_path": "<home>\\mokaair-work\\codex-practical-series\\runs\\materials-final-audit-20261011\\17\\start\\exec-run.mjs",
+        "current_repository_path": "docs\\videos\\codex-practical-series\\materials\\source\\exec-run.mjs",
+        "original_raw_sha256": "d87a8ec978a9d19398b113bb25c6f31999196af2cdf6fdf3eb3d90e4f4eb1d14",
+        "current_raw_sha256": "c99694b17eab1e027cd6c920545f170dfc990954d854c7d5ef7088fea5402c46",
+        "normalized_sha256": "c99694b17eab1e027cd6c920545f170dfc990954d854c7d5ef7088fea5402c46",
+        "normalization_only_exact_equal": true,
+        "current_exact_equal_to_original_with_CRLF_replaced": true,
+        "original_crlf_count": 1,
+        "current_crlf_count": 0
+      },
+      {
+        "file": "verify-result.mjs",
+        "original_snapshot_path": "<home>\\mokaair-work\\codex-practical-series\\runs\\materials-final-audit-20261011\\17\\start\\verify-result.mjs",
+        "current_repository_path": "docs\\videos\\codex-practical-series\\materials\\source\\verify-result.mjs",
+        "original_raw_sha256": "0faaee0008fbbc3f61ca8e06de82035086bedcf494bdc49708cd358906c9fa05",
+        "current_raw_sha256": "f2b39dd3e0d0734fbdaddb66a363f060da63f488f4a2652caa9c71c2a4f87064",
+        "normalized_sha256": "f2b39dd3e0d0734fbdaddb66a363f060da63f488f4a2652caa9c71c2a4f87064",
+        "normalization_only_exact_equal": true,
+        "current_exact_equal_to_original_with_CRLF_replaced": true,
+        "original_crlf_count": 1,
+        "current_crlf_count": 0
+      },
+      {
+        "file": "tests/automation.test.mjs",
+        "original_snapshot_path": "<home>\\mokaair-work\\codex-practical-series\\runs\\materials-final-audit-20261011\\17\\start\\tests\\automation.test.mjs",
+        "current_repository_path": "docs\\videos\\codex-practical-series\\materials\\source\\tests\\automation.test.mjs",
+        "original_raw_sha256": "5a118bbb6b062a79238d074fd2a254f4737e41fc776d975890d8257a49c3734d",
+        "current_raw_sha256": "1161e84a3ae1e4b9313523727c6288e0df9fe9075ebce8d66fc38419f4092802",
+        "normalized_sha256": "1161e84a3ae1e4b9313523727c6288e0df9fe9075ebce8d66fc38419f4092802",
+        "normalization_only_exact_equal": true,
+        "current_exact_equal_to_original_with_CRLF_replaced": true,
+        "original_crlf_count": 1,
+        "current_crlf_count": 0
+      }
+    ]
+  },
+  "current_document_bindings": [
+    {
+      "path": "docs/videos/codex-practical-series/lessons/18.md",
+      "sha256": "0bed3632162a0ebf3a7b369adbb8621e6f6fcefd32005e0257b9e6609a68f48e",
+      "previous_independently_audited_sha256": "0b791e977bd30e7bbf3462e0123958626b390c860a7261b6a756b5dc4aa1e59c",
+      "continuation_kind": "ZIP-path-only; prior functional scope judgment retained"
+    },
+    {
+      "path": "docs/videos/codex-practical-series/episodes/codex-practical-18-app/brief.md",
+      "sha256": "6fd1ac43bc8d4becafd2583c545a3c5bd75c8d331f1b1441e4c57fcfa16dc80c",
+      "previous_independently_audited_sha256": "22734be0d2c14317e1f421722a3da78ce8dea194079b1c5e04a9cce7d571d471",
+      "continuation_kind": "ZIP-path-only; prior functional scope judgment retained"
+    },
+    {
+      "path": "docs/videos/codex-practical-series/episodes/codex-practical-18-cli/brief.md",
+      "sha256": "b3bf316ec26be39ed896982326fd089b994ec8217585df6fbd508fce7c5b09d8",
+      "previous_independently_audited_sha256": "70f69e042b94f4c5b49b346af4861ce8ece727402bdb797862fbd2dfd656e35e",
+      "continuation_kind": "ZIP-path-only; prior functional scope judgment retained"
+    }
+  ],
+  "post_review_zip_root_path_correction": {
+    "checked_on": "2026-10-10T18:28:36.091Z",
+    "reviewer": "codex_feasibility",
+    "status": "PASS",
+    "historical_repository_hashes_retained": true,
+    "prior_tracked_receipt_sha256": "b008373fbd88401f9b7a0b78750a741b9d198dc3b616a043fba3386823b17b47",
+    "external_audit": {
+      "path": "<home>/mokaair-work/codex-practical-series/runs/zip-root-followalong-20261011-182045/lesson18-zip-root-audit.json",
+      "sha256": "12ef68a194a0e568243506d376dd8f668dfb75fe252d45e5db1c1866da656828"
+    },
+    "external_diff": {
+      "path": "<home>/mokaair-work/codex-practical-series/runs/zip-root-followalong-20261011-182045/lesson18-zip-root-diff.patch",
+      "sha256": "35e3b067039a5f175ee41e68ea7f4d4d01d6c6b5e7ee3c13d05dcbe92c7a4cd9"
+    },
+    "method": "Independently reverse the saved unified ZIP-path patch in memory; current documents must match supplied current hashes, and reconstructed prior document bytes must match all three historical independently audited hashes. No files were reconstructed on disk.",
+    "all_three_current_hashes_match": true,
+    "all_three_reconstructed_prior_hashes_match": true,
+    "allowed_difference": "ZIP-root setup paragraph, source snippet/guard, and snapshot path labels only; functional main prompts and prior lesson18 scope unchanged",
+    "scope_judgment_retained": "core.mjs/archiveTasks TODO; author-provided archive/restore IO and practice.yml scaffold; restricted allowed scope plus optional new tests/archive-boundary; existing tests/fixture/source preserved",
+    "no_provider_model_app_browser_media_or_test_reruns": true,
+    "setup_followalong_receipt": {
+      "path": "<home>/mokaair-work/codex-practical-series/runs/zip-root-followalong-20261011-182045/content-check.json",
+      "sha256": "dfcd8a9c610194be8789a36846ef8ca4eceb7e34b887fc0a543c9f45eec6f4f9",
+      "reported_status": "PASS",
+      "package_count": 18,
+      "snippet_count": 54,
+      "copied_file_comparisons": 1029,
+      "executed_by": "claude_reference; read and hash-verified by codex_feasibility, not replayed in this continuation"
+    }
+  },
+  "public_copy_note": "Public copy: <home>/<repo> locators are redacted placeholders, not executable paths. Exact paths and unredacted raw bytes remain outside Git. Existing receipt/log/report/source/approval hashes continue to bind their original artifacts, not this sanitized public copy."
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-10T18:50:36.174Z",
+  "node_version": "v24.19.0",
+  "curriculum": {
+    "lessons": 18,
+    "planned_episodes": 36,
+    "sha256": "d4e791220136012eb6b0a67c19c6e4aaaaddb09b596af7d2824e692c02e91773"
+  },
+  "checks": [
+    {
+      "file": "material-guide-paths-20261011/course-guide-path-tests.log",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "exit_code": 0,
+      "sha256": "312b8aaba70cc468410a93d85cd46aa27da988c885be2034aa4762a72d1b1142"
+    },
+    {
+      "file": "canonical-source-tests.log",
+      "tests": 23,
+      "pass": 23,
+      "fail": 0,
+      "exit_code": 0,
+      "sha256": "b95bd0b09a1e0ae525030f0041931475e417bb4edc7cc2bbd1ad1e400aae1e2a"
+    },
+    {
+      "file": "test-docs-videos-final.log",
+      "tests": 222,
+      "pass": 222,
+      "fail": 0,
+      "exit_code": 0,
+      "sha256": "0c8855afc659423815c5e0061c05421b1c7c8e9d68c93db300e04aa3cb321666"
+    },
+    {
+      "file": "ci-host-sanitization-PR5B2q/sanitization-repo-hygiene-1.log",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "exit_code": 0,
+      "sha256": "010392aad0eef1d944384c8ee8beb400437a38d1cd7e5d8a9ffcf0993a22f8bd"
+    }
+  ],
+  "packages": {
+    "count": 18,
+    "deterministic": true,
+    "canonical_LF": true,
+    "build_directories": [
+      "build-07",
+      "build-08"
+    ],
+    "manifest_sha256": "69fcfc669ec11b2d51ce488a3c032b4861677fc244c586e00e7a4d4d7fa119b6"
+  },
+  "learner_replay": {
+    "lessons": [
+      1,
+      3,
+      5
+    ],
+    "website_checks": 35,
+    "pass": 34,
+    "expected_failure": 1,
+    "unexpected_failure": 0,
+    "evidence_kind": "independent-agent-replay; not-human-learning-acceptance",
+    "report": "<home>/mokaair-work/codex-practical-series/runs/independent-learner/20261011-012806/REPLAY-REPORT.md",
+    "report_sha256": "ef26214131c105244cb66b327700c91cb107d4cb898fed23a98c05f0919201f4"
+  },
+  "advanced_browser": {
+    "checks": 8,
+    "pass": 8,
+    "evidence_kind": "actual-learner-website; not-native-Codex-App",
+    "observed_source_files_match_latest_build_exactly": true,
+    "receipt_sha256": "dffa17fbb6a9e047dc4331828066b78ff11d3390a7f43c77bb45b666ca9a2fc9"
+  },
+  "broad_tools": {
+    "status": "failed-and-incomplete-on-Windows",
+    "log_sha256": "1fb0fa078687ea7a15db538fc5ad0754464e60fd22a10e17d3f1ff6165b5ffdf",
+    "tickets": [
+      "2026-10-10-windows-ffmpeg-empty-reference-range",
+      "2026-10-10-windows-automation-fixture-import"
+    ]
+  },
+  "native_app_capture": "pending",
+  "human_learning_acceptance": "pending",
+  "media": "see STATUS; never inferred from curriculum tests"
+}

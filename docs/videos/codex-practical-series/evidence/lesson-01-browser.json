@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-10T17:20:49.393Z",
+  "evidence_kind": "actual-Edge-learner-website; not-native-Codex-App",
+  "browser_version": "155.0.4283.45",
+  "node_version": "v24.19.0",
+  "checks": [
+    {
+      "variant": "start",
+      "name": "file-url-module-loading",
+      "error_count": 2,
+      "cors_observed": true,
+      "classification": "observed-startup-failure; use-local-HTTP"
+    },
+    {
+      "variant": "start",
+      "name": "active-filter",
+      "observed": 2,
+      "classification": "intentional-unimplemented-filter"
+    },
+    {
+      "variant": "start",
+      "name": "reload-preserves-all-tasks-and-completion",
+      "classification": "pass"
+    },
+    {
+      "variant": "start",
+      "name": "same-title-delete-targets-selected-identity",
+      "classification": "pass"
+    },
+    {
+      "variant": "start",
+      "name": "markup-is-literal-text",
+      "classification": "pass"
+    },
+    {
+      "variant": "start",
+      "name": "390px-no-horizontal-overflow",
+      "classification": "pass"
+    },
+    {
+      "variant": "start",
+      "name": "damaged-storage-preserved-and-reset-scoped",
+      "classification": "pass"
+    },
+    {
+      "variant": "reference",
+      "name": "active-filter",
+      "observed": 1,
+      "classification": "pass"
+    },
+    {
+      "variant": "reference",
+      "name": "reload-preserves-all-tasks-and-completion",
+      "classification": "pass"
+    },
+    {
+      "variant": "reference",
+      "name": "same-title-delete-targets-selected-identity",
+      "classification": "pass"
+    },
+    {
+      "variant": "reference",
+      "name": "markup-is-literal-text",
+      "classification": "pass"
+    },
+    {
+      "variant": "reference",
+      "name": "390px-no-horizontal-overflow",
+      "classification": "pass"
+    },
+    {
+      "variant": "reference",
+      "name": "damaged-storage-preserved-and-reset-scoped",
+      "classification": "pass"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": 9,
+  "title": "JSON、CSV 與週報",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [
+    "start",
+    "challenge"
+  ],
+  "manualChecks": [],
+  "steps": [
+    "讀v1/v2契約、fixtures/legacy-v1.json與UTC完成時間；未知維持null。",
+    "執行node --test，重現本課把台北日期誤當UTC造成的週報錯數。",
+    "整批驗證JSON/CSV，再合併；用invalid.csv證明原清單不會半批變動。",
+    "修台北+08日曆邊界，10月10日22:00Z應算10月11日。",
+    "跑node report.mjs fixtures/tasks.json --from 2026-10-05 --to 2026-10-11；核對5/2/1/1。",
+    "HTTP匯入固定JSON、匯出CSV再讀回；重複ID整批拒絕。"
+  ],
+  "transferExercise": null,
+  "expectedReport": {
+    "revision": "weekly-report-v2",
+    "timezone": "Asia/Taipei",
+    "weekStart": "2026-10-05",
+    "weekEnd": "2026-10-11",
+    "total": 5,
+    "completedInWeek": 2,
+    "pending": 1,
+    "unknownCompleted": 1
+  }
+}

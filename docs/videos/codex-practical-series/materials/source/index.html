@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Small Steps｜待辦與週報練習</title><link rel="stylesheet" href="style.css"></head>
+<body><main><header><p class="eyebrow">MOKAAIR · CODEX 實作教材</p><h1>完成一件事，留下證據。</h1>
+<p>作者編寫的參考專案。只用虛構資料，資料儲存在這個瀏覽器。</p></header>
+<form id="task-form"><label for="task-title">新增待辦</label><div class="form-row">
+<input id="task-title" maxlength="100" required placeholder="Read"><button type="submit">新增</button></div></form>
+<p id="message" role="status" aria-live="polite"></p>
+<section aria-label="待辦清單"><div class="toolbar"><p id="count"></p>
+<label for="filter">狀態<select id="filter"><option value="all">全部</option><option value="active">未完成</option><option value="completed">已完成</option></select></label>
+<label for="search" data-feature="search">搜尋<input id="search" type="search" placeholder="搜尋標題"></label></div>
+<p id="filter-hint">搜尋會與目前狀態篩選一起套用。</p>
+<ul id="tasks"></ul><p id="empty">沒有符合的待辦。</p></section>
+<section data-feature="data" aria-label="資料與週報"><h2>資料與週報</h2>
+<p>完成時間儲存為 UTC。週報日期以 Asia/Taipei（UTC+08:00）計算；沒有完成日期的舊資料另列。</p>
+<div class="actions"><button id="export-json" type="button">匯出 JSON</button><button id="export-csv" type="button">匯出 CSV</button></div>
+<label for="import-file">匯入 JSON 或 CSV<input id="import-file" type="file" accept=".json,.csv"></label>
+<form id="report-form"><div class="form-row"><label for="from">開始日期<input id="from" type="date" value="2026-10-05" required></label>
+<label for="to">結束日期<input id="to" type="date" value="2026-10-11" required></label><button type="submit">產生週報</button></div></form>
+<pre id="report" aria-label="週報結果" tabindex="0"></pre></section>
+<details><summary>練習說明與還原</summary><p>本頁不會上線。匯入遇到錯誤會整批拒絕。先匯出資料再重設；v2 重設寫入空文件，保留舊 v1 與其他儲存鍵。</p>
+<button id="reset" type="button">重設目前練習資料</button></details></main><script type="module" src="app.mjs"></script></body></html>
