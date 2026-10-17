@@ -7,8 +7,8 @@ while read -r label status path; do
   [ "$status" = "2" ] && [ -n "$path" ] || continue
   url="https://cdn.hailuoai.video/moss/prod/$path"
   if [[ $label =~ ^dh-(.+)$ ]]; then d=$V/_series/zhong-tian-qu-qi/refs-dh; f=$d/${BASH_REMATCH[1]}.png
-  elif [[ $label =~ ^c:a([0-9])-(s[0-9a-z]+)$ ]]; then d=$V/zhong-tian-qu-qi-e00${BASH_REMATCH[1]}-dh/clips; f=$d/${BASH_REMATCH[2]}-t1.mp4
-  elif [[ $label =~ ^a([0-9])-(s[0-9a-z]+)-(t[0-9])$ ]]; then d=$V/zhong-tian-qu-qi-e00${BASH_REMATCH[1]}-dh/first-frames; f=$d/${BASH_REMATCH[2]}-${BASH_REMATCH[3]}.png
+  elif [[ $label =~ ^c:a([0-9]+)-(s[0-9a-z]+)$ ]]; then d=$V/zhong-tian-qu-qi-e$(printf %03d "${BASH_REMATCH[1]}")-dh/clips; f=$d/${BASH_REMATCH[2]}-t1.mp4
+  elif [[ $label =~ ^a([0-9]+)-(s[0-9a-z]+)-(t[0-9])$ ]]; then e=$(printf %03d "${BASH_REMATCH[1]}"); s=${BASH_REMATCH[2]}; t=${BASH_REMATCH[3]}; d=$V/zhong-tian-qu-qi-e$e-dh/first-frames; f=$d/$s-$t.png
   else continue; fi
   mkdir -p "$d"; [ -s "$f" ] && continue
   curl -s -f -o "$f" "$url" || { echo "FAIL $label"; rm -f "$f"; continue; }
