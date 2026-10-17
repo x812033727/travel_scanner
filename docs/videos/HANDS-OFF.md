@@ -203,6 +203,14 @@ OAuth 的做法：
 
 遷移接在 #814 的 `0098_video_stage_instructions` 之後。開票時 main 最新的是 `0097`，實作前要再查一次 main。
 
+## 手動推送的影片一律等站主（2026-10-17 加）
+
+站主決定（票 `2026-10-11-hand-driven-film-approved-on-its`）：不是工人做的影片，例如 AI 代理或人自己寫好稿子、一關一關用 `review-push` 送審的那種，每一關都等站主核准，不管自動檢查的結果是什麼。起因是 `claude-code-mods-delivery-check-tutorial`：同一個代理寫稿、自己審、自己推，大綱、配音、成片在 43 分鐘內都被自動核准，站主兩天後第一次看到就退回了。
+
+- **怎麼分**：`review-push` 看這支影片的工作目錄裡有沒有工人的狀態檔 `auto.json`（`tools/video/review/sync.mjs` 的 `WORKER_STATE_FILE`）。沒有就是手動推送，每一筆送審的 payload 帶 `hand_pushed: true`，指令也會印一行「not a video the worker made … the owner decides at every gate」。工人自己的送審照舊，不帶這個標記。
+- **伺服器怎麼做**：`submit_review`（`apps/api/app/video_reviews/admin_service.py`）看到 `hand_pushed` 是 `true`，就不套用任何一條自動核准規則（Jev 挑大綱、配音檢查、分鏡、劇本、成片品管、上傳包、語言包都一樣），這筆審核留在待審，等站主在 `/admin/videos` 決定。Jev 的挑選、品管報告照樣附在審核上給站主看。
+- **限制**：標記是工具加的，伺服器分不出送審是誰發的（工人與手動推送用同一個 token）。故意偽造 `auto.json` 或拿掉標記就能繞過；這條規則擋的是「沒注意到會自動核准」，不是蓄意繞過。
+
 ## 安全與失敗
 
 - 自動核准都在伺服器端判斷，依據是工具送來的 payload，和旁白、分鏡的自動核准同一個信任模型。工人的權杖本來就能送審，這裡沒有擴大它能做的事。每一筆自動核准都寫進 `admin_audit_logs`（`video_review_auto_approved`）。
