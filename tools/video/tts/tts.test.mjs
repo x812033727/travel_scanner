@@ -420,6 +420,14 @@ function capture(overrides) {
   };
 }
 
+test("a legacy story without a pinned dictionary stops before any speech-server request", async () => {
+  const box = sandbox("fixture-story", "story");
+  const { ctx, out } = capture({ root: box.root, home: box.base,
+    env: { VIDEO_WORKDIR: box.work }, fetch: async () => assert.fail("no provider or billing request") });
+  assert.equal(await main(["tts", "--slug", box.slug], ctx), EXIT.owner, out.stdout + out.stderr);
+  assert.match(out.stderr, /STORY_LEXICON_MIGRATION_REQUIRED/);
+});
+
 test("long-anime TTS measures directed action without empty synthesis and reuses words when its budget changes", async () => {
   const box = sandbox("fixture-drama", "drama");
   const file = path.join(box.dir, "video.json");
