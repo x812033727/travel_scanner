@@ -1,0 +1,1008 @@
+{
+  "status": "OFFLINE_MECHANICAL_ONLY_HOLD_UNREVIEWED",
+  "source_snapshot": "A01-20261017-afternoon-fe35369c/snapshot-104",
+  "derives_from_r7_manifest_sha256": "37b1fd3fb4e7c67a1dde34d00a854d02a3e09b1dd2995d418b4ebce1767a2a8b",
+  "scenes": 67,
+  "lines": 78,
+  "claims": 71,
+  "loops": 10,
+  "narration_spoken_units": 1860,
+  "lint_errors": [],
+  "lint_warning_count": 35,
+  "lint_warnings": [
+    {
+      "path": "scenes[5].lines[0] (r14o01)",
+      "message": "45 spoken units; split sentences longer than 40"
+    },
+    {
+      "path": "scenes[27].lines[0] (r17e01)",
+      "message": "42 spoken units; split sentences longer than 40"
+    },
+    {
+      "path": "scenes",
+      "message": "26 of 66 pictures name no shot size (close-up, medium, wide, overhead, low angle, from behind…): say how close the camera is in hook-02, hook-anita, origin-budget, origin-sketches and 22 more"
+    },
+    {
+      "path": "scenes",
+      "message": "\"suitcase\" is in 40 of 66 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"logo\" is in 40 of 66 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"generic\" is in 32 of 66 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes[4] (hook-06)",
+      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[5] (origin-budget)",
+      "message": "about 11.8 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[6] (origin-r12-01)",
+      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[7] (origin-03)",
+      "message": "about 10.5 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[26] (engine-02)",
+      "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[27] (engine-porter)",
+      "message": "about 11.1 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[33] (engine-08)",
+      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[36] (engine-wobble-01)",
+      "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.median: median shot 7.3 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.p90: 90th percentile shot 10.6 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-01, hook-02, hook-anita, hook-04, hook-06, origin-budget, origin-r12-01, origin-03, … 54) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.longest: longest shot 11.8 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-01, hook-anita, hook-06, origin-budget, origin-r12-01, origin-03, origin-sketches, origin-r12-03, … 19) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-01, hook-02) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.opening30: shots that start in the first 30 s 4, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.median: median line length 24 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.long: lines over 20 characters 65%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-01, hook-02, hook-anita, hook-06, origin-budget, origin-r12-01, origin-03, origin-01b, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.named: shots that name no shot size 45%, target ≤ 20%; start `camera` with the size: Wide, Medium shot, Medium close-up, Close-up, Insert … (hook-01, hook-02, hook-anita, origin-budget, origin-sketches, origin-r12-03, origin-1939-case, origin-06, … 30) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.face: faces (medium close-up and closer, over-the-shoulder) 39%, target ≥ 40%; the audience follows a face; give each turn of the scene a face that reacts (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.insert: inserts 3%, target 5%–25%; an insert answers a story question (which paper, whose hand); too few hides the proof, too many hides the people (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.reestablish: longest run without a wide or group shot 22 shots, target ≤ 9; after a move, an entrance or a new beat, re-establish the room (turn-security-question, now-06) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-01, hook-02, hook-anita, hook-04, hook-06, origin-budget, origin-r12-01, origin-03, … 66) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.run: such shots in a row 66 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-01, hook-02, hook-anita, hook-04, hook-06, origin-budget, origin-r12-01, origin-03, … 66) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-01, hook-02, hook-anita) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft risk.decorative: shots with nobody in them that are not inserts 11% (7), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (idea-r12-02, idea-r12-06, engine-07, engine-07b, turn-emmer-07, turn-r12-01, turn-09) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "about 8.6 minutes; the target is 9-11"
+    },
+    {
+      "path": "scenes",
+      "message": "「1928」 is said in 3 lines (r17h01, r12o01, r13o02): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「1970」 is said in 3 lines (47gq, dgbq, amrq): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "youtube",
+      "message": "youtube.tags: 12 tags; package keeps the first 10, so put the zh-TW terms and the English product names first"
+    }
+  ],
+  "cute_visual_errors": [],
+  "estimated_timing_not_tts": {
+    "250": {
+      "r7_seconds": 515.1,
+      "candidate_seconds": 518.5,
+      "shortfall_to_540_seconds": 21.5,
+      "six_chapter_seconds": [
+        {
+          "scene_id": "hook-01",
+          "seconds": 42.9
+        },
+        {
+          "scene_id": "origin-budget",
+          "seconds": 84.4
+        },
+        {
+          "scene_id": "idea-memory",
+          "seconds": 65.6
+        },
+        {
+          "scene_id": "engine-01",
+          "seconds": 100.8
+        },
+        {
+          "scene_id": "turn-04",
+          "seconds": 100.3
+        },
+        {
+          "scene_id": "now-crew-request",
+          "seconds": 124.4
+        }
+      ],
+      "loops": [
+        {
+          "setup": "r17h01",
+          "payoff": "r3o01",
+          "gap_seconds": 88.7
+        },
+        {
+          "setup": "b6mn",
+          "payoff": "76ur",
+          "gap_seconds": 212.8
+        },
+        {
+          "setup": "jtmg",
+          "payoff": "3zwf",
+          "gap_seconds": 350.5
+        },
+        {
+          "setup": "zaky",
+          "payoff": "76ur",
+          "gap_seconds": 51.6
+        },
+        {
+          "setup": "r12t01",
+          "payoff": "3zwf",
+          "gap_seconds": 24.9
+        },
+        {
+          "setup": "r15n02",
+          "payoff": "jspd",
+          "gap_seconds": 18.2
+        },
+        {
+          "setup": "r3n01",
+          "payoff": "r4n01",
+          "gap_seconds": 30.2
+        },
+        {
+          "setup": "r6o01",
+          "payoff": "r12o02",
+          "gap_seconds": 25.4
+        },
+        {
+          "setup": "r6t01",
+          "payoff": "r13t02",
+          "gap_seconds": 30.4
+        },
+        {
+          "setup": "e37u",
+          "payoff": "r14i02",
+          "gap_seconds": 118.4
+        }
+      ],
+      "declared_loop_question_cadence_45": {
+        "max_gap_seconds": 280.8,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r6o01",
+            "to": "r6t01",
+            "seconds": 280.8
+          },
+          {
+            "from": "r6t01",
+            "to": "r3n01",
+            "seconds": 92.2
+          },
+          {
+            "from": "r3n01",
+            "to": "body:end",
+            "seconds": 60.9
+          }
+        ],
+        "devices": [
+          {
+            "at": 42.9,
+            "id": "body:start"
+          },
+          {
+            "at": 65.8,
+            "id": "r6o01"
+          },
+          {
+            "at": 346.6,
+            "id": "r6t01"
+          },
+          {
+            "at": 438.8,
+            "id": "r3n01"
+          },
+          {
+            "at": 499.7,
+            "id": "body:end"
+          }
+        ]
+      },
+      "all_voiced_question_cadence_45": {
+        "max_gap_seconds": 153.9,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r6o01",
+            "to": "r17e01",
+            "seconds": 153.9
+          },
+          {
+            "from": "apb3",
+            "to": "r6t01",
+            "seconds": 84.9
+          },
+          {
+            "from": "r6t01",
+            "to": "r3n01",
+            "seconds": 92.2
+          },
+          {
+            "from": "r3n01",
+            "to": "body:end",
+            "seconds": 60.9
+          }
+        ],
+        "devices": [
+          {
+            "at": 42.9,
+            "id": "body:start"
+          },
+          {
+            "at": 65.8,
+            "id": "r6o01"
+          },
+          {
+            "at": 219.8,
+            "id": "r17e01"
+          },
+          {
+            "at": 261.7,
+            "id": "apb3"
+          },
+          {
+            "at": 346.6,
+            "id": "r6t01"
+          },
+          {
+            "at": 438.8,
+            "id": "r3n01"
+          },
+          {
+            "at": 499.7,
+            "id": "body:end"
+          }
+        ]
+      },
+      "source_event_proxy_cadence_45_unreviewed": {
+        "max_gap_seconds": 47.4,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r17e02",
+            "to": "r15t07",
+            "seconds": 47.4
+          }
+        ],
+        "devices": [
+          {
+            "at": 42.9,
+            "id": "body:start"
+          },
+          {
+            "at": 61,
+            "id": "r12o01"
+          },
+          {
+            "at": 96.4,
+            "id": "r12o02"
+          },
+          {
+            "at": 121.7,
+            "id": "r3o01"
+          },
+          {
+            "at": 127.3,
+            "id": "83ew"
+          },
+          {
+            "at": 139.2,
+            "id": "r14i02"
+          },
+          {
+            "at": 171.1,
+            "id": "dgbq"
+          },
+          {
+            "at": 192.9,
+            "id": "zaky"
+          },
+          {
+            "at": 198,
+            "id": "j9sw"
+          },
+          {
+            "at": 232.1,
+            "id": "s7me"
+          },
+          {
+            "at": 256.4,
+            "id": "amrq"
+          },
+          {
+            "at": 286.2,
+            "id": "r17e02"
+          },
+          {
+            "at": 333.6,
+            "id": "r15t07"
+          },
+          {
+            "at": 341.1,
+            "id": "crcw"
+          },
+          {
+            "at": 369.3,
+            "id": "q4zn"
+          },
+          {
+            "at": 394,
+            "id": "3zwf"
+          },
+          {
+            "at": 414.6,
+            "id": "r15n01"
+          },
+          {
+            "at": 423.8,
+            "id": "jspd"
+          },
+          {
+            "at": 446.8,
+            "id": "r3n02"
+          },
+          {
+            "at": 469,
+            "id": "r3n05"
+          },
+          {
+            "at": 476,
+            "id": "r4n01"
+          },
+          {
+            "at": 483.3,
+            "id": "7asx"
+          },
+          {
+            "at": 499.7,
+            "id": "body:end"
+          }
+        ]
+      }
+    },
+    "275": {
+      "r7_seconds": 475.1,
+      "candidate_seconds": 478.2,
+      "shortfall_to_540_seconds": 61.8,
+      "six_chapter_seconds": [
+        {
+          "scene_id": "hook-01",
+          "seconds": 39.5
+        },
+        {
+          "scene_id": "origin-budget",
+          "seconds": 77.7
+        },
+        {
+          "scene_id": "idea-memory",
+          "seconds": 60.7
+        },
+        {
+          "scene_id": "engine-01",
+          "seconds": 92.9
+        },
+        {
+          "scene_id": "turn-04",
+          "seconds": 92.6
+        },
+        {
+          "scene_id": "now-crew-request",
+          "seconds": 114.7
+        }
+      ],
+      "loops": [
+        {
+          "setup": "r17h01",
+          "payoff": "r3o01",
+          "gap_seconds": 81.6
+        },
+        {
+          "setup": "b6mn",
+          "payoff": "76ur",
+          "gap_seconds": 196.3
+        },
+        {
+          "setup": "jtmg",
+          "payoff": "3zwf",
+          "gap_seconds": 323.2
+        },
+        {
+          "setup": "zaky",
+          "payoff": "76ur",
+          "gap_seconds": 47.6
+        },
+        {
+          "setup": "r12t01",
+          "payoff": "3zwf",
+          "gap_seconds": 23
+        },
+        {
+          "setup": "r15n02",
+          "payoff": "jspd",
+          "gap_seconds": 16.8
+        },
+        {
+          "setup": "r3n01",
+          "payoff": "r4n01",
+          "gap_seconds": 27.8
+        },
+        {
+          "setup": "r6o01",
+          "payoff": "r12o02",
+          "gap_seconds": 23.4
+        },
+        {
+          "setup": "r6t01",
+          "payoff": "r13t02",
+          "gap_seconds": 28.1
+        },
+        {
+          "setup": "e37u",
+          "payoff": "r14i02",
+          "gap_seconds": 109.1
+        }
+      ],
+      "declared_loop_question_cadence_45": {
+        "max_gap_seconds": 259,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r6o01",
+            "to": "r6t01",
+            "seconds": 259
+          },
+          {
+            "from": "r6t01",
+            "to": "r3n01",
+            "seconds": 85.1
+          },
+          {
+            "from": "r3n01",
+            "to": "body:end",
+            "seconds": 56.1
+          }
+        ],
+        "devices": [
+          {
+            "at": 39.5,
+            "id": "body:start"
+          },
+          {
+            "at": 60.6,
+            "id": "r6o01"
+          },
+          {
+            "at": 319.7,
+            "id": "r6t01"
+          },
+          {
+            "at": 404.8,
+            "id": "r3n01"
+          },
+          {
+            "at": 460.9,
+            "id": "body:end"
+          }
+        ]
+      },
+      "all_voiced_question_cadence_45": {
+        "max_gap_seconds": 142.1,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r6o01",
+            "to": "r17e01",
+            "seconds": 142.1
+          },
+          {
+            "from": "apb3",
+            "to": "r6t01",
+            "seconds": 78.3
+          },
+          {
+            "from": "r6t01",
+            "to": "r3n01",
+            "seconds": 85.1
+          },
+          {
+            "from": "r3n01",
+            "to": "body:end",
+            "seconds": 56.1
+          }
+        ],
+        "devices": [
+          {
+            "at": 39.5,
+            "id": "body:start"
+          },
+          {
+            "at": 60.6,
+            "id": "r6o01"
+          },
+          {
+            "at": 202.7,
+            "id": "r17e01"
+          },
+          {
+            "at": 241.4,
+            "id": "apb3"
+          },
+          {
+            "at": 319.7,
+            "id": "r6t01"
+          },
+          {
+            "at": 404.8,
+            "id": "r3n01"
+          },
+          {
+            "at": 460.9,
+            "id": "body:end"
+          }
+        ]
+      },
+      "source_event_proxy_cadence_45_unreviewed": {
+        "max_gap_seconds": 43.6,
+        "gaps_over_45_seconds": [],
+        "devices": [
+          {
+            "at": 39.5,
+            "id": "body:start"
+          },
+          {
+            "at": 56.1,
+            "id": "r12o01"
+          },
+          {
+            "at": 88.8,
+            "id": "r12o02"
+          },
+          {
+            "at": 112.1,
+            "id": "r3o01"
+          },
+          {
+            "at": 117.3,
+            "id": "83ew"
+          },
+          {
+            "at": 128.3,
+            "id": "r14i02"
+          },
+          {
+            "at": 157.9,
+            "id": "dgbq"
+          },
+          {
+            "at": 178,
+            "id": "zaky"
+          },
+          {
+            "at": 182.7,
+            "id": "j9sw"
+          },
+          {
+            "at": 214.1,
+            "id": "s7me"
+          },
+          {
+            "at": 236.5,
+            "id": "amrq"
+          },
+          {
+            "at": 264,
+            "id": "r17e02"
+          },
+          {
+            "at": 307.6,
+            "id": "r15t07"
+          },
+          {
+            "at": 314.5,
+            "id": "crcw"
+          },
+          {
+            "at": 340.6,
+            "id": "q4zn"
+          },
+          {
+            "at": 363.4,
+            "id": "3zwf"
+          },
+          {
+            "at": 382.4,
+            "id": "r15n01"
+          },
+          {
+            "at": 391,
+            "id": "jspd"
+          },
+          {
+            "at": 412.1,
+            "id": "r3n02"
+          },
+          {
+            "at": 432.6,
+            "id": "r3n05"
+          },
+          {
+            "at": 439.1,
+            "id": "r4n01"
+          },
+          {
+            "at": 445.8,
+            "id": "7asx"
+          },
+          {
+            "at": 460.9,
+            "id": "body:end"
+          }
+        ]
+      }
+    },
+    "300": {
+      "r7_seconds": 440.3,
+      "candidate_seconds": 443.1,
+      "shortfall_to_540_seconds": 96.9,
+      "six_chapter_seconds": [
+        {
+          "scene_id": "hook-01",
+          "seconds": 36.6
+        },
+        {
+          "scene_id": "origin-budget",
+          "seconds": 72
+        },
+        {
+          "scene_id": "idea-memory",
+          "seconds": 56.3
+        },
+        {
+          "scene_id": "engine-01",
+          "seconds": 86.1
+        },
+        {
+          "scene_id": "turn-04",
+          "seconds": 85.8
+        },
+        {
+          "scene_id": "now-crew-request",
+          "seconds": 106.3
+        }
+      ],
+      "loops": [
+        {
+          "setup": "r17h01",
+          "payoff": "r3o01",
+          "gap_seconds": 75.6
+        },
+        {
+          "setup": "b6mn",
+          "payoff": "76ur",
+          "gap_seconds": 181.9
+        },
+        {
+          "setup": "jtmg",
+          "payoff": "3zwf",
+          "gap_seconds": 299.6
+        },
+        {
+          "setup": "zaky",
+          "payoff": "76ur",
+          "gap_seconds": 44.1
+        },
+        {
+          "setup": "r12t01",
+          "payoff": "3zwf",
+          "gap_seconds": 21.4
+        },
+        {
+          "setup": "r15n02",
+          "payoff": "jspd",
+          "gap_seconds": 15.5
+        },
+        {
+          "setup": "r3n01",
+          "payoff": "r4n01",
+          "gap_seconds": 25.8
+        },
+        {
+          "setup": "r6o01",
+          "payoff": "r12o02",
+          "gap_seconds": 21.7
+        },
+        {
+          "setup": "r6t01",
+          "payoff": "r13t02",
+          "gap_seconds": 26
+        },
+        {
+          "setup": "e37u",
+          "payoff": "r14i02",
+          "gap_seconds": 101
+        }
+      ],
+      "declared_loop_question_cadence_45": {
+        "max_gap_seconds": 240.1,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r6o01",
+            "to": "r6t01",
+            "seconds": 240.1
+          },
+          {
+            "from": "r6t01",
+            "to": "r3n01",
+            "seconds": 78.9
+          },
+          {
+            "from": "r3n01",
+            "to": "body:end",
+            "seconds": 52
+          }
+        ],
+        "devices": [
+          {
+            "at": 36.6,
+            "id": "body:start"
+          },
+          {
+            "at": 56.1,
+            "id": "r6o01"
+          },
+          {
+            "at": 296.2,
+            "id": "r6t01"
+          },
+          {
+            "at": 375.1,
+            "id": "r3n01"
+          },
+          {
+            "at": 427.1,
+            "id": "body:end"
+          }
+        ]
+      },
+      "all_voiced_question_cadence_45": {
+        "max_gap_seconds": 131.7,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r6o01",
+            "to": "r17e01",
+            "seconds": 131.7
+          },
+          {
+            "from": "apb3",
+            "to": "r6t01",
+            "seconds": 72.5
+          },
+          {
+            "from": "r6t01",
+            "to": "r3n01",
+            "seconds": 78.9
+          },
+          {
+            "from": "r3n01",
+            "to": "body:end",
+            "seconds": 52
+          }
+        ],
+        "devices": [
+          {
+            "at": 36.6,
+            "id": "body:start"
+          },
+          {
+            "at": 56.1,
+            "id": "r6o01"
+          },
+          {
+            "at": 187.8,
+            "id": "r17e01"
+          },
+          {
+            "at": 223.7,
+            "id": "apb3"
+          },
+          {
+            "at": 296.2,
+            "id": "r6t01"
+          },
+          {
+            "at": 375.1,
+            "id": "r3n01"
+          },
+          {
+            "at": 427.1,
+            "id": "body:end"
+          }
+        ]
+      },
+      "source_event_proxy_cadence_45_unreviewed": {
+        "max_gap_seconds": 40.4,
+        "gaps_over_45_seconds": [],
+        "devices": [
+          {
+            "at": 36.6,
+            "id": "body:start"
+          },
+          {
+            "at": 51.9,
+            "id": "r12o01"
+          },
+          {
+            "at": 82.2,
+            "id": "r12o02"
+          },
+          {
+            "at": 103.8,
+            "id": "r3o01"
+          },
+          {
+            "at": 108.6,
+            "id": "83ew"
+          },
+          {
+            "at": 118.8,
+            "id": "r14i02"
+          },
+          {
+            "at": 146.3,
+            "id": "dgbq"
+          },
+          {
+            "at": 164.9,
+            "id": "zaky"
+          },
+          {
+            "at": 169.3,
+            "id": "j9sw"
+          },
+          {
+            "at": 198.4,
+            "id": "s7me"
+          },
+          {
+            "at": 219.1,
+            "id": "amrq"
+          },
+          {
+            "at": 244.6,
+            "id": "r17e02"
+          },
+          {
+            "at": 285,
+            "id": "r15t07"
+          },
+          {
+            "at": 291.4,
+            "id": "crcw"
+          },
+          {
+            "at": 315.6,
+            "id": "q4zn"
+          },
+          {
+            "at": 336.8,
+            "id": "3zwf"
+          },
+          {
+            "at": 354.4,
+            "id": "r15n01"
+          },
+          {
+            "at": 362.3,
+            "id": "jspd"
+          },
+          {
+            "at": 381.9,
+            "id": "r3n02"
+          },
+          {
+            "at": 400.9,
+            "id": "r3n05"
+          },
+          {
+            "at": 406.9,
+            "id": "r4n01"
+          },
+          {
+            "at": 413.1,
+            "id": "7asx"
+          },
+          {
+            "at": 427.1,
+            "id": "body:end"
+          }
+        ]
+      }
+    }
+  },
+  "duration_540_gate": "HOLD",
+  "strict_45_second_gate": "HOLD",
+  "source_event_45_second_gate": "UNREVIEWED_PROXY_ONLY",
+  "independent_fact_review": "NOT_RUN",
+  "independent_listener_review": "NOT_RUN",
+  "independent_visual_review": "NOT_RUN",
+  "script_review_receipt": "NOT_ISSUED",
+  "actual_tts_or_media": "NOT_RUN",
+  "production_or_paid_work": "NOT_RUN"
+}

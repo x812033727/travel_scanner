@@ -1,0 +1,254 @@
+{
+  "status": "PENDING_INDEPENDENT_REVIEW",
+  "derives_from_r5_manifest_sha256": "8acaa2c01f210dea99dc44e703be1caa90e30ecfe502e55ef247c5584e2abf3e",
+  "source_snapshot": "A01-20261017-afternoon-fe35369c/snapshot-104",
+  "prior_review_not_inherited": true,
+  "changed_line_ids": [
+    "r17h01"
+  ],
+  "added_line_ids": [
+    "r6o01",
+    "r6o02",
+    "r6i01",
+    "r6e01",
+    "r6t01",
+    "r6t02",
+    "r6n01"
+  ],
+  "changed_visual_scene_ids": [
+    "hook-anita",
+    "idea-r12-02",
+    "idea-r12-06",
+    "now-consumer-question"
+  ],
+  "added_scene_ids": [
+    "idea-buyer-question",
+    "engine-security-question",
+    "turn-security-question",
+    "now-packing-question"
+  ],
+  "hooks": [
+    {
+      "setup": "r6o01",
+      "payoff": "r12o02",
+      "source": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+      "limit": "father reaction moved out of opening; not a new historical fact"
+    },
+    {
+      "setup": "r6o02",
+      "payoff": "r12e06",
+      "source": "https://patents.google.com/patent/US3653474A/en",
+      "limit": "patent retains the ordinary carrying handle; picture must not reveal it before narration"
+    },
+    {
+      "setup": "r6i01",
+      "payoff": "9ijb",
+      "source": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+      "limit": "buyer rejection is Sadow retrospective, not an independently recovered purchase record"
+    },
+    {
+      "setup": "r6e01",
+      "payoff": "q4zn",
+      "source": "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+      "limit": "Shiller four-caster bag and Plath trolley are separate objects; no claimed influence"
+    },
+    {
+      "setup": "r6t01",
+      "payoff": "r13t02",
+      "source": "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+      "limit": "specific Plath recollection, no claim that all security desks accepted it"
+    },
+    {
+      "setup": "r6t02",
+      "payoff": "r15n01",
+      "source": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+      "limit": "2010 NYT retrospective reprinted on p.48, not a contemporary passenger study"
+    },
+    {
+      "setup": "r6n01",
+      "payoff": "opk01",
+      "source": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+      "limit": "one flight attendant observation, not universal travel behavior"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "r17h01",
+      "payoff": "r3o01",
+      "what": "父親嘲笑後，1939 年報紙仍記錄 Anita 帶輪箱出席講座",
+      "setup_scene": "hook-anita",
+      "payoff_scene": "origin-1939-case",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 75.6,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "b6mn",
+      "payoff": "76ur",
+      "what": "樣品能否真正上架；經首輪拒絕後，Macy 副總裁試拉並決定進貨",
+      "setup_scene": "hook-04",
+      "payoff_scene": "engine-07b",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 189.6,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "jtmg",
+      "payoff": "3zwf",
+      "what": "冷開場機師把箱子帶進車庫，沒有露完成品；後段揭示直立雙輪拉桿的公司記述",
+      "setup_scene": "hook-06",
+      "payoff_scene": "turn-09b",
+      "explicit_question": false,
+      "timing_300_gap_seconds": 321.2,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "r14i02",
+      "payoff": "idiy",
+      "what": "Sadow 想把輪子裝進行李箱；回廠試裝四腳輪再加拖繩",
+      "setup_scene": "idea-wife",
+      "payoff_scene": "idea-13b",
+      "explicit_question": false,
+      "timing_300_gap_seconds": 15.2,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "zaky",
+      "payoff": "76ur",
+      "what": "Sadow 帶著樣品赴紐約找買家；碰壁後有副總裁親手試拉並決定進貨",
+      "setup_scene": "idea-16",
+      "payoff_scene": "engine-07b",
+      "explicit_question": false,
+      "timing_300_gap_seconds": 44.1,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "r17e01",
+      "payoff": "8n2r",
+      "what": "採購以已有搬運工質疑需求；另一位百貨主管願意親自試拉樣品",
+      "setup_scene": "engine-porter",
+      "payoff_scene": "engine-06",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 10.6,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "r12t01",
+      "payoff": "3zwf",
+      "what": "後來專利記下外置推車反覆拆綁的限制；Travelpro 記述另一個一體直立設計",
+      "setup_scene": "turn-r12-01",
+      "payoff_scene": "turn-09b",
+      "explicit_question": false,
+      "timing_300_gap_seconds": 23.9,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "3zwf",
+      "payoff": "r15n01",
+      "what": "一體直立箱在公司記述中成形；同機師要求製作、機組用起來後旅客在航站看見",
+      "setup_scene": "turn-09b",
+      "payoff_scene": "now-passenger",
+      "explicit_question": false,
+      "timing_300_gap_seconds": 12,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "r15n02",
+      "payoff": "jspd",
+      "what": "其他機師見箱請 Plath 製作；公司說需求增加，車庫不夠而搬倉",
+      "setup_scene": "now-crew-request",
+      "payoff_scene": "now-11",
+      "explicit_question": false,
+      "timing_300_gap_seconds": 22.1,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "r3n01",
+      "payoff": "r4n01",
+      "what": "外袋加放衣物和書後，記者的箱子在機艙放不進",
+      "setup_scene": "now-consumer-question",
+      "payoff_scene": "now-1993-stow",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 44.1,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "r6o01",
+      "payoff": "r12o02",
+      "what": "丈夫是否接受妻兒的輪子箱；後來仍寧願手提並嘲笑",
+      "setup_scene": "origin-r12-01",
+      "payoff_scene": "origin-r12-02",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 21.7,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "r6o02",
+      "payoff": "r12e06",
+      "what": "Sadow 專利把拉箱拖帶與原有手提把分開保留",
+      "setup_scene": "origin-06",
+      "payoff_scene": "idea-r12-06",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 47.5,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "r6i01",
+      "payoff": "9ijb",
+      "what": "採購看見繩拖箱的拉法後，認為荒唐並拒絕",
+      "setup_scene": "idea-buyer-question",
+      "payoff_scene": "engine-02",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 23,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "r6e01",
+      "payoff": "q4zn",
+      "what": "Plath 回憶將外置推車與硬箱鎖成一體",
+      "setup_scene": "engine-security-question",
+      "payoff_scene": "turn-07",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 55.8,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "r6t01",
+      "payoff": "r13t02",
+      "what": "安檢員要求拆卸後聽到無法拆，最後只答 OK",
+      "setup_scene": "turn-security-question",
+      "payoff_scene": "turn-07c",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 26,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "r6t02",
+      "payoff": "r15n01",
+      "what": "先在機組間使用，再被航站旅客看見",
+      "setup_scene": "turn-09",
+      "payoff_scene": "now-passenger",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 17.8,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    },
+    {
+      "setup": "r6n01",
+      "payoff": "opk01",
+      "what": "受訪空服員觀察旅客因能滾而多裝，不能滾時反而搬不動",
+      "setup_scene": "now-packing-question",
+      "payoff_scene": "now-05",
+      "explicit_question": true,
+      "timing_300_gap_seconds": 31.2,
+      "verdict": "PENDING_BLIND_LISTENING_AND_VISUAL_REVIEW"
+    }
+  ],
+  "review_warnings": [
+    "The 1939 Midland case cannot be identified as the 1928 homemade case; r6 changes no line to claim that identity.",
+    "Travelpro says 1987; Plath 2024 first-person alumni entry says 1988. Existing attributed line stays attributed; independent conflict review remains open.",
+    "The security-cart anecdote and Emmer sketch anecdote have no verified relative chronology and must not be narrated as cause and effect.",
+    "Some new loops are short local turns. Counting them mechanically does not establish that blind listeners experience them as suspense.",
+    "The event cadence is an explicitly selected, unreviewed proxy; a blind listener and actual TTS timestamps are still required."
+  ],
+  "host_migration": "SPEC_ONLY_SIX_CHAPTER_SOURCES_AND_SERIES_PLAN_REQUIRE_SEPARATE_REVIEW"
+}

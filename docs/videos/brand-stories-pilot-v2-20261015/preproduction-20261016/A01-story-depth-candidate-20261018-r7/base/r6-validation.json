@@ -1,0 +1,1257 @@
+{
+  "status": "OFFLINE_MECHANICAL_ONLY_HOLD_UNREVIEWED",
+  "source_snapshot": "A01-20261017-afternoon-fe35369c/snapshot-104",
+  "derives_from_r5_manifest_sha256": "8acaa2c01f210dea99dc44e703be1caa90e30ecfe502e55ef247c5584e2abf3e",
+  "scenes": 73,
+  "lines": 86,
+  "claims": 73,
+  "loops": 17,
+  "added_loops": 7,
+  "narration_spoken_units": 1987,
+  "changed_line_ids": [
+    "r17h01"
+  ],
+  "added_line_ids": [
+    "r6o01",
+    "r6o02",
+    "r6i01",
+    "r6e01",
+    "r6t01",
+    "r6t02",
+    "r6n01"
+  ],
+  "lint_errors": [],
+  "lint_warning_count": 35,
+  "lint_warnings": [
+    {
+      "path": "scenes[7].lines[0] (r14o01)",
+      "message": "45 spoken units; split sentences longer than 40"
+    },
+    {
+      "path": "scenes[30].lines[0] (r17e01)",
+      "message": "42 spoken units; split sentences longer than 40"
+    },
+    {
+      "path": "scenes[41].lines[0] (r16e01)",
+      "message": "41 spoken units; split sentences longer than 40"
+    },
+    {
+      "path": "scenes",
+      "message": "29 of 72 pictures name no shot size (close-up, medium, wide, overhead, low angle, from behind…): say how close the camera is in hook-anita, origin-budget, origin-sketches, origin-r12-03 and 25 more"
+    },
+    {
+      "path": "scenes",
+      "message": "\"logo\" is in 45 of 72 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"suitcase\" is in 42 of 72 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"likeness\" is in 35 of 72 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes[6] (hook-06)",
+      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[7] (origin-budget)",
+      "message": "about 11.8 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[8] (origin-r12-01)",
+      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[9] (origin-03)",
+      "message": "about 10.5 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[16] (origin-06)",
+      "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[29] (engine-02)",
+      "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[30] (engine-porter)",
+      "message": "about 11.1 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[36] (engine-08)",
+      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[39] (engine-wobble-01)",
+      "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[41] (engine-10b)",
+      "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.median: median shot 7.3 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.p90: 90th percentile shot 10.7 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-01, hook-02b, hook-anita, hook-04, hook-06, origin-budget, origin-r12-01, origin-03, … 56) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft pace.longest: longest shot 11.8 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-anita, hook-06, origin-budget, origin-r12-01, origin-03, origin-sketches, origin-r12-03, origin-1939-case, … 20) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-01, hook-02) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.opening30: shots that start in the first 30 s 5, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.median: median line length 23 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.long: lines over 20 characters 60%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-01, hook-02b, hook-anita, hook-06, origin-budget, origin-r12-01, origin-03, origin-01b, … 50) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.named: shots that name no shot size 46%, target ≤ 20%; start `camera` with the size: Wide, Medium shot, Medium close-up, Close-up, Insert … (hook-01, hook-anita, origin-budget, origin-sketches, origin-r12-03, origin-1939-case, origin-06, idea-memory, … 33) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.insert: inserts 3%, target 5%–25%; an insert answers a story question (which paper, whose hand); too few hides the proof, too many hides the people (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft size.reestablish: longest run without a wide or group shot 23 shots, target ≤ 9; after a move, an entrance or a new beat, re-establish the room (turn-security-question, now-06) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-01, hook-02, hook-02b, hook-03, hook-anita, hook-04, hook-06, origin-budget, … 72) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.run: such shots in a row 72 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-01, hook-02, hook-02b, hook-03, hook-anita, hook-04, hook-06, origin-budget, … 72) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-01, hook-02, hook-02b) (.agents/skills/youtube-video/references/drama-craft.md)"
+    },
+    {
+      "path": "scenes",
+      "message": "「1928」 is said in 3 lines (r17h01, r12o01, r13o02): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「1970」 is said in 3 lines (47gq, dgbq, amrq): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "youtube",
+      "message": "youtube.tags: 12 tags; package keeps the first 10, so put the zh-TW terms and the English product names first"
+    }
+  ],
+  "cute_visual_errors": [],
+  "estimated_timing_not_tts": {
+    "250": {
+      "r5_seconds": 523.3,
+      "candidate_seconds": 555.7,
+      "shortfall_to_540_seconds": -15.7,
+      "six_chapter_seconds": [
+        {
+          "scene_id": "hook-01",
+          "seconds": 50.7
+        },
+        {
+          "scene_id": "origin-budget",
+          "seconds": 89.5
+        },
+        {
+          "scene_id": "idea-memory",
+          "seconds": 69.5
+        },
+        {
+          "scene_id": "engine-01",
+          "seconds": 117.5
+        },
+        {
+          "scene_id": "turn-04",
+          "seconds": 99.9
+        },
+        {
+          "scene_id": "now-crew-request",
+          "seconds": 128.6
+        }
+      ],
+      "loops": [
+        {
+          "setup": "r17h01",
+          "payoff": "r3o01",
+          "gap_seconds": 88.7
+        },
+        {
+          "setup": "b6mn",
+          "payoff": "76ur",
+          "gap_seconds": 221.8
+        },
+        {
+          "setup": "jtmg",
+          "payoff": "3zwf",
+          "gap_seconds": 375.7
+        },
+        {
+          "setup": "r14i02",
+          "payoff": "idiy",
+          "gap_seconds": 17.7
+        },
+        {
+          "setup": "zaky",
+          "payoff": "76ur",
+          "gap_seconds": 51.6
+        },
+        {
+          "setup": "r17e01",
+          "payoff": "8n2r",
+          "gap_seconds": 12.4
+        },
+        {
+          "setup": "r12t01",
+          "payoff": "3zwf",
+          "gap_seconds": 27.9
+        },
+        {
+          "setup": "3zwf",
+          "payoff": "r15n01",
+          "gap_seconds": 14
+        },
+        {
+          "setup": "r15n02",
+          "payoff": "jspd",
+          "gap_seconds": 25.9
+        },
+        {
+          "setup": "r3n01",
+          "payoff": "r4n01",
+          "gap_seconds": 51.6
+        },
+        {
+          "setup": "r6o01",
+          "payoff": "r12o02",
+          "gap_seconds": 25.4
+        },
+        {
+          "setup": "r6o02",
+          "payoff": "r12e06",
+          "gap_seconds": 55.2
+        },
+        {
+          "setup": "r6i01",
+          "payoff": "9ijb",
+          "gap_seconds": 26.9
+        },
+        {
+          "setup": "r6e01",
+          "payoff": "q4zn",
+          "gap_seconds": 65.3
+        },
+        {
+          "setup": "r6t01",
+          "payoff": "r13t02",
+          "gap_seconds": 30.4
+        },
+        {
+          "setup": "r6t02",
+          "payoff": "r15n01",
+          "gap_seconds": 20.8
+        },
+        {
+          "setup": "r6n01",
+          "payoff": "opk01",
+          "gap_seconds": 36.5
+        }
+      ],
+      "declared_loop_question_cadence_45": {
+        "max_gap_seconds": 90.6,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r6o01",
+            "to": "r6o02",
+            "seconds": 66.6
+          },
+          {
+            "from": "r6o02",
+            "to": "r6i01",
+            "seconds": 47.7
+          },
+          {
+            "from": "r6i01",
+            "to": "r17e01",
+            "seconds": 48.6
+          },
+          {
+            "from": "r17e01",
+            "to": "r6e01",
+            "seconds": 90.6
+          },
+          {
+            "from": "r6e01",
+            "to": "r6t01",
+            "seconds": 49.6
+          },
+          {
+            "from": "r6n01",
+            "to": "body:end",
+            "seconds": 52.2
+          }
+        ],
+        "devices": [
+          {
+            "at": 50.7,
+            "id": "body:start"
+          },
+          {
+            "at": 73.6,
+            "id": "r6o01"
+          },
+          {
+            "at": 140.2,
+            "id": "r6o02"
+          },
+          {
+            "at": 187.9,
+            "id": "r6i01"
+          },
+          {
+            "at": 236.6,
+            "id": "r17e01"
+          },
+          {
+            "at": 327.2,
+            "id": "r6e01"
+          },
+          {
+            "at": 376.7,
+            "id": "r6t01"
+          },
+          {
+            "at": 420.3,
+            "id": "r6t02"
+          },
+          {
+            "at": 455.4,
+            "id": "r3n01"
+          },
+          {
+            "at": 484.7,
+            "id": "r6n01"
+          },
+          {
+            "at": 536.9,
+            "id": "body:end"
+          }
+        ]
+      },
+      "all_voiced_question_cadence_45": {
+        "max_gap_seconds": 66.6,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r6o01",
+            "to": "r6o02",
+            "seconds": 66.6
+          },
+          {
+            "from": "r6o02",
+            "to": "r6i01",
+            "seconds": 47.7
+          },
+          {
+            "from": "r6i01",
+            "to": "r17e01",
+            "seconds": 48.6
+          },
+          {
+            "from": "apb3",
+            "to": "r6e01",
+            "seconds": 48.6
+          },
+          {
+            "from": "r6e01",
+            "to": "r6t01",
+            "seconds": 49.6
+          },
+          {
+            "from": "r6n01",
+            "to": "body:end",
+            "seconds": 52.2
+          }
+        ],
+        "devices": [
+          {
+            "at": 50.7,
+            "id": "body:start"
+          },
+          {
+            "at": 73.6,
+            "id": "r6o01"
+          },
+          {
+            "at": 140.2,
+            "id": "r6o02"
+          },
+          {
+            "at": 187.9,
+            "id": "r6i01"
+          },
+          {
+            "at": 236.6,
+            "id": "r17e01"
+          },
+          {
+            "at": 278.5,
+            "id": "apb3"
+          },
+          {
+            "at": 327.2,
+            "id": "r6e01"
+          },
+          {
+            "at": 376.7,
+            "id": "r6t01"
+          },
+          {
+            "at": 420.3,
+            "id": "r6t02"
+          },
+          {
+            "at": 455.4,
+            "id": "r3n01"
+          },
+          {
+            "at": 484.7,
+            "id": "r6n01"
+          },
+          {
+            "at": 536.9,
+            "id": "body:end"
+          }
+        ]
+      },
+      "sourced_event_proxy_cadence_45_unreviewed": {
+        "max_gap_seconds": 42.3,
+        "gaps_over_45_seconds": [],
+        "devices": [
+          {
+            "at": 50.7,
+            "id": "body:start"
+          },
+          {
+            "at": 68.8,
+            "id": "r12o01"
+          },
+          {
+            "at": 104.2,
+            "id": "r12o02"
+          },
+          {
+            "at": 129.5,
+            "id": "r3o01"
+          },
+          {
+            "at": 134.4,
+            "id": "83ew"
+          },
+          {
+            "at": 152.1,
+            "id": "r14i02"
+          },
+          {
+            "at": 184,
+            "id": "dgbq"
+          },
+          {
+            "at": 209.7,
+            "id": "zaky"
+          },
+          {
+            "at": 214.8,
+            "id": "j9sw"
+          },
+          {
+            "at": 248.9,
+            "id": "s7me"
+          },
+          {
+            "at": 273.2,
+            "id": "amrq"
+          },
+          {
+            "at": 303,
+            "id": "r17e02"
+          },
+          {
+            "at": 321.4,
+            "id": "r16e01"
+          },
+          {
+            "at": 363.7,
+            "id": "r15t07"
+          },
+          {
+            "at": 371.2,
+            "id": "crcw"
+          },
+          {
+            "at": 399.4,
+            "id": "q4zn"
+          },
+          {
+            "at": 427.1,
+            "id": "3zwf"
+          },
+          {
+            "at": 447.7,
+            "id": "r15n01"
+          },
+          {
+            "at": 479.9,
+            "id": "r3n02"
+          },
+          {
+            "at": 507,
+            "id": "r3n05"
+          },
+          {
+            "at": 514,
+            "id": "r4n01"
+          },
+          {
+            "at": 521.2,
+            "id": "7asx"
+          },
+          {
+            "at": 536.9,
+            "id": "body:end"
+          }
+        ]
+      }
+    },
+    "275": {
+      "r5_seconds": 482.7,
+      "candidate_seconds": 512.5,
+      "shortfall_to_540_seconds": 27.5,
+      "six_chapter_seconds": [
+        {
+          "scene_id": "hook-01",
+          "seconds": 46.8
+        },
+        {
+          "scene_id": "origin-budget",
+          "seconds": 82.4
+        },
+        {
+          "scene_id": "idea-memory",
+          "seconds": 64.3
+        },
+        {
+          "scene_id": "engine-01",
+          "seconds": 108.2
+        },
+        {
+          "scene_id": "turn-04",
+          "seconds": 92.2
+        },
+        {
+          "scene_id": "now-crew-request",
+          "seconds": 118.6
+        }
+      ],
+      "loops": [
+        {
+          "setup": "r17h01",
+          "payoff": "r3o01",
+          "gap_seconds": 81.6
+        },
+        {
+          "setup": "b6mn",
+          "payoff": "76ur",
+          "gap_seconds": 204.6
+        },
+        {
+          "setup": "jtmg",
+          "payoff": "3zwf",
+          "gap_seconds": 346.5
+        },
+        {
+          "setup": "r14i02",
+          "payoff": "idiy",
+          "gap_seconds": 16.4
+        },
+        {
+          "setup": "zaky",
+          "payoff": "76ur",
+          "gap_seconds": 47.6
+        },
+        {
+          "setup": "r17e01",
+          "payoff": "8n2r",
+          "gap_seconds": 11.4
+        },
+        {
+          "setup": "r12t01",
+          "payoff": "3zwf",
+          "gap_seconds": 25.7
+        },
+        {
+          "setup": "3zwf",
+          "payoff": "r15n01",
+          "gap_seconds": 13
+        },
+        {
+          "setup": "r15n02",
+          "payoff": "jspd",
+          "gap_seconds": 23.9
+        },
+        {
+          "setup": "r3n01",
+          "payoff": "r4n01",
+          "gap_seconds": 47.5
+        },
+        {
+          "setup": "r6o01",
+          "payoff": "r12o02",
+          "gap_seconds": 23.4
+        },
+        {
+          "setup": "r6o02",
+          "payoff": "r12e06",
+          "gap_seconds": 51.2
+        },
+        {
+          "setup": "r6i01",
+          "payoff": "9ijb",
+          "gap_seconds": 24.8
+        },
+        {
+          "setup": "r6e01",
+          "payoff": "q4zn",
+          "gap_seconds": 60.2
+        },
+        {
+          "setup": "r6t01",
+          "payoff": "r13t02",
+          "gap_seconds": 28.1
+        },
+        {
+          "setup": "r6t02",
+          "payoff": "r15n01",
+          "gap_seconds": 19.2
+        },
+        {
+          "setup": "r6n01",
+          "payoff": "opk01",
+          "gap_seconds": 33.6
+        }
+      ],
+      "declared_loop_question_cadence_45": {
+        "max_gap_seconds": 83.5,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r6o01",
+            "to": "r6o02",
+            "seconds": 61.3
+          },
+          {
+            "from": "r17e01",
+            "to": "r6e01",
+            "seconds": 83.5
+          },
+          {
+            "from": "r6e01",
+            "to": "r6t01",
+            "seconds": 45.7
+          },
+          {
+            "from": "r6n01",
+            "to": "body:end",
+            "seconds": 48.1
+          }
+        ],
+        "devices": [
+          {
+            "at": 46.8,
+            "id": "body:start"
+          },
+          {
+            "at": 67.9,
+            "id": "r6o01"
+          },
+          {
+            "at": 129.2,
+            "id": "r6o02"
+          },
+          {
+            "at": 173.5,
+            "id": "r6i01"
+          },
+          {
+            "at": 218.3,
+            "id": "r17e01"
+          },
+          {
+            "at": 301.8,
+            "id": "r6e01"
+          },
+          {
+            "at": 347.5,
+            "id": "r6t01"
+          },
+          {
+            "at": 387.7,
+            "id": "r6t02"
+          },
+          {
+            "at": 420.1,
+            "id": "r3n01"
+          },
+          {
+            "at": 447.2,
+            "id": "r6n01"
+          },
+          {
+            "at": 495.3,
+            "id": "body:end"
+          }
+        ]
+      },
+      "all_voiced_question_cadence_45": {
+        "max_gap_seconds": 61.3,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r6o01",
+            "to": "r6o02",
+            "seconds": 61.3
+          },
+          {
+            "from": "r6e01",
+            "to": "r6t01",
+            "seconds": 45.7
+          },
+          {
+            "from": "r6n01",
+            "to": "body:end",
+            "seconds": 48.1
+          }
+        ],
+        "devices": [
+          {
+            "at": 46.8,
+            "id": "body:start"
+          },
+          {
+            "at": 67.9,
+            "id": "r6o01"
+          },
+          {
+            "at": 129.2,
+            "id": "r6o02"
+          },
+          {
+            "at": 173.5,
+            "id": "r6i01"
+          },
+          {
+            "at": 218.3,
+            "id": "r17e01"
+          },
+          {
+            "at": 257,
+            "id": "apb3"
+          },
+          {
+            "at": 301.8,
+            "id": "r6e01"
+          },
+          {
+            "at": 347.5,
+            "id": "r6t01"
+          },
+          {
+            "at": 387.7,
+            "id": "r6t02"
+          },
+          {
+            "at": 420.1,
+            "id": "r3n01"
+          },
+          {
+            "at": 447.2,
+            "id": "r6n01"
+          },
+          {
+            "at": 495.3,
+            "id": "body:end"
+          }
+        ]
+      },
+      "sourced_event_proxy_cadence_45_unreviewed": {
+        "max_gap_seconds": 39,
+        "gaps_over_45_seconds": [],
+        "devices": [
+          {
+            "at": 46.8,
+            "id": "body:start"
+          },
+          {
+            "at": 63.4,
+            "id": "r12o01"
+          },
+          {
+            "at": 96,
+            "id": "r12o02"
+          },
+          {
+            "at": 119.4,
+            "id": "r3o01"
+          },
+          {
+            "at": 123.8,
+            "id": "83ew"
+          },
+          {
+            "at": 140.2,
+            "id": "r14i02"
+          },
+          {
+            "at": 169.8,
+            "id": "dgbq"
+          },
+          {
+            "at": 193.5,
+            "id": "zaky"
+          },
+          {
+            "at": 198.3,
+            "id": "j9sw"
+          },
+          {
+            "at": 229.7,
+            "id": "s7me"
+          },
+          {
+            "at": 252,
+            "id": "amrq"
+          },
+          {
+            "at": 279.5,
+            "id": "r17e02"
+          },
+          {
+            "at": 296.4,
+            "id": "r16e01"
+          },
+          {
+            "at": 335.4,
+            "id": "r15t07"
+          },
+          {
+            "at": 342.3,
+            "id": "crcw"
+          },
+          {
+            "at": 368.4,
+            "id": "q4zn"
+          },
+          {
+            "at": 394,
+            "id": "3zwf"
+          },
+          {
+            "at": 413,
+            "id": "r15n01"
+          },
+          {
+            "at": 442.7,
+            "id": "r3n02"
+          },
+          {
+            "at": 467.6,
+            "id": "r3n05"
+          },
+          {
+            "at": 474.1,
+            "id": "r4n01"
+          },
+          {
+            "at": 480.8,
+            "id": "7asx"
+          },
+          {
+            "at": 495.3,
+            "id": "body:end"
+          }
+        ]
+      }
+    },
+    "300": {
+      "r5_seconds": 447.4,
+      "candidate_seconds": 475.1,
+      "shortfall_to_540_seconds": 64.9,
+      "six_chapter_seconds": [
+        {
+          "scene_id": "hook-01",
+          "seconds": 43.4
+        },
+        {
+          "scene_id": "origin-budget",
+          "seconds": 76.3
+        },
+        {
+          "scene_id": "idea-memory",
+          "seconds": 59.7
+        },
+        {
+          "scene_id": "engine-01",
+          "seconds": 100.3
+        },
+        {
+          "scene_id": "turn-04",
+          "seconds": 85.5
+        },
+        {
+          "scene_id": "now-crew-request",
+          "seconds": 109.9
+        }
+      ],
+      "loops": [
+        {
+          "setup": "r17h01",
+          "payoff": "r3o01",
+          "gap_seconds": 75.6
+        },
+        {
+          "setup": "b6mn",
+          "payoff": "76ur",
+          "gap_seconds": 189.6
+        },
+        {
+          "setup": "jtmg",
+          "payoff": "3zwf",
+          "gap_seconds": 321.2
+        },
+        {
+          "setup": "r14i02",
+          "payoff": "idiy",
+          "gap_seconds": 15.2
+        },
+        {
+          "setup": "zaky",
+          "payoff": "76ur",
+          "gap_seconds": 44.1
+        },
+        {
+          "setup": "r17e01",
+          "payoff": "8n2r",
+          "gap_seconds": 10.6
+        },
+        {
+          "setup": "r12t01",
+          "payoff": "3zwf",
+          "gap_seconds": 23.9
+        },
+        {
+          "setup": "3zwf",
+          "payoff": "r15n01",
+          "gap_seconds": 12
+        },
+        {
+          "setup": "r15n02",
+          "payoff": "jspd",
+          "gap_seconds": 22.1
+        },
+        {
+          "setup": "r3n01",
+          "payoff": "r4n01",
+          "gap_seconds": 44.1
+        },
+        {
+          "setup": "r6o01",
+          "payoff": "r12o02",
+          "gap_seconds": 21.7
+        },
+        {
+          "setup": "r6o02",
+          "payoff": "r12e06",
+          "gap_seconds": 47.5
+        },
+        {
+          "setup": "r6i01",
+          "payoff": "9ijb",
+          "gap_seconds": 23
+        },
+        {
+          "setup": "r6e01",
+          "payoff": "q4zn",
+          "gap_seconds": 55.8
+        },
+        {
+          "setup": "r6t01",
+          "payoff": "r13t02",
+          "gap_seconds": 26
+        },
+        {
+          "setup": "r6t02",
+          "payoff": "r15n01",
+          "gap_seconds": 17.8
+        },
+        {
+          "setup": "r6n01",
+          "payoff": "opk01",
+          "gap_seconds": 31.2
+        }
+      ],
+      "declared_loop_question_cadence_45": {
+        "max_gap_seconds": 77.4,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r6o01",
+            "to": "r6o02",
+            "seconds": 56.8
+          },
+          {
+            "from": "r17e01",
+            "to": "r6e01",
+            "seconds": 77.4
+          }
+        ],
+        "devices": [
+          {
+            "at": 43.4,
+            "id": "body:start"
+          },
+          {
+            "at": 62.9,
+            "id": "r6o01"
+          },
+          {
+            "at": 119.7,
+            "id": "r6o02"
+          },
+          {
+            "at": 160.8,
+            "id": "r6i01"
+          },
+          {
+            "at": 202.3,
+            "id": "r17e01"
+          },
+          {
+            "at": 279.7,
+            "id": "r6e01"
+          },
+          {
+            "at": 322.1,
+            "id": "r6t01"
+          },
+          {
+            "at": 359.4,
+            "id": "r6t02"
+          },
+          {
+            "at": 389.4,
+            "id": "r3n01"
+          },
+          {
+            "at": 414.5,
+            "id": "r6n01"
+          },
+          {
+            "at": 459.1,
+            "id": "body:end"
+          }
+        ]
+      },
+      "all_voiced_question_cadence_45": {
+        "max_gap_seconds": 56.8,
+        "gaps_over_45_seconds": [
+          {
+            "from": "r6o01",
+            "to": "r6o02",
+            "seconds": 56.8
+          }
+        ],
+        "devices": [
+          {
+            "at": 43.4,
+            "id": "body:start"
+          },
+          {
+            "at": 62.9,
+            "id": "r6o01"
+          },
+          {
+            "at": 119.7,
+            "id": "r6o02"
+          },
+          {
+            "at": 160.8,
+            "id": "r6i01"
+          },
+          {
+            "at": 202.3,
+            "id": "r17e01"
+          },
+          {
+            "at": 238.2,
+            "id": "apb3"
+          },
+          {
+            "at": 279.7,
+            "id": "r6e01"
+          },
+          {
+            "at": 322.1,
+            "id": "r6t01"
+          },
+          {
+            "at": 359.4,
+            "id": "r6t02"
+          },
+          {
+            "at": 389.4,
+            "id": "r3n01"
+          },
+          {
+            "at": 414.5,
+            "id": "r6n01"
+          },
+          {
+            "at": 459.1,
+            "id": "body:end"
+          }
+        ]
+      },
+      "sourced_event_proxy_cadence_45_unreviewed": {
+        "max_gap_seconds": 36.2,
+        "gaps_over_45_seconds": [],
+        "devices": [
+          {
+            "at": 43.4,
+            "id": "body:start"
+          },
+          {
+            "at": 58.7,
+            "id": "r12o01"
+          },
+          {
+            "at": 89,
+            "id": "r12o02"
+          },
+          {
+            "at": 110.6,
+            "id": "r3o01"
+          },
+          {
+            "at": 114.7,
+            "id": "83ew"
+          },
+          {
+            "at": 129.9,
+            "id": "r14i02"
+          },
+          {
+            "at": 157.4,
+            "id": "dgbq"
+          },
+          {
+            "at": 179.4,
+            "id": "zaky"
+          },
+          {
+            "at": 183.8,
+            "id": "j9sw"
+          },
+          {
+            "at": 212.9,
+            "id": "s7me"
+          },
+          {
+            "at": 233.6,
+            "id": "amrq"
+          },
+          {
+            "at": 259.1,
+            "id": "r17e02"
+          },
+          {
+            "at": 274.7,
+            "id": "r16e01"
+          },
+          {
+            "at": 310.9,
+            "id": "r15t07"
+          },
+          {
+            "at": 317.3,
+            "id": "crcw"
+          },
+          {
+            "at": 341.5,
+            "id": "q4zn"
+          },
+          {
+            "at": 365.2,
+            "id": "3zwf"
+          },
+          {
+            "at": 382.8,
+            "id": "r15n01"
+          },
+          {
+            "at": 410.3,
+            "id": "r3n02"
+          },
+          {
+            "at": 433.5,
+            "id": "r3n05"
+          },
+          {
+            "at": 439.5,
+            "id": "r4n01"
+          },
+          {
+            "at": 445.7,
+            "id": "7asx"
+          },
+          {
+            "at": 459.1,
+            "id": "body:end"
+          }
+        ]
+      }
+    }
+  },
+  "duration_540_gate": "HOLD",
+  "strict_45_second_gate": "HOLD",
+  "source_event_45_second_gate": "UNREVIEWED_PROXY_ONLY",
+  "independent_fact_review": "NOT_RUN",
+  "independent_listener_review": "NOT_RUN",
+  "independent_visual_review": "NOT_RUN",
+  "script_review_receipt": "NOT_ISSUED",
+  "actual_tts_or_media": "NOT_RUN",
+  "production_or_paid_work": "NOT_RUN"
+}
