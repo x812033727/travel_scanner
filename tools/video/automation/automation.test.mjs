@@ -767,6 +767,69 @@ test("the planner sees every video on /admin/videos and may not retell an articl
   assert.equal(site.calls.reviews.length, 0, "nothing reaches the owner");
 });
 
+// Ticket 2026-10-10-refuse-a-second-video-of-an: an official page stays among the topics for 14
+// days, and nothing but the planner's reading of earlier titles kept it from a second video.
+const OFFICIAL_URL = "https://claude.com/blog/skills-explained";
+const OFFICIAL_TOPIC = { source: "official", title: "Claude blog｜Skills explained", summary: "s", url: OFFICIAL_URL, slug: "", date: "" };
+const officialPlan = (slug) => (body) => ({ slug, title: "Skills 怎麼用", source_guide: null, source_urls: [OFFICIAL_URL, "https://openai.com/a"], brief: body.payload.owner_note ? brief(["A", "C"]) : brief(["A", "B"]) });
+const offerOfficial = (automation) => {
+  const topics = automation.api.topics.bind(automation.api);
+  automation.api.topics = async () => {
+    const found = await topics();
+    return { ...found, topics: [...found.topics, OFFICIAL_TOPIC] };
+  };
+};
+
+test("a page an earlier video rests on without a site article is not offered again, and a plan that opens on it is refused", async () => {
+  assert.match(planProblem({ slug: "skills-again", brief: brief(), source_guide: null, source_urls: [OFFICIAL_URL] }, new Set(), new Set(), "slides", "", null, null, new Set([OFFICIAL_URL])), /the page https:\/\/claude\.com\/blog\/skills-explained is what an earlier video rests on/);
+  assert.equal(planProblem({ slug: "skills-again", brief: brief(), source_guide: null, source_urls: ["https://openai.com/a", OFFICIAL_URL] }, new Set(), new Set(), "slides", "", null, null, new Set([OFFICIAL_URL])), null, "only the first page counts");
+
+  for (const dropped of [false, true]) {
+    const box = sandbox();
+    const first = "skills-explained";
+    const answers = { ...answersFor("skills-again"), planner: officialPlan(first) };
+    const site = fakeSite({ answers, settings: { max_waiting_drafts: 3, draft_interval_hours: 1 } });
+    const clock = { now: Date.parse("2026-10-17T09:00:00Z") };
+    const { ctx } = context(box, site.fetchImpl, clock);
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    offerOfficial(automation);
+    assert.match(await automation.step(), /planned from 2 topics/);
+    const made = automatedVideos(box.work).find((state) => state.slug === first);
+    assert.deepEqual([made.source_guide, made.source_urls[0]], [null, OFFICIAL_URL]);
+    if (dropped) Object.assign(site.listed.get(first), { dropped_at: "2026-10-17T09:30:00Z", dropped_note: "不要這支" });
+    if (dropped) await automation.step();
+
+    clock.now += 2 * 3600_000;
+    answers.planner = officialPlan("skills-again");
+    const planned = site.calls.run.length;
+    assert.match(await automation.step(), /not usable \(the page https:\/\/claude\.com\/blog\/skills-explained is what an earlier video rests on/, dropped ? "a dropped video's page" : "a made video's page");
+    const [ask, again] = site.calls.run.slice(planned);
+    assert.deepEqual(ask.payload.topics.map((topic) => topic.url), ["https://mokaair.com/zh-TW/life/chatgpt-ads-status"], "the page is not offered");
+    assert.match(again.payload.previous_problem, /earlier video rests on/, "the second try is told why, as for a used article");
+    assert.equal(site.reviewsOf("skills-again").length, 0);
+  }
+});
+
+test("a scheduled draft re-planned onto an official page records no article; a slides request keeps its own", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const answers = answersFor(slug);
+  const site = fakeSite({ answers });
+  const clock = { now: Date.parse("2026-10-17T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  await automation.step();
+  const state = () => automatedVideos(box.work).find((each) => each.slug === slug);
+  assert.equal(state().source_guide, "chatgpt-ads-status");
+  answers.planner = officialPlan(slug);
+  Object.assign(site.reviewsOf(slug)[0], { status: "rejected", note: "改講官方的 Skills 說明" });
+  assert.match(await automation.step(), /brief rewritten after the owner's note \(round 1\)/);
+  assert.deepEqual([state().source_guide, state().source_urls[0]], [null, OFFICIAL_URL], "until 2026-10-17 the old article stayed");
+  assert.deepEqual(site.calls.run.at(-1).payload.topics.map((topic) => topic.url), ["https://mokaair.com/zh-TW/life/chatgpt-ads-status"], "its own page is no repeat");
+});
+
 test("the planner's earlier videos are the docs/videos folders with a video.json or a brief.md, not the folders of plans and notes", () => {
   const box = sandbox();
   const notes = path.join(box.videos, "ai-shorts");

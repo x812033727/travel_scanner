@@ -240,6 +240,25 @@ export function automatedVideos(workBase) {
     .sort((a, b) => String(a.created_at).localeCompare(String(b.created_at)));
 }
 
+/**
+ * The pages earlier automated videos rest on without a site article: each one's first
+ * `source_urls` entry when its `source_guide` is empty, dropped videos included and `ownSlug`
+ * left out. Only the first URL counts; later ones may be shared between videos. An official page
+ * (topics.py `official_topics`) stays among the candidates for 14 days, so without this a page
+ * made into one video would be offered to every draft after it.
+ */
+export function usedPages(workBase, ownSlug = null) {
+  return new Set(automatedVideos(workBase)
+    .filter((state) => state.slug !== ownSlug && !state.source_guide && !state.unplanned)
+    .map((state) => state.source_urls?.[0])
+    .filter((url) => typeof url === "string" && url));
+}
+
+/** The topics a scheduled draft may plan from: none whose page an earlier video rests on. */
+function freshTopics(topics, pages) {
+  return (topics ?? []).filter((topic) => !pages.has(topic?.url));
+}
+
 function saveState(workdir, state) {
   mkdirSync(workdir, { recursive: true });
   atomicWrite(path.join(workdir, STATE_FILE), `${JSON.stringify(state, null, 2)}\n`);
@@ -352,9 +371,10 @@ export function siteSources(sourceGuide, urls = [], root = ROOT) {
  * channel stance, 站主觀點 must open by naming the stance points it applies (core/lint.mjs
  * stanceProblems); the local `lint` has no stance and does not check this. `requiredGuide` is
  * the site article the owner asked a slides video of (draftSlides): the brief must retell that
- * one, whatever earlier video used it.
+ * one, whatever earlier video used it. `pages` are the pages earlier videos rest on without a
+ * site article (usedPages): a plan with no site article may not open on one of them.
  */
-export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null, requiredGuide = null) {
+export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null, requiredGuide = null, pages = new Set()) {
   if (!plan || typeof plan !== "object") return "the answer is not an object";
   if (!SLUG.test(plan.slug ?? "")) return `slug "${plan.slug}" is not lowercase kebab-case of at most 60 characters`;
   if (taken.has(plan.slug)) return `slug "${plan.slug}" is already used by an earlier video`;
@@ -369,6 +389,7 @@ export function planProblem(plan, taken, usedGuides = new Set(), format = "slide
   if (requiredGuide && plan.source_guide !== requiredGuide) return `source_guide must be "${requiredGuide}", the site article the owner asked for (requested_guide)`;
   const guide = mainGuide(plan);
   if (guide && usedGuides.has(guide)) return `the site article "${guide}" is what an earlier video retells (see used_guides); pick another topic`;
+  if (!guide && pages.has(plan.source_urls[0])) return `the page ${plan.source_urls[0]} is what an earlier video rests on; pick another topic`;
   return null;
 }
 
@@ -1956,13 +1977,15 @@ export class Automation {
     } catch (error) {
       return this.draftWaits(error, "the topic lookup");
     }
-    const { topics, notes } = found;
+    const { notes } = found;
     const now = this.ctx.now().toISOString();
     const draftSlug = `draft-${now.slice(0, 16).replace(/[-:T]/g, "")}`;
     const earlier = this.earlierVideos();
     const taken = new Set(earlier.map((video) => video.slug));
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
-    const { plan, problem, lost } = await this.firstPlan(draftSlug, (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), (answer) => planProblem(answer, taken, usedGuides, "slides", this.stance));
+    const pages = usedPages(this.workBase);
+    const topics = freshTopics(found.topics, pages);
+    const { plan, problem, lost } = await this.firstPlan(draftSlug, (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), (answer) => planProblem(answer, taken, usedGuides, "slides", this.stance, null, null, pages));
     // Written whatever came of it: a failed draft waits for the next interval like a good one.
     this.markDrafted();
     if (lost) return this.unanswered(this.unplannedVideo({ slug: draftSlug, format: "slides", title: `排程草稿 ${now.slice(0, 16).replace("T", " ")} UTC`, source_guide: null }, "draft"), lost);
@@ -2770,8 +2793,10 @@ export class Automation {
     } else if (state.unplanned === "drama") {
       ask = { payload: await this.dramaPlanPayload(state, earlier), check: (answer) => planProblem(own(answer), taken, state.source_guide ? new Set() : usedGuides, "drama", this.stance, state.style_preset ?? null), options: { maxOutputTokens: 16_000, format: "drama", variant: this.variantOf(state) } };
     } else {
-      const { topics, notes } = await this.api.topics();
-      ask = { payload: (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), check: (answer) => planProblem(own(answer), taken, usedGuides, "slides", this.stance) };
+      const { topics: offered, notes } = await this.api.topics();
+      const pages = usedPages(this.workBase, state.slug);
+      const topics = freshTopics(offered, pages);
+      ask = { payload: (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), check: (answer) => planProblem(own(answer), taken, usedGuides, "slides", this.stance, null, null, pages) };
     }
     const { plan, problem, lost } = await this.firstPlan(state.slug, ask.payload, ask.check, ask.options);
     if (lost) throw lost;
@@ -2803,14 +2828,16 @@ export class Automation {
     const drama = state.format === "drama";
     // An owner's slides request keeps its article through every re-plan (draftSlides): no topics.
     const requested = state.slides_request ?? null;
-    const { topics } = drama || requested ? { topics: [] } : await this.api.topics();
+    const pages = drama || requested ? new Set() : usedPages(this.workBase, state.slug);
+    const { topics: offered } = drama || requested ? { topics: [] } : await this.api.topics();
+    const topics = freshTopics(offered, pages);
     if (drama) state.target_minutes = hasAnimePolicy(state) ? requireAnimePolicy(state.series).body_target_seconds / 60 : episodeMinutes(state.target_minutes, state.style_preset);
     const extra = drama
       ? { premise: state.premise, target_minutes: [state.target_minutes, state.target_minutes], source_guide: state.source_guide, ...this.dramaPayload(state) }
       : { topics, ...(requested ? { requested_guide: this.requestedGuide(requested) } : {}) };
     const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format, drama ? this.variantOf(state) : null);
     const chosen = (drama && state.source_guide) || requested;
-    const problem = planProblem({ ...answer, slug: state.slug }, taken, chosen ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null, requested?.source_guide ?? null);
+    const problem = planProblem({ ...answer, slug: state.slug }, taken, chosen ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null, requested?.source_guide ?? null, pages);
     state.replans += 1;
     state.notes.push(`outline sent back by ${by}: ${note}`);
     saveState(this.workdir(state.slug), state);
@@ -2818,7 +2845,9 @@ export class Automation {
     this.cleared(state, "planner");
     writeFileSync(path.join(dir, "brief.md"), answer.brief.endsWith("\n") ? answer.brief : `${answer.brief}\n`);
     state.source_urls = (answer.source_urls ?? state.source_urls).slice(0, 12);
-    state.source_guide = requested?.source_guide ?? answer.source_guide ?? state.source_guide;
+    // A drama adaptation and an owner's slides request keep their article; a scheduled draft takes
+    // the planner's answer as given, so a re-plan onto an official page records no article.
+    state.source_guide = requested?.source_guide ?? (drama ? answer.source_guide ?? state.source_guide : answer.source_guide || null);
     saveState(this.workdir(state.slug), state);
     return `brief rewritten after ${by === "Jev" ? "Jev's" : "the owner's"} note (round ${state.replans}); ${await this.submitOutline(state)}`;
   }
