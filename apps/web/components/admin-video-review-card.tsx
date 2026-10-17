@@ -300,8 +300,9 @@ function Score({ value, passes }: { value: number | null; passes: (value: number
 
 /**
  * Why Jev chose an outline (docs/videos/HANDS-OFF.md, the section on Jev picking it). payload.pick is
- * { choice, probabilities: { key: p }, options: { key: { stance, demo } }, advice }; a pending
- * review may carry a pick that did not clear the thresholds, and shows the same table.
+ * { choice, probabilities: { key: p }, options: { key: { stance, demo } }, advice }, with demo null when
+ * it was not asked; a pending review may carry a pick that did not clear the thresholds, and shows the
+ * same table.
  */
 function PickTable({ review }: { review: Review }) {
   const t = useTranslations("admin.videoReviews");
@@ -314,7 +315,10 @@ function PickTable({ review }: { review: Review }) {
   const advice = number(pick.advice);
   if (keys.length === 0 && !choice && advice === null) return null;
   const chosen = record(scores[choice]);
-  const passed = (number(chosen.stance) ?? 0) >= PICK_MIN_STANCE && (number(chosen.demo) ?? 0) >= PICK_MIN_DEMO && advice !== null && advice <= PICK_MAX_ADVICE;
+  // A demo of null was not asked: the site files the video as an explainer or a story
+  // (docs/videos/HANDS-OFF.md, who is asked for a demonstration). A missing score still counts as none.
+  const demoPasses = chosen.demo === null || (number(chosen.demo) ?? 0) >= PICK_MIN_DEMO;
+  const passed = (number(chosen.stance) ?? 0) >= PICK_MIN_STANCE && demoPasses && advice !== null && advice <= PICK_MAX_ADVICE;
   return <div className="grid gap-3 rounded-2xl border border-[var(--line)] p-4" aria-label={t("pickReasons")}>
     <p className="font-bold">{t("pickReasons")}</p>
     <table className="w-full text-sm">
@@ -326,7 +330,7 @@ function PickTable({ review }: { review: Review }) {
           <td className="py-1 pr-3">{t("option", { key })}{key === choice && <span className="ml-2 text-xs text-[var(--teal)]">{t("pickChosen")}</span>}</td>
           <td className="py-1 pr-3 font-mono">{probability === null ? "—" : probability.toFixed(2)}</td>
           <td className="py-1 pr-3"><Score value={number(score.stance)} passes={(value) => value >= PICK_MIN_STANCE} /></td>
-          <td className="py-1"><Score value={number(score.demo)} passes={(value) => value >= PICK_MIN_DEMO} /></td>
+          <td className="py-1">{score.demo === null ? <span className="text-[var(--muted)]">{t("pickDemoNotAsked")}</span> : <Score value={number(score.demo)} passes={(value) => value >= PICK_MIN_DEMO} />}</td>
         </tr>;
       })}</tbody>
     </table>
