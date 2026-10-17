@@ -1,11 +1,14 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fixture } from './synthetic-fixture.mjs';
 import { planPinnedTransition, preparePinnedEvent, verifyPinnedTransition } from './transition.mjs';
 import { readStoryLexicon } from './snapshot-format.mjs';
+import { inspectPinnedSnapshot, parseInspectionArgs } from './inspect-pinned.mjs';
 
 const SLUG = 'story-rolling-suitcase-v2';
 const KIND = 'a01_pinned_historical_lexicon_20261017';
@@ -42,6 +45,11 @@ test('an isolated 80-to-81 pin preserves the old dictionary, all old files and c
   assert.equal(checked.integrity, 'LOCAL_PINNED_81_EVENT_TRANSITION_PASS');
   assert.equal(checked.production_status, 'HOLD');
   assert.equal(checked.installation_allowed, false);
+  const inspected = inspectPinnedSnapshot({ ...f.options, beforeRoot: f.beforeRoot, afterRoot: f.afterRoot });
+  assert.equal(inspected.inspection, 'EXACT_PINNED_CAPTURE_PASS');
+  assert.equal(inspected.release_allowed, false);
+  assert.equal(inspected.paid_work_allowed, false);
+  assert.equal(inspected.production_status, 'HOLD');
   const before = JSON.parse(readFileSync(f.at(f.beforeRoot, `${SLUG}/auto.json`)));
   const after = JSON.parse(readFileSync(f.at(f.afterRoot, `${SLUG}/auto.json`)));
   delete after.story.lexicon_sha256;
@@ -80,6 +88,9 @@ test('partial publication, a new optional approval and changed shared bytes cann
 test('a changed review, reused reviewer identity or old state mutation is rejected', t => {
   const f = fixture(t);
   const input = evidence(f);
+  const changedReview = JSON.parse(input.reviewBytes);
+  changedReview.reviewer = 'different-synthetic-reviewer';
+  assert.throws(() => preparePinnedEvent({ ...f.options, ...input, reviewBytes: json(changedReview) }), /OWNER_RECORD_RECEIPT_INVALID/);
   const receipt = JSON.parse(input.receiptBytes);
   receipt.operator = 'synthetic-independent-reviewer';
   assert.throws(() => preparePinnedEvent({ ...f.options, ...input, receiptBytes: json(receipt) }), /OWNER_RECORD_RECEIPT_INVALID/);
@@ -88,4 +99,25 @@ test('a changed review, reused reviewer identity or old state mutation is reject
   current.story.narrative_fixes = 0;
   f.write(f.afterRoot, `${SLUG}/auto.json`, json(current));
   assert.throws(() => verify(f), /TRANSITION_FILE_MISMATCH/);
+});
+
+test('read-only inspector fails closed and rejects write-like or incomplete arguments', t => {
+  const f = fixture(t);
+  f.clone();
+  const report = inspectPinnedSnapshot({ ...f.options, beforeRoot: f.beforeRoot, afterRoot: f.afterRoot });
+  assert.equal(report.inspection, 'HOLD');
+  assert.equal(report.release_allowed, false);
+  assert.equal(report.paid_work_allowed, false);
+  assert.equal(report.production_status, 'HOLD');
+  assert.equal(Object.hasOwn(report, 'stack'), false);
+  for (const args of [[], ['--apply'], ['--before', '--after', '--after', 'x', '--old-lexicon', 'y'],
+    ['--before', 'x', '--after', 'y', '--old-lexicon', 'z', '--apply']]) {
+    assert.throws(() => parseInspectionArgs(args), /usage:/);
+  }
+  const parsed = parseInspectionArgs(['--before', f.beforeRoot, '--after', f.afterRoot, '--old-lexicon', f.oldLexiconFile]);
+  assert.equal(parsed.beforeRoot, path.resolve(f.beforeRoot));
+  const cli = spawnSync(process.execPath, [fileURLToPath(new URL('./inspect-pinned.mjs', import.meta.url)), '--apply'], { encoding: 'utf8' });
+  assert.equal(cli.status, 2);
+  assert.equal(JSON.parse(cli.stdout).reason, 'INSPECTION_ARGUMENTS_INVALID');
+  assert.equal(JSON.parse(cli.stdout).paid_work_allowed, false);
 });

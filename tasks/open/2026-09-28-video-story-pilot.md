@@ -467,3 +467,9 @@ The reviewed Row10c plan is now assembled into a deterministic local import cand
 - Draft runtime integration is #1548; preserves #1518 and the released merged-task files.
 - Added scoped offline A01-pinned-lexicon-transition-candidate-20261017: 4/4 synthetic tests PASS; actual captured 80-event plan f269a6337f6a7900a02b6a8b0860b055b4e19c203ecab85675026dd17455a41f, 185 historical files retained, old ebfa dictionary pinned, shared e640 unchanged, only two auto binding fields planned. No real 81st append, host write or paid call.
 - Independent candidate review PASS (offline scope, P1/P2 zero), 4/4 tests and actual plan SHA independently reproduced; host adoption/uncertain job and new pinned 81-to-82 narrative bridge remain unfinished. A01/B18 and follow-on films remain incomplete.
+
+### 2026-10-17 pinned capture inspector follow-up
+
+- Added read-only inspect-pinned.mjs exact before/after capture entry; no write/apply route, failed CLI exit 2, all successful integrity reports retain production HOLD and release/paid/installation false.
+- Five focused tests pass, including actual spawned CLI exit, tampered-review receipt binding and partial-capture refusal. Independent inspector review reports 0 P1/P2; original review remains preserved. Actual 80-event same-root check remains HOLD because no real 81st append exists.
+- Remaining: guarded cross-volume host adoption/recovery, fresh evidence and uncertain job disposition, actual host authority, pinned 81-to-82 narrative bridge and normal script/media gates. No production write or paid call.

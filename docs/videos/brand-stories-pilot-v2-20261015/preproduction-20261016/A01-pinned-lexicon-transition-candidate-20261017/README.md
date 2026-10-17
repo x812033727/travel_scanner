@@ -10,7 +10,7 @@ The planner authenticates the captured chain through the existing e640 rebaselin
 
 ## Evidence and boundaries
 
-- Four synthetic tests pass: intact transition, old-file mutation/addition rejection, partial publication/shared drift/extra approval rejection, and evidence identity/state mutation rejection. Synthetic owner/review strings are test data only.
+- Five synthetic tests pass: intact transition, old-file mutation/addition rejection, partial publication/shared drift/extra approval rejection, and evidence identity/state mutation rejection. Synthetic owner/review strings are test data only. The read-only inspector CLI rejects incomplete or write-like arguments with exit 2; even an exact local readback keeps release_allowed:false.
 - local-plan-summary.json records a read-only plan against the captured 80-event source; 185 historical evidence files were hashed. This is a plan, not a persisted migration or permission to publish it.
 - snapshot-format.mjs is the #1548 format module with only its two relative imports adjusted. Restoring those import paths gives SHA-256 66e11923b9de4a0ac065a1f4f9b38819c665ee7fa53a32957490069286434982.
 - preparePinnedEvent requires separately supplied review and owner-record bytes, bound to this plan and source hashes. Matching strings cannot authenticate a person or create authorization; the future caller must verify authority separately.
@@ -22,4 +22,8 @@ Run transition.test.mjs with Node 24.19 or later using --test. The planning CLI 
 
 ## Still required
 
-Independent review of this candidate; a guarded host adoption protocol covering atomic visibility of both docs and work-state files; a fresh matching production export and explicit host action authorization; resolution of the uncertain legacy job; and an updated 81-to-82 narrative transition bound to the pinned dictionary. The older e640 round20 bridge does not validate this new source. A01 must pass factual, listening and storytelling gates before paid media. Nothing here approves a script, resets retries, changes the shared dictionary, releases a HOLD, deploys #1548, or completes a film.
+Independent review of the read-only inspector addition; a guarded host adoption protocol covering atomic visibility of both docs and work-state files; a fresh matching production export and explicit host action authorization; resolution of the uncertain legacy job; and an updated 81-to-82 narrative transition bound to the pinned dictionary. The older e640 round20 bridge does not validate this new source. A01 must pass factual, listening and storytelling gates before paid media. Nothing here approves a script, resets retries, changes the shared dictionary, releases a HOLD, deploys #1548, or completes a film.
+
+## Read-only pinned inspection entry
+
+inspect-pinned.mjs --before <local-80-capture> --after <local-81-capture> --old-lexicon <historical-json> reuses the complete transition verifier and emits a compact JSON report. Exit 0 means only the exact captured transition passed integrity checks; production_status remains HOLD and release/installation/paid flags remain false. Exit 2 means inspection failed. It does not inspect or settle SQL jobs, acquire production locks, verify human authority, adopt data, or validate later narrative events. The original historical 80-link inspector is unchanged. A same-root check of the actual 80-event capture correctly returned HOLD/ENOENT because a real 81st event is absent.
