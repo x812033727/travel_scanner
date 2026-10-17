@@ -164,5 +164,5 @@ scope:
 ### 2026-10-17 M09 私人影片讀回
 
 - 站主回覆「已上傳並四語試播正常」；2026-10-17 03:32 UTC 後台唯讀讀回 `stage=on YouTube`、影片 ID `yGF95x3O9U0`，`youtube_publish_at=null`，上述 `publish`／`languages` 最新卡仍為同 ID、同 SHA 的 `approved`。詳見 `docs/videos/curio-m09/youtube-readback-20261017.md`。
-- 同步紀錄顯示 `mode=upload`、`visibility=private`、`accept_private_lock=true`，網站 API 上傳被私人鎖定；`details`、四語字幕與主縮圖步驟 `done`，英／日／韓配音的後台狀態是 `uploaded`。四語播放正常屬站主回覆，尚待對照站主試播頁 ID 是否為 `yGF95x3O9U0`；無公開或排程證據。
+- 同步紀錄顯示 `mode=upload`、`visibility=private`、`accept_private_lock=true`，後台另顯示 `audited=false`；可確定由網站 API 以私人模式上傳，不能單憑警示／同意欄位斷言 YouTube 實際鎖住可見度。`details`、四語字幕與主縮圖步驟 `done`，英／日／韓配音的後台狀態是 `uploaded`。站主其後明確確認四語試播的是**同一支** `yGF95x3O9U0`；是否只能私人仍待查看這支影片的 Studio 可見度選項。無公開或排程證據。
 - 本機 `video.json.youtube.video_id` 仍空，因此本機 `status` 落後於後台。另有手動影片 ID 同步任務；本次不改動已核准稿件檔案，只留收據交接。
