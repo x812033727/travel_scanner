@@ -99,7 +99,7 @@ for (const scene of video.scenes) {
     const p = { ...l, at };
     if (edit.burn_subtitles && !(l.speaker === "xitong" && overlays[scene.id])) subs += subtitle(`${scene.id}-s${i}`, l.text, at, Math.min(dur, at + l.len + 0.08), l.speaker === "xitong" ? "0x9fe3ff" : "0xffffff");
     lineAt.push({ shot: scene.id, speaker: l.speaker, start: t + at, len: l.len });
-    srt.push({ start: t + at, end: t + at + l.len, text: l.text });
+    if (!(l.speaker === "xitong" && overlays[scene.id])) srt.push({ start: t + at, end: t + at + l.len, text: l.text });
     at += l.len + GAP;
     return p;
   });
