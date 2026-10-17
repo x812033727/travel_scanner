@@ -13,7 +13,6 @@ depends_on: []
 scope:
   - tools/video/core/curio.mjs
   - tools/video/core/curio.test.mjs
-  - tools/video/core/lint.mjs
   - .agents/skills/curio-episode
   - .claude/skills/curio-episode
   - .agents/skills/youtube-video/SKILL.md
@@ -61,3 +60,10 @@ three images at a time, and fell back to source cards.
 - New episodes take the host's cute-explainer route (`cute-mystery`), where `settle()` already drops
   a writer's `style`/`negative` and the nine-question judge reads every picture; Codex worked in
   local `slides` format, where none of that applies.
+
+2026-10-18 narrow claim release (owner-authorized): #1500 merged the curio lint
+gate into main at `bda1755ff049dbb7c89db858a080bcb788767427`; the latest
+main commit touching `tools/video/core/lint.mjs` is that same SHA. Release only
+that completed code-file claim for the A01-specific duration/narrative gate.
+This ticket stays in progress for its unchecked independent duration receipt
+and H04–H06 remake; reclaim `lint.mjs` if those later require further edits.

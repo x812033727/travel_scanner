@@ -18,9 +18,7 @@ scope:
   - tools/video/dubs/cli.mjs
   - tools/video/dubs/dubs.test.mjs
   - docs/videos/story-lexicon-integration.md
-  - tools/video/automation/story.mjs
   - tools/video/automation/flow.mjs
-  - tools/video/automation/story.test.mjs
   - tools/video/automation/flow.test.mjs
   - tools/video/automation/automation.test.mjs
   - tools/video/core/state.mjs
@@ -106,3 +104,11 @@ Draft PR #1548 contains the shared writer admission, per-story immutable publish
 Independent review found no additional P1/P2 in this draft runtime scope. Commit b31b4ce88 independently binds the three duration-covered files after verifying their 66092d968 baseline hashes. Strict reader/runtime/receipt tests passed 20/20, the two focused consumer regressions passed, long-form check passed all 473 plans, task check passed, and local docs-video suite passed 215/215. Hosted web, video-tests, containers and api checks passed on code-identical head 0d616f39479d61269256ea0fcdee165d62fc6c2e; remaining smoke/Lighthouse were still running when recorded. The duplicate full local tools/consumer runs were intentionally stopped after hosted affected suites passed; they are not recorded as local all-pass. Logs are in the local Codex captures directory under a01-lexicon-final-*.
 
 This task remains in-progress. A01's actual 80-to-81 audit/snapshot transition, new source-inspector compatibility and independent release gate are still required. The 80-link fixture currently proves byte preservation and refusal, not successful production migration. No host, deploy, import, paid call, retry or upload was made.
+
+2026-10-18 narrow claim release (owner-authorized): #1548 merged the
+`story.mjs` and `story.test.mjs` pronunciation changes into main at
+`4f02734769f683615d1ca8b641026ac8cf1f87b5`, which remains their latest
+main commit. Release only those two completed code-file claims so the A01
+duration worker can claim them independently. Preserve this ticket's other
+scopes and incomplete production transition; reclaim the files if later edits
+are needed. Draft #1518 remains untouched.
