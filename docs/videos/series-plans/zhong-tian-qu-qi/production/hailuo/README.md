@@ -38,3 +38,28 @@
   卡片 `<video>` 的 `video_raw_….mp4` 是浮水印版，不能拿來用。
 - 驅動 `__dhq.run()` 偶爾停在上傳那一步不再寫 log；最後一筆超過 4 分鐘就再呼叫一次（gen token 會讓舊的那個自己結束）。
 - 隱藏窗格下，單次 `await __v3zt.sleep()` 超過約 25 秒容易讓工具逾時，打氣迴圈用 20 秒一段。
+
+### 第 11–20 集與交接（2026-10-17～10-18）
+
+換帳號、換 agent 接手：先讀 `.agents/skills/animation-production/references/hailuo-batch-driver.md`。它寫了從零開始的步驟、打氣迴圈和所有已知的坑；這裡只記本系列自己的東西。
+
+- 本機腳本已經從暫存區搬進 `local/`，路徑都相對於 repo，工作區讀 `VIDEO_WORKDIR`：
+  - `rec.sh NNN`：錄音；第一次會從上一集複製三段配樂。
+  - `asm.sh NNN`：組片，加手機版和 `sheet.png`。
+  - `audit.mjs`：逐集查缺漏。
+  - `prep-import.mjs 1 2 … 1-5`：準備後台匯入資料夾。
+  - `lines.mjs`：給 `rec.sh` 用的錄音程式。
+  - `empty-lock.json`：給 `gen-dh.mjs` 用的空鎖定檔。
+- 合集：`compile-dh.mjs <first> <last> <out.mp4>`。只有第一集留片名卡，每集一個章節，CC 合併。
+  - 會另外寫出 `.youtube.json`（標題格式「種田娶妻打天下 第1–5集 | CC字幕」）和 `.chapters.txt`。
+  - 用 `REUSE=1` 時，沿用已經剪好的各集。
+- 封面：一季一張、不放字，所有語言共用（第一季是 `dh-keyart-season1-t1`）。
+  - `thumb-dh.py` 能畫帶字的封面，只當備用。
+- 新角色：韓伯 `hanbo`（聲音 Enceladus）、魏少卿 `weishaoqing`（聲音 Algieba）。
+- 新場景片語：
+  - "at the county academy gate" → `dh-set-shuyuan`
+  - "in the Xu family shop in the county town" → `dh-set-xuji-pu`
+  - "on the thatched roof of the farmhouse at night" → `dh-set-wuding`
+- 分鏡子代理的提示樣板：讀 e015 的五個檔，套用 storyboard-rules 與固定場景片語，每集中段標出【鉤子N】，三個檢查都要過。
+  - 平行寫的時候，前後集互相看不到，連戲靠 `season-01.json` 的前後集欄位。
+- 第 4 集 s09 的凍格，用 6 秒重拍成 `s09-t2` 解決。第 7 集 s31 孫掌櫃多一隻手，重畫首格成 t2 後重拍。
