@@ -4,6 +4,7 @@
 //   node compile-dh.mjs <first> <last> <out.mp4>
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 
 const [first, last, out] = [Number(process.argv[2]), Number(process.argv[3]), path.resolve(process.argv[4])];
@@ -22,7 +23,7 @@ for (let n = first; n <= last; n++) {
   const editFile = path.join(tmp, `edit-e${e}.json`);
   writeFileSync(editFile, JSON.stringify(edit, null, 1));
   const D = path.join(R, `docs/videos/zhong-tian-qu-qi-e${e}`);
-  const W = `C:/Users/x8120/mokaair-work/videos/zhong-tian-qu-qi-e${e}-dh`;
+  const W = path.join(process.env.VIDEO_WORKDIR ?? path.join(os.homedir(), "mokaair-work", "videos"), `zhong-tian-qu-qi-e${e}-dh`);
   const mp4 = path.join(tmp, `e${e}.mp4`);
   // REUSE=1 keeps a part already cut (delete the part of an episode that changed).
   if (!(process.env.REUSE === "1" && existsSync(mp4) && existsSync(mp4.replace(/\.mp4$/, ".zh-TW.srt")))) execFileSync("node", [path.join(H, "assemble-v4.mjs"), path.join(D, "video.json"), path.join(D, "overlays.json"), editFile, W, mp4], { stdio: ["ignore", "ignore", "inherit"] });

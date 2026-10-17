@@ -7,6 +7,7 @@
 //   node assemble-v4.mjs <video.json> <overlays.json|-> <edit.json> <workdir> <out.mp4>
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 
 const [file, overlaysFile, editFile, workArg, out] = process.argv.slice(2);
@@ -163,7 +164,9 @@ execFileSync("ffmpeg", ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i",
 
 // The mix: music cues (ducked under dialogue), effects and beds.
 const sfxIndex = {};
-for (const dir of edit.sfx_dirs ?? []) {
+// "<VIDEO_WORKDIR>" in sfx_dirs is the local work root (VIDEO_WORKDIR, else ~/mokaair-work/videos).
+const VIDEO_WORKDIR = process.env.VIDEO_WORKDIR ?? path.join(os.homedir(), "mokaair-work", "videos");
+for (const dir of (edit.sfx_dirs ?? []).map((d) => d.replace("<VIDEO_WORKDIR>", VIDEO_WORKDIR))) {
   const walk = (d) => { for (const n of readdirSync(d, { withFileTypes: true })) { const p = path.join(d, n.name); if (n.isDirectory()) walk(p); else if (/\.(wav|ogg|flac|mp3)$/.test(n.name) && !n.name.startsWith("._")) { const k = n.name.replace(/-48k(?=\.wav$)/, "").replace(/\.(wav|ogg|flac|mp3)$/, ""); if (!sfxIndex[k] || /-48k\.wav$/.test(n.name)) sfxIndex[k] = p; } } };
   walk(dir);
 }
