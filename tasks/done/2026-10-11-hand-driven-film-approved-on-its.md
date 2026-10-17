@@ -1,13 +1,13 @@
 ---
 id: 2026-10-11-hand-driven-film-approved-on-its
 title: A film an agent drives by hand is approved on its own reviewer's word
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-hand-pushed
 claimed_at: 2026-10-17T11:24:11Z
 created_at: 2026-10-11T09:50:02Z
-completed_at:
+completed_at: 2026-10-17T11:39:54Z
 branch:
 depends_on: []
 scope:
