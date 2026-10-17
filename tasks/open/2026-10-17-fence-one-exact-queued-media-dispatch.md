@@ -81,3 +81,14 @@ call MiniMax, modify A01 or re-enable dispatch. Removing the marker cannot
 re-enable this compiled ID. A separately reviewed code change and owner decision
 are required to remove the fence. Production cutover is blocked until the graceful
 old-API stop, site-owner approval and independent runbook review are satisfied.
+
+The isolated single-host cutover driver and patched stock-deploy guard are now
+prepared in the task's documentation directory. Two independent reviews found
+and then rechecked the under-lock preflight, effective API/worker Redis DB0
+identity, and helper readability before the old API stops. Linux driver tests
+passed 19/19 and deploy-guard tests 5/5; the final README describes one
+continuous hold and `--no-rollback`. These are local candidate checks, not
+production receipts. The driver's `--apply` path still stops at
+`b25_producer_proof_missing` before any host write until the unrelated B25
+producer is authoritatively completed or durably paused. No installation,
+deployment, API stop, nonce, marker, A01 paid stage or vendor call occurred.

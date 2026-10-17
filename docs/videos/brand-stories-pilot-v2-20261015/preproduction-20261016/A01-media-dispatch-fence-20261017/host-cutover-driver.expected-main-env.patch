@@ -1,0 +1,189 @@
+--- deploy-travel-scanner.sh.live-c8bb3559
++++ deploy-travel-scanner.sh.expected-main-env-hold
+@@ -44,6 +44,16 @@
+ NO_ROLLBACK=0
+ DRY_RUN=0
+ IGNORE_HOLD=0
++# A01_EXACT_MAIN_AND_ENV_GUARD_V1: opt-in, immutable cutover inputs.
++EXPECTED_MAIN_SHA=""
++EXPECTED_ENV_SHA256=""
++EXPECTED_REDIS_URL_SHA256=""
++EXPECTED_HOLD_SHA256=""
++PINNED_ENV_FILE=""
++cleanup_pinned_env() {
++  [[ -z "$PINNED_ENV_FILE" ]] || rm -f -- "$PINNED_ENV_FILE"
++}
++trap cleanup_pinned_env EXIT
+ 
+ while [[ $# -gt 0 ]]; do
+   case "$1" in
+@@ -51,11 +61,29 @@
+     --no-rollback) NO_ROLLBACK=1 ;;
+     --dry-run)     DRY_RUN=1 ;;
+     --ignore-hold) IGNORE_HOLD=1 ;;
++    --expected-main-sha=*)
++      EXPECTED_MAIN_SHA=${1#*=}
++      [[ $EXPECTED_MAIN_SHA =~ ^[0-9a-f]{40}$ ]] || { echo 'invalid expected main SHA' >&2; exit 2; } ;;
++    --expected-env-sha256=*)
++      EXPECTED_ENV_SHA256=${1#*=}
++      [[ $EXPECTED_ENV_SHA256 =~ ^[0-9a-f]{64}$ ]] || { echo 'invalid expected env SHA' >&2; exit 2; } ;;
++    --expected-redis-url-sha256=*)
++      EXPECTED_REDIS_URL_SHA256=${1#*=}
++      [[ $EXPECTED_REDIS_URL_SHA256 =~ ^[0-9a-f]{64}$ ]] || { echo 'invalid expected Redis URL SHA' >&2; exit 2; } ;;
++    --expected-hold-sha256=*)
++      EXPECTED_HOLD_SHA256=${1#*=}
++      [[ $EXPECTED_HOLD_SHA256 =~ ^[0-9a-f]{64}$ ]] || { echo 'invalid expected hold SHA' >&2; exit 2; } ;;
+     -h|--help)     sed -n '3,14p' "$0" | sed 's/^# \?//'; exit 0 ;;
+     *)             echo "unknown option: $1" >&2; exit 2 ;;
+   esac
+   shift
+ done
++if [[ -n $EXPECTED_MAIN_SHA || -n $EXPECTED_ENV_SHA256 || -n $EXPECTED_REDIS_URL_SHA256 ]]; then
++  [[ -n $EXPECTED_MAIN_SHA && -n $EXPECTED_ENV_SHA256 && -n $EXPECTED_REDIS_URL_SHA256 ]] || { echo 'expected SHA flags must be paired' >&2; exit 2; }
++fi
++if [[ -n $EXPECTED_HOLD_SHA256 ]]; then
++  [[ -n $EXPECTED_MAIN_SHA && -n $EXPECTED_ENV_SHA256 && -n $EXPECTED_REDIS_URL_SHA256 && $IGNORE_HOLD -eq 1 ]] || { echo "expected hold requires pinned deploy and --ignore-hold" >&2; exit 2; }
++fi
+ 
+ mkdir -p "$LOG_DIR"
+ STAMP=$(date +%Y%m%d_%H%M%S)
+@@ -98,9 +126,15 @@
+   done < <(find /root -maxdepth 2 -path '/root/mokaair-*/state.json' -type f -mmin -1440 2>/dev/null)
+ }
+ 
++if [[ -n "$EXPECTED_HOLD_SHA256" ]]; then
++  [[ -f "$HOLD_FILE" && ! -L "$HOLD_FILE" ]] || fail "pinned A01 hold missing"
++  actual_hold=$(sha256sum -- "$HOLD_FILE") || fail "pinned A01 hold unreadable"
++  [[ "${actual_hold%% *}" == "$EXPECTED_HOLD_SHA256" ]] || fail "pinned A01 hold changed"
++fi
+ HOLD=""
+ [[ -f "$HOLD_FILE" ]] && HOLD="$HOLD_FILE says: $(head -c 600 "$HOLD_FILE" | tr '\n' ' ')"
+ PENDING=$(pending_releases)
++[[ -z "$EXPECTED_HOLD_SHA256" || -z "$PENDING" ]] || fail "another staged release appeared"
+ [[ -n "$PENDING" ]] && HOLD="${HOLD:+$HOLD; }built but not activated: ${PENDING% }"
+ if [[ -n "$HOLD" ]]; then
+   if (( IGNORE_HOLD == 1 )); then
+@@ -114,7 +148,28 @@
+   fi
+ fi
+ 
+-compose() { docker compose -f "$COMPOSE_FILE" --profile "$PROFILE" --profile news --profile video "$@"; }
++assert_pinned_env() {
++  [[ -z "$EXPECTED_ENV_SHA256" ]] && return 0
++  [[ -f "$PINNED_ENV_FILE" && ! -L "$PINNED_ENV_FILE" ]] || fail "pinned env snapshot missing"
++  [[ "${RUNTIME_ENV_FILE:-}" == "$PINNED_ENV_FILE" ]] || fail "runtime env path changed"
++  local actual
++  actual=$(sha256sum -- "$PINNED_ENV_FILE")
++  [[ "${actual%% *}" == "$EXPECTED_ENV_SHA256" ]] || fail "pinned env snapshot changed"
++}
++compose() {
++  if [[ -n "$PINNED_ENV_FILE" ]]; then
++    assert_pinned_env
++    docker compose --env-file "$PINNED_ENV_FILE" -f "$COMPOSE_FILE" --profile "$PROFILE" --profile news --profile video "$@"
++  else
++    docker compose -f "$COMPOSE_FILE" --profile "$PROFILE" --profile news --profile video "$@"
++  fi
++}
++assert_pinned_redis_config() {
++  [[ -z "$EXPECTED_REDIS_URL_SHA256" ]] && return 0
++  if ! compose config --format json 2>/dev/null | python3 -c 'import hashlib,json,sys; d=json.load(sys.stdin); e=sys.argv[1]; snap=sys.argv[2]; s=d["services"]; required=("api","video-ai-worker"); names=tuple(n for n,v in s.items() if "REDIS_URL" in v.get("environment",{})); paths=lambda x:[v.get("path") if isinstance(v,dict) else v for v in x]; ok=set(required).issubset(names) and all(hashlib.sha256(s[n]["environment"]["REDIS_URL"].encode()).hexdigest()==e and ("env_file" not in s[n] or paths(s[n]["env_file"])==[snap]) for n in names); sys.exit(0 if ok else 1)' "$EXPECTED_REDIS_URL_SHA256" "$PINNED_ENV_FILE"; then
++    fail "rendered API or video AI worker Redis URL drifted"
++  fi
++}
+ 
+ # Repair modes an earlier git run may already have left behind. The umask above only
+ # covers what this script writes; a `git pull` run by hand from a root shell with a
+@@ -144,13 +199,24 @@
+ 
+ LOCAL_SHA=$(git rev-parse HEAD)
+ REMOTE_SHA=$(git rev-parse "origin/$BRANCH")
+-BEHIND=$(git rev-list --count "HEAD..origin/$BRANCH")
+-AHEAD=$(git rev-list --count "origin/$BRANCH..HEAD")
++if [[ -n "$EXPECTED_MAIN_SHA" ]]; then
++  [[ "$REMOTE_SHA" == "$EXPECTED_MAIN_SHA" ]] || fail "fetched main SHA changed; refusing deploy"
++  [[ -f .env && ! -L .env ]] || fail "host env source missing or symlink"
++  actual_env=$(sha256sum -- .env)
++  [[ "${actual_env%% *}" == "$EXPECTED_ENV_SHA256" ]] || fail "host env source changed; refusing deploy"
++  PINNED_ENV_FILE=$(mktemp /run/mokaair-a01-deploy-env.XXXXXXXX)
++  cat -- .env > "$PINNED_ENV_FILE"
++  chmod 600 "$PINNED_ENV_FILE"
++  assert_pinned_env
++  export RUNTIME_ENV_FILE="$PINNED_ENV_FILE"
++fi
++BEHIND=$(git rev-list --count "HEAD..$REMOTE_SHA")
++AHEAD=$(git rev-list --count "$REMOTE_SHA..HEAD")
+ 
+ (( AHEAD > 0 )) && fail "local is $AHEAD commit(s) ahead of origin/$BRANCH - refusing to deploy a diverged tree"
+ 
+ log "local     $(git log -1 --format='%h %s')"
+-log "origin    $(git log -1 "origin/$BRANCH" --format='%h %s')"
++log "origin    $(git log -1 "$REMOTE_SHA" --format='%h %s')"
+ 
+ if (( BEHIND == 0 )); then
+   if (( FORCE == 0 )); then
+@@ -160,26 +226,26 @@
+   log "already up to date, but --force given: rebuilding current commit"
+ else
+   log "$BEHIND new commit(s):"
+-  git log --oneline "HEAD..origin/$BRANCH" | sed 's/^/    /'
++  git log --oneline "HEAD..$REMOTE_SHA" | sed 's/^/    /'
+ fi
+ 
+ # ------------------------------------------------------------ change survey
+ NEEDS_BACKUP=0
+ if (( BEHIND > 0 )); then
+-  if git diff --name-only HEAD "origin/$BRANCH" | grep -qE 'migrations/versions/'; then
++  if git diff --name-only HEAD "$REMOTE_SHA" | grep -qE 'migrations/versions/'; then
+     NEEDS_BACKUP=1
+     log "migrations change -> database backup required"
+-    git diff --name-status HEAD "origin/$BRANCH" -- '*migrations/versions/*' | sed 's/^/    /'
++    git diff --name-status HEAD "$REMOTE_SHA" -- '*migrations/versions/*' | sed 's/^/    /'
+   else
+     log "no migration changes -> skipping database backup"
+   fi
+ 
+-  if git diff --quiet HEAD "origin/$BRANCH" -- "$COMPOSE_FILE"; then :; else
++  if git diff --quiet HEAD "$REMOTE_SHA" -- "$COMPOSE_FILE"; then :; else
+     log "NOTE: $COMPOSE_FILE changes in this update - review it after deploying"
+   fi
+ 
+   # Report .env.example keys that are not present in the live .env.
+-  NEW_KEYS=$(git diff HEAD "origin/$BRANCH" -- .env.example \
++  NEW_KEYS=$(git diff HEAD "$REMOTE_SHA" -- .env.example \
+     | sed -n 's/^+\([A-Z][A-Z0-9_]*\)=.*/\1/p' || true)
+   for key in $NEW_KEYS; do
+     grep -q "^${key}=" .env || log "NOTE: new setting $key is not in .env (code default applies)"
+@@ -247,7 +313,7 @@
+ log "rollback point: $(git rev-parse --short "$LOCAL_SHA")"
+ 
+ if (( BEHIND > 0 )); then
+-  git merge --ff-only "origin/$BRANCH" --quiet || fail "fast-forward merge failed"
++  git merge --ff-only "$REMOTE_SHA" --quiet || fail "fast-forward merge failed"
+   log "now at $(git log -1 --format='%h %s')"
+ fi
+ 
+@@ -264,6 +330,7 @@
+   git reset --hard "$LOCAL_SHA" --quiet || fail "$why; rollback checkout reset failed; worker may be stopped. Log: $LOG_FILE"
+   ensure_readable || fail "$why; rollback checkout permissions failed; worker may be stopped. Log: $LOG_FILE"
+   /opt/travel-scanner-deploy/video_stage_drain.sh --rollback || fail "$why; video AI worker did not drain before rollback; checkout is at original SHA, worker may be stopped. Log: $LOG_FILE"
++  assert_pinned_redis_config
+   compose up --build -d || fail "$why, and the rollback rebuild also failed - MANUAL INTERVENTION NEEDED. Log: $LOG_FILE"
+   if wait_healthy; then
+     fail "$why; rolled back to $(git rev-parse --short HEAD) and the site is healthy again"
+@@ -277,7 +344,7 @@
+ VIDEO_STAGE_DRAIN_LOCAL_SHA=$LOCAL_SHA
+ VIDEO_STAGE_DRAIN_READY_FILE=/run/travel-scanner-deploy/video-ai-drain.ready.$VIDEO_STAGE_DRAIN_NONCE
+ export VIDEO_STAGE_DRAIN_NONCE VIDEO_STAGE_DRAIN_LOCAL_SHA VIDEO_STAGE_DRAIN_READY_FILE
+-trap 'rm -f -- "$VIDEO_STAGE_DRAIN_READY_FILE"' EXIT
++trap 'rm -f -- "$VIDEO_STAGE_DRAIN_READY_FILE"; cleanup_pinned_env' EXIT
+ if ! /opt/travel-scanner-deploy/video_stage_drain.sh --normal; then
+   log "video AI warm drain refused; worker state unknown and may be stopped"
+   if (( BEHIND > 0 )); then
+@@ -290,6 +357,7 @@
+   fail "video AI worker did not drain before compose up; checkout restored to original SHA; worker may be stopped. Log: $LOG_FILE"
+ fi
+ log "building and starting (profiles: $PROFILE news)"
++assert_pinned_redis_config
+ if ! compose up --build -d; then
+   log "COMPOSE UP FAILED"
+   compose ps --format 'table {{.Name}}\t{{.Status}}' | sed 's/^/    /' || true

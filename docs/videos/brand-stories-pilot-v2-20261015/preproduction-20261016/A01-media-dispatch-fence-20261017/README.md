@@ -1,15 +1,19 @@
 # One exact media dispatch fence: review and cutover plan
 
-Status: **prepared locally; no production action performed. Production cutover
-is blocked until a deterministic single-host driver is implemented and
-independently reviewed.** The sequence below is its contract, not separate
-PuTTY commands: separate SSH calls cannot retain four lock file descriptors
-or prove the `hold.py` precondition. The future driver needs a dry-run,
-pinned inputs, bounded receipts, failure handling and supervised watcher
-lifecycle. It also requires a named site-owner approval for the exact new
-PR/SHA and temporary API outage, and fresh action-time host evidence. Do not
-use a prior A01 paid-production approval to stop an unrelated API or write
-this marker.
+Status: **the API fence and [single-host cutover driver](host-cutover-driver.md)
+are prepared locally for independent review; no production action performed.**
+The sequence below is the driver's contract, not separate PuTTY commands:
+separate SSH calls cannot retain four lock file descriptors or prove the
+`hold.py` precondition. Production still requires a named site-owner approval
+for the exact PR/SHA, host script installation, durable Redis nonce, temporary
+API outage and marker write, plus fresh action-time host evidence. The driver
+refuses while another queued/submitted media job exists; the 2026-10-17 B25
+MiniMax image stream currently makes that condition fail. A brief gap between
+B25 jobs can make a single database count appear clear, so the current
+`--apply` path also stops with `b25_producer_proof_missing` before any host
+write. Production needs separately reviewed, authoritative proof that the B25
+producer has completed or is durably paused. Do not use a prior A01
+paid-production approval to stop an unrelated API or write this marker.
 
 ## Scope and invariant
 
@@ -56,8 +60,9 @@ The production stock deploy stops `video-ai-worker` during its final drain.
 Therefore the nonce watcher must run on the **host**, not in that worker. The
 watcher pins the live Compose Redis container ID each loop and checks the exact
 nonce and no-expiry TTL. A missing heartbeat, watcher death, Redis replacement,
-or Redis URL drift is a STOP. During an old-code rollback, **retain the nonce**;
-the old API has no compiled fence.
+or Redis URL drift is a STOP. The cutover disables stock automatic rollback to
+the old API, which has no compiled fence. Any later recovery or rollback needs
+a separate approved procedure while the hold and nonce remain in place.
 
 ## Required action-time preflight
 
@@ -77,14 +82,16 @@ the old API has no compiled fence.
    Diff the reviewed incoming `docker compose -f docker-compose.prod.yml config`
    against the deployed Compose Redis service, data volume and API `REDIS_URL`
    target. Any Redis service, volume or connection-target change is a stop
-   before clearing the cutover hold.
+   before starting the cutover. Repeat the full preflight under all four locks
+   before creating the hold.
 2. Review `/root/deploy-travel-scanner.sh` at its current SHA, especially the
-   one-shot lock/hold checks and both normal/rollback drain hooks. Review
+   one-shot lock/hold checks, pinned target and environment guards, and drain
+   hooks. Review
    `ops/release/README.md` and the `deploy` and `prod-host-ops` skills. Do not
    remove an existing hold or disable a timer by assumption. Obtain the site
    owner's **specific** approval for this SHA, brief API outage, marker and
-   Redis writes, and deploy. The approved operator records an exact rollback
-   decision before stopping the API.
+   Redis writes, and deploy. This cutover uses `--no-rollback`; any failure
+   recovery or later old-code rollback requires a separate owner decision.
 3. Stage these reviewed scripts and `manifest.json` to private host storage;
    compare complete source hashes there, with no shell interpolation of the
    receipt's secret nonce. `install-marker.sh --expected-mountpoint <freshly
@@ -98,14 +105,20 @@ All steps require one approved host driver with an audit log that omits the
 nonce. The four locks are `/var/lock/travel-scanner-deploy.lock`,
 `/root/mokaair-deploy.lock`, `/run/mokaair-manual-deploy.lock`, and
 `/run/travel-scanner-deployer/deploy.lock`. `ops/release/hold.py` requires all
-four. The hold is `/root/travel-scanner-deploy.hold`; acquire it with a unique
-cutover release directory and pinned target SHA using `hold.py`, then verify it.
-The driver must **retain all lock file descriptors** through steps 1–5.
-Loss of driver/SSH while waiting means stop, leave the hold, and re-audit.
+four. The hold is `/root/travel-scanner-deploy.hold`; after a full preflight
+under all four locks, acquire it with a unique cutover release directory and
+pinned target SHA using `hold.py`, then verify its exact bytes. Keep this
+**same hold continuously** through deploy, verification and A01 handoff. Keep
+the four lock file descriptors through marker installation, release them only
+for stock deploy, then reacquire all four for verification. Loss of driver/SSH
+while waiting means stop, leave the hold, and re-audit.
 
 1. Under all four locks and the hold, recheck no old in-flight paid work and
-   the exact old API container ID/image. Do not use `--ignore-hold`. Gracefully
-   stop **that ID only** with `docker container stop --signal=SIGTERM
+   the exact old API container ID/image. Do not bypass the hold when stopping
+   the API. Copy the mode 0644, hash-checked `dispatch_fence_cutover.py` into
+   the pinned non-API Python worker and read its hash through the worker's
+   default UID **before** stopping the old API. Gracefully stop **that ID
+   only** with `docker container stop --signal=SIGTERM
    --timeout=-1 <old-full-API-ID>`. `-1` waits indefinitely for graceful exit;
    never substitute a finite SIGKILL timeout. A hang is a stop; leave hold and
    Redis untouched. An external observer may declare an operational timeout
@@ -116,8 +129,8 @@ Loss of driver/SSH while waiting means stop, leave the hold, and re-audit.
    exact DB row is still queued with null vendor reference/submission time and
    no exact Redis lock. A stopped container alone does not establish whether
    an earlier provider charge happened.
-2. In a **non-API** Python container using the same currently pinned Redis
-   service, copy the hash-checked `dispatch_fence_cutover.py`. Invoke
+2. After the old API exits, verify the pinned non-API worker still uses the
+   pinned Redis service, then invoke the staged helper's
    `acquire --receipt-file /tmp/a01-media-cutover-<unique>.json`; it first
    creates a private 0600 fsynced receipt, then `SET NX` with no expiry,
    `WAITAOF 1 0 10000` on the **same dedicated Redis connection**, and
@@ -143,7 +156,7 @@ Loss of driver/SSH while waiting means stop, leave the hold, and re-audit.
    It verifies Compose resolves to this exact
    Redis ID, the ID is the sole running Redis service, and the nonce stays
    intact without expiry every two seconds. Keep this watcher running through
-   the whole deploy, rollback and A01 handoff; heartbeat/service loss is a
+   the whole deploy and A01 handoff; heartbeat/service loss is a
    stop for A01 even though the durable nonce may remain in Redis. A host
    reboot or Redis restart requires fresh Compose ID, AOF configuration,
    exact receipt nonce/TTL readback and a newly supervised watcher before
@@ -154,19 +167,21 @@ Loss of driver/SSH while waiting means stop, leave the hold, and re-audit.
    0755 and marker 0644. Read back the marker as UID 10001 using a disposable
    read-only mount or the later new API container; do not restart the old API
    for this test. Recheck DB row, nonce ownership and watcher heartbeat.
-5. Clear **only this cutover's** hold through `hold.py` while retaining all
-   four locks, then release lock FDs. Record the hold receipt. The durable
-   exact-job nonce is the **only continuous protection** through the
-   lock/hold gap before the new API comes up. Run the
-   stock deploy via the reviewed background wrapper and wait for its **terminal
-   exit**, including any rollback. A new paid job, deploy drift, unexpected
-   container replacement or watcher failure aborts A01. Do not use a second
-   deploy entry point. Stock deploy may roll back to old code; if that occurs,
-   retain the nonce and acquire a recovery hold after stock deploy exits.
-   Treat the brief API outage as planned and visible.
-6. After stock deploy exits, reacquire **all four locks** and a **new exact
-   post-deploy hold** before trusting any API receipt. A lock conflict or an
-   existing unrelated hold is a stop; retain the nonce. Under these locks,
+5. Reverify the exact hold, nonce, marker and watcher, then release the four
+   lock file descriptors while **retaining the same hold**. Run the reviewed
+   background stock-deploy wrapper with `--ignore-hold --no-rollback` and
+   exact expected main SHA, `.env` SHA, rendered Redis URL SHA and hold SHA.
+   The patched stock script verifies the hold bytes under its deploy lock
+   before bypassing that one hold. Wait for the wrapper's **terminal exit**.
+   A new paid job, deploy drift, unexpected container replacement or watcher
+   failure aborts A01. Do not use a second deploy entry point. A deploy
+   failure leaves the old unfenced API stopped, with the same hold and nonce;
+   there is no automatic old-code rollback. Treat the brief API outage as
+   planned and visible.
+6. After stock deploy exits, reacquire **all four locks** and verify the
+   **original exact hold** (release directory, owner, creation time and raw
+   hash) before trusting any API receipt. A lock conflict or changed hold is
+   a stop; retain the nonce. Under these locks,
    repin the Compose API and Redis full IDs/images, API port owner, deployed
    SHA, exact DB row, active-media count, marker and host watcher. Pin the
    **new** running API full container ID/image and verify health, deployed
@@ -178,17 +193,17 @@ Loss of driver/SSH while waiting means stop, leave the hold, and re-audit.
    `media_lock_absent=false`; held mode **does not** verify nonce ownership.
    Separately `inspect` the private receipt through the helper, compare the
    nonce hash, and ensure the host watcher still observes the same Redis ID.
-   If any check fails, keep the nonce and post-deploy hold; do not call A01.
+   If any check fails, keep the nonce and original hold; do not call A01.
 7. **Keep the durable nonce.** Record the held-mode API receipt plus the
-   private host nonce-ownership/readback receipt. Clear only this exact
-   post-deploy hold while retaining all four locks, then release the locks;
-   the nonce remains the protection through this handoff. Keep the host watcher
-   and receipt available for fresh R8 guard checks. The A01 guard may proceed
-   only after its independently reviewed version accepts a held-mode CLI
-   receipt **and** verifies the actual nonce/TTL, Redis ID, API ID/image and
-   source hashes. Until then A01 is blocked. No direct GET job poll is a
-   substitute. A later nonce retirement is a separate owner-approved
-   procedure; do not call `release` as part of this cutover.
+   private host nonce-ownership/readback receipt and exact hold identity/hash
+   in the handoff. Release the four locks but **keep the same hold**, nonce,
+   watcher and receipt through every A01 phase. The A01 R9 guard must first
+   receive its separately reviewed hold-adoption change and then independently
+   verify that same hold, held-mode CLI receipt, actual nonce/TTL, Redis ID,
+   API ID/image and source hashes at each checkpoint. Until then A01 is
+   blocked. No direct GET job poll is a substitute. Hold and nonce retirement
+   need a separate owner-approved procedure; do not clear either as part of
+   this cutover.
 
 The CLI never calls `advance_job` or a vendor. `propose` prints the canonical
 candidate JSON for the current DB row; `validate --manifest <file>` compares
@@ -203,21 +218,19 @@ key presence; the private receipt and host watcher separately prove nonce
 ownership. A normal `check` requires absent lock and is **not** the A01
 cutover receipt while the durable nonce remains.
 
-**Stop and recovery:** Before step 5, leave this cutover's root hold in place
-on any failure. After step 5 has deliberately cleared it, wait for the stock
-deploy process to exit; then take all four locks and acquire a new exact
-post-deploy or recovery hold if no other owner holds one. Do not overwrite an
-existing hold. The
-non-expiring exact Redis nonce must remain through an old-code rollback or
-failed new-code proof. The nonce is the only continuous bridge while locks
-and the cutover hold are released for stock deploy. Do not restart an old
-unfenced API with the nonce absent. If the nonce is ever retired after a later
-separate approval, a future rollback to any pre-fence API must first reacquire
-and durably prove the exact nonce while that old API is still stopped, or the
-rollback is refused. The new compiled API still refuses this ID even if Redis
-fails, but A01 guard must wait for a fresh held-mode and nonce-owner receipt. Do not
-delete a stuck key or marker to make a guard pass. Resolve the live state,
-charge uncertainty and rollback with separate owner approval.
+**Stop and recovery:** On every failure, leave this cutover's one root hold in
+place. If stock deploy was launched, wait for its terminal status and reacquire
+all four locks before inspecting the exact hold, API, marker, nonce receipt and
+watcher. Its `--no-rollback` setting prevents automatic restart of the old
+unfenced API. The non-expiring exact Redis nonce remains through failed
+new-code proof; neither a transient watcher failure nor a missing API receipt
+authorizes deleting it. If a later separately approved recovery would run
+pre-fence code, keep that API stopped until the same exact nonce is durably
+proved against the pinned Redis DB and the continuous hold is verified. The
+new compiled API still refuses this ID even if Redis fails, but A01 guard
+waits for fresh held-mode and nonce-owner receipts. Do not delete a stuck key,
+marker or hold to make a guard pass. Resolve the live state and charge
+uncertainty under a separate owner-approved recovery plan.
 
 Docker documents [indefinite `stop --timeout=-1`](https://docs.docker.com/reference/cli/docker/container/stop/)
 and [manual stop with `unless-stopped`](https://docs.docker.com/engine/containers/start-containers-automatically/).
