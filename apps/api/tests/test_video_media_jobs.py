@@ -396,6 +396,154 @@ async def test_completed_vendor_poll_cannot_start_download_after_pause(
     assert job.file_sha256 is None
 
 
+@pytest.mark.asyncio
+async def test_accepted_image_url_survives_pause_and_resumes_without_second_paid_submit(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    slug = "story-rolling-suitcase-v2"
+    payload = _image(slug=slug)
+    url = "https://example.com/accepted-image.png"
+    asked: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        asked.append(request)
+        return httpx.Response(200, content=PNG, headers={"Content-Type": "image/png"})
+
+    async def accepted_then_pause(request: MediaRequest, _client: httpx.AsyncClient) -> Submitted:
+        fake_provider.requests.append(request)
+        _pause_intake(tmp_path)
+        return Submitted(download=Download(url, content_type_hint="image/png"))
+
+    monkeypatch.setattr(fake_provider, "submit", accepted_then_pause)
+    reserve_mock = AsyncMock(
+        side_effect=lambda _session, **kwargs: Reservation(
+            slug,
+            kwargs["operation_id"],
+            kwargs["max_usd"],
+            "reserved",
+            True,
+            True,
+            1,
+        )
+    )
+    release_mock = AsyncMock()
+    uncertain_mock = AsyncMock()
+    settle_mock = AsyncMock()
+    monkeypatch.setattr(service, "reserve", reserve_mock)
+    monkeypatch.setattr(service, "release", release_mock)
+    monkeypatch.setattr(service, "mark_uncertain", uncertain_mock)
+    monkeypatch.setattr(service, "settle", settle_mock)
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        ctx = _context(
+            tmp_path,
+            fake_provider,
+            http=http,
+            row=_row(image_provider="minimax", image_model="image-01"),
+        )
+        with pytest.raises(MediaJobFailed) as paused:
+            await submit_job(ctx, "image", payload)
+        assert paused.value.code == "video_media_cutover_paused"
+        job = ctx.session.added[0]  # type: ignore[attr-defined]
+        assert job.status == "submitted" and job.submitted_at is not None
+        assert job.request[service.ACCEPTED_DOWNLOAD_KEY]["url"] == url
+        assert len(fake_provider.requests) == 1 and asked == []
+        assert await meter.used(ctx.redis, meter.IMAGES) == 1
+        release_mock.assert_not_awaited()
+        uncertain_mock.assert_not_awaited()
+        settle_mock.assert_not_awaited()
+
+        await _allow_a01_intake(tmp_path, ctx.redis)
+        ctx.session.found = job  # type: ignore[attr-defined]
+        resumed, created = await submit_job(ctx, "image", payload)
+        assert resumed is job and not created and job.status == "ready"
+        assert job.file_sha256 == hashlib.sha256(PNG).hexdigest()
+        assert service.ACCEPTED_DOWNLOAD_KEY not in job.request
+        assert len(fake_provider.requests) == 1 and len(asked) == 1
+        assert asked[0].method == "GET" and str(asked[0].url) == url
+        assert await meter.used(ctx.redis, meter.IMAGES) == 1
+        reserve_mock.assert_awaited_once()
+        settle_mock.assert_awaited_once()
+        release_mock.assert_not_awaited()
+        uncertain_mock.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_minimax_music_accepted_url_stays_submitted_under_pause(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    ctx = _context(
+        tmp_path,
+        fake_provider,
+        row=_row(music_provider="minimax", music_model="music-3.0"),
+    )
+    payload = MusicJobIn.model_validate({"slug": "v", "prompt": "solo guqin", "seconds": 60})
+    url = "https://example.com/accepted-music.mp3"
+
+    async def accepted_then_pause(request: MediaRequest, _client: httpx.AsyncClient) -> Submitted:
+        fake_provider.requests.append(request)
+        _pause_intake(tmp_path)
+        return Submitted(download=Download(url, content_type_hint="audio/mpeg"))
+
+    monkeypatch.setattr(fake_provider, "submit", accepted_then_pause)
+    with pytest.raises(MediaJobFailed) as paused:
+        await submit_job(ctx, "music", payload)
+    assert paused.value.code == "video_media_cutover_paused"
+    job = ctx.session.added[0]  # type: ignore[attr-defined]
+    assert job.status == "submitted"
+    assert job.request[service.ACCEPTED_DOWNLOAD_KEY]["url"] == url
+    assert job.usd_estimate > 0 and await meter.used(ctx.redis, meter.MUSIC) == 1
+    assert len(fake_provider.requests) == 1
+    ctx.session.found = job  # type: ignore[attr-defined]
+    with pytest.raises(MediaJobFailed) as still_paused:
+        await submit_job(ctx, "music", payload)
+    assert still_paused.value.code == "video_media_cutover_paused"
+    assert len(fake_provider.requests) == 1
+    # A later reviewed release may reopen non-A01 intake; this unit test isolates
+    # the already-accepted recovery path because the current marker has no ALLOW_ALL.
+    monkeypatch.setattr(service, "refuse_unapproved_paid_intake", AsyncMock())
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert request.method == "GET" and str(request.url) == url
+        return httpx.Response(200, content=MP3, headers={"Content-Type": "audio/mpeg"})
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        ctx.http = http
+        resumed, created = await submit_job(ctx, "music", payload)
+    assert resumed is job and not created and job.status == "ready"
+    assert job.file_sha256 == hashlib.sha256(MP3).hexdigest()
+    assert service.ACCEPTED_DOWNLOAD_KEY not in job.request
+    assert await meter.used(ctx.redis, meter.MUSIC) == 1
+    assert len(fake_provider.requests) == 1
+
+
+@pytest.mark.asyncio
+async def test_failed_accepted_download_cannot_rebuy_the_same_request(
+    tmp_path: Path, fake_provider: FakeProvider
+) -> None:
+    url = "https://example.com/expired-image.png"
+    fake_provider.submit_result = Submitted(download=Download(url))
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert str(request.url) == url
+        return httpx.Response(503)
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        ctx = _context(tmp_path, fake_provider, http=http)
+        payload = _image()
+        job, created = await submit_job(ctx, "image", payload)
+        assert created and job.status == "failed"
+        assert service.ACCEPTED_DOWNLOAD_KEY in job.request
+        assert job.usd_estimate > 0 and await meter.used(ctx.redis, meter.IMAGES) == 1
+        ctx.session.found = job  # type: ignore[attr-defined]
+        with pytest.raises(MediaJobFailed) as refused:
+            await submit_job(ctx, "image", payload)
+        assert (refused.value.status, refused.value.code) == (
+            409,
+            "video_media_outcome_uncertain",
+        )
+        assert len(fake_provider.requests) == 1
+
+
 def _sheet(store: MediaStore, data: bytes = PNG) -> str:
     sha = hashlib.sha256(data).hexdigest()
     (store.root / "v").mkdir(exist_ok=True)

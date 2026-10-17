@@ -84,6 +84,7 @@ MAX_REFERENCE_BYTES = 7_000_000
 MAX_REFERENCES_TOTAL_BYTES = 20_000_000
 TERMINAL = ("ready", "failed", "expired")
 B25_CUTOVER_SLUG = "story-adapt-seiko-quartz-astron"
+ACCEPTED_DOWNLOAD_KEY = "_accepted_download"
 ERROR_CODES = {
     "blocked": "video_media_rejected",
     "key": "video_media_upstream_rejected_key",
@@ -443,6 +444,12 @@ async def submit_job(
             await ctx.session.commit()
             await advance_job(ctx, existing)
             return existing, False
+        if ACCEPTED_DOWNLOAD_KEY in existing.request:
+            raise MediaJobFailed(
+                409,
+                "video_media_outcome_uncertain",
+                "供應商已接受此媒體工作；下載結果需核對，不能自動重新付費送出",
+            )
         if is_pilot(payload.slug) and existing.error_code == "video_media_outcome_uncertain":
             raise MediaJobFailed(
                 409,
@@ -574,6 +581,12 @@ def _media_request(ctx: MediaContext, job: VideoMediaJob) -> MediaRequest:
 
 
 async def _submit(ctx: MediaContext, job: VideoMediaJob, provider: MediaProvider) -> None:
+    if ACCEPTED_DOWNLOAD_KEY in job.request:
+        raise MediaJobFailed(
+            409,
+            "video_media_outcome_uncertain",
+            "供應商已接受此媒體工作；不能再次送出同一請求",
+        )
     try:
         request = _media_request(ctx, job)
     except MediaUpstreamError as error:
@@ -661,6 +674,9 @@ async def _settle(
         await _store_bytes(ctx, job, submitted.inline)
         return
     if submitted.download is not None:
+        # A synchronous image/music response has already accepted a paid request.
+        # Commit its recovery URL and live status before a cutover pause can stop fetch.
+        await _record_accepted_download(ctx, job, submitted.download)
         await _download(ctx, job, provider, submitted.download)
         return
     job.status = "submitted"
@@ -672,7 +688,54 @@ async def _settle(
     await ctx.session.commit()
 
 
+async def _record_accepted_download(
+    ctx: MediaContext, job: VideoMediaJob, download: Download
+) -> None:
+    job.request = {
+        **job.request,
+        ACCEPTED_DOWNLOAD_KEY: {
+            "url": download.url,
+            "needs_key": download.needs_key,
+            "content_type_hint": download.content_type_hint,
+        },
+    }
+    job.status = "submitted"
+    job.submitted_at = job.submitted_at or ctx.now()
+    job.updated_at = ctx.now()
+    job.retry_after_seconds = 5  # type: ignore[attr-defined]
+    await ctx.session.commit()
+
+
+def _accepted_download(job: VideoMediaJob) -> Download | None:
+    if ACCEPTED_DOWNLOAD_KEY not in job.request:
+        return None
+    value = job.request[ACCEPTED_DOWNLOAD_KEY]
+    if (
+        not isinstance(value, dict)
+        or set(value) != {"url", "needs_key", "content_type_hint"}
+        or not isinstance(value["url"], str)
+        or not value["url"]
+        or type(value["needs_key"]) is not bool
+        or (
+            value["content_type_hint"] is not None
+            and not isinstance(value["content_type_hint"], str)
+        )
+    ):
+        raise MediaJobFailed(
+            409, "video_media_outcome_uncertain", "供應商已接受的下載收據不完整，不能重新付費送出"
+        )
+    return Download(
+        url=value["url"],
+        needs_key=value["needs_key"],
+        content_type_hint=value["content_type_hint"],
+    )
+
+
 async def _poll(ctx: MediaContext, job: VideoMediaJob, provider: MediaProvider) -> None:
+    accepted = _accepted_download(job)
+    if accepted is not None:
+        await _download(ctx, job, provider, accepted)
+        return
     now = ctx.now()
     if job.submitted_at is not None and now - job.submitted_at > SUBMITTED_TTL:
         if is_pilot(job.slug):
@@ -720,6 +783,7 @@ async def _poll(ctx: MediaContext, job: VideoMediaJob, provider: MediaProvider) 
             refund=True,
         )
         return
+    await _record_accepted_download(ctx, job, polled.download)
     await _download(ctx, job, provider, polled.download)
 
 
@@ -797,6 +861,10 @@ async def _ready(
     job.error_code = None
     job.error_detail = None
     job.updated_at = now
+    if ACCEPTED_DOWNLOAD_KEY in job.request:
+        job.request = {
+            key: value for key, value in job.request.items() if key != ACCEPTED_DOWNLOAD_KEY
+        }
     operation = str(job.request.get("pilot_budget_operation_id") or "")
     if is_pilot(job.slug) and operation:
         await ctx.session.commit()
