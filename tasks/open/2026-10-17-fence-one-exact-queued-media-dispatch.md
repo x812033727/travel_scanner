@@ -106,3 +106,16 @@ and A01 handoff alongside actual `video-worker` identity, work volume,
 pending media jobs and ledger state. Do not clear or rewrite B25 records to
 manufacture quiescence; retain `b25_producer_proof_missing` until the contract
 exists.
+
+The isolated B25 producer-pause helper in
+`A01-media-dispatch-fence-20261017/` is now a **LOCAL HOLD candidate only**.
+It checks the original video-worker/project identity, requests a per-project
+STOP under the original LEASE without clearing jobs or the ledger, and repeats
+the four-lock verification without creating absent lock files. Independent
+review caught and then verified fixes for the real `{runs:[]}` state-journal
+shape and a formerly write-capable `--verify`; disposable Linux tests pass
+12/12. The host candidate explicitly returns `production_ready=false` because
+a project STOP does not fence direct media API clients. It is not imported by
+the cutover driver, installed, approved for a host write or a reason to lift
+`b25_producer_proof_missing`. The separate direct-intake and full-window
+cutover proof remains open.
