@@ -1,11 +1,11 @@
 ---
 id: 2026-10-16-video-worker-a-rate-limited-topic
 title: Video worker: a rate-limited topic lookup must defer the scheduled draft, not retry it every round
-status: in-progress
+status: open
 priority: P2
 area: tools
-owner: claude-opus-5-5-video-topics-limit
-claimed_at: 2026-10-16T00:26:41Z
+owner:
+claimed_at:
 created_at: 2026-10-16T00:17:00Z
 completed_at:
 branch: claude/video-topics-rate-limit

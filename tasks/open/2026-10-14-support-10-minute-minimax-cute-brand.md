@@ -1,11 +1,11 @@
 ---
 id: 2026-10-14-support-10-minute-minimax-cute-brand
 title: Support 10-minute MiniMax cute brand-story series
-status: review
+status: open
 priority: P1
 area: tools
-owner: codex-8a78-story-route
-claimed_at: 2026-10-14T16:11:01Z
+owner:
+claimed_at:
 created_at: 2026-10-14T16:10:55Z
 completed_at:
 branch: codex/brand-stories-five-20261014

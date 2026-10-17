@@ -1,11 +1,11 @@
 ---
 id: 2026-10-12-play-the-channel-intro-bumper-after
 title: Play the channel intro bumper after the opening condensation, not before the first line
-status: review
+status: open
 priority: P2
 area: tools
-owner: claude-opus-5-5-bumper
-claimed_at: 2026-10-13T13:27:44Z
+owner:
+claimed_at:
 created_at: 2026-10-12T07:44:57Z
 completed_at:
 branch: claude/bumper-after-condensation

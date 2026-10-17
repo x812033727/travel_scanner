@@ -1,11 +1,11 @@
 ---
 id: 2026-10-14-enforce-usd-25-all-in-cap
 title: Enforce USD 25 all-in cap for A01 and B18 pilot
-status: in-progress
+status: open
 priority: P1
 area: api
-owner: codex-story-budget-cap
-claimed_at: 2026-10-15T01:22:06Z
+owner:
+claimed_at:
 created_at: 2026-10-14T23:20:45Z
 completed_at:
 branch: codex/story-pilot-usd25-cap-20261015

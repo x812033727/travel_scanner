@@ -16,6 +16,7 @@ import { animeBodyDurationProblems, animeRuntimeProof } from "./duration.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, episodeNumbers, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
 import { burnIn, drawnShotScenes, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveMusic, resolveSfx, sfxHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
+import { videoLexicon } from "./lexicon-store.mjs";
 import { lintVideo, productionClipProblems } from "./lint.mjs";
 import { isNarrated, NARRATIVE_REVIEW, narrativeReviewMatches } from "./narrative.mjs";
 import { dubLocales, dubScript, speechCurrent, speechLexicon, translationHash } from "../dubs/plan.mjs";
@@ -190,7 +191,9 @@ export function loadProject({ slug, file, root }) {
     if (translation) translations[locale] = translation;
   }
   const shelf = path.dirname(dir);
-  const shelfLexicon = readJson(path.join(shelf, "lexicon.json"), emptyLexicon());
+  const shelfLexicon = existsSync(path.join(dir, "story-lexicon"))
+    ? videoLexicon({ slug: path.basename(dir), dir }).lexicon
+    : readJson(path.join(shelf, "lexicon.json"), emptyLexicon());
   const others = [];
   if (existsSync(shelf)) {
     for (const entry of readdirSync(shelf, { withFileTypes: true })) {

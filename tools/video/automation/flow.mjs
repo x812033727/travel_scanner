@@ -23,7 +23,8 @@ import { appliedBranding, brandingCurrent, readBranding } from "../core/branding
 import { craftChecks } from "../core/craft.mjs";
 import { hasCast, illustrated, isExplainerPreset, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
-import { emptyLexicon, isProposableTerm } from "../core/lexicon.mjs";
+import { emptyLexicon } from "../core/lexicon.mjs";
+import { initializeStoryLexicon, mergeSharedLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { isNarrated, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
@@ -425,18 +426,7 @@ function writeVideo(dir, video) {
  * proposal, since one such entry fails lint for every video that shares the file.
  */
 function mergeLexicon(root, additions) {
-  if (!additions || typeof additions !== "object") return [];
-  const file = lexiconFile(root);
-  const lexicon = readJson(file, { schema_version: 1, terms: {} });
-  const added = [];
-  for (const [term, spoken] of Object.entries(additions)) {
-    if (!isProposableTerm(term) || term in lexicon.terms) continue;
-    if (spoken !== null && (typeof spoken !== "string" || !spoken.trim() || spoken.length > 80)) continue;
-    lexicon.terms[term] = spoken === null ? null : spoken.trim();
-    added.push(term);
-  }
-  if (added.length) atomicWrite(file, `${JSON.stringify(lexicon, null, 2)}\n`);
-  return added;
+  return mergeSharedLexicon(root, additions);
 }
 
 /**
@@ -2596,6 +2586,10 @@ export class Automation {
     this.fence(state.slug, "the next step");
     const workdir = this.workdir(state.slug);
     const dir = docDir(state.slug, ctx.root);
+    if (state.story) {
+      try { initializeStoryLexicon({ root: ctx.root, slug: state.slug, workdir }); }
+      catch (error) { return this.block(state, `story pronunciation input is held: ${error.message}`); }
+    }
     // Native silent actions are part of the reviewed story. Refresh their readable artifact
     // before computing gates so a changed action cannot reach another paid media stage.
     const animeScript = path.join(dir, "video.json");
@@ -2863,7 +2857,7 @@ export class Automation {
 
   scriptPayload(state, extra) {
     const refs = this.reference();
-    const lexicon = readJson(lexiconFile(this.ctx.root), { terms: {} });
+    const lexicon = state.story ? videoLexicon({ root: this.ctx.root, slug: state.slug, workdir: this.workdir(state.slug), requireSnapshot: true }).lexicon : readJson(lexiconFile(this.ctx.root), { terms: {} });
     const drama = state.format === "drama";
     if (drama) state.target_minutes = hasAnimePolicy(state) ? requireAnimePolicy(state.series).body_target_seconds / 60 : episodeMinutes(state.target_minutes, state.style_preset);
     return {
@@ -3671,7 +3665,7 @@ export class Automation {
       .filter((id) => lines.has(id))
       .map((id) => ({ id, text: spokenText(lines.get(id)), heard: check.lines?.[id]?.heard ?? "", jev: typeof check.lines?.[id]?.noul === "number" ? check.lines[id].noul : null }));
     const round = (state.rewrites ?? 0) + 1;
-    const lexicon = readJson(lexiconFile(ctx.root), emptyLexicon());
+    const lexicon = state.story ? videoLexicon({ root: ctx.root, slug: state.slug, workdir, requireSnapshot: true }).lexicon : readJson(lexiconFile(ctx.root), emptyLexicon());
     const payload = { lines: flagged, lexicon: Object.keys(lexicon.terms), round, ...(previousProblems.length ? { previous_problems: previousProblems } : {}) };
     const revised = isLongAnime(state) ? await this.animeRewrite(state, { ...payload, rewrite_lines: flagged }, video, "listener", `audio-rewrite-${round}`) : null;
     const answer = revised ? { lines: [...eachLine(revised.video)].filter(({ line }) => flagged.some((entry) => entry.id === line.id)).map(({ line }) => ({ id: line.id, text: spokenText(line) })) } : await this.stage("listener", state.slug, payload, 16_000, state.format, "rewrite");

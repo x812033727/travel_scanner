@@ -1,11 +1,11 @@
 ---
 id: 2026-10-16-story-budget-rollback-compat
 title: Stage rollback compatibility before USD 5 story migration
-status: in-progress
+status: open
 priority: P1
 area: api
-owner: codex-gpt6-story-budget-compat
-claimed_at: 2026-10-16T01:08:45Z
+owner:
+claimed_at:
 created_at: 2026-10-16T01:08:20Z
 completed_at:
 branch: codex/story-budget-rollback-compat-20261016

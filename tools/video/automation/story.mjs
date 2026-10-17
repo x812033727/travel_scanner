@@ -36,9 +36,9 @@ import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
 
 import { approve } from "../core/approvals.mjs";
-import { emptyLexicon, isProposableTerm } from "../core/lexicon.mjs";
+import { initializeStoryLexicon, proposeStoryLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { lintVideo } from "../core/lint.mjs";
-import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, readText } from "../core/paths.mjs";
+import { atomicWrite, contentPackFile, docDir, readJson, readText } from "../core/paths.mjs";
 import { screenplay, writeScreenplay } from "../core/screenplay.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
 import { NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
@@ -667,22 +667,6 @@ function numberClaims(key, rows, previous = []) {
   });
 }
 
-/** The writer's lexicon additions into the shared dictionary, by the rule flow.mjs's mergeLexicon keeps (isProposableTerm). */
-function addTerms(root, additions) {
-  if (!isObject(additions)) return [];
-  const file = lexiconFile(root);
-  const lexicon = readJson(file, { schema_version: 1, terms: {} });
-  const added = [];
-  for (const [term, spoken] of Object.entries(additions)) {
-    if (!isProposableTerm(term) || term in lexicon.terms) continue;
-    if (spoken !== null && (typeof spoken !== "string" || !spoken.trim() || spoken.length > 80)) continue;
-    lexicon.terms[term] = spoken === null ? null : spoken.trim();
-    added.push(term);
-  }
-  if (added.length) atomicWrite(file, `${JSON.stringify(lexicon, null, 2)}\n`);
-  return added;
-}
-
 // --- the merged script ---------------------------------------------------------------------------
 
 /** The YouTube tags: the story, its subject and category, then its names, within YouTube's count. */
@@ -792,7 +776,7 @@ function verifyMarkdown(info, chapters) {
 function draftContext(root, slug, doc) {
   const dir = docDir(slug, root);
   return {
-    lexicon: readJson(lexiconFile(root), emptyLexicon()),
+    lexicon: videoLexicon({ root, slug }).lexicon,
     brief: readText(path.join(dir, "brief.md")),
     series: readJson(path.join(dir, "series.json"), null),
     pack: doc.source_guide ? readJson(contentPackFile(doc.source_guide, root), null) : undefined,
@@ -1035,6 +1019,12 @@ export async function draftStory(automation, started, job = {}) {
   writeFileSync(path.join(dir, "series.json"), `${JSON.stringify(storySeriesFile({ series, episode, plan, cast }), null, 2)}\n`);
   writeFileSync(path.join(dir, "brief.md"), storyBrief({ episode, plan, cast, look: series.look }));
   const workdir = automation.workdir(slug);
+  try {
+    state.story.lexicon_sha256 = initializeStoryLexicon({ root: automation.ctx.root, slug, workdir, names: plan.names ?? [] }).lexicon_sha256;
+  } catch (error) {
+    automation.persist(state);
+    return automation.block(state, `story pronunciation input is held: ${error.message}`);
+  }
   automation.persist(state);
   await approve({ gate: "outline", docDir: dir, workdir, now: automation.ctx.now(), note: OUTLINE_NOTE });
   await automation.report(state, "outline approved");
@@ -1048,6 +1038,22 @@ export async function draftStory(automation, started, job = {}) {
  */
 export async function advanceStory(automation, state, next) {
   if (!state.story) return undefined;
+  let snapshot;
+  try {
+    snapshot = initializeStoryLexicon({ root: automation.ctx.root, slug: state.slug, workdir: automation.workdir(state.slug) });
+  } catch (error) { return automation.block(state, `story pronunciation input is held: ${error.message}`); }
+  if (state.story.lexicon_sha256 && state.story.lexicon_sha256 !== snapshot.lexicon_sha256) {
+    for (const chapter of Object.values(state.story.chapters ?? {})) Object.assign(chapter, { checked: false, listened: false });
+    state.verified = false;
+    state.listener_done = false;
+    state.story.lexicon_sha256 = snapshot.lexicon_sha256;
+    automation.persist(state);
+    return `${state.slug}: pronunciation input changed; chapter checks and listening are required again`;
+  }
+  state.story.lexicon_sha256 = snapshot.lexicon_sha256;
+  const pendingTerms = (state.story.lexicon_pending ?? []).filter(term => !Object.hasOwn(snapshot.lexicon.terms, term));
+  if (pendingTerms.length) return automation.block(state, `story lexicon proposals need a reviewed revision: ${pendingTerms.join(", ")}`);
+  delete state.story.lexicon_pending;
   if (next === "brief") return undefined;
   if (next === "outline approved") {
     await approve({ gate: "outline", docDir: docDir(state.slug, automation.ctx.root), workdir: automation.workdir(state.slug), now: automation.ctx.now(), note: OUTLINE_NOTE });
@@ -1101,7 +1107,7 @@ async function writerPayload(automation, state, key, extra = {}) {
   const previous = index > 0 ? readChapter(automation, state, CHAPTER_KEYS[index - 1]) : null;
   const names = plan.names ?? [];
   const anchors = anchorsFor([plan.chapters[index].point, ...(plan.must_verify ?? []).filter((_, each) => belongs[each].includes(key)).map((fact) => fact.claim), ...(extra.current ? chapterNarration(extra.current) : [])], names);
-  const lexicon = readJson(lexiconFile(automation.ctx.root), emptyLexicon());
+  const lexicon = videoLexicon({ root: automation.ctx.root, slug: state.slug, workdir: automation.workdir(state.slug), requireSnapshot: true }).lexicon;
   return {
     today: automation.ctx.now().toISOString().slice(0, 10),
     slug: state.slug,
@@ -1157,8 +1163,8 @@ async function keepChapter(automation, state, key, read, { previous = null, keep
   const exists = (row) => read.chapter.scenes.some((scene) => scene.id === row.scene);
   const rows = keepRows && before.length ? before.filter(exists) : read.chapter.claims.length ? read.chapter.claims : before.filter(exists);
   const chapter = { ...read.chapter, claims: numberClaims(key, rows, before), ...(keepRows && previous?.report ? { report: previous.report } : {}) };
-  const added = addTerms(automation.ctx.root, read.lexicon);
-  if (added.length) state.lexicon_added = [...new Set([...(state.lexicon_added ?? []), ...added])];
+  const proposed = proposeStoryLexicon({ root: automation.ctx.root, slug: state.slug, workdir: automation.workdir(state.slug), additions: read.lexicon });
+  if (proposed.length) state.story.lexicon_pending = [...new Set([...(state.story.lexicon_pending ?? []), ...proposed])];
   saveChapter(automation, state, chapter);
   return { chapter, lint: await relint(automation, state) };
 }
@@ -1181,6 +1187,7 @@ async function writeChapter(automation, state, key) {
   Object.assign(entry, { written: entry.written + 1, checked: false, check_rounds: 0, listened: false });
   automation.persist(state);
   const line = `${state.slug}: chapter ${index + 1}/${CHAPTER_KEYS.length} (${key}) written: ${describeChapter(chapter)}`;
+  if (state.story.lexicon_pending?.length) return automation.block(state, `${line}; pronunciation proposals saved for reviewed revision`);
   if (lint.other.length) return automation.block(state, `the merged story fails lint outside its chapters: ${lint.other.slice(0, 3).join("; ")}`);
   if (entry.lint?.length) return `${line}; ${entry.lint.length} lint errors in it go back to the writer`;
   if (!lint.complete) return line;
@@ -1206,6 +1213,7 @@ async function fixChapterLint(automation, state, key) {
   entry.lint_fixes += 1;
   const { lint } = await keepChapter(automation, state, key, read, { previous: current, keepRows: true });
   automation.persist(state);
+  if (state.story.lexicon_pending?.length) return automation.block(state, `chapter ${key} saved; pronunciation proposals need a reviewed revision`);
   if (lint.other.length) return automation.block(state, `the merged story fails lint outside its chapters: ${lint.other.slice(0, 3).join("; ")}`);
   const left = entry.lint?.length ?? 0;
   return `${state.slug}: chapter ${key} fixed for ${errors} lint errors (round ${entry.lint_fixes})${left ? `; ${left} remain` : lint.complete ? "; the script passes lint" : ""}`;
@@ -1345,7 +1353,7 @@ async function listenChapter(automation, state, key) {
   const chapter = readChapter(automation, state, key);
   const previous = index > 0 ? readChapter(automation, state, CHAPTER_KEYS[index - 1]) : null;
   const following = index + 1 < CHAPTER_KEYS.length ? readChapter(automation, state, CHAPTER_KEYS[index + 1]) : null;
-  const lexicon = readJson(lexiconFile(automation.ctx.root), emptyLexicon());
+  const lexicon = videoLexicon({ root: automation.ctx.root, slug: state.slug, workdir: automation.workdir(state.slug), requireSnapshot: true }).lexicon;
   const payload = {
     chapter: { key, number: index + 1, of: CHAPTER_KEYS.length, title: chapter.title },
     scenes: chapter.scenes.map((scene) => ({ id: scene.id, lines: scene.lines.map(({ id, text }) => ({ id, text })) })),
@@ -1493,6 +1501,7 @@ async function resizeChapter(automation, state, key, delta, measured) {
   state.listener_done = false;
   state.notes.push(`length: ${measured}; the writer ${delta > 0 ? "added about" : "cut about"} ${Math.abs(delta)} s ${delta > 0 ? "to" : "from"} ${key} (round ${round})`);
   automation.persist(state);
+  if (state.story.lexicon_pending?.length) return automation.block(state, `chapter ${key} saved; pronunciation proposals need a reviewed revision`);
   return `${state.slug}: ${measured}; the writer ${delta > 0 ? "added to" : "cut"} ${key} (about ${Math.abs(delta)} s, round ${round}); it is checked and heard again`;
 }
 
