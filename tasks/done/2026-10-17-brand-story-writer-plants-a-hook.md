@@ -1,14 +1,14 @@
 ---
 id: 2026-10-17-brand-story-writer-plants-a-hook
 title: Brand story writer plants a hook every 30 to 45 seconds
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-story-hooks
 claimed_at: 2026-10-17T16:20:05Z
 created_at: 2026-10-17T16:16:36Z
-completed_at:
-branch:
+completed_at: 2026-10-17T16:30:07Z
+branch: claude/story-denser-hooks
 depends_on: []
 scope:
   - tools/video/automation/story-prompts.mjs
