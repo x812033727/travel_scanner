@@ -1,0 +1,403 @@
+{
+  "kind": "story",
+  "slug": "brand-stories-curio-pilot-v2",
+  "episode": 1,
+  "chapter": 1,
+  "title": "輪子行李箱：有了輪子，為什麼還等了這麼久？",
+  "logline": "一只自製輪子箱、一位帶樣品跑百貨的主管，和在安檢口停下的機師：三條沒有證據顯示直接承襲的人物線，各自把旅途中卡住的一步往前推。",
+  "names": [
+    "Bernard Sadow",
+    "Sadow",
+    "Robert Plath",
+    "Plath",
+    "Anita Willets-Burnham",
+    "Macy's",
+    "Travelpro",
+    "Rollaboard",
+    "Samsonite",
+    "Northwest Airlines",
+    "United States Luggage",
+    "U.S. Luggage",
+    "Apollo 11",
+    "Smithsonian"
+  ],
+  "characters": [
+    {
+      "id": "traveler-heavy",
+      "name": "traveler heavy",
+      "appearance": "a generic adult traveler in plain 1970s casual clothes, facing the viewer with a clear expression, holding one heavy unbranded suitcase, no distinctive facial features or resemblance to a real person",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "Warm, curious Taiwan Mandarin storyteller with a natural Taiwanese accent. Begin with the concrete action, vary pace with the people and their choices, and give a brief natural pause before a consequential reveal. Speak clearly and conversationally; do not sound like a technical lecture, read a list, or slow down artificially to meet a duration target."
+      }
+    },
+    {
+      "id": "traveler-upright",
+      "name": "traveler upright",
+      "appearance": "a generic adult traveler in simple modern casual clothes, facing the viewer while pulling one upright unbranded suitcase, no uniform, no distinctive facial features or resemblance to a real person",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "Warm, curious Taiwan Mandarin storyteller with a natural Taiwanese accent. Begin with the concrete action, vary pace with the people and their choices, and give a brief natural pause before a consequential reveal. Speak clearly and conversationally; do not sound like a technical lecture, read a list, or slow down artificially to meet a duration target."
+      }
+    }
+  ],
+  "visual_tier": "stills",
+  "compilation": false,
+  "target_minutes": 10,
+  "image_model": "image-01",
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "plan": {
+    "id": "A01",
+    "category": "everyday",
+    "region": "global",
+    "subject": "輪子行李箱",
+    "question": "有了輪子，行李箱為何還要經過使用、進貨與機組員的改造，才成為熟悉的旅行用品？",
+    "chapters": [
+      {
+        "key": "hook",
+        "point": "Sadow 提沉箱而重機器滑行的反差先入耳；預告 Anita 面對丈夫嘲笑、百貨是否進貨、機師車庫箱型三個不同後續事件，畫面不先畫結果。"
+      },
+      {
+        "key": "origin",
+        "point": "館方記述 1921 年首趟旅程每到一地找廉價住處時，Anita 和四個孩子要守著行李；清楚另起 1928 年第二趟。兒子先改箱再出發，丈夫嘲笑後仍持續使用和巡講。無證據顯示她影響 Sadow。 1939 年 Midland 當時報紙提供一場具體巡講和輪箱到場的後續證據，不識別為同一只館藏箱。"
+      },
+      {
+        "key": "idea",
+        "point": "回到 Sadow 的阿魯巴返程重箱與波多黎各輪板；他在工廠裝四腳輪與拖繩。專利需求和可提可拖只作簡短、明確歸屬的設計背景；結尾是帶樣品去找買家。"
+      },
+      {
+        "key": "engine",
+        "point": "Sadow 回憶百貨拒絕；Shiller 學生致電 Sadow 的轉述補「車站已有搬運工」觀念，Macy 副總裁親自試拉後叫回採購並進貨。Shiller 個人用過的四輪拖帶箱趕路會擺動，是另一位使用者的經驗，不能說 Plath 曾試那只箱。章尾轉向另一種外置推車在安檢遇阻。"
+      },
+      {
+        "key": "turn",
+        "point": "同機師 Emmer 的未標年份回憶僅用短段交代既有機組袋、Plath 草圖遭製作者婉拒；與 Plath 自述安檢推車故事分列，不排定兩者先後。Plath 試著把推車鎖在箱上，安檢員回應只依本人回憶；Travelpro 記述 1987 車庫 Rollaboard，1989 專利只支持後來寫出的設計目標。"
+      },
+      {
+        "key": "now",
+        "point": "其他機師見箱請 Plath 製作，機組採用、旅客在航站看見，車庫不敷需求而搬倉，1991 年轉全職。Samsonite Piggyback 平行支線因打斷人物結局移到來源註；最後只以四輪及重量限制短尾聲收束。 1993 年 LA Times 記者四品牌旅途實測提供店面、客艙與外袋塞滿反例，放在 1991 年轉全職後；不推及所有飛機。"
+      }
+    ],
+    "takeaway": "輪子箱的故事由多個互不證實直接承襲的人物與產品線構成：搬得動、有人進貨、機組願意用，才讓更多旅客看見它。 1993 年旅客實測仍有機艙收納與裝填界線。",
+    "must_verify": [
+      {
+        "claim": "Winnetka 館方記述 Anita 旅前問題、兒子改箱、一次出發、母女沿路作畫、丈夫反應、後續巡講與館藏；無證據顯示她影響 Sadow",
+        "sources": [
+          8,
+          16
+        ],
+        "core": true,
+        "attributed": true
+      },
+      {
+        "claim": "Sadow 本人談阿魯巴回程兩只 27 吋箱、波多黎各輪板、工廠四腳輪與繩、百貨拒絕、Macy 副總裁試拉和後續顧客反應",
+        "sources": [
+          6
+        ],
+        "core": true,
+        "attributed": true
+      },
+      {
+        "claim": "US3653474A 只支持申請人描述的大型航站自提需求及普通箱可提可拖設計，不證明每只售出品的構造",
+        "sources": [
+          0
+        ],
+        "core": true,
+        "attributed": true
+      },
+      {
+        "claim": "Plath 的安檢經歷是其受訪回憶；1989 年專利描述外置推車反覆拆綁，不能倒推 1987 年所有細節",
+        "sources": [
+          5,
+          12
+        ],
+        "core": true,
+        "attributed": true
+      },
+      {
+        "claim": "Travelpro 回顧 1987 年車庫 Rollaboard、機組採用、1989 年搬倉及 1991 年 Plath 全職經營；年份有其他晚年回憶差異",
+        "sources": [
+          1,
+          2
+        ],
+        "core": true,
+        "attributed": true
+      },
+      {
+        "claim": "Emmer 多年後回憶既有機組輪子袋和 Plath 草圖遭製作者婉拒；原文未給事件年份或與安檢的先後。較低掛帶細節僅留來源註，不在口播。",
+        "sources": [
+          13
+        ],
+        "core": true,
+        "attributed": true
+      },
+      {
+        "claim": "Travelpro 當時執行長說其他機師見 Plath 使用後請他製作；不按訪談的相對年份推算事件年",
+        "sources": [
+          15
+        ],
+        "core": true,
+        "attributed": true
+      },
+      {
+        "claim": "Yale 教授 Shiller 轉述學生助理向 Sadow 查得百貨以搬運工反對；Shiller 自己用過四輪拖帶箱，趕路時左右擺動；另一堂課則概述舊式設計轉彎可能翻倒",
+        "sources": [
+          17,
+          18
+        ],
+        "core": true,
+        "attributed": true
+      },
+      {
+        "claim": "Winnetka 館方區分 Anita 的 1921 年首旅車站候宿經驗與 1928 年第二次環遊；不能把早期經歷移到輪子箱旅程",
+        "sources": [
+          19
+        ],
+        "core": true,
+        "attributed": true
+      },
+      {
+        "claim": "Sadow 1970 年的精確職稱有來源分歧：Sharkey 稱副總裁，Briggs & Riley 2010 公司稿稱總裁；候選旁白不播出職稱",
+        "sources": [
+          13,
+          20
+        ],
+        "core": false,
+        "attributed": true
+      },
+      {
+        "claim": "1939-02-09 Midland local report documents one tea/lecture the previous afternoon with wheeled suitcase; no proof it is the exact 1928 case or that every lecture included one",
+        "sources": [
+          21
+        ],
+        "core": true,
+        "attributed": true
+      },
+      {
+        "claim": "Judi Dash 1993 first-person report tested four brands and recorded a partial retail/cabin success plus an overpacking limit; no universal aircraft fit or sales total",
+        "sources": [
+          22
+        ],
+        "core": true,
+        "attributed": true
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://patents.google.com/patent/US3653474A/en",
+        "publisher": "Google Patents（美國專利 US3653474A）",
+        "kind": "official",
+        "supports": "專利名稱、發明人、權利人、申請與核准日期；說明書裡關於旅行成長、以前由搬運工處理行李、大型航站讓乘客自己提行李走遠路的敘述；引用的前案含 US2392926A；原始說明書背景另列航空、鐵路、巴士航站與長距離自行搬運；目標保留普通箱子形狀、尺寸與外觀；圖說明輪組分裝箱蓋／箱身兩半並以鉚釘固定，拖帶由箱端環扣合且可拆，原提把保留，權利要求容許提行或拖行。",
+        "checked": "2026-10-16"
+      },
+      {
+        "url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+        "publisher": "Travelpro",
+        "kind": "official",
+        "supports": "Sadow 是麻州行李箱公司的前副總裁、Macy's 的廣告詞、Sadow 的箱子常翻倒撞腳踝；Plath 1987 年的設計先在機組員間流行、1989 年搬出車庫、1991 年離開航空公司全職經營 Travelpro",
+        "checked": "2026-09-28"
+      },
+      {
+        "url": "https://travelpro.com/pages/our-history",
+        "publisher": "Travelpro",
+        "kind": "official",
+        "supports": "Rollaboard 是 747 機長 1987 年發明的兩輪直立拉桿箱，為機組員設計、很快也被一般旅客接受",
+        "checked": "2026-09-28"
+      },
+      {
+        "url": "https://www.nasa.gov/mission/apollo-11/",
+        "publisher": "NASA",
+        "kind": "official",
+        "supports": "阿波羅 11 號 1969 年 7 月 20 日登月",
+        "checked": "2026-09-28"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Suitcase",
+        "publisher": "Wikipedia",
+        "kind": "reference",
+        "supports": "Sadow 在波多黎各機場得到靈感、Macy's 1970 年 10 月開賣與廣告詞；其 Samsonite 2004 年說法與官方年表衝突，不作依據",
+        "checked": "2026-09-28"
+      },
+      {
+        "url": "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+        "publisher": "ABC News（USA TODAY 報導，2012 年）",
+        "kind": "news",
+        "supports": "Plath 在自家車庫的工作間做出原型；1987 年的 Rollaboard 把行李箱從橫放改成直立；Sadow 早 17 年做出四輪加拖帶的箱子但不夠靈活",
+        "checked": "2026-09-28"
+      },
+      {
+        "url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+        "publisher": "ABC News（Scott Mayerowitz，2010 年）",
+        "kind": "news",
+        "supports": "Sadow 的阿魯巴之旅、兩個 27 吋箱子、機場工人推著裝輪子的墊板、第一個原型四個腳輪加繩子；百貨公司拒絕與他說的大男人風氣；Macy's 採購先拒後由副總裁下單、1970 年 10 月開賣；Sadow 回憶顧客立即接受；ABC News 2010 年〈The Suitcase With Wheels Turns 40〉對空服員 Heather Poole 的原始訪談確有輪子箱裝得太滿、離開輪子後難搬的觀察；舊旁白歸屬已刪，這不自動核准 now-06 的一般物理句。",
+        "checked": "2026-10-16"
+      },
+      {
+        "url": "https://msmagazine.com/2021/08/18/gender-bias-covid-vaccine-katalin-kariko/",
+        "publisher": "Ms. 雜誌（Amy Diehl，2021 年）",
+        "kind": "news",
+        "supports": "Anita Willets-Burnham 1928 年第二次環遊世界前想到替行李箱裝輪子、兒子用嬰兒車輪與伸縮木把手做成；百貨公司不願賣 Sadow 的箱子是因為兩種性別刻板印象",
+        "checked": "2026-09-28"
+      },
+      {
+        "url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+        "publisher": "Winnetka Historical Society",
+        "kind": "archive",
+        "supports": "畫家 Anita Willets-Burnham 全家 1928–1930 年第二次環遊世界，出發時已有一只由兒子用舊嬰兒車輪與伸縮木把手製成的行李箱；館藏圖說標成 1927，不據此斷言製作年；館方轉述 Anita 本人的旅行著述：她問為何要像馱馬搬箱，丈夫仍寧提重箱並取笑家人的輪子；第二次旅行後，她巡迴演講時仍帶著輪子行李箱，未確認那只與旅程或館藏箱相同；館方保存安妮塔的一只自製輪子箱（藏品 2005.26.576），也未指認它是片頭 1928 年旅程示意中的同一只。",
+        "checked": "2026-10-16"
+      },
+      {
+        "url": "https://patents.google.com/patent/US2392926A/en",
+        "publisher": "Google Patents（美國專利 US2392926A）",
+        "kind": "official",
+        "supports": "1943 年 7 月 26 日申請、1946 年 1 月 15 日核准的行李箱專利：箱底裝滾珠或輪式腳輪，拉著把手或拖帶就能讓行李跟在旅客身邊走；Kelly US2392926A 說明書前段確有鐵路站搬運工稀缺、男女旅客因此受搬重箱之苦的發明人背景陳述；被刪的 origin-09 不因此自動復原。",
+        "checked": "2026-10-16"
+      },
+      {
+        "url": "https://www.smithsonianmag.com/history/history-humble-suitcase-180951376/",
+        "publisher": "Smithsonian Magazine（Daniel A. Gross，2014 年）",
+        "kind": "news",
+        "supports": "1887 年的輪子箱與 1945 年的輪子行李箱專利都沒有流行；引用 Sadow 專利關於搬運工與大型航站的敘述；如今登機箱與託運箱大多有輪子",
+        "checked": "2026-09-28"
+      },
+      {
+        "url": "https://corporate.samsonite.com/on/demandware.static/-/Sites-InvestorRelations-Library/default/dwa68533ea/PDF/announcements/2011/20110602100852_Samsonite_Final_Prospectus_en.pdf",
+        "publisher": "Samsonite 2011 年招股書（年表第 72 頁、術語表第 39 頁）",
+        "kind": "official",
+        "supports": "年表記載 1997 年 Ultra Transporter 為可推可拉的平衡四輪直立箱，2000 年推出四輪 Spinners；術語表定義 Spinners 為可直立向多方向滑動的四個萬向輪行李箱；同份招股書印刷頁 72 年表另記 Samsonite 於 1974 年在 Silhouette 系列推出自己的第一款帶輪行李箱；不證明其技術來自 Sadow。",
+        "checked": "2026-10-16"
+      },
+      {
+        "url": "https://patents.google.com/patent/US4995487A/en",
+        "publisher": "美國專利 US4995487A（Robert V. Plath 本人申請）",
+        "kind": "official",
+        "supports": "1989-08-08 申請、1991-02-26 核准；說明書比較四輪拖帶箱與獨立推車，列安檢、登機、落地的反覆拆裝；描述內建伸縮拉桿、凹入式兩輪、站立支腳、傾斜後以兩輪承重、拉桿摩擦固定與附掛另一件行李的接件。這是 1989 年專利記載，不能當成 1987 年車庫原型的逐項構造紀錄。",
+        "checked": "2026-10-16"
+      },
+      {
+        "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+        "publisher": "RNPA Contrails（Bill Emmer 2016 回憶，印刷頁 46–47；Joe Sharkey 2010 文章重印頁 48）",
+        "kind": "archive",
+        "supports": "已存在的機組輪子袋、草圖與製作者答覆、後來掛帶；旅客見空服員使用的回顧屬另一作者，兩者不可混作同一證詞",
+        "checked": "2026-10-18"
+      },
+      {
+        "url": "https://www.quirks.com/articles/research-with-travelers-helps-samsonite-develop-a-convenient-new-line-of-luggage/",
+        "publisher": "Bob Bengen，Samsonite 研究主管（1992）",
+        "kind": "industry_first_person",
+        "supports": "另一條 Piggyback 產品線：1986 研究需求與概念、1987 停車場模型試拉、1988 空服員研究與隨身箱原型、1990 上架；非獨立市場成效證明",
+        "checked": "2026-10-18"
+      },
+      {
+        "url": "https://www.globaltravelerusa.com/reinventing-the-wheel/",
+        "publisher": "Global Traveler，Travelpro 執行長訪談（2007）",
+        "kind": "interview",
+        "supports": "同事見 Plath 使用輪子箱後請他製作，不據此固定發明年份",
+        "checked": "2026-10-18"
+      },
+      {
+        "url": "https://www.winnetkahistory.org/who-were-the-burnhams/",
+        "publisher": "Winnetka Historical Society，Burnham 家族簡史",
+        "kind": "archive",
+        "supports": "第二次環遊期間 Anita 和兩名女兒沿路以畫作換餐食或住宿；不指認特定交易發生的站點",
+        "checked": "2026-10-18"
+      },
+      {
+        "url": "https://oyc.yale.edu/economics/econ-252-08/lecture-3",
+        "publisher": "Open Yale Courses，Robert Shiller 2008 課堂逐字稿",
+        "kind": "first_person_lecture",
+        "supports": "學生助理致電 Sadow 後所轉述的搬運工採購反對；Shiller 個人使用四輪拖帶箱時趕路會晃擺。講課其他發明年份及首創說法不用。",
+        "checked": "2026-10-18"
+      },
+      {
+        "url": "https://oyc.yale.edu/economics/econ-252-11/lecture-3",
+        "publisher": "Open Yale Courses，Robert Shiller 2011 課堂逐字稿",
+        "kind": "lecture",
+        "supports": "Shiller 概述舊式四輪拖帶箱轉彎可能翻倒；不是另一回個人實測，也不推及全部品牌。",
+        "checked": "2026-10-18"
+      },
+      {
+        "url": "https://www.winnetkahistory.org/gazette/hope-amidst-hardship-the-indomitable-character-of-anita-willets-burnham/",
+        "publisher": "Winnetka Historical Society，Hope Amidst Hardship",
+        "kind": "archive",
+        "supports": "1921 年首趟旅程每到一地父親找廉價住處時，Anita 與四名孩子守著行李；與 1928 年輪子箱旅程不同。",
+        "checked": "2026-10-18"
+      },
+      {
+        "url": "https://www.prnewswire.com/news-releases/briggs-and-riley-announces-40th-anniversary-of-wheeled-luggage-104271518.html",
+        "publisher": "Briggs & Riley／U.S. Luggage 2010 年公司新聞稿",
+        "kind": "company_press_release",
+        "supports": "稱 Sadow 為 then-president，與 Sharkey 2010 的 vice-president 相衝突；口播不採用精確職稱",
+        "checked": "2026-10-18"
+      },
+      {
+        "url": "https://newspapers.swco.ttu.edu/bitstreams/b9cd84b8-2ba7-4506-9eff-7cca3e5c6376/download",
+        "publisher": "The Midland (Texas) Reporter-Telegram, 1939-02-09, PDF p. 4",
+        "kind": "contemporary_newspaper_report",
+        "supports": "Modern Study Club guest-day tea, 1939-02-08; Burnham arrives with cape, hat, wheeled suitcase and extra bag. One documented appearance only.",
+        "checked": "2026-10-18"
+      },
+      {
+        "url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+        "publisher": "Los Angeles Times, Judi Dash, 1993-08-01",
+        "kind": "contemporary_first_person_test",
+        "supports": "Reporter compares four rolling carry-on lines on ground and in air; mail-order to retail availability; most aisles/storage; her overfilled Travelpro exterior pockets prevent stowage until emptied.",
+        "checked": "2026-10-18"
+      }
+    ],
+    "names": [
+      "Bernard Sadow",
+      "Sadow",
+      "Robert Plath",
+      "Plath",
+      "Anita Willets-Burnham",
+      "Macy's",
+      "Travelpro",
+      "Rollaboard",
+      "Samsonite",
+      "Northwest Airlines",
+      "United States Luggage",
+      "U.S. Luggage",
+      "Apollo 11",
+      "Smithsonian",
+      "Bill Emmer",
+      "Jet Eze",
+      "Piggyback"
+    ],
+    "cast": [
+      {
+        "id": "traveler-heavy",
+        "role": "匿名一般旅客，用於示意行李很重與機場步行，不對應 Sadow 或其他歷史人物",
+        "appearance": "a generic adult traveler in plain 1970s casual clothes, facing the viewer with a clear expression, holding one heavy unbranded suitcase, no distinctive facial features or resemblance to a real person"
+      },
+      {
+        "id": "traveler-upright",
+        "role": "匿名一般旅客，用於示意直立拉桿箱的用法，不對應 Plath 或其他歷史人物",
+        "appearance": "a generic adult traveler in simple modern casual clothes, facing the viewer while pulling one upright unbranded suitcase, no uniform, no distinctive facial features or resemblance to a real person"
+      }
+    ],
+    "image_notes": "MiniMax image-01 可愛插畫，人物只以匿名示意。開場與每段未解動作不得在旁白前畫出結果；1921 首旅不畫輪子箱，安檢外置金屬推車、Emmer 所述舊機組輪子袋、後來 Rollaboard 為不同物件。專利圖以提案示意，不充作當年實物照片。",
+    "sensitivity": "none",
+    "related_guide": null,
+    "thumbnail": {
+      "headline": "有輪子，還不夠？",
+      "idea": "一位匿名一般旅客站在機場，身旁是未標品牌的直立輪子箱，手停在拉桿上，表情像在思考怎麼帶著它走；只用箱子用途作視覺，不畫歷史真人或暗示登月促成流行。"
+    },
+    "caveats": "此為離線候選規劃，base/series.json 為正式來源快照，需另外審查六章主機 JSON 與 series plan 的遷移。所有新增史實仍待逐句獨立審稿；Sharkey 與 Briggs & Riley 公司稿對 Sadow 職稱說法不一，口播省略精確職稱；Emmer 未給確定年份，Samsonite 為另一公司產品線，實際 TTS 與畫面尚未驗收。 1939 報導只證一場出席的輪箱；1993 記者實測不能當全市場銷量或所有客艙尺寸證據。",
+    "publish": {
+      "day": 1,
+      "slot": "12:00"
+    }
+  },
+  "series": {
+    "title": "品牌故事：A01／B18 奇聞規格試作",
+    "premise": "兩個有一手來源可查的非虛構日常用品故事，先用具體場景與懸念開場，循時間與因果說到底；台灣口音單人旁白配 MiniMax 可愛插畫，片頭接在首章後，片尾留 YouTube 可點元素。",
+    "note": "2026-10-15 新版試作；保留 brand-stories-100 原企劃與舊審稿。兩集六章來源與本機手稿各有獨立文字審查；手稿不隨清單匯入，工人實稿仍須另審。尚未匯入或付費製作。",
+    "hands_off": true,
+    "episodes_per_day": 1
+  }
+}
