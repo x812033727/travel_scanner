@@ -166,3 +166,8 @@ scope:
 - 站主回覆「已上傳並四語試播正常」；2026-10-17 03:32 UTC 後台唯讀讀回 `stage=on YouTube`、影片 ID `yGF95x3O9U0`，`youtube_publish_at=null`，上述 `publish`／`languages` 最新卡仍為同 ID、同 SHA 的 `approved`。詳見 `docs/videos/curio-m09/youtube-readback-20261017.md`。
 - 同步紀錄顯示 `mode=upload`、`visibility=private`、`accept_private_lock=true`，後台另顯示 `audited=false`；可確定由網站 API 以私人模式上傳，不能單憑警示／同意欄位斷言 YouTube 實際鎖住可見度。`details`、四語字幕與主縮圖步驟 `done`，英／日／韓配音的後台狀態是 `uploaded`。站主其後明確確認四語試播的是**同一支** `yGF95x3O9U0`；是否只能私人仍待查看這支影片的 Studio 可見度選項。無公開或排程證據。
 - 本機 `video.json.youtube.video_id` 仍空，因此本機 `status` 落後於後台。另有手動影片 ID 同步任務；本次不改動已核准稿件檔案，只留收據交接。
+
+### 2026-10-17 M09 Studio 唯讀稽核
+
+- 站主先前已確認同一支 `yGF95x3O9U0` 的四語試播正常。新的 Studio 語言頁截圖顯示英／日／韓音軌、各一種字幕版本、標題說明均為「已發布」，三語各有不同的本地化縮圖預覽；這些欄位不等於影片已公開。截圖留在 repo 外，SHA 與觀察邊界見 `docs/videos/curio-m09/studio-audit-20261017.md`。
+- 協調者唯讀查看 Studio 可見度，該影片顯示排程於 2026-10-22 20:00（GMT+8），此前為私人。這比後台保留的 API 上傳請求 `private`／`publish_at=null` 更新；尚待站主確認預期排程與實際切換結果。此輪未更改 Studio、後台或已核准稿件，不把排程當公開完成。
