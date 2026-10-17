@@ -74,3 +74,9 @@ H09 PR #1503 head bff1f1a65 has no new CI run because main conflicts in docs/vid
 - U09 英／日／韓旁白旗標已由站主試聽接受，保留機械 QA 原旗標數。獨立檢查發現第一版上傳包漏入分語縮圖，已補三張並重新製包；最新版 `publish` 卡 `febf304b-511e-4a06-ac47-9d84eb439b7b`、`languages` 卡 `4b526710-8719-43a4-a433-c9d5ded8d310` 均 pending，舊卡 superseded。未操作 Studio。
 - M09 日／韓文稿與配音證據唯讀複核未找到能獨立確定的錯讀，站主試聽仍待回覆。H10 日語稿 `he2b2172` 的「どう湾へ来て」確定句法不通，已請站主提供先前所說的其他錯句 ID；H10 檔案範圍仍由另一任務認領，且新增 US$2 多語上限的保守估算已用 US$1.99。未移交認領或取得新額度前不改稿、不重錄、不再付費 QA。
 - 共用帳本保守估算五集累計 US$26.2295／US$39；供應商最後帳單不可讀。分支已 rebase 至 `origin/main` `881e5c465`，推送到既有草稿 PR #1515，保留 `no-auto-merge`；等待此新 head 的 CI，不把舊綠燈視為本版測試。
+
+### 2026-10-17 上午接續
+
+後台重新讀回：H11、U09 最新 publish／languages 卡均 approved，兩片記為私人、已連結 YouTube、未排程公開。站主其後明確回覆已在 Studio 試播兩集的繁中／英／日／韓音軌與字幕，四語均正常；這是站主驗收，與後台 `dub=uploaded` 按鈕狀態分開。H12 最新 final 卡已 approved，但本機未拉回；後台選了三語所有部件，尚無 H12 多語增額或目前認領的移交。H10、M09 final approved，仍無上傳包；H10 日語譯文與站主所說錯句、M09 日韓聽感仍待處理。五集尚未結案，也沒有任何一集的公開播放／排程證據。
+
+H11、U09 後台已有 YouTube ID，而本機手動專案 `video.json` 仍空；CLI `youtube-sync` 目前指向不存在的實作。已另開 `2026-10-17-sync-manually-uploaded-video-ids-into` 追蹤安全同步，未修改他人認領的單集檔案。PR #1515 目前 head `1f7f4c854` 的檢查全數成功，仍是 draft 並帶 `no-auto-merge`，沒有合併。
