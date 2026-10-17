@@ -209,6 +209,7 @@ OAuth 的做法：
 
 - **怎麼分**：`review-push` 看這支影片的工作目錄裡有沒有工人的狀態檔 `auto.json`（`tools/video/review/sync.mjs` 的 `WORKER_STATE_FILE`）。沒有就是手動推送，每一筆送審的 payload 帶 `hand_pushed: true`，指令也會印一行「not a video the worker made … the owner decides at every gate」。工人自己的送審照舊，不帶這個標記。
 - **伺服器怎麼做**：`submit_review`（`apps/api/app/video_reviews/admin_service.py`）看到 `hand_pushed` 是 `true`，就不套用任何一條自動核准規則（Jev 挑大綱、配音檢查、分鏡、劇本、成片品管、上傳包、語言包都一樣），這筆審核留在待審，等站主在 `/admin/videos` 決定。Jev 的挑選、品管報告照樣附在審核上給站主看。
+- **Shorts 與匯入的成片也一樣**（站主 2026-10-17：「兩種都套用」）：用 `shorts/cli.mjs push` 手動送的 Short，成片與上傳包兩關都帶 `hand_pushed: true`；工人自己的 Short（`lab.mjs`、`cut.mjs` 呼叫 `push()`）不帶。用 `import/cli.mjs` 匯入的成片一律帶，因為匯入本來就不是工人做的。
 - **限制**：標記是工具加的，伺服器分不出送審是誰發的（工人與手動推送用同一個 token）。故意偽造 `auto.json` 或拿掉標記就能繞過；這條規則擋的是「沒注意到會自動核准」，不是蓄意繞過。
 
 ## 安全與失敗
