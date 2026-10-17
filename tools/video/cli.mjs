@@ -12,6 +12,7 @@ import { parseArgs } from "node:util";
 
 import { tidiedNote } from "./automation/tidy.mjs";
 import { approve, GATES } from "./core/approvals.mjs";
+import { inspectStartedStoryMigration, migrateStartedStoryLexicon } from "./core/lexicon-migration.mjs";
 import { NARRATIVE_REVIEW, narrativeRecord, panelPayload, panelVerdict } from "./core/narrative.mjs";
 import { atomicWrite, docDir, readJson, resolveWorkdir, ROOT, UsageError } from "./core/paths.mjs";
 import { estimateTimeline } from "./core/timeline.mjs";
@@ -78,6 +79,10 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    prints the narration and its ten yes-or-no questions for a blind reader; with
                                                    --answers it records the verdict and exits 1 while a required question is "no"
   script   --slug S                                write docs/videos/<slug>/script.md, the screenplay a series episode's owner reads
+  story-lexicon-migrate --slug S [--workdir D] [--apply] [--json]
+                                                   pin a story started before per-story dictionaries that has no narration yet
+                                                   (docs/videos/story-lexicon-migration.md); without --apply it only prints each
+                                                   precondition and the snapshot SHA-256; exits 1 when refused
   review-push --slug S [--gate G | --report-only] [--manual-review]
                                                    report and submit; --manual-review requires --gate final and keeps QA from auto-approving it
   review-pull --slug S [--gate G]                  record the owner's decisions made on /admin/videos
@@ -268,6 +273,32 @@ async function cmdCaptions(args, ctx) {
   return manifest.chapters.length ? EXIT.lint : EXIT.ok;
 }
 
+/** docs/videos/story-lexicon-migration.md: a dry run unless --apply; refused (exit 1) unless every precondition holds. */
+async function cmdStoryLexiconMigrate(args, ctx) {
+  const values = parse(args, { slug: { type: "string" }, workdir: { type: "string" }, apply: { type: "boolean" }, json: { type: "boolean" } });
+  if (!values.slug) throw new UsageError("story-lexicon-migrate needs --slug");
+  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: values.slug, root: ctx.root });
+  const report = inspectStartedStoryMigration({ root: ctx.root, slug: values.slug, workdir });
+  let applied = null;
+  let failure = null;
+  if (values.apply && report.status === "allowed") {
+    try { applied = migrateStartedStoryLexicon({ root: ctx.root, slug: values.slug, workdir, names: report.names, now: ctx.now }); }
+    catch (error) { if (!error?.code) throw error; failure = error; }
+  }
+  if (values.json) {
+    ctx.stdout.write(`${JSON.stringify({ ...report, apply: Boolean(values.apply), applied: applied && { lexicon_sha256: applied.lexicon_sha256, head_event_sha256: applied.head_event_sha256, transaction_id: applied.transaction_id ?? null, migrated: applied.migrated }, error: failure && { code: failure.code, message: failure.message } }, null, 2)}\n`);
+  } else {
+    ctx.stdout.write(`${values.slug}: ${report.status}${report.lexicon_sha256 ? `; snapshot sha256 ${report.lexicon_sha256}` : ""}\n`);
+    for (const check of report.checks) ctx.stdout.write(`  ${check.ok ? "ok  " : "FAIL"}  ${check.id}${check.ok ? "" : ` -> ${check.code}${check.detail ? ` (${check.detail})` : ""}`}\n`);
+    if (report.shared_sha256 !== undefined && report.status !== "already_pinned") ctx.stdout.write(`  shared lexicon sha256 ${report.shared_sha256 ?? "(none)"}; seeded ${report.seeded_terms.length ? report.seeded_terms.join(", ") : "nothing"}\n`);
+    if (applied) ctx.stdout.write(`pinned ${values.slug}: lexicon ${applied.lexicon_sha256}, event ${applied.head_event_sha256}${applied.transaction_id ? `, transaction ${applied.transaction_id}` : ""}\n`);
+    else if (failure) ctx.stdout.write(`not pinned: ${failure.message}\n`);
+    else if (report.status === "allowed") ctx.stdout.write("dry run: nothing written; run again with --apply to pin it\n");
+  }
+  if (failure || report.status === "refused") return EXIT.lint;
+  return EXIT.ok;
+}
+
 async function delegate(command, args, ctx) {
   const [area, ticket] = AREAS[command];
   const entry = path.join(ctx.here, area, "cli.mjs");
@@ -279,7 +310,7 @@ async function delegate(command, args, ctx) {
   return module.run(command, args, { ...ctx, EXIT });
 }
 
-const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, narrative: cmdNarrative, script: cmdScript, captions: cmdCaptions };
+const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, narrative: cmdNarrative, script: cmdScript, captions: cmdCaptions, "story-lexicon-migrate": cmdStoryLexiconMigrate };
 
 export async function main(argv, overrides = {}) {
   const ctx = { root: ROOT, here: HERE, env: process.env, stdout: process.stdout, stderr: process.stderr, now: () => new Date(), ...overrides };
