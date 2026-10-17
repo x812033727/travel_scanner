@@ -193,3 +193,9 @@ TTS 已完成 89 請求、1,925 計費字元，正文時間軸 `14168/30 = 472.2
 
 - 站主回覆已核准最新版語言卡。唯讀後台 GET 確認最新 `languages` 卡 `abeb9cc0-20e8-409b-b972-c379072fcfcb` 為 **approved**，manifest SHA-256 `8E5DD6E09FDC943F0AB6A4FB8A04F0859D8A885144CF044F698CCA5FAF74B61F`，核准時間 `2026-10-17T03:37:04.574729Z`；最新 `publish` 卡 `9ccad952-cb3b-45f6-8f8b-8ae71f0fda8d` 仍為 approved。
 - 本機 `review/languages.json` SHA 與後台相同，`review-pull --gate languages` exit 0，`approvals.json` 已記錄。`status` 仍顯示 `[ ] on YouTube`；不可把語言卡核准或 CLI 成功訊息當作 Studio 音軌已上傳／試播。仍待站主私人上傳成片與英／日／韓配音、字幕、專屬縮圖，填回影片 ID 並試播後讀回。
+
+## 2026-10-17 H12 私人影片後台讀回
+
+- 唯讀 `GET /api/video/reviews/curio-h12` 確認最新 `publish`／`languages` 卡仍以原 ID、原 SHA 核准；後台目前為 `stage=on YouTube`、`youtube_video_id=QJVtVFecm7I`、`youtube_publish_at=null`。`youtube_sync` 在 `2026-10-17T04:41:15.409775Z` 完成，請求明載 `mode=upload`、`visibility=private`、`accept_private_lock=true`。這是網站 API 上傳紀錄，與先前站主表示會從 Studio 網站上傳的計畫不同；不可寫成 Studio 網站上傳已完成。細節見 `docs/videos/curio-h12/delivery-package-20261017.md`。
+- 後台 `details`、四語字幕及主縮圖步驟為 `done`，三語配音為按鈕式 `uploaded`。仍待站主確認同一 ID `QJVtVFecm7I` 的四語音軌／字幕實際試播、語言專屬縮圖顯示，以及 Studio 可見度是否真的鎖私人；尚未排程或公開。
+- 本機 `video.json.youtube.video_id` 仍空，`status --slug curio-h12` 暫列 `[ ] on YouTube`。已有 `2026-10-17-sync-manually-uploaded-video-ids-into` 任務處理本機 ID 同步；本次未動核准稿件，也沒有新增付費或代替站主操作 Studio。
