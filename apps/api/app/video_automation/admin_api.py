@@ -330,6 +330,8 @@ async def judge_video_outline(
                 stance,
                 payload.brief,
                 payload.options,
+                session=session,
+                slug=payload.slug,
                 on_usage=on_usage,
             ),
         )
