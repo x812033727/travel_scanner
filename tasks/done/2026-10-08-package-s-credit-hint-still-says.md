@@ -1,13 +1,13 @@
 ---
 id: 2026-10-08-package-s-credit-hint-still-says
 title: Package's credit hint still says lint does not count the picture credits
-status: open
+status: done
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-credit-hint
+claimed_at: 2026-10-17T23:08:06Z
 created_at: 2026-10-08T05:54:56Z
-completed_at:
+completed_at: 2026-10-17T23:08:52Z
 branch:
 depends_on: []
 scope:
@@ -30,13 +30,13 @@ Found while merging #1382 into #1361; #1361 corrected the same claim in `ILLUSTR
 
 ## Definition of done
 
-- [ ] `package`'s over-limit problem no longer says lint does not count the credits (it may still
+- [x] `package`'s over-limit problem no longer says lint does not count the credits (it may still
       say how many bytes the credits take), and its comment says what lint does now.
 
 ## Steps
 
-- [ ] Reword or drop `withCreditHint` in `tools/video/package/metadata.mjs`.
-- [ ] Update the pinned message in `tools/video/package/metadata.test.mjs`.
+- [x] Reword or drop `withCreditHint` in `tools/video/package/metadata.mjs`.
+- [x] Update the pinned message in `tools/video/package/metadata.test.mjs`.
 
 ## How to verify
 
@@ -46,3 +46,9 @@ Found while merging #1382 into #1361; #1361 corrected the same claim in `ILLUSTR
 
 A description over the limit should now fail at `lint` first, so this hint is reached only by a
 package run without a lint run before it.
+
+### 2026-10-17 done (claude-opus-5-5-credit-hint)
+
+- Kept the hint, reworded: the problem now reads "the 圖片來源 credits of assets[] take N of
+  them", and the comment says lint composes with the credits too, so the hint is for a package
+  run without a lint before it. The test's comments no longer say lint leaves them out.
