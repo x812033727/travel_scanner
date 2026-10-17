@@ -13,8 +13,8 @@
 
 - `package --slug curio-h12` 在 `<home>/mokaair-work/videos/curio-h12/upload/` 產出已核准成片、主縮圖、英／日／韓專屬縮圖、四語標題說明、四語 SRT、三語 m4a 及 `UPLOAD.md`。files、descriptions、captions、disclosure **4／4 通過**；`metadata.json` SHA-256 `6DDB8856C732C835DBD46BB26836F5F1911EED677CCABA2F0C602BB78C6BEEE9`，`language_choice` 三語皆勾 metadata／captions／dub，無 skipped locale。
 - `review-push --gate publish` 成功送出後，唯讀 API 讀回最新卡 `9ccad952-cb3b-45f6-8f8b-8ae71f0fda8d`、`content_sha256` `6DDB8856C732C835DBD46BB26836F5F1911EED677CCABA2F0C602BB78C6BEEE9`、**approved**（`2026-10-17T03:33:10.212209Z`）；`review-pull --gate publish` 已將此核准寫入本機。
-- `review-push --gate languages` 成功送出；唯讀 API 讀回最新卡 `abeb9cc0-20e8-409b-b972-c379072fcfcb`、manifest／`content_sha256` `8E5DD6E09FDC943F0AB6A4FB8A04F0859D8A885144CF044F698CCA5FAF74B61F`、**pending**；`review-pull --gate languages` 仍顯示「waiting for the owner」。這不是後台語言核准，也不是 Studio 三語音軌已上傳。
-- `status --slug curio-h12` 顯示 upload package 完成、on YouTube 未完成。下一步由站主審閱語言卡；依 `upload/UPLOAD.md` 在 Studio 上傳私人影片、三語配音與專屬縮圖，貼回影片 ID 後再核對播放。
+- `review-push --gate languages` 成功送出；初次唯讀 API 讀回最新卡 `abeb9cc0-20e8-409b-b972-c379072fcfcb`、manifest／`content_sha256` `8E5DD6E09FDC943F0AB6A4FB8A04F0859D8A885144CF044F698CCA5FAF74B61F` 為 **pending**。站主回覆已核准後，唯讀 GET 讀回同一卡 **approved**（`2026-10-17T03:37:04.574729Z`）；本機 `review/languages.json` SHA-256 完全吻合，`review-pull --gate languages` exit 0，根目錄 `approvals.json` 已記錄同一 SHA。
+- `status --slug curio-h12` 顯示 upload package 完成、on YouTube 仍未完成。後台語言卡核准及 CLI 的成功訊息不證明 Studio 三語音軌已上傳。下一步依 `upload/UPLOAD.md` 由站主在 Studio 上傳私人影片、三語配音與專屬縮圖，貼回影片 ID 後再核對播放。
 
 ## 費用與範圍
 

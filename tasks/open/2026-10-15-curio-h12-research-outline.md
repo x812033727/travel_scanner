@@ -188,3 +188,8 @@ TTS 已完成 89 請求、1,925 計費字元，正文時間軸 `14168/30 = 472.2
 - 四語字幕重建完成，`package` 4／4 通過；繁中成片與三語配音 SHA 未變。上傳包 `metadata.json` SHA `6DDB8856…BEEE9`；詳細檔案及費用讀回見 `docs/videos/curio-h12/delivery-package-20261017.md`。
 - 最新 `publish` 卡 `9ccad952-cb3b-45f6-8f8b-8ae71f0fda8d` 綁上傳包 SHA，後台已自動核准且 `review-pull` 記錄。最新 `languages` 卡 `abeb9cc0-20e8-409b-b972-c379072fcfcb` 綁 manifest SHA `8E5DD6E0…74B61F`，後台仍 **pending**；站主須審閱該卡。`status` 顯示 package 完成、on YouTube 未完成。
 - H12 共用估算帳本 US$6.435／8.50、五集 US$28.4295／41.50，無 active reservation。此票待站主處理語言卡及 Studio 私人上傳；本次交接後釋出認領，不能標成全部完成。
+
+## 2026-10-17 H12 語言卡核准讀回
+
+- 站主回覆已核准最新版語言卡。唯讀後台 GET 確認最新 `languages` 卡 `abeb9cc0-20e8-409b-b972-c379072fcfcb` 為 **approved**，manifest SHA-256 `8E5DD6E09FDC943F0AB6A4FB8A04F0859D8A885144CF044F698CCA5FAF74B61F`，核准時間 `2026-10-17T03:37:04.574729Z`；最新 `publish` 卡 `9ccad952-cb3b-45f6-8f8b-8ae71f0fda8d` 仍為 approved。
+- 本機 `review/languages.json` SHA 與後台相同，`review-pull --gate languages` exit 0，`approvals.json` 已記錄。`status` 仍顯示 `[ ] on YouTube`；不可把語言卡核准或 CLI 成功訊息當作 Studio 音軌已上傳／試播。仍待站主私人上傳成片與英／日／韓配音、字幕、專屬縮圖，填回影片 ID 並試播後讀回。
