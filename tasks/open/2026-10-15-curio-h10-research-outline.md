@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h10-research-outline
 title: Prepare Curio H10 Franklin source refresh and outline choices
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-curio-five-h10
-claimed_at: 2026-10-17T09:33:24Z
+owner:
+claimed_at:
 created_at: 2026-10-15T16:33:45Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -158,3 +158,5 @@ H10 英語工作表已完成翻譯及前兩輪獨立審稿。首版英語配音�
 最新版 `publish` 與 `languages` 兩張後台卡已送出，讀回仍待站主核准。九個多語項目顯示 ready；YouTube ID 仍空、尚未上傳。站主核准後再讀回，接著由站主在 Studio 私人上傳與試播；不可把本機包或送審當作已完成影片。
 
 站主隨後在對話中核准上傳包。後台 `publish` 卡已實際確認，`review-pull` 讀回 `upload package approved`，頁面顯示「可以上架」。`languages` 卡的操作語義是確認三語配音已在 Studio 上傳；目前尚無 YouTube ID，所以保留 pending，不代按。已把私人 Studio 上傳、貼回影片網址、四語試播的交接送給站主；H10 尚未完成上傳與播放驗收。
+
+站主又在後台確認了最新版 `languages` 卡；本次 `review-pull --gate languages` 已把它記入 `approvals.json`。此按鈕屬 Studio 配音完成宣告，但 `video.json` 的 YouTube ID 仍為 `null`，沒有可核對的 Studio 影片或四語試播。後台卡核准與實際上傳分開記錄；待站主從 Studio 建立私人片、貼回新網址並完成英／日／韓音軌、四語字幕與語言縮圖及四語試播後再關閉本任務。詳見 [delivery-handoff-2.md](../../docs/videos/curio-h10/delivery-handoff-2.md)。

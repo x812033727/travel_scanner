@@ -25,3 +25,7 @@
 站主在對話中確認兩張最新版卡。初次 `review-pull` 仍讀到兩張 pending；進一步查看後台才確認，語言卡目前的按鈕是「我已經在 Studio 傳好這些配音」，不能在影片與音軌尚未上傳時按。依站主已給的上傳包核准，在後台按「確認可以上架」後，畫面顯示「可以上架」，`review-pull --gate publish` 也讀回 `upload package approved (metadata.json 38974f680b24)`。語言卡保持 pending，等三語音軌在 Studio 實際上傳後由站主確認；這不是語言素材未完成。
 
 H10 目前仍沒有 YouTube 影片 ID，也沒有四語 Studio 播放驗證。已交付 `upload/UPLOAD.md` 給站主，請其由 Studio 上傳為私人影片、加入三語配音及縮圖、回填新網址並切換四語試播；不得把後台「可以上架」誤記成已上架。`npm run check:tasks` 通過。`npm run test:docs-videos` 為 214 pass／1 fail；唯一失敗是已由任務 `2026-10-16-fix-windows-unicode-path-crash-in` 追蹤的 Windows Node 24.13.0 `package-runtime.mjs` 子行程退出 `3221226505`，單測重跑仍同樣失敗，與這次 H10 媒體／文件變動無關。
+
+## 最新語言卡讀回與 Studio 停點
+
+站主後續回覆兩張最新版卡都已核准。`review-pull --gate publish` 讀回 `publish: already recorded`；`review-pull --gate languages` 這次讀回 `the language batch is recorded; its dub tracks, if any, are up in YouTube Studio`，本機 `approvals.json` 也記錄 `languages.json` SHA-256 `1072CB291D615C8EC59AF2689686C281C86E632F513C6C8816B1B83E9A8C8F9E` 於 2026-10-17 09:52:51 UTC 在後台核准。這個語言卡按鈕是在宣告配音已傳到 Studio；目前 `docs/videos/curio-h10/video.json` 的 `youtube.video_id` 仍為 `null`，尚未取得 H10 的 Studio 新片網址或同 ID 四語試播證據。因此只記錄**後台卡已核准**，不能據此宣稱配音實際上傳或影片完成。待站主以 Studio 建立私人影片、回填新網址，並逐語確認音軌、字幕及縮圖後再驗收。
