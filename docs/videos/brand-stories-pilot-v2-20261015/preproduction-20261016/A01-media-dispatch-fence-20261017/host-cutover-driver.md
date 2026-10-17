@@ -1,5 +1,46 @@
 # Exact-job host cutover driver
 
+## Global paid-intake gate candidate: production HOLD
+
+The local candidate now makes the API read `video_work/.a01-paid-intake/marker.json`
+on every paid media POST and active-job GET. A missing, malformed, symlinked or
+non-root-owned marker returns `video_media_cutover_paused` (423). The only
+pre-cutover open state is an explicitly installed `BOOTSTRAP_ALLOW` marker.
+Writing the no-clobber, durable `armed.json` first immediately invalidates that
+state; an interval between that write and an atomic `PAUSED_ALL` replacement
+also returns 423. `PAUSED_ALL` rejects every slug. `ALLOW_A01_ONLY` accepts
+only `story-rolling-suitcase-v2` while the exact Suncatcher Redis nonce still
+has its pinned hash and no expiry. In `PAUSED_ALL` and `ALLOW_A01_ONLY`, removing
+or corrupting either file closes the gate. Never remove `armed.json`: it is the
+no-return proof against a stale bootstrap marker. The global marker lives outside `.ops` because the existing exact-job
+installer refuses a pre-existing `.ops` parent.
+
+This is **not an executable production cutover**. There is no reviewed host
+installer for the bootstrap/armed/paused files, no old-API live 423 proof, and
+the current driver still raises `b25_producer_proof_missing` before writing.
+The presently deployed old API does not read this marker. A separate initial
+deployment of gate-aware API code with a preinstalled bootstrap marker is
+required; only after verifying its exact container/image and source hashes may
+the plan be regenerated with that API as `old_live_sha`. The plan requires a
+different `target_sha`. The old API must then prove `PAUSED_ALL` on the live
+image/clip/music, judge/locate and active-GET routes before SIGTERM. A 423
+response proves a fresh request was refused; it does not prove that a request
+which passed `BOOTSTRAP_ALLOW` earlier has finished. Wait for graceful old-API
+exit before the database/Redis snapshot. Keep the armed file and pause marker
+through deploy; check new API source hashes, image/container identity, and live
+423 responses before any handoff.
+
+Before changing to `ALLOW_A01_ONLY`, a reviewed root-only transition must
+recheck that the old API cannot run, the new API has the exact target image and
+source hashes, the marker/armed bytes and owner/mode are pinned, and the Redis
+nonce and watcher are still owned. Repeat those checks at every A01 handoff
+checkpoint. The API cannot infer its Git SHA from the existing stock deploy:
+Compose's `RELEASE_SHA` defaults to `local`, and stock rollback rebuilds under
+the same environment. The environment tag alone is not source proof. An early
+`ALLOW_A01_ONLY` marker on the preliminary API is therefore unsafe and a STOP.
+No general `ALLOW_ALL` state exists after arming; restoration for other videos
+needs a separate reviewed release and host action.
+
 `host-cutover-driver.py` is a root-host, dry-run-by-default implementation of
 the ordered cutover in this directory's `README.md`. It is **not approved or
 installed on production**. The current exact-one preflight must stop while
@@ -40,7 +81,7 @@ are never written to argv, receipts or logs.
 
 | Staged in `release_dir` | Outside `release_dir` |
 | --- | --- |
-| `host-cutover-driver.py`, `host-cutover-driver.deploy-wrapper.sh`, `dispatch_fence_cutover.py`, `install-marker.sh`, `monitor-lock.sh`, `manifest.json`, `hold.py`, `incoming-docker-compose.prod.yml` | `/root/deploy-travel-scanner.sh`; `jobs.py`, `dispatch_fence.py` and `dispatch_fence_cli.py` blobs in `target_sha` |
+| `host-cutover-driver.py`, `host-cutover-driver.deploy-wrapper.sh`, `dispatch_fence_cutover.py`, `install-marker.sh`, `monitor-lock.sh`, `manifest.json`, `hold.py`, `incoming-docker-compose.prod.yml` | `/root/deploy-travel-scanner.sh`; `jobs.py`, `admin_api.py`, `cutover_intake.py`, `dispatch_fence.py` and `dispatch_fence_cli.py` blobs in `target_sha` |
 
 The staged sources must be root-owned, regular, not group/world-writable and
 match the plan hashes. `manifest.json` must have the compiled SHA

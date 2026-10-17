@@ -18,6 +18,7 @@ from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.config import get_settings
 from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
 from app.problems import AppError
@@ -40,6 +41,7 @@ from app.video_budget.service import (
 )
 from app.video_media import meter, stock
 from app.video_media.catalog import find_model
+from app.video_media.cutover_intake import IntakeFenceError, enforce_paid_intake
 from app.video_media.jobs import (
     MediaContext,
     MediaJobFailed,
@@ -164,12 +166,18 @@ def _refused(error: MediaJobFailed | JudgeError | LocateError | stock.StockError
     )
 
 
-def _guard_b25_direct_intake(slug: str) -> None:
-    """Reject paid direct routes before rate, budget, session or vendor work."""
+async def _guard_paid_direct_intake(slug: str) -> None:
+    """Reject paused paid routes before rate, budget, session or vendor work."""
     try:
         refuse_b25_cutover_media(slug)
     except MediaJobFailed as error:
         raise _refused(error) from error
+    try:
+        await enforce_paid_intake(get_settings().video_work_dir, slug, get_redis())
+    except IntakeFenceError as error:
+        raise AppError(
+            423, "video_media_cutover_paused", "媒體製作入口暫停；請核對 A01 切換狀態後再試"
+        ) from error
 
 
 def _storage_refused(error: StorageRefused) -> AppError:
@@ -311,7 +319,7 @@ async def _submit(
     payload: ImageJobIn | ClipJobIn | MusicJobIn,
     response: Response,
 ) -> JobOut:
-    _guard_b25_direct_intake(payload.slug)
+    await _guard_paid_direct_intake(payload.slug)
     if kind == "image":
         await _limit("submit_image", tool_id, IMAGE_SUBMITS_PER_HOUR)
     else:
@@ -351,10 +359,12 @@ async def submit_music(
 @media_router.get("/jobs/{job_id}", response_model=JobOut)
 async def poll_job(job_id: UUID, tool: VideoTool, session: Session) -> JobOut:
     """The job's state now; asking also moves it one step (vendor poll, download)."""
-    await _limit("poll", tool.id, POLLS_PER_HOUR)
     job = await session.scalar(select(VideoMediaJob).where(VideoMediaJob.id == job_id))
     if job is None:
         raise AppError(404, "video_media_job_not_found", "找不到這個生成工作")
+    if job.status not in ("ready", "failed", "expired"):
+        await _guard_paid_direct_intake(job.slug)
+    await _limit("poll", tool.id, POLLS_PER_HOUR)
     ctx = await _context(session, tool.id)
     try:
         await advance_job(ctx, job)
@@ -411,7 +421,7 @@ async def download_file(slug: str, sha256: str, tool: VideoTool) -> FileResponse
 @media_router.post("/judge", response_model=JudgeOut)
 async def judge_media(payload: JudgeIn, tool: VideoTool, session: Session) -> JudgeOut:
     """Gemini scores a sheet, a keyframe or a clip against the rubric; one call, one budget unit."""
-    _guard_b25_direct_intake(payload.slug)
+    await _guard_paid_direct_intake(payload.slug)
     await _limit("judge", tool.id, JUDGES_PER_HOUR)
     ctx = await _context(session, tool.id)
     pilot = is_pilot(payload.slug)
@@ -484,7 +494,7 @@ async def locate_subjects(payload: LocateIn, tool: VideoTool, session: Session) 
     A clip is refused with ``video_media_invalid`` before the budget is touched again: the tool
     extracts a frame and uploads it first.
     """
-    _guard_b25_direct_intake(payload.slug)
+    await _guard_paid_direct_intake(payload.slug)
     await _limit("judge", tool.id, JUDGES_PER_HOUR)
     ctx = await _context(session, tool.id)
     pilot = is_pilot(payload.slug)

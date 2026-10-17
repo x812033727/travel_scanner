@@ -55,6 +55,7 @@ def plan(release_dir: str = "/root/mokaair-a01-media-fence-123456abcdef") -> dic
             "deploy-travel-scanner.sh": module.PATCHED_DEPLOY_SHA,
             "jobs.py": digest,
             "admin_api.py": digest,
+            "cutover_intake.py": digest,
             "dispatch_fence.py": digest,
             "dispatch_fence_cli.py": digest,
         },
@@ -106,6 +107,29 @@ class CutoverTest(unittest.TestCase):
             module.verify_b25_direct_receipt({**proof, "b25_direct_intake": {}}, sources)
         with self.assertRaisesRegex(module.Stop, "new_api_b25_direct_source_hash_drift"):
             module.verify_b25_direct_receipt({**proof, "code": {}}, sources)
+
+    def test_new_api_paid_intake_receipt_requires_exact_pause_and_source(self) -> None:
+        sources = {"cutover_intake.py": "a" * 64}
+        proof = {
+            "paid_intake": {
+                "state": "PAUSED_ALL",
+                "plan_sha256": "b" * 64,
+                "target_sha": "c" * 40,
+                "marker_sha256": "d" * 64,
+                "armed_sha256": "e" * 64,
+            },
+            "code": {"cutover_intake_sha256": "a" * 64},
+        }
+        module.verify_paid_intake_receipt(proof, sources, "b" * 64, "c" * 40)
+        with self.assertRaisesRegex(module.Stop, "new_api_paid_intake_not_paused"):
+            module.verify_paid_intake_receipt(
+                {**proof, "paid_intake": {**proof["paid_intake"], "state": "BOOTSTRAP_ALLOW"}},
+                sources,
+                "b" * 64,
+                "c" * 40,
+            )
+        with self.assertRaisesRegex(module.Stop, "new_api_paid_intake_source_hash_drift"):
+            module.verify_paid_intake_receipt({**proof, "code": {}}, sources, "b" * 64, "c" * 40)
 
     def test_dry_run_cannot_enter_apply_path(self) -> None:
         class DryDriver(module.Driver):

@@ -13,11 +13,13 @@ depends_on: []
 scope:
   - apps/api/app/video_media/jobs.py
   - apps/api/app/video_media/admin_api.py
+  - apps/api/app/video_media/cutover_intake.py
   - apps/api/app/video_media/dispatch_fence.py
   - apps/api/app/video_media/dispatch_fence_cli.py
   - apps/api/app/video_media/dispatch_fence_cutover.py
   - apps/api/tests/test_video_media_jobs.py
   - apps/api/tests/test_video_media_api.py
+  - apps/api/tests/test_video_media_cutover_intake.py
   - apps/api/tests/test_video_media_dispatch_fence.py
   - docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-media-dispatch-fence-20261017
   - tasks/open/2026-10-17-fence-one-exact-queued-media-dispatch.md
@@ -67,8 +69,9 @@ call is currently in flight or that there was never a historical charge.
 
 ## How to verify
 
-Locally, from `apps/api`: `uv run pytest tests/test_video_media_dispatch_fence.py
-tests/test_video_media_jobs.py tests/test_video_media_api.py -q`, plus Ruff and Mypy.
+Locally, from `apps/api`: `uv run pytest tests/test_video_media_cutover_intake.py
+tests/test_video_media_dispatch_fence.py tests/test_video_media_jobs.py
+tests/test_video_media_api.py -q`, plus Ruff and Mypy.
 Run `bash -n` on the two shell helpers and inspect `manifest.json` SHA-256. Production
 commands and strict stop conditions are in the task's `README.md`; its held-mode CLI
 `check --expect-operator-lock` must return `enforced=true`, `media_lock_absent=false`,
@@ -134,3 +137,18 @@ reports the B25 guard and `admin_api.py` hash; the driver requires both pins.
 This is a local, unmerged candidate. The old API can still take direct B25
 requests before graceful exit; keep the driver's hard STOP until the B25
 worker pause and complete old/new API transition have independent proof.
+
+The follow-up local candidate adds a global, all-slug API paid-media gate on
+the existing read-only `video_work` mount. A bootstrap marker is required even
+before the first gate-aware deployment; absent/invalid files fail closed.
+Installing the separate durable `armed.json` first immediately invalidates
+`BOOTSTRAP_ALLOW`, and `PAUSED_ALL` rejects media POSTs, judge/locate and live
+GET advancement. `ALLOW_A01_ONLY` checks the exact A01 slug plus the durable
+Suncatcher Redis nonce hash and TTL. Route tests cover the 423 code before
+quota/context; active GET now checks before its poll quota. The read-only CLI
+and target source list include `cutover_intake.py`. The stock deploy does not
+bind `RELEASE_SHA` to Git HEAD, so the marker cannot on its own prove a running
+API binary is the target. The root-only transition, initial bootstrap marker
+installer, old/new live ingress checks and repeated image/source proof are
+still missing. Do not deploy or use `ALLOW_A01_ONLY` from this candidate;
+`b25_producer_proof_missing` remains an unconditional apply STOP.

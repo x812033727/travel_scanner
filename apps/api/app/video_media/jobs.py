@@ -42,6 +42,7 @@ from app.video_automation.models import (
 from app.video_budget.service import is_pilot, mark_uncertain, reserve, settle
 from app.video_media import meter
 from app.video_media.catalog import MEDIA_VENDORS, MediaModel, find_model
+from app.video_media.cutover_intake import IntakeFenceError, enforce_paid_intake
 from app.video_media.dispatch_fence import (
     PINNED_JOB_ID,
     DispatchFenceError,
@@ -116,6 +117,17 @@ def refuse_b25_cutover_media(slug: str) -> None:
             "video_media_b25_cutover_paused",
             "這支影片的媒體製作已因 A01 切換暫停；需核對後另行恢復",
         )
+
+
+async def refuse_unapproved_paid_intake(ctx: MediaContext, slug: str) -> None:
+    try:
+        await enforce_paid_intake(ctx.runtime.video_work_dir, slug, ctx.redis)
+    except IntakeFenceError as error:
+        raise MediaJobFailed(
+            423,
+            "video_media_cutover_paused",
+            "媒體製作入口暫停；請核對 A01 切換狀態後再試",
+        ) from error
 
 
 def _refuse_fenced_dispatch(ctx: MediaContext, job: VideoMediaJob) -> None:
@@ -364,6 +376,7 @@ async def submit_job(
 ) -> tuple[VideoMediaJob, bool]:
     """Create (or find) the job for this request and advance it once; returns (job, created)."""
     refuse_b25_cutover_media(payload.slug)
+    await refuse_unapproved_paid_intake(ctx, payload.slug)
     row = ctx.row
     # An illustrated slides video (docs/videos/ILLUSTRATED.md) draws under the slides' own switch
     # and image model, or under the drama's switch while the slides' is off; a video the site
@@ -504,6 +517,7 @@ async def advance_job(ctx: MediaContext, job: VideoMediaJob) -> VideoMediaJob:
     if job.status in TERMINAL:
         return job
     refuse_b25_cutover_media(job.slug)
+    await refuse_unapproved_paid_intake(ctx, job.slug)
     _refuse_fenced_dispatch(ctx, job)
     lock = f"video-media:lock:{job.id}"
     if not await ctx.redis.set(lock, "1", nx=True, ex=LOCK_TTL_SECONDS):

@@ -91,6 +91,29 @@ def verify_b25_direct_receipt(proof: dict[str, Any], sources: dict[str, str]) ->
     )
 
 
+def verify_paid_intake_receipt(
+    proof: dict[str, Any], sources: dict[str, str], plan_sha: str, target_sha: str
+) -> None:
+    intake = proof.get("paid_intake")
+    require(
+        isinstance(intake, dict)
+        and intake.get("state") == "PAUSED_ALL"
+        and intake.get("plan_sha256") == plan_sha
+        and intake.get("target_sha") == target_sha
+        and isinstance(intake.get("armed_sha256"), str)
+        and bool(HEX64.fullmatch(intake["armed_sha256"]))
+        and isinstance(intake.get("marker_sha256"), str)
+        and bool(HEX64.fullmatch(intake["marker_sha256"])),
+        "new_api_paid_intake_not_paused",
+    )
+    code = proof.get("code")
+    require(
+        isinstance(code, dict)
+        and code.get("cutover_intake_sha256") == sources["cutover_intake.py"],
+        "new_api_paid_intake_source_hash_drift",
+    )
+
+
 def safe_file(path: Path, expected: str | None = None) -> bytes:
     require(path.is_absolute(), "relative_path")
     info = path.lstat()
@@ -222,6 +245,7 @@ def parse_plan(path: Path, expected_sha: str) -> dict[str, Any]:
             "deploy-travel-scanner.sh",
             "jobs.py",
             "admin_api.py",
+            "cutover_intake.py",
             "dispatch_fence.py",
             "dispatch_fence_cli.py",
         },
@@ -346,7 +370,10 @@ class Driver:
             "release_dir_must_be_root_0700",
         )
         for name, digest in self.sources.items():
-            if name in ("jobs.py", "admin_api.py", "dispatch_fence.py", "dispatch_fence_cli.py"):
+            if name in (
+                "jobs.py", "admin_api.py", "cutover_intake.py", "dispatch_fence.py",
+                "dispatch_fence_cli.py",
+            ):
                 content = self.cmd(
                     "git",
                     "-C",
@@ -1376,6 +1403,9 @@ class Driver:
             "new_api_held_mode_fence_failed",
         )
         verify_b25_direct_receipt(proof, self.sources)
+        verify_paid_intake_receipt(
+            proof, self.sources, self.plan_sha, self.plan["target_sha"]
+        )
         job = proof.get("job", {})
         for key, expected in {
             "id": JOB_ID,

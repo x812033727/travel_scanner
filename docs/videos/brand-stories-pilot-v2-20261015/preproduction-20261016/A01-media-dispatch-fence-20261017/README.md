@@ -26,6 +26,17 @@ can still accept a direct request until it exits gracefully. The driver's
 old-API drain, exact post-drain state and whole-window proof still need
 independent review before any production apply.
 
+The follow-up local candidate adds an all-slug paid-media intake gate for
+image/clip/music POST, judge/locate and active-job GET. It reads a root-owned
+marker from the API's read-only video-work mount on every request. A missing or
+invalid marker refuses paid intake. `BOOTSTRAP_ALLOW` must be deliberately
+installed before the first gate-aware deployment; a durable `armed.json`
+permanently invalidates bootstrap, `PAUSED_ALL` closes all media intake, and
+`ALLOW_A01_ONLY` requires the exact A01 slug and durable Redis nonce. See
+[host-cutover-driver.md](host-cutover-driver.md) for the two-stage prerequisite
+and remaining STOPs. This candidate has no reviewed host marker installer or
+old-API live-ingress proof, and the current driver still blocks `--apply`.
+
 ## Scope and invariant
 
 The sole target is `b721a65d-8c8d-4ae8-834c-391cfc267a6f`, slug

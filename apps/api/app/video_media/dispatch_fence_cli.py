@@ -21,6 +21,7 @@ from sqlalchemy import func, select
 
 from app.config import get_settings
 from app.db import SessionFactory
+from app.video_media.cutover_intake import IntakeFenceError, inspect_intake
 from app.video_media.dispatch_fence import (
     PINNED_JOB_ID,
     DispatchFenceError,
@@ -96,9 +97,23 @@ async def run(args: argparse.Namespace) -> dict[str, Any] | str:
             digest = inspect_manifest(job, args.manifest)
             enforced = False
             lock_absent: bool | None = None
+            paid_intake: dict[str, Any] | None = None
         else:
             digest = inspect_installed_fence(job, root)
             enforced = True
+            try:
+                intake = inspect_intake(root)
+            except IntakeFenceError as error:
+                raise DispatchFenceError(f"paid_intake_{error.reason}") from error
+            paid_intake = {
+                "state": intake.state,
+                "bootstrap_id": intake.bootstrap_id,
+                "plan_sha256": intake.plan_sha256,
+                "target_sha": intake.target_sha,
+                "nonce_sha256": intake.nonce_sha256,
+                "marker_sha256": intake.marker_sha256,
+                "armed_sha256": intake.armed_sha256,
+            }
             if active_media_count != 1:
                 raise DispatchFenceError("active_media_count_changed")
             # The old API may already have entered _submit when an operator installs the
@@ -118,6 +133,7 @@ async def run(args: argparse.Namespace) -> dict[str, Any] | str:
             "operator_lock_expected": bool(getattr(args, "expect_operator_lock", False)),
             "active_media_count": active_media_count,
             "b25_direct_intake": b25_guard_receipt(),
+            "paid_intake": paid_intake,
             "job": {
                 "id": str(job.id),
                 "slug": job.slug,
@@ -138,6 +154,9 @@ async def run(args: argparse.Namespace) -> dict[str, Any] | str:
                 ).hexdigest(),
                 "admin_api_sha256": hashlib.sha256(
                     (Path(__file__).with_name("admin_api.py")).read_bytes()
+                ).hexdigest(),
+                "cutover_intake_sha256": hashlib.sha256(
+                    (Path(__file__).with_name("cutover_intake.py")).read_bytes()
                 ).hexdigest(),
             },
         }

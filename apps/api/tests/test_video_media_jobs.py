@@ -6,6 +6,7 @@ import base64
 import copy
 import hashlib
 import json
+import os
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
@@ -21,8 +22,8 @@ from sqlalchemy.dialects import postgresql
 from app.config import Settings
 from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
 from app.video_budget.service import Reservation
+from app.video_media import cutover_intake, meter
 from app.video_media import jobs as service
-from app.video_media import meter
 from app.video_media.catalog import find_model
 from app.video_media.dispatch_fence import PINNED_JOB_ID, expected_manifest, fence_path
 from app.video_media.jobs import MediaContext, MediaJobFailed, advance_job, job_view, submit_job
@@ -193,11 +194,27 @@ def _context(
     http: httpx.AsyncClient | None = None,
     **changes: Any,
 ) -> MediaContext:
+    marker_dir = tmp_path / cutover_intake.INTAKE_DIR
+    marker_dir.mkdir(mode=0o755, exist_ok=True)
+    (marker_dir / cutover_intake.MARKER).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "state": "BOOTSTRAP_ALLOW",
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": None,
+                "target_sha": None,
+                "nonce_sha256": None,
+            }
+        )
+    )
     ctx = MediaContext(
         session=FakeSession(),  # type: ignore[arg-type]
         redis=fakeredis.aioredis.FakeRedis(),
         store=MediaStore(tmp_path, max_file_bytes=10_000_000, max_total_bytes=50_000_000),
-        runtime=Settings(hotspot_guide_gemini_api_key="g", minimax_api_key="m"),
+        runtime=Settings(
+            hotspot_guide_gemini_api_key="g", minimax_api_key="m", video_work_dir=str(tmp_path)
+        ),
         media=MediaSettings(video_media_dir=str(tmp_path), video_media_keep_days=3),
         row=row or _row(),
         token_id=uuid4(),
@@ -205,6 +222,12 @@ def _context(
         **changes,
     )
     return ctx
+
+
+@pytest.fixture(autouse=True)
+def local_marker_owner(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    if os.name == "posix":
+        monkeypatch.setattr(cutover_intake, "ROOT_UID", tmp_path.stat().st_uid)
 
 
 @pytest.fixture
@@ -918,7 +941,9 @@ async def test_a_series_model_whose_vendor_has_no_key_is_refused_before_anything
 ) -> None:
     monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value="image-01"))
     ctx = _context(tmp_path, FakeProvider(), row=_row(image_model="gemini-3-pro-image"))
-    ctx.runtime = Settings(hotspot_guide_gemini_api_key="g", minimax_api_key="")
+    ctx.runtime = Settings(
+        hotspot_guide_gemini_api_key="g", minimax_api_key="", video_work_dir=str(tmp_path)
+    )
     with pytest.raises(MediaJobFailed) as refused:
         await submit_job(ctx, "image", _image())
     assert (refused.value.status, refused.value.code) == (503, "video_media_not_configured")

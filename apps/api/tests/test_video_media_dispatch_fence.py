@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import asyncio
 import hashlib
 import json
 import os
@@ -13,7 +14,12 @@ from uuid import uuid4
 
 import pytest
 
-from app.video_media import dispatch_fence, dispatch_fence_cli, dispatch_fence_cutover
+from app.video_media import (
+    cutover_intake,
+    dispatch_fence,
+    dispatch_fence_cli,
+    dispatch_fence_cutover,
+)
 from app.video_media.models import VideoMediaJob
 
 
@@ -106,6 +112,9 @@ def test_missing_marker_and_changed_job_are_both_refused(tmp_path: Path) -> None
 async def test_cli_proposes_validates_and_checks_without_advancing(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    if os.name == "posix":
+        info = await asyncio.to_thread(tmp_path.stat)
+        monkeypatch.setattr(cutover_intake, "ROOT_UID", info.st_uid)
     job = _job()
     active_count = [1]
     lock_present = [0]
@@ -149,6 +158,20 @@ async def test_cli_proposes_validates_and_checks_without_advancing(
     path = dispatch_fence.fence_path(tmp_path)
     path.parent.mkdir(parents=True)
     path.write_bytes(proposed.encode("utf-8"))
+    intake_dir = tmp_path / cutover_intake.INTAKE_DIR
+    intake_dir.mkdir(mode=0o755)
+    (intake_dir / cutover_intake.MARKER).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "state": "BOOTSTRAP_ALLOW",
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": None,
+                "target_sha": None,
+                "nonce_sha256": None,
+            }
+        )
+    )
     validated = await dispatch_fence_cli.run(
         argparse.Namespace(action="validate", job_id=job.id, manifest=path)
     )
@@ -172,6 +195,8 @@ async def test_cli_proposes_validates_and_checks_without_advancing(
     assert len(checked["code"]["jobs_sha256"]) == 64
     assert len(checked["code"]["dispatch_fence_sha256"]) == 64
     assert len(checked["code"]["admin_api_sha256"]) == 64
+    assert len(checked["code"]["cutover_intake_sha256"]) == 64
+    assert checked["paid_intake"]["state"] == "BOOTSTRAP_ALLOW"
     assert checked["b25_direct_intake"] == {
         "slug": "story-adapt-seiko-quartz-astron",
         "compiled_guard": True,
