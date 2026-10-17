@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import fcntl
 import hashlib
+import hmac
 import json
 import os
 import re
@@ -19,8 +20,10 @@ import sys
 import tarfile
 import time
 from contextlib import ExitStack
+from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path, PurePosixPath
+from uuid import UUID
 
 sys.path.insert(0, "/root/travel_scanner/ops/release")
 sys.path.insert(0, "/usr/local/sbin")
@@ -48,6 +51,23 @@ GIT_SHA = re.compile(r"^[0-9a-f]{40}$")
 EXPECTED_PAYLOAD_MEMBERS = 1351
 EXPECTED_PAYLOAD_FILES = 979
 EXPECTED_PAYLOAD_SUBDIRS = 371
+FENCE_PATH_PREFIX = "/var/lib/mokaair/video-work/.ops/media-dispatch-fences/"
+FENCED_MEDIA_JOB_ID = "b721a65d-8c8d-4ae8-834c-391cfc267a6f"
+MEDIA_LOCK_KEY = "video-media:lock:" + FENCED_MEDIA_JOB_ID
+NONCE_RECEIPT_PATH = re.compile(
+    r"^/root/mokaair-a01-media-fence-[0-9a-f]{12}/nonce-receipt\.json$"
+)
+NONCE_WATCHER_SCRIPT_PATH = re.compile(
+    r"^/root/mokaair-a01-media-fence-[0-9a-f]{12}/monitor-lock\.sh$"
+)
+NONCE_HEARTBEAT = Path("/run/a01-media-dispatch-fence/heartbeat.json")
+NONCE_WATCHER_UNIT = "a01-media-dispatch-fence-watch.service"
+MAX_HEARTBEAT_AGE_SECONDS = 15
+API_SOURCE_PATHS = {
+    "jobs_sha256": "/app/app/video_media/jobs.py",
+    "dispatch_fence_sha256": "/app/app/video_media/dispatch_fence.py",
+    "dispatch_fence_cli_sha256": "/app/app/video_media/dispatch_fence_cli.py",
+}
 
 
 def need(condition: bool, message: str) -> None:
@@ -134,7 +154,7 @@ def reviewed_payload_tree(archive_path: Path) -> dict:
 def config() -> dict:
     need(digest(MANIFEST), "manifest is required")
     m = json.loads(MANIFEST.read_text())
-    need(m.get("schema_version") == 1 and m.get("slug") == "story-rolling-suitcase-v2",
+    need(m.get("schema_version") == 2 and m.get("slug") == "story-rolling-suitcase-v2",
          "invalid A01 manifest identity")
     need(isinstance(m.get("expected_head"), str) and bool(GIT_SHA.fullmatch(m["expected_head"])),
          "unfilled target git SHA")
@@ -148,6 +168,51 @@ def config() -> dict:
          and bool(SHA.fullmatch(image_id[7:])), "pinned video worker image ID missing")
     for key in ("expected_stop_sha256", "video_worker_id", "video_ai_worker_id"):
         pinned(m.get(key), key)
+    fenced = m.get("fenced_media_job")
+    if fenced is not None:
+        need(isinstance(fenced, dict) and set(fenced) ==
+             {"id", "slug", "request_hash", "kind", "provider", "model", "status"},
+             "exact media fence job is not pinned")
+        try:
+            job_id = str(UUID(fenced["id"]))
+        except (KeyError, TypeError, ValueError) as error:
+            raise RuntimeError("exact media fence UUID is invalid") from error
+        need(job_id == fenced["id"] == FENCED_MEDIA_JOB_ID and fenced["slug"] ==
+             "google-project-suncatcher-prototype-what-it-tests"
+             and fenced["kind"] == "image" and fenced["provider"] == "minimax"
+             and fenced["model"] == "image-01" and fenced["status"] == "queued",
+             "media fence identity or queued status drift")
+        pinned(fenced["request_hash"], "fenced media request_hash")
+        pinned(m.get("api_container_id"), "api_container_id")
+        api_image = m.get("api_image_id")
+        need(isinstance(api_image, str) and api_image.startswith("sha256:")
+             and bool(SHA.fullmatch(api_image[7:])), "pinned API image ID missing")
+        need(isinstance(m.get("api_code"), dict), "pinned API source map missing")
+        for key in API_SOURCE_PATHS:
+            pinned(m["api_code"].get(key), key)
+        pinned(m.get("media_dispatch_fence_sha256"), "media dispatch fence SHA")
+        pinned(m.get("redis_container_id"), "redis_container_id")
+        redis_image = m.get("redis_image_id")
+        need(isinstance(redis_image, str) and redis_image.startswith("sha256:")
+             and bool(SHA.fullmatch(redis_image[7:])), "pinned Redis image ID missing")
+        pinned(m.get("nonce_receipt_sha256"), "private nonce receipt SHA")
+        pinned(m.get("nonce_sha256"), "private nonce SHA")
+        need(isinstance(m.get("nonce_receipt_path"), str)
+             and bool(NONCE_RECEIPT_PATH.fullmatch(m["nonce_receipt_path"])),
+             "private nonce receipt path is not pinned")
+        need(m.get("nonce_heartbeat_path") == str(NONCE_HEARTBEAT)
+             and m.get("nonce_watcher_unit") == NONCE_WATCHER_UNIT,
+             "nonce watcher path or unit drift")
+        need(isinstance(m.get("nonce_watcher_pid"), int)
+             and m["nonce_watcher_pid"] > 1, "nonce watcher PID is not pinned")
+        watcher_script = m.get("nonce_watcher_script_path")
+        need(isinstance(watcher_script, str)
+             and bool(NONCE_WATCHER_SCRIPT_PATH.fullmatch(watcher_script))
+             and str(Path(watcher_script).parent) ==
+             str(Path(m["nonce_receipt_path"]).parent),
+             "nonce watcher script path is not pinned beside receipt")
+        pinned(m.get("nonce_watcher_script_sha256"), "nonce watcher script SHA")
+        pinned(m.get("nonce_watcher_execstart_sha256"), "nonce watcher ExecStart SHA")
     need(m.get("next_phase") in PHASES, "next_phase is not pinned")
     need(isinstance(m.get("owner_approval_ref"), str) and len(m["owner_approval_ref"]) >= 16,
          "owner approval reference is missing")
@@ -240,14 +305,197 @@ def site_row(*, require_blocked: bool = True) -> dict:
     return row
 
 
-def jobs() -> dict:
+def private_json(path: Path, *, max_bytes: int) -> tuple[dict, os.stat_result]:
+    parent = path.parent.lstat()
+    need(stat.S_ISDIR(parent.st_mode) and parent.st_uid == 0
+         and stat.S_IMODE(parent.st_mode) == 0o700,
+         "private fence directory ownership or mode drift")
+    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
+    try:
+        info = os.fstat(fd)
+        need(stat.S_ISREG(info.st_mode) and info.st_uid == 0
+             and stat.S_IMODE(info.st_mode) == 0o600
+             and info.st_nlink == 1 and 0 < info.st_size <= max_bytes,
+             "private fence file ownership, mode or size drift")
+        raw = os.read(fd, max_bytes + 1)
+        need(len(raw) == info.st_size, "private fence file changed while reading")
+    finally:
+        os.close(fd)
+    data = json.loads(raw)
+    need(isinstance(data, dict), "private fence JSON must be an object")
+    return data, info
+
+
+def private_receipt(m: dict) -> tuple[dict, bytes]:
+    path = Path(m["nonce_receipt_path"])
+    parent = path.parent.lstat()
+    need(stat.S_ISDIR(parent.st_mode) and parent.st_uid == 0
+         and stat.S_IMODE(parent.st_mode) == 0o700,
+         "private nonce receipt directory drift")
+    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
+    try:
+        info = os.fstat(fd)
+        need(stat.S_ISREG(info.st_mode) and info.st_uid == 0
+             and stat.S_IMODE(info.st_mode) == 0o600
+             and info.st_nlink == 1 and 0 < info.st_size <= 4096,
+             "private nonce receipt ownership, mode or size drift")
+        raw = os.read(fd, 4097)
+        need(len(raw) == info.st_size, "private nonce receipt changed while reading")
+    finally:
+        os.close(fd)
+    need(hmac.compare_digest(hashlib.sha256(raw).hexdigest(), m["nonce_receipt_sha256"]),
+         "private nonce receipt SHA drift")
+    data = json.loads(raw)
+    need(isinstance(data, dict) and data.get("schema_version") == 1
+         and data.get("job_id") == FENCED_MEDIA_JOB_ID
+         and data.get("key") == MEDIA_LOCK_KEY
+         and data.get("durable") is True and data.get("waitaof_local") == 1,
+         "private nonce receipt identity or durability drift")
+    nonce = data.get("nonce")
+    need(isinstance(nonce, str) and bool(SHA.fullmatch(nonce)),
+         "private nonce receipt format drift")
+    encoded = nonce.encode("ascii")
+    need(hmac.compare_digest(hashlib.sha256(encoded).hexdigest(), m["nonce_sha256"]),
+         "private nonce SHA drift")
+    return data, encoded
+
+
+def redis_private_read(redis_id: str, verb: str) -> bytes:
+    need(verb in ("GET", "PTTL"), "unexpected Redis read verb")
+    script = f'REDISCLI_AUTH="$REDIS_PASSWORD" redis-cli --raw {verb} "$1"'
+    try:
+        result = subprocess.run(("docker", "exec", redis_id, "sh", "-c", script,
+                                 "sh", MEDIA_LOCK_KEY), stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE, timeout=15, check=False)
+    except subprocess.TimeoutExpired as error:
+        raise RuntimeError("private Redis nonce read timed out") from error
+    need(result.returncode == 0 and not result.stderr,
+         "private Redis nonce read failed")
+    return result.stdout.strip()
+
+
+def nonce_watcher(m: dict, redis_id: str) -> None:
+    need(command("systemctl", "show", NONCE_WATCHER_UNIT, "-p", "ActiveState", "--value")
+         == "active", "nonce watcher is not active")
+    need(command("systemctl", "show", NONCE_WATCHER_UNIT, "-p", "MainPID", "--value")
+         == str(m["nonce_watcher_pid"]), "nonce watcher PID drift")
+    script = Path(m["nonce_watcher_script_path"])
+    parent = script.parent.lstat()
+    need(stat.S_ISDIR(parent.st_mode) and parent.st_uid == 0
+         and stat.S_IMODE(parent.st_mode) == 0o700,
+         "nonce watcher script directory drift")
+    fd = os.open(script, os.O_RDONLY | os.O_NOFOLLOW)
+    try:
+        script_info = os.fstat(fd)
+        need(stat.S_ISREG(script_info.st_mode) and script_info.st_uid == 0
+             and stat.S_IMODE(script_info.st_mode) & 0o022 == 0
+             and script_info.st_nlink == 1 and 0 < script_info.st_size <= 131072,
+             "nonce watcher script ownership, mode or size drift")
+        script_bytes = os.read(fd, 131073)
+        need(len(script_bytes) == script_info.st_size,
+             "nonce watcher script changed while reading")
+    finally:
+        os.close(fd)
+    need(hmac.compare_digest(hashlib.sha256(script_bytes).hexdigest(),
+                             m["nonce_watcher_script_sha256"]),
+         "nonce watcher script SHA drift")
+    expected_argv = ("/bin/bash", str(script), "--receipt", m["nonce_receipt_path"],
+                     "--redis-container-id", redis_id)
+    execstart = command("systemctl", "show", NONCE_WATCHER_UNIT,
+                        "-p", "ExecStart", "--value")
+    need(execstart.count("argv[]=") == 1
+         and "path=/bin/bash ;" in execstart
+         and "argv[]=" + " ".join(expected_argv) + " ;" in execstart
+         and hmac.compare_digest(hashlib.sha256(execstart.encode("utf-8")).hexdigest(),
+                                 m["nonce_watcher_execstart_sha256"]),
+         "nonce watcher ExecStart drift")
+    actual_cmdline = Path(f"/proc/{m['nonce_watcher_pid']}/cmdline").read_bytes()
+    expected_cmdline = ("\0".join(expected_argv) + "\0").encode("utf-8")
+    need(hmac.compare_digest(actual_cmdline, expected_cmdline),
+         "nonce watcher process command drift")
+    heartbeat, info = private_json(NONCE_HEARTBEAT, max_bytes=2048)
+    need(heartbeat.get("schema_version") == 1
+         and heartbeat.get("job_id") == FENCED_MEDIA_JOB_ID
+         and heartbeat.get("redis_container_id") == redis_id
+         and heartbeat.get("nonce_sha256") == m["nonce_sha256"]
+         and heartbeat.get("owned") is True and heartbeat.get("no_expiry") is True
+         and isinstance(heartbeat.get("checks"), int) and heartbeat["checks"] > 0,
+         "nonce watcher heartbeat identity or ownership drift")
+    checked = heartbeat.get("checked_at_utc")
+    need(isinstance(checked, str) and checked.endswith("Z"),
+         "nonce watcher timestamp format drift")
+    checked_at = datetime.fromisoformat(checked[:-1] + "+00:00")
+    need(checked_at.tzinfo is not None, "nonce watcher timestamp lacks UTC")
+    now = datetime.now(timezone.utc).timestamp()
+    need(-2 <= now - checked_at.timestamp() <= MAX_HEARTBEAT_AGE_SECONDS
+         and -2 <= now - info.st_mtime <= MAX_HEARTBEAT_AGE_SECONDS,
+         "nonce watcher heartbeat stale or from the future")
+
+
+def held_nonce(m: dict) -> None:
+    redis_id = container_id("redis")
+    need(redis_id == m["redis_container_id"] and running(redis_id),
+         "Redis container ID/state drift")
+    need(command("docker", "inspect", "--format", "{{.Image}}", redis_id)
+         == m["redis_image_id"], "Redis image ID drift")
+    _receipt, nonce = private_receipt(m)
+    need(hmac.compare_digest(redis_private_read(redis_id, "GET"), nonce),
+         "Redis exact operator nonce ownership drift")
+    need(redis_private_read(redis_id, "PTTL") == b"-1",
+         "Redis operator nonce gained expiry or disappeared")
+    nonce_watcher(m, redis_id)
+    need(container_id("redis") == redis_id and running(redis_id),
+         "Redis container changed during nonce readback")
+
+
+def jobs(m: dict) -> dict:
     raw = sql("SELECT json_build_object("
               "'stage',(SELECT count(*) FROM video_stage_jobs WHERE status IN ('queued','running')) ,"
-              "'media',(SELECT count(*) FROM video_media_jobs WHERE status IN ('queued','submitted')) ,"
+              "'media',(SELECT coalesce(json_agg(json_build_object("
+              "'id',id::text,'slug',slug,'request_hash',request_hash,'kind',kind,"
+              "'provider',provider,'model',model,'status',status,"
+              "'vendor_ref',vendor_ref,'submitted_at',submitted_at) ORDER BY id), '[]'::json) "
+              "FROM video_media_jobs WHERE status IN ('queued','submitted')) ,"
               "'a01',(SELECT count(*) FROM video_stage_jobs WHERE request_json->>'slug'="
               "'story-rolling-suitcase-v2' AND status IN ('queued','running')))::text")
     row = json.loads(raw)
-    need(row == {"stage": 0, "media": 0, "a01": 0}, f"paid job not settled: {row}")
+    need(row.get("stage") == 0 and row.get("a01") == 0,
+         f"stage job not settled: {row}")
+    if row.get("media") == []:
+        need(m.get("fenced_media_job") is None,
+             "pinned fenced media job disappeared or changed status")
+        return row
+    fenced = m["fenced_media_job"]
+    need(isinstance(fenced, dict), "active media job has no configured dispatch fence")
+    expected = {**fenced, "vendor_ref": None, "submitted_at": None}
+    need(row.get("media") == [expected],
+         f"media jobs differ from single fenced queued row: {row.get('media')}")
+    # A queued row is safe to exclude only while the exact running API image
+    # proves that its POST and poll paths refuse vendor submission for that row.
+    api_id = container_id("api")
+    need(api_id == m["api_container_id"] and running(api_id), "API container ID/state drift")
+    need(command("docker", "inspect", "--format", "{{.Image}}", api_id) == m["api_image_id"],
+         "API image ID drift")
+    for key, source in API_SOURCE_PATHS.items():
+        need(worker_file(source, api_id) == m["api_code"][key],
+             f"API dispatch fence source drift: {key}")
+    held_nonce(m)
+    receipt = json.loads(command("docker", "exec", api_id, "python", "-m",
+                                 "app.video_media.dispatch_fence_cli", "check", "--job-id",
+                                 fenced["id"], "--expect-operator-lock"))
+    need(receipt.get("schema_version") == 1 and receipt.get("enforced") is True
+         and receipt.get("operator_lock_expected") is True
+         and receipt.get("media_lock_absent") is False
+         and receipt.get("active_media_count") == 1
+         and receipt.get("fence_sha256") == m["media_dispatch_fence_sha256"]
+         and receipt.get("fence_path") == FENCE_PATH_PREFIX + fenced["id"] + ".json"
+         and receipt.get("job") == expected
+         and receipt.get("code") == {key: m["api_code"][key]
+                                      for key in ("jobs_sha256", "dispatch_fence_sha256")},
+         "API exact media dispatch fence receipt drift")
+    held_nonce(m)
+    need(container_id("api") == api_id and running(api_id),
+         "API container changed during media fence readback")
     return row
 
 
@@ -531,6 +779,16 @@ def durable_pending(phase: str, source: str, stop_sha: str) -> None:
         os.close(parent)
 
 
+def guarded_direct_phase(m: dict, site_before: dict, oneoff: str, chosen: str) -> str:
+    """Recheck the paid-dispatch gates after all one-off and recovery writes."""
+    jobs(m)
+    budget()
+    no_leases()
+    need(site_row() == site_before, "site Retry/stage changed before phase")
+    return direct_node(oneoff, m["driver_container_path"], PHASES[chosen][1],
+                       timeout_seconds=3600)
+
+
 def phase_main(phase: str) -> int:
     supervised(phase)
     m = config()
@@ -551,7 +809,7 @@ def phase_main(phase: str) -> int:
             need(container_id(service) == identity and running(identity)
                  and restart_policy(identity) == "unless-stopped", f"{service} ID/state/policy drift")
         site_before = site_row()
-        jobs()
+        jobs(m)
         budget()
         no_leases()
         if phase == "fault-test":
@@ -596,7 +854,7 @@ def phase_main(phase: str) -> int:
         global_stop_create()
         deadline = time.monotonic() + 120
         while True:
-            jobs(); no_leases()
+            jobs(m); no_leases()
             need(site_row() == site_before, "site Retry/stage changed during global drain")
             if worker_quiet(ids["video-worker"]):
                 break
@@ -604,7 +862,7 @@ def phase_main(phase: str) -> int:
             time.sleep(2)
         command("docker", "stop", "--time", "20", ids["video-worker"])
         need(not running(ids["video-worker"]), "original auto worker still running")
-        jobs(); no_leases()
+        jobs(m); no_leases()
         need(site_row() == site_before, "site Retry/stage changed after auto stop")
         global_stop_clear()
         oneoff = create_oneoff(m, chosen, ids["video-worker"])
@@ -620,10 +878,8 @@ def phase_main(phase: str) -> int:
                  and restart_policy(identity) == "no", f"{service} reboot gate drift")
         need(running(oneoff) and restart_policy(oneoff) == "no", "one-off reboot gate drift")
         durable_pending(chosen, progress["source_sha256"], m["expected_stop_sha256"])
-        need(site_row() == site_before, "site Retry/stage changed before phase")
         # Exact direct phase only. This is the sole possible model dispatch here.
-        print(direct_node(oneoff, m["driver_container_path"], PHASES[chosen][1],
-                          timeout_seconds=3600), flush=True)
+        print(guarded_direct_phase(m, site_before, oneoff, chosen), flush=True)
         # The original worker's /tmp is cleared by docker stop, so inspect the
         # next audit link in the same pinned one-off before killing it.
         after = direct_node(oneoff, m["driver_container_path"], "--preflight")
@@ -635,7 +891,7 @@ def phase_main(phase: str) -> int:
         command("python3", "/usr/local/sbin/a01_phase_recover.py")
         oneoff_stopped()
         need(digest(a01_stop_guard.Paths().stop) == m["expected_stop_sha256"], "restored STOP differs")
-        jobs(); budget(); no_leases()
+        jobs(m); budget(); no_leases()
         site_after = site_row(require_blocked=False)
         need(site_after.get("request") == site_before.get("request")
              and site_after.get("ack") == site_before.get("ack"), "A01 owner Retry changed during phase")
