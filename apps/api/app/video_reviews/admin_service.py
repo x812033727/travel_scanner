@@ -1567,6 +1567,10 @@ async def submit_review(
     manual_anime = await _check_anime_review(
         session, project, payload.gate, payload.payload, payload.content_sha256
     )
+    # A video the worker did not make is pushed by a person or an agent by hand
+    # (tools/video/review/sync.mjs marks it `hand_pushed`): the owner decides at every gate,
+    # whatever the automatic checks say (owner, 2026-10-17; docs/videos/HANDS-OFF.md).
+    owner_decides = manual_anime or payload.payload.get("hand_pushed") is True
     missing = [item.sha256 for item in payload.files if store.path(slug, item.sha256) is None]
     if missing:
         raise AppError(
@@ -1716,7 +1720,7 @@ async def submit_review(
     video_format = project.format or "slides"
     series_slug = project.series_slug
     if (
-        not manual_anime
+        not owner_decides
         and payload.gate == "audio"
         and await auto_approves_audio(session, payload.payload, video_format)
     ):
@@ -1725,14 +1729,14 @@ async def submit_review(
     # when the series is hands-off (docs/videos/BINGE.md); an illustrated slides video's reads
     # its own switch (docs/videos/ILLUSTRATED.md).
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "storyboard"
         and await auto_approves_storyboard(session, payload.payload, series_slug, video_format)
     ):
         auto_note = AUTO_APPROVED_STORYBOARD_NOTE
     # A character's sheet is picked by the judge's score when the owner turned that on.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "look"
         and await auto_picks_look(session, payload.payload, series_slug)
     ):
@@ -1740,7 +1744,7 @@ async def submit_review(
         review.choice = str(payload.payload.get("suggested"))
     # An episode's screenplay stands on the checker's coverage on a hands-off series.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "script"
         and await auto_approves_script(session, series_slug, payload.payload)
     ):
@@ -1748,7 +1752,7 @@ async def submit_review(
     # The owner decided on 2026-09-27 (docs/videos/HANDS-OFF.md) that Jev chooses the outline
     # and that a final cut and its upload confirmation stand on the automatic checks.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "outline"
         and await auto_picks_outline(session, payload.payload, project.category)
     ):
@@ -1758,7 +1762,7 @@ async def submit_review(
     # (docs/videos/SHORTS.md §自動品管); a long video's report never approves one, so the
     # rule below is not asked about a Short at all.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate in ("final", "publish")
         and project.shorts_line is not None
     ):
@@ -1771,7 +1775,7 @@ async def submit_review(
                 else SHORTS_PACKAGE_AUTO_APPROVED_NOTE
             )
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate in ("final", "publish")
         and await auto_approves_final(
             session,
@@ -1786,7 +1790,7 @@ async def submit_review(
     # A batch of languages waits for the owner only for a dub track they must upload in Studio;
     # descriptions and captions the site sends itself (docs/videos/LANGUAGES.md).
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "languages"
         and not languages_need_owner(payload.payload)
     ):

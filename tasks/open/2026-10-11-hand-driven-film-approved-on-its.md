@@ -1,11 +1,11 @@
 ---
 id: 2026-10-11-hand-driven-film-approved-on-its
 title: A film an agent drives by hand is approved on its own reviewer's word
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-hand-pushed
+claimed_at: 2026-10-17T11:24:11Z
 created_at: 2026-10-11T09:50:02Z
 completed_at:
 branch:
@@ -14,6 +14,12 @@ scope:
   - tools/video/review/sync.mjs
   - apps/api/app/video_automation/settings.py
   - docs/videos/HANDS-OFF.md
+  - apps/api/app/video_reviews/admin_service.py
+  - apps/api/tests/test_video_hand_pushed.py
+  - tools/video/review/sync.test.mjs
+  - tools/video/review/language-contract.mjs
+  - docs/videos/long-form/review.json
+  - docs/videos/long-form/review.md
 ---
 
 # A film an agent drives by hand is approved on its own reviewer's word
@@ -43,20 +49,20 @@ apart.
 
 ## Definition of done
 
-- [ ] The owner has decided what a hand-driven film's gates require: the owner's own
+- [x] The owner has decided what a hand-driven film's gates require: the owner's own
       approval, or a judge that is not the author's session, or the same as the worker.
-- [ ] The server or the tool enforces that decision; a hand-driven film cannot reach "final
+- [x] The server or the tool enforces that decision; a hand-driven film cannot reach "final
       approved" on its author's review alone.
-- [ ] `docs/videos/HANDS-OFF.md` says so.
+- [x] `docs/videos/HANDS-OFF.md` says so.
 
 ## Steps
 
-- [ ] Ask the owner. Options: `review-push` from outside the worker always asks for a manual
+- [x] Ask the owner. Options: `review-push` from outside the worker always asks for a manual
       review; or it may auto-approve only after the worth check of
       `2026-10-11-judge-a-tutorial-s-worth-before` passes; or leave it and rely on that check.
-- [ ] Find how the server could know a submission came from the worker (the worker's token,
+- [x] Find how the server could know a submission came from the worker (the worker's token,
       a flag in the submission) and whether an agent could simply set it.
-- [ ] Build what the owner chose; tests; the receipt if a bound file changes.
+- [x] Build what the owner chose; tests; the receipt if a bound file changes.
 
 ## How to verify
 
@@ -69,3 +75,14 @@ owner (or for the check), and the worker's own final cut is approved as it is to
   of speech and the owner's time.
 - The duration receipt already refuses a review whose `author_agent` equals its
   `reviewer_agent`. A reviewer the author's session starts under another name passes that test.
+- 2026-10-17 (claude-opus-5-5-hand-pushed): the owner chose 「一律等站主」 (the owner's own
+  approval at every gate). The server cannot tell a worker submission from a hand push (same
+  token), so the tool marks it: `review-push` adds `payload.hand_pushed: true` when the video's
+  work directory has no worker state file (`auto.json`, `WORKER_STATE_FILE` in sync.mjs), and
+  `submit_review` skips every automatic approval for such a submission (`owner_decides`, the
+  guard every rule already shared with the long-anime manual review). An agent could forge
+  `auto.json`; HANDS-OFF.md says the rule stops an unnoticed auto-approval, not a deliberate
+  bypass. The language contract fixture and the storyboard push helper now write `auto.json`,
+  since they stand for the worker's own submissions. Tests: `tests/test_video_hand_pushed.py`
+  (two fail on the old server) and one in sync.test.mjs. The receipt is re-issued by an
+  independent reviewer (admin_service.py, sync.mjs and sync.test.mjs are bound).
