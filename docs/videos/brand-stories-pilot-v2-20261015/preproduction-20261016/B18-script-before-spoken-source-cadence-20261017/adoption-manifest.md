@@ -18,3 +18,7 @@
 逐句對齊有已知差異：本稿 H02 的第三問是「盤子怎麼從後場送到客席」，85 景 hook 仍預告權利到期後「其他店會怎麼用這條送餐路」，並用萬博會場觀眾反應作第二問；本稿 T01 引法院對 **1967 年仙台／東京展店**的記載，85 景 turn 目前未有該段。正式章稿須處理這些出入、來源路由及新句子的逐景審查，不能直接用本稿替換 worker 場景。
 
 **未完成：** 正式 worker 章稿與此編輯底本的逐句對齊、65 筆場景 claim 的 verifier、逐章 listener／narrative、TTS 實測時長和發音、MiniMax 插圖、可關閉繁中 CC、聲畫 QA、成片及站主看片。沒有主機寫入、影片匯入、付費呼叫、上傳或發布；這份收據不授權上述階段。
+
+## 2026-10-17 後續 CI 修正收據
+
+這份採用只記錄當時的本機操作，現已**撤回 active 採用**。PR #1510 的 `dc6eacf0…` CI 在 `tools/video/automation/story.test.mjs:587` 發現 active 第三版稿件 `7b286566…` 不等於 worker `PILOT_SCRIPT_REFERENCES` 凍結的 B18 舊稿 `5326bd66…`，因此影片測試與依賴它的工作失敗。以本目錄兩份逐位元組備份還原後，active `scripts/B18.md` 與 `scripts/reviews/B18.md` 讀回 SHA-256 分別是 `5326bd6633ad69931fe542badd6cddd2378324ff0bcc4b0f05652941642dc724`、`1583b36311fde688a49f70aa546bb1c30b53ab294afeb1119bb576c73a479cdb`；聚焦的凍結參考雜湊測試再次 PASS。第三版稿件和獨立文字審稿仍在 `../B18-spoken-source-cadence-candidate-20261017/`，只作隔離候選。原 CI 失敗不能改述為全綠，待新 commit 重跑。
