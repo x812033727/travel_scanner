@@ -506,3 +506,7 @@ The reviewed Row10c plan is now assembled into a deterministic local import cand
 - 2026-10-17 最新真實 readback101：原 session99734 已結束並安全恢復 STOP；後續精確縮句 resume 完成4個真實步驟，now lint修正、check round2、listener、narrative round10。248檔安全匯出，101 links/source af7bcc178e7cd7b92fedec401c2f1971f3213ab88d3cab4cbad18e3a7b2da803，全鏈本機驗證 PASS。六章 checked/listened 皆真；panel13題只剩 one_line（engine r12e03 06:06）未過，其餘12題過。自己的 hold 已 clear，A01 STOP 保留，未開始媒體。下一步獨立閱讀確認重複回頭處，最小修稿後重審；不重置輪數或代簽PASS。
 
 - 2026-10-17 單句修訂 resume101 已在正式機背景啟動 PID313825；精確限制 engine-r12-03/r12e03，使用真 listener、invalidate該章checked後重新verifier及panel，保留check_rounds2/narrative_fixes2。driver f851f26b/caller52e70fcb，獨立 success/越界patch/drop拒絕/pending同key/source漂移拒絕皆PASS。host log /root/mokaair-a01-real-review-20261017-fe35369c/resume101-run.log；運行中勿重試或清hold。
+
+- resume101 初次等待達12次RUN_PENDING後安全退出；原稿source101未變、A01 STOP恢復、own resume101 release hold保留。真listener/engine請求仍queued，另owner的writer佔用共用AI工人，未干預。保留原journal 1ed3c7b1…（SHA9e068ebb…，unadopted）；只允許核對後續接同一request，禁止新key重送。新增retained driver421f5955…等獨立複核，尚未run。
+
+- retained101 續接獨立複核已通過：exact真journal成功/pending同key/wrongkey拒絕/hash漂移拒絕4case PASS，installed store連續3prepare同key不改bytes。正式background PID322155已啟動，log /root/mokaair-a01-real-review-20261017-fe35369c/resume101-retained-run.log；driver421f5955/caller8b4db685，沿用own resume101 hold。最多100 pending polls/120 stage calls/8successful units，仍只listener+verifier+panel，不可media；成功STOP+active0後clear自有hold，失敗保留。下一次必須先查此log/真journal狀態，勿重跑driver或新key。
