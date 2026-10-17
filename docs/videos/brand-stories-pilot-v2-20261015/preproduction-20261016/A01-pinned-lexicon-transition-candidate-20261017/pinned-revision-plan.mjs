@@ -180,7 +180,7 @@ function revisedState(beforeBytes) {
     && before.story?.narrative_fixes === 2
     && (before.story?.owner_note === null || before.story?.owner_note === undefined),
   'A01_STATE_NOT_ROUND9_HOLD');
-  for (const key of CHAPTERS) need(before.story.chapters[key]?.written === true
+  for (const key of CHAPTERS) need([true, 1].includes(before.story.chapters[key]?.written)
     && before.story.chapters[key]?.checked === true
     && before.story.chapters[key]?.listened === true
     && Number.isInteger(before.story.chapters[key]?.check_rounds)

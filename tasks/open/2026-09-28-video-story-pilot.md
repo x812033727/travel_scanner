@@ -19,6 +19,7 @@ scope:
   - docs/videos/brand-stories-pilot-v2-20261015
   - tasks/open/2026-09-28-video-story-pilot.md
   - tasks/open/2026-10-16-bind-story-audits-and-narration-to.md
+  - tasks/open/2026-10-17-track-pronunciation-snapshot-migration-for-already.md
 ---
 
 # 試作兩支品牌故事並記錄數字
@@ -489,3 +490,11 @@ The reviewed Row10c plan is now assembled into a deterministic local import cand
 - Pinned82model now bindsround22; actual82scope must include fresh sixchapter checker/lint cycles(counter0,changed removed withpriorrecord), not merely pronunciationpin. Narrativefail/round9/narrative_fixes2 preserved. Real81/82install, uncertainjob disposition, hostcaller gates and formalworkerreview still unfinished. #1548 exact merge/deploy authorization remains pending; no hostwrite/model/paidcall made.
 
 - Owner subsequently approved conditional merge/deploy of #1548 exact2d510196606c962d3f53f75cbdad388890f2c187. Onlyfull-stack-smoke remains pending at latestread; no merge untilallgreen. Latest round22 offlineincrement manuscript report12PASS/1NOT_MEASURED, no_recapFAIL withdrawn as repeated component reference/new mechanism rather than repeated conclusion; original headingsFAIL corrected for export error. It is not formalpanel/TTSproof. Narrow Travelpro primarysource attribution was reread and saved without upgrading claimverdicts.
+
+### Runtime merged and deployed2026-10-17
+
+#1548 exact2d5101966 merged as4f02734769f683615d1ca8b641026ac8cf1f87b5 afterallgreen/independent identical21files/quiet08:27Z preflight. Deployment08:28:26–08:29:29Z returnedDEPLOY_EXIT0,health3/3,no migrationchange(0132_video_pilot_budget). First verification had missing expectedSHA in local verifier and11PASS1FAIL; after anchoring the actual assignment the full read-only rerun passed12/12 includingexact3runtimefilehashes. No data/media gate inferred from that deployment. New legacy guard also held existing Seiko story; tracked in separateopen task without touching its owner/project.
+
+- 2026-10-17 正式狀態：#1548 已合併 4f0273476 並部署，完整 verifier 12/12；A01 80→81 pin-only adoption 已 COMMITTED_HELD，185 歷史證據檔未變，206 檔安全快照本機逐檔驗證 PASS/source 766a83c237af95b14d7c23bde133c8362e6a2f140bd959b0c056719d53eb3502。自有全域 release hold 已成功 clear，A01 STOP 保留，0 付費。r3 backup-only 目錄讀取修正獨立 6/6 regression PASS；r4 commit 後 docker cp tmpfs 匯出失敗，r5 只 exec tar 匯出與 clear 自有 hold 成功，未重跑 apply。round22 81→82 實稿採用仍待 adapter 複核及執行；formal worker verifier/listener/narrative/TTS 未完成。
+
+- 2026-10-17 正式 81→82 round22 source revision 已 COMMITTED_HELD；source 729a1c47e955448968908cd6ba2a0f8ff4257c0a7a1f951b0de744696c8d5a8d、tip ffe2380f05c3c646e74c11873e33ddfdc557c6b2371c934541dff90f73fd83ef、manifest bdce6ba252771612535279cbfd6eb9a63ca8b5289a64110e1af4baa676c05197；210檔正式快照本機verify82 PASS、原81歷史與snapshot不變，own global hold cleared，A01 STOP仍保留，0paid。真正六章核稿/聽眾審稿/narrative仍待執行。新bounded review driver初審發現audit-before-settle等1P1+2P2，已修並等待新獨立no-model檢查，從未在正式機run。

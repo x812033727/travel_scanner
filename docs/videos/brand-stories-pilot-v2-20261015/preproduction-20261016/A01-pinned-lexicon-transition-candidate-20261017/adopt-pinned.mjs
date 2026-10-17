@@ -50,7 +50,20 @@ export function captureAdoptionSources({root,workBase,output}) {
   for(const name of ['auto.json','review/narrative.json','story/chapters','story/recheck-audit']) copy(SLUG+'/'+name);
   copy(SLUG+'/story/reviews/script-review.json',true);
   const revisions=safe(workBase,SLUG+'/manual-revisions');
-  for(const id of fs.readdirSync(revisions)) copy(SLUG+'/manual-revisions/'+id+'/installation-receipt.json');
+  for(const id of fs.readdirSync(revisions)) {
+    const revision=safe(workBase,SLUG+'/manual-revisions/'+id);
+    need(fs.lstatSync(revision).isDirectory(),'ADOPTION_REVISION_DIRECTORY_REQUIRED');
+    // Recovery/backup directories are not installed revisions. Historical referenced
+    // receipts remain mandatory through the exact source-plan validation below.
+    const receipt=safe(workBase,SLUG+'/manual-revisions/'+id+'/installation-receipt.json');
+    let receiptStat;
+    try { receiptStat=fs.lstatSync(receipt); } catch(error) { if(error.code!=='ENOENT') throw error; }
+    if(receiptStat) {
+      need(!receiptStat.isSymbolicLink(),'ADOPTION_SYMLINK_REFUSED');
+      need(receiptStat.isFile(),'ADOPTION_REGULAR_FILE_REQUIRED');
+      copy(SLUG+'/manual-revisions/'+id+'/installation-receipt.json');
+    }
+  }
   const snapshot=safe(root,DOC+'/story-lexicon');
   if(fs.existsSync(snapshot)) for(const name of ['versions','events','current.json']) {
     if(fs.existsSync(safe(root,DOC+'/story-lexicon/'+name))) copy(DOC+'/story-lexicon/'+name);

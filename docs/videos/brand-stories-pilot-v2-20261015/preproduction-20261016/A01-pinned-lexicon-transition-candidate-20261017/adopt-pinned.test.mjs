@@ -56,3 +56,24 @@ test('wrong deployed runtime and source drift refuse publication',t=>{
   assert.equal(fs.existsSync(path.join(i.root,'docs/videos',SLUG,'story-lexicon/current.json')),false);
  }
 });
+
+ test('backup-only recovery directory is preserved while canonical receipts remain required',t=>{
+  const i=input(t); const backup=path.join(i.workBase,SLUG,'manual-revisions','legacy-busy-recovery','backup.json');
+  fs.mkdirSync(path.dirname(backup),{recursive:true}); fs.writeFileSync(backup,'legacy-backup');
+  const r=adoptPinnedTransition(i.options); assert.equal(r.adoption,'COMMITTED_HELD');
+  assert.equal(fs.readFileSync(backup,'utf8'),'legacy-backup');
+ });
+ test('missing referenced installation receipt refuses adoption',t=>{
+  const i=input(t); const revisions=path.join(i.workBase,SLUG,'manual-revisions');
+  const id=fs.readdirSync(revisions).find(id=>fs.existsSync(path.join(revisions,id,'installation-receipt.json')));
+  assert.ok(id); fs.unlinkSync(path.join(revisions,id,'installation-receipt.json'));
+  assert.throws(()=>adoptPinnedTransition(i.options));
+  assert.equal(fs.existsSync(path.join(i.root,'docs/videos',SLUG,'story-lexicon/current.json')),false);
+ });
+
+ test('revision junction cannot introduce external receipts',t=>{
+  const i=input(t); const outside=path.join(i.f.parent,'external-backup');fs.mkdirSync(outside);
+  const link=path.join(i.workBase,SLUG,'manual-revisions','external-recovery');
+  fs.symlinkSync(outside,link,'junction');
+  assert.throws(()=>adoptPinnedTransition(i.options),/ADOPTION_SYMLINK_REFUSED/);
+ });
