@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import json
+import os
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -22,7 +24,14 @@ from app.problems import AppError, app_error_handler
 from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
 from app.video_budget.models import FOLLOWON_SLUGS
 from app.video_budget.service import BudgetError, BudgetSummary, Reservation
-from app.video_media import admin_api, meter
+from app.video_media import admin_api, cutover_intake, meter
+from app.video_media import jobs as media_jobs
+from app.video_media.dispatch_fence import (
+    PINNED_JOB_ID,
+    PINNED_REQUEST_HASH,
+    expected_manifest,
+    fence_path,
+)
 from app.video_media.jobs import MediaContext
 from app.video_media.models import VideoMediaJob
 from app.video_media.schemas import JudgeOut
@@ -84,6 +93,25 @@ def _row(**changes: Any) -> VideoAutomationSettings:
 
 @pytest.fixture
 def media(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> dict[str, Any]:
+    marker_dir = tmp_path / cutover_intake.INTAKE_DIR
+    marker_dir.mkdir(mode=0o755)
+    (marker_dir / cutover_intake.MARKER).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "state": "BOOTSTRAP_ALLOW",
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": None,
+                "target_sha": None,
+                "nonce_sha256": None,
+            }
+        )
+    )
+    if os.name == "posix":
+        monkeypatch.setattr(cutover_intake, "ROOT_UID", tmp_path.stat().st_uid)
+    monkeypatch.setattr(
+        admin_api, "get_settings", lambda: Settings(video_work_dir=str(tmp_path))
+    )
     settings = MediaSettings(video_media_dir=str(tmp_path))
     store = MediaStore(
         tmp_path,
@@ -102,7 +130,7 @@ def media(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> dict[str, Any]:
             session=session,
             redis=state["redis"],
             store=store,
-            runtime=Settings(hotspot_guide_gemini_api_key="g"),
+            runtime=Settings(hotspot_guide_gemini_api_key="g", video_work_dir=str(tmp_path)),
             media=settings,
             row=state["row"],
             token_id=token_id,
@@ -132,6 +160,32 @@ def media(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> dict[str, Any]:
 
     monkeypatch.setattr(admin_api, "summary", pilot_summary)
     return state
+
+
+def _pause_intake(media: dict[str, Any]) -> None:
+    folder = Path(media["settings"].video_media_dir) / cutover_intake.INTAKE_DIR
+    (folder / cutover_intake.ARMED).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": "b" * 64,
+                "target_sha": "c" * 40,
+            }
+        )
+    )
+    (folder / cutover_intake.MARKER).write_bytes(
+        cutover_intake.canonical_json(
+            {
+                "schema_version": 1,
+                "state": "PAUSED_ALL",
+                "bootstrap_id": "a" * 64,
+                "plan_sha256": "b" * 64,
+                "target_sha": "c" * 40,
+                "nonce_sha256": None,
+            }
+        )
+    )
 
 
 def _token() -> VideoToolToken:
@@ -377,6 +431,311 @@ async def test_a_job_can_be_polled_and_an_unknown_one_is_404(
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
         missing = await client.get(f"/api/v1/video/media/jobs/{uuid4()}")
     assert missing.status_code == 404 and missing.json()["code"] == "video_media_job_not_found"
+
+
+@pytest.mark.asyncio
+async def test_exact_fence_refuses_get_and_repeated_post_without_vendor_or_row_change(
+    media: dict[str, Any], monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    slug = "google-project-suncatcher-prototype-what-it-tests"
+    payload = {"slug": slug, "purpose": "keyframe", "prompt": "orbital mirror"}
+    media["row"] = _row(image_provider="minimax", image_model="image-01")
+    # The live request body is deliberately not stored in this test. The hash lookup is
+    # pinned to the observed existing row so both POSTs exercise its dedupe branch.
+    monkeypatch.setattr(media_jobs, "request_hash", lambda _fields: PINNED_REQUEST_HASH)
+    job = VideoMediaJob(
+        id=PINNED_JOB_ID,
+        slug=slug,
+        kind="image",
+        purpose="keyframe",
+        provider="minimax",
+        model="image-01",
+        request={},
+        request_hash=PINNED_REQUEST_HASH,
+        status="queued",
+        attempts=1,
+        polls=0,
+        seconds=0,
+        usd_estimate=Decimal("0.0035"),
+    )
+    from datetime import UTC, datetime
+
+    job.created_at = datetime.now(UTC)
+    path = fence_path(tmp_path)
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps(expected_manifest(job), sort_keys=True) + "\n", encoding="utf-8")
+    session_obj = AsyncMock()
+
+    async def scalar(statement: Any) -> Any:
+        return job if "video_media_jobs" in str(statement) else None
+
+    session_obj.scalar = AsyncMock(side_effect=scalar)
+    app = _app(_token())
+
+    async def session() -> Any:
+        yield session_obj
+
+    app.dependency_overrides[get_session] = session
+
+    async def context(session: Any, token_id: Any) -> MediaContext:
+        return MediaContext(
+            session=session,
+            redis=media["redis"],
+            store=media["store"],
+            runtime=Settings(minimax_api_key="m", video_work_dir=str(tmp_path)),
+            media=media["settings"],
+            row=media["row"],
+            token_id=token_id,
+        )
+
+    monkeypatch.setattr(admin_api, "_context", context)
+    monkeypatch.setattr(
+        media_jobs,
+        "provider_for",
+        lambda *_args: pytest.fail("fenced job reached the vendor adapter"),
+    )
+    original = (job.status, job.attempts, job.polls, job.vendor_ref, dict(job.request))
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
+        got = await client.get(f"/api/v1/video/media/jobs/{job.id}")
+        repeated = [
+            await client.post("/api/v1/video/media/images", json=payload) for _ in range(2)
+        ]
+    for response in [got, *repeated]:
+        assert response.status_code == 423
+        assert response.json()["code"] == "video_media_dispatch_fenced"
+    assert (job.status, job.attempts, job.polls, job.vendor_ref, job.request) == original
+    session_obj.commit.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("route", "payload"),
+    [
+        ("images", {"purpose": "keyframe", "prompt": "a watch"}),
+        (
+            "clips",
+            {"shot_id": "opening", "prompt": "pan", "first_frame": "a" * 64, "seconds": 8},
+        ),
+        ("music", {"prompt": "quiet music", "seconds": 10}),
+        (
+            "judge",
+            {
+                "kind": "keyframe",
+                "files": [{"sha256": "a" * 64, "label": "kf"}],
+                "rubric": [{"key": "identity", "question": "same watch?"}],
+            },
+        ),
+        ("locate", {"sha256": "a" * 64}),
+    ],
+)
+async def test_b25_direct_paid_routes_refuse_before_context_or_quota(
+    monkeypatch: pytest.MonkeyPatch, route: str, payload: dict[str, Any]
+) -> None:
+    async def unexpected(*_args: Any, **_kwargs: Any) -> Any:
+        pytest.fail("paused B25 reached a quota or paid-call context")
+
+    monkeypatch.setattr(admin_api, "_limit", unexpected)
+    monkeypatch.setattr(admin_api, "_context", unexpected)
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_token())), base_url="http://t"
+    ) as client:
+        answers = [
+            await client.post(
+                f"/api/v1/video/media/{route}",
+                json={"slug": media_jobs.B25_CUTOVER_SLUG, **payload},
+            )
+            for _ in range(2)
+        ]
+    for response in answers:
+        assert response.status_code == 423, response.text
+        assert response.json()["code"] == "video_media_b25_cutover_paused"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("route", "payload"),
+    [
+        ("images", {"purpose": "keyframe", "prompt": "orbital mirror"}),
+        (
+            "clips",
+            {"shot_id": "opening", "prompt": "pan", "first_frame": "a" * 64, "seconds": 8},
+        ),
+        ("music", {"prompt": "quiet music", "seconds": 10}),
+        (
+            "judge",
+            {
+                "kind": "keyframe",
+                "files": [{"sha256": "a" * 64, "label": "kf"}],
+                "rubric": [{"key": "identity", "question": "same watch?"}],
+            },
+        ),
+        ("locate", {"sha256": "a" * 64}),
+    ],
+)
+async def test_global_pause_refuses_direct_paid_routes_before_quota_or_context(
+    media: dict[str, Any], monkeypatch: pytest.MonkeyPatch, route: str, payload: dict[str, Any]
+) -> None:
+    _pause_intake(media)
+
+    async def unexpected(*_args: Any, **_kwargs: Any) -> Any:
+        pytest.fail("paused direct route reached quota or paid-call context")
+
+    monkeypatch.setattr(admin_api, "_limit", unexpected)
+    monkeypatch.setattr(admin_api, "_context", unexpected)
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_token())), base_url="http://t"
+    ) as client:
+        result = await client.post(
+            f"/api/v1/video/media/{route}", json={"slug": "another-film", **payload}
+        )
+    assert result.status_code == 423, result.text
+    assert result.json()["code"] == "video_media_cutover_paused"
+
+
+@pytest.mark.asyncio
+async def test_global_pause_refuses_live_get_before_poll_quota(
+    media: dict[str, Any], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _pause_intake(media)
+    job = VideoMediaJob(
+        id=uuid4(),
+        slug="another-film",
+        kind="image",
+        purpose="keyframe",
+        provider="minimax",
+        model="image-01",
+        request={},
+        request_hash="h",
+        status="queued",
+        attempts=0,
+        polls=0,
+        seconds=0,
+        usd_estimate=Decimal("0.0035"),
+    )
+    session_obj = AsyncMock()
+    session_obj.scalar.return_value = job
+    app = _app(_token())
+
+    async def session() -> Any:
+        yield session_obj
+
+    app.dependency_overrides[get_session] = session
+
+    async def unexpected(*_args: Any, **_kwargs: Any) -> Any:
+        pytest.fail("paused live GET reached poll quota or vendor context")
+
+    monkeypatch.setattr(admin_api, "_limit", unexpected)
+    monkeypatch.setattr(admin_api, "_context", unexpected)
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
+        result = await client.get(f"/api/v1/video/media/jobs/{job.id}")
+    assert result.status_code == 423
+    assert result.json()["code"] == "video_media_cutover_paused"
+    session_obj.commit.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("route", "fields"),
+    [
+        (
+            "judge",
+            {
+                "kind": "keyframe",
+                "files": [{"sha256": "a" * 64, "label": "kf"}],
+                "rubric": [{"key": "identity", "question": "same subject?"}],
+            },
+        ),
+        ("locate", {"sha256": "a" * 64}),
+    ],
+)
+@pytest.mark.parametrize("pilot", [False, True])
+async def test_paid_direct_route_rechecks_after_awaited_booking(
+    media: dict[str, Any],
+    monkeypatch: pytest.MonkeyPatch,
+    route: str,
+    fields: dict[str, Any],
+    pilot: bool,
+) -> None:
+    slug = "story-rolling-suitcase-v2" if pilot else "another-film"
+    release_mock = AsyncMock()
+    uncertain_mock = AsyncMock()
+    vendor_mock = AsyncMock(side_effect=AssertionError("paid Gemini call escaped pause"))
+    monkeypatch.setattr(admin_api, "release", release_mock)
+    monkeypatch.setattr(admin_api, "mark_uncertain", uncertain_mock)
+    monkeypatch.setattr(admin_api, route, vendor_mock)
+    if pilot:
+
+        async def reserve_then_pause(
+            _session: Any, *, operation_id: str, max_usd: Decimal, **_rest: Any
+        ) -> Reservation:
+            _pause_intake(media)
+            return Reservation(slug, operation_id, max_usd, "reserved", True, True, 1)
+
+        monkeypatch.setattr(admin_api, "reserve", reserve_then_pause)
+    else:
+        original_book = admin_api._book_judge_call
+
+        async def book_then_pause(ctx: MediaContext) -> None:
+            await original_book(ctx)
+            _pause_intake(media)
+
+        monkeypatch.setattr(admin_api, "_book_judge_call", book_then_pause)
+
+    body = {"slug": slug, "operation_id": str(uuid4()), **fields}
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_token())), base_url="http://t"
+    ) as client:
+        result = await client.post(f"/api/v1/video/media/{route}", json=body)
+    assert result.status_code == 423 and result.json()["code"] == "video_media_cutover_paused"
+    vendor_mock.assert_not_awaited()
+    uncertain_mock.assert_not_awaited()
+    assert await meter.used(media["redis"], meter.JUDGE_CALLS) == 0
+    if pilot:
+        assert release_mock.await_args.kwargs["reason"] == (
+            "paid intake paused before vendor dispatch"
+        )
+    else:
+        release_mock.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_b25_direct_poll_refuses_before_vendor_or_row_change(
+    media: dict[str, Any], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    job = VideoMediaJob(
+        id=uuid4(),
+        slug=media_jobs.B25_CUTOVER_SLUG,
+        kind="image",
+        purpose="keyframe",
+        provider="minimax",
+        model="image-01",
+        request={},
+        request_hash="h",
+        status="queued",
+        attempts=1,
+        polls=0,
+        seconds=0,
+        usd_estimate=Decimal("0.0035"),
+    )
+    session_obj = AsyncMock()
+    session_obj.scalar = AsyncMock(return_value=job)
+    app = _app(_token())
+
+    async def session() -> Any:
+        yield session_obj
+
+    app.dependency_overrides[get_session] = session
+    monkeypatch.setattr(
+        media_jobs, "provider_for", lambda *_args: pytest.fail("B25 reached vendor adapter")
+    )
+    original = (job.status, job.attempts, job.polls, job.vendor_ref)
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
+        response = await client.get(f"/api/v1/video/media/jobs/{job.id}")
+    assert response.status_code == 423
+    assert response.json()["code"] == "video_media_b25_cutover_paused"
+    assert (job.status, job.attempts, job.polls, job.vendor_ref) == original
+    session_obj.commit.assert_not_awaited()
+    assert await media["redis"].exists(f"video-media:lock:{job.id}") == 0
 
 
 @pytest.mark.asyncio

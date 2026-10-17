@@ -18,6 +18,7 @@ from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.config import get_settings
 from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
 from app.problems import AppError
@@ -40,6 +41,7 @@ from app.video_budget.service import (
 )
 from app.video_media import meter, stock
 from app.video_media.catalog import find_model
+from app.video_media.cutover_intake import IntakeFenceError, enforce_paid_intake
 from app.video_media.jobs import (
     MediaContext,
     MediaJobFailed,
@@ -47,6 +49,7 @@ from app.video_media.jobs import (
     job_view,
     key_for,
     prune,
+    refuse_b25_cutover_media,
     submit_job,
 )
 from app.video_media.judge import JudgeError, judge
@@ -163,6 +166,20 @@ def _refused(error: MediaJobFailed | JudgeError | LocateError | stock.StockError
     )
 
 
+async def _guard_paid_direct_intake(slug: str) -> None:
+    """Reject paused paid routes before rate, budget, session or vendor work."""
+    try:
+        refuse_b25_cutover_media(slug)
+    except MediaJobFailed as error:
+        raise _refused(error) from error
+    try:
+        await enforce_paid_intake(get_settings().video_work_dir, slug, get_redis())
+    except IntakeFenceError as error:
+        raise AppError(
+            423, "video_media_cutover_paused", "媒體製作入口暫停；請核對 A01 切換狀態後再試"
+        ) from error
+
+
 def _storage_refused(error: StorageRefused) -> AppError:
     # The store is shared with the reviews; its codes are renamed for this surface.
     return AppError(error.status, error.code.replace("video_review_", "video_media_"), error.detail)
@@ -183,6 +200,28 @@ async def _book_judge_call(ctx: MediaContext) -> None:
             "video_media_budget_exhausted",
             f"本月的 judge 次數預算（{budget} 次）用完了；可到影片審核的設定分頁調高",
         )
+
+
+async def _recheck_paid_direct_intake_after_booking(
+    ctx: MediaContext,
+    session: AsyncSession,
+    slug: str,
+    operation: str,
+    pilot_hold: bool,
+) -> None:
+    """Close a cutover race before Gemini; release only proven pre-dispatch bookings."""
+    try:
+        await _guard_paid_direct_intake(slug)
+    except AppError:
+        if pilot_hold:
+            await release(
+                session,
+                slug=slug,
+                operation_id=operation,
+                reason="paid intake paused before vendor dispatch",
+            )
+        await meter.release_judge_call(ctx.redis)
+        raise
 
 
 async def _prune_sometimes(ctx: MediaContext) -> None:
@@ -302,6 +341,7 @@ async def _submit(
     payload: ImageJobIn | ClipJobIn | MusicJobIn,
     response: Response,
 ) -> JobOut:
+    await _guard_paid_direct_intake(payload.slug)
     if kind == "image":
         await _limit("submit_image", tool_id, IMAGE_SUBMITS_PER_HOUR)
     else:
@@ -341,10 +381,12 @@ async def submit_music(
 @media_router.get("/jobs/{job_id}", response_model=JobOut)
 async def poll_job(job_id: UUID, tool: VideoTool, session: Session) -> JobOut:
     """The job's state now; asking also moves it one step (vendor poll, download)."""
-    await _limit("poll", tool.id, POLLS_PER_HOUR)
     job = await session.scalar(select(VideoMediaJob).where(VideoMediaJob.id == job_id))
     if job is None:
         raise AppError(404, "video_media_job_not_found", "找不到這個生成工作")
+    if job.status not in ("ready", "failed", "expired"):
+        await _guard_paid_direct_intake(job.slug)
+    await _limit("poll", tool.id, POLLS_PER_HOUR)
     ctx = await _context(session, tool.id)
     try:
         await advance_job(ctx, job)
@@ -401,6 +443,7 @@ async def download_file(slug: str, sha256: str, tool: VideoTool) -> FileResponse
 @media_router.post("/judge", response_model=JudgeOut)
 async def judge_media(payload: JudgeIn, tool: VideoTool, session: Session) -> JudgeOut:
     """Gemini scores a sheet, a keyframe or a clip against the rubric; one call, one budget unit."""
+    await _guard_paid_direct_intake(payload.slug)
     await _limit("judge", tool.id, JUDGES_PER_HOUR)
     ctx = await _context(session, tool.id)
     pilot = is_pilot(payload.slug)
@@ -435,6 +478,9 @@ async def judge_media(payload: JudgeIn, tool: VideoTool, session: Session) -> Ju
         raise
     # The owner's threshold is the floor: a call may ask for a higher bar, never a lower one.
     min_score = max(payload.min_score or 0, ctx.row.judge_min_score)
+    await _recheck_paid_direct_intake_after_booking(
+        ctx, session, payload.slug, operation, held is not None
+    )
     try:
         result = await judge(ctx.runtime, ctx.media, ctx.store, payload, min_score)
     except JudgeError as error:
@@ -473,6 +519,7 @@ async def locate_subjects(payload: LocateIn, tool: VideoTool, session: Session) 
     A clip is refused with ``video_media_invalid`` before the budget is touched again: the tool
     extracts a frame and uploads it first.
     """
+    await _guard_paid_direct_intake(payload.slug)
     await _limit("judge", tool.id, JUDGES_PER_HOUR)
     ctx = await _context(session, tool.id)
     pilot = is_pilot(payload.slug)
@@ -505,6 +552,9 @@ async def locate_subjects(payload: LocateIn, tool: VideoTool, session: Session) 
                 reason="monthly judge quota refused before dispatch",
             )
         raise
+    await _recheck_paid_direct_intake_after_booking(
+        ctx, session, payload.slug, operation, held is not None
+    )
     try:
         result = await locate(ctx.runtime, ctx.media, ctx.store, payload)
     except LocateError as error:
