@@ -63,7 +63,7 @@ window.__dh = {
   // sets the page to start/end-frame mode, 2K, 4 s, and queues every clip of episodes 2-5.
   async boot(base, receipts, downloaded, eps = [2, 3, 4, 5]) {
     if (downloaded) __dhq.markc(downloaded);
-    for (const e of eps) { const c = await (await fetch(base + "clips-dh-e" + String(e).padStart(3, "0") + ".json")).json(); const mid = {}; for (const [k, v] of Object.entries(c)) mid[k.replace(/^a\d-/, "")] = v; localStorage["ztmiddh" + e] = JSON.stringify(mid); }
+    for (const e of eps) { const c = await (await fetch(base + "clips-dh-e" + String(e).padStart(3, "0") + ".json")).json(); const mid = {}; for (const [k, v] of Object.entries(c)) mid[k.replace(/^a\d+-/, "")] = v; localStorage["ztmiddh" + e] = JSON.stringify(mid); }
     if (receipts) { const u = JSON.parse(localStorage.zturls || "{}"); for (const line of receipts.trim().split("\n")) { const [lab, url] = line.split(" "); const m = lab.match(/^a(\d+)-(s\d+)-t\d$/); if (m) u["edh" + m[1] + "-" + m[2] + "-t1"] = url.split("/moss/prod/")[1]; } localStorage.zturls = JSON.stringify(u); }
     const ids = (e) => Object.keys(JSON.parse(localStorage["ztmiddh" + e])).map((id) => e + ":" + id);
     localStorage.dhq = JSON.stringify(eps.flatMap(ids));
