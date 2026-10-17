@@ -1,13 +1,13 @@
 ---
 id: 2026-10-17-review-card-s-outline-pick-table
 title: Review card's outline pick table treats a not-asked demonstration as zero
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5-pick-table
 claimed_at: 2026-10-17T02:25:48Z
 created_at: 2026-10-17T00:41:07Z
-completed_at:
+completed_at: 2026-10-17T02:35:05Z
 branch:
 depends_on: []
 scope:

@@ -5544,9 +5544,22 @@ Ran: Node v22.22.0, Linux, uv: `uv run mypy app` (479 files, no issues), `uv run
 Non-claims: this is a three-file incremental source duration review. It does not re-review the other 105 bound files, the unbound files the commit changes, the admin review card's local `pickBelow` hint (it still reads a null `demo` as below the threshold on a pending review), or the judge's behaviour on the host, and it does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Outline pick table demonstration label increment: 6 files (2026-10-17)
+
+Reviewer: `claude-pr-review-pick-table`. Author: `claude-opus-5-5-pick-table`. Scope: DURATION_ONLY for `apps/web/components/admin-video-review-card.tsx` and `apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json` at `bd48264ee` ("fix(web): the outline pick table shows a not-asked demonstration as not applicable"), task `2026-10-17-review-card-s-outline-pick-table`, on main `14fb25ab0` (#1541), reviewed as `git diff 14fb25ab0 bd48264ee` (admin-video-review-card.tsx +8/−4, each admin.json +1/−0). The commit also changes the unbound new `apps/web/components/admin-video-pick-table.test.tsx` and the task file. The reviewer wrote none of the code and edits only this report and review.json.
+
+Baseline: `git show 14fb25ab0:<path> | sha256sum` gives `85d206ee1773f585d2478d82c84df52992e0c1e5cc34d2b099677ef40cadcb0e` (admin-video-review-card.tsx), `7ebfb019378f34539c556be4b3d128dd0f43020328f4fd15da52c5a2b0eace15` (en), `5e4963e40d87b04a12965071c5eac36a9a2121b89e158f3afe4e19926a871cbf` (ja), `33fb901076ee8c96c85103ac5e86e70d3b5680cbe72b2899a56fa7279af41a74` (ko), `08156763a3b670bea42b498a082d9b9d0b581d8fab49c9a241cc9e71662c21a3` (zh-CN) and `e77b8019e03019252befcb8094ca8158b775b7b0220b3c9efd7e68f271ff8f32` (zh-TW), equal to the existing bindings and table rows. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding:` for exactly these six paths; the other 102 registered files are byte-identical to the receipt. Earlier increments are retained in full.
+
+Findings. admin-video-review-card.tsx (77,752 → 78,137 bytes, 1,034 → 1,038 lines): in `PickTable`, `passed` now takes `demoPasses = chosen.demo === null || (number(chosen.demo) ?? 0) >= PICK_MIN_DEMO`, so only an explicit `demo: null` on the chosen option, which the server sends when `outline_demo_asked` is false (judge.py `OptionScores.demo: float | None`, `NO_DEMO_CATEGORIES` explainer/story), is exempt; a missing `demo` or a chosen key absent from `options` reads `undefined`, falls to 0 and still fails, as does a score below 0.6. The demo column renders `pickDemoNotAsked` in place of `Score` for a null score only; a numeric or missing score renders through `Score` as before, so a tutorial pick's table is unchanged. The stance and advice thresholds and the `pickBelow` hint condition are otherwise unchanged. Each admin.json adds one key, `videoReviews.pickDemoNotAsked` ("Not asked (explainer)", 「対象外（解説）」, 「해당 없음(해설)」, 「不适用（解说）」, 「不適用（解說）」), beside `pickDemo`; the zh-TW wording matches the server note's `DEMO_NOT_ASKED` 「有示範：不適用（解說）」, and no key is removed or edited. The new test renders a pending outline review with null demos (label shown on both rows, no `pickBelow`) and with a low demo, a missing demo and a low stance (`pickBelow` shown each time). None of the changed lines touches the 600/780-second targets, the 480-second floor, the eight-minute minimum, `target_minutes`, `MIN_EPISODE*`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source hashes, covered state, the explainer 8-20 or drama 1-8 minute ranges, or frame counts; a changed-line scan for duration terms over the six files finds none. No duration correction is required.
+
+Ran: Node v22.22.0, Linux, node_modules installed: `npm run lint:web` (exit 0), `npm run check:i18n` (5 locales across 25 namespaces, exit 0), `npm run typecheck:web` (exit 0), and in apps/web `npx vitest run components/admin-video-pick-table.test.tsx components/admin-video-reviews.test.tsx components/admin-video-review-card.test.tsx` (3 files, 95 passed). The CLI check and the long-form receipt tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims: this is a six-file incremental source duration review. It does not re-review the other 102 bound files, the unbound files the commit changes, the label's "(explainer)" wording for a story-category video (the server's own note uses the same word for both), the full `npm run test:web` suite, or the page's behaviour on the host, and it does not accept media, paid production, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the outline pick demonstration exemption increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the outline pick table demonstration label increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5574,16 +5587,16 @@ These 108 bindings describe the current reviewed bytes after the outline pick de
 | `apps/api/tests/test_video_explainer_duration.py` | `45bdcbe9ec7c7c47e437b6d65ec967801e8553acbbf1c8285d734f8a7242eddc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac` |
-| `apps/web/components/admin-video-review-card.tsx` | `85d206ee1773f585d2478d82c84df52992e0c1e5cc34d2b099677ef40cadcb0e` |
+| `apps/web/components/admin-video-review-card.tsx` | `6512828248128785c6eec31ce9caa755077bfdf45372355b64a4b2331be4affa` |
 | `apps/web/components/admin-video-reviews.test.tsx` | `46a04ad482d528ab576bf9411bb5f381c7600d982a709c3648c0368f3dda7b75` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `c64bfba40979fef3f8291ae2582a8cc2bb55644d4be0655ba75b39f767677d8a` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `7ebfb019378f34539c556be4b3d128dd0f43020328f4fd15da52c5a2b0eace15` |
-| `apps/web/messages/ja/admin.json` | `5e4963e40d87b04a12965071c5eac36a9a2121b89e158f3afe4e19926a871cbf` |
-| `apps/web/messages/ko/admin.json` | `33fb901076ee8c96c85103ac5e86e70d3b5680cbe72b2899a56fa7279af41a74` |
-| `apps/web/messages/zh-CN/admin.json` | `08156763a3b670bea42b498a082d9b9d0b581d8fab49c9a241cc9e71662c21a3` |
-| `apps/web/messages/zh-TW/admin.json` | `e77b8019e03019252befcb8094ca8158b775b7b0220b3c9efd7e68f271ff8f32` |
+| `apps/web/messages/en/admin.json` | `ae2baf4651e80b5fdb300eec52d40343606f79236bbbd52504495b284bac7485` |
+| `apps/web/messages/ja/admin.json` | `f16647f6503b202deb7b131a9a2b3f95b09ea0e116e88e1b7dbff11c5e1b02aa` |
+| `apps/web/messages/ko/admin.json` | `6ee1fab10b931ad8ee7a08eed667f13f91c18b79d763445e631cc75dfdc1eb8b` |
+| `apps/web/messages/zh-CN/admin.json` | `f072d3db0e7872d0bad08548e41e7d8f440df12ada31d7ce5bbfac3bfd42ba2e` |
+| `apps/web/messages/zh-TW/admin.json` | `3a285347b26db3a34c55f3a3bae558319208f4f649285eccf00378765dce38f9` |
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
