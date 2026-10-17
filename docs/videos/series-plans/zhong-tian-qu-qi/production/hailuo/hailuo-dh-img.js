@@ -41,7 +41,10 @@
       const input = this.input(); input.files = dt.files; input.dispatchEvent(new Event("change", { bubbles: true }));
       return JSON.stringify({ st, refs: __yz.refs() });
     },
-    // One image. The new card is matched by its prompt text (the feed also shows video cards) and
+    // Full prompt of a card, from its React data (the card text is cut short on screen, and shots of
+    // one set share their first sentence, so the visible text cannot tell them apart).
+    desc(el) { let f = el && Object.entries(el).find(([k]) => k.startsWith("__reactFiber"))?.[1]; let bf = null; for (let k = 0; f && k < 8 && !bf; k++) { bf = f.memoizedProps?.batchFeed; f = f.return; } return (bf?.feeds?.[0]?.modelParameter?.imageParameter?.desc || "").replace(/\s+/g, " "); },
+    // One image. The new card is matched by its full prompt (the feed also shows video cards) and
     // waited for 40 s, since a hidden pane draws new cards late and an early retry buys a duplicate.
     async go(label, prompt, n, aspect) {
       if (Object.values(this.map()).includes(label)) return "already " + label;
@@ -51,11 +54,11 @@
       while ((__yz.bar() !== want || __yz.refs() !== String(n)) && performance.now() - t < 90000) await sleep(700);
       const chip = __yz.chip(); const bar = __yz.bar();
       if (chip.length !== 1 || chip[0] !== aspect || bar !== want || __yz.refs() !== String(n)) return "abort " + chip + " | " + bar + " | " + __yz.refs();
-      const before = __yz.groups(); const key = prompt.replace(/\s+/g, " ").slice(0, 60);
+      const before = __yz.groups(); const full = prompt.replace(/\s+/g, " ").slice(0, 400);
       __yz.setPrompt(prompt); await sleep(1500);
       [...document.querySelectorAll("button")].find((x) => x.innerText.trim() === "創建").click();
       let fresh = []; const t2 = performance.now();
-      while (!fresh.length && performance.now() - t2 < 40000) { await sleep(700); fresh = __yz.groups().filter((g) => !before.includes(g) && (document.getElementById("media-group-" + g)?.innerText || "").replace(/\s+/g, " ").includes(key)); }
+      while (!fresh.length && performance.now() - t2 < 40000) { await sleep(700); fresh = __yz.groups().filter((g) => !before.includes(g) && __zt.desc(document.getElementById("media-group-" + g)).startsWith(full)); }
       if (fresh.length) { const mm = this.map(); mm[fresh[0]] = label; localStorage.ztmap = JSON.stringify(mm); }
       return JSON.stringify({ label, fresh });
     },
