@@ -2,7 +2,7 @@
 
 《種田娶妻打天下》第 1–20 集（2026-10-16～10-18）在 Claude 桌面版內建瀏覽器、窗格隱藏的情況下，用頁面裡的驅動程式一次送一整批首格與片段，每集 30–47 鏡、每鏡一張首格加一支 4 秒片段，約 2,300–3,200 點。這份寫**換一個帳號、換一個 agent（Claude 或 Codex）接手時，從零開始怎麼做、哪些坑已經踩過**。一鏡一鏡手動送、帶收據與變更單的長片做法在 `hailuo-episode-operations.md`；兩份不衝突，短劇用這份。
 
-工具與工作清單都在 `docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/`（下稱 `H/`），本機腳本在 `H/local/`，系列細節與歷史在 `H/README.md`。素材在 repo 外：`<VIDEO_WORKDIR>/zhong-tian-qu-qi-eNNN-dh/`（`VIDEO_WORKDIR` 預設 `~/mokaair-work/videos`），收據 `<VIDEO_WORKDIR>/zhong-tian-qu-qi-receipts.jsonl`。
+工具與工作清單都在 `docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/`（下稱 `H/`），本機腳本在 `H/local/`，系列細節與歷史在 `H/README.md`。素材在 repo 外：`<VIDEO_WORKDIR>/zhong-tian-qu-qi-eNNN-dh/`（`VIDEO_WORKDIR`，沒設時用 `H/local/rec.sh` 裡寫的預設），收據 `<VIDEO_WORKDIR>/zhong-tian-qu-qi-receipts.jsonl`。
 
 ## 一、站主定下的規則（每集都適用）
 
@@ -41,7 +41,7 @@
 
 1. **分鏡**：一集派一個子代理平行寫。提示樣板與檢查指令見 `H/README.md`「第 16–20 集」一節：照 e015 的五個檔案結構，固定的場景片語，鉤子標成【鉤子N】，三個檢查（`lint`、`drama_craft_check.mjs`、`shot_reading.mjs --route hailuo`）都要過。新角色先加進 `production/cast.json`（英文外貌與 Gemini 聲音，挑還沒用過的聲音），也要加進 `gen-dh.mjs` 的 `DH`、`EN`、`NAMED`。新場景在 `gen-dh.mjs` 的 `SET` 加一條片語對應。
 2. **參考圖**：新角色定妝照與新場景寫成 `refs-dh-jobs-N.json`，在圖片頁 `__zt.go(id + '-t1', prompt, 0, aspect)` 一張一張送。
-3. **工作清單**：`node H/gen-dh.mjs docs/videos/zhong-tian-qu-qi-eNNN/video.json H/local/empty-lock.json N H/ff-dh-eNNN.json H/clips-dh-eNNN.json`。檢查每張首格都配到一張 `dh-set-*`；沒配到的表示提示詞沒用固定場景片語。
+3. **工作清單**：`node H/gen-dh.mjs docs/videos/zhong-tian-qu-qi-e016/video.json H/local/empty-lock.json 16 H/ff-dh-e016.json H/clips-dh-e016.json（第 16 集；別集照改數字）`。檢查每張首格都配到一張 `dh-set-*`；沒配到的表示提示詞沒用固定場景片語。
 4. **錄音**：`bash H/local/rec.sh NNN`（Gemini 聲音，要先 `node tools/video/cli.mjs login`）。
 5. **配樂表**：`H/edit-dh-eNNN.json`，可照上一集複製。音效名稱來自 `sfx_dirs` 的音效庫，另有合成的 `river`、`rain`、`underwater`、`ding`。
 6. **commit、push**，把 `localStorage.ztbase` 換成新的 sha。
