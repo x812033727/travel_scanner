@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_FOUR_SOURCE_POINTERS_ONLY",
+  "parent_candidate_manifest_sha256": "1838bc925f6647776803129c177c286ac0493f8a0aaeee8ecc1aae8d02364044",
+  "changes": [
+    {
+      "id": "e1",
+      "chapter": "engine",
+      "scene": "engine-s041",
+      "before_source_index": 1,
+      "after_source_index": 0,
+      "unchanged_row_fact_index": 0,
+      "unchanged_verdict": "UNCHECKED"
+    },
+    {
+      "id": "h5",
+      "chapter": "hook",
+      "scene": "hook-s004",
+      "before_source_index": 2,
+      "after_source_index": 0,
+      "unchanged_row_fact_index": 3,
+      "unchanged_verdict": "UNCHECKED"
+    },
+    {
+      "id": "i1",
+      "chapter": "idea",
+      "scene": "idea-s024",
+      "before_source_index": 2,
+      "after_source_index": 0,
+      "unchanged_row_fact_index": 3,
+      "unchanged_verdict": "UNCHECKED"
+    },
+    {
+      "id": "i5",
+      "chapter": "idea",
+      "scene": "idea-s031",
+      "before_source_index": 2,
+      "after_source_index": 0,
+      "unchanged_row_fact_index": 3,
+      "unchanged_verdict": "UNCHECKED"
+    }
+  ],
+  "changed_files": {
+    "claim-coverage.json": {
+      "before_sha256": "1584a2391311ab0cd91a382b33236965cc6dd53d551b4410a824fb466726cf40",
+      "after_sha256": "634af45cf3a43e84146a6f290933e34d481bdc2a1959271bcd629da705b2e662"
+    },
+    "remapped-chapters/engine.json": {
+      "before_sha256": "78886e8d084fc8be3cf1c3421854d63dbd718877254d0c7cb167b719816fd63a",
+      "after_sha256": "cca8c696d25aa58a60e318945c4bf367d2d890052b1bd6fcef432473b63e866f"
+    },
+    "remapped-chapters/hook.json": {
+      "before_sha256": "4f9ffdf14e1ef48c32a4981158642f4c5a566fc028e036b43d2ba4bcedf3587c",
+      "after_sha256": "a010545967b656c5ed43027b65e8e6ff8878790258bf194382a2816d71c699b3"
+    },
+    "remapped-chapters/idea.json": {
+      "before_sha256": "9afd40486ba804e38e8aa12b11a298275eb96cc4a651671baf46925516c15301",
+      "after_sha256": "a2146a09a266d4dc851a1d74a2366a1421089007ea462aa104c8f9a60e6a18a0"
+    }
+  },
+  "row_sha256_before": "21122b7db5f97957ca89399b249a02e47e0b4465003e3653efbbf422b6043e9d",
+  "row_sha256_after": "21122b7db5f97957ca89399b249a02e47e0b4465003e3653efbbf422b6043e9d",
+  "review_sha256_before": "06012b65e0e3a9b911dda1432c9de61f73f01f28a91fb5b23a7fad0354e794ed",
+  "review_sha256_after": "06012b65e0e3a9b911dda1432c9de61f73f01f28a91fb5b23a7fad0354e794ed",
+  "canonical_story_sha256_before": "da692f3833f3d5448e3ec7603f0549a4f9b1afe2828c00aa8ee657618584a5e1",
+  "canonical_story_sha256_after": "da692f3833f3d5448e3ec7603f0549a4f9b1afe2828c00aa8ee657618584a5e1"
+}

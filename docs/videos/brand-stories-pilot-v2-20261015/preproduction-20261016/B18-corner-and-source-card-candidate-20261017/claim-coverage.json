@@ -1,0 +1,834 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_PROPOSED_CORNER_AND_SOURCE_CARD_HOLD",
+  "parent_manifest_sha256": "1016d3de91236af487eec891e256f43214d71a06ba806409084831f47584e198",
+  "original_storyboard_fact_count": 13,
+  "proposed_row_fact_count": 10,
+  "scene_claim_count": 65,
+  "row_to_storyboard_facts": [
+    {
+      "row_fact_index": 0,
+      "storyboard_fact_indices": [
+        0,
+        6
+      ],
+      "row_sources": [
+        0,
+        1,
+        2
+      ],
+      "scene_claim_ids": [
+        "e1",
+        "e2",
+        "e3",
+        "h4"
+      ]
+    },
+    {
+      "row_fact_index": 1,
+      "storyboard_fact_indices": [
+        1
+      ],
+      "row_sources": [
+        0,
+        1,
+        2
+      ],
+      "scene_claim_ids": [
+        "h1",
+        "h2",
+        "o10"
+      ]
+    },
+    {
+      "row_fact_index": 2,
+      "storyboard_fact_indices": [
+        2
+      ],
+      "row_sources": [
+        0,
+        2
+      ],
+      "scene_claim_ids": [
+        "h3",
+        "o3",
+        "o9"
+      ]
+    },
+    {
+      "row_fact_index": 3,
+      "storyboard_fact_indices": [
+        3
+      ],
+      "row_sources": [
+        0,
+        2
+      ],
+      "scene_claim_ids": [
+        "h5",
+        "i1",
+        "i3",
+        "i4",
+        "i5",
+        "i6",
+        "i7",
+        "n7"
+      ]
+    },
+    {
+      "row_fact_index": 4,
+      "storyboard_fact_indices": [
+        4,
+        5
+      ],
+      "row_sources": [
+        3
+      ],
+      "scene_claim_ids": [
+        "h7",
+        "t7",
+        "t8"
+      ]
+    },
+    {
+      "row_fact_index": 5,
+      "storyboard_fact_indices": [
+        5
+      ],
+      "row_sources": [
+        0
+      ],
+      "scene_claim_ids": [
+        "e8",
+        "t9"
+      ],
+      "note": "J-Net21 warnings and affiliate independence; the disputed 1978 year stays in caveats, not narration."
+    },
+    {
+      "row_fact_index": 6,
+      "storyboard_fact_indices": [
+        7
+      ],
+      "row_sources": [
+        0,
+        2
+      ],
+      "scene_claim_ids": [
+        "h6",
+        "t1",
+        "t2",
+        "t4"
+      ]
+    },
+    {
+      "row_fact_index": 7,
+      "storyboard_fact_indices": [
+        8
+      ],
+      "row_sources": [
+        0,
+        1
+      ],
+      "scene_claim_ids": [
+        "n2",
+        "n3",
+        "n4",
+        "n5",
+        "t18"
+      ]
+    },
+    {
+      "row_fact_index": 8,
+      "storyboard_fact_indices": [
+        10
+      ],
+      "row_sources": [
+        4
+      ],
+      "scene_claim_ids": [
+        "t12",
+        "t13"
+      ]
+    },
+    {
+      "row_fact_index": 9,
+      "storyboard_fact_indices": [
+        12
+      ],
+      "row_sources": [
+        2
+      ],
+      "scene_claim_ids": [
+        "t10",
+        "t11",
+        "t16",
+        "t17",
+        "t5",
+        "t6"
+      ]
+    }
+  ],
+  "unspoken_storyboard_plan_facts_not_in_row": [
+    {
+      "fact_index": 9,
+      "reason": "2022/2023 market figures are background and absent from final narration; source[0] remains, no current-market claim."
+    },
+    {
+      "fact_index": 11,
+      "reason": "1971/1974 tea-device discrepancy is a caveat, not a final narration claim; sources[4]/[5] remain."
+    }
+  ],
+  "scene_claims": [
+    {
+      "id": "h1",
+      "scene": "hook-s001",
+      "claim": "一九四八年，大阪府吹田的一座啤酒工廠",
+      "source_index": 0,
+      "storyboard_fact_index": 1,
+      "proposed_row_fact_index": 1,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "h2",
+      "scene": "hook-s002",
+      "claim": "壽司店老闆白石義明",
+      "source_index": 0,
+      "storyboard_fact_index": 1,
+      "proposed_row_fact_index": 1,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "h3",
+      "scene": "hook-s003",
+      "claim": "靠師傅遞盤的難題",
+      "source_index": 0,
+      "storyboard_fact_index": 2,
+      "proposed_row_fact_index": 2,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "h4",
+      "scene": "hook-s004",
+      "claim": "一九五八年第一家店要開門",
+      "source_index": 0,
+      "storyboard_fact_index": 0,
+      "proposed_row_fact_index": 0,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "h5",
+      "scene": "hook-s004",
+      "claim": "轉角的輸送帶壅塞，盤子掉落",
+      "source_index": 0,
+      "storyboard_fact_index": 3,
+      "proposed_row_fact_index": 3,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "h6",
+      "scene": "hook-s005",
+      "claim": "一九七〇年，這種吃法進了大阪萬博會場",
+      "source_index": 2,
+      "storyboard_fact_index": 7,
+      "proposed_row_fact_index": 6,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "h7",
+      "scene": "hook-s006",
+      "claim": "一項保護餐台的權利後來到期",
+      "source_index": 3,
+      "storyboard_fact_index": 4,
+      "proposed_row_fact_index": 4,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "o1",
+      "scene": "origin-s008",
+      "claim": "一九四七年，白石從愛媛搬到大阪布施，開了一間料理店",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "o2",
+      "scene": "origin-s009",
+      "claim": "附近工廠的年輕工人和學生",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "o3",
+      "scene": "origin-s010",
+      "claim": "一盤四貫，二十日圓",
+      "source_index": 0,
+      "storyboard_fact_index": 2,
+      "proposed_row_fact_index": 2,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "o4",
+      "scene": "origin-s011",
+      "claim": "當年壽司常是節慶才吃的料理",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "o5",
+      "scene": "origin-s011",
+      "claim": "白石把價錢寫清楚",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "o6",
+      "scene": "origin-s012",
+      "claim": "比別家便宜約三成",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "o7",
+      "scene": "origin-s012",
+      "claim": "客人多了起來",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "o8",
+      "scene": "origin-s015",
+      "claim": "發明協會記載，湧進的訂單已超過師傅能握壽司的量",
+      "source_index": 2,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "o9",
+      "scene": "origin-s016",
+      "claim": "年輕師傅工作太累，沒多久就離開",
+      "source_index": 0,
+      "storyboard_fact_index": 2,
+      "proposed_row_fact_index": 2,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "o10",
+      "scene": "origin-s020",
+      "claim": "開場那條會送瓶子的路",
+      "source_index": 0,
+      "storyboard_fact_index": 1,
+      "proposed_row_fact_index": 1,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "o11",
+      "scene": "origin-s020",
+      "claim": "一盤盤壽司沿著吧台繞一圈",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "i1",
+      "scene": "idea-s024",
+      "claim": "一到轉角，帶子擠在一起，盤子就可能掉下來",
+      "source_index": 0,
+      "storyboard_fact_index": 3,
+      "proposed_row_fact_index": 3,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "i2",
+      "scene": "idea-s025",
+      "claim": "白石找附近小工廠的經營者",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "i3",
+      "scene": "idea-s028",
+      "claim": "白石看見孩子把撲克牌攤成扇形",
+      "source_index": 0,
+      "storyboard_fact_index": 3,
+      "proposed_row_fact_index": 3,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "i4",
+      "scene": "idea-s029",
+      "claim": "寫的是他攤開一疊名片",
+      "source_index": 2,
+      "storyboard_fact_index": 3,
+      "proposed_row_fact_index": 3,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "i5",
+      "scene": "idea-s031",
+      "claim": "最後用來轉彎的，是一片片扇形的板子",
+      "source_index": 0,
+      "storyboard_fact_index": 3,
+      "proposed_row_fact_index": 3,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "i6",
+      "scene": "idea-s032",
+      "claim": "這種板子後來被叫作「魚鱗板」",
+      "source_index": 0,
+      "storyboard_fact_index": 3,
+      "proposed_row_fact_index": 3,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "i7",
+      "scene": "idea-s033",
+      "claim": "前後約十年",
+      "source_index": 0,
+      "storyboard_fact_index": 3,
+      "proposed_row_fact_index": 3,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "i8",
+      "scene": "idea-s034",
+      "claim": "一九五七年，白石與附近工廠做出「輸送帶旋轉式餐台」試作機",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "i9",
+      "scene": "idea-s035",
+      "claim": "選不易生鏽的材料",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "i10",
+      "scene": "idea-s037",
+      "claim": "兒子博志回憶，父親預先付材料費給協作工廠",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "i11",
+      "scene": "idea-s038",
+      "claim": "他認為這或許讓對方願意幫忙",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "e1",
+      "scene": "engine-s041",
+      "claim": "一九五八年四月，近鐵布施站附近，「廻る元禄寿司」第一家店開門",
+      "source_index": 0,
+      "storyboard_fact_index": 0,
+      "proposed_row_fact_index": 0,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "e2",
+      "scene": "engine-s042",
+      "claim": "店大約二十坪，只有吧台座位",
+      "source_index": 2,
+      "storyboard_fact_index": 6,
+      "proposed_row_fact_index": 0,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "e3",
+      "scene": "engine-s044",
+      "claim": "一盤四貫、五十日圓",
+      "source_index": 2,
+      "storyboard_fact_index": 6,
+      "proposed_row_fact_index": 0,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "e4",
+      "scene": "engine-s046",
+      "claim": "從店外還看得見輸送帶在轉",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "e5",
+      "scene": "engine-s048",
+      "claim": "元祿壽司後來也開進大阪道頓堀",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "e6",
+      "scene": "engine-s049",
+      "claim": "一九六二年，輸送帶系統以白石個人名義登記為「實用新案」",
+      "source_index": 2,
+      "storyboard_fact_index": 4,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "e7",
+      "scene": "engine-s050",
+      "claim": "登記的日文名稱，直譯是「附輸送帶的料理台」",
+      "source_index": 2,
+      "storyboard_fact_index": 4,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "e8",
+      "scene": "engine-s052",
+      "claim": "在東京和大阪聘律師及專利代理人，發出警告",
+      "source_index": 0,
+      "storyboard_fact_index": 5,
+      "proposed_row_fact_index": 5,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "e9",
+      "scene": "engine-s053",
+      "claim": "幾乎就是提到元祿壽司",
+      "source_index": 2,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "e10",
+      "scene": "engine-s056",
+      "claim": "地方商工會議所邀請東大阪業者",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "e11",
+      "scene": "engine-s057",
+      "claim": "會場單軌列車西口站前",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "e12",
+      "scene": "engine-s059",
+      "claim": "把三百日圓的握壽司套組裝進壽司桶",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "e13",
+      "scene": "engine-s061",
+      "claim": "博志對萬博店的回憶：蝦要剝，海苔要剪",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "t1",
+      "scene": "turn-s063",
+      "claim": "萬博出店受到表彰",
+      "source_index": 2,
+      "storyboard_fact_index": 7,
+      "proposed_row_fact_index": 6,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t2",
+      "scene": "turn-s063",
+      "claim": "發明協會說，迴轉壽司因此在全國打開知名度",
+      "source_index": 2,
+      "storyboard_fact_index": 7,
+      "proposed_row_fact_index": 6,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t3",
+      "scene": "turn-s065",
+      "claim": "會場迎來外國客人",
+      "source_index": 0,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "t4",
+      "scene": "turn-s068",
+      "claim": "約兩百四十家",
+      "source_index": 2,
+      "storyboard_fact_index": 7,
+      "proposed_row_fact_index": 6,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t5",
+      "scene": "turn-s071",
+      "claim": "有新業者讓師傅或員工在後場做壽司",
+      "source_index": 2,
+      "storyboard_fact_index": 12,
+      "proposed_row_fact_index": 9,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t6",
+      "scene": "turn-s072",
+      "claim": "做好的盤子從後場放上輸送帶",
+      "source_index": 2,
+      "storyboard_fact_index": 12,
+      "proposed_row_fact_index": 9,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t7",
+      "scene": "turn-s078",
+      "claim": "這項實用新案在一九七二年期滿",
+      "source_index": 3,
+      "storyboard_fact_index": 4,
+      "proposed_row_fact_index": 4,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t8",
+      "scene": "turn-s079",
+      "claim": "後來已有許多與提告的元祿壽司公司無關的業者，經營輸送帶壽司店",
+      "source_index": 3,
+      "storyboard_fact_index": 5,
+      "proposed_row_fact_index": 4,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t9",
+      "scene": "turn-s080",
+      "claim": "元祿的加盟店後來也有人獨立，換上自己的招牌",
+      "source_index": 0,
+      "storyboard_fact_index": 5,
+      "proposed_row_fact_index": 5,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t10",
+      "scene": "turn-s081",
+      "claim": "新業者另行設計送盤路線",
+      "source_index": 2,
+      "storyboard_fact_index": 12,
+      "proposed_row_fact_index": 9,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t11",
+      "scene": "turn-s073",
+      "claim": "有新店把繞吧台的餐台改成後場到用餐區的直線輸送帶",
+      "source_index": 2,
+      "storyboard_fact_index": 12,
+      "proposed_row_fact_index": 9,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t12",
+      "scene": "turn-s086",
+      "claim": "一九八〇年開始販售供大型店使用的旁通裝置",
+      "source_index": 4,
+      "storyboard_fact_index": 10,
+      "proposed_row_fact_index": 8,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t13",
+      "scene": "turn-s090",
+      "claim": "一九八六年已有ㄇ字型輸送帶的店",
+      "source_index": 4,
+      "storyboard_fact_index": 10,
+      "proposed_row_fact_index": 8,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t14",
+      "scene": "turn-s089",
+      "claim": "八〇年代中期，郊區出現面積更大的迴轉壽司店",
+      "source_index": 2,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "t15",
+      "scene": "turn-s091",
+      "claim": "八〇年代後期，郊區大店也成了家人一起吃飯的地方",
+      "source_index": 2,
+      "storyboard_fact_index": null,
+      "proposed_row_fact_index": null,
+      "verdict": "UNCHECKED",
+      "coverage": "direct_scene_source_only"
+    },
+    {
+      "id": "t16",
+      "scene": "turn-s075",
+      "claim": "直線輸送帶把後場做好的盤子送到用餐區客人面前",
+      "source_index": 2,
+      "storyboard_fact_index": 12,
+      "proposed_row_fact_index": 9,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t17",
+      "scene": "turn-s084",
+      "claim": "一些直線輸送帶店不必保留白石的繞吧台轉角",
+      "source_index": 2,
+      "storyboard_fact_index": 12,
+      "proposed_row_fact_index": 9,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "t18",
+      "scene": "turn-s092",
+      "claim": "元祿壽司自己的店後來仍有一台舊輸送機在使用",
+      "source_index": 1,
+      "storyboard_fact_index": 8,
+      "proposed_row_fact_index": 7,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "n2",
+      "scene": "now-s093",
+      "claim": "該輸送機製於一九八五年，不是白石開第一家店時的原機",
+      "source_index": 1,
+      "storyboard_fact_index": 8,
+      "proposed_row_fact_index": 7,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "n3",
+      "scene": "now-s095",
+      "claim": "二〇二一年這台輸送機仍在元祿壽司堺東店使用",
+      "source_index": 1,
+      "storyboard_fact_index": 8,
+      "proposed_row_fact_index": 7,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "n4",
+      "scene": "now-s095",
+      "claim": "日本機械學會把這台輸送機列入第一百一十二號機械遺產",
+      "source_index": 1,
+      "storyboard_fact_index": 8,
+      "proposed_row_fact_index": 7,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "n5",
+      "scene": "now-s096",
+      "claim": "元祿產業另外保存的早期魚鱗板板片也列在第112號內",
+      "source_index": 1,
+      "storyboard_fact_index": 8,
+      "proposed_row_fact_index": 7,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    },
+    {
+      "id": "n7",
+      "scene": "now-s098",
+      "claim": "早期扇形魚鱗板片解決盤子過轉角的難題",
+      "source_index": 0,
+      "storyboard_fact_index": 3,
+      "proposed_row_fact_index": 3,
+      "verdict": "UNCHECKED",
+      "coverage": "representative_row_fact_and_direct_scene_source"
+    }
+  ],
+  "parent_candidate_manifest_sha256": "88ce01e6108927a6d22a59d14196719139010bd086478dcb2a62d1c27bf5eba1"
+}
