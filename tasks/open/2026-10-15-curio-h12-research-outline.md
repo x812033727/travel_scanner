@@ -199,3 +199,8 @@ TTS 已完成 89 請求、1,925 計費字元，正文時間軸 `14168/30 = 472.2
 - 唯讀 `GET /api/video/reviews/curio-h12` 確認最新 `publish`／`languages` 卡仍以原 ID、原 SHA 核准；後台目前為 `stage=on YouTube`、`youtube_video_id=QJVtVFecm7I`、`youtube_publish_at=null`。`youtube_sync` 在 `2026-10-17T04:41:15.409775Z` 完成，請求明載 `mode=upload`、`visibility=private`、`accept_private_lock=true`。這是網站 API 上傳紀錄，與先前站主表示會從 Studio 網站上傳的計畫不同；不可寫成 Studio 網站上傳已完成。細節見 `docs/videos/curio-h12/delivery-package-20261017.md`。
 - 後台 `details`、四語字幕及主縮圖步驟為 `done`，三語配音為按鈕式 `uploaded`。仍待站主確認同一 ID `QJVtVFecm7I` 的四語音軌／字幕實際試播、語言專屬縮圖顯示，以及 Studio 可見度是否真的鎖私人；尚未排程或公開。
 - 本機 `video.json.youtube.video_id` 仍空，`status --slug curio-h12` 暫列 `[ ] on YouTube`。已有 `2026-10-17-sync-manually-uploaded-video-ids-into` 任務處理本機 ID 同步；本次未動核准稿件，也沒有新增付費或代替站主操作 Studio。
+
+## 2026-10-17 H12 Studio 唯讀稽核
+
+- Studio 詳細資訊頁顯示現有 `QJVtVFecm7I` 為私人；語言頁顯示日／英／韓各一版字幕和標題說明已發布，但音訊與專屬縮圖欄均為 `—`。截圖的本機路徑與 SHA-256 見 `docs/videos/curio-h12/studio-audit-20261017.md`；截圖未提交。
+- 後台 `uploaded` 是按鈕紀錄，不能證明 Studio 的三語配音已發布或四語可播放。尚未試播，也沒有測定私人影片能否變更可見度。等待站主決定補現有 ID 或改用 Studio 網站建立新私人影片；本次沒有操作 Studio、付費請求或後台寫入。H12 保持進行中。

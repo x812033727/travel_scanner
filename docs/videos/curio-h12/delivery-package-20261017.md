@@ -24,6 +24,8 @@
 - 同一筆同步的 `details`、繁中／英／日／韓 `captions` 及主縮圖步驟均記為 `done`。英／日／韓 `dub` 各記為 `uploaded`，但這是後台按鈕狀態，不能獨立證明 Studio 音軌可播放；專屬語言縮圖也尚無 Studio 顯示證據。仍待站主確認試播的是同一影片 `QJVtVFecm7I`，逐一切換四語音軌及字幕，檢查英／日／韓專屬縮圖與可見度選項。本次沒有代傳、重傳、排程或公開。
 - 本機 `docs/videos/curio-h12/video.json` 的 `youtube.video_id` 仍為 `null`，因此本機 `status --slug curio-h12` 暫列 `[ ] on YouTube`。這是本機 ID 同步缺口，不推翻後台持久化 ID；已有獨立任務追蹤手動影片 ID 同步，這次不改已核准的 `video.json`。
 
+2026-10-17 後續 Studio 唯讀稽核發現三語音訊與專屬縮圖欄均未顯示已發布項目；見 [Studio 稽核收據](studio-audit-20261017.md)。上文的後台 `uploaded` 狀態仍保留為當時讀回，不代表 Studio 已有可播放音軌。
+
 ## 費用與範圍
 
 本次字幕、打包、送審沒有付費供應商呼叫；沒有改任何三語譯文、音檔或已核准繁中成片。共用估算停手帳本讀回 H12 US$6.435／8.50、五集 US$28.4295／41.50，無 active reservation；此為保守估算，非供應商發票。
