@@ -1,11 +1,11 @@
 ---
 id: 2026-10-10-curio-topic-bank-checks
 title: Curio topic bank: independent re-check of H02-H07, then H08 and the other four axes in small batches
-status: in-progress
+status: open
 priority: P3
 area: docs
-owner: claude-fable-curio-topics
-claimed_at: 2026-10-11T17:39:46Z
+owner:
+claimed_at:
 created_at: 2026-10-10T14:38:30Z
 completed_at:
 branch: claude/curio-topic-bank-second-batch
@@ -27,7 +27,7 @@ scope:
 - [ ] H08 研究加覆核。
 - [ ] 第二批新題（2026-10-11 站主「增加題目並查核」「能開幾個題目就幾個，無上限」）：95 張新卡 H09–H28、M09–M26、P09–P25、U09–U29、L09–L27 寫進 `topics.json`（candidate，題庫共 135 題），每題一個研究代理加一個獨立覆核代理；通過的改 `checked` 並換上覆核後的 title／hook／finding，被否決的在 `note` 寫處置。
 - [ ] M、P、U、L 四軸：站主或下一季的排程決定先做哪一軸；每批 4–8 個代理，批與批之間看一次用量。
-- [ ] `topic-checks/README.md` 的狀態表與實際一致。
+- [x] `topic-checks/README.md` 的狀態表與實際一致。（2026-10-17 收尾時重產）
 
 ## Steps
 
@@ -44,6 +44,7 @@ scope:
 
 ## Notes
 
+- 2026-10-17 收尾（claude-fable-curio-topics，站主說「準備收尾」）：題庫 188 題，52 題 checked（H02–H07、H09–H17、M09–M18、P09–P13、P15–P17、U09–U18、L09–L18），全部 ADOPT_WITH_CHANGES，沒有一題被否決；拍成集 3 題（H01、U02、L08）；其餘 133 題仍是 candidate。P18 的研究中斷在第二節，檔頭標了「未完成」，要整題重跑；P14、L15 從沒派過研究。H18 以後、M19 以後、P19 以後、U19 以後、L19 以後與 H08、M01–M08、P01–P08、U01／U03–U08、L01–L07 都還沒查。接手的人照 `topic-checks/README.md` 的狀態表往下做，派工提示的寫法看已完成各題檔頭的「處置」與文末〈獨立覆核〉，每題研究約 25–60 萬 token、覆核約 25–60 萬 token。帳號限制：同時 18–20 個代理約 2.5–4 小時就撞到 session 上限（撞了三次），之後還撞到一次週上限（10-16 重設）；建議同時不超過 10 個。各檔〈要站主決定的事〉列了每題的圖片授權與開場轉折選擇，開拍前要逐題過一遍。認領在這次收尾時釋出。
 - 2026-10-12 第三次撞到帳號上限（claude-fable-curio-topics）：05:45 起的那個時段同時跑 18–20 個 Opus 代理，約 09:50 再次全部 429（resets 10:20 UTC），17 個代理死在半路（14 個覆核、2 個研究，M18 的研究在中斷前寫完）。到這裡為止題庫已有 37 題 checked（H02–H07、H09–H15、M09–M15、P09–P13、P15、U09–U13、L09–L14）；研究完成等覆核 15 題（H16、H17、M16、M17、M18、P16、P17、U14–U18、L16–L18）；P18 只寫了兩節、H18 沒留檔。三次中斷的量都差不多：同時 18–20 個代理約跑 2.5 到 4 小時就撞到；要穩定過夜，同時數要壓到 10 以下，或等站主開更高的額度。
 - 2026-10-12 第二次撞到帳號 session 上限（claude-fable-curio-topics）：Opus 5.5 的代理也算同一個帳號額度。2026-10-11 深夜 20 個 Opus 代理同時跑了約兩小時後全部被 429 中斷（resets 02:40 UTC），18 個代理（11 個覆核、7 個研究）死在半路；只有 P11 的覆核在中斷前寫完。研究檔都是逐節寫的，P13 與 H14 的檔案雖然沒回報但八節齊全，直接進覆核；U14、H15、M15、P15、U15 沒留下檔案，從頭重跑。中斷前已完成並寫回題庫的：M10、L11、U11、M12、U12（加 P11 共 21 題 checked）。教訓：帳號上限是總量不是併發數，併發開到 20 只是讓它更早撞到、死得更多；之後同時最多 13 個覆核加 5 個研究，新的一批等上一批收完再開。另外 Agent 工具本身有 20 個併發上限（CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS），第 21 個會被拒。
 - 2026-10-11 站主：「下批可派 opus5.5」——第五批起的研究代理（H13、M13、P13、U13、L13）與之後的覆核代理改用 Opus 5.5，避開 Fable 的 session 用量上限；前四批（H09–H12、M09–M12、P09–P12、U09–U12、L09–L12）的研究與覆核是 Fable 5.1 做的。
