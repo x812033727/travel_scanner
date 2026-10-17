@@ -181,3 +181,10 @@ TTS 已完成 89 請求、1,925 計費字元，正文時間軸 `14168/30 = 472.2
 - 三語 `check-audio` 均完成 93／93：英 12、日 27、韓 20 句自動旗標。英語 Gemini／離線兩套均疑第 `9jra` 句 them／him，待站主回答；日語優先 `cuxc`、`ds8v`、`dvmg`、`2d4b`、`cbd8`／`i3cg`、`wpvq`，待站主試聽。韓語 20 旗標的逐句頁與離線複核已整理，站主對韓語 93 句試聽問題回覆原文「OK」，記為韓語聽感接受、不重錄；原旗標仍保留。完整分流見 `i18n-audio-qa-en-1.md`、`i18n-audio-qa-ja-held.md`、`i18n-audio-qa-ja-1.md`、`i18n-audio-qa-ko-1.md`。
 - 日語前次 `s4hn` 轉寫回應不明，後來按站主逐筆授權受控續跑，`s4hn`／`fgbf`／`ey9a` 各一次成功、journal 已清空；可能重複計費按最壞情況 US$0.20 保守計入。外部共享帳本在本次交接時 H12 估算 US$6.435／8.50，其中新增多語 US$2.20／2.50；五集估算 US$28.4295／41.50。供應商發票仍不可見；後續定向重錄及 QA 必須先核餘額。
 - 下一步先讀站主英、日兩語逐句聽感；只對確定有問題的句子定向修文、重錄、重跑 QA／字幕。英、日聽感未定前不送 `publish`／`languages` 上傳包卡，也不把三語成音或韓語「OK」當成 Studio 上傳、後台核准或公開發布。
+
+## 2026-10-17 H12 四語上傳包送審
+
+- 站主對英語 `9jra` 回覆「聽到 them，英語旁白可以」，對日語回覆「日語旁白可以」；韓語先前回覆「OK」。三語音軌接受試聽、未重錄；12／27／20 句原始 QA 旗標保留在收據。沒有付費呼叫。
+- 四語字幕重建完成，`package` 4／4 通過；繁中成片與三語配音 SHA 未變。上傳包 `metadata.json` SHA `6DDB8856…BEEE9`；詳細檔案及費用讀回見 `docs/videos/curio-h12/delivery-package-20261017.md`。
+- 最新 `publish` 卡 `9ccad952-cb3b-45f6-8f8b-8ae71f0fda8d` 綁上傳包 SHA，後台已自動核准且 `review-pull` 記錄。最新 `languages` 卡 `abeb9cc0-20e8-409b-b972-c379072fcfcb` 綁 manifest SHA `8E5DD6E0…74B61F`，後台仍 **pending**；站主須審閱該卡。`status` 顯示 package 完成、on YouTube 未完成。
+- H12 共用估算帳本 US$6.435／8.50、五集 US$28.4295／41.50，無 active reservation。此票待站主處理語言卡及 Studio 私人上傳；本次交接後釋出認領，不能標成全部完成。

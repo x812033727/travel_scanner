@@ -160,3 +160,9 @@ scope:
 - `publish`、`languages` 已送後台並唯讀讀回最新卡：`publish` `3fa63c7c-4b46-4289-bd68-7c629758b90b`／`14939DCC…94802`，`languages` `cc8e7ea3-3164-466c-8ee1-473850532ecd`／`DB2141C2…5749F`；兩張均 `pending`。尚未在 YouTube Studio 上傳或驗收播放。
 
 - 站主其後在後台逐張核准；2026-10-17T01:58Z 唯讀 API 讀回上述兩張**相同 ID 與雜湊**均為 `approved`，`review-pull --gate publish`／`languages` 已寫入本機 `approvals.json`。`status` 仍明示 `on YouTube` 未完成，這兩張核准不代表影片或三語音軌已傳到 Studio。四語上傳檔與操作說明在 `<home>/mokaair-work/videos/curio-m09/upload/`，已交站主以私人影片上傳並回填網址；待網址及 Studio 試播讀回後才可結案。
+
+### 2026-10-17 M09 私人影片讀回
+
+- 站主回覆「已上傳並四語試播正常」；2026-10-17 03:32 UTC 後台唯讀讀回 `stage=on YouTube`、影片 ID `yGF95x3O9U0`，`youtube_publish_at=null`，上述 `publish`／`languages` 最新卡仍為同 ID、同 SHA 的 `approved`。詳見 `docs/videos/curio-m09/youtube-readback-20261017.md`。
+- 同步紀錄顯示 `mode=upload`、`visibility=private`、`accept_private_lock=true`，網站 API 上傳被私人鎖定；`details`、四語字幕與主縮圖步驟 `done`，英／日／韓配音的後台狀態是 `uploaded`。四語播放正常屬站主回覆，尚待對照站主試播頁 ID 是否為 `yGF95x3O9U0`；無公開或排程證據。
+- 本機 `video.json.youtube.video_id` 仍空，因此本機 `status` 落後於後台。另有手動影片 ID 同步任務；本次不改動已核准稿件檔案，只留收據交接。
