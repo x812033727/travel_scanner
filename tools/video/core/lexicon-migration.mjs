@@ -87,12 +87,21 @@ export function storyPlanNames(dir) {
   return Array.isArray(names) ? names.filter(name => typeof name === "string" && name.trim()) : [];
 }
 
-function started(workdir, dir) {
-  const state = readJson(path.join(workdir, "auto.json"), null);
-  return existsSync(path.join(workdir, "story", "chapters"))
-    || existsSync(path.join(dir, "video.json"))
-    || existsSync(path.join(workdir, "approvals.json"))
-    || Object.values(state?.story?.chapters ?? {}).some(entry => entry?.written || entry?.checked || entry?.listened);
+/**
+ * Positive proof that `workdir` is this story's own work directory, and that the story started there.
+ * Every other check reads the work directory and passes on an empty one, so a forgotten
+ * VIDEO_WORKDIR or a wrong --workdir must refuse here instead of pinning a story with audio elsewhere.
+ */
+export function workdirProof(workdir, slug) {
+  if (!existsSync(workdir) || !lstatSync(workdir).isDirectory()) return "the work directory does not exist";
+  let state;
+  try { state = JSON.parse(readFileSync(path.join(workdir, "auto.json"), "utf8")); } catch { return "auto.json is missing or unreadable"; }
+  if (state?.slug !== slug) return `auto.json belongs to ${JSON.stringify(state?.slug ?? null)}`;
+  if (!state.story || typeof state.story !== "object") return "auto.json has no story state";
+  const chapters = path.join(workdir, "story", "chapters");
+  if (!existsSync(chapters) || !readdirSync(chapters).some(name => name.endsWith(".json")))
+    return "story/chapters has no chapter file (an unstarted story is pinned by the worker's normal genesis)";
+  return null;
 }
 
 function lateApprovals(workdir) {
@@ -111,13 +120,14 @@ function lateApprovals(workdir) {
 export function migrationChecks({ root, slug, workdir, dir = docDir(slug, root) }) {
   const pendingIntents = existsSync(intentsDir(workdir)) ? readdirSync(intentsDir(workdir)).filter(name => name.endsWith(".json")) : [];
   const late = lateApprovals(workdir);
+  const proof = workdirProof(workdir, slug);
   const audio = [anyFile(path.join(workdir, "audio")) && "audio/", existsSync(path.join(workdir, "narration.wav")) && "narration.wav"].filter(Boolean);
   return [
     { id: "not_excluded", ok: !EXCLUDED_SLUGS.has(slug), code: "STORY_LEXICON_MIGRATION_EXCLUDED", detail: "A01 needs its own reviewed transition" },
     { id: "no_pending_transaction", ok: !existsSync(pendingFile(dir)) && !pendingIntents.length, code: "LEXICON_TRANSACTION_INCOMPLETE", detail: pendingIntents.join(", ") },
     { id: "no_stop", ok: !stopRequested(workdir) && !stopRequested(path.dirname(workdir)), code: "LEXICON_STOPPED" },
     { id: "is_story", ok: isStory(dir), code: "STORY_LEXICON_MIGRATION_NOT_A_STORY" },
-    { id: "started", ok: started(workdir, dir), code: "STORY_LEXICON_MIGRATION_NOT_NEEDED", detail: "an unstarted story is pinned by the worker's normal genesis" },
+    { id: "workdir_is_this_story", ok: !proof, code: "STORY_LEXICON_MIGRATION_WORKDIR_UNPROVEN", detail: proof ?? "" },
     { id: "no_recheck_audit", ok: !existsSync(path.join(workdir, "story", "recheck-audit")), code: "STORY_LEXICON_MIGRATION_AUDIT_PRESENT" },
     { id: "no_timeline", ok: !existsSync(path.join(workdir, "timeline.json")), code: "STORY_LEXICON_MIGRATION_TIMELINE_PRESENT" },
     { id: "no_narration_audio", ok: !audio.length, code: "STORY_LEXICON_MIGRATION_AUDIO_PRESENT", detail: audio.join(", ") },
@@ -173,6 +183,12 @@ function admit(checks) {
 export function migrateStartedStoryLexicon({ root, slug, workdir, names, checkpoint = () => {}, now = () => new Date() }) {
   const dir = docDir(slug, root);
   const seeds = names ?? storyPlanNames(dir);
+  // Refuse before the leases: acquiring one writes a LEASE file into the work directory.
+  if (EXCLUDED_SLUGS.has(slug)) fail("STORY_LEXICON_MIGRATION_EXCLUDED");
+  const pinned = (() => { try { return readStoryLexicon({ slug, storyDir: dir, sharedFile: lexiconFile(root) }); } catch { return null; } })();
+  // A pinned story is read, never written: this also holds on a pending intent on either volume.
+  if (pinned?.mode === "snapshot") return { ...videoLexicon({ root, slug, dir, workdir }), migrated: false };
+  admit(migrationChecks({ root, slug, workdir, dir }));
   const lease = acquireProjectLease(workdir, { owner: "story-lexicon-migration" });
   try {
     return withLexiconWriter(root, () => {

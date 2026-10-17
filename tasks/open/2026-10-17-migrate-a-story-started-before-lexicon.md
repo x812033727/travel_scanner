@@ -67,3 +67,8 @@ Scope deliberately avoids `lexicon-store.mjs`, `story-lexicon.mjs` and
 - The strict reader only accepts `reason: "initial_snapshot"` at sequence 1, so the genesis event is
   byte-identical to a normal genesis. The migration is recorded in an immutable sidecar
   `story-lexicon/migrations/<event_sha256>.json` (ignored by the reader) and in the intent/receipt.
+- Review of #1550 (2026-10-17): with a wrong or empty work directory every work-side check passed
+  and `--apply` wrote `current.json`. Fixed by `workdir_is_this_story` (work directory exists,
+  `auto.json` names this slug and has story state, `story/chapters` has a chapter file), checked
+  before either lease and again inside them; it replaces the old `started` check, which a docs
+  `video.json` alone satisfied. On the host pass `VIDEO_WORKDIR=/var/lib/mokaair/video-work`.

@@ -33,14 +33,25 @@ Checked in this order, and again under both leases immediately before anything i
 | no docs `pending.json` and no work-volume intent | `LEXICON_TRANSACTION_INCOMPLETE` |
 | no project or global `STOP` | `LEXICON_STOPPED` |
 | `series.json` kind or `video.json` category is `story` | `STORY_LEXICON_MIGRATION_NOT_A_STORY` |
-| the story has started (chapters, `video.json`, approvals or a written chapter) | `STORY_LEXICON_MIGRATION_NOT_NEEDED` |
+| the work directory is this story's: it exists, `auto.json` reads, its `slug` is this slug, it has `story` state, and `story/chapters` has a chapter file | `STORY_LEXICON_MIGRATION_WORKDIR_UNPROVEN` |
 | no `story/recheck-audit` (A01's audit chain) | `STORY_LEXICON_MIGRATION_AUDIT_PRESENT` |
 | no `timeline.json` | `STORY_LEXICON_MIGRATION_TIMELINE_PRESENT` |
 | no file under `audio/` and no `narration.wav` | `STORY_LEXICON_MIGRATION_AUDIO_PRESENT` |
 | `approvals.json` has only `outline`, `script` or `look` | `STORY_LEXICON_MIGRATION_APPROVAL_PRESENT` |
 
-A story already in snapshot mode is returned unchanged, so a rerun is harmless. An unstarted story is
-left to the worker's normal genesis, and an unreadable `approvals.json` counts as a later approval.
+A story already in snapshot mode is read and returned unchanged, so a rerun is harmless. A story with
+no chapter file is left to the worker's normal genesis, and an unreadable `approvals.json` counts as a
+later approval. Every refusal happens before either lease is taken, so a refused run writes nothing,
+not even a `LEASE` file or an intent.
+
+### The work directory must be the right one
+
+Every check after the first four reads the work directory, and an empty directory passes all of
+them. A forgotten `VIDEO_WORKDIR` or a wrong `--workdir` would therefore look like a story with no
+narration, which is why `workdir_is_this_story` demands positive proof instead. On the production
+host run it where the worker runs, with the worker's work base: inside the container that is
+`VIDEO_WORKDIR=/var/lib/mokaair/video-work` (or `--workdir /var/lib/mokaair/video-work`), and the
+command appends the slug itself. Read the dry run's `workdir_is_this_story` line before `--apply`.
 
 ## What it writes
 

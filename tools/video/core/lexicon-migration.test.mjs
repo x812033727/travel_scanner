@@ -35,6 +35,7 @@ function box(t, { slug = SLUG, started = true } = {}) {
     for (let n = 1; n <= 6; n++) writeFileSync(path.join(workdir, "story", "chapters", `${n}.json`), json({ chapter: n }));
     writeFileSync(path.join(workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "outline", sha256: "a" }, { gate: "script", sha256: "b" }] }));
     writeFileSync(path.join(dir, "video.json"), json(doc));
+    writeFileSync(path.join(workdir, "auto.json"), json({ slug, story: { chapters: {} } }));
   }
   return { root, base, dir, workdir, slug, doc };
 }
@@ -106,23 +107,102 @@ test("a started story with no narration: the dry run allows it and writes nothin
   assert.deepEqual(everything(b), after);
 });
 
-test("the migrated snapshot is byte-identical to the genesis initializeStoryLexicon writes for a new story", t => {
+/** Migrate a started story and give a new one genesis with the same inputs; their snapshot files must match. */
+function compareWithGenesis(t, { names = NAMES, sharedBytes = json(shared) } = {}) {
   const started = box(t);
   const fresh = box(t, { started: false });
-  const genesis = initializeStoryLexicon({ root: fresh.root, slug: fresh.slug, workdir: fresh.workdir, names: NAMES });
-  const migrated = migrateStartedStoryLexicon({ root: started.root, slug: started.slug, workdir: started.workdir });
+  for (const each of [started, fresh]) {
+    const file = path.join(each.root, "docs", "videos", "lexicon.json");
+    if (sharedBytes === null) rmSync(file); else writeFileSync(file, sharedBytes);
+  }
+  const genesis = initializeStoryLexicon({ root: fresh.root, slug: fresh.slug, workdir: fresh.workdir, names });
+  const migrated = migrateStartedStoryLexicon({ root: started.root, slug: started.slug, workdir: started.workdir, names });
   assert.equal(migrated.migrated, true);
   assert.equal(migrated.lexicon_sha256, genesis.lexicon_sha256);
   assert.equal(migrated.head_event_sha256, genesis.head_event_sha256);
   const { [path.join("migrations", `${migrated.head_event_sha256}.json`)]: record, ...rest } = snapshotFiles(started);
   assert.ok(record, "the migration leaves its sidecar record");
   assert.deepEqual(rest, snapshotFiles(fresh));
+  return migrated;
+}
+
+test("the migrated snapshot is byte-identical to the genesis initializeStoryLexicon writes for a new story", t => {
+  compareWithGenesis(t);
 });
 
-test("an unstarted story is left to the worker's normal genesis", async t => {
+test("with nothing to seed, the snapshot is the shared dictionary's exact bytes, formatting included", t => {
+  const odd = Buffer.from('{"schema_version":1,   "terms":{"GPT":"G P T"}}\n');
+  const migrated = compareWithGenesis(t, { names: ["GPT", "服部金太郎"], sharedBytes: odd });
+  assert.deepEqual(migrated.bytes, odd);
+  assert.deepEqual(migrated.seeded_terms, []);
+});
+
+test("with no shared dictionary, the snapshot is the same empty-plus-names genesis a new story gets", t => {
+  const migrated = compareWithGenesis(t, { sharedBytes: null });
+  assert.equal(migrated.shared_sha256, null);
+  assert.deepEqual(migrated.lexicon.terms, { Seiko: null, Astron: null, GPT: null });
+});
+
+test("a story whose work directory has no chapter yet is left to the worker's normal genesis", async t => {
   const b = box(t, { started: false });
-  assert.throws(() => migrateStartedStoryLexicon({ root: b.root, slug: b.slug, workdir: b.workdir }), error("STORY_LEXICON_MIGRATION_NOT_NEEDED"));
-  assert.equal((await cli(b, "--apply")).code, 1);
+  writeFileSync(path.join(b.workdir, "auto.json"), json({ slug: b.slug, story: { chapters: {} } }));
+  writeFileSync(path.join(b.dir, "video.json"), json(b.doc));
+  const before = everything(b);
+  assert.throws(() => migrateStartedStoryLexicon({ root: b.root, slug: b.slug, workdir: b.workdir }), error("STORY_LEXICON_MIGRATION_WORKDIR_UNPROVEN"));
+  const run = await cli(b, "--apply");
+  assert.equal(run.code, 1);
+  assert.match(run.out, /no chapter file/);
+  assert.deepEqual(everything(b), before);
+});
+
+// The docs say the story started; the work directory handed in is not its own. Every other check
+// reads the work directory and would pass on an empty one, so this must refuse before any lease.
+const wrongWorkdirs = [
+  ["an empty work directory (VIDEO_WORKDIR forgotten)", b => { const other = path.join(path.dirname(b.base), "elsewhere", b.slug); mkdirSync(other, { recursive: true }); return other; }],
+  ["a work directory that does not exist", b => path.join(path.dirname(b.base), "missing", b.slug)],
+  ["another story's work directory", b => {
+    const other = path.join(path.dirname(b.base), "other", b.slug);
+    mkdirSync(path.join(other, "story", "chapters"), { recursive: true });
+    writeFileSync(path.join(other, "story", "chapters", "1.json"), json({ chapter: 1 }));
+    writeFileSync(path.join(other, "auto.json"), json({ slug: "story-adapt-someone-else", story: {} }));
+    return other;
+  }],
+  ["a work directory whose auto.json has no story state", b => {
+    const other = path.join(path.dirname(b.base), "plain", b.slug);
+    mkdirSync(path.join(other, "story", "chapters"), { recursive: true });
+    writeFileSync(path.join(other, "story", "chapters", "1.json"), json({ chapter: 1 }));
+    writeFileSync(path.join(other, "auto.json"), json({ slug: b.slug }));
+    return other;
+  }],
+];
+for (const [what, arrange] of wrongWorkdirs) {
+  test(`a started story given ${what} is refused before any lease, and neither volume changes`, async t => {
+    const b = box(t);
+    const wrong = arrange(b);
+    const top = path.dirname(b.base);
+    const before = tree(top);
+    const beforeDocs = tree(path.join(b.root, "docs"));
+    const report = inspectStartedStoryMigration({ root: b.root, slug: b.slug, workdir: wrong });
+    assert.equal(report.status, "refused");
+    assert.ok(report.checks.some(check => !check.ok && check.id === "workdir_is_this_story"), JSON.stringify(report.checks));
+    assert.throws(() => migrateStartedStoryLexicon({ root: b.root, slug: b.slug, workdir: wrong }), error("STORY_LEXICON_MIGRATION_WORKDIR_UNPROVEN"));
+    const run = await cli({ ...b, base: path.dirname(wrong) }, "--apply");
+    assert.equal(run.code, 1);
+    assert.match(run.out, /FAIL {2}workdir_is_this_story -> STORY_LEXICON_MIGRATION_WORKDIR_UNPROVEN/);
+    assert.deepEqual(tree(top), before);
+    assert.deepEqual(tree(path.join(b.root, "docs")), beforeDocs);
+    assert.equal(existsSync(path.join(wrong, "LEASE")), false);
+    assert.equal(existsSync(path.join(wrong, "story", "lexicon-intents")), false);
+    assert.equal(existsSync(path.join(b.dir, "story-lexicon")), false);
+  });
+}
+
+test("a worker holding the story's project lease makes the migration fail without writing", t => {
+  const b = box(t);
+  writeFileSync(path.join(b.workdir, "LEASE"), json({ pid: process.pid, hostname: "another-host", token: "worker" }));
+  const before = everything(b);
+  assert.throws(() => migrateStartedStoryLexicon({ root: b.root, slug: b.slug, workdir: b.workdir }), error("video_project_leased"));
+  assert.deepEqual(everything(b), before);
   assert.equal(existsSync(path.join(b.dir, "story-lexicon")), false);
 });
 
