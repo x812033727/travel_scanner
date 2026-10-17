@@ -1,0 +1,843 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e015",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, a wide white-toothed grin, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a hoe or carrying pole on his shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      }
+    },
+    {
+      "id": "laisan",
+      "name": "賴三",
+      "appearance": "East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, a grey-brown short jacket and an old cloth head wrap",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的家丁，油嘴滑舌、心虛"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    },
+    {
+      "id": "shimujiang",
+      "name": "石木匠",
+      "appearance": "East Asian man of fifty-five, lean and wiry with weathered tanned skin, a grey stubbled jaw, deep frown lines and suspicious narrow eyes, grey hair tied in a small rough topknot with a pencil-like wooden stick, a faded brown short work jacket with sleeves rolled up, a leather apron covered in wood shavings, calloused hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的老木匠，男聲、粗啞低沉，脾氣硬、說話短、帶著不耐煩"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a tense low drum thud and a sparse plucked pipa under grey morning wind at the start, a steady working rhythm of light percussion and bamboo flute through the night of paper-making and the dawn drill, a bright rising erhu and drum theme as the curved plough cuts the field, a quiet lonely guqin under the moonlit bamboo, then low strings tighten to a sharp held sting at the very end, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "全村的牛死了，他畫一張圖，老婆一個人犁完一畝地｜種田娶妻打天下 第15集",
+    "description": "書坊行會一張告示，柳溪的白紙縣城一張不收；窗外「咚」一聲，拉犁的老漢倒在田埂上——全村的牛冬天全死了。三個壯漢拉不動一架直轅犁，許硯熬夜趕完一百張白紙，換來系統的曲轅犁圖紙。天剛亮，秦霜竟在打穀場帶著年輕人練棍；石木匠刨出彎轅、鐵匠打好犁頭，秦霜一個人就犁完一畝。夜裡她帶許硯到竹林裡的無名墳：「這是我娘。」天亮進城的橋上，錢府的人攔著：一車一兩，紙坊賣給老爺，五十兩橋就通。《種田娶妻打天下》第 15 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "一人犁一畝",
+      "tag": "種田娶妻打天下",
+      "shot": "s22"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "告示",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a01",
+          "speaker": "tangxiaotang",
+          "text": "紙先放著。",
+          "emotion": "把告示拍在桌上，氣"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the lean-to workshop beside the farmhouse in daylight, a thatched lean-to roof on rough wooden posts open on one side toward the fields, wooden vats of pale bamboo pulp, bamboo screens drying on racks, a rough plank work table with a stack of plain white paper: medium close-up of Tang Xiaotang, on screen right at the work table, cheeks flushed with anger, one hand raised with a crumpled sheet of paper covered in blurred illegible brush strokes, Xu Yan soft and out of focus, on screen left beside a pulp vat",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「紙先放著。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she slaps the crumpled paper flat on the table beside the white stack, her small gold abacus swinging at her waist",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a02",
+          "speaker": "xuyan",
+          "text": "那一百張——",
+          "emotion": "話說到一半"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the lean-to workshop beside the farmhouse in daylight, a thatched lean-to roof on rough wooden posts open on one side toward the fields, wooden vats of pale bamboo pulp, bamboo screens drying on racks, a rough plank work table with a stack of plain white paper: close-up of Xu Yan's face, on screen left, a bamboo screen still dripping in his hands, looking off screen right toward Tang Xiaotang, the open side of the lean-to and the grey fields behind him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「那一百張——」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then a dull thud comes from outside and he snaps his head round toward the open side of the lean-to, freezing",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the muddy spring field below the village on a grey spring morning, wet black earth in flooded strips, low earthen ridges between the plots, bare willow trees and thatched roofs in the distance, flat overcast light: wide shot of a thin white-haired old farmer in a patched grey jacket with a rope harness across his chest, tied to a heavy straight-shafted wooden plough stuck in the mud, villagers in coarse clothes standing on the ridges, Xu Yan small, on screen left running out of the lean-to in the background",
+        "motion": "The old farmer's knees buckle and he sinks down onto the earthen ridge, the heavy plough tipping onto its side in the mud, while Xu Yan runs across the field toward him from screen left",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a03",
+          "speaker": "erniu",
+          "text": "牛冬天全死了。",
+          "emotion": "悶聲，難過"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the muddy spring field below the village on a grey spring morning, wet black earth in flooded strips, low earthen ridges between the plots, bare willow trees and thatched roofs in the distance, flat overcast light: medium shot of Wang Erniu, on screen right, mud to his knees, kneeling beside the thin white-haired old farmer who sits slumped on the ridge breathing hard, Erniu's big hand on the old man's back, looking at Xu Yan off screen left",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「牛冬天全死了。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he lifts the rope harness off the old man's shoulders and throws it down in the mud",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a04",
+          "speaker": "erniu",
+          "text": "一、二——拉！",
+          "emotion": "咬牙喊號子"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, low angle, locked",
+        "prompt": "In the muddy spring field below the village on a grey spring morning, wet black earth in flooded strips, low earthen ridges between the plots, bare willow trees and thatched roofs in the distance, flat overcast light: wide shot from a low angle of Wang Erniu in the centre and two other burly young villagers in coarse brown jackets, all three leaning hard into ropes tied to the heavy straight-shafted wooden plough, their feet sinking into the black mud, the plough, on screen left",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「一、二——拉！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then the three men heave forward on the ropes, faces straining, but the plough tip only skids across the surface of the mud and jerks to a stop",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a05",
+          "speaker": "tangxiaotang",
+          "text": "春耕誤了，",
+          "emotion": "算盤一撥，臉白了"
+        },
+        {
+          "id": "zq15a06",
+          "speaker": "tangxiaotang",
+          "text": "一年都沒飯吃。",
+          "emotion": "小聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the muddy spring field below the village on a grey spring morning, wet black earth in flooded strips, low earthen ridges between the plots, bare willow trees and thatched roofs in the distance, flat overcast light: medium close-up of Tang Xiaotang, on screen right standing on the earthen ridge, the hem of her peach-pink skirt lifted clear of the mud in one hand, her other hand on the small gold abacus at her waist, staring at the stuck plough off screen left",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「春耕誤了，」 then 「一年都沒飯吃。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then her fingers stop on the abacus beads and she bites her lip",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a07",
+          "speaker": "xuyan",
+          "text": "是這犁太笨。",
+          "emotion": "瞇眼，一下想通"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the muddy spring field below the village on a grey spring morning, wet black earth in flooded strips, low earthen ridges between the plots, bare willow trees and thatched roofs in the distance, flat overcast light: close-up of Xu Yan, on screen left crouching beside the heavy straight-shafted wooden plough, one hand on its long straight beam, eyes narrowed, measuring it",
+        "motion": "Xu Yan speaks a short Mandarin line, 「是這犁太笨。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he slaps the long straight beam once with his palm and looks up",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "chapter": "百張",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a08",
+          "speaker": "xuyan",
+          "text": "最後一張。",
+          "emotion": "熬了一夜，啞著嗓子"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the lean-to workshop beside the farmhouse at first light, a thatched lean-to roof on rough wooden posts open on one side toward the fields, wooden vats of pale bamboo pulp, bamboo screens drying on racks, an oil lamp burning low on the rough plank work table, pale blue dawn light coming in from the open side: medium shot of Xu Yan, on screen left at a wooden vat, sleeves tied back, eyes red from no sleep, lifting a bamboo screen out of the pale pulp, water streaming off it",
+        "motion": "Xu Yan speaks a short Mandarin line, 「最後一張。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he tips the screen and turns, carrying the wet sheet toward the table on screen right",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a09",
+          "speaker": "tangxiaotang",
+          "text": "第一百張！",
+          "emotion": "熬了一夜，啞著嗓子歡呼"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the lean-to workshop beside the farmhouse at first light, a thatched lean-to roof on rough wooden posts open on one side toward the fields, wooden vats of pale bamboo pulp, bamboo screens drying on racks, an oil lamp burning low on the rough plank work table, pale blue dawn light coming in from the open side: medium shot of Tang Xiaotang, on screen right, sleeves tied back, laying one last sheet of white paper on top of a tall neat stack on the work table, Xu Yan behind her, on screen left lifting a dripping bamboo screen out of a vat, both tired, hair coming loose",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「第一百張！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she pats the top of the stack with both hands and beams at it, swaying with tiredness",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a10",
+          "speaker": "xitong",
+          "text": "一百張，完成。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the lean-to workshop beside the farmhouse at first light, a thatched lean-to roof on rough wooden posts open on one side toward the fields, wooden vats of pale bamboo pulp, bamboo screens drying on racks, an oil lamp burning low on the rough plank work table, pale blue dawn light coming in from the open side: medium shot of Tang Xiaotang, on screen right with both hands on the tall stack of white paper, beaming, Xu Yan behind her, on screen left straightening up from the vat; the system voice speaks off screen",
+        "motion": "Tang Xiaotang sways and leans her cheek on the stack of paper while Xu Yan straightens up and lifts his head",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "source": {
+          "shot": "s09",
+          "from_s": 1.9
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a11",
+          "speaker": "xitong",
+          "text": "獎勵：曲轅犁圖紙。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the lean-to workshop beside the farmhouse at first light, a thatched lean-to roof on rough wooden posts open on one side toward the fields, wooden vats of pale bamboo pulp, bamboo screens drying on racks, an oil lamp burning low on the rough plank work table, pale blue dawn light coming in from the open side: close-up of Xu Yan's face, on screen left, tired, dawn light on one cheek, staring at the empty air just in front of him, a faint cool blue tint on his eyes; the system voice speaks off screen",
+        "motion": "Xu Yan's eyes widen at the empty air in front of him and a slow grin spreads across his face",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a12",
+          "speaker": "xuyan",
+          "text": "彎一下，",
+          "emotion": "畫外，邊畫邊說"
+        },
+        {
+          "id": "zq15a13",
+          "speaker": "xuyan",
+          "text": "省一半力。",
+          "emotion": "畫外，得意"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the drawing on the paper, slow push in",
+        "prompt": "In the lean-to workshop beside the farmhouse at first light, a thatched lean-to roof on rough wooden posts open on one side toward the fields, wooden vats of pale bamboo pulp, bamboo screens drying on racks, an oil lamp burning low on the rough plank work table, pale blue dawn light coming in from the open side: insert from above of a man's hand holding a stick of charcoal, drawing the side view of a plough on a fresh sheet of white paper: a long gracefully curved beam, a short frame and a small pointed share, plain lines only, no writing; Xu Yan speaks off screen",
+        "motion": "The charcoal sweeps one long smooth curve across the white paper and finishes the pointed share with a quick stroke",
+        "characters": []
+      }
+    },
+    {
+      "id": "s13",
+      "chapter": "練棍",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, thin mist and cool blue first light: wide shot of Qin Shuang, on screen right standing in front of three rows of young villagers in coarse clothes, Wang Erniu in the front row, all holding long wooden staves, Xu Yan small, on screen left at the edge of the ground with a rolled sheet of paper under his arm, stopped mid-step",
+        "motion": "On Qin Shuang's sharp downward chop of her hand the rows of young men thrust their staves forward together in one motion as the camera pans slowly right from Xu Yan to them",
+        "characters": [
+          "qinshuang",
+          "erniu",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a14",
+          "speaker": "xuyan",
+          "text": "天還沒亮，",
+          "emotion": "挑眉"
+        },
+        {
+          "id": "zq15a15",
+          "speaker": "xuyan",
+          "text": "妳在練兵？",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, thin mist and cool blue first light: medium close-up of Xu Yan, on screen left at the edge of the threshing ground, a rolled sheet of paper under his arm, eyebrows raised, looking at Qin Shuang off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「天還沒亮，」 then 「妳在練兵？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he takes the rolled paper out from under his arm and tilts his head",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a16",
+          "speaker": "qinshuang",
+          "text": "他們自己要學。",
+          "emotion": "瞪他，不想多說"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, thin mist and cool blue first light: medium close-up of Qin Shuang, on screen right, a long wooden staff planted upright beside her, her high ponytail damp with mist, cool dawn light on her bold brows, glaring at Xu Yan off screen left",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「他們自己要學。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she turns her head away and raps the staff once on the ground",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a17",
+          "speaker": "erniu",
+          "text": "上回腿都嚇軟了。",
+          "emotion": "憨笑，不好意思"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, thin mist and cool blue first light: medium shot of Wang Erniu, on screen right in the front row of young villagers, a long staff in both hands, sweat on his forehead, looking at Xu Yan off screen left",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「上回腿都嚇軟了。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he grins sheepishly and rubs the back of his head with one big hand",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a18",
+          "speaker": "xuyan",
+          "text": "二牛，",
+          "emotion": "笑"
+        },
+        {
+          "id": "zq15a19",
+          "speaker": "xuyan",
+          "text": "你舅舅會打鐵吧？",
+          "emotion": "笑，賣關子"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, thin mist and cool blue first light: close-up of Xu Yan, on screen left, holding the unrolled sheet of paper out toward Wang Erniu off screen right, the charcoal plough drawing just visible on it without any writing, a sly grin",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「二牛，」 then 「你舅舅會打鐵吧？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he gives the paper a little shake toward screen right",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "chapter": "曲轅犁",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a20",
+          "speaker": "shimujiang",
+          "text": "彎的？",
+          "emotion": "皺眉，嫌"
+        },
+        {
+          "id": "zq15a21",
+          "speaker": "shimujiang",
+          "text": "沒見過這種犁。",
+          "emotion": "嘴硬"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the carpenter's workshop in daylight, a dim timber-framed room full of wood shavings, planks and saws hanging on the walls, a heavy scarred workbench, dusty shafts of sunlight from a side door: medium shot of Carpenter Shi, on screen right at his workbench, a long curved wooden beam clamped in front of him, a plane in his hands, the sheet of paper with the charcoal plough drawing pinned to a post, on screen left, frowning at it",
+        "motion": "Carpenter Shi speaks 2 short Mandarin lines, 「彎的？」 then 「沒見過這種犁。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he pushes the plane along the curved beam and a long curl of wood peels off",
+        "characters": [
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the iron share on the wooden frame, locked",
+        "prompt": "In the carpenter's workshop in daylight, a dim timber-framed room full of wood shavings, planks and saws hanging on the walls, a heavy scarred workbench, dusty shafts of sunlight from a side door: insert on the workbench of the finished curved plough frame, a new dark iron ploughshare being set onto its tip by the big soot-streaked hands of a burly blacksmith in a leather apron",
+        "motion": "The blacksmith's hands seat the iron share on the wooden tip and two sharp mallet taps fix it in place",
+        "characters": []
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a22",
+          "speaker": "erniu",
+          "text": "我來拉！",
+          "emotion": "拍胸口"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the muddy spring field below the village in the late afternoon, wet black earth, low earthen ridges between the plots, willow trees and thatched roofs in the distance, warm low golden sunlight raking across the mud: medium shot of Wang Erniu, on screen right beside the new light plough with a gracefully curved wooden beam and an iron share, holding out a rope harness, Qin Shuang, on screen left walking toward the plough, villagers lined along the ridge in the background",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「我來拉！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he slings the rope over his own shoulder and grins",
+        "characters": [
+          "erniu",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a23",
+          "speaker": "qinshuang",
+          "text": "不用。",
+          "emotion": "乾脆"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the muddy spring field below the village in the late afternoon, wet black earth, low earthen ridges between the plots, willow trees and thatched roofs in the distance, warm low golden sunlight raking across the mud: medium close-up of Qin Shuang, on screen left beside the curved plough, golden light on her face, her dark brown jacket sleeves being rolled up to the elbows, Wang Erniu's shoulder soft at the right edge of frame",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「不用。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she finishes rolling her second sleeve to the elbow and steps past Erniu to the plough handles",
+        "characters": [
+          "qinshuang",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, low angle, slow tracking alongside",
+        "prompt": "In the muddy spring field below the village in the late afternoon, wet black earth, low earthen ridges between the plots, willow trees and thatched roofs in the distance, warm low golden sunlight raking across the mud: wide shot from a low angle at the edge of the furrow of Qin Shuang alone walking behind the new curved plough, both bare hands on its worn wooden handles, the iron share biting deep into the black earth, villagers lined along the ridge behind with their mouths open",
+        "motion": "The curved plough slides forward under Qin Shuang's steady push and a long wave of black mud rolls over beside the share in one unbroken furrow, the camera tracking alongside her as the villagers on the ridge lean forward",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a24",
+          "speaker": "tangxiaotang",
+          "text": "一個人？",
+          "emotion": "瞪大眼"
+        },
+        {
+          "id": "zq15a25",
+          "speaker": "tangxiaotang",
+          "text": "她一個人犁？",
+          "emotion": "不敢相信"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the muddy spring field below the village in the late afternoon, wet black earth, low earthen ridges between the plots, willow trees and thatched roofs in the distance, warm low golden sunlight raking across the mud: medium close-up of Tang Xiaotang, on screen right on the earthen ridge among villagers, golden light on her face, both hands frozen on the small gold abacus at her waist, eyes wide, staring off screen left at the furrow",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「一個人？」 then 「她一個人犁？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she grabs the sleeve of the villager beside her and points",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a26",
+          "speaker": "qinshuang",
+          "text": "看什麼？",
+          "emotion": "回頭，挑眉"
+        },
+        {
+          "id": "zq15a27",
+          "speaker": "qinshuang",
+          "text": "下一畝。",
+          "emotion": "揚下巴，得意"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the muddy spring field below the village in the late afternoon, wet black earth, low earthen ridges between the plots, willow trees and thatched roofs in the distance, warm low golden sunlight raking across the mud: medium close-up of Qin Shuang, on screen left at the far end of a long fresh furrow, her jacket sleeves rolled up to the elbows, bare hands resting on the curved plough's wooden handle, golden sunset light on her face and a few strands of her high ponytail lifting in the wind, looking back over her shoulder toward the villagers beyond the right edge of frame",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「看什麼？」 then 「下一畝。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she lifts her chin at them with a confident half smile and swings the plough round for the next furrow",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a28",
+          "speaker": "xitong",
+          "text": "曲轅犁，一人可耕。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Extreme wide shot, high angle, slow crane up",
+        "prompt": "In the muddy spring field below the village in the late afternoon, wet black earth, low earthen ridges between the plots, willow trees and thatched roofs in the distance, warm low golden sunlight raking across the mud: extreme wide shot from high above of the whole field turned into neat dark furrows glowing in the low sunset light, the thin white-haired old farmer stepping down into the fresh earth, villagers spilling off the ridges after him, a tiny figure with the curved plough at the far end; the system voice speaks off screen",
+        "motion": "The old farmer crouches and crumbles a handful of fresh black earth as villagers stream into the furrows, the camera craning slowly up over the whole field",
+        "characters": []
+      }
+    },
+    {
+      "id": "s26",
+      "chapter": "無名墳",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the moonlit bamboo grove by a nameless grave at night, tall dark bamboo stalks, cold blue moonlight falling in thin shafts, dry fallen leaves, a small earth mound with a plain blank wooden marker: wide shot of Qin Shuang, on screen left leading Xu Yan, on screen right along a narrow path between the bamboo toward the small grave, moonlight on their shoulders",
+        "motion": "Qin Shuang stops in front of the grave and Xu Yan halts a step behind her as the bamboo sways overhead",
+        "characters": [
+          "qinshuang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a29",
+          "speaker": "qinshuang",
+          "text": "這是我娘。",
+          "emotion": "很輕"
+        },
+        {
+          "id": "zq15a30",
+          "speaker": "qinshuang",
+          "text": "沒寫名字。",
+          "emotion": "很輕，壓著"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the moonlit bamboo grove by a nameless grave at night, tall dark bamboo stalks, cold blue moonlight falling in thin shafts, dry fallen leaves, a small earth mound with a plain blank wooden marker: medium close-up of Qin Shuang, on screen left kneeling on one knee before the plain blank wooden marker, moonlight on her face, her bold brows soft for once, looking at the marker",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「這是我娘。」 then 「沒寫名字。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she brushes the dry leaves off the blank marker with her fingers and lowers her eyes",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a31",
+          "speaker": "xuyan",
+          "text": "那妳娘……",
+          "emotion": "放輕聲音"
+        },
+        {
+          "id": "zq15a32",
+          "speaker": "xuyan",
+          "text": "姓什麼？",
+          "emotion": "小心地問"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the moonlit bamboo grove by a nameless grave at night, tall dark bamboo stalks, cold blue moonlight falling in thin shafts, dry fallen leaves, a small earth mound with a plain blank wooden marker: close-up of Xu Yan, on screen right standing among the bamboo, moonlight across his eyes, looking down at Qin Shuang off screen left",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「那妳娘……」 then 「姓什麼？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he crouches down to her level, waiting",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the moonlit bamboo grove by a nameless grave at night, tall dark bamboo stalks, cold blue moonlight falling in thin shafts, dry fallen leaves, a small earth mound with a plain blank wooden marker: medium close-up of Qin Shuang, on screen left kneeling before the blank wooden marker, eyes lowered, moonlight on her face",
+        "motion": "Qin Shuang stands up from the grave without a word and turns her face away from him, pressing her lips together",
+        "characters": [
+          "qinshuang"
+        ],
+        "source": {
+          "shot": "s27",
+          "from_s": 3.2
+        }
+      }
+    },
+    {
+      "id": "s30",
+      "chapter": "封橋",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the stone bridge to the county town at dawn, an old arched stone bridge over a wide stream, thin mist on the water, a muddy track leading onto it, the grey walls of the county town faint in the distance: wide shot of a rough wooden barrier across the bridge, Lai San leaning on it, on screen right with four servants in grey short jackets holding clubs behind it, Xu Yan and Tang Xiaotang, on screen left pushing a wooden handcart piled with paper bundles wrapped in brown oilcloth onto the near end of the bridge",
+        "motion": "The handcart rolls to a stop in front of the barrier and the servants step forward, clubs on their shoulders",
+        "characters": [
+          "xuyan",
+          "tangxiaotang",
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a33",
+          "speaker": "laisan",
+          "text": "許家的貨，",
+          "emotion": "拖長音"
+        },
+        {
+          "id": "zq15a34",
+          "speaker": "laisan",
+          "text": "一車一兩。",
+          "emotion": "冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the stone bridge to the county town at dawn, an old arched stone bridge over a wide stream, thin mist on the water, a muddy track leading onto it, the grey walls of the county town faint in the distance: medium shot of Lai San, on screen right leaning on the wooden barrier, his cloth head wrap askew, a sly grin, looking at the handcart off screen left",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「許家的貨，」 then 「一車一兩。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he raps his knuckles on the barrier twice",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a35",
+          "speaker": "laisan",
+          "text": "紙坊賣我們老爺，",
+          "emotion": "壓低聲音，得意"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the stone bridge to the county town at dawn, an old arched stone bridge over a wide stream, thin mist on the water, a muddy track leading onto it, the grey walls of the county town faint in the distance: medium close-up of Lai San, on screen right in front of the barrier, pulling a folded sheet of paper out of his sleeve, a greasy smile, looking at Xu Yan off screen left",
+        "motion": "Lai San speaks a short Mandarin line, 「紙坊賣我們老爺，」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he holds the folded paper out across the barrier toward screen left",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq15a36",
+          "speaker": "laisan",
+          "text": "五十兩，",
+          "emotion": "畫外，慢慢地"
+        },
+        {
+          "id": "zq15a37",
+          "speaker": "laisan",
+          "text": "橋就通。",
+          "emotion": "畫外，笑"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the paper in Xu Yan's hand, locked",
+        "prompt": "At the stone bridge to the county town at dawn, an old arched stone bridge over a wide stream, thin mist on the water, a muddy track leading onto it, the grey walls of the county town faint in the distance: insert of Xu Yan's hand, on screen left taking the folded sheet of paper from Lai San's hand across the rough wooden barrier, the paper opening to show blurred illegible brush strokes and a red seal smudge, no readable writing; Lai San speaks off screen",
+        "motion": "Xu Yan's fingers close on the paper and slowly crush its edge",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "At the stone bridge to the county town at dawn, an old arched stone bridge over a wide stream, thin mist on the water, a muddy track leading onto it, the grey walls of the county town faint in the distance: extreme close-up of Xu Yan's eyes, thick brows drawn down, cold dawn mist behind him, no trace of his usual grin",
+        "motion": "Xu Yan's eyes lift slowly from the paper to Lai San off screen right and narrow, and he draws one slow breath through his nose, jaw setting hard",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}

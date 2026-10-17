@@ -1,0 +1,933 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e005",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "laisan",
+      "name": "賴三",
+      "appearance": "East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, a grey-brown short jacket and an old cloth head wrap",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的家丁，油嘴滑舌、心虛"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "tense low taiko pulse and plucked pipa stabs at the start, turning playful with light bamboo flute and wood block for a rural comedy, a bright warm dawn swell, then a sudden sharp string sting at the very end, ancient Chinese farming comedy, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "半夜有人倒水壞鍋，冷面新娘一匕把他釘在柱上｜種田娶妻打天下 第5集",
+    "description": "錢府家丁賴三半夜往許硯的皂鍋裡倒水，一柄短匕破空把他釘在柱上。許硯不打人，罰他攪了一夜的鍋；天亮開模，第一批雪白的肥皂起泡了。正數著肥皂，系統面板忽然轉紅：成婚 0/3，剩十二時辰。《種田娶妻打天下》第 5 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "第一塊肥皂",
+      "tag": "種田娶妻打天下",
+      "shot": "s17"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "破空",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a01",
+          "speaker": "xuyan",
+          "text": "住手！",
+          "emotion": "推門撞見，壓著嗓子大喝"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side: on screen left a thin man in a grey-brown short jacket and an old cloth head wrap, Lai San, standing on a stool beside the roof pillar with a full wooden bucket of water raised in both hands, his left arm high against the pillar, above the rim of the steaming wok; on screen right Xu Yan in the doorway, one hand pushing the plank door open, eyes on the bucket",
+        "motion": "Lai San tips the raised bucket forward over the rim of the wok",
+        "characters": [
+          "laisan",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the sleeve and the pillar, locked",
+        "prompt": "Insert in firelight of a raised left arm in a grey-brown sleeve gripping a tipped wooden bucket beside a thick wooden roof pillar, water just reaching the lip of the bucket, steam rising from below, darkness at frame right",
+        "motion": "A short plain dagger flies in from frame right and pins the grey-brown sleeve to the wooden pillar, and the bucket jerks to a stop with the water still inside",
+        "characters": []
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a02",
+          "speaker": "laisan",
+          "text": "誰？誰扔的？",
+          "emotion": "嚇破膽，尖聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lai San's face on screen left in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side, his left arm pinned high against the wooden pillar by a short dagger through his sleeve, the bucket still in that hand, eyes darting right into the darkness",
+        "motion": "Lai San yanks his pinned arm twice but the sleeve stays nailed to the pillar",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Medium shot of A-ling stepping out of a dark corner on screen right into a shaft of cold moonlight in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side, her face fully lit, smoky eyeliner and soft red lips, loose strands of black hair beside her cheek, calm cold eyes looking off screen left toward the pillar, her grey-white dress tailored at the waist",
+        "motion": "A-ling walks slowly out of the shadows into the moonlight toward screen left, chin level, eyes calm and cold, a few strands of hair lifting",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a03",
+          "speaker": "xuyan",
+          "text": "阿令？",
+          "emotion": "意外，小聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Xu Yan on screen right in the workshop doorway at night, firelight on his face, eyebrows raised in surprise, looking off screen left toward A-ling in the moonlight",
+        "motion": "Xu Yan stops with one hand still on the plank door, mouth half open",
+        "characters": [
+          "xuyan"
+        ],
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a04",
+          "speaker": "xuyan",
+          "text": "澆我的鍋？",
+          "emotion": "冷笑，慢慢問"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan on screen right in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side, reaching up with both hands toward a wooden bucket of water held in a pinned hand in a grey-brown sleeve at the left frame edge above the steaming wok",
+        "motion": "Xu Yan pulls the bucket out of the pinned hand and lowers it to his chest",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a05",
+          "speaker": "laisan",
+          "text": "我、我路過……",
+          "emotion": "心虛，陪笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lai San's face on screen left in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side, his left arm still pinned high against the wooden pillar, forcing a crooked grin toward Xu Yan off screen right",
+        "motion": "Lai San tugs at his pinned sleeve and grins weakly",
+        "characters": [
+          "laisan"
+        ],
+        "source": {
+          "shot": "s03",
+          "from_s": 2.2
+        }
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a06",
+          "speaker": "xuyan",
+          "text": "路過帶水桶？",
+          "emotion": "挑眉，吐槽"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan on screen right in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side, the wooden bucket of water held against his chest, eyebrows raised at Lai San off screen left",
+        "motion": "Xu Yan hefts the bucket in his arms and raises his eyebrows",
+        "characters": [
+          "xuyan"
+        ],
+        "source": {
+          "shot": "s06",
+          "from_s": 2
+        }
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a07",
+          "speaker": "qinshuang",
+          "text": "敢動我的豬油？",
+          "emotion": "火大，嗓門大"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Qin Shuang striding in through the workshop doorway on screen right at night, sharp eyeliner and bold brows, high ponytail swinging, firelight on her face, her right hand on the old chopping knife tucked in her wide leather belt, eyes fixed on Lai San off screen left",
+        "motion": "Qin Shuang pulls the old chopping knife out of her belt in one sweep",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a08",
+          "speaker": "xuyan",
+          "text": "別打！",
+          "emotion": "急，一把攔住"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side: Qin Shuang on screen right with the old chopping knife raised at shoulder height, Xu Yan in the centre stepping in front of her, Lai San on screen left cowering against the roof pillar with his sleeve pinned above his head, the wok steaming between them",
+        "motion": "Xu Yan catches Qin Shuang's wrist and pushes her knife hand down",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a09",
+          "speaker": "qinshuang",
+          "text": "憑啥？",
+          "emotion": "不服，瞪他"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Qin Shuang in the workshop doorway on screen right at night, the old chopping knife in her right hand, glaring toward Xu Yan off screen left",
+        "motion": "Qin Shuang tightens her grip on the knife and lifts her chin",
+        "characters": [
+          "qinshuang"
+        ],
+        "source": {
+          "shot": "s09",
+          "from_s": 2.5
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "chapter": "錢府",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a10",
+          "speaker": "xuyan",
+          "text": "錢員外派的吧？",
+          "emotion": "不急不徐，一眼看穿"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan on screen right in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side, about to crouch down, facing left toward Lai San off screen left at the pillar, a sly half smile",
+        "motion": "Xu Yan crouches down to Lai San's eye level and rests his forearms on his knees",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a11",
+          "speaker": "laisan",
+          "text": "是、是錢員外……",
+          "emotion": "嚇到招了"
+        },
+        {
+          "id": "zq5a12",
+          "speaker": "laisan",
+          "text": "叫我來壞你的鍋。",
+          "emotion": "越說越小聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, low angle, slow push in",
+        "prompt": "Medium close-up, low angle of Lai San slumped against the wooden roof pillar on screen left in the night workshop, his left sleeve still pinned above his head by the dagger, nodding with his eyes squeezed shut, looking right toward Xu Yan off screen right",
+        "motion": "Lai San nods fast with his eyes squeezed shut",
+        "characters": [
+          "laisan"
+        ],
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a13",
+          "speaker": "xuyan",
+          "text": "打你，他好告官。",
+          "emotion": "回頭跟秦霜解釋，篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan on screen right in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side, crouched at eye level, glancing back over his shoulder toward Qin Shuang off screen right",
+        "motion": "Xu Yan glances back over his shoulder and taps his own temple once",
+        "characters": [
+          "xuyan"
+        ],
+        "source": {
+          "shot": "s12",
+          "from_s": 1.9
+        }
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a14",
+          "speaker": "qinshuang",
+          "text": "就這麼算了？",
+          "emotion": "不甘心"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side: Qin Shuang on screen right with the old chopping knife lowered, Xu Yan in the centre letting go of her wrist, Lai San on screen left pinned to the roof pillar",
+        "motion": "Qin Shuang yanks her wrist free and lowers the knife",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "laisan"
+        ],
+        "source": {
+          "shot": "s10",
+          "from_s": 2
+        }
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a15",
+          "speaker": "xuyan",
+          "text": "罰你攪鍋，",
+          "emotion": "笑咪咪，不容商量"
+        },
+        {
+          "id": "zq5a16",
+          "speaker": "xuyan",
+          "text": "攪到天亮為止。",
+          "emotion": "慢慢說"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the paddle in the hands, slow push in",
+        "prompt": "Insert in firelight of a long wooden stirring paddle being pushed by a hand in a faded blue-grey sleeve into the bony free right hand of a man in a grey-brown sleeve, the steaming iron wok behind; Xu Yan speaks off screen",
+        "motion": "The blue-grey sleeved hand shoves the paddle into the grey-brown sleeved hand",
+        "characters": [],
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a17",
+          "speaker": "aling",
+          "text": "便宜你了。",
+          "emotion": "冷，看都不看他"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of A-ling on screen right beside the wooden roof pillar in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side, moonlight on her porcelain face and red lips, her right hand on the hilt of the short dagger in the pillar, a grey-brown pinned sleeve at the left frame edge, her eyes turned away from it toward Xu Yan off screen right",
+        "motion": "A-ling pulls the dagger out of the pillar and flips it up into her sleeve with one turn of the wrist, never looking at the sleeve",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a18",
+          "speaker": "xitong",
+          "text": "好感，加三。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of A-ling on screen right beside the wooden roof pillar in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side, the dagger gone into her sleeve, moonlight on her face, eyes resting on Xu Yan off screen right for a moment",
+        "motion": "A-ling lowers her hand and lets her eyes rest on Xu Yan",
+        "characters": [
+          "aling"
+        ],
+        "source": {
+          "shot": "s17",
+          "from_s": 2
+        }
+      }
+    },
+    {
+      "id": "s19",
+      "chapter": "攪一夜",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a19",
+          "speaker": "laisan",
+          "text": "我手要斷了……",
+          "emotion": "哀號，快睡著"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, high angle, locked",
+        "prompt": "Wide shot, high angle, deep in the night in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side: Lai San in the centre stirring the steaming wok with a long wooden paddle, his eyes half closed, Xu Yan on screen right sitting on a low stool by the stove fire with a split log in his hand, the moon low outside",
+        "motion": "Lai San drags the long paddle round the wok and sways with sleep",
+        "characters": [
+          "laisan",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a20",
+          "speaker": "xuyan",
+          "text": "攪，別停。",
+          "emotion": "累，但聲音很穩"
+        },
+        {
+          "id": "zq5a21",
+          "speaker": "xuyan",
+          "text": "天亮就成。",
+          "emotion": "給自己打氣"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Xu Yan on a low stool on screen right beside the stove fire in the night workshop, red-eyed but awake, pushing a split log into the fire, orange firelight on his face, facing left toward the wok",
+        "motion": "Xu Yan pushes the split log into the fire",
+        "characters": [
+          "xuyan"
+        ],
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a22",
+          "speaker": "qinshuang",
+          "text": "你不睡？",
+          "emotion": "嘴硬，其實在關心"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Qin Shuang leaning in the workshop doorway on screen right at night, moonlight behind her, a gourd water flask in her right hand, looking left toward Xu Yan off screen left with a grudging half smile",
+        "motion": "Qin Shuang tosses the gourd flask underhand toward screen left",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a23",
+          "speaker": "xuyan",
+          "text": "鍋不能停。",
+          "emotion": "平靜"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, high angle, locked",
+        "prompt": "Wide shot, high angle, deep in the night in the thatched lean-to workshop at night, a huge iron wok bubbling on a mud-brick stove with orange firelight beneath it, a thick wooden roof pillar, clay jars and sacks of wood ash along the wall, cold moonlight through the open side: Lai San in the centre still stirring the wok, Xu Yan on screen right on the low stool by the fire",
+        "motion": "Lai San keeps stirring with drooping eyes while Xu Yan feeds the fire",
+        "characters": [
+          "laisan",
+          "xuyan"
+        ],
+        "source": {
+          "shot": "s19",
+          "from_s": 2.3
+        }
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a24",
+          "speaker": "xitong",
+          "text": "好感，加五。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Qin Shuang leaning in the workshop doorway on screen right at night, moonlight behind her, her empty hand lowering, looking left toward Xu Yan off screen left",
+        "motion": "Qin Shuang crosses her arms and leans back on the doorframe",
+        "characters": [
+          "qinshuang"
+        ],
+        "source": {
+          "shot": "s21",
+          "from_s": 1.8
+        }
+      }
+    },
+    {
+      "id": "s24",
+      "chapter": "起泡",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a25",
+          "speaker": "xiaohe",
+          "text": "哥，快開！",
+          "emotion": "等不及，奶聲"
+        },
+        {
+          "id": "zq5a26",
+          "speaker": "tangxiaotang",
+          "text": "快呀，我要看！",
+          "emotion": "湊過去，比小禾還急"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Wide shot in the small dirt yard of a poor thatched farmhouse at sunrise, a low mud wall, a persimmon tree, a long wooden board on trestles, golden fields beyond the wall, low warm morning sun: Xu Yan in the centre behind the long board with both hands on a long upturned wooden mould box, Xu Xiaohe on screen left on tiptoe hugging her straw rabbit, Tang Xiaotang on screen right leaning in, three villagers peering over the low mud wall behind them",
+        "motion": "Xu Yan grips the mould box and Xiaohe bounces on her toes",
+        "characters": [
+          "xuyan",
+          "xiaohe",
+          "tangxiaotang"
+        ],
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the mould on the board, slow push in",
+        "prompt": "Insert in low golden morning sun of a long upturned wooden mould box on a plain wooden board, two hands in faded blue-grey sleeves gripping both ends of it",
+        "motion": "The hands lift the mould box away and a row of snow-white square bars slides out onto the board",
+        "characters": []
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a27",
+          "speaker": "xiaohe",
+          "text": "哥，會起泡！",
+          "emotion": "驚喜大叫"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Xiaohe on screen left in the small dirt yard of a poor thatched farmhouse at sunrise, a low mud wall, a persimmon tree, a long wooden board on trestles, golden fields beyond the wall, low warm morning sun, rubbing a snow-white bar between her wet little hands over a wooden basin, sunlight behind her, blurred villagers leaning over the mud wall in the background with their mouths open",
+        "motion": "Xiaohe rubs the white bar between her wet hands and a big puff of white foam swells up, bubbles floating into the sunlight",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a28",
+          "speaker": "tangxiaotang",
+          "text": "一塊，三錢。",
+          "emotion": "精明，一秒算好"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Tang Xiaotang on screen right in the small dirt yard of a poor thatched farmhouse at sunrise, a low mud wall, a persimmon tree, a long wooden board on trestles, golden fields beyond the wall, low warm morning sun, glossy peach-pink lips and sparkling eyes, pink silk ribbons on her looped buns catching the sun, one snow-white bar in her left hand, her right forefinger on the small gold abacus at her waist, looking left toward Xu Yan off screen left",
+        "motion": "Tang Xiaotang flicks three beads across her gold abacus with one finger and lifts the white bar beside her cheek with a dimpled smile",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a29",
+          "speaker": "xiaohe",
+          "text": "好貴！",
+          "emotion": "嚇一跳"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Xiaohe on screen left in the small dirt yard of a poor thatched farmhouse at sunrise, a low mud wall, a persimmon tree, a long wooden board on trestles, golden fields beyond the wall, low warm morning sun, white foam piled on her little hands over the basin, turning toward Tang Xiaotang off screen right with wide eyes",
+        "motion": "Xiaohe holds her foamy hands up and gapes",
+        "characters": [
+          "xiaohe"
+        ],
+        "source": {
+          "shot": "s26",
+          "from_s": 2.3
+        }
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a30",
+          "speaker": "tangxiaotang",
+          "text": "賣進縣城！",
+          "emotion": "得意，甜"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Tang Xiaotang on screen right in the small dirt yard of a poor thatched farmhouse at sunrise, a low mud wall, a persimmon tree, a long wooden board on trestles, golden fields beyond the wall, low warm morning sun, the white bar held up beside her cheek, a confident dimpled smile toward Xu Yan off screen left",
+        "motion": "Tang Xiaotang taps the white bar against her chin and smiles",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "source": {
+          "shot": "s27",
+          "from_s": 2
+        }
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a31",
+          "speaker": "xuyan",
+          "text": "給你家老爺，",
+          "emotion": "笑咪咪"
+        },
+        {
+          "id": "zq5a32",
+          "speaker": "xuyan",
+          "text": "洗洗手。",
+          "emotion": "話裡有話，輕輕拍他"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot in the small dirt yard of a poor thatched farmhouse at sunrise, a low mud wall, a persimmon tree, a long wooden board on trestles, golden fields beyond the wall, low warm morning sun: Xu Yan on screen left holding out a snow-white bar wrapped in a green leaf, Lai San on screen right with bleary red eyes and the long wooden paddle over his shoulder, limping toward the broken gate",
+        "motion": "Xu Yan presses the leaf-wrapped bar into Lai San's hand and pats his shoulder",
+        "characters": [
+          "xuyan",
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "chapter": "十二時辰",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a33",
+          "speaker": "tangxiaotang",
+          "text": "四十八、四十九……",
+          "emotion": "邊數邊樂"
+        }
+      ],
+      "data": {
+        "camera": "Group shot, locked",
+        "prompt": "Group shot in the small dirt yard of a poor thatched farmhouse at sunrise, a low mud wall, a persimmon tree, a long wooden board on trestles, golden fields beyond the wall, low warm morning sun: three beautiful young women around the long board covered in rows of snow-white bars, A-ling on screen left in grey-white lining up a row, Qin Shuang in the centre in dark brown with her sleeves rolled, Tang Xiaotang on screen right in peach-pink stacking bars, warm sun behind them",
+        "motion": "Tang Xiaotang stacks one more white bar on the pile and counts on her fingers",
+        "characters": [
+          "aling",
+          "qinshuang",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a34",
+          "speaker": "xitong",
+          "text": "強制任務：成婚。",
+          "emotion": "平板電子音，警報"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Xu Yan's face on screen left in the small dirt yard of a poor thatched farmhouse at sunrise, a low mud wall, a persimmon tree, a long wooden board on trestles, golden fields beyond the wall, low warm morning sun, grinning, holding up a snow-white bar, looking right toward the three women off screen right",
+        "motion": "Xu Yan's grin drops all at once and the white bar slips out of his fingers",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a35",
+          "speaker": "xitong",
+          "text": "剩十二時辰。",
+          "emotion": "平板，倒數"
+        }
+      ],
+      "data": {
+        "camera": "Group shot, locked",
+        "prompt": "Group shot in the small dirt yard of a poor thatched farmhouse at sunrise, a low mud wall, a persimmon tree, a long wooden board on trestles, golden fields beyond the wall, low warm morning sun: the three young women around the long board of snow-white bars, A-ling on screen left, Qin Shuang in the centre, Tang Xiaotang on screen right, still counting; the system voice Xitong speaks off screen",
+        "motion": "Tang Xiaotang keeps counting the stacked bars on her fingers",
+        "characters": [
+          "aling",
+          "qinshuang",
+          "tangxiaotang"
+        ],
+        "source": {
+          "shot": "s31",
+          "from_s": 2.1
+        }
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a36",
+          "speaker": "xuyan",
+          "text": "成親……忘了！",
+          "emotion": "腦袋一片空白"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Xu Yan's face on screen left in the small dirt yard of a poor thatched farmhouse at sunrise, a low mud wall, a persimmon tree, a long wooden board on trestles, golden fields beyond the wall, low warm morning sun, drained of colour, empty fingers still raised where the bar was",
+        "motion": "Xu Yan stares at his empty fingers",
+        "characters": [
+          "xuyan"
+        ],
+        "source": {
+          "shot": "s32",
+          "from_s": 2.4
+        }
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a37",
+          "speaker": "tangxiaotang",
+          "text": "縣衙登記，午時就關門了！",
+          "emotion": "一秒算出來，驚叫"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Tang Xiaotang's face on screen right in the small dirt yard of a poor thatched farmhouse at sunrise, a low mud wall, a persimmon tree, a long wooden board on trestles, golden fields beyond the wall, low warm morning sun, sparkling eyes wide, one hand frozen mid-flick below frame, peach-pink lips parted, looking left toward Xu Yan off screen left",
+        "motion": "Tang Xiaotang freezes with her finger on the abacus",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq5a38",
+          "speaker": "xuyan",
+          "text": "十二時辰……",
+          "emotion": "腦中一片空白"
+        },
+        {
+          "id": "zq5a39",
+          "speaker": "xuyan",
+          "text": "娶三個？",
+          "emotion": "崩潰，聲音發顫"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "Extreme close-up of Xu Yan's face in the low morning sun, eyes wide, a bead of sweat running down his temple, mouth half open",
+        "motion": "Xu Yan swallows hard",
+        "characters": [
+          "xuyan"
+        ],
+        "visual": "still"
+      }
+    }
+  ]
+}
