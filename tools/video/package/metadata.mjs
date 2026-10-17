@@ -13,14 +13,14 @@ export function compilationChapterTitles(doc) {
 }
 
 /**
- * Lint composes the description without the picture credits (lint.mjs reads no assets), so a
- * description that passed lint and passes the byte limit only here says what tipped it over.
+ * Lint composes the description with the picture credits too (lint.mjs passes assets), so it
+ * refuses this first; a package run without a lint before it still says how much the credits take.
  */
 function withCreditHint(problem, assets, locale) {
   const bytes = creditBytes(assets, locale);
   if (!bytes || !/bytes once composed/.test(problem)) return problem;
   const label = (LABELS[locale] ?? LABELS.en).pictures;
-  return `${problem} (the ${label} credits of assets[] add ${bytes} bytes that lint does not count: shorten youtube.description or use fewer stock photos)`;
+  return `${problem} (the ${label} credits of assets[] take ${bytes} of them: shorten youtube.description or use fewer stock photos)`;
 }
 
 /**
