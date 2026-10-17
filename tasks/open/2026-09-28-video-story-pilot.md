@@ -510,3 +510,7 @@ The reviewed Row10c plan is now assembled into a deterministic local import cand
 - resume101 初次等待達12次RUN_PENDING後安全退出；原稿source101未變、A01 STOP恢復、own resume101 release hold保留。真listener/engine請求仍queued，另owner的writer佔用共用AI工人，未干預。保留原journal 1ed3c7b1…（SHA9e068ebb…，unadopted）；只允許核對後續接同一request，禁止新key重送。新增retained driver421f5955…等獨立複核，尚未run。
 
 - retained101 續接獨立複核已通過：exact真journal成功/pending同key/wrongkey拒絕/hash漂移拒絕4case PASS，installed store連續3prepare同key不改bytes。正式background PID322155已啟動，log /root/mokaair-a01-real-review-20261017-fe35369c/resume101-retained-run.log；driver421f5955/caller8b4db685，沿用own resume101 hold。最多100 pending polls/120 stage calls/8successful units，仍只listener+verifier+panel，不可media；成功STOP+active0後clear自有hold，失敗保留。下一次必須先查此log/真journal狀態，勿重跑driver或新key。
+
+- 實際狀態更正：retained101 PID322155 在前檢active=1處安全退出，未執行driver。原queued請求已於09:53:04被AI工人判failed/video_ai_worker_stopped（STOP恢復，模型未dispatch），A01active0/source101/STOP/ownhold保留。原queued本機journal SHA9e068仍在；需installed client讀回明確failed、保存拒絕證據後最多重試一次，非pending或uncertain重送。新增stop-refused candidate2f48d156等獨立增量複核。
+
+- stop-refused101 已經獨立4case PASS及installed store真failed→清除→新key流程PASS；driver2f48d156/caller30d36d9b。正式background PID325042啟動，log /root/mokaair-a01-real-review-20261017-fe35369c/resume101-stop-refused-run.log，own hold/runtimehash/budget前檢已過。只針對原已確認未dispatch的STOP失敗最多重試一次，uncertain或第二失敗拒絕；成功前不允許media。下一次先讀此最新log，先前retained log不是活動worker。
