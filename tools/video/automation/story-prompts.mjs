@@ -66,6 +66,29 @@ beats of ONE story, not six sections: each chapter opens on what happened next, 
 ("先講…", "回到…", "這一章講…").
 `.trim();
 
+// A story is told by one voice over still pictures, so nothing but the narration holds the
+// viewer: the owner (2026-10-18) found the stories boring between hooks ("講故事也要放鉤子，不然
+// 會很無聊看不下去"). Measured on the site, B25 went about 70 s and A41 over 90 s without one, so
+// a story keeps a tighter cadence than NARRATIVE_RULES' 60 to 90 seconds, which the explainer
+// videos keep.
+export const STORY_HOOK_RULES = `
+Story hooks (a brand story is held by the narration alone, so these replace the 60-to-90-second
+cadence and the three-loops-for-ten-minutes minimum of the hook rules above; every other hook rule
+stands):
+- About every 30 to 45 seconds of the body (about 130 to 200 spoken characters) at least one
+  question is left hanging: a question, an escalation (「但這還不是最怪的」), holding back the why,
+  or a turn. No stretch of the body runs longer than 45 seconds without one.
+- Every chapter but "now" ends its last sentence on one concrete, unanswered question or action
+  (a decision not yet made, a number not yet explained, a move whose result is not yet told), and
+  the next chapter's first sentence picks it up.
+- A hook stands on a fact of this story: a number, one person's decision, something that should
+  not have happened. Never an empty promise (「接下來更精采」「後面還有更驚人的」) and never a
+  table of contents. The limits above still hold: at most one forward hook in the whole story says
+  so out loud, and 「還記得…」 at most five times.
+- "loops" lists at least 8 for ten minutes of narration (about one for every 75 seconds; 10 for a
+  13-minute story), at least 3 of them planted in the hook, and every one is paid off.
+`.trim();
+
 const WRITER = `${STORY_COMMON}
 
 You are the writer, and you write ONE chapter of the story, "chapter", not the whole script: the
@@ -122,8 +145,9 @@ only)}.
 - "loops": what this chapter leaves hanging and what it pays off, [{"setup": "<a line id of this
   chapter>", "payoff": "<the line id that answers it, in this chapter or left out when a later
   one owns it>", "what": "<what it holds back, at most 40 characters>"}]. The hook plants at
-  least one; every chapter but "now" leaves one hanging, and "now" leaves none.
+  least three; every chapter but "now" leaves one hanging, and "now" leaves none.
 ${NARRATIVE_RULES}
+${STORY_HOOK_RULES}
 - Pictures follow "look" (every picture's style), "image_notes" as written, and "story_rules".
   With "sensitivity" "care", never draw the accident, the injury or the protest itself: draw the
   places, the systems and how people changed them. A recurring figure of "cast" is drawn from its
