@@ -1,0 +1,120 @@
+{
+  "status": "clear",
+  "reviewer": "university_34",
+  "reviewed_at": "2026-10-08T06:08:11.850842+00:00",
+  "base_commit": "0f723c137be334649494f7b4dc2366bcc795720a",
+  "head_commit": "f9880c401be5c0de8e4eba411fe5dc0cb91cef76",
+  "scope": "Read-only correctness review of the added adult-course production tools and the unchanged shared media/player dependencies they call. Focus: course/source isolation, stale speech/practice rejection, five audio tracks/four translated CC/no English CC, complete current-source packaging, independent voice/CC controls, and separated practice answers. No repository changes or production operations performed.",
+  "findings": [],
+  "unresolved_p1_p2": 0,
+  "evidence": [
+    {
+      "area": "course_and_source_isolation",
+      "files": [
+        "tools/video/adult_english/config.py",
+        "tools/video/adult_english/shared.py",
+        "tools/video/adult_english/profile.py",
+        "tools/video/adult_english/batch.py",
+        "tools/video/adult_english/visuals.py"
+      ],
+      "observations": [
+        "document_course validates top-level version, exact series title, course, every episode course, matching season/stage and absence of legacy grade.",
+        "require_output_course rejects an existing output resolution belonging to the other course before batch status/log creation.",
+        "Batch admission and worker completion require current source fingerprints plus recursive preservation of every authored field, then source-bound valid_final verification.",
+        "Renderer cache keys include course, stage, season, title and displayed text/reveal state; renderer profile binds course configuration, artwork dependencies, font files and recorded render library."
+      ]
+    },
+    {
+      "area": "stale_speech_practice_and_media",
+      "files": [
+        "tools/video/adult_english/verify_series.py",
+        "tools/video/adult_english/package_series.py",
+        "tools/video/preschool/audio.py",
+        "tools/video/preschool/build.py",
+        "tools/video/preschool/verify_series.py"
+      ],
+      "observations": [
+        "Preflight compares current authored fields including all reading, writing and answer text with the measured resolution; a claimed matching source hash cannot bypass the recursive comparison.",
+        "Shared source_fingerprint includes the entire authored episode and voice/rate/timing settings. Timing verification matches source-derived instruction and English-demo clip keys to measured PCM duration records.",
+        "Audio integrity checks source-bound sidecar hashes and final-bound receipts. Final verification binds actual bytes to the full-decode receipt and current renderer; picture verification checks source, renderer, bytes and hash."
+      ]
+    },
+    {
+      "area": "audio_and_cc_contract",
+      "files": [
+        "tools/video/adult_english/verify_series.py",
+        "tools/video/adult_english/package_series.py",
+        "tools/video/preschool/build.py",
+        "tools/video/preschool/verify_series.py"
+      ],
+      "observations": [
+        "Mux explicitly maps one picture stream, five locale audio streams and four non-English caption streams, records labels and runs full audio/video decode.",
+        "Final verification checks five AAC audio streams, four caption streams, exact locale metadata and no English caption language. Sidecar verification requires exactly five M4A masters and eight caption files.",
+        "Caption contents and timing are compared with resolved source, including hidden quiz translation before reveal and caption-free response intervals. The package file allowlist cannot include English SRT/VTT."
+      ]
+    },
+    {
+      "area": "complete_packages",
+      "files": [
+        "tools/video/adult_english/package_series.py",
+        "tools/video/adult_english/verify_series.py"
+      ],
+      "observations": [
+        "Packaging requires ordered ep01 through ep48 in the same course for both source and resolved documents, and the resolved argument must identify the output resolution actually verified.",
+        "It invokes fresh full verify_output and requires passed true; authoring-subset and partial reports cannot satisfy this condition.",
+        "All four season archives and the optional complete archive are staged from the explicit media allowlist, with fresh player, catalog and practice files; membership, uniqueness and CRC checks precede archive replacement.",
+        "Source and resolution hashes are rechecked before final replacement, and evidence records both hashes."
+      ]
+    },
+    {
+      "area": "independent_player_controls",
+      "files": [
+        "tools/video/adult_english/player.py",
+        "tools/video/preschool/player.py"
+      ],
+      "observations": [
+        "Adult adaptation preserves the shared playback logic and embeds the correct course/stage per episode. The picture video remains muted while the selected standalone locale audio plays.",
+        "Voice change loads only the selected M4A and restores playback position; CC change only selects embedded caption cues. CC options include four translations and off, with English offered only in the voice selector.",
+        "Caption JSON is embedded for local-file use and escaped against script termination. No actual browser playback was attempted in this review."
+      ]
+    },
+    {
+      "area": "practice_answer_separation",
+      "files": [
+        "tools/video/adult_english/practice.py"
+      ],
+      "observations": [
+        "HTML accumulates all reading/writing activity pages separately and appends answers only after those activities.",
+        "PDF emits one cover and two activity pages per episode before entering a separate loop that emits all answer/model pages: 145 pages for 48 lessons and 37 pages for a 12-lesson season.",
+        "Reading and writing ranges come from the selected course; PDF text and writing-line overflow checks fail rather than silently clipping authored content."
+      ]
+    }
+  ],
+  "verification_performed": [
+    "Read added config/shared/profile/build/batch/verify/package/player/practice/objects/visuals code and inspected relevant existing regression coverage.",
+    "Traced called shared audio/build/verify/player/package functions to establish actual track mapping, hashes, timing and independent UI behavior.",
+    "Confirmed the reviewed working-tree adult and shared dependency files are byte-equivalent to committed f9880c40 using git diff --exit-code."
+  ],
+  "tests": "No broad test reruns. Root reported the existing 40 adult checks and 2012 tools checks passed; this review does not claim to have rerun them.",
+  "limitations": [
+    "This is a code review, not final delivery verification: complete generated assets and archive contents must retain their separate runtime evidence.",
+    "Actual browser playback and real printing were not exercised by this read-only review."
+  ],
+  "reviewed_changed_file_sha256": {
+    "tools/video/adult_english/__init__.py": "74f4e52a148bb8c7c5e8e06eb233dbbf71b8ea47d87d05887762283f06eebf5c",
+    "tools/video/adult_english/art_qa.py": "0669ef3701fcbffee408868a369d0565377a5840f61585e27b5f31abee65f789",
+    "tools/video/adult_english/batch.py": "fc811e01fb933faff64ed6d051cc4db5f7e6fcc5992f89efda6821302f2928dd",
+    "tools/video/adult_english/build.py": "cdc2e417fbe6f40d6b1544430ef8789379c633d43ee9481c1727d30a23c03a48",
+    "tools/video/adult_english/config.py": "cff1018ab6223ffc387e1e2a7844df7d34996704832648e38e311e7aa2a39b45",
+    "tools/video/adult_english/objects.py": "b3c2eded0b387419166cbf24fc365c0565c53beb264a177f44a77b194ce6221b",
+    "tools/video/adult_english/package_series.py": "5d25b9c829409ae0cea395265df33f224de784512043ed5c73420df5c750e8d9",
+    "tools/video/adult_english/pipeline.test.mjs": "a0c48fe6b514a47f1591261b4e948ededbc1e1311ed75a3c90761833f768731b",
+    "tools/video/adult_english/player.py": "b248ed2189b868a6207b6c935e3f05f891dd7e530ddbaaf6a34e30035c83e316",
+    "tools/video/adult_english/practice.py": "a8d309abae99c1efd627f146a2e836bddd84c69165b00407d2c19ad1249e346c",
+    "tools/video/adult_english/profile.py": "95c9739c5ec4144313b2b30ff9b9efa8ac2da889cb94a90e761f6388f77261ae",
+    "tools/video/adult_english/shared.py": "0d8309b193fb61a4e7e8d709cd3b23dbd2ff842b147ab086143c078ea05d83e8",
+    "tools/video/adult_english/test_pipeline.py": "1ec72f809f1cce4364486d7c0d668d386f40c121c2df8154a60e23dc6a519c23",
+    "tools/video/adult_english/verify_series.py": "bc53bc4143f22f8449004111051c3ede02e4b3bede2d2eb91ba68d9f175da0c6",
+    "tools/video/adult_english/visuals.py": "b899abb943cf20aa364dd9d768af0c3a882301e106b19cc8418939fa2a61f059"
+  }
+}
