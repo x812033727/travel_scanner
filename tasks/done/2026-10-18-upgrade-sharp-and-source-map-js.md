@@ -1,13 +1,13 @@
 ---
 id: 2026-10-18-upgrade-sharp-and-source-map-js
 title: Upgrade sharp and source-map-js for the 2026-10-18 npm audit advisories
-status: in-progress
+status: done
 priority: P2
 area: ops
 owner: claude-opus-5.5-npm-audit
 claimed_at: 2026-10-18T08:28:18Z
 created_at: 2026-10-18T08:28:08Z
-completed_at:
+completed_at: 2026-10-18T09:45:47Z
 branch: claude/npm-audit-2026-10-18
 depends_on: []
 scope:
@@ -37,7 +37,7 @@ Both have patched releases inside the ranges their dependents already ask for.
 - [x] `npm audit --omit=dev --audit-level=high` reports 0 vulnerabilities.
 - [x] `node tools/npm-audit-gate.mjs` on the full `npm audit --json` says ok; only the
       already exempted braces advisory (review by 2026-11-04) remains.
-- [ ] lint, typecheck and the web tests pass with the new lockfile.
+- [x] lint, typecheck and the web tests pass with the new lockfile (CI on #1566 all green).
 
 ## Steps
 
@@ -46,7 +46,7 @@ Both have patched releases inside the ranges their dependents already ask for.
       on about seventy unrelated entries, so the lockfile was rebuilt from main's copy with
       just the 28 changed entries (sharp 0.35.5, its `@img/sharp-*` 0.35.5 and
       `@img/sharp-libvips-*` 1.3.4 binaries, source-map-js 1.2.2).
-- [ ] Run lint, typecheck, web tests and load sharp on this machine.
+- [x] Run lint, typecheck, web tests and load sharp on this machine.
 
 ## How to verify
 
@@ -65,3 +65,9 @@ npm run lint:web && npm run typecheck:web && npm run test:web
 - The remaining full-tree finding, braces GHSA-vfj7-8cjw-p6xm through
   eslint-config-next, has no patched release and is already exempted in
   `tools/npm-audit-allow.json` until 2026-11-04; nothing new needs an owner decision.
+- Local results on Windows (Node 24.13.0): lint and typecheck pass; sharp 0.35.5 loads
+  (vips 8.18.7, rsvg 2.63.2) and converts PNG and SVG to WebP; vitest took 48 minutes and
+  failed one timing test, `hotspot-restaurants-panel.test.tsx` "discards occupied
+  confirmation when the cancel context changes" (findAllByRole timeout under load), which
+  passes in CI's web-unit. `next build` was not run here for lack of disk space.
+- PR #1566. After it merges, dispatch the npm audit workflow once and close #1343.
