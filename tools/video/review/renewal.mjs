@@ -128,6 +128,8 @@ export async function stageRenewal({ from, out, original, body, branding, client
   const bodySha = await sha256File(body);
   const pin = validateBranding(readJson(branding, null), { base: path.dirname(path.resolve(branding)) });
   requireThat(pin, "a branding package is required");
+  // A renewal joins the retained body after the intro; a pin placed after the first chapter needs a rebuild instead.
+  requireThat(!pin.intro_at, "a renewal keeps the intro at the start; a branding pin with intro_at after_first_chapter needs assemble instead");
   for (const role of ["intro", "outro"]) requireThat(await sha256File(pin[role].file) === pin[role].sha256, `${role} bytes do not match the branding pin`);
   const final = path.join(sourceDir, "final.mp4");
   const finalSha = await sha256File(final);

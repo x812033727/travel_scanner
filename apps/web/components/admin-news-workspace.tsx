@@ -57,7 +57,7 @@ const statusTone: Partial<Record<NewsCandidateStatus, string>> = {
 
 // What happened to a candidate, which decides the explanation and the buttons it gets.
 type Situation =
-  | "zhDraft" | "translationHold" | "readyToPublish" | "finalEditHold" | "jevFinalHold"
+  | "zhDraft" | "translationHold" | "readyToPublish" | "readyJudgeHold" | "finalEditHold" | "jevFinalHold"
   | "shadow" | "jevHold" | "hardChecksHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "navigationRepaired" | "redraft"
   | "failed" | "needsEvidence" | "published" | "closed" | "judgeClosed" | "working";
 type Action = "approve" | "publish" | "verify" | "notDuplicate" | "refresh" | "retry" | "reject" | "incident" | "reopen";
@@ -74,6 +74,9 @@ const situationActions: Record<Situation, readonly Action[]> = {
   translationHold: ["approve", "reject"],
   hardChecksHold: ["approve", "verify", "reject"],
   readyToPublish: ["publish", "verify", "reject"],
+  // Ready by every check, but the AI judge's last call asks for a correction: the route is the
+  // editor and a re-check. Publishing stays the owner's explicit decision, with its server checks.
+  readyJudgeHold: ["publish", "verify", "reject"],
   // The five-locale article is saved; the final editor or Jev's last call held it back.
   finalEditHold: ["publish", "verify", "reject"],
   jevFinalHold: ["publish", "verify", "reject"],
@@ -104,7 +107,8 @@ function situationOf(candidate: NewsCandidateSummary): Situation {
       if (candidate.error_code === "news_evidence_changed") return "evidenceChanged";
       if (candidate.error_code === "news_navigation_evidence_repaired") return "navigationRepaired";
       if (candidate.error_code === "news_zh_draft_ready") return "zhDraft";
-      if (candidate.error_code === "news_ready_to_publish") return "readyToPublish";
+      // A rerun or a re-check clears judge_decision, so "manual" here is the judge's current answer.
+      if (candidate.error_code === "news_ready_to_publish") return candidate.judge_decision === "manual" ? "readyJudgeHold" : "readyToPublish";
       if (candidate.error_code === "news_jev_manual") return "jevHold";
       if (candidate.error_code === "news_final_edit_hold") return "finalEditHold";
       if (candidate.error_code === "news_jev_final_hold") return "jevFinalHold";
@@ -259,6 +263,8 @@ export function AdminNewsWorkspace() {
   // A switched-off source keeps its last status but is no longer scanned, so it is not
   // counted, the same as the dashboard's news_sources_stuck.
   const isStuck = (item: NewsSource) => item.enabled && item.last_status === "stuck";
+  // A scan that worked can still leave a note (entries left out as too old): grey, not red.
+  const sourceFailed = (item: NewsSource) => ["failed", "validation_failed", "stuck", "partial"].includes(item.last_status);
   const stuckCount = sources.filter(isStuck).length;
   const orderedSources = [...sources].sort((a, b) => Number(isStuck(b)) - Number(isStuck(a)));
 
@@ -530,7 +536,7 @@ export function AdminNewsWorkspace() {
         <label>Parser config (JSON)<textarea className={fieldClass} rows={4} value={sourceDraft.config} onChange={(event) => setSourceDraft({ ...sourceDraft, config: event.target.value })} /></label></div>
         <label className="mt-3 flex min-h-11 items-center gap-2"><input type="checkbox" checked={sourceDraft.firstParty} disabled={sourceDraft.role !== "evidence"} onChange={(event) => setSourceDraft({ ...sourceDraft, firstParty: event.target.checked })} />{copy.firstParty}</label><Button className="mt-3" disabled={!manage.allowed || busy || !sourceDraft.name || !sourceDraft.url} onClick={() => void addSource()}>{copy.add}</Button></section>
         {stuckCount > 0 && <p role="alert" className="rounded-xl border border-red-300 bg-red-50 p-3 text-sm font-semibold text-red-800">{fillNewsCopy(copy.stuckSources, { count: stuckCount })}</p>}
-        <section className="grid gap-3">{orderedSources.map((item) => <article key={item.id} className={isStuck(item) ? `${panelClass} border-red-400` : panelClass}><div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="font-bold">{item.name}</h3><a href={item.url} target="_blank" rel="noopener noreferrer" className="break-all text-sm text-[var(--teal)] underline">{item.url}</a><p className="mt-2 text-sm text-[var(--muted)]">{item.vertical} · {item.role} · {item.last_status} · {item.scan_interval_minutes}m</p>{item.last_error && <p className="mt-2 text-sm text-red-700">{item.last_error}</p>}</div><div className="flex gap-2"><Button secondary disabled={!manage.allowed || busy} onClick={() => void run(async () => { await api(`/admin/news/sources/${item.id}/${item.enabled ? "scan" : "validate"}`, { method: "POST" }); })}>{item.enabled ? copy.scanNow : copy.validate}</Button><Button disabled={!manage.allowed || busy} onClick={() => void patchSource(item, !item.enabled)}>{item.enabled ? copy.disabled : copy.enabled}</Button></div></div></article>)}</section></div>}
+        <section className="grid gap-3">{orderedSources.map((item) => <article key={item.id} className={isStuck(item) ? `${panelClass} border-red-400` : panelClass}><div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="font-bold">{item.name}</h3><a href={item.url} target="_blank" rel="noopener noreferrer" className="break-all text-sm text-[var(--teal)] underline">{item.url}</a><p className="mt-2 text-sm text-[var(--muted)]">{item.vertical} · {item.role} · {item.last_status} · {item.scan_interval_minutes}m</p>{item.last_error && <p className={`mt-2 text-sm ${sourceFailed(item) ? "text-red-700" : "text-[var(--muted)]"}`}>{item.last_error}</p>}</div><div className="flex gap-2"><Button secondary disabled={!manage.allowed || busy} onClick={() => void run(async () => { await api(`/admin/news/sources/${item.id}/${item.enabled ? "scan" : "validate"}`, { method: "POST" }); })}>{item.enabled ? copy.scanNow : copy.validate}</Button><Button disabled={!manage.allowed || busy} onClick={() => void patchSource(item, !item.enabled)}>{item.enabled ? copy.disabled : copy.enabled}</Button></div></div></article>)}</section></div>}
       {tab === "settings" && settings && <section className={`${panelClass} space-y-5`}><label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={settings.enabled} onChange={(event) => setSettings({ ...settings, enabled: event.target.checked })} />{copy.enable}</label>
         <label>{copy.mode}<select className={fieldClass} value={settings.mode} onChange={(event) => setSettings({ ...settings, mode: event.target.value as NewsSettings["mode"] })}><option value="shadow">{copy.shadow}</option><option value="automatic">{copy.automatic}</option></select></label>
         <div className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm">

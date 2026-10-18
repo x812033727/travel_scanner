@@ -16,7 +16,9 @@ import { animeBodyDurationProblems, animeRuntimeProof } from "./duration.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, episodeNumbers, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
 import { burnIn, drawnShotScenes, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveMusic, resolveSfx, sfxHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
+import { videoLexicon } from "./lexicon-store.mjs";
 import { lintVideo, productionClipProblems } from "./lint.mjs";
+import { isNarrated, NARRATIVE_REVIEW, narrativeReviewMatches } from "./narrative.mjs";
 import { dubLocales, dubScript, speechCurrent, speechLexicon, translationHash } from "../dubs/plan.mjs";
 import { atomicWrite, contentPackFile, docDir, isInside, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
 import { LOCALES, narrationLocale, textHash } from "./schema.mjs";
@@ -189,7 +191,9 @@ export function loadProject({ slug, file, root }) {
     if (translation) translations[locale] = translation;
   }
   const shelf = path.dirname(dir);
-  const shelfLexicon = readJson(path.join(shelf, "lexicon.json"), emptyLexicon());
+  const shelfLexicon = existsSync(path.join(dir, "story-lexicon"))
+    ? videoLexicon({ slug: path.basename(dir), dir }).lexicon
+    : readJson(path.join(shelf, "lexicon.json"), emptyLexicon());
   const others = [];
   if (existsSync(shelf)) {
     for (const entry of readdirSync(shelf, { withFileTypes: true })) {
@@ -566,7 +570,12 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const steps = stepsFor(doc).map((id) => ({ id, ...definitions[id] }));
   const next = steps.find((step) => !step.done) ?? null;
   const dubs = drama || compilation ? {} : dubsStatus(project, workdir, speech);
-  return { steps, next, stop: stopRequested(workdir), lint, dubs };
+  // The storytelling panel (core/narrative.mjs): missing until it is asked, stale once the script
+  // or the questions it read have changed. It is not a checklist step; the worker asks it
+  // between the listener's edit and the gates, and `narrative --slug` asks it on the owner route.
+  const panel = valid && !compilation && isNarrated(doc, project.series) ? readJson(path.join(workdir, ...NARRATIVE_REVIEW), null) : null;
+  const narrative = panel ? { status: narrativeReviewMatches(panel, doc) ? (panel.passed ? "passed" : "failed") : "stale", failed: panel.failed ?? [] } : { status: "missing", failed: [] };
+  return { steps, next, stop: stopRequested(workdir), lint, dubs, narrative };
 }
 
 const isText = (value) => typeof value === "string" && value.trim().length > 0;

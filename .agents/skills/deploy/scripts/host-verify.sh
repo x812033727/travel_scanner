@@ -199,21 +199,29 @@ verdict containers-rebuilt-this-deploy "$rb_ok" "rebuilt_after_context_commit=$r
 
 # ---------------------------------------------------------------- 5 alembic-head
 section alembic-head
-# The expected head is the api image's own: `alembic heads` reads the migration scripts baked into it,
-# so the database must stand on that single head. An image that missed a migration is a stale image,
-# and containers-rebuilt-this-deploy is the check that catches it.
+# The expected head is the api image's own. `alembic current` cannot resolve a newer database
+# revision from a rollback image, so ask the same read-only guard used by Compose migrate. It
+# verifies all nine account limits and required schema before reporting the exact reviewed
+# 0133-on-0132 exception. Every other mismatch still fails this check.
 out=$($COMPOSE exec -T api alembic heads 2>&1)
 heads=$(echo "$out" | grep -E '^[0-9]{4,}_[^ ]* .*\(head\)' | tr -d '\r' || true)
 if [ -n "$heads" ]; then echo "heads: $heads"; else echo "no head line; raw output:"; echo "$out" | tail -5; fi
 head_n=$(echo "$heads" | count '^[0-9]{4,}_')
 alembic_head=$(echo "$heads" | head -1 | awk '{print $1}')
-out=$($COMPOSE exec -T api alembic current 2>&1)
-revs=$(echo "$out" | grep -E '^[0-9]{4,}_' | tr -d '\r' || true)
-if [ -n "$revs" ]; then echo "current: $revs"; else echo "no revision line; raw output:"; echo "$out" | tail -5; fi
-rev_n=$(echo "$revs" | count '^[0-9]{4,}_')
+out=$($COMPOSE exec -T api python -m app.migration_guard --status 2>&1)
+guard_rc=$?
+status_line=$(echo "$out" | grep '^SCHEMA_STATUS ' | tr -d '\r' | tail -1 || true)
+if [ -n "$status_line" ]; then echo "$status_line"; else echo "no schema status line; raw output:"; echo "$out" | tail -5; fi
+schema_state=$(echo "$status_line" | sed -n 's/^SCHEMA_STATUS state=\([^ ]*\) current=[^ ]* expected=[^ ]*$/\1/p')
+current=$(echo "$status_line" | sed -n 's/^SCHEMA_STATUS state=[^ ]* current=\([^ ]*\) expected=[^ ]*$/\1/p')
+expected=$(echo "$status_line" | sed -n 's/^SCHEMA_STATUS state=[^ ]* current=[^ ]* expected=\([^ ]*\)$/\1/p')
 ok=0
-if [ "$head_n" -eq 1 ] && [ "$rev_n" -eq 1 ]; then case "$revs" in "$alembic_head (head)"*) ok=1 ;; esac; fi
-verdict alembic-head "$ok" "heads=$head_n revision_lines=$rev_n current=$(echo "$revs" | head -1) expected=${alembic_head:-unknown}"
+if [ "$head_n" -eq 1 ] && [ "$guard_rc" -eq 0 ] && [ "$expected" = "$alembic_head" ]; then
+  if [ "$schema_state" = exact ] && [ "$current" = "$alembic_head" ]; then ok=1; fi
+  if [ "$schema_state" = rollback-compatible ] && [ "$alembic_head" = 0132_video_pilot_budget ] \
+     && [ "$current" = 0133_story_followon_budget ]; then ok=1; fi
+fi
+verdict alembic-head "$ok" "heads=$head_n guard_rc=$guard_rc state=${schema_state:-missing} current=${current:-unknown} image_head=${alembic_head:-unknown}"
 
 # ---------------------------------------------------------------- 6 api-health-ready-200
 section api-health-ready-200
@@ -287,16 +295,23 @@ unpaired=$(echo "$wlog" | count 'not paired yet')
 # That is the owner's switch, not a fault, so an exit 4 whose last line before it (the Shorts knock's
 # lines aside) carries that message is counted apart. drama_off is the message's "drama ... disabled"
 # part as UTF-8 bytes in octal, so the transport cannot mangle it.
+# The owner's monthly draft cap is the same kind of stop: the API refuses the draft before any model
+# call (video_ai_budget_exhausted, "本月已產生 N 支草稿，達到上限 N 支", apps/api/app/video_automation/usage.py)
+# and `auto` exits 3. Only an exit 3 right after that message is counted apart; any other exit 3
+# still fails. draft_cap is its "支草稿，達到上限" part, in octal for the same reason.
 drama_off=$(printf '\346\274\253\345\212\207\345\267\262\345\201\234\347\224\250')
-read -r exited drama_exits <<< "$(echo "$wlog" | awk -v off="$drama_off" '
-  /auto exited with / {if ($NF == 4 && index(prev, off)) d++; else n++; next}
+draft_cap=$(printf '\346\224\257\350\215\211\347\250\277\357\274\214\351\201\224\345\210\260\344\270\212\351\231\220')
+# tools/deploy-host-verify.test.mjs runs this awk program on sample logs.
+read -r exited drama_exits cap_exits <<< "$(echo "$wlog" | awk -v off="$drama_off" -v cap="$draft_cap" '
+  /auto exited with / {if ($NF == 4 && index(prev, off)) d++; else if ($NF == 3 && index(prev, cap)) c++; else n++; next}
   /^video-worker: shorts: / {next}
   {prev = $0}
-  END {print n + 0, d + 0}')"
-echo "knock_failed=$knock (1 right after start is expected) auto_exited=$exited (exit 4 after the AI-drama-off answer, not counted: $drama_exits) not_paired=$unpaired"
+  END {print n + 0, d + 0, c + 0}')"
+echo "knock_failed=$knock (1 right after start is expected) auto_exited=$exited (exit 4 after the AI-drama-off answer, not counted: $drama_exits; exit 3 at the monthly draft cap, not counted: $cap_exits) not_paired=$unpaired"
+[ "$cap_exits" -gt 0 ] && echo "NOTE the worker is at the owner's monthly draft cap; it writes no draft until the month turns or the cap is raised"
 ok=0
 if [ "$st" = running ] && [ "${rc:-1}" = 0 ] && [ "$w_started_ok" -eq 1 ] && [ "$knock" -le 1 ] && [ "$exited" -eq 0 ] && [ "$unpaired" -eq 0 ]; then ok=1; fi
-verdict video-worker-started "$ok" "state=${st:-none} restarts=${rc:-?} started_after_head=$w_started_ok knock_failed=$knock auto_exited=$exited auto_exit4_drama_off=$drama_exits not_paired=$unpaired"
+verdict video-worker-started "$ok" "state=${st:-none} restarts=${rc:-?} started_after_head=$w_started_ok knock_failed=$knock auto_exited=$exited auto_exit4_drama_off=$drama_exits auto_exit3_draft_cap=$cap_exits not_paired=$unpaired"
 
 # ---------------------------------------------------------------- EXTRA CHECKS: this deploy's new code
 # Add one section per thing the diff changed, each proving a string or behaviour that exists only

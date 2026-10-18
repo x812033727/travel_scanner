@@ -1,6 +1,6 @@
 # 品牌故事：工人怎麼把一個企劃做成影片
 
-品牌故事是 AI 漫劇底下的一種作品類型（設計在 `docs/videos/STORY.md`）：一支 12–15 分鐘、只有旁白、約 90 張卡通靜態圖加緩慢運鏡、燒錄字幕的非虛構短片，講一個品牌、一件日用品或一個天天在用的標準怎麼來、生意怎麼運作。影片的 `format` 仍是 `drama`，100 個故事是同一部 `kind: "story"` 作品的 100 集。這份寫**工人怎麼做**與人手動接手時看哪裡；實作在 `tools/video/automation/story.mjs`（提示詞在 `tools/video/automation/story-prompts.mjs`），測試在 `tools/video/automation/story.test.mjs`。
+品牌故事是 AI 漫劇底下的一種作品類型（設計在 `docs/videos/STORY.md`）：新版約 10 分鐘、只有旁白、MiniMax 可愛插圖加緩慢運鏡，繁中字幕做成可關閉的 CC，成片核准後站主可手動選英／日／韓配音；原 12–15 分鐘、約 90 張圖與燒錄字幕規格留作歷史設計。它講一個品牌、一件日用品或一個天天在用的標準怎麼來、生意怎麼運作。影片的 `format` 仍是 `drama`，100 個故事是同一部 `kind: "story"` 作品的 100 集。這份寫**工人怎麼做**與人手動接手時看哪裡；實作在 `tools/video/automation/story.mjs`（提示詞在 `tools/video/automation/story-prompts.mjs`），測試在 `tools/video/automation/story.test.mjs`。
 
 ## 工人拿到什麼
 
@@ -54,6 +54,7 @@
 - 提示詞、鏡頭、角色外觀不得出現 `names` 裡的任何名字（lint 的故事規則）；撰稿時就先 lint 那一章，名字出現在提示詞裡就退回那一章，任何圖片都還沒畫。圖片修正（`writer:story-fix`）也是先 lint，出現名字的修正不保存。
 - 反覆出場的人物（企劃的 `cast`，0–3 個）寫進 `characters`：名稱用 id 的字（拿掉名字），外觀照企劃，聲音用旁白的（沒有人說話，但 lint 要有）。沒有 `cast` 的故事沒有設定圖兩步。
 - `image_notes` 與 `sensitivity: "care"` 原樣交給撰稿；`care` 不畫事故本身，畫制度與人怎麼改變。
+- 縮圖：企劃的 `thumbnail.brand`（選填，一行最多 12 字，而且要在 38 px 下放得進左欄：中日韓字一字 1 em、拉丁字母約 0.6 em，合計約 11 em 為限，所以 12 個中文字會被退回；`null` 等於沒有；例如「SEIKO」「米其林」「A4 紙」）會取代左上的「品牌故事」小標籤，用頻道字型的大字橘色畫公司名，headline 在下面；不放商標圖、不讓 AI 畫 logo。字級依欄寬自動算（`tools/video/templates/templates.mjs` 的 `brandFontSize`，上限 168 px），太長的名字會比 headline 小，`node tools/video/story-plans/validate.mjs` 會給警告。沒有 `brand` 的舊企劃照舊畫標籤。
 
 ## 工作區裡多的東西
 
@@ -80,9 +81,15 @@
 - `node tools/video/cli.mjs status --slug <SLUG>` 看做到哪；故事的步驟就是漫劇的（沒有 `cast` 時少兩步 look）。
 - 撰稿、查核、審稿的提示詞給人讀的版本在 `.agents/skills/youtube-video/references/prompts/`（`writer-story.md`、`verifier-story.md`、`listener-story.md`）；工人實際送出的是 `story-prompts.mjs`，兩邊不一致以程式為準。
 - 手動改一章：改 `story/chapters/<章>.json`，下一輪工人合併、lint；改了句子的章要重新查核的話，把 `auto.json` 那一章的 `checked` 設成 `false`。不要直接改 `video.json`：下一次合併會用各章的檔覆蓋它。
+- 已開工的故事補上縮圖大字品牌名（企劃的 `thumbnail.brand`，站主 2026-10-18：縮圖要一眼看出是哪家公司）：
+  1. 改影片資料夾（`docs/videos/` 底下以 slug 命名的那個）裡 `series.json` 的 `plan.thumbnail`，加 `"brand": "SEIKO"`（一行純文字，最多 12 字，不要 `**`、不要換行；用大家搜尋的那個名字，四、五個字最大最清楚）。還在逐章撰稿的故事改這裡就夠：下一輪合併（`composeStory`）會寫進 `video.json`。
+  2. 六章已合併過的故事（劇本關卡之後），`video.json` 要等下一次合併才會跟上，而之後可能不再合併，所以同一個字也直接寫進同一個資料夾 `video.json` 的 `thumbnail.data.brand`（`tag: "品牌故事"` 留著不用刪，有 `brand` 時樣板不畫它）。這是「不要直接改 `video.json`」的唯一例外。
+  3. `node tools/video/cli.mjs lint --slug <SLUG>`，再 `node tools/video/cli.mjs render --slug <SLUG>`：卡片走快取，只有 `thumbnail.jpg`（與有翻譯字的語言縮圖）重畫。`visualHash` 不算 `brand`（`tools/video/core/timeline.mjs`），所以關鍵影格、片段、`assemble`、`final.mp4` 與它的核准都不會過期、不會重買任何素材；反過來說，`status` 也不會因為加了 brand 叫你重跑 render，要自己跑。
+  4. 打開工作區的 `thumbnail.jpg` 看一眼，再 `node tools/video/cli.mjs qa --slug <SLUG>`、`node tools/video/cli.mjs package --slug <SLUG>`，`upload/thumbnail.jpg` 就是新圖。站主已經按過「可以上架」的，package 重寫後要請站主再看一次；已經上傳到 YouTube 的，在 Studio 手動換縮圖。
 
 ## 坑
 
 - 漫劇設定分頁的「各階段常設指示」也會接在故事的提示詞後面（格式是 `drama`），而且寫明「和上面的規則衝突時以它為準」。寫常設指示時要記得故事也會讀到。
 - `look.motion` 在 lint 最多 300 字，伺服器允許 400：超過的部分合併時會被截掉。
 - 放棄一支故事之外，目前沒有「接受這個長度」或「跳過這個故事」的開關；長度卡住的影片重試也會再卡一次。
+- 聽眾審稿之後、劇本關卡之前的說故事盲評（`verifier:narrative`，`core/narrative.mjs`）在品牌故事是**每輪問兩位讀者**（兩次獨立呼叫、各自新 session，payload 只差 `reader: 1|2`，免得試點的持久收據把第一位的答案重播成第二位的；站主 2026-10-18）：必答題兩位都答「否」才算沒過，一位答「是」且引了 `[行 id]` 就算過；退回聽眾的問題只列兩位都否的題目、附兩位的引用。`review/narrative.json` 的 `answers`／`failed` 是合併結果，`readers` 是兩位各自的答案。其中一次呼叫失敗就整輪不記錄、照單次失敗處理。教學與漫劇仍只問一位。

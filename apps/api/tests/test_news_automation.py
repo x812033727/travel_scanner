@@ -9,7 +9,7 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Any, cast
-from unittest.mock import AsyncMock, Mock
+from unittest.mock import AsyncMock, Mock, patch
 from uuid import UUID, uuid4
 
 import httpx
@@ -233,6 +233,54 @@ async def test_safe_fetcher_checks_redirect_robots_and_stream_size() -> None:
     )
     with pytest.raises(UnsafeNewsUrl, match="too large"):
         await oversized_fetcher.fetch("https://example.com/feed", allowed_hosts={"example.com"})
+    # A listing the source allows more for (GitHub's 2.3 MB full-text feed) is read whole.
+    larger = await oversized_fetcher.fetch(
+        "https://example.com/feed", allowed_hosts={"example.com"}, max_bytes=3 * 1024 * 1024
+    )
+    assert len(larger.body) == MAX_RESPONSE_BYTES + 1
+    await client.aclose()
+
+
+def test_a_listing_may_be_allowed_more_bytes_but_never_past_the_ceiling() -> None:
+    from app.news_automation.fetch import MAX_LISTING_BYTES, listing_byte_limit
+
+    assert listing_byte_limit(None) == MAX_RESPONSE_BYTES
+    assert listing_byte_limit({"max_response_bytes": 6291456}) == 6291456
+    assert listing_byte_limit({"max_response_bytes": 10**12}) == MAX_LISTING_BYTES
+    for raw in (1024, -5, True, "6291456", 6.5e6):
+        assert listing_byte_limit({"max_response_bytes": raw}) == MAX_RESPONSE_BYTES
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("body", "readable"),
+    [
+        (b'\xef\xbb\xbf\n<?xml version="1.0"?><rss><channel/></rss>', True),
+        (b"<rss version='2.0'><channel/></rss>", True),
+        (b"User-agent: *\nDisallow:", False),
+    ],
+)
+async def test_an_xml_feed_served_as_plain_text_is_read_as_xml(body: bytes, readable: bool) -> None:
+    # mistral.ai/news/rss answers text/plain; any other plain text is still refused.
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /", request=request)
+        return httpx.Response(
+            200,
+            content=body,
+            headers={"Content-Type": "text/plain; charset=UTF-8"},
+            request=request,
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    if readable:
+        result = await fetcher.fetch("https://mistral.ai/news/rss", allowed_hosts={"mistral.ai"})
+        assert result.content_type == "application/xml"
+        assert result.body == body
+    else:
+        with pytest.raises(UnsafeNewsUrl, match="content type: text/plain"):
+            await fetcher.fetch("https://mistral.ai/news/rss", allowed_hosts={"mistral.ai"})
     await client.aclose()
 
 
@@ -475,6 +523,54 @@ async def test_source_activation_requires_a_readable_feed() -> None:
         status_code=200,
         content_type="application/rss+xml",
         body=b"<rss><channel/></rss>",
+    )
+    with pytest.raises(AppError, match="讀出任何新聞項目"):
+        await validate_source_configuration(source, fetcher=fetcher)
+
+
+@pytest.mark.asyncio
+async def test_a_topic_filtered_source_with_no_match_this_week_still_validates() -> None:
+    # The FSC listing is read only for crypto titles; on 2026-10-16 none of its newest releases
+    # was one, and validation refused a listing it could read. The listing and an article are
+    # checked on the releases the title filter set aside; a page with no releases still fails.
+    config: dict[str, object] = {
+        "include_path_prefixes": ["/ch/home.jsp"],
+        "include_query_contains": ["mcustomize=news_view.jsp"],
+        "include_title_keywords": ["虛擬資產", "穩定幣"],
+        "article_classes": ["maincontent"],
+    }
+    source = NewsSource(
+        name="Taiwan FSC press releases (crypto)",
+        url="https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2",
+        format="html",
+        role="evidence",
+        vertical="crypto",
+        is_first_party=True,
+        config_json=config,
+    )
+    # Its first item is a release of the securities bureau on another site, which the scanner
+    # skips, so the article checked is the next one.
+    listing = (
+        '<a href="https://www.sfb.gov.tw/ch/home.jsp?id=95&parentpath=0,2'
+        '&mcustomize=news_view.jsp&dataserno=9">上市櫃公司永續發展行動方案</a>'
+        '<a href="home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=1">'
+        "本國銀行115年8月底辦理中小企業放款情形</a>"
+    ).encode()
+    fetcher = AsyncMock()
+    fetcher.fetch.side_effect = [
+        FetchResult(url=source.url, status_code=200, content_type="text/html", body=listing),
+        FetchResult(
+            url="https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=1",
+            status_code=200,
+            content_type="text/html",
+            body='<div class="maincontent">本國銀行中小企業放款餘額持續增加。</div>'.encode(),
+        ),
+    ]
+    await validate_source_configuration(source, fetcher=fetcher)
+    assert fetcher.fetch.call_args_list[1].args[0].endswith("dataserno=1")
+    fetcher.fetch.side_effect = None
+    fetcher.fetch.return_value = FetchResult(
+        url=source.url, status_code=200, content_type="text/html", body=b"<a href='/menu'>Menu</a>"
     )
     with pytest.raises(AppError, match="讀出任何新聞項目"):
         await validate_source_configuration(source, fetcher=fetcher)
@@ -1028,8 +1124,25 @@ def test_news_tls_context_still_verifies_but_drops_python_313_strict_mode() -> N
     context = tls_context()
     # Taiwan's government sites (TWCA chain) fail the strict X.509 profile Python 3.13 turns on.
     assert not context.verify_flags & ssl.VERIFY_X509_STRICT
+    assert context.verify_flags & ssl.VERIFY_X509_PARTIAL_CHAIN
     assert context.verify_mode == ssl.CERT_REQUIRED
     assert context.check_hostname is True
+    assert context.cert_store_stats()["x509_ca"] > 0
+    assert context.minimum_version >= ssl.TLSVersion.TLSv1_2
+
+
+def test_news_tls_context_ignores_the_alpn_offer_httpcore_makes() -> None:
+    # Cloudflare challenged the CFTC feed (403) for a handshake offering ALPN and let the
+    # same pinned request through without the offer. httpcore sets the offer on the context
+    # it is given at every connect, so the context ignores it.
+    import ssl
+
+    from app.news_automation.fetch import tls_context
+
+    context = tls_context()
+    with patch.object(ssl.SSLContext, "set_alpn_protocols") as offered:
+        context.set_alpn_protocols(["http/1.1"])
+    offered.assert_not_called()
 
 
 @pytest.mark.asyncio
@@ -1713,6 +1826,189 @@ async def test_robots_txt_is_read_once_per_host_for_the_life_of_a_fetcher() -> N
     with pytest.raises(UnsafeNewsUrl, match="robots"):
         await fetcher.fetch("https://example.com/private/c", allowed_hosts={"example.com"})
     assert robots_reads == ["example.com"]
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+async def test_deepmind_article_redirects_use_configured_hosts_and_robots_rules() -> None:
+    requests: list[tuple[str, str]] = []
+    source_rows = json.loads(
+        (Path(news_automation_package.__file__).parent / "sources.json").read_text(
+            encoding="utf-8"
+        )
+    )["sources"]
+    source = next(row for row in source_rows if row["name"] == "Google DeepMind blog")
+    redirect_hosts = set(source["allowed_redirect_hosts"])
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        host, path = request.headers["host"], request.url.path
+        requests.append((host, path))
+        if host == "deepmind.google":
+            if path == "/robots.txt":
+                return httpx.Response(200, text="User-agent: *\nAllow: /", request=request)
+            if path == "/blog/developing-gemini-4-argon-responsibly-and-safely/":
+                return httpx.Response(
+                    302,
+                    headers={
+                        "Location": "https://blog.google/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/"
+                    },
+                    request=request,
+                )
+            assert path == "/blog/gemini-4-argon-for-robotics/"
+            return httpx.Response(
+                302,
+                headers={
+                    "Location": "https://developers.googleblog.com/gemini-4-argon-for-robotics"
+                },
+                request=request,
+            )
+        if host == "blog.google":
+            if path == "/robots.txt":
+                return httpx.Response(200, text="User-agent: *\nAllow: /", request=request)
+            assert path == (
+                "/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/"
+            )
+            return httpx.Response(
+                200,
+                content=b"<html><main>Official safety story.</main></html>",
+                headers={"Content-Type": "text/html"},
+                request=request,
+            )
+        if path == "/robots.txt":
+            return httpx.Response(301, headers={"Location": "/robots.txt/"}, request=request)
+        if path == "/robots.txt/":
+            return httpx.Response(200, text="User-agent: *\nDisallow: /private", request=request)
+        if path == "/gemini-4-argon-for-robotics":
+            return httpx.Response(
+                301, headers={"Location": "/gemini-4-argon-for-robotics/"}, request=request
+            )
+        assert path == "/gemini-4-argon-for-robotics/"
+        return httpx.Response(
+            200,
+            content=(
+                b'<html><section class="blocks-container"><p>Official article.</p>'
+                b"</section></html>"
+            ),
+            headers={"Content-Type": "text/html"},
+            request=request,
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    result = await fetcher.fetch(
+        "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
+        allowed_hosts={"deepmind.google"},
+        allowed_redirect_hosts=redirect_hosts,
+    )
+    assert result.url == "https://developers.googleblog.com/gemini-4-argon-for-robotics/"
+    assert read_article(result.body, result.url, source["config"]).text == "Official article."
+    safety = await fetcher.fetch(
+        "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/",
+        allowed_hosts={"deepmind.google"},
+        allowed_redirect_hosts=redirect_hosts,
+    )
+    assert safety.url.startswith("https://blog.google/innovation-and-ai/")
+    assert read_article(safety.body, safety.url, source["config"]).text == (
+        "Official safety story."
+    )
+    with pytest.raises(UnsafeNewsUrl, match="robots"):
+        await fetcher.fetch(
+            "https://developers.googleblog.com/private",
+            allowed_hosts={"developers.googleblog.com"},
+        )
+    assert requests.count(("developers.googleblog.com", "/robots.txt")) == 1
+    assert requests.count(("developers.googleblog.com", "/robots.txt/")) == 1
+    assert requests.count(("blog.google", "/robots.txt")) == 1
+    assert ("developers.googleblog.com", "/private") not in requests
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("mode", ["other-host", "http", "other-port", "loop"])
+async def test_robots_redirects_outside_same_https_host_are_refused(
+    mode: str,
+) -> None:
+    requested: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        requested.append(f"{request.headers['host']}{request.url.path}")
+        assert request.headers["host"] == "developers.googleblog.com"
+        assert request.url.path in {"/robots.txt", "/robots.txt/"}
+        location = {
+            "other-host": "https://other.example/robots.txt",
+            "http": "http://developers.googleblog.com/robots.txt/",
+            "other-port": "https://developers.googleblog.com:444/robots.txt/",
+            "loop": "/robots.txt/" if request.url.path == "/robots.txt" else "/robots.txt",
+        }[mode]
+        return httpx.Response(301, headers={"Location": location}, request=request)
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    with pytest.raises(UnsafeNewsUrl, match="robots"):
+        await fetcher.fetch(
+            "https://developers.googleblog.com/article",
+            allowed_hosts={"developers.googleblog.com", "other.example"},
+        )
+    assert len(requested) == (5 if mode == "loop" else 1)
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("mode", ["404", "405", "403", "html", "no-agent"])
+async def test_an_unavailable_robots_txt_restricts_nothing(mode: str) -> None:
+    # RFC 9309 §2.3.1.3: a 4xx robots.txt is "unavailable" and places no restriction. MODA and
+    # NSTC answer 404, Ars Technica 405; the central bank redirects /robots.txt to its home
+    # page, which is no robots file either. A 429 or 5xx stays a transient failure.
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            if mode in {"404", "405", "403"}:
+                return httpx.Response(int(mode), text="<html>no</html>", request=request)
+            return httpx.Response(302, headers={"Location": "/tw/mp-1.html"}, request=request)
+        if request.url.path == "/tw/mp-1.html":
+            if mode == "html":
+                # Text that would read as a ban if it were taken for rules.
+                return httpx.Response(
+                    200,
+                    text="<html>User-agent: *\nDisallow: /</html>",
+                    headers={"Content-Type": "text/html"},
+                    request=request,
+                )
+            return httpx.Response(200, text="Sitemap: /sitemap.xml", request=request)
+        return httpx.Response(
+            200,
+            content=b"<html>news</html>",
+            headers={"Content-Type": "text/html"},
+            request=request,
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    page = await fetcher.fetch(
+        "https://www.cbc.gov.tw/tw/lp-302-1.html", allowed_hosts={"www.cbc.gov.tw"}
+    )
+    assert page.body == b"<html>news</html>"
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("status", [429, 503])
+async def test_a_robots_txt_that_fails_for_now_is_not_read_as_permission(status: int) -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            return httpx.Response(status, request=request)
+        return httpx.Response(
+            200,
+            content=b"<html>news</html>",
+            headers={"Content-Type": "text/html"},
+            request=request,
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    with patch("app.news_automation.fetch.asyncio.sleep", AsyncMock()), pytest.raises(
+        httpx.HTTPStatusError
+    ):
+        await fetcher.fetch("https://example.com/news", allowed_hosts={"example.com"})
     await client.aclose()
 
 

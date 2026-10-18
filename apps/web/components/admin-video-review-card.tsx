@@ -70,13 +70,18 @@ export type ProjectSummary = {
   dropped_at?: string | null; dropped_note?: string | null;
   retry_request_id?: string | null; retry_acknowledged_id?: string | null;
   format?: "slides" | "drama" | "shorts"; media_usd?: number; clip_seconds?: number;
+  // Detail response: the server has verified this exact cut can enter paid dub production.
+  // A story may separately allow saving dub intent before its final cut passes that check.
+  // An older API omits the preselection flag, so the editor keeps early selection locked.
+  dub_allowed?: boolean;
+  story_dub_preselectable?: boolean;
   // A Short (docs/videos/SHORTS.md) is a video whose content line is set: its series, the video it
   // was cut from, where it stands as the Shorts tab groups them, the slot it holds, and when the
   // site found it gone from YouTube. All absent from an API older than the Shorts tab.
   shorts_line?: "lab" | "cut" | "drama" | null; shorts_series?: string | null; source_slug?: string | null;
   shorts_state?: "making" | "needs_you" | "library" | "slotted" | "scheduled" | "published" | "missed" | "dropped" | null;
   slot_at?: string | null; youtube_removed_at?: string | null;
-  // The languages the owner chose after the final cut and what of each, when they first decided,
+  // The languages the owner chose (possibly before a brand story's final cut) and what of each,
   // where each chosen part stands, and the server's verdict on whether the video may be scheduled
   // (docs/videos/LANGUAGES.md); all absent from an API older than the language panel, which
   // only knew the dub languages.
@@ -174,8 +179,14 @@ export const finalApproved = (project: ProjectSummary & { reviews?: Review[] }) 
   // The API orders reviews newest first; an older approval cannot approve a newer imported cut.
   const currentFinal = reviews.find((review) => review.gate === "final" && !review.subject);
   if (currentFinal?.status === "pending" && currentFinal.payload.imported) return false;
+  // Locale choices can be saved before a final cut. Their timestamp never proves approval,
+  // including for a story recategorized as an explainer in a list row without the detail flag.
+  const story = project.category === "story" || project.story_dub_preselectable === true;
+  // A detail response includes reviews: the newest final wins over stale checklist/upload fields
+  // after a cut is replaced or sent back. A list row falls back to its current checklist.
+  if (story && project.reviews) return currentFinal?.status === "approved";
   return project.checklist.some((item) => item.key === "final_video_approved" && item.done)
-    || Boolean(project.publish_approved_at || project.locales_decided_at || project.youtube_video_id)
+    || Boolean(project.publish_approved_at || project.youtube_video_id)
     || reviews.some((review) => review.gate === "final" && review.status === "approved");
 };
 
@@ -289,8 +300,9 @@ function Score({ value, passes }: { value: number | null; passes: (value: number
 
 /**
  * Why Jev chose an outline (docs/videos/HANDS-OFF.md, the section on Jev picking it). payload.pick is
- * { choice, probabilities: { key: p }, options: { key: { stance, demo } }, advice }; a pending
- * review may carry a pick that did not clear the thresholds, and shows the same table.
+ * { choice, probabilities: { key: p }, options: { key: { stance, demo } }, advice }, with demo null when
+ * it was not asked; a pending review may carry a pick that did not clear the thresholds, and shows the
+ * same table.
  */
 function PickTable({ review }: { review: Review }) {
   const t = useTranslations("admin.videoReviews");
@@ -303,7 +315,10 @@ function PickTable({ review }: { review: Review }) {
   const advice = number(pick.advice);
   if (keys.length === 0 && !choice && advice === null) return null;
   const chosen = record(scores[choice]);
-  const passed = (number(chosen.stance) ?? 0) >= PICK_MIN_STANCE && (number(chosen.demo) ?? 0) >= PICK_MIN_DEMO && advice !== null && advice <= PICK_MAX_ADVICE;
+  // A demo of null was not asked: the site files the video as an explainer or a story
+  // (docs/videos/HANDS-OFF.md, who is asked for a demonstration). A missing score still counts as none.
+  const demoPasses = chosen.demo === null || (number(chosen.demo) ?? 0) >= PICK_MIN_DEMO;
+  const passed = (number(chosen.stance) ?? 0) >= PICK_MIN_STANCE && demoPasses && advice !== null && advice <= PICK_MAX_ADVICE;
   return <div className="grid gap-3 rounded-2xl border border-[var(--line)] p-4" aria-label={t("pickReasons")}>
     <p className="font-bold">{t("pickReasons")}</p>
     <table className="w-full text-sm">
@@ -315,7 +330,7 @@ function PickTable({ review }: { review: Review }) {
           <td className="py-1 pr-3">{t("option", { key })}{key === choice && <span className="ml-2 text-xs text-[var(--teal)]">{t("pickChosen")}</span>}</td>
           <td className="py-1 pr-3 font-mono">{probability === null ? "—" : probability.toFixed(2)}</td>
           <td className="py-1 pr-3"><Score value={number(score.stance)} passes={(value) => value >= PICK_MIN_STANCE} /></td>
-          <td className="py-1"><Score value={number(score.demo)} passes={(value) => value >= PICK_MIN_DEMO} /></td>
+          <td className="py-1">{score.demo === null ? <span className="text-[var(--muted)]">{t("pickDemoNotAsked")}</span> : <Score value={number(score.demo)} passes={(value) => value >= PICK_MIN_DEMO} />}</td>
         </tr>;
       })}</tbody>
     </table>

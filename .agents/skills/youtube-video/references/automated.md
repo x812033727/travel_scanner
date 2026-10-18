@@ -84,6 +84,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 ## video.json 的重點
 
 - 格式定義在 `tools/video/core/schema.mjs`。
+- **`loops`**（旁白影片都要寫；2026-10-13 起）：這支片埋了哪些鉤子、在哪裡回收，`[{"setup": "<埋的那一行 id>", "payoff": "<回收的那一行 id>", "what": "<留著什麼，40 字以內>"}]`。schema 擋不存在的行與回收在埋設之前的項目；`lint` 數夠不夠（10 分鐘至少三個、一個埋在開場濃縮），不夠是警告。寫法在 `script-writing.md` 的〈故事主線與鉤子〉。
 - 最小範例：`tools/video/core/fixtures/minimal/video.json`。
 - 每種版型各用一次的範例：`tools/video/templates/fixtures/showcase/video.json`。
 - 英文旁白的範例：`tools/video/core/fixtures/en/video.json`。
@@ -140,8 +141,10 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 - **`assemble` 回報某一格「不像」預期的畫面**：代表畫面錯位了，先看 `checks.json` 是哪個場景的哪一格。門檻：44 dB 以上直接算對、35 以下算錯；中間（字很密的表格、比較卡，正確也只有 40 左右）要比同場景其他畫面高 3 dB，`checks.json` 會記下它和每個對手的分數。不要調低門檻。
 - **`tts` 回報某一批改成逐句合成**：代表那一批的靜音切段和字數對不上。這通常不影響成品，只是多送幾次請求。如果同一批一直發生，把那個場景拆短一點。
 - **`dub` 回報視窗塞不下（結束碼 1）**：那個投影片狀態裡的翻譯，就算整窗加速 1.15 倍也講不完。`dubs/<語系>/fit.json` 的 `over` 列出每句最多幾個字元：只縮那幾句（數字、專有名詞、說法不能改；字幕跟著用縮短後的句子），寫進 `i18n-sheet --parts captions` 的底稿、`i18n-merge` 之後再跑 `dub`，只重錄改過的句子（做法在 `prompts/caption-translate.md` 最後一節）。`i18n-sheet` 在有時間軸、且該語系勾了配音時會先給每句 `max_chars`，翻譯時照它寫就少一輪。英文最容易超，第二批實測一支有 7 個視窗要縮。工人縮短兩輪、重錄兩輪仍不行就寫 `dubs/<語系>/skipped.json`，語言卡片列出原因，影片照樣上架；要重試就刪掉那個檔再勾一次。
-- **`review-push --gate publish` 回 413 `video_review_file_too_large`**：上架關卡送的是 1080p 的 `final.mp4`（成片關卡只送 720p 預覽，所以到這一關才擋）。成片大小看畫面：純投影片約 10 MB／分鐘，插圖投影片約 40 MB／分鐘、最壞約 70（帶運鏡的插圖段有 8 Mbit/s 的上限；量測在 `docs/videos/ILLUSTRATED.md` §成片大小）。站台的單檔上限 `VIDEO_REVIEW_MAX_FILE_BYTES` 預設 1.5 GB；回 413 代表成片比站台的上限大（主機的 `.env` 另外設了比較小的值，或成片超過 1.5 GB），把檔案大小與錯誤訊息裡的上限回報給站主，不要自己改主機，也不要為了縮小檔案重跑已核准的 `assemble`。回 507 `video_review_store_full` 是檔案區總量滿了（預設 20 GB；上架滿 7 天的 mp4 才會自動刪）。
+- **`review-push --gate publish` 回 413 `video_review_file_too_large`**：上架關卡送的是 1080p 的 `final.mp4`（成片關卡只送 720p 預覽，所以到這一關才擋）。成片大小看畫面：純投影片約 10 MB／分鐘，插圖投影片約 40 MB／分鐘、最壞約 70（帶運鏡的插圖段有 8 Mbit/s 的上限；量測在 `docs/videos/ILLUSTRATED.md` §成片大小）。站台的單檔上限 `VIDEO_REVIEW_MAX_FILE_BYTES` 預設 1.5 GB；回 413 代表成片比站台的上限大（主機的 `.env` 另外設了比較小的值，或成片超過 1.5 GB），把檔案大小與錯誤訊息裡的上限回報給站主，不要自己改主機，也不要為了縮小檔案重跑已核准的 `assemble`：它會重新編碼，雜湊一變，成片的核准就失效。回 507 `video_review_store_full` 是檔案區總量滿了（預設 20 GB；上架滿 7 天的 mp4 才會自動刪）。
 - **成片核准了，語言面板還沒出現**：面板靠影片清單的 checklist 有「成片核准」；工人核准那一輪會回報一次，最多等一輪（5 分鐘）。本機手動跑的影片用 `review-push --report-only` 登記。
+- **盤點或替既有影片撰稿之前先 `review-pull`**：站主的選擇（選了哪個大綱、核准了什麼）只在站上；曾有六支稿子照大綱 A 寫，站主選的其實是 B／C。
+- **已核准的影片要改寫，開新 slug**，舊專案在後台停掉（站主 2026-10-11 定）：已核准的 slug 換不了內容，它的成片與上架核准會留著。
 - **手動跑語言時**：先把站主的選擇寫成 `<VIDEO_WORKDIR>/<SLUG>/languages.json`（`{"locales": {"en": {"metadata": true, "captions": true, "dub": false}}, "decided_at": "<ISO 時間>"}`），`captions`、`package`、`qa`、`review-push --gate languages` 才會只做那些；沒有這個檔就照舊做每個有翻譯的語系。
 - **代理不能碰權杖**：用上面的配對流程，權杖不能出現在對話裡、檔案裡或指令參數裡。替站主開一個終端機分頁讓他打權杖，會被分類器擋成 Credential Leakage。
 - **ffmpeg（除錯 `assemble` 時用得到）**：PNG 的 concat 預設時基是 1/25 秒，每個檔案要加 `option framerate 30`；PNG 沒有色彩資訊，要 `setparams` 加 `-x264-params colorprim/transfer/colormatrix`；單聲道先正規化再轉立體聲會大 3 LU；抽格用場景片段上的 `select=eq(n,N)`，不要對串好的 mp4 用 `-ss`；Noto Sans CJK 單行會「溢出」零點幾個行高，所以版面檢查容許到 0.4 em。

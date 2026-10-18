@@ -974,12 +974,6 @@ async def update_source(
         values["allowed_redirect_hosts_json"] = values.pop("allowed_redirect_hosts")
     if "config" in values:
         values["config_json"] = values.pop("config")
-    if values.get("enabled") is True:
-        row.next_scan_at = datetime.now(UTC)
-    for key, value in values.items():
-        setattr(row, key, value)
-    if row.is_first_party and row.role != "evidence":
-        raise AppError(422, "news_source_role_invalid", "第一方來源必須設定為 evidence")
     source_definition_fields = {
         "url",
         "format",
@@ -990,9 +984,26 @@ async def update_source(
         "allowed_redirect_hosts_json",
         "config_json",
     }
+    definition_changed = any(
+        key in source_definition_fields and getattr(row, key) != value
+        for key, value in values.items()
+    )
+    if values.get("enabled") is True:
+        row.next_scan_at = datetime.now(UTC)
+    for key, value in values.items():
+        setattr(row, key, value)
+    if row.is_first_party and row.role != "evidence":
+        raise AppError(422, "news_source_role_invalid", "第一方來源必須設定為 evidence")
     try:
         if row.enabled and source_definition_fields.intersection(values):
             await validate_source_configuration(row)
+        if definition_changed:
+            # A 304 for the old feed validators would hide entries that the revised
+            # redirect or parser configuration must now process. Schedule a fresh scan.
+            row.etag = None
+            row.last_modified = None
+            if row.enabled:
+                row.next_scan_at = datetime.now(UTC)
         audit(
             session,
             actor,

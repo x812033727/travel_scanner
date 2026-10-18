@@ -145,6 +145,24 @@ describe("AdminNewsWorkspace", () => {
     expect(names).toEqual(["Stuck source", "Fine source", "Switched-off source"]);
   });
 
+  it("shows a scan's note in red only when the scan failed", async () => {
+    const source = (id: string, lastStatus: string, lastError: string) => ({
+      id, name: id, url: `https://${id}.example/feed`, format: "rss", role: "evidence", vertical: "ai",
+      is_first_party: true, enabled: true, scan_interval_minutes: 60, allowed_redirect_hosts: [], config: {},
+      etag: null, last_modified: null, last_scanned_at: "2026-10-15T16:33:00Z", next_scan_at: "2026-10-15T17:33:00Z",
+      last_status: lastStatus, last_error: lastError, consecutive_failures: 0,
+      created_at: "2026-09-01T00:00:00Z", updated_at: "2026-10-15T16:33:00Z",
+    });
+    sourceRows = [
+      source("deepmind", "succeeded", "Left out 11 feed entries older than 72 hours, without fetching them"),
+      source("cftc", "failed", "HTTPStatusError: Client error '403 Forbidden'"),
+    ];
+    window.history.replaceState(null, "", "/zh-TW/admin/news?tab=sources");
+    render(<AdminNewsWorkspace />);
+    expect((await screen.findByText(/Left out 11 feed entries/)).className).not.toContain("text-red-700");
+    expect(screen.getByText(/403 Forbidden/).className).toContain("text-red-700");
+  });
+
   it("explains a Jev hold in Chinese and publishes it with an audited reason", async () => {
     render(<AdminNewsWorkspace />);
     expect(await screen.findByRole("heading", { name: "AI 每小時自動新聞" })).toBeTruthy();
@@ -414,6 +432,32 @@ describe("AdminNewsWorkspace", () => {
     expect(screen.getByText("AI 代審・繁中草稿: 需要人判斷")).toBeTruthy();
     expect(screen.getByText("AI 代審・重複判斷: 通過")).toBeTruthy();
     expect(actionButtons()).toEqual(["確認發布，翻譯其他語言", "重新執行", "退件"]);
+  });
+
+  // Ticket 2026-10-11-show-final-judge-holds-on-news: a Flock story sat at news_ready_to_publish
+  // while its latest judge verdict asked for the company's response, and the page said every
+  // check had passed.
+  it("says the AI judge holds a ready article back instead of saying every check passed", async () => {
+    const ready = { ...summary, id: "00000000-0000-4000-8000-000000000045", source_title: "A ready story the judge held", error_code: "news_ready_to_publish", judge_decision: "manual" };
+    serveRows(ready);
+    withAssessments(ready, judgeRow("j1", "manual", "final", "news_ready_to_publish", ["文章沒有寫出公司對誤認指控的回應"]));
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /A ready story the judge held/ }));
+    const verdict = await screen.findByRole("heading", { name: "AI 代審（claude-opus-5-5）：需要人判斷" });
+    expect(within(verdict.parentElement!).getByRole("listitem").textContent).toBe("文章沒有寫出公司對誤認指控的回應");
+    expect(screen.getByText(/AI 代審讀過後要求修改，沒有放行/)).toBeTruthy();
+    expect(screen.queryByText(/已通過所有檢查/)).toBeNull();
+    // The correction route is offered; publishing stays the owner's explicit call.
+    expect(actionButtons().sort()).toEqual(["五語發布", "重新查核", "退件"].sort());
+  });
+
+  it("keeps an ordinary ready article as it was", async () => {
+    const ready = { ...summary, id: "00000000-0000-4000-8000-000000000046", source_title: "A ready story", error_code: "news_ready_to_publish", judge_decision: null };
+    serveRows(ready);
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /A ready story/ }));
+    expect(await screen.findByText(/已通過所有檢查/)).toBeTruthy();
+    expect(actionButtons()).toEqual(["五語發布", "重新查核", "退件"]);
   });
 
   it("shows the AI judge's verdict on a story whose publication was refused because the sources changed", async () => {
