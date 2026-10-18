@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "owner-outline-and-production-authorization",
+  "readback_at": "2026-10-15T23:53:39Z",
+  "source_submission": "submission.json",
+  "outline_choices": [
+    { "slug": "curio-h10", "review_id": "72a82580-0901-476f-b0b6-e7ddfa30e7c5", "status": "approved", "choice": "A", "content_sha256": "725991c44d9129668377c291efd0aa8edfc9306635abe551c6fc2616397e45ff", "decided_at": "2026-10-15T23:48:42.480461Z" },
+    { "slug": "curio-h11", "review_id": "83bac5e3-c59b-417e-8060-0b14b4381f60", "status": "approved", "choice": "A", "content_sha256": "4cc10a9506a997a0beca7f102e277fdcd6b45edfa488b204fcc39b3e61b50b6d", "decided_at": "2026-10-15T23:48:33.286512Z" },
+    { "slug": "curio-h12", "review_id": "d5fae6fa-4eb7-412e-973b-5713ea63e14b", "status": "approved", "choice": "A", "content_sha256": "ff4af2f817bd382943ea3eef63aad97962db04c8b0d8febac1373c81952e80eb", "decided_at": "2026-10-15T23:48:50.692402Z" },
+    { "slug": "curio-m09", "review_id": "264fb9fa-e606-4b4e-93e3-ef7c07b7878d", "status": "approved", "choice": "A", "content_sha256": "b9be6725fea76b516a03e2498abceace0a158ea3fdc40a5c88ed5ea9e850dee7", "decided_at": "2026-10-15T23:48:58.291372Z" },
+    { "slug": "curio-u09", "review_id": "31269f8b-3ca6-4d62-987e-62acedc34e3b", "status": "approved", "choice": "A", "content_sha256": "e268de743ceca8cdb0ef6846ac893d8f2f0422c1f4e30ce6a6200003b8149d79", "decided_at": "2026-10-15T23:49:08.672629Z" }
+  ],
+  "production_authorization": {
+    "source": "owner reply to the bundled five-episode outline and budget question in this task",
+    "scope": "Five zh-TW Curio episodes: scripts and pronunciation overrides to Gemini Sulafat TTS, audio to Gemini transcription, illustration prompts to MiniMax image-01, images to Gemini review, scripts/editorial stance/audio text differences to TypeSafe Jev for script, audio, and final QA, including evidence-backed targeted retakes and retries",
+    "estimated_stop_usd_per_episode": 6,
+    "estimated_stop_usd_total": 30,
+    "approved": true,
+    "per_request_vendor_hard_cap": false,
+    "inter_episode_budget_transfer": false
+  },
+  "paid_calls_at_readback": 0,
+  "worker_requests_at_readback": 0
+}
