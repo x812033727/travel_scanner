@@ -1,0 +1,120 @@
+{
+  "about": "thumbnail.brand samples both checks must agree on: templates.mjs brandProblem/brandFontSize and apps/api/app/video_automation/stories.py brand_problem/brand_font_size. ok false means refused; size is the px the column sets an accepted one at.",
+  "rows": [
+    {
+      "brand": "SEIKO",
+      "ok": true,
+      "size": 138
+    },
+    {
+      "brand": "米其林",
+      "ok": true,
+      "size": 144
+    },
+    {
+      "brand": "A4 紙",
+      "ok": true,
+      "size": 168
+    },
+    {
+      "brand": "杜比 DOLBY",
+      "ok": true,
+      "size": 80
+    },
+    {
+      "brand": "哆啦A夢",
+      "ok": true,
+      "size": 118
+    },
+    {
+      "brand": "任天堂 Nintendo",
+      "ok": true,
+      "size": 52
+    },
+    {
+      "brand": "一二三四五六七八九十甲",
+      "ok": true,
+      "size": 38
+    },
+    {
+      "brand": "ABCDEFGHIJKL",
+      "ok": true,
+      "size": 58
+    },
+    {
+      "brand": "abcdefghijkl",
+      "ok": true,
+      "size": 60
+    },
+    {
+      "brand": "7-Eleven",
+      "ok": true,
+      "size": 92
+    },
+    {
+      "brand": "M&M's",
+      "ok": true,
+      "size": 156
+    },
+    {
+      "brand": "ドラえもん",
+      "ok": true,
+      "size": 86
+    },
+    {
+      "brand": "삼성전자",
+      "ok": true,
+      "size": 108
+    },
+    {
+      "brand": "ＡＢＣ",
+      "ok": true,
+      "size": 144
+    },
+    {
+      "brand": "一二三四五六七八九十甲乙",
+      "ok": false,
+      "size": null
+    },
+    {
+      "brand": "WWWWWWWWWWWW",
+      "ok": true,
+      "size": 58
+    },
+    {
+      "brand": "一二三四五六七八九十甲乙丙",
+      "ok": false,
+      "size": null
+    },
+    {
+      "brand": "杜比\nDOLBY",
+      "ok": false,
+      "size": null
+    },
+    {
+      "brand": "杜比\rDOLBY",
+      "ok": false,
+      "size": null
+    },
+    {
+      "brand": "杜比\tDOLBY",
+      "ok": false,
+      "size": null
+    },
+    {
+      "brand": "**SEIKO**",
+      "ok": false,
+      "size": null
+    },
+    {
+      "brand": "",
+      "ok": false,
+      "size": null
+    },
+    {
+      "brand": "   ",
+      "ok": false,
+      "size": null
+    }
+  ]
+}

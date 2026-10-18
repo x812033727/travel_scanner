@@ -22,7 +22,7 @@ from app.db import get_session
 from app.models import VIDEO_CATEGORIES, User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, reserve_azure_speech_characters
-from app.video_automation.judge import QA_AUTO_APPROVED_NOTE, QA_ITEMS
+from app.video_automation.judge import QA_AUTO_APPROVED_NOTE, QA_ITEMS, final_qa_passed
 from app.video_automation.models import VideoDramaEpisode, VideoDramaRequest, VideoDramaSeries
 from app.video_automation.settings import AUTO_APPROVED_STORYBOARD_NOTE
 from app.video_reviews import admin_api, admin_service, dub_retry
@@ -580,6 +580,74 @@ def test_story_dub_needs_current_approved_full_qa_for_exact_switchable_cc_cut() 
     renewed = _story_final()
     renewed.payload = {"manual_review_qa": renewed.payload["qa"]}
     assert admin_service._story_dub_ready([renewed]), "owner-reviewed renewals carry the same QA"
+
+
+def _story_failing(
+    failures: dict[str, str], *, burned: bool | None = False, status: str = "approved",
+    sha: str = "f" * 64, report_sha: str | None = None,
+) -> VideoReview:
+    """A story final whose QA failed ``failures`` (item id to detail), as qa.json writes it."""
+    review = _story_final(burned=burned, status=status, sha=sha)
+    qa = review.payload["qa"]
+    qa["ok"] = not failures
+    qa["final_sha256"] = report_sha or sha
+    qa["items"] = [
+        {"id": name, "ok": name not in failures, "detail": failures.get(name, "fine")}
+        for name in QA_ITEMS
+    ]
+    return review
+
+
+B25_CAPTIONS = "en: no caption file; ja: no caption file; ko: no caption file"
+B25_FAILURES = {
+    "captions": B25_CAPTIONS,
+    "pace": "1 of 81 slide states stay over 15 s: now-outro state 0 (22.2 s)",
+    "policy": "Jev 立場分數「留下觀察 0.56 < 0.6」",
+}
+
+
+def test_story_dub_waives_pace_and_policy_once_the_owner_approved_the_cut() -> None:
+    assert admin_service.STORY_DUB_WAIVED_QA_ITEMS == {"pace", "policy"}
+    pace_policy = {name: B25_FAILURES[name] for name in ("pace", "policy")}
+    assert admin_service._story_dub_ready([_story_failing(pace_policy)])
+    assert admin_service._story_dub_ready([_story_failing({"captions": B25_CAPTIONS})])
+    assert admin_service._story_dub_ready([_story_failing(B25_FAILURES)]), "the B25 report"
+    renewed = _story_failing(B25_FAILURES)
+    renewed.payload = {"manual_review_qa": renewed.payload["qa"]}
+    assert admin_service._story_dub_ready([renewed])
+    # The waiver only covers the dub: auto-approval still wants every item.
+    assert not final_qa_passed(_story_failing(pace_policy).payload, "f" * 64)
+
+
+@pytest.mark.parametrize(
+    "failures",
+    [
+        {"assemble": "final.mp4 is older than the script"},
+        {"narration": "the narration has not been approved yet"},
+        {"render": "frames are missing"},
+        {"captions": "zh-TW: no caption file"},
+        {"captions": "zh-TW: no caption file; en: no caption file"},
+        {"captions": "captions were written for an older narration; run captions again"},
+        {"captions": "en: no caption file, 1 lines missing or older than zh-TW (k7p2)"},
+        {"captions": ""},
+        {"pace": "slow", "metadata": "title too long"},
+    ],
+)
+def test_story_dub_still_needs_the_technical_items(failures: dict[str, str]) -> None:
+    assert not admin_service._story_dub_ready([_story_failing(failures)])
+
+
+def test_story_dub_waiver_keeps_approval_burn_in_and_hash_rules() -> None:
+    assert not admin_service._story_dub_ready([_story_failing(B25_FAILURES, status="pending")])
+    assert not admin_service._story_dub_ready([_story_failing(B25_FAILURES, burned=True)])
+    assert not admin_service._story_dub_ready([_story_failing(B25_FAILURES, burned=None)])
+    other_cut = _story_failing(B25_FAILURES, report_sha="e" * 64)
+    assert not admin_service._story_dub_ready([other_cut]), "another cut's QA cannot unlock dubs"
+    missing = _story_failing({"pace": "slow"})
+    missing.payload["qa"]["items"] = [
+        entry for entry in missing.payload["qa"]["items"] if entry["id"] != "assemble"
+    ]
+    assert not admin_service._story_dub_ready([missing]), "every item must be reported"
 
 
 @pytest.mark.asyncio

@@ -1,0 +1,803 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e016",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "laisan",
+      "name": "賴三",
+      "appearance": "East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, a grey-brown short jacket and an old cloth head wrap",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的家丁，油嘴滑舌、心虛"
+      }
+    },
+    {
+      "id": "sunzhanggui",
+      "name": "孫掌櫃",
+      "appearance": "East Asian man of forty-five, round and plump with fair smooth skin, narrow smiling eyes that are always half closed, a dark green silk robe with a jade belt hook, two jade balls turning in one hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的商行掌櫃，笑咪咪、慢條斯理、話裡藏刀"
+      }
+    },
+    {
+      "id": "shimujiang",
+      "name": "石木匠",
+      "appearance": "East Asian man of fifty-five, lean and wiry with weathered tanned skin, a grey stubbled jaw, deep frown lines and suspicious narrow eyes, grey hair tied in a small rough topknot with a pencil-like wooden stick, a faded brown short work jacket with sleeves rolled up, a leather apron covered in wood shavings, calloused hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的老木匠，男聲、粗啞低沉，脾氣硬、說話短、帶著不耐煩"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a cool low drum and a sly plucked pipa in the dawn mist at the bridge, a gliding bamboo flute and soft guzheng over moonlit water with a light rowing pulse, a bright bustling percussion and erhu theme at the academy gate as the queue grows, a sudden hush of low strings when the carriage curtain lifts, then urgent drums and rising strings to a sharp held sting at the very end, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "債主封橋收過路錢，老婆夜撐竹筏，書院門口排長龍｜種田娶妻打天下 第16集",
+    "description": "錢府封了進城唯一的橋，一車一兩，還逼許硯拿紙坊換五十兩。許硯只說一句：「不賣。」唐小棠早攤開一張地圖——橋封了，溪沒封。月夜裡秦霜撐著竹筏走水路，唐小棠在紙堆上想出新路子：書坊不收，就直接賣給書生。天剛亮，縣學書院門口一支筆、一滴墨當場比，白紙寫字不洇墨，書生排起長龍。街角卻停著一輛魏記的馬車，孫掌櫃看了很久，低聲吩咐了一句。竹筏回到柳溪口，天邊一片紅——紙坊方向冒起濃煙。《種田娶妻打天下》第 16 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "橋封了，溪沒封",
+      "tag": "種田娶妻打天下",
+      "shot": "s07"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "不賣",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a01",
+          "speaker": "xuyan",
+          "text": "不賣。",
+          "emotion": "把紙推回去，平靜"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the stone bridge to the county town at dawn, an old arched stone bridge over a wide stream, thin mist on the water, a muddy track leading onto it, the grey walls of the county town faint in the distance, a rough wooden barrier of lashed logs across the bridge: close-up of Xu Yan, on screen left at the wooden barrier, a folded sheet of paper with blurred illegible brush strokes in his hand, mist behind him, eyes level and cold, looking at Lai San off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「不賣。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he pushes the folded paper back across the barrier toward screen right with two fingers",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a02",
+          "speaker": "laisan",
+          "text": "不賣？",
+          "emotion": "愣一下，冷笑"
+        },
+        {
+          "id": "zq16a03",
+          "speaker": "laisan",
+          "text": "那就等著紙爛在村裡。",
+          "emotion": "冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the stone bridge to the county town at dawn, an old arched stone bridge over a wide stream, thin mist on the water, a muddy track leading onto it, the grey walls of the county town faint in the distance, a rough wooden barrier of lashed logs across the bridge: medium close-up of Lai San, on screen right leaning on the barrier, his cloth head wrap askew, the folded paper back in his hand, a sneering grin, servants in grey short jackets with clubs blurred behind him",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「不賣？」 then 「那就等著紙爛在村裡。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he tucks the paper back into his sleeve and spits to one side",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a04",
+          "speaker": "tangxiaotang",
+          "text": "橋封了，",
+          "emotion": "不慌，從推車上抽出一卷紙"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the stone bridge to the county town at dawn, an old arched stone bridge over a wide stream, thin mist on the water, a muddy track leading onto it, the grey walls of the county town faint in the distance, a rough wooden barrier of lashed logs across the bridge: medium close-up of Tang Xiaotang, on screen left sitting on the handcart piled with paper bundles wrapped in brown oilcloth, pink silk ribbons stirring in the mist, a rolled sheet of paper in her hands, a small confident smile",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「橋封了，」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she snaps the rolled sheet open across her lap with both hands",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a05",
+          "speaker": "tangxiaotang",
+          "text": "溪沒封。",
+          "emotion": "畫外，得意"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the hand-drawn map, slow push in",
+        "prompt": "At the stone bridge to the county town at dawn, an old arched stone bridge over a wide stream, thin mist on the water, a muddy track leading onto it, the grey walls of the county town faint in the distance, a rough wooden barrier of lashed logs across the bridge: insert from above of a hand-drawn ink map on white paper spread on oilcloth bundles: one long winding line of a stream, a small arch for the bridge, tiny roofs for the village and the town, plain lines only, no writing; a girl's small hand with a pearl ring resting on it; Tang Xiaotang speaks off screen",
+        "motion": "The girl's fingertip traces the winding stream line in a wide curve around the little bridge and taps the town at its end",
+        "characters": []
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a06",
+          "speaker": "xuyan",
+          "text": "三爺，",
+          "emotion": "笑回來了"
+        },
+        {
+          "id": "zq16a07",
+          "speaker": "xuyan",
+          "text": "橋你留著。",
+          "emotion": "笑，轉身"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the stone bridge to the county town at dawn, an old arched stone bridge over a wide stream, thin mist on the water, a muddy track leading onto it, the grey walls of the county town faint in the distance, a rough wooden barrier of lashed logs across the bridge: medium shot of Xu Yan, on screen left beside the handcart, Tang Xiaotang sitting on the paper bundles behind him with the map in her lap, his easy grin back, looking at Lai San off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「三爺，」 then 「橋你留著。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he gives the barrier a friendly pat and grips the handcart shafts to turn it around",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the stone bridge to the county town at dawn, an old arched stone bridge over a wide stream, thin mist on the water, a muddy track leading onto it, the grey walls of the county town faint in the distance, a rough wooden barrier of lashed logs across the bridge: medium shot of Lai San, on screen right behind the barrier, servants in grey short jackets with clubs on their shoulders beside him, watching the handcart roll away off screen left",
+        "motion": "Lai San's grin freezes and drops, and he kicks the barrier in frustration while the servants look at each other",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "chapter": "水路",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Extreme wide shot, high angle, slow tracking alongside",
+        "prompt": "On the moonlit stream at night, a wide calm stream between dark reed banks and drooping willows, a full moon and silver light on the rippling water, a line of three bamboo rafts loaded with paper bundles wrapped in brown oilcloth: extreme wide shot from high above the water, the three rafts gliding in a line down the silver stream, Qin Shuang a slim figure standing at the bow of the first raft with a long bamboo pole, Tang Xiaotang and Xu Yan small, sitting among the oilcloth bundles",
+        "motion": "Qin Shuang plants the long pole and pushes, the rafts slide forward together and rings of ripples spread out across the moonlit water as the camera tracks alongside",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a08",
+          "speaker": "qinshuang",
+          "text": "坐穩，",
+          "emotion": "撐篙，頭也不回"
+        },
+        {
+          "id": "zq16a09",
+          "speaker": "qinshuang",
+          "text": "前面有灘。",
+          "emotion": "淡淡"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the moonlit stream at night, a wide calm stream between dark reed banks and drooping willows, a full moon and silver light on the rippling water, a line of three bamboo rafts loaded with paper bundles wrapped in brown oilcloth: medium close-up of Qin Shuang, on screen left standing at the bow of the first raft, both hands on the long bamboo pole, moonlight outlining her face and tall figure, her high ponytail lifted by the night wind, looking ahead downstream",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「坐穩，」 then 「前面有灘。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she leans her weight into the pole and the raft surges forward under her",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a10",
+          "speaker": "tangxiaotang",
+          "text": "天亮前到得了嗎？",
+          "emotion": "坐在紙堆上打哈欠"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the moonlit stream at night, a wide calm stream between dark reed banks and drooping willows, a full moon and silver light on the rippling water, a line of three bamboo rafts loaded with paper bundles wrapped in brown oilcloth: medium close-up of Tang Xiaotang, on screen right sitting on top of the oilcloth paper bundles, hugging her knees, her small gold abacus in her lap, sleepy eyes, moonlight on her face",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「天亮前到得了嗎？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she covers a big yawn with one sleeve and rubs her eye",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a11",
+          "speaker": "xuyan",
+          "text": "到了也沒用，",
+          "emotion": "皺眉"
+        },
+        {
+          "id": "zq16a12",
+          "speaker": "xuyan",
+          "text": "書坊不收。",
+          "emotion": "嘆氣"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "On the moonlit stream at night, a wide calm stream between dark reed banks and drooping willows, a full moon and silver light on the rippling water, a line of three bamboo rafts loaded with paper bundles wrapped in brown oilcloth: medium shot of Xu Yan, on screen left sitting in the middle of the raft among the oilcloth bundles, elbows on his knees, frowning, looking at Tang Xiaotang off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「到了也沒用，」 then 「書坊不收。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he lets out a breath and drops his hand onto the nearest bundle",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a13",
+          "speaker": "tangxiaotang",
+          "text": "誰說要賣書坊？",
+          "emotion": "一下坐直，眼睛亮了"
+        },
+        {
+          "id": "zq16a14",
+          "speaker": "tangxiaotang",
+          "text": "賣給書生！",
+          "emotion": "得意"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the moonlit stream at night, a wide calm stream between dark reed banks and drooping willows, a full moon and silver light on the rippling water, a line of three bamboo rafts loaded with paper bundles wrapped in brown oilcloth: close-up of Tang Xiaotang, on screen right on the paper bundles, wide awake now, big eyes sparkling in the moonlight, one finger raised, looking at Xu Yan off screen left",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「誰說要賣書坊？」 then 「賣給書生！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she flicks a bead on her gold abacus with a click and grins",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, low angle, locked",
+        "prompt": "On the moonlit stream at night, a wide calm stream between dark reed banks and drooping willows, a full moon and silver light on the rippling water, a line of three bamboo rafts loaded with paper bundles wrapped in brown oilcloth: low wide shot from near the water, the first raft sliding through a narrow gap between two dark wet rocks in a short run of fast water, Qin Shuang on screen left at the bow with the pole, Xu Yan and Tang Xiaotang holding onto the bundles behind her",
+        "motion": "Qin Shuang jams the pole against a rock and swings the bow clear, the raft shooting through the gap with white spray at its front edge while Tang Xiaotang clutches the bundles",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "chapter": "書院",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: wide shot, young scholars in pale robes with wooden book boxes on their backs climbing the steps, Tang Xiaotang on screen right at the foot of the steps setting up a small folding table with stacks of white paper, Xu Yan on screen left carrying an oilcloth bundle toward her",
+        "motion": "Tang Xiaotang slaps a thick stack of white paper down on the table while the passing scholars glance at it and keep walking",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a15",
+          "speaker": "tangxiaotang",
+          "text": "各位公子，",
+          "emotion": "揚聲招呼"
+        },
+        {
+          "id": "zq16a16",
+          "speaker": "tangxiaotang",
+          "text": "一張紙，當場比！",
+          "emotion": "舉起兩張紙"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: medium close-up of Tang Xiaotang, on screen right behind the folding table, holding up two sheets side by side, one coarse and yellowish, one bright white, smiling at the passing scholars",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「各位公子，」 then 「一張紙，當場比！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she waves both sheets so they catch the morning light",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a17",
+          "speaker": "xuyan",
+          "text": "同一支筆，",
+          "emotion": "提筆"
+        },
+        {
+          "id": "zq16a18",
+          "speaker": "xuyan",
+          "text": "同一滴墨。",
+          "emotion": "蘸墨"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: medium shot of Xu Yan, on screen left at the folding table, an ink stone and a brush in front of him, two skeptical young scholars in pale robes leaning in from screen right with their arms folded",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「同一支筆，」 then 「同一滴墨。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he dips the brush in the ink stone and lifts it, a bead of black ink at its tip",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the brush on yellow paper, locked",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: insert from above of the coarse yellowish sheet on the table, a brush tip pressing down on it, no writing",
+        "motion": "The brush draws one short stroke and the black ink immediately bleeds outward into a fuzzy grey blot that keeps spreading through the fibres",
+        "characters": []
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a19",
+          "speaker": "tangxiaotang",
+          "text": "不洇。",
+          "emotion": "畫外，輕快"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the brush on white paper, locked",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: insert from above of the bright white sheet beside the blotted yellow one, the same brush tip pressing down, no writing; Tang Xiaotang speaks off screen",
+        "motion": "The brush draws the same short stroke and the ink stays crisp and sharp-edged on the white paper, then a scholar's fingertip reaches in and touches the dry clean edge in disbelief",
+        "characters": []
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a20",
+          "speaker": "tangxiaotang",
+          "text": "排隊，",
+          "emotion": "笑開"
+        },
+        {
+          "id": "zq16a21",
+          "speaker": "tangxiaotang",
+          "text": "一人十張！",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: medium shot of Tang Xiaotang, on screen right behind the folding table, a crowd of young scholars in pale robes pressing in from screen left, hands holding strings of copper coins reaching across the table",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「排隊，」 then 「一人十張！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she laughs and slaps a bundle of ten white sheets into the nearest outstretched hand",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a22",
+          "speaker": "xitong",
+          "text": "白紙進城，",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq16a23",
+          "speaker": "xitong",
+          "text": "售出三百張。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Extreme wide shot, high angle, slow crane up",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: extreme wide shot from high above, a long queue of young scholars in pale robes stretching along the grey academy wall and down the street, Xu Yan and Tang Xiaotang small at the folding table at its head; the system voice speaks off screen",
+        "motion": "The queue shuffles forward as Xu Yan hands out sheet after sheet and Tang Xiaotang drops coins into a box, while the camera rises slowly",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a24",
+          "speaker": "tangxiaotang",
+          "text": "行會那張告示，",
+          "emotion": "撥算盤，笑得眼睛彎彎"
+        },
+        {
+          "id": "zq16a25",
+          "speaker": "tangxiaotang",
+          "text": "擦桌子剛好。",
+          "emotion": "得意"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: close-up of Tang Xiaotang, on screen right, flicking the beads of her small gold abacus at full speed, a heap of copper coins in front of her, cheeks rosy with delight, looking up at Xu Yan off screen left",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「行會那張告示，」 then 「擦桌子剛好。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she pulls a crumpled sheet of paper from her sleeve and wipes the ink stone with it",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "chapter": "馬車",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: wide shot down the stone-paved street, the scholars' queue small on screen left, a closed dark carriage with deep green curtains and a black horse waiting under a pine tree at the street corner on screen right, a servant in a grey robe standing by its window",
+        "motion": "The green window curtain of the carriage is drawn back a hand's width from inside and stays open while the horse shifts its hooves",
+        "characters": []
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a26",
+          "speaker": "sunzhanggui",
+          "text": "今晚……",
+          "emotion": "低聲，笑咪咪"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: medium close-up of Manager Sun, on screen right inside the carriage window, the green curtain held back with one finger, narrow half-closed smiling eyes watching the scholars' queue in the distance for a long time, two jade balls turning in his other hand",
+        "motion": "Manager Sun speaks a short Mandarin line, 「今晚……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he leans toward the servant at the window and keeps murmuring too low to hear, then lets the curtain fall closed",
+        "characters": [
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: wide shot of the street corner by the pine tree, the dark carriage with its green curtains now closed, the servant in a grey robe at its window, a narrow side lane between grey walls on screen left",
+        "motion": "The servant bows quickly to the closed curtain, turns and hurries away into the side lane, glancing back once over his shoulder",
+        "characters": []
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a27",
+          "speaker": "xuyan",
+          "text": "小棠，",
+          "emotion": "笑容收起"
+        },
+        {
+          "id": "zq16a28",
+          "speaker": "xuyan",
+          "text": "那是誰的車？",
+          "emotion": "低聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: close-up of Xu Yan, on screen left at the folding table, a sheet of white paper still in his hand, his smile fading as he looks past the queue toward the far street corner",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「小棠，」 then 「那是誰的車？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he lowers the sheet slowly, eyes fixed on the corner",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a29",
+          "speaker": "tangxiaotang",
+          "text": "魏記的……",
+          "emotion": "算盤停住，臉一白"
+        },
+        {
+          "id": "zq16a30",
+          "speaker": "tangxiaotang",
+          "text": "孫掌櫃。",
+          "emotion": "很小聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the county academy gate at first light, a grey stone gateway with a tiled roof and red-lacquered doors at the top of broad stone steps, old pine trees, a stone-paved street, cool pale morning light: medium close-up of Tang Xiaotang, on screen right, her fingers frozen on the gold abacus, the colour draining from her face, staring toward the far street corner",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「魏記的……」 then 「孫掌櫃。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she slides the coin box closer to herself and grips its lid",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "chapter": "起火",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the village entrance by the stream at sunrise, an old willow tree, a wooden plank bridge over the stream, a muddy track, thatched roofs beyond, the sky turning red: wide shot of the first raft, now empty of paper, coming round the bend toward the old willow, Qin Shuang standing at the bow with the long pole, Xu Yan sitting behind her with a small cloth money bag, Tang Xiaotang asleep against the bag",
+        "motion": "Qin Shuang's pole stops mid-push and the raft drifts, while she lifts her head and sniffs the air",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a31",
+          "speaker": "qinshuang",
+          "text": "什麼味道？",
+          "emotion": "皺眉，聲音一沉"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the village entrance by the stream at sunrise, an old willow tree, a wooden plank bridge over the stream, a muddy track, thatched roofs beyond, the sky turning red: medium close-up of Qin Shuang, on screen left at the bow, red dawn light on her face, bold brows drawn together, her ponytail stirring, staring past the willows toward the village",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「什麼味道？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then her hand drops from the pole to the old chopping knife in her belt",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a32",
+          "speaker": "xuyan",
+          "text": "是煙——",
+          "emotion": "站起來"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the village entrance by the stream at sunrise, an old willow tree, a wooden plank bridge over the stream, a muddy track, thatched roofs beyond, the sky turning red: close-up of Xu Yan, on screen left on the raft, red light and drifting grey haze on his face, his eyes going wide as he looks off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「是煙——」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he rises to his feet on the rocking raft, the money bag sliding off his knee",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Extreme wide shot, slow push in",
+        "prompt": "At the village entrance by the stream at sunrise, an old willow tree, a wooden plank bridge over the stream, a muddy track, thatched roofs beyond, the sky turning red: extreme wide shot over the willows and the stream toward the edge of the village, a thick column of black smoke rising into the red sky from the thatched lean-to of the paper workshop, orange flames glowing under the smoke, ash drifting over the water, no people near the fire",
+        "motion": "The smoke column billows higher and leans in the wind as the orange glow beneath it flares, ash drifting across the water toward the camera",
+        "characters": []
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a33",
+          "speaker": "shimujiang",
+          "text": "許秀才——",
+          "emotion": "隔著水嘶喊"
+        },
+        {
+          "id": "zq16a34",
+          "speaker": "shimujiang",
+          "text": "紙坊燒起來了！",
+          "emotion": "嘶喊"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the village entrance by the stream at sunrise, an old willow tree, a wooden plank bridge over the stream, a muddy track, thatched roofs beyond, the sky turning red: medium shot of Carpenter Shi, on screen right on the muddy bank under the willow, soot smudged on his face and leather apron, grey smoke drifting behind him, shouting across the water toward Xu Yan off screen left",
+        "motion": "Carpenter Shi speaks 2 short Mandarin lines, 「許秀才——」 then 「紙坊燒起來了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he waves one arm wildly toward the smoke behind him",
+        "characters": [
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq16a35",
+          "speaker": "tangxiaotang",
+          "text": "裡面還有人嗎？",
+          "emotion": "驚醒，抓住他袖子"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the village entrance by the stream at sunrise, an old willow tree, a wooden plank bridge over the stream, a muddy track, thatched roofs beyond, the sky turning red: medium close-up of Tang Xiaotang, on screen right on the raft, just woken, a hair ribbon loose, red light on her frightened face, gripping Xu Yan's sleeve at the edge of frame on screen left",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「裡面還有人嗎？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she tugs hard on his sleeve, her eyes going from him to the smoke",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow tracking alongside",
+        "prompt": "At the village entrance by the stream at sunrise, an old willow tree, a wooden plank bridge over the stream, a muddy track, thatched roofs beyond, the sky turning red: wide shot of Xu Yan, on screen left, jumping from the raft into the knee-deep shallows, the burning workshop's smoke filling the sky ahead of him on screen right, Qin Shuang behind him on the raft driving the pole into the mud",
+        "motion": "Xu Yan lands in the shallows with a splash and wades fast toward the bank and the smoke, the camera tracking alongside him",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "At the village entrance by the stream at sunrise, an old willow tree, a wooden plank bridge over the stream, a muddy track, thatched roofs beyond, the sky turning red: extreme close-up of Xu Yan's eyes, thick brows drawn down, the orange glow of the fire and the drifting smoke reflected in them, soot flecks in the air",
+        "motion": "Xu Yan's eyes lock on the fire ahead and narrow as he draws one hard breath, ash drifting across his face",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}

@@ -36,12 +36,13 @@ import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
 
 import { approve } from "../core/approvals.mjs";
+import { A01_COMPACT_BODY_SECONDS, isA01CompactStory, isA01PilotStory } from "../core/duration.mjs";
 import { initializeStoryLexicon, proposeStoryLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { lintVideo } from "../core/lint.mjs";
 import { atomicWrite, contentPackFile, docDir, readJson, readText } from "../core/paths.mjs";
 import { screenplay, writeScreenplay } from "../core/screenplay.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
-import { NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
+import { mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
 import { namePattern, STORY_KIND, STORY_RULES } from "../core/story.mjs";
 import { DEFAULT_CPM, estimateTimeline, formatClock, FPS, spokenUnits } from "../core/timeline.mjs";
@@ -133,11 +134,11 @@ const hash16 = (text) => createHash("sha256").update(String(text)).digest("hex")
 const chars = (text) => [...String(text)].length;
 
 /** Each chapter's share of a story of `targetMinutes`: { key, seconds, chars, shots }, summing to the target. */
-export function chapterBudgets(targetMinutes, look = null) {
+export function chapterBudgets(targetMinutes, look = null, { compactA01 = false } = {}) {
   const total = Math.round(targetMinutes * 60);
   const rest = Math.max(0, total - HOOK_SECONDS);
   const weight = Object.values(CHAPTER_WEIGHTS).reduce((sum, each) => sum + each, 0);
-  const shotSeconds = targetMinutes === 10 && isCuteStoryLook(look) ? CUTE_STORY_SHOT_SECONDS : SHOT_SECONDS;
+  const shotSeconds = isCuteStoryLook(look) && (targetMinutes === 10 || compactA01) ? CUTE_STORY_SHOT_SECONDS : SHOT_SECONDS;
   const budgets = CHAPTER_KEYS.map((key) => {
     const seconds = key === "hook" ? Math.min(HOOK_SECONDS, total) : (rest * CHAPTER_WEIGHTS[key]) / weight;
     return { key, seconds: Math.round(seconds), chars: Math.round((seconds * STORY_CPM) / 60), shots: Math.max(2, Math.round(seconds / shotSeconds)) };
@@ -153,6 +154,18 @@ export function chapterBudgets(targetMinutes, look = null) {
 export const lengthBand = (targetMinutes, look = null) => targetMinutes === 10 && isCuteStoryLook(look)
   ? [9 * 60, 11 * 60]
   : [targetMinutes * 60 - LENGTH_BAND_SECONDS.below, targetMinutes * 60 + LENGTH_BAND_SECONDS.above];
+
+// Keep the shared series and its other episodes at ten minutes. Only this exact pilot
+// uses the owner's shorter brief; composeStory writes its own [7, 8] target.
+const compactA01Story = (slug, info) => isA01PilotStory({
+  slug, format: "drama", category: "story", look: info?.look,
+  series: { slug: info?.slug, episode: info?.episode },
+});
+export const effectiveStoryMinutes = (slug, info) => compactA01Story(slug, info) ? 8 : Number(info?.target_minutes) || 13;
+export const effectiveStoryLengthBand = (slug, info) => compactA01Story(slug, info)
+  ? A01_COMPACT_BODY_SECONDS
+  : lengthBand(effectiveStoryMinutes(slug, info), info?.look);
+const effectiveChapterBudgets = (slug, info) => chapterBudgets(effectiveStoryMinutes(slug, info), info.look, { compactA01: compactA01Story(slug, info) });
 
 // --- the plan ----------------------------------------------------------------------------------
 
@@ -690,7 +703,7 @@ function storyTags(plan) {
  */
 export function composeStory({ slug, info, chapters, voice, drama = {}, root, videoId = null }) {
   const plan = info.plan;
-  const target = Number(info.target_minutes) || 13;
+  const target = effectiveStoryMinutes(slug, info);
   const scenes = [];
   for (const key of CHAPTER_KEYS) {
     const chapter = chapters[key];
@@ -717,7 +730,7 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     // A brand story's place among the site's videos (/admin/videos filters by it).
     category: "story",
     ...(guide ? { source_guide: guide } : {}),
-    target_minutes: target === 10 && isCuteStoryLook(look) ? [9, 11] : [Math.max(1, target - TARGET_SPREAD.below), target + TARGET_SPREAD.above],
+    target_minutes: compactA01Story(slug, info) ? [7, 8] : target === 10 && isCuteStoryLook(look) ? [9, 11] : [Math.max(1, target - TARGET_SPREAD.below), target + TARGET_SPREAD.above],
     voice,
     look: isCuteStoryLook(look) ? { preset: "cute-mystery" } : { preset: "custom", style: clip(look.style ?? "", 600), negative: clip(look.negative ?? "", 400), ...(isText(look.motion) ? { motion: clip(look.motion, 300) } : {}) },
     characters: info.characters ?? [],
@@ -726,7 +739,7 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     // Keep the picture clean so zh-TW CC can be switched off when another voice is selected.
     subtitles: { burn_in: false, style: "drama" },
     youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: clip(info.title ?? plan.subject, 100), description: `${info.logline || plan.subject}\n\n${plan.question}`, tags: storyTags(plan), video_id: videoId },
-    ...(thumbnail ? { thumbnail: { template: "thumb", data: { headline: clipHeadline(plan.thumbnail?.headline ?? plan.subject), tag: "品牌故事", shot: thumbnail } } } : {}),
+    ...(thumbnail ? { thumbnail: { template: "thumb", data: { headline: clipHeadline(plan.thumbnail?.headline ?? plan.subject), tag: "品牌故事", ...(isText(plan.thumbnail?.brand) ? { brand: plan.thumbnail.brand.trim() } : {}), shot: thumbnail } } } : {}),
     sources: plan.sources.map((source) => ({ title: clip(source.publisher || source.url, 200), url: source.url, checked_on: source.checked })),
     assets: [],
     ...(loops.length ? { loops } : {}),
@@ -855,6 +868,9 @@ export function pilotScriptReviewProblem({ slug, root, workdir }) {
     }));
     const merged = composeStory({ slug, info, chapters, voice: video.voice, root });
     if (!isDeepStrictEqual(video.scenes, merged.scenes)) return "video.json scenes no longer match the six reviewed chapter files";
+    if (compactA01Story(slug, info) && !isDeepStrictEqual(video.target_minutes, merged.target_minutes)) {
+      return "A01 video.json still has a legacy duration target; recompose and independently review the compact [7,8] script before TTS";
+    }
   } catch { return "the six chapter files or series.json cannot be merged for the pilot script review"; }
   for (const name of PILOT_REVIEW_FILES) {
     if (!expected.files[name] || receipt.files?.[name] !== expected.files[name]) return `${name} is missing or changed since the pilot script review`;
@@ -991,7 +1007,7 @@ export async function draftStory(automation, started, job = {}) {
     request_id: request.id ?? null,
     premise: request.premise ?? plan.question ?? "",
     style_preset: "custom",
-    target_minutes: Number(series.target_minutes) || 13,
+    target_minutes: effectiveStoryMinutes(slug, { ...series, episode: episode.number }),
     source_guide: isText(plan.related_guide) ? plan.related_guide : null,
     series: { slug: series.slug, episode: episode.number, chapter: 1, kind: STORY_KIND, visual_tier: "stills", compilation: false, hands_off: true },
     story: { id: plan.id ?? null, chapters: {}, resizes: 0, length: null, owner_note: null, audio_review: null },
@@ -1060,6 +1076,22 @@ export async function advanceStory(automation, state, next) {
     return `${state.slug}: the story's outline approved again (${OUTLINE_NOTE})`;
   }
   // A chapter lint refuses is fixed before the next is written, so the next goes on from its final words.
+  // Any saved old target, even with a chapter missing, must hold before the writer can
+  // regenerate a chapter or relint can overwrite a previously reviewed merged script.
+  const storyInfo = seriesInfo(automation, state);
+  const videoFile = path.join(docDir(state.slug, automation.ctx.root), "video.json");
+  if (compactA01Story(state.slug, storyInfo) && existsSync(videoFile)) {
+    const missing = CHAPTER_KEYS.filter((key) => !existsSync(chapterFile(automation, state, key)));
+    if (missing.length) {
+      return automation.block(state, `STOPPED_HOLD: A01 has an existing video.json but chapter files are missing (${missing.join(", ")}); preserve the merged script and reconcile its six-chapter evidence before retry`, "pilot_script_review");
+    }
+    let existing;
+    try { existing = readJson(videoFile, null); }
+    catch { /* An unreadable existing script is held below, not silently regenerated. */ }
+    if (!isA01CompactStory(existing)) {
+      return automation.block(state, "STOPPED_HOLD: A01's existing video.json has a legacy or unreadable duration target; preserve it and any existing chapters, then recompose [7,8] under a separate hash-bound script review before retry", "pilot_script_review");
+    }
+  }
   const failing = CHAPTER_KEYS.find((key) => entryOf(state, key).lint?.length && existsSync(chapterFile(automation, state, key)));
   if (failing) return fixChapterLint(automation, state, failing);
   const unwritten = CHAPTER_KEYS.find((key) => !entryOf(state, key).written || !existsSync(chapterFile(automation, state, key)));
@@ -1103,7 +1135,7 @@ async function writerPayload(automation, state, key, extra = {}) {
   const plan = info.plan;
   const index = CHAPTER_OF.get(key).index;
   const belongs = factChapters(plan);
-  const budget = chapterBudgets(info.target_minutes, info.look)[index];
+  const budget = effectiveChapterBudgets(state.slug, info)[index];
   const previous = index > 0 ? readChapter(automation, state, CHAPTER_KEYS[index - 1]) : null;
   const names = plan.names ?? [];
   const anchors = anchorsFor([plan.chapters[index].point, ...(plan.must_verify ?? []).filter((_, each) => belongs[each].includes(key)).map((fact) => fact.claim), ...(extra.current ? chapterNarration(extra.current) : [])], names);
@@ -1111,6 +1143,13 @@ async function writerPayload(automation, state, key, extra = {}) {
   return {
     today: automation.ctx.now().toISOString().slice(0, 10),
     slug: state.slug,
+    ...(compactA01Story(state.slug, info) ? {
+      target_minutes: effectiveStoryMinutes(state.slug, info),
+      episode_length: {
+        measured_narration_seconds: [...A01_COMPACT_BODY_SECONDS],
+        owner_decision: "This exact A01 pilot is a compact 7–8 minute story. Use the 8-minute writing target and this chapter's budget in place of the generic cute-mystery ten-minute example; do not pad the sourced story.",
+      },
+    } : {}),
     chapter: { key, number: index + 1, of: CHAPTER_KEYS.length, label: CHAPTER_OF.get(key).label, point: plan.chapters[index].point, budget: { seconds: budget.seconds, chars: budget.chars, shots: budget.shots } },
     plan: { id: plan.id, subject: plan.subject, category: plan.category, region: plan.region, title: info.title, logline: info.logline, question: plan.question, takeaway: plan.takeaway, chapters: plan.chapters, thumbnail: plan.thumbnail ?? null, image_notes: plan.image_notes ?? "", sensitivity: plan.sensitivity ?? "none", related_guide: plan.related_guide ?? null },
     facts: factsPayload(plan, belongs),
@@ -1175,7 +1214,7 @@ const describeChapter = (chapter) => `${chapter.scenes.filter((scene) => scene.t
 async function writeChapter(automation, state, key) {
   const info = seriesInfo(automation, state);
   const index = CHAPTER_OF.get(key).index;
-  const budget = chapterBudgets(info.target_minutes, info.look)[index];
+  const budget = effectiveChapterBudgets(state.slug, info)[index];
   const ids = lineIds(automation, state, idsFor(budget.chars));
   const payload = await writerPayload(automation, state, key, { line_ids: ids });
   const answer = await automation.stage("writer", state.slug, payload, WRITER_TOKENS, "drama", STORY_VARIANT);
@@ -1380,10 +1419,11 @@ async function listenChapter(automation, state, key) {
 }
 
 /**
- * The storytelling panel on the merged story (core/narrative.mjs; owner, 2026-10-13): a reader in
- * a fresh session answers ten yes-or-no questions on the script alone. A required "no" goes back
- * to the listener as the owner's note would, chapter by chapter, STORY_PROMPT_FIX_ROUNDS times;
- * after that the video waits for the owner with the questions it failed. Null when nothing is due.
+ * The storytelling panel on the merged story (core/narrative.mjs; owner, 2026-10-13): two readers
+ * (owner, 2026-10-18), each in a fresh session, answer the yes-or-no questions on the script
+ * alone. A required "no" from both goes back to the listener as the owner's note would, chapter
+ * by chapter, STORY_PROMPT_FIX_ROUNDS times; after that the video waits for the owner with the
+ * questions it failed. Null when nothing is due.
  */
 async function narrativeGate(automation, state) {
   const dir = docDir(state.slug, automation.ctx.root);
@@ -1395,8 +1435,18 @@ async function narrativeGate(automation, state) {
   const saved = readJson(verdictFile, null);
   if (saved?.passed && narrativeReviewMatches(saved, video)) return undefined;
   const round = (saved?.round ?? 0) + 1;
-  const answer = await automation.stage("verifier", state.slug, panelPayload(video, timeline), PANEL_TOKENS, "drama", NARRATIVE_VARIANT, null, { bare: PANEL_INSTRUCTIONS });
-  const verdict = panelVerdict(answer);
+  // Two readers, each a fresh session, one after the other (owner, 2026-10-18): a required question
+  // fails only when both say "no" (mergePanelVerdicts). A reader whose call fails throws as one
+  // reader always has, and nothing is kept, so one reader's answer is never taken for two. Each
+  // payload carries its reader's number: a pilot's durable run receipt (client.mjs) is keyed by
+  // the request, and the second identical request would get the first reader's answer back.
+  const payload = panelPayload(video, timeline);
+  const verdicts = [];
+  for (let reader = 1; reader <= STORY_PANEL_READERS; reader++) {
+    const answer = await automation.stage("verifier", state.slug, { ...payload, reader }, PANEL_TOKENS, "drama", NARRATIVE_VARIANT, null, { bare: PANEL_INSTRUCTIONS });
+    verdicts.push(panelVerdict(answer));
+  }
+  const verdict = mergePanelVerdicts(verdicts);
   mkdirSync(path.dirname(verdictFile), { recursive: true });
   atomicWrite(verdictFile, `${JSON.stringify(narrativeRecord(video, verdict, round), null, 2)}\n`);
   automation.cleared(state, "verifier");
@@ -1448,8 +1498,8 @@ async function checkLength(automation, state) {
   const timeline = readJson(path.join(automation.workdir(state.slug), "timeline.json"), null);
   if (!timeline?.total_frames) return undefined;
   const info = seriesInfo(automation, state);
-  const target = Number(info.target_minutes) || 13;
-  const [low, high] = lengthBand(target, info.look);
+  const target = effectiveStoryMinutes(state.slug, info);
+  const [low, high] = effectiveStoryLengthBand(state.slug, info);
   const seconds = timeline.total_frames / FPS;
   state.story.length = { seconds: Math.round(seconds), at: automation.ctx.now().toISOString() };
   if (seconds >= low && seconds <= high) {
@@ -1460,7 +1510,7 @@ async function checkLength(automation, state) {
   const measured = `the narration measures ${formatClock(seconds)}, ${long ? "over" : "under"} ${formatClock(long ? high : low)}`;
   if ((state.story.resizes ?? 0) >= LENGTH_FIX_ROUNDS) return automation.block(state, `${measured} after ${state.story.resizes} length fixes; a story runs ${formatClock(low)} to ${formatClock(high)}: the owner decides`);
   const measuredBy = chapterSeconds(timeline);
-  const budgets = Object.fromEntries(chapterBudgets(target, info.look).map((budget) => [budget.key, budget.seconds]));
+  const budgets = Object.fromEntries(effectiveChapterBudgets(state.slug, info).map((budget) => [budget.key, budget.seconds]));
   // The hook keeps its condensation's seconds whatever the total does.
   const resizable = CHAPTER_KEYS.filter((each) => each !== "hook");
   const key = long

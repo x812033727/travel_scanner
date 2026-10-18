@@ -110,8 +110,15 @@ const READING_SPEED = /characters a second/;
  * (overlaps, overlong lines) are failures. Chapter titles left over from scenes that no longer
  * open a chapter are dropped by i18n-merge, so they only warn. A dub track the worker gave up on
  * (`skippedDubs`, locale to reason) is a warning: those captions follow the narration.
+ *
+ * `untranslated` lists the chosen locales that have no translation at all yet. The worker
+ * translates them only after the final cut is approved (and, for a brand story, cleared for
+ * dubbing), and this check runs at the final gate, so requiring their files here was a loop no
+ * video could leave (owner, 2026-10-18). Such a locale only warns; the languages gate's package
+ * check still requires its file. A locale with a translation, even an outdated one, is checked
+ * as before, and the narration's own captions and zh-TW are never passed here.
  */
-export function captionsItem({ lintWarnings, manifest, current, locales, hasCaptionFile, skippedDubs = {} }) {
+export function captionsItem({ lintWarnings, manifest, current, locales, hasCaptionFile, skippedDubs = {}, untranslated = [] }) {
   const problems = [];
   const warnings = [];
   for (const warning of lintWarnings) {
@@ -130,6 +137,10 @@ export function captionsItem({ lintWarnings, manifest, current, locales, hasCapt
         problems.push(`${locale}: no caption file, ${skipped.length} lines missing or older than zh-TW (${skipped.join(", ")})`);
         continue;
       }
+      if (!manifest.locales?.[locale] && untranslated.includes(locale)) {
+        warnings.push(`${locale}: no caption file yet; it is translated in the languages step after the final cut`);
+        continue;
+      }
       if (!manifest.locales?.[locale] || !hasCaptionFile(locale)) {
         problems.push(`${locale}: no caption file`);
         continue;
@@ -138,7 +149,8 @@ export function captionsItem({ lintWarnings, manifest, current, locales, hasCapt
     }
   }
   if (problems.length) return item("captions", false, problems.join("; "), warnings);
-  return item("captions", true, `caption files for ${locales.join(", ")}, every translation current`, warnings);
+  const made = locales.filter((locale) => !untranslated.includes(locale) || manifest.locales?.[locale]);
+  return item("captions", true, `caption files for ${made.join(", ")}, every translation current`, warnings);
 }
 
 /**

@@ -5036,6 +5036,19 @@ Non-claims: the runtime inspection and fixtures do not prove power-loss behavior
 
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Story thumbnail brand visual hash increment: 1 file (2026-10-18)
+
+Reviewer: `claude-pr-review-1568-duration`. Author: `claude-opus-5.5-story-thumb-brand`. Scope: DURATION_ONLY for `tools/video/core/timeline.mjs` in PR #1568 (branch `claude/story-thumbnail-brand`, head `b7a13e97c` "feat(video): brand story thumbnails name the company in large type"), task `2026-10-18-story-thumbnail-brand`, reviewed as `git diff origin/main...HEAD` from merge base `005c2785b` (timeline.mjs +9/−2). The PR also changes unbound files (story skill reference, `stories.py` and its test, `story.mjs`, `story-plans/plan.mjs`, `templates.mjs` and their tests, the task file). The reviewer wrote none of the code and edits only this report and review.json.
+
+Baseline: `git show origin/main:tools/video/core/timeline.mjs | sha256sum` gives `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a`, equal to the existing binding and table row. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding:` for exactly this path; the other 107 registered files are byte-identical to the receipt. Earlier increments are retained in full.
+
+Findings. timeline.mjs (10,273 → 10,877 bytes): only `visualHash` changes. It now hashes `doc.thumbnail` with `thumbnail.data.brand` removed when that key is present, so adding a brand story's company name to the thumbnail does not make keyframes, clips and assembly stale; without a `brand` key the hashed value is the same object as before, so existing hashes are unchanged. `visualHash` is a cache and freshness key (assemble, compile, clips, state, compilation) and feeds no duration: scene timing, `speechHash`, the timeline length computation and frame counts are untouched. None of the changed lines touches the 10-minute explainer default or its 8-20 minute range, the drama 1-8 minute range, the 13-minute brand story, the non-drama 8-minute floor, the 480-second / 14,400-frame QA floor, `target_minutes`, `MIN_EPISODE*`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, the long anime production policy, measured duration evidence or plans.json. No duration correction is required.
+
+Ran: Node, Windows: `node tools/video/long-form/cli.mjs check` before any edit (stale for exactly this path). The CLI check and `node --test tools/video/long-form/review.test.mjs` are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims: this is a one-file incremental source duration review. It does not re-review the other 107 bound files or the unbound files the PR changes, it does not judge the thumbnail design, and it does not accept media, paid production, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings" in the merged report is byte-identical to `dec59b7c5^1`'s report up to that heading followed by main's "Channel intro after the opening condensation increment" section byte-identical to `dec59b7c5^2`'s; main's report is the merge base's report plus that section only, so no earlier section was dropped or altered on either side. After the heading, the table has the same 115 lines as each parent; it differs from `dec59b7c5^1` in exactly the five #1481 rows and from `dec59b7c5^2` in exactly the 15 rows of this branch's increments, and every row equals one parent's row.
 
 Ran (in the worktree at `dec59b7c5`, Node on Windows): `node tools/video/long-form/cli.mjs check` before any edit; a script kept outside the repository that hashes the working tree and the blobs of the merge, both parents and the merge base, and compares both receipts and both reports as in 1 to 4; `git ls-files --eol` (LF in index and worktree for both receipt files). The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
@@ -5623,9 +5636,44 @@ Ran: Node v22.22.0, Linux: `cmp` of the two mirrors (identical); `node tools/vid
 Non-claims: this is a two-file incremental source duration review of one sentence. It does not re-review the rest of either skill file or the other 106 bound files, and it does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Story dub QA waiver and untranslated captions increment: 4 files (2026-10-18)
+
+Reviewer: `claude-pr-review-1565-duration`. Author: `claude-opus-5.5-story-dub`. Scope: DURATION_ONLY for `apps/api/app/video_reviews/admin_service.py`, `tools/video/qa/checks.mjs`, `tools/video/qa/checks.test.mjs` and `tools/video/qa/cli.mjs` in PR #1565 (branch `claude/story-dub-unlock`, head `f9a4922e6`: `90781af57` "fix(video): a brand story's dub no longer waits on foreign captions, pace or policy" and `f9a4922e6` "fix(video): a compilation's captions item no longer reads an undefined untranslated list"), task `2026-10-18-qa-pace-policy`, reviewed as `git diff origin/main...HEAD` from merge base `d9168a4dd` (admin_service.py +45/−4, checks.mjs +14/−2, checks.test.mjs +22/−0, cli.mjs +6/−2). The PR also changes the unbound `apps/api/tests/test_video_reviews.py` and the task file. The reviewer wrote none of the code and edits only this report and review.json.
+
+Baseline: the existing bindings are `2b1d28b8a28cbedf3ef5c2537069be0e8b54102d31f97cefdeedbaf3e00d66ac` (admin_service.py), `0c13be6eb906f9a322eab71dd18974a2cfa3f9d9b27cc5a9cba9f3570891567b` (checks.mjs), `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` (checks.test.mjs) and `e884ad270c8170c290b10c4b8bf7d3f56ed1c5ebe26428f619d458bb11a9fc9d` (cli.mjs). Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding:` for exactly these four paths; the other 104 registered files are byte-identical to the receipt. Earlier increments are retained in full.
+
+Findings. admin_service.py (119,237 → 121,371 bytes): `_story_dub_ready` now calls a new `_story_dub_qa_passed` instead of `final_qa_passed`; it still requires the report bound to the approved final's `content_sha256` and every id in `QA_ITEMS` present, and lets only `pace`, `policy` and a `captions` item whose every failure is `(en|ja|ko): no caption file` through, and only for the brand-story dub choice after the owner approved the cut; `final_qa_passed` and auto-approval are unchanged. The `assemble` item, which carries the length floor (`minMinutes: needsMinimumLength(doc) ? minEpisodeMinutes() : 0` in qa/cli.mjs), is not waived. The waived `pace` item measures how long one slide state or picture is held (`paceProblems`: states over `MAX_STATE_SECONDS`; illustrated cadence and illustrated share), an upper bound per state, not the episode's runtime; the waived `policy` item is Jev's channel-stance verdict, not the long anime production policy (`anime_policy`, `policy.json`). checks.mjs (13,663 → 14,557 bytes): `captionsItem` takes an `untranslated` list; a chosen locale with no translation in the manifest only warns, a locale with a translation and a missing file still fails, and the pass detail lists only the locales made. cli.mjs (24,091 → 24,490 bytes): imports `alwaysLocales` and passes `untranslated` = chosen caption locales outside the narration's own and zh-TW with no `project.translations` entry. checks.test.mjs (18,483 → 21,029 bytes): one new test covers the warning, zh-TW never excused, an outdated translation and a lost file still failing, and a compilation without the list. None of the changed lines touches the 10-minute explainer default or its 8-20 minute range, the drama 1-8 minute range, the 13-minute brand story, the non-drama 8-minute floor, the 480-second / 14,400-frame QA floor, `target_minutes`, `MIN_EPISODE*`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, the long anime production policy, measured duration evidence or plans.json. No duration correction is required.
+
+Ran: Node, Windows: `node tools/video/long-form/cli.mjs check` before any edit (stale for exactly these four paths). The CLI check and `node --test tools/video/long-form/review.test.mjs` are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims: this is a four-file incremental source duration review. It does not re-review the other 104 bound files or the unbound files the PR changes; it does not judge whether waiving `pace` and `policy` for a brand story's dub is the right product rule (an owner decision recorded in the code comment), and it does not accept media, paid production, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
+## A01 measured seven-to-eight-minute duration increment: 5 files (2026-10-18)
+
+Reviewer: `codex-a01-duration-receipt-reviewer`. Author: `codex-gpt6-a01-duration`. Scope: DURATION_ONLY for `tools/video/core/duration.mjs`, `duration.test.mjs`, `lint.mjs`, `lint.test.mjs` and `tools/video/qa/duration.test.mjs` at code commit `f9580975f10d6855b6962965e0e60a266bf6b984`, based on `origin/main d9168a4dd2d03a62e77767cf131cbd1aa515c3e6`. This reviewer did not author the five source or test changes and edits only this report and its receipt.
+
+Baseline: the prior receipt and final table bound 108 files. Against the branch's current file bytes, exactly these five paths are stale; the other 103 remain byte-identical to their existing bindings. Before this increment, `node tools/video/long-form/cli.mjs check` reports only these five stale duration review bindings.
+
+Findings. `duration.mjs` applies the owner's compact band only to exact `story-rolling-suitcase-v2`, the `brand-stories-curio-pilot-v2` first episode, story/drama category and format, the sole `cute-mystery` look preset, no compilation, and an explicit per-video `[7,8]` target. The measured unwrapped narration body must contain 12,600–14,400 frames inclusive at 30 fps (420–480 seconds); current narration, speech hash, checked presentation frames and selected bookends still have to agree. Intro/outro frames cannot rescue a short body and do not consume the body's 480-second maximum. B18, other stories and an A01 document still carrying `[9,11]` keep the prior 480-second minimum. `lint.mjs` runs the narrated opening, episode-shape and storytelling checks on this exact compact A01 even when a draft estimate is below eight minutes; the existing series-context and language conditions still apply. The three changed test files exercise exact identity, both one-frame boundaries, bookends, stale proof, B18's old floor and the seven-minute hook/loop/outro checks. I found no remaining required duration fix in these five files.
+
+Ran on Windows Node v24.13.0: `node --test tools/video/core/duration.test.mjs` (15/15) and `node --test tools/video/core/lint.test.mjs` (47/47), plus the filtered `QA accepts only the exact A01` test (1/1). The complete `story.test.mjs` and `qa/duration.test.mjs` processes exited with Windows code `-1073740791` without assertion output in this local runtime. The coordinating agent then ran `node --test tools/video/core/duration.test.mjs tools/video/core/lint.test.mjs tools/video/qa/duration.test.mjs tools/video/automation/story.test.mjs` with Codex bundled Node v24.19.0: 100/100 passed, exit 0, in 155,291 ms. The CLI and receipt regression are checked again after rebinding.
+
+Non-claims: this five-file duration review does not re-review the other 103 bindings, `automation/story.mjs` orchestration, A01's factual manuscript or host state. It does not approve real TTS, visuals, media, paid production, deployment, upload, publication or playback. This receipt does not replace the A01 script's independent factual and storytelling review. Verdict: PASS - DURATION_ONLY; required fixes in the five bound files: none. Merge remains subject to the full CI gate.
+
+## A01 duration receipt integration after #1565 and #1568 (2026-10-18)
+
+Reviewer: `codex-pr1563-duration-integration-reviewer`. Author of the A01 code: `codex-gpt6-a01-duration`. Scope: DURATION_ONLY for rebasing the A01 five-file duration increment onto main `498b1dbfc78f44dfa79926b0c979cb26d3b5202f` at HEAD `38415629456b3f0c8c9e5ae1f7fa930dc3c10b96`. I did not author the five source or test changes, #1565, #1568, or the original A01 independent review. This addendum reconciles the two independently reviewed receipts; it does not change source code.
+
+Provenance: main's review.md hashes to `d75fc733c55a2090511e64123570b245b188e58ce1960d5ca3be219d423c8837` and the A01 receipt commit `87ac8a569`'s review.md hashes to `dd18c5bcb30df873840817ac378a3c76c93e96fbd3b6c1344f3eb48f53f10e94`, each equal to its own review.json report_sha256. Main's report before the final bindings table is preserved byte for byte, including #1565 and #1568. The original A01 five-file increment above is copied byte for byte from the A01 reviewed report. The final bindings table starts from main's 108 rows and changes only the five A01 rows.
+
+Reconciliation: the registry remains 108 paths. SHA-256 of every current working-tree bound file was compared with both parent receipts. Exactly five files differ from main: `tools/video/core/duration.mjs`, `duration.test.mjs`, `lint.mjs`, `lint.test.mjs`, and `tools/video/qa/duration.test.mjs`; all five are byte-identical to the A01 independently reviewed receipt. The #1565 admin_service.py, checks.mjs, checks.test.mjs and qa/cli.mjs files, and the #1568 timeline.mjs file, remain byte-identical to main's independent receipt. The other 98 registered files also remain at main's reviewed bytes. The final table and JSON below bind the SHA-256 of every file in this combined tree. The original A01 duration analysis therefore applies to its same five file bytes while the later main increments stay intact.
+
+Non-claims: this is a receipt integration review of exact source bytes and prior independent duration increments. It does not approve A01's factual script, real narration timing, production host state, media, paid generation, deployment, upload, publication, or playback. Verdict: PASS - DURATION_ONLY for these combined 108 bindings; no new duration correction is required by this merge.
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the hand-pushed film skill sentence increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5639,7 +5687,7 @@ These 108 bindings describe the current reviewed bytes after the hand-pushed fil
 | `apps/api/app/video_automation/schemas.py` | `d1af5e4597fd8135245bf95fee4a58779d652069ba69efae2d304b4a2493e050` |
 | `apps/api/app/video_automation/series.py` | `fe30ad598feadbb9329f737fe48218b3f5d1750763304f283111f56d52a45128` |
 | `apps/api/app/video_automation/settings.py` | `2b4f44d7e0094e32847f62c2df25e600eca5bcf2e1423606b0ff31d77c82e323` |
-| `apps/api/app/video_reviews/admin_service.py` | `2b1d28b8a28cbedf3ef5c2537069be0e8b54102d31f97cefdeedbaf3e00d66ac` |
+| `apps/api/app/video_reviews/admin_service.py` | `e32b85180cd9a829aeea1cf164aa416e789d4fc3f8f2228e211f545b3b812012` |
 | `apps/api/app/video_reviews/schemas.py` | `08e5269f4c34472ceaebcc01135c294a6a25da3e637477d9d58132704069e7fa` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
@@ -5694,11 +5742,11 @@ These 108 bindings describe the current reviewed bytes after the hand-pushed fil
 | `tools/video/core/branding.test.mjs` | `1430f36cb542ce42548f9e8ee7182694b8679069cf9f64d446a4fdb56f3e5b89` |
 | `tools/video/core/drama.mjs` | `1977b6c69471aa60923eb18ddfd6ef0323284bef96d9cf3a88c5ff5d220dcd83` |
 | `tools/video/core/drama.test.mjs` | `d24c6bc6a247f8ad33a102687078fc5dae0da5f30e87861008eb3db550c35b17` |
-| `tools/video/core/duration.mjs` | `12009ae5d12cba73e55ff462e9f9dd107350d53bea1da5a65bf59a1a39e13285` |
-| `tools/video/core/duration.test.mjs` | `a5b3e9c54368628d4b929b8050eb3ad925cc1b9c1fbd5b88bd3bf5ca010358f6` |
+| `tools/video/core/duration.mjs` | `df4874326d1d098d19a8df5ed4010cc3454537cbc96217a4c4192dc622caea1d` |
+| `tools/video/core/duration.test.mjs` | `98ca445b134133e796abbc6eba94d47532439a6283bb151ea8f6d69b4652e6a0` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `6cc1c1ee9cb425303d7a9f2ffa2d6aa5bddc3fa82c72314ede0060703316a386` |
-| `tools/video/core/lint.test.mjs` | `2c98e1c2b1747c966f281888aa37cd4494dcf3064ccaeee91270ce454d78f18e` |
+| `tools/video/core/lint.mjs` | `6f560e91f90126ecbf245ec754a7790ba49362651507d5c01e3ff1a5c939f95a` |
+| `tools/video/core/lint.test.mjs` | `fba256c3088f4a21999bebc2dc40fdad57f6a8ae552fac05d0b25f89880ce3a5` |
 | `tools/video/core/narration-locale.test.mjs` | `fddf009b24c976c9319d139db24fa3312fd1d942f2b4d623876d86357464d2ce` |
 | `tools/video/core/schema.mjs` | `80d2607bdecd5aaae145308924be7da310f48f8fc711e2cceba00742b445db0b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
@@ -5706,7 +5754,7 @@ These 108 bindings describe the current reviewed bytes after the hand-pushed fil
 | `tools/video/core/stages.test.mjs` | `c4583dba313415355131a854f3da6f568862c3ea83808313b2f1acda5c017523` |
 | `tools/video/core/state.mjs` | `7626ccf4a0421774e87d3bfbe1a00d6e19e271cd697c2071b57430abcbd35edd` |
 | `tools/video/core/state.test.mjs` | `1afa10f7887db57788ea83ab80a823bbaf45f36588dacdc296b1480ab7265c3e` |
-| `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
+| `tools/video/core/timeline.mjs` | `0088b369f5ddb962fc5d803bb5dd982f2f8f22b558eca728d0bfca5df1aa39b2` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
 | `tools/video/dubs/captions-package.test.mjs` | `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685` |
 | `tools/video/dubs/dubs.test.mjs` | `bff4e09be16e629cf807f688a227f092cc07af4380a1de583f88a1216d029a25` |
@@ -5724,10 +5772,10 @@ These 108 bindings describe the current reviewed bytes after the hand-pushed fil
 | `tools/video/package/package.test.mjs` | `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
 | `tools/video/production/anime-input.test.mjs` | `76b4082fd9245ea331c04d430f82aa5e4afa742d4f830c0794531cc4bbe80d02` |
-| `tools/video/qa/checks.mjs` | `0c13be6eb906f9a322eab71dd18974a2cfa3f9d9b27cc5a9cba9f3570891567b` |
-| `tools/video/qa/checks.test.mjs` | `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` |
-| `tools/video/qa/cli.mjs` | `e884ad270c8170c290b10c4b8bf7d3f56ed1c5ebe26428f619d458bb11a9fc9d` |
-| `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
+| `tools/video/qa/checks.mjs` | `fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2` |
+| `tools/video/qa/checks.test.mjs` | `239696ad256c9d54ee8065fd7c9d9954bf6d0fd4ca32f586d182230ad8179706` |
+| `tools/video/qa/cli.mjs` | `d5ae76e13265a063a7ea57d0766d9dfe3f31804cfa1ba5f259cb0e1fb5627b1f` |
+| `tools/video/qa/duration.test.mjs` | `23d46fee69ea26bff4150d29b74086d363bdf9d171e92cf898e3cf5a6560428d` |
 | `tools/video/qa/qa.test.mjs` | `6f2f77b1cf7cad0175282003b36d9d42dee7891ed168ad75ac21caed2aca5d88` |
 | `tools/video/review/sync.mjs` | `b63c241c6603d66f25fbf0eda4b09ac8a7de04fe0b0bfd27d42a70bb954e6306` |
 | `tools/video/review/sync.test.mjs` | `2658665eba3048be034f6a4dd2d84f9839f79ba93758b24865eb8d951f5b84aa` |

@@ -52,11 +52,11 @@ from app.video_automation.anime_policy import (
 from app.video_automation.judge import (
     PACKAGE_AUTO_APPROVED_NOTE,
     QA_AUTO_APPROVED_NOTE,
+    QA_ITEMS,
     SCRIPT_AUTO_APPROVED_NOTE,
     SHORTS_PACKAGE_AUTO_APPROVED_NOTE,
     SHORTS_QA_AUTO_APPROVED_NOTE,
     demo_asked_of,
-    final_qa_passed,
     pick_choice,
     pick_reason,
     video_series_kind,
@@ -1241,12 +1241,53 @@ def _current_final(reviews: list[VideoReview]) -> VideoReview | None:
     return next((row for row in reviews if row.gate == "final" and row.subject is None), None)
 
 
+# QA items a brand story's dub does not wait on once the owner approved the cut (owner,
+# 2026-10-18): the owner watched the cut and judged its pacing and Jev's stance score
+# themselves, and neither changes what the dub has to say or when it is said. Every other
+# item, the assemble, narration and zh-TW captions among them, still has to pass.
+STORY_DUB_WAIVED_QA_ITEMS: frozenset[str] = frozenset({"pace", "policy"})
+# A captions item from before the QA tool stopped failing chosen locales that are translated
+# only after the final gate ("en: no caption file; ja: no caption file"). The languages step
+# makes those files, so a report failing on them alone does not lock a story's dub.
+_FOREIGN_CAPTION_MISSING = re.compile(r"(?:en|ja|ko): no caption file")
+
+
+def _story_qa_item_waived(entry: dict[str, Any]) -> bool:
+    name = entry.get("id")
+    if name in STORY_DUB_WAIVED_QA_ITEMS:
+        return True
+    if name != "captions":
+        return False
+    detail = entry.get("detail")
+    parts = detail.split("; ") if isinstance(detail, str) and detail else []
+    return bool(parts) and all(_FOREIGN_CAPTION_MISSING.fullmatch(part) for part in parts)
+
+
+def _story_dub_qa_passed(report: Any, sha: str | None) -> bool:
+    """Whether a story's final QA clears dubbing: bound to this cut, every item reported, and
+    each failing one waived (STORY_DUB_WAIVED_QA_ITEMS, or captions missing only foreign files).
+
+    ``final_qa_passed`` stays the rule for auto-approval and everything else; this one is read
+    only after the owner approved the cut.
+    """
+    if not isinstance(report, dict) or not sha or report.get("final_sha256") != sha:
+        return False
+    items = report.get("items")
+    if not isinstance(items, list):
+        return False
+    entries = [entry for entry in items if isinstance(entry, dict) and entry.get("id") in QA_ITEMS]
+    if {entry.get("id") for entry in entries} != set(QA_ITEMS):
+        return False
+    return all(entry.get("ok") is True or _story_qa_item_waived(entry) for entry in entries)
+
+
 def _story_dub_ready(reviews: list[VideoReview]) -> bool:
-    """Only an approved, fully checked current cut with switchable zh-TW CC may be dubbed.
+    """Only an approved current cut with switchable zh-TW CC and a clearing QA may be dubbed.
 
     The QA report is bound to the final mp4 hash and includes the captions check. Older cuts
     have no subtitle-mode evidence and stay locked. A newer pending, rejected or superseded
-    final also locks the choice, even if an earlier cut was approved.
+    final also locks the choice, even if an earlier cut was approved. The owner's approval
+    stands in for the items in STORY_DUB_WAIVED_QA_ITEMS (_story_dub_qa_passed).
     """
     final = _current_final(reviews)
     if final is None or final.status != "approved":
@@ -1258,7 +1299,7 @@ def _story_dub_ready(reviews: list[VideoReview]) -> bool:
     return (
         isinstance(report, dict)
         and report.get("subtitles_burned_in") is False
-        and final_qa_passed({"qa": report}, final.content_sha256)
+        and _story_dub_qa_passed(report, final.content_sha256)
     )
 
 
