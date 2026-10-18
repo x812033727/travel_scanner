@@ -22,6 +22,8 @@ LOG="$C/dub-$L.log"
 node "$H/local/dub-lines.mjs" "$R" "$D/video.json" "$L" "$W/audio-$L" --check || exit 2
 [ "${CHECK:-0}" = 1 ] && exit 0
 node "$H/local/dub-lines.mjs" "$R" "$D/video.json" "$L" "$W/audio-$L" 2>&1 | grep -v ': ok (' | tee "$LOG"
+rec=${PIPESTATUS[0]}
+if [ "$rec" -ne 0 ]; then echo "dub-lines.mjs failed ($rec): not assembling over old takes"; exit 4; fi
 DUB=$L node "$H/assemble-v4.mjs" "$D/video.json" "$D/overlays.json" "$H/edit-dh-e$1.json" "$W" "$C/e$1-dh.mp4" >> "$LOG" 2>&1
 rc=$?
 if [ $rc -ne 0 ]; then tail -30 "$LOG"; exit 3; fi
