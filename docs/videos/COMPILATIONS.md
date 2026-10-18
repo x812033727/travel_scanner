@@ -53,7 +53,7 @@
 | 2 | 合集請求 API | `apps/api/app/video_reviews/`（或新的 `video_compilations/`）、一支 migration | `POST /admin/videos/compilations {title, episodes[], intro, outro}` 建一筆請求；工人用 `next`、`start`、`done` 取件；請求記下各集 master 的 SHA |
 | 3 | 工人組合集 | `tools/video/compile/`（泛化成「任意 mp4 加字幕加配音」）、`tools/video/automation/` | 統一規格、包頭尾、合併 CC 與配音、寫章節與 youtube metadata，再 `review-push` final；下載與 VPS 上傳程式也認得這種合集 |
 | 4 | 後台介面 | `apps/web/components/admin-video-browser.tsx`、BFF | 列表可以多選，拖曳排序，有標題、片頭、片尾的開關，按「建立合集」後看得到進度；完成後出現在影片列表，可以下載和審核 |
-| 5 | 已匯入漫劇的多語配音（之後） | 本機工具、`tools/video/import/` 的語言掛載 | 每集掛上 `dub_<locale>` 與 `captions_<locale>`；**等繁中確認後才開工** |
+| 5 | 已匯入漫劇的多語配音 | `tools/video/import/` 的 `--languages` | 已做：`import --from DIR --languages` 把資料夾的 `description.<l>.txt`、`<l>.srt`、`dub.<l>.m4a` 照站主在語言面板勾的部件送成一批 `languages`（hand_pushed，綁定網站上最新的那份匯入成片；配音長度和成片差超過 0.5 秒就不送）。送出後再用一般 `import` 換成片會被擋，要走換版流程 |
 
 1 是 3 的前提，2 和 4 可以平行做。5 獨立，不擋前面四張。
 
