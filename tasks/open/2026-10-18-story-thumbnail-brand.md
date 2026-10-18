@@ -13,6 +13,7 @@ depends_on: []
 scope:
   - tools/video/templates/templates.mjs
   - tools/video/templates/templates.test.mjs
+  - tools/video/templates/fixtures/brand-samples.json
   - tools/video/story-plans/plan.mjs
   - tools/video/story-plans/plan.test.mjs
   - tools/video/automation/story.mjs

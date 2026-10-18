@@ -552,29 +552,40 @@ export function headlineCount(headline) {
  * A brand story's company in large type (owner, 2026-10-18): `data.brand` takes the place of the
  * small tag at the top of the column, so the thumbnail says which company the story is about at a
  * glance. Plain text in the channel's font, never a logo. At most THUMB_BRAND_MAX characters on
- * one line; the size is what fits the column's width (BRAND_COLUMN_WIDTH), up to BRAND_SIZE_MAX
- * and not below BRAND_SIZE_MIN, so 「米其林」 is larger than the headline and 「杜比 DOLBY」 still
- * reads on a phone. The page marks it `.fit` as well, so the renderer shrinks one this estimate
- * set too wide.
+ * one line, and no wider than the column holds at BRAND_SIZE_MIN (brandEm): the size is what
+ * fits the column's width (BRAND_COLUMN_WIDTH), up to BRAND_SIZE_MAX, so 「米其林」 is larger than
+ * the headline and 「杜比 DOLBY」 still reads on a phone, while twelve CJK glyphs are refused
+ * rather than left for the renderer to fail. The page marks it `.fit` as well, so the renderer
+ * shrinks one this estimate set a little too wide.
+ *
+ * The API's import check repeats this rule (apps/api/app/video_automation/stories.py
+ * brand_problem); both tests hold the two to the samples in fixtures/brand-samples.json.
  */
 export const THUMB_BRAND_MAX = 12;
 export const BRAND_SIZE_MAX = 168;
-export const BRAND_SIZE_MIN = 64;
-const BRAND_COLUMN_WIDTH = THUMB_SIZE.width * 0.4 - 56 - 24;
-// Glyph widths in em of the heavy weight: a CJK glyph fills the em, a capital takes about six
-// tenths (measured: 「SEIKO」 at 120 px is 363 px wide), a small letter or a digit six, a space
-// three; other marks less than half. A wider name (W, M) is the renderer's fit to shrink.
-const brandGlyphWidth = (char) => (CJK_GLYPH.test(char) || /[＀-｠]/u.test(char) ? 1 : /[A-Z]/.test(char) ? 0.62 : /[a-z0-9]/.test(char) ? 0.6 : /\s/.test(char) ? 0.3 : 0.45);
+export const BRAND_SIZE_MIN = 38;
+export const BRAND_COLUMN_WIDTH = THUMB_SIZE.width * 0.4 - 56 - 24;
+// Glyph widths in em of the heavy weight: a CJK glyph (the ranges of CJK_GLYPH, and the
+// full-width forms) fills the em, a capital takes about six tenths (measured: 「SEIKO」 at 120 px
+// is 363 px wide), a small letter or a digit six, a space three; any other mark 0.45. A wider
+// name (W, M) is the renderer's fit to shrink.
+const BRAND_FULL = /[぀-ヿ㐀-鿿豈-﫿가-힯＀-｠]/u;
+const brandGlyphWidth = (char) => (BRAND_FULL.test(char) ? 1 : /[A-Z]/.test(char) ? 0.62 : /[a-z0-9]/.test(char) ? 0.6 : char === " " ? 0.3 : 0.45);
+/** A brand name's estimated width in em: the sum of brandGlyphWidth over its trimmed characters. */
+export const brandEm = (brand) => [...String(brand).trim()].reduce((sum, char) => sum + brandGlyphWidth(char), 0);
+// The size the column's width allows, in whole steps of 2 px, before the floor and the ceiling.
+const brandFitSize = (brand) => Math.floor(BRAND_COLUMN_WIDTH / (brandEm(brand) || 1) / 2) * 2;
 /** The font size, in pixels of the 1280 px frame, a brand name is set at in the channel's column. */
 export function brandFontSize(brand) {
-  const em = [...String(brand).trim()].reduce((sum, char) => sum + brandGlyphWidth(char), 0) || 1;
-  return Math.max(BRAND_SIZE_MIN, Math.min(BRAND_SIZE_MAX, Math.floor(BRAND_COLUMN_WIDTH / em / 2) * 2));
+  return Math.max(BRAND_SIZE_MIN, Math.min(BRAND_SIZE_MAX, brandFitSize(brand)));
 }
-/** Why a thumbnail's brand name cannot be drawn, or null. */
+/** Why a thumbnail's brand name cannot be drawn, or null. null or undefined is no brand at all. */
 export function brandProblem(brand) {
+  if (brand === null || brand === undefined) return null;
   if (!isText(brand)) return "must be text";
-  if (/[\n*]/.test(brand)) return "must be one line of plain text (no line break, no ** emphasis)";
+  if (/[\n\r\t*]/.test(brand)) return "must be one line of plain text (no line break, no tab, no ** emphasis)";
   if ([...brand.trim()].length > THUMB_BRAND_MAX) return `has ${[...brand.trim()].length} characters; at most ${THUMB_BRAND_MAX} fit the column on one line`;
+  if (brandFitSize(brand) < BRAND_SIZE_MIN) return `is too wide for the column even at ${BRAND_SIZE_MIN} px (about ${brandEm(brand).toFixed(1)} em, a CJK glyph one, a Latin letter about 0.6); shorten it`;
   return null;
 }
 const headlineShape = (headline) => {
@@ -639,7 +650,7 @@ function ownThumbnailProblems(thumbnail, series) {
   if (data.pillar !== undefined && !THUMB_PILLARS.includes(data.pillar)) problems.push(`thumbnail.data.pillar must be one of ${THUMB_PILLARS.join(", ")}`);
   if (data.capture !== undefined && !captureRef(data.capture)) problems.push('thumbnail.data.capture must name a screencast scene, "<scene id>" or "<scene id>#<n>" for its n-th capture');
   if (data.shot !== undefined && !isText(data.shot)) problems.push("thumbnail.data.shot must be a shot's id");
-  if (data.brand !== undefined && brandProblem(data.brand)) problems.push(`thumbnail.data.brand ${brandProblem(data.brand)}`);
+  if (brandProblem(data.brand)) problems.push(`thumbnail.data.brand ${brandProblem(data.brand)}`);
   // The channel's headline length (THUMB_HEADLINE_MAX) is the qa stage's business
   // (tools/video/qa/thumbnail.mjs), where it fails the thumbnail item: the fixtures and the
   // first batch's scripts carry longer headlines, and render still draws those.

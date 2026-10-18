@@ -213,7 +213,7 @@ export function storyProblems(story, fileId = story?.id) {
   else if (headlineCount(story.thumbnail.headline).count > LIMITS.headlineDraft) problems.push(`thumbnail.headline counts ${headlineCount(story.thumbnail.headline).count} characters (a Latin word or a number counts one), at most ${LIMITS.headlineDraft}: nothing readable is left once it is cut to the channel's ${LIMITS.headline}`);
   // The company's name in large type in place of the 「品牌故事」 tag (templates.mjs THUMB_BRAND_MAX);
   // optional, so a story written before it keeps the tag.
-  if (isObject(story.thumbnail) && story.thumbnail.brand !== undefined && brandProblem(story.thumbnail.brand)) problems.push(`thumbnail.brand ${brandProblem(story.thumbnail.brand)}`);
+  if (isObject(story.thumbnail) && brandProblem(story.thumbnail.brand)) problems.push(`thumbnail.brand ${brandProblem(story.thumbnail.brand)}`);
   return problems;
 }
 

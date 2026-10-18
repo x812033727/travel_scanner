@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-import { assetUrl, BRAND, BRAND_SIZE_MAX, BRAND_SIZE_MIN, brandFontSize, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, MARK_OVERLAID, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, svgProblems, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
+import { assetUrl, BRAND, BRAND_SIZE_MAX, BRAND_SIZE_MIN, brandFontSize, brandProblem, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, MARK_OVERLAID, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, svgProblems, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -254,12 +254,32 @@ test("a brand story's company takes the tag's place in large type; without one t
   assert.ok(size >= 136, `SEIKO is set at least as large as the headline (136 px), not ${size}`);
   assert.equal(brandFontSize("米其林"), 144, "three CJK glyphs fill the column's 432 px");
   assert.equal(brandFontSize("A4 紙"), BRAND_SIZE_MAX);
-  assert.ok(brandFontSize("一二三四五六七八九十十一") >= BRAND_SIZE_MIN, "twelve glyphs still get the floor; the renderer's fit shrinks what is too wide");
+  assert.equal(brandFontSize("一二三四五六七八九十甲"), BRAND_SIZE_MIN, "eleven CJK glyphs are the widest the column holds at the floor");
+  assert.equal(brandProblem("一二三四五六七八九十甲乙"), `is too wide for the column even at ${BRAND_SIZE_MIN} px (about 12.0 em, a CJK glyph one, a Latin letter about 0.6); shorten it`, "twelve CJK glyphs are refused, not left for the renderer to fail at 60%");
+  for (const brand of ["一二三四五六七八九十甲", "ABCDEFGHIJKL", "任天堂 Nintendo", "SEIKO", "米其林", "A4 紙", "杜比 DOLBY", "哆啦A夢"]) assert.equal(brandProblem(brand), null, brand);
+  assert.equal(brandProblem(null), null, "null is no brand, as an absent one is");
+  assert.equal(brandProblem(undefined), null);
+  for (const brand of ["杜比\nDOLBY", "杜比\rDOLBY", "杜比\tDOLBY"]) assert.match(brandProblem(brand), /^must be one line of plain text/);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, brand: null } }), []);
+  assert.match(thumbnailHtml({ template: "thumb", data: { ...data, brand: null } }), /<div class="tag">品牌故事<\/div>/);
   assert.match(thumbnailHtml({ template: "thumb", data: { ...data, brand: "<b>&" } }), /<div class="marque fit" style="font-size:\d+px">&lt;b&gt;&amp;<\/div>/, "a brand is plain text");
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, brand: "SEIKO" } }), []);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, brand: "一二三四五六七八九十十一十二" } }), ["thumbnail.data.brand has 14 characters; at most 12 fit the column on one line"]);
-  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, brand: "**SEIKO**" } }), ["thumbnail.data.brand must be one line of plain text (no line break, no ** emphasis)"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, brand: "**SEIKO**" } }), ["thumbnail.data.brand must be one line of plain text (no line break, no tab, no ** emphasis)"]);
   assert.match(thumbnailHtml({ template: "thumb", data: { ...data, brand: "一二三四五六七八九十十一十二" } }), /<div class="tag">品牌故事<\/div>/, "a brand that cannot be drawn leaves the tag; render reports it");
+});
+
+test("the brand samples the API's import check is held to are what the template decides", () => {
+  // apps/api/tests/test_video_story.py reads the same file for stories.py brand_problem and
+  // brand_font_size, so the import refuses exactly the names the thumbnail cannot draw.
+  const { rows } = JSON.parse(readFileSync(new URL("./fixtures/brand-samples.json", import.meta.url), "utf8"));
+  assert.ok(rows.length > 10);
+  for (const { brand, ok, size } of rows) {
+    assert.equal(brandProblem(brand) === null, ok, JSON.stringify(brand));
+    if (ok) assert.equal(brandFontSize(brand), size, brand);
+  }
+  for (const brand of ["一二三四五六七八九十甲乙", "杜比\rDOLBY", "杜比\tDOLBY"]) assert.ok(rows.some((row) => row.brand === brand && !row.ok), `${JSON.stringify(brand)} is a refused sample`);
+  for (const brand of ["一二三四五六七八九十甲", "ABCDEFGHIJKL", "任天堂 Nintendo", "SEIKO", "米其林", "A4 紙", "杜比 DOLBY", "哆啦A夢"]) assert.ok(rows.some((row) => row.brand === brand && row.ok), `${brand} is an accepted sample`);
 });
 
 test("the channel's layout and tone rotate by slug, a variant one step on, and data.layout or data.tone name one", () => {

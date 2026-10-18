@@ -553,7 +553,11 @@ test("a story's thumbnail may name its company in large type: optional, one line
   }
   assert.deepEqual(storyProblems(story()), [], "a story written before the field keeps the tag");
   assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "一二三四五六七八九十十一十二" } })).join("\n"), /thumbnail\.brand has 14 characters; at most 12 fit the column on one line/);
-  assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "杜比\nDOLBY" } })).join("\n"), /thumbnail\.brand must be one line of plain text/);
+  for (const brand of ["杜比\nDOLBY", "杜比\rDOLBY", "杜比\tDOLBY"]) assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand } })).join("\n"), /thumbnail\.brand must be one line of plain text/);
+  assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "一二三四五六七八九十甲乙" } })).join("\n"), /thumbnail\.brand is too wide for the column even at 38 px/, "twelve CJK glyphs are within the count but not the column");
+  for (const brand of ["一二三四五六七八九十甲", "ABCDEFGHIJKL", "任天堂 Nintendo"]) assert.deepEqual(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand } })), [], brand);
+  assert.deepEqual(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: null } })), [], "null is no brand, as the API reads it");
+  assert.deepEqual(storyWarnings(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: null } })), []);
   assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "" } })).join("\n"), /thumbnail\.brand must be text/);
   assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: 7 } })).join("\n"), /thumbnail\.brand must be text/);
   assert.deepEqual(storyWarnings(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "SEIKO" } })), []);

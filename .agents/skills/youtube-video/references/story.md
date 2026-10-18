@@ -54,7 +54,7 @@
 - 提示詞、鏡頭、角色外觀不得出現 `names` 裡的任何名字（lint 的故事規則）；撰稿時就先 lint 那一章，名字出現在提示詞裡就退回那一章，任何圖片都還沒畫。圖片修正（`writer:story-fix`）也是先 lint，出現名字的修正不保存。
 - 反覆出場的人物（企劃的 `cast`，0–3 個）寫進 `characters`：名稱用 id 的字（拿掉名字），外觀照企劃，聲音用旁白的（沒有人說話，但 lint 要有）。沒有 `cast` 的故事沒有設定圖兩步。
 - `image_notes` 與 `sensitivity: "care"` 原樣交給撰稿；`care` 不畫事故本身，畫制度與人怎麼改變。
-- 縮圖：企劃的 `thumbnail.brand`（選填，一行最多 12 字，例如「SEIKO」「米其林」「A4 紙」）會取代左上的「品牌故事」小標籤，用頻道字型的大字橘色畫公司名，headline 在下面；不放商標圖、不讓 AI 畫 logo。字級依欄寬自動算（`tools/video/templates/templates.mjs` 的 `brandFontSize`，上限 168 px），太長的名字會比 headline 小，`node tools/video/story-plans/validate.mjs` 會給警告。沒有 `brand` 的舊企劃照舊畫標籤。
+- 縮圖：企劃的 `thumbnail.brand`（選填，一行最多 12 字，而且要在 38 px 下放得進左欄：中日韓字一字 1 em、拉丁字母約 0.6 em，合計約 11 em 為限，所以 12 個中文字會被退回；`null` 等於沒有；例如「SEIKO」「米其林」「A4 紙」）會取代左上的「品牌故事」小標籤，用頻道字型的大字橘色畫公司名，headline 在下面；不放商標圖、不讓 AI 畫 logo。字級依欄寬自動算（`tools/video/templates/templates.mjs` 的 `brandFontSize`，上限 168 px），太長的名字會比 headline 小，`node tools/video/story-plans/validate.mjs` 會給警告。沒有 `brand` 的舊企劃照舊畫標籤。
 
 ## 工作區裡多的東西
 
