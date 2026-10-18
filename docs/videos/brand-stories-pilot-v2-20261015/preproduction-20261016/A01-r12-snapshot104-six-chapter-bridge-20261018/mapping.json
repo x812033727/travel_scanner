@@ -1,0 +1,2963 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_SNAPSHOT104_TO_R12_MAP_HOLD",
+  "source_basis": {
+    "snapshot_links": 104,
+    "snapshot_tip_sha256": "e1499cd695f2f414d9379a8917b6b5b36e50ea0d046de495938157d8ff97add7",
+    "r12_manifest_sha256": "17cc760b8573f97d189db7c476d57c61eddd4050f79e54a0460eee5c15b7a9d3",
+    "r12_review_sha256": "123f4650eaa55197ddcc955c9dd6bcf6f9bf3f1137c8ff0adb7c16ef30bceb4e",
+    "r11_snapshot_diff_sha256": "f861df7ea97bcf33a280d1ba3cb68280b2c9f030ecfceecd54cfff0cc302006c"
+  },
+  "global_ids": {
+    "scenes": {
+      "retired": [
+        "engine-13",
+        "engine-14",
+        "engine-r12-01",
+        "engine-r12-02",
+        "engine-r12-03",
+        "engine-r12-04",
+        "engine-r12-06",
+        "engine-r12-07",
+        "hook-02b",
+        "hook-03",
+        "hook-05",
+        "hook-07",
+        "idea-02",
+        "idea-03b",
+        "idea-04",
+        "idea-05",
+        "idea-06",
+        "idea-07",
+        "idea-07b",
+        "idea-08",
+        "idea-09",
+        "idea-10",
+        "idea-11",
+        "idea-11b",
+        "now-02b",
+        "now-03",
+        "now-04",
+        "origin-01",
+        "origin-02",
+        "origin-06",
+        "origin-07",
+        "origin-08",
+        "origin-10",
+        "origin-11",
+        "origin-12",
+        "origin-13",
+        "origin-14",
+        "origin-15",
+        "origin-16",
+        "turn-01",
+        "turn-02",
+        "turn-03",
+        "turn-08",
+        "turn-08b",
+        "turn-10",
+        "turn-10b",
+        "turn-11",
+        "turn-12",
+        "turn-15",
+        "turn-r12-04",
+        "turn-r12-05",
+        "turn-r12-06",
+        "turn-r12-07",
+        "turn-r12-08",
+        "turn-r12-11"
+      ],
+      "added": [
+        "engine-03b",
+        "engine-05",
+        "engine-06",
+        "engine-07",
+        "engine-07b",
+        "engine-08",
+        "engine-09",
+        "engine-10",
+        "engine-porter",
+        "engine-wobble-01",
+        "engine-wobble-02",
+        "hook-anita",
+        "idea-13b",
+        "idea-14",
+        "idea-16",
+        "idea-memory",
+        "idea-r12-06",
+        "idea-wife",
+        "now-05",
+        "now-10",
+        "now-11",
+        "now-12",
+        "now-1993-cabin",
+        "now-1993-limit",
+        "now-1993-retail",
+        "now-1993-stow",
+        "now-1993-test",
+        "now-consumer-question",
+        "now-crew-request",
+        "now-passenger",
+        "origin-1939-case",
+        "origin-budget",
+        "origin-sketches",
+        "origin-street",
+        "turn-07c",
+        "turn-09b",
+        "turn-emmer-01",
+        "turn-emmer-03",
+        "turn-emmer-05",
+        "turn-emmer-07",
+        "turn-security-question"
+      ],
+      "retained": [
+        "engine-01",
+        "engine-02",
+        "hook-01",
+        "hook-02",
+        "hook-04",
+        "hook-06",
+        "idea-01",
+        "idea-12",
+        "idea-13",
+        "now-01",
+        "now-06",
+        "now-outro",
+        "origin-01b",
+        "origin-03",
+        "origin-r12-01",
+        "origin-r12-02",
+        "origin-r12-03",
+        "turn-04",
+        "turn-05",
+        "turn-06",
+        "turn-07",
+        "turn-07b",
+        "turn-09",
+        "turn-r12-01"
+      ]
+    },
+    "lines": {
+      "retired": [
+        "3s8v",
+        "3tsp",
+        "4e5m",
+        "4prs",
+        "4qtf",
+        "5382",
+        "5tik",
+        "5vh3",
+        "5wnh",
+        "6h2q",
+        "6i8x",
+        "83ew",
+        "89gj",
+        "8wb3",
+        "9dkc",
+        "arxr",
+        "avqs",
+        "b7mz",
+        "bgdh",
+        "dkkz",
+        "eb45",
+        "edtc",
+        "eghq",
+        "emju",
+        "ewj7",
+        "fmd7",
+        "gtab",
+        "heut",
+        "hixq",
+        "ij3c",
+        "kfiw",
+        "kkjv",
+        "kzku",
+        "nzyh",
+        "p5hs",
+        "pupq",
+        "quhs",
+        "r12e01",
+        "r12e02",
+        "r12e03",
+        "r12e04",
+        "r12e07",
+        "r12t04",
+        "r12t05",
+        "r12t06",
+        "r12t07",
+        "r12t08",
+        "r12t11",
+        "rpvf",
+        "rs29",
+        "srsf",
+        "tquw",
+        "ugak",
+        "vfi9",
+        "w9bj",
+        "wibh",
+        "y9b6",
+        "zc7k"
+      ],
+      "added": [
+        "opk01",
+        "r11n01",
+        "r13o02",
+        "r13t02",
+        "r14i01",
+        "r14i02",
+        "r14o01",
+        "r15n01",
+        "r15n02",
+        "r15o01",
+        "r15t01",
+        "r15t03",
+        "r15t05",
+        "r15t07",
+        "r17e01",
+        "r17e02",
+        "r17e03",
+        "r17h01",
+        "r3n01",
+        "r3n02",
+        "r3n03",
+        "r3n04",
+        "r3n05",
+        "r3o01",
+        "r4n01",
+        "r6o01",
+        "r6t01"
+      ],
+      "retained": [
+        "393x",
+        "3d52",
+        "3rdw",
+        "3zkh",
+        "3zwf",
+        "47gq",
+        "6b28",
+        "6jx3",
+        "768x",
+        "76ur",
+        "7asx",
+        "8n2r",
+        "8wiw",
+        "9ij6",
+        "9ijb",
+        "agam",
+        "amrq",
+        "apb3",
+        "b6mn",
+        "bxv2",
+        "crcw",
+        "csdd",
+        "dgbq",
+        "dibw",
+        "e37u",
+        "ek2s",
+        "fd4h",
+        "g5b8",
+        "hiwy",
+        "idiy",
+        "iu9y",
+        "j9sw",
+        "jm3w",
+        "jspd",
+        "jtmg",
+        "kzmj",
+        "mryd",
+        "q4zn",
+        "r12e06",
+        "r12o01",
+        "r12o02",
+        "r12o03",
+        "r12t01",
+        "s7me",
+        "tszs",
+        "vdxp",
+        "x7r4",
+        "xjmb",
+        "ys5y",
+        "zaky"
+      ]
+    },
+    "claims": {
+      "retired": [
+        "e1",
+        "e11",
+        "e17",
+        "e19",
+        "e20",
+        "e21",
+        "e22",
+        "e23",
+        "e24",
+        "e25",
+        "e3",
+        "e9",
+        "h2",
+        "h5",
+        "h7",
+        "h8",
+        "i1",
+        "i10",
+        "i11",
+        "i12",
+        "i13",
+        "i14",
+        "i15",
+        "i16",
+        "i17",
+        "i18",
+        "i19",
+        "i2",
+        "i5",
+        "i6",
+        "i7",
+        "i8",
+        "i9",
+        "n2",
+        "n3",
+        "n4",
+        "o10",
+        "o11",
+        "o12",
+        "o13",
+        "o14",
+        "o15",
+        "o17",
+        "o20",
+        "o21",
+        "o22",
+        "o24",
+        "o5",
+        "o6",
+        "o7",
+        "t1",
+        "t10",
+        "t11",
+        "t12",
+        "t13",
+        "t18",
+        "t19",
+        "t20",
+        "t22",
+        "t23",
+        "t24",
+        "t25",
+        "t26",
+        "t27",
+        "t3",
+        "t9"
+      ],
+      "added": [
+        "e26",
+        "e27",
+        "e28",
+        "e29",
+        "e30",
+        "e31",
+        "e32",
+        "e33",
+        "e34",
+        "e35",
+        "e37",
+        "e38",
+        "e39",
+        "h10",
+        "i21",
+        "i22",
+        "i23",
+        "i24",
+        "i25",
+        "i26",
+        "i32",
+        "i33",
+        "i34",
+        "i35",
+        "i36",
+        "n17",
+        "n40",
+        "n41",
+        "n42",
+        "n43",
+        "n44",
+        "n45",
+        "n55",
+        "n56",
+        "n57",
+        "n58",
+        "n59",
+        "n60",
+        "n61",
+        "n62",
+        "n63",
+        "n64",
+        "n65",
+        "n66",
+        "n67",
+        "o29",
+        "o30",
+        "o32",
+        "o34",
+        "t29",
+        "t31",
+        "t39",
+        "t40",
+        "t41",
+        "t42",
+        "t43",
+        "t44",
+        "t45",
+        "t7b"
+      ],
+      "retained": [
+        "h1",
+        "h3",
+        "h4",
+        "h6",
+        "h9",
+        "n1",
+        "n14",
+        "n16",
+        "o1",
+        "o2",
+        "o25",
+        "o26",
+        "o27",
+        "t17",
+        "t21",
+        "t4",
+        "t5",
+        "t6",
+        "t7"
+      ]
+    }
+  },
+  "chapters": [
+    {
+      "key": "hook",
+      "old_chapter_sha256": "646ef764a872cfe81f06cba70af21b41553d2bc27e307a93ca36c02a609047db",
+      "old_counts": {
+        "scenes": 8,
+        "lines": 12,
+        "claims": 9
+      },
+      "candidate_counts": {
+        "scenes": 5,
+        "lines": 7,
+        "claims": 6
+      },
+      "scenes": [
+        {
+          "id": "hook-01",
+          "index": 0,
+          "candidate_scene_sha256": "2633c424cc44bbcaa6b7858a7274116dd4618b3c8954e1e8c4fe6009fdeb1ea0",
+          "r12_merged_scene_sha256": "910f5391061a1e85454c6204cb88c9618fa7367a4ea401489ffb095c09ffc7e6",
+          "old": {
+            "chapter": "hook",
+            "index": 0,
+            "scene_sha256": "60e890075aa5bcdfc8d121baee4f2656a3f7eb384042278f04245355e952f8f4",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "3rdw",
+              "index": 0,
+              "text_sha256": "fa779d2ba4c3e5342a37bf1f5da8fae4fd4566671dbf45338eda52435128d4f5",
+              "old": {
+                "chapter": "hook",
+                "scene": "hook-01",
+                "index": 0,
+                "text_sha256": "99bad84d0a18182e3bcd4546fd16ea3af497d0d595a4c836681b97d24981992f",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "h1",
+              "claim_sha256": "2287ea41cdcacbf676a3e06c912d666719a43169016474e07e388f39ca1d7808",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "hook",
+                "scene": "hook-01",
+                "index": 0,
+                "claim_sha256": "72c51d21501f5e7f1ffe10ab69180c1dc174a2b45f3508e7c7c56a0eb32236e6",
+                "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+                "verdict": "CONFIRMED"
+              }
+            }
+          ]
+        },
+        {
+          "id": "hook-02",
+          "index": 1,
+          "candidate_scene_sha256": "52256b45fa37910e913f848fc17c650b6cc68734a4a464e2ab5248a391026da8",
+          "r12_merged_scene_sha256": "1de676cfd0f171e95cef0a11b1d4f763e5636d4578a7fadcdbe1ecf3ad5f90c7",
+          "old": {
+            "chapter": "hook",
+            "index": 1,
+            "scene_sha256": "fef4b48131535e7e8feee193ede21439d30dae515e5f3a2867bf945239fe0375",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "e37u",
+              "index": 0,
+              "text_sha256": "9b83356ccffeb930e446c91debe74c892307b5d896884c0cfdf433fac736e8e5",
+              "old": {
+                "chapter": "hook",
+                "scene": "hook-02",
+                "index": 0,
+                "text_sha256": "f046b1e2530f3e884e85d57ffe080a2e717659054c2e9a5249c566e8b0af907b",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "h3",
+              "claim_sha256": "fe05302c981456173ca25f588687d4d60346dc7cc4e4e582661378aa4a0355cf",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "hook",
+                "scene": "hook-02b",
+                "index": 2,
+                "claim_sha256": "9e59eb9109d4e09f0a91f0c13c874bacf788440978ab342439e8adb528fbdfb6",
+                "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+                "verdict": "PLAN"
+              }
+            }
+          ]
+        },
+        {
+          "id": "hook-anita",
+          "index": 2,
+          "candidate_scene_sha256": "112643f0b427f034c67a268bf60827c7333ec918ff0f168c3c09bf411969eb08",
+          "r12_merged_scene_sha256": "d6120970a1e8605ed0e73c402b9d67326b5223e2c5346b8f590fc826e8310b77",
+          "old": null,
+          "lines": [
+            {
+              "id": "r17h01",
+              "index": 0,
+              "text_sha256": "b46014e2b61d294dd3d7516cc9bace65d76286f1bfb38315bf6138e0a5051c09",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "h10",
+              "claim_sha256": "6cc9a71de8ae61839abbbf123cfaf78699459dacf0142404751fb2256dbea482",
+              "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 8,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "hook-04",
+          "index": 3,
+          "candidate_scene_sha256": "e645303184a84a9e293b163511d24db3e4978e425019a995de76830ff0f221f1",
+          "r12_merged_scene_sha256": "86184fde60041e63c5b17adc5720f7a1ba49afb6e3a72ea9ac802643255c449e",
+          "old": {
+            "chapter": "hook",
+            "index": 5,
+            "scene_sha256": "9d41e7a8583f583dff3f32638fe0d00ca3889cde4fffa9c4a31b28b86fde089f",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "47gq",
+              "index": 0,
+              "text_sha256": "61e0bf82473a9c86ac2b3eb7166112d800f10ba82ca32475c87e84345d39ab92",
+              "old": {
+                "chapter": "hook",
+                "scene": "hook-04",
+                "index": 0,
+                "text_sha256": "61e0bf82473a9c86ac2b3eb7166112d800f10ba82ca32475c87e84345d39ab92",
+                "changed": false
+              }
+            },
+            {
+              "id": "b6mn",
+              "index": 1,
+              "text_sha256": "d8d05ff4aa7e005b750db6fc46d361b263ab5fdec9e371001955179611cf709d",
+              "old": {
+                "chapter": "hook",
+                "scene": "hook-04",
+                "index": 1,
+                "text_sha256": "d8d05ff4aa7e005b750db6fc46d361b263ab5fdec9e371001955179611cf709d",
+                "changed": false
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "h4",
+              "claim_sha256": "b897a44adffa4d29d9678917cf73f4c943699af919c475a13006e0e2f73ea93f",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "hook",
+                "scene": "hook-04",
+                "index": 5,
+                "claim_sha256": "b897a44adffa4d29d9678917cf73f4c943699af919c475a13006e0e2f73ea93f",
+                "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+                "verdict": "CONFIRMED"
+              }
+            }
+          ]
+        },
+        {
+          "id": "hook-06",
+          "index": 4,
+          "candidate_scene_sha256": "9cf3b56a2cfd98ca207787714e50a235c1a9108e92f3058ad3a0a5956f1ff4cd",
+          "r12_merged_scene_sha256": "39c5cea87bddeafcf0a2a0e0e4b288d3fcdae6fa6304603231419f0407c43aa3",
+          "old": {
+            "chapter": "hook",
+            "index": 7,
+            "scene_sha256": "eeeb077d282ddc235381c2f7ca4297f6b33cf00cd7cc92401934036ceedcabf7",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "jtmg",
+              "index": 0,
+              "text_sha256": "d5bd1994819da24d9d7f839af31283e845b567cdd456946e9e7146b394a7cf53",
+              "old": {
+                "chapter": "hook",
+                "scene": "hook-06",
+                "index": 0,
+                "text_sha256": "a233e8609dbf2eef912c6b639fa949f7a8f175275d5de5a789e0ea1d05945869",
+                "changed": true
+              }
+            },
+            {
+              "id": "x7r4",
+              "index": 1,
+              "text_sha256": "47d0fc2a6a0473fb9fd4092fae513f6449a1d85cb22e942e908053dacbf9eb52",
+              "old": {
+                "chapter": "hook",
+                "scene": "hook-06",
+                "index": 1,
+                "text_sha256": "47d0fc2a6a0473fb9fd4092fae513f6449a1d85cb22e942e908053dacbf9eb52",
+                "changed": false
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "h6",
+              "claim_sha256": "29d3f33c03a224b2fbaa02ff2f266254ee37f01e6c6dd6873fbc21c4e18da679",
+              "source_url": "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 5,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "hook",
+                "scene": "hook-06",
+                "index": 7,
+                "claim_sha256": "d9240853d99b8e9b315207bd0fd928d2070bfbd370fefd30cc8434b90884e3ff",
+                "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+                "verdict": "PLAN"
+              }
+            },
+            {
+              "id": "h9",
+              "claim_sha256": "b65565d9d5977fcacc8b96a4008a1bf3f33f0ad79ab15ea998db43c3ae827834",
+              "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 8,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "hook",
+                "scene": "hook-06",
+                "index": 8,
+                "claim_sha256": "b65565d9d5977fcacc8b96a4008a1bf3f33f0ad79ab15ea998db43c3ae827834",
+                "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+                "verdict": "PLAN"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "origin",
+      "old_chapter_sha256": "5adde44e4e96bfbe44c1a9f09f53c5a7763f7cbe1a6915beb4b2ec78c73c4085",
+      "old_counts": {
+        "scenes": 17,
+        "lines": 22,
+        "claims": 19
+      },
+      "candidate_counts": {
+        "scenes": 9,
+        "lines": 11,
+        "claims": 9
+      },
+      "scenes": [
+        {
+          "id": "origin-budget",
+          "index": 0,
+          "candidate_scene_sha256": "7efb037ae9093bbe31094f331cfe51da7b25c5068c62f4d763e988ae93645b79",
+          "r12_merged_scene_sha256": "7d410bbe6133b1f7447e4b0c0206ed6b53798aede9fafe7f9669c220851fda35",
+          "old": null,
+          "lines": [
+            {
+              "id": "r14o01",
+              "index": 0,
+              "text_sha256": "d7dc2cf18024f2829a5c1eeab18a1c130001ec3a61d5b97d87c184998aba6619",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "o30",
+              "claim_sha256": "81688cc10b5093f8cf5b4d39a149ec08078798007b329a76de14ff0e827bdf48",
+              "source_url": "https://www.winnetkahistory.org/gazette/hope-amidst-hardship-the-indomitable-character-of-anita-willets-burnham/",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 19,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "origin-r12-01",
+          "index": 1,
+          "candidate_scene_sha256": "c6ead8b57d9590fb6e9535373684d8864a759ba3730785a0bbb8885c46731510",
+          "r12_merged_scene_sha256": "a852577d2335bc5e6a4354020a793c82ba1a5b40e0edf95815c60f993d61dd79",
+          "old": {
+            "chapter": "origin",
+            "index": 0,
+            "scene_sha256": "c4533a2fc68b366faed757545b1e952b9903c99d3ee8a8c539e72318646937bd",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "r12o01",
+              "index": 0,
+              "text_sha256": "945614bb80ad7b2dd72f98fb6da54a84395431b64a5fd4e3c09d9fc4a50394c8",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-r12-01",
+                "index": 0,
+                "text_sha256": "5d18614d22cbc12c35279a60e429aaaf8c0e8f08a918f54fea393e13f879e48a",
+                "changed": true
+              }
+            },
+            {
+              "id": "r6o01",
+              "index": 1,
+              "text_sha256": "32492fb7d53d3ea3dea7725f70aa7c546bfb9d3631063529a06b00e76ec20054",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "o25",
+              "claim_sha256": "df1aed9da12fae1b8be616c3fec79348c23e0d2c56a1a7a1e18929bb116bb0cb",
+              "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 8,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-r12-01",
+                "index": 0,
+                "claim_sha256": "72f39565b75dbd77ae37a8a04891b5c32165518ca63d0b4a3fe0f50dc19c1f90",
+                "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+                "verdict": "PLAN"
+              }
+            }
+          ]
+        },
+        {
+          "id": "origin-03",
+          "index": 2,
+          "candidate_scene_sha256": "509fcedc884c2c28b94b286c86a3581492986e9d5b850edd388e710878680c06",
+          "r12_merged_scene_sha256": "c017fe61ad18877bc5263067fcc2d62c0f8497f59ca943189754bb34a427cf09",
+          "old": {
+            "chapter": "origin",
+            "index": 1,
+            "scene_sha256": "616c91ed7c107d283f6458e35caaafebca1d7f10927c1374ff785b737b382f93",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "csdd",
+              "index": 0,
+              "text_sha256": "f5eacb1bf95edbf0c05c9a01131d3191d69eab2917671023c5626aebb0aa9729",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-03",
+                "index": 0,
+                "text_sha256": "9b69d3001a7e020538960fb9812c45a0912c376cd8108fa4cf754cb0ba86d8e2",
+                "changed": true
+              }
+            },
+            {
+              "id": "9ij6",
+              "index": 1,
+              "text_sha256": "fd156fe475291eea239804a9b57101f7edae09a5a0c525fca57f61ae1e64bc1d",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-03",
+                "index": 1,
+                "text_sha256": "fd156fe475291eea239804a9b57101f7edae09a5a0c525fca57f61ae1e64bc1d",
+                "changed": false
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "o2",
+              "claim_sha256": "12773cf99fdbbb8925dd92ec6436af6173999dae69e9991ffae7afd4126a6589",
+              "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 8,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-03",
+                "index": 1,
+                "claim_sha256": "557d30baff0f1bbc2231867892dd44d7c200a9632206aa813be23fcb16161a19",
+                "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+                "verdict": "PLAN"
+              }
+            }
+          ]
+        },
+        {
+          "id": "origin-01b",
+          "index": 3,
+          "candidate_scene_sha256": "339faac3ebb8deda964cb0544ac57d9faef03e0d0fda614337c79347164e23a6",
+          "r12_merged_scene_sha256": "a92aafd0f2ec519834b5e340c17b11a5888841406590e08adb341e6bfeec5c4a",
+          "old": {
+            "chapter": "origin",
+            "index": 3,
+            "scene_sha256": "5241407046cd8f3d373d1a18ea14984dd12b6baf17b0874e6f5d938024accd4a",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "6b28",
+              "index": 0,
+              "text_sha256": "4972918da7577a81184b03e031d9849a798b0d87592338425e4490a47b7251d3",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-01b",
+                "index": 0,
+                "text_sha256": "1fe5a39d4fb2c3c859ab36ac6750a3392f0ceca8ade060e960e880f1fa7a2242",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "o1",
+              "claim_sha256": "f0c74e941a8b4df09a8185c4ee61bef50eaf61e99471c3692b291bad0bf9c853",
+              "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 8,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-01b",
+                "index": 3,
+                "claim_sha256": "9abcd5365799c4aa9ca4b5faa9a8c347e9d46e8a1792b503ca75a89d07bcf1bf",
+                "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+                "verdict": "PLAN"
+              }
+            }
+          ]
+        },
+        {
+          "id": "origin-street",
+          "index": 4,
+          "candidate_scene_sha256": "dda6f9a815ea998ba1cfa5f1bf24a854c7bc1d856151e653f3dcf77e3c3a40ae",
+          "r12_merged_scene_sha256": "02b26c95cba02f6c3fe79a0d0ffe368c667bed4bc121c4640b64110bfdb9d37b",
+          "old": null,
+          "lines": [
+            {
+              "id": "r13o02",
+              "index": 0,
+              "text_sha256": "00165879dcf8912e3ce1757ee08ef128749b4e70797e1571900d06440a376e1c",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "o29",
+              "claim_sha256": "e8021eda136000a3c577ceb8b4356738b9f452abe140eda979362cfe04697eab",
+              "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 8,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "origin-r12-02",
+          "index": 5,
+          "candidate_scene_sha256": "cc8979eaececaef1aed3b52a75df1a9673ad85854ce65fe685ebcee736e082ce",
+          "r12_merged_scene_sha256": "29511a3be247b5237c0b1453b1974fdc7f243bb3572037ecd77bbf319a11316a",
+          "old": {
+            "chapter": "origin",
+            "index": 5,
+            "scene_sha256": "4338cac37f4c62e15c5bdb91599657297595e74f04b686e6b2e4935d16995bee",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "r12o02",
+              "index": 0,
+              "text_sha256": "5660fc0731f9031d42db4473ed82a17a9ffee3816b06a98bc59bb8683166ff3c",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-r12-02",
+                "index": 0,
+                "text_sha256": "da0e5ec0b8e2cec8e4c001f3e03e6977663bfd12f89b9c270c45024c6abad37f",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "o26",
+              "claim_sha256": "28f2345a85e8df842c394a9109dc280ed03b183854dff97581d6b8aaf72ef8b1",
+              "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 8,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-r12-02",
+                "index": 5,
+                "claim_sha256": "da0e5ec0b8e2cec8e4c001f3e03e6977663bfd12f89b9c270c45024c6abad37f",
+                "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+                "verdict": "PLAN"
+              }
+            }
+          ]
+        },
+        {
+          "id": "origin-sketches",
+          "index": 6,
+          "candidate_scene_sha256": "1d84491905dfadf7094c630592d387cda9807d61b8f6bd8c653ebc5a16cd86a1",
+          "r12_merged_scene_sha256": "8710c057181d61626b33b69aa851b5f0fb65a2fd61c69940ea4a0d902da7d31d",
+          "old": null,
+          "lines": [
+            {
+              "id": "r15o01",
+              "index": 0,
+              "text_sha256": "2953e266ab7b2afa0e7963486f82785e9b72e1d91a54c6674c84f55970b56ee5",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "o32",
+              "claim_sha256": "3d263f2ca655580c42a73eae2b36cb224f7564e112e95e8c3fba397674751ef1",
+              "source_url": "https://www.winnetkahistory.org/who-were-the-burnhams/",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 16,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "origin-r12-03",
+          "index": 7,
+          "candidate_scene_sha256": "1ae81c730ca874a16b7d8e5bff3449afb38425aefcbdece36ed5525839dbc1e1",
+          "r12_merged_scene_sha256": "a425b5c0691dce2ccb7ea1d732118eca561cef0b23bbc31bac7e76c4f29c1da0",
+          "old": {
+            "chapter": "origin",
+            "index": 6,
+            "scene_sha256": "8c06b8f409fc5285553f9d5512a23281b23d314a563ba4a6cb17f3b10614de26",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "r12o03",
+              "index": 0,
+              "text_sha256": "19860e11db0f7e8c6be8ed4c9543214349c6c4991a509e323a0f226efb71ced7",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-r12-03",
+                "index": 0,
+                "text_sha256": "01451a4d07bf03184226beead45d26a4dd31ad3aeaa93109b70492df2b8fbcbb",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "o27",
+              "claim_sha256": "bf654c7c21f7b51cd2b5f83a2cbba8594b7a5d6f093b91fd83c4a437f30634e2",
+              "source_url": "https://newspapers.swco.ttu.edu/bitstreams/b9cd84b8-2ba7-4506-9eff-7cca3e5c6376/download",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 21,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-r12-03",
+                "index": 6,
+                "claim_sha256": "01451a4d07bf03184226beead45d26a4dd31ad3aeaa93109b70492df2b8fbcbb",
+                "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+                "verdict": "PLAN"
+              }
+            }
+          ]
+        },
+        {
+          "id": "origin-1939-case",
+          "index": 8,
+          "candidate_scene_sha256": "4d3c22b323dc08421c757810c7a5c76c93f306e5b60c8843f483d3d3ef74f7a7",
+          "r12_merged_scene_sha256": "4af696f9272c8a49354e1d91058add901d0a7d8ed0d3ec52145ea4a61d79a5df",
+          "old": null,
+          "lines": [
+            {
+              "id": "r3o01",
+              "index": 0,
+              "text_sha256": "a7ef2d752e12cf2ea0dc2ba11d6344abc12c966c016795f8444de42a6d5319cb",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "o34",
+              "claim_sha256": "e22ec938b940129eead9d704a3d5d2c30887067bb40775a99daed8a2eaaf0e7d",
+              "source_url": "https://newspapers.swco.ttu.edu/bitstreams/b9cd84b8-2ba7-4506-9eff-7cca3e5c6376/download",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 21,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "idea",
+      "old_chapter_sha256": "557836148535f1d5ab9730023f5e4340d44e3ac63b82520863e4c6c0404a1a20",
+      "old_counts": {
+        "scenes": 15,
+        "lines": 24,
+        "claims": 17
+      },
+      "candidate_counts": {
+        "scenes": 9,
+        "lines": 10,
+        "claims": 11
+      },
+      "scenes": [
+        {
+          "id": "idea-memory",
+          "index": 0,
+          "candidate_scene_sha256": "de90efda1c72b1a69ce38deb3b13495e4e7ca796fd449c906b5845cb0242f44f",
+          "r12_merged_scene_sha256": "25017b2716f37fed23475180d7f3e74356035df095de1c1cd6a64cac5f734ca8",
+          "old": null,
+          "lines": [
+            {
+              "id": "r14i01",
+              "index": 0,
+              "text_sha256": "7a5c4eed8cad9b3bc329275d6e403b1cbe4f14c5b1d9479070393dbc83812398",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "i35",
+              "claim_sha256": "02e09639f80a348e8daae30de3c5f9dd75793947b6f22bcb1897351d098df876",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "idea-wife",
+          "index": 1,
+          "candidate_scene_sha256": "1adeeb9d6dc2bcbbc42ee4173ab84ed3e35129a412a114b84335fe06019274f0",
+          "r12_merged_scene_sha256": "14e7155820346ab229630848f8a242edc71953948854656a392aa181debe9cba",
+          "old": null,
+          "lines": [
+            {
+              "id": "r14i02",
+              "index": 0,
+              "text_sha256": "0a6e20313370ce462331675a6d8cdb010d99c7733066fe7c4705be6038476a78",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "i36",
+              "claim_sha256": "42c4f74c3782de6cb351db2b9252c4120ae2c71e40084785f0d6917f4298f9aa",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "idea-01",
+          "index": 2,
+          "candidate_scene_sha256": "30623d945b83d21d3d3ef498d75edaa1628bb8edaa21f93cc2f66d7c46b499cf",
+          "r12_merged_scene_sha256": "5aea5e34f0749baaa48d08c016552587adbbf7dec837e43c70708d9f121505c0",
+          "old": {
+            "chapter": "idea",
+            "index": 0,
+            "scene_sha256": "e4e7a28010880f7056a5fe8c18d1ef67efca4181720eabea19e70f99f72d80c4",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "3d52",
+              "index": 0,
+              "text_sha256": "bb82f8bb6dabef89cfb29357c095a90e266b3df6f338496d5c0ab50fbb4ec68d",
+              "old": {
+                "chapter": "engine",
+                "scene": "engine-01",
+                "index": 0,
+                "text_sha256": "9da03f762e87609393f3e389578e514911d601f48b4841e14cf15159400eb2a5",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "i26",
+              "claim_sha256": "f24d10b0d647c5738e3cff101b0f69f64ccee66ec4282a0acb8eb05b72c17320",
+              "source_url": "https://patents.google.com/patent/US3653474A/en",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 0,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "idea-12",
+          "index": 3,
+          "candidate_scene_sha256": "6df939d34fea18563d199b7d8982f433c511da1aabe895fcb1fd4c96794263c6",
+          "r12_merged_scene_sha256": "4f1c37e7c87519d4650a4844f8023a6a780a64f0c929d485e33aabdead6eed36",
+          "old": {
+            "chapter": "idea",
+            "index": 13,
+            "scene_sha256": "eb90d6aabd77822ddc51e9c8492b19e49d3b5dd5aa149edfccc57a5e3210a4e5",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "vdxp",
+              "index": 0,
+              "text_sha256": "e20444d52a4f2ea1531e1cb4d7f3ffcbf1df00d227f02dd55382c4d7a238df48",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-12",
+                "index": 0,
+                "text_sha256": "427f35b6c59cf67cade18a48099aaa6b94e92301beaff86eb98be5b8b5b48df3",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "i21",
+              "claim_sha256": "c9168032a563dcb0ed466320fa9385b9b115c22cf7f4dea1e1c24cf4ec340865",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "idea-13",
+          "index": 4,
+          "candidate_scene_sha256": "93ce7b7aea920d091b5d2144dabd717bf7d25d97f0b4d54c0ba32f5ffcd80745",
+          "r12_merged_scene_sha256": "d963d4627a9e097baf89ad75f6834c5bd3c7fe07f9867616b5e9dfa82eaaed57",
+          "old": {
+            "chapter": "idea",
+            "index": 14,
+            "scene_sha256": "26170081ee26bebbb81843fc751c27b868c33a85dafa96b6e3b899db3d8f79d3",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "3zkh",
+              "index": 0,
+              "text_sha256": "235e1ae376b906b94328f18f1c0852896e6b8513782e964b170a041a315d9261",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-13",
+                "index": 0,
+                "text_sha256": "7d91c2b4b423d72890877eae8a423e936637f7639b3382c4c52653b0829cad42",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "i22",
+              "claim_sha256": "f7e8cbf8f08b4645212ca49a37755f2e4b73eebba80f41a14a648d6ddf647d19",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "idea-13b",
+          "index": 5,
+          "candidate_scene_sha256": "76171cfac733f83b2258699bb2ee23c3a0705804a0dae72a9bbff944be8c50f1",
+          "r12_merged_scene_sha256": "6a03961f2a4c49db76c9b3f37932234233ba3726b302e51e6e709f45ae04b821",
+          "old": null,
+          "lines": [
+            {
+              "id": "idiy",
+              "index": 0,
+              "text_sha256": "549b4915c35928409979f5aa7b195aa7af672559b9bf9116c9d8d2e46bb58156",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-13",
+                "index": 1,
+                "text_sha256": "549b4915c35928409979f5aa7b195aa7af672559b9bf9116c9d8d2e46bb58156",
+                "changed": false
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "i34",
+              "claim_sha256": "3a9148334598d765f8e05258570d178034d30c4753e3f7ae6e5fcc180187a2cd",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "idea-14",
+          "index": 6,
+          "candidate_scene_sha256": "c2718cea2ef3a3d05dc7e2204e33a5e057d1ac4252c690cb774db36b2a0cbc03",
+          "r12_merged_scene_sha256": "d6da2392fe9299cba908f9cebda8feef5d6035b85966a9b8b25e9680dc159ca6",
+          "old": null,
+          "lines": [
+            {
+              "id": "768x",
+              "index": 0,
+              "text_sha256": "ddc882a98b8d7a122641de1d9c423bf4a0c0eb4b373c3e76850b930d04d6eb2f",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-14",
+                "index": 0,
+                "text_sha256": "ddc882a98b8d7a122641de1d9c423bf4a0c0eb4b373c3e76850b930d04d6eb2f",
+                "changed": false
+              }
+            },
+            {
+              "id": "dgbq",
+              "index": 1,
+              "text_sha256": "c873fb8ee2bb479b0f403070cb17ae5f6f8cb0477a4f8d0a9e80d27f96762892",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-14",
+                "index": 1,
+                "text_sha256": "49bf9a038c35e5bb2f8d5c352e8487250b968aa498d558e94651176fecebb199",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "i23",
+              "claim_sha256": "ddc882a98b8d7a122641de1d9c423bf4a0c0eb4b373c3e76850b930d04d6eb2f",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "i24",
+              "claim_sha256": "b36256ac7131edbacae7662c5cd34e4f990bea09ab9a1b87732549540e3fdbca",
+              "source_url": "https://patents.google.com/patent/US3653474A/en",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 0,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "idea-r12-06",
+          "index": 7,
+          "candidate_scene_sha256": "11db21492767d419c40057917d9bdbc0fd38fbc1499d0fcf116dca65705816a0",
+          "r12_merged_scene_sha256": "6ad350dfb24a344c7111d3e117f26fc3f4214b99cf2e3e8722c35c06de378097",
+          "old": null,
+          "lines": [
+            {
+              "id": "r12e06",
+              "index": 0,
+              "text_sha256": "d13604fc3b7426a8024940e0208771da817abeced6832050940122cbcd4aaa4f",
+              "old": {
+                "chapter": "engine",
+                "scene": "engine-r12-06",
+                "index": 0,
+                "text_sha256": "88e0a0c8ff5f756fe169d8e6a2a96af98a2811203a34139b32728fde7029cf6a",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "i32",
+              "claim_sha256": "a83207adeef7c619adbd3c61b7138dae6b9fdabca27aac5ae0d73bb7f6f3ae20",
+              "source_url": "https://patents.google.com/patent/US3653474A/en",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 0,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "i33",
+              "claim_sha256": "81b1a8125744691f8b99b91ecd07a7654f8b46b53413421aa09ecd51915e6362",
+              "source_url": "https://patents.google.com/patent/US3653474A/en",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 0,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "idea-16",
+          "index": 8,
+          "candidate_scene_sha256": "aa29296c602afc0a285849fd5869a0cfc663181b1a5dd05431e1c6c5d8cba6df",
+          "r12_merged_scene_sha256": "78a80a853022404191ba3026c8ea68cbb5dde622f2e61d2297925e09f67d5549",
+          "old": null,
+          "lines": [
+            {
+              "id": "zaky",
+              "index": 0,
+              "text_sha256": "b575b7e416e64b9d99f239c5ec414bcd5d491202f38d062b5977924f671ba084",
+              "old": {
+                "chapter": "origin",
+                "scene": "origin-16",
+                "index": 0,
+                "text_sha256": "b575b7e416e64b9d99f239c5ec414bcd5d491202f38d062b5977924f671ba084",
+                "changed": false
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "i25",
+              "claim_sha256": "b575b7e416e64b9d99f239c5ec414bcd5d491202f38d062b5977924f671ba084",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "engine",
+      "old_chapter_sha256": "94649a1d5607034ee29dc4ea66c148d32df64f9d71b84a4492cc05852da213c9",
+      "old_counts": {
+        "scenes": 10,
+        "lines": 13,
+        "claims": 12
+      },
+      "candidate_counts": {
+        "scenes": 13,
+        "lines": 16,
+        "claims": 13
+      },
+      "scenes": [
+        {
+          "id": "engine-01",
+          "index": 0,
+          "candidate_scene_sha256": "80929ae69bd7f025ea6dc3494b6f211b6b8137b7c2208822ae7ba9500620713b",
+          "r12_merged_scene_sha256": "7d04d0cacbacb521c047737909aaa12646d1b44d49c6405db67f59862252fc85",
+          "old": {
+            "chapter": "engine",
+            "index": 0,
+            "scene_sha256": "cb62be074a2074d537c49fd6d85566a99d299ad19a508f221494489bbbc659e0",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "j9sw",
+              "index": 0,
+              "text_sha256": "60f9870178073a5427a129ceaa603401f3fccfee8443666c6861361198ae4ed1",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-01",
+                "index": 0,
+                "text_sha256": "60f9870178073a5427a129ceaa603401f3fccfee8443666c6861361198ae4ed1",
+                "changed": false
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "e26",
+              "claim_sha256": "042cf3c6e16b8a15741d4d677c502f7044fdde2d5c79d0c60c2ff6c2a1141ad8",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "engine-02",
+          "index": 1,
+          "candidate_scene_sha256": "c3b5d55e5a559a95dfff0cae857e0971ad932736fcb204ed8c3183349f7edaac",
+          "r12_merged_scene_sha256": "bbd444bebace5ddc9a35f4a0cf7f072484db8f32957cc5098d6a4cc0398894cc",
+          "old": {
+            "chapter": "engine",
+            "index": 1,
+            "scene_sha256": "a1ba6b61212ccbe552270b8b80cdcdc8106589fdb8084cc27184b391ed1b32fc",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "9ijb",
+              "index": 0,
+              "text_sha256": "90581edce26a7c434708e5fa32c9178e45f9fef4f6844176856ea33b7df38d9d",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-02",
+                "index": 0,
+                "text_sha256": "a3e6449a9a46d8e7e192b3b0af07e0717d528d6ff43a386d6968a864732ff632",
+                "changed": true
+              }
+            },
+            {
+              "id": "agam",
+              "index": 1,
+              "text_sha256": "70f8628cd733fcea55492311676926d12c099f60a16d376a25785ac0d8ded7a7",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-02",
+                "index": 1,
+                "text_sha256": "70f8628cd733fcea55492311676926d12c099f60a16d376a25785ac0d8ded7a7",
+                "changed": false
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "e27",
+              "claim_sha256": "1d7936d848551393ee8c2fafadda501c917655fb491c6cf945016b03d058b559",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "engine-porter",
+          "index": 2,
+          "candidate_scene_sha256": "baf86256676050180a0513859c9859cefd87f932afb04b2ef31919a09a8e9f61",
+          "r12_merged_scene_sha256": "ff3b1a183fe276270eb97617ac4de53d6cb7cc1a66a089e09831a3785ff00bc5",
+          "old": null,
+          "lines": [
+            {
+              "id": "r17e01",
+              "index": 0,
+              "text_sha256": "c0d1ccba759ef874504dccfcd87f6b5ec81d6f26b3b572b9a834e77ff727430f",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "e37",
+              "claim_sha256": "68ed43145571128707491d2c15e2f693a281fb34fa1d77ce657e5c5b4294831d",
+              "source_url": "https://oyc.yale.edu/economics/econ-252-08/lecture-3",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 17,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "engine-03b",
+          "index": 3,
+          "candidate_scene_sha256": "d3d121aa59a2f9233ed9645d95bdc1533dc4d21c329d29b0a32ba8e8fc7bdc95",
+          "r12_merged_scene_sha256": "076192e3a596a10e77b328ca2b09a462766fe97fac5714c180d9f7eee2f14ef5",
+          "old": null,
+          "lines": [
+            {
+              "id": "dibw",
+              "index": 0,
+              "text_sha256": "aab86058d05b49b0b59c57d834be428b0aa39872170b81676c65904fbba6420b",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-03b",
+                "index": 0,
+                "text_sha256": "f7fc01a47448f46437077336b76e7181b06fe945d5d15d9f858198f307516f7f",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "e28",
+              "claim_sha256": "45e18afed88d6def54c8d02a9e9b62edbf8cf49431093d659f27a4dc65c0a3c1",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "engine-05",
+          "index": 4,
+          "candidate_scene_sha256": "e828ec423e81005fc7a684343c2d8bc93a07400b7ca29bb9bd8c9fa7b09e5438",
+          "r12_merged_scene_sha256": "db97f1c68b6d46d4617049b0977faa1a08bb04a69a0cfb180011c0817474cbb4",
+          "old": null,
+          "lines": [
+            {
+              "id": "s7me",
+              "index": 0,
+              "text_sha256": "af51a8bbff4a972e2f84182758ed0aee67623581eff53715285c9ba978c0a366",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-05",
+                "index": 0,
+                "text_sha256": "a95258112efd8b81ed79a22bc7e6d17549a8421e52aa73fb3e3c72b749e266d0",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "e29",
+              "claim_sha256": "bc555a4ff01fe44b1f049170027ab7067e51ed807d609b1fc7eb4a3d71013f0f",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "engine-06",
+          "index": 5,
+          "candidate_scene_sha256": "572164e253c48ff90976f9107928decae4f4e35c8ba70059725f266625f03ba5",
+          "r12_merged_scene_sha256": "34b067d47cb20f2bd5935f1bf45c51b6dff12ab962bbd216c15fd27677cfe2e6",
+          "old": null,
+          "lines": [
+            {
+              "id": "8n2r",
+              "index": 0,
+              "text_sha256": "4c7874a2f7f89418f4ed4c2cf6440b596132a05bf17290f0d19f4da0887feae5",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-06",
+                "index": 0,
+                "text_sha256": "595dd072347f4e1f5fa548a1c7d6a4e7208dbd53da5e8f2c380b900e92574b10",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "e30",
+              "claim_sha256": "baf61d8f63b8aa053912d03aa67a95aa223e5f50c03ac9de523d9aac3bd2ac26",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "engine-07",
+          "index": 6,
+          "candidate_scene_sha256": "0f8de4b997eaa220be4c8ecc89473e2801064b69ebcae4f538e5f1f05182bae2",
+          "r12_merged_scene_sha256": "736c4029999802b74dbd6f42a48a89f3223637befdd4ca6e3405da0c4e743a04",
+          "old": null,
+          "lines": [
+            {
+              "id": "mryd",
+              "index": 0,
+              "text_sha256": "e5ddd8c96bcc774f369be1374bd236e7cbc05dd30d42fb93202f307fbf5fe4f3",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-07",
+                "index": 0,
+                "text_sha256": "f18c5ad0e9ae4d92dc35cd0cedb66e849d264d9efadf844b7a500eec2452b492",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "e31",
+              "claim_sha256": "75236f3efc0050a0e9f6e7d204e55c2d2a6f41eb9ebe117abb19749d16ed009d",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "engine-07b",
+          "index": 7,
+          "candidate_scene_sha256": "6bd37ebb6acab317c038f4af24fd92b998c6975164fa5653eac0a9c0c0020723",
+          "r12_merged_scene_sha256": "3f384ed49f9059fc6bcd389e58df42f8764811c303609d9939e98129b5716b20",
+          "old": null,
+          "lines": [
+            {
+              "id": "76ur",
+              "index": 0,
+              "text_sha256": "0892fabf1192b8227ff175653f35795883269027d483a7fdaf5613ad99ec165a",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-07b",
+                "index": 0,
+                "text_sha256": "0892fabf1192b8227ff175653f35795883269027d483a7fdaf5613ad99ec165a",
+                "changed": false
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "e32",
+              "claim_sha256": "4309782e7158f2bb9cfd262e9c724123f81365385f7733f32288925cd467ec1b",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "engine-08",
+          "index": 8,
+          "candidate_scene_sha256": "df6c4c43f3f1fcaf5e9ff6ee23bc01dbd26e7aa1002610863c28fbdfbc30181c",
+          "r12_merged_scene_sha256": "1bb2b4d3c6b08045003c1047282b95a710ec2e0a269c89668aa72671a9612224",
+          "old": null,
+          "lines": [
+            {
+              "id": "amrq",
+              "index": 0,
+              "text_sha256": "9c267afb30f62b945ebd7e3c3474bd4067dcb4cca743806f912ddcd277dc3a72",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-08",
+                "index": 0,
+                "text_sha256": "9c267afb30f62b945ebd7e3c3474bd4067dcb4cca743806f912ddcd277dc3a72",
+                "changed": false
+              }
+            },
+            {
+              "id": "apb3",
+              "index": 1,
+              "text_sha256": "5b48b428f2d92d2074e37ee4ec2703f6d112b544baef6dbd4a409fae6f172d77",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-08",
+                "index": 1,
+                "text_sha256": "468e631c4b14f23a6e76cc5acd5fad9a5fd4b3ebb54d040992229746eb46fc9f",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "e33",
+              "claim_sha256": "8b163a5cba0b8c9bab29eb71bc8c634bd6185588215888286488139182bc209e",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "engine-09",
+          "index": 9,
+          "candidate_scene_sha256": "3322f72f9acb99d1eb7e44126a75181271f3970fae0125926b7f68152e93bedf",
+          "r12_merged_scene_sha256": "0ad1d1bf972bb6e111a53644b2f3e1707203d9e10b17375648fdcaf9fe231c78",
+          "old": null,
+          "lines": [
+            {
+              "id": "kzmj",
+              "index": 0,
+              "text_sha256": "76ee818000d9277215628c74879a060a0a9258e486e864543f45f69c31378fb9",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-09",
+                "index": 0,
+                "text_sha256": "76ee818000d9277215628c74879a060a0a9258e486e864543f45f69c31378fb9",
+                "changed": false
+              }
+            },
+            {
+              "id": "393x",
+              "index": 1,
+              "text_sha256": "96f81493afdc53594157e5072f4be0e63807931eb0ef53c3f5784ab749feb2a9",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-09",
+                "index": 1,
+                "text_sha256": "96f81493afdc53594157e5072f4be0e63807931eb0ef53c3f5784ab749feb2a9",
+                "changed": false
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "e34",
+              "claim_sha256": "fa9d624fc5b3f959e12bbce0a4efc8ae98817117dfdbffaff7df1332f453c7b0",
+              "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+              "source_checked": "2026-09-28",
+              "proposed_plan_source_index": 1,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "engine-10",
+          "index": 10,
+          "candidate_scene_sha256": "7fa946762873c24062b898dcef216c3056d9a690686ffd34f34fc3d4b69e41f6",
+          "r12_merged_scene_sha256": "9609b316b79790c8925d7206f0a7c6a30ff1bd51415b8688bd74ca425d088d5b",
+          "old": null,
+          "lines": [
+            {
+              "id": "ys5y",
+              "index": 0,
+              "text_sha256": "244b11b3cc3eed5627ba3475fc1e838ff34bfdb077c3ef8c3a12c7949f7c3dbc",
+              "old": {
+                "chapter": "idea",
+                "scene": "idea-10",
+                "index": 1,
+                "text_sha256": "244b11b3cc3eed5627ba3475fc1e838ff34bfdb077c3ef8c3a12c7949f7c3dbc",
+                "changed": false
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "e35",
+              "claim_sha256": "036fcc0558a14e51fa2c4fb745f7095c026e645a18b1af8c98da5675178c9ee8",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "engine-wobble-01",
+          "index": 11,
+          "candidate_scene_sha256": "d1bfc4677afc7eb22356ef5c7ae95195aad5357c2c32984dabc705886f235eb1",
+          "r12_merged_scene_sha256": "61a4182ca556457ef617b8d9d58af6adc62a7670737f16edfa6ce2772a2defe0",
+          "old": null,
+          "lines": [
+            {
+              "id": "r17e02",
+              "index": 0,
+              "text_sha256": "6916575a71763a848ceb4522863877c2bd186d98590245697924e668f0455a59",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "e38",
+              "claim_sha256": "4f3f81c5610e646f337aa26769318528fd025b6b5557da9cf00d40e4b8a45432",
+              "source_url": "https://oyc.yale.edu/economics/econ-252-08/lecture-3",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 17,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "engine-wobble-02",
+          "index": 12,
+          "candidate_scene_sha256": "bd077bfabd2f6b58e37ecc56ed47cab2cec5a4a24dc65a2dea36144936f753bd",
+          "r12_merged_scene_sha256": "523e45f4843a9a67bee5d8d2d060803493f47d4b7089399e5bbca15955ba94b5",
+          "old": null,
+          "lines": [
+            {
+              "id": "r17e03",
+              "index": 0,
+              "text_sha256": "923961b6e1874cf00494019d6768c78f66430faf43e6146ee9e72ae01195fd1b",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "e39",
+              "claim_sha256": "5299710143d343dd61431f0ea1656389a1c3d6aaba1d26384c22025a37b07b65",
+              "source_url": "https://oyc.yale.edu/economics/econ-252-11/lecture-3",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 18,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "turn",
+      "old_chapter_sha256": "31157cfd9435d4ff2f94f2506224c21a5e4bd0a1997a788dbd88aa303858a981",
+      "old_counts": {
+        "scenes": 23,
+        "lines": 28,
+        "claims": 22
+      },
+      "candidate_counts": {
+        "scenes": 14,
+        "lines": 14,
+        "claims": 16
+      },
+      "scenes": [
+        {
+          "id": "turn-04",
+          "index": 0,
+          "candidate_scene_sha256": "46ded3111be6209d91b9806c263160a0bc49187755af7d9abe23b2f7a0904983",
+          "r12_merged_scene_sha256": "ff36486fdfbdc3fc6331197151d21c7ed4796d7e53014d5021657a8b1feb9480",
+          "old": {
+            "chapter": "turn",
+            "index": 3,
+            "scene_sha256": "109914d750cfd22d93aeff4b2e83b06ff3770144f110b84030a0c4cffa242771",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "8wiw",
+              "index": 0,
+              "text_sha256": "1e5b37dad0c7a762849fd48708c69a684a6b82581cd96990c84b9c2d100a35e0",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-04",
+                "index": 0,
+                "text_sha256": "51d116f00da50df3e224332efe9eb681467b75de63bb0ab98e52c8e2167a43b3",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "t4",
+              "claim_sha256": "0d6dce79616ee2895a76f2019f0403dab8639803e277d244c2fb05a3eacfad0a",
+              "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+              "source_checked": "2026-09-28",
+              "proposed_plan_source_index": 1,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-04",
+                "index": 3,
+                "claim_sha256": "066c01250d42eef5d87791ac053ff9af9059c100dbc8ee441ae8f9e65aec2657",
+                "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+                "verdict": "PLAN"
+              }
+            }
+          ]
+        },
+        {
+          "id": "turn-emmer-01",
+          "index": 1,
+          "candidate_scene_sha256": "7dfe8e17ae66ff64fca02e08ed271069250688b74fc02c4ca6ed1354dc411a24",
+          "r12_merged_scene_sha256": "22a2aa56621981c054117398d1dfb2c10aba461f4260c22f29d6669fa7c7b3ef",
+          "old": null,
+          "lines": [
+            {
+              "id": "r15t01",
+              "index": 0,
+              "text_sha256": "6f672689f97b76d1e80c1abe2a404a4bd4e521e2c921278e7ec33f82d3b5ca2d",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "t39",
+              "claim_sha256": "ba65119809c689c7a9217b139ec77791c939d3029e7cab04a791e90fb8d98ab7",
+              "source_url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 13,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "t40",
+              "claim_sha256": "c48a2e3be00278c2b68801c5a2eb2625d790fc15bad290bd23f79ab711768d2b",
+              "source_url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 13,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "turn-emmer-03",
+          "index": 2,
+          "candidate_scene_sha256": "2879101285c4f34767bfd5a217a937165356cb607dc5c4ce41779cc891c43f15",
+          "r12_merged_scene_sha256": "9b727334ae961f0b3659d9ab61caacb44f87a4be208ffa0d30f5de0935a9b4c1",
+          "old": null,
+          "lines": [
+            {
+              "id": "r15t03",
+              "index": 0,
+              "text_sha256": "a68a0f2552ecffe7e4317d713914529a6d23378094cf3a4d0fff2e1b129b40c9",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "t41",
+              "claim_sha256": "0f4fc5c2675f31afab7cbaf01cb870460ee5d813fc48debd11fd62c347e6265f",
+              "source_url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 13,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "turn-emmer-05",
+          "index": 3,
+          "candidate_scene_sha256": "d263bbc8e290060ce3eb4b7805250668d5421b46558324f9d34318f539c17ec0",
+          "r12_merged_scene_sha256": "e72ffce0e0722e7d7d7201db321545ba4629b0962070154a7a375e0840d4e4dd",
+          "old": null,
+          "lines": [
+            {
+              "id": "r15t05",
+              "index": 0,
+              "text_sha256": "4f4744690253ced5f6aa80436a52bb4af46f0c6299c87adcc9f06b404f3d8e3b",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "t42",
+              "claim_sha256": "6806682dcace53711188429fe034b1adeac9419c33dd4e3433f7b9d92186a668",
+              "source_url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 13,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "t43",
+              "claim_sha256": "9b08a8ee9d5a2a3d3cd9ca2626acb56bdfc0e5c28a337939682442d427d5669d",
+              "source_url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 13,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "turn-emmer-07",
+          "index": 4,
+          "candidate_scene_sha256": "0edf53a92a6c3d3f74655dcd77898b7a44bf13468a7d5f828a44933cbefa089e",
+          "r12_merged_scene_sha256": "62d0e76eb0e644269d6202ecceaa39f0387770448194c39b8842f49c7bfdc001",
+          "old": null,
+          "lines": [
+            {
+              "id": "r15t07",
+              "index": 0,
+              "text_sha256": "1f12e02670d63c88ae6e9a8febd9095e57f840f2a536728d19dbbc5e746203b0",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "t44",
+              "claim_sha256": "b41e5916f3af6ae394de28b7b65f85944c9eb8e0463c811bb88e05d29a1f6917",
+              "source_url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 13,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "t45",
+              "claim_sha256": "a840321d1aed90329cdeb7958636d24246df539c4fe5dd9fdf67ac4ff31ccc30",
+              "source_url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 13,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "turn-05",
+          "index": 5,
+          "candidate_scene_sha256": "3ee2e121a64a363204c77a42e46aff111e214e5172156109a2021c59453619ce",
+          "r12_merged_scene_sha256": "ae81341435f353c56637777448e7bf4c208871295951c06ecb82aaf26633d197",
+          "old": {
+            "chapter": "turn",
+            "index": 4,
+            "scene_sha256": "47dfbd7dc355bb20a984e54dbab8422c595765a4b28a1f9e4379df12941bba33",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "crcw",
+              "index": 0,
+              "text_sha256": "52dd1fbc99c68b69787af5c5e3b2d72113439bafae64399d3b7f74482b4e8d0a",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-05",
+                "index": 0,
+                "text_sha256": "e158e7b14a168c54e6b1b1f9d50ad03a3c8a8f2ee6324a6bb6a3eef3ddc30094",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "t5",
+              "claim_sha256": "488b0767dd4e4779a98f5392913a5dbbcaadb42a7442dc0468c93831808d27e1",
+              "source_url": "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+              "source_checked": "2026-09-28",
+              "proposed_plan_source_index": 5,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-05",
+                "index": 4,
+                "claim_sha256": "a92a3b55b92650492ccb6027b369c61f936b17c3111a6f4298c88b00de8702a2",
+                "source_url": "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+                "verdict": "ATTRIBUTED"
+              }
+            }
+          ]
+        },
+        {
+          "id": "turn-security-question",
+          "index": 6,
+          "candidate_scene_sha256": "53c82b24caa4b713efbbd9f2be616e546599048f3539299a9e3fc080288acd83",
+          "r12_merged_scene_sha256": "c8391743e73b2bdda725162b34482fbb3742f7956bd2dba28143aa0f88ba10d2",
+          "old": null,
+          "lines": [
+            {
+              "id": "r6t01",
+              "index": 0,
+              "text_sha256": "f59002bd09dad6429eee7573a2946544ed7d34f22b6ae56c5796d7839a42e66c",
+              "old": null
+            }
+          ],
+          "claims": []
+        },
+        {
+          "id": "turn-06",
+          "index": 7,
+          "candidate_scene_sha256": "dc845864682989388a1b26bd4bedd6d359de257e25207dfe3111f863dfff3f2d",
+          "r12_merged_scene_sha256": "be2870aef3771ae642dd142a6358028414063957c8c022e4196b6376d858fe01",
+          "old": {
+            "chapter": "turn",
+            "index": 5,
+            "scene_sha256": "dc845864682989388a1b26bd4bedd6d359de257e25207dfe3111f863dfff3f2d",
+            "changed": false
+          },
+          "lines": [
+            {
+              "id": "iu9y",
+              "index": 0,
+              "text_sha256": "a5f91e2193924c37fb97f66c2eeb552ba71dde56cdccf1e3d51887ed96a66964",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-06",
+                "index": 0,
+                "text_sha256": "a5f91e2193924c37fb97f66c2eeb552ba71dde56cdccf1e3d51887ed96a66964",
+                "changed": false
+              }
+            }
+          ],
+          "claims": []
+        },
+        {
+          "id": "turn-r12-01",
+          "index": 8,
+          "candidate_scene_sha256": "1b351349168c05c25d54c7f5addcf666d83744633bf19312924c7e458bbc2288",
+          "r12_merged_scene_sha256": "1af6ef11b1997ca764a8255bbc230b63032d7be16fc7695f3f180df28134b764",
+          "old": {
+            "chapter": "turn",
+            "index": 14,
+            "scene_sha256": "489ca37676e8af7176c1fa510388e0e858de0a640a0d08139d41d1e7b8a83713",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "r12t01",
+              "index": 0,
+              "text_sha256": "9fe5e66c36624f59d4ae188ce462a60fa4242ac3a8393a8a1e3a131f03c5ad7e",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-r12-01",
+                "index": 0,
+                "text_sha256": "8754aaae5cd652b9f11c18d6e6fa524b47e403ba40b0abbb4f0c36a6cedf77ed",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "t21",
+              "claim_sha256": "5c4ac7c42da8d8934a4d726b97c248cae3a9a7b7b35bdb5dcf351004b6907d4d",
+              "source_url": "https://patents.google.com/patent/US4995487A/en",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 12,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-r12-01",
+                "index": 13,
+                "claim_sha256": "04afc4d4a95aa5e538821f2ecccc139a33db0fc15b4003df602162a4d274a76b",
+                "source_url": "https://patents.google.com/patent/US4995487A/en",
+                "verdict": "PLAN"
+              }
+            }
+          ]
+        },
+        {
+          "id": "turn-07",
+          "index": 9,
+          "candidate_scene_sha256": "f49c477d63ac7872cc74546e9e823539f6f6cca5d9abe095417669f72ad3224e",
+          "r12_merged_scene_sha256": "7976ffcb7f3618f9f254c666e9e5bcb24c0151e4729a134672643b15f8dae394",
+          "old": {
+            "chapter": "turn",
+            "index": 6,
+            "scene_sha256": "ea9e10ac755de9c91e7dd5017a79dfbf598795ee97683feddd2923d76cef968a",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "q4zn",
+              "index": 0,
+              "text_sha256": "97d48387b150744e837757a6aee184ea9bcd813794e6a03b1e093109666c9aaa",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-07",
+                "index": 0,
+                "text_sha256": "11b8c5eb2d54aeca0f33824b7053de1eb48459beab1434a87548815493eedf7d",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "t6",
+              "claim_sha256": "a1dc95a2693f5009e45fec9dbc4605e562b8753c282ca4e54bc49c9c554de721",
+              "source_url": "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+              "source_checked": "2026-09-28",
+              "proposed_plan_source_index": 5,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-07",
+                "index": 5,
+                "claim_sha256": "60b3d04bbc00f57dd1c72528c1875bc0af489079bd15ab7866d7b2fe7fc2ba6a",
+                "source_url": "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+                "verdict": "CONFIRMED"
+              }
+            }
+          ]
+        },
+        {
+          "id": "turn-07b",
+          "index": 10,
+          "candidate_scene_sha256": "abd1a2ca83b14c30dd40225ecf7c8269f96c3e567714ccb658810080e12d09ee",
+          "r12_merged_scene_sha256": "e63670b0d8a05d2f171ec44f22b8d7a5bbe5748d7b235118932d5c8bd030465e",
+          "old": {
+            "chapter": "turn",
+            "index": 7,
+            "scene_sha256": "10347d1c0a82543dac13139f82a5a0144ab21ff60f635da1d193a65d6b8951ef",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "bxv2",
+              "index": 0,
+              "text_sha256": "afdf1d159be897d914fd3ea4d0880d6a4183c3f7670ca1ecd86f8d47621dd8a3",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-07b",
+                "index": 0,
+                "text_sha256": "567a77255487d5306cf13723a3d5158ffb281312d0be93cb50039ccaa1077a45",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "t17",
+              "claim_sha256": "d88b2bd3a9153e503d4f3386d9ed0ed703093863b60004338fcce8cb4f40b493",
+              "source_url": "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+              "source_checked": "2026-09-28",
+              "proposed_plan_source_index": 5,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-07b",
+                "index": 6,
+                "claim_sha256": "57b0f974e6c68e5b73c568d7005b45be06b77e7015d824964ced31c29bf0bce2",
+                "source_url": "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+                "verdict": "ATTRIBUTED"
+              }
+            }
+          ]
+        },
+        {
+          "id": "turn-07c",
+          "index": 11,
+          "candidate_scene_sha256": "7e8880f54eb20cbe190ab587d790a008ebb734ae2a1303567124909b4ccbb969",
+          "r12_merged_scene_sha256": "630e8b6380ebd70ac999661605ecb54b11be3039096b35539717ba7961669a3f",
+          "old": null,
+          "lines": [
+            {
+              "id": "r13t02",
+              "index": 0,
+              "text_sha256": "eda5462d6627fc0c55da4aa9504795e38ac135718a242ebe2576f198dcaf88a8",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "t29",
+              "claim_sha256": "56f18d14dfcd6f62948126b8288d76a819233d4736a952b1b2e36b8c49aa430d",
+              "source_url": "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 5,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "turn-09",
+          "index": 12,
+          "candidate_scene_sha256": "7a75eeb7fe1b629d9e9a9602d6e3221b57a7cb28d75677ea457d174ac24c3970",
+          "r12_merged_scene_sha256": "86b24af1b21934fa92a110fa45d1abdd19ff624c0bee8ca3b822c2ea61b6aea5",
+          "old": {
+            "chapter": "turn",
+            "index": 10,
+            "scene_sha256": "6d4fa71678a18a5b54f99eb5d5ebb86c18d54eef64d8b15ab744e7dec90b41ef",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "jm3w",
+              "index": 0,
+              "text_sha256": "e5b2d694516c47544939031a59f6a38ba5997cf039de6dca8aacba6ec674ef1f",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-09",
+                "index": 0,
+                "text_sha256": "25139509006df39ee02b4d5cfcb3a3c446d8770fa2db557b689da85189920b66",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "t7",
+              "claim_sha256": "4c570ae9be665d7444d676dce1930d810e8e8e9e79bfee1d528d06201865d672",
+              "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 1,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-09",
+                "index": 8,
+                "claim_sha256": "88296fcfaec4266b84a65ba64b24a9a56b6d6597da82c9d3532d143372051f54",
+                "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+                "verdict": "PLAN"
+              }
+            },
+            {
+              "id": "t7b",
+              "claim_sha256": "a0b8b09a75e263d23a9bbc23819ae0f6af891350db93141bff7841cc1e523ba1",
+              "source_url": "https://www.sl8.com/journal/may24/journal_images/Chinook_2024_5-3-24_FINAL.pdf",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 23,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "turn-09b",
+          "index": 13,
+          "candidate_scene_sha256": "b1029c97bfa0ad9dab0584538c79e042a7d8d53288cc34078c3703b7a5db8736",
+          "r12_merged_scene_sha256": "d703ab6509ed1083b3596d102bc517ceebfb14966e8be6f31f4e00ded383065c",
+          "old": null,
+          "lines": [
+            {
+              "id": "3zwf",
+              "index": 0,
+              "text_sha256": "e97d3aad8bab8252c3c08c924213c104ffd3a59b2447d681200e7503fee42a16",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-09",
+                "index": 1,
+                "text_sha256": "e97d3aad8bab8252c3c08c924213c104ffd3a59b2447d681200e7503fee42a16",
+                "changed": false
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "t31",
+              "claim_sha256": "f1273f639d539c3f1b58e4224c016e8b07b61d2483c6372962c05debc2fde957",
+              "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 1,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "now",
+      "old_chapter_sha256": "b3eb9164e9f5d2c7ea235a364cbd340af6f47f555a6defd22a9bdba25757c7bd",
+      "old_counts": {
+        "scenes": 6,
+        "lines": 9,
+        "claims": 6
+      },
+      "candidate_counts": {
+        "scenes": 15,
+        "lines": 19,
+        "claims": 23
+      },
+      "scenes": [
+        {
+          "id": "now-crew-request",
+          "index": 0,
+          "candidate_scene_sha256": "1f652a4f4306217406b3ff37212cac8f18ec1c7eba7a761b0d21d5199ae9fbf2",
+          "r12_merged_scene_sha256": "074ad0786b1ecabb0974435a300a0e3a1880d253c3cf0e3690a022a1edbb63e2",
+          "old": null,
+          "lines": [
+            {
+              "id": "r15n02",
+              "index": 0,
+              "text_sha256": "85d4fd3f248d41111e699b76b5b88814e8081aa59a76267e0eb1ef25f2478198",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "n45",
+              "claim_sha256": "359c99a39fbaf99c1312ab5dddf535653c029987000bea40a8f365e261ac99cb",
+              "source_url": "https://www.globaltravelerusa.com/reinventing-the-wheel/",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 15,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "now-10",
+          "index": 1,
+          "candidate_scene_sha256": "248220e971f0fd26ebfd5c103fe749d276bb0f4daaacd11278b10b9e34efd8e1",
+          "r12_merged_scene_sha256": "ab3cec9642ee1a93d30417eb6fd4e33517b3b9088a95c7db0d60cc8f1e271180",
+          "old": null,
+          "lines": [
+            {
+              "id": "hiwy",
+              "index": 0,
+              "text_sha256": "b5762f2723db4664ecc956ff4b60daa97a47a331343beff3a103b1c592027fab",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-10",
+                "index": 0,
+                "text_sha256": "cd1217275cabfc83d0ab4bc1d4f226e4d9429d9825c15552d6376793c34dd43c",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "n40",
+              "claim_sha256": "ed302af96b9967a3c48e1267dc226686a5725540d3f260e2b6fbc5fee8b9db59",
+              "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+              "source_checked": "2026-09-28",
+              "proposed_plan_source_index": 1,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "n41",
+              "claim_sha256": "5f9d378b8c5d596b94dd85cb2250e3dc3c669a1943532a4a2fe17d6517d1d5e5",
+              "source_url": "https://travelpro.com/pages/our-history",
+              "source_checked": "2026-09-28",
+              "proposed_plan_source_index": 2,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "now-passenger",
+          "index": 2,
+          "candidate_scene_sha256": "84a8273f72d26a3caeb266e1f6057ab2a260c8cda08b93b7c160df57a2e9dbf1",
+          "r12_merged_scene_sha256": "73d019244367b930b87c64178a6fbbf546c998cbcee372ffd30de091e2a393e8",
+          "old": null,
+          "lines": [
+            {
+              "id": "r15n01",
+              "index": 0,
+              "text_sha256": "e4bcf7b99ba9c3cd285c208e48ce34d058568483757d5eb366b68f701483b9ce",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "n44",
+              "claim_sha256": "de4122a41eda7e5ce1d5ab318063d770489a00dc8bb822f2a53e621447ca0ab1",
+              "source_url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 13,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "now-11",
+          "index": 3,
+          "candidate_scene_sha256": "dc0e96c2653bd2e3dbe7e56b5c04826f30c2b925227dfe2d0a3efe65a6f99554",
+          "r12_merged_scene_sha256": "9060cb1d35a1ab1bb161f0896181244074c9bb587135c6046f9ba100c4d90335",
+          "old": null,
+          "lines": [
+            {
+              "id": "fd4h",
+              "index": 0,
+              "text_sha256": "c599ee8f1ec3c6d4a0ac9323a0e0592b897f344bb96a1a20dbeab47f2c60662c",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-11",
+                "index": 0,
+                "text_sha256": "e1960d4890485a6cf46ae0817a4a24853ef201c9ce511e7da6bec1eafbca9a0e",
+                "changed": true
+              }
+            },
+            {
+              "id": "jspd",
+              "index": 1,
+              "text_sha256": "e7a96ede1b15f8352e573e71551f817c1821b580e59b24b112cce516a972ce2e",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-11",
+                "index": 1,
+                "text_sha256": "e7a96ede1b15f8352e573e71551f817c1821b580e59b24b112cce516a972ce2e",
+                "changed": false
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "n42",
+              "claim_sha256": "9efad211510f1e8e4d770e1ff8a34196481c04bb70b90d0c26d2a8a57484279b",
+              "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+              "source_checked": "2026-09-28",
+              "proposed_plan_source_index": 1,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "now-12",
+          "index": 4,
+          "candidate_scene_sha256": "e39a83edcab86d659ed70e2dbca424851813f905ebf74c2bf72618c362e04936",
+          "r12_merged_scene_sha256": "eb0a2a133333898ee4e005dec44fa2b87ea6815b40d1918f2e8257401885d54d",
+          "old": null,
+          "lines": [
+            {
+              "id": "6jx3",
+              "index": 0,
+              "text_sha256": "290f7a450fb9dcb6069c21c7e2b216ba5b76a2b38c10f9fc6445bc3532f666aa",
+              "old": {
+                "chapter": "turn",
+                "scene": "turn-12",
+                "index": 1,
+                "text_sha256": "b234e6c8a5cc750809bb86cdd64faf91212147f299a989fb36777c0da6e21070",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "n43",
+              "claim_sha256": "619bd6e687eb2ce61f0e7f3169254d4fc91215686750d0c8bb872517c463fb99",
+              "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+              "source_checked": "2026-09-28",
+              "proposed_plan_source_index": 1,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "now-1993-retail",
+          "index": 5,
+          "candidate_scene_sha256": "1bd8a813298d59f879e7783c751f7804d3a5dda82efcecdd7194a753d048fc25",
+          "r12_merged_scene_sha256": "ef9ad09e0a1166b0c253ed0410874c21b3855ac33969084f0f31e874c539ed36",
+          "old": null,
+          "lines": [
+            {
+              "id": "r11n01",
+              "index": 0,
+              "text_sha256": "5920a9e3cae8c3e4f7a99b457f1548f20c57d28a0ec664dae0ec38ed2ca14a24",
+              "old": null
+            },
+            {
+              "id": "r3n03",
+              "index": 1,
+              "text_sha256": "e1f3050df6817eb82c2078c97409d9ae799e95ed1ac14147c14fb5b93c6e22dd",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "n56",
+              "claim_sha256": "bcf01951239feacbc4c768f199dca5c1d4cbadb864894fa7d27dd784f24c8bd3",
+              "source_url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 22,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "n60",
+              "claim_sha256": "392b59403c0cdc6b17c798556e2ee853d12b3f5c94b1685cae9f73f07aa75586",
+              "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 1,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "n64",
+              "claim_sha256": "b298f733219b4afcc38905ebd92c8fe92a30f2f564bab0cd92172885fc286ea9",
+              "source_url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 13,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "n65",
+              "claim_sha256": "b2d307bdf87b35a7be17e5d17abe4668f570b17194a0b6bbd67b8cc643a5a54f",
+              "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 8,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "n66",
+              "claim_sha256": "fbcf23043046bc963a70ccab9c3c22e2ccc2bb77ed487d8d03d3bd9efe7a3e22",
+              "source_url": "https://patents.google.com/patent/US4995487A/en",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 12,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "n67",
+              "claim_sha256": "704dd0149ae8da0c2441cd1d7b405454c47c157140c43e441a19eba8bf1eed52",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "now-1993-test",
+          "index": 6,
+          "candidate_scene_sha256": "c9f8dc42ffb4466cc95bd51afab96fee0f01363f6370af0eafa444c013bdd227",
+          "r12_merged_scene_sha256": "88920c4567ba81ff72d83669bc2e6c0f744b1a5459478b27ee817788e0b8cc68",
+          "old": null,
+          "lines": [
+            {
+              "id": "r3n02",
+              "index": 0,
+              "text_sha256": "e1184a1e511b9ad78d4d51f5c480d7e5584f6e4d85f4c4a57d362d373c7e90b1",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "n55",
+              "claim_sha256": "ec50047705ff18d5461acaeb74a15e05d19bfa8c70c5fde05eb8b5f4985ff6de",
+              "source_url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 22,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "now-1993-cabin",
+          "index": 7,
+          "candidate_scene_sha256": "2fc8d92c1c250cf99c54fe1979182b230d7f65cb474100947abb7037d65242e7",
+          "r12_merged_scene_sha256": "52057ad965108fc99f07d41a7ce3443c56065a86c81f95241b74b88d35d7a68d",
+          "old": null,
+          "lines": [
+            {
+              "id": "r3n04",
+              "index": 0,
+              "text_sha256": "b52ad031098d959f1bdea7d884a9bee82e0b47843a0d9494a0f238255fb2ead3",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "n57",
+              "claim_sha256": "360717364c03a2b371ce7e2728bfdf8eb61e783f9c8e7014e78c3234b6ba1b72",
+              "source_url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 22,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "now-1993-limit",
+          "index": 8,
+          "candidate_scene_sha256": "2e1df15b3dd5f7cd3e85496f38c30fb13361bf4ae673a2b27e17529df61a3a5d",
+          "r12_merged_scene_sha256": "ddf3d531019d7276a4d03541efad335508f84766c414c5bcb471ad02c03a649d",
+          "old": null,
+          "lines": [
+            {
+              "id": "r3n05",
+              "index": 0,
+              "text_sha256": "8bc28c9c1771323e6b7a450c8f136f6c0dd160b50a654c495c75e1bc3c7dc436",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "n58",
+              "claim_sha256": "1fdfa2def99a191f5126c7243b93a55a31d9b3ee89a0df9c65340590f4186004",
+              "source_url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 22,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "now-consumer-question",
+          "index": 9,
+          "candidate_scene_sha256": "dfcb1ba75667b61d2a6af431e9b599af389ee0b6a73d483e496eb2951c2d8b87",
+          "r12_merged_scene_sha256": "7e0f3d6acbac79a22a99a91cdd820f19cc4a249c7e26e04a89c2e0c379be5d82",
+          "old": null,
+          "lines": [
+            {
+              "id": "r3n01",
+              "index": 0,
+              "text_sha256": "b8c317c80503a2b06c329068e7024aa308930629fb22cbb7e5ec0eebc2e533f9",
+              "old": null
+            }
+          ],
+          "claims": []
+        },
+        {
+          "id": "now-1993-stow",
+          "index": 10,
+          "candidate_scene_sha256": "08a93afe65dfefae4c444ca9d361ee3101a72b0330a34592994c0d7b27270c19",
+          "r12_merged_scene_sha256": "0eaa2cccd0d429f275d35870e0c3dc5fec8f064b4a4e7605f2b5835051107c6d",
+          "old": null,
+          "lines": [
+            {
+              "id": "r4n01",
+              "index": 0,
+              "text_sha256": "79b624a81a14b3c97f6eb6e9a7ac73b7bbfc4d3fed8a4225cf5896a1e43a867c",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "n59",
+              "claim_sha256": "cdf097f7efa9be3ca25c275e84e39d83c28b94e0088a36f001ed0f8aa57af470",
+              "source_url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 22,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "now-01",
+          "index": 11,
+          "candidate_scene_sha256": "bbc73d4900e84c50e8b82015be0e8ad6dbfa94810b5adc91299e986d3a09e414",
+          "r12_merged_scene_sha256": "d92335c899efe42e73234e942a82ae39f52431cc110f493a1d49f8ac799bc624",
+          "old": {
+            "chapter": "now",
+            "index": 0,
+            "scene_sha256": "db5e039a9687b3cb4f7a6be1f18cefa391e482a4a80af97fefe30699faaa391f",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "7asx",
+              "index": 0,
+              "text_sha256": "d414a455ea93753ea1b3714710db935c4744a87ceb5cbe9248b8832f34ceefa5",
+              "old": {
+                "chapter": "now",
+                "scene": "now-01",
+                "index": 0,
+                "text_sha256": "3d8f918db75aaaf81519511728555ca983a2b18f493fef4b292871cf6e5f464b",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "n1",
+              "claim_sha256": "a34bdf0d9b263e373bc3359b4320ab612671d1af5e95c45517d7154570144fa8",
+              "source_url": "https://corporate.samsonite.com/on/demandware.static/-/Sites-InvestorRelations-Library/default/dwa68533ea/PDF/announcements/2011/20110602100852_Samsonite_Final_Prospectus_en.pdf",
+              "source_checked": "2026-10-16",
+              "proposed_plan_source_index": 11,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "now",
+                "scene": "now-01",
+                "index": 0,
+                "claim_sha256": "3d8f918db75aaaf81519511728555ca983a2b18f493fef4b292871cf6e5f464b",
+                "source_url": "https://corporate.samsonite.com/on/demandware.static/-/Sites-InvestorRelations-Library/default/dwa68533ea/PDF/announcements/2011/20110602100852_Samsonite_Final_Prospectus_en.pdf",
+                "verdict": "PLAN"
+              }
+            }
+          ]
+        },
+        {
+          "id": "now-05",
+          "index": 12,
+          "candidate_scene_sha256": "9c982c66ccb19bbf2b1678d8431222cfb2ce287ddd0711d812a05a77a3ca325b",
+          "r12_merged_scene_sha256": "a359f1ee98fbc502765d3ae2c06078e7b236c398ed0ba80585c1bc6714f405b5",
+          "old": null,
+          "lines": [
+            {
+              "id": "opk01",
+              "index": 0,
+              "text_sha256": "16c85c73a3073ca3b87ac5afda4d4d3a262ea3b929067a1b9943588c8bde453c",
+              "old": null
+            }
+          ],
+          "claims": [
+            {
+              "id": "n17",
+              "claim_sha256": "24a0935411ecd15689ba20997471bea37d268fdaf90adca9c96454b31bb45f65",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        },
+        {
+          "id": "now-06",
+          "index": 13,
+          "candidate_scene_sha256": "ffbde6dc37f9dbb3ef465d4155b43eef8d5d075359feab8abaf97ab3f6711418",
+          "r12_merged_scene_sha256": "1057bc5f28d2c44b32681360ae8248efdfba163e9a1dc56a6297398601f20d82",
+          "old": {
+            "chapter": "now",
+            "index": 4,
+            "scene_sha256": "449478f074519e03ec4849f00e1f47e0cf6a4d7cd08444759075724e52af31ee",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "tszs",
+              "index": 0,
+              "text_sha256": "721c0dcb19eb3177ecbeb5025fbf0eaa46a513a3b290e24113b5d72f43e5b6cc",
+              "old": {
+                "chapter": "now",
+                "scene": "now-06",
+                "index": 0,
+                "text_sha256": "dbf385343bba8e8089dfcc135be27510e7898be6d974dbbf5b0cd3261c0cfda3",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "n14",
+              "claim_sha256": "50c8f8e61cf003cef4d11d53643761806f21434920911a64c3496cb7531f03ab",
+              "source_url": "https://travelpro.com/blogs/the-travelpro-blog/bring-this-not-that-duffel-bags-versus-rolling-suitcases",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 24,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "now",
+                "scene": "now-06",
+                "index": 4,
+                "claim_sha256": "03fdb2ec6207d61cebd693b60349b3008793e696011fa8064827fb6eb11bb741",
+                "source_url": null,
+                "verdict": "PLAN"
+              }
+            }
+          ]
+        },
+        {
+          "id": "now-outro",
+          "index": 14,
+          "candidate_scene_sha256": "d4c73c199787b9dfe50fd4caf7ad4b6eaff73dabfdd65e0e9140a78725353db6",
+          "r12_merged_scene_sha256": "efbd9f88c757b787dc0d915ee03a0101e1027e9754839b9e31a71aabe2ed59e1",
+          "old": {
+            "chapter": "now",
+            "index": 5,
+            "scene_sha256": "54c0f3d01f821c578bcfb47e79a568dd90b12ce3cd4760295c0c969079ad00f3",
+            "changed": true
+          },
+          "lines": [
+            {
+              "id": "g5b8",
+              "index": 0,
+              "text_sha256": "352e8ab6d769e40200e4e68d94fa9c6c43bb5a48920d2a4ca561a45e8b6a8c6f",
+              "old": {
+                "chapter": "now",
+                "scene": "now-outro",
+                "index": 0,
+                "text_sha256": "20e6005b7343bcaebc3d11f6dc981e7922bfc216e4cbb0e6289a413b6ef19c61",
+                "changed": true
+              }
+            },
+            {
+              "id": "xjmb",
+              "index": 1,
+              "text_sha256": "39aeaf3b290c6bc38ea00bbee86ded91138b4ce1c19c5703512d6132fdef7f75",
+              "old": {
+                "chapter": "now",
+                "scene": "now-outro",
+                "index": 1,
+                "text_sha256": "bb4d2375cf2c6be3c512b86a81e21f29204c56ec3f2bf1c15d5ca8beb0fb6d89",
+                "changed": true
+              }
+            },
+            {
+              "id": "ek2s",
+              "index": 2,
+              "text_sha256": "543ce5f8e73405e0771c2ffdc7c08fd266d0d77936928474a83b8db655340096",
+              "old": {
+                "chapter": "now",
+                "scene": "now-outro",
+                "index": 2,
+                "text_sha256": "7ac07314217346bad5a42cdc1545cd55996fb7eae9b7b08e34706b645f6824e9",
+                "changed": true
+              }
+            }
+          ],
+          "claims": [
+            {
+              "id": "n16",
+              "claim_sha256": "6ab3ae48d1bd2f648efba18e5246bc4b4c481034bec249db1f019fd8e18a79ee",
+              "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 6,
+              "reset_verdict": "UNCHECKED",
+              "old": {
+                "chapter": "now",
+                "scene": "now-outro",
+                "index": 5,
+                "claim_sha256": "265d44fc0931d9b7e6881ca2d835f23f33207cfe494083c0f6320cc0149d3066",
+                "source_url": "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+                "verdict": "PLAN"
+              }
+            },
+            {
+              "id": "n61",
+              "claim_sha256": "6bdd67a4aa50749e87d54e7053e743351608c8610f916d9ea95e6528c52f4435",
+              "source_url": "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 8,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "n62",
+              "claim_sha256": "dae94b56a7d5088481c5b27ee20037bbf100fc9521bb13ea138bf29c6d2a8e34",
+              "source_url": "https://patents.google.com/patent/US4995487A/en",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 12,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            },
+            {
+              "id": "n63",
+              "claim_sha256": "b4a8562f2ed5eada9b89a7f7e52a3208a7b307c3e0c7b0b6a9be2af5ad9f5ea1",
+              "source_url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+              "source_checked": "2026-10-18",
+              "proposed_plan_source_index": 1,
+              "reset_verdict": "UNCHECKED",
+              "old": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
