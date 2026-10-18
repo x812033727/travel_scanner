@@ -1,0 +1,1996 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_DIFF_ONLY_HOLD",
+  "snapshot_proof": {
+    "links": 104,
+    "source_sha256": "e1499cd695f2f414d9379a8917b6b5b36e50ea0d046de495938157d8ff97add7",
+    "file_count": 254,
+    "inventory_sha256": "827361fe4f8d89cbc3c211af5df91de1bbcb09ae8b4ffd6acf534b4465dfd6d3",
+    "verified_report_sha256": "29ddbe75e849f09fed508b3c1405fd533445aa8adee337539cb11ea9287460aa",
+    "readback_sha256": "70f7ea78a198c7ae593d3668c52f6ffea3ec7316072f0d35df04ffd63a7ae3d1"
+  },
+  "candidate_proof": {
+    "r11_manifest_sha256": "39bcc9e69c4d89eea044e145abb592c587183796e92bb13646c83f82511d289a",
+    "independent_review_sha256": "2ed2f086af582ea75dde7abfdf43fb032d3fa7da2feb3917b249c7c890d774ac",
+    "independent_review_addendum_sha256": "ed0c8932dbe71440cce9e7a3e6d55ec791ef2785010b53f282357c52ceddf1d7",
+    "original_offline_review_result": "PASS_OFFLINE_WITH_P2_NOTES",
+    "formal_factual_gate": "HOLD_P1_N14",
+    "local_story_module_sha256": "145838ca8c1f707d68925c8dee2bdb0647fe5c4192142040737fabcda1e9e808"
+  },
+  "identity": {
+    "slug": "story-rolling-suitcase-v2",
+    "series": "brand-stories-curio-pilot-v2",
+    "episode": 1,
+    "look": "cute-mystery"
+  },
+  "duration": {
+    "before_body_target_minutes": [
+      9,
+      11
+    ],
+    "r11_body_target_minutes": [
+      7,
+      8
+    ],
+    "series_target_minutes": 10,
+    "saved_auto_target_minutes": 10,
+    "intro_and_outro_not_body_seconds": [
+      5,
+      21
+    ]
+  },
+  "totals": {
+    "before_scenes": 79,
+    "r11_scenes": 65,
+    "before_lines": 108,
+    "r11_lines": 77,
+    "before_claim_rows": 85,
+    "r11_claim_rows": 78
+  },
+  "capture_chapter_to_merged_scene_difference": {
+    "retained": [
+      "engine-01",
+      "engine-02",
+      "engine-13",
+      "engine-14",
+      "engine-r12-01",
+      "engine-r12-02",
+      "engine-r12-03",
+      "engine-r12-04",
+      "engine-r12-06",
+      "engine-r12-07",
+      "hook-01",
+      "hook-02",
+      "hook-02b",
+      "hook-03",
+      "hook-04",
+      "hook-05",
+      "hook-06",
+      "hook-07",
+      "idea-01",
+      "idea-02",
+      "idea-03b",
+      "idea-04",
+      "idea-05",
+      "idea-06",
+      "idea-07",
+      "idea-07b",
+      "idea-08",
+      "idea-09",
+      "idea-10",
+      "idea-11",
+      "idea-11b",
+      "idea-12",
+      "idea-13",
+      "now-01",
+      "now-02b",
+      "now-03",
+      "now-04",
+      "now-06",
+      "now-outro",
+      "origin-01",
+      "origin-01b",
+      "origin-02",
+      "origin-03",
+      "origin-06",
+      "origin-07",
+      "origin-08",
+      "origin-10",
+      "origin-11",
+      "origin-12",
+      "origin-13",
+      "origin-14",
+      "origin-15",
+      "origin-16",
+      "origin-r12-01",
+      "origin-r12-02",
+      "origin-r12-03",
+      "turn-01",
+      "turn-02",
+      "turn-03",
+      "turn-04",
+      "turn-05",
+      "turn-06",
+      "turn-07",
+      "turn-07b",
+      "turn-08",
+      "turn-08b",
+      "turn-09",
+      "turn-10",
+      "turn-10b",
+      "turn-11",
+      "turn-12",
+      "turn-15",
+      "turn-r12-01",
+      "turn-r12-04",
+      "turn-r12-05",
+      "turn-r12-06",
+      "turn-r12-07",
+      "turn-r12-08",
+      "turn-r12-11"
+    ],
+    "added": [],
+    "removed": [],
+    "changed": []
+  },
+  "global_line_continuity": {
+    "retained_ids": [
+      "393x",
+      "3d52",
+      "3rdw",
+      "3zkh",
+      "3zwf",
+      "47gq",
+      "6b28",
+      "6jx3",
+      "768x",
+      "76ur",
+      "7asx",
+      "8n2r",
+      "8wiw",
+      "9ij6",
+      "9ijb",
+      "agam",
+      "amrq",
+      "apb3",
+      "b6mn",
+      "bxv2",
+      "crcw",
+      "csdd",
+      "dgbq",
+      "dibw",
+      "e37u",
+      "ek2s",
+      "fd4h",
+      "g5b8",
+      "hiwy",
+      "idiy",
+      "iu9y",
+      "j9sw",
+      "jm3w",
+      "jspd",
+      "jtmg",
+      "kzmj",
+      "mryd",
+      "q4zn",
+      "r12e06",
+      "r12o01",
+      "r12o02",
+      "r12o03",
+      "r12t01",
+      "s7me",
+      "tszs",
+      "vdxp",
+      "x7r4",
+      "xjmb",
+      "ys5y",
+      "zaky"
+    ],
+    "moved_chapter": [
+      {
+        "id": "393x",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-09"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-09"
+        }
+      },
+      {
+        "id": "3d52",
+        "from": {
+          "chapter": "engine",
+          "scene": "engine-01"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-01"
+        }
+      },
+      {
+        "id": "3zkh",
+        "from": {
+          "chapter": "origin",
+          "scene": "origin-13"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-13"
+        }
+      },
+      {
+        "id": "6jx3",
+        "from": {
+          "chapter": "turn",
+          "scene": "turn-12"
+        },
+        "to": {
+          "chapter": "now",
+          "scene": "now-12"
+        }
+      },
+      {
+        "id": "768x",
+        "from": {
+          "chapter": "origin",
+          "scene": "origin-14"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-14"
+        }
+      },
+      {
+        "id": "76ur",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-07b"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-07b"
+        }
+      },
+      {
+        "id": "8n2r",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-06"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-06"
+        }
+      },
+      {
+        "id": "9ijb",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-02"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-02"
+        }
+      },
+      {
+        "id": "agam",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-02"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-02"
+        }
+      },
+      {
+        "id": "amrq",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-08"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-08"
+        }
+      },
+      {
+        "id": "apb3",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-08"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-08"
+        }
+      },
+      {
+        "id": "dgbq",
+        "from": {
+          "chapter": "origin",
+          "scene": "origin-14"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-14"
+        }
+      },
+      {
+        "id": "dibw",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-03b"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-03b"
+        }
+      },
+      {
+        "id": "fd4h",
+        "from": {
+          "chapter": "turn",
+          "scene": "turn-11"
+        },
+        "to": {
+          "chapter": "now",
+          "scene": "now-11"
+        }
+      },
+      {
+        "id": "hiwy",
+        "from": {
+          "chapter": "turn",
+          "scene": "turn-10"
+        },
+        "to": {
+          "chapter": "now",
+          "scene": "now-10"
+        }
+      },
+      {
+        "id": "idiy",
+        "from": {
+          "chapter": "origin",
+          "scene": "origin-13"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-13b"
+        }
+      },
+      {
+        "id": "j9sw",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-01"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-01"
+        }
+      },
+      {
+        "id": "jspd",
+        "from": {
+          "chapter": "turn",
+          "scene": "turn-11"
+        },
+        "to": {
+          "chapter": "now",
+          "scene": "now-11"
+        }
+      },
+      {
+        "id": "kzmj",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-09"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-09"
+        }
+      },
+      {
+        "id": "mryd",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-07"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-07"
+        }
+      },
+      {
+        "id": "r12e06",
+        "from": {
+          "chapter": "engine",
+          "scene": "engine-r12-06"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-r12-06"
+        }
+      },
+      {
+        "id": "s7me",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-05"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-05"
+        }
+      },
+      {
+        "id": "vdxp",
+        "from": {
+          "chapter": "origin",
+          "scene": "origin-12"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-12"
+        }
+      },
+      {
+        "id": "ys5y",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-10"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-10"
+        }
+      },
+      {
+        "id": "zaky",
+        "from": {
+          "chapter": "origin",
+          "scene": "origin-16"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-16"
+        }
+      }
+    ],
+    "moved_scene": [
+      {
+        "id": "393x",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-09"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-09"
+        }
+      },
+      {
+        "id": "3d52",
+        "from": {
+          "chapter": "engine",
+          "scene": "engine-01"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-01"
+        }
+      },
+      {
+        "id": "3zkh",
+        "from": {
+          "chapter": "origin",
+          "scene": "origin-13"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-13"
+        }
+      },
+      {
+        "id": "3zwf",
+        "from": {
+          "chapter": "turn",
+          "scene": "turn-09"
+        },
+        "to": {
+          "chapter": "turn",
+          "scene": "turn-09b"
+        }
+      },
+      {
+        "id": "6jx3",
+        "from": {
+          "chapter": "turn",
+          "scene": "turn-12"
+        },
+        "to": {
+          "chapter": "now",
+          "scene": "now-12"
+        }
+      },
+      {
+        "id": "768x",
+        "from": {
+          "chapter": "origin",
+          "scene": "origin-14"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-14"
+        }
+      },
+      {
+        "id": "76ur",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-07b"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-07b"
+        }
+      },
+      {
+        "id": "8n2r",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-06"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-06"
+        }
+      },
+      {
+        "id": "9ijb",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-02"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-02"
+        }
+      },
+      {
+        "id": "agam",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-02"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-02"
+        }
+      },
+      {
+        "id": "amrq",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-08"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-08"
+        }
+      },
+      {
+        "id": "apb3",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-08"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-08"
+        }
+      },
+      {
+        "id": "dgbq",
+        "from": {
+          "chapter": "origin",
+          "scene": "origin-14"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-14"
+        }
+      },
+      {
+        "id": "dibw",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-03b"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-03b"
+        }
+      },
+      {
+        "id": "fd4h",
+        "from": {
+          "chapter": "turn",
+          "scene": "turn-11"
+        },
+        "to": {
+          "chapter": "now",
+          "scene": "now-11"
+        }
+      },
+      {
+        "id": "hiwy",
+        "from": {
+          "chapter": "turn",
+          "scene": "turn-10"
+        },
+        "to": {
+          "chapter": "now",
+          "scene": "now-10"
+        }
+      },
+      {
+        "id": "idiy",
+        "from": {
+          "chapter": "origin",
+          "scene": "origin-13"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-13b"
+        }
+      },
+      {
+        "id": "j9sw",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-01"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-01"
+        }
+      },
+      {
+        "id": "jspd",
+        "from": {
+          "chapter": "turn",
+          "scene": "turn-11"
+        },
+        "to": {
+          "chapter": "now",
+          "scene": "now-11"
+        }
+      },
+      {
+        "id": "kzmj",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-09"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-09"
+        }
+      },
+      {
+        "id": "mryd",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-07"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-07"
+        }
+      },
+      {
+        "id": "r12e06",
+        "from": {
+          "chapter": "engine",
+          "scene": "engine-r12-06"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-r12-06"
+        }
+      },
+      {
+        "id": "s7me",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-05"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-05"
+        }
+      },
+      {
+        "id": "vdxp",
+        "from": {
+          "chapter": "origin",
+          "scene": "origin-12"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-12"
+        }
+      },
+      {
+        "id": "ys5y",
+        "from": {
+          "chapter": "idea",
+          "scene": "idea-10"
+        },
+        "to": {
+          "chapter": "engine",
+          "scene": "engine-10"
+        }
+      },
+      {
+        "id": "zaky",
+        "from": {
+          "chapter": "origin",
+          "scene": "origin-16"
+        },
+        "to": {
+          "chapter": "idea",
+          "scene": "idea-16"
+        }
+      }
+    ],
+    "text_changed": [
+      "3d52",
+      "3rdw",
+      "3zkh",
+      "6b28",
+      "6jx3",
+      "7asx",
+      "8n2r",
+      "8wiw",
+      "9ijb",
+      "apb3",
+      "bxv2",
+      "crcw",
+      "csdd",
+      "dgbq",
+      "dibw",
+      "e37u",
+      "ek2s",
+      "fd4h",
+      "g5b8",
+      "hiwy",
+      "jm3w",
+      "jtmg",
+      "mryd",
+      "q4zn",
+      "r12e06",
+      "r12o01",
+      "r12o02",
+      "r12o03",
+      "r12t01",
+      "s7me",
+      "tszs",
+      "vdxp",
+      "xjmb"
+    ]
+  },
+  "global_claim_continuity": {
+    "claim_ids": {
+      "retained": [
+        "h1",
+        "h3",
+        "h4",
+        "h6",
+        "h9",
+        "n1",
+        "n14",
+        "n16",
+        "o1",
+        "o2",
+        "o25",
+        "o26",
+        "o27",
+        "t17",
+        "t21",
+        "t4",
+        "t5",
+        "t6",
+        "t7"
+      ],
+      "added": [
+        "e26",
+        "e27",
+        "e28",
+        "e29",
+        "e30",
+        "e31",
+        "e32",
+        "e33",
+        "e34",
+        "e35",
+        "e37",
+        "e38",
+        "e39",
+        "h10",
+        "i21",
+        "i22",
+        "i23",
+        "i24",
+        "i25",
+        "i26",
+        "i32",
+        "i33",
+        "i34",
+        "i35",
+        "i36",
+        "n17",
+        "n40",
+        "n41",
+        "n42",
+        "n43",
+        "n44",
+        "n45",
+        "n55",
+        "n56",
+        "n57",
+        "n58",
+        "n59",
+        "n60",
+        "n61",
+        "n62",
+        "n63",
+        "n64",
+        "n65",
+        "n66",
+        "n67",
+        "o29",
+        "o30",
+        "o32",
+        "o34",
+        "t29",
+        "t31",
+        "t39",
+        "t40",
+        "t41",
+        "t42",
+        "t43",
+        "t44",
+        "t45",
+        "t7b"
+      ],
+      "removed": [
+        "e1",
+        "e11",
+        "e17",
+        "e19",
+        "e20",
+        "e21",
+        "e22",
+        "e23",
+        "e24",
+        "e25",
+        "e3",
+        "e9",
+        "h2",
+        "h5",
+        "h7",
+        "h8",
+        "i1",
+        "i10",
+        "i11",
+        "i12",
+        "i13",
+        "i14",
+        "i15",
+        "i16",
+        "i17",
+        "i18",
+        "i19",
+        "i2",
+        "i5",
+        "i6",
+        "i7",
+        "i8",
+        "i9",
+        "n2",
+        "n3",
+        "n4",
+        "o10",
+        "o11",
+        "o12",
+        "o13",
+        "o14",
+        "o15",
+        "o17",
+        "o20",
+        "o21",
+        "o22",
+        "o24",
+        "o5",
+        "o6",
+        "o7",
+        "t1",
+        "t10",
+        "t11",
+        "t12",
+        "t13",
+        "t18",
+        "t19",
+        "t20",
+        "t22",
+        "t23",
+        "t24",
+        "t25",
+        "t26",
+        "t27",
+        "t3",
+        "t9"
+      ],
+      "changed": [
+        "h1",
+        "h3",
+        "h4",
+        "h6",
+        "h9",
+        "n1",
+        "n14",
+        "n16",
+        "o1",
+        "o2",
+        "o25",
+        "o26",
+        "o27",
+        "t17",
+        "t21",
+        "t4",
+        "t5",
+        "t6",
+        "t7"
+      ]
+    },
+    "claim_change_details": {
+      "text_changed": [
+        "h1",
+        "h3",
+        "h6",
+        "n1",
+        "n14",
+        "n16",
+        "o1",
+        "o2",
+        "o25",
+        "o26",
+        "o27",
+        "t17",
+        "t21",
+        "t4",
+        "t5",
+        "t6",
+        "t7"
+      ],
+      "source_url_changed": [
+        "h6",
+        "o27"
+      ],
+      "source_checked_date_changed": [
+        "h6",
+        "n16",
+        "o27",
+        "t7"
+      ],
+      "scene_changed": [
+        "h3"
+      ],
+      "verdict_changed": [
+        "h1",
+        "h3",
+        "h4",
+        "h6",
+        "h9",
+        "n1",
+        "n14",
+        "n16",
+        "o1",
+        "o2",
+        "o25",
+        "o26",
+        "o27",
+        "t17",
+        "t21",
+        "t4",
+        "t5",
+        "t6",
+        "t7"
+      ],
+      "semantic_or_source_changed": [
+        "h1",
+        "h3",
+        "h6",
+        "n1",
+        "n14",
+        "n16",
+        "o1",
+        "o2",
+        "o25",
+        "o26",
+        "o27",
+        "t17",
+        "t21",
+        "t4",
+        "t5",
+        "t6",
+        "t7"
+      ],
+      "old_source_missing_requires_reverification": [
+        "n14"
+      ]
+    }
+  },
+  "chapters": [
+    {
+      "key": "hook",
+      "before": {
+        "scenes": 8,
+        "lines": 12,
+        "declared_claims": 9,
+        "chapter_sha256": "646ef764a872cfe81f06cba70af21b41553d2bc27e307a93ca36c02a609047db"
+      },
+      "r11": {
+        "scenes": 5,
+        "lines": 7,
+        "scene_claim_refs": 6
+      },
+      "scene_ids": {
+        "retained": [
+          "hook-01",
+          "hook-02",
+          "hook-04",
+          "hook-06"
+        ],
+        "added": [
+          "hook-anita"
+        ],
+        "removed": [
+          "hook-02b",
+          "hook-03",
+          "hook-05",
+          "hook-07"
+        ],
+        "changed": [
+          "hook-01",
+          "hook-02",
+          "hook-04",
+          "hook-06"
+        ]
+      },
+      "line_ids": {
+        "retained": [
+          "3rdw",
+          "47gq",
+          "b6mn",
+          "e37u",
+          "jtmg",
+          "x7r4"
+        ],
+        "added": [
+          "r17h01"
+        ],
+        "removed": [
+          "6h2q",
+          "avqs",
+          "emju",
+          "p5hs",
+          "wibh",
+          "y9b6"
+        ],
+        "changed": [
+          "3rdw",
+          "e37u",
+          "jtmg"
+        ]
+      },
+      "claim_ids": {
+        "retained": [
+          "h1",
+          "h3",
+          "h4",
+          "h6",
+          "h9"
+        ],
+        "added": [
+          "h10"
+        ],
+        "removed": [
+          "h2",
+          "h5",
+          "h7",
+          "h8"
+        ],
+        "changed": [
+          "h1",
+          "h3",
+          "h4",
+          "h6",
+          "h9"
+        ]
+      },
+      "claim_change_details": {
+        "text_changed": [
+          "h1",
+          "h3",
+          "h6"
+        ],
+        "source_url_changed": [
+          "h6"
+        ],
+        "source_checked_date_changed": [
+          "h6"
+        ],
+        "scene_changed": [
+          "h3"
+        ],
+        "verdict_changed": [
+          "h1",
+          "h3",
+          "h4",
+          "h6",
+          "h9"
+        ],
+        "semantic_or_source_changed": [
+          "h1",
+          "h3",
+          "h6"
+        ],
+        "old_source_missing_requires_reverification": []
+      }
+    },
+    {
+      "key": "origin",
+      "before": {
+        "scenes": 17,
+        "lines": 22,
+        "declared_claims": 19,
+        "chapter_sha256": "5adde44e4e96bfbe44c1a9f09f53c5a7763f7cbe1a6915beb4b2ec78c73c4085"
+      },
+      "r11": {
+        "scenes": 9,
+        "lines": 11,
+        "scene_claim_refs": 9
+      },
+      "scene_ids": {
+        "retained": [
+          "origin-01b",
+          "origin-03",
+          "origin-r12-01",
+          "origin-r12-02",
+          "origin-r12-03"
+        ],
+        "added": [
+          "origin-1939-case",
+          "origin-budget",
+          "origin-sketches",
+          "origin-street"
+        ],
+        "removed": [
+          "origin-01",
+          "origin-02",
+          "origin-06",
+          "origin-07",
+          "origin-08",
+          "origin-10",
+          "origin-11",
+          "origin-12",
+          "origin-13",
+          "origin-14",
+          "origin-15",
+          "origin-16"
+        ],
+        "changed": [
+          "origin-01b",
+          "origin-03",
+          "origin-r12-01",
+          "origin-r12-02",
+          "origin-r12-03"
+        ]
+      },
+      "line_ids": {
+        "retained": [
+          "6b28",
+          "9ij6",
+          "csdd",
+          "r12o01",
+          "r12o02",
+          "r12o03"
+        ],
+        "added": [
+          "r13o02",
+          "r14o01",
+          "r15o01",
+          "r3o01",
+          "r6o01"
+        ],
+        "removed": [
+          "3s8v",
+          "3zkh",
+          "4prs",
+          "768x",
+          "83ew",
+          "8wb3",
+          "dgbq",
+          "dkkz",
+          "heut",
+          "idiy",
+          "kzku",
+          "nzyh",
+          "vdxp",
+          "vfi9",
+          "zaky",
+          "zc7k"
+        ],
+        "changed": [
+          "6b28",
+          "csdd",
+          "r12o01",
+          "r12o02",
+          "r12o03"
+        ]
+      },
+      "claim_ids": {
+        "retained": [
+          "o1",
+          "o2",
+          "o25",
+          "o26",
+          "o27"
+        ],
+        "added": [
+          "o29",
+          "o30",
+          "o32",
+          "o34"
+        ],
+        "removed": [
+          "o10",
+          "o11",
+          "o12",
+          "o13",
+          "o14",
+          "o15",
+          "o17",
+          "o20",
+          "o21",
+          "o22",
+          "o24",
+          "o5",
+          "o6",
+          "o7"
+        ],
+        "changed": [
+          "o1",
+          "o2",
+          "o25",
+          "o26",
+          "o27"
+        ]
+      },
+      "claim_change_details": {
+        "text_changed": [
+          "o1",
+          "o2",
+          "o25",
+          "o26",
+          "o27"
+        ],
+        "source_url_changed": [
+          "o27"
+        ],
+        "source_checked_date_changed": [
+          "o27"
+        ],
+        "scene_changed": [],
+        "verdict_changed": [
+          "o1",
+          "o2",
+          "o25",
+          "o26",
+          "o27"
+        ],
+        "semantic_or_source_changed": [
+          "o1",
+          "o2",
+          "o25",
+          "o26",
+          "o27"
+        ],
+        "old_source_missing_requires_reverification": []
+      }
+    },
+    {
+      "key": "idea",
+      "before": {
+        "scenes": 15,
+        "lines": 24,
+        "declared_claims": 17,
+        "chapter_sha256": "557836148535f1d5ab9730023f5e4340d44e3ac63b82520863e4c6c0404a1a20"
+      },
+      "r11": {
+        "scenes": 9,
+        "lines": 10,
+        "scene_claim_refs": 11
+      },
+      "scene_ids": {
+        "retained": [
+          "idea-01",
+          "idea-12",
+          "idea-13"
+        ],
+        "added": [
+          "idea-13b",
+          "idea-14",
+          "idea-16",
+          "idea-memory",
+          "idea-r12-06",
+          "idea-wife"
+        ],
+        "removed": [
+          "idea-02",
+          "idea-03b",
+          "idea-04",
+          "idea-05",
+          "idea-06",
+          "idea-07",
+          "idea-07b",
+          "idea-08",
+          "idea-09",
+          "idea-10",
+          "idea-11",
+          "idea-11b"
+        ],
+        "changed": [
+          "idea-01",
+          "idea-12",
+          "idea-13"
+        ]
+      },
+      "line_ids": {
+        "retained": [],
+        "added": [
+          "3d52",
+          "3zkh",
+          "768x",
+          "dgbq",
+          "idiy",
+          "r12e06",
+          "r14i01",
+          "r14i02",
+          "vdxp",
+          "zaky"
+        ],
+        "removed": [
+          "393x",
+          "4qtf",
+          "5382",
+          "5vh3",
+          "76ur",
+          "89gj",
+          "8n2r",
+          "9ijb",
+          "agam",
+          "amrq",
+          "apb3",
+          "dibw",
+          "eb45",
+          "eghq",
+          "j9sw",
+          "kzmj",
+          "mryd",
+          "pupq",
+          "quhs",
+          "rpvf",
+          "s7me",
+          "srsf",
+          "ugak",
+          "ys5y"
+        ],
+        "changed": []
+      },
+      "claim_ids": {
+        "retained": [],
+        "added": [
+          "i21",
+          "i22",
+          "i23",
+          "i24",
+          "i25",
+          "i26",
+          "i32",
+          "i33",
+          "i34",
+          "i35",
+          "i36"
+        ],
+        "removed": [
+          "i1",
+          "i10",
+          "i11",
+          "i12",
+          "i13",
+          "i14",
+          "i15",
+          "i16",
+          "i17",
+          "i18",
+          "i19",
+          "i2",
+          "i5",
+          "i6",
+          "i7",
+          "i8",
+          "i9"
+        ],
+        "changed": []
+      },
+      "claim_change_details": {
+        "text_changed": [],
+        "source_url_changed": [],
+        "source_checked_date_changed": [],
+        "scene_changed": [],
+        "verdict_changed": [],
+        "semantic_or_source_changed": [],
+        "old_source_missing_requires_reverification": []
+      }
+    },
+    {
+      "key": "engine",
+      "before": {
+        "scenes": 10,
+        "lines": 13,
+        "declared_claims": 12,
+        "chapter_sha256": "94649a1d5607034ee29dc4ea66c148d32df64f9d71b84a4492cc05852da213c9"
+      },
+      "r11": {
+        "scenes": 13,
+        "lines": 16,
+        "scene_claim_refs": 13
+      },
+      "scene_ids": {
+        "retained": [
+          "engine-01",
+          "engine-02"
+        ],
+        "added": [
+          "engine-03b",
+          "engine-05",
+          "engine-06",
+          "engine-07",
+          "engine-07b",
+          "engine-08",
+          "engine-09",
+          "engine-10",
+          "engine-porter",
+          "engine-wobble-01",
+          "engine-wobble-02"
+        ],
+        "removed": [
+          "engine-13",
+          "engine-14",
+          "engine-r12-01",
+          "engine-r12-02",
+          "engine-r12-03",
+          "engine-r12-04",
+          "engine-r12-06",
+          "engine-r12-07"
+        ],
+        "changed": [
+          "engine-01",
+          "engine-02"
+        ]
+      },
+      "line_ids": {
+        "retained": [],
+        "added": [
+          "393x",
+          "76ur",
+          "8n2r",
+          "9ijb",
+          "agam",
+          "amrq",
+          "apb3",
+          "dibw",
+          "j9sw",
+          "kzmj",
+          "mryd",
+          "r17e01",
+          "r17e02",
+          "r17e03",
+          "s7me",
+          "ys5y"
+        ],
+        "removed": [
+          "3d52",
+          "bgdh",
+          "gtab",
+          "ij3c",
+          "r12e01",
+          "r12e02",
+          "r12e03",
+          "r12e04",
+          "r12e06",
+          "r12e07",
+          "rs29",
+          "tquw",
+          "w9bj"
+        ],
+        "changed": []
+      },
+      "claim_ids": {
+        "retained": [],
+        "added": [
+          "e26",
+          "e27",
+          "e28",
+          "e29",
+          "e30",
+          "e31",
+          "e32",
+          "e33",
+          "e34",
+          "e35",
+          "e37",
+          "e38",
+          "e39"
+        ],
+        "removed": [
+          "e1",
+          "e11",
+          "e17",
+          "e19",
+          "e20",
+          "e21",
+          "e22",
+          "e23",
+          "e24",
+          "e25",
+          "e3",
+          "e9"
+        ],
+        "changed": []
+      },
+      "claim_change_details": {
+        "text_changed": [],
+        "source_url_changed": [],
+        "source_checked_date_changed": [],
+        "scene_changed": [],
+        "verdict_changed": [],
+        "semantic_or_source_changed": [],
+        "old_source_missing_requires_reverification": []
+      }
+    },
+    {
+      "key": "turn",
+      "before": {
+        "scenes": 23,
+        "lines": 28,
+        "declared_claims": 22,
+        "chapter_sha256": "31157cfd9435d4ff2f94f2506224c21a5e4bd0a1997a788dbd88aa303858a981"
+      },
+      "r11": {
+        "scenes": 14,
+        "lines": 14,
+        "scene_claim_refs": 16
+      },
+      "scene_ids": {
+        "retained": [
+          "turn-04",
+          "turn-05",
+          "turn-06",
+          "turn-07",
+          "turn-07b",
+          "turn-09",
+          "turn-r12-01"
+        ],
+        "added": [
+          "turn-07c",
+          "turn-09b",
+          "turn-emmer-01",
+          "turn-emmer-03",
+          "turn-emmer-05",
+          "turn-emmer-07",
+          "turn-security-question"
+        ],
+        "removed": [
+          "turn-01",
+          "turn-02",
+          "turn-03",
+          "turn-08",
+          "turn-08b",
+          "turn-10",
+          "turn-10b",
+          "turn-11",
+          "turn-12",
+          "turn-15",
+          "turn-r12-04",
+          "turn-r12-05",
+          "turn-r12-06",
+          "turn-r12-07",
+          "turn-r12-08",
+          "turn-r12-11"
+        ],
+        "changed": [
+          "turn-04",
+          "turn-05",
+          "turn-07",
+          "turn-07b",
+          "turn-09",
+          "turn-r12-01"
+        ]
+      },
+      "line_ids": {
+        "retained": [
+          "3zwf",
+          "8wiw",
+          "bxv2",
+          "crcw",
+          "iu9y",
+          "jm3w",
+          "q4zn",
+          "r12t01"
+        ],
+        "added": [
+          "r13t02",
+          "r15t01",
+          "r15t03",
+          "r15t05",
+          "r15t07",
+          "r6t01"
+        ],
+        "removed": [
+          "3tsp",
+          "4e5m",
+          "5wnh",
+          "6i8x",
+          "6jx3",
+          "9dkc",
+          "arxr",
+          "b7mz",
+          "edtc",
+          "ewj7",
+          "fd4h",
+          "hiwy",
+          "hixq",
+          "jspd",
+          "r12t04",
+          "r12t05",
+          "r12t06",
+          "r12t07",
+          "r12t08",
+          "r12t11"
+        ],
+        "changed": [
+          "8wiw",
+          "bxv2",
+          "crcw",
+          "jm3w",
+          "q4zn",
+          "r12t01"
+        ]
+      },
+      "claim_ids": {
+        "retained": [
+          "t17",
+          "t21",
+          "t4",
+          "t5",
+          "t6",
+          "t7"
+        ],
+        "added": [
+          "t29",
+          "t31",
+          "t39",
+          "t40",
+          "t41",
+          "t42",
+          "t43",
+          "t44",
+          "t45",
+          "t7b"
+        ],
+        "removed": [
+          "t1",
+          "t10",
+          "t11",
+          "t12",
+          "t13",
+          "t18",
+          "t19",
+          "t20",
+          "t22",
+          "t23",
+          "t24",
+          "t25",
+          "t26",
+          "t27",
+          "t3",
+          "t9"
+        ],
+        "changed": [
+          "t17",
+          "t21",
+          "t4",
+          "t5",
+          "t6",
+          "t7"
+        ]
+      },
+      "claim_change_details": {
+        "text_changed": [
+          "t17",
+          "t21",
+          "t4",
+          "t5",
+          "t6",
+          "t7"
+        ],
+        "source_url_changed": [],
+        "source_checked_date_changed": [
+          "t7"
+        ],
+        "scene_changed": [],
+        "verdict_changed": [
+          "t17",
+          "t21",
+          "t4",
+          "t5",
+          "t6",
+          "t7"
+        ],
+        "semantic_or_source_changed": [
+          "t17",
+          "t21",
+          "t4",
+          "t5",
+          "t6",
+          "t7"
+        ],
+        "old_source_missing_requires_reverification": []
+      }
+    },
+    {
+      "key": "now",
+      "before": {
+        "scenes": 6,
+        "lines": 9,
+        "declared_claims": 6,
+        "chapter_sha256": "b3eb9164e9f5d2c7ea235a364cbd340af6f47f555a6defd22a9bdba25757c7bd"
+      },
+      "r11": {
+        "scenes": 15,
+        "lines": 19,
+        "scene_claim_refs": 23
+      },
+      "scene_ids": {
+        "retained": [
+          "now-01",
+          "now-06",
+          "now-outro"
+        ],
+        "added": [
+          "now-05",
+          "now-10",
+          "now-11",
+          "now-12",
+          "now-1993-cabin",
+          "now-1993-limit",
+          "now-1993-retail",
+          "now-1993-stow",
+          "now-1993-test",
+          "now-consumer-question",
+          "now-crew-request",
+          "now-passenger"
+        ],
+        "removed": [
+          "now-02b",
+          "now-03",
+          "now-04"
+        ],
+        "changed": [
+          "now-01",
+          "now-06",
+          "now-outro"
+        ]
+      },
+      "line_ids": {
+        "retained": [
+          "7asx",
+          "ek2s",
+          "g5b8",
+          "tszs",
+          "xjmb"
+        ],
+        "added": [
+          "6jx3",
+          "fd4h",
+          "hiwy",
+          "jspd",
+          "opk01",
+          "r11n01",
+          "r15n01",
+          "r15n02",
+          "r3n01",
+          "r3n02",
+          "r3n03",
+          "r3n04",
+          "r3n05",
+          "r4n01"
+        ],
+        "removed": [
+          "5tik",
+          "fmd7",
+          "kfiw",
+          "kkjv"
+        ],
+        "changed": [
+          "7asx",
+          "ek2s",
+          "g5b8",
+          "tszs",
+          "xjmb"
+        ]
+      },
+      "claim_ids": {
+        "retained": [
+          "n1",
+          "n14",
+          "n16"
+        ],
+        "added": [
+          "n17",
+          "n40",
+          "n41",
+          "n42",
+          "n43",
+          "n44",
+          "n45",
+          "n55",
+          "n56",
+          "n57",
+          "n58",
+          "n59",
+          "n60",
+          "n61",
+          "n62",
+          "n63",
+          "n64",
+          "n65",
+          "n66",
+          "n67"
+        ],
+        "removed": [
+          "n2",
+          "n3",
+          "n4"
+        ],
+        "changed": [
+          "n1",
+          "n14",
+          "n16"
+        ]
+      },
+      "claim_change_details": {
+        "text_changed": [
+          "n1",
+          "n14",
+          "n16"
+        ],
+        "source_url_changed": [],
+        "source_checked_date_changed": [
+          "n16"
+        ],
+        "scene_changed": [],
+        "verdict_changed": [
+          "n1",
+          "n14",
+          "n16"
+        ],
+        "semantic_or_source_changed": [
+          "n1",
+          "n14",
+          "n16"
+        ],
+        "old_source_missing_requires_reverification": [
+          "n14"
+        ]
+      }
+    }
+  ],
+  "sources": {
+    "before_public_count": 13,
+    "r11_public_count": 17,
+    "r11_cited_count": 17,
+    "r11_plan_count": 23,
+    "public_url_difference": {
+      "retained": [
+        "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+        "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+        "https://corporate.samsonite.com/on/demandware.static/-/Sites-InvestorRelations-Library/default/dwa68533ea/PDF/announcements/2011/20110602100852_Samsonite_Final_Prospectus_en.pdf",
+        "https://patents.google.com/patent/US3653474A/en",
+        "https://patents.google.com/patent/US4995487A/en",
+        "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+        "https://travelpro.com/pages/our-history",
+        "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/"
+      ],
+      "added": [
+        "https://newspapers.swco.ttu.edu/bitstreams/b9cd84b8-2ba7-4506-9eff-7cca3e5c6376/download",
+        "https://oyc.yale.edu/economics/econ-252-08/lecture-3",
+        "https://oyc.yale.edu/economics/econ-252-11/lecture-3",
+        "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+        "https://www.globaltravelerusa.com/reinventing-the-wheel/",
+        "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+        "https://www.sl8.com/journal/may24/journal_images/Chinook_2024_5-3-24_FINAL.pdf",
+        "https://www.winnetkahistory.org/gazette/hope-amidst-hardship-the-indomitable-character-of-anita-willets-burnham/",
+        "https://www.winnetkahistory.org/who-were-the-burnhams/"
+      ],
+      "removed": [
+        "https://en.wikipedia.org/wiki/Suitcase",
+        "https://msmagazine.com/2021/08/18/gender-bias-covid-vaccine-katalin-kariko/",
+        "https://patents.google.com/patent/US2392926A/en",
+        "https://www.nasa.gov/mission/apollo-11/",
+        "https://www.smithsonianmag.com/history/history-humble-suitcase-180951376/"
+      ],
+      "changed": [
+        "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+        "https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469",
+        "https://corporate.samsonite.com/on/demandware.static/-/Sites-InvestorRelations-Library/default/dwa68533ea/PDF/announcements/2011/20110602100852_Samsonite_Final_Prospectus_en.pdf",
+        "https://patents.google.com/patent/US3653474A/en",
+        "https://patents.google.com/patent/US4995487A/en",
+        "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+        "https://travelpro.com/pages/our-history",
+        "https://www.winnetkahistory.org/gazette/before-her-time-anita-willets-burnhams-rolling-suitcase/"
+      ]
+    },
+    "r11_public_missing_from_plan": [
+      "https://www.sl8.com/journal/may24/journal_images/Chinook_2024_5-3-24_FINAL.pdf"
+    ],
+    "plan_would_remerge_extra_urls": [
+      "https://en.wikipedia.org/wiki/Suitcase",
+      "https://msmagazine.com/2021/08/18/gender-bias-covid-vaccine-katalin-kariko/",
+      "https://patents.google.com/patent/US2392926A/en",
+      "https://www.nasa.gov/mission/apollo-11/",
+      "https://www.prnewswire.com/news-releases/briggs-and-riley-announces-40th-anniversary-of-wheeled-luggage-104271518.html",
+      "https://www.quirks.com/articles/research-with-travelers-helps-samsonite-develop-a-convenient-new-line-of-luggage/",
+      "https://www.smithsonianmag.com/history/history-humble-suitcase-180951376/"
+    ],
+    "r11_unsourced_pending_claim_ids": [
+      "n14"
+    ],
+    "current_local_compose_maps_all_plan_sources": true
+  },
+  "adoption": {
+    "r11_has_six_chapter_files": false,
+    "formal_factual_gate": "HOLD_P1_N14",
+    "direct_install_allowed": false,
+    "formal_script_review_allowed": false,
+    "paid_media_allowed": false,
+    "required_next": [
+      "Create a new hash-bound editorial candidate that resolves active n14 source and wording, then obtain a fresh independent factual-claims review; r11 original offline PASS cannot serve as a formal factual PASS.",
+      "Obtain a fresh authenticated host capture and complete jobs, budget, STOP and lease readback.",
+      "Reconcile the six persisted chapter JSON files and their audit history against this exact r11 scene, line, claim and source delta.",
+      "Make the A01-only duration gate and public source remerge safe, then independently review the proposed on-host transition.",
+      "Run real verifier, listener and narrative gates on the resulting source before any formal script-review receipt."
+    ]
+  }
+}
