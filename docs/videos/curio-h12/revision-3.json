@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "kind": "owner-authorized-targeted-script-revision",
+  "checked_on": "2026-10-16",
+  "owner_authorization": "2026-10-16: owner authorized one narrow revision after the second narrative round, limited to the coat-question payoff, the repeated poem-effect line, and the unsupported 1912 composition wording",
+  "previous_video_sha256": "5e46ddf2c3de77641a5ff17c9520255d5f3b003429a64ee1c1cb8c9cde39e859",
+  "video_sha256": "79c4a92f00b81e686cf7e92c7f248665041fd2d68f65cea8c1d6234a4ffd7942",
+  "script_sha256": "0377a360d88370f7a38f4e4060b1488cfd614f718e19cb56accc261050dc76f1",
+  "brief_sha256": "155eb4940fdfacf015266a5670d7f70a67ced26beab0981bec8f0feb790ab778",
+  "changes": [
+    {
+      "line_id": "3w38",
+      "reason": "Explicitly resolves why-coat as unknown in the documents while preserving that no departure was witnessed and clothing cannot order the three men"
+    },
+    {
+      "line_id": "tbuz",
+      "reason": "Replaces the adjacent meal/chair recap with a question about whether the poem's implied departure is in the original record"
+    },
+    {
+      "line_id": "i9ud",
+      "reason": "Dates the published 1912 collection rather than asserting when Gibson composed the poem"
+    }
+  ],
+  "claims_change": "H12-C15 clarifies publication year and does not assert composition year",
+  "lint_errors": 0,
+  "lint_warnings": 3,
+  "narration_lines": 98,
+  "estimated_minutes": 9.2,
+  "independent_fact_recheck": "PASS on 3w38, tbuz and i9ud; see verify-3.md. Reviewer checked revised 3w38 and exact final hashes after a precision fix",
+  "fresh_strict_blind_review": "HOLD: prior exact script 18912495... scored mandatory 11/12 after rubric adjudication, with no_recap failing; independent reviewer confirmed the final one-line 3w38 precision fix does not resolve that failure. Full fresh review remains necessary after any further authorized edit",
+  "owner_script_review": "not_submitted",
+  "paid_calls": 0
+}
