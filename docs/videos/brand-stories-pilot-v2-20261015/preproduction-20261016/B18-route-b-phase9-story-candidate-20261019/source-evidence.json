@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "status": "PHASE9_SOURCE_POINTERS_NOT_FORMAL_FACT_REVIEW",
+  "claims": [
+    {
+      "id": "t20",
+      "source_index": 5,
+      "url": "https://www.ishino-group.com/group/",
+      "location": "石野グループ company history, 1978（昭和53年）/ 4月",
+      "source_excerpt": "「全国くるくる寿司チェーン本部」大増商事 (株) 設立。直営1号店としてくるくる寿司入江店オープン。",
+      "claim_boundary": "The company-history entry names Dai Masu Shoji as Kurukuru Sushi chain headquarters and the Irie location as its first directly managed store in April 1978. It does not identify the operator of the separate 1975 Kanazawa 'first shop' entry, and neither entry is a Genroku branch."
+    },
+    {
+      "id": "t21",
+      "source_index": 5,
+      "url": "https://www.ishino-group.com/group/",
+      "location": "石野グループ company history, 1980年 / 9月",
+      "source_excerpt": "寿司コンベア機輸出第1号機ホノルルに納入。",
+      "claim_boundary": "This is Ishino's first exported sushi conveyor delivered to Honolulu. It does not say Genroku opened a Honolulu branch or that the machine was used by Genroku."
+    }
+  ],
+  "do_not_collapse": [
+    "The corporate-history page names Dai Masu Shoji and its 1978 Irie first directly managed Kurukuru Sushi shop. The market-history page records a 1975 Kanazawa Kurukuru Sushi 'first shop' but does not name its operator. Treat the two first-shop labels as different scopes; do not attribute the Kanazawa shop to Ishino Seisakusho, Kitanihon-Kakoh or Dai Masu Shoji without direct evidence.",
+    "The market-history page lists sale of automatic sushi-forming machines in 1978; the corporate-history page lists Ishino's manufacture and sale in 1980. These may be different products or organizational scopes. Do not state they are one machine or that Genroku used either at Expo 1970."
+  ],
+  "additional_source_pointers": [
+    {
+      "id": "e16",
+      "source_index": 0,
+      "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "location": "モノレール駅前に出店、国内外で認知度高める, Expo account",
+      "source_excerpt": "日本人だけでなく外国人客も数多く訪れた。",
+      "claim_boundary": "J-Net21 reports many foreign visitors; it does not identify any individual visitor or quantify their number."
+    },
+    {
+      "id": "t22",
+      "source_index": 3,
+      "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+      "location": "Reasons, PDF page 8 lines 480-485; licensed separate operator's expansion after 1967 Sendai/Tokyo",
+      "source_excerpt": "昭和四三年四月、郡山駅前にチエーン第二号店...同年六月には東京・大山に本社直営店",
+      "claim_boundary": "The court records the licensed company's April 1968 Koriyama chain second shop and June 1968 Tokyo Ooyama headquarters direct shop. It does not make them founder-operated Genroku Sangyo branches."
+    },
+    {
+      "id": "t23",
+      "source_index": 5,
+      "url": "https://www.ishino-group.com/group/",
+      "location": "石野グループ company history, 1974（昭和49年）/ 4月",
+      "source_excerpt": "「自動給茶装置付寿司コンベア機」と「自動皿洗浄機」製造・販売開始。",
+      "claim_boundary": "Ishino's group history records manufacture and sale of a conveyor with automatic tea supply and an automatic dish washer in 1974. It does not document installation at Genroku's Expo store or in Dai Masu Shoji's later Irie shop."
+    },
+    {
+      "id": "t24",
+      "source_index": 4,
+      "url": "https://www.ishino-group.com/history/",
+      "location": "石野グループ industry timeline, 1984（昭和59年）",
+      "source_excerpt": "ファミリーを中心とした郊外店が続々と出店。洋風の店名が流行。",
+      "claim_boundary": "The group timeline reports multiple suburban conveyor-sushi openings aimed at families and a trend toward Western-style shop names in 1984. It does not supply exact counts or name the individual operators, and this must not be assigned to Genroku alone. The narration's wider choice of signs is an editorial inference from this trend plus the separately documented new operators."
+    },
+    {
+      "id": "n8",
+      "source_index": 0,
+      "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+      "location": "市場規模は7500億円に 広辞苑にも登場, late historical follow-up paragraph",
+      "source_excerpt": "また1991年には広辞苑（第4版）に「回転寿司」の項目が初めて登場。",
+      "claim_boundary": "J-Net21 and Ishino Group's market timeline both retrospectively report a first Kōjien fourth-edition entry in 1991. Neither is the dictionary itself; this candidate leaves the claim UNCHECKED pending independent source review."
+    }
+  ],
+  "source_disagreements": [
+    {
+      "id": "d1-dotonbori-opening-year",
+      "paragraph": "E03",
+      "retired_new_claim_id": "e15",
+      "retained_old_claim_id": "e5",
+      "spoken_boundary": "Say Dotonbori was the next/second shop after Fuse, without a definitive opening year; do not resolve the source disagreement in narration.",
+      "sources": [
+        {
+          "source_index": 0,
+          "url": "https://j-net21.smrj.go.jp/special/expo1970/20231113.html",
+          "location": "町工場の経営者が協力　1958年に1号店オープン, Dotonbori sentence after 1958 opening",
+          "source_excerpt": "1960年には...2号店として道頓堀店がオープンした。",
+          "reading": "J-Net21 places its described second Dotonbori shop in 1960."
+        },
+        {
+          "source_index": 3,
+          "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-13913.pdf",
+          "location": "PDF page 1 lines 54-55; reasons page 8 lines 470-475, with incorporation described separately",
+          "source_excerpt": "昭和三七年四月に開設された道頓堀店",
+          "reading": "The court accepted an April 1962 opening of the plaintiff company's Dotonbori shop; it may reflect a different corporate scope, but this has not been established."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "status": "TEXT_PROMPTS_ONLY_NOT_ADOPTED",
+  "scenes": [
+    {
+      "id": "hook-s006",
+      "chapter": "hook",
+      "prompt": "Cute storybook editorial illustration, Medium shot from the rear preparation doorway of an unbranded later Japanese sushi restaurant, an anonymous chef holding one finished plain plate at frame left while distant guest seats wait across a broad open floor at frame right, uncertain face, soft indoor light, blank decor.",
+      "source_indices": [
+        2
+      ],
+      "why": "開場問後場盤子如何到客席，只看得見待送的盤和兩處空間；直線解法留給 T04 回收。",
+      "status": "TEXT_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "turn-s081",
+      "chapter": "turn",
+      "prompt": "Cute storybook editorial illustration, High-angle shot inside a later unbranded Japanese sushi dining room, one anonymous operator holding a plain plate between a curved guest counter and a distant rear kitchen doorway, looking across the open floor with a questioning expression, bright window light.",
+      "source_indices": [
+        2
+      ],
+      "why": "T03 shows the undated space between the back room and seats; the straight-lane answer remains withheld until T04. Do not overlay a 1972–1978 date.",
+      "status": "TEXT_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "turn-s070",
+      "chapter": "turn",
+      "prompt": "Cute storybook editorial illustration, Medium shot inside an undated unbranded Japanese sushi dining room, one anonymous chef facing a row of waiting diners across a small circular counter, his eyes on a single unserved plate, gentle overhead light.",
+      "source_indices": [
+        2
+      ],
+      "why": "T04 has named a later back-room problem; this establishing view precedes the sourced straight-lane reveal at turn-s072.",
+      "status": "TEXT_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "turn-s072",
+      "chapter": "turn",
+      "prompt": "Cute storybook editorial illustration, Medium shot in the rear kitchen of an undated unbranded Japanese sushi restaurant, one anonymous chef setting a prepared plate onto the entrance of a straight serving conveyor, the dining room opening visible beyond, soft indoor light.",
+      "source_indices": [
+        2
+      ],
+      "why": "T04 回收後場如何送餐時才第一次看見直線帶；移除來源沒有的 1970 年代定位。",
+      "status": "TEXT_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "turn-s075",
+      "chapter": "turn",
+      "prompt": "Cute storybook editorial illustration, Medium shot in an undated unbranded Japanese sushi dining room, one anonymous diner reaching toward a plate arriving along a straight conveyor from a distant rear kitchen opening, plate and hand in clear focus, mild window light.",
+      "source_indices": [
+        2
+      ],
+      "why": "T04 已公布後場直線答案，保留客人接盤的回收畫面，只拿掉未證的 1970 年代。",
+      "status": "TEXT_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "turn-s076",
+      "chapter": "turn",
+      "prompt": "Cute storybook editorial illustration, Medium editorial illustration at a neutral archive table, one anonymous present-day reader opening a plain folder beside a small unbranded serving-counter model, focused expression, soft side-window light, blank pages.",
+      "source_indices": [
+        3
+      ],
+      "why": "口播說後來法院判決認定一項權利界線，畫面改為現代讀檔示意，避免虛構 1970 年代初的判決現場。",
+      "status": "TEXT_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "turn-s080b",
+      "chapter": "turn",
+      "prompt": "Cute storybook editorial illustration, Medium shot at the entrance of an undated unbranded Japanese sushi shop, one anonymous operator lifting a plain replacement signboard into place while an older blank signboard leans against the wall, quiet daylight, no readable marks.",
+      "source_indices": [
+        0
+      ],
+      "why": "保留後來加盟店更換招牌這個可見動作，移除來源沒有的 1970 年代初定位。",
+      "status": "TEXT_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "turn-s080",
+      "chapter": "turn",
+      "prompt": "Cute storybook editorial illustration, Wide editorial split composition of separate unbranded Japanese sushi shop entrances on different streets, broad blank gutters between the streets, one ordinary diner approaching only the nearest doorway, soft daylight, blank signboards.",
+      "source_indices": [
+        0,
+        3
+      ],
+      "why": "T03 明說警告與後來其他店不是單一開關；移除信封在前、開店在後的視覺因果箭頭。",
+      "status": "TEXT_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "engine-s046",
+      "chapter": "engine",
+      "prompt": "Wide editorial view of a late-1950s Osaka sushi restaurant exterior, the circular serving conveyor visible through a broad plain window, an unbranded storefront and ordinary street; no passerby stopping, pointing or reacting.",
+      "source_indices": [
+        0
+      ],
+      "why": "The source supports visibility from the street, not an individual passerby stopping to watch.",
+      "status": "TEXT_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "engine-phase7-busy-01",
+      "chapter": "engine",
+      "prompt": "Wide cute editorial illustration of an anonymous busy 1958 Osaka conveyor sushi shop with occupied stools and plain plates moving on a circular counter, no identifiable founder, readable signs, sales chart or invented individual customer reaction.",
+      "source_indices": [
+        0
+      ],
+      "why": "New e14 scene candidate for the reported busy first shop; replaces the mismatched Phase6 engine-s046b pointer.",
+      "status": "NEW_SCENE_PROPOSAL_NOT_GENERATED"
+    },
+    {
+      "id": "engine-phase8-dotonbori-01",
+      "chapter": "engine",
+      "prompt": "Cute storybook editorial illustration of a generic undated Osaka Dotonbori shopping-street sushi storefront as a location transition, anonymous passersby with no directed action; no year card, reconstructed actual facade, sign, interior or founder portrait.",
+      "source_indices": [
+        0,
+        3
+      ],
+      "why": "J-Net21 and the court agree on a Dotonbori shop but differ on its opening year; this conceptual location transition must omit a date.",
+      "status": "NEW_SCENE_PROPOSAL_NOT_GENERATED"
+    },
+    {
+      "id": "engine-phase8-expo-visitors-01",
+      "chapter": "engine",
+      "prompt": "Cute storybook editorial wide view of an anonymous group of Japanese and foreign visitors inside a generic 1970 Osaka Expo sushi kiosk, plain clothing and decor, no identifiable person, pavilion, brand sign, queue length, country flag or invented reaction.",
+      "source_indices": [
+        0
+      ],
+      "why": "J-Net21 reports foreign as well as Japanese visitors; avoid any invented individual visitor or measurable crowd outcome.",
+      "status": "NEW_SCENE_PROPOSAL_NOT_GENERATED"
+    },
+    {
+      "id": "turn-phase8-irie-01",
+      "chapter": "turn",
+      "method": "source_card",
+      "prompt": "Cute storybook source card only: 1978 April, the Ishino Group company history names Dai Masu Shoji as Kurukuru Sushi chain headquarters and Irie as its first directly managed restaurant. No imagined Irie facade, Genroku branding, or corporate relationship beyond the named source entry.",
+      "source_indices": [
+        5
+      ],
+      "why": "The named 1978 company and direct-store scope are separate from Genroku; omit the unrelated 1975 Kanazawa item from this source card.",
+      "status": "NEW_SOURCE_CARD_PROPOSAL_NOT_GENERATED"
+    },
+    {
+      "id": "turn-phase7-datecard-01",
+      "chapter": "turn",
+      "method": "source_card",
+      "prompt": "Editorial source card only: Ishino Group market timeline lists sales of an automatic sushi-forming machine in 1978. Do not depict a demonstration, exact machine model, showroom or Genroku Expo operation.",
+      "source_indices": [
+        4
+      ],
+      "why": "Retires the unsupported Phase6 robot demonstration illustration and preserves the precise limited claim.",
+      "status": "NEW_SOURCE_CARD_PROPOSAL_NOT_GENERATED"
+    },
+    {
+      "id": "turn-phase7-export-01",
+      "chapter": "turn",
+      "method": "source_card",
+      "prompt": "Editorial source card only: Ishino Group corporate history records its first exported sushi conveyor delivered to Honolulu in September 1980. Do not depict a Genroku branch or unspecified recipient.",
+      "source_indices": [
+        5
+      ],
+      "why": "New t21 source-bound export event is an equipment shipment, not a restaurant opening.",
+      "status": "NEW_SOURCE_CARD_PROPOSAL_NOT_GENERATED"
+    },
+    {
+      "id": "turn-phase9-1968-expansion-01",
+      "chapter": "turn",
+      "method": "source_card",
+      "prompt": "Cute storybook source card only: Japanese court judgment records a separately licensed Genroku operator opening a Koriyama chain second shop in April 1968 and a Tokyo Ooyama headquarters direct shop in June 1968. Generic city names and month markers only; no reconstructed shop fronts, owner portrait, or merged corporate identity.",
+      "source_indices": [
+        3
+      ],
+      "why": "The court provides two dated expansion steps before Expo; keep this licensed operator separate from the founder company.",
+      "status": "NEW_SOURCE_CARD_PROPOSAL_NOT_GENERATED"
+    },
+    {
+      "id": "turn-phase9-1974-equipment-01",
+      "chapter": "turn",
+      "method": "source_card",
+      "prompt": "Cute storybook source card only: Ishino Group company history records April 1974 manufacture and sale of a sushi conveyor with automatic tea supply and an automatic dish washer. Conceptual icons only; no reconstructed model, demo, buyer, installation, or Genroku shop branding.",
+      "source_indices": [
+        5
+      ],
+      "why": "The 1974 equipment event shows the product line expanding from plate transport to serving and cleanup without claiming a particular shop used it.",
+      "status": "NEW_SOURCE_CARD_PROPOSAL_NOT_GENERATED"
+    },
+    {
+      "id": "turn-phase9-1984-family-01",
+      "chapter": "turn",
+      "method": "source_card",
+      "prompt": "Cute editorial source card only: Ishino Group industry timeline dates family-targeted suburban conveyor-sushi openings and a trend toward Western-style shop names to 1984. Use a generic suburban dining icon and blank sign shape; no reconstructed restaurant, readable invented name, named operator, exact count or Genroku signage.",
+      "source_indices": [
+        4
+      ],
+      "why": "The dated industry change supplies a new consequence for restaurant geography and naming without assigning it to a particular chain.",
+      "status": "NEW_SOURCE_CARD_PROPOSAL_NOT_GENERATED"
+    },
+    {
+      "id": "now-phase9-1991-dictionary-01",
+      "chapter": "now",
+      "method": "source_card",
+      "prompt": "Cute editorial source card only: 1991, Kōjien fourth edition, the Japanese entry 回転寿司 as reported by J-Net21. Generic closed dictionary and typographic label only; do not fake a scanned page, dictionary definition or publisher endorsement.",
+      "source_indices": [
+        0
+      ],
+      "why": "The word entered the source-reported dictionary edition before the later machinery-heritage recognition; keep the uninspected dictionary page conceptual.",
+      "status": "NEW_SOURCE_CARD_PROPOSAL_NOT_GENERATED"
+    }
+  ]
+}
