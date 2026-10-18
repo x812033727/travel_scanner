@@ -1,0 +1,823 @@
+{
+  "series_title": "Sunny 與 Pip 的幼兒英文小花園",
+  "version": "1.0",
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title_zh_TW": "Hello！見面打招呼",
+      "title_en": "Hello and Goodbye",
+      "topic": "greetings",
+      "objectives_zh_TW": [
+        "連結 Hello 與見面、Goodbye 與道別。",
+        "願意以招手或模仿英文回應；不要求識字。"
+      ],
+      "scenes": [
+        {
+          "english": "Hello!",
+          "demo": "Hello!",
+          "instruction": {
+            "en": "Wave hello to Sunny.",
+            "zh-TW": "揮揮手，和小熊打招呼。"
+          },
+          "visual": "hello",
+          "mode": "demo",
+          "target": "hello",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 從花園小徑慢慢走近，面向鏡頭招手。完整等待後點頭回應孩子。",
+          "id": "ep01-s01"
+        },
+        {
+          "english": "Hello!",
+          "demo": "Hello!",
+          "instruction": {
+            "en": "Here comes Pip. Say hello.",
+            "zh-TW": "小鳥來了，和牠打招呼。"
+          },
+          "visual": "wave",
+          "mode": "demo",
+          "target": "wave",
+          "wait_seconds": 5,
+          "note_zh_TW": "Pip 停在低樹枝，向 Sunny 招手，再面向孩子；只在開始示範，不在等待中插話。",
+          "id": "ep01-s02"
+        },
+        {
+          "english": "Hello!",
+          "demo": "Hello!",
+          "instruction": {
+            "en": "Your turn. Say hello or wave.",
+            "zh-TW": "換你說，或揮揮手也可以。"
+          },
+          "visual": "hello",
+          "mode": "repeat",
+          "target": "hello",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 示範後把手放低，期待地看向孩子；等待結束才再次招手。",
+          "id": "ep01-s03"
+        },
+        {
+          "english": "Hello!",
+          "demo": "Hello!",
+          "instruction": {
+            "en": "Find Pip. Say hello.",
+            "zh-TW": "找到小鳥，和牠打招呼。"
+          },
+          "visual": "wave",
+          "mode": "repeat",
+          "target": "wave",
+          "wait_seconds": 5,
+          "note_zh_TW": "Pip 從樹旁慢慢探頭，保持清楚可見。孩子不用追逐閃動目標。",
+          "id": "ep01-s04"
+        },
+        {
+          "english": "Hello!",
+          "demo": "Hello!",
+          "instruction": {
+            "en": "Say hello to Sunny again.",
+            "zh-TW": "再和小熊打一次招呼。"
+          },
+          "visual": "hello",
+          "mode": "review",
+          "target": "hello",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 從矮門進入花園，招手示範一次，再停下等孩子回應。",
+          "id": "ep01-s05"
+        },
+        {
+          "english": "Goodbye!",
+          "demo": "Goodbye!",
+          "instruction": {
+            "en": "Pip is leaving. Wave goodbye.",
+            "zh-TW": "小鳥要回家了，揮手說再見。"
+          },
+          "visual": "goodbye",
+          "mode": "demo",
+          "target": "goodbye",
+          "wait_seconds": 5,
+          "note_zh_TW": "Pip 在矮門旁揮翅，道別示範後緩緩走向門外。不要突然消失。",
+          "id": "ep01-s06"
+        },
+        {
+          "english": "Goodbye!",
+          "demo": "Goodbye!",
+          "instruction": {
+            "en": "Your turn. Say goodbye or wave.",
+            "zh-TW": "換你說再見，揮手也可以。"
+          },
+          "visual": "goodbye",
+          "mode": "repeat",
+          "target": "goodbye",
+          "wait_seconds": 5,
+          "note_zh_TW": "Pip 在門口面向孩子等待，完整等待五秒後才真正離開；不可在孩子回應前關門。",
+          "id": "ep01-s07"
+        },
+        {
+          "english": "Hello!",
+          "demo": "Hello!",
+          "instruction": {
+            "en": "Pip is back. Say hello.",
+            "zh-TW": "小鳥又來了，和牠打招呼。"
+          },
+          "visual": "hello",
+          "mode": "review",
+          "target": "hello",
+          "wait_seconds": 5,
+          "note_zh_TW": "Pip 再次從門口進來，形成見面的情境，向孩子示範 Hello 並等待回應。",
+          "id": "ep01-s08"
+        },
+        {
+          "english": "Goodbye!",
+          "demo": "Goodbye!",
+          "instruction": {
+            "en": "Sunny is leaving. Say goodbye.",
+            "zh-TW": "小熊要回家了，和牠說再見。"
+          },
+          "visual": "goodbye",
+          "mode": "review",
+          "target": "goodbye",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 拿起小袋子走到矮門旁，示範道別後停住，等孩子回應才離開。",
+          "id": "ep01-s09"
+        },
+        {
+          "english": "Goodbye!",
+          "demo": "Goodbye!",
+          "instruction": {
+            "en": "Wave goodbye to both friends.",
+            "zh-TW": "和兩位朋友揮手說再見。"
+          },
+          "visual": "goodbye",
+          "mode": "review",
+          "target": "goodbye",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 與 Pip 從門口探頭，向鏡頭道別，完整等待後柔和淡出。",
+          "id": "ep01-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep02",
+      "number": 2,
+      "title_zh_TW": "Happy 與 Sad：看看心情",
+      "title_en": "Happy and Sad",
+      "topic": "feelings",
+      "objectives_zh_TW": [
+        "由表情與姿態辨認 Happy、Sad。",
+        "能聽英文指認表情；知道開心和難過都是可以有的感受。"
+      ],
+      "scenes": [
+        {
+          "english": "Hello!",
+          "demo": "Hello!",
+          "instruction": {
+            "en": "Wave hello. Look at Sunny.",
+            "zh-TW": "揮揮手，看看小熊的心情。"
+          },
+          "visual": "hello",
+          "mode": "demo",
+          "target": "hello",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 和 Pip 坐在野餐墊上招手，畫面簡潔，先完成問候。",
+          "id": "ep02-s01"
+        },
+        {
+          "english": "Happy.",
+          "demo": "Happy.",
+          "instruction": {
+            "en": "Sunny feels happy. Look at that smile.",
+            "zh-TW": "小熊很開心，看牠笑了。"
+          },
+          "visual": "happy",
+          "mode": "demo",
+          "target": "happy",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 嘴角上揚、眼神柔和、肩膀放鬆；臉部近景留足觀察時間。",
+          "id": "ep02-s02"
+        },
+        {
+          "english": "Happy!",
+          "demo": "Happy!",
+          "instruction": {
+            "en": "Try a happy face.",
+            "zh-TW": "試試看，做一個開心的表情。"
+          },
+          "visual": "happy",
+          "mode": "repeat",
+          "target": "happy",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 示範一次微笑，再安靜看向孩子。孩子不想做表情也可只看。",
+          "id": "ep02-s03"
+        },
+        {
+          "english": "Sad.",
+          "demo": "Sad.",
+          "instruction": {
+            "en": "Sunny feels sad. The blocks fell.",
+            "zh-TW": "積木倒了，小熊有點難過。"
+          },
+          "visual": "sad",
+          "mode": "demo",
+          "target": "sad",
+          "wait_seconds": 5,
+          "note_zh_TW": "三塊大積木緩緩倒在墊上；Sunny 嘴角向下、肩膀稍垂，不用誇張哭聲。",
+          "id": "ep02-s04"
+        },
+        {
+          "english": "Sad.",
+          "demo": "Sad.",
+          "instruction": {
+            "en": "Look at Sunny. You can say it.",
+            "zh-TW": "看看小熊，也可以跟著說。"
+          },
+          "visual": "sad",
+          "mode": "repeat",
+          "target": "sad",
+          "wait_seconds": 5,
+          "note_zh_TW": "將焦點留在表情；Pip 安靜陪伴，不立即用禮物讓難過消失。",
+          "id": "ep02-s05"
+        },
+        {
+          "english": "Listen and point.",
+          "demo": "Happy.",
+          "instruction": {
+            "en": "Listen, then point to the face.",
+            "zh-TW": "聽一聽，指一指表情。"
+          },
+          "visual": "happy",
+          "mode": "quiz",
+          "target": "happy",
+          "wait_seconds": 6,
+          "note_zh_TW": "左邊是難過表情，右邊是開心表情；兩張圖同樣大小，同樣亮度。 聽力題：先念英文 demo，再完整等待六秒；等待時不顯示答案文字、不翻譯目標詞、不指向正解；結束後才框出 target 並顯示其英文。",
+          "choices": [
+            "sad",
+            "happy"
+          ],
+          "id": "ep02-s06"
+        },
+        {
+          "english": "Listen and point.",
+          "demo": "Sad.",
+          "instruction": {
+            "en": "Listen and find the face.",
+            "zh-TW": "聽一聽，找一找表情。"
+          },
+          "visual": "sad",
+          "mode": "quiz",
+          "target": "sad",
+          "wait_seconds": 6,
+          "note_zh_TW": "交換左右位置：左開心、右難過；不可沿用固定位置讓孩子猜答案。 聽力題：先念英文 demo，再完整等待六秒；等待時不顯示答案文字、不翻譯目標詞、不指向正解；結束後才框出 target 並顯示其英文。",
+          "choices": [
+            "happy",
+            "sad"
+          ],
+          "id": "ep02-s07"
+        },
+        {
+          "english": "Happy.",
+          "demo": "Happy.",
+          "instruction": {
+            "en": "Your turn. You can copy the smile.",
+            "zh-TW": "換你了，可以模仿這個笑容。"
+          },
+          "visual": "happy",
+          "mode": "repeat",
+          "target": "happy",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 示範笑容後停住，讓孩子自行模仿；不因孩子沒微笑而催促。",
+          "id": "ep02-s08"
+        },
+        {
+          "english": "Sad.",
+          "demo": "Sad.",
+          "instruction": {
+            "en": "Every feeling is okay.",
+            "zh-TW": "開心或難過，都可以。"
+          },
+          "visual": "sad",
+          "mode": "review",
+          "target": "sad",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 保持溫和的難過表情，Pip 坐在旁邊陪伴；沒有答對答錯標示。",
+          "id": "ep02-s09"
+        },
+        {
+          "english": "Goodbye!",
+          "demo": "Goodbye!",
+          "instruction": {
+            "en": "Wave goodbye to both friends.",
+            "zh-TW": "和兩位朋友揮手說再見。"
+          },
+          "visual": "goodbye",
+          "mode": "review",
+          "target": "goodbye",
+          "wait_seconds": 5,
+          "note_zh_TW": "兩人坐著向孩子招手；完整等待後淡出。",
+          "id": "ep02-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep03",
+      "number": 3,
+      "title_zh_TW": "Red、Blue、Yellow：找顏色",
+      "title_en": "Red, Blue and Yellow",
+      "topic": "colors",
+      "objectives_zh_TW": [
+        "將 Red、Blue、Yellow 連結到紅、藍、黃三色。",
+        "聽英文從兩個選項進展到三個選項中指認顏色。"
+      ],
+      "scenes": [
+        {
+          "english": "Hello!",
+          "demo": "Hello!",
+          "instruction": {
+            "en": "Wave hello. Let us find colors.",
+            "zh-TW": "揮揮手，一起找顏色。"
+          },
+          "visual": "hello",
+          "mode": "demo",
+          "target": "hello",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny、Pip 在米白色地毯邊招手；教學用球先不出現。",
+          "id": "ep03-s01"
+        },
+        {
+          "english": "Red.",
+          "demo": "Red.",
+          "instruction": {
+            "en": "This ball is red.",
+            "zh-TW": "這顆球是紅色。"
+          },
+          "visual": "red",
+          "mode": "demo",
+          "target": "red",
+          "wait_seconds": 5,
+          "note_zh_TW": "只呈現一顆無花紋紅球，Sunny 指向球；背景不用鮮紅色裝飾。",
+          "id": "ep03-s02"
+        },
+        {
+          "english": "Blue.",
+          "demo": "Blue.",
+          "instruction": {
+            "en": "This ball is blue.",
+            "zh-TW": "這顆球是藍色。"
+          },
+          "visual": "blue",
+          "mode": "demo",
+          "target": "blue",
+          "wait_seconds": 5,
+          "note_zh_TW": "同一位置改為尺寸相同的藍球，不改形狀，讓顏色成為唯一差異。",
+          "id": "ep03-s03"
+        },
+        {
+          "english": "Yellow.",
+          "demo": "Yellow.",
+          "instruction": {
+            "en": "This ball is yellow.",
+            "zh-TW": "這顆球是黃色。"
+          },
+          "visual": "yellow",
+          "mode": "demo",
+          "target": "yellow",
+          "wait_seconds": 5,
+          "note_zh_TW": "同一位置改為黃色圓球，搭配清楚邊線，避免與淺色背景混在一起。",
+          "id": "ep03-s04"
+        },
+        {
+          "english": "Listen and point.",
+          "demo": "Red.",
+          "instruction": {
+            "en": "Listen and point to a ball.",
+            "zh-TW": "聽一聽，指一指球。"
+          },
+          "visual": "red",
+          "mode": "quiz",
+          "target": "red",
+          "wait_seconds": 6,
+          "note_zh_TW": "左藍右紅；兩球大小一致，不提前加光圈。 聽力題：先念英文 demo，再完整等待六秒；等待時不顯示答案文字、不翻譯目標詞、不指向正解；結束後才框出 target 並顯示其英文。",
+          "choices": [
+            "blue",
+            "red"
+          ],
+          "id": "ep03-s05"
+        },
+        {
+          "english": "Listen and point.",
+          "demo": "Blue.",
+          "instruction": {
+            "en": "Listen and find a ball.",
+            "zh-TW": "聽一聽，找一找球。"
+          },
+          "visual": "blue",
+          "mode": "quiz",
+          "target": "blue",
+          "wait_seconds": 6,
+          "note_zh_TW": "左黃右藍，選項穩定停留；Sunny 先面向觀眾，不看正解。 聽力題：先念英文 demo，再完整等待六秒；等待時不顯示答案文字、不翻譯目標詞、不指向正解；結束後才框出 target 並顯示其英文。",
+          "choices": [
+            "yellow",
+            "blue"
+          ],
+          "id": "ep03-s06"
+        },
+        {
+          "english": "Listen and point.",
+          "demo": "Yellow.",
+          "instruction": {
+            "en": "Listen, then point.",
+            "zh-TW": "聽一聽，再指一指。"
+          },
+          "visual": "yellow",
+          "mode": "quiz",
+          "target": "yellow",
+          "wait_seconds": 6,
+          "note_zh_TW": "左黃右紅；等待期間兩球保持同等亮度。 聽力題：先念英文 demo，再完整等待六秒；等待時不顯示答案文字、不翻譯目標詞、不指向正解；結束後才框出 target 並顯示其英文。",
+          "choices": [
+            "yellow",
+            "red"
+          ],
+          "id": "ep03-s07"
+        },
+        {
+          "english": "Red.",
+          "demo": "Red.",
+          "instruction": {
+            "en": "Look closely. Your turn to say it.",
+            "zh-TW": "仔細看看，換你說一說。"
+          },
+          "visual": "red",
+          "mode": "repeat",
+          "target": "red",
+          "wait_seconds": 5,
+          "note_zh_TW": "單獨一顆紅球由稍遠處慢慢滾近，停止後給孩子完整回應時間。",
+          "id": "ep03-s08"
+        },
+        {
+          "english": "Listen and point.",
+          "demo": "Blue.",
+          "instruction": {
+            "en": "Now listen and choose a ball.",
+            "zh-TW": "這次聽一聽，選一顆球。"
+          },
+          "visual": "blue",
+          "mode": "quiz",
+          "target": "blue",
+          "wait_seconds": 6,
+          "note_zh_TW": "三球依序黃、紅、藍；把先前正解換到新位置，等待結束才示範。 聽力題：先念英文 demo，再完整等待六秒；等待時不顯示答案文字、不翻譯目標詞、不指向正解；結束後才框出 target 並顯示其英文。",
+          "choices": [
+            "yellow",
+            "red",
+            "blue"
+          ],
+          "id": "ep03-s09"
+        },
+        {
+          "english": "Goodbye!",
+          "demo": "Goodbye!",
+          "instruction": {
+            "en": "Wave goodbye to both friends.",
+            "zh-TW": "和兩位朋友揮手說再見。"
+          },
+          "visual": "goodbye",
+          "mode": "review",
+          "target": "goodbye",
+          "wait_seconds": 5,
+          "note_zh_TW": "收起教學球，Sunny 與 Pip 招手，等孩子道別後淡出。",
+          "id": "ep03-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep04",
+      "number": 4,
+      "title_zh_TW": "One、Two、Three：一起數",
+      "title_en": "One, Two, Three",
+      "topic": "numbers",
+      "objectives_zh_TW": [
+        "將 One、Two、Three 連結到一、二、三個物件。",
+        "練習一個物件數一次，並在排列改變後辨認數量。"
+      ],
+      "scenes": [
+        {
+          "english": "Hello!",
+          "demo": "Hello!",
+          "instruction": {
+            "en": "Wave hello. Let us count.",
+            "zh-TW": "揮揮手，一起數一數。"
+          },
+          "visual": "hello",
+          "mode": "demo",
+          "target": "hello",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 與 Pip 招手，空托盤滑入；移除背景可數的小裝飾。",
+          "id": "ep04-s01"
+        },
+        {
+          "english": "One.",
+          "demo": "One.",
+          "instruction": {
+            "en": "One cookie. Show one finger.",
+            "zh-TW": "一個。也可以比一根手指。"
+          },
+          "visual": "one",
+          "mode": "demo",
+          "target": "one",
+          "wait_seconds": 5,
+          "note_zh_TW": "托盤上只有一個大圓餅圖案，Sunny 指一次；沒有進食鏡頭。",
+          "id": "ep04-s02"
+        },
+        {
+          "english": "One. Two.",
+          "demo": "One. Two.",
+          "instruction": {
+            "en": "Count each cookie once.",
+            "zh-TW": "一個一個，慢慢數。"
+          },
+          "visual": "two",
+          "mode": "demo",
+          "target": "two",
+          "wait_seconds": 5,
+          "note_zh_TW": "兩個同尺寸圓餅分開擺放；說 One 時點左邊，說 Two 時點右邊，不重複點。",
+          "id": "ep04-s03"
+        },
+        {
+          "english": "One. Two. Three.",
+          "demo": "One. Two. Three.",
+          "instruction": {
+            "en": "Now there are three cookies.",
+            "zh-TW": "現在一共有三個。"
+          },
+          "visual": "three",
+          "mode": "demo",
+          "target": "three",
+          "wait_seconds": 5,
+          "note_zh_TW": "三個圓餅排成一列，英文每個詞對應一個物件，最後全體柔光外框提示總數。",
+          "id": "ep04-s04"
+        },
+        {
+          "english": "One. Two. Three.",
+          "demo": "One. Two. Three.",
+          "instruction": {
+            "en": "Your turn. Point and count.",
+            "zh-TW": "換你指著數一數。"
+          },
+          "visual": "three",
+          "mode": "repeat",
+          "target": "three",
+          "wait_seconds": 5,
+          "note_zh_TW": "逐一示範後完整等待；孩子可用手指或視線跟隨，不要求跟讀速度一致。",
+          "id": "ep04-s05"
+        },
+        {
+          "english": "Listen and point.",
+          "demo": "Two.",
+          "instruction": {
+            "en": "Listen and choose a tray.",
+            "zh-TW": "聽一聽，選一個盤子。"
+          },
+          "visual": "two",
+          "mode": "quiz",
+          "target": "two",
+          "wait_seconds": 6,
+          "note_zh_TW": "左盤一個、右盤兩個；盤子與圓餅尺寸完全一致。 聽力題：先念英文 demo，再完整等待六秒；等待時不顯示答案文字、不翻譯目標詞、不指向正解；結束後才框出 target 並顯示其英文。",
+          "choices": [
+            "one",
+            "two"
+          ],
+          "id": "ep04-s06"
+        },
+        {
+          "english": "Listen and point.",
+          "demo": "Three.",
+          "instruction": {
+            "en": "Listen, then point to a tray.",
+            "zh-TW": "聽一聽，指一指盤子。"
+          },
+          "visual": "three",
+          "mode": "quiz",
+          "target": "three",
+          "wait_seconds": 6,
+          "note_zh_TW": "左盤三個、右盤兩個；兩組物件均清楚分開，不堆疊。 聽力題：先念英文 demo，再完整等待六秒；等待時不顯示答案文字、不翻譯目標詞、不指向正解；結束後才框出 target 並顯示其英文。",
+          "choices": [
+            "three",
+            "two"
+          ],
+          "id": "ep04-s07"
+        },
+        {
+          "english": "Listen and point.",
+          "demo": "One.",
+          "instruction": {
+            "en": "Listen and find a tray.",
+            "zh-TW": "聽一聽，找一找盤子。"
+          },
+          "visual": "one",
+          "mode": "quiz",
+          "target": "one",
+          "wait_seconds": 6,
+          "note_zh_TW": "左盤兩個、右盤一個；正解位置與上一題不同。 聽力題：先念英文 demo，再完整等待六秒；等待時不顯示答案文字、不翻譯目標詞、不指向正解；結束後才框出 target 並顯示其英文。",
+          "choices": [
+            "two",
+            "one"
+          ],
+          "id": "ep04-s08"
+        },
+        {
+          "english": "One. Two. Three.",
+          "demo": "One. Two. Three.",
+          "instruction": {
+            "en": "Count them in a new shape.",
+            "zh-TW": "換個排法，再數一次。"
+          },
+          "visual": "three",
+          "mode": "review",
+          "target": "three",
+          "wait_seconds": 5,
+          "note_zh_TW": "三個圓餅改為三角形排列；仍逐一指認，讓孩子知道排列改變不影響數量。",
+          "id": "ep04-s09"
+        },
+        {
+          "english": "Goodbye!",
+          "demo": "Goodbye!",
+          "instruction": {
+            "en": "Wave goodbye to both friends.",
+            "zh-TW": "和兩位朋友揮手說再見。"
+          },
+          "visual": "goodbye",
+          "mode": "review",
+          "target": "goodbye",
+          "wait_seconds": 5,
+          "note_zh_TW": "收起盤子，兩位角色向孩子道別，等待後淡出。",
+          "id": "ep04-s10"
+        }
+      ]
+    },
+    {
+      "id": "ep05",
+      "number": 5,
+      "title_zh_TW": "Stand up、Sit down、Clap：動一動",
+      "title_en": "Stand Up, Sit Down, Clap",
+      "topic": "actions",
+      "objectives_zh_TW": [
+        "聽懂 Stand up、Sit down、Clap 三個動作指令。",
+        "由看示範模仿，進展到先聽英文再自行做動作；可坐著觀看或參與。"
+      ],
+      "scenes": [
+        {
+          "english": "Hello!",
+          "demo": "Hello!",
+          "instruction": {
+            "en": "Make some room. Watching is okay too.",
+            "zh-TW": "留點空間，也可以坐著看。"
+          },
+          "visual": "hello",
+          "mode": "demo",
+          "target": "hello",
+          "wait_seconds": 5,
+          "note_zh_TW": "寬敞平坦地毯，不出現椅子、台階或跳躍；Sunny 坐著招手，留時間讓孩子準備。",
+          "id": "ep05-s01"
+        },
+        {
+          "english": "Stand up.",
+          "demo": "Stand up.",
+          "instruction": {
+            "en": "Watch Sunny stand up slowly.",
+            "zh-TW": "看看小熊，慢慢站起來。"
+          },
+          "visual": "stand",
+          "mode": "demo",
+          "target": "stand",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 起初坐在地毯，英文指令後才自然起身；避免彈跳站起。",
+          "id": "ep05-s02"
+        },
+        {
+          "english": "Sit down.",
+          "demo": "Sit down.",
+          "instruction": {
+            "en": "Watch Sunny sit down slowly.",
+            "zh-TW": "看看小熊，慢慢坐下來。"
+          },
+          "visual": "sit",
+          "mode": "demo",
+          "target": "sit",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 從站姿緩緩坐回地毯，不突然跌坐、不加撞擊效果。",
+          "id": "ep05-s03"
+        },
+        {
+          "english": "Clap.",
+          "demo": "Clap.",
+          "instruction": {
+            "en": "Clap your hands. Sitting is okay.",
+            "zh-TW": "拍拍手，坐著也可以拍。"
+          },
+          "visual": "clap",
+          "mode": "demo",
+          "target": "clap",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 坐著示範拍手兩次，然後雙手放低；等待孩子自己拍。",
+          "id": "ep05-s04"
+        },
+        {
+          "english": "Stand up.",
+          "demo": "Stand up.",
+          "instruction": {
+            "en": "Your turn. Move slowly.",
+            "zh-TW": "換你了，慢慢做就可以。"
+          },
+          "visual": "stand",
+          "mode": "repeat",
+          "target": "stand",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 從坐姿站起示範一次，給孩子完整五秒跟上；不使用倒數催促。",
+          "id": "ep05-s05"
+        },
+        {
+          "english": "Sit down.",
+          "demo": "Sit down.",
+          "instruction": {
+            "en": "Try it again. Take your time.",
+            "zh-TW": "再試一次，不用急。"
+          },
+          "visual": "sit",
+          "mode": "repeat",
+          "target": "sit",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 慢慢坐到地毯上，Pip 在旁安靜陪伴；保留五秒反應時間。",
+          "id": "ep05-s06"
+        },
+        {
+          "english": "Listen and do.",
+          "demo": "Clap.",
+          "instruction": {
+            "en": "Listen, then try the movement.",
+            "zh-TW": "聽一聽，換你做。"
+          },
+          "visual": "clap",
+          "mode": "quiz",
+          "target": "clap",
+          "wait_seconds": 6,
+          "note_zh_TW": "顯示三個動作的等大圖示，中央 Sunny 保持中立不動；六秒後才拍手示範。 聽力題：先念英文 demo，再完整等待六秒；等待時不顯示答案文字、不翻譯目標詞、不指向正解；結束後才框出 target 並顯示其英文。",
+          "choices": [
+            "stand",
+            "clap",
+            "sit"
+          ],
+          "id": "ep05-s07"
+        },
+        {
+          "english": "Listen and do.",
+          "demo": "Stand up.",
+          "instruction": {
+            "en": "Listen and move when you are ready.",
+            "zh-TW": "聽一聽，準備好再做。"
+          },
+          "visual": "stand",
+          "mode": "quiz",
+          "target": "stand",
+          "wait_seconds": 6,
+          "note_zh_TW": "三張動作圖示換位；中央 Sunny 起初坐著，六秒後才慢慢站起確認。 聽力題：先念英文 demo，再完整等待六秒；等待時不顯示答案文字、不翻譯目標詞、不指向正解；結束後才框出 target 並顯示其英文。",
+          "choices": [
+            "sit",
+            "stand",
+            "clap"
+          ],
+          "id": "ep05-s08"
+        },
+        {
+          "english": "Listen and do.",
+          "demo": "Sit down.",
+          "instruction": {
+            "en": "Listen, then try it slowly.",
+            "zh-TW": "聽一聽，慢慢做。"
+          },
+          "visual": "sit",
+          "mode": "quiz",
+          "target": "sit",
+          "wait_seconds": 6,
+          "note_zh_TW": "三張動作圖示再換位；中央 Sunny 起初站著，六秒後才慢慢坐下確認。 聽力題：先念英文 demo，再完整等待六秒；等待時不顯示答案文字、不翻譯目標詞、不指向正解；結束後才框出 target 並顯示其英文。",
+          "choices": [
+            "clap",
+            "stand",
+            "sit"
+          ],
+          "id": "ep05-s09"
+        },
+        {
+          "english": "Goodbye!",
+          "demo": "Goodbye!",
+          "instruction": {
+            "en": "Rest and wave goodbye.",
+            "zh-TW": "休息一下，揮手說再見。"
+          },
+          "visual": "goodbye",
+          "mode": "review",
+          "target": "goodbye",
+          "wait_seconds": 5,
+          "note_zh_TW": "Sunny 坐在地毯上放鬆，與 Pip 一起招手。等孩子回應後柔和淡出。",
+          "id": "ep05-s10"
+        }
+      ]
+    }
+  ]
+}
