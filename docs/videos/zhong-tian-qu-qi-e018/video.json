@@ -1,0 +1,871 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e018",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "laisan",
+      "name": "賴三",
+      "appearance": "East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, a grey-brown short jacket and an old cloth head wrap",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的家丁，油嘴滑舌、心虛"
+      }
+    },
+    {
+      "id": "qianyuanwai",
+      "name": "錢員外",
+      "appearance": "East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, a dark gold silk robe with roundel patterns, three gold rings on his fingers, two servants behind him",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的鄉下財主，油滑、愛冷笑、拖長音"
+      }
+    },
+    {
+      "id": "huxianling",
+      "name": "胡縣令",
+      "appearance": "East Asian man of forty-eight, pale and plump with a double chin and narrow eyes, a black official gauze hat and a blue-green seventh-rank official robe with bulging sleeves, his cheeks shaking when he smiles",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十八歲的貪官縣令，官腔、拖長音、假裝威嚴"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a sly plucked pipa and light wood-block percussion over teahouse chatter at the start, a soft scheming guzheng pattern through the account room and the dusk workshop, near silence with a single low drum pulse as the thief creeps in under the moon and a rising string swell as the yellow turns red, a brisk comic drum and erhu theme in the yamen hall, then low strings tighten to a sharp held sting at the very end, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "假消息說紙坊藏祕方，半夜偷箱的人雙手紅得洗不掉｜種田娶妻打天下 第18集",
+    "description": "縱火的人還沒找到，系統的強制任務只剩五天。許硯在縣城茶樓故意大聲說「祕方鎖在紙坊箱子裡」，角落一個跛腳的人放下了茶碗。唐小棠拿一包糖從錢府帳房手裡換來一頁帳：「魏記，銀三百」——錢員外背後還有人。箱子刷上薑黃水、鎖扣抹了草木灰水，半夜來偷箱子的人，掌心慢慢紅成一片。隔天錢員外反告許硯逃稅，兩隻手卻一直縮在袖子裡；秦霜把賴三和箱子一起押上公堂。側廳裡，錢員外抓住許硯的袖子：放我一馬，就告訴你是誰推你下河。《種田娶妻打天下》第 18 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "紅手印",
+      "tag": "種田娶妻打天下",
+      "shot": "s22"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "茶樓",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a01",
+          "speaker": "xuyan",
+          "text": "祕方就鎖在紙坊箱子裡！",
+          "emotion": "故意大聲，像在炫耀"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the county teahouse in the morning, a busy ground-floor room of square lacquered tables and benches, steaming teapots and white porcelain tea bowls, wooden lattice windows letting in bright morning light, customers in plain robes at the other tables: medium close-up of Xu Yan, on screen left at a table by the window, half risen from the bench, one hand raised with a white tea bowl, speaking loudly so the whole room can hear, Qin Shuang soft and out of focus, on screen right across the table, arms folded",
+        "motion": "Xu Yan speaks a short Mandarin line, 「祕方就鎖在紙坊箱子裡！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he sets the tea bowl down hard so the tea jumps, and glances sideways across the room",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the county teahouse in the morning, a busy ground-floor room of square lacquered tables and benches, steaming teapots and white porcelain tea bowls, wooden lattice windows letting in bright morning light, customers in plain robes at the other tables: medium shot of Lai San, on screen right, sitting alone hunched over a white tea bowl at a dim table at the back of the room, his old cloth head wrap pulled low over his brow, other customers blurred in the foreground",
+        "motion": "Lai San freezes with the tea bowl at his lips, slowly sets it down on the table, and his shifty eyes slide toward Xu Yan off screen left",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the feet under the table, locked",
+        "prompt": "In the county teahouse in the morning, a busy ground-floor room of square lacquered tables and benches, steaming teapots and white porcelain tea bowls, wooden lattice windows letting in bright morning light, customers in plain robes at the other tables: low view under the back table: Lai San's feet in worn cloth shoes on the wooden floor, a grey-brown trouser hem, the bench legs",
+        "motion": "Lai San stands up and limps away, his right foot dragging a little on every step",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the county teahouse in the morning, a busy ground-floor room of square lacquered tables and benches, steaming teapots and white porcelain tea bowls, wooden lattice windows letting in bright morning light, customers in plain robes at the other tables: wide shot of the whole room: Xu Yan and Qin Shuang at the window table in the foreground on screen right, Lai San, small in the middle ground, limping between the crowded tables toward the bright open doorway on screen left, waiters with kettles passing",
+        "motion": "Lai San limps quickly out through the doorway into the street, while Qin Shuang turns her head to follow him and Xu Yan keeps sipping his tea without looking",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a02",
+          "speaker": "qinshuang",
+          "text": "跛的。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the county teahouse in the morning, a busy ground-floor room of square lacquered tables and benches, steaming teapots and white porcelain tea bowls, wooden lattice windows letting in bright morning light, customers in plain robes at the other tables: medium close-up of Qin Shuang, on screen right at the window table, a white tea bowl in her hand, morning light on her bold brows, her eyes turned toward Lai San off screen left as he goes out of the door",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「跛的。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she lowers the tea bowl without drinking and turns her eyes back to Xu Yan",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a03",
+          "speaker": "xuyan",
+          "text": "魚咬鉤了。",
+          "emotion": "壓低聲音，笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the county teahouse in the morning, a busy ground-floor room of square lacquered tables and benches, steaming teapots and white porcelain tea bowls, wooden lattice windows letting in bright morning light, customers in plain robes at the other tables: close-up of Xu Yan, on screen left at the window table, lifting a white tea bowl, a slow mischievous grin, morning light on his face",
+        "motion": "Xu Yan speaks a short Mandarin line, 「魚咬鉤了。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he takes a sip of tea and his grin widens",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a04",
+          "speaker": "xitong",
+          "text": "強制任務，剩五日。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county teahouse in the morning, a busy ground-floor room of square lacquered tables and benches, steaming teapots and white porcelain tea bowls, wooden lattice windows letting in bright morning light, customers in plain robes at the other tables: close-up of Xu Yan's face, on screen left, the tea bowl paused below his chin, staring at the empty air just in front of him, a faint cool blue tint on his eyes; the system voice speaks off screen",
+        "motion": "Xu Yan's grin fades as he stares at the empty air, and he sets the tea bowl down slowly, his jaw tightening",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "chapter": "魏記",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow tracking alongside",
+        "prompt": "In the Qian manor hall at the side door of its account room in the late morning, dark carved wooden pillars, a heavy rosewood desk stacked with thread-bound ledgers and a large abacus just inside the doorway, a painted screen behind, soft grey daylight: wide shot along the dark pillared hall: Tang Xiaotang walking toward the open account-room door on screen right, a small paper packet of sugar tied with red string in her hands, two servants in grey carrying trays passing behind her",
+        "motion": "Tang Xiaotang walks briskly past the pillars to the account-room door, puts on a bright sweet smile and taps on the door frame",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a05",
+          "speaker": "tangxiaotang",
+          "text": "帳房先生，嚐嚐糖。",
+          "emotion": "甜甜地"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the Qian manor hall at the side door of its account room in the late morning, dark carved wooden pillars, a heavy rosewood desk stacked with thread-bound ledgers and a large abacus just inside the doorway, a painted screen behind, soft grey daylight: medium close-up of Tang Xiaotang, on screen left at the account-room doorway, a sweet dimpled smile, holding out the paper packet of sugar in both hands toward a thin middle-aged account clerk in a grey robe, on screen right just inside the door with a ledger under his arm",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「帳房先生，嚐嚐糖。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she tilts her head and presses the sugar packet into the clerk's hands",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the hands at the doorway, locked",
+        "prompt": "In the Qian manor hall at the side door of its account room in the late morning, dark carved wooden pillars, a heavy rosewood desk stacked with thread-bound ledgers and a large abacus just inside the doorway, a painted screen behind, soft grey daylight: insert at the account-room doorway: the thin clerk's hands holding an open thread-bound ledger, Tang Xiaotang's slim hand with a peach-pink silk sleeve held out below it, blurred illegible brush columns on the pages, no readable writing",
+        "motion": "The clerk glances over his shoulder, quietly tears one page out of the ledger and slips it into Tang Xiaotang's waiting hand",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a06",
+          "speaker": "tangxiaotang",
+          "text": "一包糖，換一頁帳。",
+          "emotion": "笑一收，小聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, tracking backward",
+        "prompt": "In the Qian manor hall at the side door of its account room in the late morning, dark carved wooden pillars, a heavy rosewood desk stacked with thread-bound ledgers and a large abacus just inside the doorway, a painted screen behind, soft grey daylight: medium close-up of Tang Xiaotang walking away from the account-room door along the dark pillared hall toward camera, her peach-pink ruqun swaying, the sweet smile still on her face, the torn ledger page in her hand",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「一包糖，換一頁帳。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then her smile drops in one beat into a cool sharp look and she folds the page small and tucks it into her sleeve without breaking her stride",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the lean-to workshop beside the farmhouse at dusk, rebuilt after the fire, a new frame of raw pale timber posts and a fresh thatched roof rising over soot-blackened ground, wooden vats of pale bamboo pulp, bamboo screens on new drying racks, a rough plank work table, warm orange dusk light from the open side: wide shot of the whole rebuilt workshop: Xu Yan, on screen left at the work table, Qin Shuang behind him tying a new bamboo pole onto a drying rack, Tang Xiaotang hurrying in from the open side on screen right",
+        "motion": "Tang Xiaotang hurries up to the table, pulling the folded page out of her sleeve, while Xu Yan and Qin Shuang stop what they are doing and turn to her",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a07",
+          "speaker": "tangxiaotang",
+          "text": "魏記，銀三百。",
+          "emotion": "壓低聲音，一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the lean-to workshop beside the farmhouse at dusk, rebuilt after the fire, a new frame of raw pale timber posts and a fresh thatched roof rising over soot-blackened ground, wooden vats of pale bamboo pulp, bamboo screens on new drying racks, a rough plank work table, warm orange dusk light from the open side: medium shot of Tang Xiaotang, on screen right at the work table, unfolding a torn ledger page flat on the planks with both hands, Xu Yan, on screen left across the table leaning in",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「魏記，銀三百。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she taps one line on the page with her fingertip and looks up at Xu Yan",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a08",
+          "speaker": "xuyan",
+          "text": "魏記是誰？",
+          "emotion": "畫外，皺眉"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the ledger page, slow push in",
+        "prompt": "In the lean-to workshop beside the farmhouse at dusk, rebuilt after the fire, a new frame of raw pale timber posts and a fresh thatched roof rising over soot-blackened ground, wooden vats of pale bamboo pulp, bamboo screens on new drying racks, a rough plank work table, warm orange dusk light from the open side: insert from above of a torn page of an old ledger on the rough plank table, blurred illegible columns of brush strokes, one line circled in red ink, no readable writing, Tang Xiaotang's fingertip resting beside the red circle; Xu Yan speaks off screen",
+        "motion": "Tang Xiaotang's fingertip slides along the circled line and taps it twice",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a09",
+          "speaker": "tangxiaotang",
+          "text": "錢員外背後，",
+          "emotion": "收起笑，壓低聲音"
+        },
+        {
+          "id": "zq18a10",
+          "speaker": "tangxiaotang",
+          "text": "還有人。",
+          "emotion": "很輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the lean-to workshop beside the farmhouse at dusk, rebuilt after the fire, a new frame of raw pale timber posts and a fresh thatched roof rising over soot-blackened ground, wooden vats of pale bamboo pulp, bamboo screens on new drying racks, a rough plank work table, warm orange dusk light from the open side: close-up of Tang Xiaotang, on screen right, dusk light on one cheek, no smile now, her hand resting on the small gold abacus at her waist, looking at Xu Yan off screen left",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「錢員外背後，」 then 「還有人。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she flicks one abacus bead with a click and holds his gaze",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a11",
+          "speaker": "xuyan",
+          "text": "錢府放的火，",
+          "emotion": "慢慢想通"
+        },
+        {
+          "id": "zq18a12",
+          "speaker": "xuyan",
+          "text": "魏記出的錢？",
+          "emotion": "沉下聲音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the lean-to workshop beside the farmhouse at dusk, rebuilt after the fire, a new frame of raw pale timber posts and a fresh thatched roof rising over soot-blackened ground, wooden vats of pale bamboo pulp, bamboo screens on new drying racks, a rough plank work table, warm orange dusk light from the open side: close-up of Xu Yan, on screen left, dusk light across his face, frowning down at the ledger page on the table, looking up at Tang Xiaotang off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「錢府放的火，」 then 「魏記出的錢？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then his eyes narrow and he presses the page flat under his palm",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "chapter": "紅手印",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a13",
+          "speaker": "xuyan",
+          "text": "薑黃水，",
+          "emotion": "畫外，邊刷邊說"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the brush on the chest lid, slow push in",
+        "prompt": "In the lean-to workshop beside the farmhouse at dusk, rebuilt after the fire, a new frame of raw pale timber posts and a fresh thatched roof rising over soot-blackened ground, wooden vats of pale bamboo pulp, bamboo screens on new drying racks, a rough plank work table, warm orange dusk light from the open side: insert of a sturdy wooden chest with a brass lock clasp on the work table, Xu Yan's hand painting bright golden-yellow turmeric water over the lid with a wide brush, a small bowl of the yellow liquid beside it; Xu Yan speaks off screen",
+        "motion": "The brush sweeps a long stroke of bright yellow across the lid, the wet wood shining",
+        "characters": []
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a14",
+          "speaker": "qinshuang",
+          "text": "這黃的有什麼用？",
+          "emotion": "皺眉，不耐"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the lean-to workshop beside the farmhouse at dusk, rebuilt after the fire, a new frame of raw pale timber posts and a fresh thatched roof rising over soot-blackened ground, wooden vats of pale bamboo pulp, bamboo screens on new drying racks, a rough plank work table, warm orange dusk light from the open side: medium close-up of Qin Shuang, on screen right at the end of the work table, dabbing grey ash water from a clay bowl onto the brass lock clasp of the wooden chest with a rag, eyebrows drawn together, looking at Xu Yan off screen left",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「這黃的有什麼用？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she drops the rag in the bowl and folds her arms",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a15",
+          "speaker": "xuyan",
+          "text": "今晚妳就知道。",
+          "emotion": "笑，賣關子"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the lean-to workshop beside the farmhouse at dusk, rebuilt after the fire, a new frame of raw pale timber posts and a fresh thatched roof rising over soot-blackened ground, wooden vats of pale bamboo pulp, bamboo screens on new drying racks, a rough plank work table, warm orange dusk light from the open side: close-up of Xu Yan, on screen left, dusk light on his face, one hand on the lid of the yellow-painted chest, a sly grin, looking at Qin Shuang off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「今晚妳就知道。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he snaps the brass lock clasp shut with a click and raises his eyebrows at her",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the lean-to workshop beside the farmhouse at night, rebuilt after the fire, a new frame of raw pale timber posts and a fresh thatched roof over soot-blackened ground, wooden vats of pale bamboo pulp, bamboo screens on drying racks, cold blue moonlight falling in through the open side, no lamp lit: wide shot of the dark workshop, the yellow-painted wooden chest alone on the work table in a pool of moonlight, a thin figure in a grey-brown short jacket and a cloth head wrap, Lai San, slipping in from screen left through the open side",
+        "motion": "Lai San creeps toward the table, limping on his right foot, glancing back over his shoulder twice",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the lean-to workshop beside the farmhouse at night, rebuilt after the fire, a new frame of raw pale timber posts and a fresh thatched roof over soot-blackened ground, wooden vats of pale bamboo pulp, bamboo screens on drying racks, cold blue moonlight falling in through the open side, no lamp lit: medium shot of Lai San at the work table, moonlight on his pointed chin, both hands closing on the sides of the yellow-painted wooden chest",
+        "motion": "Lai San lifts the chest off the table and hugs it to his chest, his eyes darting left and right",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the palms, slow push in",
+        "prompt": "In the lean-to workshop beside the farmhouse at night, rebuilt after the fire, a new frame of raw pale timber posts and a fresh thatched roof over soot-blackened ground, wooden vats of pale bamboo pulp, bamboo screens on drying racks, cold blue moonlight falling in through the open side, no lamp lit: insert in cold moonlight of Lai San's two open palms held up just above the yellow-painted chest, his palms smeared with golden yellow from the lid and the grey ash from the brass clasp",
+        "motion": "The yellow on his palms slowly darkens and spreads into a bright vivid red, the colour blooming across both hands, and his fingers twitch",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a16",
+          "speaker": "laisan",
+          "text": "什麼鬼東西……",
+          "emotion": "壓著嗓子，慌"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the lean-to workshop beside the farmhouse at night, rebuilt after the fire, a new frame of raw pale timber posts and a fresh thatched roof over soot-blackened ground, wooden vats of pale bamboo pulp, bamboo screens on drying racks, cold blue moonlight falling in through the open side, no lamp lit: close-up of Lai San, on screen right in cold moonlight, the chest under one arm, staring down at his own red palm, eyes wide",
+        "motion": "Lai San speaks a short Mandarin line, 「什麼鬼東西……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he scrubs the palm hard against his jacket, looks again, and the red is still there",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, locked",
+        "prompt": "On the thatched roof of the farmhouse at night, old grey-gold thatch under a full moon, the dark dirt yard and the moonlit lean-to workshop below, low hills black against the sky: wide shot from behind on the roof ridge: Qin Shuang, on screen right and Xu Yan, on screen left crouched low on the thatch, dark against the moon, below them in the moonlit yard a small limping figure, Lai San, hurrying out through the gate with the chest in his arms",
+        "motion": "Lai San limps out of the gate below and away down the dark track while Qin Shuang rises onto one knee, her hand going to the old knife at her belt",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a17",
+          "speaker": "qinshuang",
+          "text": "不抓？",
+          "emotion": "壓低聲音，急"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the thatched roof of the farmhouse at night, old grey-gold thatch under a full moon, the dark dirt yard and the moonlit lean-to workshop below, low hills black against the sky: medium close-up of Qin Shuang, on screen right crouched on the thatch, moonlight along her high ponytail, one hand on the knife handle at her belt, staring at Xu Yan off screen left",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「不抓？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she leans toward him, ready to jump down",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a18",
+          "speaker": "xuyan",
+          "text": "讓他送回去，",
+          "emotion": "很輕"
+        },
+        {
+          "id": "zq18a19",
+          "speaker": "xuyan",
+          "text": "看誰開箱。",
+          "emotion": "很輕，笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the thatched roof of the farmhouse at night, old grey-gold thatch under a full moon, the dark dirt yard and the moonlit lean-to workshop below, low hills black against the sky: close-up of Xu Yan, on screen left crouched on the thatch, moonlight across his eyes, a calm sly half smile, eyes toward Lai San off screen right on the dark track below",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「讓他送回去，」 then 「看誰開箱。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he puts a hand out to hold Qin Shuang back without looking at her",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "chapter": "縣衙",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, slow push in",
+        "prompt": "In the county yamen hall in the morning, a high dim hall with red-lacquered pillars, a raised magistrate's bench draped in red cloth with a wooden gavel block and a brush stand, constables in black uniforms standing in two rows along the sides holding red-and-black staves, a grey stone floor, shafts of morning light through the tall open doors: wide shot of the hall from high behind the constables: Magistrate Hu seated at the raised bench in the background, Qian Yuanwai bowing low before the bench on screen right, Xu Yan standing calmly on screen left, the rows of constables in the foreground",
+        "motion": "The constables thump their staves on the stone floor in rhythm while Qian Yuanwai bows again and again, his hands hidden in his sleeves",
+        "characters": [
+          "huxianling",
+          "qianyuanwai",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a20",
+          "speaker": "qianyuanwai",
+          "text": "許硯賣紙，一文稅都沒交！",
+          "emotion": "拖長音，告狀"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the county yamen hall in the morning, a high dim hall with red-lacquered pillars, a raised magistrate's bench draped in red cloth with a wooden gavel block and a brush stand, constables in black uniforms standing in two rows along the sides holding red-and-black staves, a grey stone floor, shafts of morning light through the tall open doors: medium shot of Qian Yuanwai, on screen right before the magistrate's bench, bowing with both hands hidden deep inside his long wide sleeves, the sleeves pressed together in front of his belly, Xu Yan standing calmly, on screen left a few steps away",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「許硯賣紙，一文稅都沒交！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he jerks his chin toward Xu Yan, keeping both hands inside his sleeves",
+        "characters": [
+          "qianyuanwai",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a21",
+          "speaker": "huxianling",
+          "text": "許硯，你可知罪？",
+          "emotion": "官腔，拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "In the county yamen hall in the morning, a high dim hall with red-lacquered pillars, a raised magistrate's bench draped in red cloth with a wooden gavel block and a brush stand, constables in black uniforms standing in two rows along the sides holding red-and-black staves, a grey stone floor, shafts of morning light through the tall open doors: medium close-up from a low angle of Magistrate Hu, behind the raised bench in his black gauze official hat and blue-green robe, his double chin quivering, looking down at Xu Yan off screen left",
+        "motion": "Magistrate Hu speaks a short Mandarin line, 「許硯，你可知罪？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he slaps the wooden gavel block down on the bench with a crack",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a22",
+          "speaker": "xuyan",
+          "text": "錢員外，",
+          "emotion": "不慌不忙"
+        },
+        {
+          "id": "zq18a23",
+          "speaker": "xuyan",
+          "text": "手怎麼不拿出來？",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the county yamen hall in the morning, a high dim hall with red-lacquered pillars, a raised magistrate's bench draped in red cloth with a wooden gavel block and a brush stand, constables in black uniforms standing in two rows along the sides holding red-and-black staves, a grey stone floor, shafts of morning light through the tall open doors: close-up of Xu Yan, on screen left in the hall, perfectly calm, a faint smile, looking at Qian Yuanwai off screen right, his eyes dropping to the man's sleeves",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「錢員外，」 then 「手怎麼不拿出來？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he tilts his head toward Qian Yuanwai's hidden hands",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a24",
+          "speaker": "qianyuanwai",
+          "text": "天、天冷。",
+          "emotion": "結巴，乾笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county yamen hall in the morning, a high dim hall with red-lacquered pillars, a raised magistrate's bench draped in red cloth with a wooden gavel block and a brush stand, constables in black uniforms standing in two rows along the sides holding red-and-black staves, a grey stone floor, shafts of morning light through the tall open doors: close-up of Qian Yuanwai, on screen right, a bead of sweat on his temple, his thin eight-shaped moustache twitching, both hands buried inside his long sleeves against his belly",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「天、天冷。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he hunches and pushes his hands even deeper into his sleeves",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the county yamen hall in the morning, a high dim hall with red-lacquered pillars, a raised magistrate's bench draped in red cloth with a wooden gavel block and a brush stand, constables in black uniforms standing in two rows along the sides holding red-and-black staves, a grey stone floor, shafts of morning light through the tall open doors: wide shot down the hall from the bench end: the tall open doors bright behind, Qin Shuang striding in from the doors with one hand gripping the collar of Lai San's jacket and the yellow-painted wooden chest under her other arm, Lai San stumbling along beside her, the constables along the sides turning to look",
+        "motion": "Qin Shuang marches Lai San up the hall and sets the chest down on the stone floor with a heavy thud",
+        "characters": [
+          "qinshuang",
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a25",
+          "speaker": "qinshuang",
+          "text": "伸手。",
+          "emotion": "冷，乾脆"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the county yamen hall in the morning, a high dim hall with red-lacquered pillars, a raised magistrate's bench draped in red cloth with a wooden gavel block and a brush stand, constables in black uniforms standing in two rows along the sides holding red-and-black staves, a grey stone floor, shafts of morning light through the tall open doors: medium close-up of Qin Shuang, on screen left, holding Lai San's thin wrist in a firm grip, Lai San, on screen right cringing with his hand clenched into a fist",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「伸手。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she turns his wrist up and his fist opens to show a palm stained bright red",
+        "characters": [
+          "qinshuang",
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the county yamen hall in the morning, a high dim hall with red-lacquered pillars, a raised magistrate's bench draped in red cloth with a wooden gavel block and a brush stand, constables in black uniforms standing in two rows along the sides holding red-and-black staves, a grey stone floor, shafts of morning light through the tall open doors: close-up of Lai San, on screen right, sweat on his pointed chin, his head wrap askew, his red-stained hand half raised in front of his chest",
+        "motion": "Lai San hides the red hand behind his back, his eyes darting toward Qian Yuanwai off screen left, and he presses his lips shut tight",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a26",
+          "speaker": "xuyan",
+          "text": "薑黃碰上草木灰，",
+          "emotion": "慢慢解釋"
+        },
+        {
+          "id": "zq18a27",
+          "speaker": "xuyan",
+          "text": "就紅。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the county yamen hall in the morning, a high dim hall with red-lacquered pillars, a raised magistrate's bench draped in red cloth with a wooden gavel block and a brush stand, constables in black uniforms standing in two rows along the sides holding red-and-black staves, a grey stone floor, shafts of morning light through the tall open doors: medium shot of Xu Yan, on screen left beside the yellow-painted chest on the stone floor, Lai San's red palm held out in the foreground on screen right, Magistrate Hu leaning forward over the bench in the background",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「薑黃碰上草木灰，」 then 「就紅。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he taps the yellow chest lid with one finger and looks up at the bench",
+        "characters": [
+          "xuyan",
+          "laisan",
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a28",
+          "speaker": "xitong",
+          "text": "賴三，人贓俱獲。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county yamen hall in the morning, a high dim hall with red-lacquered pillars, a raised magistrate's bench draped in red cloth with a wooden gavel block and a brush stand, constables in black uniforms standing in two rows along the sides holding red-and-black staves, a grey stone floor, shafts of morning light through the tall open doors: close-up of Qian Yuanwai, on screen right, his round face going grey, eyes fixed on Lai San's red palm off screen left, his long sleeves trembling against his belly; the system voice speaks off screen",
+        "motion": "Qian Yuanwai swallows hard and takes half a step back, his hidden hands pressing his sleeves tight together",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a29",
+          "speaker": "qianyuanwai",
+          "text": "放我一馬，",
+          "emotion": "壓低聲音，急"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the county yamen hall, in a dim side room behind a carved lattice screen, a narrow room with a plain wooden table and two chairs, a single shaft of grey light through a lattice window: medium shot of Qian Yuanwai, on screen right, hurrying up behind Xu Yan, on screen left, and grabbing the sleeve of Xu Yan's robe, his own hand still half covered by his long sleeve so only his fingertips show",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「放我一馬，」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he pulls Xu Yan close toward the lattice screen and glances back at the main hall",
+        "characters": [
+          "qianyuanwai",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq18a30",
+          "speaker": "qianyuanwai",
+          "text": "告訴你誰推你下河。",
+          "emotion": "壓低聲音，一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county yamen hall, in a dim side room behind a carved lattice screen, a narrow room with a plain wooden table and two chairs, a single shaft of grey light through a lattice window: close-up of Qian Yuanwai, on screen right, very close to Xu Yan's shoulder, his small shrewd eyes gleaming, a sly sweaty smile under the thin moustache, grey light from the lattice window",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「告訴你誰推你下河。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then his grip tightens on Xu Yan's sleeve and he leans even closer",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "In the county yamen hall, in a dim side room behind a carved lattice screen, a narrow room with a plain wooden table and two chairs, a single shaft of grey light through a lattice window: extreme close-up of Xu Yan's eyes, thick brows drawn down, the grey lattice light striping his face, no trace of his usual grin",
+        "motion": "Xu Yan's eyes turn slowly from the main hall to Qian Yuanwai off screen right and narrow, and he draws one slow breath through his nose, his jaw setting hard",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}
