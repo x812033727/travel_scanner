@@ -20,7 +20,7 @@ type Translator = ReturnType<typeof useTranslations>;
 
 // Every stage, check and status the agent can report, so an unknown one falls back to
 // its own code rather than to a blank cell.
-const labelKeys = new Set(["queued", "preflight", "building", "backing_up", "migrating", "activating", "verifying", "rolling_back", "succeeded", "failed", "rolled_back", "manual_intervention_required", "git", "docker", "compose", "disk", "runtime_env", "database", "pg_dump", "github_ci", "api", "web"]);
+const labelKeys = new Set(["queued", "preflight", "building", "backing_up", "migrating", "activating", "verifying", "rolling_back", "succeeded", "failed", "rolled_back", "manual_intervention_required", "git", "docker", "compose", "disk", "runtime_env", "release_guard", "database", "pg_dump", "github_ci", "api", "web"]);
 const label = (t: Translator, name: string) => labelKeys.has(name) ? t(`deploymentsPanel.labels.${name}`) : name;
 const ciUrl = (value?: string) => value?.startsWith("https://github.com/") ? value : undefined;
 const elapsed = (t: Translator, run: Run) => {

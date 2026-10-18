@@ -38,7 +38,7 @@ jobs:
     defaults: { run: { working-directory: apps/api } }
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with: { python-version: "3.13" }
       - run: uv sync --frozen
       - name: Test dots compiler and series publication boundaries
@@ -109,7 +109,7 @@ jobs:
       # $GITHUB_WORKSPACE because this job's steps default to apps/api.
       - name: Pull container images
         run: bash "$GITHUB_WORKSPACE/tools/ci/pull-images.sh" "$MINIO_IMAGE"
-      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with: { python-version: "3.13" }
       - run: uv sync --frozen
       - run: uv run alembic upgrade head
@@ -151,12 +151,14 @@ jobs:
             if [ "$result" != success ]; then exit 1; fi
           done
   # Lint, i18n, the task board, typecheck and the tools tests: everything in the web gate
-  # except vitest and Playwright, which web-unit and web-e2e split across parallel jobs.
+  # except vitest and Playwright, which web-unit and web-e2e split across parallel jobs, and
+  # what needs ffmpeg or Chromium for the videos (video-tests below). Without them the tools
+  # tests that need one skip here.
   web-checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with: { node-version: 24, cache: npm }
       - run: npm ci
       # Advisory lookups hit registry.npmjs.org at request time, so an outage there used
@@ -182,7 +184,7 @@ jobs:
       matrix: { shard: [1, 2, 3] }
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with: { node-version: 24, cache: npm }
       - run: npm ci
       # vitest directly: `npm run test:web -- --shard` would hand --shard to the inner
@@ -200,7 +202,7 @@ jobs:
       matrix: { shard: [1, 2, 3] }
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with: { node-version: 24, cache: npm }
       - run: npm ci
       - run: npm run build:web
@@ -214,7 +216,7 @@ jobs:
       # Keep only this small set of synthetic screenshots for visual review, not
       # the hundreds of screenshots produced by the complete successful suite.
       - name: Retain manual-upload visual evidence
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always() && github.event_name == 'pull_request'
         with:
           name: youtube-manual-browser-evidence-${{ matrix.shard }}
@@ -228,24 +230,83 @@ jobs:
       # By 2026-09-14 the repository held 122.7 GB of unexpired artifacts, and PR #497's
       # required web job went red on "Failed to FinalizeArtifact: ... (403) Forbidden" after
       # every test had passed.
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure() || cancelled()
         with:
           name: site-experience-browser-results-${{ matrix.shard }}
           path: apps/web/test-results
           retention-days: 7
-  # `web` is the required check, like `api` above: green only when the checks and every
-  # shard are, and red when one of them failed or was cancelled.
+  # The video tests that need ffmpeg or Chromium, which web-checks installs neither of.
+  # - The tests kept beside the plans and runners in docs/videos: the imported-language runner,
+  #   its speech journal and the series validators. `npm run test:tools` globs tools/** only, so
+  #   they ran in no job, and two of the runner's cases stayed red for two days after #1342. Six
+  #   of the runner's native speech cases cut real intro and outro clips with ffmpeg and fail
+  #   with ToolMissing without it (they do not skip, so a lost install cannot pass quietly). A
+  #   folder named demo holds a video's prop, whose tests fail on purpose
+  #   (docs/videos/ai-bug-fix-pr-review/demo/README.md); the script's glob leaves those out and
+  #   picks up every other folder at any depth with no edit here.
+  # - Every tools test again, with both tools installed: the cases that skip in web-checks
+  #   (tools/reference-analysis.test.mjs, the H.264 concat check, the brightness probe and the
+  #   from-drama Short) run for real here, on every pull request. A skip that still names ffmpeg
+  #   or Chromium fails the step, so a test that loses its tool cannot pass by skipping. The
+  #   reporters are given on the command line, not through NODE_OPTIONS, which the tests' own
+  #   `node --test` children would inherit.
+  # tools/docs-videos-tests.test.mjs keeps the globs, this job and the gate below in step.
+  video-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      # A required check now depends on the Ubuntu mirror; one failed fetch is retried
+      # rather than blocking the merge (the same reasoning as tools/ci/pull-images.sh). The
+      # pipeline's ffmpeg lookup (tools/video/assemble/ffmpeg.mjs) wants libx264; a build
+      # without it fails here, by name, instead of as six ToolMissing test failures.
+      - name: Install ffmpeg
+        run: |
+          for attempt in 1 2 3; do
+            if sudo apt-get -o Acquire::Retries=3 update \
+              && sudo apt-get -o Acquire::Retries=3 install -y --no-install-recommends ffmpeg; then
+              break
+            fi
+            if [ "$attempt" = 3 ]; then exit 1; fi
+            sleep $((attempt * 10))
+          done
+          ffmpeg -hide_banner -version | sed -n 1p
+          encoders=$(ffmpeg -hide_banner -encoders)
+          if ! grep -qw libx264 <<<"$encoders"; then
+            echo "::error::the installed ffmpeg has no libx264 encoder"
+            exit 1
+          fi
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:docs-videos
+      # With Chromium here, the two browser regressions in tools/video/render/browser.test.mjs,
+      # which run only when asked, are asked for too.
+      - name: The tools tests, with ffmpeg and Chromium
+        env:
+          VIDEO_RENDER_BROWSER_TESTS: "1"
+        run: |
+          node --test --test-reporter=spec --test-reporter-destination=stdout \
+            --test-reporter=tap --test-reporter-destination="$RUNNER_TEMP/tools-tests.tap" \
+            tools/*.test.mjs "tools/video/**/*.test.mjs"
+          if grep -E '# SKIP .*(ffmpeg|Chromium)' "$RUNNER_TEMP/tools-tests.tap"; then
+            echo "::error::a tools test that needs ffmpeg or Chromium skipped where both are installed"
+            exit 1
+          fi
+  # `web` is the required check, like `api` above: green only when the checks, every
+  # shard and the video tests are, and red when one of them failed or was cancelled.
   web:
-    needs: [web-checks, web-unit, web-e2e]
+    needs: [web-checks, web-unit, web-e2e, video-tests]
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - name: Every web check and test shard passed
+      - name: Every web check, test shard and video test passed
         env:
           RESULTS: ${{ join(needs.*.result, ' ') }}
         run: |
-          echo "web-checks, web-unit and web-e2e: $RESULTS"
+          echo "web-checks, web-unit, web-e2e and video-tests: $RESULTS"
           for result in $RESULTS; do
             if [ "$result" != success ]; then exit 1; fi
           done
@@ -344,7 +405,7 @@ jobs:
       COMMUNITY_MAIL_FROM: Mokaair CI <accounts@example.test>
       # Chainguard's MinIO pinned by digest; see the api job.
       MINIO_IMAGE: cgr.dev/chainguard/minio@sha256:bd014394a80898e68c149f2311fdf8d5a2c2f3bb2c33b9327ae6d02b4b065ae1
-      MAILPIT_IMAGE: axllent/mailpit:v1.31.4@sha256:b68349e3a014b90c5610bfb26b2ae36f3892d7b8cf25ee140c6c71c98d2fcf48
+      MAILPIT_IMAGE: axllent/mailpit:v1.31.5@sha256:94f6b70c1436defae6799d9ac7ff0eeff9540465b842026d5cdb018f1c0234ea
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       # Retried pull, then --pull=never below; see the api job and tools/ci/pull-images.sh.
@@ -352,9 +413,9 @@ jobs:
       # background process starts.
       - name: Pull container images
         run: bash "$GITHUB_WORKSPACE/tools/ci/pull-images.sh" "$MINIO_IMAGE" "$MAILPIT_IMAGE"
-      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with: { python-version: "3.13" }
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with: { node-version: 24, cache: npm }
       - run: uv sync --frozen
         working-directory: apps/api
@@ -435,7 +496,7 @@ jobs:
         run: npx playwright test e2e/full-stack.spec.ts --output=test-results/travel --trace=retain-on-failure
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true" }
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure() && steps.travel-journeys.outcome == 'failure'
         with:
           name: travel-browser-failure
@@ -457,7 +518,7 @@ jobs:
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true", ADMIN_OPERATIONS_E2E: "1" }
       # Only on failure or timeout, for the storage reason given at the web job's upload.
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure() || cancelled()
         with:
           name: community-browser-results

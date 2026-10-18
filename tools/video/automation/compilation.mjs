@@ -2,7 +2,7 @@
 // episode is cleared for upload, the worker starts one video that joins them all. Nothing is
 // narrated or generated again. The worker's part is the document (core/compilation.mjs builds
 // it), the upload fields the planner writes (title, description, tags, the thumbnail's picture
-// and headline), the thumbnail's source keyframe copied from an episode, the five locales'
+// and headline), the thumbnail's source keyframe copied from an episode, the four locales'
 // title and description, and the commands in between (render, compile); the final cut, the
 // upload package and the YouTube id then go the way of every video (flow.mjs).
 import { createHash } from "node:crypto";
@@ -19,6 +19,8 @@ import { LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
 import { ARTIFACTS, compilationChapters, compilationSourceHashes, compilationTranslationStale, lintProject, loadProject, translationComplete } from "../core/state.mjs";
 import { chosenLocales, readLanguages } from "../core/stages.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
+import { clipHeadline, headlineProblem } from "../story-plans/plan.mjs";
+import { THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX } from "../templates/templates.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { GENRE_SPECS } from "./prompts.mjs";
 
@@ -27,7 +29,9 @@ export const COMPILATION_FILE = "compilation.json";
 // episodes carry the premise, and the judge scored every keyframe when it was drawn.
 export const THUMBNAIL_EPISODES = 3;
 export const THUMBNAIL_CANDIDATES = 12;
-export const HEADLINE_MAX_CHARS = 12;
+// The thumbnail headline is the channel's (templates.mjs THUMB_HEADLINE_MAX, counted as the qa
+// stage counts it); the planner is asked twice, then the headline is cut where a word ends
+// (story-plans/plan.mjs clipHeadline) rather than left for the owner at the final gate.
 export const TAG_MAX_CHARS = 6;
 // What a chapter line of the description costs (a timestamp, 「第 N 集」 and a title of about
 // twelve characters, some 60 bytes), and the room the tool's own lines take. The compile step
@@ -175,8 +179,10 @@ export function metadataProblem(answer, candidates) {
   if (!Array.isArray(answer.tags) || !answer.tags.length || !answer.tags.every(isText)) return "tags must be a list of at least one word";
   if (answer.tags.join(",").length > TAGS_MAX_CHARS) return `tags must be at most ${TAGS_MAX_CHARS} characters in all`;
   const thumbnail = answer.thumbnail;
-  if (!isObject(thumbnail) || !isText(thumbnail.headline) || thumbnail.headline.length > HEADLINE_MAX_CHARS) return `thumbnail.headline must be 1 to ${HEADLINE_MAX_CHARS} characters`;
+  if (!isObject(thumbnail) || !isText(thumbnail.headline)) return `thumbnail.headline must be 1 to ${THUMB_HEADLINE_MAX} characters`;
   if (thumbnail.headline === COMPILATION_HEADLINE_PLACEHOLDER) return "thumbnail.headline is still the placeholder";
+  const headline = headlineProblem(thumbnail.headline.trim());
+  if (headline) return headline;
   if (thumbnail.tag !== undefined && thumbnail.tag !== null && (!isText(thumbnail.tag) || thumbnail.tag.length > TAG_MAX_CHARS)) return `thumbnail.tag must be at most ${TAG_MAX_CHARS} characters or null`;
   if (candidates.length && !candidates.some((candidate) => matchesCandidate(candidate, thumbnail))) return "thumbnail.episode and thumbnail.shot must name one of thumbnail_candidates";
   return null;
@@ -280,7 +286,8 @@ export async function planMetadata(automation, state, previousProblem = null) {
     spoiler_context: context,
     chapters: compilationChapters(before),
     description_budget_bytes: descriptionBudget(episodes.length),
-    thumbnail_headline_max: HEADLINE_MAX_CHARS,
+    thumbnail_headline_max: THUMB_HEADLINE_MAX,
+    thumbnail_headline_words_max: THUMB_HEADLINE_WORDS_MAX,
     thumbnail_candidates: candidates.map(({ episode, number, shot, judge, characters, prompt }) => ({ episode, number, shot, judge, characters, prompt })),
   };
   let problem = previousProblem;
@@ -298,6 +305,12 @@ export async function planMetadata(automation, state, previousProblem = null) {
       continue;
     }
     problem = metadataProblem(candidate, candidates);
+    // Asked again once and still over the channel's six: the headline is cut where a word ends
+    // and the rest of the answer kept, rather than the card waiting on the owner at the final gate.
+    if (problem && attempt === ANSWER_ATTEMPTS - 1 && isObject(candidate.thumbnail) && isText(candidate.thumbnail.headline) && headlineProblem(candidate.thumbnail.headline.trim())) {
+      candidate = { ...candidate, thumbnail: { ...candidate.thumbnail, headline: clipHeadline(candidate.thumbnail.headline) } };
+      problem = metadataProblem(candidate, candidates);
+    }
     if (problem) continue;
     if (context.mysteries.length || candidate.chapters !== undefined) {
       const chapters = candidate.chapters;
@@ -430,6 +443,34 @@ export async function translateMetadata(automation, state) {
 }
 
 /**
+ * Package again when upload/ no longer holds what package would write now: the composed
+ * title, description, tags, localizations and chapters, or the rendered thumbnail. The message
+ * of the round, or null when the package is current.
+ */
+async function repackageStale(automation, state, project, why) {
+  const workdir = automation.workdir(state.slug);
+  const packaged = readJson(path.join(workdir, "upload", "metadata.json"), null);
+  const body = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const timeline = body ? presentationTimeline(body, appliedBranding(readJson(path.join(workdir, ARTIFACTS.checks), null))) : null;
+  if (!timeline) return automation.block(state, "the compilation has no timeline for its public chapter list; run compile first");
+  const expected = composeMetadata({ doc: project.doc, timeline, translations: project.translations, pack: project.pack ?? null, locales: chosenLocales(readLanguages(workdir), "metadata") }).metadata;
+  const keys = ["title", "description", "tags", "localizations", "chapters", "default_language"];
+  const fieldsMoved = !packaged || keys.some((key) => JSON.stringify(packaged[key]) !== JSON.stringify(expected[key]));
+  if (!fieldsMoved && !thumbnailMoved(workdir)) return null;
+  const result = await automation.run(["package", "--slug", state.slug]);
+  if (result.code !== 0) return automation.block(state, `package failed ${why}: ${automation.lastLine(result.out)}`);
+  return `${state.slug}: ${why === "after public-text review" ? "reviewed " : ""}upload metadata rebuilt`;
+}
+
+/** Whether the rendered thumbnail.jpg differs from the one upload/ holds (package copies it). */
+function thumbnailMoved(workdir) {
+  const rendered = path.join(workdir, "thumbnail.jpg");
+  if (!existsSync(rendered)) return false;
+  const packaged = path.join(workdir, "upload", "thumbnail.jpg");
+  return !existsSync(packaged) || !readFileSync(rendered).equals(readFileSync(packaged));
+}
+
+/**
  * One step of a compilation, or undefined when `next` is a step every video shares (the final
  * cut, the upload package, the YouTube id), which flow.mjs handles.
  */
@@ -457,22 +498,18 @@ export async function advanceCompilation(automation, state, next) {
       return translation ? translationProblem(translation, compilationChapters(project.doc)) || !reviewCurrent(receipts, context, locale, fields[locale]) : later;
     });
     if (needsTranslationReview) return translateMetadata(automation, state);
-    // Status historically binds a package only to final.mp4. A resumed worker must replace
-    // its old public fields before handing that package to the shared publish step.
-    if (next === "on YouTube" || !next) {
-      const workdir = automation.workdir(state.slug);
-      const packaged = readJson(path.join(workdir, "upload", "metadata.json"), null);
-      const body = readJson(path.join(workdir, ARTIFACTS.timeline), null);
-      const timeline = body ? presentationTimeline(body, appliedBranding(readJson(path.join(workdir, ARTIFACTS.checks), null))) : null;
-      if (!timeline) return automation.block(state, "the compilation has no timeline for its public chapter list; run compile first");
-      const expected = composeMetadata({ doc: project.doc, timeline, translations: project.translations, pack: project.pack ?? null, locales: chosenLocales(readLanguages(workdir), "metadata") }).metadata;
-      const keys = ["title", "description", "tags", "localizations", "chapters", "default_language"];
-      if (!packaged || keys.some((key) => JSON.stringify(packaged[key]) !== JSON.stringify(expected[key]))) {
-        const result = await automation.run(["package", "--slug", state.slug]);
-        if (result.code !== 0) return automation.block(state, `package failed after public-text review: ${automation.lastLine(result.out)}`);
-        return `${state.slug}: reviewed upload metadata rebuilt`;
-      }
+    if (!next) {
+      const repackaged = await repackageStale(automation, state, project, "after public-text review");
+      if (repackaged) return repackaged;
     }
+  }
+  // Status binds a package only to final.mp4, so a compilation planned again after its package
+  // (an owner's reset, a deleted keyframes manifest) keeps a byte-identical cut and the old
+  // package. Before the publish push, any compilation whose fields or thumbnail moved is packaged
+  // again; one past its upload (`next` is no longer "on YouTube") is left as YouTube has it.
+  if (next === "on YouTube") {
+    const repackaged = await repackageStale(automation, state, loadProject({ slug: state.slug, root: ctx.root }), context.mysteries.length ? "after public-text review" : "after a new plan");
+    if (repackaged) return repackaged;
   }
   if (next === "cards rendered") {
     const channel = ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", ctx.env.VIDEO_BROWSER_CHANNEL] : [];

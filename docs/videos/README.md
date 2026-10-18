@@ -1,6 +1,6 @@
 # Mokaair 影片頻道規格
 
-這份是頻道的「長相」：每支全自動影片都照這裡做，改這裡等於改整個頻道。產線怎麼跑寫在 skill `youtube-video`（`.agents/skills/youtube-video/references/automated.md`），為什麼這樣設計、YouTube 與 Azure 的官方規則寫在 [`DESIGN.md`](DESIGN.md)。AI 漫劇（`format: "drama"`：AI 生成的鏡頭片段、多角色配音、燒錄字幕、配樂）是第二種格式，設計在 [`DRAMA.md`](DRAMA.md)；下面沒有另外說的地方，漫劇都照這份。投影片影片可以帶插圖、配樂與音效（**插圖投影片**，2026-09-29 定案，設計在 [`ILLUSTRATED.md`](ILLUSTRATED.md)）：卡片之間放 AI 插圖加運鏡，單狀態卡片漂移、畫面間溶接。
+這份是頻道的「長相」：每支全自動影片都照這裡做，改這裡等於改整個頻道。產線怎麼跑寫在 skill `youtube-video`（`.agents/skills/youtube-video/references/automated.md`），為什麼這樣設計、YouTube 與 Azure 的官方規則寫在 [`DESIGN.md`](DESIGN.md)。AI 漫劇（`format: "drama"`：AI 生成的鏡頭片段、角色或旁白配音、配樂，字幕模式依影片設定）是第二種格式，設計在 [`DRAMA.md`](DRAMA.md)；下面沒有另外說的地方，漫劇都照這份。投影片影片可以帶插圖、配樂與音效（**插圖投影片**，2026-09-29 定案，設計在 [`ILLUSTRATED.md`](ILLUSTRATED.md)）：卡片之間放 AI 插圖加運鏡，單狀態卡片漂移、畫面間溶接。
 
 ## 資料夾
 
@@ -10,6 +10,7 @@
 | `docs/videos/README.md` | 這份頻道規格 |
 | `docs/videos/lexicon.json` | 所有影片共用的發音字典（第一支影片建立） |
 | `docs/videos/<slug>/` | 一支影片的文字檔：`brief.md`、`video.json`、`claims.md`、`verify-*.md`、`i18n/<語系>.json` |
+| `docs/videos/channel-review-20261007/` | 2026-10-07 的頻道診斷：18 支逐支缺失、頻道層級缺失與反駁、參考頻道並排量測、改寫範例、四週上架與量測計畫，與七份研究 |
 
 音檔、畫面、mp4 與站主的核准紀錄 `approvals.json` 只放在 repo 外的工作區（`VIDEO_WORKDIR`），不進 git。
 
@@ -23,9 +24,9 @@
 | 容器 | MP4，faststart | 同上 |
 | 縮圖 | 1280×720 JPEG | `tools/video/render/` |
 | 長度 | **長片至少8分鐘，普通漫劇除外**：一般投影片8分鐘以上，預設目標8–12分鐘，上緣是撰稿瞄準的長度、不是上限，超過時`lint`不警告（站主2026-10-04定）；[三季科普及AI名詞](long-form/README.md)以10分鐘製作，扁平解說後台8–20整數分鐘、預設10；品牌故事保留13分鐘。`lint`退回不足8分鐘的解說估算，`qa`量測成片；五類長片另要求當前正文及成片各480秒、雜湊與影格一致，片頭片尾不計正文。普通漫劇一集2–4分鐘、Shorts及一鍵合集沿原規格；合集30–480分鐘可設、預設120（[`BINGE.md`](BINGE.md)） | `tools/video/core/schema.mjs`（`MIN_EPISODE_MINUTES`）、`tools/video/core/duration.mjs`、`apps/api/app/video_automation/schemas.py`、`apps/api/app/video_automation/series.py` |
-| 合集 | 每集成片 `-c copy` 串接、音訊重編一次；集間 2 秒章節卡、片尾 4 秒卡；章節＝每集；五語字幕合併。審核頁只放 720p 預覽（`-crf 26 -maxrate 2M`，兩小時約 ≤ 2 GB）；1080p 成片從後台的作品頁或「可以上架」卡下載（`GET /admin/videos/{slug}/download`，API 唯讀掛載工人的 `video_work`）再上傳。合集的 `category_id` 是 24（娛樂） | `tools/video/core/compilation.mjs`、`tools/video/compile/cli.mjs` |
-| 字幕 | zh-TW 的 CC 一定有。en、ja、ko、zh-CN 的 CC 與標題說明是每支影片的選擇：成片核准後站主在 `/admin/videos` 那支影片的「這支影片的語言」面板勾了才做，工人只做勾了的、做好才排上架（[`LANGUAGES.md`](LANGUAGES.md)；設定分頁的 `caption_locales` 只是面板的預先勾選）。投影片影片**不燒錄**；漫劇預設把繁中字幕燒進畫面（漫劇頻道的慣例），由 `video.json` 的 `subtitles.burn_in` 決定 | `tools/video/core/captions.mjs`、`tools/video/core/stages.mjs`、`tools/video/core/drama.mjs` |
-| 配音音軌 | 語言的第三個部件：投影片影片可以多掛 en、ja、ko、zh-CN 四條 YouTube 多語言音軌，同一個頻道聲音唸字幕的翻譯，塞在 zh-TW 的畫面時間軸裡。站主在同一個面板勾了配音才做（勾配音會一起勾 CC），做好後由站主在 Studio「語言」上傳、在「語言」卡片按「已在 Studio 上傳配音」；做不出來的語系跳過並寫原因，不擋上架。漫劇第一期不做。音軌怎麼做在 [`DUBS.md`](DUBS.md) | `tools/video/dubs`、`tools/video/automation/flow.mjs` |
+| 合集 | 每集成片 `-c copy` 串接、音訊重編一次；集間 2 秒章節卡、片尾 4 秒卡；章節＝每集；四語字幕合併。審核頁只放 720p 預覽（`-crf 26 -maxrate 2M`，兩小時約 ≤ 2 GB）；1080p 成片從後台的作品頁或「可以上架」卡下載（`GET /admin/videos/{slug}/download`，API 唯讀掛載工人的 `video_work`）再上傳。合集的 `category_id` 是 24（娛樂） | `tools/video/core/compilation.mjs`、`tools/video/compile/cli.mjs` |
+| 字幕 | zh-TW 的 CC 一定有。en、ja、ko 的 CC 與標題說明是每支影片的選擇（zh-CN 在 2026-10-09 拿掉，[`LANGUAGES.md`](LANGUAGES.md) §歷史）：成片核准後站主在 `/admin/videos` 那支影片的「這支影片的語言」面板勾了才做，工人只做勾了的、做好才排上架（[`LANGUAGES.md`](LANGUAGES.md)；設定分頁的 `caption_locales` 只是面板的預先勾選）。投影片影片不燒錄；新版品牌故事也不燒錄，繁中 CC 可以關閉。其他漫劇與舊故事依各自 `video.json` 的 `subtitles.burn_in` 決定 | `tools/video/core/captions.mjs`、`tools/video/core/stages.mjs`、`tools/video/core/drama.mjs` |
+| 配音音軌 | 語言的第三個部件：投影片影片可以多掛 en、ja、ko 三條 YouTube 多語言音軌，同一個頻道聲音唸字幕的翻譯，塞在 zh-TW 的畫面時間軸裡。站主在同一個面板勾了配音才做（勾配音會一起勾 CC），做好後由站主在 Studio「語言」上傳、在「語言」卡片按「已在 Studio 上傳配音」；做不出來的語系跳過並寫原因，不擋上架。旁白漫劇中的觀念解說可用；新版品牌故事還要由目前核准成片的品管證明沒有燒錄字幕。多角色漫劇的外語配音仍待實作。音軌怎麼做在 [`DUBS.md`](DUBS.md) | `tools/video/dubs`、`tools/video/automation/flow.mjs` |
 | Shorts | 直式短片（[`SHORTS.md`](SHORTS.md)）：1080×1920、30 fps、25–55 秒（後台 Shorts 設定可調）、H.264／AAC 48 kHz、兩段式 loudnorm 到 −14 LUFS（成片要在 ±1 內、真峰值 ≤ −0.8 dBTP）。字幕是畫面上的字卡，另外上傳一條 zh-TW CC；沒有章節、沒有縮圖（第一格就是封面）、不套頻道片頭片尾。安全區：內容在 x 78–902、下緣 1380 以內，字幕條下緣 1600 以內 | `tools/video/shorts/core.mjs`（`PROFILE`）、`tools/video/shorts/build.mjs` |
 | 配樂與音效 | 任何格式都可以帶 `music`（站主提供有授權的檔案放 `<VIDEO_WORKDIR>/_music/`，或由 Lyria 生成），在旁白下自動壓低到 ≤ −24 LUFS；插圖投影片另可帶 `sfx`（授權音效組放 `_sfx/<set>/`：章節卡蓋章、溶接 whoosh、逐條出現 pop）。純投影片預設兩者都沒有 | `tools/video/core/drama.mjs`、`tools/video/assemble/sfx.mjs` |
 
@@ -45,7 +46,7 @@
 
 字型只用 Noto Sans TC 與 JetBrains Mono，兩者都是開源字型，由 npm 套件提供，不讀系統字型。畫面下方 12% 不放重要內容，因為 YouTube 的控制列和 CC 字幕在那裡。
 
-15 種投影片版型（每種的欄位與上限在 `tools/video/templates/templates.mjs` 的 `TEMPLATE_SPECS`，範例在 `tools/video/templates/fixtures/showcase/video.json`），加上不是 HTML 版型的 `shot`（一張 AI 插圖加運鏡，[`ILLUSTRATED.md`](ILLUSTRATED.md)；插圖投影片每 5–8 秒一張、至少佔一半時間）：
+17 種投影片版型（每種的欄位與上限在 `tools/video/templates/templates.mjs` 的 `TEMPLATE_SPECS`，範例在 `tools/video/templates/fixtures/showcase/video.json`），加上不是 HTML 版型的 `shot`（一張 AI 插圖加運鏡，[`ILLUSTRATED.md`](ILLUSTRATED.md)；插圖投影片每 5–8 秒一張、至少佔一半時間）：
 
 | 版型 | 用在 | 可以逐條出現 |
 | --- | --- | --- |
@@ -59,14 +60,20 @@
 | `big` | 一個關鍵數字或關鍵詞 | — |
 | `diagram` | repo 裡的 SVG 圖解（沿用文章的圖） | — |
 | `screenshot` | repo 裡的截圖，可以框出一塊 | 框 |
+| `photo` | 一張真實照片（公有領域檔案照、圖庫照片），像印出來的相片貼在底上：白邊 24px、微傾（`tilt` −3°～3°，沒寫依場景 id 固定取 ±1.5°、±2° 或 ±2.5°）、柔和投影、置中；`caption`（一行、≤40 字）在相片下方，`credit`（一行、≤60 字）是相片右下角的膠囊。照片要登記在 `assets[]`，沒登記 `render` 會擋 | — |
+| `chat` | 1–3 則左右對話泡泡 | 每一則 |
+| `quote` | 一句引文與出處，可以附翻譯 | 翻譯 |
+| `stats` | 1–4 個數字，各附標籤 | 每一個 |
+| `terminal` | 一個指令與它印出來的結果，附執行日期與版本 | 輸出 |
+| `cta` | 一張卡片指向完整文章 | — |
 | `outro` | 結尾：回答、下一步、`mokaair.com` | — |
 
-縮圖用 `thumb` 版型：一個標籤、一行大標、一行小字，左下角是 MOKAAIR 字樣。
+縮圖用 `thumb` 版型（站主 2026-10-08 定）：左 40% 是文字欄（一個標籤、**最多 6 字**的大字（英文詞或數字各算 1 字、最多 2 個）、一行小字，大字可用 `\n` 分兩行、不在詞中間斷），右 60% 放**一個主體**。主體來源依序：`thumbnail.data.capture`（一個 `screencast` 景的 id，用它截到的真實頁面，可寫 `<id>#2` 取第 2 張）→ `thumbnail.data.shot`（該支影片一張 shot 的關鍵影格，裁右側）→ 都沒有時是依 slug 輪流的單色大塊底（青綠、梅紫、墨藍、墨綠四色）。三套版型 A／B／C（`layout` 可指定，沒寫依 slug 輪流；YouTube 測試用的 B／C 變體自動往後輪一套；`tone` 可指定底色），MOKAAIR 字標縮小在左下角，不碰右下角的時長標籤與右上角的懸停按鈕。大字不重複標題：`qa` 的 thumbnail 項擋超過 6 字、詞中間斷行，與標題前 10 字重複過半時警告（各語言自己的縮圖只檢查尺寸、位元組、手機上的字高與重複標題，不套中文的字數與斷詞規則；合集的大字本來就是系列名，不警告重複標題）。評論某個產品時，它的官方頁截圖或 logo 可以當主體（合理引用）；AI 插圖仍不畫 logo 與字（[`ILLUSTRATED.md`](ILLUSTRATED.md)）。
 
 ## 片頭與片尾
 
-- **頻道片頭／片尾**：站主選定 5 秒無標語片頭，以及 3 秒「按讚、分享、開啟小鈴鐺」片尾。安裝外部素材包後，新製長片在正文之外加入這兩段；字幕、章節及多語音軌一起調整。素材安裝、舊片採用及狀態邊界見 [`BRANDING.md`](BRANDING.md)。Shorts 不套用。
-- **正文開場**仍是開場鉤子（`title` 版型）：第一句是觀眾的問題或一個反直覺的說法，30 秒內說完「為什麼該看、會得到什麼、怎麼進行」。正文 `outro` 版型負責回答與內容下一步；頻道片尾是正文後的獨立素材。合集有頻道片尾時省略原本額外的 4 秒結尾卡。
+- **頻道片頭／片尾**：站主選定 5 秒無標語片頭，以及約 15 秒、**只求訂閱**的片尾卡（站主 2026-10-08 定：取代原本 3 秒的「按讚、分享、開啟小鈴鐺」；新的 `outro.mp4` 素材由站主準備，用 `branding --install` 換上，換上前新製長片仍接舊片尾）。安裝外部素材包後，新製長片在正文之外加入這兩段；字幕、章節及多語音軌一起調整。素材安裝、舊片採用及狀態邊界見 [`BRANDING.md`](BRANDING.md)。Shorts 不套用。正文結尾固定三句（回答開場問題、留言題、有理由的訂閱邀請）是撰稿規則（[`channel-review-20261007/DECISIONS.md`](channel-review-20261007/DECISIONS.md)）；站主 2026-10-13 定：**旁白不講下一支影片是什麼**，指向下一支是結束畫面的事。
+- **正文開場**是 30–60 秒的開場濃縮（`title` 版型）：一個場景，前四句就在具體的時刻裡，順著講到第一個說不通的事實，最後一句是全片的問題（`script-writing.md` §開場濃縮、§故事主線與鉤子）。正文 `outro` 版型負責回答與內容下一步；頻道片尾是正文後的獨立素材。合集有頻道片尾時省略原本額外的 4 秒結尾卡。
 - 配樂：插圖投影片用站主的授權音樂床（`music.track`），純投影片不放；漫劇的配樂規則在 [`DRAMA.md`](DRAMA.md)。
 
 ## 聲音
@@ -84,10 +91,12 @@
 
 站主或撰稿代理只寫 `youtube.description` 的本文。上架包裡的說明，由 `package` 依下面的順序組好：
 
-1. 本文。前兩行說這支影片回答什麼、給誰看（搜尋結果只顯示這兩行）。
-2. `章節`：由實際的時間軸算出，第一個是 0:00，至少 3 個，每個至少 10 秒。
-3. `完整文章`：`source_guide` 指向的 Mokaair 文章，帶語系與追蹤參數。
-4. `參考資料`：`sources` 裡的每個官方頁。
+1. 本文。第一行是鉤子（這支影片回答什麼），第二行寫給誰看（搜尋結果只顯示這兩行），其餘段落接在後面；本文裡只剩網址的行會被拿掉，站內連結一頁只出現一次、都帶追蹤參數（2026-10-08 起，票 `2026-10-07-video-metadata-title-length-lint-description`）。
+2. `完整文章`：`source_guide` 指向的 Mokaair 文章，帶語系與追蹤參數；本文已經提到同一頁時不再加這一行。
+3. `章節`：由實際的時間軸算出，第一個是 0:00，至少 3 個，每個至少 10 秒。
+4. `參考資料`：`sources` 裡還沒在上面連過的官方頁（文章本身或本文已連的頁不再列）。
+5. `圖片來源`：`assets` 裡要署名的素材（沒有就略過）。
+6. 最後一行三個 hashtag：前兩個來自標籤，第三個由 `category` 對映成系列 hashtag（對映表在 `tools/video/core/metadata.mjs`；沒有對映就只有兩個）。
 
 各語系的標籤文字（例如英文的 Chapters）定義在 `tools/video/core/metadata.mjs`。說明欄上限 5,000 位元組：中文一個字佔 3 位元組，所以大約是 1,666 個中文字，章節與連結也算在內。標題、說明都不能有角括號。
 

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    },
+    "gear-more": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/more.mjs"]
+    }
+  }
+}

@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "網站快取與 CDN：更新沒出現時該清哪一層",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "每一層分別確認，才能知道舊版本從哪裡被送出。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -259,6 +263,1018 @@
         },
         {
           "title": "Cloudflare 快取回應狀態",
+          "url": "https://developers.cloudflare.com/cache/concepts/cache-responses/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Website Caching and CDNs: Which Layer to Clear When Updates Do Not Appear",
+      "description": "A website may be updated while phones still show old content because caches remain in different places. Using a Taiwan studio's business-hours update, this article explains browser, WordPress/hosting and CDN roles, cache responses, expiry times and targeted purging. An ordered procedure, comparison table and original diagram help site managers trace old versions while keeping account and shopping workflows correct.",
+      "hero": {
+        "src": "/guides/website-cache-cdn/hero-en.jpg",
+        "alt": "Original document, server and screen illustrations show how to verify source content and, layer by layer, the version readers receive.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A studio has updated its Sunday business hours, and the admin preview is correct, but a customer's phone still displays the old hours. You need to find where the old version is stored: the edit may not have been published, the web server may be retaining an old page, or an image cache or browser cache may be involved."
+        },
+        {
+          "type": "paragraph",
+          "text": "Caching temporarily stores reusable results to reduce repeated downloads or computation. It makes websites more efficient, but also requires managing version updates. Knowing who controls each layer, what it caches and how to verify updates turns troubleshooting into an orderly process."
+        },
+        {
+          "type": "heading",
+          "text": "First identify whether the outdated element is text, an image or the entire layout",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the full URL with the problem and the outdated content. Article text, a business-hours image and a stylesheet are different resources. Even on the same page, each may be cached separately. If only the hours image has not updated, first check its URL and file contents instead of immediately rebuilding the entire site."
+        },
+        {
+          "type": "paragraph",
+          "text": "Return to the editing dashboard to confirm that the changes have been saved and published in the correct environment. Rule out changes made only to a draft, scheduled post or test site. Next, view the same URL while logged out. Some sites use different caching strategies for administrators and regular visitors, so seeing new content when logged in proves only what is served in that state."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a business-hours update, record the expected text, the actual text on the public page, the version of the hours image and the time of the check. These four details help your hosting provider or engineer identify exactly which data you are tracing, preventing everyone from viewing different pages yet insisting that nothing is wrong on their end."
+        },
+        {
+          "type": "heading",
+          "text": "Distinguish the browser, website and CDN layers",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The browser cache resides on the reader's device. Website caches may be managed by WordPress plugins or hosting services, while a CDN serves reusable content from distributed nodes. Clearing one layer does not prove that the others have updated; an incognito window may still receive the same CDN response."
+        },
+        {
+          "type": "paragraph",
+          "text": "A CDN can deliver images, stylesheets and other files from nodes closer to visitors and reduce repeated processing on the origin server. It does not replace the site's database or content editing, nor does it handle every application task. If the origin server already outputs incorrect business hours, even a fast CDN may simply deliver that incorrect content."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudflare, for example, caches some resources by file extension by default, but does not cache HTML or JSON by default. Sites can change this behavior through rules. A domain using Cloudflare therefore does not prove that it caches the entire page's HTML; check the actual rules and responses."
+        },
+        {
+          "type": "heading",
+          "text": "Check expiry times together with cache status",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "TTL specifies how long cached content can be retained, but browser and CDN edge-node durations can be managed separately. Cloudflare's documentation explicitly distinguishes Edge Cache TTL from Browser Cache TTL. Do not change just one value and assume that old files on every reader's device will immediately disappear."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask an engineer or a site manager familiar with the tools to inspect the response headers. Cloudflare's CF-Cache-Status: HIT indicates that a resource was found in its cache; MISS indicates that the cacheable resource was not in the cache for that request and must be fetched from the origin. A MISS may still retrieve stale content from the origin server's own cache, so it does not prove that the content is up to date."
+        },
+        {
+          "type": "paragraph",
+          "text": "In Cache-Control, no-cache requires revalidation before reuse; it does not prohibit storage entirely. no-store means the response should not be stored. These names are easily misunderstood, and a service's custom rules may also change actual behavior. Site managers should first understand the current setup, then ask the person responsible to adjust it; there is no need to blindly assemble a string of headers."
+        },
+        {
+          "type": "heading",
+          "text": "Confirm the origin is updated, then purge the correct resources",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First confirm that the content generated by the site is the new version. If necessary, follow the plugin or hosting documentation to clear the relevant page cache. Then handle the outer CDN layer, so it does not fetch an old page from the origin immediately after being purged. Reload and record the result after each step to identify which layer causes the difference."
+        },
+        {
+          "type": "paragraph",
+          "text": "For Cloudflare, the official targeted purge procedure is to select Custom Purge in the cache settings, choose URL, enter the full resource URL to purge, check it and execute the purge. Identify the hours image and article page separately; purging the article HTML does not mean the separate image file has also been purged."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a custom cache key includes specific headers or Cookie values, a single-URL purge through the dashboard may not cover every version. The person responsible must handle this using the official methods. Single-file purging also does not accept wildcards. Do not casually enter an asterisk without understanding the scope or assume that a purge-success message means every variant has been verified."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Confirm that the public origin content has updated, and list the affected page and resource URLs.",
+            "Handle the corresponding page caches according to the site's plugin or hosting settings.",
+            "If the CDN actually caches the resource, perform a targeted purge according to its rules.",
+            "Reload and verify the content version, then check again in a fresh browsing environment."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Account and shopping content needs more than public-page rules",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Informational article pages can share the same result among many readers, while account details, shopping carts and individual orders vary by user. If personalized content is mistakenly placed in a shared cache, other people may see data that does not belong to them. Configure exclusions or correctly distinguish this content according to the site's architecture; treating “cache everything” as a universal way to speed up a site is inappropriate."
+        },
+        {
+          "type": "paragraph",
+          "text": "The presence of a Cookie does not itself guarantee that a response is private. The person responsible should check how application responses, hosting caches and CDN rules work together to handle login status. Use separate test accounts to confirm that shopping carts and data remain independent, and avoid saving real customers' personal content in the records."
+        },
+        {
+          "type": "paragraph",
+          "text": "Correct dynamic functionality takes priority over the cache hit rate. If incorrect prices, login states or someone else's content appear after an update, immediately disable the relevant faulty rules and investigate. Simply asking users to clear their browsers is insufficient, because incorrect settings in a shared layer may keep delivering the same problem to other people."
+        },
+        {
+          "type": "heading",
+          "text": "Make cache updates part of the publishing workflow",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a simple management table listing content types, the services responsible for caching, where to clear each cache, expiry policies and verification methods. Business-hours text, cover images and site-wide styles may follow different update paths. Keeping consistent records makes it easier to maintain stability than clearing every cache after every change."
+        },
+        {
+          "type": "paragraph",
+          "text": "For static files that need long-term caching, the build or asset workflow can use versioned filenames, with pages referencing the new files when updated. Main article URLs should remain stable; there is no need to repeatedly change paths just to replace an image. When deciding when to remove old assets, also consider pages that may still reference them."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, verify the content actually served instead of relying only on a dashboard success message. Keep the purge time, URLs, versions before and after the purge, and the checking environment. If old data reappears, these records help determine whether a cache layer, the origin content or the publishing workflow is responsible, so the fix addresses what actually needs changing."
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-cache-cdn/diagram-1-en.svg",
+          "alt": "Four steps cover checking old and new content, verifying the site origin, purging relevant CDN resources and rechecking as a reader, rather than relying on a success message.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Check each layer separately to identify where the old version is being served from.",
+          "description": "Four steps cover checking old and new content, verifying the site origin, purging relevant CDN resources and rechecking as a reader, rather than relying on a success message.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Location",
+            "Usually managed by",
+            "Still verify after clearing"
+          ],
+          "rows": [
+            [
+              "Browser cache",
+              "User device and response policies",
+              "Whether outer layers still serve old content"
+            ],
+            [
+              "WordPress/hosting",
+              "Plugin or hosting administrator",
+              "Whether the origin page has been regenerated"
+            ],
+            [
+              "CDN nodes",
+              "CDN rules and administrators",
+              "URL, variants and origin version"
+            ],
+            [
+              "Personalized content",
+              "Coordinated application and cache-layer settings",
+              "Whether different users' data remains independent"
+            ]
+          ],
+          "caption": "This table outlines management responsibilities; a site may not have every layer enabled."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "A successful purge does not guarantee correct content",
+          "text": "When a cache is rebuilt, it still retrieves data from the origin. An update is fully verified only after checking the origin version and confirming what the outer layers and readers actually receive."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Establish comparable speed measurements",
+              "kind": "life",
+              "slug": "pagespeed-performance-review"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Troubleshoot outdated images in sharing previews",
+              "kind": "life",
+              "slug": "open-graph-sharing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organize routine website maintenance",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN HTTP caching principles",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress performance optimization and hosting configuration",
+          "url": "https://developer.wordpress.org/advanced-administration/performance/optimization/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare default cache behavior",
+          "url": "https://developers.cloudflare.com/cache/concepts/default-cache-behavior/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare Edge and Browser TTL",
+          "url": "https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare single-file cache purging",
+          "url": "https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare cache response status",
+          "url": "https://developers.cloudflare.com/cache/concepts/cache-responses/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ウェブサイトのキャッシュと CDN：更新が反映されないとき、どの層をクリアするか",
+      "description": "サイトを更新したのにスマートフォンに古い内容が表示される場合、複数の場所にキャッシュが残っている可能性があります。本記事では、台湾のスタジオが営業時間を変更する例を使い、ブラウザー、WordPress／サーバー、CDN の役割を整理し、キャッシュのレスポンス、有効期限、対象を指定した削除の判断方法を説明します。操作の順序、比較表、オリジナル図解を添え、サイト管理者が旧バージョンの配信元を突き止め、会員機能や購入手続きの正確性も保てるようにします。",
+      "hero": {
+        "src": "/guides/website-cache-cdn/hero-ja.jpg",
+        "alt": "文書、サーバー、画面を描いたオリジナルの図。配信元の内容を確認し、読者に届くバージョンを層ごとに検証することを表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "スタジオが日曜日の営業時間を変更し、管理画面のプレビューでは正しく表示されているのに、お客さんのスマートフォンには元の時間が表示される。この場合、旧バージョンがどこに残っているかを突き止める必要があります。編集内容がまだ公開されていない、サイトのサーバーに古いページが残っている、あるいは画像やブラウザーのキャッシュが原因かもしれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "キャッシュとは、再利用できる結果を一時保存し、同じダウンロードや計算を繰り返す回数を減らす仕組みです。サイトの効率を高める一方、バージョン更新の管理も必要になります。各層を誰が管理し、何をキャッシュしているのか、更新時にどう検証するのかが分かれば、順序立てて原因を調べられます。"
+        },
+        {
+          "type": "heading",
+          "text": "古いのが文字、画像、ページ全体のレイアウトのどれかを見極める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "問題があるページの完全な URL と古い内容を記録してください。記事の文字、営業時間の画像、スタイルファイルは別々のリソースであり、同じページに表示されていても、それぞれ個別にキャッシュされる可能性があります。営業時間表の画像だけが更新されていないなら、まず画像の URL とファイルの内容を確認し、いきなりサイト全体を再構築しないようにしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "編集用の管理画面に戻り、内容が保存され、正しい環境で公開されていることを確認して、下書き、予約投稿、テストサイトだけを変更した可能性を除外します。続いて、ログインしていない環境で同じ URL を確認してください。管理者と一般の訪問者に異なるキャッシュ方針を適用するサイトもあるため、ログイン後に新しい内容が見えても、その状態での出力を確認できたにすぎません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "営業時間の変更を例にすると、表示されるべき文字、公開ページに実際に表示されている文字、営業時間表の画像のバージョン、確認時刻を記録します。この四つの情報があれば、ホスティング事業者やエンジニアに、どのデータを調べているのかを伝えられます。それぞれが別のページを見ながら、自分の側では問題がないと言う事態を避けられます。"
+        },
+        {
+          "type": "heading",
+          "text": "ブラウザー、サイト、CDN の位置を区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ブラウザーのキャッシュは読者の端末に保存されます。サイト側のキャッシュは WordPress のプラグインやホスティングサービスが管理する場合があり、CDN は分散した拠点から再利用できるコンテンツを配信します。ある層をクリアしても、ほかの層まで更新されたことにはなりません。シークレットウィンドウでも、同じ CDN のレスポンスを受け取る可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CDN は、画像やスタイルなどのファイルを訪問者に近い拠点から配信し、配信元サーバーの繰り返し処理も減らせます。ただし、サイトのデータベース、コンテンツ編集、すべてのアプリケーション処理を代行するものではありません。配信元サーバーがそもそも誤った営業時間を出力している場合、CDN がどれほど高速でも、誤った内容を配信しているだけかもしれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudflare を例にすると、標準設定では拡張子に基づいて一部のリソースをキャッシュし、HTML と JSON はキャッシュしません。サイト側でルールを設定し、この動作を変更できます。そのため、ドメインで Cloudflare を使っているからといって、ページ全体の HTML がキャッシュされていると判断することはできません。実際のルールとレスポンスを確認する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "有効期限とキャッシュの状態を併せて確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "TTL はキャッシュを保持できる時間の設定を表しますが、ブラウザーと CDN のエッジ拠点では、それぞれ別の時間を設定できます。Cloudflare のドキュメントでは、Edge Cache TTL と Browser Cache TTL を明確に区別しています。片方の値だけを変更して、すべての読者の端末にある古いファイルがすぐに消えると考えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "エンジニアやツールに詳しい管理者に、レスポンスヘッダーの確認を依頼してください。Cloudflare の CF-Cache-Status: HIT は、そのキャッシュからリソースが見つかったことを示します。MISS は、そのリクエストでキャッシュ可能なリソースがキャッシュ内に見つからず、配信元から取得する必要があることを示します。MISS でも配信元サーバー自身の古いキャッシュを取得する可能性があり、内容が必ず最新であることの証明にはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cache-Control の no-cache は、再利用する前に再検証が必要という意味であり、保存を完全に禁止するものではありません。レスポンスを保存しないよう指定するのは no-store です。これらの名称は誤解されやすく、サービス独自のルールによって実際の動作が変わる場合もあります。一般の管理者はまず現状を理解してから担当者に調整を依頼すればよく、意味を理解せずにヘッダーをいくつも組み合わせる必要はありません。"
+        },
+        {
+          "type": "heading",
+          "text": "配信元の更新を確認してから、正しいリソースを削除する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず、サイトが生成する内容が新しいバージョンになっていることを確認し、必要に応じてプラグインやホスティングサービスのドキュメントに従い、関連ページのキャッシュを削除します。その後、外側の CDN に対応し、削除直後に配信元の古いページを再取得する事態を避けます。各手順の後に読み込み直して結果を記録すれば、どの層が違いを生んでいるのかを特定できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudflare を使っている場合、公式の個別削除手順では、キャッシュ設定で Custom Purge を選び、削除したいリソースの完全な URL を入力し、確認してから実行します。営業時間表の画像と記事ページは、それぞれ別に特定する必要があります。記事の HTML のキャッシュを削除しても、独立した画像ファイルのキャッシュまで削除されたことにはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "カスタムキャッシュキーに特定のヘッダーや Cookie が含まれている場合、管理画面で単一 URL を削除しても、すべてのバージョンを対象にできない可能性があります。担当者が公式の方法に従って対応する必要があります。単一ファイルの削除ではワイルドカードも使えません。対象範囲を理解しないままアスタリスクを入力したり、削除成功のメッセージだけで、すべてのバリエーションを検証済みだと判断したりしないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "公開されている配信元の内容が更新済みであることを確認し、影響を受けるページとリソースの URL を一覧にする。",
+            "サイトのプラグインやサーバーの設定に従い、該当ページのキャッシュに対応する。",
+            "CDN が実際にそのリソースをキャッシュしている場合は、そのルールに従って対象を指定して削除する。",
+            "読み込み直して内容のバージョンを照合し、新しい閲覧環境でも再確認する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "会員・購入関連の内容に公開ページのルールだけを適用しない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "記事の紹介ページなら多くの人が同じ結果を共有できますが、会員情報、ショッピングカート、個人の注文はユーザーごとに異なります。個人向けの内容を誤って共有キャッシュに入れると、ほかの人に自分のものではない情報が見えてしまう可能性があります。設定時にはサイトの構成に応じて除外するか、適切に区別する必要があり、「すべてキャッシュ」を万能の高速化策と考えてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cookie があるだけでは、そのレスポンスが私的なものであることは保証されません。担当者が、アプリケーションのレスポンス、サーバーのキャッシュ、CDN のルールが連携してログイン状態をどう扱うかを確認する必要があります。テストでは別々のテストアカウントを使い、カートと情報がそれぞれ独立していることを確認し、実際の顧客の個人情報を記録に残さないようにしてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "動的機能の正確性は、キャッシュのヒット率より優先されます。更新後に誤った価格やログイン状態、ほかの人の内容が表示された場合は、問題のある関連ルールを直ちに無効にして原因を調べるべきです。ユーザーにブラウザーのキャッシュ削除を求めるだけでは不十分です。共有層の設定が誤っていると、同じ問題をほかの人にも配信し続ける可能性があるためです。"
+        },
+        {
+          "type": "heading",
+          "text": "公開手順に、更新が必要なキャッシュを組み込む",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "簡単な管理表を作り、コンテンツの種類、キャッシュを担当するサービス、削除操作の場所、有効期限の方針、更新確認の方法を一覧にしてください。営業時間の文字、カバー画像、サイト全体のスタイルでは、更新経路が異なる場合があります。変更するたびにすべてのキャッシュを消すより、決まった形で記録するほうが安定性を保ちやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "長期間キャッシュしたい静的ファイルには、ビルドや素材管理の工程でバージョン付きのファイル名を使い、更新時にページから新しいファイルを参照させる方法があります。記事のメイン URL は安定させておくべきで、画像を一枚差し替えるためにパスを何度も変える必要はありません。古いアセットをいつ削除するかについても、それをまだ参照している可能性があるページを考慮する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、管理画面の成功メッセージだけでなく、実際に配信された内容を確認してください。削除時刻、URL、更新前後のバージョン、確認に使った環境を記録しておけば、再び古いデータが現れたときに、キャッシュのどの層、配信元の内容、公開手順のどこに問題があるかを判断し、本当に変更が必要な箇所を修正できます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-cache-cdn/diagram-1-ja.svg",
+          "alt": "新旧の内容の確認、サイトの配信元の照合、該当する CDN リソースの削除、読者の環境での再確認という四つの手順を示し、成功メッセージだけで判断することを避ける図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "各層を個別に確認して初めて、旧バージョンがどこから配信されているかが分かります。",
+          "description": "新旧の内容の確認、サイトの配信元の照合、該当する CDN リソースの削除、読者の環境での再確認という四つの手順を示し、成功メッセージだけで判断することを避ける図。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "場所",
+            "主な管理主体",
+            "削除後も確認すること"
+          ],
+          "rows": [
+            [
+              "ブラウザーのキャッシュ",
+              "ユーザーの端末とレスポンス方針",
+              "外側の層が古い内容を配信していないか"
+            ],
+            [
+              "WordPress／サーバー",
+              "プラグインまたはサーバーの管理者",
+              "配信元のページが再生成されたか"
+            ],
+            [
+              "CDN の拠点",
+              "CDN のルールと管理者",
+              "URL、バリエーション、配信元のバージョン"
+            ],
+            [
+              "個人向けのコンテンツ",
+              "アプリケーションと各層の連携設定",
+              "ユーザーごとの情報が独立しているか"
+            ]
+          ],
+          "caption": "これは管理の役割分担表です。実際のサイトで、すべての層が有効になっているとは限りません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "削除の成功は、内容の正しさを意味しない",
+          "text": "キャッシュを再生成するときも、データは配信元から取得されます。まず配信元のバージョンを照合し、外側の層と読者側が実際に何を受け取ったかを確認して初めて、更新の検証が完了します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "比較可能な速度計測を整える",
+              "kind": "life",
+              "slug": "pagespeed-performance-review"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "共有プレビューに残る古い画像の原因を調べる",
+              "kind": "life",
+              "slug": "open-graph-sharing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトの日常的な保守手順を整理する",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN HTTP キャッシュの仕組み",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress のパフォーマンス最適化とサーバー構成",
+          "url": "https://developer.wordpress.org/advanced-administration/performance/optimization/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare の標準キャッシュ動作",
+          "url": "https://developers.cloudflare.com/cache/concepts/default-cache-behavior/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare の Edge と Browser の TTL",
+          "url": "https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare の単一ファイルのキャッシュ削除",
+          "url": "https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare のキャッシュレスポンス状態",
+          "url": "https://developers.cloudflare.com/cache/concepts/cache-responses/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "웹사이트 캐시와 CDN: 업데이트가 보이지 않을 때 어느 계층을 비워야 할까",
+      "description": "웹사이트를 업데이트했는데도 휴대전화에서 이전 콘텐츠가 보인다면, 여러 위치에 캐시가 남아 있을 수 있다. 이 글은 대만 스튜디오의 영업시간 변경을 예로 들어 브라우저, WordPress／호스팅, CDN의 역할을 정리하고, 캐시 응답, 만료 시간, 특정 리소스의 캐시 삭제를 판단하는 방법을 설명한다. 작업 순서, 비교표, 자체 제작 도해를 통해 웹사이트 관리자가 이전 버전의 출처를 찾고 회원 및 쇼핑 기능의 정확성도 챙길 수 있도록 돕는다.",
+      "hero": {
+        "src": "/guides/website-cache-cdn/hero-ko.jpg",
+        "alt": "문서, 서버, 화면을 그린 자체 제작 이미지로, 원본 콘텐츠를 확인하고 독자가 받는 버전을 계층별로 검증하는 과정을 나타낸다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "스튜디오의 일요일 영업시간을 수정했고 관리자 페이지의 미리 보기에도 정확히 나오지만, 고객의 휴대전화에는 여전히 이전 시간이 표시된다. 이때는 이전 버전이 어디에 남아 있는지 찾아야 한다. 수정 사항이 아직 공개되지 않았거나, 웹사이트 서버가 이전 페이지를 보관하고 있거나, 이미지 또는 브라우저 캐시가 원인일 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "캐시는 재사용할 수 있는 결과를 임시로 저장해 반복 다운로드나 연산을 줄이는 방식이다. 웹사이트의 효율을 높여 주지만, 버전 업데이트를 관리하는 작업도 필요해진다. 각 계층을 누가 제어하고, 어떤 콘텐츠를 캐시하며, 업데이트할 때 어떻게 검증하는지 알면 순서에 따라 문제를 점검할 수 있다."
+        },
+        {
+          "type": "heading",
+          "text": "이전 버전이 텍스트인지, 이미지인지, 전체 화면 구성인지 먼저 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "문제가 있는 전체 URL과 이전 콘텐츠를 기록한다. 글의 텍스트, 영업시간 이미지, 스타일 파일은 서로 다른 리소스이므로 같은 페이지에 나타나더라도 각각 캐시될 수 있다. 시간표 이미지만 업데이트되지 않았다면 이미지 URL과 파일 내용을 먼저 대조하고, 곧바로 웹사이트 전체를 다시 구축하지 않는다."
+        },
+        {
+          "type": "paragraph",
+          "text": "편집 관리자 페이지로 돌아가 올바른 환경에 저장하고 공개했는지 확인한다. 초안, 예약 게시물, 테스트 사이트만 수정한 것은 아닌지 점검한다. 이어서 로그인하지 않은 환경에서 같은 URL을 확인한다. 일부 웹사이트는 관리자와 일반 방문자에게 다른 캐시 전략을 적용하므로, 로그인한 뒤 새 콘텐츠가 보인다는 것은 그 상태에서의 출력만 확인한 셈이다."
+        },
+        {
+          "type": "paragraph",
+          "text": "영업시간 변경을 예로 들면, 기대한 텍스트, 공개 페이지의 실제 텍스트, 시간표 이미지의 버전, 점검 시간을 기록한다. 이 네 가지 정보가 있으면 호스팅 업체나 엔지니어가 어떤 데이터를 추적하는지 알 수 있다. 각자 다른 페이지를 보면서 자기 쪽에는 문제가 없다고 말하는 상황을 피할 수 있다."
+        },
+        {
+          "type": "heading",
+          "text": "브라우저, 웹사이트, CDN의 위치 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "브라우저 캐시는 독자의 기기에 저장된다. 웹사이트 측 캐시는 WordPress 플러그인이나 호스팅 서비스가 관리할 수 있으며, CDN은 분산된 노드에서 재사용할 수 있는 콘텐츠를 제공한다. 한 계층을 비웠다고 해서 다른 계층까지 업데이트되었다고 자동으로 입증되는 것은 아니다. 시크릿 창에서도 같은 CDN 응답을 받을 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "CDN은 이미지나 스타일 파일 등을 방문자와 더 가까운 노드에서 전송하고, 원본 서버의 반복 처리도 줄일 수 있다. 웹사이트 데이터베이스, 콘텐츠 편집, 모든 애플리케이션 작업을 대신하지는 않는다. 원본 서버가 처음부터 잘못된 영업시간을 출력한다면, CDN이 아무리 빨라도 잘못된 콘텐츠를 전송할 뿐일 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudflare를 예로 들면, 기본적으로 파일 확장자에 따라 일부 리소스를 캐시하며 HTML과 JSON은 기본적으로 캐시하지 않는다. 웹사이트는 규칙을 통해 이 동작을 바꿀 수 있다. 따라서 도메인이 Cloudflare를 사용한다고 해서 페이지 전체의 HTML이 캐시되었다고 바로 판단할 수는 없으며, 실제 규칙과 응답도 확인해야 한다."
+        },
+        {
+          "type": "heading",
+          "text": "만료 시간과 캐시 상태를 함께 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "TTL은 캐시를 보관할 수 있는 시간 설정을 뜻하지만, 브라우저와 CDN 엣지 노드의 시간은 별도로 관리할 수 있다. Cloudflare 문서도 Edge Cache TTL과 Browser Cache TTL을 명확히 구분한다. 둘 중 하나의 값만 바꾸고 모든 독자의 기기에 있는 이전 파일이 즉시 사라질 것이라고 가정해서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "엔지니어나 도구에 익숙한 관리자에게 응답 헤더를 확인해 달라고 요청한다. Cloudflare의 CF-Cache-Status: HIT는 해당 캐시에서 리소스를 찾았다는 뜻이다. MISS는 해당 요청에서 캐시할 수 있는 리소스가 캐시에 없어 원본 서버에서 가져와야 한다는 뜻이다. MISS라도 원본 서버 자체의 이전 캐시를 가져올 수 있으므로, 콘텐츠가 반드시 최신이라는 증거로 삼을 수는 없다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cache-Control의 no-cache는 재사용 전에 재검증이 필요하다는 뜻이며, 저장 자체를 완전히 금지한다는 뜻은 아니다. no-store가 해당 응답을 저장하지 말라는 뜻이다. 이 명칭들은 오해하기 쉬우며, 서비스의 사용자 지정 규칙이 실제 동작을 바꿀 수도 있다. 일반 관리자는 먼저 현재 상태를 이해한 뒤 담당자에게 조정을 요청하면 되며, 의미도 모른 채 여러 헤더를 조합할 필요는 없다."
+        },
+        {
+          "type": "heading",
+          "text": "원본 업데이트를 확인한 뒤 해당 리소스의 캐시 삭제하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "웹사이트가 생성하는 콘텐츠가 이미 새 버전인지 먼저 확인하고, 필요하다면 플러그인이나 호스팅 문서에 따라 관련 페이지 캐시를 삭제한다. 이어서 바깥 계층의 CDN을 처리해야, 바깥 계층을 비우자마자 원본의 이전 페이지를 다시 가져오는 일을 피할 수 있다. 단계마다 다시 읽어 들이고 결과를 기록해야 어느 계층에서 차이가 생겼는지 알 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudflare를 사용한다면, 특정 리소스의 캐시를 삭제하는 공식 절차는 캐시 설정에서 Custom Purge를 선택하고 URL 항목에 삭제할 리소스의 전체 URL을 입력한 뒤, 대조 확인하고 실행하는 것이다. 시간표 이미지와 글 페이지는 각각 구분해야 한다. 글의 HTML 캐시를 삭제했다고 해서 별도의 이미지 파일 캐시까지 삭제된 것은 아니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사용자 지정 캐시 키에 특정 헤더나 Cookie가 포함되어 있다면, 대시보드에서 URL 하나를 지정해 삭제해도 모든 버전을 지우지 못할 수 있으므로 담당자가 공식 절차에 따라 처리해야 한다. 단일 파일 삭제에는 와일드카드도 사용할 수 없다. 적용 범위를 이해하지 못한 채 별표를 입력하거나, 삭제 성공 메시지가 모든 변형의 검증까지 끝났다는 뜻이라고 단정해서는 안 된다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "공개된 원본 콘텐츠가 업데이트되었는지 확인하고, 영향을 받는 페이지와 리소스의 URL을 정리한다.",
+            "웹사이트 플러그인이나 호스팅 설정에 따라 해당 페이지의 캐시를 처리한다.",
+            "CDN이 실제로 해당 리소스를 캐시한다면, 규칙에 따라 해당 리소스의 캐시를 선택해 삭제한다.",
+            "다시 읽어 들여 콘텐츠 버전을 대조하고, 새 브라우징 환경에서도 재확인한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "회원 및 쇼핑 콘텐츠에는 공개 페이지 규칙만 적용할 수 없다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글 소개 페이지는 여러 사람이 같은 결과를 공유할 수 있지만, 회원 정보, 장바구니, 개인 주문은 사용자마다 달라진다. 개인화된 콘텐츠를 공유 캐시에 잘못 넣으면 다른 사람이 자신의 것이 아닌 정보를 보게 될 수 있다. 설정할 때는 웹사이트 구조에 따라 제외하거나 올바르게 구분해야 하며, ‘모두 캐시하기’를 범용 속도 개선 방안으로 삼아서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cookie가 있다는 사실만으로 응답이 비공개라는 점이 보장되지는 않는다. 담당자가 애플리케이션 응답, 호스팅 캐시, CDN 규칙이 로그인 상태를 함께 어떻게 처리하는지 확인해야 한다. 테스트할 때는 서로 다른 테스트 계정으로 장바구니와 데이터가 각각 분리되는지 확인하고, 기록에 실제 고객의 개인 콘텐츠가 저장되지 않도록 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "동적 기능의 정확성은 캐시 적중률보다 우선한다. 업데이트 후 잘못된 가격이나 로그인 상태가 나타나거나 다른 사람의 콘텐츠가 보인다면, 문제가 있는 관련 규칙을 즉시 비활성화하고 원인을 점검해야 한다. 사용자에게 브라우저 캐시를 삭제하라고 요구하는 것만으로는 부족하다. 공유 계층의 설정 오류가 같은 문제를 다른 사람에게도 계속 전달할 수 있기 때문이다."
+        },
+        {
+          "type": "heading",
+          "text": "게시 과정에서 업데이트할 캐시를 파악하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "간단한 관리표를 만들어 콘텐츠 유형, 캐시를 담당하는 서비스, 삭제 메뉴, 만료 전략, 검수 방법을 정리한다. 영업시간 텍스트, 대표 이미지, 사이트 전체의 스타일은 서로 다른 업데이트 경로를 가질 수 있다. 변경할 때마다 모든 캐시를 비우는 것보다 꾸준히 기록하는 편이 안정성을 유지하기 쉽다."
+        },
+        {
+          "type": "paragraph",
+          "text": "장기간 캐시해야 하는 정적 파일은 빌드나 자료 제작 과정에서 버전이 포함된 파일명을 사용하고, 업데이트할 때 페이지가 새 파일을 참조하도록 할 수 있다. 글의 기본 URL은 안정적으로 유지해야 하며, 이미지 하나를 바꾸려고 경로를 반복해서 변경할 필요는 없다. 이전 리소스를 언제 정리할지 결정할 때도 여전히 이를 참조할 수 있는 페이지를 고려해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 대시보드의 성공 알림만 보지 말고 실제로 전달된 콘텐츠를 확인한다. 삭제 시간, URL, 변경 전후 버전, 점검 환경을 기록해 둔다. 그래야 이전 데이터가 다시 나타났을 때 특정 캐시 계층, 원본 콘텐츠, 게시 과정 중 어디에 문제가 생겼는지 판단하고, 실제로 바꿔야 할 부분을 수정할 수 있다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-cache-cdn/diagram-1-ko.svg",
+          "alt": "새 콘텐츠와 이전 콘텐츠 확인, 웹사이트 원본 점검, 해당 CDN 리소스 캐시 삭제, 독자 환경 재확인의 네 단계로, 성공 알림만 보고 판단하는 일을 방지한다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "계층마다 따로 확인해야 이전 버전이 어디서 전달되는지 알 수 있다.",
+          "description": "새 콘텐츠와 이전 콘텐츠 확인, 웹사이트 원본 점검, 해당 CDN 리소스 캐시 삭제, 독자 환경 재확인의 네 단계로, 성공 알림만 보고 판단하는 일을 방지한다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "위치",
+            "일반적인 관리 주체",
+            "삭제 후에도 확인할 사항"
+          ],
+          "rows": [
+            [
+              "브라우저 캐시",
+              "사용자 기기와 응답 정책",
+              "바깥 계층이 여전히 이전 콘텐츠를 제공하는지"
+            ],
+            [
+              "WordPress／호스팅",
+              "플러그인 또는 호스팅 관리자",
+              "원본 페이지가 다시 생성되었는지"
+            ],
+            [
+              "CDN 노드",
+              "CDN 규칙과 관리자",
+              "URL, 변형, 원본 버전"
+            ],
+            [
+              "개인화된 콘텐츠",
+              "애플리케이션과 각 계층의 공동 설정",
+              "서로 다른 사용자의 데이터가 여전히 분리되는지"
+            ]
+          ],
+          "caption": "관리 역할을 나눈 표이며, 실제 웹사이트가 모든 계층을 사용하는 것은 아니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "삭제 성공이 콘텐츠의 정확성을 뜻하지는 않는다",
+          "text": "캐시를 다시 생성할 때도 원본에서 데이터를 가져온다. 원본 버전을 먼저 대조한 뒤, 바깥 계층과 독자 측이 실제로 무엇을 받는지 확인해야 업데이트 검수가 완료된 것이다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "비교할 수 있는 속도 측정 방식 마련하기",
+              "kind": "life",
+              "slug": "pagespeed-performance-review"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "공유 미리 보기에 남은 이전 이미지 점검하기",
+              "kind": "life",
+              "slug": "open-graph-sharing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트의 일상 유지보수 절차 정리하기",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN HTTP 캐시의 원리",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 성능 최적화와 호스팅 구성",
+          "url": "https://developer.wordpress.org/advanced-administration/performance/optimization/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare 기본 캐시 동작",
+          "url": "https://developers.cloudflare.com/cache/concepts/default-cache-behavior/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare Edge 및 Browser TTL",
+          "url": "https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare 단일 파일 캐시 삭제",
+          "url": "https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare 캐시 응답 상태",
+          "url": "https://developers.cloudflare.com/cache/concepts/cache-responses/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "网站缓存与 CDN：更新未显示时该清哪一层",
+      "description": "网站已更新，手机却还看到旧内容，可能是不同位置保留了缓存。本文以台湾工作室修改营业时间为例，整理浏览器、WordPress／主机和 CDN 的分工，说明缓存响应、过期时间与定点清除的判断方式。附操作顺序、比较表和原创图解，帮助网站管理者查出旧版本来源，也兼顾会员与购物流程的正确性。",
+      "hero": {
+        "src": "/guides/website-cache-cdn/hero-zh-cn.jpg",
+        "alt": "原创的文档、服务器与屏幕图像，表示确认源内容并逐层验证读者收到的版本。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "工作室把周日营业时间改好了，后台预览已经正确，客人手机却还显示原来的时间。这时需要找出旧版本存在哪里：可能是修改尚未发布、网站服务器保留旧页面，也可能是图片或浏览器的缓存。"
+        },
+        {
+          "type": "paragraph",
+          "text": "缓存是把可重复使用的结果暂存，减少重复下载或计算。它让网站更高效，也带来版本更新的管理工作。只要知道每一层由谁控制、缓存哪些内容，以及更新时如何验证，就能把排查变成有顺序的流程。"
+        },
+        {
+          "type": "heading",
+          "text": "先辨认旧的是文字、图片还是整个版面",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把有问题的完整网址与旧内容记下来。文章文字、营业时间图片和样式文件是不同资源，即使出现在同一页，也可能各自被缓存。如果只有时间表图片没更新，先核对图片网址与文件内容，别直接重建整个网站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到编辑后台确认已保存并发布到正确环境，排除只改到草稿、定时发布的文章或测试站的情况。接着用未登录环境查看同一网址。部分网站对管理员和普通访客采用不同缓存策略，所以登录后看到新内容，只能证明那个状态下的输出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以修改营业时间为例，记下预期文字、公开页面实际文字、时间表图片版本与检查时间。这四项信息能让主机服务商或工程师知道正在追查哪一份数据，避免大家各自看不同页面，却都说自己这边没有问题。"
+        },
+        {
+          "type": "heading",
+          "text": "分清浏览器、网站与 CDN 的位置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "浏览器缓存保留在读者设备上，网站端缓存可能由 WordPress 插件或主机服务管理，CDN 则在分散的节点提供可重复使用的内容。清除其中一层，不会自动证明其他层也已更新；无痕窗口也仍可能获取同一份 CDN 响应。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CDN 可让图片、样式等文件从较接近访客的节点传送，也能减少源站主机的重复处理。它不会代替网站数据库、内容编辑与所有应用程序工作。源站主机本来就输出错误的营业时间时，CDN 再快也可能只是在传送错误内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以 Cloudflare 为例，默认根据文件扩展名缓存一部分资源，HTML 和 JSON 默认不缓存；网站可以通过规则改变行为。因此看到域名使用 Cloudflare，不能直接推断整页 HTML 已被它缓存，还要查看实际规则与响应。"
+        },
+        {
+          "type": "heading",
+          "text": "过期时间与缓存状态要一起看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "TTL 表示缓存可保留的时间设置，但浏览器与 CDN 边缘节点的时间可以分开管理。Cloudflare 文档特别区分 Edge Cache TTL 和 Browser Cache TTL。不要只改其中一个数值，就假设所有读者设备上的旧文件会立即消失。"
+        },
+        {
+          "type": "paragraph",
+          "text": "请工程师或熟悉工具的管理者查看响应头。Cloudflare 的 CF-Cache-Status: HIT 表示从其缓存找到资源；MISS 表示该次可缓存资源不在缓存中，需要从源站获取。MISS 仍可能获取源站主机自己的旧缓存，不能当作内容必然最新的证明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cache-Control 中的 no-cache 是重复使用前需重新验证，并不等于完全禁止存储；no-store 才表示不要存储该响应。这些名称容易引起误解，而且服务的自定义规则也可能改变实际行为。普通管理者先读懂现状，再请负责人调整，无须盲目拼凑一串响应头。"
+        },
+        {
+          "type": "heading",
+          "text": "确认源站更新后，针对正确资源清除",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先确认网站生成的内容已经是新版本，必要时按照插件或主机文档清除相关页面缓存。接着再处理外层 CDN，避免外层刚清完又取回源站的旧页面。每做一步都重新读取并记录结果，才能知道是哪一层造成差异。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果使用 Cloudflare，官方定点清除流程是在缓存设置中选择 Custom Purge，以 URL 填入要清除的完整资源网址，核对后执行。时间表图片和文章页面要分别辨认；清掉文章 HTML 的缓存，不表示独立的图片文件也已清掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自定义缓存键如果包含特定请求头或 Cookie，控制台的单一网址清除可能无法涵盖所有版本，需要由负责人按照官方方式处理。单文件清除也不接受通配符。不要在没看懂范围时随手填星号，或直接假设清除成功消息代表每种变体都已验证。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认公开的源站内容已更新，列出受影响页面与资源网址。",
+            "根据网站插件或主机的设置，处理对应页面的缓存。",
+            "如果 CDN 确实缓存该资源，按照其规则执行定点清除。",
+            "重新读取并核对内容版本，另用新的浏览环境复查。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "会员与购物内容不能只套用公开页规则",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文章介绍页可以让很多人共用同一份结果，会员资料、购物车与个人订单则因用户而异。如果把个性化内容错放进共享缓存，可能让别人看到不属于自己的数据。设置时需根据网站架构排除或正确区分，不能把“全部缓存”当成通用加速方案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cookie 的存在本身不保证响应就是私有的。应由负责人核对应用程序响应、主机缓存与 CDN 规则如何共同处理登录状态。测试时用分开的测试账号确认购物车与数据各自独立，并避免在记录中保存真实顾客的个人内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "动态功能的正确性优先于缓存命中率。如果更新后出现错误价格、登录状态或其他人的内容，应立即停用有问题的相关规则并排查。不能只要求用户清浏览器缓存，因为共享层设置错误可能持续把同一问题发送给其他人。"
+        },
+        {
+          "type": "heading",
+          "text": "让发布流程知道哪些缓存需要更新",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "整理一份简单的管理表，列出内容类型、负责缓存的服务、清除入口、过期策略与验收方法。营业时间文字、封面图片和整站样式可以有不同更新路径。固定记录比每次改完都把所有缓存清空，更容易维持稳定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对需要长期缓存的静态文件，可由构建或素材流程使用带版本的文件名，更新时让页面引用新文件。文章主要网址则应保持稳定，不需要为了换一张图片反复改路径。旧资源何时清理，也要考虑仍可能引用它的页面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后确认实际发送的内容，而不是只看控制台成功提示。把清除时间、网址、前后版本和检查环境记录下来；如果又出现旧数据，才能判断是某个缓存层、源内容或发布流程出了问题，并把修正落实到真正需要改的地方。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-cache-cdn/diagram-1-zh-cn.svg",
+          "alt": "四个步骤列出确认新旧内容、核对网站源站、清除对应 CDN 资源与在读者环境复查，避免只看成功提示。",
+          "width": 1600,
+          "height": 900,
+          "caption": "每一层分别确认，才能知道旧版本从哪里被发送出来。",
+          "description": "四个步骤列出确认新旧内容、核对网站源站、清除对应 CDN 资源与在读者环境复查，避免只看成功提示。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "位置",
+            "通常由谁管理",
+            "清除后仍需确认"
+          ],
+          "rows": [
+            [
+              "浏览器缓存",
+              "用户设备与响应策略",
+              "外层是否仍提供旧内容"
+            ],
+            [
+              "WordPress／主机",
+              "插件或主机管理者",
+              "源站页面是否重新生成"
+            ],
+            [
+              "CDN 节点",
+              "CDN 规则与管理者",
+              "网址、变体和源站版本"
+            ],
+            [
+              "个性化内容",
+              "应用与各层共同设置",
+              "不同用户的数据仍独立"
+            ]
+          ],
+          "caption": "这是管理分工表；实际网站不一定启用每一层。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "清除成功不等于内容正确",
+          "text": "缓存重新建立时仍会从源站获取数据。先核对源站版本，再确认外层与读者端实际收到什么，才算完成更新验收。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立可比较的速度测量",
+              "kind": "life",
+              "slug": "pagespeed-performance-review"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "排查分享预览的旧图片",
+              "kind": "life",
+              "slug": "open-graph-sharing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理网站日常维护流程",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN HTTP 缓存原理",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 性能优化与主机配置",
+          "url": "https://developer.wordpress.org/advanced-administration/performance/optimization/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare 默认缓存行为",
+          "url": "https://developers.cloudflare.com/cache/concepts/default-cache-behavior/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare 边缘节点与浏览器 TTL",
+          "url": "https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare 单文件缓存清除",
+          "url": "https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare 缓存响应状态",
           "url": "https://developers.cloudflare.com/cache/concepts/cache-responses/",
           "checked_on": "2026-09-14"
         }

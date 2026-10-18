@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "CSS 入門：選取器、盒模型與版面安排",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "本例未加入其他尺寸限制；實際畫面還要查看父容器與最終計算值。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -279,6 +283,1098 @@
         },
         {
           "title": "MDN：Images, media, and form elements",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Images_media_forms",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "CSS Basics: Selectors, the Box Model, and Layout",
+      "description": "CSS beginners often find styles fail to apply, cards are wider than expected, or longer text overlaps. Using an original workshop event card, this article starts with reading selectors and declarations, explains how content, padding, border, margin, and box-sizing relate, and outlines uses for normal flow, Flexbox, and Grid. Width calculations, steps, a comparison table, and original diagrams help you build layout exercises to check in a browser.",
+      "hero": {
+        "src": "/guides/css-layout-basics/hero-en.jpg",
+        "alt": "An original Mokaair illustration of a rules document, a layout view, and a structure document, showing how CSS declarations control card box models and arrangement.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "CSS controls how web pages look, including text, colors, spacing, and arrangement. You do not need to memorize every property before you start learning. Begin with an event card: make the title clear, keep content away from the edges, and leave space between cards. Then understand what each rule changes."
+        },
+        {
+          "type": "paragraph",
+          "text": "The workshop event cards and values below are original practice examples. The syntax and box model explanations are based on MDN documentation consulted on 2026-9-14. This article provides checks readers can perform; it does not claim that compatibility testing has been completed in every browser."
+        },
+        {
+          "type": "heading",
+          "text": "Understand a CSS rule, then decide what to select",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, in .workshop-card { padding: 16px; }, the leading .workshop-card is the selector, which finds elements with the workshop-card class. Inside the braces is a declaration: padding is the property, and 16px is its value. A colon separates the property from its value, and semicolons separate declarations. Spelling and punctuation must be correct."
+        },
+        {
+          "type": "paragraph",
+          "text": "An element selector such as p affects paragraphs matching that element name. .workshop-card is a class selector that can be reused across multiple cards, while #workshop-list selects the specified ID. IDs should remain unique within an HTML document. For reusable visual styles, classes are usually more convenient than creating an ID for each card."
+        },
+        {
+          "type": "paragraph",
+          "text": "First give the HTML a sensible content order, such as the event name, time, description, and registration link, then add styles. Enlarging a paragraph with CSS does not automatically make it a semantic heading. Styling an ordinary container to look like a button does not automatically give it a real button's keyboard functionality. Plan appearance and element purpose together."
+        },
+        {
+          "type": "heading",
+          "text": "When styles do not apply, check loading and competing rules first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "External stylesheets are usually loaded through an HTML link element, with rel set to stylesheet and href pointing to the correct file. If no styles appear, first check the path, response, and whether the stylesheet actually loaded. If only one property remains unchanged, select the target element and inspect the rules being applied before adding more CSS."
+        },
+        {
+          "type": "paragraph",
+          "text": "An element may match multiple selectors at once. The browser uses cascade rules to resolve factors such as origin, importance, layers, and specificity. Only when the other relevant conditions are equal does the later declaration determine the result. Do not treat the last rule always wins as a universal principle, or rely solely on repeatedly adding !important to resolve conflicts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Styles and Computed in browser developer tools help you see which declarations have been overridden and what the actual computed values are. Properties such as text color are often inherited from the parent element, while borders and padding do not simply copy the parent's values. Find where a value comes from before changing it, so fixing one card does not affect the entire website."
+        },
+        {
+          "type": "heading",
+          "text": "Distinguish padding, borders, and margins in the box model",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For an ordinary block box, content is the area that holds the content; padding is the space between the content and the border; border surrounds the content and padding; and margin is the space outside the border between the box and other boxes. To keep text away from the edge of its background, usually adjust padding. To separate a card from nearby objects, check margin or container spacing."
+        },
+        {
+          "type": "paragraph",
+          "text": "With content-box, width specifies the content width. In this original example, width is 280px, left and right padding are 16px each, and left and right border widths are 2px each. The width between the outer border edges is therefore 280＋16＋16＋2＋2＝316px. Padding and borders on both sides total 36px. margin is excluded from this border dimension but affects the surrounding space."
+        },
+        {
+          "type": "paragraph",
+          "text": "After switching to box-sizing: border-box, the same width of 280px includes the left and right padding and borders, leaving a content width of 244px in this example. This setting helps you estimate card dimensions, but it does not automatically resolve overflow caused by long URLs, images, or child elements. It also does not include margin in width."
+        },
+        {
+          "type": "heading",
+          "text": "Start with normal flow, then choose a layout method",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In a typical document with horizontal writing, blocks stack downward in content order, while inline text elements flow with the text. First make a single card readable in normal flow, then arrange multiple cards side by side. Do not use absolute positioning for everything just to align each position: when text grows, other content may fail to make room."
+        },
+        {
+          "type": "paragraph",
+          "text": "Flexbox primarily handles arrangement in one direction, making it suitable for button rows inside cards, tags, or toolbars. Grid plans columns and rows together, making it suitable for event card grids that need alignment. Flexbox can also wrap, but the distribution of items across wrapped rows is not equivalent to Grid's shared column tracks. Choose according to your actual alignment needs."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, set display: flex, flex-wrap: wrap, and gap: 12px on an action row to arrange its direct children as flex items and allow wrapping. gap controls spacing between items, while padding can still provide space along the container's inner edges. This example is a starting point for practice; you still need to inspect button widths and text lengths in the actual layout."
+        },
+        {
+          "type": "heading",
+          "text": "Find layout problems by making content longer",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Start with a short title, then replace it with a long title containing the event name, intended audience, and location. A fixed card height may cause content to be clipped or overlap buttons. Most text areas can grow in height with their content, with a reasonable minimum height set as needed. Do not rely solely on shrinking the font to fit the original dimensions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Also check images' original proportions and available width. A common exercise uses max-width: 100% with height: auto to keep images within their containers while preserving their proportions. If you use a fixed cropping frame, decide where to crop separately and confirm that people, text, or important information are not cut off."
+        },
+        {
+          "type": "paragraph",
+          "text": "Adjacent vertical margins of ordinary block boxes collapse under certain conditions, so the space may not equal the sum of the two values. Flexbox and Grid items do not use this form of adjacent margin collapsing. When spacing differs from expectations, first inspect the box model and the container's display rather than using negative margin everywhere to pull elements back into place."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Create semantic event content in a sensible order, then load the practice stylesheet.",
+            "Use classes to set text color, padding, and borders, and inspect the rules that actually match.",
+            "Compare content-box and border-box dimensions, confirming that margins are counted separately.",
+            "Add multiple cards and long text, then check narrow screens, zooming, and keyboard operation."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Verify layouts using actual computed values",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open developer tools and select the card. Check its content, padding, borders, and margins in the box model, then compare them with your manual calculations. If the displayed width differs, check whether max-width, the parent container, flex shrinking, or other rules affect the final dimensions. Declaring a value does not mean that value alone controls the layout result."
+        },
+        {
+          "type": "paragraph",
+          "text": "Gradually narrow the window, then enlarge the text and check for unnecessary horizontal scrolling, overlaps, or hidden controls. Use the keyboard to move through actual links and buttons, keeping focus visible. Checking only hover effects may miss situations where keyboard users cannot tell their current position."
+        },
+        {
+          "type": "paragraph",
+          "text": "After completing the exercise, keep the HTML, CSS, and a short explanation. Record what each selector controls and which dimensions are only examples. When you later encounter frameworks or preprocessors, you can still return to these rules to understand the results. Identifying which box or declaration causes a problem is more useful than memorizing many layout techniques at once."
+        },
+        {
+          "type": "image",
+          "src": "/guides/css-layout-basics/diagram-1-en.svg",
+          "alt": "Three cards compare content-box's 316px width to the outer border edges, border-box's 244px content width, and margin, excluded from width in both.",
+          "width": 1600,
+          "height": 900,
+          "caption": "This example has no other size constraints. In an actual layout, also inspect the parent container and final computed values.",
+          "description": "Three cards compare content-box's 316px width to the outer border edges, border-box's 244px content width, and margin, excluded from width in both.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Setting",
+            "Area or function controlled",
+            "Common misconceptions"
+          ],
+          "rows": [
+            [
+              "padding",
+              "Space between content and border",
+              "Negative values are not allowed"
+            ],
+            [
+              "border",
+              "Surrounds content and padding",
+              "Whether its width is added depends on the box model"
+            ],
+            [
+              "margin",
+              "Space outside the box",
+              "Excluded from border-box width"
+            ],
+            [
+              "content-box",
+              "width specifies the content width",
+              "In this example, 280px produces an outer width of 316px"
+            ],
+            [
+              "border-box",
+              "width includes padding and borders",
+              "In this example, 280px includes 244px of content"
+            ],
+            [
+              "Flexbox/Grid",
+              "Arranges direct child items",
+              "Choose according to alignment needs"
+            ]
+          ],
+          "caption": "All numerical examples use left and right padding of 16px each and borders of 2px each, excluding margins and other layout constraints."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Don't use !important as a substitute for understanding conflicts",
+          "text": "First confirm that the stylesheet loaded and the selector matches, then inspect which rule was overridden and the final computed values. For size problems, return to the parent container, box model, and content."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Create responsive layouts for different screens",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Build a visual hierarchy for text and content",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check website colors and text contrast",
+              "kind": "life",
+              "slug": "website-color-system"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN: Basic CSS selectors",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Basic_selectors",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: The box model",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: Handling conflicts",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: Introduction to CSS layout",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Introduction",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: Basic concepts of flexbox",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: Margin collapsing",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model/Margin_collapsing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: HTML link element",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: Images, media, and form elements",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Images_media_forms",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "CSS 入門：セレクター、ボックスモデルとレイアウト",
+      "description": "CSS を学び始めたときによくある問題は、スタイルが適用されない、カードが予想より広い、文字が長くなると重なる、といったものです。この記事では、自作のワークショップのイベントカードを例に、セレクターと宣言の読み方から始め、content、padding、border、margin、box-sizing の関係を説明し、通常フロー、Flexbox、Grid の使い分けを整理します。幅の計算、手順、比較表、自作の図解を添え、ブラウザーで確認できるレイアウトの練習を支援します。",
+      "hero": {
+        "src": "/guides/css-layout-basics/hero-ja.jpg",
+        "alt": "ルール文書、レイアウト画面、構造文書を描いた Mokaair オリジナルのイラスト。CSS の宣言がカードのボックスモデルと配置をどう制御するかを表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "CSS は、文字、色、間隔、配置など、ウェブページの見せ方を担います。学ぶときに、すべてのプロパティを先に暗記する必要はありません。一枚のイベントカードから始めてみましょう。タイトルをわかりやすくし、内容が端に接しないようにし、カード同士の間隔を確保してから、それぞれのルールが何を変えたのかを理解します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下のワークショップのイベントカードと数値は、練習用に独自に設計したものです。構文とボックスモデルは、2026 年 9 月 14 日に参照した MDN の文書に基づいて整理しています。この記事では読者が実行できる確認方法を紹介していますが、すべてのブラウザーで互換性テストを完了したとは主張していません。"
+        },
+        {
+          "type": "heading",
+          "text": "CSS のルールを読み解き、対象を決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば .workshop-card { padding: 16px; } では、先頭の .workshop-card がセレクターで、workshop-card クラスを持つ要素を選びます。波括弧の中は宣言で、padding がプロパティ、16px が値です。コロンはプロパティと値を区切り、セミコロンは宣言を区切ります。綴りと記号を正しく書く必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "p のような要素セレクターは、名前が一致する段落に適用されます。.workshop-card はクラスセレクターで、複数のカードに繰り返し適用できます。#workshop-list は指定した ID を選びます。HTML 文書内の ID は一意にする必要があります。繰り返し使う見た目のスタイルには、カードごとに ID を作るより、通常はクラスを使うほうが便利です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず HTML の内容を、イベント名、日時、説明、申し込みリンクなど、適切な順序にしてからスタイルを加えます。CSS で段落を大きくしても、意味上の見出しに自動的に変わるわけではありません。普通のコンテナーをボタンのように描いても、本物のボタンが持つキーボード操作の機能は自動的には得られません。見た目と要素の用途を合わせて考える必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "適用されないときは、読み込みとルールの競合を確認",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "外部スタイルシートは通常、HTML の link 要素で読み込みます。rel を stylesheet に設定し、href で正しいファイルを指定する必要があります。スタイル全体が反映されない場合は、まずパス、レスポンス、実際に読み込まれているかを確認します。特定のプロパティだけが変わらない場合は、対象要素を選択して適用中のルールを確認し、すぐに CSS を追加しないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ要素が複数のセレクターに同時に一致することがあります。ブラウザーはカスケードのルールに従い、出所、重要度、レイヤー、詳細度などの要因を処理します。ほかの関連条件が同じ場合に限り、後に現れる宣言で結果が決まります。「最後に書いたものが常に優先される」を一般則にしてはいけません。また、!important を追加し続けるだけで競合を解消するのも適切ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ブラウザーの開発者ツールにある Styles と Computed では、どの宣言が上書きされているか、実際の計算値はいくつかを確認できます。文字色などのプロパティは親要素から継承されることが多い一方、ボーダーやパディングがすべて親要素からコピーされるわけではありません。値の出所を特定してから修正し、一枚のカードを直したことでサイト全体に影響が出るのを避けましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "ボックスモデルでパディング、ボーダー、マージンを区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般的なブロックボックスでは、content は内容を置く領域、padding は内容とボーダーの間の内側の余白、border は内容とパディングを囲む線、margin はボーダーの外側とほかのボックスの間の空間です。文字が背景色の端に接しないようにするには、通常は padding を調整します。カードを隣のものから離すには、margin またはコンテナーの間隔を確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "content-box では、width は内容の幅を指定します。独自の計算例で width を 280px、左右の padding をそれぞれ 16px、左右の border をそれぞれ 2px に設定すると、ボーダー外端の幅は 280＋16＋16＋2＋2＝316px になります。両側のパディングとボーダーの合計は 36px です。margin はこのボーダーまでの寸法には含まれませんが、周囲の余白に影響します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "box-sizing: border-box に変更すると、同じ width が 280px でも、左右のパディングとボーダーがすでに含まれ、この例では内容の幅が 244px になります。この設定はカードの寸法を見積もるのに役立ちますが、長い URL、画像、子要素によるはみ出しを自動的に解決するものではありません。また、margin を width に含めるものでもありません。"
+        },
+        {
+          "type": "heading",
+          "text": "通常フローから始め、配置方法を選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般的な横書き文書では、ブロックは内容の順序に従って下へ並び、インライン要素は文字の流れに沿って配置されます。まず一枚のカードを通常フローで読みやすくしてから、複数のカードを横に並べます。各位置をそろえるために、すべてを絶対配置にしないようにしましょう。文字が増えたときに、ほかの内容がそれに応じてスペースを空けられなくなる可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Flexbox は主に一方向の配置を扱い、カード内のボタン列、タグ、ツールバーに適しています。Grid は列と行を同時に設計でき、位置をそろえる必要があるイベントカードのグリッドに適しています。Flexbox も折り返せますが、折り返した各行での配分は、Grid の共通の列トラックとは異なります。実際に必要な整列に応じて選びましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、操作ボタンの列に display: flex、flex-wrap: wrap、gap: 12px を設定すると、直接の子要素がフレックスアイテムとして並び、折り返しもできるようになります。gap はアイテム間の間隔を制御し、コンテナーの内側の余白には引き続き padding を使えます。この例は練習の出発点です。ボタンの幅と文字の長さは、実際の画面に入れて確認する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "長い内容でレイアウトの問題を見つける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず短いタイトルを入れ、次にイベント名、対象者、場所を含む長いタイトルに変えます。カードの高さを固定すると、内容が切り取られたり、ボタンに重なったりする可能性があります。多くのテキスト領域では、内容に応じて高さが増えるようにし、必要に応じて適切な最小の高さを設定できます。元の寸法に収めるために、文字を小さくするだけで対処しないようにしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "画像も、元の縦横比と使用できる幅を確認する必要があります。よくある練習は、画像を max-width: 100% で制限し、height: auto を組み合わせ、コンテナーを超えずに縦横比を維持させることです。固定の切り抜き枠を使う場合は、切り抜く位置を別途決め、人物、文字、重要な情報が隠れていないか確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通常のブロックでは、特定の条件下で隣接する縦方向の margin が相殺され、余白が必ずしも両方の値の合計になるとは限りません。Flexbox と Grid のアイテムでは、この隣接マージンの相殺は起こりません。間隔が予想と違うときは、まずボックスモデルとコンテナーの display を確認し、あちこちで負の margin を使って位置を戻そうとしないようにしましょう。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "意味と適切な順序を備えたイベントの内容を作り、練習用のスタイルシートを読み込みます。",
+            "クラスで文字色、パディング、ボーダーを設定し、実際に一致するルールを確認します。",
+            "content-box と border-box の寸法を比較し、マージンが別計算であることを確認します。",
+            "複数のカードと長い文章を追加し、狭い画面、拡大表示、キーボード操作を確認します。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "実際の計算値に基づいて検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開発者ツールを開いてカードを選択し、ボックスモデルの内容、パディング、ボーダー、マージンを確認して、手計算の結果と照合します。画面上の幅が合わない場合は、max-width、親コンテナー、フレックスアイテムの縮小、ほかのルールが最終的な寸法に影響していないか注意してください。宣言にある値を書いたからといって、レイアウトの結果がその値だけで決まるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ウィンドウを徐々に狭くしてから文字を拡大し、不要な横スクロール、重なり、見えなくなる操作項目がないか確認します。実際のリンクとボタンをキーボードで順に操作し、フォーカスが見える状態を保ちます。マウスを重ねたときの効果だけを確認すると、キーボード利用者が現在位置を把握できない状況を見落とす可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習が終わったら HTML、CSS、短い説明を残し、どのセレクターが何を担当するか、どの寸法が単なる例なのかを記録します。後でフレームワークやプリプロセッサーに触れたときも、これらのルールに戻って結果を理解できます。多くのレイアウト技法を一度に覚えるより、どのボックス、どの宣言が問題を起こしているかを特定できるほうが役に立ちます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/css-layout-basics/diagram-1-ja.svg",
+          "alt": "三枚のカードで、content-box の外枠 316px、border-box の内容 244px、どちらの width にも含まれない margin を比較しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "この例では、ほかの寸法制限を加えていません。実際の画面では、親コンテナーと最終的な計算値も確認する必要があります。",
+          "description": "三枚のカードで、content-box の外枠 316px、border-box の内容 244px、どちらの width にも含まれない margin を比較しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "設定",
+            "制御する位置や機能",
+            "よくある誤解"
+          ],
+          "rows": [
+            [
+              "padding",
+              "内容とボーダーの間の内側の余白",
+              "負の値は使えない"
+            ],
+            [
+              "border",
+              "内容とパディングを囲む",
+              "幅に加算されるかはボックスモデルによる"
+            ],
+            [
+              "margin",
+              "ボックスの外側の余白",
+              "border-box の width には含まれない"
+            ],
+            [
+              "content-box",
+              "width は内容の幅に対応",
+              "この例では 280px が外枠 316px になる"
+            ],
+            [
+              "border-box",
+              "width にパディングとボーダーを含む",
+              "この例では 280px のうち内容は 244px"
+            ],
+            [
+              "Flexbox／Grid",
+              "直接の子アイテムを配置する",
+              "必要な整列に応じて選ぶ"
+            ]
+          ],
+          "caption": "数値例はいずれも左右のパディングがそれぞれ 16px、左右のボーダーがそれぞれ 2px で、マージンとほかのレイアウト制約は含みません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "競合を理解する代わりに !important で済ませない",
+          "text": "まずスタイルが読み込まれ、セレクターが一致していることを確認し、次にどのルールが上書きされているかと最終的な計算値を調べます。寸法の問題では、親コンテナー、ボックスモデル、内容の確認に戻ります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "さまざまな画面に対応するレスポンシブレイアウトを設計する",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字と内容に視覚的な階層を作る",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトの配色と文字のコントラストを確認する",
+              "kind": "life",
+              "slug": "website-color-system"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN：基本的な CSS セレクター",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Basic_selectors",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：ボックスモデル",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：競合への対処",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：CSS レイアウト入門",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Introduction",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：Flexbox の基本概念",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：マージンの相殺",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model/Margin_collapsing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：HTML の link 要素",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：画像、メディア、フォーム要素",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Images_media_forms",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "CSS 입문: 선택자, 박스 모델과 레이아웃 구성",
+      "description": "CSS를 처음 배울 때는 스타일이 적용되지 않거나, 카드가 예상보다 넓어지거나, 글이 길어지면 겹치는 문제가 흔합니다. 이 글은 직접 설계한 워크숍 행사 카드를 예로 들어 선택자와 선언을 읽는 법부터 시작해 content, padding, border, margin과 box-sizing의 관계를 설명하고, 일반 흐름, Flexbox와 Grid의 활용 방향을 정리합니다. 너비 계산, 실습 단계, 비교표와 직접 그린 도해를 통해 브라우저에서 확인할 수 있는 레이아웃 연습을 돕습니다.",
+      "hero": {
+        "src": "/guides/css-layout-basics/hero-ko.jpg",
+        "alt": "Mokaair가 직접 제작한 규칙 문서, 레이아웃 화면과 구조 문서 일러스트로, CSS 선언이 카드의 박스 모델과 배치를 제어하는 방식을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "CSS는 글자, 색상, 간격과 배치를 포함해 웹페이지의 표현 방식을 담당합니다. 배울 때 모든 속성을 먼저 외울 필요는 없습니다. 행사 카드 하나로 시작해 제목을 명확하게 표시하고, 내용이 가장자리에 붙지 않게 하고, 카드 사이에 간격을 둔 다음 각 규칙이 무엇을 바꾸는지 이해하면 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래 워크숍 행사 카드와 수치는 직접 설계한 연습 예제입니다. 문법과 박스 모델은 2026년 9월 14일에 확인한 MDN 문서를 바탕으로 정리했습니다. 이 글은 독자가 직접 실행할 수 있는 확인 방법을 제공하며, 모든 브라우저에서 호환성 테스트를 완료했다고 주장하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "CSS 규칙 하나를 이해한 다음 선택할 대상을 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 .workshop-card { padding: 16px; }에서 앞부분의 .workshop-card는 선택자로, workshop-card 클래스를 가진 요소를 찾습니다. 중괄호 안은 선언이며, padding은 속성이고 16px은 값입니다. 콜론은 속성과 값을 구분하고, 세미콜론은 선언을 구분하므로 철자와 기호가 정확해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "p 같은 요소 선택자는 해당 이름의 문단 요소에 영향을 줍니다. .workshop-card는 클래스 선택자로 여러 카드에 반복해서 적용할 수 있습니다. #workshop-list는 지정된 ID를 선택하며, HTML 문서의 ID는 고유해야 합니다. 반복해서 사용할 시각적 스타일은 보통 카드마다 ID를 만드는 것보다 클래스로 지정하는 편이 편리합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 HTML의 내용을 행사명, 시간, 설명, 신청 링크처럼 합리적인 순서로 구성한 다음 스타일을 추가하세요. CSS로 문단을 크게 표시한다고 의미상 제목이 되는 것은 아닙니다. 일반 컨테이너를 버튼처럼 꾸며도 실제 버튼의 키보드 조작 기능이 자동으로 생기지는 않습니다. 외관과 요소의 용도를 함께 고려해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "스타일이 적용되지 않으면 로딩과 규칙 간 경쟁부터 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "외부 스타일시트는 보통 HTML의 link 요소로 불러오며, rel을 stylesheet로 설정하고 href가 올바른 파일을 가리키도록 해야 합니다. 스타일 전체가 나타나지 않으면 경로, 응답과 실제 로딩 여부부터 확인하세요. 특정 속성만 바뀌지 않으면 대상 요소를 선택해 적용 중인 규칙을 확인하고, 서둘러 CSS를 더 추가하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "하나의 요소가 여러 선택자에 동시에 일치할 수 있습니다. 브라우저는 캐스케이드 규칙에 따라 출처, 중요도, 레이어와 우선순위 등의 요소를 처리합니다. 다른 관련 조건이 같을 때에만 뒤에 나오는 선언이 결과를 결정합니다. 마지막에 작성한 규칙이 항상 우선한다고 일반화할 수 없으며, 충돌을 없애려고 !important를 계속 추가하는 데만 의존해서도 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "브라우저 개발자 도구의 Styles와 Computed에서는 어떤 선언이 덮어써졌는지, 실제 계산값이 얼마인지 확인할 수 있습니다. 글자 색상 같은 속성은 부모 요소에서 상속되는 경우가 많지만, 테두리와 안쪽 여백이 모두 부모 요소의 값을 그대로 따르는 것은 아닙니다. 값의 출처를 찾은 다음 수정해 카드 하나를 고치다가 사이트 전체에 영향을 주는 일을 피하세요."
+        },
+        {
+          "type": "heading",
+          "text": "박스 모델에서 안쪽 여백, 테두리와 바깥 여백 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "일반적인 블록 박스에서 content는 내용이 들어가는 영역입니다. padding은 내용과 테두리 사이의 안쪽 여백이고, border는 내용과 안쪽 여백을 둘러쌉니다. margin은 테두리 바깥에서 다른 박스와 사이에 생기는 공간입니다. 글자가 배경색 영역의 가장자리에 붙지 않게 하려면 보통 padding을 조정합니다. 카드를 주변 요소와 떨어뜨리려면 margin이나 컨테이너의 간격을 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "content-box를 사용하면 width가 내용의 너비를 지정합니다. 직접 만든 계산 예제에서 width를 280px, 좌우 padding을 각각 16px, 좌우 border를 각각 2px로 설정하면 테두리 바깥쪽 경계의 너비는 280＋16＋16＋2＋2＝316px입니다. 양쪽 안쪽 여백과 테두리의 합은 36px입니다. margin은 이 테두리 기준 크기에 포함되지 않지만 주변 여백에 영향을 줍니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "box-sizing: border-box로 바꾸면 동일한 width 280px에 좌우 안쪽 여백과 테두리가 이미 포함되며, 이 예제의 내용 너비는 244px입니다. 이 설정은 카드 크기를 예상하는 데 도움이 되지만, 긴 URL, 이미지나 자식 요소로 인한 넘침을 자동으로 해결하지는 않습니다. margin도 width에 포함하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "일반 흐름으로 시작한 다음 배치 방법 선택하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "일반적인 가로쓰기 문서에서 블록은 내용 순서에 따라 아래로 배치되고, 텍스트의 인라인 요소는 글의 흐름을 따릅니다. 먼저 카드 하나가 일반 흐름에서 읽기 편하도록 만든 다음 여러 카드를 나란히 배치하세요. 모든 위치를 맞추려고 전부 절대 위치로 지정하면, 글이 늘어나도 다른 내용이 그에 맞춰 공간을 내주지 않을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Flexbox는 주로 한 방향의 배치를 처리하며 카드 안의 버튼 줄, 태그나 도구 모음에 적합합니다. Grid는 열과 행을 함께 구성하므로 정렬이 필요한 행사 카드 격자에 적합합니다. Flexbox도 줄바꿈을 지원하지만, 줄바꿈 후 각 줄의 공간 배분은 Grid의 공통 열 트랙과 같지 않습니다. 실제 정렬 요구에 따라 선택해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 조작 버튼 줄에 display: flex, flex-wrap: wrap과 gap: 12px을 설정하면 직계 자식 요소가 플렉스 항목으로 배치되고 줄바꿈도 허용됩니다. gap은 항목 사이의 간격을 제어하며, 컨테이너 안쪽 가장자리의 여백에는 padding을 사용할 수 있습니다. 이 예제는 연습의 출발점이며, 버튼 너비와 글자 길이는 실제 화면에 넣어 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "내용을 길게 바꿔 레이아웃 문제 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 짧은 제목을 넣은 다음 행사명, 대상과 장소가 포함된 긴 제목으로 바꿔보세요. 카드 높이를 고정하면 내용이 잘리거나 버튼을 덮을 수 있습니다. 대부분의 텍스트 영역은 내용이 늘어나는 만큼 높이도 늘어나도록 하고, 필요에 따라 합리적인 최소 높이를 설정할 수 있습니다. 원래 크기에 맞추려고 글자 크기만 줄이지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이미지도 원래 비율과 사용 가능한 너비를 확인해야 합니다. 흔히 사용하는 연습 방법은 이미지에 max-width: 100%와 height: auto를 함께 설정해 컨테이너를 넘지 않으면서 비율을 유지하게 하는 것입니다. 고정된 자르기 영역을 사용한다면 잘리는 위치를 별도로 정하고, 인물, 글자나 중요한 정보가 가려지지 않았는지 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 블록에서는 특정 조건에서 서로 인접한 세로 방향 margin이 상쇄되므로 여백이 두 수치의 합과 같지 않을 수 있습니다. Flexbox와 Grid 항목에는 이러한 인접 바깥 여백 상쇄가 적용되지 않습니다. 간격이 예상과 다르면 먼저 박스 모델과 컨테이너의 display를 확인하고, 여기저기 음수 margin을 적용해 위치를 되돌리지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "의미에 맞는 요소와 합리적인 순서로 행사 내용을 구성한 다음 연습용 스타일시트를 불러오세요.",
+            "클래스로 글자 색상, 안쪽 여백과 테두리를 설정하고 실제로 일치하는 규칙을 확인하세요.",
+            "content-box와 border-box의 크기를 비교하고 바깥 여백은 별도로 계산되는지 확인하세요.",
+            "여러 카드와 긴 글을 추가해 좁은 화면, 확대와 키보드 조작을 확인하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "실제 계산값을 기준으로 결과 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "개발자 도구를 열어 카드를 선택하고 박스 모델의 내용, 안쪽 여백, 테두리와 바깥 여백을 확인한 다음 직접 계산한 결과와 비교하세요. 화면의 너비가 예상과 다르면 max-width, 부모 컨테이너, 플렉스 축소나 다른 규칙이 최종 크기에 영향을 주는지 살펴보세요. 선언에 어떤 값을 적었다고 해서 레이아웃 결과가 그 값만으로 결정되는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "창을 점차 좁힌 다음 글자를 확대해 불필요한 가로 스크롤, 겹침이나 보이지 않는 조작 요소가 생기는지 확인하세요. 실제 링크와 버튼을 키보드로 이동해보며 포커스가 눈에 보이도록 유지하세요. 마우스를 올렸을 때의 효과만 확인하면 키보드 사용자가 현재 위치를 알아볼 수 없는 상황을 놓칠 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "연습을 마치면 HTML, CSS와 짧은 설명을 보관하고, 어떤 선택자가 무엇을 담당하는지와 어떤 크기가 예시일 뿐인지 기록하세요. 나중에 프레임워크나 전처리기를 접해도 이 규칙으로 돌아와 결과를 이해할 수 있습니다. 많은 레이아웃 기법을 한꺼번에 외우는 것보다 어떤 박스와 선언이 문제를 일으키는지 찾아내는 능력이 더 유용합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/css-layout-basics/diagram-1-ko.svg",
+          "alt": "세 카드로 content-box의 테두리 바깥 너비 316px, border-box의 내용 너비 244px, 두 방식의 width에 포함되지 않는 margin을 비교합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "이 예제에는 다른 크기 제한이 없습니다. 실제 화면에서는 부모 컨테이너와 최종 계산값도 확인해야 합니다.",
+          "description": "세 카드로 content-box의 테두리 바깥 너비 316px, border-box의 내용 너비 244px, 두 방식의 width에 포함되지 않는 margin을 비교합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "설정",
+            "제어하는 위치 또는 기능",
+            "흔한 오해"
+          ],
+          "rows": [
+            [
+              "padding",
+              "내용과 테두리 사이의 안쪽 여백",
+              "음수 값 사용 불가"
+            ],
+            [
+              "border",
+              "내용과 안쪽 여백을 둘러쌈",
+              "너비가 추가되는지는 박스 모델에 따라 다름"
+            ],
+            [
+              "margin",
+              "박스 바깥의 여백",
+              "border-box의 width에 포함되지 않음"
+            ],
+            [
+              "content-box",
+              "width가 내용 너비에 해당",
+              "이 예제에서는 280px이 테두리 바깥 너비 316px이 됨"
+            ],
+            [
+              "border-box",
+              "width에 안쪽 여백과 테두리 포함",
+              "이 예제에서는 280px 중 내용 너비가 244px"
+            ],
+            [
+              "Flexbox／Grid",
+              "직계 자식 항목 배치",
+              "정렬 요구에 따라 선택"
+            ]
+          ],
+          "caption": "수치 예제는 모두 좌우 안쪽 여백이 각각 16px, 좌우 테두리가 각각 2px이며, 바깥 여백과 다른 레이아웃 제한은 포함하지 않습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "!important로 충돌 원인 이해를 대신하지 마세요",
+          "text": "먼저 스타일이 로딩되었고 선택자가 일치하는지 확인한 다음, 어떤 규칙이 덮어써졌는지와 최종 계산값을 살펴보세요. 크기 문제라면 부모 컨테이너, 박스 모델과 내용을 다시 확인하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "다양한 화면에 맞는 반응형 레이아웃 구성하기",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "글자와 내용의 시각적 계층 만들기",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사이트 배색과 글자 대비 확인하기",
+              "kind": "life",
+              "slug": "website-color-system"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN: 기본 CSS 선택자",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Basic_selectors",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: 박스 모델",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: 충돌 처리",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: CSS 레이아웃 입문",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Introduction",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: flexbox의 기본 개념",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: 바깥 여백 상쇄",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model/Margin_collapsing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: HTML link 요소",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: 이미지, 미디어와 폼 요소",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Images_media_forms",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "CSS 入门：选择器、盒模型与布局",
+      "description": "刚学 CSS 时，最常遇到的问题是样式没有生效、卡片比预期更宽，或文字一变长就重叠。本文以原创工作坊活动卡片为例，从选择器与声明的读法开始，说明 content、padding、border、margin 和 box-sizing 的关系，再介绍正常流、Flexbox 与 Grid 的应用方向。附宽度计算、步骤、比较表及自绘图解，帮助建立能在浏览器中验证的布局练习。",
+      "hero": {
+        "src": "/guides/css-layout-basics/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创规则文档、布局画面与结构文档插图，展示 CSS 声明如何控制卡片的盒模型与排列。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "CSS 负责网页的呈现方式，包括文字、色彩、间距与排列。学习时不必先背下所有属性，可以从一张活动卡片开始：让标题清晰、内容不贴边、卡片彼此有距离，再理解每一条规则改变了什么。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下工作坊活动卡片与数值均为自行设计的练习。语法与盒模型根据 2026 年 9 月 14 日查阅的 MDN 文档整理；本文提供读者可执行的检查方法，没有声称已在所有浏览器中完成兼容性测试。"
+        },
+        {
+          "type": "heading",
+          "text": "读懂一条 CSS 规则，再决定选谁",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "例如 .workshop-card { padding: 16px; }，前面的 .workshop-card 是选择器，会找出具有 workshop-card 类的元素；大括号内是声明，padding 是属性，16px 是值。冒号隔开属性和值，分号隔开声明，拼写及符号需要正确。"
+        },
+        {
+          "type": "paragraph",
+          "text": "p 这类元素选择器会影响名称匹配的段落；.workshop-card 是类选择器，可重复应用到多张卡片；#workshop-list 则选择指定 ID，HTML 文档中的 ID 应保持唯一。对于要重复使用的视觉样式，通常使用类比为每张卡片建立 ID 更方便。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先让 HTML 具有合理的内容顺序，例如活动名称、时间、说明与报名链接，再加入样式。CSS 将段落放大并不会自动把它变成语义上的标题；把普通容器画成按钮，也不会自动获得真正按钮的键盘操作能力。外观和元素用途需要一起安排。"
+        },
+        {
+          "type": "heading",
+          "text": "没有生效时，先检查加载与规则竞争",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "外部样式表通常由 HTML 的 link 元素加载，需要将 rel 设置为 stylesheet，href 指向正确文件。若整份样式都没出现，先检查路径、响应及是否确实加载；若只有某个属性没变，则选中目标元素检查正在应用的规则，不急着增加更多 CSS。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一个元素可能同时匹配多个选择器。浏览器会根据层叠规则处理来源、重要性、层级及优先级等因素；只有在其他相关条件相同时，才由出现较后的声明决定结果。不能把最后写的永远优先当成通则，也不宜只靠不断加入 !important 排除冲突。"
+        },
+        {
+          "type": "paragraph",
+          "text": "浏览器开发工具中的 Styles 和 Computed 可帮助查看哪些声明被覆盖、实际计算值是多少。文字颜色等属性常会从父元素继承，边框和内边距则不会一概照着父元素复制。找出值的来源后再修改，避免修好一张卡片却影响整个网站。"
+        },
+        {
+          "type": "heading",
+          "text": "盒模型分清内边距、边框与外边距",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "对于一般块盒，content 是放置内容的区域；padding 是内容与边框之间的内边距；border 包围内容及内边距；margin 是边框外与其他盒子之间的空间。想让文字不要贴住底色边缘，通常调整 padding；想让卡片与旁边对象分开，则检查 margin 或容器间距。"
+        },
+        {
+          "type": "paragraph",
+          "text": "采用 content-box 时，width 指定内容宽度。原创算例将 width 设为 280px、左右 padding 各 16px、左右 border 各 2px，则边框外缘宽度为 280＋16＋16＋2＋2＝316px。两侧内边距与边框合计 36px。margin 不包含在这个边框尺寸中，但会影响周围留白。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改成 box-sizing: border-box 后，同样将 width 设为 280px，就已包含左右内边距及边框，内容宽度在本例中为 244px。这个设置有助于预估卡片尺寸，但不会自动解决长网址、图片或子元素造成的溢出；它也没有把 margin 算进 width。"
+        },
+        {
+          "type": "heading",
+          "text": "从正常流开始，再选择排列方法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般横排文档中的块会按内容顺序向下排列，文字中的行内元素则随文字流动。先让单张卡片在正常流中可读，再处理多张并排。不要为了对齐每个位置就全部使用绝对定位，否则文字增加时，其他内容可能不会随之让出空间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Flexbox 主要处理一个方向的排列，适合卡片内的按钮行、标签或工具栏；Grid 同时规划列与行，适合需要对齐的活动卡片网格。Flexbox 也能换行，但换行后各行的分配不等同于 Grid 的共同列轨道，应根据实际对齐需求选择。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如为操作行设置 display: flex、flex-wrap: wrap 和 gap: 12px，让直接子元素作为弹性项目排列并允许换行。gap 控制项目之间的间距，容器内缘留白仍可使用 padding。这个例子是练习起点，按钮宽度与文字长度仍需放进实际画面查看。"
+        },
+        {
+          "type": "heading",
+          "text": "用变长的内容找出布局问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先放入短标题，再改成包含活动名称、对象及地点的长标题。若卡片高度固定，内容可能被裁切或压住按钮；多数文字区域可以让高度随内容增加，再根据需求设置合理的最小高度。不要单靠缩小字体来塞进原本的尺寸。"
+        },
+        {
+          "type": "paragraph",
+          "text": "图片也要检查原始比例与可用宽度。常见练习是限制图片 max-width: 100%，搭配 height: auto，让图片不超过容器并保留比例；若使用固定裁切框，则另外决定裁切位置，确认人物、文字或重要信息没有被遮掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "普通块在特定条件下，相邻垂直 margin 会折叠，留白未必等于两个数字相加；Flexbox 与 Grid 项目则不采用这种相邻外边距折叠方式。当间距与预期不同，先查看盒模型及容器 display，不要到处用负 margin 把位置拉回来。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "建立具有语义且顺序合理的活动内容，再加载练习样式表。",
+            "使用类设置文字颜色、内边距及边框，查看实际匹配的规则。",
+            "比较 content-box 和 border-box 的尺寸，确认外边距另计。",
+            "加入多张卡片及长文字，检查窄屏、放大与键盘操作。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "把验收建立在实际计算值上",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "打开开发工具选中卡片，确认盒模型中的内容、内边距、边框及外边距，再与手算结果对照。如果画面宽度不符，留意 max-width、父容器、弹性收缩或其他规则是否影响最终尺寸。声明中写了某个值，不代表布局结果只受那个值控制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "将窗口逐渐缩窄，再放大文字，查看是否出现不必要的水平滚动、重叠或不可见的操作。用键盘依次访问真正的链接和按钮，保留可见焦点；若只检查鼠标悬停效果，就可能漏掉键盘用户看不出当前位置的情况。"
+        },
+        {
+          "type": "paragraph",
+          "text": "练习完成后保留 HTML、CSS 与简短说明，记录哪个选择器负责什么、哪些尺寸只是示例。日后接触框架或预处理器时，仍可回到这些规则理解结果。能定位是哪个盒子、哪条声明造成问题，比一次记住很多布局技巧更有用。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/css-layout-basics/diagram-1-zh-cn.svg",
+          "alt": "三张卡片比较 content-box 的外框 316px、border-box 的内容 244px，以及不计入两者 width 的 margin。",
+          "width": 1600,
+          "height": 900,
+          "caption": "本例未加入其他尺寸限制；实际画面还要查看父容器与最终计算值。",
+          "description": "三张卡片比较 content-box 的外框 316px、border-box 的内容 244px，以及不计入两者 width 的 margin。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "设置",
+            "控制的位置或功能",
+            "常见误解"
+          ],
+          "rows": [
+            [
+              "padding",
+              "内容到边框的内边距",
+              "不能使用负值"
+            ],
+            [
+              "border",
+              "包围内容与内边距",
+              "宽度是否额外增加取决于盒模型"
+            ],
+            [
+              "margin",
+              "盒子外部留白",
+              "不包含在 border-box 的 width 中"
+            ],
+            [
+              "content-box",
+              "width 对应内容",
+              "本例 280px 形成 316px 外框"
+            ],
+            [
+              "border-box",
+              "width 包含内边距与边框",
+              "本例 280px 中内容为 244px"
+            ],
+            [
+              "Flexbox／Grid",
+              "排列直接子项目",
+              "选择方式取决于对齐需求"
+            ]
+          ],
+          "caption": "数值例子均为左右内边距各 16px、左右边框各 2px，不含外边距与其他布局限制。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要用 !important 取代理解冲突",
+          "text": "先确认样式已加载、选择器已匹配，再查看哪条规则被覆盖与最终计算值。尺寸问题则回到父容器、盒模型和内容进行检查。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排适配不同屏幕的响应式布局",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立文字与内容的视觉层级",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "检查网站配色与文字对比度",
+              "kind": "life",
+              "slug": "website-color-system"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN：基础 CSS 选择器",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Basic_selectors",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：盒模型",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：处理冲突",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：CSS 布局入门",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Introduction",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：flexbox 基本概念",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：外边距折叠",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model/Margin_collapsing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：HTML link 元素",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：图像、媒体和表单元素",
           "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Images_media_forms",
           "checked_on": "2026-09-14"
         }

@@ -1,0 +1,12 @@
+<?xml version='1.0'?>
+<Obfuscator>
+  <Var name="InPath" value="&lt;build-output-dir&gt;\bin-plain" />
+  <Var name="OutPath" value="&lt;build-output-dir&gt;\bin-obf" />
+  <Var name="KeepPublicApi" value="false" />
+  <Var name="HidePrivateApi" value="true" />
+  <Var name="HideStrings" value="true" />
+  <Var name="RenameProperties" value="true" />
+  <Var name="RenameEvents" value="true" />
+  <Var name="RenameFields" value="true" />
+  <Module file="$(InPath)\NoteVault.dll" />
+</Obfuscator>

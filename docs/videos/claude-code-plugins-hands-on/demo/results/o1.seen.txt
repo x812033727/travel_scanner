@@ -1,0 +1,17 @@
+PreToolUse by=main id=c1 Skill skill=release-prep keys=skill,args
+PreToolUse by=main id=c2 Agent type=log-scout background=- prompt_chars=218
+PostToolUse by=main id=c2 Agent type=log-scout background=- prompt_chars=218 | status=async_launched
+SubagentStart agent=log-scout
+PreToolUse by=main id=c3 Read .claude/skills/release-prep/template.md
+PreToolUse by=main id=c4 Read package.json
+PreToolUse by=log-scout id=c5 Glob .
+PreToolUse by=main id=c6 Read CHANGELOG.md
+PreToolUse by=main id=c7 Read README.md
+PreToolUse by=main id=c8 Edit package.json
+PreToolUse by=log-scout id=c9 Read logs/queue-2026-10-08.log
+PreToolUse by=log-scout id=c10 Read logs/queue-2026-10-09.log
+PreToolUse by=main id=c11 Edit CHANGELOG.md
+PreToolUse by=main id=c12 Edit README.md
+PreToolUse by=main id=c13 Write releases/v0.4.1.md
+SubagentStop agent=log-scout
+PreToolUse by=main id=c14 Edit releases/v0.4.1.md

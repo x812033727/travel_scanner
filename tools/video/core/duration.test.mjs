@@ -2,9 +2,10 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { presentationTimeline } from "./branding.mjs";
-import { animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems, effectiveEpisodeMinutes, isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
+import { A01_COMPACT_BODY_SECONDS, animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems, effectiveEpisodeMinutes, isA01CompactStory, isA01PilotStory, isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
 import { LONG_ANIME_POLICY, runtimePolicyHash } from "./anime-policy.mjs";
 import { fitPlan } from "../assemble/drama.mjs";
+import { EXPLAINER_PRESETS } from "./drama.mjs";
 import { dramaFixture, explainerFixture, fixture, storyFixture } from "./fixtures/load.mjs";
 
 const doc = { format: "slides", category: "explainer", slug: "catalogue-example" };
@@ -15,17 +16,28 @@ function cut(frames = 14_400, branding = null) {
   return { doc, timeline, presented, timelineCurrent: true, checks: { ok: true, speech_hash: timeline.speech_hash, metrics: { frames: presented.total_frames }, ...(applied ? { branding: applied } : {}) } };
 }
 
+const a01 = {
+  slug: "story-rolling-suitcase-v2", format: "drama", category: "story",
+  series: { slug: "brand-stories-curio-pilot-v2", episode: 1 },
+  look: { preset: "cute-mystery" }, target_minutes: [7, 8],
+};
+
 test("legacy explainer targets use ten minutes and explicit valid targets keep their length", () => {
-  for (const legacy of [undefined, null, 0, 3, 7]) assert.equal(effectiveEpisodeMinutes(legacy, "flat-explainer"), 10);
-  for (const target of [8, 9, 10, 13, 20]) assert.equal(effectiveEpisodeMinutes(target, "flat-explainer"), target);
+  assert.deepEqual(EXPLAINER_PRESETS, ["flat-explainer", "cute-cartoon", "cute-mystery"]);
+  for (const preset of EXPLAINER_PRESETS) {
+    for (const legacy of [undefined, null, 0, 3, 7]) assert.equal(effectiveEpisodeMinutes(legacy, preset), 10, preset);
+    for (const target of [8, 9, 10, 13, 20]) assert.equal(effectiveEpisodeMinutes(target, preset), target, preset);
+  }
   assert.equal(effectiveEpisodeMinutes(3, "cinematic-3d"), 3, "ordinary drama keeps its target");
   assert.equal(effectiveEpisodeMinutes(13, "anime-2d"), 13, "brand stories keep thirteen minutes");
   assert.equal(effectiveEpisodeMinutes(undefined, "cinematic-3d"), undefined, "the caller retains its ordinary default");
 });
 
 test("malformed explainer targets fail instead of making a writer use a clipped duration", () => {
-  for (const invalid of [21, Infinity, NaN, 8.5, "10", false]) {
-    assert.throws(() => effectiveEpisodeMinutes(invalid, "flat-explainer"), RangeError);
+  for (const preset of EXPLAINER_PRESETS) {
+    for (const invalid of [21, Infinity, NaN, 8.5, "10", false]) {
+      assert.throws(() => effectiveEpisodeMinutes(invalid, preset), RangeError, preset);
+    }
   }
 });
 
@@ -35,6 +47,8 @@ test("knowledge catalogues are covered without changing ordinary drama, compilat
   for (const category of ["ai-terms", "explainer", "story"]) assert.equal(isKnowledgeLongform({ ...doc, category }), true);
   for (const slug of ["sothatswhy-s01", "ai-term-token", "story-umbrella"]) assert.equal(isKnowledgeLongform({ format: "slides", slug }), true);
   assert.equal(isKnowledgeLongform(explainerFixture()), true, "flat-explainer pilot lacks a category");
+  for (const preset of EXPLAINER_PRESETS) assert.equal(isKnowledgeLongform({ format: "drama", look: { preset } }), true, `${preset} is held to the floor by its preset alone`);
+  assert.equal(isKnowledgeLongform({ format: "drama", look: { preset: "ink-wash" } }), false);
   assert.equal(isKnowledgeLongform({ ...storyFixture(), category: "story" }), true, "the story worker marks brand stories with category story");
   for (const other of [undefined, fixture(), dramaFixture(), { ...doc, format: "shorts" }, { ...doc, compilation: { episodes: [] } }]) {
     assert.equal(isKnowledgeLongform(other), false);
@@ -50,6 +64,66 @@ test("eight minutes passes exactly; one frame short fails without rounding or tr
   assert.equal(problems.length, 2, "both body and final cut are below the floor");
   assert.match(problems[0], /14399 frames \(479\.966666/);
   assert.match(problems[1], /final cut is 14399 frames/);
+});
+
+test("a cute explainer is held to the same 480 measured seconds as flat-explainer", () => {
+  const mystery = { format: "drama", slug: "curio-example", look: { preset: "cute-mystery" }, characters: [] };
+  assert.deepEqual(knowledgeDurationProblems({ ...cut(), doc: mystery }), []);
+  const problems = knowledgeDurationProblems({ ...cut(14_399), doc: mystery });
+  assert.ok(problems.length > 0, "one frame short of eight minutes is refused");
+  assert.match(problems[0], /14399 frames/);
+});
+
+test("only the exact A01 pilot identity and per-video target use the compact band", () => {
+  assert.deepEqual(A01_COMPACT_BODY_SECONDS, [420, 480]);
+  assert.equal(isA01PilotStory(a01), true);
+  assert.equal(isA01CompactStory(a01), true);
+  for (const change of [
+    { slug: "story-conveyor-belt-sushi-v2" }, { format: "slides" }, { category: "explainer" },
+    { series: { slug: "brand-stories-curio-pilot-v2", episode: 2 } },
+    { series: { slug: "brand-stories-five-v2", episode: 1 } },
+    { look: { preset: "custom" } }, { look: { preset: "cute-mystery", style: "other" } },
+    { compilation: { episodes: [] } },
+  ]) {
+    const other = { ...a01, ...change };
+    assert.equal(isA01PilotStory(other), false, JSON.stringify(change));
+    assert.equal(isA01CompactStory(other), false, JSON.stringify(change));
+  }
+  assert.equal(isA01PilotStory({ ...a01, target_minutes: [9, 11] }), true);
+  assert.equal(isA01CompactStory({ ...a01, target_minutes: [9, 11] }), false,
+    "an old A01 target cannot silently inherit the shorter QA floor");
+  assert.equal(isA01CompactStory(null), false);
+});
+
+test("A01 accepts exactly 420 to 480 measured body seconds; bookends cannot buy time", () => {
+  for (const frames of [420 * 30, 450 * 30, 480 * 30]) {
+    assert.deepEqual(knowledgeDurationProblems({ ...cut(frames), doc: a01 }), []);
+  }
+  const under = knowledgeDurationProblems({ ...cut(420 * 30 - 1), doc: a01 });
+  assert.equal(under.length, 2, "body and final cut are both below the inclusive floor");
+  assert.match(under[0], /body is 12599 frames.*needs at least 12600 frames \(420 s\), excluding intro and outro/);
+  const over = knowledgeDurationProblems({ ...cut(480 * 30 + 1), doc: a01 });
+  assert.equal(over.length, 1);
+  assert.match(over[0], /body is 14401 frames.*needs at most 14400 frames \(480 s\), excluding intro and outro/);
+  const padded = cut(420 * 30 - 1, { intro_frames: 150, outro_frames: 630 });
+  assert.ok(padded.presented.total_frames > 420 * 30);
+  assert.match(knowledgeDurationProblems({ ...padded, doc: a01 }).join("; "), /body is 12599 frames.*excluding intro and outro/);
+  assert.deepEqual(knowledgeDurationProblems({ ...cut(480 * 30, {}), doc: a01 }), [],
+    "a valid 480-second body may have intro and outro outside the body maximum");
+});
+
+test("A01's shorter floor still needs current narration and checked matching cut; B18 keeps 480 seconds", () => {
+  const valid = { ...cut(420 * 30), doc: a01 };
+  assert.match(knowledgeDurationProblems({ ...valid, timelineCurrent: false }).join("; "), /current actual narration timeline/);
+  assert.match(knowledgeDurationProblems({ ...valid, checks: { ...valid.checks, speech_hash: "stale" } }).join("; "), /same speech hash/);
+  assert.match(knowledgeDurationProblems({ ...valid, checks: { ...valid.checks, metrics: { frames: 12_601 } } }).join("; "), /checked final frame count/);
+  for (const other of [
+    { ...a01, slug: "story-conveyor-belt-sushi-v2", series: { ...a01.series, episode: 2 }, target_minutes: [9, 11] },
+    { ...a01, target_minutes: [9, 11] },
+  ]) {
+    assert.match(knowledgeDurationProblems({ ...cut(420 * 30), doc: other }).join("; "), /needs at least 14400 frames \(480 s\)/);
+    assert.deepEqual(knowledgeDurationProblems({ ...cut(480 * 30), doc: other }), []);
+  }
 });
 
 test("bookends cannot make a short body pass, while a qualifying body may keep its bookends", () => {

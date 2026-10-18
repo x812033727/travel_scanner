@@ -10,7 +10,8 @@
 //   node tools/video/story-plans/validate.mjs --only A01,B18  report only these stories' problems
 //
 // --plan <dir> names another plan directory; --report <file> keeps what --fetch read, as JSON.
-// The exit code is 1 when anything is wrong.
+// The exit code is 1 when anything is wrong; a WARNING line (a thumbnail headline the builder
+// would cut to the channel's six) is for the author and leaves it 0.
 import { writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -18,7 +19,7 @@ import { fileURLToPath } from "node:url";
 
 import { EDITORIAL_USER_AGENT, pageReader } from "../automation/fetch.mjs";
 import { linkChecker } from "../qa/links.mjs";
-import { canonical, compile, compiledCurrent, DEFAULT_PLAN, loadPlan, planProblems, reviewerOnly, scheduleMarkdown, serialize, storyHash } from "./plan.mjs";
+import { canonical, compile, compiledCurrent, DEFAULT_PLAN, loadPlan, planProblems, reviewerOnly, scheduleMarkdown, serialize, storyHash, storyWarnings } from "./plan.mjs";
 
 // The check reads a page with the worker's own reader (tools/video/automation/fetch.mjs), under
 // the worker's name: what the reader cannot turn into text, the worker's fact check cannot rest
@@ -180,7 +181,11 @@ export async function main(argv, { stdout = process.stdout, stderr = process.std
     if (taken.length) stdout.write(`${taken.length} facts rest on documents the worker cannot read (the review's reviewer_only): ${[...new Set(taken.map((fact) => fact.id))].join(", ")}\n`);
   }
   for (const problem of problems) stderr.write(`PROBLEM ${problem}\n`);
-  stdout.write(`${problems.length} problems\n`);
+  // What an author should still change, though the plan is sound (the thumbnail headline the
+  // builder would cut): printed, never counted, so a plan written under the old limit still passes.
+  const warnings = sound.filter((entry) => !only || only.has(entry.id)).flatMap((entry) => storyWarnings(entry.story).map((warning) => `${entry.id}: ${warning}`));
+  for (const warning of warnings) stderr.write(`WARNING ${warning}\n`);
+  stdout.write(`${problems.length} problems, ${warnings.length} warnings\n`);
   return problems.length ? 1 : 0;
 }
 

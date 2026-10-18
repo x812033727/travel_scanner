@@ -1,0 +1,74 @@
+# runlog.txt — REA 逆向自己的軟體（2026-10-16）
+# 環境：Windows 11、Node.js 24.13.0、.NET SDK 10.0.400、Chrome 155、REA rea-agents 6.5.0、Obfuscar 2.2.50
+# 分析目標全為自有：自寫的 NoteVault 與自家 Mokaair 正式站。秘密皆為假測試值。
+
+=== [B1] 原版 NoteVault 預設執行 ===
+$ dotnet NoteVault.dll
+NoteVault 1.4.2. Commands: activate <key>, export-pdf
+Pro costs NT$150 per month.
+
+=== [B2] REA 版本 ===
+$ npx rea --version
+6.5.0
+
+=== [B3] REA 抽字串常數：原版（節錄秘密相關行） ===
+$ npx rea inspect-managed-members bin-plain/NoteVault.dll --filter-output string_literals
+literal count: 23
+  "nv-test-secret-7f3a9c"   (簽章密鑰)
+  "NV_INTERNAL_DEBUG"       (除錯後門環境變數)
+  "letmein"                 (後門密碼)
+  "EDU" / "NT$90"           (隱藏六折 NT$90)
+  "nvk_test_51HxQ2fakeKEY000000"  (同步 API key，假值)
+
+=== [B4] REA 抽字串常數：混淆版 ===
+$ npx rea inspect-managed-members bin-obf/NoteVault.dll --filter-output string_literals
+literal count: 0   (字串堆被 HideStrings 清空)
+
+=== [B5] 位元組掃描：混淆後密鑰是否仍以明文殘留 ===
+const 版 bin-obf  含 nv-test-secret（明文殘留）: true
+readonly 版 bin-obf2 含 nv-test-secret            : false
+
+=== [B6] 偽造 key（由密鑰自算）在三版的結果 ===
+--- bin-plain ---
+$ dotnet NoteVault.dll activate NV-123456-78F56FB4
+Pro activated.
+--- bin-obf ---
+$ dotnet NoteVault.dll activate NV-123456-78F56FB4
+Pro activated.
+--- bin-obf2 ---
+$ dotnet NoteVault.dll activate NV-123456-78F56FB4
+Pro activated.
+
+=== [B7] 除錯後門與隱藏折扣（混淆版 bin-obf）===
+$ NV_INTERNAL_DEBUG=letmein dotnet NoteVault.dll
+internal debug menu: all Pro features unlocked
+$ NV_REGION=EDU dotnet NoteVault.dll
+NoteVault 1.4.2. Commands: activate <key>, export-pdf
+Pro costs NT$90 per month.
+
+=== [W1] REA 分析正式站前端 analyze-web-bundle（摘要） ===
+target: https://mokaair.com/zh-TW
+scripts_observed: 20   parsed: 20   parse_failures: 0   ast_nodes: 229492
+vendor_fingerprint: Next.js (high)
+source_maps: status=unavailable, requested=0   (正式站已關 source map)
+endpoints (call:fetch): /api/travel/analytics/config , /api/travel/analytics/events
+limitations: "server-side behavior may remain unknown"
+
+=== [FIX] 動手改：把密鑰與判斷搬到伺服器，實跑 ===
+# 改法：NoteVault v2（bin-fixed）移除寫死的密鑰，activate 改成把 key POST 給
+#       本機 license 伺服器（密鑰只在伺服器，127.0.0.1，假測試值），由伺服器回「准/不准」。
+
+--- [FIX1] REA 掃新 client 的字串，還有沒有密鑰？ ---
+$ npx rea inspect-managed-members bin-fixed/NoteVault.dll --filter-output string_literals
+字串常數：NV_LICENSE_URL、http://127.0.0.1:8799/license/verify、activate、
+          Invalid license key.、Pro activated.、NoteVault 2.0.0. ...
+含 secret：false   （密鑰不在 client 裡了，只剩伺服器的網址）
+
+--- [FIX2] 伺服器核發的合法 key ---
+$ dotnet NoteVault.dll activate NV-123456-69D4F3D0
+Pro activated.
+
+--- [FIX3] 舊的偽造 key（用外洩的舊密鑰算出來的那把）---
+$ dotnet NoteVault.dll activate NV-123456-78F56FB4
+Invalid license key.
+# 原因：伺服器用的是 client 裡沒有、也倒不出來的密鑰；攻擊者算不出合法 key。

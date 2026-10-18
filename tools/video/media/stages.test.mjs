@@ -87,6 +87,18 @@ test("cross-vendor overrides use that vendor's reported credentials, or explicit
   assert.equal(statusProblem(unknown), null, "the API can reject an unavailable vendor before calling it");
 });
 
+test("a one-off explainer's image-01 beside a 2K-priced settings model is drawn at 1K, at MiniMax's price and under MiniMax's prompt limit", async () => {
+  const { imagePromptLimit } = await import("./prompt-budget.mjs");
+  const original = status();
+  original.image.usd_per_image_2k = 0.134;
+  assert.equal(imageSizeFor(original), "2K", "the settings' own model is drawn at 2K");
+  const effective = imageStatus(original, { image_model: MINI });
+  assert.deepEqual(effective.image, { provider: "minimax", model: MINI, configured: null, usd_per_image_2k: null });
+  assert.equal(imageSizeFor(effective), null);
+  assert.equal(imagePrice(effective), 0.0035);
+  assert.equal(imagePromptLimit(effective.image, { limits: { image_prompt_chars: 4000, image_prompt_chars_minimax: 1500 } }), 1500);
+});
+
 test("an unknown or retired series model is refused instead of silently falling back", () => {
   assert.throws(() => imageStatus(status(), story("missing-image-model")), errorCode("video_media_model_not_allowed"));
   const retired = status();
@@ -314,6 +326,21 @@ test("a failed server job retried under the same id updates its zero charge when
   assert.equal(cached.reused, true);
   assert.equal(readLedger(fake.workdir).entries.length, 1);
   assert.equal(readLedger(fake.workdir).totals.usd, 0.067);
+});
+
+test("an uncertain pilot job keeps its reservation and pending id across reruns", async () => {
+  const fake = fakeStage(imageStatus(status(), story()));
+  Object.assign(fake.ready, {
+    status: "failed", file: null, usd_estimate: 0,
+    error: { code: "video_media_outcome_uncertain", detail: "vendor result unknown" },
+  });
+  await assert.rejects(fake.generate(), (error) => error instanceof MediaError && error.code === "video_media_outcome_uncertain" && error.who === "owner");
+  assert.equal(readLedger(fake.workdir).totals.reserved, 0.067);
+  assert.deepEqual(Object.values(readJobs(fake.workdir).jobs).map((job) => job.job_id), [fake.ready.id]);
+
+  await assert.rejects(fake.generate(), errorCode("video_media_outcome_uncertain"));
+  assert.deepEqual(fake.calls, ["POST images", "GET jobs/image-job-1"], "a rerun must inspect the original job without buying another image");
+  assert.equal(readLedger(fake.workdir).totals.reserved, 0.067);
 });
 
 test("a generation holds its list price in the ledger before it is submitted, and the server's charge replaces the hold", async () => {

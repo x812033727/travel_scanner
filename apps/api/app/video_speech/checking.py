@@ -43,18 +43,12 @@ TRANSCRIBE_INSTRUCTIONS = (
     "(for example AI, GPT, p95). Write numbers the way they are spoken. Do not correct, "
     "summarize or add anything. Output only the transcript."
 )
-# One prompt per track language (the values of TrackLanguage in schemas.py). zh-CN keeps
-# Mandarin's rules in Simplified characters, numbers included, since a zh-CN script writes them
-# in words as often as a zh-TW one does. The other three are read from translations that write
-# numbers as digits, so their transcribers are left to do the same.
+# One prompt per track language (the values of TrackLanguage in schemas.py). The three dubs are
+# read from translations that write numbers as digits, so their transcribers are left to do the
+# same. A zh-CN dub is not made since 2026-10-09 (a video's languages are four), so it has no
+# prompt any more.
 TRANSCRIBE_INSTRUCTIONS_BY_LANGUAGE: dict[str, str] = {
     NARRATION_LANGUAGE: TRANSCRIBE_INSTRUCTIONS,
-    "zh-CN": (
-        "Transcribe this Mandarin narration word for word in Simplified Chinese characters as "
-        "used in mainland China. Write English words and acronyms as Latin letters the way they "
-        "are spoken (for example AI, GPT, p95). Write numbers the way they are spoken. Do not "
-        "correct, summarize or add anything. Output only the transcript."
-    ),
     "en": (
         "Transcribe this English narration word for word. Write acronyms and product names as "
         "Latin letters the way they are spoken (for example AI, GPT, p95). Do not correct, "
@@ -82,7 +76,6 @@ TERMS_HINT = (
 )
 SOUND_ALIKE_SCRIPT = {
     NARRATION_LANGUAGE: "Chinese characters",
-    "zh-CN": "Chinese characters",
     "en": "other words",
     "ja": "kana",
     "ko": "Hangul",
@@ -135,6 +128,8 @@ async def transcribe(
     client: httpx.AsyncClient | None = None,
     terms: Sequence[str] = (),
     language: str = NARRATION_LANGUAGE,
+    max_output_tokens: int | None = None,
+    usage_out: dict[str, Any] | None = None,
 ) -> str:
     """The words in one clip, as Gemini hears them, written in ``language``'s script; ``terms``
     are English words it may say."""
@@ -165,7 +160,10 @@ async def transcribe(
                 ],
             }
         ],
-        "generationConfig": {"temperature": 0},
+        "generationConfig": {
+            "temperature": 0,
+            **({"maxOutputTokens": max_output_tokens} if max_output_tokens is not None else {}),
+        },
     }
     try:
         # ``hotspot_guide_gemini_base_url`` is pinned to the official host in Settings.
@@ -196,6 +194,10 @@ async def transcribe(
             response.headers.get("Retry-After"),
         )
     payload = response.json()
+    if usage_out is not None and isinstance(payload, dict):
+        metadata = payload.get("usageMetadata")
+        if isinstance(metadata, dict):
+            usage_out.update(metadata)
     try:
         return gemini_output_text(payload if isinstance(payload, dict) else {}).strip()
     except ValueError as error:
@@ -230,10 +232,16 @@ async def judge(
     lines: list[dict[str, str]],
     client: httpx.AsyncClient | None = None,
     language: str = NARRATION_LANGUAGE,
+    usage_out: dict[str, Any] | None = None,
+    pilot_budgeted: bool = False,
 ) -> dict[str, float]:
     """Jev's probability, per line id, that the recording says the intended words; ``language``
     is what the lines are written in."""
-    jev: JevClient = jev_client(settings, client)
+    jev: JevClient = (
+        jev_client(settings, client, retry_refusals=False)
+        if pilot_budgeted
+        else jev_client(settings, client)
+    )
     try:
         if not await consume_jev_call(redis, settings):
             raise CheckUnavailable(
@@ -242,7 +250,9 @@ async def judge(
                 "今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再檢查",
             )
         state: dict[str, Any] = {"language": language, "lines": lines}
-        answers, _usage = await jev.ask(state, judge_questions([line["id"] for line in lines]))
+        answers, usage = await jev.ask(state, judge_questions([line["id"] for line in lines]))
+        if usage_out is not None:
+            usage_out.update(usage)
     finally:
         await jev.close()
     result: dict[str, float] = {}

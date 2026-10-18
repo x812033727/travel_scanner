@@ -63,12 +63,17 @@ DEFAULT_VOICE: dict[str, Any] = {
 }
 DEFAULT_TOPIC_SCOPE = ["AI", "科技", "AI 工具教學"]
 DEFAULT_TOPIC_AVOID = ["投資建議", "醫療建議", "選舉政治"]
-DEFAULT_CAPTION_LOCALES = ["en", "ja", "ko", "zh-CN"]
+DEFAULT_CAPTION_LOCALES = ["en", "ja", "ko"]
 # The AI drama route (docs/videos/DRAMA.md). The owner chose on 2026-09-26 to start without a
 # spending cap, so the budgets open wide and are lowered after the pilot; migration 0095 carries
 # the same values as server defaults, and the settings tab shows them.
 # flat-explainer (migration 0113) is the illustrated "why" explainer: narrator only, all stills.
-STYLE_PRESETS = ("cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom")
+# cute-cartoon and cute-mystery (migration 0130) are the same route in two cute cartoon looks:
+# So That's Why redrawn, and the history-and-curiosity series (schemas.EXPLAINER_PRESETS).
+STYLE_PRESETS = (
+    "cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "cute-cartoon", "cute-mystery",
+    "custom",
+)
 STYLE_PRESET_CHECK = "style_preset IN ({})".format(
     ", ".join(f"'{preset}'" for preset in STYLE_PRESETS)
 )

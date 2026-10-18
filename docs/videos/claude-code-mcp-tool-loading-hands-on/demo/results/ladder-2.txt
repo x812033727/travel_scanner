@@ -1,0 +1,43 @@
+== the base runs (floor 11)
+warm-up w0: first request 11,204 | built-in 8 | skills 22 | agents 6 | slash 58 | plugins 3 | shown, never used
+base z1: first request 11,202 | built-in 8 | skills 21 | agents 6 | slash 57 | plugins 3
+base z2: first request 11,204 | built-in 8 | skills 21 | agents 6 | slash 57 | plugins 3
+base with tool search off zf: first request 11,200 | built-in 7 | skills 21 | agents 6 | slash 57 | plugins 3
+bar: 11 (the larger of |z1 - z2| = 2 and the floor 11)
+warm-up: no base run has its counts; against each, for the record: z1 +2, z2 +0
+tool search off, no server, minus the default base: -3 (cannot tell: inside 11) (against z1, z2) | built-in tools 7 against 8
+
+== the ladder: first request of each arm
+N | deferred: first, minus base | up front: first, minus base | deferred minus up front
+2 | 11,913, +710 | 11,446, +246 | +467
+10 | 12,014, +811 | 12,141, +941 | -127
+40 | 12,417, +1,214 | 14,786, +3,586 | -2,369
+up front minus the default base (two things differ; how the previous video measured it): 2 +243 | 10 +938 | 40 +3,583
+MCP tools on the init event: d0 0 | d2 2 | d10 10 | d40 40 | u2 2 | u10 10 | u40 40
+
+== per tool, between two rungs of the same mode (arms that differ only in N)
+deferred 2 -> 10: +101 for 8 more tools = +12.6 a tool | names 22.3 characters a tool
+deferred 10 -> 40: +403 for 30 more tools = +13.4 a tool | names 24.2 characters a tool
+deferred: a straight line in characters of names through N = 2 and 10 (41 and 219) puts N = 40 (946) at 12,427; it came out 12,417 (-9.5; within 55.9, in proportion to the characters)
+deferred: the same line at N = 0 (0 characters) is 11,890, +686.7 over its base (a calculation, not a run)
+up front 2 -> 10: +695 for 8 more tools = +86.9 a tool | tools/list 146.4 characters a tool
+up front 10 -> 40: +2,645 for 30 more tools = +88.2 a tool | tools/list 151 characters a tool
+up front: a straight line in characters of tools/list through N = 2 and 10 (302 and 1,473) puts N = 40 (6,003) at 14,830; it came out 14,786 (-43.6; within 53.6, in proportion to the characters)
+up front: the same line at N = 0 (2 characters) is 11,268, +67.9 over its base (a calculation, not a run)
+the deferred line at N = 0 minus the up-front line at N = 0: +621.8 (the part that does not follow the number of tools; a calculation)
+
+== the server with no tools (d0), on its own
+d0: first request 11,272 | built-in 8 | skills 21 | agents 6 | slash 57 | plugins 3 | MCP tools on the init event 0
+server with no tools, minus base: +69
+the deferred line at N = 0 (calculation) minus d0 (run): +617.7 (more than 13.5: d0 is off the deferred line)
+the up-front line at N = 0 (calculation) minus d0 (run): -4.1 (within 13.8: d0 sits on the up-front line)
+
+== where deferred loading becomes the smaller first request
+N = 2: up front is smaller (+467)
+N = 10: deferred is smaller (-127)
+   between N = 2 and 10 the order turns over; on a straight line between those two rungs, at about 8.3 tools (a calculation: nothing was run between them)
+N = 40: deferred is smaller (-2,369)
+
+== the sessions that call one tool (the request names the tool)
+arm | requests | each request | last minus first | all requests added up | first request minus the same arm without a call
+use-d40 | 3 | 12,434, 12,690, 12,831 | +397 | 37,955 | +17

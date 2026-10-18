@@ -136,6 +136,19 @@ directory and when its state file changed). Both paths are compiled into the age
 The agent never removes a hold: a person does, after reading the release directory, in the order
 `ops/release/README.md` gives.
 
+Both checks fail closed. A hold the agent cannot read refuses with `deployment_hold_active`
+("could not read the hold file"), and a release root it cannot list, or a `mokaair-*` directory
+whose `state.json` it cannot stat or read, refuses with `deployment_staged_release_in_progress`
+("could not list", "could not check" or "could not read"); only a root or state file that does
+not exist reads as "no release". Under the shipped unit (`ProtectHome=true`, user
+`travel-deployer`) `/root` is out of reach, so every deployment request refuses with
+`deployment_hold_active` until the host gives the agent read access to the hold, and then with
+`deployment_staged_release_in_progress` until it can also read the release directories. The
+release drivers create those directories 0700 as root, so read access to `/root` alone is not
+enough: an agent that can list `/root` but not enter the directories refuses for as long as any
+`mokaair-*` directory exists, because it cannot see how old its state file is. Settle that access
+before setting `DEPLOYMENTS_ENABLED=true` (2026-10-07-deployment-agent-needs-read-access-to).
+
 The refusal does not make the agent interchangeable with the script. The agent keeps its own
 release layout (`/srv/travel-scanner/releases`, Compose project `travel-scanner`, only the
 services in `APPLICATION_SERVICES`, no `hotspots`, `news` or `video` profile) while the script

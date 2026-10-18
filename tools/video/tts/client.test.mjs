@@ -1,14 +1,22 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { mkdirSync, writeFileSync } from "node:fs";
 import test from "node:test";
 import path from "node:path";
-import { tempDir } from "../core/fixtures/load.mjs";
+import { EXIT, main } from "../cli.mjs";
+import { everyones } from "../automation/flow.mjs";
+import { sandbox, tempDir } from "../core/fixtures/load.mjs";
 import { alignClip, judgeLines, MAX_RETRY_WAIT_MS, RATE_WINDOW_MS, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, synthesizeAligned, transcribeClip, withPaidWaits } from "./client.mjs";
 import { listSpeechJournal, openSpeechJournal, requestSha256 } from "./speech-journal.mjs";
 import { encodeWav, parseWav } from "./wav.mjs";
 
 const SITE = "https://site.test";
 const TOKEN = `mkv_${"t".repeat(43)}`;
+const FOLLOWON_SLUGS = [
+  "story-five-lego-legoland", "story-five-costco-hot-dog",
+  "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
+  "story-five-pringles-vat-case",
+];
 const sha256 = (text) => createHash("sha256").update(text).digest("hex");
 const audio = () => encodeWav(Int16Array.from({ length: 4800 }, (_, i) => Math.round(Math.sin(i / 8) * 3000)));
 // What Node's fetch throws: a TypeError whose cause carries the socket's code.
@@ -74,6 +82,103 @@ function server(answers) {
   };
   return { calls, sleeps, options };
 }
+
+test("pilot paid routes carry a UUID that remains stable across a safe HTTP retry", async () => {
+  for (const slug of ["story-rolling-suitcase", "story-conveyor-belt-sushi", "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2", ...FOLLOWON_SLUGS]) {
+    for (const paid of PAID) {
+      const { calls, options } = server([() => problem(429, "rate_limit_exceeded"), paid.ok]);
+      paid.check(await paid.send({ ...options, videoSlug: slug }));
+      assert.equal(calls.length, 2, `${slug}: ${paid.name}`);
+      const first = JSON.parse(calls[0].body);
+      const second = JSON.parse(calls[1].body);
+      assert.equal(first.video_slug, slug, paid.name);
+      assert.match(first.operation_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i, paid.name);
+      assert.equal(second.operation_id, first.operation_id, paid.name);
+    }
+  }
+  const ordinary = server([PAID[0].ok]);
+  PAID[0].check(await PAID[0].send({ ...ordinary.options, videoSlug: "curio-h05" }));
+  assert.equal(JSON.parse(ordinary.calls[0].body).operation_id, undefined);
+});
+
+test("pilot auditions require their matching slug and charge that film; generic auditions stay unattributed", async () => {
+  const box = sandbox();
+  const pilotDir = path.join(box.base, "brand-stories-pilot-v2-20261015", "scripts");
+  mkdirSync(pilotDir, { recursive: true });
+  const a01 = path.join(pilotDir, "A01-rolling-suitcase.txt");
+  const b18 = path.join(pilotDir, "B18-conveyor-belt-sushi.txt");
+  const generic = path.join(box.base, "sample.txt");
+  writeFileSync(a01, "第一支試作影片的試音。");
+  writeFileSync(b18, "第二支試作影片的試音。");
+  writeFileSync(generic, "一般頻道聲音試聽。");
+  const calls = [];
+  const fetchImpl = async (url, init) => {
+    calls.push({ url, init });
+    if (url.endsWith("/api/video/speech/status")) {
+      return Response.json({ configured: false, voices: [], gemini_configured: true, monthly_limit: 0, gemini_monthly_limit: 0 });
+    }
+    return new Response(audio(), { status: 200, headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "11" } });
+  };
+  const out = { stderr: "" };
+  const ctx = {
+    root: box.root, home: box.base, env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN },
+    fetch: fetchImpl, now: () => new Date("2026-10-15T04:00:00Z"),
+    stdout: { write: () => {} }, stderr: { write: (value) => { out.stderr += value; } },
+  };
+  const audition = (file, slug) => main(["audition", "--text-file", file, "--voices", "gemini:Sulafat", ...(slug ? ["--slug", slug] : [])], ctx);
+  assert.equal(await audition(a01), EXIT.usage);
+  assert.equal(await audition(a01, "story-conveyor-belt-sushi-v2"), EXIT.usage);
+  assert.equal(await audition(a01, "story-rolling-suitcase"), EXIT.usage);
+  assert.equal(await audition(generic, "story-rolling-suitcase-v2-typo"), EXIT.usage);
+  assert.equal(await audition(generic, "story-five-lego-legoland-typo"), EXIT.usage);
+  const pilotWork = { ...ctx, env: { ...ctx.env, VIDEO_WORKDIR: path.join(box.base, "story-conveyor-belt-sushi-v2") } };
+  assert.equal(await main(["audition", "--text-file", generic, "--voices", "gemini:Sulafat"], pilotWork), EXIT.usage);
+  assert.equal(await main(["audition", "--text-file", a01, "--voices", "gemini:Sulafat", "--slug", "story-rolling-suitcase-v2"], pilotWork), EXIT.usage);
+  assert.match(out.stderr, /pilot audition needs its matching --slug/);
+  assert.equal(calls.length, 0, "invalid pilot attribution must not reach the server");
+
+  for (const [file, slug] of [[a01, "story-rolling-suitcase-v2"], [b18, "story-conveyor-belt-sushi-v2"]]) {
+    assert.equal(await audition(file, slug), EXIT.ok);
+    const request = JSON.parse(calls.at(-1).init.body);
+    assert.equal(request.video_slug, slug);
+    assert.match(request.operation_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+  }
+
+  for (const slug of FOLLOWON_SLUGS) {
+    const file = path.join(box.base, `${slug}.txt`);
+    writeFileSync(file, `試聽 ${slug} 的旁白。`);
+    assert.equal(await audition(file), EXIT.usage, `${slug}: the file must name its budget`);
+    assert.equal(await audition(file, slug), EXIT.ok);
+    const request = JSON.parse(calls.at(-1).init.body);
+    assert.equal(request.video_slug, slug);
+    assert.match(request.operation_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+  }
+
+  const followonDir = path.join(box.base, "brand-stories-five-20261014");
+  mkdirSync(followonDir, { recursive: true });
+  const planIds = ["A29", "A16", "A37", "B14", "A21"];
+  for (const [index, id] of planIds.entries()) {
+    const file = path.join(followonDir, `${id}-voice-sample.txt`);
+    writeFileSync(file, `企劃 ${id} 的試聽。`);
+    const slug = FOLLOWON_SLUGS[index];
+    assert.equal(await audition(file), EXIT.usage, `${id}: plan ID must require attribution`);
+    assert.equal(await audition(file, FOLLOWON_SLUGS[(index + 1) % FOLLOWON_SLUGS.length]), EXIT.usage);
+    assert.equal(await audition(file, slug), EXIT.ok);
+    const request = JSON.parse(calls.at(-1).init.body);
+    assert.equal(request.video_slug, slug);
+    assert.match(request.operation_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+  }
+  const ambiguous = path.join(followonDir, "narration-sample.txt");
+  writeFileSync(ambiguous, "五集企劃中的試聽，尚未指名影片。");
+  const beforeAmbiguous = calls.length;
+  assert.equal(await audition(ambiguous), EXIT.usage);
+  assert.equal(calls.length, beforeAmbiguous, "ambiguous follow-on samples must not reach speech API");
+
+  assert.equal(await audition(generic), EXIT.ok);
+  const ordinary = JSON.parse(calls.at(-1).init.body);
+  assert.equal(ordinary.video_slug, undefined);
+  assert.equal(ordinary.operation_id, undefined);
+});
 
 test("a paid request sent and left without its answer is sent once and names the request it lost", async () => {
   const lost = [
@@ -173,6 +278,15 @@ test("a settled failure that does not clear stops after the bounded attempts", a
   const offline = server([() => { throw failed("ECONNREFUSED"); }]);
   await assert.rejects(PAID[0].send(offline.options), (error) => error.code === "network" && error.who === "service");
   assert.equal(offline.calls.length, 5);
+  // The API's limiter away for every try (app/infra.py, before any route ran): a service away
+  // (exit 4) with the API's own sentence, which the worker reads as everyone's trouble and waits
+  // out instead of blocking the video.
+  const away = server([() => Response.json({ code: "rate_limit_unavailable", detail: "安全驗證服務暫時無法使用" }, { status: 503 })]);
+  for (const paid of PAID) {
+    away.calls.length = 0;
+    await assert.rejects(paid.send(away.options), (error) => error.code === "rate_limit_unavailable" && error.who === "service" && everyones(error.message) === "rate_limit_unavailable", paid.name);
+    assert.equal(away.calls.length, 5, paid.name);
+  }
 });
 
 test("the status GET keeps every retry, a dropped connection and a lost answer included", async () => {

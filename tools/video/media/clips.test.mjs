@@ -1134,10 +1134,13 @@ test("clips and music run by hand under the project's STOP file, or while anothe
   assert.deepEqual(files(), before, "nothing was written");
 });
 
-test("a selected keyframe or end frame whose bytes changed under an unchanged, approved manifest stops clips and clips import before the site is asked anything", async () => {
+test("a selected keyframe or end frame whose bytes changed under an unchanged, approved manifest stops clips, its dry run and clips import before the site is asked anything", async () => {
   for (const [label, file, args] of [
     ["start", "keyframes/sea-storm-1.png", ["--shot", "sea-storm"]],
     ["end", "keyframes/farewell-end.png", ["--shot", "farewell"]],
+    // A dry run reads the month's seconds and prices the run: not for a picture nobody approved.
+    ["dry run start", "keyframes/sea-storm-1.png", ["--shot", "sea-storm", "--dry-run"]],
+    ["dry run end", "keyframes/farewell-end.png", ["--shot", "farewell", "--dry-run"]],
     ["import", "keyframes/opening-1.png", null],
   ]) {
     const { box } = prepared();

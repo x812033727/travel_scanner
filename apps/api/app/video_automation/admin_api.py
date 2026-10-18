@@ -9,7 +9,10 @@ with a video tool token, through apps/web/app/api/video/automation.
 from __future__ import annotations
 
 import json
+from collections.abc import Awaitable, Callable
 from datetime import datetime
+from decimal import Decimal
+from hashlib import sha256
 from typing import Annotated, Any
 from uuid import UUID
 
@@ -20,7 +23,13 @@ from pydantic import AwareDatetime, BaseModel, ConfigDict, ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.ai.jev import JevError, JevOutcomeUncertain, JevRequestInvalid
+from app.ai.jev import (
+    VENDOR_MAX_REQUEST_TOKENS,
+    JevError,
+    JevOutcomeUncertain,
+    JevRequestInvalid,
+    JevRequestTooLarge,
+)
 from app.auth.service import require_capability
 from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
@@ -99,6 +108,8 @@ from app.video_automation.schemas import (
 from app.video_automation.series import SeriesRefused
 from app.video_automation.stories import import_story_rows
 from app.video_automation.topics import gather_topics
+from app.video_budget import service as pilot_budget
+from app.video_media.jobs import MediaJobFailed, key_for, series_image_vendor
 from app.video_reviews.admin_service import LIST_LIMIT, list_projects
 from app.video_reviews.schemas import ProjectSummary, VideoFormat
 from app.video_shorts.schemas import ShortsFilter, ShortsState
@@ -119,6 +130,11 @@ JUDGE_CALLS_PER_HOUR = 60
 # default (API_PROXY_MAX_BODY_BYTES, API_MAX_REQUEST_BYTES; nginx's client_max_body_size is 6m),
 # so a file over it is refused here, by name, rather than by a nameless 413 on the way.
 STORY_IMPORT_MAX_BYTES = 4 * 1024 * 1024
+PILOT_JEV_MODEL = "jev-1.13.0"
+# Keep the published $0.042/M input-token rate in decimal form; app.ai.jev's float
+# constant is for approximate reporting and would add a rounding artifact to the hold.
+PILOT_JEV_USD_PER_INPUT_TOKEN = Decimal("0.042") / Decimal(1_000_000)
+PILOT_JEV_MAX_USD = Decimal(VENDOR_MAX_REQUEST_TOKENS) * PILOT_JEV_USD_PER_INPUT_TOKEN
 
 admin_router = APIRouter(prefix="/admin/video-automation", tags=["admin video automation"])
 tool_router = APIRouter(prefix="/video/automation", tags=["video automation (pipeline)"])
@@ -131,6 +147,83 @@ SettingsManager = Annotated[User, Depends(require_capability("settings.manage"))
 class ToolSettingsView(SettingsWrite):
     updated_at: datetime | None
     durable_stage_runs: bool = True
+
+
+async def _pilot_jev_call[JudgeResult: (OutlinePick, PolicyVerdict)](
+    session: AsyncSession,
+    runtime: Any,
+    *,
+    slug: str,
+    kind: str,
+    payload: BaseModel,
+    invoke: Callable[[Callable[[dict[str, Any]], Awaitable[None]] | None], Awaitable[JudgeResult]],
+) -> JudgeResult:
+    """Reserve a pilot's worst-case Jev input before sending, then settle reported tokens.
+
+    A canonical source hash gives a repeated exact request the same operation ID. A lost
+    answer cannot be sent again under a new charge until the operator reconciles it.
+    """
+    if not pilot_budget.is_pilot(slug):
+        return await invoke(None)
+    if runtime.jev_model != PILOT_JEV_MODEL:
+        raise AppError(
+            409, "video_budget_price_unknown", "試作影片目前使用的 Jev 模型沒有已核對的價格"
+        )
+    if not runtime.jev_configured:
+        raise AppError(503, "provider_unavailable", "Jev 尚未設定")
+    source = json.dumps(
+        {"kind": kind, "payload": payload.model_dump(mode="json")},
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    operation_id = f"jev:{kind}:{sha256(source.encode('utf-8')).hexdigest()}"
+    receipt = await pilot_budget.reserve(
+        session,
+        slug=slug,
+        operation_id=operation_id,
+        category="jev",
+        provider="typesafe",
+        model=runtime.jev_model,
+        max_usd=PILOT_JEV_MAX_USD,
+    )
+    if receipt is None or not receipt.dispatch_allowed:
+        raise AppError(
+            409, "video_budget_operation_reused", "同一份 Jev 請求已有收據，不能重複送出"
+        )
+    settled = False
+    released = False
+
+    async def settle_usage(usage: dict[str, Any]) -> None:
+        nonlocal settled
+        input_tokens = usage.get("input_tokens")
+        if type(input_tokens) is not int or not 0 < input_tokens <= VENDOR_MAX_REQUEST_TOKENS:
+            raise AppError(502, "video_budget_usage_unknown", "Jev 回覆缺少可核對的輸入 token 用量")
+        await pilot_budget.settle(
+            session,
+            slug=slug,
+            operation_id=operation_id,
+            actual_usd=Decimal(input_tokens) * PILOT_JEV_USD_PER_INPUT_TOKEN,
+        )
+        settled = True
+
+    try:
+        return await invoke(settle_usage)
+    except (CheckUnavailable, JevRequestTooLarge):
+        # These are proven local refusals. A plain JevRequestInvalid may be an HTTP
+        # 400/422 from the vendor after dispatch, with no proof it was unbilled.
+        if not settled:
+            await pilot_budget.release(
+                session,
+                slug=slug,
+                operation_id=operation_id,
+                reason="request_refused_before_dispatch",
+            )
+            released = True
+        raise
+    finally:
+        if not settled and not released:
+            await pilot_budget.mark_uncertain(session, slug=slug, operation_id=operation_id)
 
 
 @admin_router.get("/settings", response_model=SettingsView)
@@ -225,7 +318,23 @@ async def judge_video_outline(
         )
     runtime = await load_runtime_settings(session)
     try:
-        return await judge_outline(runtime, get_redis(), stance, payload.brief, payload.options)
+        return await _pilot_jev_call(
+            session,
+            runtime,
+            slug=payload.slug,
+            kind="outline",
+            payload=payload,
+            invoke=lambda on_usage: judge_outline(
+                runtime,
+                get_redis(),
+                stance,
+                payload.brief,
+                payload.options,
+                session=session,
+                slug=payload.slug,
+                on_usage=on_usage,
+            ),
+        )
     except CheckUnavailable as error:
         raise AppError(error.status, error.code, error.detail) from error
     except JevRequestInvalid as error:
@@ -251,14 +360,22 @@ async def judge_video_policy(
         raise AppError(409, "video_judge_not_enabled", "頻道立場還是空白，Jev 沒有依據可以判斷")
     runtime = await load_runtime_settings(session)
     try:
-        return await judge_policy(
+        return await _pilot_jev_call(
+            session,
             runtime,
-            get_redis(),
-            stance,
-            payload.viewpoint,
-            payload.script,
-            session=session,
             slug=payload.slug,
+            kind="policy",
+            payload=payload,
+            invoke=lambda on_usage: judge_policy(
+                runtime,
+                get_redis(),
+                stance,
+                payload.viewpoint,
+                payload.script,
+                session=session,
+                slug=payload.slug,
+                on_usage=on_usage,
+            ),
         )
     except CheckUnavailable as error:
         raise AppError(error.status, error.code, error.detail) from error
@@ -273,6 +390,12 @@ async def judge_video_policy(
 @tool_router.post("/run", response_model=StageRunOut)
 async def run_video_stage(request: StageRunIn, tool: VideoTool, session: Session) -> StageRunOut:
     """One writing stage with the model the owner chose for it; the model is not the caller's."""
+    if pilot_budget.is_pilot(request.slug):
+        raise AppError(
+            409,
+            "video_pilot_durable_required",
+            "試作影片的撰稿與查核必須使用可續查的工作識別碼",
+        )
     await enforce_named_rate_limit(
         "video_ai_run", str(tool.id), limit=RUNS_PER_HOUR, window_seconds=3600
     )
@@ -353,9 +476,16 @@ async def list_tool_videos(
 
 @tool_router.get("/topics", response_model=TopicsOut)
 async def get_video_topics(tool: VideoTool, session: Session) -> TopicsOut:
-    """Candidate topics for the next draft: the site's recent articles, then a web search."""
+    """Candidate topics for the next draft: the site's recent articles, official pages the
+    news writer declined, then a web search."""
+    # Retry-After lets the worker put its scheduled draft off until the window opens again
+    # (flow.mjs draftWaits) instead of asking every round, which kept the window full.
     await enforce_named_rate_limit(
-        "video_topics", str(tool.id), limit=TOPIC_LOOKUPS_PER_HOUR, window_seconds=3600
+        "video_topics",
+        str(tool.id),
+        limit=TOPIC_LOOKUPS_PER_HOUR,
+        window_seconds=3600,
+        retry_after=True,
     )
     row = await service.settings_row(session)
     runtime = await load_runtime_settings(session)
@@ -383,12 +513,27 @@ async def create_drama_request(
     """The owner asks for a one-off drama: a one-episode series whose story bible the worker
     plans on its next round (docs/videos/DRAMA-FLOW.md §二); the answer names the series in
     ``series_slug``. Refused while the drama route is switched off, so nothing queues for a
-    worker that will never take it."""
+    worker that will never take it. Refused too when the request names an image model (an
+    explainer's own, or the ``image-01`` a cute preset is given) whose vendor has no key on the
+    site: the first picture would fail after the planning and the script were paid for. A
+    request that names none follows the settings' model and is not looked up here."""
     row = await service.settings_row(session)
     if not row.drama_enabled:
         raise AppError(
             409, "video_drama_disabled", "漫劇還沒開啟：先在影片審核的設定分頁打開 AI 漫劇"
         )
+    if payload.image_model is not None:
+        try:
+            vendor = series_image_vendor(row, payload.image_model)
+        except MediaJobFailed as error:
+            raise AppError(error.status, error.code, error.detail) from error
+        if not key_for(await load_runtime_settings(session), vendor):
+            raise AppError(
+                409,
+                "video_drama_image_model_not_configured",
+                f"網站還沒有 {vendor} 的金鑰，圖片模型 {payload.image_model} 畫不了這支解說；"
+                f"先到 AI 設定填 {vendor} 的金鑰，或改選別的圖片模型",
+            )
     try:
         return await drama_series.create_one_off(session, user, payload)
     except SeriesRefused as error:

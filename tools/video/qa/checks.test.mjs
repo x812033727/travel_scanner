@@ -96,6 +96,28 @@ test("captions: stale translations fail, reading speed only warns, every locale 
   assert.deepEqual([overlap.ok, overlap.detail], [false, "en: cue 2 (m4qa): overlaps the previous cue"]);
 });
 
+test("captions: a chosen locale not translated yet only warns at the final gate", () => {
+  const manifest = { locales: { "zh-TW": { cues: 9, problems: [] } }, skipped: {} };
+  const locales = ["zh-TW", "en", "ja", "ko"];
+  const waiting = captionsItem({ lintWarnings: [], manifest, current: true, locales, hasCaptionFile: (locale) => locale === "zh-TW", untranslated: ["en", "ja", "ko"] });
+  assert.equal(waiting.ok, true);
+  assert.equal(waiting.detail, "caption files for zh-TW, every translation current");
+  assert.deepEqual(waiting.warnings, ["en", "ja", "ko"].map((locale) => `${locale}: no caption file yet; it is translated in the languages step after the final cut`));
+  // Without the list (or for a locale that has a translation) a missing file still fails.
+  assert.equal(captionsItem({ lintWarnings: [], manifest, current: true, locales, hasCaptionFile: () => true }).detail, "en: no caption file; ja: no caption file; ko: no caption file");
+  assert.equal(captionsItem({ lintWarnings: [], manifest, current: true, locales, hasCaptionFile: () => true, untranslated: ["ja", "ko"] }).detail, "en: no caption file");
+  // zh-TW itself is never excused, and an outdated translation still fails.
+  assert.equal(captionsItem({ lintWarnings: [], manifest: { locales: {}, skipped: {} }, current: true, locales, hasCaptionFile: () => false, untranslated: ["en", "ja", "ko"] }).detail, "zh-TW: no caption file");
+  assert.equal(captionsItem({ lintWarnings: [], manifest: { ...manifest, skipped: { en: ["k7p2"] } }, current: true, locales, hasCaptionFile: () => true, untranslated: ["ja", "ko"] }).ok, false);
+  assert.equal(captionsItem({ lintWarnings: [], manifest: null, current: false, locales, hasCaptionFile: () => true, untranslated: ["en", "ja", "ko"] }).ok, false);
+  // A compilation knows no untranslated list: a locale its merge did not write fails, it does not throw.
+  const compilation = compilationCaptionsItem({ lintWarnings: [], manifest: { locales: { "zh-TW": { problems: [] } }, skipped: {} }, current: true, locales: ["zh-TW", "en"], hasCaptionFile: () => true });
+  assert.deepEqual([compilation.ok, compilation.detail], [false, "en: no caption file"]);
+  // A file made and then lost fails even when listed.
+  const lost = captionsItem({ lintWarnings: [], manifest: { locales: { ...manifest.locales, en: { cues: 9, problems: [] } }, skipped: {} }, current: true, locales: ["zh-TW", "en"], hasCaptionFile: (locale) => locale === "zh-TW", untranslated: ["en"] });
+  assert.equal(lost.detail, "en: no caption file");
+});
+
 test("metadata gathers YouTube's limits and the chapter rules", () => {
   const ok = metadataItem({ problems: [], tagProblems: [], chapterProblems: [], locales: ["zh-TW", "en"], chapters: 4, timelineCurrent: true });
   assert.deepEqual(ok, { id: "metadata", ok: true, detail: "title, description and tags within YouTube's limits for zh-TW, en; 4 chapters" });

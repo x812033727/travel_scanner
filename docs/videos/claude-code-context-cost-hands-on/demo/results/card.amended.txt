@@ -1,0 +1,39 @@
+$ node ctx-cost.mjs z2.stream.jsonl z3.stream.jsonl m1.stream.jsonl --base z2,z3 --quiet
+base: z2, z3 | first request 11,190, 11,186 | mean 11,188 | spread 4
+name | requests | first = input + write + read | minus base | last | grew
+z2 | 1 | 11,190 = 2 + 4,386 + 6,802 | (base) | 11,190 | +0
+z3 | 1 | 11,186 = 2 + 4,382 + 6,802 | (base) | 11,186 | +0
+m1 | 1 | 11,493 = 2 + 5,842 + 5,649 | +305 | 11,493 | +0
+[exit 0]
+
+$ node ctx-cost.mjs z2.stream.jsonl z3.stream.jsonl m1.stream.jsonl --base z2,z3 --floor 11 --quiet
+base: z2, z3 | first request 11,190, 11,186 | mean 11,188 | spread 4
+bar: 11 (the larger of the spread and --floor 11)
+name | requests | first = input + write + read | minus base | last | grew
+z2 | 1 | 11,190 = 2 + 4,386 + 6,802 | (base) | 11,190 | +0
+z3 | 1 | 11,186 = 2 + 4,382 + 6,802 | (base) | 11,186 | +0
+m1 | 1 | 11,493 = 2 + 5,842 + 5,649 | +305 | 11,493 | +0
+[exit 0]
+
+$ node ctx-cost.mjs z2.stream.jsonl | head -6
+== z2 | Claude Code 2.1.295 | claude-sonnet-5-5 | mode default
+   init: built-in tools 8 | MCP servers 0, tools 0
+         skills 21 | agents 6 | slash commands 57 | plugins 3
+   each request: input + cache write + cache read = input side
+   request 1: 2 + 4,386 + 6,802 = 11,190
+   first 11,190 | last 11,190 | grew +0 over 1 request
+[exit 0]
+
+$ node ctx-cost.mjs z2.stream.jsonl | head -10
+== z2 | Claude Code 2.1.295 | claude-sonnet-5-5 | mode default
+   init: built-in tools 8 | MCP servers 0, tools 0
+         skills 21 | agents 6 | slash commands 57 | plugins 3
+   each request: input + cache write + cache read = input side
+   request 1: 2 + 4,386 + 6,802 = 11,190
+   first 11,190 | last 11,190 | grew +0 over 1 request
+   -- after the last request:
+      other system lines: 1
+   result 1: success | turns 1 | cost USD 0.0190184
+      usage 2 + 4,386 + 6,802, output 11 | models in modelUsage: 1
+[exit 0]
+

@@ -8,6 +8,7 @@ import {
   cuePieces,
   displayText,
   fits,
+  inheritBoundaries,
   joinPieces,
   LOCALE_RULES,
   measure,
@@ -130,7 +131,7 @@ test("wrapCue breaks near the middle, after punctuation, into lines that fit", (
   assert.equal(english.split("\n").length, 2);
 });
 
-for (const locale of ["zh-TW", "zh-CN", "ja"]) {
+for (const locale of ["zh-TW", "ja"]) {
   test(`${locale} wraps versions, prices and product names only at complete token boundaries`, () => {
     for (const token of ["4.0", "0.50", "GPT-6", "C++", "C#", "A_B", "O'Neil"]) {
       const rules = { ...LOCALE_RULES[locale], maxChars: Math.ceil(measure(token, zh) + 1) };
@@ -199,7 +200,7 @@ test("safe existing zh-TW fixture captions keep their exact line breaks", () => 
     "第二個問題是，\n你能接受它想多久才回答",
     "第三個問題是，\n你每個月願意為它付多少錢",
     "把這三個答案寫下來，再去看排\n行榜，你會發現選擇變得很清楚",
-    "完整的比較表放在說明欄的\n文章裡，我們下一支影片見",
+    "完整的比較表放在說明欄的\n文章裡，記得訂閱這個頻道",
   ]);
 });
 
@@ -226,12 +227,6 @@ for (const [locale, id, text, expected] of [
     [54764, "私の選択です。これは測定ではな\nく、私の意見です。毎日の要約には"],
     [100400, "ちゃんと読める中で一番安\nいモデル。金額はわずかです"],
   ]],
-  ["zh-CN", "dgig", "AI 安全中心的报告指出，到了七月，Claude Fable 5 达到了 15.8%。", [
-    [100400, "AI 安全中心的报告指出，到了七\n月，Claude Fable 5 达到了 15.8%"],
-  ]],
-  ["zh-CN", "akm3", "我的看法是：安全要靠系统真正挡住，而不是靠提示词里的一句“不要”。", [
-    [100400, "我的看法是：安全要靠系统真正挡\n住，而不是靠提示词里的一句“不要”"],
-  ]],
 ]) {
   test(`${locale}/${id} preserves safe rendered cues and raw punctuation timing weights`, () => {
     const actual = buildCues({ lines: [{ id, start_frame: 0, end_frame: 3030, audio_samples: 4800000 }] }, { [id]: text }, locale);
@@ -243,7 +238,7 @@ for (const [locale, id, text, expected] of [
 }
 
 test("Chinese cues drop a trailing comma or full stop; English cues keep their punctuation", () => {
-  assert.equal(displayText("我們下一支影片見。", zh), "我們下一支影片見");
+  assert.equal(displayText("記得訂閱這個頻道。", zh), "記得訂閱這個頻道");
   assert.equal(displayText("你真的要換嗎？", zh), "你真的要換嗎？");
   assert.equal(displayText("See you next time.", en), "See you next time.");
 });
@@ -357,9 +352,9 @@ test("a timeline without timing keeps the SRT and VTT it produced before measure
     "4", "00:00:17,933 --> 00:00:22,333", "第二個問題是，", "你能接受它想多久才回答", "",
     "5", "00:00:22,333 --> 00:00:27,053", "第三個問題是，", "你每個月願意為它付多少錢", "",
     "6", "00:00:27,667 --> 00:00:34,233", "把這三個答案寫下來，再去看排", "行榜，你會發現選擇變得很清楚", "",
-    "7", "00:00:34,233 --> 00:00:40,153", "完整的比較表放在說明欄的", "文章裡，我們下一支影片見", "",
+    "7", "00:00:34,233 --> 00:00:40,153", "完整的比較表放在說明欄的", "文章裡，記得訂閱這個頻道", "",
   ].join("\n"));
-  assert.equal(sha256(toVtt(zhCues)), "b7f01d85db2ce41135e5f35b776dc73a3158bfbd175f6ef730388e56c8b69a8e");
+  assert.equal(sha256(toVtt(zhCues)), "cac98425288d677ff2aae586159eb0c8ad782b2116f39f731f665ed2300bec5e");
   // The English fixture's lines as this video's translation.
   const english = [...eachLine(enFixture())].map(({ line }) => line.text);
   const enCues = buildCues(timeline, Object.fromEntries([...eachLine(doc)].map(({ line }, index) => [line.id, english[index]])), "en").cues;
@@ -373,8 +368,6 @@ test("a timeline without timing keeps the SRT and VTT it produced before measure
   for (const [locale, texts, cues, srt, vtt] of [
     ["zh-TW", ["每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？還是應該先想清楚自己要它做什麼，再決定要不要換？", "有公布的：算力、記憶體容量、功耗，還有記憶體頻寬，每秒 300 GB。好。", "第一句話說完了。第二句比較長一點，中間有個逗號，然後結束。第三句也在這裡。"],
       6, "1d62f0bc22f2301e0ca9d8fc6d667af7e6836826d5dcfcdcdd7fa421a3bdbbcc", "6d7d4f6480abf5d82646439597cd47199ef543b53a366b8c0f33a48eefdd7609"],
-    ["zh-CN", ["每次有新模型出来，排行榜就换一次第一名，你真的每次都要跟着换吗？还是应该先想清楚自己要它做什么，再决定要不要换？", "有公布的：算力、内存容量、功耗，还有内存带宽，每秒 300 GB。好。", "第一句话说完了。第二句比较长一点，中间有个逗号，然后结束。第三句也在这里。"],
-      5, "fb2a433a2eb5b29d6744e9d8832743bb7d4f9187e146f5a107c83f1639996730", "50543468f48d94c081c2ae9616213a4ec0ed228a22cad6c5272d227ca1af3a60"],
     ["en", ["Every time a new model comes out, the leaderboard gets a new number one. Do you really switch every time, or decide first what you need it for?", "What was published: compute, memory capacity, power draw, and memory bandwidth, 300 GB a second. Okay.", "The first sentence is done. The second one is a bit longer, with a comma in the middle, and then it ends. The third is here too."],
       6, "62e6b02d2b1a70cc46ce98bf140c927a3347d72278d800e275291671d234d723", "eaac3f6385ac09a0ecebef566864a1f92526d021ef6d09bc1882e1144cd1963b"],
     ["ja", ["では、AIはあなたの仕事を奪うのか。私の答えは「まずタスクを奪う。しかも2月の見出しが示したより速く」です。", "私の選択です。これは測定ではなく、私の意見です。毎日の要約には、ちゃんと読める中で一番安いモデル。金額はわずかです。", "公開されたのは演算性能、メモリ容量、消費電力、そしてメモリ帯域で、毎秒 300 GB です。"],
@@ -504,4 +497,70 @@ test("checkCues reads the reading speed from the measured spans", () => {
   assert.deepEqual(checkCues(weighted, "zh-TW"), []);
   assert.deepEqual(checkCues(measured, "zh-TW").map((problem) => problem.split(":")[0]), ["cue 2 (sp01)"]);
   assert.match(checkCues(measured, "zh-TW")[0], /characters a second, above 9/);
+});
+
+const spans = (cues) => cues.map((cue) => [cue.start_ms, cue.end_ms]);
+const weightedCues = (bounds) => bounds.slice(1).map((end, index) => ({ start_ms: bounds[index], end_ms: end, text: `piece ${index + 1}` }));
+
+test("a translation's cue changes take the narration's measured ones: one for one, the nearest, or pinned with weighted shares between", () => {
+  // Equal counts: one for one.
+  assert.deepEqual(spans(inheritBoundaries(weightedCues([0, 1000, 3000, 5000]), [1500, 3500])), [[0, 1500], [1500, 3500], [3500, 5000]]);
+  // Fewer translated changes: each takes the nearest narration change not yet taken, in order.
+  assert.deepEqual(spans(inheritBoundaries(weightedCues([0, 2500, 5000]), [1000, 2200, 4000])), [[0, 2200], [2200, 5000]]);
+  assert.deepEqual(spans(inheritBoundaries(weightedCues([0, 1200, 4600, 6000]), [1000, 1400, 4000])), [[0, 1000], [1000, 4000], [4000, 6000]], "never the same change twice");
+  // More translated changes: the narration's change is pinned to the nearest translated one, and
+  // the others keep their weighted shares of the span between the pins around them.
+  const pinned = inheritBoundaries(weightedCues([0, 1000, 2000, 4000, 6000]), [2600]);
+  assert.deepEqual(spans(pinned), [[0, 1300], [1300, 2600], [2600, 4300], [4300, 6000]]);
+  assert.deepEqual(pinned.map((cue) => cue.text), ["piece 1", "piece 2", "piece 3", "piece 4"], "the translation keeps its own cut");
+});
+
+test("a translation keeps its weighted times when the narration's would leave a cue too short to read, or there is nothing to inherit", () => {
+  assert.equal(inheritBoundaries(weightedCues([0, 1000, 3000, 5000]), [200, 3500]), null);
+  assert.equal(inheritBoundaries(weightedCues([0, 5000]), [2000]), null, "a single cue has no change to move");
+  assert.equal(inheritBoundaries(weightedCues([0, 2500, 5000]), []), null);
+  // With the locale's rules: a change that makes a cue read faster than maxCps is refused too.
+  const worded = [
+    { start_ms: 0, end_ms: 2500, text: "Thirty characters of English." },
+    { start_ms: 2500, end_ms: 5000, text: "And thirty more to read here." },
+  ];
+  assert.equal(inheritBoundaries(worded, [1000], en), null, "29 characters in one second");
+  assert.deepEqual(spans(inheritBoundaries(worded, [2000], en)), [[0, 2000], [2000, 5000]]);
+  // A cue the weights already left short (nothing fitted with it) may stay as short.
+  assert.deepEqual(spans(inheritBoundaries(weightedCues([0, 4000, 4500]), [3800])), [[0, 3800], [3800, 4500]]);
+});
+
+test("translated cues under a measured narration line change when the narration's cues do, and any other line keeps its weighted split byte for byte", () => {
+  const text = "第一個問題很簡單，我們先看第一個例子。GPT-6 每秒處理 300 GB 的資料，比去年快了三倍，這個數字到底代表什麼意思？";
+  // A long breath after the first sentence, which a share by weight cannot know about.
+  let clock = 37;
+  const chars = timed(text, (_index, unit) => {
+    const start = clock;
+    clock += unit === "。" ? 1400 : 170;
+    return start;
+  });
+  const line = timedLine("tr01", 45, clock + 150, chars);
+  const narration = { locale: "zh-TW", texts: { tr01: text } };
+  const zhCues = buildCues({ lines: [line] }, { tr01: text }, "zh-TW").cues;
+  const english = "The first question is simple. GPT-6 handles 300 GB a second, three times last year's speed; what does it mean?";
+  const weighted = buildCues({ lines: [line] }, { tr01: english }, "en").cues;
+  const inherited = buildCues({ lines: [line] }, { tr01: english }, "en", narration).cues;
+  assert.equal(zhCues.length, 2);
+  assert.deepEqual(inherited.map((cue) => cue.text), weighted.map((cue) => cue.text), "its own cut");
+  assert.ok(Math.abs(weighted[1].start_ms - zhCues[1].start_ms) > 10 * FRAME_MS, "the weights would have put the change elsewhere");
+  assert.equal(inherited[1].start_ms, zhCues[1].start_ms, "the change comes when the narration's does");
+  assert.equal(inherited[0].end_ms, inherited[1].start_ms);
+  assert.deepEqual([inherited[0].start_ms, inherited.at(-1).end_ms], [weighted[0].start_ms, weighted.at(-1).end_ms]);
+  assert.deepEqual(checkCues(inherited, "en"), []);
+
+  const srt = (timeline, words, given) => toSrt(buildCues(timeline, { tr01: words }, "en", given).cues);
+  // Dense enough that the narration's changes would make two cues read faster than 20 a second.
+  const dense = "The first question is simple, so let's start with the first example. GPT-6 handles 300 GB of data a second, three times faster than last year. What does that number actually mean?";
+  assert.equal(srt({ lines: [line] }, dense, narration), srt({ lines: [line] }, dense, null), "too fast to read: weighted");
+  const timedLines = { lines: [line] };
+  const untimedLines = untimed(timedLines);
+  assert.equal(srt(untimedLines, english, narration), srt(untimedLines, english, null), "an untimed line");
+  const other = { locale: "zh-TW", texts: { tr01: text.replace("簡單", "容易") } };
+  assert.equal(srt(timedLines, english, other), srt(timedLines, english, null), "a narration text the characters were not measured on");
+  assert.equal(srt(timedLines, english, { locale: "zh-TW", texts: {} }), srt(timedLines, english, null), "a line the narration has no text for");
 });

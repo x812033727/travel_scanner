@@ -1,0 +1,8 @@
+PreToolUse Bash id=c1 cat .env
+PreToolUse Bash id=c2 grep API_BASE .env
+PreToolUse Bash id=c3 grep -r API_BASE .
+PostToolUse Bash id=c3 grep -r API_BASE . | response_chars=158
+PreToolUse Grep id=c4 API_BASE
+PostToolUse Grep id=c4 API_BASE | response_chars=111
+PreToolUse Glob id=c5 **/.env*
+PostToolUse Glob id=c5 **/.env* | response_chars=118

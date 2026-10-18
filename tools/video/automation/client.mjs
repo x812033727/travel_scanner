@@ -14,9 +14,12 @@ export const OUTPUT_INVALID = "video_ai_output_invalid";
 // web route's 504 under this same code, a gateway's 5xx). The model may still have run, and been
 // paid for, on the server, which keeps no answer to fetch again: on 2026-09-29 a translation
 // finished after 302 s, past the web route's 295 s, and was recorded as ok. The run is not sent
-// again here; flow.mjs stops the video for a person instead of paying twice. A Jev judgement whose
-// answer was lost throws it too, and its callers (review/sync.mjs, qa/cli.mjs) leave it for a
-// later round instead of asking Jev again at once.
+// again here, and no caller asks again on its own: flow.mjs stops the video for a person instead of
+// paying twice, and so does a first plan's planner (a blocked video under the draft's or request's
+// slug), a series document's planner (series.mjs, kept in lost-docs.json) and a Short's stage
+// (shorts/lab.mjs). A Jev judgement whose answer was lost throws it too: an outline pick stops its
+// video (or, sent by review-push, goes to the owner without a pick), and a final cut's policy
+// verdict is kept by qa (qa.json `policy_lost`) until the owner's retry.
 export const RUN_UNCERTAIN = "video_ai_run_uncertain";
 // A durable run still has a recoverable server receipt. The worker ends this round and polls
 // that same operation next round instead of holding a gateway open for several minutes.
@@ -28,6 +31,15 @@ export const POLICY_HOLD = POLICY_HOLD_CODE;
 // own request key before the first POST, so a lost submit, a lost body or a restart reconnects
 // to the same job instead of buying the unit again.
 export const DURABLE_STAGES = new Set(["writer", "translator", "caption_reviewer"]);
+// These story films have an all-in budget reservation on the API. Every model
+// stage needs the durable request key, including their chapter verifier and listener.
+const PILOT_STORY_SLUGS = new Set([
+  "story-rolling-suitcase", "story-conveyor-belt-sushi",
+  "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2",
+  "story-five-lego-legoland", "story-five-costco-hot-dog",
+  "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
+  "story-five-pringles-vat-case",
+]);
 
 export class AutomationError extends Error {
   constructor(message, { status = 0, code = "", who = "service" } = {}) {
@@ -44,6 +56,12 @@ const OWNER_CODES = new Set([
   "video_tool_token_invalid",
   "video_ai_provider_not_configured",
   "video_ai_budget_exhausted",
+  "video_budget_price_unknown",
+  "video_budget_exhausted",
+  "video_budget_operation_conflict",
+  "video_budget_operation_reused",
+  "video_budget_missing_account",
+  "video_pilot_durable_required",
   "video_ai_subscription_cli_outdated",
   "video_automation_settings_invalid",
   // The Shorts settings name no tested model yet (docs/videos/SHORTS.md §端點): nothing ran.
@@ -101,10 +119,13 @@ async function problemOf(response) {
   }
 }
 
+// The longest the client sleeps between two tries of one request.
+const MAX_SLEEP_SECONDS = 120;
+
 function delayMs(response, attempt) {
   const header = Number(response?.headers.get("retry-after"));
-  if (Number.isFinite(header) && header > 0) return Math.min(header, 120) * 1000;
-  return Math.min(2 ** attempt * 5, 120) * 1000;
+  if (Number.isFinite(header) && header > 0) return Math.min(header, MAX_SLEEP_SECONDS) * 1000;
+  return Math.min(2 ** attempt * 5, MAX_SLEEP_SECONDS) * 1000;
 }
 
 /**
@@ -117,6 +138,9 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   if (!token) throw new AutomationError("no video tool token yet: run `node tools/video/cli.mjs login`", { who: "owner" });
   const fetchImpl = ctx.fetch ?? globalThis.fetch;
   const sleep = ctx.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
+  // The durable poll budget's clock, in milliseconds. Not ctx.now, which the worker's context
+  // already uses for a Date; tests pass a fixed one so a stalled event loop cannot spend it.
+  const now = ctx.pollClock ?? Date.now;
   const receipts = runReceiptStore(ctx, site);
   let durable = false;
   const uncertain = (route, why, status = 0, what = "the model") =>
@@ -166,6 +190,10 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       if (Number.isFinite(after) && after > 0) last.retry_after = after;
       if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
       if (attempt === attempts - 1) throw last;
+      // A rate limit that opens later than the longest sleep refuses every try in between, and
+      // each try counts against the window: the topic lookup's four tries a round kept its hourly
+      // window full from 2026-10-13 to 10-16. The caller defers by retry_after instead.
+      if (response.status === 429 && last.retry_after > MAX_SLEEP_SECONDS) throw last;
       await sleep(delayMs(response, attempt));
     }
     throw last;
@@ -234,7 +262,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   }
   async function durableRun(body, previous) {
     const entry = previous ?? receipts.prepare(body);
-    const started = Date.now(), budget = Math.max(1, Math.min(durablePollMs, 25_000));
+    const started = now(), budget = Math.max(1, Math.min(durablePollMs, 25_000));
     const interval = Math.max(1, Math.min(durablePollIntervalMs, budget));
     let waited = 0, failures = 0;
     function completed() {
@@ -263,7 +291,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     for (;;) {
       const result = completed();
       if (result) return result;
-      const remaining = budget - Math.max(waited, Date.now() - started);
+      const remaining = budget - Math.max(waited, now() - started);
       if (remaining <= 0 || stopRequested(path.dirname(path.dirname(entry.file)))) break;
       const known = entry.record.receipt;
       try {
@@ -310,7 +338,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       const resultAfter = completed();
       if (resultAfter) return resultAfter;
       if (failures >= attempts || stopRequested(path.dirname(path.dirname(entry.file)))) break;
-      const wait = Math.min(interval, budget - Math.max(waited, Date.now() - started));
+      const wait = Math.min(interval, budget - Math.max(waited, now() - started));
       if (wait <= 0) break;
       await sleep(wait);
       waited += wait;
@@ -319,14 +347,16 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   }
   async function run(stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) {
     const body = { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) };
-    // Anime acts and brand-story chapters already have their own bounded checkpoints.
-    if (!DURABLE_STAGES.has(stage) || ["anime-act", "story"].includes(variant)) return request("POST", "automation/run", body, { paid: true });
+    const pilotStory = PILOT_STORY_SLUGS.has(slug);
+    // Pilots use the durable receipt for every stage, even bounded story chapters.
+    // Other anime acts and story chapters keep their existing transport.
+    if (!pilotStory && (!DURABLE_STAGES.has(stage) || ["anime-act", "story"].includes(variant))) return request("POST", "automation/run", body, { paid: true });
     try {
       const normalized = normalizeRun(body);
       let previous = receipts.find(normalized);
       // Each stale journal is archived or removed before the next look, or the look throws.
       while (previous?.stale) { await reconcileStale(previous, body); previous = receipts.find(normalized); }
-      if (durable || previous) return await durableRun(normalized, previous);
+      if (pilotStory || durable || previous) return await durableRun(normalized, previous);
       return await request("POST", "automation/run", body, { paid: true });
     } catch (error) {
       if (error instanceof RunReceiptError) throw tagged(Object.assign(new AutomationError(error.message, { code: RUN_UNCERTAIN, who: "owner" }), { why: error.message, receipt_code: error.code ?? "" }), body);

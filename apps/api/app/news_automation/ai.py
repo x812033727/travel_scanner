@@ -326,7 +326,7 @@ async def verify_article(
         VERIFIER_INSTRUCTIONS,
         {
             "evidence": evidence_payload(evidence),
-            "article": document.model_dump(mode="json"),
+            "article": for_review(document),
         },
     )
 

@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "UI 與 UX 入門：介面、任務與使用者研究",
@@ -103,10 +106,8 @@
               "text": "每次練習都留下三種資料：你想解決的問題、目前的設計，以及選擇這個做法的理由。若理由只是看起來比較好，可以補問視覺改動如何幫助閱讀或操作。若某項判斷尚待驗證，就"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -169,6 +170,7 @@
           "width": 1600,
           "height": 900,
           "caption": "先能解釋問題與決定，再逐步增加工具、視覺與研究的深度。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -279,6 +281,1090 @@
         },
         {
           "title": "英國政府：研究參與者的知情同意",
+          "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "UI and UX for Beginners: Interfaces, Tasks and User Research",
+      "description": "UI and UX often share a job title, but learners need to distinguish the problems addressed by interfaces, tasks and research. Using an original clothing alterations shop pickup example, this article explains visual and interaction design, the full service experience and user research, with beginner exercises, an outcomes comparison table and original diagrams. It helps beginners in Taiwan build a learning path to explain design decisions and check courses for practice and feedback.",
+      "hero": {
+        "src": "/guides/ui-ux-learning/hero-en.jpg",
+        "alt": "An original Mokaair illustration of interface screens, task documents and folders, representing UI and UX learning through a complete task.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When you want to learn UI/UX, opening a course list and seeing interface design, research interviews, prototypes, design systems and programming can make you think you have to learn every tool at once. A more useful starting point is to understand what question each kind of work answers, then use a small exercise to practice connecting them."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article uses an original clothing alterations shop pickup service example and draws on primary design and competency sources consulted on 2026-9-14. The scenario, exercise plan and examples were independently designed, without research at an actual shop or employment outcomes. The role references cited here also do not mean that every company in Taiwan divides responsibilities under the same job titles."
+        },
+        {
+          "type": "heading",
+          "text": "UI focuses on how people understand and operate an interface",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "UI stands for user interface. For a website, it includes the text, colors, buttons, fields and interactive responses on the screen, rather than simply making colors and fonts look attractive. The interface needs to communicate whether a click succeeded and help users understand why a field has an error."
+        },
+        {
+          "type": "paragraph",
+          "text": "A clothing alterations shop's pickup page offers practice in presenting an order number, expected completion time and pickup instructions. If the time has not been confirmed, design a pending-confirmation state. If the order number cannot be found, provide a next step as well. Drawing only one screen with all the information available is not enough to explain how the interface handles real usage situations."
+        },
+        {
+          "type": "paragraph",
+          "text": "When learning UI, start by practicing text hierarchy, spacing, alignment and states, then gradually add reusable components and layouts for different screens. Each time, ask yourself: What does this visual difference communicate? For example, does prominent text mean something is unfinished, or does it indicate an available action? If the rules are inconsistent, readers have to guess again."
+        },
+        {
+          "type": "heading",
+          "text": "UX looks at the overall experience of using products and services",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "UX stands for user experience and encompasses people's overall experience of interacting with products, services and organizations. Norman and Nielsen's definition extends beyond a single screen. The interface is one part of that experience, and ease of use does not guarantee satisfaction with the entire service. When learning, place the screen back in the user's context."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose a customer understands the pickup page but only learns upon arriving at the shop that they need a receipt, which they left at home. The problem may lie in how the reminder content connects with the in-store process. Enlarging a button may not solve it. You need to establish when customers learn the rules, how staff verify orders and what acceptable alternatives exist."
+        },
+        {
+          "type": "paragraph",
+          "text": "This does not mean every beginner has to redesign an entire shop. You can first define the exercise as handling only information confirmation before pickup, and list the shop's operational conditions that affect it. A clear scope lets you distinguish the interface you can change, service rules that require collaborative confirmation and ideas that are not yet supported by data."
+        },
+        {
+          "type": "heading",
+          "text": "Research helps teams understand needs; design turns understanding into action",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "User research starts by clarifying what you want to know, then selecting suitable observation, interview or testing methods. The UK government's user research competency description positions research as helping teams understand service users in depth and influencing content, interaction and service decisions. This article adopts that approach to the work without applying its civil service grades."
+        },
+        {
+          "type": "paragraph",
+          "text": "For the pickup exercise, start by listing questions: When do customers usually confirm the completion time? What do they do if they cannot find their receipt? Then separate known shop rules, your own assumptions and matters you need to ask about. If you have not yet worked with real users, keep these as research questions rather than creating a seemingly precise persona to serve as evidence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Interaction design requires thinking through the path to completing a task and the response at each step. Research and design may be handled by different people or overlap in a small team. The work still requires participation from content specialists, developers and service staff. Explaining the basis for your judgments and who needs to collaborate is more practical than dividing all the work by job title."
+        },
+        {
+          "type": "heading",
+          "text": "Use small exercises to build learning outcomes that can be assessed",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First choose a clear task, such as checking whether clothes are ready for pickup, and write down its starting and completion conditions. Next, list states such as confirmed information, processing and order not found, sketch a simple flow, then create screens that communicate the order of the content. Keeping the scope small leaves time to examine failure cases and return paths."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "For each exercise, keep three records: the problem you want to solve, your current design and the reasons for choosing this approach. If your only reason is that it looks better, ask how the visual change helps people read or interact. If a decision still needs validation, "
+            },
+            {
+              "type": "text",
+              "text": "mark"
+            },
+            {
+              "type": "text",
+              "text": " it as an assumption, and explain what you need to observe before deciding whether to revise it."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Once you can explain the basic flow clearly, add colors, components and responsive screens, then prepare handoff notes. You can complete the first version with pen and paper or a design tool you already know; you do not need to buy every course and plugin first. The exercise focuses on developing a proposal that people can discuss, while tool proficiency grows gradually through repeated use."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Choose a single user task and write down its context, starting conditions and completion conditions.",
+            "Record known information, personal assumptions and questions for research separately.",
+            "Map the main flow and exception states, then arrange text, buttons and interactive responses.",
+            "Revise after receiving specific feedback, keeping the reasons for changes and any limitations that remain unverified."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Plan your learning sequence and practice communicating with developers",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Beginners can first build an understanding of reading and information hierarchy, task flows and research fundamentals, then practice interactive prototypes and components. This is the exercise sequence suggested by this article, rather than a syllabus everyone must follow. Those with graphic design experience can strengthen their handling of interaction states; those with a programming background can practice understanding needs and expressing ideas in writing."
+        },
+        {
+          "type": "paragraph",
+          "text": "Understanding the basics of HTML, CSS, browsers and accessibility helps you discuss design constraints with developers. MDN's frontend learning materials provide a public starting point for this area, but studying a few chapters does not immediately give you complete development skills. The depth of your learning should fit your work goals and how you collaborate."
+        },
+        {
+          "type": "paragraph",
+          "text": "When evaluating a course, look beyond tool names to see whether it offers clear assignments, feedback methods, research ethics and an explanation of its actual scope. Demands for guaranteed hiring, claims that everyone can successfully change careers within a fixed number of days, or large collections of templates without feedback are unsuitable as evidence of ability. Before choosing a course, identify which kind of learning outcome you most need to strengthen."
+        },
+        {
+          "type": "heading",
+          "text": "Assess progress through your ability to explain and revise",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When showing your work to someone, ask them to explain the task as they understand it, the next step they expect and anything that confuses them. If you conduct formal user research, explain its purpose, how people will participate, how data will be used and how they can withdraw in advance, then collect data within the agreed scope. Classroom exercises should also avoid putting personal stories into a portfolio without consent to make them public."
+        },
+        {
+          "type": "paragraph",
+          "text": "During review, distinguish opinions from observations. A friend saying the colors look bad expresses a preference, while a participant being unable to find the pickup status is an interaction problem you can investigate. Both can be recorded, but they require different analysis methods. Do not generalize a small amount of feedback into all customers' preferences, or invent test results to make a project appear complete."
+        },
+        {
+          "type": "paragraph",
+          "text": "A beginner project that explains the context, flow, interface states, reasons for decisions and questions awaiting validation already provides a basis for further discussion. You can then explore visual design, research or interaction in greater depth according to your interests and apply what you learn to the next exercise. When assessing your progress, checking whether you can identify problems more clearly and revise your work is more useful than collecting tool certificates."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ui-ux-learning/diagram-1-en.svg",
+          "alt": "Three cards show understanding context, planning flows and communicating through an interface, illustrating how beginners can connect UI and UX through a concrete task.",
+          "width": 1600,
+          "height": 900,
+          "caption": "First learn to explain problems and decisions, then gradually deepen your tool skills, visual design and research.",
+          "description": "Three cards show understanding context, planning flows and communicating through an interface, illustrating how beginners can connect UI and UX through a concrete task.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Learning area",
+            "Pickup service exercise",
+            "Assessable outcomes"
+          ],
+          "rows": [
+            [
+              "Interface design",
+              "Arrange states, text and actions",
+              "Screen hierarchy and component states"
+            ],
+            [
+              "Interaction design",
+              "Handle lookups, returns and errors",
+              "Task flows and interaction explanations"
+            ],
+            [
+              "User research",
+              "Understand the context for confirming timing",
+              "Research questions and data limitations"
+            ],
+            [
+              "Service experience",
+              "Connect shop visits with verification rules",
+              "Touchpoints and collaboration needs"
+            ],
+            [
+              "Developer communication",
+              "Explain layouts and data conditions",
+              "Understandable handoff notes"
+            ]
+          ],
+          "caption": "An original comparison of learning outcomes, rather than standardized job title definitions or employment requirements."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Exercises can use assumptions; evidence cannot be invented",
+          "text": "Clearly label any parts that have not yet been interviewed about, tested or launched. You can list unverified questions as next steps, but cannot use fabricated quotations, personas or outcome figures to make a project more credible."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Arrange information hierarchy and the reading order of a layout",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Turn learning outcomes into a credible project case study",
+              "kind": "life",
+              "slug": "portfolio-case-study"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Understand website collaboration from requirements to acceptance",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g: The Definition of User Experience",
+          "url": "https://www.nngroup.com/articles/definition-user-experience/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: The Scope and Overlap of UI and UX",
+          "url": "https://www.figma.com/resource-library/difference-between-ui-and-ux/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UK Government: Interaction Design Competencies",
+          "url": "https://ddat-capability-framework.service.gov.uk/role/interaction-designer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UK Government: User Research Competencies",
+          "url": "https://ddat-capability-framework.service.gov.uk/role/user-researcher",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: Core Frontend Learning Competencies",
+          "url": "https://developer.mozilla.org/en-US/curriculum/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UK Government: Informed Consent for Research Participants",
+          "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "UI と UX 入門：インターフェース、タスク、ユーザーリサーチ",
+      "description": "UI と UX は同じ職種名に含まれることが多いものの、学ぶ際にはインターフェース、タスク、研究がそれぞれ解決する問題を区別する必要があります。本記事では、独自に設定した洋服のお直し店の受け取りサービスを例に、視覚表現と操作、サービス体験全体、ユーザーリサーチの関係を説明し、入門演習、学習成果の比較表、オリジナルの図解を紹介します。台湾の初心者が設計の理由を説明できる学習の道筋を作り、講座を選ぶ前に実践やフィードバックがあるか確認できるようにします。",
+      "hero": {
+        "src": "/guides/ui-ux-learning/hero-ja.jpg",
+        "alt": "Mokaair オリジナルの画面、タスク文書、フォルダーのイラスト。タスク全体を通して UI と UX を学ぶことを表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "UI／UX を学ぼうと講座一覧を開くと、インターフェースデザイン、調査インタビュー、プロトタイプ、デザインシステム、プログラム開発が並び、すべてのツールを一度に習得しなければならないと思いがちです。より役立つ出発点は、それぞれの仕事がどんな問いに答えるのかを先に理解し、小さな課題でそれらをつなげる練習をすることです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事では、独自に設定した洋服のお直し店の受け取りサービスを例に、2026年9月14日に参照したデザインと職務能力に関する一次資料を整理します。状況設定、演習の構成、例の内容はいずれも独自に作成したもので、実際の店舗調査や就職成果を伴うものではありません。また、本文で参照する職務能力の資料は、台湾のすべての企業が職種名ごとに同じ役割分担を採用しているという意味ではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "UI は画面の理解と操作に注目する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "UI はユーザーインターフェースです。ウェブサイトでは、画面上の文字、色、ボタン、入力欄、操作への応答などを含み、配色や書体を美しく整えるだけではありません。クリックした後に成功したか分かるか、入力欄でエラーが起きたときに理由を理解できるかも、インターフェースを通して伝える必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "洋服のお直し店の受け取りページでは、注文番号、仕上がり予定時刻、受け取り時の注意事項を示す練習ができます。時刻がまだ確定していない場合は、確認待ちの状態を設計する必要があります。番号が見つからないときにも、次の行動を示しましょう。すべての情報が揃った画面を一枚描くだけでは、このインターフェースが実際の利用状況にどう対応するかを十分に説明できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "UI を学ぶ際は、まず文字の階層、余白、整列、状態を練習し、再利用できるコンポーネントや画面サイズに応じたレイアウトを段階的に加えていくとよいでしょう。毎回、この見た目の違いは何を伝えているのか、自分に問いかけましょう。例えば、目立つ文字は未完了を示すのか、それとも実行できる行動を示すのか。ルールに一貫性がなければ、読み手はその都度意味を推測し直す必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "UX は製品やサービスを使う体験全体を見る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "UX はユーザー体験で、人が製品、サービス、組織と関わる際の体験全体を含みます。Norman と Nielsen の定義は、一つの画面よりも広い範囲を対象としています。インターフェースはその一部であり、操作しやすいからといって、一連のサービス全体に必ず満足できるとは限りません。学ぶ際は、画面をユーザーの利用状況の中で考える必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "顧客が受け取りページを理解できても、来店して初めて領収書が必要だと知り、その領収書を家に置いてきたとしましょう。問題は、案内内容と店内の手順のつながりにあるかもしれません。ボタンを大きくしても、この問題が解決するとは限りません。顧客がいつルールを知るのか、店員がどう確認するのか、どんな代替方法が認められるのかを確かめる必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "これは、初心者全員が店全体を作り変えるべきだという意味ではありません。まず、今回の演習では受け取り前の情報確認だけを扱うと定め、それに影響する店舗運営上の条件を挙げるとよいでしょう。範囲を明確にして初めて、自分で変更できるインターフェース、協力して確認する必要があるサービスのルール、まだデータの裏付けがない考えを区別できます。"
+        },
+        {
+          "type": "heading",
+          "text": "研究はチームのニーズ理解を助け、設計は理解を具体策に変える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ユーザーリサーチでは、まず何を知りたいのかを明確にしてから、適切な観察、インタビュー、テストの方法を選ぶ必要があります。英国政府のユーザーリサーチに関する職務能力の説明では、研究を、チームがサービス利用者を深く理解するのを助け、コンテンツ、操作、サービスに関する判断に影響を与える仕事と位置付けています。本記事ではこの仕事の方向性を参考にし、公務員の職級は適用しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "受け取りの演習では、まず問いを挙げるとよいでしょう。顧客は通常、いつ仕上がり時刻を確認するのか。領収書が見つからないときはどうするのか。そのうえで、分かっている店のルール、自分の推測、質問する必要がある部分を分けます。まだ実際のユーザーに接していないなら、研究の問いとして残し、先に精密そうなペルソナを作って証拠にしてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "インタラクションデザインでは、タスクを完了するまでの道筋と、各段階での応答を考える必要があります。研究と設計は別の人が担当する場合も、小規模なチームで担当が重なる場合もあります。いずれの場合も、コンテンツ、開発、サービスの担当者が共同で関わる必要があります。職種名で仕事を完全に切り分けるより、自分の判断の根拠と、誰の協力が必要かを明確に説明できるほうが実用的です。"
+        },
+        {
+          "type": "heading",
+          "text": "小さな演習で確認できる学習成果を作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず、衣類を受け取れるか確認するなど、明確なタスクを一つ選び、開始条件と完了条件を書き出します。続いて、情報確認済み、処理中、注文が見つからないといった状態を挙げ、簡単な流れを描いてから、内容の順序を伝えられる画面を作ります。範囲を小さくすることで、失敗した場合や戻る場合を確認する時間を確保できます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "毎回の演習で、解決したい問題、現在の設計、その方法を選んだ理由という三つの資料を残しましょう。理由が見た目の良さだけなら、その視覚的な変更が読み取りや操作にどう役立つのか、さらに問いかけるとよいでしょう。まだ検証が必要な判断は、仮説と"
+            },
+            {
+              "type": "text",
+              "text": "明記"
+            },
+            {
+              "type": "text",
+              "text": "し、修正の要否を決めるために何を観察すべきか説明しましょう。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "基本的な流れを明確に説明できるようになってから、配色、コンポーネント、レスポンシブ対応の画面を加え、最後に引き継ぎメモを整理します。初版は紙とペンや使い慣れたデザインツールで作れます。すべての講座やプラグインを先に購入する必要はありません。演習で大切なのは、議論できる案を作ることです。ツールの習熟度は、繰り返し操作することで少しずつ高まります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "利用タスクを一つ選び、状況、開始条件、完了条件を書き出す。",
+            "既知の情報、自分の仮説、研究が必要な問いを分けて記録する。",
+            "主な流れと例外の状態を描き、文字、ボタン、操作への応答を配置する。",
+            "具体的なフィードバックを得て修正し、変更理由と未検証の制約を残す。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "学習の順序を決め、開発者との対話も練習する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "入門では、まず読みやすさと情報の階層、タスクの流れ、研究の基本的な考え方を身に付け、その後、操作できるプロトタイプやコンポーネントを練習するとよいでしょう。これは本記事が提案する演習の順序であり、全員が従うべきカリキュラムではありません。グラフィックデザインの経験がある人は操作の状態を重点的に学び、プログラミングの経験がある人はニーズの理解や文章表現を多めに練習するとよいでしょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "HTML、CSS、ブラウザー、アクセシビリティの基本概念を理解すると、開発者と設計上の制約を話し合いやすくなります。MDN のフロントエンド学習資料は、この分野を学び始めるための公開資料として使えます。ただし、数章を学んだからといって、すぐに開発能力全体が身に付くわけではありません。学ぶ深さは、自分の仕事の目標や協働の方法に合わせましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "講座を確認する際は、ツール名だけでなく、明確な課題、講評の方法、研究倫理、実際に扱う範囲の説明があるかも見ましょう。採用保証を求めること、一定の日数で誰もが転職に成功すると宣伝すること、大量のテンプレートだけを提供してフィードバックがないことは、いずれも能力の証拠には適しません。講座を選ぶ前に、自分がどの種類の成果を最も補う必要があるか確認しましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "説明し、修正する力で上達を確かめる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "作品を他の人に見せる際は、その人が理解したタスク、予想する次の行動、分かりにくい点を説明してもらうとよいでしょう。正式なユーザーリサーチを行う場合は、目的、参加方法、データの利用、参加をやめる際の対応を事前に説明し、同意された範囲でデータを収集する必要があります。授業の演習でも、公開への同意がない個人の体験談をそのままポートフォリオに載せてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "振り返る際は、意見と観察を区別しましょう。友人が色を好まないと言うのは好みであり、参加者が受け取り状況を見つけられないのは原因を調べられる操作上の問題です。どちらも記録できますが、分析方法は異なります。少量のフィードバックをすべての顧客の好みに一般化したり、作品を完成させるために存在しないテスト結果を書き加えたりしてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "入門段階の成果でも、状況、流れ、画面の状態、判断理由、検証が必要な問いを説明できれば、議論を続けるための土台ができています。その後は、興味に応じて視覚デザイン、研究、インタラクションの分野を深く学び、学んだことを次の演習に活用できます。自分の上達を評価する際は、ツールの認定証を集めるより、問題をより明確に発見して修正できるかを見るほうが役立ちます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ui-ux-learning/diagram-1-ja.svg",
+          "alt": "三枚のカードで状況の理解、流れの設計、画面での表現を示し、初心者が具体的なタスクで UI と UX をつなげられることを説明しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "まずは問題と判断を説明できるようになり、その後、ツール、視覚表現、研究を段階的に深めましょう。",
+          "description": "三枚のカードで状況の理解、流れの設計、画面での表現を示し、初心者が具体的なタスクで UI と UX をつなげられることを説明しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "学習分野",
+            "受け取りサービスの演習",
+            "確認できる成果"
+          ],
+          "rows": [
+            [
+              "インターフェースデザイン",
+              "状態、文字、操作を設計する",
+              "画面の階層とコンポーネントの状態"
+            ],
+            [
+              "インタラクションデザイン",
+              "照会、戻る操作、エラーに対応する",
+              "タスクの流れと操作の説明"
+            ],
+            [
+              "ユーザーリサーチ",
+              "仕上がり時刻を確認する状況を理解する",
+              "研究の問いとデータの限界"
+            ],
+            [
+              "サービス体験",
+              "来店と照合ルールをつなぐ",
+              "接点と協働の必要事項"
+            ],
+            [
+              "開発者との対話",
+              "レイアウトとデータの条件を伝える",
+              "理解しやすい引き継ぎメモ"
+            ]
+          ],
+          "caption": "独自に作成した学習成果の比較です。統一された職種名の定義や就職の基準ではありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "演習に仮説はあってよいが、証拠は書き足して作れない",
+          "text": "まだインタビュー、テスト、公開を行っていない部分は、明確に示しましょう。未検証の問いを次の課題として挙げることはできますが、架空の引用文、ペルソナ、成果の数値で作品の信頼性を高めてはいけません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "情報の階層とレイアウトの読み順を設計する",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "学習成果を信頼できる作品事例としてまとめる",
+              "kind": "life",
+              "slug": "portfolio-case-study"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ウェブサイトの要件から受け入れ検証までの協働の流れを理解する",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g：ユーザー体験の定義",
+          "url": "https://www.nngroup.com/articles/definition-user-experience/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：UI と UX の範囲と重なり",
+          "url": "https://www.figma.com/resource-library/difference-between-ui-and-ux/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "英国政府：インタラクションデザインの職務能力",
+          "url": "https://ddat-capability-framework.service.gov.uk/role/interaction-designer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "英国政府：ユーザーリサーチの職務能力",
+          "url": "https://ddat-capability-framework.service.gov.uk/role/user-researcher",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：フロントエンド学習の中核となる能力",
+          "url": "https://developer.mozilla.org/en-US/curriculum/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "英国政府：研究参加者のインフォームド・コンセント",
+          "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "UI와 UX 입문: 인터페이스, 과업과 사용자 연구",
+      "description": "UI와 UX는 같은 직함에 함께 등장하는 경우가 많지만, 배울 때는 인터페이스, 과업, 연구가 각각 어떤 문제를 해결하는지 구분해야 합니다. 이 글은 직접 구상한 옷 수선점의 수령 서비스를 예로 들어 시각·인터랙션 디자인, 전체 서비스 경험, 사용자 연구의 관계를 설명하고, 입문 연습과 학습 결과 비교표, 직접 제작한 도해를 제공합니다. 대만의 입문자가 설계 이유를 설명할 수 있는 학습 경로를 세우고, 수강 전에 실습과 피드백이 제공되는지도 확인하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/ui-ux-learning/hero-ko.jpg",
+        "alt": "Mokaair가 직접 제작한 인터페이스 화면, 과업 문서와 폴더 일러스트로, 전체 과업을 통해 UI와 UX를 배우는 방식을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "UI／UX를 배우려고 강좌 목록을 열면 인터페이스 디자인, 연구 인터뷰, 프로토타입, 디자인 시스템과 프로그램 개발이 나옵니다. 그러면 모든 도구를 한꺼번에 익혀야 한다고 생각하기 쉽습니다. 더 유용한 출발점은 각 업무가 어떤 질문에 답하는지 먼저 이해한 뒤, 작은 주제로 이들을 연결하는 연습을 하는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 직접 구상한 옷 수선점의 수령 서비스를 예로 들어, 2026년 9월 14일에 확인한 디자인 및 직무 역량 관련 일차 자료를 정리합니다. 상황, 연습 구성과 예시 내용은 모두 직접 설계했으며, 실제 매장 연구나 취업 성과가 있는 것은 아닙니다. 참고한 직무 역량 자료 역시 대만의 모든 회사가 직함별로 같은 업무 분담을 한다는 뜻은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "UI는 사람들이 인터페이스를 이해하고 조작하는 방식에 집중합니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "UI는 사용자 인터페이스입니다. 웹사이트에서는 화면의 글, 색상, 버튼, 입력란과 상호작용에 대한 응답을 포함하며, 배색과 글꼴을 예쁘게 다듬는 데 그치지 않습니다. 클릭한 뒤 성공 여부를 알 수 있는지, 입력란에 오류가 생겼을 때 이유를 이해할 수 있는지도 인터페이스를 통해 전달해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "옷 수선점의 수령 페이지에서는 주문 번호, 예상 완료 시간과 수령 안내를 보여주는 연습을 할 수 있습니다. 시간이 아직 확정되지 않았다면 확인 대기 상태를 설계해야 합니다. 번호를 찾을 수 없을 때도 다음에 할 일을 안내해야 합니다. 모든 정보가 갖춰진 화면 한 장만 그려서는 이 인터페이스가 실제 사용 상황에 어떻게 대응하는지 충분히 설명할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "UI를 배울 때는 글의 위계, 간격, 정렬과 상태부터 연습한 뒤, 재사용 가능한 컴포넌트와 다양한 화면 크기의 레이아웃을 점차 추가할 수 있습니다. 매번 스스로 물어보세요. 이 시각적 차이는 무엇을 전달하는가? 예를 들어 눈에 띄는 글은 아직 완료되지 않았다는 뜻인가요, 아니면 할 수 있는 행동을 뜻하나요? 규칙이 일관되지 않으면 독자는 다시 추측해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "UX는 제품과 서비스를 사용하는 전체 경험을 살펴봅니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "UX는 사용자 경험으로, 사람이 제품, 서비스 및 조직과 상호작용하는 전체 경험을 포괄합니다. Norman과 Nielsen의 정의는 그 범위를 단일 화면보다 넓게 잡습니다. 인터페이스는 그 일부이며, 조작하기 쉽다고 해서 서비스 전체가 반드시 만족스럽다는 뜻은 아닙니다. 학습할 때는 화면을 사용자의 상황 속에서 살펴봐야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "고객이 수령 페이지를 이해했지만 매장에 도착한 뒤에야 영수증이 필요하다는 것을 알았고, 영수증은 집에 두고 왔다고 가정해 보겠습니다. 문제는 안내 내용과 매장 절차의 연결에 있을 수 있습니다. 버튼을 키운다고 해결되지는 않을 수 있습니다. 고객이 언제 규칙을 알게 되는지, 직원은 어떻게 확인하는지, 어떤 대체 방법을 허용하는지 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모든 입문자가 매장 전체를 바꿔야 한다는 뜻은 아닙니다. 이번 연습은 수령 전 정보 확인만 다룬다고 범위를 정하고, 여기에 영향을 주는 매장 운영 조건을 나열할 수 있습니다. 범위가 명확해야 자신이 수정할 수 있는 인터페이스, 협업을 통해 확인해야 하는 서비스 규칙, 아직 자료로 뒷받침되지 않은 생각을 구분할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "연구는 팀의 요구 이해를 돕고, 디자인은 이해한 내용을 실행 방법으로 바꿉니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사용자 연구에서는 무엇을 알고 싶은지 먼저 명확히 한 뒤, 적절한 관찰, 인터뷰 또는 테스트 방법을 선택해야 합니다. 영국 정부의 사용자 연구 직무 역량 설명은 연구를 팀이 서비스 사용자를 깊이 이해하도록 돕고 콘텐츠, 인터랙션 및 서비스 결정에 영향을 주는 업무로 설명합니다. 이 글은 이러한 업무 방향을 참고하되, 해당 공무원 직급 체계는 적용하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "수령 연습에서는 먼저 질문을 나열할 수 있습니다. 고객은 보통 언제 완료 시간을 확인하나요? 영수증을 찾을 수 없으면 어떻게 하나요? 이어서 알고 있는 매장 규칙, 자신의 추측, 질문해야 할 부분을 구분하세요. 아직 실제 사용자를 접하지 않았다면 연구 질문으로 남겨 두고, 정교해 보이는 페르소나를 미리 만들어 증거로 삼지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "인터랙션 디자인에서는 과업을 완료하는 경로와 각 단계의 반응을 생각해야 합니다. 연구와 디자인을 서로 다른 사람이 맡을 수도 있고, 작은 팀에서는 역할이 겹칠 수도 있습니다. 그래도 콘텐츠, 개발 및 서비스 담당자가 함께 참여해야 합니다. 직함으로 업무를 완전히 나누기보다 자신의 판단 근거와 누구의 협력이 필요한지 명확히 설명하는 것이 더 실용적입니다."
+        },
+        {
+          "type": "heading",
+          "text": "작은 연습으로 점검할 수 있는 학습 결과를 만드세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "의류를 수령할 수 있는지 확인하는 것처럼 명확한 과업 하나를 먼저 선택하고, 시작 조건과 완료 조건을 적으세요. 이어서 정보 확인 완료, 처리 중, 주문을 찾을 수 없음 등의 상태를 나열하고 간단한 흐름을 그린 뒤, 내용의 순서를 보여주는 화면을 만드세요. 범위를 작게 잡아야 실패하거나 되돌아가는 경우를 점검할 시간이 생깁니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "매번 연습할 때 세 가지 자료를 남기세요. 해결하려는 문제, 현재 디자인, 이 방법을 선택한 이유입니다. 이유가 단지 더 좋아 보이기 때문이라면, 시각적 변경이 읽기나 조작에 어떻게 도움이 되는지 추가로 물어볼 수 있습니다. 아직 검증되지 않은 판단은 "
+            },
+            {
+              "type": "text",
+              "text": "표시"
+            },
+            {
+              "type": "text",
+              "text": "하여 가정임을 밝히고, 수정 여부를 결정하려면 무엇을 관찰해야 하는지 설명하세요."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "기본 흐름을 명확히 설명할 수 있게 되면 배색, 컴포넌트와 반응형 화면을 추가하고, 마지막으로 인계 메모를 정리하세요. 첫 버전은 종이와 펜 또는 익숙한 디자인 도구로 완성해도 되며, 모든 강좌와 플러그인을 먼저 구매할 필요는 없습니다. 연습의 핵심은 논의할 수 있는 방안을 만드는 것이고, 도구 숙련도는 반복해서 사용하며 점차 쌓아 가면 됩니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "사용 과업 하나를 선택하고 상황, 시작 조건과 완료 조건을 적으세요.",
+            "알고 있는 정보, 개인적인 가정과 연구가 필요한 질문을 구분해 기록하세요.",
+            "주요 흐름과 예외 상태를 그린 뒤, 글, 버튼과 상호작용에 대한 응답을 구성하세요.",
+            "구체적인 피드백을 받은 뒤 수정하고, 수정 이유와 아직 검증되지 않은 한계를 남기세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "학습 순서를 정하고 개발자와의 소통도 연습하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "입문 단계에서는 가독성과 정보 위계, 과업 흐름, 연구의 기본 개념부터 익힌 뒤 인터랙션 프로토타입과 컴포넌트를 연습할 수 있습니다. 이는 이 글에서 제안하는 연습 순서이며, 모두가 따라야 하는 교육과정은 아닙니다. 그래픽 디자인 경험이 있다면 조작 상태를 보완하고, 프로그래밍 배경이 있다면 요구 이해와 글로 표현하는 연습을 더 할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "HTML, CSS, 브라우저와 접근성의 기본 개념을 이해하면 개발자와 디자인의 제약을 논의하는 데 도움이 됩니다. MDN의 프런트엔드 학습 자료는 이 부분을 배우는 공개된 출발점으로 활용할 수 있습니다. 다만 몇 개 장을 공부했다고 곧바로 완전한 개발 능력을 갖추는 것은 아닙니다. 학습 깊이는 자신의 업무 목표와 협업 방식에 맞춰야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "강좌를 살펴볼 때는 도구 이름뿐 아니라 명확한 과제, 평가와 피드백 방식, 연구 윤리와 실제로 다루는 범위에 대한 설명이 있는지도 보세요. 채용 합격 보장을 요구하거나, 정해진 일수 안에 누구나 이직에 성공한다고 주장하거나, 피드백 없이 많은 템플릿만 제공하는 것은 역량의 증거로 삼기에 적절하지 않습니다. 수강 전에 자신에게 가장 필요한 결과물이 무엇인지 먼저 확인하세요."
+        },
+        {
+          "type": "heading",
+          "text": "설명하고 수정하는 능력으로 발전을 점검하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "작업물을 다른 사람에게 보여줄 때는 상대가 이해한 과업, 예상하는 다음 단계와 혼란스러운 부분을 설명해 달라고 할 수 있습니다. 정식 사용자 연구를 진행한다면 목적, 참여 방식, 자료 사용과 중도 철회 절차를 미리 설명하고, 동의받은 범위에 따라 자료를 수집해야 합니다. 수업 연습에서도 공개에 동의하지 않은 개인의 이야기를 그대로 포트폴리오에 넣어서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "검토할 때는 의견과 관찰을 구분하세요. 친구가 색이 예쁘지 않다고 말하는 것은 선호이고, 참여자가 수령 상태를 찾지 못하는 것은 원인을 조사할 수 있는 조작 문제입니다. 둘 다 기록할 수 있지만 서로 다른 방식으로 분석해야 합니다. 소수의 피드백을 모든 고객의 선호로 확대하지 말고, 작업물을 완성하기 위해 존재하지 않는 테스트 결과를 채워 넣지도 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "입문 결과물에서 상황, 흐름, 인터페이스 상태, 결정 이유와 검증이 필요한 질문을 설명할 수 있다면, 계속 논의할 기반이 이미 마련된 것입니다. 이후에는 관심에 따라 시각 디자인, 연구 또는 인터랙션 분야를 깊이 배우고, 배운 내용을 다음 연습에 적용할 수 있습니다. 자신의 발전을 평가할 때는 도구 자격증을 모으는 것보다 문제를 더 명확히 발견하고 수정할 수 있는지 살펴보는 것이 도움이 됩니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ui-ux-learning/diagram-1-ko.svg",
+          "alt": "세 카드가 각각 상황 이해, 흐름 구성과 인터페이스 표현을 보여주며, 입문자가 구체적인 과업으로 UI와 UX를 연결하는 방법을 설명합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "먼저 문제와 결정을 설명할 수 있도록 한 뒤, 도구, 시각 디자인과 연구의 깊이를 점차 더하세요.",
+          "description": "세 카드가 각각 상황 이해, 흐름 구성과 인터페이스 표현을 보여주며, 입문자가 구체적인 과업으로 UI와 UX를 연결하는 방법을 설명합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "학습 방향",
+            "수령 서비스 연습",
+            "점검 가능한 결과물"
+          ],
+          "rows": [
+            [
+              "인터페이스 디자인",
+              "상태, 글과 조작 구성",
+              "화면 위계와 컴포넌트 상태"
+            ],
+            [
+              "인터랙션 디자인",
+              "조회, 되돌아가기와 오류 처리",
+              "과업 흐름과 상호작용 설명"
+            ],
+            [
+              "사용자 연구",
+              "완료 시간을 확인하는 상황 이해",
+              "연구 질문과 자료의 한계"
+            ],
+            [
+              "서비스 경험",
+              "매장 방문과 확인 규칙 연결",
+              "접점과 협업 필요 사항"
+            ],
+            [
+              "개발자와의 소통",
+              "레이아웃과 데이터 조건 전달",
+              "이해하기 쉬운 인계 메모"
+            ]
+          ],
+          "caption": "직접 구성한 학습 결과 비교이며, 통일된 직함 정의나 취업 기준은 아닙니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "연습에는 가정이 있어도 되지만, 증거를 지어내서는 안 됩니다",
+          "text": "아직 인터뷰, 테스트 또는 실제 서비스 적용을 하지 않은 부분은 명확히 표시해야 합니다. 검증되지 않은 질문을 다음 단계로 정리할 수는 있지만, 허구의 인용문, 페르소나 또는 성과 수치로 작업물의 신뢰도를 높여서는 안 됩니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "정보 위계와 레이아웃의 읽기 순서 구성하기",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "학습 결과를 신뢰할 수 있는 포트폴리오 사례로 작성하기",
+              "kind": "life",
+              "slug": "portfolio-case-study"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "요구사항부터 검수까지 웹사이트 제작의 협업 과정 이해하기",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g: 사용자 경험의 정의",
+          "url": "https://www.nngroup.com/articles/definition-user-experience/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: UI와 UX의 범위 및 겹치는 영역",
+          "url": "https://www.figma.com/resource-library/difference-between-ui-and-ux/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "영국 정부: 인터랙션 디자인 직무 역량",
+          "url": "https://ddat-capability-framework.service.gov.uk/role/interaction-designer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "영국 정부: 사용자 연구 직무 역량",
+          "url": "https://ddat-capability-framework.service.gov.uk/role/user-researcher",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: 프런트엔드 학습 핵심 역량",
+          "url": "https://developer.mozilla.org/en-US/curriculum/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "영국 정부: 연구 참여자의 충분한 설명에 근거한 동의",
+          "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "UI 与 UX 入门：界面、任务与用户研究",
+      "description": "UI 与 UX 常出现在同一个职位名称里，但学习时仍需要分清楚界面、任务与研究各自解决的问题。本文以原创衣物修改店取件服务为例，说明视觉与交互、完整服务体验及用户研究的关系，整理入门练习、学习成果对照表与原创图解。帮助台湾初学者建立能说明设计理由的学习路径，选课前也能检查课程是否提供实践与反馈。",
+      "hero": {
+        "src": "/guides/ui-ux-learning/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创界面画面、任务文档与文件夹插图，代表通过完整任务学习 UI 与 UX。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想学 UI／UX，打开课程列表却看到界面设计、研究访谈、原型、设计系统与程序开发，容易以为必须一次学会全部工具。比较有用的起点，是先知道每种工作在回答什么问题，再用一个小题目练习把它们连接起来。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以原创衣物修改店取件服务为例，整理 2026 年 9 月 14 日查阅的一手设计与职能资料。情境、练习安排和示例内容均自行设计，没有实际店家研究或就业成果；文中职能参考也不代表台湾所有公司的职位名称都采用相同分工。"
+        },
+        {
+          "type": "heading",
+          "text": "UI 着重于人如何看懂并操作界面",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "UI 是用户界面。对网站来说，包含画面上的文字、色彩、按钮、字段与交互反馈，不只是把配色和字体改得漂亮。用户点击后是否知道有没有成功、字段出错时能不能理解原因，都需要通过界面表达。"
+        },
+        {
+          "type": "paragraph",
+          "text": "衣物修改店的取件页，可以练习呈现订单编号、预计完成时间与取件须知。如果时间尚未确认，应设计待确认的状态；查不到编号时，也要提供下一步。只画出一张所有信息都齐全的画面，还不足以说明这个界面如何应对实际使用情境。"
+        },
+        {
+          "type": "paragraph",
+          "text": "学习 UI 时，可先练习文字层级、间距、对齐与状态，再逐步加入可复用组件和不同屏幕布局。每次都问自己：这个视觉差异在传达什么？例如醒目的文字代表尚未完成，还是代表可采取的行动？如果规则前后不一致，读者就得重新猜测。"
+        },
+        {
+          "type": "heading",
+          "text": "UX 看的是使用产品与服务的整体体验",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "UX 是用户体验，涵盖人与产品、服务及组织交互的整体体验。Norman 与 Nielsen 的定义把范围放得比单一画面更广；界面是其中一部分，容易操作也不等于整段服务必然令人满意。学习时应把画面放回用户的情境。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设顾客看懂取件页，却在到店后才知道需要带收据，而收据留在家里，问题可能出在提醒内容与店内流程的衔接。把按钮放大未必能解决这件事。你需要确认顾客何时得知规则、店员如何核对，以及有哪些可接受的替代方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这不表示每位初学者都要改造整家店。可以先界定本次练习只处理取件前的信息确认，并列出会影响它的店务条件。明确范围后，才能区分自己可修改的界面、需要协作确认的服务规则，以及尚未有数据支持的想法。"
+        },
+        {
+          "type": "heading",
+          "text": "研究帮助团队理解需求，设计把理解转成做法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用户研究需要先明确想知道什么，再选择合适的观察、访谈或测试方法。英国政府的用户研究职能说明，将研究定位为帮助团队深入理解服务用户，并影响内容、交互与服务决策；本文借用这个工作方向，不套用其公务职级。"
+        },
+        {
+          "type": "paragraph",
+          "text": "取件练习可先列出问题：顾客通常何时确认完成时间？找不到收据时怎么处理？再把已知店家规则、自己的推测和需要询问的部分分开。如果尚未接触真实用户，就保留为研究问题，不先制作一份看似精准的用户画像来当证据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交互设计则需要思考完成任务的路径与每一步的反馈。研究和设计可能由不同人负责，也可能在小团队中重叠；工作仍需要内容、开发及服务人员共同参与。能说清自己的判断依据与需要谁协作，比用职位名称把工作完全切开更实用。"
+        },
+        {
+          "type": "heading",
+          "text": "用小型练习建立可检查的学习成果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先选一个明确的任务，例如确认衣物是否可取件，写下开始条件与完成条件。接着列出信息已确认、处理中、查无订单等状态，画简单流程，再做能表达内容顺序的画面。范围小一些，才能有时间检查失败与返回的情况。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "每次练习都留下三种资料：你想解决的问题、目前的设计，以及选择这个做法的理由。如果理由只是看起来比较好，可以补问视觉改动如何帮助阅读或操作。如果某项判断尚待验证，就将其"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "为假设，并说明需要观察什么才能决定是否修改。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "等基本流程能说明清楚，再加入配色、组件及响应式界面，最后整理交接备注。可用纸笔或自己熟悉的设计工具完成第一版，不需要先购买所有课程和插件。练习重点是建立可讨论的方案，工具熟练度则通过反复操作逐步积累。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "选定单一使用任务，写出情境、开始条件与完成条件。",
+            "把已知信息、个人假设与待研究问题分开记录。",
+            "画出主要流程和异常状态，再安排文字、按钮与交互反馈。",
+            "获得具体反馈后修正，保留修改理由与尚未验证的限制。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "安排学习顺序，也练习与开发人员沟通",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "入门可先建立阅读与信息层级、任务流程、研究基本观念，再练习交互原型与组件。这是本文建议的练习安排，不是每个人都必须遵循的课程大纲。已有平面设计经验者，可加强操作状态；已有编程背景者，可多练习理解需求与文字表达。"
+        },
+        {
+          "type": "paragraph",
+          "text": "理解 HTML、CSS、浏览器及无障碍基本概念，能帮助你和开发人员讨论设计限制。MDN 的前端学习资料可作为这部分的公开起点，但学过几个章节不代表立即具备完整开发能力。学习深度应配合自己的工作目标与合作方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "检查课程时，除了工具名称，也看是否有明确作业、点评方式、研究伦理与实际范围说明。要求保证录取、用固定天数宣称人人转行成功，或只提供大量模板却没有反馈，都不适合拿来当能力证据。选课前先确认自己最需要补哪一种成果。"
+        },
+        {
+          "type": "heading",
+          "text": "通过解释与修正的能力检查进步",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把作品交给他人看时，可以请对方说明他理解的任务、预期下一步与困惑之处。如果安排正式用户研究，应事先说明目的、参与方式、数据使用与退出安排，再按同意的范围收集数据。课堂练习也不应把未同意公开的个人故事直接贴进作品集。"
+        },
+        {
+          "type": "paragraph",
+          "text": "复盘时分清楚意见和观察。朋友说颜色不好看是一种偏好，参与者找不到取件状态则是可追查的操作问题；两者都可记录，但需要不同方式分析。不要把少量反馈推断成所有顾客的偏好，也不要为了作品完整而填入不存在的测试结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一份入门成果如果能说明情境、流程、界面状态、决策理由与待验证问题，就已具备继续讨论的基础。之后可根据兴趣深入视觉设计、研究或交互领域，再把学到的内容用在下一次练习。评估自己的进步时，看能否更清楚地发现问题并修正，比收集工具证书更有帮助。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ui-ux-learning/diagram-1-zh-cn.svg",
+          "alt": "三张卡片分别呈现了解情境、安排流程及表达界面，说明初学者可用具体任务串起 UI 与 UX。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先能解释问题与决定，再逐步增加工具、视觉与研究的深度。",
+          "description": "三张卡片分别呈现了解情境、安排流程及表达界面，说明初学者可用具体任务串起 UI 与 UX。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "学习方向",
+            "取件服务练习",
+            "可检查的成果"
+          ],
+          "rows": [
+            [
+              "界面设计",
+              "安排状态、文字与操作",
+              "画面层级与组件状态"
+            ],
+            [
+              "交互设计",
+              "处理查询、返回及错误",
+              "任务流程与交互说明"
+            ],
+            [
+              "用户研究",
+              "了解确认时间的情境",
+              "研究问题与数据限制"
+            ],
+            [
+              "服务体验",
+              "衔接到店与核对规则",
+              "接触点及协作需求"
+            ],
+            [
+              "开发沟通",
+              "交代布局与数据条件",
+              "可理解的交接备注"
+            ]
+          ],
+          "caption": "原创学习成果对照，不是统一职位名称定义或就业门槛。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "练习可以有假设，证据不能靠补写",
+          "text": "尚未访谈、测试或上线的部分应清楚标示。可把未验证问题列为下一步，不能用虚构引言、用户画像或成果数字增加作品可信度。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排信息层级与版面阅读顺序",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把学习成果写成可信的作品案例",
+              "kind": "life",
+              "slug": "portfolio-case-study"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解网站从需求到验收的合作流程",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g：用户体验的定义",
+          "url": "https://www.nngroup.com/articles/definition-user-experience/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：UI 与 UX 的范围及重叠",
+          "url": "https://www.figma.com/resource-library/difference-between-ui-and-ux/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "英国政府：交互设计职能",
+          "url": "https://ddat-capability-framework.service.gov.uk/role/interaction-designer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "英国政府：用户研究职能",
+          "url": "https://ddat-capability-framework.service.gov.uk/role/user-researcher",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：前端学习核心能力",
+          "url": "https://developer.mozilla.org/en-US/curriculum/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "英国政府：研究参与者的知情同意",
           "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
           "checked_on": "2026-09-14"
         }

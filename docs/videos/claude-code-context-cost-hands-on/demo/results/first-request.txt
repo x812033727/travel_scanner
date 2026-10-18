@@ -1,0 +1,15 @@
+$ node <seed>/ctx-cost.mjs --quiet --base z1,z2 --floor 11 z1.stream.jsonl z2.stream.jsonl m1.stream.jsonl s1.stream.jsonl a1.stream.jsonl c1.stream.jsonl u1.stream.jsonl h1.stream.jsonl p1.stream.jsonl t1.stream.jsonl      (run from <logs>)
+base: z1, z2 | first request 11,270, 11,190 | mean 11,230 | spread 80
+bar: 80 (the larger of the spread and --floor 11)
+name | requests | first = input + write + read | minus base | last | grew
+z1 | 1 | 11,270 = 2 + 11,268 + 0 | (base) | 11,270 | +0
+z2 | 1 | 11,190 = 2 + 4,386 + 6,802 | (base) | 11,190 | +0
+m1 | 1 | 11,493 = 2 + 5,842 + 5,649 | +263 | 11,493 | +0
+s1 | 1 | 11,251 = 2 + 4,713 + 6,536 | +21 (inside the bar) | 11,251 | +0
+a1 | 1 | 11,242 = 2 + 4,438 + 6,802 | +12 (inside the bar) | 11,242 | +0
+c1 | 1 | 11,901 = 2 + 4,828 + 7,071 | +671 | 11,901 | +0
+u1 | 1 | 11,438 = 2 + 11,436 + 0 | +208 | 11,438 | +0
+h1 | 1 | 11,186 = 2 + 4,382 + 6,802 | -44 (inside the bar) | 11,186 | +0
+p1 | 1 | 11,315 = 2 + 4,511 + 6,802 | +85 | 11,315 | +0
+t1 | 1 | 12,319 = 2 + 12,317 + 0 | +1,089 | 12,319 | +0
+[exit 0]

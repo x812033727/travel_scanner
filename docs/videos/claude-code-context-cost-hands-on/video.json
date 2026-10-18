@@ -1,0 +1,1707 @@
+{
+  "schema_version": 1,
+  "slug": "claude-code-context-cost-hands-on",
+  "format": "slides",
+  "category": "tutorial",
+  "source_guide": "claude-code-context-compact-clear",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "這一支是照著量測紀錄講的：像把一張表攤在同事面前，一列一列指給他看，穩、清楚、不誇大。開場的問句壓低放慢；每個數字前停半拍，數字本身放慢；講到只有一次、沒有查、沒有跑過的地方，平實不遮掩；「分不出來」說清楚，不帶遺憾；提醒那一段語氣放平；章首與章末的問句輕輕上揚。"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Code context 用量實測：六種零件讓第一個請求多幾個 token",
+    "description": "CLAUDE.md、Skill、subagent、MCP 伺服器、hook、外掛，掛著不用的時候，讓 Claude Code 的第一個請求多帶幾個 token？同樣的一句話在同一個練習專案跑十二次，只看差值；再加一次真的做事的 session。\n給想知道先動哪一樣的人。\n\n想照著做：練習專案、每個零件和量測腳本都在 https://github.com/x812033727/travel_scanner/tree/main/docs/videos/claude-code-context-cost-hands-on/demo\n\n這次量到的（第一個請求＝輸入＋快取寫入＋快取讀取，減基準；基準 2 次、其餘各 1 次，尺 11）\n・CLAUDE.md 7 行 +305；Skill +63；subagent +54；外掛（同一個 Skill、subagent 與守門）+127\n・第一個延後載入的 MCP 伺服器 +713；同一個伺服器、兩個工具直接載入 +250（開頭清單上 8 個內建工具的專案）\n・沒被觸發的 hook −2，分不出來；開場顯示 65 個字元的 hook +78\n・五樣一起 +1,131，各自相加 1,133；這個資料夾當天第一次 session 多列一個內建 skill，+82\n・基準的算法改過一次：原訂用頭兩次基準的平均，兩次差 80、超過事先訂的 20，照規則停下；改成開頭清單個數相同的兩次（z2、z3）的平均，改法寫在 z3 跑之前。原規則算出來的表在 demo/results/first-request.txt。\n・之後每個請求都重送同一段，是官方 prompt-caching 頁的說明，這支沒有量。\n\n照著打的時候\n・先把 demo 複製到 repo 以外再跑：在 repo 裡啟動 Claude Code 會載入 repo 自己的指示檔與 skills，數字會不同；在 git 儲存庫裡 session.sh 也會拒絕。\n・repo 裡零件用中性檔名存放，session.sh 第 161–184 行才把它們放成 CLAUDE.md、.claude/ 底下的檔與 .mcp.json。LAB、KIT、DRY 不要設成自己的資料夾：專案每次刪掉重建。\n・WORK=repo 以外的資料夾 bash session.sh 名字 臂（加 --dry 只組專案）；臂是 base、memory、skill、agent、mcp、upfront、hook、note、plugin、all、work。\n・串流存在 WORK/run/logs/名字.stream.jsonl；base 臂跑兩次取名 z2、z3，memory 臂取名 m1，再把 demo/ctx-cost.mjs 複製過去，畫面上的兩行就能照打。\n・相減的那一行：node ctx-cost.mjs z2.stream.jsonl z3.stream.jsonl m1.stream.jsonl --base z2,z3 --quiet（再加 --floor 11 會標出尺以內的列）。\n・畫面沒列的旗標：-p、--model sonnet、--permission-mode default、--allowedTools、--no-session-persistence、--max-budget-usd 1、--include-hook-events、--debug-file，接伺服器的臂另有 --mcp-config .mcp.json；前面還有幾個環境變數，u1 多一個 ENABLE_TOOL_SEARCH=false。完整的一行在 session.sh。\n・用 Git Bash 或 macOS、Linux 的終端機：PowerShell 的輸出重導向會把串流存成 UTF-16，腳本讀不了。四支腳本要 PATH 上有 node。\n・這十三次回報的費用合計約 0.41 美元（每次 0.019 到 0.090），照做會用掉額度。串流裡有路徑與用量資料，不要貼給別人。\n・量自己的 MCP 伺服器：三次都加 --strict-mcp-config，有的那次再加 --mcp-config .mcp.json，先看到 MCP servers 1 (connected) 才算。\n・兩次基準，第一次可能比較大：先比開頭清單個數，不同就再跑一次，--base 換成個數相同的那兩次（例如 without2,without3）。\n\n怎麼跑的\n・Windows 11 的 Git Bash、Claude Code 2.1.295、Node.js v24.13.0，2026-10-11；十三次都是 --model sonnet、不開畫面，沒有 Bash。\n・沒有跑的：互動式的畫面與 /context、自動壓縮與長 session、同一種設定重跑三次以上、自己讀對交給 subagent 的成對比較、很長的 CLAUDE.md、使用者層與受管設定、其他模型與平台；z1 為什麼多列一個 skill 沒有查。「在你的專案」那 13 行也沒有跑。",
+    "tags": [
+      "Claude Code context",
+      "Claude Code token 用量",
+      "Claude Code",
+      "CLAUDE.md 太長",
+      "MCP 佔 context",
+      "Claude Code hook",
+      "cache_read_input_tokens",
+      "Claude Code 省 token",
+      "Claude Code 教學",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "Claude Code 實測",
+      "headline": "首個請求\n**+713**",
+      "sub": "只開 8 個內建工具的專案，\n第一個延後載入的 MCP 伺服器",
+      "capture": "load-map"
+    }
+  },
+  "sources": [
+    {
+      "title": "Extend Claude Code｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/features-overview",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "How Claude Code uses prompt caching｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/prompt-caching",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "Customize your status line｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/statusline",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "CLI reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "Environment variables｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/env-vars",
+      "checked_on": "2026-10-11"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "Claude Code 六種零件：第一個請求各多幾個 token",
+      "template": "title",
+      "data": {
+        "tag": "Claude Code 脈絡成本實測",
+        "title": "六種零件，掛著不用：\n**第一個請求多帶幾個 token**",
+        "subtitle": "同樣的一句話，每次多掛一樣；只看差值"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "feet",
+          "text": "CLAUDE.md、Skill、MCP、hook，掛著不用，第一個請求各多帶多少？",
+          "emotion": "壓低放慢，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "rows",
+      "template": "table",
+      "data": {
+        "title": "掛著不用：第一個請求比基準多幾個 token",
+        "columns": [
+          "零件",
+          "多大",
+          "多了多少"
+        ],
+        "rows": [
+          [
+            "CLAUDE.md",
+            "7 行，165 個字元",
+            "+305"
+          ],
+          [
+            "一個 Skill",
+            "清單上 70 個字元",
+            "+63"
+          ],
+          [
+            "一個 subagent",
+            "清單上 36 個字元",
+            "+54"
+          ],
+          [
+            "第一個延後載入的 MCP 伺服器",
+            "兩個工具；專案清單上 8 個內建工具",
+            "+713"
+          ],
+          [
+            "一支 hook，沒被觸發",
+            "登記在 Edit、Write 上",
+            "−2：分不出來"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜基準 2 次、其餘各 1 次｜尺 11"
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "iibh",
+          "text": "這一次量到的：七行的 CLAUDE.md，多三百零五個 token。",
+          "reveal": 1,
+          "emotion": "數字前停半拍"
+        },
+        {
+          "id": "keue",
+          "text": "一個 Skill 多六十三，subagent 多五十四。",
+          "reveal": 2
+        },
+        {
+          "id": "pajb",
+          "text": "只開八個內建工具的專案裡，第一個 MCP 伺服器多七百一十三，最大。",
+          "reveal": 1,
+          "emotion": "「最大」放慢"
+        },
+        {
+          "id": "97bx",
+          "text": "登記了、沒被觸發的 hook，跟什麼都沒掛分不出來。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "resend",
+      "chapter": "每個請求都重送的、用到才進來的：官方的說明與這次量到的",
+      "template": "quote",
+      "data": {
+        "kicker": "這支量的是第一個請求；之後的請求，是官方頁的說明",
+        "quote": "Claude Code re-sends the full context: the system prompt, your project context, every prior message and tool result, and your new message.",
+        "translation": "Claude Code 重送整段脈絡：系統提示、專案脈絡、先前每一則訊息與工具結果，還有你的新訊息",
+        "source": "Claude Code 文件｜prompt-caching｜2026-10-11｜引用"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "ytr5",
+          "text": "為什麼有的多幾十、有的多七百？先看這些東西是什麼時候送進去的。",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "rnzh",
+          "text": "官方文件的說明是：每個請求，都把整段脈絡重新送出去。",
+          "reveal": 1
+        },
+        {
+          "id": "td3m",
+          "text": "這支影片實際量到的，只有第一個請求。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "load-map",
+      "template": "screencast",
+      "data": {
+        "title": "官方頁：各種零件什麼時候載入",
+        "caption": "Claude Code 文件｜features-overview｜Understand how features load｜2026-10-11 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/features-overview#understand-how-features-load"
+          },
+          {
+            "action": "wait",
+            "selector": "#understand-how-features-load"
+          },
+          {
+            "action": "capture",
+            "focus": "img[data-path^=\"images/context-loading\"]",
+            "zoom": 1.5
+          }
+        ]
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "vbwu",
+          "text": "官方這張圖把零件分成兩種：開始就載入的，和用到才進來的。",
+          "emotion": "指著畫面"
+        },
+        {
+          "id": "bagt",
+          "text": "CLAUDE.md 一開始就整份載入；hook 在外面執行。"
+        }
+      ]
+    },
+    {
+      "id": "two-kinds",
+      "template": "compare",
+      "data": {
+        "title": "官方的表：什麼時候載入",
+        "left": {
+          "heading": "開始就載入，每個請求都帶著",
+          "points": [
+            "CLAUDE.md 的全文",
+            "每個 Skill 的描述"
+          ]
+        },
+        "right": {
+          "heading": "用到才進來",
+          "points": [
+            "Skill 的內文",
+            "MCP 工具的完整定義"
+          ]
+        },
+        "source": "Claude Code 文件｜features-overview｜2026-10-11｜引用"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "cyz9",
+          "text": "開始就載入、之後一直帶著的：CLAUDE.md 的全文，和每個 Skill 的描述。",
+          "reveal": 1
+        },
+        {
+          "id": "sqtw",
+          "text": "用到才進來的：Skill 的內文，和 MCP 工具的完整定義。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hook-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "官方的表：hook 的脈絡成本那一格",
+        "quote": "Zero, unless hook returns additional context",
+        "translation": "零，除非 hook 送回額外的脈絡",
+        "source": "Claude Code 文件｜features-overview｜2026-10-11｜引用"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "mzng",
+          "text": "hook 那一格寫的是零，除非它送回額外的內容。"
+        },
+        {
+          "id": "edb4",
+          "text": "這幾句都是文件上寫的。這一次量到的數字，對得上嗎？",
+          "reveal": 1,
+          "emotion": "語氣提起來"
+        }
+      ]
+    },
+    {
+      "id": "skill-front",
+      "template": "code",
+      "data": {
+        "code": "---\nname: release-prep\ndescription: 準備發版：改版號、CHANGELOG、README，寫發版單。\nwhen_to_use: 使用者說某一版要出了、要出新版、要 bump 版號時。\n---",
+        "highlight": [
+          2,
+          3,
+          4
+        ],
+        "caption": ".claude/skills/release-prep/SKILL.md｜第 1–5 行（全檔 19 行、480 個字元）｜示範資料夾：parts/release-prep.skill.md｜70 個字元數的是欄位的值"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "yqc7",
+          "text": "先看 Skill。這個檔案一共四百八十個字元。"
+        },
+        {
+          "id": "7ewi",
+          "text": "亮起來的三行，名字加兩段描述的內容，是七十個字元。",
+          "emotion": "指著畫面"
+        }
+      ]
+    },
+    {
+      "id": "agent-front",
+      "template": "code",
+      "data": {
+        "code": "---\nname: log-scout\ndescription: 讀大量紀錄檔、只回報結論。查 logs/ 時主動使用。\ntools: Read, Grep, Glob\nmodel: sonnet\n---",
+        "highlight": [
+          2,
+          3
+        ],
+        "caption": ".claude/agents/log-scout.md｜第 1–6 行（全檔 15 行、271 個字元）｜示範資料夾：parts/log-scout.agent.md｜36 個字元數的是欄位的值"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "9vxr",
+          "text": "subagent 的檔案是兩百七十一個字元。"
+        },
+        {
+          "id": "3iv5",
+          "text": "亮起來的兩行，名字和描述的內容，三十六個字元。"
+        }
+      ]
+    },
+    {
+      "id": "listing",
+      "template": "table",
+      "data": {
+        "title": "掛著不用：多出來的，接近哪一段的大小",
+        "columns": [
+          "零件",
+          "清單上那一段",
+          "整個檔",
+          "第一個請求多"
+        ],
+        "rows": [
+          [
+            "Skill",
+            "70 個字元",
+            "480 個字元",
+            "+63"
+          ],
+          [
+            "subagent",
+            "36 個字元",
+            "271 個字元",
+            "+54"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜s1、a1 各 1 次｜一個檔各一次，不是換算率"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "ng8n",
+          "text": "這一次 Skill 多了六十三個 token，接近清單上那七十個字元，不是整個檔的四百八十。",
+          "reveal": 1,
+          "emotion": "「不是整個檔」放慢"
+        },
+        {
+          "id": "i4i6",
+          "text": "subagent 多五十四；清單上三十六個字元，整個檔兩百七十一。",
+          "reveal": 1
+        },
+        {
+          "id": "cycp",
+          "text": "各只量了一次，不能當換算的比例。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "mcp-file",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"mcpServers\": {\n    \"gear\": {\n      \"type\": \"stdio\",\n      \"command\": \"node\",\n      \"args\": [\"server/gear.mjs\"]\n    }\n  }\n}",
+        "highlight": [
+          3
+        ],
+        "caption": ".mcp.json｜全檔 9 行｜示範資料夾：parts/mcp.project.json｜兩個工具的定義共 302 個字元的 JSON（手送訊息量的）"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "523n",
+          "text": "再看 MCP。接上去的伺服器，設定檔一共九行，它有兩個工具。"
+        },
+        {
+          "id": "3bmu",
+          "text": "兩個工具的定義，一共三百零二個字元。"
+        }
+      ]
+    },
+    {
+      "id": "mcp-two",
+      "template": "table",
+      "data": {
+        "title": "同一個 MCP 伺服器、兩個工具：兩種載入",
+        "columns": [
+          "怎麼載入",
+          "第一個請求多",
+          "開頭清單上的內建工具"
+        ],
+        "rows": [
+          [
+            "延後載入（c1）",
+            "+713",
+            "8 個，有 ToolSearch"
+          ],
+          [
+            "兩個工具直接載入（u1）",
+            "+250",
+            "7 個，沒有 ToolSearch"
+          ],
+          [
+            "相差",
+            "463",
+            "大於尺 11"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜c1、u1 各 1 次｜基準沒有接任何伺服器"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "39a3",
+          "text": "看 MCP 這一列的時候，要帶著條件：這個專案只開了八個內建工具，沒有接別的伺服器。",
+          "emotion": "放慢，一項一項講"
+        },
+        {
+          "id": "9i3q",
+          "text": "接上第一個伺服器，兩個工具延後載入，多七百一十三。",
+          "reveal": 1
+        },
+        {
+          "id": "nckq",
+          "text": "同一個伺服器，兩個工具改成一開始就載入，只多兩百五十。",
+          "reveal": 1,
+          "emotion": "「只多」前停半拍"
+        },
+        {
+          "id": "4gea",
+          "text": "相差四百六十三，是跟著延後載入的機制一起出現的，這次沒有拆開。",
+          "reveal": 1
+        },
+        {
+          "id": "2kig",
+          "text": "七百一十三不是每個伺服器的量。"
+        }
+      ]
+    },
+    {
+      "id": "ask",
+      "chapter": "怎麼量：同樣的一句話跑兩次，三個欄位相加再相減",
+      "template": "chat",
+      "data": {
+        "title": "每一次都送同樣的一句話",
+        "messages": [
+          {
+            "side": "right",
+            "text": "不要使用任何工具，直接回答：一年有幾個月？"
+          },
+          {
+            "side": "left",
+            "text": "一年有 12 個月。"
+          }
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "wmgv",
+          "text": "這些數字是怎麼量出來的？每一次都送同樣的一句話：不用任何工具，直接回答。",
+          "reveal": 1,
+          "emotion": "問句上揚，接著放穩"
+        },
+        {
+          "id": "ur5n",
+          "text": "它用不到任何零件，所以每一次只有一個請求。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "project",
+      "template": "terminal",
+      "data": {
+        "title": "練習專案：基準的 11 個檔，這裡是前 7 個（其餘 4 個在 server/ 與 src/）",
+        "command": "find . -type f | sort",
+        "output": [
+          "./.claude/hooks/seen.mjs\n./.claude/settings.local.json",
+          "./CHANGELOG.md\n./README.md\n./logs/sync-2026-10-08.log\n./logs/sync-2026-10-09.log\n./package.json"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "sort (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "h8zp",
+          "text": "基準的專案，最上面兩個檔是一支只做記錄的 hook，每一次都在。",
+          "reveal": 1,
+          "emotion": "平實，不遮掩"
+        },
+        {
+          "id": "k32u",
+          "text": "其餘九個是專案自己的檔，沒有任何零件。",
+          "reveal": 1
+        },
+        {
+          "id": "zgv3",
+          "text": "所以 hook 的那一列，量的是多掛一支 hook。"
+        }
+      ]
+    },
+    {
+      "id": "flags",
+      "template": "table",
+      "data": {
+        "title": "每一次都一樣的旗標（完整的一行在 demo/session.sh）",
+        "columns": [
+          "旗標",
+          "作用"
+        ],
+        "rows": [
+          [
+            "--setting-sources project,local",
+            "只讀這個專案的設定"
+          ],
+          [
+            "--strict-mcp-config",
+            "只接指定的 MCP 伺服器"
+          ],
+          [
+            "--output-format stream-json --verbose",
+            "每個請求的用量都在輸出裡"
+          ],
+          [
+            "--tools（列了九個名字）",
+            "開頭清單上 8 個內建工具，沒有 Bash"
+          ]
+        ],
+        "source": "十三次都有｜第 1、2 列：官方 CLI reference 頁；第 3、4 列：這十三次看到的"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "cxw4",
+          "text": "旗標也每次相同：只會讀這個專案的設定，也只接指定的伺服器。",
+          "reveal": 2
+        },
+        {
+          "id": "5hjb",
+          "text": "輸出選串流格式，用量才會留下來；工具固定同一組，沒有 Bash。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "only-diff",
+      "template": "code",
+      "data": {
+        "code": "# text-kit 專案慣例\n\n- 測試放在 checks/，檔名是 <模組>.check.mjs。\n- 改了 src/ 的行為，就在 CHANGELOG.md 清單最上面\n  加一行：- YYYY-MM-DD: 改了什麼\n- 回覆的最後一行固定用「未驗證：」開頭，\n  列出你沒有實際執行或檢查的事；沒有就寫「未驗證：無」。",
+        "caption": "CLAUDE.md｜全檔 7 行、165 個字元｜示範資料夾裡存成 parts/memory.team.md｜m1 只多這個檔"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "di72",
+          "text": "兩次之間只差一樣。這一次多的，就是這份七行的 CLAUDE.md。",
+          "emotion": "「只差一樣」放慢"
+        }
+      ]
+    },
+    {
+      "id": "read-one",
+      "template": "terminal",
+      "data": {
+        "title": "一份串流怎麼讀（z2：基準的其中一次）",
+        "command": "node ctx-cost.mjs z2.stream.jsonl | head -6",
+        "output": [
+          "== z2 | Claude Code 2.1.295 | claude-sonnet-5-5 | mode default\n   init: built-in tools 8 | MCP servers 0, tools 0\n         skills 21 | agents 6 | slash commands 57 | plugins 3\n   each request: input + cache write + cache read = input side\n   request 1: 2 + 4,386 + 6,802 = 11,190\n   first 11,190 | last 11,190 | grew +0 over 1 request"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "Node.js v24.13.0"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "tqx9",
+          "text": "讀數用的腳本，讀一份串流，會顯示這六行。",
+          "reveal": 1
+        },
+        {
+          "id": "4spv",
+          "text": "第五行就是第一個請求：三個數字相加。",
+          "emotion": "指著畫面"
+        }
+      ]
+    },
+    {
+      "id": "three",
+      "template": "table",
+      "data": {
+        "title": "第一個請求＝三個欄位相加（z2 的第五行）",
+        "columns": [
+          "用量裡的欄位",
+          "是什麼",
+          "z2 的值"
+        ],
+        "rows": [
+          [
+            "input_tokens",
+            "輸入",
+            "2"
+          ],
+          [
+            "cache_creation_input_tokens",
+            "快取寫入",
+            "4,386"
+          ],
+          [
+            "cache_read_input_tokens",
+            "快取讀取",
+            "6,802"
+          ],
+          [
+            "三個相加",
+            "不含輸出",
+            "11,190"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜z2｜算法：官方 statusline 頁（引用）"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "wjq6",
+          "text": "第一個是輸入欄位：這十三次的第一個請求，它都只有兩個 token。",
+          "reveal": 1,
+          "emotion": "「都只有」放慢"
+        },
+        {
+          "id": "jgr4",
+          "text": "其餘的都在快取寫入和快取讀取，兩邊怎麼分，每次不一樣。",
+          "reveal": 2
+        },
+        {
+          "id": "mkqu",
+          "text": "所以單看哪一個欄位都不準，三個相加才能比。",
+          "reveal": 1,
+          "emotion": "結論放穩"
+        }
+      ]
+    },
+    {
+      "id": "one-field",
+      "template": "table",
+      "data": {
+        "title": "只看一個欄位，會看反",
+        "columns": [
+          "哪一次",
+          "快取寫入",
+          "快取讀取",
+          "三個相加，減基準"
+        ],
+        "rows": [
+          [
+            "基準（z2）",
+            "4,386",
+            "6,802",
+            "基準"
+          ],
+          [
+            "多一份 CLAUDE.md（m1）",
+            "5,842",
+            "5,649",
+            "+305"
+          ],
+          [
+            "五樣一起（t1）",
+            "12,317",
+            "0",
+            "+1,131"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜z2、m1、t1 各 1 次"
+      },
+      "claims": [
+        "c33",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "egk7",
+          "text": "多了一份 CLAUDE.md 的這一次，快取讀取反而比基準少了一千一百五十三。",
+          "reveal": 2,
+          "emotion": "「反而」加重"
+        },
+        {
+          "id": "9fmc",
+          "text": "五樣一起掛的時候，快取讀取是零，全部算在寫入。",
+          "reveal": 1
+        },
+        {
+          "id": "gp9j",
+          "text": "只看其中一個欄位，結論會相反。"
+        }
+      ]
+    },
+    {
+      "id": "cmd-parts",
+      "template": "table",
+      "data": {
+        "title": "相減的那一行（完整的一行在說明欄）",
+        "columns": [
+          "指令的這一段",
+          "是什麼"
+        ],
+        "rows": [
+          [
+            "node ctx-cost.mjs",
+            "讀數的腳本，示範資料夾裡的一個檔"
+          ],
+          [
+            "z2.stream.jsonl z3.stream.jsonl",
+            "沒有 CLAUDE.md 的兩次"
+          ],
+          [
+            "m1.stream.jsonl",
+            "有 CLAUDE.md 的一次"
+          ],
+          [
+            "--base z2,z3",
+            "拿這兩次的平均當基準"
+          ],
+          [
+            "--quiet",
+            "只顯示最後那張表"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜demo/results/card.amended.txt"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "vynt",
+          "text": "相減也交給腳本：沒有 CLAUDE.md 的兩次、有的一次，三份串流一起給它。",
+          "reveal": 3
+        },
+        {
+          "id": "u4qv",
+          "text": "再告訴它，拿哪兩次的平均當基準。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "subtract",
+      "template": "table",
+      "data": {
+        "title": "它顯示的表（六欄裡的三欄）",
+        "columns": [
+          "name",
+          "first = input + write + read",
+          "minus base"
+        ],
+        "rows": [
+          [
+            "z2",
+            "11,190 = 2 + 4,386 + 6,802",
+            "(base)"
+          ],
+          [
+            "z3",
+            "11,186 = 2 + 4,382 + 6,802",
+            "(base)"
+          ],
+          [
+            "m1",
+            "11,493 = 2 + 5,842 + 5,649",
+            "+305"
+          ]
+        ],
+        "highlight": 2,
+        "source": "2026-10-11 跑過｜Node.js v24.13.0｜z2、z3、m1"
+      },
+      "claims": [
+        "c13",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "mnph",
+          "text": "表上先是兩次基準，各自三個數字的相加。",
+          "reveal": 2
+        },
+        {
+          "id": "wh4s",
+          "text": "最後一列是有 CLAUDE.md 的那一次：減掉基準的平均，多三百零五。",
+          "reveal": 1,
+          "emotion": "數字前停半拍"
+        }
+      ]
+    },
+    {
+      "id": "caution",
+      "template": "bullets",
+      "data": {
+        "title": "在你自己的專案量之前",
+        "items": [
+          "會真的送出三個請求，算在你的用量裡",
+          "串流有資料夾路徑與用量資料：存在專案外面，不要貼給別人",
+          "量完把移走的檔放回原位"
+        ],
+        "source": "這支影片的做法｜費用與其餘注意事項在說明欄"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "exgq",
+          "text": "在自己的專案照做，會真的送出三個請求，算在你的用量裡。",
+          "reveal": 1,
+          "emotion": "提醒的語氣，放平"
+        },
+        {
+          "id": "jkby",
+          "text": "串流裡有路徑和用量資料：存在專案外面，不要貼給別人；量完把檔案放回原位。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "yours-1",
+      "template": "code",
+      "data": {
+        "code": "# 在你的專案根目錄；存下來的檔放在專案外面\nask() { CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS=1 claude -p \\\n  \"不要使用任何工具，直接回答：一年有幾個月？\" \\\n  --output-format stream-json --verbose \"$@\"; }\n# 先把要量的那一樣移走（這裡是 CLAUDE.md），跑兩次\nmv CLAUDE.md ../CLAUDE.md.off\nask > ../without1.jsonl\nask > ../without2.jsonl",
+        "caption": "在你的專案：前 8 行（共 13 行）｜這個寫法這支影片沒有跑過｜那個環境變數：官方 env-vars 頁（引用）"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "u5k8",
+          "text": "換成你的專案：要量的那一樣先移走，同樣的一句話跑兩次。",
+          "emotion": "轉向觀眾，語氣亮一點"
+        },
+        {
+          "id": "bwxq",
+          "text": "這個寫法，這支影片沒有跑過。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "yours-2",
+      "template": "code",
+      "data": {
+        "code": "# 放回來，同一句再跑一次\nmv ../CLAUDE.md.off CLAUDE.md\nask > ../with.jsonl\nnode <腳本的路徑>/ctx-cost.mjs ../without1.jsonl \\\n  ../without2.jsonl ../with.jsonl --base without1,without2",
+        "caption": "後 5 行｜<腳本的路徑> 整段換成你放 ctx-cost.mjs 的資料夾｜兩次基準的清單個數不同：再跑一次，--base 改成個數相同的那兩次"
+      },
+      "claims": [
+        "c15",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "24xm",
+          "text": "放回來再跑一次，三份一起交給腳本。"
+        },
+        {
+          "id": "3bbb",
+          "text": "不過，只跑這幾次，數字靠得住嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "twice",
+      "chapter": "怎麼知道量對了：基準跑兩次、先比清單、加起來對不對",
+      "template": "table",
+      "data": {
+        "title": "什麼都沒掛的專案，同樣的一句話：三次",
+        "columns": [
+          "哪一次",
+          "輸入",
+          "快取寫入",
+          "快取讀取",
+          "相加"
+        ],
+        "rows": [
+          [
+            "z2",
+            "2",
+            "4,386",
+            "6,802",
+            "11,190"
+          ],
+          [
+            "z3",
+            "2",
+            "4,382",
+            "6,802",
+            "11,186"
+          ],
+          [
+            "z1（十三次的第一次）",
+            "2",
+            "11,268",
+            "0",
+            "11,270"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜z2、z3、z1 各 1 次｜Claude Code 2.1.295"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "wfi5",
+          "text": "什麼都沒掛的專案跑兩次，相加只差四個 token，快取讀取一模一樣。",
+          "reveal": 2
+        },
+        {
+          "id": "u53p",
+          "text": "十三次裡的第一次卻全部是快取寫入，相加多了八十二。",
+          "reveal": 1,
+          "emotion": "「卻」之後語氣提起來"
+        }
+      ]
+    },
+    {
+      "id": "first",
+      "template": "table",
+      "data": {
+        "title": "先比開頭的清單，再比 token",
+        "columns": [
+          "哪一次",
+          "清單上的 skills",
+          "斜線指令",
+          "第一個請求"
+        ],
+        "rows": [
+          [
+            "z1（十三次的第一次）",
+            "22：多一個內建的 slides",
+            "58",
+            "比基準多 82"
+          ],
+          [
+            "z2",
+            "21",
+            "57",
+            "基準"
+          ],
+          [
+            "z3",
+            "21",
+            "57",
+            "基準"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜基準的算法跑完十次後改過，寫在 z3 之前｜多列的原因沒有查"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "nm9g",
+          "text": "差在開頭的清單：第一次多列了一個內建的 Skill，後面十二次都沒有。",
+          "reveal": 1
+        },
+        {
+          "id": "g4bs",
+          "text": "原因沒有查。原本它算在基準裡；跑完十次才看到，之後改成不放進去。",
+          "reveal": 1,
+          "emotion": "平實，不遮掩"
+        },
+        {
+          "id": "qphs",
+          "text": "你自己量的時候，第一次也可能比較大：先比清單個數，再比 token。",
+          "reveal": 1,
+          "emotion": "提醒的語氣"
+        }
+      ]
+    },
+    {
+      "id": "bar",
+      "template": "stats",
+      "data": {
+        "title": "多少以內，算分不出來",
+        "stats": [
+          {
+            "value": "4",
+            "label": "個 token：兩次基準相差（z2、z3）"
+          },
+          {
+            "value": "11",
+            "label": "個 token：這次的尺",
+            "note": "跑之前訂的；前四支同樣設定重跑最多差 10"
+          }
+        ],
+        "source": "2026-10-11 跑過｜尺的下限 11：跑之前訂的讀數規則"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "y3bw",
+          "text": "基準取清單相同的那兩次平均，它們只相差四。",
+          "reveal": 1
+        },
+        {
+          "id": "3ehk",
+          "text": "那把尺取十一，跑之前就訂好了：前幾支同樣設定重跑，最多相差十個。",
+          "reveal": 1
+        },
+        {
+          "id": "ekv5",
+          "text": "不超過十一，就說分不出來，不說是零。",
+          "emotion": "放慢，說清楚"
+        }
+      ]
+    },
+    {
+      "id": "sums",
+      "template": "table",
+      "data": {
+        "title": "加起來對不對",
+        "columns": [
+          "比什麼",
+          "各自的差值相加",
+          "一起掛的那一次",
+          "相差"
+        ],
+        "rows": [
+          [
+            "五樣零件",
+            "305＋63＋54＋713−2＝1,133",
+            "+1,131（t1）",
+            "2"
+          ],
+          [
+            "外掛包的三樣",
+            "63＋54−2＝115",
+            "+127（p1）",
+            "12"
+          ],
+          [
+            "門檻（算法是事先訂的）",
+            "尺 11 的兩倍再加 10",
+            "",
+            "32"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜t1、p1 各 1 次"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "sjhi",
+          "text": "五樣零件各自的差值相加，一千一百三十三；五樣一起掛，是一千一百三十一。",
+          "reveal": 1
+        },
+        {
+          "id": "jxcf",
+          "text": "外掛包的是同一個 Skill、同一個 subagent 和同一支 hook：三樣相加一百一十五，載入外掛是一百二十七。",
+          "reveal": 1
+        },
+        {
+          "id": "npz8",
+          "text": "一個相差二，一個相差十二，都在門檻以內：那把尺的兩倍再加十，三十二。",
+          "reveal": 1,
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "hooks",
+      "template": "compare",
+      "data": {
+        "title": "兩種 hook，各跑一次",
+        "left": {
+          "heading": "登記了、沒被觸發（h1）",
+          "points": [
+            "−2：分不出來（尺 11）",
+            "守門紀錄 0 行"
+          ]
+        },
+        "right": {
+          "heading": "開場時顯示三行字（n1）",
+          "points": [
+            "+78",
+            "三行字共 65 個字元"
+          ]
+        },
+        "verdict": "h1 的三個欄位與 z3 完全相同",
+        "source": "2026-10-11 跑過｜h1、n1 各 1 次"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "yuzw",
+          "text": "守門的 hook 登記在修改檔案上，這一次沒被觸發，跟基準分不出來。",
+          "reveal": 1
+        },
+        {
+          "id": "7z3m",
+          "text": "腳本會標出這一列在誤差範圍以內。"
+        },
+        {
+          "id": "kr9j",
+          "text": "另一支在 session 開始時顯示三行字，六十五個字元，第一個請求多了七十八。",
+          "reveal": 1,
+          "emotion": "數字前停半拍"
+        }
+      ]
+    },
+    {
+      "id": "note",
+      "template": "code",
+      "data": {
+        "code": "const lines = [\n  '交班提示（固定文字，示範用）',\n  '- 這一輪要出的版本是 1.2.1。',\n  '- 沒結束的 job 以 logs/ 的紀錄為準，不要用猜的。',\n];",
+        "highlight": [
+          2,
+          3,
+          4
+        ],
+        "caption": ".claude/hooks/note.mjs｜第 8–12 行（全檔 16 行）｜示範資料夾：parts/note.mjs｜第 16 行把這三行送到標準輸出"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "ar3m",
+          "text": "那三行是寫死的字，只是為了量測用的。"
+        },
+        {
+          "id": "g7pu",
+          "text": "所以 hook 要看它送回什麼：這一次，送回的字進了第一個請求。",
+          "emotion": "結論放穩"
+        }
+      ]
+    },
+    {
+      "id": "limits",
+      "template": "bullets",
+      "data": {
+        "title": "這些數字能說到哪裡",
+        "items": [
+          "基準 2 次，其餘每一種 1 次：都是「這一次」",
+          "一個模型、一個版本、Windows 的 Git Bash",
+          "量的是第一個請求；只比差值，不講總數"
+        ],
+        "source": "這支影片的做法｜demo/results/first-request.json"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "yzu2",
+          "text": "基準兩次，其餘每一種各一次；一個模型、一個版本、一個平台。",
+          "reveal": 2,
+          "emotion": "平實，不遮掩"
+        },
+        {
+          "id": "4gj4",
+          "text": "所以每個數字都是這一次的差值；換模型或版本，要重新量過。",
+          "reveal": 1
+        },
+        {
+          "id": "m83z",
+          "text": "那麼，真的開始做事之後呢？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "work-ask",
+      "chapter": "一次真的在做事的 session：四個請求各多了多少",
+      "template": "code",
+      "data": {
+        "code": "1.2.1 要出了，幫我把該改的地方都改好。\n另外用 log-scout 查 logs/ 裡哪些 job 開始了卻沒結束，\n再查 G-417 放在哪個貨架、還剩幾個。",
+        "caption": "這一次的要求｜demo/prompts/work.txt，全檔 3 行｜專案裡五樣零件都在（w1，1 次）"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "q95c",
+          "text": "同一個專案，五樣零件都掛著，這次送一個會用到它們的要求。"
+        },
+        {
+          "id": "7e27",
+          "text": "發新版、查紀錄、查庫存。"
+        }
+      ]
+    },
+    {
+      "id": "used",
+      "template": "table",
+      "data": {
+        "title": "零件有沒有被用到：兩邊的紀錄對不對得上",
+        "columns": [
+          "零件",
+          "串流裡的呼叫",
+          "它自己留下的紀錄"
+        ],
+        "rows": [
+          [
+            "Skill（發版流程）",
+            "Skill 呼叫 1 筆",
+            "—"
+          ],
+          [
+            "subagent（查紀錄）",
+            "Agent 呼叫 1 筆，在背景啟動",
+            "—"
+          ],
+          [
+            "MCP 工具（查庫存）",
+            "ToolSearch 1 筆、find_gear 1 筆",
+            "伺服器的紀錄：tools/call 1 筆"
+          ],
+          [
+            "守門 hook",
+            "Edit 與 Write 共 4 筆",
+            "守門紀錄 4 行，都是 pass"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜w1（1 次）｜demo/results/ 的 w1 各檔"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "bnb5",
+          "text": "先確認零件真的被用到：串流裡有一筆 Skill 呼叫，一筆交給 subagent。",
+          "reveal": 2
+        },
+        {
+          "id": "yry6",
+          "text": "MCP 工具呼叫一筆，伺服器自己的紀錄也是一筆。",
+          "reveal": 1
+        },
+        {
+          "id": "2x92",
+          "text": "四筆修改和寫入，守門紀錄剛好四行，都讓它通過。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ladder",
+      "template": "table",
+      "data": {
+        "title": "主對話的四個請求：每一個比前一個多多少",
+        "columns": [
+          "哪一步",
+          "多了多少",
+          "這一步進來的（字元數）"
+        ],
+        "rows": [
+          [
+            "第 1 個請求之後",
+            "—",
+            "同一則訊息發出三個呼叫：Skill、Agent、ToolSearch"
+          ],
+          [
+            "第 2 個請求",
+            "+1,568",
+            "Skill 29、內文 521；啟動通知 1,027；ToolSearch 兩個參照、0 字"
+          ],
+          [
+            "第 3 個請求",
+            "+932",
+            "讀取 4 次：101、214、141、56；MCP 工具結果 21"
+          ],
+          [
+            "第 4 個請求",
+            "+1,900",
+            "修改 3 次、寫入 1 次：195、195、192、191；回報 69"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜w1（1 次）｜每一步也含 Claude 自己寫的呼叫"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "vww3",
+          "text": "第一個請求之後，它在同一則訊息裡叫了 Skill、把工作交給 subagent、去找 MCP 工具。",
+          "reveal": 1
+        },
+        {
+          "id": "kv7n",
+          "text": "下一個請求多了一千五百六十八；三樣一起進來，這個數字拆不開。",
+          "reveal": 1,
+          "emotion": "「拆不開」放慢"
+        },
+        {
+          "id": "39f3",
+          "text": "再下一個多九百三十二：四次讀取檔案，加一次 MCP 工具的結果。",
+          "reveal": 1
+        },
+        {
+          "id": "8ahd",
+          "text": "最後一個多一千九百：三次修改、一次寫入的結果，加上 subagent 的回報。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "mcp-result",
+      "template": "quote",
+      "data": {
+        "kicker": "MCP 工具送回來的結果：21 個字元",
+        "quote": "G-417 頭燈｜貨架 D-07｜剩 37",
+        "source": "2026-10-11 跑過｜w1（1 次）｜找工具那一步的結果是兩個工具參照，沒有文字"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "d589",
+          "text": "查庫存的結果只有二十一個字元。"
+        },
+        {
+          "id": "bkjz",
+          "text": "找工具的那個步驟，結果沒有文字，只有兩個工具的參照；占多少，看不到。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "skill-body",
+      "template": "quote",
+      "data": {
+        "kicker": "Skill 的內文，是被叫用之後才進對話的",
+        "quote": "Base directory for this skill: <lab>\\.claude\\skills\\release-prep",
+        "translation": "Claude Code 加進對話的那一則訊息的第一行；整則 521 個字元（<lab> 是紀錄裡遮掉的專案資料夾）",
+        "source": "2026-10-11 跑過｜w1（1 次）｜demo/results/w1.said.txt"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "37xr",
+          "text": "Skill 的內文就是這時候進來的：Claude Code 加了一則訊息，五百二十一個字元。"
+        },
+        {
+          "id": "yp88",
+          "text": "掛著的時候只有描述；被呼叫之後，內文才進對話。",
+          "reveal": 1,
+          "emotion": "對比，後半放慢"
+        }
+      ]
+    },
+    {
+      "id": "sub",
+      "template": "stats",
+      "data": {
+        "title": "subagent 的那一段（這一次的紀錄）",
+        "stats": [
+          {
+            "value": "1,027",
+            "label": "個字元：啟動通知，進主對話"
+          },
+          {
+            "value": "69",
+            "label": "個字元：它的回報，進主對話"
+          },
+          {
+            "value": "3",
+            "label": "個請求：它自己送的",
+            "note": "最大 5,412，不在主對話的四個請求裡"
+          }
+        ],
+        "source": "2026-10-11 跑過｜w1（1 次）｜沒有「自己讀」的對照"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "pnac",
+          "text": "交給 subagent 的時候，主對話先收到一則啟動通知，一千零二十七個字元。",
+          "reveal": 1
+        },
+        {
+          "id": "hww5",
+          "text": "它的回報只有六十九個字元。",
+          "reveal": 1
+        },
+        {
+          "id": "zrs4",
+          "text": "它自己的三個請求，都不在主對話裡。",
+          "reveal": 1
+        },
+        {
+          "id": "5z2x",
+          "text": "這只是一次的紀錄，沒有對照，不能說交出去划不划算。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "both",
+      "template": "stats",
+      "data": {
+        "title": "同一個專案：掛著的，和做這件事多出來的",
+        "stats": [
+          {
+            "value": "+1,131",
+            "label": "五樣零件掛著：第一個請求比基準多（t1）"
+          },
+          {
+            "value": "+4,400",
+            "label": "做這件事：第四個請求比第一個多（w1）"
+          }
+        ],
+        "source": "2026-10-11 跑過｜t1、w1 各 1 次"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "3aaa",
+          "text": "五樣零件掛著，第一個請求的用量比基準多一千一百三十一。",
+          "reveal": 1
+        },
+        {
+          "id": "i2sw",
+          "text": "做完這件事，主對話又多了四千四百。",
+          "reveal": 1,
+          "emotion": "數字前停半拍"
+        },
+        {
+          "id": "8rmt",
+          "text": "所以該先動哪一樣？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "rank",
+      "chapter": "先動哪一樣：照量到的由大到小看",
+      "template": "table",
+      "data": {
+        "title": "由大到小（這個練習專案，這一次）",
+        "columns": [
+          "零件",
+          "第一個請求多",
+          "我會怎麼做"
+        ],
+        "rows": [
+          [
+            "第一個延後載入的 MCP 伺服器",
+            "+713（直接載入 +250）",
+            "沒在用的不接；條件不同，量自己的"
+          ],
+          [
+            "CLAUDE.md，7 行",
+            "+305",
+            "某種工作才用的流程移出去"
+          ],
+          [
+            "開場顯示三行字的 hook",
+            "+78",
+            "只留用得到的字"
+          ],
+          [
+            "Skill／subagent",
+            "+63／+54",
+            "常用就留著"
+          ],
+          [
+            "沒被觸發的 hook",
+            "分不出來",
+            "先看它送回什麼"
+          ]
+        ],
+        "source": "2026-10-11 跑過，各 1 次｜第三欄是站主的做法｜外掛 +127 見第四章"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "xxxz",
+          "text": "這個專案裡最大的，是第一個 MCP 伺服器。沒在用的伺服器，我會先不接。",
+          "reveal": 1,
+          "emotion": "轉向觀眾，放穩"
+        },
+        {
+          "id": "dm5q",
+          "text": "再來是 CLAUDE.md：一共七行，就多三百零五。只有某種工作才用的流程，我會移出去。",
+          "reveal": 1
+        },
+        {
+          "id": "ic5v",
+          "text": "開場會顯示字的 hook，三行就七十八；我只留用得到的字。",
+          "reveal": 1
+        },
+        {
+          "id": "6f25",
+          "text": "Skill 和 subagent 各多幾十，常用的我留著；沒被觸發的 hook，分不出來。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "move",
+      "template": "stats",
+      "data": {
+        "title": "同一段流程，兩種放法（Skill 那支影片的紀錄）",
+        "stats": [
+          {
+            "value": "+486",
+            "label": "寫進 CLAUDE.md（1 次）"
+          },
+          {
+            "value": "+58",
+            "label": "寫成 Skill，掛著不用（3 次的平均）"
+          }
+        ],
+        "source": "2026-10-09 跑過｜Skill 那支影片的執行紀錄｜另一個專案"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "x8ka",
+          "text": "移出去能差多少？Skill 那支影片，拿同一段流程量過。",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "5xud",
+          "text": "寫進 CLAUDE.md 多四百八十六；寫成 Skill 掛著，多五十八。",
+          "reveal": 2
+        },
+        {
+          "id": "mrrq",
+          "text": "那是另一個專案的數字，不能跟這張表直接加減。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "check",
+      "template": "steps",
+      "data": {
+        "title": "量自己的專案，先檢查三件事",
+        "steps": [
+          {
+            "title": "兩次之間只差一樣",
+            "detail": "同樣的一句話、同樣的旗標"
+          },
+          {
+            "title": "開頭清單的個數相同",
+            "detail": "不同就再跑一次"
+          },
+          {
+            "title": "三個欄位相加，差值大於尺",
+            "detail": "這次的尺是 11"
+          }
+        ],
+        "source": "這支影片的做法｜z1、z2、z3 的那一段"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "n9qc",
+          "text": "要量自己的專案，先檢查三件事。兩次之間只能相差一樣東西。",
+          "reveal": 1
+        },
+        {
+          "id": "42zi",
+          "text": "開頭清單的個數要相同，不同就再跑一次。",
+          "reveal": 1
+        },
+        {
+          "id": "ke94",
+          "text": "三個欄位相加，差值要比那把尺大才算數。",
+          "reveal": 1,
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "article",
+      "template": "cta",
+      "data": {
+        "kicker": "延伸閱讀",
+        "title": "上下文整理：context、compact 與 clear",
+        "sub": "對話變長之後：查看、摘要、清空｜連結在說明欄"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "4uye",
+          "text": "對話變長之後怎麼整理，說明欄的那篇文章有步驟。"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "這個練習專案，這一次：\n**最大的是第一個 MCP 伺服器，+713**",
+        "cta": "你的專案裡，掛著最大的是哪一樣？量出來是多少？留言告訴我",
+        "lines": [
+          "CLAUDE.md 7 行 +305｜Skill +63｜subagent +54",
+          "沒被觸發的 hook：分不出來（尺 11）",
+          "開頭清單 8 個內建工具的專案；五樣一起掛 +1,131；量的是第一個請求"
+        ]
+      },
+      "claims": [
+        "c31",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "k9sr",
+          "text": "這次最大的：第一個 MCP 伺服器，七百一十三。",
+          "emotion": "放慢收穩"
+        },
+        {
+          "id": "bnf9",
+          "text": "你的專案，掛著最大的是哪一樣？",
+          "emotion": "問句上揚，親切"
+        },
+        {
+          "id": "sd3w",
+          "text": "更多實作，歡迎訂閱。",
+          "emotion": "輕快，帶笑"
+        }
+      ]
+    }
+  ]
+}

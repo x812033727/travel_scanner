@@ -1,0 +1,2017 @@
+# run log: docs/videos/claude-code-hooks-hands-on, brief.md "要先實作" items 0 to 12
+
+Date: 2026-10-09 (every item carries its own UTC time)
+Claude Code: 2.1.295 (Claude Code)
+Node.js: v24.13.0   npm: 11.6.2
+bash: GNU bash, version 5.3.15(1)-release (x86_64-pc-cygwin)   (Git Bash)
+PowerShell: Windows PowerShell 5.1.26100.9457, console input code page 65001
+OS: Windows 11 Home (Win32_OperatingSystem caption "Microsoft Windows 11 家用版", version 10.0.26200;
+    `ver`: Microsoft Windows [Version 10.0.26200.9457]; `uname -s -r -m`: MINGW64_NT-10.0-26200-ARM64 3.6.9-b4195d69.x86_64 x86_64)
+Model: every session was started with `--model sonnet`. The runner added that flag; it is not in the
+    brief's command. The init line of every session reports model "claude-sonnet-5-5".
+
+How to read this file
+- Everything is quoted from files the runs wrote. The only edits: the home directory is written <home>,
+  the repository path <repo>, and a long single line is cut where a [cut ...] mark says so.
+- Lines starting "NOTE (runner):" are the runner's own remarks. They are not output.
+- "[exit N]" lines are printed by the runner scripts right after the command they follow.
+- <work> is <home>/mokaair-work/videos/claude-code-hooks-hands-on (outside the repository).
+  The planner's files are in <work>/_tools, the runs in <work>/run, raw streams and debug logs in
+  <work>/run/logs. The raw files are not in the repository (they hold the cwd, session ids, tool lists).
+- Sessions: 8 `claude -p` runs, one per session S1 to S8, in the order S1 S2 S3 S4 S5 S6 S8 S7.
+  All 8 exited 0. None hung, none was retried. Nothing was written to stderr by any of them (0 bytes each).
+- Settings: only <work>/run/<project>/.claude/settings.json was written, by copying a variant file.
+  No user-level or managed settings file was written or passed. Claude Code itself saved each session's
+  transcript under the user's Claude Code projects folder, as it does for any `claude -p` run.
+- Where the sessions were started from: a Git Bash shell that was itself a child of a Claude Code desktop
+  session. The shell had 31 environment variables whose names start with CLAUDE or ANTHROPIC, and the
+  sessions inherited them. Among them: CLAUDECODE=1, CLAUDE_CODE_CHILD_SESSION=1,
+  CLAUDE_CODE_ENTRYPOINT=claude-desktop, CLAUDE_CODE_SIMPLE=0, CLAUDE_EFFORT=xhigh. The debug logs show
+  "cc_entrypoint=claude-desktop" on the requests. A viewer's own terminal would not have these.
+  Whether any of them changed what the model did was not measured.
+
+====================================================================================================
+Item 0  versions   (2026-10-09T07:15:36Z)
+====================================================================================================
+2026-10-09T07:15:36Z
+$ claude --version
+2.1.295 (Claude Code)
+[exit 0]
+$ node --version
+v24.13.0
+[exit 0]
+$ bash --version | head -1
+GNU bash, version 5.3.15(1)-release (x86_64-pc-cygwin)
+[exit 0]
+$ npm --version
+11.6.2
+[exit 0]
+$ uname -a (OS)
+MINGW64_NT-10.0-26200-ARM64 3.6.9-b4195d69.x86_64 x86_64
+
+Microsoft Windows [Version 10.0.26200.9457]
+$ which claude node bash
+<home>/AppData/Roaming/npm/claude
+/c/Program Files/nodejs/node
+/usr/bin/bash
+
+NOTE (runner): from Windows PowerShell, the same minute: $PSVersionTable.PSVersion = 5.1.26100.9457;
+[Console]::InputEncoding.CodePage = 65001; [Console]::OutputEncoding.CodePage = 65001.
+NOTE (runner): all three versions are the ones the brief expects (2.1.295, v24.13.0, 5.3.15).
+NOTE (runner): the label "$ uname -a (OS)" above is the runner's own echo and is not what ran. The two
+commands under it were `uname -s -r -m` and `cmd.exe //c ver`.
+
+====================================================================================================
+Item 1  create the practice project from the seed   (2026-10-09T07:16:15Z)
+====================================================================================================
+$ cd <work>
+$ rm -rf run/hook-lab && mkdir -p run/logs && cp -r _tools/seed/hook-lab run/hook-lab
+[exit 0]
+$ (cd run/hook-lab && find . -type f | sort)
+./.claude/hooks/gate.mjs
+./.claude/hooks/guard.mjs
+./.claude/hooks/guard1.mjs
+./README.md
+./calc.mjs
+./calc.test.mjs
+./fixtures/edit-code.json
+./fixtures/edit-test.json
+./fixtures/new-test.json
+./fixtures/stop-again.json
+./fixtures/stop.json
+$ diff -r _tools/seed/hook-lab run/hook-lab
+[exit 0]
+$ node _tools/scripts/measure-seed.mjs
+hook-lab/.claude/hooks/gate.mjs | 16 lines | longest 58 | ok | sha256 47d7deba4af5804a
+hook-lab/.claude/hooks/guard.mjs | 10 lines | longest 63 | ok | sha256 191a8365455647da
+hook-lab/.claude/hooks/guard1.mjs | 10 lines | longest 63 | ok | sha256 d1840b3dfa1fd2ea
+hook-lab/README.md | 3 lines | longest 44 | ok | sha256 582691a4c3917f87
+hook-lab/calc.mjs | 3 lines | longest 27 | ok | sha256 75cfacb7faac086c
+hook-lab/calc.test.mjs | 7 lines | longest 40 | ok | sha256 4cd66b4191a8607c
+hook-lab/fixtures/edit-code.json | 5 lines | longest 43 | ok | sha256 54137b6d354ced45
+hook-lab/fixtures/edit-test.json | 5 lines | longest 48 | ok | sha256 18e3eb4a371effd5
+hook-lab/fixtures/new-test.json | 5 lines | longest 47 | ok | sha256 92afff070ba49a39
+hook-lab/fixtures/stop-again.json | 1 lines | longest 53 | ok | sha256 c7e6877b07e44a2c
+hook-lab/fixtures/stop.json | 1 lines | longest 54 | ok | sha256 aad5698785ae1206
+m-checks.sh | 40 lines | longest 111 | OVER-64,over-16-lines | sha256 c67ff35d798fdf84
+prompts/edit-test-neutral.txt | 1 lines | longest 45 | non-ASCII | sha256 6f86fa88e506cbba
+prompts/edit-test.txt | 1 lines | longest 42 | non-ASCII | sha256 8c82f54a31396681
+prompts/readme.txt | 1 lines | longest 38 | non-ASCII | sha256 6e706090ad03088e
+variants/calc.fixed.mjs | 3 lines | longest 27 | ok | sha256 5b63136552577a64
+variants/gate.npm.mjs | 16 lines | longest 58 | ok | sha256 bb89293903e80e85
+variants/option-c/broken.mjs | 1 lines | longest 23 | ok | sha256 97645b5e409c6a46
+variants/option-c/check.mjs | 16 lines | longest 63 | ok | sha256 12b680b1252fc4c6
+variants/option-c/post-broken.json | 5 lines | longest 45 | ok | sha256 9a6999f33c6bd528
+variants/option-c/post-ok.json | 5 lines | longest 43 | ok | sha256 a7d46f07e8e810ff
+variants/option-c/settings.check.json | 18 lines | longest 61 | over-16-lines | sha256 6769b62ba6bf041e
+variants/option-c/write-broken.txt | 1 lines | longest 61 | non-ASCII | sha256 bdae027d581bf29d
+variants/package.json | 7 lines | longest 25 | ok | sha256 c8f0e8f6acb6df25
+variants/settings.both.json | 31 lines | longest 61 | over-16-lines | sha256 573f415e485e4a2b
+variants/settings.deny.json | 5 lines | longest 35 | ok | sha256 2f8c4d8af75801b3
+variants/settings.gate.json | 17 lines | longest 60 | over-16-lines | sha256 e40a870dc7053b3b
+variants/settings.guard.json | 18 lines | longest 61 | over-16-lines | sha256 f29cf5346907eef2
+variants/settings.guard1.json | 18 lines | longest 62 | over-16-lines | sha256 cae07973ee29bd5b
+[exit 0]
+$ node _tools/scripts/check-brief-files.mjs <repo>
+same | hook-lab/README.md
+same | hook-lab/calc.mjs
+same | hook-lab/calc.test.mjs
+same | hook-lab/.claude/hooks/gate.mjs
+same | hook-lab/.claude/hooks/guard.mjs
+same | hook-lab/fixtures/stop.json
+same | hook-lab/fixtures/stop-again.json
+same | hook-lab/fixtures/edit-test.json
+same | variants/settings.gate.json
+same | variants/settings.guard.json
+same | variants/settings.deny.json
+same | variants/package.json
+same | variants/option-c/check.mjs
+same | prompts/readme.txt
+same | prompts/edit-test.txt
+same | prompts/edit-test-neutral.txt
+gate.npm.mjs differs from gate.mjs on lines: 7, 9 | same length: true
+guard1.mjs differs from guard.mjs on lines: 9
+settings.both.json line 3: "Stop": [ | line 16: "PreToolUse": [ | line 29: ] | lines: 31
+[exit 0]
+
+NOTE (runner): the eleven hashes the brief lists (gate, guard, guard1, calc, calc.test, README, the four
+settings files, calc.fixed) are the ones printed above. measure-seed.mjs printed the same text as the
+planner's own <work>/_tools/logs/seed-measure.log (compared with diff: no difference).
+NOTE (runner): check-brief-files.mjs reports gate.npm.mjs differs from gate.mjs on lines 7 and 9. The brief
+describes it as lines 7-10 replaced; lines 8 and 10 of the replacement are the same text as before.
+
+====================================================================================================
+Item 2  the model-free checks M1 to M6   (2026-10-09T07:16:30Z)
+====================================================================================================
+$ cd <work>
+$ bash _tools/seed/m-checks.sh <work>/run/hook-lab > run/logs/m-checks.log 2>&1
+[exit 0]
+$ cat run/logs/m-checks.log
+# 2026-10-09T07:16:30Z  node v24.13.0  GNU bash, version 5.3.15(1)-release (x86_64-pc-cygwin)
+
+## M1 the seeded project: one failing test
+
+$ node --test 2>&1 | head -5
+✖ add returns the sum (4.2185ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+[exit 0]
+
+$ node --test > /dev/null 2>&1; echo $?
+1
+[exit 0]
+
+## M2 the gate on a red project: exit code, then the message
+
+$ node .claude/hooks/gate.mjs < fixtures/stop.json 2>/dev/null; echo $?
+2
+[exit 0]
+
+$ node .claude/hooks/gate.mjs < fixtures/stop.json 2>&1 | head -6
+Tests fail. Fix the code, then finish.
+✖ add returns the sum (4.8049ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+[exit 0]
+
+## M3 the gate on its second stop: lets the turn end
+
+$ node .claude/hooks/gate.mjs < fixtures/stop-again.json; echo $?
+0
+[exit 0]
+
+## M4 the gate on a green project (calc.mjs fixed, then put back)
+
+$ node .claude/hooks/gate.mjs < fixtures/stop.json; echo $?
+0
+[exit 0]
+
+## M5 the guard: an existing test, a source file, a new test
+
+$ node .claude/hooks/guard.mjs < fixtures/edit-test.json; echo $?
+This test already exists: do not change it.
+Fix the code instead. New tests are fine.
+2
+[exit 0]
+
+$ node .claude/hooks/guard.mjs < fixtures/edit-code.json; echo $?
+0
+[exit 0]
+
+$ node .claude/hooks/guard.mjs < fixtures/new-test.json; echo $?
+0
+[exit 0]
+
+## M6 the same guard exiting 1 instead of 2
+
+$ node .claude/hooks/guard1.mjs < fixtures/edit-test.json; echo $?
+This test already exists: do not change it.
+Fix the code instead. New tests are fine.
+1
+[exit 0]
+
+$ (cd run/hook-lab && sha256sum calc.mjs calc.test.mjs)   (after the script: calc.mjs is the seeded one again)
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+
+NOTE (runner): the ten results are the brief's list in order: five lines ending "ℹ fail 1"; 1; 2; the six
+lines; 0; 0; two lines and 2; 0; 0; two lines and 1. The "[exit 0]" after each block is the exit code of
+the whole typed line (its last command is `echo` or `head`), not of node.
+
+--- extra: everything the gate writes to stderr on the red project (what a Stop hook hands to Claude Code)
+$ cd <work>/run/hook-lab
+$ node .claude/hooks/gate.mjs < fixtures/stop.json > ../logs/item2-gate-full.stdout.txt 2> ../logs/item2-gate-full.stderr.txt; echo "exit $?"
+exit 2
+$ wc -c ../logs/item2-gate-full.stderr.txt ../logs/item2-gate-full.stdout.txt
+893 ../logs/item2-gate-full.stderr.txt
+  0 ../logs/item2-gate-full.stdout.txt
+$ cat ../logs/item2-gate-full.stderr.txt
+Tests fail. Fix the code, then finish.
+✖ add returns the sum (3.0235ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 256.1744
+
+✖ failing tests:
+
+test at calc.test.mjs:5:1
+✖ add returns the sum (3.0235ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  -1 !== 5
+  
+      at TestContext.<anonymous> (file:///<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook-lab/calc.test.mjs:6:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: -1,
+    expected: 5,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+NOTE (runner): the stack trace line carries the absolute path of the project. In a session this text
+reaches Claude and the stream unchanged (items 6, 11, 12).
+
+====================================================================================================
+Item 3  the Windows-only checks
+====================================================================================================
+
+--- portability.mjs
+$ cd <work>
+2026-10-09T07:16:43Z
+$ node _tools/scripts/portability.mjs
+# folder name code points: 68 6f 6f 6b 20 6c 61 62 20 7df4 7fd2
+# folder exists: true | platform: win32 | node v24.13.0 | path separator: "\\"
+
+## 1. m-checks.sh in "hook lab 練習" (commands, messages and exit codes only)
+$ node --test 2>&1 | head -5
+$ node --test > /dev/null 2>&1; echo $?
+1
+$ node .claude/hooks/gate.mjs < fixtures/stop.json 2>/dev/null; echo $?
+2
+$ node .claude/hooks/gate.mjs < fixtures/stop.json 2>&1 | head -6
+$ node .claude/hooks/gate.mjs < fixtures/stop-again.json; echo $?
+0
+$ node .claude/hooks/gate.mjs < fixtures/stop.json; echo $?
+0
+$ node .claude/hooks/guard.mjs < fixtures/edit-test.json; echo $?
+2
+$ node .claude/hooks/guard.mjs < fixtures/edit-code.json; echo $?
+0
+$ node .claude/hooks/guard.mjs < fixtures/new-test.json; echo $?
+0
+$ node .claude/hooks/guard1.mjs < fixtures/edit-test.json; echo $?
+1
+This test already exists: do not change it.
+This test already exists: do not change it.
+
+## 2. guard.mjs fed an absolute path in the platform's own form, cwd elsewhere
+existing test | file_path has backslashes: true | exit 2 | This test already exists: do not change it.
+source file | file_path has backslashes: true | exit 0 | 
+new test | file_path has backslashes: true | exit 0 | 
+
+## 3. gate.mjs with CLAUDE_PROJECT_DIR set, cwd elsewhere (how Claude Code runs it)
+first stop, red project | exit 2 | Tests fail. Fix the code, then finish.
+second stop | exit 0 | 
+[exit 0]
+
+NOTE (runner): the script prints only commands, lone numbers and lines starting "This test" from the
+m-checks.sh run it makes in the folder "hook lab 練習"; the two "This test already exists" lines are that
+run's stderr, which the script appends after stdout. The exit codes are 1 2 0 0 2 0 0 1, the same as item 2.
+The full output of that run is <work>/_tools/logs/m-checks-space-cjk-path.log; against the planner's copy
+from 06:49:47Z, diff shows three changed lines: the timestamp and two test durations.
+NOTE (runner): this printout is identical to the planner's portability-windows.log.
+
+--- npm-exercise.mjs
+2026-10-09T07:16:51Z
+$ node _tools/scripts/npm-exercise.mjs
+# platform win32 | node v24.13.0 | npm 11.6.2
+
+## 1. spawnSync('npm', ['test']) with no shell
+status null | error code ENOENT
+
+## 2. the gate with spawnSync('npm test', { shell: true })
+red project, first stop | exit 2 | stderr first line: Tests fail. Fix the code, then finish.
+  the message mentions the failing test: true
+red project, second stop | exit 0 | stderr first line: 
+fixed project, first stop | exit 0 | stderr first line: 
+[exit 0]
+
+--- npm-trap.mjs
+2026-10-09T07:16:58Z
+$ node _tools/scripts/npm-trap.mjs
+# platform win32 | node v24.13.0
+npm test in the fixed project | exit 0
+gate spawning npm with no shell, same project | exit 2 | stderr: "Tests fail. Fix the code, then finish.\nundefined\n"
+[exit 0]
+
+--- the six PowerShell pipe tests, typed as in the brief, from <work>/run/hook-lab (helper run/ps-six.ps1)
+PS> powershell -NoProfile -File <work>\run\ps-six.ps1 <work>\run\hook-lab
+# 2026-10-09T07:17:38Z | Windows PowerShell 5.1.26100.9457 | console input code page 65001 | node v24.13.0
+# first bytes a native command gets on stdin here: efbbbf
+> Get-Content -Raw fixtures/stop.json | node .claude/hooks/gate.mjs 2>$null; $LASTEXITCODE
+2
+> Get-Content -Raw fixtures/stop-again.json | node .claude/hooks/gate.mjs; $LASTEXITCODE
+0
+> Get-Content -Raw fixtures/edit-test.json | node .claude/hooks/guard.mjs 2>$null; $LASTEXITCODE
+2
+> Get-Content -Raw fixtures/edit-code.json | node .claude/hooks/guard.mjs; $LASTEXITCODE
+0
+> Get-Content -Raw fixtures/new-test.json | node .claude/hooks/guard.mjs; $LASTEXITCODE
+0
+> Get-Content -Raw fixtures/edit-test.json | node .claude/hooks/guard1.mjs 2>$null; $LASTEXITCODE
+1
+[script exit 0]
+
+--- the two-line form (the planner's _tools/scripts/ps-two-line.ps1, run from <work>/run/hook-lab)
+# 2026-10-09T07:17:41Z | console input code page 65001
+> powershell -NoProfile -File _tools/scripts/ps-two-line.ps1
+2
+0
+[exit 0]
+
+NOTE (runner): 2, 0, 2, 0, 0, 1 and 2, 0: as the brief expects. The first three bytes a native program
+got on stdin from the PowerShell pipe were ef bb bf (a UTF-8 BOM), with console input code page 65001.
+
+====================================================================================================
+Item 4  the session command, as run
+====================================================================================================
+Every session was started by the helper <work>/run/session.sh, which rebuilds the project from the seed,
+copies the settings variant, runs this from inside the project folder, and then runs the checks:
+
+    timeout 300 claude -p --model sonnet [extra] --allowedTools "Read,Edit,Write" \
+      --setting-sources project \
+      --output-format stream-json --verbose --include-hook-events \
+      --debug-file "../logs/<name>.debug.log" \
+      < "../../_tools/seed/prompts/<prompt>.txt" > "../logs/<name>.stream.jsonl" 2> "../logs/<name>.stderr.txt"
+
+NOTE (runner): three things differ from the command printed in the brief: `timeout 300` in front,
+`--model sonnet`, and stderr sent to a file. [extra] is empty except in S5 (item 9).
+NOTE (runner): the prompt went in on stdin from the prompt file in every session. The readme.txt sessions
+wrote "# Hook 練習" exactly and the edit-test.txt sessions changed 5 to -1 in calc.test.mjs, so the Chinese
+prompts arrived intact. The streams do not echo the prompt itself.
+
+$ claude --help   (2.1.295; the lines for the flags used)
+  --allowedTools, --allowed-tools <tools...>
+      Comma or space-separated list of tool names to allow (e.g. "Bash(git *)
+      Edit")
+  --debug-file <path>                   Write debug logs to a specific file path
+                                        (implicitly enables debug mode)
+  --include-hook-events                 Include all hook lifecycle events in the
+                                        output stream (only works with
+                                        --output-format=stream-json)
+  --model <model>                       Model for the current session. Provide
+                                        an alias for the latest model (e.g.
+                                        'fable', 'opus', or 'sonnet') or a
+                                        model's full name.
+  --setting-sources <sources>           Comma-separated list of setting sources
+                                        to load (user, project, local).
+  --settings <file-or-json>             Path to a settings JSON file or a JSON
+                                        string to load additional settings from
+
+--- how Git Bash hands inline JSON to a native program (checked before S5, no session involved)
+$ node -e "console.log(JSON.stringify(process.argv.slice(1)))" -- --settings '{"disableAllHooks": true}'
+["--settings","{\"disableAllHooks\": true}"]
+[exit 0]
+
+====================================================================================================
+Item 5  S1: no hook (no .claude/settings.json), prompt readme.txt   (start 2026-10-09T07:19:45Z)
+====================================================================================================
+
+--- runner log: rebuild, settings, the command as run, its exit code, the post-session checks (s1.session.log)
+# s1 | start 2026-10-09T07:19:45Z
+## rebuild the project from the seed
+$ rm -rf run/hook-lab && mkdir -p run/logs && cp -r _tools/seed/hook-lab run/hook-lab
+[exit 0]
+[diff -r seed project: exit 0]
+(no .claude/settings.json)
+ls: cannot access '.claude/settings.json': No such file or directory
+[ls .claude/settings.json: exit 2]
+$ sha256sum README.md calc.mjs calc.test.mjs   (before)
+582691a4c3917f87e290bbab593c6a19ceed63861ef4854ce51c8e98478e4bbe *README.md
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+## the session
+$ timeout 300 claude -p --model sonnet  --allowedTools "Read,Edit,Write" --setting-sources project --output-format stream-json --verbose --include-hook-events --debug-file ../logs/s1.debug.log < ../../_tools/seed/prompts/readme.txt > ../logs/s1.stream.jsonl 2> ../logs/s1.stderr.txt
+[exit 0] (15 s, ended 2026-10-09T07:20:02Z)
+[stream lines: 11 | stderr bytes: 0 | debug log bytes: 30900]
+## after the session
+$ head -1 README.md
+# Hook 練習
+$ cat calc.mjs
+export function add(a, b) {
+  return a - b;
+}
+$ cat calc.test.mjs
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { add } from './calc.mjs';
+
+test('add returns the sum', () => {
+  assert.equal(add(2, 3), 5);
+});
+$ sha256sum calc.mjs calc.test.mjs
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+$ grep -c -- "-1" calc.test.mjs
+0
+$ node --test 2>&1 | head -5
+✖ add returns the sum (8.1393ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+$ node --test > /dev/null 2>&1; echo $?
+1
+$ find . -type f | sort
+./.claude/hooks/gate.mjs
+./.claude/hooks/guard.mjs
+./.claude/hooks/guard1.mjs
+./README.md
+./calc.mjs
+./calc.test.mjs
+./fixtures/edit-code.json
+./fixtures/edit-test.json
+./fixtures/new-test.json
+./fixtures/stop-again.json
+./fixtures/stop.json
+$ diff -r <seed>/hook-lab .   (what the session left changed)
+diff -r <home>/mokaair-work/videos/claude-code-hooks-hands-on/_tools/seed/hook-lab/README.md ./README.md
+1c1
+< # Calculator
+---
+> # Hook 練習
+## in the stream
+$ grep -o '"name":"[A-Za-z]*"' ../logs/s1.stream.jsonl | sort | uniq -c
+      1 "name":"Edit"
+      1 "name":"Read"
+$ grep -c -i hook ../logs/s1.stream.jsonl
+8
+# s1 | end 2026-10-09T07:20:09Z
+
+--- the stream, event by event (digest of s1.stream.jsonl; the helper is run/digest.mjs)
+[stream line 1] system/init
+      model="claude-sonnet-5-5" permissionMode="default" claude_code_version="2.1.295" apiKeySource="none" output_style="default"
+      cwd="<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab"
+      tools: 50 listed; Read true, Edit true, Write true, Bash true, PowerShell true, Glob true; names starting mcp__: 19
+      mcp_servers: 4 (by source: 4 claudeai; by status: 2 connected, 2 needs-auth) [names left out]
+      plugins: cc-plugin-agents-md@builtin, cc-plugin-telemetry@builtin, cc-plugin-plugin-authoring@builtin
+      agents: 6; skills: 21; slash_commands: 57
+      keys of the init line: type, subtype, cwd, session_id, tools, mcp_servers, model, permissionMode, slash_commands, terminal_slash_commands, apiKeySource, claude_code_version, output_style, agents, skills, plugins, capabilities, analytics_disabled, product_feedback_disabled, uuid, memory_paths, scratchpad_path, messaging_socket_path, fast_mode_state, fast_mode_disabled_reason, per_turn_effort_active, view_mode, powershell_path
+      keys whose name contains "hook": none
+[stream line 2] assistant tool_use (call #1) name=Read input={"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\README.md","limit":3}
+[stream line 4] system/task_summary detail="Reading README.md"
+[stream line 5] user tool_result (for call #1) is_error=(absent) permission_decision=accept/config/rule
+      | 1	# Calculator
+      | 2	
+      | 3	A tiny project for trying Claude Code hooks.
+[stream line 6] assistant tool_use (call #2) name=Edit input={"replace_all":false,"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\README.md","old_string":"# Calculator\n","new_string":"# Hook 練習\n"}
+[stream line 7] user tool_result (for call #2) is_error=(absent) permission_decision=accept/config/rule
+      | The file <home>\mokaair-work\videos\claude-code-hooks-hands-on\run\hook-lab\README.md has been updated successfully.
+[stream line 8] assistant text
+      | 已把 README.md 第一行從「# Calculator」改成「# Hook 練習」，其他內容沒動。
+[stream line 9] system/post_turn_summary status_category="completed" status_detail="README.md 首行標題已改為「# Hook 練習」，其餘未動" needs_action=""
+[stream line 10] result subtype="success" is_error=false stop_reason="end_turn" terminal_reason="completed" num_turns=3 duration_ms=8619
+      permission_denials=[]
+      models in modelUsage: claude-sonnet-5-5
+      result (the final reply): the same string as the assistant text at [stream line 8] above (compared by the digest script) [not repeated]
+[stream line 11] system/task_summary detail=null
+[left out: 1 rate_limit_event line(s); ids, timestamps and token counts on every line]
+
+--- hook-related lines of the debug log (s1.debug.log; line numbers are the debug log's)
+  86: 2026-10-09T07:19:50.880Z [DEBUG] Registered 0 hooks from 3 plugins
+ 172: 2026-10-09T07:19:52.410Z [DEBUG] Hooks: Found 0 total hooks in registry
+(this debug log has no [ERROR] line other than the hook lines above)
+[s1.debug.log has 269 lines. Lines containing: "hook_registered" 0; "Hook output does not start with" 0; "error: status code" 0; "Hook denied tool use" 0; "allowManagedHooksOnly" 0; "Hooks: Found 0 total hooks in registry" 3; "non-blocking" 0]
+
+--- hook entries in the transcript Claude Code saved for this session by itself (read only; helper run/transcript-hooks.mjs)
+[0 hook-related entries] [cut: the list of entry kinds]
+
+NOTE (runner): `grep -c -i hook` printed 8 although no hook ran: the project path itself contains "hooks" and "hook-lab", so every line that carries the cwd or a file path matches. The digest above shows no hook_started or hook_response event. The reliable count is of lines with "subtype":"hook_started" (0 here).
+NOTE (runner): the init line lists Bash and PowerShell among its tools. --allowedTools did not remove them; it pre-approved Read, Edit and Write.
+NOTE (runner): the init line has no field about hooks (its keys are listed above).
+
+====================================================================================================
+Item 6  S2: the Stop gate attached (settings.gate.json), prompt readme.txt   (start 2026-10-09T07:20:37Z)
+====================================================================================================
+
+--- runner log: rebuild, settings, the command as run, its exit code, the post-session checks (s2.session.log)
+# s2 | start 2026-10-09T07:20:37Z
+## rebuild the project from the seed
+$ rm -rf run/hook-lab && mkdir -p run/logs && cp -r _tools/seed/hook-lab run/hook-lab
+[exit 0]
+[diff -r seed project: exit 0]
+$ cp ../../_tools/seed/variants/settings.gate.json .claude/settings.json
+[exit 0]
+$ sha256sum .claude/settings.json
+e40a870dc7053b3bf21d84bcc83bc76053ffd0b2695cbb7c346ee42d4fd8577c *.claude/settings.json
+$ sha256sum README.md calc.mjs calc.test.mjs   (before)
+582691a4c3917f87e290bbab593c6a19ceed63861ef4854ce51c8e98478e4bbe *README.md
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+## the session
+$ timeout 300 claude -p --model sonnet  --allowedTools "Read,Edit,Write" --setting-sources project --output-format stream-json --verbose --include-hook-events --debug-file ../logs/s2.debug.log < ../../_tools/seed/prompts/readme.txt > ../logs/s2.stream.jsonl 2> ../logs/s2.stderr.txt
+[exit 0] (25 s, ended 2026-10-09T07:21:04Z)
+[stream lines: 35 | stderr bytes: 0 | debug log bytes: 44460]
+## after the session
+$ head -1 README.md
+# Hook 練習
+$ cat calc.mjs
+export function add(a, b) {
+  return a + b;
+}
+$ cat calc.test.mjs
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { add } from './calc.mjs';
+
+test('add returns the sum', () => {
+  assert.equal(add(2, 3), 5);
+});
+$ sha256sum calc.mjs calc.test.mjs
+5b63136552577a64d788dc3cd4552739d0d60f9e1adb63ec4dfb6932d56fc75d *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+$ grep -c -- "-1" calc.test.mjs
+0
+$ node --test 2>&1 | head -5
+✔ add returns the sum (0.8167ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+$ node --test > /dev/null 2>&1; echo $?
+0
+$ find . -type f | sort
+./.claude/hooks/gate.mjs
+./.claude/hooks/guard.mjs
+./.claude/hooks/guard1.mjs
+./.claude/settings.json
+./README.md
+./calc.mjs
+./calc.test.mjs
+./fixtures/edit-code.json
+./fixtures/edit-test.json
+./fixtures/new-test.json
+./fixtures/stop-again.json
+./fixtures/stop.json
+$ diff -r <seed>/hook-lab .   (what the session left changed)
+Only in ./.claude: settings.json
+diff -r <home>/mokaair-work/videos/claude-code-hooks-hands-on/_tools/seed/hook-lab/README.md ./README.md
+1c1
+< # Calculator
+---
+> # Hook 練習
+diff -r <home>/mokaair-work/videos/claude-code-hooks-hands-on/_tools/seed/hook-lab/calc.mjs ./calc.mjs
+2c2
+<   return a - b;
+---
+>   return a + b;
+## in the stream
+$ grep -o '"name":"[A-Za-z]*"' ../logs/s2.stream.jsonl | sort | uniq -c
+      1 "name":"Bash"
+      2 "name":"Edit"
+      1 "name":"Glob"
+      1 "name":"PowerShell"
+      3 "name":"Read"
+$ grep -c -i hook ../logs/s2.stream.jsonl
+21
+# s2 | end 2026-10-09T07:21:08Z
+
+--- the stream, event by event (digest of s2.stream.jsonl; the helper is run/digest.mjs)
+[stream line 1] system/init
+      model="claude-sonnet-5-5" permissionMode="default" claude_code_version="2.1.295" apiKeySource="none" output_style="default"
+      cwd="<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab"
+      tools: 31 listed; Read true, Edit true, Write true, Bash true, PowerShell true, Glob true; names starting mcp__: 0
+      mcp_servers: 4 (by source: 4 claudeai; by status: 2 pending, 2 needs-auth) [names left out]
+      plugins: cc-plugin-agents-md@builtin, cc-plugin-telemetry@builtin, cc-plugin-plugin-authoring@builtin
+      agents: 6; skills: 21; slash_commands: 57
+      keys of the init line: type, subtype, cwd, session_id, tools, mcp_servers, model, permissionMode, slash_commands, terminal_slash_commands, apiKeySource, claude_code_version, output_style, agents, skills, plugins, capabilities, analytics_disabled, product_feedback_disabled, uuid, memory_paths, scratchpad_path, messaging_socket_path, fast_mode_state, fast_mode_disabled_reason, per_turn_effort_active, view_mode, powershell_path
+      keys whose name contains "hook": none
+[stream line 2] assistant tool_use (call #1) name=Read input={"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\README.md","limit":3}
+[stream line 4] system/task_summary detail="Reading README.md"
+[stream line 5] user tool_result (for call #1) is_error=(absent) permission_decision=accept/config/rule
+      | 1	# Calculator
+      | 2	
+      | 3	A tiny project for trying Claude Code hooks.
+[stream line 6] assistant tool_use (call #2) name=Edit input={"replace_all":false,"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\README.md","old_string":"# Calculator","new_string":"# Hook 練習"}
+[stream line 7] user tool_result (for call #2) is_error=(absent) permission_decision=accept/config/rule
+      | The file <home>\mokaair-work\videos\claude-code-hooks-hands-on\run\hook-lab\README.md has been updated successfully.
+[stream line 8] assistant text
+      | 已將 README.md 第一行的標題從「# Calculator」改成「# Hook 練習」，其他內容沒動。
+[stream line 9] system/post_turn_summary status_category="completed" status_detail="README.md 首行標題改為「# Hook 練習」，其餘未動" needs_action=""
+[stream line 10] system/hook_started hook_name="Stop" hook_event="Stop"
+[stream line 11] system/hook_response hook_name="Stop" hook_event="Stop" exit_code=2 outcome="error"
+      stdout="" (empty)
+      stderr=
+      | Tests fail. Fix the code, then finish.
+      | ✖ add returns the sum (1.4591ms)
+      | ℹ tests 1
+      | ℹ suites 0
+      | ℹ pass 0
+      | ℹ fail 1
+      | ℹ cancelled 0
+      | ℹ skipped 0
+      | ℹ todo 0
+      | ℹ duration_ms 150.9061
+      | 
+      | ✖ failing tests:
+      | 
+      | test at calc.test.mjs:5:1
+      | ✖ add returns the sum (1.4591ms)
+      |   AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+      |   
+      |   -1 !== 5
+      |   
+      |       at TestContext.<anonymous> (file:///<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook-lab/calc.test.mjs:6:10)
+      |       at Test.runInAsyncScope (node:async_hooks:214:14)
+      |       at Test.run (node:internal/test_runner/test:1106:25)
+      |       at Test.start (node:internal/test_runner/test:1003:17)
+      |       at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+      |     generatedMessage: true,
+      |     code: 'ERR_ASSERTION',
+      |     actual: -1,
+      |     expected: 5,
+      |     operator: 'strictEqual',
+      |     diff: 'simple'
+      |   }
+      | 
+      | 
+      output= (the same string as stderr)
+[stream line 12] user text isSynthetic=true
+      | Stop hook feedback:
+      | [node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs]: Tests fail. Fix the code, then finish.
+      | ✖ add returns the sum (1.4591ms)
+      | ℹ tests 1
+      | ℹ suites 0
+      | ℹ pass 0
+      | ℹ fail 1
+      | ℹ cancelled 0
+      | ℹ skipped 0
+      | ℹ todo 0
+      | ℹ duration_ms 150.9061
+      | 
+      | ✖ failing tests:
+      | 
+      | test at calc.test.mjs:5:1
+      | ✖ add returns the sum (1.4591ms)
+      |   AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+      |   
+      |   -1 !== 5
+      |   
+      |       at TestContext.<anonymous> (file:///<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook-lab/calc.test.mjs:6:10)
+      |       at Test.runInAsyncScope (node:async_hooks:214:14)
+      |       at Test.run (node:internal/test_runner/test:1106:25)
+      |       at Test.start (node:internal/test_runner/test:1003:17)
+      |       at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+      |     generatedMessage: true,
+      |     code: 'ERR_ASSERTION',
+      |     actual: -1,
+      |     expected: 5,
+      |     operator: 'strictEqual',
+      |     diff: 'simple'
+      |   }
+      | 
+      | 
+      (digest check: contains the last hook stderr verbatim; before it: "Stop hook feedback:\n[node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs]: "; after it: "")
+[stream line 13] system/notification key="stop-hook-error" priority="immediate" text="Stop hook error occurred · ctrl+o to see"
+[stream line 14] assistant tool_use (call #3) name=Glob input={"pattern":"calc*.mjs"}
+[stream line 15] system/task_summary detail="Finding calc*.mjs"
+[stream line 16] user tool_result (for call #3) is_error=(absent) permission_decision=accept/config/mode
+      | calc.test.mjs
+      | calc.mjs
+[stream line 17] assistant tool_use (call #4) name=Read input={"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.mjs"}
+[stream line 18] user tool_result (for call #4) is_error=(absent) permission_decision=accept/config/rule
+      | 1	export function add(a, b) {
+      | 2	  return a - b;
+      | 3	}
+      | 4	
+[stream line 19] assistant tool_use (call #5) name=Read input={"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs"}
+[stream line 20] user tool_result (for call #5) is_error=(absent) permission_decision=accept/config/rule
+      | 1	import assert from 'node:assert/strict';
+      | 2	import test from 'node:test';
+      | 3	import { add } from './calc.mjs';
+      | 4	
+      | 5	test('add returns the sum', () => {
+      | 6	  assert.equal(add(2, 3), 5);
+      | 7	});
+      | 8	
+[stream line 21] assistant text
+      | `add` 用了減號，測試是對的，所以改程式碼。
+[stream line 22] assistant tool_use (call #6) name=Edit input={"replace_all":false,"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.mjs","old_string":"a - b","new_string":"a + b"}
+[stream line 23] user tool_result (for call #6) is_error=(absent) permission_decision=accept/config/rule
+      | The file <home>\mokaair-work\videos\claude-code-hooks-hands-on\run\hook-lab\calc.mjs has been updated successfully. (file state is current in your context — no need to Read it back)
+[stream line 24] assistant tool_use (call #7) name=Bash input={"command":"node --test calc.test.mjs 2>&1 | tail -12"}
+[stream line 25] system/permission_denied tool_name="Bash" decision_reason_type="subcommandResults"
+      | This Bash command contains multiple operations. The following part requires approval: node --test calc.test.mjs 2>&1
+[stream line 26] user tool_result (for call #7) is_error=true permission_decision=reject/config non_execution_kind=user-rejected
+      | This Bash command contains multiple operations. The following part requires approval: node --test calc.test.mjs 2>&1
+[stream line 27] assistant tool_use (call #8) name=PowerShell input={"command":"node --test calc.test.mjs"}
+[stream line 28] system/permission_denied tool_name="PowerShell" decision_reason_type="subcommandResults"
+      | This PowerShell command contains multiple operations. The following part requires approval: node --test calc.test.mjs
+[stream line 29] user tool_result (for call #8) is_error=true permission_decision=reject/config non_execution_kind=user-rejected
+      | This PowerShell command contains multiple operations. The following part requires approval: node --test calc.test.mjs
+[stream line 30] assistant text
+      | 我已修好 `calc.mjs`,但沒能親自跑測試確認,因為執行 `node --test` 的權限被擋下了。
+      | 
+      | `add` 原本寫成 `a - b`,所以 `add(2, 3)` 回傳 -1,而測試期待 5。我把它改成 `a + b`。測試本身沒問題,所以沒動它。
+      | 
+      | Stop hook 結束時應該會自動重跑測試。你也可以自己執行 `node --test calc.test.mjs` 來驗證。
+[stream line 31] system/post_turn_summary status_category="completed" status_detail="calc.mjs add() fixed to a+b; tests not run (permission denied)" needs_action=""
+[stream line 32] system/hook_started hook_name="Stop" hook_event="Stop"
+[stream line 33] system/hook_response hook_name="Stop" hook_event="Stop" exit_code=0 outcome="success"
+      stdout="" (empty)
+      stderr="" (empty)
+      output= (the same string as stderr)
+[stream line 34] result subtype="success" is_error=false stop_reason="end_turn" terminal_reason="completed" num_turns=10 duration_ms=22818
+      permission_denials=[{"tool_name":"Bash","tool_input":{"command":"node --test calc.test.mjs 2>&1 | tail -12"}},{"tool_name":"PowerShell","tool_input":{"command":"node --test calc.test.mjs"}}]
+      models in modelUsage: claude-sonnet-5-5
+      result (the final reply): the same string as the assistant text at [stream line 30] above (compared by the digest script) [not repeated]
+[stream line 35] system/task_summary detail=null
+[left out: 1 rate_limit_event line(s); ids, timestamps and token counts on every line]
+
+--- hook-related lines of the debug log (s2.debug.log; line numbers are the debug log's)
+  73: 2026-10-09T07:20:40.696Z [DEBUG] [3P telemetry] Event dropped (no event logger initialized): hook_registered
+  85: 2026-10-09T07:20:40.729Z [DEBUG] Registered 0 hooks from 3 plugins
+ 128: 2026-10-09T07:20:41.188Z [DEBUG] Hooks: Found 0 total hooks in registry
+ 234: 2026-10-09T07:20:49.596Z [DEBUG] Hook output does not start with {, treating as plain text
+ 235: 2026-10-09T07:20:49.597Z [ERROR] "Hook Stop (Stop) error: status code 2\nstderr:\nTests fail. Fix the code, then finish.\n✖ add returns the sum (1.4591ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 150.9061\n\n✖ failing tests:\n\ntest at calc.test.mjs:5:1\n✖ add returns the sum (1.4591ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \ ...[cut, the line has 974 characters]
+ 314: 2026-10-09T07:20:56.255Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+ 315: 2026-10-09T07:20:56.257Z [DEBUG] Bash tool permission denied
+ 337: 2026-10-09T07:20:58.615Z [DEBUG] executePermissionRequestHooks called for tool: PowerShell
+ 338: 2026-10-09T07:20:58.617Z [DEBUG] PowerShell tool permission denied
+ 362: 2026-10-09T07:21:03.962Z [DEBUG] Hook output does not start with {, treating as plain text
+(this debug log has no [ERROR] line other than the hook lines above)
+[s2.debug.log has 376 lines. Lines containing: "hook_registered" 1; "Hook output does not start with" 2; "error: status code" 1; "Hook denied tool use" 0; "allowManagedHooksOnly" 0; "Hooks: Found 0 total hooks in registry" 7; "non-blocking" 0]
+
+--- hook entries in the transcript Claude Code saved for this session by itself (read only; helper run/transcript-hooks.mjs)
+[transcript entry 34 of 59] system/stop_hook_summary
+      {"type":"system","subtype":"stop_hook_summary","hookCount":1,"hookInfos":[{"command":"node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs"}],"hookErrors":["[node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs]: Tests fail. Fix the code, then finish.\n✖ add returns the sum (1.4591ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 150.9061\n\n✖ failing tests:\n\ntest at calc.test.mjs:5:1\n✖ add returns the sum (1.4591ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  -1 !== 5\n  \n      at TestContext.<anonymous> (file:///<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook-lab/calc.test.mjs:6:10)\n   ...[cut, the line has 1222 characters]
+[transcript entry 57 of 59] system/stop_hook_summary
+      {"type":"system","subtype":"stop_hook_summary","hookCount":1,"hookInfos":[{"command":"node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs","durationMs":181}],"hookErrors":[],"hookAdditionalContext":[],"preventedContinuation":false,"stopReason":"","hasOutput":false,"level":"suggestion"}
+[2 hook-related entries] [cut: the list of entry kinds]
+
+NOTE (runner): order of events: Edit README.md; first Stop hook, exit_code 2; Glob, Read calc.mjs, Read calc.test.mjs; Edit calc.mjs; a Bash call and a PowerShell call to run the test, both refused; second Stop hook, exit_code 0; result.
+NOTE (runner): what Claude was given after the first stop is stream line 12: the hook's stderr with "Stop hook feedback:\n[node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs]: " in front of it.
+NOTE (runner): hook_response carries outcome "error" for the exit-2 run and "success" for the exit-0 run.
+NOTE (runner): the stream does not show what the hook received on stdin. Whether the second run exited 0 because stop_hook_active was true (gate.mjs line 5) or because the tests passed cannot be told from this run. The post-session `node --test` shows the tests pass.
+
+====================================================================================================
+Item 7  S3: the guard attached (settings.guard.json), prompt edit-test.txt   (start 2026-10-09T07:22:52Z)
+====================================================================================================
+
+--- runner log: rebuild, settings, the command as run, its exit code, the post-session checks (s3.session.log)
+# s3 | start 2026-10-09T07:22:52Z
+## rebuild the project from the seed
+$ rm -rf run/hook-lab && mkdir -p run/logs && cp -r _tools/seed/hook-lab run/hook-lab
+[exit 0]
+[diff -r seed project: exit 0]
+$ cp ../../_tools/seed/variants/settings.guard.json .claude/settings.json
+[exit 0]
+$ sha256sum .claude/settings.json
+f29cf5346907eef229022d888fd6f362a8268f7aceb5c35415b5245c3fd2e7ca *.claude/settings.json
+$ sha256sum README.md calc.mjs calc.test.mjs   (before)
+582691a4c3917f87e290bbab593c6a19ceed63861ef4854ce51c8e98478e4bbe *README.md
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+## the session
+$ timeout 300 claude -p --model sonnet  --allowedTools "Read,Edit,Write" --setting-sources project --output-format stream-json --verbose --include-hook-events --debug-file ../logs/s3.debug.log < ../../_tools/seed/prompts/edit-test.txt > ../logs/s3.stream.jsonl 2> ../logs/s3.stderr.txt
+[exit 0] (22 s, ended 2026-10-09T07:23:16Z)
+[stream lines: 18 | stderr bytes: 0 | debug log bytes: 30279]
+## after the session
+$ head -1 README.md
+# Calculator
+$ cat calc.mjs
+export function add(a, b) {
+  return a - b;
+}
+$ cat calc.test.mjs
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { add } from './calc.mjs';
+
+test('add returns the sum', () => {
+  assert.equal(add(2, 3), 5);
+});
+$ sha256sum calc.mjs calc.test.mjs
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+$ grep -c -- "-1" calc.test.mjs
+0
+$ node --test 2>&1 | head -5
+✖ add returns the sum (2.3075ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+$ node --test > /dev/null 2>&1; echo $?
+1
+$ find . -type f | sort
+./.claude/hooks/gate.mjs
+./.claude/hooks/guard.mjs
+./.claude/hooks/guard1.mjs
+./.claude/settings.json
+./README.md
+./calc.mjs
+./calc.test.mjs
+./fixtures/edit-code.json
+./fixtures/edit-test.json
+./fixtures/new-test.json
+./fixtures/stop-again.json
+./fixtures/stop.json
+$ diff -r <seed>/hook-lab .   (what the session left changed)
+Only in ./.claude: settings.json
+## in the stream
+$ grep -o '"name":"[A-Za-z]*"' ../logs/s3.stream.jsonl | sort | uniq -c
+      1 "name":"Edit"
+      1 "name":"Grep"
+      1 "name":"Read"
+$ grep -c -i hook ../logs/s3.stream.jsonl
+10
+# s3 | end 2026-10-09T07:23:24Z
+
+--- the stream, event by event (digest of s3.stream.jsonl; the helper is run/digest.mjs)
+[stream line 1] system/init
+      model="claude-sonnet-5-5" permissionMode="default" claude_code_version="2.1.295" apiKeySource="none" output_style="default"
+      cwd="<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab"
+      tools: 50 listed; Read true, Edit true, Write true, Bash true, PowerShell true, Glob true; names starting mcp__: 19
+      mcp_servers: 4 (by source: 4 claudeai; by status: 2 connected, 2 needs-auth) [names left out]
+      plugins: cc-plugin-agents-md@builtin, cc-plugin-telemetry@builtin, cc-plugin-plugin-authoring@builtin
+      agents: 6; skills: 21; slash_commands: 57
+      keys of the init line: type, subtype, cwd, session_id, tools, mcp_servers, model, permissionMode, slash_commands, terminal_slash_commands, apiKeySource, claude_code_version, output_style, agents, skills, plugins, capabilities, analytics_disabled, product_feedback_disabled, uuid, memory_paths, scratchpad_path, messaging_socket_path, fast_mode_state, fast_mode_disabled_reason, per_turn_effort_active, view_mode, powershell_path
+      keys whose name contains "hook": none
+[stream line 2] assistant tool_use (call #1) name=Grep input={"pattern":"5","path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs","output_mode":"content"}
+[stream line 4] system/task_summary detail="Searching for 5"
+[stream line 5] user tool_result (for call #1) is_error=(absent) permission_decision=accept/config/mode
+      | 6:  assert.equal(add(2, 3), 5);
+[stream line 6] assistant tool_use (call #2) name=Read input={"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs"}
+[stream line 7] user tool_result (for call #2) is_error=(absent) permission_decision=accept/config/rule
+      | 1	import assert from 'node:assert/strict';
+      | 2	import test from 'node:test';
+      | 3	import { add } from './calc.mjs';
+      | 4	
+      | 5	test('add returns the sum', () => {
+      | 6	  assert.equal(add(2, 3), 5);
+      | 7	});
+      | 8	
+[stream line 8] assistant tool_use (call #3) name=Edit input={"replace_all":false,"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs","old_string":"add(2, 3), 5)","new_string":"add(2, 3), -1)"}
+[stream line 9] system/hook_started hook_name="PreToolUse:Edit" hook_event="PreToolUse"
+[stream line 10] system/hook_response hook_name="PreToolUse:Edit" hook_event="PreToolUse" exit_code=2 outcome="error"
+      stdout="" (empty)
+      stderr=
+      | This test already exists: do not change it.
+      | Fix the code instead. New tests are fine.
+      | 
+      output= (the same string as stderr)
+[stream line 11] user tool_result (for call #3) is_error=true permission_decision=reject/hook/hook non_execution_kind=permission-rule
+      | PreToolUse:Edit hook error: [node ${CLAUDE_PROJECT_DIR}/.claude/hooks/guard.mjs]: This test already exists: do not change it.
+      | Fix the code instead. New tests are fine.
+      | 
+[stream line 12] system/thinking_tokens {"type":"system","subtype":"thinking_tokens","estimated_tokens":50,"estimated_tokens_delta":50}
+[stream line 13] system/thinking_tokens {"type":"system","subtype":"thinking_tokens","estimated_tokens":185,"estimated_tokens_delta":135}
+[stream line 14] assistant thinking (content not shown)
+[stream line 15] assistant text
+      | 這次修改被專案裡的 PreToolUse hook(`.claude/hooks/guard.mjs`)擋下來了,所以 `calc.test.mjs` 沒有任何變動,第 6 行仍是 `assert.equal(add(2, 3), 5);`。
+      | 
+      | hook 的訊息是:「This test already exists: do not change it. Fix the code instead. New tests are fine.」
+      | 
+      | 我沒有改用 Bash 或 PowerShell 去繞過它,因為這個 guard 看起來是刻意設的。另外,`add(2, 3)` 的正確結果本來就是 5,改成 -1 會讓測試對正確的程式失敗。
+      | 
+      | 你可以選擇:
+      | 1. 你自己調整或暫時停用 guard hook,我再重新執行這次 Edit。
+      | 2. 你明確告訴我可以繞過 hook,例如用其他工具改這一行。
+      | 3. 照 hook 建議,保留原測試,另外新增一個測試。
+      | 
+      | 你要走哪一個?
+[stream line 16] system/post_turn_summary status_category="blocked" status_detail="你要走哪一個?" needs_action="你要走哪一個?"
+[stream line 17] result subtype="success" is_error=false stop_reason="end_turn" terminal_reason="completed" num_turns=4 duration_ms=12851
+      permission_denials=[{"tool_name":"Edit","tool_input":{"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs","old_string":"add(2, 3), 5)","new_string":"add(2, 3), -1)","replace_all":false}}]
+      models in modelUsage: claude-sonnet-5-5
+      result (the final reply): the same string as the assistant text at [stream line 15] above (compared by the digest script) [not repeated]
+[stream line 18] system/task_summary detail=null
+[left out: 1 rate_limit_event line(s); ids, timestamps and token counts on every line]
+
+--- hook-related lines of the debug log (s3.debug.log; line numbers are the debug log's)
+  75: 2026-10-09T07:23:00.857Z [DEBUG] [3P telemetry] Event dropped (no event logger initialized): hook_registered
+  87: 2026-10-09T07:23:00.967Z [DEBUG] Registered 0 hooks from 3 plugins
+ 153: 2026-10-09T07:23:02.903Z [DEBUG] Hooks: Found 0 total hooks in registry
+ 227: 2026-10-09T07:23:10.910Z [DEBUG] Hook output does not start with {, treating as plain text
+ 228: 2026-10-09T07:23:10.910Z [ERROR] "Hook PreToolUse:Edit (PreToolUse) error: status code 2\nstderr:\nThis test already exists: do not change it.\nFix the code instead. New tests are fine."
+ 230: 2026-10-09T07:23:10.916Z [DEBUG] Hook result has permissionBehavior=deny
+ 231: 2026-10-09T07:23:10.916Z [DEBUG] Hook denied tool use for Edit
+ 232: 2026-10-09T07:23:10.918Z [DEBUG] Edit tool permission denied
+(this debug log has no [ERROR] line other than the hook lines above)
+[s3.debug.log has 265 lines. Lines containing: "hook_registered" 1; "Hook output does not start with" 1; "error: status code" 1; "Hook denied tool use" 1; "allowManagedHooksOnly" 0; "Hooks: Found 0 total hooks in registry" 4; "non-blocking" 0]
+
+--- hook entries in the transcript Claude Code saved for this session by itself (read only; helper run/transcript-hooks.mjs)
+[0 hook-related entries] [cut: the list of entry kinds]
+
+NOTE (runner): the Grep and the Read of calc.test.mjs produced no hook event; only the Edit did (matcher "Edit|Write").
+NOTE (runner): the blocked Edit is also listed in the result line's permission_denials.
+NOTE (runner): the prompt edit-test.txt was enough; the spare prompt edit-test-neutral.txt was not used in any session.
+
+====================================================================================================
+Item 8  S4: the guard exiting 1 (settings.guard1.json), prompt edit-test.txt   (start 2026-10-09T07:23:31Z)
+====================================================================================================
+
+--- runner log: rebuild, settings, the command as run, its exit code, the post-session checks (s4.session.log)
+# s4 | start 2026-10-09T07:23:31Z
+## rebuild the project from the seed
+$ rm -rf run/hook-lab && mkdir -p run/logs && cp -r _tools/seed/hook-lab run/hook-lab
+[exit 0]
+[diff -r seed project: exit 0]
+$ cp ../../_tools/seed/variants/settings.guard1.json .claude/settings.json
+[exit 0]
+$ sha256sum .claude/settings.json
+cae07973ee29bd5b07f1ec414a5de3a36bc22b4b2a236e21f89af172d539440b *.claude/settings.json
+$ sha256sum README.md calc.mjs calc.test.mjs   (before)
+582691a4c3917f87e290bbab593c6a19ceed63861ef4854ce51c8e98478e4bbe *README.md
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+## the session
+$ timeout 300 claude -p --model sonnet  --allowedTools "Read,Edit,Write" --setting-sources project --output-format stream-json --verbose --include-hook-events --debug-file ../logs/s4.debug.log < ../../_tools/seed/prompts/edit-test.txt > ../logs/s4.stream.jsonl 2> ../logs/s4.stderr.txt
+[exit 0] (20 s, ended 2026-10-09T07:23:53Z)
+[stream lines: 15 | stderr bytes: 0 | debug log bytes: 31848]
+## after the session
+$ head -1 README.md
+# Calculator
+$ cat calc.mjs
+export function add(a, b) {
+  return a - b;
+}
+$ cat calc.test.mjs
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { add } from './calc.mjs';
+
+test('add returns the sum', () => {
+  assert.equal(add(2, 3), -1);
+});
+$ sha256sum calc.mjs calc.test.mjs
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+2132105346cb238fa87bff3f3603f16e41a8fdf756f60c0eed8274ee07f280a2 *calc.test.mjs
+$ grep -c -- "-1" calc.test.mjs
+1
+$ node --test 2>&1 | head -5
+✔ add returns the sum (1.641ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+$ node --test > /dev/null 2>&1; echo $?
+0
+$ find . -type f | sort
+./.claude/hooks/gate.mjs
+./.claude/hooks/guard.mjs
+./.claude/hooks/guard1.mjs
+./.claude/settings.json
+./README.md
+./calc.mjs
+./calc.test.mjs
+./fixtures/edit-code.json
+./fixtures/edit-test.json
+./fixtures/new-test.json
+./fixtures/stop-again.json
+./fixtures/stop.json
+$ diff -r <seed>/hook-lab .   (what the session left changed)
+Only in ./.claude: settings.json
+diff -r <home>/mokaair-work/videos/claude-code-hooks-hands-on/_tools/seed/hook-lab/calc.test.mjs ./calc.test.mjs
+6c6
+<   assert.equal(add(2, 3), 5);
+---
+>   assert.equal(add(2, 3), -1);
+## in the stream
+$ grep -o '"name":"[A-Za-z]*"' ../logs/s4.stream.jsonl | sort | uniq -c
+      1 "name":"Edit"
+      1 "name":"Grep"
+      1 "name":"Read"
+$ grep -c -i hook ../logs/s4.stream.jsonl
+8
+# s4 | end 2026-10-09T07:23:57Z
+
+--- the stream, event by event (digest of s4.stream.jsonl; the helper is run/digest.mjs)
+[stream line 1] system/init
+      model="claude-sonnet-5-5" permissionMode="default" claude_code_version="2.1.295" apiKeySource="none" output_style="default"
+      cwd="<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab"
+      tools: 50 listed; Read true, Edit true, Write true, Bash true, PowerShell true, Glob true; names starting mcp__: 19
+      mcp_servers: 4 (by source: 4 claudeai; by status: 2 connected, 2 needs-auth) [names left out]
+      plugins: cc-plugin-agents-md@builtin, cc-plugin-telemetry@builtin, cc-plugin-plugin-authoring@builtin
+      agents: 6; skills: 21; slash_commands: 57
+      keys of the init line: type, subtype, cwd, session_id, tools, mcp_servers, model, permissionMode, slash_commands, terminal_slash_commands, apiKeySource, claude_code_version, output_style, agents, skills, plugins, capabilities, analytics_disabled, product_feedback_disabled, uuid, memory_paths, scratchpad_path, messaging_socket_path, fast_mode_state, fast_mode_disabled_reason, per_turn_effort_active, view_mode, powershell_path
+      keys whose name contains "hook": none
+[stream line 2] assistant tool_use (call #1) name=Grep input={"pattern":"5","path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs","output_mode":"content"}
+[stream line 4] system/task_summary detail="Searching for 5"
+[stream line 5] user tool_result (for call #1) is_error=(absent) permission_decision=accept/config/mode
+      | 6:  assert.equal(add(2, 3), 5);
+[stream line 6] assistant tool_use (call #2) name=Read input={"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs"}
+[stream line 7] user tool_result (for call #2) is_error=(absent) permission_decision=accept/config/rule
+      | 1	import assert from 'node:assert/strict';
+      | 2	import test from 'node:test';
+      | 3	import { add } from './calc.mjs';
+      | 4	
+      | 5	test('add returns the sum', () => {
+      | 6	  assert.equal(add(2, 3), 5);
+      | 7	});
+      | 8	
+[stream line 8] assistant tool_use (call #3) name=Edit input={"replace_all":false,"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs","old_string":"add(2, 3), 5);","new_string":"add(2, 3), -1);"}
+[stream line 9] system/hook_started hook_name="PreToolUse:Edit" hook_event="PreToolUse"
+[stream line 10] system/hook_response hook_name="PreToolUse:Edit" hook_event="PreToolUse" exit_code=1 outcome="error"
+      stdout="" (empty)
+      stderr=
+      | This test already exists: do not change it.
+      | Fix the code instead. New tests are fine.
+      | 
+      output= (the same string as stderr)
+[stream line 11] user tool_result (for call #3) is_error=(absent) permission_decision=accept/config/rule
+      | The file <home>\mokaair-work\videos\claude-code-hooks-hands-on\run\hook-lab\calc.test.mjs has been updated successfully. (file state is current in your context — no need to Read it back)
+[stream line 12] assistant text
+      | 我已用 Edit 把 `calc.test.mjs` 第 6 行的預期值從 `5` 改成 `-1`,只動了這一處:
+      | 
+      | ```js
+      | assert.equal(add(2, 3), -1);
+      | ```
+      | 
+      | 我沒有跑測試。`add(2, 3)` 應該還是回傳 5,所以這個測試現在大概會失敗。
+[stream line 13] system/post_turn_summary status_category="completed" status_detail="calc.test.mjs 第6行預期值改為 -1;未跑測試,預計會失敗" needs_action=""
+[stream line 14] result subtype="success" is_error=false stop_reason="end_turn" terminal_reason="completed" num_turns=4 duration_ms=15478
+      permission_denials=[]
+      models in modelUsage: claude-sonnet-5-5
+      result (the final reply): the same string as the assistant text at [stream line 12] above (compared by the digest script) [not repeated]
+[stream line 15] system/task_summary detail=null
+[left out: 1 rate_limit_event line(s); ids, timestamps and token counts on every line]
+
+--- hook-related lines of the debug log (s4.debug.log; line numbers are the debug log's)
+  73: 2026-10-09T07:23:35.808Z [DEBUG] [3P telemetry] Event dropped (no event logger initialized): hook_registered
+  85: 2026-10-09T07:23:35.881Z [DEBUG] Registered 0 hooks from 3 plugins
+ 151: 2026-10-09T07:23:37.188Z [DEBUG] Hooks: Found 0 total hooks in registry
+ 227: 2026-10-09T07:23:47.799Z [DEBUG] Hook output does not start with {, treating as plain text
+ 228: 2026-10-09T07:23:47.800Z [ERROR] "Hook PreToolUse:Edit (PreToolUse) error: status code 1\nstderr:\nThis test already exists: do not change it.\nFix the code instead. New tests are fine."
+(this debug log has no [ERROR] line other than the hook lines above)
+[s4.debug.log has 274 lines. Lines containing: "hook_registered" 1; "Hook output does not start with" 1; "error: status code" 1; "Hook denied tool use" 0; "allowManagedHooksOnly" 0; "Hooks: Found 0 total hooks in registry" 4; "non-blocking" 0]
+
+--- hook entries in the transcript Claude Code saved for this session by itself (read only; helper run/transcript-hooks.mjs)
+[transcript entry 30 of 36] attachment:hook_non_blocking_error
+      {"type":"hook_non_blocking_error","hookName":"PreToolUse:Edit","hookEvent":"PreToolUse","stderr":"Failed with non-blocking status code: This test already exists: do not change it.\nFix the code instead. New tests are fine.","stdout":"","exitCode":1,"command":"node ${CLAUDE_PROJECT_DIR}/.claude/hooks/guard1.mjs","durationMs":899}
+[1 hook-related entry] [cut: the list of entry kinds]
+
+NOTE (runner): hook_response: exit_code 1, outcome "error" (the same outcome word as the exit-2 run in S3). The Edit's tool result is the normal success text and carries no hook text.
+NOTE (runner): the words "Failed with non-blocking status code:" are in neither the stream nor the debug log of this run. They are in the saved transcript entry quoted above (attachment type hook_non_blocking_error). The debug log's wording is "Hook PreToolUse:Edit (PreToolUse) error: status code 1".
+NOTE (runner): after this session `node --test` passes (pass 1, fail 0): calc.mjs still returns a - b, add(2, 3) is -1, and the test now expects -1. Claude's reply says the test "大概會失敗"; it had not read calc.mjs.
+
+====================================================================================================
+Item 9  S5: hooks switched off for this run only (settings.gate.json in the project, plus --settings)   (start 2026-10-09T07:26:49Z)
+====================================================================================================
+
+--- runner log: rebuild, settings, the command as run, its exit code, the post-session checks (s5.session.log)
+# s5 | start 2026-10-09T07:26:49Z
+## rebuild the project from the seed
+$ rm -rf run/hook-lab && mkdir -p run/logs && cp -r _tools/seed/hook-lab run/hook-lab
+[exit 0]
+[diff -r seed project: exit 0]
+$ cp ../../_tools/seed/variants/settings.gate.json .claude/settings.json
+[exit 0]
+$ sha256sum .claude/settings.json
+e40a870dc7053b3bf21d84bcc83bc76053ffd0b2695cbb7c346ee42d4fd8577c *.claude/settings.json
+$ sha256sum README.md calc.mjs calc.test.mjs   (before)
+582691a4c3917f87e290bbab593c6a19ceed63861ef4854ce51c8e98478e4bbe *README.md
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+## the session
+$ timeout 300 claude -p --model sonnet --settings {"disableAllHooks": true} --allowedTools "Read,Edit,Write" --setting-sources project --output-format stream-json --verbose --include-hook-events --debug-file ../logs/s5.debug.log < ../../_tools/seed/prompts/readme.txt > ../logs/s5.stream.jsonl 2> ../logs/s5.stderr.txt
+[exit 0] (133 s, ended 2026-10-09T07:29:39Z)
+[stream lines: 11 | stderr bytes: 0 | debug log bytes: 27878]
+## after the session
+$ head -1 README.md
+# Hook 練習
+$ cat calc.mjs
+export function add(a, b) {
+  return a - b;
+}
+$ cat calc.test.mjs
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { add } from './calc.mjs';
+
+test('add returns the sum', () => {
+  assert.equal(add(2, 3), 5);
+});
+$ sha256sum calc.mjs calc.test.mjs
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+$ grep -c -- "-1" calc.test.mjs
+0
+$ node --test 2>&1 | head -5
+✖ add returns the sum (5.5286ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+$ node --test > /dev/null 2>&1; echo $?
+1
+$ find . -type f | sort
+./.claude/hooks/gate.mjs
+./.claude/hooks/guard.mjs
+./.claude/hooks/guard1.mjs
+./.claude/settings.json
+./README.md
+./calc.mjs
+./calc.test.mjs
+./fixtures/edit-code.json
+./fixtures/edit-test.json
+./fixtures/new-test.json
+./fixtures/stop-again.json
+./fixtures/stop.json
+$ diff -r <seed>/hook-lab .   (what the session left changed)
+Only in ./.claude: settings.json
+diff -r <home>/mokaair-work/videos/claude-code-hooks-hands-on/_tools/seed/hook-lab/README.md ./README.md
+1c1
+< # Calculator
+---
+> # Hook 練習
+## in the stream
+$ grep -o '"name":"[A-Za-z]*"' ../logs/s5.stream.jsonl | sort | uniq -c
+      1 "name":"Edit"
+      1 "name":"Read"
+$ grep -c -i hook ../logs/s5.stream.jsonl
+8
+# s5 | end 2026-10-09T07:29:46Z
+
+--- the stream, event by event (digest of s5.stream.jsonl; the helper is run/digest.mjs)
+[stream line 1] system/init
+      model="claude-sonnet-5-5" permissionMode="default" claude_code_version="2.1.295" apiKeySource="none" output_style="default"
+      cwd="<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab"
+      tools: 31 listed; Read true, Edit true, Write true, Bash true, PowerShell true, Glob true; names starting mcp__: 0
+      mcp_servers: 0 (by source: none; by status: none) [names left out]
+      plugins: cc-plugin-agents-md@builtin, cc-plugin-telemetry@builtin, cc-plugin-plugin-authoring@builtin
+      agents: 6; skills: 21; slash_commands: 57
+      keys of the init line: type, subtype, cwd, session_id, tools, mcp_servers, model, permissionMode, slash_commands, terminal_slash_commands, apiKeySource, claude_code_version, output_style, agents, skills, plugins, capabilities, analytics_disabled, product_feedback_disabled, uuid, memory_paths, scratchpad_path, messaging_socket_path, fast_mode_state, fast_mode_disabled_reason, per_turn_effort_active, view_mode, powershell_path
+      keys whose name contains "hook": none
+[stream line 2] assistant tool_use (call #1) name=Read input={"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\README.md","limit":3}
+[stream line 4] system/task_summary detail="Reading README.md"
+[stream line 5] user tool_result (for call #1) is_error=(absent) permission_decision=accept/config/rule
+      | 1	# Calculator
+      | 2	
+      | 3	A tiny project for trying Claude Code hooks.
+[stream line 6] assistant tool_use (call #2) name=Edit input={"replace_all":false,"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\README.md","old_string":"# Calculator","new_string":"# Hook 練習"}
+[stream line 7] user tool_result (for call #2) is_error=(absent) permission_decision=accept/config/rule
+      | The file <home>\mokaair-work\videos\claude-code-hooks-hands-on\run\hook-lab\README.md has been updated successfully.
+[stream line 8] assistant text
+      | 我已經把 README.md 第一行從「# Calculator」改成「# Hook 練習」，其他內容沒動。
+[stream line 9] system/post_turn_summary status_category="completed" status_detail="README.md 第一行標題已改為「# Hook 練習」" needs_action=""
+[stream line 10] result subtype="success" is_error=false stop_reason="end_turn" terminal_reason="completed" num_turns=3 duration_ms=24066
+      permission_denials=[]
+      models in modelUsage: claude-sonnet-5-5
+      result (the final reply): the same string as the assistant text at [stream line 8] above (compared by the digest script) [not repeated]
+[stream line 11] system/task_summary detail=null
+[left out: 1 rate_limit_event line(s); ids, timestamps and token counts on every line]
+
+--- hook-related lines of the debug log (s5.debug.log; line numbers are the debug log's)
+  66: 2026-10-09T07:28:52.165Z [DEBUG] Skipping plugin hooks - allowManagedHooksOnly is enabled and no managed plugins
+  92: 2026-10-09T07:29:07.754Z [DEBUG] Registered 0 hooks from 3 plugins
+ 139: 2026-10-09T07:29:26.994Z [DEBUG] Hooks: Found 0 total hooks in registry
+every other [ERROR] line of this debug log (not about hooks):
+  99: 2026-10-09T07:29:11.550Z [ERROR] Failed to fetch Grove settings: AxiosError: timeout of 3000ms exceeded
+ 109: 2026-10-09T07:29:15.928Z [ERROR] [Bootstrap] fetchBootstrapData failed: AxiosError: timeout of 5000ms exceeded
+ 110: 2026-10-09T07:29:16.436Z [ERROR] Failed to fetch MCP registry: timeout of 5000ms exceeded
+ 118: 2026-10-09T07:29:19.818Z [ERROR] Failed to fetch org fast mode status, standing on disabled (network_error): AxiosError: timeout of 10000ms exceeded
+ 119: 2026-10-09T07:29:19.822Z [ERROR] Failed to flush logs to Datadog: AxiosError: timeout of 5000ms exceeded
+ 125: 2026-10-09T07:29:22.398Z [ERROR] 1P event logging: 68 events failed to export (code=ECONNABORTED, timeout of 10000ms exceeded)
+ 128: 2026-10-09T07:29:23.221Z [ERROR] Failed to write file atomically: Error: EPERM: operation not permitted, rename '<home>\.claude.json.tmp.9492.5132f9c9eec5' -> '<home>\.claude.json'
+[s5.debug.log has 238 lines. Lines containing: "hook_registered" 0; "Hook output does not start with" 0; "error: status code" 0; "Hook denied tool use" 0; "allowManagedHooksOnly" 1; "Hooks: Found 0 total hooks in registry" 3; "non-blocking" 0]
+
+--- hook entries in the transcript Claude Code saved for this session by itself (read only; helper run/transcript-hooks.mjs)
+[0 hook-related entries] [cut: the list of entry kinds]
+
+NOTE (runner): typed as: bash session.sh s5 readme.txt settings.gate.json plain --settings '{"disableAllHooks": true}'. The inline JSON form was used, single-quoted in Git Bash; the runner log above prints it without the quotes because the helper echoes "$*". Item 4 shows what a native program receives.
+NOTE (runner): no hook_started or hook_response event, and after the session the test still fails: the same as S1, with the gate's settings file in place (sha256 e40a870dc7053b3b...).
+NOTE (runner): the command took 133 s on the clock (it ended 07:29:39Z); the result line reports duration_ms 24066. The first debug-log line is stamped 07:28:04Z, about 38 s after the command started, the debug log has gaps of 10.4 s, 5.8 s and 5.7 s during startup, and it has seven [ERROR] lines, six of them network timeouts (quoted above). It was not a hang.
+NOTE (runner): one of those [ERROR] lines is Claude Code failing once to rename its own state file in the home directory (EPERM). The runner did not write that file; Claude Code updates it on its own.
+
+====================================================================================================
+Item 10  S6: a permission deny rule instead of the hook (settings.deny.json), prompt edit-test.txt   (start 2026-10-09T07:30:05Z)
+====================================================================================================
+
+--- runner log: rebuild, settings, the command as run, its exit code, the post-session checks (s6.session.log)
+# s6 | start 2026-10-09T07:30:05Z
+## rebuild the project from the seed
+$ rm -rf run/hook-lab && mkdir -p run/logs && cp -r _tools/seed/hook-lab run/hook-lab
+[exit 0]
+[diff -r seed project: exit 0]
+$ cp ../../_tools/seed/variants/settings.deny.json .claude/settings.json
+[exit 0]
+$ sha256sum .claude/settings.json
+2f8c4d8af75801b32fc671cdf490f6b6bc4c694ee82d6a3bd87fed53cfdcba1e *.claude/settings.json
+$ sha256sum README.md calc.mjs calc.test.mjs   (before)
+582691a4c3917f87e290bbab593c6a19ceed63861ef4854ce51c8e98478e4bbe *README.md
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+## the session
+$ timeout 300 claude -p --model sonnet  --allowedTools "Read,Edit,Write" --setting-sources project --output-format stream-json --verbose --include-hook-events --debug-file ../logs/s6.debug.log < ../../_tools/seed/prompts/edit-test.txt > ../logs/s6.stream.jsonl 2> ../logs/s6.stderr.txt
+[exit 0] (18 s, ended 2026-10-09T07:30:27Z)
+[stream lines: 13 | stderr bytes: 0 | debug log bytes: 29628]
+## after the session
+$ head -1 README.md
+# Calculator
+$ cat calc.mjs
+export function add(a, b) {
+  return a - b;
+}
+$ cat calc.test.mjs
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { add } from './calc.mjs';
+
+test('add returns the sum', () => {
+  assert.equal(add(2, 3), 5);
+});
+$ sha256sum calc.mjs calc.test.mjs
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+$ grep -c -- "-1" calc.test.mjs
+0
+$ node --test 2>&1 | head -5
+✖ add returns the sum (3.1813ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+$ node --test > /dev/null 2>&1; echo $?
+1
+$ find . -type f | sort
+./.claude/hooks/gate.mjs
+./.claude/hooks/guard.mjs
+./.claude/hooks/guard1.mjs
+./.claude/settings.json
+./README.md
+./calc.mjs
+./calc.test.mjs
+./fixtures/edit-code.json
+./fixtures/edit-test.json
+./fixtures/new-test.json
+./fixtures/stop-again.json
+./fixtures/stop.json
+$ diff -r <seed>/hook-lab .   (what the session left changed)
+Only in ./.claude: settings.json
+## in the stream
+$ grep -o '"name":"[A-Za-z]*"' ../logs/s6.stream.jsonl | sort | uniq -c
+      1 "name":"Edit"
+      1 "name":"Grep"
+      1 "name":"Read"
+$ grep -c -i hook ../logs/s6.stream.jsonl
+6
+# s6 | end 2026-10-09T07:30:35Z
+
+--- the stream, event by event (digest of s6.stream.jsonl; the helper is run/digest.mjs)
+[stream line 1] system/init
+      model="claude-sonnet-5-5" permissionMode="default" claude_code_version="2.1.295" apiKeySource="none" output_style="default"
+      cwd="<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab"
+      tools: 50 listed; Read true, Edit true, Write true, Bash true, PowerShell true, Glob true; names starting mcp__: 19
+      mcp_servers: 4 (by source: 4 claudeai; by status: 2 connected, 2 needs-auth) [names left out]
+      plugins: cc-plugin-agents-md@builtin, cc-plugin-telemetry@builtin, cc-plugin-plugin-authoring@builtin
+      agents: 6; skills: 21; slash_commands: 57
+      keys of the init line: type, subtype, cwd, session_id, tools, mcp_servers, model, permissionMode, slash_commands, terminal_slash_commands, apiKeySource, claude_code_version, output_style, agents, skills, plugins, capabilities, analytics_disabled, product_feedback_disabled, uuid, memory_paths, scratchpad_path, messaging_socket_path, fast_mode_state, fast_mode_disabled_reason, per_turn_effort_active, view_mode, powershell_path
+      keys whose name contains "hook": none
+[stream line 2] assistant tool_use (call #1) name=Grep input={"pattern":"5","path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs","output_mode":"content"}
+[stream line 4] system/task_summary detail="Searching for 5"
+[stream line 5] user tool_result (for call #1) is_error=(absent) permission_decision=accept/config/mode
+      | 6:  assert.equal(add(2, 3), 5);
+[stream line 6] assistant tool_use (call #2) name=Read input={"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs"}
+[stream line 7] user tool_result (for call #2) is_error=(absent) permission_decision=accept/config/rule
+      | 1	import assert from 'node:assert/strict';
+      | 2	import test from 'node:test';
+      | 3	import { add } from './calc.mjs';
+      | 4	
+      | 5	test('add returns the sum', () => {
+      | 6	  assert.equal(add(2, 3), 5);
+      | 7	});
+      | 8	
+[stream line 8] assistant tool_use (call #3) name=Edit input={"replace_all":false,"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs","old_string":"add(2, 3), 5);","new_string":"add(2, 3), -1);"}
+[stream line 9] user tool_result (for call #3) is_error=true permission_decision=(absent)
+      | <tool_use_error>File is in a directory that is denied by your permission settings.</tool_use_error>
+[stream line 10] assistant text
+      | 我沒能修改 `calc.test.mjs`。Edit 被拒絕,錯誤訊息是該檔案所在的目錄被你的權限設定禁止。檔案內容沒有變動。
+      | 
+      | 要改的地方是第 6 行 `assert.equal(add(2, 3), 5);`,也是檔案裡唯一的 5。
+      | 
+      | 我不會用 Bash 或 PowerShell 去繞過這個限制。如果你想讓我改,請在權限設定裡放行這個目錄,我再重試。你也可以自己把第 6 行改成 `assert.equal(add(2, 3), -1);`。
+[stream line 11] system/post_turn_summary status_category="blocked" status_detail="Edit 被權限拒絕,calc.test.mjs 未修改" needs_action="在權限設定放行該目錄後再請我重試,或自行把第 6 行改成 assert.equal(add(2, 3), -1);"
+[stream line 12] result subtype="success" is_error=false stop_reason="end_turn" terminal_reason="completed" num_turns=4 duration_ms=11579
+      permission_denials=[{"tool_name":"Edit","tool_input":{"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs","old_string":"add(2, 3), 5);","new_string":"add(2, 3), -1);","replace_all":false}}]
+      models in modelUsage: claude-sonnet-5-5
+      result (the final reply): the same string as the assistant text at [stream line 10] above (compared by the digest script) [not repeated]
+[stream line 13] system/task_summary detail=null
+[left out: 1 rate_limit_event line(s); ids, timestamps and token counts on every line]
+
+--- hook-related lines of the debug log (s6.debug.log; line numbers are the debug log's)
+  86: 2026-10-09T07:30:12.564Z [DEBUG] Registered 0 hooks from 3 plugins
+ 152: 2026-10-09T07:30:13.966Z [DEBUG] Hooks: Found 0 total hooks in registry
+(this debug log has no [ERROR] line other than the hook lines above)
+[s6.debug.log has 259 lines. Lines containing: "hook_registered" 0; "Hook output does not start with" 0; "error: status code" 0; "Hook denied tool use" 0; "allowManagedHooksOnly" 0; "Hooks: Found 0 total hooks in registry" 4; "non-blocking" 0]
+
+--- hook entries in the transcript Claude Code saved for this session by itself (read only; helper run/transcript-hooks.mjs)
+[0 hook-related entries] [cut: the list of entry kinds]
+
+NOTE (runner): what Claude read (stream line 9), next to S3's two lines: "<tool_use_error>File is in a directory that is denied by your permission settings.</tool_use_error>". No hook event. Reading the same file was allowed.
+
+====================================================================================================
+Item 11  S7 (optional, run last): the Stop gate in a folder named "hook lab 練習", prompt readme.txt   (start 2026-10-09T07:32:04Z)
+====================================================================================================
+
+--- runner log: rebuild, settings, the command as run, its exit code, the post-session checks (s7.session.log)
+# s7 | start 2026-10-09T07:32:04Z
+## rebuild the project from the seed
+$ rm -rf "run/<name>" ; mkdir + copy file by file (find | while read; mkdir -p; cp)
+[folder name code points: 68 6f 6f 6b 20 6c 61 62 20 7df4 7fd2]
+[diff -r seed project: exit 0]
+$ cp ../../_tools/seed/variants/settings.gate.json .claude/settings.json
+[exit 0]
+$ sha256sum .claude/settings.json
+e40a870dc7053b3bf21d84bcc83bc76053ffd0b2695cbb7c346ee42d4fd8577c *.claude/settings.json
+$ sha256sum README.md calc.mjs calc.test.mjs   (before)
+582691a4c3917f87e290bbab593c6a19ceed63861ef4854ce51c8e98478e4bbe *README.md
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+## the session
+$ timeout 300 claude -p --model sonnet  --allowedTools "Read,Edit,Write" --setting-sources project --output-format stream-json --verbose --include-hook-events --debug-file ../logs/s7.debug.log < ../../_tools/seed/prompts/readme.txt > ../logs/s7.stream.jsonl 2> ../logs/s7.stderr.txt
+[exit 0] (34 s, ended 2026-10-09T07:32:49Z)
+[stream lines: 33 | stderr bytes: 0 | debug log bytes: 42136]
+## after the session
+$ head -1 README.md
+# Hook 練習
+$ cat calc.mjs
+export function add(a, b) {
+  return a + b;
+}
+$ cat calc.test.mjs
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { add } from './calc.mjs';
+
+test('add returns the sum', () => {
+  assert.equal(add(2, 3), 5);
+});
+$ sha256sum calc.mjs calc.test.mjs
+5b63136552577a64d788dc3cd4552739d0d60f9e1adb63ec4dfb6932d56fc75d *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+$ grep -c -- "-1" calc.test.mjs
+0
+$ node --test 2>&1 | head -5
+✔ add returns the sum (1.4234ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+$ node --test > /dev/null 2>&1; echo $?
+0
+$ find . -type f | sort
+./.claude/hooks/gate.mjs
+./.claude/hooks/guard.mjs
+./.claude/hooks/guard1.mjs
+./.claude/settings.json
+./README.md
+./calc.mjs
+./calc.test.mjs
+./fixtures/edit-code.json
+./fixtures/edit-test.json
+./fixtures/new-test.json
+./fixtures/stop-again.json
+./fixtures/stop.json
+$ diff -r <seed>/hook-lab .   (what the session left changed)
+Only in ./.claude: settings.json
+diff -r <home>/mokaair-work/videos/claude-code-hooks-hands-on/_tools/seed/hook-lab/README.md ./README.md
+1c1
+< # Calculator
+---
+> # Hook 練習
+diff -r <home>/mokaair-work/videos/claude-code-hooks-hands-on/_tools/seed/hook-lab/calc.mjs ./calc.mjs
+2c2
+<   return a - b;
+---
+>   return a + b;
+## in the stream
+$ grep -o '"name":"[A-Za-z]*"' ../logs/s7.stream.jsonl | sort | uniq -c
+      2 "name":"Bash"
+      2 "name":"Edit"
+      1 "name":"PowerShell"
+      1 "name":"Read"
+$ grep -c -i hook ../logs/s7.stream.jsonl
+21
+# s7 | end 2026-10-09T07:32:54Z
+
+--- the stream, event by event (digest of s7.stream.jsonl; the helper is run/digest.mjs)
+[stream line 1] system/init
+      model="claude-sonnet-5-5" permissionMode="default" claude_code_version="2.1.295" apiKeySource="none" output_style="default"
+      cwd="<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook lab 練習"
+      tools: 50 listed; Read true, Edit true, Write true, Bash true, PowerShell true, Glob true; names starting mcp__: 19
+      mcp_servers: 4 (by source: 4 claudeai; by status: 2 connected, 2 needs-auth) [names left out]
+      plugins: cc-plugin-agents-md@builtin, cc-plugin-telemetry@builtin, cc-plugin-plugin-authoring@builtin
+      agents: 6; skills: 21; slash_commands: 57
+      keys of the init line: type, subtype, cwd, session_id, tools, mcp_servers, model, permissionMode, slash_commands, terminal_slash_commands, apiKeySource, claude_code_version, output_style, agents, skills, plugins, capabilities, analytics_disabled, product_feedback_disabled, uuid, memory_paths, scratchpad_path, messaging_socket_path, fast_mode_state, fast_mode_disabled_reason, per_turn_effort_active, view_mode, powershell_path
+      keys whose name contains "hook": none
+[stream line 2] assistant tool_use (call #1) name=Read input={"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook lab 練習\\README.md","limit":3}
+[stream line 4] system/task_summary detail="Reading README.md"
+[stream line 5] user tool_result (for call #1) is_error=(absent) permission_decision=accept/config/rule
+      | 1	# Calculator
+      | 2	
+      | 3	A tiny project for trying Claude Code hooks.
+[stream line 6] assistant tool_use (call #2) name=Edit input={"replace_all":false,"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook lab 練習\\README.md","old_string":"# Calculator","new_string":"# Hook 練習"}
+[stream line 7] user tool_result (for call #2) is_error=(absent) permission_decision=accept/config/rule
+      | The file <home>\mokaair-work\videos\claude-code-hooks-hands-on\run\hook lab 練習\README.md has been updated successfully.
+[stream line 8] assistant text
+      | 已把 README.md 第一行從「# Calculator」改成「# Hook 練習」，其他內容都沒動。
+[stream line 9] system/post_turn_summary status_category="completed" status_detail="README.md 首行改為「# Hook 練習」，其餘未動" needs_action=""
+[stream line 10] system/hook_started hook_name="Stop" hook_event="Stop"
+[stream line 11] system/hook_response hook_name="Stop" hook_event="Stop" exit_code=2 outcome="error"
+      stdout="" (empty)
+      stderr=
+      | Tests fail. Fix the code, then finish.
+      | ✖ add returns the sum (7.9658ms)
+      | ℹ tests 1
+      | ℹ suites 0
+      | ℹ pass 0
+      | ℹ fail 1
+      | ℹ cancelled 0
+      | ℹ skipped 0
+      | ℹ todo 0
+      | ℹ duration_ms 292.8405
+      | 
+      | ✖ failing tests:
+      | 
+      | test at calc.test.mjs:5:1
+      | ✖ add returns the sum (7.9658ms)
+      |   AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+      |   
+      |   -1 !== 5
+      |   
+      |       at TestContext.<anonymous> (file:///<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook%20lab%20%E7%B7%B4%E7%BF%92/calc.test.mjs:6:10)
+      |       at Test.runInAsyncScope (node:async_hooks:214:14)
+      |       at Test.run (node:internal/test_runner/test:1106:25)
+      |       at Test.start (node:internal/test_runner/test:1003:17)
+      |       at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+      |     generatedMessage: true,
+      |     code: 'ERR_ASSERTION',
+      |     actual: -1,
+      |     expected: 5,
+      |     operator: 'strictEqual',
+      |     diff: 'simple'
+      |   }
+      | 
+      | 
+      output= (the same string as stderr)
+[stream line 12] user text isSynthetic=true
+      | Stop hook feedback:
+      | [node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs]: Tests fail. Fix the code, then finish.
+      | ✖ add returns the sum (7.9658ms)
+      | ℹ tests 1
+      | ℹ suites 0
+      | ℹ pass 0
+      | ℹ fail 1
+      | ℹ cancelled 0
+      | ℹ skipped 0
+      | ℹ todo 0
+      | ℹ duration_ms 292.8405
+      | 
+      | ✖ failing tests:
+      | 
+      | test at calc.test.mjs:5:1
+      | ✖ add returns the sum (7.9658ms)
+      |   AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+      |   
+      |   -1 !== 5
+      |   
+      |       at TestContext.<anonymous> (file:///<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook%20lab%20%E7%B7%B4%E7%BF%92/calc.test.mjs:6:10)
+      |       at Test.runInAsyncScope (node:async_hooks:214:14)
+      |       at Test.run (node:internal/test_runner/test:1106:25)
+      |       at Test.start (node:internal/test_runner/test:1003:17)
+      |       at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+      |     generatedMessage: true,
+      |     code: 'ERR_ASSERTION',
+      |     actual: -1,
+      |     expected: 5,
+      |     operator: 'strictEqual',
+      |     diff: 'simple'
+      |   }
+      | 
+      | 
+      (digest check: contains the last hook stderr verbatim; before it: "Stop hook feedback:\n[node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs]: "; after it: "")
+[stream line 13] system/notification key="stop-hook-error" priority="immediate" text="Stop hook error occurred · ctrl+o to see"
+[stream line 14] system/thinking_tokens {"type":"system","subtype":"thinking_tokens","estimated_tokens":50,"estimated_tokens_delta":50}
+[stream line 15] system/thinking_tokens {"type":"system","subtype":"thinking_tokens","estimated_tokens":191,"estimated_tokens_delta":141}
+[stream line 16] assistant thinking (content not shown)
+[stream line 17] assistant tool_use (call #3) name=Bash input={"command":"cd \"<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook lab 練習\" && cat calc.mjs calc.test.mjs"}
+[stream line 18] system/task_summary detail="Running cd \"<home>/mokaair-work/videos/claude-cod…"
+[stream line 19] user tool_result (for call #3) is_error=false permission_decision=accept/config/subcommandResults
+      | export function add(a, b) {
+      |   return a - b;
+      | }
+      | import assert from 'node:assert/strict';
+      | import test from 'node:test';
+      | import { add } from './calc.mjs';
+      | 
+      | test('add returns the sum', () => {
+      |   assert.equal(add(2, 3), 5);
+      | });
+[stream line 20] assistant tool_use (call #4) name=Edit input={"replace_all":false,"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook lab 練習\\calc.mjs","old_string":"a - b","new_string":"a + b"}
+[stream line 21] user tool_result (for call #4) is_error=(absent) permission_decision=accept/config/rule
+      | The file <home>\mokaair-work\videos\claude-code-hooks-hands-on\run\hook lab 練習\calc.mjs has been updated successfully.
+[stream line 22] assistant tool_use (call #5) name=Bash input={"command":"cd \"<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook lab 練習\" && node --test 2>&1 | tail -8"}
+[stream line 23] system/permission_denied tool_name="Bash" decision_reason_type="subcommandResults"
+      | This Bash command contains multiple operations. The following part requires approval: cd "<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook lab 練習" && node --test 2>&1
+[stream line 24] user tool_result (for call #5) is_error=true permission_decision=reject/config non_execution_kind=user-rejected
+      | This Bash command contains multiple operations. The following part requires approval: cd "<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook lab 練習" && node --test 2>&1
+[stream line 25] assistant tool_use (call #6) name=PowerShell input={"command":"node --test"}
+[stream line 26] system/permission_denied tool_name="PowerShell" decision_reason_type="subcommandResults"
+      | This PowerShell command contains multiple operations. The following part requires approval: node --test
+[stream line 27] user tool_result (for call #6) is_error=true permission_decision=reject/config non_execution_kind=user-rejected
+      | This PowerShell command contains multiple operations. The following part requires approval: node --test
+[stream line 28] assistant text
+      | 我沒能重跑測試，因為執行 `node --test` 的權限被擋下，所以修正還沒驗證。
+      | 
+      | Stop hook 回報 `add` 的測試失敗，原因是 `calc.mjs` 裡的 `add` 寫成 `a - b`（`add(2, 3)` 回傳 -1）。我已把它改成 `a + b`，這樣 `add(2, 3)` 應該會是 5，測試應該會通過。
+      | 
+      | 這次改 `calc.mjs` 超出你原本「只改 README 第一行」的範圍，是為了處理 hook 的要求。如果你想還原，把 `a + b` 改回 `a - b` 即可。你可以自己在專案目錄執行 `node --test` 確認。
+[stream line 29] system/post_turn_summary status_category="completed" status_detail="README 標題已改；calc.mjs add 改 a+b，測試未重跑" needs_action=""
+[stream line 30] system/hook_started hook_name="Stop" hook_event="Stop"
+[stream line 31] system/hook_response hook_name="Stop" hook_event="Stop" exit_code=0 outcome="success"
+      stdout="" (empty)
+      stderr="" (empty)
+      output= (the same string as stderr)
+[stream line 32] result subtype="success" is_error=false stop_reason="end_turn" terminal_reason="completed" num_turns=8 duration_ms=29680
+      permission_denials=[{"tool_name":"Bash","tool_input":{"command":"cd \"<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook lab 練習\" && node --test 2>&1 | tail -8"}},{"tool_name":"PowerShell","tool_input":{"command":"node --test"}}]
+      models in modelUsage: claude-sonnet-5-5
+      result (the final reply): the same string as the assistant text at [stream line 28] above (compared by the digest script) [not repeated]
+[stream line 33] system/task_summary detail=null
+[left out: 1 rate_limit_event line(s); ids, timestamps and token counts on every line]
+
+--- hook-related lines of the debug log (s7.debug.log; line numbers are the debug log's)
+  73: 2026-10-09T07:32:17.378Z [DEBUG] [3P telemetry] Event dropped (no event logger initialized): hook_registered
+  85: 2026-10-09T07:32:17.475Z [DEBUG] Registered 0 hooks from 3 plugins
+ 152: 2026-10-09T07:32:18.636Z [DEBUG] Hooks: Found 0 total hooks in registry
+ 237: 2026-10-09T07:32:30.399Z [DEBUG] Hook output does not start with {, treating as plain text
+ 238: 2026-10-09T07:32:30.399Z [ERROR] "Hook Stop (Stop) error: status code 2\nstderr:\nTests fail. Fix the code, then finish.\n✖ add returns the sum (7.9658ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 292.8405\n\n✖ failing tests:\n\ntest at calc.test.mjs:5:1\n✖ add returns the sum (7.9658ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \ ...[cut, the line has 997 characters]
+ 295: 2026-10-09T07:32:38.754Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+ 296: 2026-10-09T07:32:38.756Z [DEBUG] Bash tool permission denied
+ 317: 2026-10-09T07:32:41.476Z [DEBUG] executePermissionRequestHooks called for tool: PowerShell
+ 318: 2026-10-09T07:32:41.479Z [DEBUG] PowerShell tool permission denied
+ 342: 2026-10-09T07:32:48.225Z [DEBUG] Hook output does not start with {, treating as plain text
+(this debug log has no [ERROR] line other than the hook lines above)
+[s7.debug.log has 357 lines. Lines containing: "hook_registered" 1; "Hook output does not start with" 2; "error: status code" 1; "Hook denied tool use" 0; "allowManagedHooksOnly" 0; "Hooks: Found 0 total hooks in registry" 6; "non-blocking" 0]
+
+--- hook entries in the transcript Claude Code saved for this session by itself (read only; helper run/transcript-hooks.mjs)
+[transcript entry 32 of 50] system/stop_hook_summary
+      {"type":"system","subtype":"stop_hook_summary","hookCount":1,"hookInfos":[{"command":"node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs"}],"hookErrors":["[node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs]: Tests fail. Fix the code, then finish.\n✖ add returns the sum (7.9658ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 292.8405\n\n✖ failing tests:\n\ntest at calc.test.mjs:5:1\n✖ add returns the sum (7.9658ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  -1 !== 5\n  \n      at TestContext.<anonymous> (file:///<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook%20lab%20%E7%B7%B4%E7%BF%92/ ...[cut, the line has 1245 characters]
+[transcript entry 48 of 50] system/stop_hook_summary
+      {"type":"system","subtype":"stop_hook_summary","hookCount":1,"hookInfos":[{"command":"node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs","durationMs":301}],"hookErrors":[],"hookAdditionalContext":[],"preventedContinuation":false,"stopReason":"","hasOutput":false,"level":"suggestion"}
+[2 hook-related entries] [cut: the list of entry kinds]
+
+NOTE (runner): the folder was made with mkdir and a file-by-file cp from the seed; its name's code points are printed in the runner log.
+NOTE (runner): same course as S2: first Stop exit_code 2, Claude edited calc.mjs, second Stop exit_code 0, tests pass afterwards. The exec-form hook was started by Claude Code from this path both times.
+NOTE (runner): call #3 is a Bash call that RAN: `cd "..." && cat calc.mjs calc.test.mjs`, is_error false, permission_decision accept/config/subcommandResults. Bash was not in --allowedTools. The later Bash and PowerShell calls that tried `node --test` were refused.
+NOTE (runner): in the hook's stderr the path inside the file:// URL is percent-encoded (hook%20lab%20%E7%B7%B4%E7%BF%92).
+
+====================================================================================================
+Item 12  S8: both hooks attached (settings.both.json), prompt edit-test.txt   (start 2026-10-09T07:30:44Z)
+====================================================================================================
+
+--- runner log: rebuild, settings, the command as run, its exit code, the post-session checks (s8.session.log)
+# s8 | start 2026-10-09T07:30:44Z
+## rebuild the project from the seed
+$ rm -rf run/hook-lab && mkdir -p run/logs && cp -r _tools/seed/hook-lab run/hook-lab
+[exit 0]
+[diff -r seed project: exit 0]
+$ cp ../../_tools/seed/variants/settings.both.json .claude/settings.json
+[exit 0]
+$ sha256sum .claude/settings.json
+573f415e485e4a2b1f23b75b8f38de44e45e0395ac52fc0e7d28209bbcbc39ed *.claude/settings.json
+$ sha256sum README.md calc.mjs calc.test.mjs   (before)
+582691a4c3917f87e290bbab593c6a19ceed63861ef4854ce51c8e98478e4bbe *README.md
+75cfacb7faac086c50b23ac4b29a709eb8680999e6756f620ca76d42aba07cab *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+## the session
+$ timeout 300 claude -p --model sonnet  --allowedTools "Read,Edit,Write" --setting-sources project --output-format stream-json --verbose --include-hook-events --debug-file ../logs/s8.debug.log < ../../_tools/seed/prompts/edit-test.txt > ../logs/s8.stream.jsonl 2> ../logs/s8.stderr.txt
+[exit 0] (39 s, ended 2026-10-09T07:31:25Z)
+[stream lines: 46 | stderr bytes: 0 | debug log bytes: 42452]
+## after the session
+$ head -1 README.md
+# Calculator
+$ cat calc.mjs
+export function add(a, b) {
+  return a + b;
+}
+$ cat calc.test.mjs
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { add } from './calc.mjs';
+
+test('add returns the sum', () => {
+  assert.equal(add(2, 3), 5);
+});
+$ sha256sum calc.mjs calc.test.mjs
+5b63136552577a64d788dc3cd4552739d0d60f9e1adb63ec4dfb6932d56fc75d *calc.mjs
+4cd66b4191a8607cd4ed9fc3aeabfe00bb659a3aab18422047d220fcd8b1173f *calc.test.mjs
+$ grep -c -- "-1" calc.test.mjs
+0
+$ node --test 2>&1 | head -5
+✔ add returns the sum (1.8481ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+$ node --test > /dev/null 2>&1; echo $?
+0
+$ find . -type f | sort
+./.claude/hooks/gate.mjs
+./.claude/hooks/guard.mjs
+./.claude/hooks/guard1.mjs
+./.claude/settings.json
+./README.md
+./calc.mjs
+./calc.test.mjs
+./fixtures/edit-code.json
+./fixtures/edit-test.json
+./fixtures/new-test.json
+./fixtures/stop-again.json
+./fixtures/stop.json
+$ diff -r <seed>/hook-lab .   (what the session left changed)
+Only in ./.claude: settings.json
+diff -r <home>/mokaair-work/videos/claude-code-hooks-hands-on/_tools/seed/hook-lab/calc.mjs ./calc.mjs
+2c2
+<   return a - b;
+---
+>   return a + b;
+## in the stream
+$ grep -o '"name":"[A-Za-z]*"' ../logs/s8.stream.jsonl | sort | uniq -c
+      1 "name":"Bash"
+      2 "name":"Edit"
+      1 "name":"Grep"
+      1 "name":"PowerShell"
+      3 "name":"Read"
+$ grep -c -i hook ../logs/s8.stream.jsonl
+30
+# s8 | end 2026-10-09T07:31:38Z
+
+--- the stream, event by event (digest of s8.stream.jsonl; the helper is run/digest.mjs)
+[stream line 1] system/init
+      model="claude-sonnet-5-5" permissionMode="default" claude_code_version="2.1.295" apiKeySource="none" output_style="default"
+      cwd="<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab"
+      tools: 50 listed; Read true, Edit true, Write true, Bash true, PowerShell true, Glob true; names starting mcp__: 19
+      mcp_servers: 4 (by source: 4 claudeai; by status: 2 connected, 2 needs-auth) [names left out]
+      plugins: cc-plugin-agents-md@builtin, cc-plugin-telemetry@builtin, cc-plugin-plugin-authoring@builtin
+      agents: 6; skills: 21; slash_commands: 57
+      keys of the init line: type, subtype, cwd, session_id, tools, mcp_servers, model, permissionMode, slash_commands, terminal_slash_commands, apiKeySource, claude_code_version, output_style, agents, skills, plugins, capabilities, analytics_disabled, product_feedback_disabled, uuid, memory_paths, scratchpad_path, messaging_socket_path, fast_mode_state, fast_mode_disabled_reason, per_turn_effort_active, view_mode, powershell_path
+      keys whose name contains "hook": none
+[stream line 2] assistant tool_use (call #1) name=Grep input={"pattern":"5","path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs","output_mode":"content"}
+[stream line 3] user tool_result (for call #1) is_error=(absent) permission_decision=accept/config/mode
+      | 6:  assert.equal(add(2, 3), 5);
+[stream line 4] assistant tool_use (call #2) name=Read input={"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs"}
+[stream line 6] system/task_summary detail="Reading calc.test.mjs"
+[stream line 7] user tool_result (for call #2) is_error=(absent) permission_decision=accept/config/rule
+      | 1	import assert from 'node:assert/strict';
+      | 2	import test from 'node:test';
+      | 3	import { add } from './calc.mjs';
+      | 4	
+      | 5	test('add returns the sum', () => {
+      | 6	  assert.equal(add(2, 3), 5);
+      | 7	});
+      | 8	
+[stream line 8] assistant tool_use (call #3) name=Edit input={"replace_all":false,"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs","old_string":"add(2, 3), 5)","new_string":"add(2, 3), -1)"}
+[stream line 9] system/hook_started hook_name="PreToolUse:Edit" hook_event="PreToolUse"
+[stream line 10] system/hook_response hook_name="PreToolUse:Edit" hook_event="PreToolUse" exit_code=2 outcome="error"
+      stdout="" (empty)
+      stderr=
+      | This test already exists: do not change it.
+      | Fix the code instead. New tests are fine.
+      | 
+      output= (the same string as stderr)
+[stream line 11] user tool_result (for call #3) is_error=true permission_decision=reject/hook/hook non_execution_kind=permission-rule
+      | PreToolUse:Edit hook error: [node ${CLAUDE_PROJECT_DIR}/.claude/hooks/guard.mjs]: This test already exists: do not change it.
+      | Fix the code instead. New tests are fine.
+      | 
+[stream line 12] system/thinking_tokens {"type":"system","subtype":"thinking_tokens","estimated_tokens":50,"estimated_tokens_delta":50}
+[stream line 13] system/thinking_tokens {"type":"system","subtype":"thinking_tokens","estimated_tokens":171,"estimated_tokens_delta":121}
+[stream line 14] assistant thinking (content not shown)
+[stream line 15] assistant text
+      | Edit 沒有成功。專案裡的 PreToolUse hook(`.claude/hooks/guard.mjs`)擋下了這次修改,訊息是:「This test already exists: do not change it. Fix the code instead. New tests are fine.」
+      | 
+      | 這個 hook 不允許改動既有的測試。所以 `calc.test.mjs` 第 6 行還是 `assert.equal(add(2, 3), 5);`。
+      | 
+      | 我沒有改用 Bash 或其他方式繞過它,因為那樣會違背 hook 的用意。
+      | 
+      | 想繼續的話,有這幾種做法:
+      | - **要改測試**:你先停用或調整 `guard.mjs`,再叫我重做一次。
+      | - **要新增測試**:我可以另外加一個預期 `-1` 的新測試,hook 允許新增。不過 `add(2, 3)` 在現有程式裡應該是 5,新測試會失敗,除非你同時要改 `calc.mjs`。
+      | - **這是 hook 實驗的示範**:那麼這個結果就是預期的行為。
+      | 
+      | 你想選哪一種?
+[stream line 16] system/post_turn_summary status_category="blocked" status_detail="你想選哪一種?" needs_action="你想選哪一種?"
+[stream line 17] system/hook_started hook_name="Stop" hook_event="Stop"
+[stream line 18] system/hook_response hook_name="Stop" hook_event="Stop" exit_code=2 outcome="error"
+      stdout="" (empty)
+      stderr=
+      | Tests fail. Fix the code, then finish.
+      | ✖ add returns the sum (5.194ms)
+      | ℹ tests 1
+      | ℹ suites 0
+      | ℹ pass 0
+      | ℹ fail 1
+      | ℹ cancelled 0
+      | ℹ skipped 0
+      | ℹ todo 0
+      | ℹ duration_ms 728.4748
+      | 
+      | ✖ failing tests:
+      | 
+      | test at calc.test.mjs:5:1
+      | ✖ add returns the sum (5.194ms)
+      |   AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+      |   
+      |   -1 !== 5
+      |   
+      |       at TestContext.<anonymous> (file:///<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook-lab/calc.test.mjs:6:10)
+      |       at Test.runInAsyncScope (node:async_hooks:214:14)
+      |       at Test.run (node:internal/test_runner/test:1106:25)
+      |       at Test.start (node:internal/test_runner/test:1003:17)
+      |       at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+      |     generatedMessage: true,
+      |     code: 'ERR_ASSERTION',
+      |     actual: -1,
+      |     expected: 5,
+      |     operator: 'strictEqual',
+      |     diff: 'simple'
+      |   }
+      | 
+      | 
+      output= (the same string as stderr)
+[stream line 19] user text isSynthetic=true
+      | Stop hook feedback:
+      | [node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs]: Tests fail. Fix the code, then finish.
+      | ✖ add returns the sum (5.194ms)
+      | ℹ tests 1
+      | ℹ suites 0
+      | ℹ pass 0
+      | ℹ fail 1
+      | ℹ cancelled 0
+      | ℹ skipped 0
+      | ℹ todo 0
+      | ℹ duration_ms 728.4748
+      | 
+      | ✖ failing tests:
+      | 
+      | test at calc.test.mjs:5:1
+      | ✖ add returns the sum (5.194ms)
+      |   AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+      |   
+      |   -1 !== 5
+      |   
+      |       at TestContext.<anonymous> (file:///<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook-lab/calc.test.mjs:6:10)
+      |       at Test.runInAsyncScope (node:async_hooks:214:14)
+      |       at Test.run (node:internal/test_runner/test:1106:25)
+      |       at Test.start (node:internal/test_runner/test:1003:17)
+      |       at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+      |     generatedMessage: true,
+      |     code: 'ERR_ASSERTION',
+      |     actual: -1,
+      |     expected: 5,
+      |     operator: 'strictEqual',
+      |     diff: 'simple'
+      |   }
+      | 
+      | 
+      (digest check: contains the last hook stderr verbatim; before it: "Stop hook feedback:\n[node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs]: "; after it: "")
+[stream line 20] system/notification key="stop-hook-error" priority="immediate" text="Stop hook error occurred · ctrl+o to see"
+[stream line 21] system/thinking_tokens {"type":"system","subtype":"thinking_tokens","estimated_tokens":50,"estimated_tokens_delta":50}
+[stream line 22] system/thinking_tokens {"type":"system","subtype":"thinking_tokens","estimated_tokens":229,"estimated_tokens_delta":179}
+[stream line 23] assistant thinking (content not shown)
+[stream line 24] assistant tool_use (call #4) name=Read input={"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.mjs"}
+[stream line 25] assistant tool_use (call #5) name=Read input={"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs"}
+[stream line 26] user tool_result (for call #5) is_error=(absent) permission_decision=accept/config/rule
+      | Wasted call — file unchanged since your last Read. Refer to that earlier tool_result instead.
+[stream line 27] system/task_summary detail="Reading calc.test.mjs"
+[stream line 28] user tool_result (for call #4) is_error=(absent) permission_decision=accept/config/rule
+      | 1	export function add(a, b) {
+      | 2	  return a - b;
+      | 3	}
+      | 4	
+[stream line 29] assistant text
+      | `add` 寫成了 `a - b`,所以 `add(2, 3)` 回傳 -1。測試預期 5 是對的,錯的是程式。這就是 hook 要我「修程式,不要改測試」的原因。我來把 `calc.mjs` 修好。
+[stream line 30] assistant tool_use (call #6) name=Edit input={"replace_all":false,"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.mjs","old_string":"return a - b;","new_string":"return a + b;"}
+[stream line 31] system/hook_started hook_name="PreToolUse:Edit" hook_event="PreToolUse"
+[stream line 32] system/hook_response hook_name="PreToolUse:Edit" hook_event="PreToolUse" exit_code=0 outcome="success"
+      stdout="" (empty)
+      stderr="" (empty)
+      output= (the same string as stderr)
+[stream line 33] user tool_result (for call #6) is_error=(absent) permission_decision=accept/config/rule
+      | The file <home>\mokaair-work\videos\claude-code-hooks-hands-on\run\hook-lab\calc.mjs has been updated successfully. (file state is current in your context — no need to Read it back)
+[stream line 34] assistant tool_use (call #7) name=Bash input={"command":"cd \"<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook-lab\" && node --test calc.test.mjs 2>&1 | tail -n 12","description":"Run the calc test"}
+[stream line 35] system/permission_denied tool_name="Bash" decision_reason_type="subcommandResults"
+      | This Bash command contains multiple operations. The following part requires approval: cd "<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook-lab" && node --test calc.test.mjs 2>&1
+[stream line 36] user tool_result (for call #7) is_error=true permission_decision=reject/config non_execution_kind=user-rejected
+      | This Bash command contains multiple operations. The following part requires approval: cd "<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook-lab" && node --test calc.test.mjs 2>&1
+[stream line 38] assistant tool_use (call #8) name=PowerShell input={"command":"node --test calc.test.mjs","description":"Run the calc test"}
+[stream line 39] system/permission_denied tool_name="PowerShell" decision_reason_type="subcommandResults"
+      | This PowerShell command contains multiple operations. The following part requires approval: node --test calc.test.mjs
+[stream line 40] user tool_result (for call #8) is_error=true permission_decision=reject/config non_execution_kind=user-rejected
+      | This PowerShell command contains multiple operations. The following part requires approval: node --test calc.test.mjs
+[stream line 41] assistant text
+      | 我已把 `calc.mjs` 裡的 `add` 從 `a - b` 改成 `a + b`,但沒能跑測試確認。Bash 和 PowerShell 執行 `node --test` 都需要核准,這個環境無法核准。
+      | 
+      | - **改動:** `add(2, 3)` 現在應該回傳 5,和 `calc.test.mjs` 裡預期的 5 一致。
+      | - **測試檔:** `calc.test.mjs` 沒有改。它一開始就是對的,錯的是程式。
+      | - **要你做的:** 請在 `hook-lab` 目錄執行 `node --test calc.test.mjs` 確認通過。或者核准我執行這個指令,我再跑一次。
+[stream line 42] system/post_turn_summary status_category="blocked" status_detail="add 已改為 a+b;測試未跑,需你確認或核准" needs_action="在 hook-lab 執行 node --test calc.test.mjs 確認通過,或核准讓我執行該指令"
+[stream line 43] system/hook_started hook_name="Stop" hook_event="Stop"
+[stream line 44] system/hook_response hook_name="Stop" hook_event="Stop" exit_code=0 outcome="success"
+      stdout="" (empty)
+      stderr="" (empty)
+      output= (the same string as stderr)
+[stream line 45] result subtype="success" is_error=false stop_reason="end_turn" terminal_reason="completed" num_turns=10 duration_ms=33041
+      permission_denials=[{"tool_name":"Edit","tool_input":{"file_path":"<home>\\mokaair-work\\videos\\claude-code-hooks-hands-on\\run\\hook-lab\\calc.test.mjs","old_string":"add(2, 3), 5)","new_string":"add(2, 3), -1)","replace_all":false}},{"tool_name":"Bash","tool_input":{"command":"cd \"<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook-lab\" && node --test calc.test.mjs 2>&1 | tail -n 12","description":"Run the calc test"}},{"tool_name":"PowerShell","tool_input":{"command":"node --test calc.test.mjs","description":"Run the calc test"}}]
+      models in modelUsage: claude-sonnet-5-5
+      result (the final reply): the same string as the assistant text at [stream line 41] above (compared by the digest script) [not repeated]
+[stream line 46] system/task_summary detail=null
+[left out: 2 rate_limit_event line(s); ids, timestamps and token counts on every line]
+
+--- hook-related lines of the debug log (s8.debug.log; line numbers are the debug log's)
+  74: 2026-10-09T07:30:50.378Z [DEBUG] [3P telemetry] Event dropped (no event logger initialized): hook_registered
+  86: 2026-10-09T07:30:50.515Z [DEBUG] Registered 0 hooks from 3 plugins
+ 152: 2026-10-09T07:30:52.460Z [DEBUG] Hooks: Found 0 total hooks in registry
+ 209: 2026-10-09T07:30:59.042Z [DEBUG] Hook output does not start with {, treating as plain text
+ 210: 2026-10-09T07:30:59.043Z [ERROR] "Hook PreToolUse:Edit (PreToolUse) error: status code 2\nstderr:\nThis test already exists: do not change it.\nFix the code instead. New tests are fine."
+ 212: 2026-10-09T07:30:59.123Z [DEBUG] Hook result has permissionBehavior=deny
+ 213: 2026-10-09T07:30:59.131Z [DEBUG] Hook denied tool use for Edit
+ 214: 2026-10-09T07:30:59.147Z [DEBUG] Edit tool permission denied
+ 236: 2026-10-09T07:31:06.246Z [DEBUG] Hook output does not start with {, treating as plain text
+ 237: 2026-10-09T07:31:06.247Z [ERROR] "Hook Stop (Stop) error: status code 2\nstderr:\nTests fail. Fix the code, then finish.\n✖ add returns the sum (5.194ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 728.4748\n\n✖ failing tests:\n\ntest at calc.test.mjs:5:1\n✖ add returns the sum (5.194ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  ...[cut, the line has 972 characters]
+ 283: 2026-10-09T07:31:13.729Z [DEBUG] Hook output does not start with {, treating as plain text
+ 297: 2026-10-09T07:31:13.959Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+ 298: 2026-10-09T07:31:13.962Z [DEBUG] Bash tool permission denied
+ 320: 2026-10-09T07:31:16.663Z [DEBUG] executePermissionRequestHooks called for tool: PowerShell
+ 321: 2026-10-09T07:31:16.667Z [DEBUG] PowerShell tool permission denied
+ 345: 2026-10-09T07:31:25.065Z [DEBUG] Hook output does not start with {, treating as plain text
+(this debug log has no [ERROR] line other than the hook lines above)
+[s8.debug.log has 359 lines. Lines containing: "hook_registered" 1; "Hook output does not start with" 4; "error: status code" 2; "Hook denied tool use" 1; "allowManagedHooksOnly" 0; "Hooks: Found 0 total hooks in registry" 6; "non-blocking" 0]
+
+--- hook entries in the transcript Claude Code saved for this session by itself (read only; helper run/transcript-hooks.mjs)
+[transcript entry 34 of 57] system/stop_hook_summary
+      {"type":"system","subtype":"stop_hook_summary","hookCount":1,"hookInfos":[{"command":"node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs"}],"hookErrors":["[node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs]: Tests fail. Fix the code, then finish.\n✖ add returns the sum (5.194ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 728.4748\n\n✖ failing tests:\n\ntest at calc.test.mjs:5:1\n✖ add returns the sum (5.194ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  -1 !== 5\n  \n      at TestContext.<anonymous> (file:///<home>/mokaair-work/videos/claude-code-hooks-hands-on/run/hook-lab/calc.test.mjs:6:10)\n     ...[cut, the line has 1220 characters]
+[transcript entry 55 of 57] system/stop_hook_summary
+      {"type":"system","subtype":"stop_hook_summary","hookCount":1,"hookInfos":[{"command":"node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs","durationMs":320}],"hookErrors":[],"hookAdditionalContext":[],"preventedContinuation":false,"stopReason":"","hasOutput":false,"level":"suggestion"}
+[2 hook-related entries] [cut: the list of entry kinds]
+
+NOTE (runner): order of events: Edit calc.test.mjs, PreToolUse:Edit exit_code 2 (blocked); Claude replied and tried to stop; Stop exit_code 2; Read calc.mjs; Edit calc.mjs, PreToolUse:Edit exit_code 0 and the Edit went through; Bash and PowerShell calls to run the test refused; Stop exit_code 0; result.
+NOTE (runner): this session ran before S7 (start times above).
+NOTE (runner): what the debug log holds about hooks, counted with grep -c -i on s8.debug.log: "gate.mjs" 0 lines, "guard.mjs" 0, "match" 0, "stdout" 0, "exit code" 0, "status code" 2. A hook that exits 2 or 1 gets one [ERROR] line with "status code N" and its stderr; a hook that exits 0 leaves only "Hook output does not start with {, treating as plain text". No line names the hook's command or a matcher. The stream's hook_response events are where the exit code, stdout and stderr of every run are.
+
+====================================================================================================
+All sessions side by side (computed from the eight streams)
+====================================================================================================
+S1 | model claude-sonnet-5-5 | permissionMode default | result line: subtype success, is_error false, num_turns 3
+   hook_started events: 0; hook_response events: none
+   tool calls in order: Read(README.md), Edit(README.md)
+S2 | model claude-sonnet-5-5 | permissionMode default | result line: subtype success, is_error false, num_turns 10
+   hook_started events: 2; hook_response events: Stop exit_code 2 outcome error -> Stop exit_code 0 outcome success
+   tool calls in order: Read(README.md), Edit(README.md), Glob, Read(calc.mjs), Read(calc.test.mjs), Edit(calc.mjs), Bash [is_error], PowerShell [is_error]
+S3 | model claude-sonnet-5-5 | permissionMode default | result line: subtype success, is_error false, num_turns 4
+   hook_started events: 1; hook_response events: PreToolUse:Edit exit_code 2 outcome error
+   tool calls in order: Grep, Read(calc.test.mjs), Edit(calc.test.mjs) [is_error]
+S4 | model claude-sonnet-5-5 | permissionMode default | result line: subtype success, is_error false, num_turns 4
+   hook_started events: 1; hook_response events: PreToolUse:Edit exit_code 1 outcome error
+   tool calls in order: Grep, Read(calc.test.mjs), Edit(calc.test.mjs)
+S5 | model claude-sonnet-5-5 | permissionMode default | result line: subtype success, is_error false, num_turns 3
+   hook_started events: 0; hook_response events: none
+   tool calls in order: Read(README.md), Edit(README.md)
+S6 | model claude-sonnet-5-5 | permissionMode default | result line: subtype success, is_error false, num_turns 4
+   hook_started events: 0; hook_response events: none
+   tool calls in order: Grep, Read(calc.test.mjs), Edit(calc.test.mjs) [is_error]
+S7 | model claude-sonnet-5-5 | permissionMode default | result line: subtype success, is_error false, num_turns 8
+   hook_started events: 2; hook_response events: Stop exit_code 2 outcome error -> Stop exit_code 0 outcome success
+   tool calls in order: Read(README.md), Edit(README.md), Bash, Edit(calc.mjs), Bash [is_error], PowerShell [is_error]
+S8 | model claude-sonnet-5-5 | permissionMode default | result line: subtype success, is_error false, num_turns 10
+   hook_started events: 4; hook_response events: PreToolUse:Edit exit_code 2 outcome error -> Stop exit_code 2 outcome error -> PreToolUse:Edit exit_code 0 outcome success -> Stop exit_code 0 outcome success
+   tool calls in order: Grep, Read(calc.test.mjs), Edit(calc.test.mjs) [is_error], Read(calc.mjs), Read(calc.test.mjs), Edit(calc.mjs), Bash [is_error], PowerShell [is_error]
+
+====================================================================================================
+The copy in the repository: docs/videos/claude-code-hooks-hands-on/demo/
+====================================================================================================
+2026-10-09T07:40:06Z
+$ cd <repo>/docs/videos/claude-code-hooks-hands-on
+$ mkdir -p demo/variants demo/prompts && cp -r <work>/_tools/seed/hook-lab/. demo/
+$ cp <work>/_tools/seed/variants/{calc.fixed.mjs,gate.npm.mjs,package.json,settings.gate.json,settings.guard.json,settings.guard1.json,settings.both.json,settings.deny.json} demo/variants/   (one cp per file)
+$ cp <work>/_tools/seed/prompts/*.txt demo/prompts/
+$ (cd demo && find . -type f | sort)
+./.claude/hooks/gate.mjs
+./.claude/hooks/guard.mjs
+./.claude/hooks/guard1.mjs
+./README.md
+./calc.mjs
+./calc.test.mjs
+./fixtures/edit-code.json
+./fixtures/edit-test.json
+./fixtures/new-test.json
+./fixtures/stop-again.json
+./fixtures/stop.json
+./prompts/edit-test-neutral.txt
+./prompts/edit-test.txt
+./prompts/readme.txt
+./variants/calc.fixed.mjs
+./variants/gate.npm.mjs
+./variants/package.json
+./variants/settings.both.json
+./variants/settings.deny.json
+./variants/settings.gate.json
+./variants/settings.guard.json
+./variants/settings.guard1.json
+$ cmp of every copied file against its seed file
+22 files compared, 0 differ
+$ (cd demo && sha256sum .claude/hooks/*.mjs calc.mjs calc.test.mjs README.md variants/* prompts/* | cut -c1-16,65-)
+47d7deba4af5804a *.claude/hooks/gate.mjs
+191a8365455647da *.claude/hooks/guard.mjs
+d1840b3dfa1fd2ea *.claude/hooks/guard1.mjs
+75cfacb7faac086c *calc.mjs
+4cd66b4191a8607c *calc.test.mjs
+582691a4c3917f87 *README.md
+5b63136552577a64 *variants/calc.fixed.mjs
+bb89293903e80e85 *variants/gate.npm.mjs
+c8f0e8f6acb6df25 *variants/package.json
+573f415e485e4a2b *variants/settings.both.json
+2f8c4d8af75801b3 *variants/settings.deny.json
+e40a870dc7053b3b *variants/settings.gate.json
+f29cf5346907eef2 *variants/settings.guard.json
+cae07973ee29bd5b *variants/settings.guard1.json
+6f86fa88e506cbba *prompts/edit-test-neutral.txt
+8c82f54a31396681 *prompts/edit-test.txt
+6e706090ad03088e *prompts/readme.txt
+$ (cd demo && node --test 2>&1 | head -5; node --test > /dev/null 2>&1; echo $?)
+✖ add returns the sum (2.7077ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+1
+$ node <work>/run/glob-check.mjs <repo>
+test:docs-videos = node --test "docs/videos/*.test.mjs" "docs/videos/**/!(demo)/*.test.mjs"
+test files under docs/videos/claude-code-hooks-hands-on: ["docs/videos/claude-code-hooks-hands-on/demo/calc.test.mjs"]
+of those, selected by the script: []
+[exit 0]
+
+NOTE (runner): demo/ is the seed project itself (the state every session started from), so that its
+test file sits directly in a folder named demo; the settings variants and the prompts are in
+demo/variants and demo/prompts. There is no demo/.claude/settings.json: a session copies one variant there.
+NOTE (runner): not copied: the seed's variants/option-c folder (not used by any run here) and m-checks.sh
+(its commands and outputs are item 2). No logs and no node_modules are in demo/.
+NOTE (runner): the red test in demo/ is on purpose (item 2, M1).
+
+====================================================================================================
+Not observed in this run
+====================================================================================================
+NOTE (runner): the interactive screen: the /hooks list, the folder trust dialog, how a blocked stop or a
+  non-blocking hook error is drawn, /status. The stream carries a notification event with the text
+  "Stop hook error occurred · ctrl+o to see" (S2, S7, S8); nobody saw it on a screen.
+NOTE (runner): the JSON a hook receives on stdin in a real session (stop_hook_active on the second stop,
+  the form of tool_input.file_path). No hook in these runs recorded its input.
+NOTE (runner): a session in which Claude is sent back by the gate and does not fix the code, so that the
+  second stop is let through with the test still red.
+NOTE (runner): the guard letting a NEW test file through in a session (only the fixture new-test.json,
+  item 2), and the guard on a Write call. No session called Write.
+NOTE (runner): the Stop block cap (8 in the official page), hook timeouts, the user-level and local
+  settings files, macOS, Linux, Windows without Git Bash, any Node.js other than v24.13.0.
+NOTE (runner): each session ran once. Model behaviour (which tools it reached for, whether it fixed
+  calc.mjs) is one sample per session, with the inherited environment described at the top.
+
+
+## Coordinator note, 2026-10-09T08:23:49Z
+The two-line PowerShell form run at line 359 above is the file now kept as demo/variants/ps-two-line.ps1
+(a copy of the planner's _tools/scripts/ps-two-line.ps1, unchanged), so a card that quotes it can be checked
+inside the repository.

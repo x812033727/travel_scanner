@@ -34,7 +34,7 @@ CI runs these; run the ones your change touches first.
 
 ```bash
 npm run lint:web && npm run check:i18n && npm run typecheck:web && npm run test:web
-npm run test:tools && npm run check:tasks
+npm run test:tools && npm run test:docs-videos && npm run check:tasks   # docs-videos needs ffmpeg
 cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv run pytest
 ```
 
@@ -61,7 +61,9 @@ Claude Code share (Claude reads the byte-identical copy under `.claude/skills/`,
 queues, Place IDs, coordinates), `prod-host-ops` (nginx, admin settings, host CLIs),
 `backend-conventions` (migrations, session helpers, admin pages), `dev-and-ci` (local
 checks, CI failures, Dependabot), `web-i18n-e2e` (messages and Playwright),
-`youtube-video`, `animation-preproduction` (planning, risk-grading, pricing and locking an
+`youtube-video`, `curio-episode` (any 奇聞檔案局 episode, a `curio-` slug: the series look,
+which route, how its illustrations are written and accepted, and the lint gate that keeps them),
+`animation-preproduction` (planning, risk-grading, pricing and locking an
 animated episode before any clip is paid for: shot list, animatic, three-shot pilot, lock
 package and change orders), `animation-camera` (how a drama scene is covered and how camera,
 prompt and motion are written so the tools and the models read them alike) and

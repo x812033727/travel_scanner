@@ -1,0 +1,205 @@
+{
+  "project": {
+    "slug": "fixture-minimal",
+    "format": "slides",
+    "locales": {
+      "en": {
+        "metadata": true,
+        "captions": true,
+        "dub": false
+      },
+      "ja": {
+        "metadata": false,
+        "captions": true,
+        "dub": false
+      },
+      "ko": {
+        "metadata": true,
+        "captions": true,
+        "dub": true
+      }
+    },
+    "locales_decided_at": "2026-10-01T01:00:00.000000Z"
+  },
+  "reviews": [
+    {
+      "id": "00000000-0000-4000-8000-000000000003",
+      "gate": "languages",
+      "subject": null,
+      "content_sha256": "6b14534fa1d91e4670e6faf61c987a5e29a34bc81ad7a64402a57c30fa34973d",
+      "summary": "語言：en 標題說明、CC；ja CC；ko 標題說明、CC、配音跳過（配音字數超出時間軸，改用字幕）。沒有要你上傳的配音",
+      "payload": {
+        "locales": {
+          "en": {
+            "metadata": "ready",
+            "captions": "ready"
+          },
+          "ja": {
+            "captions": "ready"
+          },
+          "ko": {
+            "metadata": "ready",
+            "captions": "ready",
+            "dub": {
+              "status": "skipped",
+              "reason": "配音字數超出時間軸，改用字幕"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "role": "description_en",
+          "sha256": "f10159f17386e54078164d0046b32b5e4fbdf78093d596e24d279dadc207818a",
+          "size": 202,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "captions_en",
+          "sha256": "205d2751ac9bc5fe972217eec0d54e504bd5ea2529cd6d4b308451b1c844a3fd",
+          "size": 286,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "captions_ja",
+          "sha256": "3b85e0ab82877fe9c4b0f4bca40a7f80b450374087392350d2cd57aca45293dd",
+          "size": 286,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "description_ko",
+          "sha256": "49bef63dc48f40b0c6a1f501ced1c6d132c7ea9ae6f5ef691a76ad746cf1f618",
+          "size": 203,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "captions_ko",
+          "sha256": "3c49b2301198673210389e8cff065504266f97e0de7509c3a8e118c6831434ea",
+          "size": 286,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "metadata",
+          "sha256": "818807bac6552f800b8d378bd205b34f2599445b8d3f7e966c79fad8794235cf",
+          "size": 2520,
+          "content_type": "application/json"
+        },
+        {
+          "role": "languages_manifest",
+          "sha256": "6b14534fa1d91e4670e6faf61c987a5e29a34bc81ad7a64402a57c30fa34973d",
+          "size": 2344,
+          "content_type": "application/json"
+        }
+      ],
+      "status": "approved",
+      "choice": null,
+      "note": "這一批沒有要你上傳的配音，依規則自動核准",
+      "decided_at": "2026-10-01T00:04:00.000Z",
+      "created_at": "2026-10-01T00:04:00.000Z"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "gate": "publish",
+      "subject": null,
+      "content_sha256": "a85ba792617e01875ef96649d2311bd108cda706e3c10ae0338e2c1a422f4cc1",
+      "summary": "上傳包 4 項齊全：請確認可以上架",
+      "payload": {
+        "package": {
+          "ok": true,
+          "final_sha256": "a85ba792617e01875ef96649d2311bd108cda706e3c10ae0338e2c1a422f4cc1",
+          "items": [
+            {
+              "id": "files",
+              "ok": true,
+              "detail": "final.mp4, thumbnail.jpg, metadata.json; final.mp4 is the approved final (f92c8f5e6ab5)"
+            },
+            {
+              "id": "descriptions",
+              "ok": true,
+              "detail": "descriptions for zh-TW"
+            },
+            {
+              "id": "captions",
+              "ok": true,
+              "detail": "caption files for zh-TW"
+            },
+            {
+              "id": "disclosure",
+              "ok": true,
+              "detail": "no disclosure needed: slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places"
+            }
+          ]
+        },
+        "minutes": 0.7,
+        "chapters": 3,
+        "locales": [
+          "zh-TW"
+        ],
+        "zh": {
+          "title": "AI 模型怎麼挑？三個問題幫你決定｜CC字幕",
+          "description": "排行榜第一名不一定最適合你。\n這支用三個問題，幫你挑出適合自己的 AI 模型。\n\n📌 章節\n00:00 開場\n00:14 三個問題\n00:27 結論\n\n📚 參考資料\n範例來源：https://example.com/models\n\n#AI模型 #模型選擇",
+          "tags": [
+            "AI 模型",
+            "模型選擇"
+          ]
+        },
+        "disclosure": {
+          "synthetic": false,
+          "reason": "slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places"
+        },
+        "checklist": []
+      },
+      "files": [
+        {
+          "role": "captions_zh-TW",
+          "sha256": "b761e5478a3993bbdfa47f977a2ee24de47cefb59993349b1b615bc0897d9f1e",
+          "size": 727,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "description_zh-TW",
+          "sha256": "a286b9e2813eaec14192ced0572fead2fc614e7fa1c101a95fc12e38ff45042f",
+          "size": 310,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "final",
+          "sha256": "f92c8f5e6ab5dbdfa087e3879e73f851983f15bc84cbed28a5d46c7089d0b0e2",
+          "size": 35,
+          "content_type": "video/mp4"
+        },
+        {
+          "role": "metadata",
+          "sha256": "a85ba792617e01875ef96649d2311bd108cda706e3c10ae0338e2c1a422f4cc1",
+          "size": 1262,
+          "content_type": "application/json"
+        },
+        {
+          "role": "thumbnail",
+          "sha256": "d15c82b8ec9fac3bf6afcc24634bcbc8687353c191c02af81b61c87e38f5d822",
+          "size": 28,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "status": "approved",
+      "choice": null,
+      "note": null,
+      "decided_at": "2026-10-01T00:03:00.000Z",
+      "created_at": "2026-10-01T00:02:00.000Z"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "gate": "final",
+      "subject": null,
+      "content_sha256": "f92c8f5e6ab5dbdfa087e3879e73f851983f15bc84cbed28a5d46c7089d0b0e2",
+      "summary": "final",
+      "payload": {},
+      "files": [],
+      "status": "approved",
+      "choice": null,
+      "note": null,
+      "decided_at": "2026-10-01T00:01:00.000Z",
+      "created_at": "2026-10-01T00:01:00.000Z"
+    }
+  ]
+}

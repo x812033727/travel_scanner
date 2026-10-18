@@ -4,7 +4,7 @@
 // its windows read back off the picture. Nothing here reaches the live site: locate is answered
 // by the fake, and the end-to-end part skips where ffmpeg or Chromium is missing.
 import assert from 'node:assert/strict';
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 
@@ -18,10 +18,11 @@ import { eachLine } from '../core/schema.mjs';
 import { main } from './cli.mjs';
 import { PROFILE, captionHtml, parseSrt, phrasesOf, sha256, validate } from './core.mjs';
 import {
-  CAPTION_FILES, CENTRE_X, META_KEYS, MOVE_FRAMES, REFRAME_VERSION, SOURCE, WINDOW,
+  CAPTION_FILES, CENTRE_X, FULL_RANGE, META_KEYS, MOVE_FRAMES, REFRAME_VERSION, SOURCE, WINDOW,
   captionLayerEntries, cropExpr, cropPieces, cueText, cutAudioArgs, dramaCaptionHtml, fromDrama, phraseScenes, pickSubject, readEpisode, reframeArgs, reframeChain,
-  seriesOf, shortScript, shortSlugOf, shotLabels, shotSpans, spanCues, spanFrames, windowAt, windowFor, windowX,
+  seriesOf, shortScript, shortSlugOf, shotLabels, shotSpans, spanCues, spanFrames, subjectCentre, windowAt, windowFor, windowRange, windowX,
 } from './from-drama.mjs';
+import { watermark, watermarkRecord } from '../core/watermark.mjs';
 import { CAPTION_BOX } from './karaoke.mjs';
 import { themeOf } from './layouts.mjs';
 import { captionProblems, packageBuild } from './package.mjs';
@@ -98,6 +99,27 @@ test('the window centres on the subject\'s box and never leaves the picture', ()
   assert.equal(windowFor([0, 900, 1000, 1000]), 1312);
 });
 
+test('an episode cut with the channel mark keeps every window off it; without one the windows are the whole picture', () => {
+  assert.deepEqual(FULL_RANGE, { min: 0, max: 1312 });
+  assert.equal(windowRange(null), FULL_RANGE);
+  assert.equal(windowRange(), FULL_RANGE);
+  // The long cut's mark as assemble records it (core/watermark.mjs): in the top right corner.
+  const { box } = watermark();
+  const range = windowRange(box);
+  assert.deepEqual(range, { min: 0, max: box.x - WINDOW.width }, 'the windows that end where the mark begins');
+  assert.ok(range.max + WINDOW.width <= box.x && range.max >= CENTRE_X, 'no window touches the mark, and the centre is still there for a card');
+  assert.deepEqual(windowRange({ x: 90, y: 54, width: 208, height: 74 }), { min: 298, max: 1312 }, 'a mark on the left leaves the windows that begin after it');
+  assert.throws(() => windowRange({ x: 400, y: 0, width: 1200, height: 74 }), /leaves no 608 px window beside it/);
+  assert.equal(windowX(768, range), 464, 'a subject clear of the mark is framed as before');
+  assert.equal(windowX(10, range), 0);
+  assert.equal(windowX(1900, range), range.max, 'a subject under the mark pulls the window no further than its edge');
+  assert.equal(windowX(SOURCE.width / 2, range), CENTRE_X);
+  assert.equal(windowX(SOURCE.width / 2), CENTRE_X);
+  assert.equal(subjectCentre([100, 200, 900, 600]), 768);
+  assert.equal(subjectCentre([100, 200, 900, 600], { width: 960, height: 540 }), 768);
+  assert.equal(windowFor([0, 900, 1000, 1000], SOURCE, range), range.max);
+});
+
 test('the subject is the first of the shot\'s characters that was found, else the surest box, else nobody', () => {
   const boxes = [{ label: '炎帝', score: 0.8, box: [50, 300, 950, 600] }, { label: ' jingwei ', score: 0.6, box: [100, 0, 900, 240] }];
   assert.deepEqual(pickSubject(boxes, ['Jingwei', '炎帝']), { label: ' jingwei ', score: 0.6, box: [100, 0, 900, 240] }, 'by label, folded');
@@ -150,6 +172,18 @@ test('the picture is cut by frame number, cropped as the expression says, scaled
   for (const flag of ['libx264', '-profile:v', 'high', '-g', '60', '-keyint_min', '60', '-sc_threshold', '0', '+cgop', 'bt709', '-fps_mode', 'cfr']) assert.ok(args.includes(flag), flag);
   assert.equal(args.at(-1), '/s/build/video.mp4');
   assert.ok(!args.join(' ').includes('-ss '), 'never by seeking');
+});
+
+test('the channel mark is laid over the reframed picture after the captions; without it the arguments are what they were', () => {
+  assert.equal(REFRAME_VERSION, 'shorts-reframe-v2');
+  const mark = { id: 'v1', sha256: 'a'.repeat(64), file: '/repo/tools/video/watermark/v1/shorts.png', box: { x: 636, y: 80, width: 266, height: 92 } };
+  const scene = { final: '/w/final.mp4', startFrame: 30, endFrame: 210, expr: '300', captionsList: '/s/build/captions.txt', outFile: '/s/build/video.mp4' };
+  const plain = reframeArgs(scene);
+  assert.deepEqual(reframeArgs({ ...scene, mark: null }), plain);
+  const marked = reframeArgs({ ...scene, mark });
+  assert.deepEqual(marked.slice(0, 13), ['-y', '-v', 'error', '-i', '/w/final.mp4', '-f', 'concat', '-safe', '0', '-i', '/s/build/captions.txt', '-i', mark.file], 'the last input, one frame that overlay holds');
+  assert.match(marked[marked.indexOf('-filter_complex') + 1], /\[pic\]\[captions\]overlay=80:1430:eof_action=pass\[captioned\];\[2:v\]scale=266:92:out_color_matrix=bt709:out_range=tv,format=yuva420p\[mark\];\[captioned\]\[mark\]overlay=636:80\[marked\];\[marked\]format=yuv420p,setparams=range=tv:color_primaries=bt709:color_trc=bt709:colorspace=bt709\[out\]$/);
+  assert.deepEqual(marked.slice(marked.indexOf('-map')), plain.slice(plain.indexOf('-map')), 'the encoder is the Short\'s own');
 });
 
 test('the sound is the span of the episode\'s mix through loudnorm\'s two passes, without the picture', () => {
@@ -251,6 +285,7 @@ test('the episode is read with its approved cut, its captions and its timeline a
   assert.deepEqual(plain.cues, [{ start: 5, end: 7, text: '第一句' }]);
   assert.equal(plain.timeline.total_frames, 600);
   assert.equal(plain.timeline.scenes[0].start_frame, 0);
+  assert.equal(plain.watermark, null, 'a cut without checks carries no mark the Short must keep off');
   mkdirSync(path.join(workdir, 'captions'));
   writeFileSync(path.join(workdir, 'captions', 'zh-TW.srt'), '1\n00:00:10,000 --> 00:00:12,000\n第一句\n');
   writeFileSync(path.join(workdir, 'checks.json'), JSON.stringify({ ok: true, branding: { hash: 'h', intro_frames: 150, outro_frames: 60, body_frames: 600 } }));
@@ -259,6 +294,10 @@ test('the episode is read with its approved cut, its captions and its timeline a
   assert.deepEqual(branded.cues, [{ start: 10, end: 12, text: '第一句' }]);
   assert.equal(branded.timeline.total_frames, 810, 'the intro and the outro are in the cut');
   assert.deepEqual(branded.timeline.scenes.map((scene) => [scene.start_frame, scene.end_frame]), [[150, 450], [450, 750]], 'the shots sit after the intro, where the captions already are');
+  assert.equal(branded.watermark, null, 'a cut made before the mark records none');
+  const record = watermarkRecord(watermark());
+  writeFileSync(path.join(workdir, 'checks.json'), JSON.stringify({ ok: true, watermark: record }));
+  assert.deepEqual(readEpisode({ slug: 'ep', workdir, root: workdir }).watermark, record, 'the mark burned into the cut, with its box');
 });
 
 test('from-drama needs the episode, the span and a place for the Short', async () => {
@@ -345,9 +384,14 @@ async function standInEpisode(tools) {
   return { sand, doc, timeline, cues, keyframes };
 }
 
-/** The mean brightness of every frame of a cut above the caption bar, by frame number. */
+/**
+ * The mean brightness of every frame of a cut above the caption bar, by frame number. ffmpeg runs
+ * in the stats file's directory and the filter graph names the file alone: a Windows temp path's
+ * drive colon and backslashes would read as option separators and escapes inside the graph.
+ */
 async function brightness(tools, file, stats) {
-  await runTool(tools.ffmpeg, ['-hide_banner', '-nostats', '-v', 'error', '-i', file, '-vf', `crop=1080:${CAPTION_BOX.y - 30}:0:0,signalstats,metadata=print:key=lavfi.signalstats.YAVG:file=${stats}`, '-f', 'null', '-']);
+  const graph = `crop=1080:${CAPTION_BOX.y - 30}:0:0,signalstats,metadata=print:key=lavfi.signalstats.YAVG:file=${path.basename(stats)}`;
+  await runTool(tools.ffmpeg, ['-hide_banner', '-nostats', '-v', 'error', '-i', path.resolve(file), '-vf', graph, '-f', 'null', '-'], { cwd: path.dirname(stats) });
   const levels = [];
   let frame = null;
   for (const line of readFileSync(stats, 'utf8').split('\n')) {
@@ -361,6 +405,29 @@ async function brightness(tools, file, stats) {
 // The ramp's brightness over a window at x: its middle column, in the cut's limited range.
 const rampLevel = (x) => 16 + (219 * (x + WINDOW.width / 2)) / SOURCE.width;
 const buildDirs = (base, slug) => (existsSync(path.join(base, slug)) ? readdirSync(path.join(base, slug)).map((name) => path.join(base, slug, name)) : []);
+
+test('the brightness probe reads a stats file whose path has a drive colon and backslashes, as a Windows temp path does', async (t) => {
+  let tools;
+  try {
+    tools = await locateFfmpeg();
+  } catch (error) {
+    if (error instanceof ToolMissing) return t.skip(error.message);
+    throw error;
+  }
+  const base = tempDir('brightness-path-');
+  t.after(() => rmSync(base, { recursive: true, force: true }));
+  // Windows supplies the real drive colon and separators; a literal Windows-like directory
+  // supplies those filter-graph-sensitive characters on POSIX without nesting a second drive.
+  const directory = path.join(base, process.platform === 'win32' ? 'stats' : 'C:\\Users\\runner\\AppData');
+  mkdirSync(directory, { recursive: true });
+  const statsFile = path.join(directory, 'brightness.txt');
+  assert.match(statsFile, /[A-Za-z]:\\/, 'the real stats path exercises a drive colon and backslashes');
+  const video = path.join(base, 'grey.mp4');
+  await runTool(tools.ffmpeg, ['-hide_banner', '-v', 'error', '-f', 'lavfi', '-i', 'color=c=gray:s=1080x1920:r=30:d=0.2', '-pix_fmt', 'yuv420p', video]);
+  const levels = await brightness(tools, video, statsFile);
+  assert.equal(levels.length, 6, 'one level per frame');
+  for (const level of levels) assert.ok(level > 100 && level < 150, `mid grey, not ${level}`);
+});
 
 test('a stand-in episode is cut to a Short whose window follows the located subjects and whose captions are the Shorts layer', async (t) => {
   const tools = await toolsOrSkip(t);
@@ -504,4 +571,36 @@ test('a stand-in episode is cut to a Short whose window follows the located subj
   assert.equal(readdirSync(path.join(plain.directory, 'captions')).filter((name) => /^\d{3}-\d{2}\.png$/.test(name)).length, 4);
   assert.deepEqual(plainChecks.layout.map((entry) => entry.problems), [[], [], [], []]);
   assert.equal(plainChecks.frames, 405);
+
+  // Every Short carries the channel mark, and says which; this episode's cut carried none, so
+  // nothing kept the windows from the right edge above.
+  const mark = watermark(undefined, 'shorts');
+  assert.deepEqual(checks.watermark, watermarkRecord(mark));
+  assert.deepEqual(plainChecks.watermark, watermarkRecord(mark));
+  assert.equal(checks.reframe.episode_mark, undefined);
+  assert.ok(checks.reframe.shots.every((shot) => shot.mark_shift === undefined));
+
+  // An episode cut with the mark in its top right corner: a subject near it is still framed, the
+  // window stopping at the mark's edge and saying how far it was kept back; a subject under it
+  // cannot be shown without half the mark, and the build stops on that shot before it encodes.
+  const episodeMark = watermarkRecord(watermark());
+  writeFileSync(path.join(sand.workdir, 'checks.json'), JSON.stringify({ ok: true, watermark: episodeMark }));
+  const span = { slug: 'fixture-drama', from: scenes['sea-storm'].start_frame / 30, to: scenes.bird.end_frame / 30, workdir: sand.work, episodeWorkdir: sand.work, captions: 'plain', root: sand.root, env, home: sand.base };
+  const limit = episodeMark.box.x - WINDOW.width;
+  const nearSite = fakeSite((sha256) => (sha256 === bird ? [] : [{ label: 'subject', box: [100, 700, 900, 860], score: 0.5 }]));
+  const near = await fromDrama({ ...span, client: siteClient({ env, home: sand.base, fetch: nearSite.fetchImpl }) });
+  const nearChecks = JSON.parse(readFileSync(path.join(near.directory, 'checks.json'), 'utf8'));
+  assert.deepEqual(nearChecks.reframe.episode_mark, episodeMark.box);
+  assert.deepEqual(nearChecks.reframe.window_range, { min: 0, max: limit });
+  assert.deepEqual(nearChecks.reframe.shots.map((shot) => [shot.shot, shot.x, shot.mark_shift ?? 0]), [['sea-storm', limit, windowX(0.78 * SOURCE.width) - limit], ['bird', 656, 0]]);
+  assert.ok(nearChecks.reframe.pieces.every((piece) => Math.max(piece.x0, piece.x1) + WINDOW.width <= episodeMark.box.x), 'no piece of the crop reaches the mark');
+  const underSite = fakeSite(() => [{ label: 'subject', box: [100, 760, 900, 1000], score: 0.5 }]);
+  const cuts = () => buildDirs(sand.work, path.basename(path.dirname(near.directory))).filter((directory) => existsSync(path.join(directory, 'upload', 'final.mp4'))).length;
+  const before = cuts();
+  await assert.rejects(
+    fromDrama({ ...span, client: siteClient({ env, home: sand.base, fetch: underSite.fetchImpl }) }),
+    /shot sea-storm: its subject \(subject\) is at x 1690 of the episode, beside the channel mark burned into the cut; a window on it would show half the mark\. Move --from or --to so the Short leaves this shot out/,
+  );
+  assert.equal(underSite.calls.locate.length, 1, 'the build stops on the first shot it cannot frame');
+  assert.equal(cuts(), before, 'and cuts nothing');
 });
