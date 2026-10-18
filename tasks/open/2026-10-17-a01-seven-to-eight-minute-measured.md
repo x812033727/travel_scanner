@@ -62,6 +62,24 @@ an independent reviewer binds the changed files.
 
 ## Notes
 
+2026-10-18 integration after main #1565, #1568 and #1564: the A01 code was
+rebased onto `7468c19a3`. `story.test.mjs` retains both the new
+`thumbnail.brand` test and the A01 legacy-script HOLD tests; the code changes
+in `story.mjs` combine without a semantic conflict. A separate duration
+receipt reviewer preserved main's four #1565 bindings and one #1568 binding,
+then added the five already independently reviewed A01 bindings. All 108
+current file hashes match the merged report and JSON; final report SHA-256 is
+`d69abc46569fc19777672b85d59a72c75c95e1342f30e54068828917fa7f0a18`.
+The long-form CLI passed 473 plans and receipt regression passed 2/2. The six
+affected duration, lint, story, timeline and template suites passed 146/146
+with bundled Node v24.19.0 (exit 0). Main's A01 plan has no
+`thumbnail.brand`, so this merge does not itself change A01's
+thumbnail. The #1568 task's other active scope remains untouched. New hosted
+CI and A01 formal production gates are still separate.
+
+The earlier `dd18c5bc...` report SHA below is the historical receipt for the
+pre-#1565/#1568 branch; the integrated report SHA above supersedes it.
+
 2026-10-18 independent receipt closeout on rebased code `f9580975f`: a
 separate reviewer inspected the five changed duration/lint/QA files and
 updated only their SHA bindings in the 108-file long-form receipt. The other
