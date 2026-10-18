@@ -1,10 +1,11 @@
 import assert from "node:assert/strict";
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { test } from "node:test";
 
-import { canonical, CHAPTER_KEYS, claimSupported, compile, compiledCurrent, DEFAULT_PLAN, hostOf, loadPlan, order, planProblems, reviewProblems, scheduleMarkdown, scheduleProblems, serialize, seriesProblems, siteGuides, storyHash, storyProblems, STORY_KEYS } from "./plan.mjs";
+import { canonical, CHAPTER_KEYS, claimSupported, clipHeadline, compile, compiledCurrent, DEFAULT_PLAN, headlineProblem, hostOf, LIMITS, loadPlan, order, planProblems, reviewProblems, scheduleMarkdown, scheduleProblems, serialize, seriesProblems, siteGuides, storyHash, storyProblems, STORY_KEYS, storyWarnings } from "./plan.mjs";
+import { THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX } from "../templates/templates.mjs";
 import { fetchProblems, fetchSources, main, reviewerOnlyFacts, USER_AGENT } from "./validate.mjs";
 
 const point = (text) => text.repeat(Math.ceil(80 / [...text].length));
@@ -38,7 +39,7 @@ function story(overrides = {}) {
     image_notes: "不畫商標與文字。",
     sensitivity: "none",
     related_guide: null,
-    thumbnail: { headline: "範例標題", idea: "一個箱子" },
+    thumbnail: { headline: "範例\n標題", idea: "一個箱子" },
     ...overrides,
   };
 }
@@ -52,6 +53,7 @@ const series = (overrides = {}) => ({
   episodes_per_day: 2,
   hands_off: true,
   visual_tier: "stills",
+  style_preset: "custom",
   image_model: "gemini-3.1-flash-image",
   look: { style: "flat cartoon", negative: "text, logo" },
   ...overrides,
@@ -162,7 +164,8 @@ test("the rest of a story's fields", () => {
   assert.match(storyProblems(story({ extra: true })).join("\n"), /unknown field "extra"/);
   assert.match(storyProblems(story({ slug: "rolling-suitcase" })).join("\n"), /slug "rolling-suitcase" must be story-/);
   assert.match(storyProblems(story({ title: "標題 <b>" })).join("\n"), /angle bracket/);
-  assert.match(storyProblems(story({ thumbnail: { headline: "這個縮圖標題實在是太長了超過十二個字", idea: "x" } })).join("\n"), /thumbnail\.headline is \d+ characters, at most 12/);
+  assert.match(storyProblems(story({ thumbnail: { headline: "這個縮圖標題實在是太長了超過十二個字", idea: "x" } })).join("\n"), /thumbnail\.headline counts 18 characters \(a Latin word or a number counts one\), at most 12: nothing readable is left once it is cut to the channel's 6/);
+  assert.deepEqual(storyProblems(story({ thumbnail: { headline: "名字沒註冊的辣椒醬", idea: "x" } })), [], "over the channel's six but under the draft's twelve is sound: the builder cuts it, storyWarnings says so");
   assert.match(storyProblems(story({ sensitivity: "high" })).join("\n"), /sensitivity must be one of none, care/);
   assert.match(storyProblems(story({ related_guide: "Not A Slug" })).join("\n"), /related_guide must be/);
   assert.deepEqual(storyProblems(story({ related_guide: "japan-suica-guide" })), []);
@@ -189,6 +192,27 @@ test("the series row is a hands-off stills story series", () => {
   assert.deepEqual(seriesProblems(series()), []);
   const problems = seriesProblems(series({ kind: "series", visual_tier: "clips", hands_off: false, target_minutes: 3, episodes_per_day: 0 })).join("\n");
   for (const expected of [/kind must be "story"/, /visual_tier must be "stills"/, /hands_off must be true/, /target_minutes must be 12 to 15/, /episodes_per_day must be 1 to 12/]) assert.match(problems, expected);
+});
+
+test("a ten-minute MiniMax brand story accepts only the exact cute-mystery look", () => {
+  const cute = series({ target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } });
+  assert.deepEqual(seriesProblems(cute), []);
+  assert.match(seriesProblems({ ...cute, target_minutes: 13 }).join("\n"), /must be 10 for the cute-mystery look/);
+  assert.match(seriesProblems({ ...cute, image_model: "gemini-3.1-flash-image" }).join("\n"), /must be "image-01"/);
+  assert.match(seriesProblems({ ...cute, style_preset: "cinematic-3d" }).join("\n"), /style_preset must be "custom"/);
+  assert.match(seriesProblems({ ...cute, look: { preset: "cute-mystery", style: "extra" } }).join("\n"), /look needs a style and a negative prompt/);
+  assert.match(seriesProblems(series({ look: { preset: "cute-mystery", style: "flat cartoon", negative: "logos" } })).join("\n"), /look needs a style and a negative prompt/);
+  assert.match(seriesProblems(series({ target_minutes: 10 })).join("\n"), /target_minutes must be 12 to 15/);
+  assert.deepEqual(seriesProblems(series()), [], "the original 13-minute custom series remains valid");
+});
+
+test("the five selected brand stories' series file uses the supported cute route", () => {
+  const dir = path.resolve(DEFAULT_PLAN, "..", "..", "brand-stories-five-20261014");
+  const actual = JSON.parse(readFileSync(path.join(dir, "series.json"), "utf8"));
+  const episodes = readdirSync(path.join(dir, "episodes")).filter((name) => name.endsWith(".json")).map((name) => JSON.parse(readFileSync(path.join(dir, "episodes", name), "utf8")));
+  assert.deepEqual(seriesProblems(actual), []);
+  assert.deepEqual([actual.target_minutes, actual.image_model, actual.style_preset, actual.look], [10, "image-01", "custom", { preset: "cute-mystery" }]);
+  assert.deepEqual(episodes.map((episode) => episode.number).sort((a, b) => a - b), [1, 2, 3, 4, 5]);
 });
 
 test("compile lists the stories in production order with their slots", () => {
@@ -481,9 +505,91 @@ test("validate --fetch reports what it read and keeps it when asked", async () =
   }
 });
 
+test("the thumbnail headline is held to the channel's rule, counted as the qa stage counts it, and a long one is cut where a word ends", () => {
+  assert.equal(LIMITS.headline, THUMB_HEADLINE_MAX);
+  assert.equal(THUMB_HEADLINE_WORDS_MAX, 2);
+  assert.equal(headlineProblem("填不完的海"), null);
+  assert.equal(headlineProblem("ChatGPT\n有廣告"), null);
+  assert.match(headlineProblem("名字沒註冊的辣椒醬"), /^thumbnail\.headline counts 9 characters \(a Latin word or a number counts one\); at most 6 read at a glance/);
+  assert.match(headlineProblem("Gemini 3 Pro 來了"), /^thumbnail\.headline has 3 Latin words or numbers \(Gemini, 3, Pro\); at most 2 fit the column/);
+  assert.match(headlineProblem("她磨好了刀"), /^thumbnail\.headline breaks inside the word 「好了」; put \\n where a word ends/, "the column holds three glyphs, so the browser breaks a five-glyph headline after three");
+  assert.equal(headlineProblem("ChatGPT 有 Claude"), null, "two short Latin words and a glyph fit the column");
+  assert.match(headlineProblem("Anthropic"), /^thumbnail\.headline shrinks to about 21 px at 320 px wide; at least 24 px reads on a phone, so shorten it$/, "the qa stage's fourth rule: a Latin word of nine letters is wider than the column at the renderer's floor");
+  assert.match(headlineProblem("Perplexity 來了"), /shrinks to about 21 px at 320 px wide/);
+  assert.match(headlineProblem("Microsoft\n買了"), /shrinks to about 21 px at 320 px wide/);
+  assert.equal(clipHeadline("填不完的海"), "填不完的海", "within the rule: as written");
+  assert.equal(clipHeadline("**不一定**\n最好用"), "**不一定**\n最好用", "within the rule: the stress and the break stay");
+  assert.equal(clipHeadline("名字沒註冊的辣椒醬"), "名字沒註冊", "cut where 辣椒醬 starts, never through it, and the dangling 的 dropped");
+  assert.equal(clipHeadline("熱狗 40 年沒漲價"), "熱狗 40 年");
+  assert.equal(clipHeadline("兄弟反目，小鎮分兩半"), "兄弟反目，小鎮", "a two-glyph word at the end stays");
+  assert.equal(clipHeadline("仙門風雲第一部全集"), "仙門\n風雲", "the segmenter's lone 第 is not kept, and the four glyphs break where the column would");
+  assert.equal(clipHeadline("一元官司，沒判誰發明"), "一元官司，沒判", "a verb at the end is a word, not a fragment");
+  assert.equal(clipHeadline("78歲不領薪救航空"), "78歲不領薪救");
+  assert.equal(clipHeadline("曾比麥當勞還多的炸雞店"), "曾比\n麥當勞", "cut, then broken where the column would break 麥當勞");
+  assert.equal(clipHeadline("Gemini 3 Pro 來了"), "Gemini 3", "two Latin words or numbers at most");
+  assert.equal(clipHeadline("她磨好了刀"), "她磨\n好了刀", "a word the column would break gets the break put before it");
+  assert.equal(clipHeadline("第一名\n**不一定**最好用"), "第一名\n不一定", "a cut headline keeps its break and loses the stress");
+  assert.equal(clipHeadline("  "), "");
+  assert.equal(clipHeadline("Nike曾是代理商"), "Nike曾是", "「Nike\\n曾是代理商」 would break 代理商 on its second line, so the last word goes (brand-stories-100 B24)");
+  assert.equal(clipHeadline("200億判決，後來呢？"), "200億判決", "「200億\\n判決，後來」 would break 後來 (C11)");
+  assert.equal(clipHeadline("小麥當勞叔叔來了"), "小\n麥當勞", "「小\\n麥當勞叔叔」 would break 叔叔");
+  assert.equal(clipHeadline("名字沒註\n冊的辣椒醬"), "名字沒註冊", "the writer's break inside 註冊 is taken out, not kept");
+  assert.equal(clipHeadline("廉航怎麼賺？"), "廉航\n怎麼賺？", "a headline that lost no word keeps its end");
+  assert.equal(clipHeadline("Anthropic 來了"), "Anthropic 來了", "nothing shorter mends a Latin word too wide for the column: the longest cut comes back");
+  for (const headline of ["Nike曾是代理商", "200億判決，後來呢？", "小麥當勞叔叔來了", "名字沒註\n冊的辣椒醬", "仙門風雲第一部全集", "曾比麥當勞還多的炸雞店", "她磨好了刀", "一元官司，沒判誰發明", "七個字的大字呢？"]) {
+    assert.equal(headlineProblem(clipHeadline(headline)), null, `the cut of 「${headline}」 is one the qa stage passes`);
+  }
+  assert.deepEqual(storyWarnings(story()), []);
+  assert.deepEqual(storyWarnings(story({ thumbnail: { headline: "名字沒註冊的辣椒醬", idea: "x" } })), ["thumbnail.headline counts 9 characters (a Latin word or a number counts one); at most 6 read at a glance, so say one thing in six; the builder cuts it to 「名字沒註冊」, so write the six yourself"]);
+  assert.deepEqual(storyWarnings(story({ thumbnail: { headline: "她磨好了刀", idea: "x" } })), ["thumbnail.headline breaks inside the word 「好了」; put \\n where a word ends; the builder cuts it to 「她磨\\n好了刀」, so write the six yourself"], "the cut is shown on one line");
+  assert.deepEqual(storyWarnings(story({ thumbnail: { headline: "Nike曾是代理商", idea: "x" } })), ["thumbnail.headline breaks inside the word 「曾是」; put \\n where a word ends; the builder cuts it to 「Nike曾是」, so write the six yourself"], "what is promised is what the builder writes");
+  assert.deepEqual(storyWarnings(story({ thumbnail: { headline: "Anthropic 來了", idea: "x" } })), ["thumbnail.headline shrinks to about 21 px at 320 px wide; at least 24 px reads on a phone, so shorten it; the builder cannot cut it to the rule (「Anthropic 來了」 still shrinks to about 21 px at 320 px wide; at least 24 px reads on a phone, so shorten it), so write the six yourself"], "no cut passes: the warning promises none");
+  assert.deepEqual(storyWarnings({}), []);
+});
+
+test("a story's thumbnail may name its company in large type: optional, one line, at most twelve characters", () => {
+  for (const brand of ["SEIKO", "米其林", "杜比 DOLBY", "哆啦A夢", "A4 紙"]) {
+    assert.deepEqual(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "一個箱子", brand } })), [], brand);
+  }
+  assert.deepEqual(storyProblems(story()), [], "a story written before the field keeps the tag");
+  assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "一二三四五六七八九十十一十二" } })).join("\n"), /thumbnail\.brand has 14 characters; at most 12 fit the column on one line/);
+  for (const brand of ["杜比\nDOLBY", "杜比\rDOLBY", "杜比\tDOLBY"]) assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand } })).join("\n"), /thumbnail\.brand must be one line of plain text/);
+  assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "一二三四五六七八九十甲乙" } })).join("\n"), /thumbnail\.brand is too wide for the column even at 38 px/, "twelve CJK glyphs are within the count but not the column");
+  for (const brand of ["一二三四五六七八九十甲", "ABCDEFGHIJKL", "任天堂 Nintendo"]) assert.deepEqual(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand } })), [], brand);
+  assert.deepEqual(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: null } })), [], "null is no brand, as the API reads it");
+  assert.deepEqual(storyWarnings(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: null } })), []);
+  assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "" } })).join("\n"), /thumbnail\.brand must be text/);
+  assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: 7 } })).join("\n"), /thumbnail\.brand must be text/);
+  assert.deepEqual(storyWarnings(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "SEIKO" } })), []);
+  assert.deepEqual(storyWarnings(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "杜比 DOLBY" } })), ["thumbnail.brand 「杜比 DOLBY」 is set at about 80 px, smaller than the headline; a shorter name (at most 12 characters, best four or five) reads larger"]);
+});
+
+test("validate prints a story's headline warning and still passes: the builder cuts it, the author should not leave it", async () => {
+  const dir = mkdtempSync(path.join(os.tmpdir(), "story-plan-"));
+  try {
+    mkdirSync(path.join(dir, "stories"));
+    writeFileSync(path.join(dir, "series.json"), JSON.stringify(series()));
+    writeFileSync(path.join(dir, "schedule.json"), JSON.stringify(schedule([["A01", "B01"]])));
+    writeFileSync(path.join(dir, "stories", "A01.json"), JSON.stringify(story({ thumbnail: { headline: "名字沒註冊的辣椒醬", idea: "一瓶辣椒醬" } })));
+    writeFileSync(path.join(dir, "stories", "B01.json"), JSON.stringify(story({ id: "B01", slug: "story-b", title: "B", category: "asia-brand", region: "jp" })));
+    const out = { text: "", write(chunk) { this.text += chunk; } };
+    assert.equal(await main(["--plan", dir, "--partial"], { stdout: out, stderr: out }), 0);
+    assert.match(out.text, /\nWARNING A01: thumbnail\.headline counts 9 characters \(a Latin word or a number counts one\); at most 6 read at a glance, so say one thing in six; the builder cuts it to 「名字沒註冊」, so write the six yourself\n0 problems, 1 warnings\n$/);
+    assert.doesNotMatch(out.text, /WARNING B01/);
+    const only = { text: "", write(chunk) { this.text += chunk; } };
+    assert.equal(await main(["--plan", dir, "--only", "B01"], { stdout: only, stderr: only }), 0);
+    assert.match(only.text, /0 problems, 0 warnings\n$/, "--only keeps the warnings of the stories asked for");
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 test("the repository's plan is complete, sound and compiled", () => {
   const plan = loadPlan(DEFAULT_PLAN);
   assert.deepEqual(planProblems(plan), []);
   assert.equal(plan.stories.length, 100);
+  for (const { id, story } of plan.stories) {
+    assert.equal(headlineProblem(clipHeadline(story.thumbnail.headline)), null, `${id}: what the builder cuts 「${story.thumbnail.headline}」 to is a headline the qa stage passes`);
+  }
   assert.ok(compiledCurrent(plan), "stories.json is older than its sources: run node tools/video/story-plans/validate.mjs --write");
 });

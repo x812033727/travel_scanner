@@ -29,6 +29,7 @@ from app.community import models as community_models  # noqa: F401
 from app.community import pet_models  # noqa: F401
 from app.db import Base
 from app.guides import models as guide_models  # noqa: F401
+from app.video_budget import models as video_budget_models  # noqa: F401
 
 
 def utcnow() -> datetime:
@@ -2274,6 +2275,13 @@ class VideoProject(Timestamped, Base):
     locales: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict, server_default=text("'{}'"))
     locales_decided_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
+    )
+    # The owner's "make this skipped dub again" requests, one record per locale: the latest
+    # request and how it ended (docs/videos/DUBS.md §再做一次; migration 0131). The worker reads
+    # it on its list row and answers in its report; app/video_reviews/dub_retry.py owns the
+    # transitions.
+    dub_retries: Mapped[dict[str, Any]] = mapped_column(
+        JSON, default=dict, server_default=text("'{}'")
     )
     # What the site last sent this video's YouTube side through the linked channel, step by step
     # (app/video_youtube/state.py; migration 0102): the owner's request, each step's result, and

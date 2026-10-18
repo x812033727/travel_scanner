@@ -7,11 +7,12 @@ import { assembledAudioProblems, audioEvidenceProblems } from "../core/audio-evi
 //
 // Every check is a pure function over files already on disk (checks.mjs and its neighbours);
 // this file does the reading, the one network call per link, the judge call, and the writing.
+import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
-import { AutomationError, automationClient } from "../automation/client.mjs";
+import { AutomationError, automationClient, RUN_UNCERTAIN } from "../automation/client.mjs";
 import { animeRuntimeContext, hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
 import { approvalState, sha256File } from "../core/approvals.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
@@ -21,8 +22,9 @@ import { burnIn, drawnShotScenes, illustrated, isDrama, needsMinimumLength, subt
 import { checkYoutubeFields } from "../core/metadata.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
-import { captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
+import { alwaysLocales, captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
+import { isStory } from "../core/story.mjs";
 import { chapterList, checkChapters, estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { checksCurrent } from "../package/cli.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -33,6 +35,7 @@ import { checkLinks, descriptionUrls, linkChecker, linksDetail } from "./links.m
 import { paceDetail, paceProblems, slideStates } from "./pace.mjs";
 import { policyRequest, policyVerdict } from "./policy.mjs";
 import { thumbnailChecks } from "./thumbnail.mjs";
+import { thumbnailSeries } from "../render/plan.mjs";
 import { localizedThumbnail } from "../core/translations.mjs";
 
 export const QA_FILE = path.join("review", "qa.json");
@@ -61,12 +64,37 @@ function recordDisclosure(file, decision) {
   return true;
 }
 
+/** The policy item of a judgement whose answer was lost, from its record alone, so a held run repeats it word for word. */
+const lostItem = (lost) => item("policy", false, `outcome unknown: Jev was asked about this narration at ${lost.at} and its answer was lost (${lost.why}); Jev may have judged it and used one of today's calls, so it is not asked again until the owner retries`);
+
+/**
+ * The lost judgement the last report kept (`policy_lost`), read before qa.json is written again.
+ * A report that cannot be read holds nothing and is written over, as it always was.
+ */
+function heldLoss(file) {
+  try {
+    return readJson(file, null)?.policy_lost ?? null;
+  } catch {
+    return null;
+  }
+}
+
 /**
  * The judge call. A 404 means the endpoint is not deployed yet and a 409 that the channel stance
- * is still blank: both are failed items, never a pass. Anything else (a spent Jev budget, Jev
- * down, a revoked token) says who can fix it, and the exit code carries that.
+ * is still blank: both are failed items, never a pass. A judgement sent whose answer was lost
+ * (RUN_UNCERTAIN) may have been judged, and taken one of the day's Jev calls: it comes back as
+ * `lost` ({ request_sha256, final_sha256, at, why }), which run() keeps in qa.json as
+ * `policy_lost`, and the video waits for the owner's retry (the owner's decision of 2026-10-07).
+ * While that record (`held`) names this very request, by the hash of the body the client sends,
+ * the run neither asks Jev nor makes a client: it repeats the item and keeps the record, so
+ * review-push and the worker's next rounds, which run qa again, do not pay again. Another
+ * narration or viewpoint is another request: it is asked as usual and the old record dropped.
+ * Anything else (a spent Jev budget, Jev down, a revoked token) says who can fix it, and the exit
+ * code carries that.
  */
-async function policyItem(ctx, request) {
+async function policyItem(ctx, request, { held = null, finalSha256 = null } = {}) {
+  const requestSha256 = createHash("sha256").update(JSON.stringify(request)).digest("hex");
+  if (held?.request_sha256 === requestSha256) return { item: lostItem(held), lost: held };
   let api;
   try {
     api = automationClient(ctx);
@@ -79,6 +107,11 @@ async function policyItem(ctx, request) {
     return { item: item("policy", verdict.ok, verdict.detail) };
   } catch (error) {
     if (!(error instanceof AutomationError)) throw error;
+    // Before the fallback below, which would make it the service's and run qa again next round.
+    if (error.code === RUN_UNCERTAIN) {
+      const lost = { request_sha256: requestSha256, final_sha256: finalSha256, at: new Date(ctx.now ? ctx.now() : Date.now()).toISOString(), why: error.why ?? error.message };
+      return { item: lostItem(lost), lost };
+    }
     if (error.status === 404) return { item: item("policy", false, "judge endpoint not available") };
     if (error.status === 409 && error.code === "video_judge_not_enabled") return { item: item("policy", false, "channel stance is blank; the judge has nothing to judge against") };
     return { item: item("policy", false, `the judge call failed: ${error.message}`), who: error.who ?? "service" };
@@ -101,13 +134,17 @@ function writeReport(ctx, doc, workdir, report, finalSha256) {
  * The thumbnail item, from the file render drew; then the same check once for each language's
  * own thumbnail render drew (frames/manifest.json thumbnail_locales). Those are extras the owner
  * uploads by hand on Studio's 「語言」 page, so what is wrong with one is a warning, never a fail:
- * the language still has the video's own thumbnail.
+ * the language still has the video's own thumbnail. A compilation's headline is its series'
+ * name by design (docs/videos/BINGE.md: 「仙門風雲 全集」 under a title that starts the same way),
+ * so the title-repeat warning is not asked of it.
  */
 export function thumbnailItem(doc, workdir, translations = {}) {
   const thumbnailFile = path.join(workdir, THUMBNAIL_FILE);
   if (!doc.thumbnail) return item("thumbnail", false, "video.json has no thumbnail; add one with the thumb template");
   if (!existsSync(thumbnailFile)) return item("thumbnail", false, `${THUMBNAIL_FILE} is missing; run render`);
-  const verdict = thumbnailChecks({ bytes: readFileSync(thumbnailFile), headline: doc.thumbnail.data?.headline });
+  const series = thumbnailSeries(doc);
+  const titleOf = (fields) => (isCompilation(doc) ? null : fields?.title ?? null);
+  const verdict = thumbnailChecks({ bytes: readFileSync(thumbnailFile), headline: doc.thumbnail.data?.headline, title: titleOf(doc.youtube), series });
   const warnings = [...verdict.warnings];
   const checked = [];
   for (const [locale, drawn] of Object.entries(readJson(path.join(workdir, ARTIFACTS.frames), null)?.thumbnail_locales ?? {})) {
@@ -116,7 +153,7 @@ export function thumbnailItem(doc, workdir, translations = {}) {
       warnings.push(`${locale} thumbnail: ${drawn.file} is missing; run render`);
       continue;
     }
-    const own = thumbnailChecks({ bytes: readFileSync(file), headline: localizedThumbnail(doc, translations[locale])?.data.headline });
+    const own = thumbnailChecks({ bytes: readFileSync(file), headline: localizedThumbnail(doc, translations[locale])?.data.headline, title: titleOf(translations[locale]), series, locale });
     checked.push(locale);
     if (!own.ok) warnings.push(`${locale} thumbnail (${drawn.file}): ${own.detail}`);
   }
@@ -220,6 +257,10 @@ export async function run(command, args, ctx) {
   // at the narration, zh-TW and the chosen locales; a dub track given up on only warns.
   const languages = readLanguages(workdir);
   const captionLocales = captionLocalesOf(languages, narrationLocale(doc));
+  // Chosen locales with no translation yet are made by the languages step after this final gate:
+  // the captions item only warns about them. The narration's own and zh-TW are always required.
+  const required = alwaysLocales(narrationLocale(doc));
+  const untranslated = captionLocales.filter((locale) => !required.includes(locale) && !project.translations[locale]);
   const skippedDubs = Object.fromEntries((chosenLocales(languages, "dub") ?? []).map((locale) => [locale, readJson(dubArtifacts(workdir, locale).skipped, null)]).filter(([, gaveUp]) => gaveUp).map(([locale, gaveUp]) => [locale, gaveUp.reason ?? ""]));
   const { problems: metadataProblems, metadata } = composeMetadata({ doc, timeline: timelineCurrent ? presented : estimateTimeline(doc), translations: project.translations, pack: project.pack ?? null, locales: metadataLocalesOf(languages, narrationLocale(doc)) });
   if (!brandingMatches) metadataProblems.push("selected branding differs from the final cut; run assemble again");
@@ -257,7 +298,7 @@ export async function run(command, args, ctx) {
       items.push(item("pace", false, error.message));
     }
   }
-  items.push(captionsItem({ lintWarnings: lint.warnings, manifest: captions, current: captions?.speech_hash === speech && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: captionLocales, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))), skippedDubs }));
+  items.push(captionsItem({ lintWarnings: lint.warnings, manifest: captions, current: captions?.speech_hash === speech && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: captionLocales, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))), skippedDubs, untranslated }));
   items.push(metadataItem({
     problems: metadataProblems,
     tagProblems: checkYoutubeFields({ title: "", description: "", tags: metadata.tags }, "youtube"),
@@ -272,14 +313,24 @@ export async function run(command, args, ctx) {
   const links = await checkLinks(descriptionUrls(descriptions), linkChecker({ fetchImpl: ctx.fetch ?? globalThis.fetch, sleep: ctx.sleep, now: () => Number(ctx.now ? ctx.now() : Date.now()) }));
   items.push(item("links", links.every((result) => result.ok), linksDetail(links)));
   items.push(thumbnailItem(doc, workdir, project.translations));
-  const policy = await policyItem(ctx, policyRequest({ doc, brief: project.brief }));
+  const policy = await policyItem(ctx, policyRequest({ doc, brief: project.brief }), { held: heldLoss(inWork(QA_FILE)), finalSha256 });
   items.push(policy.item);
   who = policy.who ?? null;
   const decision = disclosureDecision(doc, { musicSource: music?.source ?? (doc.music?.track ? "track" : doc.music ? "generated" : null) });
   items.push(disclosureItem(decision, recordDisclosure(inWork(ARTIFACTS.upload), decision)));
 
-  const report = { ...qaReport(items, finalSha256), ...(hasAnimePolicy(doc) ? { policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec }, runtime_context: animeRuntimeContext(doc) } : {}) };
+  // The site's brand-story dub decision reads this only from a passing final QA attached to
+  // the same final.mp4 hash. The assemble item binds subtitlesHash(doc) to checks.json, and the
+  // captions item checks the current zh-TW CC; old reviews have no such evidence and stay locked.
+  const storySubtitles = drama && isStory(project.series) ? { subtitles_burned_in: burnIn(doc) } : {};
+  const report = { ...qaReport(items, finalSha256), ...storySubtitles, ...(hasAnimePolicy(doc) ? { policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec }, runtime_context: animeRuntimeContext(doc) } : {}), ...(policy.lost ? { policy_lost: policy.lost } : {}) };
   writeReport(ctx, doc, workdir, report, finalSha256);
+  // A lost judgement is the owner's, whatever the other items say: exit 3 keeps review-push from
+  // posting the cut, and the code on the last line tells it from a token the owner has to replace.
+  if (policy.lost) {
+    ctx.stdout.write(`${doc.slug}: Jev's policy verdict on this narration was lost after it was sent (${policy.lost.why}); it is not asked again until the owner retries (or delete ${QA_FILE} to ask once more) (${RUN_UNCERTAIN})\n`);
+    return EXIT.owner;
+  }
   if (who === "owner") return EXIT.owner;
   if (who === "service") return EXIT.external;
   return report.ok ? EXIT.ok : EXIT.lint;

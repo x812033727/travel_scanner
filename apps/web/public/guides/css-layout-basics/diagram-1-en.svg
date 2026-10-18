@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Microsoft JhengHei',sans-serif">
+<title id="title">Both say 280px. Why are the boxes different?</title><desc id="desc">Three cards compare content-box's 316px width to the outer border edges, border-box's 244px content width, and margin, excluded from width in both.</desc>
+<rect width="1600" height="900" fill="#F7F1E8"></rect>
+<text x="80" y="94" font-size="52" fill="#102A2B" text-anchor="start" font-weight="bold">Both say 280px. Why are the boxes different?</text>
+<text x="80" y="151" font-size="28" fill="#5C6B6B" text-anchor="start" font-weight="normal">Original event card example: left/right padding 16px each, borders 2px each</text>
+<rect x="80.0" y="256" width="456.0" height="400" rx="24" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"></rect>
+<text x="108.0" y="314" font-size="38" fill="#102A2B" text-anchor="start" font-weight="bold">content-box</text>
+<text x="108.0" y="371" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">Content width 280px</text>
+<text x="108.0" y="423" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">Padding + borders add 36px</text>
+<text x="108.0" y="475" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">Outer width 316px</text>
+<rect x="572.0" y="256" width="456.0" height="400" rx="24" fill="#E6F0F7" stroke="#0D6B68" stroke-width="4"></rect>
+<text x="600.0" y="314" font-size="38" fill="#102A2B" text-anchor="start" font-weight="bold">border-box</text>
+<text x="600.0" y="371" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">Outer width 280px</text>
+<text x="600.0" y="423" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">Padding + borders use 36px</text>
+<text x="600.0" y="475" font-size="28" fill="#102A2B" text-anchor="start" font-weight="normal" style="font-size: 28px;">Available content width 244px</text>
+<rect x="1064.0" y="256" width="456.0" height="400" rx="24" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"></rect>
+<text x="1092.0" y="314" font-size="38" fill="#102A2B" text-anchor="start" font-weight="bold">margin</text>
+<text x="1092.0" y="371" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">Outside the border</text>
+<text x="1092.0" y="423" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">Excluded from both widths</text>
+<text x="1092.0" y="475" font-size="23" fill="#102A2B" text-anchor="start" font-weight="normal" style="font-size: 23px;">Check layout conditions for spacing</text>
+<text x="80" y="803" font-size="24" fill="#102A2B" text-anchor="start" font-weight="normal" style="font-size: 24px;">This example has no other size constraints. In an actual layout, also inspect the parent container and final computed values.</text>
+<text x="1520" y="862" font-size="24" fill="#5C6B6B" text-anchor="end" font-weight="normal">Original diagram by Mokaair</text>
+</svg>

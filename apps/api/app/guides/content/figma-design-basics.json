@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "Figma 設計入門：Frame、元件與協作交接",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "設計不只要能看；還要能修改、能解釋，並讓實作端知道未完成的部分。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -279,6 +283,1098 @@
         },
         {
           "title": "Figma：實例屬性修改與重設",
+          "url": "https://help.figma.com/hc/en-us/articles/360039150733-Apply-changes-to-instances",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Figma Design Basics: Frames, Components and Collaborative Handoff",
+      "description": "Start learning Figma with one screen you can edit and explain, without building a full design system. Using an original pet-supply borrowing page, this guide explains Frames, layers, Auto layout, main components and instances; shows how to check layouts as content grows; and compares file sharing, basic inspection and Dev Mode. Steps, a comparison table and original diagrams help you prepare a clear design handoff without mistaking a prototype for a working website.",
+      "hero": {
+        "src": "/guides/figma-design-basics/hero-en.jpg",
+        "alt": "An original Mokaair illustration of a design screen, component documentation and a handoff folder, representing Figma screen organization and collaborative delivery.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When you first open Figma, the canvas, layers, Frames and component names may leave you unsure where to begin. Start with a small task: let readers view a pet-supply item available to borrow, read the conditions of use and find where to submit an application. Organizing this screen clearly makes the basic structure easier to understand than designing many pages at once."
+        },
+        {
+          "type": "paragraph",
+          "text": "The following is an original practice workflow, with features described according to official Figma documentation consulted on 2026-9-14. This article does not actually establish a borrowing service, collect application data or activate paid seats for readers. The illustrations are original conceptual drawings, not screenshots of Figma in use."
+        },
+        {
+          "type": "heading",
+          "text": "Create a Frame to Give the Screen Clear Boundaries",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First, create a design file in Figma Design, give it a name that identifies its purpose and create the screen you want to practice with. A Frame is a container for text, shapes, images and other Frames. It can represent an entire page or a smaller section, such as a card or button."
+        },
+        {
+          "type": "paragraph",
+          "text": "Select the Frame tool or press F to draw a Frame of any size on the canvas, or choose a preset size. A preset is only a starting point; it does not mean your website only needs to support that device. Naming the screen Borrowing Details makes discussion easier than keeping an automatically generated name. Later, add a narrower version to observe how the content changes."
+        },
+        {
+          "type": "paragraph",
+          "text": "After placing the item name, illustration, borrowing conditions and application button inside the Frame, check that their layers are actually indented beneath the container in the left panel. Appearing visually inside the Frame does not necessarily mean the layer relationships are correct. Understanding parent and child layers helps you know which objects will be affected together when you move, resize or export them."
+        },
+        {
+          "type": "heading",
+          "text": "Name Layers by Purpose and Use Realistic Text",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Label layers with names such as Item Name, Borrowing Conditions and Application Button so you and your collaborators understand each object's role. Organize decorative shapes separately to avoid mixing them with interactive controls. If you select the wrong object, check the layer hierarchy first instead of repeatedly dragging on the canvas and moving other content."
+        },
+        {
+          "type": "paragraph",
+          "text": "When testing layouts, use Traditional Chinese text of realistic lengths, such as longer item names and complete borrowing reminders. Short headings and a single line of placeholder text may hide future problems with wrapping, truncation or unbalanced spacing. Clearly mark images as placeholders or confirmed assets as well, so temporary images are not mistaken for final deliverables."
+        },
+        {
+          "type": "paragraph",
+          "text": "Establish the hierarchy of headings, body text and interactive controls before adjusting decorations. Check the contrast between text and backgrounds, and do not rely on color alone to indicate whether a button is available. Include these reading requirements in the design notes so the implementation team can understand them, rather than expecting them to infer the rules from appearance alone."
+        },
+        {
+          "type": "heading",
+          "text": "Use Auto layout to Handle Longer Text and Spacing",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After selecting the content you want to arrange, press Shift + A to add Auto layout. It arranges child objects according to direction, spacing, padding and alignment, adjusting as content grows or dimensions change. Start by arranging the borrowing conditions vertically, then combine the whole card with the button."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hug contents lets an Auto layout container resize according to its content and padding; Fill container lets its child objects fill the available space; Fixed width or height maintains a specified dimension. The settings depend on whether you have selected the container or a child object, and whether you are adjusting width or height. Memorizing one option's name is not enough to apply it everywhere."
+        },
+        {
+          "type": "paragraph",
+          "text": "Replace the item name with longer text, add a second paragraph of conditions and narrow the outer Frame. Observe whether the button gets squeezed out and whether the body text wraps sensibly. If problems appear, check the sizing and arrangement settings layer by layer. Auto layout can express layout rules, but the design file itself does not automatically implement responsive code for the production website."
+        },
+        {
+          "type": "heading",
+          "text": "Turn Repeated Elements into Components with Traceable Links",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When the same button or item card begins appearing repeatedly, you can turn the design into a component. The main component defines the shared structure and appearance, while instances are linked versions you can use on different screens. This makes consistency easier to maintain than repeatedly copying groups of unrelated layers."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, the borrowing button can use the same component on the details and list pages, while its text or permitted properties can be adjusted as needed. When changing the main component, check how instances update and how overrides behave. Do not assume every locally modified property will synchronize as-is. Before detaching an instance, consider whether it really needs to be maintained independently."
+        },
+        {
+          "type": "paragraph",
+          "text": "Using components within the same file is sufficient for beginner exercises. Sharing across files involves publishing a Library, user permissions and plans; official documentation currently lists Library features under paid plans. Clearly document the names and purposes of a few components first, then decide whether wider sharing is needed, to avoid creating a component library nobody knows how to use."
+        },
+        {
+          "type": "heading",
+          "text": "Build a Prototype Flow and Gather Feedback with Clear Questions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Link Frames such as Borrowing Details and Application Prompts into a prototype to discuss what users will see after selecting a control. In the exercise, include at least a way to go back and any necessary prompts, and mark sections that have not yet been designed. A prototype demonstrates interaction ideas; it does not mean data has been saved, payments have been integrated or permissions have been verified."
+        },
+        {
+          "type": "paragraph",
+          "text": "During testing, ask participants to find the borrowing conditions and explain how to submit an application, observing whether they can locate the necessary information. Do not only ask whether the screen looks good, or point to the button and teach them how to use it first. Record your observations, participants' statements and your own assumptions separately so you know which problem to address when making changes."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can complete this workflow in your own draft first, progressing from a single screen and variable content to components and interactions. Check the areas affected by every change. If you only add pages without confirming content relationships, the eventual handoff may still lack success, error or no-data states."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Create a design file and Frame, and confirm the layer relationships among text, images and buttons.",
+            "Test layouts with realistic content lengths, then configure Auto layout and sizing behavior.",
+            "Organize repeated elements into main components and instances, and add the necessary states.",
+            "Connect the prototype, record questions awaiting confirmation and check sharing permissions before preparing the handoff."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "A Handoff Needs States and Permissions, Not Just a Link",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before sharing, confirm whether recipients need to view, comment or edit, and check the file or prototype's link settings. Having the link does not necessarily grant access, and a public link cannot limit access to designated people. Ask recipients to use their actual accounts to confirm they can open the correct screen, so insufficient permissions do not come to light on handoff day."
+        },
+        {
+          "type": "paragraph",
+          "text": "Users with viewing permissions can still perform basic inspection within the allowed scope, such as checking properties and dimensions. Advanced Dev Mode currently requires a paid plan and a Full or Dev seat, with separate rules for some viewing scenarios. It can help compare versions, check development status and view specifications, but does not automatically deliver a complete, tested product."
+        },
+        {
+          "type": "paragraph",
+          "text": "The handoff should list the current version, screens ready for implementation, unresolved questions, behavior in each state, and image and font sources. Document how to handle loading, failure, empty states and excessively long content, and confirm that exported files are usable. A handoff is truly complete when recipients know what to build, what still needs confirmation and how to refer back to the information."
+        },
+        {
+          "type": "image",
+          "src": "/guides/figma-design-basics/diagram-1-en.svg",
+          "alt": "Four cards explain the Figma beginner workflow through Frame structure, content changes, component reuse and handoff states.",
+          "width": 1600,
+          "height": 900,
+          "caption": "A design needs to be viewable, editable and explainable, and show the implementation team what remains unfinished.",
+          "description": "Four cards explain the Figma beginner workflow through Frame structure, content changes, component reuse and handoff states.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Concept",
+            "Use in the Exercise",
+            "What to Watch"
+          ],
+          "rows": [
+            [
+              "Frame",
+              "Contains screens and sections",
+              "Whether layers are actually inside it"
+            ],
+            [
+              "Auto layout",
+              "Maintains layout spacing as content changes",
+              "Parent-child relationships and sizing settings"
+            ],
+            [
+              "Main component",
+              "Defines shared buttons or cards",
+              "Naming, purpose and update effects"
+            ],
+            [
+              "Instance",
+              "Reuses components and adjusts permitted properties",
+              "Overrides and detaching"
+            ],
+            [
+              "Prototype",
+              "Supports discussion of interactions between screens",
+              "Does not equal production data processing"
+            ],
+            [
+              "Dev Mode",
+              "Advanced inspection and developer handoff",
+              "Plans, seats and implementation responsibility"
+            ]
+          ],
+          "caption": "Understand each feature's scope before adding component libraries or advanced handoff tools."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "A Clickable Prototype Still Needs Production Implementation and Testing",
+          "text": "Clearly distinguish the prototype link, the version ready for implementation and items awaiting confirmation. Layouts and interactions in the design file still need to be implemented on the website, with keyboard operation, data states and different devices checked."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "First define the task the prototype should validate",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Practice interface hierarchy and reading order",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organize the design delivery and acceptance scope",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Figma: Frames and Layer Containers",
+          "url": "https://help.figma.com/hc/en-us/articles/360041539473-Frames-in-Figma-Design",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: Auto layout and Sizing Behavior",
+          "url": "https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: Main Components and Instances",
+          "url": "https://help.figma.com/hc/en-us/articles/360038662654-Guide-to-components-in-Figma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: Library and Sharing Across Files",
+          "url": "https://help.figma.com/hc/en-us/articles/360041051154-Guide-to-libraries-in-Figma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: Sharing and Access Permissions",
+          "url": "https://help.figma.com/hc/en-us/articles/1500007609322-Guide-to-sharing-and-permissions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: Scope of Dev Mode Use",
+          "url": "https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: Seats and Basic Inspection",
+          "url": "https://help.figma.com/hc/en-us/articles/19813618057623-Dev-Mode-for-admins",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: Changing and Resetting Instance Properties",
+          "url": "https://help.figma.com/hc/en-us/articles/360039150733-Apply-changes-to-instances",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Figmaデザイン入門：Frame、コンポーネントと共同作業での引き継ぎ",
+      "description": "Figma入門は、編集でき、説明できる一枚の画面から始められます。すぐに完全なデザインシステムを構築する必要はありません。本記事では、オリジナルのペット用品貸し出しページを例に、Frame、レイヤー、Auto layout、メインコンポーネントとインスタンスの関係を整理し、内容が長くなった際のレイアウト確認方法を示します。また、ファイル共有、基本的な確認、Dev Modeの違いを説明します。操作手順、比較表、オリジナルの図解を通じて、プロトタイプを稼働中のウェブサイトと混同せず、明確なデザインの引き継ぎを行えるようにします。",
+      "hero": {
+        "src": "/guides/figma-design-basics/hero-ja.jpg",
+        "alt": "デザイン画面、コンポーネントの資料、引き継ぎフォルダーを描いたMokaairのオリジナルイラスト。Figmaでの画面整理と共同作業による納品を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Figmaを初めて開くと、キャンバス、レイヤー、Frame、コンポーネントといった名前を見て、どこから始めればよいか迷うかもしれません。まずは小さな課題を選びましょう。読者が借りられるペット用品を確認し、利用条件を読み、申請の入口を見つけられるようにします。この画面を明確に整理するほうが、一度に多くのページを描くより基本構造を理解しやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下はオリジナルの練習手順です。機能については、2026年9月14日に確認したFigmaの公式説明に基づいて整理しています。本記事では、実際の貸し出しサービスの構築、申請情報の収集、読者向けの有料シートの開設は行っていません。掲載画像は自作の概念図であり、Figmaの操作画面のスクリーンショットではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "Frameを作成し、画面の境界を明確にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まずFigma Designでデザインファイルを作成し、用途が分かる名前を付けてから、練習する画面を作ります。Frameは、テキスト、図形、画像、ほかのFrameを収めるコンテナです。ページ全体を表すことも、カードやボタンなどの小さな領域を表すこともできます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Frameツールを選ぶかFを押すと、キャンバス上でドラッグしてサイズを指定したり、プリセットのサイズを選んだりできます。プリセットは出発点にすぎず、ウェブサイトがその端末だけに対応すればよいという意味ではありません。自動生成された名前を残すより、画面を「貸し出し詳細」と名付けたほうが議論しやすくなります。その後、幅の狭い版も追加し、内容の変化を観察します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用品名、説明用の画像、貸し出し条件、申請ボタンをFrameに配置したら、左側のレイヤー一覧で、コンテナの下に正しくインデントされているか確認します。見た目が枠内にあっても、レイヤーの関係が正しいとは限りません。親レイヤーと子レイヤーを理解すると、移動、拡大縮小、書き出しの際に、どのオブジェクトが一緒に影響を受けるか分かります。"
+        },
+        {
+          "type": "heading",
+          "text": "レイヤー名で用途を示し、テキストを実際の内容に近づける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用品名、貸し出し条件、申請ボタンなどの名前をレイヤーに付け、自分と共同作業者がオブジェクトの役割を理解できるようにします。装飾用の図形は別に整理し、操作の入口と混在させないようにしましょう。誤ったものを選択したときは、まずレイヤー階層を確認します。キャンバス上で何度もドラッグすると、ほかの内容を動かしてしまうおそれがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "試しに配置する際は、長めの用品名や貸し出しの注意書き全文など、実際の長さに近い繁体字中国語を使います。短い見出しと一行のダミーテキストだけでは、後から発生する改行、切り詰め、間隔の不均衡といった問題を見逃すかもしれません。画像も仮置きか確認済みの素材かを明記し、一時的な画像を正式な納品物と誤認しないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず見出し、本文、操作の入口の階層を整理し、その後で装飾を調整します。テキストと背景のコントラストを確認し、ボタンが使用可能かどうかを色だけで示さないようにします。こうした読みやすさの要件はデザインの説明に残し、実装担当者が理解できるようにしましょう。画面の見た目だけからルールを推測してもらえるとは限りません。"
+        },
+        {
+          "type": "heading",
+          "text": "Auto layoutでテキストの長さと間隔に対応する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "並べたい内容を選択し、Shift + Aを押すとAuto layoutを追加できます。方向、間隔、内側の余白、整列方法に従って子オブジェクトを配置し、内容の追加やサイズの変化に合わせて調整できます。貸し出し条件をまず縦に並べ、その後でカード全体とボタンを組み合わせるとよいでしょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hug contentsは、内容と内側の余白に合わせてAuto layoutコンテナのサイズを調整します。Fill containerは、その子オブジェクトが利用可能なスペースを埋めるようにします。Fixed widthまたはheightは、指定したサイズを維持します。設定時には、現在選択しているのがコンテナか子オブジェクトか、幅と高さのどちらの軸かを確認する必要があります。選択肢の名前だけを覚えて、すべてに適用することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用品名をより長いテキストに変え、条件に二つ目の段落を追加し、外側のFrameの幅を狭めて、ボタンが押し出されないか、本文が適切に改行されるかを観察します。問題があれば、階層ごとにサイズと配置の設定を確認します。Auto layoutはレイアウトのルールを表現できますが、デザインファイル自体が実際のウェブサイトのレスポンシブ対応コードを自動で完成させるわけではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "繰り返す要素をコンポーネントにし、追跡できる関係を保つ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同じボタンや用品カードが繰り返し登場するようになったら、そのデザインをコンポーネントにできます。メインコンポーネントは共通の構造と外観を定義し、インスタンスはそれにリンクした、さまざまな画面に配置できる使用版です。毎回、互いに関連のないレイヤーの組を複製するより、一貫性を保ちやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、詳細ページと一覧ページの貸し出しボタンに同じコンポーネントを使い、文言や変更が許可されたプロパティを必要に応じて調整できます。メインコンポーネントを変更した際は、インスタンスの更新とオーバーライドの状況を確認しましょう。個別に変更済みのプロパティがすべて、そのまま同期されるとは限りません。インスタンスのリンクを解除する前に、本当に独立して管理する必要があるか考えてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "入門練習では、まず同じファイル内でコンポーネントを使えば十分です。ファイル間での共有には、Libraryとしての公開、ユーザー権限、プランが関わります。現在、公式ではLibrary機能を有料プランに含めています。少数のコンポーネントの名前と用途を明確に記してから、共有範囲を広げる必要があるか判断し、誰も使い方を知らないコンポーネントライブラリを作らないようにしましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "プロトタイプの流れを作り、明確な質問で意見を集める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "貸し出し詳細や申請の案内などのFrameをプロトタイプとしてつなぐと、ユーザーが入口を押した後に何を見るかを議論できます。練習では、少なくとも戻る方法と必要な案内を用意し、まだデザインしていない部分を明示します。プロトタイプが示すのは操作のアイデアであり、データの保存、決済の連携、権限の検証が済んでいるという意味ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認時は、参加者に貸し出し条件を探してもらい、申請方法を説明してもらうことで、必要な情報を見つけられるか観察できます。画面がきれいかどうかだけを聞いたり、先にボタンを指して操作を教えたりしないようにしましょう。観察したこと、相手の発言、自分の推測を分けて記録すると、修正時にどの問題を解決すべきか分かります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事の手順は、まず自分の下書きで実践できます。単一の画面と変化する内容から、コンポーネントと操作へ進めます。変更するたびに、影響する箇所を確認しましょう。ページ数だけを増やして内容の関係を確認しなければ、その後の引き継ぎでも、成功、エラー、データなしの状態が欠ける可能性があります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "デザインファイルとFrameを作成し、テキスト、画像、ボタンのレイヤー関係を確認する。",
+            "実際の長さの内容で配置を試し、Auto layoutとサイズの挙動を設定する。",
+            "繰り返す要素をメインコンポーネントとインスタンスに整理し、必要な状態を追加する。",
+            "プロトタイプをつなぎ、確認が必要な問題を記録し、共有権限を確認して引き継ぎを準備する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "引き継ぎにはリンクだけでなく、状態と権限も含める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "共有前に、受け取る人に必要なのが閲覧、コメント、編集のどれかを確認し、ファイルやプロトタイプのリンク設定を点検します。リンクを入手できても、必ずアクセス権があるとは限りません。また、公開リンクではアクセスできる人を特定の人だけに制限できません。受け取る人に実際のアカウントで正しい画面を開けるか確認してもらい、引き継ぎ当日に権限不足が判明するのを防ぎましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "閲覧権限のあるユーザーも、許可された範囲内で、プロパティやサイズの確認などの基本的な確認を行えます。高度なDev Modeの機能には現在、有料プランとFullまたはDevシートが必要で、一部の閲覧ケースには別のルールがあります。バージョンの比較、開発状況や仕様の確認に役立ちますが、完成したテスト済みの製品が自動で納品されるという意味ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引き継ぎ内容には、現在のバージョン、実装可能な画面、未決定の問題、各状態の挙動、画像とフォントの出典を記載します。読み込み中、失敗、空の状態、内容が長すぎる場合の処理方法を明記し、書き出したファイルが使用できることも確認します。受け取る人が、何をすべきか、何を確認する必要があるか、どう参照し直せばよいかを理解してこそ、引き継ぎは完了します。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/figma-design-basics/diagram-1-ja.svg",
+          "alt": "四枚のカードでFrameの構造、内容の変化、コンポーネントの再利用、引き継ぎ時の状態を整理し、Figma入門の流れを説明しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "デザインは見られるだけでなく、編集でき、説明でき、実装担当者に未完成の部分が伝わる必要があります。",
+          "description": "四枚のカードでFrameの構造、内容の変化、コンポーネントの再利用、引き継ぎ時の状態を整理し、Figma入門の流れを説明しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "概念",
+            "練習での用途",
+            "注意点"
+          ],
+          "rows": [
+            [
+              "Frame",
+              "画面や領域を収める",
+              "レイヤーが実際に中に入っているか"
+            ],
+            [
+              "Auto layout",
+              "内容に合わせて配置の間隔を保つ",
+              "親子レイヤーとサイズの設定"
+            ],
+            [
+              "メインコンポーネント",
+              "共通のボタンやカードを定義する",
+              "命名、用途、更新の影響"
+            ],
+            [
+              "インスタンス",
+              "コンポーネントを再利用し、許可されたプロパティを調整する",
+              "オーバーライドとリンク解除"
+            ],
+            [
+              "プロトタイプ",
+              "画面間の操作について議論する",
+              "実際のデータ処理とは異なる"
+            ],
+            [
+              "Dev Mode",
+              "高度な確認と開発への引き継ぎ",
+              "プラン、シート、実装の責任"
+            ]
+          ],
+          "caption": "各機能が担う範囲を理解してから、コンポーネントライブラリや高度な引き継ぎツールを追加しましょう。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "クリックできるプロトタイプにも正式な実装とテストが必要",
+          "text": "プロトタイプのリンク、実装可能なバージョン、確認が必要な事項を明確に区別しましょう。デザインファイル内のレイアウトと操作は、ウェブサイトで実装する必要があり、キーボード操作、データの状態、さまざまな端末での動作も確認する必要があります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "まずプロトタイプで検証する課題を決める",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "画面の階層と読む順序を練習する",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "デザインの納品と受け入れ確認の範囲を整理する",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Figma：Frameとレイヤーのコンテナ",
+          "url": "https://help.figma.com/hc/en-us/articles/360041539473-Frames-in-Figma-Design",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：Auto layoutとサイズの挙動",
+          "url": "https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：メインコンポーネントとインスタンス",
+          "url": "https://help.figma.com/hc/en-us/articles/360038662654-Guide-to-components-in-Figma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：Libraryとファイル間の共有",
+          "url": "https://help.figma.com/hc/en-us/articles/360041051154-Guide-to-libraries-in-Figma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：共有とアクセス権限",
+          "url": "https://help.figma.com/hc/en-us/articles/1500007609322-Guide-to-sharing-and-permissions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：Dev Modeの利用範囲",
+          "url": "https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：シートと基本的な確認",
+          "url": "https://help.figma.com/hc/en-us/articles/19813618057623-Dev-Mode-for-admins",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：インスタンスのプロパティの変更とリセット",
+          "url": "https://help.figma.com/hc/en-us/articles/360039150733-Apply-changes-to-instances",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Figma 디자인 입문: Frame, 컴포넌트와 협업·인계",
+      "description": "Figma 입문은 수정하고 설명할 수 있는 화면 하나부터 시작하면 됩니다. 완전한 디자인 시스템을 바로 만들 필요는 없습니다. 이 글은 직접 구상한 반려동물 용품 대여 페이지를 예로 들어 Frame, 레이어, Auto layout, 메인 컴포넌트와 인스턴스의 관계를 정리하고, 콘텐츠가 길어질 때 레이아웃을 점검하는 방법과 파일 공유, 기본 검사, Dev Mode의 차이를 설명합니다. 작업 단계, 비교표와 직접 제작한 도해를 통해 명확한 디자인 인계를 돕고, 프로토타입을 실제 작동하는 웹사이트로 오해하지 않도록 합니다.",
+      "hero": {
+        "src": "/guides/figma-design-basics/hero-ko.jpg",
+        "alt": "Mokaair가 직접 제작한 디자인 화면, 컴포넌트 문서와 인계 폴더 일러스트로, Figma의 화면 구성과 협업 결과물 전달을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Figma를 처음 열면 캔버스, 레이어, Frame과 컴포넌트 이름 때문에 어디서 시작해야 할지 막막할 수 있습니다. 먼저 작은 과제 하나를 정해 보세요. 독자가 대여할 수 있는 반려동물 용품 한 가지를 살펴보고, 사용 조건을 읽은 뒤 신청 경로를 찾게 하는 것입니다. 이 화면을 명확하게 정리하면 여러 페이지를 한꺼번에 그리는 것보다 기본 구조를 이해하기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "다음은 직접 구상한 연습 과정이며, 기능 설명은 2026년 9월 14일에 확인한 Figma 공식 안내를 바탕으로 정리했습니다. 이 글에서는 실제로 대여 서비스를 구축하거나 신청 정보를 수집하거나 독자의 유료 시트를 활성화하지 않았습니다. 삽화는 직접 그린 개념도이며 Figma 작업 화면을 캡처한 이미지가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "Frame을 만들어 화면의 경계를 명확하게 하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 Figma Design에서 디자인 파일을 만들고, 용도를 알아볼 수 있는 이름을 붙인 다음 연습할 화면을 만듭니다. Frame은 텍스트, 도형, 이미지와 다른 Frame을 담는 컨테이너입니다. 전체 페이지를 나타낼 수도 있고, 카드나 버튼 같은 작은 영역을 나타낼 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Frame 도구를 선택하거나 F를 누르면 캔버스에서 드래그해 크기를 정하거나 미리 설정된 크기를 선택할 수 있습니다. 미리 설정된 크기는 출발점일 뿐, 웹사이트가 해당 기기만 지원하면 된다는 뜻은 아닙니다. 화면 이름을 자동 생성된 이름 그대로 두기보다 대여 상세로 지정하면 논의하기 편합니다. 이후에는 더 좁은 버전을 추가해 콘텐츠의 변화를 살펴봅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "용품 이름, 예시 이미지, 대여 조건과 신청 버튼을 Frame에 넣은 뒤, 왼쪽 레이어 목록에서 실제로 컨테이너 아래에 들여쓰기되어 있는지 확인합니다. 화면상으로 테두리 안에 있다고 해서 레이어 관계까지 올바른 것은 아닙니다. 부모 레이어와 자식 레이어를 이해해야 이동, 크기 조절 또는 내보내기 시 어떤 객체가 함께 영향을 받는지 알 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "레이어 이름은 용도를 나타내고, 텍스트는 실제 내용에 가깝게 쓰기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "레이어에 용품 이름, 대여 조건, 신청 버튼 등의 이름을 붙여 자신과 협업자가 객체의 역할을 알 수 있게 합니다. 장식용 도형은 따로 정리해 기능 진입점과 섞이지 않도록 합니다. 잘못 선택했을 때는 먼저 레이어 계층을 확인하세요. 캔버스에서 반복해서 드래그하다가 다른 콘텐츠까지 이동시키지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "시험 배치에는 실제와 비슷한 길이의 중국어 번체 텍스트를 사용합니다. 예를 들어 긴 용품 이름과 대여 시 유의사항 전문을 넣어 봅니다. 짧은 제목과 한 줄짜리 임시 문구만 넣으면 나중에 생길 줄바꿈, 잘림 또는 간격 불균형 문제를 발견하지 못할 수 있습니다. 이미지도 자리표시자인지 확정된 자료인지 명확하게 표시해, 임시 이미지를 최종 전달물로 오해하지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "제목, 본문과 기능 진입점의 위계를 먼저 정리한 뒤 장식을 조정합니다. 텍스트와 배경의 대비를 점검하고, 버튼의 사용 가능 여부를 색상만으로 나타내서는 안 됩니다. 이러한 읽기 관련 요구사항은 디자인 설명에 남겨 구현 담당자가 이해할 수 있게 해야 합니다. 화면의 외관만 보고 규칙을 추측해 주리라 기대해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "Auto layout으로 긴 텍스트와 간격 처리하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "배치할 콘텐츠를 선택한 뒤 Shift + A를 누르면 Auto layout을 추가할 수 있습니다. 방향, 간격, 안쪽 여백과 정렬 방식에 따라 자식 객체를 배치하며, 콘텐츠가 늘어나거나 크기가 바뀔 때 함께 조정됩니다. 대여 조건을 먼저 세로로 배치한 다음 카드 전체와 버튼을 조합할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hug contents는 Auto layout 컨테이너의 크기를 콘텐츠와 안쪽 여백에 맞게 조정합니다. Fill container는 자식 객체가 사용 가능한 공간을 채우게 합니다. Fixed width 또는 height는 지정한 크기를 유지합니다. 설정할 때는 현재 선택한 대상이 컨테이너인지 자식 객체인지, 너비와 높이 중 어느 축을 설정하는지 확인해야 합니다. 옵션 이름 하나만 외워 모든 곳에 적용해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "용품 이름을 더 긴 텍스트로 바꾸고, 조건 문단을 하나 더 추가한 뒤 바깥쪽 Frame을 좁혀 보세요. 버튼이 밀려나는지, 본문이 적절하게 줄바꿈되는지 살펴봅니다. 문제가 생기면 각 계층의 크기와 배치 설정을 차례로 확인합니다. Auto layout은 레이아웃 규칙을 표현할 수 있지만, 디자인 파일 자체가 실제 웹사이트의 반응형 코드를 자동으로 완성해 주지는 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "반복 요소를 컴포넌트로 만들어 추적 가능한 관계 유지하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 버튼이나 용품 카드가 반복해서 등장하기 시작하면 해당 디자인을 컴포넌트로 만들 수 있습니다. 메인 컴포넌트는 공통 구조와 외관을 정의하며, 인스턴스는 여기에 연결되어 여러 화면에 넣어 사용하는 버전입니다. 매번 서로 연결되지 않은 레이어 묶음을 복사하는 것보다 일관성을 유지하기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 상세 페이지와 목록 페이지의 대여 버튼에 같은 컴포넌트를 사용하되, 문구나 변경이 허용된 속성은 필요에 따라 조정할 수 있습니다. 메인 컴포넌트를 수정할 때는 인스턴스의 업데이트와 덮어쓰기 상태를 확인해야 합니다. 부분적으로 수정한 모든 속성이 원래대로 동기화될 것이라고 가정해서는 안 됩니다. 인스턴스의 연결을 해제하기 전에는 정말 독립적으로 관리할 필요가 있는지 생각해 보세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "입문 연습은 같은 파일 안에서 컴포넌트를 사용하는 것만으로도 충분합니다. 파일 간 공유에는 Library로 게시하기, 사용자 권한과 요금제가 관련됩니다. 현재 공식 안내에서는 Library 기능을 유료 요금제에 포함하고 있습니다. 먼저 소수의 컴포넌트에 이름을 붙이고 용도를 명확하게 적은 뒤 공유 범위를 넓힐 필요가 있는지 결정하세요. 아무도 사용법을 모르는 컴포넌트 라이브러리를 만들지 않도록 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "프로토타입 흐름을 만들고 명확한 질문으로 의견 수집하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "대여 상세와 신청 안내 등의 Frame을 프로토타입으로 연결하면 사용자가 진입점을 눌렀을 때 무엇을 보게 되는지 논의할 수 있습니다. 연습에서도 최소한 돌아가는 방법과 필수 안내를 남겨 두고, 아직 디자인하지 않은 부분을 표시합니다. 프로토타입은 상호작용 아이디어를 보여 주는 것이며, 데이터가 저장되었거나 결제가 연동되었거나 권한 검증이 완료되었다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "검토할 때는 참여자에게 대여 조건을 찾아보고 신청 방법을 설명해 달라고 요청해, 필요한 정보를 찾을 수 있는지 관찰할 수 있습니다. 화면이 예쁜지만 묻거나 먼저 버튼을 가리키며 조작법을 알려 주지 마세요. 관찰한 내용, 상대방의 말과 자신의 추정을 구분해 기록해야 수정할 때 어떤 문제를 해결해야 하는지 알 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글의 과정은 자신의 초안에서 먼저 완성할 수 있습니다. 화면 하나와 변경 가능한 콘텐츠에서 시작해 컴포넌트와 상호작용으로 나아갑니다. 변경할 때마다 영향을 받는 부분을 확인하세요. 콘텐츠의 관계를 확인하지 않고 페이지 수만 늘리면, 이후 인계할 때 성공, 오류 또는 데이터가 없는 상태가 여전히 빠질 수 있습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "디자인 파일과 Frame을 만들고 텍스트, 이미지와 버튼의 레이어 관계를 확인합니다.",
+            "실제 길이의 콘텐츠로 시험 배치한 뒤 Auto layout과 크기 동작을 설정합니다.",
+            "반복 요소를 메인 컴포넌트와 인스턴스로 정리하고 필요한 상태를 추가합니다.",
+            "프로토타입을 연결하고 확인할 질문을 기록한 뒤, 공유 권한을 점검해 인계를 준비합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "인계에는 링크뿐 아니라 상태와 권한도 포함하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "공유하기 전에 받는 사람에게 보기, 댓글 작성 또는 편집 중 어떤 권한이 필요한지 확인하고 파일이나 프로토타입의 링크 설정을 점검합니다. 링크를 받을 수 있다고 해서 반드시 접근 권한이 있는 것은 아닙니다. 공개 링크를 특정 사람만 접근하도록 제한하는 수단으로 삼아서도 안 됩니다. 받는 사람이 실제 계정으로 올바른 화면을 열 수 있는지 확인하게 해, 인계 당일에야 권한 부족을 발견하는 일을 피하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "보기 권한이 있는 사용자도 허용된 범위 안에서 속성과 크기를 확인하는 등의 기본 검사를 할 수 있습니다. 고급 Dev Mode는 현재 유료 요금제와 Full 또는 Dev 시트가 필요하며, 일부 열람 상황에는 별도 규칙이 적용됩니다. 버전 비교, 개발 상태와 사양 확인을 도울 수 있지만, 완성되고 테스트를 마친 제품을 자동으로 전달한다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인계 내용에는 현재 버전, 구현 가능한 화면, 아직 결정하지 않은 문제, 각 상태의 동작, 이미지와 글꼴의 출처를 적어야 합니다. 로딩 중, 실패, 빈 상태와 콘텐츠가 너무 긴 경우의 처리 방법을 명시하고, 내보낸 파일을 사용할 수 있는지 확인합니다. 인계가 실제로 완료되었다는 것은 받는 사람이 무엇을 해야 하는지, 어떤 확인 사항이 남아 있는지, 어떻게 다시 찾아볼 수 있는지 아는 상태를 뜻합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/figma-design-basics/diagram-1-ko.svg",
+          "alt": "네 장의 카드로 Frame 구조, 콘텐츠 변화, 컴포넌트 재사용과 인계 상태를 정리해 Figma 입문 과정을 설명합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "디자인은 보기 좋을 뿐 아니라 수정하고 설명할 수 있어야 하며, 구현 담당자에게 미완성 부분도 알려 주어야 합니다.",
+          "description": "네 장의 카드로 Frame 구조, 콘텐츠 변화, 컴포넌트 재사용과 인계 상태를 정리해 Figma 입문 과정을 설명합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "개념",
+            "연습에서의 용도",
+            "유의사항"
+          ],
+          "rows": [
+            [
+              "Frame",
+              "화면과 영역을 담기",
+              "레이어가 실제로 내부에 있는지 확인"
+            ],
+            [
+              "Auto layout",
+              "콘텐츠에 맞춰 배치 간격 유지",
+              "부모·자식 레이어와 크기 설정"
+            ],
+            [
+              "메인 컴포넌트",
+              "공통 버튼이나 카드 정의",
+              "이름, 용도와 업데이트의 영향"
+            ],
+            [
+              "인스턴스",
+              "컴포넌트 재사용 및 허용된 속성 조정",
+              "덮어쓰기와 연결 해제"
+            ],
+            [
+              "프로토타입",
+              "화면 간 상호작용 논의",
+              "실제 데이터 처리와는 다름"
+            ],
+            [
+              "Dev Mode",
+              "고급 검사와 개발 인계",
+              "요금제, 시트와 구현 책임"
+            ]
+          ],
+          "caption": "각 기능의 작업 범위를 먼저 이해한 뒤 컴포넌트 라이브러리나 고급 인계 도구를 추가하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "클릭 가능한 프로토타입도 실제 구현과 테스트가 필요합니다",
+          "text": "프로토타입 링크, 구현 가능한 버전과 확인할 사항을 명확히 구분하세요. 디자인 파일의 레이아웃과 상호작용은 웹사이트에서 구현해야 하며, 키보드 조작, 데이터 상태와 다양한 기기에서도 점검해야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "프로토타입으로 검증할 과제부터 정하기",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "인터페이스 위계와 읽기 순서 연습하기",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "디자인 전달과 검수 범위 정리하기",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Figma: Frame과 레이어 컨테이너",
+          "url": "https://help.figma.com/hc/en-us/articles/360041539473-Frames-in-Figma-Design",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: Auto layout과 크기 동작",
+          "url": "https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: 메인 컴포넌트와 인스턴스",
+          "url": "https://help.figma.com/hc/en-us/articles/360038662654-Guide-to-components-in-Figma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: Library와 파일 간 공유",
+          "url": "https://help.figma.com/hc/en-us/articles/360041051154-Guide-to-libraries-in-Figma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: 공유와 접근 권한",
+          "url": "https://help.figma.com/hc/en-us/articles/1500007609322-Guide-to-sharing-and-permissions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: Dev Mode 사용 범위",
+          "url": "https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: 시트와 기본 검사",
+          "url": "https://help.figma.com/hc/en-us/articles/19813618057623-Dev-Mode-for-admins",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: 인스턴스 속성 수정과 재설정",
+          "url": "https://help.figma.com/hc/en-us/articles/360039150733-Apply-changes-to-instances",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Figma 设计入门：Frame、组件与协作交接",
+      "description": "Figma 入门可以先从一张能修改、能说明的画面开始，不必立即建立完整设计系统。本文以原创宠物用品借用页为例，整理 Frame、图层、Auto layout、主组件与实例的关系，示范内容变长时如何检查布局，并说明文件分享、基本查看与 Dev Mode 的区别。附操作步骤、比较表和原创图解，帮助完成清楚的设计交接，而不把原型当成已运行的网站。",
+      "hero": {
+        "src": "/guides/figma-design-basics/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创设计画面、组件文档与交接文件夹插图，代表 Figma 的画面组织和协作交付。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "刚打开 Figma，画布、图层、Frame 和组件名称可能让人不知道从哪里开始。可以先选一个小任务：让读者查看一件可借用的宠物用品，读到使用条件，再找到提交申请的入口。把这个画面整理清楚，比一次画很多页更容易理解基本结构。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是原创练习流程，功能依据 2026 年 9 月 14 日查阅的 Figma 官方说明整理。本文没有实际建立借用服务、收集申请资料或为读者开通付费席位；配图是自行绘制的概念图，并非 Figma 操作截图。"
+        },
+        {
+          "type": "heading",
+          "text": "建立一个 Frame，让画面有清楚的边界",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先在 Figma Design 建立设计文件，为文件取能识别用途的名称，再建立要练习的画面。Frame 是容纳文字、形状、图片和其他 Frame 的容器，既能代表整个页面，也能代表卡片或按钮等较小区块。"
+        },
+        {
+          "type": "paragraph",
+          "text": "选择 Frame 工具或按 F，可以在画布上拖出尺寸，也能选择预设尺寸。预设只是起点，不表示你的网站只需要支持那个设备。将画面命名为借用详情，比保留自动生成的名称更方便讨论；后续再增加较窄的版本，观察内容变化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把用品名称、示意图、借用条件及申请按钮放入 Frame 后，查看左侧图层是否确实缩进在容器下方。视觉上位于框内，不一定代表图层关系正确。理解父层与子层，才能在移动、缩放或导出时知道哪些对象会一起受到影响。"
+        },
+        {
+          "type": "heading",
+          "text": "图层命名要说明用途，文字要接近真实内容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用用品名称、借用条件、申请按钮等名称标记图层，让自己和协作者知道对象的角色。装饰图形可以另行整理，避免和操作入口混在一起。选错对象时，先看图层层级，而不是反复在画布上拖动，导致其他内容被移动。"
+        },
+        {
+          "type": "paragraph",
+          "text": "试排时使用接近真实长度的繁体中文，例如较长的用品名称与完整借用提醒。只放短标题和一行占位文字，可能看不到日后换行、截断或间距失衡的问题。图片也要标清楚是占位图还是已确认素材，避免把暂用图当成正式交付。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先整理标题、正文和操作入口的层级，再调整装饰。对文字与背景做对比检查，按钮不能只靠颜色表示是否可用。这些阅读需求应保留在设计说明中，方便开发方理解，不能期待对方仅靠画面外观猜出规则。"
+        },
+        {
+          "type": "heading",
+          "text": "用 Auto layout 处理文字变长与间距",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "选中要排列的内容后，可按 Shift + A 加入 Auto layout。它按照方向、间距、内边距和对齐方式安排子对象，内容增加或尺寸变化时能跟着调整。借用条件可以先做成垂直排列，再把整张卡片与按钮组合起来。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hug contents 让 Auto layout 容器根据内容与内边距调整大小；Fill container 则让其子对象填满可用空间；Fixed width 或 height 保持指定尺寸。设置要看当前选中的是容器还是子对象，以及宽度或高度哪一轴，不能只记一个选项名称就套用全部。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把用品名称换成更长的文字，加入第二段条件，再拉窄外层 Frame，观察按钮是否被挤掉、正文是否合理换行。若出了问题，逐层检查尺寸与排列设置。Auto layout 可表达布局规则，但设计文件本身不会自动为正式网站完成响应式代码编写。"
+        },
+        {
+          "type": "heading",
+          "text": "把重复元素做成组件，保留可追踪的关系",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "当相同按钮或用品卡片开始重复出现，可以将设计创建为组件。主组件定义共用结构与外观，实例则是关联到它、可放进不同画面的使用版本。这比每次复制一组互不关联的图层，更容易保持一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如借用按钮在详情页与列表页使用同一组件，但文案或允许的属性可根据需求调整。修改主组件时，要查看实例的更新及覆盖情况，不能假设每个已被局部修改的属性都会照原样同步。解除实例关联前，先想清楚是否真的需要独立维护。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在同一文件内使用组件，可以先满足入门练习。跨文件分享则涉及发布为 Library、用户权限与套餐；目前官方将 Library 功能列于付费套餐。先把少量组件的命名与用途写清楚，再决定是否需要扩大共享，避免建立没有人知道怎么用的组件库。"
+        },
+        {
+          "type": "heading",
+          "text": "建立原型流程，再用明确问题收集意见",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "将借用详情与申请提示等 Frame 串成原型，可以讨论用户点击入口后会看到什么。练习至少保留返回方式和必要提示，并标出尚未设计的部分。原型展示的是交互想法，不表示数据已保存、支付已接入或权限已验证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "检查时可以请参与者找出借用条件，再说明如何提交申请，观察是否找得到必要信息。不要只问画面好不好看，也别先指着按钮教对方操作。把观察、对方说法和自己的推测分开记录，修改时才知道要解决哪个问题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇流程可先在自己的草稿中完成：从单张画面、可变动的内容，进展到组件与交互。每做一个变更就检查它影响的地方。若只增加页数却没有确认内容关系，后续交接仍可能缺少成功、错误或没有数据的状态。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "建立设计文件与 Frame，确认文字、图片及按钮的图层关系。",
+            "用真实长度的内容试排，再设置 Auto layout 和尺寸行为。",
+            "将重复元素整理成主组件与实例，补上必要状态。",
+            "串联原型、记录待确认问题，核对分享权限后准备交接。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "交接要包含状态与权限，不只有一个链接",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "分享前确认接收者需要查看、评论还是编辑，并检查文件或原型的链接设置。能取得链接不代表一定有访问权限，也不能把公开链接当成限制特定人的方式。请接收者用实际账号确认能打开正确画面，避免交接当天才发现权限不足。"
+        },
+        {
+          "type": "paragraph",
+          "text": "具有查看权限的用户仍可在允许范围内做基本检查，例如查看属性与尺寸；进阶 Dev Mode 目前需付费套餐及 Full 或 Dev 席位，部分查看场景另有规则。它可帮助对比版本、查看开发状态和规格，但不代表自动交付完整且已测试的产品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交接内容应列出当前版本、可开发的画面、尚未决定的问题、各状态行为，以及图片和字体来源。把加载中、失败、空白与内容过长的处理方式写明，并确认导出文件可用。真正完成交接，是接收者知道要做什么、有哪些待确认事项及如何回查。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/figma-design-basics/diagram-1-zh-cn.svg",
+          "alt": "四张卡片整理 Frame 结构、内容变化、组件复用与交接状态，说明 Figma 入门流程。",
+          "width": 1600,
+          "height": 900,
+          "caption": "设计不只要能看；还要能修改、能解释，并让开发方知道未完成的部分。",
+          "description": "四张卡片整理 Frame 结构、内容变化、组件复用与交接状态，说明 Figma 入门流程。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "概念",
+            "在练习中的用途",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "Frame",
+              "容纳画面与区块",
+              "图层是否真的位于其中"
+            ],
+            [
+              "Auto layout",
+              "根据内容保持排列间距",
+              "父子层与尺寸设置"
+            ],
+            [
+              "主组件",
+              "定义共用按钮或卡片",
+              "命名、用途与更新影响"
+            ],
+            [
+              "实例",
+              "复用组件并调整允许的属性",
+              "覆盖与解除关联"
+            ],
+            [
+              "原型",
+              "讨论画面之间的交互",
+              "不等于正式数据处理"
+            ],
+            [
+              "Dev Mode",
+              "进阶查看与开发交接",
+              "套餐、席位及开发责任"
+            ]
+          ],
+          "caption": "先理解各功能的工作范围，再增加组件库或进阶交接工具。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "可点击的原型仍需要正式开发与测试",
+          "text": "把原型链接、可开发版本与待确认事项分清楚。设计文件中的排版和交互，还需要在网站中实现，并检查键盘操作、数据状态及不同设备。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先确定原型要验证的任务",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "练习界面层级与阅读顺序",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理设计交付与验收范围",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Figma：Frame 与图层容器",
+          "url": "https://help.figma.com/hc/en-us/articles/360041539473-Frames-in-Figma-Design",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：Auto layout 与尺寸行为",
+          "url": "https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：主组件与实例",
+          "url": "https://help.figma.com/hc/en-us/articles/360038662654-Guide-to-components-in-Figma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：Library 与跨文件共享",
+          "url": "https://help.figma.com/hc/en-us/articles/360041051154-Guide-to-libraries-in-Figma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：分享与访问权限",
+          "url": "https://help.figma.com/hc/en-us/articles/1500007609322-Guide-to-sharing-and-permissions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：Dev Mode 使用范围",
+          "url": "https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：席位与基本查看",
+          "url": "https://help.figma.com/hc/en-us/articles/19813618057623-Dev-Mode-for-admins",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：实例属性修改与重置",
           "url": "https://help.figma.com/hc/en-us/articles/360039150733-Apply-changes-to-instances",
           "checked_on": "2026-09-14"
         }

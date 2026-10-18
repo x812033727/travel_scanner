@@ -25,7 +25,7 @@ from typing import Any
 
 import httpx
 
-from app.video_speech.azure import USER_AGENT, SpeechUpstreamError
+from app.video_speech.azure import USER_AGENT, SpeechUpstreamError, transport_failure
 from app.video_speech.ssml import Segment
 
 VOICE_PREFIX = "gemini:"
@@ -132,6 +132,18 @@ class GeminiSpeech:
         model: str = DEFAULT_GEMINI_TTS_MODEL,
         client: httpx.AsyncClient | None = None,
     ) -> bytes:
+        audio, _ = await self.synthesize_with_usage(text, voice, style, model, client)
+        return audio
+
+    async def synthesize_with_usage(
+        self,
+        text: str,
+        voice: str,
+        style: str | None = None,
+        model: str = DEFAULT_GEMINI_TTS_MODEL,
+        client: httpx.AsyncClient | None = None,
+    ) -> tuple[bytes, dict[str, Any]]:
+        """Return the audio and provider usage for a pilot's durable USD settlement."""
         owned = client is None
         http = client or httpx.AsyncClient(timeout=self.timeout_seconds, trust_env=False)
         try:
@@ -142,7 +154,7 @@ class GeminiSpeech:
                 headers={"x-goog-api-key": self.key, "User-Agent": USER_AGENT},
             )
         except httpx.HTTPError as error:
-            raise SpeechUpstreamError(502, f"Gemini unreachable: {type(error).__name__}") from error
+            raise transport_failure("Gemini", error) from error
         finally:
             if owned:
                 await http.aclose()
@@ -152,4 +164,7 @@ class GeminiSpeech:
                 f"Gemini answered HTTP {response.status_code}",
                 response.headers.get("Retry-After"),
             )
-        return audio_from(response.json())
+        payload = response.json()
+        audio = audio_from(payload)
+        metadata = payload.get("usageMetadata") if isinstance(payload, dict) else None
+        return audio, metadata if isinstance(metadata, dict) else {}

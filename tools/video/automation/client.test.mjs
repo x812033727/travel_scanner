@@ -69,7 +69,23 @@ test("a generic upstream failure remains a service error with bounded retries", 
     return true;
   });
   assert.equal(calls, 3);
-  assert.deepEqual(sleeps, [5000, 10000, 20000]);
+  assert.deepEqual(sleeps, [5000, 10000], "no wait after the last attempt");
+});
+
+test("a site that stays unreachable is told after the last attempt, with no wait after it", async () => {
+  let calls = 0;
+  const sleeps = [];
+  const client = automationClient({
+    ...credentials(sandbox()),
+    fetch: async () => {
+      calls++;
+      throw failed("ECONNREFUSED");
+    },
+    sleep: async (ms) => sleeps.push(ms),
+  }, { attempts: 3 });
+  await assert.rejects(client.settings(), (error) => error instanceof AutomationError && error.code === "network");
+  assert.equal(calls, 3);
+  assert.deepEqual(sleeps, [5000, 10000]);
 });
 
 test("an error keeps the seconds of the server's Retry-After, for a stage run and for any other request; without the header, or with a date in it, it carries none", async () => {
@@ -81,8 +97,11 @@ test("an error keeps the seconds of the server's Retry-After, for a stage run an
   // Before: only a durable writer's failed receipt carried it, so flow.mjs deferred every other request by its own clock.
   answer = refused(429, "rate_limit_exceeded", "900");
   await assert.rejects(client.run("verifier", "draft-example", "Check", {}), (error) => error.status === 429 && error.retry_after === 900);
-  assert.deepEqual(sleeps, [120_000, 120_000], "the client's own sleeps stay capped at two minutes");
+  assert.deepEqual(sleeps, [], "a limit that opens after the longest sleep is not tried again: every try would count against it");
   await assert.rejects(client.reviews("draft-example"), (error) => error.code === "rate_limit_exceeded" && error.retry_after === 900);
+  answer = refused(429, "rate_limit_exceeded", "90");
+  await assert.rejects(client.run("verifier", "draft-example", "Check", {}), (error) => error.status === 429 && error.retry_after === 90);
+  assert.deepEqual(sleeps, [90_000], "one that opens within it is waited for, and none follows the last attempt");
   answer = refused(503, "video_ai_upstream_busy", "30");
   await assert.rejects(client.run("translator", "draft-example", "Translate", {}), (error) => error.code === "video_ai_upstream_busy" && error.retry_after === 30);
   // A refusal that is thrown at once keeps it too.
@@ -194,6 +213,12 @@ test("a stage run sent and left without its answer is not sent again: the route'
       throw failed("UND_ERR_HEADERS_TIMEOUT");
     }, 0],
     ["an answer that breaks off", () => new Response('{"text": "{\\"worksheet\\"', { status: 200, headers: { "Content-Type": "application/json" } }), 200],
+    // Only the route's 502 says the API was never reached; no route answers the code otherwise.
+    ["an upstream_unavailable no route answers", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 503 }), 503],
+    ["an upstream_unavailable at a gateway's 504", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 504 }), 504],
+    ["a provider_unavailable at another status", () => Response.json({ code: "provider_unavailable", detail: "?" }, { status: 500 }), 500],
+    ["a 502 with a code that settles nothing", () => Response.json({ code: "video_ai_run_uncertain", detail: "the stage may have run" }, { status: 502 }), 502],
+    ["a rate_limit_unavailable at another status", () => Response.json({ code: "rate_limit_unavailable", detail: "安全驗證服務暫時無法使用" }, { status: 500 }), 500],
   ];
   for (const [what, answer, status] of lost) {
     const box = sandbox();
@@ -231,6 +256,8 @@ test("a stage run that never reached a server, or that the API settled, is still
     ["the web route that never reached the API", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 502 })],
     ["the API's rate limit", () => Response.json({ code: "rate_limit_exceeded", detail: "slow down" }, { status: 429 })],
     ["a busy vendor", () => Response.json({ code: "video_ai_upstream_busy", detail: "busy" }, { status: 503 })],
+    // Redis could not count the call, so the API refused it before the stage ran.
+    ["the API's rate limiter away", () => Response.json({ code: "rate_limit_unavailable", detail: "安全驗證服務暫時無法使用" }, { status: 503 })],
   ];
   for (const [what, answer] of settled) {
     const box = sandbox();
@@ -297,6 +324,9 @@ test("a Jev judgement sent and left without its answer is not asked again: a dro
     // Only the route's never-reached 502 settles a judgement; the API's 502 for a Jev call whose
     // outcome it cannot tell (2026-10-05-jev-judge-endpoints-report-an-uncertain) does not.
     ["the API's uncertain Jev outcome", () => Response.json({ code: "video_judge_outcome_uncertain", detail: "Jev 可能已經判斷" }, { status: 502 }), 502],
+    // Nor does the never-reached code with any other status (2026-10-07-automation-client-settles-a-judge-route).
+    ["an upstream_unavailable no route answers", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 503 }), 503],
+    ["an upstream_unavailable at a gateway's 504", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 504 }), 504],
   ];
   for (const [method, route, body] of JUDGES) {
     for (const [what, answer, status] of lost) {
@@ -337,6 +367,7 @@ test("a Jev judgement that never reached a server, or that the API settled, is a
     ["the API's answer after Jev failed", () => Response.json({ code: "video_judge_upstream_failed", detail: "Jev 暫時無法判斷" }, { status: 502 })],
     ["the judge's hourly limit", () => Response.json({ code: "rate_limit_exceeded", detail: "slow down" }, { status: 429 })],
     ["the spent Jev budget", () => Response.json({ code: "jev_budget_exhausted", detail: "今天的 Jev 呼叫次數已用完" }, { status: 429 })],
+    ["the API's rate limiter away", () => Response.json({ code: "rate_limit_unavailable", detail: "安全驗證服務暫時無法使用" }, { status: 503 })],
   ];
   for (const [method, route, body, verdict] of JUDGES) {
     for (const [what, answer] of settled) {
@@ -393,6 +424,14 @@ test("a judge's refusal is thrown after one request, with the status its callers
       await assert.rejects(client[method](body), (error) => error instanceof AutomationError && error.status === status && error.code === code && error.message === detail);
       assert.equal(calls, 1, `${method}, ${status}`);
     }
+    // Jev's key not set, raised before any Jev call: a setting for the owner, never a lost verdict.
+    let calls = 0;
+    const unset = automationClient({ ...credentials(sandbox()), fetch: async () => {
+      calls++;
+      return Response.json({ code: "provider_unavailable", detail: "尚未設定 Jev API 金鑰" }, { status: 503 });
+    }, sleep: async () => {} });
+    await assert.rejects(unset[method](body), (error) => error instanceof AutomationError && error.code === "provider_unavailable" && error.who === "owner" && error.status === 503);
+    assert.equal(calls, 1, `${method}: Jev's key not set`);
   }
 });
 
@@ -429,6 +468,9 @@ test("the owner's slides requests go through the worker relay, and a site from b
   assert.deepEqual(sleeps, []);
 });
 
+// The durable poll budget counts only the client's own waits: a stalled event loop under a full
+// suite must not spend the few milliseconds these tests give it before the mocked answer arrives.
+const fixedClock = () => 0;
 const DURABLE_SLUG = "saved-writer";
 const DURABLE_PATH = "/api/video/automation/run/jobs";
 const savedAnswer = { text: '{"answer":"exact saved body"}', provider: "gemini", model: "original-model", input_tokens: 20, output_tokens: 15, usage: { tokens: 35, token_budget: 1000 } };
@@ -441,8 +483,8 @@ function job(body, status = "succeeded") {
     provider: savedAnswer.provider, model: savedAnswer.model, status, result: status === "succeeded" ? savedAnswer : null,
     error_code: null, error_detail: null, error_status: null, retry_after: null };
 }
-function durableClient(box, fetch, options = {}) {
-  return automationClient({ ...credentials(box), root: box.root, fetch: async (url, init) => {
+function durableClient(box, fetch, options = {}, pollClock = fixedClock) {
+  return automationClient({ ...credentials(box), root: box.root, pollClock, fetch: async (url, init) => {
     if (new URL(url).pathname === "/api/video/automation/settings") return Response.json({ durable_stage_runs: true, model: "new-model" });
     return fetch(url, init);
   }, sleep: async () => {} }, { durablePollMs: 5, durablePollIntervalMs: 5, ...options });
@@ -534,7 +576,7 @@ test("a project STOP keeps a translation unit from being submitted; its request 
 
 test("a translation stays on the synchronous route while the site has not turned durable runs on", async () => {
   const box = sandbox(), routes = [];
-  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+  const client = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, sleep: async () => {}, fetch: async (url, init) => {
     const route = new URL(url).pathname;
     routes.push(route);
     if (route.endsWith("/settings")) return Response.json({ durable_stage_runs: false });
@@ -566,7 +608,7 @@ test("a pending writer restarts with GET and returns the persisted result despit
   await restarted.settings();
   assert.deepEqual(await runWriter(restarted), savedAnswer);
   // A crash before settle leaves the completed result, available even without settings or HTTP.
-  const disconnected = automationClient({ ...credentials(box), root: box.root, fetch: async () => assert.fail("completed results must be recovered before provider/budget checks") });
+  const disconnected = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, fetch: async () => assert.fail("completed results must be recovered before provider/budget checks") });
   assert.deepEqual(await runWriter(disconnected), savedAnswer);
   disconnected.settleRuns([DURABLE_SLUG]);
   assert.deepEqual(durableFiles(box), []);
@@ -606,6 +648,94 @@ test("a client lists a video's saved runs whose answer is still to be taken, fro
   writeFileSync(durableFiles(box)[0], "{ not json");
   assert.deepEqual(client.untakenRuns(DURABLE_SLUG), []);
   await assert.rejects(discuss(client), (error) => error.code === RUN_UNCERTAIN && /unreadable/.test(error.message));
+});
+
+test("a pending writer whose last receipt look-up failed says why on the error, and one whose receipt was read since keeps no old cause", async () => {
+  const box = sandbox();
+  let original;
+  const first = durableClient(box, async (_url, init) => {
+    if (init.method === "POST") original = JSON.parse(init.body);
+    return Response.json(job(original, "running"));
+  });
+  await first.settings();
+  await assert.rejects(runWriter(first), (error) => error.code === RUN_PENDING && error.why === undefined && error.message === "the saved stage run is still pending; its receipt will be recovered next round");
+  const limited = () => Response.json({ code: "rate_limit_exceeded", detail: "請求過於頻繁" }, { status: 429 });
+  // Every look-up rate-limited: the job may be done, and the error says what failed.
+  const throttled = durableClient(box, async (_url, init) => {
+    assert.equal(init.method, "GET");
+    return limited();
+  });
+  await throttled.settings();
+  await assert.rejects(runWriter(throttled), (error) => error.code === RUN_PENDING && error.why === "請求過於頻繁" && error.message === "the saved stage run is still pending (請求過於頻繁); its receipt will be recovered next round");
+  // A look-up rate-limited, then the receipt read as running: the earlier failure is not the reason any more.
+  // The budget is spent in the client's (fake) sleeps, not in real time: a 40 ms budget lost its
+  // second look-up whenever the event loop stalled that long, which a loaded test run does.
+  let gets = 0;
+  const recovered = durableClient(box, async () => (++gets === 1 ? limited() : Response.json(job(original, "running"))), { durablePollMs: 3000, durablePollIntervalMs: 1000 });
+  await recovered.settings();
+  await assert.rejects(runWriter(recovered), (error) => error.code === RUN_PENDING && error.why === undefined && error.message === "the saved stage run is still pending; its receipt will be recovered next round");
+  assert.equal(gets, 3, "one look-up per second of the budget");
+  // The stale run of an earlier request that could not be looked up says why too.
+  const stale = durableClient(box, async () => limited());
+  await stale.settings();
+  await assert.rejects(runWriter(stale, { text: "改過的原稿", rows: [1] }), (error) => error.code === RUN_PENDING && error.why === "請求過於頻繁" && /could not be looked up: 請求過於頻繁/.test(error.message));
+});
+
+test("the poll's own deadline cutting a look-up short is no failed request once the server answered in the call; a look-up the server never answered, a refused submission and a lost connection say what failed", async () => {
+  const box = sandbox();
+  let original;
+  const first = durableClient(box, async (_url, init) => {
+    if (init.method === "POST") original = JSON.parse(init.body);
+    return Response.json(job(original, "running"));
+  });
+  await first.settings();
+  await assert.rejects(runWriter(first), (error) => error.code === RUN_PENDING);
+  // A look-up that waits for the server until the client gives up on it, as fetch does.
+  // AbortSignal.timeout's timer does not hold the event loop open; a real socket would.
+  const hang = (init) => new Promise((_resolve, reject) => {
+    const socket = setInterval(() => {}, 5);
+    init.signal.addEventListener("abort", () => {
+      clearInterval(socket);
+      reject(init.signal.reason);
+    });
+  });
+  // Read as running, then the next look-up outlasts what is left of the budget: the read stands.
+  // The (fake) wait takes all of the budget but the real time the first look-up took, 5 ms here,
+  // which is what the second look-up gets: with a 40 ms budget spent in real time, a stalled event
+  // loop left none for it.
+  let gets = 0;
+  const cut = durableClient(box, async (_url, init) => {
+    if (++gets > 1) return hang(init);
+    await new Promise((resolve) => setTimeout(resolve, 5));
+    return Response.json(job(original, "running"));
+  }, { durablePollMs: 25_000, durablePollIntervalMs: 25_000 }, Date.now); // the real 5 ms is what this case measures
+  await cut.settings();
+  await assert.rejects(runWriter(cut), (error) => error.code === RUN_PENDING && error.why === undefined && error.message === "the saved stage run is still pending; its receipt will be recovered next round");
+  assert.equal(gets, 2);
+  // No look-up answered at all in the call: that is a failed request.
+  const silent = durableClient(box, async (_url, init) => hang(init), { durablePollMs: 20, durablePollIntervalMs: 30 });
+  await silent.settings();
+  await assert.rejects(runWriter(silent), (error) => error.code === RUN_PENDING && error.why === "The operation was aborted due to timeout");
+  // A lost connection names its cause, not undici's "fetch failed"; several failed addresses (no message) name the code.
+  const refused = durableClient(box, async () => { throw new TypeError("fetch failed", { cause: Object.assign(new Error("connect ECONNREFUSED 10.0.0.2:3000"), { code: "ECONNREFUSED" }) }); });
+  await refused.settings();
+  await assert.rejects(runWriter(refused), (error) => error.code === RUN_PENDING && error.why === "connect ECONNREFUSED 10.0.0.2:3000");
+  const everywhere = durableClient(box, async () => { throw new TypeError("fetch failed", { cause: Object.assign(new AggregateError([], ""), { code: "ECONNREFUSED" }) }); });
+  await everywhere.settings();
+  await assert.rejects(runWriter(everywhere), (error) => error.code === RUN_PENDING && error.why === "ECONNREFUSED");
+  // A submission the rate limit refused before any job was made: no receipt, and the cause. It is
+  // sent the client's attempts under its one key and no more, however much of the budget is left.
+  const fresh = sandbox(), keys = [];
+  const throttled = durableClient(fresh, async (_url, init) => {
+    assert.equal(init.method, "POST");
+    keys.push(JSON.parse(init.body).request_key);
+    return Response.json({ code: "rate_limit_exceeded", detail: "請求過於頻繁" }, { status: 429 });
+  }, { durablePollMs: 5000, durablePollIntervalMs: 1 });
+  await throttled.settings();
+  await assert.rejects(runWriter(throttled), (error) => error.code === RUN_PENDING && error.why === "請求過於頻繁");
+  assert.equal(keys.length, 4, "the client's attempts, no more");
+  assert.equal(new Set(keys).size, 1, "under one key");
+  assert.equal(JSON.parse(readFileSync(durableFiles(fresh)[0], "utf8")).receipt, null);
 });
 
 test("malformed and rebound receipts preserve their saved key and never dispatch a replacement run", async () => {
@@ -1005,7 +1135,7 @@ test("definitive failed receipts surface their stored error, and input changes w
   await assert.rejects(runWriter(pending), (error) => error.code === RUN_PENDING);
   const [file] = durableFiles(pendingBox), before = readFileSync(file, "utf8");
   calls.length = 0;
-  await assert.rejects(runWriter(pending, { text: "new source" }), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG && /still running/.test(error.message));
+  await assert.rejects(runWriter(pending, { text: "new source" }), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG && /still running/.test(error.message) && error.why === undefined, "a stale job the server reads as running is no failed request");
   assert.deepEqual(calls, ["GET"], "the running job is looked up once and nothing new is paid for");
   assert.deepEqual(durableFiles(pendingBox), [file]);
   assert.equal(readFileSync(file, "utf8"), before, "the running journal is intact for the next round");
@@ -1025,10 +1155,42 @@ test("durable capability preserves the synchronous planner and bounded anime/sto
   assert.deepEqual(durableFiles(box, "draft-example"), []);
 });
 
+test("all budgeted story chapters always use saved jobs for writing and checks", async () => {
+  for (const slug of [
+    "story-rolling-suitcase", "story-conveyor-belt-sushi",
+    "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2",
+    "story-five-lego-legoland", "story-five-costco-hot-dog",
+    "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
+    "story-five-pringles-vat-case",
+  ]) {
+    for (const stage of ["writer", "verifier", "listener"]) {
+      const box = sandbox(), routes = [];
+      const client = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, sleep: async () => {}, fetch: async (url, init) => {
+        const route = new URL(url).pathname;
+        if (route === "/api/video/automation/settings") return Response.json({ durable_stage_runs: false });
+        routes.push(route);
+        assert.equal(route, DURABLE_PATH, `${slug} ${stage} bypassed the durable budget gate`);
+        const body = JSON.parse(init.body);
+        const files = durableFiles(box, slug);
+        assert.equal(files.length, 1, "the request key is persisted before dispatch");
+        assert.equal(JSON.parse(readFileSync(files[0], "utf8")).request_key, body.request_key);
+        assert.equal(body.variant, "story");
+        assert.equal(body.stage, stage);
+        return Response.json(job(body));
+      } }, { durablePollMs: 5, durablePollIntervalMs: 5 });
+      await client.settings();
+      assert.deepEqual(await client.run(stage, slug, "Review one chapter", { chapter: "hook" }, 16_000, "drama", "story"), savedAnswer);
+      assert.deepEqual(routes, [DURABLE_PATH]);
+      client.settleRuns([slug]);
+      assert.deepEqual(durableFiles(box, slug), []);
+    }
+  }
+});
+
 test("the durable polling window caps at 25 seconds and leaves the paid operation saved for the next round", async () => {
   const box = sandbox(), sleeps = [], calls = [];
   let original;
-  const client = automationClient({ ...credentials(box), root: box.root, sleep: async (ms) => sleeps.push(ms), fetch: async (url, init) => {
+  const client = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, sleep: async (ms) => sleeps.push(ms), fetch: async (url, init) => {
     if (new URL(url).pathname.endsWith("/settings")) return Response.json({ durable_stage_runs: true });
     calls.push(init.method);
     if (init.method === "POST") original = JSON.parse(init.body);
@@ -1067,7 +1229,7 @@ test("a settled policy refusal survives repeated rounds and client restarts with
 test("policy retry requires a fresh enabled route, a new owner request, and no STOP; it archives the original refusal", async () => {
   const box = sandbox(), calls = [], requestId = "11112233-4455-6677-8899-aabbccddeeff";
   let enabled = false, current;
-  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+  const client = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, sleep: async () => {}, fetch: async (url, init) => {
     const route = new URL(url).pathname;
     calls.push({ route, method: init.method });
     if (route.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: enabled }, model: "changed-provider-does-not-resume" });
@@ -1103,7 +1265,7 @@ test("a verified undispatched slides repair may resume its corrected format whil
   for (const video of [{ format: "slides" }, {}]) {
     const box = sandbox();
     let refusal;
-    const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+    const client = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, sleep: async () => {}, fetch: async (url, init) => {
       if (new URL(url).pathname.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: false } });
       if (init.method === "POST") refusal = { ...job(JSON.parse(init.body), "failed"), error_code: POLICY_HOLD, error_detail: "misrouted slides repair", error_status: 409, dispatched_at: null };
       return Response.json(refusal);
@@ -1120,7 +1282,7 @@ test("a verified undispatched slides repair may resume its corrected format whil
 test("a mixed legacy set of policy holds cannot be partly archived by one owner retry", async () => {
   const box = sandbox();
   let requests = 0;
-  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+  const client = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, sleep: async () => {}, fetch: async (url, init) => {
     requests++;
     if (new URL(url).pathname.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: true } });
     assert.equal(init.method, "POST");

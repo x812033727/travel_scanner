@@ -1,0 +1,23 @@
+== kd | Claude Code 2.1.295 | claude-sonnet-5-5 | mode default
+   init: built-in tools 8 | MCP servers 1 (connected), tools 40
+         skills 21 | agents 6 | slash commands 57 | plugins 3
+   each request: input + cache write + cache read = input side
+   request 1: 2 + 5,361 + 7,071 = 12,434
+   -- after request 1: Claude wrote 0 chars of text, 1 tool call
+      tool calls: ToolSearch (inputs 55 chars)
+      tool result ToolSearch: 1 tool reference, 0 chars of text
+      hooks ran, main and under Agent: 2 | with output: 0
+      other system lines: 2
+   request 2: 2 + 256 + 12,432 = 12,690 (+256)
+   -- after request 2: Claude wrote 0 chars of text, 1 tool call
+      tool calls: mcp__(a server) (inputs 16 chars)
+      tool result mcp__(a server): 21 chars
+      hooks ran, main and under Agent: 2 | with output: 0
+      other system lines: 2
+   request 3: 2 + 141 + 12,688 = 12,831 (+141)
+   first 12,434 | last 12,831 | grew +397 over 3 requests
+   all 3 requests' input sides added up: 37,955
+   -- after the last request:
+      other system lines: 1
+   result 1: success | turns 3 | cost USD 0.031172200000000004
+      usage 6 + 5,758 + 32,191, output 169 | models in modelUsage: 1

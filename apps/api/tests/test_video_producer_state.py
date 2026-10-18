@@ -15,7 +15,13 @@ from sqlalchemy import select
 
 from app.models import VideoProject, VideoReview
 from app.video_reviews import admin_service as service
-from app.video_reviews.producer_state import MAX_STATE_BYTES, worker_state
+from app.video_reviews.producer_state import (
+    MAX_STATE_BYTES,
+    WorkerView,
+    worker_state,
+    worker_view,
+)
+from app.video_reviews.schemas import WorkerState
 from tests.test_video_review_renewal import SLUG, Site
 from tests.test_video_review_renewal import site as _site
 
@@ -139,6 +145,59 @@ def test_within_mount_project_junction_is_not_registered_by_the_worker(tmp_path:
     assert entry.is_junction() and target.is_relative_to(base)
     assert json.loads((entry / "auto.json").read_text(encoding="utf-8"))["slug"] == SLUG
     assert worker_state(str(base), SLUG) == "unavailable"
+
+
+TIDIED_AT = "2026-10-08T03:00:00.000Z"
+
+
+def _tidied(base: Path, status: str, tidied_at: object) -> None:
+    path = _state(base, status)
+    path.write_text(
+        json.dumps({"slug": SLUG, "status": status, "tidied_at": tidied_at}), encoding="utf-8"
+    )
+
+
+def test_the_worker_view_carries_the_tidy_date_also_for_a_blocked_video(tmp_path: Path) -> None:
+    """The tidy date tells the page that a skipped dub can no longer be made again. A blocked or
+    dropped video answers before the STOP markers are read, and may have been cleared too."""
+    assert worker_view(None, SLUG) == WorkerView("unavailable", None)
+    assert worker_view(str(tmp_path / "absent"), SLUG) == WorkerView("unavailable", None)
+    assert worker_view(str(tmp_path), SLUG) == WorkerView("not_adopted", None)
+    _state(tmp_path, "done")
+    assert worker_view(str(tmp_path), SLUG) == WorkerView("done", None), "not cleared yet"
+    registered: list[tuple[str, WorkerState]] = [
+        ("done", "done"),
+        ("active", "registered"),
+        ("blocked", "blocked"),
+        ("dropped", "dropped"),
+    ]
+    for status, expected in registered:
+        _tidied(tmp_path, status, TIDIED_AT)
+        view = worker_view(str(tmp_path), SLUG)
+        assert view == WorkerView(expected, TIDIED_AT), status
+        assert (view.state, view.tidied_at) == (expected, TIDIED_AT)
+        assert worker_state(str(tmp_path), SLUG) == expected, "the older reader sees the same"
+    # A STOP marker changes the registration, not what was read from the file.
+    _tidied(tmp_path, "done", TIDIED_AT)
+    (tmp_path / "STOP").touch()
+    assert worker_view(str(tmp_path), SLUG) == WorkerView("stopped", TIDIED_AT)
+    _tidied(tmp_path, "blocked", TIDIED_AT)
+    assert worker_view(str(tmp_path), SLUG) == WorkerView("blocked", TIDIED_AT)
+    # A state that cannot be trusted gives no date either.
+    (tmp_path / SLUG / "auto.json").write_text(
+        json.dumps({"slug": "another", "status": "done", "tidied_at": TIDIED_AT}),
+        encoding="utf-8",
+    )
+    assert worker_view(str(tmp_path), SLUG) == WorkerView("unavailable", None)
+    (tmp_path / SLUG / "auto.json").unlink()
+    assert worker_view(str(tmp_path), SLUG) == WorkerView("not_adopted", None)
+
+
+@pytest.mark.parametrize("value", [None, 0, 1759892400, True, ["2026-10-08"], {"at": "x"}, ""])
+def test_a_tidy_date_that_is_not_a_string_reads_as_none(tmp_path: Path, value: object) -> None:
+    _tidied(tmp_path, "done", value)
+    assert worker_view(str(tmp_path), SLUG) == WorkerView("done", None)
+    assert worker_state(str(tmp_path), SLUG) == "done"
 
 
 @pytest.mark.asyncio

@@ -8,17 +8,17 @@ import { parseArgs } from "node:util";
 
 import { sha256File } from "../core/approvals.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding, validateBranding } from "../core/branding.mjs";
-import { buildCues, toSrt } from "../core/captions.mjs";
+import { toSrt } from "../core/captions.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, UsageError } from "../core/paths.mjs";
-import { narrationLocale } from "../core/schema.mjs";
-import { captionLocalesOf, captionTimelineOf, currentDub, dubLocalesOf, dubRole, dubsForUpload, localeTexts, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
+import { LOCALES as VIDEO_LOCALES, NARRATION_LOCALE, narrationLocale } from "../core/schema.mjs";
+import { captionLocalesOf, currentDub, dubLocalesOf, dubRole, dubsForUpload, localeCues, localeTexts, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { speechHash, FPS } from "../core/timeline.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 
 const HASH = /^[a-f0-9]{64}$/;
 const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
-const LOCALES = ["en", "ja", "ko", "zh-CN"];
+const LOCALES = VIDEO_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const requireThat = (condition, message) => { if (!condition) throw new UsageError(message); };
 const identity = (row) => ({ review_id: row.id, content_sha256: row.content_sha256 });
@@ -128,6 +128,8 @@ export async function stageRenewal({ from, out, original, body, branding, client
   const bodySha = await sha256File(body);
   const pin = validateBranding(readJson(branding, null), { base: path.dirname(path.resolve(branding)) });
   requireThat(pin, "a branding package is required");
+  // A renewal joins the retained body after the intro; a pin placed after the first chapter needs a rebuild instead.
+  requireThat(!pin.intro_at, "a renewal keeps the intro at the start; a branding pin with intro_at after_first_chapter needs assemble instead");
   for (const role of ["intro", "outro"]) requireThat(await sha256File(pin[role].file) === pin[role].sha256, `${role} bytes do not match the branding pin`);
   const final = path.join(sourceDir, "final.mp4");
   const finalSha = await sha256File(final);
@@ -199,7 +201,7 @@ export async function bindRenewalSubmission({ body, remote, project, workdir, re
   const { texts, skipped } = localeTexts(project.doc, project.translations);
   const defaultLocale = expectedMetadata.metadata.default_language;
   requireThat(metadata.default_language === defaultLocale && texts[defaultLocale], "the package changed the narration language");
-  const defaultCaption = toSrt(buildCues(presented, texts[defaultLocale], defaultLocale).cues);
+  const defaultCaption = toSrt(localeCues(presented, texts, defaultLocale, narration).cues);
   requireThat(readFileSync(path.join(workdir, "upload", "captions", `${defaultLocale}.srt`), "utf8") === defaultCaption, "the narration captions still use another presentation timeline");
   const captionManifest = readJson(path.join(workdir, "captions", "manifest.json"), null);
   const expectedCaptions = { [defaultLocale]: defaultCaption };
@@ -207,7 +209,9 @@ export async function bindRenewalSubmission({ body, remote, project, workdir, re
     requireThat(captionManifest?.speech_hash === timeline.speech_hash && (captionManifest.branding_hash ?? null) === brand && texts[locale] && !skipped[locale]?.length, `${locale} captions need regeneration for this timeline`);
     const dub = wantedDubs.includes(locale) ? currentDub(project, workdir, locale, timeline.speech_hash) : null;
     requireThat(!dub?.stale, `${locale} dub is stale`);
-    expectedCaptions[locale] = toSrt(buildCues(dub ? captionTimelineOf(dub) : presented, texts[locale], locale).cues);
+    // As runCaptions cut them: a translation under the narration moves its cue changes onto the
+    // narration's measured ones.
+    expectedCaptions[locale] = toSrt(localeCues(presented, texts, locale, narration, dub).cues);
     requireThat(readFileSync(path.join(workdir, "upload", "captions", `${locale}.srt`), "utf8") === expectedCaptions[locale], `${locale} caption bytes have stale offsets or text`);
   }
   const payload = { ...body.payload, ...(body.gate !== "publish" ? { locales: structuredClone(body.payload.locales ?? {}) } : {}), final_review_id: final.id };

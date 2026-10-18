@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-create"
+    "ai-create",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "用 AI 協助 UI 設計：從需求提示到可驗證的介面",
@@ -66,10 +69,8 @@
               "text": "把已確認事實與尚待確認項目分開。店名和公開電話可以來自店家提供的資料；查詢需要哪些欄位、多久更新一次、過期訂單如何處理，則要先詢問負責人。沒有答案時請 AI 保留"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -183,6 +184,7 @@
           "width": 1600,
           "height": 900,
           "caption": "提示提供方向；可操作的成果與實際觀察，才讓設計決定有依據。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -288,6 +290,1130 @@
         },
         {
           "title": "W3C WAI：Easy Checks",
+          "url": "https://www.w3.org/WAI/test-evaluate/easy-checks/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Using AI for UI Design: From Requirements in Prompts to Verifiable Interfaces",
+      "description": "AI-assisted UI design needs more than detailed prompts: link requirements, assumptions and acceptance checks. An original laundry status lookup page shows what context to supply, screen states, edit scope and data boundaries. A comparison table, steps and original diagram explain checks of content, keyboard use and user tasks, helping everyday users turn generated drafts into interfaces they can discuss and test, without treating simulated responses as real research.",
+      "hero": {
+        "src": "/guides/ai-design-prompt-workflow/hero-en.jpg",
+        "alt": "An original Mokaair illustration of a requirements document, interface screens and a verification shield, representing the path from AI design prompts to validating user tasks.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Ask "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " to draw a simple status lookup page, and you may get complete input fields, a progress bar and an attractive illustration. But it may not know that the shop offers no delivery service or where the order number is printed on the receipt. A prompt's first job is to provide the right working context, rather than pile up words describing style. This applies to any UI AI or design AI."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The following demonstration uses an original laundry status lookup page, assuming customers want to check whether their clothes are ready for pickup. This is a hypothetical project with no real customer data or test results. The method draws on design and user research documentation reviewed on 2026-9-14; check features, permissions and pricing separately for the product you use."
+        },
+        {
+          "type": "heading",
+          "text": "Start by Writing the Usage Scenario and Completion Criteria",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before opening a generation tool, briefly describe who is doing what and under what circumstances. For example: a customer holding a receipt wants to enter its number on their phone to find out whether they can collect their clothes from the shop. Completion means understanding the current status, opening hours and next step, rather than remaining on a homepage with a branded look."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Keep confirmed facts separate from items awaiting confirmation. The shop name and public phone number can come from information supplied by the shop; first ask the person in charge which fields a lookup requires, how often information is updated and how expired orders are handled. When answers are unavailable, ask AI to leave "
+            },
+            {
+              "type": "text",
+              "text": "markers"
+            },
+            {
+              "type": "text",
+              "text": ", rather than invent customer service promises or pickup rules."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Figma's documentation on prompts and design context emphasizes that specific background, objectives and constraints help tools understand a task. But putting information in a prompt does not make the answer correct or guarantee that specified components will be used. A prompt is simply an input to the work; afterward, check each item against the requirements and actual structure."
+        },
+        {
+          "type": "heading",
+          "text": "Build a Prompt into a Design Brief You Can Check",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "An original prompt could read: Create a draft mobile status lookup page for a laundry shop; customers get their number from a receipt and need to see an In progress or Ready for pickup status after a successful lookup. Reuse the specified button style, use Traditional Chinese, and mark unknown shop information with To be confirmed text. First list any information that requires follow-up questions, then provide the screen layout."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, specify the required states: no input yet, invalid format, no results, loading, success and service temporarily unavailable. For each state, write down what readers need to understand and what they can do. Do not merely ask for error messages; you may get red text that looks complete but offers no way to fix the problem."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, specify the scope of changes and deliverables. For example, create only the lookup and results pages, without adding membership, payment or marketing pop-ups; provide screens, a component mapping and unresolved questions. If the tool produces only images, you cannot directly verify layers or keyboard behavior. If it produces code, you must also examine actual data access and error handling separately."
+        },
+        {
+          "type": "heading",
+          "text": "Record Assumptions Instead of Approving Generated Results on Instinct",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After receiving a draft, create a simple table recording design decisions, their basis, risks and verification methods. For example: assuming customers can find the number on their receipt, you keep just one input field. Verify this by asking potential customers to look at a receipt and complete a lookup, rather than asking AI whether the design is intuitive."
+        },
+        {
+          "type": "paragraph",
+          "text": "Another assumption is that customers understand In progress to mean their clothes are not yet available for pickup. You can observe what participants intend to do after seeing the result and whether they would still call to confirm. If most still do not understand, improve the status explanation and next step first, rather than rushing to change colors or add animation. These are methods yet to be carried out; no survey data is presented here."
+        },
+        {
+          "type": "paragraph",
+          "text": "Asking AI to role-play a customer can help identify potentially overlooked questions, but model responses are not evidence of actual user behavior. Keep the resulting questions labeled as assumptions and check them against shop information, existing customer service records or user research conducted with consent. Do not present simulated interviews as proof that customers already agree."
+        },
+        {
+          "type": "heading",
+          "text": "Address One Identifiable Problem at a Time",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If the initial result squeezes multiple columns into a narrow screen, a follow-up prompt could specify: Keep the original fields and text, and arrange the results in this order: status, pickup instructions and shop information. Change only the layout, not the lookup criteria. This lets you compare whether the revision solves the problem and watch for the tool inadvertently deleting necessary content."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the previous version before each change, and record the reason and affected scope. Describe the actual problem clearly: a long shop name wraps and covers a button, for example. This makes effectiveness easier to judge than asking for more polish. If the tool repeatedly reworks the same section, you can fix it manually and specify the result to retain as the baseline for the next round."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before feeding content into a tool, remove real orders, phone numbers and screenshots that could identify customers, and use fictional data instead. Check the terms governing uploaded content, collaborator visibility and licenses for available components. Disabling use for model training does not mean the service will not process your input, nor does it authorize you to use material you had no right to provide."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Write down customer tasks, completion criteria, known facts and rules awaiting confirmation.",
+            "Provide screen states, component constraints and delivery requirements, keeping markers for unknown information.",
+            "Compare each part of the draft against the requirements, and turn design decisions into testable assumptions.",
+            "Arrange interaction checks and user tasks, revise based on observations, and keep handoff records."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Move from Reviewing Screens to Observing Actual Use",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Start with basic checks: does the heading explain the purpose, do fields have identifiable labels, can errors be matched to fields, is the text clear, and does it remain readable when enlarged? For a working version, also try moving focus with the keyboard to confirm that focus is visible, follows a logical order and never becomes trapped. An image prototype alone cannot demonstrate these behaviors."
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C's Easy Checks provides preliminary accessibility checks, not proof of full standards compliance. Do not claim that a website has fully passed simply because AI says it is accessible or an automated tool reports no warnings. Arrange more comprehensive checks according to the product's needs, and record unverified items and who is responsible for them."
+        },
+        {
+          "type": "paragraph",
+          "text": "GOV.UK's usability testing guidance recommends recruiting actual or potential users, giving them neutral tasks and observing their actions. For this project, you could ask participants to check whether their clothes are ready for pickup, without directly telling them to click a particular button. Explain the research purpose beforehand and obtain consent. Record confusion, errors and requests for explanation, and avoid counting completion with assistance as independent success."
+        },
+        {
+          "type": "heading",
+          "text": "Document Decision Rationale and Verification Limits at Handoff",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, compile the requirements version, selected screens, required states, data fields and unresolved questions. For each important change, explain whether it is based on shop confirmation, manual checks or user observations. If you have only conducted an internal walkthrough, label it honestly as an internal walkthrough; avoid unsupported conclusions such as significant improvement in actual testing."
+        },
+        {
+          "type": "paragraph",
+          "text": "Frontend handoff also needs to distinguish presentation from business rules. The no-results message and search-again button can be described in the interface specification, but order access permissions, lookup frequency and data retention require separate design by the implementation team. Generated code that displays a demo screen is not proof that it connects to the correct, protected service."
+        },
+        {
+          "type": "paragraph",
+          "text": "These requirements and verification records remain useful as tools evolve. Keep editable files, necessary outputs and asset sources so that whoever takes over knows what can change and what still needs confirmation. The value of AI prompts lies in whether the team can explain and maintain its chosen interface, rather than how long the prompts are."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-design-prompt-workflow/diagram-1-en.svg",
+          "alt": "Four cards connect requirements input, generated drafts, design assumptions and interaction evidence, reminding readers to retain unresolved questions and verification limits.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Prompts provide direction; working outputs and actual observations give design decisions a basis.",
+          "description": "Four cards connect requirements input, generated drafts, design assumptions and interaction evidence, reminding readers to retain unresolved questions and verification limits.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Prompt Content",
+            "Original Lookup Page Example",
+            "How to Check the Result"
+          ],
+          "rows": [
+            [
+              "User task",
+              "Check whether clothes are ready for pickup",
+              "Can explain the status and next step"
+            ],
+            [
+              "Knowns and unknowns",
+              "Shop phone number known; update frequency needs asking",
+              "No invented promises"
+            ],
+            [
+              "Screen states",
+              "Loading, no results and service unavailable",
+              "Clear explanations and follow-up actions"
+            ],
+            [
+              "Scope of changes",
+              "Only rearrange the lookup results",
+              "No fields or criteria have been deleted"
+            ],
+            [
+              "Design assumption",
+              "Customers can find the number on their receipt",
+              "Potential users actually try the task"
+            ],
+            [
+              "Delivery boundaries",
+              "Editable draft and list of items awaiting confirmation",
+              "Do not equate going live with completed acceptance"
+            ]
+          ],
+          "caption": "This table is an original workflow reference, not an actual test record or a guarantee of any specific tool's features."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Model-Simulated Customer Feedback Remains Hypothetical",
+          "text": "After using AI to identify blind spots, return to verifiable information and observations of actual use. Leaving unanswered questions open makes later verification easier than presenting plausible guesses as known facts."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check Figma AI Features and Data Permissions",
+              "kind": "life",
+              "slug": "figma-ai-design-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Choose How to Validate Wireframes and Prototypes",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Understand the Division of Work Between UI and UX",
+              "kind": "life",
+              "slug": "ui-ux-learning"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Figma: AI design prompts",
+          "url": "https://www.figma.com/resource-library/ai-design-prompts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: Design context for AI",
+          "url": "https://www.figma.com/resource-library/design-context-ai/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: Using moderated usability testing",
+          "url": "https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C WAI: Easy Checks",
+          "url": "https://www.w3.org/WAI/test-evaluate/easy-checks/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "AI で UI デザインを支援：要件を伝えるプロンプトから検証可能なインターフェースへ",
+      "description": "デザイン AI で UI デザインを支援する際に大切なのは、プロンプトを詳しく書くだけでなく、要件、仮説、受け入れ確認の方法を結び付けることです。本記事では、独自に作成したクリーニング店の進捗照会ページを例に、提示できる背景情報、画面の状態、修正範囲、データの取り扱い範囲を整理します。さらに、比較表、操作手順、独自の図解で、内容、キーボード操作、ユーザータスクの確認方法を説明します。一般の利用者が生成されたドラフトを議論やテストのできるインターフェースに整える手助けをし、模擬回答を実際の調査として扱わない方法を紹介します。",
+      "hero": {
+        "src": "/guides/ai-design-prompt-workflow/hero-ja.jpg",
+        "alt": "要件文書、画面、確認を示す盾を描いた Mokaair のオリジナルイラスト。AI のデザインプロンプトからユーザータスクの検証までを表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "たとえば、"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " にシンプルな照会ページの作成を依頼すると、入力欄や進捗バー、美しいイラストが一通りそろったものが得られるかもしれません。しかし、店が配送サービスを提供していないことや、注文番号がレシートのどこに印刷されているかを、AI が知っているとは限りません。プロンプトの最初の役割は、見た目を形容する言葉を並べることではなく、正しい業務背景を伝えることです。これは、どの UI AI やデザイン AI にも当てはまります。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "以下では、顧客が衣類を受け取れるか確認したいという想定で、独自に作成したクリーニング店の進捗照会ページを例に説明します。これは架空のプロジェクトであり、実際の顧客データやテスト結果はありません。方法は 2026 年 9 月 14 日に参照したデザインとユーザーリサーチの資料に基づいて整理しています。ツールの機能、権限、料金は、使用する製品ごとに別途確認してください。"
+        },
+        {
+          "type": "heading",
+          "text": "まず利用場面と完了条件を書き出す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "生成ツールを開く前に、誰が、どのような状況で、何をするのかを短い文章で説明します。たとえば、顧客がレシートを手にスマートフォンを使い、番号を入力して、店に衣類を受け取りに行けるか知りたいという場面です。完了条件は、現在の状態、営業時間、次にすることが分かることです。ブランドらしさのあるトップページを作るだけで終わらせないようにします。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "確認済みの事実と、まだ確認が必要な項目を分けます。店名や公開電話番号には、店から提供された情報を使えます。一方、照会に必要な項目、更新頻度、期限切れの注文の扱いは、先に責任者へ確認する必要があります。答えがない場合は、AI に未確認であることを示す"
+            },
+            {
+              "type": "text",
+              "text": "印"
+            },
+            {
+              "type": "text",
+              "text": "を残すよう伝え、顧客対応の約束や受け取りルールを勝手に補わせないようにします。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Figma のプロンプトとデザインコンテキストに関する資料は、いずれも具体的な背景、目的、制約がツールのタスク理解に役立つと強調しています。ただし、情報をプロンプトに書いたからといって、回答が正しくなるわけではなく、指定したコンポーネントが必ず採用される保証もありません。プロンプトは作業への入力にすぎません。完成後も、要件と実際の構造を項目ごとに照合する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "プロンプトを確認可能なデザイン依頼書にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "独自のプロンプトは、次のように書けます。クリーニング店のスマートフォン向け進捗照会ページのドラフトを作成してください。顧客はレシートから番号を確認し、照会に成功したら「作業中」または「受け取り可能」の状態が分かるようにします。指定のボタンスタイルを使い、表記は繁体字中国語にしてください。不明な店舗業務の情報には、要確認と分かる文言を入れてください。まず追加で質問すべき情報を列挙し、その後に画面構成を提示してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "続いて、必要な状態を伝えます。未入力、形式エラー、該当データなし、読み込み中、成功、サービス一時利用不可です。各状態について、読み手が何を理解する必要があり、何ができるのかを書きます。単にエラーメッセージの追加を求めるだけでは、一見整っていても、修正方法が分からない赤字が表示されるかもしれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、変更範囲と成果物を指定します。たとえば、照会ページと結果ページだけを作成し、会員機能、決済、販促ポップアップは追加しないこと、画面、コンポーネントの対応表、未解決の問題を提示することです。ツールが画像しか出力しない場合、レイヤーやキーボード操作の挙動は直接検証できません。コードを出力する場合も、実際のデータアクセスとエラー処理を別途確認する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "生成結果を感覚で認めず、仮説を記録する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ドラフトができたら、簡単な表を作り、デザイン上の判断、根拠、リスク、確認方法を記録します。たとえば、顧客はレシートの番号を見つけられると仮定し、入力欄を一つだけにします。確認方法は、利用する可能性のある顧客にレシートを見て照会を完了してもらうことです。このデザインが直感的かどうかを AI に尋ねることではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "もう一つの仮説は、顧客が「作業中」を、まだ受け取れない状態だと理解することです。参加者が結果を見た後に何をしようとするか、さらに電話で確認しようとするかを観察できます。多くの人がまだ理解できないなら、配色の変更やアニメーションの追加を急ぐ前に、状態の説明と次にすることの案内を改善すべきです。ここで説明しているのは、これから実施する方法であり、調査データはありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AI に顧客役を演じてもらうことは、見落としているかもしれない問題を洗い出すのに役立ちます。ただし、モデルの回答は実際のユーザー行動の証拠ではありません。整理した疑問は引き続き仮説として扱い、店舗業務の情報、過去の顧客対応記録、同意を得て行うユーザーリサーチで確認します。模擬インタビューを、顧客の賛同をすでに得たかのように記述してはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "修正では明確に特定できる問題を一つずつ扱う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最初の結果で、狭い画面に複数の列が詰め込まれていた場合、次のプロンプトでこう指定できます。元の項目と文章を残し、結果の情報を状態、受け取り案内、店舗情報の順に並べてください。レイアウトだけを調整し、照会条件は変更しないでください。こうすれば、修正で問題が解決したかを比較でき、ツールが必要な内容まで削除していないかにも注意を払えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "毎回、変更前の版を保存し、修正理由と影響範囲を記録します。「長い店名が折り返されるとボタンが隠れる」のように、実際の問題を明確に書くほうが、「もう少し洗練させて」と頼むより効果を判断しやすくなります。ツールが同じ部分を何度も作り直す場合は、手作業で修正し、残したい結果を次の修正の基準として指定することもできます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ツールに入力する前に、実際の注文、電話番号、顧客を特定できるスクリーンショットを取り除き、架空のデータに置き換えます。アップロード内容の利用条件、共同作業時の公開範囲、利用できるコンポーネントのライセンスを確認してください。モデルの学習に使わない設定にしていても、サービスが入力を処理しないという意味ではありません。また、もともと提供する権利のない素材を使ってよいことにもなりません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "顧客のタスク、完了条件、既知の事実、確認が必要なルールを書き出す。",
+            "画面の状態、コンポーネントの制約、納品要件を提示し、不明な情報には印を残す。",
+            "ドラフトと要件を項目ごとに比較し、デザイン上の判断を検証可能な仮説として整理する。",
+            "操作の確認とユーザータスクの実施を計画し、観察に基づいて修正して、引き継ぎ記録を残す。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "画面の確認から実際の操作観察へ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず基本的な確認をします。見出しが用途を説明しているか、入力欄に識別できるラベルがあるか、エラーが該当する入力欄と対応しているか、文章が明確か、拡大しても読めるかを確認します。実際に操作できる版では、キーボードでフォーカスを移動し、フォーカスが見えること、順序が適切であること、抜け出せなくならないことも確かめます。画像のプロトタイプだけでは、これらの挙動を証明できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C の「簡易チェック（Easy Checks）」は、初歩的なアクセシビリティ確認の方法であり、基準への完全な適合を証明するものではありません。AI がアクセシビリティに適合していると言ったり、自動ツールが警告を出さなかったりしただけで、サイトがすべての検査に合格したと宣言してはいけません。製品の必要に応じて、より網羅的な確認を計画し、未検証の項目と担当者を記録します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GOV.UK のユーザーテストのガイドでは、実際のユーザーや利用する可能性のある人を募り、誘導しないタスクを提示して操作を観察することを勧めています。このプロジェクトなら、特定のボタンを押すよう直接教えるのを避け、衣類を受け取れるか確認してもらえます。事前に調査の目的を説明して同意を得てください。戸惑い、エラー、説明が必要になった点を記録し、手助けを受けて完了したことを、自力での成功として扱わないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "引き継ぎでは判断の理由と検証範囲を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、要件の版、採用した画面、必要な状態、データ項目、未解決の問題を整理します。重要な調整ごとに、店舗への確認、手作業での検査、ユーザー観察のどれを根拠にしたのか説明します。内部でのウォークスルーだけなら、そのとおりに明記し、「実測で大幅に改善した」など、証拠のない結論は使わないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "フロントエンドの引き継ぎでは、表示と業務ルールも区別する必要があります。該当データがない場合の文言や再照会ボタンはインターフェースの仕様で説明できますが、注文の読み取り権限、照会頻度、データの保存は、実装側で別途設計する必要があります。生成されたコードでデモ画面が動くからといって、正しく保護された適切なサービスに接続できているとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ツールが世代交代しても、この要件と検証の記録は引き続き使えます。編集可能なファイル、必要な出力、素材の出典を保存し、引き継ぐ人が何を変更でき、何がまだ確認待ちなのか分かるようにします。AI プロンプトの価値は、その長さではなく、チームが採用したインターフェースを説明し、保守できるかどうかにあります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-design-prompt-workflow/diagram-1-ja.svg",
+          "alt": "要件の入力、生成ドラフト、デザインの仮説、操作の証拠を結ぶ四枚のカード。不明点と検証範囲を記録に残すよう促しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "プロンプトは方向を示します。操作できる成果物と実際の観察があってこそ、デザイン上の判断に根拠が生まれます。",
+          "description": "要件の入力、生成ドラフト、デザインの仮説、操作の証拠を結ぶ四枚のカード。不明点と検証範囲を記録に残すよう促しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "プロンプトの内容",
+            "独自に作成した照会ページの例",
+            "完成後の確認方法"
+          ],
+          "rows": [
+            [
+              "ユーザータスク",
+              "衣類を受け取れるか確認する",
+              "状態と次にすることを説明できる"
+            ],
+            [
+              "既知と未知",
+              "店舗の電話番号は既知、更新頻度は要確認",
+              "約束を勝手に補っていない"
+            ],
+            [
+              "画面の状態",
+              "読み込み中、該当データなし、サービス一時停止",
+              "明確な説明と次の操作がある"
+            ],
+            [
+              "修正範囲",
+              "照会結果の配置だけを調整する",
+              "項目や条件が削除されていない"
+            ],
+            [
+              "デザインの仮説",
+              "顧客がレシートの番号を見つけられる",
+              "利用する可能性のあるユーザーに実際に操作してもらう"
+            ],
+            [
+              "納品範囲",
+              "編集可能なドラフトと要確認事項の一覧",
+              "公開と受け入れ確認の完了を混同しない"
+            ]
+          ],
+          "caption": "この表は独自に作成した作業の対応表です。実際のテスト記録でも、特定のツールの機能を保証するものでもありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "モデルが模擬的に示す顧客の意見も仮説",
+          "text": "AI で見落としを洗い出したら、検証可能な情報と実際の操作観察に立ち返るべきです。もっともらしい推測を既知の事実として書くより、答えのない部分を残すほうが、その後の検証を進めやすくなります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Figma AI の機能とデータに関する権限を確認する",
+              "kind": "life",
+              "slug": "figma-ai-design-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ワイヤーフレームとプロトタイプの検証方法を選ぶ",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "UI と UX の役割分担を理解する",
+              "kind": "life",
+              "slug": "ui-ux-learning"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Figma：AI デザインのプロンプト",
+          "url": "https://www.figma.com/resource-library/ai-design-prompts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：AI のためのデザインコンテキスト",
+          "url": "https://www.figma.com/resource-library/design-context-ai/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：モデレーター付きユーザビリティテストの活用",
+          "url": "https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C WAI：簡易チェック",
+          "url": "https://www.w3.org/WAI/test-evaluate/easy-checks/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "AI로 UI 디자인하기: 요구사항 프롬프트에서 검증 가능한 인터페이스까지",
+      "description": "디자인 AI로 UI 디자인을 할 때 핵심은 프롬프트를 자세히 쓰는 데 그치지 않고 요구사항, 가정, 검수 방법을 연결하는 것입니다. 이 글은 직접 기획한 세탁소 진행 상황 조회 페이지를 예로 들어 제공할 배경, 화면 상태, 수정 범위, 데이터 사용의 경계를 정리합니다. 비교표, 작업 단계, 자체 제작 도해로 콘텐츠, 키보드 조작, 사용자 과제를 점검하는 방법도 설명합니다. 일반 사용자가 생성된 초안을 논의하고 테스트할 수 있는 인터페이스로 다듬고, 모의 응답을 실제 조사로 간주하지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/ai-design-prompt-workflow/hero-ko.jpg",
+        "alt": "Mokaair가 자체 제작한 요구사항 문서, 인터페이스 화면, 확인을 상징하는 방패 삽화. AI 디자인 프롬프트에서 사용자 과제 검증으로 이어지는 과정을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "간결한 조회 페이지를 그려 달라고 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "에 요청하면 입력란과 진행 표시줄, 멋진 삽화가 모두 갖춰진 결과를 얻을 수 있습니다. 하지만 AI는 매장에 배송 서비스가 없다는 사실이나 주문 번호가 영수증 어디에 인쇄되어 있는지는 모를 수 있습니다. 프롬프트의 첫 번째 역할은 스타일을 묘사하는 단어를 나열하는 것이 아니라 정확한 작업 배경을 제공하는 것입니다. 이는 모든 UI AI나 디자인 AI에 해당합니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "아래에서는 직접 기획한 세탁소 진행 상황 조회 페이지를 예로 들어, 고객이 세탁물을 수령할 수 있는지 확인하려는 상황을 가정합니다. 이는 가상 프로젝트이며 실제 고객 데이터나 테스트 결과는 없습니다. 방법은 2026년 9월 14일에 열람한 디자인 및 사용자 연구 문서를 바탕으로 정리했으며, 도구의 기능, 권한, 가격은 사용하는 제품에 따라 별도로 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "사용 상황과 완료 조건부터 작성하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "생성 도구를 열기 전에 누가 어떤 상황에서 무엇을 하는지 짧은 글로 설명하세요. 예를 들어 고객이 영수증을 들고 휴대전화에 번호를 입력해 매장에서 세탁물을 수령할 수 있는지 알아보려는 상황입니다. 완료 조건은 현재 상태, 영업시간, 다음 행동을 이해하는 것이며, 브랜드 분위기가 느껴지는 첫 화면을 만드는 데 그치는 것이 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "확인된 사실과 아직 확인이 필요한 항목을 구분하세요. 매장명과 공개 전화번호는 매장이 제공한 자료를 사용할 수 있지만, 조회에 필요한 입력 항목, 갱신 주기, 기한이 지난 주문의 처리 방식은 먼저 담당자에게 물어봐야 합니다. 답을 알 수 없다면 AI가 "
+            },
+            {
+              "type": "text",
+              "text": "표시"
+            },
+            {
+              "type": "text",
+              "text": "를 남기도록 요청하고, 고객 응대에 관한 약속이나 수령 규칙을 임의로 만들어 넣지 않도록 하세요."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "프롬프트와 디자인 맥락에 관한 Figma 문서는 모두 구체적인 배경, 목적, 제약이 도구의 작업 이해에 도움이 된다고 강조합니다. 하지만 프롬프트에 자료를 넣었다고 해서 답이 정확해지는 것은 아니며, 지정한 컴포넌트가 반드시 사용된다는 보장도 없습니다. 프롬프트는 작업의 입력일 뿐이므로 완료 후에도 요구사항과 실제 구조를 항목별로 대조해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "프롬프트를 대조 가능한 디자인 의뢰서로 구성하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 작성한 프롬프트는 다음과 같이 구성할 수 있습니다. 세탁소의 모바일용 진행 상황 조회 페이지 초안을 만들어 주세요. 고객은 영수증에서 번호를 확인하며, 조회에 성공하면 처리 중 또는 수령 가능 상태를 볼 수 있어야 합니다. 지정한 버튼 스타일을 유지하고 중국어 번체를 사용하며, 알 수 없는 매장 운영 정보는 확인이 필요하다는 문구로 표시해 주세요. 먼저 추가로 물어봐야 할 정보를 나열한 뒤 화면 구성을 제시해 주세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "다음으로 필수 상태를 명시하세요. 미입력, 형식 오류, 조회 결과 없음, 로딩 중, 성공, 서비스 일시 이용 불가 상태입니다. 각 상태에서 사용자가 무엇을 이해해야 하고 무엇을 할 수 있는지 적으세요. 단순히 오류 안내를 추가하라고만 요청하면 겉보기에는 완성되어 있어도 수정 방법이 없는 빨간색 문구만 나올 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 수정 범위와 산출물을 지정하세요. 예를 들어 조회 페이지와 결과 페이지만 만들고 회원 기능, 결제, 마케팅 팝업은 추가하지 않으며, 화면, 컴포넌트 대조표, 미해결 문제를 제공하도록 합니다. 도구가 이미지만 생성한다면 레이어나 키보드 동작을 직접 검증할 수 없습니다. 코드를 생성하더라도 실제 데이터 접근과 오류 처리를 별도로 점검해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "생성 결과를 직감으로 승인하지 말고 가정 기록하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "초안을 받은 뒤에는 간단한 표를 만들어 디자인 결정, 근거, 위험, 확인 방법을 기록할 수 있습니다. 예를 들어 고객이 영수증 번호를 찾을 수 있다고 가정해 입력란을 하나만 남기는 결정입니다. 확인 방법은 잠재 고객에게 영수증을 보고 조회를 완료하도록 하는 것이며, AI에 이 디자인이 직관적인지 묻는 것이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "또 다른 가정은 고객이 처리 중이라는 상태를 아직 수령할 수 없다는 뜻으로 이해한다는 것입니다. 참여자가 결과를 본 뒤 무엇을 하려는지, 확인 전화를 추가로 하려는지 관찰할 수 있습니다. 대부분이 여전히 이해하지 못한다면 배색을 바꾸거나 애니메이션을 추가하기보다 상태 설명과 다음 행동 안내를 먼저 개선해야 합니다. 여기서 설명하는 것은 앞으로 실행할 방법이며 조사 데이터는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "AI에 고객 역할을 맡기면 빠뜨렸을 법한 질문을 찾는 데 도움이 되지만, 모델의 답변은 실제 사용자 행동의 증거가 아닙니다. 정리된 의문은 계속 가정으로 표시하고, 매장 운영 자료, 기존 고객 응대 기록, 동의를 얻은 사용자 연구를 통해 확인해야 합니다. 모의 인터뷰를 고객이 이미 동의한 것처럼 기록해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "수정할 때는 명확히 식별할 수 있는 문제를 한 번에 하나씩 다루기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 결과가 좁은 화면에서 여러 열로 빽빽하게 배치되었다면 후속 프롬프트에 다음과 같이 지정할 수 있습니다. 기존 입력 항목과 문구를 유지하고 결과 정보를 상태, 수령 안내, 매장 정보 순서로 배치해 주세요. 레이아웃만 조정하고 조회 조건은 바꾸지 마세요. 이렇게 해야 수정으로 문제가 해결되었는지 비교하고, 도구가 필수 내용을 함께 삭제하지 않았는지도 살펴볼 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "매번 변경 전 버전을 보관하고 수정 이유와 영향 범위를 기록하세요. 긴 매장명이 줄바꿈되면서 버튼을 가린다는 식으로 실제 문제를 명확히 적으면, 좀 더 세련되게 해 달라는 요청보다 효과를 판단하기 쉽습니다. 도구가 같은 부분을 반복해서 다시 만든다면 직접 수정한 뒤 유지해야 할 결과를 다음 작업의 기준으로 지정할 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도구에 입력하기 전에 실제 주문, 전화번호, 고객을 식별할 수 있는 스크린샷을 삭제하고 가상 데이터로 바꾸세요. 업로드하는 콘텐츠의 이용 조건, 협업 시 공개 범위, 사용 가능한 컴포넌트의 라이선스를 확인하세요. 모델 학습에 사용하지 않도록 설정했더라도 서비스가 입력 내용을 처리하지 않는다는 뜻은 아니며, 원래 제공할 권한이 없는 자료를 사용해도 된다는 뜻도 아닙니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "고객 과제, 완료 조건, 확인된 사실, 확인이 필요한 규칙을 작성하세요.",
+            "화면 상태, 컴포넌트 제약, 납품 요구사항을 제공하고 알 수 없는 정보의 표시를 유지하세요.",
+            "초안과 요구사항을 항목별로 비교하고 디자인 결정을 점검 가능한 가정으로 정리하세요.",
+            "조작 점검과 사용자 과제를 계획하고, 관찰에 따라 수정한 뒤 인계 기록을 남기세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "화면 점검에서 실제 조작 관찰로 나아가기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 기본 사항을 점검하세요. 제목이 용도를 설명하는지, 입력란에 식별 가능한 레이블이 있는지, 오류가 해당 입력란과 연결되는지, 문구가 명확한지, 확대해도 읽을 수 있는지 확인합니다. 실제로 조작할 수 있는 버전에서는 키보드로 초점을 이동해 초점이 보이고 순서가 적절하며 특정 영역에 갇히지 않는지도 확인해야 합니다. 이미지 프로토타입 자체로는 이러한 동작을 입증할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C의 간단한 점검(Easy Checks)은 초기 접근성 점검 방법이며, 표준을 완전히 준수한다는 증명은 아닙니다. AI가 접근성 기준을 충족했다고 말하거나 자동 도구가 경고를 표시하지 않았다는 이유만으로 웹사이트가 모든 검증을 통과했다고 주장해서는 안 됩니다. 제품의 필요에 맞게 더 포괄적인 점검을 계획하고 아직 검증하지 않은 항목과 담당자를 기록하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "GOV.UK의 사용자 테스트 지침은 실제 사용자나 잠재 사용자를 모집해 중립적인 과제를 제시하고 조작을 관찰하도록 권장합니다. 이 프로젝트에서는 특정 버튼을 누르도록 직접 알려 주지 않고 세탁물을 수령할 수 있는지 확인해 달라고 요청할 수 있습니다. 사전에 연구 목적을 설명하고 동의를 얻으세요. 혼란, 오류, 설명이 필요한 부분을 기록하고, 도움을 받아 완료한 것을 독립적인 성공으로 간주하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "인계할 때 결정의 이유와 검증 범위 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 요구사항 버전, 채택한 화면, 필수 상태, 데이터 필드, 미해결 문제를 정리하세요. 중요한 수정마다 매장의 확인, 수동 점검, 사용자 관찰 중 무엇에 근거했는지 설명하세요. 내부 검토만 했다면 내부 검토라고 정확히 표시하고, 실제 테스트에서 유의미하게 개선되었다는 식의 근거 없는 결론은 쓰지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "프런트엔드 인계에서는 화면 표현과 업무 규칙도 구분해야 합니다. 조회 결과가 없다는 안내 문구와 다시 조회 버튼은 인터페이스 명세에서 설명할 수 있지만, 주문 조회 권한, 조회 빈도, 데이터 보관은 구현 담당자가 별도로 설계해야 합니다. 생성된 코드로 데모 화면이 실행된다고 해서 올바르고 보호된 서비스에 연결되었다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도구가 바뀌어도 이 요구사항 및 검증 기록은 계속 활용할 수 있습니다. 편집 가능한 파일, 필수 출력물, 자료 출처를 보관해 인계받는 사람이 무엇을 바꿀 수 있고 무엇을 더 확인해야 하는지 알 수 있게 하세요. AI 프롬프트의 가치는 프롬프트 자체의 길이가 아니라 팀이 채택한 인터페이스를 설명하고 유지·관리할 수 있는지에 달려 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-design-prompt-workflow/diagram-1-ko.svg",
+          "alt": "요구사항 입력, 생성된 초안, 디자인 가정, 조작 증거를 연결하는 네 장의 카드. 미확인 문제와 검증 범위를 기록해 두도록 안내합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "프롬프트는 방향을 제시합니다. 조작 가능한 결과물과 실제 관찰이 있어야 디자인 결정에 근거가 생깁니다.",
+          "description": "요구사항 입력, 생성된 초안, 디자인 가정, 조작 증거를 연결하는 네 장의 카드. 미확인 문제와 검증 범위를 기록해 두도록 안내합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "프롬프트 내용",
+            "자체 기획 조회 페이지 예시",
+            "완료 후 확인 방법"
+          ],
+          "rows": [
+            [
+              "사용자 과제",
+              "세탁물 수령 가능 여부 확인",
+              "상태와 다음 행동을 설명할 수 있는지 확인"
+            ],
+            [
+              "확인된 정보와 미확인 정보",
+              "매장 전화번호는 확인, 갱신 주기는 문의 필요",
+              "약속을 임의로 추가하지 않았는지 확인"
+            ],
+            [
+              "화면 상태",
+              "로딩, 조회 결과 없음, 서비스 일시 중단",
+              "명확한 설명과 후속 조작이 있는지 확인"
+            ],
+            [
+              "수정 범위",
+              "조회 결과의 배치만 조정",
+              "입력 항목과 조건이 삭제되지 않았는지 확인"
+            ],
+            [
+              "디자인 가정",
+              "고객이 영수증 번호를 찾을 수 있음",
+              "잠재 사용자가 실제로 조작하도록 함"
+            ],
+            [
+              "납품 범위와 한계",
+              "편집 가능한 초안과 확인 필요 목록",
+              "서비스 공개와 검수 완료를 혼동하지 않음"
+            ]
+          ],
+          "caption": "이 표는 자체 작성한 작업 대조표이며, 실제 테스트 기록이나 특정 도구의 기능을 보장하는 자료가 아닙니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "모델이 모의로 제시한 고객 의견도 여전히 가정",
+          "text": "AI로 사각지대를 찾은 뒤에는 검증 가능한 자료와 실제 조작 관찰로 돌아가야 합니다. 합리적인 추측을 확인된 사실로 적기보다 답을 모르는 부분을 남겨 두는 편이 후속 검증에 더 도움이 됩니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Figma AI의 기능과 데이터 권한 확인하기",
+              "kind": "life",
+              "slug": "figma-ai-design-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "와이어프레임과 프로토타입의 검증 방법 선택하기",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "UI와 UX의 업무 분담 알아보기",
+              "kind": "life",
+              "slug": "ui-ux-learning"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Figma: AI 디자인 프롬프트",
+          "url": "https://www.figma.com/resource-library/ai-design-prompts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma: AI를 위한 디자인 맥락",
+          "url": "https://www.figma.com/resource-library/design-context-ai/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: 진행자가 있는 사용성 테스트 활용하기",
+          "url": "https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C WAI: 간단한 점검",
+          "url": "https://www.w3.org/WAI/test-evaluate/easy-checks/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "用 AI 协助 UI 设计：从需求提示到可验证的界面",
+      "description": "用设计 AI 协助 UI 设计，关键不只是提示写得详细，而是把需求、假设和验收方式联系起来。本文以原创洗衣店进度查询页为例，整理可提供的背景、界面状态、修改范围及数据边界，再用比较表、操作步骤与原创图解说明如何检查内容、键盘操作及用户任务。帮助普通用户把生成草稿整理成可讨论、可测试的界面，不将模拟回复当成实际研究。",
+      "hero": {
+        "src": "/guides/ai-design-prompt-workflow/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创需求文档、界面与确认盾牌插图，代表从 AI 设计提示到用户任务验证。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "请 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 画一个简洁的查询页，可能会得到完整的输入框、进度条和漂亮插图。但它未必知道店家没有配送服务，也未必知道订单编号印在收据哪里。提示的第一个任务，是提供正确的工作背景，而不是堆砌描述风格的词。这对任何 UI AI 或设计 AI 都成立。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以原创洗衣店进度查询页示范，假设顾客要确认衣物是否可领取；这是一个假想项目，没有真实顾客数据或测试成果。方法根据 2026 年 9 月 14 日查阅的设计与用户研究文档整理，工具功能、权限和价格另按所用产品确认。"
+        },
+        {
+          "type": "heading",
+          "text": "先写出使用场景与完成条件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在打开生成工具前，先用一小段文字描述谁在什么情况下做什么事。例如：顾客拿着收据使用手机，希望输入编号后知道能否到店领衣。完成条件是看懂当前状态、营业时间及下一步，而不是停留在一张具有品牌感的首页。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把已确认事实与尚待确认项目分开。店名和公开电话可以来自店家提供的资料；查询需要哪些字段、多久更新一次、过期订单如何处理，则要先询问负责人。没有答案时请 AI 保留"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "，不让它自行补出客服承诺或取件规则。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Figma 的提示与设计背景文档都强调，具体背景、目的及限制有助于工具理解任务。但信息写进提示不代表答案已经正确，也不保证指定组件一定被采用。提示只是工作输入，完成后仍要逐项对照需求与实际结构。"
+        },
+        {
+          "type": "heading",
+          "text": "把提示组成可以核对的设计委托",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原创提示可以写成：为洗衣店制作手机版进度查询草稿；顾客从收据获取编号，成功查询后需看到处理中或可领取状态。沿用指定按钮样式，使用繁体中文，未知店务信息用待确认文字标记。先列出需要补充询问的信息，再提供界面布局。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接着交代必要状态：尚未输入、格式错误、查无数据、加载中、成功及服务暂时无法使用。每个状态都写明读者需要理解什么、可以做什么。不要只要求加上错误提示，否则可能得到看似完整、却没有修正方法的红字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后指定改动范围与交付物，例如只建立查询及结果页，不新增会员、付款或营销弹窗；提供界面、组件对照和未解决问题。若工具只产出图片，便无法直接验证图层或键盘行为；若产出代码，也要另行检查实际数据访问与错误处理。"
+        },
+        {
+          "type": "heading",
+          "text": "用假设记录取代对生成结果的直觉认可",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "拿到草稿后，可以建立简单表格，记录设计决定、依据、风险及确认方法。例如：假设顾客找得到收据编号，因而只保留一个输入字段；确认方法是请潜在顾客看收据并完成查询，而不是询问 AI 这个设计是否直观。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一个假设是顾客理解处理中代表尚未开放领取。可以观察参与者看到结果后准备做什么，以及是否还会打电话确认。若多数人仍不明白，应先改进状态说明与下一步，不急着换配色或加入动画。这里描述的是待执行的方法，并无调查数据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "请 AI 扮演顾客有助于列出可能遗漏的问题，但模型回答不是实际用户的行为证据。整理出来的疑问仍标为假设，并通过店务资料、既有客服记录或取得同意的用户研究核对，不把模拟访谈写成顾客已经认同。"
+        },
+        {
+          "type": "heading",
+          "text": "修改时一次处理可辨认的问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "若首次结果在窄屏上挤成多栏，后续提示可以指定：保留原本字段与文字，将结果信息按状态、领取说明、店家信息排列；只调整布局，不更动查询条件。这样才能比较修改是否解决问题，并注意工具是否顺手删除必要内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次保留变更前的版本，记录修改理由及影响范围。将真实问题写清楚，例如长店名换行后遮住按钮，比要求再精致一点更容易判断成效。遇到工具反复重做同一部分，也可以人工修正，再把需要保留的结果指定为下一轮基准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "输入工具前先删除真实订单、电话与可识别顾客的截图，改用虚构数据。核对上传内容的使用条件、协作可见性及可用组件授权。已经设置不用于模型训练，仍不代表服务不会处理输入，也不代表可以使用原本无权提供的素材。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "写下顾客任务、完成条件、已知事实与待确认规则。",
+            "提供界面状态、组件限制及交付要求，保留未知信息标记。",
+            "逐项比较草稿与需求，将设计决定整理成可检查的假设。",
+            "安排操作检查与用户任务，根据观察修正并留下交接记录。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "从界面检查走到实际操作观察",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先做基本检查：标题是否说明用途、字段有无可识别标签、错误能否对应到字段、文字是否清楚、放大后是否仍能阅读。真正可操作的版本还要试用键盘移动焦点，确认焦点可见、顺序合理且不会被困住。图片原型本身不能证明这些行为。"
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C 的《简易检查》是初步无障碍检查方法，不是完全符合标准的证明。不能因为 AI 说已符合无障碍要求，或自动工具没有警告，就宣称网站已全面通过。根据产品需要安排更完整的检查，并记录尚未验证的项目及负责人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GOV.UK 的用户测试指南建议找实际或潜在用户，提供中立任务并观察操作。这个项目可以请对方确认衣物是否能领取，避免直接教他点某个按钮。事前说明研究用途并取得同意；记录困惑、错误与说明需求，避免把协助后完成当成独立成功。"
+        },
+        {
+          "type": "heading",
+          "text": "交接时留下决定的理由与验证边界",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最后整理需求版本、采用的界面、必要状态、数据字段及未解决问题。对每项重要调整，说明根据的是店家确认、人工检查还是用户观察。如果只有内部走查，就如实标示内部走查，不使用实测显著改善等没有证据的结论。"
+        },
+        {
+          "type": "paragraph",
+          "text": "前端交接还要区分呈现和业务规则。查无数据的文案、再次查询按钮可以在界面规格中说明，但订单读取权限、查询频率和数据保存需由实现方另行设计。生成代码能运行出示范界面，不等于已接入正确且受保护的服务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工具换代时，这份需求与验证记录仍然可用。保留可编辑文件、必要输出及素材来源，让接手者知道什么可以改、什么还待确认。AI 提示的价值，会体现在团队能否解释并维护采用的界面，而不是提示本身有多长。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-design-prompt-workflow/diagram-1-zh-cn.svg",
+          "alt": "四张卡片连接需求输入、生成草稿、设计假设与操作证据，提醒保留未知问题及验证边界。",
+          "width": 1600,
+          "height": 900,
+          "caption": "提示提供方向；可操作的成果与实际观察，才让设计决定有依据。",
+          "description": "四张卡片连接需求输入、生成草稿、设计假设与操作证据，提醒保留未知问题及验证边界。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "提示内容",
+            "原创查询页示例",
+            "完成后怎么核对"
+          ],
+          "rows": [
+            [
+              "用户任务",
+              "确认衣物能否领取",
+              "能说出状态与下一步"
+            ],
+            [
+              "已知与未知",
+              "店家电话已知，更新频率待问",
+              "没有自行补出承诺"
+            ],
+            [
+              "界面状态",
+              "加载、查无数据及暂停服务",
+              "有清楚说明与后续操作"
+            ],
+            [
+              "修改范围",
+              "只调整查询结果的排列",
+              "字段与条件没有被删除"
+            ],
+            [
+              "设计假设",
+              "顾客能找到收据编号",
+              "由潜在用户实际操作"
+            ],
+            [
+              "交付边界",
+              "可编辑草稿与待确认清单",
+              "不混同上线与验收完成"
+            ]
+          ],
+          "caption": "本表是自行设计的工作对照，不是实际测试记录或特定工具的功能保证。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "模型模拟的顾客意见仍是假设",
+          "text": "用 AI 找出盲点后，应回到可查证资料与实际操作观察。保留没有答案的地方，比把合理猜测写成已知事实更方便后续验证。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "核对 Figma AI 的功能与数据权限",
+              "kind": "life",
+              "slug": "figma-ai-design-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "选择线框图与原型的验证方式",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "了解 UI 与 UX 的工作分工",
+              "kind": "life",
+              "slug": "ui-ux-learning"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Figma：AI 设计提示词",
+          "url": "https://www.figma.com/resource-library/ai-design-prompts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：为 AI 提供设计背景",
+          "url": "https://www.figma.com/resource-library/design-context-ai/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：使用主持式可用性测试",
+          "url": "https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C WAI：简易检查",
           "url": "https://www.w3.org/WAI/test-evaluate/easy-checks/",
           "checked_on": "2026-09-14"
         }

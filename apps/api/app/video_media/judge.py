@@ -15,13 +15,18 @@ import re
 from typing import Any
 
 import httpx
+from PIL import Image
 
 from app.ai.structured_output import gemini_output_text
 from app.config import Settings
+from app.video_budget.service import is_pilot
 from app.video_media.providers import USER_AGENT, MediaUpstreamError, raise_for_status
 from app.video_media.schemas import JudgeIn, JudgeOut
 from app.video_media.settings import MediaSettings
 from app.video_media.storage import MediaStore
+
+PILOT_MAX_IMAGE_DIMENSION = 1536
+PILOT_MAX_OUTPUT_TOKENS = 4096
 
 MIN_CRITERION = 4.0
 # A problem is one line "<criterion key>: <what is wrong and where> → <one change to the prompt>"
@@ -101,6 +106,22 @@ def _parts(store: MediaStore, media: MediaSettings, payload: JudgeIn) -> list[di
         path = store.path(payload.slug, file.sha256)
         if path is None:
             raise JudgeError(404, "video_media_file_not_found", f"{file.label} 不在媒體庫裡")
+        if is_pilot(payload.slug):
+            if store.content_type_of(path) not in {"image/png", "image/jpeg", "image/webp"}:
+                raise JudgeError(
+                    422, "video_pilot_budget_unknown_price", "試作只允許已定價的靜態圖片評審"
+                )
+            try:
+                with Image.open(path) as picture:
+                    width, height = picture.size
+            except (OSError, ValueError, Image.DecompressionBombError) as error:
+                raise JudgeError(422, "video_media_invalid", "試作圖片尺寸無法讀取") from error
+            if width < 1 or height < 1 or max(width, height) > PILOT_MAX_IMAGE_DIMENSION:
+                raise JudgeError(
+                    422,
+                    "video_pilot_budget_unknown_price",
+                    "試作圖片超過已定價的 1536 像素邊界",
+                )
         data = path.read_bytes()
         total += len(data)
         if total > media.video_media_inline_judge_bytes:
@@ -154,16 +175,19 @@ def request_body(
         },
         "required": [answer, "problems", "notes"],
     }
+    generation_config: dict[str, Any] = {
+        "temperature": 0,
+        "responseMimeType": "application/json",
+        "responseSchema": schema,
+    }
+    if is_pilot(payload.slug):
+        generation_config["maxOutputTokens"] = PILOT_MAX_OUTPUT_TOKENS
     return {
         "system_instruction": {
             "parts": [{"text": CHECK_INSTRUCTIONS if payload.checks else INSTRUCTIONS}]
         },
         "contents": [{"role": "user", "parts": parts}],
-        "generationConfig": {
-            "temperature": 0,
-            "responseMimeType": "application/json",
-            "responseSchema": schema,
-        },
+        "generationConfig": generation_config,
     }
 
 
@@ -312,4 +336,13 @@ async def judge(
         text = gemini_output_text(answer if isinstance(answer, dict) else {})
     except ValueError as error:
         raise JudgeError(502, "video_media_judge_failed", f"judge 沒有回答：{error}") from error
-    return verdict(text, payload, min_score, model)
+    result = verdict(text, payload, min_score, model)
+    usage = answer.get("usageMetadata") if isinstance(answer, dict) else None
+    if isinstance(usage, dict):
+        prompt = usage.get("promptTokenCount")
+        total = usage.get("totalTokenCount")
+        if isinstance(prompt, int) and isinstance(total, int) and 0 <= prompt <= total:
+            return result.model_copy(
+                update={"usage_input_tokens": prompt, "usage_total_tokens": total}
+            )
+    return result

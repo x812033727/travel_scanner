@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Microsoft JhengHei',sans-serif">
+<title id="title">同じ 280px でもボックスが違う理由</title><desc id="desc">三枚のカードで、content-box の外枠 316px、border-box の内容 244px、どちらの width にも含まれない margin を比較しています。</desc>
+<rect width="1600" height="900" fill="#F7F1E8" />
+<text x="80" y="94" font-size="52" fill="#102A2B" text-anchor="start" font-weight="bold">同じ 280px でもボックスが違う理由</text>
+<text x="80" y="151" font-size="28" fill="#5C6B6B" text-anchor="start" font-weight="normal">自作イベントカードの計算例：左右の padding 各 16px、左右の border 各 2px</text>
+<rect x="80.0" y="256" width="456.0" height="400" rx="24" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4" />
+<text x="108.0" y="314" font-size="38" fill="#102A2B" text-anchor="start" font-weight="bold">content-box</text>
+<text x="108.0" y="371" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">内容の幅 280px</text>
+<text x="108.0" y="423" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">内側余白と枠に別途 36px</text>
+<text x="108.0" y="475" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">枠の外端幅 316px</text>
+<rect x="572.0" y="256" width="456.0" height="400" rx="24" fill="#E6F0F7" stroke="#0D6B68" stroke-width="4" />
+<text x="600.0" y="314" font-size="38" fill="#102A2B" text-anchor="start" font-weight="bold">border-box</text>
+<text x="600.0" y="371" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">枠の外端幅 280px</text>
+<text x="600.0" y="423" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">内側余白と枠で計 36px</text>
+<text x="600.0" y="475" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">内容の使用可能幅 244px</text>
+<rect x="1064.0" y="256" width="456.0" height="400" rx="24" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4" />
+<text x="1092.0" y="314" font-size="38" fill="#102A2B" text-anchor="start" font-weight="bold">margin</text>
+<text x="1092.0" y="371" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">枠の外側にある</text>
+<text x="1092.0" y="423" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">両方の width に含まれない</text>
+<text x="1092.0" y="475" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">余白は配置条件も確認</text>
+<text x="80" y="803" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">この例にはほかの寸法制限なし。実際の画面では親コンテナーと最終計算値も確認。</text>
+<text x="1520" y="862" font-size="24" fill="#5C6B6B" text-anchor="end" font-weight="normal">Mokaair オリジナル図解</text>
+</svg>

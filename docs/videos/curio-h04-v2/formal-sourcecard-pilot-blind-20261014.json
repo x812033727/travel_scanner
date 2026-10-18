@@ -1,0 +1,32 @@
+{
+  "purpose": "Independent source and composition review before a bounded two-shot MiniMax pilot; no image outcome or previous judge verdict is included",
+  "slug": "curio-h04-v2",
+  "video_sha256": "6c7cd3d3a48c7fa03ba01122fb72601548867eb0faa09fc2ecde0dc507fa34dd",
+  "look": "Cute hand-inked flat 2D Taiwanese explainer cartoon. Thick clean dark outlines, broad solid colour areas, simple cel shadows and subtle paper grain. Restrained deep navy, parchment yellow and muted teal. One clear focal area in a simple full-bleed 16:9 composition; plain clean image corners.",
+  "shots": [
+    {
+      "id": "tent-opening-question",
+      "line_id": "h4v105",
+      "spoken_line": "那道帳篷裂口，到底是從哪一面劃開？",
+      "before": "tent-opening-empty",
+      "after": "trail-varied",
+      "frames": 143,
+      "prompt": "Close-up eye-level illustration of a plain canvas wall of an empty generic low ridge tent. One small slit-like separation sits in the centre of the cloth; its two soft edges lie flat in a neutral frontal view. Unmarked beige canvas fills nearly the entire frame, with a little shadow in the narrow gap and simple hand-inked contours. The image reads as a hypothetical tent-cloth detail rather than a recovered artifact. No people, tools, lettering or document surface.",
+      "camera": "push in",
+      "source": "https://dyatlovpass.com/case-files-303-304-ru",
+      "check": "Does this read as a hypothetical direction-neutral tent-cloth close-up, with no implied real cut geometry, person, tool, document or side-of-cut answer?"
+    },
+    {
+      "id": "model-paper-card",
+      "line_id": "h4v048",
+      "spoken_line": "為了解釋可能的延遲，開場那兩位研究者在二〇二一年提出小型雪板模型。",
+      "before": "camp-open-question",
+      "after": "cohesive-snow",
+      "frames": 231,
+      "prompt": "Wide oblique model illustration of a short generic treeless snowy slope. One small coherent snow slab appears as a limited patch near the centre, with a clean visible edge over a thin underlying layer; most of the surrounding hillside remains continuous. A simple rounded ridge and open sky give scale, while the clean geometric shapes make this a conceptual mechanism rather than a particular place or observed event. No people, tent, paper or lettering.",
+      "camera": "push in",
+      "source": "https://www.nature.com/articles/s43247-020-00081-8",
+      "check": "Does this read as a compact conceptual slab model rather than a large avalanche, a site measurement, a paper page, or a claim that the event is proven?"
+    }
+  ]
+}

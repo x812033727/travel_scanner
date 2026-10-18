@@ -8,27 +8,39 @@ the review store a week later while the rest of the upload package stays.
 from __future__ import annotations
 
 import hashlib
+import json
+from collections.abc import AsyncIterator, Sequence
+from contextlib import asynccontextmanager
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import Any
+from types import SimpleNamespace
+from typing import Any, cast
 from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
 
+import httpx
 import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
+from sqlalchemy import Table, select
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
+from app import cli
 from app.auth.service import current_user
 from app.config import Settings
-from app.db import get_session
-from app.models import User, VideoProject, VideoReview
+from app.db import Base, get_session
+from app.models import AdminAuditLog, User, VideoProject, VideoReview
 from app.problems import AppError, app_error_handler
 from app.video_reviews import admin_api, admin_service
+from app.video_reviews.admin_service import YoutubePublication
 from app.video_reviews.schemas import ProjectIn, ProjectOut, ProjectSummary, ReviewIn, YoutubeIn
 from app.video_reviews.storage import ReviewStore
+from app.video_youtube.client import YoutubeError
+from app.video_youtube.errors import Refused
 
 VIDEO_ID = "dQw4w9WgXcQ"
 NOON = datetime(2026, 10, 1, 12, 0, tzinfo=UTC)
+CHANNEL = "UCmokaair000000000000000"
 
 
 def _store(root: Path) -> ReviewStore:
@@ -57,6 +69,102 @@ def _project(**fields: Any) -> VideoProject:
         "last_synced_at": NOON,
     }
     return VideoProject(**{**values, **fields})
+
+
+def _view(project: VideoProject) -> ProjectOut:
+    return ProjectOut(**admin_service._summary(project, 0), reviews=[])
+
+
+def _pending_imported_final(project: VideoProject) -> VideoReview:
+    return VideoReview(
+        id=uuid4(),
+        project_id=project.id,
+        gate="final",
+        subject=None,
+        status="pending",
+        summary="Imported recut",
+        content_sha256="a" * 64,
+        payload={"imported": {"captions": True, "note": "Standalone recut"}},
+        files=[{"role": "preview", "sha256": "b" * 64, "size": 100, "content_type": "video/mp4"}],
+    )
+
+
+def _private_link_session() -> Any:
+    session = AsyncMock()
+    session.add = MagicMock()
+    session.get_bind = MagicMock(
+        return_value=SimpleNamespace(dialect=SimpleNamespace(name="sqlite"))
+    )
+    session.scalar.return_value = None  # no other project has claimed the ID
+    return session
+
+
+def youtube_item(
+    video_id: str,
+    *,
+    privacy: str = "public",
+    channel: str = CHANNEL,
+    published: datetime | None = NOON,
+    scheduled: datetime | None = None,
+    processing: str | None = "succeeded",
+    duration: str | None = "PT1M",
+) -> dict[str, Any]:
+    """One videos.list item the way YouTube shapes it (snippet and status)."""
+    snippet: dict[str, Any] = {"channelId": channel, "title": f"Video {video_id}"}
+    if published is not None:
+        snippet["publishedAt"] = published.isoformat().replace("+00:00", "Z")
+    status: dict[str, Any] = {"privacyStatus": privacy}
+    if scheduled is not None:
+        status["publishAt"] = scheduled.isoformat().replace("+00:00", "Z")
+    return {
+        "id": video_id,
+        "snippet": snippet,
+        "status": status,
+        "processingDetails": {"processingStatus": processing} if processing is not None else {},
+        "contentDetails": {"duration": duration} if duration is not None else {},
+    }
+
+
+class FakeYoutube:
+    """Stands in for ``YoutubeClient``: what videos.list answers, and what was asked of it."""
+
+    def __init__(self, *items: dict[str, Any], failure: Exception | None = None) -> None:
+        self.items = {item["id"]: item for item in items}
+        self.failure = failure
+        self.asked: list[list[str]] = []
+        self.parts: list[str] = []
+
+    async def video(self, video_id: str) -> dict[str, Any] | None:
+        self.asked.append([video_id])
+        if self.failure is not None:
+            raise self.failure
+        return self.items.get(video_id)
+
+    async def videos(self, video_ids: Sequence[str], *, parts: str) -> list[dict[str, Any]]:
+        assert len(video_ids) <= 50, "videos.list takes at most fifty ids"
+        self.asked.append(list(video_ids))
+        self.parts.append(parts)
+        if self.failure is not None:
+            raise self.failure
+        return [self.items[video_id] for video_id in video_ids if video_id in self.items]
+
+
+def link_channel(
+    monkeypatch: pytest.MonkeyPatch,
+    youtube: FakeYoutube | None,
+    *,
+    channel: str = CHANNEL,
+    refused: Refused | None = None,
+) -> None:
+    """Make the service's linked channel ``youtube``, or ``refused`` when there is none."""
+
+    @asynccontextmanager
+    async def linked(_session: AsyncSession) -> AsyncIterator[tuple[str, Any]]:
+        if refused is not None:
+            raise refused
+        yield channel, youtube
+
+    monkeypatch.setattr(admin_service, "_linked_youtube", linked)
 
 
 # --- the pasted address --------------------------------------------------------------------------
@@ -125,12 +233,15 @@ async def test_linking_records_the_id_and_the_publish_time_and_writes_an_audit_r
 ) -> None:
     project = _project()
     monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
-    monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value="view"))
+    monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value=_view(project)))
+    asked = AsyncMock(return_value=YoutubePublication(None, admin_service.NOT_PUBLIC))
+    monkeypatch.setattr(admin_service, "youtube_publication", asked)
     session = AsyncMock()
     session.add = MagicMock()
     owner = _owner()
 
-    assert await admin_service.link_youtube(session, "v", owner, VIDEO_ID, NOON) == "view"
+    page = await admin_service.link_youtube(session, "v", owner, VIDEO_ID, NOON)
+    assert page.youtube_publish_note is None
     assert (project.youtube_video_id, project.youtube_publish_at) == (VIDEO_ID, NOON)
     audit = session.add.call_args.args[0]
     assert (audit.action, audit.target, audit.actor_user_id) == (
@@ -142,13 +253,25 @@ async def test_linking_records_the_id_and_the_publish_time_and_writes_an_audit_r
         "slug": "v",
         "youtube_video_id": VIDEO_ID,
         "publish_at": "2026-10-01T12:00:00+00:00",
+        "publish_at_source": "owner",
+        "publish_at_reason": None,
     }
     session.commit.assert_awaited()
+    asked.assert_not_awaited()
 
-    # Pasting again corrects a wrong link; no publish time means the owner has not decided.
-    await admin_service.link_youtube(session, "v", owner, "abcdefghijk", None)
+    # Pasting again corrects a wrong link; with no publish time YouTube is asked, and a video
+    # that is still private keeps none, with the reason on the page and in the audit row.
+    page = await admin_service.link_youtube(session, "v", owner, "abcdefghijk", None)
     assert (project.youtube_video_id, project.youtube_publish_at) == ("abcdefghijk", None)
-    assert session.add.call_args.args[0].metadata_json["publish_at"] is None
+    assert asked.await_args.args[1] == "abcdefghijk"
+    assert page.youtube_publish_note == admin_service.NOT_PUBLIC
+    assert session.add.call_args.args[0].metadata_json == {
+        "slug": "v",
+        "youtube_video_id": "abcdefghijk",
+        "publish_at": None,
+        "publish_at_source": None,
+        "publish_at_reason": admin_service.NOT_PUBLIC,
+    }
 
     with pytest.raises(AppError) as naive:
         await admin_service.link_youtube(session, "v", owner, VIDEO_ID, NOON.replace(tzinfo=None))
@@ -158,6 +281,562 @@ async def test_linking_records_the_id_and_the_publish_time_and_writes_an_audit_r
     with pytest.raises(AppError) as dropped:
         await admin_service.link_youtube(session, "v", owner, VIDEO_ID, None)
     assert dropped.value.code == "video_project_dropped"
+
+
+@pytest.mark.asyncio
+async def test_private_only_link_records_an_unscheduled_video_on_the_linked_channel(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    project = _project()
+    final = _pending_imported_final(project)
+    project_lookup = AsyncMock(return_value=project)
+    monkeypatch.setattr(admin_service, "_project", project_lookup)
+    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[final]))
+    monkeypatch.setattr(
+        admin_service, "project_view", AsyncMock(side_effect=lambda *_: _view(project))
+    )
+    publication = AsyncMock()
+    monkeypatch.setattr(admin_service, "youtube_publication", publication)
+    youtube = FakeYoutube(youtube_item(VIDEO_ID, privacy="private"))
+    link_channel(monkeypatch, youtube)
+    session = _private_link_session()
+
+    page = await admin_service.link_youtube(
+        session, "v", _owner(), VIDEO_ID, None, private_only=True
+    )
+
+    assert (project.youtube_video_id, project.youtube_publish_at) == (VIDEO_ID, None)
+    assert page.youtube_video_id == VIDEO_ID
+    assert youtube.asked == [[VIDEO_ID]]
+    assert youtube.parts == ["snippet,status,contentDetails,processingDetails"]
+    publication.assert_not_awaited(), "private-only must not infer a public timestamp"
+    assert session.add.call_args.args[0].metadata_json["private_only"] is True
+    assert project_lookup.await_args.kwargs == {"lock": True}
+    duplicate_sql = str(session.scalar.await_args.args[0])
+    assert "youtube_video_id" in duplicate_sql and "video_projects.id !=" in duplicate_sql
+    session.commit.assert_awaited_once()
+    assert final.status == "pending"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("youtube", "channel", "refused", "code"),
+    [
+        (FakeYoutube(youtube_item(VIDEO_ID)), CHANNEL, None, "video_youtube_not_private"),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="unlisted")),
+            CHANNEL,
+            None,
+            "video_youtube_not_private",
+        ),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private", scheduled=NOON)),
+            CHANNEL,
+            None,
+            "video_youtube_not_private",
+        ),
+        (
+            FakeYoutube(
+                youtube_item(VIDEO_ID, privacy="private", channel="UCother000000000000000")
+            ),
+            CHANNEL,
+            None,
+            "video_youtube_private_channel",
+        ),
+        (FakeYoutube(), CHANNEL, None, "video_youtube_private_not_found"),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private")),
+            "",
+            None,
+            "video_youtube_private_channel",
+        ),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private", processing=None)),
+            CHANNEL,
+            None,
+            "video_youtube_private_unprocessed",
+        ),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private", processing="failed")),
+            CHANNEL,
+            None,
+            "video_youtube_private_unprocessed",
+        ),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private", duration="PT0S")),
+            CHANNEL,
+            None,
+            "video_youtube_private_unprocessed",
+        ),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private", duration=None)),
+            CHANNEL,
+            None,
+            "video_youtube_private_unprocessed",
+        ),
+        (
+            FakeYoutube(failure=YoutubeError(403, "quotaExceeded", "over")),
+            CHANNEL,
+            None,
+            "video_youtube_private_verify_failed",
+        ),
+        (
+            FakeYoutube(failure=httpx.ConnectError("down")),
+            CHANNEL,
+            None,
+            "video_youtube_private_verify_failed",
+        ),
+        (
+            None,
+            CHANNEL,
+            Refused(409, "video_youtube_not_linked", "not linked"),
+            "video_youtube_not_linked",
+        ),
+    ],
+    ids=[
+        "public",
+        "unlisted",
+        "scheduled",
+        "foreign-channel",
+        "not-found",
+        "missing-channel",
+        "processing-missing",
+        "processing-failed",
+        "zero-duration",
+        "duration-missing",
+        "youtube-error",
+        "network-error",
+        "no-connection",
+    ],
+)
+async def test_private_only_rejects_any_unverified_or_not_private_video_without_writing(
+    monkeypatch: pytest.MonkeyPatch,
+    youtube: FakeYoutube | None,
+    channel: str,
+    refused: Refused | None,
+    code: str,
+) -> None:
+    project = _project()
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(
+        admin_service, "_reviews", AsyncMock(return_value=[_pending_imported_final(project)])
+    )
+    link_channel(monkeypatch, youtube, channel=channel, refused=refused)
+    session = _private_link_session()
+
+    with pytest.raises(AppError) as denied:
+        await admin_service.link_youtube(session, "v", _owner(), VIDEO_ID, None, private_only=True)
+
+    assert denied.value.code == code
+    assert project.youtube_video_id is None and project.youtube_publish_at is None
+    session.add.assert_not_called()
+    session.commit.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_private_only_rejects_existing_duplicate_and_unreviewed_links(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    project = _project()
+    final = _pending_imported_final(project)
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    reviews_lookup = AsyncMock(return_value=[final])
+    monkeypatch.setattr(admin_service, "_reviews", reviews_lookup)
+    youtube = FakeYoutube(youtube_item(VIDEO_ID, privacy="private"))
+    link_channel(monkeypatch, youtube)
+
+    async def denied_code(session: Any, *, publish_at: datetime | None = None) -> str:
+        with pytest.raises(AppError) as denied:
+            await admin_service.link_youtube(
+                session, "v", _owner(), VIDEO_ID, publish_at, private_only=True
+            )
+        session.add.assert_not_called()
+        session.commit.assert_not_awaited()
+        return denied.value.code
+
+    assert (
+        await denied_code(_private_link_session(), publish_at=NOON)
+        == "video_youtube_private_publish_at"
+    )
+    project.youtube_video_id = "abcdefghijk"
+    assert await denied_code(_private_link_session()) == "video_youtube_already_linked"
+    project.youtube_video_id = None
+    session = _private_link_session()
+    session.scalar.return_value = "another-project"
+    assert await denied_code(session) == "video_youtube_id_in_use"
+    assert youtube.asked == [], "reject a duplicate before spending a YouTube request"
+    final.status = "approved"
+    assert await denied_code(_private_link_session()) == "video_youtube_private_review_required"
+    final.status = "pending"
+    final.files = []
+    assert await denied_code(_private_link_session()) == "video_youtube_private_review_required"
+    final.files = _pending_imported_final(project).files
+    final.payload = {}
+    assert await denied_code(_private_link_session()) == "video_youtube_private_review_required"
+    final.payload = {"imported": {"captions": True}}
+    final.content_sha256 = "invalid"
+    assert await denied_code(_private_link_session()) == "video_youtube_private_review_required"
+    final.content_sha256 = "a" * 64
+    project.shorts_line = "cut"
+    assert await denied_code(_private_link_session()) == "video_youtube_private_review_required"
+    project.shorts_line = None
+    package = _pending_imported_final(project)
+    package.gate = "publish"
+    package.status = "approved"
+    reviews_lookup.return_value = [final, package]
+    assert await denied_code(_private_link_session()) == "video_youtube_private_package_exists"
+    reviews_lookup.return_value = [final]
+    project.youtube_sync = {
+        "status": "running", "lease_until": (datetime.now(UTC) + timedelta(minutes=5)).isoformat()
+    }
+    assert await denied_code(_private_link_session()) == "video_youtube_private_sync_running"
+
+
+@pytest.mark.asyncio
+async def test_private_only_claims_a_transaction_lock_for_the_video_id_on_postgres() -> None:
+    session = _private_link_session()
+    session.get_bind.return_value.dialect.name = "postgresql"
+
+    await admin_service._lock_private_youtube_id(session, VIDEO_ID)
+
+    statement = session.execute.await_args.args[0]
+    assert "pg_advisory_xact_lock" in str(statement)
+    assert len(statement.compile().params) == 1
+
+
+@pytest.mark.asyncio
+async def test_a_video_the_owner_made_public_in_studio_takes_the_time_youtube_reports(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    project = _project()
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value=_view(project)))
+    session = AsyncMock()
+    session.add = MagicMock()
+    owner = _owner()
+    youtube = FakeYoutube(youtube_item(VIDEO_ID, published=NOON - timedelta(days=2)))
+    link_channel(monkeypatch, youtube)
+
+    page = await admin_service.link_youtube(session, "v", owner, VIDEO_ID, None)
+    assert project.youtube_publish_at == NOON - timedelta(days=2)
+    assert page.youtube_publish_note is None
+    assert youtube.asked == [[VIDEO_ID]], "one videos.list call, nothing written to YouTube"
+    assert session.add.call_args.args[0].metadata_json == {
+        "slug": "v",
+        "youtube_video_id": VIDEO_ID,
+        "publish_at": "2026-09-29T12:00:00+00:00",
+        "publish_at_source": "youtube",
+        "publish_at_reason": None,
+    }
+
+    # A private video scheduled in Studio takes its scheduled time, so it appears on time.
+    later = NOON + timedelta(days=3)
+    scheduled = youtube_item(VIDEO_ID, privacy="private", scheduled=later)
+    link_channel(monkeypatch, FakeYoutube(scheduled))
+    page = await admin_service.link_youtube(session, "v", owner, VIDEO_ID, None)
+    assert (project.youtube_publish_at, page.youtube_publish_note) == (later, None)
+
+    # The owner's own time wins over YouTube's, and YouTube is not even asked.
+    youtube = FakeYoutube(youtube_item(VIDEO_ID))
+    link_channel(monkeypatch, youtube)
+    await admin_service.link_youtube(session, "v", owner, VIDEO_ID, NOON)
+    assert project.youtube_publish_at == NOON and youtube.asked == []
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("youtube", "channel", "refused", "note"),
+    [
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private")),
+            CHANNEL,
+            None,
+            admin_service.NOT_PUBLIC,
+        ),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="unlisted")),
+            CHANNEL,
+            None,
+            admin_service.NOT_PUBLIC,
+        ),
+        (FakeYoutube(), CHANNEL, None, admin_service.NOT_IN_CHANNEL),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, channel="UCsomebodyelse0000000000")),
+            CHANNEL,
+            None,
+            admin_service.NOT_IN_CHANNEL,
+        ),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, published=None)),
+            CHANNEL,
+            None,
+            admin_service.NO_PUBLISHED_AT,
+        ),
+        (
+            None,
+            CHANNEL,
+            Refused(409, "video_youtube_not_linked", "還沒有連結 YouTube 頻道：到設定分頁連結"),
+            "還沒有連結 YouTube 頻道：到設定分頁連結",
+        ),
+        (None, CHANNEL, Refused(409, "video_youtube_grant_lost", "授權失效"), "授權失效"),
+        (
+            FakeYoutube(failure=YoutubeError(403, "quotaExceeded", "over")),
+            CHANNEL,
+            None,
+            admin_service._unreachable(YoutubeError(403, "quotaExceeded", "over")),
+        ),
+        (
+            FakeYoutube(failure=httpx.ConnectError("down")),
+            CHANNEL,
+            None,
+            admin_service._unreachable(httpx.ConnectError("down")),
+        ),
+    ],
+    ids=[
+        "private",
+        "unlisted",
+        "not-found",
+        "another-channel",
+        "public-without-time",
+        "not-linked",
+        "grant-lost",
+        "api-refused",
+        "network-down",
+    ],
+)
+async def test_without_a_public_time_the_id_is_still_recorded_and_the_reason_is_told(
+    monkeypatch: pytest.MonkeyPatch,
+    youtube: FakeYoutube | None,
+    channel: str,
+    refused: Refused | None,
+    note: str,
+) -> None:
+    project = _project()
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value=_view(project)))
+    session = AsyncMock()
+    session.add = MagicMock()
+    link_channel(monkeypatch, youtube, channel=channel, refused=refused)
+
+    page = await admin_service.link_youtube(session, "v", _owner(), VIDEO_ID, None)
+    assert (project.youtube_video_id, project.youtube_publish_at) == (VIDEO_ID, None)
+    assert page.youtube_publish_note == note
+    metadata = session.add.call_args.args[0].metadata_json
+    assert (metadata["publish_at"], metadata["publish_at_source"]) == (None, None)
+    assert metadata["publish_at_reason"] == note
+    session.commit.assert_awaited()
+
+
+def test_what_a_videos_list_item_says_about_publication() -> None:
+    public = admin_service.publication_of(youtube_item(VIDEO_ID), CHANNEL)
+    assert public == YoutubePublication(NOON, None)
+    # A public video is never read as scheduled, whatever else its status carries.
+    stale = youtube_item(VIDEO_ID, scheduled=NOON + timedelta(days=1))
+    assert admin_service.publication_of(stale, CHANNEL).publish_at == NOON
+    # Without a channel to check against (none linked), the item is read as it is.
+    assert admin_service.publication_of(youtube_item(VIDEO_ID), None).publish_at == NOON
+    assert admin_service.publication_of({"id": VIDEO_ID}, CHANNEL) == YoutubePublication(
+        None, admin_service.NOT_IN_CHANNEL
+    )
+    assert admin_service.publication_of({"id": VIDEO_ID}, None) == YoutubePublication(
+        None, admin_service.NOT_PUBLIC
+    )
+
+
+# --- the one-off backfill of the videos published from Studio -------------------------------------
+
+
+@pytest.fixture
+async def factory() -> AsyncIterator[async_sessionmaker[AsyncSession]]:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    tables = [cast(Table, model.__table__) for model in (User, VideoProject, AdminAuditLog)]
+    async with engine.begin() as connection:
+        await connection.run_sync(lambda sync: Base.metadata.create_all(sync, tables=tables))
+    yield async_sessionmaker(engine, expire_on_commit=False)
+    await engine.dispose()
+
+
+def _linked(slug: str, video_id: str, **fields: Any) -> VideoProject:
+    return _project(slug=slug, youtube_video_id=video_id, **fields)
+
+
+async def _publish_times(factory: async_sessionmaker[AsyncSession]) -> dict[str, datetime | None]:
+    """Each video's stored publish time; SQLite drops the zone, and they were written in UTC."""
+    async with factory() as session:
+        rows = await session.scalars(select(VideoProject).order_by(VideoProject.slug))
+        return {
+            row.slug: (
+                row.youtube_publish_at.replace(tzinfo=UTC) if row.youtube_publish_at else None
+            )
+            for row in rows
+        }
+
+
+@pytest.mark.asyncio
+async def test_the_backfill_reports_every_video_and_writes_only_with_apply(
+    monkeypatch: pytest.MonkeyPatch, factory: async_sessionmaker[AsyncSession]
+) -> None:
+    earlier = NOON - timedelta(days=5)
+    later = NOON + timedelta(days=2)
+    async with factory() as session:
+        session.add_all(
+            [
+                _linked("public", "public00001"),
+                _linked("scheduled", "schedule001"),
+                _linked("private", "private0001"),
+                _linked("gone", "gone0000001"),
+                _linked("elsewhere", "elsewhere01"),
+                _linked("timed", "timed000001", youtube_publish_at=NOON),
+                _linked("dropped", "dropped0001", dropped_at=NOON, dropped_note="no"),
+                _project(slug="unuploaded"),
+            ]
+        )
+        await session.commit()
+    youtube = FakeYoutube(
+        youtube_item("public00001", published=earlier),
+        youtube_item("schedule001", privacy="private", scheduled=later),
+        youtube_item("private0001", privacy="private"),
+        youtube_item("elsewhere01", channel="UCsomebodyelse0000000000"),
+    )
+    link_channel(monkeypatch, youtube)
+
+    async with factory() as session:
+        report = await admin_service.backfill_youtube_publish_times(session, apply=False)
+    assert (report["apply"], report["checked"], report["filled"]) == (False, 5, 2)
+    assert youtube.asked == [
+        ["elsewhere01", "gone0000001", "private0001", "public00001", "schedule001"]
+    ]
+    assert youtube.parts == ["snippet,status"]
+    assert report["videos"] == [
+        {
+            "slug": "elsewhere",
+            "youtube_video_id": "elsewhere01",
+            "publish_at": None,
+            "reason": admin_service.NOT_IN_CHANNEL,
+        },
+        {
+            "slug": "gone",
+            "youtube_video_id": "gone0000001",
+            "publish_at": None,
+            "reason": admin_service.NOT_IN_CHANNEL,
+        },
+        {
+            "slug": "private",
+            "youtube_video_id": "private0001",
+            "publish_at": None,
+            "reason": admin_service.NOT_PUBLIC,
+        },
+        {
+            "slug": "public",
+            "youtube_video_id": "public00001",
+            "publish_at": "2026-09-26T12:00:00+00:00",
+            "reason": None,
+        },
+        {
+            "slug": "scheduled",
+            "youtube_video_id": "schedule001",
+            "publish_at": "2026-10-03T12:00:00+00:00",
+            "reason": None,
+        },
+    ]
+    assert json.dumps(report, ensure_ascii=False), "the CLI prints it as JSON"
+    before = await _publish_times(factory)
+    assert before["public"] is None and before["timed"] == NOON, "a dry run writes nothing"
+
+    async with factory() as session:
+        applied = await admin_service.backfill_youtube_publish_times(session, apply=True)
+    assert applied["videos"] == report["videos"] and applied["filled"] == 2
+    after = await _publish_times(factory)
+    assert (after["public"], after["scheduled"]) == (earlier, later)
+    assert (after["private"], after["gone"], after["elsewhere"]) == (None, None, None)
+    assert (after["timed"], after["dropped"], after["unuploaded"]) == (NOON, None, None)
+    async with factory() as session:
+        audits = list(
+            await session.scalars(select(AdminAuditLog).order_by(AdminAuditLog.target))
+        )
+    assert [(row.action, row.target, row.actor_user_id) for row in audits] == [
+        ("video_youtube_publish_time_backfilled", "video_project:public", None),
+        ("video_youtube_publish_time_backfilled", "video_project:scheduled", None),
+    ]
+    assert audits[0].metadata_json == {
+        "slug": "public",
+        "youtube_video_id": "public00001",
+        "publish_at": "2026-09-26T12:00:00+00:00",
+        "publish_at_source": "youtube",
+    }
+
+    # Run again: the filled ones are no longer asked about.
+    async with factory() as session:
+        again = await admin_service.backfill_youtube_publish_times(session, apply=True)
+    assert [item["slug"] for item in again["videos"]] == ["elsewhere", "gone", "private"]
+    assert again["filled"] == 0
+
+
+@pytest.mark.asyncio
+async def test_the_backfill_asks_fifty_ids_at_a_time_and_needs_a_linked_channel(
+    monkeypatch: pytest.MonkeyPatch, factory: async_sessionmaker[AsyncSession]
+) -> None:
+    ids = [f"video{index:06d}" for index in range(120)]
+    async with factory() as session:
+        session.add_all(_linked(f"v{index:03d}", video_id) for index, video_id in enumerate(ids))
+        await session.commit()
+    youtube = FakeYoutube(*(youtube_item(video_id) for video_id in ids))
+    link_channel(monkeypatch, youtube)
+
+    async with factory() as session:
+        report = await admin_service.backfill_youtube_publish_times(session, apply=True)
+    assert (report["checked"], report["filled"]) == (120, 120)
+    assert [len(batch) for batch in youtube.asked] == [50, 50, 20]
+    assert all(time == NOON for time in (await _publish_times(factory)).values())
+
+    # Without a linked channel the run stops before anything is read or written.
+    async with factory() as session:
+        session.add(_linked("late", "late0000001"))
+        await session.commit()
+    youtube = FakeYoutube()
+    link_channel(
+        monkeypatch, youtube, refused=Refused(409, "video_youtube_not_linked", "還沒有連結")
+    )
+    async with factory() as session:
+        with pytest.raises(Refused) as refused:
+            await admin_service.backfill_youtube_publish_times(session, apply=True)
+    assert refused.value.code == "video_youtube_not_linked" and youtube.asked == []
+
+    # And with nothing to fill, YouTube is not asked at all.
+    async with factory() as session:
+        for row in await session.scalars(select(VideoProject)):
+            row.youtube_publish_at = NOON
+        await session.commit()
+    link_channel(monkeypatch, youtube)
+    async with factory() as session:
+        empty = await admin_service.backfill_youtube_publish_times(session, apply=True)
+    assert empty == {"apply": True, "checked": 0, "filled": 0, "videos": []}
+    assert youtube.asked == []
+
+
+def test_the_cli_command_reports_unless_apply_and_fails_plainly_without_a_channel(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    report = {"apply": False, "checked": 1, "filled": 1, "videos": [{"slug": "v"}]}
+    backfill = AsyncMock(return_value=report)
+    monkeypatch.setattr(cli, "backfill_youtube_publish_times", backfill)
+    monkeypatch.setattr(cli, "SessionFactory", lambda: AsyncMock())
+
+    monkeypatch.setattr("sys.argv", ["cli", "video-youtube-backfill-publish-times"])
+    cli.main()
+    assert json.loads(capsys.readouterr().out) == report
+    assert backfill.await_args.kwargs == {"apply": False}
+
+    monkeypatch.setattr("sys.argv", ["cli", "video-youtube-backfill-publish-times", "--apply"])
+    cli.main()
+    assert backfill.await_args.kwargs == {"apply": True}
+
+    backfill.side_effect = Refused(409, "video_youtube_not_linked", "還沒有連結 YouTube 頻道")
+    with pytest.raises(SystemExit) as stopped:
+        cli.main()
+    assert stopped.value.code == 2
+    captured = capsys.readouterr()
+    assert "ERROR video_youtube_not_linked: 還沒有連結 YouTube 頻道" in captured.err
 
 
 def test_the_summary_and_the_page_carry_both_youtube_fields() -> None:
@@ -250,7 +929,7 @@ def test_the_upload_package_files_are_accepted_by_the_review_schema() -> None:
             "size": 1,
             "content_type": "application/x-subrip",
         },
-        {"role": "captions_zh_cn", "sha256": "2" * 64, "size": 1, "content_type": "text/vtt"},
+        {"role": "captions_ko", "sha256": "2" * 64, "size": 1, "content_type": "text/vtt"},
         {"role": "description_zh-TW", "sha256": "f" * 64, "size": 1, "content_type": "text/plain"},
         {"role": "metadata", "sha256": "1" * 64, "size": 1, "content_type": "application/json"},
     ]
@@ -377,6 +1056,9 @@ async def test_the_youtube_route_parses_the_address_and_needs_content_manage(
             json={"url": f"https://youtu.be/{VIDEO_ID}", "publish_at": "2026-10-01T20:00:00+08:00"},
         )
         undecided = await client.post(url, json={"url": VIDEO_ID})
+        private = await client.post(
+            url, json={"url": VIDEO_ID, "publish_at": None, "private_only": True}
+        )
         not_youtube = await client.post(url, json={"url": f"https://example.com/{VIDEO_ID}"})
         naive = await client.post(url, json={"url": VIDEO_ID, "publish_at": "2026-10-01T12:00:00"})
     assert linked.status_code == 200
@@ -384,10 +1066,12 @@ async def test_the_youtube_route_parses_the_address_and_needs_content_manage(
     assert linked.json()["youtube_publish_at"] == "2026-10-01T12:00:00Z"
     assert link.await_args_list[0].args[1:] == ("v", owner, VIDEO_ID, NOON)
     assert undecided.status_code == 200 and link.await_args_list[1].args[3:] == (VIDEO_ID, None)
+    assert private.status_code == 200
+    assert link.await_args_list[2].kwargs == {"private_only": True}
     assert not_youtube.status_code == 422
     assert not_youtube.json()["code"] == "video_youtube_url_invalid"
     assert naive.status_code == 422, "a publish time without a zone is refused before the service"
-    assert link.await_count == 2
+    assert link.await_count == 3
 
     viewer = User(id=uuid4(), email="viewer@example.com", password_hash="unused")
     viewer._admin_roles_cache = frozenset({"viewer"})  # type: ignore[attr-defined]
@@ -396,7 +1080,7 @@ async def test_the_youtube_route_parses_the_address_and_needs_content_manage(
     ) as client:
         refused = await client.post(url, json={"url": VIDEO_ID})
     assert refused.status_code == 403, "a viewer can read but not record an upload"
-    assert link.await_count == 2
+    assert link.await_count == 3
 
 
 @pytest.mark.asyncio

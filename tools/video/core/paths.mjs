@@ -44,9 +44,10 @@ export function resolveWorkdir({ flag, env = process.env, slug, root = ROOT, hom
   return workdir;
 }
 
-// Windows scanners can briefly hold the destination open. Keep the old file intact
-// and retry only the rename, with at most 630 ms of waiting before the original error.
-const RENAME_RETRY_MS = [10, 20, 40, 80, 160, 320];
+// Windows readers can briefly hold the destination without delete sharing. Keep the old
+// file intact and retry only the rename. Scheduled waits total at most 2550 ms; a real
+// one-second sharing lock outlasts the previous 630 ms budget.
+const RENAME_RETRY_MS = [10, 20, 40, 80, 160, 320, 640, 1280];
 const renameWaitCell = new Int32Array(new SharedArrayBuffer(4));
 const waitForRename = (ms) => Atomics.wait(renameWaitCell, 0, 0, ms);
 

@@ -8,10 +8,11 @@
 // Slides and the video's own thumbnail are Traditional Chinese, set in Noto Sans TC with
 // JetBrains Mono for code. A caption locale whose script that font lacks or draws in another
 // font's weight gets its own font, first in the stack, on its own thumbnail only (LOCALE_FONTS):
-// Korean (Hangul), Simplified Chinese, and Japanese, whose kanji the TC font draws in their
-// Traditional Chinese forms (直, 骨, 写 differ in stroke from the Japanese standard). Coverage is
-// judged per language, so a Traditional Chinese slide still refuses the Simplified forms only the
-// SC font has.
+// Korean (Hangul) and Japanese, whose kanji the TC font draws in their Traditional Chinese forms
+// (直, 骨, 写 differ in stroke from the Japanese standard). Coverage is judged per language, so a
+// Traditional Chinese slide still refuses the Japanese forms only the JP font has. The Simplified
+// Chinese font stays bundled, but no locale uses it since zh-CN left the video languages
+// (2026-10-09).
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
@@ -31,7 +32,6 @@ export const SLIDE_FAMILY = "Noto Sans TC Variable";
 /** Caption locales whose thumbnail is set in a font of its own, with the page's lang attribute. */
 export const LOCALE_FONTS = {
   ko: { font: "noto-sans-kr", family: "Noto Sans KR Variable", lang: "ko" },
-  "zh-CN": { font: "noto-sans-sc", family: "Noto Sans SC Variable", lang: "zh-Hans" },
   ja: { font: "noto-sans-jp", family: "Noto Sans JP Variable", lang: "ja" },
 };
 

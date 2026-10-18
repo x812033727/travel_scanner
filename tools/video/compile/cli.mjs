@@ -64,7 +64,7 @@ async function readEpisodes(doc, workBase) {
     }
     const size = statSync(file).size;
     bytes += size;
-    episodes.push({ slug, frames: timeline.total_frames, file, sha256, bytes: size, ...(branding ? { body_sha256: branding.body_sha256, branding_hash: branding.hash, intro_frames: branding.intro_frames } : {}) });
+    episodes.push({ slug, frames: timeline.total_frames, file, sha256, bytes: size, ...(branding ? { body_sha256: branding.body_sha256, branding_hash: branding.hash, intro_frames: branding.intro_frames, ...(branding.intro_at_frame ? { intro_at_frame: branding.intro_at_frame } : {}) } : {}) });
   }
   return { episodes, bytes };
 }
@@ -88,7 +88,7 @@ function mergeEpisodeCaptions({ layout, workBase, workdir, hash, branding }) {
       for (const extension of ["srt", "vtt"]) rmSync(path.join(workdir, "captions", `${locale}.${extension}`), { force: true });
       continue;
     }
-    const cues = shiftBrandingCues(mergeCaptions(episodes.map((entry) => ({ srt: readFileSync(file(entry.slug), "utf8"), offsetMs: frameToMs(entry.start_frame), introMs: frameToMs(entry.intro_frames ?? 0) }))), branding);
+    const cues = shiftBrandingCues(mergeCaptions(episodes.map((entry) => ({ srt: readFileSync(file(entry.slug), "utf8"), offsetMs: frameToMs(entry.start_frame), introMs: frameToMs(entry.intro_frames ?? 0), introAtMs: frameToMs(entry.intro_at_frame ?? 0) }))), branding);
     atomicWrite(path.join(workdir, "captions", `${locale}.srt`), toSrt(cues));
     atomicWrite(path.join(workdir, "captions", `${locale}.vtt`), toVtt(cues));
     manifest.locales[locale] = { cues: cues.length, problems: overlapProblems(cues), timing: "compilation" };

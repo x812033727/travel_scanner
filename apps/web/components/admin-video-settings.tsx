@@ -23,7 +23,7 @@ import { api } from "@/lib/api";
 // claude_code and codex use subscription accounts on the host; the rest use API keys.
 export const PROVIDERS = ["claude_code", "codex", "anthropic", "openai", "gemini", "minimax"] as const;
 export const STAGES = ["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"] as const;
-export const CAPTION_LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
+export const CAPTION_LOCALES = ["en", "ja", "ko"] as const;
 export const SECTIONS = ["tutorial", "shared"] as const;
 export type Provider = (typeof PROVIDERS)[number];
 export type Stage = (typeof STAGES)[number];
@@ -36,7 +36,7 @@ export type StageModels = Record<Stage, StageModel>;
 export type StandingInstructions = Partial<Record<Stage, string>>;
 // The AI drama route (docs/videos/DRAMA.md): apps/api/app/video_automation/schemas.py DramaSettings.
 export const MEDIA_PROVIDERS = ["gemini", "minimax"] as const;
-export const STYLE_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"] as const;
+export const STYLE_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "cute-cartoon", "cute-mystery", "custom"] as const;
 export type MediaProvider = (typeof MEDIA_PROVIDERS)[number];
 export type MediaOption = ModelOption & { resolutions: string[]; durations: number[]; reference_images: number; native_audio: boolean; usd_per_second: number | null; usd_per_image: number | null; usd_per_track: number | null };
 export type MediaOptions = { images: Record<MediaProvider, MediaOption[]>; clips: Record<MediaProvider, MediaOption[]>; music: Record<MediaProvider, MediaOption[]> };
@@ -268,6 +268,16 @@ export function SettingsPermissionNotice({ capability }: { capability: string })
 /** The catalog entry of a chosen media model, or null when the server no longer offers it. */
 export function mediaChoice(options: MediaOptions | undefined, kind: keyof MediaOptions, provider: MediaProvider, model: string): MediaOption | null {
   return options?.[kind]?.[provider]?.find((option) => option.value === model) ?? null;
+}
+
+/**
+ * Every image model the catalogue offers, whichever vendor serves it, each with its vendor: the
+ * list a picker of one image model shows (the slides' picker in admin-video-settings-tutorial.tsx
+ * builds the same list; a one-off explainer's request form uses this one). Empty when the
+ * settings read is missing or an older site sends no image catalogue.
+ */
+export function imageModelOptions(options: MediaOptions | undefined): Array<MediaOption & { provider: MediaProvider }> {
+  return MEDIA_PROVIDERS.flatMap((provider) => (options?.images?.[provider] ?? []).map((option) => ({ ...option, provider })));
 }
 
 /**

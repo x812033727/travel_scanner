@@ -10,7 +10,9 @@ export const LOCALIZATION_RETENTION_FILE = "localization-retention.json";
 const POLICY = "retain-until-explicit-owner-release";
 const HASH = /^[a-f0-9]{64}$/;
 const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,58}[a-z0-9])?$/;
-const LOCALES = ["en", "ja", "ko", "zh-CN"];
+// The languages a cast mix may be planned in: core/schema.mjs LOCALES but zh-TW (schema.mjs
+// imports this module, so the list is spelled out here).
+const LOCALES = ["en", "ja", "ko"];
 const object = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const sha256 = (value) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
 const PLAN_KEYS = new Set(["schema_version", "primary_locale", "planned_locales", "start_after", "status", "retain_source_media", "source_sha256", "profile_sha256"]);

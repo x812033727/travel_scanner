@@ -1,0 +1,158 @@
+// Read-only verification of the pull request 3 design on a scratch copy (tree-pr3 = MAIN + the
+// PR 1 prototype + apply-pr3.py). Usage: node verify-pr3.mjs tree-pr3
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import path from "node:path";
+import { pathToFileURL } from "node:url";
+
+const root = path.resolve(process.argv[2]);
+const at = (...parts) => pathToFileURL(path.join(root, "tools", "video", ...parts)).href;
+const sha = (text) => createHash("sha256").update(text, "utf8").digest("hex");
+const prompts = await import(at("automation", "prompts.mjs"));
+const own = await import(at("automation", "explainer-series.mjs"));
+const drama = await import(at("core", "drama.mjs"));
+const flow = await import(at("automation", "flow.mjs"));
+const series = await import(at("automation", "series.mjs"));
+const discuss = await import(at("automation", "discuss.mjs"));
+const { validateVideo } = await import(at("core", "schema.mjs"));
+const { lintVideo, checkBrief, thumbnailHeadlineProblems } = await import(at("core", "lint.mjs"));
+const { explainerFixture, dramaFixture } = await import(at("core", "fixtures", "load.mjs"));
+const { renderProblems, thumbnailSeries } = await import(at("render", "plan.mjs"));
+const { thumbnailHtml } = await import(at("templates", "templates.mjs"));
+const { instructionsFor } = prompts;
+
+// 1. What exists does not move: the composed instructions of every existing explainer and
+// discussion stage, hashed at MAIN (599835f49).
+const PINS = {
+  "planner:bible-explainer": "55ffd024da8e9da7443dca79f973424efcdf277de3a9fa1ec3415af764391a90",
+  "planner:explainer": "32b471d9fcf00ac4540446ba89cbf335f4c4180241b5246301ad3662009451ed",
+  "writer:explainer": "185af9a701ecbb1317f00dd130cbf260e8e664a7275a423bad66c415cb703e72",
+  "verifier:explainer": "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842",
+  "planner:discuss": "88d7f55145ecff3e0910f33dc056b86dd8464595e1c626720bae3a2ed0f2cab9",
+  "writer:discuss": "06c8d01e814728158f137b681e9438de81f050654d641bf7d90116cce3c0c0a6",
+};
+for (const [key, pin] of Object.entries(PINS)) {
+  const [stage, variant] = key.split(":");
+  assert.equal(sha(instructionsFor(stage, "drama", "", variant)), pin, key);
+}
+const row = { kind: "one-off", genre: "xianxia-bonds", lead: "dual-male", visual_tier: "clips", compilation: false };
+assert.equal(sha(instructionsFor("planner", "drama", "", "bible-explainer", "", row)), "4dd130e4e03cd978f0deb6196800943984c05e694c6452368e3a12956c17a298");
+assert.equal(sha(instructionsFor("planner", "drama", "", "discuss", "", row)), "29078b6d8256814a28b6e822caf71e1bcb111ba8997a95fedd7820bb5e5242f4");
+assert.equal(sha(instructionsFor("writer", "drama", "旁白慢一點", "explainer", "1. 先講事實", null)), "14c4507ad298ef3c96e13116e3230debc31d9ef7ad7b2e350fe4830a626f83ba");
+assert.equal(Object.keys(prompts.VARIANT_INSTRUCTIONS).length, 21);
+console.log("1 ok: nine pins of existing explainer and discussion instructions equal MAIN's");
+
+// 2. The table, the names, the new keys.
+assert.deepEqual(Object.keys(own.EXPLAINER_VARIANTS), [...drama.EXPLAINER_PRESETS]);
+assert.deepEqual(own.EXPLAINER_VARIANTS["flat-explainer"], { bible: "bible-explainer", stage: "explainer", discuss: "discuss" });
+assert.deepEqual(Object.keys(own.EXPLAINER_SERIES_PROFILES), [...drama.CUTE_EXPLAINER_PRESETS]);
+const sent = (variants) => [["planner", variants.bible], ["writer", variants.stage], ["verifier", variants.stage], ["planner", variants.discuss], ["writer", variants.discuss]];
+for (const [preset, variants] of Object.entries(own.EXPLAINER_VARIANTS)) {
+  for (const [stage, variant] of sent(variants)) {
+    assert.match(variant, /^[a-z][a-z0-9_-]{0,31}$/);
+    assert.ok(`${stage}/${variant}`.length <= 32, `${stage}/${variant}`);
+    if (preset === "flat-explainer") continue;
+    const key = `${stage}:${variant}`;
+    assert.equal(Object.hasOwn(prompts.VARIANT_INSTRUCTIONS, key), false, `${key} collides`);
+    const text = instructionsFor(stage, "drama", "", variant);
+    assert.equal(text, own.EXPLAINER_SERIES_INSTRUCTIONS[key], key);
+    assert.equal(instructionsFor(stage, "drama", "", variant, "", row), text, `${key} takes no genre section`);
+    assert.ok(text.length < 40_000, key);
+    const profile = own.EXPLAINER_SERIES_PROFILES[preset];
+    assert.ok(text.includes(profile.series) && text.includes(profile.docs), key);
+    for (const phrase of ["flat editorial", "burned-in", '"preset": "flat-explainer"', "No mascot or recurring character", "burn_in: true", "anonymous figures"]) assert.equal(text.includes(phrase), false, `${key} has ${phrase}`);
+    assert.equal(text.includes(preset === "cute-mystery" ? "原來如此" : "奇聞檔案局"), false, key);
+    if (stage === "writer") {
+      assert.ok(text.includes(`"look": {"preset": "${preset}"}`), key);
+      for (const card of drama.explainerCardTemplates(preset)) assert.ok(text.includes(`"${card}" {`), `${key} names ${card}`);
+      assert.match(text, /ONE person doing ONE concrete thing/);
+      assert.match(text, /Never a still life or an empty scene on its own/);
+      assert.match(text, /at least a third of the lines carry one \(lint warns below\s+that\)/);
+    }
+  }
+}
+const mysteryWriter = instructionsFor("writer", "drama", "", "explainer-mystery");
+assert.match(mysteryWriter, /no "pillar", no "layout", no "tone" and no "variants"/);
+assert.equal(/pillar: business/.test(mysteryWriter), false);
+assert.match(instructionsFor("writer", "drama", "", "explainer-cartoon"), /pillar: business\|science\|travel\|tech/);
+assert.match(instructionsFor("planner", "drama", "", "bible-explainer-mystery"), /「流傳的版本：…」 once, first[\s\S]*「紀錄：…」 two to four times[\s\S]*「目前最站得住的解釋：…」 once, last/);
+assert.equal(instructionsFor("listener", "drama", "", "explainer-mystery"), instructionsFor("listener", "drama"), "the listener has no text of its own");
+console.log("2 ok: table, names, lengths and the ten new texts");
+
+// 3. The variant is chosen from the preset through the one table.
+const variantOf = (state) => flow.Automation.prototype.variantOf.call({}, state);
+assert.equal(variantOf({ format: "drama", style_preset: "flat-explainer" }), "explainer");
+assert.equal(variantOf({ format: "drama", style_preset: "cute-cartoon" }), "explainer-cartoon");
+assert.equal(variantOf({ format: "drama", style_preset: "cute-mystery", series: { slug: "one-off-1", episode: 1, chapter: 1, kind: "one-off" } }), "explainer-mystery");
+assert.equal(variantOf({ format: "drama", style_preset: "ink-wash" }), null);
+assert.equal(variantOf({ format: "slides", style_preset: "cute-mystery" }), null);
+assert.equal(variantOf({ format: "drama", style_preset: "cinematic-3d", series: { slug: "s", episode: 1 } }), "episode");
+const oneOff = (preset) => ({ slug: "one-off-1", kind: "one-off", title: "t", premise: "p", style_preset: preset, target_minutes: 10, genre: "xianxia-bonds" });
+assert.equal(series.documentVariant("bible", oneOff("flat-explainer")), "bible-explainer");
+assert.equal(series.documentVariant("bible", oneOff("cute-cartoon")), "bible-explainer-cartoon");
+assert.equal(series.documentVariant("bible", oneOff("cute-mystery")), "bible-explainer-mystery");
+assert.equal(series.documentVariant("bible", oneOff("ink-wash")), "bible");
+assert.equal(series.documentVariant("setting", { ...oneOff("cute-mystery"), kind: "series" }), "setting");
+assert.equal(discuss.documentDiscussVariant(oneOff("flat-explainer")), "discuss");
+assert.equal(discuss.documentDiscussVariant(oneOff("cute-mystery")), "discuss-mystery");
+assert.equal(discuss.documentDiscussVariant(oneOff("ink-wash")), "discuss");
+assert.equal(discuss.scriptDiscussVariant({ format: "drama", style_preset: "flat-explainer" }), "discuss");
+assert.equal(discuss.scriptDiscussVariant({ format: "drama", style_preset: "cute-cartoon" }), "discuss-cartoon");
+assert.equal(discuss.scriptDiscussVariant({ format: "drama", style_preset: "cinematic-3d" }), "discuss");
+assert.deepEqual([...discuss.SCRIPT_DISCUSSION_VARIANTS], ["discuss", "anime-discuss-plan", "discuss-cartoon", "discuss-mystery"]);
+console.log("3 ok: variantOf, documentVariant and the discussion variants");
+
+// 4. The payload: nothing new anywhere; the bible planner of a profiled series loses the genre spec.
+const automation = { reference: () => ({ series: "SERIES", drama: "DRAMA" }), dramaPayload: ({ style_preset: preset }) => ({ drama_settings: { style_preset: preset } }) };
+const payloadOf = (preset) => series.documentPayload(automation, { kind: "bible", series: oneOff(preset), context: {} });
+assert.deepEqual(Object.keys(payloadOf("flat-explainer")), ["kind", "series", "genre_spec", "series_reference", "drama", "drama_settings"]);
+assert.deepEqual(Object.keys(payloadOf("cute-mystery")), Object.keys(payloadOf("flat-explainer")));
+assert.equal(payloadOf("flat-explainer").genre_spec.label, "仙俠羈絆", "today's payload, kept as it is");
+assert.equal(payloadOf("ink-wash").genre_spec.label, "仙俠羈絆");
+assert.equal(payloadOf("cute-mystery").genre_spec, null);
+assert.equal(series.documentInputs({ kind: "bible", series: oneOff("flat-explainer"), context: {} }).length, 64);
+console.log("4 ok: documentPayload");
+
+// 5. settle keeps a profiled series' look to its preset; flat-explainer keeps what the writer added, as today.
+const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, drama: { style_preset: "cinematic-3d", music_enabled: true } };
+const written = { ...dramaFixture(), slug: "x", look: { preset: "flat-explainer", style: "my own style", negative: "text, letters" }, thumbnail: { template: "thumb", data: { headline: "飛碟？\n**是木板**", tag: "都市傳說", shot: "a" } } };
+const settledCute = flow.settle(written, { slug: "curio", settings, sourceGuide: null, root, format: "drama", stylePreset: "cute-mystery" });
+assert.deepEqual(settledCute.look, { preset: "cute-mystery" });
+assert.deepEqual(settledCute.characters, []);
+assert.deepEqual(settledCute.thumbnail, written.thumbnail, "settle never writes the thumbnail");
+const settledFlat = flow.settle(written, { slug: "why", settings, sourceGuide: null, root, format: "drama", stylePreset: "flat-explainer" });
+assert.deepEqual(settledFlat.look, { preset: "flat-explainer", style: "my own style", negative: "text, letters" });
+console.log("5 ok: settle");
+
+// 6. A 奇聞檔案局 script in the host's shape: channel thumbnail, steps and table cards, cute-mystery look.
+const base = explainerFixture();
+const steps = { id: "how", template: "steps", data: { title: "兩個人怎麼壓出一個圓", steps: [{ title: "站在圓心", detail: "拉住繩子" }, { title: "拿木板", detail: "橫在膝蓋的高度" }], source: "TIME 1991-09-23" }, lines: [{ id: "s1ex", text: "一個人站在圓心。", reveal: 1 }, { id: "s2ex", text: "另一個人拿木板。", reveal: 1 }] };
+const table = { id: "names", template: "table", data: { title: "這個地方的名字", columns: ["名字", "時間"], rows: [["地圖編號", "一九五五"], ["夢境", "六〇年代末"]] }, lines: [{ id: "t1ex", text: "第一個名字是地圖編號。", reveal: 1 }, { id: "t2ex", text: "第二個是無線電呼號。", reveal: 1 }] };
+const mystery = { ...base, look: { preset: "cute-mystery" }, subtitles: { burn_in: false }, scenes: [...base.scenes.slice(0, 4), steps, table, ...base.scenes.slice(4)], thumbnail: { template: "thumb", data: { headline: "光？\n**先到**", tag: "奇異現象", sub: "數三秒的檔案", shot: "flash" } }, youtube: { ...base.youtube, title: "為什麼雷聲總比閃電晚到？｜奇聞檔案局" } };
+assert.deepEqual(validateVideo(mystery), []);
+assert.equal(thumbnailSeries(mystery), null);
+assert.deepEqual(renderProblems(mystery), []);
+assert.deepEqual(thumbnailHeadlineProblems(mystery), []);
+const html = thumbnailHtml(mystery.thumbnail, { series: thumbnailSeries(mystery), slug: mystery.slug });
+assert.equal(html.includes("原來如此事務所") || html.includes("thumb-stamp") || /pillar-/.test(html), false);
+assert.match(renderProblems({ ...mystery, thumbnail: { ...mystery.thumbnail, data: { ...mystery.thumbnail.data, pillar: "H" } } })[0].message, /pillar must be one of business/);
+assert.match(renderProblems({ ...mystery, thumbnail: { ...mystery.thumbnail, data: { ...mystery.thumbnail.data, layout: "right" } } })[0].message, /layout must be one of a, b, c/);
+const flat = { ...mystery, look: { preset: "flat-explainer" }, thumbnail: base.thumbnail };
+assert.deepEqual(validateVideo(flat).map((error) => error.message), ['a drama scene is a "shot" or one of the cards title, chapter, outro, big, stats, compare', 'a drama scene is a "shot" or one of the cards title, chapter, outro, big, stats, compare']);
+assert.deepEqual(drama.EXPLAINER_CARD_TEMPLATES, ["title", "chapter", "outro", "big", "stats", "compare"]);
+assert.match(validateVideo({ ...mystery, scenes: [...mystery.scenes.slice(0, 4), { id: "said", template: "quote", data: { quote: "q", source: "s" }, lines: [{ id: "q0ex", text: "他說了一句話。" }] }, ...mystery.scenes.slice(4)] })[0].message, /one of the cards title, chapter, outro, big, stats, compare, steps, table/);
+const brief = series.episodeBrief(oneOff("cute-mystery"), { number: 1, title: "t", logline: "l" }, [], { question: "q", answer: "a", hook: "h", reasons: ["流傳的版本：x", "紀錄：y", "目前最站得住的解釋：z"], sources: ["https://example.org/"] });
+assert.deepEqual(checkBrief(brief, "drama", "cute-mystery"), []);
+const linted = lintVideo(mystery, { brief, lexicon: { schema_version: 1, terms: {} }, minEpisodeMinutes: 0 });
+console.log("6 ok: a cute-mystery script validates; lint errors:", linted.errors.map((e) => `${e.path}: ${e.message}`).slice(0, 4));
+
+// 7. The picture-variety rules hold a cute explainer and leave flat-explainer alone.
+const shot = (id, camera, prompt = "Medium shot of a farm gate at dawn, a farmer in a waxed coat lifting the latch, low sun from the left") => ({ id, template: "shot", data: { prompt, camera, visual: "still" }, lines: [{ id: `${id}0x`.slice(0, 4), text: "農夫走到田邊。" }] });
+const run = (preset, cameras, prompt) => drama.pictureVarietyProblems({ ...base, look: { preset }, scenes: cameras.map((camera, index) => shot(`p${index}`, camera, prompt)) });
+assert.equal(run("cute-mystery", ["push in", "push in", "push in"]).errors.length, 1);
+assert.match(run("cute-mystery", ["push in", "push in", "push in"]).errors[0].message, /3 stills in a row under "push in"/);
+assert.equal(run("cute-cartoon", ["push in", "pull out", "push in"]).errors.length, 0);
+assert.deepEqual(run("flat-explainer", ["push in", "push in", "push in"]), { errors: [], warnings: [] });
+assert.match(run("cute-mystery", ["push in", "pull out"], "Medium shot of a chibi farmer at a gate at dawn, low sun from the left").warnings.map((w) => w.message).join(" | "), /restate the look \("chibi"\)/);
+console.log("7 ok: picture variety");
+console.log("all checks passed");

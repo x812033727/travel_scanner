@@ -3,13 +3,16 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
+    "content-marketing",
     "marketing",
-    "content-marketing"
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "顧客旅程與行銷漏斗：找出讀者在哪一步離開",
@@ -179,6 +182,7 @@
           "width": 1600,
           "height": 900,
           "caption": "漏斗指出要調查的位置，旅程研究幫助理解原因與後續影響。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -274,6 +278,1082 @@
         },
         {
           "title": "NN/g 顧客旅程圖概念",
+          "url": "https://www.nngroup.com/articles/journey-mapping-101/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Customer Journeys and Marketing Funnels: Find Where Readers Drop Off",
+      "description": "Customer journeys explain touchpoints and needs; marketing funnels count people at each step using consistent criteria. Using an original bicycle repair booking example, this article explains how to map online and offline contacts, define completion events, calculate step conversion rates, and set up GA4 open or closed funnels. A calculation table, practical steps, and original diagrams help identify improvement hypotheses to test without mistaking data gaps for causes of customer drop-off.",
+      "hero": {
+        "src": "/guides/customer-journey-funnel/hero-en.jpg",
+        "alt": "An original Mokaair illustration of a screen, document, and verification shield showing customer touchpoints, step data, and improvement testing.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A bicycle repair shop notices that many people view its booking page but never submit the form. Some may call instead, some may still be checking their bicycle model, and others may go straight to the shop. A single conversion rate cannot tell you what each customer does next, much less establish that the form is too long."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article explains how journey maps and funnels work together, drawing on Google Analytics documentation and user research resources consulted on 2026/9/14. The repair shop process, figures, and proposed improvements are original examples. They involve no connection to real accounts or operation of a live website, and do not represent actual conversion results."
+        },
+        {
+          "type": "heading",
+          "text": "Journey maps explain experiences; funnels explain steps",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A customer journey starts with a person's task and maps what they do at different stages, which services they encounter, and what problems they face. It can span search, websites, phone calls, in-person visits, and subsequent use. A marketing funnel selects specific steps to observe and counts how people who meet the criteria advance to the next step."
+        },
+        {
+          "type": "paragraph",
+          "text": "Their scope can differ. A repair journey might begin with noticing an unusual noise and end with confirming that the problem is resolved after collecting the bicycle. A website funnel might cover only reading about services, viewing time slots, starting the form, and submitting a booking request. Do not treat the final online step as completion of the entire service, or count everyone outside the funnel as a failure."
+        },
+        {
+          "type": "paragraph",
+          "text": "First decide which problem to improve, such as helping people who need routine maintenance complete a suitable booking. If the processes for urgent breakdowns and routine maintenance differ greatly, study them separately. Forcing different needs into a single map may make every stage look reasonable without guiding any concrete changes."
+        },
+        {
+          "type": "heading",
+          "text": "Map the current experience using touchpoints and evidence",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "First list the places customers might interact with the business, then verify them through interviews, inquiry records, and actual service processes. At each stage, record what customers want to accomplish, the channels they use, the information they need, the obstacles they currently face, and who handles the work internally. For anything unknown, "
+            },
+            {
+              "type": "text",
+              "text": "mark it"
+            },
+            {
+              "type": "text",
+              "text": " rather than inventing details just to fill out the process map."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The original repair example can be divided into understanding the problem, confirming the service, arranging a time slot, dropping off the bicycle, and checking it at pickup. Search pages may explain the scope of services, the booking page provides available time slots, phone calls help clarify uncertain needs, and an in-person visit confirms what needs inspection. These touchpoints connect with one another; the website is just one part."
+        },
+        {
+          "type": "paragraph",
+          "text": "Emotions and thoughts also need evidence. Seeing a customer remain on a page does not justify labeling them as anxious. First record the observed pause or incomplete action, then use research to understand the reason. Keep evidence of the current experience, team hypotheses, and the ideal process separate in the journey map so that the next reader does not mistake a design goal for an observed fact."
+        },
+        {
+          "type": "heading",
+          "text": "Define events and completion criteria before interpreting the funnel",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First write identifiable criteria for each step. Reading the service page, viewing time slots, starting the form, and submitting successfully should each have a distinct definition. Clicking the submit button and receiving an error message does not count as a successful submission. Nor does delivery of the form mean the shop has accepted the booking; subsequent confirmation can be recorded separately."
+        },
+        {
+          "type": "paragraph",
+          "text": "In GA4, you can create a funnel exploration from Explore, then set event or dimension conditions. A closed funnel requires entry at the first step, while an open funnel allows entry at an intermediate step. Directly followed steps allow no intervening actions; indirectly followed steps do. Match the conditions to the analytical question, and document the date range, step sequence, and time limits."
+        },
+        {
+          "type": "paragraph",
+          "text": "GA4 counts funnel steps in the specified order. Repeated completions by the same user during the selected period do not each add another funnel record. If you need to study every order or repair, use the corresponding records separately. Do not put user counts, event counts, and order counts in the same table and simply divide one by another."
+        },
+        {
+          "type": "heading",
+          "text": "Calculate step conversion rates using consistent criteria",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose that in a single closed funnel, 240 people read about the services, 120 of them view time slots, 90 then start the form, and 45 finally submit successfully. These original example counts represent people who meet the step criteria in sequence during the same period under the same conditions. They are not totals pieced together from four unrelated reports."
+        },
+        {
+          "type": "paragraph",
+          "text": "The step conversion rates are 120 divided by 240, or 50%; 90 divided by 120, or 75%; and 45 divided by 90, or 50%. The overall completion rate is 45 divided by 240, or 18.75%. Step and overall rates have different denominators. Label them clearly in reports so readers know which question each figure answers."
+        },
+        {
+          "type": "paragraph",
+          "text": "At the first transition, 120 people do not advance; at the last, 45 do not. The proportion not advancing is 50% in both cases, but that does not mean both need the same measures. The former may include people who only want information, while the latter may be more closely related to difficulties using the form. Consider the number of people affected, service goals, improvement costs, and research evidence together, rather than simply choosing the largest red block."
+        },
+        {
+          "type": "heading",
+          "text": "Rule out recording issues before investigating behavior",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Check whether events fail to send, trigger repeatedly, or count failed submissions as successes. You can enable debug mode on your own test device, use DebugView to check events and "
+            },
+            {
+              "type": "text",
+              "text": "parameters"
+            },
+            {
+              "type": "text",
+              "text": ", then walk through both successful and failed processes. Google notes that privacy controls or a lack of consent to analytics cookies may prevent debug events from appearing."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, check whether customers switch to phone calls, in-person visits, or other entry points. Differences in devices, periods, and identification criteria also affect which paths you can connect. If reliable linking is not possible, report the website funnel and in-store booking records separately, noting the scope you can observe. Do not fill gaps with guesses to create an apparently complete cross-channel conversion rate."
+        },
+        {
+          "type": "paragraph",
+          "text": "Only then propose behavioral hypotheses. For example, not completing the form after starting it might be related to difficulty answering the bicycle model field, or simply to unsuitable time slots. Observing people who meet the criteria as they use the form and reviewing relevant inquiries can help narrow down the reasons. The numbers identify where investigation is worthwhile; the causes still need supporting evidence."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Choose one customer task and map current touchpoints and data gaps.",
+            "Define each step's event and success criteria, then check what actually triggers.",
+            "Hold funnel entry criteria, sequence, period, and denominators consistent, and calculate step and overall rates.",
+            "Use research to select one improvement, then review its results using the same criteria."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Make improvement hypotheses testable",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Write the hypothesis as an actionable statement, such as: “If not knowing the bicycle model prevents people from filling in the form, instructions on where to find it should reduce pauses at this field.” This is easier to evaluate than “improve the experience.” Assign an owner, a completion deadline, and an observation method, and retain the previous version and the conditions used to collect the data."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can first ask a few people who fit the scenario to try the revised form and check whether the instructions help. When quantitative comparison is needed, design an appropriate method based on traffic and the risks of the decision. A rise in conversion rate over one week does not rule out the effects of seasonality, visitor sources, or changes in service hours, and does not justify claiming that the revision caused growth."
+        },
+        {
+          "type": "paragraph",
+          "text": "Also check downstream quality. More submissions do not fulfill the original goal if booking details are incomplete, the shop cannot respond, or many requests fall outside its services. Include valid bookings, shop visits, and service outcomes in the journey review to avoid shifting problems to the next stage merely to make the funnel chart look better."
+        },
+        {
+          "type": "image",
+          "src": "/guides/customer-journey-funnel/diagram-1-en.svg",
+          "alt": "Four columns distinguish touchpoints, event criteria, funnel denominators, and improvement testing, showing that website submission is only part of the repair service journey.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Funnels show where to investigate; journey research helps explain the causes and downstream effects.",
+          "description": "Four columns distinguish touchpoints, event criteria, funnel denominators, and improvement testing, showing that website submission is only part of the repair service journey.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Closed funnel example",
+            "People meeting the steps in sequence",
+            "Relative to the previous step"
+          ],
+          "rows": [
+            [
+              "Read about services",
+              "240",
+              "Starting point"
+            ],
+            [
+              "View time slots",
+              "120",
+              "120 ÷ 240＝50%"
+            ],
+            [
+              "Start the form",
+              "90",
+              "90 ÷ 120＝75%"
+            ],
+            [
+              "Submit successfully",
+              "45",
+              "45 ÷ 90＝50%"
+            ]
+          ],
+          "caption": "Original hypothetical data: overall completion is 45 ÷ 240＝18.75%; a successful submission does not mean the shop has accepted the booking."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Leaving the defined steps does not necessarily mean leaving the service",
+          "text": "Failure to advance through a funnel may reflect different needs, a switch to another channel, or data gaps. Check measurement first, then investigate the causes to identify improvements worth investing in."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Build evidence-based personas through interviews",
+              "kind": "life",
+              "slug": "stp-persona-research"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check WordPress forms and submission results",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Schedule improvements in a small shop's marketing plan",
+              "kind": "life",
+              "slug": "marketing-plan-small-business"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Analytics Funnel Exploration",
+          "url": "https://support.google.com/analytics/answer/9327974?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Analytics: Monitoring Events in DebugView",
+          "url": "https://support.google.com/analytics/answer/7201382?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: Creating Experience Maps",
+          "url": "https://www.gov.uk/service-manual/user-research/creating-an-experience-map",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g: Customer Journey Mapping Concepts",
+          "url": "https://www.nngroup.com/articles/journey-mapping-101/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "カスタマージャーニーとマーケティングファネル：読者が離脱する段階を見つける",
+      "description": "カスタマージャーニーは接点とニーズを理解するために使い、マーケティングファネルは統一した条件で各ステップの人数を測定します。本記事では、自転車修理予約のオリジナル事例を使い、オンラインと実店舗での接点の整理、完了イベントの定義、ステップごとのコンバージョン率の計算、GA4 のオープンファネルとクローズドファネルの設定を説明します。計算表、操作手順、オリジナル図解を通じて、検証する価値のある改善仮説を見つけ、データの欠落を顧客離脱の原因と取り違えないようにします。",
+      "hero": {
+        "src": "/guides/customer-journey-funnel/hero-ja.jpg",
+        "alt": "Mokaair オリジナルのモニター、書類、検証を表す盾で、顧客との接点、ステップのデータ、改善の検証を表現。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "自転車修理店で、予約ページを見てもフォームを送信しない人が多いことが分かりました。電話に切り替えた人も、車種を確認している人も、すでに直接来店した人もいるかもしれません。一つのコンバージョン率だけでは、各顧客が次に何をしたかは分からず、フォームが長すぎるとすぐに判断することもできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は、2026 年 9 月 14 日に参照した Google Analytics とユーザーリサーチの資料をもとに、ジャーニーマップとファネルをどう組み合わせるかを説明します。修理店の流れ、数値、改善案はいずれも独自に作成した例です。実際のアカウントへの接続や本番サイトの操作は行っておらず、実際のコンバージョン成果を示すものでもありません。"
+        },
+        {
+          "type": "heading",
+          "text": "ジャーニーマップは体験を、ファネルはステップを捉える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "カスタマージャーニーでは、ある人のタスクを起点に、各段階で何をし、どのサービスに接し、どんな問題に直面するかを整理します。その範囲は、検索、Web サイト、電話、店頭、その後の利用まで広がります。一方、マーケティングファネルでは観察したいステップを選び、条件を満たす人が次のステップへどう進むかを集計します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "両者の対象範囲は異なっていても構いません。修理のジャーニーは、異音に気づくところから、引き取り後に問題が解決したことを確認するまでを含むかもしれません。一方、Web サイトのファネルでは、サービス内容の閲覧、時間枠の確認、入力開始、予約送信だけを見ることもあります。オンラインの最終ステップをサービス全体の完了と見なしたり、ファネルの外にいる人をすべて失敗と見なしたりしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず、今回改善したい問題を決めます。例えば「定期メンテナンスが必要な人が、自分に合った予約を完了できるようにする」です。緊急の故障と定期メンテナンスで流れが大きく異なるなら、分けて調査します。異なるニーズを無理に一枚の図に詰め込むと、各段階がもっともらしく見えても、具体的な調整につながらないことがあります。"
+        },
+        {
+          "type": "heading",
+          "text": "接点と根拠をもとに現状を描く",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "まず顧客との接点になり得る場所を挙げ、インタビュー、問い合わせ記録、実際のサービスの流れで確認します。各段階について、顧客が達成したいこと、利用するチャネル、必要な情報、現在の障壁、社内の担当者を記録します。不明な部分にはまず"
+            },
+            {
+              "type": "text",
+              "text": "印を付け"
+            },
+            {
+              "type": "text",
+              "text": "、フローを埋めるために想像で補う必要はありません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "今回のオリジナル修理事例は、問題の理解、サービスの確認、時間枠の調整、来店して自転車を預ける段階、引き取り時の確認に分けられます。検索ページではサービスの対象範囲が分かり、予約ページでは選べる時間枠を提示し、電話では不明確な要望への対応を助け、店頭では点検事項を確認します。これらの接点はつながっており、Web サイトはその一部にすぎません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "感情や考えにも根拠が必要です。顧客があるページで止まっているのを見ただけで、「不安を感じている」と描くことはできません。まず滞在や未完了という観察事実を記録し、調査を通じて理由を理解します。ジャーニーマップでは、現状の根拠、チームの仮説、理想の流れを分けておくと、次に読む人が設計上の目標を現場の事実と取り違えずに済みます。"
+        },
+        {
+          "type": "heading",
+          "text": "イベントと完了条件を定義してからファネルを読む",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず各ステップについて、識別できる条件を書き出します。サービスページの閲覧、時間枠の確認、入力開始、送信成功は、それぞれ別に定義する必要があります。送信ボタンを押してもエラーメッセージが表示された場合は、送信成功には数えません。また、フォームが届いたことと店舗が予約を受け付けたことは別であり、その後の確認は別途記録できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GA4 では、「探索」からファネルデータ探索を作成し、イベントやディメンションの条件を設定できます。クローズドファネルでは最初のステップから入る必要があり、オープンファネルでは途中のステップから入れます。直接的な後続では間に別の行動を挟めませんが、間接的な後続では挟めます。分析したい問いに合わせて条件を設定し、日付範囲、ステップの順序、制限時間を書き残します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GA4 のファネルは指定した順序で集計され、同じユーザーが選択期間内に流れを繰り返し完了しても、そのたびにファネルの記録が増えるわけではありません。注文ごと、修理ごとに調べたい場合は、それぞれに対応する記録を別途使います。ユーザー数、イベント数、注文数を同じ表に並べ、そのまま割り算しないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "同じ集計基準でステップごとのコンバージョン率を計算する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同じクローズドファネルで、240 人がサービス内容を読み、そのうち 120 人が時間枠を確認し、続いて 90 人が入力を始め、最後に 45 人が送信に成功したとします。これは、同じ期間、同じ条件で順にステップを満たした人数を示すオリジナルの例です。互いに無関係な四つのレポートの合計をつなぎ合わせたものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ステップごとのコンバージョン率は、順に 120 を 240 で割った 50%、90 を 120 で割った 75%、45 を 90 で割った 50% です。全体の完了率は 45 を 240 で割った 18.75% です。ステップごとの割合と全体の割合では分母が異なります。報告時に明記することで、その数値がどの問いに答えているのか分かります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最初の区間では 120 人、最後の区間では 45 人減っています。次に進まなかった割合はどちらも 50% ですが、同じ対策を取るべきとは限りません。前者には情報を調べるだけの人が含まれ、後者は操作上の難しさに関係している可能性があります。影響を受ける人数、サービスの目標、改善コスト、調査の根拠を併せて考える必要があり、最も大きい赤い領域だけを選んではいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "まず記録の問題を除外し、その後で行動の理由を探る",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "イベントの送信漏れや重複発火がないか、送信失敗を成功として扱っていないかを確認します。自分のテスト端末でデバッグモードを有効にし、DebugView でイベントと"
+            },
+            {
+              "type": "text",
+              "text": "パラメータ"
+            },
+            {
+              "type": "text",
+              "text": "を照合してから、成功時と失敗時の流れを実際にたどります。Google の説明によると、プライバシー設定や分析用 Cookie への未同意などにより、デバッグイベントが表示されない場合があります。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "次に、顧客が電話、店頭、別の入口へ切り替えていないかを確認します。端末、期間、識別条件の違いも、つなげて把握できる経路に影響します。確実につなげられない場合は、Web サイトのファネルと店内の予約記録を別々に報告し、観察できる範囲を明記します。チャネルをまたぐコンバージョン率を、完全に見せるために推測で補ってはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "行動についての仮説を立てるのは最後です。例えば、入力を始めた後に完了しないのは、車種欄に答えにくいためかもしれませんし、単に時間枠が合わないためかもしれません。条件に合う人の操作を観察し、関連する問い合わせを確認すると、原因を絞り込めます。数値は調べるべき箇所を示しますが、原因を裏付けるには別の根拠が必要です。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "顧客のタスクを一つ選び、現状の接点とデータの欠落を整理する。",
+            "各ステップのイベントと成功条件を定義し、実際の発火結果を照合する。",
+            "ファネルの入口、順序、期間、分母を固定し、ステップごとと全体の割合を計算する。",
+            "調査を踏まえて改善を一つ選び、同じ集計基準で結果を振り返る。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "改善仮説を検証できる形にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "仮説は実行できる文にします。例えば「車種が分からないことが入力の障壁なら、車種を確認できる場所を説明することで、この欄で手が止まることを減らせるはずだ」と書きます。「体験を向上させる」より、達成を確認しやすくなります。担当者、完了期限、観察方法を決め、改善前のバージョンとデータの条件を残します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まずは想定する状況に合う数人に変更後のフォームを試してもらい、説明が役立つかを確認できます。定量的な比較が必要になったら、トラフィック量と意思決定のリスクに応じて適切な方法を設計します。一週間のコンバージョン率が上がっただけで、季節、来客の流入元、サービス提供時間帯の変化による影響を除外し、変更が成長をもたらしたと断定することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "その後の品質も確認する必要があります。送信数が増えても、予約情報が不完全だったり、店舗が返信できなかったり、サービスの対象範囲を超える要望が大量に届いたりするなら、当初の目標を達成したとはいえません。有効な予約、来店、サービスの結果をジャーニーの振り返りに組み込むことで、ファネルの図をきれいにするためだけに問題を次の工程へ移してしまうことを防げます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/customer-journey-funnel/diagram-1-ja.svg",
+          "alt": "接点、イベント条件、ファネルの分母、改善の検証を四つの列で区分し、Web サイトでの送信は修理サービスのジャーニーの一部にすぎないことを示す。",
+          "width": 1600,
+          "height": 900,
+          "caption": "ファネルは調べるべき箇所を示し、ジャーニーの調査は原因とその後の影響を理解する助けになります。",
+          "description": "接点、イベント条件、ファネルの分母、改善の検証を四つの列で区分し、Web サイトでの送信は修理サービスのジャーニーの一部にすぎないことを示す。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "クローズドファネルの例",
+            "順に条件を満たした人数",
+            "前のステップに対する割合"
+          ],
+          "rows": [
+            [
+              "サービス内容を閲覧",
+              "240",
+              "起点"
+            ],
+            [
+              "時間枠を確認",
+              "120",
+              "120 ÷ 240＝50%"
+            ],
+            [
+              "入力を開始",
+              "90",
+              "90 ÷ 120＝75%"
+            ],
+            [
+              "送信に成功",
+              "45",
+              "45 ÷ 90＝50%"
+            ]
+          ],
+          "caption": "独自に作成した仮定のデータ。全体の完了率は 45 ÷ 240＝18.75%。送信成功は、店舗が予約を受け付けたことを意味しません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "設定したステップからの離脱は、サービスからの離脱とは限らない",
+          "text": "ファネルで次に進まない理由は、ニーズの違い、別のチャネルへの切り替え、データの欠落かもしれません。まず測定を確認し、その後で原因を調べることで、取り組む価値のある改善を選べます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "インタビューで根拠のあるペルソナを作る",
+              "kind": "life",
+              "slug": "stp-persona-research"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress のフォームと送信結果を確認する",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "改善を小規模店舗のマーケティング計画に組み込む",
+              "kind": "life",
+              "slug": "marketing-plan-small-business"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Analytics ファネルデータ探索",
+          "url": "https://support.google.com/analytics/answer/9327974?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Analytics DebugView でのイベント監視",
+          "url": "https://support.google.com/analytics/answer/7201382?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK エクスペリエンスマップの作成",
+          "url": "https://www.gov.uk/service-manual/user-research/creating-an-experience-map",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g カスタマージャーニーマップの概念",
+          "url": "https://www.nngroup.com/articles/journey-mapping-101/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "고객 여정과 마케팅 퍼널: 독자가 어느 단계에서 이탈하는지 찾기",
+      "description": "고객 여정은 접점과 요구를 이해하는 데, 마케팅 퍼널은 일관된 조건으로 각 단계의 인원을 측정하는 데 쓰입니다. 이 글은 직접 만든 자전거 수리 예약 사례로 온라인·오프라인 접점 정리, 완료 이벤트 정의, 단계별 전환율 계산, GA4 개방형·폐쇄형 퍼널 설정 방법을 설명합니다. 계산표, 실행 절차, 자체 제작 도표를 통해 검증할 만한 개선 가설을 찾고 데이터 공백을 고객 이탈 원인으로 오해하지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/customer-journey-funnel/hero-ko.jpg",
+        "alt": "Mokaair가 직접 제작한 화면·문서·검증 방패 그림으로 고객 접점, 단계별 데이터, 개선 검증을 보여 줍니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "자전거 수리점에서 예약 페이지를 보고도 양식을 제출하지 않는 사람이 많다는 사실을 발견했습니다. 어떤 고객은 전화로 문의했을 수 있고, 어떤 고객은 아직 자전거 모델을 확인 중이며, 또 어떤 고객은 이미 매장을 직접 방문했을 수도 있습니다. 전환율 하나만으로는 각 고객이 다음에 무엇을 했는지 알 수 없으며, 양식이 너무 길다고 곧바로 판단할 수도 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 2026년 9월 14일에 확인한 Google Analytics 및 사용자 연구 자료를 바탕으로 여정 지도와 퍼널을 함께 활용하는 방법을 설명합니다. 수리점의 절차, 수치, 개선안은 모두 직접 만든 예시입니다. 실제 계정에 연결하거나 운영 중인 웹사이트에서 작업하지 않았으며, 실제 전환 성과를 나타내지도 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "여정 지도는 경험을, 퍼널은 단계를 설명합니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "고객 여정은 한 사람이 하려는 일에서 출발해 단계별로 무엇을 하고, 어떤 서비스를 접하며, 어떤 문제를 겪는지 정리합니다. 검색, 웹사이트, 전화, 현장, 이후 사용까지 아우를 수 있습니다. 반면 마케팅 퍼널은 관찰할 단계를 골라 조건에 맞는 사람들이 다음 단계로 어떻게 이동하는지 계산합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 가지의 범위는 다를 수 있습니다. 수리 여정은 이상한 소리를 발견하는 순간부터 자전거를 찾아간 뒤 문제가 해결되었는지 확인할 때까지 이어질 수 있습니다. 반면 웹사이트 퍼널은 서비스 안내 읽기, 시간대 확인, 작성 시작, 예약 제출만 살펴봅니다. 온라인의 마지막 단계를 전체 서비스의 완료로 보아서는 안 되며, 퍼널 밖에 있는 사람을 모두 전환 실패로 간주해서도 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 이번에 개선할 문제를 정합니다. 예를 들어 ‘정기 정비가 필요한 사람이 적절한 예약을 완료하도록 돕기’입니다. 긴급 고장과 정기 정비의 절차가 크게 다르다면 따로 연구합니다. 서로 다른 요구를 한 지도에 억지로 넣으면 각 단계가 그럴듯해 보여도 구체적인 조정에는 도움이 되지 않을 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "접점과 근거로 현재 상태 그리기",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "먼저 고객이 접할 수 있는 곳을 나열한 뒤 인터뷰, 문의 기록, 실제 서비스 절차로 확인합니다. 단계마다 고객이 이루려는 일, 이용하는 채널, 필요한 정보, 현재 겪는 장애물, 내부 담당자를 기록합니다. 아직 모르는 부분은 우선 "
+            },
+            {
+              "type": "text",
+              "text": "표시"
+            },
+            {
+              "type": "text",
+              "text": "해 두고, 흐름을 모두 채우려고 상상으로 보충할 필요는 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 만든 수리 사례는 문제 파악, 서비스 확인, 시간 예약, 매장에 자전거 맡기기, 수령 시 확인으로 나눌 수 있습니다. 검색 페이지는 서비스 범위를 알려 주고, 예약 페이지는 선택 가능한 시간대를 제공하며, 전화는 불확실한 요구를 파악하는 데 도움을 주고, 현장에서는 점검 사항을 확인할 수 있습니다. 이러한 접점은 서로 이어지며, 웹사이트는 그중 일부일 뿐입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "감정과 생각에도 근거가 있어야 합니다. 고객이 특정 페이지에 머무는 모습을 보고 곧바로 ‘불안함을 느낌’이라고 표시해서는 안 됩니다. 먼저 머물렀거나 완료하지 않았다는 관찰 내용을 적고, 연구를 통해 이유를 파악할 수 있습니다. 여정 지도에서는 현재 상태의 근거, 팀의 가설, 이상적인 절차를 구분하는 것이 좋습니다. 그래야 다음 독자가 설계 목표를 현장의 사실로 오해하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "이벤트와 완료 조건을 정의한 뒤 퍼널 읽기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 각 단계에 식별 가능한 조건을 적습니다. 서비스 페이지 읽기, 시간대 확인, 작성 시작, 성공적인 제출은 각각 다르게 정의해야 합니다. 제출 버튼을 눌렀지만 오류 메시지가 나왔다면 성공적인 제출이 아닙니다. 양식이 전달되었다고 매장이 예약을 수락한 것도 아니므로, 후속 확인은 따로 기록할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GA4에서는 탐색 메뉴에서 유입경로 탐색을 만든 뒤 이벤트 또는 측정기준 조건을 설정할 수 있습니다. 폐쇄형 퍼널은 첫 단계부터 진입해야 하며, 개방형 퍼널은 중간 단계부터 진입할 수 있습니다. 직접 이어지는 단계는 중간 행동을 허용하지 않고, 간접적으로 이어지는 단계는 허용합니다. 조건은 분석하려는 질문에 맞추고, 날짜 범위와 단계 순서, 시간 제한을 기록해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GA4 퍼널은 지정한 순서에 따라 집계합니다. 같은 사용자가 선택한 기간에 절차를 반복해서 완료해도 매번 퍼널 기록이 추가되는 것은 아닙니다. 각 주문이나 개별 수리를 연구해야 한다면 해당 기록을 별도로 활용해야 합니다. 사용자 수, 이벤트 횟수, 주문 건수를 같은 표에 넣고 곧바로 나누어 계산해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "동일한 기준으로 단계별 전환율 계산하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "하나의 폐쇄형 퍼널에서 240명이 서비스 안내를 읽고, 그중 120명이 시간대를 확인한 뒤, 90명이 작성을 시작하고, 마지막으로 45명이 성공적으로 제출했다고 가정해 봅시다. 이 인원은 같은 기간과 조건에서 각 단계를 순서대로 충족한 것으로 설정한 자체 예시입니다. 서로 무관한 보고서 네 개의 합계를 조합한 것이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "단계별 전환율은 순서대로 120을 240으로 나눈 50%, 90을 120으로 나눈 75%, 45를 90으로 나눈 50%입니다. 전체 완료율은 45를 240으로 나눈 18.75%입니다. 단계별 비율과 전체 비율은 분모가 다르므로, 보고할 때 명확히 표시해야 수치가 어떤 질문에 답하는지 알 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 구간에서는 120명이, 마지막 구간에서는 45명이 줄었습니다. 두 구간 모두 다음 단계로 이동하지 않은 비율은 50%이지만, 같은 조치를 취해야 한다는 뜻은 아닙니다. 전자에는 정보만 찾아보는 사람이 포함될 수 있고, 후자는 조작상의 어려움과 더 가까울 수 있습니다. 영향을 받는 인원, 서비스 목표, 개선 비용, 연구 근거를 함께 고려해야 하며, 가장 큰 빨간 영역만 골라서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "기록 문제를 먼저 배제한 뒤 행동 원인 찾기",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이벤트 전송이 누락되거나 중복 실행되는지, 실패한 제출을 성공으로 처리하는지 확인합니다. 자신의 테스트 기기에서 디버그 모드를 켜고 DebugView로 이벤트와 "
+            },
+            {
+              "type": "text",
+              "text": "매개변수"
+            },
+            {
+              "type": "text",
+              "text": "를 확인한 다음, 성공 및 실패 절차를 직접 진행해 볼 수 있습니다. Google 도움말에 따르면 개인정보 보호 설정이나 분석 쿠키에 동의하지 않은 경우 등에는 디버그 이벤트가 표시되지 않을 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "다음으로 고객이 전화, 현장 또는 다른 진입 경로로 전환했는지 확인합니다. 기기, 기간, 식별 조건의 차이도 연결해서 볼 수 있는 경로에 영향을 줍니다. 신뢰할 만하게 연결할 수 없다면 웹사이트 퍼널과 매장 예약 기록을 따로 보고하고 관찰 가능한 범위를 명시합니다. 겉보기에 완전한 채널 간 전환율을 만들려고 추측으로 빈칸을 채워서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "행동 가설은 마지막에 제시합니다. 예를 들어 작성을 시작한 뒤 완료하지 않은 이유는 자전거 모델 항목에 답하기 어려워서일 수도 있고, 단순히 시간대가 맞지 않아서일 수도 있습니다. 조건에 맞는 사람들의 사용 과정을 관찰하고 관련 문의를 살펴보면 원인을 좁히는 데 도움이 됩니다. 수치는 조사할 만한 지점을 알려 주지만, 원인을 뒷받침하려면 다른 근거가 필요합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "고객이 하려는 일 한 가지를 정하고 현재 접점과 데이터 공백을 정리합니다.",
+            "각 단계의 이벤트와 성공 조건을 정의하고 실제 발생 결과를 확인합니다.",
+            "퍼널의 진입점, 순서, 기간, 분모를 고정하고 단계별 비율과 전체 비율을 계산합니다.",
+            "연구 결과를 함께 고려해 개선 사항 하나를 고르고, 동일한 기준으로 결과를 검토합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "검증 가능한 개선 가설 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "가설을 실행 가능한 문장으로 적습니다. 예를 들어 ‘자전거 모델을 모르는 것이 작성의 장애물이라면, 모델을 어디서 확인할 수 있는지 안내하면 이 항목 때문에 멈추는 일이 줄어들 것이다’입니다. 이는 ‘경험 개선’보다 달성 여부를 확인하기 쉽습니다. 담당자, 완료 시점, 관찰 방법을 정하고 개선 전 버전과 데이터 조건도 보관합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 해당 상황에 맞는 몇 사람이 수정된 양식을 사용하게 하여 안내가 도움이 되는지 확인할 수 있습니다. 정량 비교가 필요하다면 트래픽과 의사결정 위험에 맞춰 적절한 방법을 설계합니다. 한 주 동안 전환율이 올랐다는 이유만으로 계절, 고객 유입 경로, 서비스 시간대 변화의 영향을 배제하고 수정이 성장을 가져왔다고 단정해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "후속 품질도 확인해야 합니다. 제출량이 늘어도 예약 정보가 불완전하거나, 매장에서 응답할 수 없거나, 서비스 범위를 벗어난 요청이 많다면 원래 목표를 달성한 것이 아닙니다. 유효한 예약, 매장 방문, 서비스 결과를 여정 검토에 다시 포함해야 퍼널 그래프를 보기 좋게 만들려고 문제를 다음 단계로 떠넘기는 일을 피할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/customer-journey-funnel/diagram-1-ko.svg",
+          "alt": "접점, 이벤트 조건, 퍼널 분모, 개선 검증을 네 개의 열로 구분하여 웹사이트 제출이 수리 서비스 여정의 일부임을 알려 줍니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "퍼널은 조사할 지점을 알려 주고, 여정 연구는 원인과 후속 영향을 이해하도록 돕습니다.",
+          "description": "접점, 이벤트 조건, 퍼널 분모, 개선 검증을 네 개의 열로 구분하여 웹사이트 제출이 수리 서비스 여정의 일부임을 알려 줍니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "폐쇄형 퍼널 예시",
+            "순서대로 조건을 충족한 인원",
+            "이전 단계 대비"
+          ],
+          "rows": [
+            [
+              "서비스 안내 읽기",
+              "240",
+              "시작점"
+            ],
+            [
+              "시간대 확인",
+              "120",
+              "120 ÷ 240＝50%"
+            ],
+            [
+              "작성 시작",
+              "90",
+              "90 ÷ 120＝75%"
+            ],
+            [
+              "제출 성공",
+              "45",
+              "45 ÷ 90＝50%"
+            ]
+          ],
+          "caption": "직접 만든 가상 데이터로, 전체 완료율은 45 ÷ 240＝18.75%입니다. 성공적인 제출이 매장의 예약 수락을 뜻하지는 않습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "설정한 단계에서 벗어났다고 서비스를 떠난 것은 아닙니다",
+          "text": "퍼널에서 다음 단계로 이동하지 않는 이유는 요구의 차이, 다른 채널 이용, 데이터 공백일 수 있습니다. 먼저 측정을 확인하고 원인을 연구해야 투자할 만한 개선 사항을 고를 수 있습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "인터뷰로 근거 있는 페르소나 만들기",
+              "kind": "life",
+              "slug": "stp-persona-research"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 양식과 제출 결과 확인하기",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "소규모 매장 마케팅 계획에 개선 사항 반영하기",
+              "kind": "life",
+              "slug": "marketing-plan-small-business"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Analytics 유입경로 탐색",
+          "url": "https://support.google.com/analytics/answer/9327974?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Analytics DebugView 이벤트 모니터링",
+          "url": "https://support.google.com/analytics/answer/7201382?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK 경험 지도 만들기",
+          "url": "https://www.gov.uk/service-manual/user-research/creating-an-experience-map",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g 고객 여정 지도 개념",
+          "url": "https://www.nngroup.com/articles/journey-mapping-101/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "顾客旅程与营销漏斗：找出读者在哪一步离开",
+      "description": "顾客旅程用于理解接触点与需求，营销漏斗则按统一条件统计各步骤的人数。本文以原创的自行车维修预约案例，说明如何梳理线上与实体接触、定义完成事件、计算逐步转化率，以及设置 GA4 开放或封闭漏斗。附计算表、操作步骤与原创图解，帮助找出值得验证的改进假设，避免把数据缺口误当成顾客流失原因。",
+      "hero": {
+        "src": "/guides/customer-journey-funnel/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创屏幕、文档与核查盾牌，呈现顾客接触点、步骤数据与改进验证。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "自行车维修店发现不少人看过预约页，却没有提交表单。有人可能改打电话，有人还在确认车型，也有人已经直接到店。只看一个转化率，无法知道每位顾客接下来做了什么，更不能立刻判定表单太长。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依据 2026 年 9 月 14 日查阅的 Google Analytics 与用户研究资料，说明旅程图和漏斗如何配合。维修店流程、数字及改进方案均为原创示例，未连接真实账号或操作正式网站，也不代表实际转化成果。"
+        },
+        {
+          "type": "heading",
+          "text": "旅程图回答体验问题，漏斗回答步骤问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "顾客旅程从某个人的任务出发，梳理他在不同阶段做什么、接触哪些服务，以及遇到什么问题。它可以跨越搜索、网站、电话、现场与后续使用。营销漏斗则选出需要观察的步骤，统计符合条件的人如何进入下一步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "两者的范围可以不同。维修旅程可能从发现异响开始，一直到取车后确认问题解决；网站漏斗则只看阅读服务、查看时段、开始填写及提交预约。不要把线上的最后一步当成整段服务已完成，更不要把漏斗之外的人全部视为失败。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先决定这次要改进的问题，例如“让需要例行保养的人完成适合的预约”。若紧急故障与例行保养的流程差异很大，就分开研究。将不同需求硬塞进同一张图，可能使每个阶段都看似合理，却无法指导任何具体调整。"
+        },
+        {
+          "type": "heading",
+          "text": "用接触点与证据画出现状",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先列出顾客可能接触的地方，再用访谈、咨询记录与实际服务流程确认。每个阶段记录顾客想完成的事、使用的渠道、需要的信息、目前遇到的阻碍，以及内部由谁处理。未知的部分先"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "，不必为了画满流程而补上想象。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "原创维修案例可分成理解问题、确认服务、安排时段、到店交车与取车确认。搜索页可能回答服务范围，预约页提供可选时段，电话协助厘清不确定的需求，现场则确认检查事项。这些接触点相互衔接，网站只是其中一部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "情绪与想法也应有依据。看到顾客停在某页，不能直接画成“感到焦虑”；可以先记下停留或未完成的观察，再通过研究理解原因。旅程图中最好分开现状证据、团队假设与理想流程，避免下一位阅读者误把设计目标当成现场事实。"
+        },
+        {
+          "type": "heading",
+          "text": "定义事件与完成条件后再读漏斗",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先为每一步写出可识别的条件。阅读服务页、查看时段、开始填写与成功提交，应各有不同定义。按下提交按钮却收到错误信息，不算成功提交；表单送达也不等于店家已接受预约，后续确认可以另外记录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 GA4 中，可以从探索创建漏斗探索，再设置事件或维度条件。封闭漏斗要求从第一步进入，开放漏斗允许从中间步骤进入；直接跟随不允许中间有其他操作，间接跟随则允许。条件应配合分析问题，并写下日期范围、步骤顺序与时间限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GA4 漏斗按照指定顺序计数，同一用户在选定期间重复完成流程，也不是每次都增加一条漏斗记录。若需要研究每笔订单或每次维修，应另用相应记录处理。不要把用户人数、事件次数与订单笔数放在同一张表里直接相除。"
+        },
+        {
+          "type": "heading",
+          "text": "用相同口径计算逐步转化率",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设同一个封闭漏斗中，有 240 人阅读服务，其中 120 人查看时段，接着 90 人开始填写，最后 45 人成功提交。这些是同一期间、相同条件下依次符合步骤的原创示例人数，不是把四份互不相关报表的总数拼在一起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "逐步转化率依次为 120 除以 240 等于 50%、90 除以 120 等于 75%，以及 45 除以 90 等于 50%。整体完成率则是 45 除以 240，等于 18.75%。逐步与整体的分母不同，报告时要标示清楚，才能知道数字回答哪个问题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一段少了 120 人，最后一段少了 45 人，两段未前进比例都是 50%，但不代表应采取相同措施。前者可能包含只查资料的人，后者可能更接近操作困难。要一起考虑受影响人数、服务目标、改进成本与研究证据，不能只挑最大的红色区块。"
+        },
+        {
+          "type": "heading",
+          "text": "先排除记录问题，再找行为原因",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "检查事件是否漏报、重复触发或把失败提交当成成功。可以在自己的测试设备启用调试模式，用 DebugView 核对事件与"
+            },
+            {
+              "type": "text",
+              "text": "参数"
+            },
+            {
+              "type": "text",
+              "text": "，再实际走过成功及失败流程。Google 说明指出，隐私控制或未同意分析 Cookie 等情况可能使调试事件不可见。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "接着检查顾客是否改走电话、现场或其他入口。不同设备、期间与识别条件也会影响你能连起来的路径。若无法可靠关联，就分别报告网站漏斗与店内预约记录，注明可观察范围；不要用猜测补齐看似完整的跨渠道转化率。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后才提出行为假设。例如开始填写后未完成，可能与车型字段难以回答有关，也可能只是时段不适合。观察符合条件的人操作，并查看相关咨询，可以帮助缩小原因范围。数字指出值得调查的位置，原因仍需要其他证据支持。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "选定一种顾客任务，梳理现状接触点与数据缺口。",
+            "定义每一步的事件及成功条件，核对实际触发结果。",
+            "固定漏斗入口、顺序、期间及分母，计算逐步与整体比例。",
+            "结合研究选一项改进，再以相同口径回顾结果。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "让改进假设可以被检验",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把假设写成可操作的句子，例如“若不清楚车型是填写障碍，提供查找位置说明，应能减少这个字段造成的停顿”。这比“提升体验”更容易验收。指定负责人、完成时间与观察方法，并保留改进前的版本及数据条件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以先让几位符合情境的人尝试修改后的表单，确认说明是否有帮助；需要量化比较时，再依流量与决策风险设计适当方法。不能看到一周转化率上升，就排除季节、客源与服务时段变动的影响，直接宣称修改已带来增长。"
+        },
+        {
+          "type": "paragraph",
+          "text": "也要检查后续质量。若提交量变多，但预约资料不完整、店家无法回复或大量需求超出服务范围，就不算完成原本目标。把有效预约、到店与服务结果放回旅程回顾，才能避免只为了让漏斗图变漂亮，将问题移到下一个环节。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/customer-journey-funnel/diagram-1-zh-cn.svg",
+          "alt": "四栏区分接触点、事件条件、漏斗分母与改进验证，提醒网站提交只是维修服务旅程的一部分。",
+          "width": 1600,
+          "height": 900,
+          "caption": "漏斗指出要调查的位置，旅程研究帮助理解原因与后续影响。",
+          "description": "四栏区分接触点、事件条件、漏斗分母与改进验证，提醒网站提交只是维修服务旅程的一部分。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "封闭漏斗示例",
+            "依次符合的人数",
+            "相对前一步"
+          ],
+          "rows": [
+            [
+              "阅读服务",
+              "240",
+              "起点"
+            ],
+            [
+              "查看时段",
+              "120",
+              "120 ÷ 240＝50%"
+            ],
+            [
+              "开始填写",
+              "90",
+              "90 ÷ 120＝75%"
+            ],
+            [
+              "成功提交",
+              "45",
+              "45 ÷ 90＝50%"
+            ]
+          ],
+          "caption": "原创假设数据，整体完成率为 45 ÷ 240＝18.75%；成功提交不等于预约已获店家接受。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "离开的是设定好的步骤，不一定是服务",
+          "text": "漏斗未前进可能来自需求差异、改用其他渠道或数据缺口。先核对测量，再研究原因，才能选出值得投入的改进。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用访谈建立有证据的用户画像",
+              "kind": "life",
+              "slug": "stp-persona-research"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "检查 WordPress 表单与提交结果",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "将改进排入小店营销计划",
+              "kind": "life",
+              "slug": "marketing-plan-small-business"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Analytics 漏斗探索",
+          "url": "https://support.google.com/analytics/answer/9327974?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Analytics DebugView 事件监控",
+          "url": "https://support.google.com/analytics/answer/7201382?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK 体验地图制作",
+          "url": "https://www.gov.uk/service-manual/user-research/creating-an-experience-map",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g 顾客旅程图概念",
           "url": "https://www.nngroup.com/articles/journey-mapping-101/",
           "checked_on": "2026-09-14"
         }

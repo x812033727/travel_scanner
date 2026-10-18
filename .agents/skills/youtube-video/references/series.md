@@ -22,6 +22,8 @@
 3. `chapter`：一篇一份，同樣討論／核准（subject `chapter:<n>`），核准後那一篇的集數變 `ready`；下一篇在上一篇做到剩 `series_chapter_ahead` 集時先規劃，站主也可按「先規劃下一篇」（單集沒有這顆按鈕；直接呼叫 API 會被 409 `video_series_all_planned`「每一篇都已經規劃過了」擋下）。
 4. `episode`：工人 `POST …/episodes/<n>/start`（影片 slug 是 `<作品>-e001` 這種），伺服器回請求列與脈絡（單集的脈絡把故事聖經當 `setting` 給、沒有 `chapter`）；工人寫 `series.json`（人物表、本集細綱、前情、謎團、設定全文）與 `brief.md`（不出大綱選項；`## 大綱` 只有選項 A，本機直接核准，備註「依故事聖經」或 `planned by chapter <n>'s approved outline`），然後照 `drama.md` 的步驟走：撰稿（作品的集用 variant `episode`；單集用一般漫劇提示）→ 查核（variant `episode`，多了張力與連貫性）→ 聽眾審稿 → **劇本關卡：討論／核准**（subject `script:<集數>`）→ 設定圖（沿用作品存檔，只畫新角色）→ 旁白 → 關鍵影格 → 分鏡 → 片段 → 配樂 → 合成（此時寫前情 `POST …/recap`）→ 字幕 → 成片 → 上架包 → 上架確認（`POST …/done`）→ 站上自動開下一集（單集沒有下一集）。
 
+文件（設定集、細綱、篇章、故事聖經）的企劃回答在途中遺失時（模型可能已經跑完並計費），工人不自己再問：記在 `_series/<作品>/lost-docs.json`，紀錄一行說明，這部作品等站主（網站先交出到期的篇章，所以這部作品已經 ready 的集數也跟著等；網站一次只交出最舊作品的工作，後面的作品也跟著等），請求、草稿與 Shorts 照做。站主改了作品的備註、前提、標題或「一鍵開拍」，或在被退回的版本上寫一句話出了新版本，就是新的請求；還沒有任何一集開始時，也可以撤回作品再建一部（新的作品列）。網站上的「重新規劃」見 `tasks/open/2026-10-07-series-documents-a-site-side-hold.md`。一鍵開拍的查核回答遺失時不再問，企劃的文件直接交給站主審。
+
 ## 討論串（每個核准點都有）
 
 - 站主在 `/admin/videos` 的文件面板或劇本卡片的「討論」節寫一句話並「送出」（`POST /admin/video-automation/series/<slug>/messages {subject, body}`；讀用 `GET …/messages?subject=`）。文件或劇本已核准的串只留紀錄，不再收新訊息（409）；這一集還沒開始（沒有影片 slug）時 `script:<集數>` 被 409 `video_drama_script_not_started` 擋下；開始後、劇本還沒寫出來前送的訊息會被工人代回「劇本還沒寫出來」。
@@ -29,6 +31,19 @@
 - 站主問問題就只回答（`revised` 為 null）；要求改才出新版本，回覆裡列出改了什麼。**文件**的新版本由站上存成一個等站主核准的 `review` 版本，被取代的那版備註「討論後出了新版本」——不算 `series_doc_rewrites`，也不算每月草稿，沒有輪數上限。**劇本**的新版本由工人自己寫回 `video.json`（每句 id 保留、過 lint，撰稿模型最多修 3 次，仍不過就還原並在回覆裡說明），接著重跑查核與聽眾審稿、重寫 `script.md`、再送一次劇本關卡。
 - 模型給不出可用的答案時，工人代它回一則「模型這一輪沒有給出可用的回覆（…）」，原始答案留在 `answers/discuss-<時間>.txt`，串停在那裡等站主，不自動重試。
 - 討論不能動到上面已核准的文件（討論細綱時不能改設定集）：模型只建議，站主到那條串再說。
+- **請求失敗時**（`tools/video/automation/discuss.mjs`）：站上一次只交出所有作品裡最舊的一則未回覆訊息，所以一則訊息永遠不回，後面所有串都會跟著卡住。工人因此一定會回覆或在有限輪數內放手：
+  - **文件串**（`answerDocument`）
+    - 答案在請求送出後遺失（`RUN_UNCERTAIN`）：回一則 `lostReply`，不自己再問，因為可能已計費。
+    - 站上拒絕（4xx），或模型服務本身拒絕（502 `video_ai_upstream_failed`，例如設定集太長超過模型上下文、金鑰失效）：回一則 `refusedReply`，同樣的請求不再每輪重送。
+    - 可能會過的失敗（5xx、429、`video_ai_upstream_busy`）：這一輪先放著，下一輪再問；每則訊息等了幾輪記在 `_series/<作品>/discussion-waits.json`。連續 `MAX_DOCUMENT_WAITS`（6）輪都沒過，就回一則 `failingReply`，讓後面的串繼續；中間只要成功一次，計數就清掉。
+  - **劇本串**（`answerScript`）：失敗算那支影片的，照影片各階段的規則處理（`requestFailed`）。
+    - 答案遺失擋成 `uncertain:writer`。
+    - 伺服器已沒有那個工作擋成 `job_gone:writer`。
+    - 被拒絕擋下並寫明原因。
+    - 忙碌或限流讓影片延後，訊息跟著等。
+    - 影片因這則訊息被擋時記下 `blocked_line`，等站主在影片頁重試後再回。
+    - 影片因別的原因停住時，回一則 `blockedReply`，不把訊息扣著。
+  - 付了錢的答案若網站沒收下，留在 `discussion-answer.json`（作品的在 `_series/<作品>/`，劇本的在影片工作目錄），下次輪到這則訊息時直接送出，不再問模型一次。
 
 ## 劇本關卡（`script`）
 

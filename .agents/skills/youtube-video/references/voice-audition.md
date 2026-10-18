@@ -27,6 +27,8 @@ Gemini TTS 沒有口音可選（`docs/videos/DESIGN.md`），口音與口吻全�
 | 5 | 站主選定後：口音改 `accent.mjs`（`CHANNEL_ACCENT` 與英文版）、`models.py` 的 `DEFAULT_VOICE` 開頭、`prompts/writer-drama.md` 裡的字面，以及 `docs/videos/README.md` §頻道規格「口音」列、`DESIGN.md`、`script-writing.md` 引的原文；口吻改 `STORY_VOICE_STYLE` 與 `models.py` 的 `DEFAULT_VOICE`；兩種都請站主在 `/admin/videos` 設定分頁重貼 | `tools/video/core/accent.test.mjs` 與 `tts.test.mjs` 綠；`node tools/video/long-form/cli.mjs check` 綠（`models.py` 綁在長片收據裡，見 skill `dev-and-ci` 的 `duration-receipt.md`） |
 | 6 | 部署後驗：api 容器的 `DEFAULT_VOICE["style"]` 開頭是新寫法；工人容器 `voiceFields()` 對舊 style 的輸出已改寫；下一支新影片 `video.json` 的 style 以新寫法開頭；站主聽一支成片 | 三個都成立 |
 
+A01／B18 試作（含舊版及隔離的 `-v2`）若試音，指令須加該片的確切 `--slug`，例如 `--slug story-rolling-suitcase-v2`；CLI 會把 slug 與每次請求的 operation ID 交給正式站預算帳本。放在試作資料夾或以 A01／B18 命名的樣稿若漏填或填錯 slug，CLI 會在網路呼叫前拒絕。上表用於一般頻道試音的直接 `synthesize()` 備援不能拿來替試作繞過 CLI；試作若無法執行 CLI，就先停止付費試音。任意命名的外部樣稿無法自動辨識影片，執行者仍須明確填入試作 slug。
+
 ## 改寫法的代價
 
 - 片段快取鍵含 style：含舊寫法的影片下次重跑 `tts` 整支重錄（Gemini 月字數會跳）。`speechHash` 不含改寫後的字，所以已核准的旁白不會自動失效。
