@@ -22,7 +22,7 @@ import { writeLanguages } from "../core/stages.mjs";
 import { dubArtifacts, loadProject } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
-import { siteChoice } from "./sync.mjs";
+import { siteChoice, WORKER_STATE_FILE } from "./sync.mjs";
 
 export const CONTRACT_DIR = fileURLToPath(new URL("../../../apps/api/tests/fixtures/video_language_contract", import.meta.url));
 export const TOKEN = `mkv_${"l".repeat(43)}`;
@@ -126,6 +126,9 @@ function writeTranslations(box, doc, locales) {
 export async function languageVideo({ name = "minimal", slug = name === "en" ? "fixture-en" : "fixture-minimal", translated = ["en", "ja", "ko"] } = {}) {
   const box = sandbox(slug, name);
   mkdirSync(box.workdir, { recursive: true });
+  // The worker's batch, as the API's contract test reads it: a video the worker made has its
+  // state file beside the work files (review/sync.mjs WORKER_STATE_FILE).
+  writeFileSync(path.join(box.workdir, WORKER_STATE_FILE), "{}\n");
   const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
   const lexicon = JSON.parse(readFileSync(path.join(box.videos, "lexicon.json"), "utf8"));
   writeTranslations(box, doc, translated);

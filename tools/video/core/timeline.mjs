@@ -186,10 +186,17 @@ export function speechHash(doc, lexicon) {
   return hash.digest("hex").slice(0, 16);
 }
 
-/** Hash of everything that changes the pictures, for the render stage's cache and status. */
+/**
+ * Hash of everything that changes the pictures, for the render stage's cache and status. A
+ * brand story's company name on the thumbnail (`thumbnail.data.brand`, templates.mjs
+ * THUMB_BRAND_MAX) is left out: it is drawn on thumbnail.jpg alone, and the keyframes, clips and
+ * assembly are bound to this hash, so adding it to a story already shot must not make them all
+ * stale (`render` draws the thumbnail again on every run). Without a brand the hash is as before.
+ */
 export function visualHash(doc) {
   const hash = createHash("sha256");
-  hash.update(JSON.stringify(doc.thumbnail ?? null));
+  const thumbnail = doc.thumbnail?.data && Object.hasOwn(doc.thumbnail.data, "brand") ? { ...doc.thumbnail, data: Object.fromEntries(Object.entries(doc.thumbnail.data).filter(([key]) => key !== "brand")) } : doc.thumbnail;
+  hash.update(JSON.stringify(thumbnail ?? null));
   for (const scene of doc.scenes) {
     hash.update(JSON.stringify([scene.id, scene.template, scene.chapter ?? null, scene.data, scene.lines.map((line) => [line.id, line.reveal ?? 0])]));
     // Only selected variants change the picture. The base face sheet and speech stay current.

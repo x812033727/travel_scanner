@@ -4,7 +4,7 @@
 // the planned hundred.
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -12,8 +12,9 @@ import { fileURLToPath } from "node:url";
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { clipsHash, drawnShotScenes, EXPLAINER_PRESET, hasCast, isExplainer, lookHash, mixHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
-import { explainerFixture, lexiconProposals, sandbox, storyFixture, storySeries, writeAudioFixture } from "../core/fixtures/load.mjs";
-import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
+import { explainerFixture, sandbox, storyFixture, storySeries, writeAudioFixture } from "../core/fixtures/load.mjs";
+import { validateLexicon } from "../core/lexicon.mjs";
+import { reviseStoryLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { BRIEF_SECTIONS_DRAMA, briefSectionsFor } from "../core/lint.mjs";
 import { NARRATIVE_PANEL, PANEL_RULES_SHA256 } from "../core/narrative.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
@@ -21,7 +22,7 @@ import { isStory } from "../core/story.mjs";
 import { readJson } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { pipelineStatus } from "../core/state.mjs";
-import { buildTimeline, estimatedSamples, speechHash, visualHash } from "../core/timeline.mjs";
+import { buildTimeline, estimatedSamples, estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { automationClient } from "./client.mjs";
 import { MAX_PAGE_CHARS, pageReader } from "./fetch.mjs";
 import { Automation, automatedVideos, MAX_STAGE_FAILURES } from "./flow.mjs";
@@ -35,6 +36,8 @@ import {
   CHAPTER_KEYS,
   chapterBudgets,
   composeStory,
+  effectiveStoryLengthBand,
+  effectiveStoryMinutes,
   factChapters,
   figuresIn,
   lengthBand,
@@ -320,7 +323,9 @@ function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, set
   const dir = path.join(box.root, "docs", "videos", episode.slug);
   const workdir = path.join(box.work, episode.slug);
   const runs = [];
-  const lexicon = () => readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
+  const lexicon = () => existsSync(path.join(dir, "story-lexicon", "current.json"))
+    ? videoLexicon({ root: box.root, slug: episode.slug, workdir }).lexicon
+    : readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
   const video = () => readJson(path.join(dir, "video.json"));
   // The site decides these gates on arrival for a hands-off story, and what it approved is what review-pull records.
   const GATE_FILES = { audio: "timeline.json", storyboard: path.join("keyframes", "manifest.json"), final: "final.mp4", publish: path.join("upload", "metadata.json") };
@@ -763,7 +768,7 @@ test("a flagged v2 pilot audio take waits for owner review instead of rewriting 
     series,
     episode: { ...EPISODE, slug },
     answers: pilotAnswers(),
-    seconds: () => 600,
+    seconds: () => 450,
     settings: { max_retake_rounds: 1 },
     decide: (gate) => ({ status: gate === "audio" ? "pending" : "approved" }),
   });
@@ -839,6 +844,80 @@ test("a flagged v2 pilot audio take waits for owner review instead of rewriting 
   assert.equal(world.runs.filter((run) => run.startsWith("tts ") && !run.includes("--redo")).length, 2);
 });
 
+test("a plan's thumbnail.brand reaches the thumbnail in place of the tag, and leaves the pictures' hash alone", () => {
+  const hook = { title: "開場", scenes: [{ id: "hook-01", template: "shot", data: { prompt: "a watch on a desk" }, lines: [] }], claims: [] };
+  const compose = (thumbnail) => {
+    const info = storySeriesFile({ series: SERIES, episode: EPISODE, plan: { ...PLAN, thumbnail }, cast: [] });
+    return composeStory({ slug: SLUG, info, chapters: { hook }, voice: SERIES.voice, root: "." });
+  };
+  const plain = compose({ headline: "比車貴的錶", idea: "a watch" });
+  assert.deepEqual(plain.thumbnail.data, { headline: "比車貴的錶", tag: "品牌故事", shot: "hook-01" }, "a plan without a brand keeps the tag alone");
+  const branded = compose({ headline: "比車貴的錶", idea: "a watch", brand: " SEIKO " });
+  assert.deepEqual(branded.thumbnail.data, { headline: "比車貴的錶", tag: "品牌故事", brand: "SEIKO", shot: "hook-01" });
+  // The brand is drawn on thumbnail.jpg alone: adding it to a story already shot must not make
+  // its keyframes, clips and assembly stale (they are bound to visualHash).
+  assert.equal(visualHash(branded), visualHash(plain));
+  assert.notEqual(visualHash(compose({ headline: "比電腦貴", idea: "a watch" })), visualHash(plain), "the headline still counts");
+});
+
+test("an existing A01 ten-minute merged script holds before TTS without rewriting reviewed files", async () => {
+  const slug = "story-rolling-suitcase-v2";
+  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const world = storyWorld({ series, episode: { ...EPISODE, slug }, answers: pilotAnswers(), seconds: () => 450 });
+  await steps(world.automation, 1 + 6 + 6 + 6);
+  const videoFile = path.join(world.dir, "video.json");
+  const oldVideo = { ...world.video(), target_minutes: [9, 11] };
+  writeFileSync(videoFile, JSON.stringify(oldVideo));
+  const originalVideo = readFileSync(videoFile);
+  const chapterFiles = CHAPTER_KEYS.map((key) => path.join(world.workdir, STORY_CHAPTERS_DIR, `${key}.json`));
+  const originalChapters = chapterFiles.map((file) => readFileSync(file));
+  const receipt = {
+    schema_version: 1,
+    ...pilotScriptReviewEvidence({ slug, root: world.box.root, workdir: world.workdir }),
+    status: "PASS", reviewer_id: "independent-reader-a01", independent: true,
+    reviewed_at: "2026-10-15T00:00:00.000Z",
+    checks: { reference_alignment: "PASS", factual_claims: "PASS", narrative: "PASS" },
+  };
+  const receiptFile = path.join(world.workdir, PILOT_SCRIPT_REVIEW_FILE);
+  mkdirSync(path.dirname(receiptFile), { recursive: true });
+  writeFileSync(receiptFile, JSON.stringify(receipt));
+  assert.match(pilotScriptReviewProblem({ slug, root: world.box.root, workdir: world.workdir }), /legacy duration target/);
+  const state = world.state();
+  state.story.chapters.origin.lint = ["the old chapter needs a fix"];
+  world.automation.persist(state);
+  const writerCalls = world.site.calls.run.filter((call) => call.stage === "writer").length;
+  assert.match(await world.automation.step(), /STOPPED_HOLD: A01's existing video.json has a legacy or unreadable duration target/);
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, writerCalls,
+    "a legacy merged script holds before even a pending chapter lint fix calls the model");
+  assert.deepEqual(readFileSync(videoFile), originalVideo, "ordinary retry preserves the old merged script");
+  chapterFiles.forEach((file, index) => assert.deepEqual(readFileSync(file), originalChapters[index], `${file} is preserved`));
+  assert.equal(world.runs.some((run) => run.startsWith("tts ")), false);
+
+  unlinkSync(chapterFiles.at(-1));
+  const incomplete = world.state();
+  incomplete.status = "active";
+  delete incomplete.blocked;
+  delete incomplete.blocked_kind;
+  world.automation.persist(incomplete);
+  assert.match(await world.automation.step(), /STOPPED_HOLD: A01 has an existing video.json but chapter files are missing \(now\)/);
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, writerCalls,
+    "a missing chapter cannot trigger a writer call while the old merged script exists");
+  assert.deepEqual(readFileSync(videoFile), originalVideo);
+  chapterFiles.slice(0, -1).forEach((file, index) => assert.deepEqual(readFileSync(file), originalChapters[index]));
+
+  writeFileSync(videoFile, JSON.stringify({ ...oldVideo, target_minutes: [7, 8] }));
+  const compactButIncomplete = readFileSync(videoFile);
+  const next = world.state();
+  next.status = "active";
+  delete next.blocked;
+  delete next.blocked_kind;
+  world.automation.persist(next);
+  assert.match(await world.automation.step(), /STOPPED_HOLD: A01 has an existing video.json but chapter files are missing \(now\)/);
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, writerCalls,
+    "a current target cannot auto-recreate a missing reviewed chapter either");
+  assert.deepEqual(readFileSync(videoFile), compactButIncomplete);
+});
+
 test("the ten-minute preset is preserved by the story file and video composer", () => {
   const cute = { ...SERIES, target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
   const info = storySeriesFile({ series: cute, episode: EPISODE, plan: PLAN, cast: [] });
@@ -856,6 +935,51 @@ test("the ten-minute preset is preserved by the story file and video composer", 
   assert.deepEqual(video.look, { preset: "cute-mystery" });
   assert.deepEqual(video.target_minutes, [9, 11]);
   assert.deepEqual(video.subtitles, { burn_in: false, style: "drama" }, "new brand stories use switchable zh-TW CC");
+});
+
+test("only A01 writes to an eight-minute budget while the shared pilot series stays ten", async () => {
+  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const episode = { ...EPISODE, slug: "story-rolling-suitcase-v2" };
+  const info = storySeriesFile({ series, episode, plan: PLAN, cast: [] });
+  assert.equal(info.target_minutes, 10, "the series snapshot keeps the other episodes at ten minutes");
+  assert.equal(effectiveStoryMinutes(episode.slug, info), 8);
+  assert.deepEqual(effectiveStoryLengthBand(episode.slug, info), [420, 480]);
+  const compact = chapterBudgets(8, info.look, { compactA01: true });
+  assert.equal(compact.reduce((sum, chapter) => sum + chapter.seconds, 0), 480);
+  assert.equal(compact.reduce((sum, chapter) => sum + chapter.chars, 0), 8 * 250);
+  assert.equal(compact.reduce((sum, chapter) => sum + chapter.shots, 0), 64,
+    "A01 keeps the cute story's 7.5-second illustration pace");
+  assert.deepEqual(composeStory({ slug: episode.slug, info, chapters: {}, voice: SERIES.voice, root: "." }).target_minutes, [7, 8]);
+
+  for (const other of [
+    { slug: "story-conveyor-belt-sushi-v2", info: { ...info, episode: 2 } },
+    { slug: episode.slug, info: { ...info, slug: "brand-stories-five-v2" } },
+    { slug: episode.slug, info: { ...info, look: { preset: "custom" } } },
+  ]) {
+    assert.equal(effectiveStoryMinutes(other.slug, other.info), 10);
+    assert.deepEqual(effectiveStoryLengthBand(other.slug, other.info),
+      other.info.look.preset === "cute-mystery" ? [540, 660] : [510, 750]);
+    assert.deepEqual(composeStory({ slug: other.slug, info: other.info, chapters: {}, voice: SERIES.voice, root: "." }).target_minutes,
+      other.info.look.preset === "cute-mystery" ? [9, 11] : [9, 12]);
+  }
+
+  const world = storyWorld({ series, episode, answers: pilotAnswers() });
+  assert.match(await world.automation.step(), /^story brand-stories-curio-pilot-v2:/);
+  assert.equal(readJson(path.join(world.dir, "series.json")).target_minutes, 10);
+  assert.equal(world.state().target_minutes, 8);
+  await steps(world.automation, 2);
+  const origin = world.site.calls.run.find((call) => call.stage === "writer" && call.payload.chapter.key === "origin");
+  assert.equal(origin.payload.target_minutes, 8,
+    "the writer payload explicitly overrides the generic cute-story ten-minute prompt");
+  assert.deepEqual(origin.payload.episode_length.measured_narration_seconds, [420, 480]);
+  assert.match(origin.payload.episode_length.owner_decision, /in place of the generic cute-mystery ten-minute example/);
+  assert.deepEqual(origin.payload.chapter.budget, {
+    seconds: compact[1].seconds, chars: compact[1].chars, shots: compact[1].shots,
+  });
+  const written = await steps(world.automation, 4);
+  assert.match(written.at(-1), /six are merged into video\.json/, written.join("\n"));
+  assert.deepEqual(world.video().target_minutes, [7, 8],
+    "a fresh A01 with no pre-existing merged script reaches the compact six-chapter output");
 });
 
 test("a ten-minute story carries the exact MiniMax cute look from series to video", async () => {
@@ -1010,10 +1134,10 @@ test("a story goes from the site's job to its first media step: started from its
   status = await pipelineStatus({ slug: SLUG, root: world.box.root, workdir });
   assert.equal(status.steps.some((step) => step.id === "look generated"), false);
 
-  // Nineteen model calls, each under its own variant (never counted as a draft): six a chapter for
-  // the writer, the checker and the listener, then the storytelling panel on the merged story.
-  assert.equal(site.calls.run.length, 19);
-  assert.deepEqual(site.calls.run.map((call) => `${call.stage}:${call.variant}`), [...Array(6).fill("writer:story"), ...Array(6).fill("verifier:story"), ...Array(6).fill("listener:story"), "verifier:narrative"]);
+  // Twenty model calls, each under its own variant (never counted as a draft): six a chapter for
+  // the writer, the checker and the listener, then the storytelling panel's two readers on the merged story.
+  assert.equal(site.calls.run.length, 20);
+  assert.deepEqual(site.calls.run.map((call) => `${call.stage}:${call.variant}`), [...Array(6).fill("writer:story"), ...Array(6).fill("verifier:story"), ...Array(6).fill("listener:story"), "verifier:narrative", "verifier:narrative"]);
   for (const call of site.calls.run) {
     assert.equal(call.format, "drama");
     assert.ok(call.max_output_tokens <= 32_000);
@@ -1101,6 +1225,76 @@ test("a loop one chapter plants and a later one pays off survives into the merge
   assert.ok(order.get(loop.setup) < 5, "the setup is in the opening chapter");
 });
 
+test("a story's storytelling panel asks two readers: a question fails only when both say no, a yes with no line quoted is no yes, and a reader that fails keeps nothing", async () => {
+  // Reader 1 fails no_spoiler and payoffs, reader 2 no_spoiler alone; in round 2 reader 2 passes it.
+  let round = 0;
+  const readers = (body) => {
+    if (body.payload.reader === 1) round += 1;
+    if (body.payload.reader === 1) return panelAnswer(["no_spoiler", "payoffs"]);
+    return panelAnswer(round === 1 ? ["no_spoiler"] : []);
+  };
+  const world = storyWorld({ answers: standardAnswers({ "verifier:narrative": readers }) });
+  const { automation, site, state, workdir } = world;
+  await steps(automation, 1 + 6 + 6 + 6);
+  assert.match(await automation.step(), /the storytelling panel sent the narration back \(round 1: no_spoiler\); the listener goes over the six chapters/);
+  const [first, second] = site.calls.run.slice(-2);
+  assert.deepEqual([first, second].map((call) => [`${call.stage}:${call.variant}`, call.payload.reader]), [["verifier:narrative", 1], ["verifier:narrative", 2]]);
+  assert.equal(second.payload.narration, first.payload.narration, "both readers read the same script");
+  assert.deepEqual(second.payload.questions, first.payload.questions);
+  assert.equal(second.instructions, first.instructions);
+  const panelFile = path.join(workdir, "review", "narrative.json");
+  let record = readJson(panelFile);
+  assert.deepEqual([record.passed, record.round, record.failed], [false, 1, ["no_spoiler"]]);
+  assert.deepEqual(record.readers.map((reader) => reader.failed), [["no_spoiler", "payoffs"], ["no_spoiler"]]);
+  assert.equal(record.answers.find((answer) => answer.id === "payoffs").yes, true, "one reader's cited yes meets the question");
+  assert.match(state().story.owner_note, /^說故事檢查沒過：no_spoiler：.*讀者一：\[h1\] 一把傘。；讀者二：\[h1\] 一把傘。/);
+  assert.doesNotMatch(state().story.owner_note, /payoffs/, "the listener is sent only what both readers failed");
+
+  // The listener goes over the six chapters; in round 2 reader 2 says yes with a line quoted, and it passes.
+  await steps(automation, 6);
+  assert.match(await automation.step(), /a story has no script gate/);
+  record = readJson(panelFile);
+  assert.deepEqual([record.passed, record.round, record.failed], [true, 2, []]);
+  assert.deepEqual(record.readers.map((reader) => reader.passed), [false, true]);
+  assert.ok(state().notes.includes("storytelling panel passed (round 2)"));
+
+  // A "yes" with no line id quoted does not outvote the other reader's "no".
+  const uncited = storyWorld({ answers: standardAnswers({ "verifier:narrative": (body) => (body.payload.reader === 1
+    ? panelAnswer(["no_spoiler"])
+    : { answers: NARRATIVE_PANEL.map(({ id }) => ({ id, yes: true, evidence: id === "no_spoiler" ? "開場沒有劇透" : "[h1] 一把傘。" })) }) }) });
+  await steps(uncited.automation, 1 + 6 + 6 + 6);
+  assert.match(await uncited.automation.step(), /sent the narration back \(round 1: no_spoiler\)/);
+  assert.match(uncited.state().story.owner_note, /讀者二：no line id quoted: 開場沒有劇透/);
+
+  // The second reader's answer is unusable: the round fails as one reader's would, and nothing is
+  // kept, so the first reader's answer is never taken for two.
+  const broken = storyWorld({ raw: { "verifier:narrative": (body) => (body.payload.reader === 2 ? "sorry, no JSON here" : undefined) } });
+  await steps(broken.automation, 1 + 6 + 6 + 6);
+  assert.match(await broken.automation.step(), /verifier gave nothing usable \(verifier answered something that is not JSON/);
+  assert.equal(existsSync(path.join(broken.workdir, "review", "narrative.json")), false);
+  assert.equal(broken.state().story.narrative, undefined);
+  assert.deepEqual(broken.site.calls.run.slice(-2).map((call) => call.payload.reader), [1, 2]);
+});
+
+test("a tutorial or drama's storytelling panel still asks one reader (flow.mjs): only a brand story asks two", async () => {
+  let asked = 0;
+  const world = storyWorld({ answers: standardAnswers({ "verifier:narrative": () => (asked += 1, panelAnswer()) }) });
+  const slug = "thunder-one-reader";
+  const doc = explainerFixture();
+  doc.target_minutes = [10, 12];
+  for (let n = 0; estimateTimeline(doc).total_frames / 30 / 60 < 8.5; n++) {
+    doc.scenes.splice(doc.scenes.length - 1, 0, { id: `pan-${n}`, template: "shot", data: { prompt: "A wide shot of a village square at noon, one farmer counting on his fingers beside a wooden fence.", camera: "drift", visual: "still" }, lines: [{ id: `pan${n.toString(36).padStart(4, "0")}`, text: "這一句只是把範例拉長到一集的長度。" }] });
+  }
+  mkdirSync(path.join(world.box.root, "docs", "videos", slug), { recursive: true });
+  writeFileSync(path.join(world.box.root, "docs", "videos", slug, "video.json"), JSON.stringify(doc));
+  world.automation.persist({ slug, title: "雷聲", format: "drama", style_preset: EXPLAINER_PRESET, target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+  const state = readJson(path.join(world.box.work, slug, "auto.json"));
+  assert.match(await world.automation.narrativeGate(state), /the storytelling panel passed \(round 1\)/);
+  assert.equal(asked, 1);
+  assert.deepEqual(Object.keys(world.site.calls.run.at(-1).payload), ["narration", "questions"], "no reader number");
+  assert.equal("readers" in readJson(path.join(world.box.work, slug, "review", "narrative.json")), false);
+});
+
 test("a chapter the writer answers badly is asked for again once, then the video is blocked", async () => {
   let asked = 0;
   const world = storyWorld({
@@ -1124,54 +1318,44 @@ test("a chapter the writer answers badly is asked for again once, then the video
   assert.ok(existsSync(path.join(world.workdir, "answers")), "what the model said is kept for a person");
 });
 
-test("a chapter's dictionary proposals that lint would refuse are left out, so the merged story passes lint; a word left unknown goes back to the writer for its chapter", async () => {
-  let unknown = 0;
-  const proposals = lexiconProposals();
+test("a story saves a writer's pronunciation proposal and chapter without changing shared or pinned words, then requires a reviewed revision", async () => {
   const world = storyWorld({
     answers: standardAnswers({
       "writer:story": (body) => {
         const { key } = body.payload.chapter;
         const answer = chapterAnswer(key, body.payload);
-        // The proposal of 2026-10-09 with the first chapter, every kind of proposal with the second.
         if (key === "hook") Object.assign(answer.lexicon_additions, { "8B": null, "6abc": null, Ai2: null });
-        if (key === "origin") Object.assign(answer.lexicon_additions, proposals);
-        if (key === "idea" && !body.payload.lint_errors && unknown++ === 0) {
-          answer.scenes[0].lines[0].text = `代號 6abc 的${answer.scenes[0].lines[0].text}`;
-          answer.lexicon_additions["6abc"] = null;
-        }
         return answer;
       },
     }),
   });
-  const { automation, site, state, lexicon } = world;
-  const seeded = Object.keys(lexicon().terms);
+  const { automation, site, state, lexicon, box, workdir } = world;
+  const sharedFile = path.join(box.root, "docs", "videos", "lexicon.json");
+  const sharedBefore = readFileSync(sharedFile);
   await steps(automation, 2);
-  assert.deepEqual(Object.keys(lexicon().terms), [...seeded, "Hollis", "Marrow", "Brellco", "Ai2"]);
+  assert.deepEqual(readFileSync(sharedFile), sharedBefore);
+  assert.equal(state().status, "blocked");
+  assert.deepEqual(state().story.lexicon_pending, ["Ai2"]);
+  assert.equal(state().story.chapters.hook.written, 1);
+  assert.ok(readChapter(automation, state(), "hook"), "successful writer output is retained");
+  assert.equal(Object.hasOwn(lexicon().terms, "Ai2"), false);
   assert.deepEqual(validateLexicon(lexicon()), []);
-  assert.deepEqual(state().lexicon_added, ["Hollis", "Marrow", "Brellco", "Ai2"]);
-
-  // Whatever a writer proposes, what the worker merges is what validateLexicon accepts, within its own limits as before.
-  assert.match(await automation.step(), /chapter 2\/6 \(origin\) written: 2 shots, \d+ characters$/);
-  const merged = Object.keys(lexicon().terms).filter((term) => term in proposals);
-  assert.deepEqual(validateLexicon(lexicon()), []);
-  assert.ok(merged.length > 0 && merged.length < Object.keys(proposals).length, "some proposals are taken and some left out");
-  assert.ok(merged.every(isValidTerm));
-  assert.equal(lexicon().terms[`Q${"x".repeat(39)}`], "念法");
-  assert.equal(lexicon().terms["Q#"], "念".repeat(80));
-  for (const term of [`Q${"x".repeat(40)}`, "Q Code", "Q!", "Q中", "Q_x", "8", "8B", "0abc", "_x", "中"]) assert.equal(term in lexicon().terms, false, term);
-
-  // A word that is unknown without its refused entry is its line's lint error, which the chapter's fix answers.
-  assert.match(await automation.step(), /chapter 3\/6 \(idea\) written: 2 shots, \d+ characters; 1 lint errors in it go back to the writer/);
-  assert.match(state().story.chapters.idea.lint[0], /"abc" is not in docs\/videos\/lexicon\.json/);
-  assert.match(await automation.step(), /chapter idea fixed for 1 lint errors \(round 1\)/);
-  assert.match(site.calls.run.at(-1).payload.lint_errors[0], /"abc" is not in docs\/videos\/lexicon\.json/);
-
-  // With 8B in the dictionary the sixth chapter ended "the merged story fails lint outside its chapters".
-  const rest = await steps(automation, 3);
-  assert.match(rest[2], /chapter 6\/6 \(now\) written: 2 shots.*the six are merged into video\.json and claims\.md and the script passes lint/);
-  assert.equal(state().status, "active");
-  assert.deepEqual(validateLexicon(lexicon()), []);
-  assert.equal("6abc" in lexicon().terms || "8B" in lexicon().terms, false);
+  assert.equal(Object.hasOwn(lexicon().terms, "8B"), false);
+  const calls = site.calls.run.length;
+  await advanceStory(automation, state(), "script passes lint");
+  assert.equal(site.calls.run.length, calls, "the blocked project makes no second model request");
+  const next = structuredClone(lexicon());
+  next.terms.Ai2 = null;
+  reviseStoryLexicon({ root: box.root, slug: SLUG, workdir, nextBytes: Buffer.from(JSON.stringify(next)), reviewSha256: createHash("sha256").update("independent fixture review").digest("hex") });
+  const saved = state();
+  saved.story.chapters.hook.checked = true;
+  saved.story.chapters.hook.listened = true;
+  saved.story.chapters.hook.check_rounds = 2;
+  assert.match(await advanceStory(automation, saved, "script passes lint"), /pronunciation input changed/);
+  assert.equal(saved.story.chapters.hook.checked, false);
+  assert.equal(saved.story.chapters.hook.listened, false);
+  assert.equal(saved.story.chapters.hook.check_rounds, 2, "review ceilings are not reset");
+  assert.deepEqual(readFileSync(sharedFile), sharedBefore);
 });
 
 test("a name of the story in a picture prompt is refused before anything is drawn: the chapter goes back to the writer, and a prompt fix that names it is not kept", async () => {

@@ -95,6 +95,8 @@ Jev 或網站暫時不行時大綱等一下，之後再問：API 說 Jev 這次�
 
 **誰會被問「有示範」**：這一題是教學影片的規矩，伺服器依自己資料庫裡這支影片的那一列決定（`judge.policy_questions_for`），工人的請求不能指定。分類（`category`，見 §影片分類）是 `explainer` 觀念解說或 `story` 品牌故事的影片不問這一題：回應的 `demo` 是 `null`、`questions` 是 `explainer`，備註寫「有示範：不適用（解說）」，`passed` 只看其餘三題。其他分類（`tutorial`、`ai-terms`、`ai-news`、`comparison`、`travel`、`other`……）照舊四題都問；伺服器查不到這支影片、或影片還沒分類時，也照舊問。只看分類、不看格式：漫劇（`format` 是 `drama`）照舊四題都問，漫劇要問哪些題由站主決定（票 `2026-09-28-video-drama-policy-questions`）。品牌故事作品的集另有自己的五題（`STORY.md`），長片精華 Shorts 也不問示範（`SHORTS.md`）。奇聞檔案局、原來如此這類用史料或道理講一件事的影片，分類填 `explainer` 就不會卡在這一題。
 
+**配音之前先問示範**（2026-10-17 加，票 `2026-10-09-send-a-final-cut-back-to`；站主決定退回兩次）：投影片影片的稿子寫好、查核與聽眾修稿之後、旁白合成之前，工人先把旁白送去同一個 `policy` 端點（`flow.mjs` 的 `demoGate`）。只看「有示範」一題：低於 0.6 就把 Jev 的備註當成退回意見交給撰稿模型重寫，重寫後照常再查核一次。退回兩次（`MAX_PROMPT_FIX_ROUNDS`）之後還是不夠，影片就卡住等站主，卡住的原因寫在 `/admin/videos` 的卡片上（「Jev sent the screenplay back 3 times: 示範不足…」），這時還沒付旁白與插圖的錢；站主按重試會再給兩次。判斷結果存在工作目錄的 `review/demo-check.json`，綁定當時的旁白全文，稿子沒變就不再問 Jev。哪些影片要問由伺服器決定，跟成片的 `policy` 項一樣：`explainer`、`story` 回 `demo: null`，直接通過。旁白已經合成的影片不會因為這條被退回；網站還沒寫頻道立場（409）或沒有這個端點時，照舊留到成片關卡。漫劇、品牌故事與合集不走這一關。
+
 **過關規則**（伺服器端，`final_qa_passed`）：`qa.ok` 為真、`qa.final_sha256` 等於這份審核的雜湊，而且伺服器自己列的必要項目每一項都在、都過。最後這一條是為了避免少跑了某一項的舊版工具被當成全部通過。設定「自動品管全過就核准成片」開著時，審核在送達的當下就核准，備註寫「自動品管 11 項全過，依設定自動核准」。
 
 沒過的話，審核照舊等站主。摘要寫「自動品管 2 項沒過：pace、links」，審核卡片的最上面列出沒過的項目與細節。站主可以照舊核准或退回。
@@ -200,6 +202,15 @@ OAuth 的做法：
 | `auto_pick_look` | 關 | 漫劇的設定圖 |
 
 遷移接在 #814 的 `0098_video_stage_instructions` 之後。開票時 main 最新的是 `0097`，實作前要再查一次 main。
+
+## 手動推送的影片一律等站主（2026-10-17 加）
+
+站主決定（票 `2026-10-11-hand-driven-film-approved-on-its`）：不是工人做的影片，例如 AI 代理或人自己寫好稿子、一關一關用 `review-push` 送審的那種，每一關都等站主核准，不管自動檢查的結果是什麼。起因是 `claude-code-mods-delivery-check-tutorial`：同一個代理寫稿、自己審、自己推，大綱、配音、成片在 43 分鐘內都被自動核准，站主兩天後第一次看到就退回了。
+
+- **怎麼分**：`review-push` 看這支影片的工作目錄裡有沒有工人的狀態檔 `auto.json`（`tools/video/review/sync.mjs` 的 `WORKER_STATE_FILE`）。沒有就是手動推送，每一筆送審的 payload 帶 `hand_pushed: true`，指令也會印一行「not a video the worker made … the owner decides at every gate」。工人自己的送審照舊，不帶這個標記。
+- **伺服器怎麼做**：`submit_review`（`apps/api/app/video_reviews/admin_service.py`）看到 `hand_pushed` 是 `true`，就不套用任何一條自動核准規則（Jev 挑大綱、配音檢查、分鏡、劇本、成片品管、上傳包、語言包都一樣），這筆審核留在待審，等站主在 `/admin/videos` 決定。Jev 的挑選、品管報告照樣附在審核上給站主看。
+- **Shorts 與匯入的成片也一樣**（站主 2026-10-17：「兩種都套用」）：用 `shorts/cli.mjs push` 手動送的 Short，成片與上傳包兩關都帶 `hand_pushed: true`；工人自己的 Short（`lab.mjs`、`cut.mjs` 呼叫 `push()`）不帶。用 `import/cli.mjs` 匯入的成片一律帶，因為匯入本來就不是工人做的。
+- **限制**：標記是工具加的，伺服器分不出送審是誰發的（工人與手動推送用同一個 token）。故意偽造 `auto.json` 或拿掉標記就能繞過；這條規則擋的是「沒注意到會自動核准」，不是蓄意繞過。
 
 ## 安全與失敗
 

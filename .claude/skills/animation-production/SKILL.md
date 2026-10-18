@@ -34,6 +34,7 @@ metadata:
 | 三條路線的方案、價目、隊列、版權、操作步驟 | `.agents/skills/animation-production/references/providers-and-plans.md` |
 | 使用者指定 Hailuo／Kling 內建瀏覽器：本次工具能力、首格、三鏡 pilot、送出與下載收據 | `.agents/skills/animation-production/references/browser-production.md` |
 | pilot 之後用 Hailuo 網頁把整集（數百鏡）做完：版本化授權檔、只增不改的帳本與租約、誰跑哪支腳本、每包迴圈（建包、首格、無水印取檔、QA、影片、D 軌、交接）、瀏覽器實務、修圖路線與變更單、收工的五個數字 | `.agents/skills/animation-production/references/hailuo-episode-operations.md`（《偶的江湖》第一集，2026-10-09 → 10-15） |
+| 換帳號或換 agent（Claude／Codex）接手 Hailuo 網頁短劇：頁面驅動一次送一整批首格與片段、新帳號從零的設定（起始/結束幀、4s）、打氣迴圈、掉出清單的片段怎麼撈、已踩過的坑、錄音／組片／匯入／合集的本機腳本 | `.agents/skills/animation-production/references/hailuo-batch-driver.md`（《種田娶妻打天下》第 1–20 集，2026-10-16 → 10-18） |
 | 指定「真一隻布袋喵」的鏡位與畫面感 | `.agents/skills/animation-camera/references/budaimiao-style.md`（沿用其中的觀察範圍與待驗項目） |
 | 檢討表單與 2026-10-03 試拍的填法 | `.agents/skills/animation-production/references/post-mortem.md` |
 

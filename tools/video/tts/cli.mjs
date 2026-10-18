@@ -9,6 +9,8 @@ import { NARRATOR } from "../core/drama.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
+import { requireStorySpeechLexicon } from "../core/lexicon-store.mjs";
+import { StoryLexiconError } from "../core/story-lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
@@ -359,6 +361,7 @@ async function tts(args, ctx) {
   const voices = voicesUsed(doc, requests);
   const estimate = requests.reduce((sum, request) => sum + billableForRequest(request.body), 0);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
+  requireStorySpeechLexicon(project, workdir);
   const cache = readCache(workdir);
   const redo = values.redo ? flaggedLines(readJson(path.resolve(values.redo))) : new Set();
   // A flagged repeat belongs to the same take: retake its original once, then replace all repeats.
@@ -426,6 +429,7 @@ async function tts(args, ctx) {
   // Another producer holding the project (core/project-lease.mjs) is the owner's to sort out:
   // nothing is synthesized or written meanwhile. The worker's unit holds it already.
   requireProjectLease(workdir, { owner: "tts", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
+  requireStorySpeechLexicon(project, workdir);
   const options = pending.length ? { ...clientOptions(ctx, requireCredentials(ctx)), videoSlug: doc.slug } : null;
   if (pending.length) {
     const status = await speechStatus(options);
@@ -571,6 +575,10 @@ export async function run(command, args, ctx) {
     }
     return await tts(args, ctx);
   } catch (error) {
+    if (error instanceof StoryLexiconError) {
+      ctx.stderr.write(`${error.message}\n`);
+      return ctx.EXIT.owner;
+    }
     if (!(error instanceof SpeechError)) throw error;
     ctx.stderr.write(`${error.message}\n`);
     return exitFor(error, ctx.EXIT);

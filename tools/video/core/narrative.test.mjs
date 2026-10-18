@@ -12,6 +12,7 @@ import {
   isNarrated,
   LABEL_OPENERS,
   loopProblems,
+  mergePanelVerdicts,
   NARRATIVE_PANEL,
   narrationText,
   narrativeProblems,
@@ -25,6 +26,7 @@ import {
   panelVerdict,
   repeatedFactProblems,
   requiredLoops,
+  STORY_PANEL_READERS,
 } from "./narrative.mjs";
 import { scriptCheckMatches } from "./script-check.mjs";
 import { MIN_EPISODE_MINUTES } from "./schema.mjs";
@@ -215,6 +217,50 @@ test("the panel passes only when every required question is yes; a missing or ma
   assert.equal(panelVerdict(null).failed.length, NARRATIVE_PANEL.filter((question) => question.required).length);
 });
 
+test("a story's two readers: a required question fails only when both say no, and a yes counts only with a quoted line id", () => {
+  assert.equal(STORY_PANEL_READERS, 2);
+  const reader = (no = [], { uncited = [] } = {}) => panelVerdict({ answers: NARRATIVE_PANEL.map(({ id }) => ({
+    id, yes: !no.includes(id), evidence: uncited.includes(id) ? "開場很好" : `[k7p2] ${no.includes(id) ? "這句講掉了結局" : "這句沒問題"}`,
+  })) });
+
+  // Both say no: the question fails, and the writer is told what each reader quoted.
+  const both = mergePanelVerdicts([reader(["no_spoiler", "payoffs"]), reader(["no_spoiler"])]);
+  assert.equal(both.passed, false);
+  assert.deepEqual(both.failed.map((each) => each.id), ["no_spoiler"], "payoffs had one yes and is met");
+  assert.equal(both.problems.length, 1);
+  assert.match(both.problems[0], /^no_spoiler：.*讀者一：\[k7p2\] 這句講掉了結局；讀者二：\[k7p2\] 這句講掉了結局/);
+  assert.equal(both.answers.find((each) => each.id === "payoffs").yes_readers, 1);
+
+  // One no and one cited yes: met, with the yes reader's line as the evidence.
+  const split = mergePanelVerdicts([reader(["no_spoiler"]), reader()]);
+  assert.equal(split.passed, true);
+  assert.deepEqual(split.failed, []);
+  assert.equal(split.answers.find((each) => each.id === "no_spoiler").evidence, "[k7p2] 這句沒問題");
+
+  // A yes with no line id quoted is no yes: the other reader's no stands.
+  const uncited = mergePanelVerdicts([reader(["no_spoiler"]), reader([], { uncited: ["no_spoiler"] })]);
+  assert.equal(uncited.passed, false);
+  assert.deepEqual(uncited.failed.map((each) => each.id), ["no_spoiler"]);
+  assert.match(uncited.problems[0], /讀者二：no line id quoted: 開場很好/);
+
+  // An advisory question both readers fail is still advisory; one reader is that reader's verdict.
+  assert.equal(mergePanelVerdicts([reader(["chapters_are_events"]), reader(["chapters_are_events"])]).passed, true);
+  const alone = reader(["payoffs"]);
+  assert.equal(mergePanelVerdicts([alone]), alone);
+  assert.throws(() => mergePanelVerdicts([]), /at least one reader/);
+
+  // The record keeps the merged answers where they were and each reader's own beside them.
+  const record = narrativeRecord(fixture(), both, 3);
+  assert.equal(record.passed, false);
+  assert.deepEqual(record.failed, ["no_spoiler"]);
+  assert.equal(record.answers.length, NARRATIVE_PANEL.length);
+  assert.equal(record.readers.length, 2);
+  assert.deepEqual(record.readers.map((each) => each.failed), [["no_spoiler", "payoffs"], ["no_spoiler"]]);
+  assert.deepEqual(record.readers[1].answers.find((each) => each.id === "payoffs"), { id: "payoffs", yes: true, evidence: "[k7p2] 這句沒問題" });
+  assert.equal(narrativeReviewMatches(record, fixture()), true, "the binding is the one a single reader's record has");
+  assert.equal("readers" in narrativeRecord(fixture(), alone, 1), false, "a single reader's record is unchanged");
+});
+
 test("a narrative PASS is reusable only for the script and exact panel rules that judged it", () => {
   const doc = fixture();
   const verdict = panelVerdict({ answers: NARRATIVE_PANEL.map(({ id }) => ({
@@ -350,6 +396,17 @@ test("a yes the reader quotes no line for is not a yes", () => {
   // instead; ids are short and may carry a digit or a dash.
   for (const evidence of ["[a1] 一句。", "[tg7af] 一句。", "[q1-ex] 一句。", "前面說過 [ro101] 這句"]) {
     assert.equal(panelVerdict(every({ yes: true, evidence })).passed, true, evidence);
+  }
+  // The narration prints each line as [id start], so a reader copying a line exactly as shown
+  // quotes it with its time (story-adapt-seiko-quartz-astron round 9 failed all 13 questions on
+  // "[48m5 00:00] …"). Only a clock may follow the id: words in brackets still quote no line.
+  for (const evidence of ["[48m5 00:00] 一句。", "[q1-ex 12:34] 一句。", "[ro101 1:02:03] 一句。"]) {
+    assert.equal(panelVerdict(every({ yes: true, evidence })).passed, true, evidence);
+  }
+  for (const evidence of ["[是 整支片] 很好", "[a1 很好] 一句。", "[a1 12:34 很好] 一句。", "[a1 1:2] 一句。"]) {
+    const verdict = panelVerdict(every({ yes: true, evidence }));
+    assert.equal(verdict.passed, false, evidence);
+    assert.equal(verdict.failed[0].evidence, `no line id quoted: ${evidence}`, evidence);
   }
   // A no still records what the reader quoted, so the writer knows which line to look at.
   const no = every({ yes: false, evidence: "[mc5b] 不見的，是船上唯一那艘小艇。" });

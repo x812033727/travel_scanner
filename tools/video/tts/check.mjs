@@ -39,7 +39,8 @@ import { parseArgs } from "node:util";
 
 import { pinyin } from "pinyin-pro";
 
-import { emptyLexicon, isKnownTerm } from "../core/lexicon.mjs";
+import { isKnownTerm } from "../core/lexicon.mjs";
+import { requireStorySpeechLexicon } from "../core/lexicon-store.mjs";
 import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
@@ -273,7 +274,7 @@ export async function checkAudio(args, ctx, options) {
   }
   const { doc } = project;
   // Use the unfiltered shelf dictionary, including for --file and Chinese dubs of English video.
-  const lexicon = lexiconFor(readJson(path.join(path.dirname(project.dir), "lexicon.json"), emptyLexicon()), locale);
+  const lexicon = lexiconFor(project.shelfLexicon, locale);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const track = trackFiles(locale, narration);
   const timeline = readJson(path.join(workdir, track.timeline), null);
@@ -282,6 +283,7 @@ export async function checkAudio(args, ctx, options) {
   }
   // Not while another producer holds the project (core/project-lease.mjs); the worker's unit holds it already.
   requireProjectLease(workdir, { owner: "check-audio", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
+  requireStorySpeechLexicon(project, workdir);
   const lines = dub ? dubLines(timeline, project.translations[locale], locale, doc.slug) : narrationLines(doc);
   // What makes the clips again: the flags file goes to it as `--redo`.
   const remake = dub ? `dub --slug ${doc.slug} --locale ${locale}` : `tts --slug ${doc.slug}`;

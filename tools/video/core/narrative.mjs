@@ -317,8 +317,12 @@ const isObject = (value) => value !== null && typeof value === "object" && !Arra
  * answered otherwise or malformed is a "no" (as the checker's missing verdict is a problem in
  * series.mjs scriptVerdict). `problems` are the lines the writer is sent.
  */
-/** A line id in brackets, as the panel's own answer format prints it: `[mc1a] …`. */
-const EVIDENCE_LINE_ID = /\[[A-Za-z0-9_-]{2,}\]/;
+/**
+ * A line id in brackets, as the panel's own answer format prints it (`[mc1a] …`) or as
+ * narrationText prints the line, with its start after the id (`[mc1a 01:02] …`, `[mc1a 1:02:03] …`,
+ * formatClock's mm:ss or h:mm:ss). A reader copying the line exactly as it was shown quotes it.
+ */
+const EVIDENCE_LINE_ID = /\[[A-Za-z0-9_-]{2,}(?: (?:\d+:)?\d{2}:\d{2})?\]/;
 
 export function panelVerdict(answer) {
   const given = new Map();
@@ -347,6 +351,41 @@ export function panelVerdict(answer) {
   };
 }
 
+/** How many independent readers a brand story's panel asks each round (owner, 2026-10-18). */
+export const STORY_PANEL_READERS = 2;
+
+const READER_NAMES = ["讀者一", "讀者二", "讀者三"];
+
+/**
+ * Several readers' verdicts (each from panelVerdict, each a fresh session on the same script) read
+ * as one (owner, 2026-10-18): a lone reader kept failing a brand story on a different small line
+ * each round, even lines it had passed unchanged before. A question is met when ANY reader answers
+ * "yes" with a quoted line id (panelVerdict already turns an uncited yes into a no), so a required
+ * question fails only when every reader says "no"; the writer is sent those questions alone, with
+ * every reader's evidence. `readers` keeps each verdict for the record.
+ */
+export function mergePanelVerdicts(verdicts) {
+  if (!Array.isArray(verdicts) || verdicts.length === 0) throw new Error("mergePanelVerdicts needs at least one reader's verdict");
+  if (verdicts.length === 1) return verdicts[0];
+  const name = (index) => READER_NAMES[index] ?? `讀者${index + 1}`;
+  const answers = NARRATIVE_PANEL.map(({ id, question, required }, index) => {
+    const given = verdicts.map((verdict) => verdict.answers[index]);
+    const agreeing = given.find((each) => each.yes);
+    const evidence = agreeing ? agreeing.evidence : given.map((each, reader) => `${name(reader)}：${each.evidence}`).join("；");
+    return { id, question, required, yes: Boolean(agreeing), evidence, yes_readers: given.filter((each) => each.yes).length };
+  });
+  const failed = answers.filter((each) => each.required && !each.yes);
+  const advisory = answers.filter((each) => !each.required && !each.yes);
+  return {
+    passed: failed.length === 0,
+    answers,
+    failed,
+    advisory,
+    problems: failed.map((each) => `${each.id}：${each.question}（${each.evidence}）`),
+    readers: verdicts,
+  };
+}
+
 /**
  * The verdict as it is kept (NARRATIVE_REVIEW), bound to both the script and the blind panel
  * contract. A later edit or rule change makes it stale, without changing other script checks.
@@ -361,5 +400,14 @@ export function narrativeRecord(doc, verdict, round) {
     answers: verdict.answers,
     failed: verdict.failed.map((each) => each.id),
     advisory: verdict.advisory.map((each) => each.id),
+    // A story's panel (mergePanelVerdicts): each reader's own answers next to the merged ones above.
+    ...(Array.isArray(verdict.readers) ? {
+      readers: verdict.readers.map((each) => ({
+        passed: each.passed,
+        answers: each.answers.map(({ id, yes, evidence }) => ({ id, yes, evidence })),
+        failed: each.failed.map((answer) => answer.id),
+        advisory: each.advisory.map((answer) => answer.id),
+      })),
+    } : {}),
   };
 }

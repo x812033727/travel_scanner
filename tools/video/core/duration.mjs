@@ -7,9 +7,31 @@ import { ANIME_BODY_TOLERANCE_SECONDS, animeRuntimeContext, hasAnimePolicy, LONG
 
 export const KNOWLEDGE_MIN_SECONDS = 480;
 export const KNOWLEDGE_TARGET_SECONDS = 600;
+export const A01_COMPACT_BODY_SECONDS = Object.freeze([420, 480]);
 // Which documents these floors hold is decided in drama.mjs (isKnowledgeLongform), where the
 // schema and the timeline can read it too without a cycle; it is re-exported here for its readers.
 export { isKnowledgeLongform };
+
+/** The owner's shorter pilot is one exact brand-story episode, not a series-wide preset. */
+export function isA01PilotStory(value) {
+  return value?.slug === "story-rolling-suitcase-v2"
+    && value.format === "drama"
+    && value.category === "story"
+    && !value.compilation
+    && value.series?.slug === "brand-stories-curio-pilot-v2"
+    && value.series.episode === 1
+    && value.look?.preset === "cute-mystery"
+    && Object.keys(value.look).length === 1;
+}
+
+/** Require the explicit per-video target before applying the shorter measured QA band. */
+export function isA01CompactStory(doc) {
+  return isA01PilotStory(doc)
+    && Array.isArray(doc.target_minutes)
+    && doc.target_minutes.length === 2
+    && doc.target_minutes[0] === 7
+    && doc.target_minutes[1] === 8;
+}
 
 /**
  * The request length used by every explainer writing path, including old auto.json files.
@@ -64,12 +86,17 @@ export function knowledgeDurationProblems({ doc, timeline, presented = timeline,
     || (checks.metrics.fps !== undefined && checks.metrics.fps !== FPS)) {
     problems.push("knowledge long-video checked final frame count must match the current presentation timeline at 30 fps; run assemble again");
   }
-  const minimumFrames = KNOWLEDGE_MIN_SECONDS * FPS;
+  const compactA01 = isA01CompactStory(doc);
+  const minimumSeconds = compactA01 ? A01_COMPACT_BODY_SECONDS[0] : KNOWLEDGE_MIN_SECONDS;
+  const minimumFrames = minimumSeconds * FPS;
   if (timeline.total_frames < minimumFrames) {
-    problems.push(`knowledge long-video body is ${timeline.total_frames} frames (${timeline.total_frames / FPS} s); needs at least ${minimumFrames} frames (${KNOWLEDGE_MIN_SECONDS} s), excluding intro and outro`);
+    problems.push(`knowledge long-video body is ${timeline.total_frames} frames (${timeline.total_frames / FPS} s); needs at least ${minimumFrames} frames (${minimumSeconds} s), excluding intro and outro`);
   }
   if (positiveFrames(frames) && frames < minimumFrames) {
-    problems.push(`knowledge long-video final cut is ${frames} frames (${frames / FPS} s); needs at least ${minimumFrames} frames (${KNOWLEDGE_MIN_SECONDS} s)`);
+    problems.push(`knowledge long-video final cut is ${frames} frames (${frames / FPS} s); needs at least ${minimumFrames} frames (${minimumSeconds} s)`);
+  }
+  if (compactA01 && timeline.total_frames > A01_COMPACT_BODY_SECONDS[1] * FPS) {
+    problems.push(`A01 compact story body is ${timeline.total_frames} frames (${timeline.total_frames / FPS} s); needs at most ${A01_COMPACT_BODY_SECONDS[1] * FPS} frames (${A01_COMPACT_BODY_SECONDS[1]} s), excluding intro and outro`);
   }
   return problems;
 }
