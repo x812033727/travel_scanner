@@ -110,6 +110,11 @@ await __v3zt.sleep(15000); [__wd(), __dhq.log.slice(-2).join('\n'), __dhq.clipsd
 | 列表外已經做完的片 | 卡片被擠出建立頁的清單 | 不用導頁：`fetch('/zh-Hant/my-work-detail/ai-video/<卡號>')` 的 HTML 裡就有 `moss/prod/<路徑>-0_*.mp4`（無浮水印），組成 `label 2 <路徑>` 給 `fetch-dh.sh` |
 | 組片在某鏡 `Stray % near ''` 失敗 | 系統面板文字有「%」，drawtext 當成展開符號 | assemble-v4 的 drawtext 已加 `expansion=none` |
 | 成片裡手心的染料看起來像血 | 紅色、濕亮、前景失焦 | 能裁就先免費裁掉；要重拍就寫「dry matte orange-vermilion dye powder, no liquid」 |
+| 重拍改過提示詞的鏡，驅動說 `already` 不送 | 舊卡還在列表上，reconcile 用最長前綴把舊卡對到同一個 label | 把舊卡在 `ztcmapdh` 改成 `x:old-<label>`，直接 `__oneOrig(id)` 送，再把新卡號手寫進 `ztcmapdh` |
+| 兩鏡提示詞一字不差（例：e24 s15 與 e15 s11），一直重送 | reconcile 遇到並列的最佳前綴就不對應 | 手寫 `ztcmapdh`；寫分鏡時避免完全相同的反應鏡描述 |
+| 舊集數重拍找不到首格網址 | 換帳號或清掉 localStorage 後 `zturls` 沒了，只有早期的 `ff-urls-dh.txt` | 用 `__zt.go('aN-sNN-t5', …)` 重畫首格（`newdl` 會把 `edhN-sNN-t1` 別名指到新圖） |
+| 重拍的片段被舊片蓋掉 | `fetch-dh.sh` 一律存成 `sNN-t1.mp4` | 重拍的片自己 curl 成 `sNN-t2/t5.mp4`；assemble 取排序最後的 take |
+| 成片檢查只看幾格看不出換臉、陌生人、低領 | 縮圖太小 | 每鏡取 35%／80% 兩格做檢查圖，分給子代理逐鏡比對分鏡與定妝照，可疑的再抽大圖 |
 
 ## 六、收工
 
