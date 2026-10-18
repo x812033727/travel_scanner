@@ -11,7 +11,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { atPhoneWidth, headlineSizeEstimate, headlineSplitWords, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH } from "../qa/thumbnail.mjs";
-import { headlineCount, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX } from "../templates/templates.mjs";
+import { brandFontSize, brandProblem, headlineCount, THUMB_BRAND_MAX, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX } from "../templates/templates.mjs";
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
 export const DEFAULT_PLAN = path.join(ROOT, "docs", "videos", "story-plans", "brand-stories-100");
@@ -211,6 +211,9 @@ export function storyProblems(story, fileId = story?.id) {
   if (story.related_guide !== null && !(typeof story.related_guide === "string" && GUIDE_SLUG.test(story.related_guide))) problems.push("related_guide must be a site article's slug, or null");
   if (!isObject(story.thumbnail) || !isText(story.thumbnail.headline) || !isText(story.thumbnail.idea)) problems.push("thumbnail needs a headline and an idea");
   else if (headlineCount(story.thumbnail.headline).count > LIMITS.headlineDraft) problems.push(`thumbnail.headline counts ${headlineCount(story.thumbnail.headline).count} characters (a Latin word or a number counts one), at most ${LIMITS.headlineDraft}: nothing readable is left once it is cut to the channel's ${LIMITS.headline}`);
+  // The company's name in large type in place of the 「品牌故事」 tag (templates.mjs THUMB_BRAND_MAX);
+  // optional, so a story written before it keeps the tag.
+  if (isObject(story.thumbnail) && brandProblem(story.thumbnail.brand)) problems.push(`thumbnail.brand ${brandProblem(story.thumbnail.brand)}`);
   return problems;
 }
 
@@ -223,7 +226,22 @@ export function storyProblems(story, fileId = story?.id) {
  * the qa stage fails the video until the author writes another.
  */
 export function storyWarnings(story) {
-  const headline = story?.thumbnail?.headline;
+  return [...headlineWarnings(story?.thumbnail?.headline), ...brandWarnings(story?.thumbnail?.brand)];
+}
+
+/**
+ * A brand name the column sets smaller than BRAND_WARN_PX: still drawn and readable, but no
+ * longer the largest words on the thumbnail. The name people search for, short (「SEIKO」, not
+ * 「精工 SEIKO」), reads larger.
+ */
+export const BRAND_WARN_PX = 96;
+function brandWarnings(brand) {
+  if (!isText(brand) || brandProblem(brand)) return [];
+  const px = brandFontSize(brand);
+  return px < BRAND_WARN_PX ? [`thumbnail.brand 「${brand.trim()}」 is set at about ${px} px, smaller than the headline; a shorter name (at most ${THUMB_BRAND_MAX} characters, best four or five) reads larger`] : [];
+}
+
+function headlineWarnings(headline) {
   if (!isText(headline)) return [];
   const problem = headlineProblem(headline);
   if (!problem) return [];

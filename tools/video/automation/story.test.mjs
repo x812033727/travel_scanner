@@ -842,6 +842,22 @@ test("a flagged v2 pilot audio take waits for owner review instead of rewriting 
   assert.equal(world.runs.filter((run) => run.startsWith("tts ") && !run.includes("--redo")).length, 2);
 });
 
+test("a plan's thumbnail.brand reaches the thumbnail in place of the tag, and leaves the pictures' hash alone", () => {
+  const hook = { title: "開場", scenes: [{ id: "hook-01", template: "shot", data: { prompt: "a watch on a desk" }, lines: [] }], claims: [] };
+  const compose = (thumbnail) => {
+    const info = storySeriesFile({ series: SERIES, episode: EPISODE, plan: { ...PLAN, thumbnail }, cast: [] });
+    return composeStory({ slug: SLUG, info, chapters: { hook }, voice: SERIES.voice, root: "." });
+  };
+  const plain = compose({ headline: "比車貴的錶", idea: "a watch" });
+  assert.deepEqual(plain.thumbnail.data, { headline: "比車貴的錶", tag: "品牌故事", shot: "hook-01" }, "a plan without a brand keeps the tag alone");
+  const branded = compose({ headline: "比車貴的錶", idea: "a watch", brand: " SEIKO " });
+  assert.deepEqual(branded.thumbnail.data, { headline: "比車貴的錶", tag: "品牌故事", brand: "SEIKO", shot: "hook-01" });
+  // The brand is drawn on thumbnail.jpg alone: adding it to a story already shot must not make
+  // its keyframes, clips and assembly stale (they are bound to visualHash).
+  assert.equal(visualHash(branded), visualHash(plain));
+  assert.notEqual(visualHash(compose({ headline: "比電腦貴", idea: "a watch" })), visualHash(plain), "the headline still counts");
+});
+
 test("the ten-minute preset is preserved by the story file and video composer", () => {
   const cute = { ...SERIES, target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
   const info = storySeriesFile({ series: cute, episode: EPISODE, plan: PLAN, cast: [] });

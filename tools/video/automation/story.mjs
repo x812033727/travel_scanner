@@ -726,7 +726,7 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     // Keep the picture clean so zh-TW CC can be switched off when another voice is selected.
     subtitles: { burn_in: false, style: "drama" },
     youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: clip(info.title ?? plan.subject, 100), description: `${info.logline || plan.subject}\n\n${plan.question}`, tags: storyTags(plan), video_id: videoId },
-    ...(thumbnail ? { thumbnail: { template: "thumb", data: { headline: clipHeadline(plan.thumbnail?.headline ?? plan.subject), tag: "品牌故事", shot: thumbnail } } } : {}),
+    ...(thumbnail ? { thumbnail: { template: "thumb", data: { headline: clipHeadline(plan.thumbnail?.headline ?? plan.subject), tag: "品牌故事", ...(isText(plan.thumbnail?.brand) ? { brand: plan.thumbnail.brand.trim() } : {}), shot: thumbnail } } } : {}),
     sources: plan.sources.map((source) => ({ title: clip(source.publisher || source.url, 200), url: source.url, checked_on: source.checked })),
     assets: [],
     ...(loops.length ? { loops } : {}),
