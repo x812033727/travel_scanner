@@ -5,6 +5,9 @@
 //   - burned-in subtitles, a name card the first time a character matters, a title card;
 //   - a mix: dialogue, Lyria music cues ducked under dialogue, CC0 effects and synthetic beds.
 //   node assemble-v4.mjs <video.json> <overlays.json|-> <edit.json> <workdir> <out.mp4>
+// DUB=<locale> (en, ja, ko) makes no picture: it times the zh-TW lines exactly as the cut does, lays
+// <workdir>/audio-<locale>/ on the same starts (dub-track.mjs) under the same music and effects, and
+// writes <out>.<locale>.m4a and <out>.<locale>.srt instead of <out>.
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import os from "node:os";
@@ -15,6 +18,7 @@ const work = path.resolve(workArg);
 const video = JSON.parse(readFileSync(file, "utf8"));
 const overlays = overlaysFile && overlaysFile !== "-" && existsSync(overlaysFile) ? JSON.parse(readFileSync(overlaysFile, "utf8")) : {};
 const edit = JSON.parse(readFileSync(editFile, "utf8"));
+const DUB = process.env.DUB || null;
 const TEMPO = edit.tempo ?? 1.07, LEAD = 0.12, GAP = 0.12, TAIL = 0.22, MIN = 1.2, ACTION_MAX = 2.4, SPLIT = 3.0, PUNCH = 1.3;
 const FONT = "C\\:/Windows/Fonts/msjhbd.ttc";
 const probe = (f) => Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).toString().trim());
@@ -47,7 +51,7 @@ function panelFilters(shot) {
   let f = `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x0b2a4a@0.62:t=fill:enable='gte(t,${start})'`;
   f += `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x7fd6ff@0.9:t=3:enable='gte(t,${start})'`;
   items.forEach((item, i) => {
-    f += `,drawtext=fontfile='${FONT}':textfile='${textFile(`${shot}-p${i}`, item.text)}':fontsize=52:fontcolor=${COLORS[item.kind] ?? COLORS.panel}:shadowcolor=0x000000@0.8:shadowx=2:shadowy=2:x=(w-text_w)/2:y=${y0 + 38 + 64 * i}:enable='gte(t,${start + 0.1 * i})'`;
+    f += `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-p${i}`, item.text)}':fontsize=52:fontcolor=${COLORS[item.kind] ?? COLORS.panel}:shadowcolor=0x000000@0.8:shadowx=2:shadowy=2:x=(w-text_w)/2:y=${y0 + 38 + 64 * i}:enable='gte(t,${start + 0.1 * i})'`;
   });
   return f;
 }
@@ -58,19 +62,19 @@ function nameCard(shot) {
   const [name, tag] = card, a = 0.25, b = 2.6;
   const alpha = `if(lt(t,${a}),0,if(lt(t,${a + 0.25}),(t-${a})/0.25,if(lt(t,${b - 0.3}),1,max(0,(${b}-t)/0.3))))`;
   return `,drawbox=x=96:y=596:w=8:h=150:color=0xe8c26a@0.95:t=fill:enable='between(t,${a},${b})'` +
-    `,drawtext=fontfile='${FONT}':textfile='${textFile(`${shot}-n`, name)}':fontsize=84:fontcolor=0xf3d27a:alpha='${alpha}':borderw=3:bordercolor=0x000000@0.7:x=124:y=598` +
-    `,drawtext=fontfile='${FONT}':textfile='${textFile(`${shot}-t`, tag)}':fontsize=40:fontcolor=0xffffff:alpha='${alpha}':borderw=2:bordercolor=0x000000@0.7:x=128:y=700`;
+    `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-n`, name)}':fontsize=84:fontcolor=0xf3d27a:alpha='${alpha}':borderw=3:bordercolor=0x000000@0.7:x=124:y=598` +
+    `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-t`, tag)}':fontsize=40:fontcolor=0xffffff:alpha='${alpha}':borderw=2:bordercolor=0x000000@0.7:x=128:y=700`;
 }
 function titleCard(shot) {
   const tc = edit.title;
   if (!tc || tc.shot !== shot) return "";
   const a = tc.from ?? 0.2, b = tc.to ?? 3.2;
   const alpha = `if(lt(t,${a}),0,if(lt(t,${a + 0.3}),(t-${a})/0.3,if(lt(t,${b - 0.4}),1,max(0,(${b}-t)/0.4))))`;
-  return `,drawtext=fontfile='${FONT}':textfile='${textFile(`${shot}-title`, tc.text)}':fontsize=96:fontcolor=0xf3d27a:alpha='${alpha}':borderw=4:bordercolor=0x2a1400@0.85:x=(w-text_w)/2:y=110` +
-    `,drawtext=fontfile='${FONT}':textfile='${textFile(`${shot}-sub`, tc.sub)}':fontsize=44:fontcolor=0xffffff:alpha='${alpha}':borderw=3:bordercolor=0x000000@0.8:x=(w-text_w)/2:y=226`;
+  return `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-title`, tc.text)}':fontsize=96:fontcolor=0xf3d27a:alpha='${alpha}':borderw=4:bordercolor=0x2a1400@0.85:x=(w-text_w)/2:y=110` +
+    `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-sub`, tc.sub)}':fontsize=44:fontcolor=0xffffff:alpha='${alpha}':borderw=3:bordercolor=0x000000@0.8:x=(w-text_w)/2:y=226`;
 }
 const subtitle = (name, text, a, b, color = "0xffffff") =>
-  `,drawtext=fontfile='${FONT}':textfile='${textFile(name, text)}':fontsize=60:fontcolor=${color}:borderw=4:bordercolor=0x000000@0.9:shadowcolor=0x000000@0.6:shadowx=2:shadowy=3:x=(w-text_w)/2:y=h-160:enable='between(t,${a.toFixed(3)},${b.toFixed(3)})'`;
+  `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(name, text)}':fontsize=60:fontcolor=${color}:borderw=4:bordercolor=0x000000@0.9:shadowcolor=0x000000@0.6:shadowx=2:shadowy=3:x=(w-text_w)/2:y=h-160:enable='between(t,${a.toFixed(3)},${b.toFixed(3)})'`;
 const stillMove = (id, f) => { const k = [...id].reduce((a, c) => a + c.charCodeAt(0), 0) % 4; if (k === 0) return `z='1+0.16*on/${f}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'`; if (k === 1) return `z='1.16-0.14*on/${f}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'`; if (k === 2) return `z='1.14':x='(iw-iw/zoom)*on/${f}':y='ih/2-(ih/zoom/2)'`; return `z='1.14':x='(iw-iw/zoom)*(1-on/${f})':y='ih/2-(ih/zoom/2)'`; };
 
 const report = [], segs = [], starts = {}, lineAt = [], srt = [];
@@ -99,11 +103,12 @@ for (const scene of video.scenes) {
   const placed = lines.map((l, i) => {
     const p = { ...l, at };
     if (edit.burn_subtitles && !(l.speaker === "xitong" && overlays[scene.id])) subs += subtitle(`${scene.id}-s${i}`, l.text, at, Math.min(dur, at + l.len + 0.08), l.speaker === "xitong" ? "0x9fe3ff" : "0xffffff");
-    lineAt.push({ shot: scene.id, speaker: l.speaker, start: t + at, len: l.len });
+    lineAt.push({ id: l.id, shot: scene.id, speaker: l.speaker, start: t + at, len: l.len, subtitled: !(l.speaker === "xitong" && overlays[scene.id]) });
     if (!(l.speaker === "xitong" && overlays[scene.id])) srt.push({ start: t + at, end: t + at + l.len, text: l.text });
     at += l.len + GAP;
     return p;
   });
+  if (DUB) { starts[scene.id] = { start: t, dur }; report.push(`${scene.id} ${t.toFixed(2)} +${dur.toFixed(2)}s`); t += dur; continue; }
   const decor = `${GRADES[gradeOf(scene.id)]},${FINISH}${panelFilters(scene.id)}${nameCard(scene.id)}${titleCard(scene.id)}${subs}`;
   let vf, note;
   if (clip) {
@@ -158,9 +163,9 @@ const total = t;
 
 // Picture and dialogue joined.
 const list = path.join(segDir, "list.txt");
-writeFileSync(list, segs.map((s) => `file '${s.replace(/\\/g, "/")}'`).join("\n") + "\n");
 const joined = path.join(segDir, "joined.mkv");
-execFileSync("ffmpeg", ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", list, "-c", "copy", joined], { stdio: "inherit" });
+if (!DUB) writeFileSync(list, segs.map((s) => `file '${s.replace(/\\/g, "/")}'`).join("\n") + "\n");
+if (!DUB) execFileSync("ffmpeg", ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", list, "-c", "copy", joined], { stdio: "inherit" });
 
 // The mix: music cues (ducked under dialogue), effects and beds.
 const sfxIndex = {};
@@ -176,7 +181,8 @@ const SYNTH = {
   underwater: "anoisesrc=color=brown:amplitude=0.6:d=DUR,lowpass=f=320,volume=1.4",
   river: "anoisesrc=color=brown:amplitude=0.4:d=DUR,bandpass=f=900:width_type=o:w=2.5,volume=0.7",
 };
-const inputs = ["-i", joined];
+const dubbed = DUB ? (await import("./dub-track.mjs")).dubDialogue({ locale: DUB, videoFile: file, work, segDir, lineAt, starts, total, probe, zhSrt: out.replace(/\.mp4$/, ".zh-TW.srt") }) : null;
+const inputs = ["-i", DUB ? dubbed.dialogue : joined];
 const parts = [], musicParts = [], sfxParts = [];
 let n = 1;
 const tAt = (shot, off = 0) => starts[shot].start + off;
@@ -223,8 +229,19 @@ const graph = [
   `${sfxParts.join("")}amix=inputs=${sfxParts.length}:normalize=0:duration=longest[fx]`,
   `[dlg][ducked][fx]amix=inputs=3:normalize=0:duration=first,loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[mix]`,
 ].join(";");
-const srtFile = out.replace(/\.mp4$/, ".zh-TW.srt");
 const fmt = (s) => { const ms = Math.round(s * 1000); const h = Math.floor(ms / 3600000), m = Math.floor(ms / 60000) % 60, sec = Math.floor(ms / 1000) % 60; return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")},${String(ms % 1000).padStart(3, "0")}`; };
+if (DUB) {
+  // The dub: the same bed, keyed by the dubbed dialogue; audio only, exactly as long as the cut.
+  const base = out.replace(/\.mp4$/, `.${DUB}`);
+  writeFileSync(`${base}.srt`, dubbed.srt.map((c, i) => `${i + 1}\n${fmt(c.start)} --> ${fmt(c.end)}\n${c.text}\n`).join("\n"));
+  writeFileSync(path.join(segDir, `mix-graph.${DUB}.txt`), graph);
+  execFileSync("ffmpeg", ["-v", "error", "-y", ...inputs, "-filter_complex", `${graph};[mix]apad[mixp]`, "-map", "[mixp]", "-c:a", "aac", "-b:a", "192k", "-t", total.toFixed(3), "-movflags", "+faststart", `${base}.m4a`], { stdio: "inherit" });
+  const counts = dubbed.fit.reduce((a, f) => ({ ...a, [f.status]: (a[f.status] ?? 0) + 1 }), {});
+  console.log(`${DUB}: ${dubbed.fit.length} lines, ${JSON.stringify(counts)}, max tempo ${Math.max(...dubbed.fit.map((f) => f.tempo)).toFixed(2)}, longer than zh ${dubbed.fit.filter((f) => f.len > f.zh + 0.01).length}`);
+  console.log(`total ${total.toFixed(2)}s -> ${base}.m4a`);
+  process.exit(0);
+}
+const srtFile = out.replace(/\.mp4$/, ".zh-TW.srt");
 writeFileSync(srtFile, srt.map((c, i) => `${i + 1}\n${fmt(c.start)} --> ${fmt(c.end)}\n${c.text}\n`).join("\n"));
 writeFileSync(path.join(segDir, "mix-graph.txt"), graph);
 // Subtitles ride as a soft zh-TW track (CC), the owner's choice; burn_subtitles draws them instead.
