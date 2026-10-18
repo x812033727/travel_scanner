@@ -1,0 +1,93 @@
+{
+  "tempo": 1.07,
+  "title": {
+    "shot": "s01",
+    "text": "種田娶妻打天下",
+    "sub": "第 24 集",
+    "from": 0.1,
+    "to": 2.4
+  },
+  "grades": {},
+  "default_grade": "dh",
+  "finish": "vignette=angle=PI/5,format=yuv420p",
+  "names": {
+    "s01": [
+      "魏記夥計",
+      "魏家鋪子"
+    ]
+  },
+  "punch": {},
+  "sfx_dirs": [
+    "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-library"
+  ],
+  "name_whoosh": "swish-9",
+  "music": [
+    {
+      "cue": "comedy",
+      "from": "s01",
+      "to": "s15",
+      "offset": 0,
+      "gain": -16
+    },
+    {
+      "cue": "suspense",
+      "from": "s16",
+      "to": "s22",
+      "offset": 10,
+      "gain": -15
+    },
+    {
+      "cue": "comedy",
+      "from": "s23",
+      "to": "s28",
+      "offset": 45,
+      "gain": -16
+    },
+    {
+      "cue": "tension",
+      "from": "s29",
+      "to": "s32",
+      "offset": 20,
+      "gain": -11,
+      "fade_out": 1.4
+    }
+  ],
+  "sfx": [
+    {
+      "file": "gong_02",
+      "at": "s01",
+      "off": 0.1,
+      "gain": -10
+    },
+    {
+      "file": "birds",
+      "at": "s01",
+      "to": "s06",
+      "gain": -32
+    },
+    {
+      "file": "handleCoins",
+      "at": "s09",
+      "off": 0.3,
+      "gain": -11
+    },
+    {
+      "synth": "river",
+      "at": "s19",
+      "to": "s28",
+      "gain": -28
+    },
+    {
+      "file": "footstep_concrete_001",
+      "at": "s29",
+      "off": 0.1,
+      "gain": -12
+    },
+    {
+      "file": "gong_02",
+      "at": "s32",
+      "off": 0.3,
+      "gain": -8
+    }
+  ]
+}
