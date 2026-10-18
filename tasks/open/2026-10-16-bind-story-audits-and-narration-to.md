@@ -29,8 +29,6 @@ scope:
   - tools/video/tts/cli.mjs
   - tools/video/tts/cli.test.mjs
   - tools/video/tts/tts.test.mjs
-  - docs/videos/long-form/review.md
-  - docs/videos/long-form/review.json
 ---
 
 # Bind story audits and narration to immutable per-story lexicon snapshots
@@ -83,6 +81,11 @@ leaves a pinned story's source and speech hashes byte-identical; a deliberate
 story revision must produce a new bound event and keep the old 80 links intact.
 
 ## Notes
+
+2026-10-18 owner-authorized narrow transfer: release only
+`docs/videos/long-form/review.md` and `review.json` to the A01 duration task.
+The 80-to-81 production transition and all other scope remain in progress;
+reclaim the receipt paths if later lexicon edits require another review.
 
 Evidence: `docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-live-readback-20261016.md`
 and the offline `A01-lexicon-rebaseline-candidate/README.md`. The latter is

@@ -18,6 +18,9 @@ scope:
   - tools/video/qa/duration.test.mjs
   - tools/video/automation/story.mjs
   - tools/video/automation/story.test.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
+  - tasks/open/2026-10-14-correct-a21-pringles-patent-fact-and.md
   - tasks/open/2026-10-14-curio-episodes-keep-the-series-look.md
   - tasks/open/2026-10-16-bind-story-audits-and-narration-to.md
   - tasks/open/2026-10-17-a01-public-sources-from-cited-claims.md
@@ -48,7 +51,7 @@ this exact A01 episode. B18 and other narrated films keep their current gates.
       second measured TTS band, while its shared series target remains ten.
 - [x] Apply the narrative lint gate to exact A01 at seven to eight minutes.
 - [x] Add meaningful frame-boundary, identity, bookend and B18 tests.
-- [ ] Obtain independent long-form duration receipt review before merging.
+- [x] Obtain independent long-form duration receipt review before merging.
 
 ## How to verify
 
@@ -58,6 +61,25 @@ tools/video/qa/duration.test.mjs tools/video/automation/story.test.mjs`,
 an independent reviewer binds the changed files.
 
 ## Notes
+
+2026-10-18 independent receipt closeout on rebased code `f9580975f`: a
+separate reviewer inspected the five changed duration/lint/QA files and
+updated only their SHA bindings in the 108-file long-form receipt. The other
+103 bindings did not change. Final report SHA-256 is
+`dd18c5bcb30df873840817ac378a3c76c93e96fbd3b6c1344f3eb48f53f10e94`.
+`node tools/video/long-form/cli.mjs check` passed 473 plans and the receipt
+regression passed 2/2. The coordinating agent ran the four complete focused
+suites with bundled Node v24.19.0: 100/100 passed; `npm run check:tasks`
+passed. PR #1563 remains a draft with `no-auto-merge`; CI on this new head,
+merging, deployment and the separate A01 host transition are not claimed.
+
+2026-10-18: Owner-authorized scope transfer takes only the two long-form
+duration receipt paths from the A21, curio-look and lexicon tickets. Their
+other scope, ownership, unfinished work and draft branches stay intact.
+This task now owns independent SHA rebinding for A01's five changed files.
+The unclaimed #1517 receipt cleanup task remains open; other draft PRs that
+edit the receipt require a fresh binding check at integration. No merge,
+deploy, host write or paid work is authorized by this transfer.
 
 2026-10-18: `origin/main` is f9afbafa3. The curio task still claims
 `lint.mjs`, although #1500 merged its lint change; the lexicon task still claims

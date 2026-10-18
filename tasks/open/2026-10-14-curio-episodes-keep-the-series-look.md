@@ -19,8 +19,6 @@ scope:
   - .claude/skills/youtube-video/SKILL.md
   - AGENTS.md
   - docs/videos/history-curiosity/look.md
-  - docs/videos/long-form/review.json
-  - docs/videos/long-form/review.md
 ---
 
 # Curio episodes keep the series look: a shared skill and a lint gate
@@ -53,6 +51,11 @@ three images at a time, and fell back to source cards.
 `node tools/video/cli.mjs lint --slug curio-h01-v2` (0 errors).
 
 ## Notes
+
+2026-10-18 owner-authorized narrow transfer: release only
+`docs/videos/long-form/review.md` and `review.json` to the A01 duration task.
+The curio duration receipt and H04–H06 remake remain unchecked and in
+progress; reclaim these paths when that independent review is ready.
 
 - Thresholds from the delivered episodes: illustration share 73% (U02 v1) to 95% (H01 v2); longest
   card run 3 (U02 v1). A curio episode is recognised by its slug, because H04–H06 v2 had dropped
