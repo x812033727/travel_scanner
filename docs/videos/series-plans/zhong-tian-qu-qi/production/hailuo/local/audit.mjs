@@ -1,4 +1,4 @@
-// Audit every 3D donghua episode: storyboard vs clip jobs, first frames, clips, audio, cut.
+// node audit.mjs [from] [to] : audit the 3D donghua episodes: storyboard vs clip jobs, first frames, clips, audio, cut.
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 
@@ -10,7 +10,8 @@ const cast = JSON.parse(readFileSync(R + "/docs/videos/series-plans/zhong-tian-q
 const probe = (f) => { try { const o = execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration:stream=codec_type,width,height", "-of", "json", f]).toString(); const j = JSON.parse(o); const v = j.streams.find((s) => s.codec_type === "video"); return { d: +j.format.duration, w: v?.width, h: v?.height }; } catch { return null; } };
 const castVoices = Object.fromEntries((cast.characters ?? Object.entries(cast).map(([id, c]) => ({ id, ...c }))).map((c) => [c.id, c.voice?.name ?? c.voice]));
 
-for (let n = 1; n <= 15; n++) {
+const [from = 1, to = 20] = process.argv.slice(2).map(Number);
+for (let n = from; n <= to; n++) {
   const e = String(n).padStart(3, "0");
   const out = [];
   const vf = `${R}/docs/videos/zhong-tian-qu-qi-e${e}/video.json`;
