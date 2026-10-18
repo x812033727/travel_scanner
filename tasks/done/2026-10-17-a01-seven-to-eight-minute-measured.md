@@ -1,13 +1,13 @@
 ---
 id: 2026-10-17-a01-seven-to-eight-minute-measured
 title: A01 seven to eight minute measured QA
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-gpt6-a01-duration
 claimed_at: 2026-10-17T23:15:16Z
 created_at: 2026-10-17T23:14:12Z
-completed_at:
+completed_at: 2026-10-18T15:11:20Z
 branch: codex/a01-seven-eight-minute-qa-20261018
 depends_on: []
 scope:
