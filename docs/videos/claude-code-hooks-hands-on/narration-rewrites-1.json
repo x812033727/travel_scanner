@@ -1,0 +1,120 @@
+{
+  "round": 1,
+  "reason": "flagged by the audio check, nearly all heard as a homophone",
+  "rewrites": [
+    {
+      "id": "2xas",
+      "scene": "who-blocked",
+      "before": "這種在固定時間點、由 Claude Code 執行的程式，就叫 hook。",
+      "after": "在固定的時間點、由 Claude Code 替你執行的程式，就叫 hook。"
+    },
+    {
+      "id": "rcge",
+      "scene": "three-points",
+      "before": "開場那支腳本，掛的就是第三個。",
+      "after": "開場的那一支腳本，掛的就是第三個。"
+    },
+    {
+      "id": "96gh",
+      "scene": "choose",
+      "before": "只是要 Claude 知道、盡量照做的慣例，寫 CLAUDE.md。",
+      "after": "如果只是想讓 Claude 知道、盡量照做的慣例，寫 CLAUDE.md。"
+    },
+    {
+      "id": "7myc",
+      "scene": "trust",
+      "before": "所以我只接自己讀得完的腳本，這一支十六行。",
+      "after": "所以我只接上自己讀得完的腳本，這一支十六行。"
+    },
+    {
+      "id": "sed2",
+      "scene": "trust",
+      "before": "而且先餵一次假事件，量過結束碼，才接上設定檔。",
+      "after": "而且先送一次假事件給它，確認過結束碼，才接上設定檔。"
+    },
+    {
+      "id": "uxsc",
+      "scene": "feed-exit",
+      "before": "印出二：測試是紅的，它會擋下來。",
+      "after": "顯示的是二：測試是紅的，它會擋下來。"
+    },
+    {
+      "id": "2bgf",
+      "scene": "powershell",
+      "before": "用 PowerShell 的話是這個寫法，一樣印出二。",
+      "after": "用 PowerShell 的話是這個寫法，結果一樣是二。"
+    },
+    {
+      "id": "3e5b",
+      "scene": "feed-again",
+      "before": "第二種實際餵一次。",
+      "after": "第二種，實際送進去跑一次。"
+    },
+    {
+      "id": "dcac",
+      "scene": "two-runs",
+      "before": "沒接的那次：改完標題就結束，測試還是失敗一個。",
+      "after": "沒有接上 hook 的那一次：改完標題就結束，測試還是失敗一個。"
+    },
+    {
+      "id": "7ehr",
+      "scene": "ran-or-seen",
+      "before": "session 是無介面的，一共八次。",
+      "after": "session 都是不開畫面的那種，一共八次。"
+    },
+    {
+      "id": "ajjd",
+      "scene": "ran-or-seen",
+      "before": "第二次為什麼放行，紀錄分不出來；所以結束後要自己再跑測試。",
+      "after": "第二次為什麼讓它通過，紀錄分不出來；所以結束後要自己再跑測試。"
+    },
+    {
+      "id": "trad",
+      "scene": "gap",
+      "before": "這要在動手之前擋下來，所以第二支腳本掛在 PreToolUse。",
+      "after": "這件事要在動手之前擋下來，所以第二支腳本掛在 PreToolUse。"
+    },
+    {
+      "id": "3r8h",
+      "scene": "guard-feed-block",
+      "before": "餵第一個：要改已經存在的測試檔。",
+      "after": "送進第一個假事件：要改已經存在的測試檔。"
+    },
+    {
+      "id": "5b7c",
+      "scene": "guard-feed-new",
+      "before": "印出零，放行。改原始碼的那一個也是零。",
+      "after": "結果是零，通過。改程式本身的那一個也是零。"
+    },
+    {
+      "id": "dznd",
+      "scene": "guard-result",
+      "before": "Claude 回報被擋下來，沒有換別的工具繞過去。",
+      "after": "Claude 回報說它被擋下來，沒有換別的工具繞過去。"
+    },
+    {
+      "id": "k9px",
+      "scene": "log-fields",
+      "before": "紀錄裡有一欄要小心：剛剛這兩次，擋下來和沒擋下來，它寫的都是 error。",
+      "after": "紀錄裡有一個欄位要小心：剛剛這兩次，擋下來和沒擋下來，它寫的都是 error。"
+    },
+    {
+      "id": "dmw6",
+      "scene": "log-fields",
+      "before": "分得出來的是結束碼那一欄：二，還是一。",
+      "after": "分得出來的是結束碼這個欄位：是二，還是一。"
+    },
+    {
+      "id": "86nk",
+      "scene": "swap",
+      "before": "測試是紅的時候餵假事件，要印二。",
+      "after": "測試是紅的時候送假事件進去，結果要是二。"
+    },
+    {
+      "id": "4rxj",
+      "scene": "swap",
+      "before": "修好之後再餵，要印零。兩個數字都對，才接上設定檔。",
+      "after": "修好之後再送一次，結果要是零。兩個數字都對，才接上設定檔。"
+    }
+  ]
+}

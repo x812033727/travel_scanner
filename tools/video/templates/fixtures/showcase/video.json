@@ -19,6 +19,14 @@
     "variants": [{ "data": { "layout": "b", "headline": "第一名\n**不一定**" } }, { "data": { "layout": "c", "tone": "plum" } }]
   },
   "sources": [{ "title": "範例來源", "url": "https://example.com/models", "checked_on": "2026-09-24" }],
+  "assets": [
+    {
+      "path": "docs/videos/curio-h01/photos/amazon-1861.jpg",
+      "source": "Wikimedia Commons: Mary Celeste as Amazon in 1861 (painting, artist unconfirmed)",
+      "license": "Public domain",
+      "url": "https://commons.wikimedia.org/wiki/File:Mary_Celeste_as_Amazon_in_1861.jpg"
+    }
+  ],
   "scenes": [
     {
       "id": "opening",
@@ -132,6 +140,12 @@
         { "id": "sa16", "text": "打開畫面之後，先看這一區。" },
         { "id": "sa17", "text": "框起來的地方，就是模型實際的回答。", "reveal": 1 }
       ]
+    },
+    {
+      "id": "old-print",
+      "template": "photo",
+      "data": { "image": "docs/videos/curio-h01/photos/amazon-1861.jpg", "caption": "1861 年進馬賽港的畫像，船名還是 Amazon", "credit": "圖：Wikimedia Commons，公有領域" },
+      "lines": [{ "id": "ph01", "text": "真實的照片像一張印出來的相片，貼在畫面中間。" }]
     },
     {
       "id": "ask-once",

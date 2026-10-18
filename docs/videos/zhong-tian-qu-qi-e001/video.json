@@ -1,0 +1,1262 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e001",
+  "format": "drama",
+  "target_minutes": [
+    2,
+    3
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "the same young man in the present day: short black hair, a cheap navy suit and white shirt with a loosened tie, holding a printed resume"
+        }
+      ]
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    },
+    {
+      "id": "mianshiguan",
+      "name": "面試官",
+      "appearance": "East Asian woman in her early thirties, sharp glamorous city beauty with thin-framed glasses, a sleek short bob and red lips, a tailored charcoal suit jacket, seated behind a long table in a glass meeting room, scrolling on her phone",
+      "voice": {
+        "provider": "gemini",
+        "name": "Erinome",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十歲的人資主管，冷淡、不耐煩、頭也不抬"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, a wide white-toothed grin, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a hoe or carrying pole on his shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "zhaobutou",
+      "name": "趙捕頭",
+      "appearance": "East Asian man of forty, wiry and dark-skinned, narrow eyes, a thin two-stroke moustache, a black constable's hat and plain black official uniform with an iron ruler at his belt, always eyeing people sideways",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的捕頭，公事公辦、不耐煩、斜眼看人"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "playful plucked guzheng and pipa over light wood-block percussion, ancient Chinese rustic comedy, a quick tense taiko swell near the end then a sudden hush, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "官差踹門送三個老婆，農學碩士穿成欠債窮秀才｜種田娶妻打天下 第1集",
+    "description": "農學碩士許硯面試被刷，一場雷雨醒來成了柳溪村欠債二十兩的窮秀才，腦中多了一個良緣系統。官差踹門送來配婚令：三個新娘，今日成親。《種田娶妻打天下》第 1 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "古裝喜劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "娶不到就抹殺",
+      "tag": "種田娶妻打天下",
+      "shot": "s41"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "穿越",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Medium shot of the interviewer seated on screen right behind a long white table in a glass meeting room, eyes down on the phone in her left hand, her right hand holding a printed resume out over a metal wastebasket beside her chair, bright overcast daylight through the glass walls",
+        "motion": "She lets go of the resume and it drops into the wastebasket while she keeps scrolling her phone without looking up",
+        "characters": [
+          "mianshiguan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a01",
+          "speaker": "mianshiguan",
+          "text": "種田的？",
+          "emotion": "頭也不抬，冷淡，帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Xu Yan standing on screen left in the glass meeting room, his eyes toward screen right where the interviewer sits, one empty hand still half raised where he held out his resume, a stiff polite smile, daylight from the glass on his face",
+        "motion": "Xu Yan keeps the stiff smile, his half-raised hand frozen in the air",
+        "characters": [
+          "xuyan"
+        ],
+        "character_looks": {
+          "xuyan": "modern"
+        },
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "zt1a02",
+          "speaker": "xuyan",
+          "text": "我是農學碩士……",
+          "emotion": "陪笑，還想爭取"
+        }
+      ]
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Medium shot of the interviewer seated on screen right behind a long white table in a glass meeting room, scrolling her phone, the resume already gone into the wastebasket",
+        "motion": "She keeps scrolling her phone and does not look up",
+        "characters": [
+          "mianshiguan"
+        ],
+        "source": {
+          "shot": "s01",
+          "from_s": 1.9
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a03",
+          "speaker": "mianshiguan",
+          "text": "下一位。",
+          "emotion": "冷淡，不耐煩"
+        }
+      ]
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, low angle, locked",
+        "prompt": "Wide shot from low on a rainy city street at night of Xu Yan walking alone toward camera through the downpour on the shining wet pavement, tie loosened, blurred coloured shop lights behind him, rain streaks in the air",
+        "motion": "Xu Yan stops walking in the rain and looks up as a bolt of lightning flashes the whole street white",
+        "characters": [
+          "xuyan"
+        ],
+        "character_looks": {
+          "xuyan": "modern"
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a04",
+          "speaker": "xuyan",
+          "text": "種田的怎麼了……",
+          "emotion": "淋著雨，自嘲苦笑"
+        }
+      ]
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "camera": "Close-up, low angle, locked",
+        "prompt": "Close-up from low of Xu Yan's face in the pouring rain at night, eyes turned up to the sky, rain running down his cheeks, the street lights blurred behind him",
+        "motion": "A white lightning flash floods Xu Yan's face and he topples backward out of frame",
+        "characters": [
+          "xuyan"
+        ],
+        "character_looks": {
+          "xuyan": "modern"
+        }
+      },
+      "lines": []
+    },
+    {
+      "id": "s06",
+      "chapter": "柳溪河邊",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up underwater in murky green river water at dawn of Xu Yan suspended face-on in the centre of frame, eyes closed, black hair floating loose around his face, the collar of a faded blue-grey robe, pale light falling from the surface above; the system voice Xitong speaks off screen",
+        "motion": "Xu Yan's eyes snap open and a string of air bubbles bursts from his mouth and rises toward the light",
+        "characters": [
+          "xuyan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a05",
+          "speaker": "xitong",
+          "text": "良緣系統，綁定成功。",
+          "emotion": "平板電子女聲，像手機提示"
+        }
+      ]
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the hand at the water surface, locked",
+        "prompt": "Insert at the misty river surface at dawn of a big sun-tanned hand with a rolled coarse brown sleeve plunging into the water toward a faded blue-grey robe collar just under the surface, reeds at frame right; Wang Erniu speaks off screen",
+        "motion": "The big hand grabs the blue-grey collar and hauls it up out of the water in a burst of spray",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "zt1a06",
+          "speaker": "erniu",
+          "text": "起來！",
+          "emotion": "大吼，用力一拽"
+        }
+      ]
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of a willow-lined stream at dawn after rain, mist on the water, a wooden plank bridge on screen left, Wang Erniu thigh-deep in the shallows on screen right dragging Xu Yan in a blue-grey robe toward the muddy bank by one arm, golden fields on the far side",
+        "motion": "Wang Erniu hauls Xu Yan up onto the muddy bank and drops him on his back in the reeds",
+        "characters": [
+          "erniu",
+          "xuyan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a07",
+          "speaker": "erniu",
+          "text": "撈到了！還有氣！",
+          "emotion": "大嗓門，又喘又樂"
+        }
+      ]
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, high angle, push in",
+        "prompt": "Close-up from above of Xu Yan lying on his back in the reeds on the muddy bank at dawn, damp hair stuck to his forehead, eyes wide open and blinking at the sky, Wang Erniu's shadow falling across his chest",
+        "motion": "Xu Yan lies still, eyes wide, staring up",
+        "characters": [
+          "xuyan"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "zt1a08",
+          "speaker": "xuyan",
+          "text": "這……哪裡？",
+          "emotion": "嗆咳，迷糊"
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up from low on the bank of Wang Erniu crouching on screen right, facing left toward Xu Yan off screen left, broad white-toothed grin, his big right hand raised, willows and mist behind him in the morning light",
+        "motion": "Wang Erniu claps his big hand down toward the bottom left of frame and throws his head back laughing",
+        "characters": [
+          "erniu"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a09",
+          "speaker": "erniu",
+          "text": "我二牛啊！",
+          "emotion": "憨笑，拍他"
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up from low on the bank of Wang Erniu crouching on screen right, facing left toward Xu Yan off screen left, laughing, his hand down on Xu Yan's shoulder below frame",
+        "motion": "Wang Erniu shakes Xu Yan's shoulder below frame, still laughing",
+        "characters": [
+          "erniu"
+        ],
+        "source": {
+          "shot": "s10",
+          "from_s": 1.6
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a10",
+          "speaker": "erniu",
+          "text": "許秀才，嚇傻啦？",
+          "emotion": "大嗓門，逗他"
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "data": {
+        "camera": "Extreme close-up, push in",
+        "prompt": "Extreme close-up of Xu Yan's eyes on the riverbank at dawn, damp lashes, his pupils focused on something hovering in the empty air just in front of him, a faint cool blue tint on his irises; the system voice Xitong speaks off screen",
+        "motion": "Xu Yan stares at the empty air in front of him",
+        "characters": [
+          "xuyan"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "zt1a11",
+          "speaker": "xitong",
+          "text": "宿主：許硯，秀才。",
+          "emotion": "平板電子女聲"
+        },
+        {
+          "id": "zt1a12",
+          "speaker": "xitong",
+          "text": "負債：二十兩。",
+          "emotion": "平板，冷冷補一句"
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, drift",
+        "prompt": "Medium close-up of Xu Yan sitting up in the reeds on the muddy bank at dawn on screen left, damp hair, propping himself on one hand, staring at the empty air in front of him with a pained crooked grin",
+        "motion": "Xu Yan sits propped on one hand, grinning in disbelief",
+        "characters": [
+          "xuyan"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "zt1a13",
+          "speaker": "xuyan",
+          "text": "開局就欠債？",
+          "emotion": "苦笑吐槽"
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up from low on the bank of Wang Erniu crouching on screen right, facing left toward Xu Yan off screen left, pointing back at the stream with his thumb, grin fading into worry",
+        "motion": "Wang Erniu jerks his thumb back toward the stream",
+        "characters": [
+          "erniu"
+        ],
+        "source": {
+          "shot": "s10",
+          "from_s": 0.3
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a14",
+          "speaker": "erniu",
+          "text": "你半夜掉河裡，",
+          "emotion": "壓低聲音，納悶"
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot across the misty stream at dawn of the far bank's tall reeds, a man in a plain blue robe and an old straw hat with a red cord on its brim standing half hidden among the reeds on screen left, the brim pulled low over his face, golden fields beyond",
+        "motion": "The man in the straw hat turns his back and walks away into the reeds",
+        "characters": []
+      },
+      "lines": []
+    },
+    {
+      "id": "s16",
+      "chapter": "妹妹",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot inside a poor thatched farmhouse in morning light, the low doorway on screen left with Wang Erniu helping Xu Yan in through it, Xu Xiaohe on screen right at a cracked water vat holding a wooden ladle, torn paper window, straw on the packed earth floor",
+        "motion": "Xiaohe turns from the water vat, sees Xu Yan and drops the ladle",
+        "characters": [
+          "erniu",
+          "xuyan",
+          "xiaohe"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a15",
+          "speaker": "xiaohe",
+          "text": "哥哥！",
+          "emotion": "驚喜，哭腔"
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot in the farmhouse of Xu Yan standing on screen left and Xu Xiaohe on screen right running toward him with her arms out and the straw rabbit in one hand, tears on her cheeks, morning light from the torn window",
+        "motion": "Xiaohe throws her arms around Xu Yan's waist and buries her face in his robe",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a16",
+          "speaker": "xiaohe",
+          "text": "哥哥沒死！",
+          "emotion": "哭著抱緊"
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Xu Yan's face in the farmhouse on screen left, looking down at the child hugging him below frame, stunned, his right hand hovering in the air near her head",
+        "motion": "Xu Yan looks down, his hand hovering",
+        "characters": [
+          "xuyan"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "zt1a17",
+          "speaker": "xuyan",
+          "text": "我……有妹妹？",
+          "emotion": "愣住，小聲"
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot in the farmhouse of Xu Yan standing on screen left and Xu Xiaohe on screen right hugging his waist, face turned up to him, sniffling",
+        "motion": "Xiaohe looks up at Xu Yan, still hugging his waist",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ],
+        "source": {
+          "shot": "s17",
+          "from_s": 1.4
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a18",
+          "speaker": "xiaohe",
+          "text": "錢員外又來討債了。",
+          "emotion": "抽抽噎噎，害怕"
+        }
+      ]
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan sitting on screen left on the edge of a low table in the farmhouse, Xiaohe leaning against his side on screen right holding her straw rabbit, a sagging roof beam above them",
+        "motion": "Xu Yan lifts one hand and rubs his forehead hard, then lets out one disbelieving laugh",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a19",
+          "speaker": "xuyan",
+          "text": "穿越送妹妹，",
+          "emotion": "哭笑不得"
+        },
+        {
+          "id": "zt1a20",
+          "speaker": "xuyan",
+          "text": "還送一筆債？",
+          "emotion": "吐槽"
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan sitting on screen left on the edge of a low table in the farmhouse, Xiaohe leaning against his side on screen right, looking up at him",
+        "motion": "Xiaohe tugs Xu Yan's sleeve and looks up at him",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ],
+        "source": {
+          "shot": "s20",
+          "from_s": 1.9
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a21",
+          "speaker": "xiaohe",
+          "text": "哥，粥還有半碗。",
+          "emotion": "奶聲奶氣，懂事"
+        }
+      ]
+    },
+    {
+      "id": "s22",
+      "chapter": "配婚令",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot inside the farmhouse from the back wall toward the broken wooden door in the centre of frame, Xu Yan and Xiaohe on screen left by the low table turning toward it, the door swinging inward, Zhao Butou in the doorway with one boot still raised from the kick and a rolled red paper in his hand, daylight pouring in",
+        "motion": "Zhao Butou stamps his boot down and strides into the room as the door bangs against the wall",
+        "characters": [
+          "zhaobutou",
+          "xuyan",
+          "xiaohe"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a22",
+          "speaker": "zhaobutou",
+          "text": "許硯在不在！",
+          "emotion": "粗聲，不耐煩"
+        }
+      ]
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up from low of Zhao Butou on screen right just inside the farmhouse doorway, eyeing Xu Yan sideways toward screen left, both hands holding a rolled red paper at chest height, daylight behind him",
+        "motion": "Zhao Butou snaps the red paper open with both hands, its back to the camera, and reads from it",
+        "characters": [
+          "zhaobutou"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a23",
+          "speaker": "zhaobutou",
+          "text": "奉縣太爺令！",
+          "emotion": "拉長嗓子"
+        },
+        {
+          "id": "zt1a24",
+          "speaker": "zhaobutou",
+          "text": "許硯，二十五未婚！",
+          "emotion": "公事公辦，念告示"
+        }
+      ]
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, push in",
+        "prompt": "Close-up of Xu Yan by the low table on screen left, eyes on Zhao Butou off screen right, his mouth falling open; Zhao Butou speaks off screen",
+        "motion": "Xu Yan stares, mouth open",
+        "characters": [
+          "xuyan"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "zt1a25",
+          "speaker": "zhaobutou",
+          "text": "官配三名！",
+          "emotion": "拉高聲音"
+        }
+      ]
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up from low of Zhao Butou on screen right just inside the farmhouse doorway, eyeing Xu Yan sideways toward screen left, the red paper open in both hands, its back to the camera",
+        "motion": "Zhao Butou lowers the red paper and smirks",
+        "characters": [
+          "zhaobutou"
+        ],
+        "source": {
+          "shot": "s23",
+          "from_s": 2
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a26",
+          "speaker": "zhaobutou",
+          "text": "今日成親！",
+          "emotion": "斬釘截鐵"
+        }
+      ]
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot inside the farmhouse from the back wall toward the broken wooden door in the centre of frame, Zhao Butou now inside the room, Xu Yan and Xiaohe on screen left by the low table",
+        "motion": "Xu Yan steps back from Zhao Butou and raises both hands",
+        "characters": [
+          "zhaobutou",
+          "xuyan",
+          "xiaohe"
+        ],
+        "source": {
+          "shot": "s22",
+          "from_s": 2.2
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a27",
+          "speaker": "xuyan",
+          "text": "等等，我不……",
+          "emotion": "慌，想推掉"
+        }
+      ]
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Medium shot of Xu Xiaohe at the open farmhouse doorway on screen right, the straw rabbit under one arm, peeking out into the bright yard",
+        "motion": "Xiaohe points out of the doorway and spins back toward Xu Yan with wide eyes",
+        "characters": [
+          "xiaohe"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a28",
+          "speaker": "xiaohe",
+          "text": "哥，外面三個新娘！",
+          "emotion": "興奮又害怕，壓低聲音"
+        }
+      ]
+    },
+    {
+      "id": "s28",
+      "chapter": "三個新娘",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the small dirt yard of a poor farmhouse in morning light, the house doorway on screen left with Xu Yan stepping out of it, and on screen right by the broken wooden gate two young women standing apart: Qin Shuang with arms folded, and A Ling with head bowed, a thin iron shackle on her left wrist, a thin iron chain hanging from it off frame right, a pink flower sedan beyond the low mud wall",
+        "motion": "Xu Yan steps out of the doorway into the yard and stops dead, staring at the two women",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "aling"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a29",
+          "speaker": "xuyan",
+          "text": "三……三個？",
+          "emotion": "傻眼"
+        }
+      ]
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Qin Shuang by the yard gate on screen right in the morning sun, facing left toward Xu Yan off screen left, arms folded, sleek high ponytail, sharp eyeliner, looking him up and down with her chin raised, golden fields soft behind her",
+        "motion": "Qin Shuang unfolds her arms and flicks her high ponytail back over her shoulder with one hand; Zhao Butou speaks off screen",
+        "characters": [
+          "qinshuang"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a30",
+          "speaker": "zhaobutou",
+          "text": "軍戶孤女，秦霜。",
+          "emotion": "念名冊"
+        }
+      ]
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Qin Shuang by the yard gate on screen right in the morning sun, facing left toward Xu Yan off screen left, one hand on the knife at her belt, a scornful half smile",
+        "motion": "Qin Shuang rests her hand on the old chopping knife at her belt",
+        "characters": [
+          "qinshuang"
+        ],
+        "source": {
+          "shot": "s29",
+          "from_s": 2.3
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a31",
+          "speaker": "qinshuang",
+          "text": "就這身板？",
+          "emotion": "不屑，嗓門大"
+        }
+      ]
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of A Ling by the yard gate on screen right, head bowed, eyes lowered under long lashes, loose strands framing her porcelain face, a thin iron shackle on her left wrist, the wrist held before her waist, a chain running off frame right; Zhao Butou speaks off screen",
+        "motion": "A Ling lowers her shackled wrist and the short chain swings against her sleeve",
+        "characters": [
+          "aling"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a32",
+          "speaker": "zhaobutou",
+          "text": "罪奴，阿令。",
+          "emotion": "輕蔑"
+        }
+      ]
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of A Ling by the yard gate on screen right, head bowed, a thin iron shackle on her left wrist, the wrist lowered, the chain still; Xu Yan speaks off screen",
+        "motion": "A Ling keeps her eyes down as the chain settles",
+        "characters": [
+          "aling"
+        ],
+        "source": {
+          "shot": "s31",
+          "from_s": 1.8
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a33",
+          "speaker": "xuyan",
+          "text": "她犯了什麼罪？",
+          "emotion": "皺眉，低聲"
+        }
+      ]
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot in the dirt yard of Xu Yan on screen left by the doorway and Zhao Butou on screen right stepping in close to him, sneering sideways, the red paper rolled up in his fist, the persimmon tree behind them",
+        "motion": "Zhao Butou jabs the rolled red paper into Xu Yan's chest",
+        "characters": [
+          "xuyan",
+          "zhaobutou"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a34",
+          "speaker": "zhaobutou",
+          "text": "窮酸，還想挑？",
+          "emotion": "斜眼冷笑"
+        }
+      ]
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Xu Yan in the yard on screen left, facing right toward Zhao Butou off screen right, the rolled red paper pressed against his chest, a slow mischievous smile starting",
+        "motion": "Xu Yan takes the red paper off his chest and raises one finger",
+        "characters": [
+          "xuyan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a35",
+          "speaker": "xuyan",
+          "text": "大衡律，",
+          "emotion": "笑了，很穩"
+        },
+        {
+          "id": "zt1a36",
+          "speaker": "xuyan",
+          "text": "配婚第七條——",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, push in",
+        "prompt": "Close-up of Zhao Butou in the yard on screen right, narrow eyes on Xu Yan off screen left, his sneer freezing halfway; Xu Yan speaks off screen",
+        "motion": "Zhao Butou's sneer freezes",
+        "characters": [
+          "zhaobutou"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "zt1a37",
+          "speaker": "xuyan",
+          "text": "三日為期，",
+          "emotion": "背律條，不疾不徐"
+        }
+      ]
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Xu Yan in the yard on screen left, facing right toward Zhao Butou off screen right, one finger raised, holding the red paper, calm smile",
+        "motion": "Xu Yan holds up one finger and taps the red paper",
+        "characters": [
+          "xuyan"
+        ],
+        "source": {
+          "shot": "s34",
+          "from_s": 1
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a38",
+          "speaker": "xuyan",
+          "text": "不得強押成親。",
+          "emotion": "收尾，一字不差"
+        }
+      ]
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot in the dirt yard of Xu Yan on screen left by the doorway and Zhao Butou on screen right close to him, his sneer gone, the red paper in his fist",
+        "motion": "Zhao Butou pulls the red paper back and stares at Xu Yan",
+        "characters": [
+          "xuyan",
+          "zhaobutou"
+        ],
+        "source": {
+          "shot": "s33",
+          "from_s": 2.2
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a39",
+          "speaker": "zhaobutou",
+          "text": "你……",
+          "emotion": "噎住，說不出話"
+        }
+      ]
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Qin Shuang by the yard gate on screen right in the morning sun, facing left toward Xu Yan off screen left, her ponytail swinging, one eyebrow lifting",
+        "motion": "Qin Shuang lifts one eyebrow at Xu Yan",
+        "characters": [
+          "qinshuang"
+        ],
+        "source": {
+          "shot": "s29",
+          "from_s": 1
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a40",
+          "speaker": "qinshuang",
+          "text": "喲，會背書。",
+          "emotion": "挑眉，有點意外"
+        }
+      ]
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the small dirt yard of a poor farmhouse in morning light, Xu Yan standing in the middle of the yard on screen left, Qin Shuang and A Ling by the broken wooden gate on screen right, a thin iron shackle on A Ling's left wrist, a pink flower sedan beyond the low mud wall; Zhao Butou speaks off screen",
+        "motion": "Xu Yan looks from one woman to the other",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "aling"
+        ],
+        "source": {
+          "shot": "s28",
+          "from_s": 2.2
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a41",
+          "speaker": "zhaobutou",
+          "text": "哼，第三個呢？",
+          "emotion": "悻悻，找台階下"
+        }
+      ]
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the dirt yard from beside the doorway toward the low mud wall, Xu Yan on screen left in the foreground seen from behind, Wang Erniu on screen right by the broken gate, and beyond the wall a pink flower sedan with its embroidered curtain shut, golden fields behind",
+        "motion": "Wang Erniu points at the pink sedan and Xu Yan turns to look",
+        "characters": [
+          "xuyan",
+          "erniu"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a42",
+          "speaker": "erniu",
+          "text": "轎裡還有一個！",
+          "emotion": "大嗓門，興奮"
+        }
+      ]
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Medium shot of a pink flower sedan beside the yard's low mud wall in the morning sun, its embroidered curtain flung half open, Tang Xiaotang crouched in the sedan doorway about to jump down, pink silk ribbons and pearl pins in her looped buns, golden fields behind",
+        "motion": "Tang Xiaotang jumps down from the sedan, her pink silk ribbons lifting in the wind, and lands with a dimpled smile",
+        "characters": [
+          "tangxiaotang"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a43",
+          "speaker": "tangxiaotang",
+          "text": "讓一讓！",
+          "emotion": "甜，輕快"
+        }
+      ]
+    },
+    {
+      "id": "s42",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "camera": "Insert of the chest inside the sedan, tilt down",
+        "prompt": "Insert through the open curtain of the pink sedan of the corner of a red lacquered chest half under a silk cushion, its lid open a finger's width, gold glinting from inside, morning light",
+        "motion": "The lid of the red chest sits open a finger's width, gold glinting inside",
+        "characters": [],
+        "visual": "still"
+      },
+      "lines": []
+    },
+    {
+      "id": "s43",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Medium shot of Tang Xiaotang standing beside the pink flower sedan by the yard's low mud wall, ribbons settling, dimpled smile, one hand on the small gold abacus at her waist",
+        "motion": "Tang Xiaotang smooths her sleeves and smiles",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "source": {
+          "shot": "s41",
+          "from_s": 2.3
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a44",
+          "speaker": "tangxiaotang",
+          "text": "叫我小棠！",
+          "emotion": "甜笑，梨渦"
+        }
+      ]
+    },
+    {
+      "id": "s44",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Qin Shuang by the yard gate on screen right in the morning sun, facing left toward Xu Yan off screen left, eyes sliding toward the pink sedan, arms folded again",
+        "motion": "Qin Shuang folds her arms and narrows her eyes at the sedan",
+        "characters": [
+          "qinshuang"
+        ],
+        "source": {
+          "shot": "s29",
+          "from_s": 0.4
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a45",
+          "speaker": "qinshuang",
+          "text": "千金小姐也來湊數？",
+          "emotion": "斜眼，嗤笑"
+        }
+      ]
+    },
+    {
+      "id": "s45",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, push in",
+        "prompt": "Close-up of Xu Yan in the yard on screen left, eyes on Tang Xiaotang off screen right, eyebrows shooting up in disbelief",
+        "motion": "Xu Yan stares, eyebrows up",
+        "characters": [
+          "xuyan"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "zt1a46",
+          "speaker": "xuyan",
+          "text": "穿綢緞來配婚？",
+          "emotion": "傻眼，小聲"
+        }
+      ]
+    },
+    {
+      "id": "s46",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the dirt yard from beside the doorway toward the low mud wall, Wang Erniu by the gate laughing",
+        "motion": "Wang Erniu claps his hands and laughs",
+        "characters": [
+          "xuyan",
+          "erniu"
+        ],
+        "source": {
+          "shot": "s40",
+          "from_s": 2.2
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a47",
+          "speaker": "erniu",
+          "text": "秀才，你發了！",
+          "emotion": "憨笑"
+        }
+      ]
+    },
+    {
+      "id": "s47",
+      "chapter": "抹殺",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan in the yard on screen left, facing the empty air just in front of him, the three young women soft and out of focus in the background on screen right, a faint cold light on his face; the system voice Xitong speaks off screen",
+        "motion": "Xu Yan jerks his head back half a step as if something flashed right before his eyes",
+        "characters": [
+          "xuyan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zt1a48",
+          "speaker": "xitong",
+          "text": "叮。",
+          "emotion": "平板電子提示音般"
+        },
+        {
+          "id": "zt1a49",
+          "speaker": "xitong",
+          "text": "任務：三日內，與三人成婚。",
+          "emotion": "平板電子女聲，一字一頓"
+        }
+      ]
+    },
+    {
+      "id": "s48",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan in the yard on screen left, facing the empty air just in front of him, frozen, eyes wide; the system voice Xitong speaks off screen",
+        "motion": "Xu Yan stands frozen, eyes wide",
+        "characters": [
+          "xuyan"
+        ],
+        "source": {
+          "shot": "s47",
+          "from_s": 2.4
+        }
+      },
+      "lines": [
+        {
+          "id": "zt1a50",
+          "speaker": "xitong",
+          "text": "失敗——抹殺。",
+          "emotion": "平板，更冷"
+        }
+      ]
+    },
+    {
+      "id": "s49",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the shackled wrist, locked",
+        "prompt": "Insert of A Ling's slender left wrist with a thin iron shackle, a short chain running from it off frame right, grey-white sleeve, morning light; Xu Yan speaks off screen",
+        "motion": "The chain snaps taut and the shackled wrist lifts a little",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "zt1a51",
+          "speaker": "xuyan",
+          "text": "抹……殺？",
+          "emotion": "嚇到，聲音發乾"
+        }
+      ]
+    },
+    {
+      "id": "s50",
+      "template": "shot",
+      "action_seconds": 4,
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of A Ling in the yard on screen right, backlit by the low morning sun with a rim of light along her profile, head still bowed, eyes lowered, loose strands lifting in the breeze, a thin iron shackle on her left wrist, Xu Yan off screen left",
+        "motion": "A Ling raises her cold phoenix eyes and looks straight at Xu Yan off screen left without blinking",
+        "characters": [
+          "aling"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}

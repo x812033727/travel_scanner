@@ -24,7 +24,7 @@ import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
 import { confirmedVideo, DECIDED_AT, languageSite, tool, toolContext } from "./language-contract.mjs";
 import { AutomationError, RUN_UNCERTAIN } from "../automation/client.mjs";
-import { acceptedPicturesOf, audioCheck, audioSummary, checklistFrom, clearedSummary, downloadNote, fitPayload, fitSummary, guideSlugs, judgeBody, judgeOutline, KEPT_REMARK_LENGTH, KEPT_REMARK_LINES, keptRemarks, MAX_ANIME_SCRIPT_BYTES, MAX_REVIEW_FILES, MAX_REVIEW_PAYLOAD_BYTES, MAX_REVIEW_SUMMARY_LENGTH, namedPictures, outlineOptions, outlineReview, PART_BYTES, payloadBytes, previewArgs, REVIEW_GATES, REVIEW_PAYLOAD_BUDGET, ReviewError, siteChoice, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
+import { acceptedPicturesOf, audioCheck, audioSummary, checklistFrom, clearedSummary, downloadNote, fitPayload, fitSummary, guideSlugs, judgeBody, judgeOutline, KEPT_REMARK_LENGTH, KEPT_REMARK_LINES, keptRemarks, MAX_ANIME_SCRIPT_BYTES, MAX_REVIEW_FILES, MAX_REVIEW_PAYLOAD_BYTES, MAX_REVIEW_SUMMARY_LENGTH, namedPictures, outlineOptions, outlineReview, PART_BYTES, payloadBytes, previewArgs, REVIEW_GATES, REVIEW_PAYLOAD_BUDGET, ReviewError, siteChoice, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems, WORKER_STATE_FILE } from "./sync.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -239,6 +239,28 @@ test("review-push --gate outline asks Jev first and sends the pick with the brie
   assert.equal(revoked.state.reviews.length, 0);
 });
 
+// Ticket 2026-10-11-hand-driven-film-approved-on-its: a film an agent pushed by hand was approved at
+// every gate on its own reviewer's word. The owner decided (2026-10-17) that such a film is theirs
+// at every gate: review-push marks it, and the site approves none of its reviews on arrival.
+test("review-push marks a video the worker did not make as hand-pushed, and leaves the worker's own pushes unmarked", async () => {
+  const box = sandbox();
+  writeFileSync(path.join(box.dir, "brief.md"), OPTIONS_BRIEF);
+  const server = site({ judge: () => PICK });
+  const hand = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], hand.ctx), EXIT.ok, hand.out.stderr);
+  assert.equal(server.state.reviews[0].payload.hand_pushed, true);
+  assert.deepEqual(server.state.reviews[0].payload.pick, PICK, "Jev's pick still travels, for the owner to read");
+  assert.match(hand.out.stdout, new RegExp(`${box.slug}: not a video the worker made \\(no auto\\.json in its work directory\\): the owner decides at every gate`));
+
+  mkdirSync(box.workdir, { recursive: true });
+  writeFileSync(path.join(box.workdir, WORKER_STATE_FILE), "{}\n");
+  const worker = site({ judge: () => PICK });
+  const own = context(box, worker.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], own.ctx), EXIT.ok, own.out.stderr);
+  assert.equal("hand_pushed" in worker.state.reviews[0].payload, false);
+  assert.doesNotMatch(own.out.stdout, /not a video the worker made/);
+});
+
 test("review-push --gate outline whose Jev answer is lost sends the outline to the owner without a pick and does not ask Jev again for that brief; a new brief is asked", async () => {
   const box = sandbox();
   writeFileSync(path.join(box.dir, "brief.md"), OPTIONS_BRIEF);
@@ -261,7 +283,7 @@ test("review-push --gate outline whose Jev answer is lost sends the outline to t
   const again = push();
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], again.ctx), EXIT.ok, again.out.stderr);
   assert.equal(server.state.judge.length, 1);
-  assert.match(again.out.stdout, /Jev's answer on this outline was lost at 2026-09-25T06:00:00\.000Z \(HTTP 504: .*\) and is not asked again: the outline goes up for the owner without a pick \(delete review\/outline-lost\.json to ask Jev once more\)/);
+  assert.ok(again.out.stdout.split("\n").includes(`${box.slug}: Jev's answer on this outline was lost at 2026-09-25T06:00:00.000Z (HTTP 504: 請求已送到 API，Jev 可能已經判斷) and is not asked again: the outline goes up for the owner without a pick (delete ${path.join("review", "outline-lost.json")} to ask Jev once more)`), again.out.stdout);
   assert.equal("pick" in server.state.reviews[0].payload, false);
 
   // A rewritten brief is a new question: Jev is asked, and the record of the old one goes.
@@ -854,7 +876,7 @@ test("the final review carries the narration's and zh-TW's titles whatever the c
     rmSync(box.base, { recursive: true, force: true });
     return Object.fromEntries(Object.entries(metadata).map(([locale, fields]) => [locale, fields.title]));
   };
-  assert.deepEqual(await titles("en", "fixture-en"), { en: "Which AI model is worth paying for? Three questions", "zh-TW": "zh-TW title" });
+  assert.deepEqual(await titles("en", "fixture-en"), { en: "Which AI model is worth paying for? Three questions｜CC Subtitles", "zh-TW": "zh-TW title｜CC字幕" });
   const zh = await titles("minimal", "fixture-minimal");
   assert.deepEqual(Object.keys(zh), ["zh-TW"], "a zh-TW video sends its own title alone, as before");
 });
@@ -875,7 +897,7 @@ function publishPackage(box) {
     slug: box.slug, title: "AI 模型怎麼挑", description: "本文", tags: ["AI 模型"], chapters: [{ at: "00:00", title: "開場" }, { at: "00:10", title: "三個問題" }, { at: "00:20", title: "結論" }],
     default_language: "zh-TW", localizations: { en: { title: "en title", description: "en body" } },
     final_sha256: sha(final), thumbnail: "thumbnail.jpg", captions: ["captions/en.srt", "captions/zh-TW.srt"],
-    skipped_caption_locales: { ja: "no translation", ko: "no translation", "zh-CN": "no translation" },
+    skipped_caption_locales: { ja: "no translation", ko: "no translation" },
     contains_synthetic_media: false, disclosure_reason: "slides read by a stock TTS voice",
   };
   const bytes = `${JSON.stringify(metadata, null, 2)}\n`;
@@ -1011,7 +1033,7 @@ test("a worker holding the old package cannot submit while the owner's replaceme
 test("language reviews fit the summary limit without losing any locale, files or full skip reasons", async (t) => {
   const emptyReasonSummary = "語言：en 標題說明、CC、配音跳過（）。沒有要你上傳的配音";
   const boundaryReason = "𠮷".repeat(500 - [...emptyReasonSummary].length);
-  const longReasons = Object.fromEntries(["en", "ja", "ko", "zh-CN"].map((locale) => [locale, `${locale}: ${Array.from({ length: 120 }, (_, index) => `line-${index}`).join(", ")} 無法塞入視窗𠮷`]));
+  const longReasons = Object.fromEntries(["en", "ja", "ko"].map((locale) => [locale, `${locale}: ${Array.from({ length: 120 }, (_, index) => `line-${index}`).join(", ")} 無法塞入視窗𠮷`]));
   for (const [label, reasons, detailed] of [["exactly 500 Unicode characters", { en: boundaryReason }, true], ["several long locale reasons", longReasons, false]]) {
     await t.test(label, async () => {
       const chosen = Object.fromEntries(Object.keys(reasons).map((locale) => [locale, { metadata: true, captions: true, dub: true }]));
@@ -1034,8 +1056,8 @@ test("language reviews fit the summary limit without losing any locale, files or
 });
 
 // docs/videos/APPROVED-LANGUAGE-PACKAGE.md: what YouTube sync takes a language batch with.
-const CHOSEN = { en: { metadata: true, captions: true }, ja: { captions: true }, "zh-CN": { metadata: true, dub: true } };
-const DUB_GIVEN_UP = { "zh-CN": "配音字數超出時間軸，改用字幕" };
+const CHOSEN = { en: { metadata: true, captions: true }, ja: { captions: true }, ko: { metadata: true, dub: true } };
+const DUB_GIVEN_UP = { ko: "配音字數超出時間軸，改用字幕" };
 const identity = (row) => ({ review_id: row.id, content_sha256: row.content_sha256 });
 const sameFile = (a, b) => ["role", "sha256", "size", "content_type"].every((key) => a?.[key] === b?.[key]);
 
@@ -1049,7 +1071,7 @@ test("a language batch names the upload confirmation, final cut and choice it be
   t.after(() => rmSync(box.base, { recursive: true, force: true }));
   await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
   const batch = site.newest("languages");
-  assert.deepEqual(batch.files.map((file) => file.role), ["description_en", "captions_en", "captions_ja", "description_zh-CN", "captions_zh-CN", "metadata", "languages_manifest"]);
+  assert.deepEqual(batch.files.map((file) => file.role), ["description_en", "captions_en", "captions_ja", "description_ko", "captions_ko", "metadata", "languages_manifest"]);
   const manifestBytes = readFileSync(path.join(box.workdir, "review", "languages.json"));
   assert.equal(batch.content_sha256, sha(manifestBytes));
   assert.deepEqual(batch.files.at(-1), { role: "languages_manifest", sha256: sha(manifestBytes), size: manifestBytes.length, content_type: "application/json" });
@@ -1062,7 +1084,7 @@ test("a language batch names the upload confirmation, final cut and choice it be
   assert.deepEqual([manifest.schema_version, manifest.slug], [1, box.slug]);
   assert.deepEqual(manifest.source, { publish: identity(site.newest("publish")), final: identity(site.newest("final")), script: null, branding_hash: null, speech_hash: timeline.speech_hash, compilation_hash: null });
   assert.deepEqual(manifest.choice, { locales: siteChoice(CHOSEN), decided_at: DECIDED_AT });
-  assert.deepEqual(manifest.choice.locales, { en: { metadata: true, captions: true, dub: false }, ja: { metadata: false, captions: true, dub: false }, "zh-CN": { metadata: true, captions: true, dub: true } });
+  assert.deepEqual(manifest.choice.locales, { en: { metadata: true, captions: true, dub: false }, ja: { metadata: false, captions: true, dub: false }, ko: { metadata: true, captions: true, dub: true } });
   assert.deepEqual(manifest.locales, batch.payload.locales);
   assert.deepEqual(manifest.files, batch.files.slice(0, -1), "every file but the manifest itself");
   const metadata = JSON.parse(metadataBytes);
@@ -1075,7 +1097,7 @@ test("a language batch names the upload confirmation, final cut and choice it be
 
 test("an English-narrated video's own language is its original: its dub is a skip with the reason, its captions the confirmation's own", async (t) => {
   const chosen = { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true } };
-  const { box, site } = await confirmedVideo({ name: "en", chosen, translated: ["zh-TW", "ja", "ko", "zh-CN"] });
+  const { box, site } = await confirmedVideo({ name: "en", chosen, translated: ["zh-TW", "ja", "ko"] });
   t.after(() => rmSync(box.base, { recursive: true, force: true }));
   await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
   const batch = site.newest("languages");
@@ -1288,7 +1310,7 @@ test("invalid file uploads are isolated, while invalid project reports and reads
 
 test("every pipeline step of every format has a label for the site", () => {
   for (const id of [...SLIDES_STEPS, ...DRAMA_STEPS, ...COMPILATION_STEPS]) assert.ok(STEP_LABELS[id], `no label for "${id}"`);
-  assert.deepEqual(COMPILATION_STEPS.map((id) => STEP_LABELS[id]), ["合集標題與說明", "章節卡與縮圖", "合集串接", "五語標題與說明", "成片核准", "上傳包", "已上 YouTube"]);
+  assert.deepEqual(COMPILATION_STEPS.map((id) => STEP_LABELS[id]), ["合集標題與說明", "章節卡與縮圖", "合集串接", "四語標題與說明", "成片核准", "上傳包", "已上 YouTube"]);
   assert.deepEqual(REVIEW_GATES, ["outline", "script", "look", "audio", "storyboard", "final", "publish", "languages", "dubs"]);
 });
 
@@ -1929,6 +1951,9 @@ test("a storyboard that goes up with nothing kept goes up with every shot kept: 
 
 /** review-push --gate storyboard against a fresh site: the review it received and the files it holds. */
 async function pushStoryboard(box) {
+  // The worker's own push (a hand-pushed one also carries hand_pushed, tested on its own).
+  mkdirSync(box.workdir, { recursive: true });
+  writeFileSync(path.join(box.workdir, WORKER_STATE_FILE), "{}\n");
   const server = site();
   const push = context(box, server.fetchImpl);
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "storyboard"], push.ctx), EXIT.ok, push.out.stderr);
@@ -2137,7 +2162,7 @@ test("the script gate sends the checker's similar works and retention verdict wh
 const COMPILATION_FRAMES = EPISODES.reduce((sum, slug) => sum + EPISODE_FRAMES[slug], 0) + EPISODES.length * 60 + 120;
 
 test("a compilation reports its series, goes up for the final gate with the six-item check and a capped preview, and its package keeps final.mp4 home", async () => {
-  const box = compilationSandbox({ captions: Object.fromEntries(EPISODES.map((slug) => [slug, ["zh-TW", "en", "ja", "ko", "zh-CN"]])) });
+  const box = compilationSandbox({ captions: Object.fromEntries(EPISODES.map((slug) => [slug, ["zh-TW", "en", "ja", "ko"]])) });
   writeTranslations(box, box.doc);
   const compiled = compileContext(box, fakeFfmpeg({ total: COMPILATION_FRAMES }));
   assert.equal(await main(["compile", "--slug", box.slug], compiled.ctx), EXIT.ok, compiled.out.stderr);

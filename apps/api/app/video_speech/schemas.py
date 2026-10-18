@@ -26,7 +26,24 @@ class SpeechSegmentIn(BaseModel):
     break_after_ms: int = Field(default=0, ge=0, le=5000)
 
 
-class SpeechRequest(BaseModel):
+class VideoBudgetAttribution(BaseModel):
+    """Optional project attribution carried by the video tool's paid routes.
+
+    Pilots are identified by exact slug in the budget service. A caller that supplies an
+    attribution must keep its operation UUID with it across transport retries.
+    """
+
+    video_slug: str | None = Field(default=None, pattern=r"^[a-z0-9][a-z0-9-]{1,99}$")
+    operation_id: UUID | None = None
+
+    @model_validator(mode="after")
+    def _complete_attribution(self) -> VideoBudgetAttribution:
+        if (self.video_slug is None) != (self.operation_id is None):
+            raise ValueError("video_slug and operation_id must be supplied together")
+        return self
+
+
+class SpeechRequest(VideoBudgetAttribution):
     model_config = ConfigDict(extra="forbid")
     # An Azure voice name, or "gemini:<voice>" for Gemini.
     voice: str = Field(min_length=3, max_length=90)
@@ -116,10 +133,10 @@ class PairingView(BaseModel):
 
 
 # The languages a track is read in: the narration's zh-TW, and the dubs' (docs/videos/DUBS.md).
-TrackLanguage = Literal["zh-TW", "en", "ja", "ko", "zh-CN"]
+TrackLanguage = Literal["zh-TW", "en", "ja", "ko"]
 
 
-class TranscribeIn(BaseModel):
+class TranscribeIn(VideoBudgetAttribution):
     model_config = ConfigDict(extra="forbid")
     # One narrated line as a base64 WAV; the tool sends 16 kHz mono, a few seconds long.
     audio: str = Field(min_length=64, max_length=2_800_000)
@@ -142,7 +159,7 @@ class JudgeLineIn(BaseModel):
     heard: str = Field(max_length=800)
 
 
-class JudgeIn(BaseModel):
+class JudgeIn(VideoBudgetAttribution):
     model_config = ConfigDict(extra="forbid")
     lines: list[JudgeLineIn] = Field(min_length=1, max_length=40)
     # Goes into Jev's state, so it reads the lines as that language rather than as Mandarin.
@@ -159,7 +176,7 @@ class JudgeOut(BaseModel):
     results: list[JudgeResult]
 
 
-class AlignIn(BaseModel):
+class AlignIn(VideoBudgetAttribution):
     """One phrase to time, either as audio already made or as speech still to be made."""
 
     model_config = ConfigDict(extra="forbid")
@@ -179,6 +196,12 @@ class AlignIn(BaseModel):
             raise ValueError("send exactly one of audio and speech")
         if self.audio is not None and self.text is None:
             raise ValueError("text is required with audio")
+        if self.speech is not None and self.speech.video_slug is not None:
+            if (
+                self.speech.video_slug != self.video_slug
+                or self.speech.operation_id != self.operation_id
+            ):
+                raise ValueError("align attribution must match its speech attribution")
         return self
 
 

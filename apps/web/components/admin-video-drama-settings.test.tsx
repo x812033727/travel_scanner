@@ -18,7 +18,7 @@ const view = {
   topic_scope: ["AI", "Tech"], topic_avoid: ["Stocks"], topic_from_site: true, topic_from_search: true,
   stage_models: { planner: sonnet, writer: sonnet, verifier: opus, listener: opus, translator: sonnet, caption_reviewer: opus },
   voice: { provider: "gemini", name: "Sulafat", style: "Relaxed", model: null, rate: "+0%" },
-  target_minutes_min: 8, target_minutes_max: 12, caption_locales: ["en", "ja", "ko", "zh-CN"],
+  target_minutes_min: 8, target_minutes_max: 12, caption_locales: ["en", "ja", "ko"],
   max_drafts_per_month: 8, monthly_token_budget_millions: 20, max_verify_rounds: 3, max_retake_rounds: 2,
   auto_approve_audio: true, stage_instructions: {}, channel_stance: "", auto_pick_outline: true, auto_approve_final: true,
   drama: {

@@ -1,0 +1,8 @@
+guard(project) Edit package.json -> pass | PLUGIN_ROOT unset
+guard(plugin) Edit package.json -> pass | PLUGIN_ROOT backslash
+guard(plugin) Edit CHANGELOG.md -> pass | PLUGIN_ROOT backslash
+guard(project) Edit CHANGELOG.md -> pass | PLUGIN_ROOT unset
+guard(project) Edit README.md -> pass | PLUGIN_ROOT unset
+guard(plugin) Edit README.md -> pass | PLUGIN_ROOT backslash
+guard(project) Write v0.4.1.md -> pass | PLUGIN_ROOT unset
+guard(plugin) Write v0.4.1.md -> pass | PLUGIN_ROOT backslash

@@ -52,9 +52,11 @@ from app.video_automation.anime_policy import (
 from app.video_automation.judge import (
     PACKAGE_AUTO_APPROVED_NOTE,
     QA_AUTO_APPROVED_NOTE,
+    QA_ITEMS,
     SCRIPT_AUTO_APPROVED_NOTE,
     SHORTS_PACKAGE_AUTO_APPROVED_NOTE,
     SHORTS_QA_AUTO_APPROVED_NOTE,
+    demo_asked_of,
     pick_choice,
     pick_reason,
     video_series_kind,
@@ -77,7 +79,8 @@ from app.video_automation.settings import (
     look_pick_note,
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
-from app.video_reviews.producer_state import worker_state
+from app.video_reviews import dub_retry
+from app.video_reviews.producer_state import worker_view
 from app.video_reviews.schemas import (
     BROWSE_STATES,
     DUB_LOCALES,
@@ -87,7 +90,10 @@ from app.video_reviews.schemas import (
     CategoryIn,
     DecisionIn,
     DropIn,
+    DubLocale,
     DubLocalesIn,
+    DubRetryBlocker,
+    DubRetryOut,
     FacetCount,
     FinalRenewalIn,
     FinalRenewalState,
@@ -103,16 +109,19 @@ from app.video_reviews.schemas import (
     ReviewIn,
     ReviewOut,
     WorkerState,
+    without_retired_locales,
 )
-from app.video_reviews.storage import ReviewStore, valid_slug
+from app.video_reviews.storage import ReviewStore, StorageRefused, valid_slug
 from app.video_shorts import costs as shorts_costs
 from app.video_shorts import slots as shorts_slots
+from app.video_shorts.claim import duration_seconds
 from app.video_shorts.settings import auto_approves_shorts
 from app.video_youtube import connection
 from app.video_youtube.client import YoutubeClient, YoutubeError
 from app.video_youtube.errors import Refused
 from app.video_youtube.requests import as_dict
 from app.video_youtube.state import parse_time, public_state
+from app.video_youtube.state import running as youtube_sync_running
 
 LIVE = ("pending", "approved", "rejected")
 # The list's cap, and how many public Shorts the Shorts tab gets at once: the public ones
@@ -139,6 +148,10 @@ CHOICE_GATES = ("outline", "look")
 CHOICE_PROMPTS = {"outline": "請從 {} 選一個大綱", "look": "請從 {} 選一張角色設定圖"}
 # A languages batch with nothing for the owner to upload is approved as it arrives.
 LANGUAGES_AUTO_APPROVED_NOTE = "這一批沒有要你上傳的配音，依規則自動核准"
+# A narrator-only explainer may use the existing drama dub path. A brand story needs additional
+# proof from its current approved final cut that zh-TW is switchable CC, checked separately below.
+# The dub tool still refuses a script with speaking characters.
+DUBBABLE_DRAMA_CATEGORIES = frozenset({"explainer"})
 EPOCH = datetime.min.replace(tzinfo=UTC)
 ANIME_RUNTIME_KEYS = (
     "body_target_seconds",
@@ -373,8 +386,9 @@ def decision_problem(review: VideoReview, decision: DecisionIn) -> str | None:
 
 def locale_choices(project: VideoProject) -> dict[str, LocaleChoice]:
     """The owner's language choice as stored (docs/videos/LANGUAGES.md), empty for a shape no
-    page wrote."""
-    raw = project.locales if isinstance(project.locales, dict) else {}
+    page wrote. A language the video is no longer made in (zh-CN, chosen before 2026-10-09) is
+    left out, not an error: the other languages keep working."""
+    raw = without_retired_locales(project.locales if isinstance(project.locales, dict) else {})
     try:
         chosen = LocalesIn.model_validate({"locales": raw}).locales
     except ValueError:
@@ -395,8 +409,22 @@ def _part_state(value: Any) -> tuple[str | None, str | None]:
     return None, None
 
 
+def _dub_file_sha(review: VideoReview, locale: str, parts: dict[str, Any]) -> str | None:
+    """The SHA-256 of the dub track a languages batch attaches for this locale, or None: the
+    file under the role the entry names, or under the role review-push gives a dub."""
+    named = parts.get("file_role")
+    role = named if isinstance(named, str) else f"dub_{locale.lower().replace('-', '_')}"
+    for item in review.files or []:
+        if isinstance(item, dict) and item.get("role") == role:
+            sha = item.get("sha256")
+            return sha if isinstance(sha, str) and sha else None
+    return None
+
+
 def language_states(
-    choices: dict[str, LocaleChoice], reviews: Iterable[VideoReview]
+    choices: dict[str, LocaleChoice],
+    reviews: Iterable[VideoReview],
+    retries: dict[str, Any] | None = None,
 ) -> dict[str, dict[str, LanguagePartOut]]:
     """Where each chosen part stands, from the languages reviews (docs/videos/LANGUAGES.md).
 
@@ -405,6 +433,14 @@ def language_states(
     "ready" or "skipped" (with the worker's reason) is that; a dub track "ready" in an approved
     batch is "uploaded", since approving the batch is how the owner says they uploaded it;
     a chosen part no batch has reported is "working". Sent-back batches count for nothing.
+
+    A track the owner already confirmed stays "uploaded" when a later pending batch restates
+    the same file: every batch lists every chosen language again, so after one dub is made
+    again the others would otherwise fall back to "ready" although nothing of theirs is new.
+
+    ``retries`` is the video's ``dub_retries`` (docs/videos/DUBS.md §再做一次). A chosen dub
+    whose request the worker took reads "working" until its batch or the worker's refusal
+    ends the request; a request that is only asked changes nothing here.
     """
     states: dict[str, dict[str, LanguagePartOut]] = {
         locale: {part: LanguagePartOut(state="working") for part in choice.chosen()}
@@ -418,6 +454,7 @@ def language_states(
         ),
         key=lambda review: review.created_at or EPOCH,
     )
+    confirmed: dict[str, set[str]] = {}
     for review in batches:
         reported = review.payload.get("locales") if isinstance(review.payload, dict) else None
         if not isinstance(reported, dict):
@@ -432,12 +469,39 @@ def language_states(
                 state, reason = _part_state(parts[part])
                 if state not in ("ready", "skipped"):
                     continue
-                if state == "ready" and part == "dub" and review.status == "approved":
-                    state = "uploaded"
+                if state == "ready" and part == "dub":
+                    track = _dub_file_sha(review, locale, parts)
+                    if review.status == "approved":
+                        state = "uploaded"
+                        if track is not None:
+                            confirmed.setdefault(locale, set()).add(track)
+                    elif track is not None and track in confirmed.get(locale, ()):
+                        state = "uploaded"
                 states[locale][part] = LanguagePartOut(
                     state=state, reason=(reason or fallback) if state == "skipped" else None
                 )
+    if isinstance(retries, dict):
+        for locale, entry in retries.items():
+            if "dub" in states.get(locale, {}) and dub_retry.reads_working(entry):
+                states[locale]["dub"] = LanguagePartOut(state="working")
     return states
+
+
+def _batch_dubs(payload: dict[str, Any]) -> dict[str, tuple[str | None, str | None]]:
+    """What a languages batch says of each locale's dub: its state and, for a skip, the reason
+    (the entry's own, or the older shape's beside the parts). A locale whose entry does not name
+    the dub is left out."""
+    reported = payload.get("locales") if isinstance(payload, dict) else None
+    if not isinstance(reported, dict):
+        return {}
+    dubs: dict[str, tuple[str | None, str | None]] = {}
+    for locale, parts in reported.items():
+        if not isinstance(parts, dict) or "dub" not in parts:
+            continue
+        fallback = parts.get("reason") if isinstance(parts.get("reason"), str) else None
+        state, reason = _part_state(parts["dub"])
+        dubs[str(locale)] = (state, reason or fallback)
+    return dubs
 
 
 def languages_need_owner(payload: dict[str, Any]) -> bool:
@@ -515,11 +579,49 @@ def _summary(
     download_available: bool = False,
     hold: shorts_slots.Hold | None = None,
     producer: WorkerState | None = None,
+    tidied_at: str | None = None,
+    publish_usable: bool | None = None,
 ) -> dict[str, Any]:
     choices = locale_choices(project)
-    states = languages if languages is not None else language_states(choices, [])
+    stored_retries = project.dub_retries or {}
+    states = (
+        languages if languages is not None else language_states(choices, [], stored_retries)
+    )
     is_short = project.shorts_line is not None
+    # The owner's requests to make a skipped dub again, and why one cannot be asked for now
+    # (docs/videos/DUBS.md §再做一次). A Short has no language panel, so neither. Without the
+    # video's publish reviews (the lists do not load them) "a batch could be used" is read from
+    # what the row knows: an upload confirmation was approved, or the video is on YouTube.
+    retries: dict[str, DubRetryOut] = {}
+    retry_blocked: dict[str, DubRetryBlocker] = {}
+    if not is_short:
+        usable = (
+            publish_usable
+            if publish_usable is not None
+            else (publish_approved_at is not None or project.youtube_video_id is not None)
+        )
+        retries = dub_retry.views(
+            stored_retries,
+            [locale for locale, choice in choices.items() if choice.dub],
+            datetime.now(UTC),
+        )
+        for locale, parts in states.items():
+            dub = parts.get("dub")
+            asked = retries.get(locale)
+            if dub is None or dub.state != "skipped" or (asked is not None and asked.open):
+                continue
+            code = dub_retry.blocker(
+                reason=dub.reason,
+                tidied_at=tidied_at,
+                producer=producer,
+                stage=project.stage,
+                publish_usable=usable,
+            )
+            if code is not None:
+                retry_blocked[locale] = code
     return {
+        "dub_retries": retries,
+        "dub_retry_blocked": retry_blocked,
         "shorts_line": project.shorts_line,
         "shorts_series": project.shorts_series,
         "source_slug": project.source_slug,
@@ -603,6 +705,26 @@ async def _reviews(
     return list(rows)
 
 
+def _apply_dub_retry(
+    session: AsyncSession, project: VideoProject, applied: dub_retry.Applied
+) -> None:
+    """Store what a report or a batch did to the dub retry requests, one audit row per
+    transition. Every change dub_retry makes comes with an event, so no event means nothing to
+    write. The caller holds the project's row lock and commits."""
+    if not applied.events:
+        return
+    project.dub_retries = applied.retries
+    for event in applied.events:
+        session.add(
+            AdminAuditLog(
+                actor_user_id=None,
+                action=event.action,
+                target=f"video_project:{project.id}",
+                metadata_json={"slug": project.slug, **event.details},
+            )
+        )
+
+
 async def upsert_project(
     session: AsyncSession, store: ReviewStore, slug: str, payload: ProjectIn
 ) -> ProjectOut:
@@ -650,6 +772,29 @@ async def upsert_project(
     # A stale or unrelated report cannot consume a newer retry request.
     if payload.retry_acknowledged_id == project.retry_request_id:
         project.retry_acknowledged_id = payload.retry_acknowledged_id
+    # A story cut can change between the worker's readiness read and this report. Never
+    # acknowledge a paid retry take after its exact switchable-CC final becomes ineligible.
+    retry_report = payload.dub_retries
+    if (
+        isinstance(retry_report, dict)
+        and any(
+            isinstance(item, dict) and item.get("status") == "taken"
+            for item in retry_report.values()
+        )
+        and project.format == "drama"
+        and (project.category == "story" or await video_series_kind(session, slug) == "story")
+        and not _story_dub_ready(await _reviews(session, project))
+    ):
+        retry_report = {
+            locale: item for locale, item in retry_report.items()
+            if not (isinstance(item, dict) and item.get("status") == "taken")
+        }
+    # Only the request the worker names by id moves; the answer says what the site accepted.
+    _apply_dub_retry(
+        session,
+        project,
+        dub_retry.apply_worker(project.dub_retries or {}, retry_report, now),
+    )
     project.last_synced_at = now
     project.updated_at = now
     current = _current_final(await _reviews(session, project)) if project.id else None
@@ -689,11 +834,17 @@ def _confirmations() -> Any:
 async def project_view(session: AsyncSession, slug: str, work_dir: str | None = None) -> ProjectOut:
     project = await _project(session, slug)
     reviews = await _reviews(session, project)
+    series_kind = (
+        await video_series_kind(session, slug)
+        if project.format == "drama" and project.shorts_line is None else None
+    )
     pending = sum(1 for review in reviews if review.status == "pending")
     spend = await spend_by_slug(session, [project.slug])
-    languages = language_states(locale_choices(project), reviews)
+    languages = language_states(locale_choices(project), reviews, project.dub_retries or {})
     compiled = work_dir is not None and slug in await compilation_slugs(session)
     held = await shorts_slots.holds(session, [slug]) if project.shorts_line is not None else {}
+    # One bounded read of auto.json gives the registration and the tidy date.
+    seen = worker_view(work_dir, slug) if project.shorts_line is None else None
     return ProjectOut(
         **_summary(
             project,
@@ -704,9 +855,17 @@ async def project_view(session: AsyncSession, slug: str, work_dir: str | None = 
             compilation=compiled,
             download_available=compiled and download_file(work_dir, slug) is not None,
             hold=held.get(slug),
-            producer=worker_state(work_dir, slug) if project.shorts_line is None else None,
+            producer=seen.state if seen is not None else None,
+            tidied_at=seen.tidied_at if seen is not None else None,
+            # The page has every review, so it reads the rule the producer binds a batch by;
+            # the lists keep _summary's approximation.
+            publish_usable=dub_retry.publish_usable(
+                reviews, on_youtube=project.youtube_video_id is not None
+            ),
         ),
         reviews=[_review_out(review) for review in reviews],
+        dub_allowed=_dub_allowed(project, series_kind, reviews),
+        story_dub_preselectable=_story_dub_preselectable(project, series_kind),
     )
 
 
@@ -886,25 +1045,32 @@ async def _summaries(
     held = await shorts_slots.holds(
         session, [project.slug for project, _count, _at in listed if project.shorts_line]
     )
-    return [
-        ProjectSummary(
-            **_summary(
-                project,
-                int(count),
-                spend.get(project.slug),
-                approved_at,
-                language_states(locale_choices(project), batches.get(project.id, [])),
-                compilation=project.slug in compiled,
-                download_available=project.slug in compiled
-                and download_file(work_dir, project.slug) is not None,
-                hold=held.get(project.slug),
-                producer=worker_state(work_dir, project.slug)
-                if project.shorts_line is None
-                else None,
+    summaries: list[ProjectSummary] = []
+    for project, count, approved_at in listed:
+        # One bounded read of auto.json per video gives the registration and the tidy date.
+        seen = worker_view(work_dir, project.slug) if project.shorts_line is None else None
+        summaries.append(
+            ProjectSummary(
+                **_summary(
+                    project,
+                    int(count),
+                    spend.get(project.slug),
+                    approved_at,
+                    language_states(
+                        locale_choices(project),
+                        batches.get(project.id, []),
+                        project.dub_retries or {},
+                    ),
+                    compilation=project.slug in compiled,
+                    download_available=project.slug in compiled
+                    and download_file(work_dir, project.slug) is not None,
+                    hold=held.get(project.slug),
+                    producer=seen.state if seen is not None else None,
+                    tidied_at=seen.tidied_at if seen is not None else None,
+                )
             )
         )
-        for project, count, approved_at in listed
-    ]
+    return summaries
 
 
 def _browse_scope() -> Any:
@@ -1073,6 +1239,94 @@ RENEWAL_GATES = ("final", "publish", "languages", "dubs")
 
 def _current_final(reviews: list[VideoReview]) -> VideoReview | None:
     return next((row for row in reviews if row.gate == "final" and row.subject is None), None)
+
+
+# QA items a brand story's dub does not wait on once the owner approved the cut (owner,
+# 2026-10-18): the owner watched the cut and judged its pacing and Jev's stance score
+# themselves, and neither changes what the dub has to say or when it is said. Every other
+# item, the assemble, narration and zh-TW captions among them, still has to pass.
+STORY_DUB_WAIVED_QA_ITEMS: frozenset[str] = frozenset({"pace", "policy"})
+# A captions item from before the QA tool stopped failing chosen locales that are translated
+# only after the final gate ("en: no caption file; ja: no caption file"). The languages step
+# makes those files, so a report failing on them alone does not lock a story's dub.
+_FOREIGN_CAPTION_MISSING = re.compile(r"(?:en|ja|ko): no caption file")
+
+
+def _story_qa_item_waived(entry: dict[str, Any]) -> bool:
+    name = entry.get("id")
+    if name in STORY_DUB_WAIVED_QA_ITEMS:
+        return True
+    if name != "captions":
+        return False
+    detail = entry.get("detail")
+    parts = detail.split("; ") if isinstance(detail, str) and detail else []
+    return bool(parts) and all(_FOREIGN_CAPTION_MISSING.fullmatch(part) for part in parts)
+
+
+def _story_dub_qa_passed(report: Any, sha: str | None) -> bool:
+    """Whether a story's final QA clears dubbing: bound to this cut, every item reported, and
+    each failing one waived (STORY_DUB_WAIVED_QA_ITEMS, or captions missing only foreign files).
+
+    ``final_qa_passed`` stays the rule for auto-approval and everything else; this one is read
+    only after the owner approved the cut.
+    """
+    if not isinstance(report, dict) or not sha or report.get("final_sha256") != sha:
+        return False
+    items = report.get("items")
+    if not isinstance(items, list):
+        return False
+    entries = [entry for entry in items if isinstance(entry, dict) and entry.get("id") in QA_ITEMS]
+    if {entry.get("id") for entry in entries} != set(QA_ITEMS):
+        return False
+    return all(entry.get("ok") is True or _story_qa_item_waived(entry) for entry in entries)
+
+
+def _story_dub_ready(reviews: list[VideoReview]) -> bool:
+    """Only an approved current cut with switchable zh-TW CC and a clearing QA may be dubbed.
+
+    The QA report is bound to the final mp4 hash and includes the captions check. Older cuts
+    have no subtitle-mode evidence and stay locked. A newer pending, rejected or superseded
+    final also locks the choice, even if an earlier cut was approved. The owner's approval
+    stands in for the items in STORY_DUB_WAIVED_QA_ITEMS (_story_dub_qa_passed).
+    """
+    final = _current_final(reviews)
+    if final is None or final.status != "approved":
+        return False
+    payload = final.payload or {}
+    report = payload.get("qa")
+    if not isinstance(report, dict):
+        report = payload.get("manual_review_qa")
+    return (
+        isinstance(report, dict)
+        and report.get("subtitles_burned_in") is False
+        and _story_dub_qa_passed(report, final.content_sha256)
+    )
+
+
+def _story_dub_preselectable(project: VideoProject, series_kind: str | None) -> bool:
+    """An owner may save dub intent for a story before its first clean final exists."""
+    return (
+        project.shorts_line is None
+        and (project.format or "slides") == "drama"
+        and (series_kind == "story" or project.category == "story")
+    )
+
+
+def _dub_allowed(
+    project: VideoProject, series_kind: str | None, reviews: list[VideoReview]
+) -> bool:
+    """The detail page and both locale endpoints use one eligibility rule.
+
+    The series kind comes from the server's episode row, so recategorising a brand story as
+    an explainer does not unlock an older cut. The category also catches a standalone story.
+    """
+    if project.shorts_line is not None:
+        return False
+    if (project.format or "slides") != "drama":
+        return True
+    if _story_dub_preselectable(project, series_kind):
+        return _story_dub_ready(reviews)
+    return project.category in DUBBABLE_DRAMA_CATEGORIES
 
 
 def _renewable_final(project: VideoProject, reviews: list[VideoReview]) -> VideoReview:
@@ -1248,6 +1502,10 @@ async def renew_final(
         )
     )
     _hold_final_review(project)
+    if project.format == "drama" and (
+        project.category == "story" or await video_series_kind(session, slug) == "story"
+    ):
+        _withdraw_story_dubs_for_new_cut(session, project, now)
     project.updated_at = now
     project.last_synced_at = now
     await session.commit()
@@ -1350,6 +1608,10 @@ async def submit_review(
     manual_anime = await _check_anime_review(
         session, project, payload.gate, payload.payload, payload.content_sha256
     )
+    # A video the worker did not make is pushed by a person or an agent by hand
+    # (tools/video/review/sync.mjs marks it `hand_pushed`): the owner decides at every gate,
+    # whatever the automatic checks say (owner, 2026-10-17; docs/videos/HANDS-OFF.md).
+    owner_decides = manual_anime or payload.payload.get("hand_pushed") is True
     missing = [item.sha256 for item in payload.files if store.path(slug, item.sha256) is None]
     if missing:
         raise AppError(
@@ -1423,6 +1685,29 @@ async def submit_review(
                 ),
                 default=-1,
             )
+    if (
+        payload.gate == "final"
+        and same is None
+        and project.format == "drama"
+        and (project.category == "story" or await video_series_kind(session, slug) == "story")
+        and _story_dub_ready(reviews)
+    ):
+        _withdraw_story_dubs_for_new_cut(session, project, now)
+    if payload.gate == "languages":
+        # A languages batch is the answer to a dub the owner asked for again
+        # (docs/videos/DUBS.md §再做一次), and it closes the request in the transaction that
+        # stores it, the identical-batch return below included: that one commits too, so a
+        # retry that gives up with the same reason still ends. ``counted`` is whether the
+        # states will read the review this resolves to; a batch equal to one that was sent
+        # back or superseded shows no card, so its track is not made as far as the owner sees.
+        counted = same is None or same.status in ("pending", "approved")
+        _apply_dub_retry(
+            session,
+            project,
+            dub_retry.close_on_batch(
+                project.dub_retries or {}, _batch_dubs(payload.payload), now, counted=counted
+            ),
+        )
     if same is not None and same.status != "pending":
         await session.commit()  # release the project lock on an idempotent resend
         return _review_out(same)
@@ -1476,7 +1761,7 @@ async def submit_review(
     video_format = project.format or "slides"
     series_slug = project.series_slug
     if (
-        not manual_anime
+        not owner_decides
         and payload.gate == "audio"
         and await auto_approves_audio(session, payload.payload, video_format)
     ):
@@ -1485,14 +1770,14 @@ async def submit_review(
     # when the series is hands-off (docs/videos/BINGE.md); an illustrated slides video's reads
     # its own switch (docs/videos/ILLUSTRATED.md).
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "storyboard"
         and await auto_approves_storyboard(session, payload.payload, series_slug, video_format)
     ):
         auto_note = AUTO_APPROVED_STORYBOARD_NOTE
     # A character's sheet is picked by the judge's score when the owner turned that on.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "look"
         and await auto_picks_look(session, payload.payload, series_slug)
     ):
@@ -1500,7 +1785,7 @@ async def submit_review(
         review.choice = str(payload.payload.get("suggested"))
     # An episode's screenplay stands on the checker's coverage on a hands-off series.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "script"
         and await auto_approves_script(session, series_slug, payload.payload)
     ):
@@ -1508,17 +1793,17 @@ async def submit_review(
     # The owner decided on 2026-09-27 (docs/videos/HANDS-OFF.md) that Jev chooses the outline
     # and that a final cut and its upload confirmation stand on the automatic checks.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "outline"
-        and await auto_picks_outline(session, payload.payload)
+        and await auto_picks_outline(session, payload.payload, project.category)
     ):
-        auto_note = pick_reason(payload.payload)
+        auto_note = pick_reason(payload.payload, demo_asked_of(project.category))
         review.choice = pick_choice(payload.payload)
     # A Short is held to its own twelve checks and reads its own switch
     # (docs/videos/SHORTS.md §自動品管); a long video's report never approves one, so the
     # rule below is not asked about a Short at all.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate in ("final", "publish")
         and project.shorts_line is not None
     ):
@@ -1531,7 +1816,7 @@ async def submit_review(
                 else SHORTS_PACKAGE_AUTO_APPROVED_NOTE
             )
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate in ("final", "publish")
         and await auto_approves_final(
             session,
@@ -1546,7 +1831,7 @@ async def submit_review(
     # A batch of languages waits for the owner only for a dub track they must upload in Studio;
     # descriptions and captions the site sends itself (docs/videos/LANGUAGES.md).
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "languages"
         and not languages_need_owner(payload.payload)
     ):
@@ -1614,6 +1899,9 @@ async def decide(
     review.decided_at = now
     review.decided_by_user_id = user.id
     review.updated_at = now
+    # A newly submitted replacement already withdrew consent from the previous approved cut.
+    # Clearing again here would erase a fresh preselection made while this final was pending,
+    # including the owner's choice before the very first clean final.
     session.add(
         AdminAuditLog(
             actor_user_id=user.id,
@@ -1762,15 +2050,24 @@ async def _cancel_started_request(
 async def _apply_locales(
     session: AsyncSession, project: VideoProject, user: User, payload: LocalesIn
 ) -> None:
-    """Store the owner's language choice, note when they first decided, and log the change."""
+    """Store the owner's language choice, note when they first decided, and log the change.
+
+    Explainer dubs keep their narrator-only category rule. A brand story may store a dub
+    choice early; the worker still needs the exact approved cut's switchable-CC QA before
+    starting any language production.
+    """
     if (project.format or "slides") == "drama" and any(
         choice.dub for choice in payload.locales.values()
     ):
-        raise AppError(
-            422,
-            "video_locales_dub_not_for_drama",
-            "漫劇的配音是第二期（docs/videos/DUBS.md），這裡先只能選標題說明與 CC",
-        )
+        series_kind = await video_series_kind(session, project.slug)
+        story = _story_dub_preselectable(project, series_kind)
+        if not story and not _dub_allowed(project, series_kind, []):
+            raise AppError(
+                422,
+                "video_locales_dub_not_for_drama",
+                "有角色說話的漫劇還不能配音（docs/videos/DUBS.md），只有分類是觀念解說（explainer）的漫劇可以；"
+                "這裡先只能選標題說明與 CC",
+            )
     chosen: dict[str, Any] = {
         locale: choice.model_dump() for locale, choice in payload.locales.items()
     }
@@ -1790,17 +2087,59 @@ def _record_locales(
 ) -> None:
     """Store a language choice, note when it was first decided, and log it as
     ``video_locales_set``: the owner's, or with no actor and ``marks`` saying so, the server's
-    (``_decide_story_locales``). The caller commits."""
+    (``_decide_story_locales``). The caller commits.
+
+    A dub that leaves the choice takes its waiting retry request with it (dub_retries;
+    docs/videos/DUBS.md §再做一次): nothing was touched for it yet. One the worker already took
+    stays, hidden while the dub is not chosen, and goes on when it is ticked again. The audit
+    row names the locales whose request went.
+    """
     project.locales = chosen
     project.locales_decided_at = project.locales_decided_at or now
     project.updated_at = now
+    kept, withdrawn = dub_retry.withdraw_unchosen(
+        project.dub_retries or {},
+        [
+            locale
+            for locale, choice in chosen.items()
+            if isinstance(choice, dict) and choice.get("dub")
+        ],
+    )
+    if withdrawn:
+        project.dub_retries = kept
     session.add(
         AdminAuditLog(
             actor_user_id=actor.id if actor is not None else None,
             action="video_locales_set",
             target=f"video_project:{project.id}",
-            metadata_json={"slug": project.slug, "locales": chosen, **(marks or {})},
+            metadata_json={
+                "slug": project.slug,
+                "locales": chosen,
+                **(marks or {}),
+                **({"dub_retries_withdrawn": withdrawn} if withdrawn else {}),
+            },
         )
+    )
+
+
+def _withdraw_story_dubs_for_new_cut(
+    session: AsyncSession, project: VideoProject, now: datetime
+) -> None:
+    """A replacement cut must not inherit dub consent from the previously approved cut.
+
+    This is called for an authoritative story episode when a distinct final review arrives,
+    including an owner-initiated renewal. The owner can reselect dubs after the new cut's
+    switchable-caption evidence is approved.
+    """
+    chosen = dict(project.locales or {})
+    if not any(isinstance(part, dict) and part.get("dub") for part in chosen.values()):
+        return
+    without_dubs = {
+        locale: {**part, "dub": False} if isinstance(part, dict) else part
+        for locale, part in chosen.items()
+    }
+    _record_locales(
+        session, project, without_dubs, now, None, {"reason": "story_final_cut_changed"}
     )
 
 
@@ -1871,20 +2210,216 @@ async def retry_project(session: AsyncSession, slug: str, user: User) -> Project
     return await project_view(session, slug)
 
 
+async def _automation_enabled(session: AsyncSession) -> bool:
+    """Whether the worker runs at all: the settings row exists and 「自動產生草稿」 is on.
+    While it is off the worker does nothing, so nothing should queue for it."""
+    row = await session.scalar(
+        select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
+    )
+    return row is not None and bool(row.enabled)
+
+
+def _caption_text(store: ReviewStore, slug: str, sha256: str) -> str | None:
+    """A caption file of the review store as text, at most CAPTION_BYTES_MAX of it, or None
+    when it cannot be read. Runs in a thread."""
+    try:
+        path = store.path(slug, sha256)
+        if path is None:
+            return None
+        with path.open("rb") as source:
+            return source.read(dub_retry.CAPTION_BYTES_MAX).decode("utf-8-sig")
+    except (OSError, UnicodeError, StorageRefused):
+        return None
+
+
+def _dub_retry_blocked(code: DubRetryBlocker, tidied_at: str | None) -> AppError:
+    """The refusal for a skipped dub that cannot be asked for again, by dub_retry.blocker's
+    code. The page shows the same cause in place of the button (``dub_retry_blocked``)."""
+    if code == "narration":
+        return AppError(
+            409,
+            "video_dub_retry_narration",
+            "這個語言就是影片原本的旁白，沒有另一條配音可做",
+        )
+    if code == "tidied":
+        day = f"（{tidied_at[:10]}）" if tidied_at else ""
+        return AppError(
+            409,
+            "video_dub_retry_tidied",
+            f"這支影片的工作檔已經清掉{day}，成片與配音的錄音都不在了，這裡沒辦法再做一次",
+        )
+    if code == "publish_pending":
+        return AppError(
+            409,
+            "video_dub_retry_publish_pending",
+            "網站上最新的上架確認不是核准的（還在等、被退回，或沒有），"
+            "重做的配音進不了語言包；等有核准的上架確認之後再要求",
+        )
+    if code == "not_adopted":
+        return AppError(
+            409,
+            "video_dub_retry_worker_absent",
+            "這支影片不在工人的工作區（不是這台工人做的，或已經放棄），工人接不到這個要求",
+        )
+    if code == "blocked":
+        return AppError(
+            409,
+            "video_dub_retry_video_blocked",
+            "這支影片卡住了，工人不會處理它的語言；先按「重試這支影片」，動起來之後再要求",
+        )
+    return AppError(
+        409,
+        "video_dub_retry_worker_stopped",
+        "工人被 STOP 檔停住了；移掉之後再要求",
+    )
+
+
+async def request_dub_retry(
+    session: AsyncSession,
+    store: ReviewStore,
+    slug: str,
+    user: User,
+    locale: DubLocale,
+    *,
+    work_dir: str | None,
+    speech: dub_retry.SpeechRoom,
+) -> ProjectOut:
+    """The owner asks the worker to make a skipped dub track again (docs/videos/DUBS.md
+    §再做一次).
+
+    It only records the request: the dub keeps reading "skipped" until the worker takes it, so
+    nothing is held for a request nobody takes, and one not taken within a day ends by itself.
+    Refused, with the reason, whenever the worker could not act on it or the result could not
+    be used: a dub that is not skipped, the narration's own language, a video whose work files
+    were cleared, no usable upload confirmation, a video the worker does not hold or that is
+    stuck, a stopped worker, automation switched off. The month's speech budget is checked
+    last, against the size of the locale's captions; it is a read, not a reservation: the dub
+    tool checks again before it buys and every synthesis reserves. A second click while a
+    request is open returns it as it is, with no second audit row and no budget check.
+    """
+    project = await _project(session, slug, lock=True)
+    _refuse_dropped(project)
+    now = datetime.now(UTC)
+    # A value no writer stores (not an object) reads as no request, as everywhere else.
+    stored = project.dub_retries
+    retries: dict[str, Any] = stored if isinstance(stored, dict) else {}
+    previous = dub_retry.view(retries.get(locale), now)
+    if previous is not None and previous.open:
+        return await project_view(session, slug, work_dir)
+    reviews = await _reviews(session, project)
+    if project.format == "drama" and (
+        project.category == "story" or await video_series_kind(session, slug) == "story"
+    ) and not _story_dub_ready(reviews):
+        raise AppError(
+            409,
+            "video_dub_retry_story_final_not_ready",
+            "目前成片尚未通過無燒錄字幕與可關閉繁中 CC 的完整審核，配音重做要等通過後才開始",
+        )
+    part = (
+        language_states(locale_choices(project), reviews, retries).get(locale, {}).get("dub")
+    )
+    if project.shorts_line is not None or part is None or part.state != "skipped":
+        raise AppError(409, "video_dub_retry_not_skipped", "只有跳過的配音可以再做一次")
+    seen = worker_view(work_dir, slug)
+    code = dub_retry.blocker(
+        reason=part.reason,
+        tidied_at=seen.tidied_at,
+        producer=seen.state,
+        stage=project.stage,
+        publish_usable=dub_retry.publish_usable(
+            reviews, on_youtube=project.youtube_video_id is not None
+        ),
+    )
+    if code is not None:
+        raise _dub_retry_blocked(code, seen.tidied_at)
+    if not await _automation_enabled(session):
+        raise AppError(
+            409,
+            "video_automation_disabled",
+            "影片自動化還沒開啟：先在影片審核的設定分頁打開「自動產生草稿」",
+        )
+    if not speech.configured:
+        raise AppError(
+            503,
+            "video_speech_not_configured",
+            "網站的 Gemini 金鑰還沒設定：請在「AI 設定 → API 金鑰」填 Gemini 金鑰",
+        )
+    captions = dub_retry.caption_sha(reviews, locale)
+    text = (
+        await asyncio.to_thread(_caption_text, store, slug, captions)
+        if captions is not None
+        else None
+    )
+    needed = dub_retry.estimate_characters(text)
+    if speech.limit > 0:
+        if not speech.available or speech.used is None:
+            raise AppError(
+                503,
+                "video_speech_meter_unavailable",
+                "讀不到本月的語音用量，先不接受這個要求；稍後再試",
+            )
+        if speech.used + needed > speech.limit:
+            remaining = max(0, speech.limit - speech.used)
+            raise AppError(
+                429,
+                "video_speech_budget_exhausted",
+                f"本月的 Gemini 語音字數預算（{speech.limit} 字）只剩 {remaining} 字，"
+                f"不夠再做一條配音（約 {needed} 字）；"
+                "可調高 VIDEO_SPEECH_GEMINI_MONTHLY_CHARACTER_LIMIT，或等下個月",
+            )
+    entry = dub_retry.new_request(
+        user_id=user.id, reason=part.reason, characters=needed, now=now
+    )
+    project.dub_retries = {**retries, locale: entry}
+    project.updated_at = now
+    # The worker's list is the newest LIST_LIMIT videos by this column: a request on an older
+    # video must reach it, as a renewed final cut does.
+    project.last_synced_at = now
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_dub_retry_requested",
+            target=f"video_project:{project.id}",
+            metadata_json={
+                "slug": slug,
+                "locale": locale,
+                "request_id": entry["id"],
+                "replaced_reason": part.reason,
+                "estimated_characters": needed,
+                "speech_used": speech.used,
+                "speech_limit": speech.limit,
+                # The effective status, so a request that expired is on record as that.
+                "previous": (
+                    {"id": str(previous.id), "status": previous.status}
+                    if previous is not None
+                    else None
+                ),
+            },
+        )
+    )
+    await session.commit()
+    return await project_view(session, slug, work_dir)
+
+
 async def set_locales(
     session: AsyncSession, slug: str, user: User, payload: LocalesIn
 ) -> ProjectOut:
     """The owner decides a video's languages on the language panel (docs/videos/LANGUAGES.md).
 
-    Every video is made in Traditional Chinese; here the owner says which of en, ja, ko and
-    zh-CN to add and what of each. An empty choice is a decision too ("only Traditional
+    Every video is made in Traditional Chinese; here the owner says which of en, ja and ko to
+    add and what of each. An empty choice is a decision too ("only Traditional
     Chinese"), and the first save of either kind is what lets the video go up. The worker makes
-    only what was chosen, once the final cut is approved; a drama takes no dub yet. The choice is
-    the owner's: the pipeline's reports never carry one, and a dropped video takes none. Only a
+    only what was chosen, once the final cut is approved; a narrator-only explainer may use a
+    drama dub. A brand story may save dub intent earlier, but production waits for its current
+    approved cut's QA to prove switchable zh-TW captions. The choice is the owner's: the
+    pipeline's reports never carry one, and a dropped video takes none. Only a
     brand story, which runs without the owner, has the server decide from the settings when its
     video first reports (``_decide_story_locales``); the owner may change that here too.
+
+    The row is locked: a save may drop a waiting dub retry request (``_record_locales``), a
+    column the worker's report and its batches write too.
     """
-    project = await _project(session, slug)
+    project = await _project(session, slug, lock=True)
     _refuse_dropped(project)
     await _apply_locales(session, project, user, payload)
     return await project_view(session, slug)
@@ -1894,8 +2429,9 @@ async def set_dub_locales(
     session: AsyncSession, slug: str, user: User, payload: DubLocalesIn
 ) -> ProjectOut:
     """The dub checkboxes of a page from before the language panel: a ticked language gets all
-    three parts, an unticked one loses its dub and keeps the rest (docs/videos/DUBS.md)."""
-    project = await _project(session, slug)
+    three parts, an unticked one loses its dub and keeps the rest (docs/videos/DUBS.md). Locked
+    for the same reason as ``set_locales``."""
+    project = await _project(session, slug, lock=True)
     _refuse_dropped(project)
     current = locale_choices(project)
     merged: dict[str, LocaleChoice] = {}
@@ -2028,12 +2564,64 @@ async def youtube_publication(session: AsyncSession, video_id: str) -> YoutubePu
     return publication_of(video, channel_id)
 
 
+async def _verify_private_youtube_video(session: AsyncSession, video_id: str) -> None:
+    """Fail closed when Studio cannot prove this is an unscheduled private video on our channel."""
+    try:
+        async with _linked_youtube(session) as (channel_id, client):
+            videos = await client.videos(
+                [video_id], parts="snippet,status,contentDetails,processingDetails"
+            )
+    except Refused as error:
+        raise AppError(error.status, error.code, error.detail) from error
+    except (YoutubeError, httpx.HTTPError) as error:
+        raise AppError(
+            502, "video_youtube_private_verify_failed", "無法向 YouTube 驗證私人影片，沒有記錄連結"
+        ) from error
+    video = next((item for item in videos if item.get("id") == video_id), None)
+    if video is None:
+        raise AppError(
+            409, "video_youtube_private_not_found", "連結頻道找不到這支影片，沒有記錄連結"
+        )
+    snippet = as_dict(video.get("snippet"))
+    status = as_dict(video.get("status"))
+    if not channel_id or snippet.get("channelId") != channel_id:
+        raise AppError(409, "video_youtube_private_channel", "影片不屬於連結的頻道，沒有記錄連結")
+    if status.get("privacyStatus") != "private" or status.get("publishAt"):
+        raise AppError(409, "video_youtube_not_private", "影片不是未排程的私人影片，沒有記錄連結")
+    processing = as_dict(video.get("processingDetails"))
+    details = as_dict(video.get("contentDetails"))
+    duration = duration_seconds(details.get("duration"))
+    if processing.get("processingStatus") != "succeeded" or duration is None or duration <= 0:
+        raise AppError(
+            409,
+            "video_youtube_private_unprocessed",
+            "影片尚未處理完成或沒有可播放長度，沒有記錄連結",
+        )
+
+
+async def _lock_private_youtube_id(session: AsyncSession, video_id: str) -> None:
+    """Serialize opt-in claims of one ID until commit, including while YouTube is queried."""
+    try:
+        dialect = session.get_bind().dialect.name
+    except (AttributeError, RuntimeError):
+        dialect = ""
+    if dialect == "postgresql":
+        lock_key = int.from_bytes(
+            hashlib.sha256(f"private-youtube-link:{video_id}".encode()).digest()[:8],
+            "big",
+            signed=True,
+        )
+        await session.execute(select(func.pg_advisory_xact_lock(lock_key)))
+
+
 async def link_youtube(
     session: AsyncSession,
     slug: str,
     user: User,
     video_id: str,
     publish_at: datetime | None,
+    *,
+    private_only: bool = False,
 ) -> ProjectOut:
     """The owner uploaded the final cut in Studio: record the video's id and when it goes public.
 
@@ -2041,16 +2629,59 @@ async def link_youtube(
     the linked channel reports (``youtube_publication``): the time a public video was
     published, or the time a private one is scheduled for; a video that is neither keeps no
     publish time, and the audit row and the page say why. Pasting again overwrites (a wrong link
-    is corrected the same way); the worker reads the id back on its next round and writes it
-    into the work directory's video.json.
+    is corrected the same way). The opt-in private-only entry is stricter: it is available only
+    for a pending imported final, refuses an existing or duplicated ID, and verifies privacy
+    and channel ownership before recording anything. The worker reads the id back on its next
+    round and writes it into the work directory's video.json.
     """
     if publish_at is not None and publish_at.tzinfo is None:
         raise AppError(422, "video_youtube_publish_at_naive", "上架時間要帶時區")
-    project = await _project(session, slug)
+    if private_only and publish_at is not None:
+        raise AppError(422, "video_youtube_private_publish_at", "私人連結不能附上公開時間")
+    if private_only:
+        await _lock_private_youtube_id(session, video_id)
+    project = await _project(session, slug, lock=private_only)
     _refuse_dropped(project)
+    if private_only:
+        if project.youtube_video_id is not None:
+            raise AppError(
+                409, "video_youtube_already_linked", "這支影片已有 YouTube 連結，沒有覆寫"
+            )
+        if youtube_sync_running(project.youtube_sync):
+            raise AppError(
+                409, "video_youtube_private_sync_running", "YouTube 同步進行中，沒有記錄連結"
+            )
+        reviews = await _reviews(session, project)
+        if any(review.gate == "publish" and review.status == "approved" for review in reviews):
+            raise AppError(
+                409,
+                "video_youtube_private_package_exists",
+                "已有核准的上架包，不能提早記錄私人連結",
+            )
+        final = _current_final(reviews)
+        if (
+            project.format == "shorts"
+            or project.shorts_line is not None
+            or final is None
+            or final.status != "pending"
+            or not isinstance((final.payload or {}).get("imported"), dict)
+            or re.fullmatch(r"[0-9a-f]{64}", final.content_sha256 or "") is None
+            or not any(item.get("role") == "preview" for item in final.files or [])
+        ):
+            raise AppError(
+                409, "video_youtube_private_review_required", "只可為待審的匯入成片記錄私人連結"
+            )
+        other_slug = await session.scalar(
+            select(VideoProject.slug).where(
+                VideoProject.youtube_video_id == video_id, VideoProject.id != project.id
+            )
+        )
+        if other_slug is not None:
+            raise AppError(409, "video_youtube_id_in_use", "這個 YouTube ID 已連結其他影片")
+        await _verify_private_youtube_video(session, video_id)
     source: str | None = "owner" if publish_at is not None else None
     reason: str | None = None
-    if publish_at is None:
+    if publish_at is None and not private_only:
         reported = await youtube_publication(session, video_id)
         publish_at, reason = reported.publish_at, reported.reason
         source = "youtube" if publish_at is not None else None
@@ -2069,6 +2700,7 @@ async def link_youtube(
                 "publish_at": publish_at.isoformat() if publish_at else None,
                 "publish_at_source": source,
                 "publish_at_reason": reason,
+                **({"private_only": True} if private_only else {}),
             },
         )
     )

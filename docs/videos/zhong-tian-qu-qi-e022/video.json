@@ -1,0 +1,862 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e022",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "weishaoqing",
+      "name": "魏少卿",
+      "appearance": "East Asian man of twenty-six, handsome but frivolous, peach-blossom eyes, thin lips always curled in a scornful smile, fair skin, tall and slender, a sapphire-blue brocade robe woven with gold thread, a fine white jade pendant at his waist, a gold-flecked folding fan in his hand, hair in a neat topknot with a small jade crown",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十六歲的宰相之子，男聲、輕佻慵懶、拖著尾音、帶著居高臨下的笑意"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a tense low string drone and a single plucked pipa note under quiet daylight in the inn at the start, a warm bouncy guqin and soft flute through the over-sweet family dinner that slowly thins out, a sudden hush and a low held cello when the empty room is found, a fragile solo erhu as the letter is read and torn, then a racing drum pulse with a lonely dizi through the night run to the misty ferry, swelling and cut off on a sharp held sting at the very end, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "她半夜留下自己寫的休書，他提著燈籠追到渡口｜種田娶妻打天下 第22集",
+    "description": "宰相之子三日後要拿人。唐小棠一個人走進客棧，把一整袋金錠倒在魏少卿桌上：「買我自己。」他笑著推回來：「我要人。」那天晚飯她格外甜，給每個人夾菜，阿令卻放下碗對許硯說：「她今晚會走。」她的房間空了，金算盤壓著一封她自己寫的休書。許硯笑出來又紅了眼：「妻子寫休書，律上不算。」當場撕了，提著燈籠追到渡口。《種田娶妻打天下》第 22 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "她自己寫休書",
+      "tag": "種田娶妻打天下",
+      "shot": "s11"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "買我自己",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the gold on the table, slow push in",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: insert of the round red-lacquered table, a girl's hands in flowing peach-pink silk sleeves upending a small embroidered peach-pink cloth bag, gleaming gold ingots tumbling out across the red lacquer toward a closed gold-flecked folding fan lying at the far edge of the table",
+        "motion": "The hands shake the bag empty and a heap of gold ingots tumbles and rolls across the table, one ingot spinning to a stop against the folded fan",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a01",
+          "speaker": "tangxiaotang",
+          "text": "買我自己。",
+          "emotion": "下巴抬起，聲音發緊"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: medium close-up of Tang Xiaotang, on screen right standing at the table over the heap of gold ingots, chin raised, the rims of her eyes red but her gaze steady, looking down at Wei Shaoqing off screen left",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「買我自己。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she presses both palms flat on the lacquered table and leans toward him, her small gold abacus swinging at her waist",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a02",
+          "speaker": "weishaoqing",
+          "text": "我要人。",
+          "emotion": "笑，輕飄飄"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: medium close-up of Wei Shaoqing, on screen left sitting at ease in a carved chair at the table, the closed gold-flecked folding fan in his hand, his peach-blossom eyes amused, looking up at Tang Xiaotang off screen right",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「我要人。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he smiles with thin curled lips and taps the closed fan lazily against his palm",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the fan pushing the gold, locked",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: insert of the red-lacquered table top, Wei Shaoqing's pale hand in a sapphire-blue gold-threaded brocade sleeve, on screen left holding the closed gold-flecked folding fan flat against the heap of gold ingots, a girl's hands in peach-pink sleeves resting on the table edge on screen right",
+        "motion": "Wei Shaoqing's fan slowly pushes the whole heap of gold ingots back across the lacquer until it stops against the girl's hands, which flinch",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a03",
+          "speaker": "weishaoqing",
+          "text": "妳不回魏家，",
+          "emotion": "慢條斯理"
+        },
+        {
+          "id": "zq22a04",
+          "speaker": "weishaoqing",
+          "text": "許家別想安寧。",
+          "emotion": "笑裡帶刀"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: close-up of Wei Shaoqing's face, on screen left, daylight from the lattice window on one cheek, the gold-flecked fan opened halfway below his chin, his peach-blossom eyes smiling coldly at Tang Xiaotang off screen right",
+        "motion": "Wei Shaoqing speaks 2 short Mandarin lines, 「妳不回魏家，」 then 「許家別想安寧。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he snaps the fan shut and his smile vanishes for an instant before it returns",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a05",
+          "speaker": "tangxiaotang",
+          "text": "我知道了。",
+          "emotion": "很輕，下定決心"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: close-up of Tang Xiaotang's face, on screen right, daylight on her rosy cheek, her eyes lowered to the empty peach-pink cloth bag in her hand, Wei Shaoqing soft and out of focus on screen left",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「我知道了。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then her fingers slowly close around the empty cloth bag, she lifts her chin and turns away toward the door without looking back",
+        "characters": [
+          "tangxiaotang",
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a06",
+          "speaker": "weishaoqing",
+          "text": "三日，",
+          "emotion": "搖著扇子"
+        },
+        {
+          "id": "zq22a07",
+          "speaker": "weishaoqing",
+          "text": "我等妳。",
+          "emotion": "拖長音，笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: medium shot of Wei Shaoqing, on screen left leaning back in the carved chair, the heap of gold ingots still on the table before him, the guest room door on screen right swinging shut behind a flash of peach-pink silk",
+        "motion": "Wei Shaoqing speaks 2 short Mandarin lines, 「三日，」 then 「我等妳。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he flicks the gold-flecked fan open and fans himself slowly, smiling at the closing door",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "chapter": "夾菜",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Inside the farmhouse at night, mud-brick walls and a sagging roof beam, a low square wooden table set with bowls of rice, a steaming clay pot, dishes of greens and braised pork, two red candles and an oil lamp giving warm flickering light: wide shot of the low table, Qin Shuang, on screen left and A Ling in the middle sitting at the table, Tang Xiaotang, on screen right arriving with a big steaming dish of braised pork held in both hands, a bright dimpled smile on her face",
+        "motion": "Tang Xiaotang sets the dish down in the middle of the table with a flourish and picks up her chopsticks, while Qin Shuang and A Ling exchange a puzzled glance",
+        "characters": [
+          "qinshuang",
+          "aling",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a08",
+          "speaker": "tangxiaotang",
+          "text": "小禾，多吃點。",
+          "emotion": "甜甜地"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the farmhouse at night, mud-brick walls and a sagging roof beam, a low square wooden table set with bowls of rice, a steaming clay pot, dishes of greens and braised pork, two red candles and an oil lamp giving warm flickering light: medium shot of Tang Xiaotang, on screen right leaning over the table with chopsticks, little Xu Xiaohe, on screen left kneeling on a stool with her bowl and her small woven straw rabbit beside it",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「小禾，多吃點。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she drops a big piece of braised pork into Xiaohe's bowl and gently pinches Xiaohe's round cheek",
+        "characters": [
+          "tangxiaotang",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a09",
+          "speaker": "xiaohe",
+          "text": "棠姐姐，",
+          "emotion": "嘴裡塞滿肉"
+        },
+        {
+          "id": "zq22a10",
+          "speaker": "xiaohe",
+          "text": "今天過年嗎？",
+          "emotion": "眼睛發亮"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the farmhouse at night, mud-brick walls and a sagging roof beam, a low square wooden table set with bowls of rice, a steaming clay pot, dishes of greens and braised pork, two red candles and an oil lamp giving warm flickering light: medium close-up of little Xu Xiaohe, on screen left hugging a bowl heaped with braised pork, cheeks full, candlelight in her big eyes, looking up at Tang Xiaotang off screen right",
+        "motion": "Xu Xiaohe speaks 2 short Mandarin lines, 「棠姐姐，」 then 「今天過年嗎？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she grins with her missing front tooth and hugs the bowl to her chest",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a11",
+          "speaker": "qinshuang",
+          "text": "妳吃錯藥了？",
+          "emotion": "挑眉，懷疑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the farmhouse at night, mud-brick walls and a sagging roof beam, a low square wooden table set with bowls of rice, a steaming clay pot, dishes of greens and braised pork, two red candles and an oil lamp giving warm flickering light: medium close-up of Qin Shuang, on screen left at the table, candlelight on her bold brows, a pair of chopsticks reaching in from screen right to drop a heap of greens into her bowl",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「妳吃錯藥了？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she eyes the greens in her bowl suspiciously and raises one bold brow at Tang Xiaotang off screen right",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a12",
+          "speaker": "tangxiaotang",
+          "text": "相公，",
+          "emotion": "笑得梨渦很深"
+        },
+        {
+          "id": "zq22a13",
+          "speaker": "tangxiaotang",
+          "text": "你最辛苦。",
+          "emotion": "甜，眼角紅了"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the farmhouse at night, mud-brick walls and a sagging roof beam, a low square wooden table set with bowls of rice, a steaming clay pot, dishes of greens and braised pork, two red candles and an oil lamp giving warm flickering light: close-up of Tang Xiaotang's face, on screen right, warm candlelight glowing on her luminous skin, smiling so brightly her dimples are deep, pearl pins glinting in her looped buns, yet the rims of her eyes are red, her chopsticks held out toward screen left",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「相公，」 then 「你最辛苦。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she keeps smiling brightly, but blinks hard and quickly lowers her eyes as the candle flame trembles beside her",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a14",
+          "speaker": "xuyan",
+          "text": "今天……",
+          "emotion": "笑，摸不著頭腦"
+        },
+        {
+          "id": "zq22a15",
+          "speaker": "xuyan",
+          "text": "是什麼日子？",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the farmhouse at night, mud-brick walls and a sagging roof beam, a low square wooden table set with bowls of rice, a steaming clay pot, dishes of greens and braised pork, two red candles and an oil lamp giving warm flickering light: medium close-up of Xu Yan, on screen left at the table, holding up a rice bowl heaped absurdly high with meat and greens, candlelight on his face, glancing at Tang Xiaotang off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「今天……」 then 「是什麼日子？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he laughs and lifts the towering bowl a little to show it, eyebrows raised",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of her hand under the table, locked",
+        "prompt": "Inside the farmhouse at night, mud-brick walls and a sagging roof beam, a low square wooden table set with bowls of rice, a steaming clay pot, dishes of greens and braised pork, two red candles and an oil lamp giving warm flickering light: insert under the edge of the low table in dim candlelight, Tang Xiaotang's small hand in a flowing peach-pink silk sleeve resting on her lap beside the small gold abacus hanging at her waist",
+        "motion": "Tang Xiaotang's hand closes tight around the gold abacus, her knuckles whitening as the beads press into her palm",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a16",
+          "speaker": "aling",
+          "text": "她今晚會走。",
+          "emotion": "很輕，放下碗"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Inside the farmhouse at night, mud-brick walls and a sagging roof beam, a low square wooden table set with bowls of rice, a steaming clay pot, dishes of greens and braised pork, two red candles and an oil lamp giving warm flickering light: medium close-up of A Ling, on screen right at the table, candlelight on her porcelain skin, her bowl untouched in her hands, her cool phoenix eyes fixed on Xu Yan off screen left",
+        "motion": "A Ling speaks a short Mandarin line, 「她今晚會走。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she sets her bowl down without a sound and holds his gaze without blinking",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the farmhouse at night, mud-brick walls and a sagging roof beam, a low square wooden table set with bowls of rice, a steaming clay pot, dishes of greens and braised pork, two red candles and an oil lamp giving warm flickering light: close-up of Xu Yan's face, on screen left, candlelight on one side, chopsticks raised halfway to his mouth, looking toward A Ling off screen right",
+        "motion": "Xu Yan's chopsticks freeze in mid-air, his smile fades and his eyes slide slowly from A Ling to Tang Xiaotang off screen right",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "chapter": "休書",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a17",
+          "speaker": "xuyan",
+          "text": "小棠？",
+          "emotion": "敲門，放輕聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the farmhouse corridor at night, a narrow passage of mud-brick walls and plain wooden plank doors under a low thatched eave, dim cold moonlight through a small window: medium shot of Xu Yan, on screen left holding an oil lamp, standing at a plain closed wooden door on screen right, lamplight on his face",
+        "motion": "Xu Yan speaks a short Mandarin line, 「小棠？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he knocks twice, waits, and the unlatched door creaks open a crack under his knuckles; he frowns",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Inside the farmhouse, in Tang Xiaotang's small side room at night, mud-brick walls, a narrow neatly made bed with a folded peach-pink quilt, a small wooden table under a paper window, the room lit only by an oil lamp: wide shot from the doorway of the empty room, the narrow bed neatly made with the peach-pink quilt folded square, nobody inside, on the small wooden table under the paper window a folded sheet of paper weighed down by a small gold abacus, Xu Yan, on screen left stepping in through the doorway with his oil lamp",
+        "motion": "The door swings wide, lamplight spills across the empty room and Xu Yan walks slowly toward the small table, staring at the gold abacus",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the abacus on the letter, locked",
+        "prompt": "Inside the farmhouse, in Tang Xiaotang's small side room at night, mud-brick walls, a narrow neatly made bed with a folded peach-pink quilt, a small wooden table under a paper window, the room lit only by an oil lamp: insert of the small wooden table top in lamplight, a small gold abacus lying on a folded sheet of plain white paper covered in blurred illegible brush strokes, Xu Yan's hand in a faded blue-grey sleeve reaching in from screen left",
+        "motion": "Xu Yan's hand lifts the gold abacus off the paper, its beads sliding and clicking, and sets it aside",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a18",
+          "speaker": "tangxiaotang",
+          "text": "今立休書，",
+          "emotion": "畫外，一字一字"
+        },
+        {
+          "id": "zq22a19",
+          "speaker": "tangxiaotang",
+          "text": "帳目兩清，",
+          "emotion": "畫外，忍著哭"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the farmhouse, in Tang Xiaotang's small side room at night, mud-brick walls, a narrow neatly made bed with a folded peach-pink quilt, a small wooden table under a paper window, the room lit only by an oil lamp: close-up of Xu Yan's face, on screen left, the opened letter held up before him, oil lamplight from below on his face; Tang Xiaotang speaks off screen",
+        "motion": "Xu Yan's eyes move down the letter line by line, his brows knotting tighter and the lamp trembling in his other hand",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a20",
+          "speaker": "tangxiaotang",
+          "text": "互不相欠。",
+          "emotion": "畫外，聲音一抖"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the letter, slow push in",
+        "prompt": "Inside the farmhouse, in Tang Xiaotang's small side room at night, mud-brick walls, a narrow neatly made bed with a folded peach-pink quilt, a small wooden table under a paper window, the room lit only by an oil lamp: insert of the letter in Xu Yan's hands, plain white paper with blurred illegible brush strokes, no readable writing, a small vermilion seal smudge at the bottom and one round blurred spot where a tear fell and dried; Tang Xiaotang speaks off screen",
+        "motion": "Xu Yan's thumb brushes slowly over the dried tear spot and the paper trembles in his fingers",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a21",
+          "speaker": "qinshuang",
+          "text": "她寫休書？",
+          "emotion": "瞪眼"
+        },
+        {
+          "id": "zq22a22",
+          "speaker": "qinshuang",
+          "text": "休誰啊？",
+          "emotion": "氣到想笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the farmhouse, in Tang Xiaotang's small side room at night, mud-brick walls, a narrow neatly made bed with a folded peach-pink quilt, a small wooden table under a paper window, the room lit only by an oil lamp: medium shot of the doorway, Qin Shuang, on screen right leaning in the doorway with A Ling just behind her shoulder, lamplight on their faces, both staring past the camera toward the lamp-lit table",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「她寫休書？」 then 「休誰啊？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she folds her arms with a disbelieving snort while A Ling lowers her eyes",
+        "characters": [
+          "qinshuang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a23",
+          "speaker": "xuyan",
+          "text": "妻子寫休書，",
+          "emotion": "笑出來，眼眶紅了"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside the farmhouse, in Tang Xiaotang's small side room at night, mud-brick walls, a narrow neatly made bed with a folded peach-pink quilt, a small wooden table under a paper window, the room lit only by an oil lamp: close-up of Xu Yan's face, on screen left, the letter in his hand, lamplight on his face, his eyes red at the rims",
+        "motion": "Xu Yan speaks a short Mandarin line, 「妻子寫休書，」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he laughs once through his nose and shakes his head, his eyes turning wet",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a24",
+          "speaker": "xuyan",
+          "text": "律上不算。",
+          "emotion": "咬牙，笑著"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Inside the farmhouse, in Tang Xiaotang's small side room at night, mud-brick walls, a narrow neatly made bed with a folded peach-pink quilt, a small wooden table under a paper window, the room lit only by an oil lamp: wide shot of the small room, Xu Yan, on screen left by the small table holding the letter up in both hands, lamplight on his face, the gold abacus on the table beside him, Qin Shuang and A Ling soft in the doorway in the right foreground",
+        "motion": "Xu Yan speaks a short Mandarin line, 「律上不算。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he rips the letter cleanly in half, then again, and lets the pieces flutter down beside the gold abacus",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the torn letter, locked",
+        "prompt": "Inside the farmhouse, in Tang Xiaotang's small side room at night, mud-brick walls, a narrow neatly made bed with a folded peach-pink quilt, a small wooden table under a paper window, the room lit only by an oil lamp: insert of the small wooden table top in lamplight, the small gold abacus lying on the table, torn pieces of white paper with blurred illegible brush strokes drifting down around it",
+        "motion": "The last torn pieces of the letter flutter down and settle around the gold abacus, one scrap sliding off the table edge",
+        "characters": []
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a25",
+          "speaker": "xitong",
+          "text": "警告，",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq22a26",
+          "speaker": "xitong",
+          "text": "唐小棠正在遠離。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the farmhouse, in Tang Xiaotang's small side room at night, mud-brick walls, a narrow neatly made bed with a folded peach-pink quilt, a small wooden table under a paper window, the room lit only by an oil lamp: close-up of Xu Yan's face, on screen left, lamplight on one side, staring into the empty air in front of him, a faint cold blue glint in his eyes; the system voice speaks off screen",
+        "motion": "Xu Yan's head jerks up, his eyes widen and his breath catches as he stares into the air",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a27",
+          "speaker": "aling",
+          "text": "渡口，",
+          "emotion": "很輕"
+        },
+        {
+          "id": "zq22a28",
+          "speaker": "aling",
+          "text": "子時有一班船。",
+          "emotion": "很輕，看著他"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the farmhouse, in Tang Xiaotang's small side room at night, mud-brick walls, a narrow neatly made bed with a folded peach-pink quilt, a small wooden table under a paper window, the room lit only by an oil lamp: medium close-up of A Ling, on screen right in the doorway beside Qin Shuang's shoulder, lamplight on her porcelain face, her phoenix eyes on Xu Yan off screen left",
+        "motion": "A Ling speaks 2 short Mandarin lines, 「渡口，」 then 「子時有一班船。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she tilts her head toward the dark yard outside, urging him to go",
+        "characters": [
+          "aling",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a29",
+          "speaker": "qinshuang",
+          "text": "還愣著幹嘛？",
+          "emotion": "推他一把"
+        },
+        {
+          "id": "zq22a30",
+          "speaker": "qinshuang",
+          "text": "追啊！",
+          "emotion": "吼"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the farmhouse, in Tang Xiaotang's small side room at night, mud-brick walls, a narrow neatly made bed with a folded peach-pink quilt, a small wooden table under a paper window, the room lit only by an oil lamp: medium shot of Qin Shuang, on screen right striding in from the doorway, lamplight on her bold brows and fierce almond eyes, Xu Yan, on screen left still standing by the small table with the torn paper",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「還愣著幹嘛？」 then 「追啊！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she gives Xu Yan a hard shove on the shoulder toward the door and jerks her chin at the dark yard",
+        "characters": [
+          "qinshuang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan left",
+        "prompt": "In the dirt yard of the farmhouse at night, a low mud wall, a broken wooden gate, a well with a wooden bucket, a persimmon tree, cold blue moonlight: wide shot of Xu Yan, on screen right snatching a round paper lantern from a hook under the eave, Qin Shuang standing in the farmhouse doorway behind him",
+        "motion": "Xu Yan grabs the lantern and runs across the moonlit yard and out through the broken wooden gate into the night, the lantern swinging, the camera panning after him",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "chapter": "渡口",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Extreme wide shot, slow push in",
+        "prompt": "At the ferry landing on the stream at night, a long weathered wooden jetty on posts reaching into dark still water, thick white mist drifting low over the stream, black willow trees on the bank, a small wooden ferry boat with a low woven bamboo canopy, cold blue moonlight: extreme wide shot of the small ferry boat drifting away from the end of the jetty into the mist, an old boatman in a straw rain cape poling at the bow, a small figure in peach-pink hugging her knees under the bamboo canopy at the stern with her back to the shore, far away on the bank a single glowing paper lantern bobbing toward the jetty",
+        "motion": "The boatman pushes off with his pole and the boat slides slowly into the drifting mist while the distant lantern hurries toward the jetty",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a31",
+          "speaker": "tangxiaotang",
+          "text": "別回頭，",
+          "emotion": "抱膝，對自己小聲說"
+        },
+        {
+          "id": "zq22a32",
+          "speaker": "tangxiaotang",
+          "text": "唐小棠。",
+          "emotion": "咬著唇"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the ferry landing on the stream at night, a long weathered wooden jetty on posts reaching into dark still water, thick white mist drifting low over the stream, black willow trees on the bank, a small wooden ferry boat with a low woven bamboo canopy, cold blue moonlight: medium close-up of Tang Xiaotang, on screen right sitting in the stern of the boat under the bamboo canopy, hugging her knees, cold moonlight on her face, tears on her cheeks, the mist and the faint glow of a lantern far behind her on screen left",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「別回頭，」 then 「唐小棠。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she presses her lips together and buries her chin in her knees, refusing to turn around",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a33",
+          "speaker": "xuyan",
+          "text": "小棠——！",
+          "emotion": "邊跑邊喊"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking alongside",
+        "prompt": "At the ferry landing on the stream at night, a long weathered wooden jetty on posts reaching into dark still water, thick white mist drifting low over the stream, black willow trees on the bank, a small wooden ferry boat with a low woven bamboo canopy, cold blue moonlight: medium shot of Xu Yan, on screen left running along the weathered planks of the jetty, the round paper lantern swinging in his hand, mist streaming past, the boat a dark shape in the fog on screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「小棠——！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he runs harder down the jetty, the lantern light jolting across the planks, the camera tracking alongside",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of his feet at the jetty edge, locked",
+        "prompt": "At the ferry landing on the stream at night, a long weathered wooden jetty on posts reaching into dark still water, thick white mist drifting low over the stream, black willow trees on the bank, a small wooden ferry boat with a low woven bamboo canopy, cold blue moonlight: insert at plank level of the very end of the jetty, worn cloth shoes skidding to a stop at the edge of the last plank, the paper lantern swinging low beside them, black water and drifting mist below",
+        "motion": "The cloth shoes skid to a stop at the edge, a pebble drops into the black water and ripples spread in the lantern light",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq22a34",
+          "speaker": "xuyan",
+          "text": "休書我撕了！",
+          "emotion": "喊，聲音發抖"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the ferry landing on the stream at night, a long weathered wooden jetty on posts reaching into dark still water, thick white mist drifting low over the stream, black willow trees on the bank, a small wooden ferry boat with a low woven bamboo canopy, cold blue moonlight: close-up of Xu Yan, on screen left at the end of the jetty, the paper lantern held high beside his face, his breath fogging in the cold, eyes red, staring into the white mist on screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「休書我撕了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he lifts the lantern higher toward the mist, chest heaving",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the ferry landing on the stream at night, a long weathered wooden jetty on posts reaching into dark still water, thick white mist drifting low over the stream, black willow trees on the bank, a small wooden ferry boat with a low woven bamboo canopy, cold blue moonlight: close-up of Tang Xiaotang's face, on screen right in the stern of the boat under the bamboo canopy, cold moonlight on her wet cheeks, the faint lantern glow far behind her on screen left; Xu Yan's shout still hanging in the air",
+        "motion": "Tang Xiaotang's face crumples, she presses one hand hard over her mouth and squeezes her eyes shut, but she does not turn around",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the ferry landing on the stream at night, a long weathered wooden jetty on posts reaching into dark still water, thick white mist drifting low over the stream, black willow trees on the bank, a small wooden ferry boat with a low woven bamboo canopy, cold blue moonlight: wide shot from the end of the jetty, Xu Yan's back and the raised paper lantern small on screen left at the very edge of the planks, the ferry boat on screen right gliding away into the white mist, the small figure in peach-pink hugging her knees at the stern with her back to him",
+        "motion": "The boat slides deeper into the mist and the small figure in the stern never turns around, while Xu Yan stands frozen at the edge with the lantern held high",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "At the ferry landing on the stream at night, a long weathered wooden jetty on posts reaching into dark still water, thick white mist drifting low over the stream, black willow trees on the bank, a small wooden ferry boat with a low woven bamboo canopy, cold blue moonlight: extreme close-up of Xu Yan's eyes, thick brows drawn down, warm lantern light flickering across them, white mist behind, his eyes red and wet, no smile at all",
+        "motion": "Xu Yan's eyes drop from the vanishing boat to the black water below the jetty edge, then snap back up, his jaw clenching as he takes one sharp breath",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}

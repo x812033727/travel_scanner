@@ -1,104 +1,44 @@
-# 2026-10-08 design and performance locale preparation
+# 2026-10-08 design and performance locales published
 
-Twelve published life articles now have reviewed local content packs for en, ja,
-ko and zh-CN. This is preparation for a future production release. It does not
-record a merge, deployment, database publication or public page acceptance.
+Twelve life articles now publish en, ja, ko and zh-CN. [PR #1378](https://github.com/x812033727/travel_scanner/pull/1378) merged and deployed as `bcba139a05e1ac6c3ce8a4e768086bf0d3b4a86f`. The owner authorized this exact 12-article cohort. The authoring task is `2026-10-07-localize-twelve-design-workflow-and-performance`; the release task is `2026-10-07-release-localized-design-web-life-wave5`.
 
-The authoring task is `2026-10-07-localize-twelve-design-workflow-and-performance`.
-The separate, unclaimed release task is
-`2026-10-07-release-localized-design-web-life-wave5`.
-Content draft PR: [#1378](https://github.com/x812033727/travel_scanner/pull/1378).
+The approved content head `2150d414168a681b3598bf56eb985d74dda2201a` was integrated with main as `f01faf630664e8bf1a6fac55511a3ef8ab8701e4`. All 162 approved changed files remained byte-identical, and all 21 checks passed on that exact integrated head. One normal deployment and the postdeploy checks completed without force or hold bypasses.
 
-| Article | Added locales |
-| --- | --- |
-| lazy-loading-images | en, ja, ko, zh-CN |
-| open-graph-sharing | en, ja, ko, zh-CN |
-| rgb-cmyk-export | en, ja, ko, zh-CN |
-| saas-paas-iaas-responsibility | en, ja, ko, zh-CN |
-| sass-scss-workflow | en, ja, ko, zh-CN |
-| wireframe-prototype-testing | en, ja, ko, zh-CN |
-| ui-ux-learning | en, ja, ko, zh-CN |
-| figma-design-basics | en, ja, ko, zh-CN |
-| lottie-web-animation | en, ja, ko, zh-CN |
-| core-web-vitals-diagnosis | en, ja, ko, zh-CN |
-| pagespeed-performance-review | en, ja, ko, zh-CN |
-| amp-website-decision | en, ja, ko, zh-CN |
+Fresh production source guards passed before writing. The full original snapshot was retained; a repository-backed baseline projection excluded 350 unrelated database-only news rows, with all 12 selected source rows unchanged. The reviewed payloads were rebound to this fresh baseline without new translation or editorial approval. Fresh bundle manifest: `7195c55422170f3eb76ce9856eeb3cad6d7082914a18190e821ba89ab94c80a0`.
 
-All 48 locale documents received independent complete text, native image and
-glyph review, bound to the actual translated documents and artifact hashes.
-The application writer did not approve a target whose translated fields they
-changed. Review raw-pin map SHA256:
-`2c3d09dac1c51faa18698b400c3e35700129ddb467035c414db583701244a9a5`.
+All nine release phases completed: prepare, dry-run, backup, isolated rehearsal, drafts, publish-articles, publish-hubs, unchanged replay and complete. The consistent database backup covered 161 tables, its catalogue was readable, and the restored fixture passed source guards and all table counts. Publication wrote 48 new locales and four approved Traditional Chinese corrections, for 52 selected targets. Unchanged replay preserved publication data and write-phase journal bytes. Final acceptance verified 60 pages, 120 desktop/mobile originals, 180 distinct media files, document hashes, canonical/hreflang, rendered links and sitemap coverage. Only this release's owned hold was cleared.
 
-Four Traditional Chinese sources had five irrelevant AI glossary links replaced
-with plain text retaining the same visible words. The exact pointers and genuine
-independent correction hashes are recorded in
-`docs/article-localization/source-corrections/wave5-web-life-20261008.md`.
-The other eight full source documents, all original dates and 36 original media
-files are unchanged. The official assembler normalized only the order of the
-existing topics to the pinned baseline order; the multiset of topics and all
-other root metadata are unchanged.
+The link index rebuild materialized 3,768 links and dropped none. All five global links-check commands exited 1; they are not recorded as a globally clean result. This cohort had no Traditional Chinese findings and 23 unpublished related-target findings in each added locale, with no other selected problems. Related target articles outside this cohort still await localization.
 
-The original single CLI authoring invocation exited 1: 46 translated results and
-two Korean results rejected for a protected extra digit in an equivalent primary
-source term. Its original output and attempts remain preserved. Independent
-proposals led to six repaired targets, followed by native image refinements and
-new independent reviews. No translation provider retry occurred.
+## Authoring and preserved failures
 
-The unchanged official assembler executed once with exit 0. Its first external
-post-check rejected topic ordering; a subsequent independent check confirmed
-the exact baseline permutation and all other metadata. Read-only finalization
-preserved that failure, the original successful child, all prior logs and bundle
-bytes. The assembler was not invoked again.
+All 48 translations received independent complete-text, native image and glyph reviews bound to exact document and artifact hashes. Four sources had five irrelevant AI glossary links changed to plain text with the same visible words; eight other complete source documents, all original dates and 36 source media files stayed unchanged. Exact source corrections remain in `docs/article-localization/source-corrections/wave5-web-life-20261008.md`.
 
-Bundle manifest SHA256:
-`58fe016c0fe00a1b3256fdf67a0718d2d6451ee9b90cc5feba1324d3eec28c01`.
-The bundle contains 48 new locale documents, four approved source corrections
-and 152 assets. Assembly receipt SHA256:
-`75cc9b1549566408292607915af231fa8255b43a09742ea0b0de7e1e0f500671`.
+The original single CLI authoring run exited 1: 46 translated results and two rejected Korean results. Six targets were repaired from independent proposals, images were refined and fresh independent reviews passed; no provider retry occurred. The unchanged official assembler ran once with exit 0. An external post-check initially rejected topic order; an independent check confirmed the exact pinned-baseline permutation, the topics multiset and every other metadata field. The original failure was preserved and the assembler was not rerun.
 
-The unchanged official local installer and identical-argv replay both exited 0.
-The durable journal contains 164 operations. Complete captures include all 12
-repository packs, all 152 manifest assets, the entire journal and its original
-byte backups, and all 12 article installation receipts. Those captures were
-byte-identical before and after replay. Original source media, source/fields,
-provider attempts, full external jobs and the private staged inputs are unchanged.
-The shared Windows lock file's incidental append bytes are reported separately
-and are not included in the replay identity claim. Installation/replay receipt
-SHA256:
-`feb551e70b55ef01c407dfb24f5a5c040b2e5d8ac345f81fc34f32963674db16`.
-An independent complete read-only audit of the installed packs, exact source
-corrections, original media, reviews, attempts, backups and current replay maps
-also exited 0 with no findings. Evidence SHA256:
-`b21754830aecc2f4bd9b1261210d13c8e62eaf0a95b88f4be9af86daadbb96bc`.
+The official installer and identical-argv replay both exited 0. All 164 journal operations, packs, 152 manifest assets, original backups and 12 installation receipts were byte-identical across replay; the shared Windows lock's incidental append was excluded from that identity claim. Independent installed-data auditing passed. Local checks passed: content-pack tests 9 passed/5 skipped, localization-tool tests 68 passed, zero lint errors, 60 no-summary warnings and 12 text-length warnings retained.
 
-Local validation completed with actual exit 0 for the task-board check, scoped
-12-pack lint, translation checks, content-pack tests and localization-tool tests.
-Content-pack tests recorded 9 passed and 5 skipped; localization-tool tests
-recorded 68 passed. Lint retained 60 source-shaped no-summary warnings and 12
-text-length warnings with zero errors; the approved documents were not shortened.
-Actual local-check receipt SHA256:
-`63189b50c0a1db69d136112e1422f06410a56f9badf2717b52ba1f27646f2b79`.
-The content commit `7416a9ccbc83e5342319d47f0cf2e87bb9b4d160` passed all 21
-actual CI checks. Exact-head receipt SHA256:
-`dd4b1accd5189d63c27c77c0e280244d402da6a800482d4c02385acbb965bf4d`.
-The final task-record commit is separately checked; these results do not claim
-that any later commit automatically inherits the prior checks.
+The GitHub CLI ready attempt failed a TLS handshake; the original wrapper exit 1 and unpersisted child exit were retained. Fresh inspection showed an unchanged draft before one reconciled normal ready/merge operation. After the successful deployment, a local verification formatter guard failed; only read-only verification was resumed, and deployment was not repeated. The independent postpublication audit also retained a failed date-format diagnostic before checking the repository's date-based expiry rule. Full original receipts remain outside Git; their exact hashes are retained in `evidence.json`.
 
-Local validation results and draft PR checks remain separate gates. Before any
-merge, the exact current head must pass CI including release-safety. The release
-task requires an explicit cohort choice, a fresh production snapshot and source
-version checks, deployment preflight without hold bypasses, isolated rehearsal,
-dry-run, a verified database backup and durable publication phases. Final
-acceptance covers all 60 five-language pages on desktop and mobile, document
-hashes, localized assets, links, hreflang and sitemap inclusion.
+## Published source guards
 
-The prior 32-article publication and the separate 13-article draft PR #1374 are
-outside this cohort. The October 8 Taipei snapshot still counted 830 incomplete
-published articles after the first 32; locally prepared but unpublished cohorts
-are not subtracted from that publication count. No global completion is claimed.
+Every added locale's public version, complete document hash and URL, all media byte hashes and raw receipt hashes are in `evidence.json`.
 
-Private snapshots, actor/database identities, original CLI producer identifiers,
-machine paths, native inspection images and complete provider logs remain in
-the owner's persistent evidence storage outside Git. Local installation state
-and staged inputs remain ignored; the repository keeps these sanitized records.
+| Article | zh-TW public version | Normalized public document SHA256 |
+| --- | --- | --- |
+| amp-website-decision | 6 | `7369c58003df56cc169d35efb05523c392cace876dddc1247daa5dfe250bbd40` |
+| core-web-vitals-diagnosis | 4 | `79ea28908b8fc68573f202b0fdb0ade13029263a27073b88c9f672e01f925372` |
+| figma-design-basics | 4 | `00bacd3467a6441febabc6372f10b96ce8a610784af66623d01684a467aee851` |
+| lazy-loading-images | 6 | `2dda1061b6dd39fdfd06fe12b257d82ac92bfea46ded62ac0bddba6bb68bbde4` |
+| lottie-web-animation | 4 | `56418ca1b26624eff12ed8efc540cf922391bba7d62e9b3ace31d959e3c85328` |
+| open-graph-sharing | 6 | `8df97903caaae96f1792f04a3947d4a043991347ad5768051db0a110c5bc936f` |
+| pagespeed-performance-review | 4 | `531a885101bc55e7c004988f19b64e818f219fbc9f2c2d7e1d843218b7666011` |
+| rgb-cmyk-export | 4 | `f061761570269a8db0bf37b55c5eca0e809b4420f259032b72c359f5d8681ee4` |
+| saas-paas-iaas-responsibility | 4 | `09bf76eb30950895f5c383381387442b5616522dee4d380d06cdb1f1ce35aaf2` |
+| sass-scss-workflow | 4 | `37205fd94a9316f066553fb8b475a9577417a4372372d283fb1234edd4ff631f` |
+| ui-ux-learning | 6 | `b01fb3630f90549698f89d9eac791dcc011b91e6b0e38069f0c9d8c1a6469411` |
+| wireframe-prototype-testing | 4 | `74caa606d5c8265ef1d3494e690781b9db11ee3d442fc904c6ebc70c3d976b75` |
+
+The prior 32 articles and their 160 documents remain identical to their original actual publication snapshot. The frozen 13-article PR #1374 cohort remains untouched, with all 52 target locale rows absent. A fresh observed census contains 1,409 public articles in intel/howto/life, of which 818 still lack 3,272 locale documents (818 each for en, ja, ko and zh-CN). The overall missing-language work remains unfinished.
+
+Private snapshots, raw logs, screenshots, machine paths, database/actor identities and producer identifiers remain in the owner's external evidence storage. This repository keeps only this README and sanitized `evidence.json`.

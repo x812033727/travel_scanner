@@ -46,7 +46,7 @@ from app.models import (
 )
 from app.news_automation.models import NewsCandidate, NewsSource
 from app.problems import AppError
-from app.schema import expected_schema_revision
+from app.schema import expected_schema_revision, schema_is_current
 from app.video_shorts.overview import owner_needs_count as shorts_owner_needs_count
 
 NAVIGATION_REGISTRY: tuple[AdminNavigationItem, ...] = (
@@ -257,7 +257,7 @@ async def _system_status(
     current_revision = await session.scalar(text("SELECT version_num FROM alembic_version"))
     expected = expected_schema_revision()
     database = AdminSystemComponent(
-        status="healthy" if current_revision == expected else "degraded",
+        status="healthy" if schema_is_current(current_revision) else "degraded",
         detail=f"schema {current_revision or 'none'} / {expected}",
     )
     try:

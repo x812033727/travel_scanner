@@ -54,6 +54,49 @@ function brand(box, timeline, digit = "a") {
   return applied;
 }
 
+/** Bookends with the intro after the first chapter, as assemble leaves a narrated video's checks. */
+function brandAfterCondensation(box, timeline) {
+  const selection = validateBranding({ schema_version: 1, id: "brand-after", intro_at: "after_first_chapter", intro: { file: "intro.mp4", sha256: "a".repeat(64), frames: 357 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 630 } }, { base: box.workdir });
+  pinBranding(box.workdir, selection);
+  const applied = { hash: selection.hash, id: selection.id, intro_frames: 357, outro_frames: 630, body_frames: timeline.total_frames, intro_at_frame: timeline.chapters[1].start_frame, body_file: "body.mp4", body_sha256: "c".repeat(64) };
+  atomicWrite(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: timeline.speech_hash, branding: applied }));
+  return applied;
+}
+
+test("an intro after the condensation leaves chapter 1's captions at their time and moves the rest, in every language and the dub's", () => {
+  const { box, project, speech, timeline } = translated(["en", "ja"]);
+  const options = { slug: box.slug, root: box.root, workdir: box.workdir };
+  writeLanguages(box.workdir, { locales: { en: { captions: true, dub: true }, ja: { captions: true } } });
+  runCaptions(options);
+  const read = (locale) => parseSrt(readFileSync(path.join(box.workdir, "captions", `${locale}.srt`), "utf8"));
+  const unbranded = { "zh-TW": read("zh-TW"), ja: read("ja") };
+  writeDub(box, project, "en", timeline);
+  const files = dubArtifacts(box.workdir, "en");
+  const bodyDub = readJson(files.timeline);
+  const applied = brandAfterCondensation(box, timeline);
+  const atMs = frameToMs(applied.intro_at_frame);
+  const introMs = frameToMs(357);
+  writeFileSync(files.timeline, JSON.stringify(presentationTimeline(bodyDub, applied)));
+  const manifest = runCaptions(options);
+  assert.equal(manifest.branding_hash, applied.hash);
+  for (const locale of ["zh-TW", "ja"]) {
+    const after = read(locale);
+    assert.equal(after[0].start_ms, unbranded[locale][0].start_ms, `${locale}: the first line is spoken at its own time, not after a bumper`);
+    assert.deepEqual(after, unbranded[locale].map((cue) => (cue.start_ms < atMs ? cue : { ...cue, start_ms: cue.start_ms + introMs, end_ms: cue.end_ms + introMs })), locale);
+    assert.ok(after.every((cue) => cue.end_ms <= atMs || cue.start_ms >= atMs + introMs), `${locale}: no cue plays over the intro`);
+  }
+  assert.equal(manifest.locales.en.timing, "dub");
+  const dubbed = read("en");
+  const firstAfter = bodyDub.lines.find((line) => line.start_frame >= applied.intro_at_frame);
+  assert.equal(dubbed[0].start_ms, Math.round(frameToMs(bodyDub.lines[0].start_frame)), "the dub's first cue keeps its body time");
+  assert.ok(dubbed.some((cue) => cue.start_ms === Math.round(frameToMs(firstAfter.start_frame + 357))), "the dub's chapter 2 cues follow the intro");
+  assert.ok(dubbed.every((cue) => cue.end_ms <= atMs || cue.start_ms >= atMs + introMs), "no dub cue plays over the intro");
+  // YouTube chapters: chapter 1 at 00:00 holds the condensation and the intro; chapter 2 starts after it.
+  const chapters = presentationTimeline(timeline, applied).chapters.map((chapter) => chapter.start_frame);
+  assert.deepEqual(chapters, [0, timeline.chapters[1].start_frame + 357, timeline.chapters[2].start_frame + 357]);
+  assert.equal(dubsForUpload(project, box.workdir, speech, ["en"]).dubs[0].branding_hash, applied.hash);
+});
+
 test("selected bookends shift narration captions once, bind the manifest, and leave the TTS timeline intact", () => {
   const { box, timeline } = translated([]);
   const options = { slug: box.slug, root: box.root, workdir: box.workdir };
@@ -134,9 +177,9 @@ test("the language choice is read as the site writes it: only the ticked languag
   mkdirSync(box.workdir, { recursive: true });
   assert.equal(readLanguages(box.workdir), null, "no file: no choice");
   assert.equal(chosenLocales(null, "captions"), null);
-  assert.deepEqual(captionLocalesOf(null), ["zh-TW", "en", "ja", "ko", "zh-CN"], "without a choice every locale is made, as before");
+  assert.deepEqual(captionLocalesOf(null), ["zh-TW", "en", "ja", "ko"], "without a choice every locale is made, as before");
 
-  writeLanguages(box.workdir, { locales: { ja: { metadata: true, captions: false, dub: true }, en: { metadata: true, captions: false, dub: false }, "zh-CN": { metadata: false, captions: false, dub: false }, "zh-TW": { metadata: true } }, decided_at: "2026-09-27T10:00:00Z", synced_at: "2026-09-27T10:05:00Z" });
+  writeLanguages(box.workdir, { locales: { ja: { metadata: true, captions: false, dub: true }, en: { metadata: true, captions: false, dub: false }, ko: { metadata: false, captions: false, dub: false }, "zh-TW": { metadata: true } }, decided_at: "2026-09-27T10:00:00Z", synced_at: "2026-09-27T10:05:00Z" });
   const written = readJson(path.join(box.workdir, LANGUAGES_FILE));
   assert.equal(written.synced_at, "2026-09-27T10:05:00Z");
   const choice = readLanguages(box.workdir);

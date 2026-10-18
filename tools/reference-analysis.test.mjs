@@ -235,7 +235,7 @@ test("sound is silence clipped to the range; non-silence is any sound", () => {
 
 test("the filter graph is one pass: cuts at the floor with showinfo, motion at the probe's grid, silence only with sound", () => {
   const graph = filterGraph(DEFAULTS, true);
-  assert.match(graph, /\[cuts\]select='gt\(scene,0\.1\)',metadata=print:key=lavfi\.scene_score,showinfo\[cutsout\]/);
+  assert.match(graph, /\[cuts\]select='gt\(scene,0\.1\)',metadata=print:key=lavfi\.scene_score,showinfo,nullsink/);
   assert.match(graph, /\[motion\]fps=4,scale=64:64:flags=area,crop=64:47:0:0,signalstats,metadata=print:file=-\[motionout\]/);
   assert.match(graph, /\[0:a\]silencedetect=noise=-30dB:d=0\.5\[soundout\]/);
   assert.doesNotMatch(filterGraph(DEFAULTS, false), /silencedetect/);
@@ -417,6 +417,33 @@ test("a higher threshold drops a cut from the list but not from the scores, and 
   assert.equal(noSound.record.videos[0].source.audio, false);
   assert.equal(noSound.record.videos[0].ranges[0].sound, null);
   assert.deepEqual(noSound.record.videos[0].ranges[0].cuts, [2, 3.6]);
+});
+
+test("a range with no cut candidates still measures its picture, motion and optional sound", withFfmpeg, async (t) => {
+  const { file, silent } = await clip();
+  for (const [name, source, hasSound] of [["with sound", file, true], ["without sound", silent, false]]) {
+    await t.test(name, () => {
+      // The last two seconds are solid blue: the detector must emit no candidate frames.
+      // An empty cut list is valid data, not an empty encoded output stream that can fail
+      // the entire measurement before the motion and audio results are returned.
+      const result = runScript(["--file", source, "--range", "4-6", "--quiet"]);
+      assert.equal(result.status, 0, result.stderr);
+      const [range] = result.record.videos[0].ranges;
+      assert.deepEqual([range.range, range.cuts, range.scene_scores, range.lengths], [[4, 6], [], [], [2]]);
+      assert.equal(range.shots, 1);
+      assert.equal(range.motion.samples, 8);
+      assert.equal(range.motion.inside_shots, 7);
+      assert.equal(range.motion.frozen_share, 1);
+      near(range.picture.luma_mean, 41, 1, "blue frame luma");
+      if (hasSound) {
+        assert.equal(range.sound.silences, 1);
+        near(range.sound.silence_times[0][0], 4.5, 0.02, "absolute silence start");
+        near(range.sound.silence_times[0][1], 5.2, 0.02, "absolute silence end");
+        near(range.sound.silent_seconds, 0.7, 0.02, "silent seconds");
+        near(range.sound.non_silent_share, 0.65, 0.01, "non-silent share");
+      } else assert.equal(range.sound, null);
+    });
+  }
 });
 
 test("--compare matches the measured cuts against a study record's lists", withFfmpeg, async () => {

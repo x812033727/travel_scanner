@@ -18,12 +18,18 @@ questions instead of the tutorial's: written to the stance, an observation left 
 no advice, not sponsored, nobody named run down. The server picks the set from the video's own
 series (``policy_questions_for``). A Short cut from a long video (docs/videos/SHORTS.md, line
 "cut") is a highlight too short to hold a demonstration, so it is asked the tutorial's questions
-without that one; every other video, a drama's included, is asked as before.
+without that one. The demonstration is a tutorial's rule: a video the site's own row files as an
+explainer or a story (``VideoProject.category``) tells something rather than shows a step to
+follow, so it is asked the same three and its note says the demonstration does not apply. Every
+other video is asked all four as before: one the site does not know or has not categorised, and
+a drama's too, whose questions are the owner's to decide (ticket
+2026-09-28-video-drama-policy-questions).
 
 Payload contracts the worker writes (tools/video, ticket video-hands-off-worker):
 
 - an outline review's ``payload.pick``: ``{"choice": key, "probabilities": {key: p},
   "options": {key: {"stance": p, "demo": p}}, "advice": p}`` — what ``judge_outline`` returned;
+  ``demo`` is null for a video the site files as an explainer or a story, which is not asked it;
 - a final review's ``payload.qa``: ``{"ok": bool, "final_sha256": sha, "items": [{"id", "ok",
   "detail"}]}`` from ``node tools/video/cli.mjs qa``, with every id in ``QA_ITEMS``;
 - a publish review's ``payload.package``: the same shape over ``PACKAGE_ITEMS`` (the upload
@@ -36,6 +42,7 @@ Payload contracts the worker writes (tools/video, ticket video-hands-off-worker)
 
 from __future__ import annotations
 
+from collections.abc import Awaitable, Callable
 from typing import Any, Literal
 
 import httpx
@@ -260,7 +267,8 @@ class JudgeOutlineIn(StrictModel):
 
 class OptionScores(BaseModel):
     stance: float
-    demo: float
+    # None when the video was not asked for a demonstration (``outline_demo_asked``).
+    demo: float | None
 
 
 class OutlinePick(BaseModel):
@@ -280,18 +288,22 @@ class JudgePolicyIn(StrictModel):
     viewpoint: str = Field(default="", max_length=8_000)
 
 
-# Which questions a narration was asked: the tutorial's four, which every video but a brand
-# story or a cut Short is asked, the story's five (docs/videos/STORY.md), or a cut Short's three:
-# the tutorial's without the demonstration (docs/videos/SHORTS.md §自動品管).
-PolicyQuestions = Literal["tutorial", "story", "cut"]
+# Which questions a narration was asked: the tutorial's four, the story's five
+# (docs/videos/STORY.md), a cut Short's three: the tutorial's without the demonstration
+# (docs/videos/SHORTS.md §自動品管), or an explainer's: the same three, for a video whose category
+# says it demonstrates nothing (docs/videos/HANDS-OFF.md §自動品管).
+PolicyQuestions = Literal["tutorial", "story", "cut", "explainer"]
+# The categories (app.models.VIDEO_CATEGORIES) that are not asked for a demonstration; every
+# other category, and a video without one, is, whatever its format.
+NO_DEMO_CATEGORIES = frozenset({"explainer", "story"})
 
 
 class PolicyVerdict(BaseModel):
     """What Jev said about a narration; ``passed`` is the verdict of the set it was asked.
 
     A tutorial's verdict carries the four scores it always did (``observation`` and
-    ``disparage`` are None); a story's and a cut Short's have no ``demo`` (None), since it was
-    not asked.
+    ``disparage`` are None); a story's, a cut Short's and an explainer's have no ``demo``
+    (None), since it was not asked.
     """
 
     stance: float
@@ -308,8 +320,11 @@ class PolicyVerdict(BaseModel):
 # --- questions ----------------------------------------------------------------------------------
 
 
-def outline_questions(options: list[OutlineOption]) -> dict[str, JevQuestion]:
-    """One choice plus two nouls per option plus one advice noul, all in one Jev call."""
+def outline_questions(
+    options: list[OutlineOption], demo: bool = True
+) -> dict[str, JevQuestion]:
+    """One choice plus two nouls per option plus one advice noul, all in one Jev call; with
+    ``demo`` off, one noul per option: the demonstration is not asked."""
     if not MIN_OPTIONS <= len(options) <= MAX_OPTIONS:
         raise ValueError(f"an outline judgement takes {MIN_OPTIONS} to {MAX_OPTIONS} options")
     keys = [option.key for option in options]
@@ -330,9 +345,10 @@ def outline_questions(options: list[OutlineOption]) -> dict[str, JevQuestion]:
         questions[f"stance_{key}"] = NoulQuestion(
             instructions=STANCE_INSTRUCTIONS.format(key=key), criteria=NOUL_CRITERIA
         )
-        questions[f"demo_{key}"] = NoulQuestion(
-            instructions=DEMO_INSTRUCTIONS.format(key=key), criteria=NOUL_CRITERIA
-        )
+        if demo:
+            questions[f"demo_{key}"] = NoulQuestion(
+                instructions=DEMO_INSTRUCTIONS.format(key=key), criteria=NOUL_CRITERIA
+            )
     questions["advice"] = NoulQuestion(instructions=ADVICE_INSTRUCTIONS, criteria=NOUL_CRITERIA)
     return questions
 
@@ -399,8 +415,11 @@ def _noul(answers: dict[str, Any], name: str) -> float:
     return float(getattr(answers[name], "noul", 0.0))
 
 
-def read_outline_answers(answers: dict[str, Any], options: list[OutlineOption]) -> OutlinePick:
-    """Jev's answers as the pick the worker carries; ``passed`` applies the thresholds."""
+def read_outline_answers(
+    answers: dict[str, Any], options: list[OutlineOption], demo: bool = True
+) -> OutlinePick:
+    """Jev's answers as the pick the worker carries; ``passed`` applies the thresholds, with no
+    ``demo`` to hold an option to when it was not asked."""
     pick = answers["pick"]
     choice = str(getattr(pick, "choice", ""))
     probabilities = {
@@ -408,7 +427,8 @@ def read_outline_answers(answers: dict[str, Any], options: list[OutlineOption]) 
     }
     scores = {
         option.key: OptionScores(
-            stance=_noul(answers, f"stance_{option.key}"), demo=_noul(answers, f"demo_{option.key}")
+            stance=_noul(answers, f"stance_{option.key}"),
+            demo=_noul(answers, f"demo_{option.key}") if demo else None,
         )
         for option in options
     }
@@ -424,16 +444,22 @@ def read_outline_answers(answers: dict[str, Any], options: list[OutlineOption]) 
     )
 
 
-def read_policy_answers(answers: dict[str, Any]) -> PolicyVerdict:
-    stance, demo = _noul(answers, "stance"), _noul(answers, "demo")
+def read_policy_answers(
+    answers: dict[str, Any], questions: Literal["tutorial", "explainer"] = "tutorial"
+) -> PolicyVerdict:
+    """A tutorial's verdict on its four, or an explainer's on the three it was asked: the same
+    thresholds, with no ``demo`` to hold it to."""
+    stance = _noul(answers, "stance")
+    demo = _noul(answers, "demo") if questions == "tutorial" else None
     advice, sponsored = _noul(answers, "advice"), _noul(answers, "sponsored")
     passed = (
         stance >= POLICY_MIN_STANCE
-        and demo >= POLICY_MIN_DEMO
+        and (demo is None or demo >= POLICY_MIN_DEMO)
         and advice <= POLICY_MAX_ADVICE
         and sponsored <= POLICY_MAX_SPONSORED
     )
     return PolicyVerdict(
+        questions=questions,
         stance=stance,
         demo=demo,
         advice=advice,
@@ -509,7 +535,7 @@ def _pick_passes(choice: str, scores: dict[str, OptionScores], advice: float) ->
     return (
         chosen is not None
         and chosen.stance >= PICK_MIN_STANCE
-        and chosen.demo >= PICK_MIN_DEMO
+        and (chosen.demo is None or chosen.demo >= PICK_MIN_DEMO)
         and advice <= PICK_MAX_ADVICE
     )
 
@@ -526,27 +552,35 @@ def pick_note(
     if chosen is None:
         return f"Jev 挑了 {choice or '？'}，但它不在選項裡"
     head = f"Jev 挑了 {choice}（{probabilities.get(choice, 0.0):.2f}）"
-    body = f"符合立場 {chosen.stance:.2f}、有示範 {chosen.demo:.2f}、建議 {advice:.2f}"
+    shown = DEMO_NOT_ASKED if chosen.demo is None else f"有示範 {chosen.demo:.2f}"
+    body = f"符合立場 {chosen.stance:.2f}、{shown}、建議 {advice:.2f}"
     if passed:
         return f"{head}：{body}，依設定自動核准"
     reasons = []
     if chosen.stance < PICK_MIN_STANCE:
         reasons.append(f"符合立場 {chosen.stance:.2f} 低於 {PICK_MIN_STANCE}")
-    if chosen.demo < PICK_MIN_DEMO:
+    if chosen.demo is not None and chosen.demo < PICK_MIN_DEMO:
         reasons.append(f"有示範 {chosen.demo:.2f} 低於 {PICK_MIN_DEMO}")
     if advice > PICK_MAX_ADVICE:
         reasons.append(f"建議 {advice:.2f} 高於 {PICK_MAX_ADVICE}")
     return f"{head}：{body}；沒過關（{'；'.join(reasons)}）"
 
 
-def policy_note(stance: float, demo: float, advice: float, sponsored: float, passed: bool) -> str:
-    body = f"符合立場 {stance:.2f}、有示範 {demo:.2f}、建議 {advice:.2f}、業配 {sponsored:.2f}"
+# What the note says in place of a score when the demonstration was not asked.
+DEMO_NOT_ASKED = "有示範：不適用（解說）"
+
+
+def policy_note(
+    stance: float, demo: float | None, advice: float, sponsored: float, passed: bool
+) -> str:
+    shown = DEMO_NOT_ASKED if demo is None else f"有示範 {demo:.2f}"
+    body = f"符合立場 {stance:.2f}、{shown}、建議 {advice:.2f}、業配 {sponsored:.2f}"
     if passed:
         return f"Jev：{body}，通過"
     reasons = []
     if stance < POLICY_MIN_STANCE:
         reasons.append(f"符合立場低於 {POLICY_MIN_STANCE}")
-    if demo < POLICY_MIN_DEMO:
+    if demo is not None and demo < POLICY_MIN_DEMO:
         reasons.append(f"有示範低於 {POLICY_MIN_DEMO}")
     if advice > POLICY_MAX_ADVICE:
         reasons.append(f"建議高於 {POLICY_MAX_ADVICE}")
@@ -579,8 +613,11 @@ async def _ask(
     state: dict[str, Any],
     questions: dict[str, JevQuestion],
     client: httpx.AsyncClient | None,
+    on_usage: Callable[[dict[str, Any]], Awaitable[None]] | None = None,
 ) -> dict[str, Any]:
-    jev: JevClient = jev_client(settings, client)
+    # A pilot reservation covers one possible vendor wire. A vendor 429/529 has
+    # no no-charge receipt, so the pilot keeps it uncertain instead of retrying.
+    jev: JevClient = jev_client(settings, client, retry_refusals=on_usage is None)
     try:
         if not await consume_jev_call(redis, settings):
             raise CheckUnavailable(
@@ -588,7 +625,9 @@ async def _ask(
                 "jev_budget_exhausted",
                 "今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再判斷",
             )
-        answers, _usage = await jev.ask(state, questions)
+        answers, usage = await jev.ask(state, questions)
+        if on_usage is not None:
+            await on_usage(usage)
     finally:
         await jev.close()
     return dict(answers)
@@ -601,11 +640,23 @@ async def judge_outline(
     brief: str,
     options: list[OutlineOption],
     client: httpx.AsyncClient | None = None,
+    *,
+    session: AsyncSession,
+    slug: str,
+    on_usage: Callable[[dict[str, Any]], Awaitable[None]] | None = None,
 ) -> OutlinePick:
-    """Which outline to make, in one Jev call that spends one call of the daily budget."""
-    questions = outline_questions(options)
-    answers = await _ask(settings, redis, outline_state(stance, brief, options), questions, client)
-    return read_outline_answers(answers, options)
+    """Which outline to make, in one Jev call that spends one call of the daily budget. Whether
+    the options are asked for a demonstration is the video's own row's to say
+    (``outline_demo_asked``), never the request's."""
+    demo = await outline_demo_asked(session, slug)
+    questions = outline_questions(options, demo)
+    state = outline_state(stance, brief, options)
+    answers = (
+        await _ask(settings, redis, state, questions, client)
+        if on_usage is None
+        else await _ask(settings, redis, state, questions, client, on_usage)
+    )
+    return read_outline_answers(answers, options, demo)
 
 
 async def video_series_kind(session: AsyncSession, slug: str) -> str | None:
@@ -622,12 +673,38 @@ async def video_series_kind(session: AsyncSession, slug: str) -> str | None:
 
 async def policy_questions_for(session: AsyncSession, slug: str) -> PolicyQuestions:
     """The story's questions for an episode of a brand-story series (docs/videos/STORY.md
-    §伺服器), a cut Short's for a Short on the "cut" line, the tutorial's for every other video,
-    a drama's included."""
+    §伺服器), a cut Short's for a Short on the "cut" line, an explainer's for a video whose own
+    row says it demonstrates nothing (category ``explainer`` or ``story``), and the tutorial's
+    for every other video: one the site has no row for or has not categorised, a drama's
+    included, is still asked for a demonstration."""
     if await video_series_kind(session, slug) == "story":
         return "story"
-    line = await session.scalar(select(VideoProject.shorts_line).where(VideoProject.slug == slug))
-    return "cut" if line == "cut" else "tutorial"
+    row = (
+        await session.execute(
+            select(VideoProject.shorts_line, VideoProject.category).where(
+                VideoProject.slug == slug
+            )
+        )
+    ).first()
+    if row is None:
+        return "tutorial"
+    line, category = row
+    if line == "cut":
+        return "cut"
+    return "explainer" if category in NO_DEMO_CATEGORIES else "tutorial"
+
+
+def demo_asked_of(category: str | None) -> bool:
+    """Whether a video of this category is asked for a demonstration: every video but one the
+    site files as an explainer or a story, an uncategorised one included."""
+    return category not in NO_DEMO_CATEGORIES
+
+
+async def outline_demo_asked(session: AsyncSession, slug: str) -> bool:
+    """Whether an outline pick asks for a demonstration, read from the video's own row as
+    ``policy_questions_for`` reads it: a video the site has no row for is asked."""
+    category = await session.scalar(select(VideoProject.category).where(VideoProject.slug == slug))
+    return demo_asked_of(category)
 
 
 async def judge_policy(
@@ -640,22 +717,33 @@ async def judge_policy(
     *,
     session: AsyncSession,
     slug: str,
+    on_usage: Callable[[dict[str, Any]], Awaitable[None]] | None = None,
 ) -> PolicyVerdict:
     """Whether a narration keeps to the stance and sells or advises nothing, asked in one Jev
     call with the questions of the video's own kind (``policy_questions_for``): a tutorial's
     also asks for something shown, a brand story's for an observation left and nobody run
-    down. The server looks the video up by ``slug``; the request cannot choose the set."""
+    down, and a video filed as an explainer or a story is not asked for a demonstration. The server
+    looks the video up by ``slug``; the request cannot choose the set."""
     state = policy_state(stance, viewpoint, script)
     kind = await policy_questions_for(session, slug)
+    questions = (
+        story_policy_questions() if kind == "story" else
+        cut_policy_questions() if kind in {"cut", "explainer"} else
+        policy_questions()
+    )
+    answers = (
+        await _ask(settings, redis, state, questions, client)
+        if on_usage is None
+        else await _ask(settings, redis, state, questions, client, on_usage)
+    )
     if kind == "story":
-        return read_story_policy_answers(
-            await _ask(settings, redis, state, story_policy_questions(), client)
-        )
+        return read_story_policy_answers(answers)
     if kind == "cut":
-        return read_cut_policy_answers(
-            await _ask(settings, redis, state, cut_policy_questions(), client)
-        )
-    return read_policy_answers(await _ask(settings, redis, state, policy_questions(), client))
+        return read_cut_policy_answers(answers)
+    if kind == "explainer":
+        # The same three a cut Short is asked: the tutorial's words, the demonstration left out.
+        return read_policy_answers(answers, "explainer")
+    return read_policy_answers(answers)
 
 
 # --- the server's approval rules ----------------------------------------------------------------
@@ -667,11 +755,13 @@ def _number(value: Any) -> float | None:
     return float(value)
 
 
-def outline_pick_passed(payload: dict[str, Any]) -> bool:
+def outline_pick_passed(payload: dict[str, Any], demo: bool = True) -> bool:
     """Whether an outline review's ``pick`` clears the thresholds for the option Jev chose.
 
     The choice must be one of the review's own options when the payload lists them, so a pick
-    copied from another brief cannot approve this one.
+    copied from another brief cannot approve this one. With ``demo`` off (the video's own row
+    files it as an explainer or a story, ``demo_asked_of``) the option's demonstration score is
+    neither needed nor read; the payload cannot turn it off.
     """
     pick = payload.get("pick")
     if not isinstance(pick, dict):
@@ -688,11 +778,14 @@ def outline_pick_passed(payload: dict[str, Any]) -> bool:
     chosen = scores.get(choice)
     if not isinstance(chosen, dict):
         return False
-    stance, demo = _number(chosen.get("stance")), _number(chosen.get("demo"))
-    advice = _number(pick.get("advice"))
-    if stance is None or demo is None or advice is None:
+    stance, advice = _number(chosen.get("stance")), _number(pick.get("advice"))
+    if stance is None or advice is None:
         return False
-    return stance >= PICK_MIN_STANCE and demo >= PICK_MIN_DEMO and advice <= PICK_MAX_ADVICE
+    if demo:
+        shown = _number(chosen.get("demo"))
+        if shown is None or shown < PICK_MIN_DEMO:
+            return False
+    return stance >= PICK_MIN_STANCE and advice <= PICK_MAX_ADVICE
 
 
 def pick_choice(payload: dict[str, Any]) -> str | None:
@@ -701,14 +794,18 @@ def pick_choice(payload: dict[str, Any]) -> str | None:
     return choice if isinstance(choice, str) and choice else None
 
 
-def pick_reason(payload: dict[str, Any]) -> str:
-    """The note on an outline the server approved from the worker's pick."""
+def pick_reason(payload: dict[str, Any], demo: bool = True) -> str:
+    """The note on an outline the server approved from the worker's pick; with ``demo`` off it
+    says the demonstration does not apply, whatever score the payload carries."""
     pick = payload.get("pick") or {}
     choice = str(pick.get("choice", ""))
     listed = pick.get("options")
     options: dict[str, Any] = listed if isinstance(listed, dict) else {}
     scores = {
-        key: OptionScores(stance=float(value.get("stance", 0)), demo=float(value.get("demo", 0)))
+        key: OptionScores(
+            stance=float(value.get("stance", 0)),
+            demo=float(value.get("demo") or 0) if demo else None,
+        )
         for key, value in options.items()
         if isinstance(value, dict)
     }

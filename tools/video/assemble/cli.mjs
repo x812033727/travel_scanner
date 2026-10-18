@@ -13,12 +13,13 @@ import { burnIn, hasPictures, illustrated, isDrama, keyframesHash, lookHash, mix
 import { hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems } from "../core/duration.mjs";
-import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
+import { INTRO_AT_START, introAtFrame, placeBranding, presentationTimeline, readBranding, selectBrandingForBuild } from "../core/branding.mjs";
 import { productionClipProblems } from "../core/lint.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, keyframeProblems, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
+import { resolveWatermark, watermarkRecord } from "../core/watermark.mjs";
 import {
   bedLevel,
   bedLoudnessArgs,
@@ -240,7 +241,7 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
   const { EXIT } = ctx;
   const { values, positionals } = parseArgs({
     args,
-    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, set: { type: "string" }, force: { type: "boolean" }, "adopt-branding": { type: "boolean" } },
+    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, set: { type: "string" }, force: { type: "boolean" }, "adopt-branding": { type: "boolean" }, "intro-after-condensation": { type: "boolean" } },
     strict: true,
     allowPositionals: true,
   });
@@ -278,6 +279,9 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     ctx.stderr.write("frames/manifest.json is missing or was rendered for an older script; run render first\n");
     return EXIT.usage;
   }
+  // The channel mark (docs/videos/WATERMARK.md) is render's decision: the cards were drawn with
+  // the one the manifest names, or with none, and the shots take the same.
+  const mark = resolveWatermark(manifest.watermark);
   const drama = isDrama(doc);
   const pictures = illustrated(doc);
   const inputs = await mediaInputs(doc, workdir, workBase, manifest, speech, visual);
@@ -298,8 +302,13 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     ctx.stderr.write(`${error.message}\n`);
     return EXIT.missing;
   }
-  const branding = await selectBrandingForBuild({ doc, workdir, workBase, adoptCurrent: values["adopt-branding"] });
+  let branding = await selectBrandingForBuild({ doc, workdir, workBase, adoptCurrent: values["adopt-branding"], series: project.series, introAfterCondensation: values["intro-after-condensation"] });
   if (branding) await verifyBrandingAssets(branding, { tools });
+  // An intro after the condensation plays at the second chapter's first frame (docs/videos/BRANDING.md).
+  // A first build with a single chapter has no condensation to follow, so its intro stays first;
+  // a pin or the explicit flag asking for the other placement is refused instead.
+  if (branding?.intro_at && !timeline.chapters?.[1] && !values["intro-after-condensation"] && !readBranding(workdir)?.intro_at) branding = placeBranding(branding, INTRO_AT_START);
+  const introAt = branding ? introAtFrame(branding, timeline) : 0;
 
   let layout;
   try {
@@ -314,6 +323,13 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
   } catch (error) {
     if (!(error instanceof PlanError)) throw error;
     ctx.stderr.write(`${error.message}\n`);
+    return EXIT.usage;
+  }
+  // The chapter starts a scene, and every scene is its own segment opening on a keyframe, so the
+  // intro goes between two segments: the layout index of the scene it plays before.
+  const introSplit = introAt > 0 ? layout.findIndex((scene) => scene.start_frame === introAt) : 0;
+  if (introAt > 0 && (introSplit <= 0 || layout.slice(0, introSplit).reduce((sum, scene) => sum + scene.frames, 0) !== introAt)) {
+    ctx.stderr.write(`the intro after the first chapter must start a scene, but no segment starts at frame ${introAt}\n`);
     return EXIT.usage;
   }
   /** The frames a clip offers a shot: all of them, or those after the frame a cut from another shot starts at. */
@@ -401,7 +417,9 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
       const strips = inputs?.subtitles ? subtitleTrack(scene, manifest.subtitles.cues, manifest.subtitles.blank) : null;
       // A dissolve overlays the previous scene's last frame, so its segment is keyed on that too.
       const previousKey = scene.transition === "dissolve" && index > 0 ? keys[index - 1] : null;
-      const key = motion ? motionSegmentKey(scene, scene.move, strips, previousKey) : clipSegmentKey(scene, fit, strips, previousKey);
+      // A moving card whose own frame already carries the mark is not given a second one.
+      const laid = mark && (!scene.card || scene.marked === false) ? mark : null;
+      const key = motion ? motionSegmentKey(scene, scene.move, strips, previousKey, laid) : clipSegmentKey(scene, fit, strips, previousKey, laid);
       keys[index] = key;
       const segment = path.join(segmentsDir, `${scene.id}-${key}.mp4`);
       segmentFiles.push(segment);
@@ -419,8 +437,8 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
       }
       const partial = `${segment}.partial.mp4`;
       const args = motion
-        ? motionSegmentArgs({ keyframe: source, frames: scene.frames, move: scene.move, subtitlesList, dissolveFrom, outFile: partial })
-        : clipSegmentArgs({ clip: source, frames: scene.frames, fit, fromFrame: scene.from_frame ?? 0, subtitlesList, dissolveFrom, outFile: partial });
+        ? motionSegmentArgs({ keyframe: source, frames: scene.frames, move: scene.move, subtitlesList, dissolveFrom, mark: laid, outFile: partial })
+        : clipSegmentArgs({ clip: source, frames: scene.frames, fit, fromFrame: scene.from_frame ?? 0, subtitlesList, dissolveFrom, mark: laid, outFile: partial });
       await runTool(tools.ffmpeg, args);
       renameSync(partial, segment);
       encoded += 1;
@@ -493,7 +511,8 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
   let applied = null;
   if (branding) {
     await runTool(tools.ffmpeg, muxArgs(video, audio, bodyPartial));
-    applied = await wrapVideo({ tools, workdir, bodyFile: bodyPartial, bodyFrames: timeline.total_frames, branding, outFile: partialFinal });
+    const bodyPictures = introSplit > 0 ? { before: segmentFiles.slice(0, introSplit), after: segmentFiles.slice(introSplit) } : null;
+    applied = await wrapVideo({ tools, workdir, bodyFile: bodyPartial, bodyFrames: timeline.total_frames, branding, outFile: partialFinal, introAtFrame: introAt, bodyPictures });
     applied.body_file = "build/body.mp4";
   } else {
     await runTool(tools.ffmpeg, muxArgs(video, audio, partialFinal));
@@ -574,7 +593,8 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
       // frame at from_s, which is pulled out by number and compared with the segment's frame 0.
       const frame = path.join(buildDir, `source-${scene.id}-${keys[index]}.png`);
       if (!existsSync(frame)) await runTool(tools.ffmpeg, frameArgs(resolve(scene.clip.file), scene.from_frame, frame));
-      const value = parsePsnr((await runTool(tools.ffmpeg, psnrArgs(segmentFiles[index], 0, frame))).stderr);
+      // The segment's frame carries the channel mark and the clip's does not: its box is left out.
+      const value = parsePsnr((await runTool(tools.ffmpeg, psnrArgs(segmentFiles[index], 0, frame, mark ? { mask: mark.box } : undefined))).stderr);
       record.source = scene.source;
       record.source_frame_psnr = Number.isFinite(value) ? Number(value.toFixed(2)) : "inf";
       const problem = sourceFrameProblem(scene, value);
@@ -599,6 +619,9 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     // very files of the set and a measured set's targets, for a reader of this file.
     ...(inputs?.sfx ? { sfx_hash: sfxHash(doc), sfx_set_hash: sfxSetHash(doc, inputs.sfx.manifest) } : {}),
     ...(applied ? { branding: applied } : {}),
+    // The mark this cut carries, for a reader of this file and for a Short reframed from the cut
+    // (shorts/from-drama.mjs keeps its window off the box); nothing compares it with a default.
+    ...(mark ? { watermark: watermarkRecord(mark) } : {}),
     problems,
     metrics: {
       frames: presented.total_frames,
@@ -634,6 +657,8 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
   ctx.stdout.write(`${branding && !checks.ok ? candidate : final}: ${presented.total_frames} frames, ${loudness.integrated} LUFS, true peak ${loudness.truePeak} dBFS${bedText}; ${encoded} of ${layout.length} segments encoded in ${seconds} s\n`);
   for (const problem of problems) ctx.stdout.write(`CHECK ${problem}\n`);
   if (!checks.ok) return EXIT.lint;
+  if (introAt > 0) ctx.stdout.write(`intro plays after the first chapter, at ${(introAt / FPS).toFixed(2)} s; captions, chapters and dubs follow it once rebuilt\n`);
+  if (values["intro-after-condensation"]) ctx.stdout.write("branding.json now records intro_at after_first_chapter; any final or publish approval and upload package of the earlier cut no longer match this file: rebuild captions, dubs and the package, then send it for review again\n");
   ctx.stdout.write(`next: node tools/video/cli.mjs review --slug ${doc.slug}\n`);
   return EXIT.ok;
 }

@@ -8,8 +8,9 @@ import { fileURLToPath } from "node:url";
 import { EXIT, main } from "../cli.mjs";
 import { compilationSandbox } from "../compile/fixture.mjs";
 import { compilationDocument, THUMB_SOURCE } from "../core/compilation.mjs";
-import { dramaFixture, explainerFixture, sandbox, tempDir } from "../core/fixtures/load.mjs";
-import { estimateTimeline, visualHash } from "../core/timeline.mjs";
+import { dramaFixture, explainerFixture, illustratedFixture, sandbox, tempDir } from "../core/fixtures/load.mjs";
+import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
+import { watermark, WATERMARK_FILE, watermarkDataUri, watermarkRecord } from "../core/watermark.mjs";
 import { LAUNCH_ARGS, resolveRequest } from "./browser.mjs";
 import { compareRuns } from "./repeat.mjs";
 import { localizedThumbnailHash, thumbnailSource, thumbnailSourceHash } from "../core/translations.mjs";
@@ -39,11 +40,10 @@ test("the bundled fonts cover Traditional Chinese, Latin and full-width punctuat
   assert.deepEqual(uncovered("好用 🤖", coverage), ["🤖"]);
 });
 
-test("coverage is judged per language: Korean and Simplified Chinese thumbnails have their own font, slides still refuse what only those have", () => {
+test("coverage is judged per language: Korean and Japanese thumbnails have their own font, slides still refuse what only those have", () => {
   const slides = bundledCoverage();
   // 佥 (U+4F65) is the Simplified form of 僉: only the SC font's ranges hold it.
   assert.deepEqual(uncovered("佥", slides), ["佥"], "a Traditional Chinese slide still refuses it");
-  assert.deepEqual(uncovered("佥", bundledCoverage("zh-CN")), []);
   assert.deepEqual(uncovered("바이브 코딩 코드 없이", slides), ["바", "브", "코", "딩", "드", "없"]);
   assert.deepEqual(uncovered("바이브 코딩 코드 없이 AI 2026", bundledCoverage("ko")), []);
   assert.deepEqual(uncovered("佥", bundledCoverage("ko")), ["佥"], "each locale adds only its own font");
@@ -51,7 +51,6 @@ test("coverage is judged per language: Korean and Simplified Chinese thumbnails 
   assert.deepEqual(uncovered("侭", slides), ["侭"], "a Traditional Chinese slide refuses it");
   assert.deepEqual(uncovered("直す 骨 写す 侭 バイブ AI 2026", bundledCoverage("ja")), []);
   assert.deepEqual(uncovered("佥 바", bundledCoverage("ja")), ["佥", "바"], "Japanese adds only the JP font");
-  assert.deepEqual(uncovered("侭", bundledCoverage("zh-CN")), ["侭"]);
   assert.equal(bundledCoverage("en"), slides, "a locale without a font of its own is the slides' coverage");
   assert.equal(bundledCoverage(), bundledCoverage(null), "and is read once");
 });
@@ -138,7 +137,7 @@ test("a stock photo is read from the work directory: listed in assets[], fetched
     { path: where, message: `${stock} is not in assets[]: stock fetch writes the entry there, and without it the description carries no credit` },
     { path: where, message: `${stock} is not in the work directory; fetch it with stock fetch (node tools/video/cli.mjs)` },
   ]);
-  doc.assets = [{ path: stock, source: "Photo by Lukas Rodriguez on Pexels", license: "Pexels License", author: "Lukas Rodriguez", url: "https://www.pexels.com/photo/seoul-at-night-3573351/" }];
+  doc.assets = [...showcase.assets, { path: stock, source: "Photo by Lukas Rodriguez on Pexels", license: "Pexels License", author: "Lukas Rodriguez", url: "https://www.pexels.com/photo/seoul-at-night-3573351/" }];
   assert.deepEqual(renderProblems(doc), [], "without root or work directory only the data is checked, as before");
   assert.deepEqual(renderProblems(doc, root).map((problem) => problem.message), [], "without a work directory the file is not looked for");
   assert.match(renderProblems(doc, root, { workdir })[0].message, /not in the work directory/);
@@ -155,6 +154,79 @@ test("a stock photo is read from the work directory: listed in assets[], fetched
   assert.notEqual(two.key, one.key, "a swapped photo redraws the slide that shows it");
   assert.notEqual(state(renderPlan(doc, "t", root)).key, two.key, "without the work directory the bytes are not in the key");
   assert.equal(resolveRequest(`https://video.local/work/${stock}`, { root, workdir, pages: new Map() }).file, path.join(workdir, "stock", `${sha}.png`), "the fake origin serves it from the work directory");
+});
+
+test("an opted-in, credited repository picture fills the thumbnail without changing scenes or speech", () => {
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const plain = structuredClone(showcase);
+  const doc = structuredClone(showcase);
+  const asset = doc.assets[0].path;
+  doc.thumbnail.data.asset = asset;
+  assert.deepEqual(renderProblems(doc, root), []);
+  const before = renderPlan(plain, "t", root);
+  const after = renderPlan(doc, "t", root);
+  const url = `https://video.local/repo/${asset}`;
+  assert.match(after.thumbnail.html, new RegExp(`<img src="${url.replaceAll(".", "\\.")}" alt="">`));
+  assert.ok(after.thumbnail.variants.every((variant) => variant.html.includes(url)), "variants inherit the chosen picture");
+  assert.equal(resolveRequest(url, { root, workdir: null, pages: new Map() }).file, path.join(root, asset));
+  assert.notEqual(after.thumbnail.key, before.thumbnail.key);
+  assert.deepEqual(after.scenes, before.scenes, "a thumbnail picture does not redraw video scenes");
+  assert.deepEqual(estimateTimeline(doc), estimateTimeline(plain));
+  assert.equal(speechHash(doc, { terms: {} }), speechHash(plain, { terms: {} }));
+  assert.notEqual(visualHash(doc), visualHash(plain), "only the visual status needs refresh");
+  assert.equal(renderPlan(plain, "t", root).thumbnail.html, before.thumbnail.html, "unflagged thumbnails are unchanged");
+  const badVariant = structuredClone(doc);
+  badVariant.thumbnail.variants[0].data.asset = "docs/videos/missing-variant.jpg";
+  assert.match(renderProblems(badVariant, root).map((problem) => problem.message).join(" "), /variant b: data.asset .*not in assets\[\]/);
+});
+
+test("thumbnail assets require an allowed local picture and a credited assets[] entry", () => {
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const doc = structuredClone(showcase);
+  delete doc.thumbnail.variants;
+  const asset = doc.assets[0].path;
+  doc.thumbnail.data.asset = asset;
+  const messages = () => renderProblems(doc, root).filter((problem) => problem.path === "thumbnail").map((problem) => problem.message);
+  doc.assets = [];
+  assert.match(messages().join(" "), /not in assets\[\]/);
+  doc.assets = [{ path: asset, source: "", license: "Public domain" }];
+  assert.match(messages().join(" "), /needs source and license/);
+  doc.assets = [{ path: "docs/videos/missing-thumbnail.jpg", source: "Museum", license: "Public domain" }];
+  doc.thumbnail.data.asset = doc.assets[0].path;
+  assert.match(messages().join(" "), /does not exist/);
+  doc.thumbnail.data.asset = "docs/videos/../secret.jpg";
+  assert.match(messages().join(" "), /must be a raster image/);
+  doc.thumbnail.data.asset = "apps/api/.env";
+  assert.match(messages().join(" "), /must be a raster image/);
+  doc.thumbnail.data.asset = asset;
+  doc.assets = showcase.assets;
+  doc.thumbnail.data.shot = "some-shot";
+  assert.match(messages().join(" "), /cannot be combined/);
+});
+
+test("a credited stock thumbnail uses the work route and changes key with the picture bytes", () => {
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const workdir = tempDir("video-thumbnail-asset-");
+  const asset = `stock/${"c".repeat(64)}.jpg`;
+  const file = path.join(workdir, asset);
+  const doc = structuredClone(showcase);
+  delete doc.thumbnail.variants;
+  doc.thumbnail.data.asset = asset;
+  doc.assets.push({ path: asset, source: "Archive photograph", license: "Public domain" });
+  assert.match(renderProblems(doc, root, { workdir })[0].message, /does not exist in the work directory/);
+  mkdirSync(path.dirname(file), { recursive: true });
+  writeFileSync(file, "first photo bytes");
+  assert.deepEqual(renderProblems(doc, root, { workdir }), []);
+  const first = renderPlan(doc, "t", root, { workdir });
+  const url = `https://video.local/work/${asset}`;
+  assert.ok(first.thumbnail.html.includes(url));
+  assert.equal(resolveRequest(url, { root, workdir, pages: new Map() }).file, file);
+  assert.equal(renderPlan(doc, "t", root, { workdir }).thumbnail.key, first.thumbnail.key);
+  writeFileSync(file, "second photo bytes");
+  const second = renderPlan(doc, "t", root, { workdir });
+  assert.equal(second.thumbnail.html, first.thumbnail.html);
+  assert.notEqual(second.thumbnail.key, first.thumbnail.key, "swapped bytes invalidate the thumbnail cache");
+  assert.deepEqual(second.scenes, first.scenes, "no video frame needs a redraw");
 });
 
 test("render draws a stock photo slide from the work directory and redraws it when the photo changes", async () => {
@@ -402,7 +474,7 @@ test("each caption locale with current thumbnail words gets its own thumbnail on
   const keyframes = { flash: { file: "keyframes/flash-1.png", sha256: "aa" }, race: { file: "keyframes/race-1.png", sha256: "bb" } };
   const words = (prefix) => Object.fromEntries(Object.keys(thumbnailSource(doc)).map((name) => [name, `${prefix} ${name}`]));
   const merged = (thumbnail) => ({ thumbnail, source_hashes: { thumbnail: thumbnailSourceHash(doc) } });
-  const translations = { en: merged(words("Why")), ko: merged({ ...words("왜"), headline: "테스트" }), "zh-CN": { thumbnail: words("为何") } };
+  const translations = { en: merged(words("Why")), ko: merged({ ...words("왜"), headline: "테스트" }), ja: { thumbnail: words("なぜ") } };
   const plan = renderPlan(doc, "t", null, { keyframes, translations });
   assert.deepEqual(plan.thumbnail.locales.map((own) => [own.locale, own.file]), [["en", "thumbnails/en.jpg"], ["ko", "thumbnails/ko.jpg"]]);
   const [en] = plan.thumbnail.locales;
@@ -412,9 +484,8 @@ test("each caption locale with current thumbnail words gets its own thumbnail on
   assert.match(en.html, /原來如此事務所/, "and the same series look");
   assert.equal(en.hash, localizedThumbnailHash(doc, translations.en));
   assert.notEqual(en.key, plan.thumbnail.key);
-  assert.deepEqual(Object.keys(plan.thumbnail.gaps), ["ja", "zh-CN"]);
-  assert.match(plan.thumbnail.gaps["zh-CN"], /not merged by i18n-merge/);
-  assert.match(plan.thumbnail.gaps.ja, /i18n\/ja\.json has no thumbnail words/);
+  assert.deepEqual(Object.keys(plan.thumbnail.gaps), ["ja"]);
+  assert.match(plan.thumbnail.gaps.ja, /not merged by i18n-merge/);
   // Korean is set in its own font, which has the Hangul the slide font lacks.
   const [, ko] = plan.thumbnail.locales;
   assert.match(ko.html, /<html lang="ko">.*fonts\/noto-sans-kr\/index\.css/);
@@ -433,17 +504,17 @@ test("each caption locale with current thumbnail words gets its own thumbnail on
   assert.deepEqual(localizedThumbnails(renderPlan(doc, "t", null, { keyframes })), { drawable: [], drawn: {}, gaps: {} });
 });
 
-test("a Simplified Chinese thumbnail with a Simplified-only form is drawable in its own font", () => {
+test("a Japanese thumbnail with a Japanese-only form is drawable in its own font", () => {
   const doc = explainerFixture();
   const keyframes = { flash: { file: "keyframes/flash-1.png", sha256: "aa" }, race: { file: "keyframes/race-1.png", sha256: "bb" } };
-  const words = Object.fromEntries(Object.keys(thumbnailSource(doc)).map((name) => [name, `写码 佥 ${name}`]));
-  const translations = { "zh-CN": { thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(doc) } } };
+  const words = Object.fromEntries(Object.keys(thumbnailSource(doc)).map((name) => [name, `直す 侭 ${name}`]));
+  const translations = { ja: { thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(doc) } } };
   const plan = renderPlan(doc, "t", null, { keyframes, translations });
-  const [sc] = plan.thumbnail.locales;
-  assert.equal(sc.locale, "zh-CN");
-  assert.match(sc.html, /<html lang="zh-Hans">.*fonts\/noto-sans-sc\/index\.css.*--font:"Noto Sans SC Variable"/);
-  assert.deepEqual(localizedThumbnails(plan).drawable.map((own) => own.locale), ["zh-CN"]);
-  assert.match(localizedThumbnails(plan, () => bundledCoverage()).gaps["zh-CN"], /U\+4F65/, "the slide fonts alone lack it");
+  const [jp] = plan.thumbnail.locales;
+  assert.equal(jp.locale, "ja");
+  assert.match(jp.html, /<html lang="ja">.*fonts\/noto-sans-jp\/index\.css.*--font:"Noto Sans JP Variable"/);
+  assert.deepEqual(localizedThumbnails(plan).drawable.map((own) => own.locale), ["ja"]);
+  assert.match(localizedThumbnails(plan, () => bundledCoverage()).gaps.ja, /U\+4FAD/, "the slide fonts alone lack it");
 });
 
 test("a thumbnail whose keyframe's bytes changed, went missing or have no recorded hash is refused before anything is drawn; the approved bytes render as before", async () => {
@@ -593,7 +664,7 @@ test("render --thumbnails-only draws the language thumbnails alone, and only ove
   delete before.thumbnail_locale_gaps;
   assert.deepEqual(rest, before, "visual_hash and the scenes are as they were");
   assert.deepEqual(Object.keys(drawn), ["en"]);
-  assert.deepEqual(Object.keys(gaps), ["ja", "ko", "zh-CN"]);
+  assert.deepEqual(Object.keys(gaps), ["ja", "ko"]);
   for (const [name, bytes] of kept) assert.equal(readFileSync(work(name), "utf8"), bytes, `${name} untouched`);
   assert.ok(!existsSync(work("contact-sheet.png")), "no contact sheet is drawn");
   assert.match(out, /1 language thumbnails drawn .*; the frames are as they were/);
@@ -701,4 +772,176 @@ test("a compilation whose thumbnail source changed is told to plan its metadata 
   out = "";
   assert.equal(await main(languages, ctx), EXIT.ok, out);
   assert.ok(opened > 0);
+});
+
+test("a photo card's photograph must exist and be in assets[], and its bytes are part of the key", () => {
+  const root = tempDir("video-photo-root-");
+  const workdir = tempDir("video-photo-work-");
+  const file = "docs/videos/a-video/photos/ship.jpg";
+  const doc = structuredClone(showcase);
+  const index = doc.scenes.findIndex((scene) => scene.id === "old-print");
+  // Only the photo card is looked at here: the temporary root has none of the other scenes' files.
+  doc.scenes = [doc.scenes[0], { ...doc.scenes[index], data: { ...doc.scenes[index].data, image: file } }];
+  doc.assets = [];
+  const where = "scenes[1] (old-print).data";
+  assert.deepEqual(sceneAssets(doc.scenes[1]), [file]);
+  assert.deepEqual(renderProblems(doc), [{ path: where, message: `${file} is not in assets[]: a photograph's source and licence go there, and without it the description carries no credit` }], "held to assets[] with no root at all");
+  assert.deepEqual(renderProblems(doc, root).map((problem) => problem.message), [
+    `${file} is not in assets[]: a photograph's source and licence go there, and without it the description carries no credit`,
+    `${file} does not exist`,
+  ]);
+  doc.assets = [{ path: "docs/videos/a-video/photos/another.jpg", source: "Somewhere", license: "Public domain" }];
+  assert.match(renderProblems(doc)[0].message, /is not in assets\[\]/, "the entry names the same path");
+  doc.assets = [{ path: file, source: "Wikimedia Commons: a ship", license: "Public domain" }];
+  assert.deepEqual(renderProblems(doc), []);
+  assert.match(renderProblems(doc, root)[0].message, /ship\.jpg does not exist/);
+  mkdirSync(path.join(root, path.dirname(file)), { recursive: true });
+  writeFileSync(path.join(root, file), "jpg one");
+  assert.deepEqual(renderProblems(doc, root, { workdir }), []);
+
+  const state = (plan) => plan.scenes.find((scene) => scene.id === "old-print").states;
+  const one = state(renderPlan(doc, "t", root, { workdir }));
+  assert.equal(one.length, 1, "a single state: nothing on the card is revealed");
+  assert.match(one[0].html, /<img src="https:\/\/video\.local\/repo\/docs\/videos\/a-video\/photos\/ship\.jpg" alt="">/);
+  assert.equal(state(renderPlan(doc, "t", root, { workdir }))[0].key, one[0].key, "the same bytes, the same key");
+  const title = (plan) => plan.scenes[0].states[0].key;
+  const before = title(renderPlan(doc, "t", root, { workdir }));
+  writeFileSync(path.join(root, file), "jpg two");
+  const two = state(renderPlan(doc, "t", root, { workdir }));
+  assert.equal(two[0].html, one[0].html);
+  assert.notEqual(two[0].key, one[0].key, "a swapped photograph redraws its card");
+  assert.equal(title(renderPlan(doc, "t", root, { workdir })), before, "and only its card");
+
+  // A stock photo: the screenshot's rules, the entry and the fetched file.
+  const sha = "d".repeat(64);
+  const stock = `stock/${sha}.jpg`;
+  doc.scenes[1].data.image = stock;
+  assert.deepEqual(renderProblems(doc, root, { workdir }).map((problem) => problem.message), [
+    `${stock} is not in assets[]: stock fetch writes the entry there, and without it the description carries no credit`,
+    `${stock} is not in the work directory; fetch it with stock fetch (node tools/video/cli.mjs)`,
+  ]);
+  doc.assets = [{ path: stock, source: "Photo by Somebody on Pexels", license: "Pexels License" }];
+  mkdirSync(path.join(workdir, "stock"));
+  writeFileSync(path.join(workdir, "stock", `${sha}.jpg`), "stock one");
+  assert.deepEqual(renderProblems(doc, root, { workdir }), []);
+  const first = state(renderPlan(doc, "t", root, { workdir }))[0];
+  writeFileSync(path.join(workdir, "stock", `${sha}.jpg`), "stock two");
+  assert.notEqual(state(renderPlan(doc, "t", root, { workdir }))[0].key, first.key);
+});
+
+test("a screenshot of the repository's own page still needs no assets[] entry", () => {
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const doc = structuredClone(showcase);
+  delete doc.assets;
+  assert.deepEqual(renderProblems(doc, root).map((problem) => problem.path), [`scenes[${doc.scenes.findIndex((scene) => scene.id === "old-print")}] (old-print).data`]);
+});
+
+test("with the channel mark every card carries it in its corner, a card that will move leaves it to assemble, and without it the plan is what it was", () => {
+  const mark = watermark();
+  const uri = watermarkDataUri(mark);
+  const plain = renderPlan(showcase, "t");
+  assert.deepEqual(renderPlan(showcase, "t", null, { watermark: null }), plain);
+  const marked = renderPlan(showcase, "t", null, { watermark: mark });
+  for (const [index, scene] of marked.scenes.entries()) {
+    assert.equal(scene.marked, true, scene.id);
+    assert.equal("marked" in plain.scenes[index], false, "a plan without the mark says nothing of it");
+    for (const [at, state] of scene.states.entries()) {
+      assert.ok(state.html.includes(`<img class="chrome-mark" alt="" src="${uri}" style="position:absolute;left:${mark.box.x}px;top:${mark.box.y}px;width:${mark.box.width}px;height:${mark.box.height}px">`), scene.id);
+      assert.doesNotMatch(state.html, /chrome-brand/);
+      assert.notEqual(state.key, plain.scenes[index].states[at].key, "the mark's bytes are part of the frame key");
+      assert.equal(state.text, plain.scenes[index].states[at].text.replace("MOKAAIR", ""), "and no part of the text the glyph check reads");
+    }
+  }
+  assert.equal(marked.thumbnail.key, plain.thumbnail.key, "a thumbnail carries no mark");
+
+  // Illustrated slides: assemble drifts a card with one state like a keyframe, so its corner is
+  // left empty and the mark is laid over its segment; a card with reveals stays where it is.
+  const plan = renderPlan(illustratedFixture(), "t", null, { watermark: mark });
+  assert.deepEqual(plan.scenes.map((scene) => [scene.id, scene.kind, scene.marked]), [
+    ["hook", "stills", false], ["podium", "clip", undefined], ["desk", "clip", undefined], ["clock", "clip", undefined],
+    ["numbers", "stills", true], ["race", "clip", undefined], ["rule", "stills", false], ["door", "clip", undefined], ["wrap", "stills", false],
+  ]);
+  const scene = (id) => plan.scenes.find((each) => each.id === id);
+  assert.doesNotMatch(scene("hook").states[0].html, /chrome-mark|chrome-brand/);
+  assert.equal(scene("numbers").states.length, 3);
+  for (const state of scene("numbers").states) assert.match(state.html, /chrome-mark/);
+
+  // A drama's cards are never moved, whatever their states.
+  for (const each of renderPlan(dramaFixture(), "t", null, { watermark: mark }).scenes) assert.equal(each.marked, each.kind === "clip" ? undefined : true, each.id);
+});
+
+test("render decides the channel mark once: a first drawing names and pins it, and a cut that already exists is drawn as it always was", async () => {
+  const mark = watermark();
+  const captures = [];
+  let out = "";
+  let problems = [];
+  const context = (box) => ({
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work },
+    stdout: { write: (text) => (out += text) },
+    stderr: { write: (text) => (out += text) },
+    now: () => new Date("2026-10-12T00:00:00Z"),
+    openRenderer: async () => ({
+      capture: async (key, html) => {
+        captures.push({ key, html });
+        return { still: Buffer.from(`png ${key}`), frames: [], problems };
+      },
+      sheet: async () => Buffer.from("sheet"),
+      close: async () => {},
+    }),
+  });
+  const manifestOf = (box) => JSON.parse(readFileSync(path.join(box.workdir, "frames", "manifest.json"), "utf8"));
+  const pinOf = (box) => path.join(box.workdir, WATERMARK_FILE);
+  const cards = () => captures.filter((capture) => /chrome-(mark|brand)/.test(capture.html));
+  const states = (box) => manifestOf(box).scenes.reduce((sum, scene) => sum + scene.states.length, 0);
+
+  const fresh = sandbox();
+  assert.equal(await main(["render", "--slug", fresh.slug], context(fresh)), EXIT.ok, out);
+  assert.deepEqual(manifestOf(fresh).watermark, watermarkRecord(mark));
+  assert.deepEqual(manifestOf(fresh).scenes.map((scene) => scene.marked), [true, true, true]);
+  assert.deepEqual(JSON.parse(readFileSync(pinOf(fresh), "utf8")), { schema_version: 1, id: mark.id, sha256: mark.sha256, adopted_at: "2026-10-12T00:00:00.000Z" });
+  assert.equal(cards().length, states(fresh));
+  assert.ok(cards().every((capture) => capture.html.includes("chrome-mark") && !capture.html.includes("chrome-brand")));
+  // Once the cut exists, the pin is what keeps its frames: nothing is drawn again.
+  writeFileSync(path.join(fresh.workdir, "final.mp4"), "cut");
+  writeFileSync(path.join(fresh.workdir, "checks.json"), "{}");
+  out = "";
+  assert.equal(await main(["render", "--slug", fresh.slug], context(fresh)), EXIT.ok, out);
+  assert.match(out, new RegExp(`0 states drawn, ${states(fresh)} reused`));
+  assert.deepEqual(manifestOf(fresh).watermark, watermarkRecord(mark));
+
+  // A cut made before the mark: the brand word as before, and nothing in the manifest or beside it.
+  const old = sandbox();
+  mkdirSync(old.workdir, { recursive: true });
+  writeFileSync(path.join(old.workdir, "final.mp4"), "cut");
+  captures.length = 0;
+  assert.equal(await main(["render", "--slug", old.slug], context(old)), EXIT.ok, out);
+  assert.equal("watermark" in manifestOf(old), false);
+  assert.ok(manifestOf(old).scenes.every((scene) => !("marked" in scene)));
+  assert.equal(existsSync(pinOf(old)), false);
+  assert.equal(cards().length, states(old));
+  assert.ok(cards().every((capture) => capture.html.includes('<div class="chrome-brand">MOKAAIR</div>')));
+  // Asked for, an unapproved cut takes the mark, and keeps it.
+  assert.equal(await main(["render", "--slug", old.slug, "--adopt-watermark"], context(old)), EXIT.ok, out);
+  assert.deepEqual(manifestOf(old).watermark, watermarkRecord(mark));
+  assert.ok(existsSync(pinOf(old)));
+
+  // An approved cut refuses, before anything is drawn or written.
+  const approved = sandbox();
+  mkdirSync(approved.workdir, { recursive: true });
+  writeFileSync(path.join(approved.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final" }] }));
+  captures.length = 0;
+  out = "";
+  assert.equal(await main(["render", "--slug", approved.slug, "--adopt-watermark"], context(approved)), EXIT.usage);
+  assert.match(out, /already has a final or publish approval; its pictures stay as they are/);
+  assert.equal(captures.length, 0);
+  assert.equal(existsSync(path.join(approved.workdir, "frames", "manifest.json")), false);
+
+  // A render that stops on a layout problem writes no manifest, so it pins nothing either.
+  const broken = sandbox();
+  problems = ["text does not fit even at 60% size"];
+  out = "";
+  assert.equal(await main(["render", "--slug", broken.slug], context(broken)), EXIT.lint, out);
+  assert.equal(existsSync(pinOf(broken)), false);
+  assert.equal(existsSync(path.join(broken.workdir, "frames", "manifest.json")), false);
 });

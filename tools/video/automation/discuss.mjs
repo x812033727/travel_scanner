@@ -14,13 +14,18 @@ import { hasAnimePolicy, isLongAnime } from "../core/anime-policy.mjs";
 import { atomicWrite, docDir, readJson } from "../core/paths.mjs";
 import { AutomationError, OUTPUT_INVALID, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { JOB_GONE_KIND } from "./run-receipts.mjs";
-import { documentProblem } from "./series.mjs";
+import { EXPLAINER_DISCUSS_VARIANTS, explainerVariants } from "./explainer-series.mjs";
+import { documentProblem, isExplainerOneOff } from "./series.mjs";
 
 export const REPLY_MAX_CHARS = 8_000;
 // The writer's variants that answer a line on a screenplay (answerScript). Both are durable jobs
 // (client.mjs run), so one may still be running on the server when its unit ends; flow.mjs reads
 // a video's saved runs by these to take the discussion up before the video's own stages.
-export const SCRIPT_DISCUSSION_VARIANTS = Object.freeze(["discuss", "anime-discuss-plan"]);
+export const SCRIPT_DISCUSSION_VARIANTS = Object.freeze(["discuss", "anime-discuss-plan", ...EXPLAINER_DISCUSS_VARIANTS]);
+/** The discussion variant of a series document: an explainer series' own for its bible, else the story's. */
+export const documentDiscussVariant = (series) => (isExplainerOneOff(series) ? explainerVariants(series.style_preset)?.discuss ?? "discuss" : "discuss");
+/** The discussion variant of a screenplay: an explainer series' own, else the story's. */
+export const scriptDiscussVariant = (state) => (state?.format === "drama" ? explainerVariants(state.style_preset)?.discuss ?? "discuss" : "discuss");
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
 
@@ -49,6 +54,38 @@ export const lostReply = (why) => `模型的請求送出後沒有收到回答（
 
 /** The reply to a line on a document whose planner request the site refused: the same request would be refused again. */
 export const refusedReply = (why) => `網站拒絕了這次的模型請求（${why}），同樣的請求再送一次也會被拒絕。這條討論串先停在這裡；請換個說法再問一次，或直接改文件。`;
+
+/**
+ * The reply to a line on a document whose planner request kept failing in a way that may pass
+ * (a 5xx, a rate limit): told once, after MAX_DOCUMENT_WAITS runs. The site hands over the
+ * oldest unanswered line of every series, so a line that waits for ever holds every thread
+ * behind it.
+ */
+export const failingReply = (runs, why) => `模型的請求連續 ${runs} 輪都沒有完成（${why}）。這條討論串先停在這裡，讓後面的討論繼續；要再問，請在這裡再寫一次。`;
+
+// How many runs a document line waits on a request that may pass before the owner is told.
+export const MAX_DOCUMENT_WAITS = 6;
+// The model service's own refusal (apps/api answers a vendor 4xx with it: a prompt over the
+// model's context on a long setting, a revoked key): a 502 that errorScope reads as "wait", but
+// the same request is refused again on every run.
+const SERVICE_REFUSED = "video_ai_upstream_failed";
+// Per series, beside its planner answers: how many runs each document line has waited.
+const WAITS_FILE = "discussion-waits.json";
+
+function lineWaits(dir) {
+  return readJson(path.join(dir, WAITS_FILE), {});
+}
+
+/** Set (or, with 0, clear) how many runs line `id` has waited. */
+function setLineWaits(dir, id, runs) {
+  const file = path.join(dir, WAITS_FILE);
+  const waits = lineWaits(dir);
+  if (!runs && !(id in waits)) return;
+  if (runs) waits[id] = runs;
+  else delete waits[id];
+  if (Object.keys(waits).length) atomicWrite(file, `${JSON.stringify(waits, null, 2)}\n`);
+  else rmSync(file, { force: true });
+}
 
 /**
  * The reply to a line on the screenplay of a video blocked for a reason that is not this line's
@@ -184,30 +221,43 @@ export async function answerDocument(automation, job) {
   if (await takeUnposted(automation, dir, job.message.id) !== undefined) return `series ${series.slug}: the planner's answer on ${job.subject}, kept when the site did not take it, is posted`;
   let answer;
   try {
-    answer = await automation.stage("planner", slug, documentDiscussionPayload(automation, job), 32_000, "drama", "discuss", series);
+    answer = await automation.stage("planner", slug, documentDiscussionPayload(automation, job), 32_000, "drama", documentDiscussVariant(series), series);
   } catch (error) {
     if (!(error instanceof AutomationError)) throw error;
     if (error.code === OUTPUT_INVALID) {
       automation.keepAnswer(dir, "discuss");
       await postAnswer(automation, dir, job.message.id, { reply_md: unusableReply(error.message), revised: null });
+      setLineWaits(dir, job.message.id, 0);
       return `series ${series.slug}: the planner gave no usable answer on ${job.subject} (${error.message}); the owner is told and the thread waits`;
     }
     const why = error.why ?? error.message;
     if (error.code === RUN_UNCERTAIN) {
       await postAnswer(automation, dir, job.message.id, { reply_md: lostReply(why), revised: null });
+      setLineWaits(dir, job.message.id, 0);
       return `series ${series.slug}: the planner's answer on ${job.subject} was lost on the way (${why}); the owner is told, and it is not asked again on its own`;
     }
     const scope = automation.errorScope(error);
-    if (scope === "video") {
-      await automation.api.messageAnswer(job.message.id, { reply_md: refusedReply(`${error.code || `HTTP ${error.status}`}: ${error.message}`), revised: null });
-      return `series ${series.slug}: the site refused the planner request on ${job.subject} (${error.code || `HTTP ${error.status}`}: ${error.message}); the owner is told and the thread waits`;
+    const said = `${error.code || `HTTP ${error.status}`}: ${error.message}`;
+    if (scope === "video" || (scope === "wait" && error.code === SERVICE_REFUSED)) {
+      await automation.api.messageAnswer(job.message.id, { reply_md: refusedReply(said), revised: null });
+      setLineWaits(dir, job.message.id, 0);
+      return `series ${series.slug}: the site refused the planner request on ${job.subject} (${said}); the owner is told and the thread waits`;
     }
     if (scope === "wait") {
+      const runs = (lineWaits(dir)[job.message.id] ?? 0) + 1;
+      if (runs >= MAX_DOCUMENT_WAITS) {
+        await automation.api.messageAnswer(job.message.id, { reply_md: failingReply(runs, said), revised: null });
+        setLineWaits(dir, job.message.id, 0);
+        return `series ${series.slug}: the planner request on ${job.subject} kept failing for ${runs} runs (${said}); the owner is told and the threads behind it move on`;
+      }
+      setLineWaits(dir, job.message.id, runs);
       automation.waitingLines.add(job.message.id);
-      return `series ${series.slug}: the planner request on ${job.subject} could not finish (${error.code || `HTTP ${error.status}`}: ${error.message}); the line waits for the next run`;
+      return `series ${series.slug}: the planner request on ${job.subject} could not finish (${said}); the line waits for the next run`;
     }
     throw error;
   }
+  // The request got through: the line's earlier waits no longer count.
+  setLineWaits(dir, job.message.id, 0);
   const problem = answerProblem(answer);
   if (problem) {
     automation.keepAnswer(dir, "discuss");
@@ -384,7 +434,7 @@ async function answerHeld(automation, job, state) {
         const revision = await automation.animeRewrite(state, { message: job.message.body_md, thread: threadOf(job), subject: job.subject }, video, "writer", `discuss-${job.message.id}`);
         answer = { reply: answer.reply, revised: { video: revision.video } };
       } else answer = { reply: answer.reply, revised: null };
-    } else answer = await automation.stage("writer", state.slug, scriptDiscussionPayload(automation, job, state, video), 32_000, "drama", "discuss");
+    } else answer = await automation.stage("writer", state.slug, scriptDiscussionPayload(automation, job, state, video), 32_000, "drama", scriptDiscussVariant(state));
   } catch (error) {
     if (!(error instanceof AutomationError)) throw error;
     if (error.code === OUTPUT_INVALID) {

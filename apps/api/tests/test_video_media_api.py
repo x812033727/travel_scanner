@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import copy
 import hashlib
+from decimal import Decimal
 from pathlib import Path
 from typing import Any
 from unittest.mock import AsyncMock
@@ -19,6 +20,8 @@ from app.db import get_session
 from app.models import VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
+from app.video_budget.models import FOLLOWON_SLUGS
+from app.video_budget.service import BudgetError, BudgetSummary, Reservation
 from app.video_media import admin_api, meter
 from app.video_media.jobs import MediaContext
 from app.video_media.models import VideoMediaJob
@@ -41,14 +44,24 @@ def test_only_the_router_raises_app_errors() -> None:
     assert offenders == []
 
 
-def _app(token: VideoToolToken | None = None) -> FastAPI:
+def _app(
+    token: VideoToolToken | None = None,
+    *,
+    schema_revision: str = "0132_video_pilot_budget",
+) -> FastAPI:
     app = FastAPI()
     app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.include_router(admin_api.media_router, prefix="/api/v1")
 
     async def session() -> Any:
         fake = AsyncMock()
-        fake.scalar = AsyncMock(return_value=None)
+
+        async def scalar(statement: Any) -> str | None:
+            if "alembic_version" in str(statement):
+                return schema_revision
+            return None
+
+        fake.scalar = AsyncMock(side_effect=scalar)
         yield fake
 
     app.dependency_overrides[get_session] = session
@@ -99,6 +112,25 @@ def media(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> dict[str, Any]:
     monkeypatch.setattr(admin_api, "get_media_settings", lambda: settings)
     monkeypatch.setattr(admin_api, "enforce_named_rate_limit", AsyncMock())
     monkeypatch.setattr(meter, "month_usd", AsyncMock(return_value=1.25))
+
+    async def pilot_summary(_session: Any, slug: str) -> BudgetSummary:
+        if slug in FOLLOWON_SLUGS:
+            raise BudgetError(503, "video_budget_missing_account", "follow-on not seeded yet")
+        return BudgetSummary(
+            slug=slug,
+            limit_usd=Decimal("25.000000"),
+            reserved_usd=Decimal("1.500000"),
+            settled_usd=Decimal("2.000000"),
+            remaining_usd=Decimal("21.500000"),
+            uncertain_operations=1,
+            settled_operations=2,
+            released_operations=0,
+            overrun_operations=0,
+            total_over_limit=False,
+            over_limit_usd=Decimal("0.000000"),
+        )
+
+    monkeypatch.setattr(admin_api, "summary", pilot_summary)
     return state
 
 
@@ -155,6 +187,24 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
         "remaining": 3000,
     }
     assert body["estimated_usd"] == 1.25 and body["max_usd_per_video"] == 200
+    assert set(body["pilot_budgets"]) == {
+        "story-rolling-suitcase",
+        "story-conveyor-belt-sushi",
+        "story-rolling-suitcase-v2",
+        "story-conveyor-belt-sushi-v2",
+    }
+    assert body["pilot_budgets"]["story-rolling-suitcase"] == {
+        "limit_usd": "25.000000",
+        "reserved_usd": "1.500000",
+        "settled_usd": "2.000000",
+        "remaining_usd": "21.500000",
+        "uncertain_operations": 1,
+        "settled_operations": 2,
+        "released_operations": 0,
+        "overrun_operations": 0,
+        "total_over_limit": False,
+        "over_limit_usd": "0.000000",
+    }
     # Illustrated slides (docs/videos/ILLUSTRATED.md): their own switch, Flash and cap, which the
     # tool's media/stages.mjs reads; a row from before migration 0114 reads the defaults.
     assert body["slides_enabled"] is False and body["slides_max_usd_per_video"] == 20
@@ -174,6 +224,87 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
     # avoidance text minimax.py appends (tools/video/media/prompt-budget.mjs reads these).
     assert body["limits"]["image_prompt_chars"] == 4000
     assert body["limits"]["image_prompt_chars_minimax"] == 1500
+
+
+@pytest.mark.asyncio
+async def test_status_shows_followon_budgets_after_all_five_accounts_exist(
+    media: dict[str, Any], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    previous_summary = vars(admin_api)["summary"]
+
+    async def migrated_summary(session: Any, slug: str) -> BudgetSummary:
+        if slug not in FOLLOWON_SLUGS:
+            return await previous_summary(session, slug)
+        return BudgetSummary(
+            slug=slug,
+            limit_usd=Decimal("5"),
+            reserved_usd=Decimal("0"),
+            settled_usd=Decimal("0"),
+            remaining_usd=Decimal("5"),
+            uncertain_operations=0,
+            settled_operations=0,
+            released_operations=0,
+            overrun_operations=0,
+            total_over_limit=False,
+            over_limit_usd=Decimal("0"),
+        )
+
+    monkeypatch.setattr(admin_api, "summary", migrated_summary)
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_token())), base_url="http://t"
+    ) as client:
+        response = await client.get("/api/v1/video/media/status")
+    assert response.status_code == 200, response.text
+    budgets = response.json()["pilot_budgets"]
+    assert len(budgets) == 9
+    assert {slug: budgets[slug]["limit_usd"] for slug in FOLLOWON_SLUGS} == {
+        slug: "5" for slug in FOLLOWON_SLUGS
+    }
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("slug", "code", "schema_revision"),
+    [
+        (
+            "story-rolling-suitcase",
+            "video_budget_missing_account",
+            "0132_video_pilot_budget",
+        ),
+        (
+            "story-five-lego-legoland",
+            "video_budget_invalid_account",
+            "0132_video_pilot_budget",
+        ),
+        (
+            "story-five-lego-legoland",
+            "video_budget_missing_account",
+            "0133_story_followon_budget",
+        ),
+    ],
+)
+async def test_status_never_hides_missing_legacy_or_invalid_followon_account(
+    media: dict[str, Any],
+    monkeypatch: pytest.MonkeyPatch,
+    slug: str,
+    code: str,
+    schema_revision: str,
+) -> None:
+    previous_summary = vars(admin_api)["summary"]
+
+    async def broken_summary(session: Any, checked_slug: str) -> BudgetSummary:
+        if checked_slug == slug:
+            raise BudgetError(503, code, "account not ready")
+        return await previous_summary(session, checked_slug)
+
+    monkeypatch.setattr(admin_api, "summary", broken_summary)
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_token(), schema_revision=schema_revision)),
+        base_url="http://t",
+    ) as client:
+        response = await client.get("/api/v1/video/media/status")
+    assert response.status_code == 503
+    assert response.json()["code"] == code
 
 
 @pytest.mark.asyncio
@@ -315,3 +446,80 @@ async def test_a_judge_call_spends_one_unit_and_gives_it_back_when_the_judge_fai
         "a call cannot lower the owner's threshold: the settings row is the floor"
     )
     assert await meter.used(media["redis"], meter.JUDGE_CALLS) == 2
+
+
+@pytest.mark.asyncio
+async def test_pilot_judge_requires_a_durable_operation_and_settles_reported_usage(
+    media: dict[str, Any], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    called = 0
+    operation = uuid4()
+    pilot_slug = "story-rolling-suitcase"
+    body = {
+        "slug": pilot_slug,
+        "kind": "keyframe",
+        "files": [{"sha256": "a" * 64, "label": "kf"}],
+        "rubric": [{"key": "identity", "question": "same subject?"}],
+    }
+
+    async def fake_judge(*_args: Any, **_kwargs: Any) -> JudgeOut:
+        nonlocal called
+        called += 1
+        return JudgeOut(
+            scores={"identity": 9},
+            overall=9,
+            passed=True,
+            problems=[],
+            notes="ok",
+            model="gemini-3.8-flash",
+            usage_input_tokens=1000,
+            usage_total_tokens=1200,
+        )
+
+    reserve_mock = AsyncMock(
+        return_value=Reservation(
+            pilot_slug,
+            f"media-judge:{operation}",
+            Decimal("1.032192"),
+            "reserved",
+            True,
+            False,
+            1,
+        )
+    )
+    settle_mock = AsyncMock()
+    monkeypatch.setattr(admin_api, "judge", fake_judge)
+    monkeypatch.setattr(admin_api, "reserve", reserve_mock)
+    monkeypatch.setattr(admin_api, "settle", settle_mock)
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_token())), base_url="http://t"
+    ) as client:
+        missing = await client.post("/api/v1/video/media/judge", json=body)
+        duplicate = await client.post(
+            "/api/v1/video/media/judge", json={**body, "operation_id": str(operation)}
+        )
+        reserve_mock.return_value = Reservation(
+            pilot_slug,
+            f"media-judge:{operation}",
+            Decimal("1.032192"),
+            "reserved",
+            True,
+            True,
+            1,
+        )
+        accepted = await client.post(
+            "/api/v1/video/media/judge", json={**body, "operation_id": str(operation)}
+        )
+
+    assert (
+        missing.status_code == 422
+        and missing.json()["code"] == "video_pilot_budget_operation_required"
+    )
+    assert (
+        duplicate.status_code == 409
+        and duplicate.json()["code"] == "video_pilot_budget_operation_reused"
+    )
+    assert called == 1 and accepted.status_code == 200
+    assert "usage_input_tokens" not in accepted.json()
+    assert reserve_mock.await_args.kwargs["max_usd"] == Decimal("1.032192")
+    assert settle_mock.await_args.kwargs["actual_usd"] == Decimal("0.001500")

@@ -1,0 +1,326 @@
+diff -ru n-pr1/tools/video/automation/discuss.mjs n-pr3/tools/video/automation/discuss.mjs
+--- n-pr1/tools/video/automation/discuss.mjs	2026-10-11 10:39:11.913585300 +0800
++++ n-pr3/tools/video/automation/discuss.mjs	2026-10-11 10:39:26.347304100 +0800
+@@ -14,13 +14,18 @@
+ import { atomicWrite, docDir, readJson } from "../core/paths.mjs";
+ import { AutomationError, OUTPUT_INVALID, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
+ import { JOB_GONE_KIND } from "./run-receipts.mjs";
+-import { documentProblem } from "./series.mjs";
++import { EXPLAINER_DISCUSS_VARIANTS, explainerVariants } from "./explainer-series.mjs";
++import { documentProblem, isExplainerOneOff } from "./series.mjs";
+ 
+ export const REPLY_MAX_CHARS = 8_000;
+ // The writer's variants that answer a line on a screenplay (answerScript). Both are durable jobs
+ // (client.mjs run), so one may still be running on the server when its unit ends; flow.mjs reads
+ // a video's saved runs by these to take the discussion up before the video's own stages.
+-export const SCRIPT_DISCUSSION_VARIANTS = Object.freeze(["discuss", "anime-discuss-plan"]);
++export const SCRIPT_DISCUSSION_VARIANTS = Object.freeze(["discuss", "anime-discuss-plan", ...EXPLAINER_DISCUSS_VARIANTS]);
++/** The discussion variant of a series document: an explainer series' own for its bible, else the story's. */
++export const documentDiscussVariant = (series) => (isExplainerOneOff(series) ? explainerVariants(series.style_preset)?.discuss ?? "discuss" : "discuss");
++/** The discussion variant of a screenplay: an explainer series' own, else the story's. */
++export const scriptDiscussVariant = (state) => (state?.format === "drama" ? explainerVariants(state.style_preset)?.discuss ?? "discuss" : "discuss");
+ const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
+ const isText = (value) => typeof value === "string" && value.trim().length > 0;
+ 
+@@ -184,7 +189,7 @@
+   if (await takeUnposted(automation, dir, job.message.id) !== undefined) return `series ${series.slug}: the planner's answer on ${job.subject}, kept when the site did not take it, is posted`;
+   let answer;
+   try {
+-    answer = await automation.stage("planner", slug, documentDiscussionPayload(automation, job), 32_000, "drama", "discuss", series);
++    answer = await automation.stage("planner", slug, documentDiscussionPayload(automation, job), 32_000, "drama", documentDiscussVariant(series), series);
+   } catch (error) {
+     if (!(error instanceof AutomationError)) throw error;
+     if (error.code === OUTPUT_INVALID) {
+@@ -384,7 +389,7 @@
+         const revision = await automation.animeRewrite(state, { message: job.message.body_md, thread: threadOf(job), subject: job.subject }, video, "writer", `discuss-${job.message.id}`);
+         answer = { reply: answer.reply, revised: { video: revision.video } };
+       } else answer = { reply: answer.reply, revised: null };
+-    } else answer = await automation.stage("writer", state.slug, scriptDiscussionPayload(automation, job, state, video), 32_000, "drama", "discuss");
++    } else answer = await automation.stage("writer", state.slug, scriptDiscussionPayload(automation, job, state, video), 32_000, "drama", scriptDiscussVariant(state));
+   } catch (error) {
+     if (!(error instanceof AutomationError)) throw error;
+     if (error.code === OUTPUT_INVALID) {
+Only in n-pr3/tools/video/automation: explainer-series.mjs
+diff -ru n-pr1/tools/video/automation/flow.mjs n-pr3/tools/video/automation/flow.mjs
+--- n-pr1/tools/video/automation/flow.mjs	2026-10-11 10:39:24.295176100 +0800
++++ n-pr3/tools/video/automation/flow.mjs	2026-10-11 10:39:26.378878100 +0800
+@@ -44,6 +44,7 @@
+ import { AutomationError, OUTPUT_INVALID, PAUSE_CODES, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
+ import { acquireProjectLease, ProjectLeaseError } from "../core/project-lease.mjs";
+ import { discussStep, SCRIPT_DISCUSSION_VARIANTS } from "./discuss.mjs";
++import { explainerProfile, explainerVariants, isExplainerStageVariant } from "./explainer-series.mjs";
+ import { JOB_GONE_KIND, RunReceiptError } from "./run-receipts.mjs";
+ import { pageReader, urlsIn } from "./fetch.mjs";
+ import { advanceStory, fixStoryPrompts } from "./story.mjs";
+@@ -473,6 +474,10 @@
+     settled.look = { preset, ...(video.look ?? {}) };
+     if (isLongAnime(series)) settled.look.preset = "anime-2d";
+     if (isExplainerPreset(preset)) {
++      // A series with a profile of its own (explainer-series.mjs) is drawn from its look's words
++      // alone: a style or a negative the writer added would replace the look every picture is
++      // held to (and MiniMax reads a negative as more prompt), so only the preset is kept.
++      if (explainerProfile(preset)) settled.look = { preset };
+       settled.look.preset = preset;
+       settled.characters = [];
+     }
+@@ -928,7 +933,7 @@
+   variantOf(state) {
+     const episode = episodeVariant(state);
+     if (episode) return episode;
+-    return state.format === "drama" && isExplainerPreset(state.style_preset) ? "explainer" : null;
++    return state.format === "drama" ? explainerVariants(state.style_preset)?.stage ?? null : null;
+   }
+ 
+   /**
+@@ -3041,7 +3046,7 @@
+     if (problem) return this.retryLater(state, "writer", `the script ${problem}`);
+     this.cleared(state, "writer");
+     // An explainer's and an illustrated slides video's two Shorts are drafted with the script (docs/videos/ILLUSTRATED.md).
+-    const shorts = this.variantOf(state) === "explainer" || illustrated(JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"))) ? this.saveShorts(state, answer.shorts) : null;
++    const shorts = isExplainerStageVariant(this.variantOf(state)) || illustrated(JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"))) ? this.saveShorts(state, answer.shorts) : null;
+     saveState(this.workdir(state.slug), state);
+     await report(this.ctx, this.api, state, "fact-checked");
+     return `${state.slug}: script drafted and passes lint${shorts ? `; ${shorts}` : ""}`;
+diff -ru n-pr1/tools/video/automation/prompts.mjs n-pr3/tools/video/automation/prompts.mjs
+--- n-pr1/tools/video/automation/prompts.mjs	2026-10-11 10:39:12.285653100 +0800
++++ n-pr3/tools/video/automation/prompts.mjs	2026-10-11 10:39:26.420344500 +0800
+@@ -11,6 +11,7 @@
+ import { isLongAnime } from "../core/anime-policy.mjs";
+ import { SERIES_SEPARATOR, TAGS_MAX_CHARS, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_MAX_CHARS, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
+ import { HEARD_RULES, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
++import { EXPLAINER_SERIES_INSTRUCTIONS } from "./explainer-series.mjs";
+ import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
+ 
+ const SKILL = path.join(".agents", "skills", "youtube-video", "references");
+@@ -773,11 +774,15 @@
+   // A brand story's stages (docs/videos/STORY.md) are variants kept in story-prompts.mjs.
+   const fromSourceText = SOURCE_INSTRUCTIONS[source]?.[variant ? `${stage}:${variant}` : stage];
+   const anime = isLongAnime(series);
+-  const base = (anime ? animeInstructions(stage, variant) : null) || fromSourceText || (variant && (VARIANT_INSTRUCTIONS[`${stage}:${variant}`] || STORY_INSTRUCTIONS[`${stage}:${variant}`])) || (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
++  // An explainer series with a profile of its own (explainer-series.mjs) has its stage texts there.
++  const seriesOwn = variant && Object.hasOwn(EXPLAINER_SERIES_INSTRUCTIONS, `${stage}:${variant}`) ? EXPLAINER_SERIES_INSTRUCTIONS[`${stage}:${variant}`] : null;
++  const base = (anime ? animeInstructions(stage, variant) : null) || fromSourceText || (variant && (VARIANT_INSTRUCTIONS[`${stage}:${variant}`] || STORY_INSTRUCTIONS[`${stage}:${variant}`] || seriesOwn)) || (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
+   const parts = [base];
+   // A binge series' genre section (docs/videos/BINGE.md) for the stages that plan, write or
+   // check the story; the listener, the translator and the caption reviewer do not need it.
+-  const genre = !anime && GENRE_STAGES.has(stage) ? genreBlock(series) : "";
++  // A one-off's series row carries the long-series form's default genre, which is none of such
++  // an explainer's business: its stages take no genre section.
++  const genre = !anime && base !== seriesOwn && GENRE_STAGES.has(stage) ? genreBlock(series) : "";
+   if (genre) parts.push(genre);
+   const belief = typeof stance === "string" && STANCE_STAGES.has(stage) ? stance.trim() : "";
+   if (belief) parts.push(`${STANCE_HEADING}\n${belief}`);
+diff -ru n-pr1/tools/video/automation/series.mjs n-pr3/tools/video/automation/series.mjs
+--- n-pr1/tools/video/automation/series.mjs	2026-10-11 10:39:24.292173900 +0800
++++ n-pr3/tools/video/automation/series.mjs	2026-10-11 10:39:26.445323000 +0800
+@@ -19,6 +19,7 @@
+ import { eachLine } from "../core/schema.mjs";
+ import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
+ import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
++import { explainerProfile, explainerVariants } from "./explainer-series.mjs";
+ import { BEATS, GENRE_SPECS, HOOK_TYPES, LEAD_ARCS, MIN_SATISFACTION } from "./prompts.mjs";
+ import { startStory } from "./story.mjs";
+ 
+@@ -57,7 +58,9 @@
+  */
+ export const isExplainerOneOff = (series) => isOneOff(series) && isExplainerPreset(series?.style_preset);
+ /** The planner prompt of a document: its kind, or the explainer's bible. */
+-export const documentVariant = (kind, series) => (kind === "bible" && isExplainerOneOff(series) ? "bible-explainer" : kind);
++export const documentVariant = (kind, series) => (kind === "bible" && isExplainerOneOff(series) ? explainerVariants(series.style_preset)?.bible ?? "bible-explainer" : kind);
++/** Whether a one-off is an explainer of a series with a profile of its own (explainer-series.mjs). */
++const isProfiledExplainer = (series) => isExplainerOneOff(series) && explainerProfile(series.style_preset) !== null;
+ /** Whether a series' genre carries the retention rules (the classic xianxia series does not). */
+ export const retentionRequired = (series) => !hasAnimePolicy(series) && Boolean(GENRE_SPECS[series?.genre]?.retention);
+ 
+@@ -518,7 +521,7 @@
+   const base = {
+     kind: job.kind,
+     series: seriesFacts(series),
+-    genre_spec: isLongAnime(series) ? null : GENRE_SPECS[series.genre] ?? null,
++    genre_spec: isLongAnime(series) || isProfiledExplainer(series) ? null : GENRE_SPECS[series.genre] ?? null,
+     series_reference: refs.series,
+     drama: refs.drama,
+     drama_settings: automation.dramaPayload({ style_preset: series.style_preset }).drama_settings,
+diff -ru n-pr1/tools/video/automation/series.test.mjs n-pr3/tools/video/automation/series.test.mjs
+--- n-pr1/tools/video/automation/series.test.mjs	2026-10-11 10:39:12.331586100 +0800
++++ n-pr3/tools/video/automation/series.test.mjs	2026-10-11 10:39:26.473610000 +0800
+@@ -2307,3 +2307,55 @@
+   assert.deepEqual(scriptVerdict(passing, SERIES, null), { passed: true, problems: [] }, "without a report (a long anime, no cast) nothing is added");
+   assert.deepEqual(scriptVerdict(passing, SERIES, { applies: false, checks: [] }), { passed: true, problems: [] });
+ });
++
++// PULL REQUEST 3 (scratch): a cute-mystery one-off end to end, beside the flat-explainer one above.
++test("a cute-mystery one-off is planned, written and checked with 奇聞檔案局's own prompts, keeps its look and its channel thumbnail, and drafts its two Shorts", async () => {
++  const box = sandbox();
++  const curio = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: "cute-mystery", target_minutes: 10, genre: "xianxia-bonds", lead: "dual-male", visual_tier: "clips" };
++  const slug = "one-off-7a1b2c3d-e001";
++  const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", reasons: ["流傳的版本：雷聲是比較晚才發出來的。", "紀錄：光速約每秒三十萬公里。", "紀錄：聲速約每秒三百四十公尺。", "目前最站得住的解釋：同時發生，光先到。"], hook: "閃電亮了，你數到幾？", closing: "存檔。下一份檔案，我們繼續翻。", pillar: "M", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"] };
++  const bible = { body_md: "# 雷聲\n## 問題\n主軸：奇異現象與科學\n…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
++  const drafted = JSON.parse(readFileSync(new URL("../core/fixtures/explainer/shorts.json", import.meta.url), "utf8")).map(({ titles, description, scenes }) => ({ titles, description, scenes }));
++  const thumbnail = { template: "thumb", data: { headline: "光？\n**先到**", tag: "奇異現象", sub: "數三秒的檔案", shot: "flash" } };
++  const answers = {
++    "planner:bible-explainer-mystery": () => bible,
++    "writer:explainer-mystery": () => ({ video: { ...explainerFixture(), slug, look: { preset: "flat-explainer", style: "my own", negative: "text" }, thumbnail }, claims: "c1｜光速｜https://en.wikipedia.org/wiki/Speed_of_sound｜2026-09-28｜race\n", lexicon_additions: {}, shorts: drafted }),
++  };
++  const episode = { number: 1, chapter_number: 1, title: outline.title, logline: outline.logline, beats: outline, status: "ready", slug: null, recap: null, started_at: null, finished_at: null, video: null };
++  const setting = { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...bible, status: "approved" };
++  const oneOffStart = (body) => ({
++    request: { id: "curio-request", premise: curio.premise, title: "雷聲", source_guide: null, style_preset: "cute-mystery", target_minutes: 10, note: null, status: "started", slug: body.slug, series_slug: curio.slug, episode_number: 1 },
++    episode: { ...episode, status: "started", slug: body.slug },
++    context: { series: curio, setting, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [episode], recaps: [], mysteries: [] },
++  });
++  const site = fakeSite({ jobs: [job("bible", { series: curio, chapter_number: null, context: { ...job("bible").context, series: curio, setting: null, mysteries: [] } }), job("episode", { series: { ...curio, status: "active", episodes_ready: 1 }, episode })], answers, oneOffStart });
++  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-28T01:00:00Z") });
++  const automation = new Automation(ctx, automationClient(ctx), site.settings);
++  automation.refs = smallRefs;
++
++  assert.match(await automation.step(), /the story bible planned \(version 1\)/);
++  assert.equal(site.calls.run[0].variant, "bible-explainer-mystery");
++  assert.match(site.calls.run[0].instructions, /BIBLE of ONE 奇聞檔案局 file/);
++  assert.doesNotMatch(site.calls.run[0].instructions, /Genre and retention|仙俠/);
++  assert.equal(site.calls.run[0].payload.genre_spec, null);
++  assert.equal(site.calls.run[0].payload.series.genre, "xianxia-bonds", "seriesFacts is what it was");
++
++  assert.match(await automation.step(), /started from the approved story bible/);
++  const dir = path.join(box.root, "docs", "videos", slug);
++  assert.match(readFileSync(path.join(dir, "brief.md"), "utf8"), /## 原因\n- 流傳的版本：[^\n]+\n- 紀錄：[^\n]+\n- 紀錄：[^\n]+\n- 目前最站得住的解釋：/);
++  const state = automatedVideos(box.work).find((each) => each.slug === slug);
++  assert.equal(state.style_preset, "cute-mystery");
++
++  assert.match(await automation.step(), /script drafted and passes lint; 2 Shorts drafted/);
++  const writer = site.calls.run.find((call) => call.stage === "writer");
++  assert.equal(writer.variant, "explainer-mystery");
++  assert.equal(writer.payload.beats.pillar, "M", "the bible's pillar reaches the writer in beats");
++  assert.match(writer.instructions, /"look": \{"preset": "cute-mystery"\}/);
++  const video = readJson(path.join(dir, "video.json"));
++  assert.deepEqual(video.look, { preset: "cute-mystery" }, "the series' look is not the writer's to change");
++  assert.deepEqual(video.characters, []);
++  assert.deepEqual(video.thumbnail, thumbnail, "the channel's thumbnail arrives as written: no pillar is added");
++  assert.deepEqual(JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")).map((short) => short.series), ["illustrated", "illustrated"]);
++  assert.match(await automation.step(), /fact-check round 1/);
++  assert.equal(site.calls.run.find((call) => call.stage === "verifier").variant, "explainer-mystery");
++});
+diff -ru n-pr1/tools/video/core/drama.mjs n-pr3/tools/video/core/drama.mjs
+--- n-pr1/tools/video/core/drama.mjs	2026-10-11 10:39:24.286847000 +0800
++++ n-pr3/tools/video/core/drama.mjs	2026-10-11 10:39:26.517127000 +0800
+@@ -19,6 +19,14 @@
+ // An explainer (the flat-explainer preset, docs/videos/so-thats-why/) also puts its numbers and
+ // comparisons on cards between the illustrations.
+ export const EXPLAINER_CARD_TEMPLATES = [...CARD_TEMPLATES, "big", "stats", "compare"];
++// The cute explainer looks (2026-10-10) were piloted as illustrated slides and keep on the host
++// what those pilots were measured with: the steps and table cards, the judge's yes/no checks
++// (media/keyframes.mjs) and the picture-variety rules (pictureVarietyProblems). flat-explainer
++// is not one of them and keeps what it had.
++export const CUTE_EXPLAINER_PRESETS = Object.freeze(["cute-cartoon", "cute-mystery"]);
++export const CUTE_EXPLAINER_CARD_TEMPLATES = [...EXPLAINER_CARD_TEMPLATES, "steps", "table"];
++/** The cards an explainer of this preset may put between its shots. */
++export const explainerCardTemplates = (preset) => (CUTE_EXPLAINER_PRESETS.includes(preset) ? CUTE_EXPLAINER_CARD_TEMPLATES : EXPLAINER_CARD_TEMPLATES);
+ export const NARRATOR = "narrator";
+ export const CHARACTER_ID = /^[a-z][a-z0-9-]{1,23}$/;
+ export const FIT_MODES = ["auto", "freeze", "slow", "trim"];
+@@ -210,6 +218,7 @@
+ /** A drama drawn in the explainer preset: narrator only, every shot a still. */
+ export const isExplainer = (doc) => isDrama(doc) && isExplainerPreset(doc.look?.preset);
+ export const explainerSeries = (doc) => (isExplainer(doc) ? EXPLAINER_SERIES[doc.look.preset] : null);
++export const isCuteExplainer = (doc) => isDrama(doc) && CUTE_EXPLAINER_PRESETS.includes(doc?.look?.preset);
+ /**
+  * Whether the eight-minute floor (MIN_EPISODE_MINUTES) holds: slides, screencasts and the
+  * explainer, never a drama episode, a brand story or a compilation.
+@@ -570,7 +579,7 @@
+   if (!drama && pictures && doc.look === undefined) errors.push({ path: "look", message: "illustrations need a look: name a preset such as \"" + SLIDES_PRESET + "\" (docs/videos/ILLUSTRATED.md)" });
+   if (!drama && doc.look !== undefined && !pictures) errors.push({ path: "look", message: `a slides video with no "${SHOT_TEMPLATE}" scenes has nothing to draw with a look` });
+   const explainer = isExplainer(doc);
+-  const cards = explainer ? EXPLAINER_CARD_TEMPLATES : CARD_TEMPLATES;
++  const cards = explainer ? explainerCardTemplates(doc.look?.preset) : CARD_TEMPLATES;
+   if (explainer && characterIds.size) errors.push({ path: "characters", message: `an explainer (look preset "${doc.look.preset}") has no characters: the narrator tells it` });
+   if (drama && doc.series !== undefined) {
+     validateSeries(doc.series, errors, isLongAnime(doc));
+@@ -798,6 +807,9 @@
+ // Where and when the light comes from: a video told entirely at night under one lamp is the
+ // other sameness (the first scripts put a lamp in a quarter of their pictures and the night in
+ // half); more than half of the pictures in the dark is a warning per video.
++// The cute looks' own words (docs/videos/history-curiosity/look.md §每張 prompt 怎麼寫): the medium
++// only, since their palette words are also things (a navy officer, cream in a jug).
++const CUTE_LOOK_WORDS = /\b(?:cartoon(?:ish|y)?|chibi|kawaii|anime|cel[- ]shad(?:ed|ing)|flat colou?rs?|thick (?:clean |dark )*outlines?)\b/i;
+ const DARK_LIGHT = /\b(?:night|midnight|dusk|late evening|after dark|\d\s*a\.?m\b|lamp|lamplight|lantern|candle|torch|moonlight|neon|street[- ]?light|floodlight|single (?:hanging |bare |pendant )?(?:bulb|light))\b/i;
+ export const DARK_SHARE_WARN = 1 / 2;
+ // Words of a prompt that are not a place or an object (grammar, sizes, light, materials, the
+@@ -830,7 +842,8 @@
+ export function pictureVarietyProblems(doc) {
+   const errors = [];
+   const warnings = [];
+-  if (!illustrated(doc)) return { errors, warnings };
++  const cute = isCuteExplainer(doc);
++  if (!illustrated(doc) && !cute) return { errors, warnings };
+   const shots = [];
+   doc.scenes.forEach((scene, index) => {
+     if (isShot(scene)) shots.push({ scene, where: `scenes[${index}] (${scene.id})` });
+@@ -848,7 +861,7 @@
+     if (run === SAME_MOVE_RUN_MAX + 1) errors.push({ path: `${where}.data.camera`, message: `${SAME_MOVE_RUN_MAX + 1} stills in a row under "${move}"; alternate the moves (push in, pull out, pan left, pan right, tilt up, tilt down, drift)` });
+     const prompt = String(scene.data?.prompt ?? "");
+     if (!SHOT_SIZE.test(prompt)) unsized.push(scene.id);
+-    const look = prompt.match(LOOK_WORDS);
++    const look = prompt.match(LOOK_WORDS) ?? (cute ? prompt.match(CUTE_LOOK_WORDS) : null);
+     if (look) {
+       restated.push(scene.id);
+       lookWords.add(look[0].toLowerCase());
+diff -ru n-pr1/tools/video/media/keyframes.mjs n-pr3/tools/video/media/keyframes.mjs
+--- n-pr1/tools/video/media/keyframes.mjs	2026-10-11 10:39:17.246437000 +0800
++++ n-pr3/tools/video/media/keyframes.mjs	2026-10-11 10:39:26.552220000 +0800
+@@ -11,7 +11,7 @@
+ import { parseArgs } from "node:util";
+ 
+ import { approvalState } from "../core/approvals.mjs";
+-import { burnIn, drawnShotScenes, hasCast, hasPictures, illustrated, isExplainer, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
++import { burnIn, drawnShotScenes, hasCast, hasPictures, illustrated, isCuteExplainer, isExplainer, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
+ import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
+ import { ARTIFACTS, keyframeProblems, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
+ import { visualHash } from "../core/timeline.mjs";
+@@ -516,7 +516,7 @@
+   const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "keyframes", imageVersion, format, now: ctx.now });
+   // Illustrated slides are judged by yes/no fault checks once the server takes them; a drama's
+   // pictures, and any picture on an older server, are scored on the rubric as before.
+-  const checks = slides && Boolean(status.limits?.judge_checks);
++  const checks = (slides || isCuteExplainer(doc)) && Boolean(status.limits?.judge_checks);
+   const size = sizeFor(status);
+   mkdirSync(path.join(workdir, "keyframes"), { recursive: true });
+   // The chosen sheets and the style frames go to the media store (the server may have pruned
+diff -ru n-pr1/tools/video/media/look-keyframes.test.mjs n-pr3/tools/video/media/look-keyframes.test.mjs
+--- n-pr1/tools/video/media/look-keyframes.test.mjs	2026-10-11 10:39:17.624599100 +0800
++++ n-pr3/tools/video/media/look-keyframes.test.mjs	2026-10-11 10:39:26.581471000 +0800
+@@ -1654,3 +1654,35 @@
+   assert.equal(site.state.images.length, images, "no sheet was drawn");
+   assert.deepEqual(files(), before, "no sheet or choice was written");
+ });
++
++// PULL REQUEST 3 (scratch): the cute explainer looks are judged by the yes/no checks; flat-explainer keeps the scored rubric.
++test("a cute explainer's stills are judged by the fault checks the illustrated slides are, and the flat-explainer's stay on the scored rubric", async () => {
++  const checksStatus = { ...STATUS, limits: { judge_checks: 1 } };
++  for (const preset of ["cute-mystery", "cute-cartoon"]) {
++    const box = sandbox("fixture-explainer", "explainer");
++    rewrite(box, (doc) => {
++      doc.look = { preset };
++      doc.subtitles = { burn_in: false };
++    });
++    const site = mediaSite({ status: checksStatus, verdicts: () => ({ overall: 9.29, passed: true }) });
++    const run = context(box, site.fetchImpl);
++    assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
++    assert.ok(site.state.judges.length > 0);
++    for (const request of site.state.judges) assert.deepEqual(request.rubric, keyframeChecks(), preset);
++    assert.match(site.state.images[0].prompt, /Style: cute Taiwanese YouTube explainer cartoon/);
++    assert.ok(site.state.images.every((request) => request.references.length === 0), "no style plate and no sheet");
++    // An older server without the checks still scores them on the rubric.
++    const older = sandbox("fixture-explainer", "explainer");
++    rewrite(older, (doc) => { doc.look = { preset }; });
++    const olderSite = mediaSite({ verdicts: () => ({ overall: 8, passed: true }) });
++    const olderRun = context(older, olderSite.fetchImpl);
++    assert.equal(await main(["keyframes", "--slug", older.slug], olderRun.ctx), EXIT.ok, olderRun.out.stderr);
++    assert.ok(olderSite.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined)));
++  }
++  const flat = sandbox("fixture-explainer", "explainer");
++  const flatSite = mediaSite({ status: checksStatus, verdicts: () => ({ overall: 8, passed: true }) });
++  const told = context(flat, flatSite.fetchImpl);
++  assert.equal(await main(["keyframes", "--slug", flat.slug], told.ctx), EXIT.ok, told.out.stderr);
++  assert.ok(flatSite.state.judges.length > 0 && flatSite.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined)), "flat-explainer keeps the question it had");
++  assert.deepEqual(flatSite.state.judges[0].rubric.map((item) => item.key), ["prompt", "style", "clean", "no_text", "subtitle_band"]);
++});

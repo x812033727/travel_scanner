@@ -36,12 +36,16 @@ const SCORES = ["stance", "demo", "advice", "sponsored"];
  * The judge's answer as an item verdict: { ok, detail }. The endpoint answers
  * { stance, demo, advice, sponsored, passed, note }: `passed` is the verdict and `note` is Jev's
  * sentence for the review card, passed or not. An answer without a verdict is a failure, never
- * a pass.
+ * a pass. `demo` is null for a video that is not asked for a demonstration (an explainer, a
+ * story, a cut Short): the site's note says so (「有示範：不適用（解說）」), and the line
+ * written here when there is no note says it was not asked instead of leaving it out.
  */
 export function policyVerdict(answer) {
   if (typeof answer?.passed !== "boolean") return { ok: false, detail: "the judge answered without a verdict" };
   const note = typeof answer.note === "string" && answer.note.trim() ? answer.note.trim() : null;
-  const scores = SCORES.filter((name) => typeof answer[name] === "number").map((name) => `${name} ${answer[name].toFixed(2)}`).join(", ");
+  const scores = SCORES.filter((name) => typeof answer[name] === "number" || (name === "demo" && answer.demo === null))
+    .map((name) => (answer[name] === null ? "demo not asked" : `${name} ${answer[name].toFixed(2)}`))
+    .join(", ");
   const detail = note ?? `${answer.passed ? "Jev passed the narration" : "Jev did not pass the narration"}${scores ? `: ${scores}` : ""}`;
   return { ok: answer.passed, detail };
 }
