@@ -195,6 +195,31 @@ test("an old passing assemble item is rechecked against the current long-video f
   assert.equal(assembleItem({ ...input, doc: { format: "slides", slug: "unrelated-video" }, timeline: null }).ok, true);
 });
 
+test("QA accepts only the exact A01 measured 7–8 minute body; bookends do not pad it", () => {
+  const a01 = {
+    slug: "story-rolling-suitcase-v2", format: "drama", category: "story",
+    target_minutes: [7, 8], look: { preset: "cute-mystery" },
+    series: { slug: "brand-stories-curio-pilot-v2", episode: 1, chapter: 1 },
+  };
+  const input = (doc, frames, intro = 0, outro = 0) => {
+    const speech_hash = "speech";
+    const timeline = { fps: 30, total_frames: frames, speech_hash };
+    const branded = intro + outro > 0;
+    const presented = branded
+      ? { fps: 30, total_frames: frames + intro + outro, body_total_frames: frames, speech_hash, branding_hash: "bookends" }
+      : timeline;
+    const checks = { ok: true, speech_hash, metrics: { frames: presented.total_frames, fps: 30 } };
+    if (branded) checks.branding = { intro_frames: intro, outro_frames: outro, body_frames: frames, hash: "bookends" };
+    return { doc, timeline, presented, timelineCurrent: true, checks, current: true, finalExists: true };
+  };
+  assert.equal(assembleItem(input(a01, 420 * 30)).ok, true);
+  assert.equal(assembleItem(input(a01, 480 * 30, 450, 450)).ok, true);
+  assert.match(assembleItem(input(a01, 420 * 30 - 1, 900, 900)).detail, /body is 12599 frames/);
+  assert.match(assembleItem(input(a01, 480 * 30 + 1)).detail, /A01 compact story body/);
+  const b18 = { ...a01, slug: "story-conveyor-belt-sushi-v2", series: { ...a01.series, episode: 2 } };
+  assert.match(assembleItem(input(b18, 420 * 30)).detail, /needs at least 14400 frames/);
+});
+
 test("QA forwards actual body and presentation timelines to its existing assemble item", async (t) => {
   const box = sandbox();
   t.after(() => rmSync(box.base, { recursive: true, force: true }));
