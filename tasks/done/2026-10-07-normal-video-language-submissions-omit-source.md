@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-normal-video-language-submissions-omit-source
 title: Normal video language submissions omit source manifest and metadata
-status: open
+status: done
 priority: P1
 area: tools
 owner:
 claimed_at:
 created_at: 2026-10-07T03:41:22Z
-completed_at:
+completed_at: 2026-10-18T16:00:00Z
 branch:
 depends_on: []
 scope:
@@ -61,3 +61,8 @@ does not prove that the YouTube package consumer accepts it.
   media; it is not a deployed native-emitter fix.
 - Ready dub tracks keep a new review pending for the owner. Do not copy an old
   decision into a new review or claim Studio upload from a stored audio hash.
+- 2026-10-18: closed as already fixed on main by #1361 (29b956be1, "language batches bound to
+  their source"). `bindLanguageSource` in `tools/video/review/sync.mjs` now uploads
+  `metadata` and a `languages_manifest` whose bytes are the review's content hash for every
+  ordinary language batch; a renewed final is still bound by `renewal.mjs`. The boxes above
+  were not ticked here because the fix landed through that pull request, not this ticket.
