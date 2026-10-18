@@ -104,6 +104,12 @@ await __v3zt.sleep(15000); [__wd(), __dhq.log.slice(-2).join('\n'), __dhq.clipsd
 | `python -I` 印中文出錯 | Windows 主控台 cp1252 | 直接寫成 UTF-8 檔案，不要印到 stdout |
 | 匯入後台只上傳 720p 預覽 | `tools/video/cli.mjs import` 的設計 | YouTube 由站主在 Studio 手動上傳，多語音軌也只能在 Studio 手動加 |
 | 後台「漫劇」分頁看不到這些集 | 那個分頁只收站上自動產線的作品，建劇會觸發自動企劃 | 照站主決定用「教學影片」分頁、category `drama` |
+| 分頁連同步的 JS 都逾時、截圖也逾時 | 分頁開太久（卡片列表很長）整頁凍住，重新整理也救不回 | 關掉那個分頁、開新分頁到同一頁重新注入；localStorage 是同源共用，紀錄都還在 |
+| 送出後 log 是 `"fresh":[]`，下一輪又送同一鏡 | 卡片還沒出現在列表就判定沒送成 | 對帳（`reconcile`）通常會在下一輪補上對應；看到沒對應的新卡號就是重複，能取消就取消 |
+| 某鏡送出超過兩小時都沒結果，列表上也找不到 | 早就失敗、失敗卡被擠出列表 | 刪掉那鏡的 `ztcmapdh`／`ztcidh` 對應、`unshift` 回 `dhq` 重送 |
+| 列表外已經做完的片 | 卡片被擠出建立頁的清單 | 不用導頁：`fetch('/zh-Hant/my-work-detail/ai-video/<卡號>')` 的 HTML 裡就有 `moss/prod/<路徑>-0_*.mp4`（無浮水印），組成 `label 2 <路徑>` 給 `fetch-dh.sh` |
+| 組片在某鏡 `Stray % near ''` 失敗 | 系統面板文字有「%」，drawtext 當成展開符號 | assemble-v4 的 drawtext 已加 `expansion=none` |
+| 成片裡手心的染料看起來像血 | 紅色、濕亮、前景失焦 | 能裁就先免費裁掉；要重拍就寫「dry matte orange-vermilion dye powder, no liquid」 |
 
 ## 六、收工
 
