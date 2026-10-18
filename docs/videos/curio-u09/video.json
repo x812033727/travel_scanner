@@ -1,0 +1,2098 @@
+{
+  "schema_version": 1,
+  "slug": "curio-u09",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "跟著同一段未知訊號調查下去。開場像看見異常；等待時放輕，觀測結果落地時清楚。小綠人的玩笑帶一點笑意；物理解釋放慢，不模仿真人，不渲染外星恐怖。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "1967 年劍橋的怪訊號，為什麼叫「小綠人」？｜奇聞檔案局",
+    "description": "1967 年，劍橋的觀測紙帶上反覆出現一小段異常。從更快的紀錄器、另一台望遠鏡、精密計時，到另一片天空的新來源，這個訊號逐漸取得自己的身分。\n\nLGM 是玩笑代稱，並不是正式的外星文明宣告。1968 年 2 月首篇論文中的振盪候選，與 5 月 Gold 提出的自轉解釋，是不同階段。\n\n查核日期：2026-10-16。當事人回憶與當年論文分別註明。AI 插畫為內容相關示意，不是歷史照片或觀測原件；近代人物不重現本人容貌，畫面中的有表情閱讀者是虛構角色。波形與星體示意不冒稱原始資料。",
+    "tags": [
+      "脈衝星",
+      "小綠人訊號",
+      "Jocelyn Bell Burnell",
+      "pulsar",
+      "天文發現",
+      "科學史",
+      "1967",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "誰在\n**打拍子**",
+      "tag": "奇異現象",
+      "sub": "紙帶上的怪節拍",
+      "shot": "instrument-question"
+    }
+  },
+  "sources": [
+    {
+      "title": "Cambridge：Jocelyn Bell Burnell 訪談",
+      "url": "https://www.cam.ac.uk/stories/journeysofdiscovery-pulsars",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Churchill Archives Centre：MISC 109 紙帶與回憶",
+      "url": "https://archives.chu.cam.ac.uk/collections/research-guides/misc-109/",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Bell Burnell：Little Green Men, White Dwarfs or Pulsars?",
+      "url": "https://www.bigear.org/vol1no1/burnell.htm",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Antony Hewish：1974 Nobel Lecture",
+      "url": "https://www.nobelprize.org/uploads/2018/06/hewish-lecture.pdf",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Hewish et al.：Observation of a Rapidly Pulsating Radio Source（1968）",
+      "url": "https://hosting.astro.cornell.edu/~shami/psrintro/papers/HBP%2B68.pulsars.pdf",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Thomas Gold：Rotating Neutron Stars（1968）",
+      "url": "https://phas.ubc.ca/~heyl/ASTR304_2003W/papers/gold.pdf",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "NASA Science：Pulsars",
+      "url": "https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-pulsars/",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Cavendish Laboratory：Lucy Oswald 訪談",
+      "url": "https://www.phy.cam.ac.uk/news/celebrating-women-in-science-meet-lucy-oswald-our-new-pulsars-researcher/",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Jodrell Bank：Observations of Pulsars §4.1",
+      "url": "https://www.jb.man.ac.uk/distance/frontiers/pulsars/section4.html",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Richards 與 Comella：The Period of Pulsar NP 0532（1969）",
+      "url": "https://www.nature.com/articles/222551a0",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Jodrell Bank：Identification with rotating neutron stars",
+      "url": "https://www.jb.man.ac.uk/research/pulsar/Education/Tutorial/tut/node5.html",
+      "checked_on": "2026-10-16"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "90259fa2",
+      "payoff": "41b5eb07",
+      "what": "另一台望遠鏡能否記到相同的脈衝"
+    },
+    {
+      "setup": "acc6618c",
+      "payoff": "07ceb40b",
+      "what": "貝爾趕到觀測站能否記到新訊號"
+    },
+    {
+      "setup": "2b58a7d7",
+      "payoff": "724570c6",
+      "what": "五月兩頁論文如何解釋節拍"
+    },
+    {
+      "setup": "b3033eac",
+      "payoff": "a0f8a979",
+      "what": "訊號會不會只是儀器故障"
+    },
+    {
+      "setup": "05002227",
+      "payoff": "718638d1",
+      "what": "快紀錄器能否抓到那個來源"
+    },
+    {
+      "setup": "f58aba8f",
+      "payoff": "2a37c45e",
+      "what": "整齊節拍是否需要有人發射，後續證據支持什麼來源"
+    },
+    {
+      "setup": "cb83227e",
+      "payoff": "a0f8a979",
+      "what": "換接收設備還能否收到"
+    },
+    {
+      "setup": "1dfdcacf",
+      "payoff": "6461789b",
+      "what": "來源究竟離地球多遠"
+    },
+    {
+      "setup": "e3ef1239",
+      "payoff": "99a55420",
+      "what": "小綠人這個稱呼的來源"
+    },
+    {
+      "setup": "27f6aab6",
+      "payoff": "c0603925",
+      "what": "計時能否分出另一顆行星的運動"
+    },
+    {
+      "setup": "7a031219",
+      "payoff": "9410e2e4",
+      "what": "紙帶裡是否還有更多同類訊號"
+    },
+    {
+      "setup": "f0768460",
+      "payoff": "facb1101",
+      "what": "首次論文把族群身分說到哪裡"
+    },
+    {
+      "setup": "8f3ddd39",
+      "payoff": "724570c6",
+      "what": "規律節拍還能從哪種運動產生"
+    },
+    {
+      "setup": "e205076e",
+      "payoff": "2a37c45e",
+      "what": "被叫作小綠人的訊號究竟是什麼"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "august-desk",
+      "chapter": "紙帶上又多了那一小段",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of two adult hands unrolling a long recording-paper strip across a 1967 observatory desk, a thin black ink trace running along the strip and a box-shaped pen recorder beyond the roll, mild window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C01",
+        "C04"
+      ],
+      "lines": [
+        {
+          "id": "96e528ee",
+          "text": "一九六七年八月，劍橋。",
+          "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍",
+          "pause_after_ms": 900
+        },
+        {
+          "id": "8748fb3d",
+          "text": "博士生貝爾攤開一卷觀測紙帶。",
+          "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
+        }
+      ]
+    },
+    {
+      "id": "odd-mark",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of anonymous hands sliding an older paper strip beside a fresh chart, a small uneven trace near the center, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C05"
+      ],
+      "lines": [
+        {
+          "id": "a183b99a",
+          "text": "這一小段看起來不太對，她翻出舊記錄，"
+        }
+      ]
+    },
+    {
+      "id": "same-patch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two plain chart strips aligned by anonymous hands on a desk, matching small irregular marks visible without writing, soft side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C05"
+      ],
+      "lines": [
+        {
+          "id": "449bbb4c",
+          "text": "發現它又出現在同一片天空。"
+        }
+      ]
+    },
+    {
+      "id": "instrument-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one fictional archive reader with a round face, short hair and a plain sweater inspecting a plain receiver with a puzzled expression in an archive room by day, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C09"
+      ],
+      "lines": [
+        {
+          "id": "b3033eac",
+          "text": "它是儀器出了問題，還是有什麼東西真的在那裡？",
+          "emotion": "問句自然上揚，停在疑問，不急著解答"
+        }
+      ]
+    },
+    {
+      "id": "tease-second-instrument",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty 1967 radio observatory control room at night, a second radio receiver and mechanical chart recorder on the long workbench, a flat paper strip with only low irregular noise emerging from the recorder, one overhead lamp, the image fills all four edges",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C12"
+      ],
+      "lines": [
+        {
+          "id": "90259fa2",
+          "text": "後來，他們守著另一台望遠鏡，要看紙帶會不會留下同樣的脈衝。",
+          "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
+        }
+      ]
+    },
+    {
+      "id": "tease-cold-receiver",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cold observatory room before dawn, a faceless human silhouette reaching toward one receiver switch, a blank paper roll below the panel, soft desk lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "acc6618c",
+          "text": "聖誕節前，貝爾凌晨趕到觀測站，等另一片天空通過。",
+          "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
+        }
+      ]
+    },
+    {
+      "id": "tease-may-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of anonymous hands placing two blank manuscript pages on a desk in daylight, a plain envelope beside the pages, soft window light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C21"
+      ],
+      "lines": [
+        {
+          "id": "2b58a7d7",
+          "text": "隔年五月，又有人為這串節拍投出一篇兩頁論文。",
+          "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
+        }
+      ]
+    },
+    {
+      "id": "signal-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one fictional archive reader with a round face, short hair and a plain sweater holding a blank file folder with a questioning expression at a desk by day, soft lamp light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C13"
+      ],
+      "lines": [
+        {
+          "id": "e205076e",
+          "text": "那個被叫作小綠人的訊號，到底從哪裡來？",
+          "emotion": "問句自然上揚，停在疑問，不急著解答",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "speed-up",
+      "chapter": "她換上更快的紀錄器",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of anonymous hands adjusting the speed dial of a pen recorder in daylight, a wide clean roll of paper below it, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C06"
+      ],
+      "lines": [
+        {
+          "id": "e3e46d77",
+          "text": "貝爾和指導教授休伊什，決定把記錄速度加快。",
+          "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
+        }
+      ]
+    },
+    {
+      "id": "dense-record",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a long paper recording strip crossing the frame, a dense patch of tiny black ink wiggles packed near its center, one adult fingertip pointing just below the patch, soft desk light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C06"
+      ],
+      "lines": [
+        {
+          "id": "0c47ad34",
+          "text": "原來的紙帶把變化擠在一起，很難看出裡面有什麼。"
+        }
+      ]
+    },
+    {
+      "id": "original-survey",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an open field at a 1960s radio observatory, many low wooden posts linked by horizontal wire aerials stretching toward the horizon, one anonymous adult silhouette checking a wire beside a post, overcast daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C02"
+      ],
+      "lines": [
+        {
+          "id": "6acf7c94",
+          "text": "這座設備原本是要找類星體，觀察它們的電波變化。"
+        }
+      ]
+    },
+    {
+      "id": "new-instrument",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a daylit observatory bench centered on an unlabelled analog receiver with round control knobs, an open blank notebook and a loose paper strip beside it, soft window light, equipment and workbench only",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C25"
+      ],
+      "lines": [
+        {
+          "id": "634a9fab",
+          "text": "望遠鏡才剛開始工作，團隊也在摸清它自己的脾氣。"
+        }
+      ]
+    },
+    {
+      "id": "human-reading",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of two adult hands spreading long narrow recording-paper strips across a wooden observatory desk, each strip bearing a thin uneven black ink trace, several rolled strips beside them, mild daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C25"
+      ],
+      "lines": [
+        {
+          "id": "7ccdf4c3",
+          "text": "所以紙帶先由人來看，免得還沒熟悉設備就漏掉訊號。"
+        }
+      ]
+    },
+    {
+      "id": "daily-paper",
+      "template": "big",
+      "data": {
+        "text": "約 30 公尺／天",
+        "kicker": "人工讀圖",
+        "sub": "Bell 回憶：每日 96 英尺紙帶"
+      },
+      "claims": [
+        "C03"
+      ],
+      "lines": [
+        {
+          "id": "1631f62b",
+          "text": "光是貝爾每天要看的記錄，就有大約三十公尺。",
+          "emotion": "三十公尺放慢，像說出工作份量"
+        }
+      ]
+    },
+    {
+      "id": "learn-patterns",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one fictional archive reader with a round face, short hair and a plain sweater inspecting a recorder pen with a focused expression in an archive room by day, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C25"
+      ],
+      "lines": [
+        {
+          "id": "40de40ee",
+          "text": "看久了，她認得常見的電波變化，也認得地面的干擾。"
+        }
+      ]
+    },
+    {
+      "id": "unclassified",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium overhead shot of anonymous hands leaving one small chart strip apart from two sorted piles, soft diffuse daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C05"
+      ],
+      "lines": [
+        {
+          "id": "54c3000a",
+          "text": "但開頭那段異常，兩邊都不像，不能直接歸進熟悉的那一堆。",
+          "emotion": "兩邊都不像壓重，留著疑點"
+        }
+      ]
+    },
+    {
+      "id": "fast-watch",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a radio observatory doorway in overcast daylight, a faceless human silhouette entering with a blank notebook under one arm, soft grey sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C06"
+      ],
+      "lines": [
+        {
+          "id": "8d87d7e4",
+          "text": "到了十月底，她每天趕去觀測站，等那片天空經過。"
+        }
+      ]
+    },
+    {
+      "id": "pen-runs",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a squat box-shaped paper recorder on an observatory workbench, its thin metal pen tip touching a broad paper strip emerging from a wide roller, a short black ink pulse line behind the pen, soft daylight from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C06"
+      ],
+      "lines": [
+        {
+          "id": "010dcfc2",
+          "text": "快紀錄器已經準備好，紙帶能把短促的變化展開。"
+        }
+      ]
+    },
+    {
+      "id": "weeks-noise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of one fictional archive reader with a round face, short hair and plain sweater sitting at a table, holding a loose paper strip marked only by irregular ink noise, frustrated expression, daylight through a narrow window, plain uninterrupted walls fill all four image corners",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C06"
+      ],
+      "lines": [
+        {
+          "id": "efd6c54a",
+          "text": "可是好幾週過去，留下來的只有接收器雜訊。",
+          "emotion": "語速稍慢，讓等待落空的感覺出來"
+        }
+      ]
+    },
+    {
+      "id": "lost-source",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of anonymous hands lifting a nearly flat chart from a recorder in an observatory, soft late afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C06"
+      ],
+      "lines": [
+        {
+          "id": "05002227",
+          "text": "那個曾經出現的來源，快紀錄器到底能不能抓到？",
+          "emotion": "問句自然上揚，停在疑問，不急著解答"
+        }
+      ]
+    },
+    {
+      "id": "missed-session",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a 1967 lecture room, one anonymous adult attendee seen from behind taking notes while facing a plain chalkboard, rows of wooden seats around the attendee, soft daytime window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C26"
+      ],
+      "lines": [
+        {
+          "id": "ae51ed79",
+          "text": "有一天她去聽演講，沒有守著快紀錄器。"
+        }
+      ]
+    },
+    {
+      "id": "normal-chart",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an anonymous hand lifting a routine chart with a small dense trace near its edge, soft morning window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C26"
+      ],
+      "lines": [
+        {
+          "id": "d5b03c7d",
+          "text": "結果例行紙帶顯示，那一回，怪痕跡又來過。",
+          "emotion": "結果稍微提起，來過壓重"
+        }
+      ]
+    },
+    {
+      "id": "november-detection",
+      "template": "big",
+      "data": {
+        "text": "1967.11.28",
+        "kicker": "快紀錄捕捉成功",
+        "sub": "Cambridge／Hewish Nobel lecture"
+      },
+      "claims": [
+        "C07"
+      ],
+      "lines": [
+        {
+          "id": "718638d1",
+          "text": "到十一月二十八日，她終於用快紀錄抓住了它。"
+        }
+      ]
+    },
+    {
+      "id": "separate-pulses",
+      "template": "shot",
+      "data": {
+        "prompt": "Equipment-only close-up of a 1960s mechanical chart recorder, a thin metal stylus fixed to a pivoting arm on the housing touches a narrow paper strip and traces separated uneven peaks, the strip feeds across the machine tray under soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C07"
+      ],
+      "lines": [
+        {
+          "id": "ba179597",
+          "text": "這次紙上出現的，是一個接著一個、能分開辨認的脈衝。",
+          "emotion": "節奏清楚，揭曉時不搶快"
+        }
+      ]
+    },
+    {
+      "id": "measure-period",
+      "template": "stats",
+      "data": {
+        "title": "第一個來源的節拍",
+        "stats": [
+          {
+            "value": "約 1.337 秒",
+            "label": "相鄰脈衝間隔"
+          }
+        ],
+        "source": "Hewish et al., Nature 217, p.709（1968）"
+      },
+      "claims": [
+        "C08"
+      ],
+      "lines": [
+        {
+          "id": "fdeda684",
+          "text": "相鄰兩次之間，大約是一又三分之一秒。",
+          "emotion": "約數逐字清楚，說完留一拍"
+        }
+      ]
+    },
+    {
+      "id": "regular-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one fictional archive reader with a round face, short hair and a plain sweater raising one eyebrow at a plain receiver on a desk, soft light from a window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C09"
+      ],
+      "lines": [
+        {
+          "id": "f58aba8f",
+          "text": "等到的節拍這麼整齊，會不會有人正在發射？",
+          "emotion": "問句自然上揚，停在疑問，不急著解答",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "hewish-response",
+      "chapter": "另一台望遠鏡也開始記錄",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a faceless human silhouette leaning over a recorder with an open blank notebook in a laboratory by day, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C09"
+      ],
+      "lines": [
+        {
+          "id": "37c4b04a",
+          "text": "休伊什聽到結果，首先想到的就是人造干擾。",
+          "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
+        }
+      ]
+    },
+    {
+      "id": "sensitive-receiver",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a simple receiving aerial beside a small observatory, anonymous hands connecting a cable in the foreground, overcast daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C27"
+      ],
+      "lines": [
+        {
+          "id": "b872d2af",
+          "text": "電波望遠鏡非常敏感，附近的發射就可能蓋住遠方訊號。"
+        }
+      ]
+    },
+    {
+      "id": "reasonable-check",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a faceless human silhouette standing beside the running recorder with one hand on the bench, soft indoor daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C27"
+      ],
+      "lines": [
+        {
+          "id": "8e99187b",
+          "text": "因此他親自到觀測站，看看那串脈衝會不會再來。"
+        }
+      ]
+    },
+    {
+      "id": "reappears",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of anonymous hands comparing a fresh pulse chart to an earlier chart, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C27"
+      ],
+      "lines": [
+        {
+          "id": "5315a9f5",
+          "text": "脈衝又出現了，問題從看錯一次，變成了反覆發生。",
+          "emotion": "短句穩穩落下，再提起新問題"
+        }
+      ]
+    },
+    {
+      "id": "sky-clock",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of anonymous hands aligning a chart strip with a plain circular sky chart, soft diffuse daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C10"
+      ],
+      "lines": [
+        {
+          "id": "d15db021",
+          "text": "團隊把每次出現的時間放在一起，對照天空走到哪裡。"
+        }
+      ]
+    },
+    {
+      "id": "not-clock-hour",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one fictional archive reader with a round face, short hair and a plain sweater turning a small celestial globe beside an unnumbered clock in an archive room, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C10"
+      ],
+      "lines": [
+        {
+          "id": "01625c23",
+          "text": "那不是每天固定幾點幾分，而是跟著天空的位置回來。",
+          "emotion": "兩種時間分開說，口語自然"
+        }
+      ]
+    },
+    {
+      "id": "ground-model",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of anonymous hands adjusting a plain tabletop transmitter, a laboratory cable spool behind it, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C10"
+      ],
+      "lines": [
+        {
+          "id": "2f1bf500",
+          "text": "如果來源只是地面上某台機器，它得解釋這個規律。"
+        }
+      ]
+    },
+    {
+      "id": "reflection-check",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of the entire laboratory room and full worktable: one fictional archive reader in a plain sweater sits behind a small Earth globe at left and a separate Moon sphere at right, one finger held midway between them along a curved path, side lamp, plain walls fill the image corners",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C28"
+      ],
+      "lines": [
+        {
+          "id": "6de2f659",
+          "text": "團隊也查過另一種可能：人類的雷達，經月球反射過來。"
+        }
+      ]
+    },
+    {
+      "id": "reflection-fails",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one fictional archive reader with a round face, short hair and a plain sweater moving a moon model away from a small receiver on a desk, thoughtful expression, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C28"
+      ],
+      "lines": [
+        {
+          "id": "0e6c77f2",
+          "text": "這種反射說法，沒有通過他們對訊號的檢查。"
+        }
+      ]
+    },
+    {
+      "id": "own-machine",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one intact cable connector seated in a box-shaped radio receiver on a 1960s laboratory bench, one adult hand gently checking the connection and a rolled recording-paper strip beside it, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C11"
+      ],
+      "lines": [
+        {
+          "id": "8a7445de",
+          "text": "但是，就算天空位置對得上，也得確認接收設備本身。"
+        }
+      ]
+    },
+    {
+      "id": "independent-test",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one fictional archive reader with a round face, short hair and a plain sweater looking between two plain receiver boxes with a doubtful expression, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C11"
+      ],
+      "lines": [
+        {
+          "id": "cb83227e",
+          "text": "換一套設備，它還會留下同樣的脈衝嗎？",
+          "emotion": "問句自然上揚，停在疑問，不急著解答"
+        }
+      ]
+    },
+    {
+      "id": "second-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a radio observatory interior at night, a faceless human silhouette waiting beside a pen recorder with a flat paper strip, soft overhead lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C12"
+      ],
+      "lines": [
+        {
+          "id": "f76bb3e1",
+          "text": "開頭那台遲遲沒有記到訊號的望遠鏡，正是這次檢查。"
+        }
+      ]
+    },
+    {
+      "id": "five-minutes",
+      "template": "shot",
+      "data": {
+        "prompt": "Tight equipment close-up of a 1960s chart recorder firmly resting on a night laboratory workbench, a fresh narrow pulse strip with separated ink peaks emerging from its rollers, quiet overhead lamp light, paper and recorder fill the image",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C12"
+      ],
+      "lines": [
+        {
+          "id": "41b5eb07",
+          "text": "貝爾後來回憶，他們繼續等，晚了五分鐘，脈衝才來。",
+          "emotion": "五分鐘放慢，脈衝才來語氣提起"
+        }
+      ]
+    },
+    {
+      "id": "wrong-transit",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of an anonymous hand moving a small marker on a plain circular sky chart, soft desk lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C12"
+      ],
+      "lines": [
+        {
+          "id": "2ec7abc8",
+          "text": "原來是把來源經過觀測位置的時間，算錯了。",
+          "emotion": "揭曉放輕，算錯了清楚落地"
+        }
+      ]
+    },
+    {
+      "id": "independent-result",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a separate radio receiver rack and pen recorder in an observatory, a faceless silhouette holding a fresh chart, soft indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C11"
+      ],
+      "lines": [
+        {
+          "id": "a0f8a979",
+          "text": "這次用的是一套獨立的接收系統。"
+        }
+      ]
+    },
+    {
+      "id": "failure-narrows",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one fictional archive reader with a round face, short hair and a plain sweater placing matching paper strips beside two receiver illustrations, thoughtful expression, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C11"
+      ],
+      "lines": [
+        {
+          "id": "eea8a036",
+          "text": "要怪第一台儀器自己出錯，現在就很難說得通了。"
+        }
+      ]
+    },
+    {
+      "id": "distance-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of anonymous hands rotating a small plain earth globe beside an observatory receiver, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C16"
+      ],
+      "lines": [
+        {
+          "id": "1dfdcacf",
+          "text": "那串脈衝究竟來自多遠？",
+          "emotion": "問句自然上揚，停在疑問，不急著解答",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "dispersion-measure",
+      "chapter": "他們把節拍對上地球的運動",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at laboratory bench height of an unlabelled analog radio receiver, one large ridged frequency knob in the center and a blank-faced timing instrument beside it, morning window light, equipment-only cutaway",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C16"
+      ],
+      "lines": [
+        {
+          "id": "2f829cd6",
+          "text": "皮爾金頓接著比較，同一訊號在不同頻率的到達時間。",
+          "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
+        }
+      ]
+    },
+    {
+      "id": "travel-delay",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one fictional archive reader with a round face, short hair and a plain sweater pointing to two offset marks on a plain chart beside a sparse star map, focused expression, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C29"
+      ],
+      "lines": [
+        {
+          "id": "a88f7286",
+          "text": "電波穿過星際物質，不同頻率會留下不同的延遲。"
+        }
+      ]
+    },
+    {
+      "id": "outside-system",
+      "template": "big",
+      "data": {
+        "text": "太陽系以外",
+        "kicker": "訊號色散估計",
+        "sub": "Bell 回憶／Hewish Nobel lecture p.178"
+      },
+      "claims": [
+        "C16"
+      ],
+      "lines": [
+        {
+          "id": "6461789b",
+          "text": "從這個差異估算，來源落在太陽系外。",
+          "emotion": "太陽系外壓重，不誇張"
+        }
+      ]
+    },
+    {
+      "id": "nickname-recall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one fictional archive reader with a round face, short hair and a plain sweater lifting a plain file tab with a puzzled expression in an archive room, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C13"
+      ],
+      "lines": [
+        {
+          "id": "e3ef1239",
+          "text": "那麼，開頭那個小綠人的稱呼，又是怎麼來的？",
+          "emotion": "問句自然上揚，停在疑問，不急著解答"
+        }
+      ]
+    },
+    {
+      "id": "nickname",
+      "template": "big",
+      "data": {
+        "text": "LGM",
+        "kicker": "Little Green Men",
+        "sub": "小綠人：玩笑代稱，非外星宣告"
+      },
+      "claims": [
+        "C13"
+      ],
+      "lines": [
+        {
+          "id": "99a55420",
+          "text": "貝爾說，『小綠人』是她做記號時用的玩笑代稱。",
+          "emotion": "玩笑代稱帶一點笑意"
+        }
+      ]
+    },
+    {
+      "id": "name-not-result",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain paper tag turned blank side up beside a narrow recording strip with evenly spaced black pulse marks, both resting on a bare wooden desk, soft side light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C13"
+      ],
+      "lines": [
+        {
+          "id": "a995298a",
+          "text": "一個方便記住的綽號，並沒有讓訊號自動變成文明的訊息。"
+        }
+      ]
+    },
+    {
+      "id": "alien-hypothesis",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one fictional archive reader with a round face, short hair and a plain sweater studying a plain planet model beside an open folder in a room by day, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C14"
+      ],
+      "lines": [
+        {
+          "id": "aae6c002",
+          "text": "但休伊什確實考慮過，會不會是遠方行星上的人工發射。"
+        }
+      ]
+    },
+    {
+      "id": "test-consequence",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous adult lecturer at a plain chalkboard, pointing with chalk to one small dot on a circular orbit around one larger central dot, soft daylight from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C14"
+      ],
+      "lines": [
+        {
+          "id": "5c699592",
+          "text": "如果那顆行星繞著自己的恆星走，計時可能看出端倪。"
+        }
+      ]
+    },
+    {
+      "id": "approach-recede",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tabletop orbit model with an anonymous hand moving one bead along its path, plain receiver at the edge, soft light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C15"
+      ],
+      "lines": [
+        {
+          "id": "3d181765",
+          "text": "來源朝我們靠近、或離我們遠去，接收到的節拍會受影響。"
+        }
+      ]
+    },
+    {
+      "id": "earth-also-moves",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one fictional archive reader with a round face, short hair and a plain sweater turning a small earth model on an orbit ring, intent expression, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C15"
+      ],
+      "lines": [
+        {
+          "id": "fe82a389",
+          "text": "麻煩的是，我們腳下的地球也在繞太陽運行。"
+        }
+      ]
+    },
+    {
+      "id": "separate-motion",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of two long narrow paper timing strips lying parallel on a tabletop, each carrying sparse repeated ink pulse strokes, a small wooden Earth-orbit model beside them, soft overhead light, only strips and model in frame",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C15"
+      ],
+      "lines": [
+        {
+          "id": "27f6aab6",
+          "text": "所以他要分清楚：變化是地球帶來的，還是還有另一份？",
+          "emotion": "問句自然上揚，停在疑問，不急著解答"
+        }
+      ]
+    },
+    {
+      "id": "precision-time",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a faceless human silhouette adjusting a timing instrument beside a receiver in a laboratory, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C15"
+      ],
+      "lines": [
+        {
+          "id": "c9ad2ab4",
+          "text": "他把每次脈衝的時間量得更精細，繼續追著週期的變化。",
+          "emotion": "節奏稍緊，像跟著觀測進行"
+        }
+      ]
+    },
+    {
+      "id": "earth-result",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of a long narrow paper timing strip with unnumbered pulse strokes aligned against a simple unlabeled circular Earth-orbit diagram on the worktable, one small Earth bead resting on the ring, diffuse daylight, paper and diagram fill the frame",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C15"
+      ],
+      "lines": [
+        {
+          "id": "c0603925",
+          "text": "量出的變化，符合地球在軌道上的運動。",
+          "emotion": "答案穩定說清楚，地球壓重"
+        }
+      ]
+    },
+    {
+      "id": "missing-extra",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one fictional archive reader with a round face, short hair and a plain sweater checking the single planet bead of an orbit model, thoughtful expression, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C15"
+      ],
+      "lines": [
+        {
+          "id": "742fe66c",
+          "text": "那份想找的額外行星運動，沒有從這次計時裡浮現。"
+        }
+      ]
+    },
+    {
+      "id": "limited-inference",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of anonymous hands leaving a blank name tab on an open file folder beside a receiver, soft light from a side window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C15",
+        "C23"
+      ],
+      "lines": [
+        {
+          "id": "1cf70848",
+          "text": "這限制了當時的人工發射假說，還不能替發射體取名字。"
+        }
+      ]
+    },
+    {
+      "id": "survey-continues",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an observatory desk covered by many coiled chart-paper rolls of different lengths, every roll resting on the desk surface, one fresh strip trailing from the chart recorder onto the pile, evening lamp, the rest of the room quiet and empty",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "544d8e26",
+          "text": "同時，貝爾還得繼續看例行紙帶，桌上的記錄越積越多。"
+        }
+      ]
+    },
+    {
+      "id": "different-direction",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of anonymous hands separating one chart strip from a new paper roll, a small irregular mark near the center, soft desk lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "fe66ab8a",
+          "text": "聖誕節前，她在另一片天空的記錄裡，又看見可疑的痕跡。"
+        }
+      ]
+    },
+    {
+      "id": "before-locking",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous adult researcher seen from the shoulders down at a 1960s laboratory desk, pulling an old narrow recording strip from a stack of paper rolls beside a closed notebook, evening lamp light and a dark window behind",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "aa0353e3",
+          "text": "實驗室快關門了，她抓緊時間，翻找那個方向的舊記錄。",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "early-arrival",
+      "chapter": "聖誕節前，她又抓到一串",
+      "template": "shot",
+      "data": {
+        "prompt": "Tight overhead view of two adult hands comparing long narrow recording-paper strips from one roll on a wooden desk, each strip bearing a small cluster of black ink wiggles, desk lamp light before dawn",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "a24b2bf8",
+          "text": "舊紙帶上也有那種痕跡，她得趕上凌晨的觀測時段。",
+          "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
+        }
+      ]
+    },
+    {
+      "id": "cold-return",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cold observatory room before dawn, a faceless human silhouette reaching toward one receiver switch, a blank paper roll below the panel, soft desk lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "5d94082f",
+          "text": "幾個小時後，貝爾趕到觀測站，就碰上開頭那台冷壞的接收器。"
+        }
+      ]
+    },
+    {
+      "id": "gain-loss",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of anonymous hands near a receiver dial with its needle low, an unnumbered thermometer beside the panel, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "9d1e006a",
+          "text": "她後來形容，系統一遇到低溫，接收能力就大幅下降。"
+        }
+      ]
+    },
+    {
+      "id": "switch-work",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a faceless human silhouette leaning close to a receiver switch in a cold room, one hand on the switch, soft overhead lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "b6b8a1c4",
+          "text": "她試著切換開關、對設備呵氣，讓機器恢復工作。"
+        }
+      ]
+    },
+    {
+      "id": "brief-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a cold observatory room, one anonymous adult worker holding a large plain switch steady on a box receiver while its unmarked gauge needle stays still, shelves and wall filling the frame, soft overhead lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "2a075c4c",
+          "text": "設備總算撐住了一小段時間，而且對準了要等的方向。"
+        }
+      ]
+    },
+    {
+      "id": "another-pulse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a cold observatory room, one anonymous adult worker leaning toward a box-shaped paper recorder and pointing to a fresh row of separated dark ink peaks on the narrow paper strip coming from its rollers, soft desk lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "07ceb40b",
+          "text": "冷機房裡那份新記錄，真的出現了另一串脈衝。",
+          "emotion": "真的出現語氣提起，驚喜但不喊"
+        }
+      ]
+    },
+    {
+      "id": "second-period",
+      "template": "stats",
+      "data": {
+        "title": "另一片天空的新來源",
+        "stats": [
+          {
+            "value": "約 1.2 秒",
+            "label": "第二串脈衝的間隔"
+          }
+        ],
+        "source": "Bell Burnell 1977 演講稿回憶"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "ad787132",
+          "text": "這一次，間距大約是一點二秒。",
+          "emotion": "數字放慢，清楚分辨小數"
+        }
+      ]
+    },
+    {
+      "id": "not-same-source",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of anonymous hands placing two differently spaced pulse strips beside separate points on a blank star chart, soft indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "30578f8d",
+          "text": "它來自不同方向，節拍也不同，不能只當成第一個來源又回來。"
+        }
+      ]
+    },
+    {
+      "id": "changed-scale",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one fictional archive reader with a round face, short hair and a plain sweater looking at two separated points on a celestial globe with a surprised expression in an archive room, soft side light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C17",
+        "C18"
+      ],
+      "lines": [
+        {
+          "id": "7a031219",
+          "text": "紙帶裡，還會不會藏著更多同類的訊號？",
+          "emotion": "問句自然上揚，停在疑問，不急著解答"
+        }
+      ]
+    },
+    {
+      "id": "relief",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one fictional archive reader with a round face, short hair and a plain sweater setting two plain folders together with a relieved expression at a desk by day, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C17",
+        "C23"
+      ],
+      "lines": [
+        {
+          "id": "336cd716",
+          "text": "貝爾倒是鬆了一口氣，因為自然現象也可能成群出現。",
+          "emotion": "語氣放鬆，不演出歷史人物的聲線"
+        }
+      ]
+    },
+    {
+      "id": "same-frequency-argument",
+      "template": "shot",
+      "data": {
+        "prompt": "Equipment-only extreme close-up of two separate 1960s receiver panels side by side on a laboratory bench, each with one smooth plain tuning knob and a thin red pointer set to the same angle, blank unmarked dial faces, soft afternoon light, panels fill the frame",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C30"
+      ],
+      "lines": [
+        {
+          "id": "e747682c",
+          "text": "若堅持都是文明發訊，還得解釋它們為何選相同的觀測頻率。"
+        }
+      ]
+    },
+    {
+      "id": "christmas-holiday",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at the edge of a quiet 1960s university office desk, one adult hand setting down a tightly rolled paper record beside a closed dark notebook, soft winter morning light from the side",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "dbb65c4a",
+          "text": "她把新記錄留在休伊什桌上，才安心去過聖誕節。"
+        }
+      ]
+    },
+    {
+      "id": "survey-holiday",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a faceless human silhouette fitting a fresh paper roll into a recorder at a laboratory bench, soft daytime window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C30"
+      ],
+      "lines": [
+        {
+          "id": "22561e92",
+          "text": "假期裡，休伊什替記錄器補紙和墨，讓觀測繼續跑。"
+        }
+      ]
+    },
+    {
+      "id": "after-holiday",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a winter laboratory worktable piled with several recording-paper rolls, the top roll partly unfurled across the tabletop to reveal a simple irregular ink trace, every roll visibly supported by the surface, soft daylight from a window, empty room",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C18"
+      ],
+      "lines": [
+        {
+          "id": "e72ed59d",
+          "text": "等她回來，新的紙帶又堆在桌上，她接著讀。"
+        }
+      ]
+    },
+    {
+      "id": "more-marks",
+      "template": "stats",
+      "data": {
+        "title": "同一卷紙帶",
+        "stats": [
+          {
+            "value": "2 處",
+            "label": "相隔很遠的怪痕跡"
+          }
+        ],
+        "source": "Bell Burnell 1977 演講稿回憶"
+      },
+      "claims": [
+        "C18"
+      ],
+      "lines": [
+        {
+          "id": "9bc5a454",
+          "text": "這回，同一卷紙上，又有兩處相隔很遠的怪痕跡。"
+        }
+      ]
+    },
+    {
+      "id": "confirm-more",
+      "template": "big",
+      "data": {
+        "text": "一共 4 個來源",
+        "kicker": "後續確認",
+        "sub": "1968 首篇論文：另外三個相似來源"
+      },
+      "claims": [
+        "C18"
+      ],
+      "lines": [
+        {
+          "id": "9410e2e4",
+          "text": "紙帶真的不只兩個：團隊陸續確認，手上的同類來源總共四個。",
+          "emotion": "一共四個放慢，落在新結果"
+        }
+      ]
+    },
+    {
+      "id": "population-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one fictional archive reader with a round face, short hair and a plain sweater holding a folder open beside four separate chart strips, questioning expression, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C20"
+      ],
+      "lines": [
+        {
+          "id": "f0768460",
+          "text": "既然是一群，它們究竟是哪一種天體，又怎麼發出節拍？",
+          "emotion": "問句自然上揚，停在疑問，不急著解答",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "paper-published",
+      "chapter": "論文發表了，答案還有空白",
+      "template": "big",
+      "data": {
+        "text": "1968.02.24",
+        "kicker": "首次論文發表",
+        "sub": "Hewish、Bell、Pilkington、Scott、Collins"
+      },
+      "claims": [
+        "C19"
+      ],
+      "lines": [
+        {
+          "id": "049813c5",
+          "text": "團隊先把第一個來源的觀測寫成論文，一九六八年二月二十四日在《自然》刊出。",
+          "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
+        }
+      ]
+    },
+    {
+      "id": "observations-public",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of anonymous hands opening a plain scientific journal on a library desk in daylight, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C19"
+      ],
+      "lines": [
+        {
+          "id": "86806d23",
+          "text": "世界各地的研究者，終於能對照這個來源的觀測結果。"
+        }
+      ]
+    },
+    {
+      "id": "observed-versus-model",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one fictional archive reader with a round face, short hair and a plain sweater comparing a pulse strip with a blank object card, focused expression, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C20"
+      ],
+      "lines": [
+        {
+          "id": "bd5c4453",
+          "text": "可是把觀測寫清楚，和說出發射體是什麼，是兩個不同難題。"
+        }
+      ]
+    },
+    {
+      "id": "source-small",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of anonymous hands placing a small dense sphere model on an open blank manuscript, soft side light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C20"
+      ],
+      "lines": [
+        {
+          "id": "3ecdf437",
+          "text": "這串變化來得太快，研究者把注意力轉向非常緻密的天體。"
+        }
+      ]
+    },
+    {
+      "id": "oscillation-candidates",
+      "template": "big",
+      "data": {
+        "text": "白矮星／中子星",
+        "kicker": "1968 年 2 月：振盪候選",
+        "sub": "Hewish et al., Nature 217, p.709"
+      },
+      "claims": [
+        "C20"
+      ],
+      "lines": [
+        {
+          "id": "facb1101",
+          "text": "那篇論文提出的候選，是白矮星或中子星的振盪。",
+          "emotion": "候選與振盪說清楚，保留未定語氣"
+        }
+      ]
+    },
+    {
+      "id": "oscillation-meaning",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one fictional archive reader with a round face, short hair and a plain sweater holding a small sphere model beside a repeating chart trace, thoughtful expression, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C20"
+      ],
+      "lines": [
+        {
+          "id": "37a80430",
+          "text": "這些候選，還得同時解釋測得的週期和脈衝寬度。"
+        }
+      ]
+    },
+    {
+      "id": "unfinished-model",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one fictional archive reader with a round face, short hair and a plain sweater studying a small sphere model with a puzzled expression beside an open blank manuscript, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C20"
+      ],
+      "lines": [
+        {
+          "id": "6308da52",
+          "text": "但這些候選，還沒有把眼前的脈衝全部解釋好。"
+        }
+      ]
+    },
+    {
+      "id": "end-observation",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of anonymous hands turning the last blank page of a short manuscript, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C20"
+      ],
+      "lines": [
+        {
+          "id": "9889f843",
+          "text": "翻到論文最後，作者仍要求更多觀測，才能釐清來源。",
+          "emotion": "更多觀測壓重，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "public-boundary",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an archive desk, one fictional adult archive reader in a plain sweater placing two loose sheets into an open manila folder, one sheet bearing a simple row of dark pulse marks and the other a blank manuscript page, soft indoor daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C19",
+        "C20"
+      ],
+      "lines": [
+        {
+          "id": "9f650d96",
+          "text": "下一個提出解釋的人，得先面對這份論文公布的週期和脈衝。"
+        }
+      ]
+    },
+    {
+      "id": "motion-problem",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one fictional archive reader with a round face, short hair and a plain sweater resting a hand beside a small sphere model with a questioning expression, soft desk lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "C20",
+        "C21"
+      ],
+      "lines": [
+        {
+          "id": "8f3ddd39",
+          "text": "如果星體本身的振動不夠好，那個重複的節拍還能怎麼來？",
+          "emotion": "問句自然上揚，停在疑問，不急著解答"
+        }
+      ]
+    },
+    {
+      "id": "new-manuscript",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a faceless silhouette holding a plain closed envelope in a university corridor by day, soft light from a high window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C21"
+      ],
+      "lines": [
+        {
+          "id": "fcd9695d",
+          "text": "另一份稿件，準備把問題換一個方向。",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "may-beacon",
+      "chapter": "這顆星用旋轉留下節拍",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of anonymous hands placing two blank manuscript pages on a desk in daylight, a plain envelope beside the pages, soft window light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C21"
+      ],
+      "lines": [
+        {
+          "id": "b6d2d02b",
+          "text": "不靠振盪，還可以靠旋轉：開頭那篇五月的兩頁論文，來自物理學家湯瑪斯・戈爾德。",
+          "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
+        }
+      ]
+    },
+    {
+      "id": "rotation-proposal",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small star sphere with one narrow cone of light angled away from the viewer against a sparse star field, soft restrained light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C21"
+      ],
+      "lines": [
+        {
+          "id": "724570c6",
+          "text": "對那群已確認的來源，他提出中子星自轉，帶著電波束一起轉動。",
+          "emotion": "他提出帶出新想法，自轉壓重"
+        }
+      ]
+    },
+    {
+      "id": "lighthouse",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a simple lighthouse on a quiet coast at dusk, one narrow beam crossing the water, muted soft sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C22"
+      ],
+      "lines": [
+        {
+          "id": "59adb0ea",
+          "text": "就像燈塔的光束轉過來，你才會看見它。"
+        }
+      ]
+    },
+    {
+      "id": "line-of-sight",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at an archive desk, a plain round star model on the left sends one straight narrow light beam into the surface of a separate Earth globe on the right, a single bright contact spot on the globe, tabletop and wall filling the frame",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C22"
+      ],
+      "lines": [
+        {
+          "id": "a856f45a",
+          "text": "對地球來說，波束掃過我們的方向，接收器才記下一次脈衝。",
+          "emotion": "掃過與接收分開，慢一點讓人跟上"
+        }
+      ]
+    },
+    {
+      "id": "beam-away",
+      "template": "compare",
+      "data": {
+        "title": "光束與地球視線",
+        "left": {
+          "heading": "掃過地球",
+          "points": ["接收器記一次脈衝"]
+        },
+        "right": {
+          "heading": "轉向別處",
+          "points": ["地球暫時收不到"]
+        },
+        "verdict": "星體仍持續自轉",
+        "source": "NASA Science〈Pulsars〉"
+      },
+      "claims": [
+        "C22"
+      ],
+      "lines": [
+        {
+          "id": "2d4ca310",
+          "text": "波束轉向別處，這裡就暫時收不到；星體本身仍繼續轉。"
+        }
+      ]
+    },
+    {
+      "id": "period-origin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of anonymous hands aligning a pulse chart beside a small turning star model, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "C21",
+        "C22"
+      ],
+      "lines": [
+        {
+          "id": "33a0f356",
+          "text": "紙帶上的規律間距，於是有了自轉週期這個來源。"
+        }
+      ]
+    },
+    {
+      "id": "testable-prediction",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an archive desk, one fictional adult archive reader drawing two rows of plain dark pulse ticks on a blank sheet, the second row spaced slightly farther apart as a proposed future change, a small star-sphere model beside the sheet, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "C31"
+      ],
+      "lines": [
+        {
+          "id": "8ac591de",
+          "text": "戈爾德還預測節拍會漸慢；後來對脈衝星的觀測，也量到了這種變化。",
+          "emotion": "預測壓重，逐漸變慢不要說成當場量到"
+        }
+      ]
+    },
+    {
+      "id": "later-support",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an archive desk, one fictional adult archive reader pointing at a tiny dish receiver on a round Earth globe while a single narrow beam from a separate star-sphere model reaches the dish, both models clearly visible, soft desk lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "C22",
+        "C23"
+      ],
+      "lines": [
+        {
+          "id": "2a37c45e",
+          "text": "開頭那串『小綠人』訊號，不必假設人工發射：後續證據支持自轉中子星，波束掃過地球留下節拍。"
+        }
+      ]
+    },
+    {
+      "id": "emission-open",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one fictional archive reader with a round face, short hair and a plain sweater studying the base of a narrow beam on a small star model, curious expression, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "C24"
+      ],
+      "lines": [
+        {
+          "id": "57dd9251",
+          "text": "波束的細部物理機制，今天仍在研究中。"
+        }
+      ]
+    },
+    {
+      "id": "archive-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of anonymous hands pressing a plain stamp onto a blank file folder beside a small star model, soft diffuse light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "C23"
+      ],
+      "lines": [
+        {
+          "id": "f28a86d7",
+          "text": "這份檔案可以存檔：自然天體的運動，也能留下精密的規律。",
+          "emotion": "沉穩收束，存檔清楚落地"
+        }
+      ]
+    },
+    {
+      "id": "comment-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one fictional archive reader with a round face, short hair and a plain sweater holding an open blank folder toward the viewer with an inviting expression, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "E01"
+      ],
+      "lines": [
+        {
+          "id": "3ecfc37e",
+          "text": "當你遇到一個太巧的現象，哪一種證據最能讓你改變判斷？",
+          "emotion": "問句自然上揚，停在疑問，不急著解答"
+        }
+      ]
+    },
+    {
+      "id": "subscribe",
+      "template": "outro",
+      "data": {
+        "title": "奇聞檔案局",
+        "next": "沿著記錄，把怪事看清楚",
+        "cta": "訂閱奇聞檔案局"
+      },
+      "claims": [
+        "E01"
+      ],
+      "lines": [
+        {
+          "id": "259da0ce",
+          "text": "訂閱奇聞檔案局，陪我們沿著記錄，把怪事的來龍去脈看清楚。",
+          "emotion": "親近自然，有理由地邀請，不催促"
+        }
+      ]
+    }
+  ]
+}
