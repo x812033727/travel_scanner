@@ -60,5 +60,20 @@
   // ...and the driver skips it meanwhile instead of waiting on it (it picks the first ready shot).
   if (!__dhq.readyOrig) __dhq.readyOrig = __dhq.ready.bind(__dhq);
   __dhq.ready = function (it) { const [e, id] = it.split(":"); const at = __sentAt["c:a" + e + "-" + id]; return this.readyOrig(it) && !(at && Date.now() - at < 300000); };
+  // A failed card (status 3 or 5, "刪除所有失敗") still carries the shot's prompt, so reconcile maps
+  // it back to the shot and the driver never sends it again: release it after every reconcile.
+  if (!__dhq.reconcileOrig) __dhq.reconcileOrig = __dhq.reconcile.bind(__dhq);
+  __dhq.reconcile = function () {
+    const fixed = this.reconcileOrig();
+    const m = cmap(); const ids = cids(); let n = 0;
+    for (const line of __feed().split("\n")) {
+      const [g, , s] = line.split(" ");
+      if (!["3", "5"].includes(s) || !/^c:a\d+-/.test(m[g] ?? "")) continue;
+      const label = m[g]; m[g] = "x:fail-" + label.slice(2); delete ids[label]; delete __sentAt[label]; n++;
+      fixed.push("failed " + label);
+    }
+    if (n) { localStorage.ztcmapdh = JSON.stringify(m); localStorage.ztcidh = JSON.stringify(ids); localStorage.ztsentat = JSON.stringify(__sentAt); }
+    return fixed;
+  };
   return "hailuo-dh-loop ready " + ZT_EPS.join(",");
 })();
