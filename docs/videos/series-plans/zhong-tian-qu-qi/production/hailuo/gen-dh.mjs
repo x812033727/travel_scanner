@@ -94,7 +94,10 @@ for (const scene of video.scenes) {
   const by = {};
   for (const l of on) (by[l.speaker] ??= []).push(`「${l.text.replace(/[。]$/, "")}」`);
   const talk = Object.entries(by).map(([id, ls]) => `${EN[id] ?? id} speaks ${ls.length > 1 ? `${ls.length} short Mandarin lines, ${ls.join(" then ")}` : `a short Mandarin line, ${ls[0]}`}, ${HER.has(id) ? "her" : "his"} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes`).join("; ");
-  const text = `${P}${talk && !/ speaks /.test(orig) ? `${talk}, while: ` : ""}${orig}${S}`;
+  // Her collar sentence opens the clip (e25 on): a fixed look the clip must keep, and it keeps a re-shot
+  // clip from matching the card of the one it replaces.
+  const collar = (d.characters ?? []).includes("tangxiaotang") && /stand-up mandarin collar/.test(C.tangxiaotang?.appearance ?? "") ? "Tang Xiaotang's high stand-up collar stays closed at her throat. " : "";
+  const text = `${P}${collar}${talk && !/ speaks /.test(orig) ? `${talk}, while: ` : ""}${orig}${S}`;
   if (d.visual !== "still") clips[`a${ep}-${scene.id}`] = [text, createHash("sha256").update(text).digest("hex").slice(0, 16), 4];
 }
 writeFileSync(ffOut, JSON.stringify(ff, null, 1));

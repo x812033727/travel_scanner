@@ -57,5 +57,8 @@
     __sentAt[label] = Date.now(); localStorage.ztsentat = JSON.stringify(__sentAt);
     return __oneOrig(id);
   };
+  // ...and the driver skips it meanwhile instead of waiting on it (it picks the first ready shot).
+  if (!__dhq.readyOrig) __dhq.readyOrig = __dhq.ready.bind(__dhq);
+  __dhq.ready = function (it) { const [e, id] = it.split(":"); const at = __sentAt["c:a" + e + "-" + id]; return this.readyOrig(it) && !(at && Date.now() - at < 300000); };
   return "hailuo-dh-loop ready " + ZT_EPS.join(",");
 })();
