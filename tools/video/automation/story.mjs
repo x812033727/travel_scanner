@@ -41,7 +41,7 @@ import { lintVideo } from "../core/lint.mjs";
 import { atomicWrite, contentPackFile, docDir, readJson, readText } from "../core/paths.mjs";
 import { screenplay, writeScreenplay } from "../core/screenplay.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
-import { NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
+import { mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
 import { namePattern, STORY_KIND, STORY_RULES } from "../core/story.mjs";
 import { DEFAULT_CPM, estimateTimeline, formatClock, FPS, spokenUnits } from "../core/timeline.mjs";
@@ -1380,10 +1380,11 @@ async function listenChapter(automation, state, key) {
 }
 
 /**
- * The storytelling panel on the merged story (core/narrative.mjs; owner, 2026-10-13): a reader in
- * a fresh session answers ten yes-or-no questions on the script alone. A required "no" goes back
- * to the listener as the owner's note would, chapter by chapter, STORY_PROMPT_FIX_ROUNDS times;
- * after that the video waits for the owner with the questions it failed. Null when nothing is due.
+ * The storytelling panel on the merged story (core/narrative.mjs; owner, 2026-10-13): two readers
+ * (owner, 2026-10-18), each in a fresh session, answer the yes-or-no questions on the script
+ * alone. A required "no" from both goes back to the listener as the owner's note would, chapter
+ * by chapter, STORY_PROMPT_FIX_ROUNDS times; after that the video waits for the owner with the
+ * questions it failed. Null when nothing is due.
  */
 async function narrativeGate(automation, state) {
   const dir = docDir(state.slug, automation.ctx.root);
@@ -1395,8 +1396,18 @@ async function narrativeGate(automation, state) {
   const saved = readJson(verdictFile, null);
   if (saved?.passed && narrativeReviewMatches(saved, video)) return undefined;
   const round = (saved?.round ?? 0) + 1;
-  const answer = await automation.stage("verifier", state.slug, panelPayload(video, timeline), PANEL_TOKENS, "drama", NARRATIVE_VARIANT, null, { bare: PANEL_INSTRUCTIONS });
-  const verdict = panelVerdict(answer);
+  // Two readers, each a fresh session, one after the other (owner, 2026-10-18): a required question
+  // fails only when both say "no" (mergePanelVerdicts). A reader whose call fails throws as one
+  // reader always has, and nothing is kept, so one reader's answer is never taken for two. Each
+  // payload carries its reader's number: a pilot's durable run receipt (client.mjs) is keyed by
+  // the request, and the second identical request would get the first reader's answer back.
+  const payload = panelPayload(video, timeline);
+  const verdicts = [];
+  for (let reader = 1; reader <= STORY_PANEL_READERS; reader++) {
+    const answer = await automation.stage("verifier", state.slug, { ...payload, reader }, PANEL_TOKENS, "drama", NARRATIVE_VARIANT, null, { bare: PANEL_INSTRUCTIONS });
+    verdicts.push(panelVerdict(answer));
+  }
+  const verdict = mergePanelVerdicts(verdicts);
   mkdirSync(path.dirname(verdictFile), { recursive: true });
   atomicWrite(verdictFile, `${JSON.stringify(narrativeRecord(video, verdict, round), null, 2)}\n`);
   automation.cleared(state, "verifier");
