@@ -1,0 +1,82 @@
+{
+  "tempo": 1.07,
+  "title": {
+    "shot": "s01",
+    "text": "種田娶妻打天下",
+    "sub": "第 23 集",
+    "from": 0.1,
+    "to": 2.4
+  },
+  "grades": {},
+  "default_grade": "dh",
+  "finish": "vignette=angle=PI/5,format=yuv420p",
+  "names": {},
+  "punch": {},
+  "sfx_dirs": [
+    "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-library"
+  ],
+  "name_whoosh": "swish-9",
+  "music": [
+    {
+      "cue": "tension",
+      "from": "s01",
+      "to": "s06",
+      "offset": 0,
+      "gain": -12
+    },
+    {
+      "cue": "suspense",
+      "from": "s07",
+      "to": "s21",
+      "offset": 15,
+      "gain": -15
+    },
+    {
+      "cue": "comedy",
+      "from": "s22",
+      "to": "s29",
+      "offset": 40,
+      "gain": -17
+    },
+    {
+      "cue": "tension",
+      "from": "s30",
+      "to": "s42",
+      "offset": 20,
+      "gain": -12,
+      "fade_out": 1.4
+    }
+  ],
+  "sfx": [
+    {
+      "synth": "river",
+      "at": "s01",
+      "to": "s29",
+      "gain": -26
+    },
+    {
+      "file": "Wind",
+      "at": "s01",
+      "to": "s03",
+      "gain": -28
+    },
+    {
+      "file": "birds",
+      "at": "s22",
+      "to": "s29",
+      "gain": -30
+    },
+    {
+      "file": "paper_04",
+      "at": "s38",
+      "off": 0.2,
+      "gain": -10
+    },
+    {
+      "file": "gong_02",
+      "at": "s42",
+      "off": 0.3,
+      "gain": -8
+    }
+  ]
+}

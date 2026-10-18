@@ -15,11 +15,26 @@ export const TIMEOUT_MS = 15_000;
 export function descriptionUrls(texts) {
   const seen = new Set();
   for (const text of texts) {
-    for (const match of String(text ?? "").matchAll(/https?:\/\/[^\s｜|<>"'）)\]，。、；：！？「」]+/g)) {
-      seen.add(match[0].replace(/[.,;:。，、]+$/, ""));
+    for (const match of String(text ?? "").matchAll(/https?:\/\/[^\s｜|<>"'）\]，。、；：！？「」]+/g)) {
+      seen.add(trimUrl(match[0]));
     }
   }
   return [...seen];
+}
+
+/**
+ * A URL without the sentence punctuation after it. A closing parenthesis belongs to the URL only
+ * while it closes one the URL opened, as in Wikimedia's `File:Plane_Ticket_(28379315406).jpg`;
+ * otherwise it closes the Markdown link or the aside around it.
+ */
+function trimUrl(url) {
+  let trimmed = url;
+  for (;;) {
+    const before = trimmed;
+    trimmed = trimmed.replace(/[.,;:。，、]+$/, "");
+    if (trimmed.endsWith(")") && trimmed.split(")").length > trimmed.split("(").length) trimmed = trimmed.slice(0, -1);
+    if (trimmed === before) return trimmed;
+  }
 }
 
 /**

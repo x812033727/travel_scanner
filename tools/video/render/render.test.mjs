@@ -8,8 +8,9 @@ import { fileURLToPath } from "node:url";
 import { EXIT, main } from "../cli.mjs";
 import { compilationSandbox } from "../compile/fixture.mjs";
 import { compilationDocument, THUMB_SOURCE } from "../core/compilation.mjs";
-import { dramaFixture, explainerFixture, sandbox, tempDir } from "../core/fixtures/load.mjs";
-import { estimateTimeline, visualHash } from "../core/timeline.mjs";
+import { dramaFixture, explainerFixture, illustratedFixture, sandbox, tempDir } from "../core/fixtures/load.mjs";
+import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
+import { watermark, WATERMARK_FILE, watermarkDataUri, watermarkRecord } from "../core/watermark.mjs";
 import { LAUNCH_ARGS, resolveRequest } from "./browser.mjs";
 import { compareRuns } from "./repeat.mjs";
 import { localizedThumbnailHash, thumbnailSource, thumbnailSourceHash } from "../core/translations.mjs";
@@ -153,6 +154,79 @@ test("a stock photo is read from the work directory: listed in assets[], fetched
   assert.notEqual(two.key, one.key, "a swapped photo redraws the slide that shows it");
   assert.notEqual(state(renderPlan(doc, "t", root)).key, two.key, "without the work directory the bytes are not in the key");
   assert.equal(resolveRequest(`https://video.local/work/${stock}`, { root, workdir, pages: new Map() }).file, path.join(workdir, "stock", `${sha}.png`), "the fake origin serves it from the work directory");
+});
+
+test("an opted-in, credited repository picture fills the thumbnail without changing scenes or speech", () => {
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const plain = structuredClone(showcase);
+  const doc = structuredClone(showcase);
+  const asset = doc.assets[0].path;
+  doc.thumbnail.data.asset = asset;
+  assert.deepEqual(renderProblems(doc, root), []);
+  const before = renderPlan(plain, "t", root);
+  const after = renderPlan(doc, "t", root);
+  const url = `https://video.local/repo/${asset}`;
+  assert.match(after.thumbnail.html, new RegExp(`<img src="${url.replaceAll(".", "\\.")}" alt="">`));
+  assert.ok(after.thumbnail.variants.every((variant) => variant.html.includes(url)), "variants inherit the chosen picture");
+  assert.equal(resolveRequest(url, { root, workdir: null, pages: new Map() }).file, path.join(root, asset));
+  assert.notEqual(after.thumbnail.key, before.thumbnail.key);
+  assert.deepEqual(after.scenes, before.scenes, "a thumbnail picture does not redraw video scenes");
+  assert.deepEqual(estimateTimeline(doc), estimateTimeline(plain));
+  assert.equal(speechHash(doc, { terms: {} }), speechHash(plain, { terms: {} }));
+  assert.notEqual(visualHash(doc), visualHash(plain), "only the visual status needs refresh");
+  assert.equal(renderPlan(plain, "t", root).thumbnail.html, before.thumbnail.html, "unflagged thumbnails are unchanged");
+  const badVariant = structuredClone(doc);
+  badVariant.thumbnail.variants[0].data.asset = "docs/videos/missing-variant.jpg";
+  assert.match(renderProblems(badVariant, root).map((problem) => problem.message).join(" "), /variant b: data.asset .*not in assets\[\]/);
+});
+
+test("thumbnail assets require an allowed local picture and a credited assets[] entry", () => {
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const doc = structuredClone(showcase);
+  delete doc.thumbnail.variants;
+  const asset = doc.assets[0].path;
+  doc.thumbnail.data.asset = asset;
+  const messages = () => renderProblems(doc, root).filter((problem) => problem.path === "thumbnail").map((problem) => problem.message);
+  doc.assets = [];
+  assert.match(messages().join(" "), /not in assets\[\]/);
+  doc.assets = [{ path: asset, source: "", license: "Public domain" }];
+  assert.match(messages().join(" "), /needs source and license/);
+  doc.assets = [{ path: "docs/videos/missing-thumbnail.jpg", source: "Museum", license: "Public domain" }];
+  doc.thumbnail.data.asset = doc.assets[0].path;
+  assert.match(messages().join(" "), /does not exist/);
+  doc.thumbnail.data.asset = "docs/videos/../secret.jpg";
+  assert.match(messages().join(" "), /must be a raster image/);
+  doc.thumbnail.data.asset = "apps/api/.env";
+  assert.match(messages().join(" "), /must be a raster image/);
+  doc.thumbnail.data.asset = asset;
+  doc.assets = showcase.assets;
+  doc.thumbnail.data.shot = "some-shot";
+  assert.match(messages().join(" "), /cannot be combined/);
+});
+
+test("a credited stock thumbnail uses the work route and changes key with the picture bytes", () => {
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const workdir = tempDir("video-thumbnail-asset-");
+  const asset = `stock/${"c".repeat(64)}.jpg`;
+  const file = path.join(workdir, asset);
+  const doc = structuredClone(showcase);
+  delete doc.thumbnail.variants;
+  doc.thumbnail.data.asset = asset;
+  doc.assets.push({ path: asset, source: "Archive photograph", license: "Public domain" });
+  assert.match(renderProblems(doc, root, { workdir })[0].message, /does not exist in the work directory/);
+  mkdirSync(path.dirname(file), { recursive: true });
+  writeFileSync(file, "first photo bytes");
+  assert.deepEqual(renderProblems(doc, root, { workdir }), []);
+  const first = renderPlan(doc, "t", root, { workdir });
+  const url = `https://video.local/work/${asset}`;
+  assert.ok(first.thumbnail.html.includes(url));
+  assert.equal(resolveRequest(url, { root, workdir, pages: new Map() }).file, file);
+  assert.equal(renderPlan(doc, "t", root, { workdir }).thumbnail.key, first.thumbnail.key);
+  writeFileSync(file, "second photo bytes");
+  const second = renderPlan(doc, "t", root, { workdir });
+  assert.equal(second.thumbnail.html, first.thumbnail.html);
+  assert.notEqual(second.thumbnail.key, first.thumbnail.key, "swapped bytes invalidate the thumbnail cache");
+  assert.deepEqual(second.scenes, first.scenes, "no video frame needs a redraw");
 });
 
 test("render draws a stock photo slide from the work directory and redraws it when the photo changes", async () => {
@@ -760,4 +834,114 @@ test("a screenshot of the repository's own page still needs no assets[] entry", 
   const doc = structuredClone(showcase);
   delete doc.assets;
   assert.deepEqual(renderProblems(doc, root).map((problem) => problem.path), [`scenes[${doc.scenes.findIndex((scene) => scene.id === "old-print")}] (old-print).data`]);
+});
+
+test("with the channel mark every card carries it in its corner, a card that will move leaves it to assemble, and without it the plan is what it was", () => {
+  const mark = watermark();
+  const uri = watermarkDataUri(mark);
+  const plain = renderPlan(showcase, "t");
+  assert.deepEqual(renderPlan(showcase, "t", null, { watermark: null }), plain);
+  const marked = renderPlan(showcase, "t", null, { watermark: mark });
+  for (const [index, scene] of marked.scenes.entries()) {
+    assert.equal(scene.marked, true, scene.id);
+    assert.equal("marked" in plain.scenes[index], false, "a plan without the mark says nothing of it");
+    for (const [at, state] of scene.states.entries()) {
+      assert.ok(state.html.includes(`<img class="chrome-mark" alt="" src="${uri}" style="position:absolute;left:${mark.box.x}px;top:${mark.box.y}px;width:${mark.box.width}px;height:${mark.box.height}px">`), scene.id);
+      assert.doesNotMatch(state.html, /chrome-brand/);
+      assert.notEqual(state.key, plain.scenes[index].states[at].key, "the mark's bytes are part of the frame key");
+      assert.equal(state.text, plain.scenes[index].states[at].text.replace("MOKAAIR", ""), "and no part of the text the glyph check reads");
+    }
+  }
+  assert.equal(marked.thumbnail.key, plain.thumbnail.key, "a thumbnail carries no mark");
+
+  // Illustrated slides: assemble drifts a card with one state like a keyframe, so its corner is
+  // left empty and the mark is laid over its segment; a card with reveals stays where it is.
+  const plan = renderPlan(illustratedFixture(), "t", null, { watermark: mark });
+  assert.deepEqual(plan.scenes.map((scene) => [scene.id, scene.kind, scene.marked]), [
+    ["hook", "stills", false], ["podium", "clip", undefined], ["desk", "clip", undefined], ["clock", "clip", undefined],
+    ["numbers", "stills", true], ["race", "clip", undefined], ["rule", "stills", false], ["door", "clip", undefined], ["wrap", "stills", false],
+  ]);
+  const scene = (id) => plan.scenes.find((each) => each.id === id);
+  assert.doesNotMatch(scene("hook").states[0].html, /chrome-mark|chrome-brand/);
+  assert.equal(scene("numbers").states.length, 3);
+  for (const state of scene("numbers").states) assert.match(state.html, /chrome-mark/);
+
+  // A drama's cards are never moved, whatever their states.
+  for (const each of renderPlan(dramaFixture(), "t", null, { watermark: mark }).scenes) assert.equal(each.marked, each.kind === "clip" ? undefined : true, each.id);
+});
+
+test("render decides the channel mark once: a first drawing names and pins it, and a cut that already exists is drawn as it always was", async () => {
+  const mark = watermark();
+  const captures = [];
+  let out = "";
+  let problems = [];
+  const context = (box) => ({
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work },
+    stdout: { write: (text) => (out += text) },
+    stderr: { write: (text) => (out += text) },
+    now: () => new Date("2026-10-12T00:00:00Z"),
+    openRenderer: async () => ({
+      capture: async (key, html) => {
+        captures.push({ key, html });
+        return { still: Buffer.from(`png ${key}`), frames: [], problems };
+      },
+      sheet: async () => Buffer.from("sheet"),
+      close: async () => {},
+    }),
+  });
+  const manifestOf = (box) => JSON.parse(readFileSync(path.join(box.workdir, "frames", "manifest.json"), "utf8"));
+  const pinOf = (box) => path.join(box.workdir, WATERMARK_FILE);
+  const cards = () => captures.filter((capture) => /chrome-(mark|brand)/.test(capture.html));
+  const states = (box) => manifestOf(box).scenes.reduce((sum, scene) => sum + scene.states.length, 0);
+
+  const fresh = sandbox();
+  assert.equal(await main(["render", "--slug", fresh.slug], context(fresh)), EXIT.ok, out);
+  assert.deepEqual(manifestOf(fresh).watermark, watermarkRecord(mark));
+  assert.deepEqual(manifestOf(fresh).scenes.map((scene) => scene.marked), [true, true, true]);
+  assert.deepEqual(JSON.parse(readFileSync(pinOf(fresh), "utf8")), { schema_version: 1, id: mark.id, sha256: mark.sha256, adopted_at: "2026-10-12T00:00:00.000Z" });
+  assert.equal(cards().length, states(fresh));
+  assert.ok(cards().every((capture) => capture.html.includes("chrome-mark") && !capture.html.includes("chrome-brand")));
+  // Once the cut exists, the pin is what keeps its frames: nothing is drawn again.
+  writeFileSync(path.join(fresh.workdir, "final.mp4"), "cut");
+  writeFileSync(path.join(fresh.workdir, "checks.json"), "{}");
+  out = "";
+  assert.equal(await main(["render", "--slug", fresh.slug], context(fresh)), EXIT.ok, out);
+  assert.match(out, new RegExp(`0 states drawn, ${states(fresh)} reused`));
+  assert.deepEqual(manifestOf(fresh).watermark, watermarkRecord(mark));
+
+  // A cut made before the mark: the brand word as before, and nothing in the manifest or beside it.
+  const old = sandbox();
+  mkdirSync(old.workdir, { recursive: true });
+  writeFileSync(path.join(old.workdir, "final.mp4"), "cut");
+  captures.length = 0;
+  assert.equal(await main(["render", "--slug", old.slug], context(old)), EXIT.ok, out);
+  assert.equal("watermark" in manifestOf(old), false);
+  assert.ok(manifestOf(old).scenes.every((scene) => !("marked" in scene)));
+  assert.equal(existsSync(pinOf(old)), false);
+  assert.equal(cards().length, states(old));
+  assert.ok(cards().every((capture) => capture.html.includes('<div class="chrome-brand">MOKAAIR</div>')));
+  // Asked for, an unapproved cut takes the mark, and keeps it.
+  assert.equal(await main(["render", "--slug", old.slug, "--adopt-watermark"], context(old)), EXIT.ok, out);
+  assert.deepEqual(manifestOf(old).watermark, watermarkRecord(mark));
+  assert.ok(existsSync(pinOf(old)));
+
+  // An approved cut refuses, before anything is drawn or written.
+  const approved = sandbox();
+  mkdirSync(approved.workdir, { recursive: true });
+  writeFileSync(path.join(approved.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final" }] }));
+  captures.length = 0;
+  out = "";
+  assert.equal(await main(["render", "--slug", approved.slug, "--adopt-watermark"], context(approved)), EXIT.usage);
+  assert.match(out, /already has a final or publish approval; its pictures stay as they are/);
+  assert.equal(captures.length, 0);
+  assert.equal(existsSync(path.join(approved.workdir, "frames", "manifest.json")), false);
+
+  // A render that stops on a layout problem writes no manifest, so it pins nothing either.
+  const broken = sandbox();
+  problems = ["text does not fit even at 60% size"];
+  out = "";
+  assert.equal(await main(["render", "--slug", broken.slug], context(broken)), EXIT.lint, out);
+  assert.equal(existsSync(pinOf(broken)), false);
+  assert.equal(existsSync(path.join(broken.workdir, "frames", "manifest.json")), false);
 });

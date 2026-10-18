@@ -5,14 +5,18 @@
 // their own tickets; until one exists, its command says which ticket builds it and exits with
 // the "missing tool" code, so an agent following `status` knows the gap is expected.
 import { randomInt } from "node:crypto";
-import { existsSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 
 import { tidiedNote } from "./automation/tidy.mjs";
 import { approve, GATES } from "./core/approvals.mjs";
-import { docDir, resolveWorkdir, ROOT, UsageError } from "./core/paths.mjs";
+import { inspectStartedStoryMigration, migrateStartedStoryLexicon } from "./core/lexicon-migration.mjs";
+import { applyStoryLexiconRevision, inspectStoryLexiconRevision } from "./core/lexicon-revision.mjs";
+import { NARRATIVE_REVIEW, narrativeRecord, panelPayload, panelVerdict } from "./core/narrative.mjs";
+import { atomicWrite, docDir, readJson, resolveWorkdir, ROOT, UsageError } from "./core/paths.mjs";
+import { estimateTimeline } from "./core/timeline.mjs";
 import { eachLine, LINE_ID } from "./core/schema.mjs";
 import { StageError, runCaptions } from "./core/stages.mjs";
 import { narrativeHash, writeScreenplay } from "./core/screenplay.mjs";
@@ -71,7 +75,19 @@ Usage: node tools/video/cli.mjs <command> [options]
   ids      [--count N] [--slug S]                  fresh line ids that are not in use
   approve  --slug S --gate outline|script|look|storyboard|audio|final|publish [--workdir D] [--note T]
                                                    record the owner's approval of the file as it is now
+  narrative --slug S [--answers F] [--workdir D] [--json]
+                                                   the storytelling panel (script-writing.md §故事主線與鉤子): without --answers it
+                                                   prints the narration and its ten yes-or-no questions for a blind reader; with
+                                                   --answers it records the verdict and exits 1 while a required question is "no"
   script   --slug S                                write docs/videos/<slug>/script.md, the screenplay a series episode's owner reads
+  story-lexicon-migrate --slug S [--workdir D] [--apply] [--json]
+                                                   pin a story started before per-story dictionaries that has no narration yet
+                                                   (docs/videos/story-lexicon-migration.md); without --apply it only prints each
+                                                   precondition and the snapshot SHA-256; exits 1 when refused
+  story-lexicon-revise --slug S [--workdir D] [--proposal SHA]... [--review F] [--apply] [--json]
+                                                   review a story's pronunciation proposals (docs/videos/story-lexicon-revision.md):
+                                                   without --review it lists them and prints a receipt to fill in; with --review it
+                                                   checks the receipt, and --apply publishes the reviewed dictionary; exits 1 when refused
   review-push --slug S [--gate G | --report-only] [--manual-review]
                                                    report and submit; --manual-review requires --gate final and keeps QA from auto-approving it
   review-pull --slug S [--gate G]                  record the owner's decisions made on /admin/videos
@@ -86,11 +102,13 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    --dry-run only measures the script
 
   login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
+  audition --text-file F [--voices V] [--style T] [--slug S] [--workdir D]
+                                                   compare voices; A01/B18 pilot samples require their exact budgeted --slug
   check-audio --slug S [--locale L] [--threshold 0.5] [--force] [--second-opinion "PROGRAM ARGS"]  transcribe every line; Jev judges the ones that differ; a second transcriber rechecks what Jev doubts
   dub --slug S [--locale en,ja,ko] [--format m4a|mp3|wav] [--dry-run] [--redo F [--keep-fitting]] [--line-by-line] [--force] [--style T]
                                                    a YouTube audio track per locale: the translation read by the
                                                    narration voice, laid into the slide windows (docs/videos/DUBS.md)
-  audition, tts, review, render, assemble, package, youtube-sync
+  tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
   look, keyframes, clips, music, media-status      the drama format's generation stages (docs/videos/DRAMA.md)
   stock search --query Q [--provider pexels|pixabay] [--orientation landscape|portrait|square] [--per-page N] [--page N] [--slug S] [--json]
@@ -101,8 +119,11 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    bring in a clip made outside the pipeline: checked like a bought take, booked in the ledger
   branding [--install DIR] [--series sothatswhy] [--workdir D] [--dry-run] [--json]
                                                    inspect or install a fixed intro/outro package for new long videos
-  assemble --slug S [--workdir D] [--adopt-branding]
-                                                   explicitly add current branding to an existing unapproved cut
+  assemble --slug S [--workdir D] [--adopt-branding] [--intro-after-condensation]
+                                                   explicitly add current branding to an existing unapproved cut;
+                                                   or move a not-uploaded narrated cut's intro after chapter 1
+  render --slug S [--workdir D] [--adopt-watermark]
+                                                   explicitly draw an existing unapproved cut with the channel mark (docs/videos/WATERMARK.md)
   compile --slug <series>-full [--workdir D] [--force] [--dry-run] [--adopt-branding]
                                                    join a binge series' cleared episodes into its compilation, with
                                                    chapter cards, merged captions and chapters (docs/videos/BINGE.md)
@@ -158,6 +179,8 @@ async function cmdStatus(args, ctx) {
   // Dubs are optional (the owner picks each video's languages), so they are shown only once one exists.
   const dubs = Object.entries(status.dubs ?? {}).filter(([, dub]) => dub.status !== "missing");
   if (dubs.length) ctx.stdout.write(`  dubs: ${dubs.map(([locale, dub]) => `${locale} ${dub.status}${dub.note ? ` (${dub.note})` : ""}`).join("; ")}\n`);
+  // The storytelling panel is not a checklist step: it is shown once it has been asked.
+  if (status.narrative && status.narrative.status !== "missing") ctx.stdout.write(`  storytelling panel: ${status.narrative.status}${status.narrative.failed.length ? ` (${status.narrative.failed.join(", ")})` : ""}\n`);
   // A finished video whose work files the tidy cleared has no next step, whatever the files say.
   const tidied = tidiedNote(workdir);
   if (tidied) ctx.stdout.write(`\n${tidied}\n`);
@@ -196,6 +219,40 @@ async function cmdApprove(args, ctx) {
   return EXIT.ok;
 }
 
+/**
+ * The storytelling panel on a script written by hand (core/narrative.mjs; the worker asks it
+ * itself after the listener's edit). Without `--answers` it prints the panel: the narration as a
+ * reader sees it and the ten yes-or-no questions, for an agent to answer in a fresh session
+ * knowing nothing else. With `--answers <file>` ({"answers": [...]}) it records the verdict,
+ * bound to the script it read, and exits 1 while a required question is answered no.
+ */
+async function cmdNarrative(args, ctx) {
+  const values = parse(args, { slug: { type: "string" }, file: { type: "string" }, answers: { type: "string" }, workdir: { type: "string" }, json: { type: "boolean" } });
+  if (!values.slug && !values.file) throw new UsageError("narrative needs --slug or --file");
+  const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
+  const timeline = estimateTimeline(project.doc);
+  const payload = panelPayload(project.doc, timeline);
+  if (!values.answers) {
+    if (values.json) ctx.stdout.write(`${JSON.stringify(payload, null, 2)}\n`);
+    else ctx.stdout.write(`${payload.narration}\n${payload.questions.map((question, index) => `${index + 1}. [${question.id}] ${question.question}`).join("\n")}\n\nAnswer in a fresh session that has read nothing else, as {"answers": [{"id", "yes", "evidence"}]}, then run this again with --answers <file>.\n`);
+    return EXIT.ok;
+  }
+  const verdict = panelVerdict(readJson(path.resolve(values.answers)));
+  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: project.doc.slug, root: ctx.root });
+  const file = path.join(workdir, ...NARRATIVE_REVIEW);
+  const round = (readJson(file, null)?.round ?? 0) + 1;
+  mkdirSync(path.dirname(file), { recursive: true });
+  atomicWrite(file, `${JSON.stringify(narrativeRecord(project.doc, verdict, round), null, 2)}
+`);
+  if (values.json) ctx.stdout.write(`${JSON.stringify(verdict, null, 2)}\n`);
+  else {
+    ctx.stdout.write(`${project.doc.slug}: the storytelling panel ${verdict.passed ? "passed" : "failed"}; verdict in ${path.relative(ctx.root, file)}\n`);
+    for (const problem of verdict.problems) ctx.stdout.write(`  FAIL  ${problem}\n`);
+    for (const each of verdict.advisory) ctx.stdout.write(`  note  ${each.id}: ${each.evidence}\n`);
+  }
+  return verdict.passed ? EXIT.ok : EXIT.lint;
+}
+
 async function cmdScript(args, ctx) {
   const values = parse(args, { slug: { type: "string" } });
   if (!values.slug) throw new UsageError("script needs --slug");
@@ -221,6 +278,76 @@ async function cmdCaptions(args, ctx) {
   return manifest.chapters.length ? EXIT.lint : EXIT.ok;
 }
 
+/** docs/videos/story-lexicon-migration.md: a dry run unless --apply; refused (exit 1) unless every precondition holds. */
+async function cmdStoryLexiconMigrate(args, ctx) {
+  const values = parse(args, { slug: { type: "string" }, workdir: { type: "string" }, apply: { type: "boolean" }, json: { type: "boolean" } });
+  if (!values.slug) throw new UsageError("story-lexicon-migrate needs --slug");
+  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: values.slug, root: ctx.root });
+  const report = inspectStartedStoryMigration({ root: ctx.root, slug: values.slug, workdir });
+  let applied = null;
+  let failure = null;
+  if (values.apply && report.status === "allowed") {
+    try { applied = migrateStartedStoryLexicon({ root: ctx.root, slug: values.slug, workdir, names: report.names, now: ctx.now }); }
+    catch (error) { if (!error?.code) throw error; failure = error; }
+  }
+  if (values.json) {
+    ctx.stdout.write(`${JSON.stringify({ ...report, apply: Boolean(values.apply), applied: applied && { lexicon_sha256: applied.lexicon_sha256, head_event_sha256: applied.head_event_sha256, transaction_id: applied.transaction_id ?? null, migrated: applied.migrated }, error: failure && { code: failure.code, message: failure.message } }, null, 2)}\n`);
+  } else {
+    ctx.stdout.write(`${values.slug}: ${report.status}${report.lexicon_sha256 ? `; snapshot sha256 ${report.lexicon_sha256}` : ""}\n`);
+    for (const check of report.checks) ctx.stdout.write(`  ${check.ok ? "ok  " : "FAIL"}  ${check.id}${check.ok ? "" : ` -> ${check.code}${check.detail ? ` (${check.detail})` : ""}`}\n`);
+    if (report.shared_sha256 !== undefined && report.status !== "already_pinned") ctx.stdout.write(`  shared lexicon sha256 ${report.shared_sha256 ?? "(none)"}; seeded ${report.seeded_terms.length ? report.seeded_terms.join(", ") : "nothing"}\n`);
+    if (applied) ctx.stdout.write(`pinned ${values.slug}: lexicon ${applied.lexicon_sha256}, event ${applied.head_event_sha256}${applied.transaction_id ? `, transaction ${applied.transaction_id}` : ""}\n`);
+    else if (failure) ctx.stdout.write(`not pinned: ${failure.message}\n`);
+    else if (report.status === "allowed") ctx.stdout.write("dry run: nothing written; run again with --apply to pin it\n");
+  }
+  if (failure || report.status === "refused") return EXIT.lint;
+  return EXIT.ok;
+}
+
+/** docs/videos/story-lexicon-revision.md: list proposals and a receipt template, or check (and with --apply publish) a filled receipt. */
+async function cmdStoryLexiconRevise(args, ctx) {
+  const values = parse(args, { slug: { type: "string" }, workdir: { type: "string" }, proposal: { type: "string", multiple: true }, review: { type: "string" }, apply: { type: "boolean" }, json: { type: "boolean" } });
+  if (!values.slug) throw new UsageError("story-lexicon-revise needs --slug");
+  if (values.apply && !values.review) throw new UsageError("--apply needs --review <receipt.json>");
+  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: values.slug, root: ctx.root });
+  const out = (value) => ctx.stdout.write(`${JSON.stringify(value, null, 2)}\n`);
+  if (!values.review) {
+    const report = inspectStoryLexiconRevision({ root: ctx.root, slug: values.slug, workdir, only: values.proposal ?? [] });
+    if (values.json) out(report);
+    else {
+      ctx.stdout.write(`${values.slug}: pinned dictionary ${report.lexicon_sha256 ?? "(unreadable)"}${report.sequence ? ` (version ${report.sequence})` : ""}; work directory ${workdir}\n`);
+      for (const refusal of report.refusals) ctx.stdout.write(`  REFUSED  ${refusal.code}${refusal.detail ? ` (${refusal.detail})` : ""}\n`);
+      if (report.lexicon_sha256 && !report.proposals.length) ctx.stdout.write("  no pronunciation proposals\n");
+      for (const proposal of report.proposals) {
+        const stale = proposal.before_sha256 && proposal.before_sha256 !== report.lexicon_sha256;
+        ctx.stdout.write(`  ${proposal.status.padEnd(7)}  ${proposal.sha256}${proposal.problem ? `: ${proposal.problem}` : ""}${stale ? ` (made against ${proposal.before_sha256})` : ""}\n`);
+        for (const [term, spoken] of Object.entries(proposal.pending)) ctx.stdout.write(`             ${term} -> ${spoken === null ? "null (read as written)" : JSON.stringify(spoken)}\n`);
+      }
+      if (report.template) {
+        ctx.stdout.write("\nReview receipt to fill in: set each decision to accept, accept_as (with \"spoken\") or reject, the reviewer,\nreviewed_at and independent: true; then run again with --review <file>, and --apply to publish.\n");
+        out(report.template);
+      }
+    }
+    return report.refusals.length ? EXIT.lint : EXIT.ok;
+  }
+  let result = null;
+  let failure = null;
+  try {
+    result = applyStoryLexiconRevision({ root: ctx.root, slug: values.slug, workdir, reviewBytes: readFileSync(path.resolve(values.review)), apply: Boolean(values.apply), now: ctx.now });
+  } catch (error) { if (!error?.code) throw error; failure = error; }
+  if (values.json) out({ slug: values.slug, apply: Boolean(values.apply), result, error: failure && { code: failure.code, message: failure.message } });
+  else if (failure) ctx.stdout.write(`${values.slug}: refused: ${failure.message}\n`);
+  else if (result.status === "already_applied") ctx.stdout.write(`${values.slug}: this receipt (${result.review_sha256}) is already published; the pinned dictionary is ${result.lexicon_sha256}\n`);
+  else {
+    const terms = Object.entries(result.accepted).map(([term, spoken]) => `${term} -> ${spoken === null ? "null" : JSON.stringify(spoken)}`);
+    ctx.stdout.write(`${values.slug}: receipt ${result.review_sha256}\n  accept: ${terms.join(", ")}\n  reject: ${result.rejected.length ? result.rejected.join(", ") : "nothing"}\n  dictionary ${result.before_sha256} -> ${result.next_sha256}\n`);
+    if (result.rejected.length) ctx.stdout.write("  note: a rejected term stays in the worker's pending list, so the story stays blocked on it (docs/videos/story-lexicon-revision.md)\n");
+    if (result.status === "dry_run") ctx.stdout.write("dry run: nothing written; run again with --apply to publish\n");
+    else ctx.stdout.write(`published version ${result.sequence}: event ${result.head_event_sha256}; receipt kept at ${result.review_file}\nNext: retry ${values.slug} on /admin/videos so the worker takes the new dictionary.\n`);
+  }
+  return failure ? EXIT.lint : EXIT.ok;
+}
+
 async function delegate(command, args, ctx) {
   const [area, ticket] = AREAS[command];
   const entry = path.join(ctx.here, area, "cli.mjs");
@@ -232,7 +359,7 @@ async function delegate(command, args, ctx) {
   return module.run(command, args, { ...ctx, EXIT });
 }
 
-const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, script: cmdScript, captions: cmdCaptions };
+const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, narrative: cmdNarrative, script: cmdScript, captions: cmdCaptions, "story-lexicon-migrate": cmdStoryLexiconMigrate, "story-lexicon-revise": cmdStoryLexiconRevise };
 
 export async function main(argv, overrides = {}) {
   const ctx = { root: ROOT, here: HERE, env: process.env, stdout: process.stdout, stderr: process.stderr, now: () => new Date(), ...overrides };

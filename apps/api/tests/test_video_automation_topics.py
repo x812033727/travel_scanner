@@ -307,3 +307,31 @@ async def test_gather_is_unchanged_while_no_source_opts_in(
 
     assert [topic.source for topic in out.topics] == ["site", "search"]
     assert out.notes == []
+
+
+@pytest.mark.asyncio
+async def test_a_refused_topic_lookup_says_when_the_window_opens_again(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # 2026-10-13 to 10-16 the worker asked every round, four tries each, and the hourly window
+    # never let one through: Retry-After lets it put the scheduled draft off instead.
+    from app import infra
+    from app.problems import AppError
+    from app.video_automation import admin_api
+
+    class WindowRedis:
+        async def pttl(self, key: str) -> int:
+            assert key.startswith("rate:video_topics:")
+            return 1_799_400
+
+    async def over(namespace: str, identifier: str, *, window_seconds: int) -> int:
+        assert (namespace, window_seconds) == ("video_topics", 3600)
+        return admin_api.TOPIC_LOOKUPS_PER_HOUR + 1
+
+    monkeypatch.setattr(infra, "_incr_window", over)
+    monkeypatch.setattr(infra, "get_redis", lambda: WindowRedis())
+    tool = SimpleNamespace(id=UUID("2b06f60f-1026-477a-9d40-28683b00a22e"))
+    with pytest.raises(AppError) as refused:
+        await admin_api.get_video_topics(tool, None)  # type: ignore[arg-type]
+    assert (refused.value.status, refused.value.code) == (429, "rate_limit_exceeded")
+    assert refused.value.headers == {"Retry-After": "1800"}

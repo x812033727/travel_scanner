@@ -1,8 +1,8 @@
-import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { BROWSE_STATES } from "./admin-video-browser";
-import { type Review, UploadPackage, VIDEO_CATEGORIES, youtubeVideoId } from "./admin-video-review-card";
+import { finalApproved, publishState, type Review, UploadPackage, VIDEO_CATEGORIES, youtubeVideoId } from "./admin-video-review-card";
 import { AdminVideoReviews, REFRESH_MS } from "./admin-video-reviews";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
@@ -98,6 +98,7 @@ describe("AdminVideoReviews", () => {
   it("shows an external final's missing main-worker handoff in the catalog and detail without queuing work", async () => {
     const imported = {
       ...summary, pending: 0, ready_to_upload: false, worker_state: "not_adopted",
+      checklist: [{ key: "final_video_approved", label: "成片核准", done: true }],
       locales_decided_at: "2026-10-05T00:00:00Z",
       locales: { en: { metadata: true, captions: true, dub: false } },
       languages: { en: { metadata: { state: "ready" }, captions: { state: "working" } } },
@@ -180,6 +181,27 @@ describe("AdminVideoReviews", () => {
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
     expect(await screen.findByText("卡住，需要人處理：缺金鑰")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "重試這支影片" })).toBeNull();
+  });
+
+  it("offers to drop a video linked to YouTube too, saying YouTube itself is left alone", async () => {
+    const linked = { ...summary, youtube_video_id: "efSy-Jxq-s8" };
+    const posts: string[] = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "POST") posts.push(url);
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([linked]));
+      return Promise.resolve(Response.json({ ...linked, reviews: [] }));
+    }));
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    fireEvent.click(await screen.findByText("放棄這支影片", { selector: "summary" }));
+    expect(screen.getByText(/在這裡放棄不會動到 YouTube/)).toBeTruthy();
+    fireEvent.change(screen.getByRole("textbox", { name: "放棄的原因（必填）" }), { target: { value: "重製版已取代，YouTube 上的舊片已刪" } });
+    fireEvent.click(screen.getByRole("button", { name: "放棄這支影片" }));
+    await waitFor(() => expect(posts).toHaveLength(1));
+    expect(posts[0]).toContain("/admin/videos/ai-model-choice/drop");
+    confirm.mockRestore();
   });
 
   it("drops a video with a reason once confirmed, then shows it as dropped", async () => {
@@ -479,7 +501,87 @@ describe("AdminVideoReviews", () => {
     expect(within(panel).getByRole("button", { name: "只出繁體中文" })).toHaveProperty("disabled", true);
   });
 
-  it("waits for the final cut before offering languages, greys out a drama's dub, and lets a reader only look", async () => {
+  it("does not infer a story's final approval from early locale choices or an older cut", () => {
+    const storySummary = { ...summary, category: "story" as const, locales_decided_at: "2026-10-16T04:00:00Z", ready_to_upload: false };
+    expect(finalApproved(storySummary)).toBe(false);
+    expect(publishState(storySummary)).toBeNull();
+    // A list row omits the story flag, and its category may have been changed by an owner.
+    const relabeledSummary = { ...storySummary, category: "explainer" as const };
+    expect(finalApproved(relabeledSummary)).toBe(false);
+    expect(publishState(relabeledSummary)).toBeNull();
+
+    const prior = { ...final, status: "approved", decided_at: "2026-10-15T04:00:00Z" } as Review;
+    const replacement = { ...final, id: "33333333-3333-4333-8333-333333333333", status: "pending", created_at: "2026-10-16T04:00:00Z" } as Review;
+    const storyDetail = {
+      ...storySummary, format: "drama" as const, story_dub_preselectable: true,
+      checklist: [{ key: "final_video_approved", label: "成片核准", done: true }],
+      publish_approved_at: "2026-10-15T05:00:00Z", reviews: [replacement, prior],
+    };
+    expect(finalApproved(storyDetail)).toBe(false);
+    expect(finalApproved({ ...storyDetail, reviews: [{ ...replacement, status: "rejected" }, prior] })).toBe(false);
+    expect(finalApproved({ ...storyDetail, reviews: [{ ...replacement, status: "approved" }, prior] })).toBe(true);
+  });
+
+  it("saves a brand story's dub choices before its final cut while explaining that production must wait", async () => {
+    const writes: Array<{ url: string; body: unknown }> = [];
+    let locales: Record<string, unknown> = {};
+    let decidedAt: string | null = null;
+    let category = "story";
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body)) as { locales: Record<string, unknown> };
+        writes.push({ url, body });
+        locales = body.locales;
+        decidedAt = "2026-10-16T04:00:00Z";
+        return Promise.resolve(Response.json({ ...summary, locales, locales_decided_at: decidedAt }));
+      }
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([summary]));
+      return Promise.resolve(Response.json({
+        ...summary, format: "drama", category, pending: 0, ready_to_upload: false,
+        story_dub_preselectable: true, dub_allowed: false, locales, locales_decided_at: decidedAt,
+        reviews: [outline],
+      }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    const owner = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const panel = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(within(panel).queryByText("成片核准後可以選語言。")).toBeNull();
+    expect(within(panel).getByText(/可以先勾選配音；儲存後只記錄選擇，不會立即製作/)).toBeTruthy();
+    const box = (name: string) => within(panel).getByRole("checkbox", { name }) as HTMLInputElement;
+    for (const locale of ["英文", "日文", "韓文"]) {
+      expect(box(`${locale} 配音`).disabled).toBe(false);
+      fireEvent.click(box(`${locale} 配音`));
+      expect(box(`${locale} CC 字幕`).checked).toBe(true);
+    }
+    fireEvent.click(within(panel).getByRole("button", { name: "儲存" }));
+    await waitFor(() => expect(writes).toHaveLength(1));
+    expect(writes[0].url).toContain("/admin/videos/ai-model-choice/languages");
+    expect(writes[0].body).toEqual({ locales: {
+      en: { metadata: false, captions: true, dub: true },
+      ja: { metadata: false, captions: true, dub: true },
+      ko: { metadata: false, captions: true, dub: true },
+    } });
+    await waitFor(() => expect(within(panel).getAllByText("等待這一版成片與可關閉的繁中 CC 通過審核")).toHaveLength(3));
+    for (const locale of ["英文", "日文", "韓文"]) expect(box(`${locale} 配音`).checked).toBe(true);
+    expect(screen.queryByText("語言尚未完成")).toBeNull();
+    owner.unmount();
+
+    // The server's series-kind verdict remains authoritative if a story is recategorized.
+    category = "explainer";
+    const relabeled = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const relabeledPanel = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(within(relabeledPanel).getByRole("checkbox", { name: "英文 配音" })).toHaveProperty("disabled", false);
+    expect(screen.queryByText("語言尚未完成")).toBeNull();
+    relabeled.unmount();
+
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const reader = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(within(reader).getByRole("checkbox", { name: "英文 配音" })).toHaveProperty("disabled", true);
+    expect(within(reader).getByRole("button", { name: "儲存" })).toHaveProperty("disabled", true);
+  });
+
+  it("waits for the final cut before offering languages, greys out a drama's dub unless the narrator tells it alone, and lets a reader only look", async () => {
     const detail = (fields: Record<string, unknown>) => vi.fn((input: RequestInfo | URL) => Promise.resolve(Response.json(String(input).endsWith("/admin/videos?shorts=exclude") ? [summary] : { ...summary, ready_to_upload: false, ...fields })));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
     vi.stubGlobal("fetch", detail({ reviews: [outline] }));
@@ -490,15 +592,69 @@ describe("AdminVideoReviews", () => {
     expect(screen.queryByText("等你決定語言")).toBeNull();
     first.unmount();
 
-    vi.stubGlobal("fetch", detail({ format: "drama", pending: 0, locales_decided_at: null, reviews: [{ ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" }] }));
+    const approvedFinal = { ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" };
+    const dramaLater = "這支漫劇目前不能選配音；只有符合條件的純旁白影片能製作配音音軌。";
+    const storyNeedsCC = "這支品牌故事尚未確認使用可關閉的繁中 CC；完成無燒錄字幕的成片並通過審核後，才能選配音。";
+    vi.stubGlobal("fetch", detail({ format: "drama", pending: 0, locales_decided_at: null, reviews: [approvedFinal] }));
     const second = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const drama = await screen.findByRole("region", { name: "這支影片的語言" });
-    expect(within(drama).getByRole("checkbox", { name: "英文 配音" })).toHaveProperty("disabled", true);
+    const greyed = within(drama).getByRole("checkbox", { name: "英文 配音" });
+    expect(greyed).toHaveProperty("disabled", true);
+    expect(greyed.closest("label")?.getAttribute("title"), "a drama with no category").toBe(dramaLater);
     expect(within(drama).getByRole("checkbox", { name: "英文 CC 字幕" })).toHaveProperty("disabled", false);
     // Nothing decided yet: the page says so, and saving nothing is a decision too.
     expect(screen.getByText("等你決定語言")).toBeTruthy();
     expect(within(drama).getByRole("button", { name: "儲存" })).toHaveProperty("disabled", false);
     second.unmount();
+
+    // Other drama categories remain locked regardless of the owner's language choices.
+    for (const category of ["drama", "anime", "long-drama"]) {
+      vi.stubGlobal("fetch", detail({ format: "drama", category, pending: 0, reviews: [approvedFinal] }));
+      const view = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+      const box = within(await screen.findByRole("region", { name: "這支影片的語言" })).getByRole("checkbox", { name: "英文 配音" });
+      expect(box, category).toHaveProperty("disabled", true);
+      expect(box.closest("label")?.getAttribute("title"), category).toBe(dramaLater);
+      view.unmount();
+    }
+    // An old API omits eligibility, and a legacy story has no verified switchable-CC cut.
+    for (const dub_allowed of [undefined, false]) {
+      vi.stubGlobal("fetch", detail({ format: "drama", category: "story", dub_allowed, pending: 0, reviews: [approvedFinal] }));
+      const view = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+      const panel = await screen.findByRole("region", { name: "這支影片的語言" });
+      const box = within(panel).getByRole("checkbox", { name: "英文 配音" });
+      expect(box).toHaveProperty("disabled", true);
+      expect(box.closest("label")?.getAttribute("title")).toBe(storyNeedsCC);
+      expect(within(panel).getByText(storyNeedsCC)).toBeTruthy();
+      view.unmount();
+    }
+    // A reviewed story with switchable CC is allowed; picking its dub also picks its CC.
+    vi.stubGlobal("fetch", detail({ format: "drama", category: "story", dub_allowed: true, pending: 0, reviews: [approvedFinal] }));
+    const eligibleStory = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const storyPanel = await screen.findByRole("region", { name: "這支影片的語言" });
+    const storyDub = within(storyPanel).getByRole("checkbox", { name: "英文 配音" });
+    expect(storyDub).toHaveProperty("disabled", false);
+    expect(within(storyPanel).queryByText(storyNeedsCC)).toBeNull();
+    fireEvent.click(storyDub);
+    expect(within(storyPanel).getByRole("checkbox", { name: "英文 CC 字幕" })).toHaveProperty("checked", true);
+    eligibleStory.unmount();
+
+    // Server refusal wins even if the category historically allowed dubs (e.g. a relabeled story).
+    vi.stubGlobal("fetch", detail({ format: "drama", category: "explainer", dub_allowed: false, pending: 0, reviews: [approvedFinal] }));
+    const refused = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const refusedPanel = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(within(refusedPanel).getByRole("checkbox", { name: "英文 配音" })).toHaveProperty("disabled", true);
+    refused.unmount();
+
+    // A prior API did allow narrator-only explainers by category; keep that transition safe.
+    vi.stubGlobal("fetch", detail({ format: "drama", category: "explainer", pending: 0, reviews: [approvedFinal] }));
+    const explainer = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const told = await screen.findByRole("region", { name: "這支影片的語言" });
+    const dub = within(told).getByRole("checkbox", { name: "英文 配音" });
+    expect(dub).toHaveProperty("disabled", false);
+    expect(dub.closest("label")?.hasAttribute("title")).toBe(false);
+    fireEvent.click(dub);
+    expect(within(told).getByRole("checkbox", { name: "英文 CC 字幕" })).toHaveProperty("checked", true);
+    explainer.unmount();
 
     vi.stubGlobal("fetch", detail({ pending: 0, locales_decided_at: null, reviews: [{ ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" }] }));
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
@@ -552,6 +708,82 @@ describe("AdminVideoReviews", () => {
     const row = [...panel.querySelectorAll("tbody tr")][0].textContent ?? "";
     expect(row.match(/已完成/g)).toHaveLength(2);
     expect(row).toContain("尚未完成");
+  });
+
+  it("links a pending imported final to its private Studio video without approving or syncing it", async () => {
+    const slug = "curio-h02-recut-20261012";
+    const videoId = "4gJhMFqYqC4";
+    const pendingFinal = {
+      ...final, status: "pending" as const,
+      payload: { ...final.payload, imported: { note: "Standalone Curio recut", captions: true } },
+      files: [...final.files, { role: "thumbnail", sha256: "d".repeat(64), size: 120_000, content_type: "image/jpeg" },
+        { role: "captions_zh-TW", sha256: "e".repeat(64), size: 12_000, content_type: "text/plain" }],
+    };
+    const project = { ...summary, slug, title: "羅阿諾克新版", pending: 1, ready_to_upload: false, reviews: [pendingFinal] };
+    const posts: Array<{ url: string; body: unknown }> = [];
+    let linked = false;
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "POST") {
+        posts.push({ url, body: JSON.parse(String(init.body)) });
+        linked = true;
+        return Promise.resolve(Response.json({ ...project, youtube_video_id: videoId }));
+      }
+      return Promise.resolve(Response.json(url.endsWith("/admin/video-youtube")
+        ? { linked: true, channel_title: "Mokaair" }
+        : { ...project, youtube_video_id: linked ? videoId : null }));
+    }));
+    window.history.replaceState(null, "", `/?video=${slug}`);
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const form = await screen.findByRole("form", { name: "記錄待審新版的私人影片" });
+    expect(form.textContent).toContain("不核准成片，也不修改 YouTube 設定");
+    expect(within(form).queryByLabelText("上架時間（選填）")).toBeNull();
+    const record = within(form).getByRole("button", { name: "記錄私人影片連結" });
+    expect(record).toHaveProperty("disabled", true);
+    fireEvent.change(within(form).getByRole("textbox", { name: "YouTube 網址或影片 id" }), { target: { value: `https://studio.youtube.com/video/${videoId}/edit` } });
+    fireEvent.click(record);
+    await waitFor(() => expect(posts).toHaveLength(1));
+    expect(posts).toEqual([{ url: `/api/travel/admin/videos/${slug}/youtube`, body: { url: `https://studio.youtube.com/video/${videoId}/edit`, publish_at: null, private_only: true } }]);
+    await screen.findByText("已連結，未記錄公開時間");
+    expect(screen.queryByRole("form", { name: "記錄待審新版的私人影片" })).toBeNull();
+    expect(screen.queryByText("重新送到 YouTube")).toBeNull();
+    expect(screen.queryByText(/已上架。成片 mp4 在上架滿 7 天後/)).toBeNull();
+    expect(screen.getByText("成片核准後可以選語言。")).toBeTruthy();
+    expect(screen.getByRole("article", { name: "成片" })).toBeTruthy();
+    expect(within(screen.getByRole("article", { name: "成片" })).getByRole("button", { name: "核准" })).toBeTruthy();
+  });
+
+  it("hides early Studio linking without manager access, a pending final preview, or a safe unlinked project", async () => {
+    const pendingFinal = { ...final, payload: { ...final.payload, imported: { note: "Standalone Curio recut", captions: true } },
+      files: [...final.files, { role: "thumbnail", sha256: "d".repeat(64), size: 120_000, content_type: "image/jpeg" }] };
+    const base = { ...summary, slug: "pending-recut", pending: 1, ready_to_upload: false, reviews: [pendingFinal] };
+    const cases = [
+      { name: "reader", capabilities: ["content.read"], project: base },
+      { name: "channel not linked", capabilities: ["content.read", "content.manage"], project: base, connectionLinked: false },
+      { name: "not imported", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [final] } },
+      { name: "missing preview", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [{ ...final, files: [] }] } },
+      { name: "bad content hash", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [{ ...pendingFinal, content_sha256: "invalid" }] } },
+      { name: "approved upload package exists", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [pendingFinal, { ...pendingFinal, gate: "publish", status: "approved" }] } },
+      { name: "newer approved final supersedes older pending import", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [{ ...pendingFinal, status: "approved" }, pendingFinal] } },
+      { name: "already linked", capabilities: ["content.read", "content.manage"], project: { ...base, youtube_video_id: "4gJhMFqYqC4" } },
+      { name: "dropped", capabilities: ["content.read", "content.manage"], project: { ...base, dropped_at: "2026-10-12T00:00:00Z" } },
+      { name: "active sync", capabilities: ["content.read", "content.manage"], project: { ...base, youtube_sync: { status: "running", interrupted: false, request: {}, steps: [], progress: null, error: null, started_at: null, finished_at: null } } },
+    ];
+    for (const { name, capabilities, project, connectionLinked } of cases) {
+      const posts: string[] = [];
+      vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+        if (init?.method === "POST") posts.push(String(input));
+        return Promise.resolve(Response.json(String(input).endsWith("/admin/video-youtube")
+          ? { linked: connectionLinked ?? true, channel_title: "Mokaair" }
+          : project));
+      }));
+      window.history.replaceState(null, "", "/?video=pending-recut");
+      render(<AdminOperationsProvider bootstrap={bootstrap(capabilities)}><AdminVideoReviews /></AdminOperationsProvider>);
+      await screen.findByRole("heading", { name: project.title });
+      expect(screen.queryByRole("form", { name: "記錄待審新版的私人影片" }), name).toBeNull();
+      expect(posts, name).toEqual([]);
+      cleanup();
+    }
   });
 
   it("keeps dramas out of the needs-you group but lists them in the catalog, and shows a one-off drama as a one-episode series on the drama tab", async () => {
@@ -1228,6 +1460,7 @@ describe("AdminVideoReviews", () => {
     expect(window.location.search).toBe("");
 
     const states = screen.getByRole("group", { name: "狀態" });
+    expect(within(states).getByRole("button", { name: /^已連結 YouTube/ })).toBeTruthy();
     fireEvent.click(within(states).getByRole("button", { name: /^已放棄/ }));
     expect(window.location.search).toBe("?state=dropped");
     await waitFor(() => expect(tableRows(screen.getByRole("table", { name: "全部影片" }))).toEqual([expect.stringContaining("舊教學")]));
@@ -1411,6 +1644,7 @@ describe("asking for a skipped dub again from the language panel", () => {
   // A finished tutorial: the English track is confirmed, the Japanese one was given up on.
   const video = {
     ...summary, pending: 0, ready_to_upload: false, locales_decided_at: "2026-10-08T04:30:00Z",
+    checklist: [{ key: "final_video_approved", label: "成片核准", done: true }],
     locales: { en: all, ja: all } as Record<string, typeof all>,
     languages: { en: { ...made, dub: part("uploaded") }, ja: { ...made, dub: part("skipped", REASON) } } as Record<string, Record<string, ReturnType<typeof part>>>,
     reviews: [] as unknown[],

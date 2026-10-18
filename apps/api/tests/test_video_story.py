@@ -17,6 +17,7 @@ import json
 import sys
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
 from unittest.mock import AsyncMock
@@ -457,6 +458,26 @@ def test_series_of_the_other_kinds_behave_exactly_as_before() -> None:
 # --- the backlog's rules --------------------------------------------------------------------------
 
 
+def test_the_brand_check_agrees_with_the_thumbnail_template() -> None:
+    # The same samples tools/video/templates/templates.test.mjs holds brandProblem and
+    # brandFontSize to, so the import refuses exactly the names the thumbnail cannot draw.
+    samples = (
+        Path(__file__).resolve().parents[3]
+        / "tools"
+        / "video"
+        / "templates"
+        / "fixtures"
+        / "brand-samples.json"
+    )
+    rows = json.loads(samples.read_text(encoding="utf-8"))["rows"]
+    assert len(rows) > 10
+    for row in rows:
+        problem = stories.brand_problem(row["brand"])
+        assert (problem is None) == row["ok"], (row["brand"], problem)
+        if row["ok"]:
+            assert stories.brand_font_size(row["brand"]) == row["size"], row["brand"]
+
+
 def test_a_sound_story_passes_and_each_rule_names_what_is_wrong() -> None:
     story = _story(1, "A01", "story-rolling-case")
     assert stories.story_problems(story) == []
@@ -519,6 +540,19 @@ def test_a_sound_story_passes_and_each_rule_names_what_is_wrong() -> None:
     assert "thumbnail.headline is 13 characters" in problems(
         thumbnail={"headline": "一" * 13, "idea": "x"}
     )
+    thumb = {"headline": "等了四十年", "idea": "x"}
+    assert stories.story_problems({**story, "thumbnail": {**thumb, "brand": "SEIKO"}}) == []
+    assert stories.story_problems({**story, "thumbnail": {**thumb, "brand": "杜比 DOLBY"}}) == []
+    assert stories.story_problems({**story, "thumbnail": {**thumb, "brand": None}}) == []
+    assert "thumbnail.brand has 13 characters; at most 12" in problems(
+        thumbnail={**thumb, "brand": "一" * 13}
+    )
+    assert "thumbnail.brand is too wide for the column" in problems(
+        thumbnail={**thumb, "brand": "一二三四五六七八九十甲乙"}
+    )
+    for brand in ("杜比\nDOLBY", "杜比\rDOLBY", "杜比\tDOLBY", "**SEIKO**"):
+        assert "thumbnail.brand must be one line" in problems(thumbnail={**thumb, "brand": brand})
+    assert "thumbnail.brand must be text" in problems(thumbnail={**thumb, "brand": 7})
     assert "publish must be" in problems(publish={"day": 1, "slot": "09:00"})
     assert "publish must be" in problems(publish={"day": 0, "slot": "12:00"})
     assert "number must be a whole number" in problems(number=True)

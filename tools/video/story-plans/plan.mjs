@@ -11,7 +11,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { atPhoneWidth, headlineSizeEstimate, headlineSplitWords, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH } from "../qa/thumbnail.mjs";
-import { headlineCount, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX } from "../templates/templates.mjs";
+import { brandFontSize, brandProblem, headlineCount, THUMB_BRAND_MAX, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX } from "../templates/templates.mjs";
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
 export const DEFAULT_PLAN = path.join(ROOT, "docs", "videos", "story-plans", "brand-stories-100");
@@ -211,6 +211,9 @@ export function storyProblems(story, fileId = story?.id) {
   if (story.related_guide !== null && !(typeof story.related_guide === "string" && GUIDE_SLUG.test(story.related_guide))) problems.push("related_guide must be a site article's slug, or null");
   if (!isObject(story.thumbnail) || !isText(story.thumbnail.headline) || !isText(story.thumbnail.idea)) problems.push("thumbnail needs a headline and an idea");
   else if (headlineCount(story.thumbnail.headline).count > LIMITS.headlineDraft) problems.push(`thumbnail.headline counts ${headlineCount(story.thumbnail.headline).count} characters (a Latin word or a number counts one), at most ${LIMITS.headlineDraft}: nothing readable is left once it is cut to the channel's ${LIMITS.headline}`);
+  // The company's name in large type in place of the 「品牌故事」 tag (templates.mjs THUMB_BRAND_MAX);
+  // optional, so a story written before it keeps the tag.
+  if (isObject(story.thumbnail) && brandProblem(story.thumbnail.brand)) problems.push(`thumbnail.brand ${brandProblem(story.thumbnail.brand)}`);
   return problems;
 }
 
@@ -223,7 +226,22 @@ export function storyProblems(story, fileId = story?.id) {
  * the qa stage fails the video until the author writes another.
  */
 export function storyWarnings(story) {
-  const headline = story?.thumbnail?.headline;
+  return [...headlineWarnings(story?.thumbnail?.headline), ...brandWarnings(story?.thumbnail?.brand)];
+}
+
+/**
+ * A brand name the column sets smaller than BRAND_WARN_PX: still drawn and readable, but no
+ * longer the largest words on the thumbnail. The name people search for, short (「SEIKO」, not
+ * 「精工 SEIKO」), reads larger.
+ */
+export const BRAND_WARN_PX = 96;
+function brandWarnings(brand) {
+  if (!isText(brand) || brandProblem(brand)) return [];
+  const px = brandFontSize(brand);
+  return px < BRAND_WARN_PX ? [`thumbnail.brand 「${brand.trim()}」 is set at about ${px} px, smaller than the headline; a shorter name (at most ${THUMB_BRAND_MAX} characters, best four or five) reads larger`] : [];
+}
+
+function headlineWarnings(headline) {
   if (!isText(headline)) return [];
   const problem = headlineProblem(headline);
   if (!problem) return [];
@@ -377,11 +395,16 @@ export function seriesProblems(series) {
   if (series.kind !== "story") problems.push('series.kind must be "story"');
   if (series.visual_tier !== "stills") problems.push('series.visual_tier must be "stills"');
   if (series.hands_off !== true) problems.push("series.hands_off must be true");
-  if (!(Number.isInteger(series.target_minutes) && series.target_minutes >= 12 && series.target_minutes <= 15)) problems.push("series.target_minutes must be 12 to 15");
+  const cute = isObject(series.look) && Object.keys(series.look).length === 1 && series.look.preset === "cute-mystery";
+  if (cute) {
+    if (series.target_minutes !== 10) problems.push("series.target_minutes must be 10 for the cute-mystery look");
+    if (series.image_model !== "image-01") problems.push('series.image_model must be "image-01" for the cute-mystery look');
+    if (series.style_preset !== "custom") problems.push('series.style_preset must be "custom" for a story with the cute-mystery look');
+  } else if (!(Number.isInteger(series.target_minutes) && series.target_minutes >= 12 && series.target_minutes <= 15)) problems.push("series.target_minutes must be 12 to 15");
   if (!(Number.isInteger(series.episodes_per_day) && series.episodes_per_day >= 1 && series.episodes_per_day <= 12)) problems.push("series.episodes_per_day must be 1 to 12");
   if (!isText(series.image_model)) problems.push("series.image_model is missing");
-  if (!isObject(series.look) || !isText(series.look.style) || !isText(series.look.negative)) problems.push("series.look needs a style and a negative prompt");
-  else {
+  if (!cute && (!isObject(series.look) || Object.hasOwn(series.look, "preset") || !isText(series.look.style) || !isText(series.look.negative))) problems.push("series.look needs a style and a negative prompt, or exactly {preset: \"cute-mystery\"}");
+  else if (!cute) {
     if (series.look.style.length > 600) problems.push("series.look.style is over 600 characters");
     if (series.look.negative.length > 400) problems.push("series.look.negative is over 400 characters");
   }

@@ -8,16 +8,17 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { explainerSeries, isShot } from "../core/drama.mjs";
+import { explainerSeries, illustrated, isShot } from "../core/drama.mjs";
 import { LOCALES, narrationLocale } from "../core/schema.mjs";
 import { localizedThumbnail, localizedThumbnailHash, thumbnailGap } from "../core/translations.mjs";
+import { watermarkDataUri } from "../core/watermark.mjs";
 
 /** The series whose own thumbnail a video wears (templates.mjs THUMB_SERIES), or null. */
 export const thumbnailSeries = (doc) => explainerSeries(doc);
 import { estimateTimeline } from "../core/timeline.mjs";
 import { screencastHtml, screencastPlan } from "../screencast/scene.mjs";
 import { captureCount, isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
-import { captureRef, isStockPath, ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
+import { ASSET_ROOTS, captureRef, isStockPath, MARK_OVERLAID, ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
 
 export const THEME_FILE = fileURLToPath(new URL("../templates/theme.css", import.meta.url));
 // Chapter cards and the title card say where they are themselves; a label on top would repeat it.
@@ -35,6 +36,10 @@ export function themeHash(css = readFileSync(THEME_FILE, "utf8")) {
 
 // The templates that show a picture file named by `data.image`.
 const IMAGE_TEMPLATES = new Set(["screenshot", "photo"]);
+const THUMBNAIL_IMAGE = /\.(?:png|jpe?g|webp)$/i;
+const thumbnailAssetPath = (asset) => typeof asset === "string" && (
+  isStockPath(asset) || (ASSET_ROOTS.some((prefix) => asset.startsWith(prefix)) && !asset.includes("..") && !asset.includes("\\") && !asset.includes("//") && THUMBNAIL_IMAGE.test(asset))
+);
 
 /**
  * The files a scene draws: its diagram, its screenshot or its photograph, as a repository path or
@@ -83,6 +88,24 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
     }
   });
   for (const message of thumbnailProblems(doc.thumbnail, { series: thumbnailSeries(doc) })) problems.push({ path: "thumbnail", message });
+  // An opted-in thumbnail picture must be a credited, local raster asset. Check A and the
+  // effective B/C data, since a variant may override A's asset.
+  for (const { id, thumbnail } of [{ id: "a", thumbnail: doc.thumbnail }, ...thumbnailVariants(doc.thumbnail)]) {
+    const data = thumbnail?.data;
+    if (!data || !Object.hasOwn(data, "asset")) continue;
+    const label = id === "a" ? "data.asset" : `variant ${id}: data.asset`;
+    const asset = data.asset;
+    if (!thumbnailAssetPath(asset)) {
+      problems.push({ path: "thumbnail", message: `${label} must be a raster image under ${ASSET_ROOTS.join(" or ")}, or stock/<sha256>.png|jpg|webp` });
+      continue;
+    }
+    if (data.capture !== undefined || data.shot !== undefined) problems.push({ path: "thumbnail", message: `${label} cannot be combined with data.capture or data.shot` });
+    const credit = (Array.isArray(doc.assets) ? doc.assets : []).find((entry) => entry?.path === asset);
+    if (!credit) problems.push({ path: "thumbnail", message: `${label} ${asset} is not in assets[]; the thumbnail needs a credited source` });
+    else if (typeof credit.source !== "string" || !credit.source.trim() || typeof credit.license !== "string" || !credit.license.trim()) problems.push({ path: "thumbnail", message: `${label} ${asset} needs source and license in assets[]` });
+    const file = (isStockPath(asset) ? workdir : root) ? assetFile(asset, { root, workdir }) : null;
+    if (file && !existsSync(file)) problems.push({ path: "thumbnail", message: `${label} ${asset} does not exist${isStockPath(asset) ? " in the work directory" : ""}` });
+  }
   // A variant's own background must be a shot too (A's is checked with the drama's shots).
   const shots = new Set(doc.scenes.filter(isShot).map((scene) => scene.id));
   for (const { id, thumbnail } of thumbnailVariants(doc.thumbnail)) {
@@ -138,11 +161,17 @@ export function thumbnailSubject(data, { keyframes = {}, screencasts = {} } = {}
  * null until the scene is taken). With `translations` (locale to i18n file), every other
  * caption locale whose thumbnail words are current gets its own thumbnail in
  * `thumbnail.locales` ({ locale, file, hash, html, key, text }), the same picture and layout with
- * its words; `thumbnail.gaps` says why each other locale has none.
+ * its words; `thumbnail.gaps` says why each other locale has none. With `watermark` (the mark
+ * render selected, core/watermark.mjs), every card carries the channel mark in its corner and
+ * comes back `marked: true`; a card assemble will move (`movesAsCard`) leaves the corner empty and
+ * comes back `marked: false`, for assemble to lay the mark over its segment, where it stays
+ * still. Without one, the plan is what it was.
  */
-export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = {}, screencasts = {}, translations = null, workdir = null } = {}) {
+export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = {}, screencasts = {}, translations = null, workdir = null, watermark = null } = {}) {
   const timeline = estimateTimeline(doc);
   const chapterCount = doc.scenes.filter((scene) => scene.chapter).length;
+  const drawn = watermark ? { src: watermarkDataUri(watermark), box: watermark.box } : null;
+  const cardsMove = illustrated(doc);
   let chapter = null;
   let chapterNumber = 0;
   const scenes = doc.scenes.map((scene, index) => {
@@ -151,9 +180,11 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
       chapterNumber += 1;
     }
     if (isShot(scene)) return { id: scene.id, template: scene.template, kind: "clip", states: [] };
+    const mark = !drawn ? null : cardsMove && movesAsCard(timeline.scenes[index].states) ? MARK_OVERLAID : drawn;
+    const marked = mark ? { marked: mark !== MARK_OVERLAID } : {};
     if (isScreencast(scene)) {
-      const states = screencastStates(scene, timeline.scenes[index].states, screencasts[scene.id], theme, { chapter, chapterNumber, chapterCount });
-      return { id: scene.id, template: scene.template, kind: "stills", states };
+      const states = screencastStates(scene, timeline.scenes[index].states, screencasts[scene.id], theme, { chapter, chapterNumber, chapterCount, ...(mark ? { mark } : {}) });
+      return { id: scene.id, template: scene.template, kind: "stills", states, ...marked };
     }
     const totalReveals = scene.lines.reduce((sum, line) => sum + (line.reveal ?? 0), 0);
     const assets = root ? sceneAssets(scene).map((asset) => assetFile(asset, { root, workdir })).filter(Boolean).map((file) => readFileSync(file)) : [];
@@ -169,22 +200,29 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
         chapter: NO_CHAPTER_LABEL.has(scene.template) ? null : chapter,
         chapterNumber,
         chapterCount,
+        ...(mark ? { mark } : {}),
       });
       return { reveal: state.reveal, first: stateIndex === 0, html, key: hash(theme, html, assetHash), text: visibleText(html) };
     });
-    return { id: scene.id, template: scene.template, kind: "stills", states };
+    return { id: scene.id, template: scene.template, kind: "stills", states, ...marked };
   });
   // `locale` is a caption locale's own thumbnail, which may be set in its own font (fonts.mjs).
   // `offset` moves a B or C variant one layout and tone on from A's (templates.mjs thumbnailRotation).
   // The subject (thumbnailSubject) comes back as `shot` and `keyframe`, or `capture` and `still`,
   // so the caller can say what to run first when the picture is not there yet.
   const drawThumbnail = (own, locale = null, offset = 0) => {
-    const subject = thumbnailSubject(own.data, { keyframes, screencasts });
+    const asset = own.data?.asset;
+    const assetFilePath = thumbnailAssetPath(asset) && (isStockPath(asset) ? workdir : root) ? assetFile(asset, { root, workdir }) : null;
+    const hasAssetFile = assetFilePath && existsSync(assetFilePath);
+    const subject = asset === undefined ? thumbnailSubject(own.data, { keyframes, screencasts })
+      : { kind: "asset", file: hasAssetFile ? asset : null,
+          sha256: hasAssetFile ? createHash("sha256").update(readFileSync(assetFilePath)).digest("hex") : "" };
     const picture = subject?.file ? subject : null;
-    // The work directory is served under /work/ by the renderer's fake origin.
-    const background = picture ? `${ORIGIN}/work/${picture.file.split("/").map(encodeURIComponent).join("/")}` : null;
+    // Generated stills and stock live under /work/; repository pictures use /repo/.
+    const background = picture ? `${ORIGIN}/${picture.kind === "asset" && !isStockPath(picture.file) ? "repo" : "work"}/${picture.file.split("/").map(encodeURIComponent).join("/")}` : null;
     const html = thumbnailHtml(own, { background, subject: picture?.kind ?? null, series: thumbnailSeries(doc), locale, slug: doc.slug, offset });
-    const source = subject?.kind === "capture"
+    const source = subject?.kind === "asset" ? { asset: own.data.asset }
+      : subject?.kind === "capture"
       ? { capture: own.data.capture, still: picture ? { file: picture.file, sha256: picture.sha256 } : null }
       : subject ? { shot: own.data.shot, keyframe: picture ? { file: picture.file, sha256: picture.sha256 } : null } : {};
     return { html, key: hash(theme, html, picture?.sha256 ?? ""), text: visibleText(html), ...source };
@@ -209,6 +247,13 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
   }
   return { scenes, thumbnail };
 }
+
+/**
+ * Whether assemble lays this card out as a moving picture: in an illustrated slides video a card
+ * with one state drifts like a keyframe (assemble/drama.mjs layoutDrama, `cardMotion`), and a
+ * mark drawn into it would creep with the card and jump back at the cut to the next shot.
+ */
+export const movesAsCard = (states) => states.length === 1;
 
 /** Where a caption locale's own thumbnail is written in the work directory (and in upload/). */
 export const localeThumbnailFile = (locale) => `thumbnails/${locale}.jpg`;

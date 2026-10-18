@@ -40,7 +40,7 @@ metadata:
 | # | 階段 | 做什麼 | 關卡 |
 | --- | --- | --- | --- |
 | 1 | 預檢 | `host-preflight.sh`（唯讀）：暫停檔、被規則 1 標記的目錄、24 小時內動過的發布目錄、鎖、live HEAD 對 origin/main、磁碟、自動部署 timer 的狀態與暫停檔、還沒結算的付費影片工作 | 沒有暫停檔、沒有 FLAGGED、鎖是空的、timer 沒有在部署中（`tick=inactive`）、沒有 `AUTO DEPLOY PAUSED`、沒有 `PAID WORK IN FLIGHT`；否則進 preflight.md 的判斷 |
-| 2 | 決定 | 先看要不要部署：預檢加 `--dry-run`，別的 session 常部署，main 可能早就 live，那就不必問。要的話：站主要部署什麼（哪個 PR／SHA）、要不要 `--force`、要不要 `--ignore-hold` | 用有選項的提問，不接受一句「好」 |
+| 2 | 決定 | 先看要不要部署：預檢加 `--dry-run`，別的 session 常部署，main 可能早就 live，那就不必問。要的話：站主要部署什麼（哪個 PR／SHA）、要不要 `--force`、要不要 `--ignore-hold`。會一起帶上別的 session 還沒上線的 PR（尤其 migration）時一定先問：過去一次「main 全部部署」是一次性的授權，而且只在沒有 migration、設定、compose、Dockerfile、lockfile 變動時才成立 | 用有選項的提問，不接受一句「好」 |
 | 3 | 部署 | `host-deploy.sh`（背景），或站主自己跑一行 | `DEPLOY_EXIT=0`、腳本自己的 3/3 健康檢查過 |
 | 4 | 驗證 | 一支唯讀腳本、一次 SSH 跑完：`.agents/skills/deploy/scripts/host-verify.sh`（live SHA、部署 log、容器與映像、alembic、health、首頁、公開站），再加這次 diff 專屬的檢查（抓一個新程式才有的字串或行為），寫法見 `post-deploy.md` | 每行 `PASS`、`TOTAL fail=0` 才算部署完成 |
 | 5 | 收尾 | 把 SHA、耗時、有無 migration 寫進票或交接；內容匯入交給內容線；大功能上線後做 `post-deploy.md` 的三個問題 | 票或記憶有紀錄 |

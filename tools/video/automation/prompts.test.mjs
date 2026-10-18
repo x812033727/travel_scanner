@@ -61,7 +61,19 @@ test("the slides writer is told the shot template, the 5 to 8 second cadence, th
 test("the planner outlines story beats and the listener keeps the register; the fact-checker and the translators are untouched", () => {
   const planner = instructionsFor("planner", "slides");
   assert.match(planner, /你以為／其實：「<what the viewer believes>/);
-  assert.match(planner, /收尾問題：「…」/);
+  assert.match(planner, /收尾：「…」, a question, a\s+stop before the event, a number or a reversal/);
+  assert.match(planner, /主線：<the spine in one sentence/);
+  // 2026-10-15: one story shape and one protagonist, chosen before the spine (register.mjs NARRATIVE_RULES).
+  assert.match(planner, /故事線：<事件／實測／疑問／抉擇（選一）>\n主角：<the one person, team, image, bill or project carried from the opening to the close>\n主線：/);
+  assert.match(planner, /One protagonist, one story shape/);
+  assert.match(planner, /At most one metaphor in the whole video/);
+  assert.match(planner, /never 「以官網為準」/);
+  assert.match(planner, /A term is explained at the moment the protagonist meets it, in one line/);
+  assert.match(planner, /Two definitions in a row are a lecture/);
+  assert.match(planner, /A qualification the facts need is said once, attached to the claim it limits/);
+  assert.match(planner, /The condensation's closing question asks what the video answers; it never states an outcome/);
+  assert.match(planner, /轉折：<3 to 5 events in the order they happened/);
+  assert.match(planner, /鉤子：<the open loops this outline plants/);
   assert.match(planner, /"shot: <the picture in a few words>"/);
   // The owner's slides request (flow.mjs draftSlides): that article only, and finance told as information, never advice.
   assert.match(planner, /"requested_guide"[\s\S]*Return its slug as "source_guide" and its url first in\s+"source_urls"/);
@@ -595,14 +607,23 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
   // The persona is the owner's standing instructions'; the hook stays first.
   assert.match(writer, /The narrator may have a name, a catchphrase and a fixed closing line/);
   assert.match(writer, /The first sentence is still the hook; the name comes after it/);
-  // The opening (D07): concrete within 20 seconds, no table of contents, one 「你以為…其實」.
-  assert.match(writer, /within 20 seconds: by then a concrete number, date or proper noun has been\s+said/);
-  assert.match(writer, /No table of contents/);
+  // The opening (D07): concrete within 20 seconds, no table of contents, one 「你以為…其實」; the
+  // first chapter is the 30 to 60 second condensation, one scene of the story and then three or
+  // four later moments cut off before their results (owner, 2026-10-12 and twice on 2026-10-13).
+  assert.match(writer, /The first chapter is the\s+condensation the register below describes, the brief's 開場濃縮/);
+  assert.match(writer, /one scene of the story told\s+in order, the title.s\s+number, date or proper noun within 20 seconds, up to the first fact\s+that makes no sense; then three or four later moments, each cut off before its result/);
+  assert.match(writer, /Then it turns \(「但這還不是最怪的。」\) and throws three or four of the later chapters' moments/);
+  assert.match(writer, /The channel intro\s+bumper plays after this chapter, not before it/);
+  assert.match(writer, /The first chapter is the condensation: 30 to 60 seconds\s+before the first real chapter/);
+  assert.match(writer, /No\s+table of contents/);
   assert.match(writer, /「你以為…其實」 once in\s+the video, in the first chapter/);
   // The close (D03): three sentences, the article pointed to once, in the description.
   assert.match(writer, /- outro \{title, cta\?, lines 1-4\}: no reveals\. The last scene, and its narration is exactly three\s+sentences/);
   assert.match(writer, /one invitation to subscribe\s+with a reason/);
-  assert.match(writer, /Never invent a next topic/);
+  // The close says nothing about the next video (owner, 2026-10-13); the end screen does that.
+  assert.match(writer, /The close never says what the next video, the next episode or the next file is about/);
+  assert.doesNotMatch(writer, /Never invent a next topic/);
+  assert.match(writer, /the open loops this script plants/);
   assert.match(writer, /points to the article in the description \(say 「說明欄的文章」, never 「第一行」/);
   assert.doesNotMatch(writer, /description's first line/);
   // Screencasts, in the step format steps.mjs checks.
@@ -629,14 +650,17 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
 
 // A change here moves the durable key of every unfinished explainer journal (the instructions
 // are part of a stage's inputs), so each such stage is asked, and paid for, again: deploy with
-// none unfinished, then update the digest. The cute explainer presets get variants of their own
+// none unfinished, then update the digest. Three of the four moved on 2026-10-13, when the
+// condensation became one scene of the story and the close stopped naming the next episode; the
+// writer moved again on 2026-10-15, when NARRATIVE_RULES gained the story shapes and the one
+// protagonist. The cute explainer presets get variants of their own
 // so that these four never have to move for them.
 test("the four explainer instruction texts are byte for byte what they were", () => {
   const sha256 = (text) => createHash("sha256").update(text, "utf8").digest("hex");
   const pinned = {
-    "planner:bible-explainer": "55ffd024da8e9da7443dca79f973424efcdf277de3a9fa1ec3415af764391a90",
-    "planner:explainer": "32b471d9fcf00ac4540446ba89cbf335f4c4180241b5246301ad3662009451ed",
-    "writer:explainer": "185af9a701ecbb1317f00dd130cbf260e8e664a7275a423bad66c415cb703e72",
+    "planner:bible-explainer": "92d58c327776f8f1f8084907e2aaf0a7d8f326c2c614d1ab593dc4074ff017a2",
+    "planner:explainer": "e5b50a3fedd95008c096a63153a48e54268821be2e62254913dbc22460ac708f",
+    "writer:explainer": "f6abf3ec8799bcfa94f03b15681bc64714ac8f8b356bedddc36c1db594f649f6",
     "verifier:explainer": "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842",
   };
   for (const [key, digest] of Object.entries(pinned)) {

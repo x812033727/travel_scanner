@@ -1,0 +1,953 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e017",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, a wide white-toothed grin, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a hoe or carrying pole on his shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      }
+    },
+    {
+      "id": "shimujiang",
+      "name": "石木匠",
+      "appearance": "East Asian man of fifty-five, lean and wiry with weathered tanned skin, a grey stubbled jaw, deep frown lines and suspicious narrow eyes, grey hair tied in a small rough topknot with a pencil-like wooden stick, a faded brown short work jacket with sleeves rolled up, a leather apron covered in wood shavings, calloused hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的老木匠，男聲、粗啞低沉，脾氣硬、說話短、帶著不耐煩"
+      }
+    },
+    {
+      "id": "hanbo",
+      "name": "韓伯",
+      "appearance": "East Asian man of sixty-five, thin and upright, a deeply lined kind face, a long white beard down to his chest, white hair in a neat small topknot, warm but firm eyes, a faded washed-out grey cotton long robe, leaning on a polished old bamboo walking staff",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十五歲的老村長，男聲、蒼老溫和但有分量，說話慢、句句篤定"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a sudden urgent taiko drum roll and harsh low strings over crackling fire at the start, a driving bucket-chain rhythm of drums and clapping wood blocks as the village fights the fire, a fragile solo xiao flute when A Ling walks out of the smoke, a cold low cello pulse over the ashes and the limping footprints, a warm steady rhythm of guzheng and wood mallets through the night of rebuilding, then low strings tighten to a sharp held sting at the very end, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "紙坊被一把火燒了，冷面老婆衝進濃煙搶出竹簾｜種田娶妻打天下 第17集",
+    "description": "竹筏天亮回到柳溪口，紙坊方向冒起濃煙，石木匠隔著水嘶喊：「簾子還在裡面！」阿令把濕布往頭上一蓋就衝進濃煙；秦霜一聲令下，全村從井邊排出一條傳水長龍。阿令抱著竹簾從煙裡走出來，許硯第一句話是「下次讓我去」。天亮後的灰燼裡，一個燒剩的燈籠骨架印著錢府的記號，旁邊一行一腳深一腳淺的腳印——可是沒人看見，官府不認。全村扛木頭來，一夜把紙坊的骨架立了起來；天一亮，系統卻彈出強制任務：七日內縱火者認罪，失敗就失去種田技能。《種田娶妻打天下》第 17 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "火裡搶簾子",
+      "tag": "種田娶妻打天下",
+      "shot": "s13"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "火場",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the village entrance by the stream at dawn, a willow-lined stream with muddy banks and reeds, a wooden plank bridge, mist on the water, the sky above the distant thatched roofs glowing red, a thick column of grey-black smoke rising beyond the willows: wide shot of a bamboo raft piled with paper bundles wrapped in brown oilcloth nosing into the muddy bank, Qin Shuang, on screen left standing at the stern with a long bamboo pole, Tang Xiaotang sitting on the bundles in the middle, Xu Yan, on screen right at the bow staring up at the smoke",
+        "motion": "The raft bumps into the bank and Xu Yan leaps ashore while Tang Xiaotang scrambles to her feet staring at the smoke and Qin Shuang drives the pole into the mud",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a01",
+          "speaker": "shimujiang",
+          "text": "簾子還在裡面！",
+          "emotion": "嘶喊，隔著水"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the village entrance by the stream at dawn, a willow-lined stream with muddy banks and reeds, a wooden plank bridge, mist on the water, the sky above the distant thatched roofs glowing red, a thick column of grey-black smoke rising beyond the willows: medium close-up of Carpenter Shi, on screen right on the muddy bank, soot streaked across his face and leather apron, an empty wooden bucket in one hand, shouting toward screen left across the water",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「簾子還在裡面！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he flings his arm back toward the smoke rising behind the willows",
+        "characters": [
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: wide shot of villagers in coarse clothes running with wooden buckets, A Ling, on screen left beside the well soaking a plain grey cloth in the wooden bucket, the smoking open side of the lean-to on screen right",
+        "motion": "A Ling throws the dampened grey cloth over her head and shoulders and runs bent low across the yard into the smoke at the open side of the lean-to on screen right",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a02",
+          "speaker": "xuyan",
+          "text": "阿令——！",
+          "emotion": "衝進院子，喊"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: medium close-up of Xu Yan, on screen left running in through the broken gate, out of breath, red firelight on his face, eyes on the lean-to off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「阿令——！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he lunges one step forward with his hand reaching out toward the smoke",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the lean-to workshop beside the farmhouse during the fire, thick grey smoke hanging under the thatched roof, orange flames along the far edge of the roof, wooden vats of pale bamboo pulp, a wooden drying rack holding rolled bamboo papermaking screens, drifting soot: medium shot of A Ling, on screen left crouched low beneath the smoke with the grey cloth over her head and shoulders, one hand on the drying rack of rolled bamboo screens, the flames far away along the other edge of the roof",
+        "motion": "A Ling pulls three rolled bamboo screens off the rack and hugs them to her chest, coughing into the cloth, then turns back toward the bright opening",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "chapter": "傳水",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a03",
+          "speaker": "qinshuang",
+          "text": "別進去，交給我。",
+          "emotion": "一把抓住他手腕"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: medium close-up of Qin Shuang, on screen right gripping Xu Yan's wrist hard, his arm and shoulder entering from screen left, red firelight on her bold brows, her eyes fierce and steady",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「別進去，交給我。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she pulls him back a step and snaps her head toward screen right",
+        "characters": [
+          "qinshuang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a04",
+          "speaker": "qinshuang",
+          "text": "井邊排一條！",
+          "emotion": "站上井沿，大喊"
+        },
+        {
+          "id": "zq17a05",
+          "speaker": "qinshuang",
+          "text": "一桶接一桶！",
+          "emotion": "大喊"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, low angle, locked",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: medium shot from a low angle of Qin Shuang, on screen left standing on the stone rim of the well, ponytail swinging, pointing toward the burning lean-to off screen right, villagers with buckets turning toward her",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「井邊排一條！」 then 「一桶接一桶！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she jumps down from the well rim and grabs a full bucket",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Extreme wide shot, high angle, slow crane up",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: extreme wide shot from high above of a long line of dozens of villagers stretching from the well on screen left to the burning lean-to on screen right, passing wooden buckets hand to hand, water flashing in the firelight, Qin Shuang at the head of the line by the well",
+        "motion": "Buckets swing from hand to hand down the long line and the man at the front throws water up onto the flaming eaves while the camera rises above the yard",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a06",
+          "speaker": "erniu",
+          "text": "水來了！潑！",
+          "emotion": "大吼"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: medium close-up of Wang Erniu, on screen right at the front of the bucket line, soot on his face and arms, a full wooden bucket raised in both hands, the flaming eaves of the lean-to at the right edge of the frame",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「水來了！潑！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he heaves the bucket and throws the water up at the flaming eaves at the right edge of the frame, steam bursting",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a07",
+          "speaker": "hanbo",
+          "text": "全村的，都提水來！",
+          "emotion": "拐杖一頓"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: medium shot of Elder Han, on screen left at the broken yard gate, long white beard lit red by the fire, behind him more villagers hurrying in with buckets and wooden basins",
+        "motion": "Elder Han speaks a short Mandarin line, 「全村的，都提水來！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he strikes his bamboo staff on the ground and waves the villagers past him into the yard",
+        "characters": [
+          "hanbo"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a08",
+          "speaker": "tangxiaotang",
+          "text": "阿令還沒出來！",
+          "emotion": "急到破音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: medium close-up of Tang Xiaotang, on screen right in the bucket line, her flowing sleeves tied back, a smudge of soot on one cheek, a bucket in both hands, her eyes fixed toward screen right where the smoke rises",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「阿令還沒出來！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she shoves the bucket into the next pair of hands and turns to look at Xu Yan off screen left",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a09",
+          "speaker": "xuyan",
+          "text": "我進去——",
+          "emotion": "扯起袖子掩住口鼻"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: close-up of Xu Yan, on screen left, red firelight flickering across his face, smoke drifting past, his jaw tight",
+        "motion": "Xu Yan speaks a short Mandarin line, 「我進去——」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he pulls his sleeve over his mouth and nose and steps forward toward the smoke",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "chapter": "竹簾",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: medium shot of the smoking open side of the lean-to on screen right, thick grey smoke rolling out, A Ling bursting out of the smoke hugging three rolled bamboo screens to her chest",
+        "motion": "A Ling bursts out of the smoke into the yard, the grey cloth slipping off her head and her plain wooden hairpin falling, her long black hair tumbling loose over her shoulders as she stops",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a10",
+          "speaker": "aling",
+          "text": "簾子，都在。",
+          "emotion": "喘著，很輕"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: medium close-up of A Ling, on screen right, a smudge of soot across one porcelain cheek, long black hair loose around her face, warm firelight from the side outlining her profile, the rolled bamboo screens held to her chest",
+        "motion": "A Ling speaks a short Mandarin line, 「簾子，都在。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she lifts her eyes to Xu Yan off screen left and holds the rolled screens out to him",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a11",
+          "speaker": "xuyan",
+          "text": "下次，讓我去。",
+          "emotion": "低聲，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: close-up of Xu Yan, on screen left, firelight on his face, no trace of his usual grin, looking at A Ling off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「下次，讓我去。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he takes the rolled screens from her hands without looking away from her",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a12",
+          "speaker": "xitong",
+          "text": "阿令好感，加一。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: medium close-up of A Ling, on screen right, loose black hair, soot on her cheek, firelight on her face, her hands now empty; the system voice speaks off screen",
+        "motion": "A Ling lowers her eyes, tucks a loose strand of hair behind her ear and turns her face away, the corner of her mouth almost lifting",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the dirt yard of the farmhouse at red dawn, a low mud wall, a stone well with a wooden bucket, a woodpile, the thatched lean-to workshop on rough wooden posts on screen right beside the farmhouse with orange flames along its roof and thick grey-black smoke pouring out, red firelight and drifting soot: wide shot of the lean-to roof sagging under the last flames, a burst of white steam as the bucket line drenches it, Tang Xiaotang and Wang Erniu dark against the glow in the foreground on screen left",
+        "motion": "The burning thatch roof caves in with a shower of sparks and a burst of white steam and Tang Xiaotang and Wang Erniu stumble back a step, shielding their faces",
+        "characters": [
+          "tangxiaotang",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "chapter": "灰燼",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a13",
+          "speaker": "tangxiaotang",
+          "text": "紙坊……全沒了。",
+          "emotion": "呆坐，聲音發顫"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse on a grey morning after the fire, a low mud wall, a stone well, the lean-to workshop burned down to a few blackened posts over wet black ash on screen right, thin white smoke still rising, overturned wooden buckets: medium close-up of Tang Xiaotang, on screen left sitting on an upturned wooden bucket, soot on her cheek and on her peach-pink sleeves, the small gold abacus in her lap, staring at the black ash off screen right",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「紙坊……全沒了。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she lets her fingers slide off the abacus beads and hugs her knees",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a14",
+          "speaker": "xuyan",
+          "text": "簾子在，",
+          "emotion": "把竹簾夾在腋下"
+        },
+        {
+          "id": "zq17a15",
+          "speaker": "xuyan",
+          "text": "紙就在。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the dirt yard of the farmhouse on a grey morning after the fire, a low mud wall, a stone well, the lean-to workshop burned down to a few blackened posts over wet black ash on screen right, thin white smoke still rising, overturned wooden buckets: medium shot of Xu Yan, on screen right stepping into the wet black ash with the rolled bamboo screens under one arm, the blackened posts behind him",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「簾子在，」 then 「紙就在。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he crouches down in the ash and runs his free hand through it",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a16",
+          "speaker": "qinshuang",
+          "text": "錢府的燈籠。",
+          "emotion": "畫外，冷"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the lantern frame, slow push in",
+        "prompt": "In the dirt yard of the farmhouse on a grey morning after the fire, a low mud wall, a stone well, the lean-to workshop burned down to a few blackened posts over wet black ash on screen right, thin white smoke still rising, overturned wooden buckets: insert of Xu Yan's hand lifting a charred bamboo lantern frame out of the wet black ash, a scrap of scorched oiled paper still clinging to it with a painted black round copper-coin emblem with a square hole in the middle, no writing; Qin Shuang speaks off screen",
+        "motion": "Xu Yan's fingers turn the charred frame slowly so the coin emblem faces up, ash falling from it",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a17",
+          "speaker": "xuyan",
+          "text": "還有腳印。",
+          "emotion": "畫外，壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the footprints in the ash, slow pan left",
+        "prompt": "In the dirt yard of the farmhouse on a grey morning after the fire, a low mud wall, a stone well, the lean-to workshop burned down to a few blackened posts over wet black ash on screen right, thin white smoke still rising, overturned wooden buckets: insert of Qin Shuang's hand beside a line of muddy footprints in the wet ash leading away from the burned posts to the low back mud wall, every right print pressed deep, every left print shallow and dragged; Xu Yan speaks off screen",
+        "motion": "Qin Shuang's fingers trace slowly along the uneven footprints toward the low back wall where a clump of mud has been scraped from the top",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a18",
+          "speaker": "qinshuang",
+          "text": "一腳深，一腳淺，",
+          "emotion": "蹲下摸腳印"
+        },
+        {
+          "id": "zq17a19",
+          "speaker": "qinshuang",
+          "text": "是跛子。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse on a grey morning after the fire, a low mud wall, a stone well, the lean-to workshop burned down to a few blackened posts over wet black ash on screen right, thin white smoke still rising, overturned wooden buckets: medium close-up of Qin Shuang, on screen left crouching beside the footprints by the back wall, two fingers resting in one shallow dragged print, her eyes narrowing",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「一腳深，一腳淺，」 then 「是跛子。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she rises and looks along the footprints toward the wall",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a20",
+          "speaker": "tangxiaotang",
+          "text": "賴三！",
+          "emotion": "一下站起來"
+        },
+        {
+          "id": "zq17a21",
+          "speaker": "tangxiaotang",
+          "text": "賴三就是跛的！",
+          "emotion": "氣到發抖"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse on a grey morning after the fire, a low mud wall, a stone well, the lean-to workshop burned down to a few blackened posts over wet black ash on screen right, thin white smoke still rising, overturned wooden buckets: medium close-up of Tang Xiaotang, on screen right jumping up from the upturned bucket, eyes wide, soot on her cheek",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「賴三！」 then 「賴三就是跛的！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she drags one foot in an exaggerated limping step to show them",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a22",
+          "speaker": "erniu",
+          "text": "我去錢府抓人！",
+          "emotion": "抄起扁擔"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the dirt yard of the farmhouse on a grey morning after the fire, a low mud wall, a stone well, the lean-to workshop burned down to a few blackened posts over wet black ash on screen right, thin white smoke still rising, overturned wooden buckets: medium shot of Wang Erniu, on screen right snatching up a wooden carrying pole, his face red with anger, soot on his arms",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「我去錢府抓人！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he swings the pole onto his shoulder and strides toward screen left",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a23",
+          "speaker": "hanbo",
+          "text": "沒人看見，",
+          "emotion": "拐杖一橫"
+        },
+        {
+          "id": "zq17a24",
+          "speaker": "hanbo",
+          "text": "官府不認。",
+          "emotion": "沉聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the dirt yard of the farmhouse on a grey morning after the fire, a low mud wall, a stone well, the lean-to workshop burned down to a few blackened posts over wet black ash on screen right, thin white smoke still rising, overturned wooden buckets: medium shot of Elder Han, on screen left barring the way with his bamboo walking staff held across Wang Erniu's chest, Wang Erniu on screen right stopped in his tracks with the carrying pole",
+        "motion": "Elder Han speaks 2 short Mandarin lines, 「沒人看見，」 then 「官府不認。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he presses the staff against Wang Erniu's chest until Erniu lowers the pole",
+        "characters": [
+          "hanbo",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a25",
+          "speaker": "xuyan",
+          "text": "先把紙坊蓋回來。",
+          "emotion": "把燈籠骨架收進袖裡"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the dirt yard of the farmhouse on a grey morning after the fire, a low mud wall, a stone well, the lean-to workshop burned down to a few blackened posts over wet black ash on screen right, thin white smoke still rising, overturned wooden buckets: close-up of Xu Yan, on screen right, the charred lantern frame in his hand, grey morning light on his face, looking from the frame toward screen left",
+        "motion": "Xu Yan speaks a short Mandarin line, 「先把紙坊蓋回來。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he tucks the charred frame into his sleeve and stands up straight",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "chapter": "一夜",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "In the dirt yard of the farmhouse at night, torches on poles and a bonfire lighting the yard orange, piles of fresh-cut pale timber logs, the black burned ground of the old lean-to workshop beside the farmhouse: wide shot of a stream of villagers carrying long fresh-cut logs on their shoulders in through the yard gate, torchlight on their faces, Carpenter Shi, on screen right waving them on with a long measuring stick",
+        "motion": "Villagers carry log after log into the yard and drop them by the burned ground while Carpenter Shi points each one into place with his measuring stick",
+        "characters": [
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a26",
+          "speaker": "shimujiang",
+          "text": "天亮之前，",
+          "emotion": "頭也不抬"
+        },
+        {
+          "id": "zq17a27",
+          "speaker": "shimujiang",
+          "text": "骨架給你立起來。",
+          "emotion": "嘴硬"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, torches on poles and a bonfire lighting the yard orange, piles of fresh-cut pale timber logs, the black burned ground of the old lean-to workshop beside the farmhouse: medium shot of Carpenter Shi, on screen right fitting a fresh timber beam into an upright post by torchlight, sawdust on his leather apron, a wooden mallet in his hand",
+        "motion": "Carpenter Shi speaks 2 short Mandarin lines, 「天亮之前，」 then 「骨架給你立起來。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he swings the wooden mallet and drives the beam home into the post",
+        "characters": [
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the mallets on the timber joint, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, torches on poles and a bonfire lighting the yard orange, piles of fresh-cut pale timber logs, the black burned ground of the old lean-to workshop beside the farmhouse: insert of two wooden mallets driving fresh wooden pegs into a pale timber joint, sawdust drifting in the torchlight, villagers' hands steadying the beam",
+        "motion": "The mallets strike the pegs in turn and the pegs sink flush into the joint as sawdust drifts down",
+        "characters": []
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a28",
+          "speaker": "xiaohe",
+          "text": "哥哥，先吃一個！",
+          "emotion": "踮腳遞飯糰"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, torches on poles and a bonfire lighting the yard orange, piles of fresh-cut pale timber logs, the black burned ground of the old lean-to workshop beside the farmhouse: medium shot of Xu Xiaohe, on screen left weaving between the workers with a small basket of rice balls on her arm, holding one up to Xu Yan, on screen right, who has sawdust on his robe",
+        "motion": "Xu Xiaohe speaks a short Mandarin line, 「哥哥，先吃一個！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then Xu Yan takes the rice ball and ruffles her hair while she beams",
+        "characters": [
+          "xiaohe",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow tracking alongside",
+        "prompt": "In the dirt yard of the farmhouse at night, torches on poles and a bonfire lighting the yard orange, piles of fresh-cut pale timber logs, the black burned ground of the old lean-to workshop beside the farmhouse: medium shot of Qin Shuang, on screen right carrying a long fresh-cut log alone on one shoulder through the torchlit yard, ponytail swinging, two village men on screen left straining together under a log of the same size",
+        "motion": "Qin Shuang strides past the two struggling men with the log balanced on her shoulder and drops it onto the pile with a thud, dusting off her hands",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a29",
+          "speaker": "tangxiaotang",
+          "text": "四十二個人，",
+          "emotion": "撥算盤，鼻子紅紅的"
+        },
+        {
+          "id": "zq17a30",
+          "speaker": "tangxiaotang",
+          "text": "工錢，我都記著。",
+          "emotion": "嘴硬，眼眶紅"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, torches on poles and a bonfire lighting the yard orange, piles of fresh-cut pale timber logs, the black burned ground of the old lean-to workshop beside the farmhouse: medium close-up of Tang Xiaotang, on screen left sitting on a stack of logs by the bonfire, sleeves still tied back, soot on her cheek, the small gold abacus on her knee, watching the workers toward screen right",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「四十二個人，」 then 「工錢，我都記著。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she flicks the abacus beads hard and wipes her nose with the back of her wrist",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a31",
+          "speaker": "aling",
+          "text": "昨晚，",
+          "emotion": "很輕"
+        },
+        {
+          "id": "zq17a32",
+          "speaker": "aling",
+          "text": "我看見一個背影。",
+          "emotion": "很輕，看著火"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, torches on poles and a bonfire lighting the yard orange, piles of fresh-cut pale timber logs, the black burned ground of the old lean-to workshop beside the farmhouse: medium close-up of A Ling, on screen left sitting on a low bench by the bonfire with the rolled bamboo screens across her knees, her long black hair still loose, firelight on her face, looking at Xu Yan off screen right",
+        "motion": "A Ling speaks 2 short Mandarin lines, 「昨晚，」 then 「我看見一個背影。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she turns her eyes away toward screen left",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a33",
+          "speaker": "xuyan",
+          "text": "認得出來？",
+          "emotion": "猛轉頭"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, torches on poles and a bonfire lighting the yard orange, piles of fresh-cut pale timber logs, the black burned ground of the old lean-to workshop beside the farmhouse: close-up of Xu Yan, on screen right by the bonfire, firelight on his face, turning sharply to look at A Ling off screen left",
+        "motion": "Xu Yan speaks a short Mandarin line, 「認得出來？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he leans toward her, a rice ball forgotten in his hand",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a34",
+          "speaker": "aling",
+          "text": "太暗了，",
+          "emotion": "搖頭"
+        },
+        {
+          "id": "zq17a35",
+          "speaker": "aling",
+          "text": "只看見他一拐一拐。",
+          "emotion": "握緊竹簾"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the dirt yard of the farmhouse at night, torches on poles and a bonfire lighting the yard orange, piles of fresh-cut pale timber logs, the black burned ground of the old lean-to workshop beside the farmhouse: medium shot of A Ling, on screen left on the bench by the bonfire, the rolled screens across her knees, Xu Yan soft and out of focus, on screen right leaning in",
+        "motion": "A Ling speaks 2 short Mandarin lines, 「太暗了，」 then 「只看見他一拐一拐。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she slowly shakes her head and her fingers tighten on the rolled screens",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "chapter": "強制任務",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow crane up",
+        "prompt": "In the dirt yard of the farmhouse at the next dawn, a low mud wall, a stone well, a new frame of fresh pale timber posts and roof beams standing over the black ash where the lean-to workshop burned, soft pale gold first light, burnt-out torches: wide shot of the finished timber frame of the new workshop, villagers asleep leaning against its posts and on piles of logs, Carpenter Shi asleep sitting on a log on screen right with his mallet in his lap, Xu Yan small, on screen left walking in under the beams",
+        "motion": "Xu Yan walks in under the new beams past the sleeping villagers while the camera slowly rises to show the whole frame standing over the ash",
+        "characters": [
+          "xuyan",
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a36",
+          "speaker": "xuyan",
+          "text": "立起來了。",
+          "emotion": "累，但笑了"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at the next dawn, a low mud wall, a stone well, a new frame of fresh pale timber posts and roof beams standing over the black ash where the lean-to workshop burned, soft pale gold first light, burnt-out torches: medium shot of Xu Yan, on screen left with his palm on a fresh pale timber post, sawdust and soot on his robe, a tired smile, looking up at the new roof beams",
+        "motion": "Xu Yan speaks a short Mandarin line, 「立起來了。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he pats the post twice and lets out a long breath",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a37",
+          "speaker": "xitong",
+          "text": "強制任務。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the dirt yard of the farmhouse at the next dawn, a low mud wall, a stone well, a new frame of fresh pale timber posts and roof beams standing over the black ash where the lean-to workshop burned, soft pale gold first light, burnt-out torches: close-up of Xu Yan, on screen left, first light on half his face, his tired smile, eyes suddenly fixed on the empty air in front of him with a cold blue glint; the system voice speaks off screen",
+        "motion": "Xu Yan's smile freezes and his hand slides off the post as he stares at the empty air",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a38",
+          "speaker": "xitong",
+          "text": "七日內，縱火者認罪。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the lantern frame in Xu Yan's hand, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at the next dawn, a low mud wall, a stone well, a new frame of fresh pale timber posts and roof beams standing over the black ash where the lean-to workshop burned, soft pale gold first light, burnt-out torches: insert of Xu Yan's hand under the new beams holding the charred bamboo lantern frame, the scrap of scorched oiled paper with the painted black round copper-coin emblem with a square hole, no writing, pale first light on it; the system voice speaks off screen",
+        "motion": "Xu Yan's fingers close slowly around the charred frame until the bamboo ribs creak, ash sifting down",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq17a39",
+          "speaker": "xitong",
+          "text": "失敗：失去種田技能。",
+          "emotion": "平板電子音，冷"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "In the dirt yard of the farmhouse at the next dawn, a low mud wall, a stone well, a new frame of fresh pale timber posts and roof beams standing over the black ash where the lean-to workshop burned, soft pale gold first light, burnt-out torches: extreme close-up of Xu Yan's eyes, thick brows drawn down, cold blue glint, pale dawn light behind him; the system voice speaks off screen",
+        "motion": "Xu Yan's eyes narrow and lift slowly toward the road to the Qian manor off screen right, his jaw setting hard as he draws one slow breath",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}

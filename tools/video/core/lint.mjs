@@ -3,10 +3,13 @@
 // Errors block the pipeline (the CLI exits 1); warnings are for the writer and reviewer to judge.
 // The written-language list is the one the recorded route's video_kit.py uses, so a script that
 // passes one route's check does not fail the other's.
-import { cadenceProblems, HOOK_SECONDS as ILLUSTRATED_HOOK_SECONDS } from "./cadence.mjs";
+import { cadenceProblems } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
-import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
+import { curioProblems } from "./curio.mjs";
+import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
+import { isNarrated, narrativeProblems } from "./narrative.mjs";
+import { isA01CompactStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { isStory, storyProblems } from "./story.mjs";
@@ -51,11 +54,12 @@ export const HEDGE_MAX = 1;
 export const SOURCING_FAMILY = ["文件寫", "文件說", "文件還寫", "文件也寫", "文件列", "部落格寫", "部落格說", "官方說", "官方表示", "根據官方"];
 export const SOURCING_MAX = 2;
 // How far into the narration (at the estimate's 250 characters a minute) a spoken table of
-// contents still counts as the opening (D07), and the sentence shapes it takes: the announced
+// contents still counts as the opening (D07; the longest condensation, OPENING_CHAPTER_SECONDS),
+// and the sentence shapes it takes: the announced
 // parts (「接下來分三段」「接下來我會告訴你」), the promise (「看完這支影片你會知道」), an ordinal
 // run (第一…第二…最後, 先…再…最後), and an announcement (這集／這支／接下來／帶你／跟我) that lists
 // its items (、, 還有, a counted 三步, a clause-initial 再 or 最後) in its own or the next sentence.
-export const OPENING_SECONDS = 40;
+export const OPENING_SECONDS = 60;
 const OPENING_TOC = [
   /接下來(?:我們|我)?(?:會|要|就)?(?:分|分成|有|講|說|看|用|帶你看|帶你|告訴你)[一二三四五六七八九十兩\d]+(?:段|個|部分|點|件|步|道|張|題)/,
   /接下來(?:我們|我)?(?:會|要|就)?(?:告訴你|帶你看|帶你)/,
@@ -90,7 +94,12 @@ export const SUBSCRIBE_WORD = "訂閱";
 export const SENTENCE_WARN = 40;
 // An English word counts two units, so 40 is twenty words; spoken English runs to about 25 before it needs a breath.
 export const SENTENCE_WARN_EN = 50;
-export const HOOK_SECONDS = 30;
+// The opening chapter of a narrated video (script-writing.md §開場濃縮; owner, 2026-10-12): before
+// the first real chapter, 30 to 60 seconds that condense the video's strongest moments into
+// questions left open, so the viewer stays to hear them answered. A drama with a cast (not a
+// brand story) keeps its hook, the first chapter within DRAMA_HOOK_SECONDS.
+export const OPENING_CHAPTER_SECONDS = [30, 60];
+export const DRAMA_HOOK_SECONDS = 30;
 export const SIMILARITY_WARN = 0.8;
 // SSML markup Azure also bills for, per line (a <break/> and the sentence wrapper); an estimate.
 const MARKUP_PER_LINE = 30;
@@ -292,9 +301,11 @@ function seriesProblems(doc, series, error, warn) {
  * the hedge family said more than once in the narration, sourcing talk (「文件寫」「官方說」) said
  * more than SOURCING_MAX times, an opening that reads a table of
  * contents, and an outro that asks for no subscription or has not its three sentences.
- * `timeline` is the estimate; the opening is its first OPENING_SECONDS seconds.
+ * `timeline` is the estimate; the opening is its first OPENING_SECONDS seconds. `outroCount`
+ * false leaves the outro's sentence count unread (an explainer's outro card carries the subscribe
+ * line alone); the subscribe word is read either way.
  */
-export function episodeScriptProblems(doc, timeline) {
+export function episodeScriptProblems(doc, timeline, { outroCount = true } = {}) {
   const problems = [];
   const warn = (path, message) => problems.push({ path, message });
   const counts = new Map();
@@ -333,7 +344,7 @@ export function episodeScriptProblems(doc, timeline) {
     const where = `scenes[${index}] (${scene.id})`;
     const said = (scene.lines ?? []).map((line) => line.text);
     if (!said.some((text) => text.includes(SUBSCRIBE_WORD))) warn(where, `the outro asks for no subscription: its ${OUTRO_SENTENCES} sentences answer the opening question with its number, ask one question the viewer can answer in a comment, and give one reason to subscribe (script-writing.md §結尾)`);
-    if (said.length < OUTRO_SENTENCES) warn(where, `the outro has ${said.length} sentence${said.length === 1 ? "" : "s"}; the close is ${OUTRO_SENTENCES}: the answer with its number, a comment question, a subscribe invitation with a reason`);
+    if (outroCount && said.length < OUTRO_SENTENCES) warn(where, `the outro has ${said.length} sentence${said.length === 1 ? "" : "s"}; the close is ${OUTRO_SENTENCES}: the answer with its number, a comment question, a subscribe invitation with a reason`);
   });
   return problems;
 }
@@ -378,8 +389,10 @@ export function thumbnailHeadlineProblems(doc) {
 export function lintVideo(doc, context = {}) {
   const errors = [];
   const warnings = [];
-  const error = (path, message) => errors.push({ path, message });
-  const warn = (path, message) => warnings.push({ path, message });
+  // `kind` names the family of a problem where a stage reads one (the worker hands the
+  // "narrative" warnings to the writer); the others carry none.
+  const error = (path, message, kind = null) => errors.push({ path, message, ...(kind ? { kind } : {}) });
+  const warn = (path, message, kind = null) => warnings.push({ path, message, ...(kind ? { kind } : {}) });
 
   for (const problem of validateVideo(doc)) error(problem.path, problem.message);
   if (errors.length) return { errors, warnings, summary: null };
@@ -457,11 +470,17 @@ export function lintVideo(doc, context = {}) {
     if (problem.includes("at least")) error("scenes", problem);
     else warn("scenes", `${problem} (estimated; the real check runs on the synthesized timeline)`);
   }
-  const hookSeconds = pictures ? ILLUSTRATED_HOOK_SECONDS : HOOK_SECONDS;
-  if (chapters[0] && chapters[0].seconds > hookSeconds) {
-    warn("scenes[0]", `the opening chapter runs about ${Math.round(chapters[0].seconds)} s; the hook should land within ${hookSeconds} s`);
-  }
   const minutes = frameToSeconds(timeline.total_frames) / 60;
+  const episodeLengthForNarrative = minutes >= MIN_EPISODE_MINUTES || isA01CompactStory(doc);
+  const opening = chapters[0]?.seconds;
+  // A brand story is narrated and opens on the condensation even when its pictures have a cast.
+  if (opening !== undefined && hasCast(doc) && !isStory(context.series)) {
+    if (opening > DRAMA_HOOK_SECONDS) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; the hook should land within ${DRAMA_HOOK_SECONDS} s`);
+  } else if (opening !== undefined && !isCompilation(doc) && episodeLengthForNarrative) {
+    // Read on an episode only, as episodeScriptProblems is: the examples run seconds.
+    const [shortest, longest] = OPENING_CHAPTER_SECONDS;
+    if (opening < shortest || opening > longest) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; it is the condensation, ${shortest} to ${longest} s before the first real chapter: one scene of the story told in order up to the first fact that makes no sense, ending on the question the whole video answers (script-writing.md §開場濃縮)`);
+  }
   const [low, high] = doc.target_minutes ?? DEFAULT_TARGET_MINUTES;
   // Every episode but a drama's runs at least eight minutes. The estimate reads 250 characters a
   // minute and the voice speaks about 300, so a script that clears it here can still come out
@@ -473,11 +492,23 @@ export function lintVideo(doc, context = {}) {
   // target_minutes is what the writer aims at, not a limit, so running over it is not warned. A
   // drama, a brand story and a long anime keep their own lengths on both sides.
   else if (minutes < low || (minutes > high && !needsMinimumLength(doc))) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
-  // The script's shape (episodeScriptProblems) is read on an episode: a narrated zh-TW video of
-  // MIN_EPISODE_MINUTES or more, the constant and not the floor a fixture runner relaxes (the
-  // examples run seconds and show the templates' shape, not a script's). A draft under the floor
-  // is already sent back to be written longer; a drama keeps its own craft; the phrases are zh-TW.
-  if (!drama && !english && minutes >= MIN_EPISODE_MINUTES) for (const problem of episodeScriptProblems(doc, timeline)) warn(problem.path, problem.message);
+  // The script's shape (episodeScriptProblems) and its storytelling (core/narrative.mjs) are read
+  // on an episode: a narrated zh-TW video (slides, an explainer, a brand story; isNarrated) of
+  // MIN_EPISODE_MINUTES or more, or the exact A01 compact story at any draft estimate. The
+  // threshold is not the floor a fixture runner relaxes (the
+  // examples run seconds and show the templates' shape, not a script's). A short A01 draft also
+  // receives its target warning; a drama with a cast keeps its own craft; the
+  // phrases are zh-TW. An explainer's outro card carries the subscribe line alone (its comment
+  // question sits on the shot before it), so its sentence count is not read.
+  if (isNarrated(doc, context.series) && !english && episodeLengthForNarrative) {
+    for (const problem of episodeScriptProblems(doc, timeline, { outroCount: !isExplainer(doc) })) warn(problem.path, problem.message);
+    const story = narrativeProblems(doc, timeline, { minutes });
+    for (const problem of story.errors) error(problem.path, problem.message, problem.kind);
+    for (const problem of story.warnings) warn(problem.path, problem.message, problem.kind);
+  }
+  // A 奇聞檔案局 episode (a "curio-" slug) keeps the series look: the cute-mystery preset word for
+  // word, illustrations for most of the body, no long run of cards (core/curio.mjs).
+  for (const problem of curioProblems(doc)) error(problem.path, problem.message);
   if (isLongAnime(doc)) {
     const target = doc.runtime_spec.body_target_seconds;
     const seconds = frameToSeconds(timeline.total_frames);

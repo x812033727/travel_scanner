@@ -10,7 +10,7 @@ import path from "node:path";
 import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { isLongAnime } from "../core/anime-policy.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_CHARS, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_MAX_CHARS, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
-import { HEARD_RULES, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
+import { CONDENSATION_RULE, HEARD_RULES, NARRATIVE_RULES, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
 import { EXPLAINER_SERIES_INSTRUCTIONS } from "./explainer-series.mjs";
 import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
@@ -127,10 +127,12 @@ Reveal: a line with "reveal": 1 shows the next item; a scene's reveals must equa
 - outro {title, cta?, lines 1-4}: no reveals. The last scene, and its narration is exactly three
   sentences, in this order: the answer to the opening question, with its number; one question
   the viewer can answer in a comment (their own case, not a quiz); one invitation to subscribe
-  with a reason: the next episode by name when the brief, the payload or the owner's standing
-  instructions name it, otherwise the channel's standing promise from those instructions or
-  the brief. Never invent a next topic. The article is not the close (the cta scene already
-  sent the viewer there); the card's "cta" may still say the article is in the description.
+  with a reason, the channel's standing promise from the owner's instructions or the brief.
+  The close never says what the next video, the next episode or the next file is about, and the
+  card's words do not either (owner, 2026-10-13; lint refuses 「下一集」「下一支」「下一份檔案」
+  in the close): YouTube's end screen is what points at the next video. The article is not the
+  close (the cta scene already sent the viewer there); the card's "cta" may still say the
+  article is in the description.
 - shot {prompt, camera, visual: "still", transition?}: no reveals. ONE AI-drawn illustration with a
   camera move, for the scenes the story describes. prompt: English, at most 1000 characters, or at
   most "prompt_budget_chars" when the payload gives one (the look and the image model take the
@@ -206,7 +208,15 @@ that are too long, ambiguous when heard, or repeat the line before; make each ch
 lead in; mark predictions as the owner's view; keep every fact, number, line id, reveal and scene
 exactly as they are. You may drop a line that only repeats the one before, never one with a
 reveal. "script_writing" is the house style. When "owner_note" is present, the owner sent the
-narration back: do what it says.`;
+narration back: do what it says.
+
+The story holds: a chapter's first line is what happened next or the answer to what the chapter
+before left hanging, never a label (「先講…」「回到…」「接下來」「這一章回答…」); the sentences are
+joined the way a person tells a story to one listener (那麼、結果、但是、沒想到、這時候); the
+loops in "loops" keep their setup and payoff lines and their wording where it names them; and
+the close says nothing about the next video. "lint_warnings", when the payload carries them,
+are the storytelling checks on this draft: fix what they name with wording alone, never by
+adding or dropping a fact, a scene or a line id.`;
 
 export const INSTRUCTIONS = {
   planner: `${WRITING_COMMON}
@@ -251,7 +261,13 @@ without a channel stance, propose one and mark it as a proposal the owner confir
 ## 大綱 — 2 or 3 options, each exactly like this:
 ### 選項 A：<angle in a few words>
 一行說明：<the angle and how it differs from the other options>
-開場鉤子：「<the opening line as spoken; the viewer's question or a counter-intuitive claim>」
+故事線：<事件／實測／疑問／抉擇（選一）>
+主角：<the one person, team, image, bill or project carried from the opening to the close>
+主線：<the spine in one sentence: who or what, from which moment, to which answer>
+轉折：<3 to 5 events in the order they happened, each with the chapter that reveals it, each more surprising than the one before>
+開場鉤子：「<the opening line as spoken; a year or a place and somebody doing one concrete thing, or the viewer's own question>」
+開場濃縮：<the ONE scene the 30 to 60 second condensation tells, in order, up to the first fact that makes no sense; then the three or four later moments it teases, each cut off before its result; it reveals no later chapter's result and ends on the question the whole video answers>
+鉤子：<the open loops this outline plants: each as 「<what is held back> → 第 N 章回收」, at least three for ten minutes, the condensation's teasers among them>
 For illustrated storytelling: 你以為／其實：「<what the viewer believes> → <what is so, with the fact that shows it>」
 For teaching cards: 案例與結果：「<the recurring example, useful outcome and evidence status>」
 then at least 3 chapters as teaching steps or story beats, with estimated seconds (each ≥ 10 s; 250 spoken characters
@@ -261,8 +277,10 @@ aim, not a limit: an outline the sources carry further may run over it): each ch
 ("shot: <the picture in a few words>" for illustrated storytelling, at least one per chapter;
 teaching cards use the recurring example with no shots), the concrete example or comparison,
 the short conclusion or next practical question for teaching cards, or the
-question its last sentence leaves for the next chapter in storytelling (收尾問題：「…」), where the worked example
-sits, and the closing next step.
+turn its last sentence leaves for the next chapter in storytelling (收尾：「…」, a question, a
+stop before the event, a number or a reversal), where the worked example
+sits, and the closing: the answer with its number, the comment question and the subscribe
+invitation (never what the next video is about).
 ## 會過期的事實 — every changeable fact with the URL to re-check
 ## 素材 — the source URLs
 ## 不做的事 — what this video leaves out
@@ -297,13 +315,14 @@ concrete object the video is about; the right third of the frame is left for it>
 For teaching cards without a real capture, omit both "shot" and "capture" in the thumb;
 never create an illustration just to fill the thumbnail field.
 - Line ids: take them from "line_ids" in order; never invent one.
-- One line is one spoken sentence, about 25 characters, at most 40. The first scene's first
-  sentence is the hook (the viewer's question or the counter-intuitive claim) and the viewer knows
-  what they will get within 20 seconds: by then a concrete number, date or proper noun has been
-  said, the one the title promises. No table of contents (「接下來分三段」「接下來我會告訴你」
-  「第一…第二…最後」「先…再…最後」「看完你會知道 A、B、C」「這集講 A、B，還有 C」; lint warns): the
-  chapters announce themselves. For illustrated storytelling, 「你以為…其實」 once in
-  the video, in the first chapter; a later reversal is told without the formula. Teaching cards
+- One line is one spoken sentence, about 25 characters, at most 40. The first chapter is the
+  condensation the register below describes, the brief's 開場濃縮: one scene of the story told
+  in order, the title's number, date or proper noun within 20 seconds, up to the first fact
+  that makes no sense; then three or four later moments, each cut off before its result and
+  each the setup of a loop; never a later chapter's result. No
+  table of contents (「接下來分三段」「接下來我會告訴你」「第一…第二…最後」「先…再…最後」「看完你會知道
+  A、B、C」「這集講 A、B，還有 C」; lint warns): the chapters announce themselves. For
+  illustrated storytelling, 「你以為…其實」 once in the video, in the first chapter; a later reversal is told without the formula. Teaching cards
   need no reversal: open on the example's useful outcome and identify its evidence status.
 - The voice's performance (docs/videos/ILLUSTRATED.md §聲音表演): "voice" also takes a
   "performance" plan of yours (zh-TW, at most 200 characters) saying how THIS video is told
@@ -322,8 +341,15 @@ never create an illustration just to fill the thumbnail field.
   chars, "narration": [phrases ≤ 38 chars each], "big"? (one number), "note"?}}. No new facts:
   every number is one the long video says. The last scene sends the viewer to the long video.
   When fixing ("lint_errors" or "fix"), leave "shorts" out.
-- Chapters: at least 3, the first scene has one, each at least 10 seconds; names a viewer would
-  search for. Total length at 250 spoken characters a minute: never under 8 minutes, and aim at
+- "loops": the open loops this script plants (the brief's 鉤子), [{"setup": <the line id that
+  plants it>, "payoff": <the line id that pays it off, later in the script>, "what": <what it
+  holds back, at most 40 characters>}]: at least three for ten minutes, one planted in the
+  condensation, every one paid off and named where it lands (「還記得那…」). When fixing
+  ("lint_errors" or "fix"), return it with the script.
+- Chapters: at least 3, the first scene has one, each at least 10 seconds; for illustrated
+  storytelling a chapter is one beat of the story, named by what happens in it (「九桶是空的」),
+  never by its function (背景, 流傳的版本, 結論), and a ten-minute video has five to seven of
+  them, 60 to 120 seconds each; teaching cards keep their steps. Total length at 250 spoken characters a minute: never under 8 minutes, and aim at
   the upper end of "target_minutes" (the voice has usually read faster than 250). The upper end is an aim,
   not a limit: going over it is fine. Never cut a sourced fact to fit it and never pad to reach it.
 - Every Latin-letter word in the narration must be in "lexicon" or in lexicon_additions: its spoken
@@ -344,7 +370,10 @@ never create an illustration just to fill the thumbnail field.
 - claims.md: one line per checkable claim, "c1｜claim as narrated or shown｜URL｜today｜scene id";
   every scene lists its claim ids in "claims". End with "## 與企劃不同的地方" and "## 我懷疑但沒動的事".
 When "lint_errors" is present, you are fixing your own draft: change only what the errors name and
-return the whole corrected video.json. When "fix" is present with kind "keyframes", the pictures'
+return the whole corrected video.json. "lint_warnings", when the payload carries them, are the
+storytelling checks on the same draft (a chapter that opens on a label, a stretch with no open
+loop, a missing or thin "loops" table, a fact said three times): fix them in the same rewrite,
+never at the cost of a fact, a scene or a line id. When "fix" is present with kind "keyframes", the pictures'
 checks failed: rewrite the named shots' prompt or camera as "fix.problems" say, change nothing
 else, and return the whole video.json. When a target in "fix.targets" carries "prompt_budget_chars",
 that shot's prompt must be at most that many characters (the look and the image model take the
@@ -402,7 +431,10 @@ Viewers read the captions while the narration plays: natural in the locale, fait
 short enough to read at speaking pace (en at most about 80 characters a line, ja and ko about
 40). Keep every number, price, date, version and product name; en plain, ja です／ます, ko
 합니다체. Opinions stay first person. Do not add or drop anything the narration says. Title at
-most 100 characters, no angle brackets; tags at most 500 characters in total. "video" shows the slides for context.
+most 100 characters, no angle brackets; tags at most 500 characters in total. No channel or
+series name in the title or the tags: where the zh-TW title ends on one (「｜奇聞檔案局」), leave it
+out, since YouTube shows the channel under the title and no name for it in the locale is decided.
+"video" shows the slides for context.
 The worksheet's "parts" says what the owner chose for this locale: "captions" the lines,
 "metadata" the title, description, tags, chapter names and the thumbnail's words; a worksheet without
 a part has no entries for it, so fill only what it holds. When a line carries "max_chars", the
@@ -1487,9 +1519,11 @@ not the text or its characters):
   note?}, source?} and "compare" {title?, left {heading, points 1-5}, right {heading, points 1-5}}
   for numbers and contrasts, "outro" {title, cta?, lines?} to close. A card's numbers are in
   claims.md like the narration's.
-- Structure: the hook within 20 seconds (the counter-intuitive question, no greeting); the
-  background; 3 or 4 chapters, one reason each ("chapter" on the first scene of each, ≥ 10 s,
-  named as a viewer would search); the one-sentence answer, said plainly; then the next question.
+- Structure: ${CONDENSATION_RULE}
+  Then the story goes on: 3 or 4 chapters, one reason each ("chapter" on the first scene of each,
+  ≥ 10 s, named by what happens in it as a viewer would search for it); the one-sentence answer,
+  said plainly; then the close, which names no next episode.
+${NARRATIVE_RULES}
 - Lines: one spoken sentence each, about 25 characters, at most 40. Every Latin-letter word is in
   "lexicon" or lexicon_additions. A line takes an "emotion" cue (zh-TW, ≤ 80 chars) where the
   delivery turns (slower on the number, a lift on the question, a held breath before the
@@ -1532,10 +1566,17 @@ body_md sections, in this order:
 ## 問題 the question as a viewer would type it, and what most people wrongly assume.
 ## 一句答案 the answer in one plain sentence a twelve-year-old understands.
 ## 原因 3 or 4 reasons, each one sentence with the source page that supports it.
-## 大綱 ONE outline: the opening hook as the first spoken line, the chapters (one reason each)
+## 大綱 ONE outline: the spine in one sentence (「主線：…」: who or what, from which moment, to
+which answer); 3 to 5 turns in the order they happened (「轉折：…」, each with the chapter that
+reveals it); the opening hook as the first spoken line; the ONE scene the condensation tells, in
+order, up to the first fact that makes no sense, then the three or four later moments it teases,
+each cut off before its result (「開場濃縮：…」, no later chapter's result given away); the open
+loops it plants (「鉤子：<what is held back> → 第 N 章回收」, at least three, the condensation's
+teasers among them); the chapters (one reason each)
 with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole aimed at
 "series.target_minutes", never under 8 minutes; over it is fine), each chapter's key pictures as "picture: what the illustration shows /
-camera", where a number card sits, and the closing (the answer, then the next question).
+camera", where a number card sits, and the closing (the answer, the comment question and the
+subscribe invitation; never what the next episode is about).
 ## 素材 the source pages (primary or official first), and the pictures that must appear.
 ## 不做的事 what this episode leaves out.
 
@@ -1571,10 +1612,15 @@ question; without a channel stance, propose one and mark it as a proposal the ow
 ## 大綱 — 2 or 3 options, each exactly like this:
 ### 選項 A：<angle in a few words>
 一行說明：<which reason leads, what the hook is, how it differs from the other options>
-開場鉤子：「<the first spoken line: the counter-intuitive question; no greeting>」
+主線：<the spine in one sentence: who or what, from which moment, to which answer>
+轉折：<3 to 5 events in the order they happened, each with the chapter that reveals it>
+開場鉤子：「<the first spoken line: a year or a place and somebody doing one concrete thing, or the counter-intuitive question; no greeting>」
+開場濃縮：<the ONE scene the 30 to 60 second condensation tells, in order, up to the first fact that makes no sense, then the three or four later moments it teases, each cut off before its result; no later chapter's result is given away, and its last sentence is the question the whole episode answers>
+鉤子：<the open loops it plants: each as 「<what is held back> → 第 N 章回收」, at least three, the condensation's teasers among them>
 then the chapters with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole
 aimed at "target_minutes", never under 8 minutes; over it is fine), each chapter's key pictures as "picture: what the illustration shows /
-camera" and where a number card sits, and the closing (the answer, then the next question).
+camera" and where a number card sits, and the closing (the answer with its number, the
+comment question and the subscribe invitation; never what the next episode is about).
 ## 會過期的事實 — every changeable fact (prices, rankings, counts, laws) with the URL to re-check
 ## 素材 — the source URLs, and the pictures that must appear
 ## 不做的事 — what this episode leaves out
