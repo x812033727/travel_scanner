@@ -1,0 +1,10 @@
+成人英文系列製作契約（2026-10-08）
+兩套各4季×12集，共96集。每套獨立ep01–ep48。大學 series_title="Sunny & Pip: University English",course="university"；職場 series_title="Sunny & Pip: Workplace English",course="workplace"。top-level version=4,course,series_title,episodes；每episode包含course、stage=season(1..4)，不使用grade。
+其餘schema沿用高中season01.json：id,number,season,title_en,title_zh_TW,titles{zh-TW,zh-CN,ja,ko},topic,objectives_zh_TW三條,parent_tip_zh_TW（自學提醒）,practice,scenes。parent_tip是舊欄位名，內容面向成人自學。
+每集10幕；s1情境,s2–3示範/對比,s4跟讀,s5quiz,s6應用,s7quiz,s8跟讀,s9quiz,s10review。repeat至少2且guided_reading=true；quiz恰3且正解位置0/1/2各一次，選項3個不同token。中性title不暗示quiz正解。Quiz english="Listen and choose."，instruction五語固定沿用高中，demo為正確英文示範，選項不以同義句造成多正解。明示此為聽讀選句，不是獨立評量。
+每scene：id epNN-sNN,english,demo,instruction{en,zh-TW,zh-CN,ja,ko},demo_translation{四語},visual,target,mode,wait_seconds（quiz6其餘5）,note_zh_TW。英文demo<=16詞且<=110ASCII；instruction.en<=14詞且<=110ASCII；其他英文畫面<=110ASCII。繁簡instructions盡量<=34字、日韓<=55字，自然簡潔並教具體觀念；所有語言保留限定詞、時點與證據強度。英文標點只用ASCII。畫面與選項使用sentence:英文、word:英文；不要新造圖像token。教真實表達與修訂，不只是念策略名稱。
+Practice固定reading_en,prompt_en,prompt_zh_TW,sample_answer_en,questions(恰3項，各prompt_en/answer_en)。大學閱讀160–200詞，寫作例答120–160詞；職場閱讀140–180詞，例答100–140詞，以split空白分詞計數。任務明示相同字數目標，答案確實完成所有要點。3題含細節/摘要、組織/因果、證據支持的推論或評估，至少一題要求reason/evidence；不能三題照抄。答案可由文本得出。答案、例答放教材後段，不混在學生活動頁。PDF預期完整145頁、各季37頁。
+每集是獨立原創情境，場景與任務要實質不同，避免機械代換名詞。成人情境與語用比高中更深入，但影片維持可清楚朗讀的短句，深入分析在閱讀與寫作。每季第12集整合前11集，不突然引入新核心概念。
+全部故事、組織、人物與資料為虛構；數字與研究/資料情境在文中明示hypothetical/fictional。引用教學用fictional training source且明說真實作業需替換成可查來源，不能教學生編造真引用。不宣称完整取代大學課綱、專業證照或企業特定規則；無普世文化刻板印象。職場範例不用真實個資、客戶或內部資料。
+英文固定畫面、沒有英文CC；5音軌en/zh-TW/zh-CN/ja/ko，4CC。Edge試製聲音，尚非後台正式配音。來源/工具才進Git，媒體/字型/ZIP在repo外。
+作者只寫分配seasonNN.json，可用/tmp腳本，勿改合併檔/別人的季/既有課程/renderer。完成一季先落地並回報，完整交叉審稿後才freeze與音訊。每個原稿都要保留完整五語，不准英文佔位其他語言。
