@@ -16,8 +16,6 @@ scope:
   - docs/videos/story-plans/brand-stories-100/stories.json
   - docs/videos/story-plans/brand-stories-100/SCHEDULE.md
   - docs/videos/long-form/plans.json
-  - docs/videos/long-form/review.json
-  - docs/videos/long-form/review.md
   - apps/api/app/video_plans/data/catalog.json
 ---
 
@@ -46,6 +44,11 @@ The approved A21 brand-story plan says the 1970 patent description rules out raw
 Run `node tools/video/story-plans/validate.mjs --hash A21`, compare it with `reviews/A21.json.story_sha256`, then `node tools/video/story-plans/validate.mjs --only A21` and the full `node tools/video/story-plans/validate.mjs`; check the changed prose against patent paragraph beginning "The present packaging approach" and the court's 2004-formulation scope. `npm run check:tasks` and inspect the compiled diff.
 
 ## Notes
+
+2026-10-18 owner-authorized narrow transfer: the completed A21 derived-file
+review releases only `docs/videos/long-form/review.md` and `review.json` to
+the A01 duration task. Other scope and the unresolved board-close issue stay
+here; future A21 edits must reclaim the receipt paths if needed.
 
 Filed during the five-film work in `docs/videos/brand-stories-five-20261014/` after read-only QA. This is a factual correction in the existing approved story bank, not permission to change its release order or perform a production-host import. The original 2026-09-28 review repeats the mistaken inference in its change log; a new independent review must not silently reuse it.
 
