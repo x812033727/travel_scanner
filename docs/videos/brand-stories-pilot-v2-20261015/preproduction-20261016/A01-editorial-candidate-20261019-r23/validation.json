@@ -1,0 +1,59 @@
+{
+  "status": "OFFLINE_MECHANICAL_ONLY_HOLD_PENDING_R23_REVIEW",
+  "target_body_seconds": [
+    420,
+    480
+  ],
+  "scenes": 65,
+  "lines": 76,
+  "claims": 74,
+  "loops": 11,
+  "spoken_units": 1836,
+  "estimated_body_seconds_not_tts": {
+    "250": 510.8,
+    "275": 470.9,
+    "300": 436.3
+  },
+  "lint_errors": [],
+  "lint_warning_count": 33,
+  "lint_errors_at_300_cpm": [],
+  "cute_visual_errors": [],
+  "public_sources": 18,
+  "candidate_plan_sources": 23,
+  "proposed_plan_sources": 25,
+  "source_index_matches_claims": true,
+  "security_reveal_claim_bound_to_2012_interview": true,
+  "r22_manifest_sha256": "9ab4e2bca9411951e9471e414ec4170a3ed3d793d645ed9c5921cb941e12b33d",
+  "r22_fact_review_sha256": "8432218884329f8bd2978c0661658457c605d1d3e7eadcee209d3d0230b9b3ed",
+  "r22_blind_review_sha256": "a8bad7081b7c6e44ff116f41d21a0b005a85dca58fd91c8f72a36cde2e93bdbe",
+  "r22_findings_addressed_in_draft": [
+    "garage-action-misplaced-at-security",
+    "1989-operations-not-production",
+    "ad-narration-shortened",
+    "1993-test-narration-shortened"
+  ],
+  "changed_line_ids": [
+    "3zwf",
+    "kzmj",
+    "jspd",
+    "r3n02"
+  ],
+  "removed_line_ids": [
+    "393x"
+  ],
+  "changed_claim_ids": [
+    "n42"
+  ],
+  "changed_visual_prompt_scene_ids": [],
+  "changed_plan_fields": [
+    "chapters.turn.point",
+    "must_verify[4].claim"
+  ],
+  "measured_tts_and_cut": "NOT_RUN",
+  "independent_r23_fact_review": "NOT_RUN",
+  "independent_r23_blind_review": "NOT_RUN",
+  "six_chapter_host_bridge": "NOT_INSTALLED_OR_FORMALLY_REVIEWED",
+  "worker_claim_id_and_source_merge": "NOT_RUN",
+  "script_review_receipt": "NOT_ISSUED",
+  "host_import_or_paid_media": "NOT_RUN"
+}
