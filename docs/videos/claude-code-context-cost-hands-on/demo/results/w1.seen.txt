@@ -1,0 +1,33 @@
+InstructionsLoaded session_start Project CLAUDE.md
+PreToolUse by=main id=c1 Skill skill=release-prep keys=skill,args
+PostToolUse by=main id=c1 Skill skill=release-prep keys=skill,args | status=- response_chars=45
+PreToolUse by=main id=c2 Agent type=log-scout background=- prompt_chars=181
+SubagentStart agent=log-scout
+PostToolUse by=main id=c2 Agent type=log-scout background=- prompt_chars=181 | status=async_launched response_chars=615
+PreToolUse by=main id=c3 ToolSearch query=select:mcp__gear__find_gear,mcp__gear__low_stock
+PostToolUse by=main id=c3 ToolSearch query=select:mcp__gear__find_gear,mcp__gear__low_stock | status=- response_chars=143
+PreToolUse by=main id=c4 Read package.json
+PreToolUse by=log-scout id=c5 Glob .
+PostToolUse by=main id=c4 Read package.json | status=- response_chars=297
+PostToolUse by=log-scout id=c5 Glob . | status=- response_chars=158
+PreToolUse by=main id=c6 Read CHANGELOG.md
+PostToolUse by=main id=c6 Read CHANGELOG.md | status=- response_chars=386
+PreToolUse by=main id=c7 Read README.md
+PostToolUse by=main id=c7 Read README.md | status=- response_chars=320
+PreToolUse by=main id=c8 Read .claude/skills/release-prep/template.md
+PostToolUse by=main id=c8 Read .claude/skills/release-prep/template.md | status=- response_chars=267
+PreToolUse by=main id=c9 mcp__gear__find_gear {"code":"G-417"}
+PostToolUse by=main id=c9 mcp__gear__find_gear {"code":"G-417"} | status=- response_chars=48
+PreToolUse by=log-scout id=c10 Read logs/sync-2026-10-08.log
+PostToolUse by=log-scout id=c10 Read logs/sync-2026-10-08.log | status=- response_chars=583
+PreToolUse by=log-scout id=c11 Read logs/sync-2026-10-09.log
+PostToolUse by=log-scout id=c11 Read logs/sync-2026-10-09.log | status=- response_chars=626
+SubagentStop agent=log-scout
+PreToolUse by=main id=c12 Edit package.json
+PostToolUse by=main id=c12 Edit package.json | status=- response_chars=583
+PreToolUse by=main id=c13 Edit CHANGELOG.md
+PostToolUse by=main id=c13 Edit CHANGELOG.md | status=- response_chars=754
+PreToolUse by=main id=c14 Edit README.md
+PostToolUse by=main id=c14 Edit README.md | status=- response_chars=610
+PreToolUse by=main id=c15 Write releases/v1.2.1.md
+PostToolUse by=main id=c15 Write releases/v1.2.1.md | status=- response_chars=357

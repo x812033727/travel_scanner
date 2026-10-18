@@ -40,7 +40,7 @@
 | 旁白 | 現有 Gemini 3.8 Flash TTS（Sulafat＋頻道口音 style） | — | 約 US$0.81／小時 |
 | 角色配音 | Gemini TTS：30 個內建聲音配 style；之後用聲音設計拿持久的 `voice_…` id | MiniMax speech-2.8（情緒參數、聲音複製，沒有台灣腔）；Azure zh-TW 三個聲音沒有語氣 | 同旁白 |
 | 品檢（judge） | Gemini 視覺模型看圖與片段打分 | — | 依 token |
-| 背景音樂 | Gemini API 的 Lyria 3.5 | ElevenLabs Music（要新金鑰）、YouTube 音效庫（人工） | US$0.08／首 |
+| 背景音樂 | Gemini API 的 Lyria 3.5 | MiniMax music-3.0／music-2.6（`providers/minimax.py` 的 `MiniMaxMusic`，用 image-01 的同一把金鑰；官方 2026-08-20 起付費音樂 API 不再開放新用戶，之前沒買過音樂的帳號會被拒、工作以 key 錯誤失敗並寫明這條規則；2026-10-15 查官方頁。2026-10-16 正式站實測：music-3.0 與 music-2.6 都回 HTTP 410，當時工作只寫 `video_media_upstream_failed`「MiniMax answered HTTP 410」，看起來像重試會好；之後音樂端點的 410 一律當成這條規則，以 `video_media_upstream_rejected_key` 失敗、寫明要站主換提供者）、ElevenLabs Music（要新金鑰）、YouTube 音效庫（人工） | Lyria US$0.08／首、MiniMax US$0.15／首（最長 5 分鐘） |
 | 對嘴 | 第一版不做：旁白主導，對白用中景與反應鏡頭 | H3 音訊參考或 Kling lip-sync，只用在特寫 | — |
 
 一集 3 分鐘照 `.agents/skills/youtube-video/references/drama-craft.md` 的節奏（鏡頭長度中位數 2.5–3.5 秒）約 60 鏡。片段買的秒數不是鏡長，而是 `tools/video/media/clips.mjs` 的 `clipSeconds`：`veo-3.1*` 配 1080p 固定 8 秒；其他模型把鏡長進位成整秒、夾在 `MIN_CLIP_SECONDS` 4 與 `MAX_CLIP_SECONDS` 10 之間，再往上貼齊 `catalog.py` 該模型的 `durations`。60 鏡、每鏡 3 秒台詞、每鏡一次 take、每份素材一次 judge（US$0.01）：Veo 3.1 Lite 約 US$39（買 480 秒）、Omni 約 US$37（240 秒）、H3 約 US$32、Veo 3.1 全用約 US$193；關鍵影格含 judge 約 US$9；配音與音樂不到 US$1。重做到上限、每月額度與三條路線（伺服器 API、Hailuo 網頁、Kling）的比較在 `.agents/skills/animation-production/SKILL.md`「錢怎麼算」與 `.agents/skills/animation-production/references/cost-model.md`（2026-10-04 改；起草時的估算是 30 鏡、每鏡 6 秒、重做係數 1.5）。OpenAI Sora API 已於 2026-09-24 下架；MiniMax 的音樂 API 對新用戶停售。
@@ -61,7 +61,7 @@
 
 | 欄位 | 內容 |
 | --- | --- |
-| `look` | `{ preset?: cinematic-3d\|anime-2d\|ink-wash\|flat-explainer\|custom, style (≤600), negative?, motion?, candidates?: 2–4（預設 3）, style_frames?: string[] }`：全影片共用的風格提示詞 |
+| `look` | `{ preset?: cinematic-3d\|anime-2d\|ink-wash\|flat-explainer\|cute-cartoon\|cute-mystery\|custom, style (≤600), negative?, motion?, candidates?: 2–4（預設 3）, style_frames?: string[] }`：全影片共用的風格提示詞 |
 | `characters[]` | `{ id（小寫，不可是 narrator）, name, appearance（≤800，英文，給圖片模型）, voice（同 doc.voice 的物件）, sheet_prompt? }` |
 | 鏡頭場景 | `template: "shot"`，`data: { prompt (≤1000), camera?, motion?, negative?, characters?: [id]（≤3）, fit?: auto\|freeze\|slow\|trim, seed?, transition?: cut\|dissolve, start_frame?: { shot, at: "last" }, end_frame?: { prompt }, visual?: clip\|still, source?: { shot, from_s } }`；`visual` 預設 `clip`，`still` 不買片段，由 `assemble` 用關鍵影格加運鏡（下面「畫面等級與運鏡」）；`source` 從更早一個 clip 鏡頭的素材第 `from_s` 秒切進來，不畫關鍵影格、不買素材（下面「同一份素材切幾次」）；有角色、沒有時長下限、`category` 不是 anime 的漫劇，與政策有效的 `long-anime-v1` 長篇動畫，可用場景層的 `action_seconds`（1–8）加空 `lines` 寫沒有人說話的鏡頭（下面「沒有人說話的鏡頭」）；句子不能有 `reveal`。`title`／`chapter`／`outro` 卡片仍可用 |
 | 句子 | 多 `speaker?: narrator\|<角色 id>`（預設 narrator）與 `emotion?`（≤80，Gemini 併進 style；Azure 忽略並警告） |
@@ -202,6 +202,7 @@ node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --p
 
 - `totals.usd` 是這支影片已承諾的錢（伺服器記的 ＋ 還在預留的）；`capProblem` 比的就是它加上這一次，所以進行中與死掉留下的預留都擋得到，訊息會寫出其中多少是預留。`totals.reserved`／`reservations` 是其中預留的部分；舊帳本沒有 `reserved` 列，讀起來就是 0，其他欄位照舊。
 - judge：`Stage.judge` 先 `spend(JUDGE_USD_PER_CALL)` 過上限才問，回來才記；一次 US$0.01 不另外預留，程序在問到一半死掉最多少記一筆。
+- judge 與 locate 送出後沒等到回答時會再問，這是刻意接受的（2026-10-07-a-paid-media-judge-or-locate-call）。網站路由的 180 s 時限到了、或 API 在問到一半時重啟，路由回 502 `upstream_unavailable`；網站自己重啟時，工具收到的是 nginx 的 502 或斷線。`tools/video/media/client.mjs` 對每個 5xx、斷線與 `video_media_judge_failed`／`video_media_locate_failed` 都會再問，一次執行最多送 5 次；每一次都可能已經是一次 Gemini 呼叫（約 US$0.01），也都扣掉伺服器當月 judge 額度的一格（不退回）。沒答成的那幾次不會記進這支影片的帳本（`Stage.judge` 回來才記），單支上限看不到它們。重啟只讓當時在問的每個呼叫多一次；一直問不到的問題比較貴：工具以 exit 4 結束，worker 延後重跑，到 `DEFER_LIMIT`（6）之後的那一次才擋下，最壞是 7 次執行 × 5 次，約 35 次呼叫（約 US$0.35）。預設值下 API 自己的 Gemini 逾時（`video_speech_gemini_timeout_seconds`，150 s）比路由固定的 180 s 早到，回 `video_media_judge_failed`，結果一樣是再問；這個設定可以調到 280 s，調過約 180 s 之後，每個慢的呼叫都會先撞上路由時限再被重問。不像語音（`video_speech_answer_lost`）那樣停下來等站主：那樣每掉一次回答就要把影片擋下來等站主（exit 3），而這種事件少、每次代價小。
 - `clips import --usd N`（N > 0）：先讀 `status` 拿上限、過 `spend`，以 `import:<shot>:<sha256>` 為 key 預留，`--judge` 的那一次 judge 看得到這筆；`bookImport` 用匯入列取代預留，沒記成就放掉。沒有 `--force` 可以越過上限。
 - 估價：`node .agents/skills/animation-production/scripts/episode_estimate.mjs <video.json> --workdir <VIDEO_WORKDIR>/<slug>`（或 `--ledger <檔>`）印「已花、預留、上限還剩」，裁定比的是最壞情況對剩餘；`--json` 多 `ledger` 與 `verdict.remaining_usd`。沒給就當還沒花錢。
 - 不管的：伺服器的月額度照舊由 `meter.py` 預留與退回，這裡只是單支的視角；`run_report.mjs` 把留下來的 `reserved` 當花費列出（它讀 `cost_usd`），對帳後自然消失。

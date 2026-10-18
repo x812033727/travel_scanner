@@ -1,0 +1,13 @@
+// Source template only: this .example file is not a discovered or runnable test.
+// In an authorized environment, copy it to counter.test.ts in an external demo workspace.
+// Intended for `claude plugin test` on a supported version after that preparation.
+// Not executed locally; no passing result is claimed.
+import { expect, test } from "claude-code/testing";
+
+test("tally follows two stubbed tool events", async ($, on) => {
+  on("tool.call", () => ({ result: "fixture response; no tool executed" }));
+  await $.tool.call({ tool: "Read", file_path: "demo-one.txt" });
+  await $.tool.call({ tool: "Read", file_path: "demo-two.txt" });
+  const response = await $.command.run({ command: "tally", args: "" });
+  expect(response.text).toBe("Tool calls since load: 2");
+});

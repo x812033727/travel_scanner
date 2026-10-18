@@ -511,7 +511,14 @@ def assemble(
             selected = list(LOCALES)
         if not selected:
             raise ValueError(f"Article has no reviewed changes to import: {slug}")
-        pack = ArticlePack.model_validate({**article["metadata"], "locales": documents})
+        # Older baselines pin core database metadata but omit pack-only fields
+        # such as aliases, related and news_date. Preserve these from the already
+        # hash-verified repository pack; explicitly pinned baseline values retain
+        # precedence. Localization must not clear unrelated editor metadata.
+        repository_metadata = repository_pack.model_dump(mode="json", exclude={"locales"})
+        pack = ArticlePack.model_validate(
+            {**repository_metadata, **article["metadata"], "locales": documents}
+        )
         if preservations and pack.model_dump(mode="json") != repository_pack.model_dump(mode="json"):
             raise ValueError(
                 f"Assembled pack differs from preservation-pinned repository pack: {slug}"

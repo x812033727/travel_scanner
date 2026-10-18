@@ -1,9 +1,12 @@
-"""Candidate topics for the next draft: the site's own recent articles first, then the web.
+"""Candidate topics for the next draft: the site's own recent articles first, then official
+pages the site wrote nothing about, then the web.
 
 The owner chose on 2026-09-25 to start from what the site has already published and checked
-(the hourly news and the lifestyle articles), and to fill the gaps with a Brave search. The
-planner model picks among these against the topic scope and the list to avoid; this module
-only gathers them.
+(the hourly news and the lifestyle articles), and to fill the gaps with a Brave search. On
+2026-10-10 the owner asked for official updates and how-to posts as well: the news scanner
+already reads those pages, and the ones its writer declines as not newsworthy are offered
+here. The planner model picks among these against the topic scope and the list to avoid;
+this module only gathers them.
 """
 
 from __future__ import annotations
@@ -11,6 +14,7 @@ from __future__ import annotations
 from datetime import UTC, date, datetime, timedelta
 from typing import Any
 from urllib.parse import urlparse
+from uuid import UUID
 
 import httpx
 from redis.asyncio import Redis
@@ -20,11 +24,20 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import Settings
 from app.guides.models import GuideArticle, GuideArticleLocale, GuideSearchEntry
 from app.hotspots.guides import consume_search_budget
+from app.news_automation.feeds import summary_is_evidence
+from app.news_automation.models import NewsCandidate, NewsEvidence, NewsSource
 from app.video_automation.models import VideoAutomationSettings
 from app.video_automation.schemas import TopicsOut, TopicView
 
 SITE_DAYS = 14
 SITE_LIMIT = 60
+OFFICIAL_DAYS = 14
+OFFICIAL_LIMIT = 20
+# A news source opts in with this key in its config (apps/api/app/news_automation/sources.json).
+# There is no setting for it: no source carries the key until the owner loads one that does.
+OFFICIAL_KEY = "video_topics"
+# What the news pipeline records when its writer answers "not newsworthy" (pipeline.py).
+NOT_NEWSWORTHY = "news_not_eligible"
 # Each topic word is one Brave query; they share the guide search's daily Brave budget.
 SEARCH_QUERIES = 5
 SEARCH_RESULTS = 10
@@ -97,6 +110,80 @@ async def site_article(session: AsyncSession, slug: str) -> TopicView | None:
         return None
     found, news_date, entry = row
     return _topic(found, news_date, entry)
+
+
+async def official_topics(
+    session: AsyncSession, now: datetime | None = None
+) -> tuple[list[TopicView], list[str]]:
+    """First-party pages the news writer declined in the last two weeks, from the news
+    sources that opt in.
+
+    An official story the site reported is a site article and comes through ``site_topics``.
+    An official how-to post is no news story, so no article is written; this is the only way
+    the planner sees it. The rows are the writer's own "not newsworthy" with no person
+    involved (the predicate of ``backfill_cli.refetch_pool``): a candidate still in the
+    pipeline, held for review, or rejected by the owner is not offered.
+
+    A topic's date is the page's own publication date. A source without dates (an HTML
+    listing) gives none: the day the scanner first saw the link says nothing about how
+    old the page is, and a listing can bring an old post into view. The two weeks are
+    counted from that first sight either way.
+    """
+    opted_in = [
+        source
+        for source in await session.scalars(
+            select(NewsSource).where(
+                NewsSource.enabled.is_(True), NewsSource.is_first_party.is_(True)
+            )
+        )
+        if (source.config_json or {}).get(OFFICIAL_KEY) is True
+    ]
+    notes: list[str] = []
+    names: dict[UUID, str] = {}
+    for source in opted_in:
+        if summary_is_evidence(source):
+            # Every entry is an anchor on one shared page. The worker would read that page
+            # from its top (tools/video/automation/fetch.mjs: the first MAX_PAGE_CHARS, or
+            # nothing when the page is past MAX_PAGE_BYTES, as the Claude Code changelog
+            # is), not the entry the topic names.
+            notes.append(f"「{source.name}」每一則都指向同一個共用頁面，工人讀不到那一則，不當題目")
+        else:
+            names[source.id] = source.name
+    if not names:
+        return [], notes
+    since = (now or datetime.now(UTC)) - timedelta(days=OFFICIAL_DAYS)
+    rows = await session.execute(
+        select(NewsCandidate, NewsEvidence.excerpt)
+        .outerjoin(
+            NewsEvidence,
+            (NewsEvidence.candidate_id == NewsCandidate.id)
+            & (NewsEvidence.url == NewsCandidate.canonical_url),
+        )
+        .where(
+            NewsCandidate.source_id.in_(list(names)),
+            NewsCandidate.status == "rejected",
+            NewsCandidate.error_code == NOT_NEWSWORTHY,
+            NewsCandidate.human_decision.is_(None),
+            NewsCandidate.created_at >= since,
+        )
+        .order_by(NewsCandidate.created_at.desc())
+        .limit(OFFICIAL_LIMIT)
+    )
+    topics = [
+        TopicView(
+            source="official",
+            title=f"{names[candidate.source_id]}｜{candidate.source_title}"[:300],
+            summary=" ".join((excerpt or "").split())[:500],
+            url=candidate.canonical_url,
+            date=(
+                candidate.source_published_at.date().isoformat()
+                if candidate.source_published_at
+                else None
+            ),
+        )
+        for candidate, excerpt in rows
+    ]
+    return topics, notes
 
 
 async def search_topics(
@@ -172,9 +259,14 @@ async def gather_topics(
         topics.extend(await site_topics(session))
     else:
         notes.append("設定關閉了站上文章這個來源")
+    official, official_notes = await official_topics(session)
+    topics.extend(official)
+    notes.extend(official_notes)
     if row.topic_from_search:
         found, search_notes = await search_topics(runtime, redis, list(row.topic_scope), client)
-        topics.extend(found)
+        # The official page itself is the better entry for a result that is the same page.
+        listed = {topic.url for topic in official}
+        topics.extend(topic for topic in found if topic.url not in listed)
         notes.extend(search_notes)
     else:
         notes.append("設定關閉了 Brave 搜尋這個來源")

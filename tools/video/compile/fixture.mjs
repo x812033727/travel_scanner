@@ -66,7 +66,7 @@ export function compilationSandbox({ episodes = EPISODES, titles = TITLES, numbe
   });
   // The planner's work, when the test starts past it: the title, description, tags and thumbnail.
   const doc = planned
-    ? { ...built, youtube: { ...built.youtube, title: "仙門風雲 全集：第一部完整版", description: "第一部的每一集，接連著看。", tags: ["仙俠", "AI漫劇"], ...youtube }, thumbnail: { template: "thumb", data: { headline: "仙門風雲 全集", tag: "第一部", shot: THUMB_SHOT } } }
+    ? { ...built, youtube: { ...built.youtube, title: "仙門風雲 全集：第一部完整版", description: "第一部的每一集，接連著看。", tags: ["仙俠", "AI漫劇"], ...youtube }, thumbnail: { template: "thumb", data: { headline: "仙門風雲\n全集", tag: "第一部", shot: THUMB_SHOT } } }
     : { ...built, youtube: { ...built.youtube, ...youtube } };
   writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(doc, null, 2)}\n`);
   atomicWrite(path.join(box.dir, "compilation.json"), JSON.stringify({ spoiler_context: { mysteries: [], reveal_schedule: [], setting_md: "", outline_md: "" } }));

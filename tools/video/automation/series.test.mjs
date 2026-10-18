@@ -16,15 +16,16 @@ import { resolveLook } from "../core/drama.mjs";
 import { planRequests } from "../tts/requests.mjs";
 import { AutomationError, automationClient, RUN_PENDING } from "./client.mjs";
 import { answerProblem, discussStep, documentDiscussionPayload, parseSubject, revisedDocumentProblem, unusableReply } from "./discuss.mjs";
-import { Automation, automatedVideos, PENDING_RECHECK_MS, settle } from "./flow.mjs";
+import { Automation, automatedVideos, DEFER_LIMIT, DEFER_MAX_MS, PENDING_RECHECK_MS, settle } from "./flow.mjs";
 import { instructionsFor, SERIES_INSTRUCTIONS } from "./prompts.mjs";
+import { canonicalJson } from "./run-receipts.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { scriptCheckBinding, scriptCheckMatches } from "../core/script-check.mjs";
 import { craftChecks } from "../core/craft.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { lintCompilation } from "../core/compilation.mjs";
 import { compilationSlug } from "./compilation.mjs";
-import { castFrom, chapterRange, documentPayload, documentProblem, documentVariant, episodeBrief, episodeSlug, isExplainerOneOff, isOneOff, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
+import { castFrom, chapterRange, documentInputs, documentKey, documentPayload, documentProblem, documentVariant, episodeBrief, episodeSlug, isExplainerOneOff, isOneOff, LOST_DOCS, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { checkBrief } from "../core/lint.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -301,6 +302,148 @@ test("a series step finds nothing on a site without the route, and nothing while
   assert.equal(await seriesStep(gone), null);
 });
 
+/** A stage run sent and its answer lost, as the web route answers it (client.mjs RUN_UNCERTAIN): it may have run. */
+const lostAnswer = () => Response.json({ code: "video_ai_run_uncertain", detail: "no answer within the deadline" }, { status: 504 });
+const LOST_WHY = "HTTP 504: no answer within the deadline";
+
+/**
+ * The fake site naming `named.job` on every series/next, as the site does while a document waits
+ * (the job moves on only when the owner or a filed version moves it). `fail` answers a stage run
+ * instead of the fake site when it returns something (or throws, as a connection does); `runs` is
+ * every stage run sent. `round()` is a new run of `auto`'s first lane, and no draft is due.
+ */
+function documentJobs(named, { answers = {}, fail = () => null, decide = null } = {}) {
+  const box = sandbox();
+  const site = fakeSite({ answers, decide });
+  const runs = [];
+  const fetchImpl = async (url, init = {}) => {
+    const { pathname } = new URL(url);
+    if (pathname === "/api/video/automation/series/next") return Response.json({ job: named.job });
+    if (pathname === "/api/video/automation/run") {
+      const body = JSON.parse(init.body);
+      runs.push(`${body.stage}:${body.variant ?? ""}`);
+      const failed = fail(body);
+      if (failed) return failed;
+    }
+    return site.fetchImpl(url, init);
+  };
+  const { ctx, out } = context(box, fetchImpl, { now: Date.parse("2026-09-27T03:00:00Z") });
+  writeFileSync(path.join(box.work, "auto-state.json"), JSON.stringify({ last_draft_at: "2026-09-27T00:00:00Z" }));
+  const round = () => {
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    return automation;
+  };
+  return { box, site, runs, out, round, lostFile: (slug) => path.join(box.work, "_series", slug, LOST_DOCS) };
+}
+
+test("a series document whose planner answer was lost is not planned again on its own: the round goes on, the rounds after it hold the document, and the owner's change of the series plans it once", async () => {
+  const named = { job: job("setting") };
+  let losing = true;
+  const server = documentJobs(named, { answers: { "planner:setting": () => SETTING }, fail: () => (losing ? lostAnswer() : null) });
+  // The same series' kept discussion reply (discuss.mjs discussion-answer.json) is another file,
+  // which the hold leaves alone.
+  const threads = path.join(server.box.work, "_series", "wenjian", "discussion-answer.json");
+  const notes = `${JSON.stringify({ message_id: "m-bible-1", body: { reply_md: "已改", revised: null } }, null, 2)}\n`;
+  mkdirSync(path.dirname(threads), { recursive: true });
+  writeFileSync(threads, notes);
+
+  // Before: the error left the step, `auto` exited 4 every round ahead of the drama and slides
+  // requests, the drafts and the Shorts, and every round paid for the planner again.
+  const first = server.round();
+  assert.equal(await first.step(), `series wenjian: the planner's answer for the setting book may have run on the server without reaching the worker (${LOST_WHY}); it is not asked again on its own, and this series (and the ones after it) wait for the owner`);
+  assert.deepEqual([first.halted, server.runs, server.site.calls.docs], [false, ["planner:setting"], []], "the lane goes on, nothing is filed");
+  const saved = readJson(server.lostFile("wenjian"));
+  assert.deepEqual(saved, { "setting:0:first": { kind: "setting", chapter: 0, previous_version: null, stage: "planner", variant: "setting", inputs: documentInputs(named.job), at: "2026-09-27T03:00:00.000Z", why: LOST_WHY } });
+  assert.equal(await first.step(), null, "the site names the same job: it is not asked again, and the lane goes on past the series");
+  for (let round = 0; round < 2; round++) {
+    const later = server.round();
+    assert.equal(await later.step(), null, `round ${round + 2}`);
+    assert.equal(await later.step(), null);
+  }
+  assert.deepEqual(server.runs, ["planner:setting"], "one planner request, however many rounds");
+  const held = server.out.stdout.split("\n").filter((line) => line.startsWith("series wenjian: the setting book is not planned again"));
+  assert.equal(held.length, 2, "said once a run, in each run after the loss");
+  assert.equal(held[0], `series wenjian: the setting book is not planned again: the planner's answer was lost at 2026-09-27T03:00:00.000Z (${LOST_WHY}) and the model may have run; it waits for the owner (a changed note, premise, title or hands-off switch, a line on a rejected version, or the series withdrawn before any episode and filed again), and the series after it wait too`);
+  assert.equal(readFileSync(threads, "utf8"), notes, "the kept discussion reply is untouched");
+
+  // The owner changes the series: one new request, the document is filed, and the hold is gone.
+  losing = false;
+  named.job = job("setting", { series: { ...SERIES, note: "旁白快一點" } });
+  assert.match(await server.round().step(), /^series wenjian: the setting book planned \(version 1\); it waits for the owner on \/admin\/videos$/);
+  assert.deepEqual([server.runs, server.site.calls.docs.length], [["planner:setting", "planner:setting"], 1]);
+  assert.deepEqual(readJson(server.lostFile("wenjian")), {});
+});
+
+test("a rewrite whose planner answer was lost is held under the version it rewrites; once the site names another version's rewrite, that is a new request and the old hold is dropped", async () => {
+  const rejected = (id, version) => ({ id, kind: "chapter", chapter_number: 1, version, body_md: `# v${version}`, body_json: CHAPTER.body_json, status: "rejected", note: "第三集再緊一點", decided_at: null, created_at: "2026-09-27T00:00:00Z" });
+  const named = { job: job("chapter", { previous: rejected("d1", 1), rewrites_left: 2 }) };
+  let losing = true;
+  const server = documentJobs(named, { answers: { "planner:chapter": () => CHAPTER }, fail: () => (losing ? lostAnswer() : null) });
+  assert.match(await server.round().step(), /^series wenjian: the planner's answer for chapter 1's outline may have run on the server without reaching the worker/);
+  assert.deepEqual(Object.keys(readJson(server.lostFile("wenjian"))), ["chapter:1:d1"]);
+  assert.equal(readJson(server.lostFile("wenjian"))["chapter:1:d1"].previous_version, 1);
+  assert.equal(await server.round().step(), null);
+  assert.equal(server.runs.length, 1);
+  // The owner's line on the chapter filed a version 2, and the owner sent that back too: another rewrite.
+  losing = false;
+  named.job = job("chapter", { previous: rejected("d2", 2), rewrites_left: 1 });
+  assert.match(await server.round().step(), /^series wenjian: chapter 1's outline rewritten from the owner's note \(version 1\)/);
+  assert.deepEqual(server.runs, ["planner:chapter", "planner:chapter"]);
+  assert.deepEqual(readJson(server.lostFile("wenjian")), {}, "the hold on version 1's rewrite is dropped");
+});
+
+test("a document job's key names the version it rewrites, and its inputs hash what the owner decides, not what the worker moves", () => {
+  assert.equal(documentKey(job("setting")), "setting:0:first");
+  assert.equal(documentKey(job("chapter", { chapter_number: 3 })), "chapter:3:first");
+  assert.equal(documentKey(job("outline", { previous: { id: "d7", version: 2, note: "再緊一點" } })), "outline:0:d7");
+  const base = job("chapter", {
+    previous: { id: "d1", kind: "chapter", chapter_number: 1, version: 1, body_md: "# v1", body_json: {}, status: "rejected", note: "第三集再緊一點" },
+    context: { ...job("chapter").context, setting: { id: "s1", version: 1, ...SETTING }, outline: { id: "o1", version: 2, body_md: "# 總綱", body_json: {} } },
+  });
+  const hash = documentInputs(base);
+  assert.match(hash, /^[0-9a-f]{64}$/);
+  const moved = structuredClone(base);
+  Object.assign(moved.series, { episodes_done: 4, episodes_started: 5, episodes_ready: 3, docs_pending: 1, status: "chapters", media_usd: 12.5, clip_seconds: 300, updated_at: "2026-10-01T00:00:00Z" });
+  Object.assign(moved.context, { recaps: [{ number: 4, recap: "鐘又響了" }], episodes: [{ number: 1, status: "done" }], mysteries: [] });
+  moved.rewrites_left = 1;
+  assert.equal(documentInputs(moved), hash, "the worker's own progress never releases a held document");
+  for (const change of [
+    (each) => (each.series.premise = "兩個少年在正道與魔道之間，各自背叛"),
+    (each) => (each.series.note = "旁白快一點"),
+    (each) => (each.series.hands_off = true),
+    (each) => (each.previous.note = "第五集也要更緊"),
+    (each) => (each.context.setting.id = "s2"),
+    (each) => (each.context.outline.version = 3),
+    // Withdrawn and filed again under the same slug and the same facts: a new series row, a new request.
+    (each) => Object.assign(each.series, { id: "7f2b3c4d-5e6f-4a71-8b9c-0d1e2f3a4b5c", created_at: "2026-10-08T00:00:00Z" }),
+  ]) {
+    const changed = structuredClone(base);
+    change(changed);
+    assert.notEqual(documentInputs(changed), hash, String(change));
+  }
+});
+
+test("a planner request that lost no answer is not held: a refusal of the model service's, the limiter, an API never reached and a connection never made leave the step as before, and the next round asks again", async (t) => {
+  for (const [label, fail, code] of [
+    ["the model service refused it", () => Response.json({ code: "video_ai_upstream_failed", detail: "模型服務拒絕了這個請求（HTTP 400）" }, { status: 502 }), "video_ai_upstream_failed"],
+    ["the limiter could not count it", () => Response.json({ code: "rate_limit_unavailable", detail: "限流暫時無法使用" }, { status: 503 }), "rate_limit_unavailable"],
+    ["the web route never reached the API", () => Response.json({ code: "upstream_unavailable", detail: "API 無法連線" }, { status: 502 }), "upstream_unavailable"],
+    ["the connection was never made", () => { throw Object.assign(new TypeError("fetch failed"), { cause: { code: "ECONNREFUSED" } }); }, "network"],
+  ]) {
+    await t.test(label, async () => {
+      const server = documentJobs({ job: job("setting") }, { fail });
+      const settled = (error) => error instanceof AutomationError && error.code === code;
+      await assert.rejects(server.round().step(), settled);
+      const sent = server.runs.length;
+      assert.ok(sent >= 1);
+      assert.equal(existsSync(server.lostFile("wenjian")), false, "nothing is recorded as lost");
+      await assert.rejects(server.round().step(), settled);
+      assert.ok(server.runs.length > sent, "nothing ran or the API settled it: the next round asks again");
+    });
+  }
+});
+
 test("an episode is started from the chapter outline, written from the cast word for word, checked for its beats, and read by the owner before the sheets", async () => {
   const box = sandbox();
   const slug = "wenjian-e001";
@@ -516,8 +659,11 @@ test("the worker drafts an episode with the looks that cover it, in series.json 
   const cast = {};
   for (const number of [1, 2]) {
     const slug = episodeSlug("wenjian", number);
-    await automation.draftEpisode({ id: `r${number}`, slug, title: "", premise: SERIES.premise, target_minutes: 3 }, { series: SERIES, setting, episodes: [], recaps: [], mysteries: [] }, { ...beats(number), chapter_number: 1, beats: beats(number) });
+    await automation.draftEpisode({ id: `r${number}`, slug, title: "", premise: SERIES.premise, target_minutes: 3 }, { series: { ...SERIES, image_model: "gemini-3.1-flash-image" }, setting, episodes: [], recaps: [], mysteries: [] }, { ...beats(number), chapter_number: 1, beats: beats(number) });
     cast[number] = readJson(path.join(box.root, "docs", "videos", slug, "series.json")).characters.find((character) => character.id === "shen-lan");
+    // A long series whose row names an image model still writes no key: the key alone would wrap
+    // every image cache key, and its episodes would stop reusing the series' character sheets.
+    assert.equal(Object.hasOwn(readJson(path.join(box.root, "docs", "videos", slug, "series.json")), "image_model"), false, `episode ${number}: no image_model key for a long series`);
     assert.equal(readFileSync(path.join(box.root, "docs", "videos", slug, "brief.md"), "utf8").includes(loose), number === 2, `episode ${number}'s brief`);
   }
   assert.equal(cast[1].appearance, CAST[0].appearance);
@@ -975,23 +1121,34 @@ test("a line on a screenplay waits while the video's writer is still running on 
  * which take what the worker reports. `round()` is a new run of `auto`: its own client, and two
  * lanes that share what cli.mjs shares.
  */
-function durableDiscussion({ site, ctx, box }, { waiting = [], listed = [] } = {}) {
+function durableDiscussion({ site, ctx, box }, { waiting = [], listed = [], setup = null } = {}) {
   // No scheduled draft takes the place a blocked video leaves: these tests are about the video there is.
   Object.assign(site.settings, { durable_stage_runs: true, max_waiting_drafts: 0 });
   const jobs = new Map();
   const lost = new Map();
   const submitted = [];
+  let refusing = null;
+  let failing = null;
+  const refusedRuns = new Map();
   const view = ({ request: _request, ...job }) => job;
   const fetch = async (url, init = {}) => {
     const { pathname } = new URL(url);
     if (pathname === "/api/video/automation/videos") return Response.json(listed);
     if (pathname === "/api/video/automation/series/messages/next") return Response.json({ job: waiting[0] ?? null });
-    if (pathname.endsWith("/answer")) waiting.shift();
+    if (pathname.endsWith("/answer")) {
+      if (refusing) return Response.json(refusing.body, { status: refusing.status });
+      waiting.shift();
+    }
+    if (pathname === "/api/video/automation/run" && init.method === "POST") {
+      const { stage, variant } = JSON.parse(init.body);
+      const refused = refusedRuns.get(`${stage}:${variant ?? ""}`);
+      if (refused) return Response.json(refused.body, { status: refused.status });
+    }
     if (pathname === "/api/video/automation/run/jobs") {
       const { request_key: key, ...request } = JSON.parse(init.body);
       if (!jobs.has(key)) {
         submitted.push(`${request.stage}:${request.variant ?? ""}`);
-        jobs.set(key, { id: key, request_key: key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: "anthropic", model: "claude-sonnet-5", status: "running", result: null, error_code: null, error_detail: null, error_status: null, retry_after: null, request });
+        jobs.set(key, { id: key, request_key: key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: "anthropic", model: "claude-sonnet-5", status: "running", result: null, error_code: null, error_detail: null, error_status: null, retry_after: null, request, ...(failing ?? {}) });
       }
       return Response.json(view(jobs.get(key)));
     }
@@ -1016,6 +1173,7 @@ function durableDiscussion({ site, ctx, box }, { waiting = [], listed = [] } = {
     return [false, true].map((secondary) => {
       const lane = new Automation(run, api, site.settings, { ...shared, secondary });
       lane.refs = smallRefs;
+      setup?.(lane);
       return lane;
     });
   };
@@ -1031,8 +1189,33 @@ function durableDiscussion({ site, ctx, box }, { waiting = [], listed = [] } = {
       Object.assign(job, { status: "succeeded", result: await answer.json() });
     },
     lose: (job, status, body) => lost.set(job.id, { status, body }),
+    // The site's answer route refuses every answer until it is called with nothing.
+    refuseAnswers: (status = null, body = {}) => { refusing = status ? { status, body } : null; },
+    // Every durable job sent from now on comes back as these fields say, until called with nothing.
+    failJobs: (fields = null) => { failing = fields; },
+    // A plain (not durable) run of this stage and variant is refused, until called with no status.
+    refuseRuns: (key, status = null, body = {}) => (status ? refusedRuns.set(key, { status, body }) : refusedRuns.delete(key)),
   };
 }
+
+/** A round as `auto` drives its first lane (cli.mjs): units until nothing moves or the lane halts. */
+async function roundLines(server) {
+  const [first] = await server.round();
+  const said = [];
+  for (let unit = 0; unit < 40; unit++) {
+    const line = await first.step();
+    if (!line) break;
+    said.push(line);
+    if (first.halted) break;
+  }
+  return said;
+}
+
+/** The video of screenplayAtTheGate as /admin/videos lists it, taking what the worker reports. */
+const listedVideo = (slug) => ({ slug, title: slug, stage: "script", checklist: [], dropped_at: null, dropped_note: null, youtube_video_id: null, retry_request_id: null, retry_acknowledged_id: null });
+
+/** The owner presses retry on the video's card. */
+const ownerRetries = (listed, request) => Object.assign(listed, { retry_request_id: request, retry_acknowledged_id: null });
 
 const STILL_RUNNING = "wenjian-e001: writer is still running; its saved receipt will be checked next round";
 
@@ -1135,6 +1318,250 @@ test("a discussion's saved writer job the server no longer has blocks its video 
   await server.finish(server.running().at(-1));
   assert.deepEqual(await lines(), ["wenjian-e001: the writer answered the owner on script:1"]);
   assert.deepEqual([site.calls.answers.map((answer) => answer.id), waiting.length, server.submitted.length], [[asked.message.id], 0, 2]);
+});
+
+test("a discussion whose writer answer was lost blocks its video as uncertain:writer once instead of ending every round; the line waits, and the owner's retry sends it exactly once more", async () => {
+  const gate = await screenplayAtTheGate();
+  const { slug, episode, site, out, state } = gate;
+  const asked = messageJob("script:1", "沈瀾為什麼不回答？", { series: SERIES, episode });
+  const waiting = [asked];
+  const listed = listedVideo(slug);
+  const server = durableDiscussion(gate, { waiting, listed: [listed] });
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  const [original] = server.journals(slug);
+  // The model's answer was lost after the job was dispatched: the server keeps it as uncertain, with no answer to fetch.
+  Object.assign(server.running()[0], { status: "uncertain", error_code: "video_ai_job_uncertain", error_detail: "the gateway lost the answer", error_status: 409 });
+
+  // Before: RUN_UNCERTAIN left the discussion step as an exception, every round, ahead of the
+  // series and the drafts; no video was blocked, so no retry could set the journal aside.
+  const reason = "writer (the owner's line on script:1) may have run on the server without its answer reaching the worker (the gateway lost the answer); it is not asked again until the owner retries";
+  assert.deepEqual(await roundLines(server), [`${slug}: blocked — ${reason}`]);
+  assert.deepEqual([state().status, state().blocked, state().blocked_kind, state().blocked_line], ["blocked", reason, "uncertain:writer", asked.message.id]);
+  assert.deepEqual([listed.stage, listed.checklist[0].key], ["blocked", "blocked"], "the owner reads it on the card");
+  assert.deepEqual([server.journals(slug).length, server.submitted.length, site.calls.answers.length, waiting.length], [1, 1, 0, 1], "the journal stays, and the owner is not told there is no screenplay");
+  assert.deepEqual(await roundLines(server), [], "a round later nothing is thrown, sent or answered");
+  assert.deepEqual([server.submitted.length, site.calls.answers.length, waiting.length], [1, 0, 1]);
+  assert.ok(out.stdout.includes(`${slug}: the owner's line on script:1 waits; its video is blocked until the owner's retry sets aside the writer run whose answer was lost, and the line is answered after it\n`));
+
+  // The owner's retry sets the uncertain journal aside, and the line is sent once more.
+  const request = "8b3c0d2e-4f5a-4b6c-9d7e-1f2a3b4c5d6e";
+  ownerRetries(listed, request);
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  assert.equal(server.journals(slug, "archive")[0].request_key, original.request_key);
+  assert.deepEqual([state().status, state().blocked_kind, state().blocked_line, listed.retry_acknowledged_id], ["active", undefined, undefined, request]);
+  assert.deepEqual(server.submitted, ["writer:discuss", "writer:discuss"], "exactly one new discussion request");
+  await server.finish(server.running().at(-1));
+  assert.deepEqual(await roundLines(server), [`${slug}: the writer answered the owner on script:1`]);
+  assert.deepEqual([site.calls.answers.map((answer) => answer.id), waiting.length, server.submitted.length], [[asked.message.id], 0, 2]);
+});
+
+test("a discussion whose writer request the site refuses blocks its video with the reason and holds the line until the owner's retry; a busy service defers the video and the line waits with it", async (t) => {
+  await t.test("refused", async () => {
+    const gate = await screenplayAtTheGate();
+    const { slug, episode, site, state } = gate;
+    const asked = messageJob("script:1", "沈瀾為什麼不回答？", { series: SERIES, episode });
+    const waiting = [asked];
+    const listed = listedVideo(slug);
+    const server = durableDiscussion(gate, { waiting, listed: [listed] });
+    assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+    Object.assign(server.running()[0], { status: "failed", error_code: "video_ai_project_dropped", error_status: 409, error_detail: "這支影片的專案已經放棄" });
+    const reason = "the site refused the writer request for the owner's line on script:1 (video_ai_project_dropped): 這支影片的專案已經放棄";
+    assert.deepEqual(await roundLines(server), [`${slug}: blocked — ${reason}`]);
+    assert.deepEqual([state().status, state().blocked, state().blocked_kind, state().blocked_line], ["blocked", reason, undefined, asked.message.id]);
+    assert.deepEqual(await roundLines(server), [], "the line is held, not answered with 'no screenplay here'");
+    assert.deepEqual([server.submitted.length, site.calls.answers.length, waiting.length], [1, 0, 1]);
+    ownerRetries(listed, "9c4d1e3f-5a6b-4c7d-8e9f-2a3b4c5d6e7f");
+    assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+    assert.deepEqual([state().status, state().blocked_line], ["active", undefined]);
+    assert.deepEqual(server.submitted, ["writer:discuss", "writer:discuss"], "sent once more after the retry");
+  });
+
+  // A job the server failed before it reached the model (a queue that lost it): asking later may
+  // go through. A vendor that is busy after dispatch ends as uncertain instead, like the case above.
+  const BEFORE_DISPATCH = { status: "failed", error_code: "video_ai_job_interrupted_before_dispatch", error_status: 409, error_detail: "工作在派送前中斷" };
+  const DEFERRED = (slug) => new RegExp(`^${slug}: the writer request for the owner's line on script:1 could not finish \\(video_ai_job_interrupted_before_dispatch: 工作在派送前中斷\\); deferred until `);
+
+  await t.test("failed before dispatch", async () => {
+    const gate = await screenplayAtTheGate();
+    const { slug, episode, site, ctx, state } = gate;
+    const asked = messageJob("script:1", "沈瀾為什麼不回答？", { series: SERIES, episode });
+    const waiting = [asked];
+    const server = durableDiscussion(gate, { waiting, listed: [listedVideo(slug)] });
+    assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+    Object.assign(server.running()[0], BEFORE_DISPATCH);
+    const [lane] = await server.round();
+    assert.match(await lane.step(), DEFERRED(slug));
+    assert.equal(lane.halted, false, "the round goes on without ending");
+    assert.equal(await lane.step(), null);
+    assert.deepEqual([state().status, state().defer_count, state().blocked_line, state().line_defers], ["active", 1, undefined, { id: asked.message.id, count: 1, shared: 0 }]);
+    assert.deepEqual(await roundLines(server), [], "the line waits with its video");
+    assert.deepEqual([server.submitted.length, site.calls.answers.length, waiting.length], [1, 0, 1]);
+    await ctx.sleep(DEFER_MAX_MS);
+    assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+    assert.deepEqual(server.submitted, ["writer:discuss", "writer:discuss"], "asked once more once the wait is over");
+  });
+
+  await t.test("never getting through", async () => {
+    const gate = await screenplayAtTheGate();
+    const { slug, episode, site, ctx, state } = gate;
+    const asked = messageJob("script:1", "沈瀾為什麼不回答？", { series: SERIES, episode });
+    const waiting = [asked];
+    const listed = listedVideo(slug);
+    const server = durableDiscussion(gate, { waiting, listed: [listed] });
+    server.failJobs(BEFORE_DISPATCH);
+    // Before: the video's own visit after each wait ended the row of deferrals (moved), so the line
+    // was deferred at 1 for ever, sent again every wait, and never reached the card.
+    for (let tries = 1; tries <= DEFER_LIMIT; tries++) {
+      const [line] = await roundLines(server);
+      assert.match(line, DEFERRED(slug));
+      assert.equal(state().defer_count, tries, `the row grows: ${tries}`);
+      if (tries >= 2) assert.ok(listed.checklist.some((row) => row.key === "deferred"), "the card shows the wait");
+      await ctx.sleep(DEFER_MAX_MS);
+    }
+    const [blocked] = await roundLines(server);
+    assert.match(blocked, new RegExp(`^${slug}: blocked — still could not move after ${DEFER_LIMIT + 1} tries: the writer request for the owner's line on script:1 could not finish`));
+    assert.deepEqual([state().status, state().blocked_kind, state().blocked_line, state().line_defers], ["blocked", "deferred:writer", asked.message.id, undefined]);
+    assert.deepEqual(await roundLines(server), [], "held until the owner's retry");
+    assert.deepEqual([server.submitted.length, site.calls.answers.length, waiting.length], [DEFER_LIMIT + 1, 0, 1]);
+    server.failJobs();
+    ownerRetries(listed, "1d5e2f4a-6b7c-4d8e-9f0a-3b4c5d6e7f80");
+    assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+    assert.deepEqual([server.submitted.length, state().blocked_line, state().line_defers], [DEFER_LIMIT + 2, undefined, undefined], "sent once more after the retry");
+  });
+});
+
+const SITE_AWAY = [502, { code: "upstream_unavailable", detail: "網站暫時無法使用" }];
+
+test("a writer's answer the site does not take is kept and posted on a later round, and its run is not left as an answer still to take", async () => {
+  const gate = await screenplayAtTheGate();
+  const { slug, episode, site, box } = gate;
+  const asked = messageJob("script:1", "沈瀾為什麼不回答？", { series: SERIES, episode });
+  const waiting = [asked];
+  const server = durableDiscussion(gate, { waiting, listed: [listedVideo(slug)] });
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  await server.finish(server.running()[0]);
+  server.refuseAnswers(...SITE_AWAY);
+  await assert.rejects(roundLines(server), /網站暫時無法使用/);
+  assert.deepEqual(readJson(path.join(box.work, slug, "discussion-answer.json")), { message_id: asked.message.id, body: { reply_md: "因為沈瀾此時不能說破。", revised: null } });
+  server.refuseAnswers();
+  assert.deepEqual(await roundLines(server), [`${slug}: the writer's answer on script:1, kept when the site did not take it, is posted`]);
+  assert.deepEqual([site.calls.answers, waiting.length, server.submitted.length], [[{ id: asked.message.id, reply_md: "因為沈瀾此時不能說破。", revised: null }], 0, 1], "posted once, with no second request");
+  assert.equal(existsSync(path.join(box.work, slug, "discussion-answer.json")), false);
+  // The finished run is bound to the kept answer, so it is no discussion still open on this video.
+  const [lane] = await server.round();
+  assert.equal(lane.discussionOpen(slug), false);
+  assert.ok(server.journals(slug).every((journal) => journal.adopted), "no succeeded run is left untaken");
+});
+
+test("a rewrite whose answer the site does not take is posted later even when the video is blocked meanwhile, and the writer is paid once", async () => {
+  const gate = await screenplayAtTheGate();
+  const { slug, episode, site, dir, state } = gate;
+  const asked = messageJob("script:1", "第一句改成感嘆句。", { series: SERIES, episode });
+  const waiting = [asked];
+  const server = durableDiscussion(gate, { waiting, listed: [listedVideo(slug)] });
+  const first = readJson(path.join(dir, "video.json")).scenes[0].lines[0].text;
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  await server.finish(server.running()[0]);
+  server.refuseAnswers(...SITE_AWAY);
+  await assert.rejects(roundLines(server), /網站暫時無法使用/);
+  assert.equal(readJson(path.join(dir, "video.json")).scenes[0].lines[0].text, `${first}！`, "the rewrite is saved");
+  // Before the line comes back, the video's own checks run on the rewrite and one of them blocks it.
+  server.refuseAnswers();
+  server.refuseRuns("verifier:episode", 409, { code: "video_ai_project_dropped", detail: "這支影片的專案已經放棄" });
+  const [blocked, ...after] = await roundLines(server);
+  assert.match(blocked, /^wenjian-e001: blocked — the site refused the verifier request/);
+  assert.equal(state().status, "blocked");
+  // Before: the line was answered with the block ("劇本先不動"), the paid reply was never posted,
+  // and an owner who asked again paid the writer for a change already made.
+  assert.deepEqual(after, [`${slug}: the writer's answer on script:1, kept when the site did not take it, is posted`]);
+  assert.deepEqual(site.calls.answers, [{ id: asked.message.id, reply_md: "第一句改成感嘆句。", revised: null }]);
+  assert.deepEqual(await roundLines(server), []);
+  assert.deepEqual([server.submitted.filter((each) => each === "writer:discuss").length, readJson(path.join(dir, "video.json")).scenes[0].lines[0].text], [1, `${first}！`], "paid once, rewritten once");
+});
+
+test("a discussion rewrite whose lint repair is still running when the visit ends keeps its reply: the video checks the rewrite, and the line is answered once with no second request", async () => {
+  const gate = await screenplayAtTheGate();
+  const { slug, episode, site, box, state, answers, dir } = gate;
+  // The writer's repair puts a line back into the scene the owner emptied.
+  answers["writer:episode"] = (body) => {
+    if (!body.payload.lint_errors) return gate.script();
+    const video = structuredClone(body.payload.video);
+    video.scenes[0].lines = [{ ...body.payload.video.scenes[1].lines[0], id: body.payload.line_ids?.[0] ?? "zz" }];
+    return { video, claims: "原創\n", lexicon_additions: {} };
+  };
+  const asked = messageJob("script:1", "刪掉第一場所有台詞。", { series: SERIES, episode });
+  const waiting = [asked];
+  const server = durableDiscussion(gate, { waiting, listed: [listedVideo(slug)] });
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  await server.finish(server.running()[0]);
+  // The rewrite fails lint, and its repair is a durable job still running when the visit ends: the
+  // video is set aside for it, the rewrite is marked unchecked, and the kept reply is posted on the
+  // next unit. Before: the reply was lost, the video took the repair up, and the line was asked,
+  // and paid for, again.
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING, `${slug}: the writer's answer on script:1, kept when the site did not take it, is posted`]);
+  assert.deepEqual([state().verified, state().listener_done, existsSync(path.join(box.work, slug, "discussion-answer.json"))], [false, false, false]);
+  assert.deepEqual([site.calls.answers.map((answer) => [answer.id, answer.reply_md]), waiting.length], [[[asked.message.id, "刪了第一場所有台詞。"]], 0]);
+  // The video's own unit takes the repair up and checks the rewrite.
+  for (let round = 0; round < 6 && server.running().length; round++) {
+    for (const job of server.running()) await server.finish(job);
+    await roundLines(server);
+  }
+  assert.equal(server.submitted.filter((each) => each === "writer:discuss").length, 1, "the line is asked once");
+  assert.equal(readJson(path.join(dir, "video.json")).scenes[0].lines.length, 1, "the repaired rewrite is the script");
+  assert.equal(site.calls.answers.length, 1);
+});
+
+test("a discussion rewrite whose lint repair request fails is sorted as the line's request: the video waits, the kept reply is posted, and the line is not asked again", async () => {
+  const gate = await screenplayAtTheGate();
+  const { slug, episode, site, state, answers } = gate;
+  answers["writer:episode"] = (body) => (body.payload.lint_errors ? { video: body.payload.video, claims: "原創\n", lexicon_additions: {} } : gate.script());
+  const asked = messageJob("script:1", "刪掉第一場所有台詞。", { series: SERIES, episode });
+  const waiting = [asked];
+  const server = durableDiscussion(gate, { waiting, listed: [listedVideo(slug)] });
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  await server.finish(server.running()[0]);
+  // The repair the rewrite needs is lost by the queue before it reaches the model.
+  server.failJobs({ status: "failed", error_code: "video_ai_job_interrupted_before_dispatch", error_status: 409, error_detail: "工作在派送前中斷" });
+  // Before: the error left the step as an exception, the run ended, and the reply was lost.
+  const [deferred, posted, ...rest] = await roundLines(server);
+  assert.match(deferred, new RegExp(`^${slug}: the writer's lint repair of the rewrite for the owner's line on script:1 could not finish \\(video_ai_job_interrupted_before_dispatch: 工作在派送前中斷\\); deferred until `));
+  assert.equal(posted, `${slug}: the writer's answer on script:1, kept when the site did not take it, is posted`);
+  assert.deepEqual(rest, []);
+  assert.deepEqual([state().status, state().verified, state().listener_done, state().line_defers?.id], ["active", false, false, asked.message.id]);
+  assert.deepEqual([site.calls.answers.map((answer) => answer.reply_md), waiting.length, server.submitted.filter((each) => each === "writer:discuss").length], [["刪了第一場所有台詞。"], 0, 1]);
+});
+
+test("a long anime's change plan is paid once though an act of the rewrite meets a busy service: the plan's answer stays saved through the wait", async () => {
+  const gate = await screenplayAtTheGate();
+  const { slug, episode, site, ctx, state, answers, box } = gate;
+  writeFileSync(path.join(box.work, slug, "auto.json"), `${JSON.stringify({ ...state(), production_policy: "long-anime-v1" }, null, 2)}\n`);
+  answers["writer:anime-discuss-plan"] = () => ({ reply: "要改第二幕。", change_required: true, revised: null });
+  // The plan is durable; each act is a plain request, as writeAnimeActs sends it.
+  const setup = (lane) => {
+    const payload = lane.scriptPayload.bind(lane);
+    lane.scriptPayload = (st, extra) => {
+      const { production_policy: _policy, ...rest } = st;
+      return { ...payload(rest, extra), category: "anime" };
+    };
+    lane.animeRewrite = async function (st, extra, video, stage) {
+      await this.stage(stage, st.slug, { act: 1, message: extra.message }, 1000, "drama", "anime-act", st.series);
+      return { video };
+    };
+  };
+  const asked = messageJob("script:1", "第二幕改一下", { series: SERIES, episode });
+  const waiting = [asked];
+  const server = durableDiscussion(gate, { waiting, listed: [listedVideo(slug)], setup });
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  await server.finish(server.running()[0]);
+  server.refuseRuns("writer:anime-act", 503, { code: "video_ai_upstream_busy", detail: "模型服務忙碌中" });
+  const [deferred] = await roundLines(server);
+  assert.match(deferred, /could not finish \(video_ai_upstream_busy: 模型服務忙碌中\); deferred until /);
+  // Before: the step settled the plan's answer with the deferral, and the next visit paid for a new plan.
+  assert.deepEqual(server.journals(slug).map((journal) => [journal.request.variant, journal.receipt?.status]), [["anime-discuss-plan", "succeeded"]]);
+  server.refuseRuns("writer:anime-act");
+  await ctx.sleep(DEFER_MAX_MS);
+  for (let round = 0; round < 3 && waiting.length; round++) await roundLines(server);
+  assert.deepEqual([server.submitted.filter((each) => each === "writer:anime-discuss-plan").length, site.calls.answers.map((answer) => answer.reply_md), waiting.length], [1, ["要改第二幕。"], 0]);
 });
 
 // A binge series (docs/videos/BINGE.md): hands-off, a retention genre, a compilation at the end.
@@ -1242,6 +1669,25 @@ test("a hands-off series' document goes through the checker and is filed with th
   assert.match(await automation.step(), /it waits for the owner on \/admin\/videos/, "no usable verdict: the owner decides, as on a classic series");
   assert.equal(site.calls.docs[2].judge, undefined);
   assert.equal(site.calls.run.filter((call) => call.variant === "series-doc").length, 4, "the checker is asked twice before the document is left to the owner");
+});
+
+test("a hands-off document whose checker's answer was lost is not judged a second time: the planner's answer, paid for, is filed without a verdict and waits for the owner", async () => {
+  const named = { job: job("setting", { series: BINGE }) };
+  const server = documentJobs(named, {
+    answers: { "planner:setting": () => SETTING, "verifier:series-doc": () => verdict("setting") },
+    fail: (body) => (body.stage === "verifier" ? lostAnswer() : null),
+    decide: (body) => (body.judge ? { status: "approved", note: null } : { status: "review", note: null }),
+  });
+  const automation = server.round();
+  // Before: the error left the step, and the next round paid for the planner and the checker again.
+  assert.equal(await automation.step(), "series rebirth: the setting book planned (version 1); it waits for the owner on /admin/videos");
+  assert.deepEqual(server.runs, ["planner:setting", "verifier:series-doc"], "one planner request, and one checker request, not two");
+  assert.equal(server.site.calls.docs[0].judge, undefined, "no verdict travels with it, so the site leaves it for the owner");
+  assert.ok(server.out.stdout.includes(`  the checker's verdict on setting may have run on the server without reaching the worker (${LOST_WHY}); it is not asked again, and the document waits for the owner\n`));
+  assert.equal(existsSync(server.lostFile("rebirth")), false, "the document was filed: nothing is held");
+  named.job = null;
+  assert.equal(await automation.step(), null);
+  assert.deepEqual(server.runs, ["planner:setting", "verifier:series-doc"]);
 });
 
 test("a compilation the site refuses to start ends the run with the site's reason instead of failing every round", async () => {
@@ -1614,6 +2060,15 @@ test("an explainer one-off plans a question's bible with no cast, and its brief 
   assert.equal(documentVariant("bible", ONE_OFF), "bible");
   assert.equal(documentVariant("setting", SERIES), "setting");
   assert.match(instructionsFor("planner", "drama", "", "bible-explainer"), /BIBLE of ONE explainer episode/);
+  // The two cute presets are explainers too: same question-shaped bible, same brief sections,
+  // planned from their own series' variant.
+  for (const [preset, bibleVariant] of [["flat-explainer", "bible-explainer"], ["cute-cartoon", "bible-explainer-cartoon"], ["cute-mystery", "bible-explainer-mystery"]]) {
+    assert.equal(isExplainerOneOff({ ...explainer, style_preset: preset }), true, preset);
+    assert.equal(documentVariant("bible", { ...explainer, style_preset: preset }), bibleVariant, preset);
+    assert.equal(isExplainerOneOff({ ...SERIES, style_preset: preset }), false, `${preset}: a long series is never an explainer`);
+    assert.equal(documentVariant("bible", { ...SERIES, style_preset: preset }), "bible", preset);
+  }
+  assert.equal(isExplainerOneOff({ ...explainer, style_preset: "ink-wash" }), false);
 
   const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", reasons: ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"], hook: "閃電亮了，你數到幾？", closing: "下一題：彩虹為什麼是彎的？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"] };
   const bible = { body_md: "# 雷聲\n## 問題\n…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
@@ -1623,30 +2078,50 @@ test("an explainer one-off plans a question's bible with no cast, and its brief 
   assert.match(documentProblem("bible", { ...bible, body_json: { ...bible.body_json, outline: { ...outline, answer: "" } } }, explainerJob), /outline\.answer/);
   assert.match(documentProblem("bible", { ...bible, body_json: { ...bible.body_json, outline: { ...outline, sources: ["http://x"] } } }, explainerJob), /https pages/);
   assert.match(documentProblem("bible", bible, { ...job("bible"), series: ONE_OFF }), /characters must list the cast/, "a story one-off still needs its cast");
+  for (const preset of ["cute-cartoon", "cute-mystery"]) {
+    const cuteJob = { ...job("bible"), series: { ...explainer, style_preset: preset } };
+    assert.equal(documentProblem("bible", bible, cuteJob), null, preset);
+    assert.match(documentProblem("bible", { ...bible, body_json: { ...bible.body_json, characters: ONE_OFF_CAST } }, cuteJob), /must be empty/, preset);
+  }
 
   const brief = episodeBrief(explainer, { number: 1, title: outline.title, logline: outline.logline }, [], outline);
-  assert.deepEqual(checkBrief(brief, "drama", "flat-explainer"), []);
+  for (const preset of ["flat-explainer", "cute-cartoon", "cute-mystery"]) assert.deepEqual(checkBrief(brief, "drama", preset), [], preset);
   assert.match(brief, /## 一句答案\n光比聲音快太多。/);
   assert.match(brief, /### 選項 A：為什麼雷聲總比閃電晚到？\n一行說明：光比聲音快太多。\n開場鉤子：「閃電亮了，你數到幾？」/);
   assert.match(brief, /- https:\/\/en\.wikipedia\.org\/wiki\/Speed_of_sound/);
   assert.doesNotMatch(brief, /## 角色/);
 });
 
-test("an explainer one-off goes from its question's bible to a narrator-only script with its two Shorts", async () => {
+// What the three stage calls of a flat-explainer one-off are asked with: sha256 of the
+// instructions, and of canonicalJson(payload) less `today` and `lexicon`. A change to either
+// moves the durable key of every unfinished flat-explainer stage journal, so that stage is
+// asked, and paid for, again. The planner's and the writer's instructions moved on 2026-10-13
+// (the condensation became one scene of the story, the close stopped naming the next episode),
+// and the writer's again on 2026-10-15 (NARRATIVE_RULES: one story shape, one protagonist);
+// the checker's payload moved with the example script it reads.
+const EXPLAINER_STAGE_PINS = [
+  ["planner", "bible-explainer", "92d58c327776f8f1f8084907e2aaf0a7d8f326c2c614d1ab593dc4074ff017a2", "bfa88ed9b8beaef5377880ae79efb081f5e5283c1e4ab4279df4bd0239d13078"],
+  ["writer", "explainer", "f6abf3ec8799bcfa94f03b15681bc64714ac8f8b356bedddc36c1db594f649f6", "b0a4a2982e77bf9ea76eb9047260bbe568eb36ac2577dc206791ca8912401e81"],
+  ["verifier", "explainer", "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842", "5b58613d9b424f530b2b84cee45ed55a291805a5d9343dcb1edbe81b3cb07d84"],
+];
+const digestOf = (text) => createHash("sha256").update(text, "utf8").digest("hex");
+
+/** One explainer one-off in `preset`, from its bible to its first fact-check; the writer answers `look`, and the request asks for `minutes`. */
+async function explainerOneOffRun(preset, look = {}, row = {}, minutes = 8) {
   const box = sandbox();
-  const explainer = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: "flat-explainer" };
+  const explainer = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: preset, ...row };
   const slug = "one-off-7a1b2c3d-e001";
   const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", reasons: ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"], hook: "閃電亮了，你數到幾？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"] };
   const bible = { body_md: "# 雷聲\n## 問題\n…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
   const drafted = JSON.parse(readFileSync(new URL("../core/fixtures/explainer/shorts.json", import.meta.url), "utf8")).map(({ titles, description, scenes }) => ({ titles, description, scenes }));
   const answers = {
     "planner:bible-explainer": () => bible,
-    "writer:explainer": () => ({ video: { ...explainerFixture(), slug, look: {} }, claims: "c1｜光速｜https://en.wikipedia.org/wiki/Speed_of_sound｜2026-09-28｜race\n", lexicon_additions: {}, shorts: drafted }),
+    "writer:explainer": () => ({ video: { ...explainerFixture(), slug, look }, claims: "c1｜光速｜https://en.wikipedia.org/wiki/Speed_of_sound｜2026-09-28｜race\n", lexicon_additions: {}, shorts: drafted }),
   };
   const episode = { number: 1, chapter_number: 1, title: outline.title, logline: outline.logline, beats: outline, status: "ready", slug: null, recap: null, started_at: null, finished_at: null, video: null };
   const setting = { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...bible, status: "approved" };
   const oneOffStart = (body) => ({
-    request: { id: "explainer-request", premise: explainer.premise, title: "雷聲", source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: null, status: "started", slug: body.slug, series_slug: explainer.slug, episode_number: 1 },
+    request: { id: "explainer-request", premise: explainer.premise, title: "雷聲", source_guide: null, style_preset: preset, target_minutes: minutes, note: null, status: "started", slug: body.slug, series_slug: explainer.slug, episode_number: 1 },
     episode: { ...episode, status: "started", slug: body.slug },
     context: { series: explainer, setting, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [episode], recaps: [], mysteries: [] },
   });
@@ -1663,19 +2138,155 @@ test("an explainer one-off goes from its question's bible to a narrator-only scr
   const dir = path.join(box.root, "docs", "videos", slug);
   assert.match(readFileSync(path.join(dir, "brief.md"), "utf8"), /^# 為什麼雷聲總比閃電晚到？\n\n## 問題\n/);
   const state = automatedVideos(box.work).find((each) => each.slug === slug);
-  assert.equal(state.style_preset, "flat-explainer");
+  assert.equal(state.style_preset, preset);
   assert.deepEqual(state.source_urls, outline.sources, "the checker reads the pages the bible names");
 
   assert.match(await automation.step(), /script drafted and passes lint; 2 Shorts drafted/);
   const writer = site.calls.run.find((call) => call.stage === "writer");
   assert.equal(writer.variant, "explainer");
   const video = readJson(path.join(dir, "video.json"));
-  assert.equal(video.look.preset, "flat-explainer", "the writer cannot drop the explainer preset");
+  assert.equal(video.look.preset, preset, "the writer cannot drop or change the request's explainer preset");
   assert.deepEqual(video.characters, []);
   assert.deepEqual(JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")).map((short) => short.slug), [`${slug}-short-1`, `${slug}-short-2`]);
   assert.match(await automation.step(), /fact-check round 1/);
   assert.equal(site.calls.run.find((call) => call.stage === "verifier").variant, "explainer");
+  return { site, video, writer, seriesInfo: readJson(path.join(dir, "series.json")), shorts: JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")) };
+}
+
+test("an explainer one-off goes from its question's bible to a narrator-only script with its two Shorts", async () => {
+  const { site, shorts, writer, seriesInfo } = await explainerOneOffRun("flat-explainer");
+  assert.deepEqual(shorts.map((short) => short.series), ["sothatswhy", "sothatswhy"]);
+  // No model named: the file and the writer's payload are what they always were.
+  assert.equal(Object.hasOwn(seriesInfo, "image_model"), false, "a one-off that names no image model writes no key");
+  assert.equal(Object.hasOwn(writer.payload, "prompt_budget_chars"), false, "and its writer hears no budget");
+  assert.deepEqual(site.calls.run.map((call) => [call.stage, call.variant]), EXPLAINER_STAGE_PINS.map(([stage, variant]) => [stage, variant]));
+  for (const [index, [stage, variant, instructions, payload]] of EXPLAINER_STAGE_PINS.entries()) {
+    const call = site.calls.run[index];
+    const { today: _today, lexicon: _lexicon, ...rest } = call.payload;
+    assert.equal(digestOf(call.instructions), instructions, `${stage}:${variant} instructions`);
+    assert.equal(digestOf(canonicalJson(rest)), payload, `${stage}:${variant} payload`);
+  }
 });
+
+// flat-explainer on purpose: the cute presets get prompts of their own later, and this must not move with them.
+test("an explainer one-off whose row names an image model writes it into series.json, and its writer hears that model's prompt budget", async () => {
+  const { seriesInfo, writer, video } = await explainerOneOffRun("flat-explainer", {}, { image_model: "image-01" });
+  assert.equal(seriesInfo.image_model, "image-01", "the fact the media stages read (media/stages.mjs imageStatus)");
+  assert.equal(writer.payload.prompt_budget_chars, 1000);
+  assert.deepEqual(video.look, { preset: "flat-explainer" });
+});
+
+// The first draft is handed 140 fresh line ids, whatever length the request asks for: the count
+// is part of the seed the ids are minted from, so it is part of the pinned writer payload above.
+test("a flat-explainer one-off asked for 20 minutes is still handed 140 line ids", async () => {
+  const { writer } = await explainerOneOffRun("flat-explainer", {}, {}, 20);
+  assert.deepEqual(writer.payload.target_minutes, [20, 20]);
+  assert.equal(writer.payload.line_ids.length, 140);
+  const eight = await explainerOneOffRun("flat-explainer");
+  assert.deepEqual(eight.writer.payload.target_minutes, [8, 8]);
+  assert.deepEqual(writer.payload.line_ids, eight.writer.payload.line_ids, "the same ids at any length");
+});
+
+// Each cute preset is planned, written and checked from its own series' prompts
+// (explainer-series.mjs), beside the flat-explainer one above, which is not edited for them.
+const CUTE_ONE_OFFS = {
+  "cute-mystery": {
+    series: "奇聞檔案局",
+    variants: ["bible-explainer-mystery", "explainer-mystery"],
+    outline: { reasons: ["流傳的版本：雷聲是比較晚才發出來的。", "紀錄：光速約每秒三十萬公里。", "紀錄：聲速約每秒三百四十公尺。", "目前最站得住的解釋：同時發生，光先到。"], closing: "存檔。下一份檔案，我們繼續翻。", pillar: "M" },
+    bibleOf: /BIBLE of ONE 奇聞檔案局 file/,
+    brief: /## 原因\n- 流傳的版本：[^\n]+\n- 紀錄：[^\n]+\n- 紀錄：[^\n]+\n- 目前最站得住的解釋：/,
+    // The channel's thumbnail: a tag and a sub, no pillar, no layout, no variants.
+    thumbnail: { template: "thumb", data: { headline: "光？\n**先到**", tag: "奇異現象", sub: "數三秒的檔案", shot: "flash" } },
+    shorts: "illustrated",
+    // The longest episode the form allows: 12 line ids a minute, since a cute line is 24 characters at most.
+    minutes: 20,
+    lineIds: 240,
+  },
+  "cute-cartoon": {
+    series: "原來如此事務所",
+    variants: ["bible-explainer-cartoon", "explainer-cartoon"],
+    outline: { reasons: ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"], closing: "下一題：彩虹為什麼是彎的？", pillar: "science" },
+    bibleOf: /BIBLE of ONE 原來如此事務所 episode/,
+    brief: /## 原因\n- 光速約每秒三十萬公里\n- 聲速約每秒三百四十公尺/,
+    // So That's Why's own thumbnail, as the fixture carries it.
+    thumbnail: explainerFixture().thumbnail,
+    shorts: "sothatswhy",
+    // The default length: the 140 every first draft is handed.
+    minutes: 10,
+    lineIds: 140,
+  },
+};
+
+for (const [preset, expected] of Object.entries(CUTE_ONE_OFFS)) {
+  test(`a ${preset} one-off is planned, written and checked with ${expected.series}'s own prompts, keeps only its preset of the look and its thumbnail as written, and drafts its two Shorts`, async () => {
+    const box = sandbox();
+    // The row a cute request gets: the long-series form's defaults, and the model the server stored.
+    const curio = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: preset, target_minutes: expected.minutes, genre: "xianxia-bonds", lead: "dual-male", visual_tier: "clips", image_model: "image-01" };
+    const slug = "one-off-7a1b2c3d-e001";
+    const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", hook: "閃電亮了，你數到幾？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"], ...expected.outline };
+    const bible = { body_md: "# 雷聲\n## 問題\n主軸：…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
+    const drafted = JSON.parse(readFileSync(new URL("../core/fixtures/explainer/shorts.json", import.meta.url), "utf8")).map(({ titles, description, scenes }) => ({ titles, description, scenes }));
+    const [bibleVariant, stageVariant] = expected.variants;
+    const answers = {
+      [`planner:${bibleVariant}`]: () => bible,
+      // The writer answers another series' preset and a style and a negative of its own: none of it is kept.
+      [`writer:${stageVariant}`]: () => ({ video: { ...explainerFixture(), slug, look: { preset: "flat-explainer", style: "my own", negative: "text" }, thumbnail: expected.thumbnail }, claims: "c1｜光速｜https://en.wikipedia.org/wiki/Speed_of_sound｜2026-09-28｜race\n", lexicon_additions: {}, shorts: drafted }),
+    };
+    const episode = { number: 1, chapter_number: 1, title: outline.title, logline: outline.logline, beats: outline, status: "ready", slug: null, recap: null, started_at: null, finished_at: null, video: null };
+    const setting = { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...bible, status: "approved" };
+    const oneOffStart = (body) => ({
+      request: { id: "curio-request", premise: curio.premise, title: "雷聲", source_guide: null, style_preset: preset, target_minutes: expected.minutes, note: null, status: "started", slug: body.slug, series_slug: curio.slug, episode_number: 1 },
+      episode: { ...episode, status: "started", slug: body.slug },
+      context: { series: curio, setting, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [episode], recaps: [], mysteries: [] },
+    });
+    const site = fakeSite({ jobs: [job("bible", { series: curio, chapter_number: null, context: { ...job("bible").context, series: curio, setting: null, mysteries: [] } }), job("episode", { series: { ...curio, status: "active", episodes_ready: 1 }, episode })], answers, oneOffStart });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-28T01:00:00Z") });
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+
+    assert.match(await automation.step(), /the story bible planned \(version 1\)/);
+    const planner = site.calls.run[0];
+    assert.equal(planner.variant, bibleVariant);
+    assert.match(planner.instructions, expected.bibleOf);
+    assert.equal(planner.instructions, instructionsFor("planner", "drama", "", bibleVariant), "the row's genre adds no section to a series' own text");
+    assert.doesNotMatch(planner.instructions, /Genre and retention|仙俠/);
+    assert.equal(planner.payload.genre_spec, null, "nor does the story genre's spec ride in the payload");
+    assert.equal(planner.payload.series.genre, "xianxia-bonds", "seriesFacts is what it was");
+    assert.equal(planner.payload.drama_settings.style_preset, preset);
+
+    assert.match(await automation.step(), /started from the approved story bible/);
+    const dir = path.join(box.root, "docs", "videos", slug);
+    assert.match(readFileSync(path.join(dir, "brief.md"), "utf8"), expected.brief);
+    const state = automatedVideos(box.work).find((each) => each.slug === slug);
+    assert.equal(state.style_preset, preset);
+
+    assert.match(await automation.step(), /script drafted and passes lint; 2 Shorts drafted/);
+    const writer = site.calls.run.find((call) => call.stage === "writer");
+    assert.equal(writer.variant, stageVariant);
+    assert.equal(writer.instructions, instructionsFor("writer", "drama", "", stageVariant));
+    assert.equal(writer.payload.beats.pillar, expected.outline.pillar, "the bible's pillar reaches the writer in beats");
+    assert.deepEqual(writer.payload.target_minutes, [expected.minutes, expected.minutes]);
+    assert.equal(writer.payload.line_ids.length, expected.lineIds, "enough ids for the length asked, never fewer than 140");
+    assert.equal(new Set(writer.payload.line_ids).size, expected.lineIds, "each one distinct");
+    assert.ok(writer.instructions.includes(`"look": {"preset": "${preset}"}`));
+    // The budget the payload carries at its top level is one the writer's text explains.
+    assert.equal(writer.payload.prompt_budget_chars, 1000);
+    assert.match(writer.instructions, /"prompt_budget_chars", when the payload carries it at its top level, is the most characters\s+any one shot's "prompt" may have/);
+    const video = readJson(path.join(dir, "video.json"));
+    assert.deepEqual(video.look, { preset }, "the series' look is not the writer's to change");
+    assert.deepEqual(video.characters, []);
+    assert.deepEqual(video.thumbnail, expected.thumbnail, "the thumbnail arrives as written");
+    assert.equal(readJson(path.join(dir, "series.json")).image_model, "image-01");
+    assert.deepEqual(JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")).map((short) => short.series), [expected.shorts, expected.shorts]);
+
+    assert.match(await automation.step(), /fact-check round 1/);
+    const verifier = site.calls.run.find((call) => call.stage === "verifier");
+    assert.equal(verifier.variant, stageVariant);
+    assert.equal(verifier.instructions, instructionsFor("verifier", "drama", "", stageVariant));
+    assert.deepEqual(site.calls.run.map((call) => `${call.stage}/${call.variant}`), [`planner/${bibleVariant}`, `writer/${stageVariant}`, `verifier/${stageVariant}`]);
+  });
+}
 
 const ANIME_SERIES = { ...SERIES, slug: "borrowed-dawn", title: "借來的黎明", kind: "series", category: "anime", genre: "custom", lead: "ensemble", tone: "no-romance", style_preset: "anime-2d", target_minutes: 22, planned_episodes: 120, episodes_per_chapter: 12, chapters: 10, open_ended: false, hands_off: false, compilation: false, production_policy: "long-anime-v1", runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 } };
 const sourceSeason = (number) => JSON.parse(readFileSync(new URL(`../../../docs/videos/series-plans/borrowed-dawn/season-${String(number).padStart(2, "0")}.json`, import.meta.url), "utf8"));

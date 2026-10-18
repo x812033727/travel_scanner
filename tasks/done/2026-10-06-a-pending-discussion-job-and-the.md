@@ -1,0 +1,155 @@
+---
+id: 2026-10-06-a-pending-discussion-job-and-the
+title: A pending discussion job and the bookkeeping's site calls do not hold their video
+status: done
+priority: P2
+area: tools
+owner: claude-opus-5-5-bookkeeping
+claimed_at: 2026-10-07T23:20:39Z
+created_at: 2026-10-06T13:39:27Z
+completed_at: 2026-10-08T00:38:55Z
+branch:
+depends_on:
+  - 2026-10-06-a-failing-video-is-deferred
+scope:
+  - tools/video/automation/flow.mjs
+  - tools/video/automation/discuss.mjs
+  - tools/video/automation/automation.test.mjs
+  - tools/video/automation/series.test.mjs
+---
+
+# A pending discussion job and the bookkeeping's site calls do not hold their video
+
+## Why
+
+Two gaps read in the code while the review of PR #1342 was being answered
+(`2026-10-06-a-failing-video-is-deferred`). Neither comes from that pull request, and neither was
+changed there; both are the same kind of trouble its review found: a step that acts on a video
+while another step has something of that video in flight.
+
+1. **A discussion whose writer job is still running does not hold its video.** A line on a
+   screenplay is answered by the writer (`discuss.mjs` `answerScript`, variant `discuss` or
+   `anime-discuss-plan`), a durable job. When it is not done within the client's 25 seconds it
+   throws RUN_PENDING; outside a video's unit that ends the run (`flow.mjs` `step()`), and nothing
+   remembers that this video has a writer job in flight. On the next round the video's own unit
+   comes first. If the owner sent the screenplay back in the meantime, `fixScript` sends the
+   writer's `episode` request while the discussion job runs: two writer jobs for one video, and
+   whichever answer lands second rewrites `video.json` from a script the other no longer matches.
+   If the owner approved it, the video moves on and the discussion's rewrite then lands on an
+   approved script. Since PR #1342 `answerScript` holds a line while its video is not at rest;
+   this is the mirror image, and it is as old as the durable writer.
+2. **The first lane's bookkeeping awaits the site for a video it does not hold.**
+   `recordVideoId` and `tellCompilationDone` (`flow.mjs` `bookkeeping()`) are called for a video
+   that is `active` or `done` and not in `busy`; they await a report or `compilationDone`, and
+   `tellCompilationDone` then saves the first lane's copy of `auto.json`. A second lane may have
+   taken the video in between (its languages, say) and saved its own progress, which that save
+   writes over. The retry acknowledgement had the same shape and was fixed in PR #1342 by holding
+   the video in `busy` from before the save to after the report.
+
+## Definition of done
+
+- [x] While a discussion's writer job for a video is still running on the server, no other writer
+      request is sent for that video and its own stages wait; the discussion's answer is taken on
+      a later round, and the video moves again after it. (Done in PR #1342, in the repair of its
+      second review; see Notes. What is left of this ticket is the second item.)
+- [x] No step of the first lane's bookkeeping saves `auto.json` for a video another lane may have
+      taken since the step read it.
+
+## Steps
+
+- [x] `step()`: a RUN_PENDING thrown outside a video's unit that names a video (`error.slug`,
+      `tagged` by `client.mjs`) and whose slug is one of this worker's videos sets that video
+      aside in the shared `pendingUntil` instead of only ending the run, or `stepUnit` asks the
+      receipt store whether the video has an unfinished writer journal before moving it. Decide
+      which with a test that owns the sequence: the owner's line, a pending `discuss` job, the
+      owner's rejection, the next round. (Both, in PR #1342.)
+- [x] `bookkeeping()`: hold the video in `busy` around `recordVideoId` and `tellCompilationDone`
+      (a `try`/`finally`, as the retry acknowledgement does), or have them save before the await
+      and nothing after it. Read `auto.json` again once the video is held, as `stepUnit` now does:
+      each loop lists the states before its first await.
+- [x] Tests in `automation.test.mjs` (two lanes, the site call held in flight). The discussion
+      sequence is in `series.test.mjs` since PR #1342.
+
+## How to verify
+
+```bash
+node --test tools/video/automation/automation.test.mjs tools/video/automation/series.test.mjs \
+  tools/video/automation/discuss.test.mjs
+```
+
+## Notes
+
+- Found by reading, not seen on the host. The first needs the owner to act on the script gate
+  within the minutes a discussion job runs; the second needs a second lane to take a finished
+  video during one site call.
+- `flow.mjs` and `automation.test.mjs` are bound by the duration-review receipt
+  (`docs/videos/long-form/review.json`): a change here needs the independent re-bind.
+- A line on a screenplay also waits behind a STOP file in its video's own work directory only by
+  accident: with durable runs the client does not send while the file is there and the run ends
+  on RUN_PENDING every round. Holding such a line in `answerScript` (the video is held, so is its
+  line) would be the same kind of guard; decide it with the first item. (Decided with it: a video
+  its own STOP file holds is not at rest, `flow.mjs` `resting`, so its line waits.)
+- The first item as PR #1342 did it (2026-10-06, the repair of its second review): the discussion
+  holds its video in `busy` from the resting check to the answer (`discuss.mjs` `answerScript`);
+  a RUN_PENDING that names one of this worker's videos sets it aside in `pendingUntil` whether its
+  own unit or its discussion threw it, and the lane goes on (`flow.mjs` `step`); and a video with
+  a discussion's saved run still to take (`client.mjs` `untakenRuns`, by the writer's `discuss`
+  and `anime-discuss-plan` variants) has the first lane take the discussion up at the start of its
+  unit, before the video's own stages, while the other lanes leave the video to it (`stepUnit`).
+  `stepUnit` also reads `auto.json` again once it holds a video, which is the guard the second
+  item's loops still lack.
+- 2026-10-07 (claude-opus-5-5-bookkeeping), the second item. `flow.mjs` `holding(slug, act)` holds
+  a video in `busy` (none when another lane already does), reads its `auto.json` once held, and
+  lets it go when `act` is over, as `firstOutline` and the retry acknowledgement hold theirs.
+  `bookkeeping()`'s pasted-address loop (`recordVideoId`) and its untold-compilation loop
+  (`tellCompilationDone`) now act through it, each re-checking its condition on the copy read
+  once held. Before, a second lane could take the video during the site call (a done video's
+  languages) and save its progress, which the first lane's save after the call wrote over; and
+  a loop that listed the videos before an earlier iteration's await could save a copy another
+  lane had moved on since.
+  - The blocked-report loop goes through it too (after the review, below). The drop loop has no
+    await between its listing and its save. The retry loop is left as it is: its unheld awaits
+    touch only videos blocked on disk, which no other lane takes, and a copy it listed before an
+    earlier video's RUN_PENDING can differ from the saved one only in the report fields, which
+    the retry deletes; a retry request the first lane has not consumed cannot be on the site
+    for a video another lane is blocking right now.
+  - Tests (`automation.test.mjs`): the site call held in flight, as a compilation's
+    `compilationDone` and as a pasted address's "on YouTube" report followed by
+    `compilationDone`: the other lane leaves the video, and nothing it saves is lost; a
+    compilation whose call failed while the other lane moved the next one (the older one
+    deferred, so the other lane passes it over held or not): that one is told from the
+    `auto.json` read once held, with its languages kept; and a blocked video's report (below).
+    Each fails on the old code, and the mutations "held, the listed copy kept" and "read again,
+    not held" are each caught.
+  - The automation test the pending-reason ticket added wrapped `site.fetchImpl` in a function
+    that adds nothing; that line is removed here (noted when that ticket was closed, in
+    tasks/done/2026-10-05-video-writer-pending-transport-reason.md).
+- 2026-10-07, after the independent review (claude-opus-5-5-bookkeeping). Three findings, all
+  minor, each confirmed by a second agent:
+  - The blocked-report loop listed the videos once and reported each from that copy after an
+    earlier video's report had failed. Another lane could block a video, be listed while it
+    still held it and reported, then save its report's outcome (a 5-minute backoff after a
+    failed report, or the pending flag cleared) and let it go: the first lane reported it again
+    at once from the copy it listed and saved that copy, the backoff gone. The Note above said a
+    lane still holding the video fails `free`; true, but `free` is asked when the loop reaches
+    the video, not when it listed it. The loop now acts through `holding` with its condition
+    (`unreported`) checked again on the copy read once held. Test: the other lane's report
+    failing and succeeding; before, the video was reported twice and its backoff erased.
+    Left as it is: right after another lane's successful report, a site list fetched at the
+    start of the unit can still read the video as not blocked and report it once more (the
+    same content, nothing paid or moved).
+  - The second test's "Before:" described a mutant: on the old code the other lane simply took
+    the video whose call was in flight. Its older compilation is now deferred, so the old code
+    fails on what the comment says (the newer one's languages written over and sent again).
+  - The Note's reason for leaving the blocked-report loop, corrected above.
+  - Reviewed and sound: no lane's busy entry is deleted by another, busy is let go on every
+    throw, the re-check on the re-read copy, the return lines, and that nothing else calls
+    recordVideoId or tellCompilationDone outside a held unit. Not changed (older than this
+    ticket): recordVideoId takes no project lease and does not look at the video's STOP file.
+- 2026-10-08, closed after the independent duration re-bind `80af0fe4` (PASS, DURATION_ONLY,
+  reviewer `claude-pr-review-bookkeeping`). Its notes outside duration: a work directory whose
+  auto.json names another slug is now skipped by the three loops, as `stepUnit` already skips
+  it (before, the copy was acted on and saved under the named slug's directory); the
+  untold-compilation line names the listed copy's series, which only compilation.mjs sets, when
+  it makes the compilation; and the older gaps above (no project lease or STOP check in
+  recordVideoId) stand.

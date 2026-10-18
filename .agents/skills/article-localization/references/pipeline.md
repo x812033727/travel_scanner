@@ -48,7 +48,8 @@ uv run --project apps/api python tools/article-localization/pipeline.py material
 
 ## 站內連結與 credit
 
-- 譯文裡連到四個已驗證公開路由（`/guides/howto`、`/destinations/hanoi`、`/destinations/singapore`、`/guides`）的連結會機械地換成目標語系；其他帶語系前綴的站內路由、別名、帶查詢或片段的變體會讓 materialize 停下來等人看。
+- 譯文裡連到九個已驗證公開基本路由（`/guides/howto`、`/destinations/hanoi`、`/destinations/singapore`、`/guides`、`/destinations/tokyo`、`/destinations/osaka-kyoto`、`/destinations/seoul`、`/destinations/jeju`、`/destinations/hong-kong`）的連結會機械地換成目標語系。另只允許完整相同的 `/foods?city=hong-kong`：保留這個 query，只換語系；它的 canonical 是美食目錄基本網址，SSR 篩選與全部已顯示店家另外證明香港選項。其他帶語系前綴的站內路由、別名、未核准 query、重複或額外參數、改編碼或片段的變體，以及含 ASCII 控制字元或前後空白的同站網址，都會讓 materialize 停下來等人看。東京、大阪／京都、首爾與濟州的五語公開驗證收據在 `docs/article-localization/route-verification-20261007.json`；香港與美食篩選的收據在 `docs/article-localization/route-verification-hong-kong-20261007.json`。這些是翻譯產線的路由證據，發布仍要 fresh 正式站檢查。
+- 來源標題原本就是含假名的日文官方名稱時，日文譯稿保留原名；例外僅限 `sources` 的標題，不適用正文或繁中來源標題。
 - AI hero 的 credit 只認 `Mokaair · AI 生成示意圖`／`AI 生成，非實拍` 這一組：翻描述，但要保留 `Mokaair · ` 前綴與 AI 揭露；攝影師、授權、來源網址不動。
 
 ## 測試

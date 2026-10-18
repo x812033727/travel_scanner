@@ -28,10 +28,10 @@
 
 旅遊題材要實景（首爾夜景、釜山海邊）時用圖庫照片，不用 AI 畫、不用別人的截圖。金鑰在網站上，工具只帶影片工具權杖；兩家都免費，不記帳。設計與規則在 `docs/videos/ILLUSTRATED.md` §圖庫照片。
 
-1. **搜**：`node tools/video/media/cli.mjs stock search --query "Seoul skyline at night" --orientation landscape --slug <SLUG>`（英文、幾個字就好，≤100 字；`--provider pexels|pixabay` 只問一家；`--per-page` 最多 40）。每個候選印廠商、id、尺寸與方向、廠商要的那句標示、照片頁網址、alt；挑橫向、主體在中間、沒有可辨識的人臉或品牌的那張。Pixabay 的預覽網址一天後失效，挑好就抓。
-2. **抓**：`node tools/video/media/cli.mjs stock fetch --slug <SLUG> --provider pexels --id 3573351`。伺服器向廠商要原檔進媒體庫，工具再下載到 `<VIDEO_WORKDIR>/<SLUG>/stock/<sha256>.<jpg|png|webp>`（檔名是內容雜湊，同一張再抓不會重載），並在 `video.json` 的 `assets[]` 寫一筆 `{path, source, license, author, url}`：`source` 是廠商自己的措辭（「Photo by … on Pexels」「Image by … from Pixabay」），不要改寫。這筆就是說明欄標示的來源，不要手刪；`video.json` 會以工具的格式重寫，所以在改稿前先抓，抓完再 `lint`。
+1. **搜**：`node tools/video/cli.mjs stock search --query "Seoul skyline at night" --orientation landscape --slug <SLUG>`（英文、幾個字就好，≤100 字；`--provider pexels|pixabay` 只問一家；`--per-page` 最多 40）。每個候選印廠商、id、尺寸與方向、廠商要的那句標示、照片頁網址、alt；挑橫向、主體在中間、沒有可辨識的人臉或品牌的那張。Pixabay 的預覽網址一天後失效，挑好就抓。
+2. **抓**：`node tools/video/cli.mjs stock fetch --slug <SLUG> --provider pexels --id 3573351`。伺服器向廠商要原檔進媒體庫，工具再下載到 `<VIDEO_WORKDIR>/<SLUG>/stock/<sha256>.<jpg|png|webp>`（檔名是內容雜湊，同一張再抓不會重載），並在 `video.json` 的 `assets[]` 寫一筆 `{path, source, license, author, url}`：`source` 是廠商自己的措辭（「Photo by … on Pexels」「Image by … from Pixabay」），不要改寫。這筆就是說明欄標示的來源，不要手刪；`video.json` 會以工具的格式重寫，所以在改稿前先抓，抓完再 `lint`。
 3. **放上投影片**：一個 `screenshot` 景，`data.image` 寫 `stock/<sha256>.<ext>`（只有這個寫法），`data.title`／`caption`／`highlight` 照截圖景的用法；`data.credit`（選填，一行、≤60 字，例如「Photo by Lukas Rodriguez on Pexels」）才會把標示畫在照片右下角——站主的規則是影片不燒字，所以預設不寫，標示靠說明欄。直向照片會照高度放、置中；超寬的全景會超出版面，換一張。
-4. **標示在說明欄**：`package` 會在參考資料之後加「📷 圖片來源」區塊，一張一行「Photo by … on Pexels（Pexels License）：照片頁網址」，各語系都有。`lint` 不算這幾行的位元組，所以 `youtube.description` 要比 5,000 位元組的上限多留每張約 130 位元組（兩張留 300 就夠）；超過時 `package` 會說是標示把它推過線。
+4. **標示在說明欄**：`package` 會在參考資料之後加「📷 圖片來源」區塊，一張一行「Photo by … on Pexels（Pexels License）：照片頁網址」，各語系都有。`lint` 跟 `package` 用同一個 `composeDescription` 組說明欄，這幾行的位元組也算在內，所以標示把說明欄推過 5,000 位元組時 `lint` 就會擋。
 5. **渲染前**：`render` 會拒絕用了 `stock/…` 卻沒在 `assets[]` 裡的景（說明欄會沒有標示）和還沒抓到工作目錄的照片；換了照片（同名不同位元組）只重畫那一景。
 
 不可以：原樣轉售或把照片當獨立檔案再發布、暗示人物或品牌背書、把可辨識的人放進負面情境、熱連結廠商的網址（一定要抓到自己這邊）、刪掉 `assets[]` 的那一筆。正式站的 web app 還沒轉送 `stock/*` 路由時工具會說「要部署會轉送這些路由的版本」（結束碼 3），先把那張票做完。
@@ -53,11 +53,12 @@
 
 ## 縮圖
 
-- 1280×720，JPG 或 PNG，2MB 以內。範本 `.agents/skills/youtube-video/references/templates/thumbnail.html`，存成 `<WORKDIR>/slides/thumbnail.html`，`render` 會用 1280×720 渲染。
-- 最多 6 個字的大字＋一個視覺主體（產品 Logo 只在評論該產品時使用、主講者表情、或一張對比圖）。字要在手機列表的小圖上讀得到：把 PNG 縮到 320 寬看一次。
-- 縮圖的字不重複標題，而是補一句標題沒說的（標題「AI 模型怎麼挑」，縮圖「第一名≠最好用」）。
-- 做兩到三版給站主選（`thumbnail-a.html`、`thumbnail-b.html`），上架後可用 YouTube 的縮圖測試比較。
-- 不用別人的照片或影片截圖；右下角會被影片長度標籤蓋住，不放字。
+- 1280×720，JPG 或 PNG，2MB 以內。全自動路線用 `video.json` 的 `thumbnail`（`thumb` 版型，`docs/videos/README.md` §版型）；人工錄製用範本 `.agents/skills/youtube-video/references/templates/thumbnail.html`，存成 `<WORKDIR>/slides/thumbnail.html`，`render` 會用 1280×720 渲染。
+- **大字最多 6 個字**（英文詞或數字各算 1 字、最多 2 個），一到兩行，斷行用 `\n` 放在詞的邊界，不在詞中間斷（「一半的攻／擊」不行）。字要在手機列表的小圖上讀得到：把 PNG 縮到 320 寬看一次。全自動路線的 `qa` thumbnail 項擋超過 6 字與詞中間斷行。
+- **一個視覺主體**，放右 60%，文字欄在左 40%。主體可以是：評論該產品時它的官方頁截圖或產品 logo（合理引用，說明欄標出處；站主 2026-10-08 定）、該支影片的一張關鍵影格（鉤子段落的具體物件，不畫比喻）、主講者表情、或一張對比圖。全自動路線由 `thumbnail.data.capture`（一個 `screencast` 景截到的真實頁面）或 `thumbnail.data.shot`（關鍵影格）供圖，AI 插圖不畫 logo；都沒有時是單色大塊底。
+- 縮圖的字**不重複標題**，而是補一句標題沒說的（標題「AI 模型怎麼挑」，縮圖「第一名≠最好用」）；大字與標題前 10 字重複過半，`qa` 會警告。
+- 三套版型 A／B／C 依 slug 輪流（`thumbnail.data.layout` 可指定）；底色依 slug 在四色中輪流（teal／plum／navy／forest），程式沒有跨影片的記憶，連續兩支撞色時站主在 `video.json` 寫 `thumbnail.data.tone` 換一色。做兩到三版給站主選（全自動用 `thumbnail.variants`，B／C 變體自動往後輪一套版型；人工錄製用 `thumbnail-a.html`、`thumbnail-b.html`），上架後可用 YouTube 的縮圖測試比較。
+- 不用別人的照片或影片截圖；右下角會被影片長度標籤蓋住、右上角桌機懸停會出現按鈕，兩處不放字；MOKAAIR 字標縮小放左下角。
 
 ## 剪輯交接（handover.md）
 

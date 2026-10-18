@@ -10,6 +10,7 @@ import { promisify } from "node:util";
 import { locateFfmpeg } from "../assemble/ffmpeg.mjs";
 import { keyframeKey } from "../core/drama.mjs";
 import { stopRequested } from "../core/paths.mjs";
+import { PROJECT_LEASED, ProjectLeaseError, requireProjectLease } from "../core/project-lease.mjs";
 import { contactSheetHtml, SHEET_WIDTH } from "../render/contact.mjs";
 import { cached, forgetJob, mediaKey, pendingJob, remember, rememberJob } from "./cache.mjs";
 import { MediaError, RETAKE_CODES, TERMINAL, downloadFile, judge as askJudge, putFile, submitClip, submitImage, submitMusic, waitForJob } from "./client.mjs";
@@ -146,6 +147,28 @@ export const retakeable = (error) => error instanceof MediaError && RETAKE_CODES
 
 export const stoppedError = () => new MediaError("stopped by the STOP file; rerun to continue", { code: "stopped" });
 
+/**
+ * Whether a media command may write the project's files at all: not under the project's STOP
+ * file (false, said on stdout), and only while this process holds the project's lease
+ * (core/project-lease.mjs; another producer's is the owner's to sort out, and nothing is written).
+ * Each command calls it once, right before its first write, and exits incomplete (6) when it says
+ * false, so a STOP removed before the worker reads the exit cannot pass for a stage done. Once a run is under way, a STOP that
+ * arrives keeps what was already paid for and asks for nothing more (Stage.generate, judge).
+ */
+export function mayWriteProject(ctx, workdir, owner) {
+  if (stopRequested(workdir)) {
+    ctx.stdout.write("stopped by the STOP file before anything was drawn or written; remove it to continue\n");
+    return false;
+  }
+  try {
+    requireProjectLease(workdir, { owner, now: ctx.now });
+  } catch (error) {
+    if (error instanceof ProjectLeaseError) throw new MediaError(error.message, { code: PROJECT_LEASED, who: "owner" });
+    throw error;
+  }
+  return true;
+}
+
 /** One stage's connection to the media server and the work directory's books. */
 export class Stage {
   constructor({ slug, workdir, options, status, stage, imageVersion = 0, format = null, now = () => new Date() }) {
@@ -161,6 +184,21 @@ export class Stage {
 
   stop() {
     return stopRequested(this.workdir);
+  }
+
+  /**
+   * The project's lease (core/project-lease.mjs), before anything is reserved, sent or booked:
+   * the worker's unit holds it and a command it runs joins it; a command run by hand takes it for
+   * the rest of its process. Another producer holding it (or possibly holding it) is the owner's
+   * to sort out, and nothing is spent meanwhile.
+   */
+  hold() {
+    try {
+      requireProjectLease(this.workdir, { owner: this.stage, now: this.now });
+    } catch (error) {
+      if (error instanceof ProjectLeaseError) throw new MediaError(error.message, { code: PROJECT_LEASED, who: "owner" });
+      throw error;
+    }
   }
 
   /**
@@ -188,6 +226,7 @@ export class Stage {
     const expected = choiceFor(this.status, kind, this.format);
     const hit = cached(this.workdir, key);
     if (hit) return { ...hit, key, reused: true };
+    this.hold();
     let job;
     const pending = pendingJob(this.workdir, key);
     if (pending) {
@@ -200,10 +239,9 @@ export class Stage {
       try {
         submitted = await submit({ request, ...this.options });
       } catch (error) {
-        // The server answered and took nothing (a spent budget, an exhausted request, a bad
-        // reference): nothing is held. A lost connection may have left a job behind, so its
-        // hold stays until a rerun submits the same key again and books what it finds.
-        if (error instanceof MediaError && error.status > 0) release(this.workdir, key);
+        // An explicit refusal (spent budget, exhausted request, bad reference) releases the
+        // local hold. An uncertain vendor outcome keeps it for owner reconciliation.
+        if (error instanceof MediaError && error.status > 0 && error.code !== "video_media_outcome_uncertain") release(this.workdir, key);
         throw error;
       }
       if (TERMINAL.has(submitted.status)) job = submitted;
@@ -224,6 +262,11 @@ export class Stage {
     rememberJob(this.workdir, key, { job_id: job.id, kind, target }, this.now());
     if (job.status !== "ready" || !job.file?.sha256) {
       const code = job.error?.code || `video_media_job_${job.status}`;
+      if (code === "video_media_outcome_uncertain") {
+        // The vendor may have charged before its result disappeared. Keep both the local
+        // reservation and the job id so a rerun cannot buy a fresh attempt by accident.
+        throw new MediaError(`${id}: ${job.error?.detail || code}; reconcile job ${job.id} before retrying`, { code, who: "owner", job });
+      }
       bookJob(this.workdir, { stage: this.stage, kind, id, provider, model, key, job_id: job.id, seconds, cost_usd: job.status === "failed" ? 0 : Number(job.usd_estimate || 0), status: "failed", error: code }, this.now());
       forgetJob(this.workdir, key, job.id);
       throw new MediaError(`${id}: ${job.error?.detail || code}`, { code, job });
@@ -278,6 +321,7 @@ export class Stage {
    */
   async judge({ id, kind, files, rubric, context = {} }) {
     if (this.stop()) throw stoppedError();
+    this.hold();
     this.spend(JUDGE_USD_PER_CALL, "judge call");
     const verdict = await askJudge({ request: { slug: this.slug, kind, files, rubric, context }, ...this.options });
     appendLedger(this.workdir, { stage: this.stage, kind: "judge", id, provider: "gemini", model: verdict.model ?? "", key: null, cost_usd: JUDGE_USD_PER_CALL, status: "judged" }, this.now());

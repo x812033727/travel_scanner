@@ -43,6 +43,8 @@ Claude session 預設走 B；有人已經用 A 開了批次（`<WORK>` 裡有 `r
 6. **工作檔與證據放 repo 外。** `docs/article-localization/` 底下產生的 `work/`、`baseline.json`、`production-baseline.json`、`source-differences.json` 都沒被 git 忽略，別 commit；repo 裡只留 `releases/<batch>/README.md` 與 `evidence.json`，不寫機器路徑、主機 IP、資料庫 ID、actor ID。
 7. 譯文太長觸發 `text_length` 警告不刪字；留紀錄就好。
 
+站內連結只機械替換已驗證路由的語系；帶 query 的網址目前只收完整相同的 `/foods?city=hong-kong`，不接受額外或重複參數、改編碼或片段；同站網址含 ASCII 控制字元或前後空白也拒絕。公開路由與篩選證據見 `.agents/skills/article-localization/references/pipeline.md`；發布前仍要重新確認。
+
 ## 主幹
 
 | # | 階段 | 路線 A | 路線 B | 關卡 |

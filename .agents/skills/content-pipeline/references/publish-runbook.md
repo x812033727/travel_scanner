@@ -31,6 +31,7 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-i
 
 - `<ACTOR_EMAIL>` 取容器的 `ADMIN_EMAILS` 第一個。沒帶會以「The actor must be an active administrator」失敗，而且什麼都不寫。
 - 在 `apps/api/app/guides/publish_holds.json` 裡的 slug 帶 `--publish` 會整批拒絕；先清 hold 或拿掉那個 slug。
+- `related` 指到還沒匯入的 slug 時，`--publish` 會在各語系都已發布之後才回 rc=1 `guide_related_unknown`，dry-run 看不出來：先匯入被指到的那篇。
 - dry-run 回 `{dry_run, articles: [{slug, taxonomy, locales: [{locale, action, publish}]}]}`；publish 回 `{created, updated, unchanged, published, taxonomy_updated, failed}`。兩者形狀不同，別拿同一段程式比。
 - 五語系文章的 `--locale` 要列全；更新既有文章（`update`）與新文章同一次 `--slug` 匯入。
 - 3c 之前把 3b 重跑一次，輸出存檔後和給站主看的那份 `cmp`；腳本裡先斷言預期的數量（例如「12 篇／60 個 create／沒有別的 slug」），不符就不發布。

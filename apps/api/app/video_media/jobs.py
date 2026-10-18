@@ -11,7 +11,9 @@ vendor refused or failed: a generation that succeeded is billed even when our do
 The models are the settings tab's, but for one exception: a picture for a video that is an
 episode of a series naming its own ``image_model`` is drawn with that model (a brand story
 draws with Gemini 3.1 Flash Image while the dramas keep the settings' Pro; docs/videos/
-STORY.md). The server looks the series up from the video's slug; the request names no model.
+STORY.md). A one-off explainer whose request named a model, or took a cute preset's image-01,
+is drawn with it the same way (docs/videos/DRAMA-FLOW.md §二). The server looks the series up
+from the video's slug; the request names no model.
 """
 
 from __future__ import annotations
@@ -37,6 +39,7 @@ from app.video_automation.models import (
     VideoDramaEpisode,
     VideoDramaSeries,
 )
+from app.video_budget.service import is_pilot, mark_uncertain, reserve, settle
 from app.video_media import meter
 from app.video_media.catalog import MEDIA_VENDORS, MediaModel, find_model
 from app.video_media.models import LIVE_STATUSES, MAX_ATTEMPTS, VideoMediaJob
@@ -53,7 +56,7 @@ from app.video_media.providers import (
 from app.video_media.providers.gemini_images import GeminiImages
 from app.video_media.providers.gemini_music import GeminiMusic
 from app.video_media.providers.gemini_video import GeminiVideo
-from app.video_media.providers.minimax import MiniMaxImages, MiniMaxVideo
+from app.video_media.providers.minimax import MiniMaxImages, MiniMaxMusic, MiniMaxVideo
 from app.video_media.schemas import (
     ClipJobIn,
     ImageJobIn,
@@ -146,7 +149,7 @@ def provider_for(runtime: Settings, vendor: str, kind: str) -> MediaProvider:
         return MiniMaxImages(base, key)
     if kind == "clip":
         return MiniMaxVideo(base, key)
-    raise MediaJobFailed(422, "video_media_model_not_allowed", "MiniMax 沒有音樂模型")
+    return MiniMaxMusic(base, key)
 
 
 async def series_image_model(session: AsyncSession, slug: str) -> str | None:
@@ -189,6 +192,13 @@ def _series_image_model(row: VideoAutomationSettings, model_id: str) -> tuple[st
         model_id,
         f"作品指定的圖片模型 {model_id} 不能用；請在作品上換一個，或清空改用設定分頁的模型",
     )
+
+
+def series_image_vendor(row: VideoAutomationSettings, model_id: str) -> str:
+    """The vendor a picture is asked of when a series names ``model_id``, chosen exactly as
+    ``submit_job`` chooses it (the settings' image vendor first, a retired model refused), so
+    filing a request asks the question the first picture will ask."""
+    return _series_image_model(row, model_id)[0]
 
 
 def _slides_image_model(row: VideoAutomationSettings) -> tuple[str, MediaModel]:
@@ -340,23 +350,51 @@ async def submit_job(
         vendor, model = _slides_image_model(row)
     else:
         vendor, model = _model(row, kind, series_image)
+    if is_pilot(payload.slug) and kind == "clip":
+        raise MediaJobFailed(
+            503,
+            "video_pilot_clip_not_allowed",
+            "試作採用靜態可愛插畫與既有片頭片尾動畫，不能購買生成片段",
+        )
+    if is_pilot(payload.slug) and kind == "image" and (vendor, model.id) != ("minimax", "image-01"):
+        raise MediaJobFailed(
+            503,
+            "video_pilot_budget_unknown_price",
+            "試作插畫須使用已核價的 MiniMax image-01，請先更新系列設定",
+        )
+    if is_pilot(payload.slug) and kind == "music" and (vendor, model.id) != ("gemini", "lyria-3.5"):
+        raise MediaJobFailed(
+            503,
+            "video_pilot_budget_unknown_price",
+            "試作配樂須使用已核價的 Lyria 3.5，或關閉生成配樂",
+        )
     if not key_for(ctx.runtime, vendor):
         raise MediaJobFailed(503, "video_media_not_configured", f"網站還沒有 {vendor} 的金鑰")
     fields = _request_fields(payload, row, model)
     _check_references(ctx.store, payload.slug, fields["references"])
     digest = request_hash({"kind": kind, "vendor": vendor, "model": model.id, **fields})
     existing = await ctx.session.scalar(
-        select(VideoMediaJob).where(
-            VideoMediaJob.slug == payload.slug, VideoMediaJob.request_hash == digest
-        )
+        # A failed request can be retried by two POSTs at once. Lock before inspecting its
+        # status, then commit the queued transition before either caller advances the job.
+        select(VideoMediaJob)
+        .where(VideoMediaJob.slug == payload.slug, VideoMediaJob.request_hash == digest)
+        .with_for_update()
+        .execution_options(populate_existing=True)
     )
     seconds = int(fields.get("seconds") or 0)
     units = meter.units_of(kind, seconds)
     meter_name = meter.METER_BY_KIND[kind]
     if existing is not None:
         if existing.status in LIVE_STATUSES:
+            await ctx.session.commit()
             await advance_job(ctx, existing)
             return existing, False
+        if is_pilot(payload.slug) and existing.error_code == "video_media_outcome_uncertain":
+            raise MediaJobFailed(
+                409,
+                "video_media_outcome_uncertain",
+                "這個試作媒體工作可能已由供應商收費；先核對舊操作，不能自動重送",
+            )
         if existing.attempts >= MAX_ATTEMPTS:
             raise MediaJobFailed(
                 409,
@@ -369,6 +407,11 @@ async def submit_job(
             )
         existing.status = "queued"
         existing.attempts += 1
+        # A failed paid attempt keeps its own pilot reservation. A new attempt must use a
+        # fresh operation ID so both possible charges remain counted against the same film.
+        existing.request = {
+            k: v for k, v in existing.request.items() if k != "pilot_budget_operation_id"
+        }
         # A refunded failure cleared the estimate; price this newly reserved attempt again.
         existing.usd_estimate = meter.usd_for(model, kind, seconds, fields.get("resolution"))
         existing.error_code = None
@@ -479,15 +522,53 @@ async def _submit(ctx: MediaContext, job: VideoMediaJob, provider: MediaProvider
     except MediaUpstreamError as error:
         await _fail(ctx, job, error, refund=True)
         return
+    pilot = is_pilot(job.slug)
+    operation = ""
+    if pilot:
+        operation = str(job.request.get("pilot_budget_operation_id") or uuid4())
+        job.request = {**job.request, "pilot_budget_operation_id": operation}
+        # Persist the operation ID first, then let the budget service commit only its own
+        # reservation transaction. A crash in either gap leaves a safe queued job.
+        await ctx.session.commit()
+        held = await reserve(
+            ctx.session,
+            slug=job.slug,
+            operation_id=operation,
+            category=f"media-{job.kind}",
+            provider=job.provider,
+            model=job.model,
+            max_usd=job.usd_estimate if job.usd_estimate > 0 else None,
+        )
+        if held is not None and not held.dispatch_allowed:
+            raise MediaJobFailed(
+                409,
+                "video_pilot_budget_operation_reused",
+                "這個媒體工作可能已送出供應商；先核對舊操作，不能自動重送",
+            )
     client, owned = _client(ctx, ctx.media.video_media_submit_timeout_seconds)
     try:
         submitted = await provider.submit(request, client)
     except MediaUpstreamError as error:
         if error.kind == "busy":
+            if pilot:
+                # A vendor 429/503 is a wire response, not proof that the request incurred
+                # no charge. Keep the hold and stop this job for reconciliation.
+                await _fail(
+                    ctx,
+                    job,
+                    error,
+                    refund=False,
+                    code="video_media_outcome_uncertain",
+                )
+                return
             job.retry_after_seconds = _retry_after(error, 30)  # type: ignore[attr-defined]
             return
         await _fail(ctx, job, error, refund=True)
         return
+    except Exception:
+        if pilot:
+            await mark_uncertain(ctx.session, slug=job.slug, operation_id=operation)
+        raise
     finally:
         if owned:
             await client.aclose()
@@ -516,6 +597,18 @@ async def _settle(
 async def _poll(ctx: MediaContext, job: VideoMediaJob, provider: MediaProvider) -> None:
     now = ctx.now()
     if job.submitted_at is not None and now - job.submitted_at > SUBMITTED_TTL:
+        if is_pilot(job.slug):
+            await _fail(
+                ctx,
+                job,
+                MediaUpstreamError(
+                    503,
+                    "the vendor's operation is older than a day; reconcile its charge",
+                    "failed",
+                ),
+                refund=False,
+            )
+            return
         job.status = "expired"
         job.error_code = ERROR_CODES["expired"]
         job.error_detail = "the vendor's operation is older than a day; submit it again"
@@ -624,6 +717,15 @@ async def _ready(
     job.error_code = None
     job.error_detail = None
     job.updated_at = now
+    operation = str(job.request.get("pilot_budget_operation_id") or "")
+    if is_pilot(job.slug) and operation:
+        await ctx.session.commit()
+        await settle(
+            ctx.session,
+            slug=job.slug,
+            operation_id=operation,
+            actual_usd=job.usd_estimate,
+        )
     await ctx.session.commit()
 
 
@@ -635,10 +737,19 @@ async def _fail(
     refund: bool,
     code: str | None = None,
 ) -> None:
+    operation = str(job.request.get("pilot_budget_operation_id") or "")
+    if is_pilot(job.slug) and operation:
+        # Once a pilot operation was reserved, every downstream vendor/storage failure is
+        # financially ambiguous until a receipt proves otherwise. The worker must not book
+        # $0 or automatically requeue a fresh attempt under another operation ID.
+        refund = False
+        code = "video_media_outcome_uncertain"
     job.status = "failed"
     job.error_code = code or ERROR_CODES.get(error.kind, "video_media_upstream_failed")
     job.error_detail = error.message[:2000]
     job.updated_at = ctx.now()
+    if is_pilot(job.slug) and operation:
+        await mark_uncertain(ctx.session, slug=job.slug, operation_id=operation)
     if refund:
         job.usd_estimate = Decimal("0")
         await meter.release(

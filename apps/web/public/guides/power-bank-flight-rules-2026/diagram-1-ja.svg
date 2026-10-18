@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','Noto Sans KR','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">モバイルバッテリーの機内持込み判断図 / モバイルバッテリーの機内持込み：Wh・個数・機内ルール</title>
+  <desc id="desc">まずモバイルバッテリーのラベルにあるWhを確認する。Whの表示がなければ、mAhに電圧を掛けて1,000で割る。例えば27,000mAhに3.7Vを掛けると99.9Whになる。Whによって三つに分かれる。100Wh以下は機内持込み可、預け入れ不可。100Wh超から160Whまでは機内持込み可、預け入れ不可で、事前に航空会社へ確認する。160Wh超は航空機への持込み禁止。最初の二つはいずれも一人最大2個の制限につながる。搭乗後の三つのルールは、本体を充電しない、スマートフォンへ給電しない、頭上の収納棚に入れない。下部の時系列は、ICAOが2026年3月27日に同日発効、台湾民用航空局が2026年4月8日、韓国国土交通部が2026年4月20日、日本国土交通省が2026年4月24日。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"></rect>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"></path></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">モバイルバッテリーの機内持込み：まずWh、次に個数、搭乗後は三つの禁止事項</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">モバイルバッテリーの機内持込み：Whを確認し、最大2個まで。機内では三つのルールを守る（2026）</text>
+
+
+  <rect x="50" y="180" width="400" height="160" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"></rect>
+  <text x="250" y="226" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">ラベル確認：Wh</text>
+  <text x="250" y="266" font-size="19" fill="#102A2B" text-anchor="middle">Wh表示なし：mAh×V÷1,000</text>
+  <text x="250" y="304" font-size="18" fill="#5C6B6B" text-anchor="middle">例 27,000mAh×3.7V＝99.9Wh</text>
+
+
+  <path d="M 450 260 L 534 180" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"></path>
+  <path d="M 450 260 L 532 315" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"></path>
+  <path d="M 450 260 L 534 448" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"></path>
+
+  <rect x="540" y="125" width="400" height="110" rx="14" fill="#E7F2EC" stroke="#2E7D5B" stroke-width="4"></rect>
+  <text x="740" y="170" font-size="24" font-weight="700" fill="#1E5A40" text-anchor="middle">100Wh以下</text>
+  <text x="740" y="208" font-size="19" fill="#1E5A40" text-anchor="middle">機内持込み可・預け入れ不可</text>
+
+  <rect x="540" y="260" width="400" height="110" rx="14" fill="#FBEFE3" stroke="#D97A2B" stroke-width="4"></rect>
+  <text x="740" y="305" font-size="24" font-weight="700" fill="#8A4A14" text-anchor="middle">100Wh超～160Wh以下</text>
+  <text x="740" y="343" font-size="17" fill="#8A4A14" text-anchor="middle" style="font-size: 17px;">持込み可・預け入れ不可・事前に航空会社へ確認</text>
+
+  <rect x="540" y="395" width="400" height="110" rx="14" fill="#FBE9E4" stroke="#B8442D" stroke-width="4"></rect>
+  <text x="740" y="440" font-size="24" font-weight="700" fill="#8A2E1D" text-anchor="middle">160Wh超</text>
+  <text x="740" y="478" font-size="19" fill="#8A2E1D" text-anchor="middle">機内持込み禁止</text>
+
+
+  <path d="M 940 180 L 1004 232" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"></path>
+  <path d="M 940 315 L 1004 268" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"></path>
+  <rect x="1010" y="185" width="200" height="130" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"></rect>
+  <text x="1110" y="232" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">一人あたり最大</text>
+  <text x="1110" y="284" font-size="36" font-weight="700" fill="#0B4F4D" text-anchor="middle">2個</text>
+  <path d="M 1210 250 L 1264 250" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"></path>
+
+
+  <rect x="1270" y="125" width="290" height="380" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"></rect>
+  <text x="1415" y="172" font-size="22" font-weight="700" fill="#0D6B68" text-anchor="middle">搭乗後・飛行中</text>
+  <rect x="1292" y="200" width="246" height="76" rx="12" fill="#E3F0EF"></rect>
+  <text x="1415" y="246" font-size="20" fill="#102A2B" text-anchor="middle">本体を充電しない</text>
+  <rect x="1292" y="298" width="246" height="76" rx="12" fill="#E3F0EF"></rect>
+  <text x="1415" y="344" font-size="18" fill="#102A2B" text-anchor="middle" style="font-size: 18px;">スマートフォンへ給電しない</text>
+  <rect x="1292" y="396" width="246" height="76" rx="12" fill="#E3F0EF"></rect>
+  <text x="1415" y="442" font-size="20" fill="#102A2B" text-anchor="middle">頭上の収納棚に入れない</text>
+
+
+  <rect x="50" y="560" width="1500" height="270" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"></rect>
+  <text x="80" y="600" font-size="22" font-weight="700" fill="#102A2B">施行日</text>
+  <line x1="130" y1="700" x2="1470" y2="700" stroke="#5C6B6B" stroke-width="4"></line>
+  <circle cx="250" cy="700" r="12" fill="#0D6B68"></circle>
+  <circle cx="620" cy="700" r="12" fill="#0D6B68"></circle>
+  <circle cx="990" cy="700" r="12" fill="#0D6B68"></circle>
+  <circle cx="1360" cy="700" r="12" fill="#0D6B68"></circle>
+  <text x="250" y="670" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">ICAO 国際民間航空機関</text>
+  <text x="620" y="670" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">台湾</text>
+  <text x="990" y="670" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">韓国</text>
+  <text x="1360" y="670" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">日本</text>
+  <text x="250" y="742" font-size="20" fill="#102A2B" text-anchor="middle">2026年3月27日</text>
+  <text x="620" y="742" font-size="20" fill="#102A2B" text-anchor="middle">2026年4月8日</text>
+  <text x="990" y="742" font-size="20" fill="#102A2B" text-anchor="middle">2026年4月20日</text>
+  <text x="1360" y="742" font-size="20" fill="#102A2B" text-anchor="middle">2026年4月24日</text>
+  <text x="250" y="774" font-size="17" fill="#5C6B6B" text-anchor="middle">同日発効</text>
+  <text x="620" y="774" font-size="17" fill="#5C6B6B" text-anchor="middle">民用航空局</text>
+  <text x="990" y="774" font-size="17" fill="#5C6B6B" text-anchor="middle">国土交通部</text>
+  <text x="1360" y="774" font-size="17" fill="#5C6B6B" text-anchor="middle">国土交通省</text>
+  <text x="80" y="812" font-size="16" fill="#5C6B6B">点の間隔は日付に比例しません。航空会社はより厳しい規則を設けられるため、各社の告知に従ってください。</text>
+
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 作図 2026</text>
+</svg>

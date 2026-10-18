@@ -2,7 +2,7 @@ import { DatabaseSync } from "node:sqlite";
 import { mkdirSync, statSync, openSync, closeSync, writeSync, fsyncSync, unlinkSync, createReadStream } from "node:fs";
 import { createHash } from "node:crypto";
 import path from "node:path";
-import { ACTIVE, CHUNK, HASH, Refused, hash, jobSteps } from "./contract.mjs";
+import { ACTIVE, CHUNK, HASH, Refused, dubLocale, hash, jobSteps } from "./contract.mjs";
 
 export async function fileHash(file) {
   const digest = createHash("sha256");
@@ -65,7 +65,11 @@ export class Store {
     return { id: job.id, slug: job.manifest.slug, channel_id: job.manifest.channel_id, review_sha256: job.manifest.review_sha256,
       state: job.state, code: job.code, video_id: job.video_id, upload_started: job.upload_started,
       steps: job.steps.map((id) => ({ id, done: job.completed.includes(id) })), updated_at: job.updated_at,
-      files: job.manifest.files.map((f) => ({ ...f, received: this.received(job, f.sha256) })) };
+      files: job.manifest.files.map((f) => ({ ...f, received: this.received(job, f.sha256) })),
+      // The receipt of each dub track: "placed" by this job, "present" when Studio's row already
+      // showed a published dub and nothing was sent, "pending" until the step is recorded.
+      dubs: job.manifest.files.filter((f) => dubLocale(f.role)).map((f) => ({ locale: dubLocale(f.role), sha256: f.sha256,
+        state: (job.completed.includes(f.role) && job.dubs?.[f.role]) || "pending" })) };
   }
   async put(id, sha, offset, bytes) {
     const key = id + sha;

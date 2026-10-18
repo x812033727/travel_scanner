@@ -25,7 +25,12 @@ pytestmark = pytest.mark.skipif(
 
 
 @pytest_asyncio.fixture(scope="module", loop_scope="module", autouse=True)
-async def dispose_engine_after_module() -> AsyncIterator[None]:
+async def isolate_async_clients_for_module() -> AsyncIterator[None]:
+    # An earlier module may leave the engine's pool and the cached Redis client holding
+    # connections opened on its own event loop, closed by now (test_analytics_integration.py
+    # does): this module starts on fresh ones, as the other integration modules do.
+    await engine.dispose(close=False)
+    get_redis.cache_clear()
     yield
     await engine.dispose()
     await get_redis().aclose()

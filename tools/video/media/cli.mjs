@@ -2,8 +2,8 @@
 // in their own modules, each built by its own ticket (docs/videos/DRAMA.md). Until a module
 // exists its command says which ticket builds it and exits with the "missing tool" code, the
 // way tools/video/cli.mjs does for whole areas. `stock` (stock.mjs, docs/videos/ILLUSTRATED.md
-// §圖庫照片) is reached by running this file directly, `node tools/video/media/cli.mjs stock …`,
-// until tools/video/cli.mjs lists it among its areas.
+// §圖庫照片) is reached the same way, `node tools/video/cli.mjs stock …`; this file also runs on
+// its own (main below).
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -120,8 +120,8 @@ export async function run(command, args, ctx) {
 
 /**
  * This file run on its own: the context tools/video/cli.mjs would build, and the same answers to
- * a usage mistake (exit 2). `stock` has no entry in that CLI's area table yet, so this is how it
- * is reached: `node tools/video/media/cli.mjs stock search --query "…"`.
+ * a usage mistake (exit 2). tools/video/cli.mjs is the entry point for every command here,
+ * `stock` included; the media tests call this one.
  */
 export async function main(argv, overrides = {}) {
   const ctx = { root: ROOT, env: process.env, stdout: process.stdout, stderr: process.stderr, now: () => new Date(), EXIT: EXIT_CODES, ...overrides };

@@ -13,8 +13,8 @@ import { createHash } from "node:crypto";
 
 import { parseSrt } from "./captions.mjs";
 import { SERIES_SLUG } from "./drama.mjs";
-import { checkYoutubeFields, composeDescription, DESCRIPTION_MAX_BYTES } from "./metadata.mjs";
-import { validateVideo } from "./schema.mjs";
+import { checkYoutubeFields, composeDescription, DESCRIPTION_MAX_BYTES, withCaptionTag } from "./metadata.mjs";
+import { narrationLocale, validateVideo } from "./schema.mjs";
 import { visualHash } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
 
@@ -60,7 +60,6 @@ const VIDEO_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 // The chapter label a locale falls back to when every title would not fit the description.
 const EPISODE_LABELS = {
   "zh-TW": (n) => `第 ${n} 集`,
-  "zh-CN": (n) => `第 ${n} 集`,
   ja: (n) => `第${n}話`,
   ko: (n) => `${n}화`,
   en: (n) => `Episode ${n}`,
@@ -261,7 +260,7 @@ export function compilationLayout(doc, episodes, { branding = null } = {}) {
       frame += CARD_FRAMES;
     }
     if (!Number.isInteger(episode.frames) || episode.frames <= 0) throw new Error(`episode ${episode.slug} has no frame count`);
-    layout.push({ kind: "episode", id: episode.slug, slug: episode.slug, episode: n, start_frame: frame, frames: episode.frames, ...(episode.file ? { file: episode.file } : {}), ...(episode.sha256 ? { sha256: episode.sha256 } : {}), ...(episode.body_sha256 ? { body_sha256: episode.body_sha256, branding_hash: episode.branding_hash, intro_frames: episode.intro_frames } : {}) });
+    layout.push({ kind: "episode", id: episode.slug, slug: episode.slug, episode: n, start_frame: frame, frames: episode.frames, ...(episode.file ? { file: episode.file } : {}), ...(episode.sha256 ? { sha256: episode.sha256 } : {}), ...(episode.body_sha256 ? { body_sha256: episode.body_sha256, branding_hash: episode.branding_hash, intro_frames: episode.intro_frames, ...(episode.intro_at_frame ? { intro_at_frame: episode.intro_at_frame } : {}) } : {}) });
     frame += episode.frames;
   });
   // Channel branding supplies the single closing card for the whole compilation.
@@ -343,12 +342,18 @@ export function shiftCues(cues, offsetMs) {
 /**
  * The episodes' caption files as one track: each file's cues moved to where its episode starts.
  * `perEpisode` is [{ srt, offsetMs, introMs? }] in play order. Branded episode captions already
- * include their own intro, which is removed before placing the body in the compilation.
+ * include their own intro, which is removed before placing the body in the compilation. An
+ * episode whose intro played after its first chapter (`introAtMs`, the intro's body time) keeps
+ * the cues before it and removes the intro only from the cues after it.
  * An episode's cues end inside its own
  * length (captions never outlive their line), so the merged track never overlaps at a seam.
  */
 export function mergeCaptions(perEpisode) {
-  return perEpisode.flatMap(({ srt, offsetMs, introMs = 0 }) => shiftCues(parseSrt(srt), offsetMs - introMs));
+  return perEpisode.flatMap(({ srt, offsetMs, introMs = 0, introAtMs = 0 }) => {
+    const cues = parseSrt(srt);
+    if (!introAtMs) return shiftCues(cues, offsetMs - introMs);
+    return cues.flatMap((cue) => shiftCues([cue], cue.start_ms < introAtMs ? offsetMs : offsetMs - introMs));
+  });
 }
 
 /**
@@ -357,8 +362,8 @@ export function mergeCaptions(perEpisode) {
  * falls back to 「第 N 集」 (in the locale's words). `titles` is the locale's own chapter titles
  * keyed by scene, as composeDescription takes them. Returns { titles, description, shortened }.
  */
-export function descriptionWithinBudget(body, timeline, titles = {}, { locale = "zh-TW", sources = [], tags = [], article = null } = {}) {
-  const compose = (chapterTitles) => composeDescription({ body, timeline, chapterTitles, article, sources, locale, tags });
+export function descriptionWithinBudget(body, timeline, titles = {}, { locale = "zh-TW", sources = [], tags = [], article = null, assets = [], category = null, series = null, campaign = null } = {}) {
+  const compose = (chapterTitles) => composeDescription({ body, timeline, chapterTitles, article, sources, assets, locale, tags, category, series, campaign });
   const overBudget = (description) => checkYoutubeFields({ title: "", description, tags: [] }).length > 0;
   const full = compose(titles);
   if (!overBudget(full)) return { titles, description: full, shortened: false };
@@ -381,8 +386,8 @@ export function lintCompilation(doc, context = {}) {
   const warn = (path, message) => warnings.push({ path, message });
   const spec = doc.compilation;
   const timeline = estimatedCompilationTimeline(doc);
-  const budget = descriptionWithinBudget(doc.youtube.description, timeline, {}, { sources: doc.sources ?? [], tags: doc.youtube.tags });
-  for (const problem of checkYoutubeFields({ title: doc.youtube.title, description: budget.description, tags: doc.youtube.tags })) error("youtube", problem);
+  const budget = descriptionWithinBudget(doc.youtube.description, timeline, {}, { sources: doc.sources ?? [], tags: doc.youtube.tags, assets: doc.assets ?? [], category: doc.category ?? null, series: doc.series ?? null, campaign: doc.slug });
+  for (const problem of checkYoutubeFields({ title: withCaptionTag(doc.youtube.title, narrationLocale(doc)), description: budget.description, tags: doc.youtube.tags })) error("youtube", problem);
   if (budget.shortened) warn("youtube.description", `with every chapter titled the description would pass ${DESCRIPTION_MAX_BYTES} bytes, so the chapters fall back to 「第 N 集」`);
   if (doc.youtube.title === PLACEHOLDER_TITLE) warn("youtube.title", "still the placeholder; the worker plans the title, description and thumbnail first");
   if (!doc.thumbnail) warn("thumbnail", "no thumbnail yet: the worker adds one on an episode keyframe with the planned metadata");

@@ -243,7 +243,33 @@ def test_hub_requires_public_catalogue_lessons_even_without_body_links(tmp_path,
     }
 
 
-def test_unchanged_reviewed_database_draft_is_selected_and_published(tmp_path, monkeypatch):
+@pytest.mark.parametrize(
+    "repository_metadata, baseline_metadata, expected_metadata",
+    [
+        ({}, {}, {"aliases": {}, "related": [], "news_date": None}),
+        (
+            {
+                "aliases": {"zh-TW": ["holiday guide", "travel dates"]},
+                "related": ["other-article", "second-article"],
+                "news_date": "2026-09-14",
+            },
+            {},
+            {
+                "aliases": {"zh-TW": ["holiday guide", "travel dates"]},
+                "related": ["other-article", "second-article"],
+                "news_date": "2026-09-14",
+            },
+        ),
+        (
+            {"aliases": {"en": ["old alias"]}, "related": ["old-article"], "news_date": "2026-09-14"},
+            {"aliases": {"en": ["current alias"]}, "related": ["current-article"], "news_date": "2026-10-07"},
+            {"aliases": {"en": ["current alias"]}, "related": ["current-article"], "news_date": "2026-10-07"},
+        ),
+    ],
+)
+def test_unchanged_reviewed_database_draft_is_selected_and_published(
+    tmp_path, monkeypatch, repository_metadata, baseline_metadata, expected_metadata
+):
     root = tmp_path / "repo"
     pack_path = root / "apps/api/app/guides/content/public-article.json"
     pack_path.parent.mkdir(parents=True)
@@ -254,6 +280,7 @@ def test_unchanged_reviewed_database_draft_is_selected_and_published(tmp_path, m
     pack = {
         "slug": "public-article",
         "kind": "life",
+        **repository_metadata,
         "locales": locale_documents,
     }
     pack_path.write_text(json.dumps(pack), encoding="utf-8")
@@ -273,6 +300,7 @@ def test_unchanged_reviewed_database_draft_is_selected_and_published(tmp_path, m
                     "valid_until": None,
                     "featured": False,
                     "display_order": 100,
+                    **baseline_metadata,
                 },
                 "source_document": locale_documents["zh-TW"],
                 "source_sha256": module.digest(locale_documents["zh-TW"]),
@@ -320,6 +348,7 @@ def test_unchanged_reviewed_database_draft_is_selected_and_published(tmp_path, m
         (tmp_path / "bundle/packs/public-article.json").read_text(encoding="utf-8")
     )
     assert assembled["locales"]["en"] == locale_documents["en"]
+    assert {key: assembled[key] for key in expected_metadata} == expected_metadata
 
     original = copy.deepcopy(locale_documents["zh-TW"])
     corrected = copy.deepcopy(original)
@@ -382,6 +411,10 @@ def test_unchanged_reviewed_database_draft_is_selected_and_published(tmp_path, m
         source_correction_reviews=[review_path],
     )
     entry = correction_manifest["articles"][0]
+    corrected_pack = json.loads(
+        (tmp_path / "corrected-bundle/packs/public-article.json").read_text(encoding="utf-8")
+    )
+    assert {key: corrected_pack[key] for key in expected_metadata} == expected_metadata
     assert entry["locales"] == ["zh-TW", "en"]
     assert entry["publish_locales"] == ["zh-TW", "en"]
     assert entry["source_corrections"][0]["review_sha256"] == module.sha(review_path)

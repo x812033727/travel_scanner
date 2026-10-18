@@ -8,16 +8,17 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { isExplainer, isShot } from "../core/drama.mjs";
+import { explainerSeries, illustrated, isShot } from "../core/drama.mjs";
 import { LOCALES, narrationLocale } from "../core/schema.mjs";
 import { localizedThumbnail, localizedThumbnailHash, thumbnailGap } from "../core/translations.mjs";
+import { watermarkDataUri } from "../core/watermark.mjs";
 
 /** The series whose own thumbnail a video wears (templates.mjs THUMB_SERIES), or null. */
-export const thumbnailSeries = (doc) => (isExplainer(doc) ? "sothatswhy" : null);
+export const thumbnailSeries = (doc) => explainerSeries(doc);
 import { estimateTimeline } from "../core/timeline.mjs";
 import { screencastHtml, screencastPlan } from "../screencast/scene.mjs";
-import { isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
-import { isStockPath, ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
+import { captureCount, isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
+import { ASSET_ROOTS, captureRef, isStockPath, MARK_OVERLAID, ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
 
 export const THEME_FILE = fileURLToPath(new URL("../templates/theme.css", import.meta.url));
 // Chapter cards and the title card say where they are themselves; a label on top would repeat it.
@@ -33,13 +34,20 @@ export function themeHash(css = readFileSync(THEME_FILE, "utf8")) {
   return hash(css);
 }
 
+// The templates that show a picture file named by `data.image`.
+const IMAGE_TEMPLATES = new Set(["screenshot", "photo"]);
+const THUMBNAIL_IMAGE = /\.(?:png|jpe?g|webp)$/i;
+const thumbnailAssetPath = (asset) => typeof asset === "string" && (
+  isStockPath(asset) || (ASSET_ROOTS.some((prefix) => asset.startsWith(prefix)) && !asset.includes("..") && !asset.includes("\\") && !asset.includes("//") && THUMBNAIL_IMAGE.test(asset))
+);
+
 /**
- * The files a scene draws: its diagram or its screenshot, as a repository path or a stock photo's
- * work-directory path (stock/<sha256>.<ext>, templates.mjs isStockPath).
+ * The files a scene draws: its diagram, its screenshot or its photograph, as a repository path or
+ * a stock photo's work-directory path (stock/<sha256>.<ext>, templates.mjs isStockPath).
  */
 export function sceneAssets(scene) {
   if (scene.template === "diagram" && typeof scene.data?.svg === "string") return [scene.data.svg];
-  if (scene.template === "screenshot" && typeof scene.data?.image === "string") return [scene.data.image];
+  if (IMAGE_TEMPLATES.has(scene.template) && typeof scene.data?.image === "string") return [scene.data.image];
   return [];
 }
 
@@ -53,8 +61,9 @@ export function assetFile(asset, { root, workdir = null }) {
  * Template data problems for the whole video, labelled like lint's. With `root`, also the asset
  * files: they must exist, and an SVG must not script or reach the network. A stock photo must be
  * listed in assets[] (that is where the description's credit comes from; `stock fetch` writes the
- * entry) and, with `workdir`, be fetched into it. A drama's shots are generated clips, not
- * slides: lint checks their prompts and the media stages draw them.
+ * entry) and, with `workdir`, be fetched into it. A photo card's photograph is someone's picture
+ * wherever its file is, so a repository photograph must be listed in assets[] too. A drama's
+ * shots are generated clips, not slides: lint checks their prompts and the media stages draw them.
  */
 export function renderProblems(doc, root = null, { workdir = null } = {}) {
   const problems = [];
@@ -68,9 +77,10 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
     for (const asset of sceneAssets(scene)) {
       if (isStockPath(asset)) {
         if (!listed(asset)) problems.push({ path: where, message: `${asset} is not in assets[]: stock fetch writes the entry there, and without it the description carries no credit` });
-        if (workdir && !existsSync(path.join(workdir, asset))) problems.push({ path: where, message: `${asset} is not in the work directory; fetch it with stock fetch (tools/video/media/cli.mjs)` });
+        if (workdir && !existsSync(path.join(workdir, asset))) problems.push({ path: where, message: `${asset} is not in the work directory; fetch it with stock fetch (node tools/video/cli.mjs)` });
         continue;
       }
+      if (scene.template === "photo" && !listed(asset)) problems.push({ path: where, message: `${asset} is not in assets[]: a photograph's source and licence go there, and without it the description carries no credit` });
       if (!root) continue;
       const file = path.join(root, asset);
       if (!existsSync(file)) problems.push({ path: where, message: `${asset} does not exist` });
@@ -78,13 +88,60 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
     }
   });
   for (const message of thumbnailProblems(doc.thumbnail, { series: thumbnailSeries(doc) })) problems.push({ path: "thumbnail", message });
+  // An opted-in thumbnail picture must be a credited, local raster asset. Check A and the
+  // effective B/C data, since a variant may override A's asset.
+  for (const { id, thumbnail } of [{ id: "a", thumbnail: doc.thumbnail }, ...thumbnailVariants(doc.thumbnail)]) {
+    const data = thumbnail?.data;
+    if (!data || !Object.hasOwn(data, "asset")) continue;
+    const label = id === "a" ? "data.asset" : `variant ${id}: data.asset`;
+    const asset = data.asset;
+    if (!thumbnailAssetPath(asset)) {
+      problems.push({ path: "thumbnail", message: `${label} must be a raster image under ${ASSET_ROOTS.join(" or ")}, or stock/<sha256>.png|jpg|webp` });
+      continue;
+    }
+    if (data.capture !== undefined || data.shot !== undefined) problems.push({ path: "thumbnail", message: `${label} cannot be combined with data.capture or data.shot` });
+    const credit = (Array.isArray(doc.assets) ? doc.assets : []).find((entry) => entry?.path === asset);
+    if (!credit) problems.push({ path: "thumbnail", message: `${label} ${asset} is not in assets[]; the thumbnail needs a credited source` });
+    else if (typeof credit.source !== "string" || !credit.source.trim() || typeof credit.license !== "string" || !credit.license.trim()) problems.push({ path: "thumbnail", message: `${label} ${asset} needs source and license in assets[]` });
+    const file = (isStockPath(asset) ? workdir : root) ? assetFile(asset, { root, workdir }) : null;
+    if (file && !existsSync(file)) problems.push({ path: "thumbnail", message: `${label} ${asset} does not exist${isStockPath(asset) ? " in the work directory" : ""}` });
+  }
   // A variant's own background must be a shot too (A's is checked with the drama's shots).
   const shots = new Set(doc.scenes.filter(isShot).map((scene) => scene.id));
   for (const { id, thumbnail } of thumbnailVariants(doc.thumbnail)) {
     const shot = thumbnail.data.shot;
     if (shot !== undefined && shot !== doc.thumbnail.data?.shot && !shots.has(shot)) problems.push({ path: "thumbnail", message: `variant ${id}: data.shot "${shot}" is not a shot of this video` });
   }
+  // A thumbnail's `capture` subject must be a still one of this video's screencast scenes takes.
+  if (doc.thumbnail && !problems.some((problem) => problem.path === "thumbnail")) {
+    const screencasts = new Map(doc.scenes.filter(isScreencast).map((scene) => [scene.id, captureCount(scene.data)]));
+    const where = (id) => (id === "a" ? "data.capture" : `variant ${id}: data.capture`);
+    for (const { id, thumbnail } of [{ id: "a", thumbnail: doc.thumbnail }, ...thumbnailVariants(doc.thumbnail)]) {
+      const ref = captureRef(thumbnail.data?.capture);
+      if (!ref) continue;
+      if (!screencasts.has(ref.scene)) problems.push({ path: "thumbnail", message: `${where(id)} "${thumbnail.data.capture}" is not a screencast scene of this video` });
+      else if (ref.index >= screencasts.get(ref.scene)) problems.push({ path: "thumbnail", message: `${where(id)} "${thumbnail.data.capture}": scene ${ref.scene} takes ${screencasts.get(ref.scene)} captures` });
+    }
+  }
   return problems;
+}
+
+/**
+ * A thumbnail's subject, from the sources in the order the owner set (templates.mjs
+ * THUMB_SUBJECTS): the still of the screencast scene `data.capture` names, from `screencasts`
+ * (scene id to capture manifest), else the keyframe of the shot `data.shot` names, from
+ * `keyframes`. Returns { kind, file, sha256 } for the picture, or `{ kind, file: null }` when
+ * the source is named but not drawn or taken yet, or null when neither is named.
+ */
+export function thumbnailSubject(data, { keyframes = {}, screencasts = {} } = {}) {
+  const capture = captureRef(data?.capture);
+  if (capture) {
+    const still = screencasts[capture.scene]?.captures?.[capture.index];
+    return still?.file ? { kind: "capture", file: still.file, sha256: still.sha256 ?? "" } : { kind: "capture", file: null };
+  }
+  const shot = typeof data?.shot === "string" ? data.shot : null;
+  if (shot) return keyframes[shot]?.file ? { kind: "shot", file: keyframes[shot].file, sha256: keyframes[shot].sha256 ?? "" } : { kind: "shot", file: null };
+  return null;
 }
 
 /**
@@ -95,18 +152,26 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
  * redraws its slide too; without `workdir` the photo is not read and not part of the key.
  * A drama's shots come back as `{ kind: "clip", states: [] }`: the clips stage supplies their
  * pictures. `keyframes` maps a shot id to its drawn keyframe `{ file, sha256 }` (the keyframes
- * manifest's `shots`); a thumbnail that names a shot uses that picture as its background, and the
+ * manifest's `shots`); a thumbnail that names a shot uses that picture as its subject, and the
  * picture's hash is part of the thumbnail's key. Without the keyframe, `thumbnail.keyframe` is
  * null and the caller says what to run first. `screencasts` maps a screencast scene's id to its
  * capture manifest (tools/video/screencast/capture.mjs); each state shows one capture, and the
- * captures' hashes are part of its key. With `translations` (locale to i18n file), every other
+ * captures' hashes are part of its key. A thumbnail whose `capture` names one of those scenes
+ * takes that still as its subject before any shot (`thumbnail.capture` and `thumbnail.still`,
+ * null until the scene is taken). With `translations` (locale to i18n file), every other
  * caption locale whose thumbnail words are current gets its own thumbnail in
  * `thumbnail.locales` ({ locale, file, hash, html, key, text }), the same picture and layout with
- * its words; `thumbnail.gaps` says why each other locale has none.
+ * its words; `thumbnail.gaps` says why each other locale has none. With `watermark` (the mark
+ * render selected, core/watermark.mjs), every card carries the channel mark in its corner and
+ * comes back `marked: true`; a card assemble will move (`movesAsCard`) leaves the corner empty and
+ * comes back `marked: false`, for assemble to lay the mark over its segment, where it stays
+ * still. Without one, the plan is what it was.
  */
-export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = {}, screencasts = {}, translations = null, workdir = null } = {}) {
+export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = {}, screencasts = {}, translations = null, workdir = null, watermark = null } = {}) {
   const timeline = estimateTimeline(doc);
   const chapterCount = doc.scenes.filter((scene) => scene.chapter).length;
+  const drawn = watermark ? { src: watermarkDataUri(watermark), box: watermark.box } : null;
+  const cardsMove = illustrated(doc);
   let chapter = null;
   let chapterNumber = 0;
   const scenes = doc.scenes.map((scene, index) => {
@@ -115,9 +180,11 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
       chapterNumber += 1;
     }
     if (isShot(scene)) return { id: scene.id, template: scene.template, kind: "clip", states: [] };
+    const mark = !drawn ? null : cardsMove && movesAsCard(timeline.scenes[index].states) ? MARK_OVERLAID : drawn;
+    const marked = mark ? { marked: mark !== MARK_OVERLAID } : {};
     if (isScreencast(scene)) {
-      const states = screencastStates(scene, timeline.scenes[index].states, screencasts[scene.id], theme, { chapter, chapterNumber, chapterCount });
-      return { id: scene.id, template: scene.template, kind: "stills", states };
+      const states = screencastStates(scene, timeline.scenes[index].states, screencasts[scene.id], theme, { chapter, chapterNumber, chapterCount, ...(mark ? { mark } : {}) });
+      return { id: scene.id, template: scene.template, kind: "stills", states, ...marked };
     }
     const totalReveals = scene.lines.reduce((sum, line) => sum + (line.reveal ?? 0), 0);
     const assets = root ? sceneAssets(scene).map((asset) => assetFile(asset, { root, workdir })).filter(Boolean).map((file) => readFileSync(file)) : [];
@@ -133,25 +200,38 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
         chapter: NO_CHAPTER_LABEL.has(scene.template) ? null : chapter,
         chapterNumber,
         chapterCount,
+        ...(mark ? { mark } : {}),
       });
       return { reveal: state.reveal, first: stateIndex === 0, html, key: hash(theme, html, assetHash), text: visibleText(html) };
     });
-    return { id: scene.id, template: scene.template, kind: "stills", states };
+    return { id: scene.id, template: scene.template, kind: "stills", states, ...marked };
   });
   // `locale` is a caption locale's own thumbnail, which may be set in its own font (fonts.mjs).
-  const drawThumbnail = (own, locale = null) => {
-    const shot = typeof own.data?.shot === "string" ? own.data.shot : null;
-    const keyframe = shot && keyframes[shot]?.file ? { file: keyframes[shot].file, sha256: keyframes[shot].sha256 ?? "" } : null;
-    // The work directory is served under /work/ by the renderer's fake origin.
-    const background = keyframe ? `${ORIGIN}/work/${keyframe.file.split("/").map(encodeURIComponent).join("/")}` : null;
-    const html = thumbnailHtml(own, { background, series: thumbnailSeries(doc), locale });
-    return { html, key: hash(theme, html, keyframe?.sha256 ?? ""), text: visibleText(html), ...(shot ? { shot, keyframe } : {}) };
+  // `offset` moves a B or C variant one layout and tone on from A's (templates.mjs thumbnailRotation).
+  // The subject (thumbnailSubject) comes back as `shot` and `keyframe`, or `capture` and `still`,
+  // so the caller can say what to run first when the picture is not there yet.
+  const drawThumbnail = (own, locale = null, offset = 0) => {
+    const asset = own.data?.asset;
+    const assetFilePath = thumbnailAssetPath(asset) && (isStockPath(asset) ? workdir : root) ? assetFile(asset, { root, workdir }) : null;
+    const hasAssetFile = assetFilePath && existsSync(assetFilePath);
+    const subject = asset === undefined ? thumbnailSubject(own.data, { keyframes, screencasts })
+      : { kind: "asset", file: hasAssetFile ? asset : null,
+          sha256: hasAssetFile ? createHash("sha256").update(readFileSync(assetFilePath)).digest("hex") : "" };
+    const picture = subject?.file ? subject : null;
+    // Generated stills and stock live under /work/; repository pictures use /repo/.
+    const background = picture ? `${ORIGIN}/${picture.kind === "asset" && !isStockPath(picture.file) ? "repo" : "work"}/${picture.file.split("/").map(encodeURIComponent).join("/")}` : null;
+    const html = thumbnailHtml(own, { background, subject: picture?.kind ?? null, series: thumbnailSeries(doc), locale, slug: doc.slug, offset });
+    const source = subject?.kind === "asset" ? { asset: own.data.asset }
+      : subject?.kind === "capture"
+      ? { capture: own.data.capture, still: picture ? { file: picture.file, sha256: picture.sha256 } : null }
+      : subject ? { shot: own.data.shot, keyframe: picture ? { file: picture.file, sha256: picture.sha256 } : null } : {};
+    return { html, key: hash(theme, html, picture?.sha256 ?? ""), text: visibleText(html), ...source };
   };
   let thumbnail = null;
   if (doc.thumbnail) {
     thumbnail = drawThumbnail(doc.thumbnail);
     // B and C for YouTube's test (thumbnailVariants); only a thumbnail that has them carries the key.
-    const variants = thumbnailVariants(doc.thumbnail).map(({ id, thumbnail: own }) => ({ id, file: thumbnailVariantFile(id), ...drawThumbnail(own) }));
+    const variants = thumbnailVariants(doc.thumbnail).map(({ id, thumbnail: own }, index) => ({ id, file: thumbnailVariantFile(id), ...drawThumbnail(own, null, index + 1) }));
     if (variants.length) thumbnail.variants = variants;
     if (translations) {
       const locales = [];
@@ -167,6 +247,13 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
   }
   return { scenes, thumbnail };
 }
+
+/**
+ * Whether assemble lays this card out as a moving picture: in an illustrated slides video a card
+ * with one state drifts like a keyframe (assemble/drama.mjs layoutDrama, `cardMotion`), and a
+ * mark drawn into it would creep with the card and jump back at the cut to the next shot.
+ */
+export const movesAsCard = (states) => states.length === 1;
 
 /** Where a caption locale's own thumbnail is written in the work directory (and in upload/). */
 export const localeThumbnailFile = (locale) => `thumbnails/${locale}.jpg`;

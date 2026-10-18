@@ -93,7 +93,7 @@ unchanged approvals/timeline/metadata, the exact retained original manifest and
 the aligned new manifest. Auto remains done, with no STOP or running lock.
 
 Evidence and temporary operators remain outside Git under
-`C:/Users/x8120/mokaair-work/handoff/temperature-language-resubmit-20261008`;
+`<home>/mokaair-work/handoff/temperature-language-resubmit-20261008`;
 host sources and receipt copies are retained under
 `/root/temperature-language-resubmit-20261008`. The authoritative durable
 submission receipts remain in the fixed work-volume namespace above.

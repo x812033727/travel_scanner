@@ -2,7 +2,7 @@
 // estimates are deliberately not accepted here: QA reads the current TTS timeline and the
 // frame count assemble checked on the finished cut. Channel bookends never count as content.
 import { FPS } from "./timeline.mjs";
-import { EXPLAINER_PRESET, isKnowledgeLongform, shotVisual } from "./drama.mjs";
+import { isExplainerPreset, isKnowledgeLongform, shotVisual } from "./drama.mjs";
 import { ANIME_BODY_TOLERANCE_SECONDS, animeRuntimeContext, hasAnimePolicy, LONG_ANIME_POLICY, runtimePolicyHash, validateAnimePolicy } from "./anime-policy.mjs";
 
 export const KNOWLEDGE_MIN_SECONDS = 480;
@@ -17,7 +17,7 @@ export { isKnowledgeLongform };
  * minute target stays the owner's choice. Other drama presets and brand stories keep theirs.
  */
 export function effectiveEpisodeMinutes(minutes, preset) {
-  if (preset !== EXPLAINER_PRESET) return minutes;
+  if (!isExplainerPreset(preset)) return minutes;
   if (minutes === undefined || minutes === null) return KNOWLEDGE_TARGET_SECONDS / 60;
   if (!Number.isSafeInteger(minutes) || minutes > 20) {
     throw new RangeError("an explainer target must be an integer no longer than 20 minutes");

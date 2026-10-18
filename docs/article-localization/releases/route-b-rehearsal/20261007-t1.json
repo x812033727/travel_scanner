@@ -1,0 +1,322 @@
+{
+  "schema": "route-b-same-image-rehearsal-record-v1",
+  "completed_at": "2026-10-07T05:09:54Z",
+  "status": "passed",
+  "production_writes": false,
+  "authorizes_production": false,
+  "deployed_runtime_commit": "2024304170c6b43ecb4259e6b4fb0ce8a60d9893",
+  "prospective_content_commit": "280f28fdb096a7f4dae95cd9306306705dddf5b6",
+  "api_image_digest": "sha256:18584ecf2c9d143c00e72d30c69ec4db8cfad5db804c5f1d961e1a2c342f6d2d",
+  "postgres_image_digest": "sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+  "python": "3.13.16",
+  "migration_head": "0127_video_slides_requests",
+  "candidate_manifest_sha256": "d80aa5dd7b36266687cafc8d76faf52e6467b491e146a1102256a2df6812dd14",
+  "review_sha256": "47a93efa3792e93cf9965a3c5cd69f7b51c4800e83595d8013669f3a06e6ec48",
+  "review_evidence_sha256": "15f40e62151ba5692e66930fab33b3646a5d2f46f50c179e5b0b22e2e4c3530f",
+  "isolated_baseline_sha256": "75c1100e842a0cbaddc6bb1bb34efd1a2a7e34d691ba230bf4fd2f8a4796f18f",
+  "release_manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+  "route_b_provenance_sha256": "04cd67b216d00d1faceeb8d25a2dbbb0d7659f91ea2d41868bca68f11febca6d",
+  "synthetic_seed_dump_sha256": "2073d5b2eaa8367b93642b277ee9270ef9bb0bb423376277d7559af7a40b2167",
+  "standalone_harness_sha256": "82a12f8c7f351c1db08a0489cc03111b85e23be128e0fc395ed56ddf637550a4",
+  "raw_archive_sha256": "de9dd6cbcdb5b04c4a76bc5437f17b5283e63c68863b4e9f14324f60b07c97de",
+  "selection": {
+    "selected_assets": 24,
+    "articles": 2,
+    "locales": [
+      "en",
+      "ja",
+      "ko",
+      "zh-CN"
+    ],
+    "target_documents": 8,
+    "slugs": [
+      "marketing-mix-models",
+      "brand-tone-vibe-marketing"
+    ]
+  },
+  "fixture": {
+    "pip_installs": 0,
+    "initial_revisions": 6,
+    "postgres_cpus": 0.5,
+    "production_configuration_mounts": 0,
+    "postgres_memory_mb": 512,
+    "published_ports": 0,
+    "initial_audits": 8,
+    "internal_network": true,
+    "source_locales": 3,
+    "api_cpus": 1,
+    "image_modifications": 0,
+    "reset_dump_hash_checked_each_case": true,
+    "synthetic": true,
+    "api_memory_mb": 1024,
+    "articles": 3
+  },
+  "phases": [
+    {
+      "operations": 16,
+      "phase": "dry-run",
+      "status": "read_only"
+    },
+    {
+      "operations": 8,
+      "phase": "drafts",
+      "status": "complete"
+    },
+    {
+      "operations": 8,
+      "phase": "publish-articles",
+      "status": "complete"
+    },
+    {
+      "operations": 0,
+      "phase": "publish-hubs",
+      "status": "complete"
+    }
+  ],
+  "source_root_and_sentinel_preserved_on_success": true,
+  "replay_writes": 0,
+  "deterministic_recompile": true,
+  "behaviour_cases": 12,
+  "cases": [
+    {
+      "case": "advisory_lock",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+      "before_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "after_counts": {
+        "revisions": 14,
+        "audits": 16
+      },
+      "before_state_sha256": "92d20008d02e14fcd2d28ff284b60cf58b5ad2c886c018a7e8d6b0d1a55328d1",
+      "after_state_sha256": "86692084ced45a163881527c9633c5aaa773e21c62bb063e6a380eaf24e47272",
+      "journal_sha256": "fe8b38f5498d5a8985a7f9558ab1702a56dd54740dcde6071799956407726375",
+      "pending_intent": false,
+      "reconciliation_statuses": []
+    },
+    {
+      "case": "before_commit",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+      "before_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "after_counts": {
+        "revisions": 22,
+        "audits": 24
+      },
+      "before_state_sha256": "92d20008d02e14fcd2d28ff284b60cf58b5ad2c886c018a7e8d6b0d1a55328d1",
+      "after_state_sha256": "ded4a73c4fb6912ef64ed3c826f154ed2cc97f02530b3228b3b9bc4daae325cd",
+      "journal_sha256": "496af405fe888040008922f08086da930e2e12aa828d530b658deef37a8928e5",
+      "pending_intent": false,
+      "reconciliation_statuses": [
+        "not_written_reconciled"
+      ]
+    },
+    {
+      "case": "conflict_before",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+      "before_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "after_counts": {
+        "revisions": 7,
+        "audits": 9
+      },
+      "before_state_sha256": "92d20008d02e14fcd2d28ff284b60cf58b5ad2c886c018a7e8d6b0d1a55328d1",
+      "after_state_sha256": "a4112a92d530f92fbb5ba8398b7ef8be3f1c1a47d8a73895b24471714ed6988d"
+    },
+    {
+      "case": "conflict_between",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+      "before_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "after_counts": {
+        "revisions": 7,
+        "audits": 9
+      },
+      "before_state_sha256": "92d20008d02e14fcd2d28ff284b60cf58b5ad2c886c018a7e8d6b0d1a55328d1",
+      "after_state_sha256": "225b2891ca37bd0b63d556c4cdd13211ebd8b6a553e6ec69afe5ab6754a7db79",
+      "journal_sha256": "72357e0a67f9612ccb1f509d2a8d12248d5235d08d017d76d9efbd22bfd1f4bc",
+      "pending_intent": false,
+      "reconciliation_statuses": []
+    },
+    {
+      "case": "expired",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+      "before_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "after_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "before_state_sha256": "92d20008d02e14fcd2d28ff284b60cf58b5ad2c886c018a7e8d6b0d1a55328d1",
+      "after_state_sha256": "796be228604222a44da42377fdf40d08ac9dd63f2f4e68626140dff5d0405fff",
+      "journal_sha256": "e6de3edc9db7a6b9f768f97ec0dca1459b0f77b0a62628a640d9f7238217f98a",
+      "pending_intent": false,
+      "reconciliation_statuses": []
+    },
+    {
+      "case": "held",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+      "before_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "after_counts": {
+        "revisions": 14,
+        "audits": 16
+      },
+      "before_state_sha256": "92d20008d02e14fcd2d28ff284b60cf58b5ad2c886c018a7e8d6b0d1a55328d1",
+      "after_state_sha256": "c1f0d9d85f21a10a675b5879a6e7b342ea3ba7085bfbadc50b822f8827edb6b3",
+      "journal_sha256": "16581b1e81f202fa37447a8a41876f1e514e16b10204dbc424439aaf74d32de1",
+      "pending_intent": false,
+      "reconciliation_statuses": []
+    },
+    {
+      "case": "hidden",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+      "before_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "after_counts": {
+        "revisions": 6,
+        "audits": 9
+      },
+      "before_state_sha256": "92d20008d02e14fcd2d28ff284b60cf58b5ad2c886c018a7e8d6b0d1a55328d1",
+      "after_state_sha256": "59e05236ef7ee9b1244f769143bfe0a49a1f74064c56bb3014146993e3d93ca5",
+      "journal_sha256": "e2a629df5b7a67e3646915aa7d6067a3bbd6608449c6971aa136038a10347a9a",
+      "pending_intent": false,
+      "reconciliation_statuses": []
+    },
+    {
+      "case": "lost_response",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+      "before_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "after_counts": {
+        "revisions": 22,
+        "audits": 24
+      },
+      "before_state_sha256": "92d20008d02e14fcd2d28ff284b60cf58b5ad2c886c018a7e8d6b0d1a55328d1",
+      "after_state_sha256": "2a77927bc34adb23a74ac2122441506c360cc1c03d40623797a54c7e43487654",
+      "journal_sha256": "7caf270ae9fbe138df0f4986dfa9c00ad04b188e70919766b9e57be663660e02",
+      "pending_intent": false,
+      "reconciliation_statuses": [
+        "committed_reconciled"
+      ]
+    },
+    {
+      "case": "rollback_conflict",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+      "before_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "after_counts": {
+        "revisions": 23,
+        "audits": 25
+      },
+      "before_state_sha256": "92d20008d02e14fcd2d28ff284b60cf58b5ad2c886c018a7e8d6b0d1a55328d1",
+      "after_state_sha256": "775e61c3761800902c5f0fe4178f843c43146b294bcbcc19ff0676487004009c",
+      "journal_sha256": "73e4216a69928f3f80104f0f14aa61dc9649af4103487e5cc13fcc2ff06e6cdb",
+      "pending_intent": false,
+      "reconciliation_statuses": []
+    },
+    {
+      "case": "rollback",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+      "before_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "after_counts": {
+        "revisions": 30,
+        "audits": 32
+      },
+      "before_state_sha256": "92d20008d02e14fcd2d28ff284b60cf58b5ad2c886c018a7e8d6b0d1a55328d1",
+      "after_state_sha256": "8d74aa33dbffc2af5b3deb96c17b75ec9d12a9f3f6ddc994f72b4b04e54abccb",
+      "journal_sha256": "a33710915dd27d36967e7b5c605d40bed925d181b531aae2a140a97dfa2fe35f",
+      "pending_intent": false,
+      "reconciliation_statuses": []
+    },
+    {
+      "case": "row_lock",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+      "before_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "after_counts": {
+        "revisions": 14,
+        "audits": 16
+      },
+      "before_state_sha256": "92d20008d02e14fcd2d28ff284b60cf58b5ad2c886c018a7e8d6b0d1a55328d1",
+      "after_state_sha256": "ccc1a288898d8ec82b3452e7bfc61a76df468faf6d191cd47bf65a978932450e",
+      "journal_sha256": "bf65ecf4f6bcc0dbc7a4ba19eab4558519c7046672b36b6ea77281fe45753d2b",
+      "pending_intent": false,
+      "reconciliation_statuses": []
+    },
+    {
+      "case": "setup",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3"
+    },
+    {
+      "case": "success",
+      "status": "passed",
+      "manifest_sha256": "00c64b40dce0ae70faa858bafc2c843b69fdbc18c0e1696ee772c4ea5ded47c3",
+      "before_counts": {
+        "revisions": 6,
+        "audits": 8
+      },
+      "after_counts": {
+        "revisions": 22,
+        "audits": 24
+      },
+      "before_state_sha256": "92d20008d02e14fcd2d28ff284b60cf58b5ad2c886c018a7e8d6b0d1a55328d1",
+      "after_state_sha256": "1542390f882d05688c8108fbf721cfed01c326b93905014a92139c8167c35cd2",
+      "journal_sha256": "46b0a29a42f05b5e4d04d9bca1a31039656f8d61a692c7858044dedc4b5b8707",
+      "pending_intent": false,
+      "reconciliation_statuses": []
+    }
+  ],
+  "limitations": [
+    "Prospective corrected content is separate from the current deployed code image; this is rehearsal evidence only.",
+    "Both selected articles are life articles; publish-hubs succeeds with zero operations and does not exercise a real hub dependency write.",
+    "All database state is synthetic; the isolated manifest uses its own baseline and differs from the separate production-snapshot bundle.",
+    "Before-commit and lost-response failures use temporary process-local wrappers around the production admin service; no deployed library or image is edited.",
+    "Late hold uses a dedicated fixture hold-list bound in the rehearsal process; live image or production hold files are unchanged.",
+    "The initial seed attempt stopped due to a missing locale argument in this external harness; its database dump and result are preserved, the harness was corrected, and a fresh isolated migration/seed preceded all passing cases.",
+    "A future production image or baseline is a separate identity and needs its own preflight, backup, holds, authorization and acceptance checks."
+  ],
+  "tooling_sha256": {
+    "prepare_route_b_bundle.py": "2df6c0274f6a90cb04173ddafefe8a318067c9431e72098f9fad76b6e3b56237",
+    "build_baseline.py": "499113c1aaf5254f863a4a2b63313f71341b81c7b9ba4fc44cacdec2df0dadbb",
+    "standalone_rehearsal.py": "82a12f8c7f351c1db08a0489cc03111b85e23be128e0fc395ed56ddf637550a4",
+    "repository_preservation.py": "e1b8955c63c5fd0062c6cd1172c82fe995121d5407dab3e4b7e975e305bb7c3f",
+    "export_snapshot.py": "f7b1784622eebe4f11fe313eca72e6b8effaa72f65e93213f286466edf5cbb60",
+    "publish_bundle.py": "d11b3615c2373f711c119667aacaff9e8f46a47dee34fd771329b82751c6ccf4",
+    "source_correction.py": "bdd5cf9ddfd3d1749e1d7e631325b88e2340db2ff66cfb2f201da2518b4052b7"
+  }
+}

@@ -1,0 +1,6 @@
+PreToolUse ToolSearch query=select:mcp__gear__find_gear,mcp__gear__low_stock
+PostToolUse ToolSearch response_chars=143
+PreToolUse mcp__gear__find_gear source=dynamic {"code":"G-417"}
+PostToolUse mcp__gear__find_gear source=dynamic response_chars=48
+PreToolUse mcp__gear__low_stock source=dynamic {"below":3}
+PostToolUse mcp__gear__low_stock source=dynamic response_chars=83

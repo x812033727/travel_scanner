@@ -22,6 +22,8 @@
 
 同一天被遺棄的 prepare 在這台主機上很常見，「被標記的目錄」不是「有發布在跑」的證據。67 分鐘的靜止是灰色地帶：**把證據攤開用有選項的提問讓站主決定**，不要自己判。
 
+鎖是空的也不等於可以部署：Codex 的租約腳本一段一段地持有部署鎖，2026-10-09 到 10-11 一次占了 11 到 15 小時，兩段之間鎖會短暫空出來。在空檔部署會在付費工作做到一半時重啟工人。找持有者用 `lsof /var/lock/travel-scanner-deploy.lock` 拿 PID 再 `ps -p <pid>`；等到「鎖是空的、而且它的工作目錄 20 分鐘沒動」才部署。
+
 ## 站主決定後的三種做法
 
 **A. 無視暫停檔部署**：`host-deploy.sh` 帶 `--ignore-hold`。暫停檔還在，之後每次部署都要再問一次，所以只當一次性的解法。`--ignore-hold` 也會無視新出現的、真正的暫停檔，包裝腳本因此在 `--ignore-hold` 之前自己再檢查一次。
@@ -68,3 +70,10 @@ cd /root/travel_scanner && python3 ops/release/hold.py clear <release_dir> <sha4
 | `media jobs` | `queued`、`submitted` | 狀態都在 DB，重啟不丟、也不會向供應商重送，下次輪詢接著走（`app/video_media/jobs.py`） | 可以部署；有 session 正在跑恢復腳本等它時，照那份恢復文件 |
 
 兩行都是 `none` 就沒有東西會被打斷。2026-10-05 在 auto 模式實跑，兩句 select 沒被分類器擋。
+
+兩行都是 `none` 還有一種會花錢：這次 diff 改了某個階段或講解片的提示詞，而主機上有集數停在那個階段沒做完，部署後主機會把那個階段重跑一次、再收一次錢。部署這種 diff 前先確認 `video_drama_series`／`video_drama_requests` 沒有進行中的 flat-explainer 或 `cute-*` 列；被釘住的提示詞摘要在 `tools/video/automation/run-receipts.mjs`。
+
+## 預檢看不到的：這次 diff 本身
+
+- **設定的鍵**：要部署的合併動到 `.env.example` 或設定的啟動檢查時，先確認主機 `.env` 有那個鍵（只看鍵在不在，不印值、不改檔）。2026-09-29 缺了 `INTERNAL_PROXY_TOKEN`，api 進入重啟迴圈、部署自己回滾；CI 沒有主機的 `.env`，抓不到。
+- **main 綠不綠**：看每個併進來的 PR head 的 check runs（`gh api repos/<owner>/<repo>/commits/<sha>/check-runs` 的 `total_count`）。Auto-update 用 GITHUB_TOKEN 做的合併不觸發 CI，`statusCheckRollup` 是 0 不等於綠：2026-10-03 有 PR 在 0 個 run 的狀態下被合併。

@@ -9,11 +9,14 @@ import { NARRATOR } from "../core/drama.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
+import { requireStorySpeechLexicon } from "../core/lexicon-store.mjs";
+import { StoryLexiconError } from "../core/story-lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
+import { requireProjectLease } from "../core/project-lease.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { buildTimeline, checkChapters, formatClock, frameToSeconds, speechHash } from "../core/timeline.mjs";
 import { checkAudio } from "./check.mjs";
-import { SpeechError, speechStatus, synthesize, synthesizeAligned } from "./client.mjs";
+import { PILOT_SLUGS, SpeechError, speechStatus, synthesize, synthesizeAligned } from "./client.mjs";
 import { TOKEN_PATTERN, readCredentials, validSite, writeCredentials } from "./credentials.mjs";
 import { defaultClientName, startPairing, waitForPairing } from "./pairing.mjs";
 import { GEMINI_VOICE_PREFIX, MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts, voiceFields } from "./requests.mjs";
@@ -179,9 +182,9 @@ function remainingFor(status, voice) {
  * A pin or package that does not validate stops `assemble` with its own message; until then the
  * chapters are checked on the narration alone.
  */
-async function plannedBranding({ doc, workdir, values, ctx }) {
+async function plannedBranding({ doc, series = null, workdir, values, ctx }) {
   try {
-    return await selectBrandingForBuild({ doc, workdir, workBase: resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home }) });
+    return await selectBrandingForBuild({ doc, series, workdir, workBase: resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home }) });
   } catch (error) {
     if (!(error instanceof UsageError)) throw error;
     return null;
@@ -242,11 +245,42 @@ function remainingText(status, voices) {
     .join("; ");
 }
 
+/**
+ * Pilot preproduction files may precede video.json. Their path identifies which film's budget
+ * must pay for a voice sample; an ordinary channel-wide sample has no project attribution.
+ */
+function pilotAuditionSlugs(textFile, workBase) {
+  const location = `${path.resolve(textFile)}/${path.resolve(workBase)}`.replaceAll("\\", "/").toLowerCase();
+  const hints = [];
+  for (const slug of PILOT_SLUGS) {
+    if (new RegExp(`(?:^|[/_.-])${slug}(?=$|[/_.])`).test(location)) hints.push(new Set([slug]));
+  }
+  if (/(?:^|[/_.-])a01(?=$|[/_.-])/.test(location)) hints.push(new Set(["story-rolling-suitcase", "story-rolling-suitcase-v2"]));
+  if (/(?:^|[/_.-])b18(?=$|[/_.-])/.test(location)) hints.push(new Set(["story-conveyor-belt-sushi", "story-conveyor-belt-sushi-v2"]));
+  if (location.includes("brand-stories-pilot-v2")) hints.push(new Set(["story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]));
+  // These preproduction files use story-plan IDs before video.json is created. The folder
+  // alone must force an explicit film choice; an ID narrows it to that one budget account.
+  const followonIds = new Map([
+    ["a29", "story-five-lego-legoland"],
+    ["a16", "story-five-costco-hot-dog"],
+    ["a37", "story-five-adidas-puma-brothers"],
+    ["b14", "story-five-ajinomoto-chip-film"],
+    ["a21", "story-five-pringles-vat-case"],
+  ]);
+  if (location.includes("brand-stories-five-20261014")) hints.push(new Set(followonIds.values()));
+  for (const [id, slug] of followonIds) {
+    if (new RegExp(`(?:^|[/_.-])${id}(?=$|[/_.-])`).test(location)) hints.push(new Set([slug]));
+  }
+  if (!hints.length) return null;
+  return hints.reduce((allowed, hint) => new Set([...allowed].filter((slug) => hint.has(slug))));
+}
+
 async function audition(args, ctx) {
   const values = parseArgs({
     args,
     options: {
       "text-file": { type: "string" },
+      slug: { type: "string" },
       voices: { type: "string" },
       rate: { type: "string", default: "+0%" },
       style: { type: "string" },
@@ -256,16 +290,26 @@ async function audition(args, ctx) {
     strict: true,
   }).values;
   if (!values["text-file"]) throw new UsageError("audition needs --text-file: a UTF-8 file with the sample narration");
+  if (values.slug && !/^[a-z0-9][a-z0-9-]{1,99}$/.test(values.slug)) throw new UsageError("audition --slug must be a valid video slug");
+  if (values.slug && /^(?:story-rolling-suitcase|story-conveyor-belt-sushi|story-five-)/.test(values.slug) && !PILOT_SLUGS.has(values.slug)) {
+    throw new UsageError("audition --slug names a budgeted story family but is not an exact budgeted story slug");
+  }
+  const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
+  const pilotSlugs = pilotAuditionSlugs(values["text-file"], workBase);
+  if (pilotSlugs?.size === 0) throw new UsageError("pilot audition text and workdir name different pilot films");
+  if (pilotSlugs && !pilotSlugs.has(values.slug)) {
+    throw new UsageError(`pilot audition needs its matching --slug (${[...pilotSlugs].join(" or ")})`);
+  }
   const text = readFileSync(values["text-file"], "utf8").replace(/^﻿/, "").trim();
   if (!text || text.length > MAX_REQUEST_CHARACTERS) throw new UsageError(`the sample must be 1 to ${MAX_REQUEST_CHARACTERS} characters`);
   const credentials = requireCredentials(ctx);
-  const options = clientOptions(ctx, credentials);
+  const options = { ...clientOptions(ctx, credentials), ...(values.slug ? { videoSlug: values.slug } : {}) };
   const status = await speechStatus(options);
   const voices = values.voices ? values.voices.split(",").map((voice) => voice.trim()).filter(Boolean) : status.voices;
   const problems = voices.map((voice) => voiceProblem(status, voice)).filter(Boolean);
   if (problems.length) throw new SpeechError([...new Set(problems)].join("; "), { who: "owner" });
   const stamp = ctx.now().toISOString().replace(/[:.]/g, "-");
-  const auditions = path.join(resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home }), "_audition");
+  const auditions = path.join(workBase, "_audition");
   const out = path.join(auditions, stamp);
   mkdirSync(out, { recursive: true });
   const parts = spokenParts(text, loadLexicon(ctx.root));
@@ -317,6 +361,7 @@ async function tts(args, ctx) {
   const voices = voicesUsed(doc, requests);
   const estimate = requests.reduce((sum, request) => sum + billableForRequest(request.body), 0);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
+  requireStorySpeechLexicon(project, workdir);
   const cache = readCache(workdir);
   const redo = values.redo ? flaggedLines(readJson(path.resolve(values.redo))) : new Set();
   // A flagged repeat belongs to the same take: retake its original once, then replace all repeats.
@@ -381,7 +426,11 @@ async function tts(args, ctx) {
     return EXIT.ok;
   }
 
-  const options = pending.length ? clientOptions(ctx, requireCredentials(ctx)) : null;
+  // Another producer holding the project (core/project-lease.mjs) is the owner's to sort out:
+  // nothing is synthesized or written meanwhile. The worker's unit holds it already.
+  requireProjectLease(workdir, { owner: "tts", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
+  requireStorySpeechLexicon(project, workdir);
+  const options = pending.length ? { ...clientOptions(ctx, requireCredentials(ctx)), videoSlug: doc.slug } : null;
   if (pending.length) {
     const status = await speechStatus(options);
     const problems = voiceProblems(doc, status, pendingVoices);
@@ -480,7 +529,15 @@ async function tts(args, ctx) {
   // Lint checked the chapters on an estimate; this is the real check. Chapters YouTube would not
   // show fail the run, after the files are written, so a fix to the script reuses every take whose
   // words it keeps. The run is recorded either way: its characters were paid for.
-  const chapters = checkChapters(presentationTimeline(timeline, await plannedBranding({ doc, workdir, values, ctx })));
+  const plannedBookends = await plannedBranding({ doc, series: project.series, workdir, values, ctx });
+  let presented = timeline;
+  try {
+    presented = presentationTimeline(timeline, plannedBookends);
+  } catch (error) {
+    // An intro after the first chapter of a timeline with one chapter: the chapter count is the problem reported.
+    if (!(error instanceof UsageError)) throw error;
+  }
+  const chapters = checkChapters(presented);
   recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name, voices: voices.map((entry) => entry.voice), ...(timings.size ? { timed: timings.size } : {}), ...(chapters.length ? { ok: false, chapters } : {}) }, ctx.now());
 
   ctx.stdout.write(`${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; narration ${formatClock(frameToSeconds(timeline.total_frames))}\n`);
@@ -501,9 +558,27 @@ export async function run(command, args, ctx) {
   try {
     if (command === "login") return await login(args, ctx);
     if (command === "audition") return await audition(args, ctx);
-    if (command === "check-audio") return await checkAudio(args, ctx, clientOptions(ctx, requireCredentials(ctx)));
+    if (command === "check-audio") {
+      // check.mjs owns the review logic and its journal; pass attribution without changing
+      // either contested file. --file can also name a pilot, so load its actual document slug.
+      const values = parseArgs({
+        args,
+        options: {
+          slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" },
+          threshold: { type: "string" }, force: { type: "boolean" }, locale: { type: "string" },
+          "second-opinion": { type: "string" },
+        },
+        strict: true,
+      }).values;
+      const slug = loadProject({ slug: values.slug, file: values.file, root: ctx.root }).doc.slug;
+      return await checkAudio(args, ctx, { ...clientOptions(ctx, requireCredentials(ctx)), videoSlug: slug });
+    }
     return await tts(args, ctx);
   } catch (error) {
+    if (error instanceof StoryLexiconError) {
+      ctx.stderr.write(`${error.message}\n`);
+      return ctx.EXIT.owner;
+    }
     if (!(error instanceof SpeechError)) throw error;
     ctx.stderr.write(`${error.message}\n`);
     return exitFor(error, ctx.EXIT);

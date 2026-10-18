@@ -3,9 +3,13 @@
 // into the zh-TW timeline's slide windows, sped up a little where a translation runs long, and the
 // track is written with the video's own loudness, and, when the script names music or a
 // sound-effect set (docs/videos/ILLUSTRATED.md), with the same bed and the cut's effects track
-// under the voice as final.mp4 has. A window that cannot fit even at MAX_TEMPO is
-// reported with a character budget per line, for the translator to shorten, and no track is
-// written for that locale until it does.
+// under the voice as final.mp4 has. A window still over at MAX_TEMPO by a few frames is let
+// through, into the pause after it or sped up alone a little further (plan.mjs absorbOverruns);
+// one over by more is reported with a character budget per line, for the translator to shorten,
+// and no track is written for that locale until it does. A retake (`--redo`) whose window is
+// still over after that is given back its earlier take with `--keep-fitting`, once the worker has
+// no shortening round left. A drama is dubbed the same way when the narrator tells it alone
+// (spokenByCharacter); one whose characters speak is not, yet.
 import { existsSync, mkdirSync, readFileSync, renameSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -14,13 +18,16 @@ import { measureMixArgs, mixArgs } from "../assemble/drama.mjs";
 import { verifyBrandingAssets, wrapAudio } from "../assemble/branding.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { musicInputs, sfxInputs } from "../assemble/sound.mjs";
-import { isDrama, mixHash, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
-import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
+import { isDrama, mixHash, NARRATOR, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
+import { appliedBranding, brandingCurrent, introAtFrame, linesAcrossIntro, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
+import { requireProjectLease } from "../core/project-lease.mjs";
+import { requireStorySpeechLexicon } from "../core/lexicon-store.mjs";
+import { StoryLexiconError } from "../core/story-lexicon.mjs";
 import { eachLine, LOCALES } from "../core/schema.mjs";
 import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "../core/state.mjs";
-import { FPS, SAMPLES_PER_FRAME, framesFor, msToSamples, speechHash } from "../core/timeline.mjs";
+import { FPS, SAMPLES_PER_FRAME, speechHash } from "../core/timeline.mjs";
 import { SpeechError, speechStatus, synthesize } from "../tts/client.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { billableForRequest } from "../tts/requests.mjs";
@@ -29,9 +36,34 @@ import { flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "../t
 import { encodeWav, parseWav, requireNarrationFormat } from "../tts/wav.mjs";
 import { CODECS, encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
 import {
-  DEFAULT_FORMAT, DUB_FORMATS, GUARD_MS, MAX_TEMPO,
-  assembleTrack, defaultDubLocales, defaultRate, dubLocales, dubRequests, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, speechFingerprint, translationHash,
+  DEFAULT_FORMAT, DUB_FORMATS, MAX_TEMPO,
+  absorbOverruns, assembleTrack, bareWindow, defaultDubLocales, defaultRate, dubLocales, dubRequests, estimatedLengths, layoutDub, layoutDubTolerant, measureRate, overrunSummary, placeLines, shrinkBudgets, speechFingerprint, translationHash, windowLimit,
 } from "./plan.mjs";
+
+/**
+ * The first line of a drama that someone other than the narrator speaks, as { scene, line,
+ * speaker, name }, or null. A dub reads every line in one voice, the narration's in the locale's
+ * style, so a drama whose characters speak needs a foreign voice per character, which is not built
+ * (docs/videos/DUBS.md). A drama the narrator tells alone is dubbed like a slides video, with or
+ * without a cast: a brand story's recurring figures are drawn and never heard (core/story.mjs
+ * refuses any other speaker), and a cute explainer has no cast at all.
+ *
+ * Three layers decide whether a drama is dubbed. The site sees only the project row, so it lets
+ * the owner tick a drama's dub by category: apps/api/app/video_reviews/admin_service.py
+ * DUBBABLE_DRAMA_CATEGORIES refuses the choice, apps/web/components/admin-video-reviews.tsx
+ * DUBBABLE_DRAMA_CATEGORIES greys out the box. This reads the script and has the last word: a
+ * relabelled drama whose characters speak is refused here with exit 3, which the worker records as
+ * a skipped dub (flow.mjs giveUpDub) while the video goes on.
+ */
+export function spokenByCharacter(doc) {
+  if (!isDrama(doc)) return null;
+  for (const { scene, line } of eachLine(doc)) {
+    if (line.speaker === undefined || line.speaker === null || line.speaker === NARRATOR) continue;
+    const name = (doc.characters ?? []).find((character) => character?.id === line.speaker)?.name ?? null;
+    return { scene: scene.id, line: line.id, speaker: line.speaker, name };
+  }
+  return null;
+}
 
 // When a stretched window still sticks out (atempo rounds), the next try is this much faster.
 const TEMPO_RETRY_STEP = 0.02;
@@ -47,6 +79,7 @@ function options(args) {
       format: { type: "string", default: DEFAULT_FORMAT },
       "dry-run": { type: "boolean" },
       redo: { type: "string" },
+      "keep-fitting": { type: "boolean" },
       force: { type: "boolean" },
       "line-by-line": { type: "boolean" },
       style: { type: "string" },
@@ -58,6 +91,7 @@ function options(args) {
   const locales = values.locale ? values.locale.split(",").map((locale) => locale.trim()).filter(Boolean) : null;
   for (const locale of locales ?? []) if (!LOCALES.includes(locale)) throw new UsageError(`--locale must be among ${LOCALES.join(", ")}`);
   if (!DUB_FORMATS.includes(values.format)) throw new UsageError(`--format must be one of ${DUB_FORMATS.join(", ")}`);
+  if (values["keep-fitting"] && !values.redo) throw new UsageError("--keep-fitting goes with --redo: it keeps the earlier take of a retaken line that no longer fits its window");
   return { ...values, locales };
 }
 
@@ -100,13 +134,14 @@ function prepare(project, locale, values, workdir) {
 const readClip = (file) => requireNarrationFormat(parseWav(readFileSync(file)));
 
 /**
- * Stretch a window's clips until they fit, or until MAX_TEMPO. atempo's output is a few
- * milliseconds off the exact division, so the layout is redone with the stretched lengths.
+ * Stretch a window's clips until they fit, or until `maxTempo` (MAX_TEMPO; MAX_TEMPO_OVERRUN
+ * when absorbOverruns lets one window past it). atempo's output is a few milliseconds off the
+ * exact division, so the layout is redone with the stretched lengths.
  */
-async function fitWindow(window, originals, lengths, clips, dub, ffmpeg, values) {
-  const limit = window.end_frame - framesFor(msToSamples(GUARD_MS));
+async function fitWindow(window, originals, lengths, clips, dub, ffmpeg, values, { maxTempo = MAX_TEMPO } = {}) {
+  const limit = windowLimit(window);
   // The laid-out window carries line objects; the placer takes the window as windowsOf gives it.
-  const bare = { ...window, lines: window.lines.map((line) => line.id) };
+  const bare = bareWindow(window);
   let tempo = window.tempo;
   for (;;) {
     const stretched = new Map(lengths);
@@ -125,11 +160,21 @@ async function fitWindow(window, originals, lengths, clips, dub, ffmpeg, values)
     }
     const lines = placeLines(bare, originals, stretched, { keepStarts: false }).map((line) => ({ ...line, tempo }));
     const end = lines.at(-1).end_frame;
-    if (end <= limit) return { ...window, lines, tempo, over: false, slack_frames: limit - end };
+    if (end <= limit) return { ...window, lines, tempo, kept_starts: false, over: false, slack_frames: limit - end };
     const next = Math.round((tempo + TEMPO_RETRY_STEP) * 100) / 100;
-    if (next > MAX_TEMPO + 1e-9) return { ...window, lines, tempo, over: true, slack_frames: limit - end };
+    if (next > maxTempo + 1e-9) return { ...window, lines, tempo, kept_starts: false, over: true, slack_frames: limit - end };
     tempo = next;
   }
+}
+
+/** The windows of fit.json and the dub's timeline: frames, tempo, slack, and how an overrun was let through. */
+function fitWindows(windows) {
+  return windows.map((window) => ({
+    scene: window.scene, state: window.state, start_frame: window.start_frame, end_frame: window.end_frame,
+    lines: window.lines.map((line) => line.id), tempo: window.tempo, slack_frames: window.slack_frames, over: window.over,
+    ...(window.absorbed ? { absorbed: window.absorbed, overrun_seconds: window.overrun_seconds } : {}),
+    ...(window.shifted_frames ? { shifted_frames: window.shifted_frames } : {}),
+  }));
 }
 
 /**
@@ -185,6 +230,17 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   };
   const pending = requests.filter((request) => !current(request));
   const pendingEstimate = pending.reduce((sum, request) => sum + estimateFor(request), 0);
+  // --keep-fitting: the take each flagged line has now, while it is current, so a retake that no
+  // longer fits its window can be given back below. The worker asks for this once its shortening
+  // rounds are spent: that take fitted, and only its wording was in doubt (docs/videos/DUBS.md).
+  const earlier = new Map();
+  if (values["keep-fitting"]) {
+    for (const request of requests) {
+      for (const line of request.lines) {
+        if (redo.has(line.id) && clipCurrent(request, line)) earlier.set(line.id, { wav: readFileSync(path.join(files.audio, `${line.id}.wav`)), key: cache.lines[line.id] });
+      }
+    }
+  }
 
   mkdirSync(files.audio, { recursive: true });
   let billable = 0;
@@ -217,28 +273,58 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   }
 
   // The clips as spoken, then the layout: which windows keep their rhythm, which pack, which speed up.
-  const clips = new Map();
-  const lengths = new Map();
-  for (const request of requests) {
-    for (const line of request.lines) {
-      const clip = readClip(path.join(files.audio, `${line.id}.wav`));
-      clips.set(line.id, clip.length ? clip : new Int16Array(1));
-      lengths.set(line.id, Math.max(1, clip.length));
-    }
-  }
   const originals = new Map(timeline.lines.map((line) => [line.id, line]));
-  const windows = [];
-  for (const window of layoutDub(timeline, lengths)) {
-    if (window.tempo === 1) {
-      windows.push(window);
-      continue;
+  // The layout runs on the takes as they stand on disk, and again after --keep-fitting gives
+  // an earlier take back. A window still over by a few frames is let through (plan.mjs
+  // absorbOverruns): into the pause after it, else sped up alone past MAX_TEMPO, with the next
+  // real stretch each try.
+  const layout = async () => {
+    const clips = new Map();
+    const lengths = new Map();
+    for (const request of requests) {
+      for (const line of request.lines) {
+        const clip = readClip(path.join(files.audio, `${line.id}.wav`));
+        clips.set(line.id, clip.length ? clip : new Int16Array(1));
+        lengths.set(line.id, Math.max(1, clip.length));
+      }
     }
-    if (!ffmpeg.tools) ffmpeg.tools = await ffmpeg.locate(ctx.env);
-    windows.push(await fitWindow(window, originals, lengths, clips, dub, ffmpeg, values));
+    const stretch = async (window, ceiling = {}) => {
+      if (!ffmpeg.tools) ffmpeg.tools = await ffmpeg.locate(ctx.env);
+      return fitWindow(window, originals, lengths, clips, dub, ffmpeg, values, ceiling);
+    };
+    const laid = [];
+    for (const window of layoutDub(timeline, lengths)) laid.push(window.tempo === 1 ? window : await stretch(window));
+    const windows = await absorbOverruns(laid, originals, {
+      speedUp: (window, maxTempo) => stretch({ ...window, tempo: Math.round((window.tempo + TEMPO_RETRY_STEP) * 100) / 100 }, { maxTempo }),
+    });
+    return { clips, lengths, windows };
+  };
+  let { clips, lengths, windows } = await layout();
+  // A retaken line in a window that is still over, past what the tolerance above lets through,
+  // gets its earlier take back (--keep-fitting), its sped-up copies with it, and the windows are
+  // laid out again with the takes as they stand. A retake a few frames long keeps the new take.
+  const kept = [];
+  if (earlier.size && windows.some((window) => window.over)) {
+    for (const window of windows.filter((window) => window.over)) {
+      for (const line of window.lines) {
+        const take = earlier.get(line.id);
+        if (!take) continue;
+        atomicWrite(path.join(files.audio, `${line.id}.wav`), take.wav);
+        cache.lines[line.id] = take.key;
+        delete cache.stretched[line.id];
+        kept.push(line.id);
+      }
+    }
+    if (kept.length) {
+      atomicWrite(files.cache, `${JSON.stringify(cache, null, 2)}\n`);
+      ({ clips, lengths, windows } = await layout());
+      ctx.stdout.write(`${locale}: kept the earlier take of ${kept.join(", ")}: the retake did not fit its window\n`);
+    }
   }
   const measured = measureRate(texts, lengths);
   const over = windows.filter((window) => window.over).flatMap((window) => shrinkBudgets(window, texts, { lengths }));
   const tempoMax = windows.reduce((max, window) => Math.max(max, window.tempo), 1);
+  const absorbed = overrunSummary(windows);
   const fit = {
     locale,
     speech_hash: timeline.speech_hash,
@@ -247,16 +333,19 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     style_override: dub.styleOverride,
     rates: { default: defaultRate(locale, project.doc, timeline), measured },
     tempo_max: tempoMax,
-    windows: windows.map((window) => ({ scene: window.scene, state: window.state, start_frame: window.start_frame, end_frame: window.end_frame, lines: window.lines.map((line) => line.id), tempo: window.tempo, slack_frames: window.slack_frames, over: window.over })),
+    windows: fitWindows(windows),
     over,
+    // The retaken lines given back their earlier take (--keep-fitting), for the worker and the batch.
+    ...(values["keep-fitting"] ? { kept } : {}),
   };
   atomicWrite(files.fit, `${JSON.stringify(fit, null, 2)}\n`);
   if (over.length) {
     const windowsOver = windows.filter((window) => window.over).length;
     ctx.stdout.write(`${locale}: ${pending.length} requests synthesized (${billable} billable characters); ${windowsOver} windows do not fit even at ${MAX_TEMPO}x; shorten these lines to at most:\n`);
     for (const line of over) ctx.stdout.write(`  ${line.id}: ${line.max_chars} characters (now ${line.chars}, spoken in ${line.seconds} s; its window is ${line.window_over_seconds} s over)\n`);
+    if (absorbed) ctx.stdout.write(`  ${absorbed}\n`);
     ctx.stdout.write(`  numbers and currency codes read slowly for their length: cut the words around them\n  budgets are in ${files.fit}; after i18n-merge, run dub --locale ${locale} again\n`);
-    recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, tempo_max: tempoMax, over: over.length }, ctx.now());
+    recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, tempo_max: tempoMax, over: over.length, absorbed: windows.filter((window) => window.absorbed).length, ...(kept.length ? { kept } : {}) }, ctx.now());
     return EXIT.lint;
   }
 
@@ -284,8 +373,13 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     await ffmpeg.run(ffmpeg.tools.ffmpeg, encodeArgs(files.narration, loudness, bodyTrack, values.format));
   }
   if (branding) {
+    // An intro after the condensation sits at the cut's own body frame; a dubbed line running
+    // across it would be split by the bumper, so it is refused rather than cut.
+    const introAt = introAtFrame(branding);
+    const crossing = linesAcrossIntro(lines, introAt);
+    if (crossing.length) throw new UsageError(`dubbed ${crossing.join(", ")} would run into the intro at body frame ${introAt}; shorten the translation or run dub with a faster tempo`);
     const partial = path.join(files.dir, `branded.partial.${values.format}`);
-    await wrapAudio({ tools: ffmpeg.tools, exec: ffmpeg.run, bodyFile: bodyTrack, bodyFrames: timeline.total_frames, branding: selection, outFile: partial, outputCodec: CODECS[values.format] });
+    await wrapAudio({ tools: ffmpeg.tools, exec: ffmpeg.run, bodyFile: bodyTrack, bodyFrames: timeline.total_frames, branding: selection, outFile: partial, outputCodec: CODECS[values.format], introAtFrame: introAt });
     renameSync(partial, track);
   }
   const record = {
@@ -309,12 +403,15 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     tempo_max: tempoMax,
     windows: fit.windows,
     lines,
+    // The lines that kept their earlier take because the retake did not fit (--keep-fitting):
+    // the languages batch names them beside the track (review/sync.mjs).
+    ...(kept.length ? { kept } : {}),
   };
   atomicWrite(files.timeline, `${JSON.stringify(presentationTimeline(record, branding), null, 2)}\n`);
-  recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, fallbacks, tempo_max: tempoMax, over: 0, file: path.basename(track) }, ctx.now());
+  recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, fallbacks, tempo_max: tempoMax, over: 0, absorbed: windows.filter((window) => window.absorbed).length, file: path.basename(track), ...(kept.length ? { kept } : {}) }, ctx.now());
   const sped = windows.filter((window) => window.tempo > 1).length;
   const carried = [sound.track ? "music bed" : null, sound.sfxFile ? "sound effects" : null].filter(Boolean);
-  ctx.stdout.write(`${locale}: ${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; ${sped} of ${windows.length} windows sped up (max ${tempoMax}x)${carried.length ? `; with the ${carried.join(" and ")}` : ""}; ${track}\n`);
+  ctx.stdout.write(`${locale}: ${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; ${sped} of ${windows.length} windows sped up (max ${tempoMax}x)${absorbed ? `; ${absorbed}` : ""}${carried.length ? `; with the ${carried.join(" and ")}` : ""}; ${track}\n`);
   for (const note of sound.notes) ctx.stdout.write(`  ${note}\n`);
   if (journal.reused) ctx.stdout.write(`  ${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
   if (fallbacks.length) ctx.stdout.write(`  line-by-line fallback for: ${fallbacks.join(", ")}\n`);
@@ -332,11 +429,12 @@ async function dryRun(dubs, project, timeline, ctx, credentials) {
     const estimate = dub.requests.reduce((sum, request) => sum + billableForRequest(request.body), 0);
     const now = pending.reduce((sum, request) => sum + billableForRequest(request.body), 0);
     const rate = rateFor(readJson(dub.files.fit, null), dub.locale, project.doc, timeline);
-    const windows = layoutDub(timeline, estimatedLengths(dub.texts, rate));
+    const windows = await layoutDubTolerant(timeline, estimatedLengths(dub.texts, rate));
     const over = windows.filter((window) => window.over).length;
     const sped = windows.filter((window) => !window.over && window.tempo > 1).length;
+    const absorbed = overrunSummary(windows);
     ctx.stdout.write(`${dub.locale}: ${dub.requests.length} requests, ${pending.length} to synthesize; about ${now} billable characters now (${estimate} for the track)\n`);
-    ctx.stdout.write(`  at ${rate} characters a second: ${sped} of ${windows.length} windows would speed up, ${over} would not fit even at ${MAX_TEMPO}x\n`);
+    ctx.stdout.write(`  at ${rate} characters a second: ${sped} of ${windows.length} windows would speed up, ${over} would not fit even at ${MAX_TEMPO}x${absorbed ? `; ${absorbed}` : ""}\n`);
   }
   if (credentials.token) {
     const status = await speechStatus(clientOptions(ctx, credentials));
@@ -361,7 +459,11 @@ async function dub(args, ctx) {
     return EXIT.lint;
   }
   const { doc } = project;
-  if (isDrama(doc)) throw new UsageError("dub is for slides videos; a drama mixes its own audio (docs/videos/DUBS.md)");
+  const spoken = spokenByCharacter(doc);
+  if (spoken) {
+    const who = spoken.name && spoken.name !== spoken.speaker ? `${spoken.speaker} (${spoken.name})` : spoken.speaker;
+    throw new SpeechError(`a drama whose characters speak cannot be dubbed yet: line ${spoken.line} in scene ${spoken.scene} is spoken by ${who}, and a dub reads every line in the narrator's one voice (docs/videos/DUBS.md)`, { who: "owner" });
+  }
   if (doc.voice.provider !== "gemini") throw new SpeechError(`dubs need a Gemini voice, which speaks every language; the narration voice is ${doc.voice.name}`, { who: "owner" });
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
@@ -383,8 +485,11 @@ async function dub(args, ctx) {
     await verifyBrandingAssets(selection, { tools: ffmpeg.tools, exec: ffmpeg.run });
   }
 
+  // Not while another producer holds the project (core/project-lease.mjs); the worker's unit holds it already.
+  requireProjectLease(workdir, { owner: "dub", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
+  requireStorySpeechLexicon(project, workdir);
   const credentials = requireCredentials(ctx);
-  const clientOpts = clientOptions(ctx, credentials);
+  const clientOpts = { ...clientOptions(ctx, credentials), videoSlug: doc.slug };
   const status = await speechStatus(clientOpts);
   if (!status.gemini_configured) throw new SpeechError("the site has no Gemini key yet (admin: API 與供應商設定 → AI 服務)", { who: "owner" });
   const remaining = geminiRemaining(status);
@@ -406,6 +511,10 @@ export async function run(command, args, ctx) {
   try {
     return await dub(args, ctx);
   } catch (error) {
+    if (error instanceof StoryLexiconError) {
+      ctx.stderr.write(`${error.message}\n`);
+      return ctx.EXIT.owner;
+    }
     if (error instanceof SpeechError) {
       ctx.stderr.write(`${error.message}\n`);
       return error.who === "owner" ? ctx.EXIT.owner : ctx.EXIT.external;

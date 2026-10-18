@@ -57,10 +57,15 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import hashlib
 import json
+import os
+import stat
 from collections import Counter
 from datetime import UTC, date, datetime
+from pathlib import Path
 from typing import Any, Literal, cast
+from uuid import UUID
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -85,7 +90,12 @@ from app.news_automation.models import (
 from app.news_automation.pipeline import JEV_QUOTA_PAUSED, RESUME_MARKER, current_switches
 from app.news_automation.policy import evidence_site_count, hard_policy_problems
 from app.news_automation.schemas import Vertical
-from app.news_automation.service import audit
+from app.news_automation.service import (
+    audit,
+    held_bundle_snapshot,
+    ingest_held_bundle,
+    repair_held_navigation,
+)
 from app.news_automation.sources_cli import admin_actor
 from app.news_automation.validation import refresh_evidence
 
@@ -104,6 +114,275 @@ BACKFILL_STATUSES = frozenset({"rejected", "needs_redraft"})
 NOT_ELIGIBLE = "news_not_eligible"
 # The review judge's two lists: the review queue and the redraft list.
 JudgePool = Literal["holds", "redrafts"]
+
+# The existing persistent reviews volume, not /tmp. The operator creates this private
+# directory once. Never pick a new directory to bypass an uncertain intent.
+INGESTION_INTENT_DIR = Path("/var/lib/mokaair/video-reviews/news-held-bundle-ingestion")
+INGESTION_MAX_BYTES = 64 * 1024 * 1024
+
+
+def _ingestion_json(path: Path, expected_sha256: str) -> dict[str, Any]:
+    path = path.absolute()
+    if any(item.is_symlink() for item in (path, *path.parents)) or not path.is_file():
+        raise SystemExit("Ingestion inputs must be regular files without symlink ancestors")
+    before = path.stat()
+    if before.st_size > INGESTION_MAX_BYTES:
+        raise SystemExit("Ingestion input exceeds 64 MiB")
+    fd = os.open(path, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0))
+    with os.fdopen(fd, "rb") as stream:
+        opened = os.fstat(stream.fileno())
+        if not stat.S_ISREG(opened.st_mode) or (opened.st_dev, opened.st_ino) != (
+            before.st_dev,
+            before.st_ino,
+        ):
+            raise SystemExit("Ingestion input changed while opening")
+        raw = stream.read(INGESTION_MAX_BYTES + 1)
+        finished = os.fstat(stream.fileno())
+    after = path.stat()
+    if (
+        (opened.st_dev, opened.st_ino, opened.st_size, opened.st_mtime_ns)
+        != (finished.st_dev, finished.st_ino, finished.st_size, finished.st_mtime_ns)
+        or len(raw) > INGESTION_MAX_BYTES
+        or any(item.is_symlink() for item in (path, *path.parents))
+        or (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns)
+        != (
+            after.st_dev,
+            after.st_ino,
+            after.st_size,
+            after.st_mtime_ns,
+        )
+        or hashlib.sha256(raw).hexdigest() != expected_sha256
+    ):
+        raise SystemExit("Ingestion input changed or does not match its raw SHA-256")
+
+    def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"Duplicate JSON key: {key}")
+            result[key] = value
+        return result
+
+    value = json.loads(raw, object_pairs_hook=unique_object)
+    if not isinstance(value, dict):
+        raise SystemExit("Ingestion input must be a JSON object")
+    return value
+
+
+def _ingestion_intent(
+    candidate_id: UUID,
+    operation_id: UUID,
+    *,
+    purpose: Literal["ingestion", "navigation-repair"] = "ingestion",
+    **metadata: object,
+) -> None:
+    """Create once, fsync before DB mutation, and retain on every outcome.
+
+    An existing intent is uncertain, even after a local validation/transaction failure.
+    Inspect the native audit/revisions before deciding how to reconcile it; this command
+    never automatically replays it or deletes it.
+    """
+    directory = INGESTION_INTENT_DIR
+    if (
+        not directory.is_absolute()
+        or not directory.is_dir()
+        or any(item.is_symlink() for item in (directory, *directory.parents))
+    ):
+        raise SystemExit("Create the private persistent ingestion intent directory first")
+    if os.name == "posix" and (
+        directory.stat().st_uid != getattr(os, "getuid", lambda: -1)()
+        or directory.stat().st_mode & 0o077
+    ):
+        raise SystemExit("Ingestion intent directory must belong to this user with mode 0700")
+    # A stable candidate reservation also refuses a different nonce after an unknown
+    # result. O_EXCL prevents two local operators racing with different operation IDs.
+    suffix = "" if purpose == "ingestion" else ".navigation-repair"
+    path = directory / f"{candidate_id}{suffix}.intent.json"
+    try:
+        with path.open("xb") as stream:
+            stream.write(
+                json.dumps(
+                    {
+                        "candidate_id": str(candidate_id),
+                        "operation_id": str(operation_id),
+                        "at": datetime.now(UTC).isoformat(),
+                        **metadata,
+                    },
+                    sort_keys=True,
+                ).encode()
+            )
+            stream.flush()
+            os.fsync(stream.fileno())
+        if os.name == "posix":
+            fd = os.open(directory, os.O_RDONLY | getattr(os, "O_DIRECTORY", 0))
+            try:
+                os.fsync(fd)
+            finally:
+                os.close(fd)
+    except FileExistsError as error:
+        raise SystemExit("Existing ingestion intent: inspect its audit; do not retry") from error
+
+
+async def run_held_ingestion(
+    candidate_id: UUID,
+    *,
+    bundle_path: Path | None,
+    bundle_sha256: str | None,
+    review_path: Path | None,
+    review_sha256: str | None,
+    apply: bool,
+    actor_email: str | None,
+) -> dict[str, Any]:
+    """Capture state, or dry-run/apply exactly one reviewed bundle, without dispatch.
+
+    Manifest schema mokaair-news-held-bundle-ingestion-v1: candidate_id, UUID operation_id,
+    slug, event_date, complete expected_snapshot, documents (five GuideDocuments), and
+    review_sha256. The separately SHA-pinned review has schema
+    mokaair-news-held-bundle-draft-review-v1, candidate_id, nonempty reviewer, reviewed_at,
+    conclusion='draft_ingestion_only', documents_sha256 (whole canonical JSON, all five),
+    evidence_sha256 (whole snapshot evidence), candidate_evidence_hash,
+    blocking_content_problems=[], and exact pending_policy_problems per locale. Only
+    no_hero may remain pending. Neither this declaration nor ingestion approves content.
+    """
+    try:
+        async with SessionFactory() as session:
+            redis = get_redis()
+            if bundle_path is None:
+                if apply or any(
+                    value is not None
+                    for value in (actor_email, bundle_sha256, review_path, review_sha256)
+                ):
+                    raise SystemExit("A state capture accepts only its exact candidate ID")
+                return await held_bundle_snapshot(session, redis, candidate_id)
+            if not bundle_sha256 or review_path is None or not review_sha256:
+                raise SystemExit("Bundle and independent draft review require exact raw SHA-256")
+            manifest = _ingestion_json(bundle_path, bundle_sha256)
+            review = _ingestion_json(review_path, review_sha256)
+            actor = None
+            if apply:
+                if not actor_email:
+                    raise SystemExit("--actor-email is required with --apply")
+                actor = await admin_actor(session, actor_email)
+                if actor is None:
+                    raise SystemExit("The actor must be an active administrator")
+                # Validate first without mutation; the write call locks and rechecks the
+                # entire snapshot/RQ after this durable intent. No success is inferred
+                # from this validation or from a lost commit acknowledgement.
+                await ingest_held_bundle(
+                    session,
+                    redis,
+                    candidate_id,
+                    manifest,
+                    review,
+                    manifest_sha256=bundle_sha256,
+                    review_sha256=review_sha256,
+                )
+                await session.rollback()
+                actor = await admin_actor(session, actor_email)
+                if actor is None:
+                    raise SystemExit("The actor must be an active administrator")
+                _ingestion_intent(
+                    candidate_id,
+                    UUID(manifest["operation_id"]),
+                    manifest_sha256=bundle_sha256,
+                    review_sha256=review_sha256,
+                    actor_user_id=str(actor.id),
+                )
+            try:
+                result = await ingest_held_bundle(
+                    session,
+                    redis,
+                    candidate_id,
+                    manifest,
+                    review,
+                    manifest_sha256=bundle_sha256,
+                    review_sha256=review_sha256,
+                    actor=actor,
+                )
+                if apply:
+                    await session.commit()
+                    result = {**result, "committed": True, "applied": True}
+                return result
+            except BaseException:
+                await session.rollback()
+                raise
+    finally:
+        await engine.dispose()
+
+
+async def run_navigation_repair(
+    candidate_id: UUID,
+    *,
+    manifest_path: Path,
+    manifest_sha256: str,
+    review_path: Path,
+    review_sha256: str,
+    apply: bool,
+    actor_email: str | None,
+) -> dict[str, Any]:
+    """Read pinned files, validate first, reserve once and commit an exact native repair.
+
+    Use --repair-held-navigation MANIFEST --candidate-id CID --bundle-sha256 SHA
+    --review-file REVIEW --review-sha256 SHA for a non-mutating plan. Apply additionally
+    requires --apply --actor-email. The strict manifest/review keys are validated by
+    repair_held_navigation. No fetch, model, queue or publication action follows.
+    """
+    try:
+        manifest = _ingestion_json(manifest_path, manifest_sha256)
+        review = _ingestion_json(review_path, review_sha256)
+        async with SessionFactory() as session:
+            redis = get_redis()
+            actor = None
+            if apply:
+                if not actor_email:
+                    raise SystemExit("--actor-email is required with --apply")
+                actor = await admin_actor(session, actor_email)
+                if actor is None:
+                    raise SystemExit("The actor must be an active administrator")
+            plan = await repair_held_navigation(
+                session,
+                redis,
+                candidate_id,
+                manifest,
+                review,
+                manifest_sha256=manifest_sha256,
+                review_sha256=review_sha256,
+            )
+            await session.rollback()
+            if not apply:
+                return plan
+            if apply:
+                actor = await admin_actor(session, actor_email or "")
+                if actor is None:
+                    raise SystemExit("The actor must be an active administrator")
+                _ingestion_intent(
+                    candidate_id,
+                    UUID(manifest["operation_id"]),
+                    purpose="navigation-repair",
+                    manifest_sha256=manifest_sha256,
+                    review_sha256=review_sha256,
+                    actor_user_id=str(actor.id),
+                )
+            try:
+                result = await repair_held_navigation(
+                    session,
+                    redis,
+                    candidate_id,
+                    manifest,
+                    review,
+                    manifest_sha256=manifest_sha256,
+                    review_sha256=review_sha256,
+                    actor=actor if apply else None,
+                )
+                if apply:
+                    await session.commit()
+                    result = {**result, "committed": True}
+                return result
+            except BaseException:
+                await session.rollback()
+                raise
+    finally:
+        await engine.dispose()
 
 
 async def refetch_pool(
@@ -543,7 +822,6 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument(
         "--since",
-        required=True,
         type=date.fromisoformat,
         help=(
             "Oldest source publication date to reopen (YYYY-MM-DD); for the judge's pools, "
@@ -560,6 +838,27 @@ def main() -> None:
     )
     # One pool a run: each takes other stories and does something else with them.
     pools = parser.add_mutually_exclusive_group()
+    pools.add_argument(
+        "--capture-ingestion-state",
+        action="store_true",
+        help="Read a complete single-candidate ingestion snapshot; write nothing",
+    )
+    pools.add_argument(
+        "--ingest-held-bundle",
+        type=Path,
+        metavar="MANIFEST",
+        help="Validate one reviewed five-language held draft; save only with --apply",
+    )
+    pools.add_argument(
+        "--repair-held-navigation",
+        type=Path,
+        metavar="MANIFEST",
+        help="Validate an independently reviewed legacy-navigation repair; write only with --apply",
+    )
+    parser.add_argument("--candidate-id", type=UUID, help="Exact candidate for ingestion only")
+    parser.add_argument("--bundle-sha256", help="Raw ingestion manifest SHA-256")
+    parser.add_argument("--review-file", type=Path, help="Independent draft-only review envelope")
+    parser.add_argument("--review-sha256", help="Raw draft-only review envelope SHA-256")
     pools.add_argument(
         "--jev-quota-holds",
         action="store_true",
@@ -596,6 +895,64 @@ def main() -> None:
         help="Recorded on each candidate and its audit row",
     )
     args = parser.parse_args()
+    if args.repair_held_navigation:
+        if args.candidate_id is None or args.since is not None or args.limit is not None:
+            parser.error(
+                "Navigation repair requires exactly --candidate-id, without --since or --limit"
+            )
+        if not args.bundle_sha256 or args.review_file is None or not args.review_sha256:
+            parser.error("Navigation repair requires pinned manifest and independent review files")
+        if args.actor_email is not None and not args.apply:
+            parser.error("Navigation dry-run does not accept --actor-email")
+        report = asyncio.run(
+            run_navigation_repair(
+                args.candidate_id,
+                manifest_path=args.repair_held_navigation,
+                manifest_sha256=args.bundle_sha256,
+                review_path=args.review_file,
+                review_sha256=args.review_sha256,
+                apply=args.apply,
+                actor_email=args.actor_email,
+            )
+        )
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return
+    if args.capture_ingestion_state or args.ingest_held_bundle:
+        if args.candidate_id is None or args.since is not None or args.limit is not None:
+            parser.error("Ingestion requires exactly --candidate-id, without --since or --limit")
+        if args.capture_ingestion_state and (
+            args.apply
+            or any(
+                value is not None
+                for value in (
+                    args.actor_email,
+                    args.bundle_sha256,
+                    args.review_file,
+                    args.review_sha256,
+                )
+            )
+        ):
+            parser.error("State capture accepts only --candidate-id")
+        report = asyncio.run(
+            run_held_ingestion(
+                args.candidate_id,
+                bundle_path=args.ingest_held_bundle,
+                bundle_sha256=args.bundle_sha256,
+                review_path=args.review_file,
+                review_sha256=args.review_sha256,
+                apply=args.apply,
+                actor_email=args.actor_email,
+            )
+        )
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return
+    if args.since is None:
+        parser.error("--since is required for backlog pools")
+    if any(
+        value is not None
+        for value in (args.candidate_id, args.bundle_sha256, args.review_file, args.review_sha256)
+    ):
+        parser.error("Ingestion arguments cannot be used with a backlog pool")
     report = asyncio.run(
         run(
             since=args.since,

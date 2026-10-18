@@ -5,10 +5,11 @@ import path from "node:path";
 import test from "node:test";
 
 import { tempDir } from "../core/fixtures/load.mjs";
+import { LEASE_FILE, PROJECT_LEASED } from "../core/project-lease.mjs";
 import { readCache, readJobs } from "./cache.mjs";
 import { statusText } from "./cli.mjs";
 import { MediaError } from "./client.mjs";
-import { capProblem, ledgerTotals, readLedger, reservedEntries } from "./ledger.mjs";
+import { capProblem, ledgerTotals, readLedger, reserve, reservedEntries } from "./ledger.mjs";
 import { choiceFor, IMAGE_SIZES, imagePrice, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, Stage, statusProblem, takesStyleReference } from "./stages.mjs";
 
 const PRO = "gemini-3-pro-image";
@@ -84,6 +85,18 @@ test("cross-vendor overrides use that vendor's reported credentials, or explicit
   const unknown = imageStatus(status(), story(MINI));
   assert.equal(unknown.image.configured, null, "the global Gemini key says nothing about MiniMax");
   assert.equal(statusProblem(unknown), null, "the API can reject an unavailable vendor before calling it");
+});
+
+test("a one-off explainer's image-01 beside a 2K-priced settings model is drawn at 1K, at MiniMax's price and under MiniMax's prompt limit", async () => {
+  const { imagePromptLimit } = await import("./prompt-budget.mjs");
+  const original = status();
+  original.image.usd_per_image_2k = 0.134;
+  assert.equal(imageSizeFor(original), "2K", "the settings' own model is drawn at 2K");
+  const effective = imageStatus(original, { image_model: MINI });
+  assert.deepEqual(effective.image, { provider: "minimax", model: MINI, configured: null, usd_per_image_2k: null });
+  assert.equal(imageSizeFor(effective), null);
+  assert.equal(imagePrice(effective), 0.0035);
+  assert.equal(imagePromptLimit(effective.image, { limits: { image_prompt_chars: 4000, image_prompt_chars_minimax: 1500 } }), 1500);
 });
 
 test("an unknown or retired series model is refused instead of silently falling back", () => {
@@ -315,6 +328,21 @@ test("a failed server job retried under the same id updates its zero charge when
   assert.equal(readLedger(fake.workdir).totals.usd, 0.067);
 });
 
+test("an uncertain pilot job keeps its reservation and pending id across reruns", async () => {
+  const fake = fakeStage(imageStatus(status(), story()));
+  Object.assign(fake.ready, {
+    status: "failed", file: null, usd_estimate: 0,
+    error: { code: "video_media_outcome_uncertain", detail: "vendor result unknown" },
+  });
+  await assert.rejects(fake.generate(), (error) => error instanceof MediaError && error.code === "video_media_outcome_uncertain" && error.who === "owner");
+  assert.equal(readLedger(fake.workdir).totals.reserved, 0.067);
+  assert.deepEqual(Object.values(readJobs(fake.workdir).jobs).map((job) => job.job_id), [fake.ready.id]);
+
+  await assert.rejects(fake.generate(), errorCode("video_media_outcome_uncertain"));
+  assert.deepEqual(fake.calls, ["POST images", "GET jobs/image-job-1"], "a rerun must inspect the original job without buying another image");
+  assert.equal(readLedger(fake.workdir).totals.reserved, 0.067);
+});
+
 test("a generation holds its list price in the ledger before it is submitted, and the server's charge replaces the hold", async () => {
   const effective = imageStatus(status(), story());
   let heldAtSubmit = null;
@@ -433,4 +461,57 @@ test("an image model takes a style reference when the catalog says so; a server 
   assert.equal(takesStyleReference(before, "slides"), false);
   assert.equal(takesStyleReference(before, "drama"), true);
   assert.equal(takesStyleReference({ ...before, image: { provider: "minimax", model: "image-01", configured: true } }, "drama"), false);
+});
+
+test("a project another producer holds gets no reservation, no request and no judge call from this stage", async () => {
+  const fake = fakeStage(status());
+  writeFileSync(path.join(fake.workdir, LEASE_FILE), JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "manual recovery", pid: 4242, host: "another-container", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+  const held = (error) => error instanceof MediaError && error.code === PROJECT_LEASED && error.who === "owner" && /manual recovery/.test(error.message);
+  await assert.rejects(fake.generate(), held);
+  await assert.rejects(fake.stage.judge({ id: "opening", kind: "keyframe", files: [], rubric: [] }), held);
+  assert.deepEqual(fake.calls, [], "nothing reached the media server");
+  assert.deepEqual(readLedger(fake.workdir).entries, [], "nothing was reserved or booked");
+  assert.deepEqual(readJobs(fake.workdir).jobs, {});
+});
+
+test("a STOP that arrives while a submitted picture is drawn keeps that paid picture, and the next request is not sent", async () => {
+  let stopped = false;
+  const fake = fakeStage(status(), { overrides: {
+    "POST images": ({ init }) => {
+      fake.bodies.push(JSON.parse(init.body));
+      return Response.json({ ...fake.ready, status: "running", file: null });
+    },
+    "GET jobs/image-job-1": () => {
+      // The owner's STOP lands while the server is drawing: the job finishes all the same.
+      writeFileSync(path.join(fake.workdir, "STOP"), "owner hold");
+      stopped = true;
+      return Response.json(fake.ready);
+    },
+  } });
+  const first = await fake.generate();
+  assert.ok(stopped);
+  assert.equal(first.reused, false);
+  assert.ok(existsSync(path.join(fake.workdir, first.file)), "the paid picture is downloaded under its original request");
+  assert.equal(readCache(fake.workdir).entries[first.key].sha256, first.sha256);
+  assert.deepEqual(readLedger(fake.workdir).entries.map((entry) => entry.status), ["ready"], "booked once at the server's charge");
+  const posts = fake.calls.filter((route) => route.startsWith("POST")).length;
+  await assert.rejects(fake.generate({ seed: 2, target: "keyframes/opening-2" }), (error) => error.code === "stopped");
+  await assert.rejects(fake.stage.judge({ id: "opening", kind: "keyframe", files: [], rubric: [] }), (error) => error.code === "stopped");
+  assert.equal(fake.calls.filter((route) => route.startsWith("POST")).length, posts, "no next paid call after STOP");
+  assert.equal(readLedger(fake.workdir).entries.length, 1, "and nothing reserved for one");
+  assert.deepEqual((await fake.generate()).reused, true, "the kept picture is still served from the cache");
+});
+
+test("a hold an earlier lost submit left in the ledger survives a STOP or a foreign lease that refuses the next attempt", async () => {
+  for (const block of ["STOP", "lease"]) {
+    const fake = fakeStage(status());
+    const key = fake.stage.imageKey({ prompt: "synthetic drawing", seed: 1 });
+    reserve(fake.workdir, { stage: "keyframes", kind: "image", id: "opening", provider: "gemini", model: PRO, key, seconds: 0, cost_usd: 0.134 }, new Date("2026-09-29T00:00:00Z"));
+    const before = readLedger(fake.workdir).entries;
+    if (block === "STOP") writeFileSync(path.join(fake.workdir, "STOP"), "owner hold");
+    else writeFileSync(path.join(fake.workdir, LEASE_FILE), JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "manual recovery", pid: 4242, host: "another-container", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+    await assert.rejects(fake.generate(), (error) => error.code === (block === "STOP" ? "stopped" : PROJECT_LEASED), block);
+    assert.deepEqual(readLedger(fake.workdir).entries, before, `${block}: the kept charge is not released`);
+    assert.deepEqual(fake.calls, []);
+  }
 });

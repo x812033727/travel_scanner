@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import json
 import os
 from collections.abc import AsyncIterator, Coroutine
 from dataclasses import dataclass, field
@@ -22,6 +23,7 @@ from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoTool
 from app.problems import AppError
 from app.video_automation import settings as automation
 from app.video_reviews import admin_service as service
+from app.video_reviews import dub_retry
 from app.video_reviews.schemas import (
     CategoryIn,
     DecisionIn,
@@ -416,6 +418,199 @@ async def test_the_owner_s_languages_reach_the_worker_and_its_batch_comes_back_t
         with pytest.raises(AppError) as refused:
             await service.set_locales(session, slug, owner, LocalesIn.model_validate({}))
         assert refused.value.code == "video_project_dropped"
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_a_skipped_dub_asked_again_is_taken_made_and_closed_by_its_batch(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """docs/videos/DUBS.md §再做一次, on PostgreSQL: the owner asks for a given-up dub again, the
+    worker reads the request on its list row and takes it in its report, and the batch that
+    carries the track closes the request in the transaction that stores the review."""
+    slug = f"it-{uuid4().hex[:12]}"
+    store = ReviewStore(tmp_path / "reviews", max_file_bytes=10_000_000, max_total_bytes=50_000_000)
+    work = tmp_path / "work"
+    (work / slug).mkdir(parents=True)
+    (work / slug / "auto.json").write_text(
+        json.dumps({"slug": slug, "status": "done"}), encoding="utf-8"
+    )
+    room = dub_retry.SpeechRoom(configured=True, limit=300_000, used=0, available=True)
+    reason = "k7p2 does not fit its window even at 1.15x after 2 shortening rounds"
+    async with SessionFactory() as session:
+        owner = User(email=f"video-dub-retry-{uuid4()}@example.com", password_hash="unused")
+        token = VideoToolToken(name="it", token_hash=uuid4().hex * 2, token_prefix="mkv_it")
+        session.add_all([owner, token])
+        await session.commit()
+        # The settings read is a real query here; what it answers depends on the database, so
+        # the request below is asked with the switch stood in for.
+        assert isinstance(await service._automation_enabled(session), bool)
+        monkeypatch.setattr(service, "_automation_enabled", AsyncMock(return_value=True))
+
+        report = ProjectIn(title="AI 模型怎麼挑", stage="done")
+        await service.upsert_project(session, store, slug, report)
+        await service.set_locales(
+            session, slug, owner, LocalesIn.model_validate({"locales": {"ja": {"dub": True}}})
+        )
+        package = await service.submit_review(
+            session,
+            store,
+            slug,
+            ReviewIn(gate="publish", content_sha256="5" * 64, summary="上傳包", payload={}),
+            token,
+        )
+        await service.decide(session, slug, package.id, owner, DecisionIn(decision="approve"))
+        srt = "1\n00:00:01,000 --> 00:00:03,000\nこんにちは\n".encode()
+        captions_file = {
+            "role": "captions_ja",
+            "sha256": _upload(store, slug, srt),
+            "size": len(srt),
+            "content_type": "text/plain",
+        }
+        given_up = await service.submit_review(
+            session,
+            store,
+            slug,
+            ReviewIn(
+                gate="languages",
+                content_sha256="6" * 64,
+                summary="語言：ja CC；配音跳過",
+                payload={
+                    "locales": {
+                        "ja": {"captions": "ready", "dub": {"status": "skipped", "reason": reason}}
+                    }
+                },
+                files=[captions_file],
+            ),
+            token,
+        )
+        assert given_up.status == "approved", "no track: nothing for the owner to upload"
+        before = await service.project_view(session, slug, str(work))
+        assert before.languages["ja"]["dub"].state == "skipped"
+        assert before.dub_retries == {} and before.dub_retry_blocked == {}
+
+        asked = await service.request_dub_retry(
+            session, store, slug, owner, "ja", work_dir=str(work), speech=room
+        )
+        request = asked.dub_retries["ja"]
+        assert (request.status, request.open, request.replaced_reason) == (
+            "requested",
+            True,
+            reason,
+        )
+        assert asked.languages["ja"]["dub"].state == "skipped", "asking touches nothing else"
+        again = await service.request_dub_retry(
+            session, store, slug, owner, "ja", work_dir=str(work), speech=room
+        )
+        assert again.dub_retries["ja"].id == request.id, "a second click is the same request"
+        recorded = list(
+            await session.scalars(
+                select(AdminAuditLog).where(
+                    AdminAuditLog.actor_user_id == owner.id,
+                    AdminAuditLog.action == "video_dub_retry_requested",
+                )
+            )
+        )
+        assert len(recorded) == 1, "and one audit row"
+        assert recorded[0].metadata_json["estimated_characters"] == len("こんにちは"), (
+            "the size of the track is read from the batch's caption file"
+        )
+
+        # The worker's list row carries the request; its report takes it, and the answer to
+        # that report is where it reads that the site agreed.
+        listed = next(
+            item
+            for item in await service.list_projects(session, shorts="exclude")
+            if item.slug == slug
+        )
+        assert (listed.dub_retries["ja"].id, listed.dub_retries["ja"].open) == (request.id, True)
+        assert listed.languages["ja"]["dub"].state == "skipped"
+        answer = await service.upsert_project(
+            session,
+            store,
+            slug,
+            ProjectIn(
+                title="AI 模型怎麼挑",
+                stage="done",
+                dub_retries={"ja": {"id": str(request.id), "status": "taken"}},
+            ),
+        )
+        assert answer.dub_retries["ja"].status == "taken"
+        assert answer.languages["ja"]["dub"].state == "working"
+        assert not answer.ready_to_upload, "a dub in the making holds the schedule"
+
+        audio = b"japanese track, made again"
+        track = _upload(store, slug, audio)
+        card = await service.submit_review(
+            session,
+            store,
+            slug,
+            ReviewIn(
+                gate="languages",
+                content_sha256="7" * 64,
+                summary="語言：ja CC 與配音",
+                payload={
+                    "locales": {
+                        "ja": {
+                            "captions": "ready",
+                            "dub": "ready",
+                            "file_role": "dub_ja",
+                            "kept_lines": ["k7p2"],
+                        }
+                    }
+                },
+                files=[
+                    captions_file,
+                    {
+                        "role": "dub_ja",
+                        "sha256": track,
+                        "size": len(audio),
+                        "content_type": "audio/mp4",
+                    },
+                ],
+            ),
+            token,
+        )
+        assert card.status == "pending", "the new track waits for the owner to upload it"
+        after = await service.project_view(session, slug, str(work))
+        made = after.dub_retries["ja"]
+        assert (made.id, made.status, made.open) == (request.id, "made", False)
+        assert made.taken_at is not None and made.finished_at is not None
+        assert after.languages["ja"]["dub"].state == "ready" and after.pending == 1
+        assert after.reviews[0].payload["locales"]["ja"]["kept_lines"] == ["k7p2"]
+
+        # The owner's own audit actions gained exactly the request; the take and the ending
+        # are the site's rows, on the same target.
+        project = await session.scalar(select(VideoProject).where(VideoProject.slug == slug))
+        assert project is not None
+        owned = await session.scalars(
+            select(AdminAuditLog.action).where(AdminAuditLog.actor_user_id == owner.id)
+        )
+        assert sorted(owned) == [
+            "video_dub_retry_requested",
+            "video_locales_set",
+            "video_review_approved",
+        ]
+        unattended = list(
+            await session.scalars(
+                select(AdminAuditLog).where(
+                    AdminAuditLog.target == f"video_project:{project.id}",
+                    AdminAuditLog.actor_user_id.is_(None),
+                )
+            )
+        )
+        assert sorted(row.action for row in unattended) == [
+            "video_dub_retry_finished",
+            "video_dub_retry_taken",
+        ]
+        finished = next(row for row in unattended if row.action == "video_dub_retry_finished")
+        assert finished.metadata_json == {
+            "slug": slug,
+            "locale": "ja",
+            "request_id": str(request.id),
+            "outcome": "made",
+            "reason": None,
+            "via": "batch",
+        }
 
 
 @pytest.mark.asyncio(loop_scope="module")

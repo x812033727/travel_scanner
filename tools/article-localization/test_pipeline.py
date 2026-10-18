@@ -526,6 +526,25 @@ class PipelineTests(unittest.TestCase):
                 errors,
             )
 
+    def test_japanese_citation_titles_are_preserved_without_allowing_copied_body(self):
+        official = "国税庁 輸出物品販売場制度に関するQ&A（リファンド方式・概要編）"
+        fields = {
+            "/document/title": {"source": "日本退稅新制", "kind": "document", "max_length": 200},
+            "/document/sources/0/title": {"source": official, "kind": "document", "max_length": 300},
+        }
+        translations = {"/document/title": "日本の免税新制度", "/document/sources/0/title": official}
+        self.assertEqual(pipeline.validate_fields(fields, translations, "zh-TW", "ja"), [])
+        for pointer, copied in (
+            ("/document/blocks/0/text", official),
+            ("/document/sources/1/title", "這是一段繁體中文的完整來源標題，應該翻成自然日語而不能整段抄寫。"),
+        ):
+            with self.subTest(pointer=pointer):
+                errors = pipeline.validate_fields(
+                    {**fields, pointer: {"source": copied, "kind": "document", "max_length": 300}},
+                    {**translations, pointer: copied}, "zh-TW", "ja",
+                )
+                self.assertTrue(any(pointer in error and "copied" in error for error in errors), errors)
+
     def test_valid_chinese_variant_may_keep_script_neutral_prose(self):
         fields = {
             "/document/title": {
@@ -814,6 +833,11 @@ class PipelineTests(unittest.TestCase):
             "/guides/howto",
             "/destinations/hanoi",
             "/destinations/singapore",
+            "/destinations/tokyo",
+            "/destinations/osaka-kyoto",
+            "/destinations/seoul",
+            "/destinations/jeju",
+            "/destinations/hong-kong",
             "/guides",
         )
         source["blocks"].extend(
@@ -885,6 +909,109 @@ class PipelineTests(unittest.TestCase):
             )
             self.assertEqual(staged["sources"][0], source["sources"][0])
 
+    def test_verified_hong_kong_filter_preserves_city_and_external_sources(self):
+        source = sample()
+        source["blocks"].append(
+            {
+                "type": "link",
+                "text": "香港美食",
+                "url": "https://mokaair.com/zh-TW/foods?city=hong-kong",
+            }
+        )
+        source["blocks"][1]["inlines"].append(
+            {
+                "type": "link",
+                "text": "香港美食",
+                "url": "https://mokaair.com/zh-TW/foods?city=hong-kong",
+            }
+        )
+        source["blocks"].append(
+            {
+                "type": "link",
+                "text": "外部城市頁面",
+                "url": "https://example.com/zh-TW/foods?city=hong-kong",
+            }
+        )
+        source["sources"][0]["url"] = "https://mokaair.com/zh-TW/foods?city=hong-kong"
+        fields = pipeline.document_fields(source)
+        translations = {pointer: field["source"] for pointer, field in fields.items()}
+        translations["/document/title"] = "Travel explanation"
+        for locale in pipeline.LOCALES:
+            with self.subTest(locale=locale), tempfile.TemporaryDirectory() as tmp:
+                localized_fields = dict(translations)
+                if locale == "zh-CN":
+                    localized_fields["/document/description"] = "适用台湾护照的旅行说明。"
+                    localized_fields["/document/blocks/0/text"] = (
+                        "入境前 3 天使用 `command`，查阅 https://example.com/rules"
+                    )
+                job = {
+                    "fields": fields,
+                    "source_document": source,
+                    "source_locale": "zh-TW",
+                    "locale": locale,
+                    "assets": [],
+                    "raster_review_required": [],
+                    "job_sha256": "test-job",
+                }
+                directory = Path(tmp)
+                pipeline.materialize(job, localized_fields, directory)
+                staged = pipeline.read_json(directory / "document.json")
+                expected = f"https://mokaair.com/{locale}/foods?city=hong-kong"
+                self.assertEqual(staged["blocks"][5]["url"], expected)
+                self.assertEqual(staged["blocks"][1]["inlines"][-1]["url"], expected)
+                self.assertEqual(staged["blocks"][6], source["blocks"][6])
+                self.assertEqual(staged["sources"][0], source["sources"][0])
+        self.assertEqual(
+            source["blocks"][5]["url"], "https://mokaair.com/zh-TW/foods?city=hong-kong"
+        )
+
+    def test_unverified_hong_kong_query_variants_refuse_before_artifacts(self):
+        for url in (
+            "https://mokaair.com/zh-TW/foods",
+            "https://mokaair.com/zh-TW/foods?city=seoul",
+            "https://mokaair.com/zh-TW/foods?city=Hong-Kong",
+            "https://mokaair.com/zh-TW/foods?city=hong-kong&sort=rating",
+            "https://mokaair.com/zh-TW/foods?city=hong-kong&city=hong-kong",
+            "https://mokaair.com/zh-TW/foods?city=hong-kong&",
+            "https://mokaair.com/zh-TW/foods?city=hong%2Dkong",
+            "https://mokaair.com/zh-TW/foods?city=hong-\nkong",
+            "https://mokaair.com/zh-TW/foods?city=hong-kong\t",
+            " https://mokaair.com/zh-TW/foods?city=hong-kong",
+            "https://mokaair.com/zh-TW/foods?city=hong-kong ",
+            "https://mokaair.com/zh-TW/foods?city=hong-kong\x7f",
+            "https://mokaair.com/zh-TW/foods/?city=hong-kong",
+            "https://mokaair.com/zh-TW/foods?city=hong-kong#nearby",
+            "https://mokaair.com/zh-TW/foods?city=hong-kong#",
+            "https://mokaair.com/foods?city=hong-kong",
+            "http://mokaair.com/zh-TW/foods?city=hong-kong",
+            "https://www.mokaair.com/zh-TW/foods?city=hong-kong",
+            "https://mokaair.com/zh-TW/destinations/hong-kong?city=hong-kong",
+            "https://mokaair.com/zh-TW/destinations/hong-kong?",
+            "https://mokaair.com/zh-TW/destinations/hong-kong#",
+            "https://mokaair.com/zh-TW/destinations/hong-kong/#nearby",
+        ):
+            with self.subTest(url=url), tempfile.TemporaryDirectory() as tmp:
+                source = sample()
+                source["blocks"].append({"type": "link", "text": "站內頁面", "url": url})
+                fields = pipeline.document_fields(source)
+                translations = {
+                    pointer: field["source"] for pointer, field in fields.items()
+                }
+                translations["/document/title"] = "Travel explanation"
+                job = {
+                    "fields": fields,
+                    "source_document": source,
+                    "source_locale": "zh-TW",
+                    "locale": "en",
+                    "assets": [],
+                    "raster_review_required": [],
+                    "job_sha256": "test-job",
+                }
+                directory = Path(tmp) / "refused"
+                with self.assertRaises(ValueError):
+                    pipeline.materialize(job, translations, directory)
+                self.assertFalse(directory.exists())
+
     def test_unapproved_site_links_refuse_materialization_without_artifacts(self):
         for url in (
             "https://mokaair.com/zh-TW/guides/howto/draft-article",
@@ -897,6 +1024,9 @@ class PipelineTests(unittest.TestCase):
             "https://mokaair.com/zh-TW/guides?topic=rail",
             "https://mokaair.com/zh-TW/guides#first",
             "https://mokaair.com/zh-TW/guides/",
+            "https://mokaair.com/zh-TW/destinations/tokyo?topic=rail",
+            "https://mokaair.com/zh-TW/destinations/osaka-kyoto#first",
+            "https://mokaair.com/zh-TW/destinations/unpublished-city",
         ):
             with self.subTest(url=url), tempfile.TemporaryDirectory() as tmp:
                 source = sample()

@@ -87,7 +87,8 @@ export async function main(args=process.argv.slice(2), { env = process.env, fetc
   }
   if (command==='push') {
     const {push} = await import('./push.mjs');
-    const result = await push({directory:need(values,'dir'),client:await site(),log:(line)=>console.error(line)});
+    // Run by hand: the worker's own Shorts call push() from lab.mjs and cut.mjs. The owner decides both gates.
+    const result = await push({directory:need(values,'dir'),client:await site(),log:(line)=>console.error(line),handPushed:true});
     print({slug:result.slug,final:result.final?.status??null,publish:result.publish?.status??null,waits:result.waits});
     return 0;
   }

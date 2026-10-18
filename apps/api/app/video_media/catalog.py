@@ -199,6 +199,37 @@ MEDIA_CATALOG: tuple[MediaModel, ...] = (
         note="一首完整的曲子 US$0.08；帶 SynthID 浮水印",
         usd_per_track=0.08,
     ),
+    # MiniMax music (providers/minimax.py MiniMaxMusic), from the music-generation pages and
+    # both pay-as-you-go pages read 2026-10-15. The international page sells music-3.0 and
+    # music-2.6 at US$0.15 per track of up to five minutes; the China page at ¥1.0 per track,
+    # about US$0.14, so the ledger counts the higher figure. Both list the two models as
+    # discontinued: since 2026-08-20 the paid music API is no longer offered to new users
+    # (accounts that paid for it before keep it), and the -free models are gone, so an account
+    # that never bought music is refused by MiniMax and the job fails with that reason. The API
+    # takes no length; the adapter asks for it in the prompt, as Lyria's does. music-3.0 comes
+    # first: it is what the settings tab picks when the music vendor is switched to MiniMax.
+    MediaModel(
+        "music-3.0",
+        "minimax",
+        "music",
+        "MiniMax Music 3.0",
+        note=(
+            "官方推薦；純配樂，一首最長 5 分鐘 US$0.15（2026-10-15 查價目頁）；"
+            "2026-08-20 起付費音樂 API 不再開放新用戶，之前沒買過音樂的帳號會被 MiniMax 拒絕"
+        ),
+        usd_per_track=0.15,
+    ),
+    MediaModel(
+        "music-2.6",
+        "minimax",
+        "music",
+        "MiniMax Music 2.6",
+        note=(
+            "上一代；純配樂，一首最長 5 分鐘 US$0.15（2026-10-15 查價目頁）；"
+            "2026-08-20 起付費音樂 API 不再開放新用戶，之前沒買過音樂的帳號會被 MiniMax 拒絕"
+        ),
+        usd_per_track=0.15,
+    ),
 )
 
 DEFAULT_IMAGE: tuple[MediaVendor, str] = ("gemini", "gemini-3-pro-image")

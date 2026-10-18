@@ -13,6 +13,20 @@ function response(value: unknown, status = 200) {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("AdminDeploymentsPanel", () => {
+  it("labels the release guard check and shows why the agent refuses", async () => {
+    const held = { ...overview, checks: [{ name: "release_guard", status: "failed", detail: "codex-release 正在發布 cccccccccccc" }] };
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.endsWith("/admin/deployments/overview")) return response(held);
+      if (url.includes("/admin/deployments?")) return response({ items: [] });
+      throw new Error(`unexpected ${url}`);
+    }));
+    render(<AdminDeploymentsPanel />);
+    expect(await screen.findByText("其他發布")).toBeTruthy();
+    expect(screen.getByText("codex-release 正在發布 cccccccccccc")).toBeTruthy();
+    expect(screen.queryByText("release_guard")).toBeNull();
+  });
+
   it("shows the green target and requires password plus exact SHA confirmation", async () => {
     const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input);

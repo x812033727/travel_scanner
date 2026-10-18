@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -8,6 +8,7 @@ import { EXIT, main } from "../cli.mjs";
 import { approvalState, approve, readApprovals } from "../core/approvals.mjs";
 import { illustrated, lookHash } from "../core/drama.mjs";
 import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
+import { LEASE_FILE } from "../core/project-lease.mjs";
 import { readLedger } from "./ledger.mjs";
 import { keepSheets } from "./series-store.mjs";
 import { readCache, readJobs } from "./cache.mjs";
@@ -68,7 +69,7 @@ function mediaSite({ verdicts, status = STATUS, actualImageModel = () => status.
       // Like the server, choose from the series, independently of the global status response,
       // and price a 2K picture with the slides choice's 2K price.
       const model = actualImageModel();
-      const price = request.size === "2K" ? status.slides_image.usd_per_image_2k : status.models.images.gemini.find((entry) => entry.value === model).usd_per_image;
+      const price = request.size === "2K" ? (status.slides_image ?? status.image).usd_per_image_2k : Object.values(status.models.images).flat().find((entry) => entry.value === model).usd_per_image;
       const bytes = PNG(`${model}|${request.prompt}|${request.seed ?? ""}|${(request.references ?? []).map((reference) => reference.sha256).join(",")}`);
       state.files.set(SHA(bytes), bytes);
       return Response.json({ id: `img${state.images.length}`, status: "ready", file: { sha256: SHA(bytes), size: bytes.length, content_type: "image/png" }, usd_estimate: price, error: null, retry_after_seconds: 0 }, { status: 200 });
@@ -366,9 +367,41 @@ test("a shot that never passes is left for a prompt fix after the last take, wit
   // The STOP file ends a run between remote calls and keeps what was drawn.
   writeFileSync(path.join(box.workdir, "STOP"), "");
   const stopped = context(box, site.fetchImpl);
-  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.ok, stopped.out.stderr);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.incomplete, stopped.out.stderr);
   assert.match(stopped.out.stdout, /stopped by the STOP file/);
   assert.equal(manifestOf(box, "keyframes").shots.farewell, undefined);
+});
+
+test("keyframes run by hand while another producer holds the project, or under its STOP file, draws nothing and leaves the manifest as it was", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const site = mediaSite({ verdicts: () => ({ overall: 9, passed: true }) });
+  await main(["look", "--slug", box.slug], context(box, site.fetchImpl).ctx);
+  await main(["look", "--slug", box.slug, "--choose", "jingwei=1,yandi=1"], context(box, site.fetchImpl).ctx);
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "opening"], context(box, site.fetchImpl).ctx), EXIT.ok);
+  const manifestPath = path.join(box.workdir, "keyframes", "manifest.json");
+  const before = readFileSync(manifestPath, "utf8");
+  const images = site.state.images.length;
+  // The worker's unit (another process) holds the project.
+  const lease = path.join(box.workdir, LEASE_FILE);
+  writeFileSync(lease, JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "auto", pid: 4242, host: "video-worker", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+  for (const args of [["--shot", "farewell"], ["--accept-best", "opening"]]) {
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["keyframes", "--slug", box.slug, ...args], run.ctx), EXIT.owner, args.join(" "));
+    assert.match(run.out.stderr + run.out.stdout, /auto \(pid 4242 on video-worker.*nothing was sent or written/);
+  }
+  assert.equal(readFileSync(manifestPath, "utf8"), before);
+  assert.equal(site.state.images.length, images, "no picture was asked for");
+  // Once it is gone, the project's STOP file holds it the same way.
+  rmSync(lease);
+  writeFileSync(path.join(box.workdir, "STOP"), "owner hold");
+  for (const args of [["--shot", "farewell"], ["--accept-best", "opening"]]) {
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["keyframes", "--slug", box.slug, ...args], run.ctx), EXIT.incomplete);
+    assert.match(run.out.stdout, /stopped by the STOP file before anything was drawn or written/);
+  }
+  assert.equal(readFileSync(manifestPath, "utf8"), before);
+  assert.equal(site.state.images.length, images);
 });
 
 // What the server reports when the provider refuses a request outright, as MiniMax did a prompt
@@ -606,6 +639,60 @@ test("an explainer has no look: look refuses it, and keyframes draw every still 
   const manifest = manifestOf(box, "keyframes");
   assert.equal(manifest.look_hash, lookHash(explainerFixture()));
   assert.deepEqual(Object.keys(manifest.shots).sort(), [...shots].sort());
+});
+
+test("a cute explainer one-off whose series.json names image-01 is sized, priced and budgeted for MiniMax, while one that names none still asks the settings' model for 2K", async () => {
+  const { shotPromptBudget } = await import("./prompt-budget.mjs");
+  const { resolveLook } = await import("../core/drama.mjs");
+  // The settings draw with Gemini 3 Pro at 2K; the catalogue also offers MiniMax image-01 at 1K.
+  const status = {
+    ...STATUS,
+    image: { ...STATUS.image, usd_per_image_2k: 0.134 },
+    models: { ...STATUS.models, images: { ...STATUS.models.images, minimax: [{ value: "image-01", label: "MiniMax image-01", description: null, status: "stable", resolutions: [], durations: [], reference_images: 1, native_audio: false, usd_per_second: null, usd_per_image: 0.0035, usd_per_track: null }] } },
+    limits: { image_prompt_chars: 4000, image_prompt_chars_minimax: 1500 },
+  };
+  const box = sandbox("fixture-explainer", "explainer");
+  const doc = rewrite(box, (video) => {
+    video.look = { preset: "cute-mystery" };
+    video.series = { slug: "one-off-x", episode: 1, chapter: 1 };
+  });
+  writeFileSync(path.join(box.dir, "series.json"), `${JSON.stringify({ slug: "one-off-x", episode: 1, image_model: "image-01", characters: [] }, null, 2)}\n`);
+  const shots = doc.scenes.filter((scene) => scene.template === "shot");
+  const look = resolveLook(doc.look);
+  const budgetOf = (scene) => shotPromptBudget({ look, camera: scene.data.camera, cast: "", limit: 1500 });
+  const site = mediaSite({ status, verdicts: () => ({ overall: 8, passed: true }), actualImageModel: () => "image-01" });
+
+  const dry = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
+  assert.match(dry.out.stdout, /server: minimax image-01 \(provider key checked on submit\); pictures at 1K/);
+  for (const scene of shots) {
+    assert.ok(budgetOf(scene) > 1000 && budgetOf(scene) < 1100, `${scene.id}: ${budgetOf(scene)} under MiniMax's 1500, not Gemini's 4000`);
+    assert.ok(dry.out.stdout.includes(`  prompt budget: ${scene.data.prompt.length} of ${budgetOf(scene)} characters\n`), `${scene.id}: ${budgetOf(scene)}`);
+  }
+  assert.doesNotMatch(dry.out.stdout, /OVER BUDGET/);
+  assert.equal(site.state.images.length, 0, "a dry run draws nothing");
+
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", shots[0].id], run.ctx), EXIT.ok, run.out.stderr);
+  assert.equal(site.state.images.length, 1);
+  const [request] = site.state.images;
+  assert.equal(request.shot_id, shots[0].id);
+  assert.equal(Object.hasOwn(request, "size"), false, "image-01 sells 1K only: no size is asked for");
+  assert.equal(Object.hasOwn(request, "negative_prompt"), false, "a cute look is positive text only");
+  const manifest = manifestOf(box, "keyframes");
+  assert.deepEqual(manifest.image, { provider: "minimax", model: "image-01" });
+  assert.equal(manifest.image_selection_version, 1);
+  assert.equal(manifest.shots[shots[0].id].prompt_budget_chars, budgetOf(shots[0]));
+
+  // The counter-case: the same site, an explainer whose series names no model. The settings'
+  // model draws it, at the 2K it is priced for.
+  const plain = sandbox("fixture-explainer", "explainer");
+  const settingsSite = mediaSite({ status, verdicts: () => ({ overall: 8, passed: true }) });
+  const plainRun = context(plain, settingsSite.fetchImpl);
+  const first = explainerFixture().scenes.find((scene) => scene.template === "shot").id;
+  assert.equal(await main(["keyframes", "--slug", plain.slug, "--shot", first], plainRun.ctx), EXIT.ok, plainRun.out.stderr);
+  assert.equal(settingsSite.state.images[0].size, "2K");
+  assert.deepEqual(manifestOf(plain, "keyframes").image, { provider: "gemini", model: PRO_MODEL });
 });
 
 /** The sandbox's video.json, changed by `edit` and written back. */
@@ -1597,4 +1684,93 @@ test("a shot whose prompt stops fitting the image model's budget keeps its earli
   assert.ok(after.shots.desk.prompt_budget_chars < 700);
   assert.match(after.shots.desk.problems.join("; "), /^prompt is 700 characters; the minimax budget for this shot is \d+ /);
   assert.equal(after.shots.desk.problems.length, 1);
+});
+
+test("look run by hand under the project's STOP file, or while another producer holds it, draws and chooses nothing", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const site = mediaSite({ verdicts: () => ({ overall: 9, passed: true }) });
+  assert.equal(await main(["look", "--slug", box.slug], context(box, site.fetchImpl).ctx), EXIT.ok);
+  const files = () => ["characters/manifest.json", "characters/choice.json"].map((name) => (existsSync(path.join(box.workdir, name)) ? readFileSync(path.join(box.workdir, name), "utf8") : null));
+  const before = files();
+  const images = site.state.images.length;
+  writeFileSync(path.join(box.workdir, "STOP"), "owner hold");
+  for (const args of [[], ["--choose", "jingwei=1,yandi=1"]]) {
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["look", "--slug", box.slug, ...args], run.ctx), EXIT.incomplete, args.join(" ") || "draw");
+    assert.match(run.out.stdout, /stopped by the STOP file before anything was drawn or written/);
+  }
+  rmSync(path.join(box.workdir, "STOP"));
+  writeFileSync(path.join(box.workdir, LEASE_FILE), JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "auto", pid: 4242, host: "video-worker-elsewhere", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+  for (const args of [[], ["--choose", "jingwei=1,yandi=1"]]) {
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["look", "--slug", box.slug, ...args], run.ctx), EXIT.owner, args.join(" ") || "draw");
+  }
+  assert.equal(site.state.images.length, images, "no sheet was drawn");
+  assert.deepEqual(files(), before, "no sheet or choice was written");
+});
+
+// Which question a picture is judged with is part of what the judge is paid for and of the
+// verdict a shot keeps: flat-explainer is scored on the rubric, on a server that offers the
+// yes/no fault checks too, as it was before the cute looks took the checks.
+test("a flat-explainer's stills stay on the scored rubric on a server that offers the fault checks", async () => {
+  const flat = sandbox("fixture-explainer", "explainer");
+  const site = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: () => ({ overall: 8, passed: true }) });
+  const run = context(flat, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", flat.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.ok(site.state.judges.length > 0);
+  assert.ok(keyframeChecks().every((item) => item.cost > 0), "a fault check carries what it costs the picture");
+  assert.ok(site.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined)), "the scored rubric, not the checks");
+  assert.match(site.state.images[0].prompt, /Style: flat editorial illustration/);
+});
+
+// The cute looks were piloted as illustrated slides and measured with the nine yes/no checks, so
+// the host judges them the same way. A shot that still fails after its takes and two prompt-fix
+// rounds blocks the video (flow.mjs: keeping the judge's best take is an illustrated video's alone).
+test("a cute explainer's stills are judged by the nine fault checks the illustrated slides are, and scored on the rubric by a server without them", async () => {
+  const checksStatus = { ...STATUS, limits: { judge_checks: 1 } };
+  assert.deepEqual(keyframeChecks().map((item) => item.key), ["text", "anatomy", "detached", "subject", "frame", "style", "details", "awkward", "generated"]);
+  for (const preset of ["cute-mystery", "cute-cartoon"]) {
+    const box = sandbox("fixture-explainer", "explainer");
+    rewrite(box, (doc) => {
+      doc.look = { preset };
+      doc.subtitles = { burn_in: false };
+    });
+    const site = mediaSite({ status: checksStatus, verdicts: () => ({ overall: 9.29, passed: true }) });
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+    assert.ok(site.state.judges.length > 0);
+    // No style plate on this route: the style question is the context's, not a plate's.
+    for (const request of site.state.judges) assert.deepEqual(request.rubric, keyframeChecks(), preset);
+    assert.match(site.state.images[0].prompt, /Style: cute Taiwanese YouTube explainer cartoon/);
+    assert.ok(site.state.images.every((request) => request.references.length === 0), "no style plate and no sheet");
+    // An older server without the checks still scores them on the rubric.
+    const older = sandbox("fixture-explainer", "explainer");
+    rewrite(older, (doc) => {
+      doc.look = { preset };
+      doc.subtitles = { burn_in: false };
+    });
+    const olderSite = mediaSite({ verdicts: () => ({ overall: 8, passed: true }) });
+    const olderRun = context(older, olderSite.fetchImpl);
+    assert.equal(await main(["keyframes", "--slug", older.slug], olderRun.ctx), EXIT.ok, olderRun.out.stderr);
+    assert.ok(olderSite.state.judges.length > 0 && olderSite.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined)), preset);
+  }
+});
+
+test("--accept-best is still refused for a cute explainer: its failing picture is the prompt's to fix, then the owner's retry", async () => {
+  const box = sandbox("fixture-explainer", "explainer");
+  rewrite(box, (doc) => {
+    doc.look = { preset: "cute-mystery" };
+    doc.subtitles = { burn_in: false };
+  });
+  const [failing] = explainerFixture().scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
+  const site = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: (kind, request) => (kind === "keyframe" && request.context.shot.id === failing ? { overall: 4, passed: false, problems: ["text: a word on the sign"] } : { overall: 9, passed: true }) });
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.lint, run.out.stderr);
+  const file = path.join(box.workdir, "keyframes", "manifest.json");
+  const before = readFileSync(file, "utf8");
+  assert.equal(JSON.parse(before).shots[failing].needs_review, true);
+  const refused = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "all"], refused.ctx), EXIT.usage);
+  assert.match(refused.out.stderr, /--accept-best keeps pictures of an illustrated video alone .* fix the prompts of its shots instead/);
+  assert.equal(readFileSync(file, "utf8"), before, "nothing is kept, and the shot still waits for its prompt");
 });

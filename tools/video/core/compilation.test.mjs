@@ -216,6 +216,13 @@ test("cues shift by the episode's offset and merge in play order", () => {
     { start_ms: 2100, end_ms: 2900, text: "branded body" },
     { start_ms: 122_000, end_ms: 123_000, text: "第二集" },
   ], "a source intro is removed before the body receives its compilation position");
+  // An episode whose intro played after its 40 s condensation: only the cues after it lose the intro.
+  assert.deepEqual(mergeCaptions([
+    { srt: toSrt([{ start_ms: 1000, end_ms: 39000, text: "condensation" }, { start_ms: 51900, end_ms: 53000, text: "chapter two" }]), introMs: 11900, introAtMs: 40000, offsetMs: 2000 },
+  ]), [
+    { start_ms: 3000, end_ms: 41000, text: "condensation" },
+    { start_ms: 42000, end_ms: 43100, text: "chapter two" },
+  ], "the intro is removed where it played, not from 0:00");
 });
 
 test("eighty titled chapters fall back to 「第 N 集」 so the description stays within 5,000 bytes", () => {
@@ -264,8 +271,12 @@ test("lint reports the translations' state by field and by episode slug, and a t
   assert.deepEqual(en1, ["1 chapters without a translated title (keyed by episode slug): wuxia-ep-3"]);
   const ja = lint.warnings.filter((warning) => warning.path === "i18n/ja.json").map((warning) => warning.message);
   assert.deepEqual(ja, ["not translated: title", "3 chapters without a translated title (keyed by episode slug): wuxia-ep-1, wuxia-ep-2, wuxia-ep-3"]);
-  const long = { ...doc, youtube: { ...doc.youtube, title: "字".repeat(101) } };
-  assert.match(lintCompilation(long, {}).errors[0].message, /youtube\.title: 101 characters/);
+  // Counted with the captions tag package adds: 「｜CC」 when 「｜CC字幕」 does not fit, and the
+  // full tag again when neither does, so the message says how far over the title is.
+  const fits = { ...doc, youtube: { ...doc.youtube, title: "字".repeat(96) } };
+  assert.deepEqual(lintCompilation(fits, {}).errors, []);
+  const long = { ...doc, youtube: { ...doc.youtube, title: "字".repeat(98) } };
+  assert.match(lintCompilation(long, {}).errors[0].message, /youtube\.title: 103 characters/);
   const broken = lintCompilation({ ...doc, compilation: { ...doc.compilation, episodes: [] } }, {});
   assert.ok(broken.errors.length > 0);
 });

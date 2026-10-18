@@ -14,9 +14,9 @@ import { buildCues, toSrt } from "../core/captions.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, ROOT, UsageError } from "../core/paths.mjs";
 import { speechHash } from "../core/timeline.mjs";
-import { eachLine, spokenText } from "../core/schema.mjs";
+import { eachLine, LOCALES as VIDEO_LOCALES, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { unknownTermsFor } from "../core/lexicon.mjs";
-import { captionTimelineOf, currentDub, dubsForUpload, localeTexts } from "../core/stages.mjs";
+import { currentDub, dubsForUpload, localeCues, localeTexts } from "../core/stages.mjs";
 import { measureCut, measureProblems } from "../import/import.mjs";
 import { checkPackage, listFiles, packageFiles } from "../package/check.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -24,7 +24,7 @@ import { renewedFinal } from "./renewal.mjs";
 
 const HASH = /^[a-f0-9]{64}$/;
 const UUID = /^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i;
-const LOCALES = ["en", "ja", "ko", "zh-CN"];
+const LOCALES = VIDEO_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 const RECEIPT = "renewal-handoff.json";
 const digest = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const requireThat = (ok, message) => { if (!ok) throw new UsageError(message); };
@@ -392,6 +392,7 @@ export async function prepareApprovedFinalHandoff({ slug, canonical, out, source
   requireThat(final.payload.manual_review === true && final.payload.body_change && authority?.slug === slug && authority.status === "approved" && authority.review_id === final.id && authority.content_sha256 === final.content_sha256 && authority.decided_at === final.decided_at && UUID.test(authority.decided_by_user_id ?? "") && audits?.length === 1 && UUID.test(audit?.id ?? "") && audit.action === "video_review_approved" && audit.actor_user_id === authority.decided_by_user_id && audit.target === `video_review:${final.id}` && audit.metadata_json?.slug === slug && audit.metadata_json.gate === "final" && audit.metadata_json.sha256 === final.content_sha256, "current source requires the exact human decision row and matching approval audit");
   const pin = validateBranding(readJson(branding), { base: path.dirname(path.resolve(branding)) });
   requireThat(pin.hash === final.payload.branding_hash && await sha256File(candidate) === final.content_sha256, "current final bytes or branding differs from the human decision");
+  requireThat(!pin.intro_at, "a renewal handoff keeps the intro at the start; a pin with intro_at after_first_chapter needs assemble instead");
   for (const role of ["intro", "outro"]) requireThat(await sha256File(pin[role].file) === pin[role].sha256, `current ${role} branding asset changed`);
   const evidence = {};
   for (const role of ["evidence_script", "evidence_body_timeline", "captions_zh-TW", "narration", "thumbnail"]) {
@@ -462,6 +463,7 @@ export async function prepareHandoff({ slug, canonical, out, source, candidate, 
   const final = approved(remote, slug); inactive(remote);
   const pin = validateBranding(readJson(branding), { base: path.dirname(path.resolve(branding)) });
   requireThat(pin.hash === final.payload.branding_hash, "selected branding differs from the owner-approved final");
+  requireThat(!pin.intro_at, "a renewal handoff keeps the intro at the start; a pin with intro_at after_first_chapter needs assemble instead");
   const bound = final.payload.renewal_candidate.source;
   const rangeSource = mode === "manual-import" && source.body_from_original === true;
   requireThat(await sha256File(source.original) === bound.final_sha256 && (rangeSource || await sha256File(source.body) === bound.body_sha256) && await sha256File(candidate) === final.content_sha256, "original, retained body or candidate differs from the owner-approved source binding");
@@ -598,6 +600,16 @@ export async function activateHandoff({ receipt, readRemote, readProject, worker
   } finally { rmSync(lock, { force: true }); }
 }
 
+/** The caption and description locales a manual package's own metadata.json names, refused by
+ * field when a hand-built or hand-edited package mistypes one, never a TypeError. */
+function manualMetadataLocales(metadata) {
+  requireThat(metadata !== null && typeof metadata === "object" && !Array.isArray(metadata), "metadata.json is not an object; rebuild the package");
+  requireThat(Array.isArray(metadata.captions) && metadata.captions.every((v) => typeof v === "string"), "metadata.json captions is not a list of caption files; rebuild the package");
+  const map = metadata.localizations;
+  requireThat(map !== null && typeof map === "object" && !Array.isArray(map), "metadata.json localizations is not an object; rebuild the package");
+  return { captions: metadata.captions.map((v) => path.basename(v, ".srt")), localizations: Object.keys(map) };
+}
+
 /** A prepared manual package can be staged using existing attachment transport. This is a
  * publish proof, never a new final approval; unresolved chosen parts forbid submission. */
 export async function bindManualSubmission({ body, remote, workdir }) {
@@ -613,7 +625,8 @@ export async function bindManualSubmission({ body, remote, workdir }) {
     requireThat(await sha256File(file) === proof.sha256 && body.files.some((f) => f.role === entry.role && f.sha256 === proof.sha256 && f.size === proof.size), `manual package attachment changed: ${entry.role}`);
   }
   const wanted = normalizedChoices(remote.locales);
-  const report = checkPackage({ files: listFiles(path.join(workdir, "upload")), metadata, finalSha256: await sha256File(path.join(workdir, "upload/final.mp4")), approvedSha256: final.content_sha256, metadataSha256: body.content_sha256, locales: body.payload?.base_only === true ? metadata.captions.map((v) => path.basename(v, ".srt")) : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].captions)], descriptionLocales: body.payload?.base_only === true ? ["zh-TW", ...Object.keys(metadata.localizations)] : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].metadata)], brandingMatches: validateBranding(readJson(path.join(workdir, "branding.json")), { base: workdir }).hash === final.payload.branding_hash });
+  const own = body.payload?.base_only === true ? manualMetadataLocales(metadata) : null;
+  const report = checkPackage({ files: listFiles(path.join(workdir, "upload")), metadata, finalSha256: await sha256File(path.join(workdir, "upload/final.mp4")), approvedSha256: final.content_sha256, metadataSha256: body.content_sha256, locales: own ? own.captions : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].captions)], descriptionLocales: own ? ["zh-TW", ...own.localizations] : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].metadata)], brandingMatches: validateBranding(readJson(path.join(workdir, "branding.json")), { base: workdir }).hash === final.payload.branding_hash });
   requireThat(report.ok && isDeepStrictEqual(body.payload?.package, report), "manual package check is not successful or changed");
   return { ...body, payload: { ...body.payload, final_review_id: final.id, renewal_handoff_id: receipt.id, manual_source: metadata.renewal_handoff } };
 }
@@ -744,7 +757,7 @@ export async function bindManualLanguageSubmission({ body, remote, workdir, proj
     }
     if (status.captions === "ready") {
       requireThat(choice.captions && texts[locale] && !current?.stale, `${locale}: captions or dub timing source is stale`);
-      const expected = toSrt(buildCues(current ? captionTimelineOf(current) : presented, texts[locale], locale).cues);
+      const expected = toSrt(localeCues(presented, texts, locale, narrationLocale(project.doc), current).cues);
       requireThat(entry(`captions_${locale}`)?.sha256 === digest(expected), `${locale}: captions do not match the renewed presentation/dub timeline`);
     }
     if (status.dub === "ready" || status.status === "ready" && body.gate === "dubs") requireThat(choice.dub && current && !current.stale && current.branding_hash === pin.hash && entry(`dub_${locale}`)?.sha256 === await sha256File(current.file), `${locale}: dub is not fitted and branded for this retained body`);
@@ -774,14 +787,16 @@ export async function stageManualPublish({ workdir, client, send, uploadInactive
   const remote = await client.project(receipt.slug), final = approved(remote, receipt.slug);
   inactive(remote);
   const metadata = readJson(path.join(workdir, "upload/metadata.json"));
+  // Read on every path: the payload below names the package's own localizations either way.
+  const own = manualMetadataLocales(metadata);
   const sha = await sha256File(path.join(workdir, "upload/metadata.json"));
   const wanted = normalizedChoices(remote.locales);
-  const report = checkPackage({ files: listFiles(path.join(workdir, "upload")), metadata, finalSha256: await sha256File(path.join(workdir, "upload/final.mp4")), approvedSha256: final.content_sha256, metadataSha256: sha, locales: baseOnly ? metadata.captions.map((v) => path.basename(v, ".srt")) : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].captions)], descriptionLocales: baseOnly ? ["zh-TW", ...Object.keys(metadata.localizations)] : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].metadata)], brandingMatches: validateBranding(readJson(path.join(workdir, "branding.json")), { base: workdir }).hash === final.payload.branding_hash });
+  const report = checkPackage({ files: listFiles(path.join(workdir, "upload")), metadata, finalSha256: await sha256File(path.join(workdir, "upload/final.mp4")), approvedSha256: final.content_sha256, metadataSha256: sha, locales: baseOnly ? own.captions : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].captions)], descriptionLocales: baseOnly ? ["zh-TW", ...own.localizations] : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].metadata)], brandingMatches: validateBranding(readJson(path.join(workdir, "branding.json")), { base: workdir }).hash === final.payload.branding_hash });
   requireThat(report.ok, report.items.filter((v) => !v.ok).map((v) => v.detail).join("; "));
   const { uploadCandidate } = await import("./renewal.mjs");
   const files = [];
   for (const entry of packageFiles([...listFiles(path.join(workdir, "upload")).keys()])) files.push(await (send ?? uploadCandidate)(client, receipt.slug, path.join(workdir, "upload", entry.path), entry.role));
-  const body = await bindManualSubmission({ body: { gate: "publish", content_sha256: sha, summary: baseOnly ? "Source-bound renewed base package; selected language parts remain pending" : "Source-bound renewed imported upload package; final approval retained", payload: { package: report, locales: ["zh-TW", ...Object.keys(metadata.localizations)], ...(baseOnly ? { base_only: true, pending_language_sources: receipt.holds } : {}) }, files }, remote: await client.project(receipt.slug), workdir });
+  const body = await bindManualSubmission({ body: { gate: "publish", content_sha256: sha, summary: baseOnly ? "Source-bound renewed base package; selected language parts remain pending" : "Source-bound renewed imported upload package; final approval retained", payload: { package: report, locales: ["zh-TW", ...own.localizations], ...(baseOnly ? { base_only: true, pending_language_sources: receipt.holds } : {}) }, files }, remote: await client.project(receipt.slug), workdir });
   requireThat(await uploadInactive(receipt.slug) === true, "upload activity started while staging attachments; no publish submission");
   save(stagedFile, { at: now.toISOString(), status: "submitting", body });
   const result = await client.submit(receipt.slug, body);

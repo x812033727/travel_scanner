@@ -7,13 +7,14 @@ import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import { AdminVideoDramaSettings } from "@/components/admin-video-drama-settings";
 import { CompilationDownload, control, list, type ProjectSummary, record, text, useRefresh, useWhen } from "@/components/admin-video-review-card";
-import type { VideoSettingsView } from "@/components/admin-video-settings";
+import { imageModelOptions, mediaProviderLabels, type MediaOptions, type VideoSettingsView } from "@/components/admin-video-settings";
 import { AdminVideoStorySeries, StorySeriesPage } from "@/components/admin-video-stories";
 import { DiscussionThread, docSubject, type ThreadMessage } from "@/components/admin-video-thread";
 import { Button } from "@/components/community/ui";
 import { Link } from "@/i18n/navigation";
 import { useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
+import { isExplainerPreset, PRESET_IMAGE_MODEL } from "@/lib/video-presets";
 
 // The drama tab of /admin/videos (docs/videos/SERIES.md): a long series is planned document by
 // document (the setting book, the whole-series outline, each chapter's detailed outline), each
@@ -57,6 +58,8 @@ type SeriesSummary = {
   production_policy?: string | null; runtime_spec?: RuntimeSpec | null;
   // The binge columns; absent from an API older than this page, which reads as the classic series.
   genre?: SeriesGenre; lead?: SeriesLead; hands_off?: boolean; compilation?: boolean; visual_tier?: VisualTier; total_minutes?: number | null;
+  // The image model the work names for itself; none follows the drama settings' model.
+  image_model?: string | null;
   compilation_slug?: string | null; compilation_started_at?: string | null; compilation_finished_at?: string | null;
 };
 // What one binge series would take, from GET series/binge-quote: the shape the server derives from
@@ -80,10 +83,29 @@ const ASPECTS = ["world", "bonds", "structure", "mood"] as const;
 const TONES = ["dual-male-leads-subtext", "dual-male-leads-explicit", "hetero-leads", "no-romance"] as const;
 const PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "custom"] as const;
 // A one-off episode may also be an illustrated explainer (narrator only, all stills); a series
-// runs the story prompts, which need a cast, so its forms keep the story presets.
-const REQUEST_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"] as const;
+// runs the story prompts, which need a cast, so its forms keep the story presets. Each explainer
+// preset is planned, written and checked from its own series' prompts
+// (tools/video/automation/explainer-series.mjs EXPLAINER_VARIANTS).
+const REQUEST_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "cute-cartoon", "cute-mystery", "custom"] as const;
 const DRAMA_MINUTES = { min: 1, max: 8, default: 3 } as const;
 const EXPLAINER_MINUTES = { min: 8, max: 20, default: 10 } as const;
+/** The length a one-off request may ask for: every explainer preset runs 8 to 20 minutes. */
+export const requestMinutes = (preset: string) => (isExplainerPreset(preset) ? EXPLAINER_MINUTES : DRAMA_MINUTES);
+/**
+ * The image-model field of a one-off request. Only an explainer may name its model (a cast drama
+ * needs reference sheets), and only while the catalogue has models to show. `choice` is the
+ * owner's own pick, null until they make one; `models` are the catalogue's, retired ones left
+ * out. A preset with a model of its own (PRESET_IMAGE_MODEL, the cute looks) starts on it and
+ * has no entry that follows the drama settings: the server stores that model for a request that
+ * names none, whatever the settings say, so such an entry would promise what does not happen.
+ * `listed` is false when the catalogue does not carry that model, and the form then lists it by
+ * its id. "" (flat-explainer's start) follows the drama settings.
+ */
+export function requestImageModel(preset: string, choice: string | null, models: readonly { value: string }[]): { offered: boolean; presetDefault: string; listed: boolean; value: string } {
+  const presetDefault = PRESET_IMAGE_MODEL[preset] ?? "";
+  const listed = !presetDefault || models.some((option) => option.value === presetDefault);
+  return { offered: isExplainerPreset(preset) && models.length > 0, presetDefault, listed, value: choice ?? presetDefault };
+}
 const LONG_ANIME_RUNTIME: RuntimeSpec = { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 };
 const isLongAnime = (series: SeriesSummary) => !series.planning_only && series.production_policy === "long-anime-v1";
 const GUIDE_SLUG = /^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$/;
@@ -359,22 +381,28 @@ function NewSeriesForm({ onCreated }: { onCreated: (slug: string) => void }) {
  * as a series of one episode and answers with that series' slug, which the caller opens; an older
  * server answers without one and the request stays in the queue below.
  */
-function NewDramaForm({ onFiled }: { onFiled: (seriesSlug: string | null) => void }) {
+function NewDramaForm({ onFiled, media, configured, noKey }: { onFiled: (seriesSlug: string | null) => void; media?: MediaOptions; configured?: readonly string[]; noKey?: string }) {
   const t = useTranslations("admin.videoReviews");
   const [premise, setPremise] = useState("");
   const [title, setTitle] = useState("");
   const [guide, setGuide] = useState("");
   const [preset, setPreset] = useState<(typeof REQUEST_PRESETS)[number]>("cinematic-3d");
   const [minutes, setMinutes] = useState(3);
+  // The owner's own pick of an image model; null until they make one (derived each render, so a
+  // settings answer that arrives after the preset was picked changes nothing they chose).
+  const [imageChoice, setImageChoice] = useState<string | null>(null);
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const guideOk = !guide.trim() || GUIDE_SLUG.test(guide.trim());
-  const duration = preset === "flat-explainer" ? EXPLAINER_MINUTES : DRAMA_MINUTES;
+  const duration = requestMinutes(preset);
+  const imageModels = imageModelOptions(media).filter((option) => option.status !== "retired");
+  const image = requestImageModel(preset, imageChoice, imageModels);
   const changePreset = (next: (typeof REQUEST_PRESETS)[number]) => {
-    if ((next === "flat-explainer") !== (preset === "flat-explainer")) {
-      setMinutes(next === "flat-explainer" ? EXPLAINER_MINUTES.default : DRAMA_MINUTES.default);
-    }
+    if (isExplainerPreset(next) !== isExplainerPreset(preset)) setMinutes(requestMinutes(next).default);
+    // A pick survives a move between presets that share a default; it is dropped when the default
+    // changes or the explainer family is left.
+    if (!isExplainerPreset(next) || PRESET_IMAGE_MODEL[next] !== PRESET_IMAGE_MODEL[preset]) setImageChoice(null);
     setPreset(next);
   };
   const file = async () => {
@@ -383,7 +411,7 @@ function NewDramaForm({ onFiled }: { onFiled: (seriesSlug: string | null) => voi
     try {
       const filed = await api<DramaRequest>("/admin/video-automation/drama-requests", {
         method: "POST",
-        body: JSON.stringify({ premise: premise.trim(), title: title.trim() || undefined, source_guide: guide.trim() || undefined, style_preset: preset, target_minutes: minutes, note: note.trim() || undefined }),
+        body: JSON.stringify({ premise: premise.trim(), title: title.trim() || undefined, source_guide: guide.trim() || undefined, style_preset: preset, target_minutes: minutes, note: note.trim() || undefined, image_model: image.offered && image.value ? image.value : undefined }),
       });
       setPremise(""); setTitle(""); setGuide(""); setNote("");
       onFiled(filed?.series_slug ?? null);
@@ -408,7 +436,14 @@ function NewDramaForm({ onFiled }: { onFiled: (seriesSlug: string | null) => voi
             {REQUEST_PRESETS.map((each) => <option key={each} value={each}>{t(`presets.${each}`)}</option>)}
           </select>
         </label>
-        <label className="grid gap-2 text-sm font-semibold">{preset === "flat-explainer" ? t("minutes", { minutes: `${duration.min}–${duration.max}` }) : t("targetMinutes")}<input className={control} type="number" min={duration.min} max={duration.max} value={minutes} disabled={busy} onChange={(event) => setMinutes(Number(event.target.value))} /></label>
+        <label className="grid gap-2 text-sm font-semibold">{isExplainerPreset(preset) ? t("minutes", { minutes: `${duration.min}–${duration.max}` }) : t("targetMinutes")}<input className={control} type="number" min={duration.min} max={duration.max} value={minutes} disabled={busy} onChange={(event) => setMinutes(Number(event.target.value))} /></label>
+        {image.offered && <label className="grid gap-2 text-sm font-semibold">{t("imageModel")}
+          <select className={control} value={image.value} disabled={busy} onChange={(event) => setImageChoice(event.target.value)}>
+            {!image.presetDefault && <option value="">{t("imageModelFollows")}</option>}
+            {!image.listed && <option value={image.presetDefault}>{image.presetDefault}</option>}
+            {imageModels.map((option) => <option key={`${option.provider}:${option.value}`} value={option.value}>{option.label} · {mediaProviderLabels[option.provider]}{configured && !configured.includes(option.provider) ? ` (${noKey})` : ""}{option.usd_per_image ? ` · US$${option.usd_per_image}` : ""}</option>)}
+          </select>
+        </label>}
       </div>
       <label className="grid gap-2 text-sm font-semibold">{t("requestNote")}<textarea className={control} rows={2} value={note} disabled={busy} maxLength={2000} placeholder={t("requestNotePlaceholder")} onChange={(event) => setNote(event.target.value)} /></label>
       {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
@@ -541,7 +576,7 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
       </button>
     </li>)}</ul>}
     <AdminVideoStorySeries onOpenSeries={onOpenSeries} />
-    {manage.allowed && <NewDramaForm onFiled={(seriesSlug) => { load(); if (seriesSlug) onOpenSeries(seriesSlug); }} />}
+    {manage.allowed && <NewDramaForm onFiled={(seriesSlug) => { load(); if (seriesSlug) onOpenSeries(seriesSlug); }} media={settings?.media_options} configured={settings?.configured_providers} noKey={ts("noKey")} />}
     <DramaQueue requests={requests} canManage={manage.allowed} onChanged={load} onOpen={onOpenVideo} />
     {oneOffs.length > 0 && <section className="grid gap-3" aria-label={t("oneOffTitle")}>
       <h3 className="text-lg font-bold">{t("oneOffTitle")}</h3>
@@ -553,7 +588,7 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
             <AdminStatusPill status={seriesTone[each.status]}>{t(`statuses.${statusKey(each)}`)}</AdminStatusPill>
             <WaitingPills series={each} />
           </span>
-          <span className="text-sm text-[var(--muted)]">{t("spend", { usd: Number(each.media_usd ?? 0).toFixed(2), seconds: each.clip_seconds ?? 0 })} · {t(`presets.${each.style_preset}`)} · {t("minutesEach", { minutes: each.target_minutes })}</span>
+          <span className="text-sm text-[var(--muted)]">{t("spend", { usd: Number(each.media_usd ?? 0).toFixed(2), seconds: each.clip_seconds ?? 0 })} · {t(`presets.${each.style_preset}`)} · {t("minutesEach", { minutes: each.target_minutes })}{each.image_model ? ` · ${t("imageModel", { model: each.image_model })}` : ""}</span>
           <span className="line-clamp-2 text-sm leading-6">{each.premise}</span>
         </button>
         {manage.allowed && oneOffWithdrawable(each) && <div><Button secondary disabled={withdrawing === each.slug} onClick={() => void takeBack(each)}>{withdrawing === each.slug ? t("saving") : t("withdraw")}</Button></div>}
@@ -780,7 +815,7 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
     {series && <>
       <header className="grid gap-2">
         <h2 className="flex flex-wrap items-center gap-3 text-2xl font-bold">{series.title}{oneOff && <AdminStatusPill status="active">{t("oneOff")}</AdminStatusPill>}<AdminStatusPill status={seriesTone[series.status]}>{t(`statuses.${statusKey(series)}`)}</AdminStatusPill><WaitingPills series={series} /><BingePills series={series} /></h2>
-        <p className="text-sm text-[var(--muted)]">{planningOnly ? <>{t("planning.progress", { done: series.episodes_done, total: series.planned_episodes, seasons: series.chapters })} · <PlanningRuntime series={series} /> · {t(`presets.${series.style_preset}`)}</> : <>{oneOff ? "" : `${t("progress", { done: series.episodes_done, total: series.planned_episodes, chapters: series.chapters })}${series.total_minutes ? ` · ${t("totalMinutesLabel", { minutes: series.total_minutes })}` : ""} · `}{t("spend", { usd: Number(series.media_usd ?? 0).toFixed(2), seconds: series.clip_seconds ?? 0 })} · {oneOff ? "" : `${t(`leads.${series.lead ?? "dual-male"}`)} · `}{t(`tones.${series.tone}`)} · {t(`presets.${series.style_preset}`)} · {t("minutesEach", { minutes: series.target_minutes })}</>}</p>
+        <p className="text-sm text-[var(--muted)]">{planningOnly ? <>{t("planning.progress", { done: series.episodes_done, total: series.planned_episodes, seasons: series.chapters })} · <PlanningRuntime series={series} /> · {t(`presets.${series.style_preset}`)}</> : <>{oneOff ? "" : `${t("progress", { done: series.episodes_done, total: series.planned_episodes, chapters: series.chapters })}${series.total_minutes ? ` · ${t("totalMinutesLabel", { minutes: series.total_minutes })}` : ""} · `}{t("spend", { usd: Number(series.media_usd ?? 0).toFixed(2), seconds: series.clip_seconds ?? 0 })} · {oneOff ? "" : `${t(`leads.${series.lead ?? "dual-male"}`)} · `}{t(`tones.${series.tone}`)} · {t(`presets.${series.style_preset}`)} · {t("minutesEach", { minutes: series.target_minutes })}{series.image_model ? ` · ${t("imageModel", { model: series.image_model })}` : ""}</>}</p>
         {planningOnly && <p role="status" className="rounded-xl bg-[var(--paper)] p-3 text-sm leading-6">{t("planning.help")}</p>}
         {longAnime && series.runtime_spec && <section className="grid gap-2 rounded-xl bg-[var(--paper)] p-3"><LongAnimeRuntime runtime={series.runtime_spec} /><p className="text-sm text-[var(--muted)]">{t("longAnime.manual")}</p>{series.status === "paused" && !coreApproved && <p role="status" className="text-sm">{t(needsPlanning ? "longAnime.planningHelp" : "longAnime.reviewRequired")}</p>}</section>}
         {planningOnly && typeof series.planning_spec?.tone === "string" && <p className="text-sm text-[var(--muted)]">{series.planning_spec.tone}</p>}

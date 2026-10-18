@@ -52,7 +52,7 @@ approval. The actual pending consumer must retain the owner-review refusal.
 ## Notes
 
 Evidence and temporary operators stay outside Git in
-`C:/Users/x8120/mokaair-work/handoff/temperature-language-resubmit-20261008`.
+`<home>/mokaair-work/handoff/temperature-language-resubmit-20261008`.
 The old review is `d524a6a0-92c2-4d3e-9d99-4e3f72d230a2`. Existing English dub is
 ready, Japanese/Korean retain explicit skipped objects, and zh-CN has no dub
 selected. The replacement is expected to be pending, not owner-approved.

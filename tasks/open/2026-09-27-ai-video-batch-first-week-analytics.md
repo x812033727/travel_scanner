@@ -37,3 +37,5 @@ scope:
 ## Notes
 
 影片 slug：`ai-agent-vs-chatbot`、`ai-citation-check`、`ai-coding-tools-same-task`、`ai-bug-fix-pr-review`。觀看數不是預測值，公開排程由站主決定；未公開前不要建立假數據。
+
+2026-10-07：頻道已公開 18 支（都由站主在 Studio 手動公開，不是這張票的四支），`docs/videos/channel-review-20261007/README.md` §6.3 列了要匯出的五個數字與門檻；建議把範圍擴到這 18 支，基準影片就用頻道自己觀看前四名（S88lbAsLz2E、UOgxCymxb1I、FYHFsj0SB7Q、eSg90eCfqOI）。

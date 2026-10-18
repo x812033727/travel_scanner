@@ -6,11 +6,15 @@
 // Every item is a pure function over what was read or measured; `runQa` does the reading, the
 // measuring and the calls. The cut is measured again here with ffprobe and ffmpeg: the build's
 // own receipt is not taken for the answer. A call that fails (Jev, a link, the site) fails its
-// item; nothing passes because it could not be checked.
+// item; nothing passes because it could not be checked. Jev's policy reading is paid: an answer
+// lost on the way (RUN_UNCERTAIN) is not sent again by the client (site.mjs), and the worker's
+// check (`throwLost`) ends with it, so the Short waits for the owner rather than for a later check
+// that would ask Jev again.
 import { existsSync, readFileSync, realpathSync } from 'node:fs';
 import path from 'node:path';
 
 import { locateFfmpeg } from '../assemble/ffmpeg.mjs';
+import { RUN_UNCERTAIN } from '../automation/client.mjs';
 import { isInside, readJson } from '../core/paths.mjs';
 import { checkLinks, descriptionUrls, linkChecker, linksDetail } from '../qa/links.mjs';
 import { policyVerdict } from '../qa/policy.mjs';
@@ -281,9 +285,12 @@ const failing = async (call) => {
 /**
  * Check a build directory and write its qa.json. `client` is the site (null with `offline`, when
  * the items that need it fail saying so); `tools`, `measureImpl`, `linkCheck` and `history`
- * let tests supply measurements and services without calling external processes.
+ * let tests supply measurements and services without calling external processes. `throwLost`
+ * (the worker's check, lab.mjs): Jev's policy answer lost on the way (RUN_UNCERTAIN) ends the
+ * check with that error, before anything is written; without it, a person's `qa` run gets a
+ * failed policy item that says the outcome is unknown.
  */
-export async function runQa({ directory, client = null, offline = false, settings = null, tools = null, measureImpl = measureFinal, linkCheck = null, history = undefined, now = () => new Date() }) {
+export async function runQa({ directory, client = null, offline = false, settings = null, tools = null, measureImpl = measureFinal, linkCheck = null, history = undefined, now = () => new Date(), throwLost = false }) {
   const scriptFile = path.join(directory, SCRIPT_FILE);
   if (!existsSync(scriptFile)) throw new Error(`${directory} holds no ${SCRIPT_FILE}: it is not a build of this tool`);
   const scriptBytes = readFileSync(scriptFile);
@@ -316,7 +323,16 @@ export async function runQa({ directory, client = null, offline = false, setting
 
   let policy = item('policy', false, OFFLINE);
   if (online) {
-    const asked = await failing(() => client.judgePolicy({ slug: doc.slug, script: phrases.join('\n'), viewpoint: '' }));
+    let asked;
+    try {
+      asked = { value: await client.judgePolicy({ slug: doc.slug, script: phrases.join('\n'), viewpoint: '' }) };
+    } catch (error) {
+      // Sent, and its answer lost: Jev may have judged it, and the call was paid for. The worker's
+      // check ends here, ahead of the comparison of the inputs below, so an edit made meanwhile
+      // cannot pass the loss off as an ordinary failed check that the next round runs again.
+      if (throwLost && error?.code === RUN_UNCERTAIN) throw error;
+      asked = { error: error?.message ?? String(error) };
+    }
     policy = asked.error ? item('policy', false, asked.error) : policyItem(asked.value);
   }
   let links = item('links', false, OFFLINE);

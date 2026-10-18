@@ -5,6 +5,7 @@ import { presentationTimeline } from "./branding.mjs";
 import { animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems, effectiveEpisodeMinutes, isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
 import { LONG_ANIME_POLICY, runtimePolicyHash } from "./anime-policy.mjs";
 import { fitPlan } from "../assemble/drama.mjs";
+import { EXPLAINER_PRESETS } from "./drama.mjs";
 import { dramaFixture, explainerFixture, fixture, storyFixture } from "./fixtures/load.mjs";
 
 const doc = { format: "slides", category: "explainer", slug: "catalogue-example" };
@@ -16,16 +17,21 @@ function cut(frames = 14_400, branding = null) {
 }
 
 test("legacy explainer targets use ten minutes and explicit valid targets keep their length", () => {
-  for (const legacy of [undefined, null, 0, 3, 7]) assert.equal(effectiveEpisodeMinutes(legacy, "flat-explainer"), 10);
-  for (const target of [8, 9, 10, 13, 20]) assert.equal(effectiveEpisodeMinutes(target, "flat-explainer"), target);
+  assert.deepEqual(EXPLAINER_PRESETS, ["flat-explainer", "cute-cartoon", "cute-mystery"]);
+  for (const preset of EXPLAINER_PRESETS) {
+    for (const legacy of [undefined, null, 0, 3, 7]) assert.equal(effectiveEpisodeMinutes(legacy, preset), 10, preset);
+    for (const target of [8, 9, 10, 13, 20]) assert.equal(effectiveEpisodeMinutes(target, preset), target, preset);
+  }
   assert.equal(effectiveEpisodeMinutes(3, "cinematic-3d"), 3, "ordinary drama keeps its target");
   assert.equal(effectiveEpisodeMinutes(13, "anime-2d"), 13, "brand stories keep thirteen minutes");
   assert.equal(effectiveEpisodeMinutes(undefined, "cinematic-3d"), undefined, "the caller retains its ordinary default");
 });
 
 test("malformed explainer targets fail instead of making a writer use a clipped duration", () => {
-  for (const invalid of [21, Infinity, NaN, 8.5, "10", false]) {
-    assert.throws(() => effectiveEpisodeMinutes(invalid, "flat-explainer"), RangeError);
+  for (const preset of EXPLAINER_PRESETS) {
+    for (const invalid of [21, Infinity, NaN, 8.5, "10", false]) {
+      assert.throws(() => effectiveEpisodeMinutes(invalid, preset), RangeError, preset);
+    }
   }
 });
 
@@ -35,6 +41,8 @@ test("knowledge catalogues are covered without changing ordinary drama, compilat
   for (const category of ["ai-terms", "explainer", "story"]) assert.equal(isKnowledgeLongform({ ...doc, category }), true);
   for (const slug of ["sothatswhy-s01", "ai-term-token", "story-umbrella"]) assert.equal(isKnowledgeLongform({ format: "slides", slug }), true);
   assert.equal(isKnowledgeLongform(explainerFixture()), true, "flat-explainer pilot lacks a category");
+  for (const preset of EXPLAINER_PRESETS) assert.equal(isKnowledgeLongform({ format: "drama", look: { preset } }), true, `${preset} is held to the floor by its preset alone`);
+  assert.equal(isKnowledgeLongform({ format: "drama", look: { preset: "ink-wash" } }), false);
   assert.equal(isKnowledgeLongform({ ...storyFixture(), category: "story" }), true, "the story worker marks brand stories with category story");
   for (const other of [undefined, fixture(), dramaFixture(), { ...doc, format: "shorts" }, { ...doc, compilation: { episodes: [] } }]) {
     assert.equal(isKnowledgeLongform(other), false);
@@ -50,6 +58,14 @@ test("eight minutes passes exactly; one frame short fails without rounding or tr
   assert.equal(problems.length, 2, "both body and final cut are below the floor");
   assert.match(problems[0], /14399 frames \(479\.966666/);
   assert.match(problems[1], /final cut is 14399 frames/);
+});
+
+test("a cute explainer is held to the same 480 measured seconds as flat-explainer", () => {
+  const mystery = { format: "drama", slug: "curio-example", look: { preset: "cute-mystery" }, characters: [] };
+  assert.deepEqual(knowledgeDurationProblems({ ...cut(), doc: mystery }), []);
+  const problems = knowledgeDurationProblems({ ...cut(14_399), doc: mystery });
+  assert.ok(problems.length > 0, "one frame short of eight minutes is refused");
+  assert.match(problems[0], /14399 frames/);
 });
 
 test("bookends cannot make a short body pass, while a qualifying body may keep its bookends", () => {

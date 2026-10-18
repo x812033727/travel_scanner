@@ -1,0 +1,47 @@
+{
+  "session": "e1",
+  "claude_code_version": "2.1.295",
+  "model": "claude-sonnet-5-5",
+  "mcp_servers": [
+    {
+      "name": "gear",
+      "status": "connected",
+      "source": "dynamic"
+    }
+  ],
+  "tools": [
+    "ToolSearch",
+    "mcp__gear__find_gear",
+    "mcp__gear__low_stock"
+  ],
+  "permission_denials": [],
+  "permission_denied_messages": [],
+  "calls": [
+    {
+      "call": "ToolSearch",
+      "input": {
+        "query": "select:mcp__gear__find_gear,mcp__gear__low_stock",
+        "max_results": 5
+      },
+      "is_error": null,
+      "result": [
+        {
+          "type": "tool_reference",
+          "tool_name": "mcp__gear__find_gear"
+        },
+        {
+          "type": "tool_reference",
+          "tool_name": "mcp__gear__low_stock"
+        }
+      ]
+    },
+    {
+      "call": "mcp__gear__find_gear",
+      "input": {
+        "code": "G-999"
+      },
+      "is_error": true,
+      "result": "查無代號：G-999"
+    }
+  ]
+}
