@@ -61,3 +61,7 @@ their absence to fail without requiring unchosen languages.
   duration plans and all21 QA/duration tests passed. Actual owner selections
   subsequently made in the backend were synchronized faithfully into the
   production workspaces; selected missing captions continue to fail QA.
+
+- 2026-10-18: when this branch was merged with main, its own `qa/cli.mjs` change was dropped in favour of
+  #1565, which already lets a chosen language with no translation only warn in final QA
+  (`captionsItem` with `untranslated`). The behaviour this ticket asked for is what main ships.

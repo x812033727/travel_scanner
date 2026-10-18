@@ -54,7 +54,7 @@ normal speech hash and complete request objects before and after the fix.
   shared lexicon SHA f7a50da50b619512a04215c856eb95387578554e7bada80aac13ee5fa83ad84a.
   The sole lint error is lexicon.terms.8B: a term starts with a Latin letter.
 - Evidence lives outside Git under
-  `C:/Users/x8120/mokaair-work/stalled-video-audit-20261008/overnight-20261009/dubs-selected/`:
+  `<home>/mokaair-work/stalled-video-audit-20261008/overnight-20261009/dubs-selected/`:
   `actual-Travel-8B-global-lexicon-current-readonly.jsonl`,
   `actual-Travel-current-frozen-normal-lint-readonly.jsonl`, and
   `actual-Travel-private-unused8B-full-normal-lint-and-three-quotes-v3.jsonl`.

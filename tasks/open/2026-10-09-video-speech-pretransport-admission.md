@@ -71,7 +71,7 @@ The preceding38 speech POSTs all returned HTTP200; the complete wire contains no
 transport with that request hash. The matching private proof is
 selected-dub-44a-pretransport-evidence-readonly.json,
 SHAe169a69e665ab8437bc09392e0efe99e8119dd6fcf63c92f50c18a6c82705740,
-under C:/Users/x8120/mokaair-work/handoff/branding-peak-20261008/continuation.
+under <home>/mokaair-work/handoff/branding-peak-20261008/continuation.
 Nine private negative tests use frozen transportcd641633, native client75af667e
 and journalf60191ff; they reproduce the held result with zero paid network calls
 and verify that restarting it also sends nothing. They are diagnostic fixtures,

@@ -52,7 +52,7 @@ Read-only reproduction at production HEAD `57139d78d1ea5a3f79500f92ce957db9b9870
 
 Use fake transports only. Run `node --test tools/video/automation/run-receipts.test.mjs tools/video/automation/client.test.mjs`, then repository tool/task checks appropriate to the implementation. No provider or production retry is required to prove the mismatch.
 
-The retained outside-repository evidence is `C:/Users/x8120/mokaair-work/stalled-video-audit-20261008/overnight-20261009/dubs-selected/actual-current-new-retry-native-validator-site-readonly-v2.jsonl`; `actual-new-auto-block-retry-journals-readonly.jsonl` lists every unchanged journal SHA and exclusively retained new auto snapshots. The source-only follow-up does not authorize production mutation, credential values, owner choices, YouTube actions, replay, deployment or paid work.
+The retained outside-repository evidence is `<home>/mokaair-work/stalled-video-audit-20261008/overnight-20261009/dubs-selected/actual-current-new-retry-native-validator-site-readonly-v2.jsonl`; `actual-new-auto-block-retry-journals-readonly.jsonl` lists every unchanged journal SHA and exclusively retained new auto snapshots. The source-only follow-up does not authorize production mutation, credential values, owner choices, YouTube actions, replay, deployment or paid work.
 
 ## Notes
 
