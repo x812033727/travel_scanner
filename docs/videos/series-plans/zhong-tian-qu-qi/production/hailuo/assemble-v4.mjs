@@ -51,7 +51,7 @@ function panelFilters(shot) {
   let f = `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x0b2a4a@0.62:t=fill:enable='gte(t,${start})'`;
   f += `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x7fd6ff@0.9:t=3:enable='gte(t,${start})'`;
   items.forEach((item, i) => {
-    f += `,drawtext=fontfile='${FONT}':textfile='${textFile(`${shot}-p${i}`, item.text)}':fontsize=52:fontcolor=${COLORS[item.kind] ?? COLORS.panel}:shadowcolor=0x000000@0.8:shadowx=2:shadowy=2:x=(w-text_w)/2:y=${y0 + 38 + 64 * i}:enable='gte(t,${start + 0.1 * i})'`;
+    f += `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-p${i}`, item.text)}':fontsize=52:fontcolor=${COLORS[item.kind] ?? COLORS.panel}:shadowcolor=0x000000@0.8:shadowx=2:shadowy=2:x=(w-text_w)/2:y=${y0 + 38 + 64 * i}:enable='gte(t,${start + 0.1 * i})'`;
   });
   return f;
 }
@@ -62,19 +62,19 @@ function nameCard(shot) {
   const [name, tag] = card, a = 0.25, b = 2.6;
   const alpha = `if(lt(t,${a}),0,if(lt(t,${a + 0.25}),(t-${a})/0.25,if(lt(t,${b - 0.3}),1,max(0,(${b}-t)/0.3))))`;
   return `,drawbox=x=96:y=596:w=8:h=150:color=0xe8c26a@0.95:t=fill:enable='between(t,${a},${b})'` +
-    `,drawtext=fontfile='${FONT}':textfile='${textFile(`${shot}-n`, name)}':fontsize=84:fontcolor=0xf3d27a:alpha='${alpha}':borderw=3:bordercolor=0x000000@0.7:x=124:y=598` +
-    `,drawtext=fontfile='${FONT}':textfile='${textFile(`${shot}-t`, tag)}':fontsize=40:fontcolor=0xffffff:alpha='${alpha}':borderw=2:bordercolor=0x000000@0.7:x=128:y=700`;
+    `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-n`, name)}':fontsize=84:fontcolor=0xf3d27a:alpha='${alpha}':borderw=3:bordercolor=0x000000@0.7:x=124:y=598` +
+    `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-t`, tag)}':fontsize=40:fontcolor=0xffffff:alpha='${alpha}':borderw=2:bordercolor=0x000000@0.7:x=128:y=700`;
 }
 function titleCard(shot) {
   const tc = edit.title;
   if (!tc || tc.shot !== shot) return "";
   const a = tc.from ?? 0.2, b = tc.to ?? 3.2;
   const alpha = `if(lt(t,${a}),0,if(lt(t,${a + 0.3}),(t-${a})/0.3,if(lt(t,${b - 0.4}),1,max(0,(${b}-t)/0.4))))`;
-  return `,drawtext=fontfile='${FONT}':textfile='${textFile(`${shot}-title`, tc.text)}':fontsize=96:fontcolor=0xf3d27a:alpha='${alpha}':borderw=4:bordercolor=0x2a1400@0.85:x=(w-text_w)/2:y=110` +
-    `,drawtext=fontfile='${FONT}':textfile='${textFile(`${shot}-sub`, tc.sub)}':fontsize=44:fontcolor=0xffffff:alpha='${alpha}':borderw=3:bordercolor=0x000000@0.8:x=(w-text_w)/2:y=226`;
+  return `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-title`, tc.text)}':fontsize=96:fontcolor=0xf3d27a:alpha='${alpha}':borderw=4:bordercolor=0x2a1400@0.85:x=(w-text_w)/2:y=110` +
+    `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-sub`, tc.sub)}':fontsize=44:fontcolor=0xffffff:alpha='${alpha}':borderw=3:bordercolor=0x000000@0.8:x=(w-text_w)/2:y=226`;
 }
 const subtitle = (name, text, a, b, color = "0xffffff") =>
-  `,drawtext=fontfile='${FONT}':textfile='${textFile(name, text)}':fontsize=60:fontcolor=${color}:borderw=4:bordercolor=0x000000@0.9:shadowcolor=0x000000@0.6:shadowx=2:shadowy=3:x=(w-text_w)/2:y=h-160:enable='between(t,${a.toFixed(3)},${b.toFixed(3)})'`;
+  `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(name, text)}':fontsize=60:fontcolor=${color}:borderw=4:bordercolor=0x000000@0.9:shadowcolor=0x000000@0.6:shadowx=2:shadowy=3:x=(w-text_w)/2:y=h-160:enable='between(t,${a.toFixed(3)},${b.toFixed(3)})'`;
 const stillMove = (id, f) => { const k = [...id].reduce((a, c) => a + c.charCodeAt(0), 0) % 4; if (k === 0) return `z='1+0.16*on/${f}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'`; if (k === 1) return `z='1.16-0.14*on/${f}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'`; if (k === 2) return `z='1.14':x='(iw-iw/zoom)*on/${f}':y='ih/2-(ih/zoom/2)'`; return `z='1.14':x='(iw-iw/zoom)*(1-on/${f})':y='ih/2-(ih/zoom/2)'`; };
 
 const report = [], segs = [], starts = {}, lineAt = [], srt = [];
