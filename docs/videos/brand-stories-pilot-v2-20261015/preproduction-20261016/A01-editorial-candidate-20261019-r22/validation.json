@@ -1,0 +1,65 @@
+{
+  "status": "OFFLINE_MECHANICAL_ONLY_HOLD_PENDING_R22_REVIEW",
+  "target_body_seconds": [
+    420,
+    480
+  ],
+  "scenes": 65,
+  "lines": 77,
+  "claims": 74,
+  "loops": 11,
+  "spoken_units": 1867,
+  "estimated_body_seconds_not_tts": {
+    "250": 518.5,
+    "275": 478,
+    "300": 442.8
+  },
+  "lint_errors": [],
+  "lint_warning_count": 33,
+  "lint_errors_at_300_cpm": [],
+  "cute_visual_errors": [],
+  "public_sources": 18,
+  "candidate_plan_sources": 23,
+  "proposed_plan_sources": 25,
+  "source_index_matches_claims": true,
+  "security_reveal_claim_bound_to_2012_interview": true,
+  "r21_manifest_sha256": "5131d53cef6f20184c1d5043cf63428602deb1551ffb9808ca42e940f190e900",
+  "r21_full_fact_plan_review_sha256": "a2570970dc7a240b2e7ed25313ee2ab787214f155e11de5fdaec0e86051e0409",
+  "r21_blind_review_sha256": "939ee33e1656e4be78a0e48762eacad8db581b518bd6cf4196a9ec06f52dbecd",
+  "r21_findings_addressed_in_draft": [
+    "plan-1987-garage-conflation",
+    "turn-09b-audible-design-bridge",
+    "1921-arrival-location",
+    "pre-1928-wheel-modification",
+    "1939-to-Sadow-interval",
+    "i35-limited-negative-evidence",
+    "2012-reporter-versus-direct-quote",
+    "1970-October-mannequin-versus-sale-date"
+  ],
+  "changed_line_ids": [
+    "r17h01",
+    "r14i01",
+    "3zwf"
+  ],
+  "changed_claim_ids": [
+    "i35"
+  ],
+  "changed_visual_prompt_scene_ids": [
+    "idea-memory",
+    "turn-09b"
+  ],
+  "changed_plan_fields": [
+    "chapters.turn.point",
+    "must_verify[3].claim",
+    "must_verify[4].claim",
+    "must_verify[8].claim",
+    "sources[4].supports",
+    "sources[6].supports"
+  ],
+  "measured_tts_and_cut": "NOT_RUN",
+  "independent_full_r22_review": "NOT_RUN",
+  "six_chapter_host_bridge": "NOT_INSTALLED_OR_FORMALLY_REVIEWED",
+  "worker_claim_id_and_source_merge": "NOT_RUN",
+  "script_review_receipt": "NOT_ISSUED",
+  "host_import_or_paid_media": "NOT_RUN"
+}
