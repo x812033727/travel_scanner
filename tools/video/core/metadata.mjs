@@ -25,6 +25,36 @@ export const LABELS = {
   ko: { chapters: "챕터", article: "전체 글", sources: "참고 자료", pictures: "이미지 출처", colon: ": ", parens: [" (", ")"] },
 };
 
+// What every title ends with, per locale, so a viewer sees in the search results that the video
+// has captions (the owner's rule of 2026-10-12: 影片標題都要有「｜CC字幕」, worded per language).
+// Every video carries at least its narration's captions, so the generic wording is always true.
+// apps/api/app/video_youtube/requests.py CAPTION_TAGS holds the same table for the packages
+// approved before this rule; keep the two in step.
+export const CAPTION_TAGS = {
+  "zh-TW": "｜CC字幕",
+  en: "｜CC Subtitles",
+  ja: "｜字幕付き",
+  ko: "｜CC 자막",
+};
+
+// The tag of a title the full one would push past TITLE_MAX_CHARS (the owner's choice of
+// 2026-10-12), and any tag a title may already end with, whatever its language and spacing.
+export const SHORT_CAPTION_TAG = "｜CC";
+const TAG_TAIL = /\s*[|｜]\s*(?:CC\s*字幕|CC\s*Subtitles|字幕付き|CC\s*자막|CC)\s*$/i;
+
+/**
+ * `title` ending with its locale's captions tag, once: a tag already there, in any language or
+ * spacing, is replaced. When the full tag would pass TITLE_MAX_CHARS the short one is used; when
+ * even that does not fit, the full tag stays so the length check says by how much.
+ */
+export function withCaptionTag(title, locale) {
+  let bare = title.trimEnd();
+  for (let stripped = bare.replace(TAG_TAIL, ""); stripped !== bare; stripped = bare.replace(TAG_TAIL, "")) bare = stripped;
+  const tagged = `${bare}${CAPTION_TAGS[locale] ?? CAPTION_TAGS.en}`;
+  const short = `${bare}${SHORT_CAPTION_TAG}`;
+  return [...tagged].length > TITLE_MAX_CHARS && [...short].length <= TITLE_MAX_CHARS ? short : tagged;
+}
+
 /**
  * One entry of video.json's assets[]: the three fields the schema requires (path, source,
  * license) and the two `stock fetch` adds (tools/video/media/stock.mjs). `source` is the credit

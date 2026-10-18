@@ -45,6 +45,9 @@ grep -E '^(PASS|FAIL|TOTAL|SHA |WARN)' "$TMP/verify.out"
 - `auto_exit4_drama_off` 不是 0：站主在後台影片自動化設定把 AI 漫劇關了，每一輪都撞到待執行的漫劇工作，API 回「AI 漫劇已停用，
   待執行的工作不會送出模型請求」（`video_ai_drama_disabled`），`auto` 以 4 結束。這是開關的設計，不算失敗（2026-10-05 部署前後都是這樣）；
   `auto_exited` 只數其他的退出，包括前一行（Shorts 敲門的行不算）不是這句話的 4。
+- `auto_exit3_draft_cap` 不是 0：工人到了站主設的每月草稿上限，API 在呼叫模型之前就回「本月已產生 N 支草稿，達到上限 N 支」
+  （`video_ai_budget_exhausted`），`auto` 以 3 結束，腳本另外印一行 `NOTE`。這是上限的設計，不算失敗（2026-10-14 #1498 的部署就是這樣）；
+  前一行不是這句話的 3（例如權杖被拒、本月 token 用完）照樣算進 `auto_exited`，檢查失敗。
 
 ## 大功能上線後的三個問題
 

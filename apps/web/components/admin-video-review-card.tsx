@@ -70,13 +70,18 @@ export type ProjectSummary = {
   dropped_at?: string | null; dropped_note?: string | null;
   retry_request_id?: string | null; retry_acknowledged_id?: string | null;
   format?: "slides" | "drama" | "shorts"; media_usd?: number; clip_seconds?: number;
+  // Detail response: the server has verified this exact cut can enter paid dub production.
+  // A story may separately allow saving dub intent before its final cut passes that check.
+  // An older API omits the preselection flag, so the editor keeps early selection locked.
+  dub_allowed?: boolean;
+  story_dub_preselectable?: boolean;
   // A Short (docs/videos/SHORTS.md) is a video whose content line is set: its series, the video it
   // was cut from, where it stands as the Shorts tab groups them, the slot it holds, and when the
   // site found it gone from YouTube. All absent from an API older than the Shorts tab.
   shorts_line?: "lab" | "cut" | "drama" | null; shorts_series?: string | null; source_slug?: string | null;
   shorts_state?: "making" | "needs_you" | "library" | "slotted" | "scheduled" | "published" | "missed" | "dropped" | null;
   slot_at?: string | null; youtube_removed_at?: string | null;
-  // The languages the owner chose after the final cut and what of each, when they first decided,
+  // The languages the owner chose (possibly before a brand story's final cut) and what of each,
   // where each chosen part stands, and the server's verdict on whether the video may be scheduled
   // (docs/videos/LANGUAGES.md); all absent from an API older than the language panel, which
   // only knew the dub languages.
@@ -168,13 +173,24 @@ const knowsLanguages = (project: ProjectSummary) => typeof project.ready_to_uplo
  */
 export const readyToUpload = (project: ProjectSummary) => !project.dropped_at && !project.youtube_video_id
   && (knowsLanguages(project) ? Boolean(project.ready_to_upload) : Boolean(project.publish_approved_at));
-/** The final cut is approved: the checklist says so, or something that comes after it already happened. */
-export const finalApproved = (project: ProjectSummary & { reviews?: Review[] }) =>
-  project.checklist.some((item) => item.key === "final_video_approved" && item.done)
-  || Boolean(project.publish_approved_at || project.locales_decided_at || project.youtube_video_id)
-  || (project.reviews ?? []).some((review) => review.gate === "final" && review.status === "approved");
+/** An imported cut with no approved final stays pending when its private Studio link is recorded. */
+export const finalApproved = (project: ProjectSummary & { reviews?: Review[] }) => {
+  const reviews = project.reviews ?? [];
+  // The API orders reviews newest first; an older approval cannot approve a newer imported cut.
+  const currentFinal = reviews.find((review) => review.gate === "final" && !review.subject);
+  if (currentFinal?.status === "pending" && currentFinal.payload.imported) return false;
+  // Locale choices can be saved before a final cut. Their timestamp never proves approval,
+  // including for a story recategorized as an explainer in a list row without the detail flag.
+  const story = project.category === "story" || project.story_dub_preselectable === true;
+  // A detail response includes reviews: the newest final wins over stale checklist/upload fields
+  // after a cut is replaced or sent back. A list row falls back to its current checklist.
+  if (story && project.reviews) return currentFinal?.status === "approved";
+  return project.checklist.some((item) => item.key === "final_video_approved" && item.done)
+    || Boolean(project.publish_approved_at || project.youtube_video_id)
+    || reviews.some((review) => review.gate === "final" && review.status === "approved");
+};
 
-export type PublishState = "deciding" | "making" | "packaging" | "ready" | "scheduled" | "published";
+export type PublishState = "deciding" | "making" | "packaging" | "ready" | "linked" | "scheduled" | "published";
 
 /** Reports describe completed outputs, not whether a producer is currently running. */
 export function chosenLanguagesComplete(project: ProjectSummary): boolean {
@@ -188,14 +204,14 @@ export function chosenLanguagesComplete(project: ProjectSummary): boolean {
  * Where the video is on its way to YouTube (docs/videos/LANGUAGES.md),
  * states), or null before the final cut is approved and once the video is dropped: the owner has
  * still to choose its languages, language results are incomplete (so the upload can wait to be
- * scheduled), it may be uploaded, it is scheduled, or it is public. An older API knows only
- * "ready" and the two YouTube states. A Short has none of the five: it chooses no languages of
+ * scheduled), its Studio link may be recorded, it is scheduled, or it is public. An older API knows only
+ * "ready" and the YouTube states. A Short has none of these: it chooses no languages of
  * its own, and where it stands is its shorts_state, which the server works out
  * (docs/videos/SHORTS.md) and the page shows in the same place.
  */
 export function publishState(project: ProjectSummary, now = Date.now()): PublishState | null {
   if (project.dropped_at || project.shorts_line) return null;
-  if (project.youtube_video_id) return project.youtube_publish_at && Date.parse(project.youtube_publish_at) > now ? "scheduled" : "published";
+  if (project.youtube_video_id) return !project.youtube_publish_at ? "linked" : Date.parse(project.youtube_publish_at) > now ? "scheduled" : "published";
   if (!knowsLanguages(project)) return readyToUpload(project) ? "ready" : null;
   if (!finalApproved(project)) return null;
   if (!project.locales_decided_at) return "deciding";
@@ -204,7 +220,7 @@ export function publishState(project: ProjectSummary, now = Date.now()): Publish
 }
 
 // The pill separates incomplete language results from an unavailable upload package.
-const PUBLISH_TONES: Record<PublishState, string> = { deciding: "warning", making: "pending", packaging: "pending", ready: "active", scheduled: "queued", published: "ok" };
+const PUBLISH_TONES: Record<PublishState, string> = { deciding: "warning", making: "pending", packaging: "pending", ready: "active", linked: "inactive", scheduled: "queued", published: "ok" };
 
 /** Production evidence stays separate from completed outputs, including after a YouTube upload. */
 export function ProductionPill({ project, compact = false }: { project: ProjectSummary; compact?: boolean }) {
@@ -284,8 +300,9 @@ function Score({ value, passes }: { value: number | null; passes: (value: number
 
 /**
  * Why Jev chose an outline (docs/videos/HANDS-OFF.md, the section on Jev picking it). payload.pick is
- * { choice, probabilities: { key: p }, options: { key: { stance, demo } }, advice }; a pending
- * review may carry a pick that did not clear the thresholds, and shows the same table.
+ * { choice, probabilities: { key: p }, options: { key: { stance, demo } }, advice }, with demo null when
+ * it was not asked; a pending review may carry a pick that did not clear the thresholds, and shows the
+ * same table.
  */
 function PickTable({ review }: { review: Review }) {
   const t = useTranslations("admin.videoReviews");
@@ -298,7 +315,10 @@ function PickTable({ review }: { review: Review }) {
   const advice = number(pick.advice);
   if (keys.length === 0 && !choice && advice === null) return null;
   const chosen = record(scores[choice]);
-  const passed = (number(chosen.stance) ?? 0) >= PICK_MIN_STANCE && (number(chosen.demo) ?? 0) >= PICK_MIN_DEMO && advice !== null && advice <= PICK_MAX_ADVICE;
+  // A demo of null was not asked: the site files the video as an explainer or a story
+  // (docs/videos/HANDS-OFF.md, who is asked for a demonstration). A missing score still counts as none.
+  const demoPasses = chosen.demo === null || (number(chosen.demo) ?? 0) >= PICK_MIN_DEMO;
+  const passed = (number(chosen.stance) ?? 0) >= PICK_MIN_STANCE && demoPasses && advice !== null && advice <= PICK_MAX_ADVICE;
   return <div className="grid gap-3 rounded-2xl border border-[var(--line)] p-4" aria-label={t("pickReasons")}>
     <p className="font-bold">{t("pickReasons")}</p>
     <table className="w-full text-sm">
@@ -310,7 +330,7 @@ function PickTable({ review }: { review: Review }) {
           <td className="py-1 pr-3">{t("option", { key })}{key === choice && <span className="ml-2 text-xs text-[var(--teal)]">{t("pickChosen")}</span>}</td>
           <td className="py-1 pr-3 font-mono">{probability === null ? "—" : probability.toFixed(2)}</td>
           <td className="py-1 pr-3"><Score value={number(score.stance)} passes={(value) => value >= PICK_MIN_STANCE} /></td>
-          <td className="py-1"><Score value={number(score.demo)} passes={(value) => value >= PICK_MIN_DEMO} /></td>
+          <td className="py-1">{score.demo === null ? <span className="text-[var(--muted)]">{t("pickDemoNotAsked")}</span> : <Score value={number(score.demo)} passes={(value) => value >= PICK_MIN_DEMO} />}</td>
         </tr>;
       })}</tbody>
     </table>
@@ -756,7 +776,7 @@ export function UploadPackage({ slug, review, mp4Gone = false }: { slug: string;
  * when it goes public (docs/videos/HANDS-OFF.md, the YouTube API section, step one). ``publishAt``
  * fills the time in (a datetime-local value): a brand story's next free slot (admin-video-stories.tsx).
  */
-export function UploadedForm({ slug, onLinked, publishAt: suggested = "" }: { slug: string; onLinked: () => void; publishAt?: string }) {
+export function UploadedForm({ slug, onLinked, publishAt: suggested = "", privateOnly = false }: { slug: string; onLinked: () => void; publishAt?: string; privateOnly?: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const [url, setUrl] = useState("");
   const [publishAt, setPublishAt] = useState(suggested);
@@ -770,7 +790,11 @@ export function UploadedForm({ slug, onLinked, publishAt: suggested = "" }: { sl
     setError("");
     try {
       // A datetime-local value is the owner's wall clock; the API wants a zoned instant.
-      await api(`/admin/videos/${slug}/youtube`, { method: "POST", body: JSON.stringify({ url: url.trim(), publish_at: publishAt ? new Date(publishAt).toISOString() : null }) });
+      await api(`/admin/videos/${slug}/youtube`, { method: "POST", body: JSON.stringify({
+        url: url.trim(),
+        publish_at: privateOnly ? null : publishAt ? new Date(publishAt).toISOString() : null,
+        ...(privateOnly ? { private_only: true } : {}),
+      }) });
       onLinked();
     } catch (problem) {
       setError(t("uploadedError", { message: problem instanceof Error ? problem.message : "" }));
@@ -778,18 +802,18 @@ export function UploadedForm({ slug, onLinked, publishAt: suggested = "" }: { sl
       setBusy(false);
     }
   };
-  return <form onSubmit={(event) => void submit(event)} className="grid gap-3 rounded-2xl border border-[var(--line)] p-4" aria-label={t("uploadedTitle")}>
-    <p className="font-bold">{t("uploadedTitle")}</p>
-    <p className="text-sm leading-6 text-[var(--muted)]">{t("uploadedHelp")}</p>
+  return <form onSubmit={(event) => void submit(event)} className="grid gap-3 rounded-2xl border border-[var(--line)] p-4" aria-label={t(privateOnly ? "privateLinkTitle" : "uploadedTitle")}>
+    <p className="font-bold">{t(privateOnly ? "privateLinkTitle" : "uploadedTitle")}</p>
+    <p className="text-sm leading-6 text-[var(--muted)]">{t(privateOnly ? "privateLinkHelp" : "uploadedHelp")}</p>
     <label className="grid gap-2 text-sm font-semibold">{t("youtubeUrl")}
       <input className={control} value={url} disabled={busy} placeholder={t("youtubeUrlPlaceholder")} onChange={(event) => setUrl(event.target.value)} />
     </label>
     {url.trim() && <p className={`text-sm ${id ? "text-[var(--muted)]" : "text-amber-800"}`}>{id ? t("youtubeId", { id }) : t("youtubeUrlInvalid")}</p>}
-    <label className="grid gap-2 text-sm font-semibold">{t("publishAt")}
+    {!privateOnly && <label className="grid gap-2 text-sm font-semibold">{t("publishAt")}
       <input type="datetime-local" className={control} value={publishAt} disabled={busy} onChange={(event) => setPublishAt(event.target.value)} />
-    </label>
+    </label>}
     {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
-    <div><Button type="submit" disabled={busy || !id}>{busy ? t("saving") : t("uploadedButton")}</Button></div>
+    <div><Button type="submit" disabled={busy || !id}>{busy ? t("saving") : t(privateOnly ? "privateLinkButton" : "uploadedButton")}</Button></div>
   </form>;
 }
 

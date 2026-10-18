@@ -13,6 +13,7 @@ from collections.abc import AsyncIterator, Sequence
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any, cast
 from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
@@ -74,6 +75,30 @@ def _view(project: VideoProject) -> ProjectOut:
     return ProjectOut(**admin_service._summary(project, 0), reviews=[])
 
 
+def _pending_imported_final(project: VideoProject) -> VideoReview:
+    return VideoReview(
+        id=uuid4(),
+        project_id=project.id,
+        gate="final",
+        subject=None,
+        status="pending",
+        summary="Imported recut",
+        content_sha256="a" * 64,
+        payload={"imported": {"captions": True, "note": "Standalone recut"}},
+        files=[{"role": "preview", "sha256": "b" * 64, "size": 100, "content_type": "video/mp4"}],
+    )
+
+
+def _private_link_session() -> Any:
+    session = AsyncMock()
+    session.add = MagicMock()
+    session.get_bind = MagicMock(
+        return_value=SimpleNamespace(dialect=SimpleNamespace(name="sqlite"))
+    )
+    session.scalar.return_value = None  # no other project has claimed the ID
+    return session
+
+
 def youtube_item(
     video_id: str,
     *,
@@ -81,6 +106,8 @@ def youtube_item(
     channel: str = CHANNEL,
     published: datetime | None = NOON,
     scheduled: datetime | None = None,
+    processing: str | None = "succeeded",
+    duration: str | None = "PT1M",
 ) -> dict[str, Any]:
     """One videos.list item the way YouTube shapes it (snippet and status)."""
     snippet: dict[str, Any] = {"channelId": channel, "title": f"Video {video_id}"}
@@ -89,7 +116,13 @@ def youtube_item(
     status: dict[str, Any] = {"privacyStatus": privacy}
     if scheduled is not None:
         status["publishAt"] = scheduled.isoformat().replace("+00:00", "Z")
-    return {"id": video_id, "snippet": snippet, "status": status}
+    return {
+        "id": video_id,
+        "snippet": snippet,
+        "status": status,
+        "processingDetails": {"processingStatus": processing} if processing is not None else {},
+        "contentDetails": {"duration": duration} if duration is not None else {},
+    }
 
 
 class FakeYoutube:
@@ -248,6 +281,227 @@ async def test_linking_records_the_id_and_the_publish_time_and_writes_an_audit_r
     with pytest.raises(AppError) as dropped:
         await admin_service.link_youtube(session, "v", owner, VIDEO_ID, None)
     assert dropped.value.code == "video_project_dropped"
+
+
+@pytest.mark.asyncio
+async def test_private_only_link_records_an_unscheduled_video_on_the_linked_channel(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    project = _project()
+    final = _pending_imported_final(project)
+    project_lookup = AsyncMock(return_value=project)
+    monkeypatch.setattr(admin_service, "_project", project_lookup)
+    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[final]))
+    monkeypatch.setattr(
+        admin_service, "project_view", AsyncMock(side_effect=lambda *_: _view(project))
+    )
+    publication = AsyncMock()
+    monkeypatch.setattr(admin_service, "youtube_publication", publication)
+    youtube = FakeYoutube(youtube_item(VIDEO_ID, privacy="private"))
+    link_channel(monkeypatch, youtube)
+    session = _private_link_session()
+
+    page = await admin_service.link_youtube(
+        session, "v", _owner(), VIDEO_ID, None, private_only=True
+    )
+
+    assert (project.youtube_video_id, project.youtube_publish_at) == (VIDEO_ID, None)
+    assert page.youtube_video_id == VIDEO_ID
+    assert youtube.asked == [[VIDEO_ID]]
+    assert youtube.parts == ["snippet,status,contentDetails,processingDetails"]
+    publication.assert_not_awaited(), "private-only must not infer a public timestamp"
+    assert session.add.call_args.args[0].metadata_json["private_only"] is True
+    assert project_lookup.await_args.kwargs == {"lock": True}
+    duplicate_sql = str(session.scalar.await_args.args[0])
+    assert "youtube_video_id" in duplicate_sql and "video_projects.id !=" in duplicate_sql
+    session.commit.assert_awaited_once()
+    assert final.status == "pending"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("youtube", "channel", "refused", "code"),
+    [
+        (FakeYoutube(youtube_item(VIDEO_ID)), CHANNEL, None, "video_youtube_not_private"),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="unlisted")),
+            CHANNEL,
+            None,
+            "video_youtube_not_private",
+        ),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private", scheduled=NOON)),
+            CHANNEL,
+            None,
+            "video_youtube_not_private",
+        ),
+        (
+            FakeYoutube(
+                youtube_item(VIDEO_ID, privacy="private", channel="UCother000000000000000")
+            ),
+            CHANNEL,
+            None,
+            "video_youtube_private_channel",
+        ),
+        (FakeYoutube(), CHANNEL, None, "video_youtube_private_not_found"),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private")),
+            "",
+            None,
+            "video_youtube_private_channel",
+        ),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private", processing=None)),
+            CHANNEL,
+            None,
+            "video_youtube_private_unprocessed",
+        ),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private", processing="failed")),
+            CHANNEL,
+            None,
+            "video_youtube_private_unprocessed",
+        ),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private", duration="PT0S")),
+            CHANNEL,
+            None,
+            "video_youtube_private_unprocessed",
+        ),
+        (
+            FakeYoutube(youtube_item(VIDEO_ID, privacy="private", duration=None)),
+            CHANNEL,
+            None,
+            "video_youtube_private_unprocessed",
+        ),
+        (
+            FakeYoutube(failure=YoutubeError(403, "quotaExceeded", "over")),
+            CHANNEL,
+            None,
+            "video_youtube_private_verify_failed",
+        ),
+        (
+            FakeYoutube(failure=httpx.ConnectError("down")),
+            CHANNEL,
+            None,
+            "video_youtube_private_verify_failed",
+        ),
+        (
+            None,
+            CHANNEL,
+            Refused(409, "video_youtube_not_linked", "not linked"),
+            "video_youtube_not_linked",
+        ),
+    ],
+    ids=[
+        "public",
+        "unlisted",
+        "scheduled",
+        "foreign-channel",
+        "not-found",
+        "missing-channel",
+        "processing-missing",
+        "processing-failed",
+        "zero-duration",
+        "duration-missing",
+        "youtube-error",
+        "network-error",
+        "no-connection",
+    ],
+)
+async def test_private_only_rejects_any_unverified_or_not_private_video_without_writing(
+    monkeypatch: pytest.MonkeyPatch,
+    youtube: FakeYoutube | None,
+    channel: str,
+    refused: Refused | None,
+    code: str,
+) -> None:
+    project = _project()
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(
+        admin_service, "_reviews", AsyncMock(return_value=[_pending_imported_final(project)])
+    )
+    link_channel(monkeypatch, youtube, channel=channel, refused=refused)
+    session = _private_link_session()
+
+    with pytest.raises(AppError) as denied:
+        await admin_service.link_youtube(session, "v", _owner(), VIDEO_ID, None, private_only=True)
+
+    assert denied.value.code == code
+    assert project.youtube_video_id is None and project.youtube_publish_at is None
+    session.add.assert_not_called()
+    session.commit.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_private_only_rejects_existing_duplicate_and_unreviewed_links(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    project = _project()
+    final = _pending_imported_final(project)
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    reviews_lookup = AsyncMock(return_value=[final])
+    monkeypatch.setattr(admin_service, "_reviews", reviews_lookup)
+    youtube = FakeYoutube(youtube_item(VIDEO_ID, privacy="private"))
+    link_channel(monkeypatch, youtube)
+
+    async def denied_code(session: Any, *, publish_at: datetime | None = None) -> str:
+        with pytest.raises(AppError) as denied:
+            await admin_service.link_youtube(
+                session, "v", _owner(), VIDEO_ID, publish_at, private_only=True
+            )
+        session.add.assert_not_called()
+        session.commit.assert_not_awaited()
+        return denied.value.code
+
+    assert (
+        await denied_code(_private_link_session(), publish_at=NOON)
+        == "video_youtube_private_publish_at"
+    )
+    project.youtube_video_id = "abcdefghijk"
+    assert await denied_code(_private_link_session()) == "video_youtube_already_linked"
+    project.youtube_video_id = None
+    session = _private_link_session()
+    session.scalar.return_value = "another-project"
+    assert await denied_code(session) == "video_youtube_id_in_use"
+    assert youtube.asked == [], "reject a duplicate before spending a YouTube request"
+    final.status = "approved"
+    assert await denied_code(_private_link_session()) == "video_youtube_private_review_required"
+    final.status = "pending"
+    final.files = []
+    assert await denied_code(_private_link_session()) == "video_youtube_private_review_required"
+    final.files = _pending_imported_final(project).files
+    final.payload = {}
+    assert await denied_code(_private_link_session()) == "video_youtube_private_review_required"
+    final.payload = {"imported": {"captions": True}}
+    final.content_sha256 = "invalid"
+    assert await denied_code(_private_link_session()) == "video_youtube_private_review_required"
+    final.content_sha256 = "a" * 64
+    project.shorts_line = "cut"
+    assert await denied_code(_private_link_session()) == "video_youtube_private_review_required"
+    project.shorts_line = None
+    package = _pending_imported_final(project)
+    package.gate = "publish"
+    package.status = "approved"
+    reviews_lookup.return_value = [final, package]
+    assert await denied_code(_private_link_session()) == "video_youtube_private_package_exists"
+    reviews_lookup.return_value = [final]
+    project.youtube_sync = {
+        "status": "running", "lease_until": (datetime.now(UTC) + timedelta(minutes=5)).isoformat()
+    }
+    assert await denied_code(_private_link_session()) == "video_youtube_private_sync_running"
+
+
+@pytest.mark.asyncio
+async def test_private_only_claims_a_transaction_lock_for_the_video_id_on_postgres() -> None:
+    session = _private_link_session()
+    session.get_bind.return_value.dialect.name = "postgresql"
+
+    await admin_service._lock_private_youtube_id(session, VIDEO_ID)
+
+    statement = session.execute.await_args.args[0]
+    assert "pg_advisory_xact_lock" in str(statement)
+    assert len(statement.compile().params) == 1
 
 
 @pytest.mark.asyncio
@@ -802,6 +1056,9 @@ async def test_the_youtube_route_parses_the_address_and_needs_content_manage(
             json={"url": f"https://youtu.be/{VIDEO_ID}", "publish_at": "2026-10-01T20:00:00+08:00"},
         )
         undecided = await client.post(url, json={"url": VIDEO_ID})
+        private = await client.post(
+            url, json={"url": VIDEO_ID, "publish_at": None, "private_only": True}
+        )
         not_youtube = await client.post(url, json={"url": f"https://example.com/{VIDEO_ID}"})
         naive = await client.post(url, json={"url": VIDEO_ID, "publish_at": "2026-10-01T12:00:00"})
     assert linked.status_code == 200
@@ -809,10 +1066,12 @@ async def test_the_youtube_route_parses_the_address_and_needs_content_manage(
     assert linked.json()["youtube_publish_at"] == "2026-10-01T12:00:00Z"
     assert link.await_args_list[0].args[1:] == ("v", owner, VIDEO_ID, NOON)
     assert undecided.status_code == 200 and link.await_args_list[1].args[3:] == (VIDEO_ID, None)
+    assert private.status_code == 200
+    assert link.await_args_list[2].kwargs == {"private_only": True}
     assert not_youtube.status_code == 422
     assert not_youtube.json()["code"] == "video_youtube_url_invalid"
     assert naive.status_code == 422, "a publish time without a zone is refused before the service"
-    assert link.await_count == 2
+    assert link.await_count == 3
 
     viewer = User(id=uuid4(), email="viewer@example.com", password_hash="unused")
     viewer._admin_roles_cache = frozenset({"viewer"})  # type: ignore[attr-defined]
@@ -821,7 +1080,7 @@ async def test_the_youtube_route_parses_the_address_and_needs_content_manage(
     ) as client:
         refused = await client.post(url, json={"url": VIDEO_ID})
     assert refused.status_code == 403, "a viewer can read but not record an upload"
-    assert link.await_count == 2
+    assert link.await_count == 3
 
 
 @pytest.mark.asyncio

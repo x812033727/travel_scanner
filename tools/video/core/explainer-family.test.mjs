@@ -13,8 +13,8 @@ import { HEADLINE, HEADLINE_SERIES, headlineRule } from "../qa/thumbnail.mjs";
 import { thumbnailSeries } from "../render/plan.mjs";
 import { EPISODE_SERIES, episodeSeries, ILLUSTRATED_SERIES } from "../shorts/episode.mjs";
 import { thumbnailProblems } from "../templates/templates.mjs";
-import { EXPLAINER_PRESET, EXPLAINER_PRESETS, explainerSeries, hasCast, isExplainer, isExplainerPreset, isKnowledgeLongform, keyframeKey, lookHash, needsMinimumLength, pictureVarietyProblems, PRESET_NAMES, PRESETS, resolveLook, timesSilentShots } from "./drama.mjs";
-import { dramaFixture, explainerFixture } from "./fixtures/load.mjs";
+import { EXPLAINER_PRESET, EXPLAINER_PRESETS, explainerSeries, hasCast, isCuteExplainer, isExplainer, isExplainerPreset, isKnowledgeLongform, keyframeKey, lookHash, needsMinimumLength, pictureVarietyProblems, PRESET_NAMES, PRESETS, resolveLook, timesSilentShots } from "./drama.mjs";
+import { dramaFixture, explainerFixture, storyFixture } from "./fixtures/load.mjs";
 import { BRIEF_SECTIONS_EXPLAINER, briefSectionsFor, lintVideo } from "./lint.mjs";
 import { validateVideo } from "./schema.mjs";
 import { visualHash } from "./timeline.mjs";
@@ -35,6 +35,17 @@ test("the family is three presets, and nothing else is an explainer", () => {
   }
   assert.equal(EXPLAINER_PRESET, "flat-explainer");
   for (const other of ["ink-wash", "custom", "riso-teal", undefined, null, "constructor"]) assert.equal(isExplainerPreset(other), false, String(other));
+});
+
+test("a brand story can wear the cute-mystery picture look and keep its cast", () => {
+  const doc = { ...storyFixture(), category: "story", look: { preset: "cute-mystery" }, characters: dramaFixture().characters };
+  assert.equal(isExplainer(doc), false);
+  assert.equal(isCuteExplainer(doc), true, "cute picture checks still apply to the story");
+  assert.equal(hasCast(doc), true);
+  assert.equal(isKnowledgeLongform(doc), true);
+  assert.deepEqual(validateVideo(doc), []);
+  const explainer = { ...doc, category: "explainer" };
+  assert.match(validateVideo(explainer).find((error) => error.path === "characters")?.message ?? "", /an explainer .* has no characters/);
 });
 
 // The two looks are the texts the owner approved (docs/videos/history-curiosity/look.md).
@@ -71,7 +82,8 @@ test("flat-explainer is what it was: preset bytes, look hash, visual hash, compo
   const fixture = explainerFixture();
   assert.equal(lookHash(fixture), "bd2b3b49af8e9623");
   assert.equal(lookHash({ format: "drama", look: { preset: "flat-explainer" }, characters: [] }), "bd2b3b49af8e9623");
-  assert.equal(visualHash(fixture), "1ee426698cc02ed3");
+  // Moved on 2026-10-13 with the example outro card's words, which no longer name the next episode.
+  assert.equal(visualHash(fixture), "284ffa10d2a72d62");
 
   const shot = fixture.scenes.find((scene) => scene.id === "flash");
   const look = resolveLook(fixture.look);

@@ -27,7 +27,7 @@ from app.video_reviews import admin_service as reviews
 from app.video_reviews.storage import ReviewStore, valid_slug
 from app.video_youtube import sync, vps_settings
 from app.video_youtube.errors import Refused
-from app.video_youtube.requests import text_problem
+from app.video_youtube.requests import captioned, text_problem
 from app.video_youtube.state import running
 
 CHUNK = 4 * 1024 * 1024
@@ -254,6 +254,13 @@ async def assets(
     return result
 
 
+def _captioned_entry(entry: Any, locale: str) -> Any:
+    """A localization with its language's captions tag on the title; anything else as it is."""
+    if isinstance(entry, dict) and isinstance(entry.get("title"), str):
+        return {**entry, "title": captioned(entry["title"], locale)}
+    return entry
+
+
 async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) -> dict[str, Any]:
     # Match the API sender's order: project lock, then configuration lock.
     project = await sync._locked_project(session, slug)
@@ -296,6 +303,9 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
     description = (
         payload.description if payload.description is not None else m.get("description", "")
     )
+    narration = m.get("default_language", "zh-TW")
+    # Every title ends with its language's captions tag (requests.CAPTION_TAGS), added once.
+    title = captioned(title, narration)
     problem = text_problem(title, description)
     if problem:
         raise Refused(422, "vps_text_invalid", problem)
@@ -311,14 +321,14 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
         "title": title,
         "description": description,
         "tags": m.get("tags", []),
-        "default_language": m.get("default_language", "zh-TW"),
+        "default_language": narration,
         "category_id": str(m.get("category_id", "")),
         "made_for_kids": m["made_for_kids"],
         "contains_synthetic_media": m["contains_synthetic_media"],
         "localizations": {
-            locale: entry
+            locale: _captioned_entry(entry, locale)
             for locale, entry in localizations.items()
-            if locale != m.get("default_language", "zh-TW")
+            if locale != narration
         },
     }
     key = hashlib.sha256(f"{slug}:{pack.sha256}".encode()).hexdigest()

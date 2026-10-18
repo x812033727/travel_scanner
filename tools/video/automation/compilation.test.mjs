@@ -1,16 +1,19 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
+import { appliedBranding, presentationTimeline } from "../core/branding.mjs";
 import { compilationHash } from "../core/compilation.mjs";
 import { approvedEpisodes, compilationSourceHashes, lintProject, loadProject } from "../core/state.mjs";
 import { dramaFixture } from "../core/fixtures/load.mjs";
 import { atomicWrite, readJson } from "../core/paths.mjs";
 import { LOCALES } from "../core/schema.mjs";
+import { chosenLocales, readLanguages } from "../core/stages.mjs";
 import { visualHash } from "../core/timeline.mjs";
 import { compilationSandbox, EPISODES, renderCards, SERIES, TITLES } from "../compile/fixture.mjs";
+import { composeMetadata } from "../package/metadata.mjs";
 import { automationClient } from "./client.mjs";
 import { copyThumbSource, descriptionBudget, metadataProblem, thumbnailCandidates, translationProblem } from "./compilation.mjs";
 import { Automation, automatedVideos } from "./flow.mjs";
@@ -229,8 +232,13 @@ test("a compilation goes from the placeholder document to the confirmed upload w
       return { code: 0, out: "compiled" };
     }
     if (command[0] === "package") {
+      // The fields package composes, which the worker compares before the publish push.
+      const project = loadProject({ slug, root: box.root });
+      const timeline = presentationTimeline(readJson(path.join(box.workdir, "timeline.json")), appliedBranding(readJson(path.join(box.workdir, "checks.json"))));
+      const { metadata } = composeMetadata({ doc: project.doc, timeline, translations: project.translations, locales: chosenLocales(readLanguages(box.workdir), "metadata") });
       mkdirSync(path.join(box.workdir, "upload"), { recursive: true });
-      atomicWrite(path.join(box.workdir, "upload", "metadata.json"), JSON.stringify({ final_sha256: shaFile(path.join(box.workdir, "final.mp4")), compilation: true, download: "upload/final.mp4" }));
+      if (existsSync(path.join(box.workdir, "thumbnail.jpg"))) copyFileSync(path.join(box.workdir, "thumbnail.jpg"), path.join(box.workdir, "upload", "thumbnail.jpg"));
+      atomicWrite(path.join(box.workdir, "upload", "metadata.json"), JSON.stringify({ ...metadata, final_sha256: shaFile(path.join(box.workdir, "final.mp4")), compilation: true, download: "upload/final.mp4" }));
       return { code: 0, out: "packaged" };
     }
     if (command[0] === "review-push") {

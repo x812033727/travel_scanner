@@ -16,6 +16,20 @@ test("the description's URLs come out once each, without the punctuation around 
   assert.deepEqual(descriptionUrls(["no links here", null]), []);
 });
 
+test("a closing parenthesis stays in the URL only when it closes one the URL opened", () => {
+  const commons = "https://commons.wikimedia.org/wiki/File:Plane_Ticket_(28379315406).jpg";
+  assert.deepEqual(
+    descriptionUrls([
+      `Photo: ${commons}`,
+      `[ticket](${commons}).`,
+      `(see https://example.com/a).`,
+      "[docs](https://example.com/b)",
+      "Wiki: https://en.wikipedia.org/wiki/Mercury_(planet), and more",
+    ]),
+    [commons, "https://example.com/a", "https://example.com/b", "https://en.wikipedia.org/wiki/Mercury_(planet)"],
+  );
+});
+
 test("links are fetched with GET, redirects followed, the editorial agent, a second apart per host", async () => {
   let clock = 1_000_000;
   const waits = [];

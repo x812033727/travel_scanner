@@ -32,6 +32,8 @@ docker compose -f docker-compose.prod.yml exec -T api sh -c 'python -m app.news_
 
 **`sources_cli`**：`--file` 可換檔（預設 `sources.json`）。輸出 JSON 的 `sources[]` 每筆有 `action`（`create`／`update`／`unchanged`），乾跑時多 `valid`／`error`；`not_in_file` 列出資料庫有、檔案沒有的來源（不動它們）；`summary` 有四個計數。`--apply` 走和後台一樣的 service（驗證、稽核列）；驗證不過的來源仍會寫進去，但是停用、`last_status=validation_failed`、帶原因，讓後台清單看得到試過什麼。驗證是從主機實際抓：有的站會對主機 IP 回 4xx、有的 robots 不允許，那是來源的事，不是 CLI 壞了。
 
+試一個候選來源用掃描器自己的程式（`apps/api/app/news_automation/validation.py` 的 `validate_source_configuration`、`fetch.py` 的 `SafeNewsFetcher`、`feeds.py` 的 `parse_entries`），不要用 curl：curl 過了不代表掃描器讀得到。Anthropic 的網域幾次請求之後就回 Cloudflare 403，掃描器把它當成 robots 不允許。站主決定不用付費的 X API。
+
 **`settings_cli`**：輸出 `settings`（開關、模式、撰稿／查核／最終修改的供應商與模型、代審的開關 `judge_enabled` 與它的供應商和模型、三類的自動發布）、`default_models`、`keys_configured`（`openai`／`anthropic`／`minimax`／`gemini`／`jev` 只報 true/false；Claude 在「訂閱帳號」連線方式下只要主機 AI 帳號代理有設定就算 true）、來源總數與啟用數、`changes`、`blockers`、`applied`。旗標：`--enable`／`--disable`、`--writer-provider`、`--writer-model`、`--verifier-provider`、`--verifier-model`、`--editor-provider`、`--editor-model`、`--judge-enable`／`--judge-disable`、`--judge-provider`、`--judge-model`（模型給空字串＝回到該家預設）、`--apply`、`--actor-email`。四個角色都一樣：只換供應商、沒有同時給模型，那個角色的模型會回到新那一家的預設（和後台換供應商時一樣，`changes` 裡看得到 `<角色>_model: null`），因為原本存的模型 id 是舊那一家的。它會拒絕在這些情況打開掃描：撰稿、查核或最終修改那家沒有金鑰、任一家是 Gemini（它的 schema 轉換只留 `anyOf` 的第一項，寫不出新聞文章）、Jev 沒設定；代審那家只在代審開著（`judge_enabled`）時一起檢查，掃描關著時什麼都不檢查。它**永遠不碰**模式（影子／自動）與自動發布。代審的用法在下面「AI 代審」一節。
 
 換撰稿、查核或最終修改的供應商、模型，或 prompt、政策版本，只會讓每個類別的一致率統計（天數、已標記筆數、和 Jev 的一致率，僅供參考）重新起算；模式和自動發布都不會被改（2026-09-25 站主拿掉影子門檻之後就是這樣）。換代審的供應商或模型連統計都不重算。

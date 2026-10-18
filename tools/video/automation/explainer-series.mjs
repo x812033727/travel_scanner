@@ -6,6 +6,8 @@
 // payload, so no payload of an existing video moves and the settings page's "prompt sent" row of
 // one series is never overwritten by another's.
 import { explainerCardTemplates } from "../core/drama.mjs";
+import { OPENING_CHAPTER_SECONDS } from "../core/lint.mjs";
+import { CONDENSATION_RULE, NARRATIVE_RULES } from "./register.mjs";
 
 /**
  * The prompt variants of an explainer, by style preset: the one-off's bible ("planner:<bible>"),
@@ -58,20 +60,24 @@ curious viewer would ask, answered`,
   packaging in a picture; invented people and plain unbranded objects stand in. Nothing a
   synthetic-media disclosure would not cover.`,
   shape: `- Structure (docs/videos/so-thats-why/README.md §一集長什麼樣), in this order. The lengths
-  are for the 10-minute target; with another "target_minutes" the hook and the close keep
+  are for the 10-minute target; with another "target_minutes" the condensation and the close keep
   theirs and the three middle parts scale in the same proportion. The parts together reach
   the target and never fall under 8 minutes.
-  1. The hook, within 20 seconds: the question put the counter-intuitive way over the most
-     striking picture, then the promise that the viewer will know why. No greeting.
-  2. The background, about 2 minutes: what most people assume, and where the story starts.
+  1. The condensation, ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds: the question put the counter-intuitive way
+     over the most striking picture, then three or four of the reasons' most surprising facts,
+     each over the picture of the chapter that pays it off and left without its why, then the
+     promise that the viewer will know why. No greeting. The channel intro plays after it.
+  2. The story goes on from where the condensation stopped, about 2 minutes: what people assumed,
+     and what was found instead.
   3. Three or four chapters, 6 to 7 minutes together, one reason of the brief's 原因 each, in the
      brief's order; a timeline, a number or a contrast goes on a card where it must be read.
   4. The answer, about a minute: the brief's one-sentence answer said plainly, on a "big" card.
-  5. The close, about 20 seconds: the next question only when the brief or the owner's notes
-     name it, and an invitation to subscribe.
+  5. The close, about 20 seconds: the answer, one question for the comments and an invitation to
+     subscribe. It never says what the next episode is about.
   "chapter" (the scene field) sits on the first scene of each part, and of each chapter inside
   part 3 (so part 3 carries three or four of them, not one). Each stretch a marker opens is at
-  least 10 s and is named as a viewer would search, never 背景 or 結論. The series' intro and
+  least 10 s and is named by what happens in it, as a viewer would search for it, never 背景,
+  結論 or any other word for a section's job. The series' intro and
   outro clips are added by the tool: do not write them; the "outro" card is yours.`,
   thumbnailGuide: `"thumbnail": {template: "thumb", data: {headline: the question
   shortened, at most 2 lines of ≤ 10 characters (\\n between them, **one word** stressed), tag: the
@@ -92,12 +98,18 @@ curious viewer would ask, answered`,
 type it, and what most people wrongly assume.
 ## 一句答案 the answer in one plain sentence a twelve-year-old understands.
 ## 原因 3 or 4 reasons, each one sentence with the source page that supports it.
-## 大綱 ONE outline: the opening hook as the first spoken line; the chapters (one reason each, in
+## 大綱 ONE outline: the spine in one sentence (「主線：…」: who or what, from which moment,
+to which answer); 3 to 5 turns in the order they happened (「轉折：…」, each with the chapter
+that reveals it); the opening hook as the first spoken line; the ONE scene the condensation
+tells, in order, up to the first fact that makes no sense, then the three or four later moments
+it teases, each cut off before its result (「開場濃縮：…」, no later chapter's result given
+away); the open loops it plants (「鉤子：<what is held back> → 第 N 章回收」, at least three,
+the condensation's teasers among them); the chapters (one reason each, in
 the order of 原因) with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole
 aimed at "series.target_minutes", never under 8 minutes; over it is fine); each chapter's key
 pictures as "picture: one person doing one thing, and where / camera"; where a number, a timeline
-or a contrast card sits; and the closing (the answer, then the next question only when the
-owner's note names one).
+or a contrast card sits; and the closing (the answer, the comment question and the subscribe
+invitation; never what the next episode is about).
 ## 素材 the source pages (primary or official first), and the pictures that must appear.
 ## 不做的事 what this episode leaves out.`,
   bibleJson: `body_json: {"characters": [] (always empty: the narrator tells it), "acts": [{"number", "title":
@@ -162,27 +174,31 @@ today,`,
   recent. No logos and no product likenesses. Nothing a synthetic-media disclosure would not
   cover.`,
   shape: `- Structure (docs/videos/history-curiosity/README.md §一集長什麼樣), in this order. The lengths
-  are for the 10-minute target; with another "target_minutes" the hook and the close keep
+  are for the 10-minute target; with another "target_minutes" the condensation and the close keep
   theirs and the three middle parts scale in the same proportion. The parts together reach
   the target and never fall under 8 minutes.
-  1. The hook, within 20 seconds: the file's most counter-intuitive sentence, with its year,
-     number or name, over the most striking picture, then a "big" card and the promise that
-     this episode opens the file. No greeting.
-  2. 流傳的版本, about 1.5 minutes: the version people have heard, told as a story and named as
-     the version that circulates.
-  3. 紀錄裡有什麼, 6 to 7 minutes: one chapter for each 「紀錄：」 line of the brief's 原因 (two to
-     four), in the brief's order: the report made at the time, later research, what the people
-     involved said. Dates, places and counts go on cards.
-  4. 目前最站得住的解釋, about 1.5 minutes: the records gathered into one sentence on a "big"
-     card; where nothing is settled, 「目前主流解釋是…，還沒解釋的是…」.
+  1. The condensation, ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds: ONE scene of the file, with its
+     year, number or name, told in order up to the first fact that makes no sense, then three
+     or four of the records' strangest moments, each over the picture of the chapter that pays
+     it off and cut off before what explains it, then the question the episode answers. No
+     greeting. The channel intro plays after it.
+  2. The story goes on from where the condensation stopped, about 1.5 minutes: the version people
+     have heard, told as a story and named as the version that circulates.
+  3. The records, 6 to 7 minutes: one chapter for each 「紀錄：」 line of the brief's 原因 (two to
+     four), in the brief's order, each told as what happened next in the same story: the report
+     made at the time, later research, what the people involved said. Dates, places and counts
+     go on cards.
+  4. What stands best today, about 1.5 minutes: the records gathered into one sentence on a
+     "big" card; where nothing is settled, 「目前主流解釋是…，還沒解釋的是…」.
   5. The close, about 20 seconds: the file is closed as 「存檔」 (settled) or 「未結」 (open), as
-     the brief's closing says, on a "big" or the "outro" card; the next file is named only when
-     the brief or the owner's notes name it (otherwise 「下一份檔案，我們繼續翻」), and an
-     invitation to subscribe.
+     the brief's closing says, on a "big" or the "outro" card, then one question for the comments
+     and an invitation to subscribe. It never says what the next file or the next episode is
+     about (owner, 2026-10-13).
   "chapter" (the scene field) sits on the first scene of each part, and of each chapter inside
   part 3 (so part 3 carries one for each 「紀錄：」 line, not one for the whole part). Each
-  stretch a marker opens is at least 10 s and is named as a viewer would search
-  (「1994 年空軍怎麼解釋」「DNA 比對的結果」), never 背景 or 結論. Every chapter has one medium
+  stretch a marker opens is at least 10 s and is named by what happens in it, as a viewer would
+  search for it (「1994 年空軍怎麼解釋」「DNA 比對的結果」), never 流傳的版本, 背景, 結論 or
+     any other word for a section's job. Every chapter has one medium
   shot whose point is a person's expression. The channel's intro and outro clips are added by
   the tool: do not write them; the "outro" card is yours.`,
   thumbnailGuide: `"thumbnail": {template: "thumb", data: {headline: at most 6
@@ -218,13 +234,20 @@ with its label and names the source page that supports it:
   time, later research, what the people involved said).
 - 「目前最站得住的解釋：…」 once, last: what the records together support, and what they leave
   open.
-## 大綱 ONE outline: the opening hook as the first spoken line (the file's most
-counter-intuitive sentence, with its year, number or name); then one chapter for each line of
+## 大綱 ONE outline: the spine in one sentence (「主線：…」: who or what, from which moment,
+to which answer); 3 to 5 turns in the order they happened (「轉折：…」, each with the chapter
+that reveals it); the opening hook as the first spoken line (a year or a place and somebody
+doing one concrete thing); the ONE scene the condensation tells, in order, up to the first fact
+that makes no sense, then the three or four later moments it teases, each cut off before its
+result (「開場濃縮：…」, no later chapter's result given away); the open loops it plants
+(「鉤子：<what is held back> → 第 N 章回收」, at least three, the condensation's teasers among
+them); then one chapter for each line of
 原因, in the same order, with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the
 whole aimed at "series.target_minutes", never under 8 minutes; over it is fine); each chapter's
 key pictures as "picture: one person doing one thing, and where / camera"; where a number, a
 timeline or a contrast card sits; and the closing: 「存檔」 when the records settle it, 「未結」
-when they do not, then the next file only when the owner's note names one.
+when they do not, then the comment question and the subscribe invitation; never what the next
+file is about.
 ## 素材 the source pages, primary records first (declassified files, investigation and court
 records, journal papers, official releases; an encyclopedia page only as an index), and the
 pictures that must appear.
@@ -334,7 +357,7 @@ const CARD_GUIDE = {
   compare: `"compare" {title?, left {heading, points 1-5}, right {heading, points 1-5}, verdict?, source?} for a contrast`,
   steps: `"steps" {title?, steps: 2 to 5 of {title, detail?}, source?} for a sequence`,
   table: `"table" {title?, columns 2-5, rows 1 to 6 of short cells (about 6 characters, each row as long as columns), source?} for alternatives side by side (with 6 rows leave "source" out)`,
-  outro: `"outro" {title, cta?, lines?} to close, under one or two sentences: the invitation to subscribe (the question for the comments sits on the shot before it)`,
+  outro: `"outro" {title, cta?, lines?} to close, under one or two sentences: the invitation to subscribe (the question for the comments sits on the shot before it); neither the card nor its lines say what the next episode or the next file is about`,
 };
 const CARD_ORDER = ["title", "chapter", "big", "stats", "compare", "steps", "table", "outro"];
 const REVEALS = { stats: "stats: one per number", compare: "compare: 2, left then right", steps: "steps: one per step", table: "table: one per row" };
@@ -375,6 +398,8 @@ not the text, its characters or its clips):
 ${PICTURE_RULES}
 ${cardRules(cards)}
 ${p.shape}
+- ${CONDENSATION_RULE}
+${NARRATIVE_RULES}
 ${LINE_RULES}
 - "music": {prompt (English: ${p.music})} when "drama_settings.music_enabled";
   "subtitles": {"burn_in": false}; ${p.thumbnailGuide}
