@@ -23,9 +23,10 @@ import { appliedBranding, brandingCurrent, readBranding } from "../core/branding
 import { craftChecks } from "../core/craft.mjs";
 import { hasCast, illustrated, isExplainerPreset, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
-import { emptyLexicon, isProposableTerm } from "../core/lexicon.mjs";
+import { emptyLexicon } from "../core/lexicon.mjs";
+import { initializeStoryLexicon, mergeSharedLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { stanceProblems } from "../core/lint.mjs";
-import { isNarrated, NARRATIVE_REVIEW, narrativeRecord, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
+import { isNarrated, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
@@ -43,6 +44,7 @@ import { localizationPlan, writeLocalizationRetention } from "../production/rete
 import { buildSheet, SHEET_PARTS, sheetContext, withoutContext } from "../i18n/cli.mjs";
 import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
 import { imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "../media/prompt-budget.mjs";
+import { policyRequest } from "../qa/policy.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID, PAUSE_CODES, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { acquireProjectLease, ProjectLeaseError } from "../core/project-lease.mjs";
@@ -51,7 +53,7 @@ import { NARRATIVE_VARIANT } from "./flow-constants.mjs";
 import { explainerProfile, explainerVariants, isExplainerStageVariant } from "./explainer-series.mjs";
 import { JOB_GONE_KIND, RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
-import { advanceStory, fixStoryPrompts } from "./story.mjs";
+import { advanceStory, fixStoryPrompts, PILOT_SCRIPT_REFERENCES } from "./story.mjs";
 import { instructionsFor, parseAnswer, references, SLIDES_CAMERA_WORDS } from "./prompts.mjs";
 import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
@@ -91,6 +93,11 @@ export const MAX_STAGE_FAILURES = 2;
 // A drama's failed sheets, keyframes or clips are handed to the writer to fix the prompts, this
 // many times per kind, before the video is blocked for a person (docs/videos/DRAMA.md).
 export const MAX_PROMPT_FIX_ROUNDS = 2;
+// The demonstration a tutorial's script must show before its narration and pictures are paid for:
+// the final gate's own threshold (apps/api/app/video_automation/judge.py POLICY_MIN_DEMO), asked
+// earlier (demoGate). Its verdict is kept beside the review files, bound to the narration it read.
+export const SCRIPT_MIN_DEMO = 0.6;
+export const DEMO_CHECK = ["review", "demo-check.json"];
 // The media stages that take `--seed-offset` (media/keyframes.mjs): an owner retry of a video
 // the server stopped answering for (every seed's request hash spent its attempts) shifts the
 // stage's seeds, and `media()` passes the shift from state.seed_offsets.
@@ -240,6 +247,25 @@ export function automatedVideos(workBase) {
     .sort((a, b) => String(a.created_at).localeCompare(String(b.created_at)));
 }
 
+/**
+ * The pages earlier automated videos rest on without a site article: each one's first
+ * `source_urls` entry when its `source_guide` is empty, dropped videos included and `ownSlug`
+ * left out. Only the first URL counts; later ones may be shared between videos. An official page
+ * (topics.py `official_topics`) stays among the candidates for 14 days, so without this a page
+ * made into one video would be offered to every draft after it.
+ */
+export function usedPages(workBase, ownSlug = null) {
+  return new Set(automatedVideos(workBase)
+    .filter((state) => state.slug !== ownSlug && !state.source_guide && !state.unplanned)
+    .map((state) => state.source_urls?.[0])
+    .filter((url) => typeof url === "string" && url));
+}
+
+/** The topics a scheduled draft may plan from: none whose page an earlier video rests on. */
+function freshTopics(topics, pages) {
+  return (topics ?? []).filter((topic) => !pages.has(topic?.url));
+}
+
 function saveState(workdir, state) {
   mkdirSync(workdir, { recursive: true });
   atomicWrite(path.join(workdir, STATE_FILE), `${JSON.stringify(state, null, 2)}\n`);
@@ -352,9 +378,10 @@ export function siteSources(sourceGuide, urls = [], root = ROOT) {
  * channel stance, 站主觀點 must open by naming the stance points it applies (core/lint.mjs
  * stanceProblems); the local `lint` has no stance and does not check this. `requiredGuide` is
  * the site article the owner asked a slides video of (draftSlides): the brief must retell that
- * one, whatever earlier video used it.
+ * one, whatever earlier video used it. `pages` are the pages earlier videos rest on without a
+ * site article (usedPages): a plan with no site article may not open on one of them.
  */
-export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null, requiredGuide = null) {
+export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null, requiredGuide = null, pages = new Set()) {
   if (!plan || typeof plan !== "object") return "the answer is not an object";
   if (!SLUG.test(plan.slug ?? "")) return `slug "${plan.slug}" is not lowercase kebab-case of at most 60 characters`;
   if (taken.has(plan.slug)) return `slug "${plan.slug}" is already used by an earlier video`;
@@ -369,6 +396,7 @@ export function planProblem(plan, taken, usedGuides = new Set(), format = "slide
   if (requiredGuide && plan.source_guide !== requiredGuide) return `source_guide must be "${requiredGuide}", the site article the owner asked for (requested_guide)`;
   const guide = mainGuide(plan);
   if (guide && usedGuides.has(guide)) return `the site article "${guide}" is what an earlier video retells (see used_guides); pick another topic`;
+  if (!guide && pages.has(plan.source_urls[0])) return `the page ${plan.source_urls[0]} is what an earlier video rests on; pick another topic`;
   return null;
 }
 
@@ -398,18 +426,7 @@ function writeVideo(dir, video) {
  * proposal, since one such entry fails lint for every video that shares the file.
  */
 function mergeLexicon(root, additions) {
-  if (!additions || typeof additions !== "object") return [];
-  const file = lexiconFile(root);
-  const lexicon = readJson(file, { schema_version: 1, terms: {} });
-  const added = [];
-  for (const [term, spoken] of Object.entries(additions)) {
-    if (!isProposableTerm(term) || term in lexicon.terms) continue;
-    if (spoken !== null && (typeof spoken !== "string" || !spoken.trim() || spoken.length > 80)) continue;
-    lexicon.terms[term] = spoken === null ? null : spoken.trim();
-    added.push(term);
-  }
-  if (added.length) atomicWrite(file, `${JSON.stringify(lexicon, null, 2)}\n`);
-  return added;
+  return mergeSharedLexicon(root, additions);
 }
 
 /**
@@ -593,6 +610,9 @@ const BLOCKED_REPORT_BACKOFF_MS = 5 * 60_000;
 // video. Until 2026-10-06 such a video ended its lane's run (`later()`), and since the videos go
 // oldest first, the same video ended every run and the second lane ran into it next.
 export const DEFER_BASE_MS = 5 * 60_000;
+// How long a scheduled draft waits after its topic lookup met a passing refusal the server gave
+// no Retry-After for (Automation.draftWaits).
+export const DRAFT_WAIT_MS = 30 * 60_000;
 export const DEFER_MAX_MS = 2 * 3600_000;
 // Waiting is not for ever: after this many deferrals in a row (5, 10, 20, 40, 80 and 120 minutes,
 // about four and a half hours) the next failure blocks the video with the last reason, so the
@@ -1793,7 +1813,9 @@ export class Automation {
   /** Whether a new draft may start: on, interval passed, not too many waiting on the owner. */
   due() {
     if (!this.room()) return false;
-    const last = this.globalState().last_draft_at;
+    const global = this.globalState();
+    if (global.draft_waits_until && this.ctx.now().getTime() < Date.parse(global.draft_waits_until)) return false;
+    const last = global.last_draft_at;
     return !last || this.ctx.now().getTime() - Date.parse(last) >= this.settings.draft_interval_hours * 3600_000;
   }
 
@@ -1812,7 +1834,26 @@ export class Automation {
    * instead of piling on top of them.
    */
   markDrafted() {
-    this.saveGlobal({ ...this.globalState(), last_draft_at: this.ctx.now().toISOString() });
+    const { draft_waits_until: _done, ...global } = this.globalState();
+    this.saveGlobal({ ...global, last_draft_at: this.ctx.now().toISOString() });
+  }
+
+  /**
+   * A scheduled draft whose topic lookup met a refusal that passes (errorScope "wait": its
+   * hourly limit, the API busy or away) waits until the server's Retry-After, or DRAFT_WAIT_MS,
+   * in auto-state.json `draft_waits_until`; the round goes on. Until 2026-10-16 the error ended
+   * the round before the draft was marked, so every round asked again: about every five
+   * minutes, four tries each, all counted against the lookups' twelve an hour, and the window
+   * never let one through (no scheduled draft 10-13 to 10-16). Anything else ends the run as
+   * before. The planner's own failures are left as they were: the next round asks it again.
+   */
+  draftWaits(error, what) {
+    if (error?.code === RUN_PENDING || errorScope(error) !== "wait") throw error;
+    const seconds = Number(error.retry_after);
+    const wait = Number.isFinite(seconds) && seconds > 0 ? seconds * 1000 : DRAFT_WAIT_MS;
+    const until = new Date(this.ctx.now().getTime() + wait).toISOString();
+    this.saveGlobal({ ...this.globalState(), draft_waits_until: until });
+    return this.later(`draft: ${what} could not finish (${error.code || `HTTP ${error.status}`}: ${error.message}); the scheduled draft waits until ${until}`);
   }
 
   /**
@@ -1926,13 +1967,21 @@ export class Automation {
    * and the planner is not asked again on its own; a retry plans it once more (planUnplanned).
    */
   async draft() {
-    const { topics, notes } = await this.api.topics();
+    let found;
+    try {
+      found = await this.api.topics();
+    } catch (error) {
+      return this.draftWaits(error, "the topic lookup");
+    }
+    const { notes } = found;
     const now = this.ctx.now().toISOString();
     const draftSlug = `draft-${now.slice(0, 16).replace(/[-:T]/g, "")}`;
     const earlier = this.earlierVideos();
     const taken = new Set(earlier.map((video) => video.slug));
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
-    const { plan, problem, lost } = await this.firstPlan(draftSlug, (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), (answer) => planProblem(answer, taken, usedGuides, "slides", this.stance));
+    const pages = usedPages(this.workBase);
+    const topics = freshTopics(found.topics, pages);
+    const { plan, problem, lost } = await this.firstPlan(draftSlug, (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), (answer) => planProblem(answer, taken, usedGuides, "slides", this.stance, null, null, pages));
     // Written whatever came of it: a failed draft waits for the next interval like a good one.
     this.markDrafted();
     if (lost) return this.unanswered(this.unplannedVideo({ slug: draftSlug, format: "slides", title: `排程草稿 ${now.slice(0, 16).replace("T", " ")} UTC`, source_guide: null }, "draft"), lost);
@@ -2537,6 +2586,10 @@ export class Automation {
     this.fence(state.slug, "the next step");
     const workdir = this.workdir(state.slug);
     const dir = docDir(state.slug, ctx.root);
+    if (state.story) {
+      try { initializeStoryLexicon({ root: ctx.root, slug: state.slug, workdir }); }
+      catch (error) { return this.block(state, `story pronunciation input is held: ${error.message}`); }
+    }
     // Native silent actions are part of the reviewed story. Refresh their readable artifact
     // before computing gates so a changed action cannot reach another paid media stage.
     const animeScript = path.join(dir, "video.json");
@@ -2603,6 +2656,9 @@ export class Automation {
       const panelled = await this.narrativeGate(state);
       if (panelled) return panelled;
     }
+    // A tutorial's script is asked for its demonstration before anything is recorded or drawn.
+    const demonstrated = await this.demoGate(state, status);
+    if (demonstrated) return demonstrated;
     // An episode of a series: the owner reads the screenplay before any image or clip is paid for.
     if (next === "script approved") return this.scriptGate(state);
 
@@ -2740,8 +2796,10 @@ export class Automation {
     } else if (state.unplanned === "drama") {
       ask = { payload: await this.dramaPlanPayload(state, earlier), check: (answer) => planProblem(own(answer), taken, state.source_guide ? new Set() : usedGuides, "drama", this.stance, state.style_preset ?? null), options: { maxOutputTokens: 16_000, format: "drama", variant: this.variantOf(state) } };
     } else {
-      const { topics, notes } = await this.api.topics();
-      ask = { payload: (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), check: (answer) => planProblem(own(answer), taken, usedGuides, "slides", this.stance) };
+      const { topics: offered, notes } = await this.api.topics();
+      const pages = usedPages(this.workBase, state.slug);
+      const topics = freshTopics(offered, pages);
+      ask = { payload: (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), check: (answer) => planProblem(own(answer), taken, usedGuides, "slides", this.stance, null, null, pages) };
     }
     const { plan, problem, lost } = await this.firstPlan(state.slug, ask.payload, ask.check, ask.options);
     if (lost) throw lost;
@@ -2773,14 +2831,16 @@ export class Automation {
     const drama = state.format === "drama";
     // An owner's slides request keeps its article through every re-plan (draftSlides): no topics.
     const requested = state.slides_request ?? null;
-    const { topics } = drama || requested ? { topics: [] } : await this.api.topics();
+    const pages = drama || requested ? new Set() : usedPages(this.workBase, state.slug);
+    const { topics: offered } = drama || requested ? { topics: [] } : await this.api.topics();
+    const topics = freshTopics(offered, pages);
     if (drama) state.target_minutes = hasAnimePolicy(state) ? requireAnimePolicy(state.series).body_target_seconds / 60 : episodeMinutes(state.target_minutes, state.style_preset);
     const extra = drama
       ? { premise: state.premise, target_minutes: [state.target_minutes, state.target_minutes], source_guide: state.source_guide, ...this.dramaPayload(state) }
       : { topics, ...(requested ? { requested_guide: this.requestedGuide(requested) } : {}) };
     const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format, drama ? this.variantOf(state) : null);
     const chosen = (drama && state.source_guide) || requested;
-    const problem = planProblem({ ...answer, slug: state.slug }, taken, chosen ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null, requested?.source_guide ?? null);
+    const problem = planProblem({ ...answer, slug: state.slug }, taken, chosen ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null, requested?.source_guide ?? null, pages);
     state.replans += 1;
     state.notes.push(`outline sent back by ${by}: ${note}`);
     saveState(this.workdir(state.slug), state);
@@ -2788,14 +2848,16 @@ export class Automation {
     this.cleared(state, "planner");
     writeFileSync(path.join(dir, "brief.md"), answer.brief.endsWith("\n") ? answer.brief : `${answer.brief}\n`);
     state.source_urls = (answer.source_urls ?? state.source_urls).slice(0, 12);
-    state.source_guide = requested?.source_guide ?? answer.source_guide ?? state.source_guide;
+    // A drama adaptation and an owner's slides request keep their article; a scheduled draft takes
+    // the planner's answer as given, so a re-plan onto an official page records no article.
+    state.source_guide = requested?.source_guide ?? (drama ? answer.source_guide ?? state.source_guide : answer.source_guide || null);
     saveState(this.workdir(state.slug), state);
     return `brief rewritten after ${by === "Jev" ? "Jev's" : "the owner's"} note (round ${state.replans}); ${await this.submitOutline(state)}`;
   }
 
   scriptPayload(state, extra) {
     const refs = this.reference();
-    const lexicon = readJson(lexiconFile(this.ctx.root), { terms: {} });
+    const lexicon = state.story ? videoLexicon({ root: this.ctx.root, slug: state.slug, workdir: this.workdir(state.slug), requireSnapshot: true }).lexicon : readJson(lexiconFile(this.ctx.root), { terms: {} });
     const drama = state.format === "drama";
     if (drama) state.target_minutes = hasAnimePolicy(state) ? requireAnimePolicy(state.series).body_target_seconds / 60 : episodeMinutes(state.target_minutes, state.style_preset);
     return {
@@ -3285,12 +3347,12 @@ export class Automation {
     if (state.compilation || !isNarrated(video, this.seriesJson(state)) || narrationLocale(video) !== NARRATION_LOCALE || minutes < MIN_EPISODE_MINUTES) return null;
     const file = path.join(this.workdir(state.slug), ...NARRATIVE_REVIEW);
     const saved = readJson(file, null);
-    if (saved?.passed && scriptCheckMatches(saved, video)) return null;
+    if (saved?.passed && narrativeReviewMatches(saved, video)) return null;
     const round = (saved?.round ?? 0) + 1;
     const answer = await this.stage("verifier", state.slug, panelPayload(video, timeline), 8_000, state.format, NARRATIVE_VARIANT, state.series ?? null, { bare: PANEL_INSTRUCTIONS });
     const verdict = panelVerdict(answer);
     mkdirSync(path.dirname(file), { recursive: true });
-    atomicWrite(file, `${JSON.stringify({ ...scriptCheckBinding(video), round, passed: verdict.passed, answers: verdict.answers, failed: verdict.failed.map((each) => each.id), advisory: verdict.advisory.map((each) => each.id) }, null, 2)}\n`);
+    atomicWrite(file, `${JSON.stringify(narrativeRecord(video, verdict, round), null, 2)}\n`);
     this.cleared(state, "verifier");
     if (verdict.passed) {
       state.narrative = { passed: true, rounds: round, advisory: verdict.advisory.map((each) => each.id) };
@@ -3299,6 +3361,54 @@ export class Automation {
     }
     state.narrative = { passed: false, rounds: round, failed: verdict.failed.map((each) => each.id) };
     return this.fixScript(state, `說故事檢查沒過：${verdict.problems.join("；")}`, "the storytelling panel", "narrative");
+  }
+
+  /**
+   * The demonstration check (ticket 2026-10-09-send-a-final-cut-back-to): a slides video's script
+   * is read by the final gate's policy judge before its narration is synthesized, and a script
+   * whose demonstration scores under SCRIPT_MIN_DEMO goes back to the writer with Jev's note, two
+   * times (MAX_PROMPT_FIX_ROUNDS); what still fails after that stops for the owner with the note,
+   * before narration or pictures are paid for. The site decides which videos are asked (an
+   * explainer or a story answers `demo: null` and passes). A video whose narration is already
+   * synthesized is past this point and is not sent back; a site with no stance or no judge leaves
+   * the check to the final gate as before. Only the demonstration is acted on here: the other
+   * answers are the final gate's.
+   */
+  async demoGate(state, status) {
+    if (state.format === "drama" || state.story || state.compilation) return null;
+    // Ever recorded, not only current: a narration made stale later (a line edited after the owner
+    // sent the audio back, a lexicon reading changed at the final cut) was paid for, and so may the
+    // pictures be, so the script is not sent back from there.
+    if (existsSync(path.join(this.workdir(state.slug), "timeline.json")) || status.steps.some((step) => step.id === "narration synthesized" && step.done)) return null;
+    const dir = docDir(state.slug, this.ctx.root);
+    const briefFile = path.join(dir, "brief.md");
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const request = policyRequest({ doc: { ...video, slug: state.slug }, brief: existsSync(briefFile) ? readFileSync(briefFile, "utf8") : "" });
+    const script_sha256 = createHash("sha256").update(request.script).digest("hex");
+    const file = path.join(this.workdir(state.slug), ...DEMO_CHECK);
+    let verdict = readJson(file, null);
+    if (verdict?.script_sha256 !== script_sha256) {
+      let answer;
+      try {
+        answer = await this.api.judgePolicy(request);
+      } catch (error) {
+        if (!(error instanceof AutomationError)) throw error;
+        if ((error.status === 409 && error.code === "video_judge_not_enabled") || error.status === 404) return null;
+        if (error.code === RUN_UNCERTAIN) return this.unanswered(state, Object.assign(error, { stage: "judge", unit: "Jev's demonstration check" }));
+        if (error.who === "owner") throw error;
+        return this.defer(state, `Jev could not check the script's demonstration (${error.message})`, { what: "judge", everyone: Boolean(everyones(error)) });
+      }
+      if (typeof answer?.passed !== "boolean") return this.defer(state, "Jev checked the script's demonstration without a verdict", { what: "judge" });
+      const demo = typeof answer.demo === "number" ? answer.demo : null;
+      const note = typeof answer.note === "string" && answer.note.trim() ? answer.note.trim() : `有示範 ${demo?.toFixed(2) ?? "—"}`;
+      verdict = { script_sha256, demo, passed: demo === null || demo >= SCRIPT_MIN_DEMO, note, checked_at: this.ctx.now().toISOString() };
+      mkdirSync(path.dirname(file), { recursive: true });
+      atomicWrite(file, `${JSON.stringify(verdict, null, 2)}\n`);
+      this.cleared(state, "judge");
+      if (verdict.passed) return `${state.slug}: Jev found a demonstration in the script (${verdict.note})`;
+    }
+    if (verdict.passed) return null;
+    return this.fixScript(state, `示範不足（有示範低於 ${SCRIPT_MIN_DEMO}）：${verdict.note}`, "Jev", "demo");
   }
 
   /** series.json as lint reads it (a brand story is known by its `kind`), or null. */
@@ -3487,10 +3597,15 @@ export class Automation {
     // The retakes are spent and Jev still hears some lines wrong: the listener rewords those
     // lines, they are retaken and checked again, MAX_REWRITE_ROUNDS rounds in all
     // (docs/videos/HANDS-OFF.md §旁白). What is still flagged after that waits for the owner.
+    // The two v2 story pilots have a reviewed six-chapter source of truth. Rewriting only
+    // video.json here would bypass that review and immediately buy TTS for unreviewed words.
+    // Their remaining flags go to the owner instead; a rejection sends the story listener back
+    // through the chapter merge, narrative panel and pilot script receipt before new TTS.
+    const pilotScriptLocked = Object.hasOwn(PILOT_SCRIPT_REFERENCES, state.slug);
     let rounds = 0;
     let rewritten = 0;
     let problems = [];
-    while (check.code === 1 && (state.rewrites ?? 0) < MAX_REWRITE_ROUNDS) {
+    while (check.code === 1 && !pilotScriptLocked && (state.rewrites ?? 0) < MAX_REWRITE_ROUNDS) {
       const round = await this.rewriteNarration(state, problems);
       if (round.stopped) return round.stopped;
       rounds += 1;
@@ -3521,7 +3636,8 @@ export class Automation {
     const unrecorded = await this.pulled(state, "audio", timeline);
     if (unrecorded) return unrecorded;
     const rewriting = rounds ? `; ${rewritten} lines rewritten in ${rounds} rewrite round${rounds === 1 ? "" : "s"}` : "";
-    return `${state.slug}: narration checked (${check.code === 0 ? "Jev passed every line" : "some lines flagged"}${rewriting}) and sent for review`;
+    const pilotFlagged = pilotScriptLocked && check.code === 1 ? "; pilot audio waits for owner review before any script rewrite" : "";
+    return `${state.slug}: narration checked (${check.code === 0 ? "Jev passed every line" : "some lines flagged"}${rewriting}) and sent for review${pilotFlagged}`;
   }
 
   /**
@@ -3549,7 +3665,7 @@ export class Automation {
       .filter((id) => lines.has(id))
       .map((id) => ({ id, text: spokenText(lines.get(id)), heard: check.lines?.[id]?.heard ?? "", jev: typeof check.lines?.[id]?.noul === "number" ? check.lines[id].noul : null }));
     const round = (state.rewrites ?? 0) + 1;
-    const lexicon = readJson(lexiconFile(ctx.root), emptyLexicon());
+    const lexicon = state.story ? videoLexicon({ root: ctx.root, slug: state.slug, workdir, requireSnapshot: true }).lexicon : readJson(lexiconFile(ctx.root), emptyLexicon());
     const payload = { lines: flagged, lexicon: Object.keys(lexicon.terms), round, ...(previousProblems.length ? { previous_problems: previousProblems } : {}) };
     const revised = isLongAnime(state) ? await this.animeRewrite(state, { ...payload, rewrite_lines: flagged }, video, "listener", `audio-rewrite-${round}`) : null;
     const answer = revised ? { lines: [...eachLine(revised.video)].filter(({ line }) => flagged.some((entry) => entry.id === line.id)).map(({ line }) => ({ id: line.id, text: spokenText(line) })) } : await this.stage("listener", state.slug, payload, 16_000, state.format, "rewrite");
@@ -3610,8 +3726,8 @@ export class Automation {
 
   /**
    * The zh-TW captions, cut from the approved narration. The other languages are no longer made
-   * here: the owner chooses them per video once the final cut is approved, and `languages` makes
-   * exactly those (docs/videos/LANGUAGES.md), so the final gate never waits on a translation.
+   * here: the owner chooses them per video, and `languages` makes exactly those only after the
+   * final cut is eligible (docs/videos/LANGUAGES.md). The final gate never waits on a translation.
    */
   async captions(state) {
     const result = await run(this.ctx, ["captions", "--slug", state.slug]);
@@ -3619,8 +3735,29 @@ export class Automation {
     return `${state.slug}: captions written`;
   }
 
+  storyDub(state, video = null) {
+    // The worker's series kind survives a category change on the site. The category also
+    // covers a standalone story, which has no series in auto.json.
+    const listed = video ?? (this.site ?? []).find((each) => each.slug === state.slug);
+    return state.series?.kind === "story" || state.category === "story" || listed?.category === "story";
+  }
+
+  async storyDubReady(state, video = null) {
+    if (!this.storyDub(state, video)) return true;
+    // A saved choice is intent, not permission to spend. The approved local final must be
+    // the exact cut whose current site review passed switchable-caption QA. A stale worker
+    // approval, replaced review or missing field fails closed.
+    const local = await approvalState({ gate: "final", docDir: docDir(state.slug, this.ctx.root), workdir: this.workdir(state.slug) });
+    if (local.status !== "approved" || !local.sha256) return false;
+    const project = await this.api.reviews(state.slug);
+    const final = Array.isArray(project?.reviews)
+      ? project.reviews.find((review) => review.gate === "final" && (review.subject ?? null) === null)
+      : null;
+    return project?.dub_allowed === true && final?.status === "approved" && final.content_sha256 === local.sha256;
+  }
+
   /**
-   * One unit of the languages work (docs/videos/LANGUAGES.md). Once the final cut is approved
+   * One unit of the languages work (docs/videos/LANGUAGES.md). Once the final cut is eligible
    * and the owner has chosen the video's languages on /admin/videos, the choice is copied into
    * the work directory (captions, package, qa and review-push read it there); then a round
    * translates one locale's chosen parts, or makes one locale's dub track (shortening and
@@ -3636,9 +3773,19 @@ export class Automation {
     const slug = state.slug;
     const video = (this.site ?? []).find((each) => each.slug === slug);
     if (!video || video.dropped_at || !video.locales_decided_at) return null;
+    // Story dubs may be selected before a final exists. Keep the whole language round,
+    // including an older retry request, idle until the current final has passed switchable-CC
+    // QA. A list row cannot grant that permission; only a fresh detail answer can.
+    const openStoryRetry = Object.values(video.dub_retries ?? {}).some((retry) => retry?.open);
+    const wantsStoryDub = this.storyDub(state, video) && (
+      Object.values(video.locales ?? {}).some((choice) => choice?.dub) || openStoryRetry
+    );
+    if (wantsStoryDub && !(await this.storyDubReady(state, video))) return null;
     // The owner's requests to make a given-up dub again come first (docs/videos/DUBS.md §再做一次).
     const asked = await this.dubRetries(state, video);
     if (asked) return asked;
+    // A retry's dry run can outlive the final review it started under.
+    if (wantsStoryDub && openStoryRetry && !(await this.storyDubReady(state, video))) return null;
     const dir = docDir(slug, ctx.root);
     const workdir = this.workdir(slug);
     if (!existsSync(path.join(dir, "video.json"))) return null;
@@ -3808,6 +3955,7 @@ export class Automation {
     const dir = docDir(slug, ctx.root);
     const workdir = this.workdir(slug);
     const refuse = (reason) => this.refuseDubRetry(state, locale, theirs.id, reason);
+    if (!(await this.storyDubReady(state, video))) return null;
     if (state.tidied_at) return refuse(tidiedDubRetry(state));
     if (!existsSync(path.join(dir, "video.json"))) return refuse("工人這裡找不到這支影片的腳本，沒辦法重做");
     if ((await approvalState({ gate: "final", docDir: dir, workdir })).status !== "approved") return refuse("成片在工人這裡對不上核准的版本（成片換過或還沒核准），現在做不了配音");
@@ -3832,6 +3980,9 @@ export class Automation {
     // The dry run only notes such lines and exits 0; the real run stops on them before it writes
     // fit.json, and makeDub would spend its shortening rounds on the earlier attempt's list.
     if (/lines have no current translation/.test(dry.out)) return refuse("這個語言有幾句翻譯已經不是現在的版本，要先補上翻譯才能再做配音；這條配音先不做");
+    // The final can be replaced while the retry's free checks run. Do not take the
+    // request, clear its skipped track or buy a take unless it is still eligible.
+    if (!(await this.storyDubReady(state, video))) return null;
     this.fence(slug, `taking the ${locale} dub request`);
     const seen = await report(ctx, this.api, state, this.shownStage(state), { dubRetries: { [locale]: { id: theirs.id, status: "taken" } } });
     const answer = seen?.dub_retries?.[locale];
@@ -3844,13 +3995,14 @@ export class Automation {
   }
 
   /** The end of a take the site confirmed (takeDubRetry): the skip goes, the record says taken, and the dub is made. */
-  startDubRetry(state, locale, id) {
+  async startDubRetry(state, locale, id) {
+    if (!(await this.storyDubReady(state))) return null;
     const workdir = this.workdir(state.slug);
     rmSync(dubArtifacts(workdir, locale).skipped, { force: true });
     state.dub_retries = { ...(state.dub_retries ?? {}), [locale]: { id, status: "taken", at: this.ctx.now().toISOString() } };
     state.notes.push(`${locale} dub asked for again by the owner`);
     saveState(workdir, state);
-    return this.makeDub(state, locale);
+    return this.makeDub(state, locale, { storyChecked: true });
   }
 
   /**
@@ -4007,6 +4159,11 @@ export class Automation {
   async translateLocale(state, locale, parts, video) {
     const { ctx } = this;
     const workdir = this.workdir(state.slug);
+    // A preselected story dub makes translation part of its paid language round. Check the
+    // exact final again before each model request; a replacement between worksheet units or
+    // between translation and caption review must not buy more work for the old cut.
+    const storyDubSelected = this.storyDub(state)
+      && Object.values(readLanguages(workdir)?.locales ?? {}).some((choice) => choice?.dub);
     const sheetResult = await run(ctx, ["i18n-sheet", "--slug", state.slug, "--locale", locale, "--parts", parts.join(",")]);
     if (sheetResult.code !== 0) return this.block(state, `i18n-sheet ${locale} failed: ${sheetResult.out.trim()}`);
     const sheetFile = path.join(workdir, "i18n", `${locale}.todo.json`);
@@ -4027,6 +4184,7 @@ export class Automation {
       if (kept[keys[index]]?.reviewed) continue;
       const label = whole ? locale : `${locale} part ${index + 1} of ${units.length}`;
       const ask = async (stage, worksheet) => {
+        if (storyDubSelected && !(await this.storyDubReady(state))) return null;
         try {
           return await this.stage(stage, state.slug, { locale, parts: whole ? parts : unit.parts, worksheet: withoutContext(worksheet), video: unitVideo(video, unit, whole), ...unitContext(context, unit), ...source }, 32_000, state.format);
         } catch (error) {
@@ -4038,6 +4196,7 @@ export class Automation {
       let draft = kept[keys[index]]?.translated ?? null;
       if (!draft) {
         const translated = await ask("translator", unit);
+        if (translated === null) return null;
         if (!Array.isArray(translated.worksheet?.lines)) return this.retryLater(state, "translator", `the ${label} translation returned no worksheet`);
         draft = keptWorksheet(translated.worksheet, unit, locale);
         const gaps = unitGaps(draft, unit);
@@ -4049,6 +4208,7 @@ export class Automation {
       // A review without its own worksheet leaves the translation kept, unreviewed, for the next
       // round's reviewer: it never goes in as if it had been read.
       const reviewed = await ask("caption_reviewer", draft);
+      if (reviewed === null) return null;
       if (!Array.isArray(reviewed.worksheet?.lines)) return this.retryLater(state, "caption_reviewer", `the ${label} review returned no worksheet; the translation waits for its review`);
       const checked = keptWorksheet(reviewed.worksheet, unit, locale, draft);
       const gaps = unitGaps(checked, unit);
@@ -4105,10 +4265,17 @@ export class Automation {
    * request whose answer was lost (speechUncertain) blocks the video: the locale is not given up
    * for a request that may well have worked, nor bought again without the owner.
    */
-  async makeDub(state, locale) {
+  async makeDub(state, locale, { storyChecked = false } = {}) {
+    // Re-read just before the first paid take. A previously approved local final alone does
+    // not authorize a story dub; its site review or QA may have changed since languages().
+    if (!storyChecked && !(await this.storyDubReady(state))) return null;
     const { ctx } = this;
     const slug = state.slug;
     const workdir = this.workdir(slug);
+    const guardedSpeech = async (command) => {
+      if (!(await this.storyDubReady(state))) return null;
+      return this.speech(slug, command);
+    };
     const rounds = { shorten: 0, retakes: 0, reword: 0, ...(state.languages?.[locale] ?? {}) };
     const remember = () => {
       state.languages = { ...(state.languages ?? {}), [locale]: rounds };
@@ -4167,17 +4334,24 @@ export class Automation {
     // The lines that kept their earlier take because the retake did not fit (fit.json `kept`).
     let kept = [];
     for (;;) {
-      let made = await this.speech(slug, dubArgs);
+      let made = await guardedSpeech(dubArgs);
+      if (!made) return null;
       while (made.code === 1 && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
         const over = overLines();
         if (!Array.isArray(over) || !over.length) break;
         rounds.shorten += 1;
         remember();
         const shortened = await this.shortenDub(state, locale, over);
+        if (shortened.paused) {
+          rounds.shorten -= 1;
+          remember();
+          return null;
+        }
         if (shortened.stopped) return shortened.stopped;
         // Nothing usable came back: the same windows would only be over again.
         if (!shortened.ids.length) break;
-        made = await this.speech(slug, dubArgs);
+        made = await guardedSpeech(dubArgs);
+        if (!made) return null;
       }
       if (made.code === ctx.EXIT.incomplete) return stopped("dub", made);
       if (made.code === 1) return this.giveUpDub(state, locale, unfit(overLines(), made, shortening()));
@@ -4185,7 +4359,8 @@ export class Automation {
       if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
       if (made.code === 4) return unfinished("dub", made);
       if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
-      let check = await this.speech(slug, checkArgs);
+      let check = await guardedSpeech(checkArgs);
+      if (!check) return null;
       let refit = false;
       while (check.code === 1 && rounds.retakes < MAX_DUB_RETAKE_ROUNDS) {
         rounds.retakes += 1;
@@ -4195,7 +4370,12 @@ export class Automation {
         // line its earlier take back (dub --keep-fitting): that take fitted, only its wording
         // was in doubt, and the locale goes out with those lines named rather than given up.
         const keep = rounds.shorten >= MAX_DUB_SHORTEN_ROUNDS;
-        const redo = await this.speech(slug, [...dubArgs, "--redo", flags, ...(keep ? ["--keep-fitting"] : [])]);
+        const redo = await guardedSpeech([...dubArgs, "--redo", flags, ...(keep ? ["--keep-fitting"] : [])]);
+        if (!redo) {
+          rounds.retakes -= 1;
+          remember();
+          return null;
+        }
         if (redo.code === ctx.EXIT.incomplete) return stopped("dub retake", redo);
         if (redo.code === 4) {
           if (flaggedTakes() === takes) rounds.retakes -= 1;
@@ -4214,7 +4394,8 @@ export class Automation {
         if (redo.code !== 0) return this.block(state, `dub ${locale} retake failed: ${lastLine(redo.out, 2)}`);
         kept = readJson(dubArtifacts(workdir, locale).fit, null)?.kept ?? [];
         if (kept.length) break;
-        check = await this.speech(slug, checkArgs);
+        check = await guardedSpeech(checkArgs);
+        if (!check) return null;
       }
       if (refit) continue;
       if (kept.length) break;
@@ -4222,6 +4403,11 @@ export class Automation {
         rounds.reword += 1;
         remember();
         const reworded = await this.rewordDub(state, locale);
+        if (reworded.paused) {
+          rounds.reword -= 1;
+          remember();
+          return null;
+        }
         if (reworded.stopped) return reworded.stopped;
         // Nothing usable came back: the same words would only be heard wrong again.
         if (reworded.ids.length) continue;
@@ -4292,6 +4478,7 @@ export class Automation {
       .filter((entry) => sources.has(entry.id) && typeof translation.lines?.[entry.id]?.text === "string")
       .map((entry) => ({ id: entry.id, source: sources.get(entry.id), text: translation.lines[entry.id].text, chars: entry.chars, max_chars: entry.max_chars, ...(entry.seconds === undefined ? {} : { seconds: entry.seconds }), window_over_seconds: entry.window_over_seconds }));
     if (!lines.length) return { ids: [], problems: ["no line to shorten has a current translation"] };
+    if (!(await this.storyDubReady(state))) return { paused: true };
     const answer = await this.stage("translator", slug, { locale, lines, video, ...sourceLocale(video) }, 16_000, state.format, "shorten");
     if (!Array.isArray(answer?.lines)) return { stopped: await this.retryLater(state, "translator", `the ${locale} shortening pass answered without a lines array`) };
     this.cleared(state, "translator");
@@ -4361,6 +4548,7 @@ export class Automation {
         return { id, source: sources.get(id), text, heard: String(heard[id]?.heard ?? ""), max_chars: Math.max(budget, [...text].length) };
       });
     if (!lines.length) return { ids: [], problems: ["no flagged line has a current translation"] };
+    if (!(await this.storyDubReady(state))) return { paused: true };
     const answer = await this.stage("translator", slug, { locale, lines, video, ...sourceLocale(video) }, 16_000, state.format, "reword");
     if (!Array.isArray(answer?.lines)) return { stopped: await this.retryLater(state, "translator", `the ${locale} rewording pass answered without a lines array`) };
     this.cleared(state, "translator");

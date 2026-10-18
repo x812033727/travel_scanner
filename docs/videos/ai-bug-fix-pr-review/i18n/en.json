@@ -1,5 +1,5 @@
 {
-  "title": "AI Fixed the Bug. Can You Merge? Three PR Review Gates",
+  "title": "If AI Fixes a Bug, Can You Merge? Three PR Review Gates",
   "description": "The two original tests passed, but splitting 100 cents allocated only 99. Follow a real patch and test run to learn how to review requirements, the diff, and regression before merging.\nThis is a rerunnable local demo, not a production incident or a merged PR.",
   "tags": [
     "AI code review",
@@ -95,20 +95,20 @@
       "text": "If the missing cent affects accounts, green tests still cannot justify a merge."
     },
     "v40017": {
-      "source_hash": "e51d5461d033",
-      "text": "Next, let us inspect the patch AI actually submitted."
+      "source_hash": "edba64b1db7d",
+      "text": "Next, let us look at a local patch we can rerun."
     },
     "v40018": {
       "source_hash": "4e46b4b85d41",
       "text": "The failure is captured in a repeatable acceptance test file."
     },
     "v40021": {
-      "source_hash": "b101ccb58d0a",
-      "text": "I asked Claude Code to fix my own split function to meet the task."
+      "source_hash": "d72eea6dcdf1",
+      "text": "This local bill-splitting example retains the complete diff of the code and tests."
     },
     "v40022": {
-      "source_hash": "4abebf07b951",
-      "text": "It changed code and tests, and all nine of its own tests passed."
+      "source_hash": "05bf5c03119c",
+      "text": "All nine tests passed again after the patch. We will run the post-hoc acceptance tests later."
     },
     "v40023": {
       "source_hash": "d8134ff9d7cb",
@@ -168,7 +168,7 @@
     },
     "v4e2000": {
       "source_hash": "3ac38937e469",
-      "text": "Testing only 100 divided by three could hard-code a special case."
+      "text": "Testing only 100 ÷ 3 may leave the rule hard-coded to that case."
     },
     "v4e2001": {
       "source_hash": "fee80b68f60e",
@@ -271,8 +271,8 @@
       "text": "Invalid amounts and counts are still rejected before allocation."
     },
     "v4e3002": {
-      "source_hash": "4d9b9a341c53",
-      "text": "AI replaced average rounding with a base share and remainder."
+      "source_hash": "b7100231e2ac",
+      "text": "This patch replaces rounding the average with a base share and a remainder."
     },
     "v4e3003": {
       "source_hash": "a3bb5b3937da",
@@ -440,11 +440,11 @@
     },
     "v40108": {
       "source_hash": "1c78309ab1d0",
-      "text": "Regression means fixing the new bug while preserving old rules."
+      "text": "Regression testing checks that the bug fix preserves the old rules."
     },
     "v40109": {
-      "source_hash": "01e87cdac3f2",
-      "text": "Input validation is especially easy to drop during a rewrite."
+      "source_hash": "6161cda31b6f",
+      "text": "Input validation may also be accidentally removed during a rewrite."
     },
     "v40112": {
       "source_hash": "6db86cb289a7",
@@ -504,7 +504,7 @@
     },
     "v40126": {
       "source_hash": "e71ca6fa1593",
-      "text": "Even if this small demo passes acceptance, it cannot replace business judgment."
+      "text": "This small demo passed acceptance, but cannot replace business judgment."
     },
     "v40127": {
       "source_hash": "da2af025c9f9",

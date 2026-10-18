@@ -333,8 +333,8 @@ class ProjectSummary(BaseModel):
     # What the drama route's generations have cost so far, from the media jobs (any month).
     media_usd: float = 0.0
     clip_seconds: int = 0
-    # The languages the owner chose after the final cut and what of each, empty until they
-    # decide; when they first decided; where each chosen part stands, from the languages reviews;
+    # The languages the owner chose and what of each, empty until they decide (brand stories
+    # may preselect before the final cut); when they first decided; where each chosen part stands;
     # and whether the video may be scheduled: its upload confirmation approved, its languages
     # decided and every chosen part ready, skipped or uploaded, and no YouTube id yet
     # (docs/videos/LANGUAGES.md).
@@ -375,6 +375,12 @@ class ProjectSummary(BaseModel):
 
 class ProjectOut(ProjectSummary):
     reviews: list[ReviewOut]
+    # Whether the current cut may start dub production. A story needs an approved final with
+    # switchable-caption QA bound to its hash; saved intent alone never grants this.
+    dub_allowed: bool = False
+    # A brand story can save the owner's dub choice before that final is ready. Distinct from
+    # dub_allowed so an older client or worker cannot confuse preselection with permission to buy.
+    story_dub_preselectable: bool = False
     # Set only in the answer to a pasted YouTube address without a publish time: why the
     # linked channel gave none (still private, not in the channel, not linked...), or None
     # when it gave one or the owner typed one (admin_service.link_youtube).

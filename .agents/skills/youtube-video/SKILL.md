@@ -23,7 +23,7 @@ metadata:
 | **全自動** | 深色投影片＋台灣口音合成旁白＋繁中 CC，其他語言（標題說明、CC、配音）由站主每支勾選，8 分鐘以上（目標 8–12 分鐘，超過上緣沒關係） | 代理企劃、撰稿、查核，工具合成旁白、畫面與成片；站主選大綱、聽旁白、看成片、自己上傳 | 下面「全自動路線」與 `.agents/skills/youtube-video/references/automated.md` |
 | **AI 漫劇**（單集與作品） | AI 生成的鏡頭片段＋台灣口音旁白與角色配音＋配樂＋可開關繁中 CC（不燒字幕）；先完成中文版，其他語言音軌與 CC 另依核定製作規格分期，2–4 分鐘一集；單集是一集的作品，長篇是一部約 100 集、分篇章的原創故事，一集接一集地做，角色設定圖與人物表跨集沿用 | 站主發起，在兩個關卡討論並核准：**文件**（單集的故事聖經；作品的設定集、總綱、每篇細綱）與**劇本**；之後的設定圖、分鏡由 judge 決定（`auto_pick_look`、`auto_approve_storyboard` 開了才自動，預設關）、旁白 Jev 全過與成片自動品管自動核准；出錯才找站主；站主再選語言、自己上傳。代理或工人規劃文件、寫劇本與分鏡、依細綱寫每一集並自動接續，工具生成設定圖、關鍵影格、片段、音樂並合成 | `.agents/skills/youtube-video/references/drama.md`（每一集的步驟；設計在 `docs/videos/DRAMA.md`）與 `.agents/skills/youtube-video/references/series.md`（作品的文件、討論串、一致性；設計在 `docs/videos/SERIES.md`）；一條流程與討論在 `docs/videos/DRAMA-FLOW.md` |
 | **一鍵合集** | 一部約兩小時（30–480 分鐘可設）一口氣看完的原創爽文漫劇：六個題材預設、節奏規格（鉤子、爽點、懸念）、混合畫面（四成片段、其餘關鍵影格加運鏡），全部集數做完接成一支長片，1080p 成片從後台下載 | 站主在後台按「一鍵開拍」（題材、主角、長度、畫面等級）、最後上傳與選上架時間；文件由查核模型判、伺服器依規則核准或退回，每集免關卡，工人做合集 | `.agents/skills/youtube-video/references/series.md` 的「合集作品（一鍵）」（設計在 `docs/videos/BINGE.md`） |
-| **品牌故事** | 12–15 分鐘的非虛構短片：只有旁白、約 90 張卡通靜態圖加緩慢運鏡、燒錄字幕；講一個品牌、日用品或天天在用的標準怎麼來、生意怎麼運作。影片是漫劇，100 個故事是一部 `kind: "story"` 作品的 100 集 | 企劃清單事先查核、由站主匯入；主機工人逐章撰稿、逐章查核、逐章聽眾審稿（一次呼叫一章），之後照漫劇的步驟做到上架確認，全程免關卡；站主只決定上架 | `.agents/skills/youtube-video/references/story.md`（設計在 `docs/videos/STORY.md`，企劃在 `docs/videos/story-plans/brand-stories-100`） |
+| **品牌故事** | 非虛構旁白短片：新版約 10 分鐘、MiniMax 可愛插圖加緩慢運鏡、可關閉繁中 CC；成片核准後可手動選英／日／韓配音。原 12–15 分鐘與燒錄字幕規格保留在 `STORY.md` 作歷史設計。影片是漫劇，100 個故事是一部 `kind: "story"` 作品的 100 集 | 企劃清單事先查核、由站主匯入；主機工人逐章撰稿、逐章查核、逐章聽眾審稿（一次呼叫一章），之後照漫劇的步驟做到上架確認，全程免關卡；配音不自動選，站主決定語言與上架 | `.agents/skills/youtube-video/references/story.md`（設計在 `docs/videos/STORY.md`，企劃在 `docs/videos/story-plans/brand-stories-100`） |
 | **人工錄製** | 站主出鏡或配音、螢幕錄影、剪輯 | 代理交稿子、分鏡、字卡、上架文字；站主錄音、錄影、剪輯 | 下面「人工錄製路線」 |
 | **Shorts** | 1080×1920、25–55 秒的直式短片：一句一張繁中字卡加頻道聲音，沒有章節與縮圖；三條內容線：AI 實測、長片精華、漫劇直式短篇 | 實測由主機工人照題庫自己做（凍結題目、受測模型各跑一次、照證據撰稿與查核）；精華本機用 `from-episode` 從長片切、別的工具做的成片用 `import`；12 項自動品管全過就核准，站上照月曆與站主的自動上架授權排上 YouTube；稽核通過前站主每週把一批 mp4 拖進 Studio | `.agents/skills/youtube-video/references/shorts.md`（設計在 `docs/videos/SHORTS.md`） |
 
@@ -101,7 +101,7 @@ metadata:
 | 9 | `package`（含上傳包檢查）→ `review-push --gate publish` 送完整上傳包 → 站主照 `UPLOAD.md` 在 Studio 上傳成「私人」、在後台貼上網址與上架時間 | 工具、站主 | 4 項全過就自動核准；影片 ID 由工人寫回 `video.json` |
 | 10 | 語言（`docs/videos/LANGUAGES.md`）：站主在影片頁勾每個語言要哪些部件（標題說明、CC、配音）或「只出繁體中文」→ 工人只做勾了的（翻譯、審稿；配音含縮短與重錄）→ `captions` → `package` → `review-push --gate languages` | 站主、工具、翻譯代理 | 都做好影片才進「可以上架」、排程才送出；有配音的卡片要站主在 Studio 上傳後按「我已經在 Studio 傳好這些配音」 |
 
-`status --slug <SLUG>` 隨時印出做到哪一步、下一個指令是什麼。核准綁檔案雜湊：稿子或旁白改了，舊的核准自動失效，後面的指令會以結束碼 3 拒絕，要重新 `review-push`。後台頁用不了時，才用有選項的提問問站主，再 `approve --gate …` 記下。代理在本機手動推的影片（不是主機工人做的），final 關卡一律 `review-push --gate final --manual-review`，留給站主自己看：一支手動推的片曾在 43 分鐘內自動過三個關卡，站主看了判定沒有價值；伺服器還分不出兩者（票 `tasks/open/2026-10-11-hand-driven-film-approved-on-its.md`）。
+`status --slug <SLUG>` 隨時印出做到哪一步、下一個指令是什麼。核准綁檔案雜湊：稿子或旁白改了，舊的核准自動失效，後面的指令會以結束碼 3 拒絕，要重新 `review-push`。後台頁用不了時，才用有選項的提問問站主，再 `approve --gate …` 記下。代理在本機手動推的影片（不是主機工人做的）每一關都等站主：`review-push` 看到工作目錄沒有工人的 `auto.json`，就把送審標成 `hand_pushed`，網站不會自動核准任何一關；一支手動推的片曾在 43 分鐘內自動過三個關卡，站主看了判定沒有價值（`docs/videos/HANDS-OFF.md` §手動推送的影片一律等站主，票 `tasks/done/2026-10-11-hand-driven-film-approved-on-its.md`）。
 
 ## 人工錄製路線
 

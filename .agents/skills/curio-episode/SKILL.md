@@ -61,6 +61,8 @@ peaked cap raising a brass telescope to one eye, rigging behind him, light from 
 | 物件寫成卡通裡會有的樣子：a plain canvas tent、a blank manila folder | 在提示詞或 `look` 裡寫年代材質、地形學細節、「寫實」要求：會漂成照片或油畫 |
 | 字一律不畫，寫 blank sign、blank page；字由卡片蓋上 | 要模型畫出可讀的文件、車票、招牌 |
 | 白天、室內、夜景輪替（夜景最多一半）；景別遠、中、特寫輪替 | 懸疑題材全部寫成夜晚 |
+| 光寫成柔和、陰天、檯燈這類不帶顏色的字：mild、overcast、soft grey sky、lamp | 寫 sunny、bright midday sun、green、leafy、summer：評審照系列色盤（夜空藍、牛皮紙黃、褪色青）判畫風，這些字畫出飽和的綠和藍，H04–H06 有五張因此不過 |
+| 沒有人的畫面改成一個人在那個地方做事 | 只寫風景加「the only shapes are …」：H04–H06 重畫時仍有三張在樹梢、雪堆後面冒出小人頭 |
 
 連續三張同一種運鏡是 lint 錯誤；提示詞裡出現 cartoon、chibi、navy 這類畫風字是警告（抄 `look`）。
 
@@ -92,7 +94,7 @@ US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限�
 
 ## 每一集的順序與檢查
 
-1. 大綱（站主選）→ 稿子（`loops`、開場一個場景加鉤子）→ 查核 → 盲評 `narrative` 11 題全過。
+1. 大綱（站主選）→ 稿子（`loops`、開場一個場景加鉤子）→ 查核 → 盲評 `narrative` 每一題都過。
 2. `node tools/video/cli.mjs lint --slug <SLUG>`：**0 錯誤**，包含這份 skill 的系列檢查。lint 紅了先修稿
    或分鏡，不要繞過。
 3. 旁白（頻道聲音）→ `check-audio` → 站主聽。

@@ -1,8 +1,9 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
+import { VideoBrowser } from "./admin-video-browser";
 import { AdminVideoSeries } from "./admin-video-series";
-import { nextFreeSlot, planSlots, STORY_IMPORT_MAX_BYTES, storyRedo } from "./admin-video-stories";
+import { AdminVideoStorySeries, nextFreeSlot, planSlots, STORY_IMPORT_MAX_BYTES, storyRedo } from "./admin-video-stories";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
@@ -102,7 +103,7 @@ const SUMMARY_KEYS = ["id", "category", "region", "subject", "publish"];
 const light = (each: Story) => ({ ...each, beats: Object.fromEntries(Object.entries(each.beats).filter(([key]) => SUMMARY_KEYS.includes(key))) });
 type StubOptions = {
   series?: Row; listed?: unknown[]; linked?: boolean; importAnswer?: (body: Row) => Response; restoreRefused?: boolean; planRefused?: boolean;
-  more?: Story[]; redoRefused?: { code: string; detail: string };
+  more?: Story[]; redoRefused?: { code: string; detail: string }; seriesRefused?: boolean;
 };
 /**
  * The site as the story pages see it: the story list, the series (whole, or each story's list
@@ -120,6 +121,7 @@ function stubFetch(options: StubOptions = {}) {
     const body = init?.body ? JSON.parse(String(init.body)) as Row : undefined;
     calls.push({ url, method, body });
     const json = (value: unknown, status = 200) => Promise.resolve(Response.json(value, { status }));
+    if (url.includes("/admin/videos/browse?")) return json({ items: [], total: 0, page: 1, pages: 0, facets: { category: [{ code: "story", count: 0 }], state: [] } });
     if (url.endsWith("/admin/video-automation/series?kind=story")) return json({ series: options.listed ?? [current] });
     if (url.includes("/admin/video-automation/series?kind=")) return json({ series: [] });
     if (url.endsWith("/stories/import")) return Promise.resolve(options.importAnswer ? options.importAnswer(body ?? {}) : Response.json(importReport({ dry_run: !body?.apply, written: Boolean(body?.apply) })));
@@ -139,6 +141,7 @@ function stubFetch(options: StubOptions = {}) {
       return json(episodes().find((each) => each.number === Number(one[1])));
     }
     if (url.includes("/admin/video-automation/series/brand-stories")) {
+      if (options.seriesRefused && method === "GET") return json({ code: "internal_error", detail: "伺服器暫時無法回應" }, 503);
       if (method === "PATCH") current = { ...current, ...body };
       return json({ ...current, docs: [], episodes: url.endsWith("?beats=summary") ? episodes().map(light) : episodes() });
     }
@@ -159,9 +162,9 @@ const loadedPlan = async (id: string) => {
 };
 
 const renderTab = (capabilities = MANAGER, roles: string[] = [], opened: string[] = []) => render(<AdminOperationsProvider bootstrap={bootstrap(capabilities, roles)}>
-  <AdminVideoSeries onOpenVideo={(slug) => opened.push(slug)} />
+  <VideoBrowser onOpen={(slug) => opened.push(slug)} />
 </AdminOperationsProvider>);
-const openStories = () => window.history.replaceState(null, "", "/?tab=drama&series=brand-stories");
+const openStories = () => window.history.replaceState(null, "", "/?tab=reviews&category=story&story_series=brand-stories");
 /** The story rows, not the lists nested in an opened plan. */
 const rows = () => [...screen.getByRole("list", { name: "故事清單" }).querySelectorAll(":scope > li")] as HTMLElement[];
 const row = (id: string) => rows().find((item) => item.textContent?.startsWith(id)) as HTMLElement;
@@ -175,6 +178,7 @@ const wallClock = (iso: string) => {
 
 beforeEach(() => {
   vi.useFakeTimers({ now: NOW, toFake: ["Date"] });
+  window.history.replaceState(null, "", "/?tab=reviews&category=story");
 });
 
 afterEach(() => {
@@ -227,7 +231,41 @@ describe("the next free publishing slot", () => {
 });
 
 describe("AdminVideoStorySeries and StorySeriesPage", () => {
-  it("shows a story series on the drama tab with today's count, what is in the making and waiting for upload, and why no story starts", async () => {
+  it("keeps the story list and import out of Drama", async () => {
+    const { calls } = stubFetch();
+    window.history.replaceState(null, "", "/?tab=drama");
+    render(<AdminOperationsProvider bootstrap={bootstrap(MANAGER)}>
+      <AdminVideoStorySeries onOpenSeries={() => undefined} />
+    </AdminOperationsProvider>);
+    expect(screen.queryByRole("region", { name: "品牌故事" })).toBeNull();
+    expect(screen.queryByRole("form", { name: "匯入企劃清單" })).toBeNull();
+    expect(calls.some((call) => call.url.endsWith("/admin/video-automation/series?kind=story"))).toBe(false);
+  });
+
+  it("shows Brand Stories when Videos is the implicit default tab", async () => {
+    stubFetch();
+    window.history.replaceState(null, "", "/?category=story");
+    renderTab();
+    expect(await screen.findByRole("region", { name: "品牌故事" })).toBeTruthy();
+    expect(await screen.findByRole("form", { name: "匯入企劃清單" })).toBeTruthy();
+  });
+
+  it("sends an old Drama story bookmark to Videos with the same series", async () => {
+    stubFetch();
+    window.history.replaceState(null, "", "/?tab=drama&series=brand-stories");
+    render(<AdminOperationsProvider bootstrap={bootstrap(READER)}>
+      <AdminVideoSeries onOpenVideo={() => undefined} />
+    </AdminOperationsProvider>);
+    await waitFor(() => {
+      const params = new URL(window.location.href).searchParams;
+      expect(params.get("tab")).toBe("reviews");
+      expect(params.get("category")).toBe("story");
+      expect(params.get("story_series")).toBe("brand-stories");
+      expect(params.has("series")).toBe(false);
+    });
+  });
+
+  it("shows a story series under Videos / Brand Stories with today's count and the production hold", async () => {
     const held = { quota: { ...quota, started_today: 2, hold: "per_day", hold_detail: "今天（台北時間 09/28）已經開始 2 支，每日上限 2 支" } };
     const { calls } = stubFetch({ series: held });
     renderTab();
@@ -239,7 +277,7 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     expect(calls.some((call) => call.url.endsWith("/admin/video-automation/series?kind=story"))).toBe(true);
 
     fireEvent.click(card);
-    await waitFor(() => expect(window.location.search).toContain("series=brand-stories"));
+    await waitFor(() => expect(window.location.search).toContain("story_series=brand-stories"));
     const heading = await screen.findByRole("heading", { name: /品牌故事：日常背後的生意/ });
     expect(heading.textContent).toContain("製作中");
     expect(screen.getByText(/8 個故事 · 完成 4 · 每支約 13 分鐘/).textContent).toContain("圖片模型 gemini-3.1-flash-image");
@@ -253,6 +291,52 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     expect(screen.queryByRole("region", { name: "文件" })).toBeNull();
     expect(screen.queryByRole("button", { name: "現在開始下一集" })).toBeNull();
     expect(screen.queryByRole("checkbox", { name: "免關卡" })).toBeNull();
+    expect(screen.queryByRole("region", { name: "全部影片" })).toBeNull();
+    expect(calls.some((call) => call.url.includes("/admin/videos/browse?") && call.url.includes("category=story"))).toBe(true);
+
+    fireEvent.click(screen.getByRole("button", { name: "回作品列表" }));
+    await waitFor(() => expect(window.location.search).not.toContain("story_series="));
+    expect(await within(await screen.findByRole("region", { name: "品牌故事" })).findByRole("button", { name: /品牌故事：日常背後的生意/ })).toBeTruthy();
+    expect(screen.getByRole("region", { name: "全部影片" })).toBeTruthy();
+  });
+
+  it("normalizes a bookmarked story page to the story category and leaves it when another category is chosen", async () => {
+    stubFetch();
+    window.history.replaceState(null, "", "/?tab=reviews&story_series=brand-stories");
+    renderTab();
+    await waitFor(() => expect(window.location.search).toContain("category=story"));
+    await screen.findByRole("list", { name: "故事清單" });
+    expect(screen.queryByRole("group", { name: "分類" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "回作品列表" }));
+    await screen.findByRole("region", { name: "全部影片" });
+    fireEvent.click(within(screen.getByRole("group", { name: "分類" })).getByRole("button", { name: "教學實作" }));
+    await waitFor(() => expect(window.location.search).toContain("category=tutorial"));
+    expect(window.location.search).not.toContain("story_series=");
+    expect(screen.queryByRole("list", { name: "故事清單" })).toBeNull();
+    expect(screen.getByRole("region", { name: "全部影片" })).toBeTruthy();
+  });
+
+  it("keeps Brand Stories reachable before the first video is produced", async () => {
+    stubFetch({ listed: [] });
+    window.history.replaceState(null, "", "/?tab=reviews");
+    renderTab();
+    await screen.findByText("還沒有影片送審");
+    const category = within(screen.getByRole("group", { name: "分類" })).getByRole("button", { name: "品牌故事" });
+    expect(category).toHaveProperty("disabled", false);
+    fireEvent.click(category);
+    expect(await screen.findByRole("form", { name: "匯入企劃清單" })).toBeTruthy();
+    expect(window.location.search).toContain("category=story");
+  });
+
+  it("offers retry and a route back when a story series cannot be read", async () => {
+    const { options } = stubFetch({ seriesRefused: true });
+    openStories();
+    renderTab();
+    expect(await screen.findByText("作品讀不到")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "回作品列表" })).toBeTruthy();
+    options.seriesRefused = false;
+    fireEvent.click(screen.getByRole("button", { name: "再試一次" }));
+    expect(await screen.findByRole("list", { name: "故事清單" })).toBeTruthy();
   });
 
   it("lists every story from one read, filters by category and status, and opens one plan read-only", async () => {
@@ -378,13 +462,15 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     expect(planReads(calls, 2)).toBe(2);
   });
 
-  it("keeps a drama series' whole read: its beats are the chapter outlines the page shows", async () => {
+  it("routes a non-story series to the Drama tab without showing story controls", async () => {
     const { calls } = stubFetch({ series: { kind: "long" } });
     openStories();
     renderTab();
-    fireEvent.click(await screen.findByRole("button", { name: "暫停" }));
-    await waitFor(() => expect(seriesReads(calls)).toHaveLength(2));
-    expect(seriesReads(calls)).toEqual(["", ""]);
+    await waitFor(() => expect(window.location.search).toContain("tab=drama"));
+    expect(window.location.search).toContain("series=brand-stories");
+    expect(window.location.search).not.toContain("story_series=");
+    expect(screen.queryByRole("button", { name: "暫停" })).toBeNull();
+    expect(seriesReads(calls)).toEqual([""]);
     expect(calls.some((call) => call.url.includes("/episodes/") && call.method === "GET")).toBe(false);
   });
 
@@ -426,8 +512,8 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     await waitFor(() => expect(calls.some((call) => call.url.endsWith("/admin/video-automation/series/brand-stories/episodes/7/restore") && call.method === "POST")).toBe(true));
     expect(within(row("T02")).queryByRole("button", { name: "恢復" })).toBeNull();
     expect(row("T02").textContent).toContain("開始做過、影片已放棄，可以重做一次");
-    // A story series has no compilation: after the first read, the page stops asking for one.
-    expect(calls.filter((call) => call.url.includes("/admin/videos?series=")).length).toBe(1);
+    // A story series has no compilation; the Videos workspace never asks for one.
+    expect(calls.some((call) => call.url.includes("/admin/videos?series="))).toBe(false);
   });
 
   it("says why the server refused to bring a story back", async () => {
@@ -554,7 +640,7 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     await waitFor(() => expect(posts()).toHaveLength(2));
     expect(posts()[1].body).toEqual({ file: storyFile, apply: true, limit: 2, episodes_per_day: 1 });
     // Written, the page opens the series the import created.
-    await waitFor(() => expect(window.location.search).toContain("series=brand-stories"));
+    await waitFor(() => expect(window.location.search).toContain("story_series=brand-stories"));
     expect(await screen.findByRole("heading", { name: /品牌故事：日常背後的生意/ })).toBeTruthy();
   });
 

@@ -128,6 +128,8 @@ async def transcribe(
     client: httpx.AsyncClient | None = None,
     terms: Sequence[str] = (),
     language: str = NARRATION_LANGUAGE,
+    max_output_tokens: int | None = None,
+    usage_out: dict[str, Any] | None = None,
 ) -> str:
     """The words in one clip, as Gemini hears them, written in ``language``'s script; ``terms``
     are English words it may say."""
@@ -158,7 +160,10 @@ async def transcribe(
                 ],
             }
         ],
-        "generationConfig": {"temperature": 0},
+        "generationConfig": {
+            "temperature": 0,
+            **({"maxOutputTokens": max_output_tokens} if max_output_tokens is not None else {}),
+        },
     }
     try:
         # ``hotspot_guide_gemini_base_url`` is pinned to the official host in Settings.
@@ -189,6 +194,10 @@ async def transcribe(
             response.headers.get("Retry-After"),
         )
     payload = response.json()
+    if usage_out is not None and isinstance(payload, dict):
+        metadata = payload.get("usageMetadata")
+        if isinstance(metadata, dict):
+            usage_out.update(metadata)
     try:
         return gemini_output_text(payload if isinstance(payload, dict) else {}).strip()
     except ValueError as error:
@@ -223,10 +232,16 @@ async def judge(
     lines: list[dict[str, str]],
     client: httpx.AsyncClient | None = None,
     language: str = NARRATION_LANGUAGE,
+    usage_out: dict[str, Any] | None = None,
+    pilot_budgeted: bool = False,
 ) -> dict[str, float]:
     """Jev's probability, per line id, that the recording says the intended words; ``language``
     is what the lines are written in."""
-    jev: JevClient = jev_client(settings, client)
+    jev: JevClient = (
+        jev_client(settings, client, retry_refusals=False)
+        if pilot_budgeted
+        else jev_client(settings, client)
+    )
     try:
         if not await consume_jev_call(redis, settings):
             raise CheckUnavailable(
@@ -235,7 +250,9 @@ async def judge(
                 "今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再檢查",
             )
         state: dict[str, Any] = {"language": language, "lines": lines}
-        answers, _usage = await jev.ask(state, judge_questions([line["id"] for line in lines]))
+        answers, usage = await jev.ask(state, judge_questions([line["id"] for line in lines]))
+        if usage_out is not None:
+            usage_out.update(usage)
     finally:
         await jev.close()
     result: dict[str, float] = {}

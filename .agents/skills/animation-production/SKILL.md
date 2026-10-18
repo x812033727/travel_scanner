@@ -30,9 +30,11 @@ metadata:
 | 一版做出來之後怎麼診斷、怎麼停 | `.agents/skills/youtube-video/references/visual-quality.md` |
 | 每個常數的出處、逐層算例、雜湊定義、估價與實際的已知落差 | `.agents/skills/animation-production/references/cost-model.md` |
 | 每個階段真正查的前提、結束碼、dry-run、STOP、快取、外部片段用 `clips import` 匯入（唯一的一份程序） | `.agents/skills/animation-production/references/stage-preconditions.md` |
-| 60 條錯誤：階段、哪個檢查抓、漏掉多少錢、預防（#51–#60 是規劃與網頁路線） | `.agents/skills/animation-production/references/error-catalogue.md` |
+| 83 條錯誤：階段、哪個檢查抓、漏掉多少錢、預防（#51–#66 是規劃、網頁路線與提示詞，#67–#83 是 Hailuo 網頁整集製作） | `.agents/skills/animation-production/references/error-catalogue.md` |
 | 三條路線的方案、價目、隊列、版權、操作步驟 | `.agents/skills/animation-production/references/providers-and-plans.md` |
 | 使用者指定 Hailuo／Kling 內建瀏覽器：本次工具能力、首格、三鏡 pilot、送出與下載收據 | `.agents/skills/animation-production/references/browser-production.md` |
+| pilot 之後用 Hailuo 網頁把整集（數百鏡）做完：版本化授權檔、只增不改的帳本與租約、誰跑哪支腳本、每包迴圈（建包、首格、無水印取檔、QA、影片、D 軌、交接）、瀏覽器實務、修圖路線與變更單、收工的五個數字 | `.agents/skills/animation-production/references/hailuo-episode-operations.md`（《偶的江湖》第一集，2026-10-09 → 10-15） |
+| 換帳號或換 agent（Claude／Codex）接手 Hailuo 網頁短劇：頁面驅動一次送一整批首格與片段、新帳號從零的設定（起始/結束幀、4s）、打氣迴圈、掉出清單的片段怎麼撈、已踩過的坑、錄音／組片／匯入／合集的本機腳本 | `.agents/skills/animation-production/references/hailuo-batch-driver.md`（《種田娶妻打天下》第 1–20 集，2026-10-16 → 10-18） |
 | 指定「真一隻布袋喵」的鏡位與畫面感 | `.agents/skills/animation-camera/references/budaimiao-style.md`（沿用其中的觀察範圍與待驗項目） |
 | 檢討表單與 2026-10-03 試拍的填法 | `.agents/skills/animation-production/references/post-mortem.md` |
 
@@ -172,7 +174,7 @@ judge 的 `problems` 文字先分類，再決定花不花第二次的錢：
 
 ## 錯誤目錄：最貴的十二條
 
-完整 50 條、按階段分組，在 `.agents/skills/animation-production/references/error-catalogue.md`（第 9 條是 0 元但整集排隊，留著）。
+完整 83 條、按階段分組，在 `.agents/skills/animation-production/references/error-catalogue.md`（第 9 條是 0 元但整集排隊，留著）。#67 起是 Hailuo 網頁整集製作的失敗型態（《偶的江湖》第一集，2026-10-09 → 10-15），最貴的是 #67 拿畫廊的浮水印圖當首格（6 支 312 點作廢、24 支重買）與 #74 買完才發現台詞比片長長（14 支重買 1,116 點）；整集的做法在 `.agents/skills/animation-production/references/hailuo-episode-operations.md`。
 
 | # | 錯誤 | 階段 | 誰抓 | 漏掉的代價 | 預防 |
 | --- | --- | --- | --- | --- | --- |

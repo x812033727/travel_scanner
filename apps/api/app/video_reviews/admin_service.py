@@ -52,9 +52,11 @@ from app.video_automation.anime_policy import (
 from app.video_automation.judge import (
     PACKAGE_AUTO_APPROVED_NOTE,
     QA_AUTO_APPROVED_NOTE,
+    QA_ITEMS,
     SCRIPT_AUTO_APPROVED_NOTE,
     SHORTS_PACKAGE_AUTO_APPROVED_NOTE,
     SHORTS_QA_AUTO_APPROVED_NOTE,
+    demo_asked_of,
     pick_choice,
     pick_reason,
     video_series_kind,
@@ -146,14 +148,9 @@ CHOICE_GATES = ("outline", "look")
 CHOICE_PROMPTS = {"outline": "請從 {} 選一個大綱", "look": "請從 {} 選一張角色設定圖"}
 # A languages batch with nothing for the owner to upload is approved as it arrives.
 LANGUAGES_AUTO_APPROVED_NOTE = "這一批沒有要你上傳的配音，依規則自動核准"
-# The drama categories whose dub the owner may choose (docs/videos/DUBS.md): a cute explainer is
-# told by the narrator alone, so its dub is a slides video's. The server sees the project row, not
-# the script, so it decides by category; the language panel greys out the box from the same set
-# (apps/web/components/admin-video-reviews.tsx DUBBABLE_DRAMA_CATEGORIES), and the dub tool reads
-# the script and has the last word (tools/video/dubs/cli.mjs spokenByCharacter): a relabelled
-# drama whose characters speak is refused there and recorded as a skipped dub. A brand story is
-# narrator-only too but burns its zh-TW subtitles into the picture; whether a dub may play over
-# them is the owner's call (task 2026-10-13-should-brand-stories-be-dubbed-over), so it is not here.
+# A narrator-only explainer may use the existing drama dub path. A brand story needs additional
+# proof from its current approved final cut that zh-TW is switchable CC, checked separately below.
+# The dub tool still refuses a script with speaking characters.
 DUBBABLE_DRAMA_CATEGORIES = frozenset({"explainer"})
 EPOCH = datetime.min.replace(tzinfo=UTC)
 ANIME_RUNTIME_KEYS = (
@@ -775,13 +772,28 @@ async def upsert_project(
     # A stale or unrelated report cannot consume a newer retry request.
     if payload.retry_acknowledged_id == project.retry_request_id:
         project.retry_acknowledged_id = payload.retry_acknowledged_id
-    # The worker's word on the owner's dub retry requests: it takes one, or says why it will
-    # not. Only the request it names by id moves, and the answer below shows what came of it,
-    # so the worker starts nothing the site did not agree to (docs/videos/DUBS.md §再做一次).
+    # A story cut can change between the worker's readiness read and this report. Never
+    # acknowledge a paid retry take after its exact switchable-CC final becomes ineligible.
+    retry_report = payload.dub_retries
+    if (
+        isinstance(retry_report, dict)
+        and any(
+            isinstance(item, dict) and item.get("status") == "taken"
+            for item in retry_report.values()
+        )
+        and project.format == "drama"
+        and (project.category == "story" or await video_series_kind(session, slug) == "story")
+        and not _story_dub_ready(await _reviews(session, project))
+    ):
+        retry_report = {
+            locale: item for locale, item in retry_report.items()
+            if not (isinstance(item, dict) and item.get("status") == "taken")
+        }
+    # Only the request the worker names by id moves; the answer says what the site accepted.
     _apply_dub_retry(
         session,
         project,
-        dub_retry.apply_worker(project.dub_retries or {}, payload.dub_retries, now),
+        dub_retry.apply_worker(project.dub_retries or {}, retry_report, now),
     )
     project.last_synced_at = now
     project.updated_at = now
@@ -822,6 +834,10 @@ def _confirmations() -> Any:
 async def project_view(session: AsyncSession, slug: str, work_dir: str | None = None) -> ProjectOut:
     project = await _project(session, slug)
     reviews = await _reviews(session, project)
+    series_kind = (
+        await video_series_kind(session, slug)
+        if project.format == "drama" and project.shorts_line is None else None
+    )
     pending = sum(1 for review in reviews if review.status == "pending")
     spend = await spend_by_slug(session, [project.slug])
     languages = language_states(locale_choices(project), reviews, project.dub_retries or {})
@@ -848,6 +864,8 @@ async def project_view(session: AsyncSession, slug: str, work_dir: str | None = 
             ),
         ),
         reviews=[_review_out(review) for review in reviews],
+        dub_allowed=_dub_allowed(project, series_kind, reviews),
+        story_dub_preselectable=_story_dub_preselectable(project, series_kind),
     )
 
 
@@ -1223,6 +1241,94 @@ def _current_final(reviews: list[VideoReview]) -> VideoReview | None:
     return next((row for row in reviews if row.gate == "final" and row.subject is None), None)
 
 
+# QA items a brand story's dub does not wait on once the owner approved the cut (owner,
+# 2026-10-18): the owner watched the cut and judged its pacing and Jev's stance score
+# themselves, and neither changes what the dub has to say or when it is said. Every other
+# item, the assemble, narration and zh-TW captions among them, still has to pass.
+STORY_DUB_WAIVED_QA_ITEMS: frozenset[str] = frozenset({"pace", "policy"})
+# A captions item from before the QA tool stopped failing chosen locales that are translated
+# only after the final gate ("en: no caption file; ja: no caption file"). The languages step
+# makes those files, so a report failing on them alone does not lock a story's dub.
+_FOREIGN_CAPTION_MISSING = re.compile(r"(?:en|ja|ko): no caption file")
+
+
+def _story_qa_item_waived(entry: dict[str, Any]) -> bool:
+    name = entry.get("id")
+    if name in STORY_DUB_WAIVED_QA_ITEMS:
+        return True
+    if name != "captions":
+        return False
+    detail = entry.get("detail")
+    parts = detail.split("; ") if isinstance(detail, str) and detail else []
+    return bool(parts) and all(_FOREIGN_CAPTION_MISSING.fullmatch(part) for part in parts)
+
+
+def _story_dub_qa_passed(report: Any, sha: str | None) -> bool:
+    """Whether a story's final QA clears dubbing: bound to this cut, every item reported, and
+    each failing one waived (STORY_DUB_WAIVED_QA_ITEMS, or captions missing only foreign files).
+
+    ``final_qa_passed`` stays the rule for auto-approval and everything else; this one is read
+    only after the owner approved the cut.
+    """
+    if not isinstance(report, dict) or not sha or report.get("final_sha256") != sha:
+        return False
+    items = report.get("items")
+    if not isinstance(items, list):
+        return False
+    entries = [entry for entry in items if isinstance(entry, dict) and entry.get("id") in QA_ITEMS]
+    if {entry.get("id") for entry in entries} != set(QA_ITEMS):
+        return False
+    return all(entry.get("ok") is True or _story_qa_item_waived(entry) for entry in entries)
+
+
+def _story_dub_ready(reviews: list[VideoReview]) -> bool:
+    """Only an approved current cut with switchable zh-TW CC and a clearing QA may be dubbed.
+
+    The QA report is bound to the final mp4 hash and includes the captions check. Older cuts
+    have no subtitle-mode evidence and stay locked. A newer pending, rejected or superseded
+    final also locks the choice, even if an earlier cut was approved. The owner's approval
+    stands in for the items in STORY_DUB_WAIVED_QA_ITEMS (_story_dub_qa_passed).
+    """
+    final = _current_final(reviews)
+    if final is None or final.status != "approved":
+        return False
+    payload = final.payload or {}
+    report = payload.get("qa")
+    if not isinstance(report, dict):
+        report = payload.get("manual_review_qa")
+    return (
+        isinstance(report, dict)
+        and report.get("subtitles_burned_in") is False
+        and _story_dub_qa_passed(report, final.content_sha256)
+    )
+
+
+def _story_dub_preselectable(project: VideoProject, series_kind: str | None) -> bool:
+    """An owner may save dub intent for a story before its first clean final exists."""
+    return (
+        project.shorts_line is None
+        and (project.format or "slides") == "drama"
+        and (series_kind == "story" or project.category == "story")
+    )
+
+
+def _dub_allowed(
+    project: VideoProject, series_kind: str | None, reviews: list[VideoReview]
+) -> bool:
+    """The detail page and both locale endpoints use one eligibility rule.
+
+    The series kind comes from the server's episode row, so recategorising a brand story as
+    an explainer does not unlock an older cut. The category also catches a standalone story.
+    """
+    if project.shorts_line is not None:
+        return False
+    if (project.format or "slides") != "drama":
+        return True
+    if _story_dub_preselectable(project, series_kind):
+        return _story_dub_ready(reviews)
+    return project.category in DUBBABLE_DRAMA_CATEGORIES
+
+
 def _renewable_final(project: VideoProject, reviews: list[VideoReview]) -> VideoReview:
     _refuse_dropped(project)
     if project.shorts_line is not None or project.format == "shorts":
@@ -1396,6 +1502,10 @@ async def renew_final(
         )
     )
     _hold_final_review(project)
+    if project.format == "drama" and (
+        project.category == "story" or await video_series_kind(session, slug) == "story"
+    ):
+        _withdraw_story_dubs_for_new_cut(session, project, now)
     project.updated_at = now
     project.last_synced_at = now
     await session.commit()
@@ -1498,6 +1608,10 @@ async def submit_review(
     manual_anime = await _check_anime_review(
         session, project, payload.gate, payload.payload, payload.content_sha256
     )
+    # A video the worker did not make is pushed by a person or an agent by hand
+    # (tools/video/review/sync.mjs marks it `hand_pushed`): the owner decides at every gate,
+    # whatever the automatic checks say (owner, 2026-10-17; docs/videos/HANDS-OFF.md).
+    owner_decides = manual_anime or payload.payload.get("hand_pushed") is True
     missing = [item.sha256 for item in payload.files if store.path(slug, item.sha256) is None]
     if missing:
         raise AppError(
@@ -1571,6 +1685,14 @@ async def submit_review(
                 ),
                 default=-1,
             )
+    if (
+        payload.gate == "final"
+        and same is None
+        and project.format == "drama"
+        and (project.category == "story" or await video_series_kind(session, slug) == "story")
+        and _story_dub_ready(reviews)
+    ):
+        _withdraw_story_dubs_for_new_cut(session, project, now)
     if payload.gate == "languages":
         # A languages batch is the answer to a dub the owner asked for again
         # (docs/videos/DUBS.md §再做一次), and it closes the request in the transaction that
@@ -1639,7 +1761,7 @@ async def submit_review(
     video_format = project.format or "slides"
     series_slug = project.series_slug
     if (
-        not manual_anime
+        not owner_decides
         and payload.gate == "audio"
         and await auto_approves_audio(session, payload.payload, video_format)
     ):
@@ -1648,14 +1770,14 @@ async def submit_review(
     # when the series is hands-off (docs/videos/BINGE.md); an illustrated slides video's reads
     # its own switch (docs/videos/ILLUSTRATED.md).
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "storyboard"
         and await auto_approves_storyboard(session, payload.payload, series_slug, video_format)
     ):
         auto_note = AUTO_APPROVED_STORYBOARD_NOTE
     # A character's sheet is picked by the judge's score when the owner turned that on.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "look"
         and await auto_picks_look(session, payload.payload, series_slug)
     ):
@@ -1663,7 +1785,7 @@ async def submit_review(
         review.choice = str(payload.payload.get("suggested"))
     # An episode's screenplay stands on the checker's coverage on a hands-off series.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "script"
         and await auto_approves_script(session, series_slug, payload.payload)
     ):
@@ -1671,17 +1793,17 @@ async def submit_review(
     # The owner decided on 2026-09-27 (docs/videos/HANDS-OFF.md) that Jev chooses the outline
     # and that a final cut and its upload confirmation stand on the automatic checks.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "outline"
-        and await auto_picks_outline(session, payload.payload)
+        and await auto_picks_outline(session, payload.payload, project.category)
     ):
-        auto_note = pick_reason(payload.payload)
+        auto_note = pick_reason(payload.payload, demo_asked_of(project.category))
         review.choice = pick_choice(payload.payload)
     # A Short is held to its own twelve checks and reads its own switch
     # (docs/videos/SHORTS.md §自動品管); a long video's report never approves one, so the
     # rule below is not asked about a Short at all.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate in ("final", "publish")
         and project.shorts_line is not None
     ):
@@ -1694,7 +1816,7 @@ async def submit_review(
                 else SHORTS_PACKAGE_AUTO_APPROVED_NOTE
             )
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate in ("final", "publish")
         and await auto_approves_final(
             session,
@@ -1709,7 +1831,7 @@ async def submit_review(
     # A batch of languages waits for the owner only for a dub track they must upload in Studio;
     # descriptions and captions the site sends itself (docs/videos/LANGUAGES.md).
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "languages"
         and not languages_need_owner(payload.payload)
     ):
@@ -1777,6 +1899,9 @@ async def decide(
     review.decided_at = now
     review.decided_by_user_id = user.id
     review.updated_at = now
+    # A newly submitted replacement already withdrew consent from the previous approved cut.
+    # Clearing again here would erase a fresh preselection made while this final was pending,
+    # including the owner's choice before the very first clean final.
     session.add(
         AdminAuditLog(
             actor_user_id=user.id,
@@ -1927,20 +2052,22 @@ async def _apply_locales(
 ) -> None:
     """Store the owner's language choice, note when they first decided, and log the change.
 
-    A drama takes a dub only in a category the narrator tells alone (DUBBABLE_DRAMA_CATEGORIES);
-    every other drama, one with no category included, takes titles, descriptions and captions.
+    Explainer dubs keep their narrator-only category rule. A brand story may store a dub
+    choice early; the worker still needs the exact approved cut's switchable-CC QA before
+    starting any language production.
     """
-    if (
-        (project.format or "slides") == "drama"
-        and project.category not in DUBBABLE_DRAMA_CATEGORIES
-        and any(choice.dub for choice in payload.locales.values())
+    if (project.format or "slides") == "drama" and any(
+        choice.dub for choice in payload.locales.values()
     ):
-        raise AppError(
-            422,
-            "video_locales_dub_not_for_drama",
-            "有角色說話的漫劇還不能配音（docs/videos/DUBS.md），只有分類是觀念解說（explainer）的漫劇可以；"
-            "這裡先只能選標題說明與 CC",
-        )
+        series_kind = await video_series_kind(session, project.slug)
+        story = _story_dub_preselectable(project, series_kind)
+        if not story and not _dub_allowed(project, series_kind, []):
+            raise AppError(
+                422,
+                "video_locales_dub_not_for_drama",
+                "有角色說話的漫劇還不能配音（docs/videos/DUBS.md），只有分類是觀念解說（explainer）的漫劇可以；"
+                "這裡先只能選標題說明與 CC",
+            )
     chosen: dict[str, Any] = {
         locale: choice.model_dump() for locale, choice in payload.locales.items()
     }
@@ -1992,6 +2119,27 @@ def _record_locales(
                 **({"dub_retries_withdrawn": withdrawn} if withdrawn else {}),
             },
         )
+    )
+
+
+def _withdraw_story_dubs_for_new_cut(
+    session: AsyncSession, project: VideoProject, now: datetime
+) -> None:
+    """A replacement cut must not inherit dub consent from the previously approved cut.
+
+    This is called for an authoritative story episode when a distinct final review arrives,
+    including an owner-initiated renewal. The owner can reselect dubs after the new cut's
+    switchable-caption evidence is approved.
+    """
+    chosen = dict(project.locales or {})
+    if not any(isinstance(part, dict) and part.get("dub") for part in chosen.values()):
+        return
+    without_dubs = {
+        locale: {**part, "dub": False} if isinstance(part, dict) else part
+        for locale, part in chosen.items()
+    }
+    _record_locales(
+        session, project, without_dubs, now, None, {"reason": "story_final_cut_changed"}
     )
 
 
@@ -2159,6 +2307,14 @@ async def request_dub_retry(
     if previous is not None and previous.open:
         return await project_view(session, slug, work_dir)
     reviews = await _reviews(session, project)
+    if project.format == "drama" and (
+        project.category == "story" or await video_series_kind(session, slug) == "story"
+    ) and not _story_dub_ready(reviews):
+        raise AppError(
+            409,
+            "video_dub_retry_story_final_not_ready",
+            "目前成片尚未通過無燒錄字幕與可關閉繁中 CC 的完整審核，配音重做要等通過後才開始",
+        )
     part = (
         language_states(locale_choices(project), reviews, retries).get(locale, {}).get("dub")
     )
@@ -2253,9 +2409,10 @@ async def set_locales(
     Every video is made in Traditional Chinese; here the owner says which of en, ja and ko to
     add and what of each. An empty choice is a decision too ("only Traditional
     Chinese"), and the first save of either kind is what lets the video go up. The worker makes
-    only what was chosen, once the final cut is approved; a drama takes a dub only in a category
-    the narrator tells alone (``DUBBABLE_DRAMA_CATEGORIES``). The choice is
-    the owner's: the pipeline's reports never carry one, and a dropped video takes none. Only a
+    only what was chosen, once the final cut is approved; a narrator-only explainer may use a
+    drama dub. A brand story may save dub intent earlier, but production waits for its current
+    approved cut's QA to prove switchable zh-TW captions. The choice is the owner's: the
+    pipeline's reports never carry one, and a dropped video takes none. Only a
     brand story, which runs without the owner, has the server decide from the settings when its
     video first reports (``_decide_story_locales``); the owner may change that here too.
 

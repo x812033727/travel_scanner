@@ -67,6 +67,28 @@ def test_audio_is_passed_through_as_wav_or_wrapped_when_bare() -> None:
     assert refused.value.status == 400
 
 
+@pytest.mark.asyncio
+async def test_gemini_tts_returns_provider_usage_for_pilot_settlement() -> None:
+    async def handler(_: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            json={
+                "candidates": [
+                    {"content": {"parts": [{"inlineData": {
+                        "mimeType": "audio/wav", "data": base64.b64encode(WAV).decode()
+                    }}]}}
+                ],
+                "usageMetadata": {"promptTokenCount": 12, "candidatesTokenCount": 75},
+            },
+        )
+
+    speech = GeminiSpeech("https://generativelanguage.googleapis.com", "k", 15)
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        audio, usage = await speech.synthesize_with_usage("你好", "Sulafat", client=client)
+    assert audio == WAV
+    assert usage == {"promptTokenCount": 12, "candidatesTokenCount": 75}
+
+
 def test_voice_names_are_prefixed_and_pattern_checked() -> None:
     assert gemini_voice("gemini:Sulafat") == "Sulafat"
     assert gemini_voice("gemini:voice_abc-123") == "voice_abc-123"

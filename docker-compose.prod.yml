@@ -34,7 +34,7 @@ services:
       APP_ENV: production
       DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
       REDIS_URL: ${REDIS_URL:?set REDIS_URL}
-    command: ["alembic", "upgrade", "head"]
+    command: ["python", "-m", "app.migration_guard"]
     security_opt: ["no-new-privileges:true"]
     cap_drop: ["ALL"]
     depends_on:

@@ -4,11 +4,12 @@
 // hooks placed now and then. What can be read off the script and its estimated timeline is here,
 // as lint problems for the writer; what only a reader can judge is the blind yes-or-no panel
 // (NARRATIVE_PANEL) the worker asks after the listener's edit, and sends back to the writer.
+import { createHash } from "node:crypto";
 import { isDrama, isExplainer } from "./drama.mjs";
 import { eachLine } from "./schema.mjs";
-import { scriptCheckBinding } from "./script-check.mjs";
+import { scriptCheckBinding, scriptCheckMatches } from "./script-check.mjs";
 import { isStory } from "./story.mjs";
-import { chapterList, formatClock, frameToSeconds } from "./timeline.mjs";
+import { chapterList, estimateTimeline, formatClock, frameToSeconds } from "./timeline.mjs";
 
 /** Where a video's panel verdict is kept, under its work directory. */
 export const NARRATIVE_REVIEW = ["review", "narrative.json"];
@@ -246,19 +247,25 @@ export function narrativeProblems(doc, timeline, { minutes } = {}) {
 // tutorial judges taught that only yes-or-no questions tell a good script from a bad one; a
 // scale pins at the same number for both).
 
-/** The eleven questions, in zh-TW; a "required" one that is not met sends the script back to the writer. */
+/**
+ * The questions, in zh-TW; a "required" one that is not met sends the script back to the writer.
+ * one_thread and no_detour came on 2026-10-15, after three AI videos changed example and metaphor
+ * from chapter to chapter, went off on detours and read lists out (script-writing.md §故事主線與鉤子).
+ */
 export const NARRATIVE_PANEL = Object.freeze([
   { id: "scene_first", required: true, question: "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？" },
   { id: "no_spoiler", required: true, question: "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）" },
   { id: "one_line", required: true, question: "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？" },
   { id: "no_toc", required: true, question: "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）" },
-  { id: "chapters_link", required: true, question: "每一章的第一句是不是上一章的後果或答案（事情接著發生），而不是一句標籤、一句總結，或把上一章最後一句再講一次？（上一章最後幾秒才埋下的事，下一章開頭用「還記得…嗎」接回來，是複述不是銜接；點名的回呼要留給隔了幾分鐘的掛鉤。）" },
+  { id: "chapters_link", required: true, question: "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。" },
   { id: "open_loops", required: true, question: "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？" },
-  { id: "payoffs", required: true, question: "每一個掛著的問題後來是否都有回答，而且回答時點名了它（還記得那…）？" },
+  { id: "payoffs", required: true, question: "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。" },
   { id: "no_recap", required: true, question: "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？" },
   { id: "chapters_are_events", required: false, question: "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？" },
   { id: "outro_no_next", required: true, question: "片尾是否沒有提到下一支影片、下一集或下一份檔案？" },
   { id: "opening_hooks", required: true, question: "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）" },
+  { id: "one_thread", required: true, question: "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。" },
+  { id: "no_detour", required: true, question: "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？" },
 ]);
 
 /** What the panel's reader is told, and nothing else: no brief, no sources, no standing instructions (the stage sends it bare). */
@@ -277,6 +284,27 @@ Markdown fence): {"answers": [{"id": "<question id>", "yes": true|false, "eviden
 <the quoted line>"}]}, one entry per question, in the questions' order.
 `.trim();
 
+// This is only the blind narrative panel's contract. A script may be unchanged while its
+// questions or required-answer rules change; other script/fact-check receipts remain valid.
+// Increment verdict_version if panelVerdict's PASS semantics change without a text change.
+export const PANEL_RULES_SHA256 = createHash("sha256").update(JSON.stringify({
+  instructions: PANEL_INSTRUCTIONS,
+  questions: NARRATIVE_PANEL.map(({ id, question, required }) => ({ id, question, required })),
+  verdict_version: 1,
+})).digest("hex");
+
+// Bind the exact rendered narration sent to the blind panel. The shared script check omits
+// metadata such as the title, even though the panel reads it above every chapter.
+function panelNarrationSha256(doc) {
+  return createHash("sha256").update(narrationText(doc, estimateTimeline(doc))).digest("hex");
+}
+
+export function narrativeReviewMatches(check, doc) {
+  return Boolean(check?.panel_rules_sha256 === PANEL_RULES_SHA256
+    && scriptCheckMatches(check, doc)
+    && check.panel_narration_sha256 === panelNarrationSha256(doc));
+}
+
 /** The panel's payload: the script as text and the questions, nothing a reader could lean on. */
 export function panelPayload(doc, timeline) {
   return { narration: narrationText(doc, timeline), questions: NARRATIVE_PANEL.map(({ id, question }) => ({ id, question })) };
@@ -289,8 +317,12 @@ const isObject = (value) => value !== null && typeof value === "object" && !Arra
  * answered otherwise or malformed is a "no" (as the checker's missing verdict is a problem in
  * series.mjs scriptVerdict). `problems` are the lines the writer is sent.
  */
-/** A line id in brackets, as the panel's own answer format prints it: `[mc1a] …`. */
-const EVIDENCE_LINE_ID = /\[[A-Za-z0-9_-]{2,}\]/;
+/**
+ * A line id in brackets, as the panel's own answer format prints it (`[mc1a] …`) or as
+ * narrationText prints the line, with its start after the id (`[mc1a 01:02] …`, `[mc1a 1:02:03] …`,
+ * formatClock's mm:ss or h:mm:ss). A reader copying the line exactly as it was shown quotes it.
+ */
+const EVIDENCE_LINE_ID = /\[[A-Za-z0-9_-]{2,}(?: (?:\d+:)?\d{2}:\d{2})?\]/;
 
 export function panelVerdict(answer) {
   const given = new Map();
@@ -319,17 +351,63 @@ export function panelVerdict(answer) {
   };
 }
 
+/** How many independent readers a brand story's panel asks each round (owner, 2026-10-18). */
+export const STORY_PANEL_READERS = 2;
+
+const READER_NAMES = ["讀者一", "讀者二", "讀者三"];
+
 /**
- * The verdict as it is kept (NARRATIVE_REVIEW), bound to the script the panel read: a later edit
- * no longer matches it (scriptCheckMatches), so the panel is asked again.
+ * Several readers' verdicts (each from panelVerdict, each a fresh session on the same script) read
+ * as one (owner, 2026-10-18): a lone reader kept failing a brand story on a different small line
+ * each round, even lines it had passed unchanged before. A question is met when ANY reader answers
+ * "yes" with a quoted line id (panelVerdict already turns an uncited yes into a no), so a required
+ * question fails only when every reader says "no"; the writer is sent those questions alone, with
+ * every reader's evidence. `readers` keeps each verdict for the record.
+ */
+export function mergePanelVerdicts(verdicts) {
+  if (!Array.isArray(verdicts) || verdicts.length === 0) throw new Error("mergePanelVerdicts needs at least one reader's verdict");
+  if (verdicts.length === 1) return verdicts[0];
+  const name = (index) => READER_NAMES[index] ?? `讀者${index + 1}`;
+  const answers = NARRATIVE_PANEL.map(({ id, question, required }, index) => {
+    const given = verdicts.map((verdict) => verdict.answers[index]);
+    const agreeing = given.find((each) => each.yes);
+    const evidence = agreeing ? agreeing.evidence : given.map((each, reader) => `${name(reader)}：${each.evidence}`).join("；");
+    return { id, question, required, yes: Boolean(agreeing), evidence, yes_readers: given.filter((each) => each.yes).length };
+  });
+  const failed = answers.filter((each) => each.required && !each.yes);
+  const advisory = answers.filter((each) => !each.required && !each.yes);
+  return {
+    passed: failed.length === 0,
+    answers,
+    failed,
+    advisory,
+    problems: failed.map((each) => `${each.id}：${each.question}（${each.evidence}）`),
+    readers: verdicts,
+  };
+}
+
+/**
+ * The verdict as it is kept (NARRATIVE_REVIEW), bound to both the script and the blind panel
+ * contract. A later edit or rule change makes it stale, without changing other script checks.
  */
 export function narrativeRecord(doc, verdict, round) {
   return {
     ...scriptCheckBinding(doc),
+    panel_rules_sha256: PANEL_RULES_SHA256,
+    panel_narration_sha256: panelNarrationSha256(doc),
     round,
     passed: verdict.passed,
     answers: verdict.answers,
     failed: verdict.failed.map((each) => each.id),
     advisory: verdict.advisory.map((each) => each.id),
+    // A story's panel (mergePanelVerdicts): each reader's own answers next to the merged ones above.
+    ...(Array.isArray(verdict.readers) ? {
+      readers: verdict.readers.map((each) => ({
+        passed: each.passed,
+        answers: each.answers.map(({ id, yes, evidence }) => ({ id, yes, evidence })),
+        failed: each.failed.map((answer) => answer.id),
+        advisory: each.advisory.map((answer) => answer.id),
+      })),
+    } : {}),
   };
 }

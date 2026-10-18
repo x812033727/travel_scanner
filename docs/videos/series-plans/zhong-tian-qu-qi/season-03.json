@@ -1,0 +1,4309 @@
+{
+  "number": 3,
+  "title": "北疆",
+  "theme": "守得住家的人，才守得住國。",
+  "start_state": "國師當面看穿許硯的系統，聖旨命許硯即刻帶柳溪堡的鄉勇北上狼牙關抗朔漠；四位妻子要分兩路。",
+  "end_state": "許硯守住狼牙關、救出秦烈山、為秦家洗冤；玉佩是秦家調兵令、柳三娘落草的原因都揭開；娶朔漠公主阿蘭朵為第五位妻子，與朔漠新可汗蘇赫結盟。凱旋路上傳來消息：皇帝病危，宰相宣許硯謀反、誅九族。",
+  "guest_cast": [
+    {
+      "id": "s03-kou-yannian",
+      "name": "寇延年",
+      "role": "國師派到北疆的監軍，收魏家錢莊的銀子、暗通朔漠王叔赤勒",
+      "appearance": "東亞中年男性，四十二歲，白淨斯文、細長眼、薄唇總掛著客氣的笑，修剪整齊的短鬚，身形瘦高，穿深青色官袍外罩灰鼠皮斗篷，腰間掛一面小銅鏡，手指修長常撚著一串念珠"
+    },
+    {
+      "id": "s03-he-zhen",
+      "name": "賀鎮",
+      "role": "狼牙關守將，當年秦家軍的老部下，家人被押在京城當人質",
+      "appearance": "東亞中年男性，四十八歲，國字臉、濃眉、鬢角斑白、眼神沉鬱，身材高大結實，穿舊鐵甲外披褪色的紅披風，左手虎口一道舊疤，腰掛長刀"
+    },
+    {
+      "id": "s03-chile",
+      "name": "赤勒",
+      "role": "朔漠王叔，架空侄子蘇赫、與大衡宰相私通的野心家",
+      "appearance": "年輕感的中年草原男性，四十五歲，輪廓深、鷹鉤鼻、眼神銳利含笑，黑髮編成粗辮綴金環，留修剪俐落的短鬚，身材魁梧，穿黑鷹紋錦袍外罩銀狐皮大氅，手上總托著一隻黑漆盒"
+    },
+    {
+      "id": "s03-hu-er",
+      "name": "忽邇",
+      "role": "朔漠派到狼牙關的使者，赤勒的心腹",
+      "appearance": "草原年輕男性，三十歲，瘦高精幹、高顴骨、單眼皮笑眼，黑髮兩側編細辮，穿灰白羊皮袍、戴尖頂皮帽，手持一面白狼旗"
+    },
+    {
+      "id": "s03-tana",
+      "name": "塔娜",
+      "role": "阿蘭朵的貼身侍女，忠心、膽小又機靈",
+      "appearance": "草原年輕女性，十八歲，清秀圓臉、大眼睛、蘋果肌紅潤，黑髮編兩條長辮綁紅繩，穿藍白相間的短騎裝與毛邊坎肩，乾淨端莊"
+    },
+    {
+      "id": "s03-deng-san",
+      "name": "鄧三",
+      "role": "北疆鹽礦的監工，貪財多疑",
+      "appearance": "東亞中年男性，四十歲，精瘦、三角眼、眉毛稀疏、笑起來露一顆金牙，穿油亮的羊皮短襖、腰掛一串鑰匙與皮鞭（鞭只掛不用）"
+    },
+    {
+      "id": "s03-xuan-qi",
+      "name": "玄七",
+      "role": "國師府黑衣門人的首領，替國師跑北疆",
+      "appearance": "東亞年輕男性，二十八歲，冷峻俊秀、劍眉、眼神淡漠、膚色蒼白，黑髮高束，穿黑底銀線星紋的窄袖勁裝與同紋外袍，身手輕得落地無聲"
+    },
+    {
+      "id": "s03-zhou",
+      "name": "周掌櫃",
+      "role": "唐家商隊的領隊，唐小棠的老部下",
+      "appearance": "東亞中年男性，五十歲，圓臉笑眼、留山羊鬍，微胖，穿棕色棉袍外罩防風氈斗篷，腰間別一把黃銅小算盤，說話前先摸鬍子"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s03-t01",
+      "question": "國師說的「合作」要拿什麼來換？",
+      "setup_episode": 123,
+      "payoff_episode": 124
+    },
+    {
+      "id": "s03-t02",
+      "question": "監軍收了誰的錢？",
+      "setup_episode": 125,
+      "payoff_episode": 129
+    },
+    {
+      "id": "s03-t03",
+      "question": "國師的系統長什麼樣？",
+      "setup_episode": 121,
+      "payoff_episode": 128
+    },
+    {
+      "id": "s03-t04",
+      "question": "監軍的密信是寫給誰的？",
+      "setup_episode": 132,
+      "payoff_episode": 137
+    },
+    {
+      "id": "s03-t05",
+      "question": "朔漠戴銀面具的領兵王子是誰？",
+      "setup_episode": 131,
+      "payoff_episode": 133
+    },
+    {
+      "id": "s03-t06",
+      "question": "守將為什麼聽監軍的、把三千人關在門外？",
+      "setup_episode": 130,
+      "payoff_episode": 138
+    },
+    {
+      "id": "s03-t07",
+      "question": "阿蘭朵的刀什麼時候出手？",
+      "setup_episode": 142,
+      "payoff_episode": 151
+    },
+    {
+      "id": "s03-t08",
+      "question": "朔漠王庭裡是誰想要阿蘭朵死？",
+      "setup_episode": 141,
+      "payoff_episode": 144
+    },
+    {
+      "id": "s03-t09",
+      "question": "系統為什麼對一個刺客亮起好感度條？",
+      "setup_episode": 142,
+      "payoff_episode": 149
+    },
+    {
+      "id": "s03-t10",
+      "question": "一枚調兵令能叫回多少秦家舊部？",
+      "setup_episode": 155,
+      "payoff_episode": 159
+    },
+    {
+      "id": "s03-t11",
+      "question": "赤勒的漆盒裡有宰相的什麼？",
+      "setup_episode": 161,
+      "payoff_episode": 176
+    },
+    {
+      "id": "s03-t12",
+      "question": "柳溪堡那邊出了什麼事？",
+      "setup_episode": 167,
+      "payoff_episode": 178
+    }
+  ],
+  "episodes": [
+    {
+      "number": 121,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "老鄉，幾級了",
+      "youtube_title": "被國師當眾看穿系統，聖旨一下要他帶三千鄉勇北上抗敵，四個老婆同時拍桌要跟",
+      "duration_s": 110,
+      "logline": "許硯要在國師與宣旨官面前藏住系統、接下北上抗朔漠的聖旨，卻被「家眷只准帶兩人」的旨意逼著拆開一家人。",
+      "hook": "國師的黑玉拂塵停在許硯眼前一寸，許硯的藍色面板當場閃紅：「警告：外部觀測」。國師輕笑：「看得見喔。」",
+      "hook_type": "danger",
+      "mid_hook": "宣旨官念到聖旨後半：「鄉勇自備糧草。」「家眷限帶兩人。」柳溪堡城頭上，四位妻子同時轉頭看向許硯。",
+      "conflict": "柳溪堡三千鄉勇被點名北上狼牙關抗朔漠，三日內啟程、糧草自備；許硯要接旨，又不能讓國師當眾揭穿他眼前的面板。",
+      "turn": "所有人以為國師要當場揭穿許硯的「妖術」，國師卻替他打圓場，把「老鄉」說成青州的客套話，轉身只留一句耳語：「晚點聊。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜裡全家飯桌，阿令、秦霜、唐小棠、柳三娘同時把包袱放上桌：「我去。」許硯張口，四雙眼睛等他點名。",
+        "question": "他會帶走哪兩個老婆？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "xiju"
+      ],
+      "spectacle": "柳溪堡城頭三千鄉勇一聲「在！」，城簷上的積雪整排震落。",
+      "glamour_shot": "阿令月白宮裝立在城頭，北風把步搖吹得輕響，她回眸冷冷看了國師一眼。",
+      "setups": [
+        "s03-t03",
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "三千鄉勇集結；宣旨官被逼著把『朝廷先撥三月軍糧』寫進回奏"
+      ],
+      "characters": [
+        "xu-yan",
+        "mo-chen",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "wang-erniu",
+        "xu-xiaohe",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡城門",
+        "許家飯廳"
+      ],
+      "state": {
+        "time": "第三季第一天傍晚",
+        "knowledge": "國師看得見他的系統面板；聖旨要他三日內北上",
+        "carry_forward": "誰跟他北上；國師說的「晚點聊」"
+      }
+    },
+    {
+      "number": 122,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "誰跟我北上",
+      "youtube_title": "聖旨只准帶兩個老婆上戰場，他點了最能打的兩個，冷面公主當場把匕首插上桌",
+      "duration_s": 95,
+      "logline": "許硯要把一家人分成兩路，讓前線的人能打、後方的人守得住，卻得先過冷面阿令這一關。",
+      "hook": "許硯指向秦霜與柳三娘：「你們倆。」話音剛落，阿令的匕首「篤」一聲插進桌面：「理由。」",
+      "hook_type": "line",
+      "mid_hook": "小禾抱著草兔子跑進來，手裡一張紙條：門外有個黑衣人塞給她的，上面只有一行字「子時，溪邊亭。」「一人來。」",
+      "conflict": "說服阿令與唐小棠留守柳溪堡，前線與後方各有人撐。",
+      "turn": "大家以為阿令在吃醋，其實她早想留下：朔漠點名要的和親人選就是她，她留在後方才能盯住國師在青州的眼線；唐小棠的金算盤三秒算出三千人一個月的糧，只能從她的商路走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "子時溪邊亭，國師背對著他倒茶，頭也不回：「我也是穿越來的。」他眼中一格暗紅光框一閃而過。",
+        "question": "國師也是穿越者，他找自己想幹什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "quanmou",
+        "tianchong"
+      ],
+      "spectacle": "夜色裡溪邊小亭只點一盞燈，溪面倒映著國師黑底銀星的道袍。",
+      "glamour_shot": "秦霜聽到許硯說她是將軍時，燭光下高馬尾一甩，嘴角壓不住地上揚。",
+      "setups": [
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜好感度跳一格：許硯當眾說「她是將軍，不是家眷」",
+        "分路定案：秦霜、柳三娘隨軍；阿令、唐小棠守柳溪堡"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "qin-shuang",
+        "tang-xiaotang",
+        "liu-sanniang",
+        "xu-xiaohe",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "許家飯廳",
+        "柳溪邊小亭"
+      ],
+      "state": {
+        "time": "當夜子時",
+        "knowledge": "國師親口說自己也是穿越者",
+        "carry_forward": "國師約他要談什麼"
+      }
+    },
+    {
+      "number": 123,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "二十年前的老鄉",
+      "youtube_title": "國師竟是二十年前就穿越來的人，一開口報出他系統裡每個獎勵，還說能送他回家",
+      "duration_s": 105,
+      "logline": "許硯要摸清國師的底，國師卻比他更清楚他自己的系統。",
+      "hook": "許硯脫口而出：「你來幾年了？」國師把茶推過去：「二十年。」茶盤上擺著一隻現代人才會折的紙船。",
+      "hook_type": "image",
+      "mid_hook": "國師隨口說出許硯上一個獎勵箱開出的東西，連阿令的好感度數字都說對了；許硯的面板跳出紅字：「偵測到敵對系統」。",
+      "conflict": "在不交出底牌的前提下，套出國師找他的目的。",
+      "turn": "許硯以為國師要滅口，國師卻笑著開價「合作」：他知道回現代的路，可以送許硯回去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "國師把一枚刻著星紋的黑玉牌推到許硯手邊：「點頭，就送你回家。」許硯的手指停在玉牌上方一寸。",
+        "question": "他會為了回家點頭嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "xiju"
+      ],
+      "spectacle": "小亭裡暗紅與淡藍兩個半透明光框隔桌對峙，茶煙從兩框之間穿過。",
+      "glamour_shot": "國師燈下的側臉蒼白含笑，黑玉拂塵的銀絲反著燭光。",
+      "setups": [
+        "s03-t01"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認國師是穿越者，而且看得見他的系統面板"
+      ],
+      "characters": [
+        "xu-yan",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪邊小亭"
+      ],
+      "state": {
+        "time": "子時",
+        "knowledge": "國師是二十年前的穿越者，看得見他的面板，提出能送他回家",
+        "carry_forward": "「合作」的價錢是什麼"
+      }
+    },
+    {
+      "number": 124,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "我老婆不換",
+      "youtube_title": "國師開價：把長公主老婆送去和親就送他回現代，他一句話讓國師的笑當場僵住",
+      "duration_s": 100,
+      "logline": "許硯要拒絕國師的交易，又不能在柳溪堡門口就跟他翻臉。",
+      "hook": "許硯把黑玉牌翻回去推回去：「先說價錢。」國師輕輕一笑：「長公主，送朔漠。」",
+      "hook_type": "line",
+      "mid_hook": "許硯一句「我老婆不換。」把玉牌彈進國師的茶杯；國師擦著袖口說「北疆冷，多穿點。」同一瞬間，許硯的面板彈出紅字：「已被敵對系統標記」。",
+      "conflict": "拒絕國師，還要讓他知道許家不好惹。",
+      "turn": "以為這場密談只有兩個人，亭頂的瓦片忽然一響：阿令從頭到尾都伏在上面。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阿令從亭頂翻身落地，匕首還握在手裡，鳳眼泛紅：「你剛才說，不換？」",
+        "question": "阿令到底聽見了多少？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "tianchong"
+      ],
+      "spectacle": "阿令月白的身影從亭頂翻落，月光下匕首劃出一線冷光。",
+      "glamour_shot": "阿令落地抬眼，鳳眼泛紅卻倔強地不眨，木簪鬆了一縷髮。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "s03-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拒絕國師的合作",
+        "阿令好感度跳升：他寧可不回家，也不拿她去換"
+      ],
+      "characters": [
+        "xu-yan",
+        "mo-chen",
+        "a-ling",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪邊小亭"
+      ],
+      "state": {
+        "time": "子時過後",
+        "knowledge": "國師要的價錢是把阿令送去和親；談判破裂，他被敵對系統標記",
+        "carry_forward": "阿令聽到了「回家」兩個字"
+      }
+    },
+    {
+      "number": 125,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "監軍來了",
+      "youtube_title": "國師派來的監軍一到就砍掉一半軍糧，首富千金老婆笑著掏出一張貨單，監軍臉都綠了",
+      "duration_s": 90,
+      "logline": "許硯要帶著足夠的糧出發，國師派來的監軍一到就要砍他的糧、扣他的火藥。",
+      "hook": "阿令問：「回家，是回哪？」許硯指著柳溪堡滿城燈火：「那裡。」她別過臉，面板上她的好感度條輕輕跳了一格。",
+      "hook_type": "line",
+      "mid_hook": "監軍寇延年騎馬進堡，第一件事就是一腳踢翻糧車清單：「糧草減半。」「火藥全數充公。」",
+      "conflict": "在監軍的刁難下帶走足夠的糧，按時出發。",
+      "turn": "監軍以為糧車都是軍糧、他說了算；唐小棠撥兩下金算盤，亮出蓋了州府大印的貨單：這些全是唐家商貨，監軍無權動一粒。只有火藥被扣下，許硯笑笑：「拿吧。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "啟程第一夜，暴雪壓下來，三千人看不見前面那人的背；面板彈出：「強制任務：凍傷零人」，下面一行小字：「失敗：抹去記憶」。",
+        "question": "暴雪裡三千人怎麼一個都不凍傷？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "xiju"
+      ],
+      "spectacle": "三千支火把在雪夜官道上拉成看不見盡頭的光線，下一秒被暴雪整條吞沒。",
+      "glamour_shot": "唐小棠桃粉襖裙站在糧車頂，金算盤一撥，對監軍甜甜一笑。",
+      "setups": [
+        "s03-t02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令好感度跳一格：他說家就是柳溪堡",
+        "唐家貨單保住整支糧隊",
+        "監軍給挑夫發的全是嶄新官銀，唐小棠記下了"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "tang-xiaotang",
+        "s03-kou-yannian",
+        "qin-shuang",
+        "liu-sanniang",
+        "wang-erniu",
+        "xitong"
+      ],
+      "locations": [
+        "柳溪堡城頭",
+        "柳溪堡校場",
+        "北上官道"
+      ],
+      "state": {
+        "time": "出發第一夜",
+        "knowledge": "監軍是國師派來掣肘的；火藥被扣下",
+        "carry_forward": "暴雪與凍傷零人的強制任務"
+      }
+    },
+    {
+      "number": 126,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "雪地行軍包",
+      "youtube_title": "暴雪夜系統逼他三千人零凍傷，女寨主老婆背起倒下的小兵，獎勵箱開出救命神器",
+      "duration_s": 95,
+      "logline": "許硯要讓三千人熬過暴雪，監軍卻不准大軍停下。",
+      "hook": "王二牛在風雪裡大吼：「有人倒了！」柳三娘已經衝過去，把年紀最小的鄉勇石頭背上肩。",
+      "hook_type": "danger",
+      "mid_hook": "許硯把自己的披風蓋在石頭身上，柳三娘的好感度條跳過門檻，金色獎勵箱「砰」地打開：「雪地行軍包」。",
+      "conflict": "把系統給的方法變成三千人身上的東西，而且今晚就要。",
+      "turn": "獎勵只給方法：羊毛氈綁腿、油脂護臉、熱湯站、擋雪牆，羊毛得自己找。柳三娘說前面山坳有個牧羊村；監軍卻下令「停一刻按逃兵論」，柳三娘回他一句「那你一個人走」，三千人原地紮營，監軍在雪裡走了十步又灰溜溜地回來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "牧羊村老村長收下唐家銀票、交出羊毛，目光卻停在柳三娘頸上的舊鐵牌：「這牌子……是秦家——」",
+        "question": "柳三娘的鐵牌跟秦家有什麼關係？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "zhongtian",
+        "tianchong"
+      ],
+      "spectacle": "雪原上三千人同時綁上羊毛氈綁腿，一排熱湯鍋冒出的白汽連成一道牆。",
+      "glamour_shot": "柳三娘暗紅皮甲覆滿雪，粗辮甩過肩，背著石頭回頭朝許硯咧嘴一笑。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "柳三娘好感度過門檻：他把自己的披風給了她背著的兵",
+        "拿到雪地行軍包的方法，向牧羊村換到羊毛"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "wang-erniu",
+        "s03-kou-yannian",
+        "qin-shuang",
+        "xitong"
+      ],
+      "locations": [
+        "北上雪原",
+        "牧羊村"
+      ],
+      "state": {
+        "time": "北上第二天",
+        "knowledge": "柳三娘的舊鐵牌被人認出跟秦家有關",
+        "carry_forward": "老村長沒說完的話；凍傷零人任務進行中"
+      }
+    },
+    {
+      "number": 127,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "一袋沙",
+      "youtube_title": "三千人裹上羊毛綁腿零凍傷走過雪原，劈開朝廷撥的官糧袋，倒出來的全是沙",
+      "duration_s": 85,
+      "logline": "許硯的行軍包讓三千人撐過雪原，卻發現朝廷撥的糧根本吃不了。",
+      "hook": "柳三娘一把抓回鐵牌塞進衣領：「認錯了。」轉身就走；許硯看見她攥牌的手在發抖。",
+      "hook_type": "image",
+      "mid_hook": "秦霜抓起一把官糧湊到鼻前，臉色一變：「這不是米。」",
+      "conflict": "讓三千人走完剩下的路，而且吃得飽。",
+      "turn": "大家以為糧夠吃到狼牙關，原來朝廷撥的官糧只有袋口一層是米，底下全是掉包的沙。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "王二牛一斧劈開官糧袋，黃沙嘩地傾瀉，三千人同時轉頭；監軍在馬上冷笑：「誰敢鬧，軍法辦。」",
+        "question": "只剩三天糧，還有三天路怎麼走？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "xiju",
+        "quanmou"
+      ],
+      "spectacle": "三千鄉勇裹著羊毛綁腿在雪原上排成長隊，隊伍蜿蜒過兩座雪丘。",
+      "glamour_shot": "秦霜高馬尾在雪中飛揚，持槍立在糧車旁，聞糧時眉頭一壓。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "凍傷零人任務進度三千比零",
+        "秦霜憑軍戶的經驗識破官糧掉包"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "qin-shuang",
+        "wang-erniu",
+        "s03-kou-yannian",
+        "xitong"
+      ],
+      "locations": [
+        "北疆雪原"
+      ],
+      "state": {
+        "time": "北上第四天",
+        "knowledge": "官糧被掉包成沙，監軍藉機威脅",
+        "carry_forward": "糧從哪裡來"
+      }
+    },
+    {
+      "number": 128,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "駝鈴",
+      "youtube_title": "官糧全被換成沙、三千人快斷糧，首富千金老婆一條商路讓駝隊穿過風沙送到",
+      "duration_s": 100,
+      "logline": "唐小棠要讓糧在監軍與馬匪的眼皮下送到；許硯要接住駝隊、反咬設局的人。",
+      "hook": "三千人的火氣要燒起來的那一秒，遠處沙丘頂冒出一串駝鈴，領頭的駱駝上插著一面「唐」字旗。",
+      "hook_type": "image",
+      "mid_hook": "周掌櫃遞上唐小棠的信：她早算到官糧會出事，另走一條鹽商古道，信尾一行「硝石當藥材運了」；話音未落，一群蒙面馬匪從沙丘後撲向駝隊。",
+      "conflict": "接住唐家駝隊，護住糧和硝石。",
+      "turn": "馬匪是監軍事先通知的「路匪」，要讓糧「被劫」；可秦霜和柳三娘早帶人繞到沙丘後面，反把馬匪圍了個結實。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "擒住的馬匪頭目懷裡掉出一面國師府銅鏡；許硯一低頭，鏡中浮出一格暗紅光框，國師的聲音從鏡裡傳出：「老鄉，糧好吃嗎？」",
+        "question": "國師在鏡子裡看了多久？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "zhongtian",
+        "xiju"
+      ],
+      "spectacle": "駝隊從沙丘頂一字排開走下，風沙裡「唐」字旗獵獵作響。",
+      "glamour_shot": "柳三娘雙刀交叉架住馬匪頭目的刀，黑鳳額巾被風捲起。",
+      "setups": [
+        "m07"
+      ],
+      "payoffs": [
+        "s03-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐小棠送到一個月軍糧與做地雷要用的硝石",
+        "擒下假馬匪頭目",
+        "看清國師的暗紅光框：沒有好感度條，只有一條進度和一排模糊的名字"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "wang-erniu",
+        "s03-zhou",
+        "s03-kou-yannian",
+        "tang-xiaotang",
+        "mo-chen",
+        "xitong"
+      ],
+      "locations": [
+        "北疆沙丘",
+        "鹽商古道"
+      ],
+      "state": {
+        "time": "北上第五天",
+        "knowledge": "國師能透過銅鏡看他；監軍串通假馬匪",
+        "carry_forward": "怎麼處置監軍"
+      }
+    },
+    {
+      "number": 129,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "銀子上的暗記",
+      "youtube_title": "監軍串通馬匪劫糧被抓包，他不殺不關，只讓監軍自掏腰包請三千人喝湯",
+      "duration_s": 100,
+      "logline": "許硯要讓監軍吐出剋扣的糧錢，又不能現在就扳倒他。",
+      "hook": "許硯一拳把銅鏡扣進雪地，鏡中笑聲悶斷；他轉頭看向監軍：「你的鏡子？」",
+      "hook_type": "line",
+      "mid_hook": "唐小棠的第二封飛鴿到：監軍給挑夫的新官銀熔過重鑄，銀底的暗記是宰相魏家錢莊的。",
+      "conflict": "讓監軍當眾低頭，同時把他背後的人記下來。",
+      "turn": "大家以為許硯會當場拿下監軍，他卻把證據收進袖裡，只逼監軍「自願」把剋扣的糧錢掏出來給鄉勇加菜：留著他，才看得到他還要跟誰聯絡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "系統倒數最後一夜，點名點到最後一個名字，石頭沒有應聲；王二牛抓起火把衝進風雪：「我去找！」",
+        "question": "石頭找得回來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "xiju"
+      ],
+      "spectacle": "三千人舉碗齊喊「謝監軍」，監軍站在熱湯鍋前笑得比哭還難看。",
+      "glamour_shot": "秦霜在火光下擦槍，側臉被火映成暖金色。",
+      "setups": [],
+      "payoffs": [
+        "s03-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到監軍收魏家錢莊銀子的暗記證據，暫不揭穿",
+        "監軍自掏腰包補回剋扣的糧錢"
+      ],
+      "characters": [
+        "xu-yan",
+        "s03-kou-yannian",
+        "tang-xiaotang",
+        "qin-shuang",
+        "wang-erniu",
+        "liu-sanniang",
+        "xitong"
+      ],
+      "locations": [
+        "北疆雪原營地"
+      ],
+      "state": {
+        "time": "北上第六天夜",
+        "knowledge": "監軍收的是宰相魏家錢莊的銀子",
+        "carry_forward": "石頭失蹤；任務最後一夜"
+      }
+    },
+    {
+      "number": 130,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "城門不開",
+      "youtube_title": "三千鄉勇冒雪七天零凍傷趕到邊關，守將站在城頭只丟下一句：朝廷要你們在關外守",
+      "duration_s": 135,
+      "logline": "許硯要把三千人一個不少地帶到狼牙關、交上強制任務，卻被關門擋在外頭。",
+      "hook": "風雪裡一點火光晃回來，王二牛背著凍僵的石頭邊跑邊喊：「還有氣！」",
+      "hook_type": "line",
+      "mid_hook": "石頭被熱湯和眾人的體溫救回，面板跳出「強制任務完成」，獎勵箱開出「拒馬陣圖」；同一刻，狼牙關的黑色城牆從雪霧裡露了出來。",
+      "conflict": "救回石頭、完成凍傷零人任務、帶三千人進關。",
+      "turn": "大家以為到了關就安全了，城門卻一動不動；監軍拍馬先到門下，城門只開一條縫，放他一個人進去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "城頭守將賀鎮俯看三千人，聲音被風送下來：「朝廷有旨。」頓了一下：「你們，在關外守。」城門「咚」地合死。",
+        "question": "被關在門外，三千人怎麼活？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "quanmou",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "雪霧散開，狼牙關的黑城牆橫在兩座山之間，城頭一排冷光閃閃的弓手。",
+      "glamour_shot": "秦霜站在三千人最前面，披風被風拉直，抬頭與城頭的守將對視。",
+      "setups": [
+        "s03-t06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "凍傷零人任務完成，拿到拒馬陣圖",
+        "石頭救回",
+        "三千人全數抵達狼牙關"
+      ],
+      "characters": [
+        "xu-yan",
+        "wang-erniu",
+        "qin-shuang",
+        "liu-sanniang",
+        "s03-kou-yannian",
+        "s03-he-zhen",
+        "xitong"
+      ],
+      "locations": [
+        "北疆雪原",
+        "狼牙關城下"
+      ],
+      "state": {
+        "time": "北上第七天黃昏",
+        "knowledge": "守將聽監軍的，奉旨不開門",
+        "carry_forward": "在關外紮營"
+      }
+    },
+    {
+      "number": 131,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "關外就關外",
+      "youtube_title": "被守將關在城外等死，他一個下午立起三排拒馬，城頭笑他的老兵自己閉了嘴",
+      "duration_s": 90,
+      "logline": "許硯要在關外的雪地裡把三千人變成一座營，敵人卻比預料中來得快。",
+      "hook": "城門合死的回音還在山谷裡盪，許硯拍掉肩上的雪：「好，關外就關外。」轉身下令：「背牆紮營！」",
+      "hook_type": "line",
+      "mid_hook": "柳三娘從北邊探路回來，臉色發白：「一萬騎。」狼頭大旗下，領兵的是個戴銀面具的王子；朔漠人換馬不換人，今夜就到。",
+      "conflict": "背靠城牆紮營、立陣，摸清敵情。",
+      "turn": "以為還有兩天可以準備，敵人今夜就到；這時秦霜的好感度跳過門檻，獎勵箱開出「火藥地雷」，配方糊成一團光，可做出來至少要一個時辰。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "秦霜翻身上馬：「我去拖住他們。」許硯一把抓住她的韁繩，北方的地平線已經開始發黑。",
+        "question": "他會讓秦霜帶人去拖一萬騎嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang"
+      ],
+      "spectacle": "三排削尖的拒馬在雪原上斜斜立起，背後是黑沉沉的狼牙關城牆。",
+      "glamour_shot": "柳三娘策馬衝回營地，粗辮與黑鳳額巾一起向後揚起。",
+      "setups": [
+        "s03-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "拒馬陣圖加柳三娘的伐木隊，一個下午立起三排拒馬",
+        "秦霜好感度過門檻：他把營裡最擋風的位置留給傷兵，拿到火藥地雷"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "wang-erniu",
+        "s03-he-zhen",
+        "xitong"
+      ],
+      "locations": [
+        "狼牙關城下營地"
+      ],
+      "state": {
+        "time": "抵達當天入夜",
+        "knowledge": "一萬朔漠騎今夜就到，地雷要一個時辰才做得出來",
+        "carry_forward": "誰去拖住敵人"
+      }
+    },
+    {
+      "number": 132,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "兩百人揚雪",
+      "youtube_title": "一萬騎兵壓到眼前，將門女老婆只帶兩百人出營，竟讓整支大軍停馬不敢衝",
+      "duration_s": 85,
+      "logline": "秦霜要用兩百人把一萬騎拖住一個時辰，許硯要在這一個時辰裡把地雷埋好。",
+      "hook": "許硯鬆開韁繩：「活著回來。」秦霜把長槍往肩上一扛：「一個時辰，我給你。」",
+      "hook_type": "line",
+      "mid_hook": "埋雷人手不夠，許硯抬頭看城頭，監軍正趴在垛口看熱鬧；柳三娘卻發現一個監軍親兵垂繩下了城，懷裡揣著一封信往北跑。",
+      "conflict": "拖住敵人、埋好地雷。",
+      "turn": "以為秦霜去送死，她用的是秦家軍的疑兵法：兩百人拖著樹枝揚雪，朔漠前鋒以為後面是大軍，竟停馬列陣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "朔漠重新整隊衝鋒，馬蹄震得雪粒跳起來；地雷引線握在許硯手裡，王二牛吼：「近了！」許硯：「再等。」",
+        "question": "地雷炸得響嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang"
+      ],
+      "spectacle": "兩百騎拖著樹枝在雪原上掀起一道白色巨浪，看起來像萬人的煙塵。",
+      "glamour_shot": "秦霜黑紅輕甲在月光下勒馬回身，紅纓槍尖指向北方。",
+      "setups": [
+        "s03-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜拖住朔漠前鋒一個時辰",
+        "地雷埋好"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "wang-erniu",
+        "s03-kou-yannian"
+      ],
+      "locations": [
+        "狼牙關城下營地",
+        "關外雪原"
+      ],
+      "state": {
+        "time": "抵達當夜子時",
+        "knowledge": "地雷埋好；一個監軍親兵帶信北逃",
+        "carry_forward": "第一波衝鋒"
+      }
+    },
+    {
+      "number": 133,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "第一夜",
+      "youtube_title": "雪夜一萬騎兵衝到眼前，他一拉引線整片雪原炸成白晝，敵軍王子的面具都被掀飛",
+      "duration_s": 95,
+      "logline": "許硯要用地雷和拒馬守住第一夜，城頭的友軍卻一箭不放。",
+      "hook": "許硯一拉引線，雪原上一排火光沖天，土石和狼頭旗一起飛上夜空，朔漠前排的戰馬全部人立長嘶。",
+      "hook_type": "image",
+      "mid_hook": "氣浪掀飛了銀面具，露出一張帶痞笑的臉：朔漠王子蘇赫，他隔著火光朝許硯舉刀致意。",
+      "conflict": "守住第一夜。",
+      "turn": "第二波繞向側翼，許硯朝城頭喊放箭，守將賀鎮舉起手，卻是示意弓手「不許放」；秦霜當機立斷把拒馬陣收成口袋，把側翼騎兵引進第二排地雷。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "天快亮，朔漠退了半里；身後忽然「吱呀」一聲，緊閉的狼牙關城門開了一條縫。",
+        "question": "城門為什麼偏偏這時候開？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shachang",
+        "shuang"
+      ],
+      "spectacle": "雪夜地雷在朔漠騎兵前炸開，火光把整片雪原照得像白晝。",
+      "glamour_shot": "蘇赫在火光中扔掉殘破的面具，細辮上的銀環晃動，嘴角一抹痞笑。",
+      "setups": [
+        "s03-t06"
+      ],
+      "payoffs": [
+        "s03-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "守住第一夜的兩波衝鋒",
+        "認出領兵王子是蘇赫"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "wang-erniu",
+        "su-he",
+        "s03-he-zhen"
+      ],
+      "locations": [
+        "狼牙關城下",
+        "關外雪原"
+      ],
+      "state": {
+        "time": "第一夜將盡",
+        "knowledge": "領兵的是朔漠王子蘇赫；守將不肯放箭",
+        "carry_forward": "城門開縫"
+      }
+    },
+    {
+      "number": 134,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "一人扛門",
+      "youtube_title": "守將開門只救監軍、轉身就要關門把三千人關在外面，憨大個兄弟一個人扛住兩扇城門",
+      "duration_s": 95,
+      "logline": "王二牛要一個人撐住城門，讓傷兵進得去、追兵進不來。",
+      "hook": "城門縫裡衝出的不是援兵，是監軍的馬：他一夜不知去了哪，正被三騎朔漠兵追著逃回來。",
+      "hook_type": "reversal",
+      "mid_hook": "監軍剛衝進門，城上就喊「關門！」兩扇巨門開始合攏；王二牛扔下大斧，用肩膀頂住了門。",
+      "conflict": "守將要等監軍一進門就關門，把傷兵和三千人關在外面；朔漠追兵要趁門縫衝進關。",
+      "turn": "守軍在裡面拼命推，朔漠兵在外面拼命撞，王二牛一個人卡在中間：門關不上、也開不大，傷兵從他腋下一個一個鑽進了關。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "城外，蘇赫拉滿弓，箭尖對準門縫裡的王二牛：「好漢子。」弓弦一鬆。",
+        "question": "這一箭會射中王二牛嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang"
+      ],
+      "spectacle": "王二牛一個人雙臂撐開兩扇巨大的城門，門內門外都有人在推。",
+      "glamour_shot": "王二牛咬牙頂門，滿頭汗氣在寒夜裡冒出白煙，一口白牙咬得發亮。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "傷兵全數進關"
+      ],
+      "characters": [
+        "wang-erniu",
+        "xu-yan",
+        "s03-kou-yannian",
+        "s03-he-zhen",
+        "su-he",
+        "qin-shuang"
+      ],
+      "locations": [
+        "狼牙關城門"
+      ],
+      "state": {
+        "time": "第一夜黎明前",
+        "knowledge": "監軍夜裡出過關；守將想把三千人關在外面",
+        "carry_forward": "蘇赫的箭"
+      }
+    },
+    {
+      "number": 135,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "截信",
+      "youtube_title": "監軍反咬兄弟擅闖關門要打二十杖，女寨主老婆把一封信扔在他腳下，監軍當場腿軟",
+      "duration_s": 95,
+      "logline": "許硯要讓監軍為夜裡出關付出代價，監軍卻搶先倒打一耙。",
+      "hook": "箭到半途，一桿紅纓槍橫空掃過，箭桿斷成兩截落在王二牛腳邊；秦霜收槍：「他是我的兵。」",
+      "hook_type": "image",
+      "mid_hook": "天亮朔漠退兵，監軍當眾指王二牛「擅闖關門」要杖二十；許硯反問：「監軍昨夜在城外做什麼？」監軍：「探敵情。」",
+      "conflict": "保住王二牛，逼監軍說實話。",
+      "turn": "監軍以為沒人看見他出關；柳三娘把一封火漆完好的信扔在他腳下，她昨夜追了那個親兵二十里。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "許硯拆開信，滿紙是看不懂的朔漠文字，落款處只有一個狼頭印；監軍忽然笑了：「你看得懂嗎？」",
+        "question": "這封信是寫給誰的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shachang",
+        "shuang",
+        "henla"
+      ],
+      "spectacle": "晨光裡朔漠騎兵像退潮一樣撤走，雪原上留下一排排燒黑的坑。",
+      "glamour_shot": "柳三娘甩出信時單手叉腰，額巾被晨風吹動，眼角一挑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "截下監軍的密信",
+        "王二牛免罰",
+        "柳三娘好感度跳一格：許硯讓她一個人去追，信她追得回來"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "wang-erniu",
+        "s03-kou-yannian",
+        "s03-he-zhen",
+        "xitong"
+      ],
+      "locations": [
+        "狼牙關城門",
+        "關外營地"
+      ],
+      "state": {
+        "time": "第二天早晨",
+        "knowledge": "監軍有一封寫給朔漠的密信",
+        "carry_forward": "誰看得懂朔漠文"
+      }
+    },
+    {
+      "number": 136,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "回信",
+      "youtube_title": "截下監軍通敵密信卻看不懂，他找來俘虜念信，再仿一枚狼頭印給敵人回了封信",
+      "duration_s": 90,
+      "logline": "許硯要讀懂密信，再用它反咬寫信的人。",
+      "hook": "許硯把信折好：「看不懂。」轉頭對被綁著的朔漠俘兵一笑，遞過去一碗熱湯：「但他看得懂。」",
+      "hook_type": "line",
+      "mid_hook": "俘兵喝完湯念出信：「十五夜，舉燈為號，開門。」監軍要在月圓那夜替朔漠開狼牙關。",
+      "conflict": "不打草驚蛇，把監軍的內應線變成自己的陷阱。",
+      "turn": "以為許硯會立刻抓監軍，他卻請唐家商隊的老篆刻師傅仿出狼頭印，寫一封「回信」塞回那個親兵懷裡，再放他跑。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "親兵在雪原上越跑越遠；系統彈出「強制任務：三日開關」，失敗懲罰一行字；秦霜的箭已瞄準那個背影：「放還是射？」",
+        "question": "放走這條線，他賭得起嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "quanmou"
+      ],
+      "spectacle": "雪原上一個小黑點越跑越遠，城頭與營地上千雙眼睛都盯著他。",
+      "glamour_shot": "秦霜拉滿弓，側臉與箭桿成一直線，碎髮被風吹過眼角。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "讀懂密信：十五夜舉燈開門",
+        "仿印回信塞回內應手上"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "s03-zhou",
+        "s03-kou-yannian",
+        "xitong"
+      ],
+      "locations": [
+        "關外營地"
+      ],
+      "state": {
+        "time": "第二天",
+        "knowledge": "監軍約了十五夜開門；假回信已塞回",
+        "carry_forward": "三日倒數、十五夜"
+      }
+    },
+    {
+      "number": 137,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "燈為號",
+      "youtube_title": "月圓夜監軍舉燈要替敵軍開關門，他早在敵人必經的路上埋好第三排地雷",
+      "duration_s": 95,
+      "logline": "十五夜，監軍舉燈開門，許硯要讓朔漠的夜襲撲進自己設好的口袋。",
+      "hook": "許硯：「放。」秦霜鬆弦，箭擦著親兵的帽子釘進雪裡，那人嚇得跑得更快了。",
+      "hook_type": "line",
+      "mid_hook": "月圓，監軍屋頂亮起一盞紅燈；衝來的夜襲隊打的不是蘇赫的狼頭旗，是一面黑鷹旗，俘兵脫口而出：「赤勒大人的。」",
+      "conflict": "讓夜襲撲空，同時看清監軍到底跟誰勾結。",
+      "turn": "夜襲隊照著假回信上的路線衝來，正好撞進新埋的第三排地雷；可城門的門閂也被人悄悄拉開了，拉門閂的是守將的親兵。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "守將賀鎮自己舉著火把站在敞開的門洞中央，一手按刀，盯著許硯。",
+        "question": "守將是來開門的，還是來關門的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "shachang",
+        "quanmou"
+      ],
+      "spectacle": "月圓下黑鷹旗騎隊衝進地雷區，火光把整片雪原照成白晝。",
+      "glamour_shot": "柳三娘蹲在監軍屋脊上，月光勾出她的側影與背上的雙刀。",
+      "setups": [],
+      "payoffs": [
+        "s03-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "夜襲隊撲進地雷口袋",
+        "查清密信是寫給朔漠王叔赤勒，不是給王子蘇赫"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "s03-kou-yannian",
+        "s03-he-zhen"
+      ],
+      "locations": [
+        "狼牙關城門",
+        "關外雪原"
+      ],
+      "state": {
+        "time": "十五夜",
+        "knowledge": "監軍勾結的是朔漠王叔赤勒；守將的人在開門",
+        "carry_forward": "守將的選擇"
+      }
+    },
+    {
+      "number": 138,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "賀叔",
+      "youtube_title": "守將一刀砍斷門繩把敵軍關在外面，將門女老婆摘下頭盔，守將手裡的刀當場落地",
+      "duration_s": 120,
+      "logline": "秦霜要弄清楚這個曾經的秦家軍老將，為何甘心聽一個監軍的話。",
+      "hook": "賀鎮的刀出鞘，轉身一刀砍斷門閂上的繩，城門轟然合上，把黑鷹騎兵擋在外頭：「關門！」",
+      "hook_type": "reversal",
+      "mid_hook": "監軍從屋裡衝出來尖叫：「賀鎮！你家人還在京城！」全城一靜。",
+      "conflict": "把守將從監軍手上拉過來。",
+      "turn": "大家以為守將是貪生怕死的庸將，原來他一家老小被押在京城，監軍每月一封家書就是他們的命；他還說了一句：秦家出事那年，大營的關防圖「不見了」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "城樓暗處，秦霜摘下頭盔，高馬尾散開，走到賀鎮面前：「賀叔，還認得我嗎？」賀鎮的刀「噹」地掉在地上。",
+        "question": "賀鎮會站到秦霜這邊嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "shachang"
+      ],
+      "spectacle": "城門合攏的瞬間，門外數百支火把撞上門板，炸開一大片火星。",
+      "glamour_shot": "秦霜在城樓火把下摘盔散髮，眼神又倔又亮。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "s03-t06",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "守將關門擋住夜襲",
+        "知道守將受制於人質"
+      ],
+      "characters": [
+        "qin-shuang",
+        "s03-he-zhen",
+        "s03-kou-yannian",
+        "xu-yan"
+      ],
+      "locations": [
+        "狼牙關城樓"
+      ],
+      "state": {
+        "time": "十五夜深",
+        "knowledge": "守將的家人被押在京城；他曾是秦家軍，記得關防圖失蹤",
+        "carry_forward": "賀鎮認出秦霜"
+      }
+    },
+    {
+      "number": 139,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "百弓對一人",
+      "youtube_title": "他設局套住監軍，監軍反手拿出國師令牌，一百張弓同時對準了他",
+      "duration_s": 90,
+      "logline": "許硯要讓監軍原形畢露，監軍卻先拿他仿的印反咬他通敵。",
+      "hook": "賀鎮雙膝一軟要跪，秦霜一把扶住：「別跪，幫我。」許硯在門外接一句：「你家人，我去接。」",
+      "hook_type": "line",
+      "mid_hook": "天一亮，監軍搶先發難，亮出國師給的監軍令，宣布許硯私通朔漠，證物就是從許硯帳裡搜出的那枚仿刻狼頭印。",
+      "conflict": "撐住監軍的反咬，等到能一次翻盤的時機。",
+      "turn": "許硯的局被反咬：替他仿印的就是自己人，那枚印現在成了他「通敵」的鐵證，守軍開始動搖。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "監軍一聲「拿下！」，城頭一百張弓同時拉滿，晨光裡一百個箭頭全對著許硯。",
+        "question": "守軍的箭會射向誰？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "quanmou",
+        "shuang"
+      ],
+      "spectacle": "城頭一百張弓同時拉開，晨光照得箭頭像一排冰稜。",
+      "glamour_shot": "許硯被弓圍住，抬眼一笑，青色衣角被北風掀起。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜好感度過門檻：他答應替賀鎮接回家人，獎勵箱開出旗語號令法"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "s03-he-zhen",
+        "s03-kou-yannian",
+        "xitong"
+      ],
+      "locations": [
+        "狼牙關城樓",
+        "關內校場"
+      ],
+      "state": {
+        "time": "第三天早晨",
+        "knowledge": "監軍用仿印反咬他通敵",
+        "carry_forward": "百弓對準"
+      }
+    },
+    {
+      "number": 140,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "關門大開",
+      "youtube_title": "一百張弓對準他，他只拿出兩封信和一碗印泥，監軍當場跪地，邊關大門為他敞開",
+      "duration_s": 140,
+      "logline": "許硯要在三軍面前翻盤，奪下守將兵權，打開狼牙關。",
+      "hook": "弓弦繃緊的那一秒，賀鎮在城頭吼：「誰敢放箭！」可他按刀的手也在抖，家人還在監軍手上。",
+      "hook_type": "line",
+      "mid_hook": "許硯把兩封信並排放在鼓面上：仿印回信的印泥帶著唐家的桂花香，監軍那封用的是官印泥；俘兵當眾比對筆跡，監軍的親兵噗通跪下招了。",
+      "conflict": "證明仿印是局、寫信的是監軍，把兵權拿到手。",
+      "turn": "監軍最後一張牌：「我是國師的人！」許硯：「那正好，一起查。」再亮出魏家錢莊的銀子暗記；賀鎮雙手捧上兵符，許硯接下，城門大開。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "歡呼聲裡，一騎朔漠使者舉著白狼旗停在門外，摘下皮帽：「要退兵？」他看向南方：「送你們的長公主來和親。」",
+        "question": "他會把阿令交出去嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang",
+        "henla",
+        "quanmou"
+      ],
+      "spectacle": "狼牙關城門大開，三千鄉勇在門洞前齊聲吶喊，聲浪把城頭的旗吹得筆直。",
+      "glamour_shot": "秦霜與柳三娘並騎立在門洞的逆光裡，一黑紅一暗紅，披風一起揚起。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "奪下狼牙關兵權，監軍被綁",
+        "強制任務完成，獎勵箱開出可拆裝霹靂車的基礎圖",
+        "寫信託阿令設法救出賀鎮在京城的家人"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "s03-he-zhen",
+        "s03-kou-yannian",
+        "s03-hu-er",
+        "wang-erniu",
+        "xitong"
+      ],
+      "locations": [
+        "狼牙關校場",
+        "狼牙關城門"
+      ],
+      "state": {
+        "time": "第三天正午",
+        "knowledge": "拿下狼牙關；賀鎮說監軍那條朔漠暗線，跟當年害秦家的是同一條",
+        "carry_forward": "朔漠要長公主和親"
+      }
+    },
+    {
+      "number": 141,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "你們先送公主",
+      "youtube_title": "敵國要他交出長公主老婆去和親，他笑著回一句：要和親，你們先送個公主來",
+      "duration_s": 90,
+      "logline": "許硯要用一份國書，把和親這把刀反架到朔漠脖子上。",
+      "hook": "三千人一起看向許硯。許硯笑出聲：「行啊。」使者一愣，他接著說：「你們先送個公主來。」",
+      "hook_type": "line",
+      "mid_hook": "飛鴿從柳溪堡回來，阿令只寫了一行：「敢送我，先送你。」全營笑翻；唐小棠在背面附註：「國書用唐家紙，便宜。」",
+      "conflict": "不交出阿令，又不讓議和破局。",
+      "turn": "以為朔漠會翻臉，使者竟一口答應，答應得太快；秦霜壓低聲音：「有詐。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "三天後清晨，雪原盡頭冒出一串紅帳，綿延半里，送親的鼓聲傳上關頭：朔漠真的把公主送來了。",
+        "question": "朔漠為什麼真肯送公主來？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "雪原上半里長的紅帳送親隊伍，鼓聲震落了城垛上的積雪。",
+      "glamour_shot": "阿令在柳溪堡燈下寫信，筆尖一頓，嘴角很淡地往上一勾。",
+      "setups": [
+        "s03-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿令好感度跳一格：他寫回柳溪堡的第一句是「誰都不送」",
+        "國書反將朔漠一軍"
+      ],
+      "characters": [
+        "xu-yan",
+        "s03-hu-er",
+        "qin-shuang",
+        "liu-sanniang",
+        "a-ling",
+        "tang-xiaotang",
+        "s03-he-zhen",
+        "xitong"
+      ],
+      "locations": [
+        "狼牙關城樓",
+        "柳溪堡書房"
+      ],
+      "state": {
+        "time": "奪關後第三天",
+        "knowledge": "朔漠答應送公主答應得太快",
+        "carry_forward": "公主是誰、來做什麼"
+      }
+    },
+    {
+      "number": 142,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "一箭射燈",
+      "youtube_title": "敵國真送來和親公主，她下車第一件事就是一箭射掉他頭頂的迎親燈籠",
+      "duration_s": 95,
+      "logline": "阿蘭朵要讓大衡人知道她不是禮物；許硯要接住這個帶刀來的新娘。",
+      "hook": "紅帳停在關前，簾子一掀，一支箭擦過許硯耳邊，把他身後的大紅迎親燈籠射落在雪地裡。",
+      "hook_type": "danger",
+      "mid_hook": "系統突然「叮」一聲：「新良緣：阿蘭朵，好感 0」。許硯：「蛤？」",
+      "conflict": "接下和親公主，又不讓她一進門就壓住全場。",
+      "turn": "以為公主是來示威的，她跳下馬直走到許硯面前打量一圈：「你就是許硯？瘦。」再丟下一句「蘇赫是我哥」；秦霜和柳三娘同時往前一步，三個女人在雪地裡站成一個三角。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "夜裡，侍女塔娜把一柄彎刀藏進嫁妝箱底；阿蘭朵展開一張蓋狼頭印的羊皮，上面一行字：「七日之內，取許硯性命」。",
+        "question": "七天內，她會不會動手？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tianchong",
+        "quanmou"
+      ],
+      "spectacle": "朔漠送親隊的紅帳在雪原上綿延，一支箭帶著燈籠飛過三千人頭頂。",
+      "glamour_shot": "阿蘭朵掀簾下馬，彩繩小辮與綠松石在雪光裡晃，手腕銀鈴一響，回眸一笑。",
+      "setups": [
+        "s03-t07",
+        "s03-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蘭朵入關；系統為她開了一條好感度條"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "s03-tana",
+        "qin-shuang",
+        "liu-sanniang",
+        "s03-hu-er",
+        "xitong"
+      ],
+      "locations": [
+        "狼牙關城下",
+        "和親紅帳"
+      ],
+      "state": {
+        "time": "送親當天",
+        "knowledge": "觀眾知道她帶著刺殺令；許硯只知道系統替她開了條",
+        "carry_forward": "七日之期"
+      }
+    },
+    {
+      "number": 143,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "第一頓飯",
+      "youtube_title": "帶刀來刺殺的敵國公主，吃了他做的第一口紅燒肉就愣住，第二口眼眶紅了",
+      "duration_s": 90,
+      "logline": "阿蘭朵是來刺殺的，卻先被一桌飯打亂了陣腳。",
+      "hook": "嫁妝箱「啪」地合上，下一秒帳外傳來許硯的喊聲：「開飯了！」阿蘭朵的手還按在箱蓋上。",
+      "hook_type": "line",
+      "mid_hook": "她咬下第一口紅燒肉愣住，第二口眼眶紅了；秦霜和柳三娘一左一右坐她兩邊，同時夾一塊肉放進她碗裡：「多吃。」像看守犯人。",
+      "conflict": "一頓飯讓兩邊人能坐在同一張桌子上。",
+      "turn": "以為她是被飯收買了，原來她把饅頭偷偷塞進袖子：她的部落已經餓了一整個冬天；許硯看見了，什麼都沒說，散席後在她馬鞍上掛了一袋饅頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "深夜，柳三娘巡營，看見阿蘭朵一個人站在許硯帳外，手按在腰間；柳三娘雙刀出鞘：「站住。」",
+        "question": "她深夜站在帳外想做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "大衡與朔漠兩邊人圍著一口熱氣騰騰的大鍋，蒸汽升進雪夜。",
+      "glamour_shot": "阿蘭朵咬一口紅燒肉愣住，長睫一眨，手腕銀鈴輕響。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蘭朵好感度 0→6：他默默在她馬鞍上掛了一袋饅頭"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "qin-shuang",
+        "liu-sanniang",
+        "s03-tana",
+        "xitong"
+      ],
+      "locations": [
+        "關外大營飯帳"
+      ],
+      "state": {
+        "time": "送親當夜",
+        "knowledge": "阿蘭朵的部落在挨餓",
+        "carry_forward": "她站在帳外做什麼"
+      }
+    },
+    {
+      "number": 144,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "帳外的刀",
+      "youtube_title": "女寨主老婆深夜雙刀攔下敵國公主，公主舉起來的不是刀，是一包要送給俘虜的饅頭",
+      "duration_s": 85,
+      "logline": "阿蘭朵要偷偷照顧被俘的族人，柳三娘要確定她不是來殺人的。",
+      "hook": "雙刀交叉架在阿蘭朵頸前，她舉起另一隻手，手裡是一包饅頭：「給俘虜的。」",
+      "hook_type": "reversal",
+      "mid_hook": "俘兵接過饅頭，壓低聲音用朔漠話說：「公主，你不該來，叔父說……」",
+      "conflict": "柳三娘要放人還是押人；阿蘭朵要把話問完。",
+      "turn": "柳三娘以為逮到刺客，結果自己也把身上的乾糧全塞給了俘兵，兩個女人在雪地裡對看一眼，柳三娘先別開臉：「怕他們餓死浪費糧。」帳裡的許硯什麼都聽見了，讓人給俘兵加了毛氈。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "俘兵說完了後半句：「叔父說，你回不去了。」阿蘭朵手裡剩下的饅頭掉在雪上，滾了兩圈。",
+        "question": "叔父為什麼不讓她回去？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "雪夜俘虜營的火堆邊，兩個女人一人一包乾糧遞進柵欄。",
+      "glamour_shot": "柳三娘收刀時粗辮一甩，火光照著她別過去的半張臉。",
+      "setups": [],
+      "payoffs": [
+        "s03-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "俘兵有了毛氈和熱食",
+        "阿蘭朵好感度 6→11：他沒拆穿她，還照顧她的族人",
+        "知道是王叔赤勒不想讓她活著回去"
+      ],
+      "characters": [
+        "a-landuo",
+        "liu-sanniang",
+        "xu-yan",
+        "xitong"
+      ],
+      "locations": [
+        "關外俘虜營"
+      ],
+      "state": {
+        "time": "送親當夜深",
+        "knowledge": "叔父赤勒送她來，就沒打算讓她回去",
+        "carry_forward": "阿蘭朵的心結"
+      }
+    },
+    {
+      "number": 145,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "比馬",
+      "youtube_title": "他根本不太會騎馬，卻跟草原公主賭賽馬，她摔出去那一刻他做了一件讓全營愣住的事",
+      "duration_s": 90,
+      "logline": "許硯想從阿蘭朵嘴裡問出真話，只能照她的規矩來：賽馬。",
+      "hook": "饅頭在雪上滾了兩圈，許硯撿起來拍乾淨遞給她：「回不去，就先吃。」她一把抓過、狠狠咬一口：「明天，比馬。」",
+      "hook_type": "line",
+      "mid_hook": "開跑沒多久許硯就被甩開三個馬身，然後阿蘭朵的馬前蹄踩進雪下的鼠洞，她整個人被甩了出去。",
+      "conflict": "賭贏這場賽馬，讓她開口。",
+      "turn": "以為許硯會趁機超過去，他勒馬跳下來接住她，兩個人一起滾進雪堆；他把自己的馬讓給她：「你騎。我輸。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她贏了，騎在他的馬上俯看他：「賭注。」她揚鞭指向關內：「帶我去見那個監軍。」",
+        "question": "她為什麼要見監軍？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "xiju",
+        "quanmou"
+      ],
+      "spectacle": "雪原上兩騎並肩奔馳，馬蹄揚起的雪粉在陽光裡閃成一片金霧。",
+      "glamour_shot": "阿蘭朵策馬回頭大笑，滿頭彩繩小辮與綠松石在風裡飛。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蘭朵好感度跳到 20：他把自己的馬讓給她，獎勵箱開出「青貯牧草法」"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "qin-shuang",
+        "xitong"
+      ],
+      "locations": [
+        "關外雪原"
+      ],
+      "state": {
+        "time": "送親第二天",
+        "knowledge": "阿蘭朵要見監軍",
+        "carry_forward": "她跟監軍是什麼關係"
+      }
+    },
+    {
+      "number": 146,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "牢裡的熟面孔",
+      "youtube_title": "敵國公主一進牢房，被關的監軍臉色刷白，她一句話揭穿監軍早就跟敵營喝過酒",
+      "duration_s": 95,
+      "logline": "阿蘭朵要確認監軍的身分，監軍要用一句朔漠話逼她動手。",
+      "hook": "牢門打開，監軍抬頭看見阿蘭朵，臉色「唰」地白了，往牆角縮了一步。",
+      "hook_type": "image",
+      "mid_hook": "阿蘭朵指著監軍：「他，在叔父帳裡喝過酒。」監軍跟赤勒，早就見過面。",
+      "conflict": "把監軍、赤勒跟大衡朝中的線連起來。",
+      "turn": "監軍忽然用朔漠話對她說：「你不殺他，你哥死。」許硯聽不懂，只看見她握刀柄的手指一根根收緊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "牢外鐘聲一響，國師府的黑衣人玄七捧著聖旨走進來：「奉旨放人。」「押回京城。」",
+        "question": "聖旨要放人，許硯怎麼接？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "tianchong"
+      ],
+      "spectacle": "牢房裡一支火把，三個人的影子在石牆上被拉得很長。",
+      "glamour_shot": "阿蘭朵在牢門火把下的側臉，綠松石小辮垂在肩前，眼神一點點冷下來。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "證實監軍與朔漠王叔赤勒私下往來"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "s03-kou-yannian",
+        "s03-xuan-qi"
+      ],
+      "locations": [
+        "狼牙關地牢"
+      ],
+      "state": {
+        "time": "送親第三天",
+        "knowledge": "監軍與赤勒是舊識；國師的人帶聖旨來要人",
+        "carry_forward": "監軍被要走"
+      }
+    },
+    {
+      "number": 147,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "順路押送",
+      "youtube_title": "國師派人拿聖旨來要人，他照旨辦事一字不改，國師的人卻氣得說不出話",
+      "duration_s": 90,
+      "logline": "許硯要照聖旨放人，卻讓監軍一步都脫不出自己的手。",
+      "hook": "許硯接過聖旨讀完，一笑：「好，押回京。」轉身：「二牛，你押。」",
+      "hook_type": "line",
+      "mid_hook": "聖旨只寫「押回京」，沒寫誰押、走哪條路；許硯讓王二牛帶二十人走唐家商路，先繞柳溪堡交給阿令「代為看管」再上京。玄七的臉一沉。",
+      "conflict": "放人不放手；再用一場比箭把營裡的氣提起來。",
+      "turn": "以為玄七會硬搶，他卻笑著退開，留下一面銅鏡：「國師送你的。」營地靶場上，三位妻子和許硯比箭給全營看。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "最後一輪，阿蘭朵的箭忽然一轉，對準了許硯的臉；弓弦一鬆。",
+        "question": "她終於要動手了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "營地靶場上三位妻子並排拉弓，三支箭在空中並行飛向靶心。",
+      "glamour_shot": "秦霜、柳三娘、阿蘭朵三人並排拉弓的側臉，一黑紅、一暗紅、一紅白。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "監軍照旨押走，實際押去柳溪堡交給阿令",
+        "柳三娘好感度跳一格：他沒讓國師的人把監軍帶走"
+      ],
+      "characters": [
+        "xu-yan",
+        "s03-xuan-qi",
+        "wang-erniu",
+        "a-landuo",
+        "qin-shuang",
+        "liu-sanniang",
+        "s03-kou-yannian",
+        "xitong"
+      ],
+      "locations": [
+        "狼牙關衙門",
+        "營地靶場"
+      ],
+      "state": {
+        "time": "送親第四天",
+        "knowledge": "監軍被押往柳溪堡；國師留下一面銅鏡",
+        "carry_forward": "阿蘭朵的箭"
+      }
+    },
+    {
+      "number": 148,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "落下的竹筒",
+      "youtube_title": "敵國公主一箭射向他，箭卻打落了天上老鷹腳上的密信，將門女老婆堵著他問：她是刺客",
+      "duration_s": 90,
+      "logline": "秦霜要逼許硯承認阿蘭朵是刺客，許硯卻另有打算。",
+      "hook": "箭擦過許硯頭頂一尺，打中一隻正掠過營地的老鷹腳上的小竹筒；竹筒落地，老鷹驚叫著飛走。",
+      "hook_type": "image",
+      "mid_hook": "阿蘭朵搶先撿起竹筒塞進懷裡，只有秦霜看見竹筒上的黑鷹印：赤勒的鷹。",
+      "conflict": "營裡藏著刺客，一家人要不要撕破臉。",
+      "turn": "秦霜找許硯攤牌：「她是刺客。」許硯：「我知道。」他從第一天就知道，只是在等她自己選。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "秦霜和柳三娘堵在許硯帳裡吵成一團，帳簾一掀，阿蘭朵抱著打開的嫁妝箱站在門口，箱底的彎刀亮在三個人眼前：「你們要的。」",
+        "question": "她為什麼自己把刀交出來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "xiju",
+        "quanmou"
+      ],
+      "spectacle": "老鷹從營地上空掠過，一支箭追上它腳下的竹筒，竹筒翻著跟斗落進雪裡。",
+      "glamour_shot": "阿蘭朵抱著嫁妝箱站在帳口逆光裡，銀鈴無聲，眼睛直直看著許硯。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜好感度沒跌反漲：他沒有瞞她，也沒有怪她多疑"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "qin-shuang",
+        "liu-sanniang",
+        "xitong"
+      ],
+      "locations": [
+        "營地靶場",
+        "許硯營帳"
+      ],
+      "state": {
+        "time": "送親第五天",
+        "knowledge": "許硯早知道她是刺客；赤勒用鷹傳令",
+        "carry_forward": "她交刀的用意"
+      }
+    },
+    {
+      "number": 149,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "國書也算",
+      "youtube_title": "系統為什麼給刺客開好感度條？答案是他自己寫的那封國書，全家笑到拍桌",
+      "duration_s": 110,
+      "logline": "許硯要弄清楚系統為什麼把一個刺客算進「良緣」，也要讓阿蘭朵說出竹筒裡的命令。",
+      "hook": "阿蘭朵把彎刀往桌上一放：「帶刀，是命令。」再把竹筒放上去：「這個，是催命。」",
+      "hook_type": "line",
+      "mid_hook": "系統終於解釋：「國書載明婚約」「等同配婚令」。許硯：「這也算？」系統：「算。」是他自己寫的國書，把她送進了名冊。",
+      "conflict": "把刺客變成家人之前，先把話說清楚。",
+      "turn": "唐小棠的飛鴿正好到：「又一個？帳記你頭上。」阿令另附一張：「先別死。」笑完了，許硯把剛開出的青貯牧草法抄一份交給阿蘭朵：給她部落過冬用。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "塔娜跌跌撞撞跑進來，用朔漠話說了一句；阿蘭朵臉色一變：「叔父的人，到關外了。」",
+        "question": "叔父的人今夜要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tianchong",
+        "quanmou",
+        "zhongtian"
+      ],
+      "spectacle": "許硯眼前的淡藍面板上，婚約欄自動填上一行朔漠文字，旁邊蓋著他自己的手印。",
+      "glamour_shot": "阿蘭朵接過牧草法時抬頭看他，燭光映在她蜜色的臉上，長睫一顫。",
+      "setups": [],
+      "payoffs": [
+        "s03-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蘭朵好感度跳到 30：他把獎勵送給她的族人過冬"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "qin-shuang",
+        "liu-sanniang",
+        "s03-tana",
+        "tang-xiaotang",
+        "a-ling",
+        "xitong"
+      ],
+      "locations": [
+        "許硯營帳"
+      ],
+      "state": {
+        "time": "送親第六天",
+        "knowledge": "和親國書在系統裡等於配婚令",
+        "carry_forward": "赤勒的人到了關外"
+      }
+    },
+    {
+      "number": 150,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "刀在喉前",
+      "youtube_title": "七日期限最後一夜他撤掉所有守衛，敵國公主拿著彎刀走進帳，刀尖停在他喉前一寸",
+      "duration_s": 130,
+      "logline": "阿蘭朵必須在今夜決定殺不殺許硯；許硯撤掉帳前的守衛，賭她的心。",
+      "hook": "關外雪坡上亮起三點綠火，塔娜低聲：「今夜子時，他們看你的燈。」",
+      "hook_type": "danger",
+      "mid_hook": "秦霜和柳三娘堅持要守在帳外，許硯把兩人請走：「她得自己選。」柳三娘氣得踢翻雪堆，轉身卻把雙刀藏在帳後；秦霜趴上了對面的屋頂。",
+      "conflict": "讓赤勒的暗號落空，也讓阿蘭朵自己做選擇。",
+      "turn": "子時，阿蘭朵掀簾進帳，許硯正在燈下抄給她部落的牧草法，連頭都沒抬；她看了那張紙很久，刀卻還是舉起來了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "燭火一晃，阿蘭朵的彎刀抵上許硯的喉嚨，她聲音發啞：「我哥要我殺你。」",
+        "question": "她的刀會不會落下？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "xiju",
+        "quanmou"
+      ],
+      "spectacle": "燭火裡彎刀刀尖停在許硯喉前一寸，帳外雪坡上三點綠火同時熄滅。",
+      "glamour_shot": "阿蘭朵在燭光中垂眼持刀，睫毛顫動，腕上銀鈴一聲不響。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "柳三娘悄悄拿下雪坡上打暗號的三個人",
+        "阿蘭朵好感度跳到 35"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "qin-shuang",
+        "liu-sanniang",
+        "s03-tana",
+        "xitong"
+      ],
+      "locations": [
+        "許硯營帳",
+        "關外雪坡"
+      ],
+      "state": {
+        "time": "送親第七夜子時",
+        "knowledge": "刺殺令打的是蘇赫的名義",
+        "carry_forward": "刀落不落"
+      }
+    },
+    {
+      "number": 151,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "你的手在抖",
+      "youtube_title": "敵國公主的刀抵在他喉嚨上，他一動不動只說了一句話，她的刀當場掉在地上",
+      "duration_s": 120,
+      "logline": "阿蘭朵要在殺與不殺之間給自己一個理由；許硯要她說出真正的敵人。",
+      "hook": "刀尖貼著喉結，許硯沒動，只看著她握刀的手：「你的手在抖。」",
+      "hook_type": "line",
+      "mid_hook": "許硯眼前的好感度條跳到 40，獎勵箱沒開，系統只打了一行字：「她剛剛決定了。」彎刀落地。",
+      "conflict": "把刺客的刀變成盟友的手。",
+      "turn": "她說出真相：哥哥蘇赫早被叔父赤勒架空，命令是赤勒借蘇赫的名義下的；她殺了許硯，戰火重燃；許硯殺了她，戰火也重燃，叔父兩頭都贏。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阿蘭朵抹掉眼淚，用刀尖在地圖上劃一道，停在北邊一個白點：「鹽礦裡，關著姓秦的。」帳外偷聽的秦霜，手裡的槍「噹」地落地。",
+        "question": "鹽礦裡的老將，是秦霜的父親嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "quanmou",
+        "tianchong"
+      ],
+      "spectacle": "地圖上一條刀痕從狼牙關劃向北邊一片白色的鹽礦。",
+      "glamour_shot": "阿蘭朵燭光下抬起淚眼，彩繩小辮散在肩上，刀已經不在手裡。",
+      "setups": [],
+      "payoffs": [
+        "s03-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蘭朵好感度到 40：他把喉嚨交給她，賭她不會下手",
+        "知道赤勒借刀殺人、蘇赫被架空",
+        "拿到北疆鹽礦的位置"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "qin-shuang",
+        "xitong"
+      ],
+      "locations": [
+        "許硯營帳"
+      ],
+      "state": {
+        "time": "送親第七夜",
+        "knowledge": "阿蘭朵倒戈；鹽礦可能關著秦烈山",
+        "carry_forward": "去不去鹽礦"
+      }
+    },
+    {
+      "number": 152,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "明日押京",
+      "youtube_title": "妻子的父親被關在北疆鹽礦十年，首富千金老婆遠在千里外，一夜替他們造好十張鹽商身分",
+      "duration_s": 95,
+      "logline": "秦霜要立刻去救父親，許硯要她先等一個救得出來的計畫。",
+      "hook": "秦霜衝進帳，一把扣住阿蘭朵的手腕：「他長什麼樣？」",
+      "hook_type": "line",
+      "mid_hook": "阿蘭朵拿出叔父的狼頭令牌：刺殺令蓋的正是這一枚，蘇赫的令牌早就被叔父收走了。",
+      "conflict": "怎麼混進一座有重兵的鹽礦。",
+      "turn": "秦霜要連夜殺過去，許硯攔住她；唐小棠的飛鴿正好送來十張蓋著州府印的「鹽引」：她早算到北疆鹽礦缺商路，替他們鋪好了鹽商的身分。系統同時彈出強制任務：「三日救出秦烈山」，失敗懲罰是「抹去與秦霜的一段記憶」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿蘭朵的探子回報：鹽礦犯人名冊上「秦烈山」三個字旁邊，新添了一行硃筆字：「明日押往京城」。",
+        "question": "一天之內，他們進得了鹽礦嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "ganren"
+      ],
+      "spectacle": "十張鹽引在燭火下攤成一把扇子，每一張都蓋著鮮紅的州府大印。",
+      "glamour_shot": "秦霜緊握長槍站在燭光裡，眼眶通紅卻一滴淚都沒掉。",
+      "setups": [],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "證實刺殺令出自赤勒",
+        "唐小棠送來十張鹽引，鋪好鹽商身分"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "a-landuo",
+        "tang-xiaotang",
+        "xitong"
+      ],
+      "locations": [
+        "許硯營帳"
+      ],
+      "state": {
+        "time": "送親第八天",
+        "knowledge": "秦烈山明天要被押往京城",
+        "carry_forward": "混進鹽礦"
+      }
+    },
+    {
+      "number": 153,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "假鹽商",
+      "youtube_title": "他貼上假鬍子扮鹽商混進鹽礦，舔一口礦鹽就說出提純妙法，監工眼睛都直了",
+      "duration_s": 95,
+      "logline": "許硯三人要假扮鹽商混進鹽礦，在上千犯人裡找到秦烈山。",
+      "hook": "天還沒亮，一隊鹽商駝車停在白茫茫的鹽礦門口，許硯貼著假鬍子拱手：「唐家，收鹽。」",
+      "hook_type": "image",
+      "mid_hook": "監工鄧三抓一把礦鹽丟過來：「懂行就說說。」許硯舔一口：「苦，滷沒濾。」接著說出用柴灰水濾滷、再煮再曬就能出雪白精鹽，鄧三眼睛都直了。",
+      "conflict": "取得監工信任、進到礦裡。",
+      "turn": "以為混進來就好找人，礦裡關著上千個灰頭土臉的犯人；秦霜一眼看見最深的礦道口，有個戴雙層鐵鐐的老人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鄧三盯著扮成管帳的秦霜看了很久，慢慢走過來：「你長得……像一個人。」",
+        "question": "秦霜的身分會被認出來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "ganren",
+        "zhongtian"
+      ],
+      "spectacle": "白茫茫的鹽礦冒著蒸汽，上千個犯人背著鹽筐排成長線爬坡。",
+      "glamour_shot": "阿蘭朵扮成駝夫，圍巾裡只露出一雙大眼，回頭朝許硯眨了一下。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "混進鹽礦，取得監工的信任",
+        "找到最深礦道的老人"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "a-landuo",
+        "s03-deng-san"
+      ],
+      "locations": [
+        "北疆鹽礦"
+      ],
+      "state": {
+        "time": "救人限期第一天清晨",
+        "knowledge": "秦烈山可能在最深的礦道",
+        "carry_forward": "監工起疑"
+      }
+    },
+    {
+      "number": 154,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "霜兒",
+      "youtube_title": "找了十年的父親就在眼前，將門女老婆輕輕喊了一聲，敲鹽的聲音停了",
+      "duration_s": 125,
+      "logline": "秦霜要在監工眼皮底下見到父親，並說服他跟她走。",
+      "hook": "鄧三的手伸向秦霜的下巴，阿蘭朵一把把她拉到身後，用朔漠話罵了一串，再換成漢話：「我的人，你也碰？」",
+      "hook_type": "danger",
+      "mid_hook": "許硯以「看鹽脈」為由進了最深的礦道；老人背對他們敲鹽，秦霜輕輕喊了一聲：「爹。」敲鹽的聲音停了。",
+      "conflict": "父女相認，再把人帶出去。",
+      "turn": "父女相認的那一刻，老人卻把女兒推開：「秦家的人，不逃。」逃了，就坐實叛國。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "秦烈山轉回身繼續敲鹽，背對女兒：「走。」秦霜跪在鹽地上不起來；許硯眼前跳出紅字：「強制任務剩二日」。",
+        "question": "怎麼讓一個不肯逃的人跟他們走？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "quanmou"
+      ],
+      "spectacle": "礦道深處一盞油燈，鹽壁像冰一樣反光，父女隔著三步站在光裡。",
+      "glamour_shot": "秦霜在鹽壁反光裡流淚卻咬著唇不出聲的側臉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦霜與父親相認",
+        "秦霜好感度跳一格：他用一句「看鹽脈」替她換來這一面"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "qin-lieshan",
+        "a-landuo",
+        "s03-deng-san",
+        "xitong"
+      ],
+      "locations": [
+        "北疆鹽礦最深礦道"
+      ],
+      "state": {
+        "time": "救人限期第一天",
+        "knowledge": "秦烈山活著，但不肯逃",
+        "carry_forward": "說服他"
+      }
+    },
+    {
+      "number": 155,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "鎮北調兵令",
+      "youtube_title": "老將軍死都不肯逃，他掏出原主撿到的一枚玉佩，老將軍一眼認出：這是秦家的調兵令",
+      "duration_s": 120,
+      "logline": "許硯要用原主撿到的玉佩說動秦烈山，卻撞開一段被埋了十年的真相。",
+      "hook": "許硯從懷裡掏出一枚青玉佩，放在秦烈山的鐵鎬旁：「那這個呢？」",
+      "hook_type": "image",
+      "mid_hook": "秦烈山顫手翻過玉佩，油燈下背面的虎紋一點點浮出來：「鎮北調兵令。」是他下獄前托人送出去的，送信的人在柳溪河邊被魏家追上，令從此失蹤。",
+      "conflict": "讓秦烈山肯走。",
+      "turn": "秦烈山以為秦家軍早就散了；許硯問：「令在，人呢？」老將的眼睛亮了：礦裡這上千個犯人，一半是當年的秦家兵。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "礦頂的鐘猛地敲響，鄧三在外面扯著嗓子喊：「國師府來人！」「封門！」",
+        "question": "國師府的人是衝著他們來的嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "quanmou"
+      ],
+      "spectacle": "油燈下玉佩背面的虎紋浮現，鹽壁上映出一隻巨大的虎影。",
+      "glamour_shot": "秦霜握住父親滿是老繭的手，抬頭看許硯，眼裡的淚光被燈照亮。",
+      "setups": [
+        "s03-t10",
+        "m03"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [
+        "m11"
+      ],
+      "general_payoffs": [
+        "揭開玉佩是秦家的鎮北調兵令",
+        "秦烈山答應跟他們走",
+        "秦霜好感度大跳：原主落水的那枚玉佩，他一直留著沒賣"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "qin-lieshan",
+        "s03-deng-san",
+        "xitong"
+      ],
+      "locations": [
+        "北疆鹽礦最深礦道"
+      ],
+      "state": {
+        "time": "救人限期第一天午後",
+        "knowledge": "玉佩是調兵令；原主落水就是因為撿到它",
+        "carry_forward": "國師府的人封了礦"
+      }
+    },
+    {
+      "number": 156,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "封門",
+      "youtube_title": "國師府黑衣人封死鹽礦一間間搜過來，他一鍋滷水把整條礦道變成白霧",
+      "duration_s": 85,
+      "logline": "許硯要在封死的礦裡藏住秦家父女，等外面的柳三娘接應。",
+      "hook": "礦門「轟」地合上，玄七帶著二十個黑衣人沿著礦道一間一間搜過來，火把把鹽壁照得通紅。",
+      "hook_type": "danger",
+      "mid_hook": "許硯讓秦霜把鹽滷潑進煮鹽的大鍋底下，礦道瞬間灌滿白茫茫的蒸汽，黑衣人的火把一支支被吞進霧裡。",
+      "conflict": "躲過搜查、找到出口。",
+      "turn": "以為能藏到天黑，秦烈山腳上的雙層鐵鐐一動就響，黑衣人循聲逼近；頭頂的通風井口垂下一根繩子：柳三娘來了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "柳三娘順著繩滑下來，火光照到她頸上的舊鐵牌，秦烈山整個人僵住：「這牌子……柳狼的？」",
+        "question": "柳三娘的父親是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "ganren"
+      ],
+      "spectacle": "白色蒸汽灌滿鹽礦礦道，一排火把在霧裡一支接一支熄掉。",
+      "glamour_shot": "柳三娘從通風井口倒掛滑下，粗辮垂落，雙刀斜背在身後。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "躲過第一輪搜查",
+        "柳三娘接應到了"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "qin-lieshan",
+        "liu-sanniang",
+        "s03-xuan-qi"
+      ],
+      "locations": [
+        "北疆鹽礦礦道",
+        "通風井"
+      ],
+      "state": {
+        "time": "救人限期第一天傍晚",
+        "knowledge": "秦烈山認得柳三娘的鐵牌",
+        "carry_forward": "爬出通風井"
+      }
+    },
+    {
+      "number": 157,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "柳狼",
+      "youtube_title": "女寨主老婆恨了十年官府，老將軍一句話說出她父親的身分，她才知道自己為什麼上山",
+      "duration_s": 120,
+      "logline": "柳三娘要知道父親是怎麼死的；所有人要在黑衣人合圍前爬出通風井。",
+      "hook": "柳三娘一把抓住鐵牌：「你認識我爹？」秦烈山：「他是我最好的斥候。」",
+      "hook_type": "line",
+      "mid_hook": "秦烈山一邊爬一邊說：秦家被冤那年，他派柳狼替他出去送信，柳狼再也沒回來；官府追殺秦家軍舊人，柳家滿門被逼上了黑鳳山。",
+      "conflict": "一邊逃，一邊把十年的心結解開。",
+      "turn": "柳三娘一直以為自己是「天生的賊」，原來她落草是因為她爹替秦家送了信；她恨了十年的官府，和秦霜的仇人是同一個。秦霜在井壁上伸手拉她：「是一家人。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "通風井口只剩最後一丈，上面伸下來的不是自己人的手，是玄七的火把：「找到了。」",
+        "question": "被堵在井口，他們怎麼出去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shachang"
+      ],
+      "spectacle": "幽深的通風井裡五個人一個接一個往上爬，頭頂只有一小圈天光。",
+      "glamour_shot": "柳三娘在井壁上回頭，額巾被汗打濕，眼眶紅著卻咧嘴笑了。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [
+        "m06"
+      ],
+      "general_payoffs": [
+        "揭開柳三娘落草的原因",
+        "柳三娘好感度跳一格：許硯在井裡先把她往上托"
+      ],
+      "characters": [
+        "liu-sanniang",
+        "qin-lieshan",
+        "qin-shuang",
+        "xu-yan",
+        "s03-xuan-qi",
+        "xitong"
+      ],
+      "locations": [
+        "鹽礦通風井"
+      ],
+      "state": {
+        "time": "救人限期第一天夜",
+        "knowledge": "柳三娘的父親是秦家斥候，替秦家送信而死",
+        "carry_forward": "井口被堵"
+      }
+    },
+    {
+      "number": 158,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "借令",
+      "youtube_title": "被國師府的人堵在千名囚犯中央，老將軍向他伸手：把調兵令借我",
+      "duration_s": 95,
+      "logline": "他們爬出礦井，卻被黑衣人與礦兵堵在鹽礦場中央。",
+      "hook": "玄七的火把往下一探，許硯朝上甩出一把鹽，火把「嗤」地一暗；柳三娘踩著井壁翻出井口，把玄七逼退三步。",
+      "hook_type": "danger",
+      "mid_hook": "礦場四面門全關著，上千個犯人被礦兵用長矛逼到牆邊；玄七退到礦兵身後喊：「逃犯秦烈山，格殺勿論！」",
+      "conflict": "從被圍住的礦場裡殺出去。",
+      "turn": "以為這是死局，秦烈山看著那上千張臉，向許硯伸出手：「把令給我。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "許硯掌心托著調兵令，秦烈山的手停在半空；系統跳出：「強制任務剩一日」。交出去，就是讓一個囚犯在上千人面前造反。",
+        "question": "許硯會把調兵令交給他嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "ganren",
+        "quanmou"
+      ],
+      "spectacle": "雪白的鹽礦場中央五個人背靠背，四周是上千個囚犯和一圈長矛。",
+      "glamour_shot": "秦霜奪下礦兵一桿長槍，紅纓在鹽霧裡一抖，擋在父親身前。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "爬出礦井"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "qin-lieshan",
+        "liu-sanniang",
+        "a-landuo",
+        "s03-xuan-qi",
+        "xitong"
+      ],
+      "locations": [
+        "北疆鹽礦礦場"
+      ],
+      "state": {
+        "time": "救人限期第二天凌晨",
+        "knowledge": "犯人裡有很多秦家舊部",
+        "carry_forward": "交不交令"
+      }
+    },
+    {
+      "number": 159,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "千人跪",
+      "youtube_title": "老將軍站上鹽堆舉起調兵令大吼一聲，上千名囚犯一排排單膝跪地：在",
+      "duration_s": 110,
+      "logline": "秦烈山要用一枚令，把上千個囚犯變回秦家軍。",
+      "hook": "許硯把令拍進秦烈山掌心：「你的兵，你叫。」",
+      "hook_type": "line",
+      "mid_hook": "秦烈山站上礦洞口的鹽堆，舉起調兵令：「鎮北軍！」上千個犯人愣了一瞬，接著一排一排單膝跪地：「在！」",
+      "conflict": "讓礦兵放下武器、黑衣人退走。",
+      "turn": "礦兵手裡的長矛一根根放下，他們很多是當年秦家軍的子弟；玄七見勢不對翻牆就跑，秦霜一槍挑落他的外袍，他只穿著中衣消失在風雪裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "秦烈山撿起那件黑底銀星的外袍，在火光裡翻過來看袖口，臉色一點點變了：「這衣服，我見過。」",
+        "question": "秦烈山在哪裡見過國師府的黑衣？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "ganren"
+      ],
+      "spectacle": "秦烈山在礦洞口舉起調兵令，上千舊部在雪白鹽地上一排排單膝跪下；風雪裡父女相擁的剪影。",
+      "glamour_shot": "秦霜在風雪裡撲進父親懷裡，高馬尾散開，被雪片打亮。",
+      "setups": [],
+      "payoffs": [
+        "s03-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "強制任務完成：救出秦烈山",
+        "一千二百名秦家舊部歸隊",
+        "秦霜好感度過門檻，獎勵箱開出「鹽田曬鹽法」"
+      ],
+      "characters": [
+        "qin-lieshan",
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "a-landuo",
+        "s03-xuan-qi",
+        "s03-deng-san",
+        "xitong"
+      ],
+      "locations": [
+        "北疆鹽礦礦洞口"
+      ],
+      "state": {
+        "time": "救人限期第二天",
+        "knowledge": "調兵令叫回一千二百名舊部",
+        "carry_forward": "國師府黑衣與秦家舊案的關係"
+      }
+    },
+    {
+      "number": 160,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "送圖的人",
+      "youtube_title": "救出被冤十年的老將軍，篝火前他終於說出秦家被陷害的真相，每個字都指向朝廷最高處",
+      "duration_s": 140,
+      "logline": "秦烈山要說出秦家被冤的真相，許硯要先讓上千舊部活下去。",
+      "hook": "秦烈山把那件黑袍攥成一團，手背青筋暴起：「十年前，我就見過。」",
+      "hook_type": "line",
+      "mid_hook": "撤出鹽礦的路上，許硯用剛開出的鹽田曬鹽法帶舊部在鹽灘上曬出第一片雪白的鹽；秦烈山看著那片白：「秦家沒輸給朔漠。」「是輸給一張圖。」",
+      "conflict": "安頓舊部、撤離鹽礦、拼出秦家冤案的全貌。",
+      "turn": "大家以為秦家是打了敗仗再被誣陷，原來朔漠能繞過狼牙關偷襲秦家大營，是因為有人把北疆關防圖賣了出去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "營火前，秦烈山一字一頓：「賣關防圖的，是宰相。」火堆爆出一聲響：「送圖的，穿國師府黑衣。」",
+        "question": "宰相加國師，秦家的案怎麼翻？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "quanmou",
+        "shachang"
+      ],
+      "spectacle": "雪白鹽灘上上千舊部第一次彎腰收自己的鹽，遠處鹽礦的黑煙慢慢散去。",
+      "glamour_shot": "秦霜在火光下聽父親說話，緊握長槍的指節發白，淚光含著沒掉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [
+        "m03"
+      ],
+      "general_payoffs": [
+        "舊部在鹽灘曬出第一批鹽，有了換糧的本錢",
+        "揭開秦家冤案：宰相賣圖、國師府送圖"
+      ],
+      "characters": [
+        "qin-lieshan",
+        "qin-shuang",
+        "xu-yan",
+        "liu-sanniang",
+        "a-landuo",
+        "xitong"
+      ],
+      "locations": [
+        "鹽礦外鹽灘",
+        "撤退營地"
+      ],
+      "state": {
+        "time": "救人後第一夜",
+        "knowledge": "宰相賣了關防圖，國師府的人送的圖",
+        "carry_forward": "要證據才能翻案"
+      }
+    },
+    {
+      "number": 161,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "證據在金帳",
+      "youtube_title": "知道了誰陷害秦家卻沒有證據，草原公主說：宰相的親筆信，就鎖在我叔父的漆盒裡",
+      "duration_s": 100,
+      "logline": "要翻秦家的案得有宰相親筆的證據，證據可能就在朔漠王叔的帳裡。",
+      "hook": "「國師府的黑衣」幾個字還在火上飄，秦霜已經站起來：「回京，告御狀。」秦烈山一把按住她：「證據呢？」",
+      "hook_type": "line",
+      "mid_hook": "阿蘭朵說：叔父赤勒有一隻從不離身的漆盒，裡面全是大衡來的信，封口蓋著一品大印。",
+      "conflict": "決定要不要闖進朔漠王庭拿證據、救蘇赫。",
+      "turn": "以為可以先回關整軍再說，阿蘭朵的鷹帶回消息：蘇赫被軟禁在金帳後營，三天後要被「送去西邊放牧」，那是流放。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "阿蘭朵把一頂朔漠皮帽扣到許硯頭上：「跟我回家。」進金帳，就是自己走進一萬把刀中間。",
+        "question": "許硯敢不敢跟她闖金帳？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "quanmou"
+      ],
+      "spectacle": "雪原營地上千舊部圍著篝火擦拭鏽了十年的刀槍。",
+      "glamour_shot": "阿蘭朵把皮帽扣到許硯頭上時踮了一下腳，綠松石小辮蹭過他的肩。",
+      "setups": [
+        "s03-t11",
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蘭朵好感度跳一格：他第一句話是「你哥，我救」",
+        "知道赤勒的漆盒裡有大衡朝廷的信"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "qin-lieshan",
+        "a-landuo",
+        "liu-sanniang",
+        "xitong"
+      ],
+      "locations": [
+        "撤退營地"
+      ],
+      "state": {
+        "time": "救人後第二天",
+        "knowledge": "證據可能在赤勒的漆盒；蘇赫三天後被流放",
+        "carry_forward": "闖不闖金帳"
+      }
+    },
+    {
+      "number": 162,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "綁著的新郎",
+      "youtube_title": "為了混進敵國王庭，他被草原公主老婆綁著雙手牽回家，路上還被逼著學羊叫",
+      "duration_s": 85,
+      "logline": "許硯扮成阿蘭朵抓回王庭的「大衡俘虜」，要混進金帳。",
+      "hook": "許硯雙手綁著紅繩坐在駱駝上，阿蘭朵牽著繩走在前頭：「你是我抓回來的。」",
+      "hook_type": "image",
+      "mid_hook": "草原上一隊巡騎攔下他們，領頭的要驗「俘虜」，捏著許硯的下巴看牙口；許硯被逼著學了一聲羊叫，巡騎笑翻。",
+      "conflict": "一路不露餡地走到金帳。",
+      "turn": "秦霜帶舊部回狼牙關整軍，柳三娘帶兩百騎遠遠吊在後面，臨走塞給許硯一個布包：「彩煙。看到就衝。」以為巡騎會搜身，阿蘭朵搬出部落規矩，「公主的俘虜誰碰誰娶」，巡騎連退三步。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "金帳前，赤勒張開雙臂迎出來，笑著打量許硯：「侄女，帶回來的是人？」「還是人頭？」",
+        "question": "赤勒看穿許硯的身分了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tianchong",
+        "shachang"
+      ],
+      "spectacle": "草原金帳在夕陽下閃著金光，上百頂白帳像花瓣一樣圍著它。",
+      "glamour_shot": "阿蘭朵牽繩回頭大笑，紅白騎裝與彩繩小辮在草原風裡飛。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蘭朵好感度跳一格：他被當羊驗牙口也沒抱怨一句，只怕她穿幫",
+        "柳三娘的兩百騎與彩煙到位"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "liu-sanniang",
+        "qin-shuang",
+        "s03-chile"
+      ],
+      "locations": [
+        "朔漠草原",
+        "金帳前"
+      ],
+      "state": {
+        "time": "救人後第五天",
+        "knowledge": "混到了金帳前",
+        "carry_forward": "赤勒的試探"
+      }
+    },
+    {
+      "number": 163,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "金帳夜宴",
+      "youtube_title": "被當成俘虜扔進敵國夜宴，他看見王叔晃了一下宰相的親筆信，草原公主為他跳了一支刀舞",
+      "duration_s": 95,
+      "logline": "許硯要在夜宴上找到蘇赫被關的地方，和叔父那隻漆盒。",
+      "hook": "阿蘭朵把繩一扯，許硯撲倒在赤勒腳下；她冷冷地說：「人，留著換贖金。」",
+      "hook_type": "line",
+      "mid_hook": "夜宴上赤勒打開漆盒取出一封信，在燭火邊晃了晃又收回去；許硯看見信封上，大衡宰相的一品硃印。",
+      "conflict": "摸清漆盒放在哪、蘇赫關在哪。",
+      "turn": "赤勒忽然要阿蘭朵為族人跳刀舞，那是朔漠的訂親舞：他要把她許給自己的兒子；阿蘭朵起舞時把一個眼神丟給許硯：後營。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "許硯摸進後營最黑的一頂帳，剛掀簾，一把彎刀貼上他的脖子；月光照進帳縫，拿刀的是被軟禁的蘇赫：「狼牙關那個？」",
+        "question": "蘇赫會把他當敵人還是救星？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "quanmou",
+        "ganren"
+      ],
+      "spectacle": "金帳裡上百支牛油燭，阿蘭朵的刀舞在燭光裡轉成一圈銀光。",
+      "glamour_shot": "阿蘭朵在篝火圈中跳刀舞，彎刀與銀鈴一起轉成光圈，最後一個回眸停在許硯身上。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "看見赤勒手上有宰相的親筆信",
+        "許硯用系統給的獸醫知識書治好一匹病馬，馬夫感激得替他指了後營的路"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "s03-chile",
+        "su-he",
+        "xitong"
+      ],
+      "locations": [
+        "朔漠金帳",
+        "金帳後營"
+      ],
+      "state": {
+        "time": "抵達王庭當夜",
+        "knowledge": "漆盒裡有宰相的信；找到蘇赫",
+        "carry_forward": "說服蘇赫"
+      }
+    },
+    {
+      "number": 164,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "銀鈴",
+      "youtube_title": "被敵國王子用刀抵著脖子，他舉起手腕上一串銀鈴：是你妹妹讓我來的",
+      "duration_s": 90,
+      "logline": "許硯要讓視他為敵的蘇赫相信他，今夜就跟他走。",
+      "hook": "許硯慢慢舉起手，手腕上纏著一串銀鈴：「你妹妹讓我來的。」",
+      "hook_type": "line",
+      "mid_hook": "蘇赫不信：「大衡人都想我們死。」許硯說出赤勒借他名義下刺殺令的事，蘇赫的刀鬆了一寸；帳外卻傳來腳步聲。",
+      "conflict": "說服蘇赫，躲過巡查。",
+      "turn": "以為是巡夜，進來的是赤勒的兒子，要來「看看大衡俘虜」；許硯被迫鑽進蘇赫的皮褥堆，蘇赫一本正經地坐在他身上喝酒。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "金帳那邊，赤勒一把扣住阿蘭朵的手腕，聲音很輕：「你的俘虜呢？」",
+        "question": "阿蘭朵要怎麼替他圓過去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "shachang",
+        "tianchong"
+      ],
+      "spectacle": "後營的帳裡只有一盞羊油燈，蘇赫的影子罩住整面帳壁。",
+      "glamour_shot": "蘇赫在羊油燈下收刀坐下，細辮上的銀環一晃，嘴角又掛回那抹痞笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇赫願意相信他"
+      ],
+      "characters": [
+        "xu-yan",
+        "su-he",
+        "a-landuo",
+        "s03-chile"
+      ],
+      "locations": [
+        "金帳後營",
+        "朔漠金帳"
+      ],
+      "state": {
+        "time": "抵達王庭當夜深",
+        "knowledge": "蘇赫倒向他；赤勒發現俘虜不見了",
+        "carry_forward": "今夜就走"
+      }
+    },
+    {
+      "number": 165,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "夜襲金帳",
+      "youtube_title": "敵國大營裡一道紅煙沖天，兩百騎趕著上千匹驚馬衝進來，他把被軟禁的王子搶了出去",
+      "duration_s": 100,
+      "logline": "許硯要在叔父的萬人大營裡把蘇赫帶出去。",
+      "hook": "阿蘭朵抬眼一笑：「在您兒子帳裡。」赤勒一愣，後營方向同時竄起一道紅色彩煙。",
+      "hook_type": "image",
+      "mid_hook": "柳三娘的兩百騎看見彩煙，從四面趕著上千匹驚馬衝進大營，營裡一片大亂；許硯和蘇赫搶到兩匹馬。",
+      "conflict": "救出蘇赫、全身而退。",
+      "turn": "以為已經衝出營了，回頭一看，阿蘭朵還在金帳：她故意留下拖住赤勒；許硯把蘇赫交給柳三娘，自己掉頭衝回營。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "天亮，各部首領圍成大圈，赤勒把阿蘭朵推到圈中央，丟給她一把刀：「殺了他，你還是朔漠公主。」被押在圈裡的許硯，看著她彎腰撿起那把刀。",
+        "question": "阿蘭朵會選族人，還是選他？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "tianchong"
+      ],
+      "spectacle": "上千匹驚馬在月光下衝過白帳之間，一道紅色彩煙升上夜空。",
+      "glamour_shot": "柳三娘在馬群中央揚起雙刀，暗紅皮甲被月光鍍了一層銀。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "救出蘇赫"
+      ],
+      "characters": [
+        "xu-yan",
+        "su-he",
+        "a-landuo",
+        "liu-sanniang",
+        "s03-chile"
+      ],
+      "locations": [
+        "朔漠大營",
+        "金帳前"
+      ],
+      "state": {
+        "time": "抵達王庭第二天黎明",
+        "knowledge": "蘇赫已救出；許硯為了阿蘭朵回頭被擒",
+        "carry_forward": "她的選擇"
+      }
+    },
+    {
+      "number": 166,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "我自己挑的",
+      "youtube_title": "敵國王叔逼公主當著全族殺了他，她撿起刀走過去，一刀割斷的卻是他手上的繩",
+      "duration_s": 125,
+      "logline": "阿蘭朵要在族人面前，替自己選一次。",
+      "hook": "阿蘭朵撿起刀，在所有首領面前走向許硯；刀一轉，割斷了他手上的繩。",
+      "hook_type": "reversal",
+      "mid_hook": "她面向各部首領：「他是我自己挑的男人。」一個老首領問為什麼，她拿出許硯給的牧草法：今冬她的部落，沒有一頭羊餓死。",
+      "conflict": "讓各部首領站到阿蘭朵與蘇赫這一邊。",
+      "turn": "赤勒以為各部都會站在他那邊，坡頂卻出現蘇赫和柳三娘的騎兵：「我妹妹挑的人，誰動？」半數首領向蘇赫行禮。許硯眼前跳出一行字：「天下歸心：+1」。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "赤勒帶著親兵退出圈子，翻身上馬時回頭笑了一下：「三萬騎，七天後見。」",
+        "question": "三萬騎回來之前，他們來得及做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "shachang"
+      ],
+      "spectacle": "上千人圍成的大圈中央，一把刀割斷紅繩，繩頭飄落在草地上。",
+      "glamour_shot": "阿蘭朵在人圈中央回頭，彩繩小辮被風吹起，眼裡含淚卻在笑。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蘭朵好感度跳到 60：他為了她單槍匹馬回頭",
+        "半數部族站到蘇赫這邊"
+      ],
+      "characters": [
+        "a-landuo",
+        "xu-yan",
+        "su-he",
+        "liu-sanniang",
+        "s03-chile",
+        "xitong"
+      ],
+      "locations": [
+        "金帳前大圈"
+      ],
+      "state": {
+        "time": "抵達王庭第二天",
+        "knowledge": "赤勒退回本部，七天後帶三萬騎回來",
+        "carry_forward": "七天"
+      }
+    },
+    {
+      "number": 167,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "草原三關",
+      "youtube_title": "要娶草原公主得過三關，他三秒就被摔進雪裡，第二次卻把巨漢絆倒，全場愣住",
+      "duration_s": 90,
+      "logline": "要娶阿蘭朵，許硯得過草原的三關；秦霜也帶著舊部趕到了。",
+      "hook": "蘇赫收刀大笑：「七天？夠辦一場婚禮。」許硯：「誰的？」全場一起看向他。",
+      "hook_type": "line",
+      "mid_hook": "摔跤關他對上一個巨漢，三秒就被摔進雪裡；第二次他借力一絆，用槓桿原理把巨漢放倒，全場愣了一秒才爆出喝采。",
+      "conflict": "過三關，也過自家人那一關。",
+      "turn": "以為最難的是摔跤，最後一關是喝酒，許硯一杯就紅了臉；阿蘭朵搶過碗一口喝光：「我的男人，我替。」這時秦霜帶著舊部騎兵趕到，看著這一幕，臉色很精彩。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "秦霜沒顧上吃醋，先把一封信塞給許硯：柳溪堡十天沒有來信，這是最後一封，只寫了半句「國師的人進了」，後面被撕掉了。",
+        "question": "國師的人進柳溪堡要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "雪地摔跤場上上百人圍成圈，一個巨漢被絆倒時濺起一大片雪霧。",
+      "glamour_shot": "阿蘭朵仰頭一口喝乾整碗酒，喉間銀鈴輕響，放下碗朝全場一揚下巴。",
+      "setups": [
+        "s03-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "過了摔跤與賽馬兩關",
+        "阿蘭朵好感度跳一格：他摔了三次也沒認輸"
+      ],
+      "characters": [
+        "xu-yan",
+        "su-he",
+        "a-landuo",
+        "qin-shuang",
+        "qin-lieshan"
+      ],
+      "locations": [
+        "朔漠摔跤場"
+      ],
+      "state": {
+        "time": "婚禮前第六天",
+        "knowledge": "柳溪堡出事了，信只剩半句",
+        "carry_forward": "回不回去"
+      }
+    },
+    {
+      "number": 168,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "三個人點頭",
+      "youtube_title": "系統逼他婚禮前讓在場的老婆全數點頭，將門女和女寨主各開一個條件，全場笑翻",
+      "duration_s": 95,
+      "logline": "許硯在擔心家裡和完成婚約之間拉扯，系統還逼他讓在場的妻子們都點頭。",
+      "hook": "許硯捏著半封信：「回去。」柳三娘按住他的手：「回去要二十天。」",
+      "hook_type": "line",
+      "mid_hook": "系統彈出：「強制任務：婚前全數同意」。秦霜的條件是婚後第一仗她當先鋒；柳三娘的條件是以後喝酒她替他喝；兩人一起看向阿蘭朵：「排行第五，懂？」",
+      "conflict": "家裡的事要顧，眼前的婚約也要辦。",
+      "turn": "以為他會掉頭回柳溪堡，阿蘭朵把她的鷹放上他的手臂：「三天，飛到你家。」許硯把回信綁上鷹腳，鷹往南飛進灰色的天。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "篝火邊，阿蘭朵解下一顆銀鈴繫上許硯手腕，繫好了才抬眼：「婚禮那天，叔父會派人來。」「還辦嗎？」",
+        "question": "明知有人來砸場，婚禮還辦不辦？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "一隻蒼鷹從許硯手臂上振翅起飛，越過整片白帳，飛向南方。",
+      "glamour_shot": "秦霜與柳三娘並肩坐在篝火邊開條件，一個抱槍一個抱刀，同時挑眉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "強制任務完成：秦霜、柳三娘都點頭",
+        "秦霜、柳三娘好感度各跳一格：他是真的一個一個去問"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "qin-shuang",
+        "liu-sanniang",
+        "xitong"
+      ],
+      "locations": [
+        "朔漠營地篝火邊"
+      ],
+      "state": {
+        "time": "婚禮前第五天",
+        "knowledge": "鷹帶信飛往柳溪堡",
+        "carry_forward": "婚禮"
+      }
+    },
+    {
+      "number": 169,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "草原婚禮",
+      "youtube_title": "一百堆篝火的草原婚禮，敵國公主成了他的第五個老婆，新婚夜她把彎刀塞到枕頭下",
+      "duration_s": 110,
+      "logline": "許硯要在三萬騎回來之前把喜事辦完、把盟約談下來。",
+      "hook": "許硯握住那顆銀鈴：「辦。」鼓聲一響，草原上燃起一百堆篝火，阿蘭朵穿著紅白嫁衣騎馬繞火三圈，直奔許硯。",
+      "hook_type": "image",
+      "mid_hook": "系統：「良緣成立：第五位妻子」，獎勵箱炸開金光：「霹靂車改良圖：可拆裝」，木料得現砍、工匠得找舊部。蘇赫卻舉著酒碗說：「喜酒，不等於盟約。」",
+      "conflict": "辦完婚禮，再讓蘇赫點頭結盟。",
+      "turn": "新婚帳裡，阿蘭朵把彎刀塞到枕頭下：「習慣。」許硯默默抱起被子：「我去跟大舅子擠。」帳外的蘇赫一口酒噴了出來。燈熄，鏡頭切走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "天還沒亮，柳三娘把耳朵貼在凍土上，臉色一點點發白：「馬蹄……很多。」",
+        "question": "赤勒提前來了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        3,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "shachang",
+        "xiju"
+      ],
+      "spectacle": "草原金帳前一百堆婚禮篝火，上千人手拉手繞火起舞。",
+      "glamour_shot": "阿蘭朵紅白嫁衣、滿頭綠松石，騎馬繞篝火時回眸一笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蘭朵成為第五位妻子",
+        "拿到可拆裝霹靂車改良圖",
+        "各部族首領舉碗敬他"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-landuo",
+        "su-he",
+        "qin-shuang",
+        "liu-sanniang",
+        "qin-lieshan",
+        "xitong"
+      ],
+      "locations": [
+        "朔漠金帳前",
+        "新婚帳"
+      ],
+      "state": {
+        "time": "婚禮當天到隔天凌晨",
+        "knowledge": "蘇赫還沒答應結盟；地下傳來大批馬蹄聲",
+        "carry_forward": "赤勒來了"
+      }
+    },
+    {
+      "number": 170,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "三萬火把",
+      "youtube_title": "草原婚禮的篝火還沒熄，地平線上三萬支火把同時亮起，敵國王叔帶兵殺回來了",
+      "duration_s": 130,
+      "logline": "婚禮第二夜，許硯要在三萬騎撲來之前，把各部、舊部和自己人擰成一股。",
+      "hook": "地平線上什麼都還看不見，只有凍土在微微震；許硯放下喜酒：「點燈，全營。」",
+      "hook_type": "danger",
+      "mid_hook": "蘇赫開口：「結盟可以。」「先證明你們不捅刀。」許硯當著各部首領，把監軍的通敵信和赤勒的狼頭令並排攤開：在背後捅刀的，是赤勒和大衡的宰相。",
+      "conflict": "讓蘇赫點頭，讓三路人馬敢站在一起。",
+      "turn": "以為今夜就要開打，赤勒的騎兵卻停在遠處不動；阿蘭朵：「他在等天亮。」「好數我們的人。」許硯笑了：「那就讓他看不清。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "婚禮的篝火還沒熄，地平線上三萬支火把同時亮起，像一條燒起來的河；赤勒的聲音順著風傳來：「侄女，回家了。」",
+        "question": "一萬對三萬，這仗怎麼打？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "地平線上三萬支火把同時亮起，從左到右連成一條火河。",
+      "glamour_shot": "阿蘭朵、秦霜、柳三娘並排站在篝火前，三種顏色的披風一起被夜風掀起。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇赫口頭答應並肩作戰",
+        "阿蘭朵好感度跳一格：婚後第一件事他是去問她族人怕不怕"
+      ],
+      "characters": [
+        "xu-yan",
+        "su-he",
+        "a-landuo",
+        "qin-shuang",
+        "liu-sanniang",
+        "qin-lieshan",
+        "s03-chile",
+        "xitong"
+      ],
+      "locations": [
+        "朔漠金帳前"
+      ],
+      "state": {
+        "time": "婚禮第二夜",
+        "knowledge": "赤勒三萬騎回來了；盟軍約一萬",
+        "carry_forward": "天亮的決戰"
+      }
+    },
+    {
+      "number": 171,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "一萬對三萬",
+      "youtube_title": "三萬騎兵壓境，盟軍只有一萬，敵人喊話交出他的人頭，他反而讓動搖的首領先走",
+      "duration_s": 95,
+      "logline": "許硯要用一萬人吃下三萬騎，三路人馬得先學會聽同一個號令。",
+      "hook": "三萬火把照亮半邊天，蘇赫數了數身後的人：「一萬。」許硯：「夠了。」",
+      "hook_type": "line",
+      "mid_hook": "赤勒派人隔著陣前喊話：交出阿蘭朵和許硯的人頭，其餘人一個不殺；蘇赫身後兩個首領開始交頭接耳。",
+      "conflict": "穩住軍心，讓三路兵用同一套號令。",
+      "turn": "以為要內訌了，許硯讓那兩個動搖的首領「先走」；他們連夜投進赤勒營裡，其實是許硯派去的內應，身上帶著柳三娘的彩煙。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "天將亮，許硯手裡握著三面旗：紅、黑、白；秦烈山、柳三娘、蘇赫同時看著他：「打哪邊？」",
+        "question": "三路兵，他先放哪一路？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "quanmou"
+      ],
+      "spectacle": "雪原上三路人馬換上紅、黑、白三色旗，在晨霧裡排成三個方陣。",
+      "glamour_shot": "秦霜在晨霧裡把紅旗插上馬鞍，黑紅輕甲上結了一層白霜。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "三路兵學會旗語號令",
+        "兩名內應進了赤勒大營"
+      ],
+      "characters": [
+        "xu-yan",
+        "su-he",
+        "qin-lieshan",
+        "qin-shuang",
+        "liu-sanniang",
+        "a-landuo",
+        "s03-chile"
+      ],
+      "locations": [
+        "朔漠草原盟軍大營"
+      ],
+      "state": {
+        "time": "決戰前夜",
+        "knowledge": "內應已進敵營",
+        "carry_forward": "先放哪一路"
+      }
+    },
+    {
+      "number": 172,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "先偷馬",
+      "youtube_title": "決戰第一道命令竟然是去偷馬，女寨主老婆一夜牽回兩千匹，敵軍主帥氣到提前出兵",
+      "duration_s": 90,
+      "logline": "開戰前，許硯要先拆掉赤勒的兩條腿：馬和糧。",
+      "hook": "許硯舉起黑旗：「三娘，先去偷他們的馬。」柳三娘笑出聲：「這我在行。」",
+      "hook_type": "line",
+      "mid_hook": "舊部連夜把可拆裝霹靂車拼起來，十二架一字排開，把凍土塊一顆顆砸進赤勒的前營糧車堆。",
+      "conflict": "趁天亮前削弱敵軍。",
+      "turn": "以為赤勒會等天亮，他卻提前全軍壓上，三萬騎像潮水撲過來，比預計早了半個時辰。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "騎兵潮衝到三百步，許硯手裡的紅旗還沒落下；秦烈山低聲：「再不放，就來不及了。」",
+        "question": "紅旗落下時，會發生什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang"
+      ],
+      "spectacle": "十二架霹靂車同時揚臂，凍土塊在黎明的天空劃出十二道弧線。",
+      "glamour_shot": "柳三娘牽著兩千匹馬回營，站在馬背上朝許硯揮刀大笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "柳三娘偷回兩千匹戰馬",
+        "霹靂車砸毀赤勒前營糧車"
+      ],
+      "characters": [
+        "xu-yan",
+        "liu-sanniang",
+        "qin-lieshan",
+        "su-he",
+        "s03-chile"
+      ],
+      "locations": [
+        "朔漠草原戰場"
+      ],
+      "state": {
+        "time": "決戰黎明",
+        "knowledge": "赤勒提前壓上",
+        "carry_forward": "紅旗"
+      }
+    },
+    {
+      "number": 173,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "紅旗落",
+      "youtube_title": "三萬騎兵衝到三百步他才揮下紅旗，整片雪原炸成一道火牆，父女倆並馬殺出",
+      "duration_s": 95,
+      "logline": "正面擋住三萬騎的第一波衝鋒。",
+      "hook": "紅旗落下，雪地下埋了一夜的地雷一排排炸開，火光和土石像一堵牆立了起來。",
+      "hook_type": "image",
+      "mid_hook": "秦烈山率舊部從火牆後衝出，秦霜第一次在父親身邊並馬衝鋒，秦家的老軍旗在她身後重新升起；秦烈山認出對面的黑鷹旗：「十年前收圖的，就是他。」",
+      "conflict": "頂住正面。",
+      "turn": "以為赤勒會正面硬衝，他分出一萬騎繞向側翼的白帳營地：那裡只有阿蘭朵和部族的老人孩子。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "秦霜回頭，白帳營地方向升起黑煙；許硯已經調轉馬頭，秦霜朝他喊：「去！這裡有我爹。」",
+        "question": "他趕得及回去救人嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "ganren",
+        "shuang"
+      ],
+      "spectacle": "雪原上一整排地雷炸成火牆，秦家老軍旗從火牆後升起。",
+      "glamour_shot": "秦霜與父親並馬衝鋒，紅纓槍與老將的大刀在火光裡並成一條線。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "頂住正面第一波",
+        "秦家軍旗十年後重新升起"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "qin-lieshan",
+        "su-he",
+        "s03-chile"
+      ],
+      "locations": [
+        "朔漠草原戰場"
+      ],
+      "state": {
+        "time": "決戰上午",
+        "knowledge": "赤勒就是十年前收圖的人；側翼白帳被偷襲",
+        "carry_forward": "白帳營地"
+      }
+    },
+    {
+      "number": 174,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "白帳",
+      "youtube_title": "一萬騎兵偷襲只剩老人孩子的營地，草原公主老婆站上車頂拉弓，援軍從南方殺到",
+      "duration_s": 100,
+      "logline": "阿蘭朵要用一圈車守住族人，撐到許硯趕到。",
+      "hook": "白帳營地裡，阿蘭朵帶著老人和孩子把大車圍成一圈，她站在車頂拉滿弓，一萬騎的煙塵已經壓過來。",
+      "hook_type": "danger",
+      "mid_hook": "阿蘭朵點燃最後的彩煙，煙裡看起來像埋伏了千軍；地平線南邊揚起藏青色的許家軍旗：王二牛和賀鎮帶著狼牙關的三千鄉勇趕到了。",
+      "conflict": "守住白帳營地，一個孩子都不能少。",
+      "turn": "赤勒以為側翼是軟柿子，被車陣、援軍和正面退下來的盟軍三面夾住；許家軍、秦家舊部、蘇赫騎兵在草原上合圍。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "赤勒的黑鷹大旗倒下，他本人卻帶著親衛衝出包圍，往北邊自己的大帳狂奔，那裡有那隻漆盒；阿蘭朵：「他要燒信！」",
+        "question": "他們追得上要燒信的赤勒嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "ganren",
+        "shuang"
+      ],
+      "spectacle": "三路騎兵在草原上合圍的大全景，紅、黑、白、藏青四色旗從四面收攏。",
+      "glamour_shot": "阿蘭朵站在車頂拉滿弓，紅白騎裝被風吹得獵獵作響。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "白帳營地老人孩子全數無恙",
+        "王二牛、賀鎮帶三千鄉勇趕到",
+        "擊潰赤勒三萬騎"
+      ],
+      "characters": [
+        "a-landuo",
+        "xu-yan",
+        "wang-erniu",
+        "s03-he-zhen",
+        "su-he",
+        "qin-shuang",
+        "qin-lieshan",
+        "s03-chile"
+      ],
+      "locations": [
+        "白帳營地",
+        "朔漠草原戰場"
+      ],
+      "state": {
+        "time": "決戰正午",
+        "knowledge": "赤勒大敗，逃回大帳要燒信",
+        "carry_forward": "漆盒"
+      }
+    },
+    {
+      "number": 175,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "漆盒",
+      "youtube_title": "敵國王叔要把宰相的親筆信全燒了，草原公主老婆一箭射穿盒環，信飛出火盆",
+      "duration_s": 90,
+      "logline": "要在赤勒燒掉漆盒前，把證據搶下來。",
+      "hook": "阿蘭朵和柳三娘兩騎並肩追出，前方赤勒的大帳已經冒起青煙。",
+      "hook_type": "image",
+      "mid_hook": "赤勒把漆盒舉向火盆，阿蘭朵一箭射穿盒上的銅環，漆盒翻出帳外落進雪裡，柳三娘滾地一撈抱進懷中。",
+      "conflict": "搶下證據，拿下赤勒。",
+      "turn": "赤勒以為還能拿人質談條件，蘇赫掀簾走進大帳：「叔父，下來吧。」整帳親衛一齊跪下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "許硯打開漆盒，最上面一封信的封口蓋著大衡宰相的一品大印；被押著的赤勒卻笑了：「打開看看，你們的皇帝……」話沒說完就被蘇赫按住。",
+        "question": "信裡到底寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang"
+      ],
+      "spectacle": "一支箭穿過青煙射中漆盒銅環，漆盒翻著跟斗飛出大帳，落進雪地。",
+      "glamour_shot": "柳三娘抱著漆盒從雪地裡翻身站起，粗辮上沾滿雪，咧嘴一笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "搶下赤勒的漆盒",
+        "赤勒被擒"
+      ],
+      "characters": [
+        "a-landuo",
+        "liu-sanniang",
+        "su-he",
+        "xu-yan",
+        "s03-chile"
+      ],
+      "locations": [
+        "赤勒大帳"
+      ],
+      "state": {
+        "time": "決戰傍晚",
+        "knowledge": "漆盒到手；赤勒話裡有話",
+        "carry_forward": "信的內容"
+      }
+    },
+    {
+      "number": 176,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "宰相的親筆",
+      "youtube_title": "從敵國王叔的漆盒裡翻出宰相親筆信，十年前陷害將軍的真相白紙黑字，最後一封卻要他的命",
+      "duration_s": 120,
+      "logline": "許硯要確認這封信是真的、翻得了秦家的案。",
+      "hook": "許硯展開信，宰相魏庭章的字，第一行就寫：「關防圖一份。」「已交貴使。」",
+      "hook_type": "line",
+      "mid_hook": "秦烈山拿出他藏了十年的奏摺底稿，對筆跡、對印泥、對用紙，一模一樣；信裡還寫著：秦烈山，「替罪之人」。",
+      "conflict": "把這疊信變成翻得了案的鐵證。",
+      "turn": "以為這就是全部，盒底還有一封沒封口的新信，日期是半個月前：宰相許諾赤勒，「事成，奉上許硯之首」。宰相要的已經不只是秦家，是他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜裡，存放漆盒的帳篷外，雪地上出現一排沒有聲音的腳印；黑底銀星的衣角一閃而過，玄七回來了。",
+        "question": "玄七是來偷信，還是來殺人？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "ganren",
+        "shuang"
+      ],
+      "spectacle": "燭火下兩份文書並排，宰相的字與奏摺底稿上的批字一筆一畫重疊在一起。",
+      "glamour_shot": "秦霜看著父親對筆跡，終於哭出聲，被柳三娘一把摟住肩。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "s03-t11",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到宰相親筆賣圖的鐵證",
+        "秦霜好感度跳到 80：他讓秦家等了十年的證據落地，獎勵箱開出「北疆冬麥種」"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-lieshan",
+        "qin-shuang",
+        "liu-sanniang",
+        "s03-xuan-qi",
+        "xitong"
+      ],
+      "locations": [
+        "盟軍大營中軍帳"
+      ],
+      "state": {
+        "time": "決戰當夜",
+        "knowledge": "宰相賣圖鐵證在手；宰相也要他的命",
+        "carry_forward": "玄七來了"
+      }
+    },
+    {
+      "number": 177,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "歃酒",
+      "youtube_title": "國師的人深夜來偷證據，一碰漆盒就響了，草原新可汗端起酒碗與他結盟",
+      "duration_s": 100,
+      "logline": "擋下國師的人搶信，與蘇赫正式結盟。",
+      "hook": "帳簾無聲裂開，玄七的手剛碰到漆盒，盒裡「叮」一聲響：阿蘭朵掛在裡面的銀鈴。",
+      "hook_type": "image",
+      "mid_hook": "玄七被柳三娘和阿蘭朵堵在帳裡，他把一面銅鏡往地上一砸，鏡中暗紅光一閃，國師的聲音：「老鄉，信留著吧。」「你送得到京城嗎？」",
+      "conflict": "守住證據，結下盟約。",
+      "turn": "以為國師會不惜一切搶信，他反而放手；許硯心裡一沉：國師不怕這封信，說明京城那邊早有另一個局。天亮，各部推舉蘇赫為可汗，兩人在河邊同飲一碗酒結盟。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "盟酒喝完，蘇赫問：「信怎麼送進京？」秦烈山站出來：「我親自押。」秦霜一把拉住父親：「你一進京，就是死囚！」",
+        "question": "誰把證據送進京城？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "quanmou",
+        "shachang",
+        "ganren"
+      ],
+      "spectacle": "草原河邊萬人見證，可汗的狼頭大纛升起，蘇赫與許硯共飲一碗酒。",
+      "glamour_shot": "蘇赫戴上可汗的狼皮披肩，細辮銀環在晨光裡閃，朝許硯舉碗一笑。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "守住證據",
+        "蘇赫成為朔漠可汗，與許硯結盟"
+      ],
+      "characters": [
+        "xu-yan",
+        "s03-xuan-qi",
+        "liu-sanniang",
+        "a-landuo",
+        "su-he",
+        "qin-lieshan",
+        "qin-shuang",
+        "mo-chen"
+      ],
+      "locations": [
+        "盟軍大營",
+        "草原河邊"
+      ],
+      "state": {
+        "time": "決戰後第一天",
+        "knowledge": "國師知道信在他手上卻不搶",
+        "carry_forward": "怎麼把證據送進京"
+      }
+    },
+    {
+      "number": 178,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "鷹回來了",
+      "youtube_title": "後方一個月音訊全無，鷹終於帶回信：冷面公主老婆一個人在堡門前擋了國師的人三天",
+      "duration_s": 120,
+      "logline": "柳溪堡的消息終於回來了：阿令和唐小棠這一個月，在後方打了一場許硯不知道的仗。",
+      "hook": "爭吵正兇，天上一聲鷹嘯，阿蘭朵的鷹落在許硯肩上，腳上綁著厚厚一卷信。",
+      "hook_type": "image",
+      "mid_hook": "阿令的信：國師的人以「查配婚名冊」為名進柳溪堡，要翻出秦霜和柳三娘的底；她換回長公主宮裝坐在堡門前，三天沒讓他們進一步；唐小棠把賀鎮的家人藏進唐家貨船從京城運了出來；押到柳溪堡的監軍，也在她們的牢裡把魏家的銀子一筆一筆招了。",
+      "conflict": "知道後方發生了什麼，也知道後方替他擋了什麼。",
+      "turn": "信的最後夾著一張很舊的小紙條，字跡發抖；阿令寫：這是父皇身邊的老太監冒死送出來的，是父皇的字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "賀鎮捧著家人的平安信跪在雪地裡哭出聲；許硯攤開那張小紙條，上面只有三個字：「別回京。」",
+        "question": "皇帝為什麼叫他別回京？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "quanmou",
+        "tianchong"
+      ],
+      "spectacle": "柳溪堡門前，一身月白銀鳳宮裝的阿令獨坐，堡外站滿黑衣人，沒有一個人敢上前一步。",
+      "glamour_shot": "阿令在信中畫面裡坐在堡門前，步搖一動不動，鳳眼冷冷看著來人。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "s03-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "賀鎮的家人平安脫身",
+        "監軍的口供在阿令手上",
+        "阿令、唐小棠的好感度在遠方各跳一格：他回信第一句寫的是「你們累不累」"
+      ],
+      "characters": [
+        "xu-yan",
+        "a-ling",
+        "tang-xiaotang",
+        "s03-he-zhen",
+        "a-landuo",
+        "s03-kou-yannian",
+        "xitong"
+      ],
+      "locations": [
+        "盟軍大營",
+        "柳溪堡門前"
+      ],
+      "state": {
+        "time": "決戰後第二天",
+        "knowledge": "柳溪堡守住了；皇帝親筆要他別回京",
+        "carry_forward": "皇帝的意思"
+      }
+    },
+    {
+      "number": 179,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "將軍披甲",
+      "youtube_title": "被冤十年的老將軍在三軍面前重披鎧甲，第一句話不是謝恩，而是向他單膝跪下",
+      "duration_s": 110,
+      "logline": "許硯要在三軍面前還秦烈山一身將軍甲，再決定證據怎麼進京。",
+      "hook": "許硯把紙條收進懷裡，轉身對三軍：「京城要去。」頓了頓：「先還秦家一身甲。」",
+      "hook_type": "line",
+      "mid_hook": "舊部抬出一副十年前藏在鹽礦深處的銀灰舊鎧，秦霜親手替父親一片一片繫上；三軍齊吼「秦將軍」，吼聲震得河面的冰裂開。",
+      "conflict": "替秦家正名，定下送證據的辦法。",
+      "turn": "秦烈山披甲後第一句不是謝恩，是向許硯單膝跪下：「鎮北舊部，聽許家號令。」許硯把證據抄成三份：唐家貨船、蘇赫的鷹、他自己親押，三路一起走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "三軍吼聲未落，阿蘭朵的鷹從南方飛回，爪子裡抓著一片被撕碎的黃綾，那是聖旨的顏色。",
+        "question": "被撕碎的聖旨上寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shuang",
+        "quanmou"
+      ],
+      "spectacle": "秦烈山重披銀灰舊鎧外罩黑熊皮大氅，三軍在雪原上同時舉起兵器。",
+      "glamour_shot": "秦霜替父親繫上最後一片甲，抬頭時高馬尾被風吹起，笑得像個小女孩。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "秦烈山恢復將軍盔甲，鎮北舊部歸附許家",
+        "證據抄成三份分三路送"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-lieshan",
+        "qin-shuang",
+        "a-landuo",
+        "liu-sanniang",
+        "su-he",
+        "s03-he-zhen",
+        "wang-erniu",
+        "xitong"
+      ],
+      "locations": [
+        "盟軍大營校場"
+      ],
+      "state": {
+        "time": "決戰後第三天",
+        "knowledge": "鎮北舊部歸附；鷹抓回一片碎聖旨",
+        "carry_forward": "聖旨的內容"
+      }
+    },
+    {
+      "number": 180,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "誅九族",
+      "youtube_title": "守住邊關、救出岳父、娶了草原公主凱旋南歸，京城快馬卻送來一句：宰相宣他謀反",
+      "duration_s": 150,
+      "logline": "許硯帶著鐵證與三路盟軍凱旋，要趕在京城的局收口前，把證據送到皇帝面前。",
+      "hook": "許硯把碎黃綾在雪地上拼起來，只拼得出兩個字：「許」，「謀」。",
+      "hook_type": "question",
+      "mid_hook": "凱旋路上旌旗綿延，狼牙關大開，關內百姓夾道送糧；夜裡全家第一次圍著一口大鍋吃飯，阿蘭朵學用筷子夾不起肉，秦霜和柳三娘同時夾給她。秦烈山低聲對許硯說：「皇帝早知道，我是冤的。」",
+      "conflict": "帶著證據回到大衡，讓天下知道秦家的冤。",
+      "turn": "大家以為凱旋就能翻案，秦烈山那一句卻讓許硯明白：皇帝早就知道，卻十年不救；京城裡真正握著刀的，不是皇帝。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "隔天一騎快馬衝進凱旋的隊伍，騎手滾下馬舉起急報：「皇帝病危！」全軍一靜：「宰相宣許硯謀反。」許硯手裡的碗停在半空：「誅九族。」",
+        "question": "被宣謀反的許硯，回不回京？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shachang",
+        "shuang",
+        "ganren",
+        "quanmou"
+      ],
+      "spectacle": "凱旋的旌旗在雪原上綿延十里，狼牙關城門大開，百姓舉著燈籠站滿城頭。",
+      "glamour_shot": "阿蘭朵在飯桌上學用筷子，夾掉了肉氣得鼓起臉，秦霜和柳三娘同時笑出來。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "凱旋回到狼牙關",
+        "阿蘭朵好感度跳到 70：他教她用筷子，掉一百次都不笑她",
+        "狼牙關百姓夾道相送"
+      ],
+      "characters": [
+        "xu-yan",
+        "qin-shuang",
+        "liu-sanniang",
+        "a-landuo",
+        "qin-lieshan",
+        "wang-erniu",
+        "s03-he-zhen",
+        "xitong"
+      ],
+      "locations": [
+        "南返雪原",
+        "狼牙關"
+      ],
+      "state": {
+        "time": "凱旋第五天",
+        "knowledge": "皇帝病危；宰相宣他謀反、誅九族；皇帝早知秦家冤",
+        "carry_forward": "回不回京、柳溪堡一家人的安危"
+      }
+    }
+  ]
+}
