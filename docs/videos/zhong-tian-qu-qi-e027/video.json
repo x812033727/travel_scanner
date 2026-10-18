@@ -1,0 +1,951 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e027",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "weishaoqing",
+      "name": "魏少卿",
+      "appearance": "East Asian man of twenty-six, handsome but frivolous, peach-blossom eyes, thin lips always curled in a scornful smile, fair skin, tall and slender, a sapphire-blue brocade robe woven with gold thread, a fine white jade pendant at his waist, a gold-flecked folding fan in his hand, hair in a neat topknot with a small jade crown",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十六歲的宰相之子，男聲、輕佻慵懶、拖著尾音、帶著居高臨下的笑意"
+      }
+    },
+    {
+      "id": "zhaobutou",
+      "name": "趙捕頭",
+      "appearance": "East Asian man of forty, wiry and dark-skinned, narrow eyes, a thin two-stroke moustache, a black constable's hat and plain black official uniform with an iron ruler at his belt, always eyeing people sideways",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的捕頭，公事公辦、不耐煩、斜眼看人"
+      }
+    },
+    {
+      "id": "huxianling",
+      "name": "胡縣令",
+      "appearance": "East Asian man of forty-eight, pale and plump with a double chin and narrow eyes, a black official gauze hat and a blue-green seventh-rank official robe with bulging sleeves, his cheeks shaking when he smiles",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十八歲的貪官縣令，官腔、拖長音、假裝威嚴"
+      }
+    },
+    {
+      "id": "laisan",
+      "name": "賴三",
+      "appearance": "East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, a grey-brown short jacket and an old cloth head wrap",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的家丁，油嘴滑舌、心虛"
+      }
+    },
+    {
+      "id": "sunzhanggui",
+      "name": "孫掌櫃",
+      "appearance": "East Asian man of forty-five, round and plump with fair smooth skin, narrow smiling eyes that are always half closed, a dark green silk robe with a jade belt hook, two jade balls turning in one hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的商行掌櫃，笑咪咪、慢條斯理、話裡藏刀"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a hard slap of a low drum and jeering brass stabs over a tense plucked pipa as the shop is sealed, a cold steady bass drone and sparse woodblock in the yamen hall, a hushed creeping night theme of breathy dizi and soft muted pizzicato through the back alley, a cold shimmering high string under the stone bridge as the silver changes hands, then fast tightening drums and a sharp held sting at the very end, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "毒糖鋪子被封，冷面老婆夜跟幫工，橋下撞見幕後金主｜種田娶妻打天下 第27集",
+    "description": "鬥商三十日的第十八天，許記的糖糕吃壞了客人，衙役「啪」地把封條貼上許記大門，魏少卿搖著扇子：「毒糖鋪子，封！」許硯被帶進縣衙，胡縣令說客人沒事、只是瀉藥，鋪子卻照封不誤；鬥商只剩十二天，營收歸零。許硯臨走前只向縣令要了一樣東西：包糖糕的那張紙。另一邊，阿令看見糖坊幫工賴三指甲縫裡的白粉，一個人跟了他一夜，在月光下的石橋洞裡，看見孫掌櫃把一錠銀子塞給他：「少爺賞的。」可賴三一轉身，看見了牆上的影子。《種田娶妻打天下》第 27 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "橋下的銀子",
+      "tag": "種田娶妻打天下",
+      "shot": "s29"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "封條",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the paper seal slapped onto the doors, quick push in",
+        "prompt": "In the county town market street on a grey overcast morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings, the Xu shop on screen left with its blank dark wooden signboard and its wide plank doors shut, the red-streamered two-storey Wei shop with red lanterns across the street on screen right: insert of the shut wide plank doors of the Xu shop, a constable's hand in a black sleeve slapping a long blank white paper seal strip across the two doors, a second blank strip already pasted crosswise beneath it, a murmuring crowd blurred behind",
+        "motion": "The black-sleeved hand slaps the blank paper seal flat across the doors with a hard smack and drags it down tight, dust puffing off the old wood",
+        "characters": [
+          "zhaobutou"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a01",
+          "speaker": "zhaobutou",
+          "text": "奉縣令之命，",
+          "emotion": "公事公辦，扯開嗓子"
+        },
+        {
+          "id": "zq27a02",
+          "speaker": "zhaobutou",
+          "text": "查封許記！",
+          "emotion": "斜眼看人群"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the county town market street on a grey overcast morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings, the Xu shop on screen left with its blank dark wooden signboard and its wide plank doors shut, the red-streamered two-storey Wei shop with red lanterns across the street on screen right, two long blank white paper seal strips pasted in an X across the Xu shop doors: medium shot of Zhao Butou, on screen left in front of the sealed doors of the Xu shop, turning to face the crowd with his iron ruler raised, townsfolk crowding the stone street",
+        "motion": "Zhao Butou speaks 2 short Mandarin lines, 「奉縣令之命，」 then 「查封許記！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he jabs the iron ruler at the sealed doors and glares sideways at the crowd",
+        "characters": [
+          "zhaobutou"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a03",
+          "speaker": "weishaoqing",
+          "text": "毒糖鋪子，",
+          "emotion": "搖著扇，拖長音"
+        },
+        {
+          "id": "zq27a04",
+          "speaker": "weishaoqing",
+          "text": "封！",
+          "emotion": "扇子一收，得意"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, low angle, slow push in",
+        "prompt": "In the county town market street on a grey overcast morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings, the Xu shop on screen left with its blank dark wooden signboard and its wide plank doors shut, the red-streamered two-storey Wei shop with red lanterns across the street on screen right, two long blank white paper seal strips pasted in an X across the Xu shop doors: medium close-up from a low angle of Wei Shaoqing, on screen right at the front of the crowd in the street, his gold-flecked fan open under his chin, his peach-blossom eyes on the sealed doors off screen left",
+        "motion": "Wei Shaoqing speaks 2 short Mandarin lines, 「毒糖鋪子，」 then 「封！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he snaps the fan shut and points it at the sealed doors with a scornful smile",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, slow pan left",
+        "prompt": "In the county town market street on a grey overcast morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings, the Xu shop on screen left with its blank dark wooden signboard and its wide plank doors shut, the red-streamered two-storey Wei shop with red lanterns across the street on screen right, two long blank white paper seal strips pasted in an X across the Xu shop doors: wide shot from high above the street of a jeering crowd of townsfolk pressing in around Xu Yan, who stands alone on screen left on the step before the sealed doors, people pointing and shaking their fists at him, a few Xu helpers with empty baskets at the edge",
+        "motion": "The crowd surges forward pointing and shouting at Xu Yan, a wilted cabbage leaf sails out of the crowd and lands at his feet, and he does not step back, the camera panning left toward him",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a05",
+          "speaker": "weishaoqing",
+          "text": "三十天？",
+          "emotion": "湊近，輕佻"
+        },
+        {
+          "id": "zq27a06",
+          "speaker": "weishaoqing",
+          "text": "你撐不過今天。",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the county town market street on a grey overcast morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings, the Xu shop on screen left with its blank dark wooden signboard and its wide plank doors shut, the red-streamered two-storey Wei shop with red lanterns across the street on screen right, two long blank white paper seal strips pasted in an X across the Xu shop doors: medium shot of Wei Shaoqing on screen right sauntering up the step to Xu Yan on screen left, leaning in close with his fan half open, Xu Yan standing straight before the sealed doors",
+        "motion": "Wei Shaoqing speaks 2 short Mandarin lines, 「三十天？」 then 「你撐不過今天。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he taps Xu Yan's shoulder twice with the closed fan and laughs while Xu Yan stays still",
+        "characters": [
+          "weishaoqing",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a07",
+          "speaker": "xuyan",
+          "text": "那位客人，",
+          "emotion": "不理魏少卿，看向趙捕頭"
+        },
+        {
+          "id": "zq27a08",
+          "speaker": "xuyan",
+          "text": "還好嗎？",
+          "emotion": "沉著"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the county town market street on a grey overcast morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings, the Xu shop on screen left with its blank dark wooden signboard and its wide plank doors shut, the red-streamered two-storey Wei shop with red lanterns across the street on screen right, two long blank white paper seal strips pasted in an X across the Xu shop doors: close-up of Xu Yan, on screen left before the sealed doors, grey morning light on his face, his eyes on Zhao Butou off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「那位客人，」 then 「還好嗎？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he brushes the fan off his shoulder and holds Zhao Butou's gaze",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a09",
+          "speaker": "zhaobutou",
+          "text": "死不了，",
+          "emotion": "不耐煩"
+        },
+        {
+          "id": "zq27a10",
+          "speaker": "zhaobutou",
+          "text": "跟我回衙門！",
+          "emotion": "一把抓人"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the county town market street on a grey overcast morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings, the Xu shop on screen left with its blank dark wooden signboard and its wide plank doors shut, the red-streamered two-storey Wei shop with red lanterns across the street on screen right, two long blank white paper seal strips pasted in an X across the Xu shop doors: medium close-up of Zhao Butou, on screen right with the crowd behind him, iron ruler in one hand, narrow eyes sliding sideways toward Xu Yan off screen left",
+        "motion": "Zhao Butou speaks 2 short Mandarin lines, 「死不了，」 then 「跟我回衙門！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he reaches out and grabs a fistful of Xu Yan's sleeve at the edge of frame",
+        "characters": [
+          "zhaobutou"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "chapter": "指甲縫",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a11",
+          "speaker": "laisan",
+          "text": "吃壞肚子，",
+          "emotion": "心虛地小聲嘀咕"
+        },
+        {
+          "id": "zq27a12",
+          "speaker": "laisan",
+          "text": "關我什麼事……",
+          "emotion": "乾笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the county town market street on a grey overcast morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings, the Xu shop on screen left with its blank dark wooden signboard and its wide plank doors shut, the red-streamered two-storey Wei shop with red lanterns across the street on screen right, two long blank white paper seal strips pasted in an X across the Xu shop doors: medium close-up of Lai San, on screen right at the edge of the crowd beside an empty sugar basket among the Xu helpers, sweat on his forehead, shifty eyes darting from the constables to the crowd",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「吃壞肚子，」 then 「關我什麼事……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he gives a thin nervous laugh and rubs his fingertips hard against his jacket hem",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the powder under the fingernails, locked",
+        "prompt": "In the county town market street on a grey overcast morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings, the Xu shop on screen left with its blank dark wooden signboard and its wide plank doors shut, the red-streamered two-storey Wei shop with red lanterns across the street on screen right, two long blank white paper seal strips pasted in an X across the Xu shop doors: insert close on Lai San's thin hand at his jacket hem, a fine white powder caught under his fingernails, the empty sugar basket blurred behind",
+        "motion": "Lai San's fingers rub the hem, a little white powder puffs from under one nail, and the hand jerks back up into his grey-brown sleeve",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county town market street on a grey overcast morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings, the Xu shop on screen left with its blank dark wooden signboard and its wide plank doors shut, the red-streamered two-storey Wei shop with red lanterns across the street on screen right, two long blank white paper seal strips pasted in an X across the Xu shop doors: close-up of A-ling, on screen left half hidden among the crowd, a few loose strands of hair across her porcelain face, her phoenix eyes lowered toward Lai San's hands off screen right",
+        "motion": "A-ling's eyes narrow on Lai San's hidden hands, she draws her long sleeve down over the short dagger hidden in it and steps back into the crowd",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "In the county town market street on a grey overcast morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings, the Xu shop on screen left with its blank dark wooden signboard and its wide plank doors shut, the red-streamered two-storey Wei shop with red lanterns across the street on screen right, two long blank white paper seal strips pasted in an X across the Xu shop doors: wide shot of Zhao Butou leading Xu Yan away through the parted jeering crowd toward the far end of the street, A-ling standing still at the edge of the crowd on screen left",
+        "motion": "Xu Yan walks off beside Zhao Butou, glances back over his shoulder at A-ling, and she gives him the smallest nod as the crowd closes behind them",
+        "characters": [
+          "zhaobutou",
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "chapter": "一張紙",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a13",
+          "speaker": "huxianling",
+          "text": "毒糖害人，",
+          "emotion": "官腔，拍驚堂木"
+        },
+        {
+          "id": "zq27a14",
+          "speaker": "huxianling",
+          "text": "你認不認？",
+          "emotion": "拖長音，假裝威嚴"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the county yamen hall in the morning, a dim high-ceilinged hall of dark red-lacquered pillars, a raised dais with a long bench table draped in dark red cloth, a wooden gavel block and a brush stand on it, a large painted screen of waves and a rising sun behind the bench, two rows of constables in black holding red-and-black staffs along both sides, a grey flagstone floor, bright morning light falling through the open doors at the back: wide shot of Magistrate Hu, on screen right seated behind the long bench table on the dais, and Xu Yan, on screen left standing below on the flagstones between the rows of constables",
+        "motion": "Magistrate Hu speaks 2 short Mandarin lines, 「毒糖害人，」 then 「你認不認？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he slams the wooden gavel block on the bench while the constables thump their staffs on the floor",
+        "characters": [
+          "huxianling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a15",
+          "speaker": "xuyan",
+          "text": "糖是我做的，",
+          "emotion": "不卑不亢"
+        },
+        {
+          "id": "zq27a16",
+          "speaker": "xuyan",
+          "text": "藥不是。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the county yamen hall in the morning, a dim high-ceilinged hall of dark red-lacquered pillars, a raised dais with a long bench table draped in dark red cloth, a wooden gavel block and a brush stand on it, a large painted screen of waves and a rising sun behind the bench, two rows of constables in black holding red-and-black staffs along both sides, a grey flagstone floor, bright morning light falling through the open doors at the back: medium close-up of Xu Yan, on screen left standing alone on the grey flagstones, a constable's red-and-black staff blurred across the foreground, shafts of morning light from the doors behind him catching the loose strands of hair over his forehead and the patch on his faded robe, his eyes on Magistrate Hu off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「糖是我做的，」 then 「藥不是。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he lifts his chin and does not look away",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a17",
+          "speaker": "huxianling",
+          "text": "大夫說了，",
+          "emotion": "慢吞吞，看手上的紙"
+        },
+        {
+          "id": "zq27a18",
+          "speaker": "huxianling",
+          "text": "只是瀉藥。",
+          "emotion": "不以為意"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the county yamen hall in the morning, a dim high-ceilinged hall of dark red-lacquered pillars, a raised dais with a long bench table draped in dark red cloth, a wooden gavel block and a brush stand on it, a large painted screen of waves and a rising sun behind the bench, two rows of constables in black holding red-and-black staffs along both sides, a grey flagstone floor, bright morning light falling through the open doors at the back: medium close-up of Magistrate Hu, on screen right behind the bench, pale double chin over his collar, a slip of paper from the doctor in his plump fingers",
+        "motion": "Magistrate Hu speaks 2 short Mandarin lines, 「大夫說了，」 then 「只是瀉藥。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he tosses the slip of paper onto the bench and flaps his bulging sleeve",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a19",
+          "speaker": "huxianling",
+          "text": "人沒事，",
+          "emotion": "拖長音"
+        },
+        {
+          "id": "zq27a20",
+          "speaker": "huxianling",
+          "text": "鋪子照封！",
+          "emotion": "拍驚堂木"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, low angle, locked",
+        "prompt": "In the county yamen hall in the morning, a dim high-ceilinged hall of dark red-lacquered pillars, a raised dais with a long bench table draped in dark red cloth, a wooden gavel block and a brush stand on it, a large painted screen of waves and a rising sun behind the bench, two rows of constables in black holding red-and-black staffs along both sides, a grey flagstone floor, bright morning light falling through the open doors at the back: close-up from a low angle of Magistrate Hu, on screen right leaning over the bench, his black gauze hat tilted, one plump hand raising the gavel block",
+        "motion": "Magistrate Hu speaks 2 short Mandarin lines, 「人沒事，」 then 「鋪子照封！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he brings the gavel block down hard and his cheeks shake",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a21",
+          "speaker": "xitong",
+          "text": "剩十二日，",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq27a22",
+          "speaker": "xitong",
+          "text": "營收歸零。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county yamen hall in the morning, a dim high-ceilinged hall of dark red-lacquered pillars, a raised dais with a long bench table draped in dark red cloth, a wooden gavel block and a brush stand on it, a large painted screen of waves and a rising sun behind the bench, two rows of constables in black holding red-and-black staffs along both sides, a grey flagstone floor, bright morning light falling through the open doors at the back: close-up of Xu Yan's face, on screen left, the doors' light on one cheek, staring at the empty air just in front of him, a faint cool blue tint on his eyes; the system voice speaks off screen",
+        "motion": "Xu Yan's jaw tightens at the empty air in front of him, his eyes close for a breath and open again steady",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a23",
+          "speaker": "xuyan",
+          "text": "大人，",
+          "emotion": "走到門口，回頭"
+        },
+        {
+          "id": "zq27a24",
+          "speaker": "xuyan",
+          "text": "我只要一樣東西。",
+          "emotion": "平靜"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the county yamen hall in the morning, a dim high-ceilinged hall of dark red-lacquered pillars, a raised dais with a long bench table draped in dark red cloth, a wooden gavel block and a brush stand on it, a large painted screen of waves and a rising sun behind the bench, two rows of constables in black holding red-and-black staffs along both sides, a grey flagstone floor, bright morning light falling through the open doors at the back: wide shot down the length of the hall of Xu Yan, on screen left near the bright open doors at the back of the hall, half turned back over his shoulder toward the bench, his hands still cupped from a bow",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「大人，」 then 「我只要一樣東西。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he turns fully round to face the bench and lowers his cupped hands",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a25",
+          "speaker": "xuyan",
+          "text": "包糖糕的那張紙。",
+          "emotion": "一字一字，篤定"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county yamen hall in the morning, a dim high-ceilinged hall of dark red-lacquered pillars, a raised dais with a long bench table draped in dark red cloth, a wooden gavel block and a brush stand on it, a large painted screen of waves and a rising sun behind the bench, two rows of constables in black holding red-and-black staffs along both sides, a grey flagstone floor, bright morning light falling through the open doors at the back: close-up of Xu Yan, on screen left framed against the white blaze of the open doorway behind him, a few strands of hair over his forehead, the corner of his mouth lifting, his steady eyes on Magistrate Hu off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「包糖糕的那張紙。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he holds out one open palm toward the bench",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a26",
+          "speaker": "huxianling",
+          "text": "一張紙，",
+          "emotion": "瞇眼，不信"
+        },
+        {
+          "id": "zq27a27",
+          "speaker": "huxianling",
+          "text": "能救你？",
+          "emotion": "笑得兩頰亂顫"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the county yamen hall in the morning, a dim high-ceilinged hall of dark red-lacquered pillars, a raised dais with a long bench table draped in dark red cloth, a wooden gavel block and a brush stand on it, a large painted screen of waves and a rising sun behind the bench, two rows of constables in black holding red-and-black staffs along both sides, a grey flagstone floor, bright morning light falling through the open doors at the back: medium close-up of Magistrate Hu, on screen right behind the red-draped bench under the painted wave screen, his black gauze hat askew, one plump hand resting on his round belly, his narrow eyes squinting in disbelief, his eyes on Xu Yan off screen left",
+        "motion": "Magistrate Hu speaks 2 short Mandarin lines, 「一張紙，」 then 「能救你？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he bursts out laughing with his cheeks shaking and waves a constable forward with his sleeve",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a28",
+          "speaker": "xuyan",
+          "text": "夠了。",
+          "emotion": "畫外，低聲"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the wrapping paper in a palm, slow push in",
+        "prompt": "In the county yamen hall in the morning, a dim high-ceilinged hall of dark red-lacquered pillars, a raised dais with a long bench table draped in dark red cloth, a wooden gavel block and a brush stand on it, a large painted screen of waves and a rising sun behind the bench, two rows of constables in black holding red-and-black staffs along both sides, a grey flagstone floor, bright morning light falling through the open doors at the back: insert close of Xu Yan's open palm in a faded blue-grey sleeve, a constable's black-sleeved hand dropping a crumpled oil-stained square of coarse yellow wrapping paper into it; a man's voice speaks off screen",
+        "motion": "The fingers unfold the crumpled coarse yellow paper and a few grains of fine white powder glint in its crease in the light from the doors",
+        "characters": []
+      }
+    },
+    {
+      "id": "s21",
+      "chapter": "夜跟",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a29",
+          "speaker": "laisan",
+          "text": "拿了銀子，",
+          "emotion": "邊走邊嘀咕"
+        },
+        {
+          "id": "zq27a30",
+          "speaker": "laisan",
+          "text": "就出城……",
+          "emotion": "心虛，加快腳步"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, tracking shot",
+        "prompt": "In a narrow back alley of the county town at night, high mottled grey-brick walls on both sides with shut back doors, broken bamboo baskets and bundles of firewood along the foot of the walls, wet flagstones with puddles reflecting the moon, one dim old paper lantern hanging under the eaves, the faint glow of the street at the far end, cold blue moonlight: wide shot down the alley of Lai San, limping along the wet flagstones toward camera, a small cloth bundle clutched to his chest, the old lantern swinging behind him",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「拿了銀子，」 then 「就出城……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he glances back over his shoulder twice and hurries on, the camera tracking back ahead of him",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, slow track left",
+        "prompt": "In a narrow back alley of the county town at night, high mottled grey-brick walls on both sides with shut back doors, broken bamboo baskets and bundles of firewood along the foot of the walls, wet flagstones with puddles reflecting the moon, one dim old paper lantern hanging under the eaves, the faint glow of the street at the far end, cold blue moonlight: medium close-up of A-ling, on screen left gliding along the grey-brick wall in the deep shadow under the eaves, her plain grey-white dress, a few strands of black hair lifted by the night wind, only her phoenix eyes catching the moonlight",
+        "motion": "A-ling slides silently along the wall, her hair strands stirring in the wind, and stops dead the moment the footsteps ahead stop, the camera tracking left with her",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a31",
+          "speaker": "laisan",
+          "text": "誰？",
+          "emotion": "猛回頭"
+        },
+        {
+          "id": "zq27a32",
+          "speaker": "laisan",
+          "text": "……野貓吧。",
+          "emotion": "鬆一口氣"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In a narrow back alley of the county town at night, high mottled grey-brick walls on both sides with shut back doors, broken bamboo baskets and bundles of firewood along the foot of the walls, wet flagstones with puddles reflecting the moon, one dim old paper lantern hanging under the eaves, the faint glow of the street at the far end, cold blue moonlight: medium close-up of Lai San, on screen right under the swinging lantern, whirling round to stare back down the dark alley, eyes wide and darting",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「誰？」 then 「……野貓吧。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he wipes his mouth with the back of his hand and turns away again",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In a narrow back alley of the county town at night, high mottled grey-brick walls on both sides with shut back doors, broken bamboo baskets and bundles of firewood along the foot of the walls, wet flagstones with puddles reflecting the moon, one dim old paper lantern hanging under the eaves, the faint glow of the street at the far end, cold blue moonlight: close-up of A-ling, pressed flat into a dark recessed back doorway on screen left, her face half in shadow, a black stray cat crouched on the wall top just above her",
+        "motion": "The black cat springs down past her and lands on the flagstones with a soft yowl, and A-ling does not blink or breathe",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "chapter": "橋下的銀子",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, slow push in",
+        "prompt": "Under the stone bridge to the county town at night, the dark underside of an old arched grey stone bridge over a fast-running stream, a muddy bank of pebbles and reeds beneath the arch, an old tree leaning at the bridgehead, a full moon above, cold silver moonlight on the black water: wide shot from above of Lai San, scrambling down the muddy bank on screen left into the dark arch, where Sun Zhanggui waits on screen right holding a small paper lantern, the moonlit water between them",
+        "motion": "Lai San slips and scrambles down the bank into the arch, and Sun Zhanggui lifts the little lantern to look at him, the jade balls turning in his other hand",
+        "characters": [
+          "laisan",
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a33",
+          "speaker": "sunzhanggui",
+          "text": "事辦乾淨了？",
+          "emotion": "笑咪咪，慢條斯理"
+        },
+        {
+          "id": "zq27a34",
+          "speaker": "sunzhanggui",
+          "text": "沒人看見吧？",
+          "emotion": "話裡藏刀"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Under the stone bridge to the county town at night, the dark underside of an old arched grey stone bridge over a fast-running stream, a muddy bank of pebbles and reeds beneath the arch, an old tree leaning at the bridgehead, a full moon above, cold silver moonlight on the black water: medium close-up of Sun Zhanggui, on screen right under the dark stone arch, the small paper lantern lighting his round face from below, half-closed smiling eyes on Lai San off screen left, two jade balls in one hand",
+        "motion": "Sun Zhanggui speaks 2 short Mandarin lines, 「事辦乾淨了？」 then 「沒人看見吧？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then the jade balls click slowly in his palm",
+        "characters": [
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a35",
+          "speaker": "laisan",
+          "text": "沒、沒有，",
+          "emotion": "結巴，討好"
+        },
+        {
+          "id": "zq27a36",
+          "speaker": "laisan",
+          "text": "我手腳快。",
+          "emotion": "油嘴滑舌"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Under the stone bridge to the county town at night, the dark underside of an old arched grey stone bridge over a fast-running stream, a muddy bank of pebbles and reeds beneath the arch, an old tree leaning at the bridgehead, a full moon above, cold silver moonlight on the black water: medium close-up of Lai San, on screen left at the water's edge under the arch, hunched and rubbing his hands together, moonlight off the water on his pointed chin",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「沒、沒有，」 then 「我手腳快。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he bobs his head and rubs his hands faster",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, high angle, slow push in",
+        "prompt": "On top of the old arched grey stone bridge to the county town at night, a low weathered stone parapet, an old tree leaning at the bridgehead, a full moon low behind, the fast-running stream glinting far below: medium shot of A-ling, crouched low behind the stone parapet in the middle of the bridge, the full moon behind her, looking down over the edge toward the lantern glow beneath the arch",
+        "motion": "A-ling leans slowly over the parapet, one hand flat on the cold stone, her loose hair strands blowing in the night wind",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the silver in the water's reflection, slow push in",
+        "prompt": "Under the stone bridge to the county town at night, the dark underside of an old arched grey stone bridge over a fast-running stream, a muddy bank of pebbles and reeds beneath the arch, an old tree leaning at the bridgehead, a full moon above, cold silver moonlight on the black water: insert close on the moonlit black water beneath the arch, in its reflection a plump hand in a dark green silk sleeve passing a heavy silver ingot into a thin hand in a grey-brown sleeve, the paper lantern glowing in the ripples",
+        "motion": "The silver ingot changes hands in the rippling reflection, a drip falls and the moon and the ingot break apart into shimmering rings",
+        "characters": []
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a37",
+          "speaker": "sunzhanggui",
+          "text": "少爺賞的，",
+          "emotion": "笑咪咪"
+        },
+        {
+          "id": "zq27a38",
+          "speaker": "sunzhanggui",
+          "text": "這幾天躲遠點。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Under the stone bridge to the county town at night, the dark underside of an old arched grey stone bridge over a fast-running stream, a muddy bank of pebbles and reeds beneath the arch, an old tree leaning at the bridgehead, a full moon above, cold silver moonlight on the black water: close-up of Sun Zhanggui, on screen right under the arch, his half-closed eyes smiling over the lantern, his plump hand withdrawing from the ingot",
+        "motion": "Sun Zhanggui speaks 2 short Mandarin lines, 「少爺賞的，」 then 「這幾天躲遠點。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he pats Lai San's cheek lightly at the edge of frame and smiles",
+        "characters": [
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a39",
+          "speaker": "laisan",
+          "text": "替我謝謝，",
+          "emotion": "眼睛發亮，討好"
+        },
+        {
+          "id": "zq27a40",
+          "speaker": "laisan",
+          "text": "魏少爺。",
+          "emotion": "咧嘴笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Under the stone bridge to the county town at night, the dark underside of an old arched grey stone bridge over a fast-running stream, a muddy bank of pebbles and reeds beneath the arch, an old tree leaning at the bridgehead, a full moon above, cold silver moonlight on the black water: medium close-up of Lai San, on screen left under the arch, the heavy silver ingot in both hands, his shifty eyes shining greedily in the lantern light",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「替我謝謝，」 then 「魏少爺。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he bites the edge of the ingot and grins",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a41",
+          "speaker": "aling",
+          "text": "魏少卿。",
+          "emotion": "極輕，冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On top of the old arched grey stone bridge to the county town at night, a low weathered stone parapet, an old tree leaning at the bridgehead, a full moon low behind, the fast-running stream glinting far below: close-up of A-ling, crouched behind the parapet, cold moonlight on her porcelain face, her phoenix eyes narrowed down toward the arch below",
+        "motion": "A-ling speaks a short Mandarin line, 「魏少卿。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then her fingers tighten slowly on the cold stone",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "chapter": "堵巷",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a42",
+          "speaker": "laisan",
+          "text": "魏少爺出手，",
+          "emotion": "哼著小調，得意"
+        },
+        {
+          "id": "zq27a43",
+          "speaker": "laisan",
+          "text": "真大方。",
+          "emotion": "拋銀子"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In a narrow back alley of the county town at night, high mottled grey-brick walls on both sides with shut back doors, broken bamboo baskets and bundles of firewood along the foot of the walls, wet flagstones with puddles reflecting the moon, one dim old paper lantern hanging under the eaves, the faint glow of the street at the far end, cold blue moonlight: wide shot down the alley of Lai San, on screen right walking under the old lantern, tossing the silver ingot up and catching it, a pale whitewashed patch of wall beside him",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「魏少爺出手，」 then 「真大方。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he catches the ingot and freezes mid-step, staring at the wall",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the shadows on the wall, locked",
+        "prompt": "In a narrow back alley of the county town at night, high mottled grey-brick walls on both sides with shut back doors, broken bamboo baskets and bundles of firewood along the foot of the walls, wet flagstones with puddles reflecting the moon, one dim old paper lantern hanging under the eaves, the faint glow of the street at the far end, cold blue moonlight: insert of the whitewashed patch of brick wall lit by the lantern, the hunched shadow of the man under the lantern on it and right behind it a second slender shadow with a single hairpin in its hair",
+        "motion": "The slender shadow with the hairpin glides up behind the hunched one and stops, and the hunched shadow flinches",
+        "characters": []
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a44",
+          "speaker": "laisan",
+          "text": "大哥們，",
+          "emotion": "臉色發白"
+        },
+        {
+          "id": "zq27a45",
+          "speaker": "laisan",
+          "text": "有尾巴！",
+          "emotion": "扯開嗓子喊"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In a narrow back alley of the county town at night, high mottled grey-brick walls on both sides with shut back doors, broken bamboo baskets and bundles of firewood along the foot of the walls, wet flagstones with puddles reflecting the moon, one dim old paper lantern hanging under the eaves, the faint glow of the street at the far end, cold blue moonlight: medium close-up of Lai San, on screen right, turning round with his face drained white, the ingot clutched to his chest, his eyes on the dark alley off screen left",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「大哥們，」 then 「有尾巴！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then his fear twists into a sly grin and he shouts toward the dark doorways",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "In a narrow back alley of the county town at night, high mottled grey-brick walls on both sides with shut back doors, broken bamboo baskets and bundles of firewood along the foot of the walls, wet flagstones with puddles reflecting the moon, one dim old paper lantern hanging under the eaves, the faint glow of the street at the far end, cold blue moonlight: wide shot down the alley of A-ling standing in the middle on screen left, two burly thugs in black short jackets with wooden staves stepping out of a dark doorway behind her, Lai San backing away on screen right",
+        "motion": "The two thugs step out of the doorway and plant themselves across the alley mouth, slapping their staves into their palms, while Lai San backs off grinning, the camera panning right",
+        "characters": [
+          "aling",
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq27a46",
+          "speaker": "aling",
+          "text": "三個。",
+          "emotion": "冷淡地數"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In a narrow back alley of the county town at night, high mottled grey-brick walls on both sides with shut back doors, broken bamboo baskets and bundles of firewood along the foot of the walls, wet flagstones with puddles reflecting the moon, one dim old paper lantern hanging under the eaves, the faint glow of the street at the far end, cold blue moonlight: medium close-up of A-ling, in the middle of the alley under the lantern, cold calm face, a few strands of hair across it, her right hand at her long sleeve",
+        "motion": "A-ling speaks a short Mandarin line, 「三個。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she slides her short dagger, still in its plain wooden sheath, out of her sleeve and turns it in her grip",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "In a narrow back alley of the county town at night, high mottled grey-brick walls on both sides with shut back doors, broken bamboo baskets and bundles of firewood along the foot of the walls, wet flagstones with puddles reflecting the moon, one dim old paper lantern hanging under the eaves, the faint glow of the street at the far end, cold blue moonlight: extreme close-up of A-ling's phoenix eyes, cold moonlight across them, the shadows of two raised wooden staves sliding over her face",
+        "motion": "The staff shadows rise over A-ling's face, her eyes flick left then right, and she draws one slow breath",
+        "characters": [
+          "aling"
+        ]
+      }
+    }
+  ]
+}

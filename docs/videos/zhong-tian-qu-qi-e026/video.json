@@ -1,0 +1,756 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e026",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, a wide white-toothed grin, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a hoe or carrying pole on his shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      }
+    },
+    {
+      "id": "laisan",
+      "name": "賴三",
+      "appearance": "East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, a grey-brown short jacket and an old cloth head wrap",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的家丁，油嘴滑舌、心虛"
+      }
+    },
+    {
+      "id": "weishaoqing",
+      "name": "魏少卿",
+      "appearance": "East Asian man of twenty-six, handsome but frivolous, peach-blossom eyes, thin lips always curled in a scornful smile, fair skin, tall and slender, a sapphire-blue brocade robe woven with gold thread, a fine white jade pendant at his waist, a gold-flecked folding fan in his hand, hair in a neat topknot with a small jade crown",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十六歲的宰相之子，男聲、輕佻慵懶、拖著尾音、帶著居高臨下的笑意"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    },
+    {
+      "id": "weijihuoji",
+      "name": "魏記夥計",
+      "appearance": "East Asian young man of twenty, skinny and loud, a narrow grinning face with a gap between his front teeth, a red cotton waistcoat over a grey short jacket, a red cloth band tied round his forehead, a small brass gong and a wooden striker in his hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的店鋪夥計，男聲、嗓門尖又大、拉長了尾音吆喝"
+      }
+    },
+    {
+      "id": "jieshangfuren",
+      "name": "街上婦人",
+      "appearance": "East Asian townswoman of forty, plain round face, hair in a simple low bun with a wooden pin, a faded indigo cotton jacket and apron, a small cloth bundle on her arm",
+      "voice": {
+        "provider": "gemini",
+        "name": "Despina",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的街坊婦人，女聲、嗓門尖、受了驚嚇時拔高了尖叫"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a bright rising dizi and shimmering bells over soft plucked strings as the stone mill turns and the sugar pours out like snow at the start, a sly limping bassoon-like reed and a few dry woodblock ticks when Lai San shuffles into the shed, a bouncy confident pipa and quick drums as the queue fills the street and the counts double, a crash of cymbals and a sour low brass when the rival flips his table, a thin creeping erhu and slow heartbeat drum at dusk over the paper packet, then a sudden silence, one sharp gong and a hard tightening drum roll to a held sting at the very end, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "糖霜雪白排到街尾，對街掀桌，下一秒客人倒在店門口｜種田娶妻打天下 第26集",
+    "description": "唐小棠把爹的字條收進袖子，抹乾眼淚推動石磨：「先贏給他看。」石磨一轉，雪白的糖霜嘩嘩流出，小禾捧著兩手接：「下雪了！」糖坊卻來了一個熟面孔——放過火的賴三一跛一跛地求一口飯吃，許硯只說：「肯幹，就留下。」鬥商第十七日，許記的糖霜糕排到街尾，帳數是魏記的兩倍；對街的魏少卿一整天等不到一個客人，親手掀了自己的桌子。當晚糖坊裡沒人時，賴三把一小包紙包倒進一盤糖霜糕。第十八日早上，許記門口一位老伯咬下糖糕，捂著肚子倒地——「糖裡有毒！」《種田娶妻打天下》第 26 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "白糖如雪",
+      "tag": "種田娶妻打天下",
+      "shot": "s03"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "下雪了",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a01",
+          "speaker": "tangxiaotang",
+          "text": "先贏給他看。",
+          "emotion": "抹乾眼淚，咬著牙"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the sugar workshop by the stream on a bright morning, an open-sided thatched shed on rough wooden posts beside a clear stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels each set over a squat clay jar, a big grey stone mill with a long wooden push-handle under the thatch, bundles of fresh sugar cane stacked by the posts, warm sunlight slanting in through the open sides and fine white sugar dust drifting in the air: medium close-up of Tang Xiaotang in her high-collared peach-pink ruqun, on screen right beside the big stone mill, her eyes still red and wet from crying, a small folded paper note pinched in her fingers, sunlight on her face and pearl hairpins, her gaze fixed on the mill",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「先贏給他看。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she tucks the folded note into her flowing sleeve and wipes her eyes hard with the back of her hand",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the sugar workshop by the stream on a bright morning, an open-sided thatched shed on rough wooden posts beside a clear stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels each set over a squat clay jar, a big grey stone mill with a long wooden push-handle under the thatch, bundles of fresh sugar cane stacked by the posts, warm sunlight slanting in through the open sides and fine white sugar dust drifting in the air: medium shot of Tang Xiaotang in her high-collared peach-pink ruqun, on screen right gripping the long wooden push-handle of the big grey stone mill with both hands, Xu Yan on screen left by the stacked sugar cane watching her, a bamboo tray set under the mill's spout",
+        "motion": "Tang Xiaotang leans her whole weight into the push-handle and the heavy upper millstone begins to turn, grinding round and round, while Xu Yan straightens up in surprise",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Insert of sugar pouring from the mill spout, slow push in",
+        "prompt": "In the sugar workshop by the stream on a bright morning, an open-sided thatched shed on rough wooden posts beside a clear stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels each set over a squat clay jar, a big grey stone mill with a long wooden push-handle under the thatch, bundles of fresh sugar cane stacked by the posts, warm sunlight slanting in through the open sides and fine white sugar dust drifting in the air: insert close on the stone spout at the rim of the big grey stone mill, fine snow-white sugar powder pouring out of it in a soft stream and heaping into a little white mountain on a wide flat bamboo tray, sunbeams full of glittering sugar dust",
+        "motion": "The snow-white sugar powder pours out faster and faster, the little white mountain on the tray growing and its slopes sliding softly, glittering sugar dust swirling up into the sunbeams",
+        "characters": []
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a02",
+          "speaker": "xiaohe",
+          "text": "下雪了！",
+          "emotion": "捧著兩手接，驚喜"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow tilt up",
+        "prompt": "In the sugar workshop by the stream on a bright morning, an open-sided thatched shed on rough wooden posts beside a clear stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels each set over a squat clay jar, a big grey stone mill with a long wooden push-handle under the thatch, bundles of fresh sugar cane stacked by the posts, warm sunlight slanting in through the open sides and fine white sugar dust drifting in the air: medium close-up of little Xiaohe, on screen right kneeling beside the wide bamboo tray under the stone mill's spout, both small hands cupped under the falling snow-white sugar powder, a little white heap in her palms, sunlight on her round face and wide eyes",
+        "motion": "little Xiaohe speaks a short Mandarin line, 「下雪了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she laughs and lifts her cupped hands high so the white sugar powder puffs up around her face like snow",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a03",
+          "speaker": "xitong",
+          "text": "白糖量產，達成。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the sugar workshop by the stream on a bright morning, an open-sided thatched shed on rough wooden posts beside a clear stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels each set over a squat clay jar, a big grey stone mill with a long wooden push-handle under the thatch, bundles of fresh sugar cane stacked by the posts, warm sunlight slanting in through the open sides and fine white sugar dust drifting in the air: close-up of Xu Yan's face, on screen left, warm sunlight on one cheek, a dusting of white sugar powder on his thumb, staring at the empty air just in front of him, a faint cool blue tint on his eyes; the system voice speaks off screen",
+        "motion": "Xu Yan licks the white sugar powder off his thumb, his eyes widening at the empty air in front of him, and a slow proud grin spreads across his face",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "chapter": "新幫工",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the sugar workshop by the stream on a bright morning, an open-sided thatched shed on rough wooden posts beside a clear stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels each set over a squat clay jar, a big grey stone mill with a long wooden push-handle under the thatch, bundles of fresh sugar cane stacked by the posts, warm sunlight slanting in through the open sides and fine white sugar dust drifting in the air: wide shot of the open shed, Xu Yan on screen left by the stone mill, Wang Erniu in the middle with a long wooden paddle by the stove, and Lai San limping in from the sunny stream path on screen right, his old cloth head wrap askew, bowing low with both hands pressed together",
+        "motion": "Lai San limps in under the thatch and bows low again and again, while Xu Yan and Wang Erniu turn round to stare at him",
+        "characters": [
+          "laisan",
+          "xuyan",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a04",
+          "speaker": "erniu",
+          "text": "賴三？",
+          "emotion": "瞪大眼，握緊木槳"
+        },
+        {
+          "id": "zq26a05",
+          "speaker": "erniu",
+          "text": "放火那個？",
+          "emotion": "粗聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the sugar workshop by the stream on a bright morning, an open-sided thatched shed on rough wooden posts beside a clear stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels each set over a squat clay jar, a big grey stone mill with a long wooden push-handle under the thatch, bundles of fresh sugar cane stacked by the posts, warm sunlight slanting in through the open sides and fine white sugar dust drifting in the air: medium close-up of Wang Erniu, on screen left by the mud-brick stove, the long wooden paddle gripped in both fists like a staff, thick brows knotted, glaring at Lai San off screen right",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「賴三？」 then 「放火那個？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he jabs the paddle toward Lai San off screen right and plants himself in the way",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a06",
+          "speaker": "laisan",
+          "text": "錢府不要我了，",
+          "emotion": "哈腰賠笑"
+        },
+        {
+          "id": "zq26a07",
+          "speaker": "laisan",
+          "text": "賞口飯吃吧。",
+          "emotion": "可憐兮兮"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the sugar workshop by the stream on a bright morning, an open-sided thatched shed on rough wooden posts beside a clear stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels each set over a squat clay jar, a big grey stone mill with a long wooden push-handle under the thatch, bundles of fresh sugar cane stacked by the posts, warm sunlight slanting in through the open sides and fine white sugar dust drifting in the air: medium close-up of Lai San, on screen right just under the edge of the thatch, hunched and bowing, rubbing his thin hands together, shifty eyes darting up toward Xu Yan off screen left, a fawning smile",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「錢府不要我了，」 then 「賞口飯吃吧。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he bows lower still and holds out his empty hands, palms up",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a08",
+          "speaker": "xuyan",
+          "text": "肯幹，",
+          "emotion": "看了他很久"
+        },
+        {
+          "id": "zq26a09",
+          "speaker": "xuyan",
+          "text": "就留下。",
+          "emotion": "淡淡地"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the sugar workshop by the stream on a bright morning, an open-sided thatched shed on rough wooden posts beside a clear stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels each set over a squat clay jar, a big grey stone mill with a long wooden push-handle under the thatch, bundles of fresh sugar cane stacked by the posts, warm sunlight slanting in through the open sides and fine white sugar dust drifting in the air: close-up of Xu Yan, on screen left beside the stone mill, sunlight on half his face, weighing him up for a long moment, his eyes toward Lai San off screen right, a coarse grey work apron in one hand",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「肯幹，」 then 「就留下。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he tosses the grey work apron to Lai San off screen right",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the sugar workshop by the stream on a bright morning, an open-sided thatched shed on rough wooden posts beside a clear stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels each set over a squat clay jar, a big grey stone mill with a long wooden push-handle under the thatch, bundles of fresh sugar cane stacked by the posts, warm sunlight slanting in through the open sides and fine white sugar dust drifting in the air: close-up of Lai San, on screen right, the coarse grey work apron clutched to his chest, bowing his head, behind him on a long low table rows of flat bamboo trays of small square snow-white sugar frost cakes",
+        "motion": "As Lai San lowers his head the fawning smile drops off his face and his eyes slide coldly sideways to the trays of sugar frost cakes",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "chapter": "糖霜糕",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, slow pan right",
+        "prompt": "In the county town market street on a bright spring morning, a busy stone-paved street lined with grey-tiled two-storey wooden shopfronts, cloth awnings and open wooden shutters, the Xu shop with its blank dark wooden signboard on screen left, the two-storey Wei shop hung with plain red silk streamers and red lanterns directly across the street on screen right: wide shot from high above the street of a very long queue of townsfolk winding from the Xu shop on screen left all the way down the street, across the stones on screen right the red-streamered Wei shop with its doorway empty and its step bare",
+        "motion": "The long queue shuffles forward toward the Xu shop and more townsfolk hurry to join its end, the camera panning right past the empty doorway of the red-streamered Wei shop",
+        "characters": []
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the sugar frost cakes, locked",
+        "prompt": "In the Xu family shop in the county town on a bright spring morning, a narrow whitewashed shop room with a long dark wooden counter, wooden shelves stacked with bundles of plain white paper, rows of pale yellow soap bars and small red lacquered boxes of snow-white sugar frost cakes, the wide plank doorway open onto the bright street with a long queue of townsfolk outside: insert over the long dark wooden counter of an open red lacquered box packed with small square sugar frost cakes dusted snow white, a slim hand in a flowing peach-pink silk sleeve on screen right lifting the lid, eager customers' hands reaching in from screen left",
+        "motion": "The peach-sleeved hand lifts the lid and a puff of fine white sugar dust rises in the sunlight as the customers' hands reach for the snow-white cakes",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a10",
+          "speaker": "tangxiaotang",
+          "text": "排到街尾了！",
+          "emotion": "數著長龍，眉開眼笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town on a bright spring morning, a narrow whitewashed shop room with a long dark wooden counter, wooden shelves stacked with bundles of plain white paper, rows of pale yellow soap bars and small red lacquered boxes of snow-white sugar frost cakes, the wide plank doorway open onto the bright street with a long queue of townsfolk outside: medium close-up of Tang Xiaotang in her high-collared peach-pink ruqun, on screen right in the open plank doorway, a small red lacquered box of snow-white sugar frost cakes held in both hands against her waist, her eyes running down the long queue in the bright street, warm morning sun on her face, dimples and pearl hairpins",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「排到街尾了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she turns back over her shoulder toward Xu Yan off screen left with a dazzling smile and holds up two fingers",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a11",
+          "speaker": "xitong",
+          "text": "鬥商帳數，許記是魏記的兩倍。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the Xu family shop in the county town on a bright spring morning, a narrow whitewashed shop room with a long dark wooden counter, wooden shelves stacked with bundles of plain white paper, rows of pale yellow soap bars and small red lacquered boxes of snow-white sugar frost cakes, the wide plank doorway open onto the bright street with a long queue of townsfolk outside: close-up of Xu Yan, on screen left behind the long counter, morning light on his face, looking toward Tang Xiaotang off screen right at the doorway, a faint cool blue tint on his eyes; the system voice speaks off screen",
+        "motion": "Xu Yan's eyes flick to the empty air in front of him, then back to the doorway, and he holds up two fingers in reply with a wide crinkle-eyed grin",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "chapter": "掀桌",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the county town market street on a bright spring morning, a busy stone-paved street lined with grey-tiled two-storey wooden shopfronts, cloth awnings and open wooden shutters, the Xu shop with its blank dark wooden signboard on screen left, the two-storey Wei shop hung with plain red silk streamers and red lanterns directly across the street on screen right: medium shot of the Wei shop clerk, on screen right alone on the bare stone step of the red-streamered Wei shop, a long display table beside him heaped with unsold soap bars and dark sugar cakes, his small brass gong dangling from one hand, the crowd at the Xu shop far across the street on screen left",
+        "motion": "The Wei shop clerk gives a huge yawn, then swats lazily at the empty air and slumps against the door post, the gong drooping",
+        "characters": [
+          "weijihuoji"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a12",
+          "speaker": "weishaoqing",
+          "text": "一個都沒有？",
+          "emotion": "冷下臉，拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, low angle, slow push in",
+        "prompt": "In the county town market street on a bright spring morning, a busy stone-paved street lined with grey-tiled two-storey wooden shopfronts, cloth awnings and open wooden shutters, the Xu shop with its blank dark wooden signboard on screen left, the two-storey Wei shop hung with plain red silk streamers and red lanterns directly across the street on screen right: medium close-up from a low angle of Wei Shaoqing, on screen right stepping out of the doorway of the red-streamered Wei shop under the swaying red lanterns, his gold-flecked fan snapped shut in his hand, staring at the bare step and the empty street",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「一個都沒有？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then his scornful smile drains away and he grips the closed fan until his knuckles whiten",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a13",
+          "speaker": "weijihuoji",
+          "text": "少爺，",
+          "emotion": "縮著脖子"
+        },
+        {
+          "id": "zq26a14",
+          "speaker": "weijihuoji",
+          "text": "全去對面了……",
+          "emotion": "越說越小聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the county town market street on a bright spring morning, a busy stone-paved street lined with grey-tiled two-storey wooden shopfronts, cloth awnings and open wooden shutters, the Xu shop with its blank dark wooden signboard on screen left, the two-storey Wei shop hung with plain red silk streamers and red lanterns directly across the street on screen right: medium close-up of the Wei shop clerk, on screen right on the step of the red-streamered Wei shop, hunching his shoulders, the brass gong hugged to his chest, nervously pointing off screen left across the street",
+        "motion": "the Wei shop clerk speaks 2 short Mandarin lines, 「少爺，」 then 「全去對面了……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he ducks his head and shuffles a step back",
+        "characters": [
+          "weijihuoji"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the county town market street on a bright spring morning, a busy stone-paved street lined with grey-tiled two-storey wooden shopfronts, cloth awnings and open wooden shutters, the Xu shop with its blank dark wooden signboard on screen left, the two-storey Wei shop hung with plain red silk streamers and red lanterns directly across the street on screen right: medium shot of Wei Shaoqing, on screen right in front of the red-streamered Wei shop, both hands on the edge of the long display table heaped with unsold soap bars and dark sugar cakes, the Wei shop clerk cringing on the step behind him",
+        "motion": "Wei Shaoqing heaves the long display table over with both hands, soap bars and dark sugar cakes tumbling and bouncing across the stone street, and the Wei shop clerk jumps back",
+        "characters": [
+          "weishaoqing",
+          "weijihuoji"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a15",
+          "speaker": "weishaoqing",
+          "text": "讓他笑。",
+          "emotion": "咬著牙"
+        },
+        {
+          "id": "zq26a16",
+          "speaker": "weishaoqing",
+          "text": "去辦吧。",
+          "emotion": "壓低聲音，對身後的人"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county town market street on a bright spring morning, a busy stone-paved street lined with grey-tiled two-storey wooden shopfronts, cloth awnings and open wooden shutters, the Xu shop with its blank dark wooden signboard on screen left, the two-storey Wei shop hung with plain red silk streamers and red lanterns directly across the street on screen right: close-up of Wei Shaoqing, on screen right under the red lanterns, breathing hard, one strand fallen loose from his neat topknot, his peach-blossom eyes cold and narrowed, his eyes on the Xu shop off screen left",
+        "motion": "Wei Shaoqing speaks 2 short Mandarin lines, 「讓他笑。」 then 「去辦吧。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he slowly flicks his gold-flecked fan open in front of his chin and turns his head aside as if to someone just behind him",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "chapter": "紙包",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan left",
+        "prompt": "In the sugar workshop by the stream at dusk, an open-sided thatched shed on rough wooden posts beside a darkening stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels, a big grey stone mill under the thatch, a long low wooden table of flat bamboo trays of small square snow-white sugar frost cakes cooling, oil lamps just lit on the posts, low orange sunset light and long shadows: wide shot of the shed at dusk, Xu Yan on screen left walking away along the stream path with a paper lantern, holding little Xiaohe by the hand, Lai San on screen right alone under the thatch with a broom beside the long table of sugar frost cake trays, watching them go",
+        "motion": "The lantern bobs away down the stream path into the dusk, the camera panning left after it, while Lai San slows his sweeping and watches them over his shoulder",
+        "characters": [
+          "laisan",
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a17",
+          "speaker": "laisan",
+          "text": "一包，",
+          "emotion": "左右張望，小聲"
+        },
+        {
+          "id": "zq26a18",
+          "speaker": "laisan",
+          "text": "就一包。",
+          "emotion": "心虛地自言自語"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the sugar workshop by the stream at dusk, an open-sided thatched shed on rough wooden posts beside a darkening stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels, a big grey stone mill under the thatch, a long low wooden table of flat bamboo trays of small square snow-white sugar frost cakes cooling, oil lamps just lit on the posts, low orange sunset light and long shadows: medium close-up of Lai San, on screen right by the long table of sugar frost cake trays, the broom leaning on his shoulder, glancing left and right in the orange lamplight, a small folded twist of grey paper half out of his sleeve",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「一包，」 then 「就一包。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he pulls the little grey paper twist all the way out and licks his dry lips",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the paper packet over the tray, slow push in",
+        "prompt": "In the sugar workshop by the stream at dusk, an open-sided thatched shed on rough wooden posts beside a darkening stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels, a big grey stone mill under the thatch, a long low wooden table of flat bamboo trays of small square snow-white sugar frost cakes cooling, oil lamps just lit on the posts, low orange sunset light and long shadows: insert from above of one flat bamboo tray of small square snow-white sugar frost cakes in warm lamplight, Lai San's thin hand on screen right tipping open a small twist of grey paper over it",
+        "motion": "A thin trickle of fine grey-white powder sifts out of the paper twist onto the cakes and vanishes into the snow-white sugar frost without a trace",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the sugar workshop by the stream at dusk, an open-sided thatched shed on rough wooden posts beside a darkening stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels, a big grey stone mill under the thatch, a long low wooden table of flat bamboo trays of small square snow-white sugar frost cakes cooling, oil lamps just lit on the posts, low orange sunset light and long shadows: close-up of Lai San's face, on screen right, lit from below by the warm oil lamp, sweat on his upper lip, crumpling the empty grey paper twist in his fist",
+        "motion": "Lai San crushes the paper twist and stuffs it into his sleeve with a shaky grin, then flinches and whips his head round at a sound behind him",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a19",
+          "speaker": "xiaohe",
+          "text": "你在做什麼呀？",
+          "emotion": "抱著草兔子，歪頭"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the sugar workshop by the stream at dusk, an open-sided thatched shed on rough wooden posts beside a darkening stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels, a big grey stone mill under the thatch, a long low wooden table of flat bamboo trays of small square snow-white sugar frost cakes cooling, oil lamps just lit on the posts, low orange sunset light and long shadows: medium close-up of little Xiaohe, on screen left at the edge of the thatch in the dusk, hugging her small woven straw rabbit, head tilted, blinking curiously at Lai San off screen right",
+        "motion": "little Xiaohe speaks a short Mandarin line, 「你在做什麼呀？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she takes one small step closer and peers toward the trays",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a20",
+          "speaker": "laisan",
+          "text": "掃、掃地呢。",
+          "emotion": "嚇一跳，硬擠出笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the sugar workshop by the stream at dusk, an open-sided thatched shed on rough wooden posts beside a darkening stream, a mud-brick stove with a big black iron wok, a long wooden rack of conical unglazed clay funnels, a big grey stone mill under the thatch, a long low wooden table of flat bamboo trays of small square snow-white sugar frost cakes cooling, oil lamps just lit on the posts, low orange sunset light and long shadows: medium close-up of Lai San, on screen right in front of the long table of trays, the broom snatched up in both hands, a forced crooked grin, his eyes on little Xiaohe off screen left",
+        "motion": "Lai San speaks a short Mandarin line, 「掃、掃地呢。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he sweeps the floor in quick jerky strokes, too fast",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "chapter": "糖裡有毒",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the county town market street the next morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings in clear early sunlight, the Xu shop with its blank dark wooden signboard and its plank doorway open on screen left, a long queue of townsfolk on the stones in front of it, the red-streamered Wei shop across the street on screen right: wide shot of the queue in front of the Xu shop, Tang Xiaotang in her high-collared peach-pink ruqun on screen left in the open plank doorway handing out sugar frost cakes wrapped in white paper, Xu Yan beside her counting coins into a box, townsfolk smiling and chatting in line",
+        "motion": "Tang Xiaotang hands a wrapped cake to each customer with a bright smile while the queue shuffles happily forward and Xu Yan drops coins into the box",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the county town market street the next morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings in clear early sunlight, the Xu shop with its blank dark wooden signboard and its plank doorway open on screen left, a long queue of townsfolk on the stones in front of it, the red-streamered Wei shop across the street on screen right: medium close-up of a grey-bearded old townsman in a patched brown jacket, on screen right in the queue, unwrapping a small square sugar frost cake from a crumpled coarse yellow paper, morning sun on his face",
+        "motion": "The old townsman takes a big bite of the sugar frost cake and chews with a happy smile, then suddenly stops chewing and his smile freezes",
+        "characters": []
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the county town market street the next morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings in clear early sunlight, the Xu shop with its blank dark wooden signboard and its plank doorway open on screen left, a long queue of townsfolk on the stones in front of it, the red-streamered Wei shop across the street on screen right: medium shot of the grey-bearded old townsman, on screen right in the middle of the queue, both hands pressed to his stomach, townsfolk around him turning to look",
+        "motion": "The old townsman doubles over clutching his stomach, staggers and topples sideways onto the stone street, the half-eaten cake rolling from his hand, while the people around him jerk back",
+        "characters": []
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a21",
+          "speaker": "jieshangfuren",
+          "text": "糖裡有毒！",
+          "emotion": "尖叫"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county town market street the next morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings in clear early sunlight, the Xu shop with its blank dark wooden signboard and its plank doorway open on screen left, a long queue of townsfolk on the stones in front of it, the red-streamered Wei shop across the street on screen right: close-up of the townswoman, on screen right in the crowd, her face drained white, both hands flying up to her cheeks, her eyes on the old man off screen left",
+        "motion": "The townswoman speaks a short Mandarin line, 「糖裡有毒！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she stumbles backward out of the queue, flinging the wrapped cake in her hand away",
+        "characters": [
+          "jieshangfuren"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, slow crane up",
+        "prompt": "In the county town market street the next morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings in clear early sunlight, the Xu shop with its blank dark wooden signboard and its plank doorway open on screen left, a long queue of townsfolk on the stones in front of it, the red-streamered Wei shop across the street on screen right: wide shot from above the street of the long queue in front of the Xu shop on screen left breaking apart in panic, the old townsman lying curled on the stones in the middle, white-wrapped cakes dropped everywhere",
+        "motion": "The whole queue scatters in every direction, people dropping their wrapped cakes and pushing away from the Xu shop, leaving a widening empty ring of stone around the fallen old man",
+        "characters": []
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq26a22",
+          "speaker": "tangxiaotang",
+          "text": "不可能……",
+          "emotion": "臉色發白，聲音發抖"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the county town market street the next morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings in clear early sunlight, the Xu shop with its blank dark wooden signboard and its plank doorway open on screen left, a long queue of townsfolk on the stones in front of it, the red-streamered Wei shop across the street on screen right: medium close-up of Tang Xiaotang in her high-collared peach-pink ruqun, on screen left frozen in the plank doorway of the Xu shop, the red lacquered box of sugar frost cakes in her hands, her face gone pale, her eyes on the old man off screen right",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「不可能……」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then the box slips from her fingers and the snow-white cakes spill across the threshold",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow tracking shot",
+        "prompt": "In the county town market street the next morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings in clear early sunlight, the Xu shop with its blank dark wooden signboard and its plank doorway open on screen left, a long queue of townsfolk on the stones in front of it, the red-streamered Wei shop across the street on screen right: close-up of Xu Yan, on screen left pushing against the stream of fleeing townsfolk, his face hard, his easy grin gone, his eyes on the old man off screen right",
+        "motion": "Xu Yan shoves forward through the panicking crowd, then stops dead, his eyes dropping slowly to something on the stones at his feet",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the bitten cake on the stones, locked",
+        "prompt": "In the county town market street the next morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings in clear early sunlight, the Xu shop with its blank dark wooden signboard and its plank doorway open on screen left, a long queue of townsfolk on the stones in front of it, the red-streamered Wei shop across the street on screen right: insert low on the stone street of a half-eaten sugar frost cake lying on a crumpled sheet of coarse yellow paper, beside it a dropped cake still neatly wrapped in clean white paper, fleeing feet hurrying past",
+        "motion": "A gust of wind lifts the corner of the coarse yellow paper and a fleeing foot nearly kicks the half-eaten cake as the crowd rushes past",
+        "characters": []
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "In the county town market street the next morning, a stone-paved street lined with grey-tiled two-storey wooden shopfronts and cloth awnings in clear early sunlight, the Xu shop with its blank dark wooden signboard and its plank doorway open on screen left, a long queue of townsfolk on the stones in front of it, the red-streamered Wei shop across the street on screen right: extreme close-up of Xu Yan's eyes, thick brows pressed down, clear morning sun cut across them, the blur of fleeing townsfolk behind him, his usual grin gone",
+        "motion": "Xu Yan's eyes narrow on the coarse yellow paper at his feet, then lift slowly toward the red-streamered Wei shop off screen right, and his jaw tightens as he draws a breath",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}
