@@ -6,7 +6,7 @@
 
 - 既有[上傳包與後台收據](delivery-package-20261017.md)記錄：後台 `youtube_video_id=QJVtVFecm7I`，同步請求 `mode=upload`、`visibility=private`；英／日／韓配音的 `uploaded` 只是後台按鈕狀態。
 - 2026-10-17 的 Studio 詳細資訊頁唯讀顯示此片為「私人」。這證明當下可見度，不證明私人鎖定的成因或日後能否改公開。
-- Studio「語言」頁截圖保存在本機 `C:\Users\x8120\mokaair-work\videos\curio-h12\review\studio-languages-20261017.png`（未納入 Git；SHA-256 `2ED60F2514449EBF6E078B675A909431516002BB1D1B85481F60B0F890B77F47`）。頁面顯示影片語言為中文（台灣）；日、英、韓各有「已發布 1 種版本」字幕及「已發布」標題與說明，但三列的「音訊」與「縮圖」均為 `—`。
+- Studio「語言」頁截圖保存在本機 `<home>\mokaair-work\videos\curio-h12\review\studio-languages-20261017.png`（未納入 Git；SHA-256 `2ED60F2514449EBF6E078B675A909431516002BB1D1B85481F60B0F890B77F47`）。頁面顯示影片語言為中文（台灣）；日、英、韓各有「已發布 1 種版本」字幕及「已發布」標題與說明，但三列的「音訊」與「縮圖」均為 `—`。
 
 ## 判讀與待辦
 
