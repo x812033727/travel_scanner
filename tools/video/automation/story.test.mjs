@@ -4,7 +4,7 @@
 // the planned hundred.
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -36,6 +36,8 @@ import {
   CHAPTER_KEYS,
   chapterBudgets,
   composeStory,
+  effectiveStoryLengthBand,
+  effectiveStoryMinutes,
   factChapters,
   figuresIn,
   lengthBand,
@@ -766,7 +768,7 @@ test("a flagged v2 pilot audio take waits for owner review instead of rewriting 
     series,
     episode: { ...EPISODE, slug },
     answers: pilotAnswers(),
-    seconds: () => 600,
+    seconds: () => 450,
     settings: { max_retake_rounds: 1 },
     decide: (gate) => ({ status: gate === "audio" ? "pending" : "approved" }),
   });
@@ -858,6 +860,64 @@ test("a plan's thumbnail.brand reaches the thumbnail in place of the tag, and le
   assert.notEqual(visualHash(compose({ headline: "比電腦貴", idea: "a watch" })), visualHash(plain), "the headline still counts");
 });
 
+test("an existing A01 ten-minute merged script holds before TTS without rewriting reviewed files", async () => {
+  const slug = "story-rolling-suitcase-v2";
+  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const world = storyWorld({ series, episode: { ...EPISODE, slug }, answers: pilotAnswers(), seconds: () => 450 });
+  await steps(world.automation, 1 + 6 + 6 + 6);
+  const videoFile = path.join(world.dir, "video.json");
+  const oldVideo = { ...world.video(), target_minutes: [9, 11] };
+  writeFileSync(videoFile, JSON.stringify(oldVideo));
+  const originalVideo = readFileSync(videoFile);
+  const chapterFiles = CHAPTER_KEYS.map((key) => path.join(world.workdir, STORY_CHAPTERS_DIR, `${key}.json`));
+  const originalChapters = chapterFiles.map((file) => readFileSync(file));
+  const receipt = {
+    schema_version: 1,
+    ...pilotScriptReviewEvidence({ slug, root: world.box.root, workdir: world.workdir }),
+    status: "PASS", reviewer_id: "independent-reader-a01", independent: true,
+    reviewed_at: "2026-10-15T00:00:00.000Z",
+    checks: { reference_alignment: "PASS", factual_claims: "PASS", narrative: "PASS" },
+  };
+  const receiptFile = path.join(world.workdir, PILOT_SCRIPT_REVIEW_FILE);
+  mkdirSync(path.dirname(receiptFile), { recursive: true });
+  writeFileSync(receiptFile, JSON.stringify(receipt));
+  assert.match(pilotScriptReviewProblem({ slug, root: world.box.root, workdir: world.workdir }), /legacy duration target/);
+  const state = world.state();
+  state.story.chapters.origin.lint = ["the old chapter needs a fix"];
+  world.automation.persist(state);
+  const writerCalls = world.site.calls.run.filter((call) => call.stage === "writer").length;
+  assert.match(await world.automation.step(), /STOPPED_HOLD: A01's existing video.json has a legacy or unreadable duration target/);
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, writerCalls,
+    "a legacy merged script holds before even a pending chapter lint fix calls the model");
+  assert.deepEqual(readFileSync(videoFile), originalVideo, "ordinary retry preserves the old merged script");
+  chapterFiles.forEach((file, index) => assert.deepEqual(readFileSync(file), originalChapters[index], `${file} is preserved`));
+  assert.equal(world.runs.some((run) => run.startsWith("tts ")), false);
+
+  unlinkSync(chapterFiles.at(-1));
+  const incomplete = world.state();
+  incomplete.status = "active";
+  delete incomplete.blocked;
+  delete incomplete.blocked_kind;
+  world.automation.persist(incomplete);
+  assert.match(await world.automation.step(), /STOPPED_HOLD: A01 has an existing video.json but chapter files are missing \(now\)/);
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, writerCalls,
+    "a missing chapter cannot trigger a writer call while the old merged script exists");
+  assert.deepEqual(readFileSync(videoFile), originalVideo);
+  chapterFiles.slice(0, -1).forEach((file, index) => assert.deepEqual(readFileSync(file), originalChapters[index]));
+
+  writeFileSync(videoFile, JSON.stringify({ ...oldVideo, target_minutes: [7, 8] }));
+  const compactButIncomplete = readFileSync(videoFile);
+  const next = world.state();
+  next.status = "active";
+  delete next.blocked;
+  delete next.blocked_kind;
+  world.automation.persist(next);
+  assert.match(await world.automation.step(), /STOPPED_HOLD: A01 has an existing video.json but chapter files are missing \(now\)/);
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, writerCalls,
+    "a current target cannot auto-recreate a missing reviewed chapter either");
+  assert.deepEqual(readFileSync(videoFile), compactButIncomplete);
+});
+
 test("the ten-minute preset is preserved by the story file and video composer", () => {
   const cute = { ...SERIES, target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
   const info = storySeriesFile({ series: cute, episode: EPISODE, plan: PLAN, cast: [] });
@@ -875,6 +935,51 @@ test("the ten-minute preset is preserved by the story file and video composer", 
   assert.deepEqual(video.look, { preset: "cute-mystery" });
   assert.deepEqual(video.target_minutes, [9, 11]);
   assert.deepEqual(video.subtitles, { burn_in: false, style: "drama" }, "new brand stories use switchable zh-TW CC");
+});
+
+test("only A01 writes to an eight-minute budget while the shared pilot series stays ten", async () => {
+  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const episode = { ...EPISODE, slug: "story-rolling-suitcase-v2" };
+  const info = storySeriesFile({ series, episode, plan: PLAN, cast: [] });
+  assert.equal(info.target_minutes, 10, "the series snapshot keeps the other episodes at ten minutes");
+  assert.equal(effectiveStoryMinutes(episode.slug, info), 8);
+  assert.deepEqual(effectiveStoryLengthBand(episode.slug, info), [420, 480]);
+  const compact = chapterBudgets(8, info.look, { compactA01: true });
+  assert.equal(compact.reduce((sum, chapter) => sum + chapter.seconds, 0), 480);
+  assert.equal(compact.reduce((sum, chapter) => sum + chapter.chars, 0), 8 * 250);
+  assert.equal(compact.reduce((sum, chapter) => sum + chapter.shots, 0), 64,
+    "A01 keeps the cute story's 7.5-second illustration pace");
+  assert.deepEqual(composeStory({ slug: episode.slug, info, chapters: {}, voice: SERIES.voice, root: "." }).target_minutes, [7, 8]);
+
+  for (const other of [
+    { slug: "story-conveyor-belt-sushi-v2", info: { ...info, episode: 2 } },
+    { slug: episode.slug, info: { ...info, slug: "brand-stories-five-v2" } },
+    { slug: episode.slug, info: { ...info, look: { preset: "custom" } } },
+  ]) {
+    assert.equal(effectiveStoryMinutes(other.slug, other.info), 10);
+    assert.deepEqual(effectiveStoryLengthBand(other.slug, other.info),
+      other.info.look.preset === "cute-mystery" ? [540, 660] : [510, 750]);
+    assert.deepEqual(composeStory({ slug: other.slug, info: other.info, chapters: {}, voice: SERIES.voice, root: "." }).target_minutes,
+      other.info.look.preset === "cute-mystery" ? [9, 11] : [9, 12]);
+  }
+
+  const world = storyWorld({ series, episode, answers: pilotAnswers() });
+  assert.match(await world.automation.step(), /^story brand-stories-curio-pilot-v2:/);
+  assert.equal(readJson(path.join(world.dir, "series.json")).target_minutes, 10);
+  assert.equal(world.state().target_minutes, 8);
+  await steps(world.automation, 2);
+  const origin = world.site.calls.run.find((call) => call.stage === "writer" && call.payload.chapter.key === "origin");
+  assert.equal(origin.payload.target_minutes, 8,
+    "the writer payload explicitly overrides the generic cute-story ten-minute prompt");
+  assert.deepEqual(origin.payload.episode_length.measured_narration_seconds, [420, 480]);
+  assert.match(origin.payload.episode_length.owner_decision, /in place of the generic cute-mystery ten-minute example/);
+  assert.deepEqual(origin.payload.chapter.budget, {
+    seconds: compact[1].seconds, chars: compact[1].chars, shots: compact[1].shots,
+  });
+  const written = await steps(world.automation, 4);
+  assert.match(written.at(-1), /six are merged into video\.json/, written.join("\n"));
+  assert.deepEqual(world.video().target_minutes, [7, 8],
+    "a fresh A01 with no pre-existing merged script reaches the compact six-chapter output");
 });
 
 test("a ten-minute story carries the exact MiniMax cute look from series to video", async () => {
