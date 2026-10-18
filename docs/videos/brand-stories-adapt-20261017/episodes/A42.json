@@ -1,0 +1,212 @@
+{
+  "number": 3,
+  "id": "A42",
+  "slug": "story-adapt-a4-paper-size",
+  "category": "everyday",
+  "region": "global",
+  "subject": "A4 與兩套 B 系列紙張",
+  "title": "A4 統一了世界，為什麼同樣叫 B5，日本的比國際規格寬了 6 公釐？",
+  "logline": "對折還是同一個形狀的 A4 從德國走向全世界，日本卻在 1929 年另訂一套 B 系列，為的是不浪費印刷廠手上的四六判大紙；九十多年後，Windows 的紙張清單裡還並排著兩種 B4。",
+  "question": "A 系列全世界通用，為什麼名字一樣的 B4、B5，日本規格和國際規格差了好幾公釐？",
+  "chapters": [
+    {
+      "key": "hook",
+      "point": "Windows 程式用來指定紙張的清單裡，有一個 B4，是 250×353 公釐；往下看，還有一個「JIS B4 橫放」，364×257 公釐，轉回直的就是 257×364。名字一樣，寬差 7 公釐、長差 11 公釐。B5 也一樣：國際規格 176×250，日本規格 182×257。A4 全世界都是 210×297，為什麼到了 B 系列就分成兩套？答案要從一張對折後形狀不變的紙講起，最後落在 1929 年東京的一個決定。"
+    },
+    {
+      "key": "origin",
+      "point": "1786 年 10 月 25 日，哥廷根大學的物理教授 Lichtenberg 寫信給 Johann Beckmann，說明長寬比為 1 比根號 2 的紙有什麼好處：對折之後形狀不變。1798 年 11 月 3 日，剛改用公制的法國政府頒布一部關於紙張印花稅的法律，裡面定的幾種格式，正好等於今天的 A2、A3，以及 B3、B4、B5。也就是說，B 系列跟 A 系列一起出現在第一部官方規定裡。可是這套法國格式沒有流行，很快被遺忘。"
+    },
+    {
+      "key": "idea",
+      "point": "一百多年後，德國工程師 Walter Porstmann 重新提出同一套想法。1922 年 8 月 18 日，德國標準化協會發布 DIN 476：A0 的面積定為 1 平方公尺，也就是 841×1189 公釐，每對折一次就是下一號。面積固定的好處是能直接算重量：80 克的紙，一張 A4 約 5 克。B 系列放在兩號 A 之間，邊長取兩者的幾何平均。1923 年秋天，德國國鐵的管理局成為第一個採用的機構。歐洲各國從 1924 年起陸續跟進。"
+    },
+    {
+      "key": "engine",
+      "point": "日本在 1929 年 12 月由商工省發布日本標準規格第 92 號「紙ノ仕上寸法」。當時日本的書和印刷用紙有兩大家族：明治初年從英國 Crown 規格來的四六判，原紙 788×1091 公釐，早年叫「大八ツ判」，意思是約有八張美濃紙大；以及據說 1882 年前後當新聞紙進口的菊判，原紙 636×939。規格的 A 列照搬德國 DIN；B 列另訂，面積是同號 A 的 1.5 倍，B 列原紙 765×1085，平凡社的百科說它相當於四六判原紙。為什麼要另訂？據小學館 @DIME 的整理：菊判接近 A5，所以採用 A 判；四六判找不到對應，才另訂 B 判，讓四六判的印刷物比較好做。"
+    },
+    {
+      "key": "turn",
+      "point": "代價在國際化之後才浮現。1975 年，A、B、C 系列成為國際標準 ISO 216，也是聯合國的文件格式；ISO 的 B 取幾何平均，日本 1951 年制定的 JIS P 0138 則保留算術平均的 B，B0 是 1.5 平方公尺，邊長比 ISO B0 長約 3%。同樣叫 B5，就差了 6 公釐寬。美國走了另一條路：1921 年商務部長 Hoover 把 203×267 公釐定為部內標準，同年被採為聯邦政府的信紙標準，直到 1980 年 1 月才改用 216×279 的 Letter。各國都在新標準與手上的舊紙之間做選擇。"
+    },
+    {
+      "key": "now",
+      "point": "台灣也有自己的版本。國家標準 CNS 5「紙張尺度（裁切後）」在標準系統上記的公告日期是民國 33 年，最近一次修訂在民國 81 年。可是印刷廠和學校裡，常用的還是菊版和四六版：據維基百科整理，這兩種從日治時代沿用至今，四六版全紙同樣是 788×1091，學校考試用紙通常就用它。回到 Windows 的紙張清單：兩個 B4 並排，背後是 1929 年日本選擇留住四六判大紙的那個決定。"
+    }
+  ],
+  "takeaway": "標準不只是數學最漂亮的那個答案，也是在「大家手上已經有的東西」和「全世界一起用的東西」之間各自畫的線。",
+  "must_verify": [
+    {
+      "claim": "日本 JIS 的 B 系列與 ISO 的 B 系列尺寸不同：JIS B4 257×364、B5 182×257 公釐；ISO B4 250×353、B5 176×250 公釐；JIS B0 面積 1.5 平方公尺，取同號與上一號 A 面積的算術平均，ISO 取幾何平均",
+      "sources": [
+        0,
+        5
+      ],
+      "core": true
+    },
+    {
+      "claim": "Windows 的紙張種類同時列有 B4（250×353 公釐）與 JIS B4 橫放（364×257 公釐），以及 JIS B5 橫向（182×257 公釐）",
+      "sources": [
+        5
+      ]
+    },
+    {
+      "claim": "Lichtenberg 1786 年 10 月 25 日寫信給 Johann Beckmann 說明根號 2 比例的好處；法國 1798 年 11 月 3 日的紙張印花稅法定的格式相當於 ISO A2、B3、A3、B4、B5，之後被遺忘",
+      "sources": [
+        0
+      ]
+    },
+    {
+      "claim": "DIN 476 於 1922 年 8 月 18 日發布，基本原理由工程師 Walter Porstmann 提出；A0 為 1 平方公尺、841×1189 公釐；1923 年秋天德國國鐵的管理局首先採用",
+      "sources": [
+        1,
+        0
+      ]
+    },
+    {
+      "claim": "A、B、C 系列在 1975 年成為國際標準 ISO 216 與聯合國文件格式；80 克的紙一張 A4 約 5 克",
+      "sources": [
+        0
+      ]
+    },
+    {
+      "claim": "日本的紙張規格始於 1929 年 12 月商工省的日本標準規格第 92 號「紙ノ仕上寸法」，A 列取自德國 DIN；1951 年制定的 JIS P 0138 承接它",
+      "sources": [
+        2,
+        4,
+        0
+      ]
+    },
+    {
+      "claim": "四六判以明治初年從英國進口的 Crown 規格為基礎，原名大八ッ判（約為美濃紙八倍大），原紙 788×1091 公釐，相當於規格的 B 列本判 765×1085；菊判原紙 636×939，略大於 A 列本判 625×880",
+      "sources": [
+        2,
+        3
+      ]
+    },
+    {
+      "claim": "日本採用 A 判是因為菊判接近 A5；四六判沒有對應的國際規格，所以另訂面積為 A 判 1.5 倍的 B 判，讓四六判的印刷比較方便（@DIME 的整理）",
+      "sources": [
+        3,
+        2
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "1921 年 3 月 28 日商務部長 Hoover 把 203×267 公釐定為部內標準；美國聯邦政府在 1980 年 1 月改以 216×279 公釐為官方格式；流傳的版本則說是雷根政府在 1980 年代初改的",
+      "sources": [
+        0,
+        8
+      ]
+    },
+    {
+      "claim": "CNS 5「紙張尺度（裁切後）」類號 P1001，系統記載公告日期民國 33 年 12 月 12 日、修訂日期民國 81 年 6 月 20 日、確認日期民國 111 年 9 月 8 日；台灣印刷廠常用菊版、四六版，承襲日治時代，學校考試用紙常用四六版（維基百科的整理）",
+      "sources": [
+        6,
+        7
+      ],
+      "attributed": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.cl.cam.ac.uk/~mgk25/iso-paper.html",
+      "publisher": "Markus Kuhn，劍橋大學電腦實驗室（A4 paper format / International standard paper sizes）",
+      "kind": "academic",
+      "supports": "Lichtenberg 1786 年的信；法國 1798 年紙張印花稅法的格式；DIN 476 與 Porstmann；ISO 216 與 1975 年；各國採用年份；A4 約 5 克；JIS B 與 ISO B 的尺寸、1.5 平方公尺與算術平均；Hoover 1921 年標準、同年 9 月成為政府信紙標準與 1980 年 1 月美國政府改用 Letter",
+      "checked": "2026-10-17"
+    },
+    {
+      "url": "https://www.din.de/en/din-and-our-partners/press/press-releases/happy-birthday-a4--880198",
+      "publisher": "DIN（德國標準化協會）新聞稿 Happy birthday, A4!",
+      "kind": "official",
+      "supports": "DIN 476 於 1922 年 8 月 18 日發布；Porstmann 提出基本原理；A0 為 1 平方公尺、841×1189 公釐；根號 2 比例在 18 世紀末已有人提出後被遺忘；1923 年秋天德國國鐵管理局首先採用",
+      "checked": "2026-10-17"
+    },
+    {
+      "url": "https://kotobank.jp/word/判型",
+      "publisher": "コトバンク（平凡社《改訂新版 世界大百科事典》「判型」條）",
+      "kind": "reference",
+      "supports": "1929 年 12 月日本標準規格第 92 號「紙ノ仕上寸法」、A 列取自 DIN；四六判源自明治初年的英國 Crown、原名大八ッ判、原紙 788×1091 相當於 B 列本判 765×1085；菊判原紙 636×939、可能 1882 年前後當新聞紙進口",
+      "checked": "2026-10-17"
+    },
+    {
+      "url": "https://dime.jp/genre/1908596/",
+      "publisher": "@DIME（小學館），2025 年 1 月 29 日",
+      "kind": "news",
+      "supports": "A 判與 B 判 1929 年制定；菊判接近 A5 所以採用 A 判；四六判沒有對應的國際規格，所以另訂面積為 A 判 1.5 倍的 B 判；四六判來自明治時代的英國 Crown",
+      "checked": "2026-10-17"
+    },
+    {
+      "url": "https://ja.wikipedia.org/wiki/紙の寸法",
+      "publisher": "日文維基百科「紙の寸法」",
+      "kind": "reference",
+      "supports": "1929 年商工省的日本標準規格第 92 號「紙ノ仕上寸法」；1951 年 JIS P 0138；JIS B0 為 1.5 平方公尺、邊長比 ISO B0 大約 3%；B 列源自美濃判的說法標著需要出處",
+      "checked": "2026-10-17"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.drawing.printing.paperkind",
+      "publisher": "Microsoft Learn（PaperKind 列舉）",
+      "kind": "official",
+      "supports": "Windows 紙張種類同時列出 B4 250×353、B5 176×250、IsoB4 250×353 與 JIS B4 橫放 364×257、JIS B5 橫向 182×257 與橫放 257×182、JIS B6 128×182 公釐（沒有直放的 JIS B4 項目），以及 A4 210×297、Letter 8.5×11 英寸",
+      "checked": "2026-10-17"
+    },
+    {
+      "url": "https://www.cnsonline.com.tw/?node=detail&generalno=5&locale=zh_TW",
+      "publisher": "國家標準（CNS）網路服務系統（經濟部標準檢驗局）",
+      "kind": "official",
+      "supports": "CNS 5「紙張尺度（裁切後）」類號 P1001、適用書刊與公文等用紙；公告日期 033/12/12、修訂日期 081/06/20、確認日期 111/09/08；現行標準",
+      "checked": "2026-10-17"
+    },
+    {
+      "url": "https://zh.wikipedia.org/zh-tw/紙張尺寸",
+      "publisher": "中文維基百科「紙張尺寸」",
+      "kind": "reference",
+      "supports": "台灣印刷廠多用菊版、四六版，兩者承襲日治時代；菊版全紙 636×939、四六版全紙 788×1091；學校考試用紙與美術用紙通常用四六版",
+      "checked": "2026-10-17"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Letter_(paper_size)",
+      "publisher": "英文維基百科「Letter (paper size)」",
+      "kind": "reference",
+      "supports": "流傳的說法：雷根政府在 1980 年代初把 Letter 定為聯邦表格的標準，之前政府用 8×10.5 英寸的 Government Letter；8.5×11 的確切由來不明",
+      "checked": "2026-10-17"
+    }
+  ],
+  "names": [
+    "Georg Christoph Lichtenberg",
+    "Lichtenberg",
+    "Johann Beckmann",
+    "Beckmann",
+    "Walter Porstmann",
+    "Porstmann",
+    "Herbert Hoover",
+    "Hoover",
+    "Ronald Reagan",
+    "Reagan",
+    "DIN",
+    "Deutsches Institut für Normung",
+    "Deutsche Reichsbahn",
+    "ISO",
+    "JIS",
+    "CNS",
+    "Microsoft",
+    "Windows",
+    "@DIME",
+    "Markus Kuhn"
+  ],
+  "cast": [],
+  "image_notes": "畫一般化的紙：一張紙對折又對折、疊成階梯的大小紙張、印刷廠的大張原紙與裁紙刀、十八世紀的書房與鵝毛筆、1920 年代的辦公桌、昭和初年的印刷工坊、台灣教室裡發考卷。不畫真人肖像、標準組織或作業系統的標誌、可讀的文字與數字；尺寸、年份和規格名稱只放在後製字層。",
+  "sensitivity": "none",
+  "related_guide": null,
+  "thumbnail": {
+    "brand": "A4 紙",
+    "headline": "B5 怎麼有兩種？",
+    "idea": "兩本素色筆記本疊在一起，下面那本從邊緣多露出一圈，一把尺橫在兩者之間，旁邊一張 A4 對折成一半"
+  },
+  "caveats": "B 判「源自美濃紙」沒出處，只能說四六判舊稱大八ッ判、約美濃紙八倍大。Porstmann 不說成發明者。",
+  "publish": {
+    "day": 3,
+    "slot": "12:00"
+  }
+}
