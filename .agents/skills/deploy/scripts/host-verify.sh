@@ -295,16 +295,23 @@ unpaired=$(echo "$wlog" | count 'not paired yet')
 # That is the owner's switch, not a fault, so an exit 4 whose last line before it (the Shorts knock's
 # lines aside) carries that message is counted apart. drama_off is the message's "drama ... disabled"
 # part as UTF-8 bytes in octal, so the transport cannot mangle it.
+# The owner's monthly draft cap is the same kind of stop: the API refuses the draft before any model
+# call (video_ai_budget_exhausted, "本月已產生 N 支草稿，達到上限 N 支", apps/api/app/video_automation/usage.py)
+# and `auto` exits 3. Only an exit 3 right after that message is counted apart; any other exit 3
+# still fails. draft_cap is its "支草稿，達到上限" part, in octal for the same reason.
 drama_off=$(printf '\346\274\253\345\212\207\345\267\262\345\201\234\347\224\250')
-read -r exited drama_exits <<< "$(echo "$wlog" | awk -v off="$drama_off" '
-  /auto exited with / {if ($NF == 4 && index(prev, off)) d++; else n++; next}
+draft_cap=$(printf '\346\224\257\350\215\211\347\250\277\357\274\214\351\201\224\345\210\260\344\270\212\351\231\220')
+# tools/deploy-host-verify.test.mjs runs this awk program on sample logs.
+read -r exited drama_exits cap_exits <<< "$(echo "$wlog" | awk -v off="$drama_off" -v cap="$draft_cap" '
+  /auto exited with / {if ($NF == 4 && index(prev, off)) d++; else if ($NF == 3 && index(prev, cap)) c++; else n++; next}
   /^video-worker: shorts: / {next}
   {prev = $0}
-  END {print n + 0, d + 0}')"
-echo "knock_failed=$knock (1 right after start is expected) auto_exited=$exited (exit 4 after the AI-drama-off answer, not counted: $drama_exits) not_paired=$unpaired"
+  END {print n + 0, d + 0, c + 0}')"
+echo "knock_failed=$knock (1 right after start is expected) auto_exited=$exited (exit 4 after the AI-drama-off answer, not counted: $drama_exits; exit 3 at the monthly draft cap, not counted: $cap_exits) not_paired=$unpaired"
+[ "$cap_exits" -gt 0 ] && echo "NOTE the worker is at the owner's monthly draft cap; it writes no draft until the month turns or the cap is raised"
 ok=0
 if [ "$st" = running ] && [ "${rc:-1}" = 0 ] && [ "$w_started_ok" -eq 1 ] && [ "$knock" -le 1 ] && [ "$exited" -eq 0 ] && [ "$unpaired" -eq 0 ]; then ok=1; fi
-verdict video-worker-started "$ok" "state=${st:-none} restarts=${rc:-?} started_after_head=$w_started_ok knock_failed=$knock auto_exited=$exited auto_exit4_drama_off=$drama_exits not_paired=$unpaired"
+verdict video-worker-started "$ok" "state=${st:-none} restarts=${rc:-?} started_after_head=$w_started_ok knock_failed=$knock auto_exited=$exited auto_exit4_drama_off=$drama_exits auto_exit3_draft_cap=$cap_exits not_paired=$unpaired"
 
 # ---------------------------------------------------------------- EXTRA CHECKS: this deploy's new code
 # Add one section per thing the diff changed, each proving a string or behaviour that exists only

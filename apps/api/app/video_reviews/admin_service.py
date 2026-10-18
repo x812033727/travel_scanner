@@ -52,11 +52,11 @@ from app.video_automation.anime_policy import (
 from app.video_automation.judge import (
     PACKAGE_AUTO_APPROVED_NOTE,
     QA_AUTO_APPROVED_NOTE,
+    QA_ITEMS,
     SCRIPT_AUTO_APPROVED_NOTE,
     SHORTS_PACKAGE_AUTO_APPROVED_NOTE,
     SHORTS_QA_AUTO_APPROVED_NOTE,
     demo_asked_of,
-    final_qa_passed,
     pick_choice,
     pick_reason,
     video_series_kind,
@@ -1241,12 +1241,53 @@ def _current_final(reviews: list[VideoReview]) -> VideoReview | None:
     return next((row for row in reviews if row.gate == "final" and row.subject is None), None)
 
 
+# QA items a brand story's dub does not wait on once the owner approved the cut (owner,
+# 2026-10-18): the owner watched the cut and judged its pacing and Jev's stance score
+# themselves, and neither changes what the dub has to say or when it is said. Every other
+# item, the assemble, narration and zh-TW captions among them, still has to pass.
+STORY_DUB_WAIVED_QA_ITEMS: frozenset[str] = frozenset({"pace", "policy"})
+# A captions item from before the QA tool stopped failing chosen locales that are translated
+# only after the final gate ("en: no caption file; ja: no caption file"). The languages step
+# makes those files, so a report failing on them alone does not lock a story's dub.
+_FOREIGN_CAPTION_MISSING = re.compile(r"(?:en|ja|ko): no caption file")
+
+
+def _story_qa_item_waived(entry: dict[str, Any]) -> bool:
+    name = entry.get("id")
+    if name in STORY_DUB_WAIVED_QA_ITEMS:
+        return True
+    if name != "captions":
+        return False
+    detail = entry.get("detail")
+    parts = detail.split("; ") if isinstance(detail, str) and detail else []
+    return bool(parts) and all(_FOREIGN_CAPTION_MISSING.fullmatch(part) for part in parts)
+
+
+def _story_dub_qa_passed(report: Any, sha: str | None) -> bool:
+    """Whether a story's final QA clears dubbing: bound to this cut, every item reported, and
+    each failing one waived (STORY_DUB_WAIVED_QA_ITEMS, or captions missing only foreign files).
+
+    ``final_qa_passed`` stays the rule for auto-approval and everything else; this one is read
+    only after the owner approved the cut.
+    """
+    if not isinstance(report, dict) or not sha or report.get("final_sha256") != sha:
+        return False
+    items = report.get("items")
+    if not isinstance(items, list):
+        return False
+    entries = [entry for entry in items if isinstance(entry, dict) and entry.get("id") in QA_ITEMS]
+    if {entry.get("id") for entry in entries} != set(QA_ITEMS):
+        return False
+    return all(entry.get("ok") is True or _story_qa_item_waived(entry) for entry in entries)
+
+
 def _story_dub_ready(reviews: list[VideoReview]) -> bool:
-    """Only an approved, fully checked current cut with switchable zh-TW CC may be dubbed.
+    """Only an approved current cut with switchable zh-TW CC and a clearing QA may be dubbed.
 
     The QA report is bound to the final mp4 hash and includes the captions check. Older cuts
     have no subtitle-mode evidence and stay locked. A newer pending, rejected or superseded
-    final also locks the choice, even if an earlier cut was approved.
+    final also locks the choice, even if an earlier cut was approved. The owner's approval
+    stands in for the items in STORY_DUB_WAIVED_QA_ITEMS (_story_dub_qa_passed).
     """
     final = _current_final(reviews)
     if final is None or final.status != "approved":
@@ -1258,7 +1299,7 @@ def _story_dub_ready(reviews: list[VideoReview]) -> bool:
     return (
         isinstance(report, dict)
         and report.get("subtitles_burned_in") is False
-        and final_qa_passed({"qa": report}, final.content_sha256)
+        and _story_dub_qa_passed(report, final.content_sha256)
     )
 
 
@@ -1567,6 +1608,10 @@ async def submit_review(
     manual_anime = await _check_anime_review(
         session, project, payload.gate, payload.payload, payload.content_sha256
     )
+    # A video the worker did not make is pushed by a person or an agent by hand
+    # (tools/video/review/sync.mjs marks it `hand_pushed`): the owner decides at every gate,
+    # whatever the automatic checks say (owner, 2026-10-17; docs/videos/HANDS-OFF.md).
+    owner_decides = manual_anime or payload.payload.get("hand_pushed") is True
     missing = [item.sha256 for item in payload.files if store.path(slug, item.sha256) is None]
     if missing:
         raise AppError(
@@ -1716,7 +1761,7 @@ async def submit_review(
     video_format = project.format or "slides"
     series_slug = project.series_slug
     if (
-        not manual_anime
+        not owner_decides
         and payload.gate == "audio"
         and await auto_approves_audio(session, payload.payload, video_format)
     ):
@@ -1725,14 +1770,14 @@ async def submit_review(
     # when the series is hands-off (docs/videos/BINGE.md); an illustrated slides video's reads
     # its own switch (docs/videos/ILLUSTRATED.md).
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "storyboard"
         and await auto_approves_storyboard(session, payload.payload, series_slug, video_format)
     ):
         auto_note = AUTO_APPROVED_STORYBOARD_NOTE
     # A character's sheet is picked by the judge's score when the owner turned that on.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "look"
         and await auto_picks_look(session, payload.payload, series_slug)
     ):
@@ -1740,7 +1785,7 @@ async def submit_review(
         review.choice = str(payload.payload.get("suggested"))
     # An episode's screenplay stands on the checker's coverage on a hands-off series.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "script"
         and await auto_approves_script(session, series_slug, payload.payload)
     ):
@@ -1748,7 +1793,7 @@ async def submit_review(
     # The owner decided on 2026-09-27 (docs/videos/HANDS-OFF.md) that Jev chooses the outline
     # and that a final cut and its upload confirmation stand on the automatic checks.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "outline"
         and await auto_picks_outline(session, payload.payload, project.category)
     ):
@@ -1758,7 +1803,7 @@ async def submit_review(
     # (docs/videos/SHORTS.md §自動品管); a long video's report never approves one, so the
     # rule below is not asked about a Short at all.
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate in ("final", "publish")
         and project.shorts_line is not None
     ):
@@ -1771,7 +1816,7 @@ async def submit_review(
                 else SHORTS_PACKAGE_AUTO_APPROVED_NOTE
             )
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate in ("final", "publish")
         and await auto_approves_final(
             session,
@@ -1786,7 +1831,7 @@ async def submit_review(
     # A batch of languages waits for the owner only for a dub track they must upload in Studio;
     # descriptions and captions the site sends itself (docs/videos/LANGUAGES.md).
     elif (
-        not manual_anime
+        not owner_decides
         and payload.gate == "languages"
         and not languages_need_owner(payload.payload)
     ):

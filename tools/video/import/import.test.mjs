@@ -109,6 +109,7 @@ test("the final review carries what the page shows and says it was imported", ()
   assert.equal(review.payload.chapters.length, 3);
   assert.deepEqual(review.payload.metadata, { "zh-TW": { title: META.titles[0], description: DESCRIPTION } });
   assert.deepEqual(review.payload.imported, { note: "PR #880", captions: true });
+  assert.equal(review.payload.hand_pushed, true, "an imported film waits for the owner at every gate");
   const single = finalReview({ meta: readMeta({ ...META, titles: ["一個"] }), sha256: "b".repeat(64), seconds: 60, problems: [], captions: false });
   assert.equal(single.payload.titles, undefined);
   assert.match(single.summary, /規格檢查全部通過/);

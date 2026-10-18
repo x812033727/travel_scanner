@@ -23,6 +23,8 @@ import { appliedBranding, brandingCurrent, introAtFrame, linesAcrossIntro, prese
 import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
+import { requireStorySpeechLexicon } from "../core/lexicon-store.mjs";
+import { StoryLexiconError } from "../core/story-lexicon.mjs";
 import { eachLine, LOCALES } from "../core/schema.mjs";
 import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, SAMPLES_PER_FRAME, speechHash } from "../core/timeline.mjs";
@@ -485,6 +487,7 @@ async function dub(args, ctx) {
 
   // Not while another producer holds the project (core/project-lease.mjs); the worker's unit holds it already.
   requireProjectLease(workdir, { owner: "dub", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
+  requireStorySpeechLexicon(project, workdir);
   const credentials = requireCredentials(ctx);
   const clientOpts = { ...clientOptions(ctx, credentials), videoSlug: doc.slug };
   const status = await speechStatus(clientOpts);
@@ -508,6 +511,10 @@ export async function run(command, args, ctx) {
   try {
     return await dub(args, ctx);
   } catch (error) {
+    if (error instanceof StoryLexiconError) {
+      ctx.stderr.write(`${error.message}\n`);
+      return ctx.EXIT.owner;
+    }
     if (error instanceof SpeechError) {
       ctx.stderr.write(`${error.message}\n`);
       return error.who === "owner" ? ctx.EXIT.owner : ctx.EXIT.external;

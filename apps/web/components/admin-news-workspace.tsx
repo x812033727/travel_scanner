@@ -57,7 +57,7 @@ const statusTone: Partial<Record<NewsCandidateStatus, string>> = {
 
 // What happened to a candidate, which decides the explanation and the buttons it gets.
 type Situation =
-  | "zhDraft" | "translationHold" | "readyToPublish" | "finalEditHold" | "jevFinalHold"
+  | "zhDraft" | "translationHold" | "readyToPublish" | "readyJudgeHold" | "finalEditHold" | "jevFinalHold"
   | "shadow" | "jevHold" | "hardChecksHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "redraft"
   | "failed" | "needsEvidence" | "published" | "closed" | "judgeClosed" | "working";
 type Action = "approve" | "publish" | "verify" | "notDuplicate" | "refresh" | "retry" | "reject" | "incident" | "reopen";
@@ -74,6 +74,9 @@ const situationActions: Record<Situation, readonly Action[]> = {
   translationHold: ["approve", "reject"],
   hardChecksHold: ["approve", "verify", "reject"],
   readyToPublish: ["publish", "verify", "reject"],
+  // Ready by every check, but the AI judge's last call asks for a correction: the route is the
+  // editor and a re-check. Publishing stays the owner's explicit decision, with its server checks.
+  readyJudgeHold: ["publish", "verify", "reject"],
   // The five-locale article is saved; the final editor or Jev's last call held it back.
   finalEditHold: ["publish", "verify", "reject"],
   jevFinalHold: ["publish", "verify", "reject"],
@@ -102,7 +105,8 @@ function situationOf(candidate: NewsCandidateSummary): Situation {
       if (candidate.error_code === "news_duplicate_uncertain") return "duplicate";
       if (candidate.error_code === "news_evidence_changed") return "evidenceChanged";
       if (candidate.error_code === "news_zh_draft_ready") return "zhDraft";
-      if (candidate.error_code === "news_ready_to_publish") return "readyToPublish";
+      // A rerun or a re-check clears judge_decision, so "manual" here is the judge's current answer.
+      if (candidate.error_code === "news_ready_to_publish") return candidate.judge_decision === "manual" ? "readyJudgeHold" : "readyToPublish";
       if (candidate.error_code === "news_jev_manual") return "jevHold";
       if (candidate.error_code === "news_final_edit_hold") return "finalEditHold";
       if (candidate.error_code === "news_jev_final_hold") return "jevFinalHold";

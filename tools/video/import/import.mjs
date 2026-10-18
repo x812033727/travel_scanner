@@ -136,6 +136,9 @@ export function finalReview({ meta, sha256, seconds, problems, captions }) {
       chapters: meta.chapters,
       metadata: { "zh-TW": { title: meta.titles[0], description: meta.description } },
       imported: { note: meta.note, captions },
+      // Another tool made it, not the worker: the owner decides at every gate (owner, 2026-10-17;
+      // docs/videos/HANDS-OFF.md), whatever the site's switches say.
+      hand_pushed: true,
     },
   };
 }
