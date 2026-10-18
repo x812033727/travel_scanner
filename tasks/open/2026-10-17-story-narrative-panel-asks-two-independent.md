@@ -12,8 +12,6 @@ branch: claude/story-panel-two-readers
 depends_on: []
 scope:
   - .agents/skills/youtube-video/references/story.md
-  - tools/video/automation/story.mjs
-  - tools/video/automation/story.test.mjs
   - tools/video/core/narrative.mjs
   - tools/video/core/narrative.test.mjs
 ---

@@ -705,11 +705,18 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
   const plan = info.plan;
   const target = effectiveStoryMinutes(slug, info);
   const scenes = [];
+  const citedSources = new Set();
   for (const key of CHAPTER_KEYS) {
     const chapter = chapters[key];
     if (!chapter) continue;
     chapter.scenes.forEach((scene, index) => {
-      const claims = (chapter.claims ?? []).filter((row) => row.scene === scene.id && row.verdict !== "NOT FOUND").map((row) => row.id);
+      const effectiveRows = (chapter.claims ?? []).filter((row) => row.scene === scene.id && row.verdict !== "NOT FOUND");
+      const claims = effectiveRows.map((row) => row.id);
+      if (slug === "story-rolling-suitcase-v2") {
+        for (const row of effectiveRows) {
+          if (Number.isInteger(row.source) && row.source >= 0 && row.source < plan.sources.length) citedSources.add(row.source);
+        }
+      }
       scenes.push({ id: scene.id, ...(index === 0 ? { chapter: chapter.title } : {}), template: scene.template, data: scene.data, ...(claims.length ? { claims } : {}), lines: scene.lines });
     });
   }
@@ -740,7 +747,9 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     subtitles: { burn_in: false, style: "drama" },
     youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: clip(info.title ?? plan.subject, 100), description: `${info.logline || plan.subject}\n\n${plan.question}`, tags: storyTags(plan), video_id: videoId },
     ...(thumbnail ? { thumbnail: { template: "thumb", data: { headline: clipHeadline(plan.thumbnail?.headline ?? plan.subject), tag: "品牌故事", ...(isText(plan.thumbnail?.brand) ? { brand: plan.thumbnail.brand.trim() } : {}), shot: thumbnail } } } : {}),
-    sources: plan.sources.map((source) => ({ title: clip(source.publisher || source.url, 200), url: source.url, checked_on: source.checked })),
+    sources: plan.sources
+      .filter((_, index) => slug !== "story-rolling-suitcase-v2" || citedSources.has(index))
+      .map((source) => ({ title: clip(source.publisher || source.url, 200), url: source.url, checked_on: source.checked })),
     assets: [],
     ...(loops.length ? { loops } : {}),
     scenes,
@@ -868,6 +877,9 @@ export function pilotScriptReviewProblem({ slug, root, workdir }) {
     }));
     const merged = composeStory({ slug, info, chapters, voice: video.voice, root });
     if (!isDeepStrictEqual(video.scenes, merged.scenes)) return "video.json scenes no longer match the six reviewed chapter files";
+    if (slug === "story-rolling-suitcase-v2" && !isDeepStrictEqual(video.sources, merged.sources)) {
+      return "A01 video.json sources no longer match the effective claims in the six reviewed chapter files";
+    }
     if (compactA01Story(slug, info) && !isDeepStrictEqual(video.target_minutes, merged.target_minutes)) {
       return "A01 video.json still has a legacy duration target; recompose and independently review the compact [7,8] script before TTS";
     }
