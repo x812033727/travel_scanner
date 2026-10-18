@@ -1,0 +1,607 @@
+{
+  "schema_version": 1,
+  "kind": "senior-high-encoded-frame-review",
+  "status": "passed",
+  "completed_at_utc": "2026-10-08T05:19:58+00:00",
+  "source": {
+    "path": "docs/videos/english-senior-high-complete/lessons.json",
+    "sha256": "1f7db728e436c52dfa2cafb57d4421f98f2dcbff8ac63be833148a4beb04fb96"
+  },
+  "art_check_summary_sha256": "754cbcbd308cb2dc6605ea8e58a96295954cab6fb19e70b9c39fcdd42ea17626",
+  "artifact_paths_relative_to": "course output directory",
+  "reviewer": "senior-high artwork assistant",
+  "scope": {
+    "episodes": [
+      "ep01",
+      "ep12",
+      "ep24",
+      "ep36",
+      "ep48",
+      "ep49",
+      "ep60",
+      "ep72"
+    ],
+    "decoded_frames_inspected": 24,
+    "method": "FFmpeg extraction from completed final.mp4 files, followed by direct assistant inspection with view_image.",
+    "selection": "One guided-repeat frame and one waiting/reveal pair per episode. Answer positions A, B and C are represented; ep12 and ep36 use B, ep24/ep48/ep72 use C.",
+    "timing_basis": "Resolved scene start, demo_start, demo_end and reveal_at values; waiting samples fall inside the response interval.",
+    "full_video_viewing": false,
+    "audio_listening": false,
+    "caption_assessment": "The reserved lower 90 pixels were inspected. Optional CC overlays were not rendered into these PNG samples."
+  },
+  "criteria": [
+    "Embedded English is legible and complete, including descenders, punctuation and guided word backgrounds.",
+    "The waiting snapshot leaves all options neutral; the later snapshot highlights the correct option and prints the answer.",
+    "Learning text and artwork remain above the reserved optional-CC area."
+  ],
+  "episodes": [
+    {
+      "episode": "ep01",
+      "title_en": "A More Detailed Introduction",
+      "video": "ep01/final.mp4",
+      "video_sha256": "077ce9b16e8a628c71500fa291057fa08d5f86bc089b16bd6030a70eed0873c3",
+      "checks_sha256": "769cb99b0d180a3bb66c660912d9ce97097160663ea9c74aa551d6cc1908f18a",
+      "authored_source_sha256": "1f7db728e436c52dfa2cafb57d4421f98f2dcbff8ac63be833148a4beb04fb96",
+      "authored_fields_match_final_source": true,
+      "resolved_episode_sha256": "2ce4db1686dbc34c96a2297b47b87f8cdb0fb48c09b9fd975a576e54741bd1c5",
+      "renderer_sha256": "0bf07f86cb3c024b2d6c15fbc9b6e966e693e4840a1356565e41d5bcfc9f53b3",
+      "batch_complete_observed": true,
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T04:44:06+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep01-s04",
+          "video_seconds_requested": 83.126,
+          "scene_local_seconds": 8.102,
+          "scene_start_seconds": 75.024,
+          "demo_start_seconds": 7.352,
+          "demo_end_seconds": 13.112,
+          "reveal_at_seconds": 18.112,
+          "image": "encoded-qa/ep01-guided.png",
+          "image_sha256": "694feb972bd9447feddbfda45bcae8ea48e51c9442e0f32dbbed59db6e178042",
+          "expected_english": "That comment encouraged me to use photography to make practical guides.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep01-s05",
+          "video_seconds_requested": 112.872,
+          "scene_local_seconds": 13.376,
+          "scene_start_seconds": 99.496,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.376,
+          "reveal_at_seconds": 16.376,
+          "image": "encoded-qa/ep01-quiz-wait.png",
+          "image_sha256": "3c1670405f8a750707bd4af090f83761f5f14b5d111f39514ff9bd705a9235c3",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep01-s05",
+          "video_seconds_requested": 116.472,
+          "scene_local_seconds": 16.976,
+          "scene_start_seconds": 99.496,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.376,
+          "reveal_at_seconds": 16.376,
+          "image": "encoded-qa/ep01-quiz-reveal.png",
+          "image_sha256": "3ef3e84638139f542ac1320a2772dce441a97d9ba38b02fc54278673236ebe5a",
+          "expected_english": "Last spring, I photographed volunteers as they repaired the signs in our school garden.",
+          "expected_correct_option": 1
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T04:45:13+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option A and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      }
+    },
+    {
+      "episode": "ep12",
+      "title_en": "Building a Connected Profile",
+      "video": "ep12/final.mp4",
+      "video_sha256": "57786515efe09286b8defeb9af030b9630f78fca7d9c51148671a2957ebbea9f",
+      "checks_sha256": "4177e94611747be6388907e2ea334ff4b63ef32979035f9daee79aadcf4dfe26",
+      "authored_source_sha256": "1f7db728e436c52dfa2cafb57d4421f98f2dcbff8ac63be833148a4beb04fb96",
+      "authored_fields_match_final_source": true,
+      "resolved_episode_sha256": "30f39d2105f36eae92c8e433671c82bed2dcb80536cf4e1377b1ac5d10a84ad2",
+      "renderer_sha256": "0bf07f86cb3c024b2d6c15fbc9b6e966e693e4840a1356565e41d5bcfc9f53b3",
+      "batch_complete_observed": true,
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T04:46:19+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep12-s04",
+          "video_seconds_requested": 78.23,
+          "scene_local_seconds": 7.454,
+          "scene_start_seconds": 70.776,
+          "demo_start_seconds": 6.704,
+          "demo_end_seconds": 12.488,
+          "reveal_at_seconds": 17.488,
+          "image": "encoded-qa/ep12-guided.png",
+          "image_sha256": "d7a6d3a8ef860d7db0e41484cdb8260dc37fb1be5223c9d4e0bc886ed607554c",
+          "expected_english": "Since then, he has been testing maps with students who do not know the building.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep12-s09",
+          "video_seconds_requested": 202.632,
+          "scene_local_seconds": 13.472,
+          "scene_start_seconds": 189.16,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.472,
+          "reveal_at_seconds": 16.472,
+          "image": "encoded-qa/ep12-quiz-wait.png",
+          "image_sha256": "0b1caa06a939ff1c67038cb141d07d56d2568db14a88528cd35c97fd6f0831b6",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep12-s09",
+          "video_seconds_requested": 206.232,
+          "scene_local_seconds": 17.072,
+          "scene_start_seconds": 189.16,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.472,
+          "reveal_at_seconds": 16.472,
+          "image": "encoded-qa/ep12-quiz-reveal.png",
+          "image_sha256": "e1b06d6756d068c3d848cf710341ec390965a979e912f0553bcdf58710b43f45",
+          "expected_english": "What he wants to learn is how to make directions clearer without adding unnecessary text.",
+          "expected_correct_option": 2
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T04:47:22+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option B and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      }
+    },
+    {
+      "episode": "ep24",
+      "title_en": "A Practical Proposal",
+      "video": "ep24/final.mp4",
+      "video_sha256": "33322ad8c7ac5f1e7d965037ae939d55c10bbecd3643b974549177a5a0d9f27d",
+      "checks_sha256": "f6f004f465515fe27a25a625b0a1db56843d23417ec441e939f448b4fcb45562",
+      "authored_source_sha256": "1f7db728e436c52dfa2cafb57d4421f98f2dcbff8ac63be833148a4beb04fb96",
+      "authored_fields_match_final_source": true,
+      "resolved_episode_sha256": "77f261ca19c4b50536e8e15a176aba335bd6112c03bf7d1ba898ae42845cf2b9",
+      "renderer_sha256": "0bf07f86cb3c024b2d6c15fbc9b6e966e693e4840a1356565e41d5bcfc9f53b3",
+      "batch_complete_observed": true,
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T04:54:35+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep24-s04",
+          "video_seconds_requested": 80.39,
+          "scene_local_seconds": 7.742,
+          "scene_start_seconds": 72.648,
+          "demo_start_seconds": 6.992,
+          "demo_end_seconds": 12.872,
+          "reveal_at_seconds": 17.872,
+          "image": "encoded-qa/ep24-guided.png",
+          "image_sha256": "c5167b2b12ec8dbcfc19f03fe0492b63ffda6b111623ee1a5ebda112cfc2d0a0",
+          "expected_english": "A shelf protects stored models, but a repair table offers direct help.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep24-s09",
+          "video_seconds_requested": 201.432,
+          "scene_local_seconds": 13.136,
+          "scene_start_seconds": 188.296,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.136,
+          "reveal_at_seconds": 16.136,
+          "image": "encoded-qa/ep24-quiz-wait.png",
+          "image_sha256": "2c7f0390041b8677b7756fd7cd57ed1aa006d77088672e09bea59f4b6ae31eca",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep24-s09",
+          "video_seconds_requested": 205.032,
+          "scene_local_seconds": 16.736,
+          "scene_start_seconds": 188.296,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.136,
+          "reveal_at_seconds": 16.136,
+          "image": "encoded-qa/ep24-quiz-reveal.png",
+          "image_sha256": "7c52ec29d3815568d6bce3b459fc9098f7246d99b030eef8edf8ad0cbc824da6",
+          "expected_english": "Although the table needs supervision, it addresses the reported problem more directly.",
+          "expected_correct_option": 3
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T04:54:57+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option C and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      }
+    },
+    {
+      "episode": "ep36",
+      "title_en": "A Supported Opinion",
+      "video": "ep36/final.mp4",
+      "video_sha256": "4e0c62619cbd69034c2774f833ba8eb765ec81ab42fc500c7bca73ad61cec575",
+      "checks_sha256": "9c581668d01e991e2044bac669dcfc4ad817217530624acd6f4f1940aa0452d8",
+      "authored_source_sha256": "1f7db728e436c52dfa2cafb57d4421f98f2dcbff8ac63be833148a4beb04fb96",
+      "authored_fields_match_final_source": true,
+      "resolved_episode_sha256": "b3674d2fe314c2e0671939194f78b5ec00f802c3132ec812d0ca950aad209823",
+      "renderer_sha256": "0bf07f86cb3c024b2d6c15fbc9b6e966e693e4840a1356565e41d5bcfc9f53b3",
+      "batch_complete_observed": true,
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T05:03:08+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep36-s04",
+          "video_seconds_requested": 83.75,
+          "scene_local_seconds": 7.862,
+          "scene_start_seconds": 75.888,
+          "demo_start_seconds": 7.112,
+          "demo_end_seconds": 13.832,
+          "reveal_at_seconds": 18.832,
+          "image": "encoded-qa/ep36-guided.png",
+          "image_sha256": "922316390df932e2df755394dc31a1e5ea0c7edb9fe936f11b52a1e601418863",
+          "expected_english": "A separate room could reduce interruptions, which connects the proposal to readers' needs.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep36-s07",
+          "video_seconds_requested": 162.48,
+          "scene_local_seconds": 12.032,
+          "scene_start_seconds": 150.448,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.032,
+          "reveal_at_seconds": 15.032,
+          "image": "encoded-qa/ep36-quiz-wait.png",
+          "image_sha256": "74f74404fd08b6d254f3c8d4ed61c388060bbe949a7b43e86dc11fb9952b7ce0",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep36-s07",
+          "video_seconds_requested": 166.08,
+          "scene_local_seconds": 15.632,
+          "scene_start_seconds": 150.448,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.032,
+          "reveal_at_seconds": 15.032,
+          "image": "encoded-qa/ep36-quiz-reveal.png",
+          "image_sha256": "7367493938ddb62dcc1683739edadf47d7e0d57018cb3b41cb7d562c033b8920",
+          "expected_english": "Discussion groups should keep their meeting space during the proposed trial.",
+          "expected_correct_option": 2
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T05:03:32+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option B and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      }
+    },
+    {
+      "episode": "ep48",
+      "title_en": "From Reading to a Response",
+      "video": "ep48/final.mp4",
+      "video_sha256": "61bbb54cfaf78bc57a23dc4bd6fa4723298ee306e707b091ba119d851c261f69",
+      "checks_sha256": "8c4f04aab011f6183907bca072c69e26e3f0e98f07574434f25e9f4be1c826cc",
+      "authored_source_sha256": "1f7db728e436c52dfa2cafb57d4421f98f2dcbff8ac63be833148a4beb04fb96",
+      "authored_fields_match_final_source": true,
+      "resolved_episode_sha256": "b971c6f4459bf5b8bfc6d280ee7b20f55c45b4389b54cac934e0cebe9e869085",
+      "renderer_sha256": "0bf07f86cb3c024b2d6c15fbc9b6e966e693e4840a1356565e41d5bcfc9f53b3",
+      "batch_complete_observed": true,
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T05:13:47+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep48-s04",
+          "video_seconds_requested": 86.438,
+          "scene_local_seconds": 7.478,
+          "scene_start_seconds": 78.96,
+          "demo_start_seconds": 6.728,
+          "demo_end_seconds": 13.616,
+          "reveal_at_seconds": 18.616,
+          "image": "encoded-qa/ep48-guided.png",
+          "image_sha256": "ad1bc425eb1353ffef1e45597194f8de2463126f7a5897dba1b4b3c6e84ea63b",
+          "expected_english": "The commentary values open space because visitors can examine models from different sides.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep48-s09",
+          "video_seconds_requested": 214.92,
+          "scene_local_seconds": 12.32,
+          "scene_start_seconds": 202.6,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.32,
+          "reveal_at_seconds": 15.32,
+          "image": "encoded-qa/ep48-quiz-wait.png",
+          "image_sha256": "a49f7c57523cda34bd6ae14ef12811ad19b06ead6f04e2f13b12ef41e3e517be",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep48-s09",
+          "video_seconds_requested": 218.52,
+          "scene_local_seconds": 15.92,
+          "scene_start_seconds": 202.6,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.32,
+          "reveal_at_seconds": 15.32,
+          "image": "encoded-qa/ep48-quiz-reveal.png",
+          "image_sha256": "3174cbae57ae59383bcd9ddec6d0727066eba993719b2b371cb823057d1cef97",
+          "expected_english": "Could you clarify whether temporary storage may be approved for this display?",
+          "expected_correct_option": 3
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T05:14:07+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option C and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      }
+    },
+    {
+      "episode": "ep49",
+      "title_en": "Summarizing the Main Point",
+      "video": "ep49/final.mp4",
+      "video_sha256": "21967e579cead0100ec8e6fdbd5e5d283df3098f46d1ceac037679ba0d476c98",
+      "checks_sha256": "b709827d9a5065dad40b09cb96b903914e3f20e4f4516a67d96e7523ba10e79f",
+      "authored_source_sha256": "1f7db728e436c52dfa2cafb57d4421f98f2dcbff8ac63be833148a4beb04fb96",
+      "authored_fields_match_final_source": true,
+      "resolved_episode_sha256": "0015c49fa331d568f4a9fcf806e8cf51e8664fec5573821c7556bc6d50ccdbc9",
+      "renderer_sha256": "0bf07f86cb3c024b2d6c15fbc9b6e966e693e4840a1356565e41d5bcfc9f53b3",
+      "batch_complete_observed": true,
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T04:44:06+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep49-s04",
+          "video_seconds_requested": 75.062,
+          "scene_local_seconds": 7.358,
+          "scene_start_seconds": 67.704,
+          "demo_start_seconds": 6.608,
+          "demo_end_seconds": 11.84,
+          "reveal_at_seconds": 16.84,
+          "image": "encoded-qa/ep49-guided.png",
+          "image_sha256": "2f85f3db85341e9c3043a95b446a4bc781f0f0885cb8b9aa25c788f5ed0d18f1",
+          "expected_english": "However, the project did not measure changes in household waste.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep49-s05",
+          "video_seconds_requested": 102.744,
+          "scene_local_seconds": 12.368,
+          "scene_start_seconds": 90.376,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.368,
+          "reveal_at_seconds": 15.368,
+          "image": "encoded-qa/ep49-quiz-wait.png",
+          "image_sha256": "b9e2e24fbf434000cdcf08d0f596668831eaef92f1264043f839e4bf60fbe1f2",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep49-s05",
+          "video_seconds_requested": 106.344,
+          "scene_local_seconds": 15.968,
+          "scene_start_seconds": 90.376,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.368,
+          "reveal_at_seconds": 15.368,
+          "image": "encoded-qa/ep49-quiz-reveal.png",
+          "image_sha256": "13b8f1000ba78cc6c151d3ec6486006c81bc634103db3767c8554337a01cbe70",
+          "expected_english": "Students learned to consider repairs before replacing damaged objects.",
+          "expected_correct_option": 1
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T04:45:13+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option A and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      }
+    },
+    {
+      "episode": "ep60",
+      "title_en": "An Integrated Writing Project",
+      "video": "ep60/final.mp4",
+      "video_sha256": "59002d0b3cd06ee773101772f4dc456b098e5a5344a8a08c3f9b9412d623175a",
+      "checks_sha256": "2fd865ed938ec22de93a6d55072fc3ebf5a98bdf4e029fa22d9afa8e19610fda",
+      "authored_source_sha256": "1f7db728e436c52dfa2cafb57d4421f98f2dcbff8ac63be833148a4beb04fb96",
+      "authored_fields_match_final_source": true,
+      "resolved_episode_sha256": "1ec049bafaf5dbc5ebecea9a69155182af6d83e90604ddcbcfe20085649f434e",
+      "renderer_sha256": "0bf07f86cb3c024b2d6c15fbc9b6e966e693e4840a1356565e41d5bcfc9f53b3",
+      "batch_complete_observed": true,
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T04:44:04+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep60-s04",
+          "video_seconds_requested": 86.654,
+          "scene_local_seconds": 7.838,
+          "scene_start_seconds": 78.816,
+          "demo_start_seconds": 7.088,
+          "demo_end_seconds": 14.552,
+          "reveal_at_seconds": 19.552,
+          "image": "encoded-qa/ep60-guided.png",
+          "image_sha256": "b42821d21ba1d4d0d25863464ceaea4baab29513b37fe4fc5af6c5c975d31976",
+          "expected_english": "The two sources support investigating access, while leaving costs and broader demand unresolved.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep60-s05",
+          "video_seconds_requested": 119.712,
+          "scene_local_seconds": 13.28,
+          "scene_start_seconds": 106.432,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.28,
+          "reveal_at_seconds": 16.28,
+          "image": "encoded-qa/ep60-quiz-wait.png",
+          "image_sha256": "65197ffc919b0f6c6d4d14a7c35fe1bdb70df2ce762d64998d3888c4cf4d8215",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep60-s05",
+          "video_seconds_requested": 123.312,
+          "scene_local_seconds": 16.88,
+          "scene_start_seconds": 106.432,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.28,
+          "reveal_at_seconds": 16.28,
+          "image": "encoded-qa/ep60-quiz-reveal.png",
+          "image_sha256": "9785e176d47f6dc5f0226907ea119edfc1bb2611c45156af4ecae7f3518dee24",
+          "expected_english": "Eighteen regular bottle carriers reported that distance sometimes discouraged refilling.",
+          "expected_correct_option": 1
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T04:45:13+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option A and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      }
+    },
+    {
+      "episode": "ep72",
+      "title_en": "A Final Communication Project",
+      "video": "ep72/final.mp4",
+      "video_sha256": "2d87fd1581686c71824d677773377072211245617fdb04ce9d0d08d491927fd3",
+      "checks_sha256": "6d2adefc42588630a4d7199a38afe4a6da7f15d4cbe980345f4c8c2b07428e9f",
+      "authored_source_sha256": "1f7db728e436c52dfa2cafb57d4421f98f2dcbff8ac63be833148a4beb04fb96",
+      "authored_fields_match_final_source": true,
+      "resolved_episode_sha256": "9a0db866291be19d6304d914d36ed6b3173476a77f3660e44e879cf3186b67b1",
+      "renderer_sha256": "0bf07f86cb3c024b2d6c15fbc9b6e966e693e4840a1356565e41d5bcfc9f53b3",
+      "batch_complete_observed": true,
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T05:19:39+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep72-s04",
+          "video_seconds_requested": 86.318,
+          "scene_local_seconds": 8.414,
+          "scene_start_seconds": 77.904,
+          "demo_start_seconds": 7.664,
+          "demo_end_seconds": 13.88,
+          "reveal_at_seconds": 18.88,
+          "image": "encoded-qa/ep72-guided.png",
+          "image_sha256": "4c1da5335fc058ca199543b796ef1a74e7feadf8281b0d28b56aa5344d5db1e1",
+          "expected_english": "Test the smaller guide and record print requests before deciding on wider use.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep72-s09",
+          "video_seconds_requested": 212.832,
+          "scene_local_seconds": 13.136,
+          "scene_start_seconds": 199.696,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.136,
+          "reveal_at_seconds": 16.136,
+          "image": "encoded-qa/ep72-quiz-wait.png",
+          "image_sha256": "dd6406e827d615c94e534e43040c1d87aae630030c0b07cccd829a6ae228ba53",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep72-s09",
+          "video_seconds_requested": 216.432,
+          "scene_local_seconds": 16.736,
+          "scene_start_seconds": 199.696,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.136,
+          "reveal_at_seconds": 16.136,
+          "image": "encoded-qa/ep72-quiz-reveal.png",
+          "image_sha256": "7632c7d40620264e935857656f9d66ce76eecb38110572cf91880f3f1ed2b89a",
+          "expected_english": "All participants arrived eventually, but equal convenience was not established.",
+          "expected_correct_option": 3
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T05:19:58+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option C and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      }
+    }
+  ]
+}

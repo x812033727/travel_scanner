@@ -1,0 +1,377 @@
+{
+  "schema_version": 1,
+  "kind": "junior-high-encoded-frame-review",
+  "status": "passed",
+  "completed_at_utc": "2026-10-08T03:43:03+00:00",
+  "source": {
+    "path": "docs/videos/english-junior-high-complete/lessons.json",
+    "sha256": "f499f5313c32246f397f0b525574047c525c978d2ae21b5d614a962822c320eb"
+  },
+  "art_check_summary_sha256": "a1cc3dec6831cab3f77ebcbbdb22630b2f6f29c47ec55b5ef5caa3c1aabd39d7",
+  "artifact_paths_relative_to": "course output directory",
+  "reviewer": "junior-high artwork assistant",
+  "scope": {
+    "episodes": [
+      "ep24",
+      "ep36",
+      "ep48",
+      "ep60",
+      "ep72"
+    ],
+    "decoded_frames_inspected": 15,
+    "method": "FFmpeg extraction from completed final.mp4 files, followed by direct assistant inspection with view_image.",
+    "selection": "One guided-repeat frame and one waiting/reveal pair per episode. Episode 72 uses its final quiz to include answer position C.",
+    "timing_basis": "Resolved episode start, demo_start, demo_end and reveal_at values; waiting samples fall inside the response interval.",
+    "full_video_viewing": false,
+    "audio_listening": false,
+    "caption_assessment": "The reserved lower 90 pixels were inspected. Optional CC overlays were not rendered into these PNG samples."
+  },
+  "criteria": [
+    "Embedded English is legible and complete, including descenders, punctuation and guided word backgrounds.",
+    "The waiting snapshot leaves all options neutral; the later snapshot highlights the correct option and prints the answer.",
+    "Learning text and artwork remain above the reserved optional-CC area."
+  ],
+  "episodes": [
+    {
+      "episode": "ep24",
+      "title_en": "A Day to Remember",
+      "video": "ep24/final.mp4",
+      "video_sha256": "4d259c050bcb70adc0ae6830d5a26684346db12458f2e5581fa56811886f049e",
+      "checks_sha256": "4ec66d7ff00cd4e8eb31f99085e384e5e501676cf7648ccfab4f7c251d7d49c0",
+      "resolved_episode_sha256": "9be45c81ca18e203c283ee23b60d2e4c503e9ceb8789c21ebbbb4fe2d6b2855e",
+      "renderer_sha256": "d32cd13dbb85db9c748d0bcb3c5ad54a283aad462104f7d51990788c11ec56db",
+      "batch_complete_observed": true,
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T03:14:12+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep24-s04",
+          "video_seconds_requested": 61.35,
+          "scene_local_seconds": 6.23,
+          "scene_start_seconds": 55.12,
+          "demo_start_seconds": 5.48,
+          "demo_end_seconds": 8.696,
+          "reveal_at_seconds": 13.696,
+          "image": "encoded-qa/ep24-guided.png",
+          "image_sha256": "1cbbfb304cb05cf77a01fb53c5800f8668c0a2c9645040444d7e6ece023aa9d0",
+          "expected_english": "Could you show me the garden, please?",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep24-s05",
+          "video_seconds_requested": 83.4,
+          "scene_local_seconds": 10.28,
+          "scene_start_seconds": 73.12,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 7.28,
+          "reveal_at_seconds": 13.28,
+          "image": "encoded-qa/ep24-quiz-wait.png",
+          "image_sha256": "5e0015be08e4b7de81da5117570e71b768553edf2fc147ad1b927040aff1aea8",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep24-s05",
+          "video_seconds_requested": 87.0,
+          "scene_local_seconds": 13.88,
+          "scene_start_seconds": 73.12,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 7.28,
+          "reveal_at_seconds": 13.28,
+          "image": "encoded-qa/ep24-quiz-reveal.png",
+          "image_sha256": "a280ddc4373c65d53dc296839ba2a439a135959f3d23d74a27b44f0b7cc36f88",
+          "expected_english": "We saw old paintings in a bright room.",
+          "expected_correct_option": 1
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T03:14:37+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from the completed final.mp4.",
+        "observations": [
+          "Guided sentence and word backgrounds are clear, with intact descenders and punctuation.",
+          "Waiting frame keeps all three options neutral and displays only Listen and choose. below them.",
+          "Reveal frame highlights option A and shows the correct full English sentence.",
+          "English is embedded in the video image; the lower 90 pixels remain clear for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or listening claim."
+      }
+    },
+    {
+      "episode": "ep36",
+      "title_en": "Planning a Class Outing",
+      "video": "ep36/final.mp4",
+      "video_sha256": "0b22c6beaf2b4d9f9490b96ede84b5436752101272c588e77cf071ea42c71cd0",
+      "checks_sha256": "cb1be95ff355e8e4c78c9975118f4054211d80a9485619e3bc5d150a2451d8ee",
+      "resolved_episode_sha256": "b77c7b969c336639877d36cb34dc599514e9c3b50a9808363be1926d5f42af82",
+      "renderer_sha256": "d32cd13dbb85db9c748d0bcb3c5ad54a283aad462104f7d51990788c11ec56db",
+      "batch_complete_observed": true,
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T03:20:04+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep36-s04",
+          "video_seconds_requested": 70.358,
+          "scene_local_seconds": 7.454,
+          "scene_start_seconds": 62.904,
+          "demo_start_seconds": 6.704,
+          "demo_end_seconds": 11.576,
+          "reveal_at_seconds": 16.576,
+          "image": "encoded-qa/ep36-guided.png",
+          "image_sha256": "c14ec402fd9b9363994bd13e165c3d788b9ecb9940f1feb7ff0c71a6afa66694",
+          "expected_english": "The park is cheaper, but the museum is the most interesting.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep36-s05",
+          "video_seconds_requested": 96.528,
+          "scene_local_seconds": 11.576,
+          "scene_start_seconds": 84.952,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.576,
+          "reveal_at_seconds": 14.576,
+          "image": "encoded-qa/ep36-quiz-wait.png",
+          "image_sha256": "e155b671faef1c4e6af46ed58d45f635fabc878bde29d845ae1b42b58ba02b02",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep36-s05",
+          "video_seconds_requested": 100.128,
+          "scene_local_seconds": 15.176,
+          "scene_start_seconds": 84.952,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.576,
+          "reveal_at_seconds": 14.576,
+          "image": "encoded-qa/ep36-quiz-reveal.png",
+          "image_sha256": "2f5988713957ffdb1bf0800901bf2d48c3711f2c350f9610e345ceb504a0fca0",
+          "expected_english": "We were comparing places when Sunny suggested the museum.",
+          "expected_correct_option": 1
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T03:21:02+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from the completed final.mp4.",
+        "observations": [
+          "Two-line guided text remains clear; the descender in interesting is intact above the response dots.",
+          "Five-line choice cards fit fully. Waiting frame leaves all options neutral and keeps the common prompt.",
+          "Reveal frame correctly highlights option A and displays the full answer across two lines.",
+          "Embedded English remains legible and the lower 90 pixels stay clear for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or listening claim."
+      }
+    },
+    {
+      "episode": "ep48",
+      "title_en": "Sharing an Experience",
+      "video": "ep48/final.mp4",
+      "video_sha256": "1779d151f818255af2b53475e890d163273438e4d8fed1feb749d7f9f11a7ca9",
+      "checks_sha256": "db605022040bcd60e957ec16bc3a9f4918f461667a4a9e8eb87039d985327e09",
+      "resolved_episode_sha256": "4e06529a451f2cf96540bcff4d565f5be213181bde38e688f3514ba70878f9c3",
+      "renderer_sha256": "d32cd13dbb85db9c748d0bcb3c5ad54a283aad462104f7d51990788c11ec56db",
+      "batch_complete_observed": true,
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T03:27:36+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep48-s04",
+          "video_seconds_requested": 72.662,
+          "scene_local_seconds": 7.646,
+          "scene_start_seconds": 65.016,
+          "demo_start_seconds": 6.896,
+          "demo_end_seconds": 11.816,
+          "reveal_at_seconds": 16.816,
+          "image": "encoded-qa/ep48-guided.png",
+          "image_sha256": "11a85d4388ce7065b06bb4734efa5e1a21280a6a38edb1040e8cfb6b4f7f95c1",
+          "expected_english": "She went last Saturday because she wanted to learn about clocks.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep48-s05",
+          "video_seconds_requested": 98.736,
+          "scene_local_seconds": 11.384,
+          "scene_start_seconds": 87.352,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.384,
+          "reveal_at_seconds": 14.384,
+          "image": "encoded-qa/ep48-quiz-wait.png",
+          "image_sha256": "99e500cffb31f9bccb43471bf6f7202d4c2035de78f817c4eeb0f106973c8665",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep48-s05",
+          "video_seconds_requested": 102.336,
+          "scene_local_seconds": 14.984,
+          "scene_start_seconds": 87.352,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.384,
+          "reveal_at_seconds": 14.384,
+          "image": "encoded-qa/ep48-quiz-reveal.png",
+          "image_sha256": "cd6a9400ea4f6c58fbaa819eefdcb3d01833405745ca6f6d41cbab2c6efdd0ed",
+          "expected_english": "Amy has visited the town museum twice in her life.",
+          "expected_correct_option": 1
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T03:28:36+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from the completed final.mp4.",
+        "observations": [
+          "The longer two-line guided sentence is fully legible; word backgrounds preserve letters and the final period.",
+          "All three multi-line choice cards fit without clipping and remain neutral in the waiting frame.",
+          "Reveal frame correctly marks option A and shows the full present-perfect answer.",
+          "Embedded English remains above an empty lower 90-pixel CC reserve."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or listening claim."
+      }
+    },
+    {
+      "episode": "ep60",
+      "title_en": "A Better School Project",
+      "video": "ep60/final.mp4",
+      "video_sha256": "bb18508990bab98be9feca11b167562646db2aba0e23254d5830b72fb309bdcf",
+      "checks_sha256": "a16a4b3bfab37340dd6055018859c8b37128b1ca8dea4abb57e87c593d7e95e5",
+      "resolved_episode_sha256": "186bf35b2a1220116c491b514aaf8ba3c25d91f080060bbfb63b2303072c8c27",
+      "renderer_sha256": "d32cd13dbb85db9c748d0bcb3c5ad54a283aad462104f7d51990788c11ec56db",
+      "batch_complete_observed": true,
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T03:35:07+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep60-s04",
+          "video_seconds_requested": 69.086,
+          "scene_local_seconds": 7.718,
+          "scene_start_seconds": 61.368,
+          "demo_start_seconds": 6.968,
+          "demo_end_seconds": 11.504,
+          "reveal_at_seconds": 16.504,
+          "image": "encoded-qa/ep60-guided.png",
+          "image_sha256": "3dbd8913a45393038a5e6a33d38cf2b57eb1f65cbc6fd0d9537bbe0dd2caa0ff",
+          "expected_english": "Students who need quiet study space can use this corner.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep60-s05",
+          "video_seconds_requested": 94.008,
+          "scene_local_seconds": 11.0,
+          "scene_start_seconds": 83.008,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.0,
+          "reveal_at_seconds": 14.0,
+          "image": "encoded-qa/ep60-quiz-wait.png",
+          "image_sha256": "e6c07062b02a92a0d7be9bb8318447222b3f7c9d23e693864d6cc53ead7732c1",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep60-s05",
+          "video_seconds_requested": 97.608,
+          "scene_local_seconds": 14.6,
+          "scene_start_seconds": 83.008,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.0,
+          "reveal_at_seconds": 14.0,
+          "image": "encoded-qa/ep60-quiz-reveal.png",
+          "image_sha256": "fa1ddfb07dc1b1cb67f7ec7c7a23a0379d37d42fa7ea154abe64c61317277e33",
+          "expected_english": "The tables were moved by our class last Friday.",
+          "expected_correct_option": 1
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T03:36:20+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from the completed final.mp4.",
+        "observations": [
+          "The guided relative-clause example is sharp and complete across both lines, with intact descenders.",
+          "Waiting frame keeps the three readable cards neutral and prints only the common prompt below.",
+          "Reveal frame correctly highlights option A; the full single-line passive sentence and final period fit.",
+          "English is embedded in the encoded picture, with a clear lower 90-pixel CC reserve."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or listening claim."
+      }
+    },
+    {
+      "episode": "ep72",
+      "title_en": "Putting It All Together",
+      "video": "ep72/final.mp4",
+      "video_sha256": "cbfe7b48aaea672a36b845bf141490becf42b22935c882067bad4362babc514c",
+      "checks_sha256": "06aa214cb07009b696f4b496810f54ac5a694fe8d52dd3e4f2141ba2c97191ad",
+      "resolved_episode_sha256": "c0540bf3ebc34d4a2666bbbec4266bc1bae9cfc1c789b6b0091bd889d6ef2dde",
+      "renderer_sha256": "d32cd13dbb85db9c748d0bcb3c5ad54a283aad462104f7d51990788c11ec56db",
+      "batch_complete_observed": true,
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T03:41:53+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep72-s04",
+          "video_seconds_requested": 77.174,
+          "scene_local_seconds": 7.598,
+          "scene_start_seconds": 69.576,
+          "demo_start_seconds": 6.848,
+          "demo_end_seconds": 12.464,
+          "reveal_at_seconds": 17.464,
+          "image": "encoded-qa/ep72-guided.png",
+          "image_sha256": "d07c625a368df96277d37a3af354f1f1036cbd51137473ae8d30ebec2c13d688",
+          "expected_english": "The classroom has twenty-five seats and is available on Friday afternoon.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep72-s09",
+          "video_seconds_requested": 192.792,
+          "scene_local_seconds": 11.48,
+          "scene_start_seconds": 181.312,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.48,
+          "reveal_at_seconds": 14.48,
+          "image": "encoded-qa/ep72-quiz-wait.png",
+          "image_sha256": "907aab7cc573423f197b416494b27a28bae9bf55ee3d0b7b1664b53a9464d6b1",
+          "expected_english": "Listen and choose.",
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep72-s09",
+          "video_seconds_requested": 196.392,
+          "scene_local_seconds": 15.08,
+          "scene_start_seconds": 181.312,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.48,
+          "reveal_at_seconds": 14.48,
+          "image": "encoded-qa/ep72-quiz-reveal.png",
+          "image_sha256": "22749e7518e3d0b33bda993033aaed517bc5478d87177c86e302b1584f688246",
+          "expected_english": "I suggest the classroom because it meets both of our needs.",
+          "expected_correct_option": 3
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T03:43:03+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from the completed final.mp4.",
+        "observations": [
+          "The longer guided example fits both the notebook and reading strip; twenty-five keeps its hyphen and all text is intact.",
+          "The selected final quiz shows three neutral, fully readable options during the waiting frame.",
+          "The later reveal correctly marks option C and displays the complete recommendation across two lines.",
+          "English remains embedded in the video picture and the lower 90 pixels stay clear for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or listening claim."
+      }
+    }
+  ],
+  "failures": []
+}

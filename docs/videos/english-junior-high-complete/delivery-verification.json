@@ -1,0 +1,525 @@
+{
+  "checked_at": "2026-10-08T03:46:16.901006+00:00",
+  "completed": true,
+  "episodes": 72,
+  "seasons": 6,
+  "grades": {
+    "7": 24,
+    "8": 24,
+    "9": 24
+  },
+  "scenes": 720,
+  "source_sha256": {
+    "lessons.json": "f499f5313c32246f397f0b525574047c525c978d2ae21b5d614a962822c320eb",
+    "season01.json": "8c40ddac7acd50563408345bda2d93e3181859112864515721fa804be21ffbf2",
+    "season02.json": "d9c903a787d87bc6c32bdfd659996285e0e1615ec0dbcb6aa41de15d3ce4a79d",
+    "season03.json": "910d4d717956c0a8b85a7bd7ab572b6c747d90d97a4b841a423723a0bfa5bccf",
+    "season04.json": "0eff2d2538db4f5afa2a1bf196434e60a96a210d6206ee392e4ae4bf0d771a65",
+    "season05.json": "b9a1fcd2cb42f303bc197917e64c3c3976baecb58038a61c2e4c2e51f82ddf3e",
+    "season06.json": "b56c0781eb4e9229661ea4a8076da8f84405559fceeb93cfbd77c61694807086"
+  },
+  "resolved_sha256": "26607685d9947a165ad4d485c6483443ad1b4d277fbbcfa4053e532003be2616",
+  "duration_seconds": 14687.891,
+  "per_season_duration_seconds": {
+    "1": 2648.571,
+    "2": 2270.611,
+    "3": 2372.56,
+    "4": 2459.184,
+    "5": 2364.693,
+    "6": 2572.272
+  },
+  "episode_duration_range_seconds": [
+    181.933333,
+    231.496
+  ],
+  "media_files": {
+    "final_mp4": 72,
+    "picture_mp4": 72,
+    "audio_m4a": 360,
+    "srt": 288,
+    "vtt": 288
+  },
+  "audio_locales": [
+    "zh-TW",
+    "en",
+    "zh-CN",
+    "ja",
+    "ko"
+  ],
+  "cc_locales": [
+    "zh-TW",
+    "zh-CN",
+    "ja",
+    "ko"
+  ],
+  "english_cc": false,
+  "english_text": "Fixed in the picture; translated CC remains independently selectable.",
+  "voice_provider": "Microsoft Edge read-aloud preview; not the configured backend voice",
+  "backend_publication": false,
+  "renderer_profile": "sunny-pip-junior-high-v1",
+  "renderer_profile_version": 1,
+  "shared_render_engine_version": 3,
+  "renderer_sha256": "d32cd13dbb85db9c748d0bcb3c5ad54a283aad462104f7d51990788c11ec56db",
+  "source_and_media_verification": {
+    "passed": true,
+    "checked_episodes": 72,
+    "errors": [],
+    "full_decode_receipts": 72,
+    "shared_english_demos": true,
+    "response_intervals_seconds": [
+      5,
+      6
+    ],
+    "final_dimensions": [
+      1280,
+      720
+    ],
+    "output_fps": 30,
+    "animation_fps": 15,
+    "report_sha256": "ad24ab957520252f40859670d9b37b309417054149719e525fa85f328c0a5eae"
+  },
+  "artwork": {
+    "summary": "art-checks.json",
+    "sha256": "a1cc3dec6831cab3f77ebcbbdb22630b2f6f29c47ec55b5ef5caa3c1aabd39d7",
+    "phase_frames": 2160,
+    "quiz_answer_invariance_scenes": 216,
+    "guided_glyph_mask_scenes": 144,
+    "failures": []
+  },
+  "practice": {
+    "worksheets": 72,
+    "readings": 72,
+    "questions": 216,
+    "reading_answers": 216,
+    "writing_tasks": 72,
+    "example_answers": 72,
+    "activities_precede_separate_answer_section": true,
+    "source_matches": true,
+    "pdf_pages": 97,
+    "pdf": {
+      "pages": 97,
+      "worksheet_pages": 72,
+      "answer_pages": 24,
+      "source_passages_questions_prompts_answers_match": true,
+      "answers_separated": true
+    }
+  },
+  "practice_font": {
+    "file": "NotoSansTC-Regular.ttf",
+    "sha256": "b1f977a91bf3d0eab029a2b713ed9ad14eda085a15ca8ed202e35c66731f23cf",
+    "source_url": "https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/Variable/TTF/Subset/NotoSansTC-VF.ttf",
+    "static_weight": 400,
+    "embedded_subset": true
+  },
+  "player_checks": {
+    "jsdom_passed": true,
+    "player_variants": 7,
+    "real_browser_playback": false,
+    "limitation": "Local-file browser access was rejected by administrator policy. jsdom uses mocked media events; every actual film separately passed FFmpeg full decoding.",
+    "root_report_sha256": "2170b26c6392c38ca46d7ceb6e55f6d37b23defc0c205d5deba9025cd08c02fa",
+    "season_report_sha256": "352ce1f54618cd4d87065548a1149e012dea478c4177b3a55b937632a281344e"
+  },
+  "repository_tests": {
+    "tools_total": 2013,
+    "tools_passed": 2010,
+    "tools_skipped": 3,
+    "tools_failed": 0,
+    "pipeline_regressions_passed": 23,
+    "tools_log_sha256": "33058e8eef07cdf99a31fb9b65de98c1c2e1093973c4c22394c57a56b82d3fc7"
+  },
+  "delivery_checks": {
+    "passed": true,
+    "report_sha256": "ac4762211b2bee622c9bb36149d85dadc2a9491c9ed57924d51f03bfe77c04fb",
+    "checker_sha256": "bdb04576dd3cdaab5a2674310861b1f5087691b6fefb1cbcbb625a77560b1bdd",
+    "validation": "Read-only ZIP CRC/member/SHA checks, exact comparison with checked root media, fresh mocked jsdom UI tests and player hashes, actual ffprobe stream metadata, independently recomputed artwork/font fingerprints, parsed player data and relative assets, CSV metadata, PDF page counts and every page text, independent reading questions/writing and separate answers. No real-browser playback or fresh codec decode is performed.",
+    "archive_files_compared": 2448,
+    "combined_zip_bytes": 1224416404,
+    "all_seven_zip_bytes": 2449100775
+  },
+  "packages": [
+    {
+      "file": "Sunny_Pip_Junior_High_Season_01.zip",
+      "bytes": 224316108,
+      "sha256": "406a2b098229bbc531309fe97a5546d173ddd1b790290f4133971e5d14cd922b",
+      "episode_ids": [
+        "ep01",
+        "ep02",
+        "ep03",
+        "ep04",
+        "ep05",
+        "ep06",
+        "ep07",
+        "ep08",
+        "ep09",
+        "ep10",
+        "ep11",
+        "ep12"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 21493,
+          "sha256": "93a90ad4a26d9fd0c915d882ec9e7144b13f5820dd3c9f15630605e58a0b0e6d"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 73008,
+          "sha256": "b2aa3eba7175b5757436be4eb9cc7ac1a6b43d90503a8661fd61fffe6dfa6891"
+        }
+      ],
+      "season": 1
+    },
+    {
+      "file": "Sunny_Pip_Junior_High_Season_02.zip",
+      "bytes": 172269989,
+      "sha256": "c8905cbd4a9dc78dc5fd4093bd852662683a685010783265c1946ccdf7d50bf1",
+      "episode_ids": [
+        "ep13",
+        "ep14",
+        "ep15",
+        "ep16",
+        "ep17",
+        "ep18",
+        "ep19",
+        "ep20",
+        "ep21",
+        "ep22",
+        "ep23",
+        "ep24"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 20851,
+          "sha256": "d482c6a462cf7ed44eac59e495133b9a12e57868566b0aeb25d0de5ecb1d34af"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 76071,
+          "sha256": "62a718d8517de6c8f38cba8b496ab9fc97674b042c13fb62451cce761daf48ec"
+        }
+      ],
+      "season": 2
+    },
+    {
+      "file": "Sunny_Pip_Junior_High_Season_03.zip",
+      "bytes": 192791712,
+      "sha256": "660f6a80af2273f3ce5cf574332568239b8930694a6db18ad93ab963029d27b9",
+      "episode_ids": [
+        "ep25",
+        "ep26",
+        "ep27",
+        "ep28",
+        "ep29",
+        "ep30",
+        "ep31",
+        "ep32",
+        "ep33",
+        "ep34",
+        "ep35",
+        "ep36"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 22268,
+          "sha256": "62bb420ea2e3133d4f07921d72bc8679bc1e04f8896283d9fc11856a02ac44bd"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 74449,
+          "sha256": "fefeaf5554258833d63f307952e412b132d4a6ad30149824a2f7151327fa8916"
+        }
+      ],
+      "season": 3
+    },
+    {
+      "file": "Sunny_Pip_Junior_High_Season_04.zip",
+      "bytes": 208711836,
+      "sha256": "b6349f9a149c602f7f077e0cf86ad660e9b06467e921fd9f68a4d6e234602ee5",
+      "episode_ids": [
+        "ep37",
+        "ep38",
+        "ep39",
+        "ep40",
+        "ep41",
+        "ep42",
+        "ep43",
+        "ep44",
+        "ep45",
+        "ep46",
+        "ep47",
+        "ep48"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 22842,
+          "sha256": "49e43039da645bd1691b0f422102fc74f2bae611d38cba023791058f0c569915"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 75333,
+          "sha256": "5c1392201814fdc8bcc1d8ea1b9fa6e099f867e2d6675384406722f906a1832a"
+        }
+      ],
+      "season": 4
+    },
+    {
+      "file": "Sunny_Pip_Junior_High_Season_05.zip",
+      "bytes": 197513820,
+      "sha256": "1c9eb70a80a3edf1bd57d4fceb94cfa9d9f8d03cb260ffa6b298980a00902667",
+      "episode_ids": [
+        "ep49",
+        "ep50",
+        "ep51",
+        "ep52",
+        "ep53",
+        "ep54",
+        "ep55",
+        "ep56",
+        "ep57",
+        "ep58",
+        "ep59",
+        "ep60"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 24758,
+          "sha256": "a833c9a322296f55a6fc34fb1682354c8af4482776f2605cb772a82d75e2f250"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 80300,
+          "sha256": "de893dd2ca7e7b7e53c17fd30e87c10760ee2f0f8240352837365006be25c942"
+        }
+      ],
+      "season": 5
+    },
+    {
+      "file": "Sunny_Pip_Junior_High_Season_06.zip",
+      "bytes": 229080906,
+      "sha256": "9bb4889fe81af9370be18098a66975e9a82ad346b2284dd63ce91a976674cd8a",
+      "episode_ids": [
+        "ep61",
+        "ep62",
+        "ep63",
+        "ep64",
+        "ep65",
+        "ep66",
+        "ep67",
+        "ep68",
+        "ep69",
+        "ep70",
+        "ep71",
+        "ep72"
+      ],
+      "episodes": 12,
+      "files": 209,
+      "video_files": 24,
+      "audio_files": 60,
+      "caption_files": 96,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 12,
+          "bytes": 25831,
+          "sha256": "393ad6485c674aa402dc174b28112c9e52bed3cdd8fe5d5cd37eebdbcacb2c2e"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 12,
+          "bytes": 86107,
+          "sha256": "8944c5eaa2d10a46da97cab1e74d3b860f7dd08a29cf03e70e44914426905081"
+        }
+      ],
+      "season": 6
+    },
+    {
+      "file": "Sunny_Pip_Junior_High_72_Episodes.zip",
+      "bytes": 1224416404,
+      "sha256": "a6c90a62d3959a29e824c6bd5b3fb8455316d052339281123aa3ff95fcb1afb5",
+      "episode_ids": [
+        "ep01",
+        "ep02",
+        "ep03",
+        "ep04",
+        "ep05",
+        "ep06",
+        "ep07",
+        "ep08",
+        "ep09",
+        "ep10",
+        "ep11",
+        "ep12",
+        "ep13",
+        "ep14",
+        "ep15",
+        "ep16",
+        "ep17",
+        "ep18",
+        "ep19",
+        "ep20",
+        "ep21",
+        "ep22",
+        "ep23",
+        "ep24",
+        "ep25",
+        "ep26",
+        "ep27",
+        "ep28",
+        "ep29",
+        "ep30",
+        "ep31",
+        "ep32",
+        "ep33",
+        "ep34",
+        "ep35",
+        "ep36",
+        "ep37",
+        "ep38",
+        "ep39",
+        "ep40",
+        "ep41",
+        "ep42",
+        "ep43",
+        "ep44",
+        "ep45",
+        "ep46",
+        "ep47",
+        "ep48",
+        "ep49",
+        "ep50",
+        "ep51",
+        "ep52",
+        "ep53",
+        "ep54",
+        "ep55",
+        "ep56",
+        "ep57",
+        "ep58",
+        "ep59",
+        "ep60",
+        "ep61",
+        "ep62",
+        "ep63",
+        "ep64",
+        "ep65",
+        "ep66",
+        "ep67",
+        "ep68",
+        "ep69",
+        "ep70",
+        "ep71",
+        "ep72"
+      ],
+      "episodes": 72,
+      "files": 1229,
+      "video_files": 144,
+      "audio_files": 360,
+      "caption_files": 576,
+      "zip_testzip": "passed",
+      "english_cc": false,
+      "practice": [
+        {
+          "file": "Practice.html",
+          "rows": 72,
+          "bytes": 127238,
+          "sha256": "8e026d1578bcae0fa57de8ac79dd09d8b53e05fbe115e7f23f1819f24866bd36"
+        },
+        {
+          "file": "Practice.pdf",
+          "rows": 72,
+          "bytes": 240593,
+          "sha256": "e2651448e6b2e0512f3c1d3d06054a77d00b51e064c26ed6747a81ea825f5ddf"
+        }
+      ]
+    }
+  ],
+  "catalog": {
+    "file": "國中英文72集課程目錄.csv",
+    "rows": 72,
+    "encoding": "UTF-8 BOM",
+    "bytes": 17554,
+    "sha256": "8272a8c6f7c2882d028e548530f62de3d48f0b7cabf9fc08f98bd6fa3378300c"
+  },
+  "practice_files": [
+    {
+      "file": "Practice.html",
+      "rows": 72,
+      "bytes": 127238,
+      "sha256": "8e026d1578bcae0fa57de8ac79dd09d8b53e05fbe115e7f23f1819f24866bd36"
+    },
+    {
+      "file": "Practice.pdf",
+      "rows": 72,
+      "bytes": 240593,
+      "sha256": "93573d79a4364884641c3b65cc9fa7e06fbe939fd710f5a9c86e7ebed600d03e"
+    }
+  ],
+  "manual_media_samples": {
+    "summary": "encoded-frame-review.json",
+    "sha256": "095a4be87ce89d8d429a9e0ba0b7db6d72cc82560803b43712f5678610904930",
+    "episodes": [
+      24,
+      36,
+      48,
+      60,
+      72
+    ],
+    "frames": 15,
+    "additional_root_samples": [
+      1,
+      72
+    ],
+    "scope": "Selected encoded frames only; no claim of watching or listening to every full video."
+  }
+}
