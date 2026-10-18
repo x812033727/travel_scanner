@@ -15,6 +15,8 @@ const MODERN = "3D Chinese donghua CG animation still of a present-day city, Unr
 const SET = [
   [/county academy gate|academy gate/i, "dh-set-shuyuan-t1"],
   [/Xu family shop/i, "dh-set-xuji-pu-t1"],
+  [/county inn guest room/i, "dh-set-kezhan-t1"],
+  [/ferry landing/i, "dh-set-dukou-t1"],
   [/roof of the farmhouse|farmhouse roof/i, "dh-set-wuding-t1"],
   [/county yamen|yamen gate|yamen hall/i, "dh-set-xianya-t1"],
   [/teahouse/i, "dh-set-chalou-t1"],

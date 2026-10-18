@@ -96,6 +96,7 @@ await __v3zt.sleep(15000); [__wd(), __dhq.log.slice(-2).join('\n'), __dhq.clipsd
 | 驅動停在上傳那一步不寫 log | 隱藏窗格節流 | 看門狗 `__wd()` 每輪呼叫一次；最後一筆是 `queue empty` 時不會重啟 |
 | 單次工具呼叫逾時（45 秒） | 一次 sleep 太久或動作太多 | sleep ≤ 18–20 秒、一批 ≤ 4–5 個動作；逾時後頁面裡的腳本還在跑，先讀狀態再決定 |
 | 成片有一段凍格 1–2 秒 | 台詞比 4 秒片段長，片段慢放到 1.35 倍還不夠 | 用 6 秒重拍那一鏡：設定改 6s（底欄 `1 72 創建`），`ztmiddhN` 那鏡的秒數改 6，手動 `__v3zt.upload` 加 `__v3zt.go`，存成 `sNN-t2.mp4`（組片取最後一個 take）。拍完改回 4s |
+| 「紅色的手」被畫成像流血（第 18 集賴三沾到薑黃加草木灰的染料） | 只寫 red palm，模型會畫成濕的紅色液體 | 首格整批出來後先排成一張總覽圖檢查；提示詞寫 "stained a flat dry orange-vermilion colour like powdered dye or paint, matte and dry, no liquid, no drips, no wound"。影片已經送出的話，趁還在排隊時按「取消」（會退點），刪掉 `ztcmapdh` 與 `ztcidh` 裡的那一筆，把鏡頭移到 `dhq` 最前面，讓驅動用新首格重送 |
 | 手多了一隻（第 7 集孫掌櫃） | 生成瑕疵 | 看 `sheet.png` 抓。重畫首格時提示詞加 "exactly two arms and two hands"，存成 t2，再重拍片段 |
 | 角色聲音太像、女角聽起來像男生 | 聲音挑錯 | 先錄樣本給站主聽，確認後才整季重錄。Gacrux 是女聲 |
 | `rm` 帶變數路徑被安全檢查擋下 | 防誤刪 | 寫成 `"${W:?}/${id:?}.wav"` |
@@ -103,6 +104,12 @@ await __v3zt.sleep(15000); [__wd(), __dhq.log.slice(-2).join('\n'), __dhq.clipsd
 | `python -I` 印中文出錯 | Windows 主控台 cp1252 | 直接寫成 UTF-8 檔案，不要印到 stdout |
 | 匯入後台只上傳 720p 預覽 | `tools/video/cli.mjs import` 的設計 | YouTube 由站主在 Studio 手動上傳，多語音軌也只能在 Studio 手動加 |
 | 後台「漫劇」分頁看不到這些集 | 那個分頁只收站上自動產線的作品，建劇會觸發自動企劃 | 照站主決定用「教學影片」分頁、category `drama` |
+| 分頁連同步的 JS 都逾時、截圖也逾時 | 分頁開太久（卡片列表很長）整頁凍住，重新整理也救不回 | 關掉那個分頁、開新分頁到同一頁重新注入；localStorage 是同源共用，紀錄都還在 |
+| 送出後 log 是 `"fresh":[]`，下一輪又送同一鏡 | 卡片還沒出現在列表就判定沒送成 | 對帳（`reconcile`）通常會在下一輪補上對應；看到沒對應的新卡號就是重複，能取消就取消 |
+| 某鏡送出超過兩小時都沒結果，列表上也找不到 | 早就失敗、失敗卡被擠出列表 | 刪掉那鏡的 `ztcmapdh`／`ztcidh` 對應、`unshift` 回 `dhq` 重送 |
+| 列表外已經做完的片 | 卡片被擠出建立頁的清單 | 不用導頁：`fetch('/zh-Hant/my-work-detail/ai-video/<卡號>')` 的 HTML 裡就有 `moss/prod/<路徑>-0_*.mp4`（無浮水印），組成 `label 2 <路徑>` 給 `fetch-dh.sh` |
+| 組片在某鏡 `Stray % near ''` 失敗 | 系統面板文字有「%」，drawtext 當成展開符號 | assemble-v4 的 drawtext 已加 `expansion=none` |
+| 成片裡手心的染料看起來像血 | 紅色、濕亮、前景失焦 | 能裁就先免費裁掉；要重拍就寫「dry matte orange-vermilion dye powder, no liquid」 |
 
 ## 六、收工
 
