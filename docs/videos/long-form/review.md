@@ -5036,6 +5036,19 @@ Non-claims: the runtime inspection and fixtures do not prove power-loss behavior
 
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Story thumbnail brand visual hash increment: 1 file (2026-10-18)
+
+Reviewer: `claude-pr-review-1568-duration`. Author: `claude-opus-5.5-story-thumb-brand`. Scope: DURATION_ONLY for `tools/video/core/timeline.mjs` in PR #1568 (branch `claude/story-thumbnail-brand`, head `b7a13e97c` "feat(video): brand story thumbnails name the company in large type"), task `2026-10-18-story-thumbnail-brand`, reviewed as `git diff origin/main...HEAD` from merge base `005c2785b` (timeline.mjs +9/−2). The PR also changes unbound files (story skill reference, `stories.py` and its test, `story.mjs`, `story-plans/plan.mjs`, `templates.mjs` and their tests, the task file). The reviewer wrote none of the code and edits only this report and review.json.
+
+Baseline: `git show origin/main:tools/video/core/timeline.mjs | sha256sum` gives `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a`, equal to the existing binding and table row. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding:` for exactly this path; the other 107 registered files are byte-identical to the receipt. Earlier increments are retained in full.
+
+Findings. timeline.mjs (10,273 → 10,877 bytes): only `visualHash` changes. It now hashes `doc.thumbnail` with `thumbnail.data.brand` removed when that key is present, so adding a brand story's company name to the thumbnail does not make keyframes, clips and assembly stale; without a `brand` key the hashed value is the same object as before, so existing hashes are unchanged. `visualHash` is a cache and freshness key (assemble, compile, clips, state, compilation) and feeds no duration: scene timing, `speechHash`, the timeline length computation and frame counts are untouched. None of the changed lines touches the 10-minute explainer default or its 8-20 minute range, the drama 1-8 minute range, the 13-minute brand story, the non-drama 8-minute floor, the 480-second / 14,400-frame QA floor, `target_minutes`, `MIN_EPISODE*`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, the long anime production policy, measured duration evidence or plans.json. No duration correction is required.
+
+Ran: Node, Windows: `node tools/video/long-form/cli.mjs check` before any edit (stale for exactly this path). The CLI check and `node --test tools/video/long-form/review.test.mjs` are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims: this is a one-file incremental source duration review. It does not re-review the other 107 bound files or the unbound files the PR changes, it does not judge the thumbnail design, and it does not accept media, paid production, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings" in the merged report is byte-identical to `dec59b7c5^1`'s report up to that heading followed by main's "Channel intro after the opening condensation increment" section byte-identical to `dec59b7c5^2`'s; main's report is the merge base's report plus that section only, so no earlier section was dropped or altered on either side. After the heading, the table has the same 115 lines as each parent; it differs from `dec59b7c5^1` in exactly the five #1481 rows and from `dec59b7c5^2` in exactly the 15 rows of this branch's increments, and every row equals one parent's row.
 
 Ran (in the worktree at `dec59b7c5`, Node on Windows): `node tools/video/long-form/cli.mjs check` before any edit; a script kept outside the repository that hashes the working tree and the blobs of the merge, both parents and the merge base, and compares both receipts and both reports as in 1 to 4; `git ls-files --eol` (LF in index and worktree for both receipt files). The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
@@ -5638,7 +5651,7 @@ Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the story dub QA waiver and untranslated captions increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the story thumbnail brand visual hash increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5719,7 +5732,7 @@ These 108 bindings describe the current reviewed bytes after the story dub QA wa
 | `tools/video/core/stages.test.mjs` | `c4583dba313415355131a854f3da6f568862c3ea83808313b2f1acda5c017523` |
 | `tools/video/core/state.mjs` | `7626ccf4a0421774e87d3bfbe1a00d6e19e271cd697c2071b57430abcbd35edd` |
 | `tools/video/core/state.test.mjs` | `1afa10f7887db57788ea83ab80a823bbaf45f36588dacdc296b1480ab7265c3e` |
-| `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
+| `tools/video/core/timeline.mjs` | `0088b369f5ddb962fc5d803bb5dd982f2f8f22b558eca728d0bfca5df1aa39b2` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
 | `tools/video/dubs/captions-package.test.mjs` | `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685` |
 | `tools/video/dubs/dubs.test.mjs` | `bff4e09be16e629cf807f688a227f092cc07af4380a1de583f88a1216d029a25` |
