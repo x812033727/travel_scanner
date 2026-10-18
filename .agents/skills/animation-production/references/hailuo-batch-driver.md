@@ -115,6 +115,15 @@ await __v3zt.sleep(15000); [__wd(), __dhq.log.slice(-2).join('\n'), __dhq.clipsd
 | 舊集數重拍找不到首格網址 | 換帳號或清掉 localStorage 後 `zturls` 沒了，只有早期的 `ff-urls-dh.txt` | 用 `__zt.go('aN-sNN-t5', …)` 重畫首格（`newdl` 會把 `edhN-sNN-t1` 別名指到新圖） |
 | 重拍的片段被舊片蓋掉 | `fetch-dh.sh` 一律存成 `sNN-t1.mp4` | 重拍的片自己 curl 成 `sNN-t2/t5.mp4`；assemble 取排序最後的 take |
 | 成片檢查只看幾格看不出換臉、陌生人、低領 | 縮圖太小 | 每鏡取 35%／80% 兩格做檢查圖，分給子代理逐鏡比對分鏡與定妝照，可疑的再抽大圖 |
+| 新帳號的 localStorage 是空的，`__wd`／`__lost`／`__dups`／`__rec` 都不見了 | 這些 helper 以前只存在頁面裡 | 已收進 `H/hailuo-dh-loop.js`（`localStorage.zteps` 設這批集數）；舊帳號 CDN 上的參考圖新帳號照樣抓得到，`refs-dh-urls.json` 直接沿用 |
+| 新帳號影片頁選不到「自動」比例 | 還沒上傳圖時「自動」的 onClick 是空的 | 直接選 16:9（首格本來就是 16:9） |
+| 女角的領口還是低、或立領下是透紗 | 固定外貌只寫 ruqun，模型畫成齊胸襦裙 | 外貌寫明「high stand-up mandarin collar fastened at the throat … thick opaque silk with nothing sheer」；首格整批出來先抽女角近景看領口 |
+| 重拍的片段一直被對回舊卡 | 提示詞跟舊卡一樣，reconcile 照前綴把舊卡對回原鏡 | 在頁面 `ztmiddhN` 那鏡的 `[Shot 1] ` 後面加一句開頭（例如服裝、道具的說明），重算前 16 碼 sha；舊卡改 `x:old-`，刪 `ztdlc`／`ztcidh`／`__sentAt` 的那筆，本機舊檔移到 `clips/old/` |
+| 失敗卡（狀態 3、5）讓那鏡永遠不重送 | 失敗卡也帶原提示詞，reconcile 把它對回原鏡 | `hailuo-dh-loop.js` 包了 reconcile：失敗卡自動改 `x:fail-` 並放回佇列 |
+| 首格與片段排隊互卡、送出常常 `fresh:[]` | 圖片與影片共用約 10–16 個同時進行的上限 | 正常；驅動失敗後的等待在頁面改短（8 秒＋重新整理＋4 秒），送得比較快。一批五集約 7–8 小時 |
+| 影片頁跑約 1.5–2 小時後點數不再變、log 出現 abort | 上傳無聲卡死 | 重新整理後一行 `await eval(localStorage.ztrebootsrc)` 重建（模式、4s、16:9、縮短的等待、`__st`／`__dl`／`__p`） |
+| 借用的音效庫被別的製作刪掉，組片時 `ENOENT …sound-library` | 音效庫在《偶的江湖》工作區 | `bash H/local/sfx-synth.sh` 合成本劇自己的音效到 `<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx`，剪輯表 `sfx_dirs` 指過去 |
+| 封條、紙張上的紅色印記被看成血；帳本特寫出現看得懂的假字 | 模型自己加紅印、寫字 | 提示詞寫「plain clean white paper … no red marks, no stamps」「tiny abstract ink dashes … no recognisable characters」 |
 
 ## 六、收工
 

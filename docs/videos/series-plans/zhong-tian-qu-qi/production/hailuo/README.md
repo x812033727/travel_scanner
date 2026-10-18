@@ -63,3 +63,14 @@
 - 分鏡子代理的提示樣板：讀 e015 的五個檔，套用 storyboard-rules 與固定場景片語，每集中段標出【鉤子N】，三個檢查都要過。
   - 平行寫的時候，前後集互相看不到，連戲靠 `season-01.json` 的前後集欄位。
 - 第 4 集 s09 的凍格，用 6 秒重拍成 `s09-t2` 解決。第 7 集 s31 孫掌櫃多一隻手，重畫首格成 t2 後重拍。
+
+### 第 25–29 集（2026-10-19，新帳號）
+
+- 新角色：鄭伯 `zhengbo`（聲音 Sadaltager）、唐萬金 `tangwanjin`（Achird）。第 26 集另有一句台詞的街上婦人（Despina，只在 video.json）。
+- 新場景片語：
+  - "in a narrow back alley of the county town" → `dh-set-xiaoxiang`
+  - "inside the county jail" → `dh-set-dalao`
+  - "on the county town square" → `dh-set-guangchang`
+- 唐小棠的固定外貌加上立領與不透光絲綢（`cast.json`），第 25–26 集看得到領口的鏡頭都重畫重拍過。
+- 音效改用 `local/sfx-synth.sh` 合成的本劇音效庫（原本借的 CC0 音效庫已被刪除）；第 1–24 集已剪好，不受影響，但要重剪舊集時要先把剪輯表的 `sfx_dirs` 改過來。
+- 頁面 helper：`hailuo-dh-loop.js`（看門狗、掉出清單的片、重複、詳情頁收片、五分鐘內不重送、失敗卡自動放回佇列）。
