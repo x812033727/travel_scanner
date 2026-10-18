@@ -173,10 +173,6 @@ export function compilationCaptionsItem({ lintWarnings, manifest, current, local
         problems.push(`${locale}: no caption file, ${missing.length} episodes have none (${missing.join(", ")})`);
         continue;
       }
-      if (!manifest.locales?.[locale] && untranslated.includes(locale)) {
-        warnings.push(`${locale}: no caption file yet; it is translated in the languages step after the final cut`);
-        continue;
-      }
       if (!manifest.locales?.[locale] || !hasCaptionFile(locale)) {
         problems.push(`${locale}: no caption file`);
         continue;

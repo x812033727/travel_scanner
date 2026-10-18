@@ -110,6 +110,9 @@ test("captions: a chosen locale not translated yet only warns at the final gate"
   assert.equal(captionsItem({ lintWarnings: [], manifest: { locales: {}, skipped: {} }, current: true, locales, hasCaptionFile: () => false, untranslated: ["en", "ja", "ko"] }).detail, "zh-TW: no caption file");
   assert.equal(captionsItem({ lintWarnings: [], manifest: { ...manifest, skipped: { en: ["k7p2"] } }, current: true, locales, hasCaptionFile: () => true, untranslated: ["ja", "ko"] }).ok, false);
   assert.equal(captionsItem({ lintWarnings: [], manifest: null, current: false, locales, hasCaptionFile: () => true, untranslated: ["en", "ja", "ko"] }).ok, false);
+  // A compilation knows no untranslated list: a locale its merge did not write fails, it does not throw.
+  const compilation = compilationCaptionsItem({ lintWarnings: [], manifest: { locales: { "zh-TW": { problems: [] } }, skipped: {} }, current: true, locales: ["zh-TW", "en"], hasCaptionFile: () => true });
+  assert.deepEqual([compilation.ok, compilation.detail], [false, "en: no caption file"]);
   // A file made and then lost fails even when listed.
   const lost = captionsItem({ lintWarnings: [], manifest: { locales: { ...manifest.locales, en: { cues: 9, problems: [] } }, skipped: {} }, current: true, locales: ["zh-TW", "en"], hasCaptionFile: (locale) => locale === "zh-TW", untranslated: ["en"] });
   assert.equal(lost.detail, "en: no caption file");
