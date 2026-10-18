@@ -5,6 +5,9 @@
 //   - burned-in subtitles, a name card the first time a character matters, a title card;
 //   - a mix: dialogue, Lyria music cues ducked under dialogue, CC0 effects and synthetic beds.
 //   node assemble-v4.mjs <video.json> <overlays.json|-> <edit.json> <workdir> <out.mp4>
+// DUB=<locale> (en, ja, ko) makes no picture: it times the zh-TW lines exactly as the cut does, lays
+// <workdir>/audio-<locale>/ on the same starts (dub-track.mjs) under the same music and effects, and
+// writes <out>.<locale>.m4a and <out>.<locale>.srt instead of <out>.
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import os from "node:os";
@@ -15,6 +18,7 @@ const work = path.resolve(workArg);
 const video = JSON.parse(readFileSync(file, "utf8"));
 const overlays = overlaysFile && overlaysFile !== "-" && existsSync(overlaysFile) ? JSON.parse(readFileSync(overlaysFile, "utf8")) : {};
 const edit = JSON.parse(readFileSync(editFile, "utf8"));
+const DUB = process.env.DUB || null;
 const TEMPO = edit.tempo ?? 1.07, LEAD = 0.12, GAP = 0.12, TAIL = 0.22, MIN = 1.2, ACTION_MAX = 2.4, SPLIT = 3.0, PUNCH = 1.3;
 const FONT = "C\\:/Windows/Fonts/msjhbd.ttc";
 const probe = (f) => Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).toString().trim());
@@ -99,11 +103,12 @@ for (const scene of video.scenes) {
   const placed = lines.map((l, i) => {
     const p = { ...l, at };
     if (edit.burn_subtitles && !(l.speaker === "xitong" && overlays[scene.id])) subs += subtitle(`${scene.id}-s${i}`, l.text, at, Math.min(dur, at + l.len + 0.08), l.speaker === "xitong" ? "0x9fe3ff" : "0xffffff");
-    lineAt.push({ shot: scene.id, speaker: l.speaker, start: t + at, len: l.len });
+    lineAt.push({ id: l.id, shot: scene.id, speaker: l.speaker, start: t + at, len: l.len, subtitled: !(l.speaker === "xitong" && overlays[scene.id]) });
     if (!(l.speaker === "xitong" && overlays[scene.id])) srt.push({ start: t + at, end: t + at + l.len, text: l.text });
     at += l.len + GAP;
     return p;
   });
+  if (DUB) { starts[scene.id] = { start: t, dur }; report.push(`${scene.id} ${t.toFixed(2)} +${dur.toFixed(2)}s`); t += dur; continue; }
   const decor = `${GRADES[gradeOf(scene.id)]},${FINISH}${panelFilters(scene.id)}${nameCard(scene.id)}${titleCard(scene.id)}${subs}`;
   let vf, note;
   if (clip) {
@@ -158,9 +163,9 @@ const total = t;
 
 // Picture and dialogue joined.
 const list = path.join(segDir, "list.txt");
-writeFileSync(list, segs.map((s) => `file '${s.replace(/\\/g, "/")}'`).join("\n") + "\n");
 const joined = path.join(segDir, "joined.mkv");
-execFileSync("ffmpeg", ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", list, "-c", "copy", joined], { stdio: "inherit" });
+if (!DUB) writeFileSync(list, segs.map((s) => `file '${s.replace(/\\/g, "/")}'`).join("\n") + "\n");
+if (!DUB) execFileSync("ffmpeg", ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", list, "-c", "copy", joined], { stdio: "inherit" });
 
 // The mix: music cues (ducked under dialogue), effects and beds.
 const sfxIndex = {};
@@ -176,7 +181,8 @@ const SYNTH = {
   underwater: "anoisesrc=color=brown:amplitude=0.6:d=DUR,lowpass=f=320,volume=1.4",
   river: "anoisesrc=color=brown:amplitude=0.4:d=DUR,bandpass=f=900:width_type=o:w=2.5,volume=0.7",
 };
-const inputs = ["-i", joined];
+const dubbed = DUB ? (await import("./dub-track.mjs")).dubDialogue({ locale: DUB, videoFile: file, work, segDir, lineAt, starts, total, probe, zhSrt: out.replace(/\.mp4$/, ".zh-TW.srt") }) : null;
+const inputs = ["-i", DUB ? dubbed.dialogue : joined];
 const parts = [], musicParts = [], sfxParts = [];
 let n = 1;
 const tAt = (shot, off = 0) => starts[shot].start + off;
@@ -223,8 +229,19 @@ const graph = [
   `${sfxParts.join("")}amix=inputs=${sfxParts.length}:normalize=0:duration=longest[fx]`,
   `[dlg][ducked][fx]amix=inputs=3:normalize=0:duration=first,loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[mix]`,
 ].join(";");
-const srtFile = out.replace(/\.mp4$/, ".zh-TW.srt");
 const fmt = (s) => { const ms = Math.round(s * 1000); const h = Math.floor(ms / 3600000), m = Math.floor(ms / 60000) % 60, sec = Math.floor(ms / 1000) % 60; return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")},${String(ms % 1000).padStart(3, "0")}`; };
+if (DUB) {
+  // The dub: the same bed, keyed by the dubbed dialogue; audio only, exactly as long as the cut.
+  const base = out.replace(/\.mp4$/, `.${DUB}`);
+  writeFileSync(`${base}.srt`, dubbed.srt.map((c, i) => `${i + 1}\n${fmt(c.start)} --> ${fmt(c.end)}\n${c.text}\n`).join("\n"));
+  writeFileSync(path.join(segDir, `mix-graph.${DUB}.txt`), graph);
+  execFileSync("ffmpeg", ["-v", "error", "-y", ...inputs, "-filter_complex", `${graph};[mix]apad[mixp]`, "-map", "[mixp]", "-c:a", "aac", "-b:a", "192k", "-t", total.toFixed(3), "-movflags", "+faststart", `${base}.m4a`], { stdio: "inherit" });
+  const counts = dubbed.fit.reduce((a, f) => ({ ...a, [f.status]: (a[f.status] ?? 0) + 1 }), {});
+  console.log(`${DUB}: ${dubbed.fit.length} lines, ${JSON.stringify(counts)}, max tempo ${Math.max(...dubbed.fit.map((f) => f.tempo)).toFixed(2)}, longer than zh ${dubbed.fit.filter((f) => f.len > f.zh + 0.01).length}`);
+  console.log(`total ${total.toFixed(2)}s -> ${base}.m4a`);
+  process.exit(0);
+}
+const srtFile = out.replace(/\.mp4$/, ".zh-TW.srt");
 writeFileSync(srtFile, srt.map((c, i) => `${i + 1}\n${fmt(c.start)} --> ${fmt(c.end)}\n${c.text}\n`).join("\n"));
 writeFileSync(path.join(segDir, "mix-graph.txt"), graph);
 // Subtitles ride as a soft zh-TW track (CC), the owner's choice; burn_subtitles draws them instead.
