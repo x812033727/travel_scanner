@@ -54,6 +54,7 @@
 - 提示詞、鏡頭、角色外觀不得出現 `names` 裡的任何名字（lint 的故事規則）；撰稿時就先 lint 那一章，名字出現在提示詞裡就退回那一章，任何圖片都還沒畫。圖片修正（`writer:story-fix`）也是先 lint，出現名字的修正不保存。
 - 反覆出場的人物（企劃的 `cast`，0–3 個）寫進 `characters`：名稱用 id 的字（拿掉名字），外觀照企劃，聲音用旁白的（沒有人說話，但 lint 要有）。沒有 `cast` 的故事沒有設定圖兩步。
 - `image_notes` 與 `sensitivity: "care"` 原樣交給撰稿；`care` 不畫事故本身，畫制度與人怎麼改變。
+- 縮圖：企劃的 `thumbnail.brand`（選填，一行最多 12 字，例如「SEIKO」「米其林」「A4 紙」）會取代左上的「品牌故事」小標籤，用頻道字型的大字橘色畫公司名，headline 在下面；不放商標圖、不讓 AI 畫 logo。字級依欄寬自動算（`tools/video/templates/templates.mjs` 的 `brandFontSize`，上限 168 px），太長的名字會比 headline 小，`node tools/video/story-plans/validate.mjs` 會給警告。沒有 `brand` 的舊企劃照舊畫標籤。
 
 ## 工作區裡多的東西
 
@@ -80,6 +81,11 @@
 - `node tools/video/cli.mjs status --slug <SLUG>` 看做到哪；故事的步驟就是漫劇的（沒有 `cast` 時少兩步 look）。
 - 撰稿、查核、審稿的提示詞給人讀的版本在 `.agents/skills/youtube-video/references/prompts/`（`writer-story.md`、`verifier-story.md`、`listener-story.md`）；工人實際送出的是 `story-prompts.mjs`，兩邊不一致以程式為準。
 - 手動改一章：改 `story/chapters/<章>.json`，下一輪工人合併、lint；改了句子的章要重新查核的話，把 `auto.json` 那一章的 `checked` 設成 `false`。不要直接改 `video.json`：下一次合併會用各章的檔覆蓋它。
+- 已開工的故事補上縮圖大字品牌名（企劃的 `thumbnail.brand`，站主 2026-10-18：縮圖要一眼看出是哪家公司）：
+  1. 改影片資料夾（`docs/videos/` 底下以 slug 命名的那個）裡 `series.json` 的 `plan.thumbnail`，加 `"brand": "SEIKO"`（一行純文字，最多 12 字，不要 `**`、不要換行；用大家搜尋的那個名字，四、五個字最大最清楚）。還在逐章撰稿的故事改這裡就夠：下一輪合併（`composeStory`）會寫進 `video.json`。
+  2. 六章已合併過的故事（劇本關卡之後），`video.json` 要等下一次合併才會跟上，而之後可能不再合併，所以同一個字也直接寫進同一個資料夾 `video.json` 的 `thumbnail.data.brand`（`tag: "品牌故事"` 留著不用刪，有 `brand` 時樣板不畫它）。這是「不要直接改 `video.json`」的唯一例外。
+  3. `node tools/video/cli.mjs lint --slug <SLUG>`，再 `node tools/video/cli.mjs render --slug <SLUG>`：卡片走快取，只有 `thumbnail.jpg`（與有翻譯字的語言縮圖）重畫。`visualHash` 不算 `brand`（`tools/video/core/timeline.mjs`），所以關鍵影格、片段、`assemble`、`final.mp4` 與它的核准都不會過期、不會重買任何素材；反過來說，`status` 也不會因為加了 brand 叫你重跑 render，要自己跑。
+  4. 打開工作區的 `thumbnail.jpg` 看一眼，再 `node tools/video/cli.mjs qa --slug <SLUG>`、`node tools/video/cli.mjs package --slug <SLUG>`，`upload/thumbnail.jpg` 就是新圖。站主已經按過「可以上架」的，package 重寫後要請站主再看一次；已經上傳到 YouTube 的，在 Studio 手動換縮圖。
 
 ## 坑
 

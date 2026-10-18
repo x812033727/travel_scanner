@@ -548,6 +548,35 @@ export function headlineCount(headline) {
   const cjk = [...plain].filter((char) => CJK_GLYPH.test(char)).length;
   return { cjk, words, count: cjk + words.length };
 }
+/**
+ * A brand story's company in large type (owner, 2026-10-18): `data.brand` takes the place of the
+ * small tag at the top of the column, so the thumbnail says which company the story is about at a
+ * glance. Plain text in the channel's font, never a logo. At most THUMB_BRAND_MAX characters on
+ * one line; the size is what fits the column's width (BRAND_COLUMN_WIDTH), up to BRAND_SIZE_MAX
+ * and not below BRAND_SIZE_MIN, so 「米其林」 is larger than the headline and 「杜比 DOLBY」 still
+ * reads on a phone. The page marks it `.fit` as well, so the renderer shrinks one this estimate
+ * set too wide.
+ */
+export const THUMB_BRAND_MAX = 12;
+export const BRAND_SIZE_MAX = 168;
+export const BRAND_SIZE_MIN = 64;
+const BRAND_COLUMN_WIDTH = THUMB_SIZE.width * 0.4 - 56 - 24;
+// Glyph widths in em of the heavy weight: a CJK glyph fills the em, a capital takes about six
+// tenths (measured: 「SEIKO」 at 120 px is 363 px wide), a small letter or a digit six, a space
+// three; other marks less than half. A wider name (W, M) is the renderer's fit to shrink.
+const brandGlyphWidth = (char) => (CJK_GLYPH.test(char) || /[＀-｠]/u.test(char) ? 1 : /[A-Z]/.test(char) ? 0.62 : /[a-z0-9]/.test(char) ? 0.6 : /\s/.test(char) ? 0.3 : 0.45);
+/** The font size, in pixels of the 1280 px frame, a brand name is set at in the channel's column. */
+export function brandFontSize(brand) {
+  const em = [...String(brand).trim()].reduce((sum, char) => sum + brandGlyphWidth(char), 0) || 1;
+  return Math.max(BRAND_SIZE_MIN, Math.min(BRAND_SIZE_MAX, Math.floor(BRAND_COLUMN_WIDTH / em / 2) * 2));
+}
+/** Why a thumbnail's brand name cannot be drawn, or null. */
+export function brandProblem(brand) {
+  if (!isText(brand)) return "must be text";
+  if (/[\n*]/.test(brand)) return "must be one line of plain text (no line break, no ** emphasis)";
+  if ([...brand.trim()].length > THUMB_BRAND_MAX) return `has ${[...brand.trim()].length} characters; at most ${THUMB_BRAND_MAX} fit the column on one line`;
+  return null;
+}
 const headlineShape = (headline) => {
   const lines = headline.replace(/\*\*/g, "").split("\n");
   return { lines: lines.length, chars: Math.max(...lines.map((line) => [...line.replace(/\s/g, "")].length)) };
@@ -610,6 +639,7 @@ function ownThumbnailProblems(thumbnail, series) {
   if (data.pillar !== undefined && !THUMB_PILLARS.includes(data.pillar)) problems.push(`thumbnail.data.pillar must be one of ${THUMB_PILLARS.join(", ")}`);
   if (data.capture !== undefined && !captureRef(data.capture)) problems.push('thumbnail.data.capture must name a screencast scene, "<scene id>" or "<scene id>#<n>" for its n-th capture');
   if (data.shot !== undefined && !isText(data.shot)) problems.push("thumbnail.data.shot must be a shot's id");
+  if (data.brand !== undefined && brandProblem(data.brand)) problems.push(`thumbnail.data.brand ${brandProblem(data.brand)}`);
   // The channel's headline length (THUMB_HEADLINE_MAX) is the qa stage's business
   // (tools/video/qa/thumbnail.mjs), where it fails the thumbnail item: the fixtures and the
   // first batch's scripts carry longer headlines, and render still draws those.
@@ -649,6 +679,13 @@ const THUMB_RIGHT_CSS =
   ".thumb.layout-right .tag{align-self:flex-end}.thumb.layout-right .brand{left:auto;right:72px}" +
   ".thumb-scrim.layout-right{transform:scaleX(-1)}";
 
+// The brand name's look. Inline, as the keyframe CSS is, so that adding it moved no other video's
+// thumbnail key: only a thumbnail with a brand carries it. Orange on the column's dark ground or
+// tone, the heaviest weight, one line, a short rule under it that sets it apart from the headline.
+const THUMB_MARQUE_CSS =
+  ".thumb .marque{align-self:stretch;font-weight:900;line-height:1.05;color:var(--orange);white-space:nowrap;overflow:hidden;letter-spacing:.01em;" +
+  "padding-bottom:14px;border-bottom:8px solid var(--orange);max-height:200px}";
+
 /**
  * The thumbnail as a page. `background` is the URL of the subject's picture (a screencast still
  * or a shot's keyframe, served from the work directory) and `subject` which of THUMB_SUBJECTS it
@@ -669,16 +706,18 @@ export function thumbnailHtml(thumbnail, { background = null, subject = null, se
   const tone = THUMB_TONES.includes(data.tone) ? data.tone : rotation.tone;
   const classes = `layout-${layout} tone-${tone}`;
   const kind = THUMB_SUBJECTS.includes(subject) ? subject : THUMB_SUBJECTS[1];
+  // A brand story's company (THUMB_BRAND_MAX) in place of the tag; one that cannot be drawn is render's to report (thumbnailProblems).
+  const marque = isText(data.brand) && !brandProblem(data.brand) ? data.brand : null;
   const body = [
     `<div class="thumb-subject ${classes}${background ? ` from-${kind}` : ""}">${background ? `<img src="${escapeHtml(background)}" alt="">` : ""}</div>`,
     `<div class="thumb column ${classes}">`,
-    data.tag ? `<div class="tag">${richText(data.tag)}</div>` : "",
+    marque ? `<div class="marque fit" style="font-size:${brandFontSize(marque)}px">${escapeHtml(marque.trim())}</div>` : data.tag ? `<div class="tag">${richText(data.tag)}</div>` : "",
     `<h1 class="fit">${richText(data.headline)}</h1>`,
     data.sub ? `<div class="sub fit">${richText(data.sub)}</div>` : "",
     `<div class="brand">${BRAND}</div>`,
     "</div>",
   ].join("");
-  return page(body, THUMB_SIZE, "", { locale });
+  return page(body, THUMB_SIZE, marque ? THUMB_MARQUE_CSS : "", { locale });
 }
 
 // A series' page as it always was, less the ring a series thumbnail without its keyframe used to show.

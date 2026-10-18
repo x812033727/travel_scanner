@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-import { assetUrl, BRAND, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, MARK_OVERLAID, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, svgProblems, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
+import { assetUrl, BRAND, BRAND_SIZE_MAX, BRAND_SIZE_MIN, brandFontSize, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, MARK_OVERLAID, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, svgProblems, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -239,6 +239,27 @@ test("the thumbnail is its own 1280x720 page: the words in the left column, the 
   assert.match(onStill, /<div class="thumb-subject layout-a tone-[a-z]+ from-capture"><img src="https:\/\/video\.local\/work\/screencast\/k\/01\.png" alt="">/);
   assert.doesNotMatch(visibleText(onStill), /from-capture|object-fit/);
   assert.equal(thumbnailHtml(showcase.thumbnail, { background: "https://video.local/work/keyframes/a.png", subject: "nosuch" }), onKeyframe, "an unknown subject kind is drawn like a keyframe");
+});
+
+test("a brand story's company takes the tag's place in large type; without one the tag stays", () => {
+  const data = { headline: "比車貴的錶", tag: "品牌故事", shot: "hook-01" };
+  const before = thumbnailHtml({ template: "thumb", data }, { slug: "story-adapt-seiko-quartz-astron" });
+  assert.match(before, /<div class="thumb column [^"]+"><div class="tag">品牌故事<\/div><h1 class="fit">比車貴的錶<\/h1>/);
+  assert.doesNotMatch(before, /marque/, "no brand, no brand CSS: the page is the one drawn before");
+  const after = thumbnailHtml({ template: "thumb", data: { ...data, brand: "SEIKO" } }, { slug: "story-adapt-seiko-quartz-astron" });
+  assert.match(after, /<div class="thumb column [^"]+"><div class="marque fit" style="font-size:(\d+)px">SEIKO<\/div><h1 class="fit">比車貴的錶<\/h1>/);
+  assert.doesNotMatch(visibleText(after), /品牌故事/, "the brand replaces the tag");
+  assert.match(after, /\.thumb \.marque\{[^}]*white-space:nowrap/);
+  const size = Number(/style="font-size:(\d+)px">SEIKO/.exec(after)[1]);
+  assert.ok(size >= 136, `SEIKO is set at least as large as the headline (136 px), not ${size}`);
+  assert.equal(brandFontSize("米其林"), 144, "three CJK glyphs fill the column's 432 px");
+  assert.equal(brandFontSize("A4 紙"), BRAND_SIZE_MAX);
+  assert.ok(brandFontSize("一二三四五六七八九十十一") >= BRAND_SIZE_MIN, "twelve glyphs still get the floor; the renderer's fit shrinks what is too wide");
+  assert.match(thumbnailHtml({ template: "thumb", data: { ...data, brand: "<b>&" } }), /<div class="marque fit" style="font-size:\d+px">&lt;b&gt;&amp;<\/div>/, "a brand is plain text");
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, brand: "SEIKO" } }), []);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, brand: "一二三四五六七八九十十一十二" } }), ["thumbnail.data.brand has 14 characters; at most 12 fit the column on one line"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, brand: "**SEIKO**" } }), ["thumbnail.data.brand must be one line of plain text (no line break, no ** emphasis)"]);
+  assert.match(thumbnailHtml({ template: "thumb", data: { ...data, brand: "一二三四五六七八九十十一十二" } }), /<div class="tag">品牌故事<\/div>/, "a brand that cannot be drawn leaves the tag; render reports it");
 });
 
 test("the channel's layout and tone rotate by slug, a variant one step on, and data.layout or data.tone name one", () => {

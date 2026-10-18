@@ -78,6 +78,8 @@ LIMITS = {
     "point_min": 60,
     "point_max": 400,
     "headline": 12,
+    # tools/video/templates/templates.mjs THUMB_BRAND_MAX: the company's name in large type.
+    "brand": 12,
     "appearance": 800,
     "claim": 200,
     "supports": 240,
@@ -381,6 +383,14 @@ def story_problems(story: Any) -> list[str]:
         problems.append(
             f"thumbnail.headline is {len(headline)} characters, at most {LIMITS['headline']}"
         )
+    brand = _get(story.get("thumbnail"), "brand")
+    if brand is not None:
+        if not _is_text(brand) or "\n" in brand or "*" in brand:
+            problems.append("thumbnail.brand must be one line of plain text")
+        elif len(brand.strip()) > LIMITS["brand"]:
+            problems.append(
+                f"thumbnail.brand is {len(brand.strip())} characters, at most {LIMITS['brand']}"
+            )
 
     number = story.get("number")
     if not _is_int(number) or number < 1:

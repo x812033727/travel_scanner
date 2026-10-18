@@ -547,6 +547,19 @@ test("the thumbnail headline is held to the channel's rule, counted as the qa st
   assert.deepEqual(storyWarnings({}), []);
 });
 
+test("a story's thumbnail may name its company in large type: optional, one line, at most twelve characters", () => {
+  for (const brand of ["SEIKO", "米其林", "杜比 DOLBY", "哆啦A夢", "A4 紙"]) {
+    assert.deepEqual(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "一個箱子", brand } })), [], brand);
+  }
+  assert.deepEqual(storyProblems(story()), [], "a story written before the field keeps the tag");
+  assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "一二三四五六七八九十十一十二" } })).join("\n"), /thumbnail\.brand has 14 characters; at most 12 fit the column on one line/);
+  assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "杜比\nDOLBY" } })).join("\n"), /thumbnail\.brand must be one line of plain text/);
+  assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "" } })).join("\n"), /thumbnail\.brand must be text/);
+  assert.match(storyProblems(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: 7 } })).join("\n"), /thumbnail\.brand must be text/);
+  assert.deepEqual(storyWarnings(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "SEIKO" } })), []);
+  assert.deepEqual(storyWarnings(story({ thumbnail: { headline: "範例\n標題", idea: "x", brand: "杜比 DOLBY" } })), ["thumbnail.brand 「杜比 DOLBY」 is set at about 80 px, smaller than the headline; a shorter name (at most 12 characters, best four or five) reads larger"]);
+});
+
 test("validate prints a story's headline warning and still passes: the builder cuts it, the author should not leave it", async () => {
   const dir = mkdtempSync(path.join(os.tmpdir(), "story-plan-"));
   try {

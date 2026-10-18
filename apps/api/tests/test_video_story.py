@@ -519,6 +519,16 @@ def test_a_sound_story_passes_and_each_rule_names_what_is_wrong() -> None:
     assert "thumbnail.headline is 13 characters" in problems(
         thumbnail={"headline": "一" * 13, "idea": "x"}
     )
+    thumb = {"headline": "等了四十年", "idea": "x"}
+    assert stories.story_problems({**story, "thumbnail": {**thumb, "brand": "SEIKO"}}) == []
+    assert stories.story_problems({**story, "thumbnail": {**thumb, "brand": "杜比 DOLBY"}}) == []
+    assert "thumbnail.brand is 13 characters, at most 12" in problems(
+        thumbnail={**thumb, "brand": "一" * 13}
+    )
+    assert "thumbnail.brand must be one line" in problems(
+        thumbnail={**thumb, "brand": "杜比\nDOLBY"}
+    )
+    assert "thumbnail.brand must be one line" in problems(thumbnail={**thumb, "brand": 7})
     assert "publish must be" in problems(publish={"day": 1, "slot": "09:00"})
     assert "publish must be" in problems(publish={"day": 0, "slot": "12:00"})
     assert "number must be a whole number" in problems(number=True)
