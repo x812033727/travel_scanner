@@ -33,17 +33,6 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    fails is skipped and listed on the source (`partial`), and the listing's ETag is kept
    back so the next scan tries it again. Exact URL, title or content matches are closed as
    duplicates at once.
-   If a publisher returns HTTP 403 with `cf-mitigated: challenge`, the fetcher
-   may make one bounded further GET per retry round over a standard-library TLS connection to the *same
-   validated and pinned public IP*. SNI and certificate verification still use
-   the allow-listed hostname. This connection does not follow redirects; the
-   ordinary robots, redirect-host, MIME and 2 MB checks still apply. It requests
-   an uncompressed response and refuses compressed content if the publisher
-   ignores that request. Each further GET has a 20-second deadline; cancellation
-   waits for at most that deadline. A 429 or 5xx answer follows the existing
-   maximum of three retry rounds. A different 403 remains a refusal. The fallback does
-   not mark a held candidate's saved evidence current; it must pass normal
-   source revalidation and review after the code is deployed.
    A first-party page that *refuses* the scanner (HTTP 401 or 403: `openai.com/index/*`
    answers every request with a Cloudflare challenge) is not skipped forever when its entry is
    dated within

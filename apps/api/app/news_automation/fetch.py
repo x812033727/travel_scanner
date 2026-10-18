@@ -1,14 +1,11 @@
 from __future__ import annotations
 
 import asyncio
-import http.client
 import ipaddress
 import socket
 import ssl
-import threading
 import time
 from collections.abc import Awaitable, Callable
-from contextlib import suppress
 from dataclasses import dataclass
 from urllib.parse import urljoin, urlsplit, urlunsplit
 from urllib.robotparser import RobotFileParser
@@ -113,121 +110,6 @@ def _pinned_url(original: str, ip: str) -> str:
     return urlunsplit((parsed.scheme, host, parsed.path or "/", parsed.query, ""))
 
 
-class _PinnedHTTPSConnection(http.client.HTTPSConnection):
-    """Connect to the checked address while authenticating the publisher's hostname.
-
-    httpcore offers ALPN protocols even when HTTP/2 is disabled. Some Cloudflare
-    publishers challenge that TLS shape while allowing an otherwise identical
-    standard-library connection. This transport is used only after an explicit
-    Cloudflare challenge and retains the address pin, SNI and certificate checks.
-    """
-
-    def __init__(self, host: str, ip: str, *, timeout: float) -> None:
-        self._tls_context = tls_context()
-        super().__init__(host, port=443, timeout=timeout, context=self._tls_context)
-        self._ip = ip
-        self._deadline = time.monotonic() + timeout
-        self._socket_for_abort: socket.socket | None = None
-        self._abort_lock = threading.Lock()
-        self._aborted = False
-
-    def _register_socket(self, connection: socket.socket) -> None:
-        with self._abort_lock:
-            if self._aborted:
-                connection.close()
-                raise TimeoutError("publisher HTTPS deadline exceeded")
-            self._socket_for_abort = connection
-
-    def connect(self) -> None:
-        plain = socket.create_connection((self._ip, 443), timeout=self.timeout)
-        try:
-            self._register_socket(plain)
-            # Connect and the following TLS handshake share one deadline.
-            plain.settimeout(max(0.001, self._deadline - time.monotonic()))
-            wrapped = self._tls_context.wrap_socket(plain, server_hostname=self.host)
-            self._register_socket(wrapped)
-            self.sock = wrapped
-        except BaseException:
-            plain.close()
-            raise
-
-    def abort(self) -> None:
-        """Interrupt a stalled response, including after http.client detaches its socket."""
-        with self._abort_lock:
-            self._aborted = True
-            connection = self._socket_for_abort
-        if connection is not None:
-            with suppress(OSError):
-                connection.shutdown(socket.SHUT_RDWR)
-            with suppress(OSError):
-                connection.close()
-
-
-def _request_without_alpn(
-    url: str, ip: str, headers: dict[str, str], timeout: float
-) -> httpx.Response:
-    """One bounded GET to a prevalidated, pinned HTTPS source; never follows redirects."""
-    parsed = urlsplit(url)
-    host = parsed.hostname
-    if host is None:
-        raise UnsafeNewsUrl("news source has no host")
-    # http.client only accepts an ASCII request target. httpx preserves legal
-    # Unicode URLs by percent-encoding their path and query first.
-    path = httpx.URL(url).raw_path.decode("ascii")
-    request_headers = {
-        **headers,
-        "Host": host,
-        "User-Agent": USER_AGENT,
-        # The fallback reads a bounded, uncompressed body. Publishers which ignore
-        # identity are refused rather than passing compressed bytes to the parser.
-        "Accept-Encoding": "identity",
-    }
-    request = httpx.Request("GET", url, headers=request_headers)
-    connection = _PinnedHTTPSConnection(host, ip, timeout=timeout)
-    deadline = threading.Timer(timeout, connection.abort)
-    deadline.daemon = True
-    deadline.start()
-    received: http.client.HTTPResponse | None = None
-    try:
-        connection.request("GET", path, headers=request_headers)
-        received = connection.getresponse()
-        raw_headers = received.getheaders()
-        content_length = received.getheader("content-length")
-        if content_length:
-            try:
-                declared_size = int(content_length)
-            except ValueError as error:
-                raise UnsafeNewsUrl("news source returned an invalid content length") from error
-            if declared_size > MAX_RESPONSE_BYTES:
-                raise UnsafeNewsUrl("news source response is too large")
-        encoding = (received.getheader("content-encoding") or "identity").casefold()
-        if encoding != "identity":
-            raise UnsafeNewsUrl("news source ignored uncompressed response request")
-        body = bytearray()
-        while chunk := received.read(64 * 1024):
-            body.extend(chunk)
-            if len(body) > MAX_RESPONSE_BYTES:
-                raise UnsafeNewsUrl("news source response is too large")
-        return httpx.Response(
-            received.status,
-            headers=[
-                (name.encode("latin-1"), value.encode("latin-1"))
-                for name, value in raw_headers
-                if name.casefold() not in {"content-encoding", "content-length"}
-            ],
-            content=bytes(body),
-            request=request,
-        )
-    except (OSError, http.client.HTTPException) as error:
-        raise httpx.TransportError("publisher HTTPS request failed", request=request) from error
-    finally:
-        deadline.cancel()
-        if received is not None:
-            with suppress(OSError):
-                received.close()
-        connection.close()
-
-
 @dataclass
 class _HostRate:
     lock: asyncio.Lock
@@ -248,7 +130,6 @@ class SafeNewsFetcher:
             timeout=timeout_seconds, follow_redirects=False, verify=tls_context()
         )
         self._resolver = resolver
-        self._timeout_seconds = timeout_seconds
         self._distributed_rate_limiter = rate_limiter
         self._rates: dict[str, _HostRate] = {}
         # One scan reads many pages from few hosts, so robots.txt is read once per host
@@ -320,21 +201,6 @@ class SafeNewsFetcher:
                         content=bytes(body),
                         request=streamed.request,
                     )
-                if (
-                    self._external_client is None
-                    and response.status_code == 403
-                    and response.headers.get("cf-mitigated", "").casefold() == "challenge"
-                ):
-                    # A challenge is not a source-current verdict. Retry once using
-                    # the same checked address and a stdlib TLS connection, then keep
-                    # the normal status/robots/content/redirect checks below.
-                    await self._rate_limit(host)
-                    response = await asyncio.to_thread(
-                        _request_without_alpn, url, ips[0], headers, self._timeout_seconds
-                    )
-                    if (response.status_code == 429 or response.status_code >= 500) and attempt < 2:
-                        await asyncio.sleep(2**attempt)
-                        continue
             except (httpx.TimeoutException, httpx.TransportError):
                 if attempt == 2:
                     raise
