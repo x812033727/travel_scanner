@@ -2060,6 +2060,14 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
             "This candidate already has a repair record. Check its receipt instead of repeating t"
             "he operation."
         ),
+        "news_navigation_receipt_mismatch": "The retained sources or repair receipt have changed",
+        "news_navigation_receipt_missing": "No valid manual navigation repair receipt was found",
+        "news_navigation_refresh_busy": (
+            "The source repair still has editing or processing work in progress"
+        ),
+        "news_navigation_refresh_unavailable": (
+            "The source repair cannot be confirmed as complete right now"
+        ),
         "news_navigation_review_mismatch": (
             "The independent review is invalid or does not match the stored evidence, claims, fiv"
             "e drafts and dated, readable navigation pages."
@@ -2168,6 +2176,10 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
             "この候補にはすでに修正記録があります。操作を繰り返さず、元の処理記録を確認してくださ"
             "い。"
         ),
+        "news_navigation_receipt_mismatch": "保持した情報源または修正の処理記録が変更されました。",
+        "news_navigation_receipt_missing": "有効な手動のナビゲーション修正記録が見つかりません。",
+        "news_navigation_refresh_busy": "情報源の修正で編集または処理が続いています。",
+        "news_navigation_refresh_unavailable": "情報源の修正が完了したことを確認できません。",
         "news_navigation_review_mismatch": (
             "独立審査が無効か、保存済みの根拠情報・主張記録・5言語の原稿・読み取り日時が確認でき"
             "るナビゲーションページの全文と一致しません。"
@@ -2275,6 +2287,10 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
             "이 후보에는 이미 수정 기록이 있습니다. 작업을 반복하지 말고 원래 처리 기록을 확인해 "
             "주세요."
         ),
+        "news_navigation_receipt_mismatch": "유지한 출처 또는 수정 처리 기록이 변경되었습니다.",
+        "news_navigation_receipt_missing": "유효한 수동 탐색 페이지 수정 기록을 찾을 수 없습니다.",
+        "news_navigation_refresh_busy": "출처 수정에 대한 편집 또는 처리가 아직 진행 중입니다.",
+        "news_navigation_refresh_unavailable": "출처 수정이 완료되었는지 확인할 수 없습니다.",
         "news_navigation_review_mismatch": (
             "독립 검토가 유효하지 않거나 저장된 근거, 주장 기록, 5개 언어의 초안 또는 조회 시각이"
             " 확인된 탐색 페이지의 전체 내용과 일치하지 않습니다."
@@ -2355,6 +2371,10 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         ),
         "news_navigation_not_listing": "只能修補經獨立審查確認的同一來源網站導覽頁。",
         "news_navigation_operation_used": "此候選已有修補紀錄，請查看原處理紀錄，不要重複執行。",
+        "news_navigation_receipt_mismatch": "保留來源或修補收據已變更。",
+        "news_navigation_receipt_missing": "找不到有效的人工導覽修補紀錄。",
+        "news_navigation_refresh_busy": "來源修補仍有編輯或處理中的工作。",
+        "news_navigation_refresh_unavailable": "目前無法確認來源修補是否完成。",
         "news_navigation_review_mismatch": (
             "獨立審查無效，或未對應完整證據、主張紀錄、五語草稿，以及附有讀取時間的可讀導覽頁全文"
             "。"
@@ -2431,6 +2451,10 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         ),
         "news_navigation_not_listing": "仅可修补经独立审查确认的同一来源网站导航页。",
         "news_navigation_operation_used": "此候选已有修补记录，请查看原处理记录，不要重复执行。",
+        "news_navigation_receipt_mismatch": "保留来源或修补收据已变更。",
+        "news_navigation_receipt_missing": "找不到有效的人工导航修补记录。",
+        "news_navigation_refresh_busy": "来源修补仍有编辑或处理中的工作。",
+        "news_navigation_refresh_unavailable": "目前无法确认来源修补是否完成。",
         "news_navigation_review_mismatch": (
             "独立审查无效，或未对应完整证据、主张记录、五语草稿，以及附有读取时间的可读导航页全文"
             "。"

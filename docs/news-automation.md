@@ -124,11 +124,26 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    2026-09-25: a company's own announcement may go out on its own, reported as its
    statement).
 3. **Duplicate check.** Jev compares the story with the same category's news published in
-   the last 30 days — hand-written articles included — and with other candidates.
-   Uncertain goes to review (`news_duplicate_uncertain`), where an editor answers it with
-   「不是重複，繼續寫」: the answer is stored as a duplicate assessment for that evidence,
-   and the rerun skips Jev. The review judge's "not a duplicate" (step 8) is honoured the
-   same way.
+   the last 30 days — hand-written articles included — and with other candidates. A
+   bounded local title screen also offers plausible *other-category* published articles
+   (at most 160 search rows) and active candidates (at most 60 rows from the last 30 days).
+   These caps bound database work but do not guarantee that every article inside the
+   30-day window is screened: enough newer rows can push an older match past the cap.
+   It selects at most eight cross-category titles inside Jev's existing 60-title and
+   one-call-per-candidate limits; it does not declare an event duplicate by itself. This
+   catches a crypto feed's Meta Muse launch when an AI article already covers it, while
+   launch and later price/privacy events remain separate. The duplicate assessment stores
+   each screened article or candidate ID, published slug when present, title-overlap
+   rationale, and Jev's answer. The AI duplicate judge and the human admin hold
+   display those persisted matches before their shorter generic title lists.
+   A cross-category hit that Jev calls duplicate is held as
+   `news_duplicate_uncertain` for review rather than closed automatically. For CJK titles,
+   a plausible cross-category match also waits for review when Jev says distinct, because
+   its CJK autopilot is disabled. Otherwise Jev's distinct answer proceeds through the
+   normal draft gate; an uncertain answer also waits for review. An editor answers an
+   uncertain check with 「不是重複，繼續寫」: the answer is stored
+   for that evidence, and the rerun skips Jev. The review judge's "not a duplicate"
+   (step 8) is honoured the same way. No extra Jev comparison is spent on this screen.
 4. **Stage one: Traditional Chinese draft.** The writer drafts in Traditional Chinese
    (and may declare the story not newsworthy: marketing, event recaps, rumours, hiring).
    With a single source it must attribute every claim to that organisation. The
