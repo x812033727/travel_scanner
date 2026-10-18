@@ -1,0 +1,9 @@
+# M09 Studio language and visibility audit — 2026-10-17
+
+Video: [yGF95x3O9U0](https://www.youtube.com/watch?v=yGF95x3O9U0). This is the same ID recorded in the Mokaair backend and the one the owner said they played in all four languages. The earlier backend/API receipt is [youtube-readback-20261017.md](youtube-readback-20261017.md).
+
+At approximately 17:48 Asia/Taipei, a read-only YouTube Studio language-page inspection showed English, Japanese and Korean rows. Each row displayed audio, one caption version and title/description as **Published**. Each row also had a distinct localized thumbnail preview. The screenshot is retained outside Git at `<home>/mokaair-work/videos/curio-m09/review/studio-languages-20261017.png`, SHA-256 `6A4E9ABB86016AAD045F5D96357FD671AFFA2D00FFC8147091B25ADFA586B947`. The screenshot displays the language assets; “Published” in those columns is not proof that the video itself is public.
+
+The coordinator's read-only Studio visibility inspection showed this same video as **Scheduled for 2026-10-22 20:00 GMT+8**, with **Private** visibility until then. This is newer Studio UI evidence than the backend's stored upload request (`visibility=private`, `youtube_publish_at=null`). The backend request describes the earlier API upload; it does not describe the current Studio schedule. This receipt does not establish who set that schedule or whether the unreviewed API project's private-only limit will permit the scheduled transition.
+
+The owner confirmed on 2026-10-17 that the **2026-10-22 20:00 Asia/Taipei schedule is intended and should remain in place**. No Studio setting, upload, audio track, thumbnail, caption or schedule was changed in this audit. The scheduled transition has not happened or been verified; M09 cannot yet be called public. The prior owner report confirms four-language playback of this ID; this screenshot does not independently test audio playback.
