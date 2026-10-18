@@ -1,11 +1,11 @@
 ---
 id: 2026-10-14-remake-curio-h07-with-the-series
 title: Remake Curio H07 with the series look
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-h07-v2-finish
-claimed_at: 2026-10-18T06:53:04Z
+owner:
+claimed_at:
 created_at: 2026-10-14T16:10:29Z
 completed_at:
 branch: codex/curio-h07-v2-review-20261018
@@ -49,3 +49,4 @@ Run `node tools/video/cli.mjs lint --slug curio-h07-v2`, `check-audio`, `keyfram
 - `render` first drew 28 slide states with 0 reused; `clips` selected 65 stills and 0 paid clip seconds. The localized thumbnail headlines changed only line breaks; the subsequent render reused all 28 states and produced en/ja/ko thumbnails. After three-language dub completion, `captions/manifest.json` records zh-TW 99, en 103, ja 109 and ko 107 cues, each with zero problems and each selected language timed to its dub. En line `0231d434` was shortened to fit its slot. Local final QA passed 11/11; manual `qa` and final `review-push` called Jev once each. The backend final card is approved and exact-SHA read back. The language panel selected en/ja/ko metadata, captions and dubs. The four-language upload package passed 4/4 locally; backend publish/languages approval, Studio upload and publication remain separate gates.
 - `npm run test:docs-videos` again hit the unrelated `imported-long-languages/runner.test.mjs` Windows child exit `3221226505`; a targeted rerun of its `initial runtime freezing` case reproduced that failure after C: had over 8 GB free, so it is not the previous `ENOSPC` condition. The broad rerun was then stopped after this concrete failure. H07 lint (0 errors/1 duration-estimate warning), `npm run check:tasks` and diff check passed. Earlier attempts to remove old installer Temp directories and one H07 derived intermediate were rejected `blocked by policy`; no alternate deletion was attempted. The user later freed C: space, permitting a clean package.
 - PR #1497 remains draft with `no-auto-merge`. The local finish worktree is on `codex/curio-h07-v2-finish-20261018`, rebased onto origin/main but not pushed. This task's review branch is `codex/curio-h07-v2-review-20261018`, stacked on PR #1497's exact head so the isolated remake can be reviewed without rewriting that branch. Do not merge, publish or treat private upload as public release without the later owner gates.
+- Draft PR #1569 is the stacked H07-v2 review artifact and carries `no-auto-merge`. The owner said they will create the new private H07-v2 video in Studio later. When they return with its URL and four-language playback result, read back the linked backend video and the `languages` card before marking Studio delivery complete. This ticket was released to the shared queue while awaiting that owner action.
