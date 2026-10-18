@@ -2,7 +2,7 @@
 // and audience, the body, the Mokaair article, chapters, sources, picture credits, the series
 // hashtag; core/metadata.mjs composeDescription) and tags, each checked against YouTube's limits.
 import { chapterTitle, descriptionWithinBudget, episodeNumbers, isCompilation } from "../core/compilation.mjs";
-import { articleUrl, checkYoutubeFields, composeDescription, creditBytes, LABELS, uploadTags } from "../core/metadata.mjs";
+import { articleUrl, checkYoutubeFields, composeDescription, creditBytes, LABELS, uploadTags, withCaptionTag } from "../core/metadata.mjs";
 import { narrationLocale } from "../core/schema.mjs";
 import { chapterList, formatClock } from "../core/timeline.mjs";
 
@@ -13,14 +13,14 @@ export function compilationChapterTitles(doc) {
 }
 
 /**
- * Lint composes the description without the picture credits (lint.mjs reads no assets), so a
- * description that passed lint and passes the byte limit only here says what tipped it over.
+ * Lint composes the description with the picture credits too (lint.mjs passes assets), so it
+ * refuses this first; a package run without a lint before it still says how much the credits take.
  */
 function withCreditHint(problem, assets, locale) {
   const bytes = creditBytes(assets, locale);
   if (!bytes || !/bytes once composed/.test(problem)) return problem;
   const label = (LABELS[locale] ?? LABELS.en).pictures;
-  return `${problem} (the ${label} credits of assets[] add ${bytes} bytes that lint does not count: shorten youtube.description or use fewer stock photos)`;
+  return `${problem} (the ${label} credits of assets[] take ${bytes} of them: shorten youtube.description or use fewer stock photos)`;
 }
 
 /**
@@ -45,7 +45,7 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null,
   let zhChapters = {};
   for (const locale of locales) {
     const translation = locale === narration ? null : translations[locale];
-    const title = translation ? translation.title : doc.youtube.title;
+    const title = withCaptionTag(translation ? translation.title : doc.youtube.title, locale);
     const body = translation ? translation.description : doc.youtube.description;
     const articleLocale = pack?.locales?.[locale] ? locale : narration;
     const fields = {

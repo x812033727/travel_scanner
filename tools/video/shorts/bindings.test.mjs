@@ -136,7 +136,6 @@ test('an all-pass run binds every local QA input and still permits packaging and
     assert.equal(qa.inputs.files[name], sha256(readFileSync(path.join(directory, name))), name);
   }
   assert.equal(qa.inputs.files['upload/ko.srt'], null);
-  assert.equal(qa.inputs.files['upload/zh-CN.srt'], null);
   const client = site();
   const result = await push({ directory, client });
   assert.equal(result.waits, null);
@@ -146,6 +145,18 @@ test('an all-pass run binds every local QA input and still permits packaging and
   assert.deepEqual(submitted.map((write) => write.body.gate), ['final', 'publish']);
   assert.deepEqual(submitted[0].body.payload.qa.inputs, qa.inputs);
   assert.equal(submitted[1].body.payload.final_review_id, result.final.id);
+});
+
+test('a Short pushed from the command line is marked hand-pushed at both gates; the worker\'s is not', async (t) => {
+  const { directory } = await passingBuild(t);
+  const worker = site();
+  await push({ directory, client: worker });
+  for (const write of worker.writes.filter((write) => write.method === 'submit')) assert.equal(write.body.payload.hand_pushed, undefined);
+  const byHand = site();
+  await push({ directory, client: byHand, handPushed: true });
+  const submitted = byHand.writes.filter((write) => write.method === 'submit');
+  assert.deepEqual(submitted.map((write) => [write.body.gate, write.body.payload.hand_pushed]), [['final', true], ['publish', true]]);
+  assert.ok(submitted[0].body.payload.qa, 'the mark is added beside the payload, not in place of it');
 });
 
 const MUTATIONS = [

@@ -16,6 +16,7 @@ from app.video_automation.anime_policy import is_long_anime
 from app.video_automation.judge import (
     COMPILATION_QA_ITEMS,
     QA_ITEMS,
+    demo_asked_of,
     final_qa_passed,
     outline_pick_passed,
     publish_package_passed,
@@ -31,6 +32,7 @@ from app.video_automation.models import (
     VideoStagePrompt,
 )
 from app.video_automation.schemas import (
+    CAPTION_LOCALES,
     ApiProviderName,
     DramaSettings,
     MediaOptionsView,
@@ -136,8 +138,18 @@ def media_options_view() -> MediaOptionsView:
     )
 
 
+def current_caption_locales(stored: Any) -> list[str]:
+    """A stored caption-language list as the page knows it: a language the videos are no longer
+    made in (zh-CN before 2026-10-09) is dropped rather than refused. Migration 0128 removes it
+    from the rows; this keeps a row written between the deploy's steps readable."""
+    values = stored if isinstance(stored, list) else []
+    return [locale for locale in values if locale in CAPTION_LOCALES]
+
+
 def drama_values(row: VideoAutomationSettings) -> DramaSettings:
-    return DramaSettings(**{field: getattr(row, field) for field in DRAMA_FIELDS})
+    values = {field: getattr(row, field) for field in DRAMA_FIELDS}
+    values["drama_caption_locales"] = current_caption_locales(values["drama_caption_locales"])
+    return DramaSettings(**values)
 
 
 def slides_values(row: VideoAutomationSettings) -> SlidesSettings:
@@ -194,7 +206,7 @@ def settings_values(row: VideoAutomationSettings) -> SettingsWrite:
         voice=cast(Any, row.voice),
         target_minutes_min=row.target_minutes_min,
         target_minutes_max=row.target_minutes_max,
-        caption_locales=cast(Any, row.caption_locales),
+        caption_locales=cast(Any, current_caption_locales(row.caption_locales)),
         max_drafts_per_month=row.max_drafts_per_month,
         monthly_token_budget_millions=row.monthly_token_budget_millions,
         max_verify_rounds=row.max_verify_rounds,
@@ -620,18 +632,22 @@ async def auto_approves_script(
     return script_check_passed(payload, retention_required=retention_required_for(series.genre))
 
 
-async def auto_picks_outline(session: AsyncSession, payload: dict[str, Any]) -> bool:
+async def auto_picks_outline(
+    session: AsyncSession, payload: dict[str, Any], category: str | None = None
+) -> bool:
     """Whether an outline review stands on Jev's pick (docs/videos/HANDS-OFF.md).
 
     The switch must be on and the stance written, so no video gets its viewpoint decided by
-    the AI before the owner wrote one down; then the pick must clear the thresholds.
+    the AI before the owner wrote one down; then the pick must clear the thresholds, the
+    demonstration among them unless the video's own row (``category``) files it as an
+    explainer or a story.
     """
     row = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     )
     if row is None or not row.auto_pick_outline or not (row.channel_stance or "").strip():
         return False
-    return outline_pick_passed(payload)
+    return outline_pick_passed(payload, demo_asked_of(category))
 
 
 async def auto_approves_final(

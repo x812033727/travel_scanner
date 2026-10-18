@@ -8,7 +8,7 @@ import { EXIT, main } from "../cli.mjs";
 import { approve } from "../core/approvals.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { pinBranding, validateBranding } from "../core/branding.mjs";
-import { writeAudioFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { writeAudioFixture, fixture, fixtureLexicon, sandbox, storyFixture } from "../core/fixtures/load.mjs";
 import { atomicWrite } from "../core/paths.mjs";
 import { eachLine, LOCALES, textHash } from "../core/schema.mjs";
 import { runCaptions } from "../core/stages.mjs";
@@ -35,13 +35,12 @@ const VERIFY = `# verify-1: fixture-minimal
 `;
 
 /** A video that went through every stage: the files the stages write, without any media tool. */
-function finishedVideo({ seconds = {}, languages = { locales: Object.fromEntries(LOCALES.filter((locale) => locale !== "zh-TW").map((locale) => [locale, { metadata: true, captions: true, dub: false }])) } } = {}) {
+function finishedVideo({ seconds = {} } = {}) {
   const box = sandbox();
   const doc = fixture();
   const lexicon = fixtureLexicon();
   const workdir = box.workdir;
   mkdirSync(workdir, { recursive: true });
-  if (languages) atomicWrite(path.join(workdir, "languages.json"), JSON.stringify(languages));
   // Translations of every line and field, current with the zh-TW text.
   for (const locale of LOCALES.filter((each) => each !== "zh-TW")) {
     const lines = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, { source_hash: textHash(line.text), text: `line ${line.id}` }]));
@@ -107,28 +106,19 @@ function context(box, fetchImpl) {
 
 const readReport = (workdir) => JSON.parse(readFileSync(path.join(workdir, "review", "qa.json"), "utf8"));
 
-test("final QA permits narration captions before selection, then requires exactly the chosen parts", async () => {
-  const { box, workdir } = finishedVideo({ languages: null });
-  await approve({ gate: "audio", docDir: box.dir, workdir });
-  for (const locale of LOCALES.filter((locale) => locale !== "zh-TW")) {
-    for (const extension of ["srt", "vtt"]) rmSync(path.join(workdir, "captions", `${locale}.${extension}`));
+test("brand-story QA records the subtitle mode of its own script, while missing media never passes", async () => {
+  for (const burnedIn of [false, true]) {
+    const box = sandbox("fixture-story", "story");
+    const doc = storyFixture();
+    doc.subtitles.burn_in = burnedIn;
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+    const { ctx } = context(box, site({ policy: () => Response.json({ passed: true }) }).fetchImpl);
+    assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.lint);
+    const report = readReport(box.workdir);
+    assert.equal(report.subtitles_burned_in, burnedIn);
+    assert.equal(report.ok, false, "a subtitle-mode field alone cannot authorize a dub");
+    assert.equal(report.final_sha256, null, "a final cut must exist before its hash can bind QA");
   }
-  const server = site({ policy: () => Response.json({ stance: 0.9, demo: 0.8, advice: 0.1, sponsored: 0, passed: true, note: "pass" }) });
-  const { ctx } = context(box, server.fetchImpl);
-  assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.ok);
-  let report = readReport(workdir);
-  assert.match(report.items.find((item) => item.id === "captions").detail, /caption files for zh-TW,/);
-  assert.match(report.items.find((item) => item.id === "metadata").detail, /for zh-TW;/);
-  assert.equal(existsSync(path.join(workdir, "languages.json")), false, "QA does not make an owner choice");
-
-  atomicWrite(path.join(workdir, "languages.json"), JSON.stringify({ locales: { en: { metadata: true, captions: false, dub: false } } }));
-  assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.ok, "metadata alone does not require English captions");
-  atomicWrite(path.join(workdir, "languages.json"), JSON.stringify({ locales: { en: { metadata: true, captions: true, dub: false } } }));
-  assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.lint);
-  report = readReport(workdir);
-  assert.deepEqual(report.items.filter((item) => !item.ok).map((item) => item.id), ["captions"]);
-  assert.match(report.items.find((item) => item.id === "captions").detail, /en: no caption file/);
-  assert.doesNotMatch(report.items.find((item) => item.id === "captions").detail, /ja:|ko:|zh-CN:/);
 });
 
 test("direct qa and package refuse an old cut after a same-duration narration retake is approved", async () => {
@@ -164,8 +154,8 @@ test("a finished video passes every check but the judge that is not built yet, a
   assert.deepEqual(failed.map((item) => [item.id, item.detail]), [["policy", "judge endpoint not available"]]);
   const byId = Object.fromEntries(report.items.map((item) => [item.id, item]));
   assert.match(byId.pace.detail, /^5 slide states, the longest [\d.]+ s; none over 15 s$/);
-  assert.match(byId.captions.detail, /caption files for zh-TW, en, ja, ko, zh-CN, every translation current/);
-  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko, zh-CN; 3 chapters$/);
+  assert.match(byId.captions.detail, /caption files for zh-TW, en, ja, ko, every translation current/);
+  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko; 3 chapters$/);
   assert.equal(byId.facts.detail, "verify-1.md marks 1 claims NOT FOUND (9); no scene cites them");
   assert.equal(byId.links.detail, "1 links open");
   assert.match(byId.thumbnail.detail, /^1280x720 JPEG, 4 KB; the headline is about 34 px tall at 320 px wide$/);
@@ -502,8 +492,8 @@ test("a compiled series passes its six checks without a judge, and a re-cut epis
   assert.deepEqual(report.items.map((item) => item.id), COMPILATION_ITEM_IDS);
   const byId = Object.fromEntries(report.items.map((item) => [item.id, item]));
   assert.match(byId.assemble.detail, new RegExp(`^${COMPILATION_FRAMES} frames, -14.4 LUFS; every check passed$`));
-  assert.equal(byId.captions.detail, "caption files for zh-TW, en, ja, ko, zh-CN, merged from every episode");
-  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko, zh-CN; 3 chapters$/);
+  assert.equal(byId.captions.detail, "caption files for zh-TW, en, ja, ko, merged from every episode");
+  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko; 3 chapters$/);
   assert.equal(byId.links.detail, "the description has no links");
   assert.match(byId.disclosure.detail, /^tick altered or synthetic content: a drama/);
   assert.equal(server.calls.some((call) => call.url.endsWith("/judge/policy")), false, "no judge for a compilation");

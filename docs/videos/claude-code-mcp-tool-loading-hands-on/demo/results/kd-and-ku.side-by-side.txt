@@ -1,0 +1,31 @@
+================================================================================================
+kd AND ku, after the fourteenth session (this replaces the "kd against ku: NOT OBSERVED" lines above)
+================================================================================================
+By the rules the pair is NOT COMPARED: ku lists 22 skills and 58 slash commands, kd 21 and 57.
+ladder-3.txt prints both rows and no "deferred minus up front" line.
+
+Side by side, for the record only (not a difference the rules allow; the request names the tool;
+one run each; N = 40):
+                         kd (deferred)                  ku (up front; counts 22/58)
+  requests               3                              2
+  first request          12,434                         14,489
+  what arrived           ToolSearch: 1 reference,       -
+                         0 chars of text
+  second request         12,690 (+256)                  14,622 (+133)
+  what arrived           find_gear result, 21 chars     find_gear result, 21 chars (before request 2)
+  third request          12,831 (+141)                  -
+  last request           12,831                         14,622
+  all requests added up  37,955                         29,111
+  ToolSearch calls       1                              0
+  server: tools/list     1                              1
+  server: tools/call     1                              1
+  debug record           mode=tst, result=true;         mode=standard, result=false;
+                         k/n 0/40, 1/40, 1/40           no k/n line
+  answer                 D-07, 37                       D-07, 37
+The raw gaps, were the counts the same, would read: first request -2,055, last request -1,791,
+all requests added up +8,844, requests 3 against 2. In the three places where a run with the
+extra skill has a twin without it or a base beside it (w0 with z1 and z2, d10 with d10r), the
+extra skill moved the first request by 0 to 2 tokens; that is an observation about those runs and
+not a licence to subtract here.
+Unexplained: ku's first request is 297 under u40's (14,786), the same arm with the idle request.
+kd's is 17 over d40's. Until that is understood, ku's 14,489 is not a figure to build a card on.

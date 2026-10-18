@@ -111,7 +111,7 @@
 | `MAX_PICTURE_SECONDS` | 8 | 一張畫面（卡片狀態或插圖）最多停多久 |
 | `TARGET_AVERAGE_SECONDS` | 6 | 平均多久換一次畫面 |
 | `MIN_ILLUSTRATION_SHARE` | 0.5 | 插圖至少佔多少時間，其餘是放數字的卡片 |
-| `HOOK_SECONDS` | 20 | 開場章節要在幾秒內落鉤 |
+| `OPENING_CHAPTER_SECONDS`（`core/lint.mjs`） | 30–60 | 開場章節是濃縮：第一個正式章節前的秒數（站主 2026-10-12 定；原本是 20 秒內落鉤） |
 
 lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋；前五支證明撰稿能達標後再升成錯誤）；shot 超過 12 秒仍是錯誤（沿用漫劇的 `MAX_SHOT_SECONDS`）。最終關卡的 QA `pace` 項在合成後的真實時間軸上量：狀態超過 8 秒或插圖不到一半就不過，平均太慢只是警告。
 
@@ -132,7 +132,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 ## 說書式旁白（票 `2026-09-29-video-storytelling-prompts`）
 
-第一句是反常識的說法或觀眾的問題、20 秒內落鉤；第一章至少一個「你以為…其實…」；每章最後一句是下一章要回答的問題；每章至少一個具體場景或比喻；長短句交替；`pause_after_ms` 節拍（冷開場後 900、「其實」前 600、章末懸念後 1200）；不寫「接下來我們來看」。`voice.style` 範例：「標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，『你以為』放慢放輕，『其實』亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。」站主在 `/admin/videos` 設定分頁貼上就生效（`settle()` 抄進每支新影片）。規則的原文是 `tools/video/automation/register.mjs` 的 `REGISTER_RULES`，工具附在企劃、撰稿、聽稿三個階段的提示詞後（漫劇與原來如此事務所的提示詞不變）。已經寫好的影片用 `node tools/video/cli.mjs restyle --slug <slug>` 改口吻：聽稿模型的 `register` 變體逐句重講，數字、拉丁字詞、字典詞變了的句子退回（`rewrite.mjs`）、lint 不過就整份還原，`brief.md` 與 line id 不動（大綱核准與翻譯的 id 都還有效），改完 `verified=false`，工人下一輪重新查核、重錄、重審旁白；`--dry-run` 只量現況（幾個「你以為」、幾章以問題收尾、幾個節拍），結果寫在 `review/restyle.json`。
+第一章是 30–60 秒的開場濃縮：故事的第一個場景，前四句就在一個具體時刻裡（年份、地點、有人在做一件事）、20 秒內說出標題承諾的數字或名字，順著講到第一個說不通的事實就停，最後一句是全片要回答的問題（`script-writing.md` §開場濃縮、§故事主線與鉤子）；第一章至少一個「你以為…其實…」；章是故事的節拍、章名寫發生了什麼，下一章第一句接住上一章留的鉤子；正文每 60–90 秒留一個沒回答的問題，稿子附 `loops` 表；每章至少一個具體場景或比喻；長短句交替；`pause_after_ms` 節拍（冷開場後 900、「其實」前 600、章末最後一句 1200）；不寫「接下來我們來看」。`voice.style` 範例：「標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，『你以為』放慢放輕，『其實』亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。」站主在 `/admin/videos` 設定分頁貼上就生效（`settle()` 抄進每支新影片）。規則的原文是 `tools/video/automation/register.mjs` 的 `REGISTER_RULES`，工具附在企劃、撰稿、聽稿三個階段的提示詞後（漫劇與原來如此事務所的提示詞不變）。已經寫好的影片用 `node tools/video/cli.mjs restyle --slug <slug>` 改口吻：聽稿模型的 `register` 變體逐句重講，數字、拉丁字詞、字典詞變了的句子退回（`rewrite.mjs`）、lint 不過就整份還原，`brief.md` 與 line id 不動（大綱核准與翻譯的 id 都還有效），改完 `verified=false`，工人下一輪重新查核、重錄、重審旁白；`--dry-run` 只量現況（幾個「你以為」、幾章以問題收尾、幾個節拍），結果寫在 `review/restyle.json`。
 
 ## 分期與票
 
@@ -380,7 +380,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 | 指令 | `node tools/video/cli.mjs stock search --query "Seoul skyline" [--provider pexels\|pixabay] [--orientation landscape\|portrait\|square] [--per-page N] [--page N] [--slug S] [--json]`，印每個候選的廠商、id、尺寸與方向、廠商要的那句標示、照片頁網址、alt，以及兩家 API 條款要的來源字樣；`node tools/video/cli.mjs stock fetch --slug S --provider P --id N [--workdir D] [--json]`。和其他媒體指令一樣走主指令，結束碼也一樣：2 用法、3 要站主、4 外部服務（直接跑 `node tools/video/media/cli.mjs stock …` 也行，媒體的測試就是這樣叫） |
 | 檔案 | `stock fetch` 請伺服器抓進媒體庫後，用 `downloadFile` 邊收邊核對雜湊下載到 `<VIDEO_WORKDIR>/<slug>/stock/<sha256>.<png\|jpg\|webp>`（副檔名照伺服器回的 `content_type`）；同一張再抓一次不會重載（檔名就是雜湊，核對過就跳過），壞掉的複本會重載。媒體庫那份 14 天後會被 `prune` 清掉，工作目錄這份才是成片用的 |
 | `assets[]` | 每抓一張就在 `docs/videos/<slug>/video.json` 的 `assets[]` 寫（或換掉同路徑的）一筆 `{path: "stock/<sha256>.<ext>", source: credit.text, license: credit.license, author: credit.author, url: credit.url}`：`source` 是廠商自己的措辭（「Photo by … on Pexels」「Image by … from Pixabay」），`author` 只有名字，`url` 是照片頁。沒有 `assets` 的 `video.json` 會在 `scenes` 前面長出來；整個檔案會以工具的格式（兩格縮排）重寫 |
-| 投影片 | `screenshot` 範本的 `data.image` 多接受 `stock/<sha256>.<png\|jpg\|webp>`（只有這個寫法，小寫、64 個十六進位字；repo 路徑的規則不變），渲染時從 `https://video.local/work/stock/…` 載入（和關鍵影格同一個假來源）；`data.credit`（選填，一行、≤60 字）畫在照片右下角的深色小膠囊裡，它的 CSS 只在有 `credit` 的那一頁隨頁帶，所以沒寫 `credit` 的截圖頁和 `theme.css` 都一個位元組都沒動，既有影片的畫格鍵不變。直向或方形照片照高度放、置中；超寬的全景會超出版面，渲染會當版面問題報出來，換一張 |
+| 投影片 | `screenshot` 範本的 `data.image` 多接受 `stock/<sha256>.<png\|jpg\|webp>`（只有這個寫法，小寫、64 個十六進位字；repo 路徑的規則不變），渲染時從 `https://video.local/work/stock/…` 載入（和關鍵影格同一個假來源）；`data.credit`（選填，一行、≤60 字）畫在照片右下角的深色小膠囊裡，它的 CSS 只在有 `credit` 的那一頁隨頁帶，所以沒寫 `credit` 的截圖頁和 `theme.css` 都一個位元組都沒動，既有影片的畫格鍵不變。直向或方形照片照高度放、置中；超寬的全景會超出版面，渲染會當版面問題報出來，換一張。**照片卡**（`photo` 版型，2026-10-10）：圖庫照片或公有領域的檔案照也可以放在 `photo` 卡上，`data.image` 的寫法與 `screenshot` 相同（`stock/<sha256>.<ext>` 或 repo 路徑），畫成一張印出來的相片（白邊、微傾、投影、右下角同一個出處膠囊、下方一行 `caption`）；`photo` 的照片不論放在哪裡都要有 `assets[]` 條目（repo 裡的檔也一樣），照片的位元組同樣進畫格鍵 |
 | 畫格鍵 | `render/plan.mjs` 的 `renderPlan` 多吃 `workdir`，照片的位元組和 SVG 一樣雜湊進那一景的鍵：換了照片（同名不同位元組）只重畫那一景；沒給 `workdir`（例如 `render/repeat.mjs`）就不讀、不入鍵 |
 | 渲染前的檢查 | `renderProblems(doc, root, {workdir})`：用到 `stock/…` 的景，`assets[]` 裡一定要有同路徑的那筆（沒有就代表說明欄不會有標示，`render` 以 lint 結束碼拒絕），檔案也要在工作目錄裡（沒有就叫你跑 `stock fetch`）。`lint` 只檢查 `data.image`／`data.credit` 的寫法（範本的 `check` 共用），不看工作目錄 |
 | 說明欄 | `core/metadata.mjs` 的 `composeDescription` 在參考資料之後、hashtag 之前加「📷 圖片來源」區塊（各語系：圖片來源／图片来源／Image credits／画像の出典／이미지 출처），一張一行：`source（license）：url`（英、韓文用半形括號與冒號）。只列有 `author` 或 `url` 的 `assets[]`——自有圖解（只有 `path`／`source`／`license`）不列，所以列著自有圖解的既有影片，說明欄一個字都不會變，`publish` 關卡綁的 `upload/metadata.json` 也不會失效。`package/metadata.mjs` 每個語系都帶 `doc.assets` 進去；超過 5,000 位元組時的錯誤會註明是標示多了幾個位元組 |

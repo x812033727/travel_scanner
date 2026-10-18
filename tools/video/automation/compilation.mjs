@@ -2,7 +2,7 @@
 // episode is cleared for upload, the worker starts one video that joins them all. Nothing is
 // narrated or generated again. The worker's part is the document (core/compilation.mjs builds
 // it), the upload fields the planner writes (title, description, tags, the thumbnail's picture
-// and headline), the thumbnail's source keyframe copied from an episode, the five locales'
+// and headline), the thumbnail's source keyframe copied from an episode, the four locales'
 // title and description, and the commands in between (render, compile); the final cut, the
 // upload package and the YouTube id then go the way of every video (flow.mjs).
 import { createHash } from "node:crypto";
@@ -443,6 +443,34 @@ export async function translateMetadata(automation, state) {
 }
 
 /**
+ * Package again when upload/ no longer holds what package would write now: the composed
+ * title, description, tags, localizations and chapters, or the rendered thumbnail. The message
+ * of the round, or null when the package is current.
+ */
+async function repackageStale(automation, state, project, why) {
+  const workdir = automation.workdir(state.slug);
+  const packaged = readJson(path.join(workdir, "upload", "metadata.json"), null);
+  const body = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const timeline = body ? presentationTimeline(body, appliedBranding(readJson(path.join(workdir, ARTIFACTS.checks), null))) : null;
+  if (!timeline) return automation.block(state, "the compilation has no timeline for its public chapter list; run compile first");
+  const expected = composeMetadata({ doc: project.doc, timeline, translations: project.translations, pack: project.pack ?? null, locales: chosenLocales(readLanguages(workdir), "metadata") }).metadata;
+  const keys = ["title", "description", "tags", "localizations", "chapters", "default_language"];
+  const fieldsMoved = !packaged || keys.some((key) => JSON.stringify(packaged[key]) !== JSON.stringify(expected[key]));
+  if (!fieldsMoved && !thumbnailMoved(workdir)) return null;
+  const result = await automation.run(["package", "--slug", state.slug]);
+  if (result.code !== 0) return automation.block(state, `package failed ${why}: ${automation.lastLine(result.out)}`);
+  return `${state.slug}: ${why === "after public-text review" ? "reviewed " : ""}upload metadata rebuilt`;
+}
+
+/** Whether the rendered thumbnail.jpg differs from the one upload/ holds (package copies it). */
+function thumbnailMoved(workdir) {
+  const rendered = path.join(workdir, "thumbnail.jpg");
+  if (!existsSync(rendered)) return false;
+  const packaged = path.join(workdir, "upload", "thumbnail.jpg");
+  return !existsSync(packaged) || !readFileSync(rendered).equals(readFileSync(packaged));
+}
+
+/**
  * One step of a compilation, or undefined when `next` is a step every video shares (the final
  * cut, the upload package, the YouTube id), which flow.mjs handles.
  */
@@ -470,22 +498,18 @@ export async function advanceCompilation(automation, state, next) {
       return translation ? translationProblem(translation, compilationChapters(project.doc)) || !reviewCurrent(receipts, context, locale, fields[locale]) : later;
     });
     if (needsTranslationReview) return translateMetadata(automation, state);
-    // Status historically binds a package only to final.mp4. A resumed worker must replace
-    // its old public fields before handing that package to the shared publish step.
-    if (next === "on YouTube" || !next) {
-      const workdir = automation.workdir(state.slug);
-      const packaged = readJson(path.join(workdir, "upload", "metadata.json"), null);
-      const body = readJson(path.join(workdir, ARTIFACTS.timeline), null);
-      const timeline = body ? presentationTimeline(body, appliedBranding(readJson(path.join(workdir, ARTIFACTS.checks), null))) : null;
-      if (!timeline) return automation.block(state, "the compilation has no timeline for its public chapter list; run compile first");
-      const expected = composeMetadata({ doc: project.doc, timeline, translations: project.translations, pack: project.pack ?? null, locales: chosenLocales(readLanguages(workdir), "metadata") }).metadata;
-      const keys = ["title", "description", "tags", "localizations", "chapters", "default_language"];
-      if (!packaged || keys.some((key) => JSON.stringify(packaged[key]) !== JSON.stringify(expected[key]))) {
-        const result = await automation.run(["package", "--slug", state.slug]);
-        if (result.code !== 0) return automation.block(state, `package failed after public-text review: ${automation.lastLine(result.out)}`);
-        return `${state.slug}: reviewed upload metadata rebuilt`;
-      }
+    if (!next) {
+      const repackaged = await repackageStale(automation, state, project, "after public-text review");
+      if (repackaged) return repackaged;
     }
+  }
+  // Status binds a package only to final.mp4, so a compilation planned again after its package
+  // (an owner's reset, a deleted keyframes manifest) keeps a byte-identical cut and the old
+  // package. Before the publish push, any compilation whose fields or thumbnail moved is packaged
+  // again; one past its upload (`next` is no longer "on YouTube") is left as YouTube has it.
+  if (next === "on YouTube") {
+    const repackaged = await repackageStale(automation, state, loadProject({ slug: state.slug, root: ctx.root }), context.mysteries.length ? "after public-text review" : "after a new plan");
+    if (repackaged) return repackaged;
   }
   if (next === "cards rendered") {
     const channel = ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", ctx.env.VIDEO_BROWSER_CHANNEL] : [];

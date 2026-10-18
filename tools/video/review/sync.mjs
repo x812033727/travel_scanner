@@ -54,7 +54,7 @@ export const STEP_LABELS = {
   "metadata planned": "合集標題與說明",
   "cards rendered": "章節卡與縮圖",
   "video compiled": "合集串接",
-  "metadata translated": "五語標題與說明",
+  "metadata translated": "四語標題與說明",
   brief: "企劃書",
   "outline approved": "站主選好大綱",
   "script passes lint": "稿子通過檢查",
@@ -823,7 +823,8 @@ function languagesSummary(locales) {
   const summarize = (reasons) => {
     const said = Object.entries(locales).map(([locale, entry]) => {
       const made = Object.entries(PART_NAMES).flatMap(([part, name]) => {
-        if (entry[part] === "ready") return [name];
+        // A dub whose retake did not fit keeps the earlier take of those lines (kept_lines).
+        if (entry[part] === "ready") return [part === "dub" && reasons && entry.kept_lines?.length ? `${name}（${entry.kept_lines.join("、")} 保留原本的錄音：重錄塞不進視窗）` : name];
         if (part === "dub" && entry.dub?.status === "skipped") return [`${name}跳過${reasons ? `（${entry.dub.reason || "沒有寫原因"}）` : ""}`];
         return [];
       });
@@ -877,7 +878,9 @@ async function languagesSubmission({ request, project, workdir, slug }) {
       if (dub) {
         const role = DUB_TYPES[dub.format] ? dubRole(locale) : null;
         if (role) files.push(await upload(request, slug, dub.file, role, DUB_TYPES[dub.format]));
-        Object.assign(entry, { dub: "ready", file: path.basename(dub.file), format: dub.format, tempo_max: dub.tempo_max, file_role: role, sha256: await sha256File(dub.file) });
+        // `kept_lines`: the lines whose retake did not fit its window, so the track carries the
+        // take Jev heard wrong in them (automation/flow.mjs makeDub); the summary names them.
+        Object.assign(entry, { dub: "ready", file: path.basename(dub.file), format: dub.format, tempo_max: dub.tempo_max, file_role: role, sha256: await sha256File(dub.file), ...(dub.kept ? { kept_lines: dub.kept } : {}) });
       } else if (skipped[locale] !== undefined) {
         entry.dub = { status: "skipped", reason: skipped[locale] };
       }
@@ -1250,6 +1253,10 @@ function fail(error, ctx) {
   return error.who === "owner" ? ctx.EXIT.owner : ctx.EXIT.external;
 }
 
+// The worker's state file beside a video's work files (automation/flow.mjs STATE_FILE). A video
+// whose work directory has none was not made by the worker: someone pushes it by hand.
+export const WORKER_STATE_FILE = "auto.json";
+
 export async function reviewPush(args, ctx) {
   const values = common(args, { allowManualReview: true });
   const dir = docDir(values.slug, ctx.root);
@@ -1288,6 +1295,10 @@ export async function reviewPush(args, ctx) {
     const sources = gate === "languages" ? await request("GET", values.slug) : null;
     if (sources && !renewedFinal(sources)) languageSource(sources, project);
     const bodies = await submissions(gate, { ctx, request, project, workdir, dir, flags: values.workdir ? ["--workdir", values.workdir] : [], manualReview: values["manual-review"] ?? false });
+    // A film pushed by hand is the owner's at every gate (owner, 2026-10-17; ticket
+    // 2026-10-11-hand-driven-film-approved-on-its): the site approves none of its reviews on arrival.
+    const handPushed = !existsSync(path.join(workdir, WORKER_STATE_FILE));
+    if (handPushed) ctx.stdout.write(`${values.slug}: not a video the worker made (no ${WORKER_STATE_FILE} in its work directory): the owner decides at every gate\n`);
     for (const candidate of bodies) {
       // An owner renewal invalidates old downstream approvals. Resolve its identity from
       // the site, then verify bytes/timing before adding the new final-review binding.
@@ -1296,6 +1307,7 @@ export async function reviewPush(args, ctx) {
       const bound = candidate.gate === "languages" && !renewedFinal(remote) ? await bindLanguageSource({ body: candidate, remote, project, workdir, request }) : await bindRenewalSubmission({ body: candidate, remote, project, workdir, request, upload });
       // A batch's summary says what it sends: renewal.mjs words the narration's skip its own way.
       const summary = bound.gate === "languages" ? languagesSummary(bound.payload.locales) : bound.summary;
+      if (handPushed) bound.payload = { ...bound.payload, hand_pushed: true };
       // Every review this command sends leaves through here, so none carries a summary the
       // site would refuse for its length, nor a payload it would refuse for its size.
       const { body, bytes, lines } = fitPayload({ ...bound, summary: fitSummary(summary) });

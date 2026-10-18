@@ -7,7 +7,7 @@ import { existsSync, mkdirSync, renameSync, rmSync, writeFileSync } from "node:f
 import path from "node:path";
 
 import { sha256File } from "../core/approvals.mjs";
-import { BRANDING_FILE, brandingHash, validateBranding } from "../core/branding.mjs";
+import { BRANDING_FILE, brandingHash, INTRO_AT_START, pinRecord, validateBranding } from "../core/branding.mjs";
 import { isInside, UsageError } from "../core/paths.mjs";
 import { FPS, SAMPLE_RATE, SAMPLES_PER_FRAME } from "../core/timeline.mjs";
 import { joinList } from "../compile/plan.mjs";
@@ -48,25 +48,43 @@ export function brandingSegmentArgs(source, outFile, frames) {
   return ["-hide_banner", "-y", "-loglevel", "error", "-i", source, ...scene.slice(scene.indexOf("-vf"))];
 }
 
-function clipsOf(bodyFile, bodyFrames, branding) {
-  if (!Number.isInteger(bodyFrames) || bodyFrames < 1) throw new UsageError("branding needs a positive body frame count");
-  return [branding.intro, { file: bodyFile, frames: bodyFrames }, branding.outro];
+/**
+ * The intro's body frame must agree with the selected placement: 0 for an intro at the start, a
+ * frame strictly inside the body for one after the first chapter.
+ */
+export function checkedIntroAt(branding, bodyFrames, introAtFrame = 0) {
+  if (!Number.isSafeInteger(introAtFrame) || introAtFrame < 0 || introAtFrame >= bodyFrames) throw new UsageError("the intro must start inside the body");
+  const placement = branding.intro_at ?? INTRO_AT_START;
+  if ((placement === INTRO_AT_START) !== (introAtFrame === 0)) throw new UsageError(`branding placed ${placement} cannot put its intro at body frame ${introAtFrame}`);
+  return introAtFrame;
 }
 
-/** Shared exact-sample sound join, with an optional copy-only video input before the sound. */
-export function brandingJoinArgs({ bodyFile, bodyFrames, branding, outFile, videoList = null, outputCodec = ["-c:a", "aac", "-b:a", "384k"] }) {
+function clipsOf(bodyFile, bodyFrames, branding, introAtFrame = 0) {
+  if (!Number.isInteger(bodyFrames) || bodyFrames < 1) throw new UsageError("branding needs a positive body frame count");
+  if (!checkedIntroAt(branding, bodyFrames, introAtFrame)) return [branding.intro, { file: bodyFile, frames: bodyFrames }, branding.outro];
+  return [{ file: bodyFile, frames: introAtFrame, from: 0 }, branding.intro, { file: bodyFile, frames: bodyFrames - introAtFrame, from: introAtFrame }, branding.outro];
+}
+
+/**
+ * Shared exact-sample sound join, with an optional copy-only video input before the sound. An
+ * intro after the first chapter splits the body's sound at that frame's first sample.
+ */
+export function brandingJoinArgs({ bodyFile, bodyFrames, branding, outFile, videoList = null, outputCodec = ["-c:a", "aac", "-b:a", "384k"], introAtFrame = 0 }) {
   const args = ["-hide_banner", "-y", "-loglevel", "error"];
   const inputOffset = videoList ? 1 : 0;
   if (videoList) args.push("-f", "concat", "-safe", "0", "-i", videoList);
   const filters = [];
   const labels = [];
-  clipsOf(bodyFile, bodyFrames, branding).forEach((clip, index) => {
+  const clips = clipsOf(bodyFile, bodyFrames, branding, introAtFrame);
+  clips.forEach((clip, index) => {
     args.push("-i", clip.file);
     const samples = clip.frames * SAMPLES_PER_FRAME;
-    filters.push(`[${index + inputOffset}:a:0]aresample=${SAMPLE_RATE},aformat=sample_fmts=fltp:channel_layouts=stereo,atrim=end_sample=${samples},apad=whole_len=${samples},atrim=end_sample=${samples},asetpts=PTS-STARTPTS[a${index}]`);
+    // A body half is cut on the sample grid and restarted at zero before the same padding.
+    const cut = clip.from === undefined ? "" : `atrim=start_sample=${clip.from * SAMPLES_PER_FRAME}:end_sample=${(clip.from + clip.frames) * SAMPLES_PER_FRAME},asetpts=PTS-STARTPTS,`;
+    filters.push(`[${index + inputOffset}:a:0]aresample=${SAMPLE_RATE},aformat=sample_fmts=fltp:channel_layouts=stereo,${cut}atrim=end_sample=${samples},apad=whole_len=${samples},atrim=end_sample=${samples},asetpts=PTS-STARTPTS[a${index}]`);
     labels.push(`[a${index}]`);
   });
-  filters.push(`${labels.join("")}concat=n=3:v=0:a=1,${BRANDING_PEAK_FILTER}[a]`);
+  filters.push(`${labels.join("")}concat=n=${clips.length}:v=0:a=1,${BRANDING_PEAK_FILTER}[a]`);
   args.push("-filter_complex", filters.join(";"));
   if (videoList) args.push("-map", "0:v:0", "-c:v", "copy");
   else args.push("-vn");
@@ -76,12 +94,17 @@ export function brandingJoinArgs({ bodyFile, bodyFrames, branding, outFile, vide
   return args;
 }
 
-function appliedRecord(branding, bodyFrames) {
-  return { hash: brandingHash(branding), id: branding.id, intro_frames: branding.intro.frames, outro_frames: branding.outro.frames, body_frames: bodyFrames };
+function appliedRecord(branding, bodyFrames, introAtFrame = 0) {
+  return { hash: brandingHash(branding), id: branding.id, intro_frames: branding.intro.frames, outro_frames: branding.outro.frames, body_frames: bodyFrames, ...(introAtFrame > 0 ? { intro_at_frame: introAtFrame } : {}) };
 }
 
-/** Write a partial final around bodyFile; the caller replaces the final after success. */
-export async function wrapVideo({ tools, exec = runTool, workdir, bodyFile, bodyFrames, branding, outFile }) {
+/**
+ * Write a partial final around bodyFile; the caller replaces the final after success. An intro
+ * after the first chapter goes between `bodyPictures.before` and `bodyPictures.after`: the body's
+ * own scene segments, each opening on a keyframe, so the picture is joined by copy at a hard cut
+ * and never re-encoded. Its sound is the body's mix cut at the same sample (brandingJoinArgs).
+ */
+export async function wrapVideo({ tools, exec = runTool, workdir, bodyFile, bodyFrames, branding, outFile, introAtFrame = 0, bodyPictures = null }) {
   if (path.resolve(bodyFile) === path.resolve(outFile)) throw new UsageError("branding output must not overwrite its body input");
   const selected = await verifyBrandingAssets(branding, { tools, exec });
   if (!selected) throw new UsageError("wrapVideo needs a branding package");
@@ -99,18 +122,26 @@ export async function wrapVideo({ tools, exec = runTool, workdir, bodyFile, body
     pictures.push(file);
   }
   const list = path.join(directory, "join.ffconcat");
-  writeFileSync(list, joinList([pictures[0], bodyFile, pictures[1]]));
-  await exec(tools.ffmpeg, brandingJoinArgs({ bodyFile, bodyFrames, branding: selected, outFile, videoList: list }));
-  return { ...appliedRecord(selected, bodyFrames), body_file: path.relative(workdir, bodyFile).split(path.sep).join("/"), body_sha256: await sha256File(bodyFile) };
+  if (checkedIntroAt(selected, bodyFrames, introAtFrame) === 0) writeFileSync(list, joinList([pictures[0], bodyFile, pictures[1]]));
+  else {
+    const { before, after } = bodyPictures ?? {};
+    if (!Array.isArray(before) || !before.length || !Array.isArray(after) || !after.length) throw new UsageError("an intro after the first chapter needs the body's scene pictures split at that chapter");
+    writeFileSync(list, joinList([...before, pictures[0], ...after, pictures[1]]));
+  }
+  await exec(tools.ffmpeg, brandingJoinArgs({ bodyFile, bodyFrames, branding: selected, outFile, videoList: list, introAtFrame }));
+  return { ...appliedRecord(selected, bodyFrames, introAtFrame), body_file: path.relative(workdir, bodyFile).split(path.sep).join("/"), body_sha256: await sha256File(bodyFile) };
 }
 
-/** A dub uses the exact same bookend audio, without changing its body's mix or fitted voice. */
-export async function wrapAudio({ tools, exec = runTool, bodyFile, bodyFrames, branding, outFile, outputCodec }) {
+/**
+ * A dub uses the exact same bookend audio, without changing its body's mix or fitted voice; an
+ * intro after the first chapter sits at the same body frame as in the cut (`introAtFrame`).
+ */
+export async function wrapAudio({ tools, exec = runTool, bodyFile, bodyFrames, branding, outFile, outputCodec, introAtFrame = 0 }) {
   if (path.resolve(bodyFile) === path.resolve(outFile)) throw new UsageError("branding output must not overwrite its body input");
   const selected = await verifyBrandingAssets(branding, { tools, exec });
   if (!selected) throw new UsageError("wrapAudio needs a branding package");
-  await exec(tools.ffmpeg, brandingJoinArgs({ bodyFile, bodyFrames, branding: selected, outFile, outputCodec }));
-  return appliedRecord(selected, bodyFrames);
+  await exec(tools.ffmpeg, brandingJoinArgs({ bodyFile, bodyFrames, branding: selected, outFile, outputCodec, introAtFrame }));
+  return appliedRecord(selected, bodyFrames, introAtFrame);
 }
 
 /**
@@ -148,7 +179,7 @@ export function commitBrandedVideo({ workdir, branding, finalPartial, bodyPartia
   const backups = [];
   let committed = false;
   try {
-    writeFileSync(pin, `${JSON.stringify({ ...selected, adopted_at: now.toISOString() }, null, 2)}\n`);
+    writeFileSync(pin, `${JSON.stringify(pinRecord(selected, now), null, 2)}\n`);
     writeFileSync(checked, `${JSON.stringify(checks, null, 2)}\n`);
     for (const item of staged) {
       if (existsSync(item.target)) {

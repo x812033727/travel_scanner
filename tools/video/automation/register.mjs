@@ -7,6 +7,7 @@
 // STORY_VOICE_STYLE is the text the owner pastes there (it sits in speechHash, so changing it
 // records every line again).
 import { CHANNEL_ACCENT } from "../core/accent.mjs";
+import { OPENING_CHAPTER_SECONDS } from "../core/lint.mjs";
 import { eachLine, spokenText } from "../core/schema.mjs";
 
 /** The pauses, in milliseconds, the register asks for around its beats (schema: at most MAX_PAUSE_MS). */
@@ -22,8 +23,173 @@ export const PAUSE_BEATS = Object.freeze({
 /** The marker of the register's turn: what the viewer believes, then what is so. */
 export const TWIST_MARKER = "你以為";
 
-/** Seconds the hook has to land in an illustrated video (core/cadence.mjs HOOK_SECONDS says the same). */
+/** Seconds by which the hook has said the number, date or name the title promises. */
 export const HOOK_SECONDS = 20;
+
+/**
+ * The opening chapter of a narrated video, slides and explainers and brand stories alike
+ * (script-writing.md §開場濃縮; owner, 2026-10-12 for its seconds, 2026-10-13 for what fills
+ * them): the condensation before the first real chapter, there so the viewer stays out of
+ * curiosity. It is ONE scene of the story told in order, not a trailer of later chapters: the
+ * trailer told the twists away and the body then repeated them, which is what read as patchwork.
+ * core/lint.mjs warns outside its seconds.
+ */
+export const CONDENSATION_RULE = `The first chapter is the condensation: ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds
+  before the first real chapter, there so curiosity keeps the viewer to the end. Within its first
+  four sentences the viewer is inside the story: a year or a place, and a person (or a ship, a
+  document, a machine) doing one concrete thing; no greeting, no 「今天要來跟大家分享」, no
+  introduction of the topic. The number, date or name the title promises is said
+  within ${HOOK_SECONDS} seconds. Then that one scene goes on, in the order it happened, up to the
+  first fact that makes no sense, about 15 to 25 seconds, and stops there without telling why.
+  Then it turns (「但這還不是最怪的。」) and throws three or four of the later chapters' moments,
+  in the order the video reaches them, each stranger than the one before, so the viewer wants to
+  see the whole video (owner, 2026-10-13: the opening needs many hooks). Each one is an event
+  (who did what, where, in which year) cut off just before its result, as a sentence that stops
+  or as a question; never the result, the answer or the ending (「法庭把甲板上的污跡送去化驗。」
+  is a teaser; 「化驗說那不是血。」 gives it away). Each teaser line is the setup of a loop in the
+  "loops" table, paid off in the chapter that reveals it, where the narration names it
+  (「還記得開頭那道刀痕嗎？」): that callback is not a retelling. Its picture is the shot of the
+  chapter that pays it off. The condensation's last sentence is the question the whole video
+  answers, and the second chapter opens on what happened next in the scene. The channel intro
+  bumper plays after this chapter, not before it, so the first spoken line is at 0:00. No table
+  of contents: a teaser is a moment, never a topic (「接下來我們會看到」「看完你會知道」「這集講
+  A、B，還有 C」 are not hooks; lint reads the whole condensation for them).`;
+
+/**
+ * How a narrated video is told as one story (script-writing.md §故事主線與鉤子; owner, 2026-10-13:
+ * the content "feels patchwork", viewers cannot follow it, it should be told like a story with
+ * hooks placed now and then, 50 of 100 to reach 85). Sent with CONDENSATION_RULE to every
+ * narrated writer and listener: slides storytelling, the explainer routes, the brand story.
+ * core/narrative.mjs reads what it can off the script; the blind panel reads the rest.
+ * Its story shapes and single protagonist came on 2026-10-15 (owner: the AI and tech videos jump
+ * around): a blind read of three AI videos found no thread carried end to end, eight metaphors in
+ * one, a third of another on a detour and lists read out; the one thread they had read best.
+ */
+export const NARRATIVE_RULES = `
+One story, not sections (the spine):
+- The video is ONE story told in the order it happened or was found out, from one person (or
+  ship, document, company) at one moment to the answer the title asks for. The brief's 主線
+  (who, from which moment, to which answer) and 轉折 (three to five events in order, each with
+  the chapter that reveals it, each more surprising than the last) are the script's order.
+- A chapter is one beat of the story: one event or one reveal, named by what happens in it
+  (「九桶是空的」「化驗說不是血」), never by its function (背景, 流傳的版本, 檔案裡有什麼, 結論,
+  最站得住的解釋, 開場). A ten-minute video has five to seven chapters of 60 to 120 seconds;
+  only the last may be 「現在怎麼看」. What a format owes its viewer (the legend named as the
+  legend, each record with its year and who made it, 「沒有定論」 said where nothing is settled,
+  the records read before the explanation) is told inside the story, wherever it falls, not as
+  the order of the chapters.
+- The next chapter's first sentence is what happened next, or the answer to what the chapter
+  before left hanging; never a label (「先講…」「回到…」「打開第一頁」「這一章回答…」「接下來」
+  「第 N 頁」; lint warns). Chapters end in turns: a question, a stop before the event (「三天
+  後，電報來了。」), a number, a reversal, never the same way every time.
+One protagonist, one story shape (written for AI and tech topics, held by every narrated video):
+- Before writing, pick ONE shape and ONE protagonist (a slides brief names them on its 故事線 and
+  主角 lines; otherwise the 主線 does). 事件型, news: open at the moment it happened to one person,
+  system or team, follow how it was found out and answered, end on what it means for the viewer.
+  實測型, a tutorial or a review: open on one concrete task the viewer will meet; each chapter is
+  one attempt and its actual result, and the result nobody expected is the turn (on the teaching
+  route the main example is this protagonist). 疑問型, a term or a myth: open on one everyday
+  confusion (問 AI 今天幾號，它很有把握地答錯), and each answer opens the next why. 抉擇型, A or B,
+  does it save money: one person with stated conditions (每月預算、拿來做什麼、手上哪台電腦) tries
+  both; end on what they chose and how the viewer chooses for their own conditions.
+- The protagonist (a person, a team, one image, one bill, one project) is in the opening and in
+  the close, and every chapter moves it on: a new attempt, a new result, a new question it now
+  faces. A new scene, product or fact enters only through it (媽媽那張圖被丟進偵測器；這張帳單多了
+  一行), never as a fresh example. The concrete scene a chapter owes is the protagonist's own (its
+  screen, its bill, its inbox), not a new comparison.
+- At most one metaphor in the whole video, brought in where the mechanism is hard and kept to the
+  end; a second metaphor is cut, not added. One reviewed video used eight (a chef, coins, a scale,
+  a post office, a motorbike, a shoebox, a bridge, a tasting), and a blind reader lost the thread
+  at every switch.
+- A section that does not move the protagonist's question is cut, or goes to the description. A
+  third of one video explained text watermarks while its story was one mother's image; the
+  stretches that followed her image were the ones the reader could follow.
+- A term is explained at the moment the protagonist meets it, in one line, as part of what
+  happens to it (「它要用的工具在網路上，而評估，就是讓模型做同一批固定的題目」), never as a
+  paragraph that stops the story. Two definitions in a row are a lecture: the second waits until
+  the story needs it, or is cut; a definition the story never uses is cut. A proof rewrite that
+  passed every panel question still lost its blind reader at one run of definitions (what an
+  evaluation is, what a public benchmark is, 對齊 dropped in abruptly): "lecture, not story", the
+  place they would have stopped watching.
+- A qualification the facts need is said once, attached to the claim it limits, in the same
+  sentence where possible; never a run of caveats before the answer the viewer is waiting for
+  (more than two hedge lines in a row is a lecture). A line that only says the line before again
+  in other words is cut. The next round of the same proof lost a fresh reader at four caveats
+  stacked before the answer (unnamed organisations, the report not marking each case, nothing
+  about external products, the cut meaning no live connection) and one line that re-said the last.
+- The condensation's closing question asks what the video answers; it never states an outcome a
+  later chapter presents as a reveal. That proof's opening question said every internal
+  evaluation went offline, and the reader failed no_spoiler when chapter 4 revealed it.
+- A thing is introduced before it is compared: the viewer meets A and B through the protagonist
+  before hearing which one wins. Nothing is read out as a list (a roll call of products, four
+  scores in four seconds, a table of who said what): each item that matters becomes an event for
+  the protagonist (it tries the tool, it gets the score, somebody's answer changes what it does
+  next), and the rest is cut or goes on a card (an update's numbered points, each told in its own
+  moves, are not such a list). A price or a limit is said as its number with the date it was read,
+  never 「以官網為準」.
+Hooks (open loops):
+- Every 60 to 90 seconds of the body, one question is left hanging, in one of four ways in
+  turn: forward (「先記住這個數字，等一下它會回來」「這件事晚一點講」), escalation (「但這還不是
+  最怪的」「問題來了」), holding back (tell what happened and stop; the why is a later
+  chapter's), or a turn (events go the other way). Lint warns on a stretch over 90 s without one.
+- Every loop is paid off later, and the payoff names it (「還記得那九桶嗎？」). The script lists
+  them in "loops": [{"setup": <line id>, "payoff": <line id>, "what": <what it holds back, ≤ 40
+  characters>}], at least three for ten minutes, three of them planted in the condensation; the
+  schema refuses a payoff before its setup. A loop with no payoff is cut or paid.
+- At most one forward hook in the whole video says so out loud. 「先記住這個數字，等一下它會回來」
+  is the one hook that steps outside the story, so once is emphasis and three times is the narrator
+  organising the video for the listener. Every other forward hook is carried by the withheld fact
+  alone: 「兩百七十二頁，只要講到這裡的句子就塗掉」 needs nothing added, because a listener remembers
+  it without being asked to. A line that only announces that another item follows (「這個地方的名字
+  越來越多」) is not a hook at all, it is a table of contents; cut it and let the item land.
+- 「還記得…」 appears at most five times in an episode and never twice in a row. Passing the
+  panel is not the same as sounding right: one rewrite cleared all ten questions with ten of them,
+  and the same reader said the last four minutes had stopped being a story and become a formula,
+  while the four sister episodes used four or five each. Keep the phrase for hooks that reach back
+  minutes. Inside a chapter, carry the thing forward instead (「那根量水深的桿子，現在有用了」): a
+  hard link is not a retelling, because it moves the object on rather than reporting it again.
+- The close may not claim more than the record does. "Save the answer for the close" is a rule
+  about telling, not a licence to settle what the sources leave open: where the record holds two
+  accounts the close says so and attributes each one aloud, and where it has only ruled things out
+  the close says nothing is settled. Attribution on a card does not count, because a listener hears
+  none of the cards and a dubbed track reads none of them. Two of the first five scripts written to
+  these rules overstated their closing answer, both while fixing a close that had re-told the body,
+  and both were caught by a fact-checker rather than by the panel.
+- Naming a loop is not paying it. The sentence after 「還記得那…嗎？」 carries something the
+  listener does not have yet: a new fact, a new number, something that happened later. Re-reading
+  the line that planted it replays the hook instead of paying it, and a blind reader fails that as
+  a retelling. With nothing new to give, cut the forward hook and its callback together: nobody
+  misses a question that was never asked, and everybody feels a promise that was not kept.
+- A fact is told once. The opening's facts come back in the body only as a callback; a number
+  said in three sentences is a warning.
+- Nothing announces what is coming, anywhere in the video, not only in the opening. A sentence
+  whose only job is to say that the explanation follows (「所以目前最站得住的解釋，是這樣的。」) is
+  cut, and the next sentence starts. Counting scaffolding is the same offence wearing other clothes
+  (「排成一張表，前四個…」「剩下的兩個…」「其中一個是…另一個說法是…」): when seven accounts fall one
+  by one, each one is an event, somebody proposing it in a year and a record knocking it down, not
+  item n of a list. Lint only reads the first 60 s for this; the panel reads the rest.
+- A summary is a retelling, and it hides in two places. The close carries only what is new (the
+  answer and its number, what is still unexplained, the question to the viewer) and never re-tells
+  the body's turns. A bridge line between chapters moves forward instead of recapping the chapter
+  just finished: the next chapter's first sentence is what happened next, and the listener needs no
+  revision. Three of the first four scripts written to these rules failed a blind read in exactly
+  those two places. To point back at a fact on purpose, name it (「還記得那…」): that is a callback,
+  not a retelling.
+The voice of someone telling it:
+- Sentences are joined the way a person tells a story to one listener: 那麼、結果、然後、但是、
+  因為、沒想到、這時候; at least a third of the sentences follow from the one before (a pronoun,
+  a connective, 「這時候」); four free-standing fact sentences in a row read as a list. Long and
+  short alternate, a reveal is short, numbers arrive one at a time. One sentence may be split
+  over two lines, the first ending on 「，」; the line limit stands.
+- The narrator is in the room: at most one sentence of their own reaction a chapter (「這就很怪
+  了」), marked as theirs where it is an opinion.
+The close:
+- The last chapter (45 to 60 seconds) answers the opening question with its number and says
+  what is still unexplained. The outro's three sentences are the answer, one question the viewer
+  answers in a comment, one invitation to subscribe with the channel's standing reason. It never
+  names the next video, the next file or the next episode (lint refuses 「下一集」「下一支」
+  「下一份檔案」 in the close): YouTube's end screen points at the next video.
+`.trim();
 
 // A writing-only route inside the existing slides format. This does not alter the storytelling
 // register, voice, schema, pause calculation or QA, and is not sent to drama or translation stages.
@@ -36,7 +202,10 @@ Teaching route (plain slides; writing only):
 - Name the intended viewer, a concrete task or decision they need to improve, and what they
   can do after watching in 示範或實算. Choose an example for that benefit, not because an API
   is easy to demonstrate. An audience of everyday users needs a useful workflow, not an
-  internal-code tour. Introduce mechanisms and terms only when they explain an observed
+  internal-code tour. That does not close the thing being taught: its own file is on the
+  cards (for a command or a setting with no file, the full line or the fields), the lines
+  that make it work each with what they do, and the viewer changes at
+  least one of them. Introduce mechanisms and terms only when they explain an observed
   result or help the viewer take the next step; keep their exact official meaning.
 - Use one main worked example, a purposeful contrast and a transfer exercise. Show the
   problem and useful outcome early. Provide the starting materials and complete input,
@@ -44,7 +213,11 @@ Teaching route (plain slides; writing only):
   trust and risk BEFORE installation or any action that grants access; other examples give
   their relevant prerequisites. Compare expected and observed results. The contrast teaches
   when the method applies or fails; the exercise changes a meaningful requirement and gives
-  an answer or checking method. These may be variations of the main case, not unrelated demos.
+  an answer or checking method. These may be variations of the main case, not unrelated demos,
+  but each one uses the subject and ends on an observed result the main example did not
+  give. The same check on other names with the same kind of result, the same check on
+  another state of the same input, or a task done without the subject, is neither; one such
+  state may stand once, as the likely failure.
 - Reuse the same objects, names and diagram layout across chapters, revealing one new relation
   or state at a time. No forced chapter location, new metaphor, 「你以為…其實」 turn or closing
   question: a short conclusion or the next practical question is enough. If a comparison helps,
@@ -68,6 +241,11 @@ Teaching route (plain slides; writing only):
   output must be copied from a real run with its date and tool version. Keep official-page
   captures public: no login, OBS, secrets or private account screens.
 - Untested labels are honest disclosure, not completion of a practical learning promise.
+  A part that was not run is run before the script is written, or cut; a label does not keep
+  it in the video. The labelled walkthrough above is only for a step that is not an outcome
+  and stands on an official example (keeping it, turning it off, a documented failure), and
+  the label is the card's, never a sentence
+  of narration.
   If evidence for the core demonstration is missing, record that teaching gap for revision;
   do not call the tutorial ready because its length, layout or technical checks pass. Before
   production, an independent first-use review must establish whether the provided materials
@@ -87,6 +265,13 @@ Teaching route (plain slides; writing only):
 // Its first use (docs/videos/claude-code-mods-hands-on, the same day) found 21 places where a
 // planner and a writer had to guess; the evidence levels, the limits of the risk cap, what to
 // do when real text does not fit a card and where a card names its source answer those.
+// On 2026-10-11 the owner refused a finished tutorial that met every rule then written
+// (docs/videos/claude-code-mods-delivery-check-tutorial): a supplied mod whose source never
+// appeared reported whether three file names were in a folder the viewer already had open.
+// Thirteen tutorials were then read against the same yes-or-no questions; what the two refused
+// ones failed and the others passed is the subject opened on screen, an unpredicted observed
+// result and a main result from a real run, and all ten hands-on films talked about their own
+// making (tasks: 2026-10-11-tutorial-worth-rules).
 export const VALUE_RULES = `
 Content value (every slides video, teaching cards and illustrated storytelling alike; where these
 rules and a route's rules disagree, these win):
@@ -99,16 +284,77 @@ rules and a route's rules disagree, these win):
   do after it, each written as the action, the thing acted on and how the viewer knows it
   worked. These are not outcomes: something the viewer could look up and read off in one line
   (a version, a price, a menu), a caution on its own (be careful, think first, ask before
-  installing), or 「了解」「認識」「知道」 something. Running a command and judging its output
-  against what was asked is an outcome: the judging is the skill. When the sources carry fewer
+  installing), or 「了解」「認識」「知道」 something. Neither is a result the viewer can already
+  get in about a minute with what they use today (a look at the folder or the screen, one
+  ordinary prompt, one common command), whoever the audience is and however it is worded as
+  an action, nor a single step of another outcome (pasting a path, pressing a button), nor
+  making a thing that gives only such a result: the test is on what the made thing gives the
+  viewer. A judgment on the illustrated route is not measured this way. Running a command and judging its output
+  against what was asked is an outcome when no such quick way gives the same judgment: the
+  judging is the skill. When the sources carry fewer
   than two real outcomes, the planner takes another topic from "topics", or says so on the
-  brief's first line (「含金量不足：<what is missing>」); it does not pad.
+  brief's first line (「含金量不足：<what is missing>」); it does not pad. The section is a list,
+  one outcome an item; where the planner's line for this section says one or two, this rule's
+  two to four holds.
+- In a tutorial the main example is worth the method. 示範或實算 names the simplest way the
+  viewer already has to the same result, with no setup, as 「不用這個方法：…」: the first of
+  these that reaches it, a look at the folder or the screen, one common command, one ordinary
+  prompt, the product's nearest built-in feature; the example
+  stands only when the subject does something that way cannot, shown as an observed difference
+  with the simple way run beside it on the same input. Where that way cannot be run here (an
+  interactive screen, a signed-in account, a worker that runs nothing), its arm is CITED and
+  its card says so. The difference is something the viewer can then do that the simple way
+  cannot do at all, or a measured cost or failure of the simple way; where the answer appears
+  (a panel, a button, a time beside it) is not one. The main example's result is shown in the
+  run's own words, on a card whose source names the run; a summary of what somebody reported
+  is not that card. When the simple way gives the same result and the viewer loses nothing the
+  video demonstrates, the example is wrong for the
+  video: the planner takes another example or another topic, or opens the brief with
+  「含金量不足：…」, and a writer given such a brief reports it and does not write around it.
+  Telling the viewer in a late chapter that the simpler tool is enough does not repair it. The
+  other arm of that side-by-side run is the simplest way the viewer would really use, never nothing at
+  all (a Skill against the same steps left in CLAUDE.md, not against no instructions), unless
+  nothing is what the viewer uses today; a control run without the subject may still show
+  that the subject caused the result.
+- In a tutorial the viewer makes or changes the subject: the thing the title names that the
+  viewer installs, writes or sets (the mod, the Skill, the hook, the command), not the errand
+  the example runs it on. At least one outcome has the viewer
+  write it, have it written or edit it, and the cards show its own content: the lines that
+  make it work, each with what it does (for a command or a setting with no file, the full
+  line or the fields). A file that fits on three cards is shown whole; of a longer one the
+  cards show every line the viewer changes and the lines that call the product, and the
+  caption gives the lines shown out of how many. Having it written counts only with one
+  logged run from the request on the cards to the file on the cards; a request shown as
+  「可以這樣說」 beside a supplied package is the package. A supplied package the viewer only runs is not an outcome, whoever the
+  audience is: a viewer who does not write code still sees the file and changes the line that
+  carries their own case, and that change is run. What the viewer writes or changes to repeat
+  the main example is on the cards in full, the rest as the excerpts the card rule allows;
+  a download saves typing and never replaces what the video shows.
+  The verb in the brief's title and the video's title (做、寫、建立、設定) is carried out on
+  screen.
+- A tutorial's main example gives a result the viewer would not have predicted: a measured
+  number, a failure, the obvious way not doing what it was expected to. It is the example's
+  own result (RUN or SEEN; CITED where nothing can be run here), not an operator's slip (a
+  mistyped name) and not a result anyone would guess (it is loaded, so it works; the file is
+  absent, so it is reported absent). The video opens on it, or on the useful outcome with
+  that result as the turn of the main example; among results that qualify, the one with the
+  strongest evidence opens. Runs with
+  nothing unexpected in them mean the example is too easy: plan the case where the obvious
+  approach fails, and build the main example on it. A writer or a listener who finds no such
+  result, or no run of the simple way, in the run log reports it for a new plan: an expected
+  result is never worded as a surprise, and a comparison that was not run is never written.
 - Evidence has three levels, and each outcome names the highest it has. SEEN: observed in the
   product's own interface. RUN: a real run recorded with its input, action, result, date and
   tool version (a command, a test, a headless session). CITED: an official example with its
   page, or a worked calculation. An outcome with none of the three is dropped, not softened.
   The script never shows or tells a lower level as a higher one, and 示範或實算 lists as
-  「要先實作：…」 each thing a higher level would need: no run at all, or run but never seen.
+  「要先實作：…」 each thing a higher level would need: no run at all, or run but never seen
+  where there is something to see (a command and its output have nothing more to see). A
+  run counts once it is in the video's run log with its command, output, date and tool
+  version, whoever made it. When the plan comes before the runs, an outcome names the level
+  its listed run will give and stands until the runs are made; they are made and recorded
+  before the outline is chosen, and an outcome whose run failed or was not made is dropped
+  then.
   The result that opens the video is the strongest evidence there is, a test's output when
   nothing was seen. For something a model wrote on request, the proof is the artefact and the
   runs made on it; the request is shown as 「可以這樣說」 unless one logged run goes from that
@@ -117,15 +363,17 @@ rules and a route's rules disagree, these win):
 - A warning about the subject itself (it is not sandboxed, it costs money, it can break) is one
   chapter at most, said once, with the one check that answers it. It is never the title, the
   hook or the angle, unless the subject itself is an incident. The cap does not cover what a
-  tutorial owes its viewer anyway: a common failure and how to find it, the exception in an
-  update's fourth move, and a card's label of what was and was not run, which is repeated
-  wherever it applies. The owner's own incident may open a tutorial as the reason for its
+  tutorial owes its viewer anyway: a common failure and how to find it, what the video's own
+  example does not catch, the exception in an update's fourth move, and a card's label of
+  what was and was not run, which is repeated wherever it applies. That label is the card's
+  (its source, its caption, its date), not a sentence of narration. The owner's own incident may open a tutorial as the reason for its
   example.
 - Chapters follow the questions a viewer asks, in the order they ask them: what do I get (the
   result first, on screen), how is it different from what I already use, how do I do it, how
   do I know it worked, how do I keep it or undo it. Each chapter answers the question the one
-  before it raised. The opening chapter is the result alone; the mechanism is the second
-  chapter. Name the tools the viewer already uses and give the rule for choosing between them
+  before it raised. The opening chapter is the condensation: the useful result, then the
+  main example's surprise told up to what happened; the mechanism is the second chapter.
+  Tutorials share this order; what must differ from an earlier video is the example, the opening and the sequence of cards. Name the tools the viewer already uses and give the rule for choosing between them
   in one sentence each (「一直重貼同一段指示，寫成 Skill」), and say plainly when the simpler
   tool is enough. When loading or installing grants access, the check that settles trust
   comes before it, wherever the loading step falls in that order. On the teaching route a
@@ -133,17 +381,30 @@ rules and a route's rules disagree, these win):
 - Every step the viewer is meant to repeat shows the exact thing to type or press, in full, on
   a code, chat, steps or terminal card: the command, the sentence to say to the model, the
   setting's name. The narration says what it does, not its characters. When real text does
-  not fit a card (code: 64 characters a line, 9 lines beside a title and a caption;
-  chat: 44 characters; terminal: 78 columns, no home directory): re-wrap the source file
-  itself and run it again, so the card still shows the real file; or show a contiguous
-  excerpt and name the whole file in the caption and the description. A request longer than a
+  not fit a card (code: 64 characters a line, 9 lines beside a title and a caption and 12
+  beside a caption alone; chat: 44 characters; terminal: 78 columns, no home directory):
+  re-wrap the source file itself and run it again, so the card still shows the real file;
+  or show a contiguous excerpt and name the whole file in the caption and the description.
+  Real output that is too long or carries a home directory is excerpted in whole lines, in
+  their order, or the run is made again from a folder whose path fits; it is never edited. A request longer than a
   chat bubble goes on a code card as plain text. Never alter a character. A real line too
   long for a terminal card, or a tool result read out of a session rather than printed by a
-  terminal, goes on a quote, compare or table card whose "source" names the run
-  (「實跑 2026-10-09｜<tool and version>」). A choice among alternatives is a table; steps
-  draws a sequence.
+  terminal, goes on a quote, compare, steps or table card whose "source" names the run
+  (「實跑 2026-10-09｜<tool and version>」); the events of one run in order are a steps
+  card. One card holds one level of evidence: when its rows differ, split it, or name the
+  odd row's level in that row or by its number in the source. A command too long for a
+  terminal card goes on a code card when it fits as typed; otherwise its parts go in a
+  table and the whole command in the description. An excerpt's caption gives the file and
+  the line range it shows. A terminal card's tool_version names the program that printed
+  the output. A source line takes the room of a row: a table or a list at its limit gives
+  up its title or splits. A quote card holds one sentence of its source, or the clause that
+  carries the fact. The render stage judges a full card: what it reports as overflowing is
+  cut, not shrunk. A choice among alternatives is a table; steps draws a
+  sequence.
 - An update or a guide is told as numbered points, each in the same four moves: what the
-  viewer did before, what changed, exactly what to do now, and the exception.
+  viewer did before, what changed, exactly what to do now, and the exception. An update's
+  points are not a main example: the tutorial rules on the main example and on making the
+  subject apply to it only where a point is itself a worked example.
 - Every sentence of narration carries a fact, a step, a reason, a result or a choice; the cta
   card's sentence and the outro's comment question and subscribe invitation are the three
   exceptions. Where a fact comes from is the card's own field and the description ("source"
@@ -153,36 +414,153 @@ rules and a route's rules disagree, these win):
   「根據官方」; lint counts the family). A number from an official page is said, and its card
   names the page and the day; a number from the video's own run, a limit in its own code or
   the owner's own incident is said as that, and its card names the run, the file or the date.
-  「以官網為準」 is never the fallback: a number with neither source is left out. At most two
+  「以官網為準」 is never the fallback: a number with neither source is left out. The narration
+  never talks about the video's own making: whether a part was run, recorded, seen or
+  verified, which of the video's makers reported a run's result, what a card is or is not
+  (「這支影片沒有跑過」「還沒看過」
+  「這是整理卡，不是錄影」「尚待驗證」). That is the card's label and the description's, the
+  opening's included; the narration says what the step does. Saying a number or a result as
+  this video's own run's, or what a run did and how many times it was made, is the step, not
+  the making. In a tutorial a part nobody ran is run or cut, unless it is a step that may
+  stand on CITED evidence (keeping it, turning it off, a documented failure), which keeps
+  its card's label. At most two
   sentences in a video set a scene or describe a picture; pointing at the card on screen
   (「亮起來的這一行」) is not one of them. A comparison is used once, where the mechanism is
   hard to see, and kept, never a new one per chapter. Pictures may still travel; the words do
   not follow them.
 - The length comes from substance: a second worked example, a common failure and how to find
-  it, a contrast, an exercise. Never from a chapter on something one line answers, from
+  it, a contrast, an exercise. In a tutorial each of those uses the subject and adds an observed result the
+  main example did not give (outside a tutorial: a sourced fact the earlier chapters did not
+  give); a habit that would read the same in a video on another subject
+  (a file can exist and be empty) is restating. Never from a chapter on
+  something one line answers, from
   restating, or from scene-setting. When the material ends short of the minimum, add an
   example the sources carry or say so in the report; do not fill.
 - A listener keeps these rules as well: it reports a sentence that carries nothing, a source
-  spoken in the narration, a chapter one line would answer, or an outcome with no proof, for a
-  writer revision; it never repairs one by inventing a fact, a run or an example.
+  spoken in the narration, a sentence about the video's own making, a chapter one line would
+  answer, a chapter that never uses the subject, a main example the simple way equals (those two
+  in a tutorial only), or an
+  outcome with no proof, for a
+  writer revision, or for a new plan when the example itself is at fault; it never repairs one by inventing a fact, a run or an example.
+`.trim();
+
+// The words the audio check has misheard on this channel, each with the wording that passed
+// (the table in script-writing.md §給 TTS 唸的稿子 also says what each was heard as). The check
+// transcribes the synthesized voice and compares it with the script; two tutorials on
+// 2026-10-09 had 13 and 19 of 151 lines flagged on their first check, and a line that was only
+// recorded again was flagged again. Sent to the slides writer and listener.
+export const MISHEARD_WORDS = [
+  ["實跑", "實際跑過"],
+  ["行程", "執行中的程式"],
+  ["讀檔", "讀取檔案"],
+  ["數什麼", "要數什麼"],
+  ["擋呼叫的", "負責擋下呼叫的"],
+  ["窗格", "畫面上的介面"],
+  ["沒人接手", "沒有人替它處理"],
+  ["界線", "原則"],
+  ["餵假事件", "送假事件進去"],
+  ["印出", "顯示的是"],
+  ["放行", "讓它通過"],
+  ["無介面", "不開畫面的"],
+  ["那一欄", "這個欄位"],
+  ["沒接的那次", "沒有接上的那一次"],
+  ["測試是紅的", "測試沒有通過"],
+  ["有檔、沒檔", "有 CLAUDE.md、沒有 CLAUDE.md（說出檔名）"],
+  ["有檔案", "有 CLAUDE.md（說出檔名）"],
+  ["被叫到", "被呼叫"],
+  ["含糊的那一份", "寫得含糊的那一份"],
+  ["指到", "對應"],
+  ["搬去 hook", "改用 hook 來做"],
+  ["本機", "這台機器"],
+  ["交辦", "把工作交出去"],
+  ["指定前景", "指定不放到背景"],
+  ["背景送回來的", "晚一點才送回來的"],
+  ["是主對話自己", "是由主對話寫出來的"],
+  ["報告檔", "那份報告"],
+  ["沒有量", "沒有量到"],
+  ["呼叫進來", "有呼叫進來的時候"],
+  ["九行", "一共九行"],
+  ["唯讀工具", "只能讀取的工具"],
+  ["互動式 session", "互動式的畫面"],
+  ["握手那一則", "握手的那一則訊息"],
+  ["先比禁止", "先比對禁止規則"],
+  ["三條禁止", "禁止規則有三條"],
+  ["那一次，", "在這一次執行裡，"],
+  ["位址", "網址（指的是 URL 時）"],
+  ["多一行", "會多出一行"],
+  ["執行了。", "被執行了。"],
+  ["對上就", "對上了就"],
+  ["四項", "那四項"],
+  ["同一句要求", "同樣的一句要求"],
+  ["同事也要", "你的同事也要"],
+  ["怎麼搬？", "怎麼搬過去？"],
+  ["帶上旗標", "加上載入外掛的旗標"],
+  ["用同一個旗標", "加上同一個旗標"],
+  ["這支 hook", "這一支 hook"],
+  ["拿一句會用到", "拿一個會用到"],
+  ["只載入外掛", "只有載入外掛"],
+  ["沒有載入的三次", "沒有載入外掛的那三次"],
+  ["拼錯的鍵", "拼錯的欄位"],
+  ["不問 Claude", "不用問 Claude"],
+  ["那一筆的清單", "那一筆紀錄裡的清單"],
+  ["尺取十一", "那把尺取十一"],
+  ["比尺大", "比那把尺大"],
+  ["在尺以內", "在誤差範圍以內"],
+  ["什麼時候進請求", "是什麼時候送進去的"],
+  ["第一個請求比基準", "第一個請求的用量比基準"],
+  ["影片量到的", "影片實際量到的"],
+  ["這些數字怎麼量", "這些數字是怎麼量出來的"],
+  ["MCP 那一列", "看 MCP 這一列的時候"],
+  ["延後載入一起", "延後載入的機制一起"],
+  ["直接載入", "一開始就載入"],
+  ["七行就", "一共七行，就"],
+  ["交出 subagent", "把工作交給 subagent"],
+  ["那支 hook", "同一支 hook"],
+  ["只是為了量。", "只是為了量測用的。"],
+  ["延後載入，每多", "用延後載入的時候，每多"],
+  ["延後多出來的", "延後載入多出來的"],
+  ["延後載入的這一次", "用延後載入的這一次"],
+  ["延後載入的減預設的", "用延後載入的，減預設的"],
+  ["延後的到底是什麼", "被延後的到底是什麼"],
+  ["只開八個內建工具的練習專案", "練習專案只開八個內建工具"],
+  ["只多六十九", "多出來的是六十九"],
+  ["多出來的只有名稱", "多出來的只是名稱而已"],
+  ["只接指定的伺服器", "也只連接指定的伺服器"],
+  ["沒接伺服器的", "沒有接伺服器的"],
+  ["沒接、接上", "沒有接伺服器、接上"],
+  ["同一個工具數", "工具數量相同的兩次"],
+  ["推回零個", "回推到零個"],
+  ["定義合計", "工具定義加起來"],
+  ["兩個、十個那兩級", "兩個和十個工具那兩次"],
+  ["一開始就載入的那一次", "一開始就全部載入的那一次"],
+  ["那一次重跑", "把這一次重新跑"],
+  ["卻零個工具", "可是一個工具都沒有"],
+];
+
+export const HEARD_RULES = `
+Words the audio check mishears (zh-TW narration): the check transcribes the synthesized voice
+and compares it with the script, and a homophone is heard the same way when it is recorded
+again, so it is the wording that changes. Write the form on the right from the start:
+${MISHEARD_WORDS.map(([written, instead]) => `「${written}」→「${instead}」`).join("、")}.
+What they share: a one-character verb, a two-character term, or a short sentence that starts
+without its subject. Add a character or two, or use the commoner spoken word. Numbers,
+Latin-script words and proper names stay exactly as written, and the facts do not change.
 `.trim();
 
 export const REGISTER_RULES = `
 The narration is TOLD, not explained (the storytelling register, docs/videos/ILLUSTRATED.md):
-- The first sentence is a counter-intuitive claim or the viewer's own question; the hook has landed
-  within ${HOOK_SECONDS} seconds. No greeting, no 「今天要來跟大家分享」, no table of contents.
+- ${CONDENSATION_RULE}
 - The first chapter turns at least once on 「${TWIST_MARKER}…其實…」: what the viewer believes, then
   what is so, with the fact that shows it. Later chapters may turn the same way when they have a
   real reversal; never fake one.
-- Every chapter's LAST sentence is the question the next chapter answers (「那它到底怎麼做到的？」);
-  the last chapter's last sentence answers the opening question instead. Never 「接下來我們來看」.
+${NARRATIVE_RULES}
 - Every chapter has at least one concrete scene or comparison a viewer can picture (a kitchen at 2 am,
   a queue at a counter, 「等於一杯咖啡的錢」), and the pictures ("shot" scenes) draw those scenes.
 - Sentences alternate long and short; a reveal is a short sentence. Numbers arrive one at a time,
   each with what it means in the viewer's day.
 - The pauses are the tool's: it sets "pause_after_ms" from the text after you answer
   (${PAUSE_BEATS.hook} after the cold open's first sentence, ${PAUSE_BEATS.reveal} on the sentence before
-  「其實」, ${PAUSE_BEATS.cliffhanger} on a chapter's closing question) and clears it everywhere else. Leave
+  「其實」, ${PAUSE_BEATS.cliffhanger} on a chapter's last sentence) and clears it everywhere else. Leave
   "pause_after_ms" out; the beats land where the words put them.
 - Facts stay facts: the register changes wording, order and rhythm, never a number, a name, a
   version or who said what; every claim still rests on "sources".
@@ -227,10 +605,11 @@ function closingLines(doc, chapters) {
 /**
  * Set the register's pause beats from the text, in place, and return the script: PAUSE_BEATS.hook
  * after the first spoken line (the cold open's first sentence), PAUSE_BEATS.reveal on the line
- * before every line that says 「其實」, PAUSE_BEATS.cliffhanger on a chapter's last line when it is
- * a question (the chapters and closers registerSummary counts). A line on two beats keeps the
- * longer pause. One line is one spoken sentence (script-writing.md), so "the sentence before"
- * is the line before, across scene boundaries.
+ * before every line that says 「其實」, PAUSE_BEATS.cliffhanger on every chapter's last line but the
+ * last chapter's (a chapter ends on a turn, whether a question, a stop before the event, a number
+ * or a reversal: NARRATIVE_RULES; the chapters and closers registerSummary counts). A line on two
+ * beats keeps the longer pause. One line is one spoken sentence (script-writing.md), so "the
+ * sentence before" is the line before, across scene boundaries.
  *
  * Every other "pause_after_ms" is cleared first, a model's included: the rule says the beats sit
  * there and nowhere else, so the tool owns the field on a register script. The model no longer
@@ -251,7 +630,7 @@ export function setPauseBeats(doc) {
     if (index > 0 && said(line).includes(REVEAL_MARKER)) beat(lines[index - 1], PAUSE_BEATS.reveal);
   }
   for (const line of closingLines(doc, chaptersOf(doc))) {
-    if (line && typeof line === "object" && QUESTION.test(said(line))) beat(line, PAUSE_BEATS.cliffhanger);
+    if (line && typeof line === "object") beat(line, PAUSE_BEATS.cliffhanger);
   }
   for (const line of lines) {
     if (beats.has(line)) line.pause_after_ms = beats.get(line);
@@ -275,6 +654,7 @@ export function registerSummary(doc) {
     twists: lines.filter((text) => text.includes(TWIST_MARKER)).length,
     chapters: chapters.length,
     chapter_questions: closers.filter((text) => QUESTION.test(text)).length,
+    loops: Array.isArray(doc.loops) ? doc.loops.length : 0,
     opener_is_greeting: GREETING.test(lines[0] ?? ""),
     pauses: [...eachLine(doc)].filter(({ line }) => Number.isInteger(line.pause_after_ms) && line.pause_after_ms > 0).length,
   };
@@ -283,5 +663,5 @@ export function registerSummary(doc) {
 /** The summary as one line for the terminal. */
 export function registerLine(summary) {
   const closers = Math.max(summary.chapters - 1, 0);
-  return `${summary.lines} lines, ${summary.twists} 「${TWIST_MARKER}」 turn${summary.twists === 1 ? "" : "s"}, ${summary.chapter_questions} of ${closers} chapter${closers === 1 ? "" : "s"} closing on a question, ${summary.pauses} pause beat${summary.pauses === 1 ? "" : "s"}${summary.opener_is_greeting ? "; the opener greets instead of hooking" : ""}`;
+  return `${summary.lines} lines, ${summary.twists} 「${TWIST_MARKER}」 turn${summary.twists === 1 ? "" : "s"}, ${summary.chapter_questions} of ${closers} chapter${closers === 1 ? "" : "s"} closing on a question, ${summary.loops ?? 0} open loop${summary.loops === 1 ? "" : "s"}, ${summary.pauses} pause beat${summary.pauses === 1 ? "" : "s"}${summary.opener_is_greeting ? "; the opener greets instead of hooking" : ""}`;
 }

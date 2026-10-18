@@ -129,13 +129,18 @@ class FakeGoogle:
         path = url.path
         if path == "/youtube/v3/channels":
             refused = self._refused("channels.list")
+            uploads = {"contentDetails": {"relatedPlaylists": {"uploads": "UU" + CHANNEL[2:]}}}
             return refused or httpx.Response(
-                200, json={"items": [self.channel] if self.channel else []}
+                200, json={"items": [{**self.channel, **uploads}] if self.channel else []}
             )
+        if path == "/youtube/v3/playlistItems":
+            refused = self._refused("playlistItems.list")
+            newest = [{"contentDetails": {"videoId": key}} for key in reversed(self.videos)]
+            return refused or httpx.Response(200, json={"items": newest[:50]})
         if path == "/youtube/v3/videos" and request.method == "GET":
             refused = self._refused("videos.list")
-            video = self.videos.get(query["id"][0])
-            return refused or httpx.Response(200, json={"items": [video] if video else []})
+            found = [self.videos[key] for key in query["id"][0].split(",") if key in self.videos]
+            return refused or httpx.Response(200, json={"items": found})
         if path == "/youtube/v3/videos" and request.method == "PUT":
             refused = self._refused("videos.update")
             if refused:
@@ -358,7 +363,8 @@ def test_an_update_keeps_what_the_video_has_and_replaces_only_what_the_site_owns
     )
     assert body["id"] == "vid00000001"
     assert body["snippet"] == {
-        "title": "改過的標題",
+        # Every title ends with its language's captions tag (requests.CAPTION_TAGS).
+        "title": "改過的標題｜CC字幕",
         "description": "改過的說明",
         "tags": ["AI", "模型"],
         "categoryId": "28",
@@ -376,8 +382,8 @@ def test_an_update_keeps_what_the_video_has_and_replaces_only_what_the_site_owns
     }
     assert body["localizations"] == {
         "ko": {"title": "k", "description": "d"},
-        "en": {"title": "Picking an AI model", "description": "How to pick."},
-        "ja": {"title": "AIモデルの選び方", "description": "選び方。"},
+        "en": {"title": "Picking an AI model｜CC Subtitles", "description": "How to pick."},
+        "ja": {"title": "AIモデルの選び方｜字幕付き", "description": "選び方。"},
     }
     assert current["localizations"]["zh-TW"] == {"title": "old"}, "the input is not mutated"
 
@@ -454,9 +460,31 @@ def test_an_english_narration_is_both_defaults_and_keeps_zh_tw_as_a_localization
     # The own language is the snippet, so its copies go; the foreign zh-TW one is sent.
     assert body["localizations"] == {
         "ko": {"title": "k", "description": "d"},
-        "zh-TW": {"title": "AI 模型怎麼挑", "description": "這支影片回答怎麼挑 AI 模型。"},
-        "ja": {"title": "AIモデルの選び方", "description": "選び方。"},
+        "zh-TW": {"title": "AI 模型怎麼挑｜CC字幕", "description": "這支影片回答怎麼挑 AI 模型。"},
+        "ja": {"title": "AIモデルの選び方｜字幕付き", "description": "選び方。"},
     }
+
+
+def test_every_title_ends_with_its_language_s_captions_tag_once() -> None:
+    assert requests.captioned("AI 模型怎麼挑", "zh-TW") == "AI 模型怎麼挑｜CC字幕"
+    assert requests.captioned("Picking a model", "en") == "Picking a model｜CC Subtitles"
+    assert requests.captioned("AIモデルの選び方", "ja") == "AIモデルの選び方｜字幕付き"
+    assert requests.captioned("AI 모델 고르기", "ko") == "AI 모델 고르기｜CC 자막"
+    # A package the worker composed after the rule already has it: it is not added twice.
+    assert requests.captioned("AI 模型怎麼挑｜CC字幕", "zh-TW") == "AI 模型怎麼挑｜CC字幕"
+    assert requests.captioned("AI 模型怎麼挑｜CC字幕 ", "zh-TW") == "AI 模型怎麼挑｜CC字幕"
+    # A language without a tag of its own reads the English one.
+    assert requests.captioned("t", "fr") == "t｜CC Subtitles"
+    assert set(requests.CAPTION_TAGS) == set(requests.NARRATION_LANGUAGES)
+    # A tag added by hand, or in another language, is replaced rather than added to.
+    assert requests.captioned("Area 51｜ CC字幕", "en") == "Area 51｜CC Subtitles"
+    assert requests.captioned("51 區｜ CC字幕｜CC字幕", "zh-TW") == "51 區｜CC字幕"
+    assert requests.captioned("t | CC Subtitles", "ja") == "t｜字幕付き"
+    # The short tag when the full one does not fit; the full one when neither does, so the
+    # length check says how far over the title is.
+    assert requests.captioned("a" * 90, "en") == "a" * 90 + "｜CC"
+    assert requests.captioned("a" * 90 + "｜CC", "en") == "a" * 90 + "｜CC"
+    assert requests.captioned("a" * 98, "en") == "a" * 98 + "｜CC Subtitles"
 
 
 def test_a_legacy_package_without_a_language_is_zh_tw_as_before() -> None:

@@ -103,7 +103,6 @@ test("closing particles at clause boundaries keep Mandarin words and reject othe
   assert.equal(matchKind("他沒有氣餒，也不會放棄。", line("他沒有氣餒，也不會放棄。"), lexicon), "exact");
   assert.equal(matchKind("別氣餒，明天再試。", line("別氣，明天再試。"), lexicon), null, "lexical 氣餒 must not become 氣 at a punctuation boundary");
   assert.equal(matchKind("好耶，明天再試。", line("好，明天再試。"), lexicon), null, "lexical 好耶 must not become 好 at a punctuation boundary");
-  assert.equal(matchKind("别气馁,明天再试。", line("别气，明天再试。"), lexicon, "zh-CN"), null, "Simplified lexical 气馁 is retained too");
   assert.equal(matchKind("他沒有氣，也不會放棄耶。", line("他沒有氣餒，也不會放棄。"), lexicon), null, "the intended word 氣餒 cannot lose 餒");
   assert.equal(matchKind("好，明天再去耶。", line("好耶，明天再去。"), lexicon), null, "an intended 耶 cannot be omitted");
   assert.equal(matchKind("耶，今天還沒開，也不能先去耶。", line("今天還沒開，也不能先去。"), lexicon), null, "an unexpected leading 耶 is not a closing particle");
@@ -114,7 +113,6 @@ test("closing particles at clause boundaries keep Mandarin words and reject othe
     ["木作室耶，不能先去耶。", "陶藝室，不能先去。"],
   ]) assert.equal(matchKind(changed[0], line(changed[1]), lexicon), null, "numerals, negation and nouns still need to match");
 
-  assert.equal(matchKind("今天还没开馁,不能先去耶。", line("今天还没开，不能先去。"), lexicon, "zh-CN"), "filler");
   for (const locale of ["en", "ja", "ko"]) {
     assert.equal(matchKind("Go耶, then wait餒.", line("Go, then wait."), lexicon, locale), null, `${locale} has no Mandarin particle rule`);
   }
@@ -131,14 +129,14 @@ test("hintTerms lists each English word a line says once, as the script spells i
 });
 
 test("--locale takes a dub's locale and nothing else", () => {
-  assert.deepEqual(DUB_LOCALES, ["en", "ja", "ko", "zh-CN"]);
+  assert.deepEqual(DUB_LOCALES, ["en", "ja", "ko"]);
   for (const locale of DUB_LOCALES) assert.equal(parseDubLocale(locale), locale);
-  for (const bad of ["zh-TW", "fr", "EN", "zh-cn", ""]) assert.throws(() => parseDubLocale(bad), UsageError, bad);
+  for (const bad of ["zh-TW", "fr", "EN", "zh-cn", "zh-CN", ""]) assert.throws(() => parseDubLocale(bad), UsageError, bad);
 });
 
 test("a dub's clips, timeline, transcript cache and flags file are its own, beside the narration's", () => {
   assert.deepEqual(trackFiles(), { audio: "audio", timeline: "timeline.json" });
-  assert.deepEqual(trackFiles("zh-CN"), { audio: path.join("dubs", "zh-CN", "audio"), timeline: path.join("dubs", "zh-CN", "timeline.json") });
+  assert.deepEqual(trackFiles("ko"), { audio: path.join("dubs", "ko", "audio"), timeline: path.join("dubs", "ko", "timeline.json") });
   assert.deepEqual(checkFiles(), { cache: path.join("review", "check.json"), flags: path.join("review", "check-flags.json") });
   assert.deepEqual(checkFiles("ja"), { cache: path.join("review", "check.ja.json"), flags: path.join("review", "check-flags.ja.json") });
 });
@@ -179,15 +177,7 @@ test("outside Chinese a transcript passes only when its words match after case, 
   assert.equal(matchKind("새 모델이 나올 때마다 순위표 2위가 바뀝니다.", ko, lexicon, "ko"), null);
 });
 
-test("zh-CN keeps the same-sound and filler rules, in Simplified characters", () => {
-  const lexicon = { schema_version: 1, terms: {} };
-  const line = (text) => ({ id: "k7p2", text });
-  assert.equal(matchKind("重要的是你知道他考的不是你的工作", line("重要的是，你知道它考的不是你的工作。"), lexicon, "zh-CN"), "sound");
-  assert.equal(matchKind("吉莲大多数只要一次", line("级联大多数只要一次。"), lexicon, "zh-CN"), "sound");
-  assert.equal(matchKind("三成的升级比例诶，是示范用的假设", line("三成的升级比例，是示范用的假设。"), lexicon, "zh-CN"), "filler");
-  assert.equal(matchKind("官方自己也没有给出一句肯定答案馁", line("官方自己也没有给出一句肯定答案。"), lexicon, "zh-CN"), "filler");
-  assert.equal(matchKind("单一期间就是一次呼叫的时间", line("单一旗舰，就是一次呼叫的时间。"), lexicon, "zh-CN"), null, "旗 qí and 期 qī differ in tone");
-});
+// zh-CN had the same-sound and filler rules in Simplified characters until it left the video languages (2026-10-09).
 
 test("a dub's lines follow its timeline and say their translation; a line without one stops the check", () => {
   const timeline = { lines: [{ id: "m4qa", scene: "hook" }, { id: "k7p2", scene: "hook" }] };
@@ -517,7 +507,7 @@ test("check-audio --locale asks for dub first when there is no dub, with the usa
   assert.equal(server.calls.transcribe.length, 0);
   const narration = context(box, server.fetchImpl);
   assert.equal(await main(["check-audio", "--slug", box.slug, "--locale", "zh-TW"], narration.ctx), EXIT.usage);
-  assert.match(narration.out.stderr, /--locale must be one of en, ja, ko, zh-CN/);
+  assert.match(narration.out.stderr, /--locale must be one of en, ja, ko/);
 });
 
 test("a second transcript clears a line only Gemini misheard; one that misses the same words keeps the flag", async () => {

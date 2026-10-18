@@ -1,0 +1,34 @@
+-- said.mjs | result lines 1
+   result 1: success | is_error false | text 644 chars, 24 lines
+      | 1.2.1 的發版檔案都改好了，另外兩項查詢也有結果。
+      | 
+      | **發版修改**
+      | - `package.json`：version 改成 1.2.1。
+      | - `CHANGELOG.md`：新增 `## v1.2.1 (2026-10-11)`，把 Unreleased 底下的「Child fares round up to a whole dollar.」搬進去，Unreleased 標題保留。
+      | - `README.md`：Latest release 改成 v1.2.1。
+      | - `releases/v1.2.1.md`：新增，照 template 的三個標題寫。
+      |   - 內文是我依 changelog 項目寫的，請看一下措辭。
+      |   - 模板首行 `# vX.Y.Z` 我換成了 `# v1.2.1`。
+      | - 沒動 `src/`，所以依專案慣例不需要另加 CHANGELOG 行。
+      | 
+      | **log-scout：開始了卻沒結束的 job**
+      | | job | 檔案 | 開始於（行號） |
+      | |---|---|---|
+      | | J2103 | `sync-2026-10-08.log` | 8 |
+      | | J2204 | `sync-2026-10-09.log` | 11 |
+      | 
+      | 共 2 筆。
+      | 
+      | **G-417**：頭燈，在貨架 D-07，剩 37 個。
+      | 
+      | 未驗證：沒有跑 `checks/` 的測試，也沒有自行打開 logs/ 核對 log-scout 的結果。
+      | 
+      | 下一步：git tag v1.2.1
+   messages Claude Code added to the main conversation (marked synthetic): 1
+   added 1: 450 chars, 18 lines | a skill body from the project or the plugin; its first six lines:
+      | Base directory for this skill: <lab>\.claude\skills\release-prep
+      | 
+      | # 發版準備
+      | 
+      | 版號用使用者指定的那一版，下面寫成 X.Y.Z。
+      | 只動下面列的檔案，不改 src/。五步照順序做完。

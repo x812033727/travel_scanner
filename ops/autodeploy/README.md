@@ -1,5 +1,11 @@
 # Auto deploy: a timer that runs the deploy script when main is green
 
+This is the repository design and installation guide. The production host did
+not have this timer installed at the 2026-10-16 read-only check. Before relying
+on it, check `systemctl is-enabled travel-scanner-autodeploy.timer` and
+`systemctl list-timers travel-scanner-autodeploy.timer` on that host, then verify
+the installed poller bytes and its configured timeout.
+
 `main` used to be deployed only when a person opened SSH and ran
 `/root/deploy-travel-scanner.sh`. This directory is a root systemd timer that does the same
 thing on its own: every five minutes `autodeploy.py tick` walks a fixed list of gates and
@@ -24,12 +30,27 @@ now. Design and the owner's decisions: `docs/ops/auto-deploy-and-cloud-backup-pl
 
 After a deploy that exits 0 the tick runs `host-verify.sh` (copied here by the installer
 from the `deploy` skill) with `EXPECTED_SHA` filled in and records `PASS` or `FAIL` from its
-`TOTAL` line. Any other exit means the script already rolled back: the tick writes the
-paused file and every later tick stops at gate 1 until a person deletes it.
+`TOTAL` line. Any other exit means the deploy and video-ai-worker state require
+readback: the tick writes the paused file and every later tick stops at gate 1
+until a person reconciles the state and deletes it.
 
 Gate 7 uses the same two selects as `host-preflight.sh`: a `running` stage job is a paid
 model call in flight and would turn uncertain if its worker restarted; a `submitted` media
 job survives a restart and is printed, not waited for.
+
+Gate 7 is an early scheduling decision, not the final restart boundary. A stage can
+start during the build after this check. The host-only `deploy-travel-scanner.sh`
+must also have the `ops/release/video_stage_drain.sh` hook installed at **both**
+normal and rollback `compose up` sites (see `ops/release/README.md`). The timer
+calls that same host script, so it cannot substitute its own earlier paid-work
+select for the final warm drain. Installation is a separate approved host action;
+the repository copy by itself does not protect a production deploy.
+When this repository version is installed and enabled, the poller's 90-minute
+deploy timeout is below systemd's two-hour unit timeout. An offline test confirms
+that a timed-out subprocess produces an exit-124 paused receipt. This is not a
+claim that the timer or a paused receipt exists on today's production host.
+The child Docker stop may outlive the killed poller subprocess; an unresolved
+warm-drain marker blocks another signal until exact worker/RQ/DB readback.
 
 ## Files on the host
 

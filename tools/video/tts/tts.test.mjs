@@ -420,6 +420,14 @@ function capture(overrides) {
   };
 }
 
+test("a legacy story without a pinned dictionary stops before any speech-server request", async () => {
+  const box = sandbox("fixture-story", "story");
+  const { ctx, out } = capture({ root: box.root, home: box.base,
+    env: { VIDEO_WORKDIR: box.work }, fetch: async () => assert.fail("no provider or billing request") });
+  assert.equal(await main(["tts", "--slug", box.slug], ctx), EXIT.owner, out.stdout + out.stderr);
+  assert.match(out.stderr, /STORY_LEXICON_MIGRATION_REQUIRED/);
+});
+
 test("long-anime TTS measures directed action without empty synthesis and reuses words when its budget changes", async () => {
   const box = sandbox("fixture-drama", "drama");
   const file = path.join(box.dir, "video.json");
@@ -844,7 +852,7 @@ test("an Azure voice's phrase-sized request is timed in its one paid call: timel
   assert.match(first.out.stdout, new RegExp(`^${timedIds.length} of 7 lines carry measured character times`, "m"));
   const timeline = JSON.parse(readFileSync(timelineFile, "utf8"));
   // The minimal fixture's hash as core/drama.test.mjs pins it: the timing never enters it.
-  assert.equal(timeline.speech_hash, "af5d5f5eb75aaa69");
+  assert.equal(timeline.speech_hash, "c6bdc8648dca2192");
   assert.deepEqual(timeline.lines.filter((line) => line.timing).map((line) => line.id), timedIds);
   for (const line of timeline.lines.filter((each) => each.timing)) {
     const clip = parseWav(readFileSync(path.join(box.workdir, "audio", `${line.id}.wav`))).samples;

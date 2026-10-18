@@ -1,0 +1,194 @@
+00:02:43 beat  queue=2 workers=0
+00:14:42 beat  queue=3 workers=0
+00:26:46 beat  queue=5 workers=0
+00:39:24 beat  queue=0 workers=0
+00:42:29 beat  queue=1 workers=0
+00:47:37 start J1001 resize IMG_1597.jpg
+00:49:39 start J1002 resize IMG_9159.jpg
+00:59:36 step  J1001 1/3
+01:04:51 step  J1002 1/3
+01:14:25 start J1003 geotag IMG_4781.jpg
+01:19:48 step  J1003 1/2
+01:30:30 step  J1002 2/3
+01:35:10 step  J1001 2/3
+01:44:16 step  J1001 3/3
+01:51:53 done  J1001 3189ms
+02:01:04 start J1004 export IMG_6891.jpg
+02:12:00 retry J1004 timeout
+02:14:08 step  J1004 1/3
+02:24:04 step  J1004 2/3
+02:27:21 step  J1003 2/2
+02:36:37 done  J1003 2608ms
+02:44:46 step  J1004 3/3
+02:47:42 start J1005 export IMG_1416.jpg
+02:57:11 retry J1002 timeout
+02:59:56 done  J1004 4091ms
+03:02:46 retry J1005 timeout
+03:14:39 step  J1002 3/3
+03:21:44 step  J1005 1/1
+03:32:09 start J1006 geotag IMG_8462.jpg
+03:34:11 done  J1005 3142ms
+03:42:20 start J1007 thumb IMG_1300.jpg
+03:49:42 step  J1007 1/1
+03:55:49 done  J1002 2808ms
+04:06:15 step  J1006 1/3
+04:14:52 done  J1007 3500ms
+04:26:18 start J1008 export IMG_2988.jpg
+04:30:48 step  J1006 2/3
+04:40:24 retry J1006 disk-busy
+04:51:28 step  J1006 3/3
+04:58:36 done  J1006 1597ms
+05:11:13 beat  queue=2 workers=0
+05:21:11 start J1009 export IMG_6110.jpg
+05:30:59 start J1010 export IMG_8240.jpg
+05:37:37 step  J1010 1/2
+05:42:48 start J1011 resize IMG_0364.jpg
+05:53:52 retry J1009 timeout
+05:55:57 retry J1011 timeout
+06:05:18 step  J1010 2/2
+06:08:58 step  J1009 1/3
+06:20:13 step  J1011 1/3
+06:25:30 done  J1010 3210ms
+06:37:37 start J1012 resize IMG_5073.jpg
+06:44:47 beat  queue=2 workers=3
+06:55:37 step  J1009 2/3
+07:01:41 step  J1009 3/3
+07:05:25 step  J1012 1/3
+07:13:09 done  J1009 2415ms
+07:25:17 start J1013 export IMG_7274.jpg
+07:28:20 step  J1012 2/3
+07:31:12 step  J1011 2/3
+07:33:14 step  J1012 3/3
+07:38:06 step  J1011 3/3
+07:44:37 retry J1012 timeout
+07:57:12 beat  queue=0 workers=3
+08:03:27 beat  queue=0 workers=3
+08:14:12 done  J1011 1688ms
+08:26:17 step  J1013 1/2
+08:32:51 start J1014 geotag IMG_3523.jpg
+08:35:08 done  J1012 1991ms
+08:41:46 step  J1013 2/2
+08:52:36 start J1015 resize IMG_7254.jpg
+09:02:26 done  J1013 553ms
+09:11:54 start J1016 export IMG_1935.jpg
+09:17:30 retry J1014 disk-busy
+09:28:56 step  J1014 1/3
+09:33:40 beat  queue=1 workers=3
+09:40:38 beat  queue=3 workers=3
+09:45:14 step  J1014 2/3
+09:52:58 step  J1014 3/3
+09:58:55 step  J1015 1/2
+10:06:47 step  J1016 1/3
+10:14:50 step  J1015 2/2
+10:27:23 done  J1014 2444ms
+10:31:46 beat  queue=4 workers=2
+10:37:15 step  J1016 2/3
+10:49:49 step  J1016 3/3
+11:00:28 done  J1016 2958ms
+11:04:12 beat  queue=4 workers=1
+11:13:48 beat  queue=1 workers=1
+11:22:47 done  J1015 1093ms
+11:29:33 beat  queue=6 workers=0
+11:39:08 start J1017 geotag IMG_1811.jpg
+11:46:23 step  J1017 1/3
+11:51:08 beat  queue=3 workers=1
+11:56:55 beat  queue=5 workers=1
+12:09:03 start J1018 resize IMG_4202.jpg
+12:13:41 step  J1018 1/1
+12:16:18 done  J1018 2011ms
+12:24:24 start J1019 thumb IMG_3869.jpg
+12:35:57 step  J1017 2/3
+12:46:41 start J1020 thumb IMG_3738.jpg
+12:57:15 step  J1017 3/3
+13:08:31 step  J1020 1/3
+13:12:28 done  J1017 3942ms
+13:18:53 beat  queue=5 workers=2
+13:23:17 start J1021 resize IMG_8324.jpg
+13:26:16 step  J1021 1/2
+13:28:38 step  J1020 2/3
+13:36:15 step  J1019 1/1
+13:44:15 beat  queue=4 workers=3
+13:48:46 done  J1019 2667ms
+13:51:04 start J1022 resize IMG_7294.jpg
+13:56:43 step  J1022 1/1
+14:03:11 beat  queue=5 workers=3
+14:14:28 step  J1021 2/2
+14:17:49 done  J1022 2441ms
+14:22:08 start J1023 resize IMG_8281.jpg
+14:30:02 step  J1023 1/1
+14:41:31 step  J1020 3/3
+14:47:31 done  J1020 2156ms
+14:54:36 beat  queue=3 workers=2
+14:58:11 beat  queue=6 workers=2
+15:10:20 retry J1021 timeout
+15:15:36 done  J1023 499ms
+15:25:57 beat  queue=1 workers=1
+15:32:42 done  J1021 3022ms
+15:38:51 beat  queue=1 workers=0
+15:48:09 beat  queue=1 workers=0
+15:55:16 beat  queue=2 workers=0
+16:04:14 beat  queue=6 workers=0
+16:12:10 beat  queue=1 workers=0
+16:20:05 beat  queue=6 workers=0
+16:25:04 beat  queue=6 workers=0
+16:34:13 start J1024 thumb IMG_0308.jpg
+16:40:32 step  J1024 1/1
+16:42:40 done  J1024 2733ms
+16:50:19 beat  queue=4 workers=0
+16:55:03 start J1025 export IMG_7894.jpg
+17:07:22 start J1026 export IMG_5006.jpg
+17:17:24 start J1027 resize IMG_1837.jpg
+17:27:06 step  J1026 1/1
+17:32:14 done  J1026 1203ms
+17:37:03 beat  queue=3 workers=2
+17:45:25 start J1028 export IMG_8017.jpg
+17:50:52 step  J1028 1/3
+18:01:20 step  J1028 2/3
+18:11:03 step  J1025 1/3
+18:22:38 beat  queue=4 workers=3
+18:28:49 beat  queue=5 workers=3
+18:39:15 step  J1025 2/3
+18:50:03 step  J1028 3/3
+18:54:38 retry J1028 disk-busy
+19:02:07 step  J1027 1/3
+19:05:43 step  J1027 2/3
+19:12:50 step  J1025 3/3
+19:25:11 done  J1025 3300ms
+19:30:43 start J1029 resize IMG_8376.jpg
+19:37:50 done  J1028 2110ms
+19:50:23 step  J1029 1/2
+19:57:17 start J1030 export IMG_8015.jpg
+19:59:56 step  J1029 2/2
+20:10:27 done  J1029 1709ms
+20:12:36 beat  queue=0 workers=2
+20:21:26 start J1031 export IMG_2566.jpg
+20:24:55 step  J1027 3/3
+20:27:17 done  J1027 3300ms
+20:31:45 start J1032 thumb IMG_7541.jpg
+20:38:30 retry J1032 timeout
+20:47:51 step  J1032 1/1
+20:58:48 beat  queue=0 workers=3
+21:02:33 step  J1030 1/2
+21:08:01 done  J1032 2479ms
+21:10:56 start J1033 resize IMG_9519.jpg
+21:22:51 retry J1033 timeout
+21:30:47 step  J1033 1/2
+21:41:49 step  J1033 2/2
+21:53:50 step  J1031 1/1
+22:00:45 done  J1031 2759ms
+22:06:56 beat  queue=6 workers=2
+22:18:55 done  J1033 3795ms
+22:31:03 step  J1030 2/2
+22:41:18 done  J1030 2702ms
+22:45:55 beat  queue=2 workers=0
+22:57:12 start J1034 resize IMG_4618.jpg
+23:00:57 step  J1034 1/3
+23:07:24 step  J1034 2/3
+23:16:54 start J1035 resize IMG_2292.jpg
+23:20:16 step  J1035 1/2
+23:22:28 step  J1034 3/3
+23:29:24 step  J1035 2/2
+23:37:17 done  J1035 3405ms
+23:41:30 done  J1034 1175ms
+23:48:06 beat  queue=4 workers=0
+23:55:37 start J1036 export IMG_2166.jpg

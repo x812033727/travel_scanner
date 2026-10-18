@@ -17,6 +17,7 @@ from app.video_shorts import rules
 from app.video_shorts.errors import ShortsRefused
 from app.video_shorts.models import VideoShortsSettings
 from app.video_shorts.schemas import (
+    SHORTS_LOCALES,
     ConsentOffer,
     ConsentView,
     SettingsView,
@@ -79,7 +80,9 @@ def settings_values(row: VideoShortsSettings) -> SettingsWrite:
         seconds_min=row.seconds_min,
         seconds_max=row.seconds_max,
         voice=cast(Any, row.voice),
-        locales=cast(Any, list(row.locales)),
+        # A language the Shorts are no longer made in (zh-CN before 2026-10-09) is dropped,
+        # not refused; migration 0128 removes it from the row.
+        locales=cast(Any, [locale for locale in row.locales if locale in SHORTS_LOCALES]),
         made_for_kids=row.made_for_kids,
         auto_approve=row.auto_approve,
         budget_ntd_30d=row.budget_ntd_30d,

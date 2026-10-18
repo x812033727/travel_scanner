@@ -1,0 +1,22 @@
+# k3: the Agent call's subagent_type was "ship-kit:log-scout"; this is the summary of the task_notification that came back (status completed)
+未結束的 job 共 2 筆（已讀 logs/ 下全部 2 個 .log 檔）：
+
+J2103｜sync-2026-10-08.log｜第 2 行... 
+
+更正，正確行號如下：
+
+- J2103｜sync-2026-10-08.log｜第 8 行
+- J2204｜sync-2026-10-09.log｜第 11 行
+
+共 2 筆
+
+判斷依據：
+- 開始是 `start <job>` 行，結束是 `done <job>` 行（`done ... failed` 也算結束）。`step`、`beat`、`fail` 不算結束。
+- J2103 只有 start 與 step 1/3，之後沒有 done。
+- J2204 只有 start，之後沒有任何紀錄。
+- 兩個檔案最後的 beat 都顯示 `queue=0 workers=0`，與這兩個 job 被中斷的情況一致。
+- J2202 有 `fail` 且之後有 `done failed`，所以視為已結束。
+
+檔案路徑：
+- <lab>\logs\sync-2026-10-08.log
+- <lab>\logs\sync-2026-10-09.log

@@ -53,6 +53,27 @@ export const CREDIT_MAX_CHARS = 60;
 // tool_version; code, diagram, screenshot and screencast: caption).
 export const SOURCE_MAX_CHARS = 48;
 export const SOURCED_TEMPLATES = ["bullets", "compare", "steps", "table"];
+// A photo card's caption is one line of card text under the print, and its tilt a small one: a
+// print pasted by hand, not a picture falling off the slide (docs/videos/history-curiosity/look.md §照片).
+export const PHOTO_CAPTION_MAX_CHARS = 40;
+export const PHOTO_TILT_MAX = 3;
+const PHOTO_TILTS = [1.5, 2, 2.5];
+/**
+ * The degrees a photo card's print is turned: `tilt` when the scene gives one, else by the scene's
+ * id, so the same scene always leans the same way and a video's photographs lean both ways.
+ */
+export function photoTilt(id, tilt) {
+  if (typeof tilt === "number" && Number.isFinite(tilt) && Math.abs(tilt) <= PHOTO_TILT_MAX) return tilt;
+  let hash = 2166136261;
+  for (const char of String(id ?? "")) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619) >>> 0;
+  return (hash % 2 ? 1 : -1) * PHOTO_TILTS[Math.floor(hash / 2) % PHOTO_TILTS.length];
+}
+const imageProblem = (data) =>
+  !(isAssetPath(data.image, /\.(png|jpe?g|webp)$/i) || isStockPath(data.image)) &&
+  `image must be a repository path under ${ASSET_ROOTS.join(" or ")}, or a stock photo fetched into the work directory (stock/<sha256>.png|jpg|webp)`;
+const creditProblem = (data) =>
+  data.credit !== undefined && !(isText(data.credit) && !data.credit.includes("\n") && visibleLength(data.credit) <= CREDIT_MAX_CHARS) &&
+  `credit must be one line of text (at most ${CREDIT_MAX_CHARS} characters)`;
 const sourceProblem = (data) =>
   data.source !== undefined && !(isText(data.source) && !data.source.includes("\n") && visibleLength(data.source) <= SOURCE_MAX_CHARS) &&
   `source must be one line of text (at most ${SOURCE_MAX_CHARS} characters)`;
@@ -125,16 +146,28 @@ export const TEMPLATE_SPECS = {
   },
   screenshot: {
     check: (data) => [
-      !(isAssetPath(data.image, /\.(png|jpe?g|webp)$/i) || isStockPath(data.image)) &&
-        `image must be a repository path under ${ASSET_ROOTS.join(" or ")}, or a stock photo fetched into the work directory (stock/<sha256>.png|jpg|webp)`,
+      imageProblem(data),
       data.highlight !== undefined && !(data.highlight && ["x", "y", "w", "h"].every((key) => isPercent(data.highlight[key]))) && "highlight must be { x, y, w, h } in percent",
       data.caption !== undefined && !isText(data.caption) && "caption must be text",
       // Optional, and the description credits the picture whether or not the slide does (the
       // owner burns no text in by default): one short line in the picture's corner.
-      data.credit !== undefined && !(isText(data.credit) && !data.credit.includes("\n") && visibleLength(data.credit) <= CREDIT_MAX_CHARS) &&
-        `credit must be one line of text (at most ${CREDIT_MAX_CHARS} characters)`,
+      creditProblem(data),
     ],
     capacity: (data) => (data.highlight ? 1 : 0),
+  },
+  // A real photograph shown as a print pasted on the ground: an archive picture, a stock photo,
+  // never a capture of a page (that is `screenshot`). The same two places a screenshot's picture
+  // may come from; render holds it to an assets[] entry, where its source and licence are.
+  photo: {
+    check: (data) => [
+      imageProblem(data),
+      data.caption !== undefined && !(isText(data.caption) && !data.caption.includes("\n") && visibleLength(data.caption) <= PHOTO_CAPTION_MAX_CHARS) &&
+        `caption must be one line of text (at most ${PHOTO_CAPTION_MAX_CHARS} characters)`,
+      creditProblem(data),
+      data.tilt !== undefined && !(typeof data.tilt === "number" && Number.isFinite(data.tilt) && Math.abs(data.tilt) <= PHOTO_TILT_MAX) &&
+        `tilt must be a number of degrees from -${PHOTO_TILT_MAX} to ${PHOTO_TILT_MAX}`,
+    ],
+    capacity: () => 0,
   },
   // The next four came from a reference video (2026-09-26): concrete little artefacts instead of
   // one slide of text left up for half a minute.
@@ -214,6 +247,7 @@ export function sceneProblems(scene) {
   const spec = TEMPLATE_SPECS[scene.template];
   if (!spec) return [`unknown template ${scene.template}`];
   const problems = spec.check(scene.data ?? {}).filter(Boolean);
+  if (scene.data?.cc_safe !== undefined && typeof scene.data.cc_safe !== "boolean") problems.push("cc_safe must be a boolean");
   if (problems.length) return problems;
   const reveals = scene.lines.reduce((sum, line) => sum + (line.reveal ?? 0), 0);
   const capacity = spec.capacity(scene.data);
@@ -244,17 +278,40 @@ const knowsChapters = (state) => (state.chapterCount ?? 0) >= 2 && (state.chapte
 
 // A stock photo's credit, in the picture's corner over the highlight's scrim: a dark pill with
 // one short line, cut with an ellipsis rather than wrapped should the lint cap ever be passed.
-const CREDIT_CSS =
-  ".t-screenshot .credit{position:absolute;right:16px;bottom:14px;max-width:80%;padding:6px 16px;border-radius:999px;" +
+const creditCss = (template) =>
+  `.t-${template} .credit{position:absolute;right:16px;bottom:14px;max-width:80%;padding:6px 16px;border-radius:999px;` +
   "background:rgba(8,24,25,.62);color:rgba(255,255,255,.88);font-size:22px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}";
+const CREDIT_CSS = creditCss("screenshot");
+
+// The photo card: the print is as tall as the room between the chapter label and YouTube's
+// controls allows and as wide as its photograph makes it (a portrait or a square fits by height
+// like any other), centred, so a Short cut from the middle of the slide keeps it. The white
+// border, the shadow and the tilt are the print's; the entrance animates the mount around it,
+// because an entrance ends on `transform: none` and would straighten a print it animated.
+const PHOTO_CSS =
+  ".t-photo{top:140px;align-items:center}" +
+  ".t-photo .frame{flex:1;min-height:0;width:100%;padding:26px 0;display:flex;align-items:center;justify-content:center}" +
+  ".t-photo .mount{height:100%}" +
+  ".t-photo .print{position:relative;height:100%;border:24px solid #fdfbf5;border-radius:4px;background:#fdfbf5;transform:rotate(var(--tilt,0deg));" +
+  "box-shadow:0 2px 6px rgba(0,0,0,.28),0 26px 60px rgba(0,0,0,.42)}" +
+  ".t-photo .print img{display:block;height:100%;width:auto;max-width:1560px;object-fit:cover}" +
+  ".t-photo .caption-line{margin-top:10px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--paper)}";
+// A portrait's print is narrower than its credit: the capsule keeps its lower right corner and
+// runs out over the print's left edge like a label stuck across it, instead of being cut short.
+const PHOTO_CREDIT_CSS = ".t-photo .print .credit{max-width:1400px}";
+
+// A marked slide reserves 80px beyond the theme's 132px bottom gap. On a 1080px
+// frame its content ends at y=868, above the lower 15% (which starts at y=918).
+const CC_SAFE_CSS = ":root{--safe-bottom:212px}";
 
 // CSS a template carries in its own page instead of the theme, so that adding the template moved
 // no other video's frame keys. A function takes the scene's data: a screenshot slide carries the
 // credit CSS only when it draws a credit, so every other screenshot page is byte for byte what it was.
-const TEMPLATE_CSS = { terminal: TERMINAL_CSS, screenshot: (data) => (data.credit ? CREDIT_CSS : "") };
+const TEMPLATE_CSS = { terminal: TERMINAL_CSS, screenshot: (data) => (data.credit ? CREDIT_CSS : ""), photo: (data) => PHOTO_CSS + (data.credit ? creditCss("photo") + PHOTO_CREDIT_CSS : "") };
 const templateCss = (scene) => {
   const own = TEMPLATE_CSS[scene.template];
-  return typeof own === "function" ? own(scene.data ?? {}) : own ?? "";
+  const css = typeof own === "function" ? own(scene.data ?? {}) : own ?? "";
+  return css + (scene.data?.cc_safe === true ? CC_SAFE_CSS : "");
 };
 
 const RENDERERS = {
@@ -329,6 +386,12 @@ const RENDERERS = {
     const credit = data.credit ? `<div class="credit">${richText(data.credit)}</div>` : "";
     return `${heading(data, state.first)}<div class="frame"><div ${enterClass(state.first, "shot", 1)}><img src="${src}" alt="">${box}${credit}</div></div>${data.caption ? `<div class="caption-line">${richText(data.caption)}</div>` : ""}`;
   },
+  photo(data, state) {
+    const src = isStockPath(data.image) ? workUrl(data.image) : assetUrl(data.image);
+    const credit = data.credit ? `<div class="credit">${richText(data.credit)}</div>` : "";
+    const print = `<div class="print" style="--tilt:${photoTilt(state.sceneId, data.tilt)}deg"><img src="${src}" alt="">${credit}</div>`;
+    return `<div class="frame"><div ${enterClass(state.first, "mount", 0)}>${print}</div></div>${data.caption ? `<div class="caption-line">${richText(data.caption)}</div>` : ""}`;
+  },
   chat(data, state) {
     const show = state.visible(data.messages.length);
     const messages = data.messages.map(
@@ -401,7 +464,25 @@ export function chrome(scene, state) {
     : "";
   const index = knowsChapters(state) ? `<span class="index">${pad(state.chapterNumber)} / ${pad(state.chapterCount)}</span>` : "";
   const label = state.chapter ? `<div class="chrome-chapter">${index}${escapeHtml(state.chapter)}</div>` : "";
-  return `${bar}${label}<div class="chrome-brand">${BRAND}</div>`;
+  return `${bar}${label}${cornerMark(state.mark)}`;
+}
+
+// A scene whose corner is left empty: assemble lays the channel mark over its segment instead.
+export const MARK_OVERLAID = "overlaid";
+
+/**
+ * The top right corner. A video that carries the channel mark (docs/videos/WATERMARK.md) shows
+ * its picture there, `state.mark` being `{ src, box }`: the same PNG, at the same pixels, that
+ * assemble lays over the shots, so the mark does not move when a slide follows a picture. The
+ * place is written on the element and the picture travels as a data URI, since a page may load
+ * nothing from tools/; theme.css is not touched, so a video without the mark draws the brand
+ * word exactly as it always did.
+ */
+function cornerMark(mark) {
+  if (mark === MARK_OVERLAID) return "";
+  if (!mark) return `<div class="chrome-brand">${BRAND}</div>`;
+  const { x, y, width, height } = mark.box;
+  return `<img class="chrome-mark" alt="" src="${mark.src}" style="position:absolute;left:${x}px;top:${y}px;width:${width}px;height:${height}px">`;
 }
 
 /**
@@ -413,6 +494,7 @@ export function slideHtml(scene, state) {
   if (!renderer) throw new Error(`unknown template ${scene.template}`);
   const context = {
     ...state,
+    sceneId: scene.id,
     visible: (count) => visibility(count, state.totalReveals, state.reveal, state.previousReveal, state.first),
   };
   return page(`${chrome(scene, state)}<main class="content t-${scene.template}">${renderer(scene.data, context)}</main>`, SIZE, templateCss(scene));
@@ -465,6 +547,46 @@ export function headlineCount(headline) {
   const words = (plain.match(HEADLINE_WORD) ?? []).map((word) => word.replace(/,+$/, ""));
   const cjk = [...plain].filter((char) => CJK_GLYPH.test(char)).length;
   return { cjk, words, count: cjk + words.length };
+}
+/**
+ * A brand story's company in large type (owner, 2026-10-18): `data.brand` takes the place of the
+ * small tag at the top of the column, so the thumbnail says which company the story is about at a
+ * glance. Plain text in the channel's font, never a logo. At most THUMB_BRAND_MAX characters on
+ * one line, and no wider than the column holds at BRAND_SIZE_MIN (brandEm): the size is what
+ * fits the column's width (BRAND_COLUMN_WIDTH), up to BRAND_SIZE_MAX, so 「米其林」 is larger than
+ * the headline and 「杜比 DOLBY」 still reads on a phone, while twelve CJK glyphs are refused
+ * rather than left for the renderer to fail. The page marks it `.fit` as well, so the renderer
+ * shrinks one this estimate set a little too wide.
+ *
+ * The API's import check repeats this rule (apps/api/app/video_automation/stories.py
+ * brand_problem); both tests hold the two to the samples in fixtures/brand-samples.json.
+ */
+export const THUMB_BRAND_MAX = 12;
+export const BRAND_SIZE_MAX = 168;
+export const BRAND_SIZE_MIN = 38;
+export const BRAND_COLUMN_WIDTH = THUMB_SIZE.width * 0.4 - 56 - 24;
+// Glyph widths in em of the heavy weight: a CJK glyph (the ranges of CJK_GLYPH, and the
+// full-width forms) fills the em, a capital takes about six tenths (measured: 「SEIKO」 at 120 px
+// is 363 px wide), a small letter or a digit six, a space three; any other mark 0.45. A wider
+// name (W, M) is the renderer's fit to shrink.
+const BRAND_FULL = /[぀-ヿ㐀-鿿豈-﫿가-힯＀-｠]/u;
+const brandGlyphWidth = (char) => (BRAND_FULL.test(char) ? 1 : /[A-Z]/.test(char) ? 0.62 : /[a-z0-9]/.test(char) ? 0.6 : char === " " ? 0.3 : 0.45);
+/** A brand name's estimated width in em: the sum of brandGlyphWidth over its trimmed characters. */
+export const brandEm = (brand) => [...String(brand).trim()].reduce((sum, char) => sum + brandGlyphWidth(char), 0);
+// The size the column's width allows, in whole steps of 2 px, before the floor and the ceiling.
+const brandFitSize = (brand) => Math.floor(BRAND_COLUMN_WIDTH / (brandEm(brand) || 1) / 2) * 2;
+/** The font size, in pixels of the 1280 px frame, a brand name is set at in the channel's column. */
+export function brandFontSize(brand) {
+  return Math.max(BRAND_SIZE_MIN, Math.min(BRAND_SIZE_MAX, brandFitSize(brand)));
+}
+/** Why a thumbnail's brand name cannot be drawn, or null. null or undefined is no brand at all. */
+export function brandProblem(brand) {
+  if (brand === null || brand === undefined) return null;
+  if (!isText(brand)) return "must be text";
+  if (/[\n\r\t*]/.test(brand)) return "must be one line of plain text (no line break, no tab, no ** emphasis)";
+  if ([...brand.trim()].length > THUMB_BRAND_MAX) return `has ${[...brand.trim()].length} characters; at most ${THUMB_BRAND_MAX} fit the column on one line`;
+  if (brandFitSize(brand) < BRAND_SIZE_MIN) return `is too wide for the column even at ${BRAND_SIZE_MIN} px (about ${brandEm(brand).toFixed(1)} em, a CJK glyph one, a Latin letter about 0.6); shorten it`;
+  return null;
 }
 const headlineShape = (headline) => {
   const lines = headline.replace(/\*\*/g, "").split("\n");
@@ -528,6 +650,7 @@ function ownThumbnailProblems(thumbnail, series) {
   if (data.pillar !== undefined && !THUMB_PILLARS.includes(data.pillar)) problems.push(`thumbnail.data.pillar must be one of ${THUMB_PILLARS.join(", ")}`);
   if (data.capture !== undefined && !captureRef(data.capture)) problems.push('thumbnail.data.capture must name a screencast scene, "<scene id>" or "<scene id>#<n>" for its n-th capture');
   if (data.shot !== undefined && !isText(data.shot)) problems.push("thumbnail.data.shot must be a shot's id");
+  if (brandProblem(data.brand)) problems.push(`thumbnail.data.brand ${brandProblem(data.brand)}`);
   // The channel's headline length (THUMB_HEADLINE_MAX) is the qa stage's business
   // (tools/video/qa/thumbnail.mjs), where it fails the thumbnail item: the fixtures and the
   // first batch's scripts carry longer headlines, and render still draws those.
@@ -567,6 +690,13 @@ const THUMB_RIGHT_CSS =
   ".thumb.layout-right .tag{align-self:flex-end}.thumb.layout-right .brand{left:auto;right:72px}" +
   ".thumb-scrim.layout-right{transform:scaleX(-1)}";
 
+// The brand name's look. Inline, as the keyframe CSS is, so that adding it moved no other video's
+// thumbnail key: only a thumbnail with a brand carries it. Orange on the column's dark ground or
+// tone, the heaviest weight, one line, a short rule under it that sets it apart from the headline.
+const THUMB_MARQUE_CSS =
+  ".thumb .marque{align-self:stretch;font-weight:900;line-height:1.05;color:var(--orange);white-space:nowrap;overflow:hidden;letter-spacing:.01em;" +
+  "padding-bottom:14px;border-bottom:8px solid var(--orange);max-height:200px}";
+
 /**
  * The thumbnail as a page. `background` is the URL of the subject's picture (a screencast still
  * or a shot's keyframe, served from the work directory) and `subject` which of THUMB_SUBJECTS it
@@ -587,16 +717,18 @@ export function thumbnailHtml(thumbnail, { background = null, subject = null, se
   const tone = THUMB_TONES.includes(data.tone) ? data.tone : rotation.tone;
   const classes = `layout-${layout} tone-${tone}`;
   const kind = THUMB_SUBJECTS.includes(subject) ? subject : THUMB_SUBJECTS[1];
+  // A brand story's company (THUMB_BRAND_MAX) in place of the tag; one that cannot be drawn is render's to report (thumbnailProblems).
+  const marque = isText(data.brand) && !brandProblem(data.brand) ? data.brand : null;
   const body = [
     `<div class="thumb-subject ${classes}${background ? ` from-${kind}` : ""}">${background ? `<img src="${escapeHtml(background)}" alt="">` : ""}</div>`,
     `<div class="thumb column ${classes}">`,
-    data.tag ? `<div class="tag">${richText(data.tag)}</div>` : "",
+    marque ? `<div class="marque fit" style="font-size:${brandFontSize(marque)}px">${escapeHtml(marque.trim())}</div>` : data.tag ? `<div class="tag">${richText(data.tag)}</div>` : "",
     `<h1 class="fit">${richText(data.headline)}</h1>`,
     data.sub ? `<div class="sub fit">${richText(data.sub)}</div>` : "",
     `<div class="brand">${BRAND}</div>`,
     "</div>",
   ].join("");
-  return page(body, THUMB_SIZE, "", { locale });
+  return page(body, THUMB_SIZE, marque ? THUMB_MARQUE_CSS : "", { locale });
 }
 
 // A series' page as it always was, less the ring a series thumbnail without its keyframe used to show.

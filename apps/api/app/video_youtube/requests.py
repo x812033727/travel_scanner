@@ -12,6 +12,7 @@ uploader can set them), and chooses the visibility and the time.
 from __future__ import annotations
 
 import copy
+import re
 from datetime import UTC, datetime
 from typing import Any, cast
 
@@ -44,11 +45,50 @@ STATUS_FIELDS = (
 )
 # The same language under the tags YouTube may hand back for it.
 LANGUAGE_ALIASES = {"zh-hant": "zh-tw", "zh-hans": "zh-cn"}
+# What every title ends with, per language, so a viewer sees in the search results that the
+# video has captions (the owner's rule of 2026-10-12: 影片標題都要有「｜CC字幕」, worded per
+# language). The worker adds it when it composes the package (tools/video/core/metadata.mjs
+# CAPTION_TAGS, the same table); the site adds it again on the way out, once, for the packages
+# approved before the rule and for a title the owner retyped on the card.
+CAPTION_TAGS = {
+    "zh-TW": "｜CC字幕",
+    "en": "｜CC Subtitles",
+    "ja": "｜字幕付き",
+    "ko": "｜CC 자막",
+}
+# The tag of a title the full one would push past TITLE_MAX_CHARS (the owner's choice of
+# 2026-10-12): most of those are English titles already near the limit.
+SHORT_CAPTION_TAG = "｜CC"
+# Any captions tag a title may already end with, whatever its language, bar and spacing: a title
+# tagged by hand ("｜ CC字幕" on an English title) or in another language gets its own instead.
+_TAG_TAIL = re.compile(
+    r"\s*[|｜]\s*(?:CC\s*字幕|CC\s*Subtitles|字幕付き|CC\s*자막|CC)\s*$", re.IGNORECASE
+)
 
 
 def as_dict(value: object) -> dict[str, Any]:
     """``value`` when it is a JSON object, else an empty one: YouTube's answers are read loosely."""
     return cast(dict[str, Any], value) if isinstance(value, dict) else {}
+
+
+def captioned(title: str, language: str) -> str:
+    """``title`` ending with its language's captions tag, once.
+
+    A tag already there, in any language or spacing, is replaced by this language's. When the
+    full tag would take the title past TITLE_MAX_CHARS the short one is used; when even that does
+    not fit, the full tag stays so the length check says by how much the title is over.
+    """
+    bare = title.rstrip()
+    while True:
+        stripped = _TAG_TAIL.sub("", bare)
+        if stripped == bare:
+            break
+        bare = stripped
+    tagged = f"{bare}{CAPTION_TAGS.get(language, CAPTION_TAGS['en'])}"
+    short = f"{bare}{SHORT_CAPTION_TAG}"
+    if len(tagged) > TITLE_MAX_CHARS and len(short) <= TITLE_MAX_CHARS:
+        return short
+    return tagged
 
 
 def text_problem(title: str, description: str) -> str | None:
@@ -118,7 +158,10 @@ def localizations(metadata: dict[str, Any]) -> dict[str, dict[str, str]]:
             continue
         title, description = values.get("title"), values.get("description")
         if isinstance(title, str) and title.strip() and isinstance(description, str):
-            result[str(locale)] = {"title": title, "description": description}
+            result[str(locale)] = {
+                "title": captioned(title, str(locale)),
+                "description": description,
+            }
     return result
 
 
@@ -138,7 +181,7 @@ def insert_body(metadata: dict[str, Any], title: str, description: str) -> dict[
         status["containsSyntheticMedia"] = synthetic
     return {
         "snippet": {
-            "title": title,
+            "title": captioned(title, language),
             "description": description,
             "tags": _tags(metadata),
             "categoryId": _category(metadata),
@@ -170,7 +213,7 @@ def update_body(
     status_now = as_dict(current.get("status"))
     snippet = {key: copy.deepcopy(snippet_now[key]) for key in SNIPPET_FIELDS if key in snippet_now}
     snippet.update(
-        title=title,
+        title=captioned(title, language),
         description=description,
         tags=_tags(metadata),
         categoryId=_category(metadata, snippet_now.get("categoryId")),

@@ -7,9 +7,9 @@ import test from "node:test";
 
 import { brandingHash } from "../core/branding.mjs";
 import { parseWav } from "../tts/wav.mjs";
-import { BRANDING_PEAK_FILTER, brandingJoinArgs, brandingSegmentArgs, commitBrandedVideo, verifyBrandingAssets } from "./branding.mjs";
+import { BRANDING_PEAK_FILTER, brandingJoinArgs, brandingSegmentArgs, commitBrandedVideo, verifyBrandingAssets, wrapVideo } from "./branding.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "./ffmpeg.mjs";
-import { ebur128Args, parseEbur128 } from "./plan.mjs";
+import { ebur128Args, ENCODER_VERSION, parseEbur128 } from "./plan.mjs";
 
 const selected = { schema_version: 1, id: "mokaair", intro: { file: "intro.mp4", sha256: "a".repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } };
 
@@ -87,6 +87,70 @@ test("dub wrappers support WAV and MP3 without extra input numbering or MP4-only
   assert.match(picture, /-frames:v 150/);
   assert.match(picture, /-profile:v high/);
   assert.match(picture, /colorprim=bt709/);
+});
+
+test("an intro at the start keeps the exact pre-placement command; one after chapter 1 cuts the body sound at that frame", () => {
+  const old = brandingJoinArgs({ bodyFile: "body.mp4", bodyFrames: 301, branding: selected, outFile: "final.mp4", videoList: "join.ffconcat" });
+  const filter = old[old.indexOf("-filter_complex") + 1];
+  assert.doesNotMatch(filter, /start_sample/);
+  assert.ok(filter.endsWith(`concat=n=3:v=0:a=1,${BRANDING_PEAK_FILTER}[a]`));
+  assert.deepEqual(old.filter((arg, index) => old[index - 1] === "-i"), ["join.ffconcat", "intro.mp4", "body.mp4", "outro.mp4"]);
+
+  const after = { ...selected, intro_at: "after_first_chapter" };
+  const moved = brandingJoinArgs({ bodyFile: "body.mp4", bodyFrames: 301, branding: after, outFile: "final.mp4", videoList: "join.ffconcat", introAtFrame: 100 });
+  assert.deepEqual(moved.filter((arg, index) => moved[index - 1] === "-i"), ["join.ffconcat", "body.mp4", "intro.mp4", "body.mp4", "outro.mp4"]);
+  const parts = moved[moved.indexOf("-filter_complex") + 1].split(";");
+  // 1600 samples a frame: the condensation is body samples 0–160000, the rest 160000–481600.
+  assert.match(parts[0], /^\[1:a:0\].*atrim=start_sample=0:end_sample=160000,asetpts=PTS-STARTPTS,atrim=end_sample=160000,apad=whole_len=160000/);
+  assert.match(parts[1], /^\[2:a:0\].*atrim=end_sample=240000,apad=whole_len=240000/);
+  assert.doesNotMatch(parts[1], /start_sample/);
+  assert.match(parts[2], /^\[3:a:0\].*atrim=start_sample=160000:end_sample=481600,asetpts=PTS-STARTPTS,atrim=end_sample=321600,apad=whole_len=321600/);
+  assert.match(parts[3], /^\[4:a:0\].*atrim=end_sample=144000/);
+  assert.equal(parts[4], `[a0][a1][a2][a3]concat=n=4:v=0:a=1,${BRANDING_PEAK_FILTER}[a]`);
+
+  const dub = brandingJoinArgs({ bodyFile: "body.wav", bodyFrames: 301, branding: after, outFile: "dub.wav", outputCodec: ["-c:a", "pcm_s16le"], introAtFrame: 100 });
+  assert.match(dub[dub.indexOf("-filter_complex") + 1], /^\[0:a:0\].*start_sample=0:end_sample=160000/);
+  // The placement and the frame must agree, and the intro must start inside the body.
+  assert.throws(() => brandingJoinArgs({ bodyFile: "b", bodyFrames: 301, branding: selected, outFile: "x.wav", introAtFrame: 100 }), /placed start/);
+  assert.throws(() => brandingJoinArgs({ bodyFile: "b", bodyFrames: 301, branding: after, outFile: "x.wav" }), /placed after_first_chapter/);
+  assert.throws(() => brandingJoinArgs({ bodyFile: "b", bodyFrames: 301, branding: after, outFile: "x.wav", introAtFrame: 301 }), /inside the body/);
+});
+
+test("wrapVideo joins the intro between the body's own scene segments and records its body frame", async (t) => {
+  const directory = mkdtempSync(path.join(os.tmpdir(), "branding-wrap-"));
+  t.after(() => rmSync(directory, { recursive: true, force: true }));
+  const bytes = Buffer.from("fixture media");
+  const sha256 = createHash("sha256").update(bytes).digest("hex");
+  const branding = { ...selected, intro_at: "after_first_chapter" };
+  for (const role of ["intro", "outro"]) {
+    const file = path.join(directory, `${role}.mp4`);
+    writeFileSync(file, bytes);
+    branding[role] = { ...selected[role], file, sha256 };
+  }
+  mkdirSync(path.join(directory, "build"));
+  const bodyFile = path.join(directory, "build", "body.partial.mp4");
+  writeFileSync(bodyFile, "body");
+  const calls = [];
+  const exec = async (_tool, args) => {
+    calls.push(args);
+    if (args[0] === "-v") {
+      const frames = args.at(-1).endsWith("intro.mp4") ? 150 : 90;
+      return { stdout: JSON.stringify({ streams: [{ codec_type: "video", width: 1920, height: 1080, r_frame_rate: "30/1", nb_read_packets: frames }, { codec_type: "audio", duration: frames / 30 }] }) };
+    }
+    writeFileSync(args.at(-1), "encoded");
+    return { stdout: "", stderr: "" };
+  };
+  const tools = { ffmpeg: "ffmpeg", ffprobe: "ffprobe" };
+  const options = { tools, exec, workdir: directory, bodyFile, bodyFrames: 301, branding, outFile: path.join(directory, "build", "final.partial.mp4") };
+  await assert.rejects(wrapVideo({ ...options, introAtFrame: 100 }), /scene pictures split/);
+  const applied = await wrapVideo({ ...options, introAtFrame: 100, bodyPictures: { before: ["s1.mp4", "s2.mp4"], after: ["s3.mp4"] } });
+  assert.equal(applied.intro_at_frame, 100);
+  assert.equal(applied.hash, brandingHash(branding));
+  const list = readFileSync(path.join(directory, "build", "branding", `${applied.hash}-${ENCODER_VERSION}`, "join.ffconcat"), "utf8");
+  const files = [...list.matchAll(/^file '(.*)'$/gm)].map((match) => path.basename(match[1]));
+  assert.deepEqual(files, ["s1.mp4", "s2.mp4", "intro.mp4", "s3.mp4", "outro.mp4"]);
+  const startApplied = await wrapVideo({ ...options, branding: { ...branding, intro_at: undefined } });
+  assert.equal("intro_at_frame" in startApplied, false, "an intro at the start keeps the pre-placement record");
 });
 
 test("installed assets must match their pinned bytes, frame count and audio presence", async (t) => {

@@ -1,0 +1,15 @@
+**結論：以現有程式碼來看，沒有發現漏記。**
+
+對照結果如下：
+
+| 來源 | 內容 | CHANGELOG |
+|---|---|---|
+| `src/units.mjs` 的 `cToF` | v0.2.0 就有 | v0.2.0「First version, with cToF」✅ |
+| `src/units.mjs` 的 `kmToMiles` | v0.3.0 新增 | v0.3.0「Add kmToMiles」✅ |
+| `kmToMiles` 四捨五入到小數兩位 | 程式碼已實作 | Unreleased「kmToMiles rounds to two decimals」✅ |
+
+`src/` 只有這兩個函式，現有的行為變動都已記錄。
+
+**限制**：專案不是 git repo，我沒辦法看 v0.3.0 之後實際改了哪些 commit，也無法確認 `kmToMiles` 的舊行為。所以我只能確認「CHANGELOG 與目前程式碼一致」，不能確認「沒有其他已刪除或改過又改回去的變動」。如果你記得這版還動過別的（例如修 bug、改簽名、改 README），請告訴我，我再補。
+
+我這次只做檢查，沒有改任何檔案。`release-prep` 流程（改 `package.json`、CHANGELOG 新增 v0.3.1 標題、README、`releases/v0.3.1.md`）還沒執行，你確認 CHANGELOG 沒問題後說一聲，我就照流程跑。

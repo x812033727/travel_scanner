@@ -1,0 +1,10 @@
+我對照了 `src/units.mjs`（目前只有 `cToF` 和 `kmToMiles` 兩個函式）和 CHANGELOG.md，目前看不出有漏記。
+
+- **Unreleased**：「kmToMiles rounds to two decimals」和程式碼一致，`kmToMiles` 現在確實有 `Math.round(... * 100) / 100`。
+- **v0.3.0 / v0.2.0**：`kmToMiles`、`cToF` 都有記到，src 裡沒有其他未記載的匯出函式。
+
+**限制**：這個目錄不是 git repo，也沒有 v0.3.0 的原始碼快照，所以無法 diff 出 0.3.0 之後實際改了哪些地方。我只能確認「現在的程式碼」都有對應條目，沒辦法確認「0.3.0 之後的每個改動」都被記到。如果你這段期間還動過其他東西（例如 `cToF` 的行為、README、設定檔），請告訴我，我再補進去。
+
+另外，版本號相關的檔案還沒動：`package.json` 和 README 的 `Latest release` 都還是 v0.3.0。
+
+你只要我檢查 CHANGELOG，所以我沒有執行發版流程。要的話我可以接著做 release-prep：改版號、把 Unreleased 搬到 `## v0.3.1 (2026-10-11)`、更新 README、新增 `releases/v0.3.1.md`。

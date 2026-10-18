@@ -1,13 +1,15 @@
 import assert from "node:assert/strict";
-import { existsSync, rmSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
 import { sandbox } from "../core/fixtures/load.mjs";
 import { atomicWrite } from "../core/paths.mjs";
 import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
-import { answerDocument, answerScript, blockedReply, documentDiscussionPayload, lostReply, refusedReply } from "./discuss.mjs";
+import { answerDocument, answerScript, blockedReply, documentDiscussionPayload, failingReply, lostReply, MAX_DOCUMENT_WAITS, refusedReply } from "./discuss.mjs";
 import { Automation } from "./flow.mjs";
+import { instructionsFor } from "./prompts.mjs";
 
 test("discussion retains draft parent versions and missing parents without granting approval", () => {
   const automation = { reference: () => ({}), dramaPayload: () => ({ drama_settings: {} }) };
@@ -88,6 +90,59 @@ test("an error of the planner's request on a document never ends the run: a lost
   await assert.rejects(answerDocument(automation, job("token")), /the token was refused/, "everyone's trouble still ends the run");
   failing(new AutomationError("no JSON", { code: OUTPUT_INVALID }));
   assert.match(await answerDocument(automation, job("unusable")), /the planner gave no usable answer on outline \(no JSON\)/);
+});
+
+test("a document line whose planner request keeps waiting is answered once after MAX_DOCUMENT_WAITS runs, so the threads behind it move on; one that gets through clears its count", async () => {
+  const box = sandbox();
+  const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, stdout: { write: () => {} }, stderr: { write: () => {} }, now: () => new Date("2026-10-16T10:00:00Z") };
+  const replies = [];
+  const api = { messageAnswer: async (id, body) => { replies.push({ id, ...body }); return {}; } };
+  const busy = () => Object.assign(new AutomationError("模型服務忙碌中", { status: 503, code: "video_ai_upstream_busy" }), { stage: "planner" });
+  const job = (id) => ({ message: { id, body_md: "第二幕為什麼這樣排？" }, subject: "outline", series: { slug: "held" }, doc: null, context: {} });
+  const waits = path.join(box.work, "_series", "held", "discussion-waits.json");
+  // One run of the worker: a fresh Automation, so only what is on disk carries over.
+  let asked = 0;
+  const run = (answer) => {
+    const automation = new Automation(ctx, api, {});
+    Object.assign(automation, { reference: () => ({}), dramaPayload: () => ({ drama_settings: {} }), stage: async () => { asked += 1; return answer(); } });
+    return (id) => answerDocument(automation, job(id));
+  };
+  const failing = () => { throw busy(); };
+
+  for (let round = 1; round < MAX_DOCUMENT_WAITS; round += 1) {
+    assert.match(await run(failing)("stuck"), /the line waits for the next run$/, `run ${round}`);
+  }
+  assert.deepEqual(replies, [], "nothing is told while the request may still pass");
+  assert.equal(JSON.parse(readFileSync(waits, "utf8")).stuck, MAX_DOCUMENT_WAITS - 1);
+  assert.match(await run(failing)("stuck"), new RegExp(`kept failing for ${MAX_DOCUMENT_WAITS} runs \\(video_ai_upstream_busy: 模型服務忙碌中\\); the owner is told and the threads behind it move on$`));
+  assert.deepEqual(replies, [{ id: "stuck", reply_md: failingReply(MAX_DOCUMENT_WAITS, "video_ai_upstream_busy: 模型服務忙碌中"), revised: null }]);
+  assert.equal(asked, MAX_DOCUMENT_WAITS, "asked once a run");
+  assert.ok(!existsSync(waits), "the count goes with the answer");
+
+  // A line that gets through before the limit starts again from nothing next time.
+  for (let round = 1; round < MAX_DOCUMENT_WAITS; round += 1) await run(failing)("flaky");
+  assert.match(await run(() => ({ reply: "因為第二幕要有代價。", revised: null }))("flaky"), /the planner answered the owner on outline$/);
+  assert.ok(!existsSync(waits), "a line that got through clears its count");
+  assert.match(await run(failing)("flaky"), /the line waits for the next run$/, "a later wait counts from one");
+});
+
+test("a document line the model service itself refused (502 video_ai_upstream_failed) is answered at once with the refusal, not asked every run", async () => {
+  const box = sandbox();
+  const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, stdout: { write: () => {} }, stderr: { write: () => {} }, now: () => new Date("2026-10-16T10:00:00Z") };
+  const replies = [];
+  const automation = new Automation(ctx, { messageAnswer: async (id, body) => { replies.push({ id, ...body }); return {}; } }, {});
+  let asked = 0;
+  Object.assign(automation, {
+    reference: () => ({}),
+    dramaPayload: () => ({ drama_settings: {} }),
+    stage: async () => {
+      asked += 1;
+      throw Object.assign(new AutomationError("prompt is too long for the model", { status: 502, code: "video_ai_upstream_failed" }), { stage: "planner" });
+    },
+  });
+  const job = { message: { id: "long", body_md: "整份設定集重寫成更長的版本" }, subject: "setting", series: { slug: "held" }, doc: null, context: {} };
+  assert.match(await answerDocument(automation, job), /^series held: the site refused the planner request on setting \(video_ai_upstream_failed: prompt is too long for the model\); the owner is told and the thread waits$/);
+  assert.deepEqual([replies, asked], [[{ id: "long", reply_md: refusedReply("video_ai_upstream_failed: prompt is too long for the model"), revised: null }], 1]);
 });
 
 const SITE_AWAY = () => new AutomationError("網站暫時無法使用", { status: 502, code: "upstream_unavailable" });
@@ -397,4 +452,54 @@ test("a line waits for a video the unit's loop left alone, though the video's wa
   // The next unit visits the video first; at rest after that visit, its line is answered.
   assert.equal(await worker.step(), "held-e001: the writer answered the owner on script:1");
   assert.deepEqual([sent, answered, waiting.length], [["writer:discuss for held-e001"], ["m1"], 0]);
+});
+
+/**
+ * The model requests of one line on `preset`'s bible and one on its screenplay, as
+ * [stage, format, variant] each: the two discussion calls a one-off has.
+ */
+async function discussionCalls(preset) {
+  const box = sandbox();
+  const asked = [];
+  const stage = async (name, _slug, _payload, _tokens, format, variant) => {
+    asked.push([name, format, variant]);
+    return { reply: "ok", revised: null };
+  };
+  const series = { slug: "one-off-1", kind: "one-off", title: "t", premise: "p", style_preset: preset, target_minutes: 10, genre: "xianxia-bonds" };
+  const planner = { workBase: box.work, reference: () => ({}), dramaPayload: () => ({ drama_settings: {} }), stage, api: { messageAnswer: async () => ({ revision: null }) } };
+  assert.match(await answerDocument(planner, { message: { id: "m1", body_md: "shorter hook" }, subject: "bible", thread: [], series, doc: { kind: "bible", version: 1, status: "review", body_md: "# t", body_json: { characters: [] } }, context: {} }), /the planner answered the owner on bible$/);
+  const slug = "one-off-1-e001";
+  atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", format: "drama", style_preset: preset, notes: [], verified: true, listener_done: true, created_at: "2026-10-05T01:00:00Z" }));
+  atomicWrite(path.join(box.root, "docs", "videos", slug, "video.json"), JSON.stringify({ slug, scenes: [] }));
+  const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, stdout: { write: () => {} }, stderr: { write: () => {} }, now: () => new Date("2026-10-06T10:00:00Z") };
+  const writer = new Automation(ctx, { messageAnswer: async () => ({}) }, {});
+  writer.scriptPayload = (_state, extra) => ({ ...extra });
+  writer.freshIds = () => [];
+  writer.stage = stage;
+  assert.match(await answerScript(writer, { message: { id: "m2", body_md: "slower" }, subject: "script:1", thread: [], series: { slug: series.slug }, episode: { slug } }), /the writer answered the owner on script:1$/);
+  return asked;
+}
+
+// The instructions are part of a discussion's durable key (client.mjs run): the digests are
+// main's before an explainer series had a discussion variant of its own.
+test("a line on a flat-explainer's or a story one-off's bible and screenplay is answered under the story's discuss variant, with the instructions it had", async () => {
+  const digest = (text) => createHash("sha256").update(text, "utf8").digest("hex");
+  for (const preset of ["flat-explainer", "ink-wash", "cinematic-3d"]) {
+    assert.deepEqual(await discussionCalls(preset), [["planner", "drama", "discuss"], ["writer", "drama", "discuss"]], preset);
+  }
+  assert.equal(digest(instructionsFor("planner", "drama", "", "discuss")), "88d7f55145ecff3e0910f33dc056b86dd8464595e1c626720bae3a2ed0f2cab9");
+  assert.equal(digest(instructionsFor("writer", "drama", "", "discuss")), "06c8d01e814728158f137b681e9438de81f050654d641bf7d90116cce3c0c0a6");
+});
+
+test("a line on a cute explainer's bible and screenplay is answered under its own series' discussion variant, which has texts of its own", async () => {
+  for (const [preset, variant] of [["cute-cartoon", "discuss-cartoon"], ["cute-mystery", "discuss-mystery"]]) {
+    assert.deepEqual(await discussionCalls(preset), [["planner", "drama", variant], ["writer", "drama", variant]], preset);
+    const planner = instructionsFor("planner", "drama", "", variant);
+    const writer = instructionsFor("writer", "drama", "", variant);
+    assert.match(planner, /You are the planner answering the OWNER'S LINE on this episode's bible/);
+    assert.match(writer, /You are the writer answering the OWNER'S LINE on this episode's screenplay/);
+    assert.notEqual(planner, instructionsFor("planner", "drama", "", "discuss"));
+    assert.notEqual(writer, instructionsFor("writer", "drama", "", "discuss"));
+    assert.ok(writer.includes(`"look": {"preset": "${preset}"}`), "a rewrite stays the video its series' guide describes");
+  }
 });

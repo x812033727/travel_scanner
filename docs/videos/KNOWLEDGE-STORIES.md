@@ -13,6 +13,7 @@
 | 知識科普：第三季 | [100 個候選題](so-thats-why/season3-topics.json)，100 列都是 `checked`；各列 `check` 指向 topic-checks | 和第二季一樣屬於候選題庫；不能把 `checked` 寫成已出片或已排程 |
 | 非虛構小故事：品牌、日用品、隱形標準 | [故事路線設計](STORY.md)、[100 個故事企劃與查核](story-plans/brand-stories-100/README.md)、[匯入包](story-plans/brand-stories-100/stories.json)、[50 天順序表](story-plans/brand-stories-100/SCHEDULE.md) | 日常用品 40、亞洲品牌 40、科技軟體 20；12–15 分鐘、只有旁白、卡通靜態圖加運鏡，`format: drama`、`kind: story`；先試 A01 輪子行李箱、B18 迴轉壽司 |
 | 獨立直式小故事／漫劇精華 | [Shorts 三條內容線](SHORTS.md)、[直式製作票](../../tasks/open/2026-09-28-video-shorts-worker-drama.md) | 獨立小故事是 `shorts_line: drama`、`source_slug` 空白；從既有故事或漫劇切出的短篇填來源。這條線已有製作票，本次未另造一份題庫 |
+| 歷史與奇異（工作名「奇聞檔案局」，2026-10-10 起草） | [系列企劃](history-curiosity/README.md)、[40 個候選題](history-curiosity/topics.json)、[畫風與 MiniMax 規格](history-curiosity/look.md) | 五軸各 8 題，全部 `candidate`（未查核）；可愛卡通插圖由 MiniMax image-01 生成、可放公有領域照片；先本機試片 2 集，主機路線要改（票見企劃 §票）。同日決定原來如此事務所也改成 MiniMax 生圖 |
 | 相關科普：「AI 名詞十分鐘」 | [系列規格](ai-terms/README.md)、[81 個名詞](ai-terms/terms.json) | 約 10 分鐘、不編集數；前三個 token／上下文視窗／RAG 已有文字交接，接續既有試片票 |
 
 原始清單共300個科普題目＋100個非虛構故事＋81個AI名詞；第二季取捨後，新版長片規格涵蓋473個項目。數量包含候選題及已覆蓋名詞，不能當成已製作、互不重複的成片。

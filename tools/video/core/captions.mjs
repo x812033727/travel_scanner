@@ -18,7 +18,6 @@ import { frameToMs, samplesToMs, spokenUnits } from "./timeline.mjs";
 // speed in characters per second). The captions ticket tunes the non-Chinese ones.
 export const LOCALE_RULES = {
   "zh-TW": { maxChars: 16, maxLines: 2, maxCps: 9, words: false },
-  "zh-CN": { maxChars: 16, maxLines: 2, maxCps: 9, words: false },
   ja: { maxChars: 16, maxLines: 2, maxCps: 8, words: false },
   ko: { maxChars: 18, maxLines: 2, maxCps: 12, words: true },
   en: { maxChars: 42, maxLines: 2, maxCps: 20, words: true },

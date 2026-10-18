@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm test *)",
+      "Bash(bash scripts/*)",
+      "Edit(src/**)",
+      "Bash(sed -i *)",
+      "Bash(cp src/*)",
+      "Bash(node tools/append.mjs)"
+    ],
+    "ask": [
+      "Edit(src/tax.mjs)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Edit(data/**)",
+      "Bash(bash scripts/deploy.sh *)"
+    ]
+  }
+}

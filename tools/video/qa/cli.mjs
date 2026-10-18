@@ -24,6 +24,7 @@ import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } fr
 import { LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
 import { alwaysLocales, captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
+import { isStory } from "../core/story.mjs";
 import { chapterList, checkChapters, estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { checksCurrent } from "../package/cli.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -255,12 +256,13 @@ export async function run(command, args, ctx) {
   // The owner's language choice (docs/videos/LANGUAGES.md): the captions and metadata items look
   // at the narration, zh-TW and the chosen locales; a dub track given up on only warns.
   const languages = readLanguages(workdir);
-  // The language panel opens after final approval. Requiring unselected translations
-  // here prevents that first approval and therefore prevents the owner from choosing.
-  const mandatoryLocales = alwaysLocales(narrationLocale(doc));
-  const captionLocales = languages ? captionLocalesOf(languages, narrationLocale(doc)) : mandatoryLocales;
+  const captionLocales = captionLocalesOf(languages, narrationLocale(doc));
+  // Chosen locales with no translation yet are made by the languages step after this final gate:
+  // the captions item only warns about them. The narration's own and zh-TW are always required.
+  const required = alwaysLocales(narrationLocale(doc));
+  const untranslated = captionLocales.filter((locale) => !required.includes(locale) && !project.translations[locale]);
   const skippedDubs = Object.fromEntries((chosenLocales(languages, "dub") ?? []).map((locale) => [locale, readJson(dubArtifacts(workdir, locale).skipped, null)]).filter(([, gaveUp]) => gaveUp).map(([locale, gaveUp]) => [locale, gaveUp.reason ?? ""]));
-  const { problems: metadataProblems, metadata } = composeMetadata({ doc, timeline: timelineCurrent ? presented : estimateTimeline(doc), translations: project.translations, pack: project.pack ?? null, locales: languages ? metadataLocalesOf(languages, narrationLocale(doc)) : mandatoryLocales });
+  const { problems: metadataProblems, metadata } = composeMetadata({ doc, timeline: timelineCurrent ? presented : estimateTimeline(doc), translations: project.translations, pack: project.pack ?? null, locales: metadataLocalesOf(languages, narrationLocale(doc)) });
   if (!brandingMatches) metadataProblems.push("selected branding differs from the final cut; run assemble again");
   const descriptions = [metadata.description, ...Object.values(metadata.localizations).map((fields) => fields.description)];
 
@@ -296,7 +298,7 @@ export async function run(command, args, ctx) {
       items.push(item("pace", false, error.message));
     }
   }
-  items.push(captionsItem({ lintWarnings: lint.warnings, manifest: captions, current: captions?.speech_hash === speech && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: captionLocales, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))), skippedDubs }));
+  items.push(captionsItem({ lintWarnings: lint.warnings, manifest: captions, current: captions?.speech_hash === speech && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: captionLocales, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))), skippedDubs, untranslated }));
   items.push(metadataItem({
     problems: metadataProblems,
     tagProblems: checkYoutubeFields({ title: "", description: "", tags: metadata.tags }, "youtube"),
@@ -317,7 +319,11 @@ export async function run(command, args, ctx) {
   const decision = disclosureDecision(doc, { musicSource: music?.source ?? (doc.music?.track ? "track" : doc.music ? "generated" : null) });
   items.push(disclosureItem(decision, recordDisclosure(inWork(ARTIFACTS.upload), decision)));
 
-  const report = { ...qaReport(items, finalSha256), ...(hasAnimePolicy(doc) ? { policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec }, runtime_context: animeRuntimeContext(doc) } : {}), ...(policy.lost ? { policy_lost: policy.lost } : {}) };
+  // The site's brand-story dub decision reads this only from a passing final QA attached to
+  // the same final.mp4 hash. The assemble item binds subtitlesHash(doc) to checks.json, and the
+  // captions item checks the current zh-TW CC; old reviews have no such evidence and stay locked.
+  const storySubtitles = drama && isStory(project.series) ? { subtitles_burned_in: burnIn(doc) } : {};
+  const report = { ...qaReport(items, finalSha256), ...storySubtitles, ...(hasAnimePolicy(doc) ? { policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec }, runtime_context: animeRuntimeContext(doc) } : {}), ...(policy.lost ? { policy_lost: policy.lost } : {}) };
   writeReport(ctx, doc, workdir, report, finalSha256);
   // A lost judgement is the owner's, whatever the other items say: exit 3 keeps review-push from
   // posting the cut, and the code on the last line tells it from a token the owner has to replace.

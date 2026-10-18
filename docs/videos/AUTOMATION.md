@@ -10,7 +10,7 @@
 | 後台設定 | 各階段的 AI 模型、草稿排程與題材、成片參數、預算上限，都放在「影片審核」頁的「設定」分頁 |
 | 關卡 | **旁白由 Jev 判斷，全數通過就自動核准**。2026-09-27 起（設計在 [`HANDS-OFF.md`](HANDS-OFF.md)）另外三關也由 AI 決定：**選大綱**由 Jev 依「頻道立場」挑（立場空白或開關關著時仍等站主；Jev 沒挑出過關的大綱就退回企劃模型重寫，兩次仍不過才交給站主，卡片附上 Jev 的表）、**看成片**由自動品管（`qa` 的 11 項全過就核准）、**確認上架**由上傳包檢查（4 項全過就核准，影片進「可以上架」）；站主只決定上架時間。仍然找站主的只有：品管或上傳包有項目沒過、Jev 兩次重寫仍不過、卡住的影片、上架時間 |
 | 寫稿的模型 | **主機上登入的 Claude 訂閱帳號（Claude Code）**，預設 Claude Sonnet 5 寫、Claude Opus 5.5 查核。每個階段也可以改用網站的 API 金鑰 |
-| 題目來源 | 先看站上已查證的新聞與已發布的文章，不夠再用 Brave 搜尋補 |
+| 題目來源 | 先看站上已查證的新聞與已發布的文章，再看官方頁面（新聞撰稿判成不算新聞的那些，見〈官方頁面當題目〉），不夠再用 Brave 搜尋補 |
 
 **訂閱帳號**：
 - 站主先決定用 API 金鑰，後來改成用 `/admin/ai-accounts` 管的 Claude 訂閱帳號。之前提醒過：2026-09-24 的票（`tasks/done/2026-09-24-refresh-claude-plan-usage-automatically-from.md`）記錄，網站自己的功能放在個人訂閱上，可能違反 Anthropic 與 OpenAI 的消費者條款，而且額度用完就會整個停住。站主 2026-09-25 表示自己看過條款，決定用訂閱全自動。
@@ -52,7 +52,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 | 各階段常設指示 | `stage_instructions`：六個階段各一段（每格最多 4000 字），工人接在該階段提示詞之後；清空就是不加 | `drama_stage_instructions`：同樣六格，只給漫劇（單集與作品的每一集）；遷移時從教學的複製一份 | 「目前的提示詞」依格式與 variant 分開顯示（`video_stage_prompts`） |
 | 聲音 | `voice`：頻道聲音（Gemini Sulafat，沿用 `docs/videos/README.md`） | `drama_voice`：旁白，`null` 就跟教學一樣；角色聲音池 `character_voice_pool` | — |
 | 長度 | 目標長度 8–12 分鐘（`target_minutes_min`／`target_minutes_max`）：下限 8 是硬規定，上緣是撰稿瞄準的長度、不是上限，超過沒關係 | 每個請求與作品各自帶 `target_minutes` | — |
-| 語言預設 | `caption_locales`（en、ja、ko、zh-CN）：語言面板「照預設勾選」的預先勾選 | `drama_caption_locales`（預設空） | 工人不再讀這兩欄：每支影片做哪些語言由站主在成片核准後決定（[`LANGUAGES.md`](LANGUAGES.md)，下面「語言」） |
+| 語言預設 | `caption_locales`（en、ja、ko）：語言面板「照預設勾選」的預先勾選 | `drama_caption_locales`（預設空） | 工人不再讀這兩欄：每支影片做哪些語言由站主在成片核准後決定（[`LANGUAGES.md`](LANGUAGES.md)，下面「語言」） |
 | 流程上限 | 每支最多查核幾輪（3）、旁白最多重錄幾輪（2） | `drama_max_verify_rounds`（3）、`drama_max_retake_rounds`（2）、每鏡最多重做幾次、一支最多幾段片段、文件退回後最多重寫幾輪 `series_doc_rewrites`（2；討論出的新版本不算） | — |
 | 預算 | 每月最多幾支草稿（8） | 每月片段秒、圖片、judge 次數、音樂首數、單支美元上限、作品每月幾集 `series_episodes_per_month`、同時最多幾集在做 `series_max_in_flight`（1–2） | 每月模型 token 上限（百萬，只算 API 金鑰的呼叫，20）；旁白每月字數與 Jev 每日次數沿用既有欄位 |
 | 關卡 | 旁白 Jev 全過自動核准、Jev 挑大綱、自動品管全過核准成片與上架確認（都開） | `drama_auto_approve_audio`、`drama_auto_approve_final`（遷移時從教學的複製）、設定圖自動選 `auto_pick_look`（關）、分鏡自動核准 `auto_approve_storyboard`（關）、「劇本先給我看」`series_script_gate`（開；單集與作品的每一集） | — |
@@ -80,7 +80,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 ## 一支影片的自動流程
 
-1. **選題**：從站上最近 14 天已發布的 AI／科技新聞與文章，加上 Brave 搜尋結果，排除已經做過的題目與避開的題材。由企劃模型挑出題目、寫 `brief.md`（含 2–3 個大綱與「站主觀點」；有頻道立場時第一行寫「套用立場：N、M」）→ 先問 Jev 挑哪一個（[`HANDS-OFF.md`](HANDS-OFF.md)）→ 送審「選大綱」。Jev 過關的伺服器直接核准；沒過就把原因交回企劃模型重寫，兩次仍不過、或立場空白，才**停下來等站主**。
+1. **選題**：從站上最近 14 天已發布的 AI／科技新聞與文章、開啟了的新聞來源裡被判成不算新聞的官方頁面，加上 Brave 搜尋結果，排除已經做過的題目與避開的題材。由企劃模型挑出題目、寫 `brief.md`（含 2–3 個大綱與「站主觀點」；有頻道立場時第一行寫「套用立場：N、M」）→ 先問 Jev 挑哪一個（[`HANDS-OFF.md`](HANDS-OFF.md)）→ 送審「選大綱」。Jev 過關的伺服器直接核准；沒過就把原因交回企劃模型重寫，兩次仍不過、或立場空白，才**停下來等站主**。
 2. **大綱選定**之後：撰稿 → lint（錯誤會把 lint 訊息餵回撰稿模型，最多改 3 次）→ 查核（改超過 3 個事實就再查一輪，每輪都是新的對話、看不到上一輪的結論，等於換人查；最多照設定的輪數）→ 聽眾審稿 → lint。
 3. **旁白**：tts → check-audio → 被標的句子重錄，最多照設定的輪數。全數通過且設定開著，就自動核准旁白；否則送審等站主。tts、重錄或 check-audio 被 `STOP` 檔停下（結束碼 6）時，這一輪結束、下一輪從快取接著做，不卡住、不回報做完、不送審；tts 的章節不合 YouTube 規則（結束碼 1）就卡住，理由是哪一章。
 4. **成片**：render → assemble → captions（只有繁體中文）→ `qa`（11 項自動品管，字幕與標題說明兩項只看 zh-TW 加已選的語言）→ 送審「看成片」，報告一起送。全過的伺服器直接核准；有項目沒過才**停下來等站主**。翻譯不再擋成片：其他語言在成片核准後由站主決定（下面「語言」）。
@@ -107,7 +107,20 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
   - 工人自己做過的影片；
   - `/admin/videos` 上的每一支影片，包括分支上做的、已放棄的。
 - 企劃的主要文章（`source_guide`，沒有的話取它引用的第一篇站內文章）如果跟前面任何一支相同，這份企劃就不採用。
+- 沒有站內文章的影片（例如官方頁面做成的），以它 `source_urls` 的第一個網址為準（2026-10-17 加，`flow.mjs` 的 `usedPages`）：工人做過的影片裡，`source_guide` 是空的那些，第一個網址就算用過了，放棄的也算。排程草稿、站主重試的草稿與退回重寫時，候選題目裡網址相同的先拿掉，企劃模型看不到；企劃沒有站內文章、第一個網址又是用過的，這份企劃不採用，跟站內文章重複一樣再問一次。只比第一個網址，後面引用的網址可以跟別支重複。
 - 分支上的影片用 `review-push --report-only` 登記到審核頁，這個指令不會送出任何審核項目。
+
+**官方頁面當題目**（2026-10-10 加；站主要從官方的更新與教學貼文做影片）：
+- **為什麼要有**：官方發的新聞站上會寫成文章，本來就從「站上文章」這條路進來。官方的教學貼文不一樣，新聞撰稿會判成「不算新聞」，不會有文章，企劃模型以前看不到。
+- **哪些會成為題目**（`apps/api/app/video_automation/topics.py` 的 `official_topics`）：新聞來源的設定帶 `video_topics: true`、啟用中、是第一方的，它的候選裡狀態是 `rejected`、原因是 `news_not_eligible`、沒有人按過決定、14 天內的，新到舊最多 20 筆。題目的 `source` 是 `official`，標題是「來源名稱｜原標題」，摘要取那一頁摘錄的前 500 字，`slug` 是空的。`date` 是頁面自己的發布日；網頁列表型的來源（Claude blog、Anthropic engineering）沒有日期，題目的 `date` 就是空的，14 天從掃描器第一次看到那一頁算起，所以列表把舊文章換上來時，舊文章也可能出現在候選裡。
+- **順序**：站上文章 → 官方頁面 → 搜尋結果；搜尋結果裡跟官方頁面同一個網址的會丟掉。
+- **開關**：沒有後台勾選框。在 `apps/api/app/news_automation/sources.json` 把來源的 `config` 加上 `video_topics: true`，再到主機載入（[`news-automation.md`](../news-automation.md) 的 Sources 一節）。沒有任何來源帶這個鍵時，選題跟以前完全一樣。對主機上已經有的來源加上或拿掉這個鍵，算一次設定變更：載入時會從主機重新驗證那個來源，驗證被拒的話那個新聞來源會被關掉，所以載入後要讀回報、把被拒的再載一次。這個改動比來源先部署的話，五個來源是新增，不會多驗一輪。第一批帶鍵的是 Claude blog、Claude developer blog、Anthropic engineering、GitHub Changelog、Cursor changelog（2026-10-10；`tests/test_video_automation_topics.py` 會對照檔案）。OpenAI 與 Gemini 的更新頁目前掃描器讀不到，所以不在裡面。各家官方頁面與對應的來源在 [`official-ai-accounts.md`](../official-ai-accounts.md)。
+- **企劃怎麼處理**：提示詞要它把官方頁面排在搜尋結果前面，`source_guide` 回 `null`、網址放 `source_urls` 第一個，更新類的內容照含金量規則的四步講。
+- **兩個限制與一條規則**：
+  - 只有被判成不算新聞的頁面會出現。已經發成新聞的走站上文章那條路；停在待審查或需重寫的不會出現。
+  - 自動路線還不能實際操作工具（票 `2026-10-09-give-the-automated-route-a-way`），所以官方題目做出來的是「這次更新改了什麼、現在該怎麼做」的說明片，依據是官方頁面上的範例。要實作示範的教學仍然走手動路線。
+  - 官方頁面做過影片（或那支被放棄）之後，14 天內仍然在題目來源裡，但〈不重複選題〉會把它從候選拿掉，企劃也不能再以它開頭（2026-10-17 起由程式檢查）。排程草稿退回重寫時，企劃改選官方頁面，影片記的 `source_guide` 就是空的，不再沿用原來那篇文章；漫劇改編與站主指定文章的教學照舊保留自己的文章。
+- **先跳過的來源**：以 feed 摘要當依據的來源（Claude Code 更新紀錄、Claude Platform 更新紀錄）。它們每一則都指向同一個共用頁面的錨點，工人讀到的會是整頁的開頭（前 40,000 字），不是那一則；Claude Code 更新紀錄那一頁還有 4.8 MB，超過工人 3 MB 的讀頁上限，整頁都讀不了。這種來源帶了鍵也不會出題目，`notes` 會寫原因（票 `2026-10-10-let-the-video-worker-read-one`）。
 
 ## 站主指定文章的教學影片（2026-10-05 加）
 
@@ -120,7 +133,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 - 已經有一支沒被放棄的教學影片在講這篇（`VideoProject.source_guide`）：409 `video_slides_request_article_used`，訊息寫出是哪一支。要重做就先放棄那支，沒有強制排的開關。
 - 自動產線（`enabled`）關著：409 `video_automation_disabled`。關著時工人什麼都不做，請求永遠不會被拿走。
 
-**端點**：資料表 `video_slides_requests`（migration 0126），存的狀態是 `queued`／`started`／`done`／`cancelled`。
+**端點**：資料表 `video_slides_requests`（migration 0127），存的狀態是 `queued`／`started`／`done`／`cancelled`。
 
 | 誰 | 端點 | 權限 |
 | --- | --- | --- |
@@ -209,15 +222,24 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 ## 語言（2026-09-27 加，設計在 `LANGUAGES.md`）
 
-每支影片先只做繁體中文。成片核准後站主在 `/admin/videos` 的影片頁決定加哪些語言（en、ja、ko、zh-CN）、每種加什麼（標題與說明、CC、配音），或按「只出繁體中文」；`caption_locales` 只是面板的預先勾選。工人每一輪從影片清單（`ProjectSummary.locales`、`locales_decided_at`、`languages`）看每支成片已核准的影片：沒決定就什麼都不做；決定了，就把選擇抄成工作區的 `languages.json`（`captions`、`package`、`qa`、`review-push` 都從這個檔讀，本機手動跑也一樣），再對站上還標成「製作中」的部件做一件事：
+每支影片先只做繁體中文。成片核准後站主在 `/admin/videos` 的影片頁決定加哪些語言（en、ja、ko）、每種加什麼（標題與說明、CC、配音），或按「只出繁體中文」；`caption_locales` 只是面板的預先勾選。工人每一輪從影片清單（`ProjectSummary.locales`、`locales_decided_at`、`languages`）看每支成片已核准的影片：沒決定就什麼都不做；決定了，就把選擇抄成工作區的 `languages.json`（`captions`、`package`、`qa`、`review-push` 都從這個檔讀，本機手動跑也一樣），再對站上還標成「製作中」的部件做一件事：
 
 1. **翻譯**（一輪一個語言）：`i18n-sheet --locale <l> --parts <勾了的 metadata,captions>`（勾配音時每句帶 `max_chars`）→ 翻譯模型 → 字幕審稿模型 → `i18n-merge`。工作表沒有勾的部件就沒有那一段，merge 也不動它。翻譯模型一次呼叫做三段（2026-10-05 起，做法借自 VideoLingo 與 pyvideotrans 的「翻譯→反思→修訂」，沒有抄程式）：先翻出草稿，再以該語系觀眾的身分對照原文、詞彙表與規則自評，最後定稿，回 `{"draft": {"worksheet"}, "critique": [...], "final": {"worksheet"}}`；`prompts.mjs` 的 `parseAnswer` 只取 `final`，沒有 `critique` 的答案（或有草稿沒定稿）當成答非所問，跟其他不可用的答案一樣下一輪再問一次、兩次就卡住。**詞彙表**：影片的句子與標題說明用到的詞典條目（`docs/videos/lexicon.json`，以句子裡出現的形式列出，`core/lexicon.mjs` 的 `entriesUsed`）加 `video.json` 的 `sources` 標題，每個詞全片只用一種寫法、產品名照原廠拼法；**字幕切點**：每句 zh-TW 被切成幾段（`core/captions.mjs` 的 `cuePieces`：先切句末、再切逗號、數字與單位不分開），翻譯照原文的子句順序走，數字在觀眾聽到的那一段。兩者由 `tools/video/i18n/cli.mjs` 的 `translationContext(doc, lexicon)` 產生（`prompts.mjs` 轉出同一個函式）：`i18n-sheet` 寫進工作表（`glossary`、`boundaries`；只有 metadata 的工作表沒有 `boundaries`），工人每次呼叫翻譯與審稿模型都把它們放在 payload 頂層、送出的 `worksheet` 不重複帶（拆單位時句子單位只帶自己那幾句的切點、metadata 單位只帶詞彙表），`i18n-merge` 不讀這兩個欄位；單位的 key 仍是整張工作表的雜湊，所以詞彙表變了那個單位會重問一次。提示也說沒帶時（舊工作表）模型自己從句子裡的拉丁字詞與 `video.sources` 建表。字幕審稿模型對照同一份詞彙表與切點。翻譯的回答因此含草稿與定稿兩份工作表，輸出約是以前的兩倍，一個單位仍最多 24 句（`sheet-units.mjs`）。
 2. **配音**（一輪一個語言，`docs/videos/DUBS.md`）：`dub --locale <l>`；結束碼 1（有視窗加速到 1.15 倍仍塞不下）→ 翻譯模型的縮短模式（`translator:shorten`，只給 `fit.json` 的句子與預算；不縮短或改了數字的答案丟掉）→ captions-only 的工作表 → `i18n-merge` → 再 `dub`，最多 `MAX_DUB_SHORTEN_ROUNDS`（2）輪；做出音軌後 `check-audio --locale <l>` → 被標的句子 `dub --redo`，最多 `MAX_DUB_RETAKE_ROUNDS`（2）輪；重錄後句子變長、塞不回視窗時，回到縮短模式，不直接放棄。重錄完仍被標的句子多半是同音字（轉寫每次都聽成同一個詞，2026-09-29 當天 8 條配音都因此整條放棄），交給翻譯模型的改寫模式（`translator:reword`，帶轉寫聽到的字與預算；沒改、超過預算或改了數字的答案丟掉）→ 同樣走工作表與 `i18n-merge` → 再 `dub`（只重錄改過的句子）與 `check-audio`，最多 `MAX_DUB_REWORD_ROUNDS`（2）輪。仍不行、或 `dub` 說要站主（Azure 聲音、沒金鑰）就寫 `dubs/<l>/skipped.json` 記下原因，**不擋影片**；服務暫時掛掉（結束碼 4）這一輪結束、下一輪再試；`dub`、`dub --redo` 或 `check-audio --locale` 被 `STOP` 檔停下（結束碼 6）也是這一輪結束（不當成做好的音軌、不放棄、不擋影片），下一輪從快取把音軌重新排好、重新聽完再送。
-3. **全部做好**：`captions`（只寫 zh-TW 與勾了 CC 的語系；有配音的跟配音時間軸；沒勾的語系的字幕檔刪掉）→ `package`（`upload/` 只放 zh-TW 與勾了的：`description.<l>.txt`、`captions/<l>.srt`、`dubs/<l>.m4a`；`metadata.json` 多 `language_choice`）→ `review-push --gate languages`：payload 每語每部件 `ready` 或 `{status: "skipped", reason}`，檔案 `description_<l>`、`captions_<l>`、`dub_<l>`（語系小寫、連字號改底線）。沒有配音的批次伺服器直接核准；有配音的等站主在 Studio 上傳後按「已在 Studio 上傳配音」。
+3. **全部做好**：`captions`（只寫 zh-TW 與勾了 CC 的語系；有配音的跟配音時間軸；沒勾的語系的字幕檔刪掉）→ `package`（`upload/` 只放 zh-TW 與勾了的：`description.<l>.txt`、`captions/<l>.srt`、`dubs/<l>.m4a`；`metadata.json` 多 `language_choice`）→ `review-push --gate languages`：payload 每語每部件 `ready` 或 `{status: "skipped", reason}`，檔案 `description_<l>`、`captions_<l>`、`dub_<l>`（語系小寫、連字號改底線）。沒有配音的批次伺服器直接核准；有配音的等站主在 Studio 上傳後按「我已經在 Studio 傳好這些配音」。
 
-之後多勾的部件，站上會再標成「製作中」，工人再做一批、再送一筆（舊的 superseded）；影片已經在 YouTube 上也一樣。站主沒勾或只出繁體中文的影片，`captions` 與 `package` 只有 zh-TW，其他檔案一個位元組都不變。
+之後多勾的部件，站上會再標成「製作中」，工人再做一批、再送一筆；影片已經在 YouTube 上也一樣。新的一筆只取代還在等站主的舊批次（superseded），已核准的舊批次照舊是核准的。站主沒勾或只出繁體中文的影片，`captions` 與 `package` 只有 zh-TW，其他檔案一個位元組都不變。
 
-成本：翻譯每個語言一次翻譯加一次審稿呼叫；配音見 `DUBS.md` §成本（一條 10 分鐘約 US$0.135，月額度 `video_speech_gemini_monthly_character_limit` 要先調高）；YouTube 配額見 `LANGUAGES.md` §成本。
+**跳過的配音再做一次**（2026-10-10 加；站主那一側在 `LANGUAGES.md` §跳過的配音再做一次，工人的每一步與理由在 `DUBS.md` §再做一次）。工人放棄的配音留著 `dubs/<l>/skipped.json`，站上讀成「跳過」，上面三步都不會再碰它。站主在語言面板按「再做一次」之後，影片清單那一列多一筆 `dub_retries[<l>] = {id, status, open}`（`ProjectSummary`；沒有這個鍵的是舊版網站，工人什麼都不碰）。語言那一步（`languages()`）在做任何其他語言工作之前先處理它（`dubRetries`），一輪一筆：
+
+- **還沒接的要求**（`open`，而且 `auto.json` 沒有同一個 `id` 的紀錄）：先做不花錢的檢查。工作檔沒被清、`video.json` 在、成片核准對得上、不是旁白自己的語言、`package` 對成片的三個測試都過（片頭片尾、`checks.json` 與 `final.mp4`、旁白錄音）、別的語言在站上已完成的音軌在這裡仍是 current，最後 `dub --locale <l> --dry-run`（結束碼 0 但輸出寫著有句子沒有現在版本的翻譯，也算不過）。不過就拒絕：原因記進 `auto.json` 與 notes，回報 `dub_retries: {<l>: {id, status: "refused", reason}}`，影片不卡住、不延後、什麼檔都沒動。`--dry-run` 結束碼 4 是延後，要求原封不動；這個延後照一般的延後計數，不是大家共同的原因而連續第 7 次時影片會卡住（`deferred:dub`）。
+- **接手**：回報 `dub_retries: {<l>: {id, status: "taken"}}`，並從 `PUT /video/reviews/<slug>` 的回應確認這筆 `id` 真的成了 `taken`（要求在這之間被撤掉、過期或換新，就不開始）。確認之後才依序：`auto.json` 把那個語言的輪數歸零並標 `check_stopped`、紀錄寫 `taking`；刪 `skipped.json`；紀錄改 `taken`；然後就是上面第 2 步的 `makeDub`。`STOP` 檔或失去 `LEASE` 會在回報之前擋下，什麼都沒送、沒清。
+- **已經接了的**：`auto.json` 的紀錄是 `taken` 時不再檢查、不再清，上面第 2、3 步照平常接著走。站上這時把那一格讀成 `working`（頁面寫「尚未完成」，下面一行說工人已接手）；就算這條 lane 手上的清單比接手還舊、仍寫著「跳過」，工人自己紀錄是 `taken` 的配音也算待做，所以音軌沒重新聽完之前不會有批次送出去。
+- **結束**：第 3 步的批次就是答案，沒有另外的回報。網站在存批次的同一筆交易把要求結束成 `made`（有音軌，而且那一批算數）、`skipped`（又放棄，批次裡是新的原因）或 `refused`（位元組和站主退回的那一批完全一樣，網站沒有新增審核）。批次和舊的一模一樣、網站沒有多一筆審核時也照樣結束。`review-push` 成功後工人把紀錄改成 `sent`。
+- **工人的紀錄**：`auto.json` 的 `dub_retries[<l>] = {id, status, at}`，`status` 是 `taking`｜`taken`｜`sent`｜`refused`（附 `reason`），結束後也留著，另一條 lane 或一份舊清單才不會把同一筆接兩次。每一次回報（任何階段的）都把 `taken` 與 `refused` 再帶一遍，網站只採用一次；拒絕的回報沒送到時，下一輪先補報。
+- **清掉工作檔的影片**：端點與那一格本來就擋，漏進來的要求工人照樣拒絕（原因寫清掉的日期），而且不送清理後新勾部件的那種只列部分語言的批次。
+
+成本：翻譯每個語言一次翻譯加一次審稿呼叫；配音見 `DUBS.md` §成本（一條 10 分鐘約 US$0.135，月額度 `video_speech_gemini_monthly_character_limit` 要先調高）；YouTube 配額見 `LANGUAGES.md` §成本。再做一次在站主按下去時先比一次本月的語音額度（後台端點，估計值是那個語言字幕檔的字數；讀不到用量就不收），`dub` 開工前自己再比一次；之後才不夠是結束碼 4，延後、不卡住、不放棄，要求維持已接手。Jev 的每日次數與翻譯模型的月上限不在按下去時檢查。
 
 ## 一鍵合集（2026-09-27 加，設計在 `BINGE.md`）
 
@@ -244,7 +266,8 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 - **哪些影片**：`auto.json` 說已經結束的——`status: done` 而且記下了 YouTube id，或站主放棄（`dropped`）——而且結束滿保留天數（預設 7 天，跟審核檔案區刪 mp4 的 `PREVIEW_RETENTION` 一樣）。
 - **從哪天算**：放棄的從 `dropped.at` 算。上了 YouTube 的，`auto.json` 沒有記日期（`recordVideoId` 只寫 `status` 與 `youtube_video_id`），所以照網站刪 mp4 的規則（`prune_published_previews`）：上架確認核准的時間（工作區 `approvals.json` 的 `publish` 項，與每輪影片清單的 `publish_approved_at`，取較晚的）和站主設的公開時間（`youtube_publish_at`），再取較晚的。沒有可用的日期就不清，那一輪印一行說明。
-- **先留著**：還在做、卡住、等站主的影片，不管多舊都不動。已上 YouTube 但語言還沒決定或還在做（影片清單的 `locales_decided_at`、`languages`）、開了合集的作品裡合集還沒上 YouTube 的集數（合集要接每一集的成片與字幕，縮圖取前三集的關鍵影格）、工作區裡有 `STOP` 檔的，也先留著。
+- **先留著**：還在做、卡住、等站主的影片，不管多舊都不動。已上 YouTube 但語言還沒決定或還在做（影片清單的 `locales_decided_at`、`languages`）、還有任何審核在等站主決定（清單的 `pending`，退回一批語言審核時還要用到檔案）、開了合集的作品裡合集還沒上 YouTube 的集數（合集要接每一集的成片與字幕，縮圖取前三集的關鍵影格）、工作區裡有 `STOP` 檔的，也先留著。
+- **站主要求再做一次的配音**（上面「語言」的「跳過的配音再做一次」）也先留著：清單那一列有還開著的要求（`dub_retries` 裡 `open` 的，等待中或已接手），或工人自己的 `auto.json` 記著接手中（`taking`、`taken`）而那個語言的配音還勾著。後一條是給清單比接手還舊的那一輪用的。要求結束（做出來、又跳過、被拒絕、過期）就不再擋。反過來說，滿保留天數的影片只靠這幾樣留著：站主一核准等著的語言審核卡，下一輪就可能清掉，之後跳過的配音不能再做，所以其他還想再做的語言要在按卡片的按鈕之前先要求。清理讀的是第一條 lane 最後一次讀到的清單，剛按下去的要求有可能沒趕上；那樣的話工人下一輪會拒絕這筆要求並寫明檔案哪天清掉。
 - **中文先做、外語後做的漫劇**：`video.json.localization_plan`、工作區 `localization-retention.json` 或舊 `series.json.production.profile` 已記下後續語言交付時，該集及其合集保留全部製作素材。網站當次語言選擇為空、中文上架滿七天或放棄狀態都不解除這個保留；標記損壞也先留著。保留介面目前不提供自動解除，須等另行實作並驗證歸檔／站主解除操作，不能刪中文乾聲、M&E 或畫面來源後才準備日／韓／英。
 - **刪什麼**：`final.mp4`、`upload/final.mp4`（上傳包的副本；合集是硬連結）、`upload/dubs/`、`segments/`、`build/`、`audio/`、`narration.wav`、`frames/`、`keyframes/`、`clips/`、品牌故事讀過的來源頁面 `story/pages/`（整頁文字，一頁一個 JSON）、配音的 `dubs/<語系>/audio/`、`dubs/<語系>/narration.wav`、`dubs/<語系>.<格式>`，以及 `review/` 裡送審用的預覽（`preview-<雜湊>.mp4`、`narration-<雜湊>.m4a`）。
 - **一定留**：`auto.json`、`state.json`、`checks.json`、`approvals.json`、`timeline.json`、`captions/`、`i18n/`、`languages.json`、`media/`（帳本、快取、工作）、`answers/`、`review/` 的 JSON 與頁面、上傳包的文字檔（`metadata.json`、`UPLOAD.md`、說明、字幕）與縮圖、`characters/`、`music/`、`thumbnail.jpg`、`contact-sheet.png`、品牌故事的 `story/chapters/`（每一章的稿子與查核結果，很小，出問題時要看）。工作區根目錄的 `_series/`、`_music/` 與任何 `_` 開頭的資料夾從不讀、從不刪。
@@ -266,6 +289,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 清完之後就做不到的事：
 
 - 清理之後才勾的語言做不出來（成片與旁白都不在了，`package` 也要 `final.mp4`）。工人下一輪把每個還在「製作中」的部件送成一筆 `languages` 審核，部件是 `{status: "skipped", reason: "工作檔已在 <日期> 清掉，…"}`（跟放棄的配音 `dubs/<語系>/skipped.json` 同一種回報），沒有音軌所以伺服器直接核准；語言面板那一格顯示「跳過」與原因，卡片不再停在「語言製作中」。這一筆只列新勾的部件，清理前做好的照舊。
+- 跳過的配音不能再做一次。`dub` 與 `check-audio` 還跑得起來，但每一句都要重新買，`package` 要 `final.mp4`，其他語言的音軌檔也清掉了，網站要的完整一批組不出來。語言面板那一格寫原因、不給按鈕，端點回 409 `video_dub_retry_tidied`（網站從工人 volume 的 `auto.json` 讀 `tidied_at`），漏進來的要求工人以清掉的日期拒絕，不送上一條那種只列部分語言的批次。要補那條音軌只能請人在工人主機上手動重新合成，站主自己上傳。
 - 合集的 1080p 成片（`upload/final.mp4`）在上 YouTube 滿保留天數後一起清掉，後台的下載按鈕就沒有檔案可下載——跟審核檔案區刪 mp4 的規則一致。
 - 從長片關鍵影格剪 Shorts（`shorts/cli.mjs from-episode`，#904）要在長片清掉之前做。
 
@@ -281,14 +305,14 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
   - 工人容器碰不到帳號的登入憑證。
 - 工人抓網頁只用 `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)` 當 User-Agent，每個網域間隔至少 1 秒，不登入任何網站。
 - 工人容器照其他服務的加固方式：`cap_drop: ALL`、`no-new-privileges`、非 root 使用者、唯讀根目錄加上工作區 volume。
-- 模型費用粗估：一支影片大約 40 萬輸入、10 萬輸出 token（企劃、撰稿、兩輪查核、聽眾審稿、四語翻譯與審稿）。實際數字在第一支自動影片之後記進這份文件。
+- 模型費用粗估：一支影片大約 40 萬輸入、10 萬輸出 token（企劃、撰稿、兩輪查核、聽眾審稿、三語翻譯與審稿）。實際數字在第一支自動影片之後記進這份文件。
 
 ## 分期與票
 
 | 票 | 內容 | scope |
 | --- | --- | --- |
 | `video-auto-settings` | 設定表（遷移）、後台 API、工具讀取端點、「設定」分頁、旁白自動核准的規則 | `apps/api/app/video_automation`、遷移、`apps/web` 的影片審核元件與 admin.json |
-| `video-auto-model-runner` | `/video/ai/run`、用量紀錄與每月上限、`/video/automation/topics`（站上新聞與文章＋Brave） | `apps/api/app/video_automation` 的 ai 與 topics 模組 |
+| `video-auto-model-runner` | `/video/ai/run`、用量紀錄與每月上限、`/video/automation/topics`（站上新聞與文章＋官方頁面＋Brave） | `apps/api/app/video_automation` 的 ai 與 topics 模組 |
 | `video-auto-orchestrator` | `tools/video/automation`：自動流程的狀態機、呼叫模型、抓查核網頁、`auto` 指令 | `tools/video/automation`、`tools/video/cli.mjs` |
 | `video-auto-worker-image` | 工人映像（Node＋Chromium＋ffmpeg＋字型）、compose 服務與 volume、工人迴圈 | `ops/video`、`docker-compose.prod.yml` |
 | `video-auto-rollout` | 部署腳本加 `--profile video`（要站主同意）、配對工人、開啟設定、跑第一支 | 主機；repo 只改文件 |
