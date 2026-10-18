@@ -50,7 +50,7 @@ scope:
 ## Notes
 
 - 建票日期：2026-10-11。原分支：`codex/frontend-flow-release-record-a899437a`；保留 HEAD：`2cfb1acab8f4f9bad565b54fa194bd5a3cbd90d4`。原缺件票 `2026-09-09-frontend-flow-post-deploy-polish` 只存在該歷史分支，本票補回其兩個實際UX項目。
-- 核對 main：`73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b`；證據：`C:/Users/x8120/.codex/scratch/uncertain-branches-followup-20261011/locale-audit.json`。
+- 核對 main：`73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b`；證據：`<home>/.codex/scratch/uncertain-branches-followup-20261011/locale-audit.json`。
 - 具體現況：`apps/web/components/account-list.tsx:436` 的 `flowCopy.continue` 是 `className="hidden text-sm font-semibold text-[var(--teal)] sm:inline"`，手機隱藏；`apps/web/components/discovery/collections.tsx:109` 同時列 merchant／restaurant，但 restaurant映射 `c.kinds.merchant`。`apps/web/lib/discovery-copy.ts:17` 的zh-TW merchant名稱為「特色店家」。行號只對上述frozen SHA有效。
 - 窄修改範圍應從 AccountList、Collections、實際五語copy來源與相應tests選取；`discovery-copy.ts` 是本次確認的文案來源，不因舊票scope列frontend-flow-copy就跳過它。root會依當前claim再分配scope。
 - [#374](https://github.com/x812033727/travel_scanner/pull/374) 已 merged `a899437aaf2f60c7affe2e944d49d62216537c90` 並有完整發布收據；原4個frontend-flow tasks均main done。Discovery card handoff已由 [#378](https://github.com/x812033727/travel_scanner/pull/378)與main done task取代，這些不重開。

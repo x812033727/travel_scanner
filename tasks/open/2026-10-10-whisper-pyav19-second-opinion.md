@@ -47,7 +47,7 @@ download. Then run native check-audio and inspect its second-transcriber entries
 
 ## Notes
 
-- Evidence: `C:/Users/x8120/mokaair-work/stalled-video-resume-20261010-3603/whisper-en-offline-pilot-readonly-v1.jsonl` contains full child stderr and unchanged source/clip/state/STOP pins; probe exit 1, no OOM, no paid calls or downloads.
+- Evidence: `<home>/mokaair-work/stalled-video-resume-20261010-3603/whisper-en-offline-pilot-readonly-v1.jsonl` contains full child stderr and unchanged source/clip/state/STOP pins; probe exit 1, no OOM, no paid calls or downloads.
 - The active `2026-10-09-dub-skipped-because-jev-still-hears` task enabled the second transcriber, but its import smoke check did not exercise this decode API.
 - A private, per-process compatibility shim is being tested only for the seven-video recovery cohort. It does not repair the installed worker image or the other chat's campaign.
 - Claim was refused because `2026-10-09-video-languages-are-four-drop-zh` (`claude-fable-5.1`) currently owns an overlapping scope. This task remains open and unclaimed; do not force the claim or modify the shared source while that ownership is active.

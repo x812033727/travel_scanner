@@ -44,18 +44,18 @@ scope:
 
 刪除前已保存完整 Git bundle，驗證 SHA-256，並在獨立空白 bare repository 中還原每個 HEAD；沒有借用原始物件庫。每次刪除都比對預期 HEAD，確認分支未被任何 worktree 使用、沒有開啟中的 PR，並驗證 ref 已不存在。
 
-完整核對、清理及還原證據位於 `C:/Users/x8120/.codex/scratch/historical-cleanup-20261011/`。主幹基準 `0c93720e684b4c3995b16f7c2e859fe2bc06ec9f`。
+完整核對、清理及還原證據位於 `<home>/.codex/scratch/historical-cleanup-20261011/`。主幹基準 `0c93720e684b4c3995b16f7c2e859fe2bc06ec9f`。
 
 - 備份 `completed-codex.bundle`：93 個分支；SHA-256 `90926263e043158940b0612550a68f12ec79fb2c47e51c9cbfb8b8a95e4c1774`；獨立還原通過。
 - 備份 `completed-codex-supplement-2.bundle`：4 個分支；SHA-256 `2b3aeadb1056f3f2369e0c1c7ca25d94a222969a3b7d0118d1dbecf74c2a8072`；獨立還原通過。
 - 備份 `completed-claude.bundle`：12 個分支；SHA-256 `b59844447c9b39b03c579137b3f58e1f43a71bc0f672b0acfa0e3bf3a40d1e73`；獨立還原通過。
 
-本輪詳細證據：`C:/Users/x8120/.codex/scratch/uncertain-branches-followup-20261011/`；新主幹基準 `73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b`。完整執行收據為 `cleanup-receipt.json`，保留修改驗證為 `post-cleanup-verification.json`。
+本輪詳細證據：`<home>/.codex/scratch/uncertain-branches-followup-20261011/`；新主幹基準 `73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b`。完整執行收據為 `cleanup-receipt.json`，保留修改驗證為 `post-cleanup-verification.json`。
 
 - 本輪備份 `completed-codex.bundle`：14 個分支；SHA-256 `5b58f4e1673c6a7064a8916cb123d950cb733a4e635fb1a43b1d4ed13f427a39`；獨立空白 bare repository 還原通過。
 - 本輪備份 `completed-claude.bundle`：3 個分支；SHA-256 `a29f0d7f00f5ddbe1967d591e7f2195c531b99075c117a6c0a76c72db1f2568e`；獨立空白 bare repository 還原通過。
 
-本輪64項證據：`C:/Users/x8120/.codex/scratch/retained64-followup-20261011/`；新main基準`1f183e4d1f3bb493b5412ca242f2cbb98da4f9bf`。本輪所有9個checkout完整保留；《偶的江湖》仍在Claude製作，不接管、不清理。
+本輪64項證據：`<home>/.codex/scratch/retained64-followup-20261011/`；新main基準`1f183e4d1f3bb493b5412ca242f2cbb98da4f9bf`。本輪所有9個checkout完整保留；《偶的江湖》仍在Claude製作，不接管、不清理。
 
 - 本輪64項備份 `completed-codex.bundle`：38個分支；SHA-256 `6699e2f8fb3a02d9e088cb80140611b3d3d670682dbd91e4545a2e778b140794`；獨立空白bare repository逐HEAD還原通過。
 - 本輪64項備份 `completed-claude.bundle`：4個分支；SHA-256 `45669fde7446eb8548ee5476d3cf40e2988900b938b4cd091a6375a33d5b69a7`；獨立空白bare repository逐HEAD還原通過。
@@ -84,10 +84,10 @@ scope:
   - 任務：`2026-09-20-article-localization-batch-005`（主幹 absent）。
   - 任務：[2026-10-06-batch-005-nikko-kyoto-translations-refresh](../../tasks/open/2026-10-06-batch-005-nikko-kyoto-translations-refresh.md)（主幹 open）。
   - 任務：[2026-10-06-publish-onsen-kyoto-bus-zh-tw](../../tasks/open/2026-10-06-publish-onsen-kyoto-bus-zh-tw.md)（主幹 open）。
-  - 保留工作目錄：`C:/Users/x8120/.codex/worktrees/article-localization-batch-005/travel_scanㄐ`；未提交路徑 0 個，狀態及檔案 SHA-256 已比對確認未變。
+  - 保留工作目錄：`<home>/.codex/worktrees/article-localization-batch-005/travel_scanㄐ`；未提交路徑 0 個，狀態及檔案 SHA-256 已比對確認未變。
   - 核對證據：兩個 unique commits 只有 tasks/open 的作者/來源review紀錄，沒有 content pack、翻譯 asset 或 review approval 寫入 Git。完整末次 task 明示8 unsigned jobs、editorial/glyph review未簽、Kyoto/Nikko source-fact holds、summary/FAQ/render tooling仍待整合，不能列已完成收據。
   - 核對證據：frozen main Kyoto/Nikko packs 仍只有 zh-TW；main open 2026-10-06-batch-005-nikko-kyoto-translations-refresh 已直接承接這批工作，記錄 corrected live v8與8 target locales unpublished、重新source pin及獨立審稿缺件。Kyoto source後續 #1001/#1028 修改另由publish-onsen-kyoto-bus-zh-tw追蹤。
-  - 核對證據：fresh frozen及唯讀再查 checkout 為 clean，無一般untracked files；ignored清單只有20個Python .pyc與generated tasks/BOARD.md，沒有藏在checkout的未完翻譯/媒體。歷史指定 external staging C:/Users/x8120/.codex/article-localization-batch-005 現在不存在；缺件仍需復原或重新翻譯。
+  - 核對證據：fresh frozen及唯讀再查 checkout 為 clean，無一般untracked files；ignored清單只有20個Python .pyc與generated tasks/BOARD.md，沒有藏在checkout的未完翻譯/媒體。歷史指定 external staging <home>/.codex/article-localization-batch-005 現在不存在；缺件仍需復原或重新翻譯。
   - 續作路徑：`tasks/open/2026-09-20-article-localization-batch-005.md`。
 
 - [ ] **Codex `codex/article-localization-batch-006` — 未完成**。依新待辦 `2026-10-11-reconcile-hanoi-localization` 續作，原始分支与既有修改完整保留。
@@ -115,7 +115,7 @@ scope:
   - 任務：[2026-10-11-reconcile-nami-seoul-localization](../../tasks/open/2026-10-11-reconcile-nami-seoul-localization.md)（主幹 本 PR open）。
   - 任務：`2026-09-21-localize-three-korea-travel-guides-in`（主幹 absent）。
   - 任務：[2026-09-22-localize-jeju-car-rental-guide-in](../../tasks/done/2026-09-22-localize-jeju-car-rental-guide-in.md)（主幹 done）；原認領 codex-p1-audit。
-  - 保留工作目錄：`C:/Users/x8120/.codex/worktrees/article-localization-batch-011-korea/travel_scanㄐ`；未提交路徑 17 個，狀態及檔案 SHA-256 已比對確認未變。
+  - 保留工作目錄：`<home>/.codex/worktrees/article-localization-batch-011-korea/travel_scanㄐ`；未提交路徑 17 個，狀態及檔案 SHA-256 已比對確認未變。
   - 核對證據：唯一commit 1fbd57ac 的Jeju source correction已精確被 #643整合：branch zh-TW與main一致；目前本機Jeju5語pack及4份untracked SVG在CRLF正規化後全與frozen main相同，Jeju不是剩餘localization缺件。main done Jeju-only task與2026-09-22 release receipts記錄獨立review與發布。
   - 核對證據：同commit的Nami rail-bike source correction尚未落地：branch /locales/zh-TW/blocks/24 提13:30及當日取消扣50%；main仍13:00及舊退款敘述。main後續 #1272只插楓葉文章互連，未取代該更正。
   - 核對證據：完整working-tree task已讀，scope縮為Nami/Seoul並明示HOLD：Nami under36month parental/proof/ferry條件新修正待獨立review；Seoul T-Luggage service-center/size/terminal proposal未獨立核准。歷史receipt write遭policy拒绝不重試／繞過；本次只有唯讀盤點。
@@ -126,7 +126,7 @@ scope:
   - 核對 HEAD：`fd63272eba3b44d2f36f43bac128b0e5c72562de`。
   - 任務：[2026-09-22-correct-llms-txt-evaluation-token-link](../../tasks/done/2026-09-22-correct-llms-txt-evaluation-token-link.md)（主幹 done）；原認領 claude-opus-5-5。
   - 任務：[2026-09-22-localize-llms-txt-evaluation-draft-only](../../tasks/done/2026-09-22-localize-llms-txt-evaluation-draft-only.md)（主幹 done）；原認領 codex-batch016-en-zhcn。
-  - 保留工作目錄：`C:/Users/x8120/.codex/worktrees/article-localization-batch016-llms`；未提交路徑692個；現存內容／缺檔與index signature分別保存。
+  - 保留工作目錄：`<home>/.codex/worktrees/article-localization-batch016-llms`；未提交路徑692個；現存內容／缺檔與index signature分別保存。
   - 核對證據：PR #655 是 CLOSED，而不是個別 MERGED；完成證據是 #654 d5f03e679bef2102e843426c42f045aef4ae08c0 的替代整合。逐一比較本支13個產品檔（1完整五語pack＋12素材）與#654 snapshot，13/13精確同blob；不是只看closed狀態或git ancestry。
   - 核對證據：main author票 DONE 的完整收據明載 #655 unchanged integrated into #654，五語33 blocks/7 sources各v1只匯入私有draft，未有published hash/version/time，五語預覽及signed-out browser/API/sitemap隱私驗收已完成。與另一已公開llms文章重複，因此不得把私有草稿不公開算欠發布。
   - 核對證據：main token-link票亦DONE；目前pack的15個parsed差異全是五語普通「標記」inline由AI glossary ArticleInline轉text，visible word不變，原來源及duplicate-topic exclusion保留。沒有缺四語內容或未落地素材。
@@ -139,7 +139,7 @@ scope:
   - 任務：[2026-09-21-authorize-reviewed-source-corrections-in-localization](../../tasks/done/2026-09-21-authorize-reviewed-source-corrections-in-localization.md)（主幹 done）；原認領 codex-source-correction。
   - 任務：[2026-09-22-compare-deployed-localization-packs-by-validated](../../tasks/done/2026-09-22-compare-deployed-localization-packs-by-validated.md)（主幹 done）；原認領 codex-deployed-pack-guard。
   - 任務：[2026-09-22-preserve-reviewed-unselected-repository-locale-edits](../../tasks/done/2026-09-22-preserve-reviewed-unselected-repository-locale-edits.md)（主幹 done）；原認領 codex-source-preservation。
-  - 保留工作目錄：`C:/Users/x8120/.codex/worktrees/article-localization-source-edit-preservation`；未提交路徑2507個；現存內容／缺檔與index signature分別保存。
+  - 保留工作目錄：`<home>/.codex/worktrees/article-localization-source-edit-preservation`；未提交路徑2507個；現存內容／缺檔與index signature分別保存。
   - 核對證據：原PR #652 CLOSED，但其工作 unchanged integrated into merged #654 d5f03e679bef2102e843426c42f045aef4ae08c0。逐一比較5個scoped程式／測試檔在#654 snapshot皆精確同blob；current main repository_preservation.py同blob，assembler/publisher/tests後來演進亦有歷史同blob。
   - 核對證據：main三原票全部DONE，完整preservation票保留舊WITHHOLD與修復：current HEAD必須等於baseline.repo_commit，tempGit A成功／emptyB拒絕回歸已做；126 passed/59 skipped、Ruff/check tasks記錄，並有#6549/9CI與guarded batch015保留repository edit而published zhTW v8未改、四missinglocaleimport/publish驗收。
   - 核對證據：fresh dirty2507是apps/api（含guides content與tests）、docs及舊任務／工具等tracked路徑全部工作目錄缺檔，exists=false且沒有現存檔案bytes；其中1473 apps/api/app、257 apps/api/tests。這不是2507未提交翻譯或程式差異，也不能憑缺檔猜此前誰清掉。
@@ -152,7 +152,7 @@ scope:
   - 待辦：原Batch003票只接續onsen四語＋SVG的fresh source/review/install/release與公開驗收；先消除其四篇已公開／舊發布未勾的記帳衝突。
   - 任務：[2026-10-11-localize-batch003-zh-tw-diagram-helpers](../../tasks/open/2026-10-11-localize-batch003-zh-tw-diagram-helpers.md)（主幹 本 PR open）。
   - 任務：[2026-09-20-five-language-article-batch-003](../../tasks/open/2026-09-20-five-language-article-batch-003.md)（主幹 open）。
-  - 保留工作目錄：`C:/Users/x8120/.codex/worktrees/batch003-qa-tasks/travel_scanㄐ`；未提交路徑0個；現存內容／缺檔與index signature分別保存。
+  - 保留工作目錄：`<home>/.codex/worktrees/batch003-qa-tasks/travel_scanㄐ`；未提交路徑0個；現存內容／缺檔與index signature分別保存。
   - 核對證據：唯一unique提交3e072badac7c2a25e2d96ed4656536550cfb6feb只改原Batch003票，追加實際公開圖稿QA缺件，沒有新的translation code或pack；clean checkout不等於此QA已處理。
   - 核對證據：main原Batch003票OPEN，9/29正文已明載四非onsen篇五語公開且bodyhash與repo相符；onsen zhTW v8來源已修正，四target locales／SVG尚未落地。10/4清單仍有舊發布未完文字，與9/29已公開證據需分項對帳，不重發四篇也不重做onsen繁中修正。
   - 核對證據：本支新增的繁中圖稿QA註記未進main。直接讀frozen main四原文diagram-1.svg，仍有「A practical sequence」「Editorial diagram」以及Same party、Check receiver、Official booking、Choose station等英文輔助文字，正面證明此窄缺件尚在產品。
@@ -197,7 +197,7 @@ scope:
   - 任務：`2026-10-08-ou-de-jianghu-supporting-looks`（主幹 absent）。
   - 任務：`2026-10-08-ou-de-jianghu-visual-handoff`（主幹 absent）。
   - 任務：`2026-10-08-validate-windows-stock-path-and-brightness`（主幹 absent）。
-  - 保留工作目錄：`C:/Users/x8120/mokaair/.claude/worktrees/ou-de-jianghu-e001-285512`；未提交路徑0個；現存內容／缺檔與index signature分別保存。
+  - 保留工作目錄：`<home>/mokaair/.claude/worktrees/ou-de-jianghu-e001-285512`；未提交路徑0個；現存內容／缺檔與index signature分別保存。
   - 核對證據：使用者此輪明確「偶的江湖在claude還在製作」：硬userProtected，無刪除資格。clean checked-out不代表完工，現head22ee6f133已由38e062ada再進1commit，本輪 frozen最新20:53:57記packet10。
   - 核對證據：最新packet10真24firstframes+24影片及D tracks：22候選/2有限（a03-s067動作角色反了、a03-s069幾乎不動），paid1872點，B期3545，全域new_spent20040/26980；snapshot餘額41555。這是生成receipt，不是全集cut/ownerfinalacceptance。
   - 核對證據：A期剩7缺reference（a01-s001/002/003/004/006/007/008）；B期此次後124reference齊鏡未產、11鏡缺reference、3active鏡a03-s070/086/088無動作。a04-s021 generating84點仍無provider端取消入口，佔12-slot佇列一格，不得重送。
@@ -226,7 +226,7 @@ scope:
   - 待辦：完整HEAD初稿可archive；不要因此稱 Studio已看見新語言
   - 任務：[2026-09-30-youtube-approved-languages-sync](../../tasks/done/2026-09-30-youtube-approved-languages-sync.md)（主幹 done）；原認領 claude-happy-carson。
   - 任務：`2026-10-06-bind-tidied-language-batches-and-prove`（主幹 absent）。
-  - 保留工作目錄：`C:/Users/x8120/mokaair/.claude/worktrees/wf_3eff2890-671-8`；未提交路徑0個；現存內容／缺檔與index signature分別保存。
+  - 保留工作目錄：`<home>/mokaair/.claude/worktrees/wf_3eff2890-671-8`；未提交路徑0個；現存內容／缺檔與index signature分別保存。
   - 核對證據：兩獨有commits原拆分language-source.mjs/fixture路徑確實不在main；但源功能被 #1361在 sync.mjs重新實作。逐讀當前bindLanguageSource：metadata+manifest綁 publish/final/script/branding/choice/files，拒絕改源/改choice/改byte，普通batch的 review/languages.json/hash/file上传一致，還新增narration一致、follows重送、ready dub附件與brand story兼容。
   - 核對證據：main原任務done及26-case真正producer→API pinned language-contract fixture寫明改寫替代，非只因done猜測。舊split module無需再merge；完整HEAD保留初稿。
   - 核對證據：原 bind-tidied-language-batches-and-prove 缺main，但其 deterministic tidied缺source proof已另main open 2026-10-07-a-tidied-video-s-skipped-language，普通producer後續實際deploy/resubmit/owner-approved private-sync仍須由發布/ownerscope驗收。
@@ -242,7 +242,7 @@ scope:
   - 任務：[2026-10-06-an-owner-retry-resets-the-counter](../../tasks/done/2026-10-06-an-owner-retry-resets-the-counter.md)（主幹 done）；原認領 claude-fable-5-1-video-unstuck。
   - 任務：[2026-10-06-image-prompts-fit-the-chosen-image](../../tasks/done/2026-10-06-image-prompts-fit-the-chosen-image.md)（主幹 done）；原認領 claude-fable-5-1-video-unstuck。
   - 任務：[2026-10-06-a-stale-writer-receipt-looks-the](../../tasks/done/2026-10-06-a-stale-writer-receipt-looks-the.md)（主幹 done）；原認領 claude-fable-5-1-video-unstuck。
-  - 保留工作目錄：`C:/Users/x8120/mokaair/.claude/worktrees/wf_42860dcf-e1a-1`；未提交路徑12個；現存內容／缺檔與index signature分別保存。
+  - 保留工作目錄：`<home>/mokaair/.claude/worktrees/wf_42860dcf-e1a-1`；未提交路徑12個；現存內容／缺檔與index signature分別保存。
   - 核對證據：committed15 unique authored commits的original fixes已經 #1337/#1339/#1340/#1341/#1342 landed；5個原任務全main done。
   - 核對證據：dirty12是#1342第一輪review修補：defer limit6、unrecorded limit3、second-deferral報卡、Retry-After floor、STOP不算次數、job_gone保留journal、retry acknowledgment占busy、script-discussion resting gate。逐case對main：新增19個test，18個title字節一致，另1個同case已被第二輪增強加入跨回合deferred_until。
   - 核對證據：main相同源實作+第二輪更強busy/freshauto.json/shared-budget保護都在，並非只因oldtaskdone假完成；未發現dirty patch獨有尚未整合產品feature。不能重新merge此舊baseline覆蓋後续強化。
@@ -268,7 +268,7 @@ scope:
   - 任務：`2026-10-08-video-branding-true-peak`（主幹 absent）。
   - 任務：`2026-10-08-video-qa-undecided-languages`（主幹 absent）。
   - 任務：`2026-10-09-video-stage-receipt-site-identity`（主幹 absent）。
-  - 保留工作目錄：`C:/Users/x8120/.codex/worktrees/2a98/travel_scanㄐ`；未提交路徑13個；現存內容／缺檔與index signature分別保存。
+  - 保留工作目錄：`<home>/.codex/worktrees/2a98/travel_scanㄐ`；未提交路徑13個；現存內容／缺檔與index signature分別保存。
   - 核對證據：checked-out2a98 HEAD b9940f18…未advance，但dirty13：3個tracked open票刪除、3個done票與recovery文/5個open票及environment目錄未tracked。完整snapshot不含secret配置值。noPR，7個產品文件blob無main/history命中。
   - 核對證據：actualcode包含4xoversampling/latencycompensated-2dB limiter、owner未選語言時QA只要求narration+zhTW、Mandarin punctuation前heard-only closing particle；main branding仍直接concat無limiter、QA仍readLanguages走舊要求、tts仍只有line末候選，三源修補確未整合。source任務已localdone≠main已landed。
   - 核對證據：local recovery最新2026-10-10：Travel EN/JA96check tracks/languageconsumer29附件合格，backend另記ID Ztg1vzKfLBM+LANG4cdb approved；這不獨立證明public visibility/ownerplayback。Embedding V6已closed3 canonicalrenameEPERM，197speech(124synthesis/10596chars+73ASR)、158EN WAV/72checkedlines保留；privateknown-answer恢復/15fault tests不是三語terminal。
@@ -327,7 +327,7 @@ scope:
   - 任務：[2026-10-11-add-audited-minor-corrections-for-published](../../tasks/open/2026-10-11-add-audited-minor-corrections-for-published.md)（主幹 open）。
   - 任務：[2026-10-11-show-final-judge-holds-on-news](../../tasks/open/2026-10-11-show-final-judge-holds-on-news.md)（主幹 open）。
   - 任務：[2026-10-11-translate-held-news-ingestion-error-messages](../../tasks/done/2026-10-11-translate-held-news-ingestion-error-messages.md)（主幹 done）；原認領 codex-news-held-error-copy。
-  - 保留工作目錄：`C:/Users/x8120/.codex/worktrees/6f71/travel_scanㄐ`；未提交路徑13個；現存內容／缺檔與index signature分別保存。
+  - 保留工作目錄：`<home>/.codex/worktrees/6f71/travel_scanㄐ`；未提交路徑13個；現存內容／缺檔與index signature分別保存。
   - 核對證據：#1411已merged的五個程式/測試路徑與原branch blob精確相同；舊程式工作包括disclaimer迴圈及system navigation排除已done，不能再當未整合。
   - 核對證據：canonical recovery主票main仍in-progress、owner codex-news-recovery-6f71，branch已更新為codex/news-recovery-followup-20261011。main後續收據含原208 cohort 2026-10-11T11:32:38Z 133published/46manual/19redraft/1failed/6duplicate/3rejected，只是該時刻固定cohort，不是這次production census。
   - 核對證據：原checkout 6f71有13未提交路徑；其中bundle-ingestion與error-copy done、legacy-navigation task在main已有done successor，其他新聞同ID現有open票。保留source/history/claims及draft/producer-gate分別證據，不重播原cohort或釋放claim。
@@ -376,7 +376,7 @@ scope:
   - 任務：[2026-09-28-video-story-tidy-finished](../../tasks/done/2026-09-28-video-story-tidy-finished.md)（主幹 done）；原認領 claude-opus-5-5-video-story-tidy。
   - 任務：[2026-09-28-video-story-worker](../../tasks/done/2026-09-28-video-story-worker.md)（主幹 done）；原認領 claude-opus-5-5-video-story-worker。
   - 任務：[2026-09-28-video-tidied-late-languages](../../tasks/done/2026-09-28-video-tidied-late-languages.md)（主幹 done）；原認領 claude-opus-5-5-tidied-languages。
-  - 保留工作目錄：`C:/Users/x8120/.codex/worktrees/pr-merge-watch/travel_scanㄐ`；未提交路徑17個；現存內容／缺檔與index signature分別保存。
+  - 保留工作目錄：`<home>/.codex/worktrees/pr-merge-watch/travel_scanㄐ`；未提交路徑17個；現存內容／缺檔與index signature分別保存。
   - 核對證據：#921原tidy feature merged，四個非taskpath精確producer相同；最後a89cfa65包含局部missing-site-entry guard，但fresh main tidy.mjs:238–241仍latest200漏列就site=null並使用本地舊approval。
   - 核對證據：fresh main新pending/language/retry holds只能處理有site-entry者，沒有解決列表漏列時語系/排程未知仍可清理。local done guard receipt absentmain，不宣称已landed。
   - 核對證據：checkout pr-merge-watch有17dirty路徑，14個source/docs staged/2個done-task staged及rename、另untracked pr906 integration；主要是舊#905 source/guard準備稿，#916 replacement已承接功能，#925已解決pr906衝突。仍須完整保存stage/working bytes後由owner決定處置，不能reset/abort。
@@ -423,11 +423,11 @@ scope:
   - 核對 HEAD：`a8736021c98f38a71e5f57555766d4cb86cc893e`。
   - 待辦：Keep the checked-out branch/worktree. Preserve the exact17-file uncommitted patch and bytes; record it as formatting-only using catalog-semantic-proofs.json workingASTEquivalent. Reconcile owner intent before deciding whether to retain or deliberately integrate these formatting edits. Do not reset, delete or treat product completion as worktree ownership release.
   - 任務：[2026-10-11-preserve-country-foods-formatting](../../tasks/open/2026-10-11-preserve-country-foods-formatting.md)（主幹 本 PR open）。
-  - 保留工作目錄：`C:/Users/x8120/OneDrive/文件/ChatGPT/travel_scanner-foods-maps`；未提交路徑 17 個，狀態及檔案 SHA-256 已比對確認未變。
+  - 保留工作目錄：`<home>/OneDrive/文件/ChatGPT/travel_scanner-foods-maps`；未提交路徑 17 個，狀態及檔案 SHA-256 已比對確認未變。
   - 核對證據：Producer PR #56 on replacement branch codex/country-foods-map-links-pr merged as 803b84601340d024fcdfe4fb326e086aa2a4e9c3, confirmed ancestor of frozen fresh main 73c84ca7. Of 63 product paths, 57 are exact branch blobs at that merge; foods/service.py has a positive main-history match and equivalent create-only initialization after upstream integration.
   - 核對證據：Unmatched old migration 0020_food_catalog.py is positively replaced by PR #56 migration 0022_food_catalog.py. Python AST comparison proves both entire upgrade/downgrade bodies exactly equal; only revision/down_revision chain metadata changed to follow itinerary system slots and hotspot AI search. test_schema.py explicitly moves expected head to0022 and checks0020/0021 are no longer heads.
   - 核對證據：The models and itinerary/router differences against PR #56 are upstream system-slot/schedule/AI additions rather than missing food changes; food catalog, map-link UI, API and focused food tests are already present in the merged producer scope.
-  - 核對證據：Cleanup remains protected: checkout C:/Users/x8120/OneDrive/文件/ChatGPT/travel_scanner-foods-maps has17 uncommitted Python paths. Full dirty diff was read; AST comparison of HEAD versus working bytes proves all17 are formatting-only, but the user/root explicitly require these bytes be preserved and disposition tracked.
+  - 核對證據：Cleanup remains protected: checkout <home>/OneDrive/文件/ChatGPT/travel_scanner-foods-maps has17 uncommitted Python paths. Full dirty diff was read; AST comparison of HEAD versus working bytes proves all17 are formatting-only, but the user/root explicitly require these bytes be preserved and disposition tracked.
   - 續作路徑：`{'path': 'apps/api/app/foods/__init__.py', 'status': 'A', 'branchBlob': 'a96f5d9bb885ad0906edb07a048e98542d3070b6', 'historicalMainCommit': '8ce43a66dd34dc07e08ec27e7b4a9909b936c757', 'producerPR': None}`, `{'path': 'apps/api/app/foods/admin_router.py', 'status': 'A', 'branchBlob': '316c302c47639d26653ece96ff6b0f149127404e', 'historicalMainCommit': '36aac03b303bf2d5db2d7d3ef838697eb6bf5889', 'producerPR': 62}`, `{'path': 'apps/api/app/foods/catalog.py', 'status': 'A', 'branchBlob': 'a24e9c8ec599d637f4a80f4ab3f73afb47617ef4', 'historicalMainCommit': '86b716ee75c3ba242cee79248133fac44cbf3a84', 'producerPR': 154}`, `{'path': 'apps/api/app/foods/router.py', 'status': 'A', 'branchBlob': '07c1f7b1ff90f309d6e73083ae78d286c0cea33b', 'historicalMainCommit': '1a7456e473a2a9141723ca3068f8c49916fb6a5a', 'producerPR': 65}`, `{'path': 'apps/api/app/foods/service.py', 'status': 'A', 'branchBlob': '7c4590a00d048ced777754f8ee203b4bff6ea4c2', 'historicalMainCommit': '8ce43a66dd34dc07e08ec27e7b4a9909b936c757', 'producerPR': None}`, `{'path': 'apps/api/app/hotspots/catalog.py', 'status': 'M', 'branchBlob': '112174b1567c09d3d7d357fdd7d1cc5e1e101c28', 'historicalMainCommit': '4ac1208f08ee3060748b789f22e3f56d38ed0f8f', 'producerPR': 108}`, `{'path': 'apps/api/app/hotspots/food_area_bootstrap.json', 'status': 'A', 'branchBlob': '39645f72aeb153ee9435605537b7becf89b1fb48', 'historicalMainCommit': 'b75ae15f97956c26bb8e94a2a7fefd81b0545777', 'producerPR': 214}`, `{'path': 'apps/api/app/hotspots/maps.py', 'status': 'A', 'branchBlob': '169461610d40e7b379f8a9d31f9ef1331912881d', 'historicalMainCommit': '36aac03b303bf2d5db2d7d3ef838697eb6bf5889', 'producerPR': 62}`, `{'path': 'apps/api/app/hotspots/router.py', 'status': 'M', 'branchBlob': '0416f515f144184e1744452e26bed354598756b8', 'historicalMainCommit': 'bdc9d08628f9f5749c3b6ba41ac6bf05de30dd83', 'producerPR': 61}`, `{'path': 'apps/api/app/hotspots/service.py', 'status': 'M', 'branchBlob': '412418bbe742cff2524b59daa4287c410a4c0c33', 'historicalMainCommit': 'bdc9d08628f9f5749c3b6ba41ac6bf05de30dd83', 'producerPR': 61}`。
 
 - [ ] **Codex `codex/food-reservation-platforms` — 未完成**。依新待辦 `2026-10-11-reconcile-reservation-review-residuals` 續作，原始分支与既有修改完整保留。

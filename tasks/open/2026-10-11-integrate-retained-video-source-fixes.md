@@ -64,9 +64,9 @@ scope:
 
 原 localdone ID：2026-10-08-video-branding-true-peak、2026-10-08-video-qa-undecided-languages、2026-10-08-video-audio-closing-particle-boundaries。原舊 source baseline edcce347a3f97841f84f8788d81f16e51c34a3e6；QA source commit ed827033、Mandarin source eccafa3c7、獨立 duration receipts 52cfd7eea/b9940f18c。這些是歷史版本證據，不能取代 current-main 相容驗收。
 
-既有 branding smoke 在 C:/Users/x8120/mokaair-work/handoff/branding-peak-20261008/smoke/evidence.json：540 frames/18 s、864000 samples/channel、decoded peak -2 dBTP、retained body SHA 相同、quiet body PCM 遠離 seams 差最多 1 unit、CC 5000–15000 ms/chapters 不變。原 real AAC regression 是 576000 samples/channel、0 → -1.9 dBTP。synthetic overall -15.1 LUFS 不是 production loudness acceptance。
+既有 branding smoke 在 <home>/mokaair-work/handoff/branding-peak-20261008/smoke/evidence.json：540 frames/18 s、864000 samples/channel、decoded peak -2 dBTP、retained body SHA 相同、quiet body PCM 遠離 seams 差最多 1 unit、CC 5000–15000 ms/chapters 不變。原 real AAC regression 是 576000 samples/channel、0 → -1.9 dBTP。synthetic overall -15.1 LUFS 不是 production loudness acceptance。
 
-原 branding.mjs SHA256 1d5c89b5e54ebfee67fae5fececa7b4e8d5e1dba7dd145dca6e459bfe5d4658c；原 check.test.mjs receipt SHA256 42f9bdbcb3b4454fb9d945f3899da36bcc3d70c045d31196f0c931a692f906d1。Mandarin 離線證據在 C:/Users/x8120/mokaair-work/stalled-video-completion-20261008/embedding-audio/particle-offline-recheck.json。
+原 branding.mjs SHA256 1d5c89b5e54ebfee67fae5fececa7b4e8d5e1dba7dd145dca6e459bfe5d4658c；原 check.test.mjs receipt SHA256 42f9bdbcb3b4454fb9d945f3899da36bcc3d70c045d31196f0c931a692f906d1。Mandarin 離線證據在 <home>/mokaair-work/stalled-video-completion-20261008/embedding-audio/particle-offline-recheck.json。
 
 本輪僅恢復共享待辦；没有接管source任務、修改原worktree、model/provider request或正式站操作。
 

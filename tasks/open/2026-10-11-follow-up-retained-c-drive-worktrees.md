@@ -38,7 +38,7 @@ The owner narrowed cleanup to Codex. After the deeper 22-dirty-root audit and fo
 
 ## How to verify
 
-Read `C:/Users/x8120/.codex/scratch/worktree59-cleanup-20261011/codex-worktree-report.html` and the JSON/verification receipts alongside it. Recompute the evidence live before future cleanup; this is a dated inventory. Run `node tools/tasks.mjs check` for metadata edits.
+Read `<home>/.codex/scratch/worktree59-cleanup-20261011/codex-worktree-report.html` and the JSON/verification receipts alongside it. Recompute the evidence live before future cleanup; this is a dated inventory. Run `node tools/tasks.mjs check` for metadata edits.
 
 ## Notes
 

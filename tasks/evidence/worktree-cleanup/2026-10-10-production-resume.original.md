@@ -33,7 +33,7 @@ movies. Private reuse of that limiter must preserve native decoded-AAC checks,
 sample counts, source/timeline hashes and approval requirements.
 
 Execution receipts live outside the public repository, under
-`C:\Users\x8120\mokaair-work\stalled-video-resume-20261010-3603`, with the host copy
+`<home>\mokaair-work\stalled-video-resume-20261010-3603`, with the host copy
 at `/root/video-recovery/production-resume-20261010-3603`. Canonical project work
 remains at `/var/lib/mokaair/video-work/<slug>`; private inputs and runners use
 its `_production-resume-20261010-3603` namespace.

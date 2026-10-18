@@ -16,7 +16,7 @@ scope:
 
 ## Why
 
-原分支 `codex/country-foods-map-links` HEAD `a8736021c98f38a71e5f57555766d4cb86cc893e` 的產品已由 PR #56 replacement branch 合併，merged commit `803b84601340d024fcdfe4fb326e086aa2a4e9c3` 為目前主線祖先；migration renumber 0020→0022 的完整 upgrade/downgrade AST 等價，其餘產品亦有正面落地證據。checkout `C:/Users/x8120/OneDrive/文件/ChatGPT/travel_scanner-foods-maps` 仍有 17 個未提交 Python 路徑。完整工作 diff 及逐檔 AST 證明這 17 個修改目前只涉及格式，但產品已完成不能當作所有者放棄這些 bytes，也不能因此 reset／刪工作樹。
+原分支 `codex/country-foods-map-links` HEAD `a8736021c98f38a71e5f57555766d4cb86cc893e` 的產品已由 PR #56 replacement branch 合併，merged commit `803b84601340d024fcdfe4fb326e086aa2a4e9c3` 為目前主線祖先；migration renumber 0020→0022 的完整 upgrade/downgrade AST 等價，其餘產品亦有正面落地證據。checkout `<home>/OneDrive/文件/ChatGPT/travel_scanner-foods-maps` 仍有 17 個未提交 Python 路徑。完整工作 diff 及逐檔 AST 證明這 17 個修改目前只涉及格式，但產品已完成不能當作所有者放棄這些 bytes，也不能因此 reset／刪工作樹。
 
 ## Done when
 
@@ -27,20 +27,20 @@ scope:
 
 ## Steps
 
-- [ ] 唯讀記錄 `C:/Users/x8120/OneDrive/文件/ChatGPT/travel_scanner-foods-maps` 的 HEAD/status、17-file完整 diff／bytes 與原 blob 身分；將保全置於工作樹外，不修改原 index 或檔案。
+- [ ] 唯讀記錄 `<home>/OneDrive/文件/ChatGPT/travel_scanner-foods-maps` 的 HEAD/status、17-file完整 diff／bytes 與原 blob 身分；將保全置於工作樹外，不修改原 index 或檔案。
 - [ ] 逐檔讀 HEAD 與 working bytes 做 Python AST 比對，將格式等價與 byte 差異分別記錄；檔案變動時重新判定。
 - [ ] 先保存 patch 和每檔 bytes，使用獨立 scratch 複本 roundtrip 驗證 SHA-256；不得在原 checkout 試 restore。
 - [ ] 在本票引用 owner 意圖及具體 disposition。此處置須涵蓋全部 17 路徑，不能因 PR #56 已合併而推論未提交修改可以丟棄。
 
 ## Verification
 
-2026-10-11 初始封存為 17/17 AST-equivalent；每檔 bytes SHA-256 清單在下方。完整 manifest `C:/Users/x8120/.codex/scratch/uncertain-branches-followup-20261011/catalog-country-dirty-byte-manifest.json`；語意比對 `catalog-semantic-proofs.json` 的 `workingASTEquivalent`。最後仍需新鮮 status/HEAD 與 bytes 比對，並以 scratch restore 驗證內容，原 checkout/index、branch、owner/claims 均維持不變直到明確處置。
+2026-10-11 初始封存為 17/17 AST-equivalent；每檔 bytes SHA-256 清單在下方。完整 manifest `<home>/.codex/scratch/uncertain-branches-followup-20261011/catalog-country-dirty-byte-manifest.json`；語意比對 `catalog-semantic-proofs.json` 的 `workingASTEquivalent`。最後仍需新鮮 status/HEAD 與 bytes 比對，並以 scratch restore 驗證內容，原 checkout/index、branch、owner/claims 均維持不變直到明確處置。
 
 ## Notes
 
-來源分支產品完成證據及保護理由見 `C:/Users/x8120/.codex/scratch/uncertain-branches-followup-20261011/catalog-audit.json`。這不是重做 foods/map-links 產品的票。未提交的格式 bytes 未發布，也不代表主線產品未完成；單憑內容可逆或 AST 等價仍不能代 owner 決定捨棄。
+來源分支產品完成證據及保護理由見 `<home>/.codex/scratch/uncertain-branches-followup-20261011/catalog-audit.json`。這不是重做 foods/map-links 產品的票。未提交的格式 bytes 未發布，也不代表主線產品未完成；單憑內容可逆或 AST 等價仍不能代 owner 決定捨棄。
 
-2026-10-11 分支續查；共享票比對基線為 main `73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b` 的全部 389 張 open 票，未找到同義任務（詳 `C:/Users/x8120/.codex/scratch/uncertain-branches-followup-20261011/catalog-open-task-check.json`）。本票只追蹤唯讀對帳與保全，初始 scope 僅含本票檔案，結果直接記在本票。任何程式、資料或其他證據檔修改須另開窄 scope 票並先核對所有者；不釋放或覆寫任何原 claims、owner、scope。未發布、未公開、舊票仍在 open、當前主線較新，均不能單獨證明現在仍 pending。這次開票不授權正式資料寫入、重播舊 batch、付費呼叫、部署或發布。
+2026-10-11 分支續查；共享票比對基線為 main `73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b` 的全部 389 張 open 票，未找到同義任務（詳 `<home>/.codex/scratch/uncertain-branches-followup-20261011/catalog-open-task-check.json`）。本票只追蹤唯讀對帳與保全，初始 scope 僅含本票檔案，結果直接記在本票。任何程式、資料或其他證據檔修改須另開窄 scope 票並先核對所有者；不釋放或覆寫任何原 claims、owner、scope。未發布、未公開、舊票仍在 open、當前主線較新，均不能單獨證明現在仍 pending。這次開票不授權正式資料寫入、重播舊 batch、付費呼叫、部署或發布。
 
 ### 需保全的 exact 17 路徑與 working-byte SHA-256
 

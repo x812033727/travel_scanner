@@ -46,7 +46,7 @@ PR #1373 的 32 篇已發布收據會把全域補語系總票的過期 4e16 clai
 - 原 32 篇產品發布已完成；全域 862 篇 queue 與後续 staged cohort仍保留，總票保持 open，不以收據合併當整個補語系計畫完成。
 - Decrypt 原始未共享票另有精確快照保全與去重草稿，交由站主新建共享 open/unclaimed；不在本票 scope。
 - #1373 原 green HEAD 08a280298f41670476f71cf3e2ebf87f663dfd67 不更新；#1450 須依集中整合後自己的新 HEAD 取得 CI，不沿用舊綠燈。
-- 原 body SHA-256：7a262bafb7d8a5faffd293e1d8e1fce404e15fd9cdb3e61f105706eec91aebae；before/readback 及對照存於 C:/Users/x8120/.codex/scratch/codex-closeout-20261011/pr1373-metadata-fix-proof.json。
+- 原 body SHA-256：7a262bafb7d8a5faffd293e1d8e1fce404e15fd9cdb3e61f105706eec91aebae；before/readback 及對照存於 <home>/.codex/scratch/codex-closeout-20261011/pr1373-metadata-fix-proof.json。
 
 - 驗證：產生 duplicate 前 node tools/tasks.mjs check 已通過 1,634 票；git diff --check 通過；既有 stale claims 只出 warning。總票 tracked diff 僅 4/4 行 frontmatter，正文 SHA 一致，所有原收據 blobs 保持不變。
 - 本票 done 工具已寫完整完成版本，但 Windows 留下同 ID 未追蹤 open copy；精確單檔刪除被 automatic approval policy 拒絕（僅回 blocked by policy）。遵站主指示原檔保持原位，不刪除、移動或改用其他工具；它不納入任何提交，無未追蹤 duplicate 的 #1450 共享提交樹再跑完整驗證。

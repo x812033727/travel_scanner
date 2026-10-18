@@ -49,8 +49,8 @@ scope:
 ## Notes
 
 - 建票日期：2026-10-11。原分支：`codex/article-localization-batch-011-korea`；保留 HEAD：`1fbd57ac8845c8d4f465be7a1914669386f26ee7`。原 owner：`codex-batch011-korea-author`。原票 `2026-09-21-localize-three-korea-travel-guides-in` 的本機 scope 已縮 Nami／Seoul，本票承接該剩餘交接，保留 HOLD。
-- Worktree：`C:/Users/x8120/.codex/worktrees/article-localization-batch-011-korea/travel_scanㄐ`。核對有 5 tracked + 12 untracked = 17 個變更；本票不授權清掉該 checkout。
-- 證據：`C:/Users/x8120/.codex/scratch/uncertain-branches-followup-20261011/locale-audit.json`、`locale-working-evidence.json`。核對 main：`73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b`。manifest 已列每檔 SHA-256 與 frozen main 對照。
+- Worktree：`<home>/.codex/worktrees/article-localization-batch-011-korea/travel_scanㄐ`。核對有 5 tracked + 12 untracked = 17 個變更；本票不授權清掉該 checkout。
+- 證據：`<home>/.codex/scratch/uncertain-branches-followup-20261011/locale-audit.json`、`locale-working-evidence.json`。核對 main：`73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b`。manifest 已列每檔 SHA-256 與 frozen main 對照。
 - 五個 tracked：`apps/api/app/guides/content/jeju-car-rental-guide.json`、`nami-island-petite-france-day-trip.json`、`seoul-where-to-stay.json`、`apps/web/public/guides/nami-island-petite-france-day-trip/diagram-1.svg`、`tasks/open/2026-09-21-localize-three-korea-travel-guides-in.md`。
 - 十二個 untracked：Jeju、Nami、Seoul 每個 asset directory 的 `diagram-1-en.svg`、`diagram-1-ja.svg`、`diagram-1-ko.svg`、`diagram-1-zh-cn.svg`。全部先保留；本票新修改 scope 不含 Jeju。
 - Jeju 已由 [PR #643](https://github.com/x812033727/travel_scanner/pull/643) merged `222a6a0d385eae989c0736ae8ace2a0df066f1f1`，main done Jeju-only task與 2026-09-22 release receipts 已記錄完成。本機 Jeju 五語 pack及四 SVG 在 CRLF 正規化後與 frozen main 相同；不要當成 Jeju 未完成或再發布。

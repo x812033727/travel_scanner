@@ -46,7 +46,7 @@ scope:
 
 ## Notes
 
-- 證據與收據：C:/Users/x8120/.codex/scratch/uncertain-branches-followup-20261011/。
+- 證據與收據：<home>/.codex/scratch/uncertain-branches-followup-20261011/。
 - 凍結主幹：73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b；24 個候選 HEAD 相對前次未變。
 - batch011-korea 與 country-foods-map-links 各有 17 個未提交路徑，完整保留。
 - 只處理這 24 個候選與本票 scope；不改其他模型的認領或遠端分支。
@@ -57,8 +57,8 @@ scope:
 
 刪除前重新核對 HEAD、worktree 與 open PR，保存完整 bundle 並在獨立空白 bare repository 逐 HEAD fetch/readback。每次使用 git update-ref 預期 HEAD 比對，執行後 show-ref --quiet 確認不存在。另對原始197候選逐 ref核對現在存在／不存在狀態。沒有清理工作目錄或 outside-Git素材、改遠端舊分支、接管其他任務或執行正式站／付費操作。
 
-- 本輪備份：`C:\Users\x8120\.codex\scratch\uncertain-branches-followup-20261011\completed-codex.bundle`；14 heads；SHA-256 `5b58f4e1673c6a7064a8916cb123d950cb733a4e635fb1a43b1d4ed13f427a39`；獨立還原與事後雜湊驗證通過。
-- 本輪備份：`C:\Users\x8120\.codex\scratch\uncertain-branches-followup-20261011\completed-claude.bundle`；3 heads；SHA-256 `a29f0d7f00f5ddbe1967d591e7f2195c531b99075c117a6c0a76c72db1f2568e`；獨立還原與事後雜湊驗證通過。
+- 本輪備份：`<home>\.codex\scratch\uncertain-branches-followup-20261011\completed-codex.bundle`；14 heads；SHA-256 `5b58f4e1673c6a7064a8916cb123d950cb733a4e635fb1a43b1d4ed13f427a39`；獨立還原與事後雜湊驗證通過。
+- 本輪備份：`<home>\.codex\scratch\uncertain-branches-followup-20261011\completed-claude.bundle`；3 heads；SHA-256 `a29f0d7f00f5ddbe1967d591e7f2195c531b99075c117a6c0a76c72db1f2568e`；獨立還原與事後雜湊驗證通過。
 
 3 個使用中的 worktree 仍在原 branch；Batch005 clean0、Batch011 dirty17、country foods dirty17。後兩者共34個路徑的 git status、內容 SHA-256、bytes與分支均對照 before快照確認未變。
 
@@ -73,7 +73,7 @@ scope:
 
 Batch005 沿用現有 main open `2026-10-06-batch-005-nikko-kyoto-translations-refresh`。各票區分歷史cohort、當前未核對、作者／審稿／發布，排除已完成Jeju、KL/Singapore、Escape #493、#408全目錄訂位查核等舊項。
 
-可搜尋報告：`C:/Users/x8120/.codex/scratch/historical-cleanup-20261011/cleanup-report.html` 已更新197項總清單；本輪24項資料、執行收據及工作目錄保存證據分別為新scratch的 `reviewed-audit.json`、`cleanup-receipt.json`、`post-cleanup-verification.json`。既有草稿 [PR #1450](https://github.com/x812033727/travel_scanner/pull/1450)承載共享任務檔；本次cleanup本機操作已完成，沒有宣稱草稿PR已合併或其他工作已驗收。
+可搜尋報告：`<home>/.codex/scratch/historical-cleanup-20261011/cleanup-report.html` 已更新197項總清單；本輪24項資料、執行收據及工作目錄保存證據分別為新scratch的 `reviewed-audit.json`、`cleanup-receipt.json`、`post-cleanup-verification.json`。既有草稿 [PR #1450](https://github.com/x812033727/travel_scanner/pull/1450)承載共享任務檔；本次cleanup本機操作已完成，沒有宣稱草稿PR已合併或其他工作已驗收。
 
 ## 24 branch decisions
 

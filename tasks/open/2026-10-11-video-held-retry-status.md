@@ -32,7 +32,7 @@ scope:
 
 ## Why
 
-保留並恢復原未共享票 2026-10-05-video-held-retry-status；不要另開第二張 generic reconciliation 或同義顯示票。原稿是 news-recovery worktree 的 scope 外 untracked file：C:/Users/x8120/.codex/worktrees/6f71/travel_scanㄐ/tasks/open/2026-10-05-video-held-retry-status.md。它是影片狀態顯示問題，不屬 news source recovery，也不接管任何影片生產。
+保留並恢復原未共享票 2026-10-05-video-held-retry-status；不要另開第二張 generic reconciliation 或同義顯示票。原稿是 news-recovery worktree 的 scope 外 untracked file：<home>/.codex/worktrees/6f71/travel_scanㄐ/tasks/open/2026-10-05-video-held-retry-status.md。它是影片狀態顯示問題，不屬 news source recovery，也不接管任何影片生產。
 
 2026-10-11 read-only 對 current frozen main 1f183e4d1f3bb493b5412ca242f2cbb98da4f9bf 再驗：producer_state.py 的 WorkerView 只有 state/tidied_at；blocked/dropped 在讀 project/global STOP 前先 return。admin_service.py 把單一 worker_state 回傳，review-card 的 PublishPill 只把此 state 交给 VideoProductionState，元件只顯示一個狀態。admin-video-reviews.tsx 的 RetryVideo 只用 pending 判斷並顯示 retryVideoPending；繁中仍為「已提出重試，工人下一輪會接手。」。現有 test 也只斷言這段文案。
 

@@ -47,7 +47,7 @@ scope:
 
 - 建票日期：2026-10-11。本票依歷史分支核對補回共享 queue；本次草稿未修改來源或連線正式站。
 - 原分支：`codex/article-localization-batch-006`；保留 HEAD：`56d98e4decce9f760179665119c2821c350b7613`。原作者：`codex-batch006-author`；原票 `2026-09-20-article-localization-batch-006` 與 `2026-09-20-hanoi-old-quarter-vietnam-tourism-source` 未存在於核對的 main。本票承接其剩餘工作，不能視為原 scope 的自動認領。
-- 核對 main：`73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b`。證據：`C:/Users/x8120/.codex/scratch/uncertain-branches-followup-20261011/locale-audit.json` 與 `locale-content-comparison.json`，包含兩個 unique metadata commits、完整舊交接及產品 path history。
+- 核對 main：`73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b`。證據：`<home>/.codex/scratch/uncertain-branches-followup-20261011/locale-audit.json` 與 `locale-content-comparison.json`，包含兩個 unique metadata commits、完整舊交接及產品 path history。
 - [PR #599](https://github.com/x812033727/travel_scanner/pull/599) 已 merged `e8ad6c1d3c9116bd4ee61e8172b76aea92629bf4`，只完成 zh-TW 句子修正；main done 來源票明示發布、四語 rebind 與 citation 維護仍是後續工作。不要重做該句子 patch。
 - KL／Singapore 已由 [#602](https://github.com/x812033727/travel_scanner/pull/602)、[#605](https://github.com/x812033727/travel_scanner/pull/605)、[#607](https://github.com/x812033727/travel_scanner/pull/607) 與 [#617](https://github.com/x812033727/travel_scanner/pull/617) 完成；既有 done task 記錄 15 public routes、31 browser cases 與 hold clear，不重開。
 

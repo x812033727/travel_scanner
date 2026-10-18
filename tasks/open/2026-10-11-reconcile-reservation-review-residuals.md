@@ -38,9 +38,9 @@ editor 重現必須記錄 row ID、dialog ID、search response order 及 source 
 
 ## Notes
 
-最終證據 `C:/Users/x8120/.codex/scratch/uncertain-branches-followup-20261011/catalog-audit.json`；後續 exact merchant successor 記錄在同目錄 `catalog-extra-proofs.json`，完整原收據在 `catalog-evidence.json`。原平台資料本來已 live，不需要新 PR／部署來發布歷史已套用資料。TABLES／沁園春此次只是缺少明確事實 adjudication 的收據，不宣稱目前仍待審或原地址必錯。Naver booking 既有票是另一 cohort，不擴大本票。
+最終證據 `<home>/.codex/scratch/uncertain-branches-followup-20261011/catalog-audit.json`；後續 exact merchant successor 記錄在同目錄 `catalog-extra-proofs.json`，完整原收據在 `catalog-evidence.json`。原平台資料本來已 live，不需要新 PR／部署來發布歷史已套用資料。TABLES／沁園春此次只是缺少明確事實 adjudication 的收據，不宣稱目前仍待審或原地址必錯。Naver booking 既有票是另一 cohort，不擴大本票。
 
-2026-10-11 分支續查；共享票比對基線為 main `73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b` 的全部 389 張 open 票，未找到同義任務（詳 `C:/Users/x8120/.codex/scratch/uncertain-branches-followup-20261011/catalog-open-task-check.json`）。本票只追蹤唯讀對帳與保全，初始 scope 僅含本票檔案，結果直接記在本票。任何程式、資料或其他證據檔修改須另開窄 scope 票並先核對所有者；不釋放或覆寫任何原 claims、owner、scope。未發布、未公開、舊票仍在 open、當前主線較新，均不能單獨證明現在仍 pending。這次開票不授權正式資料寫入、重播舊 batch、付費呼叫、部署或發布。
+2026-10-11 分支續查；共享票比對基線為 main `73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b` 的全部 389 張 open 票，未找到同義任務（詳 `<home>/.codex/scratch/uncertain-branches-followup-20261011/catalog-open-task-check.json`）。本票只追蹤唯讀對帳與保全，初始 scope 僅含本票檔案，結果直接記在本票。任何程式、資料或其他證據檔修改須另開窄 scope 票並先核對所有者；不釋放或覆寫任何原 claims、owner、scope。未發布、未公開、舊票仍在 open、當前主線較新，均不能單獨證明現在仍 pending。這次開票不授權正式資料寫入、重播舊 batch、付費呼叫、部署或發布。
 
 本票保持 open、未認領；建票只恢復待辦，不釋出原分支 owner 或授權接管現有工作目錄。續作時依 task-board 核對認領、main 與本票 scope；正式站寫入、合併／部署與付費生成維持各自原有授權。
 

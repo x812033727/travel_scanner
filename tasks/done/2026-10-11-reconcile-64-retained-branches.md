@@ -67,7 +67,7 @@ scope:
 ## Notes
 
 - 固定main：`1f183e4d1f3bb493b5412ca242f2cbb98da4f9bf`；兩clone相同。
-- 證據／執行／還原清單：`C:/Users/x8120/.codex/scratch/retained64-followup-20261011/`。
+- 證據／執行／還原清單：`<home>/.codex/scratch/retained64-followup-20261011/`。
 - Fresh status共3254個未提交路徑，3202缺檔、52現存檔案；前兩個locale preservation worktree合計3199都是deleted working paths。9個checkout均保留。
 - Claude偶的江湖分支HEAD相對首輪已新增commit；按本輪fresh HEAD核對，後續owner新提交仍保留，不將idle或clean當ownership release。
 - 本票只核對與記錄；正式站、生成／付費、其他工作目錄、原票認領與remote舊分支不改動。
@@ -82,8 +82,8 @@ scope:
 
 所有9個checkout、原claims與外部素材保留，《偶的江湖》按站主確認仍在Claude製作，永不納入本輪cleanup。所有42個刪除ref均全歷史bundle、SHA256、空白bare repo獨立逐HEAD還原通過；每筆刪除前重新讀openPR/worktrees，以預期HEAD CAS，事後驗證ref不存在。新票先保存至draft PR1450，再清歷史ref；沒有將新票宣稱main已合。
 
-- 本輪備份`C:\Users\x8120\.codex\scratch\retained64-followup-20261011\completed-codex.bundle`：38heads；SHA256 `6699e2f8fb3a02d9e088cb80140611b3d3d670682dbd91e4545a2e778b140794`；獨立還原與事後雜湊通過。
-- 本輪備份`C:\Users\x8120\.codex\scratch\retained64-followup-20261011\completed-claude.bundle`：4heads；SHA256 `45669fde7446eb8548ee5476d3cf40e2988900b938b4cd091a6375a33d5b69a7`；獨立還原與事後雜湊通過。
+- 本輪備份`<home>\.codex\scratch\retained64-followup-20261011\completed-codex.bundle`：38heads；SHA256 `6699e2f8fb3a02d9e088cb80140611b3d3d670682dbd91e4545a2e778b140794`；獨立還原與事後雜湊通過。
+- 本輪備份`<home>\.codex\scratch\retained64-followup-20261011\completed-claude.bundle`：4heads；SHA256 `45669fde7446eb8548ee5476d3cf40e2988900b938b4cd091a6375a33d5b69a7`；獨立還原與事後雜湊通過。
 
 工作目錄readback：
 

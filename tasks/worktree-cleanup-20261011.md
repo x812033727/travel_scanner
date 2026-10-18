@@ -20,13 +20,13 @@
 
 共享後續票：`tasks/open/2026-10-11-follow-up-retained-c-drive-worktrees.md`（open，未認領）。
 
-核對證據：`C:/Users/x8120/.codex/scratch/worktree59-cleanup-20261011/`，互動報告 `codex-worktree-report.html`，完整清單 `codex-worktree-report.json`。
+核對證據：`<home>/.codex/scratch/worktree59-cleanup-20261011/`，互動報告 `codex-worktree-report.html`，完整清單 `codex-worktree-report.json`。
 
 容量沿用 2026-10-11 22:04 台北的檔案邏輯長度快照；本輪重新核對 Git、PR、工作用途及檔案保存，未重測 NTFS 配置容量。
 
 ## 1. codex/codex-practical-series-20261011
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/afd6/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/afd6/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：1；前次容量：1.284 GiB。
 - HEAD：`10cc468b71ba57fc823a2df498cc9bf6e0dff707`
 - 原因：#1429 OPEN，PRhead與snapshot10cc468b不同；dirty1 environment.toml；Codex實作系列原owner對話未封存，包含source/策畫/價值/視覺規格的3個獨有commit。
@@ -45,7 +45,7 @@ PR 證據：[1429](https://github.com/x812033727/travel_scanner/pull/1429) OPEN�
 
 ## 2. codex/article-locales-release-20261007
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/4e16/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/4e16/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：2；前次容量：1.263 GiB。
 - HEAD：`08a280298f41670476f71cf3e2ebf87f663dfd67`
 - 原因：32篇已發布的收據與四張release結案記錄仍在OPEN PR #1373；checkout另有2個未追蹤檔，整體多語補齊工作仍未完成。
@@ -66,7 +66,7 @@ PR 證據：[1373](https://github.com/x812033727/travel_scanner/pull/1373) OPEN�
 
 ## 3. codex/stalled-videos-completion-20261008
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/2a98/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/2a98/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：13；前次容量：1.262 GiB。
 - HEAD：`b9940f18c1dfed8b493ceb9778df4c845728d4e2`
 - 原因：dirty13包括三張open票刪除＋對應done未追蹤、最新recovery document與多張補充未共享原稿；commit HEAD b9940f18不是main祖先。
@@ -84,7 +84,7 @@ PR 證據：[1373](https://github.com/x812033727/travel_scanner/pull/1373) OPEN�
 
 ## 4. codex/news-recovery-followup-20261011
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/news-held-bundle-ingestion/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/news-held-bundle-ingestion/travel_scanㄐ`
 - 決定：保留；主要原因：未完成交付／續作；未提交路徑：0；前次容量：1.100 GiB。
 - HEAD：`c3d7a76961088bbcbf54e1bf0a7fbc5648a017d4`
 - 原因：PR #1444完整合併，但原新聞聊天仍用此worktree接續208篇恢復流程，ownership未釋放。
@@ -106,7 +106,7 @@ PR 證據：[1444](https://github.com/x812033727/travel_scanner/pull/1444) MERGE
 
 ## 5. codex/news-recovery-20261010
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/6f71/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/6f71/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：13；前次容量：1.099 GiB。
 - HEAD：`1b7be83e6cc65a308e2c21b785c7e37c8ac966f7`
 - 原因：原程式修復已合併，原208 cohort仍未收尾，且6f71有13個未提交路徑。
@@ -127,7 +127,7 @@ PR 證據：[1411](https://github.com/x812033727/travel_scanner/pull/1411) MERGE
 
 ## 6. codex/pr921-tidy-metadata-current
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/pr-merge-watch/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/pr-merge-watch/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：17；前次容量：0.897 GiB。
 - HEAD：`a89cfa65ef518198b4b6f641148519431df4f6ae`
 - 原因：clean不能成立：dirty17，含Shorts來源14路徑、done rename/原task及未追蹤pr906 integration；HEADa89cfa65的missing-site-entry tidy guard未入main。
@@ -145,7 +145,7 @@ PR 證據：[1411](https://github.com/x812033727/travel_scanner/pull/1411) MERGE
 
 ## 7. codex/article-locales-wave6-release-20261010
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/article-locales-wave5-20261008/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/article-locales-wave5-20261008/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：2；前次容量：0.893 GiB。
 - HEAD：`d4f074c4da1473fac04b46aa9e70d7a733bcc560`
 - 原因：17篇/68語系內容PR #1409已進main，但這個release checkout仍有未提交author票搬移；正式發布票與驗收證據未完成。
@@ -165,7 +165,7 @@ PR 證據：[1411](https://github.com/x812033727/travel_scanner/pull/1411) MERGE
 
 ## 8. codex/article-locales-wave4-release-20261008
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/article-locales-wave4/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/article-locales-wave4/travel_scanㄐ`
 - 決定：保留；主要原因：未合併 PR；未提交路徑：0；前次容量：0.858 GiB。
 - HEAD：`79758f18cf39652a9f4d08dd764f0242f0735ece`
 - 原因：13篇/52目標語系實際發布收據已有，但收據PR #1401仍OPEN，需完成交接整合。
@@ -187,7 +187,7 @@ PR 證據：[1401](https://github.com/x812033727/travel_scanner/pull/1401) OPEN�
 
 ## 9. codex/video-approved-final-languages-20261004
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/e82d/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/e82d/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：13；前次容量：0.742 GiB。
 - HEAD：`7132cd7d5e6bb4f85c7bb9b2627991ea83aa783c`
 - 原因：#1210 MERGED但local7132cd7d不等PRhead，仍2 unique commits、13dirty；main bounded-video-media-followthrough in-progress、imported languages/renewed-finals open。
@@ -207,7 +207,7 @@ PR 證據：[1210](https://github.com/x812033727/travel_scanner/pull/1210) MERGE
 
 ## 10. codex/news-backlog-review-20261007
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/fe41/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/fe41/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：8；前次容量：0.739 GiB。
 - HEAD：`bcc073b8db64c5b8955c4b49ddc2aabd7fe83e7b`
 - 原因：原520候選隊列尚未完成，且checkout有8個未提交路徑；#1371窄程式合併不等於整個新聞流程完成。
@@ -229,7 +229,7 @@ PR 證據：[1371](https://github.com/x812033727/travel_scanner/pull/1371) MERGE
 
 ## 11. codex/historical-branches-cleanup-20261011
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/historical-branch-cleanup/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/historical-branch-cleanup/travel_scanㄐ`
 - 決定：保留；主要原因：保護／使用中；未提交路徑：1；前次容量：0.711 GiB。
 - HEAD：`4907bb8df7575938eef17419d612ae24323009e0`
 - 原因：本次正在使用的審核工作目錄；PR #1450 為草稿，本輪任務與報告仍在此編輯。
@@ -247,7 +247,7 @@ PR 證據：[1450](https://github.com/x812033727/travel_scanner/pull/1450) OPEN�
 
 ## 12. detached b12ae9f6d6
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/2792/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/2792/travel_scanㄐ`
 - 決定：保留；主要原因：保護／使用中；未提交路徑：1；前次容量：0.710 GiB。
 - HEAD：`b12ae9f6d689b5275906899278c06f3c46ead7b9`
 - 原因：本次盤點對話cwd，detached b12ae9f6為main祖先；environment.toml untracked；使用者/本次root明確保護。
@@ -261,7 +261,7 @@ PR 證據：[1450](https://github.com/x812033727/travel_scanner/pull/1450) OPEN�
 
 ## 13. codex/stalled-production-resume-20261010
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/3603/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/3603/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：4；前次容量：0.706 GiB。
 - HEAD：`1bd1d47ceab109b1425af01f1571173e95004c8e`
 - 原因：HEAD1bd1d47c是fresh main祖先，沒有unique commit；但有4未追蹤路徑，包含10/10 production-resume收據與deterministic-blockers、whisper-pyav19兩張原票。
@@ -279,7 +279,7 @@ PR 證據：[1450](https://github.com/x812033727/travel_scanner/pull/1450) OPEN�
 
 ## 14. codex/ou-de-jianghu-visual-preproduction-20261008
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/1b93/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/1b93/travel_scanㄐ`
 - 決定：保留；主要原因：保護／使用中；未提交路徑：3；前次容量：0.700 GiB。
 - HEAD：`9607a9001aa40851dd07e4c5f4f1e6246d6568e1`
 - 原因：偶的江湖全案hard-protected；本地dirty3包含visual-handoff及CLAUDE-HANDOFF-20261009，HEAD仍有10獨有commit，#1388 OPEN且PRhead較此snapshot不同。
@@ -298,7 +298,7 @@ PR 證據：[1388](https://github.com/x812033727/travel_scanner/pull/1388) OPEN�
 
 ## 15. codex/gemini-advanced-platform
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/3281/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：2；前次容量：0.696 GiB。
 - HEAD：`57308fe8f86149449181bc48af2346bffa4b111f`
 - 原因：可見性/平台節點已完成，但這個聚合author checkout尚有2個未追蹤檔及36篇進階內容/實測交接待對帳。
@@ -321,7 +321,7 @@ PR 證據：[520](https://github.com/x812033727/travel_scanner/pull/520) MERGED�
 
 ## 16. codex/stalled-video-reviewed-fixes-20261008
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/stalled-video-reviewed-fixes/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/stalled-video-reviewed-fixes/travel_scanㄐ`
 - 決定：保留；主要原因：未合併 PR；未提交路徑：0；前次容量：0.693 GiB。
 - HEAD：`382f26428786500a8e59d87ed04d8ccdf5c7e300`
 - 原因：clean但#1387 OPEN exactHead382f2642，25 unique commits包括Mandarin粒子、true-peak/locale、guarded recovery、完整語言/交付收據與durable task修補。
@@ -341,7 +341,7 @@ PR 證據：[1387](https://github.com/x812033727/travel_scanner/pull/1387) OPEN�
 
 ## 17. codex/windows-video-validation-20261009
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/windows-video-validation/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/windows-video-validation/travel_scanㄐ`
 - 決定：保留；主要原因：未合併 PR；未提交路徑：0；前次容量：0.692 GiB。
 - HEAD：`b0537d31fc90de057727cc685631e2e5bcd70231`
 - 原因：clean但fresh #1391 OPEN，head b0537d31精確等目前branch。原owner對話archived=1，仍不能把尚未merged的PR/11 commits當作已完成共享source。
@@ -361,7 +361,7 @@ PR 證據：[1391](https://github.com/x812033727/travel_scanner/pull/1391) OPEN�
 
 ## 18. detached c7ff1f5c59
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/windows-atomic-write-retry-20261008/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/windows-atomic-write-retry-20261008/travel_scanㄐ`
 - 決定：保留；主要原因：未合併 PR；未提交路徑：0；前次容量：0.682 GiB。
 - HEAD：`c7ff1f5c599d2b36684f91ad466c49baab320cd1`
 - 原因：clean detached c7ff1f5c，但fresh #1379 OPEN且head精確等此detached HEAD。四unique commits是保留完整speech answers、promotion recovery、journal list consumer契約與收據。
@@ -381,7 +381,7 @@ PR 證據：[1379](https://github.com/x812033727/travel_scanner/pull/1379) OPEN�
 
 ## 19. codex/ai-agent-continuation-20261007
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/ai-agent-continuation-20261007/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/ai-agent-continuation-20261007/travel_scanㄐ`
 - 決定：保留；主要原因：未合併 PR；未提交路徑：0；前次容量：0.682 GiB。
 - HEAD：`bffe323af4e27f93795b795e3eb5571389ed118f`
 - 原因：clean但#1372 OPEN且head bffe323a精確相同；main general-audience-ai-agent-versus-chatbot仍open。
@@ -401,7 +401,7 @@ PR 證據：[1372](https://github.com/x812033727/travel_scanner/pull/1372) OPEN�
 
 ## 20. codex/ai-citation-completion-20261007
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/ai-citation-completion-20261007/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/ai-citation-completion-20261007/travel_scanㄐ`
 - 決定：保留；主要原因：未合併 PR；未提交路徑：0；前次容量：0.682 GiB。
 - HEAD：`934a563ce4c48da6ed963dc2d14fea8fb98bb2a3`
 - 原因：clean但#1369 OPEN且head934a563c精確相同；main general-audience-ai-citation-checking-video仍open。
@@ -421,7 +421,7 @@ PR 證據：[1369](https://github.com/x812033727/travel_scanner/pull/1369) OPEN�
 
 ## 21. codex/llm-selected-language-completion-20261007
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/23a9/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/23a9/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：1；前次容量：0.681 GiB。
 - HEAD：`7e26c83956ab5d6488f47bdd344276692ffd6b3b`
 - 原因：#1368 OPEN且head與7e26c839精確相同；本地有environment.toml untracked，影片selected-language/submission/metadata舊package重審工作仍由未封存owner持有。
@@ -441,7 +441,7 @@ PR 證據：[1368](https://github.com/x812033727/travel_scanner/pull/1368) OPEN�
 
 ## 22. codex/renewed-finals-host-handoff-20261007
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/7392/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/7392/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：2；前次容量：0.681 GiB。
 - HEAD：`d03c624b56953bb9116325a876b7ac4fc2d18d83`
 - 原因：#1359 OPEN且head d03c624b精確相同，10 unique commits保存renewed-final與Temperature source resubmission、本地dirty2。
@@ -461,7 +461,7 @@ PR 證據：[1359](https://github.com/x812033727/travel_scanner/pull/1359) OPEN�
 
 ## 23. codex/mobile-planner-app-ui
 
-- 工作目錄：`C:/Users/x8120/OneDrive/文件/ChatGPT/travel_scanㄐ`
+- 工作目錄：`<home>/OneDrive/文件/ChatGPT/travel_scanㄐ`
 - 決定：保留；主要原因：主倉庫；未提交路徑：1179；前次容量：0.678 GiB。
 - HEAD：`75bb195badf0f26127b8cdf78c49ae71bde9a0e8`
 - 原因：HEAD已main祖先且mobile舊產品已合併，但primary checkout的1179檔未提交來源/用途未逐檔確定。
@@ -483,7 +483,7 @@ PR 證據：[28](https://github.com/x812033727/travel_scanner/pull/28) MERGED。
 
 ## 24. codex/ai-term-embedding-20261004
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/ai-series-next-20261004/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/ai-series-next-20261004/travel_scanㄐ`
 - 決定：保留；主要原因：未完成交付／續作；未提交路徑：0；前次容量：0.660 GiB。
 - HEAD：`545ce140d0cf46644a7b7ac1310b99e7105a1157`
 - 原因：#1211 MERGED且merge是fresh main祖先，但PRhead並非local545ce140；local仍3 unique commits，不可用舊merged PR名稱證目前全部HEAD已落地。
@@ -503,7 +503,7 @@ PR 證據：[1211](https://github.com/x812033727/travel_scanner/pull/1211) MERGE
 
 ## 25. codex/ai-series-continuation-20261004
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/b136/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/b136/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：1；前次容量：0.660 GiB。
 - HEAD：`3b870bc37286f6e8accdaf30a27de3cbd3a7cb9e`
 - 原因：#1207 MERGED但local3b870bc3不等PRhead，仍18獨有commit與1dirty；若干付費重試/publish-locale/QA修復在main已done。
@@ -523,7 +523,7 @@ PR 證據：[1207](https://github.com/x812033727/travel_scanner/pull/1207) MERGE
 
 ## 26. codex/codex-learning-publication-receipt
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/fc2e/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/fc2e/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：34；前次容量：0.623 GiB。
 - HEAD：`a9e2b2afa4e158adc0974be5510e4d6d92189c34`
 - 原因：#585 MERGED且head a9e2b2af與local精確相同，merge是fresh main祖先；Codex depth/content/finalize-release/hub-query-ads主線票done。
@@ -543,7 +543,7 @@ PR 證據：[585](https://github.com/x812033727/travel_scanner/pull/585) MERGED�
 
 ## 27. codex/batch034-source-task-close
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/batch006-final-close/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/batch006-final-close/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：2；前次容量：0.546 GiB。
 - HEAD：`dd1d51730c0c46698325fb357bb90ac0303d7b8c`
 - 原因：兩處WordPress來源inline修正已合併；本機task結案副本尚需保全對帳。
@@ -563,7 +563,7 @@ PR 證據：[585](https://github.com/x812033727/travel_scanner/pull/585) MERGED�
 
 ## 28. codex/korea-source-fact-corrections
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/korea-source-fact-corrections/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/korea-source-fact-corrections/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：6；前次容量：0.496 GiB。
 - HEAD：`f34bb245691e7f32f97d1c9373394e87650591af`
 - 原因：HEAD來源修正已main，但另有6個本機source/diagram/task變更尚未整合驗收。
@@ -580,7 +580,7 @@ PR 證據：[585](https://github.com/x812033727/travel_scanner/pull/585) MERGED�
 
 ## 29. codex/batch003-qa-tasks
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/batch003-qa-tasks/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/batch003-qa-tasks/travel_scanㄐ`
 - 決定：保留；主要原因：未完成交付／續作；未提交路徑：0；前次容量：0.487 GiB。
 - HEAD：`3e072badac7c2a25e2d96ed4656536550cfb6feb`
 - 原因：clean checkout但唯一QA註記尚未main；四繁中SVG仍有英文helper，onsen四語另有既有待辦。
@@ -601,7 +601,7 @@ PR 證據：[585](https://github.com/x812033727/travel_scanner/pull/585) MERGED�
 
 ## 30. codex/article-localization-batch-005
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/article-localization-batch-005/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/article-localization-batch-005/travel_scanㄐ`
 - 決定：保留；主要原因：未完成交付／續作；未提交路徑：0；前次容量：0.487 GiB。
 - HEAD：`40d482aa1d56fa19a16df2bf56e2bc952ed142bf`
 - 原因：clean checkout只保留作者/來源review記帳，Nikko/Kyoto8份四語refresh仍未完成。
@@ -617,11 +617,11 @@ PR 證據：[585](https://github.com/x812033727/travel_scanner/pull/585) MERGED�
 - exact HEAD 40d482aa1d56fa19a16df2bf56e2bc952ed142bf; mainAncestor=false; main...HEAD behind/ahead=797/2; HEAD未較排行快照變動。
 - 兩個 unique commits 只有 tasks/open 的作者/來源review紀錄，沒有 content pack、翻譯 asset 或 review approval 寫入 Git。完整末次 task 明示8 unsigned jobs、editorial/glyph review未簽、Kyoto/Nikko source-fact holds、summary/FAQ/render tooling仍待整合，不能列已完成收據。
 - frozen main Kyoto/Nikko packs 仍只有 zh-TW；main open 2026-10-06-batch-005-nikko-kyoto-translations-refresh 已直接承接這批工作，記錄 corrected live v8與8 target locales unpublished、重新source pin及獨立審稿缺件。Kyoto source後續 #1001/#1028 修改另由publish-onsen-kyoto-bus-zh-tw追蹤。
-- fresh frozen及唯讀再查 checkout 為 clean，無一般untracked files；ignored清單只有20個Python .pyc與generated tasks/BOARD.md，沒有藏在checkout的未完翻譯/媒體。歷史指定 external staging C:/Users/x8120/.codex/article-localization-batch-005 現在不存在；缺件仍需復原或重新翻譯。
+- fresh frozen及唯讀再查 checkout 為 clean，無一般untracked files；ignored清單只有20個Python .pyc與generated tasks/BOARD.md，沒有藏在checkout的未完翻譯/媒體。歷史指定 external staging <home>/.codex/article-localization-batch-005 現在不存在；缺件仍需復原或重新翻譯。
 
 ## 31. codex/article-five-language-completion
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/c5d9/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/c5d9/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：1099；前次容量：0.315 GiB。
 - HEAD：`8c83e90ab401f05044f614e5843c00d26aaed3dd`
 - 原因：HEAD已main祖先，但1099檔本機變更涵蓋多個產品與資料/文稿，其精確未完scope仍需原owner逐組對帳。
@@ -638,7 +638,7 @@ PR 證據：[585](https://github.com/x812033727/travel_scanner/pull/585) MERGED�
 
 ## 32. codex/country-foods-map-links
 
-- 工作目錄：`C:/Users/x8120/OneDrive/文件/ChatGPT/travel_scanner-foods-maps`
+- 工作目錄：`<home>/OneDrive/文件/ChatGPT/travel_scanner-foods-maps`
 - 決定：保留；主要原因：未提交修改；未提交路徑：17；前次容量：0.072 GiB。
 - HEAD：`a8736021c98f38a71e5f57555766d4cb86cc893e`
 - 原因：country foods產品已由replacement #56整合，保留的是17檔formatting-only本機patch待處置。
@@ -655,11 +655,11 @@ PR 證據：[585](https://github.com/x812033727/travel_scanner/pull/585) MERGED�
 - Producer PR #56 on replacement branch codex/country-foods-map-links-pr merged as 803b84601340d024fcdfe4fb326e086aa2a4e9c3, confirmed ancestor of frozen fresh main 73c84ca7. Of 63 product paths, 57 are exact branch blobs at that merge; foods/service.py has a positive main-history match and equivalent create-only initialization after upstream integration.
 - Unmatched old migration 0020_food_catalog.py is positively replaced by PR #56 migration 0022_food_catalog.py. Python AST comparison proves both entire upgrade/downgrade bodies exactly equal; only revision/down_revision chain metadata changed to follow itinerary system slots and hotspot AI search. test_schema.py explicitly moves expected head to0022 and checks0020/0021 are no longer heads.
 - The models and itinerary/router differences against PR #56 are upstream system-slot/schedule/AI additions rather than missing food changes; food catalog, map-link UI, API and focused food tests are already present in the merged producer scope.
-- Cleanup remains protected: checkout C:/Users/x8120/OneDrive/文件/ChatGPT/travel_scanner-foods-maps has17 uncommitted Python paths. Full dirty diff was read; AST comparison of HEAD versus working bytes proves all17 are formatting-only, but the user/root explicitly require these bytes be preserved and disposition tracked.
+- Cleanup remains protected: checkout <home>/OneDrive/文件/ChatGPT/travel_scanner-foods-maps has17 uncommitted Python paths. Full dirty diff was read; AST comparison of HEAD versus working bytes proves all17 are formatting-only, but the user/root explicitly require these bytes be preserved and disposition tracked.
 
 ## 33. codex/article-localization-batch-011-korea
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/article-localization-batch-011-korea/travel_scanㄐ`
+- 工作目錄：`<home>/.codex/worktrees/article-localization-batch-011-korea/travel_scanㄐ`
 - 決定：保留；主要原因：未提交修改；未提交路徑：17；前次容量：0.050 GiB。
 - HEAD：`1fbd57ac8845c8d4f465be7a1914669386f26ee7`
 - 原因：Jeju已完成；Nami/Seoul8份候選+8圖與來源修正仍HOLD，17檔dirty必須保存。
@@ -681,7 +681,7 @@ PR 證據：[585](https://github.com/x812033727/travel_scanner/pull/585) MERGED�
 
 ## 34. codex/security-hardening
 
-- 工作目錄：`C:/Users/x8120/OneDrive/文件/ChatGPT/travel_scanner-security`
+- 工作目錄：`<home>/OneDrive/文件/ChatGPT/travel_scanner-security`
 - 決定：保留；主要原因：未提交修改；未提交路徑：1；前次容量：0.037 GiB。
 - HEAD：`0c139a27b48f204e42edc39d777b25161924a7e1`
 - 原因：security HEAD已完整合併，但一份CI workflow本機修改尚未保存處置。
@@ -700,7 +700,7 @@ PR 證據：[23](https://github.com/x812033727/travel_scanner/pull/23) MERGED。
 
 ## 35. codex/article-localization-batch016-llms
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/article-localization-batch016-llms`
+- 工作目錄：`<home>/.codex/worktrees/article-localization-batch016-llms`
 - 決定：保留；主要原因：未提交修改；未提交路徑：692；前次容量：0.001 GiB。
 - HEAD：`fd63272eba3b44d2f36f43bac128b0e5c72562de`
 - 原因：LLMS私有draft五語產品已由#654替代整合；692個tracked task缺檔/index狀態尚需保存對帳。
@@ -724,7 +724,7 @@ PR 證據：[655](https://github.com/x812033727/travel_scanner/pull/655) CLOSED�
 
 ## 36. codex/article-localization-source-edit-preservation
 
-- 工作目錄：`C:/Users/x8120/.codex/worktrees/article-localization-source-edit-preservation`
+- 工作目錄：`<home>/.codex/worktrees/article-localization-source-edit-preservation`
 - 決定：保留；主要原因：未提交修改；未提交路徑：2507；前次容量：0.001 GiB。
 - HEAD：`a80f6b5faef47a17c862e8a981d78f5f3b4cfd06`
 - 原因：preservation實作由#654完整整合、三原票done；2507個tracked缺檔/index狀態需保存對帳。

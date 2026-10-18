@@ -38,7 +38,7 @@ The owner requested a fresh audit of the 59 C: worktrees in the disk ranking, th
 
 ## How to verify
 
-Read the immutable evidence under `C:/Users/x8120/.codex/scratch/worktree59-cleanup-20261011/`; compare the final receipt with `inventory-before.json` and `preservation-before.json`. Run `node tools/tasks.mjs check` and `git diff --check` for the task metadata.
+Read the immutable evidence under `<home>/.codex/scratch/worktree59-cleanup-20261011/`; compare the final receipt with `inventory-before.json` and `preservation-before.json`. Run `node tools/tasks.mjs check` and `git diff --check` for the task metadata.
 
 ## Notes
 

@@ -42,7 +42,7 @@ Every candidate has an evidence-backed decision. Deleted local refs have a verif
 ## Notes
 
 - User authorization: delete completed branches with no uncommitted modifications; retain unfinished branches and organize follow-up tasks.
-- Cohort and audit artifacts: C:/Users/x8120/.codex/scratch/historical-cleanup-20261011.
+- Cohort and audit artifacts: <home>/.codex/scratch/historical-cleanup-20261011.
 - Main evidence baseline: 0c93720e684b4c3995b16f7c2e859fe2bc06ec9f.
 - No implementation work, production changes, remote branch deletion or task ownership transfers are included.
 
@@ -51,5 +51,5 @@ Every candidate has an evidence-backed decision. Deleted local refs have a verif
 - Backups independently restored and every expected HEAD checked: completed-codex.bundle (93), completed-codex-supplement-2.bundle (4), completed-claude.bundle (12). SHA-256 values and all deleted HEADs are in cleanup-receipt.json.
 - Post-cleanup verification confirms all 109 deleted refs are absent and all 88 retained refs remain. The active Claude e001 branch advanced during the audit; its new HEAD was preserved and recorded.
 - The first deletion succeeded but its initial missing-ref probe returned 128; recovery verified absence with show-ref --verify --quiet (return 1), recorded that action, and resumed from the checksum-verified backup. All subsequent actions persisted their absence checks.
-- Reports: C:/Users/x8120/.codex/scratch/historical-cleanup-20261011/cleanup-report.html and cleanup-report.txt. Evidence: reviewed-audit.json, cleanup-receipt.json, post-cleanup-verification.json.
+- Reports: <home>/.codex/scratch/historical-cleanup-20261011/cleanup-report.html and cleanup-report.txt. Evidence: reviewed-audit.json, cleanup-receipt.json, post-cleanup-verification.json.
 - Retained-work index: tasks/open/2026-10-11-retained-historical-branches.md. It links existing task IDs and preserves every original claim.

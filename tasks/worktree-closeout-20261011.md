@@ -12,8 +12,8 @@
 
 | 完整資料根 | 實際刪除 | 檔案 | 原檔 GiB |
 | --- | --- | ---: | ---: |
-| `C:\Users\x8120\.codex\news-review` | 已清理 | 43073 | 16.487 |
-| `C:\Users\x8120\.codex\article-localization-release\all-missing-20261007` | 已清理 | 49849 | 9.684 |
+| `<home>\.codex\news-review` | 已清理 | 43073 | 16.487 |
+| `<home>\.codex\article-localization-release\all-missing-20261007` | 已清理 | 49849 | 9.684 |
 
 資料刪除不代表產品工作已完成。新聞 66 個未完候選、wave6 的 17 篇未發布文章，以及既有 source、review、錯誤／未知請求、hold、checkpoint 和發布證據隨整根一併刪除；原任務與 owner 不擅自結案或釋出。續作須從仍存的 Git、既有局部備份、正式站與其他來源重新整理，不能承諾完整還原已刪資料。
 

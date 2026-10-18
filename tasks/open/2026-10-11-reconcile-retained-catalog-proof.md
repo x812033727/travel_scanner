@@ -38,9 +38,9 @@ scope:
 
 ## Notes
 
-證據原路徑：`docs/catalog-content-reviews/2026-09-09-remaining-proof.json`、`docs/catalog-content-reviews/2026-09-09-remaining-proof-result.md`、原 `tasks/open/2026-09-08-remaining-189-catalog-proof.md`，皆可用上列 HEAD 唯讀取回。scratch 完整抽取（包含每筆歷史缺件）：`C:/Users/x8120/.codex/scratch/uncertain-branches-followup-20261011/catalog-retained-proof-cohort.json`；最終分支證據在同目錄 `catalog-audit.json` 與 `catalog-evidence.json`。主線 PR #408 的 296 店家／311 訂位 review 是另一 scope；只能逐 ID 交叉引用，不能當成本票文章、影片、座標證據全部結案。
+證據原路徑：`docs/catalog-content-reviews/2026-09-09-remaining-proof.json`、`docs/catalog-content-reviews/2026-09-09-remaining-proof-result.md`、原 `tasks/open/2026-09-08-remaining-189-catalog-proof.md`，皆可用上列 HEAD 唯讀取回。scratch 完整抽取（包含每筆歷史缺件）：`<home>/.codex/scratch/uncertain-branches-followup-20261011/catalog-retained-proof-cohort.json`；最終分支證據在同目錄 `catalog-audit.json` 與 `catalog-evidence.json`。主線 PR #408 的 296 店家／311 訂位 review 是另一 scope；只能逐 ID 交叉引用，不能當成本票文章、影片、座標證據全部結案。
 
-2026-10-11 分支續查；共享票比對基線為 main `73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b` 的全部 389 張 open 票，未找到同義任務（詳 `C:/Users/x8120/.codex/scratch/uncertain-branches-followup-20261011/catalog-open-task-check.json`）。本票只追蹤唯讀對帳與保全，初始 scope 僅含本票檔案，結果直接記在本票。任何程式、資料或其他證據檔修改須另開窄 scope 票並先核對所有者；不釋放或覆寫任何原 claims、owner、scope。未發布、未公開、舊票仍在 open、當前主線較新，均不能單獨證明現在仍 pending。這次開票不授權正式資料寫入、重播舊 batch、付費呼叫、部署或發布。
+2026-10-11 分支續查；共享票比對基線為 main `73c84ca7f5e75004dfb78c36b7bf7a971da8ca0b` 的全部 389 張 open 票，未找到同義任務（詳 `<home>/.codex/scratch/uncertain-branches-followup-20261011/catalog-open-task-check.json`）。本票只追蹤唯讀對帳與保全，初始 scope 僅含本票檔案，結果直接記在本票。任何程式、資料或其他證據檔修改須另開窄 scope 票並先核對所有者；不釋放或覆寫任何原 claims、owner、scope。未發布、未公開、舊票仍在 open、當前主線較新，均不能單獨證明現在仍 pending。這次開票不授權正式資料寫入、重播舊 batch、付費呼叫、部署或發布。
 
 ### 歷史 merchant IDs（154）
 
