@@ -53,6 +53,24 @@
 - 合集：`compile-dh.mjs <first> <last> <out.mp4>`。只有第一集留片名卡，每集一個章節，CC 合併。
   - 會另外寫出 `.youtube.json`（標題格式「種田娶妻打天下 第1–5集 | CC字幕」）和 `.chapters.txt`。
   - 用 `REUSE=1` 時，沿用已經剪好的各集。
+  - `DUBS=en,ja,ko,es,pt,id,vi,th` 會另外出每個語言的 `<out>.<locale>.m4a` 和 `.srt`。
+    - 做法：照合集自己的時間軸，各集重組一次配音（只有第一集留片名卡，後面每句台詞都會移位），再接起來。
+    - 要等各集的配音都組完才跑，因為 assemble-v4 每次都會重寫該集的 `segments-v4/lines`。
+  - `youtube-locales/<locale>.json` 放各語言的劇名，以及每集和合集的標題、說明。
+    - 只要某個語言有合集那一段，就會寫進 `.youtube.json` 的 `localizations`。
+
+### 多語配音（2026-10-18 起八種語言）
+
+- 語言：en、ja、ko，加上 es（拉美西語）、pt（巴西葡語）、id（印尼語）、vi（越南語）、th（泰語）。
+- 只做站主檢查過的集數。
+- 步驟：
+  1. 每集翻一個 `dub.<locale>.json`。
+  2. 跑 `CHECK=1 local/dub.sh NNN <locale>` 檢查。
+  3. 跑 `local/dub.sh NNN <locale>` 錄音、組音軌，並複製進匯入資料夾。
+- 名字：越南語用漢越音（許硯 Hứa Nghiên），其他語言照普通話讀音。
+  - 名字與用語表在 `dub-glossary.json` 和 `dub-glossary-additions.<locale>.json`。
+- 同一集的兩個語言不能同時組音軌，原因同上（`segments-v4/lines` 會被重寫）。
+  - 平行做的時候，用每集一個鎖目錄 `<workdir>/.dub-lock` 排隊。
 - 封面：一季一張、不放字，所有語言共用（第一季是 `dh-keyart-season1-t1`）。
   - `thumb-dh.py` 能畫帶字的封面，只當備用。
 - 新角色：韓伯 `hanbo`（聲音 Enceladus）、魏少卿 `weishaoqing`（聲音 Algieba）。
