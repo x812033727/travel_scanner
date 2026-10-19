@@ -230,7 +230,13 @@ def _copy_0132_image_tree(destination: Path) -> Path:
     def without_future_revision(directory: str, names: list[str]) -> set[str]:
         ignored = {name for name in names if name in {"__pycache__"} or name.endswith(".pyc")}
         if Path(directory).name == "versions":
-            ignored.add(f"{MIGRATION_0133}.py")
+            # The 0132 image holds no revision after 0132: not 0133, and not one that follows it
+            # (a later revision whose down_revision is 0133 would leave alembic a missing parent).
+            ignored |= {
+                name
+                for name in names
+                if name[:4].isdigit() and int(name[:4]) > int(MIGRATION_0132[:4])
+            }
         return ignored
 
     shutil.copytree(

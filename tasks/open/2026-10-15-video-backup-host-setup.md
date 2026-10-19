@@ -58,3 +58,12 @@ docker compose -f docker-compose.prod.yml exec video-worker rclone about videoba
   `root_folder_id` confines rclone; never remove that line.
 - Separate from `2026-10-07-backup-google-drive-offsite` (encrypted disaster backups); the
   two remotes and config files stay apart.
+- From the worker task (2026-10-19): the file goes in a folder, not at
+  `/etc/travel-scanner/rclone-videos.conf`. Compose mounts `/etc/travel-scanner/rclone-videos/`
+  read-only, so put the remote in `/etc/travel-scanner/rclone-videos/rclone.conf`, readable by
+  the worker's uid 1001: `install -d -m 0750 -o 1001 -g 1001 /etc/travel-scanner/rclone-videos`,
+  then `install -m 0600 -o 1001 -g 1001 rclone.conf /etc/travel-scanner/rclone-videos/`. The
+  remote must be named `videobackup` (or set `VIDEO_BACKUP_REMOTE`). `VIDEO_BACKUP_LOCK_PATH` is
+  `AI/備份` in compose; change it there if `root_folder_id` points elsewhere. Read the verify
+  commands' paths as `/etc/mokaair/rclone-videos/rclone.conf` inside the container
+  (`RCLONE_CONFIG=... rclone lsd videobackup:`).
