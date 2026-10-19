@@ -6,6 +6,7 @@ import { dramaFixture, explainerFixture, fixture, fixtureBrief, fixtureLexicon, 
 import { lintVideo } from "./lint.mjs";
 import {
   CALLBACK,
+  DEFAULT_CADENCE,
   chapterOpenerProblems,
   HOOK_GAP_SECONDS,
   hookCadenceProblems,
@@ -27,6 +28,7 @@ import {
   repeatedFactProblems,
   requiredLoops,
   STORY_PANEL_READERS,
+  TIGHT_CADENCE,
 } from "./narrative.mjs";
 import { scriptCheckMatches } from "./script-check.mjs";
 import { MIN_EPISODE_MINUTES } from "./schema.mjs";
@@ -149,6 +151,29 @@ test("the loops table: enough for the length, three planted in the condensation,
   assert.match(messages(loopProblems(doc, timeline, minutes)), /sits in the outro/);
   doc.loops = doc.loops.slice(0, 2);
   assert.match(messages(loopProblems(doc, timeline, minutes)), /2 open loops planted; .* at least 3/);
+});
+
+test("a brand story and a 奇聞檔案局 episode keep the tighter cadence: a hook inside 45 s, eight loops for ten minutes", () => {
+  assert.deepEqual(TIGHT_CADENCE, { gap: 45, loopsPer10: 8 });
+  assert.deepEqual(DEFAULT_CADENCE, { gap: HOOK_GAP_SECONDS, loopsPer10: 3 });
+  assert.deepEqual([requiredLoops(10, TIGHT_CADENCE.loopsPer10), requiredLoops(13, TIGHT_CADENCE.loopsPer10)], [8, 10]);
+  // Two padded scenes to a chapter: about 66 s between turns, inside 90 s and over 45 s.
+  const doc = stretched();
+  padScenes(doc).forEach((scene, index) => {
+    if (index % 2) delete scene.chapter;
+  });
+  const timeline = estimateTimeline(doc);
+  assert.deepEqual(hookCadenceProblems(doc, timeline), []);
+  const tight = hookCadenceProblems(doc, timeline, TIGHT_CADENCE.gap);
+  assert.ok(tight.length > 0);
+  assert.match(tight[0].message, /plant one at least every 45 s/);
+  const minutes = timeline.total_frames / FPS / 60;
+  assert.match(messages(narrativeProblems(doc, timeline, { minutes, cadence: TIGHT_CADENCE }).warnings), /plants at least 7/);
+
+  // lint picks the cadence by the series: a curio- slug is read at 45 s, any other narrated video at 90 s.
+  const warnings = (slug) => messages(lintVideo({ ...structuredClone(doc), slug }, context()).warnings);
+  assert.match(warnings("curio-x01"), /plant one at least every 45 s/);
+  assert.doesNotMatch(warnings("ai-term-x01"), /plant one at least every/);
 });
 
 test("a number said in three sentences is a repeat, unless a sentence brings it back on purpose", () => {

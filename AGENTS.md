@@ -63,6 +63,8 @@ queues, Place IDs, coordinates), `prod-host-ops` (nginx, admin settings, host CL
 checks, CI failures, Dependabot), `web-i18n-e2e` (messages and Playwright),
 `youtube-video`, `curio-episode` (any 奇聞檔案局 episode, a `curio-` slug: the series look,
 which route, how its illustrations are written and accepted, and the lint gate that keeps them),
+`brand-story` (any 品牌故事, a `story-` slug: the owner's fixed choices, how a batch is planned,
+fact-checked and imported, and what to do when the host worker stalls),
 `animation-preproduction` (planning, risk-grading, pricing and locking an
 animated episode before any clip is paid for: shot list, animatic, three-shot pilot, lock
 package and change orders), `animation-camera` (how a drama scene is covered and how camera,

@@ -13,6 +13,12 @@ export const CURIO_PRESET = "cute-mystery";
 export const CURIO_MIN_SHOT_SHARE = 0.7;
 /** The most cards in a row between two illustrations (the delivered episodes have at most three). */
 export const CURIO_MAX_CARD_RUN = 3;
+/**
+ * The series' music bed (the host writer's prompt reads the same words). Every episode delivered
+ * before 2026-10-19 had none, and the owner named it as one reason the brand stories, which carry
+ * one at these levels (automation/story.mjs), are better.
+ */
+export const CURIO_MUSIC = Object.freeze({ prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 });
 
 // The bookends are not the body: the opening title, chapter cards and the outro card.
 const FRAMES = new Set(["title", "chapter", "outro"]);
@@ -54,4 +60,10 @@ export function curioProblems(doc) {
     problems.push({ path: "scenes", message: `${ids.length} cards in a row (${ids[0]} … ${ids.at(-1)}); a 奇聞檔案局 episode puts an illustration between at most ${CURIO_MAX_CARD_RUN} cards` });
   }
   return problems;
+}
+
+/** What a 奇聞檔案局 episode should still have, as lint warnings: its music bed. None for any other video. */
+export function curioWarnings(doc) {
+  if (!isCurio(doc) || doc.music) return [];
+  return [{ path: "music", message: `a 奇聞檔案局 episode carries a music bed under the narration, as the brand stories do (owner, 2026-10-19): add "music": ${JSON.stringify(CURIO_MUSIC)} and run the music step (skill curio-episode)` }];
 }

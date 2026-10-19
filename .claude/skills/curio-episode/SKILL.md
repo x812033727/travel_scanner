@@ -1,6 +1,6 @@
 ---
 name: curio-episode
-description: 奇聞檔案局（slug 以 curio- 開頭的歷史與奇異解說長片）的做法：系列定案不能改的事、該走哪條路線（新集走主機可愛解說 cute-mystery；重製走本機 recut）、MiniMax image-01 可愛插圖怎麼寫提示詞、插圖怎麼驗收（內容相關的可愛插畫，不是證據重建）、整集一次報價、卡片的上限、片頭片尾、配音與 Shorts。lint 對 curio- 的 slug 檢查系列畫風、插圖占比至少七成、連續卡片最多三張。要做、重做、續做或修任何一集奇聞檔案局（含 H01–H07、U、L 各題與它們的 v2），或改它的畫面、提示詞、卡片時，先讀這個 skill，再讀 youtube-video。Make or remake a 奇聞檔案局 (curio-*) episode in the series look.
+description: 奇聞檔案局（slug 以 curio- 開頭的歷史與奇異解說長片）的做法：系列定案不能改的事、該走哪條路線（新集走主機可愛解說 cute-mystery；重製走本機 recut）、MiniMax image-01 可愛插圖怎麼寫提示詞、插圖怎麼驗收（內容相關的可愛插畫，不是證據重建）、整集一次報價、卡片的上限、跟品牌故事一樣每 45 秒一個鉤子與配樂、片頭片尾、配音與 Shorts。lint 對 curio- 的 slug 檢查系列畫風、插圖占比至少七成、連續卡片最多三張。要做、重做、續做或修任何一集奇聞檔案局（含 H01–H07、U、L 各題與它們的 v2），或改它的畫面、提示詞、卡片時，先讀這個 skill，再讀 youtube-video。Make or remake a 奇聞檔案局 (curio-*) episode in the series look.
 metadata:
   short-description: 奇聞檔案局：系列畫風、路線、插圖驗收、檢查
 ---
@@ -35,6 +35,8 @@ metadata:
 | 長度 | 目標 10 分鐘，旁白正文至少 8 分鐘 | `docs/videos/long-form/README.md` |
 | 片頭片尾 | 頻道片頭放在開場濃縮之後（`intro_at` = after_first_chapter）；片尾 v4-endscreen，旁白不提下一支 | `docs/videos/BRANDING.md` |
 | 語言 | zh-TW 先做完，en／ja／ko 的標題說明、CC、配音由站主勾選 | `docs/videos/DUBS.md` |
+| 鉤子 | 跟品牌故事一樣密：正文每 30–45 秒一個懸念，沒有超過 45 秒的空檔；`loops` 十分鐘至少 8 個；每章停在一個沒解的問題上 | 站主 2026-10-19「品牌故事比較順也有比較多鉤子」；lint 的 `TIGHT_CADENCE`（`tools/video/core/narrative.mjs`） |
+| 配樂 | 每一集都有：`"music": {"prompt": "light, curious, a little mysterious, no vocals", "gain_db": -20, "duck_db": -10}`，跟品牌故事同樣的音量；沒有配樂 lint 會警告 | 站主 2026-10-19「而且有音樂」；`tools/video/core/curio.mjs` 的 `CURIO_MUSIC` |
 
 ## 選路線
 
@@ -46,6 +48,30 @@ metadata:
 
 不要用 `format: "slides"` 從零做新集：那是 H01–L08 第一版的試片路線，系列預設與評審都要手動接，
 H04–H06 就是在這裡偏掉的。
+
+## 稿子：跟品牌故事一樣順、一樣多鉤子
+
+2026-10-19 站主比較兩個系列後說品牌故事「內容比較順也有比較多鉤子，而且有音樂」，要奇聞檔案局做到一樣好或更好。
+量到的差距：H10、H11、H12、M09、U09、H01 v2 的最長空檔 69–81 秒，每集有 2–7 段超過 45 秒沒有任何懸念；
+品牌故事的撰稿規則是 45 秒。所以：
+
+- **每 30–45 秒（約 130–200 字）一個懸念**：一個問題、一個升級（「但這還不是最怪的」）、一份對不上的紀錄、
+  先不講為什麼、或一個轉折。鉤子要站在這個檔案的事實上（日期、數字、某個人的決定、不該出現的東西），
+  不寫空話（「接下來更精采」），不念目錄。
+- **每章結尾停在一個具體、還沒解的問題或動作上，下一章第一句就接它**。結構裡的「流傳的版本、紀錄、
+  最站得住的解釋」是**同一個故事照發生順序的段落**，不是旁白一段一段走過的區塊；章名照事件取。
+- **`loops` 十分鐘至少 8 個**，開場濃縮種下至少 3 個，每一個都要回收。
+- 寫完跑 `node tools/video/cli.mjs lint --slug <SLUG>`：curio- 的 slug 用 45 秒、8 個伏筆檢查（警告），
+  每一段「no open loop between …」都要讀那一段稿子補上懸念，不是加一個問號湊數。
+- 盲評：本機 `node tools/video/cli.mjs narrative --slug <SLUG>` 每一題都過；品牌故事在主機上問兩位讀者、
+  兩位都答「否」才算沒過，本機重評時也比照，不要為一位讀者的「否」一直改稿。
+
+## 配樂
+
+每一集都有配樂，跟品牌故事一樣墊在整段旁白底下（片頭片尾的品牌音樂另外算）。`video.json` 寫上
+`CURIO_MUSIC` 那一行（見上表），旁白之後跑 `node tools/video/cli.mjs music --slug <SLUG>`（一首約 US$0.15，
+看 `status` 印出的報價），再 `assemble`。主機路線的撰稿提示詞也要求在設定開著配樂時一定寫 `music`。
+2026-10-19 以前交付的集數都沒有配樂；要不要補（一首配樂＋重新合成，旁白與插圖不動）由站主決定。
 
 ## 插圖提示詞怎麼寫
 
@@ -88,7 +114,7 @@ peaked cap raising a brass telescope to one eye, rigging behind him, light from 
 
 ## 預算：整集一次報、一次授權
 
-一集約 75–120 張插圖，每張含評審約 US$0.0135，加上重畫，整集大約 **US$1.5–3**（H01：136 次生成
+一集約 75–120 張插圖，每張含評審約 US$0.0135，加上重畫，整集大約 **US$1.5–3**，再加一首配樂（約 US$0.15）（H01：136 次生成
 US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限金額一次報給站主，核准後一次畫完；
 **不要**一張、三張地分批要授權。試畫樣張只在換畫風時才需要，系列畫風已經定了。
 
@@ -98,7 +124,7 @@ US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限�
 2. `node tools/video/cli.mjs lint --slug <SLUG>`：**0 錯誤**，包含這份 skill 的系列檢查。lint 紅了先修稿
    或分鏡，不要繞過。
 3. 旁白（頻道聲音）→ `check-audio` → 站主聽。
-4. 插圖整集一次畫 → 分鏡卡給站主看一次 → 成片 → 品管 → 上架包。
+4. 插圖整集一次畫 → 分鏡卡給站主看一次 → 配樂（`music`）→ 成片 → 品管 → 上架包。
 5. 配音、Shorts：`docs/videos/DUBS.md`、`docs/videos/SHORTS.md`。Shorts 一律 `from-episode`（頻道聲音）；
    手動 `build --redo` 一定帶 `--speech server`，不帶會換成 Windows 的聲音。
 

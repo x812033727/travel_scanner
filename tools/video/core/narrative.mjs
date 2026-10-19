@@ -23,6 +23,16 @@ export const OPENING_TEASERS = 3;
 export const LOOPS_PER_10_MINUTES = 3;
 
 /**
+ * The tighter cadence of the series one narrator holds alone over still pictures: a brand story
+ * (owner, 2026-10-18: "講故事也要放鉤子，不然會很無聊看不下去"; the story writer's STORY_HOOK_RULES)
+ * and 奇聞檔案局 (owner, 2026-10-19: as good as the brand stories, "比較順也有比較多鉤子"). The
+ * curio episodes of 2026-10-16 measured 69-81 s at their longest and 2-7 stretches over 45 s each.
+ */
+export const TIGHT_CADENCE = Object.freeze({ gap: 45, loopsPer10: 8 });
+/** The cadence every other narrated video keeps. */
+export const DEFAULT_CADENCE = Object.freeze({ gap: HOOK_GAP_SECONDS, loopsPer10: LOOPS_PER_10_MINUTES });
+
+/**
  * A chapter that opens on a label instead of on the event: the sentence says what the chapter
  * will do (「先講大家聽過的版本」「打開檔案的第一頁」「回到清單上」「最後一頁的線索」「接下來」), which is
  * what made the owner's videos read as sections stitched together.
@@ -59,7 +69,7 @@ export const NEXT_VIDEO = /下一集|下一支|下一份檔案|下一部|下部�
 export const isNarrated = (doc, series = null) => !isDrama(doc) || isExplainer(doc) || isStory(series);
 
 /** How many loops a script of `minutes` plants at least. */
-export const requiredLoops = (minutes) => Math.max(2, Math.round((minutes / 10) * LOOPS_PER_10_MINUTES));
+export const requiredLoops = (minutes, per10 = LOOPS_PER_10_MINUTES) => Math.max(2, Math.round((minutes / 10) * per10));
 
 const lineStarts = (timeline) => new Map((timeline?.lines ?? []).map((line) => [line.id, line.start_frame]));
 const sceneStart = (timeline, id) => (timeline?.scenes ?? []).find((scene) => scene.id === id)?.start_frame ?? null;
@@ -116,9 +126,10 @@ export function chapterOpenerProblems(doc, timeline) {
 /**
  * The body (after the condensation, before the outro) read for open loops: a chapter turn, a
  * sentence that ends on a question, a forward hook or an escalation (OPEN_LOOP_FAMILY). A stretch
- * longer than HOOK_GAP_SECONDS without one is a warning naming its minutes.
+ * longer than `gap` seconds (HOOK_GAP_SECONDS unless the series keeps TIGHT_CADENCE) without one
+ * is a warning naming its minutes.
  */
-export function hookCadenceProblems(doc, timeline) {
+export function hookCadenceProblems(doc, timeline, gap = HOOK_GAP_SECONDS) {
   const chapters = chapterList(timeline);
   if (chapters.length < 2 || !timeline?.total_frames) return [];
   const starts = lineStarts(timeline);
@@ -127,7 +138,7 @@ export function hookCadenceProblems(doc, timeline) {
   const outroAt = outro ? sceneStart(timeline, outro.id) : null;
   const from = chapters[1].start;
   const to = outroAt === null ? total : frameToSeconds(outroAt);
-  if (to - from <= HOOK_GAP_SECONDS) return [];
+  if (to - from <= gap) return [];
   const devices = chapters.slice(1).map((chapter) => chapter.start).filter((at) => at >= from && at < to);
   for (const { line } of eachLine(doc)) {
     const frame = starts.get(line.id);
@@ -139,9 +150,9 @@ export function hookCadenceProblems(doc, timeline) {
   const points = [from, ...devices.sort((a, b) => a - b), to];
   const problems = [];
   for (let index = 1; index < points.length; index++) {
-    const gap = points[index] - points[index - 1];
-    if (gap <= HOOK_GAP_SECONDS) continue;
-    problems.push({ path: "scenes", message: `no open loop between ${formatClock(points[index - 1])} and ${formatClock(points[index])} (${Math.round(gap)} s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every ${HOOK_GAP_SECONDS} s (script-writing.md §故事主線與鉤子)` });
+    const stretch = points[index] - points[index - 1];
+    if (stretch <= gap) continue;
+    problems.push({ path: "scenes", message: `no open loop between ${formatClock(points[index - 1])} and ${formatClock(points[index])} (${Math.round(stretch)} s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every ${gap} s (script-writing.md §故事主線與鉤子)` });
   }
   return problems;
 }
@@ -150,10 +161,10 @@ export function hookCadenceProblems(doc, timeline) {
  * The script's "loops" table (schema.mjs validates its ids and their order): enough of them for
  * the length, one planted in the condensation, none planted in the outro.
  */
-export function loopProblems(doc, timeline, minutes) {
+export function loopProblems(doc, timeline, minutes, per10 = LOOPS_PER_10_MINUTES) {
   const problems = [];
   const loops = Array.isArray(doc.loops) ? doc.loops : [];
-  const required = requiredLoops(minutes);
+  const required = requiredLoops(minutes, per10);
   if (loops.length < required) problems.push({ path: "loops", message: `${loops.length} open loop${loops.length === 1 ? "" : "s"} planted; a narrated video of about ${Math.round(minutes)} minutes plants at least ${required}: "loops" lists each as the line that plants it ("setup"), the line that pays it off ("payoff") and what it holds back ("what"), so every hook is answered (script-writing.md §故事主線與鉤子)` });
   if (!loops.length) return problems;
   const chapters = chapterList(timeline);
@@ -233,12 +244,12 @@ export function outroNextVideoProblems(doc) {
 }
 
 /** Every storytelling problem of a narrated script, tagged "narrative" so the worker can hand the warnings to the writer. */
-export function narrativeProblems(doc, timeline, { minutes } = {}) {
+export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CADENCE } = {}) {
   const tag = (problems) => problems.map((problem) => ({ ...problem, kind: "narrative" }));
   const length = Number.isFinite(minutes) ? minutes : frameToSeconds(timeline?.total_frames ?? 0) / 60;
   return {
     errors: tag(outroNextVideoProblems(doc)),
-    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline), ...loopProblems(doc, timeline, length), ...repeatedFactProblems(doc)]),
+    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc)]),
   };
 }
 
