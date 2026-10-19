@@ -1,13 +1,13 @@
 ---
 id: 2026-10-15-video-backup-worker
 title: Video backup round in the worker and the tidy hold
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-festive-archimedes
 claimed_at: 2026-10-19T16:20:20Z
 created_at: 2026-10-15T02:13:56Z
-completed_at:
+completed_at: 2026-10-19T16:35:56Z
 branch: claude/festive-archimedes-9ntb36
 depends_on:
   - 2026-10-15-video-backup-api
