@@ -1,0 +1,1720 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，像向朋友解開一個古文裡留下的謎；引句和數字放慢，問句稍抬。",
+    "performance": "從宮門到騎傳，再跟著曲名與白居易的果子追問。字面與推論分開說；最後停在文獻未交代的路線。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "ly005",
+      "payoff": "ly015",
+      "what": "詩裡貴妃笑的原因"
+    },
+    {
+      "setup": "ly006",
+      "payoff": "ly034",
+      "what": "史書概稱路途有多遠"
+    },
+    {
+      "setup": "ly007",
+      "payoff": "ly049",
+      "what": "生日新曲會取得什麼名字"
+    },
+    {
+      "setup": "ly008",
+      "payoff": "ly068",
+      "what": "離枝以後色香味會怎麼變"
+    },
+    {
+      "setup": "ly009",
+      "payoff": "ly093",
+      "what": "記錄是否能拼出完整運送路線"
+    },
+    {
+      "setup": "ly018",
+      "payoff": "ly031",
+      "what": "一騎是否就是整趟送果的一匹馬"
+    },
+    {
+      "setup": "ly024",
+      "payoff": "ly030",
+      "what": "哪份文字真的寫荔枝送達方式"
+    },
+    {
+      "setup": "ly033",
+      "payoff": "ly036",
+      "what": "數千里能否推算每天馬速"
+    },
+    {
+      "setup": "ly038",
+      "payoff": "ly039",
+      "what": "京師與華清宮能否直接等同"
+    },
+    {
+      "setup": "ly041",
+      "payoff": "ly042",
+      "what": "兩份文字能否核定同一批貨"
+    },
+    {
+      "setup": "ly046",
+      "payoff": "ly049",
+      "what": "生日新曲的記錄究竟是什麼"
+    },
+    {
+      "setup": "ly058",
+      "payoff": "ly068",
+      "what": "果子本身留下什麼時間線索"
+    },
+    {
+      "setup": "ly062",
+      "payoff": "ly065",
+      "what": "畫圖能否替果子送出香味"
+    },
+    {
+      "setup": "ly067",
+      "payoff": "ly068",
+      "what": "離枝後最先變的是不是味道"
+    },
+    {
+      "setup": "ly073",
+      "payoff": "ly074",
+      "what": "白居易的日數能否倒算騎傳速度"
+    },
+    {
+      "setup": "ly084",
+      "payoff": "ly093",
+      "what": "文獻究竟能留下什麼路線答案"
+    },
+    {
+      "setup": "ly088",
+      "payoff": "ly091",
+      "what": "白居易的巴峽能否補出貴妃果的起點"
+    },
+    {
+      "setup": "ly092",
+      "payoff": "ly093",
+      "what": "地圖實線應該如何處理"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "一騎紅塵：楊貴妃的荔枝從哪裡來？｜奇聞檔案局",
+    "description": "杜牧〈過華清宮絕句三首〉用「一騎紅塵妃子笑」留下楊貴妃和荔枝的名場面。《新唐書·楊貴妃傳》記「置騎傳送」「走數千里」「味未變已至京師」；〈禮樂志〉另記貴妃生日演奏新曲、南方進荔枝，因而命名〈荔枝香〉。白居易〈荔枝圖序〉及《舊唐書·白居易傳》引文則記巴峽荔枝離枝後色、香、味依次變化。這些文字沒有指定貴妃那批荔枝的果園、逐站路線、運送日數或保鮮辦法；詩句和植物描寫也不能補成簽收紀錄。\n\n本集畫面為 AI 卡通插圖，只輔助理解，不是歷史現場重建。來源採固定數位轉錄版，查核日期 2026-10-19。",
+    "tags": [
+      "楊貴妃",
+      "唐玄宗",
+      "荔枝",
+      "一騎紅塵",
+      "杜牧",
+      "白居易",
+      "新唐書",
+      "舊唐書",
+      "歷史故事",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**哪裡來？**",
+      "tag": "歷史名場面",
+      "sub": "楊貴妃的荔枝",
+      "shot": "ly005"
+    }
+  },
+  "sources": [
+    {
+      "title": "杜牧《樊川文集》〈過華清宮絕句三首〉（固定數位轉錄）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E9%9B%86%E8%97%8F/%E5%9B%9B%E5%BA%93%E5%88%AB%E9%9B%86/%E6%A8%8A%E5%B7%9D%E6%96%87%E9%9B%86.txt#L257-L263",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《新唐書·楊貴妃傳》（固定數位轉錄）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E6%96%B0%E5%94%90%E4%B9%A6.txt#L10099-L10104",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《新唐書·禮樂志》（固定數位轉錄）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E6%96%B0%E5%94%90%E4%B9%A6.txt#L1015",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《新唐書·地理志·廣州》（固定數位轉錄）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E6%96%B0%E5%94%90%E4%B9%A6.txt#L3562",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《新唐書·地理志·戎州》（固定數位轉錄）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E6%96%B0%E5%94%90%E4%B9%A6.txt#L3533",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "白居易《白氏長慶集》〈荔枝圖序〉（固定數位轉錄）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E9%9B%86%E8%97%8F/%E5%9B%9B%E5%BA%93%E5%88%AB%E9%9B%86/%E7%99%BD%E6%B0%8F%E9%95%BF%E5%BA%86%E9%9B%86.txt#L6047-L6048",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《舊唐書·白居易傳》（固定數位轉錄）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E6%97%A7%E5%94%90%E4%B9%A6.txt#L14198",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "ly001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a hilltop timber palace gate in the Tang period, one gate keeper in a plain robe pushing open a plain timber gate, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly001",
+          "text": "華清宮的門打開了",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ],
+      "chapter": "華清宮的門打開了"
+    },
+    {
+      "id": "ly002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a packed-earth road near low hills, one poet in a wrapped tunic at a city wall looking toward distant hilltop palace, mild grey sky light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly002",
+          "text": "杜牧的詩，從長安回望華清宮的山頭。"
+        }
+      ]
+    },
+    {
+      "id": "ly003",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a hilltop timber palace gate, one gate keeper in simple cloth garments opening a second hilltop gate, cloud-filtered light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly003",
+          "text": "他寫宮門一座接一座打開，山路上揚起紅塵。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a hilltop timber palace gate, one mounted courier in a loose-sleeved coat arriving at a timber palace gate, gentle side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly004",
+          "text": "一匹馬衝上來，詩裡的貴妃笑了。"
+        }
+      ]
+    },
+    {
+      "id": "ly005",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a packed-earth road near low hills, one courier in a plain robe holding a small covered fruit basket, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly005",
+          "text": "杜牧把她為什麼笑，留到那匹馬快進宮時才說。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly006",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop in the Tang period, one copyist in a wrapped tunic writing on a blank long scroll, mild lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly006",
+          "text": "另一頁史書給這匹馬一個驚人的距離；起點會在哪裡？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a timber music hall, one musician in simple cloth garments holding a blank song scroll, diffuse lattice light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly007",
+          "text": "長生殿裡，一首新曲奏完，曲名的位置還空著。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly008",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in a loose-sleeved coat holding a freshly picked lychee beside a branch, gentle side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly008",
+          "text": "巴峽一顆荔枝剛離開枝頭；最先變的會是什麼？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly009",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in a plain robe opening two blank bound books, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly009",
+          "text": "這些時刻能否找到同一批貨的記號，連成一條送果路？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a packed-earth road near low hills, one poet in a wrapped tunic shading his eyes on a city terrace, mild grey sky light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly010",
+          "text": "詩的第一句先讓人站在長安，遠望華清宮。"
+        }
+      ],
+      "chapter": "杜牧揭開籃中的果子"
+    },
+    {
+      "id": "ly011",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room in the Tang period, one poet in simple cloth garments pointing toward distant layered hills, diffuse lattice light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly011",
+          "text": "視線先到像錦繡堆起的山，再到山頂的宮門。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly012",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one poet in a loose-sleeved coat studying an empty travel scroll, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly012",
+          "text": "他沒帶我們看果園，也沒帶我們看一段段驛路。"
+        }
+      ]
+    },
+    {
+      "id": "ly013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a hilltop timber palace gate, one gate keeper in a plain robe gripping a wooden latch, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly013",
+          "text": "詩把鏡頭停在宮門開啟的一刻。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly014",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a packed-earth road near low hills, one mounted courier in a wrapped tunic riding toward an open gate, mild grey sky light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly014",
+          "text": "有人靠近，門便接連打開；下一幕才是紅塵中的騎者。"
+        }
+      ]
+    },
+    {
+      "id": "ly015",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one poet in simple cloth garments covering a fruit sketch on his writing desk, diffuse lattice light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly015",
+          "text": "詩到最後才說答案：馬帶來的是荔枝。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a packed-earth road near low hills in the Tang period, one passerby in a loose-sleeved coat facing a distant mounted courier, gentle side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly016",
+          "text": "「無人知是荔枝來」，說的是詩裡看熱鬧的人。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly017",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in a plain robe closing a blank tally book, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly017",
+          "text": "不能拿這四個字，當全城沒人知道貨物的統計。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly018",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a packed-earth road near low hills, one mounted courier in a wrapped tunic stopping beside a plain hitching post, mild grey sky light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly018",
+          "text": "那「一騎」呢？是一路只有一匹馬嗎？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly019",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a packed-earth road near low hills, one courier in simple cloth garments handing a small covered basket toward an off-frame hand, cloud-filtered light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly019",
+          "text": "如果真只靠同一匹馬，後來史書為何要寫「騎傳」？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly020",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one poet in a loose-sleeved coat turning a page in a small book, gentle side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly020",
+          "text": "先別替這匹馬畫線；詩的第二首還把鏡頭轉開。"
+        }
+      ]
+    },
+    {
+      "id": "ly021",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop in the Tang period, one poet in a plain robe writing beside a blank music scroll, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly021",
+          "text": "緊接的兩首詩，視線離開荔枝，轉向宮裡聽見的邊地消息。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a timber music hall, one poet in a wrapped tunic looking toward a distant palace music hall, mild lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly022",
+          "text": "其中一首把漁陽探使與《霓裳》樂聲並放；這不是送果里程表。"
+        }
+      ]
+    },
+    {
+      "id": "ly023",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one poet in simple cloth garments holding three blank poem sheets together, diffuse lattice light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly023",
+          "text": "杜牧拿這一騎，刺的是宮廷看見奇珍卻忽略別的警訊。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly024",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in a loose-sleeved coat opening a bound history book, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly024",
+          "text": "當荔枝成了諷刺的轉折，哪份文字還能談送達方式？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly025",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in a plain robe reading an old bound history volume, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly025",
+          "text": "後來編成的《新唐書》，在楊貴妃傳裡把果子接了下去。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ],
+      "chapter": "史書給了騎傳"
+    },
+    {
+      "id": "ly026",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room in the Tang period, one palace clerk in a wrapped tunic receiving a small covered offering, mild lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly026",
+          "text": "它先寫四方競相獻上奇珍，宮廷的需求驚動各地。"
+        }
+      ]
+    },
+    {
+      "id": "ly027",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one palace clerk in simple cloth garments placing two blank name slips on a desk, diffuse lattice light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly027",
+          "text": "接著寫有進獻得賞的地方官，名字在段落裡。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly028",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in a loose-sleeved coat moving two name slips away from a fruit basket, gentle side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly028",
+          "text": "這段談的是爭獻與賞賜；沒說那兩人送的就是這批荔枝。"
+        }
+      ]
+    },
+    {
+      "id": "ly029",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in a plain robe turning one page to a fruit drawing, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly029",
+          "text": "真正寫到荔枝的，是後面那一句。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly030",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one palace attendant in a wrapped tunic carrying a small lychee basket indoors, mild lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly030",
+          "text": "「妃嗜荔支，必欲生致之。」她喜歡荔枝，要它鮮活送到。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a packed-earth road near low hills in the Tang period, one courier in simple cloth garments receiving a covered basket from an off-frame hand, cloud-filtered light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly031",
+          "text": "史書隨即寫「乃置騎傳送」。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly032",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a packed-earth road near low hills, one courier in a loose-sleeved coat giving a small basket to an off-frame hand at a post, gentle side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly032",
+          "text": "這裡至少有騎馬傳送的安排，不能只剩詩裡一匹馬。"
+        }
+      ]
+    },
+    {
+      "id": "ly033",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one clerk in a plain robe staring at an empty route ledger, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly033",
+          "text": "可是「置」字後面沒有驛站名單；下一個路程詞又能怎麼量？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly034",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in a wrapped tunic tracing a long unmarked line on a blank scroll, mild lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly034",
+          "text": "下一個數字看起來很大：「走數千里」。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly035",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one clerk in simple cloth garments holding a scroll with no marked milestones, diffuse lattice light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly035",
+          "text": "它把路寫得很遠，卻沒有寫起點和終點的里程表。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly036",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop in the Tang period, one scribe in a loose-sleeved coat setting down a counting frame beside a blank map, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly036",
+          "text": "路有多遠，和跑了幾天是兩個問題；史書沒寫後一個數字。"
+        }
+      ]
+    },
+    {
+      "id": "ly037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one palace attendant in a plain robe inspecting lychees in a small basket, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly037",
+          "text": "史書最後落在結果：「味未變已至京師」。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly038",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in a wrapped tunic comparing a palace sketch with a city sketch, mild lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly038",
+          "text": "它說抵達時味道還沒變；可它說的「京師」，是詩裡哪道宮門嗎？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly039",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in simple cloth garments placing two blank location cards side by side, diffuse lattice light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly039",
+          "text": "傳記說京師，沒有描寫詩裡那道宮門外的最後一刻。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ],
+      "chapter": "騎者抵京，上一站仍不見"
+    },
+    {
+      "id": "ly040",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one clerk in a loose-sleeved coat looking at an unsigned blank receipt, gentle side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly040",
+          "text": "要說杜牧寫的正是這次騎傳，至少得先核對一次抵達日期。"
+        }
+      ]
+    },
+    {
+      "id": "ly041",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room in the Tang period, one reader in a plain robe leaving a blank space between two location cards, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly041",
+          "text": "詩沒記日子，傳記也沒有；誰能核定兩段說的是同一籃？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly042",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in a wrapped tunic moving a single horse figurine away from a route scroll, mild lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly042",
+          "text": "還可以並讀它們，卻不能把它們黏成一張到站簽收單。"
+        }
+      ]
+    },
+    {
+      "id": "ly043",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in simple cloth garments pointing at three blank boxes on a map, diffuse lattice light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly043",
+          "text": "而荔枝究竟在哪一棵樹摘下，這句一樣沒有寫。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly044",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in a loose-sleeved coat inspecting an ordinary uncovered lychee branch, gentle side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly044",
+          "text": "採摘、裝箱或存放辦法，也都沒留下。"
+        }
+      ]
+    },
+    {
+      "id": "ly045",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a timber music hall, one musician in a plain robe lifting a plain instrument inside a palace hall, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly045",
+          "text": "但《新唐書》另一篇，偏偏提到貴妃的一場生日宴。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table in the Tang period, one scholar in a wrapped tunic pointing south on an otherwise blank map, mild lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly046",
+          "text": "生日，聽上去像能查日期；那篇到底寫了什麼？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly047",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a timber music hall, one musician in simple cloth garments preparing a small instrument in a hilltop hall, diffuse lattice light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly047",
+          "text": "《新唐書》禮樂志說，玄宗在驪山時，為貴妃生日安排奏樂。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ],
+      "chapter": "荔枝替新曲取了名"
+    },
+    {
+      "id": "ly048",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a timber music hall, one musician in a loose-sleeved coat holding a blank song scroll, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly048",
+          "text": "一首新曲演奏時還沒有名字。"
+        }
+      ]
+    },
+    {
+      "id": "ly049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a timber music hall, one musician in a plain robe receiving a small basket as a blank song scroll rests nearby, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly049",
+          "text": "偏偏那時「南方進荔枝」，便把曲子叫作《荔枝香》。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly050",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a timber music hall, one musician in a wrapped tunic writing on a blank song scroll beside fruit, mild lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly050",
+          "text": "荔枝在這裡先成了樂曲的名字，再成了我們的一條方向線索。"
+        }
+      ]
+    },
+    {
+      "id": "ly051",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a packed-earth road near low hills in the Tang period, one scribe in simple cloth garments holding a broad blank map under soft light, cloud-filtered light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly051",
+          "text": "可是「南方」太大；哪一份文字能把它縮到某縣某園？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one clerk in a loose-sleeved coat reading a geography scroll beside a lychee drawing, gentle side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly052",
+          "text": "同一本書的地理志，廣州條有土貢「荔支」。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly053",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in a plain robe laying a fruit sketch beside a place card, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly053",
+          "text": "它能證明編者把廣州與荔枝貢品寫在一起。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly054",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in a wrapped tunic separating two blank records on a desk, mild lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly054",
+          "text": "卻不能證明貴妃那一次，恰好領到廣州這批果。"
+        }
+      ]
+    },
+    {
+      "id": "ly055",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one clerk in simple cloth garments opening another geography scroll near a fruit bowl, diffuse lattice light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly055",
+          "text": "再往書裡找，戎州條還列了「荔枝煎」；這會是另一張線索嗎？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly056",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room in the Tang period, one reader in a loose-sleeved coat setting aside a small preserved fruit jar, gentle side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly056",
+          "text": "那是地理志的貢品名，字面上還不是鮮荔枝簽收單。"
+        }
+      ]
+    },
+    {
+      "id": "ly057",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in a plain robe setting three blank place cards around a basket, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly057",
+          "text": "只靠地理志裡哪裡能產、哪裡能貢，就指定宮裡那一籃來源，仍缺證據。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in a wrapped tunic holding two unconnected blank scroll strips, mild lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly058",
+          "text": "生日新曲和騎傳，沒說是同一趟進果；那顆果子自己能說什麼？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly059",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in simple cloth garments holding a small lychee beside a writing table, diffuse lattice light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly059",
+          "text": "下一位真的把果子握在眼前的人，出現在另一個年代。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly060",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a lychee grove near low hills, one elderly scholar in a loose-sleeved coat studying a lychee tree beside low hills, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly060",
+          "text": "白居易任南賓地方官時，寫了一篇《荔枝圖序》。"
+        }
+      ],
+      "chapter": "白居易把果子畫下來"
+    },
+    {
+      "id": "ly061",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a lychee grove near low hills in the Tang period, one elderly scholar in a plain robe pointing to a fruiting lychee branch, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly061",
+          "text": "開頭就說荔枝生在巴峽間，再描寫樹、葉、花、果。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly062",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one elderly scholar in a wrapped tunic holding a peeled lychee close to a blank page, mild lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly062",
+          "text": "他把紅殼白肉寫得很清楚，連汁液的甘酸也形容了；可圖能帶走香味嗎？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly063",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one elderly scholar in simple cloth garments tasting a peeled lychee at a desk, diffuse lattice light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly063",
+          "text": "白居易在文末說，這是寫給不識荔枝，或沒趕上鮮果頭幾日的人。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one elderly scholar in a loose-sleeved coat asking a painter to sketch a lychee branch, gentle side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly064",
+          "text": "於是他命人把荔枝畫下來，再把文字附上。"
+        }
+      ]
+    },
+    {
+      "id": "ly065",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one painter in a plain robe drawing a fruit branch on blank paper, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly065",
+          "text": "畫紙能過山過水，卻帶不走香味；果子離枝還有另一個問題。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly066",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop in the Tang period, one scribe in a wrapped tunic packing a fruit sketch into a paper sleeve, mild lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly066",
+          "text": "對沒趕上鮮果頭幾日的人，他還得說明時間會改變什麼。"
+        }
+      ]
+    },
+    {
+      "id": "ly067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in simple cloth garments setting a lychee beside its severed branch, diffuse lattice light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly067",
+          "text": "最先改變的，會是味道嗎？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly068",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in a loose-sleeved coat arranging three small lychees beside a blank chart, gentle side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly068",
+          "text": "「一日而色變，二日而香變，三日而味變。」",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly069",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in a plain robe looking at a withered lychee on a low desk, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly069",
+          "text": "再過四五日，他說色香味都失去了。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in a wrapped tunic closing his fruit sketch beside an old scroll, mild lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly070",
+          "text": "這不是他替玄宗時代做的物流實驗；他寫的是自己所認識的果子。"
+        }
+      ]
+    },
+    {
+      "id": "ly071",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room in the Tang period, one copyist in simple cloth garments transcribing from a lychee sketch, diffuse lattice light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly071",
+          "text": "《舊唐書》白居易傳後來把這段話引了進去。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly072",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in a loose-sleeved coat sealing a rolled fruit drawing for distant friends, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly072",
+          "text": "傳記也說他把木蓮、荔枝畫成圖，寄給朝中的親友。"
+        }
+      ]
+    },
+    {
+      "id": "ly073",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in a plain robe setting a fruit beside an unused counting frame, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly073",
+          "text": "它讓果子怕時間這件事更具體；能不能用它倒算騎者的速度？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly074",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in a wrapped tunic aligning two unmarked pebbles on a low table, mild lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly074",
+          "text": "把兩條時間線並排，問題立刻變成：它們從哪一刻開始計時？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ],
+      "chapter": "三日裡先變了顏色"
+    },
+    {
+      "id": "ly075",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in simple cloth garments examining a fruit without tasting it, diffuse lattice light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly075",
+          "text": "白居易從果子離開枝頭起算；這是他那條時間線的起點。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly076",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table in the Tang period, one scholar in a loose-sleeved coat comparing two separate unmarked baskets, gentle side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly076",
+          "text": "騎傳未必就在摘下那刻啟程；兩件事間隔多久，文字沒有說。"
+        }
+      ]
+    },
+    {
+      "id": "ly077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one palace attendant in a plain robe smelling a lychee after opening a basket, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly077",
+          "text": "還記得傳記寫抵京時「味未變」嗎？這是另一條時間線上的結果。",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly078",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in a wrapped tunic checking a picked fruit on his writing table, mild lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly078",
+          "text": "要把兩條線接起來，得有同一批貨的採摘、交付與抵京日。"
+        }
+      ]
+    },
+    {
+      "id": "ly079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in simple cloth garments holding two sealed scroll rolls apart, diffuse lattice light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly079",
+          "text": "手上的文字沒有共同的貨批標記；能先核定是同一籃嗎？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly080",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in a loose-sleeved coat setting two bound books apart on a desk, gentle side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly080",
+          "text": "不能；更何況白居易落筆時，楊貴妃的宮門早已成了過去。"
+        }
+      ]
+    },
+    {
+      "id": "ly081",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop in the Tang period, one scribe in a plain robe pushing aside an unused counting frame, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly081",
+          "text": "那道馬速算式於是停住：缺的時間，從來沒寫在這批貨旁邊。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly082",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in a wrapped tunic moving a Ba gorge place card away from a basket, mild lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly082",
+          "text": "他篇首寫的巴峽，會不會至少補出送果起點？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly083",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one elderly scholar in simple cloth garments drawing a lychee leaf at a low table, diffuse lattice light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly083",
+          "text": "他畫的是自己眼前的荔枝，沒有說從這裡送到宮廷。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly084",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in a loose-sleeved coat gathering several bound texts on a desk, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly084",
+          "text": "看懂了果子的那只鐘，送果路線的第一個座標又在哪裡？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in a plain robe placing a small pebble on a blank map, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly085",
+          "text": "一張空白地圖鋪在桌上，筆先在「京師」的位置落下一點。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ],
+      "chapter": "地圖上第一條線畫不下去"
+    },
+    {
+      "id": "ly086",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room in the Tang period, one reader in a wrapped tunic holding a pencil above an unmarked map, mild lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly086",
+          "text": "要從這個點畫出來路，還得知道同一批貨從哪裡出發。"
+        }
+      ]
+    },
+    {
+      "id": "ly087",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in simple cloth garments comparing two blank place cards beside an unmarked map, diffuse lattice light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly087",
+          "text": "回看廣州與巴峽兩個地名：沒有一個附著同一批貨的標記。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly088",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in a loose-sleeved coat aligning three rolled papers beside a map, gentle side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly088",
+          "text": "若有送果人、收件日與果園記號，才可能核對其中一個地名。"
+        }
+      ]
+    },
+    {
+      "id": "ly089",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in a plain robe pointing to an empty station ledger beside a map, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly089",
+          "text": "更別說哪一站接過籃子；沒有交接簿，筆能走到哪裡？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly090",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in a wrapped tunic stopping a pencil beside a blank geography scroll, mild lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly090",
+          "text": "筆往廣州方向試移，只能停在那張貢品清單的邊上。"
+        }
+      ]
+    },
+    {
+      "id": "ly091",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table in the Tang period, one scholar in simple cloth garments moving a gorge place card away from a fruit basket, diffuse lattice light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly091",
+          "text": "轉向巴峽，它只指著白居易的果樹，沒指著貴妃的貨籃。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly092",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in a loose-sleeved coat lifting a pencil off an unmarked map, gentle side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly092",
+          "text": "兩處都不能讓筆落下；那張地圖該留下哪一段？",
+          "emotion": "問句稍抬，句末停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ly093",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop, one scribe in a plain robe marking one dot on a mostly blank map, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly093",
+          "text": "圖上只留京師一點，「騎傳」寫成史書來源註記，線段空著。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly094",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden study with a low table, one scholar in a wrapped tunic touching three empty cells on a plain ledger, mild lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly094",
+          "text": "若找到同批貨的果園、日期和交接站，這頁才有可畫的線。"
+        }
+      ]
+    },
+    {
+      "id": "ly095",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a mudbrick archive room, one reader in simple cloth garments setting a pencil down beside an unmarked map, diffuse lattice light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly095",
+          "text": "現在若畫滿那條路，每一筆都會是我們加上去的。",
+          "emotion": "關鍵詞放慢，後半句自然落下"
+        }
+      ]
+    },
+    {
+      "id": "ly096",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet paper workshop in the Tang period, one scribe in a loose-sleeved coat inspecting a map beside four closed books, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ly096",
+          "text": "杜牧讓宮門一扇扇打開；送果的起點，卻仍關著。"
+        }
+      ]
+    },
+    {
+      "id": "ly097",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "騎傳的記載，還不是完整路線圖"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ly097",
+          "text": "想聽更多有來源的歷史故事，訂閱奇聞檔案局。"
+        }
+      ]
+    }
+  ]
+}
