@@ -15,10 +15,12 @@ scope:
   - apps/api/app/video_budget/service.py
   - apps/api/app/video_automation/ai.py
   - apps/api/app/video_automation/run_jobs.py
+  - apps/api/app/video_media/jobs.py
   - apps/api/migrations/versions/0134_a01_admission_fence.py
   - apps/api/tests/test_video_pilot_budget.py
   - apps/api/tests/test_video_automation_ai.py
   - apps/api/tests/test_video_stage_jobs.py
+  - apps/api/tests/test_video_media_jobs.py
   - apps/api/tests/test_migration_0134_a01_admission_fence.py
 ---
 
@@ -127,3 +129,13 @@ image and a reviewed 0133 successor without an additional migration. The
 separate Phase 2 migration and acquire/release feature still depend on #1510's
 0133 migration; this ticket cannot name that not-yet-merged task as a
 `depends_on` in a branch based on main because task validation would reject it.
+
+2026-10-19 media scope handoff: the owner authorized transferring only
+`video_media/jobs.py` and `test_video_media_jobs.py` from the #1510 budget
+ticket and #1556 media-cutover ticket. Their task-scope handoff commits are
+0dfd0b59e and 5bc1bf984; both original PRs remain draft/no-auto-merge with
+their code and other scopes untouched. The older ownerless MiniMax H3 ticket
+also lists these paths but has no active claim. This A01 task now claims only
+the narrow media-admission change in those two files, to close the queued-row
+race independently found in the combined Phase 1 / Phase 2 review. No merge,
+deployment, host action or paid work follows from the handoff.
