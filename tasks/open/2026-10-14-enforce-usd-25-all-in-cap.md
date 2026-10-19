@@ -21,7 +21,6 @@ scope:
   - apps/api/app/video_speech/gemini.py
   - apps/api/app/ai/jev.py
   - apps/api/app/video_speech/schemas.py
-  - apps/api/app/video_media/jobs.py
   - apps/api/app/video_media/admin_api.py
   - apps/api/app/video_media/judge.py
   - apps/api/app/video_media/locate.py
@@ -42,7 +41,6 @@ scope:
   - apps/api/tests/test_video_pilot_budget.py
   - apps/api/tests/test_video_automation_ai.py
   - apps/api/tests/test_video_automation_judge.py
-  - apps/api/tests/test_video_media_jobs.py
   - apps/api/tests/test_video_media_api.py
   - apps/api/tests/test_video_media_judge.py
   - apps/api/tests/test_video_media_locate.py
@@ -99,3 +97,11 @@ Run the focused API and video-tool tests plus type/lint checks for changed paths
 ### 2026-10-17 owner-authorized claim release
 
 Implementation in #1508 is merged. The owner authorized releasing this obsolete claim for independent A01 lexicon integration. This ticket remains open only pending archival; do not reimplement the merged work. No production action is authorized by this metadata change.
+
+### 2026-10-19 owner-authorized narrow media claim handoff
+
+The site owner authorized releasing only `apps/api/app/video_media/jobs.py` and
+`apps/api/tests/test_video_media_jobs.py` from this ticket's scope to the
+separate A01 admission fix. PR #1510 retains its code, other scope and pending
+review/production gates. This ticket-only change does not merge, deploy or
+start paid work.
