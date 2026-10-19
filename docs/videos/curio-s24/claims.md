@@ -1,6 +1,6 @@
 # S24 逐句來源與推論｜阿基米德金冠
 
-以下逐句對應 `video.json` 的 104 句旁白。`E` 是維特魯威《建築十書》英譯固定版，`L` 是同一作品拉丁固定版，`P` 是普魯塔克《馬塞勒斯傳》英譯固定版；詳見 [research.md](research.md)。`E` 與 `L` **不是兩名獨立見證人**。物理推論只解釋等重排水比較，不把文本外的實測數字或當場喊聲寫成已證事實。
+以下逐句對應 `video.json` 的 102 句旁白。`E` 是維特魯威《建築十書》英譯固定版，`L` 是同一作品拉丁固定版，`P` 是普魯塔克《馬塞勒斯傳》英譯固定版；詳見 [research.md](research.md)。`E` 與 `L` **不是兩名獨立見證人**。物理推論只解釋等重排水比較，不把文本外的實測數字或當場喊聲寫成已證事實。
 
 | ID | 旁白 | 依據與性質 |
 | --- | --- | --- |
@@ -48,11 +48,9 @@
 | `ac042` | 第一個下水的，是銀塊。 | 原文與排水體積推論：[E8037–8039](https://github.com/GITenberg/The-Ten-Books-on-Architecture_20239/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt#L8037-L8039) |
 | `ac043` | 銀塊沉下，水從邊緣滿出。 | 原文與排水體積推論：[E8037–8039](https://github.com/GITenberg/The-Ten-Books-on-Architecture_20239/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt#L8037-L8039) |
 | `ac044` | 那是銀塊占去位置，把水擠開。 | 原文與排水體積推論：[E8037–8039](https://github.com/GITenberg/The-Ten-Books-on-Architecture_20239/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt#L8037-L8039) |
-| `ac045` | 當銀塊整個沉入水中，溢出的體積就等於它在水下占的體積。 | 原文與排水體積推論：[E8037–8039](https://github.com/GITenberg/The-Ten-Books-on-Architecture_20239/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt#L8037-L8039) |
 | `ar202` | 銀塊要整個沒入水下；露在外面的那一截不曾占住水的位置，自然不能算進這一輪。 | 銀塊須浸入、排水對應浸沒體積：[E8037–8040](https://github.com/GITenberg/The-Ten-Books-on-Architecture_20239/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt#L8037-L8040) |
 | `ac046` | 流走的水，要怎樣量出來？ | 量器補水法：[E8040–8043](https://github.com/GITenberg/The-Ten-Books-on-Architecture_20239/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt#L8040-L8043) |
 | `ac047` | 銀塊取出後，他用一個定量量器補水，直到水重新到盆緣。 | 量器補水法：[E8040–8043](https://github.com/GITenberg/The-Ten-Books-on-Architecture_20239/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt#L8040-L8043) |
-| `ar203` | 銀塊取出後，水面才空出一截；量器補的是那截水位，並不是把銀塊拿去做第二次稱重。 | 取出後以量器補至盆緣：[E8040–8043](https://github.com/GITenberg/The-Ten-Books-on-Architecture_20239/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt#L8040-L8043) |
 | `ac048` | 補回多少，就知道先前少了多少。 | 量器補水法：[E8040–8043](https://github.com/GITenberg/The-Ten-Books-on-Architecture_20239/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt#L8040-L8043) |
 | `ac050` | 那份補回去的水，成了等重純銀的第一個體積參照。 | 量器補水法：[E8040–8043](https://github.com/GITenberg/The-Ten-Books-on-Architecture_20239/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt#L8040-L8043) |
 | `ac051` | 換純金塊入水之前，容器也得先回到同一條滿水線。 | 原文與等重體積推論：[E8045–8048](https://github.com/GITenberg/The-Ten-Books-on-Architecture_20239/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt#L8045-L8048) |

@@ -1,6 +1,6 @@
 # S24 企劃｜阿基米德真的喊過「找到了」嗎？
 
-**狀態：R2 無付費前期已修，等待另一位獨立讀者盲評與來源／畫面覆核。**
+**狀態：R3 無付費前期已修，等待另一位獨立讀者盲評與來源／畫面覆核。**
 
 ## 問題
 
@@ -25,4 +25,6 @@
 | 皇冠入水 | 皇冠比等重純金塊排水更多；文本把結果接到摻銀指控，但沒給可核的測量數字與精度。 |
 | 後來書頁留下希臘字 | 拉丁原文記兩聲 `ευρηκα`，方法段另用 `dicitur`；普魯塔克寫兩人的機械故事及滑輪拖船，沒有在所讀段落講金冠。片尾才收束現場喊聲的證據缺口。 |
 
-R1 盲讀的 `no_recap` 不過：片尾重說正片已講的結論；另有兩個維特魯威來源網址漏了 GitHub 倉庫尾碼，原連結回 404。R2 讓片尾回答正片末尾留下的「還缺哪一類證詞」，修正三份固定來源連結與分鏡，並補上滿水起點、浸沒、補水量器與拉丁文措辭的必要解釋。修訂版 `video.json` 有 104 句旁白、101 張卡通插圖鏡頭，估計全片 9 分 29 秒；**排除開場與片尾的正文約 8 分 28 秒**。`loops` 共 20 組，`format: drama`、`look: {"preset":"cute-mystery"}`，正文全部以插圖鏡頭承載，配樂用系列固定無人聲設定。`node tools/video/cli.mjs lint --slug curio-s24 --json` 為 0 errors／0 warnings。R2 `script.md` SHA-256 `91e6dd826faa20446e5e2a706848ca1ccf3d64f39bf692d0fd6e38a4bbdafc0a`；三份來源固定頁面已重開為 HTTP 200，音檔、插圖和配樂尚未付費製作，劇本仍須新讀者獨立盲評。固定來源及證據界線見 [research.md](research.md)，逐句依據見 [claims.md](claims.md)，修訂檢查見 [verify-2.md](verify-2.md)。
+R1 的片尾重述與兩個 404 來源網址已在 R2 修正。R2 新讀者 13 題中有 12 題「是」，仍指出 `ac045` 與 `ar202` 都說銀塊整件浸沒、`ac047` 與 `ar203` 都說取出銀塊後補水。R3 刪去重複的 `ac045`、`ar203` 兩景，保留浸沒條件與定量補水的各一次說明；留下的量杯插圖改為把水倒回盆緣。原 R2 失敗收據見 [narrative-r2-failed.json](narrative-r2-failed.json)，修訂檢查見 [verify-3.md](verify-3.md)。
+
+R3 `video.json` 有 102 句旁白、99 張卡通插圖鏡頭，估計全片 9 分 12 秒；**排除開場與片尾的正文約 8 分 12 秒**。`loops` 共 20 組，`format: drama`、`look: {"preset":"cute-mystery"}`，正文全部以插圖鏡頭承載，配樂用系列固定無人聲設定。`node tools/video/cli.mjs lint --slug curio-s24 --json` 為 0 errors／0 warnings。R3 `script.md` SHA-256 `232d24e94abccafa1501a3924f86bd3f4bacacab745a75e27c489637119dd185`；三份來源固定頁面可重開，音檔、插圖和配樂尚未付費製作，劇本仍須另一位讀者獨立盲評。固定來源及證據界線見 [research.md](research.md)，逐句依據見 [claims.md](claims.md)。
