@@ -8,7 +8,7 @@ to ``AI/備份/<series>/<episode>/``: {"state": "done", "folder": "奇聞檔案�
 "tier": "basic", "bytes": 535000000, "files": 14, "files_hash": "<sha256>", "at": "...",
 "checked_at": "...", "attempts": 0, "error": null, "missing": [], "contents": {...}}. ``state``
 is pending, done, failed, blocked_quota or partial; null means the worker never queued it.
-app/video_backup/status.py owns the transitions, and the worker's tidy keeps a video's files on
+app/video_backup/admin_status.py owns the transitions, and the worker's tidy keeps a video's files on
 the host until it reads done.
 
 The number skips 0134, which the story pilot's next migration has planned since 2026-10-19

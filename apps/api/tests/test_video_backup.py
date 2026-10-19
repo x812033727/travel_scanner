@@ -23,7 +23,9 @@ from app.auth.service import current_user
 from app.db import Base, get_session
 from app.models import AdminAuditLog, ProviderConfig, User, VideoProject, VideoToolToken
 from app.problems import AppError, app_error_handler
-from app.video_backup import admin_api, settings, status
+from app.video_backup import admin_api
+from app.video_backup import admin_settings as settings
+from app.video_backup import admin_status as status
 from app.video_backup.schemas import LockIn, ProbeAnswerIn, ReportIn, SettingsIn
 from app.video_backup.target import (
     PathInvalid,

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-15-video-backup-api
 title: Video backup settings and status in the API
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-festive-archimedes
 claimed_at: 2026-10-19T12:27:00Z
 created_at: 2026-10-15T02:13:53Z
-completed_at:
+completed_at: 2026-10-19T12:54:34Z
 branch: claude/festive-archimedes-9ntb36
 depends_on: []
 scope:
@@ -86,7 +86,7 @@ cd apps/web && npx vitest run app/api/video/automation/backup
   (e.g. `series/{slug}/episodes/{number}/done` at :989); a separate router in
   `video_backup` keeps this task out of that file.
 - Done 2026-10-19 (claude-festive-archimedes). Code in `apps/api/app/video_backup/`
-  (`target.py` pure rules, `settings.py` the card, `status.py` reports and summary,
+  (`target.py` pure rules, `admin_settings.py` the card, `admin_status.py` reports and summary (named admin_ so their Traditional Chinese errors are operator-only for tests/test_error_localization.py),
   `admin_api.py` routes), migration `0135_video_backup` (follows 0133; 0134 is the story
   pilot's planned number), and the web pass-throughs under
   `apps/web/app/api/video/automation/backup/` (the worker reaches the API only through web).

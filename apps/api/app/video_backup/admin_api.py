@@ -18,7 +18,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.auth.service import require_capability
 from app.db import get_session
 from app.models import User
-from app.video_backup import settings, status
+from app.video_backup import admin_settings as settings
+from app.video_backup import admin_status as status
 from app.video_backup.schemas import (
     BackupView,
     LockIn,

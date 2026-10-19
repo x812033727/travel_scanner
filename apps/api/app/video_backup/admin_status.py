@@ -18,7 +18,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import AdminAuditLog, VideoProject, VideoToolToken
 from app.problems import AppError
-from app.video_backup import settings as backup_settings
+from app.video_backup import admin_settings as backup_settings
+from app.video_backup.admin_settings import parse_time
 from app.video_backup.schemas import (
     BackupState,
     BackupView,
@@ -29,7 +30,6 @@ from app.video_backup.schemas import (
     WorkerProbe,
     WorkerVideo,
 )
-from app.video_backup.settings import parse_time
 from app.video_backup.target import (
     PathInvalid,
     Target,

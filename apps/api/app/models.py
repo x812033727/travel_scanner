@@ -2299,7 +2299,7 @@ class VideoProject(Timestamped, Base):
     )
     # What the worker last reported about this video's copy in the owner's Google Drive
     # (docs/videos/BACKUP.md; migration 0135): state, folder, tier, size, hash and what is
-    # missing. None until the worker first queues it; app/video_backup/status.py owns it.
+    # missing. None until the worker first queues it; app/video_backup/admin_status.py owns it.
     backup: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
 
 
