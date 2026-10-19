@@ -106,6 +106,21 @@
       "setup": "et075",
       "payoff": "et080",
       "what": "1913年鐵塔電台的實際通信紀錄"
+    },
+    {
+      "setup": "ea105",
+      "payoff": "et060",
+      "what": "艾菲爾把優雅與抗風曲線連起來"
+    },
+    {
+      "setup": "ea110",
+      "payoff": "ea111",
+      "what": "抗議信的鉚接鐵皮柱一語激怒艾菲爾"
+    },
+    {
+      "setup": "ea113",
+      "payoff": "et031",
+      "what": "艾菲爾認為一年前討論方案時才有機會納入抗議"
     }
   ],
   "youtube": {
@@ -291,6 +306,21 @@
       "chapter": "藝術家把二十年塔影寫進抗議信"
     },
     {
+      "id": "eiffel-add101",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 petition salon, one writer studying a blank letter beside a city sketch, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ea101",
+          "text": "在他們筆下，阿爾方多次保護巴黎，這次也該替城市說話。"
+        }
+      ]
+    },
+    {
       "id": "eiffel-010",
       "template": "shot",
       "data": {
@@ -353,6 +383,21 @@
           "id": "et014",
           "text": "在他們眼中，鐵製高塔一進城，這幅畫就會走樣。",
           "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-add102",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 petition salon, one painter holding a city sketch beside a plain machine silhouette, diffuse window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ea102",
+          "text": "他們還怪市府迎合「造機器的人」的商業想像，任巴黎受損。"
         }
       ]
     },
@@ -577,7 +622,7 @@
       "id": "eiffel-029",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in an 1887 interview room, one engineer raising his eyebrows over a blank list of signatures",
+        "prompt": "Close shot in an 1887 Paris office, one engineer raising his eyebrows over a blank list of signatures",
         "camera": "pan right",
         "visual": "still"
       },
@@ -592,14 +637,30 @@
       "id": "eiffel-030",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an 1887 interview room, one engineer looking over a work schedule",
+        "prompt": "Wide shot in an 1887 Paris office, one engineer looking over a work schedule",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "et030",
-          "text": "他說加尼耶也在塔的委員會，自己無法理解。",
+          "text": "他說加尼耶也在塔的委員會，會裡做過的事都曾得到他的同意。",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 Paris office, one engineer pointing toward a blank calendar from the previous year",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ea113",
+          "text": "那他認為，抗議到底晚在哪一步？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         },
         {
@@ -612,7 +673,7 @@
       "id": "eiffel-032",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in an 1887 interview room, one engineer examining an iron order sheet",
+        "prompt": "Close shot in an 1887 Paris office, one engineer examining an iron order sheet",
         "camera": "pull out",
         "visual": "still"
       },
@@ -627,7 +688,7 @@
       "id": "eiffel-033",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an 1887 interview room, one builder studying a blank construction schedule",
+        "prompt": "Wide shot in an 1887 Paris office, one builder studying a blank construction schedule",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -643,7 +704,7 @@
       "id": "eiffel-034",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in an 1887 interview room, one engineer pointing toward a future fairground",
+        "prompt": "Medium shot in an 1887 Paris office, one engineer pointing toward a future fairground",
         "camera": "drift",
         "visual": "still"
       },
@@ -658,7 +719,7 @@
       "id": "eiffel-035",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in an 1887 interview room, one reporter weighing two visitor sketches",
+        "prompt": "Close shot in an 1887 Paris office, one reporter weighing two visitor sketches",
         "camera": "pan right",
         "visual": "still"
       },
@@ -673,7 +734,7 @@
       "id": "eiffel-036",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an 1887 interview room, one reporter underlining a question in notebook",
+        "prompt": "Wide shot in an 1887 Paris office, one reporter underlining a question in notebook",
         "camera": "push in",
         "visual": "still"
       },
@@ -689,7 +750,7 @@
       "id": "eiffel-037",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in an 1887 interview room, one reporter turning to a blank agreement folder",
+        "prompt": "Medium shot in an 1887 Paris office, one reporter turning to a blank agreement folder",
         "camera": "pan left",
         "visual": "still"
       },
@@ -705,7 +766,7 @@
       "id": "eiffel-038",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in an 1887 meeting room, one engineer laying out construction accounts",
+        "prompt": "Close shot in an 1887 meeting office, one engineer laying out construction accounts",
         "camera": "pull out",
         "visual": "still"
       },
@@ -726,7 +787,7 @@
       "id": "eiffel-040",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in an 1887 meeting room, one clerk sliding a plain grant folder forward",
+        "prompt": "Medium shot in an 1887 meeting office, one clerk sliding a plain grant folder forward",
         "camera": "drift",
         "visual": "still"
       },
@@ -742,7 +803,7 @@
       "id": "eiffel-041",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in an 1887 meeting room, one builder tracing a fairground map",
+        "prompt": "Close shot in an 1887 meeting office, one builder tracing a fairground map",
         "camera": "pan right",
         "visual": "still"
       },
@@ -757,7 +818,7 @@
       "id": "eiffel-042",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an 1887 meeting room, one builder tracing a future transfer on a blank timeline, soft window light",
+        "prompt": "Wide shot in an 1887 meeting office, one builder tracing a future transfer on a blank timeline, soft window light",
         "camera": "push in",
         "visual": "still"
       },
@@ -773,7 +834,7 @@
       "id": "eiffel-043",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in an 1887 meeting room, one official turning a twenty year calendar",
+        "prompt": "Medium shot in an 1887 meeting office, one official turning a twenty year calendar",
         "camera": "pan left",
         "visual": "still"
       },
@@ -788,7 +849,7 @@
       "id": "eiffel-044",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in an 1887 meeting room, one city official setting aside a blank decision paper",
+        "prompt": "Close shot in an 1887 Paris office, one engineer resting a finger on a blank calendar page",
         "camera": "pull out",
         "visual": "still"
       },
@@ -803,7 +864,7 @@
       "id": "eiffel-045",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an 1887 meeting room, one builder placing a blank operating rights folder beside a calendar, soft window light",
+        "prompt": "Wide shot in an 1887 meeting office, one builder placing a blank operating rights folder beside a calendar, soft window light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -839,7 +900,7 @@
       "id": "eiffel-048",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an 1887 meeting room, one typesetter stacking two columns of proof",
+        "prompt": "Wide shot in an 1887 meeting office, one typesetter stacking two columns of proof",
         "camera": "push in",
         "visual": "still"
       },
@@ -855,7 +916,7 @@
       "id": "eiffel-049",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in an 1887 meeting room, one researcher stopping a pencil above a blank verdict",
+        "prompt": "Medium shot in a present-day archive library, one researcher checking an 1887 newspaper clipping beside a blank question card, soft window light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -870,7 +931,7 @@
       "id": "eiffel-050",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in an 1887 interview room, one reporter turning a notebook page, soft window light",
+        "prompt": "Close shot in an 1887 Paris office, one reporter turning a notebook page, soft window light",
         "camera": "pull out",
         "visual": "still"
       },
@@ -885,7 +946,7 @@
       "id": "eiffel-051",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an 1887 interview room, one reporter studying an unfinished tower plan, soft window light",
+        "prompt": "Wide shot in an 1887 Paris office, one reporter studying an unfinished tower plan, soft window light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -901,7 +962,7 @@
       "id": "eiffel-052",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in an 1887 meeting room, one reporter turning back toward artists outside",
+        "prompt": "Medium shot in an 1887 meeting office, one reporter turning back toward artists outside",
         "camera": "drift",
         "visual": "still"
       },
@@ -917,7 +978,7 @@
       "id": "eiffel-053",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in an 1887 meeting room, one reporter pointing to a later calendar page",
+        "prompt": "Close shot in an 1887 meeting office, one reporter pointing to a later calendar page",
         "camera": "pan right",
         "visual": "still"
       },
@@ -982,6 +1043,21 @@
       ]
     },
     {
+      "id": "eiffel-add104",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 Paris office, one engineer studying a blank future tower sketch, mild window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ea104",
+          "text": "他甚至假設，塔建成後若很美，反對留塔的人或許會後悔太早出手。"
+        }
+      ]
+    },
+    {
       "id": "eiffel-058",
       "template": "shot",
       "data": {
@@ -993,6 +1069,22 @@
         {
           "id": "et058",
           "text": "他開始回應那根被形容成煙囪的鐵塔。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-add105",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 drafting studio, one engineer studying a graceful structural curve on a blank plan, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ea105",
+          "text": "他反問：工程師只管堅固，難道不管優雅嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
     },
@@ -1024,6 +1116,21 @@
           "id": "et060",
           "text": "計算出的線條，也可能成為美感的一部分。",
           "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-add106",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 drafting studio, one engineer looking up at a tall plain tower model, diffuse window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ea106",
+          "text": "艾菲爾還說，巨大的尺度本身也能讓人驚嘆。"
         }
       ]
     },
@@ -1062,7 +1169,7 @@
       "id": "eiffel-063",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an 1887 interview room, one engineer pointing to a blank sketch of Notre-Dame square",
+        "prompt": "Wide shot in an 1887 Paris office, one engineer pointing to a blank sketch of Notre-Dame square",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1095,6 +1202,21 @@
       ]
     },
     {
+      "id": "eiffel-add107",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1887 Paris office, one engineer pointing to a blank Arc de Triomphe and neighboring houses sketch, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ea107",
+          "text": "他又拿凱旋門說明：那座拱門很高，旁邊房子也不會像被壓扁。"
+        }
+      ]
+    },
+    {
       "id": "eiffel-066",
       "template": "shot",
       "data": {
@@ -1107,6 +1229,21 @@
           "id": "et066",
           "text": "兩邊都在爭論一座尚未建成的塔會如何被看見。",
           "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-add108",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an 1887 tower construction site, one engineer looking surprised by foundations rising above ground, overcast daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ea108",
+          "text": "艾菲爾坦白說，當眼前工程顯出真實規模，連他本人也吃了一驚。"
         }
       ]
     },
@@ -1174,10 +1311,86 @@
       ]
     },
     {
+      "id": "eiffel-074",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1887 instrument workshop, one metalworker inspecting a newly forged brace",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et074",
+          "text": "他還想用這座塔，展示工程本身的進步。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-add109",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 iron workshop, one metalworker checking a plain iron brace with calipers, soft indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ea109",
+          "text": "他說，近年的可靠計算和精準鐵工，才讓這種巨型工程成為可能。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-add110",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1887 Paris office, one engineer examining a blank newspaper clipping, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ea110",
+          "text": "可抗議信的哪句話，終於讓艾菲爾動了氣？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-add111",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 Paris office, one engineer frowning over a blank printed page, muted doorway light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ea111",
+          "text": "那句「可惡的螺栓鐵皮柱」惹怒了他。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-add112",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 Paris office, one engineer speaking calmly beside a blank petition page, diffuse window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ea112",
+          "text": "他敬重其中一些署名者，卻不肯讓他們替全法國下結論。"
+        }
+      ]
+    },
+    {
       "id": "eiffel-071",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in an 1887 instrument workshop, one scientist closing a proposal notebook",
+        "prompt": "Close shot in a present-day archive library, one reader comparing an 1887 newspaper clipping with an empty evidence note, soft desk lamp light",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1193,7 +1406,7 @@
       "id": "eiffel-072",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an 1887 instrument workshop, one archivist separating proposal from report folders",
+        "prompt": "Wide shot in a present-day archive library, one researcher separating a blank future-use sketch from an old newspaper clipping, soft window light",
         "camera": "push in",
         "visual": "still"
       },
@@ -1209,7 +1422,7 @@
       "id": "eiffel-073",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in an 1887 instrument workshop, one researcher separating two dated document folders",
+        "prompt": "Medium shot in a present-day archive library, one reader examining the 1887 interview clipping under a desk lamp, soft desk lamp light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1221,25 +1434,10 @@
       ]
     },
     {
-      "id": "eiffel-074",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot in an 1887 instrument workshop, one metalworker inspecting a newly forged brace",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "et074",
-          "text": "他還說，精確計算與鐵工技術，本身就值得展示。"
-        }
-      ]
-    },
-    {
       "id": "eiffel-075",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an 1887 instrument workshop, one editor setting petition beside instrument sketches",
+        "prompt": "Wide shot in a present-day archive library, one reader turning from an 1887 newspaper clipping toward a second blank dated page, soft window light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1411,7 +1609,7 @@
       "id": "eiffel-087",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a 1913 wireless telegraph station, one operator looking at two plain power gauges",
+        "prompt": "Wide shot in a 1913 newspaper office, one editor setting two blank station fact cards side by side, soft window light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1420,21 +1618,6 @@
           "id": "et087",
           "text": "巴黎電台用八十馬力，華盛頓約九十馬力。",
           "emotion": "關鍵詞放慢，句尾稍停"
-        }
-      ]
-    },
-    {
-      "id": "eiffel-088",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot in a 1913 wireless telegraph station, one cartographer drawing a shorter measuring arc",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "et088",
-          "text": "它還拿功率更大的外國電台，約四千公里的常態距離來對比。"
         }
       ]
     },
@@ -1506,25 +1689,10 @@
       ]
     },
     {
-      "id": "eiffel-094",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot in a 1913 wireless telegraph station, one astronomer checking a blank observing calendar",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "et094",
-          "text": "更大功率會有什麼成果，報紙也只是在推想。"
-        }
-      ]
-    },
-    {
       "id": "eiffel-095",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a present-day reading room, one archivist examining a 1913 newspaper clipping, soft desk lamp light",
+        "prompt": "Close shot in a present-day archive library, one archivist examining a 1913 newspaper clipping, soft desk lamp light",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1540,7 +1708,7 @@
       "id": "eiffel-096",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a present-day reading room, one archivist examining the same 1913 newspaper clipping, soft window light",
+        "prompt": "Wide shot in a present-day archive library, one archivist examining the same 1913 newspaper clipping, soft window light",
         "camera": "push in",
         "visual": "still"
       },
@@ -1556,14 +1724,14 @@
       "id": "eiffel-097",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a present-day reading room, one researcher holding a blank wireless report folder, soft window light",
+        "prompt": "Medium shot in a present-day archive library, one researcher placing the 1887 petition excerpt beside the 1913 wireless clipping, soft window light",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "et097",
-          "text": "這至少反駁了「完全無用」：塔確實在通信。"
+          "text": "剛剛那條與華盛頓通信的紀錄，至少回應了抗議信的「無用」。"
         }
       ]
     },
@@ -1571,7 +1739,7 @@
       "id": "eiffel-098",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a present-day reading room, one historian studying a closed agreement folder, soft desk lamp light",
+        "prompt": "Close shot in a present-day archive library, one historian pointing to a blank question card beside the 1913 newspaper clipping, soft desk lamp light",
         "camera": "pull out",
         "visual": "still"
       },

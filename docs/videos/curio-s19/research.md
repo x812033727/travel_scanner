@@ -1,6 +1,6 @@
 # S19 艾菲爾鐵塔：開稿前史料查核簿
 
-查核日：2026-10-19。**當代報紙支持的第四版劇本已寫，前三輪盲讀原判定均保留，第四版尚待獨立盲讀與劇本核定**。題庫卡的「1909 年差點拆掉」只當待驗證提問，不能直接當旁白結論。
+查核日：2026-10-19。**當代報紙支持的第五版劇本已寫，前四輪盲讀原判定均保留，第五版尚待獨立盲讀與劇本核定**。題庫卡的「1909 年差點拆掉」只當待驗證提問，不能直接當旁白結論。
 
 ## 目前找到的原始與官方文件入口
 
@@ -11,7 +11,7 @@
 | [鐵塔官方：無線電百年](https://www.toureiffel.paris/fr/actualites/histoire-et-culture/la-radio-fete-son-centieme-anniversaire) | 核對 1898 年杜克雷泰試驗、1903 年費里耶的軍用電報、1909 年設施、1921／1922 年廣播是否為不同事件。 | 同上：網址已找到，官方內文尚未讀到。 |
 | 1887 年 2 月《Le Temps》藝術家抗議書原版 | 核對發表日、署名、原話，以及信裡提「二十年」是否只是抗議者想像的期限。 | 尚未取得原版影像或可靠轉錄。 |
 | [《Le Rappel》第 6185 號，1887-02-15，抗議書及艾菲爾答覆](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L15) | **已讀當代報紙轉錄**（Project Gutenberg 77985；本地 SHA-256 `91d3e9397aca543f900c9babd37fd2489097677a3eb378f5944e5af7af14f9ec`）。抗議書在 L48–117，`L89–92` 說巴黎未來二十年會籠罩在塔影；報紙接著轉述《Le Temps》訪談，`L133–140` 艾菲爾說世博後巴黎市給他二十年經營權，期滿後市府可自行處置。這是**當時艾菲爾對協議的說明**，支持「經營權二十年」；仍不能取代第 11 條原文或證明 1909 年已有正式拆除令。 |
-| [《L'Illustration》第 3666 號，1913-05-31，巴黎至華盛頓無線電](https://github.com/orkeilius/gutenberg_fr_mirror/blob/35610f7d0cc21e2c5877c58628edb25c796f3bd1/files/3/8/8/4/38842/38842.txt#L1674) | **已讀當代報紙轉錄**（Project Gutenberg 38842；本地 SHA-256 `db280680282f567c9510a13b2fd83b576b0ab66dd8817d5cfca7bd7f06a7a22b`）。`L1676–1693` 稱費里耶向科學院報告，鐵塔無線電站已數次與華盛頓電台通訊；證明 1913 年在用，**不證明**首次使用年份或 1909 年保塔因果。 |
+| [《L'Illustration》第 3666 號，1913-05-31，巴黎至華盛頓無線電](https://github.com/orkeilius/gutenberg_fr_mirror/blob/35610f7d0cc21e2c5877c58628edb25c796f3bd1/files/3/8/8/4/38842/38842.txt#L1674) | **已讀當代報紙轉錄**（Project Gutenberg 38842；本地 SHA-256 `db280680282f567c9510a13b2fd83b576b0ab66dd8817d5cfca7bd7f06a7a22b`）。`L1676–1693` 稱費里耶的一份報告被呈交科學院，鐵塔無線電站已數次與華盛頓電台通訊；證明 1913 年在用，**不證明**首次使用年份或 1909 年保塔因果。 |
 | [法國國家檔案館：Ernest Roger 人物檔](https://github.com/ArchivesNationalesFR/Referentiels/blob/5116cb6957503d08581927a7f8a4d51064e5725e/agents/eac-cpf/FRAN_NP_053652.xml#L80) | 官方人物簡介稱 Roger 參與杜克雷泰在鐵塔的早期無線試驗，也與費里耶的軍用開發合作；**沒有給這些試驗的精確年份**，僅能獨立交叉確認人物與用途。 |
 
 ## 次級資料只用來定位待查問題
@@ -25,4 +25,4 @@
 
 ## 下一步
 
-第一版 `script.md` SHA-256 `319a09ace6f2face0fc40ebeda8c93cfe7b60deef241a747fd6b0ab3bbb1a339` 的來源隔離盲讀失敗，原判定存於 `narrative-round1.json`。第二版 `script.md` SHA-256 `89cc5a7e263f9d5e46fec26346d7fc28f5888bb1e3fbab0f60f1bc81ca193f48` 的獨立盲讀 12/13，僅未通過 `no_recap`，原判定存於 `narrative-round2.json`。第三版 `script.md` SHA-256 `c9200f5a1029359d57a7ec6cc292593476296b777a112daaa2e614ae13215fa5` 的獨立盲讀 11/13，未過 `chapters_link`、`no_recap`，原判定存於 `narrative-round3.json`。第四版窄修及原文位置詳見 `verify-3.md`；lint 0／0。下一步是**凍結第四版精確 SHA 交全新讀者獨立盲讀**，再做來源抽查和核准。另一路仍要取得第 11 條的可讀固定版，核對「所有權／使用權／拆除」的三種說法；取得 SETE 無線電史頁與市府決議，才能考慮 1898→1903→1909→1910 的年月表或「無線電因此阻止拆除」的因果說法。S19 目前**沒有**語音或付費插圖呼叫；媒體時段仍由根集協調。
+第一版 `script.md` SHA-256 `319a09ace6f2face0fc40ebeda8c93cfe7b60deef241a747fd6b0ab3bbb1a339` 的來源隔離盲讀失敗，原判定存於 `narrative-round1.json`。第二版 `script.md` SHA-256 `89cc5a7e263f9d5e46fec26346d7fc28f5888bb1e3fbab0f60f1bc81ca193f48` 的獨立盲讀 12/13，僅未通過 `no_recap`，原判定存於 `narrative-round2.json`。第三版 `script.md` SHA-256 `c9200f5a1029359d57a7ec6cc292593476296b777a112daaa2e614ae13215fa5` 的獨立盲讀 11/13，未過 `chapters_link`、`no_recap`，原判定存於 `narrative-round3.json`。第四版 `script.md` SHA-256 `6ad33ab1a66f6ca723bdef7cd34b9a2a4ba1cced295597ac3c5f90b063924e61` 的獨立盲讀 11/13，未過 `no_recap`、`no_detour`，原判定存於 `narrative-round4.json`。第五版補足正文 8 分鐘並逐項修正，詳見 `verify-4.md`；lint 0／0。下一步是**凍結第五版精確 SHA 交全新讀者獨立盲讀**，再做來源抽查和核准。另一路仍要取得第 11 條的可讀固定版，核對「所有權／使用權／拆除」的三種說法；取得 SETE 無線電史頁與市府決議，才能考慮 1898→1903→1909→1910 的年月表或「無線電因此阻止拆除」的因果說法。S19 目前**沒有**語音或付費插圖呼叫；媒體時段仍由根集協調。
