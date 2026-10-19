@@ -171,6 +171,22 @@ US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限�
    （`tools/video/media/ledger.mjs`）看這集花了多少。S01、S09、S18 每集 US$1.7–1.9，三集合計 US$5.32。
 5. 畫完 `review-push --slug <SLUG> --gate storyboard` 把分鏡卡推給站主看。
 
+**配樂與成片**
+
+1. `music --slug <SLUG>`（`--dry-run` 先看價，一首約 US$0.08）→ `render` → `clips`（全是靜圖加運鏡，不花錢，
+   但 `assemble` 一定要它的 manifest）→ `assemble`（一集約 15 分鐘，4 核心一次跑一集）→ `captions` → `qa`
+   → `review-push --gate final`。
+2. `render` 用 Playwright 開瀏覽器。容器預裝的 Chromium 版本可能比 repo 的 Playwright 舊，報「Executable doesn't
+   exist」時不要 `playwright install`：在暫存目錄建一個 `PLAYWRIGHT_BROWSERS_PATH`，把預裝的 headless shell
+   接成 Playwright 要的版本號資料夾（`chrome-headless-shell-linux64/chrome-headless-shell` 指到預裝的
+   `headless_shell`），再帶這個環境變數跑。
+3. `qa` 讀 `video.json` 旁邊的 `verify-<n>.md`：查核寫在 `topic-checks/` 的集數，要放一份 `verify-1.md` 把那份表抄過來。
+   卡片一個狀態超過 15 秒是 `pace` 失敗：把卡上第二句移到一張新插圖，不重唸；但旁白與分鏡的核准會失效，要站主再核准。
+4. `links` 在容器裡常是 403：github.com 被網路政策擋，loc.gov 的圖片頁和 doi.org 擋程式請求。瀏覽器打得開就不是壞連結，
+   回報給站主時寫清楚。
+5. 改了 `video.json` 的任何一景（連卡片的 `sub`），插圖清單就要重建：重跑 `keyframes`（全吃快取，0 張新圖），
+   分鏡核准也會失效。
+
 ## 交接
 
 做到一半要停，把狀態寫進看板的票：哪幾景的插圖過了、哪幾景卡在哪一題、花了多少、下一步。不要只寫

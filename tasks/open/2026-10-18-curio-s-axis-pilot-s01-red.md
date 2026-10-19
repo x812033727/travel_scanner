@@ -91,3 +91,9 @@ scope:
   （`2026-10-19-curio-keeps-the-brand-stories-hook` 狀態 review、#1577 已合併；`2026-10-14-curio-episodes-keep-the-series-look` #1500
   與 `2026-10-14-ai-and-tech-videos-tell-one` #1504 也已合併），沒有人還在改它；這次只在〈交接〉前加一節，跟 main 合併沒有衝突。S09 刀銘卡補「意思是：討取義元」，
   因為旁白為了唸對改成白話，跟卡上的原文不一樣。
+- 2026-10-19（同上，分支 `claude/curio-s-music`）：站主要配樂、不加鉤子；三集加 `music`（Lyria，三首共 US$0.24）。
+  分鏡站主在對話裡核准；成片三集都做完：S01 16557 格、S09 16621 格、S18 15425 格，-14 LUFS。品管 S09 11／11，
+  S01、S18 10／11，沒過的只有 `links`（容器擋 github.com、loc.gov 圖片頁與 doi.org 擋程式請求，瀏覽器打得開）。
+  S01「公燒其餘船引退」卡 15.7 秒超過上限，第二句移到新圖 `half-dead`（旁白沒重唸），站主再核准旁白與分鏡；
+  S09 因卡片 `sub` 改過重建插圖清單（0 張新圖），站主再核准分鏡。三集各加 `verify-1.md`（抄 topic-checks 的表）。
+  三集合計 US$5.57。成片已 `review-push --gate final`，等站主看；下一步是上架包與語言。
