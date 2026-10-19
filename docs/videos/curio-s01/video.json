@@ -1,0 +1,1591 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s01",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "從頭到尾只講一個故事：曹操從寫第一封信到寫第二封信。開場壓低放慢，四個預告句一句一停，停在結果之前；演義那一段講得像說書一樣熱鬧，講到「這是一部小說」時收住；史書原文（於是大疫、公燒其餘船引退、曹公敗於赤壁、孤燒船自退）一字一字唸清楚；點名開頭的句子（「還記得…」）語氣親近、略上揚；火攻那一段加快，曹操在泥路上大笑那一段帶一點好笑又後怕；「我們覺得」的句子像跟朋友說自己的看法；結尾乾脆，不拖。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "loops": [
+    {
+      "setup": "cb106",
+      "payoff": "cb512",
+      "what": "他說那把火是自己放的"
+    },
+    {
+      "setup": "cb108",
+      "payoff": "cb319",
+      "what": "北方軍營裡病倒的人"
+    },
+    {
+      "setup": "cb109",
+      "payoff": "cb409",
+      "what": "東吳老將的投降信"
+    },
+    {
+      "setup": "cb111",
+      "payoff": "cb428",
+      "what": "諸葛亮那幾天在做什麼"
+    },
+    {
+      "setup": "cb305",
+      "payoff": "cb605",
+      "what": "第一封信裡的八十萬"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "為什麼曹操說，赤壁的船是他自己燒的？｜奇聞檔案局",
+    "description": "西元二〇八年冬天，長江邊上，曹操的戰船一艘接著一艘、首尾相接。幾天之後，這些船燒成了一片灰；後來他寫信給孫權，說那把火是他自己放的。\n\n這一集從曹操戰前那封「八十萬水軍，會獵於吳」的信講起：周瑜替孫權算的那筆帳、開戰前就在曹營裡蔓延的疾病、黃蓋的假投降信與那天的東南風、魏蜀吳三本史書各自寫下的那一句，以及華容道上那條泥路，最後是曹操戰後那封信到底怎麼寫。我們最熟悉的連環計、苦肉計、借東風與華容道放曹，都是《三國演義》的情節；這一集把它們和史書寫的並排講。\n\n每個引文、年份與數字的出處列在下方參考資料；「我們覺得」的句子是本頻道的看法。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似。\n\n資料截至 2026-10-19",
+    "tags": [
+      "赤壁之戰",
+      "曹操",
+      "周瑜",
+      "黃蓋",
+      "諸葛亮",
+      "三國志",
+      "三國演義",
+      "借東風",
+      "歷史名場面",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "他自己\n**燒的**？",
+      "tag": "歷史名場面",
+      "sub": "二〇八年的檔案",
+      "shot": "letter-claim"
+    }
+  },
+  "assets": [],
+  "scenes": [
+    {
+      "id": "winter-river",
+      "chapter": "打輸的人說，火是他自己放的",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a broad grey river in winter under an overcast sky, one man in a padded robe standing alone at the rail of a large wooden warship, the far bank a low dark line, soft light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb101",
+          "text": "西元二〇八年冬天，長江邊上。",
+          "emotion": "沉穩開場，語速放慢"
+        }
+      ]
+    },
+    {
+      "id": "general-at-rail",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern middle-aged general with a short beard and a dark headcloth standing on a ship's deck in winter daylight, frowning as he looks across the water, a furled banner pole behind him, mild overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb102",
+          "text": "一個五十多歲的男人，站在船上看著對岸。"
+        }
+      ]
+    },
+    {
+      "id": "ships-in-a-row",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of many wooden warships moored close together along a river bank in mild daylight, one sailor walking along a gangplank between two hulls, the only other shapes are masts and water, overcast sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb103",
+          "text": "他的戰船一艘接著一艘，首尾相接。",
+          "emotion": "敘述，帶一點壓迫感"
+        }
+      ]
+    },
+    {
+      "id": "ashes-on-water",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a calm river at dawn after a fire, charred floating planks and a blackened mast stump on the water, one soldier standing on the muddy bank staring at them, pale soft light from a low sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb104",
+          "text": "幾天之後，這些船燒成了一片灰。",
+          "emotion": "放慢、壓低"
+        }
+      ]
+    },
+    {
+      "id": "letter-claim",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged general in a dark robe seated at a low writing table in a lamplit room at night, a faint sly smile on his face as he brushes a blank letter, an inkstone beside him, warm lamp light from the right",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb105",
+          "text": "奇怪的是，後來他寫信給對手，",
+          "emotion": "語氣上揚，帶一點不可思議"
+        },
+        {
+          "id": "cb106",
+          "text": "說那把火，是他自己放的。",
+          "emotion": "「自己放的」放慢"
+        }
+      ]
+    },
+    {
+      "id": "year-card",
+      "template": "big",
+      "data": {
+        "text": "二〇八年冬",
+        "kicker": "長江，赤壁",
+        "sub": "打輸的人寫信說：火是我放的"
+      },
+      "lines": [
+        {
+          "id": "cb107",
+          "text": "但這還不是最怪的。",
+          "emotion": "收住，再往前推"
+        }
+      ]
+    },
+    {
+      "id": "tease-sick-soldier",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young soldier in a quilted tunic sitting on a straw mat inside a canvas army tent in daytime, coughing into his sleeve with a miserable look, a spear leaning on the tent pole, dim overcast light through the open flap",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb108",
+          "text": "那年冬天，北方的軍營裡，開始有人一個接一個病倒。"
+        }
+      ]
+    },
+    {
+      "id": "tease-surrender-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a messenger's hands holding out a folded blank letter sealed with a cord across a ship's wooden rail, grey river behind, mild overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb109",
+          "text": "一位東吳的老將，寫了一封投降信，送到他手上。"
+        }
+      ]
+    },
+    {
+      "id": "tease-one-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a scholar in a plain robe kneeling at a low table in a quiet study in the afternoon, peering puzzled at one bamboo slip held up close to his eyes, a stack of blank bamboo slips beside him, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb110",
+          "text": "至於大家最熟悉的借東風，"
+        },
+        {
+          "id": "cb111",
+          "text": "翻遍這一仗的史書，諸葛亮那幾天在做什麼？",
+          "emotion": "問句，停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "the-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the same stern bearded general standing at night on a riverbank, turning back to look over his shoulder at a distant orange glow on the water, his face uneasy, moonlight from above",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb112",
+          "text": "赤壁那把火，到底是誰放的？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "storyteller",
+      "chapter": "曹操寫信說有八十萬，周瑜算出另一個數字",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old storyteller in a long gown sitting behind a small table in a teahouse in the evening, raising a wooden clapper with a big grin, a teapot beside him, warm lantern light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb201",
+          "text": "要問誰放的火，很多人會先想到小說《三國演義》。"
+        }
+      ]
+    },
+    {
+      "id": "novelist-at-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a writer in a Ming-era robe and soft cap sitting at a desk by lamplight at night, grinning as he dips his brush, a tall stack of blank paper beside him, warm lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb202",
+          "text": "可是它寫成的時候，離赤壁已經一千多年。"
+        }
+      ]
+    },
+    {
+      "id": "chen-shou",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Jin-era historian in a dark robe and black cap kneeling at a low table piled with bamboo slips in the morning, writing with a steady, serious face, soft light from a paper window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb301",
+          "text": "離赤壁近得多的，是幾十年後寫成的史書，《三國志》。"
+        }
+      ]
+    },
+    {
+      "id": "pei-adds-notes",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a scholar's hand slipping a narrow strip of paper between two bamboo slips in an open bundle on a table, a brush resting beside it, soft window light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb302",
+          "text": "後來替它加注的人，又收進了好幾本古書的紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "jingzhou-yields",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young nobleman in a pale robe kneeling on the steps of a city gate in daytime, holding up a seal box with both hands and bowing his head, the gate doors open behind him, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb304",
+          "text": "這些紀錄寫，那一年，曹操剛拿下荊州，劉表的兒子不戰而降。"
+        }
+      ]
+    },
+    {
+      "id": "liu-bei-flees",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a weary middle-aged lord with long earlobes sitting on a rock by a road at midday, head in his hands, a tired horse behind him, overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb326",
+          "text": "劉備被曹操的騎兵追上，一路逃到了夏口。"
+        }
+      ]
+    },
+    {
+      "id": "zhuge-arrives",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young scholar in a plain grey robe holding a feather fan, standing at the bow of a small river boat in daytime, his face calm and resolute, misty river behind him, overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb309",
+          "text": "他派了一個年輕人，到東吳求援。"
+        }
+      ]
+    },
+    {
+      "id": "zhuge-before-ruler",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the young scholar in a grey robe kneeling before a seated young ruler with a reddish beard in a hall in the afternoon, gesturing with his feather fan as he speaks earnestly, mild light from high windows",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb310",
+          "text": "他叫諸葛亮，他勸孫權，跟劉備聯手。"
+        }
+      ]
+    },
+    {
+      "id": "first-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the stern bearded general in a dark robe sitting at a writing table in a large hall in daytime, smugly blowing on a freshly brushed blank letter, an official seal box beside him, mild light from the doorway",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb303",
+          "text": "這時候，曹操也寫了一封信給孫權。"
+        }
+      ]
+    },
+    {
+      "id": "reading-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young ruler with a reddish beard in a fine robe sitting on a dais in a hall in late morning, reading a letter with raised eyebrows, his free hand gripping the armrest, mild light from high windows",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb305",
+          "text": "信裡說，他帶著八十萬水軍，要跟將軍「會獵於吳」。",
+          "emotion": "「八十萬」放慢"
+        }
+      ]
+    },
+    {
+      "id": "hunting-joke",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hunter in a fur cap crouching in a reed marsh in mild daylight, drawing a bow and grinning, the only shapes are reeds and a flat sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb306",
+          "text": "會獵，就是一起打獵。"
+        },
+        {
+          "id": "cb307",
+          "text": "獵物是誰，不用說。",
+          "emotion": "冷冷地停一拍"
+        }
+      ]
+    },
+    {
+      "id": "court-urges-surrender",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly minister in a tall cap standing in a palace hall in daytime, bowing low with his hands clasped and a worried face, a row of pillars behind him, mild light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb308",
+          "text": "東吳的朝堂上，很多人勸孫權投降。"
+        }
+      ]
+    },
+    {
+      "id": "lu-su-private",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm middle-aged official in a dark robe leaning close to speak quietly in a palace corridor in the morning, one hand raised beside his mouth, his eyes earnest, pillars behind him, mild light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb323",
+          "text": "魯肅私下跟孫權說：我們這些人都可以投降，只有你不行。"
+        }
+      ]
+    },
+    {
+      "id": "lu-su-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the calm middle-aged official's face in a dim palace corridor, eyebrows raised in a frank, pleading look, a lantern glowing behind him",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb324",
+          "text": "我們投降，還有官做；你投降，能去哪裡？",
+          "emotion": "語氣懇切"
+        }
+      ]
+    },
+    {
+      "id": "young-commander-objects",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a handsome young commander in a white cloak standing in a palace hall, shaking his head firmly with one hand raised, a lacquered screen behind him, mild light from the side",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb311",
+          "text": "東吳自己的將領裡，也有一個三十出頭的人反對投降。"
+        },
+        {
+          "id": "cb312",
+          "text": "他叫周瑜。"
+        }
+      ]
+    },
+    {
+      "id": "desk-cut",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the young ruler with a reddish beard standing in a hall in daytime, holding a drawn sword over a low wooden desk with a corner freshly cut off, his face fierce, mild light from high windows",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb325",
+          "text": "孫權拔刀砍下桌角：再有人說要投降，就跟這張桌子一樣。",
+          "emotion": "語氣狠一點"
+        }
+      ]
+    },
+    {
+      "id": "night-reckoning",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the young commander in a white cloak kneeling at a low table at night, moving beads on a wooden abacus with a confident look, a single lamp beside him, warm lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb313",
+          "text": "那天晚上，周瑜又單獨去見孫權，替他算了一筆帳。"
+        }
+      ]
+    },
+    {
+      "id": "count-compare",
+      "template": "compare",
+      "data": {
+        "title": "八十萬，是誰算的",
+        "left": {
+          "heading": "曹操的信",
+          "points": [
+            "水軍八十萬"
+          ]
+        },
+        "right": {
+          "heading": "周瑜的估計",
+          "points": [
+            "北方兵不過十五六萬",
+            "劉表舊部最多七八萬"
+          ]
+        },
+        "source": "《三國志》裴注引《江表傳》（待查核）"
+      },
+      "lines": [
+        {
+          "id": "cb314",
+          "text": "北方來的兵，不過十五六萬，而且走了很久，已經累了。",
+          "emotion": "數字放慢",
+          "reveal": 1
+        },
+        {
+          "id": "cb315",
+          "text": "剛收編的劉表舊部，最多七八萬，心裡還在搖擺。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "tired-marchers",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long dusty road in late autumn under a pale sky, one weary foot soldier leaning on his spear with drooping shoulders, the only shapes are bare trees and a hill",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb316",
+          "text": "加起來，離八十萬還差得遠。"
+        }
+      ]
+    },
+    {
+      "id": "ask-for-fifty",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the young commander in a white cloak standing before a seated ruler in a hall at night, holding up one open hand with five fingers spread, his expression calm, lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb317",
+          "text": "周瑜說，給他五萬精兵，就擋得住。"
+        }
+      ]
+    },
+    {
+      "id": "ruler-pats-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the young ruler with a reddish beard standing in a hall at night, one hand raised in a firm promise and a determined smile, a lamp on a stand beside him, warm lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb318",
+          "text": "孫權給了他三萬，跟劉備的人馬一起出發。"
+        }
+      ]
+    },
+    {
+      "id": "coughing-camp",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a northern army camp on a flat riverbank in mild daylight, rows of plain canvas tents, one soldier carrying a water bucket and coughing, overcast sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb319",
+          "text": "還記得開頭那些病倒的人嗎？",
+          "emotion": "語氣親近，略上揚"
+        },
+        {
+          "id": "cb320",
+          "text": "史書寫，兩軍還沒交手，曹軍就已經有人生病了。"
+        }
+      ]
+    },
+    {
+      "id": "first-clash-retreat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a northern officer at the stern of a warship at midday, waving his arm to signal a retreat with an alarmed face, the river and a distant shore behind him, overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb321",
+          "text": "第一次交手，曹軍就退了，把船退到長江北岸停好。"
+        }
+      ]
+    },
+    {
+      "id": "dense-moorings",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a southern scout crouching in tall reeds on the opposite bank in late afternoon, peering across the river at a crowded line of ships with a sudden bright look, soft light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb322",
+          "text": "對岸有人看了一眼，就有了一個主意。",
+          "emotion": "收著，不講破"
+        }
+      ]
+    },
+    {
+      "id": "old-general-watching",
+      "chapter": "黃蓋送出假投降信，那天颳起東南風",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey-bearded old general in armour standing on the south bank of a wide river in daytime, shading his eyes with one hand as he studies the far shore, a slow smile spreading, overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb401",
+          "text": "看出這個主意的，是周瑜手下的老將黃蓋。"
+        }
+      ]
+    },
+    {
+      "id": "huang-gai-speaks",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey-bearded old general leaning over a table in a command tent in the afternoon, tapping a blank map with one finger, his face eager, the young commander's white sleeve at the edge of the frame, soft light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb402",
+          "text": "他說，敵人多，我們少，拖下去對我們不利。"
+        }
+      ]
+    },
+    {
+      "id": "huang-gai-points",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey-bearded old general standing at the river's edge in daytime, pointing across the water at a far line of moored ships with a keen grin, reeds at his feet, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb403",
+          "text": "還記得開頭那些首尾相接的船嗎？黃蓋說：燒得起來。",
+          "emotion": "最後四個字放慢"
+        }
+      ]
+    },
+    {
+      "id": "chain-advice",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin advisor in a scholar's cap holding up a heavy iron chain with both hands in a command tent in late morning, eyes bright with his idea, a blank map on the table behind him, soft light from the tent opening",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb203",
+          "text": "小說說，是一位謀士獻計，叫曹操用鐵鍊把船連起來。"
+        }
+      ]
+    },
+    {
+      "id": "no-chains",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty wooden deck plank with a single coil of plain rope lying on it, river water visible through a gap in the rail, mild overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb404",
+          "text": "史書裡沒有鐵鍊，也沒有這個謀士；船只是停得太密。"
+        }
+      ]
+    },
+    {
+      "id": "loading-reeds",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sailor in a short tunic stuffing bundles of dry reeds and brushwood into the hold of a war boat in daytime, his face focused, more bundles stacked on the dock beside him, overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb405",
+          "text": "黃蓋挑了幾十艘戰船，船艙裡塞滿乾草和柴。"
+        }
+      ]
+    },
+    {
+      "id": "pouring-oil",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sailor's hands tipping a clay jar of oil over a bundle of dry reeds in a dim ship's hold, a canvas sheet folded beside it, light from an open hatch above",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb406",
+          "text": "澆上油，再用布蓋好。"
+        }
+      ]
+    },
+    {
+      "id": "flags-on-boats",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a row of war boats on a river in the morning, tall flags on each mast, one sailor climbing a mast to fix a flag, the only shapes are boats, flags and water, overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb407",
+          "text": "船上插著旗子，遠遠看去，跟一般的戰船一樣。"
+        },
+        {
+          "id": "cb433",
+          "text": "這些船，是要開去「投降」的。",
+          "emotion": "帶一點狡猾"
+        }
+      ]
+    },
+    {
+      "id": "escape-boats",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sailor kneeling at the stern of a war boat in daytime, tying a small light rowing boat to it with a rope, glancing up with a sly grin, the river behind him, overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb434",
+          "text": "每艘大船後面，還綁了一艘小快船，放完火好逃走。"
+        }
+      ]
+    },
+    {
+      "id": "writing-false-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey-bearded old general sitting at a writing table in a tent at night, brushing a blank letter with a serious face that hides a small smile, a lamp beside him, warm lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb408",
+          "text": "然後，他先寫了一封信給曹操。"
+        },
+        {
+          "id": "cb409",
+          "text": "還記得開頭那封投降信嗎？",
+          "emotion": "語氣親近，略上揚"
+        }
+      ]
+    },
+    {
+      "id": "letter-says",
+      "template": "steps",
+      "data": {
+        "title": "黃蓋的信說了什麼",
+        "steps": [
+          {
+            "title": "受東吳的恩惠很深"
+          },
+          {
+            "title": "江東的兵擋不住北方大軍"
+          },
+          {
+            "title": "願意帶船過來投降"
+          }
+        ],
+        "source": "《三國志》裴注引《江表傳》（待查核）"
+      },
+      "lines": [
+        {
+          "id": "cb410",
+          "text": "信裡說，他受東吳的恩惠很深。",
+          "reveal": 1
+        },
+        {
+          "id": "cb411",
+          "text": "可是拿江東的兵去擋北方大軍，誰都看得出打不贏。",
+          "reveal": 1
+        },
+        {
+          "id": "cb412",
+          "text": "所以，他願意帶著船過來投降。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "cao-holds-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the stern bearded general's hand holding a folded blank letter up to the light of a tent opening, his eye narrowed behind it, soft light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb437",
+          "text": "曹操怎麼看這封信？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "cao-questions-messenger",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the stern bearded general in a dark robe leaning forward on his seat in a command tent at midday, narrowing his eyes at someone off frame with a suspicious look, a letter in his hand, soft light from the tent opening",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb413",
+          "text": "曹操特地把送信的人叫來，私下問了一遍。"
+        },
+        {
+          "id": "cb414",
+          "text": "他說：只怕你們是騙我的。",
+          "emotion": "壓低，帶懷疑"
+        }
+      ]
+    },
+    {
+      "id": "cao-promises",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the stern bearded general sitting back in a command tent with a broad, satisfied smile, raising one hand as if making a promise, a cup of tea steaming beside him, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb415",
+          "text": "要是真的，給黃蓋的封賞，會比誰都高。"
+        }
+      ]
+    },
+    {
+      "id": "bitter-plan-wink",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the grey-bearded old general sitting alone on a stool in a quiet tent at night, giving a small knowing wink, a lamp beside him, warm lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb207",
+          "text": "小說說，黃蓋為了讓曹操相信，先挨了一頓軍棍，叫苦肉計。"
+        }
+      ]
+    },
+    {
+      "id": "false-letter-face",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the grey-bearded old general's face in a dim tent at night, eyes steady and lips pressed in a tight secret smile, lamp light from below",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb416",
+          "text": "這一封，是假的。",
+          "emotion": "短，壓低"
+        },
+        {
+          "id": "cb417",
+          "text": "那頓軍棍，史書一個字都沒寫。"
+        }
+      ]
+    },
+    {
+      "id": "wind-day",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a helmsman at the tiller of a war boat on a wide river in daytime, his headcloth whipping sideways in a strong wind, squinting with a fierce grin, grey clouds racing behind him",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb418",
+          "text": "開戰那一天，颳起了東南風，而且很急。",
+          "emotion": "語氣加快"
+        }
+      ]
+    },
+    {
+      "id": "wind-is-real",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall cloth banner on a mast stretched straight out by a strong wind, the river below, overcast sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb419",
+          "text": "這陣風是真的，寫在史書裡。"
+        },
+        {
+          "id": "cb420",
+          "text": "小說說，這陣風是諸葛亮在七星壇上借來的。"
+        }
+      ]
+    },
+    {
+      "id": "altar-ritual",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a scholar in a long Taoist robe standing on top of a three-tiered earthen altar at night, raising a sword toward the sky with his eyes closed, banners on poles around the altar, moonlight from above",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb435",
+          "text": "史書裡，沒有人去借它。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "how-to-approach",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey-bearded old general standing at the bow of a war boat in the afternoon, gripping the rail and squinting at a distant shore with a tense face, his flag snapping in the wind above him, overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb438",
+          "text": "風有了，船也有了，可是要怎麼靠近曹營，又不被識破？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "ten-boats-sail",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of ten war boats in a line sailing across a wide river in the afternoon with their sails raised full, one sailor standing at the bow of the lead boat, the far bank low on the horizon, overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb421",
+          "text": "十艘船走在最前面，到了江心，升起帆來。"
+        }
+      ]
+    },
+    {
+      "id": "north-soldiers-watch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a northern soldier in a fur cap standing on a moored warship in daytime, stretching his neck and pointing across the water with a delighted face, a spear in his other hand, overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb422",
+          "text": "曹營的兵都探出頭來看，指著說：黃蓋來投降了。",
+          "emotion": "模仿士兵的興奮"
+        }
+      ]
+    },
+    {
+      "id": "light-the-fires",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sailor on a moving war boat in the evening, touching a lit torch to a covered bundle of reeds, his face set and calm, the river behind him, warm torchlight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb423",
+          "text": "離曹營還有一段路，船上的人同時點火。"
+        }
+      ]
+    },
+    {
+      "id": "boats-like-arrows",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of burning boats racing across a dark river at dusk toward a line of moored ships, the only shapes are boats, flames and water, glow of the fire and a fading grey sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb424",
+          "text": "火借著風勢，船衝得像箭一樣快。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "camp-on-fire",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a riverside army camp at night seen from across the water, a distant orange glow along the shore and smoke rising into the sky, one boatman in the foreground watching with his mouth open, moonlight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb425",
+          "text": "北岸的船燒起來，火一路燒到岸上的營寨。"
+        },
+        {
+          "id": "cb426",
+          "text": "不一會兒，煙和火遮住了半邊天。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "defeat-face",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the stern bearded general's face at night, wide-eyed and stunned, orange glow reflected on his cheek, dark sky behind him",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb436",
+          "text": "周瑜帶著精兵跟在後面，戰鼓震天，北軍大亂。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "one-slip",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a scholar in a plain robe kneeling at a low table in a quiet study in the afternoon, holding one bamboo slip up close with a surprised look, a bundle of blank slips beside him, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb428",
+          "text": "那這幾天，諸葛亮在做什麼？還記得開頭這個問題嗎？",
+          "emotion": "語氣親近"
+        },
+        {
+          "id": "cb429",
+          "text": "他的傳記寫到赤壁，只有一行字。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "one-line",
+      "template": "big",
+      "data": {
+        "text": "曹公敗於赤壁，引軍歸鄴",
+        "kicker": "《三國志・諸葛亮傳》",
+        "sub": "寫到赤壁，只有這一行（待查核）"
+      },
+      "lines": [
+        {
+          "id": "cb430",
+          "text": "曹公敗於赤壁，引軍歸鄴。",
+          "emotion": "一字一字唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "empty-altar",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty three-tiered earthen altar on a riverbank in mild daylight, wind tugging at one bare banner pole, one crow perched on the top tier, overcast sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb431",
+          "text": "史書沒有寫，那一天他在江面上。"
+        }
+      ]
+    },
+    {
+      "id": "three-histories-tease",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a scholar in a plain robe kneeling at a low table in a study in the afternoon, frowning as he looks from one open scroll to another, a third scroll still rolled beside him, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb432",
+          "text": "可是曹操是怎麼撤退的，史書裡還藏著一句很少人注意的話。",
+          "emotion": "收著，不講破"
+        }
+      ]
+    },
+    {
+      "id": "wu-historian",
+      "chapter": "吳國的史書寫：剩下的船，曹操自己燒了",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a scholar in a green robe kneeling at a low table by a river window in daytime, pausing his brush with a thoughtful face, a boat visible on the water outside, soft light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb510",
+          "text": "那句話在吳國自己的史書裡：曹操把剩下的船燒了，才撤退。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "burned-the-rest",
+      "template": "big",
+      "data": {
+        "text": "公燒其餘船引退",
+        "kicker": "《三國志・吳主傳》",
+        "sub": "曹操把剩下的船燒了，撤退（待查核）"
+      },
+      "lines": [
+        {
+          "id": "cb512",
+          "text": "還記得開頭，他說那把火是他自己放的嗎？這一句，竟然是吳國人寫的。",
+          "emotion": "語氣親近，略上揚"
+        }
+      ]
+    },
+    {
+      "id": "burning-own-ships",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the stern bearded general standing on a riverbank in pale morning light, holding a torch and looking back at a row of empty moored ships with a tired, bitter face, mist on the water",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb514",
+          "text": "我們覺得最可能的是：船帶不走，又不能留給對手。",
+          "emotion": "像跟朋友說自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "muddy-road",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a narrow muddy track through marshland under a windy grey sky, one horse stuck to its knees in mud with its rider pulling on the reins, the only shapes are reeds and puddles",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb520",
+          "text": "然後是那條華容道。小說說，關羽在那裡等他，放了他一馬。"
+        }
+      ]
+    },
+    {
+      "id": "stuck-horse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cavalryman in a muddy cloak standing beside his horse in a marsh under a windy sky, both sunk to the shins in mud, the rider looking down at his boots in dismay, reeds bending in the wind",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb521",
+          "text": "史書裡，只有一條泥路，馬走不過去，天上還颳著大風。"
+        }
+      ]
+    },
+    {
+      "id": "laying-straw",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin soldier carrying a big bundle of straw on his back across a muddy path in mild daylight, dropping it into a puddle with a determined face, reeds behind him, overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb522",
+          "text": "他叫體弱的兵背草鋪路，騎兵才走得過去。"
+        }
+      ]
+    },
+    {
+      "id": "cao-laughs",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the stern bearded general on horseback on a road at dusk, throwing back his head in a loud laugh, his officers' horses' heads at the edge of the frame, soft fading light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb523",
+          "text": "走出泥路，曹操突然大笑。將領們問他笑什麼。"
+        }
+      ]
+    },
+    {
+      "id": "liu-bei-too-slow",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the stern bearded general's face at dusk, grinning and wagging one finger, his eyes sharp, soft fading light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb524",
+          "text": "他說，劉備跟我是同一類人，只是計策想得慢了一點。"
+        },
+        {
+          "id": "cb525",
+          "text": "要是他早一點放火，我們就全完了。",
+          "emotion": "帶笑，又有點後怕"
+        }
+      ]
+    },
+    {
+      "id": "late-fire",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a marsh at night with a line of small fires burning along the reeds far behind, one empty muddy track leading away into the dark, the only shapes are reeds, smoke and the track, faint orange glow",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb530",
+          "text": "沒多久，劉備真的在後面放了火，可是曹操已經過去了。"
+        }
+      ]
+    },
+    {
+      "id": "leaves-cao-ren",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sturdy general in armour standing on a city wall in mild daylight, saluting with a fist against his palm and a grim face, the gate tower behind him, overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb526",
+          "text": "到了江陵，他留下曹仁守城。"
+        }
+      ]
+    },
+    {
+      "id": "road-home",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a muddy road beside a river in late winter under a low grey sky, one horseman in a dark cloak riding slowly with his head bowed, the only shapes are bare willows and water",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb515",
+          "text": "史書還記了另一次燒船。"
+        }
+      ]
+    },
+    {
+      "id": "baqiu-plague",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a soldier sitting on a log at a riverside camp in mild daylight, wrapped in a blanket and shivering, a cold campfire in front of him, overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb516",
+          "text": "在一個叫巴丘的地方，軍中又鬧起疫病，他又燒了船。"
+        }
+      ]
+    },
+    {
+      "id": "sigh-at-fire",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the stern bearded general standing at a riverbank at dusk, watching a boat burn in the distance, letting out a long sigh with his eyes closed, faint warm glow on his face",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb517",
+          "text": "他看著燒起來的船，嘆了一口氣：",
+          "emotion": "放慢"
+        },
+        {
+          "id": "cb518",
+          "text": "如果郭嘉還在，不會讓我落到這個地步。",
+          "emotion": "低沉，像自言自語"
+        }
+      ]
+    },
+    {
+      "id": "guo-jia-memory",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young advisor in a light robe sitting cross-legged in a tent at midday, smiling and holding up a weiqi stone between two fingers, a game board in front of him, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb519",
+          "text": "郭嘉是他最信任的謀士，前一年病死了。"
+        }
+      ]
+    },
+    {
+      "id": "letter-tease",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the stern bearded general walking alone through a quiet palace courtyard in late winter, hands behind his back and lost in thought, a bare plum tree beside him, soft light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb527",
+          "text": "那封說火是自己放的信，他到底是怎麼寫的？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "pei-annotator",
+      "chapter": "曹操的第二封信：碰上疾病，我自己燒船退兵",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a scholar in a plain robe kneeling at a low table in a study in the afternoon, carefully copying from one open scroll onto another with a focused face, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb601",
+          "text": "那封信，收在替《三國志》加注時引的一本古書裡。"
+        }
+      ]
+    },
+    {
+      "id": "second-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the stern bearded general in a dark robe sitting at a writing table at night, brushing a blank letter with a crafty half smile, an inkstone beside him, warm lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb602",
+          "text": "他寫：赤壁那一仗，碰上疾病，是我自己燒船退兵的。"
+        }
+      ]
+    },
+    {
+      "id": "letter-text",
+      "template": "big",
+      "data": {
+        "text": "孤燒船自退，橫使周瑜虛獲此名",
+        "kicker": "曹操給孫權的信",
+        "sub": "裴注引《江表傳》（待查核）"
+      },
+      "lines": [
+        {
+          "id": "cb603",
+          "text": "讓周瑜白白得了這個名聲。",
+          "emotion": "略帶不服氣"
+        }
+      ]
+    },
+    {
+      "id": "ten-boats-missing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a blank folded letter lying on a lacquered table, a small model of a sailing boat set beside it, soft lamp light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb604",
+          "text": "還記得那十艘衝進曹營的火船嗎？這封信一個字都沒提。"
+        }
+      ]
+    },
+    {
+      "id": "wei-historian",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a court historian in a dark robe and black cap kneeling at a low table in a palace archive in late morning, brushing characters on a bamboo slip with a careful face, shelves of rolled scrolls behind him, soft light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb501",
+          "text": "還記得那場病嗎？曹操自己魏國的史書，寫到赤壁，只有「不利」和「於是大疫」。",
+          "emotion": "語氣親近"
+        }
+      ]
+    },
+    {
+      "id": "no-fire-word",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single bamboo slip lying on a dark table, a brush resting across it, soft lamp light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb504",
+          "text": "一個字都沒提到火。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "eighty-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a scholar in a plain robe kneeling at a low table in a study in the afternoon, holding two folded blank letters side by side and comparing them with a raised eyebrow, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb605",
+          "text": "還記得第一封信裡的八十萬嗎？",
+          "emotion": "語氣親近"
+        },
+        {
+          "id": "cb606",
+          "text": "我們覺得，這兩封信是同一種寫法。",
+          "emotion": "像跟朋友說自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "more-and-less",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two blank folded letters lying side by side on a lacquered table, one weighed down by a small brass seal, soft lamp light from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb607",
+          "text": "戰前那一封，把自己的兵說多了；戰後這一封，把自己的輸說小了。"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "big",
+      "data": {
+        "text": "兩個人都放了火",
+        "kicker": "史書裡的赤壁",
+        "sub": "一個為了贏，一個為了走（待查核）"
+      },
+      "lines": [
+        {
+          "id": "cb608",
+          "text": "所以赤壁的火，是兩個人放的：一個為了贏，一個為了走。",
+          "emotion": "放慢，像蓋章"
+        }
+      ]
+    },
+    {
+      "id": "file-closed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain manila folder lying on a wooden desk, a hand pressing a rubber stamp down onto its cover, light from a desk lamp on the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb609",
+          "text": "這份檔案，存檔。",
+          "emotion": "收尾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "兩個人都放了火"
+        ]
+      },
+      "lines": [
+        {
+          "id": "cb610",
+          "text": "你最早是從小說、電視劇，還是遊戲認識赤壁的？",
+          "emotion": "問句上揚，像在聊天"
+        },
+        {
+          "id": "cb611",
+          "text": "這個頻道只講史書裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ]
+}
