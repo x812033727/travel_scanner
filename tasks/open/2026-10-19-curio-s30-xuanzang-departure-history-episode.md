@@ -41,4 +41,4 @@ scope:
 - 與其他集共用工作分支 `codex/curio-s34-endurance-20261019`，只持有 `docs/videos/curio-s30`，不改題庫或其他集。
 - 2026-10-19：固定版《大慈恩寺三藏法師傳》全文可從 GitHub `garychowcmu/daizhigev20` 的 commit `4a6d6f2088825f132521d848c2ea86cf9c9a7620` 讀取；傳記卷一明寫「貞觀三年秋八月」出發，即 629 年，但其他年表有 627 說，劇本不把未解歧見講成確切公元年。來源全文的臨時複本在 `/tmp/curio-s30-bio.txt`。
 - 2026-10-19：編劇交接：`brief.md`、`research.md`、`claims.md`、`video.json`、`script.md`、`verify-1.md`、`blind-1.md` 已齊；旁白雜湊 `9df8082746dcf33f`，97 句、95 張靜圖、約 9.5 分鐘。另一位查核者逐句檢查 xz001–xz095，盲讀 13/13 題通過，`narrative --answers` 已寫入工作目錄且通過。`lint` 零錯誤零警告；`npm run test:docs-videos` 236 tests passed，`npm run check:tasks` 通過；最後幾處來源標註調整後旁白文字與雜湊不變。
-- 下一步是依 Curio 流程完成大綱／劇本審核，再啟動 TTS、旁白檢查、插圖與成片；目前沒有為 S30 啟動有費用的媒體製作。本票等共同 PR 結案時再移到 `tasks/done/`。
+- 2026-10-19：站主授權採編輯建議連續製作新集。大綱／劇本已按代理授權核准；97 句旁白已合成，`check-audio` 97/97 乾淨，音檔審核已通過。首輪 MiniMax 插圖在 xz087 後遇到「請求過於頻繁」而中止：87/95 景有圖片，其中 81 景通過自動評審，6 景三次未過；花費 US$1.809，低於本集 US$3.85 上限。逐張目視另發現現代辦公設備、道路標線等明顯時代矛盾，因此改寫 50 景提示詞（含末八景預防性補充時代線索）；新版 `lint` 零錯誤、零警告。等 MiniMax 流量冷卻且共同排程允許後，重跑 `keyframes --takes 3`；已通過而提示詞未變的景會用快取。之後依序送分鏡、配樂、成片與 QA。本票等共同 PR 結案時再移到 `tasks/done/`。
