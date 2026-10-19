@@ -1,0 +1,1624 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s08",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，像對朋友說一件軍糧檔案中的奇事。古文短句放慢，發問留半拍；史書記載與後世小說分清。",
+    "performance": "開場先跟著斜谷糧道，暫不揭曉外形；三個年份逐步推進。裴注的構件名稱帶好奇而不斷言形制；小說段落稍活潑，結尾收在有使用記錄但無唯一原貌。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "ox005",
+      "payoff": "ox042",
+      "what": "流馬是否讓大軍持續有糧"
+    },
+    {
+      "setup": "ox006",
+      "payoff": "ox012",
+      "what": "祁山糧道上的器具叫什麼"
+    },
+    {
+      "setup": "ox007",
+      "payoff": "ox061",
+      "what": "一腳四足是否等於步行機械腿"
+    },
+    {
+      "setup": "ox008",
+      "payoff": "ox087",
+      "what": "扭舌停車屬哪層文本"
+    },
+    {
+      "setup": "ox024",
+      "payoff": "ox030",
+      "what": "232 年作畢與 231 年用過的矛盾"
+    },
+    {
+      "setup": "ox034",
+      "payoff": "ox037",
+      "what": "流馬首次明說運輸在哪年"
+    },
+    {
+      "setup": "ox050",
+      "payoff": "ox094",
+      "what": "裴注是否足夠畫出唯一接法"
+    },
+    {
+      "setup": "ox059",
+      "payoff": "ox061",
+      "what": "足字能否定活動腿"
+    },
+    {
+      "setup": "ox071",
+      "payoff": "ox073",
+      "what": "軸孔能否定輪數"
+    },
+    {
+      "setup": "ox081",
+      "payoff": "ox082",
+      "what": "舌頭機關在哪一頁"
+    },
+    {
+      "setup": "ox079",
+      "payoff": "ox094",
+      "what": "流馬軸孔與木架如何相接"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "木牛流馬會自己走？三國志究竟寫了什麼｜奇聞檔案局",
+    "description": "木牛、流馬真的替諸葛亮運過糧嗎？《三國志》記載 231 年木牛運糧、232 年作流馬木牛畢、234 年流馬運糧；軍隊仍為糧食接續而屯田。裴松之注引用《諸葛亮集》，留下「一腳四足」、軸孔、方囊與尺寸，但不能單憑這些字確定會走路的腿或輪子數量。後來《三國演義》第 102 回的仿造與舌頭機關，屬於小說場面。\n\n本集插圖由 AI 生成，是故事輔助插畫，不作確定機械復原。史料固定版本與逐句對照見下方來源。資料核對至 2026-10-19。",
+    "tags": [
+      "木牛流馬",
+      "諸葛亮",
+      "三國志",
+      "三國演義",
+      "蜀漢",
+      "古代科技",
+      "運糧",
+      "歷史謎團",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "有幾個\n**輪子？**",
+      "tag": "三國史料",
+      "sub": "一腳四足，真是四條腿？",
+      "shot": "wood-007"
+    }
+  },
+  "sources": [
+    {
+      "title": "《三國志》卷三十三〈後主傳〉（固定轉錄）",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/033.htm",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《三國志》卷三十五〈諸葛亮傳〉及裴松之注（固定轉錄）",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/035.htm",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《三國演義》第一百二回（固定轉錄；僅作小說對照）",
+      "url": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/481.html",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "wood-001",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a misty mountain path, one robed officer watching cloth covered supplies pass, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox001",
+          "text": "建興十二年春，諸葛亮的隊伍走出斜谷，一批軍糧也往前線移動。"
+        }
+      ],
+      "chapter": "斜谷糧道，布蓋下的流馬"
+    },
+    {
+      "id": "wood-002",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a mountain track, one porter resting a hand on a cloth covered timber load, grey daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox002",
+          "text": "運糧的器具，史書在這一年寫作「流馬」。",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-003",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside stacked grain sacks, one curious courier lifting a corner of plain canvas, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox003",
+          "text": "押糧的人盯著布蓋下的東西；我們也想掀開看。"
+        }
+      ]
+    },
+    {
+      "id": "wood-004",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet study, one scholar turning an old blank page beside simple wooden parts, warm lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox004",
+          "text": "一本舊書的註文攤在桌上，零件名密密麻麻；它能讓人看清布下的器具嗎？",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an ancient camp, one quartermaster staring at a thinning pile of grain sacks, pale daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox005",
+          "text": "這批流馬，能讓大軍一直吃得上飯嗎？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-006",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along a hillside path, one porter guiding a cloth covered load between rocky slopes, diffuse morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox006",
+          "text": "三年前的祁山，山路上的軍糧也在移動；那批器具叫什麼？",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-007",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a workbench, one craftsperson turning a plain wooden support in both hands, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox007",
+          "text": "後來保留下來的文字，還有一句「一腳四足」；它真會走路嗎？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-008",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a storyteller table, one reader touching a small covered wooden model, gentle lantern light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox008",
+          "text": "更晚的小說叫人扭動器具的「舌頭」；接著會發生什麼？",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-009",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside an archive, one researcher placing a history volume beside a separate storybook, even daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox009",
+          "text": "哪一幕屬於古代運糧，哪一幕屬於後來寫出的故事？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-010",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a mountain road near an old camp, one supply porter carrying a grain sack, grey morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox010",
+          "text": "建興九年春，軍糧沿祁山山路，跟著出征的隊伍往前走。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ],
+      "chapter": "祁山木牛上路，軍糧仍耗盡"
+    },
+    {
+      "id": "wood-011",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain route map, one commander marking a mountain pass with a wooden token, quiet lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox011",
+          "text": "諸葛亮再次出兵，圍向祁山。"
+        }
+      ]
+    },
+    {
+      "id": "wood-012",
+      "template": "big",
+      "data": {
+        "text": "始以木牛運",
+        "kicker": "《三國志》卷三十三",
+        "sub": "建興九年 · 231"
+      },
+      "lines": [
+        {
+          "id": "ox012",
+          "text": "《後主傳》在這裡只寫五個字：「始以木牛運」。",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a supply camp, one clerk counting sacks beside a covered wooden device, overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox013",
+          "text": "這裡的「始」，記的是這次用木牛運糧。"
+        }
+      ]
+    },
+    {
+      "id": "wood-014",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside grain piles, one clerk holding an unmarked tally board with empty rows, soft ambient light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox014",
+          "text": "它沒說一共造了幾台，也沒說每一台載了多少。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-015",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along a winding ridge, one porter shouldering a supply sack toward a distant camp, thin morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox015",
+          "text": "木牛被寫進戰爭的紀錄，可這條糧道撐得到夏六月嗎？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a quiet mess tent, one cook scooping grain into a plain bowl, mild daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox016",
+          "text": "前線要吃飯的，不是一個人，而是一整支軍隊。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-017",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a half empty sack, one officer drawing its loose top closed, pale afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox017",
+          "text": "同一年的夏六月，記載忽然轉成四個字：糧盡退軍。"
+        }
+      ]
+    },
+    {
+      "id": "wood-018",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside a mountain camp, one soldier folding a small banner beside packed supplies, overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox018",
+          "text": "諸葛亮撤軍；木牛沒把這次糧盡從記錄中抹掉。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-019",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a supply stack, one quartermaster weighing two small grain bags in his hands, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox019",
+          "text": "這能證明木牛根本沒用嗎？不能。",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-021",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a mountain supply camp, one porter setting a single sack by a much larger stack, grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox021",
+          "text": "同一戰役，一邊用木牛一邊缺糧，差的是哪個數字？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-022",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a route map, one clerk looking at several empty tally spaces, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox022",
+          "text": "我們不知道木牛數量與運送路程，也算不出它的總運力。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-023",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a tent, one historian placing two unmarked date markers side by side, warm lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox023",
+          "text": "使用和缺糧在同一年並排，問題就留到了下一年。"
+        }
+      ]
+    },
+    {
+      "id": "wood-024",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a writing desk, one reader pausing over a second blank record, quiet morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox024",
+          "text": "如果祁山已用過木牛，隔年為何又說它「作成」？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-025",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a calm farm field, one robed officer watching a worker tend soil, soft cloudy light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox025",
+          "text": "黃沙的建興十年只記「作成」，不是「初造」；前一年木牛已在路上。"
+        }
+      ],
+      "chapter": "黃沙作成兩種器具"
+    },
+    {
+      "id": "wood-026",
+      "template": "big",
+      "data": {
+        "text": "作流馬木牛畢",
+        "kicker": "《三國志》卷三十三",
+        "sub": "建興十年 · 232"
+      },
+      "lines": [
+        {
+          "id": "ox026",
+          "text": "同一段又寫：「作流馬木牛畢，教兵講武。」",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-027",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a timber workshop, one craftsperson setting down a completed plain wooden frame, diffuse window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox027",
+          "text": "同一段還寫休士勸農、教兵講武；器具作成時，軍隊仍在備戰。"
+        }
+      ]
+    },
+    {
+      "id": "wood-028",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a table, one historian drawing two separate dates on a blank sheet, soft desk light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox028",
+          "text": "這一回完成的是改良舊器、添造新器，還是哪一批收尾？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-030",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a workshop, one artisan fastening a wooden piece to a covered frame, muted afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox030",
+          "text": "原文沒列台數、工序，也沒說流馬和木牛是否同樣大小。",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-034",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a fork in an old mountain trail, one messenger turning toward a distant pass, hazy daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox034",
+          "text": "木牛有了使用年份；流馬何時真正出現在運糧的句子裡？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-035",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a mountain pass, one supply officer looking toward a cloth covered load, pale sunrise light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox035",
+          "text": "答案在兩年後；流馬才在出兵記錄中和「運」字連在一起。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ],
+      "chapter": "流馬到五丈原，還要屯田"
+    },
+    {
+      "id": "wood-037",
+      "template": "big",
+      "data": {
+        "text": "始以流馬運",
+        "kicker": "《三國志》卷三十三",
+        "sub": "建興十二年 · 234"
+      },
+      "lines": [
+        {
+          "id": "ox037",
+          "text": "《後主傳》說：「始以流馬運。」"
+        }
+      ]
+    },
+    {
+      "id": "wood-038",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot near an old road, one clerk recording covered supply loads on a blank tablet, soft grey light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox038",
+          "text": "這是那段行軍中，史書第一次明說流馬承擔運輸。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-039",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a timber yard, one craftsperson brushing dust from an older wooden beam, quiet daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox039",
+          "text": "不等於世界上第一台流馬在那個月才造出。"
+        }
+      ]
+    },
+    {
+      "id": "wood-040",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot across a broad riverbank camp, one sentry watching rows of small tents, pale morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox040",
+          "text": "〈諸葛亮傳〉接著說，軍隊到了五丈原。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-041",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a supply tent, one quartermaster studying a shrinking grain mound, gentle lantern light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox041",
+          "text": "大軍到了五丈原，遠來的糧還跟得上嗎？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-042",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a camp table, one robed commander touching an empty grain bowl, warm low light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox042",
+          "text": "諸葛亮「每患糧不繼」，常苦惱糧食接不上。",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-043",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot near a riverside field, one soldier in plain clothes turning soil with a hoe, mild cloudy light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox043",
+          "text": "於是他分兵屯田，為長期駐紮做準備。"
+        }
+      ]
+    },
+    {
+      "id": "wood-100",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot by a riverside field, one soldier sowing grain near a plain village house, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox100",
+          "text": "耕田的兵還與渭水邊居民雜處，史書說百姓安堵。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-108",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside riverside fields and simple homes, one robed recorder noting the calm camp boundary on a blank page, mild daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox108",
+          "text": "陳壽接著寫「軍無私焉」，把軍紀也放進這段屯田紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "wood-101",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a grain field, one quartermaster looking toward a distant camp, calm afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox101",
+          "text": "一面對峙，一面下田，糧道已改變軍隊留在前線的方式。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-044",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a path beside a field, one supply porter carrying a sack past furrowed soil, pale daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox044",
+          "text": "流馬與屯田兩條路並排，哪條真正扛住了全軍？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-045",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a clerk's table, one quartermaster turning over an empty tally board, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox045",
+          "text": "流馬究竟運了多少？記錄沒給總數。",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-046",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a modest field, one farmer gathering a small sheaf beside an empty cart shelter, overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox046",
+          "text": "屯田又補了多少？這段也沒有收成表。",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-047",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a supply tent, one scholar keeping a grain sack apart from a field map, even lamplight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox047",
+          "text": "所以不能拿「糧不繼」判它失敗，也不能說它解決一切。"
+        }
+      ]
+    },
+    {
+      "id": "wood-049",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a long mountain supply road, one porter pausing to catch his breath beside grain bags, grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox049",
+          "text": "這不是神奇機器突然失靈的故事，而是補給一直吃緊。"
+        }
+      ]
+    },
+    {
+      "id": "wood-050",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside an archive, one researcher reaching toward a thicker annotated volume, quiet daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox050",
+          "text": "可史書連運糧工具都提到了，外形會不會藏在另一頁？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-051",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a historian's desk, one scribe reading a plain bound manuscript, lamplight from left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox051",
+          "text": "〈諸葛亮傳〉正文評他的巧思，也提到木牛流馬。"
+        }
+      ],
+      "chapter": "註文留下部件，沒留下圖"
+    },
+    {
+      "id": "wood-052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a writing table, one scholar setting two simple wooden tokens beside a book, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox052",
+          "text": "陳壽寫：「木牛流馬，皆出其意。」",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-053",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot over a scholar's shoulder, one hand resting on an unillustrated open page, warm lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox053",
+          "text": "這把構想歸於諸葛亮，卻沒有在正文畫出器具。"
+        }
+      ]
+    },
+    {
+      "id": "wood-054",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an annotated manuscript, one reader moving a finger from main column to margin, steady daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox054",
+          "text": "詳細的字句，到了裴松之的註裡才展開。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-055",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on layered pages, one historian opening a separate small bound text, soft desk lamp",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox055",
+          "text": "裴注引用《諸葛亮集》，題為「作木牛流馬法」。"
+        }
+      ]
+    },
+    {
+      "id": "wood-056",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an archive, one scholar holding a quoted page beside an empty workbench, calm light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox056",
+          "text": "這是註家引用另一份文字，不等於裴松之親眼測量了器具。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-057",
+      "template": "big",
+      "data": {
+        "text": "一腳四足",
+        "kicker": "裴注引《諸葛亮集》",
+        "sub": "原文部件詞，不等於四條會走的腿"
+      },
+      "lines": [
+        {
+          "id": "ox057",
+          "text": "第一段說木牛「方腹曲頭」，又說「一腳四足」。"
+        }
+      ]
+    },
+    {
+      "id": "wood-058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a workshop, one carpenter holding a curved piece beside a square block, muted window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox058",
+          "text": "方腹與曲頭，讓人想到有腹有頭的形狀。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-059",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at loose wooden pieces, one craftsperson comparing two supports in both hands, soft grey light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox059",
+          "text": "但「足」是哪塊木件？怎麼接到器具上？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-060",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a timber yard, one artisan laying two long parallel poles on a bench, mild daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox060",
+          "text": "原文還提到「雙轅」，是另一個部件名。",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-102",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a timber workbench, one artisan holding a small loose wooden tab beside a block, gentle window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox102",
+          "text": "木牛一段還說「舌著於腹」，舌也是一個部件名。",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-103",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside an archive, one scholar comparing a wooden tab with an open manuscript, steady lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox103",
+          "text": "但這裡只交代它附在腹部，沒說一扭就能停車。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-061",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an archive desk, one researcher keeping a text page beside an unfinished wooden model, even light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox061",
+          "text": "同一句有「腳」又有「足」，卻沒說這些部件會前後屈伸。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-062",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along a narrow road, one walker beside a distant cloth covered load, overcast morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox062",
+          "text": "文字甚至說：「人行六尺，牛行四步。」",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-063",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on an old road, one curious porter looking at a covered timber load, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox063",
+          "text": "這把人與牛並列的說法，難道器具真會自己走？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-064",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a workshop, one artisan examining an unattached wooden joint, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox064",
+          "text": "可「行」說出移動的效果，沒有畫清楚每個接點怎麼動。",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-065",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an unillustrated book, one scholar turning a blank reverse page, warm lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox065",
+          "text": "原文還說「人不大勞，牛不飲食」，替這種運糧方式寫下一個盼望。"
+        }
+      ]
+    },
+    {
+      "id": "wood-066",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a winding hillside road, one porter lifting a grain sack beside a covered device, grey daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox066",
+          "text": "原文還說木牛「載一歲糧，日行二十里」；那能換成今天的重量嗎？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-104",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a long mountain path, one porter pausing beside a covered wooden load, grey morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox104",
+          "text": "它還分「特行者數十里，群行者二十里」。",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-105",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a route map, one researcher following two blank paths with a finger, mild daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox105",
+          "text": "兩種走法分開記，卻沒有說是在什麼道路上測得。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-067",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a desk, one quartermaster holding an unmarked grain measure beside an empty ledger, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox067",
+          "text": "它留下古人的載運描述，卻沒有一份可照做的運力試驗表。"
+        }
+      ]
+    },
+    {
+      "id": "wood-068",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside an old grain store, one researcher setting an antique measure apart from a modern blank scale, mild daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox068",
+          "text": "「一歲糧」不宜草率換成今天的公斤數。",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-069",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot across a rough pass, one supply porter studying a long winding path, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox069",
+          "text": "這種行程數字，也不能離開道路、人手與器具數量去算總補給。"
+        }
+      ]
+    },
+    {
+      "id": "wood-070",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a book desk, one reader turning from one chapter slip to another, warm lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox070",
+          "text": "文字忽然換了標題：「流馬尺寸之數」。",
+          "emotion": "引文與年份放慢，字句清楚"
+        }
+      ]
+    },
+    {
+      "id": "wood-071",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a carpentry workshop, one artisan lining up plain wooden pieces and a drilled block, diffused daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox071",
+          "text": "流馬一段列出肋、前後軸孔與前後杠；這些孔又裝什麼？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-072",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot over a workbench, one carpenter holding a loose wooden pin above separate parts, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox072",
+          "text": "名稱像工匠的清單，卻仍不是組裝好的成品。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-073",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain board with a drilled hole, one craftsperson peering through it, even daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox073",
+          "text": "清單有孔，不表示我們知道孔裡究竟裝了什麼。"
+        }
+      ]
+    },
+    {
+      "id": "wood-075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at two separate book pages, one historian placing a small marker on each, quiet daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox075",
+          "text": "流馬又寫「前後四腳」；它跟木牛的「一腳四足」怎麼分？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-076",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a study, one reader moving two plain wooden figurines apart on a table, soft light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox076",
+          "text": "不能把兩段的腳拼在一起，說古人已畫出一台合體怪物。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a cloth covered supply bundle, one clerk lifting two plain square pouches, muted daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox077",
+          "text": "流馬還寫兩個方囊，各裝二斛三斗。"
+        }
+      ]
+    },
+    {
+      "id": "wood-078",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a workbench, one artisan holding two pouches beside disconnected wood pieces, mild window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox078",
+          "text": "方囊讓人知道米放在哪裡，推力卻要怎樣傳到木架？",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-079",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a rough mountain path, one researcher examining an unfinished wooden frame, grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox079",
+          "text": "若要把流馬的軸孔和木架裝起來，第一個接點在哪裡？"
+        }
+      ]
+    },
+    {
+      "id": "wood-081",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a bookshelf, one reader reaching for a later storybook, warm lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox081",
+          "text": "小說裡一扭就能停車的操作，究竟在哪一層文字出現？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-082",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a storybook mountain road, one storyteller pointing to a lively painted supply scene, gentle light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox082",
+          "text": "翻到後來的小說《三國演義》第102回，器具像活物般上山下嶺。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ],
+      "chapter": "小說扭動舌頭，史書停在文字"
+    },
+    {
+      "id": "wood-083",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a fictional military workshop, one armored commander examining a small wooden model, soft torchlight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox083",
+          "text": "故事裡，司馬懿命人拆開搶到的器具，照尺寸仿造。"
+        }
+      ]
+    },
+    {
+      "id": "wood-109",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a timber workshop, one carpenter counting a row of unfinished covered wooden frames, mild lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox109",
+          "text": "小說把事情說得像一場軍備競賽：不到半個月，魏軍仿造出兩千多件，派去隴西搬糧。"
+        }
+      ]
+    },
+    {
+      "id": "wood-084",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a storybook pass, one disguised soldier leading a cloth covered supply load away, thin moonlight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox084",
+          "text": "蜀軍扮成魏兵混入魏軍運糧隊，牽著那些器具逃走。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-085",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a storybook scene, one soldier touching a small wooden tab on a covered model, soft dawn light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox085",
+          "text": "蜀軍扭轉器具口中的舌頭，它就停住；魏兵能拖走嗎？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-106",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a storybook road, one armored guard straining at a covered wooden load, pale dawn light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox106",
+          "text": "魏兵追到，牽不動也扛不走，正落進小說安排的計。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-086",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a storybook road, one surprised guard stepping back from a covered load, pale morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox086",
+          "text": "等舌頭扭回來，器具再動，魏軍眼前上演戲劇反轉。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-107",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a storybook valley, one masked soldier lifting a small smoky lantern, muted twilight light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox107",
+          "text": "蜀軍還扮作神兵放起煙火，讓魏兵更疑神鬼。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-087",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an archive table, one reader keeping a printed tale apart from an older history volume, even daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox087",
+          "text": "這些動作屬於小說，不在《三國志》三年的運糧句子裡。"
+        }
+      ]
+    },
+    {
+      "id": "wood-089",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an archive doorway, one historian holding a history volume while a storybook stays on the table, daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox089",
+          "text": "如果有人拿著一張聲稱「完全依古文」的復原圖，第一個該問什麼？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-090",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an archive, one researcher pointing from a plain old manuscript to an unfinished wooden joint on the table, soft ambient light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox090",
+          "text": "要問的是每一道接點的來歷；尺寸有出處，組法也得標明哪裡是推想。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ],
+      "chapter": "三段記載拼不成一張原圖"
+    },
+    {
+      "id": "wood-092",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an archive, one reader balancing a small grain bag and a history book in separate hands, mild daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox092",
+          "text": "以流馬的前後軸孔為例，哪塊木件接在哪一個孔？",
+          "emotion": "問句上揚，問完停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-094",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a workbench, one scholar holding a page over an unfinished timber arrangement, soft light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox094",
+          "text": "回到那個流馬的軸孔：原文給了位置與尺寸，卻沒指定唯一接法。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wood-095",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on an unfinished wooden model, one researcher leaving a blank sketch beside it, quiet afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ox095",
+          "text": "同一組字能支持不止一種裝法；任何完成圖，都需要另列推想的部分。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "木牛與流馬確曾運糧，原貌仍有缺口"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ox098",
+          "text": "如果能替那份古文補一張圖，你最想看清哪個部件？",
+          "emotion": "邀請觀眾留言，語氣輕快"
+        },
+        {
+          "id": "ox099",
+          "text": "喜歡把古書翻到註腳，訂閱奇聞檔案局。"
+        }
+      ]
+    }
+  ]
+}

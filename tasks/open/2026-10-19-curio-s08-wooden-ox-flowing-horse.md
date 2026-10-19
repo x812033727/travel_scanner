@@ -1,0 +1,46 @@
+---
+id: 2026-10-19-curio-s08-wooden-ox-flowing-horse
+title: Curio S08 Wooden Ox and Flowing Horse new history episode
+status: in-progress
+priority: P2
+area: docs
+owner: codex-gpt6-curio-s08
+claimed_at: 2026-10-19T19:18:00Z
+created_at: 2026-10-19T19:18:00Z
+completed_at:
+branch: codex/curio-s34-endurance-20261019
+depends_on: []
+scope:
+  - docs/videos/curio-s08
+---
+
+# Curio S08 木牛流馬到底長什麼樣？
+
+## Why
+
+站主要求持續製作新的歷史系列影片；S08 是未認領的 S 軸候選。《三國志》卷 33、35 留下 231 年木牛、234 年流馬的運糧紀錄；裴注所引《諸葛亮集》有一串木牛流馬形制文字，足以查清「書上寫了什麼」，卻不能直接畫出確定外形。軍糧問題在兩次使用後仍存在，是能沿史料推進的故事懸念。
+
+## Definition of done
+
+- [ ] 固定可讀文本並獨立覆核年代、來源層級與《諸葛亮集》形制文字。
+- [ ] 完成企劃、逐句史料對照、約十分鐘繁中劇本、敘事盲讀和 lint；未核准的復原形狀只作假說。
+- [ ] 依 `curio-episode` 關卡完成旁白、插圖、分鏡、配樂、字幕、影片與上架包；付費媒體與站台權杖留在工作目錄。
+
+## Steps
+
+- [x] 查無 S08 同題認領，持有 `docs/videos/curio-s08` 窄 scope；不改共用 `topics.json` 或其他集數。
+- [x] 先核《三國志》卷 33 的建興九、十、十二年紀錄，以及卷 35 裴注引《諸葛亮集》；另一固定轉錄能核對關鍵詞但稀字有 OCR 錯誤。
+- [x] 起草 A 案、研究筆記與逐句主張，處理小說增飾和現代復原說法的證據界線。
+- [ ] 劇本／敘事／來源獨立覆核後進入媒體製作；與主代理協調付費插圖批次。
+
+## How to verify
+
+`VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s08`；`node tools/video/cli.mjs narrative --slug curio-s08`；來源逐句核對 `research.md` 固定版本。後續依序 `tts`、`check-audio`、`keyframes`、`qa`、`package`。
+
+## Notes
+
+2026-10-19：第一版可讀固定來源為 Ancient-China-Books `sanguozhi` commit `10a0b1ab3019d8821262f7402366d14fb4aaa102` 卷 33 p10/p11/p13 與卷 35 p13/p14/p17；第二轉錄為 daizhigev20 commit `4a6d6f2088825f132521d848c2ea86cf9c9a7620`，稀字有 OCR 錯誤。卷 33 說建興九年始以木牛運，十年作流馬木牛畢，十二年始以流馬運；十年「畢」不能解讀成兩者那年才發明。卷 35 說木牛流馬出諸葛亮之意，形制數字則是裴注引《諸葛亮集》，來源層次要明標。「一腳四足」、軸孔與尺寸不能單憑字面證明四腳步行或有幾個輪子；不以現代復原模型當古代原物。Needham 書是可查線索，雲端代理阻擋直接閱讀前不引其具體說法。小說第 102 回的司馬懿仿造和舌頭機關只作小說。
+
+2026-10-19：A 案 `brief.md`、`research.md`、`claims.md`、`video.json`、`script.md` 已存檔。現稿 98 句、92 張插圖、4 張資料卡、10 個回收懸念，估 9.1 分鐘；`lint` 0 errors／0 warnings，`script.md` SHA256 `6f3a8c3fc98793d8b08888fb848762577aad8e6db6196ae4dcfe51fd69aa17a2`。開場的小說舌頭情節已停在結果揭曉前，末章章名改成發現。裴注本來有「舌著於腹」，但**轉舌即停**是小說第 102 回的動作，稿子已分清。TTS dry-run：98 句、約 2,170 Gemini 字元；MiniMax `keyframes --takes 3 --dry-run`：92 張，一次約 US$1.24、三輪上限約 **US$3.73**；目前未合成語音、未付費生圖。**下一步：**新讀者只看定稿做敘事 13 題盲讀，另一人固定原文抽核；通過後才進媒體關卡。請勿把前製草稿說成已獲站主逐字核准。
+
+2026-10-19：第一位新讀者對上一版給 **9/13**：`no_spoiler`、`no_toc`、`chapters_link`、`no_recap` 未過；固定原文抽核沒有重大史實衝突，詳見 `docs/videos/curio-s08/verify-1.md`。我依具體行號集中修正，歷程和新加的兩句來源見 `verify-2.md`。**現行待再盲讀版本** `script.md` SHA256 `610088e368d54aad532322a43f5ba959caa637c666afe518c5cf80b3af527360`、`video.json` SHA256 `3ee02c5bbd8fa7b33a2dad4a7ad453356eb08915975e379eb331acd5bc51ca49`；95 句、89 張插圖、4 張資料卡、11 個懸念、估 9.1 分鐘，`lint` 0 errors／0 warnings。最新版 MiniMax dry-run：一輪約 US$1.20、三輪最多 **US$3.60**；Gemini dry-run 約 2,166 字元。**尚未獲最新版 13/13 盲讀，也沒有 S08 付費媒體。下一步是新讀者審此 exact SHA。**
