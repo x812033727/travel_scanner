@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-story-pilot
 title: 試作兩支品牌故事並記錄數字
-status: blocked
+status: in-progress
 priority: P1
 area: docs
-owner: codex-8a78-pilot
-claimed_at: 2026-10-14T16:31:34Z
+owner: codex-gpt6-a01
+claimed_at: 2026-10-19T06:45:25Z
 created_at: 2026-09-28T03:31:15Z
 completed_at:
-branch: codex/brand-stories-five-20261014
+branch: codex/a01-editorial-review-r44
 depends_on:
   - 2026-09-28-video-story-worker
   - 2026-09-28-video-story-backlog
@@ -47,6 +47,62 @@ scope:
 成片用 ffprobe 確認 1920×1080、30 fps；新版旁白正文由 TTS 量得約 10 分鐘，依 worker 的 9–11 分鐘驗收帶，不拿片頭／片尾湊正文；再量 5 秒片頭與 21 秒片尾的完整成片。`review/qa.json` 全過；正文全為 `visual: "still"` 的插畫／卡片並用緩慢運鏡，沒有付費生成 clip；帳本含文字、音訊、圖像、judge、必要配樂與重試，每支總額在 US$25 以內，站主看過成片。
 
 ## Notes
+
+### 2026-10-19 current A01 editorial continuation
+
+The owner previously authorized transfer of this pilot from `codex-8a78-pilot`
+to `codex-gpt6-a01`; the local clean-main claim continues that same work.
+The task was reopened for offline preparation only. `claim --force` bypasses
+the unfinished budget dependency solely to record that editorial work; it
+does not mark that dependency done or authorize production execution.
+The old `8a78` and `a01-branch-sync` worktrees and #1510 remain unchanged.
+
+Frozen r44 is now copied with its complete input closure and three independent
+reviews into `A01-editorial-review-r44`'s clean-main worktree. Its manifest is
+`62cec617460b882309a48ca76c69615ec20789502538149cc94e47a632144190`.
+Story review is 13/13 (mandatory 12/12); source and visual reviews have no
+remaining P1/P2. These are offline judgments, not formal worker receipts.
+See [the delivery page](../../docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/REVIEW-STATUS.md).
+
+The owner explicitly selected the r44 Rollaboard product-line direction on
+2026-10-19, including the new central question, title and thumbnail. The exact
+reply is recorded in `owner-direction-20261019.json` beside the frozen r44.
+The earlier owner decision permits A01 narration of 420–480 seconds; B18 and
+follow-ons retain their own specifications. Real TTS duration remains unmeasured.
+The all-in A01 cap remains US$25.
+
+On main `e42d93979781b250b53f93e36ff1c901679b39ce`, all nine regenerated
+content outputs match r44 byte-for-byte. Only `validation.json` changes from
+40 to 43 warnings due to current short-A01 narrative checks, with its manifest
+hash following that change. A separate main rebuild passes `--check`; the
+frozen r44 remains untouched. The three added warnings will be addressed in
+a narrow successor before worker adoption (two loop intervals and the third
+outro sentence). This is now r45, manifest
+`4bba4d5b429b6de634c3982aa01027b1d0befd84664aef640d533af0302d05ac`:
+two period-to-question-mark changes and one source-link closing line only.
+Independent delta review passed; all source claims, scene prompts, loop records
+and subtitle settings remain unchanged. The 40 older warnings are retained
+honestly; the worker handoff will explicitly wrap the thumbnail at a word boundary.
+
+The offline six-chapter handoff is now complete, with a separately reviewed
+correction of source-equality being mistaken for fact equality. The corrected
+canonical handoff manifest is
+`cda7fe38d1433fe8a3454ea0ec28ebb5d7391f4f82b0c1d3294247c8c2d7b424`.
+All 55 claims remain PENDING (15 semantic plan links, 40 passage-only claims),
+with exact old-to-worker-ID mapping. Real worker recomposition retains 51 scenes,
+53 lines, 8 hook/payoff pairs and 6 public source URLs; 0 errors / 39 warnings.
+Root's independent mapping/serialization review passed after the author's fix.
+The original rejected handoff and its review stay as evidence. No formal worker
+receipt was created: the host wrapper must retain the cross-chapter thumbnail,
+reconcile written/checked/listened state, and bind fresh real reviews afterward.
+The pilot remains in progress because media and owner acceptance are unfinished.
+
+Production still requires the 0133 budget migration, combined precompat/media
+dispatch protections, the 0134 token phase, host adoption wrapper, fresh host
+consistency capture, and exact six-chapter reviews. Draft #1585/#1583/#1510
+are not merged or deployed by this continuation. The old 104-event capture
+is historical and held; do not reuse it as fresh quiet-state evidence. No new
+host request, paid synthesis, image generation, import or upload occurred.
 
 - 前幾支成片請站主親自看過，再開「自動品管全過就核准成片」給故事用。
 - 任何對正式站的操作都要站主同意；這張票不是授權。
