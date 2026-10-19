@@ -1,0 +1,14 @@
+# S06 tenth script candidate: R9 source-order and picture repairs
+
+R9's fresh narration-only reader marked all 13 narrative questions **yes** for the previous exact script `e068b9f6…`; its sealed answers, canonical verdict, independent original-text and 80-picture audit are in `blind-r9.json`, `narrative-r9.json` and `verify-r9.md`. That is evidence for **that hash only**. The source audit found an unmarked novel cold open, the novel's postoperative sequence out of order, and a picture that violated our no visible blood-basin boundary. Three further textual/picture refinements were recommended. No R9 TTS or S06 paid pictures were started.
+
+The new candidate `script.md` is SHA-256 `41e8a494ffab5ff8cf96467aa606c1ed2763b34a844c435c903fcefafa8c08c1`; `video.json` is `2b9957ce4eb276c83107c3ab38de792611fd810572ff762169f5b1161f0514c2`; narrative hash `787d528bf94af391`. It is 81 spoken lines and 80 still prompts. `claims.md` exactly matches all 81 ID/text pairs, and `lint` is 0 errors / 0 warnings. It needs a **new strict narration-only blind read**, fresh source and picture spot check, and measured audio before any image purchase.
+
+## Grouped corrections
+
+- `gs001` now begins **《三國演義》裡** while staying in the concrete military-tent scene. Thus the right-arm, named-physician and chess details in the six-line cold open are immediately framed as the later novel, not as Chen Shou's biography. Novel pin N lines 29–32.
+- The novel's post-treatment order now follows N line 39: at `gs111` Guan Yu gives the thank-you banquet **before** Hua Tuo advises care; `gs112` then gives the hundred-day advice **before** the hundred-tael offer; `gs105` retains the refusal and medicine left behind. The paired `gs111` prompt includes the thank-you table.
+- `gs119` now pictures only the **outside** of a plain vessel, with contents hidden by the camera angle and no visible blood or wound. This avoids contradicting G line 17's `盈於盤器` while respecting the visual boundary in `research.md` and `brief.md`. It does not claim the historical vessel was empty.
+- `gs117` identifies the novel's **large basin** and asks how the historical text writes the blood-catching detail, without claiming the exact same object appears in both. `gs019` says **onlookers**, matching N's `見者皆掩面失色`, and its prompt also shows onlookers rather than insisting they were all officers. `gs118` and its prompt no longer invent a source-defined game board or piece shape from N's bare `弈棋`.
+
+The estimated story body `gs007–gs074` is **498.07 seconds (8:18.07)**, excluding the 35.33-second novel cold open and the final CTA; full authored narration estimates 540 seconds. This is a text estimate only: the old TTS timeline has 76 scenes and is invalid for the 81-line candidate. Do not approve image spending until the new hash passes both reviews and current narration measures at least 480 seconds of story body.
