@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import asyncio
 import base64
 import copy
 import hashlib
 import json
+import os
+from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
@@ -16,11 +19,17 @@ from uuid import uuid4
 import fakeredis
 import httpx
 import pytest
+import pytest_asyncio
+import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.config import Settings
+from app.db import engine as postgres_engine
+from app.models import VideoToolToken
 from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
-from app.video_budget.service import Reservation
+from app.video_budget.models import VideoPilotBudget
+from app.video_budget.service import A01_ADMISSION_SLUG, Reservation, assert_a01_admission_open
 from app.video_media import jobs as service
 from app.video_media import meter
 from app.video_media.catalog import find_model
@@ -226,6 +235,414 @@ def _image(**extra: Any) -> ImageJobIn:
     )
 
 
+@pytest_asyncio.fixture
+async def a01_media_sessions(
+    tmp_path: Path,
+) -> AsyncIterator[async_sessionmaker[AsyncSession]]:
+    database = create_async_engine(f"sqlite+aiosqlite:///{tmp_path / 'a01-media.sqlite'}")
+    async with database.begin() as connection:
+        await connection.run_sync(
+            lambda sync: VideoPilotBudget.metadata.create_all(
+                sync,
+                tables=[
+                    VideoToolToken.__table__,
+                    VideoPilotBudget.__table__,
+                    VideoMediaJob.__table__,
+                ],
+            )
+        )
+        await connection.execute(
+            sa.insert(VideoPilotBudget).values(
+                slug=A01_ADMISSION_SLUG, limit_usd=Decimal("25")
+            )
+        )
+    yield async_sessionmaker(database, expire_on_commit=False)
+    await database.dispose()
+
+
+@pytest.mark.asyncio
+async def test_a01_media_queue_can_commit_on_0133_without_token_column(
+    tmp_path: Path,
+    a01_media_sessions: async_sessionmaker[AsyncSession],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    advance = AsyncMock(side_effect=lambda _ctx, job: job)
+    monkeypatch.setattr(service, "advance_job", advance)
+    async with a01_media_sessions() as session:
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(image_provider="minimax", image_model="image-01"),
+        )
+        ctx.session = session
+        job, created = await submit_job(
+            ctx, "image", _image(slug=A01_ADMISSION_SLUG)
+        )
+        assert created and job.status == "queued"
+        assert await meter.used(ctx.redis, meter.IMAGES) == 1
+        advance.assert_awaited_once()
+        connection = await session.connection()
+        assert not await connection.run_sync(
+            lambda sync: "admission_token"
+            in {column["name"] for column in sa.inspect(sync).get_columns("video_pilot_budgets")}
+        )
+    async with a01_media_sessions() as session:
+        stored = await session.get(VideoMediaJob, job.id)
+        assert stored is not None and stored.status == "queued"
+
+
+@pytest.mark.asyncio
+async def test_held_a01_media_queue_blocks_post_retry_and_poll_but_reads_terminal_result(
+    tmp_path: Path,
+    a01_media_sessions: async_sessionmaker[AsyncSession],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    original_advance = service.advance_job
+    advance = AsyncMock(side_effect=lambda _ctx, job: job)
+    monkeypatch.setattr(service, "advance_job", advance)
+    payload = _image(slug=A01_ADMISSION_SLUG)
+    async with a01_media_sessions() as session:
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(image_provider="minimax", image_model="image-01"),
+        )
+        ctx.session = session
+        queued, created = await submit_job(ctx, "image", payload)
+        assert created and queued.status == "queued"
+    advance.reset_mock()
+    async with a01_media_sessions() as session:
+        await session.execute(
+            sa.text("ALTER TABLE video_pilot_budgets ADD COLUMN admission_token VARCHAR(36)")
+        )
+        await session.execute(
+            sa.text(
+                "UPDATE video_pilot_budgets SET admission_token=:token WHERE slug=:slug"
+            ),
+            {"token": str(uuid4()), "slug": A01_ADMISSION_SLUG},
+        )
+        await session.commit()
+
+    for blocked_payload in (payload, _image(slug=A01_ADMISSION_SLUG, seed=17)):
+        async with a01_media_sessions() as session:
+            ctx = _context(
+                tmp_path,
+                FakeProvider(),
+                row=_row(image_provider="minimax", image_model="image-01"),
+            )
+            ctx.session = session
+            with pytest.raises(MediaJobFailed) as refused:
+                await submit_job(ctx, "image", blocked_payload)
+            assert (refused.value.status, refused.value.code) == (
+                409,
+                "video_budget_admission_held",
+            )
+            assert await meter.used(ctx.redis, meter.IMAGES) == 0
+            assert not await ctx.redis.exists(f"video-media:lock:{queued.id}")
+            advance.assert_not_awaited()
+
+    monkeypatch.setattr(service, "advance_job", original_advance)
+    monkeypatch.setattr(
+        service,
+        "provider_for",
+        lambda *_args: (_ for _ in ()).throw(AssertionError("provider must not be opened")),
+    )
+    async with a01_media_sessions() as session:
+        queued_row = await session.get(VideoMediaJob, queued.id)
+        assert queued_row is not None and queued_row.status == "queued"
+        ctx = _context(tmp_path, FakeProvider())
+        ctx.session = session
+        with pytest.raises(MediaJobFailed) as refused:
+            await original_advance(ctx, queued_row)
+        assert refused.value.code == "video_budget_admission_held"
+        assert not await ctx.redis.exists(f"video-media:lock:{queued.id}")
+
+    async with a01_media_sessions() as session:
+        submitted = await session.get(VideoMediaJob, queued.id)
+        assert submitted is not None
+        submitted.status = "submitted"
+        submitted.vendor_ref = "already-sent"
+        await session.commit()
+    async with a01_media_sessions() as session:
+        submitted = await session.get(VideoMediaJob, queued.id)
+        assert submitted is not None
+        ctx = _context(tmp_path, FakeProvider())
+        ctx.session = session
+        with pytest.raises(MediaJobFailed) as refused:
+            await original_advance(ctx, submitted)
+        assert refused.value.code == "video_budget_admission_held"
+        assert not await ctx.redis.exists(f"video-media:lock:{queued.id}")
+
+    async with a01_media_sessions() as session:
+        failed = await session.get(VideoMediaJob, queued.id)
+        assert failed is not None
+        failed.status = "failed"
+        await session.commit()
+    async with a01_media_sessions() as session:
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(image_provider="minimax", image_model="image-01"),
+        )
+        ctx.session = session
+        with pytest.raises(MediaJobFailed) as refused:
+            await submit_job(ctx, "image", payload)
+        assert refused.value.code == "video_budget_admission_held"
+        assert await meter.used(ctx.redis, meter.IMAGES) == 0
+    async with a01_media_sessions() as session:
+        terminal = await session.get(VideoMediaJob, queued.id)
+        assert terminal is not None and terminal.status == "failed" and terminal.attempts == 1
+        terminal.status = "ready"
+        await session.commit()
+    async with a01_media_sessions() as session:
+        terminal = await session.get(VideoMediaJob, queued.id)
+        assert terminal is not None
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(image_provider="minimax", image_model="image-01"),
+        )
+        ctx.session = session
+        assert await original_advance(ctx, terminal) is terminal
+        same, created = await submit_job(ctx, "image", payload)
+        assert same.id == terminal.id and not created and same.status == "ready"
+
+
+@pytest.mark.parametrize("other_slug", ["unrelated-film", "story-conveyor-belt-sushi-v2"])
+@pytest.mark.asyncio
+async def test_a01_hold_does_not_block_an_unrelated_media_queue(
+    tmp_path: Path,
+    a01_media_sessions: async_sessionmaker[AsyncSession],
+    monkeypatch: pytest.MonkeyPatch,
+    other_slug: str,
+) -> None:
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    advance = AsyncMock(side_effect=lambda _ctx, job: job)
+    monkeypatch.setattr(service, "advance_job", advance)
+    async with a01_media_sessions() as session:
+        await session.execute(
+            sa.text("ALTER TABLE video_pilot_budgets ADD COLUMN admission_token VARCHAR(36)")
+        )
+        await session.execute(
+            sa.text("UPDATE video_pilot_budgets SET admission_token=:token WHERE slug=:slug"),
+            {"token": str(uuid4()), "slug": A01_ADMISSION_SLUG},
+        )
+        await session.commit()
+    async with a01_media_sessions() as session:
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(image_provider="minimax", image_model="image-01"),
+        )
+        ctx.session = session
+        job, created = await submit_job(ctx, "image", _image(slug=other_slug))
+        assert created and job.status == "queued"
+        assert await meter.used(ctx.redis, meter.IMAGES) == 1
+        advance.assert_awaited_once()
+
+
+@pytest.mark.skipif(os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL")
+@pytest.mark.asyncio
+async def test_a01_media_queue_and_token_acquire_serialize_on_postgresql(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Whichever transaction takes the A01 row first determines the safe outcome."""
+    await postgres_engine.dispose(close=False)
+    sessions = async_sessionmaker(postgres_engine, expire_on_commit=False)
+    slug = A01_ADMISSION_SLUG
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "advance_job", AsyncMock(side_effect=lambda _ctx, job: job))
+    row = _row(image_provider="minimax", image_model="image-01")
+    payload = _image(slug=slug, prompt=f"a01-media-admission-race-{uuid4()}")
+    model = find_model("minimax", "image", "image-01")
+    assert model is not None
+    digest = service.request_hash(
+        {
+            "kind": "image",
+            "vendor": "minimax",
+            "model": model.id,
+            **service._request_fields(payload, row, model),
+        }
+    )
+    async with postgres_engine.begin() as connection:
+        had_column = await connection.run_sync(
+            lambda sync: "admission_token"
+            in {column["name"] for column in sa.inspect(sync).get_columns("video_pilot_budgets")}
+        )
+        if not had_column:
+            await connection.execute(
+                sa.text("ALTER TABLE video_pilot_budgets ADD COLUMN admission_token UUID")
+            )
+        previous = (
+            await connection.execute(
+                sa.text("SELECT admission_token FROM video_pilot_budgets WHERE slug=:slug"),
+                {"slug": slug},
+            )
+        ).first()
+        if previous is None:
+            await connection.execute(
+                sa.text("INSERT INTO video_pilot_budgets (slug, limit_usd) VALUES (:slug, 25)"),
+                {"slug": slug},
+            )
+        else:
+            await connection.execute(
+                sa.text("UPDATE video_pilot_budgets SET admission_token=NULL WHERE slug=:slug"),
+                {"slug": slug},
+            )
+
+    gate_entered = asyncio.Event()
+    real_gate = assert_a01_admission_open
+
+    async def witnessed_gate(session: AsyncSession, *, slug: str) -> None:
+        gate_entered.set()
+        await real_gate(session, slug=slug)
+
+    monkeypatch.setattr(service, "assert_a01_admission_open", witnessed_gate)
+    token_written = asyncio.Event()
+    finish_token = asyncio.Event()
+    finish_submit = asyncio.Event()
+    reached_meter = asyncio.Event()
+    arm_task: asyncio.Task[None] | None = None
+    denied_task: asyncio.Task[Any] | None = None
+    inserted_task: asyncio.Task[Any] | None = None
+    token_task: asyncio.Task[bool] | None = None
+    try:
+        async def arm_first() -> None:
+            async with sessions() as session:
+                await session.scalar(
+                    sa.select(VideoPilotBudget)
+                    .where(VideoPilotBudget.slug == slug)
+                    .with_for_update()
+                )
+                await session.execute(
+                    sa.text(
+                        "UPDATE video_pilot_budgets SET admission_token=CAST(:token AS uuid) "
+                        "WHERE slug=:slug"
+                    ),
+                    {"token": str(uuid4()), "slug": slug},
+                )
+                token_written.set()
+                await finish_token.wait()
+                await session.commit()
+
+        async def submit() -> tuple[VideoMediaJob, bool]:
+            async with sessions() as session:
+                ctx = _context(tmp_path, FakeProvider(), row=row)
+                ctx.session = session
+                ctx.token_id = None
+                return await submit_job(ctx, "image", payload)
+
+        arm_task = asyncio.create_task(arm_first())
+        await asyncio.wait_for(token_written.wait(), timeout=10)
+        denied_task = asyncio.create_task(submit())
+        await asyncio.wait_for(gate_entered.wait(), timeout=10)
+        await asyncio.sleep(0.05)
+        assert not denied_task.done(), "media submit must wait for the account-row lock"
+        finish_token.set()
+        await asyncio.wait_for(arm_task, timeout=10)
+        with pytest.raises(MediaJobFailed) as denied:
+            await asyncio.wait_for(denied_task, timeout=10)
+        assert denied.value.code == "video_budget_admission_held"
+        async with sessions() as session:
+            assert await session.scalar(
+                sa.select(VideoMediaJob.id).where(
+                    VideoMediaJob.slug == slug, VideoMediaJob.request_hash == digest
+                )
+            ) is None
+
+        async with postgres_engine.begin() as connection:
+            await connection.execute(
+                sa.text("UPDATE video_pilot_budgets SET admission_token=NULL WHERE slug=:slug"),
+                {"slug": slug},
+            )
+
+        async def paused_meter(*_args: Any, **_kwargs: Any) -> bool:
+            reached_meter.set()
+            await finish_submit.wait()
+            return True
+
+        monkeypatch.setattr(meter, "reserve", paused_meter)
+        inserted_task = asyncio.create_task(submit())
+        await asyncio.wait_for(reached_meter.wait(), timeout=10)
+
+        async def token_attempt() -> bool:
+            async with sessions() as session:
+                await session.scalar(
+                    sa.select(VideoPilotBudget)
+                    .where(VideoPilotBudget.slug == slug)
+                    .with_for_update()
+                )
+                queued = await session.scalar(
+                    sa.select(VideoMediaJob.id).where(
+                        VideoMediaJob.slug == slug,
+                        VideoMediaJob.request_hash == digest,
+                        VideoMediaJob.status == "queued",
+                    )
+                )
+                if queued is not None:
+                    await session.rollback()
+                    return False
+                await session.execute(
+                    sa.text(
+                        "UPDATE video_pilot_budgets SET admission_token=CAST(:token AS uuid) "
+                        "WHERE slug=:slug"
+                    ),
+                    {"token": str(uuid4()), "slug": slug},
+                )
+                await session.commit()
+                return True
+
+        token_task = asyncio.create_task(token_attempt())
+        await asyncio.sleep(0.05)
+        assert not token_task.done(), "token acquire must wait for queued media commit"
+        finish_submit.set()
+        queued, created = await asyncio.wait_for(inserted_task, timeout=10)
+        assert created and queued.status == "queued"
+        assert await asyncio.wait_for(token_task, timeout=10) is False
+    finally:
+        finish_token.set()
+        finish_submit.set()
+        for task in (arm_task, denied_task, inserted_task, token_task):
+            if task is not None and not task.done():
+                task.cancel()
+                await asyncio.gather(task, return_exceptions=True)
+        try:
+            async with postgres_engine.begin() as connection:
+                await connection.execute(
+                    sa.delete(VideoMediaJob).where(
+                        VideoMediaJob.slug == slug, VideoMediaJob.request_hash == digest
+                    )
+                )
+                if previous is None:
+                    await connection.execute(
+                        sa.text("DELETE FROM video_pilot_budgets WHERE slug=:slug"),
+                        {"slug": slug},
+                    )
+                else:
+                    await connection.execute(
+                        sa.text(
+                            "UPDATE video_pilot_budgets "
+                            "SET admission_token=CAST(:token AS uuid) WHERE slug=:slug"
+                        ),
+                        {
+                            "slug": slug,
+                            "token": str(previous[0]) if previous[0] is not None else None,
+                        },
+                    )
+                if not had_column:
+                    await connection.execute(
+                        sa.text("ALTER TABLE video_pilot_budgets DROP COLUMN admission_token")
+                    )
+        finally:
+            await postgres_engine.dispose()
+
+
 @pytest.mark.asyncio
 async def test_a_synchronous_image_is_stored_and_ready_after_one_call(
     tmp_path: Path, fake_provider: FakeProvider
@@ -277,6 +694,7 @@ async def test_pilot_media_uncertain_failure_keeps_charge_and_blocks_same_reques
     monkeypatch.setattr(service, "reserve", fake_reserve)
     monkeypatch.setattr(service, "mark_uncertain", mark)
     monkeypatch.setattr(service, "settle", settle)
+    monkeypatch.setattr(service, "assert_a01_admission_open", AsyncMock())
     fake_provider.submit_result = MediaUpstreamError(502, "lost answer", "failed")
     payload = _image(slug=slug)
     failed, created = await submit_job(ctx, "image", payload)
@@ -352,6 +770,7 @@ async def test_pilot_vendor_busy_answer_keeps_the_budget_hold(
         1,
     )
     monkeypatch.setattr(service, "reserve", AsyncMock(return_value=reservation))
+    monkeypatch.setattr(service, "assert_a01_admission_open", AsyncMock())
     mark = AsyncMock()
     monkeypatch.setattr(service, "mark_uncertain", mark)
     fake_provider.submit_result = MediaUpstreamError(429, "vendor busy", "busy")

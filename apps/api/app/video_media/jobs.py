@@ -39,7 +39,15 @@ from app.video_automation.models import (
     VideoDramaEpisode,
     VideoDramaSeries,
 )
-from app.video_budget.service import is_pilot, mark_uncertain, reserve, settle
+from app.video_budget.service import (
+    A01_ADMISSION_SLUG,
+    BudgetError,
+    assert_a01_admission_open,
+    is_pilot,
+    mark_uncertain,
+    reserve,
+    settle,
+)
 from app.video_media import meter
 from app.video_media.catalog import MEDIA_VENDORS, MediaModel, find_model
 from app.video_media.models import LIVE_STATUSES, MAX_ATTEMPTS, VideoMediaJob
@@ -115,6 +123,14 @@ class MediaContext:
 def request_hash(fields: dict[str, Any]) -> str:
     canonical = json.dumps(fields, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+async def _assert_media_admission_open(ctx: MediaContext, slug: str) -> None:
+    """Join the A01 budget-row lock before a queued media transition commits."""
+    try:
+        await assert_a01_admission_open(ctx.session, slug=slug)
+    except BudgetError as error:
+        raise MediaJobFailed(error.status, error.code, error.detail) from error
 
 
 def choice_for(row: VideoAutomationSettings, kind: str) -> tuple[str, str]:
@@ -386,6 +402,8 @@ async def submit_job(
     meter_name = meter.METER_BY_KIND[kind]
     if existing is not None:
         if existing.status in LIVE_STATUSES:
+            if existing.status != "ready":
+                await _assert_media_admission_open(ctx, payload.slug)
             await ctx.session.commit()
             await advance_job(ctx, existing)
             return existing, False
@@ -401,6 +419,7 @@ async def submit_job(
                 "video_media_job_exhausted",
                 f"這個請求已經失敗 {existing.attempts} 次；改提示詞或 seed 再試",
             )
+        await _assert_media_admission_open(ctx, payload.slug)
         if not await meter.reserve(ctx.redis, meter_name, units, meter.budget_of(row, meter_name)):
             raise MediaJobFailed(
                 429, "video_media_budget_exhausted", _budget_message(meter_name, row)
@@ -423,6 +442,7 @@ async def submit_job(
         await ctx.session.commit()
         await advance_job(ctx, existing)
         return existing, False
+    await _assert_media_admission_open(ctx, payload.slug)
     if not await meter.reserve(ctx.redis, meter_name, units, meter.budget_of(row, meter_name)):
         raise MediaJobFailed(429, "video_media_budget_exhausted", _budget_message(meter_name, row))
     job = VideoMediaJob(
@@ -462,6 +482,12 @@ async def advance_job(ctx: MediaContext, job: VideoMediaJob) -> VideoMediaJob:
     """Move the job one step, under a short lock so two polls do not both call the vendor."""
     if job.status in TERMINAL:
         return job
+    if job.slug == A01_ADMISSION_SLUG:
+        # GET polls can advance a previously queued row even without a new POST. A held
+        # token must refuse before Redis or provider work. Commit releases the account
+        # lock; _submit's durable reservation is the final check before a paid call.
+        await _assert_media_admission_open(ctx, job.slug)
+        await ctx.session.commit()
     lock = f"video-media:lock:{job.id}"
     if not await ctx.redis.set(lock, "1", nx=True, ex=LOCK_TTL_SECONDS):
         job.retry_after_seconds = LOCK_RETRY_SECONDS  # type: ignore[attr-defined]
