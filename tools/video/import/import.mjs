@@ -172,9 +172,13 @@ export async function importLong({ from, workdir, env = process.env, home, force
   const meta = readMeta(JSON.parse(readFileSync(metaFile, "utf8")));
   const site = client ?? siteClient({ env, home });
   const known = await site.project(meta.slug);
-  if (known?.reviews?.some((review) => review.payload?._final_renewal || (["publish", "languages", "dubs"].includes(review.gate) && ["approved", "pending"].includes(review.status)))) {
+  // A languages batch this command sent and the owner has not approved belongs to the old cut and
+  // retains nothing: the new cut goes in, and `--languages` sends a batch that supersedes it.
+  const ownBatch = (review) => review.gate === "languages" && review.status === "pending" && review.payload?.imported === true && review.payload?.hand_pushed === true;
+  if (known?.reviews?.some((review) => review.payload?._final_renewal || (!ownBatch(review) && ["publish", "languages", "dubs"].includes(review.gate) && ["approved", "pending"].includes(review.status)))) {
     throw new UsageError(`${meta.slug} has downstream reviews or an owner renewal: stage a final-renewal candidate instead of importing over retained approvals`);
   }
+  if (known?.reviews?.some(ownBatch)) log(`${meta.slug}: its pending languages batch belongs to the old cut; send --languages again after this import`);
   if (known && !force && !(known.checklist ?? []).some((item) => item.key === IMPORTED)) {
     throw new UsageError(`${meta.slug} is already on the site and was not imported: pick another slug, or pass --force to replace what it says`);
   }

@@ -204,6 +204,19 @@ test("ordinary import cannot preserve stale approved languages or bypass a renew
   }
 });
 
+test("a new cut may replace one whose only downstream review is this command's pending languages batch", async (t) => {
+  const own = { gate: "languages", status: "pending", payload: { imported: true, hand_pushed: true } };
+  const box = fixture(t, { known: { checklist: [{ key: IMPORTED }], reviews: [own] } });
+  const lines = [];
+  const result = await importLong({ ...box, log: (line) => lines.push(line) });
+  assert.equal(result.status, "pending");
+  assert.ok(lines.some((line) => /send --languages again/.test(line)));
+  for (const review of [{ ...own, status: "approved" }, { ...own, payload: { hand_pushed: true } }]) {
+    const other = fixture(t, { known: { checklist: [{ key: IMPORTED }], reviews: [review] } });
+    await assert.rejects(importLong({ ...other }), /stage a final-renewal candidate/, "an approved or foreign batch still blocks");
+  }
+});
+
 /** An imported video on the site, its newest final this directory's cut, en and ja ticked on the panel. */
 function imported(t, { status = "pending", sha = createHash("sha256").update("the cut").digest("hex"), locales } = {}) {
   const box = fixture(t);
