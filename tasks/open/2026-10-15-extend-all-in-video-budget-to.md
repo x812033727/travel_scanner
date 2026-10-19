@@ -12,13 +12,10 @@ branch: codex/a01-pilot-deploy-evidence-20261015
 depends_on:
   - 2026-10-14-enforce-usd-25-all-in-cap
 scope:
-  - apps/api/app/video_budget/models.py
-  - apps/api/app/video_budget/service.py
   - apps/api/app/video_budget/recovery.py
   - apps/api/app/video_budget/RECONCILE.md
   - apps/api/app/video_media/admin_api.py
   - apps/api/migrations/versions/0133_story_followon_budget.py
-  - apps/api/tests/test_video_pilot_budget.py
   - apps/api/tests/test_migration_0133_story_followon_budget.py
   - tools/video/automation/client.mjs
   - tools/video/automation/client.test.mjs
@@ -53,6 +50,16 @@ The owner requested five brand-story follow-ons after the A01/B18 pilots. The ex
 Run focused `apps/api/tests/test_video_pilot_budget.py` coverage for all five slugs, original pilots and an unrelated control. Include accumulated settled/reserved/uncertain costs and next-call refusal at the cap. After separately approved deployment, use the existing read-only reconcile CLI for each exact slug; a local test is not production enforcement.
 
 ## Notes
+
+2026-10-19 owner-approved narrow scope transfer: the owner authorized releasing
+only `apps/api/app/video_budget/models.py`,
+`apps/api/app/video_budget/service.py`, and
+`apps/api/tests/test_video_pilot_budget.py` to a separate A01 database-admission
+fence task. This does not change any budget implementation in this PR. The
+`0133_story_followon_budget` migration, recovery, clients, other tests and this
+task's remaining scope stay with `codex-gpt6-budget-six`; its draft PR and
+untracked work are preserved. Coordinate any future edits to the three
+transferred files with the A01 fence task.
 
 Exact follow-on slugs: `story-five-lego-legoland`, `story-five-costco-hot-dog`, `story-five-adidas-puma-brothers`, `story-five-ajinomoto-chip-film`, `story-five-pringles-vat-case`. The 2026-10-16 quote proposes US$5 per film for B18 v2 and the five, US$30 total. The owner waived subscription/balance proof; do not ask for it again. A01/B18 pilot completion and owner viewing remain ahead of the five. This claim prepares fail-closed code and tests; it does not deploy, generate, upload or publish.
 
