@@ -83,14 +83,29 @@
       "what": "早六十年那本書是誰寫的"
     },
     {
+      "setup": "mt431",
+      "payoff": "mt404",
+      "what": "那位偉大的公主是誰"
+    },
+    {
       "setup": "mt413",
       "payoff": "mt414",
-      "what": "盧梭在哪裡想起這句話"
+      "what": "盧梭什麼時候想起這句話"
+    },
+    {
+      "setup": "mt429",
+      "payoff": "mt419",
+      "what": "偷喝的那瓶酒"
     },
     {
       "setup": "mt423",
       "payoff": "mt501",
       "what": "空著的公主位置放進了誰"
+    },
+    {
+      "setup": "mt511",
+      "payoff": "mt506",
+      "what": "維多利亞夫人那個版本可不可靠"
     }
   ],
   "youtube": {
@@ -543,10 +558,6 @@
         {
           "id": "mt208",
           "text": "開頭那封寫給媽媽的信，日期是六月二十二日。"
-        },
-        {
-          "id": "mt219",
-          "text": "她先寫：加冕，各方面都很完美。"
         }
       ]
     },
@@ -815,8 +826,8 @@
       "template": "big",
       "data": {
         "text": "「大致證明」",
-        "kicker": "卡爾，一八四三年",
-        "sub": "這句話不是她說的，是被找出來對付她的"
+        "kicker": "卡爾《黃蜂》，一八四三年",
+        "sub": "他讀到一本一七六〇年的書"
       },
       "lines": [
         {
@@ -868,7 +879,7 @@
     },
     {
       "id": "book-card",
-      "chapter": "日內瓦的一本書，和那瓶偷來的白酒",
+      "chapter": "日內瓦印出來的那本書",
       "template": "big",
       "data": {
         "text": "《懺悔錄》",
@@ -902,6 +913,21 @@
       ]
     },
     {
+      "id": "lausanne",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a printer in a leather apron standing in a small print shop in the morning, holding up two freshly bound books with plain covers side by side and comparing them with a satisfied nod, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt430",
+          "text": "同一年在洛桑印的另一個版本，也有這一句。"
+        }
+      ]
+    },
+    {
       "id": "princess-card",
       "template": "big",
       "data": {
@@ -911,8 +937,13 @@
       },
       "lines": [
         {
+          "id": "mt431",
+          "text": "那這位偉大的公主，是誰？",
+          "emotion": "問句"
+        },
+        {
           "id": "mt404",
-          "text": "盧梭沒寫她是誰：沒有名字，沒有國家，也沒有年份。",
+          "text": "盧梭沒寫：沒有名字，沒有國家，也沒有年份。",
           "emotion": "一個一個放慢"
         }
       ]
@@ -922,7 +953,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a peasant woman in a headscarf standing at a farmyard gate on a grey morning, holding an empty flour sack upside down and shaking it with a rueful smile, mild overcast light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -937,7 +968,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a bespectacled translator in a powdered wig and a plain coat sitting at a writing desk in a London study on a quiet grey morning, holding up a small pastry in one hand and a quill in the other with a pondering look, a blank manuscript in front of him, soft window light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -952,7 +983,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a bespectacled translator in a powdered wig and a plain coat sitting at a writing desk in the evening, holding up a small iced cake on a plate and squinting at it with an amused frown, a quill resting in the inkpot, warm candlelight",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -967,7 +998,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a tired middle-aged writer in a fur cap and a long dark robe sitting at a writing desk in a small English country house on a rainy day, writing on a blank page with a quill and a faraway look, rain on the window behind him, soft light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -983,7 +1014,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a tired middle-aged writer in a fur cap and a long dark robe walking along a gravel path in front of a small stone château on a grey autumn morning, carrying a bundle of papers under one arm and looking at the viewer with a weary smile, mild daylight",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -998,7 +1029,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl of about twelve with fair hair tied in a ribbon, in a pale pink dress sitting at a harpsichord in a palace music room in Vienna in the afternoon, turning to smile at the viewer with her hands on the keys, soft window light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1018,7 +1049,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a girl of about twelve with fair hair tied in a ribbon, in a pale pink dress standing in a palace schoolroom in the morning, holding a small slate with chalk scribbles that are only loops and squiggles, and pronouncing a new word with a careful little frown, soft daylight",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1032,9 +1063,9 @@
       "id": "age-card",
       "template": "big",
       "data": {
-        "text": "十來歲",
-        "kicker": "盧梭寫第一部的時候",
-        "sub": "她還住在維也納，還不到十三歲"
+        "text": "一七七〇年",
+        "kicker": "她十四歲，嫁到法國",
+        "sub": "盧梭寫第一部的時候，她還不到十三歲"
       },
       "lines": [
         {
@@ -1048,7 +1079,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl of about twelve with fair hair tied in a ribbon, in a pale pink dress standing in a small wooden pavilion on a river island on a grey spring morning, holding a new folded French gown in her arms and looking at the viewer with wide nervous eyes, mild daylight",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1063,7 +1094,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girlish queen with rosy cheeks and powdered hair in a pale blue gown sitting in an armchair in a palace salon on a rainy day, holding a new book with a plain cover open on her lap and looking up with mild curiosity, soft daylight",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1078,7 +1109,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a tired middle-aged writer in a fur cap and a long dark robe resting his chin on one hand at a writing desk on a cloudy afternoon, gazing into the distance as if remembering something long ago, a quill in his other hand, soft lamp light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1094,7 +1125,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a slim man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip standing on a cobbled street in Lyon on a cloudy day, turning toward the viewer with a sheepish grin and doffing his hat, a row of pastry shops with plain unlettered signs behind him, mild light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1110,7 +1141,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a slim man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip sitting at a schoolroom table in a grand house in the evening by lamplight, holding open a lesson book with a plain cover and pointing at it with a patient smile, two empty chairs beside him, soft lamp light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1125,7 +1156,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a slim man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip standing outside a bakery window in the afternoon, pointing at the sword on his hip and then at the bread in the window with a scandalised face, soft overcast light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1141,7 +1172,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a slim man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip stepping out of a small pastry shop with a plain sign on a quiet grey morning, clutching a round brioche bun to his chest with a relieved grin, mild overcast light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1156,7 +1187,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a slim man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip standing in a doorway in the afternoon, holding a round brioche bun up beside his face and giving the viewer a sly, sheepish wink, mild overcast light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1171,7 +1202,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a slim man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip sitting alone at a small table in an attic room on a cloudy day, holding an open novel with a plain cover in one hand and a piece of brioche in the other, chewing happily, a glass of white wine beside him, mild light from a doorway",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1191,7 +1222,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a slim man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip sitting on the edge of a narrow bed in an attic room by candlelight in the evening, holding up an empty wine bottle and peering into it with a guilty wince, warm candlelight",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1207,7 +1238,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stern white-haired master of the house in a dark velvet coat standing in a wine cellar in the afternoon, holding up an empty wine bottle and raising one eyebrow at the viewer, a lamp on the barrel beside him, soft lamp light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1238,7 +1269,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a tired middle-aged writer in a fur cap and a long dark robe sitting at a writing desk on a rainy day, scratching his head with the feather end of a quill and frowning at a blank page, a pile of crossed-out sheets beside him, soft light from a skylight",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1253,7 +1284,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a librarian with little wire spectacles and a cardigan sitting at a reading desk in the evening, peering over her spectacles at an old open book and tapping her chin with a pencil, a doubtful look, warm lamp light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1268,13 +1299,13 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a librarian with little wire spectacles and a cardigan sitting at a reading desk in the late morning, holding up a small small plain card beside an old open book and looking at the viewer with a questioning smile, soft lamp light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "mt423",
-          "text": "可是書裡的公主，名字一直空著。後來，這個位置上被放進了誰？",
+          "text": "那位沒有名字的公主，後來，被填上了誰的名字？",
           "emotion": "問句，停一拍"
         }
       ]
@@ -1285,7 +1316,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a bearded writer in his thirties in a dark frock coat standing in a bookshop on a cloudy day, holding his small old book with a plain cover open and tapping a page with one finger, looking at the viewer with a knowing look, pale daylight",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1300,7 +1331,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly countess in a lace cap and a dark shawl sitting at a writing desk in a quiet drawing room in the afternoon, writing in a blank memoir notebook with a quill and a fond, faraway smile, soft lamp light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1315,7 +1346,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a plump kind-faced princess in her fifties in a lavender gown sitting on a sofa in a palace drawing room at noon under a cloudy sky, dabbing a tear from her eye with a lace handkerchief and looking at the viewer with a kind, sorry face, soft window light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1335,7 +1366,22 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a plump kind-faced princess in her fifties in a lavender gown holding a small meat pie with a golden crust in both hands in a palace drawing room in the afternoon, offering it toward the viewer with a hopeful, gentle smile, soft lamp light",
-        "camera": "tilt up",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt525",
+          "text": "酥皮，就是包在肉派外面的那一層。"
+        }
+      ]
+    },
+    {
+      "id": "kind2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump kind-faced princess in her fifties in a lavender gown standing at a palace pantry door on a rainy day, handing a small basket of pies to someone out of frame with a warm, worried smile, soft lamp light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1355,13 +1401,13 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an elderly countess in a lace cap and a dark shawl sitting in an armchair in the morning, holding a cup of tea and leaning in with a confiding look as if repeating a story she once heard, soft window light",
-        "camera": "pull out",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "mt506",
-          "text": "可是寫回憶錄的伯爵夫人，一七八一年才出生；這件事，是她聽來的。"
+          "text": "寫回憶錄的伯爵夫人，一七八一年才出生；這件事，是她聽來的。"
         }
       ]
     },
@@ -1370,7 +1416,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a big cheerful novelist with curly hair in a waistcoat sitting at a desk piled with blank manuscript pages on a rainy day, writing fast with a quill and grinning with delight, soft daylight",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1385,7 +1431,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a librarian with little wire spectacles and a cardigan sitting at a reading desk in the evening by lamplight, holding up a thick memoir with a plain cover and squinting at it through a magnifying glass with deep suspicion, soft lamp light",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1400,7 +1446,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a librarian with little wire spectacles and a cardigan standing at a library table on a rainy afternoon, holding a thick memoir with a plain cover at arm's length and wrinkling her nose with doubt, rain streaks on the glass behind her, soft light",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1415,7 +1461,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a librarian with little wire spectacles and a cardigan standing at a long table in a library on a cloudy day, moving a small small plain card from one plain folder to the next with a wry smile, a row of folders in front of her, mild light from a doorway",
-        "camera": "tilt down",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1430,13 +1476,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a palace servant in a plain blue robe standing in a palace hall on an overcast afternoon, holding a steaming bowl of meat porridge in both hands and looking at the viewer with a baffled expression, soft light from a skylight",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "mt523",
-          "text": "那開頭那位中國皇帝，問的又是哪一句？",
+          "text": "開頭那位中國皇帝，問的又是哪一句？",
           "emotion": "問句"
         },
         {
@@ -1450,7 +1496,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a palace servant in a plain blue robe kneeling in a palace hall in the morning, lifting the lid off a steaming pot of meat porridge and glancing up at the viewer with a puzzled frown, soft lamp light",
-        "camera": "tilt up",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1481,7 +1527,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly court scholar with a long white beard in a dark Tang dynasty robe and a black cap kneeling at a low wooden desk in a quiet library hall on a rainy day, rolling up a long blank scroll with careful hands and a calm expression, stacks of bamboo slips beside him, soft lamp light",
-        "camera": "pull out",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1496,7 +1542,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a librarian with little wire spectacles and a cardigan sitting at a reading desk in the afternoon, closing a heavy book with a plain cover and holding up one finger with a careful, honest look, soft lamp light",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1511,7 +1557,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girlish queen with rosy cheeks and powdered hair in a pale blue gown standing alone in a palace corridor in the morning, holding a single plain loaf of bread in both hands and looking at the viewer with a quiet, thoughtful face, pale daylight",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1527,13 +1573,13 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a librarian with little wire spectacles and a cardigan sitting at a reading desk in the evening, closing a plain folder and looking up at the viewer with a raised eyebrow, warm lamp light",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "mt517",
-          "text": "所以，瑪麗皇后真的說過嗎？",
+          "text": "那開頭那個問題呢？瑪麗皇后真的說過嗎？",
           "emotion": "問句，停一拍"
         }
       ]
@@ -1543,7 +1589,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a librarian with little wire spectacles and a cardigan sitting at a reading desk on a rainy day, laying an old open book with blank pages down and resting both hands on it with a calm, certain look, soft lamp light",
-        "camera": "tilt down",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1558,7 +1604,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girlish queen with rosy cheeks and powdered hair in a pale blue gown sitting on a garden bench under a grey sky, holding a closed book with a plain cover on her lap and smiling calmly at the viewer, mild overcast light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
