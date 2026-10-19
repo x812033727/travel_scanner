@@ -1,6 +1,6 @@
 # S24 企劃｜阿基米德真的喊過「找到了」嗎？
 
-**狀態：R3 無付費前期已修，等待另一位獨立讀者盲評與來源／畫面覆核。**
+**狀態：R3 獨立盲評 13／13、來源及畫面覆核通過；旁白已合成，逐句音訊檢查仍有 7 個待複聽旗標，音訊關卡未核准。配樂已生成，插圖暫緩。**
 
 ## 問題
 
@@ -27,4 +27,4 @@
 
 R1 的片尾重述與兩個 404 來源網址已在 R2 修正。R2 新讀者 13 題中有 12 題「是」，仍指出 `ac045` 與 `ar202` 都說銀塊整件浸沒、`ac047` 與 `ar203` 都說取出銀塊後補水。R3 刪去重複的 `ac045`、`ar203` 兩景，保留浸沒條件與定量補水的各一次說明；留下的量杯插圖改為把水倒回盆緣。原 R2 失敗收據見 [narrative-r2-failed.json](narrative-r2-failed.json)，修訂檢查見 [verify-3.md](verify-3.md)。
 
-R3 `video.json` 有 102 句旁白、99 張卡通插圖鏡頭，估計全片 9 分 12 秒；**排除開場與片尾的正文約 8 分 12 秒**。`loops` 共 20 組，`format: drama`、`look: {"preset":"cute-mystery"}`，正文全部以插圖鏡頭承載，配樂用系列固定無人聲設定。`node tools/video/cli.mjs lint --slug curio-s24 --json` 為 0 errors／0 warnings。R3 `script.md` SHA-256 `232d24e94abccafa1501a3924f86bd3f4bacacab745a75e27c489637119dd185`；三份來源固定頁面可重開，音檔、插圖和配樂尚未付費製作，劇本仍須另一位讀者獨立盲評。固定來源及證據界線見 [research.md](research.md)，逐句依據見 [claims.md](claims.md)。
+R3 `video.json` 有 102 句旁白、99 張卡通插圖鏡頭；`loops` 共 20 組，`format: drama`、`look: {"preset":"cute-mystery"}`。R3 `script.md` SHA-256 `232d24e94abccafa1501a3924f86bd3f4bacacab745a75e27c489637119dd185`，獨立讀者的盲評、三份固定來源、逐句依據及畫面覆核見 [verify-4.md](verify-4.md)。合成旁白後，**實測排除開場與片尾的正文為 8 分 24.10 秒**；逐句檢查完成 102／102，7 個辨識旗標仍待複聽，音訊關卡未核准。配樂花費 US$0.08，插圖尚未製作；音訊與製作交接詳見 [verify-5.md](verify-5.md)。固定來源及證據界線見 [research.md](research.md)，逐句依據見 [claims.md](claims.md)。
