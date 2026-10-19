@@ -24,13 +24,13 @@
   "loops": [
     {
       "setup": "np106",
-      "payoff": "np206",
-      "what": "同一個數字差了快十公分"
+      "payoff": "np501",
+      "what": "更矮的拿破崙"
     },
     {
       "setup": "np108",
       "payoff": "np304",
-      "what": "跺腳的小孩"
+      "what": "跺腳的小個子"
     },
     {
       "setup": "np109",
@@ -70,7 +70,7 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "**尺**\n換錯了",
+      "headline": "**被畫**\n小了",
       "tag": "歷史名場面",
       "sub": "一八二一年的檔案",
       "shot": "among-giants"
@@ -218,7 +218,7 @@
       "lines": [
         {
           "id": "np102",
-          "text": "一個醫生拿著尺，在一間小屋裡寫報告。"
+          "text": "一個醫生拿著尺，在他島上的住處，替他量身高。"
         }
       ]
     },
@@ -253,7 +253,7 @@
         },
         {
           "id": "np104",
-          "text": "醫生寫下他的身高：五呎二吋。",
+          "text": "醫生記下的身高：五呎二吋。",
           "emotion": "數字放慢"
         }
       ]
@@ -269,7 +269,7 @@
       "lines": [
         {
           "id": "np106",
-          "text": "可是後來全世界記住的，是另一個更矮的拿破崙。",
+          "text": "可是後來很多人記住的，是另一個更矮的拿破崙。",
           "emotion": "語氣上揚，帶一點不可思議"
         }
       ]
@@ -290,7 +290,7 @@
         },
         {
           "id": "np108",
-          "text": "在他還活著的時候，一個英國漫畫家，已經把他畫成一個跺腳的小孩。"
+          "text": "在他還活著的時候，一個英國漫畫家，已經把他畫成一個氣得跺腳、像小孩一樣的小個子。"
         }
       ]
     },
@@ -305,7 +305,7 @@
       "lines": [
         {
           "id": "np109",
-          "text": "他身邊，永遠站著一群特別高的士兵。"
+          "text": "他身邊，常常站著一群特別高的士兵。"
         }
       ]
     },
@@ -320,7 +320,7 @@
       "lines": [
         {
           "id": "np110",
-          "text": "一百多年後，有人用他的名字，替一種脾氣取了名字。",
+          "text": "一百多年後，他的名字被拿去，當成一種脾氣的名字。",
           "emotion": "停在這裡，不揭曉"
         }
       ]
@@ -402,7 +402,7 @@
       "lines": [
         {
           "id": "np204",
-          "text": "法國的一呎，大約三十二公分半；英國的一呎，只有三十公分半。"
+          "text": "法國舊制的一呎，大約三十二公分半；英國的一呎，只有三十公分半。"
         }
       ]
     },
@@ -432,7 +432,7 @@
       "lines": [
         {
           "id": "np206",
-          "text": "還記得開頭那個更矮的拿破崙嗎？",
+          "text": "那如果把同一個數字，當成英國的尺來讀呢？",
           "emotion": "語氣親近，略上揚"
         }
       ]
@@ -459,7 +459,7 @@
       "lines": [
         {
           "id": "np207",
-          "text": "照法國的尺算，五呎二吋四分，大約是一百六十八、九公分。",
+          "text": "照法國舊制算，五呎二吋四分，大約是一百六十八、九公分。",
           "emotion": "數字放慢",
           "reveal": 1
         },
@@ -481,7 +481,7 @@
       "lines": [
         {
           "id": "np218",
-          "text": "差的那十公分，差不多是一個大人手掌的寬度。"
+          "text": "兩種讀法，差了十一公分。"
         }
       ]
     },
@@ -495,8 +495,23 @@
       },
       "lines": [
         {
+          "id": "np224",
+          "text": "其實還有第三種讀法：照一八一二年以後的日常用呎，他還會再高四公分。"
+        }
+      ]
+    },
+    {
+      "id": "metre-stick-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a quill resting across a blank report beside a folded measuring tape on a doctor's table, soft window light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
           "id": "np223",
-          "text": "要是那天醫生寫的是公尺，就不會有兩種讀法了。"
+          "text": "要是那天醫生寫的是公尺，今天就不必猜他用的是哪一種尺了。"
         }
       ]
     },
@@ -505,7 +520,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young French conscript in shirtsleeves standing barefoot against a wooden measuring post in a recruiting office in the morning, glancing sideways at the clerk with a nervous face, soft window light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -546,13 +561,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a clerk in a high collar writing heights into a large ledger at a recruiting table in the morning, a young man waiting beside the measuring post, soft window light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np222",
-          "text": "這個平均，靠的就是當年每個年輕人去當兵時，量下來的身高。"
+          "text": "這個平均，靠的是拿破崙時代徵兵時，替二十歲上下的新兵量下來的身高。"
         }
       ]
     },
@@ -561,7 +576,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a man in his forties in a grey greatcoat and a black bicorne hat worn sideways standing among a few ordinary townsmen in a village square in mild daylight, the same height or a little taller than them, looking ahead with quiet confidence, soft light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -577,7 +592,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a modern Taiwanese high-school boy in a school uniform standing beside a life-size cardboard cutout of a man in a bicorne hat in a museum in mild daylight, comparing heights with a hand over his head and grinning, soft light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -592,7 +607,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly valet in a neat waistcoat sitting at a writing desk in the evening, writing his memoirs with a fond little smile, a candle and a stack of blank pages beside him, warm candlelight",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -607,13 +622,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a British officer in a red coat writing in a small notebook on a hillside path on a windswept island in grey daylight, glancing up as if at someone walking past, soft light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np219",
-          "text": "島上一個替他量身的英國工匠，用英國的尺，記下五呎七吋。"
+          "text": "替他辦後事的英國工匠，用英國的尺，量下五呎七吋。"
         }
       ]
     },
@@ -622,7 +637,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a pocket notebook lying open on a rock beside a pencil, its page blank, a gust of wind lifting one corner, grey daylight",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -637,7 +652,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a curious Londoner in a top hat stopping on a foggy street in the afternoon, scratching his head as he looks at a blank sheet of paper in his hand, soft grey light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -654,7 +669,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a worn soldier's cap lying on a campaign drum in a camp in mild daylight, a tin cup beside it, soft light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -669,7 +684,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a slim young general in his twenties with long hair and a plain blue coat studying a map on a drum in a camp in Italy in mild daylight, his face intense, soft light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -684,7 +699,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a long wooden bridge over a river under a smoky sky, one young officer running forward across it waving his hat, the far bank hazy with gunsmoke, soft hazy light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -699,7 +714,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young French infantryman in a tall shako running across a wooden bridge through drifting smoke, mouth open in a shout and bayonet forward, hazy light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -715,13 +730,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a group's oldest soldier with a grey moustache clapping his hands and laughing around a campfire at night, raising a cup toward someone off frame, warm firelight",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np417",
-          "text": "他晚年在島上說：那時每打完一仗，老兵就聚起來，替這個年輕將軍「升」一級。"
+          "text": "陪他到島上的拉斯卡斯在書裡寫：那時每打完一仗，老兵就聚起來，替這個年輕將軍「升」一級。"
         }
       ]
     },
@@ -730,7 +745,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a row of grinning old soldiers around a campfire at night each raising one hand as if voting, one of them winking, warm firelight",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -745,7 +760,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of the old soldier's weathered face by firelight, eyes crinkled in an affectionate smile, the dark night behind him",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -765,7 +780,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of the slim young general sharing a crust of bread with a grinning old soldier beside a campfire at night, both laughing, warm firelight",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -780,13 +795,13 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of the white cliffs of a coastline seen from the sea under a mild grey sky, one small fishing boat in the foreground with a fisherman looking toward the cliffs, soft light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np419",
-          "text": "可是「矮子拿破崙」，其實是在海峽對面誕生的。",
+          "text": "可是把他畫成矮子的，主要在海峽對面。",
           "emotion": "收著，不講破"
         }
       ]
@@ -797,13 +812,13 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a London print shop on a busy street in the afternoon, its bow window full of hanging prints, one gentleman in a top hat bending close to the glass to look, soft overcast light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np301",
-          "text": "一八〇三年，倫敦一間版畫店的櫥窗裡，開始掛出他的畫像。"
+          "text": "一八〇三年，倫敦的版畫店櫥窗裡，常常掛著他。"
         }
       ]
     },
@@ -812,13 +827,13 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a grey sea channel under a heavy sky, one British warship with full sails cutting through the waves, the faint line of a coast on the horizon",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np302",
-          "text": "那一年，英國和法國又打了起來。"
+          "text": "那年五月，英國和法國又打了起來。"
         }
       ]
     },
@@ -827,7 +842,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a sharp-faced English engraver in a waistcoat with rolled shirtsleeves bent over a copper plate at a workbench in the morning, engraving with a small burin and grinning mischievously, a lamp beside him, soft window light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -847,7 +862,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an engraver's hands resting on a blank copper plate, a burin set down beside it and a small blank portrait sketch pinned above the bench, soft window light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -863,13 +878,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a tiny general in an oversized bicorne hat and boots stamping on a floor and shaking a little sword with a red furious face, a toppled stool beside him, soft light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np304",
-          "text": "還記得開頭那個跺腳的小孩嗎？",
+          "text": "還記得開頭那個跺腳的小個子嗎？",
           "emotion": "語氣親近"
         }
       ]
@@ -879,7 +894,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a tiny general's furious red face under an enormous bicorne hat, cheeks puffed and mouth wide open in a yell, a small sword raised beside it, soft light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -894,7 +909,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an enormous black bicorne hat sitting on a tiny figure's head on a cluttered engraver's desk, the figure barely taller than an inkpot beside it, soft lamp light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -924,7 +939,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a row of very tall grenadiers in towering bearskin caps standing at attention in a palace courtyard in mild daylight, one drummer boy walking past them looking up in awe, soft light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -944,7 +959,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a recruiting sergeant in a blue uniform holding a measuring rod above a very tall young recruit's head in a barracks yard in the morning, nodding approvingly, soft light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -959,7 +974,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a tall black bearskin cap resting on a wooden stand beside a musket, a red plume on its side, soft window light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -974,7 +989,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a man in his forties in a grey greatcoat and a black bicorne hat worn sideways standing between two towering grenadiers in bearskin caps on a parade ground in mild daylight, glancing up at one of them with a wry little smile, soft light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -989,7 +1004,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a man in his forties in a grey greatcoat and a black bicorne hat worn sideways walking past a line of plumed officers in gold-braided uniforms on a parade ground in mild daylight, his own coat plain grey and his hat bare of feathers, soft light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1004,7 +1019,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of two diners at a small table carving a big round pudding shaped like a globe, a tall thin man in a tall hat on one side and a very small man in a bicorne hat on the other, both grinning greedily, soft lamp light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1019,13 +1034,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a very tall thin gentleman in a tall hat standing beside a very short man in a bicorne hat at a dinner table, the short man standing on tiptoe to reach the table, soft lamp light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np308",
-          "text": "首相又高又瘦，他又矮又小。"
+          "text": "首相又高又瘦，他又矮又壯。"
         }
       ]
     },
@@ -1034,13 +1049,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a large jolly king in a crown and ermine robe holding a tiny man in a bicorne hat on the palm of his hand and peering at him through a small spyglass, a throne room behind them, soft light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np317",
-          "text": "更誇張的是另一張：英國國王把他捏在手心，拿著望遠鏡看，像在看一隻小蟲。",
+          "text": "更誇張的是另一張：英國國王把他托在手心，拿著望遠鏡看，罵他是可惡的小爬蟲。",
           "emotion": "帶一點好笑"
         }
       ]
@@ -1050,7 +1065,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a laughing young apprentice in a cap pressing his nose to a print-shop window in the afternoon, pointing at a hanging print, other blank prints hung behind the glass, soft light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1065,7 +1080,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a tall stack of hand-coloured prints on a shop counter, the top one blank, a coin and a pair of spectacles beside it, soft lamp light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1084,7 +1099,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a French diplomat in a high-collared coat handing a sealed letter across a desk to a stiff British official in an office in the afternoon, both faces cool and polite, soft window light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1104,7 +1119,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a sharp-faced English engraver in a waistcoat with rolled shirtsleeves sitting by a window in his room in the evening, an unfinished blank plate on his lap and his tools set aside, gazing out with a tired face, soft fading light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1119,7 +1134,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a large warship anchored in a harbour on a summer afternoon, dozens of small rowing boats crowded around it, one woman in a bonnet in the nearest boat standing up and shading her eyes to look, soft light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1134,7 +1149,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man in shirtsleeves rowing hard in a small boat across a crowded harbour on a summer afternoon, grinning with excitement, other little boats around him, soft light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1150,13 +1165,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a man in a top hat sitting in a small rowing boat in a harbour in the afternoon, squinting across the water with a measuring stick held up uselessly in one hand, soft light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np322",
-          "text": "可是隔著一段海，從小船上看過去，誰也量不出他多高。"
+          "text": "船上的英國艦長後來也在書裡寫：他很結實，大約五呎七吋高。"
         }
       ]
     },
@@ -1165,7 +1180,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a small boy in an old-fashioned cap in a London street in the afternoon, stamping his foot and waving a stick like a sword to imitate a tantrum, a laughing woman behind him, soft light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1180,7 +1195,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a younger English engraver with bushy sideburns bent over a drawing board in the afternoon, sketching with a gleeful grin, a pile of blank prints beside him, soft window light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1195,7 +1210,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a blank report sheet and a small satirical print lying side by side on a desk, a magnifying glass resting between them, soft lamp light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1211,30 +1226,34 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a hand placing a small satirical print of a tiny general next to a ruler on a desk, the print's figure ending exactly at a low mark on the ruler, soft lamp light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np315",
-          "text": "要是有人這樣讀那份報告，就剛好對上了漫畫裡那個小個子。",
+          "text": "要是有人這樣讀那個數字，就剛好對上了漫畫裡那個小個子。",
           "emotion": "停一拍"
         }
       ]
     },
     {
       "id": "borrowed-name",
-      "chapter": "「拿破崙情結」，是他死後一百年才取的名字",
+      "chapter": "「拿破崙情結」，是他死後一百年才冒出來的名字",
       "template": "shot",
       "data": {
         "prompt": "Close-up of a small satirical print of a tiny general in a big hat lying on a 1920s desk next to an open notebook, a fountain pen resting across both, soft lamp light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np501",
-          "text": "從此，在說英語的世界裡，拿破崙就是一個小個子。"
+          "text": "還記得開頭那個更矮的拿破崙嗎？"
+        },
+        {
+          "id": "np530",
+          "text": "漫畫一畫就是十幾年；在說英語的世界裡，他就這樣成了一個小個子。"
         }
       ]
     },
@@ -1243,14 +1262,29 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a bald early twentieth-century psychologist with round spectacles and a moustache leaning back in a leather chair in a Vienna study in the afternoon, gesturing with an open hand as he explains, books behind him, soft lamp light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np528",
-          "text": "還記得開頭那個脾氣嗎？這個名字，最早出現在一九二〇年代的美國報紙上。",
+          "text": "還記得開頭那個脾氣嗎？這個名字，目前查得到最早的，在一九二三年的美國報刊上。",
           "emotion": "語氣親近"
+        }
+      ]
+    },
+    {
+      "id": "old-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a yellowed 1920s American newspaper page lying folded on a desk, a pair of reading glasses resting on it, its columns too small to read, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "np531",
+          "text": "那時候，它說的是自以為了不起，還跟個子無關。"
         }
       ]
     },
@@ -1259,7 +1293,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a fountain pen writing in a blank notebook on a leather-topped desk, a pair of round spectacles folded beside it, soft lamp light",
-        "camera": "pull out",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1274,7 +1308,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a small boy standing on tiptoe on a wooden crate in a schoolyard in the afternoon, puffing out his chest and reaching up to touch a high mark on a wall, soft light",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1289,13 +1323,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a short man in a 1930s office suit pounding a desk with his fist and shouting, a taller colleague leaning back in surprise, soft window light",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np504",
-          "text": "套在矮個子身上，就成了：個子矮，所以特別好勝、特別愛吵。"
+          "text": "後來這個詞才專門拿來說矮個子：個子矮，所以特別好勝、特別愛吵。"
         }
       ]
     },
@@ -1304,13 +1338,13 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an open dictionary on a reading stand, its pages blank, a magnifying glass resting on it, soft window light",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np505",
-          "text": "這種脾氣，就被叫做「拿破崙情結」。"
+          "text": "這就是今天說的「拿破崙情結」。"
         }
       ]
     },
@@ -1319,7 +1353,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young woman in a modern sweater looking up a word in a thick dictionary at a library table in the afternoon, eyebrows raised in amusement, soft window light",
-        "camera": "tilt down",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1334,7 +1368,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a man in his forties in a grey greatcoat and a black bicorne hat worn sideways sitting on a garden bench on a windswept island in grey daylight, reading a book with a puzzled raised eyebrow, a gnarled tree behind him, soft light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1354,13 +1388,18 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of two young men of different heights sitting across a table in a plain university lab in mild daylight, each holding a game controller, a researcher with a clipboard watching, soft light",
-        "camera": "tilt up",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np509",
-          "text": "至於矮個子是不是真的比較好鬥？二〇〇七年英國一個實驗說：沒有。"
+          "text": "至於矮個子，是不是真的比較好鬥？",
+          "emotion": "問句"
+        },
+        {
+          "id": "np533",
+          "text": "二〇〇七年英國一個實驗說：沒有。"
         }
       ]
     },
@@ -1369,13 +1408,13 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a small pile of coins divided unevenly into two heaps on a lab table, a hand hovering over the larger heap, soft lamp light",
-        "camera": "pull out",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np529",
-          "text": "二〇一八年荷蘭的實驗發現，矮個子不會比較愛動手，但分東西時，會替自己多留一點。"
+          "text": "二〇一八年荷蘭的實驗發現，矮個子不會比較愛動手，但自己作主分東西時，會多留一點給自己。"
         }
       ]
     },
@@ -1384,7 +1423,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a modern office worker laughing and pointing at a shorter colleague who is gesturing angrily at a coffee machine in mild daylight, soft window light",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1399,13 +1438,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a grinning schoolchild in a modern hoodie holding a ruler up to a small Napoleon figurine on a classroom desk in the afternoon, soft window light",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np510",
-          "text": "我們覺得，這個名字取得這麼順口，靠的就是前面那一百年。",
+          "text": "我們覺得，這個名字取得這麼順口，靠的是之前一百多年的漫畫。",
           "emotion": "像跟朋友說自己的看法"
         }
       ]
@@ -1414,15 +1453,20 @@
       "id": "answer",
       "template": "big",
       "data": {
-        "text": "矮的是尺，不是他",
+        "text": "他不矮，是被畫小了",
         "kicker": "一八二一年的五呎二吋",
-        "sub": "兩種尺的落差，加上畫了十幾年的漫畫"
+        "sub": "比當時的平均還高幾公分"
       },
       "lines": [
         {
           "id": "np511",
-          "text": "還記得小屋裡那個拿著尺的醫生嗎？他寫下的五呎二吋，一直都是對的。",
-          "emotion": "放慢，像蓋章"
+          "text": "還記得那個拿著尺的醫生嗎？",
+          "emotion": "放慢"
+        },
+        {
+          "id": "np532",
+          "text": "他記下的五呎二吋，跟男僕、英國工匠、艦長記下的，都對得上。",
+          "emotion": "像蓋章"
         }
       ]
     },
@@ -1431,7 +1475,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a plain manila folder lying on a wooden desk, a hand pressing a rubber stamp down onto its cover, light from a desk lamp on the left",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1449,7 +1493,7 @@
         "title": "存檔",
         "cta": "訂閱奇聞檔案局",
         "lines": [
-          "矮的是尺，不是他"
+          "他不矮，是被畫小了"
         ]
       },
       "lines": [
