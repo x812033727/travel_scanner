@@ -65,3 +65,6 @@ scope:
 - 2026-10-19（同上）：S18 大綱草稿 `docs/videos/curio-s18/brief.md`（A 案「一個數字的旅程」建議、B 案「小下士的一生」、
   不採用的 C 案「拿破崙情結的科學」），等站主選。查核清單 `topic-checks/S18.md` 17 列，全部 UNOPENED：網路政策也擋掉
   en.wikisource.org、gallica.bnf.fr、www.napoleon-series.org、archive.org、www.britishmuseum.org。
+- 2026-10-19（同上）：站主選 S18 A 案。稿子寫完：`docs/videos/curio-s18/video.json`、`script.md`、`NOTES.md`；
+  lint 0 錯誤（警告：8.2 分鐘、sources 故意空著）；盲評九輪，第九輪 13／13。查核清單擴到 34 列，仍全部 UNOPENED。
+  三集的稿子都寫完了；這張票剩下的是三集的查核（要開放原文網站）與之後的旁白、插圖、成片、實測。
