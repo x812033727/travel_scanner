@@ -24,14 +24,14 @@ scope:
 
 - [x] 8 分鐘以上可審閱企劃、固定史料、逐句主張、`video.json`、`script.md`。
 - [x] `lint` 為 0 errors、0 warnings，故事長度至少 8 分鐘。
-- [ ] 完成獨立盲讀與來源覆核，再交由系列負責者決定付費媒體步驟。
+- [x] 完成獨立盲讀與來源覆核，再交由系列負責者決定付費媒體步驟。
 
 ## Steps
 
 - [x] 核對固定《三國志》卷 32／36、《三國演義》第 41／42 回及建安十三年紀年。
 - [x] 寫六章 99 句、90 張插圖的可愛漫劇旁白和分鏡。
 - [x] 為每句建立史料或小說層級對照，避免把五千騎畫成橋頭實數。
-- [ ] 由未讀企劃與史料的讀者盲讀旁白，修正故事節奏並記錄回執。
+- [x] 由未讀企劃與史料的讀者盲讀旁白，修正故事節奏並記錄回執。
 
 ## How to verify
 
@@ -66,3 +66,5 @@ node tools/video/cli.mjs narrative --slug curio-s07
 2026-10-19：`6cbb…` 兩位真正來源隔離讀者同版雙讀分別 **13/13** 與 **12/13**；後者唯一 `no_toc` 不接受章首「得從…說起」，其餘章節銜接與無重複均過。固定史料抽核無主張阻斷。為消除單一爭議，章首改成直接事件句，兩個敘事掛鉤改指實際回答，兩張畫面移除第二人暗示。**新劇本 SHA-256 `2aecf1a65647b9ee23b22658250c03fb18edc3e9c5f6d1cfe066ef8da390c822`**，95 句／86 插圖／六章、估 8.1 分、lint 0/0。詳 [`verify-7.md`](../../docs/videos/curio-s07/verify-7.md)、兩份原始盲讀與來源表；待新確切雜湊盲讀，不啟動付費媒體。
 
 2026-10-19：`2aec…` 新來源隔離讀者確切雜湊盲讀 **13/13**，固定《三國志》卷 32/35/36 與《演義》第 41/42 回抽核無阻斷。`eb070` 掛鉤 metadata 微調到實際回答的 `eb071`，重產劇本 SHA 與 narrative hash 均維持不變、lint 0/0。現版 outline/script 已依使用者既有授權本機核准；Gemini／Sulafat 95 句旁白合成已開始，須等待實際片長和 `check-audio`。**S07 插圖仍暫停**。原始十三題及 CLI 通過回執、史料抽核見 [`verify-8.md`](../../docs/videos/curio-s07/verify-8.md)、[`blind-8.json`](../../docs/videos/curio-s07/blind-8.json)、[`narrative-8.json`](../../docs/videos/curio-s07/narrative-8.json)。
+
+2026-10-19：初版旁白 95 句實長 09:04.6，首輪 `check-audio` 六句誤辨；定點重錄後仍有三句同音混淆。僅改 `eb061/065/071` 辨音詞，新劇本完整 SHA-256 **`73ace39d6b07a68d59bf077b6bd6e30a565fb5d86baed910d6f774183eb169b2`**，95 句／86 鏡頭／lint 0/0。新的來源隔離讀者 raw **13/13**、CLI round 5 通過，固定《演義》第 42 回對改句抽核成立；原始證據及處理見 [`verify-9.md`](../../docs/videos/curio-s07/verify-9.md)、[`blind-9.json`](../../docs/videos/curio-s07/blind-9.json)、[`narrative-9.json`](../../docs/videos/curio-s07/narrative-9.json)。已依站主持續授權重核准劇本，只新配三句，最終旁白 **09:04.3**，`check-audio` **95/95、0 旗標**；後台 audio 審聽 pending，本機代記核准不冒稱站主親聽。Lyria 配樂花 US$0.08，實檔 177.633 秒、組片須循環並查接縫。**S07 插圖尚未啟動**，等系列負責者排共享配額。
