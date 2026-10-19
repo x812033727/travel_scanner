@@ -32,7 +32,7 @@ scope:
 
 ## Definition of done
 
-- [ ] S01、S09、S18 各有 `topic-checks/<id>.md`（研究加獨立覆核，照 `2026-10-10-curio-topic-bank-checks` 的格式），通過的題目在 `topics.json` 改 `checked`。
+- [x] S01、S09、S18 各有 `topic-checks/<id>.md`（研究加獨立覆核，照 `2026-10-10-curio-topic-bank-checks` 的格式），通過的題目在 `topics.json` 改 `checked`。
 - [ ] 三集照 `curio-episode` skill 做完：大綱站主選、稿子有 `loops` 表、lint 0 錯誤、旁白站主聽過、插圖整集一次報價一次畫、成片過品管、上架包。
 - [ ] 每集的實測（插圖張數與重畫、花費、旁白長度、品管分數）寫回 README §成本與產能。
 
