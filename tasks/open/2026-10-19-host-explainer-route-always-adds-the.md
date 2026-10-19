@@ -1,7 +1,7 @@
 ---
 id: 2026-10-19-host-explainer-route-always-adds-the
 title: Host explainer route always adds the curio music bed and asks two story readers
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-opus-5.5-curio-host
@@ -49,3 +49,4 @@ scope:
   就算過）。其他影片仍只問一位，payload 只有 `narration`、`questions`，紀錄裡沒有 `readers`。
 - 部署前：cute-mystery 單集的盲評 payload 變了（多了 `reader`），主機上不能有盲評做到一半的 cute-mystery 單集。
 
+PR: https://github.com/x812033727/travel_scanner/pull/1589 (stacked on #1577; merge that first).
