@@ -1,0 +1,1665 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s24",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，清楚區分維特魯威後來的故事、量水的推理與沒有現場證據的喊聲。",
+    "performance": "國王收到同重量皇冠時有疑惑；浴盆發現輕快但不誇張；三次排水比較說清起點和差異；結尾平實說出來源邊界。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "ac004",
+      "payoff": "ac063",
+      "what": "開場的等重疑案由皇冠與純金塊的排水差回收"
+    },
+    {
+      "setup": "ac005",
+      "payoff": "ac025",
+      "what": "浴盆裡水隨浸入深度溢出"
+    },
+    {
+      "setup": "ac006",
+      "payoff": "ac027",
+      "what": "浸入的身體占去水中空間"
+    },
+    {
+      "setup": "ac007",
+      "payoff": "ac090",
+      "what": "維特魯威寫下喊聲，但無現場證實"
+    },
+    {
+      "setup": "ac008",
+      "payoff": "ac063",
+      "what": "皇冠比等重純金塊排水更多"
+    },
+    {
+      "setup": "ac015",
+      "payoff": "ac016",
+      "what": "藏在皇冠裡的是被指控的銀替金"
+    },
+    {
+      "setup": "ac026",
+      "payoff": "ac027",
+      "what": "水讓出浸入物體的體積"
+    },
+    {
+      "setup": "ac034",
+      "payoff": "ac040",
+      "what": "先做同重量純金與純銀參照"
+    },
+    {
+      "setup": "ac039",
+      "payoff": "ac040",
+      "what": "同重量控制重量差、比較體積"
+    },
+    {
+      "setup": "ac046",
+      "payoff": "ac047",
+      "what": "用量器補水到原水位"
+    },
+    {
+      "setup": "ac052",
+      "payoff": "ac053",
+      "what": "等重金塊排水少於銀塊"
+    },
+    {
+      "setup": "ac057",
+      "payoff": "ab011",
+      "what": "彎曲皇冠無須量出曲線，完全浸沒後可比較排水體積"
+    },
+    {
+      "setup": "ac062",
+      "payoff": "ac063",
+      "what": "皇冠與金塊等重但排水不同"
+    },
+    {
+      "setup": "ac069",
+      "payoff": "ac070",
+      "what": "水量差不唯一指認銀"
+    },
+    {
+      "setup": "ac080",
+      "payoff": "ac082",
+      "what": "留下喊聲的只有維特魯威後來的書"
+    },
+    {
+      "setup": "ac092",
+      "payoff": "ac093",
+      "what": "可以檢查實驗邏輯而非現場喊聲"
+    },
+    {
+      "setup": "ac072",
+      "payoff": "ac074",
+      "what": "原文沒有水量數字、量器尺寸和精度，無法重算偷金量"
+    },
+    {
+      "setup": "ac086",
+      "payoff": "ac087",
+      "what": "拉丁原文與英譯本屬同一作品，不能算兩位見證人"
+    },
+    {
+      "setup": "ap001",
+      "payoff": "ap004",
+      "what": "普魯塔克提兩人合作但沒有浴盆或喊聲，沉默不能證明真偽"
+    },
+    {
+      "setup": "ac021",
+      "payoff": "ac063",
+      "what": "不拆皇冠，仍可用等重樣本的排水差檢查體積"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "阿基米德真的喊過「找到了」？金冠與浴盆的維特魯威記載｜奇聞檔案局",
+    "description": "古羅馬作者維特魯威寫下希羅金冠、浴盆溢水與阿基米德喊「找到了」的故事。本集跟著等重金塊、銀塊和皇冠的排水比較，看這段記載說的究竟是哪種實驗。拉丁原文確有希臘字 ευρηκα ευρηκα，但英譯與拉丁本是同一作品，不能當兩份獨立目擊證詞。這段故事記錄方法與指控，沒有提供當場喊聲的獨立證據、精確量水數字或量測誤差；僅憑排水差也不能唯一辨認摻入材質。\n\n本片是來源標明的故事與卡通示意，不是浴場、王宮或皇冠的史實重建。來源見 research.md 與 claims.md，查核至 2026-10-19。",
+    "tags": [
+      "阿基米德",
+      "尤里卡",
+      "Eureka",
+      "希羅",
+      "金冠",
+      "維特魯威",
+      "建築十書",
+      "排水法",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "同重\n**排水不同**",
+      "tag": "歷史名場面",
+      "sub": "金冠入水的答案",
+      "shot": "crown-008"
+    }
+  },
+  "sources": [
+    {
+      "title": "Vitruvius, De architectura, Book IX preface 9–12, English translation",
+      "url": "https://github.com/GITenberg/The-Ten-Books-on-Architecture/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Vitruvius, De architectura, Book IX preface 9–12, Latin text",
+      "url": "https://github.com/GITenberg/Vitruvii-De-architectura-libri-decem/blob/78eb1eed88044d5cac42a3dd811d5806e4e04cfb/51812-0.txt",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "crown-001",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a stone palace hall, one court attendant holding a plain golden crown, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac001",
+          "text": "一頂外表精美的金冠，被送到敘拉古國王希羅面前。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ],
+      "chapter": "希羅收到一頂重量正好的金冠"
+    },
+    {
+      "id": "crown-002",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone palace hall, one court clerk checking a balanced scale beside the crown, diffuse light from a cloudy sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac002",
+          "text": "照維特魯威後來的記載，它和國王交出的黃金一樣重。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-003",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a metalworking workshop, one court reader holding a blank accusation scroll beside a crown sketch, muted doorway light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac003",
+          "text": "後來，有人指控工匠偷走黃金，改加進等重的銀。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-004",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a stone palace hall, one king studying the balanced scale with a puzzled face, soft indoor light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac004",
+          "text": "如果重量沒變，國王要怎麼查？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone bathhouse, one bather lowering his bare shoulders into a full stone bath, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac005",
+          "text": "受託的阿基米德，會在浴盆看見什麼？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-006",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a stone bathhouse, one bather watching water spill over a stone bath rim, diffuse light from a cloudy sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac006",
+          "text": "水從盆緣流下時，他為何那麼興奮？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-007",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a stone bathhouse, one bather hurrying behind a tall folding screen, bare shoulders visible, muted doorway light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac007",
+          "text": "維特魯威還說，他奔出浴場喊「找到了」；真有這回事嗎？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-008",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone test chamber, one experimenter lowering a plain golden crown into a brim-full vessel, soft indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac008",
+          "text": "皇冠最後入水，又會溢出多少水？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-010",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a stone palace hall, one king holding a plain golden crown before a small temple model, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac010",
+          "text": "開場那頂金冠，希羅打算放進神殿，履行先前許下的願。"
+        }
+      ],
+      "chapter": "希羅把金冠疑案交給阿基米德"
+    },
+    {
+      "id": "crown-011",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone palace hall, one king studying a blank agreement page on a desk, diffuse light from a cloudy sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac011",
+          "text": "他與工匠談好價錢，才把製作任務交出去。"
+        }
+      ]
+    },
+    {
+      "id": "crown-012",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a metalworking workshop, one court clerk balancing a plain gold mass on a simple scale, muted doorway light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac012",
+          "text": "那批黃金交到工匠手上之前，國王就量好它的重量。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-013",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a stone palace hall, one king examining a plain golden crown close to his face, soft indoor light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac013",
+          "text": "到了約定日，工匠送回做工精美的皇冠，希羅十分滿意。"
+        }
+      ]
+    },
+    {
+      "id": "crown-014",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone palace hall, one court clerk peering at a simple balance scale, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac014",
+          "text": "可那張秤，只查得到總重量。"
+        }
+      ]
+    },
+    {
+      "id": "crown-015",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a metalworking workshop, one court reader turning a blank accusation scroll beside the crown, diffuse light from a cloudy sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac015",
+          "text": "它查不到的，是皇冠裡的哪件事？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-016",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a stone palace hall, one court reader pointing at an imagined silver patch in a crown sketch, muted doorway light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac016",
+          "text": "開頭那項指控，是金被等重的銀替換。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-017",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone palace hall, one court clerk looking at a balanced scale with metal samples, soft indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac017",
+          "text": "換了金屬，秤盤仍可能平衡。"
+        }
+      ]
+    },
+    {
+      "id": "crown-018",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a metalworking workshop, one king studying the surface of a plain golden crown, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac018",
+          "text": "好看的表面，也無法代替材料證明。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-019",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a stone palace hall, one king pressing a hand to his brow beside the crown, diffuse light from a cloudy sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac019",
+          "text": "希羅認為自己被騙，卻找不到能指出偷金的辦法。"
+        }
+      ]
+    },
+    {
+      "id": "crown-020",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone palace hall, one king holding a blank note beside the golden crown, muted doorway light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac020",
+          "text": "於是，他把難題交給阿基米德。"
+        }
+      ]
+    },
+    {
+      "id": "crown-021",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a metalworking workshop, one mathematician examining an intact golden crown on a cloth, soft indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac021",
+          "text": "這頂完整的皇冠，能用什麼辦法在不拆開時查出材料差？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-023",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a stone bathhouse doorway, one mathematician entering with a thoughtful face, diffuse light from a cloudy sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac023",
+          "text": "阿基米德滿腦子還是皇冠難題，就這樣走進了浴場。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-024",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a stone bathhouse, one bather lowering himself into a brim-full stone bath, muted doorway light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac024",
+          "text": "他坐進浴盆，水越過盆緣。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ],
+      "chapter": "阿基米德在浴盆看見溢水"
+    },
+    {
+      "id": "crown-025",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a stone bathhouse, one bather noticing water flowing down the bath exterior, soft indoor light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac025",
+          "text": "他看見身體往下沉一點，水就多從盆邊流出一點。"
+        }
+      ]
+    },
+    {
+      "id": "crown-026",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone bathhouse, one bather staring at water spreading across a stone floor, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac026",
+          "text": "這些水，究竟讓出了什麼？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-027",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a stone bathhouse, one bather pointing at the waterline along his shoulder, diffuse light from a cloudy sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac027",
+          "text": "讓出的是身體浸進水裡的空間。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-029",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone bathhouse, one bather rising behind a tall folding screen, muted doorway light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac029",
+          "text": "在維特魯威的敘述裡，這個發現讓他一下子從浴盆跳起。"
+        }
+      ]
+    },
+    {
+      "id": "crown-030",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a stone bathhouse, one bather hurrying behind a tall folding screen, bare shoulders visible, soft indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac030",
+          "text": "書裡甚至寫，他就這樣裸體跑向家裡。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-031",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a stone bathhouse, one bather calling out behind a tall folding screen, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac031",
+          "text": "他一路反覆用希臘話喊「找到了」。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-032",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone bathhouse, one investigator staring at a dry golden crown on a bathhouse bench, diffuse light from a cloudy sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac032",
+          "text": "可是這時，皇冠還沒放進水裡。"
+        }
+      ]
+    },
+    {
+      "id": "crown-ab005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone bathhouse, one mathematician looking from a bath to a dry crown on a bench, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ab005",
+          "text": "所以「找到了」不是說皇冠已被驗出摻銀。"
+        }
+      ]
+    },
+    {
+      "id": "crown-033",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a stone bathhouse, one experimenter studying ripples beside the crown, soft indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac033",
+          "text": "他找到的，是能比較體積的辦法。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-034",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a stone test chamber, one investigator carrying a plain water vessel toward a table, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac034",
+          "text": "可浴盆裡占水位的是身體，要怎樣換成一頂皇冠？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-035",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone test chamber, one mathematician holding a plain gold sample beside a water vessel, diffuse light from a cloudy sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac035",
+          "text": "先得知道，純金會排開多少水。"
+        }
+      ]
+    },
+    {
+      "id": "crown-036",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a stone test chamber, one experimenter setting a silver sample on a simple scale, diffuse light from a cloudy sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac036",
+          "text": "而同重量的銀，會不會不一樣？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-037",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a metalworking workshop, one metalworker shaping a plain metal sample on a bench, soft indoor light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac037",
+          "text": "維特魯威說，他做了金塊和銀塊。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ],
+      "chapter": "金塊與銀塊輪流浸入滿水容器"
+    },
+    {
+      "id": "crown-038",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an open stone terrace, one court clerk aligning a metal sample on a simple scale, mild overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac038",
+          "text": "兩塊金屬不只彼此一樣重，連皇冠也在同一重量上。"
+        }
+      ]
+    },
+    {
+      "id": "crown-039",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a metalworking workshop, one experimenter inspecting separate metal samples beside a vessel, diffuse light from a cloudy sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac039",
+          "text": "驗的是皇冠，為何先量兩塊金屬？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-040",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on an open stone terrace, one mathematician examining a full vessel beside two metal samples, soft shade under a pale sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac040",
+          "text": "因為重量先設成一樣，排水的差別才說得出體積的差別。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-041",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a metalworking workshop, one mathematician filling a broad vessel to its brim, soft indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac041",
+          "text": "他把一只大容器裝到盆緣，先固定每次入水的起點。"
+        }
+      ]
+    },
+    {
+      "id": "crown-ab007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an open stone terrace, one experimenter looking into a half-full plain vessel, mild overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ab007",
+          "text": "如果水只半滿，金屬進去也可能一滴都不溢。"
+        }
+      ]
+    },
+    {
+      "id": "crown-042",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an open stone terrace, one investigator lowering a plain silver mass into a full vessel, diffuse light from a cloudy sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac042",
+          "text": "第一個下水的，是銀塊。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-043",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a metalworking workshop, one mathematician watching water spill around a silver mass, muted doorway light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac043",
+          "text": "銀塊沉下，水從邊緣滿出。"
+        }
+      ]
+    },
+    {
+      "id": "crown-044",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an open stone terrace, one experimenter pointing at the displaced water beside a vessel, diffuse grey sky light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac044",
+          "text": "那是銀塊占去位置，把水擠開。"
+        }
+      ]
+    },
+    {
+      "id": "crown-045",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a metalworking workshop, one investigator watching water spill over a full vessel rim, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac045",
+          "text": "當銀塊整個沉入水中，溢出的體積就等於它在水下占的體積。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-046",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an open stone terrace, one mathematician holding a small blank measuring cup, diffuse light from a cloudy sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac046",
+          "text": "流走的水，要怎樣量出來？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-047",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a metalworking workshop, one experimenter pouring measured water into a broad vessel, muted doorway light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac047",
+          "text": "銀塊取出後，他用一個定量量器補水，直到水重新到盆緣。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-048",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an open stone terrace, one investigator checking a waterline beside a measuring cup, diffuse grey sky light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac048",
+          "text": "補回多少，就知道先前少了多少。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-050",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an open stone terrace, one mathematician setting a silver sample beside a full vessel, mild overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac050",
+          "text": "那份補回去的水，成了等重純銀的第一個體積參照。"
+        }
+      ]
+    },
+    {
+      "id": "crown-051",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an open stone terrace, one experimenter refilling a broad vessel to its rim, diffuse light from a cloudy sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac051",
+          "text": "換純金塊入水之前，容器也得先回到同一條滿水線。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-052",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a metalworking workshop, one investigator lowering a plain gold mass into the vessel, muted doorway light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac052",
+          "text": "等重金塊下水，水會一樣多嗎？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-053",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an open stone terrace, one mathematician watching a small stream spill beside a gold mass, diffuse grey sky light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac053",
+          "text": "維特魯威寫下另一個結果：這回補回的水量，比銀塊那回少。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-054",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a metalworking workshop, one experimenter comparing two plain metal masses in his hands, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac054",
+          "text": "同重量的金，占的空間比銀小。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-056",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a metalworking workshop, one investigator glancing from a scale to a water vessel, diffuse light from a cloudy sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac056",
+          "text": "只看秤盤看不出的材料差，在這裡變成了兩次水量的差。"
+        }
+      ]
+    },
+    {
+      "id": "crown-057",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an open stone terrace, one mathematician holding a golden crown above a full vessel, soft shade under a pale sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac057",
+          "text": "這頂彎彎曲曲的皇冠，也能直接入水比較嗎？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-058",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a metalworking workshop, one experimenter placing a gold sample beside the crown, soft indoor light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac058",
+          "text": "純金塊，現在成了皇冠的參照。"
+        }
+      ]
+    },
+    {
+      "id": "crown-ab011",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an open stone terrace, one investigator tracing a curved crown outline beside a plain vessel, mild overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ab011",
+          "text": "金冠形狀複雜，這方法不必逐寸量它的曲線。"
+        }
+      ]
+    },
+    {
+      "id": "crown-059",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an open stone terrace, one mathematician pouring water carefully to the vessel rim, diffuse light from a cloudy sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac059",
+          "text": "他再次把容器裝到同一滿水線。"
+        }
+      ]
+    },
+    {
+      "id": "crown-060",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a metalworking workshop, one experimenter lowering a plain golden crown into the water, muted doorway light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac060",
+          "text": "皇冠終於放進那只容器。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ],
+      "chapter": "皇冠入水，比等重金塊溢出更多"
+    },
+    {
+      "id": "crown-062",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a metalworking workshop, one investigator watching the crown sink below the waterline, soft indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac062",
+          "text": "皇冠與金塊等重，水會一樣多嗎？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-063",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an open stone terrace, one mathematician watching water spill from the crown vessel, mild overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac063",
+          "text": "開頭那頂只憑秤查不出答案的皇冠，維特魯威說，它比等重金塊溢出更多水。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-ab012",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an open stone terrace, one experimenter comparing a wet crown and separate gold sample, mild overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ab012",
+          "text": "文本只給金冠與金塊的差，沒報它跟銀塊差多少。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-064",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a metalworking workshop, one investigator holding a crown beside a smaller gold sample, muted doorway light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac064",
+          "text": "重量一樣，皇冠卻占了更大的空間。"
+        }
+      ]
+    },
+    {
+      "id": "crown-065",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an open stone terrace, one mathematician studying a golden crown with a puzzled face, diffuse grey sky light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac065",
+          "text": "若它全是純金，這個差從哪裡來？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-066",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a metalworking workshop, one experimenter looking at a silver mass beside the crown, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac066",
+          "text": "指控中的銀，等重卻占更多地方。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-067",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an open stone terrace, one investigator setting the silver sample beside the wet crown, diffuse light from a cloudy sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac067",
+          "text": "於是排水結果，與摻銀指控吻合。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-068",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a metalworking workshop, one mathematician studying the wet crown beside a gold sample, muted doorway light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac068",
+          "text": "維特魯威把這個比較寫成工匠偷金被揭穿的結局。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-069",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a present-day library, one researcher comparing plain metal shape sketches beside a water vessel, soft desk lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac069",
+          "text": "但水能單獨指出，摻入的必是銀嗎？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-070",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a present-day library, one researcher pointing at a blank volume column beside an old book, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac070",
+          "text": "不能；排水只能說這皇冠不像同重量的純金塊參照。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-ab013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a present-day library, one researcher comparing three plain metal samples beside a vessel, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ab013",
+          "text": "別的情況也可能使等重物體更占空間。"
+        }
+      ]
+    },
+    {
+      "id": "crown-071",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a present-day library, one reader placing an old book beside a blank accusation note, muted doorway light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac071",
+          "text": "銀的名字，來自先前的指控和作者推斷。"
+        }
+      ]
+    },
+    {
+      "id": "crown-072",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a present-day library, one researcher studying a blank measurement column beside an open old book, soft desk lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac072",
+          "text": "那我們能照著這本書，算出偷走多少金嗎？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-073",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a present-day library, one reader comparing an old book with a plain measuring cup, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac073",
+          "text": "不能；書裡沒有記下任何一次溢水的數字。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-ab014",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a present-day library, one researcher checking a plain measuring cup close to his face, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ab014",
+          "text": "連容器尺寸與量器精度，也都沒有交代。"
+        }
+      ]
+    },
+    {
+      "id": "crown-074",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a present-day library, one researcher closing a blank calculation notebook beside an old book, muted doorway light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac074",
+          "text": "因此能檢查比較的方向，卻無法重算失去的金量。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-080",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Roman writing study, one Roman writer lifting a blank scroll beside a lamp, diffuse light from a cloudy sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac080",
+          "text": "可誰能替浴場那兩聲喊作證？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-081",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a Roman writing study, one Roman writer setting a blank scroll on a wooden desk, muted doorway light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac081",
+          "text": "留下那句話的，是後來寫書的維特魯威。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ],
+      "chapter": "維特魯威在書裡留下兩聲希臘字"
+    },
+    {
+      "id": "crown-082",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a present-day library, one reader opening an old book beside a blank note card, soft desk lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac082",
+          "text": "這本書不是浴場的當場紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "crown-083",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a present-day library, one reader holding an old page with a blank central space, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac083",
+          "text": "拉丁原文的句子裡，直接嵌著那兩聲希臘字；不是英譯者後來添加。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-084",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet archive library, one reader pointing at a blank line on the old page, muted doorway light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac084",
+          "text": "意思就是：「找到了，找到了」。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-085",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a present-day library, one translator turning an English page at a desk, soft desk lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac085",
+          "text": "英譯本也把那兩聲保留下來。"
+        }
+      ]
+    },
+    {
+      "id": "crown-086",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet archive library, one reader comparing two blank editions on a table, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac086",
+          "text": "英譯和拉丁本，能算兩位目擊者嗎？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-087",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a present-day library, one reader closing one of two blank editions, diffuse light from a cloudy sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac087",
+          "text": "不能；兩種文字，仍只來自維特魯威一本書。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-088",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a present-day library, one reader examining a blank Latin page beside an open reference book, soft desk lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac088",
+          "text": "方法段說他做兩塊金屬時，拉丁文還用了「據說」。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-089",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a present-day library, one reader examining an empty margin beside a blank paragraph, muted doorway light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac089",
+          "text": "他也沒有交代街上誰聽見那聲喊。"
+        }
+      ]
+    },
+    {
+      "id": "crown-ap001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a present-day library, one reader opening a second old book beside a blank note card, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap001",
+          "text": "另一位古代作者普魯塔克，也寫到希羅和阿基米德；他能替喊聲作證嗎？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-ap002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a present-day library, one reader pointing to a blank diagram beside the open book, soft desk lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap002",
+          "text": "他說，希羅曾請阿基米德把幾何學的想法變成可用的機械。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-ap003",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a present-day library, one researcher comparing two blank book pages on a table, muted doorway light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap003",
+          "text": "但那一段沒有金冠、浴盆，也沒有路上的喊聲。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-ap004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a present-day library, one reader closing the second book near a quiet street window, diffuse light from a cloudy sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap004",
+          "text": "這份沉默不能推翻浴盆故事，也沒補出一位當場目擊者。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-090",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet archive library, one reader holding a closed book near a quiet street window, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac090",
+          "text": "回看開場那聲「找到了」：維特魯威寫過，卻不能證明街上真有人喊過。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-091",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a present-day library, one reader setting the old book flat on a table, diffuse light from a cloudy sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac091",
+          "text": "同樣，也不能由此斷言故事必然虛構。"
+        }
+      ]
+    },
+    {
+      "id": "crown-092",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet archive library, one reader placing a blank note beside the book, muted doorway light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac092",
+          "text": "那麼，這本書究竟容許我們查哪一部分？",
+          "emotion": "問句稍揚，句尾留半拍"
+        }
+      ]
+    },
+    {
+      "id": "crown-093",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a present-day library, one researcher tracing three blank vessel diagrams, soft desk lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac093",
+          "text": "試驗的步驟和比較邏輯，可以逐條檢查。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-096",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet archive library, one reader holding a crown sketch beside a closed book, muted doorway light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ac096",
+          "text": "水量的推理可以照著書頁重走；那條街上有沒有那聲喊，仍留在書頁之外。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "維特魯威記下呼喊；當場真相未有目擊證據"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ac101",
+          "text": "維特魯威確實寫下兩聲「找到了」；當場是否真喊，這份記載不能證實。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        },
+        {
+          "id": "ac102",
+          "text": "如果那頂金冠在你面前，你會怎樣設計三次公平的比較？",
+          "emotion": "問句稍揚，句尾留半拍"
+        },
+        {
+          "id": "ac103",
+          "text": "喜歡把傳說查回原文，訂閱奇聞檔案局。"
+        }
+      ]
+    }
+  ]
+}
