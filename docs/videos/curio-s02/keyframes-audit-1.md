@@ -15,3 +15,5 @@
 抽查可保留：`no-arrows` 實圖船側乾淨，符合《吳歷》此段無受箭場面；`order-to-fire` 有曹營弓手，符合《魏略》射擊分支；`load-shifts` 以人物攀住傾斜船欄表現險情。`wei-large-boat`、`gap-in-text`、`no-verdict` 雖約 7.18 分，但只有構圖或道具瑕疵，不影響歷史主張；本窗口先不花額度重畫。`save-boat` 少了箭與多一人，可在必要修圖完成後再看 storyboard 整體是否需要修。
 
 S28 正使用同一 240 次／小時 MiniMax 配額做重要修圖。S02 先跑未完成的鏡頭，到合計約 200 次前以 `/workspace/.video-work/curio-s02/STOP` 暫停。主批次結束／下個窗口，再集中改以上提示、同一 `keyframes --takes 3` 命令續跑；已通過且提示未改的圖應吃快取。改畫面提示後重跑 `lint` 與 `keyframes`，確認 `script.md` SHA-256 仍為 `e7a55cb388bb8852b258886af195cf853616594efa6bafca781cc92c53f610f4`，再送 storyboard 審核。
+
+22:11 UTC 進度：共享 ledger 達 **198/240** 時已建立 STOP，CLI 正常退出。S02 `manifest.json` **63/90 已通過**；`lu-su-doubts` 的第二次嘗試剛好遇到 STOP，因此暫列待續，不是三次畫壞。已只改上述七鏡的 `video.json` 提示，改用木製東漢船外觀／真羽箭及東漢交領服飾，尚未再呼叫圖像 API。重產 `script.md` 完整 SHA-256 **未變**，`lint` 0 errors／0 warnings。下窗口移除 STOP，重跑同一 `keyframes --takes 3` 指令，逐張檢查七鏡實圖，若仍有現代機械、制服、圖示箭頭或漏箭，須再定點修圖，不能只依高分放行。
