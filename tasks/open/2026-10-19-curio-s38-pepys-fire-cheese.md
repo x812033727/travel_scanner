@@ -28,8 +28,9 @@ scope:
 ## Steps
 
 - [x] 固定可重開的日記全文與版號，寫 [企劃](../../docs/videos/curio-s38/brief.md)、[研究](../../docs/videos/curio-s38/research.md)、[逐句主張](../../docs/videos/curio-s38/claims.md)。
-- [x] 完成 [影片稿](../../docs/videos/curio-s38/video.json) 與 [旁白稿](../../docs/videos/curio-s38/script.md)：102 句、101 個畫面、10 組懸念回收、估 8.9 分鐘，lint 0 error / 0 warning。劇本檔 SHA-256 `461c0d454b94e370c4071c6a7f8c75326976fd7d796d347a44a030f7323efeea`。
-- [ ] 交給未參與撰稿的讀者在看研究／既有覆核前，對同一份已鎖定 SHA 的旁白獨立回答 13 題；另查固定日記原句及每個畫面提示詞。把原始回答與修稿紀錄保存於 `verify-1.md`。
+- [x] 完成 R2 [影片稿](../../docs/videos/curio-s38/video.json) 與 [旁白稿](../../docs/videos/curio-s38/script.md)：111 句、110 個畫面、11 組懸念回收、估 9.8 分鐘，lint 0 error / 0 warning。劇本檔 SHA-256 `fde3f2c81e805bd255aaca7f47ef677dacf34c0090d1e80f7502d69e50c813ec`。
+- [x] 首輪獨立 [盲讀與史料／畫面覆核](../../docs/videos/curio-s38/verify-1.md) 已留原始答案和 10/13 失敗證據；R2 已集中修正其敘事斷點、無依據的掃水方向與六處畫面問題。
+- [ ] 交給另一位未參與撰稿的讀者在看研究／首輪覆核前，對 R2 已鎖定 SHA 的旁白獨立回答 13 題；另查固定日記原句及每個畫面提示詞。保存新原始答案與覆核紀錄。
 - [ ] 劇本過門檻後按 `curio-episode` 的整集報價及審核程序製作語音、插圖、分鏡、音樂、字幕、正片，完成輸出與包裝 QA。
 
 ## How to verify
@@ -46,4 +47,4 @@ npm run check:tasks
 
 ## Notes
 
-固定日記：GITenberg `68fcf49f70ee793b989a6fd0464264d55beb4451`；`4200.txt` SHA-256 `3cd43a3c39ee72eb9c4a3657f1fcb1723afba291cedac176c65a39289483be5d`。本工單僅認領 `docs/videos/curio-s38/**`，不碰已有歸屬的 S01／S09／S18。未經獨立盲讀；未簽核稿件、未花費任何媒體權杖。另有 [題目可行性筆記](../../docs/videos/history-curiosity/source-feasible-expansion-20261019.md)：S27／S21 因同期互補資料在本雲端未能重開，暫停進入製作。
+固定日記：GITenberg `68fcf49f70ee793b989a6fd0464264d55beb4451`；`4200.txt` SHA-256 `3cd43a3c39ee72eb9c4a3657f1fcb1723afba291cedac176c65a39289483be5d`。本工單僅認領 `docs/videos/curio-s38/**`，不碰已有歸屬的 S01／S09／S18。首輪盲讀 10/13 未過，R2 尚待新的獨立覆核；未簽核稿件、未花費任何媒體權杖。另有 [題目可行性筆記](../../docs/videos/history-curiosity/source-feasible-expansion-20261019.md)：S27／S21 因同期互補資料在本雲端未能重開，暫停進入製作。
