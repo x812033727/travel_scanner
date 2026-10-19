@@ -4,7 +4,9 @@
 // zh-TW accent wording never goes in. <id>.json beside each wav records the text and style it was
 // made from, so a re-translated line is recorded again and an unchanged one is kept.
 //   node dub-lines.mjs <repo root> <video.json> <locale> <out dir> [--check]
-// A line's value is its text, or { "text": subtitle, "say": what the voice reads } when they differ.
+// A line's value is its text, or { "text": subtitle, "say": what the voice reads } when they differ;
+// "emotion" there replaces the zh direction for this locale only (e.g. drop a 憨笑 whose laugh
+// cannot fit the slot).
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -60,7 +62,8 @@ const { readCredentials } = await mod("tts/credentials.mjs");
 const voices = Object.fromEntries(video.characters.map((c) => [c.id, c.voice]));
 const { site, token } = readCredentials();
 mkdirSync(out, { recursive: true });
-const styleOf = (l) => [glossary.lead[locale], glossary.characters[l.speaker].persona, l.emotion ? `${glossary.direction[locale]} ${l.emotion}` : null].filter(Boolean).join(" ").slice(0, 400);
+const emotionOf = (l) => dub[l.id]?.emotion ?? l.emotion;
+const styleOf = (l) => [glossary.lead[locale], glossary.characters[l.speaker].persona, emotionOf(l) ? `${glossary.direction[locale]} ${emotionOf(l)}` : null].filter(Boolean).join(" ").slice(0, 400);
 const jobs = lines.filter((l) => {
   const side = path.join(out, `${l.id}.json`);
   const want = { text: sayOf(dub[l.id]), style: styleOf(l), voice: voices[l.speaker].name };

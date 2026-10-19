@@ -72,6 +72,9 @@
 - 音效庫：`<VIDEO_WORKDIR>/zhong-tian-qu-qi-sfx/sound-library`（531 檔、286 MB），所有 `edit-dh-e*.json` 的 `sfx_dirs` 都指向這裡。
   - 原本借用偶的江湖的 `ou-de-jianghu-e001/…/sound-library`，那個資料夾 10-19 前被搬到 `G:\我的雲端硬碟\AI\偶的江湖\videos\`，所以複製了一份過來，原件不動。
   - 換機器要先從 G: 複製這個資料夾，否則組片會在 assemble-v4 第 175 行報 ENOENT。
+- TTS 額度：網站的 Gemini 金鑰在 Google 專案「Default Gemini Project」（付費 Tier 2），`gemini-3.8-flash-tts` 每天上限 10,000 次請求，台灣時間 15:00 重置；控制台只能往下調。
+  - 10-19 十個代理同時錄五語、反覆重錄，一天就打滿，回 429 `video_speech_upstream_busy`。
+  - 以後每語只開一個代理、分天錄；錄音前先用 `CHECK=1` 的實測語速預檢，少重錄。
 - 同一集的兩個語言不能同時組音軌，原因同上（`segments-v4/lines` 會被重寫）。
   - 平行做的時候，用每集一個鎖目錄 `<workdir>/.dub-lock` 排隊。
 - 封面：一季一張、不放字，所有語言共用（第一季是 `dh-keyart-season1-t1`）。
