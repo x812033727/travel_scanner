@@ -863,18 +863,37 @@ function parseObject(text) {
     const start = body.indexOf("{");
     const end = start < 0 ? -1 : objectEnd(body, start);
     if (end < 0) throw new SyntaxError("the model's answer is not a JSON object");
-    const rest = body.slice(end).trimStart();
-    // An object closed one brace early and followed by its next key, {"a":{…}},"b":…}: on
-    // 2026-09-30 a caption reviewer's 16,000-character worksheet ended that way before its fixes.
-    if (rest.startsWith(",")) {
+    const mended = mendEarlyClose(body.slice(start));
+    return mended ?? JSON.parse(body.slice(start, end));
+  }
+}
+
+/**
+ * An object closed one brace early and followed by its next key, {"a":{…}},"b":…}, read whole:
+ * on 2026-09-30 a caption reviewer's 16,000-character worksheet ended that way before its fixes,
+ * and on 2026-10-19 a translator's draft and its final each did it in one answer
+ * ({"draft":{…}}},"critique":[…],"final":{…}}}}, four times running), so the mending repeats
+ * while a next key follows. Null when that is not what happened: the first object alone is then
+ * the answer.
+ */
+function mendEarlyClose(text) {
+  let mended = false;
+  for (let round = 0; round < 4; round++) {
+    const end = objectEnd(text, 0);
+    if (end < 0) return null;
+    const rest = text.slice(end).trimStart();
+    if (!rest.startsWith(",")) {
+      if (!mended) return null;
       try {
-        return JSON.parse(body.slice(start, end - 1) + rest);
+        return JSON.parse(text.slice(0, end));
       } catch {
-        // Not that: the first object alone is the answer.
+        return null;
       }
     }
-    return JSON.parse(body.slice(start, end));
+    text = text.slice(0, end - 1) + rest;
+    mended = true;
   }
+  return null;
 }
 
 /** Where the object opening at `start` closes (the index after its `}`), strings and escapes skipped; -1 if it never does. */
