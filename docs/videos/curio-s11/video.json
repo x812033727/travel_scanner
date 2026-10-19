@@ -28,52 +28,52 @@
   },
   "loops": [
     {
-      "setup": "ng108",
-      "payoff": "ng222",
+      "setup": "ng106",
+      "payoff": "ng226",
       "what": "公記裡的三千挺，五年前在別人手上"
     },
     {
-      "setup": "ng110",
-      "payoff": "ng212",
-      "what": "一波換一波輪流上場的軍隊"
+      "setup": "ng107",
+      "payoff": "ng215",
+      "what": "輪流上場的那支軍隊"
     },
     {
-      "setup": "ng112",
-      "payoff": "ng319",
+      "setup": "ng108",
+      "payoff": "ng321",
       "what": "寫進三千的人，最後一波的鐵砲"
     },
     {
-      "setup": "ng113",
+      "setup": "ng109",
       "payoff": "ng410",
       "what": "參謀本部添上的數字"
     },
     {
-      "setup": "ng105",
+      "setup": "ng103",
       "payoff": "ng420",
-      "what": "第一排打完退後裝彈的畫面"
+      "what": "打完退後裝彈的畫面"
     },
     {
-      "setup": "ng106",
+      "setup": "ng104",
       "payoff": "ng423",
       "what": "一百多年的標準答案"
     },
     {
       "setup": "ng102",
-      "payoff": "ng216",
+      "payoff": "ng220",
       "what": "柵後面躲著等的足輕"
     },
     {
-      "setup": "ng214",
-      "payoff": "ng306",
+      "setup": "ng217",
+      "payoff": "ng307",
       "what": "第三波騎馬的好手"
     },
     {
-      "setup": "ng218",
-      "payoff": "ng313",
-      "what": "敵人衝過來就退的那句命令"
+      "setup": "ng222",
+      "payoff": "ng315",
+      "what": "敵人衝過來就退的那句"
     },
     {
-      "setup": "ng307",
+      "setup": "ng308",
       "payoff": "ng505",
       "what": "從各隊抽出來的鐵砲"
     },
@@ -83,7 +83,7 @@
       "what": "勝賴有勇無謀"
     },
     {
-      "setup": "ng321",
+      "setup": "ng323",
       "payoff": "ng407",
       "what": "那個「三」是誰先寫出來的"
     }
@@ -196,14 +196,14 @@
       "chapter": "天正三年的早晨，柵後面的鐵砲在等",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a long fence of rough wooden stakes across a misty field at dawn, a young Japanese foot soldier in a flat conical jingasa hat and plain lamellar armour crouching behind it and peering over the top toward the viewer, soft grey dawn light",
+        "prompt": "Wide shot of a long fence of rough stakes across a misty field at dawn, a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate crouching behind it and peering over the top toward the viewer, soft grey dawn light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ng101",
-          "text": "天正三年五月二十一日，天一亮，三河的長篠。",
+          "text": "天正三年五月二十一日，三河的長篠。",
           "emotion": "沉穩開場，語速放慢"
         }
       ]
@@ -212,45 +212,15 @@
       "id": "gunner-waits",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and plain lamellar armour kneeling behind a rough wooden fence at dawn, holding a matchlock gun upright against his shoulder with a nervous face toward the viewer, morning mist behind him, soft grey light",
+        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate kneeling behind a fence of rough stakes at dawn, holding a matchlock gun upright against his shoulder with a nervous face to the front, a war drum faintly visible across the mist, soft grey light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ng102",
-          "text": "一道擋馬的木柵後面，足輕們拿著鐵砲，躲著等。"
-        }
-      ]
-    },
-    {
-      "id": "takeda-drum",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a drummer in red-laced armour beating a large war drum on a wooden stand at the edge of a misty field at dawn, his face fierce toward the viewer, soft grey light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ng103",
-          "text": "對面，武田軍敲起了進攻的鼓。",
+          "text": "擋馬的木柵後面，足輕拿著鐵砲躲著；對面，武田軍敲起了鼓。",
           "emotion": "壓低，帶緊張"
-        }
-      ]
-    },
-    {
-      "id": "picture-rows",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a boy in a school uniform sitting at a desk in the afternoon, holding up a blank picture book and staring at it with wonder before looking toward the viewer, soft window light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ng104",
-          "text": "接下來的畫面，你可能看過：鐵砲手排成三排。"
         }
       ]
     },
@@ -258,14 +228,14 @@
       "id": "picture-reload",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and plain lamellar armour stepping back from a wooden fence and ramming a long rod down the muzzle of his upright matchlock, his face focused toward the viewer, morning mist behind him, soft grey light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate stepping back from a fence of rough stakes and ramming a long rod down the muzzle of his upright matchlock, his face focused toward the viewer, morning mist behind him, soft grey light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng105",
-          "text": "第一排打完，退到後面裝彈，下一排補上，一輪接一輪。"
+          "id": "ng103",
+          "text": "你可能看過這個畫面：鐵砲排成三排，打完的退後裝彈，下一排補上。"
         }
       ]
     },
@@ -273,14 +243,14 @@
       "id": "standard-answer",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an old man in a cardigan sitting in an armchair in the evening, holding a closed history magazine on his lap and nodding knowingly toward the viewer, warm lamp light",
-        "camera": "pull out",
+        "prompt": "Medium shot of an old man in a cardigan sitting in an armchair in the evening, holding a closed history magazine on his lap and nodding knowingly at us, warm lamp light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng106",
-          "text": "後來的人叫它「三段擊」；這個畫面，當了一百多年的標準答案。"
+          "id": "ng104",
+          "text": "後來的人叫它「三段擊」，當了一百多年的標準答案。"
         }
       ]
     },
@@ -294,8 +264,8 @@
       },
       "lines": [
         {
-          "id": "ng107",
-          "text": "可是翻開最早的紀錄，事情對不上了。",
+          "id": "ng105",
+          "text": "可是最早的紀錄，對不上。",
           "emotion": "收住，再往前推"
         }
       ]
@@ -304,18 +274,14 @@
       "id": "tease-kii",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a mercenary gunner in a dark kimono and a white headband marching along a riverside road in grey morning light, a matchlock gun over his shoulder, grinning toward the viewer, reeds behind him",
-        "camera": "pan left",
+        "prompt": "Medium shot of a mercenary gunner in a dark kimono and a white headband marching along a riverside road in grey morning light, a matchlock gun over his shoulder, grinning at us, reeds behind him",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng108",
-          "text": "同一個作者的書裡，真的寫過「鐵砲三千挺」，"
-        },
-        {
-          "id": "ng109",
-          "text": "只是寫在五年前的另一場仗，在另一群人手上。"
+          "id": "ng106",
+          "text": "同一個作者真的寫過「鐵砲三千挺」，只是在五年前，在別人手上。"
         }
       ]
     },
@@ -323,14 +289,14 @@
       "id": "tease-waves",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a samurai standard bearer in red-laced armour on a misty field, waving a tall blank banner to call the next group forward and shouting toward the viewer, soft grey morning light",
-        "camera": "push in",
+        "prompt": "Medium shot of a samurai standard bearer in red-laced armour on a misty field, waving a tall blank banner to call the next group forward and shouting at us, soft grey morning light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng110",
-          "text": "那天早上，也真的有一支軍隊，一波換一波，輪流上場。"
+          "id": "ng107",
+          "text": "那天早上，也真的有一支軍隊，在輪流上場。"
         }
       ]
     },
@@ -338,18 +304,14 @@
       "id": "tease-hoan",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Edo-era writer in a black scholar's cap and a dark haori kneeling at a low desk in daytime, his brush raised above a blank page and a sly smile toward the viewer, an older hand-copied book open beside him, soft window light",
-        "camera": "drift",
+        "prompt": "Medium shot of a middle-aged Edo-era writer in a black scholar's cap and a dark haori kneeling at a low writing table by a sliding paper door in daytime, his brush raised above a blank page and a sly smile at us, an older hand-copied book open beside him, soft window light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng111",
-          "text": "四十多年後，有人把這個數字搬進了長篠；"
-        },
-        {
-          "id": "ng112",
-          "text": "可是寫到最後一波，他筆下的鐵砲，做了另一件事。",
+          "id": "ng108",
+          "text": "四十多年後，有人把它搬進長篠；寫到最後一波，他的鐵砲卻做了別的事。",
           "emotion": "停在這裡，不揭曉"
         }
       ]
@@ -358,14 +320,14 @@
       "id": "tease-staff",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era army staff officer in a dark uniform with epaulettes and a neat moustache sitting at an office desk in the afternoon, writing on a blank sheet with a fountain pen and looking up toward the viewer with a confident face, soft window light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a Meiji-era army staff officer in a dark uniform with epaulettes and a neat moustache sitting at an office desk in the afternoon, writing on a blank sheet with a fountain pen and looking up to the front with a confident face, soft window light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng113",
-          "text": "明治三十六年，日本陸軍參謀本部，又替這個畫面添了一個數字。"
+          "id": "ng109",
+          "text": "明治三十六年，參謀本部又替這個畫面添了一個數字。"
         }
       ]
     },
@@ -373,13 +335,13 @@
       "id": "the-question",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a young Japanese foot soldier in a flat conical jingasa hat and plain lamellar armour's face behind the fence at dawn, eyes wide and staring out over the stakes toward the viewer, the barrel of his matchlock upright beside his cheek, morning mist",
-        "camera": "pan right",
+        "prompt": "Close-up of a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate's face behind the stakes at dawn, eyes wide and staring out toward the viewer, the barrel of his matchlock upright beside his cheek, morning mist",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng114",
+          "id": "ng110",
           "text": "那天早上，柵後面的鐵砲，到底是怎麼打的？",
           "emotion": "問句上揚，停一拍"
         }
@@ -390,8 +352,8 @@
       "chapter": "太田牛一只寫了：鐵砲一千挺左右",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly samurai scribe with a white topknot and a plain grey kimono kneeling at a low desk by a window in the morning, writing on a blank scroll with a brush and glancing up toward the viewer with a serious face, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of an elderly samurai scribe with a white topknot and a plain grey kimono kneeling at a low writing table by a window in the morning, writing on a blank scroll with a brush and glancing up to the front with a serious face, soft window light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -425,8 +387,8 @@
       "id": "five-commanders",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a samurai commander in dark armour standing behind a wooden fence in the morning, pointing forward with a short baton and calling out toward the viewer, a few upright matchlock barrels at the edge of the frame, mild overcast light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a samurai commander in dark armour standing behind a fence of stakes under a pale sky, pointing forward with a short baton and calling out at us, a few upright matchlock barrels at the edge of the frame, mild overcast light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -440,14 +402,19 @@
       "id": "how-many-rows",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly samurai scribe with a white topknot and a plain grey kimono at a low desk in the morning, holding his brush still above a blank page and tilting his head toward the viewer, soft window light",
-        "camera": "pan left",
+        "prompt": "Medium shot of an elderly samurai scribe with a white topknot and a plain grey kimono at a low writing table in the morning, holding his brush still above a blank page and tilting his head toward the viewer, soft window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ng205",
-          "text": "排成幾排？他一個字都沒寫。",
+          "text": "排成幾排？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ng206",
+          "text": "他一個字都沒寫。",
           "emotion": "短，停一拍"
         }
       ]
@@ -456,14 +423,18 @@
       "id": "river-crossing",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a shallow river at night, a young Japanese foot soldier in a flat conical jingasa hat and plain lamellar armour wading across with a matchlock held above his head and looking back toward the viewer, a dark wooded hill beyond, faint moonlight",
-        "camera": "push in",
+        "prompt": "Wide shot of a shallow river at night, a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate wading across with a matchlock held above his head and looking back to the front, a dark wooded hill beyond, faint moonlight",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng206",
-          "text": "還有五百挺，前一天晚上，就跟著一支部隊悄悄渡河，去偷襲鳶巢山。"
+          "id": "ng207",
+          "text": "還有五百挺，前一天晚上就跟著一支部隊趁夜渡河，"
+        },
+        {
+          "id": "ng208",
+          "text": "去偷襲鳶巢山。"
         }
       ]
     },
@@ -471,17 +442,28 @@
       "id": "hidden-hollow",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a foot soldier in plain armour crouching low in a grassy hollow in the morning, a finger to his lips toward the viewer, mist drifting over the rim of the hollow, soft grey light",
-        "camera": "drift",
+        "prompt": "Medium shot of a foot soldier in a padded jacket crouching low in a grassy hollow in the morning, a finger to his lips at us, mist drifting over the rim of the hollow, soft grey light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng207",
+          "id": "ng209",
           "text": "信長大約三萬的兵，一段一段，藏在窪地裡，讓對面看不見。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "ota-dan",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an elderly samurai scribe with a white topknot and a plain grey kimono's face in morning window light, one eyebrow raised and a dry smile toward the viewer, the tip of his brush beside his cheek",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
         {
-          "id": "ng208",
+          "id": "ng210",
           "text": "公記裡的「段」，說的是藏兵，不是開槍。"
         }
       ]
@@ -505,7 +487,7 @@
       },
       "lines": [
         {
-          "id": "ng209",
+          "id": "ng211",
           "text": "武田的兵，大約只有這邊的一半。",
           "reveal": 1
         }
@@ -515,13 +497,13 @@
       "id": "first-wave",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a misty field in the morning, one foot soldier in red-laced armour running forward with a spear toward the viewer, small banners and a war drum far behind him, soft grey light",
-        "camera": "tilt down",
+        "prompt": "Wide shot of a misty field in the morning, one foot soldier in red-laced armour running forward with a spear to the front, small banners and a war drum far behind him, soft grey light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng210",
+          "id": "ng212",
           "text": "天一亮，武田的第一波，敲著鼓衝了過來。",
           "emotion": "加快"
         }
@@ -531,20 +513,15 @@
       "id": "waves-rotate",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a samurai standard bearer in red-laced armour on a misty field, waving a tall blank banner to call the next group forward and shouting toward the viewer, soft grey morning light",
-        "camera": "pan right",
+        "prompt": "Medium shot of a samurai standard bearer in red-laced armour on a misty field, waving a tall blank banner to call the next group forward and shouting at us, soft grey morning light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng211",
+          "id": "ng213",
           "text": "第一波退下，第二波換上；接著第三波、第四波、第五波。",
           "emotion": "加快"
-        },
-        {
-          "id": "ng212",
-          "text": "開頭說的那支輪流上場的軍隊，就是武田。",
-          "emotion": "揭曉"
         }
       ]
     },
@@ -558,7 +535,28 @@
       },
       "lines": [
         {
-          "id": "ng213",
+          "id": "ng214",
+          "text": "開頭說的那支輪流上場的軍隊，是哪一邊？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ng215",
+          "text": "就是武田。",
+          "emotion": "揭曉，短"
+        }
+      ]
+    },
+    {
+      "id": "all-day",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired spearman in a red surcoat trudging back across a misty field at midday, wiping his brow and glancing at us, banners blurred behind him, mild overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ng216",
           "text": "牛一寫，從日出一直打到下午，一批換一批。"
         }
       ]
@@ -567,13 +565,13 @@
       "id": "horse-pros",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a mounted samurai in red-laced armour on a stocky brown horse galloping across a wet field in the morning, leaning forward with a spear raised and a fierce grin toward the viewer, mild overcast light",
+        "prompt": "Medium shot of a mounted samurai in red-laced armour on a stocky brown horse galloping across a wet field in the morning, leaning forward with a spear raised and a fierce grin to the front, mild overcast light",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng214",
+          "id": "ng217",
           "text": "第三波的關東兵，是騎馬的好手，打算直接騎馬衝進來。"
         }
       ]
@@ -582,14 +580,19 @@
       "id": "no-sortie",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Japanese warlord in his forties with a thin moustache and dark armour, holding a war fan standing behind a wooden fence in the morning, holding up one open hand to hold his troops back, his face calm toward the viewer, a few spear tips behind him, mild overcast light",
+        "prompt": "Medium shot of a Japanese warlord in his forties with a thin moustache and a black lacquered cuirass, holding a war fan standing behind a fence of stakes in early daylight, holding up one open hand to keep his troops back, his face calm toward the viewer, a few spear tips behind him, mild overcast light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng215",
-          "text": "織田這邊呢？主力一隊都沒派出去，只用鐵砲和足輕應付。"
+          "id": "ng218",
+          "text": "織田這邊呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ng219",
+          "text": "主力一隊都沒派出去，只用鐵砲和足輕應付。"
         }
       ]
     },
@@ -597,17 +600,28 @@
       "id": "waiting-behind",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and plain lamellar armour crouching behind a wooden fence in the morning, his matchlock resting on the rail and pointing at an empty misty field, glancing sideways toward the viewer, soft grey light",
+        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate crouching behind a fence of stakes in the morning, his matchlock resting on the rail and pointing at an empty misty field, glancing sideways to the front, soft grey light",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng216",
+          "id": "ng220",
           "text": "開頭那些躲在柵後的足輕，牛一寫的就是：躲著，等敵人過來再打。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "scattered-fire",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate kneeling in thin white gun smoke behind the stakes in the morning, blinking and fanning the smoke away from his face at us, mild overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
         {
-          "id": "ng217",
+          "id": "ng221",
           "text": "要不然，就是散散地打。"
         }
       ]
@@ -616,13 +630,13 @@
       "id": "advance-retreat",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a foot soldier in plain armour stepping backward in a crouch with his spear held low, his eyes alert toward the viewer, a wooden fence behind him, mild overcast light",
-        "camera": "push in",
+        "prompt": "Medium shot of a foot soldier in a padded jacket stepping backward in a crouch with his spear held low, his eyes alert toward the viewer, a fence of stakes behind him, mild overcast light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng218",
+          "id": "ng222",
           "text": "他還記了一句：敵人衝過來，就退；敵人退了，就跟上去。"
         }
       ]
@@ -631,13 +645,13 @@
       "id": "read-through",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly samurai scribe with a white topknot and a plain grey kimono at a low desk at dusk, running one finger down a blank scroll and shaking his head slightly toward the viewer, warm lamp light",
-        "camera": "drift",
+        "prompt": "Medium shot of an elderly samurai scribe with a white topknot and a plain grey kimono at a low writing table at dusk, running one finger down a blank scroll and shaking his head slightly to the front, warm lamp light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng219",
+          "id": "ng223",
           "text": "整段讀完，沒有分組，沒有換人，也沒有輪流開槍。"
         }
       ]
@@ -646,13 +660,13 @@
       "id": "takeda-withdraws",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a samurai standard bearer in red-laced armour walking away across a muddy field in the afternoon, his blank banner lowered, glancing back toward the viewer with a sad face, overcast light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a samurai standard bearer in a red surcoat walking away across a muddy field in the afternoon, his blank banner lowered, glancing back at us with a sad face, overcast light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng220",
+          "id": "ng224",
           "text": "到了下午，武田退了，失去了很多重臣。",
           "emotion": "低沉，一句帶過"
         }
@@ -662,13 +676,13 @@
       "id": "where-from",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly samurai scribe with a white topknot and a plain grey kimono at a low desk in lamp light, flipping back through a stack of hand-copied notebooks with a puzzled frown toward the viewer",
-        "camera": "pan right",
+        "prompt": "Medium shot of an elderly samurai scribe with a white topknot and a plain grey kimono in a study in the afternoon, flipping back through a stack of hand-copied notebooks with a puzzled frown toward the viewer, soft window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng221",
+          "id": "ng225",
           "text": "那個有名的數字，又是從哪裡來的？",
           "emotion": "問句"
         }
@@ -678,13 +692,13 @@
       "id": "kii-gunners",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a mercenary gunner in a dark kimono and a white headband marching along a riverside road in grey morning light, a matchlock gun over his shoulder, grinning toward the viewer, reeds behind him",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a mercenary gunner in a dark kimono and a white headband marching along a riverside road in grey morning light, a matchlock gun over his shoulder, grinning at us, reeds behind him",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng222",
+          "id": "ng226",
           "text": "開頭說的那三千挺，真的在牛一的書裡。",
           "emotion": "揭曉"
         }
@@ -700,7 +714,7 @@
       },
       "lines": [
         {
-          "id": "ng223",
+          "id": "ng227",
           "text": "那是元龜元年，長篠之戰的五年前，野田、福島那一仗。"
         }
       ]
@@ -709,17 +723,28 @@
       "id": "kii-camp",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a mercenary gunner in a dark kimono and a white headband kneeling by a campfire at a riverside camp in grey morning light, polishing the barrel of a matchlock and smiling toward the viewer, rows of tents behind him",
-        "camera": "pull out",
+        "prompt": "Medium shot of a mercenary gunner in a dark kimono and a white headband kneeling by a campfire at a riverside camp in grey morning light, polishing the barrel of a matchlock and smiling to the front, rows of tents behind him",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng224",
+          "id": "ng228",
           "text": "從紀伊來的根來、雜賀這些人，大約兩萬；據說，鐵砲就有這麼多。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "kii-ally",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mercenary gunner in a dark kimono and a white headband standing beside a tall blank banner in grey morning light, raising his matchlock in a cheerful salute at us, a river behind him",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
         {
-          "id": "ng225",
+          "id": "ng229",
           "text": "當時，他們是來幫織田這一邊攻打的。"
         }
       ]
@@ -729,12 +754,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young Edo-era bookseller standing in a shop doorway at dusk, holding up a printed book toward the viewer with a curious face, a paper lantern beside him",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng226",
+          "id": "ng230",
           "text": "在牛一筆下，那是別人的鐵砲。是誰，把這個數字搬到了長篠？",
           "emotion": "問句，停一拍"
         }
@@ -745,8 +770,8 @@
       "chapter": "四十多年後，甫庵把它寫成三千挺",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Edo-era writer in a black scholar's cap and a dark haori kneeling at a low desk in daytime, his brush raised above a blank page and a sly smile toward the viewer, an older hand-copied book open beside him, soft window light",
-        "camera": "push in",
+        "prompt": "Medium shot of a middle-aged Edo-era writer in a black scholar's cap and a dark haori kneeling at a low writing table by a sliding paper door in daytime, his brush raised above a blank page and a sly smile at us, an older hand-copied book open beside him, soft window light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -761,8 +786,8 @@
       "id": "printed-book",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Edo-era townsman sitting on a shop veranda in the afternoon, reading a woodblock-printed book with wide excited eyes toward the viewer, a hanging shop curtain behind him, soft light",
-        "camera": "drift",
+        "prompt": "Medium shot of a young Edo-era townsman sitting on a shop veranda in the afternoon, reading a woodblock-printed book with wide excited eyes to the front, a hanging shop curtain behind him, soft light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -776,8 +801,8 @@
       "id": "copyist",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an Edo-era copyist kneeling at a low desk in lamp light, copying a blank page by hand with a tired face toward the viewer, a pile of hand-bound books beside him",
-        "camera": "tilt down",
+        "prompt": "Medium shot of an Edo-era copyist kneeling in a dim storeroom, copying a blank page by hand with a tired face at us, a pile of hand-bound books beside him, lamp light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -792,13 +817,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly samurai in a dark haori sitting on tatami in daytime, tapping a printed book with a disapproving frown toward the viewer, soft window light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ng304",
-          "text": "同時代一個德川家的家臣，在自己的書裡說它：謊話很多。"
+          "text": "沒想到，同時代一個德川家的家臣，在書裡說它：謊話很多。"
         }
       ]
     },
@@ -806,8 +831,8 @@
       "id": "hoan-flourish",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Edo-era writer in a black scholar's cap and a dark haori at a low desk in daytime, sweeping his brush across a blank page in a big flourish and grinning toward the viewer, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a middle-aged Edo-era writer in a black scholar's cap and a dark haori at a low writing table in daytime, sweeping his brush across a blank page in a big flourish and grinning to the front, soft window light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -821,14 +846,19 @@
       "id": "rider-line",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a misty field in the morning, a mounted samurai in red-laced armour on a stocky brown horse charging toward the viewer with his spear lowered, a long row of blank banners blurred in the mist behind him, soft grey light",
-        "camera": "pull out",
+        "prompt": "Wide shot of a misty field in the morning, a mounted samurai in red-laced armour on a stocky brown horse charging at us with his spear lowered, a long row of blank banners blurred in the mist behind him, soft grey light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ng306",
-          "text": "牛一筆下騎馬衝來的，只有第三波；到了甫庵，變成了全軍。"
+          "text": "牛一的書裡，騎馬衝過來的有多少？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ng307",
+          "text": "只有第三波；到了甫庵，變成了全軍。"
         }
       ]
     },
@@ -842,12 +872,12 @@
       },
       "lines": [
         {
-          "id": "ng307",
-          "text": "然後他寫下：從各隊抽出來的鐵砲，三千挺，",
+          "id": "ng308",
+          "text": "然後，開頭那個數字出現了：從各隊抽出來的鐵砲，三千挺，",
           "emotion": "數字放慢"
         },
         {
-          "id": "ng308",
+          "id": "ng309",
           "text": "交給的，還是那五個指揮官。"
         }
       ]
@@ -856,13 +886,13 @@
       "id": "hundred-meters",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Japanese warlord in his forties with a thin moustache and dark armour, holding a war fan standing behind a wooden fence in the morning, raising his war fan high and calling out an order toward the viewer, mild overcast light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a Japanese warlord in his forties with a thin moustache and a black lacquered cuirass, holding a war fan standing behind a fence of stakes in the morning, raising his war fan high and calling out an order toward the viewer, mild overcast light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng309",
+          "id": "ng310",
           "text": "命令是：敵人沒到大約一百公尺內，不准開槍。"
         }
       ]
@@ -877,7 +907,7 @@
       },
       "lines": [
         {
-          "id": "ng310",
+          "id": "ng311",
           "text": "然後，一千挺一放，一段一段，換著打。",
           "emotion": "放慢"
         }
@@ -887,14 +917,19 @@
       "id": "no-word-three",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Edo-era reader at a lamp-lit desk in the evening, counting on his fingers with a puzzled smile toward the viewer, an open printed book in front of him",
-        "camera": "push in",
+        "prompt": "Medium shot of a young Edo-era reader at a lamp-lit table in the evening, counting on his fingers with a puzzled smile to the front, an open printed book in front of him",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng311",
-          "text": "書裡沒有「三段」這兩個字；是讀的人自己算出來的。"
+          "id": "ng312",
+          "text": "那「三段」這兩個字呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ng313",
+          "text": "書裡沒有；是讀的人自己算出來的。"
         }
       ]
     },
@@ -902,18 +937,29 @@
       "id": "copied-line",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Edo-era writer in a black scholar's cap and a dark haori at his desk in daytime, holding an older hand-copied book open in one hand and writing with the other, glancing slyly toward the viewer, soft window light",
-        "camera": "drift",
+        "prompt": "Medium shot of a middle-aged Edo-era writer in a black scholar's cap and a dark haori by a sliding paper door in daytime, holding an older hand-copied book open in one hand and writing with the other, glancing slyly at us, soft window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng312",
+          "id": "ng314",
           "text": "還記得牛一那句，敵人衝過來就退、退了就跟上嗎？",
           "emotion": "語氣親近，略上揚"
-        },
+        }
+      ]
+    },
+    {
+      "id": "copied-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a middle-aged Edo-era writer in a black scholar's cap and a dark haori's face in daytime, pressing his lips together to hold back a grin toward the viewer, the tip of a brush beside his chin, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
         {
-          "id": "ng313",
+          "id": "ng315",
           "text": "甫庵這段，就是照它改的，只多了那句換著打。"
         }
       ]
@@ -922,17 +968,28 @@
       "id": "number-wobbles",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an Edo-era reader frowning at an open printed book in lamp light, flipping between two pages with a confused face toward the viewer",
-        "camera": "tilt down",
+        "prompt": "Medium shot of an Edo-era reader on a bench outside a bookshop in the afternoon, frowning at an open printed book with a confused face to the front, soft overcast light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng314",
+          "id": "ng316",
           "text": "問題來了：同一本書裡，這個數字自己也在晃。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "number-flip",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an Edo-era reader's face in the afternoon, one eye squinting and his mouth twisted in doubt at us, the corner of a printed page raised in his fingers, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
         {
-          "id": "ng315",
+          "id": "ng317",
           "text": "前面才說三千挺一千一輪，後面又寫成每次三千挺換著打。"
         }
       ]
@@ -941,13 +998,13 @@
       "id": "tokugawa-300",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a foot soldier in dark armour behind a wooden fence, pouring powder into the muzzle of his upright matchlock in a hurry, his eyes on the viewer, mild overcast light",
-        "camera": "pan right",
+        "prompt": "Medium shot of a foot soldier in a dark padded jacket behind a fence of stakes, pouring powder into the muzzle of his upright matchlock in a hurry, his eyes toward the viewer, mild overcast light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng316",
+          "id": "ng318",
           "text": "德川那邊的三百個鐵砲足輕，又是另一種打法：各自裝彈，一直放。"
         }
       ]
@@ -956,13 +1013,13 @@
       "id": "fifth-wave",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a misty field in the afternoon, an older a mounted samurai in red-laced armour on a stocky brown horse charging toward the viewer with his spear raised, a few blank banners behind him, overcast light",
-        "camera": "tilt up",
+        "prompt": "Wide shot of a misty field in the afternoon, an older a mounted samurai in red-laced armour on a stocky brown horse charging to the front with his spear raised, a few blank banners behind him, overcast light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng317",
+          "id": "ng319",
           "text": "到了第五波，武田的最後一隊衝了上來。",
           "emotion": "加快"
         }
@@ -978,12 +1035,12 @@
       },
       "lines": [
         {
-          "id": "ng318",
+          "id": "ng320",
           "text": "還記得開頭那個人，寫到最後一波的鐵砲嗎？",
           "emotion": "語氣親近"
         },
         {
-          "id": "ng319",
+          "id": "ng321",
           "text": "甫庵寫：敵人一靠近，兩千多挺鐵砲，一次全放。",
           "emotion": "揭曉，放慢"
         }
@@ -993,13 +1050,13 @@
       "id": "volley-smoke",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and plain lamellar armour behind a wooden fence in a thick cloud of white gun smoke in the afternoon, coughing and waving the smoke away from his face toward the viewer, overcast light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate behind the stakes in a thick cloud of white gun smoke in the afternoon, coughing and waving the smoke away from his face at us, overcast light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng320",
+          "id": "ng322",
           "text": "寫出換著打的人，寫到最後一波，寫的是齊射。"
         }
       ]
@@ -1008,14 +1065,14 @@
       "id": "who-three",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an Edo-era scholar at a lamp-lit desk at night, holding up one finger as if counting and staring at a blank page with a puzzled frown toward the viewer",
-        "camera": "pan left",
+        "prompt": "Medium shot of an Edo-era scholar in a quiet study at night, holding up one finger as if counting and staring at a blank page with a puzzled frown toward the viewer, lamp light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng321",
-          "text": "甫庵沒寫出來的那個「三」，後來是怎麼長出來的？",
+          "id": "ng323",
+          "text": "甫庵沒寫出來的那個「三」，後來是誰寫進去的？",
           "emotion": "問句，停一拍"
         }
       ]
@@ -1025,19 +1082,18 @@
       "chapter": "家譜寫出輪流，參謀本部挑出三千",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an Edo-era clerk in a plain kimono kneeling at a long desk in daytime, adding a line to a long blank family-tree scroll and looking up toward the viewer, soft window light",
-        "camera": "push in",
+        "prompt": "Medium shot of an Edo-era clerk in a plain kimono kneeling at a long table in daytime, adding a line to a long blank family-tree scroll and looking up to the front, soft window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ng401",
-          "text": "先長出來的，是「輪流」。",
-          "emotion": "揭曉"
+          "text": "「三」出現之前，一部家譜先改了一個地方。"
         },
         {
           "id": "ng402",
-          "text": "一六四〇年代的一部大名家譜，槍數跟甫庵一樣，"
+          "text": "一六四〇年代這部大名家譜，槍數跟甫庵一樣，"
         }
       ]
     },
@@ -1045,14 +1101,14 @@
       "id": "commanders-turn",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a samurai commander in dark armour stepping forward behind a wooden fence and raising a short baton toward the viewer, ready to take his turn giving orders, mild overcast light",
-        "camera": "drift",
+        "prompt": "Medium shot of a samurai commander in a dark jinbaori stepping forward behind a fence of stakes and raising a short baton at us, ready to take his turn giving orders, mild overcast light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ng403",
-          "text": "還寫那五個指揮官，輪流下令。"
+          "text": "可是寫的是：那五個指揮官，輪流下令。"
         },
         {
           "id": "ng404",
@@ -1064,14 +1120,15 @@
       "id": "soken-author",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an Edo-era author in a dark haori writing at a low desk in lamp light, pausing to look up toward the viewer with a satisfied smile, a stack of bound books beside him",
-        "camera": "tilt down",
+        "prompt": "Medium shot of an Edo-era author in a dark haori writing on a low table in a tatami room in the evening, pausing to look up toward the viewer with a satisfied smile, a stack of bound books beside him, lamp light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ng405",
-          "text": "到了十七世紀末的《總見記》，已經直接寫成："
+          "text": "再到十七世紀末的《總見記》，已經直接寫成：",
+          "emotion": "揭曉"
         }
       ]
     },
@@ -1099,8 +1156,8 @@
       "id": "staff-book",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era army staff officer in a dark uniform with epaulettes and a neat moustache standing at an office desk in the afternoon, setting down a thick cloth-bound book and looking toward the viewer with a proud face, soft window light",
-        "camera": "pan right",
+        "prompt": "Medium shot of a Meiji-era army staff officer in a dark uniform with epaulettes and a neat moustache standing in an army office in the afternoon, setting down a thick cloth-bound book and looking to the front with a proud face, soft window light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1146,8 +1203,8 @@
       "id": "staff-writes",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era army staff officer in a dark uniform with epaulettes and a neat moustache sitting at an office desk in the afternoon, writing on a blank sheet with a fountain pen and looking up toward the viewer with a confident face, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a Meiji-era army staff officer in a dark uniform with epaulettes and a neat moustache sitting at an office desk in the afternoon, writing on a blank sheet with a fountain pen and looking up to the front with a confident face, soft window light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1161,8 +1218,8 @@
       "id": "staff-order",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era army staff officer in a dark uniform with epaulettes and a neat moustache standing at a blackboard in an office in the afternoon, tapping a blank board with a pointer and speaking firmly toward the viewer, soft window light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a Meiji-era army staff officer in a dark uniform with epaulettes and a neat moustache standing at a blackboard in an army classroom in the afternoon, tapping a blank board with a pointer and speaking firmly at us, soft window light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1176,8 +1233,8 @@
       "id": "logs-rope",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a foot soldier in plain armour walking along a road in the morning with a wooden log on his shoulder and a coil of rope at his hip, smiling toward the viewer, mild overcast light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a foot soldier in a padded jacket walking along a country road at daybreak with a wooden log on his shoulder and a coil of rope at his hip, smiling toward the viewer, mild overcast light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1191,8 +1248,8 @@
       "id": "katsuyori-rash",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Japanese general in red-laced armour with a gilded crested helmet sitting on a camp stool in the morning, gripping his sword hilt with an impatient scowl toward the viewer, a curtained camp behind him, mild overcast light",
-        "camera": "push in",
+        "prompt": "Medium shot of a young Japanese general with a gilded crested helmet and a red surcoat sitting on a camp stool at midday, gripping his sword hilt with an impatient scowl to the front, a curtained camp behind him, mild overcast light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1210,18 +1267,29 @@
       "id": "koyo-gunkan",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an old samurai veteran in a plain kimono sitting in a study in daytime, wagging one finger with a knowing smile toward the viewer, a closed book on his knee, soft window light",
-        "camera": "drift",
+        "prompt": "Medium shot of an old samurai veteran in a plain kimono sitting on a veranda in daytime, wagging one finger with a knowing smile at us, a closed book on his knee, soft overcast light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ng416",
-          "text": "更怪的是，同一本書的附錄，還收了武田那邊軍學書的話：騎馬衝進柵，是假話。"
-        },
+          "text": "更怪的是，同一本書的附錄，還收了武田那邊軍學書的話："
+        }
+      ]
+    },
+    {
+      "id": "koyo-horses",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a narrow muddy field crossed by a small stream under an overcast sky, one rider in a red surcoat reining in his horse at the bank and shaking his head toward the viewer",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "ng417",
-          "text": "長篠那片地，連十匹馬並排都騎不下。"
+          "text": "騎馬衝進柵，是假話；長篠那片地，連十匹馬並排都騎不下。"
         }
       ]
     },
@@ -1229,8 +1297,8 @@
       "id": "horse-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a mounted samurai in red-laced armour on a stocky brown horse galloping across a wet field in the morning, leaning forward with a spear raised and a fierce grin toward the viewer, mild overcast light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a mounted samurai in red-laced armour on a stocky brown horse galloping across a wet field in the morning, leaning forward with a spear raised and a fierce grin to the front, mild overcast light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1244,8 +1312,8 @@
       "id": "reload-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and plain lamellar armour stepping back from a wooden fence and ramming a long rod down the muzzle of his upright matchlock, his face focused toward the viewer, morning mist behind him, soft grey light",
-        "camera": "pan right",
+        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate stepping back from a fence of rough stakes and ramming a long rod down the muzzle of his upright matchlock, his face focused toward the viewer, morning mist behind him, soft grey light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1253,7 +1321,18 @@
           "id": "ng419",
           "text": "那開頭那個畫面呢？第一排打完退到後面裝彈，這本書寫了嗎？",
           "emotion": "問句"
-        },
+        }
+      ]
+    },
+    {
+      "id": "staff-shrug",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Meiji-era army staff officer in a dark uniform with epaulettes and a neat moustache in an army office in the afternoon, closing a thick book and shaking his head to the front with a small shrug, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "ng420",
           "text": "沒有。連參謀本部都沒寫。",
@@ -1265,8 +1344,8 @@
       "id": "layers",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses at a library desk in the afternoon, laying several blank tracing sheets one on top of another and looking up toward the viewer with a surprised face, soft lamp light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a library reading room in the afternoon, laying several blank tracing sheets one on top of another and looking up at us with a surprised face, soft daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1280,8 +1359,8 @@
       "id": "prewar-copy",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a university student in a 1930s school cap and dark uniform at a library desk, copying from a thick volume with a pen and looking up toward the viewer, warm lamp light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a university student in a 1930s school cap and dark uniform in a library, copying from a thick volume with a pen and looking up toward the viewer, soft window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1295,8 +1374,8 @@
       "id": "standard-100",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an old man in a cardigan sitting in an armchair in the evening, tapping the cover of a thick book on his lap and raising his eyebrows toward the viewer, warm lamp light",
-        "camera": "pan left",
+        "prompt": "Medium shot of an old man in a cardigan sitting in an armchair in the evening, tapping the cover of a thick book on his lap and raising his eyebrows to the front, warm lamp light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1310,14 +1389,14 @@
       "id": "textbook-now",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a high school student in a blazer at a classroom desk in the afternoon, holding up a blank textbook and looking toward the viewer with a puzzled face, soft window light",
-        "camera": "push in",
+        "prompt": "Medium shot of a high school student in a blazer sitting in a classroom in the afternoon, holding up a blank textbook and looking at us with a puzzled face, soft window light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ng424",
-          "text": "今天日本的高中課本，寫的是鐵砲隊打敗了武田的騎馬軍團；沒有寫三段。"
+          "text": "今天日本的一本高中課本，寫的是鐵砲隊打敗了武田的騎馬軍團；沒有寫三段。"
         }
       ]
     },
@@ -1325,8 +1404,8 @@
       "id": "first-question",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses at a library desk at dusk, looking up from an old book toward the viewer with one finger raised as if about to ask a question, warm lamp light",
-        "camera": "drift",
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a library at dusk, looking up from an old book toward the viewer with one finger raised as if about to ask a question, warm lamp light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1342,8 +1421,8 @@
       "chapter": "千挺旁邊，一個小小的「三」",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses at a library desk in the afternoon, holding up an open old book toward the viewer with a doubtful frown, notebooks spread around, soft lamp light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a library reading room in the afternoon, holding up an open old book to the front with a doubtful frown, notebooks spread around, soft daylight",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1358,8 +1437,8 @@
       "id": "fujimoto-answer",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses at a library desk, shaking his head toward the viewer and setting a pencil down on a notebook, soft lamp light",
-        "camera": "pan right",
+        "prompt": "Close-up of a young archivist in a cardigan and round glasses's face in a reading room, shaking his head at us with pursed lips, a pencil tucked behind one ear, soft daylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1373,14 +1452,14 @@
       "id": "narrow-field",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a narrow strip of field between a small stream and a low wooded hill under an overcast sky, one farmer in a straw hat walking along a line of wooden stakes and looking toward the viewer",
-        "camera": "tilt up",
+        "prompt": "Wide shot of a narrow strip of field between a small stream and a low wooded hill under an overcast sky, one farmer in a straw hat walking along a line of rough stakes and looking toward the viewer",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ng503",
-          "text": "研究者鈴木眞哉說，那片戰場太窄，柵又好幾道，排不下三排鐵砲。"
+          "text": "研究者鈴木真哉說，那片戰場太窄，柵又好幾道，排不下三排鐵砲。"
         }
       ]
     },
@@ -1388,8 +1467,8 @@
       "id": "borrowed-guns",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a samurai messenger on a road in the morning, carrying a long bundle of matchlock guns wrapped in straw matting on his back and bowing toward the viewer, mild overcast light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a samurai messenger on a country road on a grey forenoon, carrying a long bundle of matchlock guns wrapped in straw matting on his back and bowing to the front, mild overcast light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1397,7 +1476,18 @@
           "id": "ng504",
           "text": "還記得甫庵那句，從各隊抽出來的鐵砲嗎？",
           "emotion": "語氣親近"
-        },
+        }
+      ]
+    },
+    {
+      "id": "borrowed-arrive",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a quartermaster in a plain kimono at a camp gate in the morning, counting a row of matchlock guns laid on a straw mat and grinning at us, mild overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "ng505",
           "text": "信長真的跟別家要過槍：細川、筒井兩家，一共送來一百五十挺。"
@@ -1415,7 +1505,7 @@
       "lines": [
         {
           "id": "ng506",
-          "text": "研究者平山優說，這種湊起來的編法，叫「諸手抜」。"
+          "text": "研究者平山優說，這種湊起來的編法，叫「諸手拔」。"
         }
       ]
     },
@@ -1423,7 +1513,7 @@
       "id": "untrained",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and plain lamellar armour fumbling with a smouldering match cord behind a wooden fence, his face embarrassed toward the viewer, mild overcast light",
+        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate fumbling with a smouldering match cord behind the stakes, his face embarrassed toward the viewer, mild overcast light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1438,14 +1528,45 @@
       "id": "katsuyori-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Japanese general in red-laced armour with a gilded crested helmet standing on a low rise in the morning, studying the field ahead with a calm, thoughtful face toward the viewer, mild overcast light",
+        "prompt": "Medium shot of a young Japanese general with a gilded crested helmet and a red surcoat standing on a low rise in the morning, studying the field ahead with a calm, thoughtful face to the front, mild overcast light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ng508",
-          "text": "那句勝賴有勇無謀，平山也不同意：衝擊有柵、有鐵砲的陣地，是當時常見的打法。"
+          "text": "那句勝賴有勇無謀，平山也不同意："
+        }
+      ]
+    },
+    {
+      "id": "charge-fence",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a misty field in the morning, a mounted samurai in red-laced armour on a stocky brown horse riding hard toward a distant fence of stakes, glancing back at us to wave his men on, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ng509",
+          "text": "衝擊有柵、有鐵砲的陣地，是當時常見的打法。"
+        }
+      ]
+    },
+    {
+      "id": "timing-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a samurai drill master standing in a practice yard at noon, holding up a small sand timer and raising his eyebrows toward the viewer, mild overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ng510",
+          "text": "那輪流開槍，本身做得到嗎？",
+          "emotion": "問句"
         }
       ]
     },
@@ -1453,18 +1574,13 @@
       "id": "timing",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and plain lamellar armour pouring powder into the muzzle of his upright matchlock in a hurry, counting under his breath toward the viewer, a misty field behind him, soft grey light",
-        "camera": "drift",
+        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate pouring powder into the muzzle of his upright matchlock in a hurry, counting under his breath to the front, a practice yard behind him, soft grey light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng509",
-          "text": "那輪流開槍，本身做得到嗎？",
-          "emotion": "問句"
-        },
-        {
-          "id": "ng510",
+          "id": "ng511",
           "text": "做得到。有人重演過：一個人打一發，大約要二十秒；三個人輪著打，快得多。"
         }
       ]
@@ -1473,18 +1589,29 @@
       "id": "long-line",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a long fence of wooden stakes stretching into the mist across a field in mild overcast light, a young Japanese foot soldier in a flat conical jingasa hat and plain lamellar armour at the near end cupping his hands to shout toward the viewer",
-        "camera": "tilt down",
+        "prompt": "Wide shot of a long fence of stakes stretching into the mist across a field in mild overcast light, a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate at the near end cupping his hands to shout at us",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng511",
-          "text": "可是在古戰場表演火繩槍的人問：兩公里長的戰線，要怎麼一起喊號令？彈藥又夠嗎？"
-        },
-        {
           "id": "ng512",
-          "text": "整條線一齊放，他想不出來。"
+          "text": "可是在古戰場表演火繩槍的人問：兩公里長的戰線，要怎麼一起喊號令？"
+        }
+      ]
+    },
+    {
+      "id": "ammo-pouch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate's face in mild overcast light, peering into a nearly empty powder pouch held up by his chin and frowning toward the viewer",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ng513",
+          "text": "彈藥又夠嗎？整條線一齊放，他想不出來。"
         }
       ]
     },
@@ -1498,7 +1625,7 @@
       },
       "lines": [
         {
-          "id": "ng513",
+          "id": "ng514",
           "text": "有一個《信長公記》的本子，在「千挺」的右上角，多了一個小小的「三」。",
           "emotion": "放慢"
         }
@@ -1508,33 +1635,84 @@
       "id": "ikeda-who",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a young archivist in a cardigan and round glasses's face at a library desk, peering through a magnifying glass toward the viewer with one eye enlarged, an old book open below, soft lamp light",
+        "prompt": "Close-up of a young archivist in a cardigan and round glasses's face in a reading room, peering through a magnifying glass to the front with one eye enlarged, an old book open below, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ng515",
+          "text": "那個三，是誰加的？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ng516",
+          "text": "有人說，這是牛一親筆的本子。"
+        }
+      ]
+    },
+    {
+      "id": "ikeda-unseen",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room, holding up an empty request slip and shrugging at us with an apologetic smile, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ng517",
+          "text": "那個三，一般認為是後人補的，也可能是他自己改的。"
+        },
+        {
+          "id": "ng518",
+          "text": "原件，我們還沒看到。"
+        }
+      ]
+    },
+    {
+      "id": "screen-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an Edo-era painter kneeling before a large blank folding screen in daytime, dabbing paint with a fine brush and looking toward the viewer, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ng519",
+          "text": "江戶時代畫的長篠合戰圖屏風，又畫了什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "screen-what",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an Edo-era painter's face in daytime, a fine brush held between his teeth and a proud grin to the front, the edge of a blank folding screen beside him, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ng520",
+          "text": "館方說，上面畫了柵、畫了鐵砲隊，也畫了衝過來的騎馬武者。"
+        }
+      ]
+    },
+    {
+      "id": "screen-asahi",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a museum curator in white gloves standing beside a tall folded screen in a quiet storeroom, holding a closed catalogue and frowning at us, soft daylight",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng514",
-          "text": "有人說這是牛一親筆的本子；那個三，一般認為是後人補的，也可能是他自己改的。"
-        },
-        {
-          "id": "ng515",
-          "text": "這個本子的原件，我們還沒看到。"
-        }
-      ]
-    },
-    {
-      "id": "screen-painter",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an Edo-era painter kneeling before a large blank folding screen in daytime, dabbing paint with a fine brush and looking toward the viewer, soft window light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ng516",
-          "text": "江戶時代畫的長篠合戰圖屏風，館方說，畫了柵、畫了鐵砲隊，也畫了衝過來的騎馬武者。"
+          "id": "ng521",
+          "text": "報導說，上面沒有三段擊。可是一張畫，本來就畫不出換排；"
         }
       ]
     },
@@ -1542,17 +1720,13 @@
       "id": "screen-unseen",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a museum curator in white gloves standing beside a tall folded screen in a quiet storeroom, holding a closed catalogue and frowning toward the viewer, soft daylight",
-        "camera": "pull out",
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room, looking up from a laptop with a blank screen and spreading empty hands toward the viewer, soft daylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng517",
-          "text": "報導說，上面沒有三段擊。可是一張畫，本來就畫不出換排；"
-        },
-        {
-          "id": "ng518",
+          "id": "ng522",
           "text": "這些屏風，我們也還沒親眼看過。"
         }
       ]
@@ -1561,14 +1735,14 @@
       "id": "tidy-picture",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and plain lamellar armour standing behind a wooden fence in mild overcast light, holding his matchlock upright and shrugging toward the viewer with a crooked smile",
-        "camera": "pan left",
+        "prompt": "Medium shot of a young Japanese foot soldier in a flat conical jingasa hat and a simple breastplate standing behind the stakes in mild overcast light, holding his matchlock upright and shrugging to the front with a crooked smile",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng519",
-          "text": "我們覺得，這個畫面能活這麼久，是因為它把一場說不清楚的勝利，畫成了一張整齊的圖。",
+          "id": "ng523",
+          "text": "我們覺得，這畫面能活這麼久，是因為它把一場說不清的勝利，畫成了一張整齊的圖。",
           "emotion": "像跟朋友說自己的看法"
         }
       ]
@@ -1583,7 +1757,7 @@
       },
       "lines": [
         {
-          "id": "ng520",
+          "id": "ng524",
           "text": "最早的紀錄裡，沒有三排輪流；可是那天完全沒有輪流開火，也證明不了。"
         }
       ]
@@ -1593,12 +1767,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a plain manila folder lying on a wooden desk, a hand pressing a rubber stamp down onto its cover, light from a desk lamp on the left",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ng521",
+          "id": "ng525",
           "text": "這份檔案，未結。",
           "emotion": "收尾，乾脆"
         }
@@ -1616,12 +1790,12 @@
       },
       "lines": [
         {
-          "id": "ng522",
+          "id": "ng526",
           "text": "你第一次看到三排輪流開火的畫面，是在哪裡？",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "ng523",
+          "id": "ng527",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }
