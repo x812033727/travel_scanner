@@ -11,13 +11,11 @@ completed_at:
 branch: codex/a01-exact-media-dispatch-fence-20261017
 depends_on: []
 scope:
-  - apps/api/app/video_media/jobs.py
   - apps/api/app/video_media/admin_api.py
   - apps/api/app/video_media/cutover_intake.py
   - apps/api/app/video_media/dispatch_fence.py
   - apps/api/app/video_media/dispatch_fence_cli.py
   - apps/api/app/video_media/dispatch_fence_cutover.py
-  - apps/api/tests/test_video_media_jobs.py
   - apps/api/tests/test_video_media_api.py
   - apps/api/tests/test_video_media_cutover_intake.py
   - apps/api/tests/test_video_media_dispatch_fence.py
@@ -165,3 +163,10 @@ test files above were added to this task after checking for active claims and
 open PR overlap. Their fixtures explicitly mock an allowed intake only for
 those cases; the dedicated cutover tests continue to exercise the real,
 fail-closed gate. No production default or gate behavior is relaxed.
+
+2026-10-19 site-owner-authorized narrow claim handoff: Release only
+`apps/api/app/video_media/jobs.py` and `apps/api/tests/test_video_media_jobs.py`
+from this ticket's scope to the separate A01 admission fix. PR #1556 and this
+ticket retain all existing implementation, tests, other scope and unfinished
+production cutover gates. This metadata change does not merge, deploy or start
+paid work.
