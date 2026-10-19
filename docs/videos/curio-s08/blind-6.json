@@ -1,0 +1,199 @@
+{
+  "script_sha256": "8f4346554d24203b8c38aecfdb20059dd3dc7922452412406678546534023f6a",
+  "narrative_sealed_before_sources": true,
+  "narrative_seal_path": "/tmp/curio-s08-final-blind-8f434.narrative-seal.json",
+  "answer_set_sha256": "280e6573f7bd42bda621a6ba915bffa01cd09fc99c2cc51eb9982fe47a771f19",
+  "answer_set_hash_method": "SHA-256 of UTF-8 JSON array, ensure_ascii=False, compact separators, insertion key order id/yes/evidence",
+  "narrative_result": {
+    "passes_required": false,
+    "yes_count": 12,
+    "no_count": 1,
+    "failed_required_ids": [
+      "no_recap"
+    ],
+    "reason": "[wood-066] says 「日行二十里」 and [wood-104] says 「群行者二十里」. The same number is repeated without an explicit named callback. The second quotation adds the solo/group distinction, but the strict no_recap question still fails."
+  },
+  "answers": [
+    {
+      "id": "scene_first",
+      "yes": true,
+      "evidence": "[wood-001] 旁白：建興十二年春，諸葛亮的隊伍走出斜谷，一批軍糧也往前線移動。"
+    },
+    {
+      "id": "no_spoiler",
+      "yes": true,
+      "evidence": "[wood-008] 旁白（敘述緊湊，句末留一拍）：更晚的小說叫人扭動器具的「舌頭」；接著會發生什麼？"
+    },
+    {
+      "id": "one_line",
+      "yes": true,
+      "evidence": "[wood-025] 旁白：剛才祁山的「運」是上路；黃沙的「畢」是製作收尾，兩個字記的不是同一步。"
+    },
+    {
+      "id": "no_toc",
+      "yes": true,
+      "evidence": "[wood-090] 旁白（敘述緊湊，句末留一拍）：先指著復原圖上一條接線，查它到底出自哪句古文。"
+    },
+    {
+      "id": "chapters_link",
+      "yes": true,
+      "evidence": "[wood-025] 旁白：剛才祁山的「運」是上路；黃沙的「畢」是製作收尾，兩個字記的不是同一步。"
+    },
+    {
+      "id": "open_loops",
+      "yes": true,
+      "evidence": "[wood-050] 旁白（問句上揚，問完停半拍）：可史書連運糧工具都提到了，外形會不會藏在另一頁？"
+    },
+    {
+      "id": "payoffs",
+      "yes": true,
+      "evidence": "[wood-094] 旁白（敘述緊湊，句末留一拍）：剛才問第一個接點：孔名和間距都有，這份引文卻沒把連接次序交代完整。"
+    },
+    {
+      "id": "no_recap",
+      "yes": false,
+      "evidence": "[wood-104] 旁白（引文與年份放慢，字句清楚）：它還分「特行者數十里，群行者二十里」。"
+    },
+    {
+      "id": "chapters_are_events",
+      "yes": true,
+      "evidence": "[wood-025] 旁白：剛才祁山的「運」是上路；黃沙的「畢」是製作收尾，兩個字記的不是同一步。"
+    },
+    {
+      "id": "outro_no_next",
+      "yes": true,
+      "evidence": "[outro] 旁白：喜歡把古書翻到註腳，訂閱奇聞檔案局。"
+    },
+    {
+      "id": "opening_hooks",
+      "yes": true,
+      "evidence": "[wood-007] 旁白（問句上揚，問完停半拍）：後來保留下來的文字，還有一句「一腳四足」；它真會走路嗎？"
+    },
+    {
+      "id": "one_thread",
+      "yes": true,
+      "evidence": "[wood-089] 旁白（問句上揚，問完停半拍）：如果有人拿著一張聲稱「完全依古文」的復原圖，第一個該問什麼？"
+    },
+    {
+      "id": "no_detour",
+      "yes": true,
+      "evidence": "[wood-087] 旁白：這些動作屬於小說，不在《三國志》三年的運糧句子裡。"
+    }
+  ],
+  "sources": {
+    "primary": {
+      "work": "三國志",
+      "commit": "10a0b1ab3019d8821262f7402366d14fb4aaa102",
+      "file_033": "/tmp/s05-sanguozhi/OEBPS/Text/033.htm",
+      "paragraphs": [
+        "p10",
+        "p11",
+        "p13"
+      ],
+      "file_035": "/tmp/s05-sanguozhi/OEBPS/Text/035.htm",
+      "paragraphs_035": [
+        "p17"
+      ]
+    },
+    "later_novel": {
+      "work": "三國演義, chapter 102",
+      "commit": "761813427eb5685c395804493f9fbd7ad8dc7d8d",
+      "file": "/tmp/s05-sanguoyanyi/OEBPS/Text/481.html",
+      "paragraphs": [
+        "p24",
+        "p25",
+        "p26"
+      ]
+    }
+  },
+  "source_spot_checks": [
+    {
+      "script_id": "wood-025",
+      "source": "三國志 033.htm p10,p11",
+      "exact_ancient_wording": [
+        "九年春二月，亮復出軍圍祁山，始以木牛運。",
+        "十年，亮休士勸農於黃沙，作流馬木牛畢，教兵講武。"
+      ],
+      "observed": "p10 reports transport using 木牛; p11 reports completion of making 流馬木牛 at 黃沙.",
+      "inference": "「運」 and 「作…畢」 describe different activities. The source does not identify which batch was completed or whether either design changed.",
+      "verdict": "supported"
+    },
+    {
+      "script_id": "wood-055",
+      "source": "三國志 035.htm p17, Pei annotation",
+      "exact_ancient_wording": [
+        "亮集載作木牛流馬法曰：「木牛者，方腹曲頭，一脚四足，頭入領中，舌著於腹。"
+      ],
+      "observed": "The annotation introduces the device text with 「亮集載作木牛流馬法曰」.",
+      "inference": "The script expands 「亮集」 as 《諸葛亮集》 and attributes the citation to 裴注. That is a reasonable attribution, but 《諸葛亮集》 is not the exact title printed at this point. The text does not imply that Pei measured a surviving machine.",
+      "verdict": "supported_with_wording_caveat"
+    },
+    {
+      "script_id": "wood-065",
+      "source": "三國志 035.htm p17, Pei annotation",
+      "exact_ancient_wording": [
+        "載一歲糧，日行二十里，而人不大勞。"
+      ],
+      "observed": "The cited wording says 「而人不大勞」 and gives no number of operators per device.",
+      "inference": "Low effort is the cited author’s description, not a measured modern labor requirement; the crew count cannot be recovered from this sentence.",
+      "verdict": "supported"
+    },
+    {
+      "script_id": "wood-073",
+      "source": "三國志 035.htm p17, Pei annotation",
+      "exact_ancient_wording": [
+        "前軸孔分墨去頭四寸，徑中二寸。前脚孔分墨二寸，去前軸孔四寸五分，廣一寸。前杠孔去前脚孔分墨二寸七分，孔長二寸，廣一寸。",
+        "後軸孔去前杠分墨一尺五分，大小與前同。後脚孔分墨去後軸孔三寸五分，大小與前同。後杠孔去後脚孔分墨二寸七分"
+      ],
+      "observed": "The text names front and rear 軸孔, 脚孔, and 杠孔.",
+      "inference": "Those names suggest classes of associated components, as the script cautiously says; they do not specify the assembled joints or prove exactly what went through each hole. The source uses 「脚」 while the script modernizes it to 「腳」.",
+      "verdict": "supported_as_limited_inference"
+    },
+    {
+      "script_id": "wood-092",
+      "source": "三國志 035.htm p17, Pei annotation",
+      "exact_ancient_wording": [
+        "前軸孔分墨去頭四寸，徑中二寸。"
+      ],
+      "observed": "The text gives a four-cun measurement 「分墨去頭四寸」 for the front axle hole.",
+      "inference": "The script’s 「離頭四寸」 is a fair shorthand, but it omits 「分墨」 and does not establish the exact modern measurement reference point or the center of the hole.",
+      "verdict": "supported_with_measurement_caveat"
+    },
+    {
+      "script_id": "wood-094",
+      "source": "三國志 035.htm p17, Pei annotation",
+      "exact_ancient_wording": [
+        "流馬尺寸之數，肋長三尺五寸，廣三寸，厚二寸二分，左右同。前軸孔分墨去頭四寸，徑中二寸。",
+        "前後四脚，廣二寸，厚一寸五分。"
+      ],
+      "observed": "The text supplies part names, hole names, and measurements. It does not lay out a complete sequence for joining every part.",
+      "inference": "The claim that a full original assembly cannot be uniquely recovered is a judgment about what this passage omits, not a positive statement made by the ancient text.",
+      "verdict": "supported_as_inference"
+    },
+    {
+      "script_id": "wood-082_to_wood-087_and_wood-109",
+      "source": "三國演義 481.html p24-p26, later novel",
+      "exact_ancient_wording": [
+        "不消半月，造成二千餘隻，與孔明所造者一般法則，亦能奔走。",
+        "汝便將木牛流馬口內舌頭扭轉，牛馬就不能行動",
+        "王平令兵扭轉木牛流馬舌頭，皆棄於道上",
+        "王平令軍士將牛馬舌頭，重複扭轉，驅趕而行。"
+      ],
+      "observed": "The later novel describes Wei imitation, more than two thousand devices, the tongue stop and restart trick, disguise, and smoke/fire spectacle.",
+      "inference": "These are novel events. The primary annotation has 「舌著於腹」 but no turn-to-stop operation.",
+      "verdict": "supported_and_correctly_separated_from_history"
+    },
+    {
+      "script_id": "wood-095_and_outro",
+      "source": "三國志 035.htm p17 and 三國演義 481.html p25-p26",
+      "exact_ancient_wording": [
+        "前軸孔分墨去頭四寸，徑中二寸。",
+        "汝便將木牛流馬口內舌頭扭轉，牛馬就不能行動"
+      ],
+      "observed": "The historical annotation gives partial specifications; the later novel supplies a dramatic operation that is not stated there. The outro asks which part the viewer would like illustrated and makes no new source claim.",
+      "inference": "A working reconstruction would show one feasible assembly, not prove the unique ancient form. This is a sound limit drawn from incomplete assembly evidence.",
+      "verdict": "supported_as_inference"
+    }
+  ],
+  "overall_source_verdict": "No material source contradiction in the requested checks. Keep the distinctions between exact text, editorial expansion, and reconstruction inference explicit."
+}
