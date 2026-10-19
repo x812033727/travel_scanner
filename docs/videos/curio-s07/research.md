@@ -10,7 +10,7 @@
 | [SG36-ZY] | [同卷〈趙雲傳〉段 `p21`](https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/036.htm#L34) | 長坂敗走時，趙雲抱後主、護甘夫人，使其免難。不能由這段推出當時所有劉備家眾均平安。 |
 | [SG35-DATE] | [同書卷 35〈諸葛亮傳〉裴注段 `p8`](https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/035.htm#L21) | 裴註明劉備建安十三年敗，供 208 年標示；不拿它替橋上動作添細節。 |
 | [YY41] | [毛評本《三國演義》第 41 回](https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/417.html#L60) | 小說寫張飛率二十餘騎，在樹林把樹枝拴馬尾往返揚塵，自己在橋上橫矛。這個疑兵方法**只在小說裡**。 |
-| [YY42] | [毛評本《三國演義》第 42 回](https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/418.html#L36-L46) | 小說寫文聘等疑林後伏兵、曹操現身、張飛三次大喝、夏侯傑驚倒馬下、曹軍逃。其後張飛撤樹枝、**命拆橋樑**；劉備責備此舉暴露無伏兵，曹操派人搭浮橋再追。不能把毛評夾注當小說人物的動作。 |
+| [YY42] | [毛評本《三國演義》第 42 回橋頭至再追](https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/418.html#L36-L49) | 小說寫文聘等疑林後伏兵、曹操現身、張飛三次大喝、夏侯傑驚倒馬下、曹軍逃。其後張飛撤樹枝、**命拆橋樑**；劉備責備此舉暴露無伏兵，曹操派人搭浮橋再追。[同一固定版第 49 行](https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/418.html#L49) 接著寫關羽截住追兵、曹操退軍。不能把毛評夾注當小說人物的動作。 |
 
 ## 逐項查核
 

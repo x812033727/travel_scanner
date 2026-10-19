@@ -58,19 +58,9 @@
       "what": "劉備命張飛帶二十騎拒後"
     },
     {
-      "setup": "eb044",
-      "payoff": "eb045",
-      "what": "史書給出的敵方反應"
-    },
-    {
-      "setup": "eb048",
+      "setup": "eb046",
       "payoff": "eb049",
       "what": "漢津遇關羽舟師"
-    },
-    {
-      "setup": "eb053",
-      "payoff": "eb055",
-      "what": "小說的馬尾樹枝疑兵計"
     },
     {
       "setup": "eb056",
@@ -106,6 +96,16 @@
       "setup": "eb091",
       "payoff": "eb092",
       "what": "小說讓關羽截停曹操"
+    },
+    {
+      "setup": "eb100",
+      "payoff": "eb064",
+      "what": "史書短句在小說裡變成巨雷般第一喝"
+    },
+    {
+      "setup": "eb101",
+      "payoff": "eb051",
+      "what": "劉備有沒有回到原定江陵"
     }
   ],
   "youtube": {
@@ -601,6 +601,21 @@
       ]
     },
     {
+      "id": "bridge-047",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a quiet Han era path, one armoured rider carrying a wrapped infant securely, gentle morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb052",
+          "text": "另一邊，《趙雲傳》記趙雲抱著幼小的後主，護甘夫人脫險。"
+        }
+      ]
+    },
+    {
       "id": "bridge-028",
       "template": "shot",
       "data": {
@@ -666,7 +681,7 @@
           "text": "《張飛傳》給出數字：張飛率二十騎拒後。"
         }
       ],
-      "chapter": "二十騎據水斷橋"
+      "chapter": "張飛二十騎據水斷橋"
     },
     {
       "id": "bridge-032",
@@ -710,228 +725,8 @@
       "lines": [
         {
           "id": "eb038",
-          "text": "傳文寫完「據水斷橋」，接著寫張飛怎樣讓人停步？",
+          "text": "《張飛傳》把斷橋寫在挑戰前；但橋邊的張飛，究竟怎樣讓追兵停步？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
-        }
-      ]
-    },
-    {
-      "id": "bridge-035",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot on a narrow Han era bridge approach, one stern spear captain holding his weapon crosswise, gentle morning light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb039",
-          "text": "他「瞋目橫矛」，怒目直視，把矛橫在身前。",
-          "emotion": "口語向前，轉折前留一拍"
-        }
-      ]
-    },
-    {
-      "id": "bridge-036",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot at a river crossing, one spear captain raising his chin toward the far bank, soft overcast daylight",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb040",
-          "text": "在水邊對著來敵，他報出了自己的名字。"
-        }
-      ]
-    },
-    {
-      "id": "bridge-037",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot on a bare Han era bridge, one spear captain calling across water while holding a spear, mild window light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb041",
-          "text": "原文是：「身是張益德也，可來共決死！」"
-        },
-        {
-          "id": "eb042",
-          "text": "對方退了多遠？史書有沒有記？",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
-        }
-      ]
-    },
-    {
-      "id": "bridge-038",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot at an archive table, one scholar placing two blank name tablets side by side, pale afternoon light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb043",
-          "text": "注意史書寫的是「益德」；不是小說常見的「翼德」。"
-        }
-      ]
-    },
-    {
-      "id": "bridge-039",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot on a Han era riverbank, one mounted pursuer drawing rein before a narrow crossing, gentle morning light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb044",
-          "text": "聽完後追兵做了什麼？原文只給一個反應。",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
-        }
-      ]
-    },
-    {
-      "id": "bridge-040",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot beside a narrow Han era river, one scout holding his horse still before a bridge, soft overcast daylight",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb045",
-          "text": "「敵皆無敢近者」：面前的敵人都不敢逼近。",
-          "emotion": "口語向前，轉折前留一拍"
-        }
-      ]
-    },
-    {
-      "id": "bridge-041",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot on a tree lined Han era path, one weary rider guiding his horse away from the crossing, mild window light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb046",
-          "text": "所以劉備得以脫身；這是傳記給出的結果。"
-        }
-      ]
-    },
-    {
-      "id": "bridge-042",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot at a Han era archive desk, one reader closing a short blank battle scroll, pale afternoon light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb047",
-          "text": "至於他們為何不敢靠近，史書沒有交代敵人各自的心思。"
-        }
-      ]
-    },
-    {
-      "id": "bridge-043",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a Han era crossroads, one traveller studying a plain river map, gentle morning light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb048",
-          "text": "那劉備和失散的家人，後來各往哪裡去？",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
-        }
-      ]
-    },
-    {
-      "id": "bridge-044",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot at the Han River landing, one robed commander boarding a waiting boat, soft overcast daylight",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb049",
-          "text": "《先主傳》說，劉備斜往漢津，終於遇上關羽的船。"
-        }
-      ]
-    },
-    {
-      "id": "bridge-045",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot on a Han era riverbank, one boatman helping a passenger step ashore, mild window light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb050",
-          "text": "一行人由此渡過沔水，又遇見劉琦帶來的人馬。"
-        }
-      ]
-    },
-    {
-      "id": "bridge-046",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot on a Han era road to Xiakou, one traveller pointing toward a distant town, pale afternoon light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb051",
-          "text": "他們沒有回到原定的江陵，而是一起往夏口去。",
-          "emotion": "口語向前，轉折前留一拍"
-        }
-      ]
-    },
-    {
-      "id": "bridge-047",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot on a quiet Han era path, one armoured rider carrying a wrapped infant securely, gentle morning light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb052",
-          "text": "《趙雲傳》又說，趙雲抱著幼小的後主，護甘夫人脫險。"
-        }
-      ]
-    },
-    {
-      "id": "bridge-048",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot beside a deserted Han era wagon, one rider pausing to look toward a distant crossing, soft overcast daylight",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb053",
-          "text": "史書留下的疑問，小說在橋後樹林添了一個動作。"
         }
       ]
     },
@@ -946,11 +741,11 @@
       "lines": [
         {
           "id": "eb054",
-          "text": "《三國演義》第四十一回，張飛帶二十餘騎到長坂橋，望見橋東的樹林。",
+          "text": "小說把橋前添上另一手：張飛帶二十餘騎來到長坂橋，望見橋東樹林。",
           "emotion": "口語向前，轉折前留一拍"
         }
       ],
-      "chapter": "小說讓樹林揚塵"
+      "chapter": "小說讓馬尾樹枝揚塵"
     },
     {
       "id": "bridge-050",
@@ -1075,7 +870,7 @@
           "text": "小說第四十二回，曹操也來到橋邊。"
         }
       ],
-      "chapter": "張飛連喝三聲，夏侯傑跌馬"
+      "chapter": "曹操到橋邊，張飛連喝三聲"
     },
     {
       "id": "bridge-058",
@@ -1094,6 +889,83 @@
       ]
     },
     {
+      "id": "bridge-035",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a narrow Han era bridge approach, one stern spear captain holding his weapon crosswise, gentle morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb039",
+          "text": "他「瞋目橫矛」，怒目直視，把矛橫在身前。",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "bridge-036",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a river crossing, one spear captain raising his chin toward the far bank, soft overcast daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb040",
+          "text": "本傳還記下他朝追兵喊出的原話。"
+        }
+      ]
+    },
+    {
+      "id": "bridge-037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a bare Han era bridge, one spear captain calling across water while holding a spear, mild window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb041",
+          "text": "原文是：「身是張益德也，可來共決死！」"
+        }
+      ]
+    },
+    {
+      "id": "bridge-038",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an archive table, one scholar placing two blank name tablets side by side, pale afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb043",
+          "text": "史書稱他「益德」，小說接下來則寫作「翼德」。"
+        }
+      ]
+    },
+    {
+      "id": "bridge-090",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a storybook bridge in overcast daylight, one spear captain opening his mouth toward the distant riverbank, spear held crosswise, light from the left, enclosed in a visible illustrated fiction folio frame",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb100",
+          "text": "剛才史書那一句挑戰，在小說裡會變成什麼聲音？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
       "id": "bridge-059",
       "template": "shot",
       "data": {
@@ -1104,7 +976,7 @@
       "lines": [
         {
           "id": "eb064",
-          "text": "張飛第一聲報名叫陣，小說寫得聲如巨雷。"
+          "text": "小說把剛才那句報名寫得聲如巨雷。"
         }
       ]
     },
@@ -1296,17 +1168,33 @@
       ]
     },
     {
-      "id": "bridge-072",
+      "id": "bridge-040",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at an archive desk, one researcher running a finger down an unmarked short scroll, soft overcast daylight",
-        "camera": "pull out",
+        "prompt": "Medium shot beside a narrow Han era river, one scout holding his horse still before a bridge, soft overcast daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "eb077",
-          "text": "可在《三國志·張飛傳》，找不到夏侯傑的名字，也沒有三次大喝。"
+          "id": "eb045",
+          "text": "而在對追兵的反應上，《張飛傳》只寫「敵皆無敢近者」；沒有傘蓋、三喝或夏侯傑。",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "bridge-042",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Han era archive desk, one reader closing a short blank battle scroll, pale afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb047",
+          "text": "追兵為何不敢逼近，傳記沒有寫出任何人的心思。"
         }
       ]
     },
@@ -1391,7 +1279,7 @@
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ],
-      "chapter": "拆橋之後又被追"
+      "chapter": "張飛拆橋後，曹操再追"
     },
     {
       "id": "bridge-078",
@@ -1529,6 +1417,83 @@
       ]
     },
     {
+      "id": "bridge-041",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a tree lined Han era path, one weary rider guiding his horse away from the crossing, mild window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb046",
+          "text": "歷史文字也只說劉備因此脫身；他後來走向哪裡？"
+        }
+      ]
+    },
+    {
+      "id": "bridge-044",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at the Han River landing, one robed commander boarding a waiting boat, soft overcast daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb049",
+          "text": "《先主傳》接著寫：劉備斜往漢津，終於遇上關羽的船。"
+        }
+      ]
+    },
+    {
+      "id": "bridge-045",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a Han era riverbank, one boatman helping a passenger step ashore, mild window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb050",
+          "text": "一行人由此渡過沔水，又遇見劉琦帶來的人馬。"
+        }
+      ]
+    },
+    {
+      "id": "bridge-091",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a Han era river landing in soft daylight, one weary commander placing a marker away from Jiangling on a plain route tablet, river boats out of focus, light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb101",
+          "text": "還記得原定的江陵嗎？他們最後還往那裡去嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "bridge-046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a Han era road to Xiakou, one traveller pointing toward a distant town, pale afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb051",
+          "text": "他們沒有回到原定的江陵，而是一起往夏口去。",
+          "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
       "id": "bridge-086",
       "template": "shot",
       "data": {
@@ -1539,7 +1504,7 @@
       "lines": [
         {
           "id": "eb094",
-          "text": "這就回答了開頭那座橋的時點：《張飛傳》不交代斷橋前後，《演義》則安排退敵後拆橋。"
+          "text": "《張飛傳》把「據水斷橋」放在挑戰前，沒有交代實際拆橋時刻。"
         }
       ]
     },
@@ -1554,7 +1519,7 @@
       "lines": [
         {
           "id": "eb095",
-          "text": "還記得「一吼震斷橋」嗎？即使在小說裡也找不到；它寫的是命人拆橋。",
+          "text": "還記得開頭問的斷橋嗎？小說是退敵後命人拆橋，也找不到「一吼震斷橋」。",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]

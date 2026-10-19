@@ -47,6 +47,8 @@ node tools/video/cli.mjs narrative --slug curio-s07
 
 2026-10-19：上述初版獨立盲讀僅 8／13，舊稿有返回橋頭重講、宣告「換一本書」、章首脫節、未回收敵人不敢近的原因，以及結尾重述事實等阻斷。已重構史書橋後劉備逃向漢津與小說橋後拆橋再追的後果鏈，避開總結重述。另依來源覆核刪去小說不支持的曹操「先看清楚」、曹軍「面面相看」字句；史書斷橋不指定施工者和橋材、小說在退敵後才拆橋。修訂詳 [`verify-1.md`](../../docs/videos/curio-s07/verify-1.md)。目前 **99 句／90 插圖／六章、估 8.4 分鐘、lint 0 errors / 0 warnings、script SHA-256 `8b459182e0726732487df2ccddead4cbd15bb404a74b3943500ff193f49da216`**；逐句表 99 句同步。仍待新雜湊的真正獨立盲讀與來源查核，沒有啟動付費媒體。
 
+2026-10-19：上列版的新來源隔離盲讀 **12/13**，`one_line` 再次否決史書與小說重走同一趟橋頭；兩名讀者同題均否，故改成一次前進的時間線，把史書挑戰原句放在小說三喝的同一動作處。讀者的七組固定史料抽查通過，另提示舊 `eb094` 未明確區分原文先後與真實拆橋時點；現稿已釐清，並補第 42 回關羽截兵的固定行號。**現版 96 句／88 插圖／六章、估 8.2 分鐘、lint 0 errors / 0 warnings、script SHA-256 `93eaaf928a3853b84a0231d313ce8eff8af6fb13c04f05b396d0da956a709a03`**，逐句表同步。原始回執與改稿見 [`verify-2.md`](../../docs/videos/curio-s07/verify-2.md)；下一位獨立讀者須看此確切雜湊，媒體仍暫停。
+
 ## Notes
 
 固定版本：`Ancient-China-Books/sanguozhi@10a0b1ab3019d8821262f7402366d14fb4aaa102` 與 `Ancient-China-Books/sanguoyanyi@761813427eb5685c395804493f9fbd7ad8dc7d8d`，直接段落連結見 `research.md`。`topics.json` 的未核句子有誤，此票不碰共享題庫；以本集已核文本為準。沒有呼叫 TTS、圖片或其他付費生成。協作分工只包含 `docs/videos/curio-s07/` 與此票，不改其他集。

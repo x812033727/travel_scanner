@@ -1,0 +1,77 @@
+{
+  "slug": "curio-s07",
+  "date_utc": "2026-10-19",
+  "source_isolated": true,
+  "script_sha256_expected": "8b459182e0726732487df2ccddead4cbd15bb404a74b3943500ff193f49da216",
+  "script_sha256_before": "8b459182e0726732487df2ccddead4cbd15bb404a74b3943500ff193f49da216",
+  "questions_passed": 12,
+  "questions_total": 13,
+  "verdicts": [
+    {
+      "id": "scene_first",
+      "yes": true,
+      "evidence": "[eb001] fixes 當陽長坂 with 劉備撤退 and 張飛留後; [eb002–eb004] immediately show the cavalry, arriving pursuers, and bridge question."
+    },
+    {
+      "id": "no_spoiler",
+      "yes": true,
+      "evidence": "[eb001–eb006] establish retreat and pose the unresolved bridge timing, enemy motive, and fallen general questions; [eb094–eb095], [eb047], and [eb077] hold their answers."
+    },
+    {
+      "id": "one_line",
+      "yes": false,
+      "evidence": "[eb035–eb047] narrate 張飛 facing and stopping the pursuers at the bridge from the history; [eb054–eb075] go back to 張飛 and the pursuers at that same bridge to narrate the novel version. This is a second pass over the same event, contrary to the strict no-retelling wording.",
+      "blocker": "The historical bridge encounter and the novel bridge encounter occupy two chronological passes over the same scene."
+    },
+    {
+      "id": "no_toc",
+      "yes": true,
+      "evidence": "[eb007] moves to the earlier death of 劉表, [eb035] answers the cavalry count, and [eb054] enters the novel scene; no narrated sentence lays out a coming section list."
+    },
+    {
+      "id": "chapters_link",
+      "yes": true,
+      "evidence": "[eb007] names the earlier point before the opening pursuit; [eb034–eb035] ask and answer the cavalry count; [eb053–eb054] move from the unresolved historical question into the novel’s forest action; [eb061–eb062] bring 曹操 to the bridge; [eb081–eb084] carry the dismantled bridge into 劉備’s concern."
+    },
+    {
+      "id": "open_loops",
+      "yes": true,
+      "evidence": "Unresolved concrete questions recur inside each 90-second span, for example [eb013], [eb022], [eb034], [eb042], [eb056], [eb070], [eb076], [eb083], and [eb088]."
+    },
+    {
+      "id": "payoffs",
+      "yes": true,
+      "evidence": "The long opening loops have explicit returns: bridge timing [eb004]→[eb094], enemy motive absent from history [eb005]→[eb047], fallen general absent from history [eb006]→[eb077]. Local loops resolve in new facts, e.g. [eb034]→[eb035], [eb056]→[eb058], [eb083]→[eb084], [eb091]→[eb092–eb093]."
+    },
+    {
+      "id": "no_recap",
+      "yes": true,
+      "evidence": "The count [eb035] and the novel’s different count [eb054] have separate sources; [eb077] contrasts the three novel shouts with the historical record, and [eb094–eb095] explicitly call back the opening bridge questions [eb004] and [eb078]."
+    },
+    {
+      "id": "chapters_are_events",
+      "yes": true,
+      "evidence": "The chapter headings name actions or revelations: 劉備帶著人眾南行 [eb007–eb034], 二十騎據水斷橋 [eb035–eb053], 樹林揚塵 [eb054–eb061], 夏侯傑跌馬 [eb062–eb081], 拆橋後又被追 [eb082–eb095]."
+    },
+    {
+      "id": "outro_no_next",
+      "yes": true,
+      "evidence": "[eb096–eb099] close with a source-checking thought, viewer question, and subscribe request, with no next episode or file preview."
+    },
+    {
+      "id": "opening_hooks",
+      "yes": true,
+      "evidence": "After the first scene [eb001–eb003], [eb004] asks when the bridge broke, [eb005] asks whether the history explains enemy fear, and [eb006] asks whether the fallen general appears in history."
+    },
+    {
+      "id": "one_thread",
+      "yes": true,
+      "evidence": "張飛’s bridge stand is set up [eb001–eb006], made necessary by 劉備’s slow retreat [eb015–eb034], recorded in history [eb035–eb047], enlarged in the novel [eb054–eb081], and followed to its consequence [eb082–eb095]."
+    },
+    {
+      "id": "no_detour",
+      "yes": true,
+      "evidence": "The retreat and loss [eb007–eb034] explain the bridge stand; the escape route and rescued family [eb048–eb052] answer what the stand bought; the forest trick, shouts, dismantling, and renewed chase [eb054–eb095] each develop the opening bridge questions."
+    }
+  ]
+}

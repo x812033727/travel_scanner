@@ -1,0 +1,61 @@
+{
+  "slug": "curio-s07",
+  "date_utc": "2026-10-19",
+  "separate_from_source_isolated_blind": "/tmp/curio-s07-fresh-blind-20261019.json",
+  "pinned_sources": {
+    "SG32": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/032.htm#L22-L23",
+    "SG36-ZF": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/036.htm#L21",
+    "YY41": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/417.html#L60",
+    "YY42": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/418.html#L36-L46",
+    "YY42-Guan": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/418.html#L49"
+  },
+  "method": "Fetched original HTML at the pinned commits and read the specified original p elements with commentary spans removed.",
+  "checks": [
+    {
+      "lines": "[eb035–eb047]",
+      "source": "SG36-ZF p8",
+      "supported": true,
+      "evidence": "飛據水斷橋，瞋目橫矛曰：「身是張益德也，可來共決死！」敵皆無敢近者，故遂得免。 The paragraph identifies twenty riders and gives no 夏侯傑, number of shouts, enemy motive, bridge material, or person who cut the bridge."
+    },
+    {
+      "lines": "[eb054–eb060]",
+      "source": "YY41 p17; YY42 p9",
+      "supported": true,
+      "evidence": "YY41 has 二十餘騎 tie branches to horse tails and raise dust behind the bridge. YY42 p9 has 文聘 see the dust, suspect ambush, and halt; others fear 諸葛亮’s plot."
+    },
+    {
+      "lines": "[eb062–eb077]",
+      "source": "YY42 p9, p11; SG36-ZF p8",
+      "supported": true,
+      "evidence": "YY42 p9 gives three separate challenges, 夏侯傑 falling, 曹操 turning, and the army fleeing; p11 gives 張遼 and 許褚 checking the bridge. SG36 p8 has none of 夏侯傑 or three shouts."
+    },
+    {
+      "lines": "[eb079–eb086]",
+      "source": "YY42 p11–p12",
+      "supported": true,
+      "evidence": "After the flight, 張飛 calls back his riders, removes the tail branches, orders the bridge demolished, and reports this to 劉備. 劉備 says the demolition betrays a lack of ambush; 張遼 and 許褚 report the demolished bridge to 曹操."
+    },
+    {
+      "lines": "[eb087–eb089]",
+      "source": "YY42 p12",
+      "supported": true,
+      "evidence": "曹操 says 彼斷橋而去，乃心怯也 and orders 一萬軍 速搭三座浮橋，只今夜就要過. 李典 suspects a 諸葛亮 trick; 曹操 orders rapid advance. The source explicitly reports an order, not a completed bridge count."
+    },
+    {
+      "lines": "[eb090–eb093]",
+      "source": "YY42 p13, pinned line 49",
+      "supported": true,
+      "evidence": "At 漢津, 劉備 sees the river ahead and pursuers behind. 關雲長 arrives from behind a slope with troops, stops 曹操; 曹操 says 又中諸葛亮之計也 and orders retreat. Guan Yu then escorts 劉備 to the waiting boats."
+    },
+    {
+      "lines": "[eb094–eb095]",
+      "source": "SG36-ZF p8; YY42 p11",
+      "supported": true,
+      "evidence": "SG36 p8 puts 據水斷橋 before the challenge in sentence order but gives no precise time or demolition method. YY42 p11 explicitly places the order to dismantle after the enemy flight. Neither states that a voice broke the bridge.",
+      "caveat": "[eb094]「不交代斷橋前後」could be read as denying any textual order; the historical passage does place 據水斷橋 before the challenge. Its exact timing remains unstated, so a more precise phrasing would avoid that ambiguity."
+    }
+  ],
+  "material_source_mismatch": false,
+  "script_edited": false,
+  "source_link_note": "The YY42 link in research.md ends at #L46; the Guan Yu interception used by [eb090–eb093] appears later on the same pinned page at #L49."
+}
