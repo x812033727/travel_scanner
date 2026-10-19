@@ -39,6 +39,7 @@ from app.models import (
 )
 from app.problems import AppError, app_error_handler
 from app.video_media.models import VideoMediaJob
+from app.video_reviews.schemas import IMPORTED_LOCALES
 from app.video_youtube import admin_api, connection, requests, sync
 from app.video_youtube.client import SCOPE, YoutubeClient, YoutubeError, error_from
 from app.video_youtube.errors import Refused
@@ -475,7 +476,9 @@ def test_every_title_ends_with_its_language_s_captions_tag_once() -> None:
     assert requests.captioned("AI 模型怎麼挑｜CC字幕 ", "zh-TW") == "AI 模型怎麼挑｜CC字幕"
     # A language without a tag of its own reads the English one.
     assert requests.captioned("t", "fr") == "t｜CC Subtitles"
-    assert set(requests.CAPTION_TAGS) == set(requests.NARRATION_LANGUAGES)
+    # The worker's table (tools/video/core/metadata.mjs) has the four it makes; the site's also
+    # has the five an imported video may add.
+    assert set(requests.CAPTION_TAGS) == {*requests.NARRATION_LANGUAGES, *IMPORTED_LOCALES}
     # A tag added by hand, or in another language, is replaced rather than added to.
     assert requests.captioned("Area 51｜ CC字幕", "en") == "Area 51｜CC Subtitles"
     assert requests.captioned("51 區｜ CC字幕｜CC字幕", "zh-TW") == "51 區｜CC字幕"

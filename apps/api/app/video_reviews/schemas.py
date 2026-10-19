@@ -51,9 +51,27 @@ ContentType = Literal[
 YOUTUBE_VIDEO_ID_PATTERN = r"^[A-Za-z0-9_-]{11}$"
 # The languages a video can be made in besides zh-TW, in the order the page lists them. The
 # owner decided on 2026-10-09 that a video's languages are four: narrated in zh-TW, with en, ja
-# and ko to add; the site keeps its five locales, the videos do not.
-DubLocale = Literal["en", "ja", "ko"]
-DUB_LOCALES: tuple[DubLocale, ...] = get_args(DubLocale)
+# and ko to add; the site keeps its five locales, the videos do not. These three are the ones
+# the worker makes (tools/video/core/schema.mjs LOCALES).
+WorkerLocale = Literal["en", "ja", "ko"]
+WORKER_LOCALES: tuple[WorkerLocale, ...] = get_args(WorkerLocale)
+# On 2026-10-18 the owner added Latin-American Spanish, Brazilian Portuguese, Indonesian,
+# Vietnamese and Thai for 種田娶妻打天下, an imported series whose dubs, CC and titles are made
+# outside the pipeline. Only a video ``tools/video/cli.mjs import`` put on the site may choose
+# them (``locale_options``): the worker makes none of them. YouTube gets each under its own tag
+# (app/video_youtube/requests.py YOUTUBE_LANGUAGES).
+ImportedLocale = Literal["es", "pt", "id", "vi", "th"]
+IMPORTED_LOCALES: tuple[ImportedLocale, ...] = get_args(ImportedLocale)
+DubLocale = Literal[WorkerLocale, ImportedLocale]
+DUB_LOCALES: tuple[DubLocale, ...] = (*WORKER_LOCALES, *IMPORTED_LOCALES)
+
+
+def _worker_locales() -> list[DubLocale]:
+    return [*WORKER_LOCALES]
+
+
+# The checklist key tools/video/import reports on a video it put on the site (import.mjs IMPORTED).
+IMPORTED_CHECKLIST_KEY = "imported"
 # Languages a video could be made in before (zh-CN until 2026-10-09). A stored choice or an
 # approved languages batch may still name one; it is ignored rather than refused, so the video's
 # other languages keep working (``without_retired_locales``).
@@ -342,6 +360,9 @@ class ProjectSummary(BaseModel):
     locales_decided_at: datetime | None = None
     languages: dict[DubLocale, dict[LocalePart, LanguagePartOut]] = Field(default_factory=dict)
     ready_to_upload: bool = False
+    # The languages the panel offers this video, in its order: en, ja and ko, and for an imported
+    # video the five made outside the pipeline as well (IMPORTED_LOCALES).
+    locale_options: list[DubLocale] = Field(default_factory=_worker_locales)
     # The owner's requests to make a skipped dub again (migration 0131): the latest per locale,
     # only for a dub that is chosen now; and, for a chosen dub that reads skipped with no open
     # request, why it cannot be asked for again. Both empty for a Short.

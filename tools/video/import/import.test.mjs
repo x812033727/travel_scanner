@@ -7,7 +7,7 @@ import { test } from "node:test";
 
 import { AREAS, EXIT, main } from "../cli.mjs";
 import { UsageError } from "../core/paths.mjs";
-import { chaptersFrom, finalReview, IMPORTED, importLanguages, importLong, languageFileProblem, languageFiles, measureProblems, projectBody, readMeta } from "./import.mjs";
+import { chaptersFrom, finalReview, IMPORT_LOCALES, IMPORTED, importLanguages, importLong, languageFileProblem, languageFiles, measureProblems, projectBody, readMeta } from "./import.mjs";
 
 const DESCRIPTION = "一段說明。\n\n章節\n00:00 一張圖，三個問題\n00:48 畫面真，不代表故事真\n1:02:03 很長的一章\n\n資料來源\nS01｜NIST";
 const META = { slug: "ai-real-world-01-image-trust", titles: ["照片不能當證據之後，我們還能相信什麼？", "AI 圖片越來越真：我們該怎麼查證？"], description: DESCRIPTION };
@@ -259,6 +259,36 @@ test("--languages sends the ticked parts as one hand-pushed batch bound to the i
   const again = await importLanguages({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe });
   assert.equal(box.calls.at(-1)[2].content_sha256, review.content_sha256);
   assert.equal(again.status, "pending");
+});
+
+test("--languages sends es, pt, id, vi and th beside en, ja and ko when the owner ticked them", async (t) => {
+  assert.deepEqual(IMPORT_LOCALES, ["en", "ja", "ko", "es", "pt", "id", "vi", "th"]);
+  const five = ["es", "pt", "id", "vi", "th"];
+  const all = { metadata: true, captions: true, dub: true };
+  const box = imported(t, { locales: Object.fromEntries(["en", ...five].map((locale) => [locale, all])) });
+  const titles = { es: "Siembra, cásate y conquista Cap. 1 | CC", pt: "Plantar, Casar e Conquistar Ep. 1 | Legendado", id: "Bertani, Beristri, Berkuasa Episode 1 | Sub Indo", vi: "Làm Ruộng Cưới Vợ Đoạt Thiên Hạ Tập 1 | Vietsub", th: "ทะลุมิติไปทำนา ได้เมีย ครองแผ่นดิน ตอนที่ 1 | ซับไทย" };
+  for (const locale of five) {
+    writeFileSync(path.join(box.from, `description.${locale}.txt`), `${titles[locale]}
+
+${locale} description.
+`);
+    writeFileSync(path.join(box.from, `${locale}.srt`), `1
+00:00:00,000 --> 00:00:01,000
+${locale}
+`);
+    writeFileSync(path.join(box.from, `dub.${locale}.m4a`), `${locale} track`);
+  }
+  const result = await importLanguages({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe });
+  assert.deepEqual(Object.keys(result.locales), ["en", ...five], "in the panel's order");
+  assert.deepEqual(result.missing, []);
+  const review = box.calls.at(-1)[2];
+  assert.deepEqual(review.files.map((file) => file.role).filter((role) => five.some((locale) => role.endsWith(`_${locale}`))),
+    five.flatMap((locale) => [`description_${locale}`, `captions_${locale}`, `dub_${locale}`]));
+  for (const locale of five) {
+    assert.deepEqual(review.payload.locales[locale], { metadata: "ready", captions: "ready", dub: "ready", file: `dub.${locale}.m4a`, format: "m4a", file_role: `dub_${locale}`, sha256: createHash("sha256").update(`${locale} track`).digest("hex") }, locale);
+  }
+  assert.match(review.summary, /th 標題說明、CC、配音（匯入）/);
+  assert.deepEqual(result.unticked, ["ja metadata", "ja captions", "ja dub", "ko captions"], "en, ja and ko are read as before");
 });
 
 test("--languages says which ticked parts the folder lacks", async (t) => {
