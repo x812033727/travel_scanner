@@ -43,6 +43,7 @@ scope:
 ### 2026-10-19 來源可行性試查
 
 - **S25 牛頓蘋果暫緩前製。** 在這個雲端環境，Royal Society、Newton Project、Wikisource 與 Gutenberg 原站請求均遭網路代理回覆 403，尚無法重開斯圖克利回憶錄原稿。可重開的 [Brewster 1831 年傳記固定版](https://github.com/GITenberg/The-Life-of-Sir-Isaac-Newton/blob/698dea96e3e5ed08ae46d5d693433ae7d97a6e0b/53311-0.txt#L10317-L10319) 只是較晚的二手論述，書中作者說他未找到蘋果故事的可靠根據；不能因這段話就推翻後來被找到的斯圖克利手稿，也不能用網頁轉引原稿冒充已核對的一手資料。補齊可重開的手稿或可信全篇校錄前，不寫 S25 劇本。
+- **S22 維京 1021 年暫緩前製。** [《Nature》原研究 DOI](https://doi.org/10.1038/s41586-021-03972-8)、Nature 原站與 Crossref 的全文／目錄請求在此雲端遭代理回覆 403；試查 PMC、Europe PMC 亦被 403 阻擋。GitHub 以 DOI 與論文全題檢索尚未找到可固定、可重開的全文。尚不能逐項核對年輪訊號、木片數量與「1021 年在場」的推論範圍；補到原研究或可信完整校錄前，不把題目卡的年份推成「首次抵達」並不寫劇本。
 - **S24 阿基米德可優先查核。** 固定版維特魯威《建築十書》[英文譯本第九書序 9–12 節](https://github.com/GITenberg/The-Ten-Books-on-Architecture/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt#L8012-L8053) 與[拉丁原文](https://github.com/GITenberg/Vitruvii-De-architectura-libri-decem/blob/78eb1eed88044d5cac42a3dd811d5806e4e04cfb/51812-0.txt#L27276-L27313) 都可重開：原文 `currens identidem graece clamabat ευρηκα ευρηκα`，接著用 `dicitur` 交代同重量金銀塊與皇冠排水比較。兩版同樣記希羅的金冠、混銀指控、浴盆溢水及奔跑呼喊。維特魯威寫作於阿基米德之後，原文是傳述而非目擊證詞；不把「有人寫他喊了」說成「可證他當場真喊了」。
 - **S24 人物脈絡另有獨立傳世文本。** [普魯塔克〈馬塞勒斯傳〉固定版](https://github.com/GITenberg/Plutarch-Lives-of-the-noble-Grecians-and-Romans_674/blob/6aea7c6d83ee3596f9106d2d832d705aa4ed4620/674.txt#L19090-L19133) 提到阿基米德應希羅請求將幾何構想變成機械；該段沒有金冠與洗澡場面。它可交叉核對兩人關係的傳述脈絡，**沉默不能當成浴盆事件不存在的證明**。此書完整文本本地 SHA-256 `11a1bb9a5d5a8436f2d4d7adf3ad91ec05bb8aef850e564ce255cf9ba2fabdd1`。
 
