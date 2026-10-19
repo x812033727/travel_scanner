@@ -33,7 +33,7 @@ mt407、mt409、mt413、mt423、mt431、mt437、mt511、mt517、mt520、mt521、
 | mt220 | 她還寫，國王看起來也深深明白這個道理 | #30 | ARNETH p. 149「Le roi m'a paru penetre de cette verite」 | 確認 |
 | mt211 | 沒有。三個星期後，她又寫：百姓為了麵包貴，吃了好多苦 | #38 | ARNETH p. 155「Versailles, le 14 juillet 1775」「le peuple, qui a tant souffert de la cherte du pain」 | 依覆核新增的列 |
 | mt212 | 「好在麥子長得很好；收成以後，麵包一定會便宜」 | #38 | ARNETH p. 155「les bles sont tres-beaux et on est sur que le pain diminuera apres la moisson」 | 依覆核新增的列 |
-| mt214 | 兩封信證明不了她沒說過，只說明她知道麵包很貴 | #30 #38 | 覆核第 3 點 | 照覆核的措辭 |
+| mt214 | 不能；信說明的是她的態度，不是她說過什麼 | #30 #38 | S26.md 第 30 列覆核「這封信只證明她的態度，不能證明她『沒說過』」 | 照覆核的措辭 |
 | mt301 | 目前找得到最早的，是卡爾，一八四一年十一月（回呼 mt108） | #17 | KARR 1841-11 p. 61；法文 WP「le premier auteur connu」 | 覆核：說「目前找得到最早」，不說「第一次」 |
 | mt302 mt303 | 刊物《黃蜂》：人家傳說，瑪麗．安東尼講過一句話，不知道是真是假：「沒有麵包，就吃布里歐」 | #17 | KARR「le mot vrai ou faux qu'on rapporte de Marie Antoinette : — S'il n'y a pas de pain on mangera de la brioche.」 | 確認 |
 | mt304 | 布里歐是加了奶油和雞蛋的麵包，不是蛋糕 | #13 | WP〈Brioche〉〈Let them eat cake〉 | 確認（二手）；只解釋這一次 |
@@ -54,7 +54,7 @@ mt407、mt409、mt413、mt423、mt431、mt437、mt511、mt517、mt520、mt521、
 | mt424 | 還記得卡爾一八四三年那篇說的「人民」嗎？在盧梭筆下，原本只是鄉下人 | #2 #18 | CONF-FR「les paysans」；KARR「le peuple」 | 確認 |
 | mt405 mt406 | 一七八三年最早的英文譯本寫成酥皮點心；後來「蛋糕」才成了那句話最通行的譯法 | #14 | CONF-1783 pp. 136–137「let them eat pastry」；WP「the traditional translation」 | 覆核：可以說「翻成英文才變成蛋糕」，不說英譯原本完全沒有 cake |
 | mt435 | 一九〇三年的英譯本，也還是酥皮點心 | #14 | CONF-EN「"Then let them eat pastry!"」 | 確認 |
-| mt432 | 一七八三年那個譯本，把盧梭後來買到的布里歐叫作一小塊蛋糕 | #14 | CONF-1783「my dear bit of cake」 | 覆核逐列第 14 列 |
+| mt432 | 一七八三年那個譯本，在同一段裡，也把布里歐叫作「一小塊蛋糕」 | #14 | CONF-1783「my dear bit of cake」 | 覆核逐列第 14 列；不說他買了（盲評第 2 輪） |
 | mt408 | 一七六〇年代後半，盧梭在英國，和後來住的一座城堡裡，寫下了這一部 | #7 #39 | 卷七「à Wooton ou dans le château de Trye」；法文 WP；卷六「presque sexagénaire」 | 覆核：不定在一七六六年 |
 | mt433 | 他在這一卷裡寫：寫下這些的時候，自己已經體弱，快六十歲了 | #39 | CONF-FR「maintenant que j'écris ceci, infirme et presque sexagénaire」；CONF-EN「though infirm, near sixty」 | 依覆核新增的列 |
 | mt410 | 她一七五五年在維也納出生，這時候還在那裡，是個十來歲的小女孩 | #8 #9 #10 | 算術；WP | 覆核：「十來歲」，不說「十歲」 |
@@ -76,7 +76,7 @@ mt407、mt409、mt413、mt423、mt431、mt437、mt511、mt517、mt520、mt521、
 | mt525 | 酥皮，就是包在肉派外面的那一層 | #24 | S26.md 第 24 列備註 | 確認 |
 | mt505 | 這個版本裡，說話的人不是冷漠，是好心 | #24 | S26.md 第 24 列備註 | 確認 |
 | mt506 | 寫回憶錄的伯爵夫人一七八一年才出生，這件事是她聽來的（回答 mt511） | #24 | WP〈Adèle d'Osmond〉 | 確認（二手年份） |
-| mt526 | 這本回憶錄，到一九〇七年才出版 | #24 | WP〈Adèle d'Osmond〉「published in 1907」（章名的一八三五年動筆同條「Starting in 1835」） | 確認（二手） |
+| mt526 | 她一八三五年才動筆，這本回憶錄，到一九〇七年才出版 | #24 | WP〈Adèle d'Osmond〉「Starting in 1835」「published in 1907」；S26.md 第 24 列備註 | 確認（二手） |
 | mt516 | 我們覺得，這句話一直在找主人，是因為大家需要一位不知道麵包多貴的公主 | — | 本頻道的看法 | 標成看法 |
 | mt518 | 她這一輩子有沒有隨口說過什麼，紀錄沒辦法告訴我們 | — | S26.md〈給撰稿的提醒〉：不說「她從來沒說過」 | 不下比紀錄更強的結論 |
 | mt519 | 書裡這句話，說的不可能是她（回答 mt111） | #2 #6 #8 #9 #10 | 結檔句（依覆核） | 確認 |
