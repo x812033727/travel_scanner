@@ -54,8 +54,8 @@
     },
     {
       "setup": "eg052",
-      "payoff": "eg054",
-      "what": "魏略如何回應兵少"
+      "payoff": "eg116",
+      "what": "《魏略》提出戶籍辦法後，劉備是否採用"
     },
     {
       "setup": "eg063",
@@ -71,11 +71,6 @@
       "setup": "eg087",
       "payoff": "eg088",
       "what": "奏章未記的細節能否直接判為不存在"
-    },
-    {
-      "setup": "eg126",
-      "payoff": "eg116",
-      "what": "魏略所述戶籍建議是否見效"
     },
     {
       "setup": "eg115",
@@ -209,7 +204,7 @@
       "lines": [
         {
           "id": "eg005",
-          "text": "史書旁邊竟寫諸葛亮自己北行，這條路通向哪裡？"
+          "text": "《三國志》同卷的註裡，竟寫諸葛亮自己北行；他去了哪裡？"
         }
       ]
     },
@@ -256,10 +251,10 @@
       "lines": [
         {
           "id": "eg008",
-          "text": "劉備駐在新野時，徐庶來見他。"
+          "text": "翻開《三國志》正文，劉備駐在新野時，徐庶來見他。"
         }
       ],
-      "chapter": "新野，徐庶勸劉備出門"
+      "chapter": "陳壽寫徐庶勸劉備出門"
     },
     {
       "id": "visit-009",
@@ -399,21 +394,6 @@
       ]
     },
     {
-      "id": "visit-017",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot inside a modest Han era cottage, one young robed strategist placing a wooden marker beside an unmarked map, soft overcast daylight",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg017",
-          "text": "從這裡開始，徐庶口中的「臥龍」要替劉備出主意。"
-        }
-      ]
-    },
-    {
       "id": "visit-018",
       "template": "shot",
       "data": {
@@ -424,7 +404,7 @@
       "lines": [
         {
           "id": "eg018",
-          "text": "相見的經過被略過，陳壽卻用了大段寫談話。",
+          "text": "陳壽對三趟拜訪沒有逐趟記日子和路線，見面一成，筆墨便轉進兩人的私談。",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
@@ -459,7 +439,7 @@
       "lines": [
         {
           "id": "eg021",
-          "text": "這不是閒聊：他的志向靠什麼實現？",
+          "text": "劉備也說出自己的短處；他缺的是什麼？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -499,14 +479,14 @@
       "id": "visit-024",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at a map table, one young strategist moving his finger east toward a river drawing, overcast daylight, gentle morning light",
+        "prompt": "Close shot in a modest Han era cottage, one older commander pausing before giving his reply, hands resting beside a blank scroll, soft indoor lamplight",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg024",
-          "text": "接著他說，孫權在江東已有根基，可以結盟；荊、益可作長遠根據。",
+          "text": "諸葛亮的答話還有很長一段。陳壽寫到最後，劉備對這位訪客說了什麼？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -515,14 +495,14 @@
       "id": "visit-031",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a cottage doorway, one older commander smiling as he accepts a rolled blank map, morning light, pale afternoon light",
+        "prompt": "Medium shot inside a modest Han era cottage, one older commander nodding after a private conversation, a blank scroll at his side, warm indoor lamplight",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg031",
-          "text": "劉備聽完說好，兩人的關係漸漸密切。",
+          "text": "劉備答「善」，兩人「情好日密」。同一卷裡另一場初遇怎麼來的？",
           "emotion": "口語向前，轉折前留一拍"
         }
       ]
@@ -538,10 +518,10 @@
       "lines": [
         {
           "id": "eg035",
-          "text": "可是裴松之的註，把另一條路放進同一頁。"
+          "text": "裴松之在同卷的註裡引《魏略》，它偏把相遇寫成另一條路。"
         }
       ],
-      "chapter": "樊城，魏略寫另一個訪客"
+      "chapter": "裴註引魏略寫另一個訪客"
     },
     {
       "id": "visit-036",
@@ -554,7 +534,7 @@
       "lines": [
         {
           "id": "eg036",
-          "text": "這條路沒有徐庶請劉備上門，而是諸葛亮北行。",
+          "text": "它不從徐庶勸訪寫起，而是讓諸葛亮北行去見劉備。",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
@@ -570,7 +550,7 @@
       "lines": [
         {
           "id": "eg037",
-          "text": "這段註解引用《魏略》，先把劉備放在樊城。",
+          "text": "書裡開頭先說，劉備屯在樊城。",
           "emotion": "口語向前，轉折前留一拍"
         }
       ]
@@ -904,27 +884,7 @@
       "lines": [
         {
           "id": "eg053",
-          "text": "名冊缺人，諸葛亮要劉備找哪位荊州主事者？"
-        }
-      ]
-    },
-    {
-      "id": "visit-054",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot beside a blank household register, one young adviser opening the pages with a finger, mild window light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg054",
-          "text": "他的辦法，是把未入籍的游戶找出來。",
-          "emotion": "關鍵詞放慢，句尾稍停"
-        },
-        {
-          "id": "eg111",
-          "text": "這些人本來就在荊州，只是沒列進戶籍簿。"
+          "text": "諸葛亮說可以去找一位荊州主事者；他點名的是誰？"
         }
       ]
     },
@@ -932,7 +892,7 @@
       "id": "visit-054a",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot along a Jingzhou court corridor, one messenger carrying a rolled household proposal toward a distant doorway, gentle daylight",
+        "prompt": "Medium shot inside a Fancheng meeting room, one young adviser gesturing toward a blank household register on a low table, warm indoor lamplight",
         "camera": "pan left",
         "visual": "still"
       },
@@ -954,23 +914,7 @@
       "lines": [
         {
           "id": "eg055",
-          "text": "按這條計策，先把游戶登進名冊，才有補充人手的下一步。"
-        }
-      ]
-    },
-    {
-      "id": "visit-054b",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot in a Fancheng planning room, one warlord considering a rolled household register on a low table, soft late afternoon light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg126",
-          "text": "劉備聽完這套辦法，有沒有照做？",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
+          "text": "《魏略》沒另記劉表是否下令；這段引文接著轉向劉備的反應。"
         }
       ]
     },
@@ -1064,8 +1008,8 @@
       "lines": [
         {
           "id": "eg061",
-          "text": "裴的評語不逐句比較策論；他盯的是初遇時誰先上門。",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
+          "text": "《魏略》引文一結束，裴標出「臣松之以為」；這才是他自己的判斷，盯住初遇誰上門。",
+          "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
     },
@@ -1143,7 +1087,7 @@
       "lines": [
         {
           "id": "eg067",
-          "text": "這份奏章是事後回憶，不是當天日記。",
+          "text": "這份奏章寫在初遇多年後，是當事人的回憶，不是會面當日的日記。",
           "emotion": "口語向前，轉折前留一拍"
         }
       ]
@@ -1230,7 +1174,7 @@
       "id": "visit-071",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at a study desk, one old historian listening to a traveller while keeping his open book nearby, pale afternoon light",
+        "prompt": "Close shot at an archive desk, one older historian considering two blank source scrolls laid side by side, cool archive lamplight",
         "camera": "push in",
         "visual": "still"
       },
