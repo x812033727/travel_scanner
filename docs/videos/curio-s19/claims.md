@@ -10,12 +10,12 @@
 | `et004` | 寫信的藝術家，卻已罵它「無用又可怕」。 | [R52](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L52) |
 | `et005` | 他們還預想，巴黎將在塔影下過二十年。 | [R89](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L89) |
 | `et006` | 日子一到，這座塔真的就得拆嗎？ | [R89–92](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L89), [R133–140](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L133) |
-| `et007` | 一名記者帶著抗議去見艾菲爾；他會怎麼回答？ | [R119](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L119) |
+| `et007` | 一名記者就這場抗議問艾菲爾；他會怎麼回答？ | [R119](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L119) |
 | `et008` | 多年後，一座鐵塔電台被寫進報紙；它做成了什麼？ | [I1674–1678](https://github.com/orkeilius/gutenberg_fr_mirror/blob/35610f7d0cc21e2c5877c58628edb25c796f3bd1/files/3/8/8/4/38842/38842.txt#L1674) |
 | `et009` | 這封信寫給阿爾方，請他替巴黎擋下工程。 | [R44](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L44), [R94–104](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L94) |
 | `et010` | 署名者有作家、畫家、雕塑家和建築師。 | [R48](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L48) |
 | `et011` | 他們說，自己要保護的是巴黎的藝術和歷史。 | [R48–52](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L48) |
-| `et012` | 一座還沒建成的塔，怎會讓他們如此害怕？ | [R83–92](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L83) |
+| `et012` | 這封信先把巴黎描成什麼樣子？ | [R57–63](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L57) |
 | `et013` | 信裡的巴黎，有街道、河岸，還有古老的石造建築。 | [R57–63](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L57) |
 | `et014` | 在他們眼中，鐵製高塔一進城，這幅畫就會走樣。 | [R48–53](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L48), [R83–92](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L83) |
 | `et015` | 信說，人們早把它叫作「巴別塔」。 | [R52–55](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L52) |
@@ -31,7 +31,7 @@
 | `et025` | 信的末尾，連建築師加尼耶都列在署名中。 | [R106–112](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L106) |
 | `et026` | 他們說，即使警告落空，仍要讓抗議留在紙上。 | [R101–104](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L101) |
 | `et027` | 信已登報；被抗議的艾菲爾，會先答哪一點？ | [R119–123](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L119) |
-| `et028` | 《時報》的記者去見艾菲爾，問他對抗議的看法。 | [R119–123](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L119) |
+| `et028` | 開頭那名記者來自《時報》，他問艾菲爾對抗議的看法。 | [R119–123](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L119) |
 | `et029` | 艾菲爾先對加尼耶的署名感到驚訝。 | [R123–127](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L123) |
 | `et030` | 他說加尼耶也在塔的委員會，自己無法理解。 | [R123–127](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L123) |
 | `et031` | 艾菲爾說，若早一年反對，還能參與討論。 | [R129–132](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L129) |
@@ -40,7 +40,7 @@
 | `et034` | 他甚至擔心，抗議會嚇走世博的參觀者。 | [R147–150](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L147) |
 | `et035` | 他相信高塔本身能吸引遊客；那只是他的預想。 | [R147–150](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L147) |
 | `et036` | 但他談到契約時，問題忽然變得具體。 | [R132–140](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L132) |
-| `et037` | 他到底簽到了什麼期限？ | [R133–140](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L133) |
+| `et037` | 他說建塔要花多少錢，國家又補助多少？ | [R133–136](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L133) |
 | `et038` | 艾菲爾說，建塔估計要五百萬到六百萬法郎。 | [R133–135](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L133) |
 | `et039` | 國家先出一百五十萬法郎作補助。 | [R134–136](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L134) |
 | `et040` | 除了這筆錢，他還拿到哪一項權利？ | [R134–136](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L134) |
@@ -58,7 +58,7 @@
 | `et052` | 他提醒艾菲爾：藝術家反對的是世博後仍留塔。 | [R153–155](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L153) |
 | `et053` | 這回，艾菲爾又會怎麼回答？ | [R153–157](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L153) |
 | `et054` | 艾菲爾說，若問將來留不留，現在反而太早。 | [R157–160](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L157) |
-| `et055` | 理由很直接：塔還沒建成，誰也沒見過實物。 | [R164–167](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L164) |
+| `et055` | 還記得開場那座尚未站起來的塔嗎？艾菲爾說，誰也沒看過實物。 | [R164–167](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L164) |
 | `et056` | 人們手上只有流傳的幾何圖。 | [R164–169](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L164) |
 | `et057` | 只看圖，能判它一定難看嗎？他反問。 | [R164–169](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L164) |
 | `et058` | 他開始回應那根被形容成煙囪的鐵塔。 | [R83–92](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L83), [R177–190](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L177) |
