@@ -69,6 +69,9 @@
   3. 跑 `local/dub.sh NNN <locale>` 錄音、組音軌，並複製進匯入資料夾。
 - 名字：越南語用漢越音（許硯 Hứa Nghiên），其他語言照普通話讀音。
   - 名字與用語表在 `dub-glossary.json` 和 `dub-glossary-additions.<locale>.json`。
+- 音效庫：`<VIDEO_WORKDIR>/zhong-tian-qu-qi-sfx/sound-library`（531 檔、286 MB），所有 `edit-dh-e*.json` 的 `sfx_dirs` 都指向這裡。
+  - 原本借用偶的江湖的 `ou-de-jianghu-e001/…/sound-library`，那個資料夾 10-19 前被搬到 `G:\我的雲端硬碟\AI\偶的江湖\videos\`，所以複製了一份過來，原件不動。
+  - 換機器要先從 G: 複製這個資料夾，否則組片會在 assemble-v4 第 175 行報 ENOENT。
 - 同一集的兩個語言不能同時組音軌，原因同上（`segments-v4/lines` 會被重寫）。
   - 平行做的時候，用每集一個鎖目錄 `<workdir>/.dub-lock` 排隊。
 - 封面：一季一張、不放字，所有語言共用（第一季是 `dh-keyart-season1-t1`）。
