@@ -1,0 +1,65 @@
+{
+  "review_type": "post_freeze_source_and_visual_spot_check",
+  "script_sha256_before": "837364aec8522270db48b65f4fd25734573f01d62b877732803ccea7d94602e0",
+  "script_sha256_after": "837364aec8522270db48b65f4fd25734573f01d62b877732803ccea7d94602e0",
+  "source_files": [
+    {
+      "id": "SG32",
+      "pinned_url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/032.htm#L22-L23",
+      "status": "HTTP 200; fixed-revision raw text read at p9-p10",
+      "evidence": "p9 has 劉表卒、劉琮請降、劉備自樊南去、十餘萬隨行者、數千車、日行十餘里; p10 has 曹操因江陵軍實而追、精騎五千、一日一夜三百餘里、及於當陽長坂, then 漢津、沔水、夏口."
+    },
+    {
+      "id": "SG36-ZF/ZY",
+      "pinned_url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/036.htm#L21",
+      "status": "HTTP 200; fixed-revision raw text read at p8 and p21",
+      "evidence": "張飛傳 p8 says 使飛將二十騎拒後, 飛據水斷橋, 身是張益德也，可來共決死, 敵皆無敢近者，故遂得免. 趙雲傳 p21 has the weak child/甘夫人 escape, without all others escaping."
+    },
+    {
+      "id": "SG35-DATE",
+      "pinned_url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/035.htm#L21",
+      "status": "fixed-revision raw text HTTP 200; read p8",
+      "evidence": "裴注 says 劉備以建安十三年敗, supporting the 208 date label."
+    },
+    {
+      "id": "YY41",
+      "pinned_url": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/417.html#L60",
+      "status": "fixed-revision raw text HTTP 200; read p17",
+      "evidence": "Novel body has 張飛 at 長阪橋 order 二十餘騎 to attach branches to horse tails and ride through the trees to raise dust."
+    },
+    {
+      "id": "YY42",
+      "pinned_url": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/418.html#L36-L49",
+      "status": "HTTP 200; fixed-revision raw text read at p9, p11-p13",
+      "evidence": "Novel body p9 has 曹操急令去其傘蓋, then the Guan Yu recollection and 不可輕敵; it also has three shouts, 夏侯傑 falling, Cao turning away. p11-p13 has branches removed, bridge dismantled, Cao's floating-bridge order, renewed chase and Guan Yu stopping it. The adjacent 毛評 comments were excluded as character action."
+    }
+  ],
+  "checks": [
+    {
+      "target": "eb006 causal question and bridge-007 first sentence",
+      "finding": "The causal arc is supported by SG32 p9-p10: Liu Biao dies, Liu Cong surrenders, Liu Bei moves south slowly, Cao Cao races to Changban. The immediate spoken bridge remains weak: eb006 asks why they were pursued to the bridge, whereas eb007 only says Liu Biao died. A listener must supply the connection until eb008-eb029. SG32 and SG36 do not locate Liu Bei's whole party specifically at the bridge, only the pursuit at Changban and Zhang Fei's bridge stand.",
+      "severity": "editorial_medium",
+      "evidence": "script.md lines 29, 35-114; video.json bridge-006/007; SG32 p9-p10 and SG36 p8"
+    },
+    {
+      "target": "loop eb006 payoff eb025",
+      "finding": "eb025 says Cao Cao sent five thousand elite cavalry; it explains the dispatch but does not finish the bridge-specific result asked in eb006. eb029 is the first line that says they caught Liu Bei at Changban. The loop metadata payoff should point to eb029 if the question retains its current wording.",
+      "severity": "metadata_medium",
+      "evidence": "video.json loops setup eb006/payoff eb025; claims.md eb025 and eb029; script.md lines 29, 101, 114"
+    },
+    {
+      "target": "bridge-061 canopy removal followed by bridge-062 visual",
+      "finding": "The novel's narrative text explicitly says 曹操急令去其傘蓋. bridge-058 shows a distant canopy before this; bridge-062 says the commander is under open sky and includes no canopy after it. This sequence is consistent. bridge-061's still prompt only shows a raised hand to halt a horse, so it does not depict the removal itself, but it adds no contradictory canopy after removal.",
+      "severity": "pass_with_minor_visual_gap",
+      "evidence": "YY42 p9; video.json bridge-058, bridge-061 and bridge-062 prompts/lines; script.md lines 201, 237, 241"
+    },
+    {
+      "target": "historical versus novel separation",
+      "finding": "The checked narration maintains the source boundary: the historical phrase and reaction at lines 141-149, 205-217; the novel dust ruse, three shouts, post-retreat dismantling and renewed pursuit at lines 163-334. No material factual contradiction was found in these sampled claims or their visual prompts.",
+      "severity": "pass",
+      "evidence": "SG36 p8; YY41 p17; YY42 p9,p11-p13; script.md lines 141-149, 163-334"
+    }
+  ],
+  "scope": "Targeted check of changed question, loop payoff, canopy sequence, core historical and novel claims, and scene prompt list; not an exhaustive audit of every line or generated image. No generated media inspected.",
+  "repo_edited": false
+}

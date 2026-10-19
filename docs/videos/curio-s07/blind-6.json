@@ -1,0 +1,100 @@
+{
+  "review_type": "independent_script_only_blind",
+  "script": "docs/videos/curio-s07/script.md",
+  "sha256_before": "837364aec8522270db48b65f4fd25734573f01d62b877732803ccea7d94602e0",
+  "source_files_read_before_freeze": false,
+  "rubric": ".agents/skills/youtube-video/references/script-writing.md: 說故事關卡（十三題是非題）; .agents/skills/curio-episode/SKILL.md",
+  "required_yes": 10,
+  "required_total": 12,
+  "optional_yes": 1,
+  "optional_total": 1,
+  "answers": [
+    {
+      "number": 1,
+      "id": "opening_in_scene",
+      "yes": true,
+      "evidence": "Lines 9–17 open at 208 Changban with Liu Bei retreating, Zhang Fei holding the rear with a small mounted group at a waterside bridge, and pursuers arriving."
+    },
+    {
+      "number": 2,
+      "id": "no_spoiler",
+      "yes": true,
+      "evidence": "Lines 17, 21, 25 and 29 ask what the riders won, whether a shout broke the bridge, what pursuers did, and why Liu Bei was pursued. They do not give the later answers at lines 114, 217 or 358."
+    },
+    {
+      "number": 3,
+      "id": "one_story_no_recap",
+      "yes": true,
+      "evidence": "Lines 35–114 trace the retreat to Changban; lines 131–217 advance Zhang Fei's stand; lines 229–354 follow the novel's expanded confrontation and escape. The source switches at lines 205 and 338 remain attached to the same bridge and escape, with no full restart of an earlier episode."
+    },
+    {
+      "number": 4,
+      "id": "no_outline",
+      "yes": true,
+      "evidence": "The opening uses in-world questions at lines 17–29 and chapter links are events or questions; there is no spoken list of sections or promise to explain A, B and C."
+    },
+    {
+      "number": 5,
+      "id": "chapter_first_sentence_bridge",
+      "yes": false,
+      "evidence": "Line 29 asks directly why Liu Bei's party was chased to the bridge, but the next chapter opens at line 35 with Liu Biao's death without stating its causal link to the pursuit; a fresh listener must wait through several facts to infer it. Line 191 asks whether Zhang Fei can stop Cao Cao personally, but the next chapter's first sentence at line 197 merely says Cao Cao arrived. Other joins, such as 135→141 and 293→299, work."
+    },
+    {
+      "number": 6,
+      "id": "regular_open_questions",
+      "yes": true,
+      "evidence": "Concrete open questions recur through the body at lines 56, 73, 89, 110, 127, 135, 153, 157, 171, 191, 225, 253, 281, 300, 317, 326 and 350; there is no apparent 90-second question-free passage."
+    },
+    {
+      "number": 7,
+      "id": "hooks_paid_off",
+      "yes": true,
+      "evidence": "Opening riders' purpose (line 17) is explicitly named and answered at line 217; the broken-by-a-shout question (line 21) is named and answered at line 358; the chase (line 29) is developed from Liu Cong's surrender and slow convoy through Cao Cao's cavalry catching it (lines 35–114). Later questions receive concrete answers: twenty riders (135→141), dust as suspected ambush (171→175–179), Liu Bei's worry about dismantling (300→304), Guan Yu blocking pursuit (326→330–334), and Jiangling versus Xiakou (350→354)."
+    },
+    {
+      "number": 8,
+      "id": "no_fact_repetition",
+      "yes": false,
+      "evidence": "Lines 101 and 105 repeat the same 'five thousand' figure in adjacent scenes. Line 105 adds a needed scope caveat, but an oral listener still hears the number twice before the pursuit moves forward."
+    },
+    {
+      "number": 9,
+      "id": "event_chapter_titles",
+      "optional": true,
+      "yes": true,
+      "evidence": "The chapter headings describe events or developing action: '劉備帶著人眾南行' (line 31), '張飛二十騎據水斷橋' (137), '小說讓馬尾樹枝揚塵' (159), '曹操到橋邊，張飛連喝三聲' (193), and '張飛拆橋後，曹操再追' (295)."
+    },
+    {
+      "number": 10,
+      "id": "no_next_video_at_end",
+      "yes": true,
+      "evidence": "Lines 358–371 end with the conclusion, a viewer comment question, and a subscription invitation, without naming the next video."
+    },
+    {
+      "number": 11,
+      "id": "opening_teasers",
+      "yes": true,
+      "evidence": "After the initial retreat and bridge setting (lines 9–13), lines 17, 21 and 25 seed separate later outcomes concerning the riders, the bridge, and the challenge; line 29 adds the cause of the pursuit. All stop before their answers."
+    },
+    {
+      "number": 12,
+      "id": "one_protagonist_thread",
+      "yes": true,
+      "evidence": "Zhang Fei's bridge stand and its consequence for Liu Bei's escape tie the opening (lines 9–29), the retreat (35–135), the confrontation (141–281), the dismantling and renewed chase (285–334), and the closing bridge question (358–366)."
+    },
+    {
+      "number": 13,
+      "id": "no_detours",
+      "yes": true,
+      "evidence": "The caravan's slow pace at lines 64–110 explains the pursuit; Zhao Yun at lines 118–126 shows the defeat's stakes; the novel's dust, shouting and dismantled bridge at lines 163–334 explain what was added to the historical bridge account. No whole section changes topic or lists unrelated examples."
+    }
+  ],
+  "specific_observations": {
+    "bridge_006_to_bridge_007_direct": false,
+    "bridge_006_to_bridge_007_reason": "Question at line 29 asks why the party was chased to this bridge; line 35 supplies Liu Biao's death as a remote first cause but does not immediately link it to Liu Bei's departure or Cao Cao's pursuit. The causal chain is later supplied at lines 39–114.",
+    "opening_hooks_payoff": true,
+    "chronology": "The historical retreat runs forward to Changban, then the novel's bridge action runs forward. Source switches at lines 205 and 338 can be heard as short comparisons, though they create modest temporal friction.",
+    "recap": "One adjacent numerical repeat at lines 101 and 105; otherwise callbacks generally add a new answer.",
+    "detour": "The extended novel pursuit after the dismantled bridge stays tied to the bridge's consequence and Liu Bei's escape."
+  }
+}
