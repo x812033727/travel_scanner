@@ -109,8 +109,8 @@
     },
     {
       "setup": "gs050",
-      "payoff": "gs051",
-      "what": "曹操後來提到哪個孩子"
+      "payoff": "gs114",
+      "what": "曹操如何為處死華佗辯解"
     },
     {
       "setup": "gs052",
@@ -146,6 +146,11 @@
       "setup": "gs102",
       "payoff": "gs111",
       "what": "小說醫生術後提醒何事"
+    },
+    {
+      "setup": "gs115",
+      "payoff": "gs051",
+      "what": "哪位孩子讓曹操後悔殺華佗"
     }
   ],
   "youtube": {
@@ -519,6 +524,22 @@
         {
           "id": "gs019",
           "text": "旁觀將領驚得失色，關羽卻邊吃邊下棋。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "gs113",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a physician quietly admiring a calm general with a wrapped right sleeve at a camp table, soft light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs113",
+          "text": "小說還讓華佗說，他行醫一生，沒見過這樣鎮定的病人。",
           "emotion": "自然說故事"
         }
       ]
@@ -1097,7 +1118,39 @@
       "lines": [
         {
           "id": "gs050",
-          "text": "華佗死後曹操的頭風仍在；這段傳記接著提到哪個孩子？",
+          "text": "華佗死後曹操頭風仍在。他曾怎麼為處死醫生辯解？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "gs114",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a ruler touching his forehead while speaking to a distant adviser in a plain chamber, lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs114",
+          "text": "曹操說華佗本能治好他，卻為自重故意留著病根；這只是曹操對華佗的指控。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "gs115",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a ruler looking toward a small empty chair by a doorway, muted lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs115",
+          "text": "可等另一個人病危，這番辯解便變成後悔；那個人是誰？",
           "emotion": "問句自然上揚，留半拍"
         }
       ]
@@ -1472,17 +1525,18 @@
     },
     {
       "id": "gs076",
-      "template": "shot",
+      "template": "outro",
       "data": {
-        "prompt": "Medium shot a reader closing two unlettered books beside a small lantern, warm lamplight",
-        "camera": "pull out",
-        "visual": "still"
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "史書寫左臂無名醫；小說寫右臂華佗"
+        ]
       },
       "lines": [
         {
           "id": "gs076",
-          "text": "想讓熟悉的歷史場景回到原文，訂閱奇聞檔案局。",
-          "emotion": "自然說故事"
+          "text": "想讓熟悉的歷史場景回到原文，訂閱奇聞檔案局。"
         }
       ]
     }
