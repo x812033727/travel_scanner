@@ -1,0 +1,88 @@
+{
+  "slug": "curio-s02",
+  "review_type": "independent_source_isolated_narrative_blind",
+  "script_sha256": "e7a55cb388bb8852b258886af195cf853616594efa6bafca781cc92c53f610f4",
+  "source_scope": [
+    "docs/videos/curio-s02/script.md",
+    "docs/videos/curio-s02/video.json (loops only)",
+    ".agents/skills/curio-episode/SKILL.md and its referenced script-writing rubric",
+    "tools/video/core/narrative.mjs NARRATIVE_PANEL questions/IDs only"
+  ],
+  "overall_pass": false,
+  "required_yes": 10,
+  "required_total": 12,
+  "all_yes": 11,
+  "all_total": 13,
+  "answers": [
+    {
+      "id": "scene_first",
+      "yes": true,
+      "evidence": "s02001–s02003 place 孫權 aboard a large ship by 曹營 in 建安十八年, with arrows loading one side and an immediate turn. The fourth line moves to a conflicting order, not a greeting or topic label."
+    },
+    {
+      "id": "no_spoiler",
+      "yes": true,
+      "evidence": "s02001–s02003 are one unresolved shipboard scene; the opening does not say that the other side catches arrows or whether the ship returns safely (s02040–s02041). s02004–s02006 name later tensions but withhold the exact opposite order, the fictional actor's identity, and who chose three days. The source name in s02001 does weaken a later reveal at s02031, assessed under payoffs/recap."
+    },
+    {
+      "id": "one_line",
+      "yes": true,
+      "evidence": "The investigation follows the same borrowed-arrows question: 濡須 context s02008–s02018, incompatible 吳歷/魏略 accounts s02019–s02051, the novel's planned arrow gathering s02052–s02081, then chronological and evidentiary separation s02082–s02090. The novel is a connected comparison promised by the title, not an unrelated second topic."
+    },
+    {
+      "id": "no_toc",
+      "yes": true,
+      "evidence": "The pivots are facts and questions: s02030 asks where the arrow-stuck ship account comes from, s02048 asks what 通鑑 selected, and s02053 asks who demanded the novel's arrows. None announces chapter order or recites a list of coming sections."
+    },
+    {
+      "id": "chapters_link",
+      "yes": true,
+      "evidence": "After the preview, s02008 explicitly steps back one year to the fort that leads to the siege. Other chapter starts answer or advance the preceding question: s02019 after s02018, s02031 after s02030, s02054–s02055 after s02053, s02065 after s02064, and s02083 after s02082."
+    },
+    {
+      "id": "open_loops",
+      "yes": true,
+      "evidence": "Questions or withheld consequences recur far more often than every 90 seconds: s02014, s02018, s02023, s02030, s02036, s02042, s02048, s02050, s02053, s02060, s02067, s02072, s02077, and s02082. The declared video.json loops also span the opening and later chapters."
+    },
+    {
+      "id": "payoffs",
+      "yes": false,
+      "evidence": "The major opening hooks do pay off (opposite no-fire order s02004→s02025; three-day giver s02006→s02058; other side of the ship s02003→s02038–s02041). But s02030 asks where the opening's arrow-stuck large ship came from, and s02031 answers 《魏略》, which s02001 already named. That is an apparent reveal with no new answer; s02030–s02031 should instead ask for and deliver the new difference, Cao's fire order at s02034."
+    },
+    {
+      "id": "no_recap",
+      "yes": false,
+      "evidence": "s02001 explicitly attributes the large ship to 《魏略》, while s02031 repeats that same attribution as an answer. s02030 names the opening ship, so the visual return and the added mechanics in s02033–s02041 are legitimate callbacks; the repeated book name is the concrete redundancy. Likewise s02029→s02049 is a named recall that adds 通鑑's selection, so it is not counted as a duplicate."
+    },
+    {
+      "id": "chapters_are_events",
+      "yes": true,
+      "required": false,
+      "evidence": "The headings identify actions or reveals, such as 孫權先築濡須塢, 弓弩不得妄發, 船偏重快翻了, 諸葛亮自限三日, and 霧裡的二十艘船轉過身. The final heading states the concluding reveal, 兩艘船分屬不同故事."
+    },
+    {
+      "id": "outro_no_next",
+      "yes": true,
+      "evidence": "s02091 invites subscription to the channel without naming any later episode or case."
+    },
+    {
+      "id": "opening_hooks",
+      "yes": true,
+      "evidence": "After the concrete ship scene s02001–s02003, s02004 withholds the opposite order, s02005 withholds the later novel actor, and s02006 asks who imposed the three-day deadline for 100,000 arrows. Those three moments are resolved later at s02025, s02054–s02055, and s02058."
+    },
+    {
+      "id": "one_thread",
+      "yes": true,
+      "evidence": "A concrete question carries every chapter: whether the familiar borrowed-arrows voyage can be traced to 孫權's ship. The 吳歷 no-fire account s02019–s02030 complicates it, 魏略 s02031–s02047 supplies the arrow-stuck ship, the novel s02054–s02081 changes the motive to collecting 100,000 arrows, and s02083–s02089 tests chronology and direct adaptation."
+    },
+    {
+      "id": "no_detour",
+      "yes": true,
+      "evidence": "s02020–s02022 give the prior contact that explains Cao's response in 吳歷; s02043–s02051 delimit what the historical sources can establish; s02054–s02081 supplies the fictional version required for the title's comparison. These beats each advance the borrowed-arrows question; none is an unrelated list or excursion."
+    }
+  ],
+  "blockers": [
+    "s02030–s02031 pose 《魏略》 as a fresh answer even though s02001 already gave that attribution. This makes one payoff old and repeats one specific fact."
+  ],
+  "suggested_minimal_fix": "Keep the opening source attribution for clarity, but change s02030–s02031 to ask and reveal the new point in 《魏略》 (曹操下令放箭 at s02034), rather than asking for the already named book. Preserve the intentional opening-ship callback and the distinct novel comparison."
+}
