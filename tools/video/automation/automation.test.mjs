@@ -16,6 +16,7 @@ import { cuePieces } from "../core/captions.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, lexiconProposals, sandbox } from "../core/fixtures/load.mjs";
 import { NARRATIVE_PANEL, PANEL_INSTRUCTIONS, PANEL_RULES_SHA256 } from "../core/narrative.mjs";
+import { CURIO_MUSIC } from "../core/curio.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
 import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
@@ -1940,6 +1941,20 @@ test("an explainer request plans, writes and checks with the explainer prompts, 
   assert.deepEqual(settled.characters, []);
   assert.equal(settle(written, { slug: "y", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "anime-2d" }).look.preset, "cinematic-3d", "any other request preset still yields to the writer's");
 
+  // 奇聞檔案局 always has its music bed (owner, 2026-10-19), unless the owner's switch is off; the
+  // writer's own bed stays, and 原來如此 and the flat one-off keep what the writer wrote.
+  const musical = { ...settings, drama: { ...DRAMA_SETTINGS, music_enabled: true } };
+  const silent = { ...written, music: undefined };
+  assert.deepEqual(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, CURIO_MUSIC, "a curio script the writer left without music gets the series bed");
+  assert.notEqual(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, CURIO_MUSIC, "a copy, not the frozen constant");
+  const own = { prompt: "slow harp, no vocals", gain_db: -22 };
+  assert.deepEqual(settle({ ...written, music: own }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, own, "the writer's own bed is kept");
+  assert.equal(settle(silent, { slug: "y", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, undefined, "music switched off: no bed");
+  for (const preset of ["cute-cartoon", "flat-explainer"]) {
+    assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: preset }).music, undefined, `${preset}: nothing added`);
+    assert.deepEqual(settle({ ...written, music: own }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: preset }).music, own, `${preset}: the writer's bed is kept`);
+  }
+
   const box = sandbox();
   const request = { id: "8b2e3d4c-5b6a-4f7e-9b8c-0d1e2f3a4b5c", premise: "為什麼雷聲總比閃電晚到？", title: null, source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: null };
   const site = fakeSite({ answers: { planner: () => ({ slug: "why-thunder-is-late", title: "為什麼雷聲總比閃電晚到？", source_guide: null, source_urls: ["https://en.wikipedia.org/wiki/Speed_of_sound"], brief }) }, settings: { drama: DRAMA_SETTINGS, max_waiting_drafts: 1 }, dramaRequests: [request] });
@@ -2091,10 +2106,12 @@ test("the storytelling panel reads the script blind between the listener and the
   assert.deepEqual(Object.keys(call.payload), ["narration", "questions"], "the reader is told the script and the questions, nothing else");
   assert.equal(call.instructions, PANEL_INSTRUCTIONS, "no standing instructions, no stance, no genre section");
   assert.match(call.payload.narration, /^# /);
+  assert.equal(panels, 1, "a flat explainer asks one reader");
   assert.equal(call.payload.questions.length, NARRATIVE_PANEL.length, "every question, the opening_hooks one included");
   const verdict = readJson(path.join(box.work, slug, "review", "narrative.json"));
   assert.deepEqual([verdict.passed, verdict.round, verdict.failed], [true, 1, []]);
   assert.equal(verdict.panel_rules_sha256, PANEL_RULES_SHA256);
+  assert.equal(verdict.readers, undefined, "one reader: no per-reader record");
   assert.equal(await automation.narrativeGate(state), null, "a passed panel bound to this script is not asked again");
 
   // 2. A required "no" is a rewrite, and the script is verified, heard and read again.
@@ -2116,6 +2133,60 @@ test("the storytelling panel reads the script blind between the listener and the
   assert.equal(blockedKindOf(state), "prompt_fixes:narrative");
   assert.equal(resetForRetry(state), "prompt_fixes:narrative");
   assert.equal(state.prompt_fixes.narrative, undefined);
+});
+
+// 奇聞檔案局 asks two readers, as the brand stories do (owner, 2026-10-19): a required question
+// fails only when both say "no". 原來如此 (cute-cartoon) still asks one.
+test("the storytelling panel of a 奇聞檔案局 episode asks two readers and fails a question only when both say no", async () => {
+  for (const [preset, readers] of [["cute-mystery", 2], ["cute-cartoon", 1]]) {
+    const slug = `panel-${preset}`;
+    const box = sandbox(slug, "explainer");
+    const asked = [];
+    const site = fakeSite({ answers: {
+      writer: () => ({ video: longExplainer() }),
+      verifier: (body) => {
+        if (body.variant !== "narrative") return { report: "# 查核\n", video: null, claims: "", changed_facts: 0 };
+        asked.push(body.payload);
+        // Round 1: each reader fails a different question, so the two together pass. Round 2: both
+        // fail the same one.
+        if (asked.length <= readers) return panelAnswers(asked.length === 1 ? { chapters_link: false } : { payoffs: false });
+        return panelAnswers({ chapters_link: false });
+      },
+    } });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-19T02:00:00Z") });
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    automation.persist({ slug, title: "雷聲", format: "drama", style_preset: preset, target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+    const state = readJson(path.join(box.work, slug, "auto.json"));
+    assert.equal(await automation.saveAndLint(state, { video: longExplainer() }), null, preset);
+    assert.equal(readJson(path.join(box.root, "docs", "videos", slug, "video.json")).look.preset, preset);
+
+    const outcome = await automation.narrativeGate(state);
+    assert.equal(asked.length, readers, `${preset}: ${readers} reader(s) a round`);
+    const verdict = readJson(path.join(box.work, slug, "review", "narrative.json"));
+    if (readers === 1) {
+      assert.deepEqual(Object.keys(asked[0]), ["narration", "questions"], "one reader: the payload it always had");
+      assert.match(outcome, /screenplay rewritten after the storytelling panel's note/, "one reader's no is a rewrite");
+      assert.equal(verdict.readers, undefined);
+      continue;
+    }
+    assert.deepEqual(asked.map((payload) => payload.reader), [1, 2], "each reader's request is its own");
+    assert.deepEqual(Object.keys(asked[0]), ["narration", "questions", "reader"]);
+    assert.equal(asked[0].narration, asked[1].narration, "both read the same script");
+    assert.match(outcome, /the storytelling panel passed \(round 1\)/, "a question one reader met is met");
+    assert.deepEqual([verdict.passed, verdict.failed], [true, []]);
+    assert.deepEqual(verdict.readers.map((each) => each.failed), [["chapters_link"], ["payoffs"]], "each reader's answers are kept");
+
+    const video = readJson(path.join(box.root, "docs", "videos", slug, "video.json"));
+    video.scenes[0].lines[0].text = "接下來我們來看三件事。";
+    assert.equal(await automation.saveAndLint(state, { video }), null);
+    assert.match(await automation.narrativeGate(state), /screenplay rewritten after the storytelling panel's note/, "both readers' no is a rewrite");
+    assert.equal(asked.length, 4);
+    const problem = site.calls.run.at(-1).payload.fix.problems[0];
+    assert.match(problem, /說故事檢查沒過：chapters_link/);
+    assert.match(problem, /讀者一：.*讀者二：/, "the writer reads both readers' evidence");
+    assert.deepEqual(readJson(path.join(box.work, slug, "review", "narrative.json")).failed, ["chapters_link"]);
+  }
 });
 
 test("a saved three-minute explainer uses ten in lint fixes, script fixes and replanning, then persists the repaired target", async () => {
