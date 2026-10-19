@@ -7,7 +7,7 @@
 | [SG35] | 陳壽《三國志》卷35〈諸葛亮傳〉正文及裴松之注，Ancient China Books 固定版 `10a0b1ab3019d8821262f7402366d14fb4aaa102`，[段落](https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/035.htm#L23) | 陳壽正文敘第一次北伐、馬謖敗街亭、諸葛亮退軍；裴注引《蜀記》記郭沖五事並逐一反駁。**引述郭沖不等於裴松之認可郭沖。** |
 | [SG03] | 《三國志》卷3〈明帝紀〉，同一固定版，[太和二年及五年](https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/003.htm#L17-L25) | 228 年曹真督關右、張郃在街亭擊敗馬謖；231 年曹真死後，魏明帝才命司馬懿拒諸葛亮。與卷35是同一部史書的不同篇，不冒稱獨立見證。 |
 | [JS01] | 房玄齡等唐修《晉書》卷1〈宣帝紀〉，Ancient China Books 固定版 `7ab60ece69db62d9bc40a62918f93e14432e96a3`，[段落](https://github.com/Ancient-China-Books/jinshu/blob/7ab60ece69db62d9bc40a62918f93e14432e96a3/OEBPS/Text/1131.html#L56-L74) | 227 年六月詔司馬懿屯宛、督荊豫；230 年從西城伐蜀遇雨班師；231 年西屯長安。後世編修的司馬氏帝紀，須留意頌揚立場，用來交叉檢驗時間線。 |
-| [YY95] | 《三國演義》毛評本第95回，Ancient China Books 固定版 `761813427eb5685c395804493f9fbd7ad8dc7d`，[段落](https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d/OEBPS/Text/472.html#L59-L62) | 標題即「馬謖拒諫失街亭　武侯彈琴退仲達」。故事放在西城縣，城上焚香操琴，軍士扮百姓灑掃。網頁混有毛評夾注，故事文與評語要分開。小說只能說明後世流傳版本。 |
+| [YY95] | 《三國演義》毛評本第95回，Ancient China Books 固定版 `761813427eb5685c395804493f9fbd7ad8dc7d8d`，[段落](https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/472.html#L59-L62) | 標題即「馬謖拒諫失街亭　武侯彈琴退仲達」。故事放在西城縣，城上焚香操琴，軍士扮百姓灑掃。網頁混有毛評夾注，故事文與評語要分開。小說只能說明後世流傳版本。 |
 | [DZG] | [殆知閣《三國志》全書轉錄](https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E4%B8%89%E5%9B%BD%E5%BF%97.txt) | 交叉核轉錄；有缺字與異體（如「防」代替部分字），不用它單獨推導精確引文。與 [SG35] 仍是同一《三國志》，不是獨立史證。 |
 
 ## 逐項查核
