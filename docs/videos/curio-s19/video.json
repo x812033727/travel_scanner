@@ -1,0 +1,1579 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s19",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，清楚區分抗議信、報紙轉引的艾菲爾說法和1913年短訊。",
+    "performance": "1887年讀者好奇而不嘲弄抗議者；艾菲爾只作受訪者主張；1913年用途以查到紀錄的平實語氣收束。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "et006",
+      "payoff": "et043",
+      "what": "二十年是巴黎市所給的經營權"
+    },
+    {
+      "setup": "et007",
+      "payoff": "et031",
+      "what": "艾菲爾說工程已進行，反對得太晚"
+    },
+    {
+      "setup": "et008",
+      "payoff": "et082",
+      "what": "1913年鐵塔電台與華盛頓通信"
+    },
+    {
+      "setup": "et012",
+      "payoff": "et017",
+      "what": "抗議者想像高塔像黑色煙囪"
+    },
+    {
+      "setup": "et020",
+      "payoff": "et034",
+      "what": "雙方對世博訪客會否喜歡鐵塔有相反預想"
+    },
+    {
+      "setup": "et037",
+      "payoff": "et044",
+      "what": "艾菲爾說明巴黎市與二十年經營權"
+    },
+    {
+      "setup": "et052",
+      "payoff": "et053",
+      "what": "記者提醒抗議針對世博後的保留"
+    },
+    {
+      "setup": "et059",
+      "payoff": "et060",
+      "what": "艾菲爾把塔的曲線和風阻相連"
+    },
+    {
+      "setup": "et079",
+      "payoff": "et082",
+      "what": "1913年短訊寫塔上電台多次與華盛頓通信"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "抗議書喊「二十年」，艾菲爾鐵塔真的到期必拆？｜奇聞檔案局",
+    "description": "1887年，《Le Rappel》刊出反對艾菲爾鐵塔的藝術家抗議信，並轉引《Le Temps》記者訪問艾菲爾。抗議者想像巴黎在塔影下度過二十年；艾菲爾則說巴黎市給他世博後二十年的經營權，之後由市府處置。1913年《L’Illustration》另報鐵塔無線電站已與華盛頓多次通訊。\n\n本集區分抗議、當事人說法與後來用途；未讀到1887年契約全文或1909年市府決議，不聲稱有到期必拆命令，也不說無線電單獨救塔。插圖是AI示意，非史實現場或艾菲爾相貌重建。固定當代來源與逐句對照見 research.md、claims.md。資料查核至2026-10-19。",
+    "tags": [
+      "艾菲爾鐵塔",
+      "巴黎",
+      "1887年",
+      "1913年",
+      "二十年特許權",
+      "無線電",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "塔影下\n**等答案**",
+      "tag": "歷史名場面",
+      "sub": "抗議信對上經營權",
+      "shot": "eiffel-006"
+    }
+  },
+  "sources": [
+    {
+      "title": "1887-02-15 Le Rappel no.6185 當代報紙轉錄",
+      "url": "https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "1913-05-31 L’Illustration no.3666 當代報紙轉錄",
+      "url": "https://github.com/orkeilius/gutenberg_fr_mirror/blob/35610f7d0cc21e2c5877c58628edb25c796f3bd1/files/3/8/8/4/38842/38842.txt",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "eiffel-001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a warm print shop, February 1887, one typesetter setting a metal type line",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et001",
+          "text": "一八八七年二月，巴黎一份報紙刊出反對鐵塔的信。"
+        }
+      ],
+      "chapter": "1887年，印刷工排出一封抗議信"
+    },
+    {
+      "id": "eiffel-002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a warm print shop, February 1887, one editor holding a fresh blank broadsheet",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et002",
+          "text": "紙上有個讓人停住的名字：艾菲爾鐵塔。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-003",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a warm print shop, February 1887, one worker standing beside new foundations",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et003",
+          "text": "那時鐵塔還沒蓋好，艾菲爾說地基已下。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a warm print shop, February 1887, one artist pointing at a blank tower plan",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et004",
+          "text": "抗議者已經稱它「無用而可怕」。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-005",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a warm print shop, February 1887, one painter watching a long imagined shadow",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et005",
+          "text": "信裡還說，巴黎要在塔影下過二十年。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-006",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a warm print shop, February 1887, one editor marking one blank calendar page",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et006",
+          "text": "這數字是鐵塔壽命，還是別的期限？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a warm print shop, February 1887, one reporter closing a notebook near a doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et007",
+          "text": "同一版報紙轉引記者訪艾菲爾，他怎樣回答？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-008",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a warm print shop, February 1887, one researcher opening a second old newspaper",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et008",
+          "text": "再往後看，這座被叫作無用的塔，真的毫無用途嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-009",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 salon debate, one city official examining an addressed envelope",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et009",
+          "text": "它的抬頭寫著阿爾方，請他保護巴黎景觀。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ],
+      "chapter": "抗議者描出二十年的塔影"
+    },
+    {
+      "id": "eiffel-010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 salon debate, one artists gathering around a petition",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et010",
+          "text": "署名者有作家、畫家、雕塑家和建築師。"
+        },
+        {
+          "id": "et011",
+          "text": "他們要他阻止一件自認會損害巴黎的事。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-012",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 salon debate, one artist lifting a sketch of the city skyline",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et012",
+          "text": "信裡究竟怕哪一種損害？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 salon debate, one painter gesturing toward a stone streetscape",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et013",
+          "text": "抗議信先說，巴黎的美來自街道與古老建築。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-014",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1887 salon debate, one architect pointing to a blank city model",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et014",
+          "text": "一座還沒建成的塔，究竟怎麼威脅他們的巴黎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-015",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 salon debate, one writer holding a draft petition",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et015",
+          "text": "信裡把未完成的塔叫作「巴別塔」。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 salon debate, one painter turning a second sketch page",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et016",
+          "text": "這個比喻還不夠，他們接著會怎麼描畫高塔？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-017",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1887 salon debate, one painter drawing a tall dark silhouette",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et017",
+          "text": "又想像它像一根黑色工廠煙囪。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-018",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 salon debate, one artist laying a metal column sketch on table",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et018",
+          "text": "另一句更重：那像一根用螺栓釘起來的鐵皮柱。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-019",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 salon debate, one artist comparing three blank landmark sketches",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et019",
+          "text": "巴黎聖母院、羅浮宮、凱旋門，都被列進受害名單。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-020",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1887 salon debate, one visitor looking uneasily at an imagined fairground",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et020",
+          "text": "抗議者還想像，外國訪客會拿這座塔嘲笑法國品味。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-021",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 salon debate, one painter looking across a model Paris skyline",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et021",
+          "text": "他們怕失去的，是巴黎向外展示的整體形象。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 salon debate, one surveyor viewing a skyline from afar",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et022",
+          "text": "那些建築真的會被擋住嗎？信是在預想，還沒量測。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-023",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1887 salon debate, one young artist looking at a long model shadow",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et023",
+          "text": "還記得開場的二十年？信說塔影會籠罩整座城。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-024",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 salon debate, one reader holding the petition next to a blank clock",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et024",
+          "text": "可是這句塔影，等於契約要求拆塔嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-025",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 salon debate, one clerk checking a long signature page",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et025",
+          "text": "信尾已有許多名字，包括建築師加尼耶。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-026",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1887 salon debate, one writer signing the last page of petition",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et026",
+          "text": "即使阻止不了，他們仍想讓反對的聲音留下。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-027",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 salon debate, one editor setting two sealed folders on a desk",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et027",
+          "text": "名字多，問題卻很集中：美與用途，值得交換嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-028",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 salon debate, one reporter walking toward an engineer office",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et028",
+          "text": "這份報紙接著轉述《時報》記者的一趟採訪。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-029",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1887 salon debate, one reporter opening a notebook for questions",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et029",
+          "text": "記者想知道，艾菲爾怎麼看這封抗議信。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-030",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 salon debate, one engineer looking over a work schedule",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et030",
+          "text": "工程已經開始，這封信還能讓它停工嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        },
+        {
+          "id": "et031",
+          "text": "艾菲爾說：若早一年反對，還能加入討論。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-032",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1887 salon debate, one engineer examining foundation and iron order",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et032",
+          "text": "現在契約簽妥，地基已下，鐵料也訂了。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-033",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 salon debate, one engineer glancing toward a fair visitor queue",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et033",
+          "text": "他還擔心，眼前的抗議會讓參觀世博的人卻步。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-034",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 salon debate, one engineer pointing toward a future fairground",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et034",
+          "text": "艾菲爾反過來說，高塔本身會吸引世博的觀眾。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-035",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an 1887 salon debate, one reporter weighing two visitor sketches",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et035",
+          "text": "同一批未到場的遊客，被雙方想成完全不同的反應。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-036",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an 1887 salon debate, one reporter underlining a question in notebook",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et036",
+          "text": "但記者提醒他：抗議者怕的是世博後繼續留塔。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1887 salon debate, one reporter turning to a blank agreement folder",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et037",
+          "text": "那份世博後的安排，究竟在誰手上？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-038",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest 1887 engineer office, one engineer laying out construction accounts",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et038",
+          "text": "據這份轉引，艾菲爾先講建造的錢從哪裡來。"
+        },
+        {
+          "id": "et039",
+          "text": "他估整座塔要花五百萬到六百萬法郎。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ],
+      "chapter": "艾菲爾說明誰能經營這座塔"
+    },
+    {
+      "id": "eiffel-040",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest 1887 engineer office, one clerk sliding a plain grant folder forward",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et040",
+          "text": "國家先出一百五十萬法郎，那經營權歸誰？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-041",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest 1887 engineer office, one engineer tracing a fairground map",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et041",
+          "text": "建塔者取得世博期間的經營權。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-042",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a modest 1887 engineer office, one city official receiving a model tower",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et042",
+          "text": "等世博結束，艾菲爾說塔會轉給巴黎市。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-043",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest 1887 engineer office, one official turning a twenty year calendar",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et043",
+          "text": "巴黎市再給他一段經營權，長二十年。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-044",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest 1887 engineer office, one city official setting aside a blank decision paper",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et044",
+          "text": "到期限過後，市府能自行決定怎麼處置。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-045",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a modest 1887 engineer office, one city official passing an operating rights folder",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et045",
+          "text": "市府說的「第二筆補助」，在他口中就是經營權。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest 1887 engineer office, one engineer and city official at opposite ends of a table",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et046",
+          "text": "可是經營期滿，能直接推出市府要拆塔嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        },
+        {
+          "id": "et047",
+          "text": "同一數字：信談塔影，他談經營權。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-048",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a modest 1887 engineer office, one typesetter stacking two columns of proof",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et048",
+          "text": "兩段話同版刊出，卻是不同人講的。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest 1887 engineer office, one researcher stopping a pencil above a blank verdict",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et049",
+          "text": "所以把經營期限直接說成「到期必拆」，太快了。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-050",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest 1887 engineer office, one archivist opening an unopened contract box",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et050",
+          "text": "這是艾菲爾當年的解釋；契約條款仍得另查。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-051",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a modest 1887 engineer office, one engineer walking past a construction schedule",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et051",
+          "text": "他還說，簽約和開工已經進行了幾個月。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest 1887 engineer office, one reporter turning back toward artists outside",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et052",
+          "text": "若此刻阻止不了工程，抗議者還能反對什麼？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-053",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest 1887 engineer office, one reporter pointing to a later calendar page",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et053",
+          "text": "記者提出的正是世博之後「保留」的問題。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-054",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a modest 1887 engineer office, one engineer raising a hand beside unfinished model",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et054",
+          "text": "艾菲爾換了說法：若問留不留，抗議又太早。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-055",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest 1887 engineer office, one engineer holding a geometric drawing",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et055",
+          "text": "因為這座塔還沒立起來，大家只看過圖。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-056",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest 1887 engineer office, one engineer facing an unseen construction site",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et056",
+          "text": "未見實物，怎能先判它一定醜？這是他的反問。"
+        },
+        {
+          "id": "et057",
+          "text": "他請批評者等塔建成，再談是不是該保存。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest 1887 engineer office, one engineer moving a small tower model beside a church sketch",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et058",
+          "text": "他接著要回應「會壓倒巴黎」這幅想像。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-059",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest 1887 engineer office, one engineer picking up a curved iron brace",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et059",
+          "text": "先看他為塔的外形找了什麼理由。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-060",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 19th century engineering studio, one engineer drawing a curved structural line",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et060",
+          "text": "艾菲爾說，塔的曲線先要回答一件事：風。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ],
+      "chapter": "未完工的鐵塔，先接受美與用途的審問"
+    },
+    {
+      "id": "eiffel-061",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 19th century engineering studio, one engineer tracing four iron legs on a blank plan",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et061",
+          "text": "計算出的四條邊線，在他看來也能形成美感。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-062",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 19th century engineering studio, one two artists studying a plain scale model",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et062",
+          "text": "這是建造者的審美主張；可怎樣回應名勝被壓住？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-063",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 19th century engineering studio, one painter comparing a tower shadow with a church",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et063",
+          "text": "抗議信說大塔會壓低巴黎聖母院等名勝。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 19th century engineering studio, one visitor standing in an imagined church square",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et064",
+          "text": "艾菲爾反問：從聖母院前廣場看，真會看見塔嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        },
+        {
+          "id": "et065",
+          "text": "他把問題從塔的高度，拉到觀看的位置。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-066",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 19th century engineering studio, one editor holding two disagreeing blank sketches",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et066",
+          "text": "但從不同街角爭塔的美，能回答「無用」嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 19th century engineering studio, one reader circling a wordless heading on petition",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et067",
+          "text": "但這還不是全部：抗議信說「無用」，艾菲爾拿得出什麼？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-068",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 19th century engineering studio, one scientist carrying a weather instrument case",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et068",
+          "text": "艾菲爾說，塔可以服務氣象和物理觀測。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-069",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 19th century engineering studio, one scientist arranging instrument cases",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et069",
+          "text": "他也提到天文、植物化學等可能用途。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 19th century engineering studio, one engineer drawing communication lines on a map",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et070",
+          "text": "戰時讓巴黎保持聯絡，也在他當時的想像裡。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-071",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 19th century engineering studio, one scientist closing a proposal notebook",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et071",
+          "text": "可是這些科學用途，當時有哪一項真正做成了？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-072",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 19th century engineering studio, one archivist separating proposal from report folders",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et072",
+          "text": "注意，這是尚未完工時的提案，並非成果報告。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-073",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 19th century engineering studio, one researcher separating two dated document folders",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et073",
+          "text": "例如戰時聯絡的構想，不能直接當作無線電已上塔。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-074",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 19th century engineering studio, one metalworker inspecting a newly forged brace",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et074",
+          "text": "他認為，精密計算與造鐵本身也是時代能力。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-075",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 19th century engineering studio, one editor setting petition beside instrument sketches",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et075",
+          "text": "反對者說「無用」，建造者提出一串可能。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-076",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 19th century engineering studio, one archivist reaching for a later newspaper bundle",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et076",
+          "text": "要分出計畫和實用，得翻到後來的紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 19th century engineering studio, one post clerk carrying a wireless station report",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et077",
+          "text": "二十多年後，有一份從巴黎通到華盛頓的消息。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-078",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 19th century engineering studio, one wireless operator approaching a station door",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et078",
+          "text": "這回是一則使用紀錄，不是建造時的設想。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 19th century engineering studio, one reader opening a dated science page",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et079",
+          "text": "這次，報紙寫的是什麼已經做成了？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-080",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1913 wireless telegraph station, one editor placing a short news item",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et080",
+          "text": "一九一三年，《畫報》的資訊欄登出一則短訊。"
+        },
+        {
+          "id": "et081",
+          "text": "它引述費里耶指揮官提交科學院的報告。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ],
+      "chapter": "1913年，鐵塔電台連到華盛頓"
+    },
+    {
+      "id": "eiffel-082",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 1913 wireless telegraph station, one wireless operator adjusting a telegraph dial",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et082",
+          "text": "鐵塔上的無線電台，已數次與華盛頓電台通信。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-083",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1913 wireless telegraph station, one operator tapping a telegraph key",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et083",
+          "text": "但這裡的「交談」，是報紙對哪種通信的用字？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-084",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 1913 wireless telegraph station, one researcher comparing a telegraph key with a phone sketch",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et084",
+          "text": "不能想成兩人拿起電話，直接說了一段話。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 1913 wireless telegraph station, one operator checking a received signal log",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et085",
+          "text": "訊號到底跨了多遠，又重複了幾次？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-086",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1913 wireless telegraph station, one cartographer tracing Paris to Washington",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et086",
+          "text": "報紙估兩座電台相隔超過六千公里。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-087",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 1913 wireless telegraph station, one operator looking at two plain power gauges",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et087",
+          "text": "它還列出功率：巴黎八十馬力，華盛頓約九十。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-088",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 1913 wireless telegraph station, one cartographer drawing a shorter measuring arc",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et088",
+          "text": "報紙拿功率更大的電台，通常約四千公里，來做對比。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-089",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1913 wireless telegraph station, one scientist pointing at a received signal sheet",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et089",
+          "text": "數字很醒目，可這次通訊究竟已完成哪些事？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        },
+        {
+          "id": "et090",
+          "text": "它還說，這不是只出現一次的訊號。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-091",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 1913 wireless telegraph station, one astronomer drawing a longitude line",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et091",
+          "text": "下一步，是用通訊協助測定兩地經度差。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-092",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1913 wireless telegraph station, one scientist setting a plan folder beside received signals",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et092",
+          "text": "這還是計畫；已完成的，是兩座電台確曾多次通訊。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-093",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 1913 wireless telegraph station, one archivist placing the 1913 page on a desk",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et093",
+          "text": "這能證明：到一九一三年，塔已有記錄可查的用途。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-094",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 1913 wireless telegraph station, one astronomer checking a blank observing calendar",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et094",
+          "text": "報導還說，兩洲的觀測日程仍要再安排。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-095",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1913 wireless telegraph station, one archivist searching an empty city council folder",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et095",
+          "text": "但市府當年如何處置鐵塔，這則短訊有說嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-096",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 1913 wireless telegraph station, one city clerk opening a municipal record shelf",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et096",
+          "text": "沒有；那得另查市府決議與當年的契約。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-097",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 1913 wireless telegraph station, one researcher leaving a blank decision space",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et097",
+          "text": "少了它，就不能說無線電單獨「救」了鐵塔。"
+        }
+      ]
+    },
+    {
+      "id": "eiffel-098",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1913 wireless telegraph station, one historian turning toward municipal archive boxes",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "et098",
+          "text": "找到原文，才有條件比對市府怎麼看用途與去留。"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "二十年是經營期限；塔的後來用途有報紙可查"
+        ]
+      },
+      "lines": [
+        {
+          "id": "et101",
+          "text": "還記得那二十年：艾菲爾說經營權，抗議信說塔影。"
+        },
+        {
+          "id": "et102",
+          "text": "要查塔期滿的處置，你會先找契約還是市府決議？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        },
+        {
+          "id": "et103",
+          "text": "喜歡把傳說查回原文，訂閱奇聞檔案局。"
+        }
+      ]
+    }
+  ]
+}
