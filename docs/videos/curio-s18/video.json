@@ -39,7 +39,7 @@
     },
     {
       "setup": "np110",
-      "payoff": "np501",
+      "payoff": "np528",
       "what": "用他名字取的脾氣"
     },
     {
@@ -399,7 +399,7 @@
       "lines": [
         {
           "id": "np223",
-          "text": "要是那天醫生寫的是公尺，一百六十八公分，誰讀都一樣。"
+          "text": "要是那天醫生寫的是公尺，就不會有兩種讀法了。"
         }
       ]
     },
@@ -689,7 +689,7 @@
       "lines": [
         {
           "id": "np419",
-          "text": "可是讓「矮子」真正定型的，是海峽對面的一群人。",
+          "text": "可是「矮子拿破崙」，其實是在海峽對面誕生的。",
           "emotion": "收著，不講破"
         }
       ]
@@ -1126,18 +1126,33 @@
       ]
     },
     {
-      "id": "adler-desk",
+      "id": "borrowed-name",
       "chapter": "「拿破崙情結」，是他死後一百年才取的名字",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a bald early twentieth-century psychologist with round spectacles and a moustache leaning back in a leather chair in a Vienna study in the afternoon, gesturing with an open hand as he explains, books behind him, soft lamp light",
+        "prompt": "Close-up of a small satirical print of a tiny general in a big hat lying on a 1920s desk next to an open notebook, a fountain pen resting across both, soft lamp light",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np501",
-          "text": "還記得開頭那個用他名字取的脾氣嗎？它的源頭，在二十世紀初的維也納。",
+          "text": "漫畫裡那個小個子，一百年後，還被借去替一種脾氣取名字。"
+        }
+      ]
+    },
+    {
+      "id": "adler-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bald early twentieth-century psychologist with round spectacles and a moustache leaning back in a leather chair in a Vienna study in the afternoon, gesturing with an open hand as he explains, books behind him, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "np528",
+          "text": "還記得開頭那個脾氣嗎？它的源頭，在二十世紀初的維也納。",
           "emotion": "語氣親近"
         }
       ]
@@ -1147,7 +1162,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a fountain pen writing in a blank notebook on a leather-topped desk, a pair of round spectacles folded beside it, soft lamp light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1162,7 +1177,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a small boy standing on tiptoe on a wooden crate in a schoolyard in the afternoon, puffing out his chest and reaching up to touch a high mark on a wall, soft light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1177,7 +1192,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a short man in a 1930s office suit pounding a desk with his fist and shouting, a taller colleague leaning back in surprise, soft window light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1192,7 +1207,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an open dictionary on a reading stand, its pages blank, a magnifying glass resting on it, soft window light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1207,7 +1222,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young woman in a modern sweater looking up a word in a thick dictionary at a library table in the afternoon, eyebrows raised in amusement, soft window light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1222,7 +1237,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a man in his forties in a grey greatcoat and a black bicorne hat worn sideways sitting on a garden bench on a windswept island in grey daylight, reading a book with a puzzled raised eyebrow, a gnarled tree behind him, soft light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1242,7 +1257,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a small pile of coins divided unevenly into two heaps on a lab table, a hand hovering over the larger heap, soft lamp light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1257,7 +1272,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a modern office worker laughing and pointing at a shorter colleague who is gesturing angrily at a coffee machine in mild daylight, soft window light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1272,7 +1287,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a grinning schoolchild in a modern hoodie holding a ruler up to a small Napoleon figurine on a classroom desk in the afternoon, soft window light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1304,7 +1319,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a plain manila folder lying on a wooden desk, a hand pressing a rubber stamp down onto its cover, light from a desk lamp on the left",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
