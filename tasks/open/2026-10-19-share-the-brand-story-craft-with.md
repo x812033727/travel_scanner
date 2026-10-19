@@ -1,14 +1,14 @@
 ---
 id: 2026-10-19-share-the-brand-story-craft-with
 title: Share the brand-story craft with Codex as a repo skill
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-opus-5-5-quirky
 claimed_at: 2026-10-19T00:40:27Z
 created_at: 2026-10-19T00:33:28Z
 completed_at:
-branch:
+branch: claude/quirky-files-optimization-1605cd
 depends_on: []
 scope:
   - .agents/skills/brand-story
@@ -41,3 +41,4 @@ scope:
 - 認領時 `AGENTS.md` 跟 `2026-10-14-curio-episodes-keep-the-series-look` 的 scope 重疊：那張票的 skill 與 lint
   已在 main（`.agents/skills/curio-episode/`、`tools/video/core/curio.mjs`），票本身停在 in-progress 沒收，
   所以用 `--force` 認領，只動 `AGENTS.md` 的 skill 清單一行。
+- PR https://github.com/x812033727/travel_scanner/pull/1577

@@ -1,14 +1,14 @@
 ---
 id: 2026-10-19-curio-keeps-the-brand-stories-hook
 title: Curio keeps the brand stories' hook cadence and music bed
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: claude-opus-5-5-quirky
 claimed_at: 2026-10-19T01:10:56Z
 created_at: 2026-10-19T01:09:33Z
 completed_at:
-branch:
+branch: claude/quirky-files-optimization-1605cd
 depends_on: []
 scope:
   - tools/video/core/narrative.mjs
@@ -63,3 +63,4 @@ node tools/video/cli.mjs lint --slug curio-h10   # 0 errors；超過 45 秒的�
 - 主機路線的 `settle()` 還沒有強制加配樂、主機奇聞檔案局盲評還是一位讀者：`flow.mjs` 在別人的票裡，開了
   `2026-10-19-host-explainer-route-always-adds-the`。
 - 已交付的集數要不要補配樂（一首約 US$0.15＋重新合成，旁白與插圖不動）等站主決定。
+- PR https://github.com/x812033727/travel_scanner/pull/1577
