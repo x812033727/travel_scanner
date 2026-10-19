@@ -99,3 +99,16 @@ existing broken `awk` availability probe in the focused test: `BEGIN{}` is
 rejected by Git awk and had silently skipped the monthly-cap cases. It is now
 `BEGIN { exit 0 }`; with Git Bash on PATH all five focused tests pass without
 skips, and the cap-classification script itself has no changed lines.
+
+2026-10-19 combined review: the schema, guard, host verifier, and A01 text
+admission checks now share one main-based branch. The reviewer found a remaining
+P1 media gap: `video_media/jobs.py` can commit a new A01 queued image/music row
+while an adoption token is held, and later polling can submit it after release.
+This branch therefore remains a draft and is not approved for adoption. The
+media path is claimed by the separate #1556 cutover ticket and #1510's budget
+ticket; do not edit those files here without an ownership handoff. Phase 2 must
+refuse existing queued/submitted A01 media at acquire and release, and a Phase 1
+media admission check or equivalent reviewed ingress proof must close new queue
+entry. The current main still has migration head 0132. #1510 must land 0133,
+then this branch must be rebased, re-reviewed and deployed as the 0133
+precompat image before 0134 is introduced. No production write occurred.
