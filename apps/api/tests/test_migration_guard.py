@@ -31,6 +31,16 @@ def test_revision_classification_never_accepts_an_unknown_or_multiple_database_h
         )
     with pytest.raises(guard.MigrationGuardError, match="unknown"):
         guard.classify_revisions((guard.REVIEWED_FUTURE_REVISION,), "0131_prior", known)
+    assert (
+        guard.classify_revisions(
+            (guard.REVIEWED_ADMISSION_REVISION,), guard.REVIEWED_FUTURE_REVISION, known
+        ).state
+        == "rollback-compatible"
+    )
+    with pytest.raises(guard.MigrationGuardError, match="unknown"):
+        guard.classify_revisions(
+            (guard.REVIEWED_ADMISSION_REVISION,), guard.ROLLBACK_IMAGE_HEAD, known
+        )
 
 
 class _Rows:
@@ -130,12 +140,16 @@ class _Connection:
         constraints: Sequence[_ConstraintRow] | None = None,
         index: str = "CREATE INDEX ix_video_pilot_budget_operations_slug "
         "ON public.video_pilot_budget_operations USING btree (slug)",
+        admission_column: Sequence[object] = ((True, True, True, True, True),),
+        admission_tokens: Sequence[object] = ((None,),),
     ) -> None:
         self.results = [
             _Rows([(slug, limit, "created") for slug, limit in accounts.items()]),
             _Rows([]),
             _Rows(_CONSTRAINTS if constraints is None else constraints),
             _Rows([("ix_video_pilot_budget_operations_slug", index)]),
+            _Rows(admission_column),
+            _Rows(admission_tokens),
         ]
 
     async def execute(self, _statement: object) -> _Rows:
@@ -144,6 +158,10 @@ class _Connection:
 
 async def _verify_fake(connection: _Connection) -> None:
     await guard._verify_reviewed_0133(cast(AsyncConnection, connection))
+
+
+async def _verify_0134_fake(connection: _Connection) -> None:
+    await guard._verify_reviewed_0134(cast(AsyncConnection, connection))
 
 
 @pytest.mark.asyncio
@@ -192,6 +210,26 @@ async def test_future_schema_readback_requires_nine_exact_accounts_and_schema() 
         await _verify_fake(
             _Connection(dict(PILOT_LIMITS_USD), index="CREATE INDEX ... (operation_id)")
         )
+
+
+@pytest.mark.asyncio
+async def test_0134_rollback_requires_nullable_uuid_column_and_unheld_a01_token() -> None:
+    await _verify_0134_fake(_Connection(dict(PILOT_LIMITS_USD)))
+    for bad_column in (
+        [],
+        [(False, True, True, True, True)],
+        [(True, False, True, True, True)],
+        [(True, True, False, True, True)],
+        [(True, True, True, False, True)],
+        [(True, True, True, True, False)],
+    ):
+        with pytest.raises(guard.MigrationGuardError, match="column"):
+            await _verify_0134_fake(
+                _Connection(dict(PILOT_LIMITS_USD), admission_column=bad_column)
+            )
+    for bad_token in ([], [("held-token",)], [(None,), (None,)]):
+        with pytest.raises(guard.MigrationGuardError, match="token"):
+            await _verify_0134_fake(_Connection(dict(PILOT_LIMITS_USD), admission_tokens=bad_token))
 
 
 def test_migrate_runs_alembic_for_known_revisions_but_skips_only_reviewed_rollback(

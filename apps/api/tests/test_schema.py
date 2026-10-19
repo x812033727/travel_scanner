@@ -73,7 +73,14 @@ def test_only_the_reviewed_next_budget_revision_is_accepted_by_0132_rollback(
         schema_module, "expected_schema_revision", lambda: "0133_story_followon_budget"
     )
     assert schema_is_current("0133_story_followon_budget")
+    assert schema_is_current("0134_a01_admission_fence")
     assert not schema_is_current("0132_video_pilot_budget")
+    assert not schema_is_current("0134_unreviewed_change")
+    monkeypatch.setattr(
+        schema_module, "expected_schema_revision", lambda: "0134_a01_admission_fence"
+    )
+    assert schema_is_current("0134_a01_admission_fence")
+    assert not schema_is_current("0133_story_followon_budget")
 
 
 def _script(revision: str, down_revision: str) -> types.SimpleNamespace:

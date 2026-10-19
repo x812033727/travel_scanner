@@ -37,6 +37,7 @@ API_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = API_ROOT.parents[1]
 MIGRATION_0132 = "0132_video_pilot_budget"
 MIGRATION_0133 = "0133_story_followon_budget"
+MIGRATION_0134 = "0134_a01_admission_fence"
 MIGRATION_0133_SOURCE_SHA256 = "e18559b5b1851b47cb3e36a8203bd5863488696d829192fbbae8bc7b9dbdc780"
 # Exact #1510 migration body. #1521 must be able to run this test before
 # 0133 enters its release image; the #1510 checkout must match this digest.
@@ -541,3 +542,55 @@ def test_real_0133_migration_allows_only_the_reviewed_0132_rollback(
     # must never be treated as a compatible rollback state.
     unavailable = url.set(host="127.0.0.1", port=1)
     assert _run(migrate_command, cwd=rollback_root, url=unavailable).returncode != 0
+
+
+def test_0133_image_checks_real_0134_rollback_schema_and_held_token(
+    rollback_database: tuple[URL, Path],
+) -> None:
+    """Run the pre-compatibility image's real migrate guard on a disposable DB."""
+    url, image_root = rollback_database
+    migration = image_root / "migrations" / "versions" / f"{MIGRATION_0133}.py"
+    migration.write_text(MIGRATION_0133_SOURCE, encoding="utf-8")
+    _assert_success(_run(["-m", "alembic", "upgrade", MIGRATION_0133], cwd=image_root, url=url))
+    command = _compose_migrate_arguments()
+    _assert_success(_run([*command, "--status"], cwd=image_root, url=url))
+
+    # The proposed 0134 migration adds exactly this nullable UUID column. The
+    # pre-compatibility image has no 0134 Alembic file, as on application rollback.
+    asyncio.run(_execute(url, "ALTER TABLE video_pilot_budgets ADD COLUMN admission_token uuid"))
+    asyncio.run(
+        _execute(
+            url,
+            "UPDATE alembic_version SET version_num = :revision",
+            {"revision": MIGRATION_0134},
+        )
+    )
+    status = _run([*command, "--status"], cwd=image_root, url=url)
+    _assert_success(status)
+    assert f"state=rollback-compatible current={MIGRATION_0134}" in status.stdout
+    _assert_success(_run(command, cwd=image_root, url=url))
+
+    asyncio.run(
+        _execute(
+            url,
+            "UPDATE video_pilot_budgets SET admission_token = :token "
+            "WHERE slug = 'story-rolling-suitcase-v2'",
+            {"token": uuid4()},
+        )
+    )
+    assert _run(command, cwd=image_root, url=url).returncode != 0
+    asyncio.run(
+        _execute(
+            url,
+            "UPDATE video_pilot_budgets SET admission_token = NULL "
+            "WHERE slug = 'story-rolling-suitcase-v2'",
+        )
+    )
+    asyncio.run(
+        _execute(url, "ALTER TABLE video_pilot_budgets ALTER COLUMN admission_token TYPE text")
+    )
+    assert _run(command, cwd=image_root, url=url).returncode != 0
+    asyncio.run(_execute(url, "ALTER TABLE video_pilot_budgets DROP COLUMN admission_token"))
+    assert _run(command, cwd=image_root, url=url).returncode != 0
+    asyncio.run(_execute(url, "UPDATE alembic_version SET version_num = '0135_unknown'"))
+    assert _run(command, cwd=image_root, url=url).returncode != 0
