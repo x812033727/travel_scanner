@@ -56,3 +56,5 @@ S28 正使用同一 240 次／小時 MiniMax 配額做重要修圖。S02 先跑�
 | `ruxu-time` | 三次評審未過：兩位人物只看一張地圖。 | 一名現代讀者指向並排的第二張無字地圖。 |
 
 第二輪改提示後 `script.md` SHA-256 仍為 `e7a55cb388bb8852b258886af195cf853616594efa6bafca781cc92c53f610f4`，`lint` 0 errors／0 warnings。用 `PLAYWRIGHT_BROWSERS_PATH=/workspace/.cache/ms-playwright` 補齊本環境 Playwright Chromium 連結，讓重跑時能產生 contact sheet。第二輪過關前不得送 storyboard。
+
+2026-10-19 23:18 UTC 完成第二與第三輪：第二輪 16 鏡重畫後，`two-idle-days` 的登船跨步三次不合格；人工核對也發現 `shore-archers` 羽箭與弓的方向矛盾、`both-sides-novel` 草束仍無箭、`zhou-amazed` 帽子有近代徽章、`ruxu-time` 只有一張地圖。第三輪把這五鏡縮成可辨識的單一動作或物件：魯肅已坐在漢代開敞木舟、箭陣越過江面、近拍插箭草束、周瑜打開滿箭木箱、兩張分開的古式江圖。逐張實圖與四頁 contact sheet 複查後，關鍵畫面沒有上述年代或動作矛盾；抽象研究場景可見書桌與地圖，與史事重現分開。最終 keyframes manifest **90/90 通過、0 needs_review**，插圖與配樂 ledger 合計 **US$2.55／核准上限 US$3.65**；旁白檔案 SHA-256 完整值保持 `e7a55cb388bb8852b258886af195cf853616594efa6bafca781cc92c53f610f4`，`lint` 仍 0/0。插圖四頁 contact sheet 與 90 張單張圖保存在 `/workspace/.video-work/curio-s02/keyframes/`。
