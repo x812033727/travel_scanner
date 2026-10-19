@@ -1,0 +1,1344 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s26",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "一句話往回追的偵探故事。開場那個不敢買麵包的年輕人帶點好笑；預告句一句一停。王后的信誠懇放慢；卡爾的傳聞像說八卦，翻案那句篤定；「他就是盧梭」揭曉停一拍；伯爵夫人的酥皮好心又天真；《晉書》一字一字；結尾乾脆"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "mt105",
+      "payoff": "mt415",
+      "what": "佩劍的人為什麼不敢買麵包"
+    },
+    {
+      "setup": "mt107",
+      "payoff": "mt208",
+      "what": "王后寫給媽媽、寫到麵包的信"
+    },
+    {
+      "setup": "mt108",
+      "payoff": "mt308",
+      "what": "兩年後又拿起的筆"
+    },
+    {
+      "setup": "mt109",
+      "payoff": "mt401",
+      "what": "作者死後才印出的那本書"
+    },
+    {
+      "setup": "mt110",
+      "payoff": "mt511",
+      "what": "史書裡也問了一句話的皇帝"
+    },
+    {
+      "setup": "mt111",
+      "payoff": "mt519",
+      "what": "瑪麗皇后真的說過嗎"
+    },
+    {
+      "setup": "mt101",
+      "payoff": "mt414",
+      "what": "里昂那個年輕家教是誰"
+    },
+    {
+      "setup": "mt207",
+      "payoff": "mt209",
+      "what": "她知不知道麵包多貴"
+    },
+    {
+      "setup": "mt215",
+      "payoff": "mt301",
+      "what": "最早寫在她名下的年份"
+    },
+    {
+      "setup": "mt305",
+      "payoff": "mt405",
+      "what": "「蛋糕」從哪裡來"
+    },
+    {
+      "setup": "mt315",
+      "payoff": "mt401",
+      "what": "早六十年那本書是誰寫的"
+    },
+    {
+      "setup": "mt413",
+      "payoff": "mt414",
+      "what": "盧梭在哪裡想起這句話"
+    },
+    {
+      "setup": "mt423",
+      "payoff": "mt501",
+      "what": "空著的公主位置放進了誰"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "「沒有麵包就吃蛋糕」，瑪麗皇后真的說過嗎？｜奇聞檔案局",
+    "description": "「沒有麵包，就吃蛋糕。」這句話幾乎都掛在瑪麗．安東尼名下。這一集只講紀錄裡找得到的：一七七五年麵粉戰爭之後，她寫給母親的兩封信裡寫到麵包很貴、百姓受了很多苦；目前找得到最早把這句話寫在她名下的，是阿爾豐斯．卡爾一八四一年十一月的《黃蜂》，他寫的是「人家傳說、不知道真假」，一八四三年他又寫文章說，這句話大致可以證明不是她說的；更早白紙黑字寫下這句話的，是盧梭的《懺悔錄》第六卷（一七八二年出版），說話的人只寫「一位偉大的公主」，而盧梭想起這句話的那件事，發生在一七四〇年前後的里昂，比她出生早了十五年。\n\n原文是 brioche（布里歐，加了奶油和雞蛋的麵包），一七八三年最早的英譯寫成 pastry，「蛋糕」是後來通行的譯法。盧梭的第一部寫在一七六〇年代後半，確切哪一年寫到第六卷不能定，所以說她那時「十來歲」；盧梭自己承認第一部憑記憶寫、錯誤很多，「這段是他編的」只是學者的懷疑。卡爾一八四三年那篇，合訂本放在四月一節，旁白只說年份；他說的那本一七六〇年的書沒有書名，我們沒有找到。「路易十四的王后說的」只見於一套可能是偽作的回憶錄；維多利亞夫人那句出自 Boigne 伯爵夫人的回憶錄，是轉述；波利尼亞克公爵夫人的版本出自大仲馬的小說。《晉書》是唐代六四八年編成的，比晉惠帝晚三百多年；更早的史料這次沒有查。她有沒有在別的時候說過什麼，紀錄沒辦法回答；能說的是，盧梭書裡那位公主不可能是她。每個引文、年份與數字的出處列在下方參考資料；只靠維基百科的幾項（盧梭在里昂的年份、一半收入花在麵包上、麵粉戰爭與名聲、brioche 的定義、《晉書》的編成年份）是二手。「我們覺得」的句子是本頻道的看法。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；現代研究者不入畫。\n\n資料截至 2026-10-19",
+    "tags": [
+      "瑪麗安東尼",
+      "沒有麵包就吃蛋糕",
+      "讓他們吃蛋糕",
+      "盧梭",
+      "懺悔錄",
+      "布里歐",
+      "法國大革命",
+      "何不食肉糜",
+      "歷史謠言",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**吃蛋糕？**\n書裡的公主沒有名字",
+      "tag": "歷史謠言",
+      "sub": "一七八二年的檔案",
+      "shot": "the-question"
+    }
+  },
+  "sources": [
+    {
+      "title": "Jean-Jacques Rousseau, Les Confessions, Livre VI、Livre VII（Paris, Launette 1889 校訂本），法文維基文庫",
+      "url": "https://fr.wikisource.org/wiki/Les_Confessions_(Rousseau)/Livre_VI",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Les Confessions de J. J. Rousseau, Tome second (A Genève, 1782)，archive.org",
+      "url": "https://archive.org/details/j1782lesconfessio02rous",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Les Confessions de J. J. Rousseau, Tome second (Lausanne, F. Grasset, 1782)，archive.org",
+      "url": "https://archive.org/details/d1782lesconfessi02rous",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "The Confessions of J. J. Rousseau (London, J. Bew, 1783)，最早的英譯，archive.org",
+      "url": "https://archive.org/details/confessionsjjro01rousgoog",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Alphonse Karr, Les Guêpes, novembre 1841，archive.org",
+      "url": "https://archive.org/details/bub_gb_pCv7DOf42bsC",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Alphonse Karr, Les Guêpes, tome 4 (Michel Lévy 1859)，「Avril 1843」一節 p. 260，archive.org",
+      "url": "https://archive.org/details/lesgupes04karruoft",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Alfred von Arneth (ed.), Maria Theresia und Marie Antoinette. Ihr Briefwechsel (Leipzig 1866)，1775-06-22 與 1775-07-14 的信，archive.org",
+      "url": "https://archive.org/details/mariatheresiaund00mari",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Récits d'une tante. Mémoires de la comtesse de Boigne, Vol. 1，Project Gutenberg #29613",
+      "url": "https://www.gutenberg.org/ebooks/29613",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Alexandre Dumas, Ange Pitou, chapitre IX（Paris 1880），archive.org",
+      "url": "https://archive.org/details/angepitou00duma",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《晉書》卷四〈帝紀第四・孝惠帝〉，中文維基文庫",
+      "url": "https://zh.wikisource.org/wiki/晉書/卷004",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Let them eat cake（「蛋糕」的通行譯法、一半收入花在麵包上、Fraser 引的路易十八回憶錄；二手）",
+      "url": "https://en.wikipedia.org/wiki/Let_them_eat_cake",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Marie Antoinette（出生、婚禮、即位、麵粉戰爭傷了名聲；二手）",
+      "url": "https://en.wikipedia.org/wiki/Marie_Antoinette",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Brioche（奶油雞蛋麵包；二手）",
+      "url": "https://en.wikipedia.org/wiki/Brioche",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Flour War（一七七五年四月到五月的暴動；二手）",
+      "url": "https://en.wikipedia.org/wiki/Flour_War",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "法文維基百科 Jean-Jacques Rousseau（一七四〇年到里昂、一七四一年離開、Wootton 時期；二手）",
+      "url": "https://fr.wikipedia.org/wiki/Jean-Jacques_Rousseau",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "法文維基百科 Les Confessions (Rousseau)（第一部寫於一七六〇年代、一七八二年死後出版；二手）",
+      "url": "https://fr.wikipedia.org/wiki/Les_Confessions_(Rousseau)",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "法文維基百科 Étienne-Léon de Lamothe-Langon（一八三二年《路易十八回憶錄》被列為偽作；二手）",
+      "url": "https://fr.wikipedia.org/wiki/%C3%89tienne-L%C3%A9on_de_Lamothe-Langon",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Book of Jin、Emperor Hui of Jin（六四八年編成、惠帝 259–307；二手）",
+      "url": "https://en.wikipedia.org/wiki/Book_of_Jin",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "tutor-wine",
+      "chapter": "一七四〇年，里昂街上的三十家糕點店",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim young man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip standing in a wine cellar of a grand house in Lyon on an afternoon in 1740, holding a stolen bottle of white wine to his chest and glancing over his shoulder with a guilty grin, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt101",
+          "text": "一七四〇年，法國里昂，一個年輕的家教，偷偷喝起了主人家的白酒。",
+          "emotion": "沉穩開場，帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "must-eat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim young man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip sitting on a stool in a small attic room in the afternoon, holding a wine glass in one hand and patting his stomach with the other, a hungry frown, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt102",
+          "text": "他有個毛病：喝酒，一定要配點東西吃。"
+        }
+      ]
+    },
+    {
+      "id": "bakery-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim young man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip standing on a cobbled street in the afternoon in front of a bakery with a blank wooden sign, one hand raised toward the door handle and frozen halfway, an embarrassed look, overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt103",
+          "text": "可是，他不敢走進麵包店。"
+        }
+      ]
+    },
+    {
+      "id": "thirty-shops",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long cobbled street lined with little pastry shops with blank signs on an overcast afternoon, a slim young man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip walking past them with his head down and his hands clasped behind his back, mild light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt104",
+          "text": "有時候，他走過三十家糕點店，還是不敢推門。"
+        }
+      ]
+    },
+    {
+      "id": "sword",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim young man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip standing on a city street in the afternoon, resting one hand on the hilt of the small sword at his hip and staring at the viewer with a puzzled, proud frown, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt105",
+          "text": "他腰上佩著劍，為什麼連一塊麵包都不敢買？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "tease-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young queen with powdered hair in a pale blue gown sitting at a small writing desk in a palace room in the afternoon, dipping a quill into an inkpot and writing on a blank sheet of paper with a thoughtful look, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt106",
+          "text": "但這還不是最怪的。",
+          "emotion": "轉，壓低"
+        },
+        {
+          "id": "mt107",
+          "text": "一七七五年，凡爾賽宮裡，年輕的王后寫信給媽媽，信裡寫到了麵包。",
+          "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "tease-writer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded writer in his thirties in a dark frock coat sitting at a cluttered desk in a small study in the afternoon, holding a quill above a blank page and raising one eyebrow at the viewer, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt108",
+          "text": "一八四一年，一位作家把一句話寫到她的名下；兩年後，他又拿起了筆。",
+          "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "tease-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young printer in an apron standing at a wooden printing press in a workshop on an overcast afternoon, lifting a fresh blank page off the press and studying it with raised eyebrows, mild window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt109",
+          "text": "一七八二年，日內瓦印出一本書；寫書的人，已經不在世上。",
+          "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "tease-emperor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly court scholar with a long grey beard in a dark Tang dynasty robe and a black cap kneeling at a low wooden desk in a quiet library hall in the afternoon, writing on a long blank scroll with a brush and pausing with a wry look, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt110",
+          "text": "一千七百多年前的中國，後來的史書說，也有一位皇帝，問了一句話。",
+          "emotion": "停在這裡，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "the-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young queen with powdered hair in a pale blue gown standing in a palace corridor in soft afternoon light, holding a small brioche bun in one hand and looking straight at the viewer with a puzzled, innocent expression, tall blank windows behind her",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt111",
+          "text": "「沒有麵包，就吃蛋糕。」瑪麗皇后，真的說過這句話嗎？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "legend",
+      "chapter": "一七七五年，鬧到凡爾賽宮門口的麵包",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin mother in a patched shawl standing in a bare kitchen on an overcast afternoon, holding up an empty bread basket with a worried frown, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt201",
+          "text": "傳說裡，她說這句話的時候，法國的百姓正缺麵包。"
+        }
+      ]
+    },
+    {
+      "id": "price-up",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout baker woman in a white apron and cap standing behind a wooden counter in a bakery on an overcast afternoon, sliding a small chalkboard with blank chalk marks onto the counter and wincing apologetically, a few loaves on the shelf behind her, mild window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt202",
+          "text": "這樣的日子，真的有過：一七七五年春天，她當上王后還不到一年，麵包的價錢漲了起來。"
+        }
+      ]
+    },
+    {
+      "id": "half-income",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a worried labourer in a felt cap sitting at a plain wooden table in the afternoon, counting a small pile of copper coins into two halves with one finger, a single loaf of bread beside them, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt203",
+          "text": "傳記作者估計，那時候的老百姓，一半的收入，都花在麵包上。"
+        }
+      ]
+    },
+    {
+      "id": "crowd-gate",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the tall iron gates of a palace on an overcast morning, a shouting young baker's apprentice in the front holding up an empty bread basket, a small crowd behind him, mild grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt204",
+          "text": "四月到五月，好幾個地方鬧起了暴動；五月初，人群一路鬧到凡爾賽宮門口。"
+        }
+      ]
+    },
+    {
+      "id": "flour-card",
+      "template": "big",
+      "data": {
+        "text": "麵粉戰爭",
+        "kicker": "一七七五年四月到五月",
+        "sub": "穀價、麵包價上漲引起的一波暴動"
+      },
+      "lines": [
+        {
+          "id": "mt205",
+          "text": "後來的人，叫它「麵粉戰爭」。"
+        }
+      ]
+    },
+    {
+      "id": "reputation",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young queen with powdered hair in a pale blue gown standing at a tall palace window on an overcast afternoon, holding the curtain aside and looking down at the courtyard with a troubled frown, soft grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt206",
+          "text": "研究她的人說，這場風波，傷了她在百姓心裡的名聲。"
+        },
+        {
+          "id": "mt207",
+          "text": "那麼，她自己知不知道，麵包有多貴？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "letter-june",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young queen with powdered hair in a pale blue gown sitting at a writing desk in a palace room in the afternoon, signing a blank letter with a quill and a serious little frown, a sealing-wax stick beside the inkpot, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt208",
+          "text": "開頭那封寫給媽媽的信，日期是六月二十二日。"
+        }
+      ]
+    },
+    {
+      "id": "june-card",
+      "template": "big",
+      "data": {
+        "text": "「麵包還是很貴」",
+        "kicker": "王后寫給母親的信",
+        "sub": "一七七五年六月二十二日，凡爾賽"
+      },
+      "lines": [
+        {
+          "id": "mt209",
+          "text": "她寫：暴動過了兩個月，大家還這樣歡迎我們，可惜，麵包還是很貴。"
+        }
+      ]
+    },
+    {
+      "id": "duty",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young queen with powdered hair in a pale blue gown sitting by a window in a palace room in the afternoon, holding a finished letter in both hands and gazing out with a gentle, determined look, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt210",
+          "text": "「看到這些自己受苦、卻還這樣待我們的人，我們更應該為他們的幸福努力。」",
+          "emotion": "慢，誠懇"
+        }
+      ]
+    },
+    {
+      "id": "letter-july",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young queen with powdered hair in a pale blue gown sitting at a writing desk in the afternoon, folding a second blank letter and pressing a wax seal onto it, a bowl of wheat ears on the desk beside her, mild window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt211",
+          "text": "三個星期後，她又寫：百姓為了麵包貴，吃了好多苦。"
+        }
+      ]
+    },
+    {
+      "id": "wheat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young farmer in a straw hat standing at the edge of a field of tall golden wheat on an overcast afternoon, holding up a heavy wheat ear with a hopeful smile, soft grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt212",
+          "text": "「好在麥子長得很好；收成以後，麵包一定會便宜。」"
+        }
+      ]
+    },
+    {
+      "id": "two-letters",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a librarian with round spectacles and a cardigan sitting at a reading desk in the afternoon, holding two old blank letters side by side and tilting her head with a doubtful look, a desk lamp beside her, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt213",
+          "text": "這兩封信，能證明她沒說過那句話嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "mt214",
+          "text": "不能。它們只說明，寫信的這個人，知道麵包很貴。"
+        }
+      ]
+    },
+    {
+      "id": "whose-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with round spectacles and a cardigan standing between tall bookshelves in a quiet library in the afternoon, pulling a thick volume with a blank spine off a high shelf and peering at it with narrowed eyes, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt215",
+          "text": "那把這句話寫到她名下的白紙黑字，最早，能找到哪一年？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "karr-desk",
+      "chapter": "一八四一年的一行字，和兩年後的另一篇",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded writer in his thirties in a dark frock coat sitting at a cluttered desk in a small study on an overcast afternoon, dipping a quill and starting to write on a blank page with a sly half-smile, a stack of plain magazines beside him, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt301",
+          "text": "目前找得到最早的，是開頭那位作家：卡爾，一八四一年十一月。"
+        }
+      ]
+    },
+    {
+      "id": "hearsay",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bearded writer in his thirties in a dark frock coat leaning back in his chair in the afternoon, holding up a thin magazine with a blank cover and shrugging at the viewer with a wry look, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt302",
+          "text": "他在刊物《黃蜂》裡寫：人家傳說，瑪麗．安東尼講過一句話，不知道是真是假——"
+        }
+      ]
+    },
+    {
+      "id": "karr-card",
+      "template": "big",
+      "data": {
+        "text": "「沒有麵包，就吃布里歐」",
+        "kicker": "卡爾《黃蜂》，一八四一年十一月號",
+        "sub": "前面一句：不知道是真是假"
+      },
+      "lines": [
+        {
+          "id": "mt303",
+          "text": "「沒有麵包，就吃布里歐。」",
+          "emotion": "像念一則傳聞"
+        }
+      ]
+    },
+    {
+      "id": "brioche",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stout baker woman in a white apron and cap standing behind a bakery counter in the afternoon, holding up a golden round brioche bun with a little topknot in both hands and smiling proudly at the viewer, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt304",
+          "text": "布里歐，是一種加了奶油和雞蛋的麵包，不是蛋糕。"
+        },
+        {
+          "id": "mt305",
+          "text": "那「蛋糕」，又是從哪裡跑出來的？",
+          "emotion": "問句，輕"
+        }
+      ]
+    },
+    {
+      "id": "years-card",
+      "template": "big",
+      "data": {
+        "text": "四十八年",
+        "kicker": "她一七九三年過世",
+        "sub": "到一八四一年，卡爾寫下這一行"
+      },
+      "lines": [
+        {
+          "id": "mt306",
+          "text": "這時候，離她一七九三年過世，已經四十八年。",
+          "emotion": "低一點，一句帶過"
+        }
+      ]
+    },
+    {
+      "id": "passing-on",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded writer in his thirties in a dark frock coat standing at a café table on an overcast afternoon, leaning in with a hand cupped beside his mouth as if passing on a rumour, a cup of coffee on the table, mild window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt307",
+          "text": "而且，卡爾是轉述，不是發明；在他之前，這句話可能早就在人們嘴裡傳。"
+        }
+      ]
+    },
+    {
+      "id": "pen-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded writer in his thirties in a dark frock coat sitting at his desk in the afternoon, picking up a quill again with a frown of second thoughts, an open old book with blank pages propped in front of him, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt308",
+          "text": "還記得他兩年後又拿起的那支筆嗎？那是一八四三年。",
+          "emotion": "親近，略上揚"
+        }
+      ]
+    },
+    {
+      "id": "old-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bearded writer in his thirties in a dark frock coat holding a small old book with a blank cover open in both hands in a bookshop in the afternoon, his eyes wide with surprise, shelves of plain books behind him, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt309",
+          "text": "他說，前幾天碰巧讀到一本一七六〇年的書，"
+        },
+        {
+          "id": "mt310",
+          "text": "書裡把同一句話，記在一位托斯卡尼的公爵夫人身上。"
+        }
+      ]
+    },
+    {
+      "id": "karr43-card",
+      "template": "big",
+      "data": {
+        "text": "「大致證明」",
+        "kicker": "卡爾，一八四三年",
+        "sub": "這句話不是她說的，是被找出來對付她的"
+      },
+      "lines": [
+        {
+          "id": "mt311",
+          "text": "卡爾寫：這大致證明，這句話不是瑪麗．安東尼說的，是被人找出來，拿去對付她的。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "no-title",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with round spectacles and a cardigan standing at a library card catalogue in the afternoon, pulling out a long wooden drawer and finding it empty with a shrug, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt312",
+          "text": "那本書叫什麼？",
+          "emotion": "問句"
+        },
+        {
+          "id": "mt313",
+          "text": "卡爾沒寫書名，我們也沒有找到。"
+        }
+      ]
+    },
+    {
+      "id": "older-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with round spectacles and a cardigan sitting at a reading desk on an overcast afternoon, opening a heavy old book with a blank cover and leaning close with a startled, curious look, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt314",
+          "text": "但是，比卡爾早將近六十年，就有一本今天翻得開的書，白紙黑字寫過這句話。"
+        },
+        {
+          "id": "mt315",
+          "text": "寫它的，是誰？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "book-card",
+      "chapter": "日內瓦的一本書，和那瓶偷來的白酒",
+      "template": "big",
+      "data": {
+        "text": "《懺悔錄》",
+        "kicker": "盧梭，一七八二年日內瓦版",
+        "sub": "作者一七七八年過世，第一部死後出版"
+      },
+      "lines": [
+        {
+          "id": "mt401",
+          "text": "就是開頭那本在日內瓦印出來的書：盧梭的《懺悔錄》。"
+        }
+      ]
+    },
+    {
+      "id": "page-six",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a librarian with round spectacles and a cardigan sitting at a reading desk in the afternoon, running one finger along a line on a blank page of an old open book and raising her eyebrows, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt402",
+          "text": "書的第六卷寫著：一位偉大的公主，聽說鄉下人沒有麵包，"
+        },
+        {
+          "id": "mt403",
+          "text": "就回答：那讓他們吃布里歐吧。"
+        }
+      ]
+    },
+    {
+      "id": "princess-card",
+      "template": "big",
+      "data": {
+        "text": "「一位偉大的公主」",
+        "kicker": "盧梭《懺悔錄》第六卷",
+        "sub": "沒有名字、沒有國家、沒有年份"
+      },
+      "lines": [
+        {
+          "id": "mt404",
+          "text": "盧梭沒寫她是誰：沒有名字，沒有國家，也沒有年份。",
+          "emotion": "一個一個放慢"
+        }
+      ]
+    },
+    {
+      "id": "translator",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bespectacled translator in a grey wig and a plain coat sitting at a writing desk in a London study on an overcast afternoon, holding up a small pastry in one hand and a quill in the other with a pondering look, a blank manuscript in front of him, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt405",
+          "text": "至於蛋糕，是翻譯變出來的：一七八三年最早的英文譯本，寫成了酥皮點心；"
+        },
+        {
+          "id": "mt406",
+          "text": "後來，「蛋糕」才成了最通行的譯法。"
+        }
+      ]
+    },
+    {
+      "id": "when-written",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired middle-aged writer in a fur cap and a long dark robe sitting at a writing desk in a small English country house on an overcast afternoon, writing on a blank page with a quill and a faraway look, rain on the window behind him, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt407",
+          "text": "那這一卷，是什麼時候寫的？",
+          "emotion": "問句"
+        },
+        {
+          "id": "mt408",
+          "text": "一七六〇年代後半，盧梭在英國，和後來住的一座城堡裡，寫下了這一部。"
+        }
+      ]
+    },
+    {
+      "id": "girl-vienna",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl of about twelve with fair hair tied in a ribbon, in a pale pink dress sitting at a harpsichord in a palace music room in Vienna on a mild afternoon, turning to smile at the viewer with her hands on the keys, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt409",
+          "text": "那時候，瑪麗．安東尼在哪裡？",
+          "emotion": "問句"
+        },
+        {
+          "id": "mt410",
+          "text": "她還在維也納，是個十來歲的小女孩。"
+        }
+      ]
+    },
+    {
+      "id": "age-card",
+      "template": "big",
+      "data": {
+        "text": "十來歲",
+        "kicker": "盧梭寫第一部的時候",
+        "sub": "她還住在維也納，還不到十三歲"
+      },
+      "lines": [
+        {
+          "id": "mt411",
+          "text": "一七七〇年，她十四歲，才嫁到法國。"
+        }
+      ]
+    },
+    {
+      "id": "queen-reads",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young queen with powdered hair in a pale blue gown sitting in an armchair in a palace salon on an overcast afternoon, holding a new book with a blank cover open on her lap and looking up with mild curiosity, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt412",
+          "text": "書印出來的時候，她已經當了八年王后。"
+        }
+      ]
+    },
+    {
+      "id": "remembered",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tired middle-aged writer in a fur cap and a long dark robe resting his chin on one hand at a writing desk in the afternoon, gazing into the distance as if remembering something long ago, a quill in his other hand, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt413",
+          "text": "可是盧梭，是在什麼時候，想起這句話的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "is-rousseau",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim young man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip standing on a cobbled street in Lyon on an overcast afternoon, turning toward the viewer with a sheepish grin and doffing his hat, a row of pastry shops with blank signs behind him, mild light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt414",
+          "text": "還記得開頭那個，不敢買麵包的年輕家教嗎？他就是盧梭。",
+          "emotion": "揭曉，親近"
+        }
+      ]
+    },
+    {
+      "id": "unthinkable",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim young man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip standing outside a bakery window in the afternoon, pointing at the sword on his hip and then at the bread in the window with a scandalised face, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt415",
+          "text": "他在書裡說：一個佩劍的體面先生，走進麵包店買一塊麵包，這像話嗎？",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "buys-brioche",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim young man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip stepping out of a small pastry shop with a blank sign in the afternoon, clutching a round brioche bun to his chest with a relieved grin, mild overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt416",
+          "text": "最後，他想起那位公主的話，當成不得已的辦法，買了布里歐。"
+        }
+      ]
+    },
+    {
+      "id": "reading-eating",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim young man in his late twenties in an 18th-century brown coat with big cuffs, a small sword at his hip sitting alone at a small table in an attic room in the afternoon, holding an open novel with a blank cover in one hand and a piece of brioche in the other, chewing happily, a glass of white wine beside him, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt417",
+          "text": "他躲回房間，看一頁小說，吃一口布里歐。"
+        },
+        {
+          "id": "mt418",
+          "text": "他寫：「好像我的書，在陪我吃飯。」",
+          "emotion": "輕，好笑"
+        }
+      ]
+    },
+    {
+      "id": "bottles",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern grey-haired master of the house in a dark velvet coat standing in a wine cellar in the afternoon, holding up an empty wine bottle and raising one eyebrow at the viewer, a lamp on the barrel beside him, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt419",
+          "text": "後來，酒瓶出賣了他；主人沒聲張，只是不再讓他管酒窖。"
+        }
+      ]
+    },
+    {
+      "id": "fifteen-card",
+      "template": "big",
+      "data": {
+        "text": "早了十五年",
+        "kicker": "里昂，一七四〇年前後",
+        "sub": "瑪麗．安東尼一七五五年十一月出生"
+      },
+      "lines": [
+        {
+          "id": "mt420",
+          "text": "開頭那一年，是一七四〇年前後，比瑪麗．安東尼出生，還早了十五年。",
+          "emotion": "放慢，像蓋章"
+        }
+      ]
+    },
+    {
+      "id": "from-memory",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired middle-aged writer in a fur cap and a long dark robe sitting at a writing desk on an overcast afternoon, scratching his head with the feather end of a quill and frowning at a blank page, a pile of crossed-out sheets beside him, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt421",
+          "text": "當然，這是盧梭二十多年後憑記憶寫的；他自己承認，第一部，錯一定很多。"
+        },
+        {
+          "id": "mt422",
+          "text": "也有學者懷疑，這段故事，根本是他編的。"
+        }
+      ]
+    },
+    {
+      "id": "empty-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a librarian with round spectacles and a cardigan sitting at a reading desk in the afternoon, holding up a small blank name card beside an old open book and looking at the viewer with a questioning smile, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt423",
+          "text": "可是書裡的公主，名字一直空著。後來，這個位置上被放進了誰？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "tuscany",
+      "chapter": "這句話，還掛過誰的名字？",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded writer in his thirties in a dark frock coat standing in a bookshop on an overcast afternoon, holding his small old book with a blank cover open and tapping a page with one finger, looking at the viewer with a knowing look, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt501",
+          "text": "前面卡爾讀到的那位托斯卡尼公爵夫人，不是唯一的一位。"
+        }
+      ]
+    },
+    {
+      "id": "countess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly countess in a lace cap and a dark shawl sitting at a writing desk in a quiet drawing room in the afternoon, writing in a blank memoir notebook with a quill and a fond, faraway smile, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt502",
+          "text": "一位伯爵夫人在回憶錄裡寫：路易十五的女兒維多利亞夫人，在一次缺糧的時候，"
+        }
+      ]
+    },
+    {
+      "id": "victoire",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump kind-faced princess in her fifties in a lavender gown sitting on a sofa in a palace drawing room on an overcast afternoon, dabbing a tear from her eye with a lace handkerchief and looking at the viewer with a kind, sorry face, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt503",
+          "text": "聽人說起窮人沒有麵包，她含著眼淚說："
+        },
+        {
+          "id": "mt504",
+          "text": "「天啊，要是他們肯將就，吃肉派的酥皮，就好了！」",
+          "emotion": "好心又天真"
+        }
+      ]
+    },
+    {
+      "id": "kind",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plump kind-faced princess in her fifties in a lavender gown holding a small meat pie with a golden crust in both hands in a palace drawing room in the afternoon, offering it toward the viewer with a hopeful, gentle smile, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt505",
+          "text": "這個版本裡，說話的人不是冷漠，是好心。"
+        }
+      ]
+    },
+    {
+      "id": "heard-it",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an elderly countess in a lace cap and a dark shawl sitting in an armchair in the afternoon, holding a cup of tea and leaning in with a confiding look as if repeating a story she once heard, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt506",
+          "text": "可是寫回憶錄的伯爵夫人，一七八一年才出生；這件事，是她聽來的。"
+        }
+      ]
+    },
+    {
+      "id": "novelist",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a big cheerful novelist with curly hair in a waistcoat sitting at a desk piled with blank manuscript pages on an overcast afternoon, writing fast with a quill and grinning with delight, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt507",
+          "text": "到了十九世紀，大仲馬在小說裡，又把這句話，安到波利尼亞克公爵夫人頭上。"
+        }
+      ]
+    },
+    {
+      "id": "forged",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with round spectacles and a cardigan sitting at a reading desk in the afternoon, holding up a thick memoir with a blank cover and squinting at it through a magnifying glass with deep suspicion, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt508",
+          "text": "也有人說，最早是路易十四的王后，一位西班牙公主。"
+        },
+        {
+          "id": "mt509",
+          "text": "可是這個說法，靠的是一套可能是偽作的回憶錄。"
+        }
+      ]
+    },
+    {
+      "id": "moving",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with round spectacles and a cardigan standing at a long table in a library in the afternoon, moving a small blank name card from one plain folder to the next with a wry smile, a row of folders in front of her, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt510",
+          "text": "同一句話，就這樣在一位又一位公主之間搬家。"
+        }
+      ]
+    },
+    {
+      "id": "emperor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young palace servant in a plain blue robe standing in a palace hall on an overcast afternoon, holding a steaming bowl of meat porridge in both hands and looking at the viewer with a baffled expression, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt511",
+          "text": "開頭那位中國皇帝，是西晉的晉惠帝。"
+        },
+        {
+          "id": "mt512",
+          "text": "《晉書》寫：百姓餓死，皇帝說：「何不食肉糜？」",
+          "emotion": "放慢，一字一字"
+        }
+      ]
+    },
+    {
+      "id": "jin-card",
+      "template": "big",
+      "data": {
+        "text": "「何不食肉糜？」",
+        "kicker": "《晉書》卷四〈孝惠帝紀〉",
+        "sub": "肉糜：肉末煮的粥"
+      },
+      "lines": [
+        {
+          "id": "mt513",
+          "text": "意思是：那他們，為什麼不吃肉末粥呢？"
+        }
+      ]
+    },
+    {
+      "id": "compiled",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly court scholar with a long grey beard in a dark Tang dynasty robe and a black cap kneeling at a low wooden desk in a quiet library hall on an overcast afternoon, rolling up a long blank scroll with careful hands and a calm expression, stacks of bamboo slips beside him, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt514",
+          "text": "可是《晉書》，是唐朝在六四八年才編成的，比他過世，晚了三百多年。"
+        }
+      ]
+    },
+    {
+      "id": "not-checked",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a librarian with round spectacles and a cardigan sitting at a reading desk in the afternoon, closing a heavy book with a blank cover and holding up one finger with a careful, honest look, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt515",
+          "text": "它也不是現場的紀錄。比它更早的史料，我們這次沒有查，所以，不說他是被冤枉的。"
+        }
+      ]
+    },
+    {
+      "id": "needed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young queen with powdered hair in a pale blue gown standing alone in a palace corridor on an overcast afternoon, holding a single plain loaf of bread in both hands and looking at the viewer with a quiet, thoughtful face, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt516",
+          "text": "我們覺得，這句話一直換主人，是因為大家需要一位，不知道麵包多貴的公主。",
+          "emotion": "像跟朋友說自己的看法"
+        },
+        {
+          "id": "mt517",
+          "text": "所以，瑪麗皇后真的說過嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "verdict",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with round spectacles and a cardigan sitting at a reading desk in the afternoon, laying an old open book with blank pages down and resting both hands on it with a calm, certain look, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mt518",
+          "text": "她這一輩子有沒有隨口說過什麼，紀錄沒辦法告訴我們。"
+        },
+        {
+          "id": "mt519",
+          "text": "可是，書裡這句話，說的不可能是她。",
+          "emotion": "放慢，篤定"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "big",
+      "data": {
+        "text": "書裡的公主，不可能是她",
+        "kicker": "盧梭《懺悔錄》第六卷",
+        "sub": "里昂那件事，比她出生早了十五年"
+      },
+      "lines": [
+        {
+          "id": "mt520",
+          "text": "這份檔案，存檔。",
+          "emotion": "收尾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "書裡的公主，不可能是她"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mt521",
+          "text": "你第一次聽到這句話，是在哪裡、聽誰說的？",
+          "emotion": "問句上揚，像在聊天"
+        },
+        {
+          "id": "mt522",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ]
+}
