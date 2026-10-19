@@ -1493,7 +1493,7 @@ export class Automation {
     }
     // A series in the making comes next (docs/videos/SERIES.md), then the owner's one-off
     // requests from before one-offs became series, then the owner's slides requests, then a
-    // scheduled draft, all within the same waiting cap.
+    // scheduled draft, all within the same waiting cap (brand stories are counted apart: room()).
     const series = await seriesStep(this);
     if (series) return series;
     // The owner's drama requests come before any scheduled draft, within the same waiting cap.
@@ -1757,9 +1757,14 @@ export class Automation {
     return this.block(state, `saved ${stage} job gone from the server; a retry ${sends ?? `sends the ${stage} stage once more`} (${code}: ${error.message})`, `${JOB_GONE_KIND}${stage}`);
   }
 
-  /** Whether another video may start without passing the owner's cap on drafts waiting on them. */
+  /**
+   * Whether another video may start without passing the owner's cap on drafts waiting on them.
+   * Brand stories are counted on their own (owner, 2026-10-19): the site's story quota
+   * (series_max_in_flight and the rest) is their limit, so an active story takes no place here
+   * and a story episode does not ask (seriesStep).
+   */
   room() {
-    const active = automatedVideos(this.workBase).filter((state) => state.status === "active").length;
+    const active = automatedVideos(this.workBase).filter((state) => state.status === "active" && state.series?.kind !== "story").length;
     return active < this.settings.max_waiting_drafts;
   }
 
