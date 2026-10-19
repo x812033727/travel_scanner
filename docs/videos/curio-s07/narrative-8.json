@@ -1,0 +1,103 @@
+{
+  "narrative_hash": "c3ba6298ea37efb4",
+  "script_hash": "715b0be4d39abd87799d83c324cf87d0a12b36f4aae46255622cead004595146",
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "a337c0a950ccc33a60be8753fa78aa18b0d787228ee501a99479b7f3758a9fb1",
+  "round": 4,
+  "passed": true,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[eb001] 當陽長坂，劉備正在撤退；張飛被留下斷後。 bridge-001–002: 當陽長坂, 劉備撤退, 張飛留下斷後並站在橋旁; the opening is already an event."
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[eb004] 史書有「斷橋」；那座橋真被喊聲震斷嗎？ bridge-003–006 ask what the cavalry wins, whether a shout broke the bridge, the pursuers' reaction, and why they reached 長坂; none gives its later answer."
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[eb043] 史書稱他「益德」，小說接下來則寫作「翼德」。 The pursuit and bridge defense carry through all chapters. The source switch at bridge-035 and bridge-041 compares chronicle and novel versions of the same episode, rath"
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[eb039] 回到《張飛傳》，他「瞋目橫矛」，怒目直視，把矛橫在身前。 No spoken line enumerates coming sections or tells viewers the presentation plan. bridge-035 '回到《張飛傳》' is attached to a new action, 瞋目橫矛, and names a source for th"
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": true,
+      "evidence": "[eb007] 曹操追兵還沒到長坂，荊州先起變局：建安十三年，劉表去世。 bridge-006 asks why Cao's pursuit reached 長坂 and bridge-007 turns to the preceding 荊州變局; bridge-030→031 gives 二十騎; bridge-042→049 starts the novel's tree ruse; bri"
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[eb070] 張飛還要怎樣推這支隊伍一把？ Questions or unresolved turns recur throughout, e.g. bridge-020, 025, 030, 034, 042, 051, 056, 065, 073, 077, 081, 083; no 90-second gap is apparent from the short scene lengths"
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": true,
+      "evidence": "[eb045] 開頭那隊騎兵爭到的，就是《張飛傳》下一句：「敵皆無敢近者，故遂得免」；劉備得以脫身。 Opening bridge-003/005 pay off with bridge-040's 不敢近/劉備得免, bridge-004 with bridge-087's textual limit, and bridge-006 with the surrender, slow convoy"
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": true,
+      "evidence": "[eb095] 回到開頭那座橋：這兩份原文都沒有寫喊聲把它震斷。 The return to the opening bridge at bridge-087 answers the earlier shouted-bridge question rather than replaying a stated answer. Historical and novel challenge quotat"
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[eb080] 他們卸下馬尾樹枝，張飛又命人拆斷橋樑。 All six chapter titles describe actions or developments: 南行, 二十騎據水斷橋, 馬尾樹枝揚塵, 曹操到橋邊, and 拆橋後再追."
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[eb099] 喜歡這種史書與小說對讀，訂閱奇聞檔案局。 The outro asks which 三國 scene the viewer would check and invites a subscription; it names no upcoming video."
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[eb005] 史書裡，追兵聽見他的挑戰後會怎樣？ After the bridge scene, bridge-003, 004, 005, and 006 pose four concrete unresolved questions that later sections address."
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[eb045] 開頭那隊騎兵爭到的，就是《張飛傳》下一句：「敵皆無敢近者，故遂得免」；劉備得以脫身。 The identifiable difficulty is what Zhang Fei's bridge stand achieved and what later fiction added; 刘备's retreat and Cao's pursuit bring everyone to "
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": true,
+      "evidence": "[eb093] 曹操又怕中計，便下令退；拆橋惹來的追兵才停下。 The convoy, Cao's chase, novel dust ruse, bridge destruction, and 漢津 aftermath each explain either why the bridge encounter happened, what it was, or the novel's conseq"
+    }
+  ],
+  "failed": [],
+  "advisory": []
+}
