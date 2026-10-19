@@ -113,17 +113,19 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // its journal under "explainer" or "bible-explainer", and the worker would start a new journal and
 // a new paid call beside that orphan. Hence the hard step before the deploy: no unfinished
 // one-off in a cute preset on the host (docs/videos/explainer-route/DESIGN.md 5.7 item 1).
+// The four 奇聞檔案局 texts that read the bible's 鉤子 or the writer's hook rules moved on 2026-10-19,
+// when the series took the brand stories' 45-second cadence, eight loops and its music bed.
 const SERIES_TEXT_PINS = {
   "planner:bible-explainer-cartoon": [6347, "f9afae8a35b9fee5d247b6bb2a4b0729b47fd20c1f9d195eab42a76adf7ac0d2"],
   "writer:explainer-cartoon": [27161, "24625a430c23d15dc2428d2195c3947b5a18a59b51ab7b9e6e30bcd85b4264f5"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
   "planner:discuss-cartoon": [7074, "a489aa308db647b7d936eeeddcac14bed5fda21c4f2765d76acb338cc44a97f6"],
   "writer:discuss-cartoon": [25626, "19bacf8358177a1a461c5b46643211041f91969434eba8a89404524084a17fca"],
-  "planner:bible-explainer-mystery": [9051, "5c7719c165af9f55033645f20b3db9d62d88eb70607830b9b5435871afeb04b0"],
-  "writer:explainer-mystery": [29369, "41a04d8856a3240fecdb6b5b185e316ee1a9f10b008ca574f4d89689454eaa9b"],
+  "planner:bible-explainer-mystery": [9111, "ef9cf2ef25cf3cd54c445e33d25c80fb469d96e53d70044e93ca451d1b9a087b"],
+  "writer:explainer-mystery": [30898, "5616f3107d33d27d29a53800cb08bf3a7d306aef48e1698a1a124a5d81542302"],
   "verifier:explainer-mystery": [6194, "ab0adfcec0f59fc6c377523ba8272aa33cdb76f736af84e7de256f31b2784722"],
-  "planner:discuss-mystery": [9680, "5d624fcce19d6da7ff36695548869e312d62edbddc382b1a30831db82a8edcf3"],
-  "writer:discuss-mystery": [27915, "d07e8400a65b585aecbc71b189e82b903b3bd3ef19e882012f27736e2bc1765e"],
+  "planner:discuss-mystery": [9740, "925081165290cf91c680835650ccdd14e8d6f9256b794ec799c628aaf06686cd"],
+  "writer:discuss-mystery": [29444, "4d2d50d6495e995a7591ffb8fa0b60794a3b3fe13925d997dca61d548a126938"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {
@@ -141,6 +143,19 @@ test("the ten texts of the two profiled series are the pinned ones, composed wit
   // The owner's standing instructions and the channel's stance are still appended, as for any stage.
   const standing = instructionsFor("writer", "drama", "旁白慢一點", "explainer-mystery", "1. 先講事實", null);
   assert.ok(standing.startsWith(EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-mystery"]) && standing.includes("旁白慢一點") && standing.includes("1. 先講事實"));
+});
+
+test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; 原來如此's does not change", () => {
+  // Owner, 2026-10-19: the brand stories were smoother, had more hooks and music; this series is to
+  // be as good or better. Lint reads the same 45 s and eight loops on a curio- slug.
+  const mystery = instructionsFor("writer", "drama", "", "explainer-mystery");
+  assert.match(mystery, /No stretch of the body runs longer than 45 seconds\s+without one/);
+  assert.match(mystery, /"loops" lists at least 8 for ten minutes/);
+  assert.match(mystery, /ends its last sentence on one concrete, unanswered question/);
+  assert.match(mystery, /"music" is never left out/);
+  assert.match(instructionsFor("planner", "drama", "", "bible-explainer-mystery"), /at least eight for ten minutes/);
+  const cartoon = instructionsFor("writer", "drama", "", "explainer-cartoon");
+  assert.doesNotMatch(cartoon, /45 seconds|"music" is never left out/);
 });
 
 test("each series' texts name their own series, look, cards and rules, and nothing of the flat explainer's or of each other's", () => {

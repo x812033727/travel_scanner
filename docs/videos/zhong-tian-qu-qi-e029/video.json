@@ -1,0 +1,978 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e029",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "laisan",
+      "name": "賴三",
+      "appearance": "East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, a grey-brown short jacket and an old cloth head wrap",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的家丁，油嘴滑舌、心虛"
+      }
+    },
+    {
+      "id": "sunzhanggui",
+      "name": "孫掌櫃",
+      "appearance": "East Asian man of forty-five, round and plump with fair smooth skin, narrow smiling eyes that are always half closed, a dark green silk robe with a jade belt hook, two jade balls turning in one hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的商行掌櫃，笑咪咪、慢條斯理、話裡藏刀"
+      }
+    },
+    {
+      "id": "huxianling",
+      "name": "胡縣令",
+      "appearance": "East Asian man of forty-eight, pale and plump with a double chin and narrow eyes, a black official gauze hat and a blue-green seventh-rank official robe with bulging sleeves, his cheeks shaking when he smiles",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十八歲的貪官縣令，官腔、拖長音、假裝威嚴"
+      }
+    },
+    {
+      "id": "weishaoqing",
+      "name": "魏少卿",
+      "appearance": "East Asian man of twenty-six, handsome but frivolous, peach-blossom eyes, thin lips always curled in a scornful smile, fair skin, tall and slender, a sapphire-blue brocade robe woven with gold thread, a fine white jade pendant at his waist, a gold-flecked folding fan in his hand, hair in a neat topknot with a small jade crown",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十六歲的宰相之子，男聲、輕佻慵懶、拖著尾音、帶著居高臨下的笑意"
+      }
+    },
+    {
+      "id": "zhengbo",
+      "name": "鄭伯",
+      "appearance": "East Asian man of sixty, a little plump, kind eyebrows and a gentle smile, a neat grey-white goatee, a dark brown silk-faced padded long robe, a small writing brush tucked at his cuff",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadaltager",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十歲的唐家老管事，男聲、溫厚穩重、說話客氣有禮，壓低聲音時帶著擔憂"
+      }
+    },
+    {
+      "id": "tangwanjin",
+      "name": "唐萬金",
+      "appearance": "East Asian man of fifty, a round lucky face, smiling narrowed eyes, a short neat beard, a little plump, a dark purple silk robe woven with gold ingot patterns, a string of gold keys hanging at his waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achird",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的江南首富，男聲、和氣生財、笑呵呵，哭窮時很誇張"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "an angry crowd-like pounding drum and harsh low brass at the start, a tense ticking woodblock and taut plucked strings as the paper is raised, a shimmering bright rise of bells and strings as the willow-leaf watermark appears in the sun, a quick confident pipa and abacus-like clicks as the ledger is opened, a heavy drum hit and a triumphant suona burst when the verdict falls, then sudden galloping hooves and a hushed held string chord to a sharp sting at the very end, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "人證當堂反咬，他把包糖紙舉向太陽：我家的紙有水印｜種田娶妻打天下 第29集",
+    "description": "縣城廣場公審，賴三當著全城反咬許家下毒，人群喊著「毒鋪子」。許硯拿起一塊許記糖糕整塊塞進嘴裡：「我家的糖，我先吃。」人證會改口，紙不會——他把許記的白紙對著正午的太陽舉起，紙心浮出一片柳葉水印；包毒糖糕的那張，卻是魏記的粗黃紙。唐小棠翻開帳本：許記每一批糖都編了號、記了買家，那批「毒糖」根本不存在。賴三崩潰供出孫掌櫃，魏少卿當場把自己的人推出去頂罪。封條撕下的那一刻，一輛四匹馬的大車停在廣場邊，一個圓臉胖老爺哭著撲下來：「囡囡！」《種田娶妻打天下》第 29 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "一張紙翻案",
+      "tag": "種田娶妻打天下",
+      "shot": "s12"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "毒鋪子",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a01",
+          "speaker": "laisan",
+          "text": "是許家逼我，",
+          "emotion": "跪著，指向許硯，哭腔"
+        },
+        {
+          "id": "zq29a02",
+          "speaker": "laisan",
+          "text": "下毒栽贓魏記！",
+          "emotion": "豁出去地喊"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, low angle, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium close-up from a low angle of Lai San, kneeling at the center of the platform, his old cloth head wrap askew, thrusting a shaking finger toward Xu Yan off screen left, the official desk blurred behind him",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「是許家逼我，」 then 「下毒栽贓魏記！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he bows his head down to the boards and his thin shoulders shake",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a03",
+          "speaker": "sunzhanggui",
+          "text": "毒鋪子，滾出縣城！",
+          "emotion": "振臂帶頭喊"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium shot of Sun Zhanggui at the front of the crowd below the platform on screen right, two jade balls in one hand, angry townsfolk pressed close behind him",
+        "motion": "Sun Zhanggui speaks a short Mandarin line, 「毒鋪子，滾出縣城！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he thrusts his fist into the air and the townsfolk behind him raise their fists and shout with him",
+        "characters": [
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, slow pan left",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: wide shot from high above the square of the crowd surging toward the red-draped platform with raised fists, a line of yamen runners holding their staffs crosswise to hold them back, Xu Yan standing alone on the screen-left side of the platform, Tang Xiaotang in her high-collared peach-pink ruqun at the foot of the platform steps on screen left",
+        "motion": "The crowd pushes forward against the crossed staffs, fists pumping, while Xu Yan stands still above them and Tang Xiaotang looks up at him in alarm, the camera panning left toward them",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a04",
+          "speaker": "xuyan",
+          "text": "我家的糖，",
+          "emotion": "平靜，舉起一塊糖糕"
+        },
+        {
+          "id": "zq29a05",
+          "speaker": "xuyan",
+          "text": "我先吃。",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium close-up of Xu Yan, on screen left on the platform, a small open parcel of clean white paper in his palm holding square pale sugar cakes, lifting one cake up toward the crowd below",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「我家的糖，」 then 「我先吃。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he pushes the whole sugar cake into his mouth at once",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a06",
+          "speaker": "tangxiaotang",
+          "text": "你瘋啦！",
+          "emotion": "嚇白了臉"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: close-up of Tang Xiaotang, on screen right at the foot of the platform steps, pearl pins in her looped buns, the high collar of her peach-pink ruqun, noon sun on her pale shocked face, looking up toward Xu Yan off screen left",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「你瘋啦！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she clutches the small gold abacus at her waist with both hands",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: close-up of Xu Yan on the platform, his cheeks full of sugar cake, holding a bitten small white square sugar frost cake, plain snow-white, not a bun and not golden, noon sun on his face, the stunned crowd blurred behind him",
+        "motion": "Xu Yan chews twice, swallows hard, wipes his mouth with the back of his hand and spreads his empty hands toward the crowd with a wide grin",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a07",
+          "speaker": "huxianling",
+          "text": "肅靜！",
+          "emotion": "拍驚堂木"
+        },
+        {
+          "id": "zq29a08",
+          "speaker": "huxianling",
+          "text": "許硯，你還有何話說？",
+          "emotion": "拖長官腔"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium close-up of Magistrate Hu, seated behind the long official desk at the back of the platform, a wooden gavel block raised in his plump hand, his double chin quivering",
+        "motion": "Magistrate Hu speaks 2 short Mandarin lines, 「肅靜！」 then 「許硯，你還有何話說？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he slaps the gavel block down on the desk with a crack",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a09",
+          "speaker": "xuyan",
+          "text": "人證會改口，",
+          "emotion": "看了賴三一眼"
+        },
+        {
+          "id": "zq29a10",
+          "speaker": "xuyan",
+          "text": "紙不會。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium close-up of Xu Yan on screen left on the platform, a few crumbs at the corner of his mouth, glancing down at Lai San off screen right and then up toward the official desk",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「人證會改口，」 then 「紙不會。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he brushes the crumbs from his lips and holds up one finger",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a11",
+          "speaker": "weishaoqing",
+          "text": "一張紙，",
+          "emotion": "搖扇，嗤笑"
+        },
+        {
+          "id": "zq29a12",
+          "speaker": "weishaoqing",
+          "text": "能翻什麼天？",
+          "emotion": "拖長尾音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, low angle, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium close-up from a low angle of Wei Shaoqing, lounging in a carved wooden chair on the screen-right side of the platform, his gold-flecked fan open, smiling across at Xu Yan off screen left",
+        "motion": "Wei Shaoqing speaks 2 short Mandarin lines, 「一張紙，」 then 「能翻什麼天？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he fans himself lazily and crosses one leg over the other",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "chapter": "柳葉水印",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a13",
+          "speaker": "xuyan",
+          "text": "包毒糖糕的，",
+          "emotion": "畫外，舉起物證"
+        },
+        {
+          "id": "zq29a14",
+          "speaker": "xuyan",
+          "text": "是這張紙。",
+          "emotion": "畫外"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the yellow paper wrapper, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: insert on the long official desk of a crumpled square of coarse yellow-brown paper with a few dark crumbs on it, a hand in a faded blue-grey cotton sleeve on screen left lifting it by one corner; a man's voice speaks off screen",
+        "motion": "The hand lifts the crumpled yellow paper and gives it a small shake so a few dark crumbs drop onto the desk",
+        "characters": []
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a15",
+          "speaker": "xuyan",
+          "text": "這一張，",
+          "emotion": "從袖裡抽出白紙"
+        },
+        {
+          "id": "zq29a16",
+          "speaker": "xuyan",
+          "text": "是許記的紙。",
+          "emotion": "揚聲"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: wide shot of the platform: Xu Yan standing on screen left with the crumpled yellow paper in one hand, drawing a folded sheet of clean white paper from his sleeve with the other, Lai San kneeling at the center, Magistrate Hu behind the official desk at the back, the crowd below",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「這一張，」 then 「是許記的紙。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he shakes the white sheet open with a crisp snap while Lai San cranes his neck to look and Magistrate Hu leans forward over the desk",
+        "characters": [
+          "xuyan",
+          "laisan",
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, low angle, slow tilt up",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium shot from a low angle of Xu Yan at the front edge of the platform, holding the sheet of white paper high against the blazing noon sun with both hands, sunlight glowing through it, the upturned faces of the crowd below",
+        "motion": "Xu Yan lifts the white sheet higher into the sun and holds it steady while the crowd below raises their heads one after another, the camera tilting up toward the glowing paper",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a17",
+          "speaker": "xitong",
+          "text": "物證：柳葉水印。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the willow-leaf watermark, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: insert of the sheet of white paper held up against the noon sun and filling the frame, light glowing through its fine fibres, a faint pale willow-leaf shape in the very center of the paper, two fingertips holding its top corners; the system voice speaks off screen",
+        "motion": "As the sunlight strengthens, the willow-leaf watermark in the center of the paper slowly grows clearer, its slender veins appearing one by one",
+        "characters": []
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: wide shot across the square of hundreds of townsfolk below the platform all looking up at the glowing sheet of paper held high by Xu Yan small on the platform on screen left, mouths open, an old woman lifting her arm to point",
+        "motion": "The shouting dies away as heads tilt up one after another and the old woman points at the paper, the camera panning right across the upturned faces",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a18",
+          "speaker": "xuyan",
+          "text": "許記的紙，",
+          "emotion": "放下紙，對著人群"
+        },
+        {
+          "id": "zq29a19",
+          "speaker": "xuyan",
+          "text": "心裡都有柳葉。",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium close-up of Xu Yan lowering the white sheet, the willow-leaf watermark faintly visible in the paper beside his face, noon light, looking out at the crowd below",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「許記的紙，」 then 「心裡都有柳葉。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he turns the sheet outward so the crowd can see it and smiles",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the coarse paper against the sun, locked",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: insert of the crumpled coarse yellow-brown paper held up against the noon sun, rough clumpy fibres and dark specks, no shape at all inside it, fingers in a faded blue-grey sleeve at its edge",
+        "motion": "The coarse paper is turned slowly in the sunlight, showing only blotchy fibres and nothing hidden inside it",
+        "characters": []
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a20",
+          "speaker": "xuyan",
+          "text": "這張沒有，",
+          "emotion": "舉起粗黃紙"
+        },
+        {
+          "id": "zq29a21",
+          "speaker": "xuyan",
+          "text": "是魏記的粗紙。",
+          "emotion": "轉向魏少卿"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: close-up of Xu Yan, the coarse yellow paper raised beside his face, noon sun on one cheek, his eyes turning toward Wei Shaoqing off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「這張沒有，」 then 「是魏記的粗紙。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he flicks the yellow paper so it crackles and raises one eyebrow",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a22",
+          "speaker": "weishaoqing",
+          "text": "紙，",
+          "emotion": "扇子停住"
+        },
+        {
+          "id": "zq29a23",
+          "speaker": "weishaoqing",
+          "text": "誰都買得到。",
+          "emotion": "冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: close-up of Wei Shaoqing in the carved chair on screen right, his gold-flecked fan frozen halfway, peach-blossom eyes narrowed toward Xu Yan off screen left",
+        "motion": "Wei Shaoqing speaks 2 short Mandarin lines, 「紙，」 then 「誰都買得到。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he snaps the fan shut and taps it against his palm",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a24",
+          "speaker": "tangxiaotang",
+          "text": "帳呢？",
+          "emotion": "爬上高台，揚聲"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: wide shot of the platform: Tang Xiaotang climbing the last steps onto the platform on screen left with a thick cloth-bound ledger hugged in her arms, her high-collared peach-pink ruqun and flowing sleeves catching the breeze, Xu Yan beside her, Wei Shaoqing in his carved chair on screen right, the crowd below",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「帳呢？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she lifts the ledger high in one hand toward the crowd while Xu Yan steps aside to make room for her",
+        "characters": [
+          "tangxiaotang",
+          "xuyan",
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "chapter": "帳本對質",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a25",
+          "speaker": "tangxiaotang",
+          "text": "許記每批糖，",
+          "emotion": "翻開帳本給全場看"
+        },
+        {
+          "id": "zq29a26",
+          "speaker": "tangxiaotang",
+          "text": "都編了號！",
+          "emotion": "又甜又脆"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium close-up of Tang Xiaotang at the front of the platform, noon sun on her glowing face, glossy peach-pink lips and pearl pins, the high collar of her peach-pink ruqun, holding the open ledger out toward the crowd below, her flowing sleeves fluttering in the breeze",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「許記每批糖，」 then 「都編了號！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she flips page after page so they fan in the wind, her sleeves swirling, and flashes a dimpled smile",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a27",
+          "speaker": "tangxiaotang",
+          "text": "誰買的，",
+          "emotion": "畫外，指著帳"
+        },
+        {
+          "id": "zq29a28",
+          "speaker": "tangxiaotang",
+          "text": "都記在這裡。",
+          "emotion": "畫外"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the open ledger, locked",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: insert of the open ledger pages filled with tidy columns of tiny abstract ink dashes too small and blurred to read, no recognisable characters, each entry ringed with a small red circle, a slim finger in a peach-pink silk sleeve running down one column; a girl's voice speaks off screen",
+        "motion": "The slim finger slides down the column and taps one red circle twice",
+        "characters": []
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a29",
+          "speaker": "tangxiaotang",
+          "text": "你說的那批，",
+          "emotion": "轉向賴三，一秒變精明"
+        },
+        {
+          "id": "zq29a30",
+          "speaker": "tangxiaotang",
+          "text": "根本不存在！",
+          "emotion": "斬釘截鐵"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: close-up of Tang Xiaotang hugging the ledger, her chin lifted, sharp bright eyes turned down toward Lai San off screen right, noon light on her face and the high collar of her peach-pink ruqun",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「你說的那批，」 then 「根本不存在！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she snaps the ledger shut with a clap",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a31",
+          "speaker": "xitong",
+          "text": "毒糖批號：查無此批。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: close-up of Lai San kneeling on the platform, sweat beading on his temples, his shifty eyes darting toward the crowd below; the system voice speaks off screen",
+        "motion": "Lai San swallows hard, his eyes flick back and forth, and he wipes his sweating forehead with a trembling sleeve",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a32",
+          "speaker": "xuyan",
+          "text": "昨晚那個食盒，",
+          "emotion": "蹲到賴三面前，壓低聲音"
+        },
+        {
+          "id": "zq29a33",
+          "speaker": "xuyan",
+          "text": "誰送的？",
+          "emotion": "盯著他"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium shot of Xu Yan crouching down on screen left in front of Lai San kneeling on screen right, at eye level with him, the crowd blurred below the platform",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「昨晚那個食盒，」 then 「誰送的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he tilts his head and waits while Lai San flinches back",
+        "characters": [
+          "xuyan",
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a34",
+          "speaker": "laisan",
+          "text": "是孫掌櫃！",
+          "emotion": "崩潰，哭喊"
+        },
+        {
+          "id": "zq29a35",
+          "speaker": "laisan",
+          "text": "他給我銀子！",
+          "emotion": "指向人群"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium close-up of Lai San kneeling on screen right, his face crumpling, flinging out an arm to point at Sun Zhanggui off screen right in the crowd",
+        "motion": "Lai San speaks 2 short Mandarin lines, 「是孫掌櫃！」 then 「他給我銀子！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he collapses forward onto his hands, sobbing",
+        "characters": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a36",
+          "speaker": "sunzhanggui",
+          "text": "胡說！",
+          "emotion": "笑臉一僵"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium close-up of Sun Zhanggui in the crowd below the platform, his always half-closed smiling eyes snapping wide open, the two jade balls slipping from his fingers",
+        "motion": "Sun Zhanggui speaks a short Mandarin line, 「胡說！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then the jade balls drop from his hand and he edges back into the crowd",
+        "characters": [
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a37",
+          "speaker": "weishaoqing",
+          "text": "孫掌櫃，",
+          "emotion": "收扇，冷冷地"
+        },
+        {
+          "id": "zq29a38",
+          "speaker": "weishaoqing",
+          "text": "你自己認了吧。",
+          "emotion": "看都不看"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, low angle, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium close-up from a low angle of Wei Shaoqing rising from his carved chair on screen right, his fan snapped shut, looking down coldly at Sun Zhanggui off screen right below the platform",
+        "motion": "Wei Shaoqing speaks 2 short Mandarin lines, 「孫掌櫃，」 then 「你自己認了吧。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he points the closed fan down at him without a flicker of feeling",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan left",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: wide shot of the front of the platform: Sun Zhanggui stumbling out of the crowd onto the open stones as the townsfolk shove him forward, two yamen runners seizing his arms, his jade balls rolling away, Wei Shaoqing on the platform above on screen right turning his back",
+        "motion": "The townsfolk shove Sun Zhanggui out, two yamen runners grab his arms and he gapes back up at Wei Shaoqing, who turns his back on him, the camera panning left",
+        "characters": [
+          "sunzhanggui",
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a39",
+          "speaker": "huxianling",
+          "text": "押下去！",
+          "emotion": "拍驚堂木"
+        },
+        {
+          "id": "zq29a40",
+          "speaker": "huxianling",
+          "text": "許記，無罪！",
+          "emotion": "抹汗，拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, low angle, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium close-up from a low angle of Magistrate Hu behind the official desk, sweat shining on his plump pale face, the gavel block raised high",
+        "motion": "Magistrate Hu speaks 2 short Mandarin lines, 「押下去！」 then 「許記，無罪！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he slaps the gavel block down and dabs his brow with his bulging sleeve",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "chapter": "囡囡",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow crane up",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: wide shot of the whole square erupting in cheers, townsfolk tossing their straw hats into the air, Tang Xiaotang hopping on the platform with the ledger raised high, Xu Yan laughing beside her on screen left",
+        "motion": "The crowd cheers and throws hats into the air while Tang Xiaotang hops and waves the ledger and Xu Yan laughs, the camera craning up over the square",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a41",
+          "speaker": "xitong",
+          "text": "鬥商總帳：許記是魏記三倍。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: close-up of Xu Yan, noon sun on his face, the cheering crowd blurred behind him, staring at the empty air in front of him with a faint cool blue glint in his eyes; the system voice speaks off screen",
+        "motion": "Xu Yan's eyes widen slightly, then a slow satisfied smile spreads across his face and he lets out a long breath",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a42",
+          "speaker": "tangxiaotang",
+          "text": "這封條，",
+          "emotion": "走到被扣的糖箱前"
+        },
+        {
+          "id": "zq29a43",
+          "speaker": "tangxiaotang",
+          "text": "我來撕！",
+          "emotion": "痛快"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium shot of Tang Xiaotang in her high-collared peach-pink ruqun beside a big impounded wooden crate of sugar cakes on the platform, two blank white paper seal strips pasted across its lid in a cross, her fingers gripping one strip",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「這封條，」 then 「我來撕！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she rips both paper seal strips off the crate in one sweep and the torn halves flutter away in the wind",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: wide shot of the edge of the square: a big black lacquered carriage drawn by four horses pulling up hard, the crowd scattering aside around it, Steward Zheng jumping down from the driver's bench to the carriage door",
+        "motion": "The four horses stamp to a halt, the crowd parts, and Steward Zheng hops down and swings the carriage door open, the camera panning right",
+        "characters": [
+          "zhengbo"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a44",
+          "speaker": "tangwanjin",
+          "text": "囡囡！",
+          "emotion": "哭著撲下車"
+        },
+        {
+          "id": "zq29a45",
+          "speaker": "tangwanjin",
+          "text": "爹找得妳好苦啊！",
+          "emotion": "誇張地哭"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium shot of Tang Wanjin tumbling out of the carriage door at the edge of the square, his round face streaming with tears, both arms flung wide, the string of gold keys at his waist swinging",
+        "motion": "Tang Wanjin speaks 2 short Mandarin lines, 「囡囡！」 then 「爹找得妳好苦啊！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he stumbles forward across the bluestones with both arms open",
+        "characters": [
+          "tangwanjin"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a46",
+          "speaker": "tangxiaotang",
+          "text": "爹……",
+          "emotion": "笑容僵住"
+        },
+        {
+          "id": "zq29a47",
+          "speaker": "tangxiaotang",
+          "text": "你怎麼來了？",
+          "emotion": "小聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: close-up of Tang Xiaotang on the platform, her dimpled smile freezing, a torn plain white paper seal strip still in her fingers, with no red stamp and no red marks, the high collar of her peach-pink ruqun, staring at Tang Wanjin off screen right",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「爹……」 then 「你怎麼來了？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then her lips part and she takes a small step back",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium shot of Xu Yan standing on screen left at the edge of the platform and Tang Xiaotang slipping behind his shoulder, gripping his faded sleeve with both hands, peeking out toward her father off screen right",
+        "motion": "Tang Xiaotang ducks behind Xu Yan and tightens her grip on his sleeve, and Xu Yan glances back at her, then squares his shoulders toward the carriage",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq29a48",
+          "speaker": "weishaoqing",
+          "text": "岳父大人，",
+          "emotion": "整整衣襟，堆起笑"
+        },
+        {
+          "id": "zq29a49",
+          "speaker": "weishaoqing",
+          "text": "來得正好。",
+          "emotion": "得意"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: medium close-up of Wei Shaoqing on the platform on screen right, smoothing his sapphire-blue brocade robe, his gold-flecked fan in hand, smiling down toward Tang Wanjin off screen right below",
+        "motion": "Wei Shaoqing speaks 2 short Mandarin lines, 「岳父大人，」 then 「來得正好。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he sweeps the fan open with a flourish and bows slightly",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the county town square at noon, a wide square paved with big bluestone slabs under a clear sky, a raised wooden platform draped in red cloth in front of the grey-tiled eaves of the county yamen and a blank whitewashed notice wall, two-storey wooden shops with plain cloth banners around the edges, a dense crowd of townsfolk packed around the platform, a long dark official desk at the back of the platform: close-up of Tang Wanjin at the foot of the platform steps, tears still wet on his round cheeks, his smiling narrowed eyes lifting from his daughter to Xu Yan off screen left above him",
+        "motion": "Tang Wanjin stops dead, his tearful smile drops away, and his narrowed eyes fix hard on Xu Yan as his jaw sets",
+        "characters": [
+          "tangwanjin"
+        ]
+      }
+    }
+  ]
+}

@@ -5,10 +5,10 @@
 // passes one route's check does not fail the other's.
 import { cadenceProblems } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
-import { curioProblems } from "./curio.mjs";
+import { curioProblems, curioWarnings, isCurio } from "./curio.mjs";
 import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
-import { isNarrated, narrativeProblems } from "./narrative.mjs";
+import { DEFAULT_CADENCE, isNarrated, narrativeProblems, TIGHT_CADENCE } from "./narrative.mjs";
 import { isA01CompactStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
@@ -502,13 +502,17 @@ export function lintVideo(doc, context = {}) {
   // question sits on the shot before it), so its sentence count is not read.
   if (isNarrated(doc, context.series) && !english && episodeLengthForNarrative) {
     for (const problem of episodeScriptProblems(doc, timeline, { outroCount: !isExplainer(doc) })) warn(problem.path, problem.message);
-    const story = narrativeProblems(doc, timeline, { minutes });
+    // A brand story and a 奇聞檔案局 episode are held by the narration alone, so they keep a hook
+    // inside every 45 s and plant eight loops for ten minutes (narrative.mjs TIGHT_CADENCE).
+    const cadence = isStory(context.series) || isCurio(doc) ? TIGHT_CADENCE : DEFAULT_CADENCE;
+    const story = narrativeProblems(doc, timeline, { minutes, cadence });
     for (const problem of story.errors) error(problem.path, problem.message, problem.kind);
     for (const problem of story.warnings) warn(problem.path, problem.message, problem.kind);
   }
   // A 奇聞檔案局 episode (a "curio-" slug) keeps the series look: the cute-mystery preset word for
   // word, illustrations for most of the body, no long run of cards (core/curio.mjs).
   for (const problem of curioProblems(doc)) error(problem.path, problem.message);
+  for (const problem of curioWarnings(doc)) warn(problem.path, problem.message);
   if (isLongAnime(doc)) {
     const target = doc.runtime_spec.body_target_seconds;
     const seconds = frameToSeconds(timeline.total_frames);

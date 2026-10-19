@@ -1,0 +1,11 @@
+# A01 r45 offline six-chapter worker handoff
+
+Status: **HOLD — offline derivation only**. Frozen r45 manifest SHA-256: `896615541683e620eb6e79468d8d304f146ad932700a7f044d5a1eb9784888f6`. This directory is a create-only decomposition and real current-worker recomposition of the frozen editorial candidate. It is not a host import, official six-chapter worker run, formal verifier/listener result, script-review receipt, auto.json, TTS, or paid media authorization.
+
+The six real worker chapter paths are `story/chapters/{hook,origin,idea,engine,turn,now}.json`. All 55 claim rows retain the editorial `PENDING` marker, exact q-IDs, scene and source indices, and a unique matching must_verify fact index. No row has a formal verifier verdict. Cross-chapter loops reside in the chapter that speaks their payoff. The 53 narrator lines, 51 scene IDs, all visual prompts, claim IDs per scene, six source URLs, voice, lexicon, and title match r45.
+
+`build.mjs --check` re-runs `readChapterAnswer`, `composeStory`, `validateVideo`, story lint and source-index assertions against frozen r45. `worker-composed-video.json` is the actual composer output. `metadata-delta.json` lists every JSON difference from editorial r45, including description, tags, source display titles/dates, the intentional headline line break, and any loop-order or empty-field representation drift. No metadata was overwritten after composition.
+
+The title and the approved thumbnail shot `now-stow-fail` are preserved. The headline words are unchanged but the sibling plan uses `會滾\n卻放不下？` to avoid a word-breaking wrap warning. The thumbnail shot is deliberately stored as `hook.thumbnail_shot` even though it belongs to the now chapter: `composeStory` accepts a shot anywhere in the merged video, while a normal `readChapterAnswer` hook response would not select it. A host wrapper would need to preserve this manual choice.
+
+Before any import or paid stage, the owner/worker must resolve the metadata deltas and host wrapper, obtain real six-chapter verifier and listener results, current narrative review and formal pilot script-review receipt, and verify source access and actual TTS duration. The offline PENDING rows and local lint are not those receipts. No `auto.json`, `verify-1.md`, or formal review JSON is provided.
