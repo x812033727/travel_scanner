@@ -58,3 +58,5 @@ scope:
 2026-10-19：第七位全新讀者對現行 `dac8ec628f68e5902c05257fb789f5591f1804bebd6d2f9146ac80fc3c794fbf` 劇本盲讀 **13/13**，現稿 `no_recap` 已過；裴注所引的特行／群行里數也用固定卷 35 抽核，無實質史料衝突。原始答卷見 `blind-7.md`；同證據寫入 `narrative-answers.json` 後，工具 `narrative --answers` 顯示 passed，詳見 `verify-8.md`。劇本和來源文字保持此 SHA 不變。**下一步：**依站主 2026-10-19「以你推薦的就好不用問我，一直做完所有影片」廣泛委託，準確註明站主未逐字審稿地記錄 A 案／劇本本機核准，再跑 TTS 和 `check-audio`；S08 插圖仍需等共享 MiniMax 時段安排。
 
 2026-10-19 20:42 UTC：S08 A 案 outline／精確劇本 script 本機關卡已依站主廣泛委託記錄，備註明寫**站主未逐字審稿**；Gemini Sulafat `tts --dry-run` 93 句／約 2,156 字元、月額度足夠，正式 TTS 已啟動（工作目錄 `curio-s08/tts-run.log`）。完成後先跑 `check-audio`，任何發音問題只修有問題的句子並重做必要查核。S08 插圖尚未啟動，等 S03／S30 共享 MiniMax 額度安排。
+
+2026-10-19 21:24 UTC：首版 Gemini 93 句約 09:51；`check-audio` 初次列 30 句複查並對 `ox079` 回 `OTHER`。30 句按原稿重唸後約 09:48，再查降至 **12 句標記**，但 `ox079` 仍無法判定。五句高風險處一次作來源安全的口語修訂，原始與新稿的 SHA、逐句原因見 `docs/videos/curio-s08/verify-9.md`。**目前新稿 `script.md` SHA256 `6a9218c4a2ce2a159c141a0aebb634fcfa9e1af0140b8e3b13d06c608b407111`，93 句、87 張插圖，lint 0／0；尚待新讀者重做 13 題與五句來源抽查，不沿用舊版 13／13。**收到新 exact-SHA 覆核通過後，重綁 script 關卡、只重唸改動句並重跑音檔複核；S08 插圖仍未啟動。
