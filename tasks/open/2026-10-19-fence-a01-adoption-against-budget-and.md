@@ -9,8 +9,7 @@ claimed_at: 2026-10-19T03:08:55Z
 created_at: 2026-10-19T03:08:49Z
 completed_at:
 branch: codex/a01-db-admission-fence-20261019
-depends_on:
-  - 2026-10-15-extend-all-in-video-budget-to
+depends_on: []
 scope:
   - apps/api/app/video_budget/models.py
   - apps/api/app/video_budget/service.py
@@ -122,3 +121,9 @@ skipped; Ruff, mypy app/tests, task check and diff check passed. Phase 2's
 actual acquire race tests remain in the parked draft. The queue gate and
 schema/guard pre-compatibility changes must be brought together and reviewed
 before any deployment or A01 source adoption.
+
+In the combined precompatibility branch, Phase 1 runs against the current 0132
+image and a reviewed 0133 successor without an additional migration. The
+separate Phase 2 migration and acquire/release feature still depend on #1510's
+0133 migration; this ticket cannot name that not-yet-merged task as a
+`depends_on` in a branch based on main because task validation would reject it.
