@@ -15,8 +15,6 @@ scope:
   - apps/api/app/video_budget/recovery.py
   - apps/api/app/video_budget/RECONCILE.md
   - apps/api/app/video_media/admin_api.py
-  - apps/api/migrations/versions/0133_story_followon_budget.py
-  - apps/api/tests/test_migration_0133_story_followon_budget.py
   - tools/video/automation/client.mjs
   - tools/video/automation/client.test.mjs
   - tools/video/media/client.mjs
@@ -50,6 +48,13 @@ The owner requested five brand-story follow-ons after the A01/B18 pilots. The ex
 Run focused `apps/api/tests/test_video_pilot_budget.py` coverage for all five slugs, original pilots and an unrelated control. Include accumulated settled/reserved/uncertain costs and next-call refusal at the cap. After separately approved deployment, use the existing read-only reconcile CLI for each exact slug; a local test is not production enforcement.
 
 ## Notes
+
+2026-10-19 owner-approved narrow 0133 handoff: release only
+`apps/api/migrations/versions/0133_story_followon_budget.py` and
+`apps/api/tests/test_migration_0133_story_followon_budget.py` to an independent
+0133 migration task and draft PR. Preserve this #1510 branch, its remaining
+scope, and all implementation bytes; do not infer merge, deployment, or paid
+production approval from this scope transfer.
 
 2026-10-19 owner-approved narrow scope transfer: the owner authorized releasing
 only `apps/api/app/video_budget/models.py`,
