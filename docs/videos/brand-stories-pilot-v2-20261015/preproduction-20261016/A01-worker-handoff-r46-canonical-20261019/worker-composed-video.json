@@ -1,0 +1,1090 @@
+{
+  "schema_version": 1,
+  "slug": "story-rolling-suitcase-v2",
+  "format": "drama",
+  "category": "story",
+  "target_minutes": [
+    7,
+    8
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Warm, curious Taiwan Mandarin storyteller with a natural Taiwanese accent. Begin with the concrete action, vary pace with the people and their choices, and give a brief natural pause before a consequential reveal. Speak clearly and conversationally; do not sound like a technical lecture, read a list, or slow down artificially to meet a duration target."
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "anonymous-pilot",
+      "name": "anonymous pilot",
+      "appearance": "anonymous adult pilot in a plain brown jacket, no uniform insignia, no identifiable historical likeness",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "Warm, curious Taiwan Mandarin storyteller with a natural Taiwanese accent. Begin with the concrete action, vary pace with the people and their choices, and give a brief natural pause before a consequential reveal. Speak clearly and conversationally; do not sound like a technical lecture, read a list, or slow down artificially to meet a duration target."
+      }
+    },
+    {
+      "id": "anonymous-reporter",
+      "name": "anonymous reporter",
+      "appearance": "anonymous short-haired adult reporter in a muted rust jacket, no identifiable historical likeness",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "Warm, curious Taiwan Mandarin storyteller with a natural Taiwanese accent. Begin with the concrete action, vary pace with the people and their choices, and give a brief natural pause before a consequential reveal. Speak clearly and conversationally; do not sound like a technical lecture, read a list, or slow down artificially to meet a duration target."
+      }
+    }
+  ],
+  "series": {
+    "slug": "brand-stories-curio-pilot-v2",
+    "episode": 1,
+    "chapter": 1
+  },
+  "music": {
+    "prompt": "light documentary underscore: soft piano, pizzicato strings and marimba, curious and warm, steady mid tempo, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Rollaboard：機師做出會滾的登機箱，為何最後仍得拆包？",
+    "description": "一位機師因安檢口的分離輪架而在車庫實驗；後來另有記錄的 Rollaboard 先給機組員用，再由 1993 年記者的一只市售 Travelpro 箱撞上機艙收納邊界。\n\nRollaboard 把輪子與拉桿整合成一件登機行李，為什麼 1993 年那只箱要收進機艙時仍得取出東西？",
+    "tags": [
+      "品牌故事",
+      "Travelpro Rollaboard 產品線",
+      "日常用品",
+      "Robert Plath",
+      "Plath",
+      "Travelpro",
+      "Rollaboard",
+      "Judi Dash"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "會滾\n卻放不下？",
+      "tag": "品牌故事",
+      "shot": "now-stow-fail"
+    }
+  },
+  "sources": [
+    {
+      "title": "ABC News（USA TODAY 報導，2012 年）",
+      "url": "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Travelpro",
+      "url": "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Global Traveler，Travelpro 執行長訪談（2007）",
+      "url": "https://www.globaltravelerusa.com/reinventing-the-wheel/",
+      "checked_on": "2026-10-18"
+    },
+    {
+      "title": "美國專利 US4995487A（Robert V. Plath 本人申請）",
+      "url": "https://patents.google.com/patent/US4995487A/en",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "RNPA Contrails（口播引用 Joe Sharkey 2010 文章重印 p.48；Emmer 回憶 p.46–47 僅研究）",
+      "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+      "checked_on": "2026-10-18"
+    },
+    {
+      "title": "Los Angeles Times, Judi Dash, 1993-08-01",
+      "url": "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html",
+      "checked_on": "2026-10-18"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "r44l003",
+      "payoff": "r44l013",
+      "what": "安檢回憶中的螺絲樣品，後續安檢員只答 OK"
+    },
+    {
+      "setup": "r44l004",
+      "payoff": "r44l021",
+      "what": "其他機師看見另有記錄的直立成品後請 Plath 製作"
+    },
+    {
+      "setup": "r44l020",
+      "payoff": "r44l023",
+      "what": "直立成品先獲機組員使用"
+    },
+    {
+      "setup": "r44l023",
+      "payoff": "r44l024",
+      "what": "機組員開始使用後，車庫是否容得下生意；需求使製作搬入倉庫"
+    },
+    {
+      "setup": "r44l028",
+      "payoff": "r44l029",
+      "what": "旅客如何買到早期輪子登機箱；1993 報導回顧 Travelpro 郵購販售"
+    },
+    {
+      "setup": "r44l005",
+      "payoff": "r44l037",
+      "what": "1993 年記者對四家箱的地面路緣與階梯測試"
+    },
+    {
+      "setup": "r44l001",
+      "payoff": "r44l048",
+      "what": "Travelpro 取出外袋加放的衣書後才能收進機艙"
+    },
+    {
+      "setup": "r44l047",
+      "payoff": "r44l049",
+      "what": "收納失敗後 Dash 是否還喜歡這只箱；Travelpro 仍是偏愛款式之一"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook-pocket",
+      "chapter": "會滾的箱子為何放不下",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Location-neutral illustrated fit diagram of the closed unbranded navy soft-sided two-wheel carry-on with a retractable handle near separate under-seat and overhead-bin outlines. Keep exterior storage out of view until the later reveal; when the outside is visible, show only the bag's plain side. Do not show unpacking, a specific seat, or the reported attempt order.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "h1"
+      ],
+      "lines": [
+        {
+          "id": "r44l001",
+          "text": "一九九三年，記者的 Travelpro Rollaboard 放不進座位下，也塞不進頭頂櫃。她為什麼得取出東西，箱子才收得好？"
+        }
+      ]
+    },
+    {
+      "id": "hook-pilot-burden",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Separate generic crew-walk vignette of the same anonymous pilot in a plain brown jacket without uniform insignia carrying an ordinary heavy case along a terminal corridor; no implication this is the same day as the security anecdote or the 1993 commercial test.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "h2",
+        "h3",
+        "h4"
+      ],
+      "lines": [
+        {
+          "id": "r44l002",
+          "text": "九三年那只是後來的市售箱。機師 Plath 曾天天提著重箱穿過航站；他另記得一段沒標年份的安檢經過。"
+        }
+      ]
+    },
+    {
+      "id": "hook-security",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. At an undated generic airport checkpoint, the same anonymous pilot in a plain brown jacket without uniform insignia approaches a generic guard with a hard-sided suitcase visibly screwed to a separate luggage trolley of unspecified material. The trolley's bulk and material are unspecified. Show no guard reply, clearance or physical transform into the later product.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "h5",
+        "h6"
+      ],
+      "lines": [
+        {
+          "id": "r44l003",
+          "text": "機師 Plath 帶著一只鎖了螺絲的箱子回安檢。它還是硬殼箱加外置推車，不是後來上市的 Rollaboard。"
+        }
+      ]
+    },
+    {
+      "id": "hook-crew",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. A later period-neutral crew corridor: two anonymous workers look toward an unbranded upright two-wheel integrated carry-on with a retractable top handle beside the same anonymous pilot in a plain brown jacket without uniform insignia. This later integrated design is separate from the earlier screw-fastened trolley sample. No exact model year or brand markings.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "h7"
+      ],
+      "lines": [
+        {
+          "id": "r44l004",
+          "text": "再後來，他拉著另一只直立輪箱走過同事身邊。那是不同的成品；幾位機師的目光停在箱子上。"
+        }
+      ]
+    },
+    {
+      "id": "hook-curb",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. At an unspecified outdoor testing location, the same anonymous short-haired 1993 reporter in a muted rust jacket approaches a steep curb with the unbranded navy soft-sided two-wheel carry-on with a retractable handle. Keep exterior storage out of view until the later reveal; when the outside is visible, show only the bag's plain side. Show only the curb in this scene; the stairs belong to a separate location-neutral illustration, with no invented test order.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "h8"
+      ],
+      "lines": [
+        {
+          "id": "r44l005",
+          "text": "到了一九九三年，一位記者把 Travelpro Rollaboard 拉向陡路緣；樓梯也是要過的一關。"
+        }
+      ]
+    },
+    {
+      "id": "origin-cord",
+      "chapter": "箱子在安檢口停下",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Earlier than the screw-fastened return, several anonymous travelers struggle with bungee cords tying unspecified bags to separate bulky metal carts, while the same anonymous pilot in a plain brown jacket without uniform insignia waits behind; do not reduce them to one eyewitness, specify bag material or show success.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "o1"
+      ],
+      "lines": [
+        {
+          "id": "r44l006",
+          "text": "在他鎖上螺絲之前，Plath 前方有旅客扯著彈力繩，想把行李從笨重輪架卸下來。"
+        }
+      ]
+    },
+    {
+      "id": "origin-two-pieces",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. An illustrative split view of an earlier traveler's case and separate metal trolley in a generic checkpoint lane, showing the ordinary handling problem rather than the later screw-fastened prototype or a specific successful inspection.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "o2",
+        "o3"
+      ],
+      "lines": [
+        {
+          "id": "r44l007",
+          "text": "長走道上，輪架替箱子分擔重量；但到檢查口，箱子和輪架又變成兩件要分開處理的東西。"
+        }
+      ]
+    },
+    {
+      "id": "origin-plath",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Time-neutral cut from the generic queue to a modest garage bench, where the same anonymous pilot in a plain brown jacket without uniform insignia places a separate trolley beside his own hard-sided case; no clothes, date card or prototype-to-product arrow.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "o4"
+      ],
+      "lines": [
+        {
+          "id": "r44l008",
+          "text": "Plath 沒替那次排隊標年份。等他回到車庫，要動的不是箱內的衣服，而是箱外的輪架。"
+        }
+      ]
+    },
+    {
+      "id": "origin-garage",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. At a modest garage workbench, a hard-sided suitcase and a separate luggage trolley of unspecified material are positioned next to each other but not yet joined. Anonymous hands drive one screw into the join; do not show a fully assembled sample before the fastening action.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "o5"
+      ],
+      "lines": [
+        {
+          "id": "r44l009",
+          "text": "他拿硬殼箱與一台行李推車，用螺絲把兩件東西固定在一起。"
+        }
+      ]
+    },
+    {
+      "id": "origin-fastened",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Close side view of a hard-sided suitcase visibly screwed to a separate luggage trolley of unspecified material, with a visible screw join. The trolley's bulk and material are unspecified; no retractable product handle or transform arrow.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "o6"
+      ],
+      "lines": [
+        {
+          "id": "r44l010",
+          "text": "這不是後來的直立雙輪成品：眼前仍是硬殼箱和外置行李推車，只是現在拆不開。"
+        }
+      ]
+    },
+    {
+      "id": "origin-return",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. At an undated generic checkpoint, the same anonymous pilot in a plain brown jacket without uniform insignia approaches a generic guard with a hard-sided suitcase visibly screwed to a separate luggage trolley of unspecified material. The trolley's bulk and material are unspecified; their exchange has not begun.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "o7"
+      ],
+      "lines": [
+        {
+          "id": "r44l011",
+          "text": "他帶著鎖好的組合回機場，再一次走向安檢員；箱子已拆不開，這回安檢員會怎麼辦？"
+        }
+      ]
+    },
+    {
+      "id": "origin-demand",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. A generic guard faces the same anonymous pilot in a plain brown jacket without uniform insignia and a hard-sided suitcase visibly screwed to a separate luggage trolley of unspecified material at an undated checkpoint. The trolley's bulk and material are unspecified. Do not show anyone pointing at screws, a speech bubble, clearance, or an exact gesture from the account.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "o8"
+      ],
+      "lines": [
+        {
+          "id": "r44l012",
+          "text": "安檢員照樣要他把箱子從推車上拿下來。Plath 在報導裡的回答是：「拿不下來。」箱子和推車已用螺絲鎖在一起。"
+        }
+      ]
+    },
+    {
+      "id": "origin-ok",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. At the checkpoint the generic guard faces the same anonymous pilot in a plain brown jacket without uniform insignia and a hard-sided suitcase visibly screwed to a separate luggage trolley of unspecified material. The trolley's bulk and material are unspecified. Show the pilot speaking a brief reaction after the reply, without a speech bubble, step-aside, release gesture, security clearance, or dated historic event.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "o9"
+      ],
+      "lines": [
+        {
+          "id": "r44l013",
+          "text": "安檢員只答一聲「好」。Plath 說自己當時脫口一句，意思是「這下難倒他們了！」但報導沒說箱子怎麼通過。"
+        }
+      ]
+    },
+    {
+      "id": "origin-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. The screw-fastened case remains in the foreground; beyond it a symbolic narrow aircraft doorway is softly out of focus, with no claim it boarded that flight.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "o10"
+      ],
+      "lines": [
+        {
+          "id": "r44l014",
+          "text": "但安檢員的一聲「好」，沒有回答箱子進了窄走道、又要怎麼收。"
+        }
+      ]
+    },
+    {
+      "id": "idea-gap",
+      "chapter": "輪架不再是另一件行李",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Two separate unbranded case silhouettes on a neutral background, the screw trolley case on one side and a later upright case on the other, with no arrow, shared serial number or text.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "i1"
+      ],
+      "lines": [
+        {
+          "id": "r44l015",
+          "text": "那只鎖螺絲的硬殼箱，後來經過哪些修改？從外置推車到一體成品，受訪報導沒有寫。"
+        }
+      ]
+    },
+    {
+      "id": "idea-record",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Show an unbranded upright two-wheel integrated carry-on with a retractable top handle standing upright on its two base wheels at a generic airport walkway. This later integrated design is separate from the earlier screw-fastened trolley sample. Do not show the prototype in this frame.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "i2"
+      ],
+      "lines": [
+        {
+          "id": "r44l016",
+          "text": "能接著看的，是公司另留下的成品記錄：Rollaboard 把箱身立起來，讓兩個輪子落在底部。"
+        }
+      ]
+    },
+    {
+      "id": "idea-handle",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Same later unbranded upright carry-on: one anonymous hand extends its top handle in a close action view; base wheels remain visible.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "i3"
+      ],
+      "lines": [
+        {
+          "id": "r44l017",
+          "text": "手把從箱頂拉出來，人拖著整只箱子走；走到需要提起它時，手把又能收回。"
+        }
+      ]
+    },
+    {
+      "id": "idea-one-unit",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Side view of an unbranded upright two-wheel integrated carry-on with a retractable top handle as one integrated object, with two base wheels and its handle retracted. This later integrated design is separate from the earlier screw-fastened trolley sample. No separate cart appears in this frame.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "i4",
+        "i5"
+      ],
+      "lines": [
+        {
+          "id": "r44l018",
+          "text": "這次不用另外拖一台推車。輪子、拉桿和放衣物的箱身，在同一件行李上。"
+        }
+      ]
+    },
+    {
+      "id": "idea-longwalk",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. An anonymous traveler rolls an unbranded upright two-wheel integrated carry-on with a retractable top handle through a long generic corridor. This later integrated design is separate from the earlier screw-fastened trolley sample. Keep the focus on one piece of luggage, with no predecessor visible.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "i6"
+      ],
+      "lines": [
+        {
+          "id": "r44l019",
+          "text": "長廊仍舊那麼長，旅客卻不必先把一般皮箱搬上一台輪架，再走到門口把它卸下。"
+        }
+      ]
+    },
+    {
+      "id": "idea-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. At the edge of a generic crew hallway, an unbranded upright two-wheel integrated carry-on with a retractable top handle stands near an anonymous pilot reaching toward its handle. This later integrated design is separate from the earlier screw-fastened trolley sample. No calendar or date claim.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "i7"
+      ],
+      "lines": [
+        {
+          "id": "r44l020",
+          "text": "一只成品有了輪子，也還得有人願意天天帶它走。先伸手握住拉桿的，會是誰？"
+        }
+      ]
+    },
+    {
+      "id": "engine-first-eyes",
+      "chapter": "機組員把它拉出車庫",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. In a crew corridor, another anonymous pilot notices an unbranded upright two-wheel integrated carry-on with a retractable top handle being rolled by the same anonymous pilot in a plain brown jacket without uniform insignia. This later integrated design is separate from the earlier screw-fastened trolley sample. Do not imply an exact year or additional product details.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "e1"
+      ],
+      "lines": [
+        {
+          "id": "r44l021",
+          "text": "先注意到成品的，是 Plath 身邊的其他機師。有人看他拉著箱子走，直接請他也做一只。"
+        }
+      ]
+    },
+    {
+      "id": "engine-workshop",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Split period-neutral illustration: the same anonymous pilot in a plain brown jacket without uniform insignia keeps a plain crew bag by a modest garage bench where unbranded integrated cases are being assembled; no exact day or real-person likeness.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "e2"
+      ],
+      "lines": [
+        {
+          "id": "r44l022",
+          "text": "機師身分沒有立刻退場：箱子先在他的車庫製作，他仍在航空公司飛行。新生意，是從兩份工作並行開始的。"
+        }
+      ]
+    },
+    {
+      "id": "engine-crew",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. A small group of anonymous crew members passes through a generic airport hallway with separate integrated upright cases, no airline uniforms or logos.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "e3"
+      ],
+      "lines": [
+        {
+          "id": "r44l023",
+          "text": "Travelpro 自己的說法是：這款輪箱先在飛行機組之間流行。一間車庫，還容得下這門生意嗎？"
+        }
+      ]
+    },
+    {
+      "id": "engine-orders",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. A garage shelf holding a few unbranded upright cases cuts to a modest warehouse aisle with more blank cartons; this is a company-reported scale-up, no exact date card.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "e4"
+      ],
+      "lines": [
+        {
+          "id": "r44l024",
+          "text": "需求多起來，車庫裡做箱的地方就不夠了。公司回顧，製作後來搬進了倉庫。"
+        }
+      ]
+    },
+    {
+      "id": "engine-1989",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Illustrated later paperwork on a desk, with a generic detachable trolley and case shown as tiny separate silhouettes; no readable patent text or date card.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "e5"
+      ],
+      "lines": [
+        {
+          "id": "r44l025",
+          "text": "另外，Plath 在一九八九年提出的專利，回頭寫下舊式外置輪架在安檢要卸箱、登機又得拆的麻煩。"
+        }
+      ]
+    },
+    {
+      "id": "engine-patent-stow",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Abstract illustration of the 1989 patent's proposed case on a blank table: only a small part of two base wheels protrudes; an abstract cabin-aisle and under-seat dimension appear as design considerations, not an authentic patent page or the 1993 tested bag.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "e6"
+      ],
+      "lines": [
+        {
+          "id": "r44l026",
+          "text": "同一份專利把輪子嵌進箱角，只露出一小截。它設計時還在想：怎麼過機艙窄走道、收進座位下？"
+        }
+      ]
+    },
+    {
+      "id": "engine-plath-career",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Anonymous former pilot in plain clothes closes a generic crew locker and walks beside an unbranded integrated carry-on toward a public travel aisle.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "e7"
+      ],
+      "lines": [
+        {
+          "id": "r44l027",
+          "text": "Plath 最後離開飛行工作，專心經營 Travelpro。那只箱子從機師同事間，走向了普通旅客。"
+        }
+      ]
+    },
+    {
+      "id": "engine-public-sight",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Generic passengers glance at anonymous flight attendants walking briskly with unbranded upright two-wheel cases in a terminal; no named aircraft or historical photo effect.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "e8"
+      ],
+      "lines": [
+        {
+          "id": "r44l028",
+          "text": "回顧報導說，旅客在航站看見空服員拉著輪箱快步走。這種箱子早期又是怎麼賣到旅客手上的？"
+        }
+      ]
+    },
+    {
+      "id": "engine-mail",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Unbranded integrated case displayed alone beside a plain closed shipping carton on a neutral background, no catalog text or asserted exact early sale date.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "e9"
+      ],
+      "lines": [
+        {
+          "id": "r44l029",
+          "text": "到九三年，記者回看早期市場：這類輪子登機箱原本只有 Travelpro 製造，而且靠郵購販售。"
+        }
+      ]
+    },
+    {
+      "id": "engine-competition",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. A location-free comparison graphic with four separate panels, each containing one anonymous wheeled carry-on. The panels do not form a shared shop display, chronology, or selection moment; no logos or brand colors.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "e10"
+      ],
+      "lines": [
+        {
+          "id": "r44l030",
+          "text": "她寫稿時，四家主要廠牌都有自己的輪子登機箱。原本給機組員解的麻煩，現在輪到旅客親自檢驗。"
+        }
+      ]
+    },
+    {
+      "id": "turn-dash",
+      "chapter": "記者帶著它走一趟",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Symbolic split illustration, not a reconstructed trip: one isolated panel shows the same anonymous short-haired 1993 reporter in a muted rust jacket holding ordinary hand luggage; another shows a generic empty baggage carousel. No walking past a carousel, selection of a case, or temporal order is shown.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "t1"
+      ],
+      "lines": [
+        {
+          "id": "r44l031",
+          "text": "記者 Judi Dash 就想試一次。她常只帶手提行李，省去等行李轉盤，也怕托運箱被送錯地方。"
+        }
+      ]
+    },
+    {
+      "id": "turn-old-weight",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Separate past-travel vignette: the same anonymous short-haired 1993 reporter in a muted rust jacket carries an older ordinary case down a long generic corridor; no later navy test case or specific flight is shown.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "t2"
+      ],
+      "lines": [
+        {
+          "id": "r44l032",
+          "text": "這樣做讓她自己扛得更多。長長的航站走道走完，脖子、手臂和背，常常都痠。"
+        }
+      ]
+    },
+    {
+      "id": "turn-old-wheels",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Another undated past-travel vignette: the same anonymous short-haired 1993 reporter in a muted rust jacket separately folds generic detachable luggage wheels beside an ordinary case in an abstract narrow cabin entry, not a specific model or same flight.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "t3"
+      ],
+      "lines": [
+        {
+          "id": "r44l033",
+          "text": "她也用過另帶的輪具，走廊好走些；可到了狹窄機艙走道，又得把輪具拆開、摺起來。"
+        }
+      ]
+    },
+    {
+      "id": "turn-gate-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. A different generic past memory: an anonymous gate agent indicates an ordinary case and separate small wheel unit as two objects; no number card or legal allowance claim.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "t4"
+      ],
+      "lines": [
+        {
+          "id": "r44l034",
+          "text": "登機門人員有時還把輪具另算一件手提行李，她原本能帶的東西也因此受限。"
+        }
+      ]
+    },
+    {
+      "id": "turn-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Separate past cabin memory: the same anonymous short-haired 1993 reporter in a muted rust jacket waits with earlier ordinary hand luggage while a passenger ahead slowly places a plain jacket overhead; do not prescribe her arm or hand posture or show the navy test case.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "t5"
+      ],
+      "lines": [
+        {
+          "id": "r44l035",
+          "text": "她也記得，等前面的旅客收好外套時，仍得扛著行李。到了這次測試，輪箱遇到路緣和樓梯，又會怎樣？"
+        }
+      ]
+    },
+    {
+      "id": "turn-choose",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Place-neutral illustration of the same anonymous short-haired 1993 reporter in a muted rust jacket beside the unbranded navy soft-sided two-wheel carry-on with a retractable handle, one hand near its handle. Keep exterior storage out of view until the later reveal; when the outside is visible, show only the bag's plain side. Three other case silhouettes form a separate comparison graphic, not a literal lineup or a dated selection event. This later commercial case is not the screw-fastened prototype.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "t6"
+      ],
+      "lines": [
+        {
+          "id": "r44l036",
+          "text": "這次 Dash 試了四家主要品牌的輪子登機箱，Travelpro Rollaboard 也在其中。她不只在地面拉，還把箱子帶上飛機試。"
+        }
+      ]
+    },
+    {
+      "id": "turn-curb",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Two isolated, location-neutral illustration panels without a connecting path: one shows the same anonymous short-haired 1993 reporter in a muted rust jacket handling the unbranded navy soft-sided two-wheel carry-on with a retractable handle at a curb, the other shows a stair test with the same commercial bag. Keep exterior storage out of view until the later reveal; when the outside is visible, show only the bag's plain side. Do not imply the tests happened in that order, at one site, or on a named trip.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "t7"
+      ],
+      "lines": [
+        {
+          "id": "r44l037",
+          "text": "陡路緣要拉上去，樓梯也得一路顛下；Dash 記下四家箱都能應付這些地面考驗。"
+        }
+      ]
+    },
+    {
+      "id": "turn-corners",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. A simple unmarked corridor bend shows the same anonymous short-haired 1993 reporter in a muted rust jacket guiding the unbranded navy soft-sided two-wheel carry-on with a retractable handle around one corner. Keep exterior storage out of view until the later reveal; when the outside is visible, show only the bag's plain side. No dramatic skid or perfect-performance badge.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "t8"
+      ],
+      "lines": [
+        {
+          "id": "r44l038",
+          "text": "轉彎時也大致順利——她沒有把它說成每個彎都完美。地面看起來，Rollaboard 能帶著她繼續走。"
+        }
+      ]
+    },
+    {
+      "id": "turn-fabric",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. At an unspecified test setting, the same anonymous short-haired 1993 reporter in a muted rust jacket steadies the unbranded navy soft-sided two-wheel carry-on with a retractable handle after an ordinary jostle; the fabric is intact. Keep exterior storage out of view until the later reveal; when the outside is visible, show only the bag's plain side. Do not stage a sequence after curb or stair tests.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "t9"
+      ],
+      "lines": [
+        {
+          "id": "r44l039",
+          "text": "旅途碰撞和推擠沒傷到尼龍箱；另一個問題是，它能裝多少？"
+        }
+      ]
+    },
+    {
+      "id": "turn-shape",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Illustrative cutaway diagram of the unbranded navy soft-sided two-wheel carry-on with a retractable handle on a featureless neutral background, showing only one large undivided main compartment. Keep exterior storage out of view until the later reveal; when the outside is visible, show only the bag's plain side. No reporter opening action, exact test time, labels or invented contents.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "t10"
+      ],
+      "lines": [
+        {
+          "id": "r44l040",
+          "text": "再看箱內，主艙是一整個大空間，沒有小隔間切開。Dash 說，這正合她想多帶旅行裝備的心意。"
+        }
+      ]
+    },
+    {
+      "id": "turn-main-space",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. The closed unbranded navy soft-sided two-wheel carry-on with a retractable handle remains on a featureless neutral surface. Keep exterior storage out of view until the later reveal; when the outside is visible, show only the bag's plain side. Do not reconstruct packing sequence, place, actual fit trial or pocket contents.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "t11"
+      ],
+      "lines": [
+        {
+          "id": "r44l041",
+          "text": "她也真的把這只箱子塞得很滿。把東西裝進去是一回事；整只箱子要放進機艙收納處，卻還有另一個尺寸關卡。"
+        }
+      ]
+    },
+    {
+      "id": "now-zipper",
+      "chapter": "最後卻放不進機艙",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Cropped illustration of an unspecified zipper on the unbranded navy soft-sided two-wheel carry-on with a retractable handle, looking intact. Keep exterior storage out of view until the later reveal; when the outside is visible, show only the bag's plain side. Do not identify which part of the case bears this zipper, stage a test, defect or breakage.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "n1"
+      ],
+      "lines": [
+        {
+          "id": "r44l042",
+          "text": "拉鍊倒是一次都沒卡住。Dash 希望它能再厚實些，可這次真正讓她停下來的，並不是拉鍊。"
+        }
+      ]
+    },
+    {
+      "id": "now-aisle",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. General category illustration: an anonymous traveler with a generic unbranded integrated wheel case passes a schematic narrow aircraft aisle; do not show the same anonymous short-haired 1993 reporter in a muted rust jacket, the navy commercial test bag, an actual airline or a specific tested trip.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "n2"
+      ],
+      "lines": [
+        {
+          "id": "r44l043",
+          "text": "Dash 在報導裡說，當時這一類內建輪箱通常過得了多數窄走道；舊輪具拆開、摺起的動作，可以省下。"
+        }
+      ]
+    },
+    {
+      "id": "now-cabin-edge",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Location-neutral fit-check graphic shifts from a generic integrated case outline to the closed unbranded navy soft-sided two-wheel carry-on with a retractable handle beside abstract under-seat and overhead-bin outlines. Keep exterior storage out of view until the later reveal; when the outside is visible, show only the bag's plain side. Do not show the reporter, exact seat or a reconstructed aisle passage.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "n3"
+      ],
+      "lines": [
+        {
+          "id": "r44l044",
+          "text": "對 Dash 那只 Travelpro，下一關是收納：座位下，或頭頂櫃，究竟能不能放得進去？"
+        }
+      ]
+    },
+    {
+      "id": "now-stow-fail",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. A neutral split fit diagram of the closed unbranded navy soft-sided two-wheel carry-on with a retractable handle beside abstract under-seat and overhead-bin openings, both too tight. Keep exterior storage out of view until the later reveal; when the outside is visible, show only the bag's plain side. Show no contents, specific cabin location or attempt order.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "n4"
+      ],
+      "lines": [
+        {
+          "id": "r44l045",
+          "text": "Dash 寫得清楚：她這只 Travelpro，座位下放不進，頭頂櫃也放不進。地面測試走得順，收箱卻卡住了。"
+        }
+      ]
+    },
+    {
+      "id": "now-pocket",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Place-neutral reveal of the unbranded navy soft-sided two-wheel carry-on with expandable exterior zippered compartments: crop one expandable exterior zippered compartment and part of another to establish plurality. Folded clothes and paperback books appear beside this cropped exterior storage as an illustrative group, without assigning each item to a specific pocket, asserting a total pocket count, or depicting an exact time or place.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "n5"
+      ],
+      "lines": [
+        {
+          "id": "r44l046",
+          "text": "原因這才現形：那只箱外側有可擴充的拉鍊收納袋；最後一刻，她多放了衣服和幾本平裝書。"
+        }
+      ]
+    },
+    {
+      "id": "now-space",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Side profile of the unbranded navy soft-sided two-wheel carry-on with expandable exterior zippered compartments on a featureless neutral background: one visible exterior compartment bulges outward, with any others cropped or not shown. Do not imply every pocket is full, or show a broken zipper, location marker or measurement.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "n6"
+      ],
+      "lines": [
+        {
+          "id": "r44l047",
+          "text": "拉鍊沒卡住，往外鼓的外袋卻把箱子撐大了。箱子放不進去，Dash 最後還會喜歡它嗎？"
+        }
+      ]
+    },
+    {
+      "id": "now-empty",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. On a featureless neutral background, anonymous hands hold the extra clothes and paperback books just removed from exterior storage of the unbranded navy soft-sided two-wheel carry-on with expandable exterior zippered compartments. Crop the compartments rather than assign items to particular pockets; assert no exact pocket count, removal sequence or unpacking location.",
+        "camera": "static",
+        "visual": "still"
+      },
+      "claims": [
+        "n7"
+      ],
+      "lines": [
+        {
+          "id": "r44l048",
+          "text": "她只好把外袋多放的東西拿出來。這回，箱子才終於能收好。"
+        }
+      ]
+    },
+    {
+      "id": "now-verdict",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. The same compact unbranded navy soft-sided two-wheel carry-on with expandable exterior zippered compartments stands beside the same anonymous short-haired 1993 reporter in a muted rust jacket, who regards it thoughtfully; no award, rating stars or competitor logo.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "n8"
+      ],
+      "lines": [
+        {
+          "id": "r44l049",
+          "text": "她並沒有因此否定 Rollaboard。報導最後，Travelpro 仍是她偏愛的款式之一。"
+        }
+      ]
+    },
+    {
+      "id": "now-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Cute 2D illustrated documentary, warm muted color, clear single action, no readable text, logos, patent drawings, archival-photo styling or identifiable historical face. Final location-neutral illustration: the same compact navy commercial case with flattened outer pockets is framed beside an abstract stowage outline, no actual cabin position, unpacking gesture or claim of universal fit.",
+        "camera": "track right",
+        "visual": "still"
+      },
+      "claims": [
+        "n9"
+      ],
+      "lines": [
+        {
+          "id": "r44l050",
+          "text": "Rollaboard 沒輸在輪子；讓她停下來的，是最後那道機艙收納空間。"
+        }
+      ]
+    },
+    {
+      "id": "now-outro",
+      "template": "outro",
+      "data": {
+        "title": "能走，也要收得進去",
+        "cta": "資料來源在說明欄"
+      },
+      "lines": [
+        {
+          "id": "r44out1",
+          "text": "你有沒有遇過，箱子明明拉得順，登機時卻放不下？"
+        },
+        {
+          "id": "r45out3",
+          "text": "資料來源放在說明欄，想追細節可以接著看。"
+        },
+        {
+          "id": "r44out2",
+          "text": "喜歡這種有來源的日用品故事，歡迎訂閱。"
+        }
+      ]
+    }
+  ]
+}

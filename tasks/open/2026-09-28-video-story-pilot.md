@@ -48,6 +48,42 @@ scope:
 
 ## Notes
 
+### 2026-10-19 integration with the new 45-second cadence
+
+The owner authorized only merging PR #1590 at `f43fef783` into main `63288d02`
+after green CI. All 21 checks passed, but main then advanced to `14f4c469`
+(#1577), so strict branch protection required a rebase. The local rebase
+preserves every existing artifact byte, yet the current r45 builder now detects
+five 45-second cadence gaps (80, 50, 49, 75 and 57 seconds). The canonical r45
+validation metadata also drifts under the new lint rules. Those historical
+packages and reviews are retained unchanged. A narrow r46 successor is being
+prepared under the selected Rollaboard direction and the owner's meaningful-hook
+requirement, with independent review before any renewed exact-head merge request.
+No deployment, host mutation or paid work is authorized by this merge-only step.
+
+R46 then passed tight45 mechanically, but two independent readers requested
+revision (required 9/12 and 8/12): opening remedy disclosure, a final-chapter
+size-to-zipper detour and repeated/already-answered stow information. Preserve
+both reports with r46 and prepare a narrow r47 correction. The source-delta
+PASS does not override narrative failure; neither candidate is imported.
+
+R47 now corrects six narration lines, moves the final chapter marker and removes
+only the duplicate now-answer/r44l050/q055 summary. Its manifest is
+`323dc77c5ec678ef38c35204eb7865d46c8ca612b5e82f0a6083ddf70c59a24e`; the
+canonical handoff manifest is
+`3edb9c375bcef6b01adc4e7bd14eec3757dd907d16a175247f8468a063465fb2`.
+The package has 50 scenes, 52 lines and 54 PENDING claims (15 plan-linked,
+39 passage-only). Both builders pass; the 45-second cadence has zero gaps at
+250/275/300 CPM. All retained claim rows, prompts, source URLs and the three-line
+outro remain unchanged. Both independent readers passed this exact revision
+(13/13 yes; required 12/12; no remaining P1/P2). The failed r46 reports remain
+intact. The bounded source-delta and canonical conversion reviews pass.
+Body estimates are 450.4/414.1/383.0 seconds, so the 275 CPM estimate is below
+420 seconds and actual TTS duration remains HOLD. No production gate is waived.
+Main subsequently added #1589 (`e2f2bc800`); its changes do not overlap these
+artifact paths or their builder dependency hashes. This successor needs fresh
+CI and exact-head merge approval; #1583 remains draft. The pilot is unfinished.
+
 ### 2026-10-19 portable evidence correction
 
 PR #1590's first CI found private local paths in ten historical review Markdown
