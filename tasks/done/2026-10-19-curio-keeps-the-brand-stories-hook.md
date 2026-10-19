@@ -62,7 +62,7 @@ node tools/video/cli.mjs lint --slug curio-h10   # 0 errors；超過 45 秒的�
   三個 PR 都已合併，所以用 `--force`。
 - 主機路線的 `settle()` 還沒有強制加配樂、主機奇聞檔案局盲評還是一位讀者：`flow.mjs` 在別人的票裡，開了
   `2026-10-19-host-explainer-route-always-adds-the`。
-- 已交付的集數要不要補配樂（一首約 US$0.15＋重新合成，旁白與插圖不動）等站主決定。
+- 已交付的集數不補配樂：站主 2026-10-19「新的集數再開始就好」。
 - PR https://github.com/x812033727/travel_scanner/pull/1577
 - 2026-10-19 結案：#1577 合併（08:10Z）；主機路線的補配樂與兩位讀者由 `2026-10-19-host-explainer-route-always-adds-the` 在 #1589 完成。
-  奇聞檔案局四段提示字的 digest 變了，**還沒部署**：部署前主機上不能有未完成的 cute-mystery 單集。已交付集數要不要補配樂仍等站主決定。
+  奇聞檔案局四段提示字的 digest 變了，**還沒部署**：部署前主機上不能有未完成的 cute-mystery 單集。已交付集數不補配樂（站主 2026-10-19）。
