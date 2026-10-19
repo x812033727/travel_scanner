@@ -17,19 +17,22 @@ RUN apt-get update \
 # rclone copies the videos on YouTube to the owner's Google Drive (docs/videos/BACKUP.md,
 # tools/video/automation/backup.mjs). A release from rclone's own downloads, pinned by version
 # and by the SHA-256 its SHA256SUMS publishes, so the image cannot change without a diff here.
-ARG RCLONE_VERSION=1.74.4
-ARG RCLONE_SHA256_AMD64=fe435e0c36228e7c2f116a8701f01127bb1f694005fc11d1f27186c8bca4115d
-ARG RCLONE_SHA256_ARM64=97685285c9ad6a0cf17d5844115d2a67245af6444db672187074bd9c358de419
+# No argument here may start with RCLONE_: a RUN step sees build arguments as environment
+# variables, and rclone reads every RCLONE_* variable as a flag (RCLONE_VERSION is --version).
+ARG VIDEO_RCLONE_VERSION=1.74.4
+ARG VIDEO_RCLONE_SHA256_AMD64=fe435e0c36228e7c2f116a8701f01127bb1f694005fc11d1f27186c8bca4115d
+ARG VIDEO_RCLONE_SHA256_ARM64=97685285c9ad6a0cf17d5844115d2a67245af6444db672187074bd9c358de419
 RUN set -eu; \
     arch="$(dpkg --print-architecture)"; \
-    case "$arch" in amd64) sum="$RCLONE_SHA256_AMD64" ;; arm64) sum="$RCLONE_SHA256_ARM64" ;; *) echo "no rclone for $arch" >&2; exit 1 ;; esac; \
+    case "$arch" in amd64) sum="$VIDEO_RCLONE_SHA256_AMD64" ;; arm64) sum="$VIDEO_RCLONE_SHA256_ARM64" ;; *) echo "no rclone for $arch" >&2; exit 1 ;; esac; \
+    release="rclone-v${VIDEO_RCLONE_VERSION}-linux-${arch}"; \
     cd /tmp; \
-    curl -fsSLo rclone.zip "https://downloads.rclone.org/v${RCLONE_VERSION}/rclone-v${RCLONE_VERSION}-linux-${arch}.zip"; \
+    curl -fsSLo rclone.zip "https://downloads.rclone.org/v${VIDEO_RCLONE_VERSION}/${release}.zip"; \
     echo "$sum  rclone.zip" | sha256sum -c -; \
     unzip -q rclone.zip; \
-    install -m 0755 "rclone-v${RCLONE_VERSION}-linux-${arch}/rclone" /usr/local/bin/rclone; \
-    rm -rf rclone.zip "rclone-v${RCLONE_VERSION}-linux-${arch}"; \
-    rclone version | head -n 1
+    install -m 0755 "${release}/rclone" /usr/local/bin/rclone; \
+    rm -rf rclone.zip "$release"; \
+    rclone version > /dev/null
 
 # The second-opinion transcriber for `check-audio` (docs/videos/DUBS.md §聲音會唸錯的地方):
 # faster-whisper on the CPU, in its own venv so it never touches the image's Python. Without it
@@ -81,7 +84,7 @@ RUN --mount=type=tmpfs,target=/dev/shm \
     node --test ops/video/sync-docs.test.mjs; \
     node ops/video/sync-docs.mjs; \
     ffmpeg -hide_banner -encoders | grep -q libx264; \
-    rclone version | grep -q "^rclone v"; \
+    rclone version > /dev/null; \
     /opt/whisper/bin/python -c 'import faster_whisper'; \
     /opt/whisper/bin/python tools/video/tts/whisper_second_opinion.py 2>&1 | grep -q usage; \
     test -f .agents/skills/youtube-video/references/script-writing.md; \
