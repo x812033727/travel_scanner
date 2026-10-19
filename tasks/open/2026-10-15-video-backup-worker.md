@@ -78,3 +78,13 @@ node --test tools/video/automation/backup.test.mjs
 
 - Do not copy `segments/`, `build/`, `frames/`, `review/`, `media/` or `audio/`.
 - rclone exit code must be checked directly; do not pipe it through `tail`.
+- API contract (landed with `2026-10-15-video-backup-api`, see its Notes): read
+  `GET /api/video/automation/backup/config` and copy only when `remote_prefix` is not null
+  (it is the configured path relative to the remote's root). A `done` report must include
+  `contents` as `app/video_backup/schemas.py` `BackupContents` describes; the site turns a
+  report that lacks a chosen language's file into `partial`, so tidy keeps the files.
+- The basic tier should copy the whole `upload/` tree, not only the files listed above:
+  `package` also writes `thumbnails/<locale>.jpg` and the `thumbnail-b.jpg`/`-c.jpg`
+  variants there, and `thumbnail.jpg` lives in `upload/`, not the work directory's root
+  (`tools/video/package/check.mjs`). A Short's `upload/` holds `final.mp4`, `zh-TW.srt`,
+  `cover.png` and `titles.json`.
