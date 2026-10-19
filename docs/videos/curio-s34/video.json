@@ -1,0 +1,1634 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s34",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，像向朋友說一段有證據的冒險史。問題輕輕上揚；日期、人數與改變路線的決定放慢。",
+    "performance": "開場站在浮冰上，先壓低聲音；每次原路失效時停一拍，接著跟著新決定往前。三次出海受阻逐次分清，抵達捕鯨站和二十二人獲救不要混成同一天。收尾說清二十八人僅指堅忍號隊，不把別支隊伍的傷亡抹去。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "ed004",
+      "payoff": "ed034",
+      "what": "保留下的救生艇能否拖過浮冰"
+    },
+    {
+      "setup": "ed005",
+      "payoff": "ed047",
+      "what": "碎冰間能否真的上岸"
+    },
+    {
+      "setup": "ed006",
+      "payoff": "ed054",
+      "what": "捨近選遠的航線理由"
+    },
+    {
+      "setup": "ed020",
+      "payoff": "ed022",
+      "what": "被冰夾住的船是否還能撐"
+    },
+    {
+      "setup": "ed032",
+      "payoff": "ed045",
+      "what": "漂流的冰會把人帶向何處"
+    },
+    {
+      "setup": "ed039",
+      "payoff": "ed042",
+      "what": "何時才能讓小艇下水"
+    },
+    {
+      "setup": "ed048",
+      "payoff": "ed050",
+      "what": "第一處石灘能否久住"
+    },
+    {
+      "setup": "ed055",
+      "payoff": "ed066",
+      "what": "改裝小艇能否抵達遠島"
+    },
+    {
+      "setup": "ed060",
+      "payoff": "ed090",
+      "what": "象島海路能否再打開"
+    },
+    {
+      "setup": "ed073",
+      "payoff": "ed074",
+      "what": "翻山能否找到捕鯨站"
+    },
+    {
+      "setup": "ed083",
+      "payoff": "ed092",
+      "what": "沒有屋子的留島者能否撐到救援"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "堅忍號沉了，這 28 人怎麼全活著回來？｜奇聞檔案局",
+    "description": "1915 年 10 月，薛克頓帶的堅忍號威德爾海隊 28 人離船站上浮冰；這裡的「28 人」只指這支隊伍，不是整個帝國橫越南極遠征。船到 11 月才沉沒，而他們的求生路才剛開始。\n\n本集跟著一次次改變的決定：在冰上保存三艘救生艇；冰裂後渡海到象島；六人乘詹姆斯凱爾德號選擇順西風往較遠的南喬治亞；其中三人翻山抵達捕鯨站；前三次救援未能突破冰區，直到智利的耶爾喬號在 1916 年 8 月 30 日接走留島的 22 人。另一路羅斯海支隊有三人罹難，因此不把「堅忍號隊全數生還」說成整個遠征零死亡。\n\n事實依 Ernest Shackleton 於 1919 年出版的《South!》。此書是事後寫成的回憶敘事，也收錄其他船員的日記，相關章節連結列於下方。影像為 AI 生成的卡通插圖，用來輔助敘事，並非歷史現場影像或人物相貌重建。\n\n資料截至 2026-10-19",
+    "tags": [
+      "堅忍號",
+      "薛克頓",
+      "Endurance",
+      "Shackleton",
+      "象島",
+      "James Caird",
+      "南喬治亞島",
+      "南極探險",
+      "歷史名場面",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "沒有船\n**怎麼走**？",
+      "tag": "歷史名場面",
+      "sub": "二十八人的冰海之路",
+      "shot": "no-ship-question"
+    }
+  },
+  "sources": [
+    {
+      "title": "Ernest Shackleton, South!（Standard Ebooks 校訂轉錄，第 1 章）",
+      "url": "https://github.com/standardebooks/ernest-shackleton_south/blob/233aa69e707ecc348ceef2eb1c167ada6a28ac24/src/epub/text/chapter-1.xhtml",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Ernest Shackleton, South!（Standard Ebooks 校訂轉錄，第 2 章）",
+      "url": "https://github.com/standardebooks/ernest-shackleton_south/blob/233aa69e707ecc348ceef2eb1c167ada6a28ac24/src/epub/text/chapter-2.xhtml",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Ernest Shackleton, South!（Standard Ebooks 校訂轉錄，第 4 章）",
+      "url": "https://github.com/standardebooks/ernest-shackleton_south/blob/233aa69e707ecc348ceef2eb1c167ada6a28ac24/src/epub/text/chapter-4.xhtml",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Ernest Shackleton, South!（Standard Ebooks 校訂轉錄，第 5 章）",
+      "url": "https://github.com/standardebooks/ernest-shackleton_south/blob/233aa69e707ecc348ceef2eb1c167ada6a28ac24/src/epub/text/chapter-5.xhtml",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Ernest Shackleton, South!（Standard Ebooks 校訂轉錄，第 6 章）",
+      "url": "https://github.com/standardebooks/ernest-shackleton_south/blob/233aa69e707ecc348ceef2eb1c167ada6a28ac24/src/epub/text/chapter-6.xhtml",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Ernest Shackleton, South!（Standard Ebooks 校訂轉錄，第 7 章）",
+      "url": "https://github.com/standardebooks/ernest-shackleton_south/blob/233aa69e707ecc348ceef2eb1c167ada6a28ac24/src/epub/text/chapter-7.xhtml",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Ernest Shackleton, South!（Standard Ebooks 校訂轉錄，第 8 章）",
+      "url": "https://github.com/standardebooks/ernest-shackleton_south/blob/233aa69e707ecc348ceef2eb1c167ada6a28ac24/src/epub/text/chapter-8.xhtml",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Ernest Shackleton, South!（Standard Ebooks 校訂轉錄，第 9 章）",
+      "url": "https://github.com/standardebooks/ernest-shackleton_south/blob/233aa69e707ecc348ceef2eb1c167ada6a28ac24/src/epub/text/chapter-9.xhtml",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Ernest Shackleton, South!（Standard Ebooks 校訂轉錄，第 10 章）",
+      "url": "https://github.com/standardebooks/ernest-shackleton_south/blob/233aa69e707ecc348ceef2eb1c167ada6a28ac24/src/epub/text/chapter-10.xhtml",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Ernest Shackleton, South!（Standard Ebooks 校訂轉錄，第 11 章）",
+      "url": "https://github.com/standardebooks/ernest-shackleton_south/blob/233aa69e707ecc348ceef2eb1c167ada6a28ac24/src/epub/text/chapter-11.xhtml",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Ernest Shackleton, South!（Standard Ebooks 校訂轉錄，第 12 章）",
+      "url": "https://github.com/standardebooks/ernest-shackleton_south/blob/233aa69e707ecc348ceef2eb1c167ada6a28ac24/src/epub/text/chapter-12.xhtml",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Ernest Shackleton, South!（Standard Ebooks 校訂轉錄，第 18 章）",
+      "url": "https://github.com/standardebooks/ernest-shackleton_south/blob/233aa69e707ecc348ceef2eb1c167ada6a28ac24/src/epub/text/chapter-18.xhtml",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "ice-order",
+      "chapter": "1915年十月：離船那一刻",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a tilted wooden polar ship in Antarctic daylight, one expedition leader standing on an ice floe and looking back at the hull, the damaged side at frame center, cold overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed001",
+          "text": "一九一五年十月二十七日，堅忍號被浮冰擠壞了。",
+          "emotion": "放慢，讓日期與場景落定"
+        }
+      ]
+    },
+    {
+      "id": "boats-to-ice",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a polar ice floe beside a damaged ship, one bundled crewman pulling a wooden lifeboat by a rope, the taut rope prominent in frame, pale daytime light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed002",
+          "text": "船上的二十八人奉命離船，把救生艇搬到冰上。"
+        }
+      ]
+    },
+    {
+      "id": "moving-floor",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a polar ice floe, one bundled sailor testing a narrow crack with a boot, the broken ice edge as the main visual detail, soft thin afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed003",
+          "text": "這塊冰會漂，也會裂；腳下不是一條固定的路。"
+        }
+      ]
+    },
+    {
+      "id": "boat-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on Antarctic sea ice, one bundled man hauling a lifeboat across ridged snow, the runners digging into snow clearly visible in frame, flat daytime light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed004",
+          "text": "先記著那三艘艇：人想拖著它們走，能走多遠？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "island-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot toward a distant dark island beyond floating ice, one sailor standing in a small open boat and scanning the coast, the ice filled channel at frame center, grey overcast noon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed005",
+          "text": "如果看得見陸地，碎冰會讓他們上岸嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "farther-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an open lifeboat at sea, one bundled navigator holding a chart and looking toward the horizon, the folded chart prominent in frame, even daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed006",
+          "text": "後來六個人會捨近求遠，往更遠的島開船。為什麼？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "main-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on an ice camp, one expedition leader looking at a lifeboat beside stacked supplies, his hand resting on the gunwale clearly visible in frame, soft afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed008",
+          "text": "離船以後，他們究竟靠什麼走到有人能救的地方？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "georgia-departure",
+      "chapter": "1914年十二月：堅忍號駛離南喬治亞",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a South Georgia harbor in December diffuse morning light, one crewman raising a line aboard a departing wooden expedition ship, the harbor receding behind at frame center, pale light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed009",
+          "text": "那條回家的路，從一九一四年十二月五日駛離南喬治亞開始。"
+        }
+      ]
+    },
+    {
+      "id": "weddell-bound",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a polar expedition ship sailing among scattered sea ice, one sailor at the rail watching the water ahead, the opening between floes prominent in frame, clear daytime light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed010",
+          "text": "堅忍號要穿過威德爾海，再讓探險隊踏上南極大陸。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "ice-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a wooden ship in patchy Antarctic ice, one helmsman turning a wheel, a narrow lane of dark water as the main visual detail, soft midday light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed011",
+          "text": "起初，船還能在冰塊間找縫隙前進。"
+        }
+      ]
+    },
+    {
+      "id": "ice-closes",
+      "template": "big",
+      "data": {
+        "text": "1915．01．19",
+        "kicker": "堅忍號困冰",
+        "sub": "隔天確認：已被浮冰困住"
+      },
+      "lines": [
+        {
+          "id": "ed012",
+          "text": "一九一五年一月十九日，四周的冰已把那條縫隙關上。"
+        }
+      ]
+    },
+    {
+      "id": "trapped-recognition",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a wooden polar ship, one expedition leader studying the ice from the rail, packed floes at the bow at frame center, pale overcast noon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed013",
+          "text": "隔天，薛克頓判定：船真的被浮冰困住了。",
+          "emotion": "放慢，讓日期與場景落定"
+        }
+      ]
+    },
+    {
+      "id": "engine-ice",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot beside a ship frozen in sea ice, one engineer crouching to inspect the hull near solid ice, the ice pressing against wood prominent in frame, grey clear early light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed014",
+          "text": "引擎能推船，卻推不開整片隨風移動的冰；煤還要繼續燒嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "coal-saving",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a ship engine room, one engineer closing a furnace door, the cold iron boiler clearly visible in frame, soft lantern and window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed015",
+          "text": "一月底，他們停掉鍋爐，省下不能再補回來的煤。"
+        }
+      ]
+    },
+    {
+      "id": "winter-shift",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a ship trapped in Antarctic pack ice, one crewman carrying winter supplies across the deck, the stationary ship as the main visual detail, clear midday light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed016",
+          "text": "到了二月下旬，船成了漂浮的冬季營地。",
+          "emotion": "語氣收緊，突出新的難題"
+        }
+      ]
+    },
+    {
+      "id": "ship-shelter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a wooden ship cabin, one crewman packing food tins into a crate, a lifeboat visible through the window at frame center, diffuse daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed017",
+          "text": "船艙仍是住處；救生艇和補給，卻得隨時能搬走。"
+        }
+      ]
+    },
+    {
+      "id": "ship-ride",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an icebound polar ship on a vast floe, one navigator marking a position in a notebook at the rail, the empty horizon prominent in frame, even diffuse morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed018",
+          "text": "冰帶著整艘船漂流，方向不由舵決定。"
+        }
+      ]
+    },
+    {
+      "id": "pressure-begins",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot beside an icebound wooden ship, one crewman inspecting planks near compressed ice, a bending timber as the main visual detail, cold thin afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed019",
+          "text": "入冬後，浮冰一推一擠，木船開始承受側面的壓力。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "pressure-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a ship deck, one expedition leader pressing a hand against a strained beam, a seam opening in the timber clearly visible in frame, muted daytime light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed020",
+          "text": "如果冰一直把船當作夾在中間的木塊，船能撐到春天嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "crushing-months",
+      "chapter": "1915年十月：船碎，還有三艘艇",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden ship trapped in Antarctic ice, one crewman bracing against a rail as piled floes press the hull, splintered side planks at frame center, grey daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed021",
+          "text": "九個月後，冰還沒放行，反而把船壓得更緊。"
+        }
+      ]
+    },
+    {
+      "id": "hull-open",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a polar ship hold, one engineer inspecting a wet split between hull planks, the water entering prominent in frame, soft work lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed022",
+          "text": "到十月下旬，船身進水，木板在擠壓中裂開。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "abandon-context",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a tilted ship deck, one expedition leader lowering a supply bag toward the ice, a partly submerged railing as the main visual detail, pale clear early light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed023",
+          "text": "開場那一天的棄船令，等於放下原本穿越南極的計畫。"
+        }
+      ]
+    },
+    {
+      "id": "new-mission",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a flat sea ice camp, one expedition leader kneeling over an open map, the distant coastline marked on the map without legible writing clearly visible in frame, bright diffuse light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed024",
+          "text": "薛克頓後來在書裡寫，他的新任務是讓隊員抵達陸地。"
+        }
+      ]
+    },
+    {
+      "id": "boats-kept",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on an Antarctic floe, one sailor checking a wooden lifeboat beside stacked provisions, all three boats in a row at frame center, cold gentle late morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed025",
+          "text": "船上最重要的，變成還能載人的救生艇。",
+          "emotion": "放慢，讓日期與場景落定"
+        }
+      ]
+    },
+    {
+      "id": "camp-on-ice",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an ice camp in the Weddell Sea, one bundled man tightening a tent line, the thin floe edge beyond the camp prominent in frame, flat daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed026",
+          "text": "全隊先在浮冰紮營；帳篷底下沒有土，能拖著艇走嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "walk-plan",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on ridged sea ice, one man leaning into a lifeboat tow rope, the dragging keel as the main visual detail, cold thin afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed027",
+          "text": "要往陸地去，他們試著用人力拖艇。"
+        }
+      ]
+    },
+    {
+      "id": "ridged-ice",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot on Antarctic pack ice, one sailor pushing the bow of a lifeboat over a ridge, the raised ice lip clearly visible in frame, pale morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed028",
+          "text": "但小艇一碰到高低不平的冰脊，就得停下搬動。",
+          "emotion": "語氣收緊，突出新的難題"
+        }
+      ]
+    },
+    {
+      "id": "ocean-camp",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a stationary Antarctic ice camp, one crewman planting a tent peg while a lifeboat rests nearby, the closed ice route ahead at frame center, overcast overcast noon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed029",
+          "text": "第一次步行沒能走遠，隊伍改在冰上等能通行的時機。"
+        }
+      ]
+    },
+    {
+      "id": "ship-still-visible",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot across sea ice toward a listing wooden ship, one bundled man standing outside a tent and looking at it, the gap of ice between prominent in frame, grey afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed030",
+          "text": "那時堅忍號還在附近；他們望得到船，卻不能住回去。"
+        }
+      ]
+    },
+    {
+      "id": "november-sink",
+      "template": "big",
+      "data": {
+        "text": "10／27 離船\n11／21 沉沒",
+        "kicker": "兩個不同的日期",
+        "sub": "1915 年"
+      },
+      "lines": [
+        {
+          "id": "ed031",
+          "text": "直到十一月二十一日，船才從冰間沉下去。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "no-ship-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a drifting floe with a small camp, one expedition member standing at its edge facing distant empty ice, the open horizon clearly visible in frame, diffuse light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed032",
+          "text": "岸還沒到，船先沒了；這一塊冰能把他們送向哪裡？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "drag-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on Antarctic ice ridges, one bundled sailor pulling a lifeboat with a long rope, the uneven route ahead at frame center, clear gentle late morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed033",
+          "text": "十二月，他們再試一次，把小艇拖向較可能登岸的方向。"
+        }
+      ]
+    },
+    {
+      "id": "seven-days",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on frozen sea ice, one crewman dragging a boat runner through deep snow, the tiny track behind him prominent in frame, soft diffuse morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed034",
+          "text": "開頭那三艘艇還在，但這次只拖其中兩艘；七天走了大約七英里半。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "patience-camp",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a large drifting floe, one expedition leader setting down a haul rope beside a tent, the immobile lifeboat as the main visual detail, cold daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed035",
+          "text": "再拖可能先耗盡人的力氣，隊伍停下，設立耐心營。"
+        }
+      ]
+    },
+    {
+      "id": "drift-west",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sea ice camp drifting among floes, one navigator noting the horizon in a book, a narrow dark lead of water clearly visible in frame, even light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed036",
+          "text": "計畫從人拖著船走，改成等浮冰把人帶往開水面。"
+        }
+      ]
+    },
+    {
+      "id": "pault-island",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a drifting ice camp, one sailor tracing the location of Paulet Island on a blank nautical chart laid on a crate, a single red dot with no readable labels, cold diffuse daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed037",
+          "text": "隔年三月，他們甚至漂到與有舊補給的波萊島同緯度。",
+          "emotion": "放慢，讓日期與場景落定"
+        }
+      ]
+    },
+    {
+      "id": "sixty-miles",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot across broken pack ice toward an empty foggy horizon, one bundled sailor lowering binoculars, no land visible, fractured ice prominent in frame, cold clear early light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed038",
+          "text": "但島還在約六十英里外，碎冰讓步行上島走不通。"
+        }
+      ]
+    },
+    {
+      "id": "ice-road-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a floe edge beside stored lifeboats, one expedition leader checking a growing water channel, open water as the main visual detail, grey daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed039",
+          "text": "冰面還沒有小艇能穿過的水道；什麼時候才能下水？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "cracking-floe",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a sea ice camp in diffuse morning light, one crewman pulling a supply crate back from a widening crack, the split floe clearly visible in frame, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed040",
+          "text": "到了四月，營地腳下的浮冰開始逼他們立刻作決定。",
+          "emotion": "語氣收緊，突出新的難題"
+        }
+      ]
+    },
+    {
+      "id": "april-break",
+      "chapter": "1916年四月：冰裂後，上岸仍不安全",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an Antarctic ice camp, one sailor stepping away from a wide crack beside a tent, the split floe at frame center, pale daytime light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed041",
+          "text": "四月九日，營地的浮冰再也不能安全承載全隊。"
+        }
+      ]
+    },
+    {
+      "id": "three-boats-launch",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along a broken sea ice edge, one bundled sailor lowering an open lifeboat into dark water, the boat sliding clear prominent in frame, cold thin afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed042",
+          "text": "再等會連艇都下不了水；開頭那三艘，這天終於一起出航。"
+        }
+      ]
+    },
+    {
+      "id": "open-sea-cost",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an open lifeboat among broken ice, one crewman gripping an oar as spray crosses the gunwale, exposed boat sides as the main visual detail, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed043",
+          "text": "一進小艇，低矮的船舷就直接迎上浪和風。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "boat-steering",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of three small boats among sea ice, one helmsman steering the nearest boat through a gap, the narrow water channel clearly visible in frame, subdued clear early light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed044",
+          "text": "小艇要保持在一起，還得在冰塊與水道間找出路。"
+        }
+      ]
+    },
+    {
+      "id": "first-land-seen",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of Elephant Island cliffs from an open boat, one sailor leaning forward to scan a landing place, a small stone beach at frame center, clear gentle late morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed045",
+          "text": "四月中旬，小艇終於靠近象島的岸線。"
+        }
+      ]
+    },
+    {
+      "id": "not-yet-safe",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot near steep Elephant Island cliffs, one rower steering a small open boat past dark offshore reefs and breaking surf toward a narrow stony beach, cool midday light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed046",
+          "text": "但岸邊有峭壁、暗礁和浪；看得見石灘，能靠上去嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "landing-stones",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an Elephant Island pebble beach, one bundled sailor stepping out of a lifeboat onto wet stones, his boot touching shore as the main visual detail, grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed047",
+          "text": "先前看得到卻到不了的岸，他們終於靠上狹窄石灘。"
+        }
+      ]
+    },
+    {
+      "id": "land-risk",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a narrow rocky beach with surf, one expedition leader measuring the distance from waves to stacked gear, the exposed camp edge clearly visible in frame, overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed048",
+          "text": "可是潮水和風浪會打上這片石灘，它不是能久住的營地。"
+        }
+      ]
+    },
+    {
+      "id": "wild-search",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along an Elephant Island shoreline, one bundled scout guiding a small open lifeboat with other crew aboard toward a safer spit, the sheltered stretch of beach ahead at frame center, soft thin afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed049",
+          "text": "薛克頓派懷爾德沿岸偵察，找一處更能放下帳篷的地方。",
+          "emotion": "放慢，讓日期與場景落定"
+        }
+      ]
+    },
+    {
+      "id": "spit-found",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a low Elephant Island spit, one crewman carrying a rolled tent toward a new camp site, the raised dry ground prominent in frame, diffuse overcast noon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed050",
+          "text": "懷爾德找到一處沙嘴，隊伍把營地再搬過去。"
+        }
+      ]
+    },
+    {
+      "id": "twenty-eight-land",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot over an Elephant Island camp with three boats, one crewman counting supply crates, the occupied shore as the main visual detail, mild daytime light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed051",
+          "text": "這時登上象島的是全隊，還沒有誰留在海上。"
+        }
+      ]
+    },
+    {
+      "id": "island-remote",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from Elephant Island camp toward empty open sea, one expedition leader standing beside a lifeboat and studying the horizon, distant water clearly visible in frame, clear daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed052",
+          "text": "但象島沒有能直接求救的港口；誰能把消息帶出去？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "route-near",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a crude island shelter, one expedition leader tracing a route toward the Falklands on an unlabeled chart, his finger at frame center, soft daytime light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed053",
+          "text": "薛克頓比較過：福克蘭的港口較近，卻得迎著盛行風划行。"
+        }
+      ]
+    },
+    {
+      "id": "route-far",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the same island shelter, one expedition leader moving his finger to a farther eastern route on the chart, the new bearing prominent in frame, diffuse gentle late morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed054",
+          "text": "還記得開頭那條遠路嗎？南喬治亞較遠，卻能借西風，東岸有捕鯨站。"
+        }
+      ]
+    },
+    {
+      "id": "choice-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on Elephant Island shore, one sailor inspecting a small lifeboat against rough surf, the low wooden sides as the main visual detail, cloudy diffuse morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed055",
+          "text": "捨近選遠，只能拿一艘小艇去賭；它經得起那片海嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "boat-strengthen",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a lifeboat on Elephant Island, one carpenter fastening a sled timber beneath a canvas cover, the improvised reinforcement clearly visible in frame, daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed056",
+          "text": "木匠用雪橇木料和帆布，替約二十英尺長的詹姆斯凱爾德號加固。"
+        }
+      ]
+    },
+    {
+      "id": "six-picked",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a small island shelter, one expedition leader pointing to six blank marks on a chart, the planned crew count at frame center, soft overcast noon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed057",
+          "text": "四月二十三日，薛克頓定下同行的六人名單，自己也在其中。"
+        }
+      ]
+    },
+    {
+      "id": "twenty-two-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an Elephant Island camp, one bundled island leader setting a supply box inside a shelter, the empty sea beyond prominent in frame, cold clear early light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed058",
+          "text": "其餘二十二人交由懷爾德帶領，留在象島等消息。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "april-departure",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from an Elephant Island beach, one bundled man standing beside a shelter watching a single lifeboat leave, the small boat at sea as the main visual detail, pale daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed059",
+          "text": "四月二十四日，詹姆斯凱爾德號離岸；岸上的人看著它越來越小。"
+        }
+      ]
+    },
+    {
+      "id": "following-ice",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from an Elephant Island spit, one island camper examining fresh pack ice closing around the beach, the boat route clearly visible in frame, cold diffuse morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed060",
+          "text": "薛克頓走後隔天，浮冰又密密地圍住島；這條海路還能走通嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "caird-at-sea",
+      "chapter": "1916年五月：靠岸，還隔著一座山",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on rough Southern Ocean water, one sailor in an open lifeboat tightening a canvas cover, the boat's low freeboard at frame center, cloudy thin afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed061",
+          "text": "詹姆斯凱爾德號往東航行，留下的人只能守著那片海灘。",
+          "emotion": "放慢，讓日期與場景落定"
+        }
+      ]
+    },
+    {
+      "id": "covered-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot aboard a covered lifeboat at sea, one crewman fastening a wet canvas edge to the gunwale, water splashing against canvas prominent in frame, grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed062",
+          "text": "帆布能擋一部分浪，卻不能把小艇變成大船。"
+        }
+      ]
+    },
+    {
+      "id": "worsley-navigation",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot aboard a small boat at sea, one navigator holding a sextant toward a break in the clouds, the instrument as the main visual detail, soft clear early light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed063",
+          "text": "航海長沃斯利拿六分儀找位置，浪卻不會等他算完。"
+        }
+      ]
+    },
+    {
+      "id": "course-uncertainty",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot over open sea, one navigator leaning over a compact chart in a rocking lifeboat, a small island shape on the chart clearly visible in frame, grey afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed064",
+          "text": "偏一點，就可能與南喬治亞錯身而過。",
+          "emotion": "語氣收緊，突出新的難題"
+        }
+      ]
+    },
+    {
+      "id": "land-sighted",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a lifeboat toward South Georgia mountains, one sailor raising his head above the gunwale to look ahead, the distant peaks at frame center, clear gentle late morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed065",
+          "text": "十多天後，南喬治亞的山影出現在海面上。"
+        }
+      ]
+    },
+    {
+      "id": "may-ten-arrival",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a rocky South Georgia inlet, one sailor guiding a small lifeboat toward shore, the sheltered bay prominent in frame, pale daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed066",
+          "text": "五月十日，小艇抵達島西岸的哈康王灣。"
+        }
+      ]
+    },
+    {
+      "id": "six-not-cross",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a South Georgia beach, one expedition leader examining a steep inland route while a covered lifeboat rests behind, the ice covered ridge clearly visible in frame, overcast noon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed068",
+          "text": "到的是無人的西岸；捕鯨站在島的另一邊，怎麼過去？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "mountain-choice",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot toward snow covered South Georgia ridges, one man tightening his boots at the base of a slope, the climb ahead at frame center, pale dawn light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed069",
+          "text": "要去東岸求援，必須越過沒有現成道路的冰雪山地。"
+        }
+      ]
+    },
+    {
+      "id": "three-leave",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a snowy South Georgia slope, one bundled leader starting up a ridge, a narrow foothold prominent in frame, soft morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed070",
+          "text": "五月十九日，薛克頓、沃斯利、克林三人出發。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "three-stay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a remote South Georgia inlet, one crewman repairing a small camp shelter, the boat pulled ashore as the main visual detail, clear daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed071",
+          "text": "另外三人留在登陸處；越山的同伴能找到船接他們嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "no-sleeping-bags",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a South Georgia glacier, one climber testing an icy slope with a staff, his footing clearly visible in frame, grey gentle late morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed072",
+          "text": "翻山的人沒有帶睡袋，只能一直找下個可走的坡。"
+        }
+      ]
+    },
+    {
+      "id": "mountain-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot across snowy mountain saddles, one bundled climber cresting a ridge, the far valley at frame center, pale morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed073",
+          "text": "他們翻過眼前的冰脊，後面還有山；哪裡才有煙囪？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "station-sighted",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot down a South Georgia valley toward a whaling station, one exhausted climber standing at the ridge and looking down, the station buildings prominent in frame, clear diffuse morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed074",
+          "text": "五月二十日，山的另一邊終於出現斯特羅姆內斯捕鯨站。"
+        }
+      ]
+    },
+    {
+      "id": "request-a-ship",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a whaling station pier, one expedition leader speaking to an off frame crewman, a waiting rescue boat as the main visual detail, daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed075",
+          "text": "三人走進捕鯨站，終於可以找船；先得接回西岸的同伴。"
+        }
+      ]
+    },
+    {
+      "id": "west-three-rescued",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a South Georgia harbor, one rescued sailor climbing a gangway from a small boat, the pier and whaling ship clearly visible in frame, pale overcast noon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed076",
+          "text": "捕鯨船把留在哈康王灣的三人接回，出海求援的六人都到了安全處。",
+          "emotion": "語氣收緊，突出新的難題"
+        }
+      ]
+    },
+    {
+      "id": "island-still-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at Elephant Island camp, one bundled island leader standing at the beach and scanning the empty sea, the horizon at frame center, overcast clear early light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed077",
+          "text": "但留在象島的人，何時才能看到一艘靠得上岸的船？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "first-rescue",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot aboard a steamship in the Southern Ocean, one expedition leader watching floes ahead from the bow, the ship approaching pack ice prominent in frame, clear daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed078",
+          "text": "五月二十三日，第一艘救援船已在海上。"
+        }
+      ]
+    },
+    {
+      "id": "first-block",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at the edge of thick sea ice, one ship captain at the rail studying the blocked passage, pack ice before the bow as the main visual detail, cloudy diffuse morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed079",
+          "text": "它的鋼殼擠不過厚冰，只能折返。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "second-rescue",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a second steamship among heavy floes, one sailor probing the ice from the bow, the closed route clearly visible in frame, cold thin afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed080",
+          "text": "六月，烏拉圭提供的船再出海，離象島很近仍被冰攔下。"
+        }
+      ]
+    },
+    {
+      "id": "third-rescue",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a small wooden sailing vessel, one mechanic checking its auxiliary oil engine beneath a canvas sail, the compact motor prominent in frame, warm lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed081",
+          "text": "第三艘艾瑪號在七月出發，機件和逆風也拖住航程。"
+        }
+      ]
+    },
+    {
+      "id": "third-ice",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot aboard a wooden sailing vessel near heavy pack ice, one expedition leader gripping a rail and looking toward an empty foggy horizon, no land visible, blocked water prominent in frame, flat daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed082",
+          "text": "它靠近象島時又遇冰，薛克頓第三次沒能把船帶到岸邊。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "three-fail-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on an exposed Elephant Island stony spit, one bundled island camper holding a loose tent canvas against strong wind, the unprotected beach as the main visual detail, cold overcast daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed083",
+          "text": "象島沒有屋子；留島的人要靠什麼擋風，繼續等救援？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "island-winter",
+      "chapter": "1916年八月：第四艘船駛向象島",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an Elephant Island camp, one island camper securing an overturned lifeboat over a low shelter, the improvised roof clearly visible in frame, cold gentle late morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed084",
+          "text": "留在象島的人把小艇翻過來，當成擋風的屋頂。"
+        }
+      ]
+    },
+    {
+      "id": "shore-watch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on an Elephant Island beach, one bundled watchman scanning the horizon with binoculars, empty water at frame center, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed085",
+          "text": "他們一邊守著營地，一邊不時望向可能有船的海面。",
+          "emotion": "放慢，讓日期與場景落定"
+        }
+      ]
+    },
+    {
+      "id": "shore-food",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a rocky Elephant Island shore, one island camper collecting limpets beside wet seaweed, his basket prominent in frame, clear thin afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed086",
+          "text": "補給越來越少，留下的人採帽貝和海藻，也煮海豹骨。"
+        }
+      ]
+    },
+    {
+      "id": "meat-left",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a small island shelter, one island camper measuring a modest pile of remaining seal and penguin meat, the food store as the main visual detail, diffuse daytime light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed087",
+          "text": "等待到最後，海豹和企鵝肉大約只夠兩天；新船趕得上嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "chilean-help",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Chilean harbor, one crewman casting off a line from a small steamship, the departing vessel clearly visible in frame, bright overcast noon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed088",
+          "text": "智利政府提供耶爾喬號，薛克頓在八月二十五日再度出海。",
+          "emotion": "語氣收緊，突出新的難題"
+        }
+      ]
+    },
+    {
+      "id": "no-icebreaker",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a small steamship toward loose Antarctic pack ice, one ship captain steering into a natural water gap, the open channel at frame center, clear daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed089",
+          "text": "耶爾喬號不是破冰船，這次浮冰會再擋住它嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fourth-approach",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a steamship toward Elephant Island cliffs, one expedition leader at the bow scanning the beach, a small dark shore prominent in frame, pale gentle late morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed090",
+          "text": "這一回，風暫時把浮冰推開，耶爾喬號終於能朝象島靠近。"
+        }
+      ]
+    },
+    {
+      "id": "shore-sees-ship",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on an Elephant Island spit, one bundled watchman standing beside a low shelter and looking toward a ship through thinning mist, the vessel prominent in frame, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed091",
+          "text": "象島的守望者望向散開的霧，真的看見船靠近了。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "aug-thirty",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at Elephant Island shore, one island camper stepping into a rescue boat beside a waiting steamship, the transfer from beach to boat clearly visible in frame, clear daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed092",
+          "text": "還記得留在島上的二十二人嗎？一九一六年八月三十日，耶爾喬號終於接到他們。",
+          "emotion": "前半句放慢，問句停半拍"
+        }
+      ]
+    },
+    {
+      "id": "question-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot across a calm Antarctic shore with a saved wooden lifeboat, one expedition leader resting a hand on its gunwale, the boat at frame center, soft morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed097",
+          "text": "還記得開頭那塊冰嗎？每當一條路失效，他們就把人、艇和路線重分一次。",
+          "emotion": "放慢，讓日期與場景落定"
+        }
+      ]
+    },
+    {
+      "id": "final-turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small rescue steamship leaving Elephant Island waters, one rescued sailor at the stern watching the coastline fade, open sea prominent in frame, clear thin afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ed098",
+          "text": "從浮冰到石灘，從更遠的航線到第四艘救援船，才湊成全隊回家的路。"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "堅忍號隊 28 人全數生還"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ed099",
+          "text": "你覺得哪一次改變路線，最可能讓結局不同？",
+          "emotion": "問句上揚，停半拍等答案"
+        },
+        {
+          "id": "ed100",
+          "text": "想跟著史料看清這些轉折，訂閱奇聞檔案局。"
+        }
+      ]
+    }
+  ]
+}
