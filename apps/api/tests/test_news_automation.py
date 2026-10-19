@@ -77,6 +77,19 @@ from app.problems import AppError
 SCANNED_BEFORE = datetime(2026, 1, 1, tzinfo=UTC)
 
 
+def test_cross_category_title_screen_uses_event_cues_for_ambiguous_cjk() -> None:
+    from app.news_automation.duplicates import _cross_title_match
+
+    assert _cross_title_match(
+        "Meta 推出 Muse Wonder 與 Wonder Full 模型",
+        "Meta 發布 Muse Wonder 和 Wonder Full AI 模型",
+    ) is not None
+    assert _cross_title_match(
+        "Meta 調降 Muse Wonder API 價格",
+        "Meta 發布 Muse Wonder 和 Wonder Full AI 模型",
+    ) is None
+
+
 def test_feed_json_and_configured_html_parsers_are_bounded() -> None:
     rss = b"""<?xml version="1.0"?><rss><channel><item><title>Official update</title>
     <link>https://example.com/news/1</link><description><![CDATA[<b>Details</b>]]></description>

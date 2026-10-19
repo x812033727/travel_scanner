@@ -1,0 +1,3499 @@
+{
+  "series_title": "Sunny & Pip: Workplace English",
+  "version": 4,
+  "course": "workplace",
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "season": 1,
+      "stage": 1,
+      "course": "workplace",
+      "title_en": "Reading a Job Description",
+      "title_zh_TW": "讀懂職缺條件",
+      "titles": {
+        "zh-TW": "讀懂職缺條件",
+        "zh-CN": "读懂职位条件",
+        "ja": "求人票の条件を読み取る",
+        "ko": "채용 공고의 조건 읽기"
+      },
+      "topic": "requirements-and-preferences",
+      "objectives_zh_TW": [
+        "區分必備條件、加分條件與實際職責。",
+        "用經驗判斷符合程度，不自行放寬必備條件。",
+        "寫一百至一百四十詞申請判斷與確認問題。"
+      ],
+      "parent_tip_zh_TW": "在職缺文字中分別標出 required 和 preferred，再為每項列出已知證據與仍需確認的問題。",
+      "practice": {
+        "reading_en": "In this fictional hiring exercise, Harbor Rooms needs an operations assistant. The advertisement lists clear written updates and availability during its afternoon service hours as requirements. Familiarity with its booking software is preferred. The assistant will record requests, update a shared schedule, and report unresolved issues to a supervisor. Mina has written weekly summaries for a volunteer team, but she has never used the named software. She initially considers rejecting the role because she lacks that experience. After rereading the advertisement, she notices that software experience is not listed as essential. However, she cannot yet confirm the afternoon hours because her current course schedule may overlap. She prepares a short question asking for the exact service hours and whether software training is available. She also selects a volunteer summary that demonstrates organized writing, removing names before sharing it. Her next step is to clarify availability, not to assume that a preferred skill cancels a required condition.",
+        "prompt_en": "Write 100-140 words explaining whether a fictional candidate should investigate this role further. Distinguish requirements from preferences, give relevant evidence, identify an uncertainty, and propose a next step.",
+        "prompt_zh_TW": "用一百至一百四十詞判斷虛構求職者是否值得進一步了解此職缺。區分必要與加分條件，提出相關證據、不確定點及下一步。",
+        "sample_answer_en": "Mina should investigate the role further before deciding whether to apply. Her volunteer summaries provide relevant evidence that she can organize written updates. The advertisement treats booking software experience as preferred, so her lack of that experience does not automatically mean she fails a stated requirement. However, availability during afternoon service hours is required, and her course schedule may conflict with it. She should ask for the exact hours and compare them with her existing commitments. She can also ask whether the company provides software training. If the hours work, she could submit a summary with personal details removed and explain honestly that she would need to learn the booking system.",
+        "questions": [
+          {
+            "prompt_en": "Which conditions are required, and which experience is preferred?",
+            "answer_en": "Clear written updates and availability during afternoon service hours are required; experience with the booking software is preferred."
+          },
+          {
+            "prompt_en": "Why does Mina ask about the exact service hours before applying?",
+            "answer_en": "Her course schedule may overlap, so she needs to check whether she can meet a required condition."
+          },
+          {
+            "prompt_en": "Would software training alone resolve every uncertainty? Give evidence.",
+            "answer_en": "No. Training could address unfamiliar software, but Mina still needs to determine whether the required hours conflict with her course."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep01-s01",
+          "english": "This fictional assistant role requires clear written updates.",
+          "demo": "This fictional assistant role requires clear written updates.",
+          "instruction": {
+            "en": "Separate a required qualification from a preferred qualification.",
+            "zh-TW": "區分必要資格與加分條件。",
+            "zh-CN": "区分必要资格与加分条件。",
+            "ja": "必須条件と歓迎条件を区別します。",
+            "ko": "필수 자격과 우대 조건을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這個虛構助理職務要求清楚的書面進度回報。",
+            "zh-CN": "这个虚构助理岗位要求清晰的书面进度汇报。",
+            "ja": "この架空のアシスタント職では、明確な進捗報告を書く力が必要です。",
+            "ko": "이 가상의 보조 직무에는 명확한 서면 진행 보고 능력이 필요해요."
+          },
+          "visual": "sentence:This fictional assistant role requires clear written updates.",
+          "target": "sentence:This fictional assistant role requires clear written updates.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep01-s02",
+          "english": "Experience with the booking system is preferred, not required.",
+          "demo": "Experience with the booking system is preferred, not required.",
+          "instruction": {
+            "en": "Separate a required qualification from a preferred qualification.",
+            "zh-TW": "區分必要資格與加分條件。",
+            "zh-CN": "区分必要资格与加分条件。",
+            "ja": "必須条件と歓迎条件を区別します。",
+            "ko": "필수 자격과 우대 조건을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "預約系統的使用經驗是加分條件，不是必備條件。",
+            "zh-CN": "预约系统的使用经验是加分条件，不是必备条件。",
+            "ja": "予約システムの使用経験は歓迎条件で、必須ではありません。",
+            "ko": "예약 시스템 사용 경험은 우대 조건이며 필수는 아니에요."
+          },
+          "visual": "sentence:Experience with the booking system is preferred, not required.",
+          "target": "sentence:Experience with the booking system is preferred, not required.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep01-s03",
+          "english": "I wrote weekly updates for a volunteer team.",
+          "demo": "I wrote weekly updates for a volunteer team.",
+          "instruction": {
+            "en": "Support the skill with a specific action the reader can understand.",
+            "zh-TW": "用讀者能理解的具體行動支持技能。",
+            "zh-CN": "用读者能理解的具体行动支持技能。",
+            "ja": "読み手が理解できる具体的な行動で技能を裏付けます。",
+            "ko": "독자가 이해할 수 있는 구체적 행동으로 역량을 뒷받침해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我曾為志工團隊撰寫每週進度回報。",
+            "zh-CN": "我曾为志愿者团队撰写每周进度汇报。",
+            "ja": "私はボランティアチームの週次報告を書いていました。",
+            "ko": "저는 자원봉사 팀의 주간 진행 보고를 작성했어요."
+          },
+          "visual": "sentence:I wrote weekly updates for a volunteer team.",
+          "target": "sentence:I wrote weekly updates for a volunteer team.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep01-s04",
+          "english": "I have relevant writing experience, but I have not used that system.",
+          "demo": "I have relevant writing experience, but I have not used that system.",
+          "instruction": {
+            "en": "State the limit honestly; do not turn experience into a guarantee.",
+            "zh-TW": "誠實交代限制，別把經驗說成保證。",
+            "zh-CN": "诚实交代限制，别把经历说成保证。",
+            "ja": "限界を正直に示し、経験を保証のように伝えないようにします。",
+            "ko": "한계를 솔직히 밝히고 경험을 보장처럼 말하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "我有相關寫作經驗，但尚未使用過那個系統。",
+            "zh-CN": "我有相关写作经验，但尚未使用过那个系统。",
+            "ja": "関連する文章作成の経験はありますが、そのシステムは使ったことがありません。",
+            "ko": "관련 문서 작성 경험은 있지만 그 시스템은 사용해 본 적이 없어요."
+          },
+          "visual": "sentence:I have relevant writing experience, but I have not used that system.",
+          "target": "sentence:I have relevant writing experience, but I have not used that system.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep01-s05",
+          "english": "Listen and choose.",
+          "demo": "Experience with the booking system is preferred, not required.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "預約系統的使用經驗是加分條件，不是必備條件。",
+            "zh-CN": "预约系统的使用经验是加分条件，不是必备条件。",
+            "ja": "予約システムの使用経験は歓迎条件で、必須ではありません。",
+            "ko": "예약 시스템 사용 경험은 우대 조건이며 필수는 아니에요."
+          },
+          "visual": "sentence:Experience with the booking system is preferred, not required.",
+          "target": "sentence:Experience with the booking system is preferred, not required.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:Experience with the booking system is preferred, not required.",
+            "sentence:This fictional assistant role requires clear written updates.",
+            "sentence:A preferred skill does not replace an unmet requirement."
+          ]
+        },
+        {
+          "id": "ep01-s06",
+          "english": "Does the role include training on the booking system?",
+          "demo": "Does the role include training on the booking system?",
+          "instruction": {
+            "en": "Ask about the uncertain detail before assuming what it means.",
+            "zh-TW": "先問清楚不確定的細節，再決定做法。",
+            "zh-CN": "先问清楚不确定的细节，再决定做法。",
+            "ja": "不明な点は意味を決めつけず、先に確認します。",
+            "ko": "불확실한 부분을 추측하지 말고 먼저 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這個職務包含預約系統的操作訓練嗎？",
+            "zh-CN": "这个岗位包含预约系统的操作培训吗？",
+            "ja": "この職務では予約システムの研修を受けられますか。",
+            "ko": "이 직무에는 예약 시스템 교육이 포함되나요?"
+          },
+          "visual": "sentence:Does the role include training on the booking system?",
+          "target": "sentence:Does the role include training on the booking system?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep01-s07",
+          "english": "Listen and choose.",
+          "demo": "Does the role include training on the booking system?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "這個職務包含預約系統的操作訓練嗎？",
+            "zh-CN": "这个岗位包含预约系统的操作培训吗？",
+            "ja": "この職務では予約システムの研修を受けられますか。",
+            "ko": "이 직무에는 예약 시스템 교육이 포함되나요?"
+          },
+          "visual": "sentence:Does the role include training on the booking system?",
+          "target": "sentence:Does the role include training on the booking system?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:This fictional assistant role requires clear written updates.",
+            "sentence:Does the role include training on the booking system?",
+            "sentence:A preferred skill does not replace an unmet requirement."
+          ]
+        },
+        {
+          "id": "ep01-s08",
+          "english": "I will check the required working hours before applying.",
+          "demo": "I will check the required working hours before applying.",
+          "instruction": {
+            "en": "Offer a concrete next step with a clear purpose.",
+            "zh-TW": "提出目的清楚的具體下一步。",
+            "zh-CN": "提出目的清楚的具体下一步。",
+            "ja": "目的が明確な、具体的な次の行動を示します。",
+            "ko": "목적이 분명한 구체적인 다음 단계를 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會在申請前確認必須配合的工作時段。",
+            "zh-CN": "我会在申请前确认必须配合的工作时段。",
+            "ja": "応募前に、必要な勤務時間を確認します。",
+            "ko": "지원하기 전에 필수 근무 시간을 확인하겠어요."
+          },
+          "visual": "sentence:I will check the required working hours before applying.",
+          "target": "sentence:I will check the required working hours before applying.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep01-s09",
+          "english": "Listen and choose.",
+          "demo": "I will check the required working hours before applying.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會在申請前確認必須配合的工作時段。",
+            "zh-CN": "我会在申请前确认必须配合的工作时段。",
+            "ja": "応募前に、必要な勤務時間を確認します。",
+            "ko": "지원하기 전에 필수 근무 시간을 확인하겠어요."
+          },
+          "visual": "sentence:I will check the required working hours before applying.",
+          "target": "sentence:I will check the required working hours before applying.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:This fictional assistant role requires clear written updates.",
+            "sentence:A preferred skill does not replace an unmet requirement.",
+            "sentence:I will check the required working hours before applying."
+          ]
+        },
+        {
+          "id": "ep01-s10",
+          "english": "A preferred skill does not replace an unmet requirement.",
+          "demo": "A preferred skill does not replace an unmet requirement.",
+          "instruction": {
+            "en": "Check that purpose, evidence, and next action fit together.",
+            "zh-TW": "檢查目的、證據與下一步是否一致。",
+            "zh-CN": "检查目的、证据与下一步是否一致。",
+            "ja": "目的、根拠、次の行動が一貫しているか確認します。",
+            "ko": "목적, 근거, 다음 행동이 서로 일치하는지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "加分技能不能取代尚未符合的必備條件。",
+            "zh-CN": "加分技能不能取代尚未满足的必备条件。",
+            "ja": "歓迎される技能があっても、満たしていない必須条件の代わりにはなりません。",
+            "ko": "우대 역량이 있어도 충족하지 못한 필수 조건을 대신할 수는 없어요."
+          },
+          "visual": "sentence:A preferred skill does not replace an unmet requirement.",
+          "target": "sentence:A preferred skill does not replace an unmet requirement.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        }
+      ]
+    },
+    {
+      "id": "ep02",
+      "number": 2,
+      "season": 1,
+      "stage": 1,
+      "course": "workplace",
+      "title_en": "Skills with Evidence",
+      "title_zh_TW": "讓履歷技能有證據",
+      "titles": {
+        "zh-TW": "讓履歷技能有證據",
+        "zh-CN": "让简历技能有证据",
+        "ja": "根拠のあるスキルの伝え方",
+        "ko": "근거로 보여 주는 역량"
+      },
+      "topic": "resume-actions-and-evidence",
+      "objectives_zh_TW": [
+        "以具體動作和工作範圍改寫籠統技能。",
+        "區分個人貢獻、團隊成果及沒有量測的影響。",
+        "寫一百至一百四十詞履歷說明。"
+      ],
+      "parent_tip_zh_TW": "每個履歷句子都問自己：我做了什麼、範圍多大、哪一項結果真的有紀錄？",
+      "practice": {
+        "reading_en": "In this fictional resume workshop, Theo applies for a purchasing support role. His first draft says that he is organized and excellent at saving money. His mentor asks what he actually did. Theo recalls a student event where suppliers sent delivery details in different email formats. He transferred their replies into a shared sheet with consistent headings for delivery date, available items, and quoted price. The project lead then compared the options and selected a supplier. Theo did not negotiate prices or make the final choice. The group also did not record a reliable cost comparison with an earlier event. He therefore removes the unsupported savings claim. His revised bullet describes the comparison sheet and its use in the decision process. He keeps a sample with invented supplier names to discuss at an interview. The revised version is less dramatic, but it allows an interviewer to understand his specific contribution and ask meaningful follow-up questions.",
+        "prompt_en": "Write 100-140 words explaining a fictional applicant's evidence-based resume revision. Include a revised accomplishment statement, distinguish personal work from team decisions, and explain one claim to avoid.",
+        "prompt_zh_TW": "用一百至一百四十詞說明虛構求職者如何依證據修改履歷。包含改寫後的成果敘述、個人工作與團隊決定的區別，以及應避免的一項主張。",
+        "sample_answer_en": "Theo could write, \"Organized supplier replies into a shared comparison sheet that helped the project lead evaluate delivery options.\" This statement names an action, an output, and its documented use. It is stronger than simply calling himself organized because an interviewer can ask how he selected the headings or handled missing information. The statement should not say that he chose the supplier, since the project lead made that decision. It should also avoid claiming cost savings because the group did not measure a reliable comparison. At an interview, Theo can explain his process using a sample with invented supplier names. This would show his contribution without exaggerating his authority or inventing a result.",
+        "questions": [
+          {
+            "prompt_en": "What information did Theo organize in the shared sheet?",
+            "answer_en": "He organized delivery dates, available items, and quoted prices from supplier replies."
+          },
+          {
+            "prompt_en": "Why does Theo remove the claim about saving money?",
+            "answer_en": "The group did not record a reliable comparison, so there is no evidence for that claimed result."
+          },
+          {
+            "prompt_en": "Why is the revised bullet more useful to an interviewer? Give a reason.",
+            "answer_en": "It identifies a specific action and how the sheet was used, allowing the interviewer to ask about Theo's process and actual contribution."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep02-s01",
+          "english": "A fictional applicant replaces broad claims with specific actions.",
+          "demo": "A fictional applicant replaces broad claims with specific actions.",
+          "instruction": {
+            "en": "Support the skill with a specific action the reader can understand.",
+            "zh-TW": "用讀者能理解的具體行動支持技能。",
+            "zh-CN": "用读者能理解的具体行动支持技能。",
+            "ja": "読み手が理解できる具体的な行動で技能を裏付けます。",
+            "ko": "독자가 이해할 수 있는 구체적 행동으로 역량을 뒷받침해요."
+          },
+          "demo_translation": {
+            "zh-TW": "一位虛構求職者用具體行動取代籠統主張。",
+            "zh-CN": "一位虚构求职者用具体行动取代笼统主张。",
+            "ja": "架空の応募者が、漠然とした主張を具体的な行動に書き換えます。",
+            "ko": "가상의 지원자가 막연한 주장을 구체적인 행동으로 바꿔요."
+          },
+          "visual": "sentence:A fictional applicant replaces broad claims with specific actions.",
+          "target": "sentence:A fictional applicant replaces broad claims with specific actions.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep02-s02",
+          "english": "I organized supplier replies in a shared comparison sheet.",
+          "demo": "I organized supplier replies in a shared comparison sheet.",
+          "instruction": {
+            "en": "Use an action verb to explain what you actually did.",
+            "zh-TW": "用動作動詞說明自己實際做了什麼。",
+            "zh-CN": "用动作动词说明自己实际做了什么。",
+            "ja": "実際に何をしたかを動作を表す動詞で説明します。",
+            "ko": "동작을 나타내는 동사로 실제로 한 일을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我把供應商回覆整理進共用比較表。",
+            "zh-CN": "我把供应商回复整理进共享比较表。",
+            "ja": "仕入先からの返信を共有の比較表に整理しました。",
+            "ko": "공급업체의 답변을 공유 비교표에 정리했어요."
+          },
+          "visual": "sentence:I organized supplier replies in a shared comparison sheet.",
+          "target": "sentence:I organized supplier replies in a shared comparison sheet.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep02-s03",
+          "english": "The project lead used that sheet to compare delivery options.",
+          "demo": "The project lead used that sheet to compare delivery options.",
+          "instruction": {
+            "en": "Describe the observed result without claiming an unsupported wider effect.",
+            "zh-TW": "描述觀察到的結果，不誇大其他影響。",
+            "zh-CN": "描述观察到的结果，不夸大其他影响。",
+            "ja": "観察できた結果を述べ、裏付けのない広い効果は主張しません。",
+            "ko": "관찰한 결과를 말하고 근거 없는 더 큰 효과는 주장하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "專案負責人用那張表比較交貨選項。",
+            "zh-CN": "项目负责人用那张表比较交货选项。",
+            "ja": "プロジェクト責任者は、その表で納品方法を比較しました。",
+            "ko": "프로젝트 책임자는 그 표로 납품 방안을 비교했어요."
+          },
+          "visual": "sentence:The project lead used that sheet to compare delivery options.",
+          "target": "sentence:The project lead used that sheet to compare delivery options.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep02-s04",
+          "english": "I prepared the comparison; the project lead chose the supplier.",
+          "demo": "I prepared the comparison; the project lead chose the supplier.",
+          "instruction": {
+            "en": "Separate your own responsibility from the responsibility of others.",
+            "zh-TW": "區分自己的責任與他人的責任。",
+            "zh-CN": "区分自己的责任与他人的责任。",
+            "ja": "自分の担当と他の人の担当を区別します。",
+            "ko": "자신의 책임과 다른 사람의 책임을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我準備比較資料；由專案負責人選擇供應商。",
+            "zh-CN": "我准备比较资料；由项目负责人选择供应商。",
+            "ja": "比較資料は私が作成し、仕入先はプロジェクト責任者が選びました。",
+            "ko": "비교 자료는 제가 준비했고 공급업체는 프로젝트 책임자가 선택했어요."
+          },
+          "visual": "sentence:I prepared the comparison; the project lead chose the supplier.",
+          "target": "sentence:I prepared the comparison; the project lead chose the supplier.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep02-s05",
+          "english": "Listen and choose.",
+          "demo": "I organized supplier replies in a shared comparison sheet.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我把供應商回覆整理進共用比較表。",
+            "zh-CN": "我把供应商回复整理进共享比较表。",
+            "ja": "仕入先からの返信を共有の比較表に整理しました。",
+            "ko": "공급업체의 답변을 공유 비교표에 정리했어요."
+          },
+          "visual": "sentence:I organized supplier replies in a shared comparison sheet.",
+          "target": "sentence:I organized supplier replies in a shared comparison sheet.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:I organized supplier replies in a shared comparison sheet.",
+            "sentence:A fictional applicant replaces broad claims with specific actions.",
+            "sentence:Describe a supported contribution, not an invented achievement."
+          ]
+        },
+        {
+          "id": "ep02-s06",
+          "english": "I cannot claim cost savings because we did not measure them.",
+          "demo": "I cannot claim cost savings because we did not measure them.",
+          "instruction": {
+            "en": "State the limit honestly; do not turn experience into a guarantee.",
+            "zh-TW": "誠實交代限制，別把經驗說成保證。",
+            "zh-CN": "诚实交代限制，别把经历说成保证。",
+            "ja": "限界を正直に示し、経験を保証のように伝えないようにします。",
+            "ko": "한계를 솔직히 밝히고 경험을 보장처럼 말하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "我不能聲稱節省了成本，因為我們沒有量測。",
+            "zh-CN": "我不能声称节省了成本，因为我们没有测量。",
+            "ja": "測定していないため、費用を削減したとは主張できません。",
+            "ko": "측정하지 않았으므로 비용을 절감했다고 주장할 수는 없어요."
+          },
+          "visual": "sentence:I cannot claim cost savings because we did not measure them.",
+          "target": "sentence:I cannot claim cost savings because we did not measure them.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep02-s07",
+          "english": "Listen and choose.",
+          "demo": "I cannot claim cost savings because we did not measure them.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我不能聲稱節省了成本，因為我們沒有量測。",
+            "zh-CN": "我不能声称节省了成本，因为我们没有测量。",
+            "ja": "測定していないため、費用を削減したとは主張できません。",
+            "ko": "측정하지 않았으므로 비용을 절감했다고 주장할 수는 없어요."
+          },
+          "visual": "sentence:I cannot claim cost savings because we did not measure them.",
+          "target": "sentence:I cannot claim cost savings because we did not measure them.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:A fictional applicant replaces broad claims with specific actions.",
+            "sentence:I cannot claim cost savings because we did not measure them.",
+            "sentence:Describe a supported contribution, not an invented achievement."
+          ]
+        },
+        {
+          "id": "ep02-s08",
+          "english": "This example shows how I make information easier to compare.",
+          "demo": "This example shows how I make information easier to compare.",
+          "instruction": {
+            "en": "Connect your experience to the work this particular role involves.",
+            "zh-TW": "把經驗連到這個職務的具體工作。",
+            "zh-CN": "把经历连到这个岗位的具体工作。",
+            "ja": "経験を、この職務で行う具体的な仕事につなげます。",
+            "ko": "경험을 이 직무에서 하는 구체적인 업무와 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這個例子呈現我如何讓資訊更容易比較。",
+            "zh-CN": "这个例子呈现我如何让信息更容易比较。",
+            "ja": "この例は、情報を比較しやすく整理する力を示しています。",
+            "ko": "이 사례는 제가 정보를 비교하기 쉽게 만드는 방법을 보여 줘요."
+          },
+          "visual": "sentence:This example shows how I make information easier to compare.",
+          "target": "sentence:This example shows how I make information easier to compare.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep02-s09",
+          "english": "Listen and choose.",
+          "demo": "This example shows how I make information easier to compare.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "這個例子呈現我如何讓資訊更容易比較。",
+            "zh-CN": "这个例子呈现我如何让信息更容易比较。",
+            "ja": "この例は、情報を比較しやすく整理する力を示しています。",
+            "ko": "이 사례는 제가 정보를 비교하기 쉽게 만드는 방법을 보여 줘요."
+          },
+          "visual": "sentence:This example shows how I make information easier to compare.",
+          "target": "sentence:This example shows how I make information easier to compare.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:A fictional applicant replaces broad claims with specific actions.",
+            "sentence:Describe a supported contribution, not an invented achievement.",
+            "sentence:This example shows how I make information easier to compare."
+          ]
+        },
+        {
+          "id": "ep02-s10",
+          "english": "Describe a supported contribution, not an invented achievement.",
+          "demo": "Describe a supported contribution, not an invented achievement.",
+          "instruction": {
+            "en": "Check that purpose, evidence, and next action fit together.",
+            "zh-TW": "檢查目的、證據與下一步是否一致。",
+            "zh-CN": "检查目的、证据与下一步是否一致。",
+            "ja": "目的、根拠、次の行動が一貫しているか確認します。",
+            "ko": "목적, 근거, 다음 행동이 서로 일치하는지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "描述有根據的貢獻，不要編造績效。",
+            "zh-CN": "描述有根据的贡献，不要编造业绩。",
+            "ja": "架空の実績ではなく、根拠のある貢献を述べます。",
+            "ko": "만들어 낸 성과가 아니라 근거 있는 기여를 설명해요."
+          },
+          "visual": "sentence:Describe a supported contribution, not an invented achievement.",
+          "target": "sentence:Describe a supported contribution, not an invented achievement.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        }
+      ]
+    },
+    {
+      "id": "ep03",
+      "number": 3,
+      "season": 1,
+      "stage": 1,
+      "course": "workplace",
+      "title_en": "A Focused Application Email",
+      "title_zh_TW": "寫重點清楚的求職信",
+      "titles": {
+        "zh-TW": "寫重點清楚的求職信",
+        "zh-CN": "写重点清晰的求职信",
+        "ja": "要点を絞った応募メール",
+        "ko": "요점이 분명한 지원 이메일"
+      },
+      "topic": "application-email-purpose-and-fit",
+      "objectives_zh_TW": [
+        "在開頭交代應徵職務與來信目的。",
+        "用一項相關經驗支持適任性並指明附件。",
+        "寫一百至一百四十詞簡潔求職郵件。"
+      ],
+      "parent_tip_zh_TW": "用主旨、職務、證據、附件與下一步檢查求職信；不要把履歷整份貼進郵件。",
+      "practice": {
+        "reading_en": "This fictional application exercise concerns a community support assistant at Maple Circle. The advertisement asks applicants to email a resume and a short explanation of relevant experience. Hana first drafts a long message listing every course she has taken. Much of the information does not explain how she would answer member questions. She revises the subject line to identify the role and her name. In the opening, she states that she is applying. She then chooses one example from a volunteer registration desk, where she explained a process and checked understanding before moving on. She connects that experience to the advertisement's emphasis on clear member replies. Her final paragraph identifies the attached resume and expresses interest in discussing the role. She checks that the attachment is actually present and that the file name is understandable. The email does not promise perfect service or claim expertise with tools she has never used. It gives the reader a clear reason to open the supporting document.",
+        "prompt_en": "Write a 100-140-word application email for a fictional support role. Include an informative subject, a relevant example, its connection to the role, an attachment reference, and a courteous next step.",
+        "prompt_zh_TW": "寫一封一百至一百四十詞的虛構支援職務求職郵件。包含明確主旨、相關例子、與職務的連結、附件說明及禮貌的下一步。",
+        "sample_answer_en": "Subject: Application for Community Support Assistant - Hana Lee\n\nDear Hiring Team,\n\nI am applying for the community support assistant role at Maple Circle. Your advertisement emphasizes clear replies to member questions. At a volunteer registration desk, I explained the registration process to new members and checked that they understood the next step. This experience helped me adapt an explanation when someone needed a different example. I would like to bring that careful approach to your support team while learning your procedures.\n\nMy attached resume provides further details about my volunteer work and relevant study. I would welcome an opportunity to discuss how this experience relates to the role.\n\nThank you for considering my application.\n\nHana Lee",
+        "questions": [
+          {
+            "prompt_en": "What does the advertisement ask applicants to submit?",
+            "answer_en": "It asks for a resume and a short explanation of relevant experience by email."
+          },
+          {
+            "prompt_en": "Why does Hana replace the long course list with a volunteer example?",
+            "answer_en": "The example directly shows how she explained a process to members, which relates to the advertised work."
+          },
+          {
+            "prompt_en": "What evidence suggests that the revised email helps the recipient act?",
+            "answer_en": "The subject identifies the role, the body explains relevant experience, and the closing identifies the attached resume, giving the recipient a clear next document to review."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep03-s01",
+          "english": "I am applying for the fictional community support assistant role.",
+          "demo": "I am applying for the fictional community support assistant role.",
+          "instruction": {
+            "en": "Include the information this recipient needs to take the next action.",
+            "zh-TW": "提供對方採取下一步所需的資訊。",
+            "zh-CN": "提供对方采取下一步所需的信息。",
+            "ja": "相手が次の行動を取るために必要な情報を含めます。",
+            "ko": "상대가 다음 행동을 하는 데 필요한 정보를 담아요."
+          },
+          "demo_translation": {
+            "zh-TW": "我來信應徵這個虛構的社群支援助理職務。",
+            "zh-CN": "我来信应聘这个虚构的社群支持助理岗位。",
+            "ja": "架空のコミュニティ支援アシスタント職に応募いたします。",
+            "ko": "가상의 커뮤니티 지원 보조 직무에 지원합니다."
+          },
+          "visual": "sentence:I am applying for the fictional community support assistant role.",
+          "target": "sentence:I am applying for the fictional community support assistant role.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep03-s02",
+          "english": "Your advertisement emphasizes clear replies to member questions.",
+          "demo": "Your advertisement emphasizes clear replies to member questions.",
+          "instruction": {
+            "en": "Connect your experience to the work this particular role involves.",
+            "zh-TW": "把經驗連到這個職務的具體工作。",
+            "zh-CN": "把经历连到这个岗位的具体工作。",
+            "ja": "経験を、この職務で行う具体的な仕事につなげます。",
+            "ko": "경험을 이 직무에서 하는 구체적인 업무와 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "貴單位的職缺說明強調清楚回覆會員問題。",
+            "zh-CN": "贵单位的招聘说明强调清晰回复会员问题。",
+            "ja": "求人票では、会員の質問に分かりやすく答えることを重視されています。",
+            "ko": "채용 공고에서는 회원 질문에 명확히 답하는 것을 강조하고 있어요."
+          },
+          "visual": "sentence:Your advertisement emphasizes clear replies to member questions.",
+          "target": "sentence:Your advertisement emphasizes clear replies to member questions.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep03-s03",
+          "english": "At a volunteer desk, I explained registration steps to new members.",
+          "demo": "At a volunteer desk, I explained registration steps to new members.",
+          "instruction": {
+            "en": "Support the skill with a specific action the reader can understand.",
+            "zh-TW": "用讀者能理解的具體行動支持技能。",
+            "zh-CN": "用读者能理解的具体行动支持技能。",
+            "ja": "読み手が理解できる具体的な行動で技能を裏付けます。",
+            "ko": "독자가 이해할 수 있는 구체적 행동으로 역량을 뒷받침해요."
+          },
+          "demo_translation": {
+            "zh-TW": "在志工服務台，我曾向新會員說明註冊步驟。",
+            "zh-CN": "在志愿者服务台，我曾向新会员说明注册步骤。",
+            "ja": "ボランティアの窓口で、新しい会員に登録手順を説明していました。",
+            "ko": "자원봉사 안내 데스크에서 신규 회원에게 등록 절차를 설명했어요."
+          },
+          "visual": "sentence:At a volunteer desk, I explained registration steps to new members.",
+          "target": "sentence:At a volunteer desk, I explained registration steps to new members.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep03-s04",
+          "english": "That experience taught me to check whether an explanation was clear.",
+          "demo": "That experience taught me to check whether an explanation was clear.",
+          "instruction": {
+            "en": "Explain why the detail matters for the recipient or task.",
+            "zh-TW": "說明這項細節對收件人或任務的意義。",
+            "zh-CN": "说明这项细节对收件人或任务的意义。",
+            "ja": "その情報が相手や作業にとって重要な理由を説明します。",
+            "ko": "그 정보가 상대나 과제에 중요한 이유를 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "那段經驗讓我學會確認說明是否清楚。",
+            "zh-CN": "那段经历让我学会确认说明是否清晰。",
+            "ja": "その経験から、説明が伝わったかを確認する大切さを学びました。",
+            "ko": "그 경험을 통해 설명이 명확했는지 확인하는 법을 배웠어요."
+          },
+          "visual": "sentence:That experience taught me to check whether an explanation was clear.",
+          "target": "sentence:That experience taught me to check whether an explanation was clear.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep03-s05",
+          "english": "Listen and choose.",
+          "demo": "Your advertisement emphasizes clear replies to member questions.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "貴單位的職缺說明強調清楚回覆會員問題。",
+            "zh-CN": "贵单位的招聘说明强调清晰回复会员问题。",
+            "ja": "求人票では、会員の質問に分かりやすく答えることを重視されています。",
+            "ko": "채용 공고에서는 회원 질문에 명확히 답하는 것을 강조하고 있어요."
+          },
+          "visual": "sentence:Your advertisement emphasizes clear replies to member questions.",
+          "target": "sentence:Your advertisement emphasizes clear replies to member questions.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:Your advertisement emphasizes clear replies to member questions.",
+            "sentence:I am applying for the fictional community support assistant role.",
+            "sentence:A focused email connects one relevant example to the advertised work."
+          ]
+        },
+        {
+          "id": "ep03-s06",
+          "english": "My attached resume gives further details about this work.",
+          "demo": "My attached resume gives further details about this work.",
+          "instruction": {
+            "en": "Include the information this recipient needs to take the next action.",
+            "zh-TW": "提供對方採取下一步所需的資訊。",
+            "zh-CN": "提供对方采取下一步所需的信息。",
+            "ja": "相手が次の行動を取るために必要な情報を含めます。",
+            "ko": "상대가 다음 행동을 하는 데 필요한 정보를 담아요."
+          },
+          "demo_translation": {
+            "zh-TW": "附件履歷提供了這項工作的進一步資料。",
+            "zh-CN": "附件简历提供了这项工作的进一步资料。",
+            "ja": "添付の履歴書に、この活動の詳細を記載しています。",
+            "ko": "첨부한 이력서에 이 활동의 자세한 내용을 담았어요."
+          },
+          "visual": "sentence:My attached resume gives further details about this work.",
+          "target": "sentence:My attached resume gives further details about this work.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep03-s07",
+          "english": "Listen and choose.",
+          "demo": "My attached resume gives further details about this work.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "附件履歷提供了這項工作的進一步資料。",
+            "zh-CN": "附件简历提供了这项工作的进一步资料。",
+            "ja": "添付の履歴書に、この活動の詳細を記載しています。",
+            "ko": "첨부한 이력서에 이 활동의 자세한 내용을 담았어요."
+          },
+          "visual": "sentence:My attached resume gives further details about this work.",
+          "target": "sentence:My attached resume gives further details about this work.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:I am applying for the fictional community support assistant role.",
+            "sentence:My attached resume gives further details about this work.",
+            "sentence:A focused email connects one relevant example to the advertised work."
+          ]
+        },
+        {
+          "id": "ep03-s08",
+          "english": "I would welcome the opportunity to discuss the role.",
+          "demo": "I would welcome the opportunity to discuss the role.",
+          "instruction": {
+            "en": "Keep the request courteous while making its purpose clear.",
+            "zh-TW": "保持禮貌，同時清楚表達請求目的。",
+            "zh-CN": "保持礼貌，同时清楚表达请求目的。",
+            "ja": "丁寧さを保ちながら、依頼の目的を明確にします。",
+            "ko": "예의를 지키면서 요청의 목적을 명확히 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "我很期待有機會進一步討論這個職務。",
+            "zh-CN": "我很期待有机会进一步讨论这个岗位。",
+            "ja": "この職務についてお話しする機会をいただければ幸いです。",
+            "ko": "이 직무에 관해 이야기할 기회가 있다면 감사하겠어요."
+          },
+          "visual": "sentence:I would welcome the opportunity to discuss the role.",
+          "target": "sentence:I would welcome the opportunity to discuss the role.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep03-s09",
+          "english": "Listen and choose.",
+          "demo": "I would welcome the opportunity to discuss the role.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我很期待有機會進一步討論這個職務。",
+            "zh-CN": "我很期待有机会进一步讨论这个岗位。",
+            "ja": "この職務についてお話しする機会をいただければ幸いです。",
+            "ko": "이 직무에 관해 이야기할 기회가 있다면 감사하겠어요."
+          },
+          "visual": "sentence:I would welcome the opportunity to discuss the role.",
+          "target": "sentence:I would welcome the opportunity to discuss the role.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:I am applying for the fictional community support assistant role.",
+            "sentence:A focused email connects one relevant example to the advertised work.",
+            "sentence:I would welcome the opportunity to discuss the role."
+          ]
+        },
+        {
+          "id": "ep03-s10",
+          "english": "A focused email connects one relevant example to the advertised work.",
+          "demo": "A focused email connects one relevant example to the advertised work.",
+          "instruction": {
+            "en": "Check that purpose, evidence, and next action fit together.",
+            "zh-TW": "檢查目的、證據與下一步是否一致。",
+            "zh-CN": "检查目的、证据与下一步是否一致。",
+            "ja": "目的、根拠、次の行動が一貫しているか確認します。",
+            "ko": "목적, 근거, 다음 행동이 서로 일치하는지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "重點清楚的郵件把一個相關例子連到職缺工作。",
+            "zh-CN": "重点清晰的邮件把一个相关例子连到招聘岗位的工作。",
+            "ja": "要点を絞ったメールは、関連する一例を募集業務につなげます。",
+            "ko": "요점이 분명한 이메일은 관련 사례 하나를 채용 업무와 연결해요."
+          },
+          "visual": "sentence:A focused email connects one relevant example to the advertised work.",
+          "target": "sentence:A focused email connects one relevant example to the advertised work.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        }
+      ]
+    },
+    {
+      "id": "ep04",
+      "number": 4,
+      "season": 1,
+      "stage": 1,
+      "course": "workplace",
+      "title_en": "A Relevant Interview Introduction",
+      "title_zh_TW": "面試自介連到職務",
+      "titles": {
+        "zh-TW": "面試自介連到職務",
+        "zh-CN": "面试自我介绍联系岗位",
+        "ja": "職務につながる面接の自己紹介",
+        "ko": "직무와 연결되는 면접 자기소개"
+      },
+      "topic": "interview-introduction-relevance",
+      "objectives_zh_TW": [
+        "選擇與面試職務有關的背景。",
+        "把一項經驗連到動機，保留能力界線。",
+        "寫一百至一百四十詞口語面試自介。"
+      ],
+      "parent_tip_zh_TW": "錄下自我介紹，刪掉與職務無關的時間順序細節，留下背景、例子與想做的工作。",
+      "practice": {
+        "reading_en": "In this fictional interview, Ravi is asked to introduce himself for a junior content role. His first practice answer begins with childhood hobbies and continues through every school year. A friend listening to it cannot tell why he wants this particular job. Ravi changes the structure. He starts with his recent content production course, then describes editing instructions for a community newsletter project. A new reader tested the instructions and asked questions about unclear steps. Ravi used those questions to revise the text. He connects the example to the employer's stated interest in writing that responds to reader needs. He also says that he is still learning professional publishing tools. This keeps the introduction relevant without presenting him as an experienced specialist. During a second practice, his friend can identify his background, a concrete example, and his reason for applying. Ravi leaves other experiences for later questions rather than trying to fit his entire history into the opening answer.",
+        "prompt_en": "Write a 100-140-word spoken introduction for a fictional junior content interview. Include relevant background, a concrete editing example, motivation for this role, and an honest learning need.",
+        "prompt_zh_TW": "為虛構初階內容職務面試寫一百至一百四十詞口語自介。包含相關背景、具體編修例子、應徵動機，以及誠實說明的學習需求。",
+        "sample_answer_en": "I recently completed a course in digital content production, where I became interested in practical writing. For a community newsletter project, I edited instructions that new members would use. I asked someone unfamiliar with the process to try them, then revised the steps that caused questions. That experience showed me how reader feedback can improve a piece of writing. This junior content role interests me because your description connects clear writing with understanding the audience. I would like to contribute careful editing and a willingness to test assumptions. I am still learning professional publishing tools, so I would also value guidance on your workflow. I am ready to discuss the project in more detail if that would be useful.",
+        "questions": [
+          {
+            "prompt_en": "Which example does Ravi use in the revised introduction?",
+            "answer_en": "He describes editing newsletter instructions and revising them after a new reader tested them."
+          },
+          {
+            "prompt_en": "How does the new structure make his motivation clearer?",
+            "answer_en": "It connects relevant study and an editing example to the employer's interest in writing for readers' needs."
+          },
+          {
+            "prompt_en": "Why is mentioning unfamiliar publishing tools compatible with a strong introduction?",
+            "answer_en": "It presents his current limit honestly while the editing example still demonstrates a relevant contribution; he does not need to claim expertise in everything."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep04-s01",
+          "english": "I recently completed a course in digital content production.",
+          "demo": "I recently completed a course in digital content production.",
+          "instruction": {
+            "en": "Include the information this recipient needs to take the next action.",
+            "zh-TW": "提供對方採取下一步所需的資訊。",
+            "zh-CN": "提供对方采取下一步所需的信息。",
+            "ja": "相手が次の行動を取るために必要な情報を含めます。",
+            "ko": "상대가 다음 행동을 하는 데 필요한 정보를 담아요."
+          },
+          "demo_translation": {
+            "zh-TW": "我最近完成了數位內容製作課程。",
+            "zh-CN": "我最近完成了数字内容制作课程。",
+            "ja": "最近、デジタルコンテンツ制作の講座を修了しました。",
+            "ko": "최근 디지털 콘텐츠 제작 과정을 마쳤어요."
+          },
+          "visual": "sentence:I recently completed a course in digital content production.",
+          "target": "sentence:I recently completed a course in digital content production.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep04-s02",
+          "english": "For a fictional project, I edited instructions for a community newsletter.",
+          "demo": "For a fictional project, I edited instructions for a community newsletter.",
+          "instruction": {
+            "en": "Support the skill with a specific action the reader can understand.",
+            "zh-TW": "用讀者能理解的具體行動支持技能。",
+            "zh-CN": "用读者能理解的具体行动支持技能。",
+            "ja": "読み手が理解できる具体的な行動で技能を裏付けます。",
+            "ko": "독자가 이해할 수 있는 구체적 행동으로 역량을 뒷받침해요."
+          },
+          "demo_translation": {
+            "zh-TW": "在一個虛構專案中，我編修了社區電子報的操作說明。",
+            "zh-CN": "在一个虚构项目中，我编辑了社区电子报的操作说明。",
+            "ja": "架空の企画で、地域ニュースレターの手順説明を編集しました。",
+            "ko": "가상의 프로젝트에서 지역 소식지의 이용 안내를 편집했어요."
+          },
+          "visual": "sentence:For a fictional project, I edited instructions for a community newsletter.",
+          "target": "sentence:For a fictional project, I edited instructions for a community newsletter.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep04-s03",
+          "english": "I asked a new reader to test the instructions.",
+          "demo": "I asked a new reader to test the instructions.",
+          "instruction": {
+            "en": "Use an action verb to explain what you actually did.",
+            "zh-TW": "用動作動詞說明自己實際做了什麼。",
+            "zh-CN": "用动作动词说明自己实际做了什么。",
+            "ja": "実際に何をしたかを動作を表す動詞で説明します。",
+            "ko": "동작을 나타내는 동사로 실제로 한 일을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我請一位新讀者試用那份說明。",
+            "zh-CN": "我请一位新读者试用那份说明。",
+            "ja": "初めて読む人に、その手順を試してもらいました。",
+            "ko": "처음 읽는 사람에게 안내 절차를 시험해 달라고 부탁했어요."
+          },
+          "visual": "sentence:I asked a new reader to test the instructions.",
+          "target": "sentence:I asked a new reader to test the instructions.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep04-s04",
+          "english": "Their questions helped me replace unclear steps with direct actions.",
+          "demo": "Their questions helped me replace unclear steps with direct actions.",
+          "instruction": {
+            "en": "Describe the observed result without claiming an unsupported wider effect.",
+            "zh-TW": "描述觀察到的結果，不誇大其他影響。",
+            "zh-CN": "描述观察到的结果，不夸大其他影响。",
+            "ja": "観察できた結果を述べ、裏付けのない広い効果は主張しません。",
+            "ko": "관찰한 결과를 말하고 근거 없는 더 큰 효과는 주장하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "對方的問題幫我把不清楚的步驟改成明確行動。",
+            "zh-CN": "对方的问题帮我把不清晰的步骤改成明确行动。",
+            "ja": "その人の質問を基に、曖昧な手順を具体的な動作に書き換えました。",
+            "ko": "그 사람의 질문을 바탕으로 모호한 단계를 구체적인 행동으로 바꿨어요."
+          },
+          "visual": "sentence:Their questions helped me replace unclear steps with direct actions.",
+          "target": "sentence:Their questions helped me replace unclear steps with direct actions.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep04-s05",
+          "english": "Listen and choose.",
+          "demo": "For a fictional project, I edited instructions for a community newsletter.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "在一個虛構專案中，我編修了社區電子報的操作說明。",
+            "zh-CN": "在一个虚构项目中，我编辑了社区电子报的操作说明。",
+            "ja": "架空の企画で、地域ニュースレターの手順説明を編集しました。",
+            "ko": "가상의 프로젝트에서 지역 소식지의 이용 안내를 편집했어요."
+          },
+          "visual": "sentence:For a fictional project, I edited instructions for a community newsletter.",
+          "target": "sentence:For a fictional project, I edited instructions for a community newsletter.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:For a fictional project, I edited instructions for a community newsletter.",
+            "sentence:I recently completed a course in digital content production.",
+            "sentence:I can contribute careful editing while developing those technical skills."
+          ]
+        },
+        {
+          "id": "ep04-s06",
+          "english": "This role interests me because it combines writing with reader feedback.",
+          "demo": "This role interests me because it combines writing with reader feedback.",
+          "instruction": {
+            "en": "Connect your experience to the work this particular role involves.",
+            "zh-TW": "把經驗連到這個職務的具體工作。",
+            "zh-CN": "把经历连到这个岗位的具体工作。",
+            "ja": "経験を、この職務で行う具体的な仕事につなげます。",
+            "ko": "경험을 이 직무에서 하는 구체적인 업무와 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這個職務結合寫作與讀者回饋，因此讓我感興趣。",
+            "zh-CN": "这个岗位结合写作与读者反馈，因此让我感兴趣。",
+            "ja": "文章作成と読者の反応を生かす仕事なので、この職務に興味があります。",
+            "ko": "글쓰기와 독자 의견을 함께 다루는 직무라서 관심이 있어요."
+          },
+          "visual": "sentence:This role interests me because it combines writing with reader feedback.",
+          "target": "sentence:This role interests me because it combines writing with reader feedback.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep04-s07",
+          "english": "Listen and choose.",
+          "demo": "This role interests me because it combines writing with reader feedback.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "這個職務結合寫作與讀者回饋，因此讓我感興趣。",
+            "zh-CN": "这个岗位结合写作与读者反馈，因此让我感兴趣。",
+            "ja": "文章作成と読者の反応を生かす仕事なので、この職務に興味があります。",
+            "ko": "글쓰기와 독자 의견을 함께 다루는 직무라서 관심이 있어요."
+          },
+          "visual": "sentence:This role interests me because it combines writing with reader feedback.",
+          "target": "sentence:This role interests me because it combines writing with reader feedback.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:I recently completed a course in digital content production.",
+            "sentence:This role interests me because it combines writing with reader feedback.",
+            "sentence:I can contribute careful editing while developing those technical skills."
+          ]
+        },
+        {
+          "id": "ep04-s08",
+          "english": "I am still learning professional publishing tools.",
+          "demo": "I am still learning professional publishing tools.",
+          "instruction": {
+            "en": "State the limit honestly; do not turn experience into a guarantee.",
+            "zh-TW": "誠實交代限制，別把經驗說成保證。",
+            "zh-CN": "诚实交代限制，别把经历说成保证。",
+            "ja": "限界を正直に示し、経験を保証のように伝えないようにします。",
+            "ko": "한계를 솔직히 밝히고 경험을 보장처럼 말하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "我仍在學習專業出版工具。",
+            "zh-CN": "我仍在学习专业出版工具。",
+            "ja": "専門的な出版ツールは、現在も学んでいるところです。",
+            "ko": "전문 출판 도구는 아직 배우고 있어요."
+          },
+          "visual": "sentence:I am still learning professional publishing tools.",
+          "target": "sentence:I am still learning professional publishing tools.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep04-s09",
+          "english": "Listen and choose.",
+          "demo": "I am still learning professional publishing tools.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我仍在學習專業出版工具。",
+            "zh-CN": "我仍在学习专业出版工具。",
+            "ja": "専門的な出版ツールは、現在も学んでいるところです。",
+            "ko": "전문 출판 도구는 아직 배우고 있어요."
+          },
+          "visual": "sentence:I am still learning professional publishing tools.",
+          "target": "sentence:I am still learning professional publishing tools.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:I recently completed a course in digital content production.",
+            "sentence:I can contribute careful editing while developing those technical skills.",
+            "sentence:I am still learning professional publishing tools."
+          ]
+        },
+        {
+          "id": "ep04-s10",
+          "english": "I can contribute careful editing while developing those technical skills.",
+          "demo": "I can contribute careful editing while developing those technical skills.",
+          "instruction": {
+            "en": "Check that purpose, evidence, and next action fit together.",
+            "zh-TW": "檢查目的、證據與下一步是否一致。",
+            "zh-CN": "检查目的、证据与下一步是否一致。",
+            "ja": "目的、根拠、次の行動が一貫しているか確認します。",
+            "ko": "목적, 근거, 다음 행동이 서로 일치하는지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我能貢獻細心編修的能力，同時繼續培養那些技術。",
+            "zh-CN": "我能贡献细心编辑的能力，同时继续培养那些技术。",
+            "ja": "技術を磨きながら、丁寧な編集で貢献できます。",
+            "ko": "그 기술을 발전시키면서 꼼꼼한 편집으로 기여할 수 있어요."
+          },
+          "visual": "sentence:I can contribute careful editing while developing those technical skills.",
+          "target": "sentence:I can contribute careful editing while developing those technical skills.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        }
+      ]
+    },
+    {
+      "id": "ep05",
+      "number": 5,
+      "season": 1,
+      "stage": 1,
+      "course": "workplace",
+      "title_en": "Explaining a Past Challenge",
+      "title_zh_TW": "說明過去的挑戰與行動",
+      "titles": {
+        "zh-TW": "說明過去的挑戰與行動",
+        "zh-CN": "说明过去的挑战与行动",
+        "ja": "過去の課題と行動を説明する",
+        "ko": "과거의 어려움과 행동 설명하기"
+      },
+      "topic": "behavioral-answer-action-result-limits",
+      "objectives_zh_TW": [
+        "用情境、任務、行動與結果組織面試回答。",
+        "分清自己的行動與他人反應。",
+        "用一百至一百四十詞回答經驗題，不推估未量測成效。"
+      ],
+      "parent_tip_zh_TW": "先列出實際做過的動作，再加入足夠背景；沒有紀錄的影響就明確說不知道。",
+      "practice": {
+        "reading_en": "This fictional interview question asks Ella to describe a time she handled confusion in a team. She chooses a group project where two members were editing different versions of a proposal. Her responsibility was to help identify the current draft, not to approve its content. Ella compared the files and listed their differences. She sent that list to the project lead, who confirmed which changes belonged in the shared version. Ella then added a clear link to the agreed draft in the team's message thread. At the next meeting, everyone worked from that same document. This is the result she can support. She does not claim that the team finished faster, because nobody measured the time saved. In her answer, she briefly explains the situation and spends more time on her own actions. She finishes with a lesson about confirming responsibility before changing a shared process. The account shows initiative while respecting the project lead's decision-making role.",
+        "prompt_en": "Write a 100-140-word interview answer about a fictional team challenge. Explain the situation, your responsibility, specific actions, an observed result, and one limit or lesson.",
+        "prompt_zh_TW": "寫一百至一百四十詞面試回答，描述虛構團隊挑戰。包含情境、自己的責任、具體行動、觀察到的結果，以及一項限制或心得。",
+        "sample_answer_en": "During a group project, two teammates were editing different versions of our proposal. I was responsible for helping the team identify the current draft. I compared the documents and made a list of the differences, then asked the project lead to confirm which changes we should keep. After that confirmation, I posted a clear link to the agreed version in our message thread. At the next meeting, everyone worked from the same document. We did not measure time savings, so I would not claim that result. The experience taught me to take a useful first step while checking who has authority to approve a change. I would use that approach again when a shared process becomes unclear.",
+        "questions": [
+          {
+            "prompt_en": "What was Ella responsible for, and what remained the project lead's decision?",
+            "answer_en": "Ella helped identify the current draft; the project lead confirmed which changes belonged in the shared version."
+          },
+          {
+            "prompt_en": "How did her actions lead to the observed result?",
+            "answer_en": "She compared versions, obtained confirmation, and shared one clear link, so members could use the same document."
+          },
+          {
+            "prompt_en": "Which result can she support, and which claim should she avoid? Why?",
+            "answer_en": "She can say that everyone used the same document at the next meeting. She should avoid claiming time savings because nobody measured them."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep05-s01",
+          "english": "In a fictional project, two teammates used different file versions.",
+          "demo": "In a fictional project, two teammates used different file versions.",
+          "instruction": {
+            "en": "Give enough context to identify the situation you are describing.",
+            "zh-TW": "提供足夠背景，讓人辨識你描述的情境。",
+            "zh-CN": "提供足够背景，让人识别你描述的情境。",
+            "ja": "説明している状況が分かるよう、必要な背景を示します。",
+            "ko": "설명하는 상황을 알 수 있도록 필요한 배경을 제공해요."
+          },
+          "demo_translation": {
+            "zh-TW": "在一個虛構專案中，兩位隊友用了不同檔案版本。",
+            "zh-CN": "在一个虚构项目中，两位队友用了不同文件版本。",
+            "ja": "架空の企画で、二人のメンバーが異なる版のファイルを使っていました。",
+            "ko": "가상의 프로젝트에서 팀원 두 명이 서로 다른 파일 버전을 사용했어요."
+          },
+          "visual": "sentence:In a fictional project, two teammates used different file versions.",
+          "target": "sentence:In a fictional project, two teammates used different file versions.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep05-s02",
+          "english": "I needed to help the team identify the current draft.",
+          "demo": "I needed to help the team identify the current draft.",
+          "instruction": {
+            "en": "Separate your own responsibility from the responsibility of others.",
+            "zh-TW": "區分自己的責任與他人的責任。",
+            "zh-CN": "区分自己的责任与他人的责任。",
+            "ja": "自分の担当と他の人の担当を区別します。",
+            "ko": "자신의 책임과 다른 사람의 책임을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我需要協助團隊辨識目前的草稿。",
+            "zh-CN": "我需要协助团队识别当前的草稿。",
+            "ja": "チームが最新の草稿を特定できるよう支援する必要がありました。",
+            "ko": "팀이 현재 초안을 확인하도록 도와야 했어요."
+          },
+          "visual": "sentence:I needed to help the team identify the current draft.",
+          "target": "sentence:I needed to help the team identify the current draft.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep05-s03",
+          "english": "I compared the files and listed the differences.",
+          "demo": "I compared the files and listed the differences.",
+          "instruction": {
+            "en": "Use an action verb to explain what you actually did.",
+            "zh-TW": "用動作動詞說明自己實際做了什麼。",
+            "zh-CN": "用动作动词说明自己实际做了什么。",
+            "ja": "実際に何をしたかを動作を表す動詞で説明します。",
+            "ko": "동작을 나타내는 동사로 실제로 한 일을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我比較了檔案，並列出差異。",
+            "zh-CN": "我比较了文件，并列出差异。",
+            "ja": "ファイルを比較し、相違点を一覧にしました。",
+            "ko": "파일을 비교하고 차이점을 목록으로 정리했어요."
+          },
+          "visual": "sentence:I compared the files and listed the differences.",
+          "target": "sentence:I compared the files and listed the differences.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep05-s04",
+          "english": "Then I asked the project lead to confirm the version to use.",
+          "demo": "Then I asked the project lead to confirm the version to use.",
+          "instruction": {
+            "en": "Distinguish preparing a recommendation from approving a final decision.",
+            "zh-TW": "區分提出建議與核准最終決定。",
+            "zh-CN": "区分提出建议与批准最终决定。",
+            "ja": "提案を準備することと、最終決定を承認することを区別します。",
+            "ko": "제안을 준비하는 일과 최종 결정을 승인하는 일을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "接著，我請專案負責人確認該使用的版本。",
+            "zh-CN": "接着，我请项目负责人确认该使用的版本。",
+            "ja": "その後、使う版をプロジェクト責任者に確認してもらいました。",
+            "ko": "그다음 프로젝트 책임자에게 사용할 버전을 확인해 달라고 요청했어요."
+          },
+          "visual": "sentence:Then I asked the project lead to confirm the version to use.",
+          "target": "sentence:Then I asked the project lead to confirm the version to use.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep05-s05",
+          "english": "Listen and choose.",
+          "demo": "I needed to help the team identify the current draft.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我需要協助團隊辨識目前的草稿。",
+            "zh-CN": "我需要协助团队识别当前的草稿。",
+            "ja": "チームが最新の草稿を特定できるよう支援する必要がありました。",
+            "ko": "팀이 현재 초안을 확인하도록 도와야 했어요."
+          },
+          "visual": "sentence:I needed to help the team identify the current draft.",
+          "target": "sentence:I needed to help the team identify the current draft.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:I needed to help the team identify the current draft.",
+            "sentence:In a fictional project, two teammates used different file versions.",
+            "sentence:The experience taught me to confirm ownership before changing a shared process."
+          ]
+        },
+        {
+          "id": "ep05-s06",
+          "english": "After confirmation, everyone edited the same shared draft.",
+          "demo": "After confirmation, everyone edited the same shared draft.",
+          "instruction": {
+            "en": "Describe the observed result without claiming an unsupported wider effect.",
+            "zh-TW": "描述觀察到的結果，不誇大其他影響。",
+            "zh-CN": "描述观察到的结果，不夸大其他影响。",
+            "ja": "観察できた結果を述べ、裏付けのない広い効果は主張しません。",
+            "ko": "관찰한 결과를 말하고 근거 없는 더 큰 효과는 주장하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "確認後，所有人都編輯同一份共用草稿。",
+            "zh-CN": "确认后，所有人都编辑同一份共享草稿。",
+            "ja": "確認後は、全員が同じ共有草稿を編集しました。",
+            "ko": "확인 후에는 모두 같은 공유 초안을 편집했어요."
+          },
+          "visual": "sentence:After confirmation, everyone edited the same shared draft.",
+          "target": "sentence:After confirmation, everyone edited the same shared draft.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep05-s07",
+          "english": "Listen and choose.",
+          "demo": "After confirmation, everyone edited the same shared draft.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "確認後，所有人都編輯同一份共用草稿。",
+            "zh-CN": "确认后，所有人都编辑同一份共享草稿。",
+            "ja": "確認後は、全員が同じ共有草稿を編集しました。",
+            "ko": "확인 후에는 모두 같은 공유 초안을 편집했어요."
+          },
+          "visual": "sentence:After confirmation, everyone edited the same shared draft.",
+          "target": "sentence:After confirmation, everyone edited the same shared draft.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:In a fictional project, two teammates used different file versions.",
+            "sentence:After confirmation, everyone edited the same shared draft.",
+            "sentence:The experience taught me to confirm ownership before changing a shared process."
+          ]
+        },
+        {
+          "id": "ep05-s08",
+          "english": "We did not measure how much time the change saved.",
+          "demo": "We did not measure how much time the change saved.",
+          "instruction": {
+            "en": "State the limit honestly; do not turn experience into a guarantee.",
+            "zh-TW": "誠實交代限制，別把經驗說成保證。",
+            "zh-CN": "诚实交代限制，别把经历说成保证。",
+            "ja": "限界を正直に示し、経験を保証のように伝えないようにします。",
+            "ko": "한계를 솔직히 밝히고 경험을 보장처럼 말하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們沒有量測這個改變節省了多少時間。",
+            "zh-CN": "我们没有测量这个改变节省了多少时间。",
+            "ja": "この変更でどの程度時間を節約できたかは測定していません。",
+            "ko": "이 변화로 얼마나 시간을 절약했는지는 측정하지 않았어요."
+          },
+          "visual": "sentence:We did not measure how much time the change saved.",
+          "target": "sentence:We did not measure how much time the change saved.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep05-s09",
+          "english": "Listen and choose.",
+          "demo": "We did not measure how much time the change saved.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們沒有量測這個改變節省了多少時間。",
+            "zh-CN": "我们没有测量这个改变节省了多少时间。",
+            "ja": "この変更でどの程度時間を節約できたかは測定していません。",
+            "ko": "이 변화로 얼마나 시간을 절약했는지는 측정하지 않았어요."
+          },
+          "visual": "sentence:We did not measure how much time the change saved.",
+          "target": "sentence:We did not measure how much time the change saved.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:In a fictional project, two teammates used different file versions.",
+            "sentence:The experience taught me to confirm ownership before changing a shared process.",
+            "sentence:We did not measure how much time the change saved."
+          ]
+        },
+        {
+          "id": "ep05-s10",
+          "english": "The experience taught me to confirm ownership before changing a shared process.",
+          "demo": "The experience taught me to confirm ownership before changing a shared process.",
+          "instruction": {
+            "en": "Check that purpose, evidence, and next action fit together.",
+            "zh-TW": "檢查目的、證據與下一步是否一致。",
+            "zh-CN": "检查目的、证据与下一步是否一致。",
+            "ja": "目的、根拠、次の行動が一貫しているか確認します。",
+            "ko": "목적, 근거, 다음 행동이 서로 일치하는지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這段經驗讓我學會在變更共用流程前確認負責權限。",
+            "zh-CN": "这段经历让我学会在变更共享流程前确认负责权限。",
+            "ja": "共有手順を変える前に、担当権限を確認する大切さを学びました。",
+            "ko": "공유 절차를 바꾸기 전에 담당 권한을 확인하는 것이 중요하다는 것을 배웠어요."
+          },
+          "visual": "sentence:The experience taught me to confirm ownership before changing a shared process.",
+          "target": "sentence:The experience taught me to confirm ownership before changing a shared process.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        }
+      ]
+    },
+    {
+      "id": "ep06",
+      "number": 6,
+      "season": 1,
+      "stage": 1,
+      "course": "workplace",
+      "title_en": "Questions for the Interviewer",
+      "title_zh_TW": "向面試官確認職務期待",
+      "titles": {
+        "zh-TW": "向面試官確認職務期待",
+        "zh-CN": "向面试官确认岗位期待",
+        "ja": "面接官に期待を確認する",
+        "ko": "면접관에게 직무 기대 확인하기"
+      },
+      "topic": "interviewer-questions-success-and-support",
+      "objectives_zh_TW": [
+        "針對職缺尚未說明的工作期待提問。",
+        "區分交付成果、合作對象與指導方式。",
+        "寫一百至一百四十詞有背景的面試提問。"
+      ],
+      "parent_tip_zh_TW": "先查閱職缺已有資訊，再問能影響你理解工作方式的問題；不要把所有問題都集中在空泛評價。",
+      "practice": {
+        "reading_en": "In this fictional interview, Owen is considering a training coordinator role. The advertisement says the employee will organize sessions and work independently. It does not explain who approves a session plan or how a new employee receives feedback. Owen prepares questions about those gaps. He asks what an incoming coordinator should complete first and who reviews the plan before invitations go out. The interviewer explains that the coordinator drafts the plan, while the training manager approves dates and content. Owen then asks how early work is reviewed. The interviewer describes a short review meeting after the first draft. These answers help Owen understand both the responsibility and the available support. He avoids asking only whether the workplace is friendly, since that broad question might produce little practical information. He also avoids treating one interview answer as a promise about every future situation. After the conversation, he writes down the stated process and any points that still need confirmation.",
+        "prompt_en": "Write 100-140 words introducing three questions for a fictional training coordinator interview. Explain the information gap behind each question and how the answers would help you understand the role.",
+        "prompt_zh_TW": "寫一百至一百四十詞，提出三個虛構訓練協調職務的面試問題。說明每題背後尚缺的資訊，以及答案如何幫助理解職務。",
+        "sample_answer_en": "Your advertisement describes organizing training sessions and working independently. I would like to understand what those responsibilities look like in practice. First, what would you expect a new coordinator to complete before taking on a full session schedule? This would help me identify the initial priorities. Second, who reviews a session plan before invitations are sent? I would like to understand the boundary between preparing a recommendation and approving it. Third, how does a new coordinator receive feedback on early work? That would help me understand the available guidance while learning your process. Together, these answers would give me a clearer picture of the work and the support, rather than requiring me to guess from the phrase \"work independently.\"",
+        "questions": [
+          {
+            "prompt_en": "Which important details are missing from the advertisement?",
+            "answer_en": "It does not explain who approves plans or how a new employee receives feedback."
+          },
+          {
+            "prompt_en": "How are drafting and approval divided in the interviewer's explanation?",
+            "answer_en": "The coordinator drafts the plan, and the training manager approves dates and content."
+          },
+          {
+            "prompt_en": "Why are Owen's process questions more informative than asking only whether the workplace is friendly?",
+            "answer_en": "They seek specific actions, authority, and feedback arrangements, which provide practical evidence about the role rather than a broad general impression."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep06-s01",
+          "english": "The fictional advertisement mentions coordinating training sessions.",
+          "demo": "The fictional advertisement mentions coordinating training sessions.",
+          "instruction": {
+            "en": "Give enough context to identify the situation you are describing.",
+            "zh-TW": "提供足夠背景，讓人辨識你描述的情境。",
+            "zh-CN": "提供足够背景，让人识别你描述的情境。",
+            "ja": "説明している状況が分かるよう、必要な背景を示します。",
+            "ko": "설명하는 상황을 알 수 있도록 필요한 배경을 제공해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這份虛構職缺說明提到協調訓練課程。",
+            "zh-CN": "这份虚构招聘说明提到协调培训课程。",
+            "ja": "この架空の求人票には、研修の調整業務が記載されています。",
+            "ko": "이 가상의 채용 공고에는 교육 일정 조율 업무가 적혀 있어요."
+          },
+          "visual": "sentence:The fictional advertisement mentions coordinating training sessions.",
+          "target": "sentence:The fictional advertisement mentions coordinating training sessions.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep06-s02",
+          "english": "What would you expect a new coordinator to complete first?",
+          "demo": "What would you expect a new coordinator to complete first?",
+          "instruction": {
+            "en": "Ask which task takes priority when the requested actions compete.",
+            "zh-TW": "任務互相衝突時，確認哪項優先。",
+            "zh-CN": "任务互相冲突时，确认哪项优先。",
+            "ja": "依頼された作業が競合するときは、優先順位を確認します。",
+            "ko": "요청받은 작업이 충돌하면 무엇이 우선인지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "您會期待新任協調人員先完成什麼？",
+            "zh-CN": "您会期待新任协调人员先完成什么？",
+            "ja": "新任の調整担当者には、最初に何を完了することを期待されていますか。",
+            "ko": "새 조정 담당자가 처음에 무엇을 완료하기를 기대하시나요?"
+          },
+          "visual": "sentence:What would you expect a new coordinator to complete first?",
+          "target": "sentence:What would you expect a new coordinator to complete first?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep06-s03",
+          "english": "Who reviews the session plan before it is shared?",
+          "demo": "Who reviews the session plan before it is shared?",
+          "instruction": {
+            "en": "Distinguish preparing a recommendation from approving a final decision.",
+            "zh-TW": "區分提出建議與核准最終決定。",
+            "zh-CN": "区分提出建议与批准最终决定。",
+            "ja": "提案を準備することと、最終決定を承認することを区別します。",
+            "ko": "제안을 준비하는 일과 최종 결정을 승인하는 일을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "課程計畫分享前由誰審閱？",
+            "zh-CN": "课程计划分享前由谁审阅？",
+            "ja": "研修計画は共有する前に、誰が確認しますか。",
+            "ko": "교육 계획을 공유하기 전에 누가 검토하나요?"
+          },
+          "visual": "sentence:Who reviews the session plan before it is shared?",
+          "target": "sentence:Who reviews the session plan before it is shared?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep06-s04",
+          "english": "How would I know whether my initial work meets your expectations?",
+          "demo": "How would I know whether my initial work meets your expectations?",
+          "instruction": {
+            "en": "Ask about the uncertain detail before assuming what it means.",
+            "zh-TW": "先問清楚不確定的細節，再決定做法。",
+            "zh-CN": "先问清楚不确定的细节，再决定做法。",
+            "ja": "不明な点は意味を決めつけず、先に確認します。",
+            "ko": "불확실한 부분을 추측하지 말고 먼저 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我要如何知道最初的工作是否符合您的期待？",
+            "zh-CN": "我要如何知道最初的工作是否符合您的期待？",
+            "ja": "初期の仕事が期待を満たしているか、どのように確認できますか。",
+            "ko": "초기 업무가 기대에 맞는지 어떻게 확인할 수 있나요?"
+          },
+          "visual": "sentence:How would I know whether my initial work meets your expectations?",
+          "target": "sentence:How would I know whether my initial work meets your expectations?",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep06-s05",
+          "english": "Listen and choose.",
+          "demo": "What would you expect a new coordinator to complete first?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "您會期待新任協調人員先完成什麼？",
+            "zh-CN": "您会期待新任协调人员先完成什么？",
+            "ja": "新任の調整担当者には、最初に何を完了することを期待されていますか。",
+            "ko": "새 조정 담당자가 처음에 무엇을 완료하기를 기대하시나요?"
+          },
+          "visual": "sentence:What would you expect a new coordinator to complete first?",
+          "target": "sentence:What would you expect a new coordinator to complete first?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:What would you expect a new coordinator to complete first?",
+            "sentence:The fictional advertisement mentions coordinating training sessions.",
+            "sentence:These questions help me understand the work before judging the fit."
+          ]
+        },
+        {
+          "id": "ep06-s06",
+          "english": "The role description mentions independent work; what support is available?",
+          "demo": "The role description mentions independent work; what support is available?",
+          "instruction": {
+            "en": "Compare what is known with what still needs confirmation.",
+            "zh-TW": "比較已知資訊與仍待確認的內容。",
+            "zh-CN": "比较已知信息与仍待确认的内容。",
+            "ja": "分かっている情報と、まだ確認が必要な情報を比べます。",
+            "ko": "확인된 정보와 아직 확인이 필요한 정보를 비교해요."
+          },
+          "demo_translation": {
+            "zh-TW": "職務說明提到獨立工作；會提供哪些支援？",
+            "zh-CN": "岗位说明提到独立工作；会提供哪些支持？",
+            "ja": "職務説明には自立した業務とありますが、どのような支援がありますか。",
+            "ko": "직무 설명에 독립적인 업무가 나오는데 어떤 지원을 받을 수 있나요?"
+          },
+          "visual": "sentence:The role description mentions independent work; what support is available?",
+          "target": "sentence:The role description mentions independent work; what support is available?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep06-s07",
+          "english": "Listen and choose.",
+          "demo": "The role description mentions independent work; what support is available?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "職務說明提到獨立工作；會提供哪些支援？",
+            "zh-CN": "岗位说明提到独立工作；会提供哪些支持？",
+            "ja": "職務説明には自立した業務とありますが、どのような支援がありますか。",
+            "ko": "직무 설명에 독립적인 업무가 나오는데 어떤 지원을 받을 수 있나요?"
+          },
+          "visual": "sentence:The role description mentions independent work; what support is available?",
+          "target": "sentence:The role description mentions independent work; what support is available?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:The fictional advertisement mentions coordinating training sessions.",
+            "sentence:The role description mentions independent work; what support is available?",
+            "sentence:These questions help me understand the work before judging the fit."
+          ]
+        },
+        {
+          "id": "ep06-s08",
+          "english": "Could you give an example of a typical coordination challenge?",
+          "demo": "Could you give an example of a typical coordination challenge?",
+          "instruction": {
+            "en": "Name the requested action so the recipient knows how to respond.",
+            "zh-TW": "說清楚請求的行動，讓對方知道如何回覆。",
+            "zh-CN": "说清楚请求的行动，让对方知道如何回复。",
+            "ja": "相手が返答できるよう、依頼する行動を明示します。",
+            "ko": "상대가 답할 수 있도록 요청하는 행동을 명확히 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "您能舉一個常見協調難題的例子嗎？",
+            "zh-CN": "您能举一个常见协调难题的例子吗？",
+            "ja": "よくある調整上の課題を一例挙げていただけますか。",
+            "ko": "흔히 겪는 조율 문제의 예를 하나 들어 주실 수 있나요?"
+          },
+          "visual": "sentence:Could you give an example of a typical coordination challenge?",
+          "target": "sentence:Could you give an example of a typical coordination challenge?",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep06-s09",
+          "english": "Listen and choose.",
+          "demo": "Could you give an example of a typical coordination challenge?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "您能舉一個常見協調難題的例子嗎？",
+            "zh-CN": "您能举一个常见协调难题的例子吗？",
+            "ja": "よくある調整上の課題を一例挙げていただけますか。",
+            "ko": "흔히 겪는 조율 문제의 예를 하나 들어 주실 수 있나요?"
+          },
+          "visual": "sentence:Could you give an example of a typical coordination challenge?",
+          "target": "sentence:Could you give an example of a typical coordination challenge?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:The fictional advertisement mentions coordinating training sessions.",
+            "sentence:These questions help me understand the work before judging the fit.",
+            "sentence:Could you give an example of a typical coordination challenge?"
+          ]
+        },
+        {
+          "id": "ep06-s10",
+          "english": "These questions help me understand the work before judging the fit.",
+          "demo": "These questions help me understand the work before judging the fit.",
+          "instruction": {
+            "en": "Check that purpose, evidence, and next action fit together.",
+            "zh-TW": "檢查目的、證據與下一步是否一致。",
+            "zh-CN": "检查目的、证据与下一步是否一致。",
+            "ja": "目的、根拠、次の行動が一貫しているか確認します。",
+            "ko": "목적, 근거, 다음 행동이 서로 일치하는지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這些問題幫我先了解工作，再判斷是否適合。",
+            "zh-CN": "这些问题帮我先了解工作，再判断是否适合。",
+            "ja": "これらの質問で仕事を理解してから、自分に合うか判断できます。",
+            "ko": "이 질문들로 업무를 이해한 뒤 적합한지 판단할 수 있어요."
+          },
+          "visual": "sentence:These questions help me understand the work before judging the fit.",
+          "target": "sentence:These questions help me understand the work before judging the fit.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        }
+      ]
+    },
+    {
+      "id": "ep07",
+      "number": 7,
+      "season": 1,
+      "stage": 1,
+      "course": "workplace",
+      "title_en": "Confirming Interview Availability",
+      "title_zh_TW": "確認面試時段與時區",
+      "titles": {
+        "zh-TW": "確認面試時段與時區",
+        "zh-CN": "确认面试时段与时区",
+        "ja": "面接の日時とタイムゾーンを確認する",
+        "ko": "면접 시간과 시간대 확인하기"
+      },
+      "topic": "availability-date-timezone",
+      "objectives_zh_TW": [
+        "用完整日期、時間與時區確認可出席時段。",
+        "對缺少時區的邀請先提問，不自行換算。",
+        "寫一百至一百四十詞面試安排回覆。"
+      ],
+      "parent_tip_zh_TW": "把日期、開始時間、時區、會議連結與仍待確認的項目分開核對；範例以 UTC 避免夏令時間歧義。",
+      "practice": {
+        "reading_en": "This fictional scheduling exercise uses UTC so that the stated time zone remains explicit. A recruiter invites Leila to an online interview at 09:30 on 14 May 2030, but the first message does not identify the time zone. Leila is available from 09:00 to 10:00 UTC on that date. Instead of assuming the recruiter means her local time, she asks which time zone the invitation uses and states her available window in UTC. The recruiter replies that the interview is intended for 09:30 UTC and should last twenty minutes. Leila confirms the full date, start time, time zone, and expected duration in one reply. She also asks for the meeting link, which was not included. Once the link arrives, she records the confirmed arrangement in her calendar. The example does not require converting between local clocks. Its purpose is to show why availability is not fully confirmed until both people are referring to the same dated time and meeting details.",
+        "prompt_en": "Write a 100-140-word reply in the fictional interview scenario. Confirm the date, 09:30 UTC start, twenty-minute duration, your availability, and request the missing meeting link.",
+        "prompt_zh_TW": "依虛構面試情境寫一百至一百四十詞回覆。確認日期、UTC 九點三十分開始、二十分鐘長度及可出席狀態，並索取缺少的會議連結。",
+        "sample_answer_en": "Dear Recruitment Team,\n\nThank you for clarifying the time zone. I can attend the interview on 14 May 2030 at 09:30 UTC. I understand that the conversation is expected to last twenty minutes, which fits within my available window from 09:00 to 10:00 UTC that day.\n\nCould you please send the meeting link when it is available? I have not received it yet. Once I have the link, I will add it to my calendar with the confirmed date and time. If the start time or expected duration changes, please let me know so that I can check my availability again.\n\nThank you for arranging the interview. I look forward to discussing the role.\n\nLeila",
+        "questions": [
+          {
+            "prompt_en": "What detail was missing from the first invitation?",
+            "answer_en": "The first invitation did not identify the time zone for 09:30."
+          },
+          {
+            "prompt_en": "Why does Leila state her available window in UTC?",
+            "answer_en": "It gives the recruiter an explicit reference for comparing availability and avoids assuming that both people mean the same local clock."
+          },
+          {
+            "prompt_en": "Can Leila confidently confirm the revised start time fits her window? Explain using the details.",
+            "answer_en": "Yes. The confirmed 09:30 UTC start and twenty-minute duration end at 09:50 UTC, within her 09:00-10:00 UTC window."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep07-s01",
+          "english": "The fictional invitation lists a time but no time zone.",
+          "demo": "The fictional invitation lists a time but no time zone.",
+          "instruction": {
+            "en": "Compare what is known with what still needs confirmation.",
+            "zh-TW": "比較已知資訊與仍待確認的內容。",
+            "zh-CN": "比较已知信息与仍待确认的内容。",
+            "ja": "分かっている情報と、まだ確認が必要な情報を比べます。",
+            "ko": "확인된 정보와 아직 확인이 필요한 정보를 비교해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這封虛構邀請列出時間，卻沒有時區。",
+            "zh-CN": "这封虚构邀请列出时间，却没有时区。",
+            "ja": "この架空の招待には時刻がありますが、タイムゾーンがありません。",
+            "ko": "이 가상의 초대에는 시각은 있지만 시간대가 없어요."
+          },
+          "visual": "sentence:The fictional invitation lists a time but no time zone.",
+          "target": "sentence:The fictional invitation lists a time but no time zone.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep07-s02",
+          "english": "Could you confirm the time zone for the interview?",
+          "demo": "Could you confirm the time zone for the interview?",
+          "instruction": {
+            "en": "Ask about the uncertain detail before assuming what it means.",
+            "zh-TW": "先問清楚不確定的細節，再決定做法。",
+            "zh-CN": "先问清楚不确定的细节，再决定做法。",
+            "ja": "不明な点は意味を決めつけず、先に確認します。",
+            "ko": "불확실한 부분을 추측하지 말고 먼저 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "能否請您確認面試時間所用的時區？",
+            "zh-CN": "能否请您确认面试时间所用的时区？",
+            "ja": "面接時刻のタイムゾーンを確認していただけますか。",
+            "ko": "면접 시각의 시간대를 확인해 주실 수 있나요?"
+          },
+          "visual": "sentence:Could you confirm the time zone for the interview?",
+          "target": "sentence:Could you confirm the time zone for the interview?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep07-s03",
+          "english": "I am available on 14 May 2030 from 09:00 to 10:00 UTC.",
+          "demo": "I am available on 14 May 2030 from 09:00 to 10:00 UTC.",
+          "instruction": {
+            "en": "Use the full calendar date so the arrangement remains unambiguous.",
+            "zh-TW": "使用完整日期，避免安排產生歧義。",
+            "zh-CN": "使用完整日期，避免安排产生歧义。",
+            "ja": "予定が曖昧にならないよう、年月日を明記します。",
+            "ko": "일정이 모호하지 않도록 연월일을 모두 적어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我可在二〇三〇年五月十四日 UTC 九點至十點出席。",
+            "zh-CN": "我可在二〇三〇年五月十四日 UTC 九点至十点出席。",
+            "ja": "2030年5月14日のUTC午前9時から10時まで参加できます。",
+            "ko": "2030년 5월 14일 UTC 오전 9시부터 10시까지 참석할 수 있어요."
+          },
+          "visual": "sentence:I am available on 14 May 2030 from 09:00 to 10:00 UTC.",
+          "target": "sentence:I am available on 14 May 2030 from 09:00 to 10:00 UTC.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep07-s04",
+          "english": "Please confirm whether that window works for your team.",
+          "demo": "Please confirm whether that window works for your team.",
+          "instruction": {
+            "en": "Name the requested action so the recipient knows how to respond.",
+            "zh-TW": "說清楚請求的行動，讓對方知道如何回覆。",
+            "zh-CN": "说清楚请求的行动，让对方知道如何回复。",
+            "ja": "相手が返答できるよう、依頼する行動を明示します。",
+            "ko": "상대가 답할 수 있도록 요청하는 행동을 명확히 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "請確認該時段是否適合您的團隊。",
+            "zh-CN": "请确认该时段是否适合您的团队。",
+            "ja": "その時間帯で皆様のご都合が合うか、ご確認ください。",
+            "ko": "그 시간대가 팀 일정에 맞는지 확인해 주세요."
+          },
+          "visual": "sentence:Please confirm whether that window works for your team.",
+          "target": "sentence:Please confirm whether that window works for your team.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep07-s05",
+          "english": "Listen and choose.",
+          "demo": "Could you confirm the time zone for the interview?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "能否請您確認面試時間所用的時區？",
+            "zh-CN": "能否请您确认面试时间所用的时区？",
+            "ja": "面接時刻のタイムゾーンを確認していただけますか。",
+            "ko": "면접 시각의 시간대를 확인해 주실 수 있나요?"
+          },
+          "visual": "sentence:Could you confirm the time zone for the interview?",
+          "target": "sentence:Could you confirm the time zone for the interview?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:Could you confirm the time zone for the interview?",
+            "sentence:The fictional invitation lists a time but no time zone.",
+            "sentence:I will add the confirmed details to my calendar."
+          ]
+        },
+        {
+          "id": "ep07-s06",
+          "english": "I can attend at 09:30 UTC on 14 May 2030.",
+          "demo": "I can attend at 09:30 UTC on 14 May 2030.",
+          "instruction": {
+            "en": "Keep the time and its time zone together when confirming availability.",
+            "zh-TW": "確認可出席時段時，要同時保留時間與時區。",
+            "zh-CN": "确认可出席时段时，要同时保留时间与时区。",
+            "ja": "参加可能な時刻を確認するときは、時刻とタイムゾーンを一緒に示します。",
+            "ko": "참석 가능한 시간을 확인할 때 시각과 시간대를 함께 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "我能在二〇三〇年五月十四日 UTC 九點三十分出席。",
+            "zh-CN": "我能在二〇三〇年五月十四日 UTC 九点三十分出席。",
+            "ja": "2030年5月14日のUTC午前9時30分に参加できます。",
+            "ko": "2030년 5월 14일 UTC 오전 9시 30분에 참석할 수 있어요."
+          },
+          "visual": "sentence:I can attend at 09:30 UTC on 14 May 2030.",
+          "target": "sentence:I can attend at 09:30 UTC on 14 May 2030.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep07-s07",
+          "english": "Listen and choose.",
+          "demo": "I can attend at 09:30 UTC on 14 May 2030.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我能在二〇三〇年五月十四日 UTC 九點三十分出席。",
+            "zh-CN": "我能在二〇三〇年五月十四日 UTC 九点三十分出席。",
+            "ja": "2030年5月14日のUTC午前9時30分に参加できます。",
+            "ko": "2030년 5월 14일 UTC 오전 9시 30분에 참석할 수 있어요."
+          },
+          "visual": "sentence:I can attend at 09:30 UTC on 14 May 2030.",
+          "target": "sentence:I can attend at 09:30 UTC on 14 May 2030.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:The fictional invitation lists a time but no time zone.",
+            "sentence:I can attend at 09:30 UTC on 14 May 2030.",
+            "sentence:I will add the confirmed details to my calendar."
+          ]
+        },
+        {
+          "id": "ep07-s08",
+          "english": "Could you also send the meeting link and expected duration?",
+          "demo": "Could you also send the meeting link and expected duration?",
+          "instruction": {
+            "en": "Offer a concrete next step with a clear purpose.",
+            "zh-TW": "提出目的清楚的具體下一步。",
+            "zh-CN": "提出目的清楚的具体下一步。",
+            "ja": "目的が明確な、具体的な次の行動を示します。",
+            "ko": "목적이 분명한 구체적인 다음 단계를 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "能否也提供會議連結與預計所需時間？",
+            "zh-CN": "能否也提供会议链接与预计所需时间？",
+            "ja": "会議のリンクと予定所要時間もお送りいただけますか。",
+            "ko": "회의 링크와 예상 소요 시간도 보내 주실 수 있나요?"
+          },
+          "visual": "sentence:Could you also send the meeting link and expected duration?",
+          "target": "sentence:Could you also send the meeting link and expected duration?",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep07-s09",
+          "english": "Listen and choose.",
+          "demo": "Could you also send the meeting link and expected duration?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "能否也提供會議連結與預計所需時間？",
+            "zh-CN": "能否也提供会议链接与预计所需时间？",
+            "ja": "会議のリンクと予定所要時間もお送りいただけますか。",
+            "ko": "회의 링크와 예상 소요 시간도 보내 주실 수 있나요?"
+          },
+          "visual": "sentence:Could you also send the meeting link and expected duration?",
+          "target": "sentence:Could you also send the meeting link and expected duration?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:The fictional invitation lists a time but no time zone.",
+            "sentence:I will add the confirmed details to my calendar.",
+            "sentence:Could you also send the meeting link and expected duration?"
+          ]
+        },
+        {
+          "id": "ep07-s10",
+          "english": "I will add the confirmed details to my calendar.",
+          "demo": "I will add the confirmed details to my calendar.",
+          "instruction": {
+            "en": "Explain the next action after the meeting details are confirmed.",
+            "zh-TW": "說明會議資訊確認後的下一步。",
+            "zh-CN": "说明会议信息确认后的下一步。",
+            "ja": "面接の詳細が確定した後に行うことを説明します。",
+            "ko": "면접 세부 사항이 확정된 뒤 할 일을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會把確認後的資訊加入行事曆。",
+            "zh-CN": "我会把确认后的信息加入日历。",
+            "ja": "確認できた内容をカレンダーに登録します。",
+            "ko": "확인된 내용을 일정에 등록하겠어요."
+          },
+          "visual": "sentence:I will add the confirmed details to my calendar.",
+          "target": "sentence:I will add the confirmed details to my calendar.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        }
+      ]
+    },
+    {
+      "id": "ep08",
+      "number": 8,
+      "season": 1,
+      "stage": 1,
+      "course": "workplace",
+      "title_en": "Following Up after an Interview",
+      "title_zh_TW": "面試後有內容的追蹤",
+      "titles": {
+        "zh-TW": "面試後有內容的追蹤",
+        "zh-CN": "面试后有内容的跟进",
+        "ja": "面接後の具体的なフォローアップ",
+        "ko": "면접 후 구체적으로 후속 연락하기"
+      },
+      "topic": "interview-followup-context-and-restraint",
+      "objectives_zh_TW": [
+        "以面試討論內容延續求職溝通。",
+        "確認通知時程，不把沉默解讀為結果。",
+        "寫一百至一百四十詞禮貌追蹤郵件。"
+      ],
+      "parent_tip_zh_TW": "回顧實際談過的工作內容，再交代詢問目的；避免重複寄信或宣稱對方已承諾錄取。",
+      "practice": {
+        "reading_en": "In this fictional hiring process, Ben interviews for an archive assistant role. The interviewer explains that the team will review candidates at a meeting and expects to send updates afterward. Ben sends a brief thank-you message mentioning their discussion of document descriptions. Later, the expected update period passes without a reply. He drafts a follow-up rather than assuming he has been rejected or selected. His message identifies the role, refers to the earlier discussion, and asks whether the expected timeline has changed. He offers to provide additional information if needed. He does not say that the interviewer promised him a job, because no such promise was made. He also does not send the same request through several channels at once. The message gives the recipient enough context to understand the question without retelling the entire interview. Ben continues considering other opportunities while awaiting a response. The exercise illustrates a clear, restrained follow-up; it does not prescribe a universal waiting period for every employer.",
+        "prompt_en": "Write a 100-140-word follow-up email after the expected update period in a fictional interview process. Mention the role and a relevant discussion, ask about the timeline, and offer further information without assuming an outcome.",
+        "prompt_zh_TW": "在虛構面試流程的預計通知期間過後，寫一百至一百四十詞追蹤郵件。提及職務與相關討論、詢問時程並願意補充資料，不預設結果。",
+        "sample_answer_en": "Subject: Follow-up on Archive Assistant Interview\n\nDear Interview Team,\n\nThank you again for speaking with me about the archive assistant role. I appreciated our discussion of how the team checks document descriptions before records are shared. It strengthened my interest in work that depends on careful attention to detail.\n\nYou mentioned that an update was expected after the candidate review meeting. As the expected update period has passed, could you let me know whether the timeline has changed? I understand that the review may still be in progress. If further information about my experience would be useful, I would be happy to provide it.\n\nThank you for your time and consideration. I look forward to hearing from you when an update is available.\n\nBen",
+        "questions": [
+          {
+            "prompt_en": "What timeline had the interviewer described?",
+            "answer_en": "The team expected to provide updates after its candidate review meeting."
+          },
+          {
+            "prompt_en": "How does Ben make the follow-up easy to understand?",
+            "answer_en": "He identifies the role, refers to the earlier discussion and expected update, and asks a specific question about the timeline."
+          },
+          {
+            "prompt_en": "Why would it be unsupported to say Ben has been rejected?",
+            "answer_en": "The text only states that no reply arrived during the expected period; it gives no hiring decision or reason for the delay."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep08-s01",
+          "english": "Thank you for discussing the fictional archive assistant role with me.",
+          "demo": "Thank you for discussing the fictional archive assistant role with me.",
+          "instruction": {
+            "en": "Give enough context to identify the situation you are describing.",
+            "zh-TW": "提供足夠背景，讓人辨識你描述的情境。",
+            "zh-CN": "提供足够背景，让人识别你描述的情境。",
+            "ja": "説明している状況が分かるよう、必要な背景を示します。",
+            "ko": "설명하는 상황을 알 수 있도록 필요한 배경을 제공해요."
+          },
+          "demo_translation": {
+            "zh-TW": "感謝您與我討論這個虛構的檔案助理職務。",
+            "zh-CN": "感谢您与我讨论这个虚构的档案助理岗位。",
+            "ja": "架空のアーカイブ担当補助職について、お話しいただきありがとうございました。",
+            "ko": "가상의 기록 보조 직무에 관해 이야기해 주셔서 감사합니다."
+          },
+          "visual": "sentence:Thank you for discussing the fictional archive assistant role with me.",
+          "target": "sentence:Thank you for discussing the fictional archive assistant role with me.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep08-s02",
+          "english": "I appreciated learning how your team checks document descriptions.",
+          "demo": "I appreciated learning how your team checks document descriptions.",
+          "instruction": {
+            "en": "Connect your experience to the work this particular role involves.",
+            "zh-TW": "把經驗連到這個職務的具體工作。",
+            "zh-CN": "把经历连到这个岗位的具体工作。",
+            "ja": "経験を、この職務で行う具体的な仕事につなげます。",
+            "ko": "경험을 이 직무에서 하는 구체적인 업무와 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我很感謝能了解貴團隊如何檢查文件描述。",
+            "zh-CN": "我很感谢能了解贵团队如何检查文件描述。",
+            "ja": "チームが文書の説明をどのように確認するか、伺えて参考になりました。",
+            "ko": "팀이 문서 설명을 검토하는 방식을 알게 되어 도움이 되었어요."
+          },
+          "visual": "sentence:I appreciated learning how your team checks document descriptions.",
+          "target": "sentence:I appreciated learning how your team checks document descriptions.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep08-s03",
+          "english": "Our discussion strengthened my interest in careful records work.",
+          "demo": "Our discussion strengthened my interest in careful records work.",
+          "instruction": {
+            "en": "Explain why the detail matters for the recipient or task.",
+            "zh-TW": "說明這項細節對收件人或任務的意義。",
+            "zh-CN": "说明这项细节对收件人或任务的意义。",
+            "ja": "その情報が相手や作業にとって重要な理由を説明します。",
+            "ko": "그 정보가 상대나 과제에 중요한 이유를 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們的討論讓我更想投入細緻的紀錄工作。",
+            "zh-CN": "我们的讨论让我更想投入细致的记录工作。",
+            "ja": "お話を伺い、丁寧に記録を扱う仕事への関心がさらに高まりました。",
+            "ko": "이야기를 나누며 꼼꼼한 기록 업무에 더 관심을 갖게 되었어요."
+          },
+          "visual": "sentence:Our discussion strengthened my interest in careful records work.",
+          "target": "sentence:Our discussion strengthened my interest in careful records work.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep08-s04",
+          "english": "You mentioned that an update was expected after the review meeting.",
+          "demo": "You mentioned that an update was expected after the review meeting.",
+          "instruction": {
+            "en": "Give enough context to identify the situation you are describing.",
+            "zh-TW": "提供足夠背景，讓人辨識你描述的情境。",
+            "zh-CN": "提供足够背景，让人识别你描述的情境。",
+            "ja": "説明している状況が分かるよう、必要な背景を示します。",
+            "ko": "설명하는 상황을 알 수 있도록 필요한 배경을 제공해요."
+          },
+          "demo_translation": {
+            "zh-TW": "您提到預計在審查會議後提供進度。",
+            "zh-CN": "您提到预计在审核会议后提供进度。",
+            "ja": "審査会議の後に進捗をご連絡いただく予定と伺いました。",
+            "ko": "검토 회의 후에 진행 상황을 알려 주실 예정이라고 말씀하셨어요."
+          },
+          "visual": "sentence:You mentioned that an update was expected after the review meeting.",
+          "target": "sentence:You mentioned that an update was expected after the review meeting.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep08-s05",
+          "english": "Listen and choose.",
+          "demo": "I appreciated learning how your team checks document descriptions.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我很感謝能了解貴團隊如何檢查文件描述。",
+            "zh-CN": "我很感谢能了解贵团队如何检查文件描述。",
+            "ja": "チームが文書の説明をどのように確認するか、伺えて参考になりました。",
+            "ko": "팀이 문서 설명을 검토하는 방식을 알게 되어 도움이 되었어요."
+          },
+          "visual": "sentence:I appreciated learning how your team checks document descriptions.",
+          "target": "sentence:I appreciated learning how your team checks document descriptions.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:I appreciated learning how your team checks document descriptions.",
+            "sentence:Thank you for discussing the fictional archive assistant role with me.",
+            "sentence:A delayed reply does not tell me the hiring decision."
+          ]
+        },
+        {
+          "id": "ep08-s06",
+          "english": "Could you let me know whether the expected timeline has changed?",
+          "demo": "Could you let me know whether the expected timeline has changed?",
+          "instruction": {
+            "en": "Keep the request courteous while making its purpose clear.",
+            "zh-TW": "保持禮貌，同時清楚表達請求目的。",
+            "zh-CN": "保持礼貌，同时清楚表达请求目的。",
+            "ja": "丁寧さを保ちながら、依頼の目的を明確にします。",
+            "ko": "예의를 지키면서 요청의 목적을 명확히 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "能否告訴我預計時程是否有所變動？",
+            "zh-CN": "能否告诉我预计时间安排是否有所变动？",
+            "ja": "予定されていた日程に変更があるか、教えていただけますか。",
+            "ko": "예상 일정이 변경되었는지 알려 주실 수 있나요?"
+          },
+          "visual": "sentence:Could you let me know whether the expected timeline has changed?",
+          "target": "sentence:Could you let me know whether the expected timeline has changed?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep08-s07",
+          "english": "Listen and choose.",
+          "demo": "Could you let me know whether the expected timeline has changed?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "能否告訴我預計時程是否有所變動？",
+            "zh-CN": "能否告诉我预计时间安排是否有所变动？",
+            "ja": "予定されていた日程に変更があるか、教えていただけますか。",
+            "ko": "예상 일정이 변경되었는지 알려 주실 수 있나요?"
+          },
+          "visual": "sentence:Could you let me know whether the expected timeline has changed?",
+          "target": "sentence:Could you let me know whether the expected timeline has changed?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:Thank you for discussing the fictional archive assistant role with me.",
+            "sentence:Could you let me know whether the expected timeline has changed?",
+            "sentence:A delayed reply does not tell me the hiring decision."
+          ]
+        },
+        {
+          "id": "ep08-s08",
+          "english": "I would be happy to provide further information if needed.",
+          "demo": "I would be happy to provide further information if needed.",
+          "instruction": {
+            "en": "Offer a concrete next step with a clear purpose.",
+            "zh-TW": "提出目的清楚的具體下一步。",
+            "zh-CN": "提出目的清楚的具体下一步。",
+            "ja": "目的が明確な、具体的な次の行動を示します。",
+            "ko": "목적이 분명한 구체적인 다음 단계를 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "若有需要，我很樂意補充資訊。",
+            "zh-CN": "若有需要，我很乐意补充信息。",
+            "ja": "必要でしたら、追加の情報をお送りいたします。",
+            "ko": "필요하시다면 추가 정보를 기꺼이 제공하겠어요."
+          },
+          "visual": "sentence:I would be happy to provide further information if needed.",
+          "target": "sentence:I would be happy to provide further information if needed.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep08-s09",
+          "english": "Listen and choose.",
+          "demo": "I would be happy to provide further information if needed.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "若有需要，我很樂意補充資訊。",
+            "zh-CN": "若有需要，我很乐意补充信息。",
+            "ja": "必要でしたら、追加の情報をお送りいたします。",
+            "ko": "필요하시다면 추가 정보를 기꺼이 제공하겠어요."
+          },
+          "visual": "sentence:I would be happy to provide further information if needed.",
+          "target": "sentence:I would be happy to provide further information if needed.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:Thank you for discussing the fictional archive assistant role with me.",
+            "sentence:A delayed reply does not tell me the hiring decision.",
+            "sentence:I would be happy to provide further information if needed."
+          ]
+        },
+        {
+          "id": "ep08-s10",
+          "english": "A delayed reply does not tell me the hiring decision.",
+          "demo": "A delayed reply does not tell me the hiring decision.",
+          "instruction": {
+            "en": "State the limit honestly; do not turn experience into a guarantee.",
+            "zh-TW": "誠實交代限制，別把經驗說成保證。",
+            "zh-CN": "诚实交代限制，别把经历说成保证。",
+            "ja": "限界を正直に示し、経験を保証のように伝えないようにします。",
+            "ko": "한계를 솔직히 밝히고 경험을 보장처럼 말하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "回覆延遲並不能讓我知道錄用決定。",
+            "zh-CN": "回复延迟并不能让我知道录用决定。",
+            "ja": "返信が遅れているだけでは、採用結果は分かりません。",
+            "ko": "답장이 늦다는 사실만으로 채용 결과를 알 수는 없어요."
+          },
+          "visual": "sentence:A delayed reply does not tell me the hiring decision.",
+          "target": "sentence:A delayed reply does not tell me the hiring decision.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        }
+      ]
+    },
+    {
+      "id": "ep09",
+      "number": 9,
+      "season": 1,
+      "stage": 1,
+      "course": "workplace",
+      "title_en": "Introducing Yourself on the First Day",
+      "title_zh_TW": "到職第一天介紹自己",
+      "titles": {
+        "zh-TW": "到職第一天介紹自己",
+        "zh-CN": "入职第一天介绍自己",
+        "ja": "初日に自己紹介をする",
+        "ko": "첫 출근 날 자기소개하기"
+      },
+      "topic": "onboarding-introduction-working-links",
+      "objectives_zh_TW": [
+        "用職務和合作關係介紹自己。",
+        "表達相關背景與學習需求，避免能力誇大。",
+        "寫一百至一百四十詞新人介紹與合作提問。"
+      ],
+      "parent_tip_zh_TW": "讓同事知道什麼事情可以找你，以及你還需要向誰學習；簡短介紹不用包含私人生活資料。",
+      "practice": {
+        "reading_en": "In this fictional onboarding scenario, Nia joins a service team as a support assistant. Her manager introduces her at a short team meeting. Nia explains that she will help organize incoming requests and keep the shared log current. She mentions a relevant volunteer experience explaining registration steps, but does not claim to know the company's procedures already. She says that she is looking forward to learning them. After the meeting, she speaks with Tomas, who checks complex requests. Rather than asking him to explain the entire organization immediately, she asks which kinds of questions she should bring to him. Tomas says that he can help with unclear request categories, while access problems should go to the designated support contact. Nia repeats that distinction to confirm her understanding. She notes the arrangement in her onboarding notebook. The conversation gives colleagues a practical picture of her role and helps her ask future questions through the appropriate channel, without sharing unnecessary personal information.",
+        "prompt_en": "Write a 100-140-word first-day introduction for a fictional support assistant. State your role, relevant background, learning needs, and a focused question about working with a colleague.",
+        "prompt_zh_TW": "為虛構支援助理寫一百至一百四十詞到職自介。交代職務、相關背景、學習需求，以及針對同事合作方式的具體問題。",
+        "sample_answer_en": "Hello everyone, I am Nia, and I am joining the service team as a support assistant. I will help organize incoming requests and keep the shared log current. In my previous volunteer work, I explained registration steps and helped people identify what to do next. I hope that experience will be useful here, although I still need to learn your request categories and procedures. I am looking forward to working with you and asking questions as I learn. Tomas, I understand that you review complex requests. Could you tell me which kinds of questions I should bring to you and which should go elsewhere? That will help me prepare useful questions and follow the team's working arrangements.",
+        "questions": [
+          {
+            "prompt_en": "What work will Nia help with?",
+            "answer_en": "She will organize incoming requests and keep the shared log current."
+          },
+          {
+            "prompt_en": "How does Tomas divide the support Nia can seek?",
+            "answer_en": "He can help with unclear request categories, while access problems should go to the designated support contact."
+          },
+          {
+            "prompt_en": "Why is Nia's focused question useful for future work?",
+            "answer_en": "It clarifies who handles which issue, so she can direct later questions appropriately instead of assuming one colleague handles everything."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep09-s01",
+          "english": "I am joining the fictional service team as a support assistant.",
+          "demo": "I am joining the fictional service team as a support assistant.",
+          "instruction": {
+            "en": "Separate your own responsibility from the responsibility of others.",
+            "zh-TW": "區分自己的責任與他人的責任。",
+            "zh-CN": "区分自己的责任与他人的责任。",
+            "ja": "自分の担当と他の人の担当を区別します。",
+            "ko": "자신의 책임과 다른 사람의 책임을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我將以支援助理身分加入這個虛構服務團隊。",
+            "zh-CN": "我将以支持助理身份加入这个虚构服务团队。",
+            "ja": "この架空のサービスチームに、サポートアシスタントとして加わります。",
+            "ko": "가상의 서비스 팀에 지원 보조 담당자로 합류해요."
+          },
+          "visual": "sentence:I am joining the fictional service team as a support assistant.",
+          "target": "sentence:I am joining the fictional service team as a support assistant.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep09-s02",
+          "english": "I will help organize incoming requests and update the shared log.",
+          "demo": "I will help organize incoming requests and update the shared log.",
+          "instruction": {
+            "en": "Use an action verb to explain what you plan to do.",
+            "zh-TW": "用動作動詞說明你計畫做的事。",
+            "zh-CN": "用动作动词说明你计划做的事。",
+            "ja": "行動を表す動詞で、これから行うことを説明します。",
+            "ko": "동작을 나타내는 동사로 앞으로 할 일을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會協助整理收到的請求，並更新共用紀錄。",
+            "zh-CN": "我会协助整理收到的请求，并更新共享记录。",
+            "ja": "届いた依頼の整理と、共有記録の更新をお手伝いします。",
+            "ko": "들어오는 요청을 정리하고 공유 기록을 갱신하는 일을 돕겠어요."
+          },
+          "visual": "sentence:I will help organize incoming requests and update the shared log.",
+          "target": "sentence:I will help organize incoming requests and update the shared log.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep09-s03",
+          "english": "My previous volunteer work involved explaining registration steps.",
+          "demo": "My previous volunteer work involved explaining registration steps.",
+          "instruction": {
+            "en": "Support the skill with a specific action the reader can understand.",
+            "zh-TW": "用讀者能理解的具體行動支持技能。",
+            "zh-CN": "用读者能理解的具体行动支持技能。",
+            "ja": "読み手が理解できる具体的な行動で技能を裏付けます。",
+            "ko": "독자가 이해할 수 있는 구체적 행동으로 역량을 뒷받침해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我之前的志工工作包含說明註冊步驟。",
+            "zh-CN": "我之前的志愿者工作包含说明注册步骤。",
+            "ja": "以前のボランティア活動では、登録手順を説明していました。",
+            "ko": "이전 자원봉사 활동에서는 등록 절차를 설명했어요."
+          },
+          "visual": "sentence:My previous volunteer work involved explaining registration steps.",
+          "target": "sentence:My previous volunteer work involved explaining registration steps.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep09-s04",
+          "english": "I am looking forward to learning how this team handles requests.",
+          "demo": "I am looking forward to learning how this team handles requests.",
+          "instruction": {
+            "en": "State the limit honestly; do not turn experience into a guarantee.",
+            "zh-TW": "誠實交代限制，別把經驗說成保證。",
+            "zh-CN": "诚实交代限制，别把经历说成保证。",
+            "ja": "限界を正直に示し、経験を保証のように伝えないようにします。",
+            "ko": "한계를 솔직히 밝히고 경험을 보장처럼 말하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "我很期待學習這個團隊處理請求的方式。",
+            "zh-CN": "我很期待学习这个团队处理请求的方式。",
+            "ja": "このチームの依頼対応の方法を学ぶのを楽しみにしています。",
+            "ko": "이 팀의 요청 처리 방식을 배우는 것이 기대돼요."
+          },
+          "visual": "sentence:I am looking forward to learning how this team handles requests.",
+          "target": "sentence:I am looking forward to learning how this team handles requests.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep09-s05",
+          "english": "Listen and choose.",
+          "demo": "I will help organize incoming requests and update the shared log.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會協助整理收到的請求，並更新共用紀錄。",
+            "zh-CN": "我会协助整理收到的请求，并更新共享记录。",
+            "ja": "届いた依頼の整理と、共有記録の更新をお手伝いします。",
+            "ko": "들어오는 요청을 정리하고 공유 기록을 갱신하는 일을 돕겠어요."
+          },
+          "visual": "sentence:I will help organize incoming requests and update the shared log.",
+          "target": "sentence:I will help organize incoming requests and update the shared log.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:I will help organize incoming requests and update the shared log.",
+            "sentence:I am joining the fictional service team as a support assistant.",
+            "sentence:A useful introduction starts a working relationship and invites clarification."
+          ]
+        },
+        {
+          "id": "ep09-s06",
+          "english": "Which types of questions should I bring to you?",
+          "demo": "Which types of questions should I bring to you?",
+          "instruction": {
+            "en": "Ask about the uncertain detail before assuming what it means.",
+            "zh-TW": "先問清楚不確定的細節，再決定做法。",
+            "zh-CN": "先问清楚不确定的细节，再决定做法。",
+            "ja": "不明な点は意味を決めつけず、先に確認します。",
+            "ko": "불확실한 부분을 추측하지 말고 먼저 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "哪些類型的問題適合向您請教？",
+            "zh-CN": "哪些类型的问题适合向您请教？",
+            "ja": "どのような質問をご相談すればよいでしょうか。",
+            "ko": "어떤 종류의 질문을 여쭤보면 될까요?"
+          },
+          "visual": "sentence:Which types of questions should I bring to you?",
+          "target": "sentence:Which types of questions should I bring to you?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep09-s07",
+          "english": "Listen and choose.",
+          "demo": "Which types of questions should I bring to you?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "哪些類型的問題適合向您請教？",
+            "zh-CN": "哪些类型的问题适合向您请教？",
+            "ja": "どのような質問をご相談すればよいでしょうか。",
+            "ko": "어떤 종류의 질문을 여쭤보면 될까요?"
+          },
+          "visual": "sentence:Which types of questions should I bring to you?",
+          "target": "sentence:Which types of questions should I bring to you?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:I am joining the fictional service team as a support assistant.",
+            "sentence:Which types of questions should I bring to you?",
+            "sentence:A useful introduction starts a working relationship and invites clarification."
+          ]
+        },
+        {
+          "id": "ep09-s08",
+          "english": "Please let me know if I have misunderstood our working arrangements.",
+          "demo": "Please let me know if I have misunderstood our working arrangements.",
+          "instruction": {
+            "en": "Invite the colleague to correct your understanding of the working arrangement.",
+            "zh-TW": "邀請同事更正你對合作安排的理解。",
+            "zh-CN": "邀请同事更正你对合作安排的理解。",
+            "ja": "連携の仕方について、自分の理解を同僚に確認してもらいます。",
+            "ko": "협업 방식에 대한 이해를 동료가 바로잡을 수 있게 해요."
+          },
+          "demo_translation": {
+            "zh-TW": "如果我誤解了我們的合作安排，請告訴我。",
+            "zh-CN": "如果我误解了我们的合作安排，请告诉我。",
+            "ja": "連携の仕方について誤解していたら、教えてください。",
+            "ko": "협업 방식을 잘못 이해했다면 알려 주세요."
+          },
+          "visual": "sentence:Please let me know if I have misunderstood our working arrangements.",
+          "target": "sentence:Please let me know if I have misunderstood our working arrangements.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep09-s09",
+          "english": "Listen and choose.",
+          "demo": "Please let me know if I have misunderstood our working arrangements.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "如果我誤解了我們的合作安排，請告訴我。",
+            "zh-CN": "如果我误解了我们的合作安排，请告诉我。",
+            "ja": "連携の仕方について誤解していたら、教えてください。",
+            "ko": "협업 방식을 잘못 이해했다면 알려 주세요."
+          },
+          "visual": "sentence:Please let me know if I have misunderstood our working arrangements.",
+          "target": "sentence:Please let me know if I have misunderstood our working arrangements.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:I am joining the fictional service team as a support assistant.",
+            "sentence:A useful introduction starts a working relationship and invites clarification.",
+            "sentence:Please let me know if I have misunderstood our working arrangements."
+          ]
+        },
+        {
+          "id": "ep09-s10",
+          "english": "A useful introduction starts a working relationship and invites clarification.",
+          "demo": "A useful introduction starts a working relationship and invites clarification.",
+          "instruction": {
+            "en": "Check that purpose, evidence, and next action fit together.",
+            "zh-TW": "檢查目的、證據與下一步是否一致。",
+            "zh-CN": "检查目的、证据与下一步是否一致。",
+            "ja": "目的、根拠、次の行動が一貫しているか確認します。",
+            "ko": "목적, 근거, 다음 행동이 서로 일치하는지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "實用的自介開啟合作關係，也邀請對方澄清。",
+            "zh-CN": "实用的自我介绍开启合作关系，也邀请对方澄清。",
+            "ja": "役立つ自己紹介は仕事上の関係を築き、確認しやすくします。",
+            "ko": "유용한 자기소개는 업무 관계를 시작하고 확인할 기회를 만들어요."
+          },
+          "visual": "sentence:A useful introduction starts a working relationship and invites clarification.",
+          "target": "sentence:A useful introduction starts a working relationship and invites clarification.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        }
+      ]
+    },
+    {
+      "id": "ep10",
+      "number": 10,
+      "season": 1,
+      "stage": 1,
+      "course": "workplace",
+      "title_en": "Responsibility and Decision Rights",
+      "title_zh_TW": "分清責任與決定權",
+      "titles": {
+        "zh-TW": "分清責任與決定權",
+        "zh-CN": "分清责任与决定权",
+        "ja": "担当範囲と決定権を分ける",
+        "ko": "책임과 결정 권한 구분하기"
+      },
+      "topic": "responsibility-recommendation-approval",
+      "objectives_zh_TW": [
+        "區分準備、檢查、推薦與核准的動作。",
+        "在權限不明時確認，不把交付任務視為全面授權。",
+        "寫一百至一百四十詞責任確認訊息。"
+      ],
+      "parent_tip_zh_TW": "在工作交辦旁寫下 prepare、review、approve，並確認每個動作由誰負責。",
+      "practice": {
+        "reading_en": "This fictional company uses a simple approval process for training supplies. New assistant Marco is asked to prepare a comparison of available suppliers. He is unsure whether this means choosing one and confirming an order. Before contacting a supplier, he asks his manager to clarify the decision boundary. The manager explains that Marco should collect current options and recommend one, while the manager approves any purchase. Marco writes the recommendation as a draft and records the reason for his preferred option. Later, that option becomes unavailable before approval. Rather than confirming a substitute on his own, he updates the comparison and asks the manager to review it. The example policy belongs only to this fictional company; another workplace may assign authority differently. Marco's useful habit is therefore asking who prepares, recommends, and approves, not memorizing one universal hierarchy. Clear language about those separate actions helps the team avoid treating a draft recommendation as a completed purchasing decision.",
+        "prompt_en": "Write a 100-140-word message confirming responsibilities in the fictional supplier task. Distinguish preparation, recommendation, and approval; describe how you will label the draft and handle an unavailable option.",
+        "prompt_zh_TW": "依虛構供應商任務寫一百至一百四十詞責任確認訊息。區分準備、推薦與核准，說明草稿標示及選項無法提供時的做法。",
+        "sample_answer_en": "Hi Manager,\n\nI would like to confirm my responsibilities for the supplier comparison. I will collect the current options, compare the relevant details, and recommend an option with a short explanation. I understand that you will review the recommendation and approve any purchase. I will label the document as a draft for review so that it is not mistaken for an approved order.\n\nIf an option becomes unavailable before approval, I will update the comparison and ask you to review the alternatives. I will not confirm a replacement with a supplier until the appropriate approval is clear. Please let me know if I have misunderstood any part of this arrangement or if another person should be involved in the review.\n\nMarco",
+        "questions": [
+          {
+            "prompt_en": "Which actions belong to Marco, and which belongs to the manager?",
+            "answer_en": "Marco collects and compares options and recommends one; the manager approves a purchase."
+          },
+          {
+            "prompt_en": "Why does Marco update the comparison instead of confirming a substitute?",
+            "answer_en": "The original option is unavailable, and choosing a replacement still requires the manager's review and approval."
+          },
+          {
+            "prompt_en": "Should learners assume this exact approval hierarchy applies in every workplace? Explain.",
+            "answer_en": "No. The text explicitly limits the policy to the fictional company and recommends clarifying each workplace's responsibility boundaries."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep10-s01",
+          "english": "In this fictional team, I prepare draft supplier comparisons.",
+          "demo": "In this fictional team, I prepare draft supplier comparisons.",
+          "instruction": {
+            "en": "Separate your own responsibility from the responsibility of others.",
+            "zh-TW": "區分自己的責任與他人的責任。",
+            "zh-CN": "区分自己的责任与他人的责任。",
+            "ja": "自分の担当と他の人の担当を区別します。",
+            "ko": "자신의 책임과 다른 사람의 책임을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "在這個虛構團隊裡，我負責準備供應商比較草稿。",
+            "zh-CN": "在这个虚构团队里，我负责准备供应商比较草稿。",
+            "ja": "この架空のチームでは、仕入先の比較案を私が作成します。",
+            "ko": "이 가상의 팀에서 저는 공급업체 비교 초안을 준비해요."
+          },
+          "visual": "sentence:In this fictional team, I prepare draft supplier comparisons.",
+          "target": "sentence:In this fictional team, I prepare draft supplier comparisons.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep10-s02",
+          "english": "Does preparing the comparison include recommending an option?",
+          "demo": "Does preparing the comparison include recommending an option?",
+          "instruction": {
+            "en": "Ask about the uncertain detail before assuming what it means.",
+            "zh-TW": "先問清楚不確定的細節，再決定做法。",
+            "zh-CN": "先问清楚不确定的细节，再决定做法。",
+            "ja": "不明な点は意味を決めつけず、先に確認します。",
+            "ko": "불확실한 부분을 추측하지 말고 먼저 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "準備比較資料也包含推薦選項嗎？",
+            "zh-CN": "准备比较资料也包含推荐选项吗？",
+            "ja": "比較資料の作成には、候補を推薦することも含まれますか。",
+            "ko": "비교 자료 준비에 대안 추천도 포함되나요?"
+          },
+          "visual": "sentence:Does preparing the comparison include recommending an option?",
+          "target": "sentence:Does preparing the comparison include recommending an option?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep10-s03",
+          "english": "You may recommend an option, but the manager approves the purchase.",
+          "demo": "You may recommend an option, but the manager approves the purchase.",
+          "instruction": {
+            "en": "Distinguish preparing a recommendation from approving a final decision.",
+            "zh-TW": "區分提出建議與核准最終決定。",
+            "zh-CN": "区分提出建议与批准最终决定。",
+            "ja": "提案を準備することと、最終決定を承認することを区別します。",
+            "ko": "제안을 준비하는 일과 최종 결정을 승인하는 일을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "你可以推薦選項，但採購由經理核准。",
+            "zh-CN": "你可以推荐选项，但采购由经理批准。",
+            "ja": "候補は推薦できますが、購入はマネージャーが承認します。",
+            "ko": "대안을 추천할 수는 있지만 구매는 관리자가 승인해요."
+          },
+          "visual": "sentence:You may recommend an option, but the manager approves the purchase.",
+          "target": "sentence:You may recommend an option, but the manager approves the purchase.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep10-s04",
+          "english": "I will label my recommendation as a draft for review.",
+          "demo": "I will label my recommendation as a draft for review.",
+          "instruction": {
+            "en": "Use an action verb to explain what you plan to do.",
+            "zh-TW": "用動作動詞說明你計畫做的事。",
+            "zh-CN": "用动作动词说明你计划做的事。",
+            "ja": "行動を表す動詞で、これから行うことを説明します。",
+            "ko": "동작을 나타내는 동사로 앞으로 할 일을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會把建議標示為待審閱草稿。",
+            "zh-CN": "我会把建议标为待审阅草稿。",
+            "ja": "私の提案には、確認用の草案と明記します。",
+            "ko": "제 제안에는 검토용 초안이라고 표시하겠어요."
+          },
+          "visual": "sentence:I will label my recommendation as a draft for review.",
+          "target": "sentence:I will label my recommendation as a draft for review.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep10-s05",
+          "english": "Listen and choose.",
+          "demo": "Does preparing the comparison include recommending an option?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "準備比較資料也包含推薦選項嗎？",
+            "zh-CN": "准备比较资料也包含推荐选项吗？",
+            "ja": "比較資料の作成には、候補を推薦することも含まれますか。",
+            "ko": "비교 자료 준비에 대안 추천도 포함되나요?"
+          },
+          "visual": "sentence:Does preparing the comparison include recommending an option?",
+          "target": "sentence:Does preparing the comparison include recommending an option?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:Does preparing the comparison include recommending an option?",
+            "sentence:In this fictional team, I prepare draft supplier comparisons.",
+            "sentence:Owning a task does not automatically grant final approval authority."
+          ]
+        },
+        {
+          "id": "ep10-s06",
+          "english": "Who should approve a change if the agreed option becomes unavailable?",
+          "demo": "Who should approve a change if the agreed option becomes unavailable?",
+          "instruction": {
+            "en": "Ask about the uncertain detail before assuming what it means.",
+            "zh-TW": "先問清楚不確定的細節，再決定做法。",
+            "zh-CN": "先问清楚不确定的细节，再决定做法。",
+            "ja": "不明な点は意味を決めつけず、先に確認します。",
+            "ko": "불확실한 부분을 추측하지 말고 먼저 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "如果已同意的選項無法提供，應由誰核准變更？",
+            "zh-CN": "如果已同意的选项无法提供，应由谁批准变更？",
+            "ja": "合意済みの候補が利用できなくなった場合、変更は誰が承認しますか。",
+            "ko": "합의한 대안을 이용할 수 없게 되면 누가 변경을 승인해야 하나요?"
+          },
+          "visual": "sentence:Who should approve a change if the agreed option becomes unavailable?",
+          "target": "sentence:Who should approve a change if the agreed option becomes unavailable?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep10-s07",
+          "english": "Listen and choose.",
+          "demo": "Who should approve a change if the agreed option becomes unavailable?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "如果已同意的選項無法提供，應由誰核准變更？",
+            "zh-CN": "如果已同意的选项无法提供，应由谁批准变更？",
+            "ja": "合意済みの候補が利用できなくなった場合、変更は誰が承認しますか。",
+            "ko": "합의한 대안을 이용할 수 없게 되면 누가 변경을 승인해야 하나요?"
+          },
+          "visual": "sentence:Who should approve a change if the agreed option becomes unavailable?",
+          "target": "sentence:Who should approve a change if the agreed option becomes unavailable?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:In this fictional team, I prepare draft supplier comparisons.",
+            "sentence:Who should approve a change if the agreed option becomes unavailable?",
+            "sentence:Owning a task does not automatically grant final approval authority."
+          ]
+        },
+        {
+          "id": "ep10-s08",
+          "english": "I will check with the manager before confirming a replacement.",
+          "demo": "I will check with the manager before confirming a replacement.",
+          "instruction": {
+            "en": "Explain which action happens first and what depends on it.",
+            "zh-TW": "說明先做哪一步，以及後續依賴的條件。",
+            "zh-CN": "说明先做哪一步，以及后续依赖的条件。",
+            "ja": "最初に行うことと、その後の作業に必要な条件を説明します。",
+            "ko": "먼저 할 일과 그다음 작업에 필요한 조건을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "確認替代方案前，我會先向經理核實。",
+            "zh-CN": "确认替代方案前，我会先向经理核实。",
+            "ja": "代替案を確定する前に、マネージャーに確認します。",
+            "ko": "대체안을 확정하기 전에 관리자에게 확인하겠어요."
+          },
+          "visual": "sentence:I will check with the manager before confirming a replacement.",
+          "target": "sentence:I will check with the manager before confirming a replacement.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep10-s09",
+          "english": "Listen and choose.",
+          "demo": "I will check with the manager before confirming a replacement.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "確認替代方案前，我會先向經理核實。",
+            "zh-CN": "确认替代方案前，我会先向经理核实。",
+            "ja": "代替案を確定する前に、マネージャーに確認します。",
+            "ko": "대체안을 확정하기 전에 관리자에게 확인하겠어요."
+          },
+          "visual": "sentence:I will check with the manager before confirming a replacement.",
+          "target": "sentence:I will check with the manager before confirming a replacement.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:In this fictional team, I prepare draft supplier comparisons.",
+            "sentence:Owning a task does not automatically grant final approval authority.",
+            "sentence:I will check with the manager before confirming a replacement."
+          ]
+        },
+        {
+          "id": "ep10-s10",
+          "english": "Owning a task does not automatically grant final approval authority.",
+          "demo": "Owning a task does not automatically grant final approval authority.",
+          "instruction": {
+            "en": "Check that purpose, evidence, and next action fit together.",
+            "zh-TW": "檢查目的、證據與下一步是否一致。",
+            "zh-CN": "检查目的、证据与下一步是否一致。",
+            "ja": "目的、根拠、次の行動が一貫しているか確認します。",
+            "ko": "목적, 근거, 다음 행동이 서로 일치하는지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "負責一項任務並不會自動取得最終核准權。",
+            "zh-CN": "负责一项任务并不会自动获得最终批准权。",
+            "ja": "作業を担当していても、最終承認の権限が自動的に与えられるわけではありません。",
+            "ko": "업무를 맡았다고 최종 승인 권한까지 자동으로 생기는 것은 아니에요."
+          },
+          "visual": "sentence:Owning a task does not automatically grant final approval authority.",
+          "target": "sentence:Owning a task does not automatically grant final approval authority.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        }
+      ]
+    },
+    {
+      "id": "ep11",
+      "number": 11,
+      "season": 1,
+      "stage": 1,
+      "course": "workplace",
+      "title_en": "Confirming Onboarding Priorities",
+      "title_zh_TW": "確認到職任務的先後",
+      "titles": {
+        "zh-TW": "確認到職任務的先後",
+        "zh-CN": "确认入职任务的先后",
+        "ja": "入社時の作業の優先順位を確認する",
+        "ko": "입사 초기 업무 우선순위 확인하기"
+      },
+      "topic": "onboarding-priorities-dependencies",
+      "objectives_zh_TW": [
+        "分辨到職清單上的先後關係與阻礙。",
+        "主動回報缺少的權限並確認替代任務。",
+        "寫一百至一百四十詞到職任務確認。"
+      ],
+      "parent_tip_zh_TW": "把「還不能開始」改寫為具體依賴條件，並詢問等待時可以先完成哪項有用工作。",
+      "practice": {
+        "reading_en": "In this fictional onboarding exercise, Asha receives a checklist containing system access, a reporting guide, and a sample report. She initially treats every item as equally urgent. However, the report must use a training account, and that account is not ready. Asha checks the dependency before promising a completion time. She tells her supervisor that the access request is awaiting confirmation and asks whether reviewing the guide should be her first task while she waits. The supervisor agrees and asks her to note questions for their first review. Asha reads the guide and makes a short list of unclear steps. She keeps the sample report marked as pending access rather than complete. When the training account becomes available, she will use the guide and her questions to prepare the report. This sequence allows useful progress without pretending that the obstacle has disappeared. The checklist is part of a fictional process, and the priority is confirmed with the supervisor rather than presented as a rule for all new employees.",
+        "prompt_en": "Write a 100-140-word onboarding update for the fictional scenario. Identify completed or possible work, the access dependency, a priority question, and the next action after access arrives.",
+        "prompt_zh_TW": "依虛構情境寫一百至一百四十詞到職進度回報。交代已完成或可先做的工作、權限依賴、優先順序問題，以及取得權限後的下一步。",
+        "sample_answer_en": "Hi Supervisor,\n\nI have reviewed the onboarding checklist and identified a dependency for the sample report. I need the training account before I can prepare it, and the access request is still awaiting confirmation. While I wait, I can read the reporting guide and collect questions for our first review. Could you confirm that this is the best priority for now, or let me know if another task would be more useful?\n\nI will keep the report marked as pending access. Once the account is available, I will use the guide to prepare the sample and check any unclear steps with you. I will also update you if the access delay affects the plan we agree on.\n\nAsha",
+        "questions": [
+          {
+            "prompt_en": "What prevents Asha from preparing the sample report immediately?",
+            "answer_en": "She needs a training account, and access to that account is not ready."
+          },
+          {
+            "prompt_en": "How does reviewing the guide help despite the obstacle?",
+            "answer_en": "It lets her learn the reporting process and collect questions while waiting, so she is better prepared when access arrives."
+          },
+          {
+            "prompt_en": "Why would marking the report complete give a misleading impression?",
+            "answer_en": "The report has not been prepared because the required account is unavailable; the text explicitly keeps it pending access."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep11-s01",
+          "english": "My fictional onboarding list includes system access and a sample report.",
+          "demo": "My fictional onboarding list includes system access and a sample report.",
+          "instruction": {
+            "en": "Give enough context to identify the situation you are describing.",
+            "zh-TW": "提供足夠背景，讓人辨識你描述的情境。",
+            "zh-CN": "提供足够背景，让人识别你描述的情境。",
+            "ja": "説明している状況が分かるよう、必要な背景を示します。",
+            "ko": "설명하는 상황을 알 수 있도록 필요한 배경을 제공해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我的虛構到職清單包含系統權限與範例報告。",
+            "zh-CN": "我的虚构入职清单包含系统权限与示例报告。",
+            "ja": "この架空の入社時チェックリストには、システム利用権限と見本レポートがあります。",
+            "ko": "가상의 입사 체크리스트에는 시스템 접근 권한과 견본 보고서가 있어요."
+          },
+          "visual": "sentence:My fictional onboarding list includes system access and a sample report.",
+          "target": "sentence:My fictional onboarding list includes system access and a sample report.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep11-s02",
+          "english": "I need system access before I can prepare the report.",
+          "demo": "I need system access before I can prepare the report.",
+          "instruction": {
+            "en": "Explain which action happens first and what depends on it.",
+            "zh-TW": "說明先做哪一步，以及後續依賴的條件。",
+            "zh-CN": "说明先做哪一步，以及后续依赖的条件。",
+            "ja": "最初に行うことと、その後の作業に必要な条件を説明します。",
+            "ko": "먼저 할 일과 그다음 작업에 필요한 조건을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我需要先取得系統權限，才能準備報告。",
+            "zh-CN": "我需要先获得系统权限，才能准备报告。",
+            "ja": "レポートを作成するには、先にシステムの利用権限が必要です。",
+            "ko": "보고서를 준비하려면 먼저 시스템 접근 권한이 필요해요."
+          },
+          "visual": "sentence:I need system access before I can prepare the report.",
+          "target": "sentence:I need system access before I can prepare the report.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep11-s03",
+          "english": "The access request is still awaiting confirmation.",
+          "demo": "The access request is still awaiting confirmation.",
+          "instruction": {
+            "en": "Separate completed work, a current obstacle, and the next action.",
+            "zh-TW": "分開交代完成項目、目前阻礙與下一步。",
+            "zh-CN": "分开交代完成项目、目前障碍与下一步。",
+            "ja": "完了した作業、現在の障害、次の行動を分けて伝えます。",
+            "ko": "완료한 일, 현재 장애물, 다음 행동을 나누어 전달해요."
+          },
+          "demo_translation": {
+            "zh-TW": "系統權限申請仍在等待確認。",
+            "zh-CN": "系统权限申请仍在等待确认。",
+            "ja": "利用権限の申請は、まだ確認待ちです。",
+            "ko": "접근 권한 요청은 아직 확인을 기다리고 있어요."
+          },
+          "visual": "sentence:The access request is still awaiting confirmation.",
+          "target": "sentence:The access request is still awaiting confirmation.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep11-s04",
+          "english": "While I wait, should I review the reporting guide first?",
+          "demo": "While I wait, should I review the reporting guide first?",
+          "instruction": {
+            "en": "Ask which task takes priority when the requested actions compete.",
+            "zh-TW": "任務互相衝突時，確認哪項優先。",
+            "zh-CN": "任务互相冲突时，确认哪项优先。",
+            "ja": "依頼された作業が競合するときは、優先順位を確認します。",
+            "ko": "요청받은 작업이 충돌하면 무엇이 우선인지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "等待期間，我應該先閱讀報告指南嗎？",
+            "zh-CN": "等待期间，我应该先阅读报告指南吗？",
+            "ja": "待っている間に、まずレポート作成ガイドを読めばよいでしょうか。",
+            "ko": "기다리는 동안 보고서 작성 안내를 먼저 읽으면 될까요?"
+          },
+          "visual": "sentence:While I wait, should I review the reporting guide first?",
+          "target": "sentence:While I wait, should I review the reporting guide first?",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep11-s05",
+          "english": "Listen and choose.",
+          "demo": "I need system access before I can prepare the report.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我需要先取得系統權限，才能準備報告。",
+            "zh-CN": "我需要先获得系统权限，才能准备报告。",
+            "ja": "レポートを作成するには、先にシステムの利用権限が必要です。",
+            "ko": "보고서를 준비하려면 먼저 시스템 접근 권한이 필요해요."
+          },
+          "visual": "sentence:I need system access before I can prepare the report.",
+          "target": "sentence:I need system access before I can prepare the report.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:I need system access before I can prepare the report.",
+            "sentence:My fictional onboarding list includes system access and a sample report.",
+            "sentence:A clear plan identifies both the next task and its dependency."
+          ]
+        },
+        {
+          "id": "ep11-s06",
+          "english": "Please confirm which task matters most for my first review.",
+          "demo": "Please confirm which task matters most for my first review.",
+          "instruction": {
+            "en": "Name the requested action so the recipient knows how to respond.",
+            "zh-TW": "說清楚請求的行動，讓對方知道如何回覆。",
+            "zh-CN": "说清楚请求的行动，让对方知道如何回复。",
+            "ja": "相手が返答できるよう、依頼する行動を明示します。",
+            "ko": "상대가 답할 수 있도록 요청하는 행동을 명확히 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "請確認哪項任務對我的首次檢視最重要。",
+            "zh-CN": "请确认哪项任务对我的首次检查最重要。",
+            "ja": "最初の振り返りに向けて、どの作業が最優先かご確認ください。",
+            "ko": "첫 검토를 위해 어떤 업무가 가장 중요한지 확인해 주세요."
+          },
+          "visual": "sentence:Please confirm which task matters most for my first review.",
+          "target": "sentence:Please confirm which task matters most for my first review.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep11-s07",
+          "english": "Listen and choose.",
+          "demo": "Please confirm which task matters most for my first review.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "請確認哪項任務對我的首次檢視最重要。",
+            "zh-CN": "请确认哪项任务对我的首次检查最重要。",
+            "ja": "最初の振り返りに向けて、どの作業が最優先かご確認ください。",
+            "ko": "첫 검토를 위해 어떤 업무가 가장 중요한지 확인해 주세요."
+          },
+          "visual": "sentence:Please confirm which task matters most for my first review.",
+          "target": "sentence:Please confirm which task matters most for my first review.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:My fictional onboarding list includes system access and a sample report.",
+            "sentence:Please confirm which task matters most for my first review.",
+            "sentence:A clear plan identifies both the next task and its dependency."
+          ]
+        },
+        {
+          "id": "ep11-s08",
+          "english": "I will flag the access delay and update you when it is resolved.",
+          "demo": "I will flag the access delay and update you when it is resolved.",
+          "instruction": {
+            "en": "Offer a concrete next step with a clear purpose.",
+            "zh-TW": "提出目的清楚的具體下一步。",
+            "zh-CN": "提出目的清楚的具体下一步。",
+            "ja": "目的が明確な、具体的な次の行動を示します。",
+            "ko": "목적이 분명한 구체적인 다음 단계를 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會說明權限延遲，並在解決後向您回報。",
+            "zh-CN": "我会说明权限延迟，并在解决后向您汇报。",
+            "ja": "利用権限の遅れをお伝えし、解決したら進捗をご報告します。",
+            "ko": "접근 권한 지연을 알리고 해결되면 진행 상황을 보고하겠어요."
+          },
+          "visual": "sentence:I will flag the access delay and update you when it is resolved.",
+          "target": "sentence:I will flag the access delay and update you when it is resolved.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep11-s09",
+          "english": "Listen and choose.",
+          "demo": "I will flag the access delay and update you when it is resolved.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我會說明權限延遲，並在解決後向您回報。",
+            "zh-CN": "我会说明权限延迟，并在解决后向您汇报。",
+            "ja": "利用権限の遅れをお伝えし、解決したら進捗をご報告します。",
+            "ko": "접근 권한 지연을 알리고 해결되면 진행 상황을 보고하겠어요."
+          },
+          "visual": "sentence:I will flag the access delay and update you when it is resolved.",
+          "target": "sentence:I will flag the access delay and update you when it is resolved.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:My fictional onboarding list includes system access and a sample report.",
+            "sentence:A clear plan identifies both the next task and its dependency.",
+            "sentence:I will flag the access delay and update you when it is resolved."
+          ]
+        },
+        {
+          "id": "ep11-s10",
+          "english": "A clear plan identifies both the next task and its dependency.",
+          "demo": "A clear plan identifies both the next task and its dependency.",
+          "instruction": {
+            "en": "Check that purpose, evidence, and next action fit together.",
+            "zh-TW": "檢查目的、證據與下一步是否一致。",
+            "zh-CN": "检查目的、证据与下一步是否一致。",
+            "ja": "目的、根拠、次の行動が一貫しているか確認します。",
+            "ko": "목적, 근거, 다음 행동이 서로 일치하는지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "清楚的計畫會列出下一項任務及所需條件。",
+            "zh-CN": "清晰的计划会列出下一项任务及所需条件。",
+            "ja": "明確な計画は、次の作業とその前提条件の両方を示します。",
+            "ko": "명확한 계획은 다음 업무와 그에 필요한 조건을 함께 밝혀요."
+          },
+          "visual": "sentence:A clear plan identifies both the next task and its dependency.",
+          "target": "sentence:A clear plan identifies both the next task and its dependency.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        }
+      ]
+    },
+    {
+      "id": "ep12",
+      "number": 12,
+      "season": 1,
+      "stage": 1,
+      "course": "workplace",
+      "title_en": "From Application to Onboarding",
+      "title_zh_TW": "整合求職與到職溝通",
+      "titles": {
+        "zh-TW": "整合求職與到職溝通",
+        "zh-CN": "整合求职与入职沟通",
+        "ja": "応募から入社までのコミュニケーション",
+        "ko": "지원부터 입사까지의 의사소통"
+      },
+      "topic": "integrated-application-onboarding",
+      "objectives_zh_TW": [
+        "把職缺條件、經驗證據與面試提問連成一致脈絡。",
+        "到職後確認責任、權限與優先順序。",
+        "用一百至一百四十詞整合求職與入職溝通策略。"
+      ],
+      "parent_tip_zh_TW": "檢查申請時說過的能力與到職後的學習需求是否一致；不要因拿到職務就把尚未學會的技能說成熟悉。",
+      "practice": {
+        "reading_en": "This fictional review follows Noor from an application to a first week at a service organization. The role requires clear records, while experience with the organization's system is preferred. Noor supports her application with a volunteer log showing how she tracked unresolved requests. In her interview, she explains her own contribution and acknowledges that she has not used the professional system. She asks how new employees receive feedback. After receiving an offer in the story, she confirms the stated start arrangements instead of assuming every detail is settled. On her first day, she introduces her support role and asks who reviews her initial request summary. Her supervisor explains that she prepares the summary and a senior colleague checks it before wider sharing. System access is delayed, so they agree that she will review the training guide first. Each message builds on the previous one. Noor remains honest about her experience while becoming more precise about responsibilities, priorities, and the next useful action.",
+        "prompt_en": "Write a 100-140-word reflection on a fictional applicant's transition into a role. Connect relevant evidence, an honest limitation, an interview question, and two onboarding agreements.",
+        "prompt_zh_TW": "用一百至一百四十詞回顧虛構求職者到職的過程。連結相關證據、誠實的限制說明、面試提問，以及兩項到職工作約定。",
+        "sample_answer_en": "Noor's communication remains consistent from application to onboarding. Her volunteer log provides a concrete example of tracking unresolved requests, which relates to the role's requirement for clear records. She does not turn that experience into a claim that she already knows the professional system. During the interview, asking about feedback helps her understand how she will learn. After joining, she confirms that she prepares the first request summary and a senior colleague reviews it before wider sharing. She also agrees to review the training guide while system access is delayed. These two arrangements clarify authority and priority. Together, they show how honest evidence during hiring can lead to practical questions and realistic working agreements after arrival.",
+        "questions": [
+          {
+            "prompt_en": "What evidence supports Noor's application?",
+            "answer_en": "Her volunteer log shows how she tracked unresolved requests, which relates to the need for clear records."
+          },
+          {
+            "prompt_en": "How do the onboarding agreements address both authority and a dependency?",
+            "answer_en": "They assign initial review to a senior colleague and prioritize the training guide while system access is unavailable."
+          },
+          {
+            "prompt_en": "What evidence shows continuity between Noor's interview and first-week communication?",
+            "answer_en": "She acknowledges unfamiliar systems in the interview and later follows a learning plan while access is delayed, rather than suddenly claiming existing expertise."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep12-s01",
+          "english": "The fictional role requires clear records and careful follow-up.",
+          "demo": "The fictional role requires clear records and careful follow-up.",
+          "instruction": {
+            "en": "Separate a required qualification from a preferred qualification.",
+            "zh-TW": "區分必要資格與加分條件。",
+            "zh-CN": "区分必要资格与加分条件。",
+            "ja": "必須条件と歓迎条件を区別します。",
+            "ko": "필수 자격과 우대 조건을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這個虛構職務要求清楚紀錄與細心追蹤。",
+            "zh-CN": "这个虚构岗位要求清晰记录与细心跟进。",
+            "ja": "この架空の職務には、明確な記録と丁寧なフォローが必要です。",
+            "ko": "이 가상의 직무에는 명확한 기록과 세심한 후속 관리가 필요해요."
+          },
+          "visual": "sentence:The fictional role requires clear records and careful follow-up.",
+          "target": "sentence:The fictional role requires clear records and careful follow-up.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep12-s02",
+          "english": "My volunteer log shows how I tracked unresolved requests.",
+          "demo": "My volunteer log shows how I tracked unresolved requests.",
+          "instruction": {
+            "en": "Support the skill with a specific action the reader can understand.",
+            "zh-TW": "用讀者能理解的具體行動支持技能。",
+            "zh-CN": "用读者能理解的具体行动支持技能。",
+            "ja": "読み手が理解できる具体的な行動で技能を裏付けます。",
+            "ko": "독자가 이해할 수 있는 구체적 행동으로 역량을 뒷받침해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我的志工紀錄呈現了我如何追蹤未解決的請求。",
+            "zh-CN": "我的志愿者记录呈现了我如何跟进未解决的请求。",
+            "ja": "ボランティアの記録には、未解決の依頼を追跡した方法が示されています。",
+            "ko": "자원봉사 기록은 제가 미해결 요청을 추적한 방법을 보여 줘요."
+          },
+          "visual": "sentence:My volunteer log shows how I tracked unresolved requests.",
+          "target": "sentence:My volunteer log shows how I tracked unresolved requests.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep12-s03",
+          "english": "I explained that contribution without claiming professional system experience.",
+          "demo": "I explained that contribution without claiming professional system experience.",
+          "instruction": {
+            "en": "State the limit honestly; do not turn experience into a guarantee.",
+            "zh-TW": "誠實交代限制，別把經驗說成保證。",
+            "zh-CN": "诚实交代限制，别把经历说成保证。",
+            "ja": "限界を正直に示し、経験を保証のように伝えないようにします。",
+            "ko": "한계를 솔직히 밝히고 경험을 보장처럼 말하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "我說明了那項貢獻，並未宣稱有專業系統經驗。",
+            "zh-CN": "我说明了那项贡献，并未声称有专业系统经验。",
+            "ja": "専門システムの使用経験があるとは言わず、その貢献を説明しました。",
+            "ko": "전문 시스템 경험이 있다고 주장하지 않고 그 기여를 설명했어요."
+          },
+          "visual": "sentence:I explained that contribution without claiming professional system experience.",
+          "target": "sentence:I explained that contribution without claiming professional system experience.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep12-s04",
+          "english": "During the interview, I asked how new staff receive feedback.",
+          "demo": "During the interview, I asked how new staff receive feedback.",
+          "instruction": {
+            "en": "Ask about the uncertain detail before assuming what it means.",
+            "zh-TW": "先問清楚不確定的細節，再決定做法。",
+            "zh-CN": "先问清楚不确定的细节，再决定做法。",
+            "ja": "不明な点は意味を決めつけず、先に確認します。",
+            "ko": "불확실한 부분을 추측하지 말고 먼저 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "面試時，我詢問新進人員如何獲得回饋。",
+            "zh-CN": "面试时，我询问新员工如何获得反馈。",
+            "ja": "面接では、新入社員がどのように助言を受けるか質問しました。",
+            "ko": "면접에서는 신입 직원이 어떻게 피드백을 받는지 물었어요."
+          },
+          "visual": "sentence:During the interview, I asked how new staff receive feedback.",
+          "target": "sentence:During the interview, I asked how new staff receive feedback.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep12-s05",
+          "english": "Listen and choose.",
+          "demo": "My volunteer log shows how I tracked unresolved requests.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我的志工紀錄呈現了我如何追蹤未解決的請求。",
+            "zh-CN": "我的志愿者记录呈现了我如何跟进未解决的请求。",
+            "ja": "ボランティアの記録には、未解決の依頼を追跡した方法が示されています。",
+            "ko": "자원봉사 기록은 제가 미해결 요청을 추적한 방법을 보여 줘요."
+          },
+          "visual": "sentence:My volunteer log shows how I tracked unresolved requests.",
+          "target": "sentence:My volunteer log shows how I tracked unresolved requests.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:My volunteer log shows how I tracked unresolved requests.",
+            "sentence:The fictional role requires clear records and careful follow-up.",
+            "sentence:Consistent communication connects honest evidence with clear working agreements."
+          ]
+        },
+        {
+          "id": "ep12-s06",
+          "english": "Now I will confirm who reviews my first request summary.",
+          "demo": "Now I will confirm who reviews my first request summary.",
+          "instruction": {
+            "en": "Identify who reviews the first summary before it is shared.",
+            "zh-TW": "確認第一份摘要分享前由誰審閱。",
+            "zh-CN": "确认第一份摘要分享前由谁审阅。",
+            "ja": "最初の要約を共有する前に、誰が確認するかを明確にします。",
+            "ko": "첫 요약을 공유하기 전에 누가 검토하는지 밝혀요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在，我會確認由誰審閱我的第一份請求摘要。",
+            "zh-CN": "现在，我会确认由谁审阅我的第一份请求摘要。",
+            "ja": "今度は、最初の依頼要約を誰が確認するかを確かめます。",
+            "ko": "이제 첫 요청 요약을 누가 검토하는지 확인하겠어요."
+          },
+          "visual": "sentence:Now I will confirm who reviews my first request summary.",
+          "target": "sentence:Now I will confirm who reviews my first request summary.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        },
+        {
+          "id": "ep12-s07",
+          "english": "Listen and choose.",
+          "demo": "Now I will confirm who reviews my first request summary.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "現在，我會確認由誰審閱我的第一份請求摘要。",
+            "zh-CN": "现在，我会确认由谁审阅我的第一份请求摘要。",
+            "ja": "今度は、最初の依頼要約を誰が確認するかを確かめます。",
+            "ko": "이제 첫 요청 요약을 누가 검토하는지 확인하겠어요."
+          },
+          "visual": "sentence:Now I will confirm who reviews my first request summary.",
+          "target": "sentence:Now I will confirm who reviews my first request summary.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:The fictional role requires clear records and careful follow-up.",
+            "sentence:Now I will confirm who reviews my first request summary.",
+            "sentence:Consistent communication connects honest evidence with clear working agreements."
+          ]
+        },
+        {
+          "id": "ep12-s08",
+          "english": "I will prioritize the training guide while waiting for access.",
+          "demo": "I will prioritize the training guide while waiting for access.",
+          "instruction": {
+            "en": "State the agreed priority while system access is pending.",
+            "zh-TW": "說明等待系統權限期間已同意的優先任務。",
+            "zh-CN": "说明等待系统权限期间已同意的优先任务。",
+            "ja": "システムの利用権限を待つ間に合意した優先事項を述べます。",
+            "ko": "시스템 접근 권한을 기다리는 동안 합의한 우선 업무를 말해요."
+          },
+          "demo_translation": {
+            "zh-TW": "等待權限時，我會優先閱讀訓練指南。",
+            "zh-CN": "等待权限时，我会优先阅读培训指南。",
+            "ja": "利用権限を待つ間は、研修ガイドを優先して読みます。",
+            "ko": "접근 권한을 기다리는 동안 교육 안내를 우선 읽겠어요."
+          },
+          "visual": "sentence:I will prioritize the training guide while waiting for access.",
+          "target": "sentence:I will prioritize the training guide while waiting for access.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep12-s09",
+          "english": "Listen and choose.",
+          "demo": "I will prioritize the training guide while waiting for access.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "等待權限時，我會優先閱讀訓練指南。",
+            "zh-CN": "等待权限时，我会优先阅读培训指南。",
+            "ja": "利用権限を待つ間は、研修ガイドを優先して読みます。",
+            "ko": "접근 권한을 기다리는 동안 교육 안내를 우선 읽겠어요."
+          },
+          "visual": "sentence:I will prioritize the training guide while waiting for access.",
+          "target": "sentence:I will prioritize the training guide while waiting for access.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作獨立評量。",
+          "choices": [
+            "sentence:The fictional role requires clear records and careful follow-up.",
+            "sentence:Consistent communication connects honest evidence with clear working agreements.",
+            "sentence:I will prioritize the training guide while waiting for access."
+          ]
+        },
+        {
+          "id": "ep12-s10",
+          "english": "Consistent communication connects honest evidence with clear working agreements.",
+          "demo": "Consistent communication connects honest evidence with clear working agreements.",
+          "instruction": {
+            "en": "Check that purpose, evidence, and next action fit together.",
+            "zh-TW": "檢查目的、證據與下一步是否一致。",
+            "zh-CN": "检查目的、证据与下一步是否一致。",
+            "ja": "目的、根拠、次の行動が一貫しているか確認します。",
+            "ko": "목적, 근거, 다음 행동이 서로 일치하는지 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "一致的溝通把誠實證據連到清楚的工作約定。",
+            "zh-CN": "一致的沟通把诚实证据连到清晰的工作约定。",
+            "ja": "一貫した伝え方は、正直な根拠を明確な仕事上の合意につなげます。",
+            "ko": "일관된 의사소통은 솔직한 근거와 명확한 업무 합의를 연결해요."
+          },
+          "visual": "sentence:Consistent communication connects honest evidence with clear working agreements.",
+          "target": "sentence:Consistent communication connects honest evidence with clear working agreements.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "觀察英文句卡並朗讀具體表達；課後以無語音提示的閱讀與寫作深化應用。"
+        }
+      ]
+    }
+  ]
+}

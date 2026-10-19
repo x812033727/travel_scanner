@@ -235,10 +235,11 @@ function judge(video, { states, listed, videos, repos, fs }) {
   const compilation = compilationHold(state, states);
   if (compilation) return { held: compilation };
   if (!listed) return { held: "the site's video list was not read, so its publish time and languages are unknown" };
-  // A video that fell off the site's list (the newest 200) has no publish time or languages to
-  // check there any more; its own approvals still date it.
-  const site = listed.get(slug) ?? null;
-  if (site && !site.locales_decided_at) return { held: "its languages are not decided on /admin/videos yet" };
+  // The newest 200 can omit older videos; local approvals cannot establish their current
+  // publish time or language work. Keep the files until the site supplies this video's row.
+  const site = listed.get(slug);
+  if (!site) return { held: "the site's video list has no entry for this video, so its publish time and languages are unknown" };
+  if (!site.locales_decided_at) return { held: "its languages are not decided on /admin/videos yet" };
   // Ready language parts can still belong to a pending batch; rejecting it needs the media.
   // ProjectSummary.pending also counts other review gates, which conservatively hold the files.
   if (site?.pending > 0) return { held: PENDING_REVIEW_HOLD };

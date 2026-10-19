@@ -5649,9 +5649,44 @@ Ran: Node, Windows: `node tools/video/long-form/cli.mjs check` before any edit (
 Non-claims: this is a four-file incremental source duration review. It does not re-review the other 104 bound files or the unbound files the PR changes; it does not judge whether waiving `pace` and `policy` for a brand story's dub is the right product rule (an owner decision recorded in the code comment), and it does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## A01 measured seven-to-eight-minute duration increment: 5 files (2026-10-18)
+
+Reviewer: `codex-a01-duration-receipt-reviewer`. Author: `codex-gpt6-a01-duration`. Scope: DURATION_ONLY for `tools/video/core/duration.mjs`, `duration.test.mjs`, `lint.mjs`, `lint.test.mjs` and `tools/video/qa/duration.test.mjs` at code commit `f9580975f10d6855b6962965e0e60a266bf6b984`, based on `origin/main d9168a4dd2d03a62e77767cf131cbd1aa515c3e6`. This reviewer did not author the five source or test changes and edits only this report and its receipt.
+
+Baseline: the prior receipt and final table bound 108 files. Against the branch's current file bytes, exactly these five paths are stale; the other 103 remain byte-identical to their existing bindings. Before this increment, `node tools/video/long-form/cli.mjs check` reports only these five stale duration review bindings.
+
+Findings. `duration.mjs` applies the owner's compact band only to exact `story-rolling-suitcase-v2`, the `brand-stories-curio-pilot-v2` first episode, story/drama category and format, the sole `cute-mystery` look preset, no compilation, and an explicit per-video `[7,8]` target. The measured unwrapped narration body must contain 12,600–14,400 frames inclusive at 30 fps (420–480 seconds); current narration, speech hash, checked presentation frames and selected bookends still have to agree. Intro/outro frames cannot rescue a short body and do not consume the body's 480-second maximum. B18, other stories and an A01 document still carrying `[9,11]` keep the prior 480-second minimum. `lint.mjs` runs the narrated opening, episode-shape and storytelling checks on this exact compact A01 even when a draft estimate is below eight minutes; the existing series-context and language conditions still apply. The three changed test files exercise exact identity, both one-frame boundaries, bookends, stale proof, B18's old floor and the seven-minute hook/loop/outro checks. I found no remaining required duration fix in these five files.
+
+Ran on Windows Node v24.13.0: `node --test tools/video/core/duration.test.mjs` (15/15) and `node --test tools/video/core/lint.test.mjs` (47/47), plus the filtered `QA accepts only the exact A01` test (1/1). The complete `story.test.mjs` and `qa/duration.test.mjs` processes exited with Windows code `-1073740791` without assertion output in this local runtime. The coordinating agent then ran `node --test tools/video/core/duration.test.mjs tools/video/core/lint.test.mjs tools/video/qa/duration.test.mjs tools/video/automation/story.test.mjs` with Codex bundled Node v24.19.0: 100/100 passed, exit 0, in 155,291 ms. The CLI and receipt regression are checked again after rebinding.
+
+Non-claims: this five-file duration review does not re-review the other 103 bindings, `automation/story.mjs` orchestration, A01's factual manuscript or host state. It does not approve real TTS, visuals, media, paid production, deployment, upload, publication or playback. This receipt does not replace the A01 script's independent factual and storytelling review. Verdict: PASS - DURATION_ONLY; required fixes in the five bound files: none. Merge remains subject to the full CI gate.
+
+## A01 duration receipt integration after #1565 and #1568 (2026-10-18)
+
+Reviewer: `codex-pr1563-duration-integration-reviewer`. Author of the A01 code: `codex-gpt6-a01-duration`. Scope: DURATION_ONLY for rebasing the A01 five-file duration increment onto main `498b1dbfc78f44dfa79926b0c979cb26d3b5202f` at HEAD `38415629456b3f0c8c9e5ae1f7fa930dc3c10b96`. I did not author the five source or test changes, #1565, #1568, or the original A01 independent review. This addendum reconciles the two independently reviewed receipts; it does not change source code.
+
+Provenance: main's review.md hashes to `d75fc733c55a2090511e64123570b245b188e58ce1960d5ca3be219d423c8837` and the A01 receipt commit `87ac8a569`'s review.md hashes to `dd18c5bcb30df873840817ac378a3c76c93e96fbd3b6c1344f3eb48f53f10e94`, each equal to its own review.json report_sha256. Main's report before the final bindings table is preserved byte for byte, including #1565 and #1568. The original A01 five-file increment above is copied byte for byte from the A01 reviewed report. The final bindings table starts from main's 108 rows and changes only the five A01 rows.
+
+Reconciliation: the registry remains 108 paths. SHA-256 of every current working-tree bound file was compared with both parent receipts. Exactly five files differ from main: `tools/video/core/duration.mjs`, `duration.test.mjs`, `lint.mjs`, `lint.test.mjs`, and `tools/video/qa/duration.test.mjs`; all five are byte-identical to the A01 independently reviewed receipt. The #1565 admin_service.py, checks.mjs, checks.test.mjs and qa/cli.mjs files, and the #1568 timeline.mjs file, remain byte-identical to main's independent receipt. The other 98 registered files also remain at main's reviewed bytes. The final table and JSON below bind the SHA-256 of every file in this combined tree. The original A01 duration analysis therefore applies to its same five file bytes while the later main increments stay intact.
+
+Non-claims: this is a receipt integration review of exact source bytes and prior independent duration increments. It does not approve A01's factual script, real narration timing, production host state, media, paid generation, deployment, upload, publication, or playback. Verdict: PASS - DURATION_ONLY for these combined 108 bindings; no new duration correction is required by this merge.
+
+## Stalled-video clause particle test increment: 1 file (2026-10-18)
+
+Reviewer: `claude-pr-review-1387-duration`. Author: `codex-video-audio-matcher`, with the merge of main by `claude-opus-5.5-pr-sweep`. Scope: DURATION_ONLY for `tools/video/tts/check.test.mjs` in PR #1387 (branch `codex/stalled-video-reviewed-fixes-20261008`, head `4c3b5fe96` "Merge main into the stalled-video fixes branch", whose first parent `382f26428` carries `048f390df` "fix(video): compare Mandarin closing particles at clause boundaries"), task `2026-10-08-video-audio-closing-particle-boundaries`, reviewed as `git diff 7468c19a3 HEAD -- tools/video/tts/check.test.mjs` from merge base `7468c19a3` (#1564), +34/−0. The PR also changes the unbound `tools/video/tts/check.mjs` (+5/−2), the task file and the docs it records. The reviewer wrote none of the code and edits only this report and review.json.
+
+Baseline: `git show 7468c19a3:tools/video/tts/check.test.mjs | sha256sum` and `git show origin/main:tools/video/tts/check.test.mjs | sha256sum` (origin/main at `daba2c379`) both give `0b4e2e68cb1aa38cfa0a5971df1b029e788850b3bac0461709a79b467801499b`, equal to the existing binding and table row. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/tts/check.test.mjs` and nothing else; the other 107 registered files are byte-identical to the receipt. The working file holds no CR byte. Earlier increments are retained in full.
+
+Findings. check.test.mjs (36,750 → 39,922 bytes, 557 → 591 lines, 21 → 22 tests): one new test, "closing particles at clause boundaries keep Mandarin words and reject other changes", pins the unbound `CLAUSE_CLOSING_PARTICLES` rule in check.mjs, where `matchKind` also compares the heard text with one added 耶 or 餒/馁 removed before each punctuation boundary (not after 好 for 耶 or 氣/气 for 餒, so 好耶 and 氣餒 stay words). It asserts two transcripts with particles at both clause ends classify as "sound"; twelve full- and half-width boundaries, spaced punctuation and an extra particle beside a lexical 氣餒 or 好耶 as "filler"; and as `null` a lexical 氣餒/好耶 against a script without it, an intended 餒 or 耶 omitted, a leading 耶, an interior 耶 with no boundary, changed numerals, negation and nouns, and en, ja and ko lines. Against the branch's pre-merge version the merge drops two zh-CN assertions (Simplified 气馁 retained; a zh-CN filler line), because main no longer has zh-CN as a video language; main's own removal of its zh-CN test and its three-locale `DUB_LOCALES` are unchanged, so against main the file only adds. `matchKind` classifies a transcript line against its script line for the audio check; it sets no length. The file's `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` opt-out is unchanged, and its duration-term lines number 15 at both revisions; in the changed lines a case-insensitive scan for minute, MIN_EPISODE, needsMinimumLength, 480, 14,400, 600, 780, runtime, target_, action_seconds, duration, second, frame, covered, source_hash, plans.json, policy.json, floor, length, speech_hash, 分鐘, 秒, 時長 and 長度 finds only the comment word "secondary transcripts". None of the changed lines touches the 600/780-second targets, the 480-second / 14,400-frame QA floor, the eight-minute minimum, `target_minutes`, `MIN_EPISODE*`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, the explainer 8-20 or drama 1-8 minute ranges, the 13-minute brand story, measured duration evidence, source hashes, covered state or plans.json, and no duration assertion is removed or loosened. No duration correction is required.
+
+Ran: Node v22.22.0, Linux, in the worktree at `4c3b5fe96` with a node_modules symlink and VIDEO_MIN_EPISODE_MINUTES unset in the shell: the baseline hashing above; `node --test tools/video/tts/check.test.mjs`, 22 of 22, exit 0; `node --test tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs tools/video/long-form/plans.test.mjs`, 23 of 23; before rebinding, `node tools/video/long-form/cli.mjs check` (stale for exactly this path, exit 1) and `node --test tools/video/long-form/review.test.mjs` (1 passed, 1 failed, the shipped binding regression). The CLI check and the long-form receipt tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims: this is a one-file incremental source duration review. It does not re-review the other 107 bound files, check.mjs's matching rule as a product choice, or whether a real transcript's particles are classified well, and it does not accept media, paid production, deployment, upload or publication. origin/main has moved past the merge base and changes this report and review.json, so landing the PR needs another receipt merge.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the story thumbnail brand visual hash increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, and then the stalled-video clause particle test increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5720,11 +5755,11 @@ These 108 bindings describe the current reviewed bytes after the story thumbnail
 | `tools/video/core/branding.test.mjs` | `1430f36cb542ce42548f9e8ee7182694b8679069cf9f64d446a4fdb56f3e5b89` |
 | `tools/video/core/drama.mjs` | `1977b6c69471aa60923eb18ddfd6ef0323284bef96d9cf3a88c5ff5d220dcd83` |
 | `tools/video/core/drama.test.mjs` | `d24c6bc6a247f8ad33a102687078fc5dae0da5f30e87861008eb3db550c35b17` |
-| `tools/video/core/duration.mjs` | `12009ae5d12cba73e55ff462e9f9dd107350d53bea1da5a65bf59a1a39e13285` |
-| `tools/video/core/duration.test.mjs` | `a5b3e9c54368628d4b929b8050eb3ad925cc1b9c1fbd5b88bd3bf5ca010358f6` |
+| `tools/video/core/duration.mjs` | `df4874326d1d098d19a8df5ed4010cc3454537cbc96217a4c4192dc622caea1d` |
+| `tools/video/core/duration.test.mjs` | `98ca445b134133e796abbc6eba94d47532439a6283bb151ea8f6d69b4652e6a0` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `6cc1c1ee9cb425303d7a9f2ffa2d6aa5bddc3fa82c72314ede0060703316a386` |
-| `tools/video/core/lint.test.mjs` | `2c98e1c2b1747c966f281888aa37cd4494dcf3064ccaeee91270ce454d78f18e` |
+| `tools/video/core/lint.mjs` | `6f560e91f90126ecbf245ec754a7790ba49362651507d5c01e3ff1a5c939f95a` |
+| `tools/video/core/lint.test.mjs` | `fba256c3088f4a21999bebc2dc40fdad57f6a8ae552fac05d0b25f89880ce3a5` |
 | `tools/video/core/narration-locale.test.mjs` | `fddf009b24c976c9319d139db24fa3312fd1d942f2b4d623876d86357464d2ce` |
 | `tools/video/core/schema.mjs` | `80d2607bdecd5aaae145308924be7da310f48f8fc711e2cceba00742b445db0b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
@@ -5753,13 +5788,13 @@ These 108 bindings describe the current reviewed bytes after the story thumbnail
 | `tools/video/qa/checks.mjs` | `fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2` |
 | `tools/video/qa/checks.test.mjs` | `239696ad256c9d54ee8065fd7c9d9954bf6d0fd4ca32f586d182230ad8179706` |
 | `tools/video/qa/cli.mjs` | `d5ae76e13265a063a7ea57d0766d9dfe3f31804cfa1ba5f259cb0e1fb5627b1f` |
-| `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
+| `tools/video/qa/duration.test.mjs` | `23d46fee69ea26bff4150d29b74086d363bdf9d171e92cf898e3cf5a6560428d` |
 | `tools/video/qa/qa.test.mjs` | `6f2f77b1cf7cad0175282003b36d9d42dee7891ed168ad75ac21caed2aca5d88` |
 | `tools/video/review/sync.mjs` | `b63c241c6603d66f25fbf0eda4b09ac8a7de04fe0b0bfd27d42a70bb954e6306` |
 | `tools/video/review/sync.test.mjs` | `2658665eba3048be034f6a4dd2d84f9839f79ba93758b24865eb8d951f5b84aa` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
-| `tools/video/tts/check.test.mjs` | `0b4e2e68cb1aa38cfa0a5971df1b029e788850b3bac0461709a79b467801499b` |
+| `tools/video/tts/check.test.mjs` | `163168dddaced9434e84be1fbb9ddfca709070f41a2b2e03cf1fe47f8aa8941a` |
 | `tools/video/tts/synthesis.mjs` | `589ebe665bd281aaefba6749d61148f4c7011f71c962513efd5a6cd6830f3cb3` |
 | `tools/video/tts/tts.test.mjs` | `9430c36b0c1e2f19cb3233cfb99e86d6904fa54ae2a5e72f7c1dea3205e920ad` |
