@@ -1,21 +1,23 @@
 ---
 id: 2026-10-15-video-backup-api
 title: Video backup settings and status in the API
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-festive-archimedes
+claimed_at: 2026-10-19T12:27:00Z
 created_at: 2026-10-15T02:13:53Z
 completed_at:
-branch:
+branch: claude/festive-archimedes-9ntb36
 depends_on: []
 scope:
   - apps/api/app/video_backup
   - apps/api/tests/test_video_backup.py
   - apps/api/app/models.py
   - apps/api/app/main.py
-  - apps/api/migrations/versions
+  - apps/api/migrations/versions/0135_video_backup.py
+  - apps/api/tests/test_migration_0135_video_backup.py
+  - apps/web/app/api/video/automation/backup
 ---
 
 # Video backup settings and status in the API
