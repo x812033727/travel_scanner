@@ -14,7 +14,8 @@
 //
 // `--languages` sends the same directory's other languages afterwards, as the languages gate the
 // worker would (docs/videos/LANGUAGES.md): description.<l>.txt (title, a blank line, the
-// description), <l>.srt and dub.<l>.m4a|mp3|wav, for the parts the owner ticked on the panel.
+// description), <l>.srt and dub.<l>.m4a|mp3|wav, for the parts the owner ticked on the panel,
+// for en, ja, ko and the five only an imported video may add (es, pt, id, vi, th).
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
@@ -204,6 +205,13 @@ export async function importLong({ from, workdir, env = process.env, home, force
   return { slug: meta.slug, status: review.status, seconds, problems };
 }
 
+// The languages an imported video may carry besides zh-TW, in the panel's order: the pipeline's
+// three (core/schema.mjs LOCALES) and the five the owner added on 2026-10-18 for 種田娶妻打天下,
+// which only an imported video may choose (apps/api/app/video_reviews/schemas.py
+// IMPORTED_LOCALES; docs/videos/LANGUAGES.md). The files keep the site's short codes: es is
+// Latin-American Spanish and pt Brazilian Portuguese.
+export const IMPORT_LOCALES = Object.freeze([...LOCALES.filter((each) => each !== NARRATION_LOCALE), "es", "pt", "id", "vi", "th"]);
+
 // The audio types the review store takes for a dub track, as review-push sends them (review/sync.mjs DUB_TYPES).
 const DUB_TYPES = { m4a: "audio/mp4", mp3: "audio/mpeg", wav: "audio/wav" };
 const PART_NAMES = { metadata: "標題說明", captions: "CC", dub: "配音" };
@@ -213,7 +221,7 @@ const DUB_TOLERANCE = 0.5;
 /** The language files a directory holds: { <locale>: { metadata?, captions?, dub? } }, each { file, role, content_type }. */
 export function languageFiles(from) {
   const found = {};
-  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+  for (const locale of IMPORT_LOCALES) {
     const parts = {};
     const description = path.join(from, `description.${locale}.txt`);
     if (existsSync(description)) parts.metadata = { file: description, role: `description_${locale}`, content_type: "text/plain" };
@@ -280,7 +288,7 @@ export async function importLanguages({ from, workdir, env = process.env, home, 
   const unticked = [];
   const missing = [];
   const send = [];
-  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+  for (const locale of IMPORT_LOCALES) {
     for (const part of Object.keys(PART_NAMES)) {
       const file = found[locale]?.[part];
       if (!chosen[locale]?.[part]) {

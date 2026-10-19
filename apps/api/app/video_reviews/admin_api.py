@@ -33,7 +33,6 @@ from app.video_reviews.schemas import (
     CategoryIn,
     DecisionIn,
     DropIn,
-    DubLocale,
     DubLocalesIn,
     FinalRenewalIn,
     FinalRenewalState,
@@ -46,6 +45,7 @@ from app.video_reviews.schemas import (
     ReviewIn,
     ReviewOut,
     VideoFormat,
+    WorkerLocale,
     YoutubeIn,
 )
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
@@ -218,9 +218,12 @@ async def retry(slug: str, user: ContentManager, session: Session) -> ProjectOut
 
 @admin_router.post("/{slug}/languages/{locale}/dub/retry", response_model=ProjectOut)
 async def retry_dub(
-    slug: str, locale: DubLocale, user: ContentManager, session: Session
+    slug: str, locale: WorkerLocale, user: ContentManager, session: Session
 ) -> ProjectOut:
     """Ask the worker to make a skipped dub track again (docs/videos/DUBS.md §再做一次).
+
+    Only a language the worker makes (en, ja, ko); an imported video's other dubs are made
+    outside the pipeline, so anything else is a 422 like any unknown language.
 
     It only records the request and reads the month's Gemini speech meter; the worker takes it
     on its next round, and the service refuses what the worker could not act on."""

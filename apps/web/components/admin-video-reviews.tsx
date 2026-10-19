@@ -9,7 +9,7 @@ import { CategoryPanel, VideoBrowser } from "@/components/admin-video-browser";
 import {
   CompilationDownload, control, finalApproved, isBlocked, type LanguagePart, type LocaleChoice, LOCALE_PARTS, LOCALES, mp4Retired, needsOwner, partStateLabel, type Project,
   type ProjectSummary, PublishPill, publishState, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG, UploadPackage, UploadedForm, fileUrl,
-  useRefresh, useWhen, youtubeSyncStuck,
+  useRefresh, useWhen, WORKER_LOCALES, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
 import { AdminVideoSeries, DocPanel, type Series } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
@@ -157,6 +157,10 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const shownError = refused && project.dub_retries?.[refused]?.open ? "" : error;
   const decided = Boolean(project.locales_decided_at);
   const changed = JSON.stringify(chosen) !== savedKey;
+  // The rows: what the server offers this video (an imported one has eight languages, others the
+  // worker's three), and any language already saved, so a choice never hides.
+  const offered: readonly string[] = project.locale_options ?? WORKER_LOCALES;
+  const rows = LOCALES.filter((locale) => offered.includes(locale) || LOCALE_PARTS.some((part) => saved[locale][part]));
   const nothingSaved = Object.keys(chosenBody(saved)).length === 0;
   const toggle = (locale: (typeof LOCALES)[number], part: (typeof LOCALE_PARTS)[number], on: boolean) => setChosen((current) => {
     const next = { ...current[locale], [part]: on };
@@ -255,7 +259,9 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
     }
     // A code this page has no sentence for says nothing, and still offers no button.
     if (!open && skipped && blocked && t.has(`dubRetryBlocked.${blocked}`)) say(`dubRetryBlocked.${blocked}`, {});
-    const offered = !open && skipped && !blocked && canManage && chosen[locale].dub && !storyDubPending;
+    // Only the worker makes a dub again: an imported video's es, pt, id, vi and th never offer it.
+    const workerMade: readonly string[] = WORKER_LOCALES;
+    const offered = !open && skipped && !blocked && canManage && chosen[locale].dub && !storyDubPending && workerMade.includes(locale);
     // Rendered for every saved dub, also with nothing in it, so that the line the next read
     // brings (the request is waiting, taken, ended) is announced; the click itself says nothing.
     return <>
@@ -281,7 +287,7 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
       {project.youtube_video_id && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesAfterPublish")}</p>}
       <table className="mt-3 w-full text-sm">
         <thead><tr><th scope="col" className="sr-only">{t("languageColumn")}</th>{LOCALE_PARTS.map((part) => <th key={part} scope="col" className="py-1 text-left font-semibold">{t(`parts.${part}`)}</th>)}</tr></thead>
-        <tbody>{LOCALES.map((locale) => <tr key={locale} className="border-t border-[var(--line)]">
+        <tbody>{rows.map((locale) => <tr key={locale} className="border-t border-[var(--line)]">
           <th scope="row" className="py-2 pr-3 text-left font-semibold">{t(`locales.${locale}`)}</th>
           {LOCALE_PARTS.map((part) => {
             const dubOff = part === "dub" && dramaDubOff;
