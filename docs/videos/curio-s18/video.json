@@ -39,7 +39,7 @@
     },
     {
       "setup": "np110",
-      "payoff": "np505",
+      "payoff": "np501",
       "what": "用他名字取的脾氣"
     },
     {
@@ -389,11 +389,26 @@
       ]
     },
     {
+      "id": "metre-stick",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain metre stick lying on a doctor's table beside a quill and a blank report, soft window light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "np223",
+          "text": "要是那天醫生寫的是公尺，一百六十八公分，誰讀都一樣。"
+        }
+      ]
+    },
+    {
       "id": "is-it-short",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young French conscript in shirtsleeves standing barefoot against a wooden measuring post in a recruiting office in the morning, glancing sideways at the clerk with a nervous face, soft window light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -430,11 +445,26 @@
       ]
     },
     {
+      "id": "conscription-records",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clerk in a high collar writing heights into a large ledger at a recruiting table in the morning, a young man waiting beside the measuring post, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "np222",
+          "text": "這個平均，靠的就是當年每個年輕人去當兵時，量下來的身高。"
+        }
+      ]
+    },
+    {
       "id": "taller-than-average",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a man in his forties in a grey greatcoat and a black bicorne hat worn sideways standing among a few ordinary townsmen in a village square in mild daylight, the same height or a little taller than them, looking ahead with quiet confidence, soft light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -450,7 +480,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a modern Taiwanese high-school boy in a school uniform standing beside a life-size cardboard cutout of a man in a bicorne hat in a museum in mild daylight, comparing heights with a hand over his head and grinning, soft light",
-        "camera": "tilt up",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -465,7 +495,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an elderly valet in a neat waistcoat sitting at a writing desk in the evening, writing his memoirs with a fond little smile, a candle and a stack of blank pages beside him, warm candlelight",
-        "camera": "pull out",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -480,7 +510,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a British officer in a red coat writing in a small notebook on a hillside path on a windswept island in grey daylight, glancing up as if at someone walking past, soft light",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -495,7 +525,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a pocket notebook lying open on a rock beside a pencil, its page blank, a gust of wind lifting one corner, grey daylight",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -510,7 +540,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a curious Londoner in a top hat stopping on a foggy street in the afternoon, scratching his head as he looks at a blank sheet of paper in his hand, soft grey light",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -527,13 +557,13 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a worn soldier's cap lying on a campaign drum in a camp in mild daylight, a tin cup beside it, soft light",
-        "camera": "tilt down",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np418",
-          "text": "他還年輕的時候，身邊的老兵就替他取了一個帶「小」字的外號。"
+          "text": "他還年輕的時候，身邊的老兵就替他取了一個外號。"
         }
       ]
     },
@@ -542,7 +572,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a slim young general in his twenties with long hair and a plain blue coat studying a map on a drum in a camp in Italy in mild daylight, his face intense, soft light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -557,7 +587,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a long wooden bridge over a river under a smoky sky, one young officer running forward across it waving his hat, the far bank hazy with gunsmoke, soft hazy light",
-        "camera": "tilt up",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -572,7 +602,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young French infantryman in a tall shako running across a wooden bridge through drifting smoke, mouth open in a shout and bayonet forward, hazy light",
-        "camera": "pull out",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -588,7 +618,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a group's oldest soldier with a grey moustache clapping his hands and laughing around a campfire at night, raising a cup toward someone off frame, warm firelight",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -603,14 +633,10 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a row of grinning old soldiers around a campfire at night each raising one hand as if voting, one of them winking, warm firelight",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
-        {
-          "id": "np421",
-          "text": "這一仗打完，他在法國成了英雄。"
-        },
         {
           "id": "np409",
           "text": "老兵們從此叫他「小下士」。"
@@ -622,7 +648,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of the old soldier's weathered face by firelight, eyes crinkled in an affectionate smile, the dark night behind him",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -642,7 +668,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of the slim young general sharing a crust of bread with a grinning old soldier beside a campfire at night, both laughing, warm firelight",
-        "camera": "tilt down",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -657,7 +683,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of the white cliffs of a coastline seen from the sea under a mild grey sky, one small fishing boat in the foreground with a fisherman looking toward the cliffs, soft light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -674,7 +700,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a London print shop on a busy street in the afternoon, its bow window full of hanging prints, one gentleman in a top hat bending close to the glass to look, soft overcast light",
-        "camera": "tilt up",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -689,7 +715,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a grey sea channel under a heavy sky, one British warship with full sails cutting through the waves, the faint line of a coast on the horizon",
-        "camera": "pull out",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -704,13 +730,18 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a sharp-faced English engraver in a waistcoat with rolled shirtsleeves bent over a copper plate at a workbench in the morning, engraving with a small burin and grinning mischievously, a lamp beside him, soft window light",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np303",
           "text": "倫敦有一個很紅的漫畫家，叫吉爾雷，一輩子畫了上千張諷刺畫。"
+        },
+        {
+          "id": "np329",
+          "text": "他見過拿破崙嗎？",
+          "emotion": "問句"
         }
       ]
     },
@@ -719,13 +750,13 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an engraver's hands resting on a blank copper plate, a burin set down beside it and a small blank portrait sketch pinned above the bench, soft window light",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np320",
-          "text": "他從來沒見過拿破崙本人。",
+          "text": "沒有。他從來沒見過拿破崙本人。",
           "emotion": "停一拍"
         }
       ]
@@ -735,7 +766,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a tiny general in an oversized bicorne hat and boots stamping on a floor and shaking a little sword with a red furious face, a toppled stool beside him, soft light",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -751,7 +782,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a tiny general's furious red face under an enormous bicorne hat, cheeks puffed and mouth wide open in a yell, a small sword raised beside it, soft light",
-        "camera": "tilt down",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -766,7 +797,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an enormous black bicorne hat sitting on a tiny figure's head on a cluttered engraver's desk, the figure barely taller than an inkpot beside it, soft lamp light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -796,7 +827,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a row of very tall grenadiers in towering bearskin caps standing at attention in a palace courtyard in mild daylight, one drummer boy walking past them looking up in awe, soft light",
-        "camera": "tilt up",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -816,7 +847,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a recruiting sergeant in a blue uniform holding a measuring rod above a very tall young recruit's head in a barracks yard in the morning, nodding approvingly, soft light",
-        "camera": "pull out",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -831,7 +862,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a tall black bearskin cap resting on a wooden stand beside a musket, a red plume on its side, soft window light",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -846,7 +877,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a man in his forties in a grey greatcoat and a black bicorne hat worn sideways standing between two towering grenadiers in bearskin caps on a parade ground in mild daylight, glancing up at one of them with a wry little smile, soft light",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -861,7 +892,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a man in his forties in a grey greatcoat and a black bicorne hat worn sideways walking past a line of plumed officers in gold-braided uniforms on a parade ground in mild daylight, his own coat plain grey and his hat bare of feathers, soft light",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -876,7 +907,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of two diners at a small table carving a big round pudding shaped like a globe, a tall thin man in a tall hat on one side and a very small man in a bicorne hat on the other, both grinning greedily, soft lamp light",
-        "camera": "tilt down",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -891,7 +922,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a very tall thin gentleman in a tall hat standing beside a very short man in a bicorne hat at a dinner table, the short man standing on tiptoe to reach the table, soft lamp light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -906,7 +937,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a large jolly king in a crown and ermine robe holding a tiny man in a bicorne hat on the palm of his hand and peering at him through a small spyglass, a throne room behind them, soft light",
-        "camera": "tilt up",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -922,13 +953,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a laughing young apprentice in a cap pressing his nose to a print-shop window in the afternoon, pointing at a hanging print, other blank prints hung behind the glass, soft light",
-        "camera": "pull out",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np309",
-          "text": "這些漫畫掛在櫥窗裡，路過的人擠在外面看，看完大笑。"
+          "text": "路過的人擠在玻璃外面看，看完大笑。"
         }
       ]
     },
@@ -937,7 +968,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a tall stack of hand-coloured prints on a shop counter, the top one blank, a coin and a pair of spectacles beside it, soft lamp light",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -956,7 +987,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a French diplomat in a high-collared coat handing a sealed letter across a desk to a stiff British official in an office in the afternoon, both faces cool and polite, soft window light",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -976,7 +1007,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a sharp-faced English engraver in a waistcoat with rolled shirtsleeves sitting by a window in his room in the evening, an unfinished blank plate on his lap and his tools set aside, gazing out with a tired face, soft fading light",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -991,7 +1022,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a large warship anchored in a harbour on a summer afternoon, dozens of small rowing boats crowded around it, one woman in a bonnet in the nearest boat standing up and shading her eyes to look, soft light",
-        "camera": "tilt down",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1006,7 +1037,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man in shirtsleeves rowing hard in a small boat across a crowded harbour on a summer afternoon, grinning with excitement, other little boats around him, soft light",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1022,7 +1053,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a man in a top hat sitting in a small rowing boat in a harbour in the afternoon, squinting across the water with a measuring stick held up uselessly in one hand, soft light",
-        "camera": "tilt up",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1037,7 +1068,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a small boy in an old-fashioned cap in a London street in the afternoon, stamping his foot and waving a stick like a sword to imitate a tantrum, a laughing woman behind him, soft light",
-        "camera": "pull out",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1052,7 +1083,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a younger English engraver with bushy sideburns bent over a drawing board in the afternoon, sketching with a gleeful grin, a pile of blank prints beside him, soft window light",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1067,7 +1098,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a blank report sheet and a small satirical print lying side by side on a desk, a magnifying glass resting between them, soft lamp light",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1083,7 +1114,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a hand placing a small satirical print of a tiny general next to a ruler on a desk, the print's figure ending exactly at a low mark on the ruler, soft lamp light",
-        "camera": "drift",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1095,69 +1126,34 @@
       ]
     },
     {
-      "id": "tomb",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a vast domed marble hall in mild daylight, an enormous dark red stone sarcophagus on a pedestal in the centre, one small visitor in a coat leaning on the railing above and looking down at it, soft light from high windows",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "np524",
-          "text": "一八四〇年，他的遺體被運回巴黎。"
-        }
-      ]
-    },
-    {
-      "id": "tomb-today",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a polished dark red stone surface curving away under soft light from a high window, a velvet rope across the foreground",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "np522",
-          "text": "後來，他被放進一座好幾公尺長的紅色石棺裡。"
-        },
-        {
-          "id": "np523",
-          "text": "來看他的人，都得低頭往下看。",
-          "emotion": "帶一點笑"
-        }
-      ]
-    },
-    {
-      "id": "looking-down",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a tourist in a modern rain jacket leaning on a stone balustrade and peering down into a round marble well in mild daylight, a small smile on her face, soft light from above",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "np525",
-          "text": "這一次，倒是沒有人嫌他小。",
-          "emotion": "帶一點笑"
-        }
-      ]
-    },
-    {
       "id": "adler-desk",
       "chapter": "「拿破崙情結」，是他死後一百年才取的名字",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a bald early twentieth-century psychologist with round spectacles and a moustache leaning back in a leather chair in a Vienna study in the afternoon, gesturing with an open hand as he explains, books behind him, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "np501",
+          "text": "還記得開頭那個用他名字取的脾氣嗎？它的源頭，在二十世紀初的維也納。",
+          "emotion": "語氣親近"
+        }
+      ]
+    },
+    {
+      "id": "adler-names",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a fountain pen writing in a blank notebook on a leather-topped desk, a pair of round spectacles folded beside it, soft lamp light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "np502",
-          "text": "二十世紀初，維也納的心理學家阿德勒，提出了「自卑情結」。"
+          "text": "一個叫阿德勒的心理學家，提出了「自卑情結」。"
         }
       ]
     },
@@ -1202,8 +1198,7 @@
       "lines": [
         {
           "id": "np505",
-          "text": "還記得開頭那個用他名字取的脾氣嗎？它就叫「拿破崙情結」。",
-          "emotion": "語氣親近"
+          "text": "這種脾氣，後來就被叫做「拿破崙情結」。"
         }
       ]
     },
