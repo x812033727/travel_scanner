@@ -1,7 +1,7 @@
 ---
 id: 2026-10-19-a01-0133-story-budget-migration
 title: Isolate reviewed 0133 story budget migration
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-gpt6-a01-0133
