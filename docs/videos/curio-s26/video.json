@@ -73,11 +73,6 @@
       "what": "證明是皇后的證據還欠什麼"
     },
     {
-      "setup": "ma051",
-      "payoff": "ma052",
-      "what": "皇后年表能否定名"
-    },
-    {
       "setup": "ma059",
       "payoff": "ma060",
       "what": "1789 記錄是否含名言"
@@ -111,6 +106,16 @@
       "setup": "ma086",
       "payoff": "ma090",
       "what": "文本能否證成親口說過"
+    },
+    {
+      "setup": "ma046",
+      "payoff": "ma060",
+      "what": "麵包危機的宮廷回憶是否記下皇后說出名言"
+    },
+    {
+      "setup": "ma098",
+      "payoff": "ma080",
+      "what": "卡爾如何根據舊書線索重想皇后署名"
     }
   ],
   "youtube": {
@@ -507,14 +512,14 @@
       "id": "ma022",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a gentleman writer stopping before a pastry shop with blank sign, warm lamplight",
+        "prompt": "Medium shot a gentleman writer choosing a small pastry at a shop counter, warm lamplight",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma022",
-          "text": "盧梭想到糕點店，卻還是不敢立刻走進去。",
+          "text": "盧梭借公主那句話，給自己找了個改買糕點的出口。",
           "emotion": "自然說故事"
         }
       ]
@@ -523,111 +528,15 @@
       "id": "ma023",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a gentleman writer walking past several simple storefronts, cloudy soft cloudy light",
+        "prompt": "Wide shot a gentleman writer alone at desk with a pastry and an open blank memoir, soft window light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma023",
-          "text": "他自稱走過約三十家店，才找到敢進的一家。",
+          "text": "可這份自述跟著盧梭走，沒有把公主說話的現場帶到讀者眼前。",
           "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "ma024",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot a gentleman writer peeking into a quiet pastry shop with one baker, soft window light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ma024",
-          "text": "一家店至少得符合什麼，他才敢跨過門檻？",
-          "emotion": "問句自然上揚，留半拍"
-        }
-      ]
-    },
-    {
-      "id": "ma025",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot a gentleman writer looking into a pastry shop with a single shopkeeper inside, cloudy morning",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ma025",
-          "text": "店裡最好只有一個人，否則他又要退開。",
-          "emotion": "平實說出文本歸屬"
-        }
-      ]
-    },
-    {
-      "id": "ma026",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot a lone shop worker with an encouraging expression behind an empty pastry counter, diffused indoor light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ma026",
-          "text": "那人的神情還得夠和善，他才敢跨過門檻。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "ma027",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot a gentleman writer reading a small unlettered novel beside pastry and wine, warm lamplight",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ma027",
-          "text": "終於帶回吃食，他一邊喝酒，一邊翻小說。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "ma028",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot a gentleman writer glancing from his novel to an empty chair, lamplight",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ma028",
-          "text": "他說，獨自吃飯時，書簡直像坐在對面的同伴。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "ma029",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot a gentleman writer standing beside a closed cellar door, soft window light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ma029",
-          "text": "偷留酒的事最後被瓶子出賣，主人不再讓他管酒。",
-          "emotion": "平實說出文本歸屬"
         }
       ]
     },
@@ -642,7 +551,7 @@
       "lines": [
         {
           "id": "ma030",
-          "text": "這趟繞路寫得這麼細；被引的公主留下姓名了嗎？",
+          "text": "這份自述寫到他的買食物經歷；被引的公主留下姓名了嗎？",
           "emotion": "問句自然上揚，留半拍"
         }
       ]
@@ -889,6 +798,22 @@
       ]
     },
     {
+      "id": "ma094",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a historian comparing a blank date line and a small anonymous silhouette on an old manuscript, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma094",
+          "text": "這份法文摘錄也沒標上那句話的寫作年；只靠瑪麗幾歲，仍定不了公主是誰。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
       "id": "ma046",
       "template": "shot",
       "data": {
@@ -899,7 +824,7 @@
       "lines": [
         {
           "id": "ma046",
-          "text": "那麼，被後人寫上名字的瑪麗，自己走過哪些可查的年份？",
+          "text": "如果皇后真的說過，陪在王室身邊的人，到了麵包危機時有沒有記到她開口？",
           "emotion": "問句自然上揚，留半拍"
         }
       ]
@@ -973,14 +898,14 @@
       "id": "ma051",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a historian holding a plain timeline strip next to an uncaptioned portrait frame, soft window light",
+        "prompt": "Close shot a historian studying an open blank memoir beside an unlettered palace sketch, soft window light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma051",
-          "text": "這些年表能確定她的行程，能替匿名公主填名嗎？",
+          "text": "一七八九年十月，王室身邊的坎潘記下凡爾賽那個早晨。",
           "emotion": "問句自然上揚，留半拍"
         }
       ]
@@ -989,14 +914,14 @@
       "id": "ma052",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a historian laying an empty chair beside an old book, warm lamplight",
+        "prompt": "Medium shot eighteenth century queen standing on stone balcony as her children move toward interior behind her, overcast light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma052",
-          "text": "不能；地點與年齡，不是那句話的目擊紀錄。",
+          "text": "人群要皇后走上陽台，還喊不要孩子；她讓孩子退下。",
           "emotion": "自然說故事"
         }
       ]
@@ -1005,14 +930,14 @@
       "id": "ma053",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a Parisian woman carrying a plain loaf through a crowded street, overcast light",
+        "prompt": "Wide shot eighteenth century queen on a palace balcony facing distant crowd, soft overcast light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma053",
-          "text": "到了革命時的一七八九年，麵包真的成了街頭政治問題。",
+          "text": "她真的站在麵包抗議的人群前；坎潘接著記下的是誰說話？",
           "emotion": "自然說故事"
         }
       ]
@@ -1021,14 +946,14 @@
       "id": "ma054",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a court attendant watching a distant crowd approach a palace gate, cloudy light",
+        "prompt": "Close shot a distant crowd before Versailles palace raising their hands in appeal, soft cloudy light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma054",
-          "text": "坎潘寫，民眾從巴黎走到凡爾賽，又要王室去巴黎。",
+          "text": "有人喊王室去巴黎，聲音漸漸合成一片。",
           "emotion": "自然說故事"
         }
       ]
@@ -1101,14 +1026,14 @@
       "id": "ma059",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a court attendant watching a passing bread basket from a palace window, soft light",
+        "prompt": "Wide shot historian comparing an unlettered palace sketch and a blank memoir page, soft window light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma059",
-          "text": "宮廷和麵包同時入畫，卻還少了哪一句？",
+          "text": "從陽台到馬車，坎潘記了許多人的聲音；皇后那句話出現了嗎？",
           "emotion": "問句自然上揚，留半拍"
         }
       ]
@@ -1238,6 +1163,38 @@
         {
           "id": "ma067",
           "text": "卡爾不認同，就拿那句麵包話作比方。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma095",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot nineteenth century writer studying a blank newspaper beside an empty worker cap on his desk, warm lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma095",
+          "text": "卡爾這段不是在寫皇后生平，而是在批評那些離窮人處境太遠的建議。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma096",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot worker with an empty coin purse facing two separate blank advice sheets, soft cloudy light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma096",
+          "text": "他把沒麵包卻叫人吃布里歐修，對照沒積蓄卻叫人存錢的荒謬。",
           "emotion": "自然說故事"
         }
       ]
@@ -1431,6 +1388,38 @@
         {
           "id": "ma079",
           "text": "照他的轉述，書把同一句話歸給托斯卡納公爵夫人。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma097",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot historian pointing toward an empty space on an old bookshelf beside a small clock, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma097",
+          "text": "那本書若真標一七六〇年，紙上的另一個署名就比瑪麗抵法早了十年。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "ma098",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot nineteenth century satirist returning to an earlier folded column at his desk, warm lamplight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ma098",
+          "text": "卡爾看見這個年份和另一個署名，會怎樣重想自己寫下的皇后名字？",
           "emotion": "自然說故事"
         }
       ]
