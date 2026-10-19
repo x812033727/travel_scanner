@@ -152,11 +152,14 @@ US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限�
 2. `check-audio` 標出唸錯的句子寫在 `review/check-flags.json`，`tts --slug <SLUG> --redo <check-flags.json>`
    只重唸那幾句；speech journal 記著已付錢的句子，中斷後重跑不會重複收費。
 3. 重唸還錯（中文多音字、年份、日文人名）就改那一句的字：`lexicon.json` 只收拉丁字母開頭的詞，中文讀音
-   不能放進去。改了旁白就要重新跑一次盲評 `narrative`（新讀者），再 `script --slug` 重產 `script.md`。
-4. 用 `ffmpeg -i narration.wav -codec:a libmp3lame -b:a 96k <SLUG>-narration.mp3` 轉成 mp3 給站主聽；
-   站主說可以才 `approve --slug <SLUG> --gate audio`。
-5. Gemini 回 429（`video_speech_upstream_busy`）是網站那把 Google 金鑰的當日額度用完，不是我們的錯；
-   等 07:00 UTC 重置後重跑即可，不要一直重試。
+   不能放進去。改的那句若是卡片上的原文（刀銘、題字），旁白跟卡片就不一樣了：卡片的 `sub` 補一句「意思是……」，
+   讓觀眾知道旁白唸的是白話。改了旁白就要重新跑一次盲評 `narrative`（新讀者），再 `script --slug` 重產 `script.md`。
+4. `review-push --slug <SLUG> --gate audio` 送審，站主在 `/admin/videos` 決定後 `review-pull --slug <SLUG>` 記下。
+   站主在對話裡要先聽，就用 `ffmpeg -i narration.wav -codec:a libmp3lame -b:a 96k <SLUG>-narration.mp3`
+   轉成 mp3 傳給站主；後台用不了、站主在對話裡說可以時，才 `approve --slug <SLUG> --gate audio --note "<站主原話>"`。
+5. Gemini 回 429（`video_speech_upstream_busy`）可能是一時忙碌，也可能是網站那把金鑰的當日額度用完；工具會照
+   `Retry-After` 自己重送。重送一小時以上還是 429，多半是當日額度：Gemini 的每日額度在太平洋時間午夜重置
+   （夏令 07:00 UTC、冬令 08:00 UTC），S01 就是等到 07:05 UTC 才唸完。不要一直手動重跑。
 
 **插圖**
 
