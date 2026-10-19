@@ -124,6 +124,11 @@ await __v3zt.sleep(15000); [__wd(), __dhq.log.slice(-2).join('\n'), __dhq.clipsd
 | 影片頁跑約 1.5–2 小時後點數不再變、log 出現 abort | 上傳無聲卡死 | 重新整理後一行 `await eval(localStorage.ztrebootsrc)` 重建（模式、4s、16:9、縮短的等待、`__st`／`__dl`／`__p`） |
 | 借用的音效庫被別的製作刪掉，組片時 `ENOENT …sound-library` | 音效庫在《偶的江湖》工作區 | `bash H/local/sfx-synth.sh` 合成本劇自己的音效到 `<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx`，剪輯表 `sfx_dirs` 指過去 |
 | 封條、紙張上的紅色印記被看成血；帳本特寫出現看得懂的假字 | 模型自己加紅印、寫字 | 提示詞寫「plain clean white paper … no red marks, no stamps」「tiny abstract ink dashes … no recognisable characters」 |
+| 改了角色外貌文字，重畫的圖還是露胸 | 參考立繪本身就是那套衣服，模型照圖不照字 | 先重畫參考立繪（同一張臉、新服裝，用舊立繪當參考圖），產生器改參考新立繪，再重畫鏡頭 |
+| 標成 `visual: "still"` 的鏡只重畫首幀，成片沒變 | 3D 版成片那幾鏡其實用片段（`final.log` 寫 `sNN-t1.mp4`） | 重做前先看 `final.log` 用的是 `.mp4` 還是 `.png`；用片段的鏡要一起補拍 |
+| 兩個圖片分頁同時畫，畫出重複的圖 | 兩邊跑同一份清單 | 清單照參考圖排序後切成兩半，各跑一半（`hailuo-dh-redo.js` 的 `__redoSplit`） |
+| 隱藏的圖片分頁跑一陣子後不再前進，log 沒有新的 OK | 背景分頁的計時器被節流到停住 | 把那個分頁的 `__ztstop` 設成 true，重新載入後再 `drive` 剩下的 |
+| 修「像血的紅手」，染料畫到不該染的人手上 | 提示詞只寫「手上的染料」，沒說是誰的手 | 指名誰的手乾淨、誰的手有乾的霧面橘色染料 |
 
 ## 六、收工
 
