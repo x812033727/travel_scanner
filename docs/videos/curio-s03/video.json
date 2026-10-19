@@ -1,0 +1,1595 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s03",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，像向朋友講一段被史書註解追問的歷史故事。小說場面帶懸念；郭沖與裴松之的說法分清，地名和年份放慢。",
+    "performance": "開場第一句就明說是小說；從城門轉到書頁時收住戲劇感。裴松之的地圖與時間線逐步揭曉，反問要留停頓。最後只否定郭沖這一則陽平故事，不擴大成所有空城策略都不曾發生。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "ef006",
+      "payoff": "ef088",
+      "what": "較早的郭沖故事有沒有琴"
+    },
+    {
+      "setup": "ef005",
+      "payoff": "ef053",
+      "what": "郭沖故事發生時司馬懿在哪裡"
+    },
+    {
+      "setup": "ef007",
+      "payoff": "ef041",
+      "what": "史官反駁先看到哪個問題"
+    },
+    {
+      "setup": "ef008",
+      "payoff": "ef017",
+      "what": "街亭後《三國志》正文怎樣接續"
+    },
+    {
+      "setup": "ef023",
+      "payoff": "ef024",
+      "what": "誰把空城故事放進裴注"
+    },
+    {
+      "setup": "ef039",
+      "payoff": "ef041",
+      "what": "郭沖故事的兩地如何對照"
+    },
+    {
+      "setup": "ef058",
+      "payoff": "ef060",
+      "what": "即使在場為何要立即退兵"
+    },
+    {
+      "setup": "ef065",
+      "payoff": "ef070",
+      "what": "郭沖分兵安排是否說得通"
+    },
+    {
+      "setup": "ef071",
+      "payoff": "ef074",
+      "what": "扶風王為何會稱讚這故事"
+    },
+    {
+      "setup": "ef079",
+      "payoff": "ef080",
+      "what": "琴聲究竟出自哪一種文本"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "空城計那天，司馬懿根本不在那裡？｜奇聞檔案局",
+    "description": "城門大開、諸葛亮彈琴、司馬懿退兵，是《三國演義》第九十五回的名場面。往前翻到《三國志》裴松之注，郭沖講的卻是陽平開四門、灑掃，沒有琴。裴松之接著指出：那時司馬懿鎮宛城；曹真死後，兩人才在關中對抗。本集沿著文本和時間線，看這則故事為什麼受質疑，以及小說後來怎麼讓琴聲變得難忘。\n\n這裡反駁的是郭沖筆下諸葛亮與司馬懿在陽平交鋒的特定故事，不能推出諸葛亮從未用過任何類似策略。《三國志》正文、裴注引述、裴松之評語及《三國演義》小說各有不同的證據地位。畫面是 AI 生成的卡通插圖，並非歷史現場影像或人物相貌重建。\n\n主要來源：《三國志》卷三十五〈諸葛亮傳〉及卷三〈明帝紀〉、《晉書》卷一〈宣帝紀〉、《三國演義》毛評本第九十五回。逐條原文與固定版本見本集 research.md、claims.md。資料截至 2026-10-19。",
+    "tags": [
+      "空城計",
+      "諸葛亮",
+      "司馬懿",
+      "裴松之",
+      "郭沖",
+      "三國志",
+      "三國演義",
+      "街亭",
+      "西城",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "司馬懿\n**在哪裡**？",
+      "tag": "歷史名場面",
+      "sub": "城門開了，史書卻搖頭",
+      "shot": "fort-004"
+    }
+  },
+  "sources": [
+    {
+      "title": "《三國志》卷35〈諸葛亮傳〉與裴松之注（固定轉錄）",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/035.htm",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《三國志》卷3〈明帝紀〉（固定轉錄）",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/003.htm",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《晉書》卷1〈宣帝紀〉（固定轉錄）",
+      "url": "https://github.com/Ancient-China-Books/jinshu/blob/7ab60ece69db62d9bc40a62918f93e14432e96a3/OEBPS/Text/1131.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《三國演義》毛評本第95回（固定轉錄）",
+      "url": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d/OEBPS/Text/472.html",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "fort-001",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an ancient Chinese city battlement in daytime, one robed strategist touching a guqin on the parapet, the open gate below at frame center, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef001",
+          "text": "小說裡的西城縣，諸葛亮坐上城樓，手指停在琴弦上。"
+        }
+      ],
+      "chapter": "西城城樓，司馬懿勒馬"
+    },
+    {
+      "id": "fort-002",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on an ancient road outside a walled city, one armored general looking toward a distant open gate, his raised hand at frame center, pale afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef002",
+          "text": "司馬懿帶著軍隊，沿城外大路越走越近。"
+        }
+      ]
+    },
+    {
+      "id": "fort-003",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an open old city gate, one plain clothed sweeper brushing dust with a broom, the open doorway behind him, mild soft ambient light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef003",
+          "text": "城門已經敞開，門口有人低頭掃地。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "fort-004",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside an old stone city gate, one mounted commander holding his horse still, the open gate behind him, cloudy daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef004",
+          "text": "諸葛亮低頭看琴，司馬懿卻勒住馬，盯著那扇門。"
+        }
+      ]
+    },
+    {
+      "id": "fort-005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside an old study, one reader opening a blank bound book beside a small guqin, the book prominent in frame, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef005",
+          "text": "這段出自小說；換到《三國志》，司馬懿當時在哪裡？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-006",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet archive, one scholar turning a page of an unmarked old book, a small map shape on the table, lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef006",
+          "text": "一份較早的說法，也寫諸葛亮開門；那頁上會有琴嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a blank old map, one scholar placing two small wooden markers far apart, the gap prominent in frame, even soft ambient light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef007",
+          "text": "那份說法後面，還有一位史官寫下反駁；他先看見什麼？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-008",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a command tent, one armored commander staring toward an empty city gate in the distance, cool soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef008",
+          "text": "這場仗，會有哪一行留在當年的正史裡？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-009",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a mountain pass of ancient Shu, one robed commander unfolding a route map, hills behind him, clear morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef009",
+          "text": "西元二二八年，諸葛亮率軍出祁山，史書先記下這段進軍。",
+          "emotion": "放慢，讓地名與行動落定"
+        },
+        {
+          "id": "ef010",
+          "text": "魏國西邊各郡一度震動。"
+        }
+      ],
+      "chapter": "馬謖敗在街亭"
+    },
+    {
+      "id": "fort-011",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a county gate in ancient northwest China, one local official lowering a wooden bar, the open gate prominent, soft daytime light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef011",
+          "text": "南安、天水、安定三郡，都有人起來響應。"
+        }
+      ]
+    },
+    {
+      "id": "fort-012",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Wei command tent, one armored general placing a marker on a blank battlefield map, even lamplight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef012",
+          "text": "魏明帝派曹真督領關右，張郃帶兵迎戰。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "fort-013",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a mountain fork near Jigu, one old armored officer watching a dusty side road, soft morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef013",
+          "text": "趙雲、鄧芝在箕谷牽制，街亭成了另一條線上的關口。"
+        }
+      ]
+    },
+    {
+      "id": "fort-014",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a mountain road junction, one young armored officer gripping a rolled map, the forked road behind him, overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef014",
+          "text": "諸葛亮把街亭交給馬謖，讓他帶前隊守住。"
+        }
+      ]
+    },
+    {
+      "id": "fort-015",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a rough mountain camp, one defeated officer lowering a broken command baton, grey afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef015",
+          "text": "馬謖沒有照諸葛亮的部署，敗給了張郃。",
+          "emotion": "敘述緊湊，句末留一拍"
+        },
+        {
+          "id": "ef016",
+          "text": "如果名場面緊接著街亭，下一頁會寫什麼？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-017",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a mountain pass, one robed commander walking beside a returning supply cart, soft evening light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef017",
+          "text": "《三國志》正文接著寫的，是諸葛亮撤回漢中。"
+        }
+      ]
+    },
+    {
+      "id": "fort-018",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a road of returning carts, one official counting bundles on a blank ledger, muted daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef018",
+          "text": "他帶走西縣一千多戶，沒有在這段寫琴聲。",
+          "emotion": "放慢，讓地名與行動落定"
+        },
+        {
+          "id": "ef019",
+          "text": "回去後，他上疏認錯，請求把自己貶三級。"
+        }
+      ]
+    },
+    {
+      "id": "fort-020",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an ancient audience hall, one official receiving a plain wooden command tablet, soft soft ambient light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef020",
+          "text": "朝廷改任他為右將軍，原來的軍務仍由他統管。"
+        }
+      ]
+    },
+    {
+      "id": "fort-021",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an empty council tent, one commander setting a small wooden marker aside, the gap on a map visible, dim daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef021",
+          "text": "這場敗仗在史書裡留下的是責任，不是當場逆轉。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "fort-022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a low book table, one reader pointing to a smaller handwritten note beside an open history volume, quiet window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef022",
+          "text": "可在〈諸葛亮傳〉的裴注裡，空城又出現了。"
+        },
+        {
+          "id": "ef023",
+          "text": "誰把這扇門放進註腳？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-024",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a manuscript room, one old annotator laying an extra scroll beside a history book, diffuse morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef024",
+          "text": "裴松之為《三國志》作註時，收進晉朝郭沖的說法。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ],
+      "chapter": "郭沖把城門打開"
+    },
+    {
+      "id": "fort-025",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside five tied scrolls, one storyteller untying a single bundle, a plain table at frame center, soft soft ambient light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef025",
+          "text": "郭沖列了五件諸葛亮的故事；第三件會讓裴松之怎麼反問？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-026",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an old writing desk, one skeptical scholar raising a brush above a blank page, mild window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef026",
+          "text": "裴松之並沒有照單全收。"
+        },
+        {
+          "id": "ef027",
+          "text": "第三件就是那座城，但它不在小說的西城。",
+          "emotion": "放慢，讓地名與行動落定"
+        }
+      ]
+    },
+    {
+      "id": "fort-028",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an ancient Hanzhong camp, one robed commander studying a blank regional map, soft morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef028",
+          "text": "郭沖說，諸葛亮當時屯在漢中的陽平。"
+        }
+      ]
+    },
+    {
+      "id": "fort-029",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a command tent, one armored deputy shouldering a rolled banner and walking east, pale daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef029",
+          "text": "他還說，諸葛亮派魏延帶兵往東，城裡只留一萬人守城。"
+        }
+      ]
+    },
+    {
+      "id": "fort-030",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a mountain approach to an old city, one sentry peering toward distant dust, flat midday light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef030",
+          "text": "司馬懿的大軍突然逼近，城裡的人要怎麼辦？",
+          "emotion": "問句上揚，停半拍等答案"
+        },
+        {
+          "id": "ef031",
+          "text": "城裡參佐慌了，郭沖卻說諸葛亮神色自若。"
+        }
+      ]
+    },
+    {
+      "id": "fort-032",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an ancient city gate, one gatekeeper pushing a heavy wooden door outward, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef032",
+          "text": "諸葛亮反而叫人把四座城門全部打開。"
+        }
+      ]
+    },
+    {
+      "id": "fort-033",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a military camp, one sentry lowering a plain banner beside a closed tent, quiet midday light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef033",
+          "text": "他還叫軍中收起旗鼓，不許帳篷裡的人亂出。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "fort-034",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot just inside an old gate, one worker sweeping a damp stone path, a quiet drum behind him, even daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef034",
+          "text": "門口有人灑水掃地；可司馬懿真的在這裡看見了嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-035",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a hillside facing a city gate, one mounted general shading his eyes toward the open doorway, overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef035",
+          "text": "郭沖筆下的司馬懿看見這樣，懷疑裡面藏了伏兵。"
+        }
+      ]
+    },
+    {
+      "id": "fort-036",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a stony northern pass, one mounted scout pointing toward a winding road, pale morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef036",
+          "text": "隔天，探子回報司馬懿的軍隊往北邊山路去了。",
+          "emotion": "放慢，讓地名與行動落定"
+        },
+        {
+          "id": "ef037",
+          "text": "照郭沖的寫法，開門竟比守城還管用。"
+        }
+      ]
+    },
+    {
+      "id": "fort-038",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an old writing desk, one annotator dipping a brush and starting a marginal note, afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef038",
+          "text": "可那頁註解的下一段，裴松之寫下「難曰」。"
+        }
+      ]
+    },
+    {
+      "id": "fort-039",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a blank route map, one scholar moving a wooden marker away from a city icon, thin daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef039",
+          "text": "他先問的不是諸葛亮有多聰明，而是司馬懿在哪裡。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "fort-040",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a mountain pass leading toward Hanzhong, one traveler pointing down a long road, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef040",
+          "text": "還記得郭沖說的陽平嗎？它在漢中，魏軍得穿過西邊的戰線。"
+        }
+      ],
+      "chapter": "司馬懿鎮守宛城"
+    },
+    {
+      "id": "fort-041",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an ancient Wancheng command office, one armored governor examining a blank eastern map, window daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef041",
+          "text": "裴松之說，諸葛亮初屯陽平時，司馬懿鎮守宛城。"
+        }
+      ]
+    },
+    {
+      "id": "fort-042",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a command office, one official pressing a plain seal onto an unmarked document, soft noon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef042",
+          "text": "宛城那時屬他負責的荊州軍務，不在陽平門外。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "fort-043",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a later library, one historian turning a thick bound volume to a marked page, warm lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef043",
+          "text": "後來編成的《晉書》，也記下魏明帝命他屯宛。"
+        },
+        {
+          "id": "ef044",
+          "text": "時間是二二七年六月，還給他荊、豫兩州的軍務。"
+        }
+      ]
+    },
+    {
+      "id": "fort-045",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a blank parchment map, one historian aligning two wooden date blocks beside the same city marker, diffuse light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef045",
+          "text": "於是兩本書的時間線，在宛城這一點接上了。",
+          "emotion": "放慢，讓地名與行動落定"
+        }
+      ]
+    },
+    {
+      "id": "fort-046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old archive, one researcher putting a newer bound book beside an older scroll, mild window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef046",
+          "text": "但後出的《晉書》，不能被說成裴松之當時手上的證據。"
+        }
+      ]
+    },
+    {
+      "id": "fort-047",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a distant ancient city gate, one lone mounted scout paused on the approach road, thin overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef047",
+          "text": "郭沖寫的那次，司馬懿怎麼跨到陽平門前？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-048",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a westward mountain road, one older armored general riding toward a far camp, hazy morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef048",
+          "text": "司馬懿後來確實去了西邊，這不是說兩人從沒交手。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "fort-049",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a Wei military hall, one officer placing a mourning ribbon beside a blank map, subdued soft ambient light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef049",
+          "text": "二三一年，曹真去世，諸葛亮再向魏國用兵。"
+        }
+      ]
+    },
+    {
+      "id": "fort-050",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an imperial hall, one armored commander receiving a sealed order, pale light from high windows",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef050",
+          "text": "《明帝紀》這時才寫，魏明帝命司馬懿抵抗他。"
+        }
+      ]
+    },
+    {
+      "id": "fort-051",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside an old riverbank camp, one veteran commander watching a distant opposing camp, hazy afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef051",
+          "text": "再過幾年，兩軍還在渭水一帶相持許久。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "fort-052",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot across a broad ancient battlefield plain, one commander surveying a distant opposing camp, clear daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef052",
+          "text": "後來的關中對陣，和郭沖的陽平空城，是兩件事。"
+        }
+      ]
+    },
+    {
+      "id": "fort-053",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a parchment map, one scholar tapping the Wancheng marker while an empty gate icon lies far away, even light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef053",
+          "text": "還記得開頭問的行程嗎？郭沖說的那次，他在宛城。"
+        }
+      ]
+    },
+    {
+      "id": "fort-054",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a muddy mountain road, one armored rider carrying a blank route board, cloudy daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef054",
+          "text": "裴還提到魏軍曾令他從宛城走西城去伐蜀。",
+          "emotion": "放慢，讓地名與行動落定"
+        }
+      ]
+    },
+    {
+      "id": "fort-055",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a muddy trail, one historian lifting a wet blank route map, grey soft ambient light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef055",
+          "text": "可這條路，真的能把郭沖的那座空城救回來嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-056",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a rain soaked mountain pass, one soldier shielding his face with a cloak, wet road at frame center, grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef056",
+          "text": "但那趟路遇上大雨，軍隊班師，沒有在陽平交兵。"
+        }
+      ]
+    },
+    {
+      "id": "fort-057",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a wet blank map, one researcher separating two wooden place markers with a finger, soft grey soft ambient light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef057",
+          "text": "這裡的西城是進兵路線，也別直接當成小說那座西城。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "fort-058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an archive, one annotator placing a blank slip beside a large map, low daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef058",
+          "text": "地圖接不上，裴松之又看到郭沖筆下一個奇怪的動作。"
+        }
+      ]
+    },
+    {
+      "id": "fort-059",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside a walled town, one mounted general turning toward a distant hill, open gate behind, hazy soft ambient light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef059",
+          "text": "還記得郭沖那次退兵嗎？司馬懿看見城門開著，就帶著軍隊退走。"
+        }
+      ],
+      "chapter": "裴松之追問退兵"
+    },
+    {
+      "id": "fort-060",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a field camp, one cautious commander planting a small barrier stake, the city far behind, soft morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef060",
+          "text": "裴松之問：就算懷疑有伏兵，為何不先設防守住？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-061",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a hill path, one armored officer hesitating with a raised hand, city wall distant, grey soft ambient light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef061",
+          "text": "在裴看來，不先設防就退走，說不通。"
+        }
+      ]
+    },
+    {
+      "id": "fort-062",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an old desk, one historian comparing two unmarked scrolls without opening the second, quiet lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef062",
+          "text": "這只是裴的戰術反問，不是另一份現場戰報。"
+        }
+      ]
+    },
+    {
+      "id": "fort-063",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a plain wooden abacus, one scholar setting a bundle of blank tally slips aside, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef063",
+          "text": "連郭沖列出的二十萬，也只是故事裡的兵數。",
+          "emotion": "放慢，讓地名與行動落定"
+        }
+      ]
+    },
+    {
+      "id": "fort-064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot over a blank battle map, one scholar pointing at a troop marker moving east from an old city icon, diffuse daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef064",
+          "text": "魏延這支先行部隊，卻撞上另一段記載。"
+        }
+      ]
+    },
+    {
+      "id": "fort-065",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a fork in an old military road, one armored deputy walking toward the eastern trail, pale afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef065",
+          "text": "《魏延傳》寫諸葛亮同意過這樣分兵嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-066",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a campaign tent, one deputy holding out a rolled route map, lamplight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef066",
+          "text": "裴翻到《魏延傳》：魏延曾想獨帶精兵，另走一路。",
+          "emotion": "轉折前稍停，後半句向前"
+        },
+        {
+          "id": "ef067",
+          "text": "他想在潼關與諸葛亮主力會合。"
+        }
+      ]
+    },
+    {
+      "id": "fort-068",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a tent, one robed commander lowering his hand over a blank route map, mild lantern light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef068",
+          "text": "那是魏延自己提出的方案，還不是諸葛亮下的軍令。"
+        }
+      ]
+    },
+    {
+      "id": "fort-069",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a roadside camp, one scholar looking from a departing banner to a half empty tent, muted morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef069",
+          "text": "還記得郭沖說魏延帶兵東下嗎？誰准他去了？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an old desk, one scholar setting a request scroll beside a separate troop map, the two documents plainly apart, soft soft ambient light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef070",
+          "text": "《魏延傳》寫先前的分兵提議未獲准，裴因此不信郭沖這次的重兵東下。"
+        }
+      ]
+    },
+    {
+      "id": "fort-071",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old audience room, one storyteller holding a rolled account before a wooden chair, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef071",
+          "text": "故事走到郭沖本人身上，他把這段話講給誰聽？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-072",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Jin court chamber, one court scholar presenting a plain scroll to a seated prince seen in profile, warm soft ambient light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef072",
+          "text": "郭沖說，他把這些故事講給扶風王司馬駿聽。",
+          "emotion": "放慢，讓地名與行動落定"
+        },
+        {
+          "id": "ef073",
+          "text": "司馬駿是司馬懿的兒子，郭沖還說他很讚賞。"
+        }
+      ]
+    },
+    {
+      "id": "fort-074",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a later historian's desk, one annotator pausing his brush over a blank note, thoughtful lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef074",
+          "text": "裴松之反問：故事把父親寫成受騙而逃，兒子會稱好嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-075",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a writing desk, one historian setting a separate question slip beside a route map, even light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef075",
+          "text": "這一點是裴對郭沖敘事的推論，不是新發現的行軍表。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "fort-076",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a study table, one researcher arranging four plain objects along a line, the table at frame center, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef076",
+          "text": "裴把這件事，和先前的駐地矛盾放在一起。"
+        },
+        {
+          "id": "ef077",
+          "text": "裴松之判斷，郭沖這組說法難以相信。"
+        }
+      ]
+    },
+    {
+      "id": "fort-078",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a quiet city wall, one watchman looking along an empty parapet, pale dusk light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef078",
+          "text": "可他沒有說，歷史上從沒有人用過類似的空城策略。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "fort-079",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a distant hillside to an ancient open gate, one scholar pointing at a blank place marker, grey daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef079",
+          "text": "這些反問已足夠質疑郭沖那次陽平交鋒；那後來琴聲從哪來？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-080",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a guqin beside a later printed book, one reader lifting the book's cover, warm lamplight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef080",
+          "text": "《三國演義》第九十五回，把琴寫上了城樓。"
+        }
+      ],
+      "chapter": "琴聲寫進西城小說"
+    },
+    {
+      "id": "fort-081",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a printer's table, one printer holding a blank woodblock near a guqin, even daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef081",
+          "text": "回目就叫「馬謖拒諫失街亭，武侯彈琴退仲達」。",
+          "emotion": "放慢，讓地名與行動落定"
+        }
+      ]
+    },
+    {
+      "id": "fort-082",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a different ancient county gate, one robed official looking out from a battlement, thin soft ambient light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef082",
+          "text": "書裡，這座空城落在街亭敗後的西城縣。"
+        }
+      ]
+    },
+    {
+      "id": "fort-083",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside an old city gate, one soldier setting his helmet aside and pulling a plain cloak over his armor, overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef083",
+          "text": "前面那位掃地的人，在小說裡其實是扮成百姓的軍士。"
+        }
+      ]
+    },
+    {
+      "id": "fort-084",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside an open old gate, one disguised soldier sweeping the stone road in plain clothing, soft midday light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef084",
+          "text": "每座門前，都有這樣的軍士在灑掃。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "fort-085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on an old city tower, one robed strategist playing a guqin beside a small incense burner, two young attendants far behind, pale daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef085",
+          "text": "諸葛亮焚香操琴，旁邊站著兩個童子。"
+        }
+      ]
+    },
+    {
+      "id": "fort-086",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on an old road facing a gate, one armored commander listening with his head turned toward a distant tower, thin soft ambient light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef086",
+          "text": "司馬懿見了這座城，反而懷疑城內有伏兵，決定退走。"
+        }
+      ]
+    },
+    {
+      "id": "fort-087",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a quiet archive, one reader looking from a guqin toward an old history volume, warm lamplight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef087",
+          "text": "這把琴來得這麼晚，為何又常被聽成正史？",
+          "emotion": "問句上揚，停半拍等答案"
+        },
+        {
+          "id": "ef088",
+          "text": "郭沖第三事的原文，沒有一個「琴」字。"
+        }
+      ]
+    },
+    {
+      "id": "fort-089",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a storyteller's table, one narrator moving a small gate model between two blank map panels, soft ambient light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef089",
+          "text": "兩段文字並排看，城名與前後情節都不同。"
+        }
+      ]
+    },
+    {
+      "id": "fort-090",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a small stage with an ancient gate backdrop, one storyteller lifting a folded painted screen, gentle lantern light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef090",
+          "text": "讀者若把開門、掃地當成同一份證據，就會把琴一起帶進史書。",
+          "emotion": "放慢，讓地名與行動落定"
+        }
+      ]
+    },
+    {
+      "id": "fort-091",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an archive, one researcher keeping a printed storybook apart from an old history volume, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef091",
+          "text": "可琴與西城，真能在更早的正史裡找到嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-092",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet manuscript room, one scholar tracing a line in an unmarked history volume, an untouched guqin across the room, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef092",
+          "text": "回到那份正文，找不到小說那場西城彈琴退兵。"
+        }
+      ]
+    },
+    {
+      "id": "fort-093",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an open annotated book, one scholar following a narrow margin note with a finger, steady lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef093",
+          "text": "還記得裴松之那句「難曰」嗎？他引用之後，就對引文提出異議。",
+          "emotion": "轉折前稍停，後半句向前"
+        }
+      ]
+    },
+    {
+      "id": "fort-094",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a book desk, one researcher holding a loose anecdote page beside an annotated history volume, the papers visibly separate, calm daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef094",
+          "text": "所以「史書收錄」只告訴我們有人說過，不等於「史書證實」。"
+        }
+      ]
+    },
+    {
+      "id": "fort-095",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a table with three separate unmarked books, one researcher reaching toward the oldest volume, diffuse soft ambient light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef095",
+          "text": "三層文本放開，哪一層能證明當年城門真的打開？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-096",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a map and annotated book, one scholar holding a Wancheng marker away from an open gate sketch, pale light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef096",
+          "text": "沒有一層能把郭沖那次說成確定發生；裴反而留下反證。",
+          "emotion": "敘述緊湊，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "fort-097",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an archive, one reader reopening a book beside a small gate model, warm afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef097",
+          "text": "空城計好看，裴松之的反問卻讓這故事更值得再看。"
+        }
+      ]
+    },
+    {
+      "id": "fort-098",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an open book, one reader holding a finger between the main text and a narrow marginal note, quiet daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef098",
+          "text": "下次聽到「史書也有空城計」，先問一句：是哪一層？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "fort-099",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a small traditional stage, one musician touching a guqin under a painted city backdrop, soft stage light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef099",
+          "text": "小說裡的琴聲仍可以好好欣賞，史實的判斷交給文獻。",
+          "emotion": "放慢，讓地名與行動落定"
+        }
+      ]
+    },
+    {
+      "id": "fort-100",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a writing table, one annotator setting a brush beside a blank map, mild evening light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef100",
+          "text": "結局不在琴有多神，而在誰把什麼寫成了證據。"
+        }
+      ]
+    },
+    {
+      "id": "fort-101",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a plain archive desk, one researcher keeping an annotated volume open beside a blank map, soft lamplight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef101",
+          "text": "裴松之留下讓人停下來的問號。"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "郭沖的陽平故事，裴松之提出反證"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ef102",
+          "text": "留言選一條你覺得郭沖最難回答的裴松之反問。",
+          "emotion": "邀請觀眾留言，語氣輕快"
+        },
+        {
+          "id": "ef103",
+          "text": "喜歡把故事翻到註腳來看，訂閱奇聞檔案局。"
+        }
+      ]
+    }
+  ]
+}
