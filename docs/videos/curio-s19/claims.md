@@ -4,7 +4,7 @@
 
 | 旁白 ID | 口播／主張 | 固定可讀依據 |
 | --- | --- | --- |
-| `et001` | 一八八七年二月，巴黎一份報紙刊出反對鐵塔的信。 | [R17](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L17)、[R27](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L27) |
+| `et001` | 一八八七年二月，巴黎一份報紙刊出反對鐵塔的信。 | [R17](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L17)、[R27](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L27)、[R33](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L33) |
 | `et002` | 紙上有個讓人停住的名字：艾菲爾鐵塔。 | [R38](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L38) |
 | `et003` | 那時鐵塔還沒蓋好，艾菲爾說地基已下。 | [R141](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L141) |
 | `et004` | 抗議者已經稱它「無用而可怕」。 | [R52](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L52) |
