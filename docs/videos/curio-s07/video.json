@@ -28,19 +28,24 @@
   },
   "loops": [
     {
+      "setup": "eb003",
+      "payoff": "eb045",
+      "what": "橋邊斷後讓劉備脫身"
+    },
+    {
       "setup": "eb004",
       "payoff": "eb095",
       "what": "兩份文本均無喊聲震斷橋"
     },
     {
       "setup": "eb005",
-      "payoff": "eb047",
-      "what": "史書不給追兵心思；小說給疑兵動機"
+      "payoff": "eb045",
+      "what": "史書記敵不敢近，沒有說出心理原因"
     },
     {
       "setup": "eb006",
       "payoff": "eb083",
-      "what": "小說退敵後命拆橋，反讓劉備擔憂"
+      "what": "小說後來命人拆橋，劉備指出它暴露沒有伏兵"
     },
     {
       "setup": "eb022",
@@ -192,7 +197,7 @@
       "lines": [
         {
           "id": "eb002",
-          "text": "史書說，張飛只帶一小隊騎兵。"
+          "text": "史書說，張飛只帶一小隊騎兵，站在水邊的一座橋旁。"
         }
       ]
     },
@@ -239,7 +244,7 @@
       "lines": [
         {
           "id": "eb005",
-          "text": "橋上挑戰後，史書有說敵人為何不敢靠近嗎？",
+          "text": "史書裡，追兵聽見他的挑戰後會怎樣？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -255,7 +260,7 @@
       "lines": [
         {
           "id": "eb006",
-          "text": "小說還讓張飛事後多做一件事；劉備為何一聽就說他做錯？",
+          "text": "小說還讓張飛在橋邊做第二個決定；那會幫到劉備嗎？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -766,7 +771,7 @@
       "id": "bridge-050",
       "template": "shot",
       "data": {
-        "prompt": "Close shot on a woodland path, one mounted rider tying a leafy branch to a horse tail, pale afternoon light",
+        "prompt": "Close shot on a woodland path, one mounted rider tying a leafy branch to a horse tail, pale afternoon light, enclosed by a clearly visible illustrated fiction folio frame",
         "camera": "pan left",
         "visual": "still"
       },
@@ -781,7 +786,7 @@
       "id": "bridge-051",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at the edge of a leafy forest, one scout squinting toward a rising dust plume, gentle morning light",
+        "prompt": "Wide shot at the edge of a leafy forest, one scout squinting toward a rising dust plume, gentle morning light, enclosed by a clearly visible illustrated fiction folio frame",
         "camera": "pull out",
         "visual": "still"
       },
@@ -813,7 +818,7 @@
       "id": "bridge-053",
       "template": "shot",
       "data": {
-        "prompt": "Close shot on a dusty river road, one worried officer peering toward dark trees, soft diffused light",
+        "prompt": "Close shot on a dusty river road, one worried officer peering toward dark trees, soft diffused light, enclosed by a clearly visible illustrated fiction folio frame",
         "camera": "drift",
         "visual": "still"
       },
@@ -914,7 +919,7 @@
       "lines": [
         {
           "id": "eb039",
-          "text": "他「瞋目橫矛」，怒目直視，把矛橫在身前。",
+          "text": "回到《張飛傳》，他「瞋目橫矛」，怒目直視，把矛橫在身前。",
           "emotion": "口語向前，轉折前留一拍"
         }
       ]
@@ -930,7 +935,7 @@
       "lines": [
         {
           "id": "eb040",
-          "text": "本傳還記下他朝追兵喊出的原話。"
+          "text": "接著還記下他朝追兵喊出的原話。"
         }
       ]
     },
@@ -960,7 +965,7 @@
       "lines": [
         {
           "id": "eb045",
-          "text": "《張飛傳》接著寫「敵皆無敢近者，故遂得免」；二十騎替劉備爭到了脫身的空隙。",
+          "text": "開頭那隊騎兵爭到的，就是《張飛傳》下一句：「敵皆無敢近者，故遂得免」；劉備得以脫身。",
           "emotion": "口語向前，轉折前留一拍"
         }
       ]
@@ -1076,7 +1081,7 @@
       "id": "bridge-064",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a dusty woodland road, one nervous horseman glancing toward a bridge, soft diffused light",
+        "prompt": "Medium shot at a dusty woodland road, one nervous horseman glancing toward a bridge, soft diffused light, enclosed by a clearly visible illustrated fiction folio frame",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1131,7 +1136,7 @@
       "lines": [
         {
           "id": "eb072",
-          "text": "話音未落，小說讓一名將領跌落馬下。",
+          "text": "話音未落，小說讓曹操身邊一人跌落馬下。",
           "emotion": "口語向前，轉折前留一拍"
         }
       ]
@@ -1140,7 +1145,7 @@
       "id": "bridge-068",
       "template": "shot",
       "data": {
-        "prompt": "Close shot inside a book room, one storyteller pointing to a small fallen horse figurine, muted sky glow",
+        "prompt": "Close shot inside a book room, one storyteller pointing to a small fallen horse figurine, muted sky glow, enclosed by a clearly visible illustrated fiction folio frame",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1201,7 +1206,7 @@
       "id": "bridge-073",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot beside a wooden bridge model, one storyteller tilting his head at a cracked drawing, soft diffused light",
+        "prompt": "Medium shot beside a wooden bridge model, one storyteller tilting his head at a cracked drawing, soft diffused light, enclosed by a clearly visible illustrated fiction folio frame",
         "camera": "tilt down",
         "visual": "still"
       },

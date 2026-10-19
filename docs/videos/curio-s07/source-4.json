@@ -1,0 +1,66 @@
+{
+  "script_sha256": "59904ee2f975ac2353a612551de7521d888cd04e4ab1e3d5a327cf57c4d3e78d",
+  "method": "Independent read of the fixed-commit primary transcription pages; checked the current script and video.json prompts after freezing the blind narrative answers.",
+  "primary_sources": {
+    "SG32": "https://raw.githubusercontent.com/Ancient-China-Books/sanguozhi/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/032.htm",
+    "SG35_date": "https://raw.githubusercontent.com/Ancient-China-Books/sanguozhi/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/035.htm",
+    "SG36": "https://raw.githubusercontent.com/Ancient-China-Books/sanguozhi/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/036.htm",
+    "YY41": "https://raw.githubusercontent.com/Ancient-China-Books/sanguoyanyi/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/417.html",
+    "YY42": "https://raw.githubusercontent.com/Ancient-China-Books/sanguoyanyi/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/418.html"
+  },
+  "checks": [
+    {
+      "topic": "opening, date, and retreat cause",
+      "status": "PASS",
+      "scenes": ["bridge-001", "bridge-002", "bridge-003", "bridge-007", "bridge-008", "bridge-009", "bridge-010", "bridge-011", "bridge-012"],
+      "evidence": "SG35 p8 dates Liu Bei's defeat to 建安十三年; SG32 p9 has Liu Biao's death, Liu Cong's surrender, Fancheng/Wan news, Zhuge Liang's Xiangyang proposal and 吾不忍也; SG36 p8 has the pursuit to Changban and Zhang Fei's rear guard."
+    },
+    {
+      "topic": "followers, baggage, pursuit, and cavalry counts",
+      "status": "PASS",
+      "scenes": ["bridge-013", "bridge-014", "bridge-015", "bridge-016", "bridge-017", "bridge-018", "bridge-019", "bridge-020", "bridge-021", "bridge-022", "bridge-023", "bridge-024", "bridge-025", "bridge-026", "bridge-027", "bridge-028", "bridge-030", "bridge-031"],
+      "evidence": "SG32 p9 reads 眾十餘萬, 輜重數千兩, 日行十餘里, 關羽's boats, and Liu Bei's refusal to abandon followers; p10 reads 江陵有軍實, 精騎五千, one day and night over 三百餘里, defeat at Changban, abandoned family and baggage. SG36 p8 separately reads 使飛將二十騎拒後. SG36 p21 supports Zhao Yun saving the young heir and Lady Gan. The script correctly does not equate five thousand pursuers with men at the bridge."
+    },
+    {
+      "topic": "historical bridge order, quotation, and reaction",
+      "status": "PASS",
+      "scenes": ["bridge-032", "bridge-033", "bridge-034", "bridge-035", "bridge-036", "bridge-037", "bridge-040", "bridge-038", "bridge-087"],
+      "evidence": "SG36 p8 reads 飛據水斷橋，瞋目橫矛曰：『身是張益德也，可來共決死！』敵皆無敢近者，故遂得免. The textual order puts 據水斷橋 before the quotation, but gives no physical demolition time or person wielding tools. It does not attribute the break to the shout or explain the pursuers' fear. 益德 is exact; the script's crosswise-spear gloss is reasonable."
+    },
+    {
+      "topic": "novel dust ruse and first pursuer response",
+      "status": "PASS",
+      "scenes": ["bridge-049", "bridge-050", "bridge-051", "bridge-052", "bridge-053", "bridge-054", "bridge-055", "bridge-056", "bridge-057", "bridge-058"],
+      "evidence": "YY41 p17 places trees east of the bridge, twenty-odd riders with horse-tail branches, and dust as a decoy; YY42 p9 names Wen Ping, the dust and ambush suspicion, the arriving officers, their bridge-west line and report to Cao Cao, followed by his canopy. These are kept in the novel portion."
+    },
+    {
+      "topic": "novel first shout, three-shout sequence, and Xiahou Jie",
+      "status": "PASS_WITH_MINOR_WORDING_NOTE",
+      "scenes": ["bridge-090", "bridge-059", "bridge-060", "bridge-061", "bridge-062", "bridge-063", "bridge-064", "bridge-065", "bridge-066", "bridge-067", "bridge-068", "bridge-069", "bridge-070", "bridge-071"],
+      "evidence": "YY42 p9 exactly has 我乃燕人張翼德也！誰敢與我決一死戰？ and 聲如巨雷, Cao's removed canopy, Guan Yu's earlier praise, second and third shouts, 夏侯傑 falling from his horse, then Cao and army retreating. YY42 p11 has Zhang Liao and Xu Chu catching Cao's reins and being sent to the bridge. Minor: novel main text calls 夏侯傑 Cao's nearby man, without explicitly assigning a military rank; [bridge-067] calls him a 將領. The marginal comment calls him 近將."
+    },
+    {
+      "topic": "novel post-retreat demolition, pontoons, renewed chase, and Guan Yu",
+      "status": "PASS",
+      "scenes": ["bridge-073", "bridge-074", "bridge-075", "bridge-076", "bridge-077", "bridge-078", "bridge-079", "bridge-080", "bridge-081", "bridge-082", "bridge-083", "bridge-084", "bridge-085"],
+      "evidence": "YY42 p11 has Zhang Fei recall riders, remove branches and order the bridge demolished only after the retreat; Liu Bei explains how that reveals no ambush. YY42 p12 has Liao/Xu report, Cao order three floating bridges for that night, and Li Dian's concern. YY42 p13 has the renewed chase to Hanjin, Guan Yu intercepting the pursuers, and Cao's retreat. The script presents all this as fiction."
+    },
+    {
+      "topic": "historical Hanjin crossing and Xiakou destination",
+      "status": "PASS",
+      "scenes": ["bridge-041", "bridge-044", "bridge-045", "bridge-091", "bridge-046"],
+      "evidence": "SG32 p9 states Jiangling was the planned rendezvous; p10 states 先主斜趣漢津，適與羽舩會，得濟沔，遇 ... 琦衆萬餘人，與俱到夏口. SG36 p3 corroborates the boat meeting. The novel's Guan Yu intercept at YY42 p13 is a distinct fiction scene, and the later historical crossing is labeled 《先主傳》."
+    }
+  ],
+  "visual_review": {
+    "outdoor_light": "PASS: [bridge-037] now says soft diffused light on an outdoor bridge, not window light; [bridge-049] and [bridge-090] use overcast daylight and [bridge-091] soft daylight. Window light occurs only in indoor prompts [bridge-033] and [bridge-077].",
+    "source_layering": "REVIEW: novel folio framing appears in [bridge-049], [bridge-052], and many later fiction shots, but novel beats [bridge-050], [bridge-051], [bridge-053], [bridge-064], [bridge-068], and [bridge-073] have no explicit fiction framing. The cut from novel Cao/canopy [bridge-058] to historical 瞋目橫矛 [bridge-035] happens before the spoken 本傳 marker [bridge-036]; a viewer could briefly read the historical quotation as the next action in the novel Cao scene. The absence of a frame on [bridge-035] helps visually but the novel frame is inconsistent elsewhere.",
+    "other": "No prompt shows five thousand men at the bridge or a shout physically breaking it; [bridge-075] illustrates branch removal and [bridge-076] the gap after demolition. Prompts use one central actor and generally restrained light."
+  },
+  "source_blockers": [],
+  "review_notes": [
+    "Source boundary could be made clearer at bridge-035 before switching from the novel's Cao canopy scene to the historical phrase, and fiction folio framing should remain consistent across the novel beats.",
+    "The only other source precision note is the unspecified rank of Xiahou Jie in bridge-067; the novel正文 names him beside Cao but does not state 將領 there."
+  ],
+  "overall": "Primary claims pass; visual source boundary merits review before illustration."
+}
