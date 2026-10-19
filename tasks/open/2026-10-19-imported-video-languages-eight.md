@@ -22,6 +22,8 @@ scope:
   - apps/web/messages
   - tools/video/import
   - docs/videos/LANGUAGES.md
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Imported videos may add es, pt, id, vi, th besides en, ja, ko
@@ -56,18 +58,18 @@ only en, ja and ko, so `tools/video/cli.mjs import --languages` (#1570) can send
 
 ## Definition of done
 
-- [ ] The language panel of an imported video lists eight languages; other videos still three.
-- [ ] `import --languages` sends `description_<l>`, `captions_<l>`, `dub_<l>` for es, pt, id, vi,
+- [x] The language panel of an imported video lists eight languages; other videos still three.
+- [x] `import --languages` sends `description_<l>`, `captions_<l>`, `dub_<l>` for es, pt, id, vi,
       th when ticked (test), and the batch's language states read "ready".
-- [ ] en, ja, ko behave as before (existing tests pass).
-- [ ] YouTube sync and the retitle tool send `es-419`/`pt-BR` and keep the local caption words.
+- [x] en, ja, ko behave as before (existing tests pass).
+- [x] YouTube sync and the retitle tool send `es-419`/`pt-BR` and keep the local caption words.
 
 ## Steps
 
-- [ ] API: locale literals, imported-only rule, `locale_options` on the project, YouTube codes.
-- [ ] Web: panel rows from `locale_options`, language names in five site locales.
-- [ ] tools/video/import: the eight languages.
-- [ ] Docs (`LANGUAGES.md`), checks, PR with the post-deploy steps.
+- [x] API: locale literals, imported-only rule, `locale_options` on the project, YouTube codes.
+- [x] Web: panel rows from `locale_options`, language names in five site locales.
+- [x] tools/video/import: the eight languages.
+- [x] Docs (`LANGUAGES.md`), checks, PR with the post-deploy steps.
 
 ## How to verify
 
@@ -79,3 +81,10 @@ imported episode's panel on `/zh-TW/admin/videos?video=zhong-tian-qu-qi-e001` li
 
 - Claimed with `--force`: the overlapping claims (2026-10-12 Studio link, 2026-10-13 narrator
   dubs, 2026-10-17 import languages) are stale or have their code merged.
+- 2026-10-19 (claude-opus-5.5-eight-languages): the bound files changed, so the duration review
+  receipt got an increment from a separate reviewer (`claude-pr-review-imported-languages-eight`).
+- Imported videos have no upload package (`publish` review), so neither the API sync nor the VPS
+  uploader handles them today; their titles, CC and dubs still go up through Studio from the
+  languages card. The `es-419`/`pt-BR` tags are unverified against YouTube until a first API sync.
+- Local runs on Windows: tools failures in adult_english, elementary/profile and tts/check, and
+  the API's `test_video_anime_planning_cli` encoding failure, fail the same on clean origin/main.
