@@ -1,13 +1,13 @@
 ---
 id: 2026-10-19-curio-keeps-the-brand-stories-hook
 title: Curio keeps the brand stories' hook cadence and music bed
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-quirky
 claimed_at: 2026-10-19T01:10:56Z
 created_at: 2026-10-19T01:09:33Z
-completed_at:
+completed_at: 2026-10-19T11:48:47Z
 branch: claude/quirky-files-optimization-1605cd
 depends_on: []
 scope:
@@ -64,3 +64,5 @@ node tools/video/cli.mjs lint --slug curio-h10   # 0 errors；超過 45 秒的�
   `2026-10-19-host-explainer-route-always-adds-the`。
 - 已交付的集數要不要補配樂（一首約 US$0.15＋重新合成，旁白與插圖不動）等站主決定。
 - PR https://github.com/x812033727/travel_scanner/pull/1577
+- 2026-10-19 結案：#1577 合併（08:10Z）；主機路線的補配樂與兩位讀者由 `2026-10-19-host-explainer-route-always-adds-the` 在 #1589 完成。
+  奇聞檔案局四段提示字的 digest 變了，**還沒部署**：部署前主機上不能有未完成的 cute-mystery 單集。已交付集數要不要補配樂仍等站主決定。
