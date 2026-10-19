@@ -1,4 +1,6 @@
-# S03 定稿敘事與史料覆核
+# S03 第一版核准稿敘事與史料覆核
+
+本頁記錄音檔覆核**之前**的劇本；目前製作用的終稿與旁白核對結果見 [`verify-3.md`](verify-3.md)。以下提到的「定稿」均指當時的第一版核准稿，所連 `narrative-answers.json` 現已更新為最新終稿的盲讀答案。
 
 日期：2026-10-19。`script.md` SHA256 `16fb728987aa09da8526c94cd401cc28bc72b287bea6c63c6f6d3dcfe0b0a0dd`；旁白 narrative hash `c588d2a432d8039a`。
 

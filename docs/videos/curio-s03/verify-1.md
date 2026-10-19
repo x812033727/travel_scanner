@@ -14,4 +14,4 @@
 
 轉錄版本 SHA256（覆核者記錄）：《三國志》卷35 `bd76ca6444c3b7b7bd6bebd21f8586af707637ce8d5b559f2aaf7e15ff0acc6f`；《晉書》卷1 `57aae632ef7bcbc250f0e88869692a02fb93606a92efbcfbed3b00a3dced6706`；《三國演義》回95 `28240e97f84b9c29ebe2af19f4e6f038de846963a8ad4718fc7981835ecec45b`。
 
-覆核後的稿子：`ef001` 起即說小說；`ef053` 回收宛城時明確限定郭沖這次；`ef080`–`ef094` 用「小說」界定琴與西城；`ef078`–`ef079` 保留其他空城策略的未知範圍。這是**初稿主線的來源覆核**；定稿又做了一次逐句史料查核與全新 13 題盲讀，結果、訂正項目及 SHA256 見 [`verify-2.md`](verify-2.md)。定稿 `script.md` SHA256 `16fb728987aa09da8526c94cd401cc28bc72b287bea6c63c6f6d3dcfe0b0a0dd`，narrative hash `c588d2a432d8039a`。
+覆核後的稿子：`ef001` 起即說小說；`ef053` 回收宛城時明確限定郭沖這次；`ef080`–`ef094` 用「小說」界定琴與西城；`ef078`–`ef079` 保留其他空城策略的未知範圍。這是**初稿主線的來源覆核**；第一版核准稿又做了一次逐句史料查核與全新 13 題盲讀，結果、訂正項目及 SHA256 見 [`verify-2.md`](verify-2.md)。該版 `script.md` SHA256 `16fb728987aa09da8526c94cd401cc28bc72b287bea6c63c6f6d3dcfe0b0a0dd`，narrative hash `c588d2a432d8039a`。音檔覆核後的**現行終稿**及其新一輪盲讀、核音結果見 [`verify-3.md`](verify-3.md)。

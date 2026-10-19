@@ -32,7 +32,8 @@ scope:
 - [x] 固定《三國志》裴注、魏書相關紀年及《三國演義》原文；研究和另一人獨立覆核。
 - [x] 起草 A 案企劃、`video.json`／`script.md`、逐句主張對照、十個回收懸念。
 - [x] 跑敘事盲讀並修稿；定稿 13/13 通過，系列 lint 0 errors／0 warnings。
-- [ ] Gemini Sulafat 旁白合成、`check-audio` 後續媒體製作。
+- [x] Gemini Sulafat 旁白合成與 `check-audio`：終稿 101/101 句核對、0 flagged、旁白 09:36。
+- [ ] 依主代理排程製作插圖、分鏡、配樂、字幕、成片與上架包。
 
 ## How to verify
 
@@ -47,3 +48,7 @@ scope:
 2026-10-19：第一位獨立盲讀者 13 題中有 8 題指出問題：開場未點名地點且提早說出結局、後段重演小說場面、追問寫成序號、章節銜接、懸念回收與重複句。已逐項修正：開場點明**小說西城縣**而停在司馬懿勒馬，留下四個未解疑問；後段只補小說原文的扮裝、童子及退兵；刪掉清單口吻並接好章末與章首；魏延方案合併，誤把琴認成史實的推理寫明。新版仍是 103 句、89 張插畫、約 9.2 分鐘，`lint` 0 errors／0 warnings，`script.md` narrative hash `0e0d8d79b8d65961`。**等待另一位完全獨立讀者只看新版旁白做第二輪十三題；此版尚未核准，也未付費合成。**
 
 2026-10-19：定稿完成。獨立逐句史料覆核另抓出裴注位置、郭沖的一萬守城者、隔天探子回報及沒有來源的夜晚／試探城門等問題，已一次修正；最新精度抽查 PASS。全新盲讀者只見定稿旁白，**13/13 通過**；完整證據與改稿邊界見 `docs/videos/curio-s03/verify-2.md`、`narrative-answers.json`。現行 `script.md` SHA256 `16fb728987aa09da8526c94cd401cc28bc72b287bea6c63c6f6d3dcfe0b0a0dd`，narrative hash `c588d2a432d8039a`；103 句、89 張插畫、約 9.2 分鐘、`lint` 0 errors／0 warnings。依站主 2026-10-19「以你推薦的就好不用問我」「一直做完所以影片」的委託，製作方選 A 案並在本機記錄 `outline`／`script` 檔案雜湊關卡；記錄註明站主沒有逐字看此 S03 定稿。最終 TTS dry-run 為 101 requests、2,190 Gemini 字元、佔每月免費額 0.4%；**18:44 UTC 已開始實際 Gemini Sulafat TTS**，下一步 `check-audio`。付費 keyframes 尚未開始，89 張最多三次估 US$3.60，待主代理協調 S34 成本與排程。媒體與站台權杖只在 `/workspace/.video-work/curio-s03/` 工作目錄，不入 Git。
+
+2026-10-19 19:19 UTC：以上為第一版核准稿的歷程；**現行終稿**在旁白覆核後改為 101 句、88 張插畫，`script.md` SHA256 `2234d642112d0e8322555d46c37ddd08ab978db614b76c45d5b3229128a624b1`，narrative hash `11a95e26a6291430`，`lint` 0 errors／0 warnings。兩輪音檔訂正與兩位全新盲讀者的精確版本 13/13 通過詳見 `docs/videos/curio-s03/verify-3.md`；`narrative-answers.json` 已換成現行稿答案。本機 script 關卡重綁新 SHA，註明站主未逐字審稿。Gemini Sulafat 旁白已完成 09:36，`check-audio` **101/101、0 flagged**。MiniMax 最終 dry-run 88 張，一輪約 US$1.19、最多三輪 US$3.56；尚未付費生圖。**後續指令：**與主代理協調後在同一 `VIDEO_WORKDIR` 先執行 `keyframes --slug curio-s03 --takes 3`，再依 `curio-episode` 關卡做 `review`／`music`／`build`／`qa`／`package`。不要用 `/tmp/s03-build.py` 重生已核准稿；目前媒體與站台權杖仍留在 `/workspace/.video-work/curio-s03/`，未進 Git。
+
+2026-10-19 19:21 UTC：主代理依站主既有委託授權啟動 S03 完整媒體製作。`review-push --gate audio` 已送後台，手動製作片呈 pending；本機 audio 關卡另以站主廣泛委託記錄，明寫**站主未親聽**，綁 timeline SHA `8095d6521249…`。88 張 `keyframes --takes 3` 正在執行，exec session `89956`，完整進度日誌 `/workspace/.video-work/curio-s03/keyframes-run.log`；本集圖像費用尚待命令完成後核 ledger。勿在生成時編輯 `video.json`。若中斷重跑同一 keyframes 指令，已通過圖像吃快取；結束後只修評審三次失敗的景，再送 storyboard 關卡、配樂與後製。
