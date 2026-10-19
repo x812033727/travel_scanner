@@ -288,116 +288,119 @@
 #### 66. burned-the-rest（big）
 
 旁白（語氣親近，略上揚）：曹操把剩下的船燒了，才撤退。還記得開頭，他說那把火是他自己放的嗎？
+
+#### 67. half-dead
+
 旁白（低沉）：同一句話後面還有八個字：士兵又餓又病，死了一大半。
 
-#### 67. burning-own-ships
+#### 68. burning-own-ships
 
 旁白（像跟朋友說自己的看法）：我們覺得最可能的是：船帶不走，又不能留給對手。
 
-#### 68. muddy-road
+#### 69. muddy-road
 
 旁白：然後是那條華容道。小說說，關羽在那裡等他，放了他一馬。
 
-#### 69. stuck-horse
+#### 70. stuck-horse
 
 旁白：史書裡，只有一條泥路，馬走不過去，天上還颳著大風。
 
-#### 70. laying-straw
+#### 71. laying-straw
 
 旁白：他叫體弱的兵背草鋪路，騎兵才走得過去。
 
-#### 71. cao-laughs
+#### 72. cao-laughs
 
 旁白：走出泥路，曹操突然大笑。將領們問他笑什麼。
 
-#### 72. liu-bei-too-slow
+#### 73. liu-bei-too-slow
 
 旁白：他說，劉備跟我是同一類人，只是計策想得慢了一點。
 
-#### 73. late-fire
+#### 74. late-fire
 
 旁白：沒多久，劉備真的在後面放了火，可是曹操已經過去了。
 
-#### 74. leaves-cao-ren
+#### 75. leaves-cao-ren
 
 旁白：到了江陵，他留下曹仁守城。
 
-#### 75. road-home
+#### 76. road-home
 
 旁白：史書還記了另一次燒船。
 
-#### 76. baqiu-plague
+#### 77. baqiu-plague
 
 旁白：在一個叫巴丘的地方，軍中又鬧起疫病，他又燒了船。
 
-#### 77. sigh-at-fire
+#### 78. sigh-at-fire
 
 旁白（放慢）：他看著燒起來的船，嘆了一口氣：
 旁白（低沉，像自言自語）：如果郭嘉還在，不會讓我落到這個地步。
 
-#### 78. guo-jia-memory
+#### 79. guo-jia-memory
 
 旁白：郭嘉是他最信任的謀士，前一年病死了。
 
-#### 79. letter-tease
+#### 80. letter-tease
 
 旁白（問句，停一拍）：那封說火是自己放的信，他到底是怎麼寫的？
 
 ### 曹操的第二封信：碰上疾病，我自己燒船退兵
 
-#### 80. pei-annotator
+#### 81. pei-annotator
 
 旁白：那封信，收在替《三國志》加注時引的一本古書裡。
 
-#### 81. second-letter
+#### 82. second-letter
 
 旁白：他寫：赤壁那一仗，碰上疾病，是我自己燒船退兵的。
 
-#### 82. letter-text（big）
+#### 83. letter-text（big）
 
 旁白（略帶不服氣）：讓周瑜白白得了這個名聲。
 
-#### 83. discredit
+#### 84. discredit
 
 旁白：記下這封信的那本書接著就說：周瑜的名聲太響，曹操和劉備都想說他的壞話。
 
-#### 84. ten-boats-missing
+#### 85. ten-boats-missing
 
 旁白：還記得那十艘衝進曹營的火船嗎？這封信一個字都沒提。
 
-#### 85. wei-historian
+#### 86. wei-historian
 
 旁白（語氣親近）：還記得那場病嗎？《三國志》寫曹操的那一部分，寫到赤壁，只有「不利」和「於是大疫」。
 
-#### 86. no-fire-word
+#### 87. no-fire-word
 
 旁白（停一拍）：一個字都沒提到火。
 
-#### 87. another-book
+#### 88. another-book
 
 旁白（帶一點不可思議）：另一本古書，乾脆寫曹操的船，是被劉備燒的。
 
-#### 88. eighty-again
+#### 89. eighty-again
 
 旁白（語氣親近）：還記得第一封信裡的八十萬嗎？
 旁白（像跟朋友說自己的看法）：我們覺得，這兩封信是同一種寫法。
 
-#### 89. more-and-less
+#### 90. more-and-less
 
 旁白：戰前那一封，把自己的兵說多了；戰後這一封，把自己的輸說小了。
 
-#### 90. answer（big）
+#### 91. answer（big）
 
 旁白（放慢，像蓋章）：所以赤壁的火，是兩個人放的：一個為了贏，一個為了走。
 
-#### 91. file-closed
+#### 92. file-closed
 
 旁白（收尾，乾脆）：這份檔案，存檔。
 
-#### 92. outro（outro）
+#### 93. outro（outro）
 
 旁白（問句上揚，像在聊天）：你最早是從小說、電視劇，還是遊戲認識赤壁的？
 旁白（收尾，誠懇）：這個頻道只講史書裡找得到的，想一起開檔案就訂閱。
 
-narrative 1aeb6b42927e55a1
-speech 06a96bbfb2c41630
+narrative cdb624196633feb4
+speech a30a89847a4d5300
