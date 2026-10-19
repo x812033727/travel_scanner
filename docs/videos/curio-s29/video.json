@@ -54,7 +54,7 @@
     },
     {
       "setup": "cc115",
-      "payoff": "cc530",
+      "payoff": "cc531",
       "what": "船上刻水到底誰先想到"
     },
     {
@@ -1474,11 +1474,27 @@
       "lines": [
         {
           "id": "cc526",
-          "text": "可是這本書原書已經失傳，年代我們沒能查實；"
+          "text": "這個前例，靠得住嗎？",
+          "emotion": "問句"
         },
         {
           "id": "cc527",
-          "text": "它也只說用船量，沒說怎麼刻記號、換什麼東西。誰先誰後，還是說不準。"
+          "text": "這本書原書已經失傳，年代我們沒能查實；"
+        }
+      ]
+    },
+    {
+      "id": "pig-shrug",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plump river official in a blue jacket on a wooden boat on a calm river at midday, shrugging with a sheepish grin, the broad pink back of a huge pig beside him, soft light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc528",
+          "text": "它也只說用船量，沒說怎麼刻記號、換什麼東西。"
         }
       ]
     },
@@ -1487,12 +1503,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket standing between two tall stacks of books in a reading room on a cloudy afternoon, holding one open book up high and looking toward the camera with a shrug, soft light through a paper screen",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc528",
+          "id": "cc529",
           "text": "到今天，有學者支持陳寅恪，也有學者反駁。"
         }
       ]
@@ -1502,16 +1518,16 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns standing on a riverside dock on a still afternoon, holding a small carved stick against the side of a moored wooden boat and looking out at the viewer with a proud smile, soft hazy light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc529",
+          "id": "cc530",
           "text": "還記得開頭那個問題嗎？船上刻水，誰先想到的，"
         },
         {
-          "id": "cc530",
+          "id": "cc531",
           "text": "沒有一份文件說得死。",
           "emotion": "放慢，像蓋章"
         }
@@ -1522,12 +1538,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat sitting on a bench outside a small house on a mild afternoon, smiling warmly straight ahead with a small wooden toy boat in his hands, soft overcast light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc531",
+          "id": "cc532",
           "text": "我們覺得，同一個點子，在史書裡落到一個孩子身上，在佛經裡落到一位老人身上。",
           "emotion": "像跟朋友說自己的看法"
         }
@@ -1538,12 +1554,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive on a drizzly day, stamping a blank manila folder with a rubber stamp and looking toward the camera with a small smile, mild light from an open doorway",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc532",
+          "id": "cc533",
           "text": "這份檔案，未結。",
           "emotion": "收尾，乾脆"
         }
@@ -1561,12 +1577,12 @@
       },
       "lines": [
         {
-          "id": "cc533",
+          "id": "cc534",
           "text": "你第一次聽到曹沖稱象，是在課本、故事書，還是卡通裡？",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "cc534",
+          "id": "cc535",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }
