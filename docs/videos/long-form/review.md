@@ -5736,9 +5736,22 @@ Ran: Node v24.13.0, Windows, in the worktree at `c702c4a8b`: the baseline hashin
 Non-claims: this is a two-file incremental source duration review. It does not re-review the other 106 bound files or the unbound files the change imports; it does not judge whether every 奇聞檔案局 episode should carry the music bed, whether two readers with a both-must-say-no rule is the right storytelling gate (owner decisions recorded in the code comments), or the cost of the second reader call, and it does not accept media, paid production, deployment, upload or publication. The full automation.test.mjs suite was not run, only the three tests the change touches.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1589 merge with main after #1577: receipt union (2026-10-19)
+
+Reviewer: `claude-pr-review-1589-merge`. Author: `claude-opus-5.5-curio-host`. Scope: DURATION_ONLY for the receipt of the in-progress merge of origin/main `14f4c469d` (squash-merged #1577 on top of #1585) into `claude/curio-host-music-two-readers` at `068520c5e`, merge base `e42d93979`. The reviewer wrote none of the code and edits only this report and review.json.
+
+Union: main's review.md hashes to its bound `report_sha256` `7dfe695b57ea2329392b0e870e385e5e2b4753d7c48ce8fd30deb6b071a87824` and the branch's to `673e47f074f451b5c3054315318c557e4e0c35e7645f2079128a77d0e155c693`. Main's report differs from the merge base's only by the "Curio hook cadence and music warning increment: 1 file" section, the bindings sentence and the `tools/video/core/lint.mjs` row; the branch already carries that section byte for byte through its earlier merge of the #1577 branch, so main has no section the branch lacks. Every section before the bindings heading is main's report byte for byte, followed by the branch's "Curio host music bed and two-reader panel increment: 2 files" section byte for byte and then this section. #1585 does not touch either receipt file. The table keeps main's 108 rows except `tools/video/automation/flow.mjs` and `tools/video/automation/automation.test.mjs`, which take the branch's reviewed hashes.
+
+Reconciliation: SHA-256 (Node `crypto.createHash('sha256')` over the file bytes) of every one of the 108 registered files in the merged working tree was compared with both parents' review.json. 106 files equal both parents. `flow.mjs` (`b49c5bd87f3703566e85ad762e9559ae65977f3a932031aeb3a0ac282c8902d8`) and `automation.test.mjs` (`7ca053c9a0a490b27737ab4f8e7e030cc7c5e1e6bb89e0e46c8117a512096d95`) equal the branch's binding, reviewed in the increment above; main has not changed either file since the merge base. No file differs from both parents, so nothing is rebound without a review.
+
+Ran: Node v24.13.0, Windows: the hash comparison above; `node tools/video/long-form/cli.mjs check` and `node --test tools/video/long-form/review.test.mjs` after writing the union, with their results in the hand-off so this report's hash stays stable.
+
+Non-claims: this is a receipt union for a merge. It does not re-review any source file, the unbound files main or the branch changes, or the owner decisions on the curio music bed, hook cadence or two-reader panel, and it does not accept media, paid production, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment, and then the curio host music bed and two-reader panel increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, and then the PR #1589 merge with main after #1577. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
