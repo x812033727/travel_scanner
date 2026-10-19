@@ -415,4 +415,4 @@
 旁白（收尾，誠懇）：這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。
 
 narrative f14d82d1b1f1dd81
-speech 2ffeb879a9098c78
+speech 1c4089d14e44da3f
