@@ -397,12 +397,26 @@ async def submit_job(
         .with_for_update()
         .execution_options(populate_existing=True)
     )
+    a01_account_locked = False
+    if existing is None and payload.slug == A01_ADMISSION_SLUG:
+        # Two identical new POSTs can both miss the row before either inserts it. The
+        # budget row serializes their queued commits; re-read under that lock so the
+        # second caller uses the first receipt instead of spending Redis again or
+        # violating the unique (slug, request_hash) constraint.
+        await _assert_media_admission_open(ctx, payload.slug)
+        a01_account_locked = True
+        existing = await ctx.session.scalar(
+            select(VideoMediaJob)
+            .where(VideoMediaJob.slug == payload.slug, VideoMediaJob.request_hash == digest)
+            .with_for_update()
+            .execution_options(populate_existing=True)
+        )
     seconds = int(fields.get("seconds") or 0)
     units = meter.units_of(kind, seconds)
     meter_name = meter.METER_BY_KIND[kind]
     if existing is not None:
         if existing.status in LIVE_STATUSES:
-            if existing.status != "ready":
+            if existing.status != "ready" and not a01_account_locked:
                 await _assert_media_admission_open(ctx, payload.slug)
             await ctx.session.commit()
             await advance_job(ctx, existing)
@@ -419,7 +433,8 @@ async def submit_job(
                 "video_media_job_exhausted",
                 f"這個請求已經失敗 {existing.attempts} 次；改提示詞或 seed 再試",
             )
-        await _assert_media_admission_open(ctx, payload.slug)
+        if not a01_account_locked:
+            await _assert_media_admission_open(ctx, payload.slug)
         if not await meter.reserve(ctx.redis, meter_name, units, meter.budget_of(row, meter_name)):
             raise MediaJobFailed(
                 429, "video_media_budget_exhausted", _budget_message(meter_name, row)
@@ -442,7 +457,8 @@ async def submit_job(
         await ctx.session.commit()
         await advance_job(ctx, existing)
         return existing, False
-    await _assert_media_admission_open(ctx, payload.slug)
+    if not a01_account_locked:
+        await _assert_media_admission_open(ctx, payload.slug)
     if not await meter.reserve(ctx.redis, meter_name, units, meter.budget_of(row, meter_name)):
         raise MediaJobFailed(429, "video_media_budget_exhausted", _budget_message(meter_name, row))
     job = VideoMediaJob(

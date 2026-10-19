@@ -260,6 +260,57 @@ async def a01_media_sessions(
     await database.dispose()
 
 
+@pytest.mark.parametrize("status", ["queued", "ready"])
+@pytest.mark.asyncio
+async def test_a01_duplicate_new_post_rechecks_receipt_under_account_lock(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, status: str
+) -> None:
+    monkeypatch.setattr(service, "project_format", AsyncMock(return_value=None))
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    admission = AsyncMock()
+    monkeypatch.setattr(service, "assert_a01_admission_open", admission)
+    advance = AsyncMock()
+    monkeypatch.setattr(service, "advance_job", advance)
+    receipt = VideoMediaJob(
+        id=uuid4(),
+        slug=A01_ADMISSION_SLUG,
+        kind="image",
+        purpose="keyframe",
+        provider="minimax",
+        model="image-01",
+        request={},
+        request_hash="a" * 64,
+        status=status,
+        attempts=1,
+        polls=0,
+        usd_estimate=Decimal("0.0035"),
+    )
+    ctx = _context(
+        tmp_path,
+        FakeProvider(),
+        row=_row(image_provider="minimax", image_model="image-01"),
+    )
+    lookups = 0
+
+    async def lookup_row(_statement: Any) -> VideoMediaJob | None:
+        nonlocal lookups
+        lookups += 1
+        if lookups == 1:
+            return None
+        assert admission.await_count == 1, "reselect must follow the A01 account lock"
+        return receipt
+
+    lookup = AsyncMock(side_effect=lookup_row)
+    monkeypatch.setattr(ctx.session, "scalar", lookup)
+    found, created = await submit_job(ctx, "image", _image(slug=A01_ADMISSION_SLUG))
+    assert found is receipt and not created
+    assert lookup.await_count == 2, "the second SELECT runs after the A01 account lock"
+    assert admission.await_count >= 1
+    assert ctx.session.added == []  # type: ignore[attr-defined]
+    assert await meter.used(ctx.redis, meter.IMAGES) == 0
+    advance.assert_awaited_once()
+
+
 @pytest.mark.asyncio
 async def test_a01_media_queue_can_commit_on_0133_without_token_column(
     tmp_path: Path,
@@ -460,6 +511,7 @@ async def test_a01_media_queue_and_token_acquire_serialize_on_postgresql(
     monkeypatch.setattr(service, "advance_job", AsyncMock(side_effect=lambda _ctx, job: job))
     row = _row(image_provider="minimax", image_model="image-01")
     payload = _image(slug=slug, prompt=f"a01-media-admission-race-{uuid4()}")
+    duplicate_payload = _image(slug=slug, prompt=f"a01-media-duplicate-race-{uuid4()}")
     model = find_model("minimax", "image", "image-01")
     assert model is not None
     digest = service.request_hash(
@@ -468,6 +520,14 @@ async def test_a01_media_queue_and_token_acquire_serialize_on_postgresql(
             "vendor": "minimax",
             "model": model.id,
             **service._request_fields(payload, row, model),
+        }
+    )
+    duplicate_digest = service.request_hash(
+        {
+            "kind": "image",
+            "vendor": "minimax",
+            "model": model.id,
+            **service._request_fields(duplicate_payload, row, model),
         }
     )
     async with postgres_engine.begin() as connection:
@@ -512,6 +572,9 @@ async def test_a01_media_queue_and_token_acquire_serialize_on_postgresql(
     denied_task: asyncio.Task[Any] | None = None
     inserted_task: asyncio.Task[Any] | None = None
     token_task: asyncio.Task[bool] | None = None
+    duplicate_first_task: asyncio.Task[Any] | None = None
+    duplicate_second_task: asyncio.Task[Any] | None = None
+    finish_duplicate = asyncio.Event()
     try:
         async def arm_first() -> None:
             async with sessions() as session:
@@ -531,12 +594,12 @@ async def test_a01_media_queue_and_token_acquire_serialize_on_postgresql(
                 await finish_token.wait()
                 await session.commit()
 
-        async def submit() -> tuple[VideoMediaJob, bool]:
+        async def submit(body: ImageJobIn = payload) -> tuple[VideoMediaJob, bool]:
             async with sessions() as session:
                 ctx = _context(tmp_path, FakeProvider(), row=row)
                 ctx.session = session
                 ctx.token_id = None
-                return await submit_job(ctx, "image", payload)
+                return await submit_job(ctx, "image", body)
 
         arm_task = asyncio.create_task(arm_first())
         await asyncio.wait_for(token_written.wait(), timeout=10)
@@ -605,10 +668,62 @@ async def test_a01_media_queue_and_token_acquire_serialize_on_postgresql(
         queued, created = await asyncio.wait_for(inserted_task, timeout=10)
         assert created and queued.status == "queued"
         assert await asyncio.wait_for(token_task, timeout=10) is False
+
+        # Both duplicate POSTs initially miss a distinct request hash. The first
+        # pauses after locking the budget row; the second waits, then must reselect
+        # the first receipt instead of reserving another monthly unit or inserting.
+        duplicate_meter_entered = asyncio.Event()
+        duplicate_gate_entered = asyncio.Event()
+        meter_calls = 0
+
+        async def counted_meter(*_args: Any, **_kwargs: Any) -> bool:
+            nonlocal meter_calls
+            meter_calls += 1
+            duplicate_meter_entered.set()
+            await finish_duplicate.wait()
+            return True
+
+        async def duplicate_gate(session: AsyncSession, *, slug: str) -> None:
+            duplicate_gate_entered.set()
+            await real_gate(session, slug=slug)
+
+        monkeypatch.setattr(meter, "reserve", counted_meter)
+        duplicate_first_task = asyncio.create_task(submit(duplicate_payload))
+        await asyncio.wait_for(duplicate_meter_entered.wait(), timeout=10)
+        monkeypatch.setattr(service, "assert_a01_admission_open", duplicate_gate)
+        duplicate_second_task = asyncio.create_task(submit(duplicate_payload))
+        await asyncio.wait_for(duplicate_gate_entered.wait(), timeout=10)
+        await asyncio.sleep(0.05)
+        assert not duplicate_second_task.done(), "duplicate must wait on the account row"
+        finish_duplicate.set()
+        first_job, first_created = await asyncio.wait_for(duplicate_first_task, timeout=10)
+        second_job, second_created = await asyncio.wait_for(duplicate_second_task, timeout=10)
+        assert first_created and not second_created
+        assert first_job.id == second_job.id and first_job.status == "queued"
+        assert meter_calls == 1, "only the first identical POST reserves a monthly unit"
+        async with sessions() as session:
+            assert len(
+                (
+                    await session.scalars(
+                        sa.select(VideoMediaJob.id).where(
+                            VideoMediaJob.slug == slug,
+                            VideoMediaJob.request_hash == duplicate_digest,
+                        )
+                    )
+                ).all()
+            ) == 1
     finally:
         finish_token.set()
         finish_submit.set()
-        for task in (arm_task, denied_task, inserted_task, token_task):
+        finish_duplicate.set()
+        for task in (
+            arm_task,
+            denied_task,
+            inserted_task,
+            token_task,
+            duplicate_first_task,
+            duplicate_second_task,
+        ):
             if task is not None and not task.done():
                 task.cancel()
                 await asyncio.gather(task, return_exceptions=True)
@@ -616,7 +731,8 @@ async def test_a01_media_queue_and_token_acquire_serialize_on_postgresql(
             async with postgres_engine.begin() as connection:
                 await connection.execute(
                     sa.delete(VideoMediaJob).where(
-                        VideoMediaJob.slug == slug, VideoMediaJob.request_hash == digest
+                        VideoMediaJob.slug == slug,
+                        VideoMediaJob.request_hash.in_((digest, duplicate_digest)),
                     )
                 )
                 if previous is None:
