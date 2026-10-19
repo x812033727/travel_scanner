@@ -56,3 +56,6 @@ scope:
 - 2026-10-19（同上）：站主選 A 案。S01 稿子寫完：`docs/videos/curio-s01/video.json`、`script.md`、`NOTES.md`；
   lint 0 錯誤（警告：8.7 分鐘、sources 故意空著）；盲評七輪，第七輪 13／13 通過。查核清單擴到 32 列，仍全部 UNOPENED，
   網路政策照舊擋著原文網站。下一步是查核，不是生圖。
+- 2026-10-19（同上）：S09 大綱草稿 `docs/videos/curio-s09/brief.md`（A 案「信長的那一夜與那一場雨」建議、B 案「今川義元的最後一天」、
+  不採用的 C 案「一把刀的四百年」），等站主選。查核清單 `topic-checks/S09.md` 24 列，全部 UNOPENED：網路政策也擋掉
+  ja.wikisource.org、dl.ndl.go.jp、www.aozora.gr.jp、ja.wikipedia.org。結檔「存檔」或「未結」要等第 18 列（正面攻擊說的學界狀態）查完。
