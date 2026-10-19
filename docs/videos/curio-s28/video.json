@@ -1,0 +1,1496 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s28",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，像向朋友講一件熟悉卻越查越意外的歷史小事。古文引句放慢，書名與人名說清楚；不把史書讀成現場錄影。",
+    "performance": "從庭院危急的一刻開始，石頭落下才揭曉孩子獲救。讀蘇軾行狀的省略時語氣好奇而不武斷；讀朱熹並列的兩個故事時分清取球與救人的不同。收尾清楚區分甕字有據和器物細節未知。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "司馬光砸的是缸嗎？蘇軾長傳沒提這場救人｜奇聞檔案局",
+    "description": "熟悉的「司馬光砸缸」，在《宋史》和朱熹所編《宋名臣言行錄》都寫成「甕」。蘇軾為相識二十年的司馬光寫過長篇行狀，卻沒有寫童年救人的故事；他的篇末也說明自己選擇記錄和天下治亂安危有關的大事。邵伯温《聞見錄》保存一則更早可核對的球與破甕故事；朱熹所編書末卻標《聞見後錄》，兩書不能混同。本集依四份可核對的古書，沿著救人、編書、圖像的順序，看這段故事哪些細節能證實、哪些只是後來的想像。\n\n這些古書都是事後整理的文字，不是庭院裡的目擊紀錄。兩書沒有事故精確日期、落水兒童姓名與甕的尺寸材質；《宋史》開頭寫司馬光七歲讀書，不能直接當作救人時的確切年齡。本片畫面是 AI 生成的卡通插圖，不是宋代原畫或歷史現場重建。\n\n資料截至 2026-10-19。來源連結列於下方。",
+    "tags": [
+      "司馬光",
+      "司馬光砸缸",
+      "司馬光砸甕",
+      "宋史",
+      "蘇軾",
+      "朱熹",
+      "邵伯温",
+      "聞見錄",
+      "宋名臣言行錄",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "砸的不是\n**缸**？",
+      "tag": "歷史名場面",
+      "sub": "古書追同一塊石頭",
+      "shot": "jar-004"
+    }
+  },
+  "assets": [],
+  "scenes": [
+    {
+      "id": "jar-001",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an old courtyard in mild daylight, one young child climbing onto a plain water vessel, the rim prominent, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar001",
+          "text": "北宋的一座庭院裡，一個孩子爬上裝水的大甕。"
+        }
+      ],
+      "chapter": "北宋庭院裡，石頭還沒落下"
+    },
+    {
+      "id": "jar-002",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old courtyard, one child slipping into a plain water vessel, the open top prominent, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar002",
+          "text": "他的腳一滑，人跌進水中。"
+        }
+      ]
+    },
+    {
+      "id": "jar-003",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a water vessel in an old courtyard, one young boy holding a plain stone, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar003",
+          "text": "其他孩子跑開；司馬光手裡卻握著一塊石頭。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-004",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old courtyard, one young boy looking from a loose stone to a plain water vessel, soft grey overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar004",
+          "text": "現在卻常叫這故事砸缸。古書也這麼寫嗎？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet old study, one adult scholar pausing over a plain bound book, a folded ribbon at its spine, lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar005",
+          "text": "與他交遊二十年的蘇軾，為他寫了長篇生平；童年那頁會說什麼？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-006",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a plain old courtyard, one child peering down a narrow pillar hole with a small ball visible, diffused soft skylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar006",
+          "text": "另一本書把他，跟一顆卡在洞裡的球並排。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old workshop, one painter lifting a brush toward a blank panel on an easel, soft side light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar007",
+          "text": "更晚的史書說，京、洛間有人把這一幕畫成圖。"
+        }
+      ]
+    },
+    {
+      "id": "jar-008",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet old covered veranda, one reader holding an open blank book beside a small painting panel, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar008",
+          "text": "到底哪些細節真在古書裡，哪些是圖畫補的？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-009",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old courtyard, one boy striking a plain water vessel with a stone, water spilling outward, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar009",
+          "text": "石頭砸破甕身，水向外湧。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ],
+      "chapter": "水流出去，短短幾句成了故事"
+    },
+    {
+      "id": "jar-010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside the broken water vessel, one wet child stepping away from shallow water, the safe footing visible, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar010",
+          "text": "那孩子得救。《宋史》把結果寫成三個字：兒得活。",
+          "emotion": "書名或引句放慢，字音說清楚"
+        }
+      ]
+    },
+    {
+      "id": "jar-011",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old study, one reader turning a thick paper leaf in a stitched volume, daylight from a side window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar011",
+          "text": "這段最要緊的動作，在史書裡只有幾句。"
+        },
+        {
+          "id": "jar012",
+          "text": "它沒記任何人的感想或對話。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-012",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an old courtyard, one worried boy standing beside a water vessel while small figures recede at the far edge, muted soft skylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar013",
+          "text": "眾皆棄去，寫的是其他孩子離開現場。"
+        }
+      ]
+    },
+    {
+      "id": "jar-013",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old courtyard, one young boy lifting a plain stone beside a water vessel, the hand and stone prominent, soft grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar014",
+          "text": "光持石擊甕破之，只說他拿石頭敲破甕。"
+        }
+      ]
+    },
+    {
+      "id": "jar-014",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a courtyard doorway, one rescued child wringing water from a sleeve, the water vessel blurred behind, mild grey afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar015",
+          "text": "落水的孩子無名，書也沒給那口甕的尺寸。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-015",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old study, one reader measuring a unmarked page with a finger while a plain vessel silhouette stands nearby, lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar016",
+          "text": "材質和事故日期都沒寫。司馬光當年幾歲呢？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old archive room, one scribe leaning toward two separate blank pages, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar017",
+          "text": "那司馬光是不是剛好七歲？這裡很容易讀錯。",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-017",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old classroom, one young boy listening to an elderly teacher holding a rolled plain scroll, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar018",
+          "text": "傳記開頭確實寫他七歲愛聽《左氏春秋》。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-018",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old scribe's room, one reader holding the edge of a long blank scroll between two scenes, soft side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar019",
+          "text": "然後才接上救人故事，中間沒有再標一個年歲。"
+        }
+      ]
+    },
+    {
+      "id": "jar-019",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old classroom, one young boy tracing a line on a plain book page with a finger, overcast window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar020",
+          "text": "所以七歲能直接對上的，是讀書那一段。"
+        },
+        {
+          "id": "jar021",
+          "text": "兩段放得很近，讀者容易把前段年紀帶到後段。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-020",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old covered veranda, one reader holding a pale sheet against skylight, gentle lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar022",
+          "text": "要說他砸甕時一定七歲，史書還差一句話。"
+        }
+      ]
+    },
+    {
+      "id": "jar-021",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest old workshop, one painter preparing a brush beside a blank stretched paper on an easel, mild window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar023",
+          "text": "這一頁的下一句，卻把故事帶出庭院：京、洛有人畫過它。"
+        }
+      ]
+    },
+    {
+      "id": "jar-022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old archive room, one scholar setting aside a closed bound book and opening another, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar024",
+          "text": "有圖傳開的童年事，為何更親近他的作者沒寫？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-023",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a quiet old study at dusk, one scholar sitting to write on fresh paper, a low lamp beside him",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar025",
+          "text": "司馬光去世後，蘇軾為他寫了一篇很長的行狀。"
+        }
+      ],
+      "chapter": "蘇軾寫了長傳，卻省略那口甕"
+    },
+    {
+      "id": "jar-024",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old scribe's room, one elder scholar reviewing a stack of blank papers, warm but muted lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar026",
+          "text": "還記得開頭那二十年嗎？蘇軾在篇末親自寫下這段交情。"
+        }
+      ]
+    },
+    {
+      "id": "jar-025",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old study, one scholar holding a bound volume with careful attention, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar027",
+          "text": "他還說，知道司馬光一生的事，知道得很詳細。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-026",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet old classroom, one young reader resting a hand on a blank book, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar028",
+          "text": "而且他連童年讀書的細節都挑進去了。",
+          "emotion": "書名或引句放慢，字音說清楚"
+        }
+      ]
+    },
+    {
+      "id": "jar-027",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old study, one reader turning a stitched paper leaf, the empty margin prominent, pale daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar029",
+          "text": "可是翻過這一段，沒有石頭，也沒有落水的孩子。"
+        }
+      ]
+    },
+    {
+      "id": "jar-029",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old study, one scholar pausing with a brush held above fresh paper, lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar031",
+          "text": "漏掉最容易被畫出來的一幕，是蘇軾沒聽過嗎？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-030",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old scribe's room, one scholar sorting several blank paper bundles into piles, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar032",
+          "text": "我們不能這樣判斷；一篇傳記本來就會取捨。"
+        }
+      ]
+    },
+    {
+      "id": "jar-031",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old study, one scholar marking a unmarked scroll with a brush, muted lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar033",
+          "text": "蘇軾在篇末說，只錄跟天下治亂安危有關的大事。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-032",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old court hall, one adult official holding a rolled blank memorial before a raised desk, diffused indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar034",
+          "text": "他花許多筆墨在司馬光怎樣向朝廷進言、怎樣修史。"
+        }
+      ]
+    },
+    {
+      "id": "jar-033",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old study, one scholar selecting a unmarked document from a tall paper stack, warm lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar035",
+          "text": "對蘇軾要寫的官員生平，這些才是筆墨重點。"
+        }
+      ]
+    },
+    {
+      "id": "jar-034",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old archive room, one scribe hovering a hand over an empty space between bound volumes, pale overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar036",
+          "text": "那麼，沒寫的童年故事，就能被判成假的嗎？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-035",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old library, one reader closing an unmarked volume gently, soft afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar037",
+          "text": "不能；這只能證明，蘇軾這篇行狀沒有寫它。"
+        }
+      ]
+    },
+    {
+      "id": "jar-036",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old scribe's room, one scholar choosing a plain memorial from a stack of blank pages, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar038",
+          "text": "他熟悉司馬光，卻依自己的目的選了另一條人生線。"
+        }
+      ]
+    },
+    {
+      "id": "jar-037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old study, one scholar reaching for a small bundle of childhood anecdote papers, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar039",
+          "text": "另一本書裡，童年救人的故事終於出現。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-038",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old courtyard, one child looking at a ball caught in a narrow pillar opening, mild grey afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar040",
+          "text": "而那口甕，會突然跟一顆拿不出來的球並排。"
+        }
+      ]
+    },
+    {
+      "id": "jar-039",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old library, one reader comparing two plain bound volumes on a desk, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar041",
+          "text": "一位朋友沒寫，另一本書卻寫了；讀者會看到什麼？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-040",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest old archive room, one adult compiler arranging plain manuscript bundles, soft daytime light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar042",
+          "text": "後來，朱熹編《宋名臣言行錄》。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ],
+      "chapter": "一倒一破，兩個孩子被排在一起"
+    },
+    {
+      "id": "jar-041",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old study, one compiler placing a single paper bundle atop a neat pile, muted daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar043",
+          "text": "他把官員的故事，按人一則一則收在書中。"
+        }
+      ]
+    },
+    {
+      "id": "jar-042",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old library, one reader opening a plain bound book between two unmarked pages, soft soft skylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar044",
+          "text": "翻到文彥博的條目，旁邊竟也收著司馬光。"
+        }
+      ]
+    },
+    {
+      "id": "jar-043",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an old courtyard, one child swinging a small ball toward a stone pillar, overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar045",
+          "text": "先出現的，是一群打球的小孩。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-044",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a courtyard pillar, one child reaching toward a small ball deep in a narrow hole, gentle grey afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar046",
+          "text": "球進了柱子的洞裡，拿不出來。"
+        }
+      ]
+    },
+    {
+      "id": "jar-045",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside an old courtyard pillar, one child pouring water into a narrow hole as a ball rises, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar047",
+          "text": "文彥博往洞裡倒水，球浮了上來。"
+        }
+      ]
+    },
+    {
+      "id": "jar-046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old courtyard, one child holding a retrieved ball near a shallow bowl, mild afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar048",
+          "text": "這是取一顆球的辦法，還不是司馬光那場救人。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-047",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old study, one reader turning from a unmarked page with a ball drawing to another unmarked page, soft lamplight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar049",
+          "text": "這顆球怎麼牽出司馬光那口甕？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-048",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old scribe's room, one reader following an open bound book beside a plain vessel sketch, soft soft skylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar050",
+          "text": "接著，司馬光破甕救人的記載，緊貼在取球後面。"
+        }
+      ]
+    },
+    {
+      "id": "jar-049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old study, one compiler holding two blank paper leaves beside an open book, mild daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar051",
+          "text": "一個讓水進，一個讓水出；這段文字想讓你看到什麼？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-050",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old library, one reader holding an open bound book with two short blurred text passages on facing pages, soft side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar052",
+          "text": "兩段放在一起，像一組題目，卻不是同一次事件。"
+        }
+      ]
+    },
+    {
+      "id": "jar-051",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old study, one compiler lowering a brush beside two simple unmarked panels, gentle lamplight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar053",
+          "text": "這則故事末尾評說：懂的人從中看見兩人不凡的仁和智。"
+        }
+      ]
+    },
+    {
+      "id": "jar-052",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old archive room, one scribe examining a single blank page beneath a lamp, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar054",
+          "text": "這句「仁智」是後來文字的評語，不是落水孩子的證詞。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-053",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old classroom, one elder teacher holding an unmarked paper leaf before a seated young student, mild daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar055",
+          "text": "同一個救援，在這裡不只是動作，還成了榜樣。"
+        }
+      ]
+    },
+    {
+      "id": "jar-054",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old scribe's room, one reader following an unmarked line to a source note, soft soft skylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar056",
+          "text": "但這句評語，是朱熹自己加進去的嗎？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-055",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old library, one scribe moving a small source note beside a bound book, soft side light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar057",
+          "text": "順著這則故事末尾的標籤往前找，朱書寫的是《聞見後錄》。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-056",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old archive room, one scholar checking an open bound book, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar058",
+          "text": "可這次查到的《聞見後錄》轉錄裡，沒有找到這一段。",
+          "emotion": "書名或引句放慢，字音說清楚"
+        }
+      ]
+    },
+    {
+      "id": "jar-057",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old study, one scholar opening an earlier bound volume on a desk, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar059",
+          "text": "反而在邵伯温《聞見錄》裡，球、破甕和仁智評語連在一起。",
+          "emotion": "書名或引句放慢，字音說清楚"
+        }
+      ]
+    },
+    {
+      "id": "jar-058",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old archive room, one scribe holding an open unmarked scroll beside a second blank text leaf, mild overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar060",
+          "text": "那本書已寫「識者已知二公之仁智不凡矣」。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-059",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old library, one reader holding two differently sized plain volumes apart, soft side light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar061",
+          "text": "兩個書名只差一個「後」，但不能當成同一本書。"
+        }
+      ]
+    },
+    {
+      "id": "jar-060",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old archive room, one reader setting down a source note beside two closed books, muted lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar062",
+          "text": "是標籤、版本，還是轉錄的落差？手邊文本不能定案。",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-061",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old study, one scribe tracing a short unmarked line of a unmarked scroll, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar063",
+          "text": "朱熹的書只說孩子「墮大水甕中」；翻回《宋史》，落水前還多哪一步？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-062",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old courtyard, one child setting a foot on a plain water vessel, gentle grey grey afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar064",
+          "text": "《宋史》寫「登甕，足跌沒水中」：他先上去，才失足。",
+          "emotion": "書名或引句放慢，字音說清楚"
+        }
+      ],
+      "chapter": "《宋史》翻到這一頁，孩子先登上甕"
+    },
+    {
+      "id": "jar-063",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old study, one reader setting a vessel sketch beside a small unmarked note, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar065",
+          "text": "一邊多了「登」的動作，一邊多了「大」的形容。"
+        }
+      ]
+    },
+    {
+      "id": "jar-064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old archive, one scribe looking between two unmarked manuscripts, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar066",
+          "text": "兩份記載都沒交代，字句差別從哪裡來。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-065",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old courtyard, one young boy watching distant children leave, mild daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar067",
+          "text": "還有那群跑開的孩子：兩份文字對他們說得一樣多嗎？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-066",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old scribe's room, one reader tracing two different blank manuscript lines, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar068",
+          "text": "回看開頭那句「眾皆棄去」；朱熹編的另一段寫「驚走不能救」，多說他們無法施救。",
+          "emotion": "書名或引句放慢，字音說清楚"
+        }
+      ]
+    },
+    {
+      "id": "jar-068",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a broken water vessel, one child stepping away as water spills, soft grey afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar070",
+          "text": "回到那句「兒得活」之前，《宋史》還有「水迸」兩字，寫水衝出甕。",
+          "emotion": "書名或引句放慢，字音說清楚"
+        }
+      ]
+    },
+    {
+      "id": "jar-069",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old study, one reader comparing two unmarked pages beside a water vessel sketch, mild light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar071",
+          "text": "朱熹所編的段落換成「兒得出」，沒有交代水流方向。"
+        }
+      ]
+    },
+    {
+      "id": "jar-070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old workshop, one painter holding a brush over two plain sketch panels, soft side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar072",
+          "text": "同一個結局，文字留給畫家的動作卻不完全一樣。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-071",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old workshop, one painter holding a brush above a unmarked panel, mild window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar073",
+          "text": "文字可以停在這裡，插畫卻得選孩子停在哪一瞬。"
+        }
+      ]
+    },
+    {
+      "id": "jar-072",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old workshop, one painter pausing before an unpainted panel, gentle window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar074",
+          "text": "如果有人畫了這故事，畫裡是先登甕，還是直接落水？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-073",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old study, one scribe holding a bound book before an empty easel, muted daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar075",
+          "text": "記得《宋史》說京、洛間有人畫圖？它沒有附上原圖讓我們比對。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-074",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old workshop, one painter looking at an unmarked blank panel, soft side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar076",
+          "text": "它也沒留下畫圖人的名字，或圖後來去了哪裡。"
+        }
+      ]
+    },
+    {
+      "id": "jar-075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old workshop, one painter looking at a unmarked panel beside a book, soft side light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar077",
+          "text": "所以那幅畫究竟畫了哪個動作，我們沒法從這行字知道。"
+        }
+      ]
+    },
+    {
+      "id": "jar-076",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old courtyard, one young boy studying a loose stone beside a plain vessel, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar078",
+          "text": "若今天的插畫把石頭放在司馬光腳邊，又是哪一份書說的？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-077",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old study, one reader resting a plain stone beside a closed book, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar079",
+          "text": "兩本古書都沒寫他從哪裡拿石頭。"
+        }
+      ]
+    },
+    {
+      "id": "jar-078",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old workshop, one painter considering a simple water vessel sketch, mild soft skylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar080",
+          "text": "若畫他敲在甕底，擊打的位置也不是書裡交代的。"
+        }
+      ]
+    },
+    {
+      "id": "jar-079",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old workshop, one painter looking at a plain vessel sketch, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar081",
+          "text": "甕身若有花紋，花紋同樣要算畫家的選擇。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-080",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old covered veranda, one reader setting a painted panel beside an open blank volume, muted light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar082",
+          "text": "插圖可以幫我們跟上故事，但畫得越完整，越得記得哪些是空白。"
+        }
+      ]
+    },
+    {
+      "id": "jar-081",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old study, one reader holding two unmarked caption cards beside a water vessel sketch, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar083",
+          "text": "追到這裡，最常被今天的題名換掉的，反而是那口容器的字。"
+        }
+      ]
+    },
+    {
+      "id": "jar-082",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old archive room, one scribe holding a single blank paper card above a bound book, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar084",
+          "text": "熟悉的名字叫「砸缸」，兩部寫救人的古書也用這個字嗎？",
+          "emotion": "問句上揚，句末留一拍"
+        }
+      ]
+    },
+    {
+      "id": "jar-083",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old archive, one reader touching a marked place in an unlettered scroll, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar085",
+          "text": "兩部古書寫到救人的這一段，用的都是「甕」。"
+        }
+      ]
+    },
+    {
+      "id": "jar-084",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a modern research desk, one reader setting aside a plain modern picture book to open an older bound volume, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar086",
+          "text": "「缸」何時成為通行題名，這些文本沒交代。"
+        }
+      ]
+    },
+    {
+      "id": "jar-085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a modern archive table, one researcher holding a modern plain book beside an older bound volume, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar087",
+          "text": "今天的題名能幫人記住故事，卻不能倒改古書裡的字。",
+          "emotion": "轉折前稍停，後半句往前"
+        }
+      ]
+    },
+    {
+      "id": "jar-086",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old courtyard, one rescued child standing safely beside a broken plain water vessel, mild overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar088",
+          "text": "這個字的改變，也不能拿來否定兩書記下的救援。"
+        }
+      ]
+    },
+    {
+      "id": "jar-087",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old courtyard, one young boy lowering a stone beside a broken plain water vessel, gentle overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jar089",
+          "text": "回到開頭那顆石頭：擊甕的動作，原文只寫「擊甕破之」四字；再多畫面都得標成想像。"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "《宋史》寫「擊甕破之」"
+        ]
+      },
+      "lines": [
+        {
+          "id": "jar090",
+          "text": "你第一次聽這故事時，想像的是哪一個畫面？",
+          "emotion": "問句上揚，句末留一拍"
+        },
+        {
+          "id": "jar091",
+          "text": "想跟著原文重新看熟悉的歷史，訂閱奇聞檔案局。"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "jar004",
+      "payoff": "jar085",
+      "what": "流行題名「缸」與古書「甕」的差別"
+    },
+    {
+      "setup": "jar005",
+      "payoff": "jar029",
+      "what": "蘇軾行狀是否記了破甕"
+    },
+    {
+      "setup": "jar006",
+      "payoff": "jar053",
+      "what": "取球與破甕為何並列"
+    },
+    {
+      "setup": "jar007",
+      "payoff": "jar075",
+      "what": "京洛畫圖記述能證明多少"
+    },
+    {
+      "setup": "jar017",
+      "payoff": "jar020",
+      "what": "讀書年歲能否當救人年歲"
+    },
+    {
+      "setup": "jar031",
+      "payoff": "jar037",
+      "what": "蘇軾省略是否推翻故事"
+    },
+    {
+      "setup": "jar051",
+      "payoff": "jar053",
+      "what": "仁智評語如何連接兩個孩子"
+    },
+    {
+      "setup": "jar056",
+      "payoff": "jar059",
+      "what": "仁智評語是否由朱熹增補"
+    },
+    {
+      "setup": "jar063",
+      "payoff": "jar064",
+      "what": "兩書記載的落水步驟差異"
+    },
+    {
+      "setup": "jar074",
+      "payoff": "jar075",
+      "what": "畫圖記述能否判明動作"
+    }
+  ],
+  "sources": [
+    {
+      "title": "《宋史》卷三百三十六〈司馬光傳〉（固定版轉錄）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E5%AE%8B%E5%8F%B2.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《名臣碑傳琬琰之集》卷五十一：蘇軾〈司馬文正公光行狀〉（固定版轉錄）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E4%BC%A0%E8%AE%B0/%E5%90%8D%E8%87%A3%E7%A2%91%E4%BC%A0%E7%90%AC%E7%90%B0%E9%9B%86.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "朱熹編《宋名臣言行錄·後集》卷三（固定版轉錄）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E4%BC%A0%E8%AE%B0/%E5%AE%8B%E5%90%8D%E8%87%A3%E8%A8%80%E8%A1%8C%E5%BD%95.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "邵伯温《聞見錄》卷九（固定版轉錄）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%AD%90%E8%97%8F/%E7%AC%94%E8%AE%B0/%E9%97%BB%E8%A7%81%E5%BD%95.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "邵博《聞見後錄》（固定版轉錄；用於核對朱書所標書名）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%AD%90%E8%97%8F/%E7%AC%94%E8%AE%B0/%E9%97%BB%E8%A7%81%E5%90%8E%E5%BD%95.txt",
+      "checked_on": "2026-10-19"
+    }
+  ]
+}
