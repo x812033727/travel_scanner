@@ -29,18 +29,18 @@
   "loops": [
     {
       "setup": "eb004",
-      "payoff": "eb094",
-      "what": "史書不定斷橋時點，小說安排退敵後拆橋"
+      "payoff": "eb095",
+      "what": "兩份文本均無喊聲震斷橋"
     },
     {
       "setup": "eb005",
       "payoff": "eb047",
-      "what": "史書記敵不敢近，未提供心理現場"
+      "what": "史書不給追兵心思；小說給疑兵動機"
     },
     {
       "setup": "eb006",
-      "payoff": "eb073",
-      "what": "夏侯傑只在小說這段出場"
+      "payoff": "eb083",
+      "what": "小說退敵後命拆橋，反讓劉備擔憂"
     },
     {
       "setup": "eb022",
@@ -79,8 +79,8 @@
     },
     {
       "setup": "eb078",
-      "payoff": "eb095",
-      "what": "小說也沒有吼斷橋"
+      "payoff": "eb080",
+      "what": "曹軍退後，小說讓張飛命人拆橋"
     },
     {
       "setup": "eb081",
@@ -100,7 +100,7 @@
     {
       "setup": "eb100",
       "payoff": "eb064",
-      "what": "史書短句在小說裡變成巨雷般第一喝"
+      "what": "小說改寫張飛報名與聲勢"
     },
     {
       "setup": "eb101",
@@ -169,7 +169,7 @@
       "id": "bridge-001",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a riverside crossing in Han era China, one armoured rider stopping a horse near a narrow bridge, mild window light",
+        "prompt": "Medium shot at a riverside crossing in Han era China, one armoured rider stopping a horse near a narrow bridge, soft overcast daylight",
         "camera": "pan left",
         "visual": "still"
       },
@@ -216,14 +216,14 @@
       "id": "bridge-004",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a riverbank in Han era China, one historian studying a broken bridge sketch on a blank tablet, soft overcast daylight",
+        "prompt": "Medium shot at a riverbank in Han era China, one historian studying a broken bridge sketch on a blank tablet, soft diffused light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eb004",
-          "text": "史書裡有「斷橋」；那座橋究竟何時斷的？",
+          "text": "史書有「斷橋」；那座橋真被喊聲震斷嗎？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -232,14 +232,14 @@
       "id": "bridge-005",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at a Han era bridge approach, one spear bearer planting his feet beside the river, mild window light",
+        "prompt": "Close shot at a Han era bridge approach, one spear bearer planting his feet beside the river, even ambient light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eb005",
-          "text": "橋上那聲挑戰，史書有沒有寫敵人不敢靠近的原因？",
+          "text": "橋上挑戰後，史書有說敵人為何不敢靠近嗎？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -255,7 +255,7 @@
       "lines": [
         {
           "id": "eb006",
-          "text": "還有一名被嚇得跌馬的將領，史書寫了嗎？",
+          "text": "小說還讓張飛事後做一件看似保險的事，為何反讓劉備皺眉？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -280,7 +280,7 @@
       "id": "bridge-008",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a Han era provincial hall, one young official placing a sealed scroll on a low table, soft overcast daylight",
+        "prompt": "Close shot in a Han era provincial hall, one young official placing a sealed scroll on a low table, muted sky glow",
         "camera": "pan left",
         "visual": "still"
       },
@@ -295,7 +295,7 @@
       "id": "bridge-009",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot on a Han era road outside Fancheng, one courier handing over an urgent plain message, mild window light",
+        "prompt": "Wide shot on a Han era road outside Fancheng, one courier handing over an urgent plain message, soft overcast daylight",
         "camera": "pull out",
         "visual": "still"
       },
@@ -341,7 +341,7 @@
       "id": "bridge-012",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot on a Han era southern road, one robed commander pointing toward a distant town, soft overcast daylight",
+        "prompt": "Wide shot on a Han era southern road, one robed commander pointing toward a distant town, soft diffused light",
         "camera": "pan right",
         "visual": "still"
       },
@@ -362,7 +362,7 @@
       "id": "bridge-013",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot on a road leaving Xiangyang, one traveller joining a moving column, mild window light",
+        "prompt": "Medium shot on a road leaving Xiangyang, one traveller joining a moving column, even ambient light",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -408,7 +408,7 @@
       "id": "bridge-016",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot on a rutted Han era road, one cart driver urging a heavy wagon forward, soft overcast daylight",
+        "prompt": "Medium shot on a rutted Han era road, one cart driver urging a heavy wagon forward, muted sky glow",
         "camera": "pull out",
         "visual": "still"
       },
@@ -428,7 +428,7 @@
       "id": "bridge-017",
       "template": "shot",
       "data": {
-        "prompt": "Close shot beside a moving Han era caravan, one worried adviser presenting a plain route tablet, mild window light",
+        "prompt": "Close shot beside a moving Han era caravan, one worried adviser presenting a plain route tablet, soft overcast daylight",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -475,7 +475,7 @@
       "id": "bridge-020",
       "template": "shot",
       "data": {
-        "prompt": "Close shot inside a Han era command tent, one strategist pointing at a storehouse marker on an unmarked map, soft overcast daylight",
+        "prompt": "Close shot inside a Han era command tent, one strategist pointing at a storehouse marker on an unmarked map, soft diffused light",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -491,7 +491,7 @@
       "id": "bridge-021",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at a Han era supply depot, one officer fastening a storeroom door, mild window light",
+        "prompt": "Wide shot at a Han era supply depot, one officer fastening a storeroom door, even ambient light",
         "camera": "push in",
         "visual": "still"
       },
@@ -537,7 +537,7 @@
       "id": "bridge-024",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a Han era command tent, one clerk placing a cavalry marker away from a tiny bridge marker, soft overcast daylight",
+        "prompt": "Wide shot in a Han era command tent, one clerk placing a cavalry marker away from a tiny bridge marker, muted sky glow",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -552,7 +552,7 @@
       "id": "bridge-025",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot beside a Han era travel tally, one courier sliding a marker along a long route, mild window light",
+        "prompt": "Medium shot beside a Han era travel tally, one courier sliding a marker along a long route, soft overcast daylight",
         "camera": "drift",
         "visual": "still"
       },
@@ -619,7 +619,7 @@
       "id": "bridge-028",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot beside abandoned Han era wagons, one chronicler noting the scene on a blank slip, soft overcast daylight",
+        "prompt": "Medium shot beside abandoned Han era wagons, one chronicler noting the scene on a blank slip, soft diffused light",
         "camera": "push in",
         "visual": "still"
       },
@@ -639,7 +639,7 @@
       "id": "bridge-029",
       "template": "shot",
       "data": {
-        "prompt": "Close shot on a narrow Han era path, one mounted commander handing a plain token to a cavalry captain, mild window light",
+        "prompt": "Close shot on a narrow Han era path, one mounted commander handing a plain token to a cavalry captain, even ambient light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -687,7 +687,7 @@
       "id": "bridge-032",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at a river crossing, one mounted spear captain holding position beside an interrupted bridge, soft overcast daylight",
+        "prompt": "Close shot at a river crossing, one mounted spear captain holding position beside an interrupted bridge, muted sky glow",
         "camera": "drift",
         "visual": "still"
       },
@@ -710,7 +710,7 @@
       "lines": [
         {
           "id": "eb037",
-          "text": "史書沒說誰動手，也沒說橋用什麼材料。"
+          "text": "史書沒說誰動手、橋用什麼材料，連實際斷開的時刻也無法定下。"
         }
       ]
     },
@@ -725,8 +725,23 @@
       "lines": [
         {
           "id": "eb038",
-          "text": "《張飛傳》把斷橋寫在挑戰前；但橋邊的張飛，究竟怎樣讓追兵停步？",
+          "text": "短短四字之後，橋邊的張飛怎樣讓追兵停步？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "bridge-042",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Han era archive desk, one reader closing a short blank battle scroll, pale afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb047",
+          "text": "傳記沒替追兵寫下害怕什麼；小說會用哪一招補上這片空白？"
         }
       ]
     },
@@ -798,7 +813,7 @@
       "id": "bridge-053",
       "template": "shot",
       "data": {
-        "prompt": "Close shot on a dusty river road, one worried officer peering toward dark trees, mild window light",
+        "prompt": "Close shot on a dusty river road, one worried officer peering toward dark trees, soft diffused light",
         "camera": "drift",
         "visual": "still"
       },
@@ -844,7 +859,7 @@
       "id": "bridge-056",
       "template": "shot",
       "data": {
-        "prompt": "Close shot on a novel scene riverbank, one cautious rider stopping before a bridge, soft overcast daylight, enclosed in a visible illustrated fiction folio frame",
+        "prompt": "Close shot on a novel scene riverbank, one cautious rider stopping before a bridge, even ambient light, enclosed in a visible illustrated fiction folio frame",
         "camera": "push in",
         "visual": "still"
       },
@@ -860,7 +875,7 @@
       "id": "bridge-057",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot on a novel scene river road, one cloaked commander approaching on horseback, mild window light, with an open storybook page border surrounding the vignette",
+        "prompt": "Wide shot on a novel scene river road, one cloaked commander approaching on horseback, muted sky glow, with an open storybook page border surrounding the vignette",
         "camera": "pan left",
         "visual": "still"
       },
@@ -923,7 +938,7 @@
       "id": "bridge-037",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot on a bare Han era bridge, one spear captain calling across water while holding a spear, mild window light",
+        "prompt": "Medium shot on a bare Han era bridge, one spear captain calling across water while holding a spear, soft diffused light",
         "camera": "pull out",
         "visual": "still"
       },
@@ -931,6 +946,22 @@
         {
           "id": "eb041",
           "text": "原文是：「身是張益德也，可來共決死！」"
+        }
+      ]
+    },
+    {
+      "id": "bridge-040",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a narrow Han era river, one scout holding his horse still before a bridge, even ambient light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eb045",
+          "text": "《張飛傳》接著寫「敵皆無敢近者，故遂得免」；二十騎替劉備爭到了脫身的空隙。",
+          "emotion": "口語向前，轉折前留一拍"
         }
       ]
     },
@@ -960,7 +991,7 @@
       "lines": [
         {
           "id": "eb100",
-          "text": "剛才史書那一句挑戰，在小說裡會變成什麼聲音？",
+          "text": "史書短短一句挑戰，小說會怎樣改寫字句、放大聲勢？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -976,7 +1007,7 @@
       "lines": [
         {
           "id": "eb064",
-          "text": "小說把剛才那句報名寫得聲如巨雷。"
+          "text": "小說把報名改成「我乃燕人張翼德也」，聲如巨雷。"
         }
       ]
     },
@@ -984,7 +1015,7 @@
       "id": "bridge-060",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot on a novel scene river road, one cavalryman steadying a horse, soft overcast daylight, enclosed in a visible illustrated fiction folio frame",
+        "prompt": "Wide shot on a novel scene river road, one cavalryman steadying a horse, muted sky glow, enclosed in a visible illustrated fiction folio frame",
         "camera": "drift",
         "visual": "still"
       },
@@ -999,7 +1030,7 @@
       "id": "bridge-061",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a novel scene riverbank, one commander lifting a hand to halt his horse, mild window light, with an open storybook page border surrounding the vignette",
+        "prompt": "Medium shot at a novel scene riverbank, one commander lifting a hand to halt his horse, soft overcast daylight, with an open storybook page border surrounding the vignette",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1045,7 +1076,7 @@
       "id": "bridge-064",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a dusty woodland road, one nervous horseman glancing toward a bridge, soft overcast daylight",
+        "prompt": "Medium shot at a dusty woodland road, one nervous horseman glancing toward a bridge, soft diffused light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1061,7 +1092,7 @@
       "id": "bridge-065",
       "template": "shot",
       "data": {
-        "prompt": "Close shot on a storybook bridge, one spear captain tightening his grip on a spear, mild window light, with an open storybook page border surrounding the vignette",
+        "prompt": "Close shot on a storybook bridge, one spear captain tightening his grip on a spear, even ambient light, with an open storybook page border surrounding the vignette",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1109,7 +1140,7 @@
       "id": "bridge-068",
       "template": "shot",
       "data": {
-        "prompt": "Close shot inside a book room, one storyteller pointing to a small fallen horse figurine, soft overcast daylight",
+        "prompt": "Close shot inside a book room, one storyteller pointing to a small fallen horse figurine, muted sky glow",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1124,7 +1155,7 @@
       "id": "bridge-069",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at a wide novel scene road, one cloaked commander turning his horse away from a river, mild window light, with an open storybook page border surrounding the vignette",
+        "prompt": "Wide shot at a wide novel scene road, one cloaked commander turning his horse away from a river, soft overcast daylight, with an open storybook page border surrounding the vignette",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1162,39 +1193,7 @@
       "lines": [
         {
           "id": "eb076",
-          "text": "他立刻讓兩人再去橋頭打探；張飛那時又在做什麼？",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
-        }
-      ]
-    },
-    {
-      "id": "bridge-040",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot beside a narrow Han era river, one scout holding his horse still before a bridge, soft overcast daylight",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb045",
-          "text": "而在對追兵的反應上，《張飛傳》只寫「敵皆無敢近者」；沒有傘蓋、三喝或夏侯傑。",
-          "emotion": "口語向前，轉折前留一拍"
-        }
-      ]
-    },
-    {
-      "id": "bridge-042",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot at a Han era archive desk, one reader closing a short blank battle scroll, pale afternoon light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb047",
-          "text": "追兵為何不敢逼近，傳記沒有寫出任何人的心思。"
+          "text": "他立刻讓兩人再去橋頭打探，先弄清橋上的動靜。"
         }
       ]
     },
@@ -1202,14 +1201,14 @@
       "id": "bridge-073",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot beside a wooden bridge model, one storyteller tilting his head at a cracked drawing, mild window light",
+        "prompt": "Medium shot beside a wooden bridge model, one storyteller tilting his head at a cracked drawing, soft diffused light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eb078",
-          "text": "那麼最常聽到的「一吼把橋吼斷」呢？",
+          "text": "曹軍已退，張飛接下來還要對橋做什麼？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -1225,7 +1224,7 @@
       "lines": [
         {
           "id": "eb079",
-          "text": "曹軍退後，張飛沒有追，才招回那隊騎兵。"
+          "text": "張飛沒有追，先招回那隊騎兵。"
         }
       ]
     },
@@ -1248,7 +1247,7 @@
       "id": "bridge-076",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot on a storybook riverbank, one spear bearer noticing the gap in a wooden bridge, soft overcast daylight, enclosed in a visible illustrated fiction folio frame",
+        "prompt": "Medium shot on a storybook riverbank, one spear bearer noticing the gap in a wooden bridge, even ambient light, enclosed in a visible illustrated fiction folio frame",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1317,7 +1316,7 @@
       "id": "bridge-080",
       "template": "shot",
       "data": {
-        "prompt": "Close shot on a novel scene road, one mounted scout delivering a plain report, soft overcast daylight, enclosed in a visible illustrated fiction folio frame",
+        "prompt": "Close shot on a novel scene road, one mounted scout delivering a plain report, muted sky glow, enclosed in a visible illustrated fiction folio frame",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1332,7 +1331,7 @@
       "id": "bridge-081",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at a novel scene riverbank, one commander pointing toward a bundle of floating logs, mild window light, with an open storybook page border surrounding the vignette",
+        "prompt": "Wide shot at a novel scene riverbank, one commander pointing toward a bundle of floating logs, soft overcast daylight, with an open storybook page border surrounding the vignette",
         "camera": "drift",
         "visual": "still"
       },
@@ -1389,7 +1388,7 @@
       "id": "bridge-084",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot on a novel scene hillside, one mounted bearded officer emerging from behind the slope, soft overcast daylight, enclosed in a visible illustrated fiction folio frame",
+        "prompt": "Wide shot on a novel scene hillside, one mounted bearded officer emerging from behind the slope, soft diffused light, enclosed in a visible illustrated fiction folio frame",
         "camera": "push in",
         "visual": "still"
       },
@@ -1404,7 +1403,7 @@
       "id": "bridge-085",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot on a novel scene road, one cloaked commander signaling his horse to turn, mild window light, with an open storybook page border surrounding the vignette",
+        "prompt": "Medium shot on a novel scene road, one cloaked commander signaling his horse to turn, even ambient light, with an open storybook page border surrounding the vignette",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1420,14 +1419,14 @@
       "id": "bridge-041",
       "template": "shot",
       "data": {
-        "prompt": "Close shot on a tree lined Han era path, one weary rider guiding his horse away from the crossing, mild window light",
+        "prompt": "Close shot on a tree lined Han era path, one weary rider guiding his horse away from the crossing, muted sky glow",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eb046",
-          "text": "歷史文字也只說劉備因此脫身；他後來走向哪裡？"
+          "text": "小說把追兵暫時擋回去；《先主傳》另記劉備逃出的路線，途中遇見了誰？"
         }
       ]
     },
@@ -1442,7 +1441,7 @@
       "lines": [
         {
           "id": "eb049",
-          "text": "《先主傳》接著寫：劉備斜往漢津，終於遇上關羽的船。"
+          "text": "《先主傳》記劉備斜往漢津，終於遇上關羽的船。"
         }
       ]
     },
@@ -1450,7 +1449,7 @@
       "id": "bridge-045",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot on a Han era riverbank, one boatman helping a passenger step ashore, mild window light",
+        "prompt": "Wide shot on a Han era riverbank, one boatman helping a passenger step ashore, soft diffused light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1494,21 +1493,6 @@
       ]
     },
     {
-      "id": "bridge-086",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot beside a plain bridge model, one scholar placing a small marker without a date, pale afternoon light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eb094",
-          "text": "《張飛傳》把「據水斷橋」放在挑戰前，沒有交代實際拆橋時刻。"
-        }
-      ]
-    },
-    {
       "id": "bridge-087",
       "template": "shot",
       "data": {
@@ -1519,8 +1503,7 @@
       "lines": [
         {
           "id": "eb095",
-          "text": "還記得開頭問的斷橋嗎？小說是退敵後命人拆橋，也找不到「一吼震斷橋」。",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
+          "text": "回到開頭那座橋：這兩份原文都沒有寫喊聲把它震斷。"
         }
       ]
     },
@@ -1528,7 +1511,7 @@
       "id": "bridge-088",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at an archive desk, one scholar choosing between two unmarked scrolls, soft overcast daylight",
+        "prompt": "Medium shot at an archive desk, one scholar choosing between two unmarked scrolls, even ambient light",
         "camera": "drift",
         "visual": "still"
       },
@@ -1544,7 +1527,7 @@
       "id": "bridge-089",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at a quiet Han era bridge, one historian folding a plain map in warm light, mild window light",
+        "prompt": "Close shot at a quiet Han era bridge, one historian folding a plain map in muted sky glow",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1563,7 +1546,8 @@
         "cta": "訂閱奇聞檔案局",
         "lines": [
           "二十騎與斷橋見於史書；三聲與夏侯傑屬小說"
-        ]
+        ],
+        "prompt": ""
       },
       "lines": [
         {

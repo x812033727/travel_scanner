@@ -1,0 +1,29 @@
+{
+  "review_type": "source-isolated narrative blind read",
+  "script": "docs/videos/curio-s07/script.md",
+  "sha256_before": "da7f4441442e48c2438c36853bb940df603b37070bef784b4109a3702bda8a12",
+  "sha256_after": "da7f4441442e48c2438c36853bb940df603b37070bef784b4109a3702bda8a12",
+  "expected_sha256": "da7f4441442e48c2438c36853bb940df603b37070bef784b4109a3702bda8a12",
+  "read_order": ["script.md and hash only", "curio-episode skill", "script-writing rubric", "narrative panel"],
+  "score": {"required_yes": 8, "required_total": 12, "optional_yes": 1, "optional_total": 1, "gate_pass": false},
+  "answers": [
+    {"id":"scene_first","required":true,"yes":true,"evidence":"bridge-001 / line 9: 『當陽長坂，劉備正在撤退；張飛被留下斷後。』; bridge-002 / line 13 adds the small cavalry unit."},
+    {"id":"no_spoiler","required":true,"yes":false,"evidence":"bridge-006 / line 29 already says 『一名被嚇得跌馬的將領』. The later novel climax bridge-067 / line 253 presents the fall itself as its reveal, with the name in bridge-068 / line 257."},
+    {"id":"one_line","required":true,"yes":false,"evidence":"After the novel's bridge sequence and pursuit (bridge-069–071 / lines 261–269), bridge-040 / line 273 rewinds to the historical account of the pursuers' reaction, then bridge-074–085 / lines 285–334 resumes the novel's sequence. bridge-041–046 / lines 338–354 returns again to the historical aftermath after the novel has already reached Hanjin."},
+    {"id":"no_toc","required":true,"yes":true,"evidence":"bridge-021–023 / lines 93–101 moves directly through Jiangling's stores, Cao Cao dropping baggage, and the pursuit, without announcing a list or the script's structure."},
+    {"id":"chapters_link","required":true,"yes":true,"evidence":"The opening's chase connects to chapter two at bridge-007 / line 35 (『追兵趕到長坂以前』); chapter three answers bridge-030's question at bridge-031 / line 141 (twenty riders); chapter four answers bridge-034 at bridge-049 / line 159; the last chapter follows the dismantling at bridge-077 / line 299."},
+    {"id":"open_loops","required":true,"yes":true,"evidence":"Questions are spaced through the body, including bridge-012 / line 56, bridge-020 / line 89, bridge-030 / line 135, bridge-051 / line 167, bridge-065 / line 245, and bridge-081 / line 317. No apparent 90-second gap on a text-only read."},
+    {"id":"payoffs","required":true,"yes":false,"evidence":"The first opening question at bridge-003 / line 17 asks what the riders win for Liu Bei, but the distant answer at bridge-041 / line 338 says only 『劉備因此脫身』 without naming that earlier riders/question. The late callback at bridge-087 / line 362 repeats the dismantling already given at bridge-075 / line 289 rather than providing a new result."},
+    {"id":"no_recap","required":true,"yes":false,"evidence":"bridge-034 / line 153 already says the history places the broken bridge before the challenge; bridge-086 / line 358 says it again. bridge-075 / line 289 says Zhang Fei ordered the bridge dismantled after the retreat; bridge-087 / line 362 repeats this as a callback without a new fact."},
+    {"id":"chapters_are_events","required":false,"yes":true,"evidence":"Chapter names are event descriptions: 『劉備帶著人眾南行』 (line 31), 『張飛二十騎據水斷橋』 (line 137), and 『張飛拆橋後，曹操再追』 (line 295)."},
+    {"id":"outro_no_next","required":true,"yes":true,"evidence":"outro / lines 374–375 asks which famous Three Kingdoms scene viewers would check and invites subscription; it does not name the next episode."},
+    {"id":"opening_hooks","required":true,"yes":true,"evidence":"After bridge-001–003 establish the retreat, bridge-004–006 / lines 21, 25, 29 ask about the broken bridge's timing, the pursuers' reason to stop, and the fallen commander."},
+    {"id":"one_thread","required":true,"yes":true,"evidence":"The specific problem is what Zhang Fei's Changban bridge stand did and what the history actually states: posed at bridge-001–006 / lines 9–29 and carried through the source comparison to bridge-086–089 / lines 358–370."},
+    {"id":"no_detour","required":true,"yes":true,"evidence":"The Liu Bei flight in bridge-007–030 / lines 35–135 supplies the civilian, baggage, and pursuit stakes for the guard action; the subsequent scenes stay on the bridge stand and its consequences. The one-scene Zhao Yun aside (bridge-047 / line 122) resolves the immediately preceding abandoned-family detail."}
+  ],
+  "script_only_notes": {
+    "chronology": "Major blocker: source switching causes two mid-episode returns to earlier moments even though the preview-to-origin return is allowed by the rubric.",
+    "duration": "96 spoken lines, 1661 Han characters, 88 scenes, 28 question marks. At 3.5 Han/s narration is 7.9 min before pauses; at 3.0 Han/s it is 9.2 min. Likely reaches 8 min with pauses, but audio/runtime is unverified by the script alone.",
+    "visual_feasibility": "Text appears drawable as illustrations with selective quote/number cards; actual scene prompts and media configuration have not yet been inspected."
+  }
+}

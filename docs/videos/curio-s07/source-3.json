@@ -1,0 +1,26 @@
+{
+  "review_type": "independent pinned-source and prompt spot-check after blind report",
+  "blind_report": "/tmp/curio-s07-linear-blind-20261019.json",
+  "script_sha256": "da7f4441442e48c2438c36853bb940df603b37070bef784b4109a3702bda8a12",
+  "sources_checked": {
+    "SG32": "https://raw.githubusercontent.com/Ancient-China-Books/sanguozhi/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/032.htm",
+    "SG36": "https://raw.githubusercontent.com/Ancient-China-Books/sanguozhi/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/036.htm",
+    "YY41": "https://raw.githubusercontent.com/Ancient-China-Books/sanguoyanyi/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/417.html",
+    "YY42": "https://raw.githubusercontent.com/Ancient-China-Books/sanguoyanyi/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/418.html"
+  },
+  "checks": [
+    {"id":"eb038","scene":"bridge-034","fact":"PASS: SG36 p8 puts 據水斷橋 before the quoted challenge and does not state why pursuers stopped.","prompt":"PASS: one reader and a generic bridge model beside a scroll; does not claim an exact historical bridge."},
+    {"id":"eb039","scene":"bridge-035","fact":"PASS: SG36 p8 says 瞋目橫矛; the narration's stern gaze and crosswise spear are a faithful gloss.","prompt":"PASS: one spear captain holds the weapon crosswise; light is illustrative."},
+    {"id":"eb041","scene":"bridge-037","fact":"PASS: SG36 p8 exactly reads 身是張益德也，可來共決死！","prompt":"MINOR FIX: an outdoor bare bridge prompt specifies 'mild window light', a contradictory light source; use soft overcast daylight."},
+    {"id":"eb045","scene":"bridge-040","fact":"PASS: SG36 p8 only says 敵皆無敢近者; the paragraph has no parasol, three shouts, or Xiahou Jie.","prompt":"PASS: a single hesitant scout is a permissible illustration of the collective reaction, not a named witness."},
+    {"id":"eb049","scene":"bridge-044","fact":"PASS: SG32 p10 says 先主斜趣漢津，適與羽舩會，得濟沔; SG36 p3 also has the meeting.","prompt":"PASS: a commander boarding a boat is consistent with the stated crossing; no precise river geography is asserted."},
+    {"id":"eb054","scene":"bridge-049","fact":"PASS: YY41 line 60 says Zhang Fei saw trees east of the bridge and arranged a horse-tail-branch dust ruse.","prompt":"PASS: one captain looking to east-side trees, clearly placed inside a fiction folio frame."},
+    {"id":"eb064","scene":"bridge-059","fact":"QUALIFIED: YY42 line 36 says 聲如巨雷, but its first shout is rewritten as 我乃燕人張翼德也！誰敢與我決一死戰？. '剛才那句報名' can imply the same quoted sentence was merely amplified; it was changed in wording too.","prompt":"PASS: single shouting captain inside a fictional page border; no literal thunder effect claimed."},
+    {"id":"eb094","scene":"bridge-086","fact":"PASS: SG36 p8 places 據水斷橋 before the speech and gives no actual demolition time or agent.","prompt":"FEASIBLE BUT ABSTRACT: an undated marker beside a bridge model cannot itself prove the absence of a date; narration carries that fact."},
+    {"id":"eb095","scene":"bridge-087","fact":"PASS: YY42 line 43 explicitly orders bridge demolition after the army retreats; SG36 p8 has no shout-caused break.","prompt":"PASS: book-room comparison is a conceptual illustration; its spoken fact is repetitive, as recorded in the blind report."},
+    {"id":"eb100","scene":"bridge-090","fact":"QUALIFIED: the novel changes both the words of the challenge and its depicted volume (YY42 line 36), so asking only what sound the history's specific sentence becomes narrows the adaptation misleadingly.","prompt":"PASS: the fiction folio frame makes the source transition visible."},
+    {"id":"eb101","scene":"bridge-091","fact":"PASS: SG32 p9 names Jiangling as the intended rendezvous and p10 says Liu Bei later went with Liu Qi to Xiakou.","prompt":"FEASIBLE WITH NARRATION: a marker moved away from Jiangling on an unlabeled tablet cannot by itself convey the route; avoid generated map text if a title card supplies the name."}
+  ],
+  "visual_summary": "video.json has 88 scenes, 87 shot illustrations and one outro (98.9% shot), look.preset cute-mystery, and the standard curio music. The inspected prompts mostly use a single figure and a drawable action. eb041 has the clear physical prompt contradiction. The review is of prompts, not generated images.",
+  "duration_summary": "target_minutes is [8, 11], which is a goal rather than a measured voice runtime. Script-only count is 1661 Han characters and 96 spoken lines; 8+ minutes is plausible with measured pacing/pauses but cannot be certified until narration is timed."
+}
