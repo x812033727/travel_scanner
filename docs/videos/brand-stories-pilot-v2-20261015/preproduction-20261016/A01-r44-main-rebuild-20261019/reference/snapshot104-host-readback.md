@@ -1,6 +1,6 @@
 # A01 2026-10-18 正式機唯讀讀回：HOLD
 
-這是 `story-rolling-suitcase-v2` 的唯讀擷取與離線核對紀錄，並非採用新章稿、簽發審稿收據或啟動付費製作的授權。原始擷取保存在本機私有路徑 `C:\Users\x8120\.codex\captures\A01-20261018-1523-104`；該處的 `capture-manifest.json` 列出七份檔案的位元組數與 SHA-256。正式機沒有因本次檢查而寫入。
+這是 `story-rolling-suitcase-v2` 的唯讀擷取與離線核對紀錄，並非採用新章稿、簽發審稿收據或啟動付費製作的授權。原始擷取保存在本機私有路徑 `<home>\.codex\captures\A01-20261018-1523-104`；該處的 `capture-manifest.json` 列出七份檔案的位元組數與 SHA-256。正式機沒有因本次檢查而寫入。
 
 ## 擷取與主機狀態
 

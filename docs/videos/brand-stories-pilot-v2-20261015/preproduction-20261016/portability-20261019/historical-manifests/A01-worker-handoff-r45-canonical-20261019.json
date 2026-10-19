@@ -1,0 +1,65 @@
+{
+  "status": "HOLD_OFFLINE_CANONICAL_HANDOFF_PENDING_REVIEW",
+  "frozen_r45_manifest_sha256": "4bba4d5b429b6de634c3982aa01027b1d0befd84664aef640d533af0302d05ac",
+  "original_handoff_manifest_sha256": "b5191f765a719bfac408b317c3d8edbd073884b1cf527a4e89a7c5443c3ceab3",
+  "original_independent_review_sha256": "a4b1144e48144b78b016c7353dd56f7f9b9298de24ee4386fba2022598d64c27",
+  "frozen_inputs_sha256": {
+    "candidate/video.json": "e215ed76788489d331e45e3ae5e7a26e36e3d6f3c98770671ae54a0a69955834",
+    "candidate/series.json": "430f7f671a3ae8d695f97775292a6ad39f32b69b6310f04b7f3c942f29370c05",
+    "candidate/lexicon.json": "91ec9d6d56260441cdaddc6e1260216cc24c21120f24ab32a1d1c4550e60d10d",
+    "candidate/claims.md": "5f5028f7b516bea69b89f9bc8fe4bd4be5cf70f2a81b3fafa80c45d6aced7b98",
+    "source-alignment.json": "b505e9dda4d3b4d991307a4ae675b318a77fc1d75546950a2545ec97b4023648",
+    "brief.md": "975811d74436222543f30576127a90651f545b124e06c410e7c4e4410a410012"
+  },
+  "build_sha256": "cbfc60bca4dc7743ce8fefe37272c7d4e971179bbef4677f0524e9f56060e7c3",
+  "authored_semantic_fact_map_sha256": "bad2146a81778dce1611cddc9b03a0acdc0f5ef2cdefd4cd74ca9faff31d6116",
+  "number_claims_source_sha256": "e1c9bea7bfb065c63d28bbda099679757b10901ee606faf6b8a7e64638e58cbe",
+  "worker_dependency_sha256": {
+    "tools/video/automation/story.mjs": "db7afddc854f6f106fb7198d8f2634ad15f9e6eb5fe8c295efc604413c8ed179",
+    "tools/video/automation/story-prompts.mjs": "edd627422491cc26b74ba4dd4b491110ca85a7644d36019352a6be7b9251be94",
+    "tools/video/core/schema.mjs": "80d2607bdecd5aaae145308924be7da310f48f8fc711e2cceba00742b445db0b",
+    "tools/video/core/story.mjs": "705cd263612a280cb528807cf884df9aa3c886b6c03e0a095957f1bbbe89f417",
+    "tools/video/core/lint.mjs": "6f560e91f90126ecbf245ec754a7790ba49362651507d5c01e3ff1a5c939f95a",
+    "tools/video/core/timeline.mjs": "0088b369f5ddb962fc5d803bb5dd982f2f8f22b558eca728d0bfca5df1aa39b2"
+  },
+  "chapters": [
+    "hook",
+    "origin",
+    "idea",
+    "engine",
+    "turn",
+    "now"
+  ],
+  "scenes": 51,
+  "lines": 53,
+  "claims_pending": 55,
+  "claim_ids_canonicalized": 55,
+  "claims_plan_linked": 15,
+  "claims_passage_only": 40,
+  "source_urls": [
+    "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+    "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+    "https://www.globaltravelerusa.com/reinventing-the-wheel/",
+    "https://patents.google.com/patent/US4995487A/en",
+    "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+    "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html"
+  ],
+  "host_import_or_paid_media_authorized": false,
+  "outputs_sha256": {
+    "story/chapters/hook.json": "c496aa1935b9c665eed0e7c0cddb122b49cadc94f44361970f21bf576036ff07",
+    "story/chapters/origin.json": "76e9d473de898dca49fb6cd7aa4825f1290e383687557f20b6cbfdecdb8905f6",
+    "story/chapters/idea.json": "53f8b13c93480b8f5e9d9d9e2b5318d1ee39c6a0346d6fa0ea0a1d3d294d518d",
+    "story/chapters/engine.json": "8f11db078f360831c38283ef6b41c229b734c40d6311081e5a395ea72017ac35",
+    "story/chapters/turn.json": "5838ab03e7aecf99a98a2054abee2864fc808e984b46e3a6edb8bb9799acc54e",
+    "story/chapters/now.json": "e38ff1b712b4d75e9d1fd10ee4ee49ae2d8891a6888551f758821e141cc1c88d",
+    "series.json": "f571097b2f7e909711a78c6ed60bc57b110c8041ab8e6faabde8a5e266129f3f",
+    "lexicon.json": "91ec9d6d56260441cdaddc6e1260216cc24c21120f24ab32a1d1c4550e60d10d",
+    "brief.md": "975811d74436222543f30576127a90651f545b124e06c410e7c4e4410a410012",
+    "claim-map.json": "0b2097d3ce13f1c5e05c02e6ba12a74d6746d9310ec30a7cf93b15d65920fa73",
+    "claim-id-map.json": "69921a3a351ab304a2cefa4405df152775cbdf5905bcf346ca3f46d8bace1807",
+    "fact-mapping.md": "30918c6061eef2ae5951ea0b821c6aed6debd53bc13825237d25117b42404931",
+    "worker-composed-video.json": "21453db380db03e219b74897a2196a288e18297fa900f56da3715d25a73c63b7",
+    "metadata-delta.json": "a3cef72fc5731d2248f89b43e0aaa5e314d7138814239927ec34674063e435af",
+    "README.md": "546b0da0490ca1552f257086b430b0ef8dbb4cc970f1cd385f5851d400e50f59"
+  }
+}

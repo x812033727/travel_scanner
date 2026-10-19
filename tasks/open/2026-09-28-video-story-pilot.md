@@ -48,6 +48,20 @@ scope:
 
 ## Notes
 
+### 2026-10-19 portable evidence correction
+
+PR #1590's first CI found private local paths in ten historical review Markdown
+files. The correction changes those locators and dependent packaging hashes;
+all 67 protected content files are byte-identical to `cd120831`. The original
+owner-direction record and five historical manifests remain unchanged. The
+manifest values in the earlier continuation note below are historical identities;
+the [portability receipt and independent review](../../docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/portability-20261019/README.md)
+record their current package counterparts. Root independently checked all 103
+original-file hashes and reran r45 and canonical handoff checks successfully.
+This real packaging correction exceeds the owner's byte-identical-rebase
+exception, so the new head requires renewed merge approval. The pilot stays
+in progress; no deployment, host write, paid production or upload occurred.
+
 ### 2026-10-19 current A01 editorial continuation
 
 The owner previously authorized transfer of this pilot from `codex-8a78-pilot`

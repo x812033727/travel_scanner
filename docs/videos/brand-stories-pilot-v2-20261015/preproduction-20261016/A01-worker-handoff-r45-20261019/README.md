@@ -1,6 +1,6 @@
 # A01 r45 offline six-chapter worker handoff
 
-Status: **HOLD — offline derivation only**. Frozen r45 manifest SHA-256: `4bba4d5b429b6de634c3982aa01027b1d0befd84664aef640d533af0302d05ac`. This directory is a create-only decomposition and real current-worker recomposition of the frozen editorial candidate. It is not a host import, official six-chapter worker run, formal verifier/listener result, script-review receipt, auto.json, TTS, or paid media authorization.
+Status: **HOLD — offline derivation only**. Frozen r45 manifest SHA-256: `896615541683e620eb6e79468d8d304f146ad932700a7f044d5a1eb9784888f6`. This directory is a create-only decomposition and real current-worker recomposition of the frozen editorial candidate. It is not a host import, official six-chapter worker run, formal verifier/listener result, script-review receipt, auto.json, TTS, or paid media authorization.
 
 The six real worker chapter paths are `story/chapters/{hook,origin,idea,engine,turn,now}.json`. All 55 claim rows retain the editorial `PENDING` marker, exact q-IDs, scene and source indices, and a unique matching must_verify fact index. No row has a formal verifier verdict. Cross-chapter loops reside in the chapter that speaks their payoff. The 53 narrator lines, 51 scene IDs, all visual prompts, claim IDs per scene, six source URLs, voice, lexicon, and title match r45.
 

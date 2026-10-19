@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const frozen = path.join(path.dirname(here), 'A01-editorial-candidate-20261019-r45');
-const expectedFrozenManifest = '4bba4d5b429b6de634c3982aa01027b1d0befd84664aef640d533af0302d05ac';
+const expectedFrozenManifest = '896615541683e620eb6e79468d8d304f146ad932700a7f044d5a1eb9784888f6';
 const action = process.argv[2] ?? '--preview';
 assert.ok(['--preview', '--write', '--check'].includes(action), 'use --preview, --write or --check');
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');

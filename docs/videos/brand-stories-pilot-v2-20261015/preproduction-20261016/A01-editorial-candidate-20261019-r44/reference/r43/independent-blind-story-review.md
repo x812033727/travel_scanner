@@ -1,6 +1,6 @@
 **r43 獨立盲故事審查：PASS（十三題 13／13，必答題 12／12）。** 這只放行離線稿件的敘事關卡；來源、實際旁白時長、畫面與成片尚未驗收。
 
-Manifest SHA-256 `be7fc07bba7dd6f1d4851399a9d46e36afab8fbf438d3a7bba7a2e9473201ced` 符合指定值；`build.mjs --check` 通過，51 鏡、52 句、55 筆主張，零 lint／cute 錯誤。以下行號均見 [r43 script.md](<C:/Users/x8120/.codex/worktrees/a01-branch-sync/travel_scanㄐ/docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r43/candidate/script.md>)。
+Manifest SHA-256 `be7fc07bba7dd6f1d4851399a9d46e36afab8fbf438d3a7bba7a2e9473201ced` 符合指定值；`build.mjs --check` 通過，51 鏡、52 句、55 筆主張，零 lint／cute 錯誤。以下行號均見 r43 script.md (`<repo>/docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r43/candidate/script.md`)。
 
 | 題 | 判定 | 具體證據 |
 |---|---|---|

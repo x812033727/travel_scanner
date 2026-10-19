@@ -1,0 +1,780 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "status": "LOCAL_PORTABILITY_CORRECTION_PENDING_INDEPENDENT_EQUIVALENCE_REVIEW",
+  "baseline_commit": "cd12083117f456935a94be45f7c9f5b020d253eb",
+  "scope": "Existing PR 1590 content packaging only; no narrative revision, production write, paid work, commit or push.",
+  "private_original_backup": {
+    "files": 103,
+    "exact_worktree_and_git_bytes_verified": true,
+    "receipt_sha256": "52814f60cc78802aedbd6088cd0070240829517c3fbedee6f0436ddb3dadd36f",
+    "location": "Private local Temp directory; exact location intentionally omitted from public evidence."
+  },
+  "rules": {
+    "historical_review_targets_and_verdicts_retained": true,
+    "owner_direction_record_unchanged": true,
+    "raw_source_worktrees_untouched": true,
+    "original_manifests_saved_byte_identically": true,
+    "source_maps_unchanged": true,
+    "all_candidate_and_chapter_bytes_unchanged": true,
+    "old_approvals_not_reissued": true,
+    "no_test_whitelist_or_encoded_private_paths": true
+  },
+  "exact_semantic_delta": [
+    "Ten Markdown files: replace private checkout/profile paths with logical <repo>/<home> locators; original local links become their existing label plus inline locator. All verdicts, findings, historical target hashes and public URLs stay unchanged.",
+    "R44/main builders: retain historical raw review/readback SHA fields and unchanged source maps; add separately pinned current portable reference-file SHA checks. Existing packaged_reference_sha256 fields bind current files.",
+    "R45 builder: current source manifest and sanitized report hashes are rebound; original owner-approved manifest is separately pinned and its complete output hash map must equal the current R44 output map. Original owner-direction JSON is unchanged.",
+    "Downstream handoff build pins, metadata provenance SHA fields and README provenance text are rebound; the canonical README distinguishes the original raw manifest from the current portable original handoff package.",
+    "Review-status and main-compatibility pages explain historical versus portable packaging identities. No new review verdict, formal verification, listener result, owner approval or media artifact is asserted."
+  ],
+  "modified_original_files": [
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/REVIEW-STATUS.md",
+      "before_sha256": "34e16223c8ddecb993ff7a1e63b06bb1d70b83c1b67223e39aed71ec722d5e78",
+      "after_sha256": "61217e907cf1efbfac9fc92c99a5502e2982c89aadff86ded0a69571068e94a7",
+      "change": "historical_context_notice"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/build.mjs",
+      "before_sha256": "9aa6526818517acc3555b0bc4c5112ba69ceb53d918cf68c21ec7c8f8c8ce544",
+      "after_sha256": "e4de34a1a6c9012a5e345b59cd9cb8d660c3cf009e2d1500640ad52afb6de863",
+      "change": "portable_input_hash_binding"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/independent-blind-story-review.md",
+      "before_sha256": "425c63d256a5578a7122355520be7589635dd8f261a2694837450158c69f7db1",
+      "after_sha256": "2c408d3b77e426578294374236c91d80c5ea59b6bbfc6e550d80c6834ff64343",
+      "change": "local_path_redaction_only"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/independent-visual-fact-audit.md",
+      "before_sha256": "e6baa54e3d2de9a9b0969ea24a8d79cdccf29fdeb2b2997baa5b2a5ecfdd0cb2",
+      "after_sha256": "167d8ce246d734b33424bb8901388fbed3be75cf462027fec7b33fe4d6396b16",
+      "change": "local_path_redaction_only"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/manifest.json",
+      "before_sha256": "62cec617460b882309a48ca76c69615ec20789502538149cc94e47a632144190",
+      "after_sha256": "a2a82be58698b6062e343a55e375c5bccd88ccd4d2ee596fc6ded400bc9db234",
+      "change": "packaging_hash_rebind"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/reference/r43/independent-blind-story-review.md",
+      "before_sha256": "c5858c317176f3a1b66cc200fecb51c3f1e32092463ffd9adc13c7edf7775958",
+      "after_sha256": "9dd31303d9ab5073213e61d810058ab60cfc66a8a9b51d1169d1166847ac91d5",
+      "change": "local_path_redaction_only"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/reference/r43/independent-source-review.md",
+      "before_sha256": "0cb1cf80c5360144e63badac92958a00a876420defb68d693ce62592777320e5",
+      "after_sha256": "db36d89162f678d5fb6ecc18b956ee5bc141ac127a45daf32ede46b36b0dd4b7",
+      "change": "local_path_redaction_only"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/reference/r43/independent-visual-fact-audit.md",
+      "before_sha256": "c2cd8ef92f064b695be48aa96729b144b3a22a415c0e46c54ba2c2c4eea02e14",
+      "after_sha256": "8f40d47b3771d6646134edcf348a34c10bda42d7d01d0c9bd26fd43c2a390c52",
+      "change": "local_path_redaction_only"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/reference/snapshot104-host-readback.md",
+      "before_sha256": "425107765c8a2371aad3a3ac6e31496a82e204bf5a8048782c025f9dc955124b",
+      "after_sha256": "712621b7fbc7e4f3c59bcc0026722915b942e76020673e9adad717ff41806acd",
+      "change": "local_path_redaction_only"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/build.mjs",
+      "before_sha256": "5248f52dd927575533f793a125091f89161b62a95e50f4bba64395df504cc885",
+      "after_sha256": "53c71e8f0f005910f6bca565add664bd972bcd91dae96d23259a78310779933b",
+      "change": "portable_input_hash_binding"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/delta.json",
+      "before_sha256": "0fbb256beec104ea033c8d9020fa8374fb70b0ad48db900495e7239bc7cd421f",
+      "after_sha256": "2b063e21160c4fdfa01d0a216e494bcfef380b531a188aa56e0593c4e4c15ed1",
+      "change": "manifest_provenance_hash_only"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/manifest.json",
+      "before_sha256": "4bba4d5b429b6de634c3982aa01027b1d0befd84664aef640d533af0302d05ac",
+      "after_sha256": "896615541683e620eb6e79468d8d304f146ad932700a7f044d5a1eb9784888f6",
+      "change": "packaging_hash_rebind"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/build.mjs",
+      "before_sha256": "9aa6526818517acc3555b0bc4c5112ba69ceb53d918cf68c21ec7c8f8c8ce544",
+      "after_sha256": "e4de34a1a6c9012a5e345b59cd9cb8d660c3cf009e2d1500640ad52afb6de863",
+      "change": "portable_input_hash_binding"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/main-compatibility.md",
+      "before_sha256": "fcfac23e878de30a1629c9c9dcf5fd6a28c3744713e7910295dd75ade8433c6a",
+      "after_sha256": "83eec432af7b5a216903586579545a87be21f68edcadb208ea784fe8a408ff22",
+      "change": "historical_context_notice"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/manifest.json",
+      "before_sha256": "6657c3e1a14d958728526c81ac4abd7642d6b4e94fcb331bc66a4ac0fb7bccea",
+      "after_sha256": "b1641880b551941dc0c253ff82c6954f3c37ab9514fed8a9be5e61523664d8e1",
+      "change": "packaging_hash_rebind"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/reference/r43/independent-blind-story-review.md",
+      "before_sha256": "c5858c317176f3a1b66cc200fecb51c3f1e32092463ffd9adc13c7edf7775958",
+      "after_sha256": "9dd31303d9ab5073213e61d810058ab60cfc66a8a9b51d1169d1166847ac91d5",
+      "change": "local_path_redaction_only"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/reference/r43/independent-source-review.md",
+      "before_sha256": "0cb1cf80c5360144e63badac92958a00a876420defb68d693ce62592777320e5",
+      "after_sha256": "db36d89162f678d5fb6ecc18b956ee5bc141ac127a45daf32ede46b36b0dd4b7",
+      "change": "local_path_redaction_only"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/reference/r43/independent-visual-fact-audit.md",
+      "before_sha256": "c2cd8ef92f064b695be48aa96729b144b3a22a415c0e46c54ba2c2c4eea02e14",
+      "after_sha256": "8f40d47b3771d6646134edcf348a34c10bda42d7d01d0c9bd26fd43c2a390c52",
+      "change": "local_path_redaction_only"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/reference/snapshot104-host-readback.md",
+      "before_sha256": "425107765c8a2371aad3a3ac6e31496a82e204bf5a8048782c025f9dc955124b",
+      "after_sha256": "712621b7fbc7e4f3c59bcc0026722915b942e76020673e9adad717ff41806acd",
+      "change": "local_path_redaction_only"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/README.md",
+      "before_sha256": "caae8e5fe052682e79fb8217c2c41aa192d4a7d5bc0f855d82bb1377d0a57126",
+      "after_sha256": "25ffba3543e54beac36e0e7de925479198030ee67a1420efcdb9cfbc1da18478",
+      "change": "portable_manifest_provenance_text"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/build.mjs",
+      "before_sha256": "8cd6a76c0d7a84e209125174af71a544d98131091ef2fcf20c96e2c28155def8",
+      "after_sha256": "4ca364432bc4b21e8b2081bee9832f2fa7056f1a42c0bc9c7c423cf75e219e96",
+      "change": "portable_input_hash_binding"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/manifest.json",
+      "before_sha256": "b5191f765a719bfac408b317c3d8edbd073884b1cf527a4e89a7c5443c3ceab3",
+      "after_sha256": "7ba60fd949319420444a3236eec1180f02543a4f8d406e89b089f34b722f5fdf",
+      "change": "packaging_hash_rebind"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/metadata-delta.json",
+      "before_sha256": "f46b04d69e56fa5c7f6ba4f49996219093793412acc5170b92607455df5379f8",
+      "after_sha256": "aea59fedc6ce02fd9f3d9bbd8e281bfa43fa1c3ab831ad9c5585da0df0544760",
+      "change": "manifest_provenance_hash_only"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/README.md",
+      "before_sha256": "546b0da0490ca1552f257086b430b0ef8dbb4cc970f1cd385f5851d400e50f59",
+      "after_sha256": "c4da50714a7dfe6ee494e4698e6d5267cad853815c6e167a365941c64c82dae5",
+      "change": "portable_manifest_provenance_text"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/build.mjs",
+      "before_sha256": "cbfc60bca4dc7743ce8fefe37272c7d4e971179bbef4677f0524e9f56060e7c3",
+      "after_sha256": "1ed00db144d0d41b7dd75ad7297609c066717fe8ed30f13415dd06505d7c8484",
+      "change": "portable_input_hash_binding"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/manifest.json",
+      "before_sha256": "cda7fe38d1433fe8a3454ea0ec28ebb5d7391f4f82b0c1d3294247c8c2d7b424",
+      "after_sha256": "73cf375736d13a899e261000d1ad694f876e4f1101e2e9454210c1063dd9e4e4",
+      "change": "packaging_hash_rebind"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/metadata-delta.json",
+      "before_sha256": "a3cef72fc5731d2248f89b43e0aaa5e314d7138814239927ec34674063e435af",
+      "after_sha256": "e6df89360660cec6c83ea09baf5f015e686796928d7cfa122ed3a8daa17233e5",
+      "change": "manifest_provenance_hash_only"
+    }
+  ],
+  "unchanged_original_files": [
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/README.md",
+      "sha256": "dadd58c0aa4bef4bf0d69da027a108d2499ecd64906c22862d65aa3f96929b51",
+      "protected_content": false
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/brief.md",
+      "sha256": "b066d2ebba10458e5ee6591f0c5d473d0d38614bb69802ea945ce6bfdb3b2da8",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/candidate/claims.md",
+      "sha256": "5f5028f7b516bea69b89f9bc8fe4bd4be5cf70f2a81b3fafa80c45d6aced7b98",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/candidate/lexicon.json",
+      "sha256": "91ec9d6d56260441cdaddc6e1260216cc24c21120f24ab32a1d1c4550e60d10d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/candidate/script.md",
+      "sha256": "a8fa324593115efc934cb60eb7e63411c6d8063d0e2d55965281e1039be1772c",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/candidate/series.json",
+      "sha256": "74abbedd5736442f117fbc49d7991060acf696712d8c1e9b138983b24fc5b4fd",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/candidate/video.json",
+      "sha256": "7e1ec10c465dab8f7f774cff8feaad2e7dcfdc8d5aa670856a34f9597a86379d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/independent-source-review.md",
+      "sha256": "cdb5687bc114717d6399e60d813ba888aa87c3dd6ad9e69ad680fb19cf16a147",
+      "protected_content": false
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/owner-direction-20261019.json",
+      "sha256": "06008d40ba253ffdbf3d3017fac0a3fe27e95e24b27d7c1ac09e49d1272be02a",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/reference/r43/candidate/lexicon.json",
+      "sha256": "91ec9d6d56260441cdaddc6e1260216cc24c21120f24ab32a1d1c4550e60d10d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/reference/r43/candidate/series.json",
+      "sha256": "1d7028ccbd7a631050e6b41fe2b73e9b92ce5843fd8a0bf42ad7b36da61e374d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/reference/r43/candidate/video.json",
+      "sha256": "4576e7a60fe939264fbfb595db206df490e37a0543d1b7a3bed525436bb4a0be",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/reference/r43/manifest.json",
+      "sha256": "be7fc07bba7dd6f1d4851399a9d46e36afab8fbf438d3a7bba7a2e9473201ced",
+      "protected_content": false
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/reference/r43/research-plan-25-series.json",
+      "sha256": "1a585140fe2cec0492549611307e3f7ef97ec47b4a2ff4ca3a726ff2ba22c826",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/research-plan-25-series.json",
+      "sha256": "2d4ad3ebe35d152eb3cb4acae775554bcfcefb6356fa544b49f15f464ee1e6c6",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/research-year-discrepancy.json",
+      "sha256": "8048a34ae4f6557cfa868b57f11077f08de4e5cc6bf46f189c3e6897f9206b3f",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/source-alignment.json",
+      "sha256": "b505e9dda4d3b4d991307a4ae675b318a77fc1d75546950a2545ec97b4023648",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/source-map.json",
+      "sha256": "cc09c9a6bb5ea1246b2ad23bdeefedf91799ef23d6d67c53bd3bed16efacf85a",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/story-data.mjs",
+      "sha256": "dbc9624b218fa4a0d04647d5913963825e6a4bcdd750561541684ccf62d44dfd",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/validation.json",
+      "sha256": "73f1791a4593cd0f62c905f8c5dff324f92145a64e15c5ded72c5d5e8899651d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/README.md",
+      "sha256": "5ceb54532823443ea896102a955eed7510963b8c98f74e18646ed171f0482048",
+      "protected_content": false
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/brief.md",
+      "sha256": "975811d74436222543f30576127a90651f545b124e06c410e7c4e4410a410012",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/candidate/claims.md",
+      "sha256": "5f5028f7b516bea69b89f9bc8fe4bd4be5cf70f2a81b3fafa80c45d6aced7b98",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/candidate/lexicon.json",
+      "sha256": "91ec9d6d56260441cdaddc6e1260216cc24c21120f24ab32a1d1c4550e60d10d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/candidate/script.md",
+      "sha256": "ee7ba4c1fae4ec3122e8c5fe3e8fc98822e09c00f45cdf5115293e27dd841ab0",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/candidate/series.json",
+      "sha256": "430f7f671a3ae8d695f97775292a6ad39f32b69b6310f04b7f3c942f29370c05",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/candidate/video.json",
+      "sha256": "e215ed76788489d331e45e3ae5e7a26e36e3d6f3c98770671ae54a0a69955834",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/independent-delta-review.md",
+      "sha256": "bb2562de4bb04c68ec99679b83e69c58550cc61ea7af2b0d1a63df9d71542d61",
+      "protected_content": false
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/source-alignment.json",
+      "sha256": "b505e9dda4d3b4d991307a4ae675b318a77fc1d75546950a2545ec97b4023648",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/source-map.json",
+      "sha256": "cc09c9a6bb5ea1246b2ad23bdeefedf91799ef23d6d67c53bd3bed16efacf85a",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/validation.json",
+      "sha256": "eb35211f1883ba603034dfeb43f2918f67eca3afe6db246cb1da25744690fd81",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/README.md",
+      "sha256": "dadd58c0aa4bef4bf0d69da027a108d2499ecd64906c22862d65aa3f96929b51",
+      "protected_content": false
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/brief.md",
+      "sha256": "b066d2ebba10458e5ee6591f0c5d473d0d38614bb69802ea945ce6bfdb3b2da8",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/candidate/claims.md",
+      "sha256": "5f5028f7b516bea69b89f9bc8fe4bd4be5cf70f2a81b3fafa80c45d6aced7b98",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/candidate/lexicon.json",
+      "sha256": "91ec9d6d56260441cdaddc6e1260216cc24c21120f24ab32a1d1c4550e60d10d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/candidate/script.md",
+      "sha256": "a8fa324593115efc934cb60eb7e63411c6d8063d0e2d55965281e1039be1772c",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/candidate/series.json",
+      "sha256": "74abbedd5736442f117fbc49d7991060acf696712d8c1e9b138983b24fc5b4fd",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/candidate/video.json",
+      "sha256": "7e1ec10c465dab8f7f774cff8feaad2e7dcfdc8d5aa670856a34f9597a86379d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/reference/r43/candidate/lexicon.json",
+      "sha256": "91ec9d6d56260441cdaddc6e1260216cc24c21120f24ab32a1d1c4550e60d10d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/reference/r43/candidate/series.json",
+      "sha256": "1d7028ccbd7a631050e6b41fe2b73e9b92ce5843fd8a0bf42ad7b36da61e374d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/reference/r43/candidate/video.json",
+      "sha256": "4576e7a60fe939264fbfb595db206df490e37a0543d1b7a3bed525436bb4a0be",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/reference/r43/manifest.json",
+      "sha256": "be7fc07bba7dd6f1d4851399a9d46e36afab8fbf438d3a7bba7a2e9473201ced",
+      "protected_content": false
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/reference/r43/research-plan-25-series.json",
+      "sha256": "1a585140fe2cec0492549611307e3f7ef97ec47b4a2ff4ca3a726ff2ba22c826",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/research-plan-25-series.json",
+      "sha256": "2d4ad3ebe35d152eb3cb4acae775554bcfcefb6356fa544b49f15f464ee1e6c6",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/research-year-discrepancy.json",
+      "sha256": "8048a34ae4f6557cfa868b57f11077f08de4e5cc6bf46f189c3e6897f9206b3f",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/source-alignment.json",
+      "sha256": "b505e9dda4d3b4d991307a4ae675b318a77fc1d75546950a2545ec97b4023648",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/source-map.json",
+      "sha256": "cc09c9a6bb5ea1246b2ad23bdeefedf91799ef23d6d67c53bd3bed16efacf85a",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/story-data.mjs",
+      "sha256": "dbc9624b218fa4a0d04647d5913963825e6a4bcdd750561541684ccf62d44dfd",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/validation.json",
+      "sha256": "c5a95e62d7888e74dba30ecaa1c350d305a3e41462aae34c5048c195af127900",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/brief.md",
+      "sha256": "975811d74436222543f30576127a90651f545b124e06c410e7c4e4410a410012",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/claim-map.json",
+      "sha256": "69b1ea2afa37fa28ac434f55252c7fee96a8c35fa720d7f5f327e647d934f73a",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/independent-handoff-review.md",
+      "sha256": "a4b1144e48144b78b016c7353dd56f7f9b9298de24ee4386fba2022598d64c27",
+      "protected_content": false
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/lexicon.json",
+      "sha256": "91ec9d6d56260441cdaddc6e1260216cc24c21120f24ab32a1d1c4550e60d10d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/series.json",
+      "sha256": "f571097b2f7e909711a78c6ed60bc57b110c8041ab8e6faabde8a5e266129f3f",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/story/chapters/engine.json",
+      "sha256": "6f914615f342f2e259c05bb776b5d46d4d59e1b00753b343cd62cdd85a04cfeb",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/story/chapters/hook.json",
+      "sha256": "8176fdad95115e945329037f2c73f938bc44a8f498d9b2b95ac512cb01904b27",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/story/chapters/idea.json",
+      "sha256": "86e6e326f30b586514935e016e7de601459de0c1ec3077b0329705c0b4ab2c1c",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/story/chapters/now.json",
+      "sha256": "f4076815fae1961d21d3df8ac4278cee9c21729a0899306c99cfc8f570d59582",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/story/chapters/origin.json",
+      "sha256": "c284f85122ef4f6d76f34efd622df92a894195f1105e892803e7b66e7495bb91",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/story/chapters/turn.json",
+      "sha256": "7db8d577e948493a91e3ab77ceebcdc16caed75f0a7fa3654dafbd70ef0f5f72",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/worker-composed-video.json",
+      "sha256": "4fad9d8a3948d133acb66ff0fab7021ef2e1d4e9dcec497fa4bef56e50a12011",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/brief.md",
+      "sha256": "975811d74436222543f30576127a90651f545b124e06c410e7c4e4410a410012",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/claim-id-map.json",
+      "sha256": "69921a3a351ab304a2cefa4405df152775cbdf5905bcf346ca3f46d8bace1807",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/claim-map.json",
+      "sha256": "0b2097d3ce13f1c5e05c02e6ba12a74d6746d9310ec30a7cf93b15d65920fa73",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/fact-mapping.md",
+      "sha256": "30918c6061eef2ae5951ea0b821c6aed6debd53bc13825237d25117b42404931",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/independent-handoff-review.md",
+      "sha256": "89593d6a60868779ef8ab6e2d1786431a052202b98030a58740ed096ef7df128",
+      "protected_content": false
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/lexicon.json",
+      "sha256": "91ec9d6d56260441cdaddc6e1260216cc24c21120f24ab32a1d1c4550e60d10d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/semantic-fact-map.json",
+      "sha256": "bad2146a81778dce1611cddc9b03a0acdc0f5ef2cdefd4cd74ca9faff31d6116",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/series.json",
+      "sha256": "f571097b2f7e909711a78c6ed60bc57b110c8041ab8e6faabde8a5e266129f3f",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/story/chapters/engine.json",
+      "sha256": "8f11db078f360831c38283ef6b41c229b734c40d6311081e5a395ea72017ac35",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/story/chapters/hook.json",
+      "sha256": "c496aa1935b9c665eed0e7c0cddb122b49cadc94f44361970f21bf576036ff07",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/story/chapters/idea.json",
+      "sha256": "53f8b13c93480b8f5e9d9d9e2b5318d1ee39c6a0346d6fa0ea0a1d3d294d518d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/story/chapters/now.json",
+      "sha256": "e38ff1b712b4d75e9d1fd10ee4ee49ae2d8891a6888551f758821e141cc1c88d",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/story/chapters/origin.json",
+      "sha256": "76e9d473de898dca49fb6cd7aa4825f1290e383687557f20b6cbfdecdb8905f6",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/story/chapters/turn.json",
+      "sha256": "5838ab03e7aecf99a98a2054abee2864fc808e984b46e3a6edb8bb9799acc54e",
+      "protected_content": true
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/worker-composed-video.json",
+      "sha256": "21453db380db03e219b74897a2196a288e18297fa900f56da3715d25a73c63b7",
+      "protected_content": true
+    }
+  ],
+  "protected_content_count": 67,
+  "manifest_pairs": [
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/manifest.json",
+      "original_sha256": "62cec617460b882309a48ca76c69615ec20789502538149cc94e47a632144190",
+      "current_sha256": "a2a82be58698b6062e343a55e375c5bccd88ccd4d2ee596fc6ded400bc9db234",
+      "historical_copy": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/portability-20261019/historical-manifests/A01-editorial-candidate-20261019-r44.json",
+      "historical_copy_sha256": "62cec617460b882309a48ca76c69615ec20789502538149cc94e47a632144190"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/manifest.json",
+      "original_sha256": "6657c3e1a14d958728526c81ac4abd7642d6b4e94fcb331bc66a4ac0fb7bccea",
+      "current_sha256": "b1641880b551941dc0c253ff82c6954f3c37ab9514fed8a9be5e61523664d8e1",
+      "historical_copy": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/portability-20261019/historical-manifests/A01-r44-main-rebuild-20261019.json",
+      "historical_copy_sha256": "6657c3e1a14d958728526c81ac4abd7642d6b4e94fcb331bc66a4ac0fb7bccea"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/manifest.json",
+      "original_sha256": "4bba4d5b429b6de634c3982aa01027b1d0befd84664aef640d533af0302d05ac",
+      "current_sha256": "896615541683e620eb6e79468d8d304f146ad932700a7f044d5a1eb9784888f6",
+      "historical_copy": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/portability-20261019/historical-manifests/A01-editorial-candidate-20261019-r45.json",
+      "historical_copy_sha256": "4bba4d5b429b6de634c3982aa01027b1d0befd84664aef640d533af0302d05ac"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/manifest.json",
+      "original_sha256": "b5191f765a719bfac408b317c3d8edbd073884b1cf527a4e89a7c5443c3ceab3",
+      "current_sha256": "7ba60fd949319420444a3236eec1180f02543a4f8d406e89b089f34b722f5fdf",
+      "historical_copy": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/portability-20261019/historical-manifests/A01-worker-handoff-r45-20261019.json",
+      "historical_copy_sha256": "b5191f765a719bfac408b317c3d8edbd073884b1cf527a4e89a7c5443c3ceab3"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/manifest.json",
+      "original_sha256": "cda7fe38d1433fe8a3454ea0ec28ebb5d7391f4f82b0c1d3294247c8c2d7b424",
+      "current_sha256": "73cf375736d13a899e261000d1ad694f876e4f1101e2e9454210c1063dd9e4e4",
+      "historical_copy": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/portability-20261019/historical-manifests/A01-worker-handoff-r45-canonical-20261019.json",
+      "historical_copy_sha256": "cda7fe38d1433fe8a3454ea0ec28ebb5d7391f4f82b0c1d3294247c8c2d7b424"
+    }
+  ],
+  "new_evidence_files_excluding_this_self_referential_receipt": [
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/portability-20261019/historical-manifests/A01-editorial-candidate-20261019-r44.json",
+      "sha256": "62cec617460b882309a48ca76c69615ec20789502538149cc94e47a632144190"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/portability-20261019/historical-manifests/A01-editorial-candidate-20261019-r45.json",
+      "sha256": "4bba4d5b429b6de634c3982aa01027b1d0befd84664aef640d533af0302d05ac"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/portability-20261019/historical-manifests/A01-r44-main-rebuild-20261019.json",
+      "sha256": "6657c3e1a14d958728526c81ac4abd7642d6b4e94fcb331bc66a4ac0fb7bccea"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/portability-20261019/historical-manifests/A01-worker-handoff-r45-20261019.json",
+      "sha256": "b5191f765a719bfac408b317c3d8edbd073884b1cf527a4e89a7c5443c3ceab3"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/portability-20261019/historical-manifests/A01-worker-handoff-r45-canonical-20261019.json",
+      "sha256": "cda7fe38d1433fe8a3454ea0ec28ebb5d7391f4f82b0c1d3294247c8c2d7b424"
+    },
+    {
+      "path": "docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/portability-20261019/README.md",
+      "sha256": "01927ec4c837a634e900917068e9ec2ffcc5900837d3b266d6c39b2742651b17"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r44/build.mjs --check",
+      "exit_code": 1,
+      "limitation": "Historical r44 validation.json was already stale before portability: frozen 40 warnings vs current main 43; unchanged original validation retained."
+    },
+    {
+      "command": "node docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-r44-main-rebuild-20261019/build.mjs --check",
+      "exit_code": 0,
+      "result": {
+        "action": "--check",
+        "status": "ALTERNATE_PROPOSAL_HOLD_OFFLINE_MECHANICAL_ONLY",
+        "scenes": 51,
+        "lines": 52,
+        "claims": 55,
+        "first_question_end_seconds_275": 9.7,
+        "plath_start_seconds_275": 9.7,
+        "chapter_seconds_275": {
+          "hook": 46.1,
+          "origin": 74.1,
+          "idea": 47.5,
+          "engine": 90.6,
+          "turn": 94.8,
+          "now": 70.9
+        },
+        "body_seconds_250": 461.2,
+        "body_seconds_275": 424,
+        "body_seconds_300": 392.2,
+        "lint_errors": 0,
+        "cute_errors": 0,
+        "manifest_sha256": "b1641880b551941dc0c253ff82c6954f3c37ab9514fed8a9be5e61523664d8e1"
+      }
+    },
+    {
+      "command": "node docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-editorial-candidate-20261019-r45/build.mjs --check",
+      "exit_code": 0,
+      "result": {
+        "action": "--check",
+        "manifest_sha256": "896615541683e620eb6e79468d8d304f146ad932700a7f044d5a1eb9784888f6",
+        "scenes": 51,
+        "lines": 53,
+        "body_seconds_275": 424,
+        "lint_errors": 0,
+        "lint_warnings": 40,
+        "prior_three_main_warnings_resolved": true
+      }
+    },
+    {
+      "command": "node docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-20261019/build.mjs --check",
+      "exit_code": 0,
+      "result": {
+        "action": "--check",
+        "status": "HOLD_OFFLINE_WORKER_HANDOFF_ONLY",
+        "chapters": 6,
+        "scenes": 51,
+        "lines": 53,
+        "claims_pending": 55,
+        "metadata_differences": 12,
+        "structural_representation_differences": 2,
+        "lint_errors": 0,
+        "lint_warnings": 39,
+        "metadata_paths": [
+          "youtube.description",
+          "youtube.tags",
+          "thumbnail.data.headline",
+          "sources[0].title",
+          "sources[0].checked_on",
+          "sources[1].title",
+          "sources[1].checked_on",
+          "sources[2].title",
+          "sources[3].title",
+          "sources[3].checked_on",
+          "sources[4].title",
+          "sources[5].title"
+        ],
+        "structural_paths": [
+          "loops",
+          "scenes[50].claims"
+        ],
+        "manifest_sha256": "7ba60fd949319420444a3236eec1180f02543a4f8d406e89b089f34b722f5fdf"
+      }
+    },
+    {
+      "command": "node docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-worker-handoff-r45-canonical-20261019/build.mjs --check",
+      "exit_code": 0,
+      "result": {
+        "action": "--check",
+        "status": "HOLD_OFFLINE_CANONICAL_HANDOFF_PENDING_REVIEW",
+        "chapters": 6,
+        "scenes": 51,
+        "lines": 53,
+        "claims_pending": 55,
+        "metadata_differences": 12,
+        "canonical_claim_ids": 55,
+        "claims_plan_linked": 15,
+        "claims_passage_only": 40,
+        "structural_representation_differences": 2,
+        "lint_errors": 0,
+        "lint_warnings": 39,
+        "metadata_paths": [
+          "youtube.description",
+          "youtube.tags",
+          "thumbnail.data.headline",
+          "sources[0].title",
+          "sources[0].checked_on",
+          "sources[1].title",
+          "sources[1].checked_on",
+          "sources[2].title",
+          "sources[3].title",
+          "sources[3].checked_on",
+          "sources[4].title",
+          "sources[5].title"
+        ],
+        "structural_paths": [
+          "loops",
+          "scenes[50].claims"
+        ],
+        "manifest_sha256": "73cf375736d13a899e261000d1ad694f876e4f1101e2e9454210c1063dd9e4e4"
+      }
+    },
+    {
+      "command": "node --test tools/repo-hygiene.test.mjs",
+      "exit_code": 0,
+      "tests": 3,
+      "passed": 3,
+      "failed": 0,
+      "duration_ms": 79907.5212
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    {
+      "command": "Actual repo-hygiene findings() over every original package file and all newly added evidence files",
+      "files": 110,
+      "findings": 0
+    }
+  ],
+  "review_limit": "This is author evidence, not an independent equivalence verdict. The original r44 validation mismatch existed before this correction and is retained. No original review is silently rebound to a new manifest.",
+  "authorizes_host_install_or_paid_media": false
+}

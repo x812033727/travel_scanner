@@ -1,5 +1,7 @@
 # A01 r44 clean-main rebuild compatibility
 
+> Historical experiment record, before the 2026-10-19 portability correction. The original manifest and builder hashes below describe that experiment. The later correction redacts local paths and rebinds packaging hashes only; current identities and original manifest copies are documented in [the portability receipt](../portability-20261019/README.md). Original validation and content bytes remain unchanged.
+
 This directory is a validation-only sibling rebuilt from the frozen r44 input closure (`build.mjs`, `story-data.mjs`, `brief.md`, `README.md`, `reference/`). It is not an approved replacement candidate. No frozen r44 file was edited.
 
 - Clean main commit: `e42d93979781b250b53f93e36ff1c901679b39ce`.

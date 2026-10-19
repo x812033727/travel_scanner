@@ -9,9 +9,9 @@ import { compileFunction } from 'node:vm';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const frozen = path.join(path.dirname(here), 'A01-editorial-candidate-20261019-r45');
-const expectedFrozenManifest = '4bba4d5b429b6de634c3982aa01027b1d0befd84664aef640d533af0302d05ac';
+const expectedFrozenManifest = '896615541683e620eb6e79468d8d304f146ad932700a7f044d5a1eb9784888f6';
 const previous = path.join(path.dirname(here), 'A01-worker-handoff-r45-20261019');
-const expectedPreviousManifest = 'b5191f765a719bfac408b317c3d8edbd073884b1cf527a4e89a7c5443c3ceab3';
+const expectedPreviousManifest = '7ba60fd949319420444a3236eec1180f02543a4f8d406e89b089f34b722f5fdf';
 const expectedPreviousReview = 'a4b1144e48144b78b016c7353dd56f7f9b9298de24ee4386fba2022598d64c27';
 const action = process.argv[2] ?? '--preview';
 assert.ok(['--preview', '--write', '--check'].includes(action), 'use --preview, --write or --check');
@@ -241,7 +241,7 @@ const delta = {
 
 const readme = `# A01 r45 canonical offline six-chapter handoff\n\n` +
   `Status: **HOLD — authored correction awaiting independent review**. Frozen editorial r45 manifest: \`${expectedFrozenManifest}\`. ` +
-  `This successor preserves the original handoff (manifest \`${expectedPreviousManifest}\`) and its independent CHANGES REQUESTED report unchanged. The original handoff is superseded as an adoption input and retained only as evidence; this successor still awaits independent review. This directory is local, create-only derivation, not a host import, official worker run, approval, or paid-media authorization.\n\n` +
+  `This successor retains the original handoff content (current portable manifest \`${expectedPreviousManifest}\`) and its independent CHANGES REQUESTED report. The report still reviews the original raw manifest; that manifest is preserved verbatim in ../portability-20261019/historical-manifests/A01-worker-handoff-r45-20261019.json. Only packaging hash references changed; the original handoff chapters and composed content are byte-identical. The original handoff is superseded as an adoption input and retained only as evidence; this successor still awaits independent review. This directory is local, create-only derivation, not a host import, official worker run, approval, or paid-media authorization.\n\n` +
   `## What changed\n\n` +
   `1. \`semantic-fact-map.json\` explicitly decides the fact index for every editorial q-ID and explains why. ${linkedCount} rows reference a plan fact with matching factual content; ${nullCount} use \`fact: null\` and retain their original source for passage verification. Sharing a source never assigns a fact. Claims with substantive details beyond a plan summary conservatively stay null. The semantic decisions need independent review; the build only verifies coverage and structural consistency. All 55 verdicts remain \`PENDING\`.\n` +
   `2. The actual current worker's \`numberClaims\` source and \`STORY_CHAPTERS\` produce chapter-prefixed IDs. \`claim-id-map.json\` and \`claim-map.json\` trace every q001–q055 row to its canonical ID. The build calls that same helper again with empty and populated previous rows and proves it preserves every canonical ID. No numbering algorithm was separately reimplemented. This does not promise IDs survive a future writer rewrite or dropped/added claim.\n\n` +

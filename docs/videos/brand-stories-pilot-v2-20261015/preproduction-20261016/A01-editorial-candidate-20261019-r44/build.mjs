@@ -21,6 +21,15 @@ const baseline104 = {
   meaning: 'Historical 104-event baseline only; not a fresh host readback or approval.',
 };
 const baselineReadbackSha = '425107765c8a2371aad3a3ac6e31496a82e204bf5a8048782c025f9dc955124b';
+// Raw review/readback hashes above remain historical provenance. Only local paths
+// were redacted in the packaged copies; these hashes bind the portable file bytes.
+// See ../portability-20261019/receipt.json for the exact old-to-new mapping.
+const portableReferenceSha = {
+  "reference/r43/independent-blind-story-review.md": "9dd31303d9ab5073213e61d810058ab60cfc66a8a9b51d1169d1166847ac91d5",
+  "reference/r43/independent-source-review.md": "db36d89162f678d5fb6ecc18b956ee5bc141ac127a45daf32ede46b36b0dd4b7",
+  "reference/r43/independent-visual-fact-audit.md": "8f40d47b3771d6646134edcf348a34c10bda42d7d01d0c9bd26fd43c2a390c52",
+  "reference/snapshot104-host-readback.md": "712621b7fbc7e4f3c59bcc0026722915b942e76020673e9adad717ff41806acd"
+};
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const json = (value) => Buffer.from(JSON.stringify(value, null, 2) + '\n');
 const read = (dir, name) => fs.readFileSync(path.join(dir, name));
@@ -32,9 +41,9 @@ for (const name of ['candidate/video.json', 'candidate/series.json', 'candidate/
   assert.equal(sha(read(r43, name)), oldManifest.outputs_sha256[name], 'r43 packaged input drift ' + name);
 assert.equal(sha(read(r43, 'research-plan-25-series.json')),
   oldManifest.outputs_sha256['research-plan-25-series.json'], 'r43 packaged research plan drift');
-assert.equal(sha(read(r43, 'independent-blind-story-review.md')), r43StoryReviewSha, 'r43 blind review drift');
-assert.equal(sha(read(r43, 'independent-source-review.md')), r43SourceReviewSha, 'r43 source review drift');
-assert.equal(sha(read(r43, 'independent-visual-fact-audit.md')), r43VisualReviewSha, 'r43 visual review drift');
+assert.equal(sha(read(r43, 'independent-blind-story-review.md')), portableReferenceSha['reference/r43/independent-blind-story-review.md'], 'r43 blind review drift');
+assert.equal(sha(read(r43, 'independent-source-review.md')), portableReferenceSha['reference/r43/independent-source-review.md'], 'r43 source review drift');
+assert.equal(sha(read(r43, 'independent-visual-fact-audit.md')), portableReferenceSha['reference/r43/independent-visual-fact-audit.md'], 'r43 visual review drift');
 const oldStoryReview = read(r43, 'independent-blind-story-review.md').toString('utf8');
 const oldSourceReview = read(r43, 'independent-source-review.md').toString('utf8');
 const oldVisualReview = read(r43, 'independent-visual-fact-audit.md').toString('utf8');
@@ -42,7 +51,7 @@ assert.match(oldStoryReview, /PASS/);
 assert.match(oldSourceReview, /P1 0、P2 5/);
 assert.match(oldVisualReview, /50 條圖片提示詞/);
 const oldReadback = read(here, 'reference/snapshot104-host-readback.md');
-assert.equal(sha(oldReadback), baselineReadbackSha, 'historical snapshot104 readback drift');
+assert.equal(sha(oldReadback), portableReferenceSha['reference/snapshot104-host-readback.md'], 'historical snapshot104 readback drift');
 for (const digest of [baseline104.source_sha256, baseline104.index_manifest_sha256, baseline104.tip_index_sha256])
   assert.ok(oldReadback.toString('utf8').includes(digest), 'historical snapshot104 digest missing');
 

@@ -10,18 +10,26 @@ const r44 = path.join(here, '../A01-editorial-candidate-20261019-r44');
 const read = (name) => fs.readFileSync(path.join(r44, name));
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const json = (value) => Buffer.from(JSON.stringify(value, null, 2) + '\n');
-const sourceManifestSha = '62cec617460b882309a48ca76c69615ec20789502538149cc94e47a632144190';
+const sourceManifestSha = 'a2a82be58698b6062e343a55e375c5bccd88ccd4d2ee596fc6ded400bc9db234';
 assert.equal(sha(read('manifest.json')), sourceManifestSha);
 const original = JSON.parse(read('manifest.json'));
 for (const [name, hash] of Object.entries(original.outputs_sha256)) assert.equal(sha(read(name)), hash, name);
 const reviews = {
-  'independent-blind-story-review.md': '425c63d256a5578a7122355520be7589635dd8f261a2694837450158c69f7db1',
+  'independent-blind-story-review.md': '2c408d3b77e426578294374236c91d80c5ea59b6bbfc6e550d80c6834ff64343',
   'independent-source-review.md': 'cdb5687bc114717d6399e60d813ba888aa87c3dd6ad9e69ad680fb19cf16a147',
-  'independent-visual-fact-audit.md': 'e6baa54e3d2de9a9b0969ea24a8d79cdccf29fdeb2b2997baa5b2a5ecfdd0cb2',
+  'independent-visual-fact-audit.md': '167d8ce246d734b33424bb8901388fbed3be75cf462027fec7b33fe4d6396b16',
 };
 for (const [name, hash] of Object.entries(reviews)) assert.equal(sha(read(name)), hash, name);
+// The owner approved the original r44 identity. Preserve that receipt verbatim;
+// portable repackaging is equivalent only when every generated output is unchanged.
+const ownerApprovedManifestSha = '62cec617460b882309a48ca76c69615ec20789502538149cc94e47a632144190';
+const historicalManifestBytes = fs.readFileSync(path.join(here,
+  '../portability-20261019/historical-manifests/A01-editorial-candidate-20261019-r44.json'));
+assert.equal(sha(historicalManifestBytes), ownerApprovedManifestSha, 'historical approved manifest drift');
+const historicalManifest = JSON.parse(historicalManifestBytes);
+assert.deepEqual(original.outputs_sha256, historicalManifest.outputs_sha256, 'portable r44 content changed');
 const direction = JSON.parse(read('owner-direction-20261019.json'));
-assert.equal(direction.candidate_manifest_sha256, sourceManifestSha);
+assert.equal(direction.candidate_manifest_sha256, ownerApprovedManifestSha);
 assert.equal(direction.editorial_direction, 'APPROVED');
 assert.equal(direction.owner_reply, '採用 r44 Rollaboard 單線故事（建議）');
 
@@ -99,6 +107,7 @@ const dependencies = ['tools/video/core/screenplay.mjs', 'tools/video/core/timel
 const manifest = {
   schema_version: 1, status: validation.status, slug: video.slug,
   source_manifest_sha256: sourceManifestSha, source_review_hashes: reviews,
+  owner_approved_manifest_sha256: ownerApprovedManifestSha,
   owner_direction_sha256: sha(read('owner-direction-20261019.json')),
   build_sha256: sha(fs.readFileSync(fileURLToPath(import.meta.url))),
   readme_sha256: sha(fs.readFileSync(path.join(here, 'README.md'))),
