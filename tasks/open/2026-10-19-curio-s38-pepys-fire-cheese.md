@@ -4,11 +4,11 @@ title: Curio S38 Pepys fire and cheese historical episode
 status: in-progress
 priority: P2
 area: docs
-owner: codex-gpt6-next-episode
-claimed_at: 2026-10-19T22:34:44Z
+owner: codex-gpt6-root
+claimed_at: 2026-10-19T23:55:04Z
 created_at: 2026-10-19T22:34:43Z
 completed_at:
-branch: codex/curio-s34-endurance-20261019
+branch:
 depends_on: []
 scope:
   - docs/videos/curio-s38
@@ -32,7 +32,7 @@ scope:
 - [x] 首輪獨立 [盲讀與史料／畫面覆核](../../docs/videos/curio-s38/verify-1.md) 已留原始答案和 10/13 失敗證據；R2 已集中修正其敘事斷點、無依據的掃水方向與六處畫面問題。
 - [x] R2 獨立敘事盲讀 13/13，但來源查核抓到 9 月 2 日午餐前後的事件倒置；這份 R2 劇本不得用於媒體製作。
 - [x] R3 獨立敘事盲讀 13/13；史料／畫面查核發現搬走與清點混用、未記錄的寫作時刻、9 月 4 日花園討論的下午時序，以及塔樓、筆記、書面報告畫面問題。R4 已按固定日記集中修正；R3 不能作媒體製作依據。
-- [ ] 交給另一位未參與撰稿的讀者在看研究／既有覆核前，對 R4 已鎖定 SHA 的旁白獨立回答 13 題；另查固定日記原句及每個畫面提示詞。保存新原始答案與覆核紀錄，並以實際語音量測正文是否至少 8 分鐘。
+- [x] 未參與撰稿的新讀者先只看 exact R4 劇本，獨立敘事 13/13、理解 13/13，再重開固定日記並核對 112/112 旁白及 111 提示詞；證據見 verify-4.md。正式 `narrative --answers` 已按讀者行號證據記錄通過。實際語音量測在 TTS 完成後另記。
 - [ ] 劇本過門檻後按 `curio-episode` 的整集報價及審核程序製作語音、插圖、分鏡、音樂、字幕、正片，完成輸出與包裝 QA。
 
 ## How to verify
@@ -49,4 +49,4 @@ npm run check:tasks
 
 ## Notes
 
-固定日記：GITenberg `68fcf49f70ee793b989a6fd0464264d55beb4451`；`4200.txt` SHA-256 `3cd43a3c39ee72eb9c4a3657f1fcb1723afba291cedac176c65a39289483be5d`。本工單僅認領 `docs/videos/curio-s38/**`，不碰已有歸屬的 S01／S09／S18。R1 盲讀 10/13 未過；R2 敘事 13/13 卻有來源時序錯誤；R3 敘事 13/13 卻有來源／畫面問題；R4 待新讀者覆核。未簽核稿件、未花費任何媒體權杖。另有 [題目可行性筆記](../../docs/videos/history-curiosity/source-feasible-expansion-20261019.md)：S27／S21 因同期互補資料在本雲端未能重開，暫停進入製作。
+固定日記：GITenberg `68fcf49f70ee793b989a6fd0464264d55beb4451`；`4200.txt` SHA-256 `3cd43a3c39ee72eb9c4a3657f1fcb1723afba291cedac176c65a39289483be5d`。本工單僅認領 `docs/videos/curio-s38/**`，不碰已有歸屬的 S01／S09／S18。R1 盲讀 10/13 未過；R2 敘事 13/13 卻有來源時序錯誤；R3 敘事 13/13 卻有來源／畫面問題；R4 由新讀者對同一 SHA 先盲讀 13/13，再核固定日記、112 行與 111 圖提示詞通過，詳 verify-4.md。2026-10-19 23:46 UTC：`brief.md` 補具 A／B 兩方案，Jev 選 A 0.94，主代理依站主「採推薦方案持續做完」授權本機核准；R4 精確劇本 SHA `62af2f7d762b082a1e6910df28a721fac6c14cb4d081f06516f48b5511cd1411` 送審後本機透明核准，沒有聲稱站主親讀。112 句 TTS 正在進行；付費插圖仍需語音核查及整集成本上限。另有 [題目可行性筆記](../../docs/videos/history-curiosity/source-feasible-expansion-20261019.md)：S27／S21 因同期互補資料在本雲端未能重開，暫停進入製作。
