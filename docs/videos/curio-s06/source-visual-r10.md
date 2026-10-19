@@ -1,0 +1,11 @@
+# S06 R10 qualified review — no formal blind clearance
+
+Script SHA-256: `41e8a494ffab5ff8cf96467aa606c1ed2763b34a844c435c903fcefafa8c08c1`; video SHA-256: `2b9957ce4eb276c83107c3ab38de792611fd810572ff762169f5b1161f0514c2`. I read the exact script first, but a broad search then printed excerpts from prior S06 reviews before I sealed my narrative answers. The attached 13/13 judgment is **not strict blind evidence**. I did not call the canonical narrative gate or edit source files.
+
+I downloaded pinned G, G219, H, C, N, and the independent G transcription directly from their raw GitHub URLs. Their SHA-256 hashes match `research.md`: G `b31f9336b9608f5120015d803121aca8dccdd6e314448ac73de6e39cdb31aac9`; G2 `b49db211cd035bc46fd6f910435d4b1f15b05217f4c6c30407d265b85f1af2e6`; H `ff96f9703fbcc2cdbc900519b53894e89cf921781cf5b6dc40bff2ab983b8420`; C `dec2ae1713a56e2a33d367d691904004db60740f9490023b52695bfd3740bbc8`; N `ebd2c380505d3933b354ccf0f56ac5b2d3762c4c0866a983b038a2e9abdbd145`.
+
+All 81 `claims.md` ID/text rows exactly match `video.json` scene narration, with no duplicate IDs. All 80 shot prompts were inspected against their narration, source period and visual boundary. The central source claim is sound: G says left arm, unnamed doctor, undated prior wound; G219 dates the Fan campaign to 219; H places Hua Tuo's death before Cangshu's illness; C dates Cao Chong's death to 208. The script rules out Hua Tuo in the **novel's Fan tent**, while leaving the earlier historical doctor unidentified. R9's required repairs are present at `gs001`, `gs111–gs112`, and `gs119`; its recommended repairs are present at `gs117`, `gs019`, and `gs118`. No blocking claim or visual error found.
+
+Optional cleanup: `claims.md` row `gs065` cites only H although the left-arm qualifier comes from G; row `gs067` cites only N although the evidentiary gap also depends on G/H. Prompt `gs065` says “case notes,” which may suggest an extant medical casebook; an unlettered biography would be more precise. These are documentation/illustration refinements, not historical contradictions under the Curio illustration rule.
+
+Recommendation: source and prompt review may clear for this hash; obtain an untouched reader's strict narrative receipt and measured current narration before authorizing paid images. No paid media was started here.

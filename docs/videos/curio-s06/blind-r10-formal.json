@@ -1,0 +1,36 @@
+{
+  "script": "docs/videos/curio-s06/script.md",
+  "sha256": "41e8a494ffab5ff8cf96467aa606c1ed2763b34a844c435c903fcefafa8c08c1",
+  "scope": "Read only the script, then the non-S06 narrative criteria in .agents/skills/youtube-video/references/script-writing.md and tools/video/core/narrative.mjs. No other S06 material was read before this seal.",
+  "answers": [
+    {"id": "scene_first", "yes": true, "evidence": "[gs001] 《三國演義》裡，關羽正和馬良在樊城軍帳下棋，一位帶著藥囊的醫生到了。"},
+    {"id": "no_spoiler", "yes": true, "evidence": "[gs004] 可若把樊城那一年寫上，這位醫生真的趕得上嗎？"},
+    {"id": "one_line", "yes": true, "evidence": "[gs033] 同樣寫刮骨，兩部文本卻挑了不同的就診起點；後來小說的細節，不能直接回填傳記。"},
+    {"id": "no_toc", "yes": true, "evidence": "[gs020] 剛才小說讓醫生一路走到辭行；陳壽筆下，這次治傷先發生了什麼？"},
+    {"id": "chapters_link", "yes": true, "evidence": "[gs022] 陳壽〈關羽傳〉先寫一支「流矢」射中關羽，沒有那位醫生的進帳場面。"},
+    {"id": "open_loops", "yes": true, "evidence": "[gs048] 那一年關羽率兵圍攻曹仁守的樊城；這個明確年份，也能鎖住前一段治傷嗎？"},
+    {"id": "payoffs", "yes": true, "evidence": "[gs059] 按這條年表，小說軍帳裡的華佗，來不及趕到樊城。"},
+    {"id": "no_recap", "yes": true, "evidence": "[gs119] 剛才小說讓小校捧盆；〈關羽傳〉也記血盛於盤器，接著視線轉向關羽身旁的人。"},
+    {"id": "chapters_are_events", "yes": true, "evidence": "[gs045] 〈華佗傳〉沒有給他精確卒日，卻把他的死與另一個人的病前後連起來。"},
+    {"id": "outro_no_next", "yes": true, "evidence": "[gs076] 想讓熟悉的歷史場景回到原文，訂閱奇聞檔案局。"},
+    {"id": "opening_hooks", "yes": true, "evidence": "[gs003] 軍帳裡受傷的那隻手，和陳壽記下的是同一隻嗎？"},
+    {"id": "one_thread", "yes": true, "evidence": "[gs066] 那要給史書這位醫生補上姓名，還缺什麼證據？"},
+    {"id": "no_detour", "yes": true, "evidence": "[gs056] 〈華佗傳〉先說「佗死後」，再說曹沖病困；華佗的死因而排在孩子去世之前。"}
+  ],
+  "comprehension": [
+    {"question": "開場的小說軍帳裡，關羽正和誰做什麼？", "answer": "關羽在樊城軍帳和馬良下棋；一位帶藥囊的醫生到來。"},
+    {"question": "小說中的醫生向關平報了什麼姓名？", "answer": "姓華、名佗、字元化；小說明示是華佗。"},
+    {"question": "小說寫關羽哪隻手臂中了箭？", "answer": "右臂。"},
+    {"question": "小說中的華佗如何描述箭毒及治法？", "answer": "他稱弩箭帶烏頭藥且毒入骨，建議固定手臂、蒙頭、切開刮骨、敷藥縫合。"},
+    {"question": "關羽如何面對小說中的治療，治後醫生如何交代？", "answer": "關羽免去束縛，邊飲食下棋邊受治；醫生提醒保護傷口，過百日才可復原。"},
+    {"question": "關羽贈金時，小說中的華佗如何做？", "answer": "拒收百兩金，留下一帖藥後離開。"},
+    {"question": "陳壽〈關羽傳〉寫的是哪隻手臂和怎樣的傷？", "answer": "左臂曾中流矢，傷雖癒，陰雨時骨仍痛。"},
+    {"question": "〈關羽傳〉有寫出替關羽刮骨的醫生姓名嗎？", "answer": "沒有；只記醫生說話和施治。"},
+    {"question": "史書治傷時關羽身旁有誰，是否寫到棋局？", "answer": "關羽請諸將吃飯，照常飲食談笑；有盤器盛血，沒有馬良棋盤。"},
+    {"question": "建安二十四年／公元219年明確標記的是什麼，能否直接標記手術？", "answer": "標記關羽圍攻樊城的戰事；前一段刮骨沒有年月，不能借這年給手術。"},
+    {"question": "華佗之死與曹沖之死如何建立先後？", "answer": "〈華佗傳〉先寫華佗死後、再寫倉舒病困；〈曹沖傳〉說倉舒即曹沖，病逝建安十三年／公元208年，因此華佗死於曹沖之前。"},
+    {"question": "這條年表對小說樊城軍帳中的華佗有什麼結論？", "answer": "樊城之戰在公元219年，比曹沖病逝晚十一年；既然華佗死於曹沖之前，小說中的華佗趕不上樊城。"},
+    {"question": "年表能否排除華佗曾替關羽治更早的左臂傷？還缺什麼？", "answer": "不能；史書手術未定年，仍缺能把華佗明確連到這次左臂治療的可靠記載。"}
+  ],
+  "notes": "Opening hooks are gs003 (arm), gs004 (chronology), and gs005 (historical doctor's name); each is answered later. The final gs074 question asks the viewer about their own first mental image, so it is an audience prompt rather than a pending factual payoff. All 12 required checks are yes; the optional chapter-title check is yes."
+}
