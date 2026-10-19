@@ -35,7 +35,7 @@
 | `et029` | 艾菲爾先對加尼耶的署名感到驚訝。 | [R123–127](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L123) |
 | `et030` | 他說加尼耶也在塔的委員會，自己無法理解。 | [R123–127](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L123) |
 | `et031` | 艾菲爾說，若早一年反對，還能參與討論。 | [R129–132](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L129) |
-| `et032` | 如今契約已簽，地基已下，鐵料也訂好了。 | [R132–143](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L132) |
+| `et032` | 如今契約已簽，鐵料也訂好了。 | [R132–143](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L132) |
 | `et033` | 照他的說法，叫停眼前工程的時機已過。 | [R140–145](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L140) |
 | `et034` | 他甚至擔心，抗議會嚇走世博的參觀者。 | [R147–150](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L147) |
 | `et035` | 他相信高塔本身能吸引遊客；那只是他的預想。 | [R147–150](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L147) |
@@ -79,7 +79,7 @@
 | `et073` | 這段採訪沒有提到無線電。 | [R236–241](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L236) |
 | `et074` | 他還說，精確計算與鐵工技術，本身就值得展示。 | [R241–247](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L241) |
 | `et075` | 多年後，鐵塔會留下哪一筆真正的使用紀錄？ | [R52–55](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L52), [R236–241](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L236), [I1676–1693](https://github.com/orkeilius/gutenberg_fr_mirror/blob/35610f7d0cc21e2c5877c58628edb25c796f3bd1/files/3/8/8/4/38842/38842.txt#L1676) |
-| `et076` | 二十多年後，費里耶向科學院提出一份報告。 | [R17](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L17), [I1676–1678](https://github.com/orkeilius/gutenberg_fr_mirror/blob/35610f7d0cc21e2c5877c58628edb25c796f3bd1/files/3/8/8/4/38842/38842.txt#L1676) |
+| `et076` | 二十多年後，費里耶的一份報告被呈交科學院。 | [R17](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L17), [I1676–1678](https://github.com/orkeilius/gutenberg_fr_mirror/blob/35610f7d0cc21e2c5877c58628edb25c796f3bd1/files/3/8/8/4/38842/38842.txt#L1676) |
 | `et077` | 一九一三年，《畫報》把那份報告寫成短訊。 | [I31](https://github.com/orkeilius/gutenberg_fr_mirror/blob/35610f7d0cc21e2c5877c58628edb25c796f3bd1/files/3/8/8/4/38842/38842.txt#L31), [I1672–1678](https://github.com/orkeilius/gutenberg_fr_mirror/blob/35610f7d0cc21e2c5877c58628edb25c796f3bd1/files/3/8/8/4/38842/38842.txt#L1672) |
 | `et078` | 短訊裡，主角是鐵塔上的無線電台。 | [I1674–1678](https://github.com/orkeilius/gutenberg_fr_mirror/blob/35610f7d0cc21e2c5877c58628edb25c796f3bd1/files/3/8/8/4/38842/38842.txt#L1674) |
 | `et079` | 它究竟做成了什麼？ | [I1676–1678](https://github.com/orkeilius/gutenberg_fr_mirror/blob/35610f7d0cc21e2c5877c58628edb25c796f3bd1/files/3/8/8/4/38842/38842.txt#L1676) |

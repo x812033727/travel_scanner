@@ -1,6 +1,6 @@
 # S19 企劃｜抗議信說「二十年」，鐵塔到期就得拆嗎？
 
-**狀態：無付費前期劇本第二版，等待全新讀者盲評與來源抽查。** 第一版精確 `script.md` SHA-256 `319a09ace6f2face0fc40ebeda8c93cfe7b60deef241a747fd6b0ab3bbb1a339` 的獨立盲讀未過；原始逐題答案與判定保存在 [narrative-round1.json](narrative-round1.json)，修訂原因與來源稽核在 [verify-1.md](verify-1.md)。
+**狀態：無付費前期劇本第三版，等待全新讀者盲評與來源抽查。** 第一版與第二版盲讀原判定分別保存在 [narrative-round1.json](narrative-round1.json)、[narrative-round2.json](narrative-round2.json)；第三版只修正第二輪指出的一處重述、兩處畫面暗示及一處來源歸屬。稽核記於 [verify-2.md](verify-2.md)。
 
 ## 問題
 
@@ -25,7 +25,7 @@
 | 艾菲爾為鐵塔辯護 | 他說塔還沒建成，只看幾何圖無法斷定美醜，又提出氣象、天文和戰時聯絡等**未來用途**。後來有哪一項用途留下可查紀錄？ |
 | 1913 年無線電短訊 | 報導鐵塔電台與華盛頓電台多次通信，也把經度差測量列為下一步；沒有記市府決議。影片停在來源真正能回答的位置。 |
 
-`video.json` 有 100 句、90 張卡通插圖鏡頭和片尾，工具估算正文 8.15 分鐘。已通過 `node tools/video/cli.mjs lint --slug curio-s19 --json` 的 0 errors／0 warnings；新稿的精確 hash 與盲評結果須在凍結後另記。全片一個主問題，章名為事件，章首接上章留下的動作或疑問；配樂採系列固定設定。
+`video.json` 有 100 句、90 張卡通插圖鏡頭和片尾，工具估算正文 8.14 分鐘。已通過 `node tools/video/cli.mjs lint --slug curio-s19 --json` 的 0 errors／0 warnings；第三版 `script.md` 精確 SHA-256 為 `c9200f5a1029359d57a7ec6cc292593476296b777a112daaa2e614ae13215fa5`，待全新盲讀。全片一個主問題，章名為事件，章首接上章留下的動作或疑問；配樂採系列固定設定。
 
 ## 畫面與查核邊界
 
