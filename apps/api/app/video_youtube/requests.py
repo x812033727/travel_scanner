@@ -16,12 +16,17 @@ import re
 from datetime import UTC, datetime
 from typing import Any, cast
 
-from app.video_reviews.schemas import DUB_LOCALES
+from app.video_reviews.schemas import IMPORTED_LOCALES, WORKER_LOCALES
 
 # The narration language of a package that names none: every video made before the dubs.
 DEFAULT_LANGUAGE = "zh-TW"
-# What a package may be narrated in: the languages the site makes videos in.
-NARRATION_LANGUAGES: tuple[str, ...] = (DEFAULT_LANGUAGE, *DUB_LOCALES)
+# What a package may be narrated in: the languages the site makes videos in. The five an
+# imported video may add (schemas.IMPORTED_LOCALES) are never a narration.
+NARRATION_LANGUAGES: tuple[str, ...] = (DEFAULT_LANGUAGE, *WORKER_LOCALES)
+# The tag YouTube gets for a site language whose short code would name another variety: the
+# owner's Spanish is Latin American and the Portuguese Brazilian (2026-10-18). Every other
+# language goes as the site writes it.
+YOUTUBE_LANGUAGES = {"es": "es-419", "pt": "pt-BR"}
 # snippet.title: 100 characters; snippet.description: 5000 bytes; neither may hold < or >.
 TITLE_MAX_CHARS = 100
 DESCRIPTION_MAX_BYTES = 5000
@@ -55,6 +60,14 @@ CAPTION_TAGS = {
     "en": "｜CC Subtitles",
     "ja": "｜字幕付き",
     "ko": "｜CC 자막",
+    # An imported video's other languages (2026-10-18): the word viewers search for subtitled
+    # videos in each, as the series' translated titles already end. The worker's table
+    # (tools/video/core/metadata.mjs) has only the four languages it makes.
+    "es": "｜CC",
+    "pt": "｜Legendado",
+    "id": "｜Sub Indo",
+    "vi": "｜Vietsub",
+    "th": "｜ซับไทย",
 }
 # The tag of a title the full one would push past TITLE_MAX_CHARS (the owner's choice of
 # 2026-10-12): most of those are English titles already near the limit.
@@ -62,7 +75,18 @@ SHORT_CAPTION_TAG = "｜CC"
 # Any captions tag a title may already end with, whatever its language, bar and spacing: a title
 # tagged by hand ("｜ CC字幕" on an English title) or in another language gets its own instead.
 _TAG_TAIL = re.compile(
-    r"\s*[|｜]\s*(?:CC\s*字幕|CC\s*Subtitles|字幕付き|CC\s*자막|CC)\s*$", re.IGNORECASE
+    r"\s*[|｜]\s*(?:CC\s*字幕|CC\s*Subtitles|字幕付き|CC\s*자막|Legendado|Sub\s*Indo|Vietsub"
+    r"|ซับไทย|CC)\s*$",
+    re.IGNORECASE,
+)
+# A title of an imported video's other languages whose last segment already says it is subtitled
+# together with something else ("Dub + Sub Indo", "Dublado + Legendado", the 1–5 compilation's):
+# it keeps its words, since replacing the segment would drop the dub. en, ja and ko titles are
+# tagged as they were before those languages came.
+_COMBINED_TAIL = re.compile(
+    r"[|｜][^|｜]*\+\s*(?:CC(?:\s*(?:字幕|Subtitles|자막))?|字幕付き|Legendado|Sub\s*Indo|Vietsub"
+    r"|ซับไทย)\s*$",
+    re.IGNORECASE,
 )
 
 
@@ -76,9 +100,17 @@ def captioned(title: str, language: str) -> str:
 
     A tag already there, in any language or spacing, is replaced by this language's. When the
     full tag would take the title past TITLE_MAX_CHARS the short one is used; when even that does
-    not fit, the full tag stays so the length check says by how much the title is over.
+    not fit, the full tag stays so the length check says by how much the title is over. An
+    imported language's title that already ends with a combined segment ("Dub + Sub Indo") is
+    left as it is.
     """
     bare = title.rstrip()
+    if (
+        language in IMPORTED_LOCALES
+        and _COMBINED_TAIL.search(bare)
+        and len(bare) <= TITLE_MAX_CHARS
+    ):
+        return bare
     while True:
         stripped = _TAG_TAIL.sub("", bare)
         if stripped == bare:
@@ -158,7 +190,7 @@ def localizations(metadata: dict[str, Any]) -> dict[str, dict[str, str]]:
             continue
         title, description = values.get("title"), values.get("description")
         if isinstance(title, str) and title.strip() and isinstance(description, str):
-            result[str(locale)] = {
+            result[youtube_language(str(locale))] = {
                 "title": captioned(title, str(locale)),
                 "description": description,
             }
@@ -258,6 +290,11 @@ def unschedule_body(current: dict[str, Any]) -> dict[str, Any]:
         "status": status,
         "localizations": copy.deepcopy(as_dict(current.get("localizations"))),
     }
+
+
+def youtube_language(locale: str) -> str:
+    """The tag YouTube gets for a site language (es → es-419, pt → pt-BR), the rest as it is."""
+    return YOUTUBE_LANGUAGES.get(locale, locale)
 
 
 def language_key(value: str) -> str:

@@ -84,8 +84,11 @@ from app.video_reviews.producer_state import worker_view
 from app.video_reviews.schemas import (
     BROWSE_STATES,
     DUB_LOCALES,
+    IMPORTED_CHECKLIST_KEY,
+    IMPORTED_LOCALES,
     LOCALE_PARTS,
     VIDEO_CATEGORY_CODES,
+    WORKER_LOCALES,
     YOUTUBE_VIDEO_ID_PATTERN,
     CategoryIn,
     DecisionIn,
@@ -396,6 +399,22 @@ def locale_choices(project: VideoProject) -> dict[str, LocaleChoice]:
     return {str(locale): choice for locale, choice in chosen.items()}
 
 
+def imported(project: VideoProject) -> bool:
+    """Whether ``tools/video/cli.mjs import`` put this video on the site: its report's checklist
+    carries the ``imported`` key (tools/video/import/import.mjs IMPORTED)."""
+    return any(
+        isinstance(item, dict) and item.get("key") == IMPORTED_CHECKLIST_KEY
+        for item in project.checklist or []
+    )
+
+
+def locale_options(project: VideoProject) -> list[DubLocale]:
+    """The languages the panel offers this video: en, ja and ko, which the worker makes, and for
+    an imported video also the five whose files are made outside the pipeline (IMPORTED_LOCALES,
+    docs/videos/LANGUAGES.md)."""
+    return list(DUB_LOCALES) if imported(project) else list(WORKER_LOCALES)
+
+
 def _part_state(value: Any) -> tuple[str | None, str | None]:
     """A part as a languages review reports it: "ready" or {"status": "skipped", "reason"}."""
     if isinstance(value, str):
@@ -653,6 +672,7 @@ def _summary(
         "media_usd": spend.usd if spend else 0.0,
         "clip_seconds": spend.clip_seconds if spend else 0,
         "locales": choices,
+        "locale_options": locale_options(project),
         "locales_decided_at": project.locales_decided_at,
         "languages": states,
         "worker_state": None if is_short else producer,
@@ -2056,6 +2076,15 @@ async def _apply_locales(
     choice early; the worker still needs the exact approved cut's switchable-CC QA before
     starting any language production.
     """
+    if not imported(project):
+        outside = [locale for locale in payload.locales if locale in IMPORTED_LOCALES]
+        if outside:
+            raise AppError(
+                422,
+                "video_locales_imported_only",
+                f"{'、'.join(outside)} 只開給匯入的影片（tools/video/cli.mjs import）；"
+                "自動產線只做英文、日文、韓文",
+            )
     if (project.format or "slides") == "drama" and any(
         choice.dub for choice in payload.locales.values()
     ):
@@ -2407,7 +2436,8 @@ async def set_locales(
     """The owner decides a video's languages on the language panel (docs/videos/LANGUAGES.md).
 
     Every video is made in Traditional Chinese; here the owner says which of en, ja and ko to
-    add and what of each. An empty choice is a decision too ("only Traditional
+    add and what of each, and for an imported video also es, pt, id, vi and th
+    (``locale_options``). An empty choice is a decision too ("only Traditional
     Chinese"), and the first save of either kind is what lets the video go up. The worker makes
     only what was chosen, once the final cut is approved; a narrator-only explainer may use a
     drama dub. A brand story may save dub intent earlier, but production waits for its current

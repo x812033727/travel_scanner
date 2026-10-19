@@ -468,6 +468,7 @@ describe("AdminVideoReviews", () => {
     expect(box("英文 CC 字幕").checked).toBe(true);
     expect(box("英文 配音").checked).toBe(false);
     expect(box("韓文 配音").disabled).toBe(false);
+    expect(panel.querySelectorAll("tbody tr"), "a video the pipeline makes offers the worker's three languages").toHaveLength(3);
     // Where the saved parts stand, next to their boxes; the unsaved dub has no state yet.
     const cells = [...panel.querySelectorAll("tbody tr")][0].textContent;
     expect(cells).toContain("已完成");
@@ -499,6 +500,47 @@ describe("AdminVideoReviews", () => {
     expect(puts[1].body).toEqual({ locales: {} });
     await waitFor(() => expect(box("日文 CC 字幕").checked).toBe(false));
     expect(within(panel).getByRole("button", { name: "只出繁體中文" })).toHaveProperty("disabled", true);
+  });
+
+  it("offers an imported video eight languages, the five after en, ja and ko, and saves them in the page's order", async () => {
+    const puts: Array<{ url: string; body: unknown }> = [];
+    let locales: Record<string, unknown> = { th: { metadata: false, captions: true, dub: true } };
+    const imported = { ...summary, checklist: [{ key: "imported", label: "匯入的成片", done: true }], locale_options: ["en", "ja", "ko", "es", "pt", "id", "vi", "th"] };
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body)) as { locales: Record<string, unknown> };
+        puts.push({ url, body });
+        locales = body.locales;
+        return Promise.resolve(Response.json({ ...imported, locales, reviews: [] }));
+      }
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([imported]));
+      return Promise.resolve(Response.json({
+        ...imported, ready_to_upload: false, locales, locales_decided_at: "2026-10-19T04:30:00Z",
+        languages: { th: { captions: { state: "ready" }, dub: { state: "ready" } } }, reviews: [{ ...final, status: "approved", decided_at: "2026-10-19T04:00:00Z" }],
+      }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const panel = await screen.findByRole("region", { name: "這支影片的語言" });
+    const box = (name: string) => within(panel).getByRole("checkbox", { name }) as HTMLInputElement;
+    expect([...panel.querySelectorAll("tbody tr th")].map((cell) => cell.textContent)).toEqual([
+      "英文", "日文", "韓文", "西班牙文（拉丁美洲）", "葡萄牙文（巴西）", "印尼文", "越南文", "泰文",
+    ]);
+    expect(box("泰文 配音").checked).toBe(true);
+    expect([...panel.querySelectorAll("tbody tr")][7].textContent).toContain("已完成");
+    fireEvent.click(box("西班牙文（拉丁美洲） 配音"));
+    fireEvent.click(box("越南文 標題與說明"));
+    fireEvent.click(box("英文 CC 字幕"));
+    fireEvent.click(within(panel).getByRole("button", { name: "儲存" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    expect(Object.keys((puts[0].body as { locales: Record<string, unknown> }).locales)).toEqual(["en", "es", "vi", "th"]);
+    expect(puts[0].body).toEqual({ locales: {
+      en: { metadata: false, captions: true, dub: false },
+      es: { metadata: false, captions: true, dub: true },
+      vi: { metadata: true, captions: false, dub: false },
+      th: { metadata: false, captions: true, dub: true },
+    } });
   });
 
   it("does not infer a story's final approval from early locale choices or an older cut", () => {
