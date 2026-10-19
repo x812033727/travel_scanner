@@ -170,6 +170,11 @@ US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限�
 4. 網站回 HTTP 502 或背景到時被殺：直接重跑同一個指令，已經過的不會再收費；`ledgerTotals(workdir)`
    （`tools/video/media/ledger.mjs`）看這集花了多少。S01、S09、S18 每集 US$1.7–1.9，三集合計 US$5.32。
 5. 畫完 `review-push --slug <SLUG> --gate storyboard` 把分鏡卡推給站主看。
+6. 同一集的 `tts`、`check-audio` 與 `keyframes` 會互相鎖住（「the project is held by keyframes」，結束碼 3，什麼都沒送）：
+   同一集一次只跑一個；不同集可以同時跑。排隊等前一個指令時，等待時間也算在背景的 2 小時裡，等太久會被殺，
+   重跑即可（過的圖吃快取）。
+7. 評審回「AI 拒絕回應（PROHIBITED_CONTENT）」時整個指令停下：是下一景的提示詞或畫面踩到安全規則
+   （S34 是「偷渡的少年坐在淺水裡」）。改成成年人、穿著衣服、在乾地上，再重跑。
 
 **配樂與成片**
 
