@@ -29,8 +29,8 @@
   "loops": [
     {
       "setup": "eg005",
-      "payoff": "eg037",
-      "what": "魏略反向北行的目的地"
+      "payoff": "eg072",
+      "what": "裴為何覺得兩種初遇可怪"
     },
     {
       "setup": "eg006",
@@ -49,13 +49,13 @@
     },
     {
       "setup": "eg043",
-      "payoff": "eg045",
+      "payoff": "eg046",
       "what": "魏略異說如何打開談話"
     },
     {
-      "setup": "eg063",
+      "setup": "eg143",
       "payoff": "eg134",
-      "what": "草廬與樊城能否排成兩場有據的先後會面"
+      "what": "草廬與樊城兩場初遇能否排出有據的先後"
     },
     {
       "setup": "eg078",
@@ -63,14 +63,14 @@
       "what": "魏略與九州春秋是否有獨立傳話線"
     },
     {
-      "setup": "eg087",
-      "payoff": "eg088",
-      "what": "奏章未記的細節能否直接判為不存在"
-    },
-    {
       "setup": "eg115",
       "payoff": "eg057",
       "what": "《魏略》的陌生來客為何最後被待為上客"
+    },
+    {
+      "setup": "eg058",
+      "payoff": "eg061",
+      "what": "裴用哪篇文字判定初遇方向"
     }
   ],
   "youtube": {
@@ -194,7 +194,7 @@
       "lines": [
         {
           "id": "eg005",
-          "text": "《三國志》同卷的註裡，竟寫諸葛亮自己北行；他去了哪裡？"
+          "text": "裴松之抄下一段相遇故事，末尾卻寫「可怪」；哪一句讓他驚訝？"
         }
       ]
     },
@@ -330,8 +330,23 @@
       "lines": [
         {
           "id": "eg013",
-          "text": "但徐庶說：這個人得上門拜訪，不能叫他屈就。",
+          "text": "徐庶卻說：「此人可就見，不可屈致也。」",
           "emotion": "口語向前，轉折前留一拍"
+        }
+      ]
+    },
+    {
+      "id": "visit-013a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a Xinye meeting hall, one older commander looking toward an open road after hearing advice, soft morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg135",
+          "text": "意思是劉備可以去見他，卻不能把他召來；出門的人得是劉備。"
         }
       ]
     },
@@ -362,8 +377,23 @@
       "lines": [
         {
           "id": "eg015",
-          "text": "陳壽接著寫：劉備於是前往諸葛亮那裡。",
+          "text": "陳壽接著寫：「由是先主遂詣亮」。",
           "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "visit-015a",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a country path near Xinye, one older commander walking toward a modest cottage, overcast daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg136",
+          "text": "「先主」是劉備，「詣亮」是去諸葛亮那裡；行動者寫得很清楚。"
         }
       ]
     },
@@ -508,10 +538,25 @@
       "lines": [
         {
           "id": "eg035",
-          "text": "裴松之在同卷的註裡引《魏略》：這場初遇，是諸葛亮先去見劉備。"
+          "text": "裴注引《魏略》：這場初遇，是諸葛亮先去見劉備。"
         }
       ],
       "chapter": "裴註引魏略寫另一個訪客"
+    },
+    {
+      "id": "visit-035a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an archive doorway, one older annotator holding a second bound chronicle apart from an earlier volume, warm lamplight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg137",
+          "text": "這不是陳壽正文忽然改口，而是裴松之保留的另一部書的引文。"
+        }
+      ]
     },
     {
       "id": "visit-036",
@@ -524,7 +569,7 @@
       "lines": [
         {
           "id": "eg036",
-          "text": "它不從徐庶勸訪寫起；開場那趟北行，終點是哪座城？",
+          "text": "《魏略》不從徐庶勸訪寫起；諸葛亮這趟北行，終點是哪座城？",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
@@ -592,7 +637,7 @@
       "lines": [
         {
           "id": "eg040",
-          "text": "照《魏略》的說法，他主動去見劉備；進得了門嗎？",
+          "text": "照《魏略》的說法，他主動去見劉備；劉備怎麼接待這位來客？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -862,37 +907,112 @@
       ]
     },
     {
+      "id": "visit-057a",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside an old cottage path, one historian studying two distant empty meeting places, pale overcast daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg143",
+          "text": "兩場都寫成相識的起點，究竟能不能排出有憑據的先後？"
+        }
+      ]
+    },
+    {
+      "id": "visit-063",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a quiet cottage path near Xinye, one older visitor stands before a closed thatched doorway, misty morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg063",
+          "text": "先把草廬排在樊城之前，會遇到《魏略》一句「備與亮非舊」。",
+          "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ],
+      "chapter": "兩種會面順序接不上"
+    },
+    {
+      "id": "visit-065",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Fancheng meeting hall, one commander places a clean guest mat beside a vacant seat, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg065",
+          "text": "還記得正文說「情好日密」？兩人既已熟識，這句「非舊」要怎麼解？"
+        }
+      ]
+    },
+    {
+      "id": "visit-065a",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot approaching an old Fancheng city gate, one robed scholar walks north along a dusty road, overcast sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg131",
+          "text": "若把樊城排在草廬前，另一句難題來自徐庶。"
+        }
+      ]
+    },
+    {
+      "id": "visit-065c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a Xinye road beside a garrison, one travelling scholar carries a blank rolled scroll toward the gate, pale autumn light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg133",
+          "text": "徐庶仍問劉備「將軍豈願見之乎」；若亮已是上客，還要這樣介紹嗎？"
+        }
+      ]
+    },
+    {
+      "id": "visit-065d",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet fork of ancient roads, one historian holds two blank route slips apart, no signs or readable text, cool dawn light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg134",
+          "text": "兩段都沒有足以替兩次會面排先後的日期；這兩種拼法都只是試想。"
+        }
+      ]
+    },
+    {
       "id": "visit-058",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at an archive desk, one annotator placing a second thin blank scroll next to the first, mild window light",
+        "prompt": "Medium shot in an old archive doorway, one annotator carries a thin blank memorial toward an opened volume, clear morning light",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg058",
-          "text": "這條跟正文相反的初遇，裴會拿什麼來檢驗？",
+          "text": "如果排路線不能定案，裴在註裡實際拿什麼文字作判準？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
-    },
-    {
-      "id": "visit-060",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot on a desk, one researcher moving two wooden figures toward opposite ends of a blank route map, gentle morning light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg060",
-          "text": "裴接著翻出諸葛亮給後主的〈出師表〉，核對《魏略》。",
-          "emotion": "關鍵詞放慢，句尾稍停"
-        }
-      ],
-      "chapter": "裴松之打開出師表"
     },
     {
       "id": "visit-061",
@@ -905,130 +1025,24 @@
       "lines": [
         {
           "id": "eg061",
-          "text": "裴在《魏略》後補《九州春秋》同說，才標「臣松之以為」。",
+          "text": "裴先補《九州春秋》同說，再以「臣松之以為」引出〈出師表〉。",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
-      ]
+      ],
+      "chapter": "裴引用出師表判誰先上門"
     },
     {
       "id": "visit-061a",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at an archive desk, one older historian turning from a rolled chronicle to a blank memorial, warm lamplight",
+        "prompt": "Medium shot by a tall archive shelf, one older historian holds an unmarked bamboo slip near an open annotated scroll, warm lamplight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg130",
-          "text": "從這個標記起，才是裴自己的判斷：初遇究竟誰先上門？"
-        }
-      ]
-    },
-    {
-      "id": "visit-063",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot inside an archive, one historian studying two blank calendar pages beside separate route maps, pale afternoon light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg063",
-          "text": "能否是先到草廬、後在樊城再談的兩次會面？",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
-        }
-      ]
-    },
-    {
-      "id": "visit-064",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a writing table, one annotator holding two loose blank strips apart instead of joining them, gentle morning light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg064",
-          "text": "還記得樊城那位被當年輕書生的訪客？《魏略》原句是「備與亮非舊」。",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
-        }
-      ]
-    },
-    {
-      "id": "visit-065",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot beside an unmarked timeline, one annotator setting down a brush before an empty interval, soft overcast daylight",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg065",
-          "text": "陳壽卻說，三訪後劉備與亮「情好日密」，怎能輕易把樊城排在後頭？"
-        }
-      ]
-    },
-    {
-      "id": "visit-065a",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at an archive desk, one older historian arranging two small wooden route markers in opposite order, soft window light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg131",
-          "text": "那把樊城放在草廬前，能接上嗎？"
-        }
-      ]
-    },
-    {
-      "id": "visit-065b",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot at an archive desk, one older historian pausing a brush beside two closed annal booklets, mild daylight",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg132",
-          "text": "還記得樊城結尾？《魏略》說劉備已待諸葛亮為上客。"
-        }
-      ]
-    },
-    {
-      "id": "visit-065c",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot in an old archive, one historian weighing a guest mat token against a rolled chronicle, warm lamplight",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg133",
-          "text": "正文的新野徐庶卻還問劉備願不願見孔明；兩段難以直接接上。"
-        }
-      ]
-    },
-    {
-      "id": "visit-065d",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot beside an old travel map, one historian leaving two route markers apart, soft overcast daylight",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg134",
-          "text": "兩段也沒有給可把兩次會面排成一條行程的日期。"
+          "text": "「臣松之以為」把前面的引書與他本人的判斷分開。"
         }
       ]
     },
@@ -1036,14 +1050,14 @@
       "id": "visit-066",
       "template": "shot",
       "data": {
-        "prompt": "Close shot inside an archive, one annotator unfolding an older blank memorial with a careful hand, mild window light",
+        "prompt": "Medium shot in a court portico, one historian unrolls a blank memorial on a stone bench, warm morning light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg066",
-          "text": "他抓住奏章裡，最短也最關鍵的一句。",
+          "text": "裴沒有列兩地行程，他直接抓住奏章裡的拜訪方向。",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
@@ -1052,31 +1066,15 @@
       "id": "visit-067",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at an archive desk, one historian placing a blank memorial beside a small older calendar roll, pale afternoon light",
+        "prompt": "Wide shot in a Han court courtyard, one aging minister holds a sealed memorial before the audience hall, overcast sky",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg067",
-          "text": "這份奏章寫在初遇多年後，是當事人的回憶，不是會面當日的日記。",
+          "text": "奏章寫在初遇多年後，雖非當日記錄，卻出自受訪的諸葛亮；裴看中了哪個字？",
           "emotion": "口語向前，轉折前留一拍"
-        }
-      ]
-    },
-    {
-      "id": "visit-068",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a desk, one scholar following a short line on a blank memorial with a fingertip, gentle morning light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg068",
-          "text": "是哪一句話，讓他選擇劉備親自拜訪的版本？",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
     },
@@ -1091,8 +1089,8 @@
       "lines": [
         {
           "id": "eg069",
-          "text": "還記得開頭那句「三顧臣於草廬之中」？",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
+          "text": "還記得開場裴寫「可怪」？他抓的是〈出師表〉「三顧臣於草廬之中」。",
+          "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
     },
@@ -1100,7 +1098,7 @@
       "id": "visit-069a",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at an old archive desk, one historian pointing to two adjacent blank clauses on an open memorial, a second annotated volume beside it, soft daylight",
+        "prompt": "Close shot in a court portico, one aging minister resting his hand beside an unmarked memorial, cool dawn light",
         "camera": "push in",
         "visual": "still"
       },
@@ -1115,14 +1113,29 @@
       "id": "visit-069b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a quiet archive, one historian pointing from a blank memorial to a small painting of a visitor arriving at a cottage, no readable words, gentle daylight",
+        "prompt": "Wide shot along a winding path to a thatched cottage, one older visitor approaches the doorway, light morning mist",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg128",
-          "text": "「卑鄙」在這段古文指身分低微，「枉屈」是屈尊；把它們連著讀，裴會把誰放在上門的一邊？"
+          "text": "「卑鄙」在這段古文指身分低微，「枉屈」是屈尊；兩詞先交代兩人身分高低。"
+        }
+      ]
+    },
+    {
+      "id": "visit-069c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a simple thatched cottage, one young robed strategist faces the empty doorway, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg138",
+          "text": "「先帝」是劉備，「臣」是諸葛亮；這句「顧」的行動者因此是誰？"
         }
       ]
     },
@@ -1130,14 +1143,14 @@
       "id": "visit-070",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot inside an archive, one annotator drawing a single route line on a blank sheet with a brush, mild window light",
+        "prompt": "Medium shot in an old archive passage, one annotator turns from a blank memorial to a chronicle held in his other hand, soft lamplight",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg070",
-          "text": "裴引用它後說：是劉備屈尊拜訪，不是諸葛亮先往見劉備。",
+          "text": "裴於是寫：「則非亮先詣備，明矣。」在他看來，上門的是劉備。",
           "emotion": "口語向前，轉折前留一拍"
         }
       ]
@@ -1146,7 +1159,7 @@
       "id": "visit-071",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at an archive desk, one older historian considering two blank source scrolls laid side by side, cool archive lamplight",
+        "prompt": "Wide shot on an open archive balcony, one historian faces two hanging unmarked scrolls, a bamboo blind stirred by wind, grey daylight",
         "camera": "push in",
         "visual": "still"
       },
@@ -1161,7 +1174,7 @@
       "id": "visit-072",
       "template": "shot",
       "data": {
-        "prompt": "Close shot inside an archive, one annotator staring at two conflicting map sketches with raised brows, gentle morning light",
+        "prompt": "Medium shot in a tall archive aisle, one annotator closes two mismatched blank books, warm lamplight",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1174,32 +1187,17 @@
       ]
     },
     {
-      "id": "visit-073",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot at an archive desk, one annotator laying a brush beside a doubtful marginal note, soft overcast daylight",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg073",
-          "text": "裴明明反對，卻把《魏略》的樊城故事留在註裡。"
-        }
-      ]
-    },
-    {
       "id": "visit-074",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a desk, one historian holding a book between himself and a distant cottage sketch, mild window light",
+        "prompt": "Wide shot outside an archive gate, one historian holds a chronicle while looking toward an empty distant road, pale afternoon light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg074",
-          "text": "這段被留下的異說，還能追到最初誰在傳話嗎？",
+          "text": "裴判了方向；《魏略》那條異說，最初是誰傳出來的？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -1208,7 +1206,7 @@
       "id": "visit-075",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a fifth-century archive, one historian holding an annotated scroll open while searching the margin for an origin mark, soft daylight",
+        "prompt": "Medium shot on archive stairs, one historian scans the unmarked edge of an old scroll, soft daylight",
         "camera": "drift",
         "visual": "still"
       },
@@ -1251,10 +1249,25 @@
       ]
     },
     {
+      "id": "visit-077a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside an old library aisle, one historian finding only a short note attached to a closed chronicle, cool lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg141",
+          "text": "這裡沒有《九州春秋》的完整會面段落，連它和《魏略》細節有多相同也無法逐句核對。"
+        }
+      ]
+    },
+    {
       "id": "visit-078",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a quiet archive, one historian standing between two source scrolls with separate loose cords, diffuse daylight",
+        "prompt": "Wide shot in an archive courtyard, one historian stands beside two loose source cords with hidden ends, diffuse daylight",
         "camera": "push in",
         "visual": "still"
       },
@@ -1285,14 +1298,14 @@
       "id": "visit-081",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot beside a tall scroll shelf, one historian turning toward a different row of volumes, warm afternoon light",
+        "prompt": "Medium shot in a covered archive walkway, one historian takes a second unmarked volume from a satchel, golden afternoon light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg081",
-          "text": "反向初遇有兩個書名；三顧那一邊，還有誰落筆？",
+          "text": "反向初遇有兩個書名；三顧那邊，陳壽還寫在哪裡？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -1308,7 +1321,7 @@
       "lines": [
         {
           "id": "eg082",
-          "text": "陳壽在〈諸葛亮集序〉，也寫劉備三顧草廬。"
+          "text": "〈諸葛亮集序〉也寫：「乃三顧亮於草廬之中」。"
         }
       ]
     },
@@ -1316,14 +1329,14 @@
       "id": "visit-083",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a scholar study, one historian setting two volumes written by the same hand side by side, gentle daylight",
+        "prompt": "Wide shot in a covered archive walkway, one elderly historian carries two identical unmarked volumes, mild daylight",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg083",
-          "text": "但集序和傳記同出陳壽，不能把他算成兩人。"
+          "text": "但這篇集序仍由陳壽寫，不能把它和傳記算成兩個獨立講述者。"
         }
       ]
     },
@@ -1338,68 +1351,22 @@
       "lines": [
         {
           "id": "eg085",
-          "text": "回到開場的〈出師表〉，另一位能具名的寫作者是諸葛亮本人。"
+          "text": "回到開場的〈出師表〉，另一位能具名的作者是諸葛亮本人。"
         }
       ]
     },
     {
-      "id": "visit-086a",
+      "id": "visit-085a",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a fifth-century study, one historian searching a rolled memorial for a missing detail, pale daylight",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg117",
-          "text": "樊城散席和牛尾飾物，都不在這段回憶裡。"
-        }
-      ]
-    },
-    {
-      "id": "visit-086b",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a court writing desk, one minister resting his brush beside a memorial and a travel satchel, gentle morning light",
+        "prompt": "Wide shot outside an ancient city wall, one historian holds a single annotated volume between a cottage path and a city road, dusk light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "eg118",
-          "text": "奏章要說明他為何效力，沒有逐項清點會面物件。"
-        }
-      ]
-    },
-    {
-      "id": "visit-087",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot at a fifth-century desk, one historian holding a plain memorial beside an illustrated tassel, soft overcast light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg087",
-          "text": "沒有列出的動作，就能判它們絕不可能發生嗎？",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
-        }
-      ]
-    },
-    {
-      "id": "visit-088",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot in an archive, one annotator placing a disputed scroll beside his own narrow rebuttal, mild window light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg088",
-          "text": "不能。裴否定的是「亮先詣備」，其餘細節還得另找證據。"
+          "id": "eg139",
+          "text": "所以一卷《三國志》同時留著三顧與反向上門：後者是裴保存的引文，不是他的結論。"
         }
       ]
     },
