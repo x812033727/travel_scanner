@@ -1,0 +1,55 @@
+{
+  "status": "HOLD_OFFLINE_WORKER_HANDOFF_ONLY",
+  "frozen_r45_manifest_sha256": "896615541683e620eb6e79468d8d304f146ad932700a7f044d5a1eb9784888f6",
+  "frozen_inputs_sha256": {
+    "candidate/video.json": "e215ed76788489d331e45e3ae5e7a26e36e3d6f3c98770671ae54a0a69955834",
+    "candidate/series.json": "430f7f671a3ae8d695f97775292a6ad39f32b69b6310f04b7f3c942f29370c05",
+    "candidate/lexicon.json": "91ec9d6d56260441cdaddc6e1260216cc24c21120f24ab32a1d1c4550e60d10d",
+    "candidate/claims.md": "5f5028f7b516bea69b89f9bc8fe4bd4be5cf70f2a81b3fafa80c45d6aced7b98",
+    "source-alignment.json": "b505e9dda4d3b4d991307a4ae675b318a77fc1d75546950a2545ec97b4023648",
+    "brief.md": "975811d74436222543f30576127a90651f545b124e06c410e7c4e4410a410012"
+  },
+  "build_sha256": "4ca364432bc4b21e8b2081bee9832f2fa7056f1a42c0bc9c7c423cf75e219e96",
+  "worker_dependency_sha256": {
+    "tools/video/automation/story.mjs": "db7afddc854f6f106fb7198d8f2634ad15f9e6eb5fe8c295efc604413c8ed179",
+    "tools/video/core/schema.mjs": "80d2607bdecd5aaae145308924be7da310f48f8fc711e2cceba00742b445db0b",
+    "tools/video/core/story.mjs": "705cd263612a280cb528807cf884df9aa3c886b6c03e0a095957f1bbbe89f417",
+    "tools/video/core/lint.mjs": "6f560e91f90126ecbf245ec754a7790ba49362651507d5c01e3ff1a5c939f95a",
+    "tools/video/core/timeline.mjs": "0088b369f5ddb962fc5d803bb5dd982f2f8f22b558eca728d0bfca5df1aa39b2"
+  },
+  "chapters": [
+    "hook",
+    "origin",
+    "idea",
+    "engine",
+    "turn",
+    "now"
+  ],
+  "scenes": 51,
+  "lines": 53,
+  "claims_pending": 55,
+  "source_urls": [
+    "https://abcnews.com/Travel/rollaboard-luggage-celebrates-wheelie-big-birthday/story?id=17024603",
+    "https://travelpro.com/blogs/the-travelpro-blog/the-history-of-rolling-luggage",
+    "https://www.globaltravelerusa.com/reinventing-the-wheel/",
+    "https://patents.google.com/patent/US4995487A/en",
+    "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+    "https://www.latimes.com/archives/la-xpm-1993-08-01-tr-19135-story.html"
+  ],
+  "host_import_or_paid_media_authorized": false,
+  "outputs_sha256": {
+    "story/chapters/hook.json": "8176fdad95115e945329037f2c73f938bc44a8f498d9b2b95ac512cb01904b27",
+    "story/chapters/origin.json": "c284f85122ef4f6d76f34efd622df92a894195f1105e892803e7b66e7495bb91",
+    "story/chapters/idea.json": "86e6e326f30b586514935e016e7de601459de0c1ec3077b0329705c0b4ab2c1c",
+    "story/chapters/engine.json": "6f914615f342f2e259c05bb776b5d46d4d59e1b00753b343cd62cdd85a04cfeb",
+    "story/chapters/turn.json": "7db8d577e948493a91e3ab77ceebcdc16caed75f0a7fa3654dafbd70ef0f5f72",
+    "story/chapters/now.json": "f4076815fae1961d21d3df8ac4278cee9c21729a0899306c99cfc8f570d59582",
+    "series.json": "f571097b2f7e909711a78c6ed60bc57b110c8041ab8e6faabde8a5e266129f3f",
+    "lexicon.json": "91ec9d6d56260441cdaddc6e1260216cc24c21120f24ab32a1d1c4550e60d10d",
+    "brief.md": "975811d74436222543f30576127a90651f545b124e06c410e7c4e4410a410012",
+    "claim-map.json": "69b1ea2afa37fa28ac434f55252c7fee96a8c35fa720d7f5f327e647d934f73a",
+    "worker-composed-video.json": "4fad9d8a3948d133acb66ff0fab7021ef2e1d4e9dcec497fa4bef56e50a12011",
+    "metadata-delta.json": "aea59fedc6ce02fd9f3d9bbd8e281bfa43fa1c3ab831ad9c5585da0df0544760",
+    "README.md": "25ffba3543e54beac36e0e7de925479198030ee67a1420efcdb9cfbc1da18478"
+  }
+}
