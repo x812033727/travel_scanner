@@ -1,6 +1,6 @@
 # S02 史料與敘事複核紀錄
 
-查核日：2026-10-19。**現版** [`script.md`](script.md) SHA-256 為 `6b53fb1722aa3922f51e5bc79c54d21a99a7de34a1111227e7a3c1f47b89c664`，92 句／91 個插圖鏡頭／七章，預估 8.1 分鐘，系列 `lint` **0 errors、0 warnings**。以下的前輪盲讀分數屬於已被修稿取代的版本；現版獨立盲讀結果見 [`verify-final.md`](verify-final.md)。
+查核日：2026-10-19。**前版** `script.md` SHA-256 為 `6b53fb1722aa3922f51e5bc79c54d21a99a7de34a1111227e7a3c1f47b89c664`，92 句／91 個插圖鏡頭／七章，預估 8.1 分鐘，系列 `lint` **0 errors、0 warnings**。以下的前輪盲讀分數屬於已被修稿取代的版本；該版獨立盲讀結果見 [`verify-final.md`](verify-final.md)，語音補錄後的現版另見 [`verify-audio-rewrite.md`](verify-audio-rewrite.md)。
 
 ## 已取得的獨立意見與現版修正
 

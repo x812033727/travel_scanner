@@ -39,7 +39,7 @@
     },
     {
       "setup": "s02005",
-      "payoff": "s02054",
+      "payoff": "s02055",
       "what": "後來小說人物到底是誰"
     },
     {
@@ -73,8 +73,8 @@
       "what": "小說中催交箭的人"
     },
     {
-      "setup": "s02087",
-      "payoff": "s02088",
+      "setup": "s02086",
+      "payoff": "s02087",
       "what": "相似轉船能否證明直接改編"
     }
   ],
@@ -316,7 +316,7 @@
       "lines": [
         {
           "id": "s02012",
-          "text": "只看本傳，觀眾甚至不會知道那艘船經過軍前。"
+          "text": "只看本傳，找不到孫權那艘船駛到曹軍面前的過程。"
         }
       ]
     },
@@ -387,14 +387,14 @@
       "id": "boat-kind-hook",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at waterside workshop in cloudy pale afternoon light, one vesselwright comparing two simple wooden vessel models, small and large model vessels off to one side",
+        "prompt": "Medium shot at waterside workshop in cloudy pale afternoon light, one vesselwright holding two unmarked vessel sketches, plain sketches off to one side",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "s02017",
-          "text": "它們連孫權乘船的船型，都說得不同。",
+          "text": "兩段記載，連船的描述都不一樣。",
           "emotion": "關鍵動詞放慢，句尾留一拍"
         }
       ]
@@ -613,7 +613,7 @@
       "lines": [
         {
           "id": "s02031",
-          "text": "它來自裴注緊接著引的《魏略》，不是《吳歷》。",
+          "text": "答案是裴松之引用的另一部書，書名叫《魏略》。",
           "emotion": "關鍵動詞放慢，句尾留一拍"
         }
       ],
@@ -770,7 +770,7 @@
       "lines": [
         {
           "id": "s02041",
-          "text": "《魏略》的結尾很短：箭均、船平，然後回去。",
+          "text": "等船終於穩住，孫權就返回。",
           "emotion": "關鍵動詞放慢，句尾留一拍"
         }
       ]
@@ -786,7 +786,7 @@
       "lines": [
         {
           "id": "s02042",
-          "text": "船平了，可孫權出發前就是要來借箭的嗎？",
+          "text": "可是，他出發前就是為了借箭嗎？",
           "emotion": "問句輕輕上揚，句尾停半拍"
         }
       ]
@@ -864,7 +864,7 @@
       "lines": [
         {
           "id": "s02047",
-          "text": "我們手上沒有足夠證據，替這兩份引書判出哪個細節真。",
+          "text": "我們沒有足夠證據，判定兩段記載互相衝突的細節究竟哪個是真的。",
           "emotion": "關鍵動詞放慢，句尾留一拍"
         }
       ]
@@ -912,7 +912,7 @@
       "lines": [
         {
           "id": "s02050",
-          "text": "它沒收《魏略》的轉船受箭；史家省略，能裁決真偽嗎？",
+          "text": "至於孫權轉船、讓另一側受箭，《通鑑》沒寫；這能裁決真偽嗎？",
           "emotion": "問句輕輕上揚，句尾停半拍"
         }
       ]
@@ -1241,7 +1241,7 @@
       "lines": [
         {
           "id": "s02071",
-          "text": "陸寨弓弩手也來助射，箭密得像雨。",
+          "text": "岸上守寨的弓弩手也跟著放箭，密得像一場雨。",
           "emotion": "關鍵動詞放慢，句尾留一拍"
         }
       ]
@@ -1446,23 +1446,7 @@
       "lines": [
         {
           "id": "s02084",
-          "text": "孫權船臨曹軍的兩份引書，記在五年後的濡須對峙。"
-        }
-      ]
-    },
-    {
-      "id": "different-men",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead shot at study table in neutral light, one history reader moving two plain figurines apart, separate vessel models at frame center",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "s02085",
-          "text": "小說是諸葛亮受周瑜催箭；引書則是孫權去看曹軍。",
-          "emotion": "關鍵動詞放慢，句尾留一拍"
+          "text": "兩段孫權乘船的記載，寫的是五年後的濡須對峙。"
         }
       ]
     },
@@ -1470,14 +1454,15 @@
       "id": "different-plan",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at waterside workshop in diffused light, one boatwright placing straw on one boat model, two contrasting boat models close beside this figure",
-        "camera": "pan left",
+        "prompt": "Overhead shot at waterway workshop in diffused light, one vesselwright placing straw on one vessel model, two contrasting vessel models at frame center",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "s02086",
-          "text": "小說先備草船等箭；《魏略》是中箭後才轉船。"
+          "id": "s02085",
+          "text": "小說先備草船等箭；《魏略》是中箭後才轉船。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
         }
       ]
     },
@@ -1485,13 +1470,13 @@
       "id": "motif-question",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at quiet study in lamplight, one robed scholar pausing over two open volumes, unmarked pages at the near edge",
-        "camera": "pull out",
+        "prompt": "Wide shot at quiet study in lamplight, one robed scholar pausing over two open volumes, unmarked pages close beside this figure",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "s02087",
+          "id": "s02086",
           "text": "同樣是轉船，能因此說小說一定改寫了《魏略》嗎？",
           "emotion": "問句輕輕上揚，句尾停半拍"
         }
@@ -1501,14 +1486,15 @@
       "id": "no-link",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at study in soft soft morning light, one robed scholar leaving two blank volumes apart, space between books as the only foreground object",
-        "camera": "tilt down",
+        "prompt": "Medium shot at study in soft daylight, one robed scholar leaving two blank volumes apart, space between books at the near edge",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "s02088",
-          "text": "兩段文字的畫面相似，但僅靠這些字，證不出直接改編的路徑。"
+          "id": "s02087",
+          "text": "兩段文字的畫面相似，但僅靠這些字，證不出直接改編的路徑。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
         }
       ]
     },
@@ -1516,15 +1502,14 @@
       "id": "second-answer",
       "template": "shot",
       "data": {
-        "prompt": "Low angle shot at study desk in thin light, one history reader touching the other open book, blank second folio off to one side",
-        "camera": "pan right",
+        "prompt": "Close shot at study desk in thin light, one history reader touching the other open book, blank second folio as the only foreground object",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "s02089",
-          "text": "把小說的主角直接換成孫權，反而蓋住了兩份引書的衝突。",
-          "emotion": "關鍵動詞放慢，句尾留一拍"
+          "id": "s02088",
+          "text": "把小說的主角直接換成孫權，反而掩蓋兩段記載彼此衝突的地方。"
         }
       ]
     },
@@ -1532,14 +1517,15 @@
       "id": "history-boundary",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot at study desk in afternoon light, one history reader closing the novel beside two histories, three closed volumes beneath their gaze",
-        "camera": "drift",
+        "prompt": "Low angle shot at study desk in afternoon light, one history reader closing the novel beside two histories, three closed volumes off to one side",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "s02090",
-          "text": "一段有爭議的引書，不能替小說的箭數作歷史證明。"
+          "id": "s02089",
+          "text": "一段有爭議的引書，不能替小說的箭數作歷史證明。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
         }
       ]
     },
@@ -1547,13 +1533,13 @@
       "id": "ending-question",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at study in soft evening light, one history reader lifting a blank index card, empty card at frame center",
-        "camera": "push in",
+        "prompt": "Overhead shot at study in soft evening light, one history reader lifting a blank index card, empty card beneath their gaze",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "s02091",
+          "id": "s02090",
           "text": "你更想查清：那天曹軍是否放箭，還是小說怎麼想到草束？",
           "emotion": "問句輕輕上揚，句尾停半拍"
         }
@@ -1571,7 +1557,7 @@
       },
       "lines": [
         {
-          "id": "s02092",
+          "id": "s02091",
           "text": "想跟著原文看清歷史名場面，訂閱奇聞檔案局。"
         }
       ]

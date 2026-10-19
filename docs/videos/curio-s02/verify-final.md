@@ -1,6 +1,6 @@
-# S02 現版獨立盲讀與來源抽核
+# S02 原核准版獨立盲讀與來源抽核
 
-查核日：2026-10-19。劇本 [`script.md`](script.md) SHA-256 `6b53fb1722aa3922f51e5bc79c54d21a99a7de34a1111227e7a3c1f47b89c664`；92 句、91 張插圖、七章、預估 8.1 分鐘，系列 lint **0 errors、0 warnings**。
+查核日：2026-10-19。當時劇本 SHA-256 `6b53fb1722aa3922f51e5bc79c54d21a99a7de34a1111227e7a3c1f47b89c664`；92 句、91 張插圖、七章、預估 8.1 分鐘，系列 lint **0 errors、0 warnings**。此後依旁白聽檢修改用詞，現版另見 [`verify-audio-rewrite.md`](verify-audio-rewrite.md)；此處通過分數**不沿用到新雜湊**。
 
 未參與本集撰稿的讀者先只讀凍結劇本，獨立回答 `narrative` 十三題：**13／13 通過**。其答案暫存 `/tmp/curio-s02-frozen-blind-20261019.json`；將引文中的行號區間轉成工具接受的個別 `[s02001]` 格式後，`VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs narrative --slug curio-s02 --answers /tmp/curio-s02-frozen-blind-gate-20261019.json` 正式記錄為通過。格式轉換未改讀者判斷。
 
