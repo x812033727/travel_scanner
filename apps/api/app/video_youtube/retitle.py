@@ -23,6 +23,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import AdminAuditLog, User
 from app.video_reviews.admin_service import _linked_youtube
+from app.video_reviews.schemas import DUB_LOCALES
 from app.video_youtube.client import YoutubeError
 from app.video_youtube.requests import (
     DEFAULT_LANGUAGE,
@@ -44,7 +45,8 @@ def tag_language(code: object) -> str:
     key = language_key(code) if isinstance(code, str) and code.strip() else "zh-tw"
     if key.startswith("zh"):
         return "zh-TW"
-    for language in ("en", "ja", "ko"):
+    # The worker's three and an imported video's five (es-419 and pt-BR read as es and pt).
+    for language in DUB_LOCALES:
         if key == language or key.startswith(f"{language}-"):
             return language
     return "en"

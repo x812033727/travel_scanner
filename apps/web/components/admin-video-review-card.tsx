@@ -33,8 +33,12 @@ export type ChecklistItem = { key: string; label: string; done: boolean };
 // parts each one is made of (docs/videos/LANGUAGES.md): titles and descriptions, closed captions,
 // a dub track. A dub track is timed with its captions, so choosing it means choosing them too.
 // zh-CN left the video pipeline on 2026-10-09 (a video's languages are four); an older review
-// that names it still renders, after these, with its own label.
-export const LOCALES = ["en", "ja", "ko"] as const;
+// that names it still renders, after these, with its own label. The worker makes en, ja and ko;
+// es (Latin America), pt (Brazil), id, vi and th came on 2026-10-18 for imported videos only,
+// whose files are made outside the pipeline: the server lists what one video may choose in its
+// locale_options (apps/api/app/video_reviews/schemas.py IMPORTED_LOCALES).
+export const WORKER_LOCALES = ["en", "ja", "ko"] as const;
+export const LOCALES = [...WORKER_LOCALES, "es", "pt", "id", "vi", "th"] as const;
 export type Locale = (typeof LOCALES)[number];
 export const LOCALE_PARTS = ["metadata", "captions", "dub"] as const;
 export type LocalePart = (typeof LOCALE_PARTS)[number];
@@ -86,6 +90,9 @@ export type ProjectSummary = {
   // (docs/videos/LANGUAGES.md); all absent from an API older than the language panel, which
   // only knew the dub languages.
   locales?: Partial<Record<string, LocaleChoice>>;
+  // The languages the panel offers this video, in its order; absent from an API older than the
+  // imported videos' five, which offered en, ja and ko.
+  locale_options?: string[];
   locales_decided_at?: string | null;
   languages?: Partial<Record<string, Partial<Record<string, LanguagePart>>>>;
   ready_to_upload?: boolean;

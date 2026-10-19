@@ -65,6 +65,7 @@ from app.video_youtube.requests import (
     narration_language,
     text_problem,
     update_body,
+    youtube_language,
 )
 from app.video_youtube.schemas import PublishIn
 from app.video_youtube.state import new_state, now_text, parse_time, retried, running, step
@@ -793,13 +794,15 @@ async def _captions(run: Run, video_id: str) -> tuple[str, str]:
     done: list[str] = []
     failed: list[str] = []
     for locale, item in run.package.captions.items():
-        if language_key(locale) in have:
+        # YouTube knows es and pt by the variety the owner chose (requests.YOUTUBE_LANGUAGES).
+        language = youtube_language(locale)
+        if language_key(language) in have:
             done.append(f"{locale} 已經有了")
             continue
         data = await asyncio.to_thread(run.file_bytes, item)
         await run.ensure_current()
         try:
-            await client.insert_caption(video_id, language=locale, name=CAPTION_NAME, data=data)
+            await client.insert_caption(video_id, language=language, name=CAPTION_NAME, data=data)
         except YoutubeError as error:
             if error.reason == "captionExists":
                 done.append(f"{locale} 已經有了")
@@ -808,7 +811,7 @@ async def _captions(run: Run, video_id: str) -> tuple[str, str]:
                 raise
             failed.append(f"{locale}：{describe(error)}")
             continue
-        have.add(language_key(locale))
+        have.add(language_key(language))
         done.append(f"{locale} 已上傳")
     if failed:
         raise StepFailed("；".join([*failed, *done]))

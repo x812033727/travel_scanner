@@ -1,13 +1,13 @@
 ---
 id: 2026-10-19-share-the-brand-story-craft-with
 title: Share the brand-story craft with Codex as a repo skill
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-quirky
 claimed_at: 2026-10-19T00:40:27Z
 created_at: 2026-10-19T00:33:28Z
-completed_at:
+completed_at: 2026-10-19T11:48:53Z
 branch: claude/quirky-files-optimization-1605cd
 depends_on: []
 scope:
@@ -42,3 +42,4 @@ scope:
   已在 main（`.agents/skills/curio-episode/`、`tools/video/core/curio.mjs`），票本身停在 in-progress 沒收，
   所以用 `--force` 認領，只動 `AGENTS.md` 的 skill 清單一行。
 - PR https://github.com/x812033727/travel_scanner/pull/1577
+- 2026-10-19 結案：#1577 合併，`brand-story` skill 已在 main；Codex 端的 `$brand-story` 載入還沒在 Codex 桌面版實際確認過。
