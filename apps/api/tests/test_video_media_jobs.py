@@ -1287,6 +1287,7 @@ async def test_a01_existing_and_missing_posts_never_lock_job_before_budget_on_po
                 root.mkdir(exist_ok=True)
                 ctx = _context(root, FakeProvider(), row=row)
                 ctx.session = session
+                ctx.token_id = None
                 return await submit_job(ctx, "image", body)
 
         holder = asyncio.create_task(hold_budget())
