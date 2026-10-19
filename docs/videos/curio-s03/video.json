@@ -64,17 +64,17 @@
     },
     {
       "setup": "kc311",
-      "payoff": "kc516",
+      "payoff": "kc514",
       "what": "裴松之寫到的西城，跟小說的是同一個嗎"
     },
     {
       "setup": "kc309",
-      "payoff": "kc518",
+      "payoff": "kc516",
       "what": "要等誰死了兩人才對上"
     },
     {
       "setup": "kc223",
-      "payoff": "kc525",
+      "payoff": "kc522",
       "what": "司馬懿這輩子被唬退過嗎"
     }
   ],
@@ -664,7 +664,7 @@
       "lines": [
         {
           "id": "kc226",
-          "text": "琴，要到後來的小說裡才看得到。"
+          "text": "這些，要到後來的小說裡才看得到。"
         }
       ]
     },
@@ -787,7 +787,7 @@
       "lines": [
         {
           "id": "kc306",
-          "text": "他先查地圖：陽平在漢中。"
+          "text": "他先查郭沖說的那個陽平。"
         }
       ]
     },
@@ -884,7 +884,7 @@
       "lines": [
         {
           "id": "kc313",
-          "text": "他又算兵：司馬懿帶著二十萬人，又已經知道城裡兵少。"
+          "text": "他又算兵：還記得郭沖說的那二十萬人嗎？人那麼多，又已經知道城裡兵少。"
         }
       ]
     },
@@ -1055,7 +1055,7 @@
       "lines": [
         {
           "id": "kc325",
-          "text": "可是這只是裴松之的一句話。司馬懿那一年在宛城，別的史書對得上嗎？",
+          "text": "可是這只是裴松之的一句話。司馬懿那一年人在哪裡，別的史書對得上嗎？",
           "emotion": "問句"
         }
       ]
@@ -1072,7 +1072,7 @@
       "lines": [
         {
           "id": "kc401",
-          "text": "對得上。《晉書》寫，西元兩百二十七年六月，司馬懿奉命駐在宛城。"
+          "text": "對得上。《晉書》寫，西元兩百二十七年六月起，他奉命駐守的就是剛剛那座宛城。"
         }
       ]
     },
@@ -1438,39 +1438,9 @@
         {
           "id": "kc505",
           "text": "王平就這樣，慢慢把跑散的兵收攏回來，帶了回去。"
-        }
-      ]
-    },
-    {
-      "id": "three-endings",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a puzzled archivist in a cotton jacket kneeling at a low table in a lamplit room at night, looking from one blank scroll to another with a frown, three closed scrolls in front of him, warm lamp light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "kc506",
-          "text": "馬謖的下場，史書裡有三種說法：處死、死在獄中，還有一說是逃走了。"
-        }
-      ]
-    },
-    {
-      "id": "zl-demotes",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a calm scholar-strategist in his late forties in a wide pale robe and a soft cloth scholar's cap kneeling at a low desk in a lamplit tent at night, writing on a blank sheet looking sorrowful, a lamp beside him",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "kc507",
-          "text": "諸葛亮上書，請求把自己降三級。"
         },
         {
-          "id": "kc508",
+          "id": "kc506",
           "text": "那打贏的張郃，接下來去了哪裡？",
           "emotion": "問句"
         }
@@ -1481,12 +1451,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a veteran general looking stern square in heavy iron plates and a fur collar riding on a river road in mild daylight, glancing toward the camera with a resigned face, a wide river behind him",
-        "camera": "tilt down",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc509",
+          "id": "kc507",
           "text": "他被派到荊州，聽司馬懿調度。"
         }
       ]
@@ -1496,13 +1466,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean general of about fifty with narrow sharp eyes and a dark lacquered cuirass standing on a riverside dock in mild daylight, pointing at a half-built wooden warship looking eager, timber piled beside him",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc510",
-          "text": "司馬懿那時正在荊州造水軍，想順著河去打東吳。"
+          "id": "kc508",
+          "text": "那年冬天，司馬懿在做什麼？他在荊州造水軍，想順著河去打東吳。"
         }
       ]
     },
@@ -1511,12 +1481,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a sailor standing knee-deep in a shallow winter river in pale morning light, pushing at a large stranded wooden warship with a frustrated face, bare reeds around him",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc511",
+          "id": "kc509",
           "text": "沒想到冬天水淺，大船開不動，張郃只好退回去。",
           "emotion": "帶一點好笑"
         }
@@ -1527,12 +1497,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean general of about fifty with narrow sharp eyes and a dark lacquered cuirass on horseback on a narrow mountain road in overcast daylight, pointing ahead at a rock wall that blocks the path with a determined frown, a pick-axe leaning on a boulder beside him",
-        "camera": "pull out",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc512",
+          "id": "kc510",
           "text": "還記得裴松之寫到的那個西城嗎？"
         }
       ]
@@ -1542,12 +1512,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a sturdy soldier swinging an axe at a fallen tree across a narrow mountain path in mild daylight, his face red with effort, rocky slopes around him",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc513",
+          "id": "kc511",
           "text": "西元兩百三十年，司馬懿真的從西城出發，開山修路。"
         }
       ]
@@ -1557,12 +1527,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a calm scholar-strategist in his late forties in a wide pale robe and a soft cloth scholar's cap standing on a ridge above a mountain road on a mild day, shading his eyes and waiting looking calm, a small camp below him",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc514",
+          "id": "kc512",
           "text": "諸葛亮在城固的赤阪，等著魏軍來。"
         }
       ]
@@ -1572,12 +1542,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean general of about fifty with narrow sharp eyes and a dark lacquered cuirass standing under a dripping straw rain cape on a washed-out mountain road in heavy rain, frowning at a broken wooden plank road ahead",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc515",
+          "id": "kc513",
           "text": "結果大雨下了三十多天，棧道斷了，魏軍撤回。"
         }
       ]
@@ -1587,12 +1557,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a curious archivist in a cotton jacket kneeling on the floor of a study in the evening, holding two blank maps far apart with a satisfied nod, a lamp beside him, warm lamp light",
-        "camera": "tilt down",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc516",
+          "id": "kc514",
           "text": "那個西城在漢水上游，跟小說的西城縣，不是同一個地方。"
         }
       ]
@@ -1602,12 +1572,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a burly grand marshal with a round face in gilded plates and a dark red cape lying propped up in a sickbed in a dim room in the afternoon, coughing into his fist with a weary face, a cup of medicine beside him, soft window light",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc517",
+          "id": "kc515",
           "text": "裴松之說要等一個人死了，兩人才會對上。那個人是誰？",
           "emotion": "問句"
         }
@@ -1618,12 +1588,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean general of about fifty with narrow sharp eyes and a dark lacquered cuirass riding out through a city gate in mild morning light, looking toward the camera looking determined, a banner pole behind him",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc518",
+          "id": "kc516",
           "text": "是曹真。西元兩百三十一年，曹真病死，司馬懿從荊州調到西邊。"
         }
       ]
@@ -1633,33 +1603,18 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean general of about fifty with narrow sharp eyes and a dark lacquered cuirass on horseback on a hillside in overcast daylight, raising his sword to signal an attack with a tense face, distant mountain ridges behind him",
-        "camera": "pull out",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc519",
+          "id": "kc517",
           "text": "那一年，諸葛亮圍祁山，司馬懿帶兵攻他。"
         },
         {
-          "id": "kc520",
+          "id": "kc518",
           "text": "這是兩個人第一次真正交手。",
           "emotion": "放慢"
-        }
-      ]
-    },
-    {
-      "id": "wangping-holds",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a sturdy officer with a square jaw in a plain padded tunic standing behind a log palisade in mild daylight, planting his feet with arms crossed and a stubborn face, a spear leaning beside him",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "kc521",
-          "text": "張郃又碰上了王平。這一次，王平守住不動，張郃攻不下來。"
         }
       ]
     },
@@ -1668,12 +1623,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean general of about fifty with narrow sharp eyes and a dark lacquered cuirass sitting alone in a lamplit tent at night, staring at a game board looking wary, one hand hovering over a piece, warm lamp light",
-        "camera": "push in",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc522",
+          "id": "kc519",
           "text": "回到前面那個問題：司馬懿這輩子，真的被諸葛亮唬退過嗎？",
           "emotion": "問句"
         }
@@ -1684,12 +1639,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a calm scholar-strategist in his late forties in a wide pale robe and a soft cloth scholar's cap sitting wrapped in a blanket at a low desk in a lamplit tent at night, writing slowly with a tired but gentle face, a lamp flickering beside him",
-        "camera": "drift",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc523",
+          "id": "kc520",
           "text": "三年後，諸葛亮病死在軍中。"
         }
       ]
@@ -1699,12 +1654,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an officer in scale mail on horseback on a valley road in cloudy daylight, swinging a tall banner around to face backward looking bold, a war drum on a cart behind him",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc524",
+          "id": "kc521",
           "text": "諸葛亮死後，蜀軍掉轉旗子、打起鼓，像要朝司馬懿攻過來。"
         }
       ]
@@ -1714,12 +1669,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean general of about fifty with narrow sharp eyes and a dark lacquered cuirass on horseback in mild daylight, pulling his reins hard to turn his horse away with an alarmed face, dust rising",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc525",
+          "id": "kc522",
           "text": "沒想到，司馬懿退了，不敢逼近。",
           "emotion": "短"
         }
@@ -1735,7 +1690,7 @@
       },
       "lines": [
         {
-          "id": "kc526",
+          "id": "kc523",
           "text": "老百姓編了一句話：死諸葛，走生仲達。仲達，就是司馬懿。",
           "emotion": "一字一字唸清楚"
         }
@@ -1746,12 +1701,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lean general of about fifty with narrow sharp eyes and a dark lacquered cuirass sitting in a camp chair in a tent in the afternoon, spreading his hands with a rueful half smile, a cup of tea beside him, soft light through the tent flap",
-        "camera": "tilt up",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc527",
+          "id": "kc524",
           "text": "司馬懿聽了說：我能料到活人，料不到死人。",
           "emotion": "帶一點自嘲"
         }
@@ -1767,7 +1722,7 @@
       },
       "lines": [
         {
-          "id": "kc528",
+          "id": "kc525",
           "text": "所以不管照郭沖還是照小說，那一年的司馬懿，都不在諸葛亮的對面。",
           "emotion": "放慢，像蓋章"
         }
@@ -1778,12 +1733,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a big war drum standing at the foot of a hill on a mild cloudy day, a pair of drumsticks resting on its skin, a long zither lying in the grass beside it, a small boy servant peeking from behind the drum looking curious",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc529",
+          "id": "kc526",
           "text": "我們覺得，那一年真正唬住敵人的，不是城樓上的琴，是街亭山下王平的鼓。",
           "emotion": "像跟朋友說自己的看法"
         }
@@ -1794,12 +1749,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a cheerful clerk in a cardigan at a wooden desk pressing a rubber stamp down onto a blank manila folder, light from a desk lamp on the left",
-        "camera": "pan left",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "kc530",
+          "id": "kc527",
           "text": "這份檔案，存檔。",
           "emotion": "收尾，乾脆"
         }
@@ -1817,12 +1772,12 @@
       },
       "lines": [
         {
-          "id": "kc531",
+          "id": "kc528",
           "text": "你最早是在小說、戲台，還是電視劇裡看到空城計的？",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "kc532",
+          "id": "kc529",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }
