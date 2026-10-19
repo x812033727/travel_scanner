@@ -1,0 +1,1580 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s02",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，像跟朋友講一則有原文可對的歷史疑案。書名、年代和人物名字要清楚；提問處略停。",
+    "performance": "先讓濡須江面的危險成立，再把兩份引書的對立說清。說小說時聲音輕一些，明確區分史書和文學；結尾不扮演能裁決未解爭議的人。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "s02003",
+      "payoff": "s02041",
+      "what": "偏重的大船如何恢復平衡"
+    },
+    {
+      "setup": "s02004",
+      "payoff": "s02025",
+      "what": "另一份記錄中曹操給弓弩的命令"
+    },
+    {
+      "setup": "s02005",
+      "payoff": "s02054",
+      "what": "後來小說人物到底是誰"
+    },
+    {
+      "setup": "s02006",
+      "payoff": "s02058",
+      "what": "十萬箭的三日期限從何而來"
+    },
+    {
+      "setup": "s02007",
+      "payoff": "s02047",
+      "what": "兩份古書射與不射如何處理"
+    },
+    {
+      "setup": "s02017",
+      "payoff": "s02046",
+      "what": "輕船與大船不能拼成同一趟"
+    },
+    {
+      "setup": "s02018",
+      "payoff": "s02046",
+      "what": "兩份射令不同，不能拼同一趟"
+    },
+    {
+      "setup": "s02048",
+      "payoff": "s02049",
+      "what": "後來編年史取捨了哪些細節"
+    },
+    {
+      "setup": "s02053",
+      "payoff": "s02055",
+      "what": "小說中催交箭的人"
+    },
+    {
+      "setup": "s02087",
+      "payoff": "s02088",
+      "what": "相似轉船能否證明直接改編"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "草船借箭原本是孫權？史書竟有兩種說法｜奇聞檔案局",
+    "description": "《三國演義》第四十六回，諸葛亮三天取十萬枝箭；《三國志》〈吳主傳〉裴注引《魏略》，另有 213 年孫權轉船受箭的短短一段。然而同一段裴注也引《吳歷》，說曹操命令弓弩手不得妄發，孫權乘輕船走過曹營。《資治通鑑》寫濡須對峙、軍容和撤軍，沒有寫轉船受箭。本集把四種文字並排看，問歷史到底能支持到哪裡。\n\n《魏略》與小說的場面相似，但現有文字不足以證明小說直接改編它；小說的草束、濃霧與十萬箭也不能當作 213 年史實。影像是 AI 生成的可愛插圖，用來輔助理解各書敘事，並非古戰場影像或人物容貌重建。\n\n資料查核：2026-10-19。來源連結見下。",
+    "tags": [
+      "草船借箭",
+      "孫權",
+      "諸葛亮",
+      "三國志",
+      "魏略",
+      "吳歷",
+      "三國演義",
+      "濡須",
+      "歷史名場面",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**射了嗎**？",
+      "tag": "歷史名場面",
+      "sub": "孫權與草船借箭",
+      "shot": "which-order"
+    }
+  },
+  "sources": [
+    {
+      "title": "《三國志》〈吳主傳〉（含裴注引《吳歷》《魏略》）",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E4%B8%89%E5%9B%BD%E5%BF%97.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《三國志》〈吳主傳〉獨立轉錄覆核",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/047.htm",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《資治通鑑》建安十八年",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E7%BC%96%E5%B9%B4/%E8%B5%84%E6%B2%BB%E9%80%9A%E9%89%B4.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "《三國演義》第四十六回",
+      "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E9%9B%86%E8%97%8F/%E6%BC%94%E4%B9%89/%E4%B8%89%E5%9B%BD%E6%BC%94%E4%B9%89.txt",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "arrow-on-hull",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at waterway deck at overcast dawn, one young eastern ruler gripping a wooden rail, arrow stuck in the outer hull at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02001",
+          "text": "建安十八年，《魏略》記孫權乘大船靠近濡須曹營。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ],
+      "chapter": "建安十八年：孫權的大船靠近曹營"
+    },
+    {
+      "id": "boat-leans",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at same waterside deck in flat pale afternoon light, one young eastern ruler leaning toward the low side, tilted gunwale close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02002",
+          "text": "箭落在一側，船身偏了，眼看就要翻。"
+        }
+      ]
+    },
+    {
+      "id": "turn-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at same river deck in grey morning light, one young eastern ruler pointing across the deck, long wooden steering oar at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02003",
+          "text": "船上的孫權讓船轉向，這一側的箭怎麼辦？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "no-shot-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at waterway camp in soft soft morning light, one northern warlord lifting one hand toward the archers, unstrung bow by his side as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02004",
+          "text": "但另一份記錄裡，曹操給弓弩手的命令完全相反。"
+        }
+      ]
+    },
+    {
+      "id": "later-page-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at quiet study in lamplight, one robed scholar opening a blank stitched book, blank pages on desk off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02005",
+          "text": "很久以後，一位小說人物也坐上了挨箭的船。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "ten-thousand-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at war tent in muted daylight, one robed strategist counting on his fingers, blank reed tally beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02006",
+          "text": "他還得交出十萬枝箭；三天期限又是誰給的？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "two-record-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at study table in soft soft morning light, one history reader holding two blank folios apart, two blank folios at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02007",
+          "text": "如果兩份古書連箭有沒有射都說不一樣，這艘船該怎麼看？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "ruxu-fort",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at riverside in overcast morning light, one young eastern ruler examining a plain timber palisade, river fort stakes close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02008",
+          "text": "往前一年，孫權聽說曹操將攻來，便修築濡須塢。"
+        }
+      ],
+      "chapter": "孫權先築濡須塢，曹操隨後來攻"
+    },
+    {
+      "id": "fort-water",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at riverbank in diffuse daylight, one river sentry watching vessels from the bank, nearby moored vessel at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02009",
+          "text": "那是臨水的防線，曹軍要接近，就得面對江上的船。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "cao-arrives",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at waterway bank in grey soft morning light, one northern warlord arriving at a shore-side camp, plain campaign banner as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02010",
+          "text": "到了次年正月，曹操真的攻到濡須。"
+        }
+      ]
+    },
+    {
+      "id": "two-sides",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at shore camp in muted afternoon light, one river sentry marking days on an unlettered wood tally, long riverfront off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02011",
+          "text": "孫權的軍隊迎上去，兩邊就這樣相持一個多月。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "river-standoff",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at study desk in window light, one history reader following a line in a blank chronicle, open bound book beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02012",
+          "text": "只看本傳，觀眾甚至不會知道那艘船經過軍前。"
+        }
+      ]
+    },
+    {
+      "id": "order-unknown",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at bank overlook in cloudy soft morning light, one northern warlord studying rivervessels from a bank, ordered troops in distance at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02013",
+          "text": "本傳記曹操望見孫權軍隊整齊，便感嘆一聲。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "missing-action",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at study desk in soft window light, one history reader holding a brush above a blank gap, blank manuscript leaf close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02014",
+          "text": "可是，本傳沒說曹操那一刻有沒有命令放箭；他到底怎麼做？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "notes-attached",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at study desk in mild daylight, one history reader opening a second blank booklet, booklet beside main volume at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02015",
+          "text": "要找到船靠近曹軍的細節，得讀本傳旁邊的注。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "peis-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at study table in diffused light, one history reader placing two blank folios side by side, paired folios as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02016",
+          "text": "裴松之在同一段注裡，並列兩份細節不合的引書。"
+        }
+      ]
+    },
+    {
+      "id": "boat-kind-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at waterside workshop in cloudy pale afternoon light, one vesselwright comparing two simple wooden vessel models, small and large model vessels off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02017",
+          "text": "它們連孫權乘船的船型，都說得不同。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "which-order",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at river camp in muted daylight, one northern warlord turning toward an archer, bow in archer's hand at frame edge beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02018",
+          "text": "更大的分歧，是曹操怎麼應對這艘船。"
+        }
+      ]
+    },
+    {
+      "id": "wu-light-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at waterway channel in pale soft morning light, one young eastern ruler standing beside a small boat rail, light riverboat prow at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02019",
+          "text": "《吳歷》寫的是一艘輕船，孫權親自靠近曹軍。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ],
+      "chapter": "《吳歷》說：弓弩不得妄發"
+    },
+    {
+      "id": "first-challenge",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at waterside deck in hazy pale afternoon light, one young eastern ruler raising a small signal flag, still enemy shore close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02020",
+          "text": "在它的敘述裡，孫權先前幾次挑戰，曹操一直守著不出。"
+        }
+      ]
+    },
+    {
+      "id": "oil-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at shore watch in dim lantern light, one river sentry watching a vessel pass in darkness, small oil vessel silhouette at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02021",
+          "text": "它也記曹軍曾乘船夜渡，孫權水軍圍上去迎戰。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "hold-shore",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at light boat in pale soft morning light, one young eastern ruler checking the opposite bank, nearby moored boat as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02022",
+          "text": "所以等孫權自己靠近時，兩邊已經交過手。"
+        }
+      ]
+    },
+    {
+      "id": "camp-reaction",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at riverside camp in grey pale afternoon light, one northern officer pointing toward the approaching boat, boat on horizon off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02023",
+          "text": "曹營將領先以為孫權又來挑戰，會動手嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "cao-recognizes",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at bank lookout in mild daylight, one northern warlord studying a distant boat, riverboat silhouette beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02024",
+          "text": "曹操卻判斷：他是要親眼看我的軍容。"
+        }
+      ]
+    },
+    {
+      "id": "hold-bows",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at bank archery line in cloudy light, one northern warlord lowering an outstretched hand, lowered bow in foreground at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02025",
+          "text": "《吳歷》記他的命令是「弓弩不得妄發」：先別亂射。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "light-boat-passes",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at light boat at muted noon, one young eastern ruler looking back across the water, unmarked boat wake close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02026",
+          "text": "孫權乘船從軍前走過，又沿原路折返。"
+        }
+      ]
+    },
+    {
+      "id": "light-boat-music",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at open water channel in muted noon light, one river drummer striking a small hand drum, returning light vessel at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02027",
+          "text": "《吳歷》還說，他回程時傳出鼓吹聲。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "no-arrows",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at light boat at pale noon, one young eastern ruler resting his palm on a bare rail, clean boat side as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02028",
+          "text": "這份敘述沒有那艘船受箭的場面。"
+        }
+      ]
+    },
+    {
+      "id": "cao-praise",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at bank platform in soft pale afternoon light, one northern warlord looking toward aligned troops, orderly river vessels off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02029",
+          "text": "還記得曹操望見整齊的軍隊嗎？《吳歷》接著寫他稱讚孫權，最後撤軍。",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "other-book-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at study desk in lamp light, one history reader lifting the other folio, blank second folio beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02030",
+          "text": "開場那艘一側插滿箭的大船，又從哪裡來？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "wei-large-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at study table in window light, one history reader laying a second volume open, blank stitched book at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02031",
+          "text": "它來自裴注緊接著引的《魏略》，不是《吳歷》。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ],
+      "chapter": "《魏略》說：船偏重，快翻了"
+    },
+    {
+      "id": "same-bank",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at wide riverboat deck in grey pale afternoon light, one young eastern ruler scanning the opposite bank, enemy palisade in distance close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02032",
+          "text": "《魏略》也說孫權乘船到曹軍前觀察。"
+        }
+      ]
+    },
+    {
+      "id": "different-size",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at large rivervessel in overcast daylight, one young eastern ruler walking across a broad deck, wide gunwale at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02033",
+          "text": "但這一次，書裡明說他乘的是大船。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "order-to-fire",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at shore camp in flat soft morning light, one northern warlord raising a commanding hand, bowmen blurred in the distance as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02034",
+          "text": "而曹操下的令，變成讓弓弩手亂發。"
+        }
+      ]
+    },
+    {
+      "id": "first-impact",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at wide deck in muted pale afternoon light, one young eastern ruler ducking beside a broad rail, arrows in outer planks off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02035",
+          "text": "箭射中孫權的船，不斷落向同一側。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "ship-load",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at wide deck in overcast light, one young eastern ruler watching the low gunwale, arrowed outer planks beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02036",
+          "text": "這樣下去，大船還能平穩回去嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "load-shifts",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at slanted deck in soft cloudy light, one young eastern ruler holding onto a tilted post, low gunwale near water at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02037",
+          "text": "《魏略》說，那一側變重，船身幾乎覆過去。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "turn-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at wide deck in overcast pale afternoon light, one young eastern ruler pointing at the opposite side, turned wooden prow close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02038",
+          "text": "孫權於是讓船回轉，把另一側朝向曹軍。"
+        }
+      ]
+    },
+    {
+      "id": "turn-risk",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at wide deck in grey daylight, one young eastern ruler watching arrows from the opposite bank, opposite broad rail at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02039",
+          "text": "船還在曹軍射程裡，轉過來才可能讓另一側也受箭。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "second-side",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at broad deck in grey soft morning light, one young eastern ruler steadying himself beside rail, arrows in opposite outer planks as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02040",
+          "text": "箭又射上另一邊，兩側的重量漸漸拉平。"
+        }
+      ]
+    },
+    {
+      "id": "boat-level",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at returning rivervessel in mild pale afternoon light, one young eastern ruler standing upright again, level broad gunwale off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02041",
+          "text": "《魏略》的結尾很短：箭均、船平，然後回去。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "save-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at returning riverboat in cloudy afternoon light, one young eastern ruler checking the waterline, balanced arrowed hull beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02042",
+          "text": "船平了，可孫權出發前就是要來借箭的嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "no-number",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at study desk in neutral light, one history reader turning an empty tally face down, plain wood tally at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02043",
+          "text": "《魏略》沒說他預先求箭，也沒有箭數或交箭的期限。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "no-grass",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at study table in pale afternoon light, one history reader moving a blank small boat sketch aside, plain open page close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02044",
+          "text": "草束、濃霧和二十艘船，都不在《魏略》這幾句裡。"
+        }
+      ]
+    },
+    {
+      "id": "gap-in-text",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at study table in soft daylight, one history reader holding an empty measuring rod, plain vessel sketch at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02045",
+          "text": "原文沒給船的尺寸和箭重；單憑這幾句，算不出翻覆風險。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "cannot-join",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at study table in soft light, one history reader separating two folios, paired blank pages as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02046",
+          "text": "不能把兩段接成「先禁射、後開射」的同一趟航程。"
+        }
+      ]
+    },
+    {
+      "id": "no-verdict",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at quiet study in muted pale afternoon light, one history reader setting down an ink brush, two open blank folios off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02047",
+          "text": "我們手上沒有足夠證據，替這兩份引書判出哪個細節真。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "wait-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at study shelves in lamplight, one history reader reaching toward a larger book, large bound volume beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02048",
+          "text": "那後來編年史講這場對峙，選了哪幅畫面？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "tongjian-selection",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at bank lookout in overcast soft morning light, one northern warlord watching a line of vessels, aligned rivervessels at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02049",
+          "text": "還記得曹操稱讚孫權軍容嗎？《通鑑》留下這句與撤兵。",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "tongjian-omits",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at study desk in window light, one history reader passing a finger along a short blank line, plain book leaf close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02050",
+          "text": "它沒收《魏略》的轉船受箭；史家省略，能裁決真偽嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "silence-limits",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at study table in pale daylight, one history reader closing the chronicle gently, closed bound book at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02051",
+          "text": "不能。《通鑑》沒寫射箭命令，也沒替兩份引書判真偽。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "novel-arrives",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at study in lantern light, one robed scholar opening a stitched novel, blank page spread as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02052",
+          "text": "又過了許久，另一本書讓船上的箭變成一個精心安排的任務。"
+        }
+      ]
+    },
+    {
+      "id": "whose-task",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at war tent in soft pale afternoon light, one robed strategist looking toward a shadowed tent entrance, empty reed bundle off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02053",
+          "text": "這次主角不是孫權；逼他交箭的人又是誰？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "novel-label",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at study in pale daylight, one robed scholar turning a novel leaf, blank stitched pages beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02054",
+          "text": "在《三國演義》第四十六回，周瑜把諸葛亮請進軍帳。"
+        }
+      ],
+      "chapter": "周瑜要造箭，諸葛亮自限三日"
+    },
+    {
+      "id": "zhou-demand",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at war tent in grey soft morning light, one robed navy chief pointing at a blank tally, plain wood tally at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02055",
+          "text": "小說裡，周瑜要諸葛亮替軍中造一大批箭。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "zhou-trap",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at war tent in lamplight, one robed navy chief hiding a blank order behind his back, folded blank document close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02056",
+          "text": "小說還說，周瑜想用這件難事除掉諸葛亮。"
+        }
+      ]
+    },
+    {
+      "id": "stall-materials",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at war store tent in window light, one robed quartermaster hiding bundles of arrow shafts, unused arrow shafts at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02057",
+          "text": "周瑜暗令工匠拖延，連造箭材料也不給齊。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "ten-vs-three",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at war tent in soft soft morning light, one robed strategist holding up three fingers, empty arrow case as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02058",
+          "text": "周瑜原問十天，諸葛亮卻自己說：三天就夠。"
+        }
+      ]
+    },
+    {
+      "id": "pledge",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at war tent in lamp and window light, one robed strategist pressing a seal onto a blank page, blank document off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02059",
+          "text": "他還立下軍令狀；期限到而交不出，就得受罰。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "lu-su-boats",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at river dock in grey afternoon light, one robed aide counting moored boats with his finger, row of small boats beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02060",
+          "text": "諸葛亮私下向魯肅借了二十艘船；箭要落在哪裡？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "secret-loan",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at dock shelter in soft soft morning light, one robed strategist holding a finger to his lips, moored vessels beyond at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02061",
+          "text": "他特別交代魯肅：別讓周瑜知道借船的事。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "straw-bundles",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at boat dock in cloudy afternoon light, one novel boatman tying a straw bundle to a rail, thick straw bundle close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02062",
+          "text": "船兩側綁上草束，箭才有地方扎住。"
+        }
+      ]
+    },
+    {
+      "id": "two-idle-days",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at river pier in dim misty light, one robed aide stepping aboard a small boat, boat rail at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02063",
+          "text": "前兩天沒見他造箭；第三天魯肅才跟著上船。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "lu-su-doubts",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at small boat in misty predawn, one robed aide questioning his companion, plain boat rail as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02064",
+          "text": "魯肅問要到哪裡取箭，諸葛亮只說：到了就知道。"
+        }
+      ]
+    },
+    {
+      "id": "third-dawn",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at waterside pier before dawn in dim light, one robed strategist stepping aboard a small vessel, foggy river ahead off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02065",
+          "text": "第三天將明未明，江面起了大霧。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ],
+      "chapter": "霧裡的二十艘船轉過身"
+    },
+    {
+      "id": "mist-hides",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at riverboat deck in early grey light, one novel boatman holding a taut tow rope, boats fading into mist beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02066",
+          "text": "船連在一起向曹營開去，遠遠只看見霧。"
+        }
+      ]
+    },
+    {
+      "id": "drums",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at small boat in foggy predawn, one novel boatman striking a small drum, drum at rail at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02067",
+          "text": "到了曹軍水寨前，船上擂鼓呼喊；曹軍會衝出來嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "drum-bait",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at small boat in grey predawn, one robed aide looking toward the hidden camp gate, misty shore close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02068",
+          "text": "如果曹軍真的衝出營，草束根本保不住人。"
+        }
+      ]
+    },
+    {
+      "id": "cao-fears",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at river fortress in grey predawn, one northern warlord looking into thick mist, closed camp gate at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02069",
+          "text": "小說的曹操怕霧中有埋伏，沒讓人出營。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "fire-fog",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at riverbank in grey predawn, one northern archer drawing a bow toward mist, boat silhouette beyond fog as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02070",
+          "text": "他叫弓弩手朝江上放箭。"
+        }
+      ]
+    },
+    {
+      "id": "shore-archers",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at shore rampart in grey predawn, one northern archer joining the firing line, wooden bow and quiver off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02071",
+          "text": "陸寨弓弩手也來助射，箭密得像雨。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "grass-catches",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at small boat in misty early light, one novel boatman ducking beside a straw rail, arrows in straw bundles beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02072",
+          "text": "箭扎進一側的草束；另一面還空著，怎麼辦？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "turn-novel",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at small vessel at grey dawn, one robed strategist pointing toward the opposite vessel side, straw rail on other side at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02073",
+          "text": "諸葛亮又叫船轉向，讓另一面也去受箭。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "both-sides-novel",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at small boat as mist thins, one robed strategist checking packed straw bundles, arrows on both straw rails close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02074",
+          "text": "還記得開頭那次轉船嗎？小說的兩面受箭，是為了交差。",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "shout-thanks",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at waterfront in soft morning light, one novel boatman cupping one hand to shout, bundles of collected arrows at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02075",
+          "text": "船離開時，軍士還喊：謝丞相箭！",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "cao-knows-late",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at riverbank in soft morning light, one northern warlord watching distant small boats, open river channel as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02076",
+          "text": "等曹操知道受騙，船已順水走遠，追不上了。"
+        }
+      ]
+    },
+    {
+      "id": "count-in-novel",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at novel waterside dock in pale afternoon light, one novel vesselman lifting a packed arrow bundle, arrows gathered on shore off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02077",
+          "text": "兩面都收了箭，這樣夠交差嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "number-origin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at study desk in mild light, one history reader placing an unmarked tally beside two books, plain tally beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02078",
+          "text": "照小說這筆帳，總數超過十萬枝。"
+        }
+      ]
+    },
+    {
+      "id": "fog-forecast",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at returning boat in morning light, one robed aide looking across the clearing river, pale fog on water at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02079",
+          "text": "魯肅問他怎敢限三天；小說讓諸葛亮說，早算準第三天會起大霧。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "zhou-men-at-dock",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at waterside dock in pale afternoon light, one novel boatman handing over an arrow bundle, wooden arrow bundle close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02080",
+          "text": "周瑜已派五百名士卒到江邊等著搬箭。"
+        }
+      ]
+    },
+    {
+      "id": "zhou-amazed",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at war tent in daytime light, one robed navy chief receiving an arrow case, packed arrow case at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02081",
+          "text": "周瑜在小說裡收到了箭，也承認諸葛亮算得準。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "novel-payoff",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at war tent in muted soft morning light, one robed strategist handing over a filled arrow case, packed arrow case as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02082",
+          "text": "軍令狀的死期也被小說這趟江行解開。"
+        }
+      ]
+    },
+    {
+      "id": "red-cliff-time",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at study table in window light, one robed scholar opening a broad blank map, two distant river marks without text off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02083",
+          "text": "但小說把這段放在何時？赤壁大戰之前。",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ],
+      "chapter": "兩艘船分屬不同故事"
+    },
+    {
+      "id": "ruxu-time",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at study table in soft daylight, one history reader laying a second blank map beside first, river channel sketched without labels beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02084",
+          "text": "孫權船臨曹軍的兩份引書，記在五年後的濡須對峙。"
+        }
+      ]
+    },
+    {
+      "id": "different-men",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at study table in neutral light, one history reader moving two plain figurines apart, separate vessel models at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02085",
+          "text": "小說是諸葛亮受周瑜催箭；引書則是孫權去看曹軍。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "different-plan",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at waterside workshop in diffused light, one boatwright placing straw on one boat model, two contrasting boat models close beside this figure",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02086",
+          "text": "小說先備草船等箭；《魏略》是中箭後才轉船。"
+        }
+      ]
+    },
+    {
+      "id": "motif-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at quiet study in lamplight, one robed scholar pausing over two open volumes, unmarked pages at the near edge",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02087",
+          "text": "同樣是轉船，能因此說小說一定改寫了《魏略》嗎？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "no-link",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at study in soft soft morning light, one robed scholar leaving two blank volumes apart, space between books as the only foreground object",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02088",
+          "text": "兩段文字的畫面相似，但僅靠這些字，證不出直接改編的路徑。"
+        }
+      ]
+    },
+    {
+      "id": "second-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot at study desk in thin light, one history reader touching the other open book, blank second folio off to one side",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02089",
+          "text": "把小說的主角直接換成孫權，反而蓋住了兩份引書的衝突。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
+        }
+      ]
+    },
+    {
+      "id": "history-boundary",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot at study desk in afternoon light, one history reader closing the novel beside two histories, three closed volumes beneath their gaze",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02090",
+          "text": "一段有爭議的引書，不能替小說的箭數作歷史證明。"
+        }
+      ]
+    },
+    {
+      "id": "ending-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at study in soft evening light, one history reader lifting a blank index card, empty card at frame center",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s02091",
+          "text": "你更想查清：那天曹軍是否放箭，還是小說怎麼想到草束？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "孫權受箭：兩份引書不同說法"
+        ]
+      },
+      "lines": [
+        {
+          "id": "s02092",
+          "text": "想跟著原文看清歷史名場面，訂閱奇聞檔案局。"
+        }
+      ]
+    }
+  ]
+}
