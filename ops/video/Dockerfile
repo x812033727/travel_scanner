@@ -11,8 +11,25 @@
 FROM mcr.microsoft.com/playwright:v1.64.0-noble@sha256:06a9939e57531807f8d5fd76ce44b53165ffb7d7501d87ab10e285c20b1e971f AS worker
 
 RUN apt-get update \
- && apt-get install -y --no-install-recommends ffmpeg python3-venv \
+ && apt-get install -y --no-install-recommends ca-certificates curl ffmpeg python3-venv unzip \
  && rm -rf /var/lib/apt/lists/*
+
+# rclone copies the videos on YouTube to the owner's Google Drive (docs/videos/BACKUP.md,
+# tools/video/automation/backup.mjs). A release from rclone's own downloads, pinned by version
+# and by the SHA-256 its SHA256SUMS publishes, so the image cannot change without a diff here.
+ARG RCLONE_VERSION=1.74.4
+ARG RCLONE_SHA256_AMD64=fe435e0c36228e7c2f116a8701f01127bb1f694005fc11d1f27186c8bca4115d
+ARG RCLONE_SHA256_ARM64=97685285c9ad6a0cf17d5844115d2a67245af6444db672187074bd9c358de419
+RUN set -eu; \
+    arch="$(dpkg --print-architecture)"; \
+    case "$arch" in amd64) sum="$RCLONE_SHA256_AMD64" ;; arm64) sum="$RCLONE_SHA256_ARM64" ;; *) echo "no rclone for $arch" >&2; exit 1 ;; esac; \
+    cd /tmp; \
+    curl -fsSLo rclone.zip "https://downloads.rclone.org/v${RCLONE_VERSION}/rclone-v${RCLONE_VERSION}-linux-${arch}.zip"; \
+    echo "$sum  rclone.zip" | sha256sum -c -; \
+    unzip -q rclone.zip; \
+    install -m 0755 "rclone-v${RCLONE_VERSION}-linux-${arch}/rclone" /usr/local/bin/rclone; \
+    rm -rf rclone.zip "rclone-v${RCLONE_VERSION}-linux-${arch}"; \
+    rclone version | head -n 1
 
 # The second-opinion transcriber for `check-audio` (docs/videos/DUBS.md §聲音會唸錯的地方):
 # faster-whisper on the CPU, in its own venv so it never touches the image's Python. Without it
@@ -64,6 +81,7 @@ RUN --mount=type=tmpfs,target=/dev/shm \
     node --test ops/video/sync-docs.test.mjs; \
     node ops/video/sync-docs.mjs; \
     ffmpeg -hide_banner -encoders | grep -q libx264; \
+    rclone version | grep -q "^rclone v"; \
     /opt/whisper/bin/python -c 'import faster_whisper'; \
     /opt/whisper/bin/python tools/video/tts/whisper_second_opinion.py 2>&1 | grep -q usage; \
     test -f .agents/skills/youtube-video/references/script-writing.md; \

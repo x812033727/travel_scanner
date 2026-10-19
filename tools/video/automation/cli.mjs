@@ -1,14 +1,16 @@
 // `auto`: the pipeline running from the owner's settings (docs/videos/AUTOMATION.md). Each run
 // does units of work until nothing can move — every video waits on the owner, or a new draft is
 // not due yet — and exits; the worker's loop starts it again a few minutes later. `--once` does
-// a single unit, for trying it by hand. After the units, once a run, the tidy clears the work
-// files of the oldest video finished long enough ago (tidy.mjs); `tidy` runs that by hand, and
+// a single unit, for trying it by hand. After the units, once a run, the backup copies the videos
+// on YouTube to Google Drive (backup.mjs) and the tidy clears the work files of the oldest video
+// finished long enough ago that Drive has (tidy.mjs); `tidy` runs that by hand, and
 // `tidy --dry-run` only says what would go. `restyle --slug S` retells one of the worker's videos
 // in the storytelling register (docs/videos/ILLUSTRATED.md §說書式旁白) through the listener's
 // register pass; `--dry-run` only measures the script.
 import { parseArgs } from "node:util";
 
 import { resolveWorkBase, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
+import { backupRound } from "./backup.mjs";
 import { AutomationError, automationClient } from "./client.mjs";
 import { Automation } from "./flow.mjs";
 import { shortsStep, ShortsWorker } from "./shorts.mjs";
@@ -22,7 +24,7 @@ export const MAX_UNITS_PER_RUN = 40;
  * lines it prints. It never stops the worker: a file that cannot go is reported, and anything
  * unexpected ends the tidy with a line while the round ends as usual.
  */
-export function tidyAfterRound(ctx, site) {
+export function tidyAfterRound(ctx, site, backup) {
   try {
     const retention = retentionFrom(ctx.env);
     if (retention.off) return [];
@@ -31,10 +33,25 @@ export function tidyAfterRound(ctx, site) {
     if (where.refused) return [`tidy: not run: ${where.refused}`];
     if (where.missing) return [];
     // ctx.tidyFs: tests hand in a file system whose removals fail; the worker uses node:fs.
-    const round = tidyRound({ base: where.base, repos: repositories(ctx.root ?? ROOT), site: Array.isArray(site) ? site : null, now: ctx.now(), days: retention.days, fs: ctx.tidyFs });
+    const round = tidyRound({ base: where.base, repos: repositories(ctx.root ?? ROOT), site: Array.isArray(site) ? site : null, backup, now: ctx.now(), days: retention.days, fs: ctx.tidyFs });
     return roundLines(round);
   } catch (error) {
     return [`tidy: stopped by an error (${error.message}); the round ends as usual`];
+  }
+}
+
+/**
+ * The backup at the end of a round (backup.mjs): its lines printed, its gate for the tidy. It
+ * never stops the worker; a round it could not finish holds the tidy instead.
+ */
+export async function backupAfterRound(ctx) {
+  try {
+    const { lines, gate } = await backupRound(ctx, { client: ctx.backupClient, rclone: ctx.backupRclone });
+    for (const line of lines) ctx.stdout.write(`${line}\n`);
+    return gate;
+  } catch (error) {
+    ctx.stdout.write(`backup: stopped by an error (${error.message}); the tidy keeps every video on YouTube\n`);
+    return { unknown: error.message };
   }
 }
 
@@ -73,7 +90,9 @@ async function tidy(args, ctx) {
     ctx.stderr.write(`the site's video list, which dates the videos on YouTube, could not be read: ${error.message}\n`);
     return error.who === "owner" ? EXIT.owner : EXIT.external;
   }
-  const round = tidyRound({ base: where.base, repos: repositories(ctx.root ?? ROOT), site, now: ctx.now(), days: retention.days, dryRun, fs: ctx.tidyFs });
+  // Judged only, nothing copied: a video Drive does not have yet keeps its files here too.
+  const { gate } = await backupRound(ctx, { copy: false, client: ctx.backupClient });
+  const round = tidyRound({ base: where.base, repos: repositories(ctx.root ?? ROOT), site, backup: gate, now: ctx.now(), days: retention.days, dryRun, fs: ctx.tidyFs });
   ctx.stdout.write(`work base ${where.base}; a finished video keeps its work files for ${retention.days} days\n`);
   for (const line of roundLines(round, { verbose: true })) ctx.stdout.write(`${line}\n`);
   return EXIT.ok;
@@ -140,6 +159,8 @@ export async function run(command, args, ctx) {
     if (low) await shortsStep(shorts);
     if (!settings.enabled) {
       if (!low && !stopNow()) await shortsStep(shorts);
+      // The videos already on YouTube are copied to Drive whether or not new drafts are made.
+      if (!stopNow()) await backupAfterRound(ctx);
       ctx.stdout.write("automatic drafts are off in the settings on /admin/videos; nothing to do\n");
       return EXIT.ok;
     }
@@ -174,8 +195,12 @@ export async function run(command, args, ctx) {
     };
     await Promise.all(lanes.map(drive));
     if (!low && !stopped && !stopNow()) await shortsStep(shorts);
-    // Once a round, after the units and whether or not any moved; a STOP file stops it too.
-    if (!stopped && !stopRequested(automation.workBase)) for (const line of tidyAfterRound(ctx, automation.site)) ctx.stdout.write(`${line}\n`);
+    // Once a round, after the units and whether or not any moved: the backup, then the tidy,
+    // which keeps every video Drive does not have yet. A STOP file stops both.
+    if (!stopped && !stopRequested(automation.workBase)) {
+      const backup = await backupAfterRound(ctx);
+      for (const line of tidyAfterRound(ctx, automation.site, backup)) ctx.stdout.write(`${line}\n`);
+    }
     return EXIT.ok;
   } catch (error) {
     if (!(error instanceof AutomationError)) throw error;
