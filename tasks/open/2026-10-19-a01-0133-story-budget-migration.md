@@ -29,10 +29,12 @@ not authorize merging, deployment, or paid video work.
 
 ## Definition of done
 
-- [ ] A draft PR from current main contains the exact reviewed migration and
-  its test, with no #1510 implementation or other file changes.
-- [ ] Alembic has one head, 0133 follows 0132, focused checks and PostgreSQL CI
+- [x] A draft PR from main contains the exact transferred migration and its
+  test, with no #1510 implementation or other production-code changes.
+- [x] Alembic has one head, 0133 follows 0132, focused checks and PostgreSQL CI
   pass, and the release dependency on the 0132 compatibility image is explicit.
+- [ ] Independent migration review is recorded before this draft is considered
+  for a separately authorized merge or deployment.
 
 ## Steps
 
@@ -40,7 +42,7 @@ not authorize merging, deployment, or paid video work.
   two claims there, and preserve its other code and task scope.
 - [x] Copy the two files byte-for-byte to this current-main branch.
 - [x] Run focused migration, schema, SQL dialect, Ruff, mypy, and task checks.
-- [ ] Open a draft PR with `no-auto-merge`, then inspect PostgreSQL CI.
+- [x] Open draft PR #1585 with `no-auto-merge` and inspect PostgreSQL CI.
 
 ## How to verify
 
@@ -68,5 +70,11 @@ Local 2026-10-19: `alembic heads` returned exactly
 11 passed, 1 PostgreSQL-only skipped. Targeted Ruff, `mypy app` (479 files),
 `mypy tests` (403 files), and `npm run check:tasks` passed. This Windows host
 has neither `pg_isready` nor Docker, so the actual
-PostgreSQL upgrade case awaits CI, which provisions PostgreSQL and sets
+PostgreSQL upgrade case was left to CI, which provisions PostgreSQL and sets
 `RUN_INTEGRATION_TESTS=1` in the API test shards.
+
+Draft PR #1585 at `b01ca052991e74f7307c2007aaf981806b7c6858` completed
+22/22 CI checks successfully on 2026-10-19, including all four PostgreSQL API
+test shards, `api-checks`, `containers`, and `full-stack-smoke`. The PR remains
+draft with `no-auto-merge`; independent migration review and explicit owner
+authorization remain separate gates. No merge, deployment, or paid work ran.
