@@ -55,4 +55,4 @@ node tools/video/cli.mjs narrative --slug curio-s07
 
 固定版本：`Ancient-China-Books/sanguozhi@10a0b1ab3019d8821262f7402366d14fb4aaa102` 與 `Ancient-China-Books/sanguoyanyi@761813427eb5685c395804493f9fbd7ad8dc7d8d`，直接段落連結見 `research.md`。`topics.json` 的未核句子有誤，此票不碰共享題庫；以本集已核文本為準。沒有呼叫 TTS、圖片或其他付費生成。協作分工只包含 `docs/videos/curio-s07/` 與此票，不改其他集。
 
-2026-10-19：上一凍結稿 `da7f4441…` 的新獨立來源隔離盲讀得必要題 8/12、選答 1/1，不通過；四個阻斷為劇透、史書／小說時間線折返、開場二十騎回收太弱、結尾重複。固定史料主幹通過，另修小說挑戰字句與聲勢、露天窗光。集中改稿現版 `script.md` SHA-256 `3abd11daead95c90d68147173eec97e467828eb63d6d8f65daf84046bbb7d330`，95 句／86 插圖／六章、估 8.1 分、lint 0 errors / 0 warnings，逐句表同步。原始回執與改稿見 [`verify-3.md`](../../docs/videos/curio-s07/verify-3.md)；尚待新的確切雜湊獨立盲讀和改句來源覆核，不啟動付費媒體。
+2026-10-19：上一凍結稿 `da7f4441…` 的新獨立來源隔離盲讀得必要題 8/12、選答 1/1，不通過；四個阻斷為劇透、史書／小說時間線折返、開場二十騎回收太弱、結尾重複。固定史料主幹通過，另修小說挑戰字句與聲勢、露天窗光。集中改稿現版 `script.md` SHA-256 `59904ee2f975ac2353a612551de7521d888cd04e4ab1e3d5a327cf57c4d3e78d`，95 句／86 插圖／六章、估 8.1 分、lint 0 errors / 0 warnings，逐句表同步。原始回執與改稿見 [`verify-3.md`](../../docs/videos/curio-s07/verify-3.md)；尚待新的確切雜湊獨立盲讀和改句來源覆核，不啟動付費媒體。
