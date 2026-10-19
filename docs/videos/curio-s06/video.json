@@ -34,7 +34,7 @@
     },
     {
       "setup": "gs004",
-      "payoff": "gs059",
+      "payoff": "gs071",
       "what": "小說的樊城華佗能否趕上219年"
     },
     {
@@ -94,7 +94,7 @@
     },
     {
       "setup": "gs044",
-      "payoff": "gs059",
+      "payoff": "gs071",
       "what": "華佗死亡與樊城年表"
     },
     {
@@ -124,7 +124,7 @@
     },
     {
       "setup": "gs057",
-      "payoff": "gs059",
+      "payoff": "gs071",
       "what": "華佗能否趕上樊城戰事"
     },
     {
@@ -141,6 +141,11 @@
       "setup": "gs069",
       "payoff": "gs070",
       "what": "小說名醫的關鍵究竟是姓氏還是安放年份"
+    },
+    {
+      "setup": "gs102",
+      "payoff": "gs111",
+      "what": "小說醫生術後提醒何事"
     }
   ],
   "youtube": {
@@ -529,7 +534,39 @@
       "lines": [
         {
           "id": "gs102",
-          "text": "治療後，小說讓關羽說右臂又能伸展，還當眾稱讚華佗是神醫。",
+          "text": "治療後，小說讓關羽試著伸展右臂，稱讚他是神醫；醫生卻提醒了什麼？",
+          "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "gs111",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a physician offering quiet advice beside a fully wrapped right sleeve in a military tent, soft light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs111",
+          "text": "華佗提醒關羽，箭瘡雖治，仍要護著，別讓怒氣傷觸。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "gs112",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a plain bowl and a small covered pouch on a camp table, warm lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs112",
+          "text": "他說過百日才會恢復如舊；關羽設席道謝，送上百兩金。",
           "emotion": "自然說故事"
         }
       ]
@@ -1018,6 +1055,38 @@
       ]
     },
     {
+      "id": "gs109",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a physician holding an unlettered scroll inside a dim cell, soft lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs109",
+          "text": "臨死前，華佗拿出一卷醫書，對獄吏說：這能救人。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "gs110",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a plain unlettered scroll curling near a small contained flame, no readable writing, soft lamplight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs110",
+          "text": "獄吏怕犯禁不收，華佗把那卷書燒掉；傳記才接著說「佗死後」。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
       "id": "gs050",
       "template": "shot",
       "data": {
@@ -1188,7 +1257,7 @@
       "lines": [
         {
           "id": "gs059",
-          "text": "小說那位在樊城報名的華佗，依史書年表，來得太晚。",
+          "text": "把兩個日期放在一起，小說軍帳裡的醫生，忽然碰上了一道年代裂口。",
           "emotion": "自然說故事"
         }
       ]
@@ -1204,7 +1273,7 @@
       "lines": [
         {
           "id": "gs060",
-          "text": "這句判斷只對小說安放在樊城的場景成立。",
+          "text": "但別急著把這道裂口搬到史書的舊傷上：那是另一段沒有寫年份的記述。",
           "emotion": "自然說故事"
         }
       ]
@@ -1220,7 +1289,7 @@
       "lines": [
         {
           "id": "gs061",
-          "text": "真正麻煩的是，史書那次左臂手術沒標年份，也沒說是在樊城。",
+          "text": "〈關羽傳〉那次左臂手術，沒有說醫生哪年來，也沒說就在樊城。",
           "emotion": "自然說故事"
         }
       ]
@@ -1236,7 +1305,7 @@
       "lines": [
         {
           "id": "gs062",
-          "text": "若它發生得早，能不能單靠年表就排除華佗？",
+          "text": "若它發生得更早，單靠年表就能排除華佗嗎？",
           "emotion": "問句自然上揚，留半拍"
         }
       ]
@@ -1252,7 +1321,7 @@
       "lines": [
         {
           "id": "gs063",
-          "text": "不能。沒有治傷年份，就無法拿剛剛那個卒年畫一條絕對的界線。",
+          "text": "不能；這條年表沒有逐一列出華佗生前給誰治過病。",
           "emotion": "自然說故事"
         }
       ]
@@ -1268,7 +1337,7 @@
       "lines": [
         {
           "id": "gs064",
-          "text": "但史書也沒有指名華佗；不能把可能性說成確定身分。",
+          "text": "〈關羽傳〉亦只寫一個「醫」，無法確認那就是華佗。",
           "emotion": "自然說故事"
         }
       ]
@@ -1284,7 +1353,7 @@
       "lines": [
         {
           "id": "gs065",
-          "text": "〈關羽傳〉的「醫」站在完整的治療記述裡，卻連姓字、籍貫都沒有。",
+          "text": "〈華佗傳〉記了不少病人，卻也沒把關羽的左臂記成他的病案。",
           "emotion": "自然說故事"
         }
       ]
@@ -1300,7 +1369,7 @@
       "lines": [
         {
           "id": "gs066",
-          "text": "這種無日期、無姓名的記述，要怎麼查到確切的醫生？",
+          "text": "那要替〈關羽傳〉這個「醫」找到姓名，還缺什麼？",
           "emotion": "自然說故事"
         }
       ]
@@ -1316,7 +1385,7 @@
       "lines": [
         {
           "id": "gs067",
-          "text": "得有另一份能明確連上這次治療的史料；不能拿小說的名片替舊傳補空格。",
+          "text": "還缺一份能明確連上這次左臂治療的可靠記載；小說裡的自報姓名屬另一類文字。",
           "emotion": "自然說故事"
         }
       ]
@@ -1332,7 +1401,7 @@
       "lines": [
         {
           "id": "gs068",
-          "text": "我們已翻過〈華佗傳〉，它記華佗被殺與曹操的後悔，卻沒替關羽左臂那次治療補名字。",
+          "text": "目前查到的這幾卷傳記裡，沒有那條把兩人連起來的記述。",
           "emotion": "自然說故事"
         }
       ]
@@ -1348,7 +1417,7 @@
       "lines": [
         {
           "id": "gs069",
-          "text": "所以回到開頭，那位小說醫生在樊城報上姓名時，關鍵是哪個字？",
+          "text": "若把小說棋局與史書治傷合成一幅圖，會在哪裡走錯？",
           "emotion": "問句自然上揚，留半拍"
         }
       ]
@@ -1364,7 +1433,7 @@
       "lines": [
         {
           "id": "gs070",
-          "text": "不是「華」，而是他被放進哪一年；華佗的死亡已經站在那個年份之前。",
+          "text": "它把後來故事提供的名字和年份，誤當成舊傳原本就有。",
           "emotion": "自然說故事"
         }
       ]
@@ -1380,39 +1449,7 @@
       "lines": [
         {
           "id": "gs071",
-          "text": "小說那一幕的華佗，接不上史書年表；它仍是一段小說，不能當作樊城的現場紀錄。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "gs072",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot a historian closing a chronicle beside a blank name card, soft light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "gs072",
-          "text": "史書中的左臂治療，醫生究竟是誰，陳壽沒有留下名字，也沒有留下手術年月。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "gs073",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot an undated wrapped left sleeve sketch beside an unfilled name card, lamplight",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "gs073",
-          "text": "說他一定是華佗，或一定不是華佗，都超過了這幾卷傳記實際給的證據。",
+          "text": "答案是：小說的樊城華佗場景對不上史書年表；史書那次治傷，醫生姓名依然無從確認。",
           "emotion": "自然說故事"
         }
       ]
@@ -1430,22 +1467,6 @@
           "id": "gs074",
           "text": "你最先想到的關羽刮骨畫面，是飯桌，還是棋盤？",
           "emotion": "問句自然上揚，留半拍"
-        }
-      ]
-    },
-    {
-      "id": "gs075",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot a wrapped left sleeve, a wrapped right sleeve, a meal bowl and a game piece on a desk, soft light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "gs075",
-          "text": "留言說說那個細節；左臂與右臂，就能幫我們找到它來自哪一頁。",
-          "emotion": "自然說故事"
         }
       ]
     },
