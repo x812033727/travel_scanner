@@ -102,6 +102,46 @@ US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限�
 5. 配音、Shorts：`docs/videos/DUBS.md`、`docs/videos/SHORTS.md`。Shorts 一律 `from-episode`（頻道聲音）；
    手動 `build --redo` 一定帶 `--speech server`，不帶會換成 Windows 的聲音。
 
+## 在雲端環境做旁白與插圖（Claude Code 雲端、Codex 雲端）
+
+2026-10-19 S01、S09、S18 三集的旁白和插圖全部在雲端容器裡做完，沒碰本機。容器裡沒有 Windows 的聲音，
+所以旁白一律走網站的頻道聲音（伺服器 Gemini TTS），插圖走網站的 MiniMax；兩者都要網站權杖，錢記在網站上。
+
+**準備（每個新容器一次）**
+
+1. 網路：容器的對外連線要允許 `mokaair.com`（環境設定的網域白名單，站主開）。Node 的 `fetch` 預設不走
+   代理，每個 `cli.mjs` 指令前面都要加 `NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1`；不加會報「cannot reach
+   mokaair.com」。
+2. 權杖：`node tools/video/cli.mjs login --name <名字>`（例如 `claude-cloud-curio`）。它印出後台連結和代碼，
+   等站主在後台按「允許」才結束，權杖存在 `~/.mokaair/video-tool.json`，不進 repo。容器回收就要重配一次。
+3. 長指令一律用工具的背景執行（Claude Code 的 `run_in_background`），不要在 shell 裡用 `&` 丟背景：
+   回合結束時 `&` 的程序會被殺，`login` 等不到允許、代碼過期。輸出導到檔案，不要接 `grep` 管線（會卡緩衝）。
+   背景執行最長 2 小時，到時間會被殺；整集插圖一集一個指令分開跑，不要三集串在一個指令裡。
+4. 工作目錄在 `/root/mokaair-work/videos/<SLUG>/`（音檔、`narration.wav`、`keyframes/manifest.json`、
+   `review/check.json`）；容器回收就沒了，交接寫進票，不要只寫路徑。
+
+**旁白**
+
+1. `tts --slug <SLUG> --dry-run` 看句數與費用 → `tts --slug <SLUG>` → `check-audio --slug <SLUG>`。
+2. `check-audio` 標出唸錯的句子寫在 `review/check-flags.json`，`tts --slug <SLUG> --redo <check-flags.json>`
+   只重唸那幾句；speech journal 記著已付錢的句子，中斷後重跑不會重複收費。
+3. 重唸還錯（中文多音字、年份、日文人名）就改那一句的字：`lexicon.json` 只收拉丁字母開頭的詞，中文讀音
+   不能放進去。改了旁白就要重新跑一次盲評 `narrative`（新讀者），再 `script --slug` 重產 `script.md`。
+4. 用 `ffmpeg -i narration.wav -codec:a libmp3lame -b:a 96k <SLUG>-narration.mp3` 轉成 mp3 給站主聽；
+   站主說可以才 `approve --slug <SLUG> --gate audio`。
+5. Gemini 回 429（`video_speech_upstream_busy`）是網站那把 Google 金鑰的當日額度用完，不是我們的錯；
+   等 07:00 UTC 重置後重跑即可，不要一直重試。
+
+**插圖**
+
+1. `keyframes --slug <SLUG> --dry-run` 拿到張數與上限金額，三集一起報、一次授權（見上一節）。
+2. 授權後一集一個背景指令：`keyframes --slug <SLUG> --takes 3`，約 30–60 分鐘。
+3. 評審三次都不過的景，照〈插圖提示詞怎麼寫〉改成「一個人做一件事」再跑同一個指令：過了的圖吃快取，
+   只畫改過的景。S01 八景、S09 六景都是這樣一輪就過。
+4. 網站回 HTTP 502 或背景到時被殺：直接重跑同一個指令，已經過的不會再收費；`ledgerTotals(workdir)`
+   （`tools/video/media/ledger.mjs`）看這集花了多少。三集合計約 US$4–5。
+5. 畫完 `review-push --slug <SLUG> --gate storyboard` 把分鏡卡推給站主看。
+
 ## 交接
 
 做到一半要停，把狀態寫進看板的票：哪幾景的插圖過了、哪幾景卡在哪一題、花了多少、下一步。不要只寫
