@@ -8,3 +8,9 @@
 - `lint --slug curio-s03`：0 errors、0 warnings。`review-push --gate storyboard` 已送站台；本機 `approve --gate storyboard` 綁定 `manifest.json` SHA-256 前綴 `ee0d1d3ae047`。核准根據站主在本對話中「以你推薦的就好不用問我」「一直做完所以影片」的製作委託，由代理檢視後代行；**沒有聲稱站主親自看過插圖**。
 
 插圖審核之外，逐句史料與敘事盲讀紀錄見 [`verify-1.md`](verify-1.md)、[`verify-2.md`](verify-2.md)、[`verify-3.md`](verify-3.md)。可續作狀態和媒體工作目錄見任務票 `tasks/open/2026-10-19-curio-s03-empty-fort-new-history.md`。
+
+## 成片與封面
+
+首版 09:36.73 成片經 `qa` **11／11 通過**。人工看封面時發現副標最後一字孤立換行，故只把副標縮成「城門大開，史官質疑」；現行 `video.json` SHA-256 `bb93f146918d033fed07d08b35272143822d44e17f2677c317934ef88ce5be8b`，旁白及插圖提示詞不變。依流程重新跑 keyframes，**0 張新圖／0 新增影像費用**；分鏡 manifest 重新送站台並依站主委託由代理本機重核，SHA-256 前綴 `a35e8e2577f7`，站主未親自看圖。`render` 重畫封面、沿用卡片；`clips` manifest 重新建立。最後 `assemble` 全部沿用 89 段編碼快取，0 段重編，完成同一成片 SHA-256 `1d20204f5d20bde4cbbfe20998f78eb40587d61a5e06c33ddc4515b780669059`。
+
+現行 `qa` 再次 **11／11 通過**：17,302 影格／09:36.73、響度 -14 LUFS、最大真峰 -0.9 dBFS、89 個狀態最長 11.4 秒、四個來源連結打開、Jev 政策合格。`review-push --gate final` 已送站台；代理依站主廣泛委託作本機 final 核准，**不表示站主親自看過或聽過**。`package` **4／4 通過**，上架包在 `/workspace/.video-work/curio-s03/upload/`，含已核准成片、修正版封面、繁中 CC、標題說明與合成內容揭露。英／日／韓語字幕尚未翻譯，屬最終語言階段；這份上架包是繁中版本，沒有聲稱多語已完成或已在 YouTube 上架。

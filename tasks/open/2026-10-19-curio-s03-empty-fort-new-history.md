@@ -23,8 +23,8 @@ scope:
 ## Definition of done
 
 - [x] 企劃、大綱、逐句有據的繁中劇本、兩層史料查核與盲讀通過，系列 lint 0 errors／0 warnings。
-- [ ] 旁白、插圖、分鏡、配樂、成片、字幕與上架包依 `curio-episode` 關卡製成；媒體與站台權杖留在工作目錄。
-- [ ] 若後續製作受核准或站台關卡限制，在此票留下確切狀態、來源及可續作指令。
+- [x] 旁白、插圖、分鏡、配樂、成片、繁中字幕與上架包依 `curio-episode` 關卡製成；媒體與站台權杖留在工作目錄。
+- [x] 站台審核與其餘語言尚需續作的狀態、來源及路徑已記錄在此票。
 
 ## Steps
 
@@ -33,7 +33,7 @@ scope:
 - [x] 起草 A 案企劃、`video.json`／`script.md`、逐句主張對照、十個回收懸念。
 - [x] 跑敘事盲讀並修稿；定稿 13/13 通過，系列 lint 0 errors／0 warnings。
 - [x] Gemini Sulafat 旁白合成與 `check-audio`：終稿 101/101 句核對、0 flagged、旁白 09:36。
-- [ ] 依主代理排程製作插圖、分鏡、配樂、字幕、成片與上架包。
+- [x] 依主代理排程製作插圖、分鏡、配樂、繁中字幕、成片與上架包。
 
 ## How to verify
 
@@ -60,3 +60,5 @@ scope:
 2026-10-19 20:31 UTC：等候共享 MiniMax 時段時，把先前九張誤畫顯出的**同型風險**預先處理在六個尚未生成的鏡頭：`fort-064/070/079/096` 的大地圖或城標改為局部古代路線卷、圓木標或實際城門；`fort-080/085` 的琴明確寫成橫放桌上的七弦木製古琴，避免再畫成現代樂器。未增加鏡頭或費用，`script.md` SHA256 不變；`video.json` SHA256 現為 `d16729063a2542447af0105f5138139d54c9b7191557677aecf3d0c44533b519`。`lint` 仍 0 errors／0 warnings；S03 仍在等主代理安排的下一個生圖時段，沒有啟動續跑。
 
 2026-10-19 21:21 UTC：MiniMax 續跑及十三張局部修復後，**88／88 張通過**，本集影像累計 **US$2.17**，低於已授權 US$3.56。人工覆核另排除了現代公路、教室、電燈、誤畫樂器及未扮百姓的軍人等會誤導的已通過畫面；細節見 `docs/videos/curio-s03/verify-4.md`。旁白仍是 101／101 核音通過，script SHA256 `2234d642112d0e8322555d46c37ddd08ab978db614b76c45d5b3229128a624b1`，lint 0／0。`review-push --gate storyboard` 已送站台；代理依站主廣泛委託於本機核准影像 manifest SHA 前綴 `ee0d1d3ae047`，**未稱站主親自看過**。`music` 已完成 582 秒背景音樂，總花費約 US$2.25；`render` 完成，`clips` manifest 記錄 88 張靜圖、0 動畫片段。21:22 UTC 已與主代理協調並開始獨占 CPU 的 `assemble`，日誌 `/workspace/.video-work/curio-s03/assemble.log`；完成後依序 `captions`、`qa`、`package` 並釋放 CPU 時段。
+
+2026-10-19 21:42 UTC：S03 繁中版本完整製作。成片 09:36.73（17,302 影格）、-14 LUFS，SHA256 `1d20204f5d20bde4cbbfe20998f78eb40587d61a5e06c33ddc4515b780669059`，`check-audio` 101／101、`qa` **11／11**、`package` **4／4**。封面副標孤字換行已人工修正為「城門大開，史官質疑」；只改封面文字，keyframes 重建 **0 新圖**、分鏡重核後重新合成 **0 段重編**，最終片雜湊仍相同。完整視覺／成片紀錄見 `docs/videos/curio-s03/verify-4.md`。`review-push --gate final` 已送站台且本機依站主委託核准，備註明寫站主未親自觀看／聆聽。上架包 `/workspace/.video-work/curio-s03/upload/` 含成片、封面、繁中 CC、標題說明與合成內容揭露；英／日／韓字幕留待最終語言階段，**尚未在 YouTube 上架**。`review-push --gate publish` 正在傳送上架包到站台；若此步驟失敗可按同指令重送，不重造媒體。媒體與權杖仍不在 Git。
