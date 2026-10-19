@@ -11,8 +11,8 @@
   "voice": {
     "provider": "gemini",
     "name": "Sulafat",
-    "style": "標準國語，咬字清楚，像跟朋友翻一頁史書。引號原文放慢，正文、裴注異說與小說三層每次換頁都用語氣標明。",
-    "performance": "開頭讀奏章時平實；徐庶出主意時帶一點盼望；《魏略》逆向出現時留下停頓；裴的判斷不要唸成自己目擊。小說的雪與睡覺帶故事感，末段回到查證而非說教。"
+    "style": "標準國語，咬字清楚，像跟朋友翻一頁史書。引號原文放慢；切換陳壽正文、裴注引文與裴本人評語時，用語氣標明來源。",
+    "performance": "開頭讀奏章時平實；徐庶出主意時帶一點盼望；《魏略》逆向出現時留下停頓；裴的判斷不要唸成自己目擊。末段追問異說的消息來源，已知與未知都說清楚。"
   },
   "subtitles": {
     "burn_in": false
@@ -39,8 +39,8 @@
     },
     {
       "setup": "eg007",
-      "payoff": "eg012",
-      "what": "徐庶推薦後劉備的第一反應"
+      "payoff": "eg008",
+      "what": "新野來勸劉備出門的訪客是誰"
     },
     {
       "setup": "eg014",
@@ -59,13 +59,13 @@
     },
     {
       "setup": "eg063",
-      "payoff": "eg070",
-      "what": "兩段初遇能否直接合併"
+      "payoff": "eg064",
+      "what": "兩段初遇能否接成先後兩場"
     },
     {
-      "setup": "eg064",
-      "payoff": "eg073",
-      "what": "裴松之為何拒絕拼成前後"
+      "setup": "eg085",
+      "payoff": "eg086",
+      "what": "魏略反向消息從誰傳來"
     },
     {
       "setup": "eg075",
@@ -73,9 +73,9 @@
       "what": "裴如何估算初遇年份"
     },
     {
-      "setup": "eg080",
-      "payoff": "eg087",
-      "what": "晝寢來自哪一層文本"
+      "setup": "eg117",
+      "payoff": "eg118",
+      "what": "九州春秋與魏略是否可當獨立消息鏈"
     }
   ],
   "youtube": {
@@ -83,7 +83,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "三顧茅廬，為何史書還寫諸葛亮自己上門？｜奇聞檔案局",
-    "description": "〈出師表〉寫「三顧臣於草廬之中」，《三國志》正文也說劉備「凡三往，乃見」。但同一傳記的裴松之注引《魏略》，又保留諸葛亮主動北行見劉備的異說；裴松之隨後用〈出師表〉反駁。這集跟著兩種見面方向、不同談話與裴的判斷，最後看《三國演義》如何讓風雪和晝寢進入三顧故事。\n\n〈出師表〉是當事人較晚的自述，《三國志》正文與裴注保存不同層次的文字；《魏略》引文由裴注留存，《九州春秋》只被裴說為同說。小說場景不能視為二零七年現場紀錄。畫面為 AI 生成卡通插圖，非人物相貌或史實現場重建。\n\n主要來源：陳壽《三國志》卷三十五〈諸葛亮傳〉及裴松之注、〈出師表〉，毛評本《三國演義》第三十七、三十八回；固定版本和逐句對照見本集 research.md、claims.md。資料截至 2026-10-19。",
+    "description": "〈出師表〉說劉備「三顧臣於草廬」；陳壽《三國志》正文也寫劉備三往才見諸葛亮。同卷裴松之註卻引《魏略》，寫諸葛亮主動北行往樊城見劉備。這集跟著徐庶的推薦、兩場截然不同的談話和裴的原文反駁，查兩條初遇路線為何同時留在史書裡。\n\n裴採信諸葛亮的自述，認為《魏略》的初遇方向不合；保存下來的文字並未交代《魏略》異說從誰傳來，因此不能重建分歧形成的過程。畫面是 AI 生成卡通插畫，非人物相貌或史實現場重建。\n\n主要來源：陳壽《三國志》卷三十五〈諸葛亮傳〉正文、裴松之註引《魏略》與《九州春秋》、〈出師表〉及陳壽〈諸葛亮集序〉；固定版本和逐句對照見本集 research.md、claims.md。資料截至 2026-10-19。",
     "tags": [
       "三顧茅廬",
       "諸葛亮",
@@ -93,7 +93,6 @@
       "九州春秋",
       "裴松之",
       "三國志",
-      "三國演義",
       "奇聞檔案局"
     ],
     "video_id": null
@@ -111,16 +110,6 @@
     {
       "title": "《三國志》卷35〈諸葛亮傳〉、〈出師表〉及裴注（固定轉錄）",
       "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/035.htm",
-      "checked_on": "2026-10-19"
-    },
-    {
-      "title": "《三國演義》毛評本第37回（固定轉錄）",
-      "url": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d/OEBPS/Text/413.html",
-      "checked_on": "2026-10-19"
-    },
-    {
-      "title": "《三國演義》毛評本第38回（固定轉錄）",
-      "url": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d/OEBPS/Text/414.html",
       "checked_on": "2026-10-19"
     }
   ],
@@ -241,7 +230,7 @@
       "lines": [
         {
           "id": "eg007",
-          "text": "先回新野：徐庶正要推薦「臥龍」，劉備第一個反應是什麼？",
+          "text": "先回新野：一位要勸劉備出門的訪客到了；他是誰？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -1039,7 +1028,7 @@
       "lines": [
         {
           "id": "eg063",
-          "text": "可能是不同日子，先談戶籍、後談大局嗎？",
+          "text": "能否是先到草廬、後在樊城再談的兩次會面？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -1055,7 +1044,7 @@
       "lines": [
         {
           "id": "eg064",
-          "text": "若能排成兩場會面，衝突就解開了；裴真這樣寫嗎？",
+          "text": "可《魏略》偏說「備與亮非舊」：劉備此前不認識他。",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -1071,7 +1060,7 @@
       "lines": [
         {
           "id": "eg065",
-          "text": "裴沒有替它們編一套可兼容的先後日程。"
+          "text": "三訪後若已情分日密，樊城怎還把他當陌生書生？"
         }
       ]
     },
@@ -1166,7 +1155,7 @@
       "lines": [
         {
           "id": "eg071",
-          "text": "他也知道，傳聞與見聞本來可能不同。"
+          "text": "裴也承認，聞見不同，說法可能各有出入。"
         }
       ]
     },
@@ -1181,7 +1170,7 @@
       "lines": [
         {
           "id": "eg072",
-          "text": "可是方向、地點、談法背離到這裡，讓他驚訝。",
+          "text": "但這回背離太遠，他寫「乖背至是，亦良為可怪」。",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
@@ -1197,7 +1186,7 @@
       "lines": [
         {
           "id": "eg073",
-          "text": "裴的結論，是《魏略》這則初遇說難採信。",
+          "text": "讀完他的反駁，另一個問題浮出來：異說從誰傳來？",
           "emotion": "口語向前，轉折前留一拍"
         }
       ]
@@ -1213,7 +1202,7 @@
       "lines": [
         {
           "id": "eg074",
-          "text": "這是他對文本的判斷；能查到拜訪日期嗎？",
+          "text": "這段註沒交代來源；時間還有別的線索嗎？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -1229,7 +1218,7 @@
       "lines": [
         {
           "id": "eg075",
-          "text": "他還倒推年份：三次拜訪大約是哪一年？",
+          "text": "奏章提到敗軍以來二十一年；能倒推相遇哪一年？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -1245,7 +1234,7 @@
       "lines": [
         {
           "id": "eg076",
-          "text": "他看〈出師表〉提到自敗軍以來的二十一年。",
+          "text": "裴拿這個數字，對上劉備二零八年的敗退。",
           "emotion": "口語向前，轉折前留一拍"
         }
       ]
@@ -1261,7 +1250,7 @@
       "lines": [
         {
           "id": "eg077",
-          "text": "再對上劉備二零八年敗退，算到相遇約二零七年。"
+          "text": "他推算劉備和諸葛亮大約在二零七年相遇。"
         }
       ]
     },
@@ -1276,7 +1265,7 @@
       "lines": [
         {
           "id": "eg078",
-          "text": "這讓時間有了範圍，沒有替三次探訪標日曆。",
+          "text": "這是相遇年份，不是《魏略》反向故事的消息來源。",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
@@ -1285,31 +1274,30 @@
       "id": "visit-080",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a study desk, one reader setting a tiny snow drawing beside a closed novel volume, gentle morning light",
+        "prompt": "Close shot in a fifth-century archive, one historian unrolling an plain cited scroll on a low desk, soft overcast daylight",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg080",
-          "text": "那雪在哪一趟下、誰在屋裡睡，有早期文字嗎？",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
+          "text": "若要追異說怎樣進入史書，先看註的引文開頭。"
         }
-      ]
+      ],
+      "chapter": "裴松之把異說留在註裡"
     },
     {
       "id": "visit-081",
       "template": "shot",
       "data": {
-        "prompt": "Close shot inside an archive, one reader lifting a newer bound storybook away from two older scrolls, soft overcast daylight",
+        "prompt": "Medium shot at a fifth-century writing table, one scholar setting a small scroll beside a larger bound history, mild window light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg081",
-          "text": "答案在更晚的《三國演義》，不在剛才兩句史文。",
-          "emotion": "關鍵詞放慢，句尾稍停"
+          "text": "裴標明「魏略曰」；樊城的方向來自它，不是陳壽改口。"
         }
       ]
     },
@@ -1317,51 +1305,29 @@
       "id": "visit-082",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a thatched cottage gate, one older visitor looking toward a closed doorway on a mild day, mild window light",
+        "prompt": "Wide shot inside an old library, one annotator placing his brush beside the margin of a plain history page, pale afternoon light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg082",
-          "text": "小說第三十七回先讓劉備第一次撲空。",
-          "emotion": "口語向前，轉折前留一拍"
+          "text": "引文一完，他寫「臣松之以為」，才說出自己的反駁。"
         }
-      ],
-      "chapter": "小說把草廬寫成風雪與等待"
+      ]
     },
     {
       "id": "visit-083",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot on a snowy country path, one older traveller wrapping his cloak as he approaches a cottage, pale afternoon light",
+        "prompt": "Close shot at a records desk, one reader holding three plain wooden source markers apart, soft window light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg083",
-          "text": "第二次，他冒著風雪再去，仍沒遇上諸葛亮。"
-        }
-      ]
-    },
-    {
-      "id": "visit-084",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot inside a cottage doorway in snow, one older visitor handing a blank letter to a younger robed man, gentle morning light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg084",
-          "text": "他遇見的是諸葛亮的弟弟，還留下書信。",
-          "emotion": "關鍵詞放慢，句尾稍停"
-        },
-        {
-          "id": "eg113",
-          "text": "第二趟還讓劉備誤認路上的人，把落空感再拉長。"
+          "text": "他留下自己不信的文字，讓後來的人還能追問：這說法從哪裡來？"
         }
       ]
     },
@@ -1369,14 +1335,14 @@
       "id": "visit-085",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot beside a small storybook stage, one reader turning a page toward a cottage drawing, soft overcast daylight",
+        "prompt": "Wide shot in an old study, one scholar looking over an plain route scroll with an empty source box beside it, soft daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg085",
-          "text": "小說讓讀者陪他落空，第三次又會怎樣？",
+          "text": "《魏略》作者又是從誰聽來諸葛亮北行？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -1385,14 +1351,45 @@
       "id": "visit-086",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot on a mild rural morning, one older visitor stepping from a horse to walk toward a cottage, mild window light",
+        "prompt": "Close shot at a fifth-century desk, one reader turning a plain citation slip over in his hand, mild window light",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg086",
-          "text": "第三十八回，劉備第三次來到草廬。"
+          "text": "這段引文沒說消息出自誰，也沒有那次見面的日期。"
+        }
+      ]
+    },
+    {
+      "id": "visit-086a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a fifth-century study, one historian holding two separate rolled books and examining their ends, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg117",
+          "text": "《九州春秋》能算另一條獨立的傳話鏈嗎？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
+        }
+      ]
+    },
+    {
+      "id": "visit-086b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by an archive window, one historian following two loose threads that end before reaching their source, pale afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg118",
+          "text": "裴只寫「所言亦如之」，沒說兩書各從哪裡聽來。"
         }
       ]
     },
@@ -1400,15 +1397,15 @@
       "id": "visit-087",
       "template": "shot",
       "data": {
-        "prompt": "Close shot inside a simple thatched room, one young scholar sleeping on a low couch in soft daylight, pale afternoon light",
+        "prompt": "Medium shot beside a library shelf, one annotator weighing two plain scrolls in his hands, pale afternoon light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg087",
-          "text": "諸葛亮人在，卻正在白天睡覺。",
-          "emotion": "關鍵詞放慢，句尾稍停"
+          "text": "另一邊的「三顧」，有幾位不同的講述者？",
+          "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
     },
@@ -1416,20 +1413,29 @@
       "id": "visit-088",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot outside a quiet cottage room, one older visitor standing patiently beside the steps, gentle morning light",
+        "prompt": "Wide shot in a fifth-century study, one historian opening a second plain preface scroll, soft overcast daylight",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg088",
-          "text": "劉備站在階下，沒有叫童子把人吵醒。",
-          "emotion": "口語向前，轉折前留一拍"
-        },
+          "text": "陳壽在〈諸葛亮集序〉也寫劉備三顧草廬。"
+        }
+      ]
+    },
+    {
+      "id": "visit-088a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a fifth-century study, one historian placing two identical book spines side by side, mild window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "eg114",
-          "text": "張飛不耐煩，甚至說要到屋後放火。",
-          "emotion": "關鍵詞放慢，句尾稍停"
+          "text": "但它和傳記同出陳壽，不能算兩位不同的作者。"
         }
       ]
     },
@@ -1437,14 +1443,14 @@
       "id": "visit-089",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot inside a small room, one young scholar waking slowly near an open window, afternoon light, soft overcast daylight",
+        "prompt": "Close shot at a desk, one scholar moving a wooden marker from a biography to a memorial scroll, mild window light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg089",
-          "text": "小說把等待拉得很長，才讓諸葛亮起身。"
+          "text": "能對照陳壽的，是諸葛亮自己寫的〈出師表〉。"
         }
       ]
     },
@@ -1452,15 +1458,14 @@
       "id": "visit-090",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at a storyteller table, one narrator turning a painted cottage scene in a bound storybook, mild window light",
+        "prompt": "Medium shot inside a quiet fifth-century study, one robed minister pointing to a plain memorial, a map beside him, pale afternoon light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg090",
-          "text": "這些細節很會說故事，能證明當年真的下雪嗎？",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
+          "text": "奏章只寫三顧草廬、諮詢時事，沒寫樊城和牛尾毦。"
         }
       ]
     },
@@ -1468,15 +1473,14 @@
       "id": "visit-091",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot beside an old book, one reader moving a snow drawing away from a blank date card, pale afternoon light",
+        "prompt": "Wide shot at a plain archive table, one reader holding a yak tail tassel beside a closed memorial scroll, soft daylight",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg091",
-          "text": "不能。小說場景不是當年氣象紀錄；那陳壽長談有逐字記錄嗎？",
-          "emotion": "口語向前，轉折前留一拍"
+          "text": "奏章沒提牛尾，不足以反證那場面一定沒發生。"
         }
       ]
     },
@@ -1484,47 +1488,14 @@
       "id": "visit-092",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at an archive desk, one researcher placing a plain memorial at the top of three unmarked pages, gentle morning light",
+        "prompt": "Close shot in an old records room, one historian comparing a plain memorial with a second scroll, mild window light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg092",
-          "text": "陳壽記下長談，卻沒說誰在現場記錄。"
-        }
-      ],
-      "chapter": "陳壽寫下私談，沒交代記錄者"
-    },
-    {
-      "id": "visit-093",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot at a desk, one historian arranging a main history volume beside a narrow annotated page, soft overcast daylight",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg093",
-          "text": "能核的是傳記保存的談法，不能倒推出每句原話。",
-          "emotion": "關鍵詞放慢，句尾稍停"
-        }
-      ]
-    },
-    {
-      "id": "visit-094",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot beside a bookcase, one curious reader reaching for an older history volume, mild window light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg094",
-          "text": "還記得「計將安出」？傳記寫下了字，卻沒留下當時的語氣。",
-          "emotion": "口語向前，轉折前留一拍"
+          "text": "至於異說為何走向另一邊，還缺《魏略》最初從誰聽來的線索。"
         }
       ]
     },
@@ -1535,7 +1506,7 @@
         "title": "存檔",
         "cta": "訂閱奇聞檔案局",
         "lines": [
-          "三顧有早期記載；風雪與晝寢屬小說場面"
+          "兩種初遇同列一卷；異說源頭仍待查"
         ]
       },
       "lines": [
