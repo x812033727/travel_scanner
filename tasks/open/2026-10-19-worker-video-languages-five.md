@@ -1,7 +1,7 @@
 ---
 id: 2026-10-19-worker-video-languages-five
 title: Video worker makes es, pt, id, vi, th captions, titles and dubs
-status: blocked
+status: open
 priority: P2
 area: tools
 owner:
@@ -211,3 +211,20 @@ After the deploy:
 - 2026-10-20 (claude-opus-5.5-worker-languages): mapped on origin/main 1e60f734e. The plan and
   the costs above are this session's, put to the owner before any code. Status `blocked` until
   the owner answers whether to build it and for which categories.
+- 2026-10-20, the owner's answers (asked in the planning session, PR #1608):
+  - **Build it in phases**, as planned: captions and titles first with one pilot video, then
+    dubs with one pt and one th pilot.
+  - **Categories: all of them.** That means brand stories (`story`), the explainer and tutorial
+    group (`ai-terms`, `ai-news`, `tutorial`, `comparison`, `explainer`) and **Shorts** (phase 3).
+    The drama group (`drama`, `long-drama`, `anime`) gets captions and titles only, since
+    multi-character dubs are still phase two of DUBS.md. So the 422
+    `video_locales_imported_only` goes away for captions and titles; for dubs it stays wherever
+    a dub is refused today.
+  - **Monthly character limit: raise it to 1,500,000** (≈24 fully dubbed eight-language 10-minute
+    videos, a ceiling of about US$30–60 a month). This is a host `.env` change: make it with
+    phase 2, under the deploy rules.
+  - **Defaults: pre-tick captions and titles for all languages.** The settings tab's language
+    defaults tick metadata and captions for all eight (en, ja, ko, es, pt, id, vi, th). Dubs are
+    never pre-ticked. This changes the 2026-09-27 default for en/ja/ko (pre-ticks only; nothing
+    is made until the owner saves a video's panel). Every saved panel then costs translation
+    calls for eight locales, about +10 calls a video over today's three.
