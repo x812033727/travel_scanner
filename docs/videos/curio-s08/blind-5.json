@@ -1,0 +1,153 @@
+{
+  "script_path": "/workspace/travel_scanner/docs/videos/curio-s08/script.md",
+  "script_sha256": "6423bd004802f6350c41bd0aa5e3e27bcdc7e31c343b314d6d8de98e7c01bdc3",
+  "narrative_sealed_at_utc": "2026-10-19T20:25:25.577283+00:00",
+  "narrative": {
+    "answers": [
+      {
+        "id": "scene_first",
+        "yes": true,
+        "evidence": "[wood-001] 建興十二年春，諸葛亮的隊伍走出斜谷，一批軍糧也往前線移動。"
+      },
+      {
+        "id": "no_spoiler",
+        "yes": true,
+        "evidence": "[wood-007] 後來保留下來的文字，還有一句「一腳四足」；它真會走路嗎？"
+      },
+      {
+        "id": "one_line",
+        "yes": true,
+        "evidence": "[wood-089] 如果有人拿著一張聲稱「完全依古文」的復原圖，第一個該問什麼？"
+      },
+      {
+        "id": "no_toc",
+        "yes": true,
+        "evidence": "[wood-090] 先指著復原圖上一條接線，查它到底出自哪句古文。"
+      },
+      {
+        "id": "chapters_link",
+        "yes": true,
+        "evidence": "[wood-035] 答案在兩年後；流馬才在出兵記錄中和「運」字連在一起。"
+      },
+      {
+        "id": "open_loops",
+        "yes": true,
+        "evidence": "[wood-071] 流馬一段列出肋、前後軸孔與前後杠；這些孔又裝什麼？"
+      },
+      {
+        "id": "payoffs",
+        "yes": true,
+        "evidence": "[wood-094] 孔位寫了，卻沒指定哪塊木件接進去；剛才那個接點仍無法定案。"
+      },
+      {
+        "id": "no_recap",
+        "yes": false,
+        "evidence": "[wood-025] 黃沙記兩種器具造完；木牛前一年已運糧，流馬何時初造卻沒說。"
+      },
+      {
+        "id": "chapters_are_events",
+        "yes": false,
+        "evidence": "[wood-003] 押糧的人盯著布蓋下的東西；我們也想掀開看。"
+      },
+      {
+        "id": "outro_no_next",
+        "yes": true,
+        "evidence": "[outro] 喜歡把古書翻到註腳，訂閱奇聞檔案局。"
+      },
+      {
+        "id": "opening_hooks",
+        "yes": true,
+        "evidence": "[wood-008] 更晚的小說叫人扭動器具的「舌頭」；接著會發生什麼？"
+      },
+      {
+        "id": "one_thread",
+        "yes": true,
+        "evidence": "[wood-002] 運糧器具也跟著隊伍沿斜谷前進；它究竟叫什麼？"
+      },
+      {
+        "id": "no_detour",
+        "yes": true,
+        "evidence": "[wood-087] 這些動作屬於小說，不在《三國志》三年的運糧句子裡。"
+      }
+    ],
+    "notes": {
+      "no_recap": "wood-025 repeats the earlier 木牛運糧 fact already stated in wood-012/013 and invoked again in wood-024, without 「還記得」 or 「剛剛那」.",
+      "chapters_are_events": "The opening chapter title 「斜谷糧道，布蓋下的器具」 names a setting and concealed object rather than an occurrence or reveal; wood-003 is the nearest spoken line supporting that reading."
+    },
+    "required_failures": [
+      "no_recap"
+    ],
+    "advisory_failures": [
+      "chapters_are_events"
+    ]
+  },
+  "source_checks": {
+    "primary": {
+      "work": "三國志",
+      "commit": "10a0b1ab3019d8821262f7402366d14fb4aaa102",
+      "commit_verified": true,
+      "locator_note": "The requested 033.htm#p231/#p232/#p234 do not exist in this checkout. The relevant entries are 033.htm#p10/#p11/#p13; the design text is 035.htm#p17.",
+      "chronology": {
+        "locator": "033.htm#p10/#p11/#p13",
+        "original": "九年春二月，亮復出軍圍祁山，始以木牛運。…夏六月，亮糧盡退軍。／十年，亮休士勸農於黃沙，作流馬木牛畢，教兵講武。／十二年春二月，亮由斜谷出，始以流馬運。",
+        "interpretation": "These are three distinct dated chronicle entries. They do not give fleet size, capacity, or a complete design."
+      },
+      "wood-055": {
+        "locator": "035.htm#p17",
+        "original": "亮集載作木牛流馬法曰：「木牛者，方腹曲頭，一脚四足，頭入領中，舌著於腹。",
+        "text_says": "Pei annotation attributes the cited method text to 亮集.",
+        "interpretation": "Expanding 亮集 as 《諸葛亮集》 and saying the annotation cites it are fair; this is not Pei personally measuring the device.",
+        "assessment": "supported"
+      },
+      "wood-065": {
+        "locator": "035.htm#p17",
+        "original": "牛仰雙轅，人行六尺，牛行四步。載一歲糧，日行二十里，而人不大勞。",
+        "text_says": "The phrase 而人不大勞 occurs verbatim; the passage gives no explicit number of handlers.",
+        "interpretation": "The narration correctly avoids deriving a crew size from generic 人.",
+        "assessment": "supported"
+      },
+      "wood-092": {
+        "locator": "035.htm#p17",
+        "original": "流馬尺寸之數，肋長三尺五寸，廣三寸，厚二寸二分，左右同。前軸孔分墨去頭四寸，徑中二寸。",
+        "text_says": "The front axle hole is marked four cun from 頭, with a two-cun diameter.",
+        "interpretation": "「離頭四寸」 fairly paraphrases 去頭四寸; 頭 is a reference point within this rib-dimension sequence, not proven to be an animal-like head.",
+        "assessment": "supported_with_context_caution"
+      },
+      "ending": {
+        "locator": "035.htm#p17",
+        "original": "前軸孔分墨去頭四寸，徑中二寸。前脚孔分墨二寸…前杠孔去前脚孔分墨二寸七分…後軸孔去前杠分墨一尺五分…前後四脚，廣二寸，厚一寸五分。",
+        "text_says": "The passage names holes by associated parts (front axle, front foot, front bar, rear axle) and gives dimensions/positions; it supplies no complete assembly drawing or tested reconstruction.",
+        "interpretation": "wood-095 is a defensible limit on reconstruction. wood-073 and wood-094 go too far in saying the text gives no clue which piece fits a named hole.",
+        "assessment": "one_overbroad_claim"
+      }
+    },
+    "later_novel": {
+      "work": "三國演義 第102回",
+      "commit": "761813427eb5685c395804493f9fbd7ad8dc7d8d",
+      "commit_verified": true,
+      "locator_note": "The requested 481.html#p82 does not exist; HTML line 82 is paragraph p24. The relevant story is 481.html#p22/#p24/#p25/#p26.",
+      "original": "p24:「便令巧匠百餘人，當面拆開，吩咐依其尺寸長短厚薄之法，一樣製造木牛流馬。…不消半月，造成二千餘隻」；p25:「將木牛流馬口內舌頭扭轉，牛馬就不能行動」及「背後魏兵趕到，牽拽不動，扛抬不去」；p26:「王平令軍士將牛馬舌頭，重複扭轉，驅趕而行」；p25–26 also describe 煙火 and 神兵.",
+      "text_says": "The later novel explicitly narrates the copying, tongue stop/restart, and staged divine soldiers. Its p25 contains Zhuge Liang’s proposed plan; p26 narrates the outcome.",
+      "interpretation": "The script correctly labels these moves as novel events and keeps them separate from the 三國志 chronicle and Pei annotation.",
+      "assessment": "supported_as_novel_only"
+    }
+  },
+  "fact_errors": [
+    {
+      "lines": [
+        "wood-073",
+        "wood-094"
+      ],
+      "kind": "overstatement_of_source_silence",
+      "script_claims": [
+        "清單有孔，不表示我們知道孔裡究竟裝了什麼。",
+        "孔位寫了，卻沒指定哪塊木件接進去；剛才那個接點仍無法定案。"
+      ],
+      "primary_original": "前軸孔…前脚孔…前杠孔…後軸孔…後脚孔…後杠孔",
+      "finding": "The labels identify at least the intended kinds of parts for these holes. The original does leave joint details and the full assembly uncertain, so the final reconstruction caveat is sound, but “does not specify which piece” is too absolute.",
+      "suggested_fix": "前軸孔的孔位與孔徑有記，卻沒有完整交代前軸與整副木架如何接合、傳力。"
+    }
+  ],
+  "narrative_answers_sha256": "d8d78177ef9008e9453345620b9755efac2397375d5ace52dff216e8b668ecc5",
+  "blind_read_caveat": "The initial rubric extraction included adjacent generic narrative.mjs code and PANEL_INSTRUCTIONS as well as NARRATIVE_PANEL; it included no S08 brief, research, claims, prior review, or other-agent messages. The narrative answers were sealed before any historical source was opened."
+}
