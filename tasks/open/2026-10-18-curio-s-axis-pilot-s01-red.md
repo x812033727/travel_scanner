@@ -1,14 +1,14 @@
 ---
 id: 2026-10-18-curio-s-axis-pilot-s01-red
 title: Curio S axis pilot: S01 Red Cliffs, S09 Okehazama, S18 Napoleon
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5-history-stories
+claimed_at: 2026-10-18T23:59:48Z
 created_at: 2026-10-18T23:11:24Z
 completed_at:
-branch:
+branch: claude/curio-s01
 depends_on: []
 scope:
   - docs/videos/curio-s01
@@ -47,3 +47,12 @@ scope:
 ## Notes
 
 示範開場（S01）在 README §S 軸，可以直接當稿子的起點，但查核後可能要改。
+
+- 2026-10-19（claude-opus-5-5-history-stories）：S01 大綱草稿 `docs/videos/curio-s01/brief.md`（A 案「曹操的兩封信」建議、
+  B 案「黃蓋的那封信」、不採用的 C 案），等站主選。查核清單 `topic-checks/S01.md` 18 列，**全部 UNOPENED**：
+  這個雲端環境的網路政策擋掉 ctext.org、zh.wikisource.org、zh.wikipedia.org，原文開不了，表裡的引文是憑記憶寫的。
+  下一步：在能開這些網站的環境（或站主把網域加進允許清單後）逐列開《三國志》與裴注原文，再找另一個代理做獨立覆核；
+  第 9 列（吳主傳「公燒其餘船引退」）與第 14 列（江表傳曹操給孫權的信）是主線的骨架，被推翻就重寫大綱。
+- 2026-10-19（同上）：站主選 A 案。S01 稿子寫完：`docs/videos/curio-s01/video.json`、`script.md`、`NOTES.md`；
+  lint 0 錯誤（警告：8.7 分鐘、sources 故意空著）；盲評七輪，第七輪 13／13 通過。查核清單擴到 32 列，仍全部 UNOPENED，
+  網路政策照舊擋著原文網站。下一步是查核，不是生圖。
