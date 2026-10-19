@@ -1,0 +1,43 @@
+{
+  "reviewer": "independent S07 review 7",
+  "script_sha256": "6cbbd4a1290e169310d77c076712cce5e941f1492e36ca019cfdca9cf349ff88",
+  "checked_on": "2026-10-19",
+  "pinned_sources_checked": [
+    "SG32: sanguozhi 10a0b1a OEBPS/Text/032.htm p9-p10",
+    "SG36-ZF/GY/ZY: sanguozhi 10a0b1a OEBPS/Text/036.htm p8/p3/p21",
+    "SG35-DATE: sanguozhi 10a0b1a OEBPS/Text/035.htm p8",
+    "YY41: sanguoyanyi 7618134 OEBPS/Text/417.html p17",
+    "YY42: sanguoyanyi 7618134 OEBPS/Text/418.html p9-p13"
+  ],
+  "source_findings": [
+    {
+      "line_ids": ["eb025", "eb026"],
+      "finding": "Supported and precise: SG32 names five thousand cavalry in the pursuit, while neither SG32 nor SG36-ZF gives a number at the bridge."
+    },
+    {
+      "line_ids": ["eb035", "eb036", "eb037", "eb041", "eb045"],
+      "finding": "Supported by SG36-ZF: twenty cavalry, 據水斷橋, one quoted challenge, enemy unwilling to approach, and 劉備's escape. The text does not give the dismantling time or agent."
+    },
+    {
+      "line_ids": ["eb055", "eb064", "eb066", "eb071", "eb072", "eb080", "eb084", "eb087", "eb092", "eb093"],
+      "finding": "Correctly attributed to the novel. YY41 has horse-tail branches; YY42 has Cao Cao remove his canopy after the first shout, Xiahou Jie fall after the third, the later order to dismantle the bridge, Cao Cao's order for three pontoon bridges, and Guan Yu's interception. None is presented as confirmed 208 battlefield detail."
+    },
+    {
+      "line_ids": ["eb046", "eb049", "eb050", "eb095"],
+      "finding": "The switch to SG32's Hanjin and Mi River route says 另記, so the novel's second pursuit is not treated as the source of the history's crossing. The closing absence claim is limited to the two discussed originals."
+    }
+  ],
+  "image_prompt_findings": [
+    {
+      "scene_ids": ["bridge-009", "bridge-029"],
+      "severity": "revision suggested before image generation",
+      "finding": "Both prompts imply a recipient while saying 'one' subject. bridge-029 explicitly describes a mounted commander handing a token to a cavalry captain. This conflicts with the series rule to depict one person doing one action."
+    },
+    {
+      "scene_ids": ["bridge-049", "bridge-050", "bridge-051", "bridge-052", "bridge-053", "bridge-054", "bridge-055", "bridge-056", "bridge-057", "bridge-058", "bridge-090", "bridge-059", "bridge-060", "bridge-061", "bridge-062", "bridge-063", "bridge-064", "bridge-065", "bridge-066", "bridge-067", "bridge-068", "bridge-069", "bridge-070", "bridge-071", "bridge-073", "bridge-074", "bridge-075", "bridge-076", "bridge-077", "bridge-078", "bridge-079", "bridge-080", "bridge-081", "bridge-082", "bridge-083", "bridge-084", "bridge-085"],
+      "severity": "visual review watch item",
+      "finding": "Repeated visible folio-border instructions clearly mark fiction, but generated dark borders or readable page text should be checked against the fixed cute-mystery look and no-text prompt rule."
+    }
+  ],
+  "narrative_note": "The only required blind-panel failure is no_toc at eb007. The chapter opener links the pursuit question to Liu Biao's death, but '得從…說起' is an instruction about how the account will be told. The five thousand versus unspecified bridge-front count and historical versus novel bridge dismantling are distinct claims, so no_recap passes."
+}

@@ -1,0 +1,87 @@
+{
+  "review_type": "post_freeze_pinned_source_and_metadata_spotcheck",
+  "script": "docs/videos/curio-s07/script.md",
+  "script_sha256_expected": "6cbbd4a1290e169310d77c076712cce5e941f1492e36ca019cfdca9cf349ff88",
+  "blind_narrative_frozen_at": "/tmp/curio-s07-6cbb-final-blind-20261019.json",
+  "reviewed_files": [
+    "docs/videos/curio-s07/research.md",
+    "docs/videos/curio-s07/claims.md",
+    "docs/videos/curio-s07/video.json"
+  ],
+  "pinned_primary_texts_read": [
+    {
+      "id": "SG32",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/032.htm#L22-L23",
+      "relevant_text": "p9: 曹公南征表，會表卒；子琮代立，遣使請降；到當陽眾十餘萬、輜重數千兩、日行十餘里。p10: 恐先主據江陵軍實，將精騎五千急追，一日一夜行三百餘里，及於當陽長坂；劉備棄妻子走，曹軍獲人眾輜重；劉備往漢津遇關羽船隊，至夏口。"
+    },
+    {
+      "id": "SG36-ZF/ZY",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/036.htm#L21",
+      "relevant_text": "張飛傳 p8: 使飛將二十騎拒後；飛據水斷橋，瞋目橫矛曰身是張益德也，可來共決死；敵皆無敢近者，故遂得免。No count for enemies physically at the bridge. 趙雲傳 p21: 趙雲抱弱子、護甘夫人免難."
+    },
+    {
+      "id": "SG35-DATE",
+      "url": "https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/035.htm#L21",
+      "relevant_text": "裴松之 note: 劉備以建安十三年敗，遣亮使吳."
+    },
+    {
+      "id": "YY41",
+      "url": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/417.html#L60",
+      "relevant_text": "Main novel text: 張飛引二十餘騎至長阪橋，見橋東樹木，教騎兵砍樹枝拴馬尾，在樹林往來馳騁、沖起塵土以為疑兵；張飛橫矛立馬於橋上."
+    },
+    {
+      "id": "YY42",
+      "url": "https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/418.html#L36-L49",
+      "relevant_text": "Main novel text (separate from 毛評夾注): 文聘見塵疑伏兵；曹仁等列橋西並報曹操；操聞知，急上馬從陣後來；曹操急令去其傘蓋 and says 今日相逢，不可輕敵；張飛三喝、夏侯傑倒馬、曹操與諸軍退；張飛事後命拆橋；曹操令夜搭三座浮橋、再追；關羽截出，曹操退."
+    }
+  ],
+  "changed_claim_spotchecks": [
+    {
+      "id": "eb006",
+      "result": "supported_question",
+      "evidence": "The SG32 p9→p10 sequence supports asking how Cao Cao's pursuit reached Changban. It does not say Liu Bei's whole fleeing population stood at the bridge, and the spoken question does not claim that."
+    },
+    {
+      "id": "eb007",
+      "result": "supported_rewind_handoff",
+      "evidence": "SG32 p9 begins the relevant causal sequence with Liu Biao's death and Liu Cong's surrender; SG35's Pei note places Liu Bei's defeat in Jian'an year 13. The line names a concrete start rather than only restating eb006."
+    },
+    {
+      "id": "eb026",
+      "result": "supported_count_caveat",
+      "evidence": "SG32 p10 says 曹公將精騎五千急追之, a dispatch/pursuit count. SG36-ZF p8 gives Zhang Fei's twenty riders but only says 敵皆無敢近者 about the opposition; it does not count those at the bridge. video.json bridge-024 shows separate cavalry and bridge markers, not a mass of five thousand on the bridge."
+    },
+    {
+      "id": "eb061",
+      "result": "supported_question_but_loop_metadata_wrong",
+      "evidence": "YY42 l36 says the bridge officers sent a report and 曹操聞知，急上馬，從陣後來. The spoken eb061 question is immediately paid by eb062, '小說第四十二回，曹操也來到橋邊', at the next chapter's first line."
+    }
+  ],
+  "loop_eb006_to_eb029": {
+    "result": "valid_as_causal_sequence",
+    "evidence": "eb007–eb028 gives the cause (Liu Biao's death, Liu Cong's surrender, Liu Bei's slow convoy, Cao Cao's concern for Jiangling stores, and the five-thousand-cavalry pursuit). eb029 then supplies the new endpoint that Cao Cao caught the fleeing force at Changban and Liu Bei's force broke. The payoff is cumulative across the intervening lines; eb029 alone is not the full why-answer."
+  },
+  "issues": [
+    {
+      "id": "loop_eb061_payoff_mismatch",
+      "severity": "metadata",
+      "location": "docs/videos/curio-s07/video.json:loops",
+      "current": "setup eb061 → payoff eb074, what 小說中的曹操到橋邊",
+      "evidence": "eb062 answers the yes/no arrival question immediately; eb074 instead says Cao Cao turned his horse and the army withdrew. Both script and pinned YY42 support eb062 as the payoff.",
+      "suggested_change": "Set payoff to eb062; retain or clarify what as 曹操收到橋西軍報後到橋邊."
+    },
+    {
+      "id": "loop_eb070_what_overstates_endpoint",
+      "severity": "minor_metadata",
+      "location": "docs/videos/curio-s07/video.json:loops",
+      "current": "setup eb070 → payoff eb071, what 小說第三聲使夏侯傑跌馬",
+      "evidence": "eb071 contains the third shout, but Xiahou Jie falls at eb072–eb073. The spoken loop question asks how Zhang Fei pushes the army, so eb071 is a valid immediate answer; only the what gloss runs ahead.",
+      "suggested_change": "Shorten what to 張飛第三聲喝問 or move the endpoint to eb073 if the intended payoff is Xiahou Jie's fall."
+    }
+  ],
+  "visual_spotcheck": {
+    "result": "no_material_source_boundary_issue_found",
+    "evidence": "History bridge shots use one commander/bridge or record-table imagery; bridge-024 separates pursuit and bridge markers. The novel sequence bridge-049–085 uses illustrated fiction folio/page framing, while the temporary return to 張飛傳 at bridge-035–040 uses unframed history/records imagery. No checked prompt depicts five thousand at the bridge, a shout physically breaking it, or Xiahou Jie's corpse."
+  },
+  "overall": "Primary-text assertions checked are supported. The two loop metadata entries above should be reconciled; the eb061 payoff pointer is the clear error."
+}

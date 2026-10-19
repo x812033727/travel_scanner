@@ -1,0 +1,97 @@
+{
+  "review_type": "script_only_blind_narrative",
+  "script": "docs/videos/curio-s07/script.md",
+  "script_sha256": "6cbbd4a1290e169310d77c076712cce5e941f1492e36ca019cfdca9cf349ff88",
+  "rubric": "tools/video/core/narrative.mjs:NARRATIVE_PANEL (13 questions, 12 required)",
+  "source_read_before_freeze": false,
+  "required_passed": 12,
+  "required_total": 12,
+  "optional_passed": 1,
+  "optional_total": 1,
+  "answers": [
+    {
+      "id": "scene_first",
+      "required": true,
+      "yes": true,
+      "evidence": "bridge-001 immediately places Liu Bei in retreat at Dangyang Changban and leaves Zhang Fei to cover him; bridge-002 puts the cavalry beside water and a bridge. The heading gives 208."
+    },
+    {
+      "id": "no_spoiler",
+      "required": true,
+      "yes": true,
+      "evidence": "bridge-003 asks what the small unit can win; bridge-004 gives only the clue that the history text contains '斷橋' and withholds whether the shout broke it; bridge-005 withholds the pursuers' response. The outcome comes at bridge-040 and the sound/bridge distinction at bridge-087."
+    },
+    {
+      "id": "one_line",
+      "required": true,
+      "yes": true,
+      "evidence": "The line runs from Liu Bei's slow retreat (bridge-007–020), through Cao Cao's pursuit (bridge-021–028), to Zhang Fei's bridge stand and its literary expansion (bridge-029–083), then the escape (bridge-084–086). The novel adds events and revised dialogue around the same bridge rather than replaying a completed passage verbatim."
+    },
+    {
+      "id": "no_toc",
+      "required": true,
+      "yes": true,
+      "evidence": "bridge-007's '得從建安十三年荊州劉表去世說起' is the causal beginning of the rewind prompted by bridge-006, and bridge-041 asks how Liu Bei crossed; neither lays out upcoming sections or a list."
+    },
+    {
+      "id": "chapters_link",
+      "required": true,
+      "yes": true,
+      "evidence": "bridge-006 asks why pursuers reached Changban, and next chapter's first spoken line bridge-007 supplies the new causal starting event, Liu Biao's death in Jingzhou. bridge-030 asks how many cavalry Zhang Fei had, answered by next first line bridge-031: twenty. bridge-042 asks what novel trick fills the source gap, followed by bridge-049's new grove and bridge-050's tail-bound branches. bridge-056 asks whether Cao Cao came; bridge-057 answers that he did. bridge-076 says cutting the bridge brings trouble; bridge-077 opens on Liu Bei's concern about the demolished bridge."
+    },
+    {
+      "id": "open_loops",
+      "required": true,
+      "yes": true,
+      "evidence": "The opening carries four unresolved questions (bridge-003–006). Later turns recur within short scene intervals: crowd size bridge-012→015, pursuit target bridge-020→021, catch-up bridge-025→026, dust deception bridge-051→053, Cao Cao's arrival bridge-056→057, renewed pursuit bridge-079→081. No apparent 90-second stretch lacks a pending question or turn."
+    },
+    {
+      "id": "payoffs",
+      "required": true,
+      "yes": true,
+      "evidence": "The long opening cavalry question is named again at bridge-040 and paid with '敵皆無敢近者，故遂得免'; the opening sound-break question is called back at bridge-087 and answered that neither primary text says the shout broke the bridge. bridge-006's pursuit question develops through surrender, slow convoy, Jiangling supplies and five-thousand-cavalry chase at bridge-008–026. Immediate questions likewise resolve with new facts: bridge-030→031 gives twenty; bridge-056→057 confirms Cao Cao came; bridge-082→083 resolves Jiangling as Xia Kou."
+    },
+    {
+      "id": "no_recap",
+      "required": true,
+      "yes": true,
+      "evidence": "The count '五千精騎' occurs at bridge-023 once, with bridge-024 adding the distinct unknown number actually at the bridge. Twenty riders is given once at bridge-031. The cut bridge recurs as different source claims and causal actions: terse history at bridge-032–033, later novel demolition at bridge-075, Liu Bei's inference at bridge-078, and explicit opening callback at bridge-087."
+    },
+    {
+      "id": "chapters_are_events",
+      "required": false,
+      "yes": true,
+      "evidence": "Headings name a retreat narrowing in 208, Liu Bei taking the crowd south, Zhang Fei holding the bridge with twenty riders, the novel's branches raising dust, Cao Cao arriving for three shouts, and Cao Cao pursuing after the bridge is dismantled."
+    },
+    {
+      "id": "outro_no_next",
+      "required": true,
+      "yes": true,
+      "evidence": "The outro asks which Three Kingdoms scene viewers would check against its source and invites subscription; it does not announce another video, episode, or file."
+    },
+    {
+      "id": "opening_hooks",
+      "required": true,
+      "yes": true,
+      "evidence": "After the concrete bridge scene in bridge-001–002, bridge-003 asks what the cavalry buy Liu Bei, bridge-004 asks whether the shout broke the bridge, bridge-005 asks the pursuers' reaction, and bridge-006 asks how the pursuers reached Changban. Each stops before its eventual result."
+    },
+    {
+      "id": "one_thread",
+      "required": true,
+      "yes": true,
+      "evidence": "The recognizable problem is what actually happened at Zhang Fei's Changban bridge. Liu Bei's slow convoy and Cao Cao's dash explain why the pursuers met him; the history/novel dialogue and bridge demolition answer what the accounts say; the final crossing and bridge callback close the escape and source question."
+    },
+    {
+      "id": "no_detour",
+      "required": true,
+      "yes": true,
+      "evidence": "The Liu Biao surrender and convoy detail at bridge-007–020 explain the chase; Zhao Yun rescuing the abandoned family at bridge-047 follows directly from bridge-027 and keeps the human stakes of the defeat. The branch trick, three shouts, renewed chase, and crossing stay tied to the bridge incident. No passage becomes a product, score, or quote inventory."
+    }
+  ],
+  "watchpoints": [
+    "The middle uses an intentional history-to-novel handoff around bridge-032–059; it remains a single investigation because each pass adds new material, but the edit should keep source transitions audible.",
+    "Four consecutive opening questions at bridge-003–006 are dense, although each names a different pending result.",
+    "bridge-007 repeats the pursuit question's subject before adding Liu Biao's death; the added concrete event is what makes the cold-open rewind connect.",
+    "bridge-023's five thousand refers to the pursuit dispatch, while bridge-024 explicitly says the number at the bridge is unknown."
+  ]
+}
