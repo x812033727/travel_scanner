@@ -9,6 +9,7 @@ from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
+from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import fakeredis
@@ -69,6 +70,8 @@ async def test_jobs_dedupe_by_hash_count_toward_the_month_and_are_pruned(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     slug = f"it-media-{uuid4().hex[:10]}"
+    # This integration case measures dedupe and ledger behavior, not cutover intake.
+    monkeypatch.setattr(service, "enforce_paid_intake", AsyncMock())
     monkeypatch.setattr(service, "provider_for", lambda runtime, vendor, kind: InlineProvider(PNG))
     store = MediaStore(tmp_path, max_file_bytes=10_000_000, max_total_bytes=50_000_000)
     media = MediaSettings(video_media_dir=str(tmp_path), video_media_keep_days=2)

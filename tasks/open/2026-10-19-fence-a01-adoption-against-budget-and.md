@@ -139,3 +139,19 @@ also lists these paths but has no active claim. This A01 task now claims only
 the narrow media-admission change in those two files, to close the queued-row
 race independently found in the combined Phase 1 / Phase 2 review. No merge,
 deployment, host action or paid work follows from the handoff.
+
+2026-10-19 local integration validation: the exact #1556 media cutover head
+`5bc1bf9849576ffa2b2f17f15a707be1642ac959` was assembled onto this
+pre-compatibility head `81788d2ab7dda5562b0892e1c370898eeb8e0048`
+without changing #1556 or its PR. Only this task's two transferred media paths
+needed conflict resolution. A01 mutable and missing POSTs now lock the budget
+row before the media job row; a nonlocking ready-receipt probe retains the
+existing held-token readback. The combined path retains #1556 cutover checks,
+dispatch fence and accepted-download no-rebuy guard. A focused PostgreSQL
+existing-vs-missing opposing-order regression was added. Local media tests:
+72 passed, 4 skipped (the PostgreSQL cases); Ruff and mypy app/tests passed.
+The temporary WSL PostgreSQL container exited with code 255 and Windows could
+not connect to its port, while WSL has no uv/pip test environment, so the
+PostgreSQL regression remains a required CI gate. This is a local validation
+assembly only; #1510's 0133 migration, Phase 2, deployment, and source
+adoption remain separate holds.

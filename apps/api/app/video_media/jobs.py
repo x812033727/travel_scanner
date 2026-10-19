@@ -45,11 +45,18 @@ from app.video_budget.service import (
     assert_a01_admission_open,
     is_pilot,
     mark_uncertain,
+    release,
     reserve,
     settle,
 )
 from app.video_media import meter
 from app.video_media.catalog import MEDIA_VENDORS, MediaModel, find_model
+from app.video_media.cutover_intake import IntakeFenceError, enforce_paid_intake
+from app.video_media.dispatch_fence import (
+    PINNED_JOB_ID,
+    DispatchFenceError,
+    inspect_installed_fence,
+)
 from app.video_media.models import LIVE_STATUSES, MAX_ATTEMPTS, VideoMediaJob
 from app.video_media.providers import (
     USER_AGENT,
@@ -85,6 +92,8 @@ SUBMITTED_TTL = timedelta(hours=24)
 MAX_REFERENCE_BYTES = 7_000_000
 MAX_REFERENCES_TOTAL_BYTES = 20_000_000
 TERMINAL = ("ready", "failed", "expired")
+B25_CUTOVER_SLUG = "story-adapt-seiko-quartz-astron"
+ACCEPTED_DOWNLOAD_KEY = "_accepted_download"
 ERROR_CODES = {
     "blocked": "video_media_rejected",
     "key": "video_media_upstream_rejected_key",
@@ -104,6 +113,50 @@ class MediaJobFailed(Exception):
         self.code = code
         self.detail = detail
         self.retry_after = retry_after
+
+
+def refuse_b25_cutover_media(slug: str) -> None:
+    """Keep the unrelated B25 producer quiet throughout the A01 cutover.
+
+    This compiled pin covers a direct API client even if the worker's project STOP is
+    absent or bypassed. A later, separately reviewed code change must resume B25.
+    """
+    if slug == B25_CUTOVER_SLUG:
+        raise MediaJobFailed(
+            423,
+            "video_media_b25_cutover_paused",
+            "這支影片的媒體製作已因 A01 切換暫停；需核對後另行恢復",
+        )
+
+
+async def refuse_unapproved_paid_intake(ctx: MediaContext, slug: str) -> None:
+    try:
+        await enforce_paid_intake(ctx.runtime.video_work_dir, slug, ctx.redis)
+    except IntakeFenceError as error:
+        raise MediaJobFailed(
+            423,
+            "video_media_cutover_paused",
+            "媒體製作入口暫停；請核對 A01 切換狀態後再試",
+        ) from error
+
+
+def _refuse_fenced_dispatch(ctx: MediaContext, job: VideoMediaJob) -> None:
+    """Keep the incident's exact DB row unchanged before any vendor or retry transition."""
+    if job.id != PINNED_JOB_ID:
+        return
+    try:
+        inspect_installed_fence(job, ctx.runtime.video_work_dir)
+    except DispatchFenceError as error:
+        raise MediaJobFailed(
+            503,
+            "video_media_dispatch_fence_invalid",
+            f"這筆媒體工作的派送護欄無法核對（{error.reason}）；保持暫停",
+        ) from error
+    raise MediaJobFailed(
+        423,
+        "video_media_dispatch_fenced",
+        "這筆媒體工作已暫停派送；需要獨立核對後另行解除",
+    )
 
 
 @dataclass
@@ -340,6 +393,8 @@ async def submit_job(
     ctx: MediaContext, kind: str, payload: ImageJobIn | ClipJobIn | MusicJobIn
 ) -> tuple[VideoMediaJob, bool]:
     """Create (or find) the job for this request and advance it once; returns (job, created)."""
+    refuse_b25_cutover_media(payload.slug)
+    await refuse_unapproved_paid_intake(ctx, payload.slug)
     row = ctx.row
     # An illustrated slides video (docs/videos/ILLUSTRATED.md) draws under the slides' own switch
     # and image model, or under the drama's switch while the slides' is off; a video the site
@@ -389,6 +444,25 @@ async def submit_job(
     fields = _request_fields(payload, row, model)
     _check_references(ctx.store, payload.slug, fields["references"])
     digest = request_hash({"kind": kind, "vendor": vendor, "model": model.id, **fields})
+    a01_account_locked = payload.slug == A01_ADMISSION_SLUG
+    if a01_account_locked:
+        # A ready receipt is read-only and remains available while A01 admission
+        # is held. This probe takes no job row lock; all paths that might advance
+        # or requeue acquire the account row before their locked job lookup.
+        ready_receipt = await ctx.session.scalar(
+            select(VideoMediaJob).where(
+                VideoMediaJob.slug == payload.slug, VideoMediaJob.request_hash == digest
+            )
+        )
+        if ready_receipt is not None and ready_receipt.status == "ready":
+            _refuse_fenced_dispatch(ctx, ready_receipt)
+            await ctx.session.commit()
+            await advance_job(ctx, ready_receipt)
+            return ready_receipt, False
+        # Every A01 POST takes the account row before it can lock a job row. New
+        # and existing requests must use the same order, including duplicate
+        # POSTs, or a missing-row recheck can deadlock an existing receipt.
+        await _assert_media_admission_open(ctx, payload.slug)
     existing = await ctx.session.scalar(
         # A failed request can be retried by two POSTs at once. Lock before inspecting its
         # status, then commit the queued transition before either caller advances the job.
@@ -397,30 +471,27 @@ async def submit_job(
         .with_for_update()
         .execution_options(populate_existing=True)
     )
-    a01_account_locked = False
-    if existing is None and payload.slug == A01_ADMISSION_SLUG:
-        # Two identical new POSTs can both miss the row before either inserts it. The
-        # budget row serializes their queued commits; re-read under that lock so the
-        # second caller uses the first receipt instead of spending Redis again or
-        # violating the unique (slug, request_hash) constraint.
-        await _assert_media_admission_open(ctx, payload.slug)
-        a01_account_locked = True
-        existing = await ctx.session.scalar(
-            select(VideoMediaJob)
-            .where(VideoMediaJob.slug == payload.slug, VideoMediaJob.request_hash == digest)
-            .with_for_update()
-            .execution_options(populate_existing=True)
-        )
+    if a01_account_locked:
+        # The cutover marker can change while the account lock is awaited. Refuse a
+        # new queued transition or receipt advance if intake closed in that gap.
+        await refuse_unapproved_paid_intake(ctx, payload.slug)
     seconds = int(fields.get("seconds") or 0)
     units = meter.units_of(kind, seconds)
     meter_name = meter.METER_BY_KIND[kind]
     if existing is not None:
+        _refuse_fenced_dispatch(ctx, existing)
         if existing.status in LIVE_STATUSES:
             if existing.status != "ready" and not a01_account_locked:
                 await _assert_media_admission_open(ctx, payload.slug)
             await ctx.session.commit()
             await advance_job(ctx, existing)
             return existing, False
+        if ACCEPTED_DOWNLOAD_KEY in existing.request:
+            raise MediaJobFailed(
+                409,
+                "video_media_outcome_uncertain",
+                "供應商已接受此媒體工作；下載結果需核對，不能自動重新付費送出",
+            )
         if is_pilot(payload.slug) and existing.error_code == "video_media_outcome_uncertain":
             raise MediaJobFailed(
                 409,
@@ -435,6 +506,7 @@ async def submit_job(
             )
         if not a01_account_locked:
             await _assert_media_admission_open(ctx, payload.slug)
+            await refuse_unapproved_paid_intake(ctx, payload.slug)
         if not await meter.reserve(ctx.redis, meter_name, units, meter.budget_of(row, meter_name)):
             raise MediaJobFailed(
                 429, "video_media_budget_exhausted", _budget_message(meter_name, row)
@@ -459,6 +531,7 @@ async def submit_job(
         return existing, False
     if not a01_account_locked:
         await _assert_media_admission_open(ctx, payload.slug)
+        await refuse_unapproved_paid_intake(ctx, payload.slug)
     if not await meter.reserve(ctx.redis, meter_name, units, meter.budget_of(row, meter_name)):
         raise MediaJobFailed(429, "video_media_budget_exhausted", _budget_message(meter_name, row))
     job = VideoMediaJob(
@@ -498,6 +571,9 @@ async def advance_job(ctx: MediaContext, job: VideoMediaJob) -> VideoMediaJob:
     """Move the job one step, under a short lock so two polls do not both call the vendor."""
     if job.status in TERMINAL:
         return job
+    refuse_b25_cutover_media(job.slug)
+    await refuse_unapproved_paid_intake(ctx, job.slug)
+    _refuse_fenced_dispatch(ctx, job)
     if job.slug == A01_ADMISSION_SLUG:
         # GET polls can advance a previously queued row even without a new POST. A held
         # token must refuse before Redis or provider work. Commit releases the account
@@ -559,6 +635,12 @@ def _media_request(ctx: MediaContext, job: VideoMediaJob) -> MediaRequest:
 
 
 async def _submit(ctx: MediaContext, job: VideoMediaJob, provider: MediaProvider) -> None:
+    if ACCEPTED_DOWNLOAD_KEY in job.request:
+        raise MediaJobFailed(
+            409,
+            "video_media_outcome_uncertain",
+            "供應商已接受此媒體工作；不能再次送出同一請求",
+        )
     try:
         request = _media_request(ctx, job)
     except MediaUpstreamError as error:
@@ -587,6 +669,27 @@ async def _submit(ctx: MediaContext, job: VideoMediaJob, provider: MediaProvider
                 "video_pilot_budget_operation_reused",
                 "這個媒體工作可能已送出供應商；先核對舊操作，不能自動重送",
             )
+    # Reservation and its commits can await while the operator arms PAUSED_ALL.
+    # This is the last gate check before the provider coroutine starts. A refused
+    # queued job retains its monthly reservation for a later advance; its pilot
+    # hold is provably pre-dispatch and can be released and replaced on resume.
+    try:
+        await refuse_unapproved_paid_intake(ctx, job.slug)
+    except MediaJobFailed:
+        if pilot and operation:
+            await release(
+                ctx.session,
+                slug=job.slug,
+                operation_id=operation,
+                reason="paid intake paused before vendor dispatch",
+            )
+            job.request = {
+                key: value
+                for key, value in job.request.items()
+                if key != "pilot_budget_operation_id"
+            }
+            await ctx.session.commit()
+        raise
     client, owned = _client(ctx, ctx.media.video_media_submit_timeout_seconds)
     try:
         submitted = await provider.submit(request, client)
@@ -625,6 +728,9 @@ async def _settle(
         await _store_bytes(ctx, job, submitted.inline)
         return
     if submitted.download is not None:
+        # A synchronous image/music response has already accepted a paid request.
+        # Commit its recovery URL and live status before a cutover pause can stop fetch.
+        await _record_accepted_download(ctx, job, submitted.download)
         await _download(ctx, job, provider, submitted.download)
         return
     job.status = "submitted"
@@ -636,7 +742,54 @@ async def _settle(
     await ctx.session.commit()
 
 
+async def _record_accepted_download(
+    ctx: MediaContext, job: VideoMediaJob, download: Download
+) -> None:
+    job.request = {
+        **job.request,
+        ACCEPTED_DOWNLOAD_KEY: {
+            "url": download.url,
+            "needs_key": download.needs_key,
+            "content_type_hint": download.content_type_hint,
+        },
+    }
+    job.status = "submitted"
+    job.submitted_at = job.submitted_at or ctx.now()
+    job.updated_at = ctx.now()
+    job.retry_after_seconds = 5  # type: ignore[attr-defined]
+    await ctx.session.commit()
+
+
+def _accepted_download(job: VideoMediaJob) -> Download | None:
+    if ACCEPTED_DOWNLOAD_KEY not in job.request:
+        return None
+    value = job.request[ACCEPTED_DOWNLOAD_KEY]
+    if (
+        not isinstance(value, dict)
+        or set(value) != {"url", "needs_key", "content_type_hint"}
+        or not isinstance(value["url"], str)
+        or not value["url"]
+        or type(value["needs_key"]) is not bool
+        or (
+            value["content_type_hint"] is not None
+            and not isinstance(value["content_type_hint"], str)
+        )
+    ):
+        raise MediaJobFailed(
+            409, "video_media_outcome_uncertain", "供應商已接受的下載收據不完整，不能重新付費送出"
+        )
+    return Download(
+        url=value["url"],
+        needs_key=value["needs_key"],
+        content_type_hint=value["content_type_hint"],
+    )
+
+
 async def _poll(ctx: MediaContext, job: VideoMediaJob, provider: MediaProvider) -> None:
+    accepted = _accepted_download(job)
+    if accepted is not None:
+        await _download(ctx, job, provider, accepted)
+        return
     now = ctx.now()
     if job.submitted_at is not None and now - job.submitted_at > SUBMITTED_TTL:
         if is_pilot(job.slug):
@@ -657,6 +810,7 @@ async def _poll(ctx: MediaContext, job: VideoMediaJob, provider: MediaProvider) 
         job.updated_at = now
         await ctx.session.commit()
         return
+    await refuse_unapproved_paid_intake(ctx, job.slug)
     client, owned = _client(ctx, ctx.media.video_media_poll_timeout_seconds)
     try:
         polled = await provider.poll(job.vendor_ref or "", client)
@@ -683,6 +837,7 @@ async def _poll(ctx: MediaContext, job: VideoMediaJob, provider: MediaProvider) 
             refund=True,
         )
         return
+    await _record_accepted_download(ctx, job, polled.download)
     await _download(ctx, job, provider, polled.download)
 
 
@@ -695,6 +850,7 @@ async def _download(
         # The vendor made the file: billed, so no refund; the tool may ask again.
         await _fail(ctx, job, error, refund=False)
         return
+    await refuse_unapproved_paid_intake(ctx, job.slug)
     client, owned = _client(ctx, ctx.media.video_media_fetch_timeout_seconds)
     try:
         async with client.stream(
@@ -759,6 +915,10 @@ async def _ready(
     job.error_code = None
     job.error_detail = None
     job.updated_at = now
+    if ACCEPTED_DOWNLOAD_KEY in job.request:
+        job.request = {
+            key: value for key, value in job.request.items() if key != ACCEPTED_DOWNLOAD_KEY
+        }
     operation = str(job.request.get("pilot_budget_operation_id") or "")
     if is_pilot(job.slug) and operation:
         await ctx.session.commit()
