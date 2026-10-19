@@ -84,3 +84,6 @@ and its narrow `lint.mjs` integration. A stale in-progress Curio claim still lis
 although its PR #1500 is merged; a future assignee must reconcile ownership under the
 task-board rules before editing code. This task does not authorize host writes, paid media,
 deployment, or reinterpretation of A01's existing HOLD reviews.
+- 2026-10-19（票 `2026-10-19-curio-keeps-the-brand-stories-hook`）：`lint` 對 `kind: story` 與 curio- slug 改用
+  `narrative.mjs` 的 `TIGHT_CADENCE`（45 秒、十分鐘 8 個伏筆，依長度縮放），沿用既有的 `hookCadenceProblems` 偵測器。
+  這張票還剩的是更嚴的偵測：不把每個問號或章節切點都當成鉤子、開場預告要對到後面的回收。
