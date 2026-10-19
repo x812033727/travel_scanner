@@ -117,7 +117,7 @@ node tools/video/cli.mjs look --slug <slug>            # 有存檔就沿用，�
 - 詞彙表是所有影片共用的（`speechHash` 含整份）：設定集階段就把人名、門派名、術語加齊（設定集與故事聖經 JSON 的 `lexicon`），之後少加。
 - 作品文件的提示詞紀錄在漫劇設定子分頁的「目前的提示詞」依 variant 分開（`planner:setting`、`planner:bible`、`planner:discuss`、`writer:discuss` 等），不會蓋掉教學企劃的。
 - 集數的 slug 固定為 `<作品>-e<三位數>`；作品 slug 最長 40 字；單集的作品 slug 是 `one-off-<請求 id 前 8 碼>`，影片就是 `one-off-<…>-e001`。合集是 `<作品>-full`（單集沒有合集）。
-- 一鍵合集開拍前要先到設定分頁調預算，否則報價標紅、工人做到一半停在 429 等：`monthly_clip_seconds_budget` 6,000（hybrid 120 分鐘要 4,320）、`monthly_images_budget` 3,000、`series_episodes_per_month` 60、`series_max_in_flight` 3、`max_waiting_drafts` ≥ 4（工人的 `room()` 連進行中的集數一起算）。
+- 一鍵合集開拍前要先到設定分頁調預算，否則報價標紅、工人做到一半停在 429 等：`monthly_clip_seconds_budget` 6,000（hybrid 120 分鐘要 4,320）、`monthly_images_budget` 3,000、`series_episodes_per_month` 60、`series_max_in_flight` 3、`max_waiting_drafts` ≥ 4（工人的 `room()` 連進行中的集數一起算；品牌故事例外：站主 2026-10-19 要它獨立計算，進行中的故事不佔這個名額、開工也不問它，只受站上的故事配額與 `series_max_in_flight` 管）。
 - 節奏的秒數是工人量的，不是模型寫的：查核只回 `hook_line`／`satisfaction_lines`／`cliffhanger_line` 的句子 id；模型自己填秒數會被忽略。鉤子提示詞寫 ≤ 5 秒、門檻 8 秒，是給每分鐘 250 字的估計留餘裕。
 - 合集的說明欄預算很小：40 集只剩 500 位元組給本文（每章一行約 150 位元組，總上限 5,000）；超標時章節退成「第 N 集」並警告，不是錯誤。
 - `compile` 結束碼 2 多半是某一集在核准後重剪了（雜湊對不上 `approvals.json`）：回那一集重送 `review-push --gate final`，不要 `--force`。

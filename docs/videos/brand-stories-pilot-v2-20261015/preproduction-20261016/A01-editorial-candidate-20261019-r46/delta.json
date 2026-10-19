@@ -1,0 +1,162 @@
+{
+  "source_manifest_sha256": "896615541683e620eb6e79468d8d304f146ad932700a7f044d5a1eb9784888f6",
+  "changes": [
+    {
+      "scene": "origin-return",
+      "line": "r44l011",
+      "before": "他帶著鎖好的組合回機場，再一次走向安檢員；這回，問題落在他自己身上。",
+      "after": "他帶著鎖好的組合回機場，再一次走向安檢員；箱子已拆不開，這回安檢員會怎麼辦？",
+      "reason": "拆不開的組合重新遇到要求拆箱的制度；先停在安檢員如何回應，下一段才出現要求與 OK。",
+      "evidence_claims": [
+        "q014",
+        "q015",
+        "q016",
+        "q017"
+      ],
+      "payoff_lines": [
+        "r44l012",
+        "r44l013"
+      ],
+      "limit": "這是講述者的未解問題，不宣稱箱子獲准放行或已登機。"
+    },
+    {
+      "scene": "engine-crew",
+      "line": "r44l023",
+      "before": "Travelpro 自己的說法是：這款輪箱先在飛行機組之間流行。箱子離開車庫，還沒離開他們每天走的航站。",
+      "after": "Travelpro 自己的說法是：這款輪箱先在飛行機組之間流行。一間車庫，還容得下這門生意嗎？",
+      "reason": "機組員採用把問題推向製作容量；下一景用需求增加與搬入倉庫回答。",
+      "evidence_claims": [
+        "q027",
+        "q028",
+        "q029"
+      ],
+      "payoff_lines": [
+        "r44l024"
+      ],
+      "limit": "保留公司說法的歸屬；問句不新增訂單量、營收、特定客群數字或搬遷年份。"
+    },
+    {
+      "scene": "engine-public-sight",
+      "line": "r44l028",
+      "before": "回顧報導說，航站裡的旅客看見空服員拉著這種輪箱快步走；它不再只是機組員自己的工具。",
+      "after": "回顧報導說，旅客在航站看見空服員拉著輪箱快步走。這種箱子早期又是怎麼賣到旅客手上的？",
+      "reason": "從看見產品推進到買得到產品，下一景揭早期郵購通路。",
+      "evidence_claims": [
+        "q033",
+        "q034"
+      ],
+      "payoff_lines": [
+        "r44l029"
+      ],
+      "limit": "不宣稱看見空服員的旅客就是特定郵購者，也不把兩份回顧記錄指定為同年同地。"
+    },
+    {
+      "scene": "turn-wait",
+      "line": "r44l035",
+      "before": "她也記得，曾帶著行李等前面的旅客慢慢把外套收進頭頂櫃；等候時，身上的負擔仍得扛著。",
+      "after": "她也記得，等前面的旅客收好外套時，仍得扛著行李。到了這次測試，輪箱遇到路緣和樓梯，又會怎樣？",
+      "reason": "先結束過往等候與負重經驗，再明說切入這次測試；把開場的路緣／樓梯承諾帶到地面實測回收。",
+      "evidence_claims": [
+        "q040",
+        "q041",
+        "q042"
+      ],
+      "payoff_lines": [
+        "r44l036",
+        "r44l037"
+      ],
+      "limit": "舊等候經驗與 1993 四牌測試分開；不指定路緣與樓梯的地點或先後，不只把結果歸給一牌。"
+    },
+    {
+      "scene": "now-space",
+      "line": "r44l047",
+      "before": "拉鍊沒卡住，不代表箱子還維持原來的外形；往外鼓的外袋，已把它撐大了。",
+      "after": "拉鍊沒卡住，往外鼓的外袋卻把箱子撐大了。箱子放不進去，Dash 最後還會喜歡它嗎？",
+      "reason": "尺寸問題的原因已揭示，現在把懸念移到記者最後如何評價；後文偏愛款式之一是新的回答。",
+      "evidence_claims": [
+        "q047",
+        "q050",
+        "q052",
+        "q054"
+      ],
+      "payoff_lines": [
+        "r44l049"
+      ],
+      "limit": "不提前說她的最終評價，也不把偏愛之一寫成唯一首選、購買決定或普遍性能。"
+    }
+  ],
+  "loops": {
+    "retained": [
+      {
+        "setup": "r44l003",
+        "payoff": "r44l013",
+        "what": "安檢回憶中的螺絲樣品，後續安檢員只答 OK"
+      },
+      {
+        "setup": "r44l004",
+        "payoff": "r44l021",
+        "what": "其他機師看見另有記錄的直立成品後請 Plath 製作"
+      },
+      {
+        "setup": "r44l005",
+        "payoff": "r44l037",
+        "what": "1993 年記者對四家箱的地面路緣與階梯測試"
+      },
+      {
+        "setup": "r44l001",
+        "payoff": "r44l048",
+        "what": "Travelpro 取出外袋加放的衣書後才能收進機艙"
+      },
+      {
+        "setup": "r44l020",
+        "payoff": "r44l023",
+        "what": "直立成品先獲機組員使用"
+      }
+    ],
+    "removed": [
+      {
+        "setup": "r44l014",
+        "payoff": "r44l045",
+        "what": "安檢員回答 OK 不代表後來的市售箱能裝進機艙收納空間"
+      },
+      {
+        "setup": "r44l030",
+        "payoff": "r44l036",
+        "what": "四家比較中追一只 Travelpro Rollaboard"
+      },
+      {
+        "setup": "r44l044",
+        "payoff": "r44l048",
+        "what": "收納空間成為下一道障礙，清出衣書才解決"
+      }
+    ],
+    "added": [
+      {
+        "setup": "r44l023",
+        "payoff": "r44l024",
+        "what": "機組員開始使用後，車庫是否容得下生意；需求使製作搬入倉庫"
+      },
+      {
+        "setup": "r44l028",
+        "payoff": "r44l029",
+        "what": "旅客如何買到早期輪子登機箱；1993 報導回顧 Travelpro 郵購販售"
+      },
+      {
+        "setup": "r44l047",
+        "payoff": "r44l049",
+        "what": "收納失敗後 Dash 是否還喜歡這只箱；Travelpro 仍是偏愛款式之一"
+      }
+    ]
+  },
+  "loop_note": "The prototype-to-commercial-case comparison is not a same-object payoff. The market transition and duplicated cabin question remain spoken but are not counted again as separate promises. Security and curb questions reinforce the existing opening promises.",
+  "factual_claim_rows_and_scene_claim_ids_unchanged": true,
+  "picture_prompts_unchanged": true,
+  "all_public_urls_and_lexicon_unchanged": true,
+  "title_thumbnail_direction_unchanged": true,
+  "metadata_changes": [
+    "series.series.note records r46 status",
+    "brief status line records r46 scope"
+  ],
+  "source_maps_retained_as_historical_r44_provenance": true,
+  "original_reviews_not_reissued": true
+}

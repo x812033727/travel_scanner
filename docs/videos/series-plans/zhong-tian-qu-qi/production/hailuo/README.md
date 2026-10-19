@@ -53,6 +53,30 @@
 - 合集：`compile-dh.mjs <first> <last> <out.mp4>`。只有第一集留片名卡，每集一個章節，CC 合併。
   - 會另外寫出 `.youtube.json`（標題格式「種田娶妻打天下 第1–5集 | CC字幕」）和 `.chapters.txt`。
   - 用 `REUSE=1` 時，沿用已經剪好的各集。
+  - `DUBS=en,ja,ko,es,pt,id,vi,th` 會另外出每個語言的 `<out>.<locale>.m4a` 和 `.srt`。
+    - 做法：照合集自己的時間軸，各集重組一次配音（只有第一集留片名卡，後面每句台詞都會移位），再接起來。
+    - 要等各集的配音都組完才跑，因為 assemble-v4 每次都會重寫該集的 `segments-v4/lines`。
+  - `youtube-locales/<locale>.json` 放各語言的劇名，以及每集和合集的標題、說明。
+    - 只要某個語言有合集那一段，就會寫進 `.youtube.json` 的 `localizations`。
+
+### 多語配音（2026-10-18 起八種語言）
+
+- 語言：en、ja、ko，加上 es（拉美西語）、pt（巴西葡語）、id（印尼語）、vi（越南語）、th（泰語）。
+- 只做站主檢查過的集數。
+- 步驟：
+  1. 每集翻一個 `dub.<locale>.json`。
+  2. 跑 `CHECK=1 local/dub.sh NNN <locale>` 檢查。
+  3. 跑 `local/dub.sh NNN <locale>` 錄音、組音軌，並複製進匯入資料夾。
+- 名字：越南語用漢越音（許硯 Hứa Nghiên），其他語言照普通話讀音。
+  - 名字與用語表在 `dub-glossary.json` 和 `dub-glossary-additions.<locale>.json`。
+- 音效庫：`<VIDEO_WORKDIR>/zhong-tian-qu-qi-sfx/sound-library`（531 檔、286 MB），所有 `edit-dh-e*.json` 的 `sfx_dirs` 都指向這裡。
+  - 原本借用偶的江湖的 `ou-de-jianghu-e001/…/sound-library`，那個資料夾 10-19 前被搬到 `G:\我的雲端硬碟\AI\偶的江湖\videos\`，所以複製了一份過來，原件不動。
+  - 換機器要先從 G: 複製這個資料夾，否則組片會在 assemble-v4 第 175 行報 ENOENT。
+- TTS 額度：網站的 Gemini 金鑰在 Google 專案「Default Gemini Project」（付費 Tier 2），`gemini-3.8-flash-tts` 每天上限 10,000 次請求，台灣時間 15:00 重置；控制台只能往下調。
+  - 10-19 十個代理同時錄五語、反覆重錄，一天就打滿，回 429 `video_speech_upstream_busy`。
+  - 以後每語只開一個代理、分天錄；錄音前先用 `CHECK=1` 的實測語速預檢，少重錄。
+- 同一集的兩個語言不能同時組音軌，原因同上（`segments-v4/lines` 會被重寫）。
+  - 平行做的時候，用每集一個鎖目錄 `<workdir>/.dub-lock` 排隊。
 - 封面：一季一張、不放字，所有語言共用（第一季是 `dh-keyart-season1-t1`）。
   - `thumb-dh.py` 能畫帶字的封面，只當備用。
 - 新角色：韓伯 `hanbo`（聲音 Enceladus）、魏少卿 `weishaoqing`（聲音 Algieba）。

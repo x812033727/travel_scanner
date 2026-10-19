@@ -22,11 +22,12 @@ import { assembledAudioProblems, audioEvidenceProblems } from "../core/audio-evi
 import { appliedBranding, brandingCurrent, readBranding } from "../core/branding.mjs";
 import { craftChecks } from "../core/craft.mjs";
 import { hasCast, illustrated, isExplainerPreset, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
+import { CURIO_MUSIC, CURIO_PRESET } from "../core/curio.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { initializeStoryLexicon, mergeSharedLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { stanceProblems } from "../core/lint.mjs";
-import { isNarrated, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
+import { isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
@@ -467,6 +468,13 @@ export function settledVoice(voice) {
 }
 
 /**
+ * The explainer series whose every episode has a music bed, by style preset: 奇聞檔案局 (owner,
+ * 2026-10-19: the brand stories are better partly because "而且有音樂"; skill curio-episode). The
+ * other profiled series (原來如此, cute-cartoon) and the flat one-off keep whatever the writer wrote.
+ */
+const SERIES_MUSIC = Object.freeze({ [CURIO_PRESET]: CURIO_MUSIC });
+
+/**
  * video.json as the owner's settings say it must be, whatever the model returned. A drama
  * (docs/videos/DRAMA.md) also takes the settings tab's style preset and whether music is made,
  * uses selectable CC, and its narrator voice is the drama part's when the owner chose
@@ -509,6 +517,9 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       if (explainerProfile(preset)) settled.look = { preset };
       settled.look.preset = preset;
       settled.characters = [];
+      // A series with a music bed of its own carries it under every episode, whether or not the
+      // writer remembered "music" (the owner's switch below still takes it off).
+      if (!settled.music && Object.hasOwn(SERIES_MUSIC, preset)) settled.music = { ...SERIES_MUSIC[preset] };
     }
     // New automatic productions use selectable CC, even if an old site setting or writer
     // asks for burn-in. Explicit legacy video.json files remain readable by assemble.
@@ -1493,7 +1504,7 @@ export class Automation {
     }
     // A series in the making comes next (docs/videos/SERIES.md), then the owner's one-off
     // requests from before one-offs became series, then the owner's slides requests, then a
-    // scheduled draft, all within the same waiting cap.
+    // scheduled draft, all within the same waiting cap (brand stories are counted apart: room()).
     const series = await seriesStep(this);
     if (series) return series;
     // The owner's drama requests come before any scheduled draft, within the same waiting cap.
@@ -1757,9 +1768,14 @@ export class Automation {
     return this.block(state, `saved ${stage} job gone from the server; a retry ${sends ?? `sends the ${stage} stage once more`} (${code}: ${error.message})`, `${JOB_GONE_KIND}${stage}`);
   }
 
-  /** Whether another video may start without passing the owner's cap on drafts waiting on them. */
+  /**
+   * Whether another video may start without passing the owner's cap on drafts waiting on them.
+   * Brand stories are counted on their own (owner, 2026-10-19): the site's story quota
+   * (series_max_in_flight and the rest) is their limit, so an active story takes no place here
+   * and a story episode does not ask (seriesStep).
+   */
   room() {
-    const active = automatedVideos(this.workBase).filter((state) => state.status === "active").length;
+    const active = automatedVideos(this.workBase).filter((state) => state.status === "active" && state.series?.kind !== "story").length;
     return active < this.settings.max_waiting_drafts;
   }
 
@@ -3349,8 +3365,18 @@ export class Automation {
     const saved = readJson(file, null);
     if (saved?.passed && narrativeReviewMatches(saved, video)) return null;
     const round = (saved?.round ?? 0) + 1;
-    const answer = await this.stage("verifier", state.slug, panelPayload(video, timeline), 8_000, state.format, NARRATIVE_VARIANT, state.series ?? null, { bare: PANEL_INSTRUCTIONS });
-    const verdict = panelVerdict(answer);
+    // 奇聞檔案局 asks two readers, as the brand stories do (automation/story.mjs; owner,
+    // 2026-10-19): a required question fails only when both say "no" (mergePanelVerdicts). Each of
+    // the two payloads carries its reader's number so the second is a request of its own; every
+    // other narrated video asks one reader with the payload it always had.
+    const readers = state.format === "drama" && video.look?.preset === CURIO_PRESET ? STORY_PANEL_READERS : 1;
+    const payload = panelPayload(video, timeline);
+    const verdicts = [];
+    for (let reader = 1; reader <= readers; reader++) {
+      const answer = await this.stage("verifier", state.slug, readers > 1 ? { ...payload, reader } : payload, 8_000, state.format, NARRATIVE_VARIANT, state.series ?? null, { bare: PANEL_INSTRUCTIONS });
+      verdicts.push(panelVerdict(answer));
+    }
+    const verdict = mergePanelVerdicts(verdicts);
     mkdirSync(path.dirname(file), { recursive: true });
     atomicWrite(file, `${JSON.stringify(narrativeRecord(video, verdict, round), null, 2)}\n`);
     this.cleared(state, "verifier");

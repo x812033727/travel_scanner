@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { CURIO_MAX_CARD_RUN, CURIO_MIN_SHOT_SHARE, CURIO_PRESET, curioProblems, isCurio } from "./curio.mjs";
+import { CURIO_MAX_CARD_RUN, CURIO_MIN_SHOT_SHARE, CURIO_MUSIC, CURIO_PRESET, curioProblems, curioWarnings, isCurio } from "./curio.mjs";
 import { resolveLook } from "./drama.mjs";
 import { fixture, fixtureBrief, fixtureLexicon } from "./fixtures/load.mjs";
 import { lintVideo } from "./lint.mjs";
@@ -52,4 +52,15 @@ test("lint reports the series problems as errors on a curio- slug and not on any
   assert.ok(!other.errors.some((problem) => problem.path === "look"), JSON.stringify(other.errors));
   const curio = lintVideo({ ...fixture(), slug: "curio-x01" }, context);
   assert.ok(curio.errors.some((problem) => problem.path === "look" && /cute-mystery/.test(problem.message)), JSON.stringify(curio.errors));
+});
+
+test("a curio- slug without a music bed is warned, with the series' track to add; any other video is not", () => {
+  assert.deepEqual(curioWarnings({ slug: "sothatswhy-t26" }), []);
+  assert.deepEqual(curioWarnings({ slug: "curio-x01", music: { track: "own.mp3" } }), []);
+  const [warning] = curioWarnings({ slug: "curio-x01" });
+  assert.equal(warning.path, "music");
+  assert.ok(warning.message.includes(JSON.stringify(CURIO_MUSIC)), warning.message);
+  const context = { lexicon: fixtureLexicon(), brief: fixtureBrief(), others: [], translations: {} };
+  assert.ok(lintVideo({ ...fixture(), slug: "curio-x01" }, context).warnings.some((problem) => problem.path === "music"));
+  assert.ok(!lintVideo(fixture(), context).warnings.some((problem) => problem.path === "music"));
 });

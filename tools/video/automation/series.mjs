@@ -757,7 +757,9 @@ export async function seriesStep(automation) {
   }
   if (!job || job.series?.planning_only) return null;
   if (job.kind === "episode") {
-    if (!automation.room()) return null;
+    // A brand story starts whenever the site's story quota lets it (the site already held it
+    // back otherwise); the waiting cap is for the other drafts (Automation.room).
+    if (job.series?.kind !== "story" && !automation.room()) return null;
     return startEpisode(automation, job);
   }
   if (job.kind === "compilation") {

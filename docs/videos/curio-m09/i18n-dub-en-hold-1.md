@@ -1,0 +1,11 @@
+# M09 English dubbing hold — 2026-10-16
+
+Owner approved en/ja/ko metadata, captions and dubbing in the video admin, with an additional US$2.50 estimate stop limit for M09. The shared ledger reserved `m09-dub-en-20261016-01` (US$0.15 Gemini TTS) and `m09-dub-en-qa-20261016-01` (US$0.50 Gemini transcription and TypeSafe Jev). Neither reservation is reconciled yet.
+
+The independently reviewed English translation SHA-256 is `9C0AE224FE1D2EFAA85F2928A86C29ADBB513B153695CE395D1CB74B2CF7B643`. `dub --locale en --dry-run` planned 95 requests and 5,520 billable characters, with no unfit time slot. The paid run cached 53/95 WAV lines and stopped on the next request. Those cached lines total 3,062 characters; all 53 cache entries have WAV files and no orphan file was found.
+
+`POST /api/video/speech` returned an unstructured HTTP 502 for the 64-character line “Remember those names? The small upper dial listed ancient games.” The speech journal holds request SHA-256 `22c2a8a38039b40008d89a7208f532fc69e949fe11a7355247f121926447036e` at `<home>/mokaair-work/videos/curio-m09/audio/speech-journal/`. It records `sent_at` 13:52:06.429 UTC and `held_at` 13:52:06.897 UTC, with no usable answer. The CLI deliberately did not resend it.
+
+The last pre-run dry-run reported 9,047,945 Gemini speech characters remaining. A read-only `GET /api/video/speech/status` at 13:53:51 UTC reported 955,117 used and 9,044,883 remaining from a 10,000,000 monthly limit. The difference in remaining characters is **3,062**, exactly the 53 cached lines; the held 64 characters do not appear in this server-side quota counter. This strongly suggests the held request did not pass the server's character reservation, but this counter is not the provider's final usage or invoice. One read-only SSH attempt to `mokaair.com:22` timed out, so host request logs were unavailable.
+
+**Hold remains.** The tool's recovery rule requires checking provider usage before clearing this journal entry. No `speech-journal forget`, retry, JA/KO paid synthesis or English audio QA was performed after the 502. Preserve the cached takes and the journal. Once provider usage confirms whether that exact request ran, record that evidence and coordinate the one-entry recovery and budget reconciliation; the other 42 English lines remain unfinished.

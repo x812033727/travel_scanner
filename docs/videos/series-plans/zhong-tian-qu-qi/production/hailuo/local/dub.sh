@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# dub.sh NNN <en|ja|ko> : the dub of a finished episode, picture and timing untouched.
+# dub.sh NNN <en|ja|ko|es|pt|id|vi|th> : the dub of a finished episode, picture and timing untouched.
 #   1. check docs/videos/zhong-tian-qu-qi-eNNN/dub.<locale>.json (every line, right script, length);
 #   2. record the lines that are new or changed into <workdir>/audio-<locale>/ (dub-lines.mjs);
 #   3. DUB=<locale> assemble-v4.mjs: cut/eNNN-dh.<locale>.m4a (zh lines' starts, same music and
@@ -24,9 +24,16 @@ node "$H/local/dub-lines.mjs" "$R" "$D/video.json" "$L" "$W/audio-$L" --check ||
 node "$H/local/dub-lines.mjs" "$R" "$D/video.json" "$L" "$W/audio-$L" 2>&1 | grep -v ': ok (' | tee "$LOG"
 rec=${PIPESTATUS[0]}
 if [ "$rec" -ne 0 ]; then echo "dub-lines.mjs failed ($rec): not assembling over old takes"; exit 4; fi
+# assemble-v4 rewrites the episode's shared segments-v4/lines on every run, so two locales (or a
+# compilation) of one episode must not assemble at once: wait for the episode's lock directory.
+LOCK="$W/.dub-lock"
+n=0
+until mkdir "$LOCK" 2>/dev/null; do n=$((n+1)); [ $n -gt 360 ] && { echo "$LOCK held for 30 min (remove it if no dub is running)"; exit 5; }; sleep 5; done
+trap 'rmdir "$LOCK"' EXIT
 DUB=$L node "$H/assemble-v4.mjs" "$D/video.json" "$D/overlays.json" "$H/edit-dh-e$1.json" "$W" "$C/e$1-dh.mp4" >> "$LOG" 2>&1
 rc=$?
 if [ $rc -ne 0 ]; then tail -30 "$LOG"; exit 3; fi
+iso() { case $1 in en) echo eng;; ja) echo jpn;; ko) echo kor;; es) echo spa;; pt) echo por;; id) echo ind;; vi) echo vie;; th) echo tha;; *) echo und;; esac; }
 dur() { ffprobe -v error -select_streams "$2" -show_entries stream=duration -of csv=p=0 "$1"; }
 lufs() { ffmpeg -nostats -i "$1" -map 0:a -af ebur128 -f null - 2>&1 | grep -A2 'Integrated loudness' | grep -o -- '-\?[0-9.]* LUFS' | head -1; }
 {
@@ -34,7 +41,7 @@ lufs() { ffmpeg -nostats -i "$1" -map 0:a -af ebur128 -f null - 2>&1 | grep -A2 
   echo "loudness zh $(lufs "$C/e$1-dh.mp4"), $L $(lufs "$C/e$1-dh.$L.m4a")"
 } | tee -a "$LOG"
 ffmpeg -v error -y -i "$C/e$1-dh-phone.mp4" -i "$C/e$1-dh.$L.m4a" -i "$C/e$1-dh.$L.srt" -map 0:v -map 1:a -map 2:s -c:v copy -c:a copy -c:s mov_text \
-  -metadata:s:a:0 language="$(case $L in en) echo eng;; ja) echo jpn;; ko) echo kor;; esac)" -metadata:s:s:0 language="$(case $L in en) echo eng;; ja) echo jpn;; ko) echo kor;; esac)" \
+  -metadata:s:a:0 language="$(iso "$L")" -metadata:s:s:0 language="$(iso "$L")" \
   -t "$(dur "$C/e$1-dh.$L.m4a" a:0)" -movflags +faststart "$C/e$1-dh.$L-preview.mp4" && echo "preview $C/e$1-dh.$L-preview.mp4" | tee -a "$LOG"
 I="$V/zhong-tian-qu-qi-import/zhong-tian-qu-qi-e$1"
 if [ -d "$I" ]; then cp "$C/e$1-dh.$L.m4a" "$I/dub.$L.m4a" && cp "$C/e$1-dh.$L.srt" "$I/$L.srt" && echo "import folder: $I/dub.$L.m4a, $I/$L.srt" | tee -a "$LOG"; fi
