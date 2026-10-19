@@ -1,0 +1,30 @@
+{
+  "review": "Curio S07 exact-hash independent pinned-source and visual-prompt spot-check",
+  "date": "2026-10-19",
+  "script": "docs/videos/curio-s07/script.md",
+  "script_sha256": "0dc3ae9aeb4fddab7d8063cfe26b5f0a237d40716d50eb3eee9d54a64326190b",
+  "blind_review": "/tmp/curio-s07-opening-final-blind-20261019.json",
+  "pinned_sources_read": [
+    {"tag":"SG32","url":"https://raw.githubusercontent.com/Ancient-China-Books/sanguozhi/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/032.htm","local":"/tmp/curio-s07-SG32-pinned.html","relevant_lines":[22,23]},
+    {"tag":"SG36-ZF","url":"https://raw.githubusercontent.com/Ancient-China-Books/sanguozhi/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/036.htm","local":"/tmp/curio-s07-SG36-pinned.html","relevant_lines":[21]},
+    {"tag":"YY41","url":"https://raw.githubusercontent.com/Ancient-China-Books/sanguoyanyi/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/417.html","local":"/tmp/curio-s07-YY41-pinned.html","relevant_lines":[60]},
+    {"tag":"YY42","url":"https://raw.githubusercontent.com/Ancient-China-Books/sanguoyanyi/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/418.html","local":"/tmp/curio-s07-YY42-pinned.html","relevant_lines":[36,43,46,49]}
+  ],
+  "checks": [
+    {"item":"changed opening scenes 1-6","pass":true,"evidence":"SG32 lines 22-23 and SG36-ZF line 21 place Liu Bei's retreat, Cao Cao's pursuit, and Zhang Fei's twenty mounted rear guard at Dangyang Changban. SG36-ZF says 據水斷橋 and then 敵皆無敢近者，故遂得免. YY42 line 43 supplies the novel's later command to dismantle the bridge. The opening asks rather than asserts that a shout broke it."},
+    {"item":"new SG36 bridge quote and callback scene 50","pass":true,"evidence":"SG36-ZF line 21 reads 身是張益德也，可來共決死！敵皆無敢近者，故遂得免. Scenes 49-50 quote these clauses exactly and identify Liu Bei's escape without claiming all companions or baggage escaped."},
+    {"item":"Xiahou Jie rank-neutral wording scenes 61-62","pass":true,"evidence":"YY42 line 36 narrates 曹操身邊夏侯傑 ... 倒撞於馬下. Scene 62 says only 小說給他一個名字：夏侯傑. It assigns no unsupported rank and scene 61 describes a fall, not a historical death."},
+    {"item":"novel tactic and bridge aftermath scenes 37-78","pass":true,"evidence":"YY41 line 60 has tree branches tied to horse tails and dust raised east of the bridge. YY42 lines 36, 43, 46 and 49 support Weng Pin's suspicion, Cao Cao's arrival, the three cries, Xiahou Jie's fall, the later dismantling, Cao's floating bridges, renewed pursuit, and Guan Yu's interception. Narration explicitly introduces the novel at scene 37 and re-identifies it at scenes 40, 45, 53, 61-63, 69 and 76."},
+    {"item":"all novel action image prompts visibly framed as fiction","pass":true,"evidence":"All 37 novel action shot prompts at scene positions 37-46 and 52-78 contain an explicit illustrated-fiction folio, old-novel margin, fictional-tale page, or storybook page border. History quote positions 47-50 and return positions 79-86 have no fiction border. This is a prompt audit; generated images were not available to inspect."},
+    {"item":"historical bridge quote introduced in narration before quote image switch","pass":true,"evidence":"Scene 47 says 回到《張飛傳》; scene 48 says 接著還記下他朝追兵喊出的原話; scene 49 switches to the quote shot and recites the original. The fiction-framed to unframed source transition itself occurs at scene 47 as that narration begins, so exact lead time before that earlier frame change is not established by the JSON."},
+    {"item":"fiction-to-history and history-to-fiction visual boundaries","pass":true,"evidence":"Scenes 37-46 are fiction-framed; scenes 47-51 are unframed and identify 《張飛傳》; scene 52 restores a fiction frame as narration asks how the novel rewrites the challenge. Scenes 52-78 retain fiction frames; scene 79 removes the frame while saying 《先主傳》另記."},
+    {"item":"Cao Cao canopy continuity in prompt scene 56","pass":false,"evidence":"YY42 line 36 and narration scene 55 say Cao Cao orders his own canopy removed (曹操急令去其傘蓋 / 撤去自己的傘蓋). The next visual prompt at scene 56 says 'one commander watching the bridge from under a lowered canopy', which may depict him still sheltered by it. Revise this prompt before image generation or check the actual frame and replace it if the canopy remains overhead."}
+  ],
+  "narrative_required_score": "11/12",
+  "source_spot_check": "Core historical and novel claims pass the pinned texts. One visual prompt continuity risk remains at scene 56.",
+  "duration": "video.json targets 8-11 minutes; measured audio/body timeline was not available in this read-only check. The blind review records an approximate 1,653 spoken Han characters across 95 narration lines; actual runtime must be checked after TTS against the eight-minute body floor.",
+  "blockers": [
+    "Narrative rubric Q5 remains NO: scene 6's second-decision question does not connect directly to next chapter's scene 7.",
+    "Prompt scene 56 may contradict the preceding canopy-removal action; correct or inspect the generated image before final visual approval."
+  ]
+}
