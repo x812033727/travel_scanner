@@ -163,9 +163,9 @@ US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限�
 1. `keyframes --slug <SLUG> --dry-run` 拿到張數與上限金額，三集一起報、一次授權（見上一節）。
 2. 授權後一集一個背景指令：`keyframes --slug <SLUG> --takes 3`，約 30–60 分鐘。
 3. 評審三次都不過的景，照〈插圖提示詞怎麼寫〉改成「一個人做一件事」再跑同一個指令：過了的圖吃快取，
-   只畫改過的景。S01 八景、S09 六景都是這樣一輪就過。
+   只畫改過的景。S01 八景、S09 六景、S18 十一景都是這樣一輪就過。
 4. 網站回 HTTP 502 或背景到時被殺：直接重跑同一個指令，已經過的不會再收費；`ledgerTotals(workdir)`
-   （`tools/video/media/ledger.mjs`）看這集花了多少。三集合計約 US$4–5。
+   （`tools/video/media/ledger.mjs`）看這集花了多少。S01、S09、S18 每集 US$1.7–1.9，三集合計 US$5.32。
 5. 畫完 `review-push --slug <SLUG> --gate storyboard` 把分鏡卡推給站主看。
 
 ## 交接
