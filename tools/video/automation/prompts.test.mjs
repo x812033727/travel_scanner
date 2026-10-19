@@ -273,6 +273,11 @@ test("an object closed one brace early and followed by its next key is read whol
   assert.deepEqual(parseAnswer(answer), { worksheet: { locale: "ja", lines: [{ id: "3qzu", text: "次は概要欄の記事を開いて" }] }, fixes: ["9iqg: 28 characters → 「1つ目は」"] });
   // When the rest does not complete it, the first object is still the answer.
   assert.deepEqual(parseAnswer('{"worksheet":{"lines":[]}},"fixes":[oops'), { worksheet: { lines: [] } });
+  // story-adapt-michelin-guide-stars' ko translator on 2026-10-19, four times running: the draft
+  // and the final each closed one brace early, so its critique and final were lost and the answer
+  // read as a draft that skipped its critique.
+  const twice = '{"draft":{"worksheet":{"lines":[{"id":"gtmy","text":"미슐랭"}],"title":null}}},"critique":["gtmy: MICHELIN is a brand name"],"final":{"worksheet":{"lines":[{"id":"gtmy","text":"MICHELIN"}],"title":null}}}}';
+  assert.deepEqual(parseAnswer(twice), { worksheet: { lines: [{ id: "gtmy", text: "MICHELIN" }], title: null } });
 });
 
 test("episode title authors receive the original answers and schedule units, not only runtime state", () => {
