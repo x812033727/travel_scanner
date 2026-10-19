@@ -68,11 +68,6 @@
       "what": "公主姓名是否留下"
     },
     {
-      "setup": "ma042",
-      "payoff": "ma043",
-      "what": "證明是皇后的證據還欠什麼"
-    },
-    {
       "setup": "ma059",
       "payoff": "ma060",
       "what": "1789 記錄是否含名言"
@@ -116,6 +111,11 @@
       "setup": "ma098",
       "payoff": "ma080",
       "what": "卡爾如何根據舊書線索重想皇后署名"
+    },
+    {
+      "setup": "ma042",
+      "payoff": "ma043",
+      "what": "要接上匿名公主與瑪麗，先查時間和王室記錄"
     }
   ],
   "youtube": {
@@ -271,31 +271,31 @@
       "id": "ma007",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a gentleman writer tasting wine at his employer's dining table, warm lamplight",
+        "prompt": "Wide shot a reader opening a plain eighteenth century memoir beside a small loaf, warm lamplight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma007",
-          "text": "在主人家，盧梭嚐到阿爾布瓦白酒，覺得好喝。",
+          "text": "更早的盧梭也寫過一句公主的話；在他自述裡，這句從買麵包的難題冒出來。",
           "emotion": "自然說故事"
         }
       ],
-      "chapter": "盧梭藏起一瓶酒，卻不敢去買麵包"
+      "chapter": "盧梭的買麵包難題，引出一位匿名公主"
     },
     {
       "id": "ma008",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a gentleman writer inspecting a cloudy wine bottle in a cellar, lamplight",
+        "prompt": "Medium shot a young gentleman hiding a few unlabelled wine bottles in a room, soft window light",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma008",
-          "text": "那酒有些混濁；他自告奮勇說能澄清。",
+          "text": "盧梭承認，自己偷留主人家的幾瓶阿爾布瓦白酒。",
           "emotion": "自然說故事"
         }
       ]
@@ -304,14 +304,14 @@
       "id": "ma009",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a gentleman writer staring at a cloudy glass by the cellar door, lamplight",
+        "prompt": "Close shot a wine bottle beside an empty bread basket, diffused indoor light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma009",
-          "text": "主人把酒交給他；結果他把外觀弄得更糟。",
+          "text": "想在房裡配麵包喝，卻沒先備好麵包。",
           "emotion": "自然說故事"
         }
       ]
@@ -320,14 +320,14 @@
       "id": "ma010",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a gentleman writer placing a wine bottle inside a cupboard, lamplight",
+        "prompt": "Medium shot a young gentleman pausing near a closed door while a servant passes outside, warm light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma010",
-          "text": "酒嘗起來沒壞，他承認趁機偷偷留了幾瓶在房裡。",
+          "text": "叫僕人代買，又怕偷留的酒被發現。",
           "emotion": "自然說故事"
         }
       ]
@@ -343,7 +343,7 @@
       "lines": [
         {
           "id": "ma011",
-          "text": "有酒卻沒有麵包，這頓飯還缺最簡單的一塊。",
+          "text": "僕人幫不了忙，他只剩自己出門買麵包。",
           "emotion": "自然說故事"
         }
       ]
@@ -359,7 +359,7 @@
       "lines": [
         {
           "id": "ma012",
-          "text": "他說麵包也不能先備一堆，每次喝酒又得想辦法找吃的。",
+          "text": "他說麵包不能先囤一大堆，喝酒時還是得找吃的。",
           "emotion": "自然說故事"
         }
       ]
@@ -368,14 +368,14 @@
       "id": "ma013",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a gentleman writer closing a door as a servant passes in the corridor, warm lamplight",
+        "prompt": "Medium shot a gentleman looking at his sword beside an empty bread basket, soft window light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma013",
-          "text": "他不願叫僕人代買，怕暴露酒從哪裡來。",
+          "text": "眼前的麻煩，不只是找人買麵包，還有他的紳士體面。",
           "emotion": "自然說故事"
         }
       ]
@@ -391,7 +391,7 @@
       "lines": [
         {
           "id": "ma014",
-          "text": "那乾脆自己出門買一小塊，難在哪裡？",
+          "text": "可自己到麵包店，只買一小塊，究竟難在哪裡？",
           "emotion": "問句自然上揚，留半拍"
         }
       ]
@@ -439,7 +439,7 @@
       "lines": [
         {
           "id": "ma017",
-          "text": "這段不是宮廷目擊報告，先寫的是他的窘迫。",
+          "text": "這段先寫他自己的窘迫；盧梭真的見過那位公主嗎？",
           "emotion": "平實說出文本歸屬"
         }
       ]
@@ -455,7 +455,7 @@
       "lines": [
         {
           "id": "ma018",
-          "text": "酒在房裡、麵包在街上，他最後想到什麼辦法？",
+          "text": "麵包店還沒走進去，他的回憶先拐進一位公主的故事。",
           "emotion": "問句自然上揚，留半拍"
         }
       ]
@@ -528,14 +528,14 @@
       "id": "ma023",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a gentleman writer alone at desk with a pastry and an open blank memoir, soft window light",
+        "prompt": "Wide shot an empty royal chair beside a closed unlettered memoir on a separate table, soft window light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma023",
-          "text": "可這份自述跟著盧梭走，沒有把公主說話的現場帶到讀者眼前。",
+          "text": "盧梭是在講自己想到這句話；讀者沒有跟著走進公主說話的現場。",
           "emotion": "自然說故事"
         }
       ]
@@ -544,7 +544,7 @@
       "id": "ma030",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a writer closing his memoir, the food pushed aside, lamplight",
+        "prompt": "Close shot a reader examining an unlettered printed page with a blank margin beside an anonymous silhouette, lamplight",
         "camera": "pan right",
         "visual": "still"
       },
@@ -744,7 +744,7 @@
       "lines": [
         {
           "id": "ma042",
-          "text": "如果要把匿名公主變成瑪麗皇后，還缺什麼？",
+          "text": "要把盧梭那位匿名公主連到瑪麗皇后，還欠哪條線索？",
           "emotion": "問句自然上揚，留半拍"
         }
       ]
@@ -760,7 +760,7 @@
       "lines": [
         {
           "id": "ma043",
-          "text": "至少得找到能連到她本人的獨立見證。",
+          "text": "先查瑪麗何時來到法國；再看王室身邊的人留下了哪些話。",
           "emotion": "自然說故事"
         }
       ]
@@ -776,7 +776,7 @@
       "lines": [
         {
           "id": "ma044",
-          "text": "這份回憶錄能證明他寫下了傳聞，不能當皇后現場的證詞。",
+          "text": "年份能替我們設邊界，卻不能代替公主說話的現場證人。",
           "emotion": "自然說故事"
         }
       ]
@@ -792,7 +792,7 @@
       "lines": [
         {
           "id": "ma045",
-          "text": "現在把皇后的名字填進那格，就會替原文添上它沒有的內容。",
+          "text": "坎潘的宮廷回憶錄，正好記下瑪麗的年份和一次麵包危機。",
           "emotion": "自然說故事"
         }
       ]
@@ -808,7 +808,7 @@
       "lines": [
         {
           "id": "ma094",
-          "text": "這份法文摘錄也沒標上那句話的寫作年；只靠瑪麗幾歲，仍定不了公主是誰。",
+          "text": "但盧梭這段法文摘錄沒寫那句話的精確寫作年；單靠瑪麗的年齡，還不能定人。",
           "emotion": "自然說故事"
         }
       ]
@@ -824,7 +824,7 @@
       "lines": [
         {
           "id": "ma046",
-          "text": "如果皇后真的說過，陪在王室身邊的人，到了麵包危機時有沒有記到她開口？",
+          "text": "坎潘筆下，瑪麗何時抵法？一七八九年的麵包抗議又留下哪些聲音？",
           "emotion": "問句自然上揚，留半拍"
         }
       ]
@@ -844,7 +844,7 @@
           "emotion": "自然說故事"
         }
       ],
-      "chapter": "瑪麗走進法國，後來的麵包危機沒有留下那句話"
+      "chapter": "先核瑪麗抵法年份，再讀坎潘記下的麵包抗議"
     },
     {
       "id": "ma048",
@@ -1049,7 +1049,7 @@
       "lines": [
         {
           "id": "ma060",
-          "text": "坎潘記下的這段，沒有皇后叫窮人吃布里歐修。",
+          "text": "坎潘這段仔細記下國王的承諾和人群的麵包口號，卻沒寫皇后叫人吃布里歐修。",
           "emotion": "自然說故事"
         }
       ]
@@ -1065,7 +1065,7 @@
       "lines": [
         {
           "id": "ma061",
-          "text": "坎潘把人群寫得凶暴；她服務王室的立場，也得一同看。",
+          "text": "坎潘服務王室，也把那天的人群寫得凶暴；我們讀她的事後回憶，要記得這層立場。",
           "emotion": "自然說故事"
         }
       ]
@@ -1187,30 +1187,14 @@
       "id": "ma096",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot worker with an empty coin purse facing two separate blank advice sheets, soft cloudy light",
+        "prompt": "Close shot a nineteenth century satirist studying a folded newspaper beside a small loaf, warm lamplight",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ma096",
-          "text": "他把沒麵包卻叫人吃布里歐修，對照沒積蓄卻叫人存錢的荒謬。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "ma068",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot a columnist reading a plain public notice beside a wine glass and empty bowl, diffused indoor light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ma068",
-          "text": "同段他還挖苦霍亂時當局勸民眾避開劣質食物，改喝波爾多酒。",
+          "text": "他把沒麵包卻叫人吃布里歐修，比作勸困苦工人去儲蓄銀行。",
           "emotion": "自然說故事"
         }
       ]
@@ -1258,7 +1242,7 @@
       "lines": [
         {
           "id": "ma071",
-          "text": "原文說，這是「真假未定」、被歸到她名下的說法。",
+          "text": "卡爾原句說的是「人們歸給瑪麗・安東尼的一句話，不論真假」；署名和真假都隔了一層。",
           "emotion": "自然說故事"
         }
       ]
@@ -1412,7 +1396,7 @@
       "id": "ma098",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot nineteenth century satirist returning to an earlier folded column at his desk, warm lamplight",
+        "prompt": "Medium shot nineteenth century satirist comparing two differently bound unlettered books at a desk, warm lamplight",
         "camera": "drift",
         "visual": "still"
       },
@@ -1483,7 +1467,7 @@
       "lines": [
         {
           "id": "ma083",
-          "text": "在這段文字裡沒有；我們只讀到卡爾說他看過。",
+          "text": "在這段文字裡，他只說偶然遇到一本書，沒給書名或頁碼，讓我們無法照著找到同一頁。",
           "emotion": "自然說故事"
         }
       ]
@@ -1537,55 +1521,6 @@
       ]
     },
     {
-      "id": "ma087",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot a researcher aligning three differently bound books around an empty chair, window light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ma087",
-          "text": "把早期引句、後來署名、宮廷回憶排上時間軸，中間還有一個空位。",
-          "emotion": "自然說故事"
-        }
-      ],
-      "chapter": "三份文字並排，皇后的現場證人仍缺席"
-    },
-    {
-      "id": "ma088",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot a historian looking toward an empty witness chair between old books, lamplight",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ma088",
-          "text": "那空位是把瑪麗本人接上引句的見證；這些已讀文獻都沒交出它。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "ma089",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot a researcher placing a later journal beside an older anonymous folio, window light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ma089",
-          "text": "早期的匿名話，不會因後來被寫上她的名字，就自動成了她的原話。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "ma090",
       "template": "shot",
       "data": {
@@ -1599,7 +1534,8 @@
           "text": "所以依目前查到的原文，不能證實瑪麗皇后說過這句。",
           "emotion": "自然說故事"
         }
-      ]
+      ],
+      "chapter": "原文能證明流傳中的署名，不能代替皇后親口說話"
     },
     {
       "id": "ma091",
