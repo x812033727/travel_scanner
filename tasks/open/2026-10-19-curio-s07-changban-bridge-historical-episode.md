@@ -49,6 +49,8 @@ node tools/video/cli.mjs narrative --slug curio-s07
 
 2026-10-19：上列版的新來源隔離盲讀 **12/13**，`one_line` 再次否決史書與小說重走同一趟橋頭；兩名讀者同題均否，故改成一次前進的時間線，把史書挑戰原句放在小說三喝的同一動作處。讀者的七組固定史料抽查通過，另提示舊 `eb094` 未明確區分原文先後與真實拆橋時點；現稿已釐清，並補第 42 回關羽截兵的固定行號。**現版 96 句／88 插圖／六章、估 8.2 分鐘、lint 0 errors / 0 warnings、script SHA-256 `93eaaf928a3853b84a0231d313ce8eff8af6fb13c04f05b396d0da956a709a03`**，逐句表同步。原始回執與改稿見 [`verify-2.md`](../../docs/videos/curio-s07/verify-2.md)；下一位獨立讀者須看此確切雜湊，媒體仍暫停。
 
+2026-10-19：在新讀者開始前，作者再刪去小說章首「第二次來到橋頭」的說法，讓它直接新增橋東樹林的動作。最終待讀版 **SHA-256 `da7f4441442e48c2438c36853bb940df603b37070bef784b4109a3702bda8a12`**；仍為 96 句／88 插圖／估 8.2 分、lint 0/0，詳細說明見 [`verify-2.md`](../../docs/videos/curio-s07/verify-2.md)。此雜湊尚未取得新盲讀，不可沿用前版 12/13 結果。
+
 ## Notes
 
 固定版本：`Ancient-China-Books/sanguozhi@10a0b1ab3019d8821262f7402366d14fb4aaa102` 與 `Ancient-China-Books/sanguoyanyi@761813427eb5685c395804493f9fbd7ad8dc7d8d`，直接段落連結見 `research.md`。`topics.json` 的未核句子有誤，此票不碰共享題庫；以本集已核文本為準。沒有呼叫 TTS、圖片或其他付費生成。協作分工只包含 `docs/videos/curio-s07/` 與此票，不改其他集。
