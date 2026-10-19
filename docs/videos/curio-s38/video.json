@@ -29,57 +29,62 @@
   "loops": [
     {
       "setup": "pf003",
-      "payoff": "pf065",
+      "payoff": "pf066",
       "what": "挖坑時火逼到哪裡"
     },
     {
       "setup": "pf004",
-      "payoff": "pf089",
+      "payoff": "pf090",
       "what": "佩皮斯房屋的結果"
     },
     {
       "setup": "pf005",
-      "payoff": "pf109",
+      "payoff": "pf110",
       "what": "起司去向有無記載"
     },
     {
-      "setup": "pf021",
-      "payoff": "pf080",
+      "setup": "pf022",
+      "payoff": "pf081",
       "what": "如何擋火"
     },
     {
-      "setup": "pf038",
-      "payoff": "pf039",
+      "setup": "pf039",
+      "payoff": "pf040",
       "what": "飯後河上火勢"
     },
     {
-      "setup": "pf050",
-      "payoff": "pf052",
+      "setup": "pf051",
+      "payoff": "pf053",
       "what": "先送哪些財物"
     },
     {
-      "setup": "pf056",
-      "payoff": "pf059",
+      "setup": "pf057",
+      "payoff": "pf060",
       "what": "誰的貨能上船"
     },
     {
-      "setup": "pf063",
+      "setup": "pf064",
       "payoff": "pf067",
       "what": "難搬的酒"
     },
     {
-      "setup": "pf081",
-      "payoff": "pf091",
+      "setup": "pf077",
+      "payoff": "pf080",
+      "what": "未收到回音時是否仍有人拆屋"
+    },
+    {
+      "setup": "pf082",
+      "payoff": "pf092",
       "what": "巷口能否守住"
     },
     {
       "setup": "pf074",
-      "payoff": "pf090",
+      "payoff": "pf091",
       "what": "辦公室能否躲過火"
     },
     {
-      "setup": "pf101",
-      "payoff": "pf102",
+      "setup": "pf102",
+      "payoff": "pf103",
       "what": "城中是否再起火"
     }
   ],
@@ -123,7 +128,7 @@
       "id": "pf001",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a seventeenth-century city diarist digging a pit in a walled courtyard, late afternoon soft light",
+        "prompt": "Medium shot a seventeenth-century city diarist and one fellow official digging a pit in a walled garden, soft evening light",
         "camera": "push in",
         "visual": "still"
       },
@@ -140,7 +145,7 @@
       "id": "pf002",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a secretary lowering a plain piece of hard cheese beside wine vessels into a courtyard pit, soft evening light",
+        "prompt": "Close shot a secretary lowering a plain piece of hard cheese beside wine vessels into a garden pit, soft evening light",
         "camera": "drift left",
         "visual": "still"
       },
@@ -156,7 +161,7 @@
       "id": "pf003",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a worried householder looking from a courtyard pit toward packed household crates, muted evening light",
+        "prompt": "Close shot a worried householder looking from a garden pit toward packed household crates, muted evening light",
         "camera": "pull back",
         "visual": "still"
       },
@@ -172,7 +177,7 @@
       "id": "pf004",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a clerk watching distant flames beyond rooftops from a courtyard, overcast evening light",
+        "prompt": "Wide shot a clerk watching distant flames beyond rooftops from a walled garden, overcast evening light",
         "camera": "drift right",
         "visual": "still"
       },
@@ -333,14 +338,14 @@
       "id": "pf014",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a worried diarist viewing a familiar house on London Bridge amid distant smoke, grey daylight",
+        "prompt": "Medium shot a worried diarist on a Tower platform looking toward fire at the London Bridge end, grey daylight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf014",
-          "text": "連橋上一戶熟人的房子，也在火線之內。",
+          "text": "橋上的火，讓他掛念那裡一戶熟人的家。",
           "emotion": "自然說故事"
         }
       ]
@@ -381,7 +386,7 @@
       "id": "pf017",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a secretary noting information on a blank diary page by a tower window, soft light",
+        "prompt": "Medium shot a thoughtful diarist looking out from a Tower window toward distant smoke, grey daylight",
         "camera": "pull back",
         "visual": "still"
       },
@@ -413,14 +418,14 @@
       "id": "pf019",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a city resident tipping a household bundle into the Thames, soft daylight",
+        "prompt": "Medium shot a worried clerk in a riverboat viewing a burned house near city Bridge, cloudy daylight",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf019",
-          "text": "還有人把搬不及的東西直接丟進河裡。",
+          "text": "到了船上，他才看見那位熟人的房子已經燒了。",
           "emotion": "自然說故事"
         }
       ]
@@ -429,14 +434,14 @@
       "id": "pf020",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a riverside resident hurrying toward a boat with smoke behind a house, cloudy daylight",
+        "prompt": "Medium shot a London resident tipping a household bundle into the Thames, soft daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf020",
-          "text": "佩皮斯見有些住戶等火貼近門口，才往船上跑。",
+          "text": "還有人把搬不及的東西直接丟進河裡。",
           "emotion": "自然說故事"
         }
       ]
@@ -445,14 +450,14 @@
       "id": "pf021",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a diarist in a riverboat watching wind-driven smoke cross London rooftops, cloudy daylight",
+        "prompt": "Wide shot a riverside resident hurrying toward a boat with smoke behind a house, cloudy daylight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf021",
-          "text": "風又把火往城裡推；誰能讓它停下來？",
+          "text": "佩皮斯見有些住戶等火貼近門口，才往船上跑。",
           "emotion": "自然說故事"
         }
       ]
@@ -461,13 +466,29 @@
       "id": "pf022",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a city secretary hurrying toward a plain palace entrance with a blank report, midday light",
+        "prompt": "Wide shot a secretary in a riverboat watching wind-driven smoke cross city rooftops, cloudy daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf022",
+          "text": "風又把火往城裡推；誰能讓它停下來？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf023",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a London householder hurrying toward a plain Whitehall palace entrance, midday light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf023",
           "text": "佩皮斯沒有繼續待在船上，而是趕往懷特霍爾。",
           "emotion": "自然說故事"
         }
@@ -475,33 +496,17 @@
       "chapter": "九月二日，佩皮斯向國王提拆屋"
     },
     {
-      "id": "pf023",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot a householder speaking earnestly before an English ruler in a plain seventeenth-century chamber, soft light",
-        "camera": "drift left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "pf023",
-          "text": "他在國王與約克公爵面前，報告自己從河上所見。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "pf024",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a clerk pointing to a gap between simple house blocks on a blank tabletop plan, lamplight",
+        "prompt": "Medium shot a clerk speaking earnestly before an English ruler in a plain seventeenth-century chamber, soft light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf024",
-          "text": "他說要拆掉火前面的屋子，才可能擋住火。",
+          "text": "他在國王與約克公爵面前，報告自己從河上所見。",
           "emotion": "自然說故事"
         }
       ]
@@ -510,14 +515,14 @@
       "id": "pf025",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a seated ruler speaking firmly to a city writer in a plain chamber, mild indoor light",
+        "prompt": "Close shot a writer pointing to a gap between simple house blocks on a blank tabletop plan, lamplight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf025",
-          "text": "國王要他轉告市長，拆屋不要猶豫。",
+          "text": "他說要拆掉火前面的屋子，才可能擋住火。",
           "emotion": "自然說故事"
         }
       ]
@@ -526,14 +531,14 @@
       "id": "pf026",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a seventeenth-century duke gesturing toward a blank city plan inside a hall, mild light",
+        "prompt": "Medium shot a seated ruler speaking firmly to a London diarist in a plain chamber, mild indoor light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf026",
-          "text": "約克公爵還說，需要士兵時可以支援。",
+          "text": "國王要他轉告市長，拆屋不要猶豫。",
           "emotion": "自然說故事"
         }
       ]
@@ -542,14 +547,14 @@
       "id": "pf027",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a weary city mayor leaning beside a narrow London street while a secretary approaches, grey daylight",
+        "prompt": "Medium shot a seventeenth-century duke gesturing toward a blank city plan inside a hall, mild light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf027",
-          "text": "等他找到市長，對方已疲憊得像撐不住，還能帶人拆屋嗎？",
+          "text": "約克公爵還說，需要士兵時可以支援。",
           "emotion": "自然說故事"
         }
       ]
@@ -558,14 +563,14 @@
       "id": "pf028",
       "template": "shot",
       "data": {
-        "prompt": "Close shot an exhausted mayor speaking to a householder near drifting smoke, muted daylight",
+        "prompt": "Medium shot a weary city mayor leaning beside a narrow city street while a householder approaches, grey daylight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf028",
-          "text": "日記記下市長的抱怨：人不服從，火又追得太快。",
+          "text": "等他找到市長，對方已疲憊得像撐不住，還能帶人拆屋嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -574,14 +579,14 @@
       "id": "pf029",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a weary city mayor resting against a plain doorway, grey daylight",
+        "prompt": "Close shot an exhausted mayor speaking to a clerk near drifting smoke, muted daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf029",
-          "text": "市長說自己熬了一夜，得先找地方休息。",
+          "text": "日記記下市長的抱怨：人不服從，火又追得太快。",
           "emotion": "自然說故事"
         }
       ]
@@ -590,14 +595,14 @@
       "id": "pf030",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a weary mayor leaving a London street as a writer watches, grey daylight",
+        "prompt": "Medium shot a weary city mayor resting against a plain doorway, grey daylight",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf030",
-          "text": "市長說不需要更多士兵，轉身就離開了。",
+          "text": "市長說自己熬了一夜，得先找地方休息。",
           "emotion": "自然說故事"
         }
       ]
@@ -606,14 +611,14 @@
       "id": "pf031",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a city resident setting one household chest inside a crowded church, muted daylight",
+        "prompt": "Medium shot a weary mayor leaving a city street as a diarist watches, grey daylight",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf031",
-          "text": "教堂裡也塞滿居民搬去暫放的家當。",
+          "text": "市長說不需要更多士兵，轉身就離開了。",
           "emotion": "自然說故事"
         }
       ]
@@ -622,14 +627,14 @@
       "id": "pf032",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot one London resident carrying a bundle past a loaded horse cart, overcast daylight",
+        "prompt": "Wide shot a London resident setting one household chest inside a crowded church, muted daylight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf032",
-          "text": "沿街有人背著包，車上也堆滿要搬的家當。",
+          "text": "教堂裡也塞滿居民搬去暫放的家當。",
           "emotion": "自然說故事"
         }
       ]
@@ -638,14 +643,14 @@
       "id": "pf033",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a householder observing sealed barrels near a London riverside warehouse, soft grey daylight",
+        "prompt": "Wide shot one London resident carrying a bundle past a loaded horse cart, overcast daylight",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf033",
-          "text": "佩皮斯特別記下，泰晤士街有焦油，倉庫還有油、酒；自家的酒呢？",
+          "text": "沿街有人背著包，車上也堆滿要搬的家當。",
           "emotion": "自然說故事"
         }
       ]
@@ -654,14 +659,14 @@
       "id": "pf034",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a city clerk welcoming one guest at a modest dining room door, soft midday light",
+        "prompt": "Close shot a clerk observing sealed barrels near a city riverside warehouse, soft grey daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf034",
-          "text": "可到了中午，他仍回家招待原先約好的客人。",
+          "text": "佩皮斯特別記下，泰晤士街有焦油，倉庫還有油、酒；自家的酒呢？",
           "emotion": "自然說故事"
         }
       ]
@@ -670,14 +675,14 @@
       "id": "pf035",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a worried writer sitting before a plentiful dinner spread while smoke shows through a window, soft midday light",
+        "prompt": "Medium shot a London writer welcoming one guest at a modest dining room door, soft midday light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf035",
-          "text": "那頓飯依然豐盛，只是大家都惦記著火。",
+          "text": "可到了中午，他仍回家招待原先約好的客人。",
           "emotion": "自然說故事"
         }
       ]
@@ -686,14 +691,14 @@
       "id": "pf036",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a concerned woman speaking at a dining-room doorway, muted midday light",
+        "prompt": "Medium shot a worried diarist sitting before a plentiful dinner spread while smoke shows through a window, soft midday light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf036",
-          "text": "席間，巴特利爾太太來問兩位親人的下落；佩皮斯記下他們的房子已燒。",
+          "text": "那頓飯依然豐盛，只是大家都惦記著火。",
           "emotion": "自然說故事"
         }
       ]
@@ -702,14 +707,14 @@
       "id": "pf037",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a city porter loading a household crate into a horse cart on a crowded city street, grey afternoon light",
+        "prompt": "Medium shot a concerned woman speaking at a dining-room doorway, muted midday light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf037",
-          "text": "飯後再走上街，早上收進的家當，現在又往更遠處搬。",
+          "text": "席間，巴特利爾太太來問兩位親人的下落；佩皮斯記下他們的房子已燒。",
           "emotion": "自然說故事"
         }
       ]
@@ -718,14 +723,14 @@
       "id": "pf038",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a householder looking from a smoky city street toward the Thames, soft afternoon light",
+        "prompt": "Medium shot a London porter loading a household crate into a horse cart on a crowded city street, grey afternoon light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf038",
-          "text": "他接著上船，再看那道火線推到了哪裡？",
+          "text": "飯後再走上街，早上收進的家當，現在又往更遠處搬。",
           "emotion": "自然說故事"
         }
       ]
@@ -734,13 +739,29 @@
       "id": "pf039",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a clerk in a riverboat watching flames farther along a London waterfront, cloudy afternoon light",
+        "prompt": "Close shot a clerk looking from a smoky city street toward the Thames, soft afternoon light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf039",
+          "text": "他接著上船，再看那道火線推到了哪裡？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf040",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a writer in a riverboat watching flames farther along a city waterfront, cloudy afternoon light",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf040",
           "text": "船行到白天看過的河岸，火已越過先前的街道。",
           "emotion": "自然說故事"
         }
@@ -748,33 +769,17 @@
       "chapter": "九月二日夜，火光逼佩皮斯裝箱"
     },
     {
-      "id": "pf040",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot a city writer looking across cargo boats carrying household crates on the Thames, afternoon light",
-        "camera": "track left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "pf040",
-          "text": "河面擠滿搬運家當的小船。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "pf041",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a riverside resident steadying a small virginal keyboard instrument inside a low cargo boat, cloudy daylight",
+        "prompt": "Wide shot a London diarist looking across cargo boats carrying household crates on the Thames, afternoon light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf041",
-          "text": "佩皮斯還看到，不少船裡連家用的小型鍵盤琴也載著。",
+          "text": "河面擠滿搬運家當的小船。",
           "emotion": "自然說故事"
         }
       ]
@@ -783,14 +788,14 @@
       "id": "pf042",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a secretary shielding his face from drifting sparks on a riverboat, dusk light",
+        "prompt": "Medium shot a riverside resident steadying a small virginal keyboard instrument inside a low cargo boat, cloudy daylight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf042",
-          "text": "迎風靠近時，飛來的火星讓他難以久留。",
+          "text": "佩皮斯還看到，不少船裡連家用的小型鍵盤琴也載著。",
           "emotion": "自然說故事"
         }
       ]
@@ -799,14 +804,14 @@
       "id": "pf043",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a riverside resident watching sparks pass above separate rooftops, muted dusk light",
+        "prompt": "Close shot a householder shielding his face from drifting sparks on a riverboat, dusk light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf043",
-          "text": "那些火星甚至讓相隔好幾間的房屋接連著火。",
+          "text": "迎風靠近時，飛來的火星讓他難以久留。",
           "emotion": "自然說故事"
         }
       ]
@@ -815,14 +820,14 @@
       "id": "pf044",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a clerk watching a distant arc of fire above the London riverbank, dusk light",
+        "prompt": "Wide shot a riverside resident watching sparks pass above separate rooftops, muted dusk light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf044",
-          "text": "黃昏從對岸看，火光像一道拉長的弧。",
+          "text": "那些火星甚至讓相隔好幾間的房屋接連著火。",
           "emotion": "自然說故事"
         }
       ]
@@ -831,14 +836,14 @@
       "id": "pf045",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a tearful writer looking across the river at distant firelight, muted dusk light",
+        "prompt": "Wide shot a writer watching a distant arc of fire above the London riverbank, dusk light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf045",
-          "text": "他寫，這幅景象讓自己哭了。",
+          "text": "黃昏從對岸看，火光像一道拉長的弧。",
           "emotion": "自然說故事"
         }
       ]
@@ -847,14 +852,14 @@
       "id": "pf046",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a diarist packing a household chest in a seventeenth-century room, lamplight",
+        "prompt": "Close shot a tearful diarist looking across the river at distant firelight, muted dusk light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf046",
-          "text": "回到家，他開始裝箱準備搬走。",
+          "text": "他寫，這幅景象讓自己哭了。",
           "emotion": "自然說故事"
         }
       ]
@@ -863,14 +868,14 @@
       "id": "pf047",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a secretary lowering a locked iron chest into a plain cellar, lamplight",
+        "prompt": "Medium shot a secretary packing a household chest in a seventeenth-century room, lamplight",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf047",
-          "text": "金錢和鐵箱先移到地窖，重要帳冊另放。",
+          "text": "回到家，他開始裝箱準備搬走。",
           "emotion": "自然說故事"
         }
       ]
@@ -879,14 +884,14 @@
       "id": "pf048",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a householder carrying a household box into a small walled garden, moonlight",
+        "prompt": "Close shot a householder lowering a locked iron chest into a plain cellar, lamplight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf048",
-          "text": "他還把部分家當搬進花園；但花園能放下所有東西嗎？",
+          "text": "金錢和鐵箱先移到地窖，重要帳冊另放。",
           "emotion": "自然說故事"
         }
       ]
@@ -895,14 +900,14 @@
       "id": "pf049",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a tired guest sitting awake beside his few household bundles in a candlelit room",
+        "prompt": "Medium shot a clerk carrying a household box into a small walled garden, moonlight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf049",
-          "text": "一位家被燒的熟人帶著剩餘物品來借宿，夜裡也睡不安穩。",
+          "text": "他還把部分家當搬進花園；但花園能放下所有東西嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -911,14 +916,14 @@
       "id": "pf050",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a writer comparing a locked chest and a plain wooden box by a garden door, lamplight",
+        "prompt": "Medium shot a tired guest sitting awake beside his few household bundles in a candlelit room",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf050",
-          "text": "如果天亮還要搬，他先送走哪一批財物？",
+          "text": "一位家被燒的熟人帶著剩餘物品來借宿，夜裡也睡不安穩。",
           "emotion": "自然說故事"
         }
       ]
@@ -927,13 +932,29 @@
       "id": "pf051",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a London diarist meeting a horse cart outside his home before dawn, cool grey light",
+        "prompt": "Close shot a diarist comparing a locked chest and a plain wooden box by a garden door, lamplight",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf051",
+          "text": "如果天亮還要搬，他先送走哪一批財物？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a city secretary meeting a horse cart outside his home before dawn, cool grey light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf052",
           "text": "九月三日天未亮，鄰居替他送來一輛車。",
           "emotion": "自然說故事"
         }
@@ -941,33 +962,17 @@
       "chapter": "九月三日，佩皮斯穿睡袍送走財物"
     },
     {
-      "id": "pf052",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot a secretary in a nightgown riding a cart beside a closed chest, predawn light",
-        "camera": "pull back",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "pf052",
-          "text": "佩皮斯穿著睡袍，親自押送金錢與銀器。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "pf053",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a householder carrying a closed chest into a suburban London doorway, morning light",
+        "prompt": "Medium shot a householder in a nightgown riding a cart beside a closed chest, predawn light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf053",
-          "text": "他把財物送到貝德納爾綠地一位朋友家。",
+          "text": "佩皮斯穿著睡袍，親自押送金錢與銀器。",
           "emotion": "自然說故事"
         }
       ]
@@ -976,14 +981,14 @@
       "id": "pf054",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a clerk standing among household crates in a crowded receiving room, soft morning light",
+        "prompt": "Medium shot a clerk carrying a closed chest into a suburban London doorway, morning light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf054",
-          "text": "那座房子也塞滿鄰居送來的物品。",
+          "text": "他把財物送到貝德納爾綠地一位朋友家。",
           "emotion": "自然說故事"
         }
       ]
@@ -992,14 +997,14 @@
       "id": "pf055",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a writer sorting household bundles beside a crowded table, grey daylight",
+        "prompt": "Wide shot a writer standing among household crates in a crowded receiving room, soft morning light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf055",
-          "text": "再回住處，他和妻子繼續清點剩下的東西。",
+          "text": "那座房子也塞滿其他人送來的物品。",
           "emotion": "自然說故事"
         }
       ]
@@ -1008,14 +1013,14 @@
       "id": "pf056",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a London diarist inspecting a low flat cargo boat at a Thames landing, cloudy daylight",
+        "prompt": "Medium shot a London diarist carrying a household bundle out of a home toward a river landing, grey daylight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf056",
-          "text": "有人替他找來一艘搬貨用的平底船；他還讓誰的東西上船？",
+          "text": "回家後，他和妻子繼續搬走剩下的東西。",
           "emotion": "自然說故事"
         }
       ]
@@ -1024,14 +1029,14 @@
       "id": "pf057",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a porter carrying a wooden crate across a crowded London hill, overcast light",
+        "prompt": "Wide shot a London secretary inspecting a low flat cargo boat at a Thames landing, cloudy daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf057",
-          "text": "箱子被扛過塔丘，送往碼頭。",
+          "text": "有人替他找來一艘搬貨用的平底船；他還讓誰的東西上船？",
           "emotion": "自然說故事"
         }
       ]
@@ -1040,14 +1045,14 @@
       "id": "pf058",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a householder holding a box blocked before a crowded narrow city postern, overcast light",
+        "prompt": "Medium shot a porter carrying a wooden crate across a crowded city hill, overcast light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf058",
-          "text": "人多到連穿過小門都很困難。",
+          "text": "箱子被扛過塔丘，送往碼頭。",
           "emotion": "自然說故事"
         }
       ]
@@ -1056,14 +1061,14 @@
       "id": "pf059",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a mother placing a small bundle on a flat cargo boat beside the Thames, soft light",
+        "prompt": "Wide shot a clerk holding a box blocked before a crowded narrow city postern, overcast light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf059",
-          "text": "一位帶孩子的鄰居，也把少量東西放上他的船。",
+          "text": "人多到連穿過小門都很困難。",
           "emotion": "自然說故事"
         }
       ]
@@ -1072,14 +1077,14 @@
       "id": "pf060",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a diarist carrying a small wooden crate toward a Thames cargo boat, soft daylight",
+        "prompt": "Medium shot a mother placing a small bundle on a flat cargo boat beside the Thames, soft light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf060",
-          "text": "佩皮斯自己也扛過一些物品，沒有只坐著指揮。",
+          "text": "一位帶孩子的鄰居，也把少量東西放上他的船。",
           "emotion": "自然說故事"
         }
       ]
@@ -1088,14 +1093,14 @@
       "id": "pf061",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a tired diarist spreading a simple quilt on an office floor, lamplight",
+        "prompt": "Medium shot a diarist carrying a small wooden crate toward a Thames cargo boat, soft daylight",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf061",
-          "text": "到夜裡，夫妻倆只能在辦公室鋪被暫睡。",
+          "text": "佩皮斯自己也扛過一些物品，沒有只坐著指揮。",
           "emotion": "自然說故事"
         }
       ]
@@ -1104,14 +1109,14 @@
       "id": "pf062",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a secretary eating a plain cold meal beside packed boxes, soft lamplight",
+        "prompt": "Medium shot a tired secretary spreading a simple quilt on an office floor, lamplight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf062",
-          "text": "廚具不在手邊，兩人吃的是前一天的剩菜。",
+          "text": "到夜裡，夫妻倆只能在辦公室鋪被暫睡。",
           "emotion": "自然說故事"
         }
       ]
@@ -1120,14 +1125,14 @@
       "id": "pf063",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a householder looking toward large wine vessels beside a packed garden path, soft night light",
+        "prompt": "Close shot a householder eating a plain cold meal beside packed boxes, soft lamplight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf063",
-          "text": "車、船和花園都用上了；還有什麼難以搬走？",
+          "text": "廚具不在手邊，兩人吃的是前一天的剩菜。",
           "emotion": "自然說故事"
         }
       ]
@@ -1136,13 +1141,29 @@
       "id": "pf064",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a city clerk carrying a last wooden box toward a flat river cargo boat, overcast morning light",
+        "prompt": "Medium shot a clerk looking toward large wine vessels beside a packed garden path, soft night light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf064",
+          "text": "車、船和花園都用上了；還有什麼難以搬走？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf065",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a London writer carrying a last wooden box toward a flat river cargo boat, overcast morning light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf065",
           "text": "九月四日一早，能搬的還在往船上送；院裡卻有酒沒有搬走。",
           "emotion": "自然說故事"
         }
@@ -1150,33 +1171,17 @@
       "chapter": "九月四日，兩個土坑先後挖開"
     },
     {
-      "id": "pf065",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot a writer watching smoke approach houses along a narrow London street, muted afternoon light",
-        "camera": "drift left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "pf065",
-          "text": "到了下午，塔街的火已逼近幾戶房子。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "pf066",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a London householder seeing trays and shovels scattered in a street gutter, muted afternoon light",
+        "prompt": "Wide shot a diarist watching smoke approach houses along a narrow London street, muted afternoon light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf066",
-          "text": "霍威爾先生的托盤與鏟子，散落在塔街的排水溝。",
+          "text": "到了下午，塔街的火已逼近幾戶房子。",
           "emotion": "自然說故事"
         }
       ]
@@ -1249,7 +1254,7 @@
       "id": "pf071",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a diarist digging a second separate pit beside wine vessels in a London courtyard, soft evening light",
+        "prompt": "Medium shot a diarist and one fellow official digging a second separate pit beside wine vessels in a walled garden, soft evening light",
         "camera": "push in",
         "visual": "still"
       },
@@ -1265,7 +1270,7 @@
       "id": "pf072",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a secretary lowering a plain hard cheese piece beside a wine vessel into a second pit, soft evening light",
+        "prompt": "Close shot a secretary lowering a plain hard cheese piece beside a wine vessel into a second garden pit, soft evening light",
         "camera": "drift left",
         "visual": "still"
       },
@@ -1313,14 +1318,14 @@
       "id": "pf075",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a London writer discussing an office rescue plan with one fellow official beside a blank desk, dusk light",
+        "prompt": "Medium shot a London writer discussing the nearby office with one fellow official in a walled garden, soft afternoon light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf075",
-          "text": "佩皮斯提議從伍利奇與德普特福德召工人；潘爵士當晚去安排。",
+          "text": "稍早那天下午，佩皮斯與潘爵士坐在花園裡商量對策。",
           "emotion": "自然說故事"
         }
       ]
@@ -1329,14 +1334,14 @@
       "id": "pf076",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a worried diary writer waiting beside an unlettered outgoing letter, lamplight",
+        "prompt": "Medium shot a city official leaving a walled garden to summon workmen, early night light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf076",
-          "text": "佩皮斯另寫信請求拆屋許可；當夜一直沒收到回音。",
+          "text": "佩皮斯提議從伍利奇與德普特福德召工人；潘爵士當夜去安排。",
           "emotion": "自然說故事"
         }
       ]
@@ -1345,14 +1350,14 @@
       "id": "pf077",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a London householder eating a plain mutton supper beside packed boxes, night light",
+        "prompt": "Close shot a worried diary writer waiting beside an unlettered outgoing letter, lamplight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf077",
-          "text": "他與妻子、客人吃羊肩肉，桌上連餐巾都沒有。",
+          "text": "佩皮斯另寫信請求拆屋許可，卻沒收到回音；街上會有人先動手嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -1361,14 +1366,14 @@
       "id": "pf078",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a London householder stepping from a supper table to watch a fiery sky from a garden, night light",
+        "prompt": "Medium shot a London householder eating a plain mutton supper beside packed boxes, night light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf078",
-          "text": "吃晚飯時，他還不時走進花園，抬頭看燃燒的天空。",
+          "text": "他與妻子、客人吃羊肩肉，桌上連餐巾都沒有。",
           "emotion": "自然說故事"
         }
       ]
@@ -1377,14 +1382,14 @@
       "id": "pf079",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a clerk watching a distant house collapse behind drifting smoke on a city street, night light",
+        "prompt": "Medium shot a city householder stepping from a supper table to watch a fiery sky from a garden, night light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf079",
-          "text": "夜裡，他看見塔街有人炸開火前面的屋子。",
+          "text": "吃晚飯時，他還不時走進花園，抬頭看燃燒的天空。",
           "emotion": "自然說故事"
         }
       ]
@@ -1393,14 +1398,14 @@
       "id": "pf080",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a writer observing an open gap between houses and fire from a safe street corner, night light",
+        "prompt": "Wide shot a writer watching a distant house collapse behind drifting smoke on a London street, night light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf080",
-          "text": "他記下，炸屋的地方，火在那一帶停住了。",
+          "text": "夜裡，他看見塔街有人炸開火前面的屋子。",
           "emotion": "自然說故事"
         }
       ]
@@ -1409,14 +1414,14 @@
       "id": "pf081",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a worried diarist watching smoke beyond his narrow lane, muted night light",
+        "prompt": "Medium shot a diarist observing an open gap between houses and fire from a safe street corner, night light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf081",
-          "text": "但他自己那條巷子，隔天能不能守住？",
+          "text": "他記下，炸屋的地方，火在那一帶停住了。",
           "emotion": "自然說故事"
         }
       ]
@@ -1425,13 +1430,29 @@
       "id": "pf082",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a worried woman waking a resting secretary in a seventeenth-century office, predawn light",
+        "prompt": "Close shot a worried secretary watching smoke beyond his narrow lane, muted night light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf082",
+          "text": "但他自己那條巷子，隔天能不能守住？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf083",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a worried woman waking a resting householder in a seventeenth-century office, predawn light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf083",
           "text": "九月五日凌晨約兩點，妻子又把他叫醒。",
           "emotion": "自然說故事"
         }
@@ -1439,33 +1460,17 @@
       "chapter": "九月五日，火追到佩皮斯的巷口"
     },
     {
-      "id": "pf083",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot a householder looking toward smoke beside a church at the foot of his lane, predawn light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "pf083",
-          "text": "巷口教堂附近，傳來新一輪火警。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "pf084",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a clerk boarding a small Thames boat carrying a closed chest, moonlit predawn",
+        "prompt": "Wide shot a clerk looking toward smoke beside a church at the foot of his lane, predawn light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf084",
-          "text": "這次他立刻帶著妻子與金錢乘船去伍利奇。",
+          "text": "巷口教堂附近，傳來新一輪火警。",
           "emotion": "自然說故事"
         }
       ]
@@ -1474,14 +1479,14 @@
       "id": "pf085",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a writer in a riverboat watching a broad glow above city rooftops, moonlit predawn",
+        "prompt": "Medium shot a writer boarding a small Thames boat carrying a closed chest, moonlit predawn",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf085",
-          "text": "月光下回望，倫敦幾乎像整片都在燃燒；他還會回去嗎？",
+          "text": "這次他立刻帶著妻子與金錢乘船去伍利奇。",
           "emotion": "自然說故事"
         }
       ]
@@ -1490,14 +1495,14 @@
       "id": "pf086",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a diarist locking a plain chest inside a suburban room, soft morning light",
+        "prompt": "Wide shot a diarist in a riverboat watching a broad glow above London rooftops, moonlit predawn",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf086",
-          "text": "他把金錢鎖在朋友家，叮囑妻子與同行者輪流看守。",
+          "text": "月光下回望，倫敦幾乎像整片都在燃燒；他還會回去嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -1506,14 +1511,14 @@
       "id": "pf087",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a secretary seated in a small boat heading back toward a smoky London waterfront, morning light",
+        "prompt": "Close shot a secretary locking a plain chest inside a suburban room, soft morning light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf087",
-          "text": "然後他自己又乘船返回。",
+          "text": "他把金錢鎖在朋友家，叮囑妻子與同行者輪流看守。",
           "emotion": "自然說故事"
         }
       ]
@@ -1522,14 +1527,14 @@
       "id": "pf088",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a householder in a small boat viewing a cargo vessel attended by one ordinary watcher at Deptford, morning light",
+        "prompt": "Wide shot a householder seated in a small boat heading back toward a smoky city waterfront, morning light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf088",
-          "text": "返程經過德普特福德，他已看見自己的貨物在船上有人看守。",
+          "text": "然後他自己又乘船返回。",
           "emotion": "自然說故事"
         }
       ]
@@ -1538,14 +1543,14 @@
       "id": "pf089",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a relieved clerk approaching his intact home beside a smoky street, grey daylight",
+        "prompt": "Wide shot a clerk in a small boat viewing a cargo vessel attended by one ordinary watcher at Deptford, morning light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf089",
-          "text": "他原以為房子已燒，卻看見它還站著。",
+          "text": "返程經過德普特福德，他已看見自己的貨物在船上有人看守。",
           "emotion": "自然說故事"
         }
       ]
@@ -1554,14 +1559,14 @@
       "id": "pf090",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a writer placing one hand on an intact office door, soft grey light",
+        "prompt": "Medium shot a relieved writer approaching his intact home beside a smoky street, grey daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf090",
-          "text": "辦公室也沒有燒；他走近了才敢確認。",
+          "text": "他原以為房子已燒，卻看見它還站著。",
           "emotion": "自然說故事"
         }
       ]
@@ -1570,14 +1575,14 @@
       "id": "pf091",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a diarist studying a scorched church entrance near an intact lane, grey daylight",
+        "prompt": "Close shot a diarist placing one hand on an intact office door, soft grey light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf091",
-          "text": "巷口教堂的鐘面與門廊卻受了火，火才在那裡停下。",
+          "text": "辦公室也沒有燒；他走近了才敢確認。",
           "emotion": "自然說故事"
         }
       ]
@@ -1586,14 +1591,14 @@
       "id": "pf092",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a workman clearing fallen timber to make a gap ahead of distant flames, daylight",
+        "prompt": "Medium shot a diarist studying a scorched church entrance near an intact lane, grey daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf092",
-          "text": "日記把這條街的轉機，歸於炸屋和趕來的工人。",
+          "text": "巷口教堂的鐘面與門廊卻受了火，火才在那裡停下。",
           "emotion": "自然說故事"
         }
       ]
@@ -1602,14 +1607,14 @@
       "id": "pf093",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a householder looking up toward a nearby church tower from a smoky street, grey daylight",
+        "prompt": "Medium shot a workman clearing fallen timber to make a gap ahead of distant flames, daylight",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf093",
-          "text": "他家的房子還在；那教堂塔樓上會看見怎樣的倫敦？",
+          "text": "日記把這條街的轉機，歸於炸屋和趕來的工人。",
           "emotion": "自然說故事"
         }
       ]
@@ -1618,14 +1623,14 @@
       "id": "pf094",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a clerk looking across burned city streets from a church tower, soft grey daylight",
+        "prompt": "Medium shot a clerk looking up toward a nearby church tower from a smoky street, grey daylight",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf094",
-          "text": "他登上教堂塔樓，眼前是大片毀壞。",
+          "text": "他家的房子還在；那教堂塔樓上會看見怎樣的倫敦？",
           "emotion": "自然說故事"
         }
       ]
@@ -1634,14 +1639,14 @@
       "id": "pf095",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a wary diarist descending a church stairway with distant smoke outside, soft daylight",
+        "prompt": "Wide shot a writer looking across burned London streets from a church tower, soft grey daylight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf095",
-          "text": "遠處仍在燒，他不敢在塔上久留。",
+          "text": "他登上教堂塔樓，眼前是大片毀壞。",
           "emotion": "自然說故事"
         }
       ]
@@ -1650,14 +1655,14 @@
       "id": "pf096",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a walking diarist stepping past glowing street coals, muted daylight",
+        "prompt": "Medium shot a wary diarist descending a church stairway with distant smoke outside, soft daylight",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf096",
-          "text": "餘燼燙著腳，他們穿過街道繼續往前走。",
+          "text": "遠處仍在燒，他不敢在塔上久留。",
           "emotion": "自然說故事"
         }
       ]
@@ -1666,14 +1671,14 @@
       "id": "pf097",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a displaced city resident guarding household bundles in an open field, grey daylight",
+        "prompt": "Close shot a walking diarist stepping past glowing street coals, muted daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf097",
-          "text": "路上，摩爾菲爾德擠滿守著家當的逃難者。",
+          "text": "餘燼燙著腳，他們穿過街道繼續往前走。",
           "emotion": "自然說故事"
         }
       ]
@@ -1682,14 +1687,14 @@
       "id": "pf098",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a diarist holding a small warped piece of old window glass, soft daylight",
+        "prompt": "Wide shot a displaced London resident guarding household bundles in an open field, grey daylight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf098",
-          "text": "佩皮斯還拾起一塊被熱烤得彎曲的玻璃。",
+          "text": "路上，摩爾菲爾德擠滿守著家當的逃難者。",
           "emotion": "自然說故事"
         }
       ]
@@ -1698,14 +1703,14 @@
       "id": "pf099",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a clerk instructing one watchman beside a plain office doorway, night light",
+        "prompt": "Close shot a diarist holding a small warped piece of old window glass, soft daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf099",
-          "text": "夜裡回到辦公室，他安排工人守夜。",
+          "text": "佩皮斯還拾起一塊被熱烤得彎曲的玻璃。",
           "emotion": "自然說故事"
         }
       ]
@@ -1714,14 +1719,14 @@
       "id": "pf100",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot an exhausted writer sleeping on a simple office quilt, muted night light",
+        "prompt": "Medium shot a writer instructing one watchman beside a plain office doorway, night light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf100",
-          "text": "直到午夜他才躺下，終於睡得安穩一些。",
+          "text": "夜裡回到辦公室，他安排工人守夜。",
           "emotion": "自然說故事"
         }
       ]
@@ -1730,14 +1735,14 @@
       "id": "pf101",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a sleeping diarist beside an office window facing dark London rooftops, predawn light",
+        "prompt": "Medium shot an exhausted diarist sleeping on a simple office quilt, muted night light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf101",
-          "text": "天亮以後，城裡的火真的平息了嗎？",
+          "text": "直到午夜他才躺下，終於睡得安穩一些。",
           "emotion": "自然說故事"
         }
       ]
@@ -1746,13 +1751,29 @@
       "id": "pf102",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a secretary noticing smoke from a fresh street fire in daylight",
+        "prompt": "Wide shot a sleeping secretary beside an office window facing dark London rooftops, predawn light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf102",
+          "text": "天亮以後，城裡的火真的平息了嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf103",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a householder noticing smoke from a fresh street fire in daylight",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf103",
           "text": "九月六日早上，城裡另一處又起了火。",
           "emotion": "自然說故事"
         }
@@ -1760,33 +1781,17 @@
       "chapter": "九月六日，佩皮斯帶人救火並卸下貨物"
     },
     {
-      "id": "pf103",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot one city worker beside freshly extinguished smoking timber on a city street, morning light",
-        "camera": "track left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "pf103",
-          "text": "佩皮斯與工人趕去，很快便把火撲滅。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "pf104",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a clerk looking over a damaged London riverbank from a boat, overcast daylight",
+        "prompt": "Medium shot one London worker beside freshly extinguished smoking timber on a city street, morning light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf104",
-          "text": "河岸的房屋和教堂，已經大片消失。",
+          "text": "佩皮斯與工人趕去，很快便把火撲滅。",
           "emotion": "自然說故事"
         }
       ]
@@ -1795,14 +1800,14 @@
       "id": "pf105",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a writer viewing cargo crates aboard a flat boat attended by one ordinary watcher at Deptford, daylight",
+        "prompt": "Wide shot a writer looking over a damaged London riverbank from a boat, overcast daylight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf105",
-          "text": "前一天船上有人看守，可他還沒把貨物卸上岸。",
+          "text": "河岸的房屋和教堂，已經大片消失。",
           "emotion": "自然說故事"
         }
       ]
@@ -1811,14 +1816,14 @@
       "id": "pf106",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a diarist directing one porter to unload a wooden chest at a Deptford landing, soft daylight",
+        "prompt": "Medium shot a diarist viewing cargo crates aboard a flat boat attended by one ordinary watcher at Deptford, daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf106",
-          "text": "到德普特福德，他把那些貨物卸到卡特雷特爵士那裡。",
+          "text": "前一天船上有人看守，可他還沒把貨物卸上岸。",
           "emotion": "自然說故事"
         }
       ]
@@ -1827,14 +1832,14 @@
       "id": "pf107",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a relieved secretary inspecting an unbroken household chest by a river landing, daylight",
+        "prompt": "Medium shot a secretary directing one porter to unload a wooden chest at a Deptford landing, soft daylight",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf107",
-          "text": "清點眼前的東西，佩皮斯說沒有看到遺失或損壞。",
+          "text": "到德普特福德，他把那些貨物卸到卡特雷特爵士那裡。",
           "emotion": "自然說故事"
         }
       ]
@@ -1843,14 +1848,14 @@
       "id": "pf108",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a tired diarist writing on an unlettered page by candlelight",
+        "prompt": "Close shot a relieved householder inspecting an unbroken household chest by a river landing, daylight",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf108",
-          "text": "晚上，他在日記裡寫：我們的恐懼過了。",
+          "text": "卸貨後，他說自己沒看到缺少或損壞的東西。",
           "emotion": "自然說故事"
         }
       ]
@@ -1859,14 +1864,14 @@
       "id": "pf109",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a reader pausing over an unlettered diary page beside an empty patch of desk, soft light",
+        "prompt": "Close shot an unlettered diary page on a plain desk, soft neutral light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf109",
-          "text": "那塊起司後來有沒有挖出？這幾日的條目沒有交代。",
+          "text": "九月六日的日記裡，他寫：我們的恐懼過了。",
           "emotion": "自然說故事"
         }
       ]
@@ -1875,20 +1880,36 @@
       "id": "pf110",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot one seventeenth-century householder looking into an empty pit inside a walled courtyard, soft evening light",
+        "prompt": "Close shot a reader pausing over an unlettered diary page beside an empty patch of desk, soft light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pf110",
-          "text": "你若在那座院子裡，會把什麼放進第二個坑？",
+          "text": "那塊起司後來有沒有挖出？這幾日的條目沒有交代。",
           "emotion": "自然說故事"
         }
       ]
     },
     {
       "id": "pf111",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot one seventeenth-century householder looking into an empty pit inside a walled garden, soft evening light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf111",
+          "text": "你若在那座院子裡，會把什麼放進第二個坑？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf112",
       "template": "outro",
       "data": {
         "title": "存檔",
@@ -1899,7 +1920,7 @@
       },
       "lines": [
         {
-          "id": "pf111",
+          "id": "pf112",
           "text": "想聽更多從原始記錄走出的故事，訂閱奇聞檔案局。"
         }
       ]
