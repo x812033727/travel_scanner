@@ -5,6 +5,7 @@ import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { useAdminOperations } from "@/components/admin-operations-provider";
 import { AdminErrorState } from "@/components/admin-ui";
+import { VideoBackupCard } from "@/components/admin-video-backup";
 import { AdminVideoSettingsTutorial } from "@/components/admin-video-settings-tutorial";
 import { Button, fieldClass, panelClass, Tabs } from "@/components/community/ui";
 import { Link } from "@/i18n/navigation";
@@ -488,5 +489,7 @@ export function AdminVideoSettings() {
       {section === "tutorial" && <AdminVideoSettingsTutorial {...props} />}
       {section === "shared" && <SharedSettings {...props} />}
     </Tabs>
+    {/* The Drive backup of the videos on YouTube (docs/videos/BACKUP.md), whichever section is open. */}
+    <VideoBackupCard />
   </div>;
 }
