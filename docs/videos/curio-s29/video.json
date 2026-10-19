@@ -29,7 +29,7 @@
   "loops": [
     {
       "setup": "cc108",
-      "payoff": "cc405",
+      "payoff": "cc406",
       "what": "老人為什麼躲在地底下"
     },
     {
@@ -38,58 +38,58 @@
       "what": "清朝學者替這頭象算的那筆帳"
     },
     {
-      "setup": "cc112",
-      "payoff": "cc419",
+      "setup": "cc113",
+      "payoff": "cc420",
       "what": "一九三〇年那位學者下的斷語"
     },
     {
-      "setup": "cc113",
-      "payoff": "cc501",
+      "setup": "cc114",
+      "payoff": "cc510",
       "what": "提到兩頭馴象的那封信是誰寫的"
     },
     {
-      "setup": "cc114",
-      "payoff": "cc524",
+      "setup": "cc112",
+      "payoff": "cc317",
       "what": "被放上船的那頭豬"
     },
     {
       "setup": "cc115",
-      "payoff": "cc531",
+      "payoff": "cc526",
       "what": "船上刻水到底誰先想到"
     },
     {
       "setup": "cc210",
-      "payoff": "cc413",
+      "payoff": "cc414",
       "what": "陳壽沒寫的石頭"
     },
     {
       "setup": "cc207",
-      "payoff": "cc518",
+      "payoff": "cc520",
       "what": "陳壽沒寫稱象那年曹沖幾歲"
     },
     {
       "setup": "cc202",
-      "payoff": "cc423",
+      "payoff": "cc424",
       "what": "陳壽過世的那一年"
     },
     {
       "setup": "cc306",
-      "payoff": "cc514",
+      "payoff": "cc507",
       "what": "那頭巨象孫權什麼時候送的"
     },
     {
       "setup": "cc313",
-      "payoff": "cc516",
+      "payoff": "cc518",
       "what": "孫權送象只有曹沖這一段"
     },
     {
-      "setup": "cc418",
-      "payoff": "cc507",
+      "setup": "cc419",
+      "payoff": "cc516",
       "what": "陳寅恪說曹操的地盤裡不會有象"
     },
     {
-      "setup": "cc417",
-      "payoff": "cc426",
+      "setup": "cc418",
+      "payoff": "cc427",
       "what": "敬老的故事怎麼會變成曹沖的"
     }
   ],
@@ -316,16 +316,32 @@
       ]
     },
     {
-      "id": "tease-1930",
+      "id": "tease-pig",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a wooden desk in a reading room at a quiet midday, opening a thick old string-bound book with wide eyes, a desk lamp beside him, soft light through a paper screen",
+        "prompt": "Medium shot of a plump river official in a blue jacket standing on a small wooden boat on a calm river on a hazy morning, holding the rope of a huge pink pig standing beside him and looking straight ahead with a startled face, mild light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cc112",
+          "text": "還有人翻出一頭被放上船的豬。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "tease-1930",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a wooden desk in a reading room at a quiet midday, opening a thick old string-bound book with wide eyes, a desk lamp beside him, soft light through a paper screen",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc113",
           "text": "一九三〇年，有人翻開那部佛經，下了斷語。",
           "emotion": "收著"
         }
@@ -335,31 +351,15 @@
       "id": "tease-letter",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a young scribe in plain white clothes at a desk in a palace study in the morning, holding up a folded blank letter and looking straight ahead with a sly smile, mild light from an open doorway",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc113",
-          "text": "還有一封信，提到兩頭馴象。是誰寫的？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "tease-pig",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a plump river official in a blue jacket standing on a small wooden boat on a calm river on a hazy morning, holding the rope of a huge pink pig standing beside him and looking toward the camera with a startled face, soft light",
+        "prompt": "Close-up of a young scribe in plain white clothes at a desk in a palace study in the morning, holding up a folded blank letter and looking toward the camera with a sly smile, soft light from an open doorway",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cc114",
-          "text": "甚至有一頭豬，也被放上了船。",
-          "emotion": "帶一點好笑"
+          "text": "另有一封信，提到兩頭馴象。是誰寫的？",
+          "emotion": "問句"
         }
       ]
     },
@@ -447,7 +447,7 @@
         },
         {
           "id": "cc206",
-          "text": "陳壽寫的是：他五六歲時，見識就像大人。"
+          "text": "陳壽寫的是：他從小聰明，五六歲時，見識就像大人。"
         }
       ]
     },
@@ -506,46 +506,16 @@
       ]
     },
     {
-      "id": "boy-robe",
+      "id": "boy-window",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns sitting on a bench in a quiet room at midday, holding up a small robe with a few little holes in it and pulling a sad, worried face straight ahead, soft light through a paper screen",
+        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns standing at an open paper window in a quiet house on a cloudy afternoon, looking straight ahead with a small thoughtful smile, mild light",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cc212",
-          "text": "陳壽還記了他一個主意：把自己的衣服戳破裝成鼠咬，讓管倉庫的人躲過馬鞍被咬的責罰。"
-        }
-      ]
-    },
-    {
-      "id": "warlord-praise",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap standing in a court hall on a cloudy day, resting a proud hand on his own chest as he speaks to unseen officials with a beaming face, mild light from an open doorway",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc213",
-          "text": "曹操常在大臣面前誇他，有意讓他接班。"
-        }
-      ]
-    },
-    {
-      "id": "boy-window",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns standing at an open paper window in a quiet house on a cloudy afternoon, looking toward the camera with a small thoughtful smile, soft light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc214",
           "text": "曹沖死在哪一年，陳壽倒是寫得清清楚楚。是哪一年？",
           "emotion": "問句，收著"
         }
@@ -556,8 +526,8 @@
       "chapter": "清朝的何焯，排出兩個年份",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap kneeling before a small altar with incense in a quiet hall on a hazy afternoon, pressing his palms together with a worried face, soft window light",
-        "camera": "push in",
+        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap kneeling before a small altar with incense in a quiet hall on a hazy afternoon, pressing his palms together with a worried face, soft light through a paper screen",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -577,8 +547,8 @@
       "id": "eulogy-scroll",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young scribe in plain white clothes kneeling at a low desk in a quiet hall on a rainy day, writing on a long blank scroll with a sad face, soft light through a paper screen",
-        "camera": "drift",
+        "prompt": "Medium shot of a young scribe in plain white clothes kneeling at a low desk in a quiet hall on a rainy day, writing on a long blank scroll with a sad face, soft light from an open doorway",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -592,8 +562,8 @@
       "id": "red-cliff",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a southern general in red-trimmed armor standing on the deck of a wooden warship on a misty river in the morning, raising a sword with a fierce shout out at the viewer, mild overcast light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a southern general in red-trimmed armor standing on the deck of a wooden warship on a misty river in the morning, raising a sword with a fierce shout toward the camera, mild overcast light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -607,8 +577,8 @@
       "id": "tribute-question",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young lord with a reddish beard in a dark purple coat sitting on a carved chair in a hall on a wet day, resting his chin on one fist and looking straight ahead with a sly, unreadable face, soft daylight from an open doorway",
-        "camera": "pan right",
+        "prompt": "Medium shot of a young lord with a reddish beard in a dark purple coat sitting on a carved chair in a hall at midday, resting his chin on one fist and looking out at the viewer with a sly, unreadable face, soft window light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -627,8 +597,8 @@
       "id": "hezhuo-desk",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly scholar with a thin grey beard in a dark blue long gown and a round black skullcap sitting at a desk piled with string-bound books in a study on a cloudy afternoon, lifting his brush and looking toward the camera with sharp eyes, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of an elderly scholar with a thin grey beard in a dark blue long gown and a round black skullcap sitting at a desk piled with string-bound books in a study on a cloudy afternoon, lifting his brush and looking straight ahead with sharp eyes, soft light through a paper screen",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -643,7 +613,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young lord with a reddish beard in a dark purple coat kneeling in a hall in the morning, receiving a square seal box with both hands and a solemn young face, soft light from a doorway",
-        "camera": "pull out",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -657,8 +627,8 @@
       "id": "jiaozhou-road",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a southern governor in a dark cloak riding a horse along a muddy southern road on a hazy morning, looking out at the viewer with a determined face, palm trees behind him, mild light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a southern governor in a dark cloak riding a horse along a muddy southern road on a hazy morning, looking toward the camera with a determined face, palm trees behind him, soft daylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -719,8 +689,8 @@
       "id": "only-line",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting on the floor of an archive surrounded by stacks of bamboo slips on a calm morning, holding up a single slip and looking straight ahead with raised eyebrows, soft light through a paper screen",
-        "camera": "push in",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting on the floor of an archive surrounded by stacks of bamboo slips at a quiet midday, holding up a single slip and looking out at the viewer with raised eyebrows, mild light from an open doorway",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -731,16 +701,106 @@
       ]
     },
     {
-      "id": "hezhuo-wonders",
+      "id": "pig-boat",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an elderly scholar with a thin grey beard in a dark blue long gown and a round black skullcap at a desk in lamplight in the evening, stroking his thin beard and looking toward the camera with a deep frown, a lamp beside him",
-        "camera": "drift",
+        "prompt": "Medium shot of a plump river official in a blue jacket standing on a wooden boat on a calm river on an overcast morning, patting a huge pink pig beside him and looking straight ahead with a proud grin, soft light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cc314",
+          "text": "另一位清朝學者邵晉涵，找到的是開頭那頭豬。",
+          "emotion": "帶一點好笑"
+        },
+        {
+          "id": "cc315",
+          "text": "牠在一本叫《符子》的古書裡。"
+        }
+      ]
+    },
+    {
+      "id": "pig-scale",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a market official in a brown coat standing in a courtyard on a mild morning, holding up a snapped wooden scale beam in both hands with a dismayed face, more broken beams at his feet, soft cloudy light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc316",
+          "text": "一位國王得到一頭大豬，用秤桿量，壓斷了十根。",
+          "emotion": "帶一點好笑"
+        },
+        {
+          "id": "cc317",
+          "text": "最後叫管水的官，用船來量：重一千鈞。"
+        }
+      ]
+    },
+    {
+      "id": "shao-pig",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a round-faced scholar in a brown long gown and a black skullcap sitting at a desk in a study on a cloudy day, tapping an open blank book with one finger and grinning out at the viewer, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc318",
+          "text": "邵晉涵說：用船秤重這件事，曹沖之前早就有了。"
+        }
+      ]
+    },
+    {
+      "id": "pig-limits",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive late in the day, holding up a torn half page of an old book and looking toward the camera with a rueful smile, soft light through a paper screen",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc319",
+          "text": "這個前例，靠得住嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "cc320",
+          "text": "這本書原書已經失傳，年代我們沒能查實；"
+        }
+      ]
+    },
+    {
+      "id": "pig-shrug",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plump river official in a blue jacket on a wooden boat on a calm river at midday, shrugging with a sheepish grin, the broad pink back of a huge pig beside him, soft light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc321",
+          "text": "它也只說用船量，沒說怎麼刻記號、換什麼東西。"
+        }
+      ]
+    },
+    {
+      "id": "hezhuo-wonders",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an elderly scholar with a thin grey beard in a dark blue long gown and a round black skullcap at a desk in lamplight in the evening, stroking his thin beard and looking out at the viewer with a deep frown, a lamp beside him",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc322",
           "text": "可是，如果故事是修飾出來的，這個辦法又是從哪裡來的？",
           "emotion": "問句"
         }
@@ -751,14 +811,18 @@
       "chapter": "一九三〇年，有人翻開一部佛經",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket with round glasses sitting at a desk in a university reading room late in the day, holding up a thin journal with a blank cover and looking out at the viewer with a keen face, soft light from an open doorway",
-        "camera": "tilt down",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket with round glasses sitting at a desk in a university reading room on a still afternoon, holding up a thin journal with a blank cover and looking straight ahead with a keen face, soft daylight from an open doorway",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cc401",
-          "text": "開頭那位一九三〇年的學者，說他找到了來處。他叫陳寅恪。"
+          "text": "開頭那位一九三〇年的學者，叫陳寅恪。"
+        },
+        {
+          "id": "cc402",
+          "text": "他說，何焯和邵晉涵都沒找到真正的出處。"
         }
       ]
     },
@@ -772,7 +836,7 @@
       },
       "lines": [
         {
-          "id": "cc402",
+          "id": "cc403",
           "text": "文章登在那年六月的《清華學報》，標題就把曹沖和佛教故事寫在一起。"
         }
       ]
@@ -781,13 +845,13 @@
       "id": "archivist-sutra",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in his twenties in a plain cotton jacket in a reading room on an overcast afternoon, running one finger down the page of an open old string-bound book with wide eyes, a desk lamp beside him, soft light",
-        "camera": "pan right",
+        "prompt": "Close-up of an archivist in his twenties in a plain cotton jacket in a reading room on a hazy afternoon, running one finger down the page of an open old string-bound book with wide eyes, a desk lamp beside him, soft light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc403",
+          "id": "cc404",
           "text": "他指出的來處，是一部佛經《雜寶藏經》，裡面有一篇〈棄老國緣〉。"
         }
       ]
@@ -796,13 +860,13 @@
       "id": "oldman-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat sitting on a straw mat in a small underground room, holding a clay bowl of tea and looking straight ahead with a calm, patient face, warm lamp light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat sitting on a straw mat in a small underground room, holding a clay bowl of tea and looking toward the camera with a calm, patient face, warm lamp light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc404",
+          "id": "cc405",
           "text": "還記得那位躲在地底下的老人嗎？",
           "emotion": "親近，略上揚"
         }
@@ -812,13 +876,13 @@
       "id": "law-gate",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap standing at a palace gate on a cloudy morning, holding a rolled blank decree and looking toward the camera with a troubled frown, soft daylight",
-        "camera": "pull out",
+        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap standing at a palace gate on an overcast morning, holding a rolled blank decree and looking out at the viewer with a troubled frown, mild light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc405",
+          "id": "cc406",
           "text": "他住的國家，就叫棄老國：照那裡的法律，老人都要被送到遠方。",
           "emotion": "溫和，放慢"
         }
@@ -828,13 +892,13 @@
       "id": "minister-basket",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap carrying a covered basket of food down narrow earthen steps in the afternoon, glancing out at the viewer with a careful, loving face, warm lamp light from below",
-        "camera": "pan left",
+        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap carrying a covered basket of food down narrow earthen steps in the afternoon, glancing straight ahead with a careful, loving face, warm lamp light from below",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc406",
+          "id": "cc407",
           "text": "他的兒子是一位大臣，捨不得，才把父親藏起來，一直照顧著。",
           "emotion": "溫和"
         }
@@ -845,16 +909,16 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap standing in a palace hall on a drizzly day, looking up at a soft glowing cloud near the ceiling with a worried face, his hands clasped, soft window light",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc407",
+          "id": "cc408",
           "text": "後來天神出了九道難題。"
         },
         {
-          "id": "cc408",
+          "id": "cc409",
           "text": "前兩道，是分辨蛇的公母，和誰睡著、誰醒著。"
         }
       ]
@@ -864,12 +928,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a court official in a black cap kneeling in a palace hall in the morning, scratching his head with a blank, helpless look, a low table with a blank scroll before him, soft light through a paper screen",
-        "camera": "drift",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc409",
+          "id": "cc410",
           "text": "稱象是第三道，滿朝大臣沒人知道。"
         }
       ]
@@ -878,13 +942,13 @@
       "id": "minister-asks",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap kneeling in a small underground room, leaning forward to ask a question with an anxious face straight ahead, a clay lamp on the floor, warm lamp light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap kneeling in a small underground room, leaning forward to ask a question with an anxious face toward the camera, a clay lamp on the floor, warm lamp light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc410",
+          "id": "cc411",
           "text": "大臣回家，去問密室裡的父親。老人會怎麼答？",
           "emotion": "問句"
         }
@@ -894,17 +958,17 @@
       "id": "oldman-stones",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat sitting in a small underground room, holding a smooth round stone in both hands and explaining with a gentle smile toward the camera, warm lamp light from a clay lamp",
-        "camera": "pan right",
+        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat sitting in a small underground room, holding a smooth round stone in both hands and explaining with a gentle smile out at the viewer, warm lamp light from a clay lamp",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc411",
+          "id": "cc412",
           "text": "老人還說了開頭沒講的：船要放進大池；"
         },
         {
-          "id": "cc412",
+          "id": "cc413",
           "text": "再用同一條船裝石頭，水到那條線，就知道斤兩。"
         }
       ]
@@ -913,13 +977,13 @@
       "id": "stones-boat",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young boatman kneeling on a wooden boat at a riverbank on a hazy afternoon, stacking smooth round stones and looking out at the viewer with a grin, mild light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a young boatman kneeling on a wooden boat at a riverbank on a cloudy afternoon, stacking smooth round stones and looking straight ahead with a grin, soft light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc413",
+          "id": "cc414",
           "text": "前面陳壽沒寫的石頭，佛經裡寫了。"
         }
       ]
@@ -928,13 +992,13 @@
       "id": "king-decree",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young king in a gold-trimmed gown with a small gold crown standing on palace steps on a mild morning, raising one hand to proclaim with a kind smile, a rolled blank decree in his other hand, soft overcast light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a young king in a gold-trimmed gown with a small gold crown standing on palace steps on a mild morning, raising one hand to proclaim with a kind smile, a rolled blank decree in his other hand, soft hazy light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc414",
+          "id": "cc415",
           "text": "九道題都答完，國王下令：不准再送走老人，要好好奉養。"
         }
       ]
@@ -943,13 +1007,13 @@
       "id": "oldman-door",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat standing in the doorway of a small house at a quiet midday, smiling warmly straight ahead with his hands folded, soft cloudy light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat standing in the doorway of a small house at a quiet midday, smiling warmly toward the camera with his hands folded, soft overcast light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc415",
+          "id": "cc416",
           "text": "故事最後說，那位老父親，就是佛的前世。",
           "emotion": "溫和"
         }
@@ -959,17 +1023,17 @@
       "id": "tea-pour",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap kneeling at a low table in a quiet room in the morning, pouring tea into a small cup with a gentle smile toward the camera, soft light from an open doorway",
-        "camera": "push in",
+        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap kneeling at a low table in a quiet room in the morning, pouring tea into a small cup with a gentle smile out at the viewer, soft daylight from an open doorway",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc416",
+          "id": "cc417",
           "text": "這個故事講的是敬老，不是誰比較聰明。"
         },
         {
-          "id": "cc417",
+          "id": "cc418",
           "text": "一個敬老的故事，怎麼會變成曹沖的？",
           "emotion": "問句"
         }
@@ -985,7 +1049,7 @@
       },
       "lines": [
         {
-          "id": "cc418",
+          "id": "cc419",
           "text": "陳寅恪認為：象是南方的動物，曹操的地盤裡不會有，故事才得找孫權來送。"
         }
       ]
@@ -1000,12 +1064,12 @@
       },
       "lines": [
         {
-          "id": "cc419",
+          "id": "cc420",
           "text": "陳寅恪斷定：曹沖這一篇，摻進了佛教故事；",
           "emotion": "一字一字唸清楚"
         },
         {
-          "id": "cc420",
+          "id": "cc421",
           "text": "連陳壽那樣的眼光，都分辨不出真假。"
         }
       ]
@@ -1014,13 +1078,13 @@
       "id": "archivist-date",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in a reading room on a hazy afternoon, turning to the first page of an old string-bound book and frowning at the corner, soft window light",
-        "camera": "drift",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in a reading room on a cloudy afternoon, turning to the first page of an old string-bound book and frowning at the corner, soft window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc421",
+          "id": "cc422",
           "text": "可是，這部佛經是哪一年譯成中文的？",
           "emotion": "問句，停一拍"
         }
@@ -1030,13 +1094,13 @@
       "id": "monk-translate",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a shaven-headed translator monk in a plain ochre robe kneeling at a low desk in a temple room on a mild morning, writing on a long blank scroll with careful brush strokes and looking up out at the viewer, soft light through a paper screen",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a shaven-headed translator monk in a plain ochre robe kneeling at a low desk in a temple room on a mild morning, writing on a long blank scroll with careful brush strokes and looking up straight ahead, soft light through a paper screen",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc422",
+          "id": "cc423",
           "text": "西元四百七十二年，北魏，由兩位僧人譯出。",
           "emotion": "放慢"
         }
@@ -1064,7 +1128,7 @@
       },
       "lines": [
         {
-          "id": "cc423",
+          "id": "cc424",
           "text": "還記得陳壽過世那一年嗎？這部佛經的譯本，比他晚了一百七十五年。",
           "emotion": "數字放慢",
           "reveal": 2
@@ -1075,17 +1139,17 @@
       "id": "archivist-thinks",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket leaning back in a wooden chair in a reading room late in the day, tapping a pencil against his chin with a thoughtful look straight ahead, a stack of old books on the desk, soft daylight from an open doorway",
-        "camera": "pan right",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket leaning back in a wooden chair in a reading room late in the day, tapping a pencil against his chin with a thoughtful look toward the camera, a stack of old books on the desk, mild light from an open doorway",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc424",
+          "id": "cc425",
           "text": "陳寅恪的解釋是：這部經是拼集各部佛經編成的，"
         },
         {
-          "id": "cc425",
+          "id": "cc426",
           "text": "書裡很多故事，都見於別的佛經譯本。"
         }
       ]
@@ -1095,12 +1159,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in his twenties in a plain cotton jacket at a desk in a reading room on a rainy day, holding up two fingers with raised eyebrows, an open old book in front of him, soft lamp light",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc426",
+          "id": "cc427",
           "text": "所以這一篇，也許更早有過譯本後來失傳；也許只靠口耳相傳到了中國，被安到曹沖身上。"
         }
       ]
@@ -1109,13 +1173,13 @@
       "id": "empty-shelf",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket standing at a half-empty wooden bookshelf in an archive on an overcast afternoon, holding an oil lamp and looking toward the camera with a shrug, soft window light",
-        "camera": "pull out",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket standing at a half-empty wooden bookshelf in an archive on a hazy afternoon, holding an oil lamp and looking out at the viewer with a shrug, soft window light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc427",
+          "id": "cc428",
           "text": "可是，比這更早的譯本，他一本也拿不出來。",
           "emotion": "收住"
         }
@@ -1125,31 +1189,146 @@
       "id": "elephant-figure",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in his twenties in a plain cotton jacket at a desk in a reading room on a mild afternoon, holding up a small wooden elephant figurine and studying it with a doubtful frown, soft light through a paper screen",
-        "camera": "pan left",
+        "prompt": "Close-up of an archivist in his twenties in a plain cotton jacket at a desk in a reading room on a still afternoon, holding up a small wooden elephant figurine and studying it with a doubtful frown, soft light through a paper screen",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc428",
+          "id": "cc429",
           "text": "象，真的到不了曹家的地盤嗎？",
           "emotion": "問句"
         }
       ]
     },
     {
-      "id": "caopi-letter",
-      "chapter": "曹丕寫信給王朗",
+      "id": "boy-steps",
+      "chapter": "江東的貢品，一路往北",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young emperor with a neat moustache in a pale gold gown and a flat beaded crown sitting at a writing desk in a palace study on a mild morning, folding a blank letter with a pleased smile out at the viewer, mild light from an open doorway",
-        "camera": "push in",
+        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns sitting on palace steps on an overcast afternoon, hugging his knees and looking straight ahead with a curious face, soft light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cc501",
-          "text": "答案在開頭那封信裡。寫信的人是曹丕，收信的是王朗。"
+          "text": "曹沖還活著的那幾年，江東和曹操之間，是什麼關係？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "tribute-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a southern envoy in a dark cloak standing on a wooden boat on a wide river on a mild morning, holding a lacquered tribute box with both hands and looking toward the camera, soft cloudy light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc502",
+          "text": "從孫策那時起，江東就向漢朝的朝廷進貢；"
+        },
+        {
+          "id": "cc503",
+          "text": "而朝廷從西元一百九十六年起，就在曹操手上。"
+        }
+      ]
+    },
+    {
+      "id": "warlord-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap standing in a palace hall on a hazy afternoon, holding a lacquered tribute box with both hands and a satisfied smile out at the viewer, soft daylight from an open doorway",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc504",
+          "text": "那幾年的貢品，其實是送到曹操那裡。"
+        }
+      ]
+    },
+    {
+      "id": "hostage-refuse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young lord with a reddish beard in a dark purple coat standing in a hall in the morning, holding a blank letter at arm's length and shaking his head firmly, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc505",
+          "text": "可是兩邊早就互相提防：西元兩百零二年，曹操要孫權送兒子當人質，孫權不肯。"
+        }
+      ]
+    },
+    {
+      "id": "elephant-gift",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elephant keeper in a straw hat and a short brown tunic standing on a riverbank on a cloudy day, holding a big grey elephant's rope in one hand and scratching his head with the other, unsure, mild light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc506",
+          "text": "送一頭象示好，說得通，也說不通。"
+        }
+      ]
+    },
+    {
+      "id": "no-record",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive at midday, flipping through a pile of blank pages and shaking his head straight ahead, soft light through a paper screen",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc507",
+          "text": "只是，那幾年沒有任何一筆紀錄寫到象。"
+        },
+        {
+          "id": "cc508",
+          "text": "那孫權送象到北方，紀錄裡到底有沒有寫過？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "sunquan-vassal",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young lord with a reddish beard in a dark purple coat kneeling at a low desk in a hall on a cloudy day, sealing a blank letter with both hands and a humble, careful face, soft light from an open doorway",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc509",
+          "text": "西元兩百一十九年，孫權向曹操上書稱臣。"
+        }
+      ]
+    },
+    {
+      "id": "caopi-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young emperor with a neat moustache in a pale gold gown and a flat beaded crown sitting at a writing desk in a palace study on a mild morning, folding a blank letter with a pleased smile toward the camera, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cc510",
+          "text": "後來，開頭那封信出現了：寫信的人是曹丕，收信的是王朗。"
         }
       ]
     },
@@ -1163,7 +1342,7 @@
       },
       "lines": [
         {
-          "id": "cc502",
+          "id": "cc511",
           "text": "信裡說：孫權又派使者來稱臣，貢品裡有馴象兩頭，一公一母。"
         }
       ]
@@ -1172,13 +1351,13 @@
       "id": "letter-date",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive on a cloudy afternoon, holding a blank letter up to the window and looking straight ahead with a frown, soft window light",
-        "camera": "drift",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive on a rainy day, holding a blank letter up to the window and looking out at the viewer with a frown, soft light through a paper screen",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc503",
+          "id": "cc512",
           "text": "信上沒寫年份。能確定的只有：那時曹沖已經死了十多年。"
         }
       ]
@@ -1187,13 +1366,13 @@
       "id": "shu-elephant",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a plump young ruler in a dark gown standing at a mountain palace gate in the morning, staring wide-eyed up at a big grey elephant beside him with a delighted face, soft hazy light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a plump young ruler in a dark gown standing at a mountain palace gate in the morning, staring wide-eyed up at a big grey elephant beside him with a delighted face, soft cloudy light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc504",
+          "id": "cc513",
           "text": "類書裡還記著，孫權也送過兩頭馴象給蜀漢的劉禪。"
         }
       ]
@@ -1202,13 +1381,13 @@
       "id": "jin-keeper",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elephant keeper in a straw hat and a short brown tunic standing in a walled palace pen on a cloudy morning, brushing the side of a big grey elephant with a long broom and smiling out at the viewer, soft light",
-        "camera": "pan right",
+        "prompt": "Medium shot of an elephant keeper in a straw hat and a short brown tunic standing in a walled palace pen on a cloudy morning, brushing the side of a big grey elephant with a long broom and smiling out at the viewer, soft daylight",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc505",
+          "id": "cc514",
           "text": "而且這還不是最後一次：到了晉朝，宮廷裡還養過南方送來的馴象。"
         }
       ]
@@ -1217,13 +1396,13 @@
       "id": "palace-elephant",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a palace courtyard on an overcast morning, a big grey elephant pulling a small wooden cart, a keeper in a southern straw hat riding on its neck and looking toward the camera with a proud grin, soft daylight",
-        "camera": "tilt up",
+        "prompt": "Wide shot of a palace courtyard on a hazy morning, a big grey elephant pulling a small wooden cart, a keeper in a southern straw hat riding on its neck and looking straight ahead with a proud grin, mild light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc506",
+          "id": "cc515",
           "text": "給牠造了車，讓南越來的人騎著；每年正月的朝會，就拉進殿上。"
         }
       ]
@@ -1232,113 +1411,29 @@
       "id": "archivist-opinion",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk on a drizzly day, holding up one finger with a confident little smile out at the viewer, an open notebook in front of him, soft light through a paper screen",
-        "camera": "pull out",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk on a calm morning, holding up one finger with a confident little smile toward the camera, an open notebook in front of him, soft light from an open doorway",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc507",
+          "id": "cc516",
           "text": "所以我們覺得，陳寅恪那句話，說得太滿了。",
           "emotion": "像跟朋友說自己的看法"
         }
       ]
     },
     {
-      "id": "boy-steps",
+      "id": "who-else",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns sitting on palace steps on a cloudy afternoon, hugging his knees and looking straight ahead with a curious face, mild light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc508",
-          "text": "可是曹沖活著的那幾年呢？開頭那頭巨象，送得到嗎？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "tribute-boat",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a southern envoy in a dark cloak standing on a wooden boat on a wide river on a mild morning, holding a lacquered tribute box with both hands and looking toward the camera, soft hazy light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc509",
-          "text": "從孫策那時起，江東就向漢朝的朝廷進貢；"
-        },
-        {
-          "id": "cc510",
-          "text": "而朝廷從西元一百九十六年起，就在曹操手上。"
-        }
-      ]
-    },
-    {
-      "id": "warlord-box",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap standing in a palace hall on a rainy day, holding a lacquered tribute box with both hands and a satisfied smile out at the viewer, soft light from an open doorway",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc511",
-          "text": "那幾年的貢品，其實是送到曹操那裡。"
-        }
-      ]
-    },
-    {
-      "id": "hostage-refuse",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young lord with a reddish beard in a dark purple coat standing in a hall in the morning, holding a blank letter at arm's length and shaking his head firmly, soft window light",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in a reading room at midday, holding up a single bamboo slip and tilting his head with a curious look out at the viewer, soft window light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc512",
-          "text": "可是兩邊早就互相提防：西元兩百零二年，曹操要孫權送兒子當人質，孫權不肯。"
-        }
-      ]
-    },
-    {
-      "id": "elephant-gift",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an elephant keeper in a straw hat and a short brown tunic standing on a riverbank on a cloudy day, holding a big grey elephant's rope in one hand and scratching his head with the other, unsure, soft daylight",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc513",
-          "text": "送一頭象示好，說得通，也說不通。"
-        }
-      ]
-    },
-    {
-      "id": "no-record",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive in the morning, flipping through a pile of blank pages and shaking his head straight ahead, soft light through a paper screen",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc514",
-          "text": "只是，沒有任何一筆紀錄寫到象。"
-        },
-        {
-          "id": "cc515",
+          "id": "cc517",
           "text": "那稱象這件事，除了陳壽，還有誰寫過？",
           "emotion": "問句"
         }
@@ -1348,13 +1443,13 @@
       "id": "jin-scholar",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged scholar in a grey gown and a black gauze cap writing at a low desk in a study on a mild morning, looking up toward the camera with a knowing smile, mild light from an open doorway",
-        "camera": "pull out",
+        "prompt": "Medium shot of a middle-aged scholar in a grey gown and a black gauze cap writing at a low desk in a study on a mild morning, looking up straight ahead with a knowing smile, soft light through a paper screen",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc516",
+          "id": "cc518",
           "text": "前面說《三國志》裡只有那一段；可是晉朝另一本書，也寫了稱象。"
         }
       ]
@@ -1369,11 +1464,11 @@
       },
       "lines": [
         {
-          "id": "cc517",
+          "id": "cc519",
           "text": "那本書說，孫權送的是兩頭馴象；曹沖當時「尚幼」。"
         },
         {
-          "id": "cc518",
+          "id": "cc520",
           "text": "前面陳壽沒寫的年紀，這裡還是沒有數字。"
         }
       ]
@@ -1382,14 +1477,19 @@
       "id": "two-books",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in a reading room on a cloudy afternoon, holding one closed old book in each hand and looking from one to the other with a puzzled frown, soft window light",
-        "camera": "pan left",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in a reading room late in the day, holding one closed old book in each hand and looking from one to the other with a puzzled frown, soft daylight from an open doorway",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc519",
-          "text": "兩本書誰抄誰，還是同一個來源，查不出來。"
+          "id": "cc521",
+          "text": "兩本書，是誰抄了誰，還是同一個來源？",
+          "emotion": "問句"
+        },
+        {
+          "id": "cc522",
+          "text": "查不出來。"
         }
       ]
     },
@@ -1397,104 +1497,14 @@
       "id": "two-scrolls",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a scribe in a grey gown standing in a library hall on a cloudy day, holding a tied bundle of bamboo slips under each arm and smiling out at the viewer, soft light through a paper screen",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc520",
-          "text": "能確定的是，比那部佛經的譯本早，晉朝已經有兩個人寫下這件事。"
-        }
-      ]
-    },
-    {
-      "id": "pig-boat",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a plump river official in a blue jacket standing on a wooden boat on a calm river on a hazy afternoon, patting a huge pink pig beside him and looking out at the viewer with a proud grin, soft light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc521",
-          "text": "開頭那頭豬呢？",
-          "emotion": "帶一點好笑"
-        },
-        {
-          "id": "cc522",
-          "text": "牠在一本叫《符子》的古書裡。"
-        }
-      ]
-    },
-    {
-      "id": "pig-scale",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a market official in a brown coat standing in a courtyard on a mild morning, holding up a snapped wooden scale beam in both hands with a dismayed face, more broken beams at his feet, soft overcast light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc523",
-          "text": "一位國王得到一頭大豬，用秤桿量，壓斷了十根。",
-          "emotion": "帶一點好笑"
-        },
-        {
-          "id": "cc524",
-          "text": "最後叫管水的官，用船來量：重一千鈞。"
-        }
-      ]
-    },
-    {
-      "id": "shao-pig",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a round-faced scholar in a brown long gown and a black skullcap sitting at a desk in a study on a cloudy day, tapping an open blank book with one finger and grinning out at the viewer, soft daylight from an open doorway",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc525",
-          "text": "清朝的邵晉涵就拿這頭豬說：用船秤重這件事，曹沖之前早就有了。"
-        }
-      ]
-    },
-    {
-      "id": "pig-limits",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive late in the day, holding up a torn half page of an old book and looking straight ahead with a rueful smile, soft window light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc526",
-          "text": "這個前例，靠得住嗎？",
-          "emotion": "問句"
-        },
-        {
-          "id": "cc527",
-          "text": "這本書原書已經失傳，年代我們沒能查實；"
-        }
-      ]
-    },
-    {
-      "id": "pig-shrug",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a plump river official in a blue jacket on a wooden boat on a calm river at midday, shrugging with a sheepish grin, the broad pink back of a huge pig beside him, soft light",
+        "prompt": "Medium shot of a scribe in a grey gown standing in a library hall on a cloudy day, holding a tied bundle of bamboo slips under each arm and smiling out at the viewer, soft window light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc528",
-          "text": "它也只說用船量，沒說怎麼刻記號、換什麼東西。"
+          "id": "cc523",
+          "text": "能確定的是，比那部佛經的譯本早，晉朝已經有兩個人寫下這件事。"
         }
       ]
     },
@@ -1508,7 +1518,7 @@
       },
       "lines": [
         {
-          "id": "cc529",
+          "id": "cc524",
           "text": "到今天，有學者支持陳寅恪，也有學者反駁。"
         }
       ]
@@ -1523,11 +1533,11 @@
       },
       "lines": [
         {
-          "id": "cc530",
+          "id": "cc525",
           "text": "還記得開頭那個問題嗎？船上刻水，誰先想到的，"
         },
         {
-          "id": "cc531",
+          "id": "cc526",
           "text": "沒有一份文件說得死。",
           "emotion": "放慢，像蓋章"
         }
@@ -1543,7 +1553,7 @@
       },
       "lines": [
         {
-          "id": "cc532",
+          "id": "cc527",
           "text": "我們覺得，同一個點子，在史書裡落到一個孩子身上，在佛經裡落到一位老人身上。",
           "emotion": "像跟朋友說自己的看法"
         }
@@ -1559,7 +1569,7 @@
       },
       "lines": [
         {
-          "id": "cc533",
+          "id": "cc528",
           "text": "這份檔案，未結。",
           "emotion": "收尾，乾脆"
         }
@@ -1577,12 +1587,12 @@
       },
       "lines": [
         {
-          "id": "cc534",
+          "id": "cc529",
           "text": "你第一次聽到曹沖稱象，是在課本、故事書，還是卡通裡？",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "cc535",
+          "id": "cc530",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }
