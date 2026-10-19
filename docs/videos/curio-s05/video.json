@@ -5,8 +5,8 @@
   "category": "explainer",
   "narration_locale": "zh-TW",
   "target_minutes": [
-    9,
-    11
+    8,
+    10
   ],
   "voice": {
     "provider": "gemini",
@@ -30,27 +30,22 @@
     {
       "setup": "eg005",
       "payoff": "eg037",
-      "what": "裴注反向訪客出自何種文字"
+      "what": "魏略反向北行的目的地"
     },
     {
       "setup": "eg006",
-      "payoff": "eg061",
-      "what": "兩條談話差在何處"
+      "payoff": "eg046",
+      "what": "魏略牛尾飾物如何打開談話"
     },
     {
       "setup": "eg007",
-      "payoff": "eg083",
-      "what": "風雪晝寢見於哪一層文字"
+      "payoff": "eg012",
+      "what": "徐庶推薦後劉備的第一反應"
     },
     {
       "setup": "eg014",
       "payoff": "eg016",
       "what": "徐庶勸說後劉備是否親往"
-    },
-    {
-      "setup": "eg024",
-      "payoff": "eg025",
-      "what": "諸葛亮提議與誰結盟"
     },
     {
       "setup": "eg043",
@@ -215,7 +210,7 @@
       "lines": [
         {
           "id": "eg005",
-          "text": "可是，史書的註解裡，還寫了方向相反的訪客。"
+          "text": "史書旁邊竟寫諸葛亮自己北行，這條路通向哪裡？"
         }
       ]
     },
@@ -223,14 +218,14 @@
       "id": "visit-006",
       "template": "shot",
       "data": {
-        "prompt": "Close shot beside two unmarked scrolls, one scholar moving a wooden figure between them, his puzzled face prominent, mild window light",
+        "prompt": "Close shot in a Han era meeting hall, one middle aged commander winding a dark yak tail tassel between his fingers, soft window light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg006",
-          "text": "兩種故事談的事也不同；到底是誰先開口？",
+          "text": "聚會散去，劉備還結著牛尾飾物；諸葛亮會說什麼？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -239,14 +234,14 @@
       "id": "visit-007",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at a writing desk, one reader setting a small snowflake drawing beside a blank scroll, the scroll in focus, pale afternoon light",
+        "prompt": "Medium shot outside a Han era garrison at Xinye, one travelling scholar gripping a rolled blank scroll, pale morning light",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg007",
-          "text": "還有雪地、睡覺，哪一個真有早期文字？",
+          "text": "先回新野：徐庶正要推薦「臥龍」，劉備第一個反應是什麼？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -408,14 +403,14 @@
       "id": "visit-017",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at a plain desk, one historian pointing to three small blank travel tallies, an unmarked scroll behind, soft overcast daylight",
+        "prompt": "Wide shot inside a modest Han era cottage, one young robed strategist placing a wooden marker beside an unmarked map, soft overcast daylight",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eg017",
-          "text": "短短「凡三往，乃見」，沒有一天的天氣。"
+          "text": "從這裡開始，徐庶口中的「臥龍」要替劉備出主意。"
         }
       ]
     },
@@ -430,24 +425,8 @@
       "lines": [
         {
           "id": "eg018",
-          "text": "也沒告訴我們，每一趟路上遇到了誰。",
+          "text": "相見的經過被略過，陳壽卻用了大段寫談話。",
           "emotion": "關鍵詞放慢，句尾稍停"
-        }
-      ]
-    },
-    {
-      "id": "visit-019",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot inside a thatched study, one young scholar spreading an unmarked map on a low table, window light, pale afternoon light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg019",
-          "text": "可一見到面，陳壽把談話寫得相當長。",
-          "emotion": "口語向前，轉折前留一拍"
         }
       ]
     },
@@ -514,11 +493,6 @@
         {
           "id": "eg023",
           "text": "諸葛亮先說：曹操兵強，不能正面爭鋒。"
-        },
-        {
-          "id": "eg105",
-          "text": "曹操曾以弱勝袁紹，他看重人謀。",
-          "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
     },
@@ -533,116 +507,8 @@
       "lines": [
         {
           "id": "eg024",
-          "text": "江東的孫權能成盟友嗎？",
+          "text": "接著他說孫權可結盟，荊、益可作長遠根據。",
           "emotion": "問句輕輕上揚，留半拍等下一步"
-        }
-      ]
-    },
-    {
-      "id": "visit-025",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot inside a cottage study, one young strategist placing a joining pair of wooden markers by a river on a blank map, soft overcast daylight",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg025",
-          "text": "他說孫權經營江東，值得聯合，不宜企圖吞下。",
-          "emotion": "口語向前，轉折前留一拍"
-        },
-        {
-          "id": "eg106",
-          "text": "孫氏在江東已歷三代，地勢和人心都有根基。",
-          "emotion": "口語向前，轉折前留一拍"
-        }
-      ]
-    },
-    {
-      "id": "visit-026",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a table, one robed strategist tracing a river route across an unmarked map with a brush handle, mild window light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg026",
-          "text": "再看荊州，向北接漢水，向西通往巴蜀。"
-        }
-      ]
-    },
-    {
-      "id": "visit-027",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot beside an unmarked region map, one strategist setting a small wooden base marker between two roads, pale afternoon light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg027",
-          "text": "這塊地若落在手裡，就有往外伸展的支點。",
-          "emotion": "關鍵詞放慢，句尾稍停"
-        }
-      ]
-    },
-    {
-      "id": "visit-028",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot inside a simple cottage, one strategist holding his hand above an unclaimed map area without touching it, gentle morning light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg028",
-          "text": "荊州尚未到手，再向西看，哪塊地方可作支點？",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
-        }
-      ]
-    },
-    {
-      "id": "visit-029",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot at a low table, one strategist studying a plain relief map with mountains and fields, mild daylight, soft overcast daylight",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg029",
-          "text": "接著是益州：山川阻隔，土壤與人力可以支撐。"
-        },
-        {
-          "id": "eg107",
-          "text": "但益州也有主人；諸葛亮認為劉璋難以守住。"
-        }
-      ]
-    },
-    {
-      "id": "visit-030",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot at a map table, one young strategist moving two wooden markers slowly across separate regions, mild window light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg030",
-          "text": "就算得到荊、益，什麼時候才能真正出兵？",
-          "emotion": "問句輕輕上揚，留半拍等下一步"
-        },
-        {
-          "id": "eg108",
-          "text": "先內修政事、外聯孫權，再等待天下形勢變動。",
-          "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
     },
@@ -659,37 +525,6 @@
           "id": "eg031",
           "text": "劉備聽完說好，兩人的關係漸漸密切。",
           "emotion": "口語向前，轉折前留一拍"
-        }
-      ]
-    },
-    {
-      "id": "visit-032",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot in a garrison courtyard, one armored officer folding his arms and frowning at a closed meeting room, gentle morning light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg032",
-          "text": "密切到關羽、張飛都有些不高興。"
-        }
-      ]
-    },
-    {
-      "id": "visit-033",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot beside a courtyard pond, one older commander gently raising a hand to quiet an officer, a fish visible below, soft overcast daylight",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg033",
-          "text": "劉備用魚和水作比，叫他們別再說了。",
-          "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
     },
@@ -939,6 +774,21 @@
       ]
     },
     {
+      "id": "visit-048a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest Han era meeting hall, one historian moving a blank screen beside a vacant guest seat, mild window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg115",
+          "text": "陳壽寫劉備請旁人退開；這段異說卻從散席留客開始。"
+        }
+      ]
+    },
+    {
       "id": "visit-049",
       "template": "shot",
       "data": {
@@ -1054,6 +904,21 @@
       ]
     },
     {
+      "id": "visit-055a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a Han era records desk, one clerk adding a wooden tally to a plain household register, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eg116",
+          "text": "《魏略》還說，劉備照辦後，手上的人馬變強了。"
+        }
+      ]
+    },
+    {
       "id": "visit-056",
       "template": "shot",
       "data": {
@@ -1064,7 +929,7 @@
       "lines": [
         {
           "id": "eg056",
-          "text": "劉備採用了建議，按這則故事漸知他的才幹。"
+          "text": "劉備因此漸漸看見諸葛亮的才幹。"
         }
       ]
     },
@@ -1095,13 +960,8 @@
       "lines": [
         {
           "id": "eg058",
-          "text": "裴注還說：《九州春秋》也採這說，算完整記錄嗎？",
+          "text": "裴提到《九州春秋》也採這說；他有抄下完整對話嗎？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
-        },
-        {
-          "id": "eg112",
-          "text": "裴並未抄錄它的完整原文。",
-          "emotion": "口語向前，轉折前留一拍"
         }
       ]
     },
@@ -1116,7 +976,7 @@
       "lines": [
         {
           "id": "eg059",
-          "text": "所以不能把它們當成兩份各自完整的對話。"
+          "text": "裴沒在這裡抄第二段完整對話；接著拿什麼來核對？"
         }
       ]
     },
@@ -1131,7 +991,7 @@
       "lines": [
         {
           "id": "eg060",
-          "text": "兩條敘述一擺開，訪客方向就撞在一起。",
+          "text": "裴接著翻出諸葛亮給後主的〈出師表〉，核對《魏略》。",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ],
@@ -1141,14 +1001,14 @@
       "id": "visit-061",
       "template": "big",
       "data": {
-        "text": "誰先上門？",
-        "kicker": "《三國志》正文／《魏略》引文",
-        "sub": "劉備往草廬／諸葛亮往樊城"
+        "text": "哪份自述？",
+        "kicker": "裴松之核對初遇",
+        "sub": "諸葛亮〈出師表〉"
       },
       "lines": [
         {
           "id": "eg061",
-          "text": "還記得開頭劉備往草廬嗎？《魏略》偏寫諸葛亮往樊城。",
+          "text": "他要看的，是當事人怎麼說初遇，而不是再拼兩條路。",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -1164,7 +1024,7 @@
       "lines": [
         {
           "id": "eg062",
-          "text": "對話也從荊州、益州的大局，變成先補戶籍與兵源。"
+          "text": "正文談荊、益布局，異說卻先談戶籍兵源。"
         }
       ]
     },
@@ -1179,7 +1039,7 @@
       "lines": [
         {
           "id": "eg063",
-          "text": "它們會不會是不同日子的兩次談話？",
+          "text": "可能是不同日子，先談戶籍、後談大局嗎？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -1195,7 +1055,7 @@
       "lines": [
         {
           "id": "eg064",
-          "text": "如果真是兩次談話，裴松之為何沒有把它們接起來？",
+          "text": "若能排成兩場會面，衝突就解開了；裴真這樣寫嗎？",
           "emotion": "問句輕輕上揚，留半拍等下一步"
         }
       ]
@@ -1211,7 +1071,7 @@
       "lines": [
         {
           "id": "eg065",
-          "text": "裴沒有猜一個能讓兩說都對的新時間表。"
+          "text": "裴沒有替它們編一套可兼容的先後日程。"
         }
       ]
     },
@@ -1226,7 +1086,7 @@
       "lines": [
         {
           "id": "eg066",
-          "text": "他翻回開頭那份諸葛亮留給後主的〈出師表〉。",
+          "text": "他抓住奏章裡，最短也最關鍵的一句。",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
@@ -1242,7 +1102,7 @@
       "lines": [
         {
           "id": "eg067",
-          "text": "那不是當天日記，是後來向後主上奏的回憶。",
+          "text": "這份奏章是事後回憶，不是當天日記。",
           "emotion": "口語向前，轉折前留一拍"
         }
       ]
@@ -1418,22 +1278,6 @@
           "id": "eg078",
           "text": "這讓時間有了範圍，沒有替三次探訪標日曆。",
           "emotion": "關鍵詞放慢，句尾稍停"
-        }
-      ]
-    },
-    {
-      "id": "visit-079",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot on a rural road, one older robed visitor walking steadily toward a thatched cottage, pale afternoon light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg079",
-          "text": "所以劉備訪賢，是有早期記載的故事。",
-          "emotion": "口語向前，轉折前留一拍"
         }
       ]
     },
@@ -1631,7 +1475,7 @@
       "lines": [
         {
           "id": "eg091",
-          "text": "它們不能反過來當現場氣象紀錄。",
+          "text": "不能。小說場景不是當年氣象紀錄；那陳壽長談有逐字記錄嗎？",
           "emotion": "口語向前，轉折前留一拍"
         }
       ]
@@ -1647,10 +1491,10 @@
       "lines": [
         {
           "id": "eg092",
-          "text": "小說合上，陳壽寫下的長談，能當作當天逐字記錄嗎？"
+          "text": "陳壽記下長談，卻沒說誰在現場記錄。"
         }
       ],
-      "chapter": "陳壽記下長談，沒說誰記錄"
+      "chapter": "陳壽寫下私談，沒交代記錄者"
     },
     {
       "id": "visit-093",
@@ -1663,7 +1507,7 @@
       "lines": [
         {
           "id": "eg093",
-          "text": "傳記沒說由誰在場記錄；能核的是文字記下的談法，不能倒推出每句原話。",
+          "text": "能核的是傳記保存的談法，不能倒推出每句原話。",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
@@ -1679,23 +1523,8 @@
       "lines": [
         {
           "id": "eg094",
-          "text": "若有人說三顧只是小說編的，先翻〈出師表〉。",
+          "text": "還記得「計將安出」？傳記寫下了字，卻沒留下當時的語氣。",
           "emotion": "口語向前，轉折前留一拍"
-        }
-      ]
-    },
-    {
-      "id": "visit-095",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot at a desk, one reader turning past a snowy storybook illustration toward an older text, pale afternoon light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eg095",
-          "text": "若有人拿風雪當史書證據，請他翻小說第三十七回。"
         }
       ]
     },
