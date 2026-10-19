@@ -39,8 +39,8 @@
     },
     {
       "setup": "mu107",
-      "payoff": "mu411",
-      "what": "熊本那張桌子多寫的幾句"
+      "payoff": "mu406",
+      "what": "熊本那張桌子上選了哪一本"
     },
     {
       "setup": "mu108",
@@ -50,52 +50,47 @@
     {
       "setup": "mu103",
       "payoff": "mu526",
-      "what": "導覽摺頁上的「史實」"
+      "what": "島上的官方導覽摺頁"
     },
     {
       "setup": "mu207",
-      "payoff": "mu326",
+      "payoff": "mu325",
       "what": "碑上那把木頭的武器"
     },
     {
       "setup": "mu205",
-      "payoff": "mu334",
+      "payoff": "mu333",
       "what": "碑上沒有名字的岩流"
     },
     {
-      "setup": "mu219",
+      "setup": "mu218",
       "payoff": "mu403",
       "what": "沼田家說動手的不只一個人"
     },
     {
-      "setup": "mu315",
+      "setup": "mu314",
       "payoff": "mu404",
       "what": "島上的檢使"
     },
     {
-      "setup": "mu321",
+      "setup": "mu320",
       "payoff": "mu514",
       "what": "信裡的「適當的時候」"
     },
     {
-      "setup": "mu329",
+      "setup": "mu328",
       "payoff": "mu413",
       "what": "小次郎那句「你遲到了嗎」"
     },
     {
-      "setup": "mu335",
+      "setup": "mu334",
       "payoff": "mu408",
       "what": "聽說十八歲"
     },
     {
-      "setup": "mu337",
+      "setup": "mu336",
       "payoff": "mu506",
       "what": "「故意」是誰加的"
-    },
-    {
-      "setup": "mu221",
-      "payoff": "mu305",
-      "what": "遲到的故事是誰先說的"
     }
   ],
   "youtube": {
@@ -226,7 +221,7 @@
       "lines": [
         {
           "id": "mu104",
-          "text": "照這個說法，武藏是故意遲到，讓對手在島上乾等。"
+          "text": "大家熟悉的故事還多一層：他是故意遲到的，要讓對手在島上乾等。"
         }
       ]
     },
@@ -272,7 +267,7 @@
       "lines": [
         {
           "id": "mu107",
-          "text": "明治四十二年，熊本有人把各種說法排上一張桌子，選了一本，還替它多寫了幾句。"
+          "text": "明治四十二年，熊本有一群人，把找得到的說法，全排上了一張桌子。"
         }
       ]
     },
@@ -467,7 +462,7 @@
       "lines": [
         {
           "id": "mu212",
-          "text": "勝負只寫了一句：木刀一擊，閃電都比它慢。"
+          "text": "勝負，碑上寫得很短：木刀一擊，閃電都比它慢。"
         }
       ]
     },
@@ -482,11 +477,7 @@
       "lines": [
         {
           "id": "mu213",
-          "text": "從此，船島被人叫成了岩流島；"
-        },
-        {
-          "id": "mu214",
-          "text": "到今天，它的正式名字，還是船島。"
+          "text": "從此，船島被人叫成了岩流島。"
         }
       ]
     },
@@ -500,7 +491,7 @@
       },
       "lines": [
         {
-          "id": "mu215",
+          "id": "mu214",
           "text": "可是那天在島上的，只有他們兩個嗎？",
           "emotion": "問句"
         }
@@ -516,7 +507,7 @@
       },
       "lines": [
         {
-          "id": "mu216",
+          "id": "mu215",
           "text": "另一份紀錄，是門司城代沼田家的家記。"
         }
       ]
@@ -531,7 +522,7 @@
       },
       "lines": [
         {
-          "id": "mu217",
+          "id": "mu216",
           "text": "我們查到，「小次郎」這個名字，最早就出現在這裡。"
         }
       ]
@@ -546,7 +537,7 @@
       },
       "lines": [
         {
-          "id": "mu218",
+          "id": "mu217",
           "text": "起因，是兩邊的弟子在吵，誰的劍法比較強。"
         }
       ]
@@ -561,7 +552,7 @@
       },
       "lines": [
         {
-          "id": "mu219",
+          "id": "mu218",
           "text": "它還說，最後動手的不只武藏一個人；這段只有轉引，到今天還有爭議。",
           "emotion": "放低，一句帶過"
         }
@@ -577,7 +568,7 @@
       },
       "lines": [
         {
-          "id": "mu220",
+          "id": "mu219",
           "text": "這份家記的主角，其實是沼田家自己：事後，是他們把武藏護送離開。"
         }
       ]
@@ -592,8 +583,8 @@
       },
       "lines": [
         {
-          "id": "mu221",
-          "text": "那遲到的故事，是誰先說出來的？",
+          "id": "mu220",
+          "text": "那遲到的故事，又是從哪裡來的？",
           "emotion": "問句，停一拍"
         }
       ]
@@ -610,8 +601,8 @@
       "lines": [
         {
           "id": "mu301",
-          "text": "從一個划船的老人嘴裡。",
-          "emotion": "揭曉，短"
+          "text": "書裡說，細節大多來自一個划船的老人。",
+          "emotion": "揭曉"
         }
       ]
     },
@@ -716,35 +707,20 @@
       ]
     },
     {
-      "id": "mostly",
+      "id": "school",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room, holding up one hand with most fingers raised and a small smile our way, an old book open on the table, soft daylight",
+        "prompt": "Medium shot of a young Edo-era samurai clerk in a pale blue kimono standing in a quiet practice hall in the late morning, holding a wooden sword upright before his face with reverent eyes our way, soft light through a paper screen",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "mu310",
-          "text": "書裡說，藩裡自己也有傳聞，但巖流島的細節，大多來自這個船夫。"
-        }
-      ]
-    },
-    {
-      "id": "school",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young Edo-era samurai clerk in a pale blue kimono standing in a quiet practice hall in the late morning, holding a wooden sword upright before his face with reverent eyes toward the viewer, soft light through a paper screen",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu311",
           "text": "寫書的這一家，學的就是武藏傳下來的劍法。"
         },
         {
-          "id": "mu312",
+          "id": "mu311",
           "text": "他們筆下的那一天，是什麼樣子？",
           "emotion": "問句"
         }
@@ -754,13 +730,13 @@
       "id": "arrive-kokura",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono walking along a castle-town street in daylight with a travel hat on his back, glancing to the front with a calm face, mild overcast light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono walking along a castle-town street in daylight with a travel hat on his back, glancing toward the viewer with a calm face, mild overcast light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu313",
+          "id": "mu312",
           "text": "書裡寫，那是慶長十七年四月，二十九歲的武藏，從京都來到小倉。"
         }
       ]
@@ -769,13 +745,13 @@
       "id": "elder-sets",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stern Edo-era chief retainer in a formal kamishimo kneeling in a castle reception room in the afternoon, holding up one finger to fix a time and speaking firmly at us, soft window light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a stern Edo-era chief retainer in a formal kamishimo kneeling in a castle reception room in the afternoon, holding up one finger to fix a time and speaking firmly to the front, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu314",
+          "id": "mu313",
           "text": "家老約他：明天辰時一開始，在島上跟岩流小次郎比試。"
         }
       ]
@@ -784,13 +760,13 @@
       "id": "officials",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an Edo-era samurai official in a formal kamishimo standing on a pebbly island shore in soft hazy light, holding a short staff upright and looking our way with a strict look",
-        "camera": "push in",
+        "prompt": "Medium shot of an Edo-era samurai official in a formal kamishimo standing on a pebbly island shore in soft hazy light, holding a short staff upright and looking at us with a strict look",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu315",
+          "id": "mu314",
           "text": "島上，派了檢使看守，號令很嚴。"
         }
       ]
@@ -799,18 +775,18 @@
       "id": "vanished",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a castle retainer in a grey kimono standing in a wooden corridor in grey daylight, scratching his head with a puzzled expression toward the viewer, an open sliding door to an empty tatami room behind him",
-        "camera": "drift",
+        "prompt": "Medium shot of a castle retainer in a grey kimono standing in a wooden corridor in grey daylight, scratching his head with a puzzled expression our way, an open sliding door to an empty tatami room behind him",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu316",
+          "id": "mu315",
           "text": "沒想到，前一天晚上，武藏不見了。",
           "emotion": "轉折，壓低"
         },
         {
-          "id": "mu317",
+          "id": "mu316",
           "text": "他去了哪裡？",
           "emotion": "問句"
         }
@@ -820,13 +796,13 @@
       "id": "rumor",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an Edo-era townswoman standing by a town well at midday, cupping a hand to her mouth as if whispering and glancing sideways to the front, mild hazy light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of an Edo-era townswoman standing by a town well at midday, cupping a hand to her mouth as if whispering and glancing sideways toward the viewer, mild hazy light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu318",
+          "id": "mu317",
           "text": "城裡傳說：他怕了，逃了。",
           "emotion": "加快"
         }
@@ -836,14 +812,14 @@
       "id": "found",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a round-faced Edo-era innkeeper in an apron standing in the doorway of a seaside wholesale house in the late morning, pointing inside with a knowing grin at us, soft grey light",
-        "camera": "pan right",
+        "prompt": "Medium shot of a round-faced Edo-era innkeeper in an apron standing in the doorway of a seaside wholesale house in the late morning, pointing inside with a knowing grin to the front, soft grey light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu319",
-          "text": "後來，在下關找到他，就住在那個船夫的家裡。"
+          "id": "mu318",
+          "text": "後來在下關找到他，就在那個船夫待的批發行裡。"
         }
       ]
     },
@@ -851,14 +827,14 @@
       "id": "letter",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono kneeling at a low table in a plain room in the afternoon, folding a blank letter in his hands with a sly half smile our way, soft light through a paper screen",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono kneeling at a low table in a plain room in the afternoon, folding a blank letter in his hands with a sly half smile at us, soft light through a paper screen",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu320",
-          "text": "書裡還收了一封據說是他寫的信：主家的船，他不坐，要自己從這裡搭船去。"
+          "id": "mu319",
+          "text": "書裡還收了一封據說是他寫的信：家老準備的船，他不坐，要自己從這裡搭船去。"
         }
       ]
     },
@@ -872,8 +848,8 @@
       },
       "lines": [
         {
-          "id": "mu321",
-          "text": "信的最後一句，先記住：到了適當的時候，我就過去。",
+          "id": "mu320",
+          "text": "信裡有一句，先記住：到了適當的時候，我就過去。",
           "emotion": "放慢"
         }
       ]
@@ -882,18 +858,18 @@
       "id": "oversleep",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono lying on a futon in a plain room under a pale sky, propped up on one elbow and yawning toward the viewer, a sliding door half open behind him",
-        "camera": "pull out",
+        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono lying on a futon in a plain room under a pale sky, propped up on one elbow and yawning our way, a sliding door half open behind him",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu322",
+          "id": "mu321",
           "text": "第二天，約好的時刻到了。武藏呢？",
           "emotion": "問句"
         },
         {
-          "id": "mu323",
+          "id": "mu322",
           "text": "太陽都升得老高了，他還在睡。",
           "emotion": "帶點好笑"
         }
@@ -903,13 +879,13 @@
       "id": "runner",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an Edo-era runner in a short coat and a white headband kneeling at the edge of a veranda in daylight, out of breath and holding out a folded blank note to the front, mild overcast light",
-        "camera": "pan left",
+        "prompt": "Medium shot of an Edo-era runner in a short coat and a white headband kneeling at the edge of a veranda in daylight, out of breath and holding out a folded blank note toward the viewer, mild overcast light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu324",
+          "id": "mu323",
           "text": "小倉的信差來催了兩次。他回說馬上去，然後洗了臉，吃完飯。"
         }
       ]
@@ -918,13 +894,13 @@
       "id": "oar-ask",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a round-faced Edo-era innkeeper in an apron standing in the doorway of a seaside inn at midday, holding out a long wooden oar with both hands and smiling at us, mild overcast light",
-        "camera": "push in",
+        "prompt": "Medium shot of a round-faced Edo-era innkeeper in an apron standing in the doorway of a seaside inn at midday, holding out a long wooden oar with both hands and smiling to the front, mild overcast light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu325",
+          "id": "mu324",
           "text": "還記得碑上那把木頭的武器嗎？在這本書裡，它有了來歷：",
           "emotion": "語氣親近"
         }
@@ -934,13 +910,13 @@
       "id": "carve",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono sitting on a wooden step by a seaside inn in soft hazy light, carving a long oar into a big wooden sword with a small knife and glancing up our way, wood shavings at his feet",
-        "camera": "drift",
+        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono sitting on a wooden step by a seaside inn in soft hazy light, carving a long oar into a big wooden sword with a small knife and glancing up at us, wood shavings at his feet",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu326",
+          "id": "mu325",
           "text": "他跟旅店主人要了一支搖櫓的槳，在岸上削成一把大木刀。"
         }
       ]
@@ -949,14 +925,14 @@
       "id": "late-arrive",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a small boat crossing a grey strait toward a low island under a soft overcast sky, an old boatman with a weathered face, a straw hat and a short cotton coat rowing at the stern and looking toward the viewer",
-        "camera": "tilt down",
+        "prompt": "Wide shot of a small boat crossing a grey strait toward a low island under a soft overcast sky, an old boatman with a weathered face, a straw hat and a short cotton coat rowing at the stern and looking our way",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu327",
-          "text": "到島上時，已經過了巳時，比約好的晚了大約兩個小時以上。"
+          "id": "mu326",
+          "text": "到島上時，已經是巳時以後，比約好的晚了大約兩個小時以上。"
         }
       ]
     },
@@ -970,12 +946,12 @@
       },
       "lines": [
         {
-          "id": "mu328",
+          "id": "mu327",
           "text": "等在島上的小次郎呢？",
           "emotion": "問句"
         },
         {
-          "id": "mu329",
+          "id": "mu328",
           "text": "他在水邊大喊：我比約好的先到，你遲到了嗎！",
           "emotion": "加重"
         }
@@ -985,13 +961,13 @@
       "id": "scabbard",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young duellist with a long tied-back ponytail, a crimson haori and a very long sword at his hip standing in the shallow surf in grey daylight, tossing an empty scabbard into the water with an angry face to the front, his long sword held upright in the other hand",
-        "camera": "pan right",
+        "prompt": "Medium shot of a young duellist with a long tied-back ponytail, a crimson haori and a very long sword at his hip standing in the shallow surf in grey daylight, tossing an empty scabbard into the water with an angry face toward the viewer, his long sword held upright in the other hand",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu330",
+          "id": "mu329",
           "text": "他拔出刀，把刀鞘丟進海裡。"
         }
       ]
@@ -1000,13 +976,13 @@
       "id": "smile",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono standing ankle deep in the shallow surf under a pale sky, holding his big wooden sword lowered and grinning at us, mild hazy light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono standing ankle deep in the shallow surf under a pale sky, holding his big wooden sword lowered and grinning to the front, mild hazy light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu331",
+          "id": "mu330",
           "text": "武藏站在淺水裡笑了："
         }
       ]
@@ -1021,7 +997,7 @@
       },
       "lines": [
         {
-          "id": "mu332",
+          "id": "mu331",
           "text": "小次郎，你輸了；贏的人，怎麼會丟掉刀鞘？",
           "emotion": "揭曉，放慢"
         }
@@ -1031,14 +1007,14 @@
       "id": "bow",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono standing on a pebbly shore in soft hazy light, bowing politely with his wooden sword held at his side and glancing our way, a small boat waiting behind him",
-        "camera": "pull out",
+        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono standing on a pebbly shore in soft hazy light, bowing politely with his wooden sword held at his side and glancing at us, a small boat waiting behind him",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu333",
-          "text": "勝負很快就分了：小次郎敗了，武藏向檢使行禮，搭原來的船回下關。",
+          "id": "mu332",
+          "text": "勝負分了：小次郎敗了，武藏向檢使行禮，搭原來的船回下關。",
           "emotion": "低沉，一句帶過"
         }
       ]
@@ -1047,17 +1023,17 @@
       "id": "full-name",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a young Edo-era samurai clerk in a pale blue kimono's face at a writing table in the afternoon, writing a last line with a brush and pausing with a doubtful look toward the viewer, soft window light",
-        "camera": "pan left",
+        "prompt": "Close-up of a young Edo-era samurai clerk in a pale blue kimono's face at a writing table in the afternoon, writing a last line with a brush and pausing with a doubtful look our way, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu334",
+          "id": "mu333",
           "text": "碑上沒名字的岩流，在書末有了全名：佐佐木小次郎，"
         },
         {
-          "id": "mu335",
+          "id": "mu334",
           "text": "這時十八歲，書上寫的是：聽說。"
         }
       ]
@@ -1066,13 +1042,13 @@
       "id": "no-why",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, running one finger down a blank page and frowning to the front, soft light from tall windows",
-        "camera": "push in",
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, running one finger down a blank page and frowning toward the viewer, soft light from tall windows",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu336",
+          "id": "mu335",
           "text": "這麼仔細的一段，偏偏沒寫一件事：他為什麼晚到。"
         }
       ]
@@ -1081,13 +1057,13 @@
       "id": "who-added",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a young archivist in a cardigan and round glasses's face in a reading room, chewing the end of a pencil with a puzzled look at us, mild window light",
-        "camera": "drift",
+        "prompt": "Close-up of a young archivist in a cardigan and round glasses's face in a reading room, chewing the end of a pencil with a puzzled look to the front, mild window light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu337",
+          "id": "mu336",
           "text": "那個「故意」，是誰替他加上去的？",
           "emotion": "問句，停一拍"
         }
@@ -1098,8 +1074,8 @@
       "chapter": "明治四十二年，熊本的一張桌子",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache standing at a long table in an office in the afternoon, laying several blank booklets side by side and looking up our way with a thoughtful expression, soft window light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache standing at a long table in an office in the afternoon, laying several blank booklets side by side and looking up at us with a thoughtful expression, soft window light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1113,8 +1089,8 @@
       "id": "kensho-book",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache standing beside a printing press in the afternoon, holding up a freshly bound blank book with a proud smile toward the viewer, soft light through a paper screen",
-        "camera": "pan right",
+        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache standing beside a printing press in the afternoon, holding up a freshly bound blank book with a proud smile our way, soft light through a paper screen",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1128,8 +1104,8 @@
       "id": "reject",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache at a long table in the afternoon, pushing one blank booklet aside with the back of his hand and shaking his head to the front, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache at a long table in the afternoon, pushing one blank booklet aside with the back of his hand and shaking his head toward the viewer, soft window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1143,8 +1119,8 @@
       "id": "reason",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache's face in soft light through a paper screen, tapping his temple with one finger and raising an eyebrow at us",
-        "camera": "pull out",
+        "prompt": "Close-up of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache's face in soft light through a paper screen, tapping his temple with one finger and raising an eyebrow to the front",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1159,8 +1135,8 @@
       "id": "circle",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room at midday, holding up an old book with a blank cover and pointing at it with a wry smile our way, mild window light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room at midday, holding up an old book with a blank cover and pointing at it with a wry smile at us, mild window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1196,8 +1172,8 @@
       "id": "ages",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache at a long table, holding up two fingers on one hand and one on the other with a doubtful frown toward the viewer, soft window light",
-        "camera": "push in",
+        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache at a long table, holding up two fingers on one hand and one on the other with a doubtful frown our way, soft window light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1211,8 +1187,8 @@
       "id": "grave-search",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache standing on a pebbly island shore under a pale sky, holding his bowler hat in one hand and shading his eyes with the other, looking around to the front with a puzzled look",
-        "camera": "drift",
+        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache standing on a pebbly island shore under a pale sky, holding his bowler hat in one hand and shading his eyes with the other, looking around toward the viewer with a puzzled look",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1226,8 +1202,8 @@
       "id": "added",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache at a desk in the afternoon, adding a line to a blank manuscript with a dip pen and a mischievous smile at us, soft light through a paper screen",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache at a desk in the afternoon, adding a line to a blank manuscript with a dip pen and a mischievous smile to the front, soft light through a paper screen",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1241,8 +1217,8 @@
       "id": "already-there",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an Edo-era runner in a short coat and a white headband standing at an inn gate at midday, pointing back toward the sea and calling out our way with an urgent expression, mild overcast light",
-        "camera": "pan right",
+        "prompt": "Medium shot of an Edo-era runner in a short coat and a white headband standing at an inn gate at midday, pointing back toward the sea and calling out at us with an urgent expression, mild overcast light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1256,8 +1232,8 @@
       "id": "slowly",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono in a plain room in grey daylight, slowly rising from a futon and stretching one arm with an unhurried face toward the viewer, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono in a plain room in grey daylight, slowly rising from a futon and stretching one arm with an unhurried face our way, soft window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1272,8 +1248,8 @@
       "id": "worse",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a young duellist with a long tied-back ponytail, a crimson haori and a very long sword at his hip's face on a pebbly shore under a pale sky, red with anger and shouting to the front, mild overcast light",
-        "camera": "pull out",
+        "prompt": "Close-up of a young duellist with a long tied-back ponytail, a crimson haori and a very long sword at his hip's face on a pebbly shore under a pale sky, red with anger and shouting toward the viewer, mild overcast light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1287,8 +1263,8 @@
       "id": "not-in-niten",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room, laying two blank pages side by side on the table and pointing at a gap between them at us, soft daylight",
-        "camera": "pan left",
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room, laying two blank pages side by side on the table and pointing at a gap between them to the front, soft daylight",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1303,8 +1279,8 @@
       "id": "attitude",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses leaning back in a reading-room chair in the afternoon, arms folded and a thoughtful smile our way, soft light from tall windows",
-        "camera": "push in",
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses leaning back in a reading-room chair in the afternoon, arms folded and a thoughtful smile at us, soft light from tall windows",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1319,8 +1295,8 @@
       "id": "motive-q",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a young archivist in a cardigan and round glasses's face in a reading room, holding up one finger as if about to ask a question toward the viewer, mild window light",
-        "camera": "drift",
+        "prompt": "Close-up of a young archivist in a cardigan and round glasses's face in a reading room, holding up one finger as if about to ask a question our way, mild window light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1337,7 +1313,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a 1930s novelist in a dark kimono sitting at a low desk by a window in the afternoon, seen from behind, his brush raised over blank manuscript paper, a stack of old books at his elbow, soft light through a paper screen",
-        "camera": "tilt down",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1351,8 +1327,8 @@
       "id": "naoki-trust",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, holding up an old paperback with a blank cover and nodding to the front, soft daylight",
-        "camera": "pan right",
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, holding up an old paperback with a blank cover and nodding toward the viewer, soft daylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1366,8 +1342,8 @@
       "id": "naoki-plan",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono lying on a futon in soft hazy light with his eyes open, staring up at the ceiling with a scheming smile at us, a wooden sword beside his pillow",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono lying on a futon in soft hazy light with his eyes open, staring up at the ceiling with a scheming smile to the front, a wooden sword beside his pillow",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1396,8 +1372,8 @@
       "id": "naoki-source",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room, spreading empty hands over a pile of plain index cards with an apologetic smile our way, soft light from tall windows",
-        "camera": "pull out",
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room, spreading empty hands over a pile of plain index cards with an apologetic smile at us, soft light from tall windows",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1411,8 +1387,8 @@
       "id": "naoki-defends",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono standing on a pebbly shore in grey daylight, arms folded and a cool little smile toward the viewer, his wooden sword tucked under one arm",
-        "camera": "pan left",
+        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono standing on a pebbly shore in grey daylight, arms folded and a cool little smile our way, his wooden sword tucked under one arm",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1427,8 +1403,8 @@
       "id": "both-sides",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a young archivist in a cardigan and round glasses's face in a reading room, holding up a plain card in each hand and raising her eyebrows to the front, mild window light",
-        "camera": "push in",
+        "prompt": "Close-up of a young archivist in a cardigan and round glasses's face in a reading room, holding up a plain card in each hand and raising her eyebrows toward the viewer, mild window light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1444,7 +1420,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a 1930s newspaper boy in a flat cap standing on a city pavement in the late morning, holding up a bundle of blank newspapers and calling out to the front with a big grin, mild hazy light",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1458,8 +1434,8 @@
       "id": "yoshikawa-essay",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, holding up a thin old essay book with a blank cover and tapping it at us, soft daylight",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, holding up a thin old essay book with a blank cover and tapping it to the front, soft daylight",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1473,8 +1449,8 @@
       "id": "first-move",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono sitting on a veranda at midday, holding up one finger with a sly grin our way, a wooden sword across his knees, mild overcast light",
-        "camera": "pan right",
+        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono sitting on a veranda at midday, holding up one finger with a sly grin at us, a wooden sword across his knees, mild overcast light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1489,8 +1465,8 @@
       "id": "boat-late",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an old boatman with a weathered face, a straw hat and a short cotton coat rowing a small boat across a grey strait, turning his head to call out toward the viewer with a worried look, mild overcast light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of an old boatman with a weathered face, a straw hat and a short cotton coat rowing a small boat across a grey strait, turning his head to call out our way with a worried look, mild overcast light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1509,8 +1485,8 @@
       "id": "just-right",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono's face in a small boat at sea under a pale sky, eyes calm and a faint smile to the front, the tip of a big wooden sword resting on his shoulder",
-        "camera": "pull out",
+        "prompt": "Close-up of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono's face in a small boat at sea under a pale sky, eyes calm and a faint smile toward the viewer, the tip of a big wooden sword resting on his shoulder",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1530,8 +1506,8 @@
       "id": "accuse",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young duellist with a long tied-back ponytail, a crimson haori and a very long sword at his hip standing at the waterline in soft hazy light, pointing his free hand forward and shouting at us with a furious expression, his long sword sheathed at his hip",
-        "camera": "pan left",
+        "prompt": "Medium shot of a young duellist with a long tied-back ponytail, a crimson haori and a very long sword at his hip standing at the waterline in soft hazy light, pointing his free hand forward and shouting to the front with a furious expression, his long sword sheathed at his hip",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1546,7 +1522,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young woman in a 1930s cloche hat sitting on a park bench in daylight, clutching a folded blank newspaper to her chest and gasping to the front, mild hazy light",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1560,8 +1536,8 @@
       "id": "silent",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an old Edo-era sword master with white hair, a short white beard and a plain dark kimono kneeling at a low writing table at the mouth of a rocky cave, holding a brush over a blank scroll and looking up our way with a calm face, soft overcast light",
-        "camera": "drift",
+        "prompt": "Medium shot of an old Edo-era sword master with white hair, a short white beard and a plain dark kimono kneeling at a low writing table at the mouth of a rocky cave, holding a brush over a blank scroll and looking up at us with a calm face, soft overcast light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1576,8 +1552,8 @@
       "id": "cave-climb",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a rocky mountain path under a soft grey sky, an old Edo-era sword master with white hair, a short white beard and a plain dark kimono climbing slowly with a walking staff and pausing to look toward the viewer, a small cave mouth above him",
-        "camera": "tilt down",
+        "prompt": "Wide shot of a rocky mountain path under a soft grey sky, an old Edo-era sword master with white hair, a short white beard and a plain dark kimono climbing slowly with a walking staff and pausing to look our way, a small cave mouth above him",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1588,7 +1564,7 @@
         },
         {
           "id": "mu519",
-          "text": "寬永二十年十月，六十歲的他，登上肥後的岩殿山，寫《五輪書》。"
+          "text": "寬永二十年十月，六十歲的他，登上肥後的岩殿山，開始寫《五輪書》。"
         }
       ]
     },
@@ -1630,8 +1606,8 @@
       "id": "age-29",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an old Edo-era sword master with white hair, a short white beard and a plain dark kimono's face at the cave mouth, counting on his fingers with a faraway look to the front, soft overcast light",
-        "camera": "pan right",
+        "prompt": "Close-up of an old Edo-era sword master with white hair, a short white beard and a plain dark kimono's face at the cave mouth, counting on his fingers with a faraway look toward the viewer, soft overcast light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1650,14 +1626,14 @@
       "id": "no-word",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, closing an old book slowly and shaking her head at us, soft light from tall windows",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, closing an old book slowly and shaking her head to the front, soft light from tall windows",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "mu524",
-          "text": "可是在我們查的這個本子裡，岩流、小次郎、船島，一個字都沒有。",
+          "text": "在我們查的這個本子裡，岩流、小次郎、船島，一個字都沒有。",
           "emotion": "放慢"
         }
       ]
@@ -1666,14 +1642,14 @@
       "id": "no-reason",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an old Edo-era sword master with white hair, a short white beard and a plain dark kimono at the cave mouth, setting his brush down on the blank scroll and looking our way with a quiet face, soft overcast light",
-        "camera": "pull out",
+        "prompt": "Medium shot of an old Edo-era sword master with white hair, a short white beard and a plain dark kimono at the cave mouth, setting his brush down on the blank scroll and looking at us with a quiet face, soft overcast light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "mu525",
-          "text": "我們覺得，最該知道答案的那個人，偏偏什麼都沒留下。",
+          "text": "最該知道答案的那個人，什麼都沒留下。",
           "emotion": "誠懇"
         }
       ]
@@ -1682,15 +1658,31 @@
       "id": "brochure-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a smiling island tour guide in a windbreaker standing on a seaside lawn under a pale sky, holding up a folded blank leaflet toward the viewer with a teasing grin, a bronze statue of a swordsman on a plinth behind her",
-        "camera": "pan left",
+        "prompt": "Medium shot of a smiling island tour guide in a windbreaker standing on a seaside lawn under a pale sky, holding up a folded blank leaflet our way with a teasing grin, a bronze statue of a swordsman on a plinth behind her",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "mu526",
-          "text": "還記得開頭導覽上的「史實」嗎？遲到，有船夫的回憶；故意，要到小說家才寫出來。",
+          "text": "還記得開頭那份導覽嗎？它還寫了：決鬥那年的島，只有今天的六分之一大。",
           "emotion": "語氣親近"
+        }
+      ]
+    },
+    {
+      "id": "island-grew",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small island in a calm strait under a pale sky, a park worker in a cap standing on its shore and spreading his arms wide with a grin toward the viewer",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu527",
+          "text": "我們覺得，這個故事也跟島一樣，是後來才長大的。",
+          "emotion": "像跟朋友說自己的看法"
         }
       ]
     },
@@ -1704,11 +1696,11 @@
       },
       "lines": [
         {
-          "id": "mu527",
+          "id": "mu528",
           "text": "所以「故意遲到」可以結案：一手的紀錄都沒寫動機，那是後來的讀法。"
         },
         {
-          "id": "mu528",
+          "id": "mu529",
           "text": "至於那天島上到底發生了什麼，到今天還是各說各話。"
         }
       ]
@@ -1723,7 +1715,7 @@
       },
       "lines": [
         {
-          "id": "mu529",
+          "id": "mu530",
           "text": "這份檔案，存檔。",
           "emotion": "收尾，乾脆"
         }
@@ -1741,12 +1733,12 @@
       },
       "lines": [
         {
-          "id": "mu530",
+          "id": "mu531",
           "text": "你第一次聽到武藏故意遲到，是在哪裡？",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "mu531",
+          "id": "mu532",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }

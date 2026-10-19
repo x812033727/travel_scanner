@@ -83,11 +83,6 @@
       "what": "孫權送象只有曹沖這一段"
     },
     {
-      "setup": "cc314",
-      "payoff": "cc527",
-      "what": "何焯猜的算術書"
-    },
-    {
       "setup": "cc418",
       "payoff": "cc507",
       "what": "陳寅恪說曹操的地盤裡不會有象"
@@ -183,7 +178,7 @@
   "scenes": [
     {
       "id": "elephant-arrives",
-      "chapter": "一頭大象，兩個答題的人",
+      "chapter": "孫權送來一頭巨象",
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a stone palace courtyard on an overcast afternoon, an elephant keeper in a straw hat and a short brown tunic leading a big grey elephant by a thick rope and looking toward the camera with a proud grin, a tall gate behind them, mild light",
@@ -511,62 +506,17 @@
       ]
     },
     {
-      "id": "saddle-chewed",
+      "id": "boy-robe",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a nervous storeroom keeper in a grey tunic in a dim storeroom at midday, holding up a leather saddle with a chewed edge and staring straight ahead in panic, soft light from a small window",
+        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns sitting on a bench in a quiet room at midday, holding up a small robe with a few little holes in it and pulling a sad, worried face straight ahead, soft light through a paper screen",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cc212",
-          "text": "同一篇裡，曹操的馬鞍放在倉庫，被老鼠咬了。"
-        },
-        {
-          "id": "cc213",
-          "text": "管倉庫的人怕得要死。",
-          "emotion": "加快"
-        }
-      ]
-    },
-    {
-      "id": "boy-robe",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns sitting on a bench in a quiet room at midday, holding up a small robe with a few little holes in it and pulling a sad, worried face toward the camera, soft light through a paper screen",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc214",
-          "text": "曹沖叫他先等三天，自己拿刀把單衣戳破，像被老鼠咬的，"
-        },
-        {
-          "id": "cc215",
-          "text": "再裝出一臉煩惱。",
-          "emotion": "帶一點好笑"
-        }
-      ]
-    },
-    {
-      "id": "warlord-laughs",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap sitting in a hall at a quiet midday, throwing his head back and laughing with one hand on his knee, a leather saddle on a stand beside him, mild light from an open doorway",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc216",
-          "text": "曹操笑說：兒子的衣服在身邊都會被咬，何況掛在柱子上的馬鞍？",
-          "emotion": "笑著"
-        },
-        {
-          "id": "cc217",
-          "text": "一句都沒追究。"
+          "text": "陳壽還記了他一個主意：把自己的衣服戳破裝成鼠咬，讓管倉庫的人躲過馬鞍被咬的責罰。"
         }
       ]
     },
@@ -574,13 +524,13 @@
       "id": "warlord-praise",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap standing in a court hall on a cloudy day, resting a proud hand on his own chest as he speaks to unseen officials with a beaming face, soft window light",
-        "camera": "push in",
+        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap standing in a court hall on a cloudy day, resting a proud hand on his own chest as he speaks to unseen officials with a beaming face, mild light from an open doorway",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc218",
+          "id": "cc213",
           "text": "曹操常在大臣面前誇他，有意讓他接班。"
         }
       ]
@@ -589,14 +539,14 @@
       "id": "boy-window",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns standing at an open paper window in a quiet house on a cloudy afternoon, looking out at the viewer with a small thoughtful smile, soft light",
-        "camera": "drift",
+        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns standing at an open paper window in a quiet house on a cloudy afternoon, looking toward the camera with a small thoughtful smile, soft light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cc219",
-          "text": "稱象的年份，陳壽沒寫；可是曹沖死在哪一年，他寫了。是哪一年？",
+          "id": "cc214",
+          "text": "曹沖死在哪一年，陳壽倒是寫得清清楚楚。是哪一年？",
           "emotion": "問句，收著"
         }
       ]
@@ -606,8 +556,8 @@
       "chapter": "清朝的何焯，排出兩個年份",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap kneeling before a small altar with incense in a quiet hall on a hazy afternoon, pressing his palms together with a worried face, soft light through a paper screen",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap kneeling before a small altar with incense in a quiet hall on a hazy afternoon, pressing his palms together with a worried face, soft window light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -627,8 +577,8 @@
       "id": "eulogy-scroll",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young scribe in plain white clothes kneeling at a low desk in a quiet hall on a rainy day, writing on a long blank scroll with a sad face, soft daylight from an open doorway",
-        "camera": "pan right",
+        "prompt": "Medium shot of a young scribe in plain white clothes kneeling at a low desk in a quiet hall on a rainy day, writing on a long blank scroll with a sad face, soft light through a paper screen",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -642,8 +592,8 @@
       "id": "red-cliff",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a southern general in red-trimmed armor standing on the deck of a wooden warship on a misty river in the morning, raising a sword with a fierce shout straight ahead, mild overcast light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a southern general in red-trimmed armor standing on the deck of a wooden warship on a misty river in the morning, raising a sword with a fierce shout out at the viewer, mild overcast light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -657,8 +607,8 @@
       "id": "tribute-question",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young lord with a reddish beard in a dark purple coat sitting on a carved chair in a hall in the morning, resting his chin on one fist and looking toward the camera with a sly, unreadable face, soft window light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a young lord with a reddish beard in a dark purple coat sitting on a carved chair in a hall on a wet day, resting his chin on one fist and looking straight ahead with a sly, unreadable face, soft daylight from an open doorway",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -677,8 +627,8 @@
       "id": "hezhuo-desk",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly scholar with a thin grey beard in a dark blue long gown and a round black skullcap sitting at a desk piled with string-bound books in a study on a cloudy afternoon, lifting his brush and looking out at the viewer with sharp eyes, soft light through a paper screen",
-        "camera": "pan left",
+        "prompt": "Medium shot of an elderly scholar with a thin grey beard in a dark blue long gown and a round black skullcap sitting at a desk piled with string-bound books in a study on a cloudy afternoon, lifting his brush and looking toward the camera with sharp eyes, soft window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -693,7 +643,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young lord with a reddish beard in a dark purple coat kneeling in a hall in the morning, receiving a square seal box with both hands and a solemn young face, soft light from a doorway",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -707,8 +657,8 @@
       "id": "jiaozhou-road",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a southern governor in a dark cloak riding a horse along a muddy southern road on a hazy morning, looking straight ahead with a determined face, palm trees behind him, mild light",
-        "camera": "drift",
+        "prompt": "Medium shot of a southern governor in a dark cloak riding a horse along a muddy southern road on a hazy morning, looking out at the viewer with a determined face, palm trees behind him, mild light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -769,8 +719,8 @@
       "id": "only-line",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting on the floor of an archive surrounded by stacks of bamboo slips late in the day, holding up a single slip and looking toward the camera with raised eyebrows, soft light from an open doorway",
-        "camera": "tilt down",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting on the floor of an archive surrounded by stacks of bamboo slips on a calm morning, holding up a single slip and looking straight ahead with raised eyebrows, soft light through a paper screen",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -781,31 +731,16 @@
       ]
     },
     {
-      "id": "hezhuo-abacus",
+      "id": "hezhuo-wonders",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly scholar with a thin grey beard in a dark blue long gown and a round black skullcap sitting at a desk in a study on an overcast afternoon, sliding beads on a wooden abacus and smiling with a curious look out at the viewer, soft window light",
-        "camera": "pan right",
+        "prompt": "Close-up of an elderly scholar with a thin grey beard in a dark blue long gown and a round black skullcap at a desk in lamplight in the evening, stroking his thin beard and looking toward the camera with a deep frown, a lamp beside him",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cc314",
-          "text": "何焯還多猜了一句：船上刻水，也許算術書裡本來就有。"
-        }
-      ]
-    },
-    {
-      "id": "hezhuo-wonders",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an elderly scholar with a thin grey beard in a dark blue long gown and a round black skullcap at a desk in lamplight in the evening, stroking his thin beard and looking straight ahead with a deep frown, a lamp beside him",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cc315",
           "text": "可是，如果故事是修飾出來的，這個辦法又是從哪裡來的？",
           "emotion": "問句"
         }
@@ -816,8 +751,8 @@
       "chapter": "一九三〇年，有人翻開一部佛經",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket with round glasses sitting at a desk in a university reading room on a mild afternoon, holding up a thin journal with a blank cover and looking toward the camera with a keen face, soft light through a paper screen",
-        "camera": "pull out",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket with round glasses sitting at a desk in a university reading room late in the day, holding up a thin journal with a blank cover and looking out at the viewer with a keen face, soft light from an open doorway",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -846,8 +781,8 @@
       "id": "archivist-sutra",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in his twenties in a plain cotton jacket in a reading room on a cloudy afternoon, running one finger down the page of an open old string-bound book with wide eyes, a desk lamp beside him, soft light",
-        "camera": "pan left",
+        "prompt": "Close-up of an archivist in his twenties in a plain cotton jacket in a reading room on an overcast afternoon, running one finger down the page of an open old string-bound book with wide eyes, a desk lamp beside him, soft light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -861,8 +796,8 @@
       "id": "oldman-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat sitting on a straw mat in a small underground room, holding a clay bowl of tea and looking out at the viewer with a calm, patient face, warm lamp light",
-        "camera": "push in",
+        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat sitting on a straw mat in a small underground room, holding a clay bowl of tea and looking straight ahead with a calm, patient face, warm lamp light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -877,8 +812,8 @@
       "id": "law-gate",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap standing at a palace gate on a hazy morning, holding a rolled blank decree and looking straight ahead with a troubled frown, soft daylight",
-        "camera": "drift",
+        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap standing at a palace gate on a cloudy morning, holding a rolled blank decree and looking toward the camera with a troubled frown, soft daylight",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -893,8 +828,8 @@
       "id": "minister-basket",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap carrying a covered basket of food down narrow earthen steps at midday, glancing toward the camera with a careful, loving face, warm lamp light from below",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap carrying a covered basket of food down narrow earthen steps in the afternoon, glancing out at the viewer with a careful, loving face, warm lamp light from below",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -909,8 +844,8 @@
       "id": "cloud-riddle",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap standing in a palace hall at a quiet midday, looking up at a soft glowing cloud near the ceiling with a worried face, his hands clasped, mild light from an open doorway",
-        "camera": "pan right",
+        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap standing in a palace hall on a drizzly day, looking up at a soft glowing cloud near the ceiling with a worried face, his hands clasped, soft window light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -928,8 +863,8 @@
       "id": "riddle-court",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a court official in a black cap kneeling in a palace hall in the morning, scratching his head with a blank, helpless look, a low table with a blank scroll before him, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a court official in a black cap kneeling in a palace hall in the morning, scratching his head with a blank, helpless look, a low table with a blank scroll before him, soft light through a paper screen",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -943,8 +878,8 @@
       "id": "minister-asks",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap kneeling in a small underground room, leaning forward to ask a question with an anxious face out at the viewer, a clay lamp on the floor, warm lamp light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap kneeling in a small underground room, leaning forward to ask a question with an anxious face straight ahead, a clay lamp on the floor, warm lamp light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -959,8 +894,8 @@
       "id": "oldman-stones",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat sitting in a small underground room, holding a smooth round stone in both hands and explaining with a gentle smile straight ahead, warm lamp light from a clay lamp",
-        "camera": "pan left",
+        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat sitting in a small underground room, holding a smooth round stone in both hands and explaining with a gentle smile toward the camera, warm lamp light from a clay lamp",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -978,8 +913,8 @@
       "id": "stones-boat",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young boatman kneeling on a wooden boat at a riverbank on an overcast morning, stacking smooth round stones and looking toward the camera with a grin, soft light",
-        "camera": "push in",
+        "prompt": "Medium shot of a young boatman kneeling on a wooden boat at a riverbank on a hazy afternoon, stacking smooth round stones and looking out at the viewer with a grin, mild light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -993,8 +928,8 @@
       "id": "king-decree",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young king in a gold-trimmed gown with a small gold crown standing on palace steps on a mild morning, raising one hand to proclaim with a kind smile, a rolled blank decree in his other hand, soft cloudy light",
-        "camera": "drift",
+        "prompt": "Medium shot of a young king in a gold-trimmed gown with a small gold crown standing on palace steps on a mild morning, raising one hand to proclaim with a kind smile, a rolled blank decree in his other hand, soft overcast light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1008,8 +943,8 @@
       "id": "oldman-door",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat standing in the doorway of a small house late in the day, smiling warmly out at the viewer with his hands folded, soft hazy light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat standing in the doorway of a small house at a quiet midday, smiling warmly straight ahead with his hands folded, soft cloudy light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1024,8 +959,8 @@
       "id": "tea-pour",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap kneeling at a low table in a quiet room in the afternoon, pouring tea into a small cup with a gentle smile straight ahead, soft light through a paper screen",
-        "camera": "pan right",
+        "prompt": "Medium shot of a middle-aged minister in a dull blue court robe and a tall black cap kneeling at a low table in a quiet room in the morning, pouring tea into a small cup with a gentle smile toward the camera, soft light from an open doorway",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1079,8 +1014,8 @@
       "id": "archivist-date",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in a reading room on an overcast afternoon, turning to the first page of an old string-bound book and frowning at the corner, soft daylight from an open doorway",
-        "camera": "tilt up",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in a reading room on a hazy afternoon, turning to the first page of an old string-bound book and frowning at the corner, soft window light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1095,8 +1030,8 @@
       "id": "monk-translate",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a shaven-headed translator monk in a plain ochre robe kneeling at a low desk in a temple room on a mild morning, writing on a long blank scroll with careful brush strokes and looking up toward the camera, soft window light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a shaven-headed translator monk in a plain ochre robe kneeling at a low desk in a temple room on a mild morning, writing on a long blank scroll with careful brush strokes and looking up out at the viewer, soft light through a paper screen",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1140,8 +1075,8 @@
       "id": "archivist-thinks",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket leaning back in a wooden chair in a reading room at midday, tapping a pencil against his chin with a thoughtful look out at the viewer, a stack of old books on the desk, soft light through a paper screen",
-        "camera": "pan left",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket leaning back in a wooden chair in a reading room late in the day, tapping a pencil against his chin with a thoughtful look straight ahead, a stack of old books on the desk, soft daylight from an open doorway",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1160,7 +1095,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an archivist in his twenties in a plain cotton jacket at a desk in a reading room on a rainy day, holding up two fingers with raised eyebrows, an open old book in front of him, soft lamp light",
-        "camera": "push in",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1174,8 +1109,8 @@
       "id": "empty-shelf",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket standing at a half-empty wooden bookshelf in an archive on a cloudy afternoon, holding an oil lamp and looking straight ahead with a shrug, mild light from an open doorway",
-        "camera": "drift",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket standing at a half-empty wooden bookshelf in an archive on an overcast afternoon, holding an oil lamp and looking toward the camera with a shrug, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1190,8 +1125,8 @@
       "id": "elephant-figure",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in his twenties in a plain cotton jacket at a desk in a reading room at a quiet midday, holding up a small wooden elephant figurine and studying it with a doubtful frown, soft window light",
-        "camera": "tilt down",
+        "prompt": "Close-up of an archivist in his twenties in a plain cotton jacket at a desk in a reading room on a mild afternoon, holding up a small wooden elephant figurine and studying it with a doubtful frown, soft light through a paper screen",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1204,11 +1139,11 @@
     },
     {
       "id": "caopi-letter",
-      "chapter": "一封寫給王朗的信",
+      "chapter": "曹丕寫信給王朗",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young emperor with a neat moustache in a pale gold gown and a flat beaded crown sitting at a writing desk in a palace study on a mild morning, folding a blank letter with a pleased smile toward the camera, soft light through a paper screen",
-        "camera": "pan right",
+        "prompt": "Medium shot of a young emperor with a neat moustache in a pale gold gown and a flat beaded crown sitting at a writing desk in a palace study on a mild morning, folding a blank letter with a pleased smile out at the viewer, mild light from an open doorway",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1237,8 +1172,8 @@
       "id": "letter-date",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive on a hazy afternoon, holding a blank letter up to the window and looking out at the viewer with a frown, soft light from an open doorway",
-        "camera": "tilt up",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive on a cloudy afternoon, holding a blank letter up to the window and looking straight ahead with a frown, soft window light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1252,8 +1187,8 @@
       "id": "shu-elephant",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a plump young ruler in a dark gown standing at a mountain palace gate in the morning, staring wide-eyed up at a big grey elephant beside him with a delighted face, soft overcast light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a plump young ruler in a dark gown standing at a mountain palace gate in the morning, staring wide-eyed up at a big grey elephant beside him with a delighted face, soft hazy light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1267,8 +1202,8 @@
       "id": "jin-keeper",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elephant keeper in a straw hat and a short brown tunic standing in a walled palace pen on a cloudy morning, brushing the side of a big grey elephant with a long broom and smiling out at the viewer, soft daylight",
-        "camera": "pan left",
+        "prompt": "Medium shot of an elephant keeper in a straw hat and a short brown tunic standing in a walled palace pen on a cloudy morning, brushing the side of a big grey elephant with a long broom and smiling out at the viewer, soft light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1282,8 +1217,8 @@
       "id": "palace-elephant",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a palace courtyard on a cloudy morning, a big grey elephant pulling a small wooden cart, a keeper in a southern straw hat riding on its neck and looking straight ahead with a proud grin, mild light",
-        "camera": "push in",
+        "prompt": "Wide shot of a palace courtyard on an overcast morning, a big grey elephant pulling a small wooden cart, a keeper in a southern straw hat riding on its neck and looking toward the camera with a proud grin, soft daylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1297,8 +1232,8 @@
       "id": "archivist-opinion",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk on a calm morning, holding up one finger with a confident little smile toward the camera, an open notebook in front of him, soft window light",
-        "camera": "drift",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk on a drizzly day, holding up one finger with a confident little smile out at the viewer, an open notebook in front of him, soft light through a paper screen",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1313,8 +1248,8 @@
       "id": "boy-steps",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns sitting on palace steps on a hazy afternoon, hugging his knees and looking out at the viewer with a curious face, soft light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns sitting on palace steps on a cloudy afternoon, hugging his knees and looking straight ahead with a curious face, mild light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1329,8 +1264,8 @@
       "id": "tribute-boat",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a southern envoy in a dark cloak standing on a wooden boat on a wide river on a mild morning, holding a lacquered tribute box with both hands and looking straight ahead, soft overcast light",
-        "camera": "pan right",
+        "prompt": "Medium shot of a southern envoy in a dark cloak standing on a wooden boat on a wide river on a mild morning, holding a lacquered tribute box with both hands and looking toward the camera, soft hazy light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1348,8 +1283,8 @@
       "id": "warlord-box",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap standing in a palace hall on a cloudy afternoon, holding a lacquered tribute box with both hands and a satisfied smile toward the camera, soft light through a paper screen",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a stocky warlord in his fifties with a short black beard in a dark red robe and a black lacquered cap standing in a palace hall on a rainy day, holding a lacquered tribute box with both hands and a satisfied smile out at the viewer, soft light from an open doorway",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1363,8 +1298,8 @@
       "id": "hostage-refuse",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young lord with a reddish beard in a dark purple coat standing in a hall in the morning, holding a blank letter at arm's length and shaking his head firmly, soft daylight from an open doorway",
-        "camera": "pull out",
+        "prompt": "Medium shot of a young lord with a reddish beard in a dark purple coat standing in a hall in the morning, holding a blank letter at arm's length and shaking his head firmly, soft window light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1378,8 +1313,8 @@
       "id": "elephant-gift",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elephant keeper in a straw hat and a short brown tunic standing on a riverbank on a cloudy day, holding a big grey elephant's rope in one hand and scratching his head with the other, unsure, mild light",
-        "camera": "pan left",
+        "prompt": "Medium shot of an elephant keeper in a straw hat and a short brown tunic standing on a riverbank on a cloudy day, holding a big grey elephant's rope in one hand and scratching his head with the other, unsure, soft daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1393,8 +1328,8 @@
       "id": "no-record",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive late in the day, flipping through a pile of blank pages and shaking his head out at the viewer, soft window light",
-        "camera": "push in",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive in the morning, flipping through a pile of blank pages and shaking his head straight ahead, soft light through a paper screen",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1413,8 +1348,8 @@
       "id": "jin-scholar",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged scholar in a grey gown and a black gauze cap writing at a low desk in a study on a mild morning, looking up straight ahead with a knowing smile, soft light through a paper screen",
-        "camera": "drift",
+        "prompt": "Medium shot of a middle-aged scholar in a grey gown and a black gauze cap writing at a low desk in a study on a mild morning, looking up toward the camera with a knowing smile, mild light from an open doorway",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1447,8 +1382,8 @@
       "id": "two-books",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in a reading room on a hazy afternoon, holding one closed old book in each hand and looking from one to the other with a puzzled frown, soft light from an open doorway",
-        "camera": "tilt down",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in a reading room on a cloudy afternoon, holding one closed old book in each hand and looking from one to the other with a puzzled frown, soft window light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1462,8 +1397,8 @@
       "id": "two-scrolls",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a scribe in a grey gown standing in a library hall on a cloudy day, holding a tied bundle of bamboo slips under each arm and smiling out at the viewer, soft window light",
-        "camera": "pan right",
+        "prompt": "Medium shot of a scribe in a grey gown standing in a library hall on a cloudy day, holding a tied bundle of bamboo slips under each arm and smiling out at the viewer, soft light through a paper screen",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1477,8 +1412,8 @@
       "id": "pig-boat",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a plump river official in a blue jacket standing on a wooden boat on a calm river on an overcast afternoon, patting a huge pink pig beside him and looking toward the camera with a proud grin, soft daylight",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a plump river official in a blue jacket standing on a wooden boat on a calm river on a hazy afternoon, patting a huge pink pig beside him and looking out at the viewer with a proud grin, soft light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1497,8 +1432,8 @@
       "id": "pig-scale",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a market official in a brown coat standing in a courtyard on a mild morning, holding up a snapped wooden scale beam in both hands with a dismayed face, more broken beams at his feet, soft cloudy light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a market official in a brown coat standing in a courtyard on a mild morning, holding up a snapped wooden scale beam in both hands with a dismayed face, more broken beams at his feet, soft overcast light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1514,37 +1449,36 @@
       ]
     },
     {
-      "id": "pig-limits",
+      "id": "shao-pig",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive on a mild afternoon, holding up a torn half page of an old book and looking out at the viewer with a rueful smile, soft light through a paper screen",
-        "camera": "pan left",
+        "prompt": "Medium shot of a round-faced scholar in a brown long gown and a black skullcap sitting at a desk in a study on a cloudy day, tapping an open blank book with one finger and grinning out at the viewer, soft daylight from an open doorway",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cc525",
-          "text": "原書已經失傳，年代我們沒能查實；它只說用船量，沒說怎麼量。"
+          "text": "清朝的邵晉涵就拿這頭豬說：用船秤重這件事，曹沖之前早就有了。"
         }
       ]
     },
     {
-      "id": "no-source",
-      "template": "big",
+      "id": "pig-limits",
+      "template": "shot",
       "data": {
-        "text": "然皆未得其出處也",
-        "kicker": "陳寅恪，一九三〇",
-        "sub": "前人的猜測：都沒找到出處"
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive late in the day, holding up a torn half page of an old book and looking straight ahead with a rueful smile, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
       },
       "lines": [
         {
           "id": "cc526",
-          "text": "這頭豬，也早有人找到。還記得何焯猜的算術書嗎？"
+          "text": "可是這本書原書已經失傳，年代我們沒能查實；"
         },
         {
           "id": "cc527",
-          "text": "陳寅恪的評語是：都沒找到出處。",
-          "emotion": "一字一字唸清楚"
+          "text": "它也只說用船量，沒說怎麼刻記號、換什麼東西。誰先誰後，還是說不準。"
         }
       ]
     },
@@ -1552,8 +1486,8 @@
       "id": "scholars-argue",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket standing between two tall stacks of books in a reading room on a hazy afternoon, holding one open book up high and looking straight ahead with a shrug, mild light from an open doorway",
-        "camera": "push in",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket standing between two tall stacks of books in a reading room on a cloudy afternoon, holding one open book up high and looking toward the camera with a shrug, soft light through a paper screen",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1567,8 +1501,8 @@
       "id": "boy-dock",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns standing on a riverside dock on a drizzly day, holding a small carved stick against the side of a moored wooden boat and looking toward the camera with a proud smile, soft overcast light",
-        "camera": "drift",
+        "prompt": "Medium shot of a small boy in a pale blue tunic with his hair tied in two little buns standing on a riverside dock on a still afternoon, holding a small carved stick against the side of a moored wooden boat and looking out at the viewer with a proud smile, soft hazy light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1587,8 +1521,8 @@
       "id": "oldman-bench",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat sitting on a bench outside a small house at a quiet midday, smiling warmly out at the viewer with a small wooden toy boat in his hands, soft cloudy light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a frail old man with a long white beard in a patched brown coat sitting on a bench outside a small house on a mild afternoon, smiling warmly straight ahead with a small wooden toy boat in his hands, soft overcast light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1603,8 +1537,8 @@
       "id": "file-stamped",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive on a calm morning, stamping a blank manila folder with a rubber stamp and looking straight ahead with a small smile, soft window light",
-        "camera": "pan right",
+        "prompt": "Medium shot of an archivist in his twenties in a plain cotton jacket sitting at a desk in an archive on a drizzly day, stamping a blank manila folder with a rubber stamp and looking toward the camera with a small smile, mild light from an open doorway",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
