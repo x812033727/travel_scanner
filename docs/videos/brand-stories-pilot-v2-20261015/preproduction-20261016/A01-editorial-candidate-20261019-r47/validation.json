@@ -1,0 +1,441 @@
+{
+  "status": "R47_NARRATIVE_REVIEW_AND_ACTUAL_DURATION_HOLD",
+  "scenes": 50,
+  "lines": 52,
+  "claims": 54,
+  "loops": 8,
+  "all_claims_pending": true,
+  "target_actual_body_seconds": [
+    420,
+    480
+  ],
+  "estimates_not_real_tts": {
+    "250": {
+      "body_seconds": 450.4,
+      "timeline_seconds_before_final_branding": 466
+    },
+    "275": {
+      "body_seconds": 414.1,
+      "timeline_seconds_before_final_branding": 428.5
+    },
+    "300": {
+      "body_seconds": 383,
+      "timeline_seconds_before_final_branding": 396.4
+    }
+  },
+  "cadence": {
+    "gap": 45,
+    "loopsPer10": 8
+  },
+  "checks_by_cpm": {
+    "250": {
+      "lint_errors": [],
+      "lint_warnings": [
+        {
+          "path": "scenes[0].lines[0] (r44l001)",
+          "message": "43 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes[1].lines[0] (r44l002)",
+          "message": "42 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes[11].lines[0] (r44l012)",
+          "message": "44 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes[21].lines[0] (r44l022)",
+          "message": "43 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes[35].lines[0] (r44l036)",
+          "message": "42 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes",
+          "message": "49 of 49 pictures name no shot size (close-up, medium, wide, overhead, low angle, from behind…): say how close the camera is in hook-pocket, hook-pilot-burden, hook-security, hook-crew and 45 more"
+        },
+        {
+          "path": "scenes",
+          "message": "\"cute\" is in 49 of 49 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"illustrated\" is in 49 of 49 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"documentary\" is in 49 of 49 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes[0] (hook-pocket)",
+          "message": "about 11.3 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[1] (hook-pilot-burden)",
+          "message": "about 11.1 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[2] (hook-security)",
+          "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[3] (hook-crew)",
+          "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[11] (origin-demand)",
+          "message": "about 11.6 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[12] (origin-ok)",
+          "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[21] (engine-workshop)",
+          "message": "about 11.3 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[24] (engine-1989)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[25] (engine-patent-stow)",
+          "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[27] (engine-public-sight)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[29] (engine-competition)",
+          "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[34] (turn-wait)",
+          "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[35] (turn-choose)",
+          "message": "about 11.1 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[42] (now-aisle)",
+          "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes",
+          "message": "craft pace.median: median shot 9.2 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft pace.p90: 90th percentile shot 11.1 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft pace.longest: longest shot 11.6 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 41) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft pace.spread: long shots against short ones (90th ÷ 10th percentile) 1.5, target ≥ 2; every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft hook.opening: shots that start in the first 10 s 1, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-pocket) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft hook.opening30: shots that start in the first 30 s 3, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft lines.median: median line length 34 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft lines.long: lines over 20 characters 100%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft size.named: shots that name no shot size 100%, target ≤ 20%; start `camera` with the size: Wide, Medium shot, Medium close-up, Close-up, Insert … (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft motion.run: such shots in a row 49 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-pocket, hook-pilot-burden, hook-security) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft risk.decorative: shots with nobody in them that are not inserts 27% (13), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (hook-pocket, origin-two-pieces, origin-fastened, origin-next, idea-record, idea-one-unit, engine-orders, engine-patent-stow, … 13) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "thumbnail",
+          "message": "a line break falls inside the word 「放不下」; put \\n where a word ends (qa fails it)"
+        }
+      ],
+      "cadence_problems": []
+    },
+    "275": {
+      "lint_errors": [],
+      "lint_warnings": [
+        {
+          "path": "scenes[0].lines[0] (r44l001)",
+          "message": "43 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes[1].lines[0] (r44l002)",
+          "message": "42 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes[11].lines[0] (r44l012)",
+          "message": "44 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes[21].lines[0] (r44l022)",
+          "message": "43 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes[35].lines[0] (r44l036)",
+          "message": "42 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes",
+          "message": "49 of 49 pictures name no shot size (close-up, medium, wide, overhead, low angle, from behind…): say how close the camera is in hook-pocket, hook-pilot-burden, hook-security, hook-crew and 45 more"
+        },
+        {
+          "path": "scenes",
+          "message": "\"cute\" is in 49 of 49 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"illustrated\" is in 49 of 49 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"documentary\" is in 49 of 49 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes[0] (hook-pocket)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[1] (hook-pilot-burden)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[11] (origin-demand)",
+          "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[21] (engine-workshop)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[35] (turn-choose)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes",
+          "message": "craft pace.median: median shot 8.4 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft pace.p90: 90th percentile shot 10.2 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft pace.longest: longest shot 10.6 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-pocket, hook-pilot-burden, hook-security, hook-crew, origin-two-pieces, origin-plath, origin-fastened, origin-return, … 31) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft pace.spread: long shots against short ones (90th ÷ 10th percentile) 1.5, target ≥ 2; every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft hook.opening: shots that start in the first 10 s 1, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-pocket) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft hook.opening30: shots that start in the first 30 s 4, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft lines.median: median line length 34 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft lines.long: lines over 20 characters 100%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft size.named: shots that name no shot size 100%, target ≤ 20%; start `camera` with the size: Wide, Medium shot, Medium close-up, Close-up, Insert … (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft motion.run: such shots in a row 49 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-pocket, hook-pilot-burden, hook-security) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft risk.decorative: shots with nobody in them that are not inserts 27% (13), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (hook-pocket, origin-two-pieces, origin-fastened, origin-next, idea-record, idea-one-unit, engine-orders, engine-patent-stow, … 13) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "thumbnail",
+          "message": "a line break falls inside the word 「放不下」; put \\n where a word ends (qa fails it)"
+        }
+      ],
+      "cadence_problems": []
+    },
+    "300": {
+      "lint_errors": [],
+      "lint_warnings": [
+        {
+          "path": "scenes[0].lines[0] (r44l001)",
+          "message": "43 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes[1].lines[0] (r44l002)",
+          "message": "42 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes[11].lines[0] (r44l012)",
+          "message": "44 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes[21].lines[0] (r44l022)",
+          "message": "43 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes[35].lines[0] (r44l036)",
+          "message": "42 spoken units; split sentences longer than 40"
+        },
+        {
+          "path": "scenes",
+          "message": "49 of 49 pictures name no shot size (close-up, medium, wide, overhead, low angle, from behind…): say how close the camera is in hook-pocket, hook-pilot-burden, hook-security, hook-crew and 45 more"
+        },
+        {
+          "path": "scenes",
+          "message": "\"cute\" is in 49 of 49 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"illustrated\" is in 49 of 49 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"documentary\" is in 49 of 49 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "craft pace.median: median shot 7.8 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft pace.p90: 90th percentile shot 9.4 s, target ≤ 6 s; a long hold has to be a designed one; cut to the listener's face or an insert (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 45) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft pace.longest: longest shot 9.8 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (hook-pocket, hook-pilot-burden, hook-security, hook-crew, origin-two-pieces, origin-demand, origin-ok, engine-workshop, … 19) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft pace.spread: long shots against short ones (90th ÷ 10th percentile) 1.5, target ≥ 2; every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft hook.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event: place, the lead doing something, the lead's face, the other side's reaction (hook-pocket, hook-pilot-burden) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft hook.opening30: shots that start in the first 30 s 4, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft hook.dialogue: first line spoken by a character never, target ≤ 10 s; let someone in the scene speak first; a retelling with no speaking characters answers this row in the report (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft lines.median: median line length 34 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft lines.long: lines over 20 characters 100%, target ≤ 10%; a line this long holds one picture too long; split it across two shots (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft lines.narrator: narration and inner voice, share of the spoken text 100%, target ≤ 35%; turn narration into what a character says or does; keep it for time jumps (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft size.named: shots that name no shot size 100%, target ≤ 20%; start `camera` with the size: Wide, Medium shot, Medium close-up, Close-up, Insert … (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft motion.look: shots where the only behaviour is a look, a breath or a tremor 100%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft motion.run: such shots in a row 49 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (hook-pocket, hook-pilot-burden, hook-security, hook-crew, hook-curb, origin-cord, origin-two-pieces, origin-plath, … 49) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (hook-pocket, hook-pilot-burden, hook-security) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "craft risk.decorative: shots with nobody in them that are not inserts 27% (13), target ≤ 10%; a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question (hook-pocket, origin-two-pieces, origin-fastened, origin-next, idea-record, idea-one-unit, engine-orders, engine-patent-stow, … 13) (.agents/skills/youtube-video/references/drama-craft.md)"
+        },
+        {
+          "path": "scenes",
+          "message": "about 6.6 minutes; the target is 7-8"
+        },
+        {
+          "path": "thumbnail",
+          "message": "a line break falls inside the word 「放不下」; put \\n where a word ends (qa fails it)"
+        }
+      ],
+      "cadence_problems": []
+    }
+  },
+  "schema_errors": [],
+  "cute_visual_errors": [],
+  "retained_claims_sources_prompts_unchanged": true,
+  "estimated_band_at_275_passed": false,
+  "actual_tts_duration_not_measured": true,
+  "duration_gate_passed": false,
+  "duration_hold_reason": "The 275 CPM paper estimate is below 420 seconds. The actual 420–480-second requirement remains unchanged; no filler, slowed delivery or pauses were added.",
+  "independent_r47_reviews": "NOT_YET_ISSUED_AT_BUILD",
+  "formal_chapter_reviews": "NOT_YET_ISSUED",
+  "host_adoption_allowed": false,
+  "paid_media_started": false
+}

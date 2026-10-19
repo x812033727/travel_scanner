@@ -1148,6 +1148,178 @@ async def test_a_story_already_being_drafted_is_a_known_title() -> None:
 
 
 @pytest.mark.asyncio
+async def test_cross_category_meta_launch_waits_for_review_with_the_matched_article_identity(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        candidate.vertical = "crypto"  # A fixed crypto feed inherited the wrong category.
+        candidate.source_title = "Meta releases Muse Wonder and Wonder Full AI models"
+        await seed_published_news(
+            session,
+            "ai-news-meta-muse-wonder-models-20261012",
+            TODAY,
+            {"en": "Meta launches Muse Wonder and Muse Wonder Full AI models"},
+        )
+        article_id = await session.scalar(
+            select(GuideArticle.id).where(
+                GuideArticle.slug == "ai-news-meta-muse-wonder-models-20261012"
+            )
+        )
+        await session.commit()
+
+    duplicate_check = AsyncMock(return_value=("duplicate", 0.96, []))
+    monkeypatch.setattr(ai, "jev_duplicate_check", duplicate_check)
+    draft = AsyncMock()
+    monkeypatch.setattr(ai, "draft_article", draft)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate.id)
+        stored = await session.get(NewsCandidate, candidate.id)
+        assessment = await session.scalar(
+            select(NewsAssessment).where(
+                NewsAssessment.candidate_id == candidate.id,
+                NewsAssessment.assessment_type == "duplicate",
+            )
+        )
+    await engine.dispose()
+
+    assert result == "manual_review"
+    assert stored is not None
+    assert (stored.status, stored.error_code) == ("manual_review", "news_duplicate_uncertain")
+    assert assessment is not None
+    assert assessment.verdict == "manual"
+    assert assessment.details_json["semantic_verdict"] == "duplicate"
+    assert assessment.reasons_json == ["cross_category_match_requires_review"]
+    assert assessment.details_json["cross_category_matches"] == [
+        {
+            "kind": "published_article",
+            "id": str(article_id),
+            "vertical": "ai",
+            "title": "Meta launches Muse Wonder and Muse Wonder Full AI models",
+            "similarity": pytest.approx(0.89, abs=0.2),
+            "rationale": (
+                "Titles share full, meta, muse, wonder and both signal launch; "
+                "event identity needs semantic review"
+            ),
+            "slug": "ai-news-meta-muse-wonder-models-20261012",
+        }
+    ]
+    duplicate_check.assert_awaited_once()
+    assert "Meta launches Muse Wonder and Muse Wonder Full AI models" in (
+        duplicate_check.await_args.args[4]
+    )
+    draft.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_cjk_cross_category_match_stays_in_review_even_when_jev_says_distinct(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        candidate.vertical = "crypto"
+        candidate.source_title = "Meta 推出 Muse Wonder 與 Wonder Full 模型"
+        await seed_published_news(
+            session,
+            "ai-news-meta-muse-wonder-models-20261012",
+            TODAY,
+            {"zh-TW": "Meta 發布 Muse Wonder 和 Wonder Full AI 模型"},
+        )
+        article_id = await session.scalar(
+            select(GuideArticle.id).where(
+                GuideArticle.slug == "ai-news-meta-muse-wonder-models-20261012"
+            )
+        )
+        await session.commit()
+
+    duplicate_check = AsyncMock(return_value=("distinct", 0.04, []))
+    monkeypatch.setattr(ai, "jev_duplicate_check", duplicate_check)
+    draft = AsyncMock()
+    monkeypatch.setattr(ai, "draft_article", draft)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate.id)
+        stored = await session.get(NewsCandidate, candidate.id)
+        assessment = await session.scalar(
+            select(NewsAssessment).where(
+                NewsAssessment.candidate_id == candidate.id,
+                NewsAssessment.assessment_type == "duplicate",
+            )
+        )
+    await engine.dispose()
+
+    assert result == "manual_review"
+    assert stored is not None and stored.error_code == "news_duplicate_uncertain"
+    assert assessment is not None and assessment.verdict == "manual"
+    assert assessment.reasons_json == ["cross_category_cjk_requires_review"]
+    assert assessment.details_json["semantic_verdict"] == "distinct"
+    assert assessment.details_json["cross_category_matches"][0]["id"] == str(article_id)
+    duplicate_check.assert_awaited_once()
+    draft.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_a_new_meta_price_event_is_not_held_as_the_earlier_model_launch(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        candidate.source_title = "Meta cuts Muse Wonder API pricing"
+        await seed_published_news(
+            session,
+            "crypto-news-meta-muse-wonder-launch-20261012",
+            TODAY,
+            {"en": "Meta launches Muse Wonder and Muse Wonder Full AI models"},
+        )
+        await session.commit()
+
+    duplicate_check = AsyncMock(return_value=("distinct", 0.02, []))
+    monkeypatch.setattr(ai, "jev_duplicate_check", duplicate_check)
+    stage_one_mocks(monkeypatch)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate.id)
+        stored = await session.get(NewsCandidate, candidate.id)
+        assessment = await session.scalar(
+            select(NewsAssessment).where(
+                NewsAssessment.candidate_id == candidate.id,
+                NewsAssessment.assessment_type == "duplicate",
+            )
+        )
+    await engine.dispose()
+
+    assert result == "manual_review"  # The ordinary stage-one draft waits for approval.
+    assert stored is not None
+    assert (stored.status, stored.error_code) == ("manual_review", "news_zh_draft_ready")
+    assert assessment is not None and assessment.verdict == "pass"
+    assert assessment.details_json == {}
+    duplicate_check.assert_awaited_once()
+    assert duplicate_check.await_args.args[4] == []
+
+
+@pytest.mark.asyncio
+async def test_cross_category_in_flight_candidate_uses_the_same_title_budget() -> None:
+    from app.news_automation.duplicates import known_stories
+
+    engine, factory = await database()
+    async with factory() as session:
+        running = await seed_candidate(session, status="verifying", vertical="ai")
+        running.source_title = "Meta launches Muse Wonder and Wonder Full models"
+        fresh = await seed_candidate(session, vertical="crypto")
+        fresh.source_title = "Meta releases Muse Wonder and Wonder Full models"
+        await session.commit()
+        known = await known_stories(session, fresh)
+    await engine.dispose()
+
+    assert len(known.cross_category_matches) == 1
+    assert known.cross_category_matches[0].kind == "candidate"
+    assert known.cross_category_matches[0].id == running.id
+    assert running.source_title in known.titles
+    assert len(known.titles) <= ai.MAX_DUPLICATE_TITLES
+
+
+@pytest.mark.asyncio
 async def test_the_review_list_asks_for_exactly_the_statuses_it_shows() -> None:
     engine, factory = await database()
     async with factory() as session:

@@ -1,0 +1,352 @@
+{
+  "schema": "article-localization-sanitized-release-record-v1",
+  "state": "published_and_publicly_verified",
+  "release_task_id": "2026-10-07-release-business-analysis-missing-locales",
+  "content_pull_requests": [
+    1366
+  ],
+  "merged_deployed_sha": "7524c25995d59f3826227e693d52f2ef5b3a19a2",
+  "driver_completed_at": "2026-10-07T15:40:04.124263+00:00",
+  "public_visual_reviewed_at": "2026-10-07T15:35:28.817377+00:00",
+  "fresh_census_observed_at": "2026-10-07T14:17:26.608977+00:00",
+  "scope_counts": {
+    "articles": 4,
+    "new_language_publications": 16,
+    "source_corrections": 0,
+    "selected_publication_operations": 16,
+    "draft_operations": 16,
+    "hub_publication_operations": 0,
+    "public_pages": 20,
+    "desktop_mobile_views": 40,
+    "manifest_assets_in_scope": 48
+  },
+  "slugs": [
+    "business-models-b2b-d2c",
+    "pestle-business-scan",
+    "porter-five-forces",
+    "swot-tows-action-plan"
+  ],
+  "official_phase_results": {
+    "prepare": {
+      "started_at": "2026-10-07T13:30:16.743836+00:00",
+      "finished_at": "2026-10-07T13:30:36.181666+00:00"
+    },
+    "dry-run": {
+      "started_at": "2026-10-07T13:30:57.735761+00:00",
+      "finished_at": "2026-10-07T13:32:17.317847+00:00"
+    },
+    "backup": {
+      "started_at": "2026-10-07T13:33:07.497691+00:00",
+      "finished_at": "2026-10-07T13:34:01.620260+00:00"
+    },
+    "rehearsal": {
+      "started_at": "2026-10-07T13:35:51.721780+00:00",
+      "finished_at": "2026-10-07T13:54:57.512074+00:00"
+    },
+    "drafts": {
+      "started_at": "2026-10-07T13:55:22.954429+00:00",
+      "finished_at": "2026-10-07T13:59:57.268456+00:00"
+    },
+    "publish-articles": {
+      "started_at": "2026-10-07T14:00:59.899977+00:00",
+      "finished_at": "2026-10-07T14:06:00.887720+00:00"
+    },
+    "publish-hubs": {
+      "started_at": "2026-10-07T14:06:10.809338+00:00",
+      "finished_at": "2026-10-07T14:07:30.992490+00:00"
+    },
+    "replay": {
+      "started_at": "2026-10-07T14:07:41.897985+00:00",
+      "finished_at": "2026-10-07T14:13:31.106527+00:00"
+    },
+    "complete": {
+      "started_at": "2026-10-07T15:39:54.971804+00:00",
+      "finished_at": "2026-10-07T15:40:06.564958+00:00"
+    }
+  },
+  "operation_actions": {
+    "drafts": {
+      "start_translation": 16
+    },
+    "publish-articles": {
+      "publish": 16
+    },
+    "publish-hubs": {}
+  },
+  "bundles": [
+    {
+      "bundle_id": "06-first-life12",
+      "manifest_sha256": "ef35ad113c17d662f581feecb913bb5ce2fb47011f267b2f28c3e975b32be01e",
+      "baseline_sha256": "02c126e6a56a45544b0769b15cc18d74bb26af86420be3e6beda4712aa920054",
+      "journal_sha256": "24bfd246b57102de401897decd7f67da1fd4f127bcaefafd05a670a1973a88d9",
+      "filtered_slugs": [
+        "business-models-b2b-d2c",
+        "pestle-business-scan",
+        "porter-five-forces",
+        "swot-tows-action-plan"
+      ],
+      "filtered_operation_counts": {
+        "drafts": 16,
+        "publish-articles": 16,
+        "publish-hubs": 0
+      },
+      "shared_journal_filtered_by_slug": true
+    }
+  ],
+  "source_correction_approvals": [],
+  "actual_public_documents": [
+    {
+      "slug": "business-models-b2b-d2c",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/business-models-b2b-d2c",
+      "published_version": 4,
+      "document_sha256": "f64c4eb6d117cd71cc624e9955ec89534d498b52ed8ca574c09bb6d5a61685d7",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "business-models-b2b-d2c",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/business-models-b2b-d2c",
+      "published_version": 2,
+      "document_sha256": "9cd6aec1e447c5a7443bafc566a2cff1f6571530744e3a9bc21d86fe18012850",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "business-models-b2b-d2c",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/business-models-b2b-d2c",
+      "published_version": 2,
+      "document_sha256": "2a158f3a3d9988ffcd82e448a9d98a483922de869640a487b42762e7db594b1f",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "business-models-b2b-d2c",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/business-models-b2b-d2c",
+      "published_version": 2,
+      "document_sha256": "551307f905ea00ca470da009419157d8452a1fa9291fb1c29cc4e940a55cf5a5",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "business-models-b2b-d2c",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/business-models-b2b-d2c",
+      "published_version": 2,
+      "document_sha256": "3163299191b8b2ba83dc818e8ea20745928354a5eba834dad0692ac6c87fbb13",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "pestle-business-scan",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/pestle-business-scan",
+      "published_version": 4,
+      "document_sha256": "52bae6f00fca8e68812bbb8a2c8fd50313fc7e5f75a3153263fa3ed64cec4a37",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "pestle-business-scan",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/pestle-business-scan",
+      "published_version": 2,
+      "document_sha256": "24243212b6ae618e1c5bc4347dcd7e89b1b5049a83bbe66cbd44fe7924e08eef",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "pestle-business-scan",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/pestle-business-scan",
+      "published_version": 2,
+      "document_sha256": "1a9bd8fa9a63444120e83675d7ad2e4be1f9ef3cf5aadee56fce9090982e6bfe",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "pestle-business-scan",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/pestle-business-scan",
+      "published_version": 2,
+      "document_sha256": "4a9ed6a2a37ae07f192e11c8d6b3c6599e0df67df3c09a36f8f3582bbce6ba2f",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "pestle-business-scan",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/pestle-business-scan",
+      "published_version": 2,
+      "document_sha256": "7fd701442107f3a23352d44f623db73ce763c4ed455d3eb5ab82c359c134c835",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "porter-five-forces",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/porter-five-forces",
+      "published_version": 4,
+      "document_sha256": "c72e91c7263fd25fae7e7c63362173c130ceaadbd5ec6e41b075f763ed507cd8",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "porter-five-forces",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/porter-five-forces",
+      "published_version": 2,
+      "document_sha256": "a9a145ce628a0327eafa85d6c7b1b2aa1806007f36cfa515d12b2e4a7aacb233",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "porter-five-forces",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/porter-five-forces",
+      "published_version": 2,
+      "document_sha256": "f45a34b9d426445e480c97d907898780f6b5ab77ac6012480125cd7f3e3659bc",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "porter-five-forces",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/porter-five-forces",
+      "published_version": 2,
+      "document_sha256": "f1cae76e7e72692094c99c3ec5fc921945eda66090bdae149dea51370f5b16ea",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "porter-five-forces",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/porter-five-forces",
+      "published_version": 2,
+      "document_sha256": "fb39875d5c83b8141b30b4ef49f2ea000c166709a32d6bf7013b641cbe9f30ae",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "swot-tows-action-plan",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/swot-tows-action-plan",
+      "published_version": 4,
+      "document_sha256": "975c00a9defb6efd64ba26e9f8d761536602ffabd5fc62566dc913b7b94830c7",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "swot-tows-action-plan",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/swot-tows-action-plan",
+      "published_version": 2,
+      "document_sha256": "ed0b24fa538090f24d6998970024f2b5b457ad27b87372881a6b2d0677306f5b",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "swot-tows-action-plan",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/swot-tows-action-plan",
+      "published_version": 2,
+      "document_sha256": "ca46a20ef1b86e2d73404fda5d95bf423af240e5193f4d5b373a8cdd3c2a7527",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "swot-tows-action-plan",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/swot-tows-action-plan",
+      "published_version": 2,
+      "document_sha256": "7e13ffea32aa10e2a75ea0ddfa62845422005883c05d90d6f0c598e899bc3d95",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "swot-tows-action-plan",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/swot-tows-action-plan",
+      "published_version": 2,
+      "document_sha256": "c3765d90e4ef1b6c078cf4264bf700d841d62655efa11022cfd0a92a050630dc",
+      "selected_publication_target": true
+    }
+  ],
+  "manifest_asset_sha256": {
+    "/guides/business-models-b2b-d2c/diagram-1-en.svg": "658093f37bdd75de0cb30df665521b76fbf9b1dc6cba205c171e7bdcf24a8a0b",
+    "/guides/business-models-b2b-d2c/diagram-1-ja.svg": "e34b14fb408230ba91136bcb6a404614ffe4d26cee23edc109028ac36266122d",
+    "/guides/business-models-b2b-d2c/diagram-1-ko.svg": "56248d4762165ab731fb0385a70fb741536bdbf805daf3e3949dfc1090d9624f",
+    "/guides/business-models-b2b-d2c/diagram-1-zh-cn.svg": "f5c6b4f848673b47fd622814a30fa363e6c4817a33a9e753668f29bc7ff53ee2",
+    "/guides/business-models-b2b-d2c/hero-en.jpg": "d13ce24ad5be74a680d399820f56b9a6715483d2cf67c308bbe8e220fd22ecba",
+    "/guides/business-models-b2b-d2c/hero-en.svg": "909fff47b9d6405cec2dc5ff6d630a13207f28216a8f21df5b17afb2459ae13d",
+    "/guides/business-models-b2b-d2c/hero-ja.jpg": "b38efdc3963f1cc829a8ec08f37271dba97208dc3c102405901b340711b75fcf",
+    "/guides/business-models-b2b-d2c/hero-ja.svg": "cff0264c75d41a48ad6988cb14f702aa4ff9e7338ad774dd1be01ef63ed31532",
+    "/guides/business-models-b2b-d2c/hero-ko.jpg": "44d2a060051292ddf23e38f95b7a4aaa904103418a054d5ca0cc62ca80b242aa",
+    "/guides/business-models-b2b-d2c/hero-ko.svg": "ae14924307eb331d82d10b30dd453aac68b10a7161b3e10d19c7236453e00be5",
+    "/guides/business-models-b2b-d2c/hero-zh-cn.jpg": "294c756627b417cac6c52480aad77b6994c9b3f47f934792063fe2e92c9fb263",
+    "/guides/business-models-b2b-d2c/hero-zh-cn.svg": "8d5b0cc4579e7ddadacd263448708778cc5a9add9de2d921e1be887a73b46212",
+    "/guides/pestle-business-scan/diagram-1-en.svg": "b1bf599c05235c94efd01b6c7cd100bc571716bda1ba6ee006aef506e9ec1e39",
+    "/guides/pestle-business-scan/diagram-1-ja.svg": "8ce30e6c82a1ac3004199efc8800c7d4f8df48283c1b071a3018a5b2b6eb5de0",
+    "/guides/pestle-business-scan/diagram-1-ko.svg": "e18e3a3b95e28f4a398974fff5800f28d92eb307c61b7ca23b4b32b3f7ffbffe",
+    "/guides/pestle-business-scan/diagram-1-zh-cn.svg": "0fac2eeb08cf7db807c097cafa4f0609212dc8daa98ae7b7c7efd238434abd59",
+    "/guides/pestle-business-scan/hero-en.jpg": "7118217092c94d455ed2592987bce938dcee18288fca4c9d0af934eb886a2841",
+    "/guides/pestle-business-scan/hero-en.svg": "f129db2f1f35d47958ee61329f2e7978b7eddef19395fd630027a18ec84b838b",
+    "/guides/pestle-business-scan/hero-ja.jpg": "1d5eacd9ae9a716e7df5800798f4d1cb284bef3ac4b29d9c31ec72b2d28ccfce",
+    "/guides/pestle-business-scan/hero-ja.svg": "7524e3f23f12a10cd8653c5d115655acdad78aaaaa92e15a3465ebc965984a62",
+    "/guides/pestle-business-scan/hero-ko.jpg": "10120926c60e990ffa7e24ed887fd82025910ec8a00aae6128710372a60ca7a2",
+    "/guides/pestle-business-scan/hero-ko.svg": "c241aada6fd05427b03ba5a25801121b4401726a08703eac3f7aa838c4a66760",
+    "/guides/pestle-business-scan/hero-zh-cn.jpg": "23ab67cce493539c018c5ff0f9b9b78eaa41c0a78004aedc5365dcfc3fccf4bf",
+    "/guides/pestle-business-scan/hero-zh-cn.svg": "9887db6f4778742beda38a0043bdb10e25dda8c328525d828b8288d2ce3f5261",
+    "/guides/porter-five-forces/diagram-1-en.svg": "540dbac2503f1401d6bbc64b95fd763b363964191720b22630afdb2a00239c55",
+    "/guides/porter-five-forces/diagram-1-ja.svg": "d6b1c5bb875901829c16eae0e375cec8b637a950c342f87ef14485faf5564400",
+    "/guides/porter-five-forces/diagram-1-ko.svg": "c97fa33d73b2e7b52150ebd49f85a74deb6444389e441437e11b5e376574835c",
+    "/guides/porter-five-forces/diagram-1-zh-cn.svg": "54f4d50fd4b745bd2ac1f9e0245c9e17cdba9a13b75d7e20444ceca1bb9d1837",
+    "/guides/porter-five-forces/hero-en.jpg": "1eef03a4eb4240bfe29cb28a48361f7dc4947432a9118cf9873148b4f3e30952",
+    "/guides/porter-five-forces/hero-en.svg": "b64244826630eb82067fa3d60c95caf2acca9064f359d87e3345cbe059ba2d50",
+    "/guides/porter-five-forces/hero-ja.jpg": "959ef45920aded6b0cb93687dd336eace3972e64e9db05470e776860921e93db",
+    "/guides/porter-five-forces/hero-ja.svg": "f6a331761a7ca68bfc85be7cdb849b003cc797a4fd1361db2352677a0c2d9bf1",
+    "/guides/porter-five-forces/hero-ko.jpg": "274102ea24acdf893c2798f351e5ab9995330029e2014c0a7b9e8de8b8e9035e",
+    "/guides/porter-five-forces/hero-ko.svg": "26ea43956ab5a5325095ba790aaa1d3d80a5216db0d352cad58f0b90e4158d8a",
+    "/guides/porter-five-forces/hero-zh-cn.jpg": "cb76b63fb1e21dd1c9daf4fb05ccfd1464c451105b4df8c14f2a356f9d5ad177",
+    "/guides/porter-five-forces/hero-zh-cn.svg": "bec0f1d96244953061884dbbf701110d8d9f709bd7d617569b8a9ffea2fc94f2",
+    "/guides/swot-tows-action-plan/diagram-1-en.svg": "55c8a0cdd72f1f4c4c08a9059e0f84e4f10e91fe80011e57f6ac9b67e10c18c4",
+    "/guides/swot-tows-action-plan/diagram-1-ja.svg": "82af7914736985419ca20038cccbae94525957c29785779a5f5244801d5baf4a",
+    "/guides/swot-tows-action-plan/diagram-1-ko.svg": "327dfc69cba311d4ce1ce3d8b376d9deda972eec5197445994067313eb168fe8",
+    "/guides/swot-tows-action-plan/diagram-1-zh-cn.svg": "e4c800dc9593b10198a39ce3f5bb795e6f556c3c08433e78c11fa3ff83d12e2e",
+    "/guides/swot-tows-action-plan/hero-en.jpg": "35c5102797e31614d146463101bd0b447b2be1911f7db856f88b2f2bdff732c3",
+    "/guides/swot-tows-action-plan/hero-en.svg": "c1ac0365fed9ce3b6a994d51247d2d93853e885a66bd91d29d039b6895e9c1ae",
+    "/guides/swot-tows-action-plan/hero-ja.jpg": "788e0cd117dd356ea9dcc6f776af828982f600b0094f43bacfc670843a7d05b6",
+    "/guides/swot-tows-action-plan/hero-ja.svg": "597df1ee10be43ebb125d3e6fb9fe8116f49fda615f7208921f1194a013d684e",
+    "/guides/swot-tows-action-plan/hero-ko.jpg": "cf7bfd72de931bcefaf9e869e4b08e3708bb1b445022f20722452ed990cdf5de",
+    "/guides/swot-tows-action-plan/hero-ko.svg": "d9c8153405be0a0a94af95ec462a7542ef25d5e49007467aaa3663134582e6a7",
+    "/guides/swot-tows-action-plan/hero-zh-cn.jpg": "291c4b3f03bb9cb50017d5d4ec273364a0407f2a6253defe88eca6305fca8bec",
+    "/guides/swot-tows-action-plan/hero-zh-cn.svg": "f8e55724a8ab229e10d93dbb5544bc3b76695568eeba797ab7f3181ec38aef1f"
+  },
+  "backup_and_rehearsal": {
+    "single_database_dump": true,
+    "dump_sha256": "ab0b6e72cc1b6cde1a40e1ef927dd3ec5ad3ae39867327ababe306c1d0e94fd5",
+    "catalog_sha256": "15ed17ff8b8442753bb307e9a4859935a2057d28b26c7e64b8fef06a9685f51b",
+    "isolated_fixture_four_phase_replay_database_unchanged": true,
+    "isolated_fixture_write_phase_journal_bytes_unchanged": true
+  },
+  "production_replay_selected_article_state_unchanged": true,
+  "owned_hold_cleared": true,
+  "actual_QA_handoff_sha256": "0dacee5faf9e896b69ae09cabf5373403cdc1c10a057d6bc9d4f2fd2d52edc75",
+  "actual_public_acceptance_sha256": "f8a68430aa8dc4fdc7faa335fdce4a2ad72501510f4a3a4417892877d64f7766",
+  "actual_ledger_application_receipt_sha256": "27bdc2ba38015a8694e2070d2ea30aace5338fa0dcbb6bec686547d634a508bd",
+  "actual_postpublication_census_sha256": "d8982a0d9242252f6ae50bab2988c873220d1b64d3b993d0006c0ab9db8f5364",
+  "global_ledger_publication_event_id": "all-missing-publication-7524c25995d5",
+  "global_missing_count_from_fresh_census": 3320,
+  "new_editorial_PASS_issued_by_renderer": false,
+  "link_maintenance_limitations": {
+    "actual_check_sha256": "4588b0d705b1c4e37e77d440b32639d13330bb28de3d364dd0626228ad342cde",
+    "all_guides_check_exit_code_by_locale": {
+      "zh-TW": 1,
+      "en": 1,
+      "ja": 1,
+      "ko": 1,
+      "zh-CN": 1
+    },
+    "all_guides_finding_count_by_locale": {
+      "zh-TW": 111,
+      "en": 233,
+      "ja": 233,
+      "ko": 233,
+      "zh-CN": 233
+    },
+    "record_unpublished_related_link_count_by_locale": {
+      "zh-TW": 0,
+      "en": 2,
+      "ja": 2,
+      "ko": 2,
+      "zh-CN": 2
+    },
+    "selected_other_link_problem_count": 0,
+    "global_all_guides_check_passed": false,
+    "unpublished_related_targets_pending_under_global_localization_task": true
+  }
+}

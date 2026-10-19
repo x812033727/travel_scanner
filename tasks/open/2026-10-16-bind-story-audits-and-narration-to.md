@@ -18,11 +18,7 @@ scope:
   - tools/video/dubs/cli.mjs
   - tools/video/dubs/dubs.test.mjs
   - docs/videos/story-lexicon-integration.md
-  - tools/video/automation/story.mjs
-  - tools/video/automation/flow.mjs
-  - tools/video/automation/story.test.mjs
   - tools/video/automation/flow.test.mjs
-  - tools/video/automation/automation.test.mjs
   - tools/video/core/state.mjs
   - tools/video/core/state.test.mjs
   - tools/video/core/paths.mjs
@@ -31,8 +27,6 @@ scope:
   - tools/video/tts/cli.mjs
   - tools/video/tts/cli.test.mjs
   - tools/video/tts/tts.test.mjs
-  - docs/videos/long-form/review.md
-  - docs/videos/long-form/review.json
 ---
 
 # Bind story audits and narration to immutable per-story lexicon snapshots
@@ -86,6 +80,11 @@ story revision must produce a new bound event and keep the old 80 links intact.
 
 ## Notes
 
+2026-10-18 owner-authorized narrow transfer: release only
+`docs/videos/long-form/review.md` and `review.json` to the A01 duration task.
+The 80-to-81 production transition and all other scope remain in progress;
+reclaim the receipt paths if later lexicon edits require another review.
+
 Evidence: `docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-live-readback-20261016.md`
 and the offline `A01-lexicon-rebaseline-candidate/README.md`. The latter is
 HOLD and does not solve future shared-file drift. `tools/video/automation/story.mjs`
@@ -106,3 +105,18 @@ Draft PR #1548 contains the shared writer admission, per-story immutable publish
 Independent review found no additional P1/P2 in this draft runtime scope. Commit b31b4ce88 independently binds the three duration-covered files after verifying their 66092d968 baseline hashes. Strict reader/runtime/receipt tests passed 20/20, the two focused consumer regressions passed, long-form check passed all 473 plans, task check passed, and local docs-video suite passed 215/215. Hosted web, video-tests, containers and api checks passed on code-identical head 0d616f39479d61269256ea0fcdee165d62fc6c2e; remaining smoke/Lighthouse were still running when recorded. The duplicate full local tools/consumer runs were intentionally stopped after hosted affected suites passed; they are not recorded as local all-pass. Logs are in the local Codex captures directory under a01-lexicon-final-*.
 
 This task remains in-progress. A01's actual 80-to-81 audit/snapshot transition, new source-inspector compatibility and independent release gate are still required. The 80-link fixture currently proves byte preservation and refusal, not successful production migration. No host, deploy, import, paid call, retry or upload was made.
+
+2026-10-18 narrow claim release (owner-authorized): #1548 merged the
+`story.mjs` and `story.test.mjs` pronunciation changes into main at
+`4f02734769f683615d1ca8b641026ac8cf1f87b5`, which remains their latest
+main commit. Release only those two completed code-file claims so the A01
+duration worker can claim them independently. Preserve this ticket's other
+scopes and incomplete production transition; reclaim the files if later edits
+are needed. Draft #1518 remains untouched.
+
+2026-10-19 owner-authorized narrow claim release: release only
+`tools/video/automation/flow.mjs` and
+`tools/video/automation/automation.test.mjs` for task
+`2026-10-19-host-explainer-route-always-adds-the`. Keep `flow.test.mjs`, the
+remaining scope, the A01 80-to-81 transition, and its release gate in progress.
+Reclaim these two files later if the lexicon work needs them again.

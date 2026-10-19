@@ -1,0 +1,972 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e023",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "weishaoqing",
+      "name": "魏少卿",
+      "appearance": "East Asian man of twenty-six, handsome but frivolous, peach-blossom eyes, thin lips always curled in a scornful smile, fair skin, tall and slender, a sapphire-blue brocade robe woven with gold thread, a fine white jade pendant at his waist, a gold-flecked folding fan in his hand, hair in a neat topknot with a small jade crown",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十六歲的宰相之子，男聲、輕佻慵懶、拖著尾音、帶著居高臨下的笑意"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a racing drum pulse and a lonely dizi under the night mist as he leaps into the water at the start, a quiet trembling erhu and soft guqin through the confession in the boat, a warm rising flute and plucked pipa as the dawn mist parts and she flicks her abacus, a sly light percussion and low pizzicato strings in the inn as the wager is laid down, then low strings and a deep drum tighten to a sharp held sting at the very end, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "他跳進河裡追回逃婚的妻子，她說出真相後賭上自己｜種田娶妻打天下 第23集",
+    "description": "許硯從棧橋縱身一跳，落在船邊的淺水裡：「船家，回頭！」小船上，唐小棠終於說出逃婚的真相：宰相扣了唐家八條鹽船，逼她爹指婚；她向媒婆買了病死的林二丫的名額，混進配婚名冊。「我回魏家，你們就安全。」許硯說：「妳不是我贏來的，也不是誰的債。」晨霧散開，她把淚一抹、撥響金算盤：「我賭我自己。」客棧裡，當著縣城商會的證人，三十天比營收，許記贏了魏少卿就撤告、退婚書——可是輸了呢？《種田娶妻打天下》第 23 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "我賭我自己",
+      "tag": "種田娶妻打天下",
+      "shot": "s23"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "渡口",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, low angle, slow tracking right",
+        "prompt": "At the ferry landing on the stream at night, a long weathered wooden jetty on posts reaching into dark still water, thick white mist drifting low over the stream, black willow trees on the bank, a small wooden ferry boat with a low woven bamboo canopy, cold blue moonlight: wide shot from low beside the jetty, Xu Yan, on screen left at the very end of the planks with the round paper lantern, the small ferry boat a few strides away on screen right drifting into the mist, an old boatman in a straw rain cape poling at the bow, a small figure in peach-pink at the stern",
+        "motion": "Xu Yan drops the lantern onto the planks and leaps off the end of the jetty toward the boat, his robe flying out behind him as the camera tracks right with the jump",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of his legs landing in the water, locked",
+        "prompt": "At the ferry landing on the stream at night, a long weathered wooden jetty on posts reaching into dark still water, thick white mist drifting low over the stream, black willow trees on the bank, a small wooden ferry boat with a low woven bamboo canopy, cold blue moonlight: insert at water level beside the dark wooden hull of the ferry boat, a young man's legs in a faded blue-grey robe and cloth shoes landing in knee-deep shallow water among reeds, the hem of his robe soaked below the knees",
+        "motion": "His feet plunge into the shallow water with a heavy splash, spray and ripples spreading out under the moonlight against the hull",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a01",
+          "speaker": "xuyan",
+          "text": "船家，回頭！",
+          "emotion": "喊，喘著氣"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the ferry landing on the stream at night, a long weathered wooden jetty on posts reaching into dark still water, thick white mist drifting low over the stream, black willow trees on the bank, a small wooden ferry boat with a low woven bamboo canopy, cold blue moonlight: medium shot of Xu Yan, on screen left standing knee-deep in the shallow water beside the boat, both hands gripping the wooden side of the hull, his robe soaked below the knees, breath fogging in the cold, the dropped lantern still glowing on the jetty behind him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「船家，回頭！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he hauls on the side of the hull, dragging the boat back toward the shore",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a02",
+          "speaker": "tangxiaotang",
+          "text": "你瘋了？",
+          "emotion": "終於回頭，嚇壞了"
+        },
+        {
+          "id": "zq23a03",
+          "speaker": "tangxiaotang",
+          "text": "水這麼冷！",
+          "emotion": "又氣又急"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Aboard the small ferry boat on the misty stream at night, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, cold blue moonlight: medium close-up of Tang Xiaotang, on screen right sitting at the stern under the bamboo canopy, hugging her knees, cold moonlight on her face, tears on her cheeks, turning around at last to look down at Xu Yan off screen left",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「你瘋了？」 then 「水這麼冷！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she scrambles to the side of the boat and reaches a hand down toward him",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Aboard the small ferry boat on the misty stream at night, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, cold blue moonlight: medium shot of the old boatman in a straw rain cape, on screen right at the bow holding his long bamboo pole, the wet figure of Xu Yan gripping the side of the boat in the water on screen left",
+        "motion": "The old boatman stops poling, looks from the young man in the water to the girl and back, sighs and plants his pole in the riverbed to hold the boat still",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a04",
+          "speaker": "xuyan",
+          "text": "冷。",
+          "emotion": "牙齒打顫，還在笑"
+        },
+        {
+          "id": "zq23a05",
+          "speaker": "xuyan",
+          "text": "所以妳先拉我上去。",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the ferry landing on the stream at night, a long weathered wooden jetty on posts reaching into dark still water, thick white mist drifting low over the stream, black willow trees on the bank, a small wooden ferry boat with a low woven bamboo canopy, cold blue moonlight: close-up of Xu Yan, on screen left in the water at the side of the boat, wet strands of hair on his forehead, teeth chattering, grinning up at Tang Xiaotang off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「冷。」 then 「所以妳先拉我上去。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he shivers and lifts one hand up to her",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of their hands, locked",
+        "prompt": "Aboard the small ferry boat on the misty stream at night, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, cold blue moonlight: insert at the edge of the boat, a girl's small hand in a flowing peach-pink silk sleeve gripping a young man's wet wrist in a faded blue-grey sleeve, the dark water below",
+        "motion": "Her hand tightens on his wrist and pulls hard, and his other hand grabs the wooden side as he hauls himself up over the edge of the boat",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "chapter": "船上",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Aboard the small ferry boat on the misty stream at night, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, cold blue moonlight: wide shot of the whole small boat on the misty water, Xu Yan, on screen left sitting on a plank seat under the bamboo canopy, Tang Xiaotang, on screen right hugging her knees an arm's length away from him, the old boatman small at the bow",
+        "motion": "Xu Yan wrings the water out of the soaked hem of his robe onto the planks while Tang Xiaotang steals a glance at him and quickly looks away, and the boat drifts slowly in the mist",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a06",
+          "speaker": "xuyan",
+          "text": "為什麼逃婚？",
+          "emotion": "收起笑，認真"
+        },
+        {
+          "id": "zq23a07",
+          "speaker": "xuyan",
+          "text": "這回說實話。",
+          "emotion": "放輕聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Aboard the small ferry boat on the misty stream at night, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, cold blue moonlight: medium close-up of Xu Yan, on screen left on the plank seat under the bamboo canopy, his robe soaked below the knees, moonlight on his face, looking at Tang Xiaotang off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「為什麼逃婚？」 then 「這回說實話。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he leans forward with his elbows on his knees and waits",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a08",
+          "speaker": "tangxiaotang",
+          "text": "我回魏家，",
+          "emotion": "很小聲"
+        },
+        {
+          "id": "zq23a09",
+          "speaker": "tangxiaotang",
+          "text": "你們就安全。",
+          "emotion": "像在算一筆帳"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Aboard the small ferry boat on the misty stream at night, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, cold blue moonlight: close-up of Tang Xiaotang, on screen right under the bamboo canopy, moonlight on her tear-streaked face, eyes lowered to the small gold abacus in her lap",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「我回魏家，」 then 「你們就安全。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she forces a small smile and a tear slides down her cheek",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the abacus in her lap, locked",
+        "prompt": "Aboard the small ferry boat on the misty stream at night, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, cold blue moonlight: insert of the small gold abacus resting on peach-pink silk in a girl's lap, her slender fingers on the beads, moonlight glinting on the gold",
+        "motion": "Her fingertip slides the beads back to zero one by one, and a single tear drops onto the frame",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a10",
+          "speaker": "xuyan",
+          "text": "妳不是我贏來的，",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Aboard the small ferry boat on the misty stream at night, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, cold blue moonlight: close-up of Xu Yan, on screen left under the bamboo canopy, moonlight across his eyes, his hand reaching out toward Tang Xiaotang off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「妳不是我贏來的，」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he reaches out and lays his hand over hers on the abacus",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a11",
+          "speaker": "xuyan",
+          "text": "也不是誰的債。",
+          "emotion": "很穩"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium close-up, slow push in",
+        "prompt": "Aboard the small ferry boat on the misty stream at night, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, cold blue moonlight: over-the-shoulder medium close-up from behind Tang Xiaotang's peach-pink shoulder and looped hair buns on screen right, Xu Yan facing her on screen left under the bamboo canopy, moonlight on his face, his hand over hers",
+        "motion": "Xu Yan speaks a short Mandarin line, 「也不是誰的債。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he gives her hand a gentle squeeze and Tang Xiaotang's shoulders tremble",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a12",
+          "speaker": "xitong",
+          "text": "唐小棠，好感加六。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Aboard the small ferry boat on the misty stream at night, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, cold blue moonlight: close-up of Tang Xiaotang, on screen right under the bamboo canopy, moonlight on her face, her big round eyes welling, looking up at Xu Yan off screen left; the system voice speaks off screen",
+        "motion": "Tang Xiaotang's lips part and tremble, she bites her lower lip hard, and a tear spills down her cheek as she stares at him",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a13",
+          "speaker": "tangxiaotang",
+          "text": "宰相扣了唐家",
+          "emotion": "咬牙"
+        },
+        {
+          "id": "zq23a14",
+          "speaker": "tangxiaotang",
+          "text": "八條鹽船。",
+          "emotion": "聲音發抖"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Aboard the small ferry boat on the misty stream at night, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, cold blue moonlight: medium close-up of Tang Xiaotang, on screen right, turned to face him on the worn plank seat, the old boatman's straw rain cape blurred behind her at the bow, wiping her cheek hard with the back of her hand, jaw set and eyes fierce through the tears, looking straight at Xu Yan off screen left",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「宰相扣了唐家」 then 「八條鹽船。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she grips the abacus in her lap with both hands",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a15",
+          "speaker": "tangxiaotang",
+          "text": "逼我爹指婚。",
+          "emotion": "畫外，壓著哭"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the abacus beads, slow push in",
+        "prompt": "Aboard the small ferry boat on the misty stream at night, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, cold blue moonlight: insert of the small gold abacus in a girl's lap, moonlight glinting on the beads; Tang Xiaotang speaks off screen",
+        "motion": "Her fingertip pushes eight beads up one after another, each one clicking hard against the frame",
+        "characters": []
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a16",
+          "speaker": "xuyan",
+          "text": "那林二丫……",
+          "emotion": "慢慢地"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow pan left",
+        "prompt": "Aboard the small ferry boat on the misty stream before dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, the mist turning pale grey-blue: wide shot of the small boat drifting on the grey-blue water, the old boatman resting on his pole at the bow on screen left, Xu Yan and Tang Xiaotang under the bamboo canopy on screen right, Xu Yan turning to her",
+        "motion": "Xu Yan speaks a short Mandarin line, 「那林二丫……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then Tang Xiaotang lowers her head as the camera pans slowly toward them",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a17",
+          "speaker": "tangxiaotang",
+          "text": "媒婆說她病死了，",
+          "emotion": "小聲"
+        },
+        {
+          "id": "zq23a18",
+          "speaker": "tangxiaotang",
+          "text": "名額空著。",
+          "emotion": "更小聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Aboard the small ferry boat on the misty stream before dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, the mist turning pale grey-blue: medium close-up of Tang Xiaotang, on screen right under the bamboo canopy, pale grey-blue light on her face, eyes on the water, twisting a pink silk hair ribbon around her finger",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「媒婆說她病死了，」 then 「名額空著。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she winds the ribbon tighter around her finger",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a19",
+          "speaker": "tangxiaotang",
+          "text": "我買的。",
+          "emotion": "心虛又倔"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Aboard the small ferry boat on the misty stream before dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, the mist turning pale grey-blue: close-up of Tang Xiaotang, on screen right, pale grey-blue light on her face, lifting her eyes to look straight at Xu Yan off screen left, guilty and stubborn",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「我買的。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she lifts her chin and braces herself",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a20",
+          "speaker": "xuyan",
+          "text": "所以妳是",
+          "emotion": "愣住"
+        },
+        {
+          "id": "zq23a21",
+          "speaker": "xuyan",
+          "text": "花錢嫁給我的？",
+          "emotion": "忍不住笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Aboard the small ferry boat on the misty stream before dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, the mist turning pale grey-blue: close-up of Xu Yan, on screen left on the worn plank seat, his wet fringe drying on his forehead, the coil of rope and the boatman's bamboo pole blurred behind him, mouth half open in disbelief, staring at Tang Xiaotang off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「所以妳是」 then 「花錢嫁給我的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then the corner of his mouth slowly curls and he bursts out laughing",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a22",
+          "speaker": "tangxiaotang",
+          "text": "要你管！",
+          "emotion": "又哭又笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium two-shot, locked",
+        "prompt": "Aboard the small ferry boat on the misty stream before dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, the mist turning pale grey-blue: medium two-shot under the bamboo canopy, Xu Yan, on screen left laughing, Tang Xiaotang, on screen right, cheeks flushed, tears still on her face",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「要你管！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she smacks his arm, half crying and half laughing, and Xu Yan rubs his arm, still grinning",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Extreme wide shot, slow crane up",
+        "prompt": "Aboard the small ferry boat on the misty stream at dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, warm golden first sunlight breaking through the thinning mist: extreme wide shot from above the stream, the white mist parting into long golden ribbons over the water, the small boat in the middle with Xu Yan and Tang Xiaotang sitting shoulder to shoulder under the bamboo canopy, the old boatman at the bow",
+        "motion": "The old boatman quietly swings his pole and turns the bow of the boat around back upstream toward the village as the mist thins and the camera rises slowly",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Aboard the small ferry boat on the misty stream at dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, warm golden first sunlight breaking through the thinning mist: close-up of Tang Xiaotang, on screen right at the bow of the boat, golden first sunlight on her face turning her long lashes to gold, her eyes red from crying, pearl pins glinting in her looped buns, the small gold abacus raised in one hand",
+        "motion": "Tang Xiaotang lifts her tear-reddened eyes into the sunlight, wipes the tears away with the back of her hand in one swipe, and flicks the beads of the gold abacus with a bright ringing clatter",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a23",
+          "speaker": "tangxiaotang",
+          "text": "我賭我自己。",
+          "emotion": "擦乾淚，眼神亮了"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Aboard the small ferry boat on the misty stream at dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, warm golden first sunlight breaking through the thinning mist: medium close-up of Tang Xiaotang, on screen right at the bow, golden morning light on her face, chin raised, the gold abacus held up beside her cheek, looking at Xu Yan off screen left with fierce bright eyes",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「我賭我自己。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then a dimpled smile breaks across her face",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a24",
+          "speaker": "xuyan",
+          "text": "賭什麼？",
+          "emotion": "挑眉"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Aboard the small ferry boat on the misty stream at dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, warm golden first sunlight breaking through the thinning mist: close-up of Xu Yan, on screen left in the boat, golden morning light on his face, eyebrows raised, looking at Tang Xiaotang off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「賭什麼？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he tilts his head, waiting",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a25",
+          "speaker": "tangxiaotang",
+          "text": "三十天，",
+          "emotion": "算盤一撥"
+        },
+        {
+          "id": "zq23a26",
+          "speaker": "tangxiaotang",
+          "text": "比營收。",
+          "emotion": "精明"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Aboard the small ferry boat on the misty stream at dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, warm golden first sunlight breaking through the thinning mist: medium close-up of Tang Xiaotang, on screen right at the bow, the sunlit water sparkling behind her, a pink silk ribbon fluttering from her looped buns, the gold abacus held in both hands with her fingers poised on the beads, looking at Xu Yan off screen left with a sly businesslike smile",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「三十天，」 then 「比營收。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she snaps two beads across the abacus with quick clicks",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a27",
+          "speaker": "tangxiaotang",
+          "text": "許記贏，",
+          "emotion": "畫外，一條一條算"
+        },
+        {
+          "id": "zq23a28",
+          "speaker": "tangxiaotang",
+          "text": "他撤告、退婚書。",
+          "emotion": "畫外，乾脆"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the abacus beads, locked",
+        "prompt": "Aboard the small ferry boat on the misty stream at dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, warm golden first sunlight breaking through the thinning mist: insert of the small gold abacus in a girl's hands, golden morning light glinting on the beads; Tang Xiaotang speaks off screen",
+        "motion": "Her fingertip flicks one bead up, then two more in quick succession, each one clicking against the frame",
+        "characters": []
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a29",
+          "speaker": "xuyan",
+          "text": "輸了呢？",
+          "emotion": "笑容收起"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Aboard the small ferry boat on the misty stream at dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, warm golden first sunlight breaking through the thinning mist: close-up of Xu Yan, on screen left, golden morning light on his face, his smile fading, looking at Tang Xiaotang off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「輸了呢？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then his brows draw together",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow pan right",
+        "prompt": "Aboard the small ferry boat on the misty stream at dawn, a small wooden ferry boat with a low woven bamboo canopy, worn plank seats and a coil of rope, dark still water and drifting white mist all around, the black willows of the bank faint behind, warm golden first sunlight breaking through the thinning mist: medium shot of Tang Xiaotang, on screen right at the bow, golden morning light, the boat gliding upstream through thin mist, Xu Yan soft on screen left behind her",
+        "motion": "Tang Xiaotang does not answer; she closes her hand around the gold abacus and turns her face to the bright water ahead as the camera pans past her to the river",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "chapter": "賭約",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: wide shot of the room, Wei Shaoqing, on screen left seated at ease in a carved chair at the round table with the gold-flecked fan, three elderly merchants in dark silk robes standing by the folding screen as witnesses, Tang Xiaotang, on screen right at the table with Xu Yan standing at her shoulder",
+        "motion": "Tang Xiaotang lays a sheet of paper covered in blurred illegible brush strokes flat on the red table and slides it across toward Wei Shaoqing, while the three elderly merchants lean in to look",
+        "characters": [
+          "weishaoqing",
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a30",
+          "speaker": "weishaoqing",
+          "text": "賭？",
+          "emotion": "拖長音"
+        },
+        {
+          "id": "zq23a31",
+          "speaker": "weishaoqing",
+          "text": "拿妳自己賭？",
+          "emotion": "笑出來"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: medium close-up of Wei Shaoqing, on screen left in the carved chair, the gold-flecked fan opened halfway, his peach-blossom eyes amused, glancing from the paper up to Tang Xiaotang off screen right",
+        "motion": "Wei Shaoqing speaks 2 short Mandarin lines, 「賭？」 then 「拿妳自己賭？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he laughs and fans himself twice",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a32",
+          "speaker": "tangxiaotang",
+          "text": "三十天，",
+          "emotion": "冷靜"
+        },
+        {
+          "id": "zq23a33",
+          "speaker": "tangxiaotang",
+          "text": "許記營收贏你。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: medium close-up of Tang Xiaotang, on screen right at the table, daylight from the lattice window on her face, the gold abacus at her waist, Xu Yan soft behind her shoulder, looking down at Wei Shaoqing off screen left",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「三十天，」 then 「許記營收贏你。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she plants both hands on the table and leans forward",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a34",
+          "speaker": "weishaoqing",
+          "text": "輸了呢？",
+          "emotion": "慢條斯理"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: close-up of Wei Shaoqing, on screen left, daylight on one cheek, the closed gold-flecked fan resting against his lips, his peach-blossom eyes narrowing at Tang Xiaotang off screen right",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「輸了呢？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he taps the closed fan once on the table",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a35",
+          "speaker": "tangxiaotang",
+          "text": "我跟你回京。",
+          "emotion": "不眨眼"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: close-up of Tang Xiaotang, on screen right, daylight from the lattice window on her face, her eyes still a little red but steady, chin up, looking at Wei Shaoqing off screen left",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「我跟你回京。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then she presses her lips together and does not blink",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a36",
+          "speaker": "xuyan",
+          "text": "小棠——",
+          "emotion": "急"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: close-up of Xu Yan, on screen left standing at Tang Xiaotang's shoulder, daylight on his face, the carved screen behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「小棠——」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then his head snaps toward her and he reaches for her arm",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a37",
+          "speaker": "tangxiaotang",
+          "text": "我算過了。",
+          "emotion": "畫外，很輕"
+        }
+      ],
+      "data": {
+        "camera": "Insert of her hand on his wrist, locked",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: insert at the edge of the red-lacquered table, a girl's small hand in a peach-pink silk sleeve closing firmly over a young man's wrist in a faded blue-grey sleeve, holding him back; Tang Xiaotang speaks off screen",
+        "motion": "Her fingers tighten on his wrist and press it down gently against the table edge, and his hand stops and slowly opens",
+        "characters": []
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a38",
+          "speaker": "weishaoqing",
+          "text": "好。",
+          "emotion": "笑"
+        },
+        {
+          "id": "zq23a39",
+          "speaker": "weishaoqing",
+          "text": "請商會作證。",
+          "emotion": "拖著尾音"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: wide shot of the room, Wei Shaoqing, on screen left rising from the carved chair, the closed fan pointing at the three elderly merchants in dark silk robes standing by the folding screen in the background, Tang Xiaotang and Xu Yan standing side by side at the table on screen right",
+        "motion": "Wei Shaoqing speaks 2 short Mandarin lines, 「好。」 then 「請商會作證。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then the three old merchants glance at each other and nod together as the camera pans to them",
+        "characters": [
+          "weishaoqing",
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a40",
+          "speaker": "weishaoqing",
+          "text": "三十天後，",
+          "emotion": "湊近，輕聲"
+        },
+        {
+          "id": "zq23a41",
+          "speaker": "weishaoqing",
+          "text": "我來接新娘。",
+          "emotion": "笑裡帶刀"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: medium close-up of Wei Shaoqing, on screen left leaning across the round table toward Tang Xiaotang off screen right, the gold-flecked fan opened beside his face, a slow scornful smile",
+        "motion": "Wei Shaoqing speaks 2 short Mandarin lines, 「三十天後，」 then 「我來接新娘。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then he snaps the fan shut and straightens up",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a42",
+          "speaker": "xitong",
+          "text": "強制任務。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the thumbprint on the paper, locked",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: insert of the paper on the red-lacquered table, blurred illegible brush strokes, a small dish of vermilion seal paste beside it, a man's hand in a sapphire-blue brocade cuff with a thumb dipped in the vermilion paste; the system voice speaks off screen",
+        "motion": "The thumb presses down firmly on the paper and lifts away, leaving a small round vermilion print beside the brush strokes",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a43",
+          "speaker": "xitong",
+          "text": "鬥商三十日，",
+          "emotion": "平板電子音"
+        },
+        {
+          "id": "zq23a44",
+          "speaker": "xitong",
+          "text": "勝出。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: close-up of Xu Yan, on screen left, daylight from the lattice window on one side of his face, staring into the empty air in front of him, a faint cold blue glint in his eyes; the system voice speaks off screen",
+        "motion": "Xu Yan's eyes widen and his breath stops as he stares into the air, his jaw slowly tightening",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq23a45",
+          "speaker": "xitong",
+          "text": "失敗：",
+          "emotion": "平板電子音，一頓"
+        },
+        {
+          "id": "zq23a46",
+          "speaker": "xitong",
+          "text": "唐小棠好感歸零。",
+          "emotion": "平板電子音，冷"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, locked",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: extreme close-up of Xu Yan's eyes, thick brows drawn down, daylight from the lattice window, a cold blue glint in them; the system voice speaks off screen",
+        "motion": "Xu Yan's eyes slide slowly to the side toward Tang Xiaotang off screen right and narrow, a muscle in his jaw tightening",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s42",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the county inn guest room by day, an upstairs room with dark wooden lattice windows letting in bright daylight, a round red-lacquered table with a white porcelain teapot and cups, a carved wooden folding screen behind: medium close-up of Tang Xiaotang, on screen right at the table, daylight on her face, the gold abacus at her waist, smiling with bright confident eyes at Wei Shaoqing off screen left, Xu Yan soft and out of focus on screen left staring at her",
+        "motion": "Tang Xiaotang lifts her chin and gives Wei Shaoqing a bright dimpled smile, unaware, while behind her Xu Yan stares at her without moving",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}

@@ -96,6 +96,7 @@ await __v3zt.sleep(15000); [__wd(), __dhq.log.slice(-2).join('\n'), __dhq.clipsd
 | 驅動停在上傳那一步不寫 log | 隱藏窗格節流 | 看門狗 `__wd()` 每輪呼叫一次；最後一筆是 `queue empty` 時不會重啟 |
 | 單次工具呼叫逾時（45 秒） | 一次 sleep 太久或動作太多 | sleep ≤ 18–20 秒、一批 ≤ 4–5 個動作；逾時後頁面裡的腳本還在跑，先讀狀態再決定 |
 | 成片有一段凍格 1–2 秒 | 台詞比 4 秒片段長，片段慢放到 1.35 倍還不夠 | 用 6 秒重拍那一鏡：設定改 6s（底欄 `1 72 創建`），`ztmiddhN` 那鏡的秒數改 6，手動 `__v3zt.upload` 加 `__v3zt.go`，存成 `sNN-t2.mp4`（組片取最後一個 take）。拍完改回 4s |
+| 「紅色的手」被畫成像流血（第 18 集賴三沾到薑黃加草木灰的染料） | 只寫 red palm，模型會畫成濕的紅色液體 | 首格整批出來後先排成一張總覽圖檢查；提示詞寫 "stained a flat dry orange-vermilion colour like powdered dye or paint, matte and dry, no liquid, no drips, no wound"。影片已經送出的話，趁還在排隊時按「取消」（會退點），刪掉 `ztcmapdh` 與 `ztcidh` 裡的那一筆，把鏡頭移到 `dhq` 最前面，讓驅動用新首格重送 |
 | 手多了一隻（第 7 集孫掌櫃） | 生成瑕疵 | 看 `sheet.png` 抓。重畫首格時提示詞加 "exactly two arms and two hands"，存成 t2，再重拍片段 |
 | 角色聲音太像、女角聽起來像男生 | 聲音挑錯 | 先錄樣本給站主聽，確認後才整季重錄。Gacrux 是女聲 |
 | `rm` 帶變數路徑被安全檢查擋下 | 防誤刪 | 寫成 `"${W:?}/${id:?}.wav"` |
@@ -103,6 +104,32 @@ await __v3zt.sleep(15000); [__wd(), __dhq.log.slice(-2).join('\n'), __dhq.clipsd
 | `python -I` 印中文出錯 | Windows 主控台 cp1252 | 直接寫成 UTF-8 檔案，不要印到 stdout |
 | 匯入後台只上傳 720p 預覽 | `tools/video/cli.mjs import` 的設計 | YouTube 由站主在 Studio 手動上傳，多語音軌也只能在 Studio 手動加 |
 | 後台「漫劇」分頁看不到這些集 | 那個分頁只收站上自動產線的作品，建劇會觸發自動企劃 | 照站主決定用「教學影片」分頁、category `drama` |
+| 分頁連同步的 JS 都逾時、截圖也逾時 | 分頁開太久（卡片列表很長）整頁凍住，重新整理也救不回 | 關掉那個分頁、開新分頁到同一頁重新注入；localStorage 是同源共用，紀錄都還在 |
+| 送出後 log 是 `"fresh":[]`，下一輪又送同一鏡 | 卡片還沒出現在列表就判定沒送成 | 對帳（`reconcile`）通常會在下一輪補上對應；看到沒對應的新卡號就是重複，能取消就取消 |
+| 某鏡送出超過兩小時都沒結果，列表上也找不到 | 早就失敗、失敗卡被擠出列表 | 刪掉那鏡的 `ztcmapdh`／`ztcidh` 對應、`unshift` 回 `dhq` 重送 |
+| 列表外已經做完的片 | 卡片被擠出建立頁的清單 | 不用導頁：`fetch('/zh-Hant/my-work-detail/ai-video/<卡號>')` 的 HTML 裡就有 `moss/prod/<路徑>-0_*.mp4`（無浮水印），組成 `label 2 <路徑>` 給 `fetch-dh.sh` |
+| 組片在某鏡 `Stray % near ''` 失敗 | 系統面板文字有「%」，drawtext 當成展開符號 | assemble-v4 的 drawtext 已加 `expansion=none` |
+| 成片裡手心的染料看起來像血 | 紅色、濕亮、前景失焦 | 能裁就先免費裁掉；要重拍就寫「dry matte orange-vermilion dye powder, no liquid」 |
+| 重拍改過提示詞的鏡，驅動說 `already` 不送 | 舊卡還在列表上，reconcile 用最長前綴把舊卡對到同一個 label | 把舊卡在 `ztcmapdh` 改成 `x:old-<label>`，直接 `__oneOrig(id)` 送，再把新卡號手寫進 `ztcmapdh` |
+| 兩鏡提示詞一字不差（例：e24 s15 與 e15 s11），一直重送 | reconcile 遇到並列的最佳前綴就不對應 | 手寫 `ztcmapdh`；寫分鏡時避免完全相同的反應鏡描述 |
+| 舊集數重拍找不到首格網址 | 換帳號或清掉 localStorage 後 `zturls` 沒了，只有早期的 `ff-urls-dh.txt` | 用 `__zt.go('aN-sNN-t5', …)` 重畫首格（`newdl` 會把 `edhN-sNN-t1` 別名指到新圖） |
+| 重拍的片段被舊片蓋掉 | `fetch-dh.sh` 一律存成 `sNN-t1.mp4` | 重拍的片自己 curl 成 `sNN-t2/t5.mp4`；assemble 取排序最後的 take |
+| 成片檢查只看幾格看不出換臉、陌生人、低領 | 縮圖太小 | 每鏡取 35%／80% 兩格做檢查圖，分給子代理逐鏡比對分鏡與定妝照，可疑的再抽大圖 |
+| 新帳號的 localStorage 是空的，`__wd`／`__lost`／`__dups`／`__rec` 都不見了 | 這些 helper 以前只存在頁面裡 | 已收進 `H/hailuo-dh-loop.js`（`localStorage.zteps` 設這批集數）；舊帳號 CDN 上的參考圖新帳號照樣抓得到，`refs-dh-urls.json` 直接沿用 |
+| 新帳號影片頁選不到「自動」比例 | 還沒上傳圖時「自動」的 onClick 是空的 | 直接選 16:9（首格本來就是 16:9） |
+| 女角的領口還是低、或立領下是透紗 | 固定外貌只寫 ruqun，模型畫成齊胸襦裙 | 外貌寫明「high stand-up mandarin collar fastened at the throat … thick opaque silk with nothing sheer」；首格整批出來先抽女角近景看領口 |
+| 重拍的片段一直被對回舊卡 | 提示詞跟舊卡一樣，reconcile 照前綴把舊卡對回原鏡 | 在頁面 `ztmiddhN` 那鏡的 `[Shot 1] ` 後面加一句開頭（例如服裝、道具的說明），重算前 16 碼 sha；舊卡改 `x:old-`，刪 `ztdlc`／`ztcidh`／`__sentAt` 的那筆，本機舊檔移到 `clips/old/` |
+| 失敗卡（狀態 3、5）讓那鏡永遠不重送 | 失敗卡也帶原提示詞，reconcile 把它對回原鏡 | `hailuo-dh-loop.js` 包了 reconcile：失敗卡自動改 `x:fail-` 並放回佇列 |
+| 首格與片段排隊互卡、送出常常 `fresh:[]` | 圖片與影片共用約 10–16 個同時進行的上限 | 正常；驅動失敗後的等待在頁面改短（8 秒＋重新整理＋4 秒），送得比較快。一批五集約 7–8 小時 |
+| 影片頁跑約 1.5–2 小時後點數不再變、log 出現 abort | 上傳無聲卡死 | 重新整理後一行 `await eval(localStorage.ztrebootsrc)` 重建（模式、4s、16:9、縮短的等待、`__st`／`__dl`／`__p`） |
+| 借用的音效庫被別的製作刪掉，組片時 `ENOENT …sound-library` | 音效庫在《偶的江湖》工作區 | `bash H/local/sfx-synth.sh` 合成本劇自己的音效到 `<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx`，剪輯表 `sfx_dirs` 指過去 |
+| 封條、紙張上的紅色印記被看成血；帳本特寫出現看得懂的假字 | 模型自己加紅印、寫字 | 提示詞寫「plain clean white paper … no red marks, no stamps」「tiny abstract ink dashes … no recognisable characters」 |
+| 改了角色外貌文字，重畫的圖還是露胸 | 參考立繪本身就是那套衣服，模型照圖不照字 | 先重畫參考立繪（同一張臉、新服裝，用舊立繪當參考圖），產生器改參考新立繪，再重畫鏡頭 |
+| 標成 `visual: "still"` 的鏡只重畫首幀，成片沒變 | 3D 版成片那幾鏡其實用片段（`final.log` 寫 `sNN-t1.mp4`） | 重做前先看 `final.log` 用的是 `.mp4` 還是 `.png`；用片段的鏡要一起補拍 |
+| 兩個圖片分頁同時畫，畫出重複的圖 | 兩邊跑同一份清單 | 清單照參考圖排序後切成兩半，各跑一半（`hailuo-dh-redo.js` 的 `__redoSplit`） |
+| 隱藏的圖片分頁跑一陣子後不再前進，log 沒有新的 OK | 背景分頁的計時器被節流到停住 | 把那個分頁的 `__ztstop` 設成 true，重新載入後再 `drive` 剩下的 |
+| 修「像血的紅手」，染料畫到不該染的人手上 | 提示詞只寫「手上的染料」，沒說是誰的手 | 指名誰的手乾淨、誰的手有乾的霧面橘色染料 |
+| 重拍舊集數的片早就算好，卻一直沒被收回 | `__lost()` 只看 `zteps` 目前批次的集數，舊集數的卡掉出清單時不會列出 | 送出超過一小時還沒回的重拍，直接 `await __rec(["c:aN-sNN", ...])` 從詳情頁撈 |
 
 ## 六、收工
 

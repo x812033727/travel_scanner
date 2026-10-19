@@ -5,10 +5,11 @@
 // passes one route's check does not fail the other's.
 import { cadenceProblems } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
-import { curioProblems } from "./curio.mjs";
+import { curioProblems, curioWarnings, isCurio } from "./curio.mjs";
 import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
-import { isNarrated, narrativeProblems } from "./narrative.mjs";
+import { DEFAULT_CADENCE, isNarrated, narrativeProblems, TIGHT_CADENCE } from "./narrative.mjs";
+import { isA01CompactStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { isStory, storyProblems } from "./story.mjs";
@@ -470,11 +471,12 @@ export function lintVideo(doc, context = {}) {
     else warn("scenes", `${problem} (estimated; the real check runs on the synthesized timeline)`);
   }
   const minutes = frameToSeconds(timeline.total_frames) / 60;
+  const episodeLengthForNarrative = minutes >= MIN_EPISODE_MINUTES || isA01CompactStory(doc);
   const opening = chapters[0]?.seconds;
   // A brand story is narrated and opens on the condensation even when its pictures have a cast.
   if (opening !== undefined && hasCast(doc) && !isStory(context.series)) {
     if (opening > DRAMA_HOOK_SECONDS) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; the hook should land within ${DRAMA_HOOK_SECONDS} s`);
-  } else if (opening !== undefined && !isCompilation(doc) && minutes >= MIN_EPISODE_MINUTES) {
+  } else if (opening !== undefined && !isCompilation(doc) && episodeLengthForNarrative) {
     // Read on an episode only, as episodeScriptProblems is: the examples run seconds.
     const [shortest, longest] = OPENING_CHAPTER_SECONDS;
     if (opening < shortest || opening > longest) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; it is the condensation, ${shortest} to ${longest} s before the first real chapter: one scene of the story told in order up to the first fact that makes no sense, ending on the question the whole video answers (script-writing.md §開場濃縮)`);
@@ -492,20 +494,25 @@ export function lintVideo(doc, context = {}) {
   else if (minutes < low || (minutes > high && !needsMinimumLength(doc))) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
   // The script's shape (episodeScriptProblems) and its storytelling (core/narrative.mjs) are read
   // on an episode: a narrated zh-TW video (slides, an explainer, a brand story; isNarrated) of
-  // MIN_EPISODE_MINUTES or more, the constant and not the floor a fixture runner relaxes (the
-  // examples run seconds and show the templates' shape, not a script's). A draft under the floor
-  // is already sent back to be written longer; a drama with a cast keeps its own craft; the
+  // MIN_EPISODE_MINUTES or more, or the exact A01 compact story at any draft estimate. The
+  // threshold is not the floor a fixture runner relaxes (the
+  // examples run seconds and show the templates' shape, not a script's). A short A01 draft also
+  // receives its target warning; a drama with a cast keeps its own craft; the
   // phrases are zh-TW. An explainer's outro card carries the subscribe line alone (its comment
   // question sits on the shot before it), so its sentence count is not read.
-  if (isNarrated(doc, context.series) && !english && minutes >= MIN_EPISODE_MINUTES) {
+  if (isNarrated(doc, context.series) && !english && episodeLengthForNarrative) {
     for (const problem of episodeScriptProblems(doc, timeline, { outroCount: !isExplainer(doc) })) warn(problem.path, problem.message);
-    const story = narrativeProblems(doc, timeline, { minutes });
+    // A brand story and a 奇聞檔案局 episode are held by the narration alone, so they keep a hook
+    // inside every 45 s and plant eight loops for ten minutes (narrative.mjs TIGHT_CADENCE).
+    const cadence = isStory(context.series) || isCurio(doc) ? TIGHT_CADENCE : DEFAULT_CADENCE;
+    const story = narrativeProblems(doc, timeline, { minutes, cadence });
     for (const problem of story.errors) error(problem.path, problem.message, problem.kind);
     for (const problem of story.warnings) warn(problem.path, problem.message, problem.kind);
   }
   // A 奇聞檔案局 episode (a "curio-" slug) keeps the series look: the cute-mystery preset word for
   // word, illustrations for most of the body, no long run of cards (core/curio.mjs).
   for (const problem of curioProblems(doc)) error(problem.path, problem.message);
+  for (const problem of curioWarnings(doc)) warn(problem.path, problem.message);
   if (isLongAnime(doc)) {
     const target = doc.runtime_spec.body_target_seconds;
     const seconds = frameToSeconds(timeline.total_frames);
