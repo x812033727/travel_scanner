@@ -30,6 +30,7 @@ from app.video_automation.ai import NO_MODEL_CALL_ERRORS, prepare_stage, run_sta
 from app.video_automation.errors import StageFailed
 from app.video_automation.models import VideoStageJob, utcnow
 from app.video_automation.schemas import StageJobIn, StageJobOut, StageRunIn, StageRunOut
+from app.video_budget.service import A01_ADMISSION_SLUG, BudgetError, assert_a01_admission_open
 
 QUEUE_NAME = "video-ai"
 JOB_TIMEOUT_SECONDS = 1_200
@@ -100,9 +101,25 @@ def _schedule(job_id: UUID, *, queued: bool) -> str | None:
         connection.close()
 
 
+async def _queue_admission_open(session: AsyncSession, slug: str) -> bool:
+    """Hold A01's budget row until the queued receipt or enqueue decision is made."""
+    try:
+        await assert_a01_admission_open(session, slug=slug)
+    except BudgetError as error:
+        if error.code == "video_budget_admission_held":
+            return False
+        raise StageFailed(error.status, error.code, error.detail) from error
+    return True
+
+
 async def _reconcile(session: AsyncSession, job: VideoStageJob) -> StageJobOut:
     if job.status in TERMINAL_STATUSES:
         return _view(job)
+    if job.status == "queued" and job.request_json.get("slug") == A01_ADMISSION_SLUG:
+        # A reconnect or poll can enqueue a committed, previously disconnected job.
+        # Keep the receipt readable during adoption without scheduling that work.
+        if not await _queue_admission_open(session, A01_ADMISSION_SLUG):
+            return _view(job)
     try:
         state = await asyncio.to_thread(_schedule, job.id, queued=job.status == "queued")
     except RedisError as error:
@@ -197,6 +214,10 @@ async def submit_job(session: AsyncSession, request: StageJobIn, token_id: UUID)
     row = await service.settings_row(session)
     runtime = await load_runtime_settings(session)
     provider, model, _, _ = await prepare_stage(session, runtime, row, body)
+    # The queued row and this check commit in one transaction. Adoption takes the
+    # same account lock and therefore cannot arm between the check and insertion.
+    if not await _queue_admission_open(session, body.slug):
+        raise StageFailed(409, "video_budget_admission_held", "A01 來源匯入期間不會建立寫稿工作")
     await service.remember_prompt(session, body)
     job = VideoStageJob(
         id=uuid4(),
@@ -332,14 +353,25 @@ async def recover_pending() -> int:
     """
     try:
         async with SessionFactory() as session:
-            ids = list(
-                await session.scalars(
-                    select(VideoStageJob.id).where(VideoStageJob.status == "queued")
-                )
+            jobs = list(
+                await session.scalars(select(VideoStageJob).where(VideoStageJob.status == "queued"))
             )
-        for job_id in ids:
-            await asyncio.to_thread(_schedule, job_id, queued=True)
-        return len(ids)
+        scheduled = 0
+        for job in jobs:
+            if job.request_json.get("slug") == A01_ADMISSION_SLUG:
+                async with SessionFactory() as session:
+                    current = await session.get(VideoStageJob, job.id)
+                    if current is None or current.status != "queued":
+                        continue
+                    if not await _queue_admission_open(session, A01_ADMISSION_SLUG):
+                        continue
+                    # Retain the account lock through enqueue. The eventual worker
+                    # still checks the fence before its durable dispatch marker.
+                    await asyncio.to_thread(_schedule, job.id, queued=True)
+            else:
+                await asyncio.to_thread(_schedule, job.id, queued=True)
+            scheduled += 1
+        return scheduled
     finally:
         # No pooled database connection may cross RQ's fork boundary.
         await engine.dispose()

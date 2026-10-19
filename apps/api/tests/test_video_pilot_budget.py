@@ -126,6 +126,63 @@ async def _unlocked(_: object) -> bool:
 
 
 @pytest.mark.asyncio
+async def test_a01_precompatible_dispatches_on_0133_without_admission_column(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    async with sessions() as session:
+        connection = await session.connection()
+        assert not await connection.run_sync(service._has_admission_column)
+        await service.assert_a01_admission_open(session, slug=V2_SLUG)
+        await session.rollback()
+    allowed = await _reserve(sessions, "0133-no-column", "1", slug=V2_SLUG)
+    assert allowed is not None and allowed.dispatch_allowed
+
+
+@pytest.mark.asyncio
+async def test_a01_precompatible_dispatches_check_optional_0134_token_column(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    token = str(uuid4())
+    async with sessions() as session:
+        await session.execute(
+            sa.text("ALTER TABLE video_pilot_budgets ADD COLUMN admission_token VARCHAR(36)")
+        )
+        await session.execute(
+            sa.text(
+                "UPDATE video_pilot_budgets SET admission_token=:token WHERE slug=:slug"
+            ),
+            {"slug": V2_SLUG, "token": token},
+        )
+        await session.commit()
+    async with sessions() as session:
+        connection = await session.connection()
+        assert await connection.run_sync(service._has_admission_column)
+        with pytest.raises(AppError) as blocked_stage:
+            await service.assert_a01_admission_open(session, slug=V2_SLUG)
+        await session.rollback()
+    assert blocked_stage.value.code == "video_budget_admission_held"
+    with pytest.raises(AppError) as blocked_reservation:
+        await _reserve(sessions, "0134-held", "1", slug=V2_SLUG)
+    assert blocked_reservation.value.code == "video_budget_admission_held"
+    # The optional column on one account leaves other stories unchanged.
+    other = await _reserve(sessions, "0134-other-story", "1", slug=OTHER_SLUG)
+    assert other is not None and other.dispatch_allowed
+    async with sessions() as session:
+        await session.execute(
+            sa.text(
+                "UPDATE video_pilot_budgets SET admission_token=NULL WHERE slug=:slug"
+            ),
+            {"slug": V2_SLUG},
+        )
+        await session.commit()
+    async with sessions() as session:
+        await service.assert_a01_admission_open(session, slug=V2_SLUG)
+        await session.rollback()
+    allowed = await _reserve(sessions, "0134-null", "1", slug=V2_SLUG)
+    assert allowed is not None and allowed.dispatch_allowed
+
+
+@pytest.mark.asyncio
 async def test_cross_stage_reservations_hold_exactly_at_boundary(
     sessions: async_sessionmaker[AsyncSession],
 ) -> None:
@@ -825,5 +882,94 @@ async def test_postgres_row_lock_prevents_concurrent_over_reservation() -> None:
                         VideoPilotBudgetOperation.slug == slug
                     )
                 )
+        finally:
+            await postgres_engine.dispose()
+
+
+@pytest.mark.skipif(os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL")
+@pytest.mark.asyncio
+async def test_postgres_precompatible_fence_serializes_both_dispatch_routes() -> None:
+    """A 0133 image still reads a newly added 0134 token under its account lock."""
+    sessions = async_sessionmaker(postgres_engine, expire_on_commit=False)
+    operation_id = f"a01-precompat-race-{uuid4()}"
+    async with postgres_engine.begin() as connection:
+        had_column = await connection.run_sync(service._has_admission_column)
+        if not had_column:
+            await connection.execute(
+                sa.text(
+                    "ALTER TABLE video_pilot_budgets ADD COLUMN admission_token UUID"
+                )
+            )
+        await connection.execute(
+            sa.text(
+                "INSERT INTO video_pilot_budgets (slug, limit_usd) VALUES (:slug, 25) "
+                "ON CONFLICT (slug) DO UPDATE SET admission_token=NULL"
+            ),
+            {"slug": V2_SLUG},
+        )
+
+    async def reserve_contender() -> str:
+        async with sessions() as session:
+            try:
+                await service.reserve(
+                    session, slug=V2_SLUG, operation_id=operation_id,
+                    category="image", provider="minimax", model="image-01",
+                    max_usd=Decimal("1"),
+                )
+            except AppError as error:
+                return error.code
+            return "dispatched"
+
+    async def text_contender() -> str:
+        async with sessions() as session:
+            try:
+                await service.assert_a01_admission_open(session, slug=V2_SLUG)
+            except AppError as error:
+                await session.rollback()
+                return error.code
+            await session.commit()
+            return "dispatched"
+
+    tasks: list[asyncio.Task[str]] = []
+    try:
+        async with sessions() as holder:
+            account = await holder.scalar(
+                sa.select(VideoPilotBudget)
+                .where(VideoPilotBudget.slug == V2_SLUG)
+                .with_for_update()
+            )
+            assert account is not None
+            await holder.execute(
+                sa.text(
+                    "UPDATE video_pilot_budgets SET admission_token=CAST(:token AS uuid) "
+                    "WHERE slug=:slug"
+                ),
+                {"token": str(uuid4()), "slug": V2_SLUG},
+            )
+            tasks = [
+                asyncio.create_task(reserve_contender()),
+                asyncio.create_task(text_contender()),
+            ]
+            await asyncio.sleep(0.1)
+            assert all(not task.done() for task in tasks)
+            await holder.commit()
+            assert await asyncio.gather(*tasks) == [
+                "video_budget_admission_held", "video_budget_admission_held"
+            ]
+    finally:
+        if tasks:
+            await asyncio.gather(*tasks, return_exceptions=True)
+        try:
+            async with postgres_engine.begin() as connection:
+                await connection.execute(
+                    sa.text(
+                        "UPDATE video_pilot_budgets SET admission_token=NULL WHERE slug=:slug"
+                    ),
+                    {"slug": V2_SLUG},
+                )
+                if not had_column:
+                    await connection.execute(
+                        sa.text("ALTER TABLE video_pilot_budgets DROP COLUMN admission_token")
+                    )
         finally:
             await postgres_engine.dispose()

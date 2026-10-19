@@ -44,7 +44,7 @@ from app.video_automation.usage import (
     slug_has_draft,
     usage_view,
 )
-from app.video_budget.service import is_pilot
+from app.video_budget.service import BudgetError, assert_a01_admission_open, is_pilot
 from app.video_shorts.models import VideoShortsSettings
 
 __all__ = ["StageFailed", "run_stage", "stage_choice", "subject_choice"]
@@ -279,6 +279,13 @@ async def run_stage(
             )
         if dropped_at is not None:
             raise StageFailed(409, "video_ai_project_dropped", "影片已由站主停止，不會送出模型請求")
+        # Join the exact budget-row lock used by A01 source adoption and paid-media
+        # reservations. The dispatch marker below commits that same transaction,
+        # so an adopter cannot insert its token between this check and dispatch.
+        try:
+            await assert_a01_admission_open(session, slug=request.slug)
+        except BudgetError as error:
+            raise StageFailed(error.status, error.code, error.detail) from error
         # Commit the dispatch boundary before contacting the model. A process dying after
         # this point cannot prove that no paid operation ran and must never retry it.
         dispatched = await session.scalar(

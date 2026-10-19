@@ -33,6 +33,7 @@ from app.video_automation.models import (
     VideoStageJob,
 )
 from app.video_automation.schemas import StageRunIn, UsageView
+from app.video_budget.service import BudgetError
 from app.video_shorts.models import VideoShortsSettings
 from app.video_speech import admin_api as speech_api
 
@@ -385,6 +386,33 @@ async def test_a_durable_job_whose_account_cannot_authenticate_fails_without_a_c
     # worker asks again, rather than "uncertain", which waits for the owner to retry by hand.
     assert "video_ai_subscription_auth_failed" in ai.NO_MODEL_CALL_ERRORS
     assert "video_ai_subscription_auth_failed" in ai.SUBSCRIPTION_RAN_NOTHING
+
+
+@pytest.mark.asyncio
+async def test_a01_admission_refuses_durable_text_dispatch_before_model_contact(
+    stage: dict[str, Any], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    blocker = AsyncMock(
+        side_effect=BudgetError(409, "video_budget_admission_held", "A01 adoption is active")
+    )
+    model = AsyncMock()
+    monkeypatch.setattr(ai, "assert_a01_admission_open", blocker)
+    monkeypatch.setattr(ai, "run_on_subscription", model)
+    monkeypatch.delenv("VIDEO_STAGE_STOP_FILE", raising=False)
+    session = _session()
+    session.scalar = AsyncMock(return_value=None)  # the project is not dropped
+    job = VideoStageJob(
+        id=uuid4(), status="running", provider="claude_code", model="claude-opus-5-5"
+    )
+    row = VideoAutomationSettings(stage_models={}, enabled=True)
+    request = _request("writer", "story-rolling-suitcase-v2")
+    with pytest.raises(ai.StageFailed) as refused:
+        await ai.run_stage(session, AGENT, row, request, None, job=job)
+    assert refused.value.code == "video_budget_admission_held"
+    blocker.assert_awaited_once_with(session, slug=request.slug)
+    model.assert_not_awaited()
+    session.commit.assert_not_awaited()
+    session.add.assert_not_called()
 
 
 def test_the_month_starts_on_the_first_in_utc_and_budgets_name_the_limit() -> None:
