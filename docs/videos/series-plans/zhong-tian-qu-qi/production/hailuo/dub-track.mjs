@@ -2,11 +2,13 @@
 // Chinese line starts in the zh-TW cut and must end before the next line starts, so the picture,
 // its timing and every later line stay where they are. A line longer than its slot is sped up
 // (atempo up to MAX_TEMPO); one that still does not fit stops the build with the lines to
-// shorten, unless FORCE=1, which cuts it at the slot's end with a short fade.
+// shorten, unless dub-force.json lists it for the locale or FORCE=1 is set, which cuts it at the
+// slot's end with a short fade.
 //   slot end = min(next line's start - 0.06 s, its own shot's end + SPILL, the cut's end)
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 export const MAX_TEMPO = Number(process.env.DUB_MAX_TEMPO ?? 1.3);
 const BEFORE_NEXT = 0.06, SPILL = 0.5, END = 0.05;
@@ -53,9 +55,14 @@ export function dubDialogue({ locale, videoFile, work, segDir, lineAt, starts, t
     srt.push({ start: l.start, end: l.start + len, text });
     fit.push({ id: l.id, speaker: l.speaker, start: +l.start.toFixed(3), zh: +l.len.toFixed(3), slot: +slot.toFixed(3), raw: +raw.toFixed(3), tempo: +tempo.toFixed(3), len: +len.toFixed(3), status, text });
   });
-  if (over.length && process.env.FORCE !== "1") {
-    const say = over.map((o) => `${o.id} ${o.speaker}: ${o.raw.toFixed(2)} s in a ${o.slot.toFixed(2)} s slot (zh ${o.zh.toFixed(2)} s) needs ${o.tempo.toFixed(2)}x; shorten to about ${Math.floor(o.chars * MAX_TEMPO * o.slot / o.raw)} characters: ${o.text}`);
-    throw new Error(`${over.length} ${locale} line(s) do not fit even at ${MAX_TEMPO}x:\n${say.join("\n")}`);
+  // dub-force.json: { "<locale>": ["<line id>", ...] } — lines whose take only loses a trailing
+  // laugh or breath when cut, so a rebuild (or a compilation) needs no FORCE=1.
+  const forceFile = path.join(path.dirname(fileURLToPath(import.meta.url)), "dub-force.json");
+  const forced = existsSync(forceFile) ? JSON.parse(readFileSync(forceFile, "utf8"))[locale] ?? [] : [];
+  const stop = over.filter((o) => !forced.includes(o.id));
+  if (stop.length && process.env.FORCE !== "1") {
+    const say = stop.map((o) => `${o.id} ${o.speaker}: ${o.raw.toFixed(2)} s in a ${o.slot.toFixed(2)} s slot (zh ${o.zh.toFixed(2)} s) needs ${o.tempo.toFixed(2)}x; shorten to about ${Math.floor(o.chars * MAX_TEMPO * o.slot / o.raw)} characters: ${o.text}`);
+    throw new Error(`${stop.length} ${locale} line(s) do not fit even at ${MAX_TEMPO}x:\n${say.join("\n")}`);
   }
   // One pass: every line delayed to its start on a silent bed exactly as long as the cut.
   const dialogue = path.join(dir, "dialogue.wav");
