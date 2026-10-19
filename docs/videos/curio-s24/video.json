@@ -44,8 +44,8 @@
     },
     {
       "setup": "ac007",
-      "payoff": "ac090",
-      "what": "維特魯威寫下喊聲，但無現場證實"
+      "payoff": "ac101",
+      "what": "維特魯威留下兩聲希臘字，但缺當場或接近當時的獨立見證"
     },
     {
       "setup": "ac008",
@@ -159,12 +159,17 @@
   "sources": [
     {
       "title": "Vitruvius, De architectura, Book IX preface 9–12, English translation",
-      "url": "https://github.com/GITenberg/The-Ten-Books-on-Architecture/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt",
+      "url": "https://github.com/GITenberg/The-Ten-Books-on-Architecture_20239/blob/67fd1f31ae255b0f32efe423a950203d9b25bbe8/20239.txt",
       "checked_on": "2026-10-19"
     },
     {
       "title": "Vitruvius, De architectura, Book IX preface 9–12, Latin text",
-      "url": "https://github.com/GITenberg/Vitruvii-De-architectura-libri-decem/blob/78eb1eed88044d5cac42a3dd811d5806e4e04cfb/51812-0.txt",
+      "url": "https://github.com/GITenberg/Vitruvii-De-architectura-libri-decem_51812/blob/78eb1eed88044d5cac42a3dd811d5806e4e04cfb/51812-0.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Plutarch, Life of Marcellus, Hiero and Archimedes passage, English translation",
+      "url": "https://github.com/GITenberg/Plutarch-Lives-of-the-noble-Grecians-and-Romans_674/blob/6aea7c6d83ee3596f9106d2d832d705aa4ed4620/674.txt#L19090-L19131",
       "checked_on": "2026-10-19"
     }
   ],
@@ -271,7 +276,7 @@
       "id": "crown-007",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a stone bathhouse, one bather hurrying behind a tall folding screen, bare shoulders visible, muted doorway light",
+        "prompt": "Wide shot along a quiet stone street outside an ancient bathhouse, one bather running toward a distant house with bare shoulders visible above a foreground wall, mouth open as if calling, soft overcast light",
         "camera": "push in",
         "visual": "still"
       },
@@ -584,7 +589,7 @@
       "id": "crown-030",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a stone bathhouse, one bather hurrying behind a tall folding screen, bare shoulders visible, soft indoor light",
+        "prompt": "Medium shot on a stone street beyond the bathhouse gate, one bather hurrying toward a distant house, framed from bare shoulders up behind a foreground wall, muted daylight",
         "camera": "pan right",
         "visual": "still"
       },
@@ -600,7 +605,7 @@
       "id": "crown-031",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a stone bathhouse, one bather calling out behind a tall folding screen, soft window light",
+        "prompt": "Wide shot along a quiet stone street outside a bathhouse, one bather running home with bare shoulders visible above a foreground wall, mouth open as he calls, soft overcast light",
         "camera": "push in",
         "visual": "still"
       },
@@ -616,7 +621,7 @@
       "id": "crown-032",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a stone bathhouse, one investigator staring at a dry golden crown on a bathhouse bench, diffuse light from a cloudy sky",
+        "prompt": "Medium shot in a stone bathhouse, one bather staring at a puddle beside the bath rim, an empty bench behind him, diffuse window light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -631,7 +636,7 @@
       "id": "crown-ab005",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a stone bathhouse, one mathematician looking from a bath to a dry crown on a bench, soft window light",
+        "prompt": "Medium shot in a stone bathhouse, one mathematician studying the spilled water beside an empty bench, soft window light",
         "camera": "drift",
         "visual": "still"
       },
@@ -646,7 +651,7 @@
       "id": "crown-033",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a stone bathhouse, one experimenter studying ripples beside the crown, soft indoor light",
+        "prompt": "Close shot in a stone bathhouse, one mathematician watching ripples with an excited face, soft indoor light",
         "camera": "pull out",
         "visual": "still"
       },
@@ -785,6 +790,22 @@
       ]
     },
     {
+      "id": "crown-r2-017",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone test chamber, one experimenter peering at a plain vessel with water below its rim, soft indoor light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar201",
+          "text": "若每輪不是從同一條盆緣出發，補回的水就混進起點差；金銀等重，還能公平比嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
       "id": "crown-ab007",
       "template": "shot",
       "data": {
@@ -862,6 +883,22 @@
       ]
     },
     {
+      "id": "crown-r2-018",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a metalworking workshop, one investigator lowering a silver mass fully beneath the surface of a broad water vessel, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar202",
+          "text": "銀塊要整個沒入水下；露在外面的那一截不曾占住水的位置，自然不能算進這一輪。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
       "id": "crown-046",
       "template": "shot",
       "data": {
@@ -890,6 +927,22 @@
           "id": "ac047",
           "text": "銀塊取出後，他用一個定量量器補水，直到水重新到盆緣。",
           "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-r2-019",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a stone test chamber, one experimenter measuring the gap between waterline and vessel rim with a plain cup, soft indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar203",
+          "text": "銀塊取出後，水面才空出一截；量器補的是那截水位，並不是把銀塊拿去做第二次稱重。",
+          "emotion": "自然說故事"
         }
       ]
     },
@@ -937,6 +990,22 @@
           "id": "ac051",
           "text": "換純金塊入水之前，容器也得先回到同一條滿水線。",
           "emotion": "關鍵詞放慢，句尾稍停"
+        }
+      ]
+    },
+    {
+      "id": "crown-r2-020",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a stone test chamber, one experimenter setting a gold mass beside a brim-full vessel while a silver mass rests on the table, soft indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar204",
+          "text": "金塊沿用同一只容器、同一條盆緣；把銀換成金以後，水量的變化才有共同的尺。",
+          "emotion": "自然說故事"
         }
       ]
     },
@@ -1038,7 +1107,7 @@
       "id": "crown-ab011",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in an open stone terrace, one investigator tracing a curved crown outline beside a plain vessel, mild overcast light",
+        "prompt": "Medium shot in a stone test chamber, one investigator holding a curved golden crown up beside a plain full vessel, mild overcast light",
         "camera": "drift",
         "visual": "still"
       },
@@ -1061,6 +1130,22 @@
         {
           "id": "ac059",
           "text": "他再次把容器裝到同一滿水線。"
+        }
+      ]
+    },
+    {
+      "id": "crown-r2-021",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a metalworking workshop, one investigator holding a curved golden crown just above the waterline of a broad full vessel, muted doorway light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar205",
+          "text": "皇冠也得整頂沒入水下；只浸一半會少算另一半，而它彎曲的輪廓不必先被拉成直線。",
+          "emotion": "自然說故事"
         }
       ]
     },
@@ -1370,7 +1455,7 @@
       "id": "crown-082",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a present-day library, one reader opening an old book beside a blank note card, soft desk lamp light",
+        "prompt": "Wide shot in a Roman writing study, one ancient writer studying a small marble bust of an earlier Greek scholar beside a wax tablet, soft lamplight",
         "camera": "drift",
         "visual": "still"
       },
@@ -1382,10 +1467,26 @@
       ]
     },
     {
+      "id": "crown-r2-022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Roman writing study, one ancient writer selecting a blank scroll from a small stack, diffuse window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar206",
+          "text": "維特魯威在第九卷序言講金冠，稱讚阿基米德的巧思；浴場日期與記錄人卻沒留下。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
       "id": "crown-083",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a present-day library, one reader holding an old page with a blank central space, soft window light",
+        "prompt": "Medium shot in a Roman writing study, one ancient writer unrolling a blank scroll beneath a small lamp, soft indoor light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1401,7 +1502,7 @@
       "id": "crown-084",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a quiet archive library, one reader pointing at a blank line on the old page, muted doorway light",
+        "prompt": "Close shot on a quiet stone street, one bather calling with an excited face and bare shoulders visible above a foreground wall, muted daylight",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1448,7 +1549,7 @@
       "id": "crown-087",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a present-day library, one reader closing one of two blank editions, diffuse light from a cloudy sky",
+        "prompt": "Close shot at a translator desk, one present-day translator placing a fresh blank sheet beside an older unlettered scroll, soft window light",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1477,17 +1578,33 @@
       ]
     },
     {
+      "id": "crown-r2-023",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet archive, one present-day researcher comparing two unlettered paragraph sheets under a desk lamp, soft light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar207",
+          "text": "「據說」落在製作兩塊金屬那句，並不在前面奔跑喊話那句；兩段不能混成同一個說法。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
       "id": "crown-089",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a present-day library, one reader examining an empty margin beside a blank paragraph, muted doorway light",
+        "prompt": "Wide shot of a quiet ancient stone street outside a simple bathhouse doorway, the only shapes are the doorway, paving stones and pale sky, soft overcast light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ac089",
-          "text": "他也沒有交代街上誰聽見那聲喊。"
+          "text": "維特魯威沒有交代，他從哪位當時在場的人得知這段奔跑喊話。"
         }
       ]
     },
@@ -1495,7 +1612,7 @@
       "id": "crown-ap001",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a present-day library, one reader opening a second old book beside a blank note card, soft window light",
+        "prompt": "Medium shot in an ancient Greek writing room, one elderly author opening a blank scroll beside a small oil lamp, soft light",
         "camera": "push in",
         "visual": "still"
       },
@@ -1511,7 +1628,7 @@
       "id": "crown-ap002",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a present-day library, one reader pointing to a blank diagram beside the open book, soft desk lamp light",
+        "prompt": "Close shot in an ancient Greek workshop, one mathematician holding a plain wooden pulley model beside a small gear, soft indoor light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1524,17 +1641,33 @@
       ]
     },
     {
+      "id": "crown-r2-024",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an ancient stone harbor, one mathematician seated far from a heavy cargo ship while drawing a rope through a plain pulley, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar208",
+          "text": "普魯塔克又寫阿基米德以滑輪拖船；那是機械故事，並沒有回到金冠浴盆。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
       "id": "crown-ap003",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a present-day library, one researcher comparing two blank book pages on a table, muted doorway light",
+        "prompt": "Wide shot at an ancient stone harbor, one mathematician seated at a distance from a heavy cargo ship and holding a plain pulley rope, overcast light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ap003",
-          "text": "但那一段沒有金冠、浴盆，也沒有路上的喊聲。",
+          "text": "但他有沒有提到金冠、浴盆，或路上那聲喊？",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
@@ -1550,7 +1683,7 @@
       "lines": [
         {
           "id": "ap004",
-          "text": "這份沉默不能推翻浴盆故事，也沒補出一位當場目擊者。",
+          "text": "沒有。這份沉默不能推翻浴盆故事，也沒補出一位當場目擊者。",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
@@ -1559,14 +1692,14 @@
       "id": "crown-090",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a quiet archive library, one reader holding a closed book near a quiet street window, soft window light",
+        "prompt": "Medium shot in a Roman writing study, one ancient writer pausing over a blank scroll with a puzzled expression, a plain closed door behind him, soft lamplight",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ac090",
-          "text": "回看開場那聲「找到了」：維特魯威寫過，卻不能證明街上真有人喊過。",
+          "text": "回看開場那聲「找到了」：書頁保住了喊詞，街上那一刻仍少一條能追查的線索。",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
@@ -1582,7 +1715,7 @@
       "lines": [
         {
           "id": "ac091",
-          "text": "同樣，也不能由此斷言故事必然虛構。"
+          "text": "少了線索，也不能反過來斷言阿基米德當天一句都沒說。"
         }
       ]
     },
@@ -1590,7 +1723,7 @@
       "id": "crown-092",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a quiet archive library, one reader placing a blank note beside the book, muted doorway light",
+        "prompt": "Medium shot at a present-day experiment table, one researcher placing three plain metal samples beside a full water vessel, soft window light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1606,7 +1739,7 @@
       "id": "crown-093",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a present-day library, one researcher tracing three blank vessel diagrams, soft desk lamp light",
+        "prompt": "Close shot at a present-day experiment table, one researcher carefully lowering a metal sample into a brim-full vessel, soft desk lamp light",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1622,14 +1755,14 @@
       "id": "crown-096",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a quiet archive library, one reader holding a crown sketch beside a closed book, muted doorway light",
+        "prompt": "Wide shot at a present-day experiment table, one researcher holding a plain old book beside a full vessel and metal samples, soft window light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ac096",
-          "text": "水量的推理可以照著書頁重走；那條街上有沒有那聲喊，仍留在書頁之外。",
+          "text": "方法可以照著書裡的順序檢查；要讓那聲喊也越過書頁，還需要哪一類證詞？",
           "emotion": "關鍵詞放慢，句尾稍停"
         }
       ]
@@ -1647,7 +1780,7 @@
       "lines": [
         {
           "id": "ac101",
-          "text": "維特魯威確實寫下兩聲「找到了」；當場是否真喊，這份記載不能證實。",
+          "text": "缺的是獨立的當場見證；維特魯威寫了兩聲「找到了」，仍不能證實阿基米德真喊。",
           "emotion": "關鍵詞放慢，句尾稍停"
         },
         {
