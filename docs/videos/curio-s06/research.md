@@ -6,11 +6,11 @@
 
 | 代碼 | 原文與定位 | 可說到哪一步 |
 | --- | --- | --- |
-| G | 陳壽《三國志》卷三十六〈關羽傳〉[p4，17 行](https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/036.htm#L17)；[獨立轉錄本第 8 行](https://github.com/alexamies/chinesenotes.com/blob/db32d2a92d4550906d342ff24f61fc300f143367/corpus/sanguozhi/sanguozhi036.txt#L8) | 「羽甞為流矢所中，貫其**左臂**」「醫曰」「羽便伸臂令醫劈之」「割炙引酒，言笑自若」。史書記關羽左臂舊傷、醫生建議刮骨、關羽與諸將飲食；**未記醫生姓名，也未記這次手術年份**。古文作「醫」而非「華佗」，不能從缺名推定醫生一定不是華佗。兩份數位轉錄在關鍵字義一致。 |
-| G-219 | 同書〈關羽傳〉[p5，18 行](https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/036.htm#L18) | 下段另起「二十四年」並記關羽圍樊城，即建安二十四年／219 年。**不能只憑段落先後把上一段無年份的刮骨治傷定在 219 年。** |
+| G | 陳壽《三國志》卷三十六〈關羽傳〉[p4，17 行](https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/036.htm#L17)；[獨立轉錄本第 8 行](https://github.com/alexamies/chinesenotes.com/blob/db32d2a92d4550906d342ff24f61fc300f143367/corpus/sanguozhi/sanguozhi036.txt#L8) | 「羽甞為流矢所中，貫其**左臂**」「醫曰」「羽便伸臂令醫劈之」「臂血流離，盈於盤器」「割炙引酒，言笑自若」。史書沒有指明放箭者、毒物名稱、醫生姓名或這次手術年份；寫關羽與諸將飲食。古文作「醫」而非「華佗」，不能從缺名推定醫生一定不是華佗。兩份數位轉錄在關鍵字義一致。 |
+| G-219 | 同書〈關羽傳〉[p5，18 行](https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/036.htm#L18) | 下段另起「二十四年」並記關羽圍樊城，即建安二十四年／219 年；同段接著寫秋季大雨、漢水暴漲。**不能只憑段落先後，把上一段無年份的刮骨治傷或陰雨舊痛定在這次樊城洪水。** |
 | H | 同書卷二十九〈華佗傳〉[p17，30 行](https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/029.htm#L30) | 曹操囚殺華佗；接著明寫「佗死後」與「及後愛子倉舒病困」，把華佗之死放在曹沖／倉舒之死**以前**，但沒有給華佗精確卒日。固定版全篇未提關羽；傳記缺席不是華佗未曾治過關羽的證明。 |
 | C | 同書卷二十〈鄧哀王沖傳〉[p6，19 行](https://github.com/Ancient-China-Books/sanguozhi/blob/10a0b1ab3019d8821262f7402366d14fb4aaa102/OEBPS/Text/020.htm#L19) | 「鄧哀王沖字倉舒」「年十三，建安十三年疾病……及亡」；曹沖卒於建安十三年／208 年。和 H 合讀，只能說華佗死在曹沖之前。 |
-| N | 羅貫中《三國演義》金聖歎評本第七十五回，[p7–p10，29–39 行](https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/451.html#L29-L39) | 小說把關羽受傷寫在**右臂**、樊城軍中；來者自稱「姓華，名佗，字元化」，並寫關羽與馬良**弈棋**時接受治療；術後華佗拒收百兩謝金、留藥辭別。同版本回前評語稱此幕「烈漢遇良醫」，是評點者說故事的話，不是陳壽的傳記文字。這些是小說敘事，不是《三國志》〈關羽傳〉記載。 |
+| N | 羅貫中《三國演義》金聖歎評本第七十五回，[p7–p10，29–39 行](https://github.com/Ancient-China-Books/sanguoyanyi/blob/761813427eb5685c395804493f9fbd7ad8dc7d8d/OEBPS/Text/451.html#L29-L39) | 小說把關羽受傷寫在**右臂**、樊城軍中；來者自稱來自沛國譙郡，報「姓華，名佗，字元化」，並寫關羽與馬良**弈棋**時接受治療，小校捧大盆接血；原文沒有描出棋盤或棋子的具體樣子。術後華佗拒收百兩謝金、留藥辭別。同版本回前評語稱此幕「烈漢遇良醫」，是評點者說故事的話，不是陳壽的傳記文字。這些是小說敘事，不是《三國志》〈關羽傳〉記載。 |
 
 ## 安全的核心判讀
 

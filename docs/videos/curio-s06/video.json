@@ -134,7 +134,7 @@
     },
     {
       "setup": "gs069",
-      "payoff": "gs070",
+      "payoff": "gs071",
       "what": "小說名醫的關鍵究竟是姓氏還是安放年份"
     },
     {
@@ -146,6 +146,11 @@
       "setup": "gs115",
       "payoff": "gs051",
       "what": "哪位孩子讓曹操後悔殺華佗"
+    },
+    {
+      "setup": "gs117",
+      "payoff": "gs119",
+      "what": "小說與史書接血的盆器如何相似但仍屬不同敘事"
     }
   ],
   "youtube": {
@@ -205,7 +210,7 @@
       "id": "gs001",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot an ancient Chinese physician entering a military tent while a general sits at a simple ancient game board with plain stones inside, muted lamplight",
+        "prompt": "Wide shot an ancient Chinese physician arriving outside a military tent while a general and a scholar sit at a simple ancient game board with plain stones inside, muted lamplight",
         "camera": "push in",
         "visual": "still"
       },
@@ -326,7 +331,7 @@
       "lines": [
         {
           "id": "gs008",
-          "text": "小說說箭頭帶藥，箭拔出後右臂青腫，甚至不能自由活動。",
+          "text": "小說接著說箭頭帶藥，剛受傷的那隻手臂青腫，甚至不能自由活動。",
           "emotion": "自然說故事"
         }
       ]
@@ -390,7 +395,7 @@
       "lines": [
         {
           "id": "gs012",
-          "text": "他在關平面前報名，說聽聞關羽中毒箭，特地來治。",
+          "text": "剛才向關平報名的醫生，還說自己來自沛國譙郡，是聽聞關羽中毒箭才特地趕來。",
           "emotion": "自然說故事"
         }
       ]
@@ -454,7 +459,7 @@
       "lines": [
         {
           "id": "gs015",
-          "text": "華佗看了右臂，說弩箭帶著烏頭藥，已透入骨，若不早治恐怕難再用手。",
+          "text": "華佗說這是帶烏頭藥的弩箭，已透入骨；若不早治，恐怕難再用手。",
           "emotion": "自然說故事"
         }
       ]
@@ -486,7 +491,7 @@
       "lines": [
         {
           "id": "gs017",
-          "text": "關羽笑著拒絕柱環與蒙頭，伸臂讓他直接治；他能一直這樣鎮定嗎？",
+          "text": "關羽笑著免去事前束縛，伸臂讓他直接治；他能一直這樣鎮定嗎？",
           "emotion": "問句自然上揚，留半拍"
         }
       ]
@@ -508,17 +513,33 @@
       ]
     },
     {
+      "id": "gs117",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a small attendant holding an empty bronze basin beneath a draped right sleeve in a military tent, no wound visible, warm light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs117",
+          "text": "華佗讓小校把大盆捧到臂下接血；這只容器，等一下也會在史書裡出現。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
       "id": "gs019",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot officers watching anxiously as a calm general sits at a simple ancient game board with plain stones, soft light",
+        "prompt": "Medium shot officers covering their faces while a calm general eats at a low table beside a simple ancient game board with plain stones, no visible wound, soft tent light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "gs019",
-          "text": "旁觀將領驚得失色，關羽卻邊吃邊下棋。",
+          "text": "刀落下時，旁觀將領掩面失色，關羽卻照常吃肉飲酒。",
           "emotion": "自然說故事"
         }
       ]
@@ -637,6 +658,22 @@
       "chapter": "陳壽寫下關羽左臂的舊傷"
     },
     {
+      "id": "gs116",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot an unmarked arrow shaft beside an open unlettered old chronicle, soft study light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs116",
+          "text": "陳壽只說「流矢」，沒有指明放箭的人；傷在身上的哪裡，他倒寫得很清楚。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
       "id": "gs023",
       "template": "shot",
       "data": {
@@ -695,7 +732,7 @@
       "lines": [
         {
           "id": "gs104",
-          "text": "小說寫傷口青腫到不能動，傳記寫癒合後逢雨會痛；兩段的病程不一樣。",
+          "text": "同樣寫刮骨，兩部文本卻挑了不同的就診起點；後來小說的細節，不能直接回填傳記。",
           "emotion": "自然說故事"
         }
       ]
@@ -711,7 +748,7 @@
       "lines": [
         {
           "id": "gs026",
-          "text": "醫生看過後，說箭鏃有毒，毒已入骨。",
+          "text": "史書醫生也說箭鏃帶毒、毒入骨，但沒有像小說那樣替毒物取名。",
           "emotion": "自然說故事"
         }
       ]
@@ -720,7 +757,7 @@
       "id": "gs027",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a present day reader comparing an unlettered old page and a plain medical diagram, soft light",
+        "prompt": "Close shot a present day reader studying an unlettered old chronicle with a closed modern notebook beside it, soft light",
         "camera": "drift",
         "visual": "still"
       },
@@ -761,6 +798,22 @@
           "id": "gs029",
           "text": "關羽立即伸出左臂，傳記沒有描寫柱環或蒙頭；當時他身旁是誰？",
           "emotion": "問句自然上揚，留半拍"
+        }
+      ]
+    },
+    {
+      "id": "gs119",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot an empty shallow bronze vessel on a dining table beside an unlettered old chronicle, muted light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs119",
+          "text": "剛才小說讓小校捧盆；〈關羽傳〉也記血盛於盤器，接著視線轉向關羽身旁的人。",
+          "emotion": "自然說故事"
         }
       ]
     },
@@ -921,6 +974,38 @@
         {
           "id": "gs041",
           "text": "那一年關羽率兵圍攻曹仁守的樊城；這個明確年份，也能鎖住前一段治傷嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "gs120",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot a river rising in autumn rain outside a distant fortified city, overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs120",
+          "text": "同一段還寫秋季大雨、漢水暴漲；樊城戰事有比那次治傷更清楚的時間和地點。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "gs121",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot two separate empty watercolor rain panels divided by an unlettered old chronicle page, soft study light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs121",
+          "text": "可前段舊傷遇到的陰雨，原文沒有說就是這場洪水；把兩段雨畫成同一幕，也越過了文字。",
           "emotion": "自然說故事"
         }
       ]
@@ -1138,7 +1223,7 @@
       "id": "gs053",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot an ancient Chinese historian opening a plain family register beside a boy portrait, soft light",
+        "prompt": "Medium shot a present day reader aligning two unlettered blank cards beside an old chronicle, soft light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1193,7 +1278,7 @@
       "lines": [
         {
           "id": "gs108",
-          "text": "曹沖傳還記曹操為孩子去世而悲傷；華佗傳裡的後悔因此有清楚的對象。",
+          "text": "〈曹沖傳〉另寫曹操在孩子死後悲痛，說話時還會流淚。",
           "emotion": "自然說故事"
         }
       ]
@@ -1359,22 +1444,6 @@
       ]
     },
     {
-      "id": "gs070",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot a reader placing an unlettered novel beside a separate older history book, soft light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "gs070",
-          "text": "小說提供姓名與樊城場景；年份來自史書另一段，不能一起貼到無日期的左臂舊傷。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "gs071",
       "template": "shot",
       "data": {
@@ -1391,10 +1460,26 @@
       ]
     },
     {
+      "id": "gs118",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot a simple ancient game board with plain dark and pale stones beside a closed storybook, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "gs118",
+          "text": "小說只寫「弈棋」，沒有描出盤面與棋子的形狀；畫像裡的格子，也不能反過來替原文作證。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
       "id": "gs074",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a reader choosing between an unlettered chronicle and a game board, soft window light",
+        "prompt": "Wide shot a reader choosing between an unlettered chronicle and a simple ancient game board with plain stones, soft window light",
         "camera": "pan left",
         "visual": "still"
       },
