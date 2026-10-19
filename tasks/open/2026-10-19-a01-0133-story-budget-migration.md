@@ -90,3 +90,22 @@ operations; `ON CONFLICT DO NOTHING` would otherwise preserve a mismatched
 existing account. After migration, read back the exact nine account limits,
 constraint, Alembic head, and rollback readiness. The 0132 compatibility
 image's live state and #1510's duplicate 0133 must also be reconciled.
+
+2026-10-19 main synchronization: the clean existing draft branch at
+`c9e9d62496f347d3e124ee01714e5adbc86a5a5a` was rebased onto
+`e42d93979781b250b53f93e36ff1c901679b39ce` without conflicts. Main still had
+only migration head 0132; no migration changed in the incoming main commits.
+The four original PR patches compare equal under `git range-diff`. The
+migration and test retain Git blobs `ff509c86e289bd28468df8b2ad79615ea445f088`
+and `1e63fb7d440faf5c483bd1f19dcca02df3f0e0ae`, respectively: no semantic
+code changes were made. This handoff note is the only added PR-file change
+beyond that byte-preserving rebase; incoming main changes remain base content.
+
+Fresh local checks on the rebased branch: one Alembic head
+`0133_story_followon_budget`; focused migration/schema/SQL-dialect pytest
+11 passed and 1 PostgreSQL-only skipped; targeted Ruff, `npm run check:tasks`
+(2056 task files, existing shared-board warnings), and `git diff --check`
+passed. Exact-head CI, including the real PostgreSQL case, must run again
+after the guarded push; the old head's 22 green checks are historical evidence,
+not a result for this new head. Keep draft and `no-auto-merge`, with no merge,
+deployment, host write, or paid-work authorization added by this refresh.
