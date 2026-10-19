@@ -7,3 +7,7 @@
 第一輪改稿 `script.md` SHA-256 `6a9218c4a2ce2a159c141a0aebb634fcfa9e1af0140b8e3b13d06c608b407111` 經獨立讀者確切雜湊審查，原始 13 題答卷 `/tmp/s08-blind-audio-rewrite-6a9218.json`，**12／13**：唯一必答未過是 `ox066` 已念「載一歲糧」，`ox068` 23 秒後又說一次「能運一年的糧食」，沒明示回呼。`ox079`→`ox094` 有「剛才問」的明示回呼且加入接合次序的新資訊，通過。讀者固定來源抽核五句改寫，無實質史實問題；正式 receipt 在 `/workspace/.video-work/curio-s08/review/narrative.json`。這個結果不得記作 13／13。
 
 已只把 `ox068` 換成「不能。它沒說這是幾個人的口糧；公斤數就沒有可靠的換算起點。」直接答 `ox066` 的重量問題，用**缺少供食人數**這項新條件收束，不再重念年糧文字。現行**待全新讀者覆核**稿 `script.md` SHA-256 **`6499e8521bf040c7cc5fe8557dccaca15623b0ff13bf2f1a1cc99bf7e7e06233`**、`video.json` SHA-256 `57250cf3c6d91d107f9e7b7e40388b51e9177c8c5d8eed271bfe8f18390f6903`；93 句、87 張插圖、4 張資料卡，`lint` 0 errors／0 warnings。先取得新讀者對現行 exact SHA 的敘事 13 題和 `ox066`／`ox068` 來源抽查，重綁劇本核准，才重唸改動句並再跑 `check-audio`。目前 S08 沒有開始付費插圖。
+
+上段 `6499e852…` 又由另一位新讀者檢查，原始答卷 `/tmp/curio-s08-r3-blind-6499e852.json`、`narrative --answers` receipt 在 `/workspace/.video-work/curio-s08/review/narrative.json`：**12／13**，`ox066`→`ox068` 回答已通過，唯一未過的是開場 `ox007` 已念「一腳四足」，`ox057` 再念時沒有明示回扣。固定來源與插圖提示詞抽核無實質衝突。通篇再掃描後，僅將 `ox057` 改為「開頭那句『一腳四足』，就在木牛段；前面還寫著『方腹曲頭』。」明示回扣並增加來源位置。`ox061` 已說「開頭那句」且新增行走機制界線；`ox075` 是木牛與流馬兩段腳名的新比較。其他較近的重述是先提出總括再念原文、或在相鄰句明示推論，保留。
+
+**目前待全新讀者覆核版** `script.md` SHA-256 **`54974b5cb36c0f3ecbc889fe4bc84c185a4bcd53f75964a47d684e1d307c4113`**、`video.json` SHA-256 `721671fbce11eb96d6d3d502505a7ab83a2e100d5f06db5deff12e1fdf1e63d4`，93 句、87 張插圖、4 張資料卡，`lint` 0 errors／0 warnings。上一輪的 12／13 不能冒稱現稿 13／13；在新 reader 的 exact-SHA 敘事／來源結果前，S08 不重開 TTS，也不製作付費插圖。
