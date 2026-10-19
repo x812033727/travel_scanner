@@ -10,7 +10,8 @@ import test from "node:test";
 const SCRIPT = readFileSync(new URL("../.agents/skills/deploy/scripts/host-verify.sh", import.meta.url), "utf8");
 const DRAMA_OFF = "漫劇已停用";
 const DRAFT_CAP = "支草稿，達到上限";
-const hasAwk = spawnSync("awk", ["BEGIN{}"]).status === 0;
+const hasAwk = spawnSync("awk", ["BEGIN { exit 0 }"]).status === 0;
+const hasSh = spawnSync("sh", ["-c", ":"]).status === 0;
 
 function octal(text) {
   return [...Buffer.from(text, "utf8")].map((byte) => `\\${byte.toString(8)}`).join("");
@@ -63,4 +64,35 @@ test("the AI-drama-off exit 4 is still counted apart, and a mixed log counts eac
 test("the verdict still requires no counted exit, and names the capped exits", () => {
   assert.match(SCRIPT, /\[ "\$exited" -eq 0 \]/);
   assert.match(SCRIPT, /auto_exit3_draft_cap=\$cap_exits/);
+});
+
+function schemaVerdict({ head, current, expected = head, state = "rollback-compatible", guard = 0, heads = 1 }) {
+  const section = SCRIPT.split("section alembic-head\n", 2)[1];
+  assert.ok(section, "host verifier still has an alembic-head section");
+  const condition = section.split("\nok=0\n", 2)[1]?.split("\nverdict alembic-head", 1)[0];
+  assert.ok(condition, "host verifier still has one schema verdict condition");
+  const run = spawnSync("sh", ["-c", `ok=0\n${condition}\nprintf '%s' "$ok"`], {
+    env: {
+      ...process.env,
+      head_n: String(heads), guard_rc: String(guard), expected,
+      alembic_head: head, schema_state: state, current,
+    },
+    encoding: "utf8",
+  });
+  assert.equal(run.status, 0, run.stderr);
+  return run.stdout;
+}
+
+test("schema verdict accepts only the two reviewed rollback pairs with a passing guard", { skip: !hasSh && "no sh on this machine" }, () => {
+  const old = "0132_video_pilot_budget";
+  const middle = "0133_story_followon_budget";
+  const next = "0134_a01_admission_fence";
+  assert.equal(schemaVerdict({ head: old, current: middle }), "1");
+  assert.equal(schemaVerdict({ head: middle, current: next }), "1");
+  assert.equal(schemaVerdict({ head: middle, current: middle, state: "exact" }), "1");
+  assert.equal(schemaVerdict({ head: old, current: next }), "0");
+  assert.equal(schemaVerdict({ head: middle, current: "0134_other" }), "0");
+  assert.equal(schemaVerdict({ head: middle, current: next, guard: 1 }), "0");
+  assert.equal(schemaVerdict({ head: middle, current: next, heads: 2 }), "0");
+  assert.equal(schemaVerdict({ head: middle, current: next, expected: old }), "0");
 });

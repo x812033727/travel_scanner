@@ -11,9 +11,7 @@ completed_at:
 branch:
 depends_on: []
 scope:
-  - .agents/skills/deploy/scripts/host-verify.sh
   - .agents/skills/deploy/references/post-deploy.md
-  - tools/deploy-host-verify.test.mjs
   - tasks/open/2026-10-14-recognize-the-video-monthly-draft-cap.md
 ---
 
@@ -84,3 +82,9 @@ claiming this ticket; its remaining work was host rollout at filing time.
   two messages. Removing the new branch makes two of its four tests fail.
 - `post-deploy.md` explains the new field next to `auto_exit4_drama_off`.
 - Left: the next deployment on a host at its cap shows the check passing with the `NOTE`.
+
+2026-10-19: The owner authorized a narrow transfer of only
+`.agents/skills/deploy/scripts/host-verify.sh` and
+`tools/deploy-host-verify.test.mjs` to the A01 0134 precompatibility ticket.
+The merged #1558 monthly-cap behavior and this ticket's pending host readback
+remain intact; its other scope and review status are unchanged.

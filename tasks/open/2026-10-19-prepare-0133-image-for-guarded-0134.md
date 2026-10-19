@@ -11,6 +11,8 @@ completed_at:
 branch: codex/a01-0134-precompat-20261019
 depends_on: []
 scope:
+  - .agents/skills/deploy/scripts/host-verify.sh
+  - tools/deploy-host-verify.test.mjs
   - apps/api/app/schema.py
   - apps/api/app/migration_guard.py
   - apps/api/tests/test_schema.py
@@ -80,7 +82,20 @@ followed by real PostgreSQL CI and independent review.
 2026-10-19 independent review: P1 release integration blockers remain. The
 production `.agents/skills/deploy/scripts/host-verify.sh` allowlist accepts only
 0132→0133, so it must explicitly accept 0133→0134 with a focused test and be
-installed with the precompat release. That script and its test are still held
-by the older monthly-cap task even though its #1558 code is merged; the owner
-has been asked for a narrow transfer. The migration guard is only a startup
-check; Phase1 reserve and text-dispatch checks are required in the same image.
+installed with the precompat release. The owner approved the narrow transfer
+of that script and its test from the older monthly-cap ticket. The migration
+guard is only a startup check; Phase1 reserve, submit and text-dispatch checks
+are required in the same image.
+
+2026-10-19: The verifier draft now admits only the additional exact pair
+0133 image→0134 database when its migrate guard passes, the image has one
+head, and the reported expected head matches. Local `bash -n` passed; the
+shell-executed decision test passed when Git Bash was on PATH. The older
+monthly-cap log tests remain unchanged. This draft is pending independent
+review and the combined precompat release; no host script was installed.
+
+2026-10-19 independent verifier review: no P0/P1. The review caught an
+existing broken `awk` availability probe in the focused test: `BEGIN{}` is
+rejected by Git awk and had silently skipped the monthly-cap cases. It is now
+`BEGIN { exit 0 }`; with Git Bash on PATH all five focused tests pass without
+skips, and the cap-classification script itself has no changed lines.
