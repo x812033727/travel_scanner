@@ -29,8 +29,8 @@
   "loops": [
     {
       "setup": "gs003",
-      "payoff": "gs006",
-      "what": "軍帳棋局出自哪本書"
+      "payoff": "gs024",
+      "what": "小說右臂和史書左臂的差別"
     },
     {
       "setup": "gs004",
@@ -39,13 +39,8 @@
     },
     {
       "setup": "gs005",
-      "payoff": "gs024",
-      "what": "史書裡刮骨的手臂"
-    },
-    {
-      "setup": "gs006",
-      "payoff": "gs007",
-      "what": "小說中誰先受傷"
+      "payoff": "gs033",
+      "what": "史書是否寫出醫生姓名"
     },
     {
       "setup": "gs010",
@@ -89,7 +84,7 @@
     },
     {
       "setup": "gs041",
-      "payoff": "gs042",
+      "payoff": "gs043",
       "what": "樊城戰事年份能否回貼治傷"
     },
     {
@@ -210,7 +205,7 @@
       "id": "gs001",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot an ancient Chinese general and a scholar playing at an unlettered board in a military tent, muted lamplight",
+        "prompt": "Wide shot an ancient Chinese physician entering a military tent while a general sits at a chessboard inside, muted lamplight",
         "camera": "push in",
         "visual": "still"
       },
@@ -243,14 +238,14 @@
       "id": "gs003",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a bandaged right sleeve resting near a plain game board, lamplight",
+        "prompt": "Close shot ancient Chinese general lifting his bandaged right sleeve beside a simple chessboard, lamplight",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "gs003",
-          "text": "他說要治關羽中箭的手臂；棋盤、酒席與軍帳都在眼前，這幅畫來自哪一本書？",
+          "text": "軍帳裡受傷的那隻手，和陳壽記下的是同一隻嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -282,7 +277,7 @@
       "lines": [
         {
           "id": "gs005",
-          "text": "那史書裡也記著這隻手、這位醫生嗎？",
+          "text": "那陳壽記的醫生，也留下了這個名字嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -298,7 +293,7 @@
       "lines": [
         {
           "id": "gs006",
-          "text": "答案在《三國演義》第七十五回；在棋盤出現前，小說先讓誰受傷？",
+          "text": "先把《三國演義》第七十五回的故事倒回箭傷發生時。",
           "emotion": "自然說故事"
         }
       ]
@@ -420,7 +415,7 @@
       "id": "gs013",
       "template": "shot",
       "data": {
-        "prompt": "Close shot a reader pointing at an unlettered open novel beside a medicine bag, lamplight",
+        "prompt": "Medium shot a young Chinese warrior guiding a robed physician into a military tent with a chessboard inside, lamplight",
         "camera": "push in",
         "visual": "still"
       },
@@ -500,7 +495,7 @@
       "id": "gs018",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a simple meal and game board in a military tent with a physician nearby, warm light",
+        "prompt": "Medium shot an ancient Chinese general calmly moving a chess piece with his bandaged right sleeve while a physician stands nearby, warm tent light",
         "camera": "pan right",
         "visual": "still"
       },
@@ -773,7 +768,7 @@
       "id": "gs030",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a few ancient Chinese officers seated around a modest meal table, muted lamplight",
+        "prompt": "Medium shot an ancient Chinese general inviting his officers to a modest meal, no chessboard, muted lamplight",
         "camera": "pan right",
         "visual": "still"
       },
@@ -853,7 +848,7 @@
       "id": "gs038",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot an unnamed physician silhouette beside an empty date card, diffused light",
+        "prompt": "Medium shot an ancient Chinese reader searching an unlettered chronicle beside a blank calendar page, diffused light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -931,22 +926,6 @@
       ]
     },
     {
-      "id": "gs042",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot two separate unlettered chronicle sections divided by a blank date card, soft light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "gs042",
-          "text": "到了樊城，年份終於明白；但它只能標這段圍城。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "gs043",
       "template": "shot",
       "data": {
@@ -966,7 +945,7 @@
       "id": "gs044",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a physician silhouette standing by a distant walled city and an empty timeline, cloudy light",
+        "prompt": "Medium shot a Chinese reader pointing to a physician drawing inside an unlettered storybook with a walled city behind the drawing, soft light",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1015,7 +994,7 @@
       "id": "gs047",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a distant ancient prison gate with a small physician figure approaching, grey sky",
+        "prompt": "Medium shot an ancient Chinese official closing a prison gate as a robed physician approaches, no violence, grey sky",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1047,7 +1026,7 @@
       "id": "gs107",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot a closed prison gate with a distant empty military tent silhouette, grey light",
+        "prompt": "Medium shot an ancient Chinese scribe looking at a plain scroll outside a closed prison gate, grey light",
         "camera": "drift",
         "visual": "still"
       },
@@ -1071,38 +1050,6 @@
         {
           "id": "gs049",
           "text": "傳記接著寫「遂考竟佗」，意思是華佗最後被處死。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "gs109",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot a physician holding an unlettered scroll inside a dim cell, soft lamplight",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "gs109",
-          "text": "臨死前，華佗拿出一卷醫書，對獄吏說：這能救人。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "gs110",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot a plain unlettered scroll curling near a small contained flame, no readable writing, soft lamplight",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "gs110",
-          "text": "獄吏怕犯禁不收，華佗把那卷書燒掉；傳記才接著說「佗死後」。",
           "emotion": "自然說故事"
         }
       ]
@@ -1191,7 +1138,7 @@
       "id": "gs053",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot a child silhouette beside a closed unlettered family record, soft light",
+        "prompt": "Medium shot an ancient Chinese historian opening a plain family register beside a boy portrait, soft light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1332,22 +1279,6 @@
       ]
     },
     {
-      "id": "gs061",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot a wrapped left sleeve beside an empty date card, soft light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "gs061",
-          "text": "〈關羽傳〉那次左臂手術，沒有說醫生哪年來，也沒說就在樊城。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "gs062",
       "template": "shot",
       "data": {
@@ -1380,26 +1311,10 @@
       ]
     },
     {
-      "id": "gs064",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot an unlettered chronicle with a blank name card beside a medicine bag, soft light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "gs064",
-          "text": "〈關羽傳〉亦只寫一個「醫」，無法確認那就是華佗。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "gs065",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot two separate sketches showing a wrapped left sleeve and wrapped right sleeve, diffused light",
+        "prompt": "Medium shot an ancient Chinese historian closing case notes beside a sketch of a bandaged left sleeve, diffused light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1444,22 +1359,6 @@
       ]
     },
     {
-      "id": "gs068",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot a blank name card resting on an unlettered chronicle, soft light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "gs068",
-          "text": "目前查到的這幾卷傳記裡，沒有那條把兩人連起來的記述。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "gs069",
       "template": "shot",
       "data": {
@@ -1486,7 +1385,7 @@
       "lines": [
         {
           "id": "gs070",
-          "text": "它把後來故事提供的名字和年份，誤當成舊傳原本就有。",
+          "text": "小說提供姓名與樊城場景；年份來自史書另一段，不能一起貼到無日期的左臂舊傷。",
           "emotion": "自然說故事"
         }
       ]
