@@ -1,0 +1,24 @@
+# The video backup's rclone remote (docs/videos/BACKUP.md §主機設定).
+#
+# On the host it is /etc/travel-scanner/rclone-videos/rclone.conf, owned by uid 1001 (the video
+# worker's pwuser) with mode 0600, in a folder of mode 0750 owned the same way. Compose mounts
+# that folder read-only into video-worker at /etc/mokaair/rclone-videos/; the worker copies the
+# file to /tmp each run, so rclone can keep a refreshed access token without writing here.
+#
+# Never commit the real file: the token below is a Google refresh token for the owner's Drive.
+# /etc/travel-scanner is in the nightly encrypted config bundle (ops/backup/manifest-paths.txt).
+
+# The remote's name; compose expects "videobackup" (VIDEO_BACKUP_REMOTE changes it).
+[videobackup]
+type = drive
+# Full Drive access is safe enough only because root_folder_id confines rclone to the one
+# folder (the owner's plan A, 2026-10-15). Never remove root_folder_id.
+scope = drive
+# The desktop OAuth client the owner made in their Google Cloud project.
+client_id = <the client ID, ending in .apps.googleusercontent.com>
+client_secret = <the client secret>
+# The last part of the AI/備份 folder's address in Drive:
+# https://drive.google.com/drive/folders/<this>. It must match VIDEO_BACKUP_LOCK_PATH (AI/備份).
+root_folder_id = <the AI/備份 folder ID>
+# What `rclone authorize "drive" "<client_id>" "<client_secret>"` printed on the owner's PC.
+token = <the JSON line rclone authorize printed>
