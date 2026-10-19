@@ -18,6 +18,8 @@ scope:
   - docs/videos/history-curiosity/topic-checks/S09.md
   - docs/videos/history-curiosity/topic-checks/S18.md
   - docs/videos/history-curiosity/topics.json
+  - .agents/skills/curio-episode/SKILL.md
+  - .claude/skills/curio-episode/SKILL.md
 ---
 
 # Curio S axis pilot: S01 Red Cliffs, S09 Okehazama, S18 Napoleon
@@ -81,3 +83,11 @@ scope:
   1802–03 年外交文件、Maitland、韋氏字典等）。主線成立；157 公分改成假設語氣，1812 年日常用呎的不確定寫進說明欄；
   「拿破崙情結」的來歷、近衛擲彈兵下限、法國抗議的對象改正。獨立覆核 1 列推翻（「小下士」是拉斯卡斯的敘述）、8 列加但書，
   照改；結論卡改「他不矮，是被畫小了」。盲評第十三輪 13／13，lint 0 錯誤、8.8 分鐘。三集的稿子與查核都完成。
+- 2026-10-19（同上，分支 `claude/curio-s01-narration`，雲端容器）：三集旁白站主聽過（「三集都沒問題」）；插圖站主授權上限
+  US$9.64，三集一起畫完，全部過評審：S01 84 張 US$1.73（八景改提示詞重畫）、S09 80 張 US$1.74（六景）、
+  S18 74 張 US$1.85（十一景），合計 US$5.32，沒有換圖或改成卡片。改提示詞都照「一個人做一件事」。
+  雲端怎麼做旁白與插圖寫進 `curio-episode` skill 新的一節。下一步：`review-push --gate storyboard` 給站主看分鏡、成片、品管、上架包。
+- 2026-10-19（同上）：站主要把雲端做法寫進 `curio-episode` skill，scope 加上兩份 skill。另外三張票的 scope 也有這份 skill
+  （`2026-10-19-curio-keeps-the-brand-stories-hook` 狀態 review、#1577 已合併；`2026-10-14-curio-episodes-keep-the-series-look` #1500
+  與 `2026-10-14-ai-and-tech-videos-tell-one` #1504 也已合併），沒有人還在改它；這次只在〈交接〉前加一節，跟 main 合併沒有衝突。S09 刀銘卡補「意思是：討取義元」，
+  因為旁白為了唸對改成白話，跟卡上的原文不一樣。
