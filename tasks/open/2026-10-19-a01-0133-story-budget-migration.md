@@ -33,7 +33,7 @@ not authorize merging, deployment, or paid video work.
   test, with no #1510 implementation or other production-code changes.
 - [x] Alembic has one head, 0133 follows 0132, focused checks and PostgreSQL CI
   pass, and the release dependency on the 0132 compatibility image is explicit.
-- [ ] Independent migration review is recorded before this draft is considered
+- [x] Independent migration review is recorded before this draft is considered
   for a separately authorized merge or deployment.
 
 ## Steps
@@ -78,3 +78,15 @@ Draft PR #1585 at `b01ca052991e74f7307c2007aaf981806b7c6858` completed
 test shards, `api-checks`, `containers`, and `full-stack-smoke`. The PR remains
 draft with `no-auto-merge`; independent migration review and explicit owner
 authorization remain separate gates. No merge, deployment, or paid work ran.
+
+Independent migration review of the unchanged migration and PostgreSQL test at
+PR head `6f2e2e1adeedf402c4e0cbff2a232f8107f922f4` found no blocking
+findings. It verified the 0132 down revision, widened budget constraint,
+conditional B18 v2 USD 25-to-5 adjustment, five separate USD 5 follow-on
+accounts, preservation of existing operation rows, and downgrade refusal.
+Before any separately authorized production deployment, preflight must prove
+the five new accounts are absent or already exactly USD 5 with reviewed
+operations; `ON CONFLICT DO NOTHING` would otherwise preserve a mismatched
+existing account. After migration, read back the exact nine account limits,
+constraint, Alembic head, and rollback readiness. The 0132 compatibility
+image's live state and #1510's duplicate 0133 must also be reconciled.
