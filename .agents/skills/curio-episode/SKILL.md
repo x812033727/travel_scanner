@@ -117,7 +117,7 @@ US$2.04；L08：92 張 US$2.83）。開畫之前，把整集的張數與上限�
 3. 長指令一律用工具的背景執行（Claude Code 的 `run_in_background`），不要在 shell 裡用 `&` 丟背景：
    回合結束時 `&` 的程序會被殺，`login` 等不到允許、代碼過期。輸出導到檔案，不要接 `grep` 管線（會卡緩衝）。
    背景執行最長 2 小時，到時間會被殺；整集插圖一集一個指令分開跑，不要三集串在一個指令裡。
-4. 工作目錄在 `/root/mokaair-work/videos/<SLUG>/`（音檔、`narration.wav`、`keyframes/manifest.json`、
+4. 工作目錄在 `<VIDEO_WORKDIR>/<SLUG>/`（預設在容器家目錄下；音檔、`narration.wav`、`keyframes/manifest.json`、
    `review/check.json`）；容器回收就沒了，交接寫進票，不要只寫路徑。
 
 **旁白**
