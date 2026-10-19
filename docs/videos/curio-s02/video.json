@@ -73,6 +73,11 @@
       "what": "小說中催交箭的人"
     },
     {
+      "setup": "s02082",
+      "payoff": "s02083",
+      "what": "小說把借箭江行安排在什麼時候"
+    },
+    {
       "setup": "s02086",
       "payoff": "s02087",
       "what": "相似轉船能否證明直接改編"
@@ -1404,17 +1409,18 @@
       ]
     },
     {
-      "id": "novel-payoff",
+      "id": "novel-date-hook",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at war tent in muted soft morning light, one robed strategist handing over a filled arrow case, packed arrow case as the only foreground object",
+        "prompt": "Medium shot at study desk in soft soft morning light, one robed scholar turning a blank novel page, stitched book as the only foreground object",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "s02082",
-          "text": "軍令狀的死期也被小說這趟江行解開。"
+          "text": "小說作者把剛才這趟江行，放在曹操與孫權的哪場大戰之前？",
+          "emotion": "問句輕輕上揚，句尾停半拍"
         }
       ]
     },
@@ -1429,8 +1435,8 @@
       "lines": [
         {
           "id": "s02083",
-          "text": "但小說把這段放在何時？赤壁大戰之前。",
-          "emotion": "問句輕輕上揚，句尾停半拍"
+          "text": "答案是赤壁大戰之前。",
+          "emotion": "關鍵動詞放慢，句尾留一拍"
         }
       ],
       "chapter": "兩艘船分屬不同故事"
