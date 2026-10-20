@@ -105,14 +105,18 @@ The source/blind findings and five provisionally usable image takes stay bound
 through the exact visual-review chain. A fresh paired-site quota and US$25
 all-in ledger check preceded an isolated two-shot pilot capped at three takes
 each. The pilot generated three images and three judge calls for US$0.0405;
-both selected images passed the model judge (9.29), but manual viewing held
-both for action/object errors and faint background pseudo-print on `s01`.
-Only 5/78 illustrations remain provisionally usable. Main media ledger is now
+both selected images passed the model judge (9.29). Initial manual viewing
+held both for prompt-level action and object discrepancies; an independent
+re-read against the actual narration and curio-episode illustration rule found
+neither contradicted a spoken/source fact, showed legible print or logo, or
+drifted from cute-mystery. The initial strict gate is preserved as history;
+both selected frames are now provisionally usable, making **7/78** in total.
+Main media ledger is now
 US$0.3780 (28 images, 28 judge calls, zero reservations), while STOP remains.
 The prior pilot's manifest, ledger, gate and vulnerable image filenames were
 archived under `review/local-preview/v1-pilot-evidence/` before merging the
 second pilot. The current gate SHA and per-image reasons are in
 `reviews/local-preview-art-gate.md`. No MP4, source-cleared music, final art
 approval, official branding assets or Studio end-screen setup exists. Next:
-offline visual strategy; do not widen paid art until its human acceptance rate
-improves and a new exact-source review allows a bounded test.
+three representative untested visual families in a bounded isolated pilot,
+then stop and inspect before considering the remaining 68 frames.
