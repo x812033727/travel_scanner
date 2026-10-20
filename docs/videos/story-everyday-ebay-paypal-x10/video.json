@@ -44,8 +44,8 @@
     },
     {
       "setup": "x100105",
-      "payoff": "x100408",
-      "what": "分家後付款合作如何延續"
+      "payoff": "x100407",
+      "what": "分家後買家付款如何延續"
     },
     {
       "setup": "x100106",
@@ -129,8 +129,8 @@
     },
     {
       "setup": "x100611",
-      "payoff": "x100612",
-      "what": "公司如何描述買賣家體驗"
+      "payoff": "x100614",
+      "what": "公司為何選擇自管付款，以及證據邊界"
     },
     {
       "setup": "x100711",
@@ -295,14 +295,14 @@
       "id": "x10-b01-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot overhead view of two ordinary payment-path sketches staying connected by a simple unmarked bridge, soft worktable light",
+        "prompt": "Medium shot at a generic checkout desk, one anonymous shopper faces an unreadable screen while a separate seller waits at another plain terminal, no connecting route shown, soft worktable light",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x100105",
-          "text": "分家以後，結帳並沒有立刻換成一條全新的路。",
+          "text": "分拆生效那天，買家還要付款，賣家還在等著收錢。",
           "emotion": "自然說書，數字逐位清楚"
         }
       ]
@@ -1482,7 +1482,7 @@
         "stats": [
           {
             "value": "2020.07",
-            "label": "不等於付款選項立刻消失"
+            "label": "初始合作期屆滿"
           }
         ],
         "source": "eBay FY2020 Form 10-K"
@@ -1509,10 +1509,10 @@
       "lines": [
         {
           "id": "x100602",
-          "text": "eBay 年報說，這之後，自管付款繼續往更多市場擴張。",
+          "text": "原 PayPal 合約到期後，自管付款繼續往更多市場擴張。",
           "emotion": "自然說書，數字逐位清楚",
-          "say": "伊貝 年報說，這之後，自管付款繼續往更多市場擴張。",
-          "say_for": "a2b2e3dfc4fa"
+          "say": "原 佩寶 合約到期後，自管付款繼續往更多市場擴張。",
+          "say_for": "3a435e848555"
         }
       ]
     },
@@ -1653,15 +1653,17 @@
       "id": "x10-b06-s11",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot at a plain analytics desk, one anonymous analyst places two differently shaped blank counting cards side by side, soft light",
+        "prompt": "Overhead shot at a plain analytics desk, one anonymous analyst places a blank checkout sketch between a buyer's empty basket and a seller's unmarked ledger, soft light",
         "camera": "static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x100611",
-          "text": "人數上來了，買賣雙方的體驗，公司又怎麼說？",
-          "emotion": "問句上揚，留一個短停頓"
+          "text": "人數上來了，eBay 為什麼想自己握住這段流程？",
+          "emotion": "問句上揚，留一個短停頓",
+          "say": "人數上來了，伊貝 為什麼想自己握住這段流程？",
+          "say_for": "dbf5a5e5ee0b"
         }
       ]
     },
@@ -1676,10 +1678,8 @@
       "lines": [
         {
           "id": "x100612",
-          "text": "eBay 說，自管付款讓買賣雙方走過更簡單的完整付款流程。",
-          "emotion": "自然說書，數字逐位清楚",
-          "say": "伊貝 說，自管付款讓買賣雙方走過更簡單的完整付款流程。",
-          "say_for": "3ef731d1c857"
+          "text": "二〇二〇年年報說，自管付款要讓買賣雙方走過更簡單的完整流程。",
+          "emotion": "自然說書，數字逐位清楚"
         }
       ]
     },
@@ -1687,15 +1687,17 @@
       "id": "x10-b06-s13",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot one anonymous researcher watches a generic checkout demonstration without readable text, neutral light",
+        "prompt": "Wide shot one anonymous buyer compares several unreadable payment icons while a seller tends a blank order ledger, neutral light",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x100613",
-          "text": "那仍是公司的產品主張，不是已量到的每位買家體驗。",
-          "emotion": "自然說書，數字逐位清楚"
+          "text": "eBay 主張買家能選更多付款方式，賣家經營也更簡便。",
+          "emotion": "自然說書，數字逐位清楚",
+          "say": "伊貝 主張買家能選更多付款方式，賣家經營也更簡便。",
+          "say_for": "1891228fc62a"
         }
       ]
     },
@@ -1703,17 +1705,15 @@
       "id": "x10-b06-s14",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at the original package route, an anonymous planner redraws a simpler abstract path from buyer to seller, warm evening light",
+        "prompt": "Close shot at the original package route, an anonymous planner compares two blank route sketches without ranking either, warm evening light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x100614",
-          "text": "當初買 PayPal 是為了移開付款障礙；現在 eBay 又在重畫自己的路。",
-          "emotion": "自然說書，數字逐位清楚",
-          "say": "當初買 佩寶 是為了移開付款障礙；現在 伊貝 又在重畫自己的路。",
-          "say_for": "45bcea492bbd"
+          "text": "這是公司選擇自管的產品說法；文件沒有比較繼續交給夥伴會怎樣。",
+          "emotion": "自然說書，數字逐位清楚"
         }
       ]
     },
@@ -1786,8 +1786,10 @@
       "lines": [
         {
           "id": "x100703",
-          "text": "隔年年報說得更清楚：自二〇二一年底，平台交易都由它管理付款。",
-          "emotion": "自然說書，數字逐位清楚"
+          "text": "二〇二二年年報說：自二〇二一年底，eBay 管理平台所有交易的付款。",
+          "emotion": "自然說書，數字逐位清楚",
+          "say": "二〇二二年年報說：自二〇二一年底，伊貝 管理平台所有交易的付款。",
+          "say_for": "1da27d852a9c"
         }
       ]
     },
@@ -2024,10 +2026,10 @@
       "lines": [
         {
           "id": "x100717",
-          "text": "eBay 選擇自管，主張買家有更多付款選擇、賣家經營更簡便；這是它當時的產品理由。",
+          "text": "eBay 選擇自管，是想自己設計買家付款和賣家管理；它主張這樣更方便，但沒證明夥伴做不到。",
           "emotion": "自然說書，數字逐位清楚",
-          "say": "伊貝 選擇自管，主張買家有更多付款選擇、賣家經營更簡便；這是它當時的產品理由。",
-          "say_for": "20438ef6fa36"
+          "say": "伊貝 選擇自管，是想自己設計買家付款和賣家管理；它主張這樣更方便，但沒證明夥伴做不到。",
+          "say_for": "cf3d24b4389b"
         },
         {
           "id": "x100718",

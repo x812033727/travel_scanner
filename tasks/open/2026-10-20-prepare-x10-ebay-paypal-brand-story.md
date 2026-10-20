@@ -34,9 +34,11 @@ The brand-story series needs another recognizable, nonduplicate episode after X0
 - [x] Freeze main/Shorts SHA and obtain independent SEC source audit, including exact shot-and-line Shorts checks.
 - [x] Obtain two independent script-only blind reads of the first SHA and resolve their shared findings in a revised candidate.
 - [x] Re-audit v3 SHA against sources and obtain two new blind reads; revise their shared `no_recap` finding, main-question payoff and visual spoilers.
-- [ ] Re-audit v4 SHA against sources and obtain two new independent script-only blind passes.
+- [x] Re-audit v4 SHA against sources and obtain one new script-only blind read; both identified specific failures, preserved as historical receipts.
+- [ ] Re-audit final v5 SHA against sources and obtain two independent script-only blind passes.
 - [x] Open draft PR #1627 with clear preproduction status and historical review receipts.
 - [x] Run v4 lint, docs-video tests, task check, claim/Shorts parity, then push the revised package to the draft PR.
+- [x] Run v5 lint, docs-video tests, task check, claim/Shorts parity, then push the revised package to the draft PR.
 
 ## How to verify
 
@@ -58,4 +60,6 @@ SEC archive and `data.sec.gov` pages are accessible; `ebayinc.com` and live YouT
 
 The independent SEC source receipt `reviews/source-review-v2-root.md` passed the earlier SHA `7cf5f20c…` main / `9c82557f…` Shorts. Two blind receipts on that SHA both failed shared `no_toc`, `chapters_link` and `no_recap` gates, so the narration, loops and Shorts were revised. Those historical receipts cannot pass the new SHA; independent delta source review and a new two-reader blind pass remain open. Draft PR #1627 is a review surface, not a finished episode.
 
-The v3 source delta receipt `reviews/source-review-v3-delta-root.md` passed main SHA `39edff49…` / Shorts `ae05695…`; its two new blind receipts both failed `no_recap`, and reader B also found the main why-question incompletely answered. v4 removes the repeated claims, saves the concrete company-stated buyer/seller benefit for the final answer, neutralizes early-reveal chapter/card and illustration prompts, and reanchors Short 2 as a standalone cut. v3 PASS and FAIL receipts are historical only; v4 needs its own exact-SHA checks.
+The v3 source delta receipt `reviews/source-review-v3-delta-root.md` passed main SHA `39edff49…` / Shorts `ae05695…`; its two new blind receipts both failed `no_recap`, and reader B also found the main why-question incompletely answered. v4 removed repeated claims but the independent source receipt `reviews/source-review-v4-independent.md` failed Short 2's FY2022 report attribution, while `reviews/blind-a-v4.md` failed opening spoiler and the central reason payoff. v5 removes the spoiler, places eBay's product rationale and its comparison limit in the 2020 body, names FY2022 explicitly, and rebuilds Short 2 as a standalone question-to-answer cut. All older receipts are historical only; v5 needs new exact-SHA checks before any media.
+
+v5 candidate: `video.json` SHA-256 `f3d24233b82f41379b5126a06fcec8f9ec7759a17b403b2fa5a58a27b80f9bb4`; `shorts.json` SHA-256 `b7a3d36dc11ec780b65089b2fca1167893e06ba771ed912e578ae94a30a49d6e`. Local lint returned 0 errors/0 warnings, both Shorts passed generator validation, 13/13 phrases match the selected main illustration shot, and the 105-line source matrix matches every line. The estimated spoken body is 543.9 seconds, not a TTS measurement. `npm run test:docs-videos` passed 236/236; `npm run check:tasks` exited 0 with unrelated existing queue warnings. Final independent source and narrative passes remain open.
