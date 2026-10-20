@@ -83,7 +83,7 @@
       "what": "跟三句排在一起的家康遺訓"
     },
     {
-      "setup": "hh419",
+      "setup": "hh420",
       "payoff": "hh501",
       "what": "今天的版本是哪本書定的"
     },
@@ -94,7 +94,7 @@
     },
     {
       "setup": "hh324",
-      "payoff": "hh415",
+      "payoff": "hh416",
       "what": "把川柳歸到文化年間的研究者"
     }
   ],
@@ -1283,12 +1283,23 @@
       "lines": [
         {
           "id": "hh409",
-          "text": "句子也還在變。明治四十二年，一本青年修養書，",
-          "emotion": "升級"
-        },
+          "text": "明治四十二年，一本青年修養書也說：這是後人假作的。"
+        }
+      ]
+    },
+    {
+      "id": "seinen-scene",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small, lively Sengoku lord with a big grin in a gold-patterned kimono sitting beside a round bamboo cage with a small soft-feathered cuckoo sitting quietly inside, beak shut on a garden veranda on an overcast day, chin in both hands with a bored sigh at us, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "hh410",
-          "text": "把場景寫成三人相會，等了很久，鳥都不叫。"
+          "text": "可是句子還在變：它把場景寫成三人相會，等了很久，鳥都不叫。",
+          "emotion": "升級"
         }
       ]
     },
@@ -1296,8 +1307,8 @@
       "id": "ieyasu-wait",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a plump, calm Sengoku lord with round cheeks in a plain brown kimono kneeling beside a round bamboo cage with a small soft-feathered cuckoo sitting quietly inside, beak shut in soft daylight, hands folded in his lap, waiting with calm shut eyes and a faint smile at us",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of a plump, calm Sengoku lord with round cheeks in a plain brown kimono kneeling beside a round bamboo cage with a small soft-feathered cuckoo sitting quietly inside, beak shut in soft daylight, hands folded in his lap, waiting with calm shut eyes and a faint smile our way",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1311,8 +1322,8 @@
       "id": "other-q",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, holding up two fingers with a questioning look our way, pale window light",
-        "camera": "pan right",
+        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, holding up two fingers with a questioning look toward the viewer, pale window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1327,8 +1338,8 @@
       "id": "teacher-1910",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era schoolteacher in a dark Western suit and round spectacles standing in an empty classroom in the morning, holding a slim teacher's book with a plain cover and smiling proudly toward the viewer, light from tall windows",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a Meiji-era schoolteacher in a dark Western suit and round spectacles standing in an empty classroom in the morning, holding a slim teacher's book with a plain cover and smiling proudly to the front, light from tall windows",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1372,16 +1383,31 @@
       ]
     },
     {
-      "id": "writer26",
+      "id": "teacher-1910-says",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Taisho-era writer in a tweed jacket with a little moustache at a writing desk in a study in the afternoon, holding up a fountain pen with a playful raised eyebrow to the front, soft window light",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a Meiji-era schoolteacher in a dark Western suit and round spectacles in an empty classroom in soft morning light, adjusting his round spectacles with a careful, modest look at us",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "hh415",
+          "text": "這本書也只說：世上傳說，是這三人作的。"
+        }
+      ]
+    },
+    {
+      "id": "writer26",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Taisho-era writer in a tweed jacket with a little moustache at a writing desk in a study in the afternoon, holding up a fountain pen with a playful raised eyebrow our way, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hh416",
           "text": "大正十五年，那位把川柳歸到文化年間的研究者，也記下一種說法："
         }
       ]
@@ -1390,13 +1416,13 @@
       "id": "writer26-nod",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a Taisho-era writer in a tweed jacket with a little moustache at his desk in pale window light, nodding along with a pen behind his ear at us",
-        "camera": "pan left",
+        "prompt": "Medium close-up of a Taisho-era writer in a tweed jacket with a little moustache at his desk in pale window light, nodding along with a pen behind his ear toward the viewer",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh416",
+          "id": "hh417",
           "text": "這恐怕是後人借杜鵑，寫三將的性格。"
         }
       ]
@@ -1405,13 +1431,13 @@
       "id": "writer26-topic",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a Taisho-era writer in a tweed jacket with a little moustache at his desk in gentle light, tapping a folded fan against his chin with a knowing grin our way",
-        "camera": "push in",
+        "prompt": "Medium close-up of a Taisho-era writer in a tweed jacket with a little moustache at his desk in gentle light, tapping a folded fan against his chin with a knowing grin to the front",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh417",
+          "id": "hh418",
           "text": "在他記的版本裡，場景又換了：變成事先出好題目的歌會。"
         }
       ]
@@ -1420,13 +1446,13 @@
       "id": "teach-odd",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses leaning back in a reading-room chair in the afternoon, arms folded with a wry smile toward the viewer, soft daylight",
-        "camera": "drift",
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses leaning back in a reading-room chair in the afternoon, arms folded with a wry smile at us, soft daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh418",
+          "id": "hh419",
           "text": "我們覺得最奇怪的是：明說是編的，卻照樣拿來教人看這三個人的性格。",
           "emotion": "像跟朋友說自己的看法"
         }
@@ -1436,13 +1462,13 @@
       "id": "who-fixed",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses's face at a reading-room table, chewing the end of a pencil with a puzzled look to the front, pale window light",
-        "camera": "tilt down",
+        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses's face at a reading-room table, chewing the end of a pencil with a puzzled look our way, pale window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh419",
+          "id": "hh420",
           "text": "那今天這個版本，是哪一本書定下來的？",
           "emotion": "問句，停一拍"
         }
@@ -1453,8 +1479,8 @@
       "chapter": "昭和十年，中學修身課上了一堂「等待的心」",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses between tall archive shelves in the afternoon, shaking her head slowly with an old book in each hand at us, soft light",
-        "camera": "pan right",
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses between tall archive shelves in the afternoon, shaking her head slowly with an old book in each hand toward the viewer, soft light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1485,8 +1511,8 @@
       "id": "teacher35",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1930s schoolteacher in a charcoal three-piece suit with neatly parted hair standing behind a wooden teacher's desk in a school hall in the morning, resting one hand beside a round bamboo cage with a small soft-feathered cuckoo sitting quietly inside, beak shut and smiling our way, pale window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a 1930s schoolteacher in a charcoal three-piece suit with neatly parted hair standing behind a wooden teacher's desk in a school hall in the morning, resting one hand beside a round bamboo cage with a small soft-feathered cuckoo sitting quietly inside, beak shut and smiling to the front, pale window light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1505,8 +1531,8 @@
       "id": "teacher35-book",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a 1930s schoolteacher in a charcoal three-piece suit with neatly parted hair at a teacher's desk in pale morning light, holding up a slim reference book with a plain cover and an earnest look toward the viewer",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a 1930s schoolteacher in a charcoal three-piece suit with neatly parted hair at a teacher's desk in pale morning light, holding up a slim reference book with a plain cover and an earnest look at us",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1524,8 +1550,8 @@
       "id": "teacher35-q",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, peering over her glasses with a suspicious little smile to the front, soft daylight",
-        "camera": "pan left",
+        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, peering over her glasses with a suspicious little smile our way, soft daylight",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1569,8 +1595,8 @@
       "id": "teacher35-oops",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a 1930s schoolteacher in a charcoal three-piece suit with neatly parted hair in a school hall in pale morning light, scratching his head with a sheepish grin at us",
-        "camera": "push in",
+        "prompt": "Medium close-up of a 1930s schoolteacher in a charcoal three-piece suit with neatly parted hair in a school hall in pale morning light, scratching his head with a sheepish grin toward the viewer",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1585,8 +1611,8 @@
       "id": "writer40",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1940s author in a dark cardigan with slicked-back hair at a writing desk in the afternoon, laughing and waving one hand as if to say no way our way, soft window light",
-        "camera": "drift",
+        "prompt": "Medium shot of a 1940s author in a dark cardigan with slicked-back hair at a writing desk in the afternoon, laughing and waving one hand as if to say no way to the front, soft window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1600,8 +1626,8 @@
       "id": "writer40-nod",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a 1940s author in a dark cardigan with slicked-back hair at his desk in gentle light, nodding firmly with his pen raised toward the viewer",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of a 1940s author in a dark cardigan with slicked-back hair at his desk in gentle light, nodding firmly with his pen raised at us",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1616,8 +1642,8 @@
       "id": "traveller-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an old Edo-era traveller in a plain brown kimono and straw sandals resting on a roadside stone under a cloudy sky, the heavy bundle beside him, wiping his brow and smiling to the front",
-        "camera": "pan right",
+        "prompt": "Medium close-up of an old Edo-era traveller in a plain brown kimono and straw sandals resting on a roadside stone under a cloudy sky, the heavy bundle beside him, wiping his brow and smiling our way",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1632,8 +1658,8 @@
       "id": "ikun-late",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table in the afternoon, sliding a thick old book aside with a knowing look at us, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table in the afternoon, sliding a thick old book aside with a knowing look toward the viewer, soft window light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1647,8 +1673,8 @@
       "id": "dancer",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Sengoku lord in a dark kimono with a folding fan in a castle hall in soft daylight, dancing with an open folding fan held high and singing with his eyes half shut our way",
-        "camera": "pull out",
+        "prompt": "Medium shot of a Sengoku lord in a dark kimono with a folding fan in a castle hall in soft daylight, dancing with an open folding fan held high and singing with his eyes half shut to the front",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1662,8 +1688,8 @@
       "id": "dancer-close",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a Sengoku lord in a dark kimono with a folding fan in a castle hall in hazy light, lowering his fan and taking a deep breath with a resolute look toward the viewer",
-        "camera": "pan left",
+        "prompt": "Medium close-up of a Sengoku lord in a dark kimono with a folding fan in a castle hall in hazy light, lowering his fan and taking a deep breath with a resolute look at us",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1678,8 +1704,8 @@
       "id": "verdict-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a reading-room table in the afternoon, sitting up straight with a manila folder in her hands and a serious look to the front, pale window light",
-        "camera": "push in",
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a reading-room table in the afternoon, sitting up straight with a manila folder in her hands and a serious look our way, pale window light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1694,8 +1720,8 @@
       "id": "two-hundred",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, holding two old books up side by side with a small frown at us, soft daylight",
-        "camera": "drift",
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, holding two old books up side by side with a small frown toward the viewer, soft daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1709,8 +1735,8 @@
       "id": "two-hundred-2",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, tapping the spine of an old book and lifting her eyebrows our way, gentle window light",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, tapping the spine of an old book and lifting her eyebrows to the front, gentle window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1725,8 +1751,8 @@
       "id": "none-then",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses between tall archive shelves in soft daylight, opening her empty hands with a gentle shrug toward the viewer",
-        "camera": "pan right",
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses between tall archive shelves in soft daylight, opening her empty hands with a gentle shrug at us",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1740,8 +1766,8 @@
       "id": "unknown",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a wooden desk in the afternoon, shrugging with both palms up beside an empty chair to the front, gentle window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a wooden desk in the afternoon, shrugging with both palms up beside an empty chair our way, gentle window light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1756,8 +1782,8 @@
       "id": "speaker-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a plump Edo samurai guest in a brown haori with a round friendly face kneeling on tatami at an evening gathering in soft lamp light, raising one finger as he makes a remark, eyebrows lifted knowingly at us",
-        "camera": "pull out",
+        "prompt": "Medium shot of a plump Edo samurai guest in a brown haori with a round friendly face kneeling on tatami at an evening gathering in soft lamp light, raising one finger as he makes a remark, eyebrows lifted knowingly toward the viewer",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1776,8 +1802,8 @@
       "id": "stamp",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a wooden desk in the afternoon, pressing a rubber stamp onto the cover of a plain manila folder and smiling our way, soft window light, a bamboo birdcage on the desk",
-        "camera": "pan left",
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a wooden desk in the afternoon, pressing a rubber stamp onto the cover of a plain manila folder and smiling to the front, soft window light, a bamboo birdcage on the desk",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
