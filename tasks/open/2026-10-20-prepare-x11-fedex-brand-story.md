@@ -23,7 +23,7 @@ The owner wants more recognizable brand stories beyond the existing X01–X10 wo
 ## Definition of done
 
 - [x] A source-checked six-chapter script, two standalone Shorts and shot package pass the brand-story lint and two independent narrative blind reviews.
-- [ ] Open an honest draft PR for the reviewed preproduction package.
+- [x] Open [draft PR #1630](https://github.com/x812033727/travel_scanner/pull/1630) for the reviewed preproduction package.
 - [ ] Paid media, audio, and local preview pass the per-video US$25 ledger, human visual/audio QA, and the series bookend/caption/link rules.
 
 ## Steps
@@ -52,3 +52,5 @@ The [v5 source audit](../../docs/videos/story-everyday-fedex-x11/reviews/source-
 Current v6 candidate: `video.json` SHA-256 `e8aa68f3aef2a8d8d1068152fe5cf024cfc9e91590103c37b586b338ba10d240`; `shorts.json` SHA-256 `7d352677b785667866b6ef09e7c4f4934d6659fb966f334c8d98c4ac063dcaa6` (same Shorts JSON bytes, but main-source image prompts changed). Lint 0 errors/0 warnings; six chapters, 15 loops, 99 shots/6 stats cards/1 outro, 122 lines and 2,017 normalized spoken units of substantive body, ~8.07 minutes at planned normal 250 units/minute before pauses. Next: exact-pair independent source delta and two **new** blind reads. No paid generation, push or PR until those gates and media QA.
 
 The [v6 independent source/visual delta](../../docs/videos/story-everyday-fedex-x11/reviews/source-audit-v6-independent.md) is PASS for the explicit U.S. surface-operations scope and 27 prompt changes. Fresh [blind A](../../docs/videos/story-everyday-fedex-x11/reviews/blind-a-v6-independent.md) and [blind B](../../docs/videos/story-everyday-fedex-x11/reviews/blind-b-v6-independent.md) both scored 12/12 on the exact pair; [combined receipt](../../docs/videos/story-everyday-fedex-x11/reviews/combined-v6-independent.md) records the script-level PASS and the limits of estimated timing. An honest draft PR can now carry this preproduction package; no TTS, illustrations, licensed music, official animations, MP4 or YouTube links exist yet. Strict body duration still needs actual Sulafat audio, and the US$25 all-in budget plus shared image/judge quota must be checked before paid work.
+
+Draft [PR #1630](https://github.com/x812033727/travel_scanner/pull/1630) is open with the exact v6 hashes, independent receipts and uncompleted production gates. It is not a published video.
