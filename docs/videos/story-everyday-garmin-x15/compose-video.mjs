@@ -41,15 +41,15 @@ if (chapters.some(chapter => !chapter.title || chapter.rows.length < 5) || outro
 const allRows = [...chapters.flatMap(chapter => chapter.rows), ...outro];
 if (new Set(allRows.map(row => row.id)).size !== allRows.length) throw new Error("Duplicate narration line ID");
 for (const [ci, chapter] of chapters.entries()) {
-  for (const [ri, row] of chapter.rows.entries()) {
-    const expected = `x15${String(ci + 1).padStart(2, "0")}${String(ri + 1).padStart(2, "0")}`;
-    if (row.id !== expected) throw new Error(`Expected ${expected}; found ${row.id}`);
+  let prior = 0;
+  for (const row of chapter.rows) {
+    const prefix = `x15${String(ci + 1).padStart(2, "0")}`;
+    const number = Number(row.id.slice(prefix.length));
+    if (!row.id.startsWith(prefix) || !Number.isInteger(number) || number <= prior) throw new Error(`Chapter ${ci + 1}: non-increasing line ID ${row.id}`);
+    prior = number;
   }
 }
-for (const [ri, row] of outro.entries()) {
-  const expected = `x1506${String(chapters[5].rows.length + ri + 1).padStart(2, "0")}`;
-  if (row.id !== expected) throw new Error(`Expected ${expected}; found ${row.id}`);
-}
+if (outro.some((row, ri) => !/^x1506\d{2}$/.test(row.id) || Number(row.id.slice(-2)) <= Number((ri ? outro[ri - 1] : chapters[5].rows.at(-1)).id.slice(-2)))) throw new Error("Outro line IDs must follow chapter 6 in increasing order");
 
 const camera = ["Medium shot, push in", "Close-up, pull out", "Wide shot, pan left", "Medium close-up, pan right", "Overhead shot, tilt down", "Low-angle shot, tilt up"];
 const light = ["Mild glow from a side window", "Soft grey morning light", "Overcast afternoon sky", "Muted skylight", "Gentle indoor light", "Soft evening light"];
@@ -59,15 +59,22 @@ const safeguards = [
   "Any maps are schematic and unlabeled; no trademarks.",
   "All objects remain general, with no readable inscriptions or real model contours.",
 ];
-const humanAction = cue => {
+const humanAction = (cue, chapterIndex) => {
   if (/boat|chartplotter|sea/.test(cue)) return ["on a small plain boat", "sailor", "touching a plain console"];
   if (/cockpit|aircraft/.test(cue)) return ["in a simple aircraft cockpit", "pilot", "looking down at a plain instrument panel"];
   if (/mountain|trail|hiker|outdoor/.test(cue)) return ["on a winding trail", "hiker", "holding a plain handheld receiver"];
   if (/running|runner|track|fitness|watch|sport/.test(cue)) return ["beside a running track", "runner", "checking a plain wrist receiver"];
-  if (/truck|dashboard|steering|car|vehicle|road/.test(cue)) return ["in a plain parked vehicle", "driver", "holding a small route screen"];
+  if (/\b(?:truck|dashboard|steering|car|vehicle|road)\b/.test(cue)) return ["in a plain parked vehicle", "driver", "holding a small route screen"];
   if (/phone|smartphone/.test(cue)) return ["at a plain workbench", "customer", "holding a plain phone"];
   if (/shelf|boxes|cartons|warehouse|device/.test(cue)) return ["at an anonymous electronics shop", "clerk", "lifting a plain equipment box"];
-  return ["at an archive desk", "analyst", "turning an unwritten annual-report page"];
+  return [
+    ["in an archive aisle", "researcher", "turning a sealed folio"],
+    ["in a small equipment workshop", "technician", "sorting plain cardboard cases"],
+    ["beside a warehouse conveyor", "clerk", "separating anonymous parcels"],
+    ["in a municipal reading room", "researcher", "turning a plain ledger"],
+    ["near a winding footpath", "walker", "holding an unmarked receiver"],
+    ["at a bright planning studio", "analyst", "moving coloured wooden blocks"],
+  ][chapterIndex];
 };
 // Each numerical card is hand-written from G1–G6, then anchored to one exact
 // narration beat. Matching a unique phrase keeps IDs stable if a hook moves.
@@ -103,7 +110,7 @@ const sayWords = [
   ["Garmin", "嘎明"], ["nüvi", "紐維"], ["GPS", "G P S"], ["XT", "艾克斯提"],
 ];
 const lineFor = row => {
-  const line = { id: row.id, text: row.text, emotion: row.text.endsWith("？") ? "台灣口語說書，自然提問，正常語速" : "台灣口語說書，日期與數字清楚，正常語速" };
+  const line = { id: row.id, text: row.text, pause_after_ms: 0, emotion: row.text.endsWith("？") ? "台灣口語說書，自然提問，正常語速" : "台灣口語說書，日期與數字清楚，正常語速" };
   const say = sayWords.reduce((value, [written, spoken]) => value.replaceAll(written, spoken), row.text);
   if (say !== row.text) Object.assign(line, { say, say_for: textHash(row.text) });
   return line;
@@ -120,7 +127,7 @@ for (const [ci, chapter] of chapters.entries()) {
     const id = `x15-b${String(ci + 1).padStart(2, "0")}-s${String(++sceneNo).padStart(2, "0")}`;
     const card = cards.get(current.id);
     const visualCue = selected.map(row => row.cue.replace(/\bgeneric\b/g, "plain").replace(/\bdevices\b/g, "units").replace(/\bdevice\b/g, "unit")).join("; ");
-    const [setting, role, action] = humanAction(visualCue);
+    const [setting, role, action] = humanAction(visualCue, ci);
     const shotIndex = card ? shotNo : shotNo++;
     const orientation = shotIndex % 4 === 0 ? `one anonymous ${role} facing the viewer and ${action}` : `one anonymous ${role} ${action}`;
     const scene = card ? { id, template: "stats", data: card, lines: selected.map(lineFor) } : {
@@ -175,7 +182,7 @@ const video = {
   series: { slug: "brand-stories-everyday-reversals-extra", episode: 15, chapter: 1 },
   music: { prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 },
   loops,
-  youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Garmin 一度七成營收靠車用業務，手機來了怎麼辦？｜品牌故事", description, tags: ["Garmin", "品牌故事", "GPS", "導航機", "運動手錶", "年報"], video_id: null },
+  youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Garmin 七成營收曾靠車用／行動事業，手機來了怎麼辦？｜品牌故事", description, tags: ["Garmin", "品牌故事", "GPS", "導航機", "運動手錶", "年報"], video_id: null },
   thumbnail: { template: "thumb", data: { headline: "導航機退場？", tag: "品牌故事", brand: "Garmin", shot: "x15-b01-s01" } },
   sources: sourceUrls.map(({ code, ...source }) => source), assets: [], scenes,
 };

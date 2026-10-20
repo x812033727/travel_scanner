@@ -33,11 +33,19 @@ for (const [si, short] of rows.entries()) {
 }
 // Use existing long-video illustrations only after hand-picking story-appropriate shots.
 // Keep this mapping distinct from landscape stats cards: vertical cards are native overlays.
-const shotMap = {
-  1: ["x15-b03-s21", "x15-b01-s03", "x15-b03-s02", "x15-b04-s08", "x15-b04-s17", "x15-b04-s10", "x15-b04-s15", "x15-b04-s16", "x15-b04-s07"],
-  2: ["x15-b05-s01", "x15-b05-s02", "x15-b05-s04", "x15-b05-s08", "x15-b05-s26", "x15-b06-s23", "x15-b06-s21", "x15-b05-s13", "x15-b05-s21"],
+// Anchor cuts to spoken line IDs, not scene numbers: scene packing can change
+// between script revisions while the intended illustration remains the same.
+const shotLineMap = {
+  1: ["x150331", "x150104", "x150302", "x150412", "x150425", "x150414", "x150421", "x150423", "x150410"],
+  2: ["x150501", "x150502", "x150505", "x150511", "x150541", "x150633", "x150629", "x150519", "x150532"],
 };
 const byShot = new Map(video.scenes.map(scene => [scene.id, scene]));
+const byLine = new Map(video.scenes.flatMap(scene => scene.lines.map(line => [line.id, scene])));
+const shotMap = Object.fromEntries(Object.entries(shotLineMap).map(([si, ids]) => [si, ids.map(id => {
+  const scene = byLine.get(id);
+  if (!scene || scene.template !== "shot") throw new Error(`Unavailable Short source line or landscape stats card: ${id}`);
+  return scene.id;
+})]));
 for (const [si, short] of rows.entries()) {
   if (shotMap[si + 1].length !== short.length) throw new Error(`Short ${si + 1}: hand-pick ${short.length} matching source shots`);
   for (const shot of shotMap[si + 1]) if (!byShot.has(shot) || byShot.get(shot).template !== "shot") throw new Error(`Unavailable/landscape stats shot: ${shot}`);

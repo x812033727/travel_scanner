@@ -1,8 +1,8 @@
 # X15 Garmin｜成片及上架交接
 
-**已有獨立 PASS 的來源企劃與凍結的離線主片／Shorts JSON；尚無正式影片或 YouTube ID。** 主片與兩支 Shorts 的真實上架連結必須由實際上傳後的回傳 ID 組成；`youtube.video_id` 在那之前保持 `null`。可點的 SEC 原始來源網址已列在 `source-matrix.md` 並寫入主片、Shorts 說明欄；正式互鏈要等真實網址。
+**已有獨立 PASS 的來源企劃與 v2 凍結的離線主片／Shorts JSON；v1 逐句來源與兩份敘事盲讀 HOLD，v2 尚待新審；尚無正式影片或 YouTube ID。** 主片與兩支 Shorts 的真實上架連結必須由實際上傳後的回傳 ID 組成；`youtube.video_id` 在那之前保持 `null`。可點的 SEC 原始來源網址已列在 `source-matrix.md` 並寫入主片、Shorts 說明欄；正式互鏈要等真實網址。
 
-1. 主片 JSON SHA-256 `0a8ca399e47d274d0163b9268f4813f9f1037a7a40435feb5bcbb569065ff88a`，Shorts JSON SHA-256 `b216f9b598aa512148bd2f673e71e509c0c3fcc3f2ca64d0e9d6ffbb653e2da6`。由不是作者的代理重新看原始 SEC 資料，逐句核對來源、期間、產品／事業分母及片尾答案；`say` 的 Garmin、nüvi、Forerunner、NAVIGON、GPS、Auto OEM 初步念法亦須由另一人審聽，不能把離線 `say` 欄當已核准配音。兩名未讀先前評審的讀者對同一版 SHA 各做盲審；有共同必答 NO 要先修稿重審。
+1. v2 主片 JSON SHA-256 `f8a464a997424269e57e91f77d90fe2e5bde74cd8e618a979dbbbe7638166cef`，Shorts JSON SHA-256 `caf9364ac3282f2b7aedca4b5852610dda974d88f356ca329536c7c0a179c630`。由不是作者的代理重新看原始 SEC 資料，逐句核對來源、期間、產品／事業分母及片尾答案；`say` 的 Garmin、nüvi、Forerunner、NAVIGON、GPS、Auto OEM 初步念法亦須由另一人審聽，不能把離線 `say` 欄當已核准配音。兩名未讀先前評審的讀者對同一版 SHA 各做盲審；有共同必答 NO 要先修稿重審。v1 的 [來源 HOLD](reviews/script-source-audit-v1-independent.md)、[盲讀 A HOLD](reviews/blind-a-v1-independent.md)、[盲讀 B HOLD](reviews/blind-b-v1-independent.md)不外推為 v2 的判定。
 2. 通過後唯讀乾跑配對影片工具，確認可用圖像、評審、語音、音樂額度與本集費用上界。整支 US$25 含一切重試，若全站額度不足則停在可交接收據，不以別集額度補算或虛報零成本。
 3. TTS 逐句配音、轉錄／實聽複查，量 30–60 秒開場與扣除開場、末三句、5 秒片頭、21 秒片尾後至少 8:00 的實質正文。稿件加字或改事實必須重做來源與盲審；不能把朗讀放慢或空鏡當故事長度。
 4. 以 `image-01` 及精確 `cute-mystery` 小批試圖、評審與原尺寸檢查，保留被拒絕原因。真數字用程式後製，插畫避免假字、商標、真人、可辨識機型；場景至少七成插畫、卡片連續不超過三張。組正式選定的 5 秒片頭、21 秒片尾、授權音樂、可關閉繁中 CC，並把 Shorts 用原生 9:16 圖卡與真正音訊完成 25–55 秒。
