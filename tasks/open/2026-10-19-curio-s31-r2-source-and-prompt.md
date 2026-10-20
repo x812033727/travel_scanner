@@ -1,6 +1,6 @@
 ---
 id: 2026-10-19-curio-s31-r2-source-and-prompt
-title: Curio S31 source and prompt corrections through R5
+title: Curio S31 source and prompt corrections through R5a
 status: in-progress
 priority: P2
 area: docs
@@ -14,7 +14,7 @@ scope:
   - docs/videos/curio-s31
 ---
 
-# Curio S31 source and prompt corrections through R5
+# Curio S31 source and prompt corrections through R5a
 
 ## Why
 
@@ -24,12 +24,12 @@ Independent source/visual gate [verify-2.md](../../docs/videos/curio-s31/verify-
 
 - [x] Script, claims and still prompts remove the blocked source assertions and visual specificity, while keeping the story body above eight minutes.
 - [ ] Fresh context-isolated official 13-question narrative panel and independent source/visual audit pass against the same final SHA; lint remains 0 errors/0 warnings.
-- [x] R2–R5 handoffs record exact script/video/claims SHA values and state audio and paid media remain unstarted.
+- [x] R2–R5a handoffs record exact script/video/claims SHA values and state audio and paid media remain unstarted.
 
 ## Steps
 
 - [x] Revise the blocked narration and prompts, regenerate `video.json`, `claims.md`, `script.md`; compare all 97 IDs and rerun lint.
-- [ ] Obtain new independent panel and source/visual gate on R5, resolve findings, then record final verification.
+- [ ] Bind R5's 13/13 narrative seal to the unchanged R5a script and recheck the two amended still prompts against R5a's new video SHA before final verification.
 - [x] Commit and push scoped S31 changes without touching other agents' staged files.
 
 ## How to verify
@@ -43,3 +43,5 @@ R2 script SHA `d6e2825bb35adbb7bd2b101821b27b4fe32394f7d8e35b166c594a3b9179089e`
 R3 fresh context-isolated official panel again yielded 12/13 YES, with only `no_recap` NO: ly037/038 immediately repeated the unchanged-taste arrival fact, and ly052/053 restated Guangzhou tribute. The sealed receipt is `/tmp/curio_s31_r3_fresh_narrative_blind.md`. R4 makes ly038 flip back to Du Mu's palace scene and ask whether the history joins it; ly053 now puts the two records together and searches for a shared shipment mark. R4 script SHA `899dd8510fbd1a45e0596682df38c6ea18600c356681369ff2ffbde36d56c592`, video SHA `8ebe96c889a8bb20d0d2e341864e7d037232eed0da015df035a924c3c8cd0a86`, claims SHA `eae4a0838b10184975ec50e747934db18659befc67c8eba9a761b73d88fd970b`; the pending review conditions are recorded in [verify-5.md](../../docs/videos/curio-s31/verify-5.md). No media has been made.
 
 R4's independent narrative panel passed 13/13, but the subsequent primary-text and 96-prompt audit blocked on an invented birthday banquet at ly045, a palace-receipt cue at ly037, and a smell/taste mismatch at ly077; it also noted ly016/ly021 precision and missing `NBG` citations at ly076/ly078. R5 applies all corrections and is frozen in [verify-6.md](../../docs/videos/curio-s31/verify-6.md): script SHA `332c875a835f89b428c124f578c380079976b9e35b396d098b086a56ba08cef2`, video SHA `4a0d0bc19c5b2ebbf6982a58a6c1331b6527b6fca4d02a5230e15edeae74c754`, claims SHA `83063009c6fec93840e0e6043118f7ed2df691b3e38651bc1590f12ad0ec2127`. Lint 0/0, 97 aligned lines, 96 still prompts, 10 loops, body above eight minutes; fresh reviews pending. No TTS, image generation, music or assembly.
+
+R5 fresh blind panel sealed 13/13 YES on the unchanged script SHA. Independent receipt `/tmp/curio_s31_r5_source_visual_audit.md` re-downloaded four pinned full texts and found 97/97 claims supported, 96/96 prompts checked, with nonblocking cautions at ly021 (one rider versus several in the poem) and ly049 (implied in-hall basket handover). [verify-7.md](../../docs/videos/curio-s31/verify-7.md) records prompt-only R5a: script and claims SHA stay as above; new video SHA `930b04118fc8eaab69a904e986a5888322d0d942247535f1567e347bd0a4bf11`, lint 0/0, 97/97 unchanged, 96 still, 10 loops. Only the two revised prompts need independent recheck against this exact new video hash before audio. No media has been made.
