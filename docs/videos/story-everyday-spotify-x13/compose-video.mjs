@@ -66,10 +66,22 @@ const cues = [
   ["a green advertising ledger looks deceptively lighter while a new video folder approaches", "an unmarked video creator program folder opens on a desk", "a fictional video creator with a plain camera frame", "creator receives an unmarked compensation token", "anonymous member watches a blank video frame without interruptions", "two separate creator and member cards on a desk", "one historical cost lane sits beside a newly opened member ledger", "one limited video-experience cost token moves to orange member ledger, no member-age grouping", "green ad ledger keeps the remaining generic podcast tokens", "one question folder stands between green and orange ledgers", "a green ledger with smaller podcast cost pile", "an analyst compares one service column against an unseen whole-service total", "one cost token moves between ledgers while the unmeasured remainder stays covered", "blank transfer amount field with no digits or text", "anonymous accountant leaves an unmeasured savings box open", "member income kept apart from podcast-only evidence box", "both ledgers contain several unrelated content token types", "two old acquisition folders lacking individual result sheets", "creator and member on distinct sides of a conceptual service desk", "an unbranded program continues operating beside old acquisition folders", "three separate evidence cards for assets, whole company, and ad service", "three genuine but incompatible evidence cards around one question folder", "anonymous researcher leaves one investment-return answer area empty"],
 ];
 const cueOverrides = new Map([
+  ["x130101", "an anonymous fictional creator's hand reaches toward a plain microphone beside a blank purchase folder, both centered"],
   ["x130103", "two acquisition folders stacked vertically inside the central frame, one near a creator tool and one near a studio card"],
   ["x130105", "a purchase-price folder faces an empty future-return tray, both centered"],
+  ["x130106", "an outside fictional researcher draws a separate content-portfolio folder near the edge of a desk while its adjustment area stays covered"],
+  ["x130107", "an anonymous listener presses play as an unrelated sealed whole-company annual-results card remains behind the player"],
+  ["x130108", "a fictional video creator faces a plain camera frame while a separate blank member-viewing screen waits nearby; no real show imagery"],
+  ["x130109", "the outside fictional researcher leans toward two old purchase folders and an empty return tray, leaving the answer covered"],
+  ["x130201", "the same outside fictional researcher follows two separate audio paths toward an unbranded listener player, with an empty income tray nearby"],
   ["x130204", "two unrelated anonymous audio cards converge from creator and studio desks into one unbranded player, all centered"],
+  ["x130213", "an anonymous listener sees a plain audio player beside a separate generic advertising-impression tray, no revenue shown for mere upload"],
   ["x130214", "plain cash coins and unmarked award tokens side by side in the central frame"],
+  ["x130310", "the outside fictional researcher places a broad green income tray beside the same broad account's total-cost tray, both still empty"],
+  ["x130313", "a growing plain stream pile stands near a generic rights-cost tray in the broad advertising account"],
+  ["x130320", "the outside fictional researcher keeps a rights-cost stack beside but separate from a podcast-cost stack inside one broad account"],
+  ["x130408", "the outside fictional researcher holds a partial content-asset card near the old acquisition folders, hesitates, and does not attach it"],
+  ["x130411", "the outside fictional researcher moves the partial content-asset card back under a broad portfolio folder, away from both purchase folders"],
   ["x130419", "a later green advertising ledger arrives beside the reorganized content folder"],
   ["x130420", "two still-closed evidence envelopes for prior costs and new ad income"],
   ["x130421", "an analyst holds an empty income tray beside an empty cost tray"],
@@ -86,13 +98,18 @@ const cueOverrides = new Map([
   ["x130526", "one unassigned video-experience cost token waits between green and orange ledgers"],
   ["x130608", "green advertising ledger stacked above orange member ledger in the central frame, one limited video-experience cost token moving between them, no member-age grouping"],
   ["x130610", "green advertising ledger stacked above orange member ledger in the central frame, a blank cost-comparison space between them"],
+  ["x130616", "the outside fictional researcher holds broad green and orange service ledgers beside two separate unanswered purchase folders"],
+  ["x130617", "the outside fictional researcher looks for, but finds no, deal-specific row in either broad service ledger"],
+  ["x130618", "a new video-creator payment token is kept away from two older unrelated purchase folders"],
+  ["x130619", "a fictional creator sends an unbranded video toward a plain member screen while the outside fictional researcher sees only a broad service total"],
+  ["x130620", "an older tool folder and studio folder stand apart from a newer creator-payment folder"],
   ["x130621", "two old acquisition-price folders face separate still-empty lifetime-return trays"],
-  ["x130622", "three unrelated evidence cards stop short of the separate acquisition-return trays"],
+  ["x130622", "the outside fictional researcher pulls three differently scoped evidence cards apart instead of adding them, leaving two purchase-return trays empty"],
 ]);
 const camera = ["Medium shot, push in", "Close-up, pull out", "Wide shot, gentle pan left", "Overhead shot, tilt down", "Medium close-up, pan right", "Low-angle shot, lift gently"];
 const rooms = ["in an anonymous research room", "in a plain recording booth", "in an accounts library", "along a records aisle", "in a service hall", "beside a review shelf"];
 const promptTails = [
-  "Anonymous fictional people only; no readable writing, corporate insignia, copyrighted illustrations or celebrity likeness. Reserve open space for editor-applied titles.",
+  "Anonymous illustrative people only; no readable writing, corporate insignia, copyrighted illustrations or celebrity likeness. Reserve open space for editor-applied titles.",
   "All objects are unbranded and without print; avoid numbers, lettering and trademark shapes. Keep the important gesture visible.",
   "Do not imitate a named host, published series imagery, historical contract or company emblem. Place scene elements clearly on camera.",
   "Illustrative, not archival: empty paper surfaces and invented ordinary characters only. Compose a clear action.",
@@ -164,6 +181,6 @@ const bytes = JSON.stringify(video, null, 2) + "\n";
 writeFileSync(path.join(dir, "video.json"), bytes);
 const hash = createHash("sha256").update(bytes).digest("hex");
 writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 13, chapter: 1, planned_episodes: 20, title: "Spotify：兩筆播客收購能否判定回本", logline: "從 2019 年兩筆播客收購一路核對 2020 廣告分類、2023 內容重整、2024 全公司獲利與 2025 影片成本改列，釐清公開紀錄能否證明回本。", names: ["Spotify", "Anchor", "Gimlet"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
-writeFileSync(path.join(dir, "script.md"), ["# X13 Spotify｜六章繁中逐句稿 v6", "", `離線前製；\`video.json\` SHA-256：\`${hash}\`。未獨立逐句審核、盲評、配音或測量實際時長。濃縮開場後接正式 5 秒片頭；最後三句後接正式 21 秒 v4 片尾。`, "", ...chapters.flatMap((rows, i) => [`## 第 ${i + 1} 章｜${titles[i]}${i === 0 ? "（開場濃縮）" : ""}`, "", ...rows.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
+writeFileSync(path.join(dir, "script.md"), ["# X13 Spotify｜六章繁中逐句稿 v7", "", `離線前製；\`video.json\` SHA-256：\`${hash}\`。未獨立逐句審核、盲評、配音或測量實際時長。濃縮開場後接正式 5 秒片頭；最後三句後接正式 21 秒 v4 片尾。`, "", ...chapters.flatMap((rows, i) => [`## 第 ${i + 1} 章｜${titles[i]}${i === 0 ? "（開場濃縮）" : ""}`, "", ...rows.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
 writeFileSync(path.join(dir, "line-source-matrix.md"), ["# X13 Spotify｜作者逐句來源索引", "", `\`video.json\` SHA-256：\`${hash}\`。作者標記不等於獨立來源審核；來源 URL 與邊界見 [source-matrix.md](source-matrix.md)。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |", ...allRows.map(row => `| \`${row.id}\` | ${row.text.replaceAll("|", "\\|")} | ${row.refs.join("、") || "敘事分析／提問"} |`), ""].join("\n"));
 console.log(JSON.stringify({ video_sha256: hash, lines: allRows.length, scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, opening_chars: chapters[0].map(row => row.text).join("").length, body_chars: chapters.slice(1).flat().map(row => row.text).join("").length }, null, 2));

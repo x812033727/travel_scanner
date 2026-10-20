@@ -59,7 +59,7 @@ const shorts = groups.map((lines, index) => ({
 const bytes = JSON.stringify(shorts, null, 2) + "\n";
 writeFileSync(path.join(dir, "shorts.json"), bytes);
 const sha = createHash("sha256").update(bytes).digest("hex");
-const mdLines = ["# X13 Spotify｜兩支獨立 Shorts 逐句稿 v6", "", `\`shorts.json\` SHA-256：\`${sha}\`。未配音、生成插畫、直式輸出或手機驗收；兩支各自從頭提出問題並回答。`];
+const mdLines = ["# X13 Spotify｜兩支獨立 Shorts 逐句稿 v7", "", `\`shorts.json\` SHA-256：\`${sha}\`。未配音、生成插畫、直式輸出或手機驗收；兩支各自從頭提出問題並回答。`];
 const sources = ["# X13 Spotify｜Shorts 作者來源索引", "", `\`shorts.json\` SHA-256：\`${sha}\`。作者標記，待獨立來源審查。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |"];
 for (const [i, lines] of groups.entries()) {
   mdLines.push("", `## Short ${i + 1}`, "");
@@ -71,18 +71,20 @@ for (const [i, lines] of groups.entries()) {
 writeFileSync(path.join(dir, "shorts-script.md"), mdLines.join("\n") + "\n");
 writeFileSync(path.join(dir, "shorts-source-matrix.md"), sources.join("\n") + "\n");
 const plan = [
-  "# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v6",
+  "# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v7",
   "",
   "這是**尚未生成畫面**的原生直式重構規格，不是裁切或手機 QA 通過收據。長片來源插畫要求中央 608px 焦點，但輸出仍須逐鏡驗真圖；來源數字卡在直式畫面重新由程式排字。",
   "",
-  "每拍輸入為 1920×1080，若是插畫先取 x=656–1264 的 608×1080 中央窗，再重排為 1080×1920。Short 1 兩種能力卡採中央上下堆疊，不放在兩側；Short 2 廣告與會員帳本也上下堆疊，先後鏡頭保持同一色序。若是統計卡直接原生繪製 1080×1920，不裁橫版字。頭條安全區 x=78–902、y≤1380；可關閉繁中字幕預留 x=80–900、y=1430–1595；每拍在 360px 寬手機畫面檢查臉、手、主物、字與控制列不互相遮擋。",
+  "每拍輸入為 1920×1080，若是插畫先取 x=656–1264 的 608×1080 中央窗，再重排為 1080×1920。Short 1 兩種能力卡採中央上下堆疊，不放在兩側；Short 2 廣告與會員帳本也上下堆疊，先後鏡頭保持同一色序。若是統計卡直接原生繪製 1080×1920，不裁橫版字。文字內容區 x=90–990、y=220–1330；可關閉繁中字幕預留 x=90–990、y=1430–1595；片尾控制區 y≥1640 不放關鍵字。每拍在 360px 寬手機畫面檢查臉、手、主物、字與控制列不互相遮擋。",
+  "",
+  "兩張原生統計卡的直式排版單獨凍結：Short 1 第 5 拍（`x13-b01-s04`）上方 x=90–990/y=250–330 放「2019｜兩案收購對價」，中央 x=90–990/y=520–810 只放大字 **€308m**（至少 128px 字級），下方 x=90–990/y=890–1040 放「Anchor＋Gimlet／兩案合計」，x=90–990/y=1200–1310 放 S1 SEC 出處；**不**提前放下一拍才揭的股份獎酬。Short 2 第 1 拍（`x13-b06-s11`）同位置只放大字 **−€21m**，上下分別標「2025 Q2｜Ad-Supported」及「播客成本同比變動」，底部放 S7 SEC 出處；不提前出現『真省』或 Premium 搬移答案。兩卡資訊行使用至少 42px 字級，原生直式排字後仍須以 360px 畫面實測可讀性。",
   "",
   "| Short／拍 | 長片來源 | 焦點／內容（直接取自來源鏡頭提示） | 橫版 x 起點 | 直式原生頭條 |",
   "| --- | --- | --- | ---: | --- |",
 ];
 for (const [i, episode] of shorts.entries()) for (const [j, scene] of episode.scenes.entries()) {
   const original = main.scenes.find(item => item.id === scene.shot);
-  const focus = original.template === "stats" ? `直式原生數字卡：${original.data.title}` : original.data.prompt.split(". ")[0];
+  const focus = original.template === "stats" ? `直式原生數字卡：${original.data.title}；採上段專用原生排版` : original.data.prompt.split(". ")[0];
   plan.push(`| ${i + 1}/${j + 1} | \`${scene.shot}\` | ${focus.replaceAll("|", "\\|")} | ${original.template === "stats" ? "原生" : 656} | ${scene.headline} |`);
 }
 plan.push("", "Short 1 的九拍以兩案能力和收購對價收束，Short 2 的七拍以費用分類和不能全算節省收束。兩支各需正式 TTS 實測 25–55 秒、重新排版文字／CC、核 9:16 真圖與音樂授權；不得以這份紙面規格冒稱成片。", "");
