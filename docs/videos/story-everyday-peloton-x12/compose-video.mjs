@@ -15,12 +15,12 @@ const sourceUrls = [
   { code: "K23", title: "Peloton FY2023 Form 10-K", url: "https://www.sec.gov/Archives/edgar/data/1639825/000163982523000132/pton-20230630.htm", checked_on: "2026-10-20" },
 ];
 const chapterTitles = [
-  "俄亥俄廠未投產，年報先記減損",
+  "一份俄亥俄建廠公告，三張待翻開的文件",
   "設備訂單增加，交貨壓力跟上",
   "公司宣布俄亥俄 Output Park",
-  "設備收入轉降，訂閱收入續升",
-  "自製方案被收起來",
-  "隔年訂閱收入超過設備收入",
+  "二月廠殼出售計畫，六月收入反轉",
+  "七月轉向代工，九月廠殼仍待售",
+  "二〇二三年，訂閱超過設備",
 ];
 const chapters = Array.from({ length: 6 }, () => []);
 const outro = [];
@@ -47,17 +47,15 @@ for (const [ci, chapter] of chapters.entries()) {
 for (const [ri, row] of outro.entries()) if (row.id !== `x1206${String(chapters[5].length + ri + 1).padStart(2, "0")}`) throw new Error(`Bad closing id: ${row.id}`);
 
 const cards = new Map(Object.entries({
-  x120305: ["2021-05｜Ohio 新廠計畫", "約 US$400m", "多年規劃，非已支出", "A21"],
-  x120402: ["FY2021 → FY2022｜設備類收入", "US$3,149.6m → 2,187.5m", "收入，非單車台數", "K22"],
-  x120403: ["FY2021 → FY2022｜訂閱收入", "US$872.2m → 1,394.7m", "同表口徑", "K22"],
-  x120412: ["FY2022｜設備類毛利", "-US$246.3m", "分類毛損，非公司淨損", "K22"],
-  x120413: ["FY2022｜訂閱類毛利", "+US$944.7m", "分類毛利，非公司淨利", "K22"],
-  x120414: ["FY2021 → FY2022｜設備類毛利率", "29.0% → -11.3%", "收入扣產品成本，非淨利率", "K22"],
-  x120515: ["截至 2022-06-30｜Ohio 專案", "約 US$86.6m", "已投資，非出售價格", "K22"],
-  x120516: ["FY2022｜Ohio 相關資產減損", "US$40.3m", "含相關製造資產，非售價", "K22"],
+  x120407: ["FY2021 → FY2022｜設備類收入", "US$3,149.6m → 2,187.5m", "收入，非單車台數", "K22"],
+  x120408: ["FY2021 → FY2022｜訂閱收入", "US$872.2m → 1,394.7m", "同表口徑", "K22"],
+  x120413: ["FY2022｜設備類毛利", "-US$246.3m", "分類毛損，非公司淨損", "K22"],
+  x120414: ["FY2022｜庫存準備增額", "US$222.1m", "增額，非全部庫存損失", "K22"],
+  x120512: ["截至 2022-06-30｜Ohio 專案", "約 US$86.6m", "已投資，非出售價格", "K22"],
+  x120514: ["FY2022｜Ohio 相關資產減損", "US$40.3m", "含相關製造資產，非售價", "K22"],
   x120601: ["FY2023｜設備類收入", "US$1,130.2m", "收入，非台數", "K23"],
   x120602: ["FY2023｜訂閱收入", "US$1,670.1m", "收入，非利潤", "K23"],
-  x120606: ["FY2023｜設備類毛利", "-US$198.6m", "分類毛損", "K23"],
+  x120607: ["FY2023｜設備類毛利", "-US$198.6m", "分類毛損", "K23"],
 }));
 const cameras = ["Medium shot, slow push in", "Close-up, static", "Wide shot, pan right", "Medium shot, parallax"];
 const settings = ["plain office", "small workshop", "ordinary warehouse", "modest living room"];
@@ -69,14 +67,13 @@ const sceneSettings = new Map([
   ["x120109", "clean tabletop Ohio factory diorama"], ["x120201", "clean tabletop factory diorama"],
   ["x120203", "clean concept-animation studio"],
   ["x120219", "clean tabletop factory diorama"], ["x120221", "clean tabletop factory diorama"],
-  ["x120301", "clean tabletop factory diorama"], ["x120507", "conceptual Taiwan factory diorama"],
-  ["x120508", "conceptual split-screen comparison studio"], ["x120509", "clean tabletop factory diorama"],
-  ["x120514", "clean tabletop Ohio factory diorama"], ["x120520", "clean tabletop accounting diorama"],
-  ["x120422", "clean tabletop Ohio factory diorama"], ["x120423", "clean tabletop Ohio factory diorama"],
-  ["x120424", "clean tabletop Ohio factory diorama"], ["x120501", "clean conceptual manufacturing-plan studio"],
+  ["x120301", "clean tabletop factory diorama"], ["x120401", "clean tabletop Ohio factory diorama"],
+  ["x120402", "clean tabletop Ohio factory diorama"], ["x120403", "clean tabletop factory diorama"],
+  ["x120501", "clean conceptual manufacturing-plan studio"], ["x120502", "conceptual Taiwan factory diorama"],
+  ["x120506", "conceptual split-screen comparison studio"], ["x120507", "clean tabletop factory diorama"],
+  ["x120511", "clean tabletop Ohio factory diorama"], ["x120518", "clean tabletop accounting diorama"],
   ["x120605", "clean conceptual living-room diorama"], ["x120608", "conceptual factory diorama"],
-  ["x120610", "conceptual factory diorama"],
-  ["x120611", "conceptual factory diorama"], ["x120613", "clean tabletop factory diorama"],
+  ["x120611", "conceptual factory diorama"], ["x120612", "clean tabletop factory diorama"],
 ]);
 const sayWords = [["Peloton", "派樂騰"], ["Output Park", "歐普特帕克"], ["Precor", "普瑞科"], ["Rexon", "力山"], ["Tonic", "托尼克"], ["Tread+", "Tread Plus"], ["Tread", "Tread"], ["Bike", "Bike"]];
 function lineFor(row) {
@@ -99,21 +96,22 @@ scenes.push(...outro.map((row, ri) => ({
   lines: [lineFor(row)],
 })));
 const loops = [
-  ["x120105", "x120301", "既有產線外為何另規劃 Ohio"],
-  ["x120104", "x120516", "未投產 Ohio 專案相關減損有多少"],
-  ["x120106", "x120405", "設備與訂閱收入後來如何分岔"],
-  ["x120107", "x120503", "製造轉由誰承擔"],
-  ["x120108", "x120515", "Ohio 未投產時已投多少"],
-  ["x120109", "x120514", "Ohio 從產能計畫到尋買家"],
-  ["x120210", "x120412", "設備銷售增長是否等於毛利"],
+  ["x120104", "x120301", "未來工廠能補什麼產能"],
+  ["x120105", "x120401", "二月重整怎麼處理 Ohio 廠殼"],
+  ["x120106", "x120407", "六月設備與訂閱收入如何分岔"],
+  ["x120107", "x120501", "七月外部產線接到何種分工"],
+  ["x120108", "x120512", "Ohio 未投產時已投多少"],
+  ["x120109", "x120613", "Ohio 從產能計畫走到哪一步"],
+  ["x120209", "x120413", "設備銷售增長是否等於毛利"],
   ["x120221", "x120301", "新廠原本要補的產能"],
-  ["x120319", "x120402", "增長中的設備收入隔年如何變"],
-  ["x120424", "x120502", "二月 Ohio 廠殼出售計畫後製造調整是否繼續"],
-  ["x120425", "x120503", "下一個造車人是誰"],
-  ["x120521", "x120601", "FY2023 收入線怎麼走"],
-  ["x120521", "x120614", "Ohio 到 FY2023 的出售狀態"],
-  ["x120604", "x120607", "訂閱成長是否填滿實體產線"],
-  ["x120610", "x120611", "產能過剩如何影響毛利"],
+  ["x120311", "x120401", "新廠需求變動後的處置"],
+  ["x120319", "x120401", "二月 Ohio 廠殼決定"],
+  ["x120405", "x120501", "Ohio 停造車後由誰接製造"],
+  ["x120417", "x120501", "其他自有產線會怎樣"],
+  ["x120510", "x120512", "已投 Ohio 金額"],
+  ["x120519", "x120612", "原定出車年份的出售狀態"],
+  ["x120604", "x120606", "訂閱成長是否填滿實體產線"],
+  ["x120611", "x120612", "截至 FY2023 是否有買家"],
 ].map(([setup, payoff, what]) => ({ setup, payoff, what }));
 const ids = new Map(allRows.map((row, i) => [row.id, i]));
 for (const loop of loops) if (!(ids.has(loop.setup) && ids.has(loop.payoff) && ids.get(loop.setup) < ids.get(loop.payoff))) throw new Error(`Invalid loop: ${JSON.stringify(loop)}`);
@@ -136,7 +134,7 @@ const video = {
   music: { prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 },
   loops,
   youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Peloton 四億美元新廠計畫，為何還沒開就記下減損？｜品牌故事", description, tags: ["Peloton", "品牌故事", "健身單車", "訂閱", "製造", "Ohio"], video_id: null },
-  thumbnail: { template: "thumb", data: { headline: "**廠沒開？**", tag: "品牌故事", brand: "Peloton", shot: "x12-b01-s04" } },
+  thumbnail: { template: "thumb", data: { headline: "**廠沒開？**", tag: "品牌故事", brand: "Peloton", shot: "x12-b01-s08" } },
   sources: sourceUrls.map(({ code, ...source }) => source), assets: [], scenes,
 };
 const bytes = JSON.stringify(video, null, 2) + "\n";
