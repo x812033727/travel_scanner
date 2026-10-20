@@ -1,0 +1,27 @@
+# X08 Target Canada｜一手來源筆記
+
+查核日期：2026-10-20。下列連結均實際由此雲端以文字頁讀回；原件是 Target 向美國 SEC 提交的年報、季報或當時新聞稿。金額依文件原口徑為**美元**，除明示加幣外不換算幣別。旁白與原生數字卡的可用說法見 [主張矩陣](source-matrix.md)。
+
+| 代號 | 原始資料與可查段落 | 可支持的事件；不可外推 |
+| --- | --- | --- |
+| T12 | [Target FY2012 Form 10-K，財年終於 2013-02-02](https://www.sec.gov/Archives/edgar/data/27419/000104746913003100/a2213506z10-k.htm)；`Item 1 / Distribution`、`Item 2 / Properties`、租賃資產附註 | 公司當時宣布計畫在 2013 年於加拿大**每個省**開合計 124 店，並列已有 3 座加拿大配送中心；一般商品經配送中心、common carriers 送至門店，部分食品在美加由第三方配送。取得的 Zellers 據點回租予 Zellers，期限最晚至 2013-03-31。這些是當時計畫和回租期限，**不是**該日已開 124 店；事後實際開店數另見 T13。 |
+| T13 | [Target FY2013 Form 10-K，財年終於 2014-02-01](https://www.sec.gov/Archives/edgar/data/27419/000002741914000014/tgt-20140201x10k.htm)；`Item 1` segment descriptions / Canada risk；`MD&A / Canadian Segment`；`Note 7 / Canadian Leasehold Acquisition` | 2011 年購得 189 個 Zellers 據點的**租賃權益** US$1.861b；將其中 54 個據點的取得權利售予第三方 US$225m，淨價 US$1.636b。2013 年分批開設 124 店，約 55% 在上半年、20% 第三季、25% 第四季。2013 年加拿大銷售 US$1.317b 是**部分年度**。加拿大部門 FY2013 毛利率 14.9%；報表把它歸因於銷售低於預期後清理過剩庫存，以及供應鏈啟動挑戰。公司也明說初期銷售與營運未達原先預期，且當時加拿大部門**沒有 digital sales channel**。SG&A 含開店前的薪酬、福利與第三方服務。這不表示 189 店全部開業，也不證明當時每家店都缺貨或空架。 |
+| T14Q1 | [Target FY2014 Q1 原始財報新聞稿，2014-05-21](https://www.sec.gov/Archives/edgar/data/27419/000002741914000018/a2014q1ex-99.htm)；`Canadian Segment Results`、management statement | 加拿大 Q1 銷售 US$393m，EBIT 虧 US$211m；毛利率 18.7%，公司說仍受清理過剩庫存以及到貨前置期較長影響。新聞稿回顧 FY2013 Q1 最初開 24 店、銷售 US$86m、EBIT 虧 US$205m，該季毛利率 38.4% 因營業時間短而未受大量清貨折價影響。代理 CEO John Mulligan 當時說已有初步改善跡象，但必須加速並投入額外改善資源。這些都是**季度加拿大部門**，不能當年度或公司全體數據。 |
+| T14Q2 | [Target FY2014 Q2 原始財報新聞稿，2014-08-20](https://www.sec.gov/Archives/edgar/data/27419/000002741914000025/a2014q2ex-99.htm)；`Canadian Segment Results` | 加拿大 Q2 總銷售 US$449m，去年同期 US$275m，增加主要受新店帶動；但同店銷售下降 11.4%，只涵蓋當季逐步達成熟門檻的 48 店。公司將同店下降歸於比較前年開幕熱潮及後續展店分流，並稱調整營運與商品組合、繼續清理過剩庫存。不是 133 店整體同店下降。 |
+| T14Q3 | [Target FY2014 Q3 原始財報新聞稿，2014-11-19](https://www.sec.gov/Archives/edgar/data/27419/000002741914000033/a2014q3ex-99.htm)；`Canadian Segment Results`、release highlights、CEO statement | 加拿大 Q3 總銷售同比 +43.8%，公司稱仍略低於預期；同店銷售**上升 1.6%**，只涵蓋 82 間成熟店，其中 34 間當季才達比較資格。部門該季仍 EBIT 虧 US$211m，毛利率 19.5% 仍受清理庫存影響。執行長說公司已在節慶檔期前改營運、價格和商品組合，期待看顧客反應；T15P 隨後說節慶未見所需的躍升。這是有改善訊號、仍未轉虧為盈的反轉，不能說每個指標都惡化。 |
+| T15P | [Target 2015-01-15 原始退出新聞稿，附於 Form 8-K](https://www.sec.gov/Archives/edgar/data/27419/000002741915000005/exhibit99atargetcorporatio.htm) | 當日宣布**計畫**停止加拿大門市營運，Target Canada 申請 CCAA 保護；當時 133 店、約 17,600 名員工，並說**清算期間門市仍開放**。執行長 Brian Cornell 當時認為，找不到在**至少 2021 年之前**讓 Target Canada 獲利的可信情境；這是管理層當時的評估，不是已發生的未來結果。當時預估的 Q4 FY2014 停業部門稅前虧損約 US$5.4b 和未來現金退出成本 US$500–600m 均為**預測**，不當成最終實績。 |
+| T14 | [Target FY2014 Form 10-K，財年終於 2015-01-31](https://www.sec.gov/Archives/edgar/data/27419/000002741915000012/tgt-20150131x10k.htm)；`Item 1A / Risks`、`Note 6 / Canada Exit` | 董事會於 2015-01-14 通過停止加拿大門市營運方案；隔日 CCAA 申請。停止營業列示中，FY2013／FY2014 加拿大銷售 US$1.317b／US$1.902b；稅前**營運**虧損 US$1.018b／US$869m。FY2014 Q4 稅前**退出費用** US$5.105b，細項為投資減損 US$4.766b、或有負債 US$240m、員工信託 US$73m、其他退出 US$26m。年報在風險章原文明稱 `a non-cash pretax impairment charge`，投資減損係去合併後的帳面重新評價，不能說全額現金流出；虧損項目也不得相互冒充。FY2013 的銷售是部分年度，不能把兩年差額叫同店成長。 |
+| T15Q1 | [Target FY2015 Q1 Form 10-Q，季度終於 2015-05-02](https://www.sec.gov/Archives/edgar/data/27419/000002741915000018/tgt-20150502x10xq.htm)；`Note 2 / Canada Exit` | 原文稱：`As of May 2, 2015, all stores have been closed.` 只能說**截至 2015-05-02 已全數關閉**，不能據此指定最後一店的精確日期；這與 2015-01-15 的**退出公告與 CCAA 申請**分屬兩件事。 |
+| T15 | [Target FY2015 Form 10-K，財年終於 2016-01-30](https://www.sec.gov/Archives/edgar/data/27419/000002741916000043/tgt-20160130x10k.htm)；`Note 7 / Canada Exit` | 後來報表重列 FY2014 退出費用為 US$5.105b，並列 FY2015 另有 US$129m 稅前退出費用；表內將舊年度員工信託與其他退出費合併為 US$99m 的 `Other exit costs`。若旁白用 2014 年四項分解，須引用 T14，避免混算。 |
+
+下載的 SEC HTML 原始 bytes 已於查核日以 SHA-256 定錨，供後續審查確認是否同版：T12 `84d254f13c1aa646c7e3675081cb98eb5ed79dda5f265ab5606fa628dd33072d`；T13 `dbbdbee947bf108d0b4026a0ca4923a0df7a655cfbb27ee57b074e84f6b36225`；T14Q1 `cda825d969174a631e9eb9f66585574ff711989d20ddf68b0ab73de5817b5568`；T14Q2 `3428247c9bb33651ec70cbbf483872bb64af06bc003a56f498ef037765e98ff4`；T14Q3 `045ad1e81177229c378790af8ec5240a2776277c987caf0f8062d911214dca77`；T15P `937ad1c5f6b9049f30bd4ecce5a712b1ccdd29f92848710bd8e66e7a86b2bfb7`；T14 `bcba1e1012631dcfd52c8ffec17805d9f316f3b214cee166111479c872049005`；T15Q1 `5916ab69c69940ee20cddd0fc43e7cf2aac187d80294242c0dce038299610a85`；T15 `d5209dff543c7b28431e7fe484cfb4c1087982b836a4e1d87f9cf94c25f0825f`。原始檔不納入 Git；審查者應讀連結原文，不能只靠這些雜湊。
+
+## 逐一保留的界線
+
+1. 年報的 FY2013 和 FY2014 為公司**財年**，不是自然年；片中第一次提數字須口語交代「Target 財年」。
+2. T13 的 `EBIT (941)` 百萬與 T14 追溯分類表的 2013 `Pretax loss from operations (1,018)` 百萬不是同一口徑：後者多包含利息 US$77m。影片若比較 2013/2014，統一使用 T14 `Pretax loss from operations`，並稱「稅前營運虧損」。
+3. T13 的「excess inventory」是**清理過剩庫存**，不是說所有賣場的架子都是空的；`supply chain start-up challenges` 是管理層的披露，不足以推出具體 IT 錯誤、倉儲事故或門市細節。
+4. 不把 US$5.105b 稅前退出費用、US$4.766b 投資減損、FY2014 稅前營運虧損 US$869m、或 T15P 當時**預計**的 US$5.4b 停業部門虧損混稱「燒掉現金」。
+5. CCAA 申請的是**Target 加拿大子公司**，不是美國 Target Corporation 本體破產。T14 解釋公司此後將加拿大子公司去合併。
+6. 到 2026 年的加拿大品牌現況、其他零售商的市占與比較、精確最後關店日，這批原件沒有支持；本集不用。
+7. 若口播使用 T14 Note 6 的毛利／SG&A 算式，FY2013 `Sales 1,317 - Cost of sales 1,121 = Gross margin 196`；FY2014 `1,902 - 1,541 = 361`，兩年 SG&A 分別 `910`／`909`（單位 US$ million）。它只說明毛利與銷售管理費之間的缺口，尚未包括折舊、利息，不能代替完整營運虧損。
