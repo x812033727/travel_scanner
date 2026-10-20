@@ -82,3 +82,7 @@ R10 author narrowed exactly the 16 still-flagged spoken lines; no scene order, v
 2026-10-20 R11 新門檻：[獨立史料與書面畫面](../../docs/videos/curio-s43/review/r11-source-independent.md) PASS；兩名真正隔離的新讀者 [A](../../docs/videos/curio-s43/review/r11-blind-a.md) 與 [B](../../docs/videos/curio-s43/review/r11-blind-b.md) 在同一精確版各給 13/13 Yes，正式敘事 PASS，合併見 [verify-4.md](../../docs/videos/curio-s43/verify-4.md)。Jev 政策同版 PASS，R11 本地受委派劇本決定已綁 `ff3f5888...`；網站精確 R11 劇本卡 `hand_pushed pending`，不稱網站核准。`tts --dry-run` 顯示 99 句中需新合成 16 句、492 免費層可計字元；正式語音與完整音檢進行中，R9 的 16 個音檢旗標仍是前一輪事實，插圖／配樂繼續 STOP。
 
 2026-10-20 R11 實音與原生試圖見 [verify-5.md](../../docs/videos/curio-s43/verify-5.md)：16 個改句已合成、舊 83 句沿用，一句語意相反的「海軍部／海軍不」定點重錄後，99/99 全量音檢 **0 旗標**；57.03 秒濃縮開頭、603.07 秒正文。音訊網站卡 `hand_pushed pending`，本地精確版受委派決定不冒稱站主聽過。三張 MiniMax 原圖均被原尺寸檢看判 **0/3 KEEP**（幼態人物／無船），帳本 US$0.0405；低於原先 ≥2/3 試圖門檻，**停止付費繪圖與配樂**，沒有片頭片尾合成或成片。後續只可先窄修三景提示詞、獨立書面畫面查核，再重新決定有界試圖；不得直接畫餘下 93 張。
+
+2026-10-20 R12 作者只窄修 `dn008/dn082/dn087a` 三景提示詞以回應 0/3 原生試圖，精確影像計畫 SHA `d18e8426...`、口播與主張雜湊不變；差分與第二輪有界試圖條件見 [verify-6.md](../../docs/videos/curio-s43/verify-6.md)。另一位工作者正做**獨立書面畫面／來源差分**；未 PASS 前沒有第二輪付費請求，且原生 2/3 門檻未被取消。
+
+2026-10-20 R13：R12 的塔希提低島／確切船型畫面 HOLD 已由 `dn087a` 空海面與普通帆船窄修，另一位工作者對精確新 SHA `7a6fbf16...` 判[書面畫面 PASS](../../docs/videos/curio-s43/review/r13-visual-independent.md)。依原先有界條件再試三景各一張，機器 2/3 過、原尺寸只有 `dn087a` 可用，**原生 1/3 KEEP**，帳本累計 US$0.081。`dn008` 畫風被機器否決，`dn082` 仍幼態；詳 [verify-7.md](../../docs/videos/curio-s43/verify-7.md)。仍低於 2/3 門檻，付費插圖及配樂 STOP，無 S43 完整影片或可點連結。

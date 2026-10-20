@@ -12,7 +12,7 @@
     "provider": "gemini",
     "name": "Sulafat",
     "style": "標準國語、清楚自然；日期、人名、史料歸屬稍放慢。",
-    "performance": "單一主角從入學申請走到領文憑；玩笑的主語在課堂章才揭曉。"
+    "performance": "單一主角從入學申請走到領文憑；晚年所說『騙局』的主語在課堂章才揭曉。"
   },
   "subtitles": {
     "burn_in": false
@@ -41,6 +41,11 @@
       "what": "學生決議的結果"
     },
     {
+      "setup": "bkw004",
+      "payoff": "bkw122",
+      "what": "學生表決後她是否完成醫學課程並取得文憑"
+    },
+    {
       "setup": "bkw012",
       "payoff": "bkw030",
       "what": "費城學校是否收她"
@@ -57,8 +62,8 @@
     },
     {
       "setup": "bkw007",
-      "payoff": "bkw102",
-      "what": "病房卡片為何空白"
+      "payoff": "bkw103",
+      "what": "床頭卡停填後她如何記臨床所見"
     },
     {
       "setup": "bkw008",
@@ -66,9 +71,9 @@
       "what": "文憑典禮"
     },
     {
-      "setup": "bkw023",
-      "payoff": "bkw030",
-      "what": "費城申請的結果"
+      "setup": "bkw022",
+      "payoff": "bkw023",
+      "what": "傑克森教授對她入學的回應"
     },
     {
       "setup": "bkw031",
@@ -112,8 +117,8 @@
     },
     {
       "setup": "bkw110",
-      "payoff": "bkw115",
-      "what": "考試結果"
+      "payoff": "bkw111",
+      "what": "誰先看她的畢業論文"
     },
     {
       "setup": "bkw117",
@@ -187,7 +192,7 @@
       "lines": [
         {
           "id": "bkw004",
-          "text": "那些學生，真的把她的申請當一回事嗎？",
+          "text": "就算學生答應，這張票真能讓她讀完醫學嗎？",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -219,7 +224,7 @@
       "lines": [
         {
           "id": "bkw006",
-          "text": "到了講堂，教授又請她避開一堂演示。",
+          "text": "到了講堂，教授請她避開一堂演示；她還能回到座位嗎？",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -235,7 +240,7 @@
       "lines": [
         {
           "id": "bkw007",
-          "text": "後來在醫院，一張床頭卡讓她停下腳步。",
+          "text": "後來在醫院，床頭卡的診療紀錄突然停寫；她還能怎麼學？",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -267,7 +272,7 @@
       "lines": [
         {
           "id": "bkw009",
-          "text": "但這場表決，真像流傳的那樣只是玩笑嗎？",
+          "text": "在學生表決以前，誰能先替她指出正式學醫的路？",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -283,7 +288,7 @@
       "lines": [
         {
           "id": "bkw010",
-          "text": "在學生見到申請以前，她已向幾位醫師求教：女人有沒有可能成為醫師？",
+          "text": "她先問幾位醫師：女人能不能進醫學院接受訓練？",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ],
@@ -476,7 +481,7 @@
       "lines": [
         {
           "id": "bkw022",
-          "text": "五月二十七日，一位教授先問：為什麼要學醫？",
+          "text": "五月二十七日，她向傑克森教授說想學醫；他會幫她進學院嗎？",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -485,14 +490,14 @@
       "id": "bkw023",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a softly lit private chamber, one lady in a plain 1840s dress holds her question letter beside a wooden desk, soft lamplight",
+        "prompt": "Close shot in a softly lit 1840s office, one adult woman in plain period clothing speaks beside a wooden desk, soft lamplight; no letter or readable text",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "bkw023",
-          "text": "她說出計畫；教授想過後，仍說同事不同意。",
+          "text": "他起初感興趣，說要等星期一；到那天，他回覆同事都反對她入學。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -798,7 +803,7 @@
       "lines": [
         {
           "id": "bkw042",
-          "text": "教授們剛到齊，決定把她的申請交給本班學生討論。",
+          "text": "回到開場那封信：教授們前一晚才開本學期第一次會。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -814,7 +819,7 @@
       "lines": [
         {
           "id": "bkw043",
-          "text": "院長在十月二十日回函，附上討論結果。",
+          "text": "隔天學生自行開會，寫下兩條決議；院長把它們附進回信。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -830,7 +835,7 @@
       "lines": [
         {
           "id": "bkw044",
-          "text": "信上有日期，也說她的申請是十月三日寄到。",
+          "text": "信還註明，她的申請是十月三日送到的。",
           "emotion": "自然說書；史料層次清楚"
         }
       ]
@@ -846,7 +851,7 @@
       "lines": [
         {
           "id": "bkw045",
-          "text": "院長還特別註明，學生自行開會，教師沒有干涉這次表決。",
+          "text": "院長說教師沒有干預這次表決；也知道有人會覺得她這一步大膽。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -878,7 +883,7 @@
       "lines": [
         {
           "id": "bkw047",
-          "text": "書中轉錄的決議說，男女都應有取得科學教育的機會。",
+          "text": "決議先寫一條原則：男女都應平等取得科學教育。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -894,7 +899,7 @@
       "lines": [
         {
           "id": "bkw048",
-          "text": "接著，全班正式表示歡迎她加入。",
+          "text": "接著，決議寫全班一致邀請她加入醫科。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -919,14 +924,14 @@
       "id": "bkw050",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at a wooden writing table, one medical applicant in plain 1840s clothing studies the lower edge of a blank resolution, gentle side light",
+        "prompt": "Close shot at a wooden writing table, one adult woman copies a blank resolution onto a plain parchment sheet, gentle side light; no readable writing",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "bkw050",
-          "text": "這是她多年後書中抄出的決議；文字有歡迎，沒有每位學生的理由。",
+          "text": "她很珍惜這份決議，後來還把它抄在羊皮紙上。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -942,7 +947,7 @@
       "lines": [
         {
           "id": "bkw051",
-          "text": "信寫得漂亮；到校後，會有人兌現嗎？",
+          "text": "收到邀請後，第一次真正上課，還會有人攔她嗎？",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1231,7 +1236,7 @@
       "lines": [
         {
           "id": "bkw069",
-          "text": "這句說的是對申請的懷疑；書中沒有說歡迎決議是玩笑投票，也沒記下每人的動機。",
+          "text": "她回憶的「騙局」，指申請被誤認為敵校捉弄；不能直接用來替那張贊成票定性。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1311,23 +1316,7 @@
       "lines": [
         {
           "id": "bkw074",
-          "text": "但十一月十五日，一堂演示又把她留在外面。",
-          "emotion": "自然說書；勿模仿他人私語"
-        }
-      ]
-    },
-    {
-      "id": "bkw075",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot in a plain 1840s school corridor, one learner in a simple long dress waits outside a closed lecture door, gentle side light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "bkw075",
-          "text": "教授請她缺席某些演示，她很難過。",
+          "text": "回到開場那堂演示：十一月十五日，她被請缺席，心裡很難過。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1375,7 +1364,7 @@
       "lines": [
         {
           "id": "bkw078",
-          "text": "解剖課對她同樣重要；她不願只學被允許的部分。",
+          "text": "她已寫信給韋伯斯特；他會把要求留在兩人之間，還是告訴全班？",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1391,23 +1380,7 @@
       "lines": [
         {
           "id": "bkw079",
-          "text": "韋伯斯特先答應讀這封信，讓班上也聽見她的要求。",
-          "emotion": "自然說書；勿模仿他人私語"
-        }
-      ]
-    },
-    {
-      "id": "bkw080",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot in a plain 1840s school corridor, one woman studying medicine in long period clothing watches the lecture door from a bench, gentle side light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "bkw080",
-          "text": "教授願念給全班聽；聽完後學生又會怎麼說？",
+          "text": "韋伯斯特答應把她的信讀給全班聽，讓同學聽見她的要求。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1477,22 +1450,6 @@
       ]
     },
     {
-      "id": "bkw085",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot in a 1840s college lecture room, one female medical student opens her notebook at the next lecture, gentle side light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "bkw085",
-          "text": "紙上的承諾，在這場演示課裡又過了一關。",
-          "emotion": "自然說書；勿模仿他人私語"
-        }
-      ]
-    },
-    {
       "id": "bkw086",
       "template": "shot",
       "data": {
@@ -1519,7 +1476,7 @@
       "lines": [
         {
           "id": "bkw087",
-          "text": "第一段課程結束，她說自己實際醫療經驗不足，還得進病房多觀察。",
+          "text": "一八四八年，第一段課程後，她仍缺病房臨床經驗；入學決議管得到那扇門嗎？",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1535,7 +1492,7 @@
       "lines": [
         {
           "id": "bkw088",
-          "text": "於是她回費城，向布洛克利濟貧院的董事提出住院學習申請。",
+          "text": "於是她回費城，想在布洛克利濟貧院住一個夏天，向董事提出申請。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ],
@@ -1568,7 +1525,7 @@
       "lines": [
         {
           "id": "bkw090",
-          "text": "可醫院董事分屬不同政治派系，她該先找誰談？",
+          "text": "可醫院另有董事會；醫學院的入學決議不能代她取得病房許可。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1577,46 +1534,14 @@
       "id": "bkw091",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a softly lit private chamber, one adult woman receives a blank letter of introduction, soft window light",
+        "prompt": "Medium shot in a softly lit 1840s office, one adult director studies a blank hospital application at a wooden desk, soft lamplight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "bkw091",
-          "text": "她先拿到給吉爾平董事的介紹信；他友善接待，卻提醒院內派系對立。",
-          "emotion": "自然說書；勿模仿他人私語"
-        }
-      ]
-    },
-    {
-      "id": "bkw092",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot in a quiet 1840s room, one female medical student studies a list of directors, mild overcast light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "bkw092",
-          "text": "吉爾平說，若由他這名輝格黨人提出申請，另外兩派很可能反對。",
-          "emotion": "自然說書；勿模仿他人私語"
-        }
-      ]
-    },
-    {
-      "id": "bkw093",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot in a modest 1840s almshouse administration corridor, one lady in a plain 1840s dress walks toward a director's office, soft lamplight",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "bkw093",
-          "text": "她得怎麼爭取另兩派領頭人，才有可能順利住院？",
+          "text": "吉爾平董事友善接待，卻提醒：由他代提申請，其他派別可能反對。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1632,23 +1557,7 @@
       "lines": [
         {
           "id": "bkw094",
-          "text": "她決定分頭拜訪各派領頭人，並不向彼此提起對方的立場。",
-          "emotion": "自然說書；勿模仿他人私語"
-        }
-      ]
-    },
-    {
-      "id": "bkw095",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot in a modest 1840s almshouse administration corridor, one scholar in a modest feminine gown approaches another director's office, gentle side light",
-        "camera": "pull back",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "bkw095",
-          "text": "這是她自己唯一一次稱為「遊說」的行動。",
+          "text": "她於是分別拜訪各派領頭人，替自己爭取住院學習。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1657,14 +1566,14 @@
       "id": "bkw096",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a modest 1840s almshouse board office, one learner in a simple long dress slides a blank petition across a desk, soft window light",
+        "prompt": "Wide shot in a modest 1840s almshouse board office, one learner in a simple long dress slides a blank petition across a desk, mild overcast light",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "bkw096",
-          "text": "她回憶，請願交到董事會後，結果竟是一致准許她住進醫院。",
+          "text": "她回憶，請願交到董事會後，結果是一致准許她住進醫院。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1761,7 +1670,7 @@
       "lines": [
         {
           "id": "bkw102",
-          "text": "她入院後，那些床頭卡卻停止更新。",
+          "text": "回到開場那張卡：她入院後，住院醫師真的停填診斷與治療欄。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1841,7 +1750,7 @@
       "lines": [
         {
           "id": "bkw107",
-          "text": "一八四八年，熱病患者把病房擠得很滿。",
+          "text": "那年夏天，熱病患者把病房擠得很滿。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1873,7 +1782,7 @@
       "lines": [
         {
           "id": "bkw109",
-          "text": "她選斑疹傷寒，寫成自己的畢業論文。",
+          "text": "她選斑疹傷寒，作畢業論文題目。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1889,7 +1798,7 @@
       "lines": [
         {
           "id": "bkw110",
-          "text": "她在院內選題、寫完論文，還得回校完成考試才能領文憑。",
+          "text": "稿子寫出來了，她要先拿給誰看？",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ]
@@ -1921,7 +1830,7 @@
       "lines": [
         {
           "id": "bkw112",
-          "text": "她帶著臨床所得回到日內瓦，準備考試。",
+          "text": "那年十月三日，她帶著臨床所得回到日內瓦，準備考試。",
           "emotion": "自然說書；勿模仿他人私語"
         }
       ],
@@ -2120,54 +2029,6 @@
       ]
     },
     {
-      "id": "bkw125",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot inside a simple 1840s church, one female reader in an 1840s coat looks toward a plain church lectern, gentle side light",
-        "camera": "pull back",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "bkw125",
-          "text": "院長的告別演說提到這場畢業，她說那番話給了她力量。",
-          "emotion": "自然說書；勿模仿他人私語"
-        }
-      ]
-    },
-    {
-      "id": "bkw126",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot in a modest 1840s boarding room, one adult woman opens her boarding-room door beside a packed travel bag, soft window light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "bkw126",
-          "text": "典禮後，來訪者進出她的房間，直到她必須去搭火車。",
-          "emotion": "自然說書；勿模仿他人私語"
-        }
-      ]
-    },
-    {
-      "id": "bkw127",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at an 1840s railway station, one newly graduated woman physician walks along a period train platform carrying a small travel bag, mild overcast light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "bkw127",
-          "text": "幾個小時後，她提著行李搭上火車，離開日內瓦。",
-          "emotion": "自然說書；勿模仿他人私語"
-        }
-      ]
-    },
-    {
       "id": "outro",
       "template": "outro",
       "data": {
@@ -2180,12 +2041,12 @@
       "lines": [
         {
           "id": "bkw999a",
-          "text": "一張贊成票能開門，真正要看的，還有門後她能不能學。",
+          "text": "那張票許下歡迎，卻不是整套醫學訓練的通行證；她跨過更多門，才走到文憑。",
           "emotion": "收束放慢"
         },
         {
           "id": "bkw999b",
-          "text": "若找到當年的會議紀錄，你會先核對哪一句？",
+          "text": "你覺得最難開的是課堂，還是病房？",
           "emotion": "問句放慢"
         },
         {
@@ -2199,9 +2060,9 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "**玩笑？**",
+      "headline": "**歡迎票？**",
       "tag": "1847 年醫學院",
-      "sub": "入學信與兩年後的文憑",
+      "sub": "入學信之後還有兩道門",
       "shot": "bkw002"
     }
   },
@@ -2209,8 +2070,8 @@
     "category_id": 27,
     "made_for_kids": false,
     "default_language": "zh-TW",
-    "title": "一八四七年，醫學院的贊成票真是玩笑嗎？｜奇聞檔案局",
-    "description": "1847 年，Elizabeth Blackwell 收到 Geneva Medical College 的一封入學信。她的 1895 年自傳收錄當時的院長信、學生決議、日記與家書，後來一句「有人以為是騙局」常被讀成全班惡作劇投票。原文究竟說的是什麼？她進去後又能否真正上課？\n\n本集以 1895 年自傳及其所收錄的 1847–49 年文字作主線。院長信、決議與日記是書中轉錄，尚未找到獨立原件；不能推測每個學生的投票心態。畫面是 AI 卡通示意，非原信、學校照片或病歷。\n\n固定原文：https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt\n本頻道：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\n\n資料截至 2026-10-20",
+    "title": "一八四七年那張學生歡迎票，能帶她走到醫學文憑嗎？｜奇聞檔案局",
+    "description": "1847 年，Elizabeth Blackwell 收到 Geneva Medical College 的一封入學信。她的 1895 年自傳收錄當時的院長信、學生決議、日記與家書；書中說有些學生曾懷疑她的入學申請是敵校捉弄，沒有記下個別投票理由。那張歡迎票之後，她是否真的走完課堂、病房到文憑的路？\n\n本集以 1895 年自傳及其所收錄的 1847–49 年文字作主線。院長信、決議與日記是書中轉錄，尚未找到獨立原件；不能推測每個學生的投票心態。畫面是 AI 卡通示意，非原信、學校照片或病歷。\n\n固定原文：https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt\n本頻道：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\n\n資料截至 2026-10-20",
     "tags": [
       "Elizabeth Blackwell",
       "伊莉莎白布萊克威爾",
