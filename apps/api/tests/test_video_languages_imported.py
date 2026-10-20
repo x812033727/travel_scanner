@@ -2,14 +2,14 @@
 
 The owner added Latin-American Spanish, Brazilian Portuguese, Indonesian, Vietnamese and Thai for
 種田娶妻打天下 on 2026-10-18, an imported series whose files are made outside the pipeline
-(docs/videos/LANGUAGES.md). Since 2026-10-20 every video may choose their titles and captions
-(tests/test_video_languages_worker.py); a dub in them is still only for a video
-``tools/video/cli.mjs import`` put on the site.
+(docs/videos/LANGUAGES.md). Since 2026-10-20 every video may choose their titles, captions and
+dubs, which the worker makes (tests/test_video_languages_worker.py); an imported video's are still
+made outside the pipeline and arrive in a hand-pushed batch.
 """
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, get_args, get_type_hints
 from unittest.mock import AsyncMock
 from uuid import uuid4
 
@@ -18,12 +18,12 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy import select
 
 from app.models import User, VideoProject
-from app.problems import AppError
+from app.video_reviews import admin_api
 from app.video_reviews import admin_service as service
 from app.video_reviews.schemas import (
+    ADDED_LOCALES,
     DUB_LOCALES,
-    IMPORTED_DUB_LOCALES,
-    WORKER_DUB_LOCALES,
+    NARRATION_LOCALES,
     LocalesIn,
     ReviewIn,
 )
@@ -68,10 +68,10 @@ async def _view(site: Site) -> Any:
         return await service.project_view(session, SLUG)
 
 
-def test_the_eight_languages_list_the_worker_s_three_first() -> None:
-    assert WORKER_DUB_LOCALES == ("en", "ja", "ko")
-    assert IMPORTED_DUB_LOCALES == ("es", "pt", "id", "vi", "th")
-    assert DUB_LOCALES == (*WORKER_DUB_LOCALES, *IMPORTED_DUB_LOCALES)
+def test_the_eight_languages_list_the_three_narration_languages_first() -> None:
+    assert NARRATION_LOCALES == ("en", "ja", "ko")
+    assert ADDED_LOCALES == ("es", "pt", "id", "vi", "th")
+    assert DUB_LOCALES == (*NARRATION_LOCALES, *ADDED_LOCALES)
 
 
 @pytest.mark.asyncio
@@ -124,31 +124,25 @@ async def test_an_imported_video_chooses_eight_languages_and_its_batch_reads_rea
 
 
 @pytest.mark.asyncio
-async def test_a_pipeline_video_refuses_a_dub_in_the_five(site: Site) -> None:
+async def test_a_pipeline_video_takes_a_dub_in_the_five(site: Site) -> None:
     await _seed(site, imported=False)
     assert (await _view(site)).locale_options == list(DUB_LOCALES)
-    with pytest.raises(AppError) as refused:
-        await _save(site, {"en": EVERYTHING, "es": EVERYTHING, "th": {"dub": True}})
-    assert refused.value.status == 422
-    assert refused.value.code == "video_locales_dub_imported_only"
-    assert "es、th" in refused.value.detail
-    assert (await _view(site)).locales_decided_at is None, "nothing was stored"
-
-    saved = await _save(
-        site, {"ko": EVERYTHING, "en": {"metadata": True}, "th": {"captions": True}}
-    )
-    assert list(saved.locales) == ["en", "ko", "th"], "titles and captions in the five are fine"
+    saved = await _save(site, {"en": EVERYTHING, "es": EVERYTHING, "th": {"dub": True}})
+    assert list(saved.locales) == ["en", "es", "th"]
+    assert saved.locales["th"].dub
 
 
 @pytest.mark.asyncio
-async def test_a_dub_retry_takes_only_the_worker_s_languages() -> None:
+async def test_a_dub_retry_takes_the_eight_languages() -> None:
     owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
     owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
     async with AsyncClient(
         transport=ASGITransport(app=_app(owner)), base_url="http://test"
     ) as client:
-        refused = await client.post("/api/v1/admin/videos/v/languages/es/dub/retry")
-    assert refused.status_code == 422, "only the worker remakes a dub"
+        unknown = await client.post("/api/v1/admin/videos/v/languages/fr/dub/retry")
+    assert unknown.status_code == 422, "a language no video is made in"
+    # The worker remakes a skipped dub in any of the eight; the service decides the rest.
+    assert get_args(get_type_hints(admin_api.retry_dub)["locale"]) == DUB_LOCALES
 
 
 def test_youtube_gets_the_owner_s_varieties_and_each_language_s_caption_word() -> None:

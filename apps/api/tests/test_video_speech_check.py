@@ -24,7 +24,7 @@ from app.video_speech.schemas import TrackLanguage
 
 WAV = wav_from_pcm(b"\x01\x00" * 800, 16_000)
 LANGUAGES = get_args(TrackLanguage)
-DUB_LANGUAGES = ("en", "ja", "ko")
+DUB_LANGUAGES = ("en", "ja", "ko", "es", "pt", "id", "vi", "th")
 
 
 @pytest.mark.asyncio
@@ -67,7 +67,16 @@ def test_each_track_language_has_its_own_transcription_prompt() -> None:
     assert LANGUAGES == ("zh-TW",) + DUB_LANGUAGES
     assert set(checking.TRANSCRIBE_INSTRUCTIONS_BY_LANGUAGE) == set(LANGUAGES)
     assert checking.transcribe_instructions("zh-TW") == checking.TRANSCRIBE_INSTRUCTIONS
-    for language, name in (("en", "English"), ("ja", "Japanese"), ("ko", "Korean")):
+    for language, name in (
+        ("en", "English"),
+        ("ja", "Japanese"),
+        ("ko", "Korean"),
+        ("es", "Latin American Spanish"),
+        ("pt", "Brazilian Portuguese"),
+        ("id", "Indonesian"),
+        ("vi", "Vietnamese"),
+        ("th", "Thai"),
+    ):
         prompt = checking.transcribe_instructions(language)
         assert prompt.startswith(f"Transcribe this {name} narration word for word"), language
         assert "Chinese" not in prompt and prompt.endswith("Output only the transcript."), language
@@ -80,6 +89,10 @@ def test_each_track_language_has_its_own_transcription_prompt() -> None:
     )
     assert "rather than as kana that" in checking.transcribe_instructions("ja", ["Go"])
     assert "rather than as Hangul that" in checking.transcribe_instructions("ko", ["Go"])
+    assert "rather than as Thai script that" in checking.transcribe_instructions("th", ["Go"])
+    # Vietnamese is transcribed with its tone marks: the tool folds only where they sit
+    # (tools/video/tts/check.mjs foldVietnameseTones), never whether they are there.
+    assert "every tone mark" in checking.transcribe_instructions("vi")
     # zh-CN left the video pipeline on 2026-10-09: no dub, so no prompt.
     for language in ("fr", "zh-CN"):
         with pytest.raises(ValueError):

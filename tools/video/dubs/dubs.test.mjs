@@ -15,7 +15,7 @@ import { concatSamples, encodeWav, parseWav } from "../tts/wav.mjs";
 import { encodeArgs, stretchArgs } from "./encode.mjs";
 import {
   BUDGET_MARGIN, DEFAULT_RATES, DUB_STYLES, GAP_MS, GUARD_MS, LINE_OVERHEAD_MS, MAX_TEMPO, RATE_RATIOS,
-  assembleTrack, defaultRate, dubLexicon, dubRequests, dubScript, estimatedLengths, layoutDub, layoutWindow, lineBudgets, measureRate, narrationRate, placeLines, shrinkBudgets, translationHash, windowsOf,
+  assembleTrack, defaultRate, dubLexicon, dubLocales, dubRequests, dubScript, estimatedLengths, layoutDub, layoutWindow, lineBudgets, measureRate, narrationRate, placeLines, shrinkBudgets, translationHash, windowsOf,
 } from "./plan.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -134,6 +134,26 @@ test("budgets follow the slot and the rate; an overflowing window shrinks every 
   assert.ok(anchor > 0);
   assert.equal(defaultRate("en", doc, timeline), Math.round(anchor * RATE_RATIOS.en * 100) / 100);
   assert.equal(defaultRate("en", doc, null), DEFAULT_RATES.en, "without a timeline, the fixed starting value");
+});
+
+test("es, pt, id, vi and th start from the 種田娶妻打天下 rates and name their variety", () => {
+  // tasks/open/2026-10-19-worker-video-languages-five.md, "Speaking rates": the pipeline's
+  // count (every character) of what the 種田娶妻 dubs measured without spaces and punctuation.
+  const pipeline = { es: 13.3, pt: 11.9, id: 13.3, vi: 17.4, th: 12.5 };
+  for (const [locale, rate] of Object.entries(pipeline)) {
+    assert.equal(DEFAULT_RATES[locale], rate, locale);
+    // The ratio to the zh-TW narration's 5.8 lands within a twentieth of the fixed rate.
+    assert.ok(Math.abs(RATE_RATIOS[locale] * DEFAULT_RATES["zh-TW"] - rate) < 0.7, locale);
+  }
+  // pt fits the least room per zh-TW character, vi the most.
+  assert.ok(RATE_RATIOS.pt < RATE_RATIOS.th && RATE_RATIOS.th < RATE_RATIOS.es && RATE_RATIOS.es < RATE_RATIOS.vi);
+  for (const [locale, variety] of Object.entries({ es: "Latin American Spanish (Mexican standard)", pt: "Brazilian Portuguese (São Paulo standard)", id: "Indonesian (Jakarta", vi: "Northern Vietnamese (Hanoi)", th: "Central Thai (Bangkok)" })) {
+    assert.ok(DUB_STYLES[locale].includes(variety), locale);
+    assert.ok(DUB_STYLES[locale].startsWith("Relaxed, conversational tech explainer talking to a friend"), `${locale} keeps the explainer manner`);
+    assert.doesNotMatch(DUB_STYLES[locale], /voice actor|drama/, locale);
+  }
+  // The dub plan reads every one of them from a zh-TW video.
+  for (const locale of ["es", "pt", "id", "vi", "th"]) assert.ok(dubLocales(fixture()).includes(locale), locale);
 });
 
 test("the track is the video's length with each clip at its frame", () => {

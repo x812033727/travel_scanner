@@ -34,13 +34,12 @@ export type ChecklistItem = { key: string; label: string; done: boolean };
 // a dub track. A dub track is timed with its captions, so choosing it means choosing them too.
 // zh-CN left the video pipeline on 2026-10-09 (a video's languages are four); an older review
 // that names it still renders, after these, with its own label. es (Latin America), pt (Brazil),
-// id, vi and th came on 2026-10-18 for imported videos; since 2026-10-20 the worker makes titles
-// and captions in all eight for every video, and dubs only en, ja and ko: a dub in the other five
-// is for an imported video alone, whose files are made outside the pipeline
-// (apps/api/app/video_reviews/schemas.py WORKER_DUB_LOCALES, IMPORTED_DUB_LOCALES). The server
-// lists what one video may choose in its locale_options.
-export const WORKER_DUB_LOCALES = ["en", "ja", "ko"] as const;
-export const LOCALES = [...WORKER_DUB_LOCALES, "es", "pt", "id", "vi", "th"] as const;
+// id, vi and th came on 2026-10-18 for imported videos; since 2026-10-20 the worker makes titles,
+// captions and dubs in all eight for every video. en, ja and ko are also the languages a video
+// can be narrated in, the five never (apps/api/app/video_reviews/schemas.py NARRATION_LOCALES,
+// ADDED_LOCALES). The server lists what one video may choose in its locale_options.
+export const NARRATION_LOCALES = ["en", "ja", "ko"] as const;
+export const LOCALES = [...NARRATION_LOCALES, "es", "pt", "id", "vi", "th"] as const;
 export type Locale = (typeof LOCALES)[number];
 export const LOCALE_PARTS = ["metadata", "captions", "dub"] as const;
 export type LocalePart = (typeof LOCALE_PARTS)[number];

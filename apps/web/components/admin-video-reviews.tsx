@@ -9,7 +9,7 @@ import { CategoryPanel, VideoBrowser } from "@/components/admin-video-browser";
 import {
   CompilationDownload, control, finalApproved, isBlocked, type LanguagePart, type LocaleChoice, LOCALE_PARTS, LOCALES, mp4Retired, needsOwner, partStateLabel, type Project,
   type ProjectSummary, PublishPill, publishState, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG, UploadPackage, UploadedForm, fileUrl,
-  useRefresh, useWhen, WORKER_DUB_LOCALES, youtubeSyncStuck,
+  useRefresh, useWhen, NARRATION_LOCALES, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
 import { AdminVideoSeries, DocPanel, type Series } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
@@ -158,15 +158,14 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const decided = Boolean(project.locales_decided_at);
   const changed = JSON.stringify(chosen) !== savedKey;
   // The rows: what the server offers this video (all eight; an API from before the imported
-  // videos' five offered the worker's three), and any language already saved, so a choice never
-  // hides.
-  const offered: readonly string[] = project.locale_options ?? WORKER_DUB_LOCALES;
-  // The worker dubs en, ja and ko only; a dub in es, pt, id, vi or th is for a video
-  // tools/video/cli.mjs import put on the site (its checklist says so), and the server refuses it
-  // on any other.
+  // videos' five offered en, ja and ko), and any language already saved, so a choice never hides.
+  const offered: readonly string[] = project.locale_options ?? NARRATION_LOCALES;
+  // The worker dubs all eight since 2026-10-20. A video tools/video/cli.mjs import put on the
+  // site (its checklist says so) has its es, pt, id, vi and th tracks made outside the pipeline,
+  // so only the worker's own dubs offer to be made again there.
   const imported = project.checklist.some((item) => item.key === "imported");
-  const workerDubs: readonly string[] = WORKER_DUB_LOCALES;
-  const undubbed = (locale: string) => !imported && !workerDubs.includes(locale);
+  const narrationLocales: readonly string[] = NARRATION_LOCALES;
+  const workerRemakes = (locale: string) => !imported || narrationLocales.includes(locale);
   const rows = LOCALES.filter((locale) => offered.includes(locale) || LOCALE_PARTS.some((part) => saved[locale][part]));
   const nothingSaved = Object.keys(chosenBody(saved)).length === 0;
   const toggle = (locale: (typeof LOCALES)[number], part: (typeof LOCALE_PARTS)[number], on: boolean) => setChosen((current) => {
@@ -267,7 +266,7 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
     // A code this page has no sentence for says nothing, and still offers no button.
     if (!open && skipped && blocked && t.has(`dubRetryBlocked.${blocked}`)) say(`dubRetryBlocked.${blocked}`, {});
     // Only the worker makes a dub again: an imported video's es, pt, id, vi and th never offer it.
-    const offered = !open && skipped && !blocked && canManage && chosen[locale].dub && !storyDubPending && workerDubs.includes(locale);
+    const offered = !open && skipped && !blocked && canManage && chosen[locale].dub && !storyDubPending && workerRemakes(locale);
     // Rendered for every saved dub, also with nothing in it, so that the line the next read
     // brings (the request is waiting, taken, ended) is announced; the click itself says nothing.
     return <>
@@ -296,14 +295,12 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
         <tbody>{rows.map((locale) => <tr key={locale} className="border-t border-[var(--line)]">
           <th scope="row" className="py-2 pr-3 text-left font-semibold">{t(`locales.${locale}`)}</th>
           {LOCALE_PARTS.map((part) => {
-            // A dub the worker cannot make yet stays uncheckable, but one somehow ticked can be unticked.
-            const workerLater = part === "dub" && undubbed(locale) && !chosen[locale].dub;
             const dubOff = part === "dub" && dramaDubOff;
             const state = saved[locale][part] ? project.languages?.[locale]?.[part] : undefined;
-            const offTitle = dubOff ? t(storyDubOff ? "dubStoryNeedsSwitchableCC" : "dubDramaLater") : workerLater ? t("dubWorkerLater") : undefined;
+            const offTitle = dubOff ? t(storyDubOff ? "dubStoryNeedsSwitchableCC" : "dubDramaLater") : undefined;
             return <td key={part} className="py-2 align-top">
               <label className="inline-flex min-h-8 flex-wrap items-center gap-2" title={offTitle}>
-                <input type="checkbox" aria-label={`${t(`locales.${locale}`)} ${t(`parts.${part}`)}`} checked={chosen[locale][part]} disabled={locked || dubOff || workerLater} onChange={(event) => toggle(locale, part, event.target.checked)} />
+                <input type="checkbox" aria-label={`${t(`locales.${locale}`)} ${t(`parts.${part}`)}`} checked={chosen[locale][part]} disabled={locked || dubOff} onChange={(event) => toggle(locale, part, event.target.checked)} />
                 {part === "dub" && saved[locale].dub && storyDubPending && (!state || state.state === "working")
                   ? <span className="text-xs text-[var(--muted)]">{t("dubStoryPendingFinal")}</span>
                   : state && <span className="text-xs text-[var(--muted)]">{partStateLabel(t, state.state, state.reason)}</span>}

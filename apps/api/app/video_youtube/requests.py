@@ -16,13 +16,13 @@ import re
 from datetime import UTC, datetime
 from typing import Any, cast
 
-from app.video_reviews.schemas import IMPORTED_DUB_LOCALES, WORKER_DUB_LOCALES
+from app.video_reviews.schemas import ADDED_LOCALES, NARRATION_LOCALES
 
 # The narration language of a package that names none: every video made before the dubs.
 DEFAULT_LANGUAGE = "zh-TW"
-# What a package may be narrated in: zh-TW and the languages the worker dubs. es, pt, id, vi and
-# th (schemas.IMPORTED_DUB_LOCALES) are titles, captions or an imported dub, never a narration.
-NARRATION_LANGUAGES: tuple[str, ...] = (DEFAULT_LANGUAGE, *WORKER_DUB_LOCALES)
+# What a package may be narrated in: zh-TW, en, ja and ko. es, pt, id, vi and th
+# (schemas.ADDED_LOCALES) are titles, captions or a dub, never a narration.
+NARRATION_LANGUAGES: tuple[str, ...] = (DEFAULT_LANGUAGE, *NARRATION_LOCALES)
 # The tag YouTube gets for a site language whose short code would name another variety: the
 # owner's Spanish is Latin American and the Portuguese Brazilian (2026-10-18). Every other
 # language goes as the site writes it.
@@ -81,10 +81,9 @@ _TAG_TAIL = re.compile(
     re.IGNORECASE,
 )
 # A title in one of the five whose last segment already says it is subtitled together with
-# something else ("Dub + Sub Indo", "Dublado + Legendado", the 1–5 compilation's): only an
-# imported video carries a dub in those languages (schemas.IMPORTED_DUB_LOCALES), and it keeps
-# its words, since replacing the segment would drop the dub. en, ja and ko titles are tagged as
-# they were before those languages came.
+# something else ("Dub + Sub Indo", "Dublado + Legendado", the 1–5 compilation's, written for
+# an imported video; schemas.ADDED_LOCALES) keeps its words, since replacing the segment would
+# drop the dub. en, ja and ko titles are tagged as they were before those languages came.
 _COMBINED_TAIL = re.compile(
     r"[|｜][^|｜]*\+\s*(?:CC(?:\s*(?:字幕|Subtitles|자막))?|字幕付き|Legendado|Sub\s*Indo|Vietsub"
     r"|ซับไทย)\s*$",
@@ -108,7 +107,7 @@ def captioned(title: str, language: str) -> str:
     """
     bare = title.rstrip()
     if (
-        language in IMPORTED_DUB_LOCALES
+        language in ADDED_LOCALES
         and _COMBINED_TAIL.search(bare)
         and len(bare) <= TITLE_MAX_CHARS
     ):
