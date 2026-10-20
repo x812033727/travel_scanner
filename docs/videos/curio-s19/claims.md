@@ -35,7 +35,7 @@ ef414、ef420、ef426、ef507、ef509、ef512、ef513），不帶新事實；ef3
 | ef220 | 記者提醒他：他們反對的，是博覽會之後，塔還要一直立著 | #16 | TEMPS1887「la protestation visait non pas la construction de la tour pour l'Exposition, mais son maintien pendant vingt ans après l'Exposition」 | 確認 |
 | ef221 | 那這份抗議，就不是太晚，而是太早了 | #16 | TEMPS1887「Alors la protestation, au lieu d'être trop tardive, me paraît beaucoup trop prématurée」 | 確認 |
 | ef222 | 我相信，我的塔會很美；在埃及讓人讚嘆的東西，怎麼到了巴黎，就變得醜陋可笑？ | #17 | TEMPS1887「Je crois, moi, que ma tour sera belle」「pourquoi ce qui est admirable en Égypte deviendrait-il hideux et ridicule à Paris ?」 | 確認（照 1887 年報紙，不用 1900 年改寫版） |
-| ef223 | 期限一過，塔就完全歸巴黎市，市政府愛怎麼處理，就怎麼處理 | #15 | TEMPS1887「Ce délai écoulé, la tour appartiendra définitivement à la Ville, qui en fera ce qui lui plaira」 | 確認（卡片引原文） |
+| ef223 | 期限一過，市政府愛怎麼處理，就怎麼處理 | #15 | TEMPS1887「Ce délai écoulé, la tour appartiendra définitivement à la Ville, qui en fera ce qui lui plaira」 | 確認（卡片引原文） |
 | ef224 | 天文、氣象、物理，科學家都用得上它 | #18 | TEMPS1887「d'intéressantes observations pour l'astronomie, la chimie végétale, la météorologie et la physique」 | 確認 |
 | ef225 | 戰時，它能讓巴黎一直跟法國其他地方連得上 | #18 | TEMPS1887「elle permettra en temps de guerre de tenir Paris constamment relié au reste de la France」 | 確認（回收 ef106 後半） |
 | ef301 ef302 | 一八八九年博覽會期間，付錢登上一樓的，將近一百九十七萬人次 | #21 | EIFFEL1900 第五部「1.968.287 visiteurs ayant fait l'ascension du 1er étage」 | 依覆核：1889 年博覽會期間付費登一樓的人次 |
