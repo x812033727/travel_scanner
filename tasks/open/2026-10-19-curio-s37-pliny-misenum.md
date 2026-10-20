@@ -1,7 +1,7 @@
 ---
 id: 2026-10-19-curio-s37-pliny-misenum
 title: S37 Pliny at Misenum history episode
-status: blocked
+status: in-progress
 priority: P2
 area: docs
 owner: codex-s37-r6
@@ -25,8 +25,8 @@ The next Curio history episode asks whether Pliny the Younger witnessed the Vesu
 - [x] Reopen and hash pinned LXV/LXVI, record claims and source limitations.
 - [x] Draft options, chosen brief, 8+ minute screenplay, 75–120 still shots and loop map.
 - [x] Pass video lint and relevant documentation checks.
-- [ ] Fresh independent 13 question blind read and final source/visual review of the **R6 exact hash** before any paid media; R5 blind read reached 12/13 with `no_recap` blocked.
-- [ ] Owner reviews script and whole episode media budget, then continue approved production gates.
+- [x] Fresh independent 13 question blind read and final source/visual review of the **R6 exact hash** before any paid media; R5 blind read reached 12/13 with `no_recap` blocked.
+- [x] Delegated local review records the **current exact script**, zero-flag audio, and whole episode media budget under the owner's standing instruction, without claiming personal owner review.
 
 ## Steps
 
@@ -41,7 +41,9 @@ The next Curio history episode asks whether Pliny the Younger witnessed the Vesu
 - [x] Rebuild R5 as one continuous Misenum route with a short letter-writing conclusion, remove the opening discovery spoiler and immediate courtyard/Livy repetition; fix `pl036` source causation and `pl086` night lighting.
 - [x] Run independent R5 script-only 13 question panel and full pinned-source/88-prompt audit; preserve the 12/13 narrative failure and `pl087` daylight hold in `verify-6.md`.
 - [x] Revise R6 adjacent building/crowd repeats as sequential dawn, hazard, departure, and pushing beats; correct `pl087` to night light and tighten mother's motive in `pl110`.
-- [ ] Run a **new R6** script-only 13 question panel and full pinned-source/88-prompt pass against the exact new hashes.
+- [x] Run a **new R6** script-only 13 question panel and full pinned-source/88-prompt pass against the exact new hashes.
+- [x] Run a fresh R7 script-only 13 question panel and full pinned-source/88-prompt audit after eleven audio wording repairs; narrative passed 13/13 but source audit found an attribution blocker, so no R7 TTS or script approval.
+- [x] Run fresh R8 script-only 13 question panel and full pinned-source/88-prompt audit after the source precision repair; independently confirm the two R8a metadata payoff fixes before renewing exact-script approval and TTS.
 - [ ] Complete audio, stills, music, cut and QA only after gates and budget review.
 
 ## How to verify
@@ -50,7 +52,13 @@ Run `node tools/video/cli.mjs lint --slug curio-s37 --json`, `npm run test:docs-
 
 ## Notes
 
-Blocked on a fresh independent 13-question blind read and full source/visual pass of the **R6** exact hashes; no paid media until those results and the whole episode budget gate are recorded. `verify-2.md` records failed R1, `verify-3.md` records R2 12/13, `verify-4.md` records R3 11/13, `verify-5.md` records R4 10/13, and `verify-6.md` records the independent R5 12/13 plus R6 handoff. None is R6 approval.
+2026-10-20 R6 gate: the new independent blind reader passed 13/13 official narrative questions and the source/visual reviewer passed 91/91 claims plus 88/88 written prompts on the exact R6 hashes. Their full reports are `verify-7-r6-blind.md` and `verify-7-r6-source.md`; `verify-7.md` records the formal line-cited `narrative --answers` pass and the delegated local outline A and script approvals. The approval notes cite the owner's standing instruction to take recommended choices and continue; they do not claim the owner personally read S37. Gemini Sulafat TTS completed 89 requests/2,220 characters and measured 9:32.77 total, with **8:38.13 actual story body** excluding opener and outro. Site dry-runs quote 88 MiniMax images up to three takes **US$3.56** plus 578-second music **US$0.08**, a pre-art whole-episode image-and-music hard cap of **US$3.64**; both currently US$0.00 spent. Full `check-audio` is underway. No MiniMax image generation has begun; zero audio flags, shared S04/S23 hourly quota and branded intro/outro remain separate gates. Earlier failed rounds remain in `verify-2.md` through `verify-6.md`.
+
+2026-10-20 R7 audio repair: R6 full checks ended with 31, 12, then 11 flags despite two targeted retakes; `review/check-flags.json` still held `pl008, pl009, pl020, pl017, pl051, pl052, pl055, pl026, pl059, pl085, pl099`. R6 audio is **not approved**. Only those eleven spoken lines were rewritten to simpler source-equivalent wording in `video.json`, `claims.md` and regenerated `script.md`; no prompts changed. [verify-8.md](../../docs/videos/curio-s37/verify-8.md) records each edit and the R7 hashes: script `b8c6cca751dc9801d09f8f4cb17b632e73cd7cf5b9ece13094c7550511490359`, video `31eb25bf7130bbcbd1e1a6f9f0bfbe78154dcf13d527e27738ea5dd4a05c7de2`, claims `2beae04c177796443055a56e0c6ef10e1a40b5163e4b812cdfe0b3a5b9d6730a`. Lint is 0/0; 91/91 text/claim alignment. A fresh context-isolated reviewer is now doing R7 blind and source/prompt audit. No R7 TTS or art before that result; R6 script approval, narrative record and measured timeline are stale for R7.
+
+R7 review returned 13/13 blind story Yes but a source **blocker** at `pl020`: the rewritten pronoun could make the uncle the writer of the letter. The same reader asked to clarify `pl003`'s singular letter, remove `pl029`'s unsourced reported slow walk and `pl057`'s specific wheel support, and tighten five prompt details. The full result is `verify-8-r7-source.md`. No R7 TTS was ordered. R8 applies those four spoken and five prompt repairs; [verify-9.md](../../docs/videos/curio-s37/verify-9.md) records the ledger. A new isolated reader sealed 13/13 blind Yes and passed 91/91 claims and 88/88 written prompts, but asked to correct two loop-payoff metadata values. R8a changes only those two values; an independent exact-diff readback passed all 22 loop mappings. Current SHA-256: script `a838e16572f4a40c3d79c5874087900a8e8b808fceb35db9a03642bcc3412a62`, video `8d4b1a2c4cc85dad3e5f500eff643c4a7d7ecc70998443097e3a62c58f72a51c`, claims `ce7491625af59f27549fe4621e18917082946602474a99c1ea72e4f9f27d997a`. Lint remains 0/0; 91/91 alignment and 88 prompts. The written gate passed; image generation remains on hold for S04/S23 quota.
+
+R8a production: the formal narrative importer passed 13/13, and local delegated outline A and exact-script approvals were renewed with explicit notes that the owner did not personally read S37. TTS synthesized 14 changed requests/329 characters, reused 75, and produced a 575.2-second timeline. The measured body from `pl007` to `pl099` is **519.5 seconds (8:39.5)**. Full `check-audio` checked 91/91, with 68 exact, 12 same-sound/filler, 11 accepted, **0 flags**. The audio gate was submitted to the site as pending owner decision; a local delegated audio approval records that the owner has not personally listened. Before art, the 88-still three-take image cap was quoted **US$3.56** and 581-second music **US$0.08**, whole-episode image-plus-music **hard cap US$3.64**. Gemini Lyria generated the quoted 581-second music for **US$0.08**; MiniMax S37 spend remains **US$0.00**, leaving **US$3.56** inside the cap for images. Its generation is held for the shared S04/S23 quota. The final brief hash `2e071d27805a68d2090e16686f7c7b649d43fab79f481ba3954fd910243df3a4` received renewed local delegated outline A approval and site pending submission. [verify-10.md](../../docs/videos/curio-s37/verify-10.md) records exact hashes and receipts; final media remains blocked by branded intro/outro installation.
 
 R6 addresses only the remaining R5 blockers and its small source precision note. The opening and sole nephew route are unchanged. `[pl054]` shows the uncertain dawn light, `[pl025]` the hazardous shaking buildings, `[pl055]` mother and son leave, and `[pl026]` the crowd presses them; this removes the two adjacent repeated beats found by the blind reader. `[pl087]` remains in the anxious night under oil-lamp light; `[pl110]` now states the mother's reluctance to cause her son's death without claiming she literally saw his future safety. The independent R5 audit and R6 correction ledger are in `verify-6.md`.
 

@@ -1,0 +1,21 @@
+# Curio S37 R7 — sealed blind narrative review
+
+Sealed from `docs/videos/curio-s37/script.md` (SHA-256 `b8c6cca751dc9801d09f8f4cb17b632e73cd7cf5b9ece13094c7550511490359`) and the JSON output of `VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs narrative --slug curio-s37 --json` only. I had not opened research, claims, video JSON, previous tasks, or reports when writing this review. Line numbers below refer to `script.md`.
+
+| # | Narrative question ID | Yes/No | Script evidence and reason |
+|---|---|---|---|
+| 1 | `scene_first` | **Yes** | The first sentence locates the action across the bay during the eruption and has the boy grasp his mother's hand (L9); the next gives a visible cloud and crowd (L13). This is a concrete moment within the first four sentences. |
+| 2 | `no_spoiler` | **Yes** | The opening asks whom the ship would rescue, whether he would release his mother's hand, whether he would see his uncle again, and what he saw firsthand (L17–29). It stops before the later answers (L79–83, L221, L355–375). |
+| 3 | `one_line` | **Yes** | After the opening glimpse (L9–29), the account starts at the first sight of the eruption cloud (L35), follows the uncle's departure and the boy's night (L75–101), the mother's escape (L143–245), and the later written account (L355–375). The flash forward is resolved in that sequence. |
+| 4 | `no_toc` | **Yes** | L17–29 poses concrete unresolved moments; it does not announce the order of chapters. Later bridge questions concern the next physical event (for example L151, L175, L205), not the video's structure. |
+| 5 | `chapters_link` | **Yes** | Each chapter entry picks up a tangible preceding cue: the opening cloud to its first sighting (L13, L35); reading through the bath to the night (L91, L97); dawn to the dim morning (L133, L139); the cloud's changed look to the black cloud (L175, L181); finding family in darkness to calls (L253, L259); darkness retreating to daylight (L311, L317); and the uncle's fate to the report of his fall (L349, L355). |
+| 6 | `open_loops` | **Yes** | The account supplies unresolved questions or turns throughout, with representative hooks at L59, L87, L97, L133, L151, L175, L205, L229, L253, L279, L295, L311, L333, and L349. Their separation is below 90 seconds in the supplied narrative timestamps. |
+| 7 | `payoffs` | **Yes** | The large opening questions get new answers: Rectina's rescue (L75–83), the son's refusal (L209–225), the uncle's death (L349–363), and the eyewitness/hearsay boundary (L363–375). Shorter questions also resolve, such as the false rumours (L279–283) and the return of daylight and the pair to town (L311–333). |
+| 8 | `no_recap` | **Yes** | The repeated mother-and-hand (L9, L221), crowd behind the pair (L13, L151), and uncle's departure (L25, L91) are the opening's teased events when the chronology reaches them. The body does not restart a completed sequence or repeat a numerical fact. |
+| 9 | `chapters_are_events` | **Yes** | The chapter heads name occurrences: the mother points out the cloud (L31), the quake wakes them (L93), they leave the city (L135), the cloud covers the bay (L177), and daylight returns (L313). |
+| 10 | `outro_no_next` | **Yes** | The outro asks about this story and invites subscriptions (L375–377); it makes no promise about a next video or file. |
+| 11 | `opening_hooks` | **Yes** | After the first scene (L9–13), the ship's rescue question, the mother's demand, the uncle's absence, and the firsthand question supply at least three specific unresolved moments (L17–29). |
+| 12 | `one_thread` | **Yes** | The same boy's whereabouts and knowledge run from his hand on the road (L9), through his decision to stay (L67–71), his escape with his mother (L147–245), to his differentiation of direct observation from later reports (L367–375). |
+| 13 | `no_detour` | **Yes** | The uncle's journey explains why the boy stayed behind (L61–87) and why his final moments were secondhand (L355–371); the intervening escape follows the boy and mother (L93–349). These scenes advance the question opened at L29. |
+
+Blind narrative verdict: **13 Yes / 0 No**. This verdict concerns structure and engagement only; source and visual accuracy are for the subsequent independent audit.
