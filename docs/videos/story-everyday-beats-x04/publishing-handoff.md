@@ -10,6 +10,6 @@
 
 核心口徑隨片交接：2014 年交易**同時**買 Beats Music, LLC 與 Beats Electronics, LLC；約 US$2.6 billion 是兩家公司合計的會計收購對價，不是耳機單價。2014 年第三季數位音樂銷售下降只是同期報表背景，不能說它單獨造成收購。2015／2016 年報列出 Apple Music 與 Beats 產品，不能由此證明前者的程式碼或訂戶必然繼承 Beats Music，也無法計算各自收入或投報。2014 年另償還的 US$295 million 舊債、goodwill 分配與附任職條件股份不可混加成新的交易標價。
 
-本機這份手工前製稿沒有正式 story 工作區或已釘選的 story lexicon；`tts --dry-run` 因 `STORY_LEXICON_MIGRATION_REQUIRED` 停止。唯讀 `story-lexicon-migrate` 又因缺可證明的本故事工作區而回 `STORY_LEXICON_MIGRATION_WORKDIR_UNPROVEN`。不能移走 `video.json` 或造章稿繞過初始化護欄。待正式工人與其工作區可用時，先循受審的 story lexicon 途徑釘選發音、再跑 TTS 乾跑及實際量長；若實際正文短於 8 分鐘，先補有一手來源的新內容並重審，不靠空鏡或片頭片尾灌時。配樂乾跑也須等與該稿相符的 TTS 時間軸。
+手工前製稿現行 SHA-256 是 `53483afc8fbc219ee6b10a356f29f8a5202319888a2f7e47a3e048de8a544ae5`。兩句時序修訂已取得[現稿來源審查](reviews/verify-bootstrap-final.md)與兩份獨立[敘事 A](reviews/blind-a-bootstrap-final.md)／[敘事 B](reviews/blind-b-bootstrap-final.md) PASS；[詞庫啟動收據](reviews/lexicon-bootstrap.json)綁定這三份證據。受審手工 bootstrap 已在全新空本機工作區釘選 story lexicon（SHA-256 `26084f8968d1bf068ba16687ab32bbec04ab5207c4f45f50facd4dd6e22d7f9e`），沒有虛構正式工人章稿或 `auto.json`。`tts --dry-run` 現可列出 67 次待合成、1,964 計費字元；共用權杖的站台狀態 GET 因此雲端環境網路白名單未含 `mokaair.com` 而失敗，所以未生成旁白。待網路設定經正式流程生效、整集 US$25 費用核算足夠後，先實測 TTS 正文至少 8 分鐘；若不足，先補有一手來源的新內容並重審，不靠空鏡或片頭片尾灌時。配樂乾跑也須等與該稿相符的 TTS 時間軸。手工 bootstrap 工具目前由 Netflix X03 分支提供，X04 正式續製須取得該已審工具實作。
 
 人物、辦公桌、耳機及螢幕全是無商標敘事示意，不是真實 Apple／Beats 產品、介面或員工。正式上架文案須留五份 SEC 原始網址及查核日期，避免沿用參考頻道的縮圖畫面與價碼敘述。全片 US$25 硬上限包含語音、插圖、圖片評審、配樂、轉錄、查核及稅費；本交接前實際支出為 US$0，後續所有實花另記。
