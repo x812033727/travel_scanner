@@ -52,11 +52,10 @@ const statCards = new Map([
   ["x130403", { title: "部分播客內容資產沖銷", stats: [{ value: "€30m", label: "2023 Q2；非全部播客投資損失" }], source: "S3｜2023 Q2 6-K" }],
   ["x130404", { title: "整個廣告業務毛利率", stats: [{ value: "+1% → −6%", label: "2022 Q2 → 2023 Q2" }], source: "S3｜2023 Q2 6-K" }],
   ["x130501", { title: "整個廣告業務毛利率", stats: [{ value: "−6% → +13%", label: "2023 Q2 → 2024 Q2" }], source: "S5｜2024 Q2 6-K" }],
-  ["x130515", { title: "Premium 毛利率", stats: [{ value: "28% → 31%", label: "2023 Q2 → 2024 Q2；非播客單獨毛利" }], source: "S5｜2024 Q2 6-K" }],
   ["x130522", { title: "Spotify 全公司｜2024 全年", stats: [{ value: "首次營業獲利", label: "整家公司全年結果；非播客獨立回報" }], source: "S6｜2024 Q4 earnings exhibit" }],
   ["x130611", { title: "廣告欄的播客成本", stats: [{ value: "−€21m", label: "2025 Q2 同比；Ad-Supported 播客成本" }], source: "S7｜2025 Q2 6-K" }],
-  ["x130616", { title: "Spotify 全服務｜2026 Q2", stats: [{ value: "777m", label: "月活使用者；不是兩案收入" }], source: "S8｜2026 Q2 6-K" }],
-  ["x130617", { title: "Spotify 全服務｜2026 Q2", stats: [{ value: "300m", label: "Premium 訂閱戶；與月活口徑重疊，不可相加" }], source: "S8｜2026 Q2 6-K" }],
+  ["x130616", { title: "Anchor 收購對價", stats: [{ value: "€136m", label: "2019；含現金及股份獎酬" }], source: "S1｜2019 Q1 6-K" }],
+  ["x130617", { title: "Gimlet 收購對價", stats: [{ value: "€172m", label: "2019；含現金及股份獎酬" }], source: "S1｜2019 Q1 6-K" }],
 ]);
 
 const cues = [
@@ -69,11 +68,12 @@ const cues = [
 ];
 const cueOverrides = new Map([
   ["x130101", "an anonymous fictional creator's hand reaches toward a plain microphone beside a blank purchase folder, both centered"],
+  ["x130102", "the outside fictional researcher puts a blank anonymous audio-program card into a plain creator-tool tray while a separate income tray stays empty"],
   ["x130103", "two acquisition folders stacked vertically inside the central frame, one near a creator tool and one near a studio card"],
   ["x130105", "a purchase-price folder faces an empty future-return tray, both centered"],
   ["x130106", "a fictional free listener presses play on a plain audio player while a generic unfilled ad-placement tray waits beside it, no real program shown"],
-  ["x130107", "an outside fictional researcher reaches from a generic public notice about some unnamed closed audio shows toward two old unrelated acquisition folders, leaving the connection unmade"],
-  ["x130108", "a fictional video creator faces a plain camera frame while a separate blank member-viewing screen waits nearby; no real show imagery"],
+  ["x130107", "a generic public record about an unspecified podcast-content realignment arrives on an outside fictional researcher's desk, while the researcher reaches toward two old purchase folders; no show closure or result visible"],
+  ["x130108", "a fictional video creator sends an unbranded blank video card to a member's viewing screen while an unassigned cost token waits between two service ledgers; no real show imagery"],
   ["x130109", "the outside fictional researcher leans toward two old purchase folders and an empty return tray, leaving the answer covered"],
   ["x130201", "a fictional free listener presses a plain player while an unfilled advertising-inventory tray waits for a buyer token, with no actual named show"],
   ["x130204", "two unrelated anonymous audio cards converge from creator and studio desks into one unbranded player, all centered"],
@@ -86,16 +86,17 @@ const cueOverrides = new Map([
   ["x130320", "the outside fictional researcher keeps a rights-cost stack beside but separate from a podcast-cost stack inside one broad account"],
   ["x130408", "the outside fictional researcher holds a partial content-asset card near the old acquisition folders, hesitates, and does not attach it"],
   ["x130411", "the outside fictional researcher moves the partial content-asset card back under a broad portfolio folder, away from both purchase folders"],
-  ["x130419", "a later green advertising ledger arrives beside the reorganized content folder"],
+  ["x130419", "the outside fictional researcher pins a negative broad-ad-margin line beside an empty future-period slot, without repeating any numerical label"],
   ["x130420", "two still-closed evidence envelopes for prior costs and new ad income"],
   ["x130421", "an analyst holds an empty income tray beside an empty cost tray"],
   ["x130505", "an anonymous accountant examines an ordinary production-cost folder after a prior expense packet"],
   ["x130507", "a lower production-cost tray kept separate from a still-closed advertising-income tray"],
-  ["x130513", "several different incoming and outgoing tokens affect one broad green ledger"],
-  ["x130516", "a broad orange member-service income tray gathers more generic coins beside an earlier smaller tray, no readable figures"],
-  ["x130517", "many anonymous member tokens enter one large orange service tray"],
-  ["x130518", "a fictional member saves a generic audio card beside an unrelated music playlist on a plain unbranded phone"],
-  ["x130519", "audio, music and book-shaped tiles share one broad member-service ledger"],
+  ["x130513", "the broad green advertising ledger closes while the orange member-service ledger opens beside it"],
+  ["x130514", "a fictional Premium member opens an anonymous podcast card on a plain player while a monthly fee token is already in a broad orange service tray"],
+  ["x130516", "the outside fictional researcher moves a broad orange member ledger next to a broad green advertising ledger, both with improving abstract balances"],
+  ["x130517", "one new unlabeled video-experience cost token waits between green and orange service ledgers, with its destination not yet visible"],
+  ["x130518", "a sealed broad whole-company annual-results folder arrives on the outside fictional researcher's desk after the two quarterly ledgers"],
+  ["x130519", "the outside fictional researcher sets two quarterly service cards aside and reaches to open a separate whole-company year-end folder"],
   ["x130520", "green and orange quarterly ledgers face one sealed annual company folder"],
   ["x130524", "a new video-creator payment folder appears beside, not inside, an old podcast folder"],
   ["x130525", "a fictional creator and a fictional member stand at two ends of a conceptual video service desk"],
@@ -105,19 +106,19 @@ const cueOverrides = new Map([
   ["x130612", "the outside fictional researcher pins a smaller green advertising-cost card beside an empty space reserved for an orange member-service card, both centered"],
   ["x130614", "the outside fictional researcher examines an empty transfer-amount cell in the orange member ledger while the green advertising ledger remains separate"],
   ["x130615", "the outside fictional researcher removes an unmarked savings sticker from a smaller green cost tray and leaves an empty place for a truthful label"],
-  ["x130618", "two old purchase folders rest below a much larger conceptual population of anonymous service users, with no causal arrows"],
-  ["x130619", "anonymous audience tokens stay separate from an empty return-on-purchase tray and a broad company-results folder"],
-  ["x130620", "the outside fictional researcher halts a new video-creator payment token before placing it in either older unrelated purchase folder"],
-  ["x130621", "the outside fictional researcher lines up separate acquisition, content-asset, whole-company-result and advertising-cost cards without combining them"],
+  ["x130618", "two separate purchase-price cards face two still-empty lifetime-return columns on an outside fictional researcher's desk"],
+  ["x130619", "separate anonymous content-asset, whole-company-year and video-cost-classification evidence cards are tried beside two old purchase folders"],
+  ["x130620", "two old purchase-price cards can be combined while three later differently scoped evidence cards cannot be assigned to either return column"],
+  ["x130621", "the outside fictional researcher looks for a separate cumulative-income tray and cumulative-expense tray beside each old purchase folder, with all answer cells empty"],
   ["x130622", "the outside fictional researcher pulls three differently scoped evidence cards apart instead of adding them, leaving two purchase-return trays empty"],
 ]);
 const camera = ["Medium shot, push in", "Close-up, pull out", "Wide shot, gentle pan left", "Overhead shot, tilt down", "Medium close-up, pan right", "Low-angle shot, lift gently"];
 const rooms = ["in an anonymous research room", "in a plain recording booth", "in an accounts library", "along a records aisle", "in a service hall", "beside a review shelf"];
 const promptTails = [
-  "Anonymous illustrative people only; no readable writing, corporate insignia, copyrighted illustrations or celebrity likeness. Reserve open space for editor-applied titles.",
+  "Unidentified people only; no readable writing, corporate insignia, copyrighted illustrations or celebrity likeness. Reserve open space for editor-applied titles.",
   "All objects are unbranded and without print; avoid numbers, lettering and trademark shapes. Show the important gesture in full view.",
   "Do not imitate a named host, published series imagery, historical contract or company emblem. Arrange scene elements distinctly on camera.",
-  "Illustrative, not archival: empty paper surfaces and invented ordinary characters only. Compose a clear action.",
+  "Conceptual rather than archival: empty paper surfaces and invented characters only. Compose a clear action.",
   "No generated glyphs or brand marks; exact dates and figures are added in postproduction as typeset copy.",
   "Unmarked props, generic adults and no protected visual works. Leave clear background for typeset copy.",
 ];
@@ -145,7 +146,7 @@ scenes.push({ id: "x13-outro", template: "outro", data: { title: "回本，要�
 const loops = [
   ["x130104", "x130214", "兩案對價不是全額現金"],
   ["x130106", "x130205", "免費端播放仍要賣出廣告曝光才有收入"],
-  ["x130107", "x130410", "節目關閉公告沒有逐檔清單可回貼舊收購"],
+  ["x130107", "x130403", "內容調整紀錄揭出部分播客內容資產沖銷"],
   ["x130108", "x130608", "新影片觀看體驗的相關成本進Premium"],
   ["x130109", "x130624", "無獨立損益則不能判定兩案回本"],
   ["x130217", "x130301", "整個廣告業務首季毛利轉負"],
@@ -154,18 +155,19 @@ const loops = [
   ["x130324", "x130401", "重整的是整個播客內容組合，無法指認原兩案"],
   ["x130422", "x130501", "廣告毛利率轉成正十三"],
   ["x130508", "x130510", "音樂廣告是主要廣告增額"],
+  ["x130513", "x130515", "同季會員服務毛利率也提高，但非播客獨立帳"],
   ["x130520", "x130522", "首個全年營業獲利屬全公司"],
   ["x130527", "x130614", "廣告欄下降含未拆出的成本分類變化"],
   ["x130613", "x130614", "搬往會員帳的金額沒有單列"],
   ["x130610", "x130611", "廣告欄播客成本同比少兩千一百萬歐元"],
-  ["x130618", "x130619", "大規模使用人數仍不是兩案回款"],
+  ["x130618", "x130621", "買價可逐案列明，卻仍缺各案累計進帳與費用"],
   ["x130623", "x130624", "收購回本無法從公開分類判定"],
 ].map(([setup, payoff, what]) => ({ setup, payoff, what }));
 const position = new Map(allRows.map((row, index) => [row.id, index]));
 for (const loop of loops) if (!(position.has(loop.setup) && position.has(loop.payoff) && position.get(loop.setup) < position.get(loop.payoff))) throw new Error(`Broken loop: ${JSON.stringify(loop)}`);
 
 const description = [
-  "Spotify 在 2019 年兩天內買進播客創作／發行工具與節目製作公司，兩案收購對價合計 €308m。2023 年公司重整播客內容組合，2024 年又首次實現全公司全年營業獲利；到 2026 年已有 777m 月活使用者。這能證明兩筆收購或播客業務回本嗎？本集沿一手 SEC 原件把每筆數字的期間、範圍和能證明的事分清楚。",
+  "Spotify 在 2019 年兩天內買進播客創作／發行工具與節目製作公司，Anchor 的收購對價 €136m、Gimlet €172m，兩案合計 €308m。2023 年公司重整播客內容組合，2024 年又首次實現全公司全年營業獲利。這能證明兩筆收購或播客業務回本嗎？本集沿一手 SEC 原件把每筆數字的期間、範圍和能證明的事分清楚。",
   "",
   "2023 Q2 有部分播客內容資產沖銷，同季也有若干節目關閉；公告沒有逐檔清單，不能回推到當年兩筆收購。2025 年提供給 Premium 會員的新影片觀看體驗，相關播客成本部分改列 Premium；其餘播客內容成本仍在 Ad-Supported。公開報表仍沒有播客獨立損益。畫面是匿名概念插畫，數字卡由後製排版。查核日期：2026-10-20。",
   "",
@@ -187,7 +189,7 @@ const video = {
 const bytes = JSON.stringify(video, null, 2) + "\n";
 writeFileSync(path.join(dir, "video.json"), bytes);
 const hash = createHash("sha256").update(bytes).digest("hex");
-writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 13, chapter: 1, planned_episodes: 20, title: "Spotify：兩筆播客收購能否判定回本", logline: "從 2019 年兩筆播客收購一路核對 2020 廣告分類、2023 內容重整、2024 全公司獲利、2025 影片成本改列及 2026 全服務規模，釐清公開紀錄能否證明回本。", names: ["Spotify", "Anchor", "Gimlet"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
-writeFileSync(path.join(dir, "script.md"), ["# X13 Spotify｜六章繁中逐句稿 v8", "", `離線前製；\`video.json\` SHA-256：\`${hash}\`。未獨立逐句審核、盲評、配音或測量實際時長。濃縮開場後接正式 5 秒片頭；最後三句後接正式 21 秒 v4 片尾。`, "", ...chapters.flatMap((rows, i) => [`## 第 ${i + 1} 章｜${titles[i]}${i === 0 ? "（開場濃縮）" : ""}`, "", ...rows.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
+writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 13, chapter: 1, planned_episodes: 20, title: "Spotify：兩筆播客收購能否判定回本", logline: "從 2019 年兩筆播客收購一路核對 2020 廣告分類、2023 內容重整、2024 全公司獲利與 2025 影片成本改列，再拆出兩案各自的買價，釐清公開紀錄能否證明回本。", names: ["Spotify", "Anchor", "Gimlet"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
+writeFileSync(path.join(dir, "script.md"), ["# X13 Spotify｜六章繁中逐句稿 v9", "", `離線前製；\`video.json\` SHA-256：\`${hash}\`。未獨立逐句審核、盲評、配音或測量實際時長。濃縮開場後接正式 5 秒片頭；最後三句後接正式 21 秒 v4 片尾。`, "", ...chapters.flatMap((rows, i) => [`## 第 ${i + 1} 章｜${titles[i]}${i === 0 ? "（開場濃縮）" : ""}`, "", ...rows.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
 writeFileSync(path.join(dir, "line-source-matrix.md"), ["# X13 Spotify｜作者逐句來源索引", "", `\`video.json\` SHA-256：\`${hash}\`。作者標記不等於獨立來源審核；來源 URL 與邊界見 [source-matrix.md](source-matrix.md)。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |", ...allRows.map(row => `| \`${row.id}\` | ${row.text.replaceAll("|", "\\|")} | ${row.refs.join("、") || "敘事分析／提問"} |`), ""].join("\n"));
 console.log(JSON.stringify({ video_sha256: hash, lines: allRows.length, scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, opening_chars: chapters[0].map(row => row.text).join("").length, body_chars: chapters.slice(1).flat().map(row => row.text).join("").length }, null, 2));

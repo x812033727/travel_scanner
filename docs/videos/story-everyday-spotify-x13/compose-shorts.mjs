@@ -68,7 +68,7 @@ if (productionProblems.length) throw new Error(`Episode Shorts production check 
 const bytes = JSON.stringify(shorts, null, 2) + "\n";
 writeFileSync(path.join(dir, "shorts.json"), bytes);
 const sha = createHash("sha256").update(bytes).digest("hex");
-const mdLines = ["# X13 Spotify｜兩支獨立 Shorts 逐句稿 v8", "", `\`shorts.json\` SHA-256：\`${sha}\`。未配音、生成插畫、直式輸出或手機驗收；兩支各自從頭提出問題並回答。`];
+const mdLines = ["# X13 Spotify｜兩支獨立 Shorts 逐句稿 v9", "", `\`shorts.json\` SHA-256：\`${sha}\`。未配音、生成插畫、直式輸出或手機驗收；兩支各自從頭提出問題並回答。`];
 const sources = ["# X13 Spotify｜Shorts 作者來源索引", "", `\`shorts.json\` SHA-256：\`${sha}\`。作者標記，待獨立來源審查。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |"];
 for (const [i, lines] of groups.entries()) {
   mdLines.push("", `## Short ${i + 1}`, "");
@@ -80,13 +80,13 @@ for (const [i, lines] of groups.entries()) {
 writeFileSync(path.join(dir, "shorts-script.md"), mdLines.join("\n") + "\n");
 writeFileSync(path.join(dir, "shorts-source-matrix.md"), sources.join("\n") + "\n");
 const plan = [
-  "# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v8",
+  "# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v9",
   "",
   "這是**尚未生成畫面**的原生直式重構規格，不是裁切或手機 QA 通過收據。每拍 `shot` 均須是長片真正的 `shot` 影格；兩張長片 `stats` 不送入 Shorts 影格管線。數字由 Shorts `big` 欄位在 1080×1920 直式卡原生排字，場景底圖另取有效的匿名插畫。編譯器直接呼叫 `episodeShortsProblems(shorts, video)` 防止再引用 `stats`。",
   "",
   "每拍有效插畫先從 1920×1080 取 x=656–1264 的 608×1080 中央窗，再重排為 1080×1920。Short 1 兩種能力卡採中央上下堆疊，不放在兩側；Short 2 廣告與會員帳本也上下堆疊，先後鏡頭保持同一色序。Shorts 卡片工具原生文字內容區 x=80–900、y=258–1378；可關閉繁中字幕區 x=80–900、y=1430–1595；片尾控制區 y≥1640 不放關鍵字。每拍在 360px 寬手機畫面檢查臉、手、主物、字與控制列不互相遮擋。",
   "",
-  "兩張原生數字卡：Short 1 第 5 拍以 `x130105` 的有效匿名買價資料夾插畫作背景，`headline` 為「兩案收購對價」、`big` 為 **€308m**，47px `body` 放「2019｜Anchor＋Gimlet」，`note` 放 S1 SEC 與兩案合計範圍；**不**提前揭露下一拍的股份獎酬。Short 2 第 1 拍以 `x130612` 的有效服務帳插畫作背景，`headline` 為「廣告欄播客成本」、`big` 為 **−€21m**，47px `body` 放「2025 Q2 同比｜Ad-Supported」，`note` 放 S7 SEC 與非全平台總支出範圍；不提前出現『真省』或 Premium 搬移答案。`big` 用 Shorts 工具的 168px 字級、`headline` 88px；`note` 28px 只輔助來源，關鍵口徑另由頭條與旁白交代。原生排字後仍須以 360px 畫面實測可讀性。",
+  "兩張原生數字卡：Short 1 第 5 拍以 `x130105` 的有效匿名買價資料夾插畫作背景，`headline` 為「兩案收購對價」、`big` 為 **€308m**，47px `body` 放「2019｜Anchor＋Gimlet」，`note` 放 S1 SEC 與兩案合計範圍；**不**提前揭露下一拍的股份獎酬。Short 2 第 1 拍以 `x130612` 的有效服務帳插畫作背景，`headline` 為「廣告欄播客成本」、`big` 為 **−€21m**，47px `body` 放「2025 Q2 同比｜Ad-Supported」，`note` 放 S7 SEC 與非全平台總支出範圍；第一句旁白先說明廣告與會員兩本服務帳，不提前回答『真省』或 Premium 搬移。`big` 用 Shorts 工具的 168px 字級、`headline` 88px；`note` 28px 只輔助來源，關鍵口徑另由頭條與旁白交代。原生排字後仍須以 360px 畫面實測可讀性。",
   "",
   "| Short／拍 | 長片有效 shot | 焦點／內容（直接取自來源鏡頭提示） | 橫版 x 起點 | 直式原生頭條／大數字 |",
   "| --- | --- | --- | ---: | --- |",
