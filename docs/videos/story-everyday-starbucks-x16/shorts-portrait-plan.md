@@ -1,6 +1,6 @@
 # X16 星巴克｜兩支 Shorts 的逐拍 9:16 裁切交接
 
-離線規劃，綁定主片 `3374c911b1a023b3906c8ff318b5ec37c1bbfdeb1915b20135e761a6cc151721`、Shorts `2c3b4beb163618e9140c8bb97693efa669301f8ec2777ca380f0aafe9db28428`。**尚無插畫、直式渲染或手機實測**。表內是實際要採用的第一版 9:16 裁切與原生文字覆蓋；生成後要逐鏡核對焦點，再在相同範圍內調整，不能把數字當作 AI 畫在圖上的文字。
+離線規劃，綁定主片 `504b042e45967dcd2e5f316841f8c36417b40ec3f55be07a1c0ebbdf8d0adfa5`、Shorts `c694f6c2ac1a5fa809dc374e8c7e36966d898a1cd9351b29638588d2f8d6e113`。**尚無插畫、直式渲染或手機實測**。表內是實際要採用的第一版 9:16 裁切與原生文字覆蓋；生成後要逐鏡核對焦點，再在相同範圍內調整，不能把數字當作 AI 畫在圖上的文字。
 
 主片畫布 1920×1080，每拍選一張真正的 `shot`，用 608×1080 視窗依表列 x 值裁切（y=0），等比輸出 1080×1920。圖片提示詞要求人物臉、手與主道具留在中央 x=656–1264；本表 x 的小幅移動用於把該拍道具放到直式中心，交接時仍須看原圖確認。若焦點落出裁切，先調 x（合法 0–1312），保不住才在同一整片預算內重畫。
 
@@ -10,13 +10,13 @@
 | --- | --- | --- | --- | --- |
 | 1／1 | `x16-b01-s01` | `x=656, y=0` | clerk lifts blank notice in plain office | 約 600 家 |
 | 1／2 | `x16-b01-s03` | `x=630, y=0` | clerk holds new-looking plain shop key | 約七成很新 |
-| 1／3 | `x16-b01-s04` | `x=680, y=0` | owner studies blank storefront plan | 新店先中？ |
+| 1／3 | `x16-b01-s04` | `x=680, y=0` | owner studies blank storefront plan | 按什麼選？ |
 | 1／4 | `x16-b03-s04` | `x=700, y=0` | analyst encloses selected shop tokens | 分母：入選店 |
 | 1／5 | `x16-b03-s05` | `x=610, y=0` | planner leaves many tokens outside ring | 別算成全部 |
 | 1／6 | `x16-b03-s07` | `x=656, y=0` | analyst opens separate blank shop ledger | 看單店利潤 |
 | 1／7 | `x16-b03-s08` | `x=690, y=0` | planner compares two blank future ledgers | 還看未來回報 |
-| 1／8 | `x16-b03-s11` | `x=640, y=0` | owner sets key beside several plain ledgers | 還看場址條件 |
-| 2／1 | `x16-b05-s11` | `x=656, y=0` | barista studies thinning generic queue | 2009：−6% |
+| 1／8 | `x16-b03-s09` | `x=640, y=0` | planner moves plain storefront model on map | 場址也要考量 |
+| 2／1 | `x16-b05-s10` | `x=656, y=0` | barista studies thinning generic queue | 2009：−6% |
 | 2／2 | `x16-b06-s06` | `x=700, y=0` | barista welcomes anonymous customer | 2010：+7% |
 | 2／3 | `x16-b06-s10` | `x=635, y=0` | owner weighs closed key beside mature tokens | 關店一招？ |
 | 2／4 | `x16-b06-s02` | `x=656, y=0` | clerk encloses mature shop tokens | 同店：滿 13 月 |

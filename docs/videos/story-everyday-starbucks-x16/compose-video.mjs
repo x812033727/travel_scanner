@@ -50,7 +50,7 @@ const cardRules = [
   [/反而多了四百四十五/, { title: "美國直營店年度淨變化", stats: [{ value: "+445 家", label: "FY2008；6,793 → 7,238" }], source: "S3｜FY2008 10-K" }],
   [/同年下滑百分之五/, { title: "美國同店銷售", stats: [{ value: "−5%", label: "FY2008；非所有新店的成績" }], source: "S3｜FY2008 10-K" }],
   [/累計五百八十八/, { title: "七月 600 家計畫", stats: [{ value: "588 家", label: "205（FY2008）＋383（FY2009）" }], source: "S3/S4｜FY2008/FY2009 10-K" }],
-  [/關了一百八十三/, { title: "2009-01 另列約 200 家", stats: [{ value: "183 家", label: "FY2009 已關；與 588 分屬兩批" }], source: "S4｜FY2009 10-K" }],
+  [/關了一百八十三/, { title: "2009-01 另列約 200 家", stats: [{ value: "183 家", label: "FY2009 已關；與七月群組分屬兩批" }], source: "S4｜FY2009 10-K" }],
   [/又比上年跌百分之六/, { title: "美國同店銷售", stats: [{ value: "−6%", label: "FY2009；13 個月以上直營店" }], source: "S4｜FY2009 10-K" }],
   [/同店成長百分之七/, { title: "美國同店銷售", stats: [{ value: "+7%", label: "FY2010；排除第 53 週" }], source: "S5｜FY2010 10-K" }],
 ];
@@ -71,7 +71,7 @@ const safeguards = [
   "Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
   "Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
 ];
-const portraitSourceLines = new Set(["x160101", "x160103", "x160104", "x160306", "x160307", "x160309", "x160310", "x160314", "x160518", "x160606", "x160611", "x160602", "x160605", "x160610", "x160614", "x160616"]);
+const portraitSourceLines = new Set(["x160101", "x160103", "x160104", "x160306", "x160307", "x160309", "x160310", "x160311", "x160518", "x160606", "x160611", "x160602", "x160605", "x160610", "x160614", "x160616"]);
 const sceneSplitAfterIds = new Set(["x160603", "x160516"]);
 const portraitInstruction = " Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop.";
 const lineFor = row => ({ id: row.id, text: row.text, pause_after_ms: 0, emotion: row.text.endsWith("？") ? "台灣國語口語說書，留半拍讓問題落地" : "台灣國語口語說書，數字與年份清楚，正常語速" });
@@ -105,36 +105,38 @@ scenes.push({ id: "x16-outro", template: "outro", data: { title: "每家店都�
 const loops = [
   { setup: "x160104", payoff: "x160309", what: "為何新店也被選入關店群組" },
   { setup: "x160105", payoff: "x160201", what: "一月董事會如何改變展店速度" },
-  { setup: "x160106", payoff: "x160405", what: "九月底直營店淨數為何仍上升" },
-  { setup: "x160107", payoff: "x160501", what: "隔年另列多少家美國店" },
-  { setup: "x160108", payoff: "x160601", what: "二〇一〇年美國同店怎麼變" },
-  { setup: "x160109", payoff: "x160641", what: "名單的選法和實際執行結果" },
+  { setup: "x160106", payoff: "x160321", what: "租約如何改變關門時程" },
+  { setup: "x160107", payoff: "x160328", what: "關店對店員職位的影響" },
+  { setup: "x160108", payoff: "x160405", what: "為何年底直營淨店數反向增加" },
+  { setup: "x160109", payoff: "x160630", what: "七月名單最後的實關總數" },
   { setup: "x160205", payoff: "x160206", what: "店數和熟店銷售仍正為何要踩煞車" },
-  { setup: "x160214", payoff: "x160215", what: "董事會希望回到哪種店面判斷" },
-  { setup: "x160220", payoff: "x160328", what: "關店對店員職位的影響" },
-  { setup: "x160227", payoff: "x160301", what: "一月關店方向到七月擴成多大" },
-  { setup: "x160308", payoff: "x160309", what: "開店年齡是否就是選店原因" },
+  { setup: "x160220", payoff: "x160329", what: "公司對受影響店員的安排希望" },
+  { setup: "x160226", payoff: "x160309", what: "選店不能只看店齡" },
+  { setup: "x160305", payoff: "x160306", what: "約七成新店是分布而非門檻" },
+  { setup: "x160308", payoff: "x160309", what: "公開的逐店選擇條件" },
   { setup: "x160315", payoff: "x160316", what: "有無逐店選店原因" },
   { setup: "x160318", payoff: "x160319", what: "為何宣布選店並非即日關門" },
-  { setup: "x160324", payoff: "x160325", what: "關店是否能保留店內設備原值" },
+  { setup: "x160324", payoff: "x160325", what: "資產減損及遣散也列入預估" },
   { setup: "x160332", payoff: "x160401", what: "九月底七月名單實際關店數" },
   { setup: "x160404", payoff: "x160405", what: "關店後年底美國直營淨數" },
+  { setup: "x160409", payoff: "x160410", what: "年度淨擴張相對前一財年" },
   { setup: "x160417", payoff: "x160418", what: "熟店當年是否也賣得更好" },
-  { setup: "x160424", payoff: "x160505", what: "隔年是否接近完成七月名單" },
-  { setup: "x160426", payoff: "x160502", what: "2009 一月新計畫是否併入七月群組" },
+  { setup: "x160424", payoff: "x160504", what: "隔年七月名單繼續執行" },
+  { setup: "x160426", payoff: "x160501", what: "2009 一月新計畫是否併入七月群組" },
+  { setup: "x160510", payoff: "x160511", what: "關門之後的租約成本" },
+  { setup: "x160514", payoff: "x160515", what: "美國直營店整體是否轉為淨減" },
   { setup: "x160518", payoff: "x160519", what: "關店後熟店是否即刻轉好" },
   { setup: "x160525", payoff: "x160612", what: "關店是否獨力造成後來回暖" },
   { setup: "x160604", payoff: "x160605", what: "2010 同店正成長是否來自第五十三週" },
   { setup: "x160607", payoff: "x160608", what: "2010 同店成長的交易與客單因素" },
-  { setup: "x160622", payoff: "x160623", what: "2010 美國直營店淨數" },
-  { setup: "x160630", payoff: "x160641", what: "最終選店標準與七月群組實績" },
+  { setup: "x160611", payoff: "x160613", what: "有無未關店的可比對照" },
 ];
 const positions = new Map(allRows.map((row, i) => [row.id, i]));
 for (const loop of loops) if (!(positions.has(loop.setup) && positions.has(loop.payoff) && positions.get(loop.setup) < positions.get(loop.payoff))) throw new Error(`Unpaid loop: ${JSON.stringify(loop)}`);
 const description = [
-  "2008 年 7 月 1 日，星巴克宣布擬關閉約 600 家表現不佳的美國直營店，其中約七成入選店自 2006 財年起才開。公司依什麼條件挑店，這批店最後關了多少？本集追蹤一月策略轉向、七月選店、跨年執行與熟店後來的銷售。",
+  "2008 年 7 月 1 日，星巴克宣布擬關閉約 600 家表現不佳的美國直營店，其中約七成入選店自 2006 財年起才開。這是被選中群組的特徵，公告未把店齡列作關店標準。本集追問公開的逐店評估條件與這批店的跨年實關數，再看熟店後來的銷售能否歸功於關店。",
   "",
-  "約 600 家含先前的 100 家；七成的分母是入選關閉的店。2009 年另列的約 200 家是另一批，不能與七月群組的 588 家實績混算。FY2010 同店增幅排除第 53 週；不能從它單獨推算關店效果。插畫是匿名概念畫面；片中數字與文字卡由後製排版。資料檢查：2026-10-20。",
+  "約 600 家含先前的 100 家；七成的分母是入選關閉的店。2009 年另列的約 200 家是另一批，不能與七月群組的 588 家實績混算。FY2007／FY2008 的 1,065／445 是美國直營店年度淨增，不能單獨推算新開毛數。FY2010 同店增幅排除第 53 週；所查申報沒有未關店的對照結果，不能單獨推算關店效果。插畫是匿名概念畫面，並非任何特定店或店員；片中數字與文字卡由後製排版。資料檢查：2026-10-20。",
   "",
   "SEC 原始資料：",
   ...sources.flatMap(source => [source.title, source.url]),
@@ -143,7 +145,7 @@ const description = [
 ].join("\n");
 const video = {
   schema_version: 1, slug, format: "drama", category: "explainer", narration_locale: "zh-TW", target_minutes: [8, 12],
-  voice: { provider: "gemini", name: "Sulafat", style: "標準國語，台灣自然口音，像向朋友追一間公司的真實轉折；日期、財年、百分比讀清楚。", performance: "七成是入選關閉店的比例；計畫與實際、關閉數與淨店數分開說，答案不搶先講。" },
+  voice: { provider: "gemini", name: "Sulafat", style: "標準國語，台灣自然口音，平穩說書，目標每分鐘約二百三十到二百五十個中文字並保留自然停頓；日期、財年、百分比讀清楚。", performance: "七成是入選關閉店的比例；計畫與實際、關閉數與淨店數分開說，答案不搶先講。正式成音後量實質正文至少八分鐘，不足則補有來源的故事進展。" },
   subtitles: { burn_in: false }, look: { preset: "cute-mystery" }, characters: [],
   series: { slug: "brand-stories-everyday-reversals-extra", episode: 16, chapter: 1 },
   music: { prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 }, loops,
