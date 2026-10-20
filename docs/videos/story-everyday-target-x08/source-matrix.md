@@ -35,6 +35,8 @@
 | TC25 | FY2014 Q1 加拿大銷售 US$393m，該季加拿大部門 EBIT 虧 US$211m；Target 當時的代理 CEO John Mulligan 說加拿大營運有初步改善跡象、但必須加快改善並投入額外資源。 | T14Q1 Canadian Segment Results / management statement | 銷售是季度總額，EBIT 是季度加拿大部門息稅前結果；「初步改善」是管理層當時評估，不保證後續全年成功。 |
 | TC26 | FY2013 10-K 明言當時加拿大部門沒有數位銷售通路。 | T13 Item 1 / segment descriptions | 僅限公司當時的加拿大業務；不泛稱 Target 整體沒有網路銷售，也不推論所有加拿大購物行為。 |
 | TC27 | FY2012 10-K 說 Zellers 租賃取得店址回租予 Zellers 的期限最晚到 2013-03-31；Target 當時規劃 2013 年在加拿大每個省開店，已有 3 座加拿大配送中心。一般商品經配送中心與 common carriers 運往門店，部分食品由第三方在美加配送。 | T12 Item 1 / Distribution；Item 2 / Properties；T13 Note 7 | 「最晚 2013-03-31」是回租合約終期，不是每家 Target 店當天開業；配送為公司整體路線，不能說加拿大每件商品都必走中心或所有食品都外包。 |
+| TC28 | FY2013 Target 在美國與加拿大都有 REDcard 優惠；加拿大聯名信用卡由 Royal Bank of Canada 提供，另有 Target Debit Card，刷卡買幾乎所有商品可折 5%。公司依其內部分析追蹤 REDcard 付帳銷售占比，認為卡片有助於增量購買。FY2013 加拿大占比 2.9%，美國門店 19.3%。 | T13 MD&A / U.S. Segment、Canadian Segment / REDcard Penetration | 比率是各自銷售額中以 REDcard 付帳的比例，不是持卡率、回購率或兩地同店銷售；加拿大剛開店，美國店網成熟，差異不能單獨歸因於顧客喜好或當地虧損。 |
+| TC29 | FY2013 分批開張的加拿大 124 店，合計 14.2 million retail square feet。 | T13 MD&A / Canadian Segment / Sales | 這是當年已開店的總零售面積，不是租賃權取得據點數，也不能由此推導每店客流。 |
 
 ### 明確不用的傳聞或填空
 

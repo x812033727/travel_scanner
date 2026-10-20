@@ -56,6 +56,9 @@ const cardRules = [
   [/四十七點六六億美元/, ["FY2014 Q4｜退出費用之中", "US$4.766b", "非現金投資減損", "Target FY2014 10-K，Note 6"]],
 ];
 const cardFor = (value, refs) => {
+  if (/占比只有百分之二點九；美國門店同年接近兩成/.test(value)) {
+    return { title: "FY2013｜REDcard 付款占銷售額", stats: [{ value: "2.9%", label: "加拿大新店網" }, { value: "19.3%", label: "美國既有店網；兩地開業階段不同" }], source: "Target FY2013 10-K，U.S.／Canadian Segment" };
+  }
   if (/二點一一億美元/.test(value) && (refs.includes("TC11A") || refs.includes("TC25"))) {
     return { title: "FY2014 Q1｜加拿大部門", stats: [{ value: "−US$211m", label: "當季 EBIT；非公司整體" }], source: "Target FY2014 Q1 原始業績公告" };
   }
@@ -73,14 +76,27 @@ const lineFor = (id, value) => {
   return line;
 };
 const chapters = readChapters();
+// The ten Chapter 3 additions use new IDs; unchanged later lines retain their
+// original IDs and exact TTS takes instead of being rerecorded after insertion.
+const chapter3InsertAt = 15;
+const chapter3Added = 10;
+function identityFor(ci, ri) {
+  if (ci === 2 && ri >= chapter3InsertAt && ri < chapter3InsertAt + chapter3Added) {
+    const added = String(ri - chapter3InsertAt + 1).padStart(2, "0");
+    return { line: `x0803a${added}`, scene: `x08-b03-a${added}`, visualIndex: ri };
+  }
+  const originalRi = ci === 2 && ri >= chapter3InsertAt + chapter3Added ? ri - chapter3Added : ri;
+  const suffix = `${String(ci + 1).padStart(2, "0")}${String(originalRi + 1).padStart(2, "0")}`;
+  return { line: `x08${suffix}`, scene: `x08-b${String(ci + 1).padStart(2, "0")}-s${String(originalRi + 1).padStart(2, "0")}`, visualIndex: originalRi };
+}
 const authored = chapters.flatMap((chapter, ci) => chapter.rows.map((row, ri) => {
-  const suffix = `${String(ci + 1).padStart(2, "0")}${String(ri + 1).padStart(2, "0")}`;
-  const line = lineFor(`x08${suffix}`, row.text);
+  const identity = identityFor(ci, ri);
+  const line = lineFor(identity.line, row.text);
   const card = cardFor(row.text, row.refs);
   const scene = {
-    id: `x08-b${String(ci + 1).padStart(2, "0")}-s${String(ri + 1).padStart(2, "0")}`,
+    id: identity.scene,
     template: card ? "stats" : "shot",
-    data: card ?? { ...visualFor(row.text, ci, ri), visual: "still" },
+    data: card ?? { ...visualFor(row.text, ci, identity.visualIndex), visual: "still" },
     lines: [line],
     claim_refs: row.refs,
   };
@@ -105,7 +121,7 @@ const closing = authored.splice(-3, 3);
 if (closing.some(scene => scene.template === "stats")) throw new Error("Closing three sentences must not be stats cards");
 authored.push({ id: "x08-outro", template: "outro", data: { title: "為何 133 店仍撤退？", cta: "訂閱品牌故事" }, lines: closing.flatMap(scene => scene.lines) });
 const scenes = authored.map(({ claim_refs: _refs, ...scene }) => scene);
-const originalRows = chapters.flatMap((chapter, ci) => chapter.rows.map((row, ri) => ({ ...row, id: `x08${String(ci + 1).padStart(2, "0")}${String(ri + 1).padStart(2, "0")}`, chapter: ci + 1 })));
+const originalRows = chapters.flatMap((chapter, ci) => chapter.rows.map((row, ri) => ({ ...row, id: identityFor(ci, ri).line, chapter: ci + 1 })));
 const findId = (pattern) => {
   const found = originalRows.find(row => pattern.test(row.text));
   if (!found) throw new Error(`Missing loop anchor ${pattern}`);
@@ -121,6 +137,7 @@ const anchors = [
   [/收入能趕上嗎/, /銷售十三點一七億美元/, "首年銷售能否跟上展店"],
   [/漂亮的首季比率/, /毛利率只剩百分之十四點九/, "首季比率與全年結果"],
   [/為什麼還養不起自己/, /全年稅前營運仍虧/, "下一年能否覆蓋成本"],
+  [/刷卡優惠帶進加拿大/, /占比只有百分之二點九/, "加拿大刷卡優惠能否獲得顧客使用"],
   [/下一年，已開出去的店/, /初步改善跡象/, "次年改善跡象"],
   [/下一季會怎樣/, /同店銷售增加百分之一點六/, "季度同店比較"],
   [/改掉更大的虧損嗎/, /全年稅前營運仍虧/, "同店回升是否讓公司轉盈"],
@@ -174,8 +191,8 @@ writeFileSync(path.join(dir, "line-source-matrix.md"), [
   ...originalRows.map(row => `| \`${row.id}\` | ${esc(row.text)} | ${row.refs.length ? row.refs.join("、") : "編輯問句／CTA"} |`), "",
 ].join("\n"));
 writeFileSync(path.join(dir, "script.md"), [
-  "# X08 Target Canada｜繁中逐句稿", "", `候選前製；\`video.json\` SHA-256：\`${sha256}\`。片頭與片尾不計入實質正文，正式 TTS 尚未實測。`, "",
-  ...chapters.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${chapter.title}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.rows.map((row, ri) => `- \`x08${String(ci + 1).padStart(2, "0")}${String(ri + 1).padStart(2, "0")}\` ${row.text}`), ""]),
+  "# X08 Target Canada｜繁中逐句稿", "", `候選前製；\`video.json\` SHA-256：\`${sha256}\`。片頭與片尾不計入實質正文；本版的實際 TTS 秒數與驗收見 [media-production.md](reviews/media-production.md)。`, "",
+  ...chapters.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${chapter.title}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.rows.map((row, ri) => `- \`${identityFor(ci, ri).line}\` ${row.text}`), ""]),
 ].join("\n"));
 writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 8, chapter: 1, title: "Target：加拿大 133 店仍撤退？", logline: "從 2011 年租賃權、2013 年密集開店到 2015 年決定退出；店數與銷售增加之後，獲利時間為何仍不可接受。", names: ["Target", "Target Canada", "Zellers", "Brian Cornell", "Cornell"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
 const bodyText = chapters.slice(1).flatMap(chapter => chapter.rows).slice(0, -3).map(row => row.text).join("");
