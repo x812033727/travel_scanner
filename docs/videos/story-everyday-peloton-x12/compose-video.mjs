@@ -73,7 +73,7 @@ const sceneSettings = new Map([
   ["x120219", "clean tabletop factory diorama"], ["x120221", "clean tabletop factory diorama"],
   ["x120301", "clean tabletop factory diorama"], ["x120507", "conceptual Taiwan factory diorama"],
   ["x120508", "conceptual split-screen comparison studio"], ["x120509", "clean tabletop factory diorama"],
-  ["x120514", "clean tabletop Ohio factory diorama"], ["x120519", "clean tabletop accounting diorama"],
+  ["x120514", "clean tabletop Ohio factory diorama"], ["x120520", "clean tabletop accounting diorama"],
   ["x120605", "clean conceptual living-room diorama"], ["x120608", "conceptual factory diorama"],
   ["x120610", "conceptual factory diorama"],
   ["x120611", "conceptual factory diorama"], ["x120613", "clean tabletop factory diorama"],
@@ -101,7 +101,7 @@ scenes.push(...outro.map((row, ri) => ({
 const loops = [
   ["x120105", "x120301", "既有產線外為何另規劃 Ohio"],
   ["x120104", "x120516", "未投產 Ohio 專案相關減損有多少"],
-  ["x120106", "x120405", "設備與訂閱收入誰先變"],
+  ["x120106", "x120405", "設備與訂閱收入後來如何分岔"],
   ["x120107", "x120503", "製造轉由誰承擔"],
   ["x120108", "x120515", "Ohio 未投產時已投多少"],
   ["x120109", "x120514", "Ohio 從產能計畫到尋買家"],
@@ -110,8 +110,8 @@ const loops = [
   ["x120319", "x120402", "增長中的設備收入隔年如何變"],
   ["x120424", "x120502", "固定製造基地是否仍是下一步"],
   ["x120425", "x120503", "下一個造車人是誰"],
-  ["x120523", "x120601", "FY2023 收入線怎麼走"],
-  ["x120523", "x120613", "Ohio 到 FY2023 的出售狀態"],
+  ["x120521", "x120601", "FY2023 收入線怎麼走"],
+  ["x120521", "x120614", "Ohio 到 FY2023 的出售狀態"],
   ["x120604", "x120607", "訂閱成長是否填滿實體產線"],
   ["x120610", "x120611", "產能過剩如何影響毛利"],
 ].map(([setup, payoff, what]) => ({ setup, payoff, what }));
