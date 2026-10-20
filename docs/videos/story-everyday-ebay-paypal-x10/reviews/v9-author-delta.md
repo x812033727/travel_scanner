@@ -1,0 +1,12 @@
+# X10 eBay／PayPal v9 — Short 1 spoken antecedent
+
+Author record only; it does **not** approve the new version's sources, narrative, TTS or media. The v8 [source delta](source-review-v8-independent.md) passed, and two independent v8 readers [A](blind-a-v8-independent.md) and [B](blind-b-v8-independent.md) had no shared No on a mandatory long-form panel item. Both separately rejected Short 1 as a standalone cut: its fifth spoken line used “那份協議” without any prior spoken Short line naming an agreement. The headline alone could not supply the audio antecedent.
+
+Only one authored main-script sentence changes: `x100407` is now **「分拆後的營運協議，讓 PayPal 的付款服務繼續留在 eBay 市集。」** instead of **「那份協議，讓 PayPal 的付款服務繼續留在 eBay 市集。」** The original B10/B11 claim references and contract-folder illustration prompt remain unchanged. The line is 36 Unicode codepoints, below the Shorts generator's 38-character phrase cap. Short 1 pulls this exact line from the exact `x10-b04-s07` illustration shot, and its next line's “協議” now has a spoken antecedent. No new fact, date, amount or claimed outcome is added; an independent source reviewer must still bind this v9 SHA to the 2015 operating-agreement original. Short 2's authored cut is untouched; its containing `shorts.json` gets a new file hash because Short 1 changed.
+
+| Frozen input | SHA-256 |
+| --- | --- |
+| `video.json` | `f5c7ec99142c4508d06ef58c8e5e0c136bd7e556a4254dba940d4328f804757c` |
+| `shorts.json` | `27eb3c634095994f1f97dfbb549d2019d1c082257f28cbd59e1226c64fb7186b` |
+
+Free rebuild: 105 main lines, 103 scenes, 89 illustration shots, 13 native number cards, one native outro, 21 loops. `estimateTimeline` gives a 51.0-second hook, 542.2-second (9:02) substantive body, 22.1-second spoken outro and 615.3-second (10:15) narration total. Short 1 remains six phrases and grows from 199 to 203 characters; Short 2 remains seven phrases and 192 characters. These are script estimates, **not** measured voice durations. `compose-video.mjs` and `compose-shorts.mjs` rebuilt successfully; the Shorts generator matched all 13 phrases to their respective source illustration shots. Lint returned 0 errors and 0 warnings; `npm run test:docs-videos` passed 236/236 and `npm run check:tasks` exited 0 with unrelated queue warnings. The source delta, two fresh untouched v9 blind reads, timed body/Shorts audio and media QA remain open; no paid calls have been made for this version.

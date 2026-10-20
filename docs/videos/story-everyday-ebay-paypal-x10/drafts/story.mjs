@@ -67,7 +67,7 @@ export const chapters = [
       ["PayPal 獨立上市，eBay 是不是拿到了一筆出售現金？", ["B09"], "outside two separate anonymous office buildings with no signs, workers walk along a shared sidewalk, daylight"],
       ["eBay 沒有因為這次分拆，收到一筆賣掉 PayPal 的現金。", ["B09"], "at an accounting worktable, one anonymous analyst moves two wordless share stacks apart, leaving a cash drawer untouched, soft light"],
       ["分家先改的是股東名冊，PayPal 並未因此立刻退出 eBay 結帳。", ["B09", "B11"], "at a generic web checkout worktable, two abstract payment routes remain linked after folders are separated, warm light"],
-      ["那份協議，讓 PayPal 的付款服務繼續留在 eBay 市集。", ["B10", "B11"], "on a plain meeting table, two anonymous representatives leave connected wordless contract folders beside a parcel, afternoon light"],
+      ["分拆後的營運協議，讓 PayPal 的付款服務繼續留在 eBay 市集。", ["B10", "B11"], "on a plain meeting table, two anonymous representatives leave connected wordless contract folders beside a parcel, afternoon light"],
       ["協議還設有誘因，鼓勵 eBay 繼續支持 PayPal 在市集付款。", ["B22"], "at a neutral contract desk, two anonymous representatives connect separate payment sketches with a small bridge, mild light"],
       ["這份合約究竟替雙方保留了多久的合作安排？", ["B10", "B11"], "close view of a wordless calendar beside two connected contract folders on a desk, warm light"],
       ["合約的初始期限是五年，從分拆生效時開始算。", ["B10"], card("營運協議初始期", "5 年", "2015 分拆生效後起算；可協議續期", "2015 Operating Agreement，§10.1")],

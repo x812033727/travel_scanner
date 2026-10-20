@@ -2,7 +2,7 @@
 
 本表由 `drafts/story.mjs` 生成；B 編號及邊界見 [source-matrix.md](source-matrix.md)。獨立審查完成後，審查收據會綁定本版 SHA。
 
-- `video.json` SHA-256：`3f20fbcf4fa8143b21b227ea12a629c39d6ec2929999c95bffde67a57392a73d`
+- `video.json` SHA-256：`f5c7ec99142c4508d06ef58c8e5e0c136bd7e556a4254dba940d4328f804757c`
 
 | 句 ID | 旁白 | Treatment 主張 |
 | --- | --- | --- |
@@ -52,7 +52,7 @@
 | `x100404` | PayPal 獨立上市，eBay 是不是拿到了一筆出售現金？ | B09 |
 | `x100405` | eBay 沒有因為這次分拆，收到一筆賣掉 PayPal 的現金。 | B09 |
 | `x100406` | 分家先改的是股東名冊，PayPal 並未因此立刻退出 eBay 結帳。 | B09、B11 |
-| `x100407` | 那份協議，讓 PayPal 的付款服務繼續留在 eBay 市集。 | B10、B11 |
+| `x100407` | 分拆後的營運協議，讓 PayPal 的付款服務繼續留在 eBay 市集。 | B10、B11 |
 | `x100408` | 協議還設有誘因，鼓勵 eBay 繼續支持 PayPal 在市集付款。 | B22 |
 | `x100409` | 這份合約究竟替雙方保留了多久的合作安排？ | B10、B11 |
 | `x100410` | 合約的初始期限是五年，從分拆生效時開始算。 | B10 |
