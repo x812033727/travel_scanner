@@ -1,6 +1,6 @@
 # X16 星巴克｜兩支 Shorts 的逐拍 9:16 裁切交接
 
-離線規劃，綁定主片 `579015b364c78a2374b62a0a3c226c35fac3d2c1484b5b47c652f53cd859a69d`、Shorts `250c52b6cc98629849ab704ce3262c638c3f8ff7382232eca5e6bc1013a6ffb2`。**尚無插畫、直式渲染或手機實測**。表內是實際要採用的第一版 9:16 裁切與原生文字覆蓋；生成後要逐鏡核對焦點，再在相同範圍內調整，不能把數字當作 AI 畫在圖上的文字。
+離線規劃，綁定主片 `a1de0328534cc2ad7a6c358f86cd1ae3fd66216b35f7acc727f8da14fd5e2314`、Shorts `75c44209259836600a9929308c974cc42f4f87763ce93cbcd798a97195909dca`。**尚無插畫、直式渲染或手機實測**。表內是實際要採用的第一版 9:16 裁切與原生文字覆蓋；生成後要逐鏡核對焦點，再在相同範圍內調整，不能把數字當作 AI 畫在圖上的文字。
 
 主片畫布 1920×1080，每拍選一張真正的 `shot`，用 608×1080 視窗依表列 x 值裁切（y=0），等比輸出 1080×1920。圖片提示詞要求人物臉、手與主道具留在中央 x=656–1264；本表 x 的小幅移動用於把該拍道具放到直式中心，交接時仍須看原圖確認。若焦點落出裁切，先調 x（合法 0–1312），保不住才在同一整片預算內重畫。
 
@@ -8,21 +8,21 @@
 
 | Short／拍 | 重用 shot | 608×1080 裁切左上角 | 直式焦點 | 原生 headline（在安全區） |
 | --- | --- | --- | --- | --- |
-| 1／1 | `x16-b01-s01` | `x=656, y=0` | clerk lifts blank notice in plain office | 約 600 家 |
+| 1／1 | `x16-b01-s01` | `x=656, y=0` | clerk pins unmarked shop card beneath blank notice at cafe doorway | 約 600 家 |
 | 1／2 | `x16-b01-s03` | `x=630, y=0` | clerk holds new-looking plain shop key | 約七成很新 |
 | 1／3 | `x16-b01-s04` | `x=680, y=0` | owner studies blank storefront plan | 按什麼選？ |
-| 1／4 | `x16-b03-s05` | `x=700, y=0` | analyst encloses selected shop tokens | 分母：入選店 |
-| 1／5 | `x16-b03-s06` | `x=610, y=0` | planner leaves many tokens outside ring | 別算成全部 |
-| 1／6 | `x16-b03-s08` | `x=656, y=0` | analyst opens separate blank shop ledger | 看單店利潤 |
-| 1／7 | `x16-b03-s09` | `x=690, y=0` | planner compares two blank future ledgers | 還看未來回報 |
-| 1／8 | `x16-b03-s10` | `x=640, y=0` | planner moves plain storefront model on map | 場址也要考量 |
-| 2／1 | `x16-b05-s11` | `x=656, y=0` | barista studies thinning generic queue | 2009：−6% |
-| 2／2 | `x16-b06-s06` | `x=700, y=0` | barista welcomes anonymous customer | 2010：+7% |
-| 2／3 | `x16-b06-s10` | `x=635, y=0` | owner weighs closed key beside mature tokens | 關店一招？ |
-| 2／4 | `x16-b06-s02` | `x=656, y=0` | clerk encloses mature shop tokens | 同店：滿 13 月 |
-| 2／5 | `x16-b06-s05` | `x=690, y=0` | clerk moves extra leaf outside ring | 第 53 週已排除 |
-| 2／6 | `x16-b06-s09` | `x=620, y=0` | analyst joins queue and cup tokens | 交易與客單價↑ |
-| 2／7 | `x16-b06-s12` | `x=656, y=0` | barista adjusts plain counter tools | 店內也在改 |
-| 2／8 | `x16-b06-s14` | `x=675, y=0` | analyst keeps several plain factors on desk | 不能獨算關店 |
+| 1／4 | `x16-b03-s05` | `x=700, y=0` | owner weighs new-looking key beside selection ring | 分母：入選店 |
+| 1／5 | `x16-b03-s02` | `x=610, y=0` | planner spreads plain shop tokens across blank map | 別算成全部 |
+| 1／6 | `x16-b03-s07` | `x=656, y=0` | analyst opens separate blank shop ledger | 看單店利潤 |
+| 1／7 | `x16-b03-s08` | `x=690, y=0` | planner compares two blank future ledgers | 還看未來回報 |
+| 1／8 | `x16-b03-s09` | `x=640, y=0` | planner moves plain storefront model on map | 場址也要考量 |
+| 2／1 | `x16-b05-s13` | `x=656, y=0` | barista studies thinning generic queue | 2009：−6% |
+| 2／2 | `x16-b06-s05` | `x=700, y=0` | barista welcomes anonymous customer | 2010：+7% |
+| 2／3 | `x16-b06-s07` | `x=635, y=0` | owner weighs closed key beside mature tokens | 關店一招？ |
+| 2／4 | `x16-b06-s02` | `x=656, y=0` | clerk encloses mature shop tokens apart from closed keys | 同店：滿 13 月 |
+| 2／5 | `x16-b06-s04` | `x=690, y=0` | clerk moves extra leaf outside ring | 第 53 週已排除 |
+| 2／6 | `x16-b06-s06` | `x=620, y=0` | analyst joins queue and cup tokens | 交易與客單價↑ |
+| 2／7 | `x16-b06-s09` | `x=656, y=0` | barista adjusts plain counter tools | 店內也在改 |
+| 2／8 | `x16-b06-s10` | `x=675, y=0` | analyst keeps several plain factors on desk | 不能獨算關店 |
 
 每拍重用一張各自不同的主片插畫，表內焦點與對應 shot 提示詞逐字核對；裁切座標仍須在正式出圖後逐拍驗看。兩支不套長片片頭片尾，繁中字幕由工具另出，不把字幕燒進長片畫面。
