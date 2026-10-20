@@ -32,12 +32,13 @@ Make a source-bounded Curio S40 about whether Cleopatra VII definitely died by a
 - [x] Pin full Plutarch, Suetonius and Dio translations with SHA-256 and passage scope in `research.md`.
 - [x] Write `brief.md`, `video.json`, generated `script.md`, `claims.md`, and `verify-1.md` under `docs/videos/curio-s40`.
 - [x] Resolve R1 blind (8/13) and source/prompt reviewer findings in R2, then regenerate and re-run local gates.
-- [ ] Pass fresh R2 script-only blind and source/prompt audit on exact R2 hash.
+- [x] Receive fresh R2 script-only blind (10/13) and source/prompt audit; preserve reports and resolve cited issues in R3.
+- [ ] Pass fresh R3 script-only blind and source/prompt audit on exact R3 hash.
 
 ## How to verify
 
-`VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s40 --json` reports 0 errors/0 warnings on R2. Run `node tools/video/cli.mjs narrative --slug curio-s40` for a fresh script-only reviewer, then record its 13 answers formally. `npm run test:docs-videos` and `npm run check:tasks` passed; R2 hashes and known limits are in `docs/videos/curio-s40/verify-2.md`.
+`VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s40 --json` reports 0 errors/0 warnings on R3. Run `node tools/video/cli.mjs narrative --slug curio-s40` for a fresh script-only reviewer, then record its 13 answers formally. `npm run test:docs-videos` and `npm run check:tasks` passed; R3 hashes and known limits are in `docs/videos/curio-s40/verify-3.md`.
 
 ## Notes
 
-R1 independent script-only blind 8/13 and source/prompt audit are preserved as `verify-r1-blind.md` and `verify-r1-source-visual.md`; R2 repair in `verify-2.md`. R2 `video.json` SHA-256 `d0b200ac4027daa5c578595d40a79b3c6cf9f0af36feb47db13bd7dfeba7433f`: 86 spoken lines, 85 still shots + outro, estimated story body 8:35 and full length about 9:19, 23 loops, lint 0/0. Exact hash must be refreshed after any later edit. Sources and line-level qualification in `research.md`; do not convert `what really took place is known to no one` to a no-snake claim. No paid media. Fresh independent R2 blind/source audit requested from coordinator.
+R1 independent script-only blind 8/13 and source/prompt audit are preserved as `verify-r1-blind.md` and `verify-r1-source-visual.md`; R2 repair in `verify-2.md`. Fresh R2 blind 10/13 and source/prompt audit are preserved as `verify-r2-blind.md` and `verify-r2-source-visual.md`. R3 repair in `verify-3.md`. R3 `video.json` SHA-256 `1a12e15009519b03a0a09cda577fe0be12cc58ea0aa51b002cd20208f6f3394e`: 84 spoken lines, 83 still shots + outro, estimated story body 8:33 and full length about 9:16, 25 loops, lint 0/0. Exact hash must be refreshed after any later edit. Sources and line-level qualification in `research.md`; do not convert `what really took place is known to no one` to a no-snake claim. No paid media. Fresh independent R3 blind/source audit needed.
