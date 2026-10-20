@@ -59,7 +59,7 @@
     },
     {
       "setup": "hh113",
-      "payoff": "hh523",
+      "payoff": "hh521",
       "what": "三句是不是信長、秀吉、家康寫的"
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "setup": "hh202",
-      "payoff": "hh522",
+      "payoff": "hh520",
       "what": "「很合這三個人的性子」"
     },
     {
@@ -93,7 +93,7 @@
       "what": "另外兩句何時接近今天的說法"
     },
     {
-      "setup": "hh324",
+      "setup": "hh323",
       "payoff": "hh416",
       "what": "把川柳歸到文化年間的研究者"
     }
@@ -179,11 +179,6 @@
       "checked_on": "2026-10-20"
     },
     {
-      "title": "太田牛一《信長公記》首卷（明治十四年刊本，維基文庫）",
-      "url": "https://ja.wikisource.org/wiki/%E4%BF%A1%E9%95%B7%E5%85%AC%E8%A8%98/%E6%88%91%E8%87%AA%E5%88%8A%E6%88%91%E6%9B%B8",
-      "checked_on": "2026-10-20"
-    },
-    {
       "title": "日文維基百科〈松浦清〉（隱居年；二手）",
       "url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E6%B5%A6%E6%B8%85",
       "checked_on": "2026-10-20"
@@ -206,11 +201,6 @@
     {
       "title": "日文維基百科〈東照宮御遺訓〉（研究者的說法；二手）",
       "url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E7%85%A7%E5%AE%AE%E5%BE%A1%E9%81%BA%E8%A8%93",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "日文維基百科〈敦盛 (幸若舞)〉（二手）",
-      "url": "https://ja.wikipedia.org/wiki/%E6%95%A6%E7%9B%9B%20%28%E5%B9%B8%E8%8B%A5%E8%88%9E%29",
       "checked_on": "2026-10-20"
     },
     {
@@ -407,7 +397,7 @@
     },
     {
       "id": "speaker",
-      "chapter": "明治三十三年，松浦家把夜話印成了書",
+      "chapter": "明治三十三年，印成書的夜話，三句前還有一句",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a plump Edo samurai guest in a brown haori with a round friendly face kneeling on tatami at an evening gathering in soft lamp light, raising one finger as he makes a remark, eyebrows lifted knowingly our way",
@@ -484,7 +474,7 @@
       "lines": [
         {
           "id": "hh206",
-          "text": "我們讀的，是明治三十三年，松浦家自己印出來的本子。"
+          "text": "我們讀的，是明治三十三年，松浦家自己印出來的正篇一百卷。"
         }
       ]
     },
@@ -978,25 +968,8 @@
       "lines": [
         {
           "id": "hh316",
-          "text": "這一句裡，沒有「等」這個字。",
+          "text": "這一句裡，沒有「等」這個字；那個「等」，靜山記的那一則才有。",
           "emotion": "放慢"
-        }
-      ]
-    },
-    {
-      "id": "wait-word",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table in the afternoon, holding up a single finger with wide, delighted eyes toward the viewer, soft daylight",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "hh317",
-          "text": "家康的「等」，在《耳嚢》裡還沒有，靜山記的那一則才有。",
-          "say": "家康的「等」，在《耳囊》裡還沒有，靜山記的那一則才有。",
-          "say_for": "1edfff78f3bf"
         }
       ]
     },
@@ -1004,13 +977,13 @@
       "id": "shoha",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an old renga poet with a shaved head in a pale robe kneeling on a veranda in soft daylight, opening a folding fan with a serene smile to the front",
-        "camera": "pan left",
+        "prompt": "Medium shot of an old renga poet with a shaved head in a pale robe kneeling on a veranda in soft daylight, opening a folding fan with a serene smile toward the viewer",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh318",
+          "id": "hh317",
           "text": "旁邊還坐著當時連歌的第一人，紹巴，他補了第四句："
         }
       ]
@@ -1025,7 +998,7 @@
       },
       "lines": [
         {
-          "id": "hh319",
+          "id": "hh318",
           "text": "不叫，也很好。",
           "emotion": "輕，帶笑"
         }
@@ -1035,13 +1008,13 @@
       "id": "negishi-nod",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an elderly Edo magistrate with a long calm face and a slate-blue kamishimo at his desk in gentle window light, nodding slowly with a knowing smile at us",
-        "camera": "push in",
+        "prompt": "Medium close-up of an elderly Edo magistrate with a long calm face and a slate-blue kamishimo at his desk in gentle window light, nodding slowly with a knowing smile to the front",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh320",
+          "id": "hh319",
           "text": "根岸說，三句各露出三人的性子：家康溫順，秀吉量大，信長性子急。"
         }
       ]
@@ -1050,13 +1023,13 @@
       "id": "four-men",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a small, lively Sengoku lord with a big grin in a gold-patterned kimono kneeling at a feast table in a castle hall in the morning, counting on four fingers with a mischievous grin our way, gentle light through a paper screen",
-        "camera": "drift",
+        "prompt": "Medium shot of a small, lively Sengoku lord with a big grin in a gold-patterned kimono kneeling at a feast table in a castle hall in the morning, counting on four fingers with a mischievous grin at us, gentle light through a paper screen",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh321",
+          "id": "hh320",
           "text": "但這還不是人最多的版本。",
           "emotion": "升級，停一拍"
         }
@@ -1066,13 +1039,13 @@
       "id": "four-copy",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table in pale daylight, holding up four fingers with an astonished laugh toward the viewer",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table in pale daylight, holding up four fingers with an astonished laugh our way",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh322",
+          "id": "hh321",
           "text": "明治十幾年，有人從舊隨筆抄下的一份手稿裡，連前田利家都加了進去；"
         }
       ]
@@ -1081,13 +1054,13 @@
       "id": "feast",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a sharp-eyed Sengoku lord with a thin moustache in a dark red kimono kneeling at a feast table in a castle hall at midday, raising a small sake cup with a proud grin to the front, soft light through a paper screen",
-        "camera": "pan right",
+        "prompt": "Medium shot of a sharp-eyed Sengoku lord with a thin moustache in a dark red kimono kneeling at a feast table in a castle hall at midday, raising a small sake cup with a proud grin toward the viewer, soft light through a paper screen",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh323",
+          "id": "hh322",
           "text": "地點，寫在安土城信長的酒宴上。"
         }
       ]
@@ -1096,13 +1069,13 @@
       "id": "townsman",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a cheerful Edo townsman in a striped cotton kimono sitting on a bench outside a tea house under a cloudy sky, slapping his knee with a big laugh at us",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a cheerful Edo townsman in a striped cotton kimono sitting on a bench outside a tea house under a cloudy sky, slapping his knee with a big laugh to the front",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh324",
+          "id": "hh323",
           "text": "也有人拿它說笑。大正時代一位研究川柳的人，把一句川柳歸在文化年間："
         }
       ]
@@ -1111,13 +1084,13 @@
       "id": "townsman-three",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a cheerful Edo townsman in a striped cotton kimono under the eaves of a tea house in soft light, holding up three fingers with a cheeky grin our way",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a cheerful Edo townsman in a striped cotton kimono under the eaves of a tea house in soft light, holding up three fingers with a cheeky grin at us",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh325",
+          "id": "hh324",
           "text": "說一隻杜鵑，寫出了智、仁、勇三句。"
         }
       ]
@@ -1126,13 +1099,13 @@
       "id": "townsman-street",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a cheerful Edo townsman in a striped cotton kimono walking down a busy Edo lane in soft morning light, humming happily with a fan tucked in his sash toward the viewer",
-        "camera": "pan left",
+        "prompt": "Medium shot of a cheerful Edo townsman in a striped cotton kimono walking down a busy Edo lane in soft morning light, humming happily with a fan tucked in his sash our way",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh326",
+          "id": "hh325",
           "text": "如果這個年代沒錯，三句在靜山動筆以前，就已經傳進了庶民的川柳裡。"
         }
       ]
@@ -1141,13 +1114,13 @@
       "id": "which-first",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a reading-room table in the afternoon, weighing an old book in each hand with a doubtful pout to the front, gentle daylight",
-        "camera": "push in",
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a reading-room table in the afternoon, weighing an old book in each hand with a doubtful pout toward the viewer, gentle daylight",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh327",
+          "id": "hh326",
           "text": "它和《耳嚢》哪一個先，到今天說不準。",
           "say": "它和《耳囊》哪一個先，到今天說不準。",
           "say_for": "952613714765"
@@ -1158,13 +1131,13 @@
       "id": "meiji-q",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses's face in a reading room, resting her chin on one hand with a curious look at us, light from tall windows",
-        "camera": "drift",
+        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses's face in a reading room, resting her chin on one hand with a curious look to the front, light from tall windows",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh328",
+          "id": "hh327",
           "text": "到了明治，書上還說它可能是編的嗎？",
           "emotion": "問句，停一拍"
         }
@@ -1175,8 +1148,8 @@
       "chapter": "明治三十四年，一本修養書又講起這隻鳥",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era lecturer with a bushy moustache in a dark kimono and hakama kneeling at a low desk in a study in the morning, wagging one finger knowingly with a smile our way, pale window light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a Meiji-era lecturer with a bushy moustache in a dark kimono and hakama kneeling at a low desk in a study in the morning, wagging one finger knowingly with a smile at us, pale window light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1191,8 +1164,8 @@
       "id": "lecturer-think",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a Meiji-era lecturer with a bushy moustache in a dark kimono and hakama at his desk in soft daylight, stroking his moustache with a dreamy, imagining look toward the viewer",
-        "camera": "pan right",
+        "prompt": "Medium close-up of a Meiji-era lecturer with a bushy moustache in a dark kimono and hakama at his desk in soft daylight, stroking his moustache with a dreamy, imagining look our way",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1206,8 +1179,8 @@
       "id": "lecturer-cry",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a Meiji-era lecturer with a bushy moustache in a dark kimono and hakama on a garden bench under a cloudy sky, pretending to wipe a tear with an exaggerated sad face to the front",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of a Meiji-era lecturer with a bushy moustache in a dark kimono and hakama on a garden bench under a cloudy sky, pretending to wipe a tear with an exaggerated sad face toward the viewer",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1226,14 +1199,14 @@
       "id": "dict-teacher",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era schoolteacher in a dark Western suit and round spectacles standing at a wooden lectern in a lecture hall in the morning, hugging a thick dictionary with a plain cover and nodding at us, pale window light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a Meiji-era schoolteacher in a dark Western suit and round spectacles standing at a wooden lectern in a lecture hall in the morning, hugging a thick dictionary with a plain cover and nodding to the front, pale window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "hh405",
-          "text": "明治三十七年，一本小學教科書的教材辭典，把三句標成「信長評」「秀吉評」「家康評」。"
+          "text": "明治三十七年，一本小學教科書的教材辭典，把三句標成「信長評」「秀吉評」「家康評」：是評語。"
         }
       ]
     },
@@ -1241,8 +1214,8 @@
       "id": "dict-more",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a Meiji-era schoolteacher in a dark Western suit and round spectacles at a lectern in gentle window light, raising one finger as if adding something important, eyebrows lifted our way",
-        "camera": "pan left",
+        "prompt": "Medium close-up of a Meiji-era schoolteacher in a dark Western suit and round spectacles at a lectern in gentle window light, raising one finger as if adding something important, eyebrows lifted at us",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1256,8 +1229,8 @@
       "id": "traveller",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an old Edo-era traveller in a plain brown kimono and straw sandals walking slowly along a country road under a cloudy sky, a heavy cloth bundle on his back, giving a tired but steady smile toward the viewer",
-        "camera": "push in",
+        "prompt": "Medium shot of an old Edo-era traveller in a plain brown kimono and straw sandals walking slowly along a country road under a cloudy sky, a heavy cloth bundle on his back, giving a tired but steady smile our way",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1276,8 +1249,8 @@
       "id": "seinen",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era lecturer with a bushy moustache in a dark kimono and hakama sitting on a bench in a school garden on an overcast day, hugging a small book with a plain cover and a pleased look to the front, soft light",
-        "camera": "drift",
+        "prompt": "Medium shot of a Meiji-era lecturer with a bushy moustache in a dark kimono and hakama sitting on a bench in a school garden on an overcast day, hugging a small book with a plain cover and a pleased look toward the viewer, soft light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1291,8 +1264,8 @@
       "id": "seinen-scene",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a small, lively Sengoku lord with a big grin in a gold-patterned kimono sitting beside a round bamboo cage with a small soft-feathered cuckoo sitting quietly inside, beak shut on a garden veranda on an overcast day, chin in both hands with a bored sigh at us, soft light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a small, lively Sengoku lord with a big grin in a gold-patterned kimono sitting beside a round bamboo cage with a small soft-feathered cuckoo sitting quietly inside, beak shut on a garden veranda on an overcast day, chin in both hands with a bored sigh to the front, soft light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1307,8 +1280,8 @@
       "id": "ieyasu-wait",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a plump, calm Sengoku lord with round cheeks in a plain brown kimono kneeling beside a round bamboo cage with a small soft-feathered cuckoo sitting quietly inside, beak shut in soft daylight, hands folded in his lap, waiting with calm shut eyes and a faint smile our way",
-        "camera": "pan right",
+        "prompt": "Medium close-up of a plump, calm Sengoku lord with round cheeks in a plain brown kimono kneeling beside a round bamboo cage with a small soft-feathered cuckoo sitting quietly inside, beak shut in soft daylight, hands folded in his lap, waiting with calm shut eyes and a faint smile at us",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1322,8 +1295,8 @@
       "id": "other-q",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, holding up two fingers with a questioning look toward the viewer, pale window light",
-        "camera": "tilt up",
+        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, holding up two fingers with a questioning look our way, pale window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1338,8 +1311,8 @@
       "id": "teacher-1910",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era schoolteacher in a dark Western suit and round spectacles standing in an empty classroom in the morning, holding a slim teacher's book with a plain cover and smiling proudly to the front, light from tall windows",
-        "camera": "pull out",
+        "prompt": "Medium shot of a Meiji-era schoolteacher in a dark Western suit and round spectacles standing in an empty classroom in the morning, holding a slim teacher's book with a plain cover and smiling proudly toward the viewer, light from tall windows",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1386,8 +1359,8 @@
       "id": "teacher-1910-says",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a Meiji-era schoolteacher in a dark Western suit and round spectacles in an empty classroom in soft morning light, adjusting his round spectacles with a careful, modest look at us",
-        "camera": "pan left",
+        "prompt": "Medium close-up of a Meiji-era schoolteacher in a dark Western suit and round spectacles in an empty classroom in soft morning light, adjusting his round spectacles with a careful, modest look to the front",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1401,8 +1374,8 @@
       "id": "writer26",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Taisho-era writer in a tweed jacket with a little moustache at a writing desk in a study in the afternoon, holding up a fountain pen with a playful raised eyebrow our way, soft window light",
-        "camera": "push in",
+        "prompt": "Medium shot of a Taisho-era writer in a tweed jacket with a little moustache at a writing desk in a study in the afternoon, holding up a fountain pen with a playful raised eyebrow at us, soft window light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1416,8 +1389,8 @@
       "id": "writer26-nod",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a Taisho-era writer in a tweed jacket with a little moustache at his desk in pale window light, nodding along with a pen behind his ear toward the viewer",
-        "camera": "drift",
+        "prompt": "Medium close-up of a Taisho-era writer in a tweed jacket with a little moustache at his desk in pale window light, nodding along with a pen behind his ear our way",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1431,8 +1404,8 @@
       "id": "writer26-topic",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a Taisho-era writer in a tweed jacket with a little moustache at his desk in gentle light, tapping a folded fan against his chin with a knowing grin to the front",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of a Taisho-era writer in a tweed jacket with a little moustache at his desk in gentle light, tapping a folded fan against his chin with a knowing grin toward the viewer",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1446,8 +1419,8 @@
       "id": "teach-odd",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses leaning back in a reading-room chair in the afternoon, arms folded with a wry smile at us, soft daylight",
-        "camera": "pan right",
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses leaning back in a reading-room chair in the afternoon, arms folded with a wry smile to the front, soft daylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1462,8 +1435,8 @@
       "id": "who-fixed",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses's face at a reading-room table, chewing the end of a pencil with a puzzled look our way, pale window light",
-        "camera": "tilt up",
+        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses's face at a reading-room table, chewing the end of a pencil with a puzzled look at us, pale window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1479,8 +1452,8 @@
       "chapter": "昭和十年，中學修身課上了一堂「等待的心」",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses between tall archive shelves in the afternoon, shaking her head slowly with an old book in each hand toward the viewer, soft light",
-        "camera": "pull out",
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses between tall archive shelves in the afternoon, shaking her head slowly with an old book in each hand our way, soft light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1511,8 +1484,8 @@
       "id": "teacher35",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1930s schoolteacher in a charcoal three-piece suit with neatly parted hair standing behind a wooden teacher's desk in a school hall in the morning, resting one hand beside a round bamboo cage with a small soft-feathered cuckoo sitting quietly inside, beak shut and smiling to the front, pale window light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a 1930s schoolteacher in a charcoal three-piece suit with neatly parted hair standing behind a wooden teacher's desk in a school hall in the morning, resting one hand beside a round bamboo cage with a small soft-feathered cuckoo sitting quietly inside, beak shut and smiling toward the viewer, pale window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1531,8 +1504,8 @@
       "id": "teacher35-book",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a 1930s schoolteacher in a charcoal three-piece suit with neatly parted hair at a teacher's desk in pale morning light, holding up a slim reference book with a plain cover and an earnest look at us",
-        "camera": "push in",
+        "prompt": "Medium close-up of a 1930s schoolteacher in a charcoal three-piece suit with neatly parted hair at a teacher's desk in pale morning light, holding up a slim reference book with a plain cover and an earnest look to the front",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1550,8 +1523,8 @@
       "id": "teacher35-q",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, peering over her glasses with a suspicious little smile our way, soft daylight",
-        "camera": "drift",
+        "prompt": "Close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, peering over her glasses with a suspicious little smile at us, soft daylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1595,14 +1568,14 @@
       "id": "teacher35-oops",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a 1930s schoolteacher in a charcoal three-piece suit with neatly parted hair in a school hall in pale morning light, scratching his head with a sheepish grin toward the viewer",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of a 1930s schoolteacher in a charcoal three-piece suit with neatly parted hair in a school hall in pale morning light, scratching his head with a sheepish grin our way",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "hh509",
-          "text": "明治的校書人改字，是查過原文才改；這一次，是跟著課名改。",
+          "text": "還記得明治那位校書人嗎？這一回改字，不是為了改對，是為了配課名。",
           "emotion": "帶點好笑"
         }
       ]
@@ -1611,8 +1584,8 @@
       "id": "writer40",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1940s author in a dark cardigan with slicked-back hair at a writing desk in the afternoon, laughing and waving one hand as if to say no way to the front, soft window light",
-        "camera": "pan right",
+        "prompt": "Medium shot of a 1940s author in a dark cardigan with slicked-back hair at a writing desk in the afternoon, laughing and waving one hand as if to say no way toward the viewer, soft window light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1626,8 +1599,8 @@
       "id": "writer40-nod",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a 1940s author in a dark cardigan with slicked-back hair at his desk in gentle light, nodding firmly with his pen raised at us",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of a 1940s author in a dark cardigan with slicked-back hair at his desk in gentle light, nodding firmly with his pen raised to the front",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1642,8 +1615,8 @@
       "id": "traveller-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an old Edo-era traveller in a plain brown kimono and straw sandals resting on a roadside stone under a cloudy sky, the heavy bundle beside him, wiping his brow and smiling our way",
-        "camera": "pull out",
+        "prompt": "Medium close-up of an old Edo-era traveller in a plain brown kimono and straw sandals resting on a roadside stone under a cloudy sky, the heavy bundle beside him, wiping his brow and smiling at us",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1658,8 +1631,8 @@
       "id": "ikun-late",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table in the afternoon, sliding a thick old book aside with a knowing look toward the viewer, soft window light",
-        "camera": "pan left",
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading-room table in the afternoon, sliding a thick old book aside with a knowing look our way, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1670,47 +1643,16 @@
       ]
     },
     {
-      "id": "dancer",
+      "id": "verdict-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Sengoku lord in a dark kimono with a folding fan in a castle hall in soft daylight, dancing with an open folding fan held high and singing with his eyes half shut to the front",
-        "camera": "push in",
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a reading-room table in the afternoon, sitting up straight with a manila folder in her hands and a serious look toward the viewer, pale window light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "hh514",
-          "text": "信長愛唱的「人間五十年」，也不是他寫的：那是幸若舞《敦盛》裡的詞。"
-        }
-      ]
-    },
-    {
-      "id": "dancer-close",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of a Sengoku lord in a dark kimono with a folding fan in a castle hall in hazy light, lowering his fan and taking a deep breath with a resolute look at us",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "hh515",
-          "text": "不過，《信長公記》寫了他出陣前唱這一段。",
-          "emotion": "平實"
-        }
-      ]
-    },
-    {
-      "id": "verdict-q",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a reading-room table in the afternoon, sitting up straight with a manila folder in her hands and a serious look our way, pale window light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "hh516",
           "text": "那麼，開頭那個問題：這三句，是他們寫的嗎？",
           "emotion": "問句"
         }
@@ -1720,13 +1662,13 @@
       "id": "two-hundred",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, holding two old books up side by side with a small frown toward the viewer, soft daylight",
-        "camera": "pan right",
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, holding two old books up side by side with a small frown to the front, soft daylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh517",
+          "id": "hh515",
           "text": "信長、秀吉、家康，分別在一五八二、一五九八、一六一六年過世；"
         }
       ]
@@ -1735,13 +1677,13 @@
       "id": "two-hundred-2",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, tapping the spine of an old book and lifting her eyebrows to the front, gentle window light",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses in a reading room, tapping the spine of an old book and lifting her eyebrows at us, gentle window light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh518",
+          "id": "hh516",
           "text": "目前查到的兩本江戶筆記，都晚了兩百年上下。",
           "emotion": "放慢"
         }
@@ -1751,13 +1693,13 @@
       "id": "none-then",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses between tall archive shelves in soft daylight, opening her empty hands with a gentle shrug at us",
-        "camera": "pull out",
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses between tall archive shelves in soft daylight, opening her empty hands with a gentle shrug our way",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh519",
+          "id": "hh517",
           "text": "杜鵑這三句，同時代的紀錄一句也沒提。"
         }
       ]
@@ -1766,13 +1708,13 @@
       "id": "unknown",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a wooden desk in the afternoon, shrugging with both palms up beside an empty chair our way, gentle window light",
-        "camera": "pan left",
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a wooden desk in the afternoon, shrugging with both palms up beside an empty chair toward the viewer, gentle window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh520",
+          "id": "hh518",
           "text": "真正寫出它們的人是誰，到今天還不知道。",
           "emotion": "誠懇"
         }
@@ -1782,17 +1724,17 @@
       "id": "speaker-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a plump Edo samurai guest in a brown haori with a round friendly face kneeling on tatami at an evening gathering in soft lamp light, raising one finger as he makes a remark, eyebrows lifted knowingly toward the viewer",
-        "camera": "push in",
+        "prompt": "Medium shot of a plump Edo samurai guest in a brown haori with a round friendly face kneeling on tatami at an evening gathering in soft lamp light, raising one finger as he makes a remark, eyebrows lifted knowingly to the front",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh521",
+          "id": "hh519",
           "text": "還記得夜談那句「很合這三個人的性子」嗎？"
         },
         {
-          "id": "hh522",
+          "id": "hh520",
           "text": "我們覺得，三句能傳兩百年，靠的就是這個「像」字。",
           "emotion": "像跟朋友說自己的看法"
         }
@@ -1802,14 +1744,14 @@
       "id": "stamp",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a wooden desk in the afternoon, pressing a rubber stamp onto the cover of a plain manila folder and smiling to the front, soft window light, a bamboo birdcage on the desk",
-        "camera": "drift",
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a wooden desk in the afternoon, pressing a rubber stamp onto the cover of a plain manila folder and smiling at us, soft window light, a bamboo birdcage on the desk",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "hh523",
-          "text": "沒有一句是他們寫的；記下它們的人，自己就說了是傳聞、是假託。這份檔案，存檔。",
+          "id": "hh521",
+          "text": "三句都不是他們寫的；這份檔案，存檔。",
           "emotion": "收尾，乾脆"
         }
       ]
@@ -1826,12 +1768,12 @@
       },
       "lines": [
         {
-          "id": "hh524",
+          "id": "hh522",
           "text": "如果是你，會對這隻不叫的鳥，說哪一句？",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "hh525",
+          "id": "hh523",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }
