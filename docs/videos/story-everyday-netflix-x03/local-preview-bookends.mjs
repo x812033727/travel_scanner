@@ -17,7 +17,6 @@ const label = (text, x, y, size, color, extra = "") =>
 
 /** A 5 s opening after the hook, or a 21 s end-screen layout after the body. */
 export function conceptBookendArgs(kind, outFile) {
-  if (!existsSync(FONT)) throw new Error(`the local preview concept font is missing: ${FONT}`);
   if (kind !== "intro" && kind !== "outro") throw new Error(`unknown concept bookend: ${kind}`);
   const intro = kind === "intro";
   const frames = intro ? INTRO_FRAMES : OUTRO_FRAMES;
@@ -46,6 +45,11 @@ export function conceptBookendArgs(kind, outFile) {
   ];
   const graph = `[0:v]${filters.join(",")},${COLOUR}[out]`;
   return encodeArgs(["-f", "lavfi", "-i", `color=c=${bg}:s=${WIDTH}x${HEIGHT}:r=${FPS}:d=${frames / FPS}`], graph, frames, outFile);
+}
+
+/** Check the local renderer dependency only when an actual preview is being made. */
+export function assertConceptBookendFont() {
+  if (!existsSync(FONT)) throw new Error(`the local preview concept font is missing: ${FONT}`);
 }
 
 /** Insert instrumental preview music under the concept cards without moving the spoken audio. */

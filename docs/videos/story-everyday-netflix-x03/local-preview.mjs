@@ -19,7 +19,7 @@ import { lastFrameArgs, layoutDrama, measureMixArgs, mixArgs, motionSegmentArgs,
 import { locateFfmpeg, runTool } from "../../../tools/video/assemble/ffmpeg.mjs";
 import { checkProbe, concatList, joinArgs, muxArgs, parseLoudnorm, probeArgs, segmentArgs, segmentKey } from "../../../tools/video/assemble/plan.mjs";
 import { themeHash } from "../../../tools/video/render/plan.mjs";
-import { INTRO_FRAMES, OUTRO_FRAMES, conceptBookendArgs, bookendedAudioArgs } from "./local-preview-bookends.mjs";
+import { INTRO_FRAMES, OUTRO_FRAMES, assertConceptBookendFont, conceptBookendArgs, bookendedAudioArgs } from "./local-preview-bookends.mjs";
 
 const SLUG = "story-everyday-netflix-x03";
 const usage = "Usage: node docs/videos/story-everyday-netflix-x03/local-preview.mjs --workdir <media-base-outside-repo> [--dry-run] [--force] [--allow-review-needed]";
@@ -218,6 +218,7 @@ async function encode({ doc, timeline, frames, musicFile, layout, workdir, previ
   const stem = previewStem(allowReviewNeeded, reviewNeeded);
   const output = path.join(previewDir, `${stem}.mp4`);
   if (existsSync(output) && !force) throw new Error(`${output} already exists; pass --force to replace this local preview`);
+  assertConceptBookendFont();
   const { ffmpeg, ffprobe } = await locateFfmpeg();
   const segmentsDir = path.join(previewDir, "segments");
   mkdirSync(segmentsDir, { recursive: true });
