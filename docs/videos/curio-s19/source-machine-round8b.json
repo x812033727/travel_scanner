@@ -1,0 +1,94 @@
+{
+  "hashes": {
+    "script.md": "5cd4402a833139ea9e4c0c4b6458f347eddcc4b441762033f9f0026cf4ef8a49",
+    "video.json": "a462fff787f1aa016ad343c96682a889184b5aa561e6bca1e5859ac705807f68",
+    "claims.md": "be479b16da9e7a3909e8c677cf636724719cfb232b48c34f7690dcaa17fc81b4"
+  },
+  "counts": {
+    "script_rows": 110,
+    "video_rows": 110,
+    "claims_rows": 110,
+    "citation_links": 129,
+    "stills": 100,
+    "outros": 1
+  },
+  "checks": {
+    "video_script_text_identical": true,
+    "script_scene_order_identical": true,
+    "video_claims_ids_text_identical": true,
+    "unique_line_ids": true,
+    "same_row_ids_as_r8": true,
+    "expected_changed_text_only": true,
+    "expected_citation_changes_only": true,
+    "all_links_valid": true,
+    "same_still_count_as_r8": true,
+    "expected_changed_prompt_only": true,
+    "outro_unchanged": true
+  },
+  "changed_text_rows": [
+    {
+      "id": "et062",
+      "r8": "那座高塔，會不會把巴黎名勝壓得矮小？",
+      "r8b": "還記得信裡那些被壓小的名勝嗎？艾菲爾怎麼反駁？"
+    },
+    {
+      "id": "et066",
+      "r8": "兩邊都在爭論一座尚未建成的塔會如何被看見。",
+      "r8b": "塔的尺度，連艾菲爾自己都能預料嗎？"
+    },
+    {
+      "id": "et067",
+      "r8": "可是信上還有一個更難回的指控：「無用」。",
+      "r8b": "還記得信上那句「無用」嗎？艾菲爾又怎麼回答？"
+    },
+    {
+      "id": "et071",
+      "r8": "但當時塔還沒建成，這些用途能算成果嗎？",
+      "r8b": "但說出這些用途，就等於當時已經做成了嗎？"
+    }
+  ],
+  "changed_prompts": [
+    {
+      "scene_id": "eiffel-066",
+      "r8": "Wide shot in an 1887 drafting studio, one editor holding two disagreeing blank sketches",
+      "r8b": "Medium shot in an 1887 drafting studio, one engineer studying a plain tower base model beside rolled plans, soft window light"
+    }
+  ],
+  "citation_diffs": [
+    [
+      "et066",
+      [
+        "R83–92",
+        "R222–226"
+      ],
+      [
+        "R222–226"
+      ]
+    ],
+    [
+      "et067",
+      [
+        "R52–55"
+      ],
+      [
+        "R52–55",
+        "R225–236"
+      ]
+    ],
+    [
+      "et071",
+      [
+        "R164–167",
+        "R236–241"
+      ],
+      [
+        "R236–241"
+      ]
+    ]
+  ],
+  "url_errors": [],
+  "source_line_counts": {
+    "R": 268,
+    "I": 2228
+  }
+}
