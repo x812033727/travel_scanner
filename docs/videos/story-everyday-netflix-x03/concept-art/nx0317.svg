@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="實體 DVD 播放器與虛線表示的未來可能螢幕">
+  <defs><pattern id="grain" width="39" height="39" patternUnits="userSpaceOnUse"><circle cx="8" cy="12" r="1" fill="#233648" opacity=".1"/><circle cx="28" cy="27" r="1" fill="#233648" opacity=".08"/></pattern><filter id="shadow"><feDropShadow dx="0" dy="11" stdDeviation="10" flood-color="#233648" flood-opacity=".13"/></filter></defs>
+  <rect width="1280" height="720" fill="#f5eccf"/>
+  <path d="M0 450h1280v270H0z" fill="#d8b993"/>
+  <path d="M0 450h1280" stroke="#233648" stroke-width="10"/>
+  <rect width="1280" height="720" fill="url(#grain)"/>
+  <!-- The present physical object is solid and grounded on the table. -->
+  <g filter="url(#shadow)">
+    <rect x="147" y="324" width="439" height="146" rx="19" fill="#233648"/>
+    <rect x="160" y="338" width="413" height="116" rx="12" fill="#527b80"/>
+    <rect x="218" y="382" width="300" height="11" rx="5" fill="#233648"/>
+    <circle cx="532" cy="417" r="13" fill="#f2cb72" stroke="#233648" stroke-width="5"/>
+    <circle cx="358" cy="540" r="75" fill="#c9d9d4" stroke="#233648" stroke-width="9"/>
+    <circle cx="358" cy="540" r="15" fill="#f5eccf" stroke="#233648" stroke-width="5"/>
+  </g>
+  <!-- Only a dashed drawing on paper describes a possible future screen. -->
+  <g filter="url(#shadow)" transform="rotate(-4 924 376)">
+    <rect x="708" y="153" width="434" height="444" rx="9" fill="#f9f0d9" stroke="#233648" stroke-width="8"/>
+    <rect x="769" y="227" width="311" height="220" rx="13" fill="none" stroke="#5b9999" stroke-width="11" stroke-dasharray="21 17"/>
+    <path d="M894 287l68 48-68 48z" fill="none" stroke="#5b9999" stroke-width="10" stroke-dasharray="18 12" stroke-linejoin="round"/>
+    <path d="M922 450v38m-72 0h144" fill="none" stroke="#5b9999" stroke-width="9" stroke-dasharray="17 13" stroke-linecap="round"/>
+  </g>
+</svg>

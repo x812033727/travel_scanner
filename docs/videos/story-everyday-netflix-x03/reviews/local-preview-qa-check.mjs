@@ -5,7 +5,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
-import { existsSync, readFileSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
@@ -41,6 +41,79 @@ const within = (workdir, name) => {
   assert.ok(isInside(file, workdir), "media path escapes workdir: " + name);
   return file;
 };
+
+/** A manual donor is a reviewed concept exception, never a replacement for its judged take. */
+async function verifyManualSelections({ workdir, scriptSha, keyframeFile, keyframes, manualSelections }) {
+  const reviewDir = within(workdir, "review");
+  const receipts = readdirSync(reviewDir).filter((name) => /^manual-keyframe-selections-[a-f0-9]{12}\.json$/.test(name));
+  if (!manualSelections.length) {
+    assert.equal(receipts.length, 0, "stale manual-selection receipt after a keyframes rerun");
+    return null;
+  }
+  assert.equal(receipts.length, 1, "manual selections require exactly one current receipt");
+  const receiptFile = within(workdir, `review/${receipts[0]}`);
+  const receipt = read(receiptFile);
+  const tag = receipts[0].slice("manual-keyframe-selections-".length, -".json".length);
+  assert.equal(receipt.schema_version, 1);
+  assert.equal(receipt.kind, "manual_keyframe_substitutions");
+  assert.equal(receipt.approval, "UNAPPROVED_CONCEPT");
+  assert.equal(receipt.official_branding, false);
+  assert.equal(receipt.video_json_sha256, scriptSha, "manual receipt belongs to another script");
+  assert.equal(receipt.manifest_after_sha256, await sha256File(keyframeFile), "manual receipt is stale after a keyframes rerun or manifest edit");
+  assert.match(receipt.manifest_before_sha256, /^[a-f0-9]{64}$/);
+  assert.equal(receipt.backup, `review/keyframe-manifest-before-manual-${tag}.json`);
+  assert.equal(await sha256File(within(workdir, receipt.backup)), receipt.manifest_before_sha256, "original generated manifest backup drift");
+  assert.equal(receipt.donor_map_file, `review/manual-keyframe-map-${tag}.json`);
+  assert.equal(receipt.donor_map_sha256.slice(0, 12), tag, "manual receipt/map namespace drift");
+  assert.equal(await sha256File(within(workdir, receipt.donor_map_file)), receipt.donor_map_sha256, "donor map snapshot drift");
+  const map = read(within(workdir, receipt.donor_map_file));
+  assert.equal(map.video_json_sha256, scriptSha, "donor map belongs to another script");
+  if (map.manifest_before_sha256 !== undefined) assert.equal(map.manifest_before_sha256, receipt.manifest_before_sha256, "donor map belongs to another generated manifest");
+  const expected = [...manualSelections].sort();
+  assert.deepEqual((receipt.changes ?? []).map((change) => change.target_id).sort(), expected, "manual receipt target set drift");
+  assert.deepEqual((map.replacements ?? []).map((item) => item.target_id).sort(), expected, "donor map target set drift");
+  const originals = read(within(workdir, receipt.backup));
+  for (const [id, original] of Object.entries(originals.shots ?? {})) {
+    const current = keyframes.shots[id];
+    assert.ok(current, "generated shot was removed by manual selection: " + id);
+    for (const take of original.takes ?? []) {
+      assert.equal(await sha256File(within(workdir, take.file)), take.sha256, "generated take evidence drift: " + id);
+    }
+    if (!current.manual_selection) assert.deepEqual(current, original, "unrelated generated shot was edited: " + id);
+  }
+  for (const item of map.replacements) {
+    const shot = keyframes.shots[item.target_id];
+    const old = originals.shots?.[item.target_id];
+    const change = receipt.changes.find((entry) => entry.target_id === item.target_id);
+    assert.ok(old?.file && old.sha256 && !old.manual_selection, "original judged selection is missing: " + item.target_id);
+    assert.equal(old.file, shot.manual_selection.previous.file, "original selected path drift: " + item.target_id);
+    assert.equal(old.sha256, shot.manual_selection.previous.sha256, "original selected SHA drift: " + item.target_id);
+    assert.deepEqual(change, { target_id: item.target_id, ...shot.manual_selection, selected_file: shot.file }, "manual receipt change drift: " + item.target_id);
+    assert.equal(item.donor_file, change.donor_file, "donor path differs from reviewed map: " + item.target_id);
+    assert.equal(item.donor_sha256, change.donor_sha256, "donor hash differs from reviewed map: " + item.target_id);
+    assert.equal(item.reason, change.reason, "donor reason differs from reviewed map: " + item.target_id);
+    if (item.previous_sha256 !== undefined) assert.equal(item.previous_sha256, old.sha256, "donor map original SHA drift: " + item.target_id);
+    const expectedShot = {
+      ...old,
+      file: change.selected_file,
+      sha256: change.donor_sha256,
+      needs_review: true,
+      manual_selection: shot.manual_selection,
+      problems: [...new Set([...(Array.isArray(old.problems) ? old.problems : []), `human visual hold; concept-only donor: ${item.reason}`])],
+    };
+    assert.deepEqual(shot, expectedShot, "generated take or judge evidence was edited: " + item.target_id);
+    const copy = readProbe(within(workdir, shot.file)).streams?.[0];
+    assert.ok(copy?.width > 0 && copy?.width * 9 === copy?.height * 16, "manual donor must remain 16:9: " + item.target_id);
+    assert.deepEqual(change.dimensions, { width: copy.width, height: copy.height }, "manual donor dimensions drift: " + item.target_id);
+  }
+  assert.deepEqual((receipt.contact_sheets ?? []).map((sheet) => sheet.file), keyframes.contact_sheets, "manual contact-sheet paths drift");
+  for (const sheet of receipt.contact_sheets) {
+    assert.match(sheet.file, new RegExp(`^keyframes/manual-${tag}/contact-sheet(?:-[0-9]+)?\\.png$`), "manual contact sheet escaped its namespace");
+    assert.equal(await sha256File(within(workdir, sheet.file)), sheet.sha256, "manual contact sheet bytes drift: " + sheet.file);
+  }
+  assert.equal(keyframes.contact_sheet, receipt.contact_sheets[0]?.file, "manual primary contact sheet drift");
+  return await sha256File(receiptFile);
+}
 
 function run(tool, args) {
   const done = spawnSync(tool, args, { encoding: "utf8", maxBuffer: 16 * 1024 * 1024, timeout: 20 * 60_000 });
@@ -84,12 +157,24 @@ async function main() {
   const shotScenes = doc.scenes.filter((scene) => scene.template === "shot" && !scene.data?.source);
   assert.equal(Object.keys(keyframes.shots).length, shotScenes.length, "keyframe shot count");
   const flagged = [];
+  const manualSelections = [];
   for (const scene of shotScenes) {
     const shot = keyframes.shots[scene.id];
     assert.ok(shot && !shot.incomplete && shot.file && /^[a-f0-9]{64}$/.test(shot.sha256 ?? ""), "incomplete selected picture: " + scene.id);
     assert.equal(await sha256File(within(workdir, shot.file)), shot.sha256, "picture hash drift: " + scene.id);
+    if (shot.manual_selection) {
+      const manual = shot.manual_selection;
+      assert.equal(manual.kind, "human_safe_donor_for_unapproved_preview", "unknown manual selection type: " + scene.id);
+      assert.equal(shot.needs_review, true, "manual donor must remain a human review hold: " + scene.id);
+      assert.equal(shot.sha256, manual.donor_sha256, "manual donor SHA drift: " + scene.id);
+      assert.equal(await sha256File(within(workdir, manual.donor_file)), manual.donor_sha256, "manual donor source drift: " + scene.id);
+      assert.ok(shot.takes?.some((take) => take.file === manual.previous?.file && take.sha256 === manual.previous?.sha256), "original judge take was erased: " + scene.id);
+      assert.match(shot.file, /^keyframes\/manual-[a-f0-9]{12}\//, "manual output lacks an auditable namespace: " + scene.id);
+      manualSelections.push(scene.id);
+    }
     if (shot.needs_review || (shot.judge?.passed === false && !Array.isArray(shot.accepted_with_problems))) flagged.push(scene.id);
   }
+  const manualReceiptSha = await verifyManualSelections({ workdir, scriptSha, keyframeFile, keyframes, manualSelections });
   const names = previewNames(flagged);
 
   const framesFile = within(workdir, "frames/manifest.json");
@@ -108,6 +193,11 @@ async function main() {
   for (const name of [...new Set(cardNames)].sort()) cardFiles.push({ file: name, sha256: await sha256File(within(workdir, name)) });
   const thumbnailFile = within(workdir, "thumbnail.jpg");
   assert.ok(existsSync(thumbnailFile), "rendered thumbnail is missing");
+  if (manualSelections.includes(doc.thumbnail?.data?.shot)) {
+    // The background key changed after the earlier render; require a new render of A.
+    assert.ok(statSync(thumbnailFile).mtimeMs > statSync(keyframeFile).mtimeMs, "thumbnail source was manually substituted; rerender thumbnail after applying donor map");
+    assert.ok(statSync(framesFile).mtimeMs > statSync(keyframeFile).mtimeMs, "render manifest predates the manually selected thumbnail source");
+  }
   const musicFile = within(workdir, "music/manifest.json");
   const music = read(musicFile);
   assert.equal(music.mix_hash, mixHash(doc), "music mix hash drift");
@@ -151,7 +241,7 @@ async function main() {
     workdir,
     source: { video_json_sha256: scriptSha, series_json_sha256: seriesSha, review_lineage: reviewLineage, timeline_sha256: await sha256File(timelineFile), keyframes_manifest_sha256: await sha256File(keyframeFile), frames_manifest_sha256: await sha256File(framesFile), music_manifest_sha256: await sha256File(musicFile), rendered_card_files: cardFiles, thumbnail_sha256: await sha256File(thumbnailFile) },
     expected: { body_frames: timeline.total_frames, output_frames: expectedFrames, seconds: Number((expectedFrames / FPS).toFixed(3)), concept_intro_frames: INTRO, concept_outro_frames: OUTRO, intro: [introAt, introAt + INTRO], outro: [timeline.total_frames + INTRO, expectedFrames], chapters: timeline.chapters.map((chapter, index) => chapter.start_frame + (index ? INTRO : 0)), cues: cues.length, caption_sha256: Object.fromEntries(Object.entries(expectedCaptions).map(([name, bytes]) => [name, digest(bytes)])) },
-    media: { selected_pictures: shotScenes.length, review_needed: flagged, review_spots: reviewSpots, ledger: totals, caveat: "Ledger covers visible media jobs, not unlisted TTS, transcription, tax or provider charges. The US$25 full-episode cap needs separate accounting." },
+    media: { selected_pictures: shotScenes.length, manual_substitutions: manualSelections, manual_selection_receipt_sha256: manualReceiptSha, review_needed: flagged, review_spots: reviewSpots, ledger: totals, caveat: "Ledger covers visible media jobs, not unlisted TTS, transcription, tax or provider charges. The US$25 full-episode cap needs separate accounting." },
   };
   if (values["inputs-only"]) {
     process.stdout.write(JSON.stringify(summary, null, 2) + "\n");

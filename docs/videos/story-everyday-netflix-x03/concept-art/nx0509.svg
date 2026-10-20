@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="無字全球輪廓與兩條等權串流路徑">
+  <defs>
+    <pattern id="grain" width="48" height="48" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="8" r="1.2" fill="#74817a" opacity=".12"/>
+      <circle cx="34" cy="29" r="1" fill="#74817a" opacity=".1"/>
+    </pattern>
+    <clipPath id="sphere"><circle cx="285" cy="360" r="178"/></clipPath>
+    <filter id="shadow" x="-20%" y="-30%" width="150%" height="170%">
+      <feDropShadow dx="0" dy="13" stdDeviation="14" flood-color="#243748" flood-opacity=".16"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="720" fill="#f5eccf"/>
+  <path d="M0 578c187-45 378-58 571-35 213 26 449 71 709-5v182H0z" fill="#e5d9b8" opacity=".65"/>
+  <rect width="1280" height="720" fill="url(#grain)"/>
+
+  <!-- Two equal-weight paths; neither has a scale, numbers or a country marker. -->
+  <path d="M443 319C565 319 588 223 731 223h61" fill="none" stroke="#233648" stroke-width="42" stroke-linecap="round"/>
+  <path d="M443 319C565 319 588 223 731 223h61" fill="none" stroke="#6caaa6" stroke-width="27" stroke-linecap="round"/>
+  <path d="M443 401C565 401 588 497 731 497h61" fill="none" stroke="#233648" stroke-width="42" stroke-linecap="round"/>
+  <path d="M443 401C565 401 588 497 731 497h61" fill="none" stroke="#6caaa6" stroke-width="27" stroke-linecap="round"/>
+  <circle cx="612" cy="259" r="17" fill="#f2c96d" stroke="#233648" stroke-width="7"/>
+  <circle cx="612" cy="461" r="17" fill="#f2c96d" stroke="#233648" stroke-width="7"/>
+
+  <g filter="url(#shadow)">
+    <circle cx="285" cy="360" r="185" fill="#233648"/>
+    <circle cx="285" cy="360" r="178" fill="#84bdb6"/>
+    <g clip-path="url(#sphere)">
+      <path d="M98 247c45-19 70-26 107-21 31 4 56 30 51 49-5 16-29 15-35 36-6 21 11 35-1 55-16 26-48 19-54 50-12 56-47 72-83 49L66 319z" fill="#ead993"/>
+      <path d="M284 194c35-12 74 2 83 23 10 23-12 39-3 52 11 17 43 10 63 29 23 22 11 42-12 43-36 3-48-24-76-17-24 5-31 34-55 32-25-2-46-31-34-58 9-20 31-24 24-46-6-19-5-47 10-58z" fill="#ead993"/>
+      <path d="M333 379c28-25 59-21 74 3 13 20 2 42-12 51-19 11-25 33-34 54-16 38-47 46-64 15-13-23 0-48-10-67-11-21 20-32 46-56z" fill="#ead993"/>
+      <path d="M130 358h310M142 295h286M142 423h286" fill="none" stroke="#457e82" stroke-width="8" opacity=".5"/>
+      <path d="M285 181c-51 65-70 127-70 179s19 114 70 179M285 181c51 65 70 127 70 179s-19 114-70 179" fill="none" stroke="#457e82" stroke-width="7" opacity=".48"/>
+    </g>
+    <circle cx="285" cy="360" r="178" fill="none" stroke="#233648" stroke-width="12"/>
+    <path d="M225 566h120l25 38H200z" fill="#233648"/>
+    <rect x="170" y="601" width="230" height="17" rx="8.5" fill="#233648"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="784" y="107" width="394" height="217" rx="20" fill="#233648"/>
+    <rect x="801" y="124" width="360" height="181" rx="10" fill="#d5e7d6"/>
+    <path d="M935 179l86 36-86 36z" fill="#233648"/>
+    <rect x="953" y="324" width="58" height="27" fill="#233648"/>
+    <rect x="905" y="348" width="154" height="13" rx="6" fill="#233648"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="784" y="396" width="394" height="217" rx="20" fill="#233648"/>
+    <rect x="801" y="413" width="360" height="181" rx="10" fill="#d5e7d6"/>
+    <path d="M935 468l86 36-86 36z" fill="#233648"/>
+    <rect x="953" y="613" width="58" height="27" fill="#233648"/>
+    <rect x="905" y="637" width="154" height="13" rx="6" fill="#233648"/>
+  </g>
+</svg>

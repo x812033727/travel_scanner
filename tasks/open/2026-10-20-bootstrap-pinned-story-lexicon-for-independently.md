@@ -1,7 +1,7 @@
 ---
 id: 2026-10-20-bootstrap-pinned-story-lexicon-for-independently
 title: Bootstrap pinned story lexicon for independently reviewed manual drafts
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: codex-gpt6-netflix-bootstrap
@@ -51,3 +51,5 @@ X03 Netflix 是獨立審過的本機手稿，已有 `video.json`，但沒有工�
 二次審查發現兩個競態邊界：`now()` callback 可在來源讀取後改稿，舊版仍可能寫出 `bootstrapped:true`；symlink 媒體 base 可讓字面上的儲存庫外路徑實際指進儲存庫。已補提交前兩次來源 SHA 比對與媒體路徑祖先/realpath 檢查；focused 回歸涵蓋六份檔案在這兩個提交時點各自漂移，以及 symlink 指向 repo 的 `--apply`/`--recover` 拒絕。真實 X03 仍未套用。
 
 修補後再驗：focused 12/12；`npm run test:docs-videos` 246/246；`npm run test:tools` 2,590 通過、0 失敗、5 既定跳過；`npm run check:tasks` 與 `git diff --check` 通過。實際 X03 CLI 僅做唯讀乾跑，安全路徑與空工作區檢查通過，因最終結構化審查收據尚未存在而如預期拒絕套用；未產生 X03 LEASE 或媒體。
+
+交接後實際驗證：X03 定稿 `video.json` SHA-256 `647b73fdb22a2452ad2817ca5554689db5801af0e97996913e7e73c1694b2fb9` 已取得一份來源與兩份獨立敘事 PASS 收據；獨立審查者建立 `reviews/lexicon-bootstrap.json`，唯讀檢查 7/7 通過，正式 `--apply` 回 `bootstrapped:true`。提交交易 `640c455f-0c37-42b5-89d9-ea897fe6e3a5` 的工作區 receipt 與儲存庫 genesis/current/sidecar 均存在，後續真實 X03 `lint` 為 0 錯誤／0 警告、`tts --dry-run` 顯示 78 次合成請求與足夠額度。付費語音與成片驗收歸 X03 製作票處理。
