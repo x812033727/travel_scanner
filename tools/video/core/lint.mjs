@@ -11,7 +11,7 @@ import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { DEFAULT_CADENCE, isNarrated, narrativeProblems, TIGHT_CADENCE } from "./narrative.mjs";
 import { isA01CompactStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
-import { DEFAULT_TARGET_MINUTES, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
+import { DEFAULT_TARGET_MINUTES, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { isStory, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, FPS, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
@@ -531,7 +531,7 @@ export function lintVideo(doc, context = {}) {
   if (!doc.youtube.tags.length) warn("youtube.tags", "no tags: add the product names and their common misspellings");
   if (!doc.sources?.length) warn("sources", "no sources: every fact in claims.md needs one, and they go in the description");
 
-  for (const locale of LOCALES.filter((each) => each !== narration)) {
+  for (const locale of TARGET_LOCALES.filter((each) => each !== narration)) {
     const translation = context.translations?.[locale];
     if (!translation) continue;
     const stale = [];

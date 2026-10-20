@@ -5762,6 +5762,19 @@ Ran: Node v24.13.0, Windows, in the worktree at `d8cf32409`: the baseline hashin
 Non-claims: this is a nine-file incremental source duration review. It does not re-review the other 99 bound files or the unbound files the commit changes; it does not judge whether the five languages should be open only to imported videos, the YouTube language tags, or the translations of the language names, and it does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Worker five-language titles and captions increment: 22 files (2026-10-20)
+
+Reviewer: `claude-pr-review-worker-languages-five`. Author: `claude-opus-5.5-worker-languages-phase1`. Scope: DURATION_ONLY for `apps/api/app/video_automation/models.py`, `apps/api/app/video_automation/schemas.py`, `apps/api/app/video_reviews/admin_service.py`, `apps/api/app/video_reviews/schemas.py`, `apps/web/components/admin-video-review-card.tsx`, `apps/web/components/admin-video-reviews.test.tsx`, `apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json`, `tools/video/automation/automation.test.mjs`, `tools/video/automation/flow.mjs`, `tools/video/automation/prompts.mjs`, `tools/video/core/lint.mjs`, `tools/video/core/schema.mjs`, `tools/video/core/state.mjs`, `tools/video/dubs/plan.test.mjs`, `tools/video/package/cli.mjs`, `tools/video/qa/cli.mjs`, `tools/video/qa/qa.test.mjs` and `tools/video/review/sync.mjs` at `0e10b9af3` ("feat(video): the worker makes es, pt, id, vi and th titles and captions (phase 1)") on branch `claude/worker-video-languages-five`, reviewed as `git diff 6cd7725d1 0e10b9af3 -- <the 22 files>` (428 changed lines): models.py +10/−3, video_automation/schemas.py +9/−5, admin_service.py +27/−17, video_reviews/schemas.py +30/−21, admin-video-review-card.tsx +10/−8, admin-video-reviews.test.tsx +41/−0, +12/−1 in each admin.json, automation.test.mjs +65/−5, flow.mjs +2/−2, prompts.mjs +31/−17, lint.mjs +2/−2, schema.mjs +18/−7, state.mjs +4/−3, plan.test.mjs +2/−2, package/cli.mjs +3/−3, qa/cli.mjs +2/−2, qa.test.mjs +3/−3, sync.mjs +2/−2. The parent `6cd7725d1` is the base. The same commit also changes many unbound files (among them `tools/video/core/captions.mjs`, `core/stages.mjs`, `core/metadata.mjs`, `core/compilation.mjs`, `dubs/plan.mjs`, `tts/check.mjs`, `i18n/cli.mjs`, the render, compile and review helpers, migration 0136, `admin_api.py`, `video_youtube/requests.py`, `admin-video-reviews.tsx`, `admin-video-settings.tsx`, the uploader contract, `docs/videos/LANGUAGES.md`, API tests, fixtures and a task file); `core/stages.mjs`, `dubs/plan.mjs`, `tts/check.mjs` and the timing lines of `core/captions.mjs` were read for context only, and the rest were not reviewed. The reviewer wrote none of the code and edits only this report and review.json.
+
+Baseline: `git show 6cd7725d1:<path>` hashes to the existing binding and table row for each of the 22 files (`e8351836…` models.py, `d1af5e45…` video_automation/schemas.py, `5e49c92c…` admin_service.py, `2679a84f…` video_reviews/schemas.py, `1b6fcaca…` admin-video-review-card.tsx, `89e4edc7…` admin-video-reviews.test.tsx, `bd9d7d04…` en, `fe829e7e…` ja, `e70f711f…` ko, `7a1d5167…` zh-CN, `a845dabe…` zh-TW, `7ca053c9…` automation.test.mjs, `b49c5bd8…` flow.mjs, `15e98363…` prompts.mjs, `44366ca8…` lint.mjs, `80d2607b…` schema.mjs, `7626ccf4…` state.mjs, `f06d0737…` plan.test.mjs, `11dd9a72…` package/cli.mjs, `d5ae76e1…` qa/cli.mjs, `6f2f77b1…` qa.test.mjs, `b63c241c…` sync.mjs); at `0e10b9af3` and in the worktree each file hashes to the value in the table below (Node `crypto.createHash('sha256')` over the file bytes; none of the 22 working files holds a CR byte). The other 86 registered files hash to their bindings both at `6cd7725d1` and in the worktree. The commit does not touch review.md or review.json, and review.md hashed to the bound `report_sha256` `4ce9790caff19176dfb7d938e3e98ac717ce099587ffc4c67d3da6ac6c2369b1` before this increment. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding:` for exactly these 22 paths and nothing else. Earlier increments are retained in full.
+
+Findings. schema.mjs (23,237 → 24,298 bytes, 436 → 447 lines): the exported `LOCALES` (`zh-TW`, `en`, `ja`, `ko`) is split into `NARRATION_LOCALES` (the same four: what a video may be narrated or dubbed in), `TARGET_LOCALES` (those four plus `es`, `pt`, `id`, `vi`, `th`: what a translation, caption file, localized title or thumbnail may be in) and `DEFAULT_LOCALES` (the same four: what a video without a language choice, and a compilation, is made in); `narrationLocale` and `validateVideo`'s `narration_locale` check read `NARRATION_LOCALES`, so their accepted set is unchanged. flow.mjs, lint.mjs, state.mjs, package/cli.mjs and sync.mjs swap `LOCALES` for `TARGET_LOCALES` in loops that load translations, look for stale translated lines, owe localized thumbnails, pick the YouTube locales for localized thumbnails and build the site's language choice; state.mjs's compilation step and qa/cli.mjs's compilation captions item take `DEFAULT_LOCALES`, the four they had; package/cli.mjs's `skippedCaptionLocales` defaults to `DEFAULT_LOCALES`. In flow.mjs, lint.mjs and qa/cli.mjs the changed line is an import list that still names the unchanged `MIN_EPISODE_MINUTES`, `minEpisodeMinutes` and `DEFAULT_TARGET_MINUTES`; the code that uses them is untouched. prompts.mjs (141,178 → 142,465 bytes, 1,853 → 1,867 lines): three new constants, `TARGET_LENGTHS` (caption line characters: en 80 and ja/ko 40 as before, es/pt/id/vi 80, th 60 letters), `TARGET_REGISTERS` and `TARGET_SCRIPTS`, replace the inline en/ja/ko text in the translator, caption reviewer, compilation translator, dub shorten and dub reword prompts and in the other-narration swaps; "captions in four languages" becomes "up to nine". The dub shorten prompt's `seconds` and `window_over_seconds` and every `max_chars` sentence are unchanged; a characters-a-line budget is how long a caption line reads, not how long the video runs. models.py and video_automation/schemas.py: `DEFAULT_CAPTION_LOCALES` and the drama's `drama_caption_locales` default become all eight, and the `CaptionLocale` literal and both lists' `max_length` (3 → `len(CAPTION_LOCALES)`, 8) follow; `target_minutes_min`/`target_minutes_max` (ge `EPISODE_MIN_MINUTES`, le 30) appear only as unchanged context. video_reviews/schemas.py, admin_service.py, admin-video-review-card.tsx and the five admin.json files rename the worker and imported lists to their dub and caption roles, offer all eight languages on every video's panel, refuse only a dub in the five on a non-imported video (422 `video_locales_dub_imported_only`), and add the five language names and one `dubWorkerLater` message. The tests: automation.test.mjs adds two tests (Thai and Spanish captions translated, cut by the locale's caption rules and sent in the batch; an English answer to a th sheet does not merge) and repins the four zh-TW prompt SHA-256 values with a dated comment; admin-video-reviews.test.tsx adds one panel test; plan.test.mjs and qa.test.mjs swap `LOCALES` for `NARRATION_LOCALES` and `DEFAULT_LOCALES`, the same four, so their assertions cover the same locales. Dubs stay en, ja and ko: `dubs/plan.mjs` and `tts/check.mjs` (unbound, read for context) build `DUB_LOCALES` from `NARRATION_LOCALES`. A case-insensitive scan of the 428 changed lines for minute, MIN_EPISODE, needsMinimumLength, 480, 14,400, 600, 780, runtime, target_, action_seconds, duration, second, frame, covered, source_hash, plans.json, policy.json, floor, length, speech_hash, 分鐘, 秒, 時長 and 長度 finds only the `TARGET_LOCALES`, `TARGET_LENGTHS`, `TARGET_REGISTERS` and `TARGET_SCRIPTS` names, the three import lines above, list `max_length` and array `.length`/`toHaveLength` counts, caption `maxLines` in the new Thai test, and "length" in comments about caption line length; the duration-identifier count (target_minutes, MIN_EPISODE, minEpisodeMinutes, VIDEO_MIN_EPISODE_MINUTES, duration, seconds, minutes, total_frames, frames, runtime) is unchanged in every one of the 22 files (e.g. flow.mjs 157 → 157, lint.mjs 79 → 79, qa/cli.mjs 35 → 35, automation.test.mjs 264 → 264). None of the changed lines touches the explainer 10-minute default or its 8–20 minute range, the drama 1–8 minute range, the 13-minute brand story, the eight-minute non-drama floor (`MIN_EPISODE_MINUTES`, `minEpisodeMinutes`, `needsMinimumLength`), the 480-second / 14,400-frame QA floor, `target_minutes`, `action_seconds`, the long-form anime policy, measured-duration evidence or plans.json, and no duration assertion is removed or loosened. The change decides which languages a video's titles and captions are made in, not how long it runs. No duration correction is required.
+
+Ran: Node v24.13.0, Windows, in the worktree at `0e10b9af3`: the baseline hashing above; `node tools/video/long-form/cli.mjs check` before any edit (stale for exactly these 22 paths, exit 1); `node --test tools/video/long-form/review.test.mjs` before any edit (1 of 2, the shipped binding test failing on these paths); `node --test tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs`, 20 of 20, exit 0; `node --test tools/video/qa/qa.test.mjs tools/video/dubs/plan.test.mjs`, 28 of 28, exit 0; `node --test --test-name-pattern=…` over automation.test.mjs for the two new tests and the two prompt-pin tests, 4 of 4, exit 0. The CLI check and `node --test tools/video/long-form/review.test.mjs` are run again after rebinding, and their results are in the hand-off so this report's hash stays stable. The full automation.test.mjs suite, the web tests and the API tests were not run.
+
+Non-claims: this is a 22-file incremental source duration review. It does not re-review the other 86 bound files or the unbound files the commit changes; it does not judge whether all eight languages should be pre-ticked, the registers, scripts and caption line budgets for es, pt, id, vi and th, the Thai caption cutting, the language names' translations, migration 0136 or the YouTube language tags, and it does not accept media, paid production, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Fractional-frame brand-intro caption boundary increment: 2 files (2026-10-20)
 
 Reviewer: `codex-duration-independent-review`. Author: `codex-branding-boundary-fix`. Scope: DURATION_ONLY for `tools/video/core/branding.mjs` and `tools/video/core/branding.test.mjs` in `b2510746` (Crocs local preview and brand-topic gap commit). The reviewer did not write either source change and edits only this report and its receipt. `git show b2510746 --` for those two files was read in full. Their parent-commit hashes match the prior receipt and table (`da1e6352…` for the implementation, `1430f36c…` for the test); the current hashes are `d341aaba…` and `97a554bd…`. Before this increment, `node tools/video/long-form/cli.mjs check` failed on exactly those two stale bindings, with no plan or other source drift.
@@ -5776,7 +5789,7 @@ Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, and now the fractional-frame brand-intro caption boundary increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, and now the fractional-frame brand-intro caption boundary increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5786,12 +5799,12 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `.claude/skills/youtube-video/SKILL.md` | `c5455e5bd70496f255ad37ff60c6770b3fbebd633c368d22895bb822329d73ab` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `4cb2769af63fb5ad295f6f9c301c9015255eb6c335b62217978f73ddf6360023` |
-| `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
-| `apps/api/app/video_automation/schemas.py` | `d1af5e4597fd8135245bf95fee4a58779d652069ba69efae2d304b4a2493e050` |
+| `apps/api/app/video_automation/models.py` | `4df25472f1900cf7d8326ef9954200b9c3dac69097801e1c464e2c2cdce3c9f3` |
+| `apps/api/app/video_automation/schemas.py` | `8c8e8086aa62e337540c24d15794dba47cc03dc7eec47a5c5b9fd61be5652bd9` |
 | `apps/api/app/video_automation/series.py` | `fe30ad598feadbb9329f737fe48218b3f5d1750763304f283111f56d52a45128` |
 | `apps/api/app/video_automation/settings.py` | `2b4f44d7e0094e32847f62c2df25e600eca5bcf2e1423606b0ff31d77c82e323` |
-| `apps/api/app/video_reviews/admin_service.py` | `5e49c92c2ed9240e705259349da381a1cc2e716280866400e6b2a96efc7768ec` |
-| `apps/api/app/video_reviews/schemas.py` | `2679a84f0e04de806ddebde774d169ad0fc9f0eb372125091cda0f8aa5f8eba4` |
+| `apps/api/app/video_reviews/admin_service.py` | `64442978744d45170f96932c54137c883d5b553442bdbb605490908e5c1e4014` |
+| `apps/api/app/video_reviews/schemas.py` | `a310df8d34ff5973d2985b917c0dfcc8e0b88ad2646056f27afbc35a5d9950bf` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
 | `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
@@ -5804,16 +5817,16 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `apps/api/tests/test_video_explainer_duration.py` | `45bdcbe9ec7c7c47e437b6d65ec967801e8553acbbf1c8285d734f8a7242eddc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac` |
-| `apps/web/components/admin-video-review-card.tsx` | `1b6fcaca5b78d04d8e0fdb05e5230e15b24f91192cdc1b845eaaf217fb48bf28` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `89e4edc70e1977a5124f1791566a2471f1b688f237abe536ebc6055ff227b10d` |
+| `apps/web/components/admin-video-review-card.tsx` | `8776fbb85a1544596e0d91e1eaad2518ba33365025c24d628c48955c00ba4c34` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `f62a527c0426e31f45915fcf66ab7a1fbbfc7dc7395fb789bf99941fbf7c2ecc` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `c64bfba40979fef3f8291ae2582a8cc2bb55644d4be0655ba75b39f767677d8a` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `bd9d7d04c3887417d4dbb1c9ed29631814cfb4a4a59f74346b4a46edb8634a0d` |
-| `apps/web/messages/ja/admin.json` | `fe829e7e6196743c80216cb4cf8c33cce520c77f7f099316800dea1fed2cdbf4` |
-| `apps/web/messages/ko/admin.json` | `e70f711fbde86b893f6dd16d939f956c8d29cbb18aefaa143c3e4833f6df004e` |
-| `apps/web/messages/zh-CN/admin.json` | `7a1d51671051353aa67dfa7049facdfedee760ba43083d65a784ebac55048700` |
-| `apps/web/messages/zh-TW/admin.json` | `a845dabee8b8a97b2efe92375e6fb212e2b6b69cf6284bdb5c88b7d211e1b2ed` |
+| `apps/web/messages/en/admin.json` | `5969b0a3ec8483a799e5dfb57bd51a16302382e66a3a410819646f3e12edbb75` |
+| `apps/web/messages/ja/admin.json` | `0d6da783fea28260bccf79f5aad6e5f6a9885c62ca7cef07c0536e672569f64b` |
+| `apps/web/messages/ko/admin.json` | `87ad5e6d854c76ef3575d6436663a6a250b10d9911b5df9982bd43299dcdb634` |
+| `apps/web/messages/zh-CN/admin.json` | `d31a110be626de2b0cad94d67c210ca8d5c7e11a3a018bb5d21cf064c6cead40` |
+| `apps/web/messages/zh-TW/admin.json` | `41f4148ca6b60fa9cf7f002a86e19647341bda211b38663058482f4ddf4bb02f` |
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
@@ -5830,10 +5843,10 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `7ca053c9a0a490b27737ab4f8e7e030cc7c5e1e6bb89e0e46c8117a512096d95` |
+| `tools/video/automation/automation.test.mjs` | `dfb2100fef910395880a2679c11858fe965d725fb6b5c030560ccc07ca24e36e` |
 | `tools/video/automation/discuss.mjs` | `4a987fa874307bf50e5047db5e8c1b2d9357ef4b5d50e1c93ec292344c16f046` |
-| `tools/video/automation/flow.mjs` | `b49c5bd87f3703566e85ad762e9559ae65977f3a932031aeb3a0ac282c8902d8` |
-| `tools/video/automation/prompts.mjs` | `15e9836339206f3b7c4597bfc2d404229c9ff66f2365ef2c51d4aba2756bf61e` |
+| `tools/video/automation/flow.mjs` | `0ccb65266028e7476fcf122ecc9795a346e7be456eccbf998f495b2983e291fe` |
+| `tools/video/automation/prompts.mjs` | `0c82cfab8f80becad514a33dfbe704df7191f67f842b13b7fd23901f7740f2df` |
 | `tools/video/automation/series.mjs` | `b1189be484631467652fde14485d669a9268fbec92d6c02ea37b3495a94c2c21` |
 | `tools/video/automation/series.test.mjs` | `bfd18cfd674482bc2858ed0e99a6b24c6d3c98bbd857630ca8e5bc9e8c8fbe67` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
@@ -5848,21 +5861,21 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/core/duration.mjs` | `df4874326d1d098d19a8df5ed4010cc3454537cbc96217a4c4192dc622caea1d` |
 | `tools/video/core/duration.test.mjs` | `98ca445b134133e796abbc6eba94d47532439a6283bb151ea8f6d69b4652e6a0` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `44366ca826f22408591ea41b38a7c40ebbf1501185d804fc71faf71b3df727c5` |
+| `tools/video/core/lint.mjs` | `e1353a9d3af8a938eecaeeb2a9626a3827fb42864c7fe60f279ef0d5030eec61` |
 | `tools/video/core/lint.test.mjs` | `fba256c3088f4a21999bebc2dc40fdad57f6a8ae552fac05d0b25f89880ce3a5` |
 | `tools/video/core/narration-locale.test.mjs` | `fddf009b24c976c9319d139db24fa3312fd1d942f2b4d623876d86357464d2ce` |
-| `tools/video/core/schema.mjs` | `80d2607bdecd5aaae145308924be7da310f48f8fc711e2cceba00742b445db0b` |
+| `tools/video/core/schema.mjs` | `d20af2dd5966d7961e5bb1d7b0836a4052ba79489af3c9c07ff4f7dba0451cb3` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
 | `tools/video/core/stages.test.mjs` | `c4583dba313415355131a854f3da6f568862c3ea83808313b2f1acda5c017523` |
-| `tools/video/core/state.mjs` | `7626ccf4a0421774e87d3bfbe1a00d6e19e271cd697c2071b57430abcbd35edd` |
+| `tools/video/core/state.mjs` | `920a5065c5569856703686b10c72fea2ce2eed0c973c69ec82765f33373bf687` |
 | `tools/video/core/state.test.mjs` | `1afa10f7887db57788ea83ab80a823bbaf45f36588dacdc296b1480ab7265c3e` |
 | `tools/video/core/timeline.mjs` | `0088b369f5ddb962fc5d803bb5dd982f2f8f22b558eca728d0bfca5df1aa39b2` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
 | `tools/video/dubs/captions-package.test.mjs` | `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685` |
 | `tools/video/dubs/dubs.test.mjs` | `bff4e09be16e629cf807f688a227f092cc07af4380a1de583f88a1216d029a25` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
-| `tools/video/dubs/plan.test.mjs` | `f06d073795553024d19098c9957ab060a9feb41569546d67f366d931244b8ab3` |
+| `tools/video/dubs/plan.test.mjs` | `cd51617d11cca35a8a615b76ef788a06957879686a5cd5a6b13068d65eb29312` |
 | `tools/video/long-form/cli.mjs` | `3a0b26f900daaf1a08f7ed210ad1239d7f172035fa1e14c6dafc28bf55dedfa4` |
 | `tools/video/long-form/integration.test.mjs` | `aa69f38653fb7c6a7fd0c6daed93ccde1e031987e3169f6c8d9456f38c8b605c` |
 | `tools/video/long-form/plans.mjs` | `9680960509931642c679a9db9a3a1d6e419280558f9eb431358bfd1ee781e103` |
@@ -5871,16 +5884,16 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
 | `tools/video/media/clips.test.mjs` | `626e678fc76d08210aad82a850f393c66009e9c3a7fce815a8097e686602b238` |
 | `tools/video/media/look-keyframes.test.mjs` | `a29f3901db7d3c6eac0c01f634cb2d1b4b59688ab6f72788bbfa7bae401f1f13` |
-| `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
+| `tools/video/package/cli.mjs` | `46e4627f26030e5296ae42970adf5ef313551a593523d8bd47089c1e656e89e4` |
 | `tools/video/package/package.test.mjs` | `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
 | `tools/video/production/anime-input.test.mjs` | `76b4082fd9245ea331c04d430f82aa5e4afa742d4f830c0794531cc4bbe80d02` |
 | `tools/video/qa/checks.mjs` | `fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2` |
 | `tools/video/qa/checks.test.mjs` | `239696ad256c9d54ee8065fd7c9d9954bf6d0fd4ca32f586d182230ad8179706` |
-| `tools/video/qa/cli.mjs` | `d5ae76e13265a063a7ea57d0766d9dfe3f31804cfa1ba5f259cb0e1fb5627b1f` |
+| `tools/video/qa/cli.mjs` | `c748792f391fe79d627a357b1313434c21f8af7ee51cbb2177d27ab307fa3c8a` |
 | `tools/video/qa/duration.test.mjs` | `23d46fee69ea26bff4150d29b74086d363bdf9d171e92cf898e3cf5a6560428d` |
-| `tools/video/qa/qa.test.mjs` | `6f2f77b1cf7cad0175282003b36d9d42dee7891ed168ad75ac21caed2aca5d88` |
-| `tools/video/review/sync.mjs` | `b63c241c6603d66f25fbf0eda4b09ac8a7de04fe0b0bfd27d42a70bb954e6306` |
+| `tools/video/qa/qa.test.mjs` | `8c28422af33173c7d19c6e2d9d401247f2007878ffe18ed48989a0a2eeeaab30` |
+| `tools/video/review/sync.mjs` | `f3167cd220534ab4f18a81159447d0aa31ab111dd6082711f7becd686b4f5923` |
 | `tools/video/review/sync.test.mjs` | `2658665eba3048be034f6a4dd2d84f9839f79ba93758b24865eb8d951f5b84aa` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |

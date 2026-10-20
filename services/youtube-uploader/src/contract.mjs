@@ -5,7 +5,15 @@ export const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,78}[a-z0-9])?$/;
 export const VIDEO = /^[A-Za-z0-9_-]{11}$/;
 export const CHANNEL = /^UC[A-Za-z0-9_-]{22}$/;
 export const CHUNK = 4 * 1024 * 1024;
-export const LANGUAGES = { "zh-TW": "Chinese (Taiwan)", "zh-CN": "Chinese (China)", en: "English", ja: "Japanese", ko: "Korean" };
+// Studio's language names (its English UI), which the uploader picks from the dropdowns. es and pt
+// are the site's short codes for Latin-American Spanish and Brazilian Portuguese (2026-10-18);
+// the five names are not yet checked against a real Studio dropdown.
+export const LANGUAGES = {
+  "zh-TW": "Chinese (Taiwan)", "zh-CN": "Chinese (China)", en: "English", ja: "Japanese", ko: "Korean",
+  es: "Spanish (Latin America)", pt: "Portuguese (Brazil)", id: "Indonesian", vi: "Vietnamese", th: "Thai",
+};
+// The final cut, its thumbnail, a caption file for each of nine languages and a dub for eight.
+const MAX_FILES = 20;
 // A dub track is a file of the approved language batch under the producer's role name: the
 // locale in lower case with underscores (dub_en, dub_zh_cn). Studio's accepted audio formats
 // are not confirmed on a real channel; the extension follows the approved content type.
@@ -34,7 +42,7 @@ export function validateManifest(value, channel) {
       || m.tags.join(",").length > 500 || !object(m.localizations)
       || Object.entries(m.localizations).some(([locale, entry]) => !Object.hasOwn(LANGUAGES, locale)
         || locale === m.default_language || !object(entry) || !field(entry.title, 100) || !description(entry.description))) throw new Refused("invalid_metadata", 422);
-  if (!Array.isArray(value.files) || value.files.length > 12) throw new Refused("invalid_files", 422);
+  if (!Array.isArray(value.files) || value.files.length > MAX_FILES) throw new Refused("invalid_files", 422);
   const roles = new Set();
   const files = value.files.map((f) => {
     if (!object(f) || typeof f.role !== "string" || !HASH.test(f.sha256) || !Number.isSafeInteger(f.size) || f.size < 1

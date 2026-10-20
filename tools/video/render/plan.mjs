@@ -9,7 +9,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { explainerSeries, illustrated, isShot } from "../core/drama.mjs";
-import { LOCALES, narrationLocale } from "../core/schema.mjs";
+import { DEFAULT_LOCALES, narrationLocale, TARGET_LOCALES } from "../core/schema.mjs";
 import { localizedThumbnail, localizedThumbnailHash, thumbnailGap } from "../core/translations.mjs";
 import { watermarkDataUri } from "../core/watermark.mjs";
 
@@ -236,7 +236,8 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
     if (translations) {
       const locales = [];
       const gaps = {};
-      for (const locale of LOCALES.filter((each) => each !== narrationLocale(doc))) {
+      // es, pt, id, vi and th only once translated: a video without them notes no gap for them.
+      for (const locale of TARGET_LOCALES.filter((each) => each !== narrationLocale(doc) && (DEFAULT_LOCALES.includes(each) || translations[each]))) {
         const own = localizedThumbnail(doc, translations[locale]);
         if (own) locales.push({ locale, file: localeThumbnailFile(locale), hash: localizedThumbnailHash(doc, translations[locale]), ...drawThumbnail(own, locale) });
         else gaps[locale] = thumbnailGap(doc, translations[locale], locale);

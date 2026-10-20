@@ -63,7 +63,11 @@ DEFAULT_VOICE: dict[str, Any] = {
 }
 DEFAULT_TOPIC_SCOPE = ["AI", "科技", "AI 工具教學"]
 DEFAULT_TOPIC_AVOID = ["投資建議", "醫療建議", "選舉政治"]
-DEFAULT_CAPTION_LOCALES = ["en", "ja", "ko"]
+# What the language panel pre-ticks (titles, descriptions and captions, never a dub): all eight
+# languages a video may add, the owner's choice of 2026-10-20 for the tutorials' defaults and
+# the drama's alike (DEFAULT_DRAMA drama_caption_locales). Migration 0136 writes the same list
+# into the settings row, which a code default alone would not reach.
+DEFAULT_CAPTION_LOCALES = ["en", "ja", "ko", "es", "pt", "id", "vi", "th"]
 # The AI drama route (docs/videos/DRAMA.md). The owner chose on 2026-09-26 to start without a
 # spending cap, so the budgets open wide and are lowered after the pilot; migration 0095 carries
 # the same values as server defaults, and the settings tab shows them.
@@ -126,7 +130,7 @@ DEFAULT_DRAMA: dict[str, Any] = {
     "drama_stage_models": None,
     "drama_stage_instructions": {},
     "drama_voice": None,
-    "drama_caption_locales": [],
+    "drama_caption_locales": list(DEFAULT_CAPTION_LOCALES),
     "drama_auto_approve_audio": True,
     "drama_auto_approve_final": True,
     "drama_max_verify_rounds": 3,
@@ -341,8 +345,11 @@ class VideoAutomationSettings(Base):
         JSON, default=_default({}), server_default=text("'{}'")
     )
     drama_voice: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
+    # All eight pre-ticked since migration 0136 (DEFAULT_CAPTION_LOCALES); '[]' before it.
     drama_caption_locales: Mapped[list[str]] = mapped_column(
-        JSON, default=_default([]), server_default=text("'[]'")
+        JSON,
+        default=_default(DEFAULT_CAPTION_LOCALES),
+        server_default=text("'" + json.dumps(DEFAULT_CAPTION_LOCALES, ensure_ascii=True) + "'"),
     )
     drama_auto_approve_audio: Mapped[bool] = mapped_column(
         Boolean, default=True, server_default="true"

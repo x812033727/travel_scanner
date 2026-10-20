@@ -63,6 +63,11 @@ const EPISODE_LABELS = {
   ja: (n) => `第${n}話`,
   ko: (n) => `${n}화`,
   en: (n) => `Episode ${n}`,
+  es: (n) => `Episodio ${n}`,
+  pt: (n) => `Episódio ${n}`,
+  id: (n) => `Episode ${n}`,
+  vi: (n) => `Tập ${n}`,
+  th: (n) => `ตอนที่ ${n}`,
 };
 
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);

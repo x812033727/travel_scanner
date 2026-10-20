@@ -10,7 +10,7 @@ import { compilationDocument, THUMB_SHOT, THUMB_SOURCE } from "../core/compilati
 import { toSrt } from "../core/captions.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
 import { atomicWrite } from "../core/paths.mjs";
-import { LOCALES } from "../core/schema.mjs";
+import { DEFAULT_LOCALES } from "../core/schema.mjs";
 import { visualHash } from "../core/timeline.mjs";
 import { jpegBytes } from "../qa/test-images.mjs";
 
@@ -143,7 +143,7 @@ export function compileContext(box, fake, extra = {}) {
   };
 }
 
-export const OTHER_LOCALES = LOCALES.filter((locale) => locale !== "zh-TW");
+export const OTHER_LOCALES = DEFAULT_LOCALES.filter((locale) => locale !== "zh-TW");
 
 /** Every locale's translation of the compilation, complete, written beside video.json. */
 export function writeTranslations(box, doc) {
