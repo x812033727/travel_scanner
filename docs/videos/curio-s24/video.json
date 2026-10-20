@@ -1,0 +1,1652 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s24",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "一頂花環往回追的偵探故事。開場澡堂安靜，水漫出來那句放慢；預告句一句一停。Eureka 那段興奮加快；「往家裡，沒寫上街」篤定；普魯塔克「走不是跑」帶點好笑；伽利略的重話一字一字；兩個數字放慢；未結乾脆"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "ar102",
+      "payoff": "ar211",
+      "what": "他心裡掛著的那件難事"
+    },
+    {
+      "setup": "ar106",
+      "payoff": "ar212",
+      "what": "水漫出來那一刻他想到什麼"
+    },
+    {
+      "setup": "ar109",
+      "payoff": "ar224",
+      "what": "建築師寫這段本來是為了什麼"
+    },
+    {
+      "setup": "ar111",
+      "payoff": "ar312",
+      "what": "晚一百多年的版本少了什麼"
+    },
+    {
+      "setup": "ar113",
+      "payoff": "ar405",
+      "what": "義大利年輕人下的重話"
+    },
+    {
+      "setup": "ar114",
+      "payoff": "ar514",
+      "what": "他真的光著身子跑上街嗎"
+    },
+    {
+      "setup": "ar218",
+      "payoff": "ar221",
+      "what": "他要怎麼證明摻了銀"
+    },
+    {
+      "setup": "ar232",
+      "payoff": "ar233",
+      "what": "維特魯威從哪裡聽來的"
+    },
+    {
+      "setup": "ar231",
+      "payoff": "ar208",
+      "what": "金冠的問題出在哪裡"
+    },
+    {
+      "setup": "ar228",
+      "payoff": "ar216",
+      "what": "他是光著身子跑過大街嗎"
+    },
+    {
+      "setup": "ar406",
+      "payoff": "ar408",
+      "what": "量水這一段從哪裡來"
+    },
+    {
+      "setup": "ar223",
+      "payoff": "ar224",
+      "what": "建築書為什麼講這個故事"
+    },
+    {
+      "setup": "ar227",
+      "payoff": "ar301",
+      "what": "阿基米德有沒有寫過這頂花環"
+    },
+    {
+      "setup": "ar308",
+      "payoff": "ar309",
+      "what": "別的古人怎麼講這場澡"
+    },
+    {
+      "setup": "ar314",
+      "payoff": "ar315",
+      "what": "有沒有反過來的版本"
+    },
+    {
+      "setup": "ar321",
+      "payoff": "ar401",
+      "what": "量水和秤重哪一種行得通"
+    },
+    {
+      "setup": "ar412",
+      "payoff": "ar413",
+      "what": "伽利略覺得阿基米德用什麼"
+    },
+    {
+      "setup": "ar419",
+      "payoff": "ar504",
+      "what": "量水到底差多少"
+    },
+    {
+      "setup": "ar505",
+      "payoff": "ar506",
+      "what": "改用天平差多少"
+    },
+    {
+      "setup": "ar509",
+      "payoff": "ar510",
+      "what": "浴池和喊聲是真是假"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "阿基米德真的光著身子跑上街喊 Eureka？｜奇聞檔案局",
+    "description": "阿基米德在浴缸裡想通、光著身子跑上街喊 Eureka，大家都聽過。這一集只講紀錄裡找得到的。目前找得到最早的文字，是羅馬建築師維特魯威《建築十書》第九書的序，寫在西元前一世紀後期，離阿基米德將近兩百年：希倫國王的金冠、被告發摻銀的工匠、澡堂裡漫出來的水，還有「光著身子往家裡去」，一路喊 εὕρηκα（我找到了）。阿基米德流傳到今天的著作，包括《浮體論》，沒有一個字提到王冠或浴缸。普魯塔克也講了洗澡和那聲「我找到了」，卻沒提衣服，也沒說他回家；羅馬帝國晚期一首不知作者的拉丁詩有金冠，沒有浴池，用的是水中的天平。一五八六年，二十出頭的伽利略在一篇只給朋友看的短文裡，說量水的方法「很粗糙，離精確差得遠」，一六四四年才印出來；數學家 Chris Rorres 估算，水位只差 0.41 公釐，水中天平卻差 13 公克。\n\n界線：原文寫的是「往家裡」，沒有「上街」或「忘了穿衣服」；Rorres 的數字是他假設的情境（一公斤、三成銀、口徑二十公分）；這個故事沒有人能證明是假的，所以這一案是「未結」。出處列在下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；現代研究者不入畫。\n\n資料截至 2026-10-20",
+    "tags": [
+      "阿基米德",
+      "Eureka",
+      "我找到了",
+      "浮力",
+      "阿基米德原理",
+      "維特魯威",
+      "伽利略",
+      "普魯塔克",
+      "歷史謠言",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**Eureka**\n光著跑？",
+      "tag": "歷史謠言",
+      "sub": "將近兩百年後的紀錄",
+      "shot": "the-question"
+    }
+  },
+  "sources": [
+    {
+      "title": "Vitruvius, De architectura IX praef.（拉丁原文，Teubner 1899，LacusCurtius）",
+      "url": "https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Vitruvius/9*.html",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Vitruvius, De architectura I praef.（拉丁原文，LacusCurtius）",
+      "url": "https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Vitruvius/1*.html",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Vitruvius, The Ten Books on Architecture, tr. Morgan (1914)",
+      "url": "https://www.gutenberg.org/cache/epub/20239/pg20239.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Encyclopædia Britannica (1911), Vitruvius",
+      "url": "https://en.wikisource.org/wiki/Page:EB1911_-_Volume_28.djvu/166",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Wikipedia, De architectura（成書年代，二手）",
+      "url": "https://en.wikipedia.org/wiki/De_architectura",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Wikipedia, Archimedes（後世版本，二手）",
+      "url": "https://en.wikipedia.org/wiki/Archimedes",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Heath, The Works of Archimedes (1897)",
+      "url": "https://archive.org/details/worksofarchimede00arch",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Plutarch, Non posse suaviter vivi 1094C（希臘原文，Perseus）",
+      "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0007/tlg139/tlg0007.tlg139.perseus-grc2.xml",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Carmen de ponderibus et mensuris, Hultsch (1866) vol. II",
+      "url": "https://archive.org/details/bub_gb_d4urIMWhWWYC",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Galileo, La bilancetta（Favaro 國家版）",
+      "url": "https://it.wikisource.org/wiki/La_bilancetta_(Favaro)/La_bilancetta",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Favaro, La bilancetta: Avvertimento",
+      "url": "https://it.wikisource.org/wiki/La_bilancetta_(Favaro)/Avvertimento",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Rorres, The Golden Crown: Introduction",
+      "url": "https://math.nyu.edu/Archimedes/Crown/CrownIntro.html",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Rorres, Galileo's Balance",
+      "url": "https://math.nyu.edu/Archimedes/Crown/bilancetta.html",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Scientific American, Fact or Fiction?: Archimedes Coined the Term \"Eureka!\" in the Bath (2006)",
+      "url": "https://www.scientificamerican.com/article/fact-or-fiction-archimede/",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "bath-door",
+      "chapter": "西元前三世紀，敘拉古一間澡堂的水漫了出來",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, stepping through the stone doorway of a public bathhouse in Syracuse on a mild afternoon, a folded towel over one arm and a worried frown, soft light from high windows",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar101",
+          "text": "西元前三世紀，敘拉古，一個男人走進公共澡堂。",
+          "emotion": "沉穩開場，像在講一個午後"
+        }
+      ]
+    },
+    {
+      "id": "on-his-mind",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, standing in a tiled bathhouse hall, rubbing his chin and staring into space with a troubled look toward the camera, plain columns behind him, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar102",
+          "text": "他心裡正掛著一件難事。"
+        }
+      ]
+    },
+    {
+      "id": "basin-edge",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, sitting on the stone rim of a full bath basin in a quiet bathhouse, gripping the edge with both hands and looking down at the still water, the robe covering him to his ankles, soft grey daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar103",
+          "text": "他走到浴池邊，慢慢往水裡下去。"
+        }
+      ]
+    },
+    {
+      "id": "overflow",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of clear water spilling over the stone rim of a full bath basin onto a tiled floor in a quiet bathhouse, small ripples on the surface, the only shapes are the basin, the water and a folded towel on the rim, soft overcast light from a high window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar104",
+          "text": "他注意到：身子沉下去多少，水就從池邊漫出去多少。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "who",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, standing beside a bath basin, staring down at the wet tiled floor with wide eyes and an open mouth, mild light from an open doorway",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar105",
+          "text": "他，就是阿基米德。"
+        },
+        {
+          "id": "ar106",
+          "text": "那一刻，他想到了什麼？",
+          "emotion": "問句，輕輕停住"
+        }
+      ]
+    },
+    {
+      "id": "tease-architect",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak sitting at a writing table in a Roman study on a mild day, writing with a reed pen on a sheet turned away from us, glancing up at us, soft light from a skylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar107",
+          "text": "但這還不是最怪的。",
+          "emotion": "轉，壓低"
+        },
+        {
+          "id": "ar108",
+          "text": "寫下這一幕的，是將近兩百年後的一位羅馬建築師；",
+          "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "tease-not-about",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak pausing with his reed pen raised and a stubborn little smile, a stack of tied scrolls behind him, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar109",
+          "text": "而他寫這段，本來不是要講阿基米德。",
+          "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "tease-plutarch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm elderly Greek writer with a neat white beard in a long-sleeved sand-coloured robe sitting on a stone bench in a quiet courtyard on a quiet cloudy day, a closed scroll tied with cord on his knees, raising one eyebrow at the viewer, soft light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar111",
+          "text": "再晚一百多年，又有人講這場澡，卻少了一樣東西。",
+          "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "tease-galileo",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, sitting at a desk in a cool, plain study on an overcast afternoon, holding a closed old book on his lap with a sharp, sceptical look, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar112",
+          "text": "阿基米德之後約一千八百年，一個二十出頭的年輕人讀到量水的方法，"
+        }
+      ]
+    },
+    {
+      "id": "tease-galileo-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, writing quickly with a quill on a sheet turned away from us, one eyebrow raised in disapproval, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar113",
+          "text": "寫了一篇短文，開頭就下了重話。",
+          "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "the-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, standing in a bathhouse doorway, clutching the robe closed at his chest and looking straight at the camera with an excited grin, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar114",
+          "text": "他真的光著身子，跑上街大喊 Eureka 嗎？",
+          "say": "他真的光著身子，跑上街大喊 尤里卡 嗎？",
+          "say_for": "4857e0eb0dd8",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "vitr-shelf",
+      "chapter": "西元前一世紀後期，一位羅馬建築師寫到第九書",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak standing beside a shelf of rolled scrolls tied with cords in a Roman study on a still, cloudy morning, resting one hand on the shelf and looking toward the camera, soft grey daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar201",
+          "text": "光著身子這件事，目前找得到最早的文字，在開頭那位羅馬建築師的書裡。"
+        }
+      ]
+    },
+    {
+      "id": "vitr-augustus",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak bowing slightly in a marble hall on an overcast day, holding a closed bundle of scrolls tied with a red ribbon in both hands, soft light from high windows",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar202",
+          "text": "他叫維特魯威；這套《建築十書》獻給奧古斯都，寫在西元前一世紀後期。"
+        }
+      ]
+    },
+    {
+      "id": "vitr-source",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak shrugging with both palms up beside his writing table, a puzzled little smile, mild light from an open doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar232",
+          "text": "這個故事，他是從哪裡聽來的？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ar233",
+          "text": "書裡一個字也沒說。"
+        }
+      ]
+    },
+    {
+      "id": "hiero-vow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout king with a short black beard in a long deep-red robe with a gold-trimmed collar standing in a marble temple hall on a mild afternoon, raising one hand in a solemn vow beside a small stone altar, soft light from high windows",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar203",
+          "text": "故事在第九書的開頭：敘拉古的希倫國王剛掌王權，"
+        },
+        {
+          "id": "ar204",
+          "text": "立誓把一頂金冠，獻進神廟。"
+        }
+      ]
+    },
+    {
+      "id": "wreath",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a golden wreath made of thin gold leaves resting on a dark blue cloth on a stone table in a quiet temple, the only shapes are the wreath, the cloth and the table, mild light from an open doorway",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar205",
+          "text": "說是金冠，其實是一圈金葉子做的花環。"
+        }
+      ]
+    },
+    {
+      "id": "gold-weighed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout king with a short black beard in a long deep-red robe with a gold-trimmed collar standing at a table in a palace storeroom on a mild day, watching small gold bars piled on one pan of a large bronze balance with a satisfied look, soft light from a skylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar206",
+          "text": "國王按重量，把金子交給工匠；"
+        }
+      ]
+    },
+    {
+      "id": "delivered",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a nervous goldsmith with a thin moustache in a long-sleeved dusty-blue tunic and a leather apron in a palace hall on a quiet cloudy day, holding out a golden leaf wreath on a blue cushion with both hands and a polite, nervous smile, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar207",
+          "text": "交件的時候，重量分毫不差。"
+        },
+        {
+          "id": "ar231",
+          "text": "那問題出在哪裡？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "accused",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a stout king with a short black beard in a long deep-red robe with a gold-trimmed collar sitting in a high-backed chair in a palace hall on an overcast afternoon, leaning forward with narrowed, suspicious eyes, soft grey daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar208",
+          "text": "可是有人告發：工匠偷走一部分金子，摻進一樣重的銀。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "cannot-melt",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stout king with a short black beard in a long deep-red robe with a gold-trimmed collar holding the golden leaf wreath carefully in both hands and frowning at it, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar209",
+          "text": "偏偏那是要獻給神的東西，熔不得，也刮不得。"
+        }
+      ]
+    },
+    {
+      "id": "ask-arch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, standing in a palace hall on a still, cloudy morning, receiving the golden leaf wreath on a blue cushion with a puzzled look out at us, mild light from an open doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar210",
+          "text": "國王想不出辦法揭穿，只好請阿基米德想。"
+        }
+      ]
+    },
+    {
+      "id": "that-man",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, walking along a stone colonnade toward a bathhouse on an overcast day, head down and lost in thought, soft light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar211",
+          "text": "開頭那個心裡掛著難事、走進澡堂的人，就是這時候的他。"
+        }
+      ]
+    },
+    {
+      "id": "he-sees",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, beside a bath basin, his eyes lighting up with sudden understanding and one finger raised, soft light from a skylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar212",
+          "text": "漫出來的水，讓他看出了揭穿的辦法。",
+          "emotion": "揭曉，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "jump-out",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, hopping up beside a bath basin in a bathhouse with both arms raised in joy, the robe covering him from neck to ankles, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar213",
+          "text": "他一刻也沒等，高興得從浴池跳了出來，"
+        }
+      ]
+    },
+    {
+      "id": "nudus-quote",
+      "template": "big",
+      "data": {
+        "text": "「nudus vadens domum versus」",
+        "kicker": "維特魯威《建築十書》第九書序",
+        "sub": "光著身子，往家裡去"
+      },
+      "lines": [
+        {
+          "id": "ar214",
+          "text": "光著身子，往家裡去；一邊跑，一邊大聲喊：",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "eureka-quote",
+      "template": "big",
+      "data": {
+        "text": "「εὕρηκα, εὕρηκα」",
+        "kicker": "同一段：整段拉丁文裡，只有這兩個字是希臘文",
+        "sub": "heúrēka：我找到了"
+      },
+      "lines": [
+        {
+          "id": "ar215",
+          "text": "Eureka，Eureka！意思是：我找到了。",
+          "say": "尤里卡，尤里卡！意思是：我找到了。",
+          "say_for": "3273d442cf49",
+          "emotion": "興奮"
+        }
+      ]
+    },
+    {
+      "id": "home-lane",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, hurrying along a narrow stone lane between plain houses on a mild afternoon, holding the robe closed at his chest with one hand and calling out happily toward the camera, soft light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar228",
+          "text": "那他是光著身子，跑過大街嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ar216",
+          "text": "原文寫的是「往家裡」，沒有寫上街；"
+        }
+      ]
+    },
+    {
+      "id": "later-added",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at a reading desk in an archive on a mild day, holding up a closed picture book with a blank cover and raising one eyebrow at us, soft grey daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar217",
+          "text": "「忘了穿衣服」「跑遍大街」，都是後來的人加上去的。"
+        }
+      ]
+    },
+    {
+      "id": "nudus-word",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at the reading desk on a quiet cloudy day, holding up a plain short tunic on a hanger and tilting his head thoughtfully at the viewer, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar229",
+          "text": "至於「光著」：拉丁文的這個字，有時也指只穿一件短衣；"
+        }
+      ]
+    },
+    {
+      "id": "nudus-literal",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, standing dripping beside a bath basin, clutching the robe closed with both hands and laughing toward the camera, mild light from an open doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar230",
+          "text": "不過他是剛從浴池跳出來的，照字面讀，最自然的意思，就是光著。"
+        }
+      ]
+    },
+    {
+      "id": "how-prove",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, standing at a stone workbench on an overcast afternoon, holding a gold block in one hand and a silver block in the other and comparing them, soft light from a skylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar218",
+          "text": "那他要怎麼證明？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ar219",
+          "text": "維特魯威接著寫：據說，他做了兩塊跟王冠一樣重的金塊和銀塊，"
+        }
+      ]
+    },
+    {
+      "id": "vessel",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, lowering a silver block into a large bronze vessel filled to the brim with water, with careful concentration, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar220",
+          "text": "一塊一塊放進裝滿水的大容器，再量要倒回多少水，才補得滿。"
+        }
+      ]
+    },
+    {
+      "id": "caught",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, holding up a small bronze jug beside the bronze vessel and grinning triumphantly out at us, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar221",
+          "text": "王冠排開的水，比同樣重的金塊多；摻了銀，就這樣被揭穿了。"
+        }
+      ]
+    },
+    {
+      "id": "smith-fate",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a nervous goldsmith with a thin moustache in a long-sleeved dusty-blue tunic and a leather apron standing in a palace corridor on a still, cloudy morning, clutching his apron and swallowing nervously, soft grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar222",
+          "text": "工匠後來怎樣？原文沒寫，故事就停在這裡。"
+        }
+      ]
+    },
+    {
+      "id": "why-in-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak sitting at his writing table in the study on an overcast day, resting his chin on his hand with a knowing smile toward the camera, mild light from an open doorway",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar223",
+          "text": "可是，一本講建築的書，為什麼要講這個故事？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "vitr-protest",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak standing by his writing table and tapping a closed scroll against his palm with an indignant frown, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar224",
+          "text": "因為第九書的開頭，是一篇替作家抱不平的文章："
+        }
+      ]
+    },
+    {
+      "id": "athlete",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Roman runner in a long-sleeved white tunic standing on a stone podium in a stadium on a mild afternoon, lifting a palm branch with a proud grin at us, soft light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar225",
+          "text": "運動員得到的榮耀，作家也該有，而且要更多。"
+        }
+      ]
+    },
+    {
+      "id": "one-example",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a Roman architect in his fifties with short grey hair in a pale tunic with long sleeves and a charcoal cloak counting on his fingers with a thoughtful look, a stack of tied scrolls beside him, soft light from a skylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar226",
+          "text": "阿基米德這一段，是他舉的例子之一。"
+        }
+      ]
+    },
+    {
+      "id": "arch-own",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, sitting at a table piled with closed scrolls in a stone study on a mild day, looking up at the camera with raised eyebrows, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar227",
+          "text": "那故事的主角自己呢？阿基米德有沒有寫過這頂花環？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "arch-works",
+      "chapter": "西元前三世紀，阿基米德寫下《浮體論》",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest standing between tall archive shelves on a quiet cloudy day, pulling out a thick old book with a plain cover and blowing dust off it, soft grey daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar301",
+          "text": "至少在他流傳到今天的著作裡，一個字也沒提到王冠，也沒有浴缸。"
+        }
+      ]
+    },
+    {
+      "id": "lost-kept",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, sitting in a stone study on an overcast afternoon, tying a cord around a rolled scroll with a gentle smile at the viewer, mild light from an open doorway",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar302",
+          "text": "他寫過的書，有的失傳了，有的很僥倖地留了下來。"
+        }
+      ]
+    },
+    {
+      "id": "floating-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, kneeling beside a wide shallow basin of water in a stone courtyard on a still, cloudy morning, watching a small wooden block float on the surface, soft light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar303",
+          "text": "其中一本《浮體論》，講的正好是東西泡進水裡會怎樣。"
+        }
+      ]
+    },
+    {
+      "id": "prop7",
+      "template": "big",
+      "data": {
+        "text": "「lighter than its true weight by the weight of the fluid displaced」",
+        "kicker": "《浮體論》卷一命題七，Heath 英譯（改寫）",
+        "sub": "在液體裡秤，會輕掉它排開的那份液體的重量"
+      },
+      "lines": [
+        {
+          "id": "ar304",
+          "text": "書裡寫：比水重的東西，放進水裡秤，會變輕；",
+          "emotion": "放慢"
+        },
+        {
+          "id": "ar305",
+          "text": "輕掉的，正好是它排開的那些水的重量。"
+        }
+      ]
+    },
+    {
+      "id": "weigh-in-water",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, at a stone table on an overcast day, holding up a small balance with a stone hanging from one arm into a bowl of water, studying it closely, soft light from a skylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar306",
+          "text": "這就是今天說的浮力；他講的，是在水裡秤重。"
+        }
+      ]
+    },
+    {
+      "id": "volume-not",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of water spilling over the stone rim of a bath basin onto wet tiles, a small glass jug standing on the tiles, the only shapes are the basin, the jug and the water, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar307",
+          "text": "開頭那池漫出來的水，比的卻是體積，不是這本書裡的道理。"
+        }
+      ]
+    },
+    {
+      "id": "others",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest at a reading desk on a mild afternoon, laying three closed old books side by side and looking toward the camera with curiosity, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar308",
+          "text": "那別的古人講起這場澡，又是怎麼說的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "plutarch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm elderly Greek writer with a neat white beard in a long-sleeved sand-coloured robe sitting at a writing desk in a quiet Greek house on a mild day, writing on a sheet turned away from us with a faint amused smile, soft grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar309",
+          "text": "開頭那個再晚一百多年的版本，出自希臘作家普魯塔克。"
+        }
+      ]
+    },
+    {
+      "id": "plut-bath",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, standing beside a bath basin and staring at water spilling over the rim with a dawning smile, mild light from an open doorway",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar310",
+          "text": "他寫：阿基米德洗澡時，從溢出來的水，想到怎麼量那頂冠；"
+        }
+      ]
+    },
+    {
+      "id": "plut-leap",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, striding out of a bathhouse doorway with both fists raised, shouting with joy, the robe closed up to his neck, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar311",
+          "text": "像被什麼附了身，跳出來大喊「我找到了」，一路喊著，走了。"
+        }
+      ]
+    },
+    {
+      "id": "plut-hearsay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a calm elderly Greek writer with a neat white beard in a long-sleeved sand-coloured robe at his desk raising one finger with a wry smile, a closed scroll tied with cord beside him, soft light from a skylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar322",
+          "text": "這段前面，普魯塔克自己加了「據說」：到他那時候，這已經是大家在傳的故事。"
+        }
+      ]
+    },
+    {
+      "id": "plut-shrug",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a calm elderly Greek writer with a neat white beard in a long-sleeved sand-coloured robe at his desk holding up empty hands in a shrug with a small smile out at us, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar312",
+          "text": "少的那一樣，就是光著身子：衣服的事，普魯塔克一個字也沒提；"
+        }
+      ]
+    },
+    {
+      "id": "plut-walk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, walking calmly along a quiet stone street on a quiet cloudy day, one hand raised as he calls out happily, soft light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar313",
+          "text": "也沒說他往家裡去；他用的字，是「走」，不是「跑」。"
+        }
+      ]
+    },
+    {
+      "id": "reverse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at the reading desk tapping a pencil against a closed book and tilting his head toward the camera, soft light from a skylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar314",
+          "text": "有浴池，沒提光身子；那有沒有反過來的版本？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "poem",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a late-Roman scribe in a hooded slate-blue cloak sitting at a desk by a narrow window in a late-Roman stone room on an overcast afternoon, writing with a quill on a sheet turned away from us, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar315",
+          "text": "有。羅馬帝國晚期，一首不知道作者的拉丁詩，講的顯然是同一個故事："
+        }
+      ]
+    },
+    {
+      "id": "poem-smith",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a nervous goldsmith with a thin moustache in a long-sleeved dusty-blue tunic and a leather apron at a workbench in a small workshop on a still, cloudy morning, slipping a small silver bar into a pile of gold with a guilty sideways glance at us, soft grey daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar316",
+          "text": "西西里的國王、獻給神的金冠、偷摻了銀的工匠，都在；"
+        }
+      ]
+    },
+    {
+      "id": "poem-missing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a late-Roman scribe in a hooded slate-blue cloak pausing with his quill raised and shaking his head slightly, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar317",
+          "text": "可是沒有浴池，也沒有人喊「我找到了」；"
+        },
+        {
+          "id": "ar318",
+          "text": "連阿基米德的名字都沒寫，只說是「敘拉古的大師」。"
+        }
+      ]
+    },
+    {
+      "id": "poem-balance",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, standing at a stone table on an overcast day, setting a gold bar on one pan and a silver bar on the other pan of a bronze balance until the pans hang level, mild light from an open doorway",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar319",
+          "text": "詩裡用的，是一架天平：兩邊放上等重的金和銀，秤平了，"
+        }
+      ]
+    },
+    {
+      "id": "poem-sink",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, watching one pan of a bronze balance dip lower into a wide basin of water with wide, delighted eyes, soft light from a skylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar320",
+          "text": "再一起放進水裡；一進水，放金子的那一邊，馬上沉了下去。"
+        }
+      ]
+    },
+    {
+      "id": "which-works",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest at the reading desk on a mild afternoon, holding a small glass jug in one hand and a small toy balance in the other with a puzzled look at the viewer, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar321",
+          "text": "同一頂冠，一邊量水，一邊秤重；哪一種，才真的行得通？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "gal-1586",
+      "chapter": "一五八六年，一個年輕人寫了一篇短文",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, sitting at a desk in a cool, plain study on a mild day in 1586, frowning at a sheet turned away from us, soft grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar401",
+          "text": "量水那一種，一五八六年就被人嫌過了。"
+        }
+      ]
+    },
+    {
+      "id": "gal-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, leaning back in his chair with his arms crossed and a sceptical half-smile toward the camera, mild light from an open doorway",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar402",
+          "text": "嫌它的，就是開頭那個二十出頭的年輕人：義大利的伽利略。"
+        }
+      ]
+    },
+    {
+      "id": "gal-writes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, writing fast with a quill on a sheet turned away from us at a desk in a cool, plain study, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar403",
+          "text": "他寫了一篇短文，後人叫它《小天平》；一開頭就說："
+        }
+      ]
+    },
+    {
+      "id": "gal-quote",
+      "template": "big",
+      "data": {
+        "text": "「molto grossa e lontana dall'esquisitezza」",
+        "kicker": "伽利略《小天平》，一五八六年（Favaro 國家版）",
+        "sub": "很粗糙，離精確差得遠"
+      },
+      "lines": [
+        {
+          "id": "ar404",
+          "text": "照有些人寫的，把王冠放進水裡，看水漲多少來分辨金和銀，"
+        },
+        {
+          "id": "ar405",
+          "text": "這種說法，老實講，很粗糙，離精確差得遠。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "who-some",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, tapping his quill against his chin with narrowed eyes, soft light from a skylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar406",
+          "text": "那量水這一段，又是從哪裡來的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "rumor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a town crier in a long-sleeved brown tunic standing in a small stone square on a quiet cloudy day, cupping one hand by his mouth and shouting the news out at us, soft light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar407",
+          "text": "他猜：阿基米德用水揭穿偷金子的事，傳開了；"
+        },
+        {
+          "id": "ar420",
+          "text": "那個時代，有位作家把它寫了下來，"
+        }
+      ]
+    },
+    {
+      "id": "writer-adds",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sly ancient writer with a curly black beard in a long-sleeved grey robe sitting at a desk on an overcast afternoon, adding a line to a sheet turned away from us with a mischievous grin, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar408",
+          "text": "為了在聽來的那一點消息上多補一些，就自己加上了量水的做法。"
+        }
+      ]
+    },
+    {
+      "id": "best-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at the reading desk on a still, cloudy morning, pointing up with one finger and smiling delightedly toward the camera, soft grey daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar409",
+          "text": "我們覺得，這是整份檔案裡最妙的一句。"
+        }
+      ]
+    },
+    {
+      "id": "only-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, at his desk raising one hand in a cautious gesture at us, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar411",
+          "text": "不過，這是他的猜測，不是證據；他懷疑的也只有方法，不是那場澡。"
+        }
+      ]
+    },
+    {
+      "id": "what-instead",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, leaning forward over his desk with a curious, eager look at the viewer, mild light from an open doorway",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar412",
+          "text": "那他覺得，阿基米德真正用的是什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "balance",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, in a cool, plain workroom on an overcast day, holding up a long thin balance beam with two small pans and smiling proudly toward the camera, soft light from a skylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar413",
+          "text": "天平。跟剛剛那首詩一樣，在水裡秤。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "why-arch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, resting one hand on a closed old book on his desk and nodding out at us with conviction, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar414",
+          "text": "還記得那本《浮體論》嗎？伽利略說，這才是阿基米德會用的辦法，"
+        }
+      ]
+    },
+    {
+      "id": "why-arch-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young Italian man of about twenty-two with short reddish-brown curls and a thin moustache, in a dark doublet with a small lace ruff collar, lowering a small metal weight on a thread into a glass of water and watching it intently, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar415",
+          "text": "因為它靠的，正是那本書裡證明過的道理。"
+        }
+      ]
+    },
+    {
+      "id": "how-much",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest at the reading desk holding a clear glass jug of water up to eye level and squinting at the waterline, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar419",
+          "text": "可是，量水的辦法，到底差了多少？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "rorres-calc",
+      "chapter": "二〇〇六年，一位數學家談起那池水",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest sitting at a desk on a mild afternoon, setting a golden toy wreath beside a round glass container of water with a careful look, soft grey daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar501",
+          "text": "數學家羅瑞斯替它算過：假設花環重一公斤，三成的金子被換成了銀，"
+        }
+      ]
+    },
+    {
+      "id": "container",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest measuring the round mouth of a glass container full of water with a pair of brass calipers and squinting at it, mild light from an open doorway",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar502",
+          "text": "容器的口，直徑二十公分。"
+        }
+      ]
+    },
+    {
+      "id": "two-in",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest lowering a small gold block into the round glass container while watching the waterline closely, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar503",
+          "text": "把花環和一樣重的金塊各放進去，水面的高度只差："
+        }
+      ]
+    },
+    {
+      "id": "mm-card",
+      "template": "big",
+      "data": {
+        "text": "0.41 公釐",
+        "kicker": "羅瑞斯的估算：一公斤的花環、三成銀、容器口徑二十公分",
+        "sub": "花環和等重金塊放進去，水面高度的差"
+      },
+      "lines": [
+        {
+          "id": "ar504",
+          "text": "零點四一公釐，連半公釐都不到。",
+          "say": "零點四一毫米，連半毫米都不到。",
+          "say_for": "1030235464d1",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "balance-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young archivist with round glasses in a cotton shirt and a knitted vest setting a small toy balance beside the glass container on the desk and looking toward the camera with a hopeful look, soft light from a skylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar505",
+          "text": "那改用天平，在水裡秤呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "g-card",
+      "template": "big",
+      "data": {
+        "text": "13 公克",
+        "kicker": "同一個假設，改用水中的天平",
+        "sub": "兩邊的差；當時的秤就秤得出來"
+      },
+      "lines": [
+        {
+          "id": "ar506",
+          "text": "兩邊會差十三公克；他說，阿基米德那個時代的秤，很容易就秤得出來。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "sciam-2006",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young archivist with round glasses in a cotton shirt and a knitted vest reading a thin magazine with a blank cover at the desk on a mild day, nodding slowly at us, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar507",
+          "text": "二〇〇六年，他對《科學美國人》說：量水的方法，理論上行得通；"
+        },
+        {
+          "id": "ar508",
+          "text": "可是真的動手做，現實就會擋路。"
+        }
+      ]
+    },
+    {
+      "id": "bath-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, standing beside a bath basin with his arms folded and a cheeky grin at the viewer, soft grey daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar509",
+          "text": "方法大概行不通；那浴池和那聲「我找到了」呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "some-truth",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, holding a small bronze jug and smiling thoughtfully toward the camera in a stone study, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar510",
+          "text": "羅瑞斯說，故事可能有幾分真：阿基米德確實量過東西的體積；"
+        }
+      ]
+    },
+    {
+      "id": "buoyancy-moment",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lean old Greek scholar with curly ash-coloured locks and a short pointed goatee, in an ankle-length blue wool tunic with long sleeves, kneeling beside a basin of water in a stone courtyard on a quiet cloudy day, pressing a wooden block under the surface and feeling it push back with a delighted look, soft light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar511",
+          "text": "可是那個「我找到了」的時刻，也許是因為他發現了浮力，"
+        }
+      ]
+    },
+    {
+      "id": "not-bathtub",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, sitting on a wooden stool beside an empty bath basin, shrugging with a sheepish smile out at us, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar512",
+          "text": "而不是坐在浴缸裡，再光著身子跑過大街。"
+        }
+      ]
+    },
+    {
+      "id": "final-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a skinny old man with wavy salt-and-pepper hair and a neat little chin tuft, in a long white bathrobe that covers his arms to the wrists, closed up to his neck and reaching down to his feet, peeking out from a bathhouse doorway with a mischievous smile toward the camera, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ar513",
+          "text": "所以，開頭那個問題：他真的光著身子，跑上街喊 Eureka 嗎？",
+          "say": "所以，開頭那個問題：他真的光著身子，跑上街喊 尤里卡 嗎？",
+          "say_for": "4d3b98a50e3a",
+          "emotion": "問句，慢"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "big",
+      "data": {
+        "text": "光著身子跑回家：只有一份紀錄",
+        "kicker": "維特魯威《建築十書》第九書序，西元前一世紀後期",
+        "sub": "有沒有發生過，沒有證據能回答：未結"
+      },
+      "lines": [
+        {
+          "id": "ar514",
+          "text": "光著身子跑回家這一幕，只有開頭那位羅馬建築師，留下一份紀錄；",
+          "emotion": "篤定"
+        },
+        {
+          "id": "ar515",
+          "text": "它到底有沒有發生，沒有任何證據能回答。"
+        },
+        {
+          "id": "ar516",
+          "text": "這一案，未結。",
+          "emotion": "收尾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "未結",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "光著身子跑回家，只有一份紀錄"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ar517",
+          "text": "你小時候聽到的版本，阿基米德跑出去的時候，有沒有穿衣服？",
+          "emotion": "問句上揚，像在聊天"
+        },
+        {
+          "id": "ar518",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ]
+}

@@ -25,7 +25,8 @@ import json
 import os
 import sys
 
-LANGUAGES = {"zh-TW": "zh", "en": "en", "ja": "ja", "ko": "ko"}
+# Whisper's own codes; es, pt, id, vi and th are dubs since 2026-10-20 (large-v3 has all five).
+LANGUAGES = {"zh-TW": "zh", "en": "en", "ja": "ja", "ko": "ko", "es": "es", "pt": "pt", "id": "id", "vi": "vi", "th": "th"}
 # Whisper writes Mandarin in Simplified characters unless the prompt is in Traditional ones.
 PROMPTS = {"zh-TW": "以下是繁體中文的句子。"}
 

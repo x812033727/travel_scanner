@@ -87,8 +87,9 @@ test("captions, translations and dubs treat English as the source and zh-TW as a
   const { texts } = localeTexts(doc, {});
   assert.deepEqual(Object.keys(texts), ["en"]);
   assert.deepEqual(targetLocales(doc), ["zh-TW", "ja", "ko"]);
-  assert.deepEqual(dubLocales(doc), ["zh-TW", "ja", "ko"]);
-  assert.deepEqual(dubLocales(fixture()), ["en", "ja", "ko"]);
+  // A dub can also be in es, pt, id, vi or th (since 2026-10-20); a narration never.
+  assert.deepEqual(dubLocales(doc), ["zh-TW", "ja", "ko", "es", "pt", "id", "vi", "th"]);
+  assert.deepEqual(dubLocales(fixture()), ["en", "ja", "ko", "es", "pt", "id", "vi", "th"]);
   assert.equal(parseDubLocale("zh-TW", "en"), "zh-TW");
   assert.throws(() => parseDubLocale("en", "en"), /the narration is checked without --locale/);
 });
@@ -134,6 +135,10 @@ test("the owner's language choice keeps the narration's own locale and zh-TW, wh
   assert.deepEqual(dubLocalesOf(enTicked, en), ["ko"]);
   assert.deepEqual(dubLocalesOf(null, en), ["zh-TW", "ja", "ko"], "the English video's default dubs");
   assert.deepEqual(dubLocalesOf(null, fixture()), ["en", "ja", "ko"], "the zh-TW default, as before");
+  // The five are dubbed only when chosen: a video without a choice keeps the four's dubs.
+  const thTicked = { locales: { th: { metadata: true, captions: true, dub: true }, pt: { metadata: false, captions: true, dub: true } }, decided_at: null };
+  assert.deepEqual(dubLocalesOf(thTicked, fixture()), ["pt", "th"], "in the page's order");
+  assert.deepEqual(dubLocalesOf(thTicked, en), ["pt", "th"]);
   // The narration always has captions; an untranslated locale cannot.
   const manifest = { speech_hash: "s", locales: { en: {}, ja: {} }, skipped: {} };
   assert.equal(captionsCurrent(manifest, "s", ["en", "zh-TW", "ja"], { ja: {} }, null, "en"), true, "zh-TW has no translation to cut");
