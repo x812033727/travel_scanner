@@ -22,10 +22,18 @@ scope:
   - docs/videos/story-everyday-target-x08/README.md
   - docs/videos/story-everyday-target-x08/treatment.md
   - docs/videos/story-everyday-target-x08/visual-plan.md
+  - docs/videos/story-everyday-target-x08/publishing-handoff.md
   - docs/videos/story-everyday-target-x08/reviews/source-audit-v6.md
   - docs/videos/story-everyday-target-x08/reviews/blind-a-v6.md
   - docs/videos/story-everyday-target-x08/reviews/blind-b-v6.md
   - docs/videos/story-everyday-target-x08/reviews/media-production.md
+  - docs/videos/story-everyday-target-x08/reviews/blind-a-v7.md
+  - docs/videos/story-everyday-target-x08/reviews/blind-a-v9.md
+  - docs/videos/story-everyday-target-x08/reviews/blind-b-v9.md
+  - docs/videos/story-everyday-target-x08/reviews/source-audit-v7-independent.md
+  - docs/videos/story-everyday-target-x08/reviews/source-audit-v8-visual.md
+  - docs/videos/story-everyday-target-x08/reviews/source-audit-v9-delta.md
+  - docs/videos/story-everyday-target-x08/reviews/v10-author-delta.md
   - docs/videos/story-everyday-target-x08/production-quote.md
   - tasks/open/2026-10-20-produce-target-x08-narration-and-validate.md
 ---
@@ -64,3 +72,5 @@ Use X08 worktree `/workspace/travel_scanner_target_x08`, work base `/workspace/.
 - Independent FY2013 10-K source audit for the ten new REDcard/store-area lines and new native comparison card is PASS. Lint for stable-ID v6 is 0 errors/0 warnings, 144 lines, 122 shots, 15 cards and 16 loops. Paired TTS dry-run sees exactly **10 pending requests / about 269 characters**; all 134 original WAVs are reusable. New audio/strict duration and serial check-audio wait for the two v6 blind receipts. Shared image/judge quota is reserved for other episodes; no X08 images have started.
 - Blind A v6 answered 11/13 Yes, with `payoffs` and `no_recap` No because the new merchandise-retention question lacks a direct callback and 124 stores is repeated without a marker. Blind B remains independent and pending; the two-reader combined gate is undecided. Keep video SHA fixed until both receipts arrive. Draft PR may present these as pending issues, not as a PASS.
 - X05 is completing eight targeted semantic retakes and then incremental audio QA; its next planned load is 66 MiniMax images. X06 is preparing media separately. Shared judge quota previously around 924; all three 3-take worst cases (66 + 78 + 113 shots) could consume 771 judgments. Recheck remaining quota and full-batch feasibility before X08 image generation. This ticket is audio-only.
+- Historical v7 independent source audit passed; v8 visual source audit failed an exit-fee timing implication; v9 chapter-title-only source delta passed. v9 blind A failed payoff and detour, blind B passed spoken required items, and both identified visual reveal-order problems. Their receipts remain version-bound and are not v10 approvals.
+- v10 candidate main `video.json` SHA-256 `51185ca049c60cac3f009457a833b449f66bfafeb10fae8a5dee6076a94ea619`; Shorts remains `440ceee9649b30af2bd64ff1205bf38bff47d0be381b1b544cccff4601e2d543`. Third-chapter REDcard detour is replaced with source-backed 124-store/14.2m-sqft opening and FY2012–FY2014 margin/SG&A/depreciation/interest evidence. `x080312` now asks whether next-year merchandise margin catches SG&A; `x080438` answers US$714m→US$548m gap. Cards/prompts fix v9 early reveals. Lint 0/0 and docs-video tests pass; new independent v10 source and two blind receipts, incremental TTS and actual eight-minute body measurement are **pending**. No paid media while these gates remain open.

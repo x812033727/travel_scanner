@@ -82,10 +82,10 @@ const CUES = [
     "one anonymous shopper selects an unmarked gift item from a stocked seasonal shelf, mild indoor light",
     "one anonymous bookkeeper stacks annual sales receipts into a larger pile at a quiet archive counter, warm daylight",
     "one anonymous analyst lays a partial-year calendar beside a full-year calendar without comparing individual entrances, diffused light",
-    "one anonymous accountant turns a still-negative operating ledger toward the camera at a reading table, cool lamp light",
+    "one anonymous accountant leaves an annual operating ledger closed at a reading table, result hidden, cool lamp light",
     "one anonymous bookkeeper holds a merchandise-margin folder below a much thicker operating-expense folder, soft side light",
     "one anonymous planner moves a sales tally token toward a cost stack that remains larger on an accounts table, muted light",
-    "one anonymous manager folds away a seasonal plan after the shopping period at an office window, grey winter light",
+    "one anonymous manager opens a seasonal plan before the shopping period at an office window, clear winter light",
     "one anonymous planner traces a long future calendar with one finger beside the unresolved account ledger, soft daylight",
     "one anonymous analyst leaves the future calendar open while closing a prediction folder at a records counter, low lamp light",
     "one anonymous decision maker rests a hand above an unresolved operating ledger in a quiet planning room, late daylight",
@@ -101,7 +101,7 @@ const CUES = [
     "one anonymous shop worker lowers an unmarked door after clearing ordinary merchandise later in a wind-down, grey daylight",
     "one anonymous filing clerk shelves a later quarterly report beside a closed retail model, soft spring light",
     "one anonymous planner turns calendar leaves from winter toward spring beside a row of closing location blocks, mild daylight",
-    "one anonymous accountant holds a large exit-cost ledger apart from a much smaller cash drawer at a reading table, low lamp light",
+    "one anonymous clerk holds a sealed unmarked account volume beside a January calendar, contents hidden under a plain cover, low lamp light",
   ],
   [
     "one anonymous accountant opens a large exit-cost volume in a quiet financial archive, cool side light",
@@ -223,8 +223,38 @@ export function visualFor(text, chapterIndex, rowIndex) {
   if (!Number.isInteger(chapterIndex) || !Number.isInteger(rowIndex) || chapterIndex < 0 || rowIndex < 0 || !CUES[chapterIndex]) {
     throw new Error(`Invalid chapter or row for visualFor: ${chapterIndex}, ${rowIndex}`);
   }
+  if (chapterIndex === 1 && /年報規劃隔年在加拿大開/.test(text)) {
+    return { prompt: "Wide shot: One anonymous planner arranges unopened retail models beside a future calendar on a planning table, soft studio light", camera: "Wide shot, slow pan left" };
+  }
+  if (chapterIndex === 2 && rowIndex >= 100 && rowIndex < 110) {
+    const directCostCues = [
+      "one anonymous model maker arranges many small unbranded retail buildings across a broad tabletop plan, pale daylight",
+      "one anonymous planner places newly opened building blocks along successive blank calendar pages, gentle window light",
+      "one anonymous bookkeeper holds a sealed opening-cost folder beside a newly opened retail model, result hidden, soft lamplight",
+      "one anonymous bookkeeper opens an earlier expense ledger beside an unopened retail model, mild office light",
+      "one anonymous bookkeeper sorts plain personnel and service folders beside a still-open operating ledger, warm lamp light",
+      "one anonymous accountant sets a cost volume beside a merchandise-margin volume without readable figures, warm lamp light",
+      "one anonymous accountant places a depreciation folder beside a retail-building model, cool side light",
+      "one anonymous finance clerk places an interest folder beside a plain accounting volume, soft lamplight",
+      "one anonymous accountant keeps depreciation and interest folders beside a separate margin-cost difference folder, no figures visible, gentle lamplight",
+      "one anonymous stock worker studies surplus cartons beside a sealed future-quarter folder, result hidden, diffuse light",
+    ];
+    const cue = directCostCues[rowIndex - 100];
+    const size = SIZES[(chapterIndex * 2 + rowIndex) % SIZES.length];
+    const move = MOVES[(chapterIndex + rowIndex * 2) % MOVES.length];
+    return { prompt: `${size}: ${cue[0].toUpperCase()}${cue.slice(1)}`, camera: `${size}, ${move}` };
+  }
+  if (chapterIndex === 2 && /第一個全年營業的財年/.test(text)) {
+    return { prompt: "Medium shot: One anonymous planner places a full blank calendar beside several open retail models on a planning table, warm indoor light", camera: "Medium shot, slow pan right" };
+  }
   if (chapterIndex === 3 && /顧客會怎麼回應/.test(text)) {
     return { prompt: "Wide shot: One anonymous planner turns a winter calendar page beside a plain shop model in a quiet office, cool daylight", camera: "Wide shot, slow pull back" };
+  }
+  if (chapterIndex === 3 && /這點正成長，能改掉更大的虧損嗎/.test(text)) {
+    return { prompt: "Medium shot: One anonymous analyst keeps an annual-results folder sealed beside a small rising sales token, outcome hidden, muted daylight", camera: "Medium shot, slow push in" };
+  }
+  if (chapterIndex === 5 && /為什麼要減到幾乎是零/.test(text)) {
+    return { prompt: "Close-up: One anonymous analyst examines two closed asset and liability folders without revealing their contents, quiet lamplight", camera: "Close-up, slow push in" };
   }
   const match = RULES[chapterIndex].find(([pattern]) => pattern.test(text));
   const candidates = match ? match[1].map(index => CUES[chapterIndex][index]) : CUES[chapterIndex];
