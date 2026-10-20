@@ -6,7 +6,7 @@ export const chapters = [
   {
     title: "二〇一八年，收款重新出現在開發清單",
     rows: [
-      ["想像二〇一八年春天的一筆 eBay 訂單：買家按下付款，賣家等著收錢。", [], "in a cozy home in spring daylight, one anonymous shopper sits before an unmarked computer screen while a small parcel waits on a table, with a separate anonymous seller at another desk, no company logo or readable interface"],
+      ["想像二〇一八年春天的一筆 eBay 訂單：買家按下付款，賣家等著收錢。", [], "in a spring daylight split-screen, an anonymous buyer's finger presses a blank button on a generic checkout screen; at a separate home worktable an anonymous seller waits beside a plain parcel, no logos, letters, or readable interface"],
       ["就在那個春天，eBay 把付款中介能力列進產品開發重點。", ["B13"], "in a quiet technology office, one anonymous developer studies a unmarked checkout flow sketch beside a ordinary parcel, soft morning light"],
       ["但三年前，它才把 PayPal 分拆成另一家上市公司。", ["B09"], "at a plain meeting table, one anonymous worker separates two unmarked folders, soft daylight"],
       ["它當年買下這家支付公司，正是為了讓網站上的交易更順。", ["B01", "B02"], "at a home worktable, one anonymous seller waits beside a boxed parcel and a unmarked payment slip, nostalgic daylight"],
@@ -103,7 +103,7 @@ export const chapters = [
     title: "二〇二〇年，付款合作合約到期",
     rows: [
       ["二〇二〇年七月，兩家公司那份 PayPal 營運協議到期。", ["B16"], card("營運協議到期", "2020.07", "初始合作期屆滿", "eBay FY2020 Form 10-K")],
-      ["原 PayPal 合約到期後，自管付款繼續往更多市場擴張。", ["B16"], "on a generic marketplace map with no place names, one anonymous planner extends several simple payment routes, morning light"],
+      ["eBay 的自管付款接著擴向更多市場。", ["B16"], "on a generic marketplace map with no place names, one anonymous planner extends several simple payment routes, morning light"],
       ["先被點名的，是美國、英國、德國、澳洲和加拿大。", ["B17"], "five unlabeled generic parcel desks in different neutral interiors, anonymous sellers, daylight"],
       ["在這些大市場，公司把商業賣家移往新平台。", ["B17"], "inside a generic merchant workspace, an anonymous seller moves a parcel and blank payment ledger to a new desk, soft daylight"],
       ["這件事不是按下按鈕，全世界就同時換好。", ["B17", "B19"], "overhead view of a wide abstract network being connected one small segment at a time, muted light"],
@@ -115,7 +115,7 @@ export const chapters = [
       ["人數上來了，eBay 為什麼想自己握住這段流程？", ["B18", "B24"], "at a plain analytics desk, one anonymous analyst places a blank checkout sketch between a buyer's empty basket and a seller's unmarked ledger, soft light"],
       ["二〇二〇年年報說，自管付款要讓買賣雙方走過更簡單的完整流程。", ["B24"], "at a generic online checkout scene, an anonymous buyer and seller watch one abstract payment route connect their blank screens, soft light"],
       ["eBay 主張買家能選更多付款方式，賣家經營也更簡便。", ["B24"], "one anonymous buyer compares several unreadable payment icons while a seller tends a blank order ledger, neutral light"],
-      ["這是公司選擇自管的產品說法；文件沒有比較繼續交給夥伴會怎樣。", ["B13", "B24"], "at the original package route, an anonymous planner compares two blank route sketches without ranking either, warm evening light"],
+      ["但這些好處，還不是每位買家與賣家的實測結果。", ["B24"], "at the original package route, an anonymous researcher observes a blank checkout demonstration without any user ratings or comparison marks, warm evening light"],
       ["但當時還有市場和交易，尚未完成遷移。", ["B18", "B19"], "wide abstract network with a few remaining disconnected market paths, anonymous figures, dusk light"],
     ],
   },
@@ -138,7 +138,7 @@ export const chapters = [
       ["開頭那張結帳頁，eBay 先讓支付公司獨立。", ["B09"], "at the original home checkout scene, buyer's wordless screen connects by a thin route to a seller's worktable, evening light"],
       ["多年後，它把市集收款流程逐步接回手裡。", ["B14", "B16", "B19"], "at a nearby small seller counter, one anonymous adult sees an abstract checkout route arrive beside a parcel, warm evening light"],
       ["股權由誰持有，和結帳流程由誰設計，原來是兩種不同決策。", ["B09", "B19"], "wide view of two distinct anonymous offices and one generic market checkout route, calm late afternoon light"],
-      ["eBay 選擇自管，是想自己設計買家付款和賣家管理；它主張這樣更方便，但沒證明夥伴做不到。", ["B13", "B19", "B24"], "outro"],
+      ["eBay 選擇自己設計市集付款，是它的產品路線；文件沒有比較繼續委託 PayPal 的結果。", ["B13", "B19", "B24"], "outro"],
       ["如果你經營市集，會把收款交給夥伴，還是自己掌握流程？", [], "outro"],
       ["訂閱品牌故事，下一次結帳時，也看看背後是誰在設計這段路。", [], "outro"],
     ],
