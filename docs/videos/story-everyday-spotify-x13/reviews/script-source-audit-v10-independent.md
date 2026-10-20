@@ -1,0 +1,13 @@
+# X13 Spotify v10｜獨立 SEC 原件與稿件複查
+
+**原件事實 PASS；敘事、正式工人攝取與成片另驗。** 本票只適用以下 SHA-256：`video.json` `8d2e2ef6c8c6a59dfbac54c1086f79423e04d975dad9e2e5a5ca93d3fdff92e7`、`shorts.json` `cfc0e99620da3884f459283b0a2e68a97d6801b8b9b3b9b7c8bbf35e93be9f30`、`source-matrix.md` `793fa8606ec7947548fbf1ca752e6dea795630a9e9a63f9f2bcb25e6e0b7c6d7`、`drafts/narration.md` `16007b05032e99ce7ddc5992293f207b015f40abee947db8e3c29943be461ce0`、`visual-plan.md` `f91b34c3e0f8506be1cee1a1d076d8ffc63fbcce44ed45bb41468566f1987b22`。修改任一受審稿件需重查。
+
+2026-10-20 我獨立以 SEC 原 URL 重新下載發行人九份 S1–S9。全部 HTTP 200，`Accept-Encoding: identity` 的原始回應位元組數與 SHA-256 均吻合 `source-matrix.md`：S1 2,831,808 / `6ece16f8b87981698227f54a28c8242556919057120192216a5fbd5c53bbab75`；S2 2,698,886 / `407258c428f87a8a7567c191570ec3a66eb3556f61a9bd2b0ca3eb83c94e3258`；S3 1,359,022 / `4b190d58d633d23c57e04adae98e77cba06fb427b641f46833725e4f47a6da4f`；S4 12,156 / `b15e74c6d503b15abaefbdbadfbf6220bc256ce4339e700c613153cf84072e5c`；S5 1,344,568 / `8fef7316f4be1fd20c7de0e0fe56572a12515a24b9b8e67817ec1e5a263094a4`；S6 92,457 / `5cadbcf2cb2d6ad6f504a68c0d75ea7536893e04ed8d9ba7e54e862d9de46a53`；S7 1,292,717 / `898488dec382982f18dfface594a0299ea22be821c3477a32eb4414e231eb862`；S8 1,285,889 / `13d15583c06d13ceb26ea11d6e1f4b3e85bc14333d0cef0df5d04aec25763d5e`；S9 90,079 / `8f88c746484c80866611190058b515dcf9bb21dac70cd24d89953d0d2d449300`。S8 是背景備查，未進 v10 口播與數字卡。
+
+新主問所需的原文核對如下。S3 明稱 2023 Q2 podcast strategic realignment / content portfolio rationalization，並有與其相關的內容資產沖銷 €30m；S9 明稱關閉**若干**節目，但同一份 2023-07-25 附件在發布時寫 **more than 100,000 video podcasts now available**，不是 Q2 末數字，也不能把被關節目等同影片供給。`x130401–408`、Short 1 及其數字卡保持這三條界線。S7 原文確認 2025-01-02 Partner Program 四市場起步、4 月再進九市場、合格影片創作者按觀看得酬及部分 Premium 會員的無動態插播廣告體驗；`x130601–606`、`x130617–622` 和 Short 1 沒有宣稱所有播客變成影片或舊節目復活。
+
+舊財務與新分類亦維持同口徑。S1 的 Anchor €136m 加 Gimlet €172m 是兩份含股份獎酬的**收購對價**，不是純現金或回本證明；S2 2020 Q1 的 Ad-Supported 收入 +€22m、總成本 +€42m、其中播客內容成本 +€12m 和版稅 +€20m 不構成播客獨立損益。S5 2024 Q2 +13% 是**整條廣告業務**毛利率，S6 2024 首個全年營業獲利屬**全公司**，不能當播客獲利。S7 2025 Q2 Ad-Supported 播客成本同比 −€21m，且新 Premium 影片體驗的相關內容成本轉入 Premium；公告未把搬移與真正少花的金額拆出。`x130610–615` 與 Short 2 把 −€21m 限在廣告欄，沒有稱全平台節省。Short 2 若抽離畫面只流通音訊，首個金額仍應帶「2025 第二季、同比」口徑；原生數字卡已有。
+
+我對照 `line-source-matrix.md`、`shorts-source-matrix.md`、`visual-plan.md`、`publishing-handoff.md`、JSON 口播和數字卡；未找到新版本把季度說成全年、把報表分類說成播客獨立利潤、把公司當時的收購期待說成已實現成果，或把不同匿名創作者畫成同一真實人物的主張。S3 不足以證明「2020 費用導致 2023 重整」，腳本只按時間相繼敘述，沒有貼決策因果。片頭遮住的文件、播放器、空白卡與匿名人是外部概念畫面。
+
+**正式攝取限制：** S1–S9 雖低於單頁 3 MiB，S2 的分類段落約在解析文字 66k–69k、S5 相關成本約 85k–92k、S7 新體驗和 €21m 約 55k／89k。若工人只讀前約 40k，這些主張尚不能算被正式攝取；需用可回核原 URL／SHA 的定向段落或明標 `reviewer_only`，再驗證工人讀到的原文。這次 PASS 是人工對完整原件的稿件事實票，**不是**兩位讀者敘事 PASS、實測 TTS、正式片頭片尾、付費插畫、MP4、字幕、上傳或 YouTube 連結。
