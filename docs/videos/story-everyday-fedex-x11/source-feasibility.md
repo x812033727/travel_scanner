@@ -1,8 +1,10 @@
 # X11 FedEx｜來源可行性與故事主線（前製）
 
-2026-10-20。**狀態：一手來源初查，尚非逐句查核、獨立審稿或影片稿。**這是既定 C01–C20 之外的新增題，保留 C03 Moleskine 的編輯順位；C03 所需的 Moleskine／D’Ieteren 官方網域在本雲端被網路白名單擋下。本題所用 `www.sec.gov` 與 `data.sec.gov` 則實測可讀。未產生付費媒體或成片。下方六章／Shorts 是最初可行性骨架；目前 v4 稿的事件流以 [Treatment](treatment.md) 和 [逐句來源矩陣](source-matrix.md) 為準，Freight 區分已移到說明欄。
+2026-10-20。**狀態：一手來源初查，尚非逐句查核、獨立審稿或影片稿。**這是既定 C01–C20 之外的新增題，保留 C03 Moleskine 的編輯順位；C03 所需的 Moleskine／D’Ieteren 官方網域在本雲端被網路白名單擋下。本題所用 `www.sec.gov` 與 `data.sec.gov` 則實測可讀。未產生付費媒體或成片。下方六章／Shorts 是最初可行性骨架；目前 v5 稿的事件流以 [Treatment](treatment.md) 和 [逐句來源矩陣](source-matrix.md) 為準，Freight 區分已移到說明欄。
 
 ## 可拍的反常問題
+
+以下工作標題與末段 Treatment 是**最初可行性假說**；五份近年 SEC 申報不能證明為何歷史上延至 2024 才合併。現行 v5 主片已改問「公司合併後，地面路網為何仍逐地整合？」，以 [Treatment](treatment.md) 與 [逐句稿](script.md) 為準。
 
 **工作標題：同樣叫 FedEx，快遞與地面包裹為何到 2024 年才併成一家？**觀眾看到一個品牌，FY2022 Form 10-K 卻列 FedEx Express、FedEx Ground 為不同公司／營運部門；FY2026 申報更直說兩套業務和網路在歷史上「分開、獨立」運作。公司的反轉是先在 2023 財年宣布 `one FedEx` 與 `Network 2.0`，2024-06-01 完成 Ground／Services 法律合併，再逐市場改分揀、取件、配送與幹線。**法律合併不等於所有實體路線完成整合**；2026 年報說加拿大已全部實施，美國預計 2027 年底完成，並警告整合可能延誤、費用或節省幅度偏離預期。
 

@@ -33,7 +33,7 @@ const rows = chapters.flatMap((chapter, ci) => chapter.rows.map((row, ri) => ({ 
 
 // Two short adjoining lines can share one 5–8 second illustration without
 // creating an overlong still. Starts are one-based, per chapter.
-const pairStarts = [new Set([2]), new Set([4, 9, 13, 15, 26]), new Set([9, 12, 17, 25]), new Set([10, 15]), new Set([8, 10, 12, 17, 19]), new Set()];
+const pairStarts = [new Set([2]), new Set([4, 9, 13, 15, 26]), new Set([9, 12, 17]), new Set([10, 19]), new Set([5, 10, 17]), new Set()];
 const cards = new Map([
   ["x110221", { title: "FY2022｜Ground 的規模", stats: [{ value: ">680", label: "分揀與配送設施，美加" }, { value: "~160", label: "全自動站點，包含在設施內" }, { value: ">100,000", label: "獨立服務商持有／租用的車" }], source: "FedEx FY2022 10-K" }],
   ["x110307", { title: "FY2023｜Network 2.0", stats: [{ value: ">20", label: "已宣布實施的市場，非州數" }], source: "FedEx FY2023 10-K" }],
@@ -99,18 +99,16 @@ const loopPatterns = [
   [/地點數；它究竟量到什麼/, /開場問的地點數，量到的是/, "實施地點的口徑"],
   [/兩種時間表，要怎麼在路上/, /超過六百八十處分揀和配送設施/, "兩套網路的物理骨架"],
   [/這些設備會自己改走同一條路/, /這個地點數，沒有說全美網路/, "法律合併不等於現場完成"],
-  [/可公司為什麼要在這時動/, /它說電商近年顯著成長/, "公司提出的改網背景"],
+  [/三家公司，後來被放進哪個整合計畫/, /FedEx 宣布「one FedEx」/, "三家公司進入整合計畫"],
   [/第一段旅程會怎樣變/, /FedEx 計畫整併分揀設施和設備/, "先處理分揀"],
   [/城市之間的幹線，若仍各自安排/, /公司還要最佳化企業幹線/, "幹線也被納入"],
-  [/地面配送員全換成同一種身分/, /未來仍會用雇員，也會用承包服務商/, "不會換成同一種司機"],
-  [/現場先動，還是合併文件先生效/, /加拿大先開始分階段轉換/, "加拿大現場先動"],
+  [/先落地的會是加拿大現場轉換，還是公司合併/, /加拿大先開始分階段轉換/, "加拿大現場先動"],
   [/逐地安排究竟推進了多少/, /美加已有約二百九十處實施最佳化/, "次年實施範圍"],
-  [/誰負責把箱子送到門口/, /有些地點將由服務商取件/, "逐市場配送者"],
-  [/什麼可能卡住/, /後勤系統、現場做法和既有合約/, "整合風險中的後勤與合約"],
+  [/原本兩張網的設施真的已合成一套嗎/, /這些營運仍在這項網路計畫下整合/, "舊網設施仍在整合"],
+  [/什麼可能卡住/, /服務商既有合約與人員安排/, "整合風險中的合約與人員"],
   [/哪個國家已把路網轉換走完/, /加拿大已完成這項網路計畫的實施/, "加拿大與美國進度分界"],
   [/美國約三百六十處實施；這就算完成嗎/, /仍預計到二〇二七曆年底/, "美國地點不等於完成"],
-  [/站內包裹量變動，人手要怎麼跟上/, /引進動態排班/, "分揀人手跟著貨量"],
-  [/服務商怎麼決定配送路線/, /接近即時的路線資料/, "服務商使用路線資料"],
+  [/當年究竟還在改哪一段/, /分揀設施和設備仍在現代化/, "原計畫仍在逐段推進"],
 ];
 const loops = loopPatterns.map(([setup, payoff, what]) => {
   const [a, aIndex] = find(setup);
@@ -120,7 +118,7 @@ const loops = loopPatterns.map(([setup, payoff, what]) => {
 });
 
 const description = [
-  "同樣叫 FedEx，2022 年報卻把 Express 和 Ground 列成不同公司與配送網。2023 年 FedEx 宣布 one FedEx；2024 年公司架構合併後，實體路線又花了多久調整？本集從 2022–2026 年 SEC 原始年報，追一件概念包裹背後的分揀、取件、幹線與配送。",
+  "同樣叫 FedEx，2022 年報卻把 Express 和 Ground 列成不同公司與配送網。2023 年 FedEx 宣布 one FedEx；2024 年公司架構合併後，地面路網為何仍逐地整合？本集從 2022–2026 年 SEC 原始年報，追一件概念包裹背後的分揀、取件、幹線與配送。",
   "",
   "FY 指 FedEx 截至各年 5 月 31 日的財年。2024-06-01 是 Ground／Services 併入 Federal Express 的法律日期，不代表所有路線完成整合。FY2024 的 50 多處限美國；FY2025 約 290 處含美加，不能直接換算完成百分比。FY2025 申報亦稱加拿大已完成實施、美國約 130 地點；FY2026 美國約 360 地點，2027 曆年底完成仍是公司預期。FY2026 年報另載 2026-06-01 分拆的是零擔貨運 FedEx Freight，並非小包裹 Ground；這件事與本集的 Ground 路網合併不同。片中匿名插畫是概念示意，不是真實包裹追蹤、商標或現場畫面。資料查核日期：2026-10-20。",
   "",
@@ -134,7 +132,7 @@ const video = {
   series: { slug: "brand-stories-everyday-reversals-extra", episode: 11, chapter: 1 },
   music: { prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 },
   loops,
-  youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "FedEx 明明同一品牌，快遞與地面包裹為何 2024 才合併？｜品牌故事", description, tags: ["FedEx", "聯邦快遞", "品牌故事", "包裹配送", "Express", "Ground", "物流"], video_id: null },
+  youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "FedEx 公司合併了，兩張包裹路網為何還得逐地整合？｜品牌故事", description, tags: ["FedEx", "聯邦快遞", "品牌故事", "包裹配送", "Express", "Ground", "物流"], video_id: null },
   thumbnail: { template: "thumb", data: { headline: "**兩張網？**", tag: "品牌故事", brand: "FedEx", shot: "x11-b01-s01" } },
   sources: sourceUrls, assets: [], scenes,
 };
@@ -151,6 +149,6 @@ writeFileSync(path.join(dir, "script.md"), [
   "# X11 FedEx｜繁中逐句稿", "", `離線前製；\`video.json\` SHA-256：\`${sha}\`。首章、三句 CTA、5 秒片頭與 21 秒片尾不計入實質正文；正式 TTS 未實測。`, "",
   ...chapters.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${chapter.title}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.rows.map((row, ri) => `- \`${idFor(ci, ri)}\` ${row.text}`), ""]),
 ].join("\n"));
-writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 11, chapter: 1, title: "FedEx：同牌兩張網，為何到 2024 才合併？", logline: "從 FY2022 分列的 Express／Ground，到 2024 法律合併與 FY2026 仍在逐地整合的實體網路。", names: ["FedEx", "Federal Express", "FedEx Express", "FedEx Ground", "FedEx Services", "FedEx Freight", "Network 2.0", "one FedEx", "Ground Economy", "Memphis", "Indianapolis"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
+writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 11, chapter: 1, title: "FedEx：公司合併後，路網為何仍逐地整合？", logline: "從 FY2022 分列的 Express／Ground，到 2024 法律合併與 FY2026 仍在逐地整合的實體網路。", names: ["FedEx", "Federal Express", "FedEx Express", "FedEx Ground", "FedEx Services", "FedEx Freight", "Network 2.0", "one FedEx", "Ground Economy", "Memphis", "Indianapolis"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
 const body = chapters.slice(1).flatMap(chapter => chapter.rows).slice(0, -3).map(row => row.text).join("");
 console.log(JSON.stringify({ scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, spoken_lines: rows.length, hook_characters: chapters[0].rows.map(row => row.text).join("").length, body_characters: body.length, body_estimate_minutes_at_300_cpm: +(body.length / 300).toFixed(2), loops: loops.length, video_sha256: sha }, null, 2));
