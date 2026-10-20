@@ -70,3 +70,5 @@ R6 repaired `bly011–014` (back-parlor wait before room terms/payment), `bly017
 2026-10-20 R9 [作者來源差分與凍結](../../docs/videos/curio-s45/verify-18.md)：只改上述 23 句音訊旗標所對應的口播與逐景台詞欄，企劃和畫面提示詞未動；0 lint errors／1 已公開的片尾警告，估計開場 39.8 秒、主體 505 秒。**下一工作者**需對精確 R9 hash `script.md` `cd51d875c9ccee9b6d99caf4da66a06d0b8f8ac22f2160a8de0d8ad33905e2c8`／`video.json` `f0a29e1116363409392af7dca68c32e6d7ec6f9a08fe937aaadb42e36cddecec` 做獨立史料及書面畫面差分，並找兩名真正新的讀者盲評，再做 R9 exact explainer Jev 政策。全部通過才重綁本地劇本選擇及重做 TTS；R8 語音與 R8 PASS 均對新版失效。網站依然 `hand_pushed pending`；影片、Short、PR 均未完成。
 
 2026-10-20 R9 [獨立史料與書面畫面差分](../../docs/videos/curio-s45/review/r9-source-independent.md) **PASS**，只綁 `script.md` SHA `cd51d875c9ccee9b6d99caf4da66a06d0b8f8ac22f2160a8de0d8ad33905e2c8`／`video.json` SHA `f0a29e1116363409392af7dca68c32e6d7ec6f9a08fe937aaadb42e36cddecec`：獨立重讀固定原著覆核 23 句變更，核對書面提示詞、卡片、縮圖和說明欄；不含實際生成圖、R9 敘事盲讀、政策、站台或音訊核准。
+
+2026-10-20 R9：兩名真正隔離、只讀 CLI 旁白與十三題的新讀者各 12/13，A 的 `no_recap` No、B 的 `payoffs` No 沒有共同必答失敗，依工具合併規則[敘事 PASS](../../docs/videos/curio-s45/review/r9-official-panel.md)，原始 JSON 與逐題合併可查。R9 精確史料／書面畫面亦獨立 PASS；Jev、網站、R9 配音及圖像另待，R8 的 23 旗標未清。
