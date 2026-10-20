@@ -108,6 +108,7 @@
 | lint 5 | 1 錯誤、1 警告 | brief.md；淺野那一景 10.5 秒 | 「另外兩個人」拆成一景 |
 | lint 6 | 0 錯誤、0 警告 | — | 寫 brief.md 後；估 9.5 分鐘、113 句、2,295 字、loops 21；`script --slug` 產生 `script.md` |
 | 0 | 未跑 | — | 寫稿時照 S12、S16（no_toc、payoffs、no_detour、no_recap）與 S21（章末問句、下一章首句用事實回答）先自查：`scene_first`、`no_spoiler`（開場不講信的內容、異風、關屋、隔壁房間、1934）、`chapters_link`、`payoffs`（只問答得出的）、`one_line`（照打開紀錄的順序）、`no_detour`、`no_recap`（結論只講一次、各章不下小結論）、`opening_hooks`（四個預告）、`no_toc` |
+| 1 | 12／13 | payoffs | dm204／dm207 的「那件事」像懸念卻沒回收（信裡指什麼還沒結案）→ 改成一般的擔心「有些話，關白還沒提起」「萬一出了差錯，很難預料」；dm512 點名 1934 年那本書是社會教育會編的通俗日本史；dm415 改「都沒寫杖碰到他的脖子」不再重講指地指城；lint 0／0 |
 
 ## 沒放進稿子的事實
 
