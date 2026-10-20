@@ -12,7 +12,7 @@
 | 概念片尾 | 630 影格／21 秒 | 預留兩個影片元素與一個訂閱元素的位置；正式連結須在 Studio 設定。 |
 | 全片 | 17,321 影格／577.367 秒（9:37.37） | 1920×1080、30 fps；全檔解碼及連續影格時間戳檢查通過。 |
 
-現行逐句稿 [video.json](video.json) SHA-256 為 `08c931bb000f373fbf5778d02b0703ef1a8b5144c665bfa30afda7c44ed3e5ac`，時間軸 SHA-256 為 `e69b87e5e617e51025a26652d47c4412b324dba754f1dfb7a5cd7b39951e1ef8`。80 句旁白有逐句機械音訊證據，必要的人耳驗聽尚待完成。65 鏡插畫原始候選圖與模型評審保留；[人工選圖收據](reviews/manual-keyframe-selections-a0cbc1ff06c9.json)記錄 49 鏡概念圖替換，均仍標 `needs_review`，並由[視覺檢查](reviews/visual-qc.md)與[史實畫面檢查](reviews/factual-visual-qc.md)交叉審看。12 張原生數字卡和一張口播結語卡已繪製，配樂為 557 秒單曲。
+現行逐句稿 [video.json](video.json) SHA-256 為 `08c931bb000f373fbf5778d02b0703ef1a8b5144c665bfa30afda7c44ed3e5ac`，時間軸 SHA-256 為 `e69b87e5e617e51025a26652d47c4412b324dba754f1dfb7a5cd7b39951e1ef8`。80 句旁白有逐句機械音訊證據，必要的人耳驗聽尚待完成。65 鏡插畫原始候選圖與模型評審保留；[人工選圖收據](reviews/manual-keyframe-selections-a0cbc1ff06c9.json)記錄 49 鏡概念圖替換，均仍標 `needs_review`，並由[視覺檢查](reviews/visual-qc.md)與[史實畫面檢查](reviews/factual-visual-qc.md)交叉審看。跨章重複使用筆記本、信封和人物概念插畫；正式版須逐鏡由編輯確認能否保留，或另選圖片替換。12 張原生數字卡和一張口播結語卡已繪製，配樂為 557 秒單曲。
 
 ## 目前進度與交付檔
 
