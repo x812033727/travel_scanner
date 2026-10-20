@@ -1,6 +1,6 @@
 # X13 Spotify｜Shorts 作者來源索引
 
-`shorts.json` SHA-256：`af51e6827ecdbc8059752a2c9380bc2d1ad122c7d9c46a0586905d28f05a5bf5`。作者標記，待獨立來源審查。
+`shorts.json` SHA-256：`8b0c0d88e1f568154e2ba076feab755657fd422a971da504b8562bcb38afe1ec`。作者標記，待獨立來源審查。
 
 | 句 ID | 旁白 | 作者來源 |
 | --- | --- | --- |
