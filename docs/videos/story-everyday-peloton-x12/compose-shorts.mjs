@@ -43,10 +43,10 @@ const shorts = [
     ],
     scenes: [
       { beat: "hook", shot: "x12-b03-s01", headline: "Peloton 新廠難題", narration: ["Peloton 才規劃俄亥俄造車廠，下一年設備收入就掉頭。"] },
-      { beat: "setup", shot: "x12-b04-s05", headline: "設備收入下滑", big: "31.5→21.9 億", note: "美元｜FY2021→FY2022", narration: ["設備類從約三十一點五億，降到二十一點九億美元。"] },
-      { beat: "turn", shot: "x12-b04-s04", headline: "訂閱收入卻上升", big: "8.7→13.9 億", note: "美元｜FY2021→FY2022", narration: ["訂閱類卻從約八點七億，升到十三點九億美元。"] },
+      { beat: "setup", shot: "x12-b04-s05", headline: "設備類收入下滑", body: ["FY2021｜約 31.5 億美元", "FY2022｜約 21.9 億美元"], narration: ["設備類從約三十一點五億，降到二十一點九億美元。"] },
+      { beat: "turn", shot: "x12-b04-s04", headline: "訂閱類收入上升", body: ["FY2021｜約 8.7 億美元", "FY2022｜約 13.9 億美元"], narration: ["訂閱類卻從約八點七億，升到十三點九億美元。"] },
       { beat: "proof", shot: "x12-b04-s07", headline: "收入不是台數", narration: ["設備這一欄還有配件和商用器材，不能當作單車出貨數。"] },
-      { beat: "proof", shot: "x12-b04-s15", headline: "設備類毛損", big: "-US$246.3m", note: "FY2022｜分類毛損", narration: ["扣掉產品成本，設備類那年有約二點四六億美元毛損。"] },
+      { beat: "proof", shot: "x12-b04-s15", headline: "FY2022 設備類毛損", body: ["約 2.46 億美元", "分類毛損 ≠ 公司淨損"], narration: ["扣掉設備類收入成本，那年有約二點四六億美元毛損。"] },
       { beat: "proof", shot: "x12-b04-s21", headline: "Ohio 還要造嗎？", narration: ["原定接更多器材的新廠，接下來還用得上嗎？"] },
       { beat: "payoff", shot: "x12-b05-s02", headline: "七月退出自製", narration: ["六月財年結束後，七月公司宣布退出自有製造；新廠失去原定任務。"] },
     ],

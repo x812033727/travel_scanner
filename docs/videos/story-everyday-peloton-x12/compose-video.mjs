@@ -20,7 +20,7 @@ const chapterTitles = [
   "公司宣布俄亥俄 Output Park",
   "設備收入轉降，訂閱收入續升",
   "自製方案被收起來",
-  "隔年產能風險仍未散",
+  "隔年訂閱收入超過設備收入",
 ];
 const chapters = Array.from({ length: 6 }, () => []);
 const outro = [];
@@ -47,8 +47,6 @@ for (const [ci, chapter] of chapters.entries()) {
 for (const [ri, row] of outro.entries()) if (row.id !== `x1206${String(chapters[5].length + ri + 1).padStart(2, "0")}`) throw new Error(`Bad closing id: ${row.id}`);
 
 const cards = new Map(Object.entries({
-  x120204: ["FY2020｜設備類收入", "US$1,462.2m", "FY2022 10-K 同表口徑", "K22"],
-  x120206: ["FY2020 → FY2021｜訂閱收入", "US$363.7m → 872.2m", "收入，不等於利潤", "K22"],
   x120305: ["2021-05｜Ohio 新廠計畫", "約 US$400m", "多年規劃，非已支出", "A21"],
   x120402: ["FY2021 → FY2022｜設備類收入", "US$3,149.6m → 2,187.5m", "收入，非單車台數", "K22"],
   x120403: ["FY2021 → FY2022｜訂閱收入", "US$872.2m → 1,394.7m", "同表口徑", "K22"],
