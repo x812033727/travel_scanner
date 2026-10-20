@@ -34,68 +34,83 @@
   "loops": [
     {
       "setup": "x140105",
-      "payoff": "x140219",
-      "what": "平台兩端需求如何衝突"
+      "payoff": "x140313",
+      "what": "開場房東取消費的分母"
     },
     {
       "setup": "x140106",
-      "payoff": "x140310",
-      "what": "房東支援金額與邊界"
+      "payoff": "x140417",
+      "what": "縮編後讓房源被找到"
     },
     {
       "setup": "x140107",
-      "payoff": "x140402",
-      "what": "穩定總量不等於同批房東"
+      "payoff": "x140518",
+      "what": "長住增加仍未讓 2021 全年盈利"
     },
     {
       "setup": "x140108",
-      "payoff": "x140606",
-      "what": "首個全年盈利"
+      "payoff": "x140421",
+      "what": "房源總量不是留存名冊"
+    },
+    {
+      "setup": "x140205",
+      "payoff": "x140206",
+      "what": "全年淨預訂量"
     },
     {
       "setup": "x140210",
-      "payoff": "x140211",
-      "what": "全年淨量揭曉"
+      "payoff": "x140212",
+      "what": "住宿訂單與平台收入"
+    },
+    {
+      "setup": "x140217",
+      "payoff": "x140218",
+      "what": "預訂量與營收跌幅不同"
     },
     {
       "setup": "x140226",
-      "payoff": "x140301",
-      "what": "疫情例外取消政策"
+      "payoff": "x140313",
+      "what": "旅客退款與房東支援的區別"
     },
     {
-      "setup": "x140319",
-      "payoff": "x140320",
-      "what": "承諾與列帳付款不同"
+      "setup": "x140312",
+      "payoff": "x140313",
+      "what": "房東支援的正確分母"
     },
     {
-      "setup": "x140326",
-      "payoff": "x140403",
-      "what": "總量不能證明留存"
+      "setup": "x140320",
+      "payoff": "x140321",
+      "what": "承諾上限與列帳付款不同"
     },
     {
-      "setup": "x140414",
-      "payoff": "x140419",
-      "what": "附近住宿呈現方式"
-    },
-    {
-      "setup": "x140423",
-      "payoff": "x140424",
-      "what": "IPO 非現金費用"
+      "setup": "x140411",
+      "payoff": "x140417",
+      "what": "近處住宿的產品呈現"
     },
     {
       "setup": "x140427",
-      "payoff": "x140501",
-      "what": "2021 需求回升"
+      "payoff": "x140509",
+      "what": "2021 住宿長度變化"
+    },
+    {
+      "setup": "x140513",
+      "payoff": "x140514",
+      "what": "長住可訂房源"
     },
     {
       "setup": "x140516",
-      "payoff": "x140518",
-      "what": "單季盈利與全年虧損"
+      "payoff": "x140517",
+      "what": "2021 單季盈利"
     },
     {
       "setup": "x140524",
-      "payoff": "x140601",
-      "what": "2022 需求再回升"
+      "payoff": "x140602",
+      "what": "2022 夜晚總量"
+    },
+    {
+      "setup": "x140620",
+      "payoff": "x140621",
+      "what": "最終多因素答案"
     }
   ],
   "youtube": {
@@ -168,14 +183,14 @@
       "id": "x14-b01-s02",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous lodging host studies empty squares spreading across the same blank calendar, one plain key beside the page, gentle indoor light",
+        "prompt": "Close-up: an anonymous traveler packs a small suitcase while an anonymous lodging host keeps a plain unused room key beside a blank calendar, gentle indoor light",
         "camera": "Close-up, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140102",
-          "text": "新的預訂格還沒補上，舊的格子又消失了。",
+          "text": "旅客收起行李，房東手裡卻還拿著那把鑰匙。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -209,7 +224,7 @@
       "lines": [
         {
           "id": "x140104",
-          "text": "這不是全年，也不是每個月各自的數字。",
+          "text": "這是兩個月合在一起比，並非說每個月各自如此。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -218,14 +233,14 @@
       "id": "x14-b01-s05",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: an anonymous host holds a plain key while an empty guest chair faces the booking desk, soft morning window light",
+        "prompt": "Overhead shot: an anonymous support clerk opens a blank relief envelope beside an unfinished reservation card, soft morning window light",
         "camera": "Overhead shot, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140105",
-          "text": "一個平台的兩端，此時要同時承受什麼？",
+          "text": "一筆進入疫情例外規則的訂單，旅客可以退款；房東原本的取消費怎麼辦？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -234,15 +249,15 @@
       "id": "x14-b01-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous support clerk opens a blank relief envelope beside an unfinished reservation card, soft overcast daylight",
+        "prompt": "Medium shot: an anonymous office manager studies a row of now-empty desks while a vacant guest-room key waits on the side table, soft overcast daylight",
         "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140106",
-          "text": "有一筆補助，卻不是把每筆取消房價補回來。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "text": "五月，公司要減少約四分之一的員工；空房又要推給誰？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
@@ -250,14 +265,14 @@
       "id": "x14-b01-s07",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous planner compares two unlabeled listing trays while the calendar remains on the desk, gentle indoor light",
+        "prompt": "Close-up: an anonymous remote worker stretches an unmarked lodging calendar across many blank squares beside a suitcase, gentle indoor light",
         "camera": "Close-up, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140107",
-          "text": "年底房源總數竟仍有另一種走勢，它說明了什麼？",
+          "text": "更晚，一次超過二十八夜的預訂占了更多日曆格；它能把全年損益翻正嗎？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -266,15 +281,15 @@
       "id": "x14-b01-s08",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous accountant opens a blank year-end folder beside the still-empty calendar, cool desk lamp",
+        "prompt": "Wide shot: an anonymous archivist compares two year-end boards with similarly sized piles of keys but no way to match individual keys, cool desk lamp",
         "camera": "Wide shot, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140108",
-          "text": "而更晚的一份成績單，利潤竟轉成正數。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "text": "到了年底，兩張房源清單的總數看似相同；名冊裡還是那些人嗎？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
@@ -289,10 +304,10 @@
       "lines": [
         {
           "id": "x140109",
-          "text": "當旅客和房東不能同步，Airbnb 怎樣重新接上兩邊？",
+          "text": "當旅客和房東不同步，Airbnb 究竟怎麼重新接上兩端？",
           "emotion": "自然提問，尾音微上揚",
-          "say": "當旅客和房東不能同步，愛彼迎 怎樣重新接上兩邊？",
-          "say_for": "babdcc59bdb6"
+          "say": "當旅客和房東不同步，愛彼迎 究竟怎麼重新接上兩端？",
+          "say_for": "8f84f00c6774"
         }
       ]
     },
@@ -300,31 +315,31 @@
       "id": "x14-b02-s01",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous host lays a spare house key beside a simple guest bed in a modest room, gentle indoor light",
+        "prompt": "Wide shot: an anonymous guest and an anonymous lodging host face the same crossed-out blank reservation tile across a quiet desk, gentle indoor light",
         "camera": "Wide shot, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140201",
-          "text": "二〇〇七年，兩位房東在舊金山家中接待三位旅客。",
+          "text": "被劃掉的那一格，先讓旅客與房東碰上同一個問題。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ],
-      "chapter": "同一筆住宿，兩端不同的期待"
+      "chapter": "空房等不到原本的客人"
     },
     {
       "id": "x14-b02-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: an anonymous archivist closes a plain origin folder beside the old house key, cool desk lamp",
+        "prompt": "Medium close-up: an anonymous traveler holds an unused room key beside an open suitcase, cool desk lamp",
         "camera": "Medium close-up, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140202",
-          "text": "這是公司在年報裡追溯的起點。",
+          "text": "旅客沒法入住，房東也等不到原本期待的住宿收入。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -340,8 +355,10 @@
       "lines": [
         {
           "id": "x140203",
-          "text": "後來平台一面招募房東，一面讓旅客預訂住宿。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "text": "Airbnb 讓房東提供房源、旅客預訂，自己向兩邊收服務費。",
+          "emotion": "台灣口語說書，清楚自然，正常語速",
+          "say": "愛彼迎 讓房東提供房源、旅客預訂，自己向兩邊收服務費。",
+          "say_for": "356b58275c31"
         }
       ]
     },
@@ -356,7 +373,7 @@
       "lines": [
         {
           "id": "x140204",
-          "text": "一間房要有人願意掛，也要有人願意住。",
+          "text": "一晚住宿要走完，房源得有人願意掛，也得有人真的入住。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -365,100 +382,20 @@
       "id": "x14-b02-s05",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous analyst studies a reservation board whose guest side has fallen quiet, soft overcast daylight",
-        "camera": "Close-up, slow push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140205",
-          "text": "如果一邊的需求突然斷掉，另一邊會怎樣？",
-          "emotion": "自然提問，尾音微上揚"
-        }
-      ]
-    },
-    {
-      "id": "x14-b02-s06",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot: an anonymous traveler withdraws a plain booking tile from a blank calendar, gentle indoor light",
-        "camera": "Wide shot, static",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140206",
-          "text": "那年春天，旅客大量取消原有的訂單。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b02-s07",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up: an anonymous records clerk separates a pile of canceled tiles from a pile of fresh blank reservation tiles, cool desk lamp",
-        "camera": "Medium close-up, slow pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140207",
-          "text": "三、四月合計，取消的夜晚與體驗席位數，超過同期新預訂的總量。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b02-s08",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead shot: an anonymous accountant examines two different trays of booking tiles without merging them, muted afternoon light",
-        "camera": "Overhead shot, slow pull back",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140208",
-          "text": "這裡比的是取消與未扣取消的新增預訂。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b02-s09",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot: an anonymous archivist sets one annual calendar beside two small monthly leaves, keeping their edges separate, soft morning window light",
-        "camera": "Medium shot, slow pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140209",
-          "text": "它沒有說全年總住宿夜晚變成負數。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b02-s10",
-      "template": "shot",
-      "data": {
         "prompt": "Close-up: an anonymous clerk opens a blank year-end ledger beside the reservation board, soft overcast daylight",
         "camera": "Close-up, slow push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x140210",
-          "text": "那麼，全年實際留下多少預訂？",
+          "id": "x140205",
+          "text": "這一年，日曆上最後留下多少預訂？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
     {
-      "id": "x14-b02-s11",
+      "id": "x14-b02-s06",
       "template": "stats",
       "data": {
         "title": "全年 net nights + experiences",
@@ -472,14 +409,14 @@
       },
       "lines": [
         {
-          "id": "x140211",
-          "text": "前一年的淨預訂夜晚與體驗席位，有三點二六九億。",
+          "id": "x140206",
+          "text": "二〇一九年，淨預訂夜晚與體驗席位是三點二六九億。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
     {
-      "id": "x14-b02-s12",
+      "id": "x14-b02-s07",
       "template": "stats",
       "data": {
         "title": "全年 net nights + experiences",
@@ -493,9 +430,93 @@
       },
       "lines": [
         {
-          "id": "x140212",
-          "text": "到了疫情那年只有一點九三二億，少了百分之四十一。",
+          "id": "x140207",
+          "text": "疫情那年是一點九三二億，少了百分之四十一。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b02-s08",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot: an anonymous bookkeeper gathers only the reservation tiles left after a canceled stack has been removed, muted afternoon light",
+        "camera": "Overhead shot, slow pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140208",
+          "text": "這個全年淨量扣掉取消和更改，不是開場那兩個月的新增訂單。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b02-s09",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: an anonymous researcher removes tiny guest-shaped tokens from a tray of room-night tiles, soft morning window light",
+        "camera": "Medium shot, slow pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140209",
+          "text": "夜晚和體驗席位合計，也不是這麼多位旅客。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b02-s10",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up: an anonymous accountant studies two blank service-fee folders beside the smaller booking pile, soft overcast daylight",
+        "camera": "Close-up, slow push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140210",
+          "text": "少掉的夜晚，怎麼走進 Airbnb 的收入？",
+          "emotion": "自然提問，尾音微上揚",
+          "say": "少掉的夜晚，怎麼走進 愛彼迎 的收入？",
+          "say_for": "3a8f95838f95"
+        }
+      ]
+    },
+    {
+      "id": "x14-b02-s11",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot: an anonymous bookkeeper pours plain booking tokens into several separate bowls beside a receipt folder, gentle indoor light",
+        "camera": "Wide shot, static",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140211",
+          "text": "一筆訂單總額還包含房東收入、清潔費、稅項和服務費。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b02-s12",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up: an anonymous cashier holds one slim service-fee envelope apart from a larger host-payment envelope, cool desk lamp",
+        "camera": "Medium close-up, slow pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140212",
+          "text": "Airbnb 認列的收入，主要是從旅客與房東收取的服務費。",
+          "emotion": "台灣口語說書，清楚自然，正常語速",
+          "say": "愛彼迎 認列的收入，主要是從旅客與房東收取的服務費。",
+          "say_for": "5e588631167f"
         }
       ]
     },
@@ -503,14 +524,14 @@
       "id": "x14-b02-s13",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: an anonymous researcher removes tiny guest-shaped tokens from a tray of room-night tiles, muted afternoon light",
+        "prompt": "Overhead shot: an anonymous check-in clerk receives a plain key at a doorway while a blank ledger lies nearby, muted afternoon light",
         "camera": "Overhead shot, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140213",
-          "text": "夜晚和體驗席位合計，不等於這麼多位旅客。",
+          "text": "住宿那部分，要等旅客入住才認列。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -519,20 +540,38 @@
       "id": "x14-b02-s14",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous bookkeeper gathers only the reservation tiles left after a canceled stack has been removed, soft morning window light",
+        "prompt": "Medium shot: an anonymous host looks at a crossed-out reservation card beside a small fee envelope, soft morning window light",
         "camera": "Medium shot, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140214",
-          "text": "這是取消與更改之後的全年淨量。",
+          "text": "預訂格即使曾被填上，取消後也不能當成已完成的住宿。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
     {
       "id": "x14-b02-s15",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up: an anonymous accountant studies two blank service-fee folders beside the smaller booking pile, soft overcast daylight",
+        "camera": "Close-up, slow push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140215",
+          "text": "前一年，Airbnb 全年營收約四十八億美元。",
+          "emotion": "台灣口語說書，清楚自然，正常語速",
+          "say": "前一年，愛彼迎 全年營收約四十八億美元。",
+          "say_for": "75455f6b399f"
+        }
+      ]
+    },
+    {
+      "id": "x14-b02-s16",
       "template": "stats",
       "data": {
         "title": "Airbnb 年度營收",
@@ -546,25 +585,9 @@
       },
       "lines": [
         {
-          "id": "x140215",
-          "text": "而公司營收從前一年的約四十八億美元，降到約三十四億。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b02-s16",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot: an anonymous analyst compares a falling booking ribbon with a separate, differently sloped income ribbon, gentle indoor light",
-        "camera": "Wide shot, static",
-        "visual": "still"
-      },
-      "lines": [
-        {
           "id": "x140216",
-          "text": "營收只少三成，為何不同於預訂量跌的四成一？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "疫情那年約三十四億美元，下降三成。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -572,30 +595,35 @@
       "id": "x14-b02-s17",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: an anonymous analyst compares fewer booking tiles with a slightly larger amount beneath each tile, cool desk lamp",
+        "prompt": "Medium close-up: an anonymous analyst compares a falling booking ribbon with a separate, differently sloped income ribbon, cool desk lamp",
         "camera": "Medium close-up, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140217",
-          "text": "公司說，單位淨預訂的訂房總額反而增加百分之六。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "text": "淨預訂量少四成一，營收卻少三成；差距從哪來？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
     {
       "id": "x14-b02-s18",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Overhead shot: an anonymous accountant places a small offset token beside the falling annual revenue ribbon, muted afternoon light",
-        "camera": "Overhead shot, slow pull back",
-        "visual": "still"
+        "title": "單位 net night + experience 的 GBV",
+        "stats": [
+          {
+            "value": "+6%",
+            "label": "非 Airbnb 服務費率"
+          }
+        ],
+        "source": "Airbnb 2020 10-K"
       },
       "lines": [
         {
           "id": "x140218",
-          "text": "它抵銷了一部分訂單量下降對營收的衝擊。",
+          "text": "公司說，每一淨預訂夜晚或體驗席位的訂房總額，增加了百分之六。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -604,14 +632,14 @@
       "id": "x14-b02-s19",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous traveler holds an unused room key beside an open suitcase, soft morning window light",
+        "prompt": "Medium shot: an anonymous accountant places a small offset token beside the falling annual revenue ribbon, soft morning window light",
         "camera": "Medium shot, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140219",
-          "text": "旅客想退掉還不能使用的房，房東則少了一筆原來期待的收入。",
+          "text": "它抵銷一部分訂單減少的衝擊，並非服務費率多了六個百分點。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -620,15 +648,15 @@
       "id": "x14-b02-s20",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous support worker balances a guest suitcase token and a host key token on a plain table scale, soft overcast daylight",
+        "prompt": "Close-up: an anonymous bookkeeper pours plain booking tokens into several separate bowls beside a receipt folder, soft overcast daylight",
         "camera": "Close-up, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140220",
-          "text": "平台夾在兩端，中間那筆錢又算誰的？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "所以不能把整張訂單的錢，全看成平台失去的營收。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -636,14 +664,14 @@
       "id": "x14-b02-s21",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous bookkeeper pours plain booking tokens into several separate bowls beside a receipt folder, gentle indoor light",
+        "prompt": "Wide shot: an anonymous traveler holds an unused room key beside an open suitcase, gentle indoor light",
         "camera": "Wide shot, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140221",
-          "text": "訂房總額裡，房東收入、清潔費、稅和服務費都可能在內。",
+          "text": "旅客要退的是無法使用的預訂，房東失去的是可能入住的夜晚。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -652,17 +680,15 @@
       "id": "x14-b02-s22",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: an anonymous cashier holds one slim service-fee envelope apart from a larger host-payment envelope, cool desk lamp",
+        "prompt": "Medium close-up: an anonymous host looks at a crossed-out reservation card beside a small fee envelope, cool desk lamp",
         "camera": "Medium close-up, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140222",
-          "text": "Airbnb 認列的收入，主要是向兩端收取的服務費。",
-          "emotion": "台灣口語說書，清楚自然，正常語速",
-          "say": "愛彼迎 認列的收入，主要是向兩端收取的服務費。",
-          "say_for": "9a8de1dc3fcd"
+          "text": "若房東原取消政策允許收費，那筆本可收到的錢又算誰的？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
@@ -670,14 +696,14 @@
       "id": "x14-b02-s23",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: an anonymous check-in clerk receives a plain key at a doorway while a blank ledger lies nearby, muted afternoon light",
+        "prompt": "Overhead shot: an anonymous lodging host checks a vacant room while the guest suitcase token waits outside, muted afternoon light",
         "camera": "Overhead shot, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140223",
-          "text": "住宿那一部分，要到旅客入住才認列。",
+          "text": "只按旅客退款，房東可能沒有那筆收入。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -686,15 +712,15 @@
       "id": "x14-b02-s24",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous host looks at a crossed-out reservation card beside a small fee envelope, soft morning window light",
+        "prompt": "Medium shot: an anonymous support clerk opens a blank cancellation-policy folder beside the room key, soft morning window light",
         "camera": "Medium shot, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140224",
-          "text": "所以整張訂單被取消，影響的不只是平台的一筆服務費。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "text": "只按原取消規則，符合疫情例外的旅客又怎麼辦？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
@@ -702,14 +728,14 @@
       "id": "x14-b02-s25",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous lodging host checks a vacant room while the guest suitcase token waits outside, soft overcast daylight",
+        "prompt": "Close-up: an anonymous support clerk opens a blank cancellation-policy folder beside the room key, soft overcast daylight",
         "camera": "Close-up, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140225",
-          "text": "房東少掉的是可能入住的夜晚，平台還得面對雙方的信任。",
+          "text": "平台得先決定，哪些預訂符合新的疫情例外規則。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -725,7 +751,7 @@
       "lines": [
         {
           "id": "x140226",
-          "text": "若旅客符合特殊退訂規則，原本的房東政策還算數嗎？",
+          "text": "規則啟動後，旅客拿回什麼，房東又能拿回多少？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -741,26 +767,26 @@
       "lines": [
         {
           "id": "x140301",
-          "text": "Airbnb 把疫情納入例外情況取消政策。",
+          "text": "Airbnb 把疫情納入例外情況取消政策，讓合資格旅客有退款路徑。",
           "emotion": "台灣口語說書，清楚自然，正常語速",
-          "say": "愛彼迎 把疫情納入例外情況取消政策。",
-          "say_for": "06930fa0e320"
+          "say": "愛彼迎 把疫情納入例外情況取消政策，讓合資格旅客有退款路徑。",
+          "say_for": "5f5754e6cfc2"
         }
       ],
-      "chapter": "補助有上限，也有自己的分母"
+      "chapter": "退款送到旅客，房東收到多少？"
     },
     {
       "id": "x14-b03-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous clerk sorts reservation cards into an eligible tray and an unmarked separate tray, muted afternoon light",
+        "prompt": "Medium shot: an anonymous booking clerk places an old reservation tile beside a blank earlier calendar leaf, muted afternoon light",
         "camera": "Medium shot, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140302",
-          "text": "它處理的是特定日期、特定條件的訂單。",
+          "text": "三月十四日或更早預訂，且因疫情不能旅行的旅客，可以走這條規則。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -769,14 +795,14 @@
       "id": "x14-b03-s03",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous booking clerk places an old reservation tile beside a blank earlier calendar leaf, soft morning window light",
+        "prompt": "Close-up: an anonymous guest receives a plain refund token from a support desk, soft morning window light",
         "camera": "Close-up, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140303",
-          "text": "當年三月十四日或更早預訂，是第一道條件。",
+          "text": "符合條件取消時，可以拿全額現金退款。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -785,14 +811,14 @@
       "id": "x14-b03-s04",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous guest points to a narrow strip of blank calendar squares with a room key nearby, soft overcast daylight",
+        "prompt": "Wide shot: an anonymous traveler studies a simple travel-credit token beside an unused suitcase, soft overcast daylight",
         "camera": "Wide shot, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140304",
-          "text": "原定入住日還得落在三月十四日至五月三十一日。",
+          "text": "某些情況下，旅客拿到的則是旅行抵用金。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -801,84 +827,20 @@
       "id": "x14-b03-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: an anonymous support worker compares a reservation card with a plain policy folder, gentle indoor light",
+        "prompt": "Medium close-up: an anonymous records clerk keeps a guest-refund tray apart from a host-support tray on opposite sides of a blank calendar, gentle indoor light",
         "camera": "Medium close-up, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140305",
-          "text": "日期以外，取消還得符合疫情例外政策的條件。",
+          "text": "這是旅客退款的條件，還沒說房東支援的入住日期。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
     {
       "id": "x14-b03-s06",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead shot: an anonymous clerk moves a later calendar leaf outside the small eligible tile tray, cool desk lamp",
-        "camera": "Overhead shot, slow pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140306",
-          "text": "同年六月入住的訂單，已在這段入住日期之外。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b03-s07",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot: an anonymous guest receives a plain refund token from a support desk, muted afternoon light",
-        "camera": "Medium shot, slow pull back",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140307",
-          "text": "合資格旅客取消時，可以獲全額現金退款。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b03-s08",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up: an anonymous traveler studies a simple travel-credit token beside an unused suitcase, soft morning window light",
-        "camera": "Close-up, slow pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140308",
-          "text": "某些情況下，旅客拿到的則是旅行抵用金。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b03-s09",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot: an anonymous host watches the guest side of a blank reservation board empty out, soft overcast daylight",
-        "camera": "Wide shot, slow push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140309",
-          "text": "但平台若只看旅客，另一端會發生什麼？",
-          "emotion": "自然提問，尾音微上揚"
-        }
-      ]
-    },
-    {
-      "id": "x14-b03-s10",
       "template": "stats",
       "data": {
         "title": "合資格房東支援承諾",
@@ -892,8 +854,72 @@
       },
       "lines": [
         {
+          "id": "x140306",
+          "text": "房東那端，另有一項上限兩億五千萬美元的支援計畫。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b03-s07",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: an anonymous clerk sorts reservation cards into an eligible tray and an unmarked separate tray, muted afternoon light",
+        "camera": "Medium shot, slow pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140307",
+          "text": "這項計畫只處理特定預訂；哪兩道日期門要同時打開？",
+          "emotion": "自然提問，尾音微上揚"
+        }
+      ]
+    },
+    {
+      "id": "x14-b03-s08",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up: an anonymous booking clerk places an old reservation tile beside a blank earlier calendar leaf, soft morning window light",
+        "camera": "Close-up, slow pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140308",
+          "text": "第一道：和剛才旅客那條線一樣，三月十四日或以前預訂。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b03-s09",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot: an anonymous host-support clerk selects a narrow band of blank check-in calendar squares beside a plain host key, soft overcast daylight",
+        "camera": "Wide shot, slow push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140309",
+          "text": "第二道：原定入住在三月十四日至五月三十一日。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b03-s10",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up: an anonymous clerk moves a later calendar leaf outside the small eligible tile tray, gentle indoor light",
+        "camera": "Medium close-up, static",
+        "visual": "still"
+      },
+      "lines": [
+        {
           "id": "x140310",
-          "text": "公司承諾一項上限兩億五千萬美元的房東支援計畫。",
+          "text": "六月入住的訂單，就不在這項房東計畫的入住區間。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -902,20 +928,36 @@
       "id": "x14-b03-s11",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: an anonymous support clerk sorts different hosts' plain key tokens into separate small trays, cool desk lamp",
+        "prompt": "Overhead shot: an anonymous support worker compares a reservation card with a plain policy folder, cool desk lamp",
         "camera": "Overhead shot, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140311",
-          "text": "它不是每個受影響房東自動分到相同金額。",
+          "text": "還得符合疫情例外取消政策，才談得上這筆支援。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
     {
       "id": "x14-b03-s12",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: an anonymous bookkeeper keeps a room-rate envelope separate from a cancellation-policy envelope, muted afternoon light",
+        "camera": "Medium shot, slow pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140312",
+          "text": "跨過兩道門，房東就能拿回房價的四分之一嗎？",
+          "emotion": "自然提問，尾音微上揚"
+        }
+      ]
+    },
+    {
+      "id": "x14-b03-s13",
       "template": "stats",
       "data": {
         "title": "房東支援計算基準",
@@ -929,25 +971,9 @@
       },
       "lines": [
         {
-          "id": "x140312",
-          "text": "合資格房東拿的是原取消政策本可收到金額的四分之一。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b03-s13",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up: an anonymous bookkeeper keeps a room-rate envelope separate from a cancellation-policy envelope, soft morning window light",
-        "camera": "Close-up, slow pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
           "id": "x140313",
-          "text": "如果直接乘上房價，會差多少？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "不是。四分之一乘的是原取消政策下，房東本可拿到的金額。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -967,7 +993,7 @@
       "lines": [
         {
           "id": "x140314",
-          "text": "假設房價一百元，原取消政策本可給房東四十元。",
+          "text": "假設一晚房價一百元，原政策退訂本來給房東四十元。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -988,7 +1014,7 @@
       "lines": [
         {
           "id": "x140315",
-          "text": "新支援按那四十元算，四分之一就是十元。",
+          "text": "新支援按四十元計，房東得到十元。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1009,7 +1035,7 @@
       "lines": [
         {
           "id": "x140316",
-          "text": "不是直接拿一百元乘四分之一。",
+          "text": "不是按一百元算出二十五元。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1018,14 +1044,14 @@
       "id": "x14-b03-s17",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous host receives a separate plain relief envelope at the edge of a modest desk, muted afternoon light",
+        "prompt": "Medium shot: an anonymous analyst keeps the small relief tray separate from the larger room-rate envelope, muted afternoon light",
         "camera": "Medium shot, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140317",
-          "text": "另有一千七百萬美元的超級房東基金。",
+          "text": "同樣寫百分之二十五，分母不同，差額就出來了。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1034,14 +1060,14 @@
       "id": "x14-b03-s18",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous records clerk places two blank relief folders in different trays, soft morning window light",
+        "prompt": "Close-up: an anonymous host receives a separate plain relief envelope at the edge of a modest desk, soft morning window light",
         "camera": "Close-up, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140318",
-          "text": "兩筆計畫各有對象，不能合成所有房東的收入。",
+          "text": "另有一千七百萬美元的超級房東基金。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1050,20 +1076,36 @@
       "id": "x14-b03-s19",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous bookkeeper compares a capped commitment jar with a separate paid-out jar, soft overcast daylight",
+        "prompt": "Wide shot: an anonymous records clerk places two blank relief folders in different trays, soft overcast daylight",
         "camera": "Wide shot, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140319",
-          "text": "承諾的上限與真正列帳支出，又是不是同一數字？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "它與前一項對象不同，不能說所有房東都分到同樣賠償。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
     {
       "id": "x14-b03-s20",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up: an anonymous bookkeeper compares a capped commitment jar with a separate paid-out jar, gentle indoor light",
+        "camera": "Medium close-up, static",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140320",
+          "text": "承諾的最高額是一回事；財報列帳會是同一筆嗎？",
+          "emotion": "自然提問，尾音微上揚"
+        }
+      ]
+    },
+    {
+      "id": "x14-b03-s21",
       "template": "stats",
       "data": {
         "title": "2020 例外政策付款",
@@ -1077,24 +1119,8 @@
       },
       "lines": [
         {
-          "id": "x140320",
-          "text": "當年財報列了兩億零五百一十萬美元相關付款。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b03-s21",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead shot: an anonymous support worker routes several payment tokens toward a host-key tray while one remains elsewhere, cool desk lamp",
-        "camera": "Overhead shot, slow pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
           "id": "x140321",
-          "text": "它涵蓋例外情況政策下付給顧客的款項，主要給房東。",
+          "text": "全年財報記下兩億零五百一十萬美元例外政策相關付款。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1103,14 +1129,14 @@
       "id": "x14-b03-s22",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous accountant moves the payment tokens beside a shrinking revenue ribbon, muted afternoon light",
+        "prompt": "Medium shot: an anonymous support worker routes several payment tokens toward a host-key tray while one remains elsewhere, muted afternoon light",
         "camera": "Medium shot, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140322",
-          "text": "會計上，這筆款項是營收的扣減。",
+          "text": "這是對顧客的付款，主要給房東，並列為營收扣減。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1126,7 +1152,7 @@
       "lines": [
         {
           "id": "x140323",
-          "text": "它不能被直接叫作兩億五千萬計畫的已付款總額。",
+          "text": "它不能直接叫作兩億五千萬計畫的實付總額。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1158,7 +1184,7 @@
       "lines": [
         {
           "id": "x140325",
-          "text": "一筆制度能先分擔損失，卻無法保證下一筆訂單會出現。",
+          "text": "即使拿到一筆支援，下一晚仍得有人願意預訂。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1167,122 +1193,39 @@
       "id": "x14-b03-s26",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: an anonymous analyst studies a year-end listing board whose individual keys cannot be followed across time, cool desk lamp",
+        "prompt": "Overhead shot: an anonymous office finance clerk studies an empty booking calendar and a closed budget folder beside a plain room key, cool desk lamp",
         "camera": "Overhead shot, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140326",
-          "text": "那年底的房源總數，能證明受助的房東留下來嗎？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "同一個春天，Airbnb 自己又拿什麼度過空房期？",
+          "emotion": "自然提問，尾音微上揚",
+          "say": "同一個春天，愛彼迎 自己又拿什麼度過空房期？",
+          "say_for": "d00da436b625"
         }
       ]
     },
     {
       "id": "x14-b04-s01",
-      "template": "stats",
-      "data": {
-        "title": "年底活躍房源總數",
-        "stats": [
-          {
-            "value": "~5.6m → ~5.6m",
-            "label": "2019 → 2020；非同批房東"
-          }
-        ],
-        "source": "Airbnb 2020 10-K"
-      },
-      "lines": [
-        {
-          "id": "x140401",
-          "text": "二〇一九年和二〇二〇年年底，活躍房源都約五百六十萬。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ],
-      "chapter": "房源總量和公司規模，走了兩條線"
-    },
-    {
-      "id": "x14-b04-s02",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous analyst sees two similar total piles of keys but cannot match an individual key between them, soft morning window light",
-        "camera": "Wide shot, slow pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140402",
-          "text": "這是兩個時間點的總量，不是同一批房東名冊。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b04-s03",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up: an anonymous records clerk watches one key token leave one tray as another enters a different tray, soft overcast daylight",
-        "camera": "Medium close-up, slow push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140403",
-          "text": "期間即使有人退出、另有人加入，單靠總數也看不出來。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b04-s04",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead shot: an anonymous host looks at a blank guest calendar beside an active listing key, gentle indoor light",
-        "camera": "Overhead shot, static",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140404",
-          "text": "更不能由它推算每間房是否有客、有收入。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b04-s05",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot: an anonymous support worker closes a small relief envelope while one host key remains outside the tray, cool desk lamp",
-        "camera": "Medium shot, slow pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140405",
-          "text": "公司自己提醒，有限的支援可能讓部分房東移除房源。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b04-s06",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up: an anonymous accountant turns from a steady listing board to an unsettled office ledger, muted afternoon light",
+        "prompt": "Close-up: an anonymous finance clerk opens a loan folder beside a half-empty booking calendar and a plain room key, muted afternoon light",
         "camera": "Close-up, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x140406",
-          "text": "總量沒有大變，接著變動的卻是公司自身。",
+          "id": "x140401",
+          "text": "支援沒有填滿日曆，公司先替自己找周轉。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
-      ]
+      ],
+      "chapter": "公司縮了身，旅客開始找近處"
     },
     {
-      "id": "x14-b04-s07",
+      "id": "x14-b04-s02",
       "template": "stats",
       "data": {
         "title": "2020 年 4 月",
@@ -1296,14 +1239,16 @@
       },
       "lines": [
         {
-          "id": "x140407",
-          "text": "回到疫情那年四月，它籌到二十億美元定期貸款。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "id": "x140402",
+          "text": "四月，Airbnb 籌到二十億美元定期貸款。",
+          "emotion": "台灣口語說書，清楚自然，正常語速",
+          "say": "四月，愛彼迎 籌到二十億美元定期貸款。",
+          "say_for": "2370f74e62ad"
         }
       ]
     },
     {
-      "id": "x14-b04-s08",
+      "id": "x14-b04-s03",
       "template": "shot",
       "data": {
         "prompt": "Medium close-up: an anonymous bookkeeper holds the loan folder apart from a narrow revenue envelope, soft overcast daylight",
@@ -1312,14 +1257,30 @@
       },
       "lines": [
         {
-          "id": "x140408",
-          "text": "這是借來的資金，不是營收；公司還能縮哪裡？",
+          "id": "x140403",
+          "text": "這是借來的資金，不是住宿賺到的營收。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b04-s04",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot: an anonymous office worker surveys several quiet desks beyond a closed loan folder, gentle indoor light",
+        "camera": "Overhead shot, static",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140404",
+          "text": "貸款換到時間，空著的辦公桌卻還是要處理；公司會怎麼縮？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
     {
-      "id": "x14-b04-s09",
+      "id": "x14-b04-s05",
       "template": "stats",
       "data": {
         "title": "2020 年 5 月",
@@ -1333,8 +1294,72 @@
       },
       "lines": [
         {
-          "id": "x140409",
+          "id": "x140405",
           "text": "五月，公司減少約一千八百名全職員工。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b04-s06",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up: an anonymous manager surveys a reduced row of office desks through a three-quarter view, muted afternoon light",
+        "camera": "Close-up, slow pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140406",
+          "text": "約占當時員工的四分之一。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b04-s07",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot: an anonymous lodging host keeps a separate key beside the distant office desks, soft morning window light",
+        "camera": "Wide shot, slow pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140407",
+          "text": "縮的是公司員工，房東仍是平台另一端的提供者。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b04-s08",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up: an anonymous marketing worker closes a plain campaign folder at a desk, soft overcast daylight",
+        "camera": "Medium close-up, slow push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140408",
+          "text": "幾乎所有自選行銷計畫開支被暫停。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b04-s09",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot: an anonymous planner shelves a small transport model beside an unfinished content folder, gentle indoor light",
+        "camera": "Overhead shot, static",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140409",
+          "text": "交通和內容等較新的投資，也先停下來。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1343,14 +1368,14 @@
       "id": "x14-b04-s10",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous manager surveys a reduced row of office desks through a three-quarter view, cool desk lamp",
+        "prompt": "Medium shot: an anonymous manager returns a plain room key to the middle of an uncluttered booking desk, cool desk lamp",
         "camera": "Medium shot, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140410",
-          "text": "約占當時員工的四分之一。",
+          "text": "公司把心力重新放回接待住宿的核心。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1359,15 +1384,15 @@
       "id": "x14-b04-s11",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous lodging host keeps a separate key beside the distant office desks, muted afternoon light",
+        "prompt": "Close-up: an anonymous traveler studies a route map that ends near home rather than at a distant terminal, muted afternoon light",
         "camera": "Close-up, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140411",
-          "text": "縮的是公司員工，不是把房東叫作被裁員工。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "text": "但如果旅客不再飛遠，剩下的房源要如何被看見？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
@@ -1375,14 +1400,14 @@
       "id": "x14-b04-s12",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous marketing worker closes a plain campaign folder at a desk, soft morning window light",
+        "prompt": "Wide shot: an anonymous analyst traces a short arc from a suitcase token toward a nearby house key, soft morning window light",
         "camera": "Wide shot, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140412",
-          "text": "它還暫停幾乎所有自選行銷計畫開支。",
+          "text": "從這年下半年起，附近住宿的需求開始比前一年同期多。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1391,14 +1416,14 @@
       "id": "x14-b04-s13",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: an anonymous planner shelves a small transport model beside an unfinished content folder, soft overcast daylight",
+        "prompt": "Medium close-up: an anonymous traveler walks toward a nearby plain guesthouse with a small suitcase, soft overcast daylight",
         "camera": "Medium close-up, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140413",
-          "text": "交通和內容等較新的投資，也被暫停。",
+          "text": "距出發地五十英里內的住宿，在其中。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1407,15 +1432,15 @@
       "id": "x14-b04-s14",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: an anonymous traveler studies a route map that ends near home rather than at a distant terminal, gentle indoor light",
+        "prompt": "Overhead shot: an anonymous route planner draws a second, somewhat longer local arc on a blank map, gentle indoor light",
         "camera": "Overhead shot, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140414",
-          "text": "但如果旅客不再飛遠，留下的房源要如何被找到？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "五十到三百英里的距離帶，也出現年增長。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -1423,17 +1448,15 @@
       "id": "x14-b04-s15",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous analyst traces a short arc from a suitcase token toward a nearby house key, cool desk lamp",
+        "prompt": "Medium shot: an anonymous host unfolds a longer run of blank calendar tiles beside a room key, cool desk lamp",
         "camera": "Medium shot, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140415",
-          "text": "Airbnb 當時觀察到國內與短程旅行需求增加。",
-          "emotion": "台灣口語說書，清楚自然，正常語速",
-          "say": "愛彼迎 當時觀察到國內與短程旅行需求增加。",
-          "say_for": "d9254c68533d"
+          "text": "長住需求，亦高於前一年同期。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -1441,14 +1464,14 @@
       "id": "x14-b04-s16",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous traveler walks toward a nearby plain guesthouse with a small suitcase, muted afternoon light",
+        "prompt": "Close-up: an anonymous analyst traces a short arc from a suitcase token toward a nearby house key, muted afternoon light",
         "camera": "Close-up, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140416",
-          "text": "距出發地五十英里內的住宿需求，當年比前一年高。",
+          "text": "這是下半年的轉向，不能改說成全年每個月都在增加。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1457,14 +1480,14 @@
       "id": "x14-b04-s17",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous route planner draws a second, somewhat longer local arc on a blank map, soft morning window light",
+        "prompt": "Wide shot: an anonymous product planner rearranges nearby lodging pins on a blank app-like board, soft morning window light",
         "camera": "Wide shot, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140417",
-          "text": "五十到三百英里的距離帶，也出現年增長。",
+          "text": "網站和應用程式於是更突出附近、非都會住宿。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1473,14 +1496,14 @@
       "id": "x14-b04-s18",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: an anonymous host unfolds a longer run of blank calendar tiles beside a room key, soft overcast daylight",
+        "prompt": "Medium close-up: an anonymous product planner moves nearer lodging pins to the front of a blank app-like board without moving the houses, soft overcast daylight",
         "camera": "Medium close-up, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140418",
-          "text": "長住需求，同樣高於前年。",
+          "text": "房源沒有因此全搬到近處，改的是旅客先看到什麼。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1489,30 +1512,35 @@
       "id": "x14-b04-s19",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: an anonymous product planner rearranges nearby lodging pins on a blank app-like board, gentle indoor light",
+        "prompt": "Overhead shot: an anonymous records clerk studies a diminished booking pile beside a year-end board of room keys, gentle indoor light",
         "camera": "Overhead shot, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140419",
-          "text": "網站和應用程式因此更突出附近、非都會住宿。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "text": "全年淨預訂量仍大跌，年底房源清單卻顯出另一幅圖；總數會是多少？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
     {
       "id": "x14-b04-s20",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Medium shot: an anonymous lodging host places the room key at the center of an uncluttered booking desk, cool desk lamp",
-        "camera": "Medium shot, slow pan right",
-        "visual": "still"
+        "title": "年底活躍房源總數",
+        "stats": [
+          {
+            "value": "~5.6m → ~5.6m",
+            "label": "2019 → 2020；非同批房東"
+          }
+        ],
+        "source": "Airbnb 2020 10-K"
       },
       "lines": [
         {
           "id": "x140420",
-          "text": "公司把這種取捨叫作回到接待住宿的核心。",
+          "text": "疫情前與這一年年底，活躍房源總數都約五百六十萬。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1521,20 +1549,52 @@
       "id": "x14-b04-s21",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous analyst keeps a plain product board separate from a closed profit folder, muted afternoon light",
+        "prompt": "Close-up: an anonymous analyst sees two similar total piles of keys but cannot match an individual key between them, muted afternoon light",
         "camera": "Close-up, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140421",
-          "text": "但這個新入口，能補回整年的虧損嗎？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "這是兩張總表，無法對上每一間房或每一位房東。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
     {
       "id": "x14-b04-s22",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot: an anonymous records clerk watches one key token leave one tray as another enters a different tray, soft morning window light",
+        "camera": "Wide shot, slow pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140422",
+          "text": "有人離開、有人加入，單靠總量也分不出來。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b04-s23",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up: an anonymous support worker closes a small relief envelope while one host key remains outside the tray, soft overcast daylight",
+        "camera": "Medium close-up, slow push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140423",
+          "text": "更無法說支援計畫保住了同一批房東。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b04-s24",
       "template": "stats",
       "data": {
         "title": "2020 全年 GAAP 淨虧損",
@@ -1548,30 +1608,16 @@
       },
       "lines": [
         {
-          "id": "x140422",
-          "text": "同年財報仍列出約四十六億美元淨虧損。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "id": "x140424",
+          "text": "同年公司列出約四十六億美元的全年 GAAP 淨虧損；這全是退訂的成本嗎？",
+          "emotion": "自然提問，尾音微上揚",
+          "say": "同年公司列出約四十六億美元的全年 一般公認會計原則 淨虧損；這全是退訂的成本嗎？",
+          "say_for": "f7205576fb50"
         }
       ]
     },
     {
-      "id": "x14-b04-s23",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up: an anonymous researcher holds an annual loss folder apart from a stack of canceled booking tiles, soft overcast daylight",
-        "camera": "Medium close-up, slow push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140423",
-          "text": "但這個虧損數，能全部算給沒出門的旅客嗎？",
-          "emotion": "自然提問，尾音微上揚"
-        }
-      ]
-    },
-    {
-      "id": "x14-b04-s24",
+      "id": "x14-b04-s25",
       "template": "stats",
       "data": {
         "title": "2020 上市觸發股份費用",
@@ -1585,29 +1631,8 @@
       },
       "lines": [
         {
-          "id": "x140424",
-          "text": "上市時認列的股份費用，就約二十八億美元。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b04-s25",
-      "template": "stats",
-      "data": {
-        "title": "2020 全年權證重估",
-        "stats": [
-          {
-            "value": "US$868.5m",
-            "label": "非現金；非 Q4 數字"
-          }
-        ],
-        "source": "Airbnb 2020 10-K"
-      },
-      "lines": [
-        {
           "id": "x140425",
-          "text": "全年認股權證重估，另有約八點七億美元非現金變動。",
+          "text": "其中有上市時認列的約二十八億美元股份費用。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1623,7 +1648,7 @@
       "lines": [
         {
           "id": "x140426",
-          "text": "把這些會計項目混在一起，就無法拿淨虧損直接量疫情傷口。",
+          "text": "所以整筆虧損不能叫作旅客取消訂單的賠償單。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1639,7 +1664,7 @@
       "lines": [
         {
           "id": "x140427",
-          "text": "需求尚未完全回來時，下一年的旅客開始怎樣訂房？",
+          "text": "房源數還在表上；隔年旅客會用什麼方式住進來？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -1655,30 +1680,51 @@
       "lines": [
         {
           "id": "x140501",
-          "text": "二〇二一年，全年淨預訂夜晚與體驗席位升到三點零零六億。",
+          "text": "二〇二一年，旅客先把更多夜晚填回日曆。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ],
-      "chapter": "旅客回來，住宿長度卻變了"
+      "chapter": "房間開始被訂得更久"
     },
     {
       "id": "x14-b05-s02",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Overhead shot: an anonymous analyst compares the growing reservation pile with several still-empty route spaces, soft overcast daylight",
-        "camera": "Overhead shot, slow push in",
-        "visual": "still"
+        "title": "2021 全年 net nights + experiences",
+        "stats": [
+          {
+            "value": "300.6m",
+            "label": "扣取消與更改後"
+          }
+        ],
+        "source": "Airbnb 2021 Q4 shareholder letter"
       },
       "lines": [
         {
           "id": "x140502",
-          "text": "比上一年回升，仍不是「所有地方都回到從前」。",
+          "text": "全年淨預訂夜晚與體驗席位升到三點零零六億。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
     {
       "id": "x14-b05-s03",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: an anonymous analyst compares the growing reservation pile with several still-empty route spaces, gentle indoor light",
+        "camera": "Medium shot, static",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140503",
+          "text": "比上一年回升，卻還看不出旅程長什麼樣。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b05-s04",
       "template": "stats",
       "data": {
         "title": "2021 全年營收",
@@ -1692,24 +1738,8 @@
       },
       "lines": [
         {
-          "id": "x140503",
-          "text": "這一年營收也升到約六十億美元。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b05-s04",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up: an anonymous bookkeeper leaves the annual earnings folder only partly filled beside the growing booking pile, cool desk lamp",
-        "camera": "Close-up, slow pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
           "id": "x140504",
-          "text": "更多訂單帶進收入，全年損益卻還沒有轉正。",
+          "text": "同年營收也升到約六十億美元。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1718,17 +1748,15 @@
       "id": "x14-b05-s05",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous remote worker opens a plain laptop beside a long row of blank lodging calendar tiles, muted afternoon light",
+        "prompt": "Wide shot: an anonymous traveler moves a suitcase token farther along the calendar instead of closing it after one square, muted afternoon light",
         "camera": "Wide shot, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140505",
-          "text": "Airbnb 注意到，遠端工作讓一部分旅客住得更久。",
-          "emotion": "台灣口語說書，清楚自然，正常語速",
-          "say": "愛彼迎 注意到，遠端工作讓一部分旅客住得更久。",
-          "say_for": "700b91543520"
+          "text": "訂單回來了，哪一種住宿開始占去更多格子？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
@@ -1736,15 +1764,17 @@
       "id": "x14-b05-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: an anonymous traveler moves a suitcase token farther along the calendar instead of closing it after one square, soft morning window light",
+        "prompt": "Medium close-up: an anonymous remote worker opens a plain laptop beside a long row of blank lodging calendar tiles, soft morning window light",
         "camera": "Medium close-up, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140506",
-          "text": "這是公司的觀察；新訂的夜晚留下什麼痕跡？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "Airbnb 觀察到，遠端工作讓部分旅客住得更久。",
+          "emotion": "台灣口語說書，清楚自然，正常語速",
+          "say": "愛彼迎 觀察到，遠端工作讓部分旅客住得更久。",
+          "say_for": "80b5a62d978b"
         }
       ]
     },
@@ -1759,7 +1789,7 @@
       "lines": [
         {
           "id": "x140507",
-          "text": "把第四季新訂的住宿夜晚攤開。",
+          "text": "第四季新訂的住宿夜晚，留下了一條線索。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1780,7 +1810,7 @@
       "lines": [
         {
           "id": "x140508",
-          "text": "二十八夜以上長住的夜晚，占二〇一九年同季百分之十六。",
+          "text": "還記得那張拉長的日曆？疫情前同季，二十八夜以上住宿占百分之十六。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1801,7 +1831,7 @@
       "lines": [
         {
           "id": "x140509",
-          "text": "到這年同季，比例變成百分之二十二。",
+          "text": "到了這年同季，比例增加到百分之二十二。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1817,8 +1847,8 @@
       "lines": [
         {
           "id": "x140510",
-          "text": "分母是第四季的訂房夜晚，不是旅客人數。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "text": "分母是第四季新訂住宿夜晚，不是旅客人數；超過一週的又占多少？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
@@ -1833,7 +1863,7 @@
       "lines": [
         {
           "id": "x140511",
-          "text": "超過七天的住宿，在這季已接近新訂夜晚的一半。",
+          "text": "超過七夜的住宿，在這一季已接近新訂夜晚的一半。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1849,13 +1879,29 @@
       "lines": [
         {
           "id": "x140512",
-          "text": "這類長住已包含在七天以上；房源也願意接嗎？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "這類長住本就包含在七夜以上，不能把兩組加起來。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
     {
       "id": "x14-b05-s13",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: an anonymous host opens a long section of availability on a blank booking calendar, gentle indoor light",
+        "camera": "Medium shot, static",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140513",
+          "text": "有旅客想住久，房源端願意開放這麼長的日期嗎？",
+          "emotion": "自然提問，尾音微上揚"
+        }
+      ]
+    },
+    {
+      "id": "x14-b05-s14",
       "template": "stats",
       "data": {
         "title": "2021 Q4 末活躍房源",
@@ -1869,24 +1915,8 @@
       },
       "lines": [
         {
-          "id": "x140513",
-          "text": "公司還說，季末超過九成活躍房源接受這類長住預訂。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b05-s14",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up: an anonymous researcher keeps an available room key apart from a checked-in guest token, cool desk lamp",
-        "camera": "Close-up, slow pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
           "id": "x140514",
-          "text": "這代表可訂條件，不代表九成房東真的接到長住客。",
+          "text": "這季末，超過九成活躍房源接受二十八夜以上預訂。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1895,14 +1925,14 @@
       "id": "x14-b05-s15",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous traveler places a nearby house pin beside a longer suitcase route on a blank desk map, muted afternoon light",
+        "prompt": "Wide shot: an anonymous researcher keeps an available room key apart from a checked-in guest token, muted afternoon light",
         "camera": "Wide shot, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140515",
-          "text": "這個變化讓附近住宿以外，還多了一種可見的需求。",
+          "text": "那只是可訂條件，並非九成房東真的接到長住客。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1918,7 +1948,7 @@
       "lines": [
         {
           "id": "x140516",
-          "text": "可是一季的變化，足夠替全年利潤下結論嗎？",
+          "text": "更多夜晚能配上房源，當季損益又變了什麼？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -1939,10 +1969,10 @@
       "lines": [
         {
           "id": "x140517",
-          "text": "這年第四季，Airbnb 賺了五千五百萬美元。",
+          "text": "第四季，Airbnb 淨賺五千五百萬美元。",
           "emotion": "台灣口語說書，清楚自然，正常語速",
-          "say": "這年第四季，愛彼迎 賺了五千五百萬美元。",
-          "say_for": "7f06276bfdee"
+          "say": "第四季，愛彼迎 淨賺五千五百萬美元。",
+          "say_for": "28dc8b04a4e0"
         }
       ]
     },
@@ -1962,7 +1992,7 @@
       "lines": [
         {
           "id": "x140518",
-          "text": "同一年的全年損益，卻仍虧三億五千兩百萬美元。",
+          "text": "但同一年的全年，仍淨虧三億五千兩百萬美元。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1978,7 +2008,7 @@
       "lines": [
         {
           "id": "x140519",
-          "text": "一季正數，不能替全年蓋章。",
+          "text": "一季正數，還不能替全年蓋盈利的章。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1994,7 +2024,7 @@
       "lines": [
         {
           "id": "x140520",
-          "text": "而長住份額上升，也沒有單獨解釋這張損益表。",
+          "text": "長住份額增加，也不能獨自解釋這張損益表。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -2003,15 +2033,15 @@
       "id": "x14-b05-s21",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: an anonymous traveler looks past a long local stay toward a faint distant border line on a blank map, soft morning window light",
+        "prompt": "Medium close-up: an anonymous route planner studies a muted international route line that has not fully reopened, soft morning window light",
         "camera": "Medium close-up, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140521",
-          "text": "回到那張住宿日曆：有人住久了，還有人重新跨境嗎？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "而跨境旅遊當時仍受限制影響。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -2019,14 +2049,14 @@
       "id": "x14-b05-s22",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: an anonymous route planner studies a muted international route line that has not fully reopened, soft overcast daylight",
+        "prompt": "Overhead shot: an anonymous host extends the booking calendar while several distant route pins remain separate, soft overcast daylight",
         "camera": "Overhead shot, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140522",
-          "text": "公司當時說，跨境旅行仍受限制和時點影響。",
+          "text": "訂單數量回來，不代表旅客的路線全部照舊。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -2035,14 +2065,14 @@
       "id": "x14-b05-s23",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous host extends the booking calendar while several distant route pins remain separate, gentle indoor light",
+        "prompt": "Medium shot: an anonymous route planner studies a muted international route while a long availability ribbon remains on the booking calendar, gentle indoor light",
         "camera": "Medium shot, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140523",
-          "text": "更多預訂夜晚回來，旅客的行程卻未必照舊。",
+          "text": "可接長住的房源在表上，跨境旅程卻仍受限制。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -2058,13 +2088,30 @@
       "lines": [
         {
           "id": "x140524",
-          "text": "到下一年，全年預訂夜晚又會走到哪裡？",
+          "text": "下一年，那些遠近不同的旅程會如何填上日曆？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
     {
       "id": "x14-b06-s01",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: an anonymous traveler traces a longer route on a blank map toward a simple lodging pin, soft overcast daylight",
+        "camera": "Medium shot, slow push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140601",
+          "text": "二〇二二年，更遠的路線重新出現在預訂日曆上。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ],
+      "chapter": "旅行回來，地圖沒有回到原位"
+    },
+    {
+      "id": "x14-b06-s02",
       "template": "stats",
       "data": {
         "title": "2022 全年 net nights + experiences",
@@ -2078,31 +2125,30 @@
       },
       "lines": [
         {
-          "id": "x140601",
-          "text": "二〇二二年，全年淨預訂夜晚與體驗席位達三點九三七億。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ],
-      "chapter": "首個盈利年，不是舊旅行的複製"
-    },
-    {
-      "id": "x14-b06-s02",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up: an anonymous traveler lifts a suitcase from a quiet desk as more lodging pins become available, gentle indoor light",
-        "camera": "Close-up, static",
-        "visual": "still"
-      },
-      "lines": [
-        {
           "id": "x140602",
-          "text": "這是從疫情低點再往上的一年。",
+          "text": "全年淨預訂夜晚與體驗席位達三點九三七億。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
     {
       "id": "x14-b06-s03",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot: an anonymous traveler lifts a suitcase from a quiet desk as more lodging pins become available, cool desk lamp",
+        "camera": "Wide shot, slow pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140603",
+          "text": "比上一年又多了一截。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b06-s04",
       "template": "stats",
       "data": {
         "title": "2022 全年營收",
@@ -2116,7 +2162,7 @@
       },
       "lines": [
         {
-          "id": "x140603",
+          "id": "x140604",
           "text": "Airbnb 全年營收約八十四億美元。",
           "emotion": "台灣口語說書，清楚自然，正常語速",
           "say": "愛彼迎 全年營收約八十四億美元。",
@@ -2125,7 +2171,7 @@
       ]
     },
     {
-      "id": "x14-b06-s04",
+      "id": "x14-b06-s05",
       "template": "stats",
       "data": {
         "title": "年度營收變化",
@@ -2139,48 +2185,25 @@
       },
       "lines": [
         {
-          "id": "x140604",
-          "text": "比前一年的約六十億，多了約四成。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b06-s05",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead shot: an anonymous analyst keeps a broad trip-value tray apart from a small service-fee envelope, soft morning window light",
-        "camera": "Overhead shot, slow pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
           "id": "x140605",
-          "text": "這是平台服務費等收入，別和住宿總交易額混同。",
+          "text": "比上一年約增加四成。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
     {
       "id": "x14-b06-s06",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "2022 首個 GAAP 盈利年",
-        "stats": [
-          {
-            "value": "~US$1.9bn",
-            "label": "全年淨利"
-          }
-        ],
-        "source": "Airbnb 2022 Q4 shareholder letter"
+        "prompt": "Medium shot: an anonymous analyst keeps a broad trip-value tray apart from a small service-fee envelope, soft overcast daylight",
+        "camera": "Medium shot, slow push in",
+        "visual": "still"
       },
       "lines": [
         {
           "id": "x140606",
-          "text": "全年按 GAAP 計算的淨利，約十九億美元。",
-          "emotion": "台灣口語說書，清楚自然，正常語速",
-          "say": "全年按 一般公認會計原則 計算的淨利，約十九億美元。",
-          "say_for": "d644854d9f2a"
+          "text": "這是服務費等收入，不能與整張訂單的總額混同。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -2188,36 +2211,20 @@
       "id": "x14-b06-s07",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous archivist sets that earnings folder beside a separate prior-year folder, gentle indoor light",
+        "prompt": "Close-up: an anonymous planner notices the returning guest route splits into different shapes on a blank map, gentle indoor light",
         "camera": "Close-up, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140607",
-          "text": "公司把它列為首次全年盈利。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x14-b06-s08",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot: an anonymous planner notices the returning guest route splits into different shapes on a blank map, cool desk lamp",
-        "camera": "Wide shot, slow pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x140608",
-          "text": "但獲利那年，旅客真的已照舊跨境、住大城市嗎？",
+          "text": "更多夜晚回來，旅行卻沒有沿原來的路線排隊；差在哪？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
     {
-      "id": "x14-b06-s09",
+      "id": "x14-b06-s08",
       "template": "stats",
       "data": {
         "title": "28 夜以上占 Q4 gross nights",
@@ -2231,8 +2238,24 @@
       },
       "lines": [
         {
-          "id": "x140609",
+          "id": "x140608",
           "text": "這年第四季，長住仍占新訂夜晚的百分之二十一。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x14-b06-s09",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up: an anonymous analyst compares that ribbon with an earlier, shorter quarter ribbon, muted afternoon light",
+        "camera": "Medium close-up, slow pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x140609",
+          "text": "和上一年同季接近，還有另一條路線在改變。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -2241,15 +2264,15 @@
       "id": "x14-b06-s10",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: an anonymous analyst compares that ribbon with an earlier, shorter quarter ribbon, soft morning window light",
+        "prompt": "Overhead shot: an anonymous traveler traces a slightly narrower crossing-border line on a later map, soft morning window light",
         "camera": "Overhead shot, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140610",
-          "text": "這些比例以第四季新訂夜晚為分母；跨境又如何？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "跨境夜晚在這一季占百分之四十四。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -2260,8 +2283,8 @@
         "title": "跨境占 Q4 gross nights",
         "stats": [
           {
-            "value": "47%",
-            "label": "2019 Q4"
+            "value": "47% → 44%",
+            "label": "2019 Q4 → 2022 Q4"
           }
         ],
         "source": "Airbnb 2022 Q4 shareholder letter"
@@ -2269,28 +2292,23 @@
       "lines": [
         {
           "id": "x140611",
-          "text": "跨境夜晚在二〇一九年第四季占百分之四十七。",
+          "text": "疫情前同季是百分之四十七。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
     {
       "id": "x14-b06-s12",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "跨境占 Q4 gross nights",
-        "stats": [
-          {
-            "value": "44%",
-            "label": "2022 Q4"
-          }
-        ],
-        "source": "Airbnb 2022 Q4 shareholder letter"
+        "prompt": "Close-up: an anonymous traveler turns from a dense-city pin toward a quieter lodging pin, gentle indoor light",
+        "camera": "Close-up, static",
+        "visual": "still"
       },
       "lines": [
         {
           "id": "x140612",
-          "text": "這年同季是百分之四十四。",
+          "text": "高密度都市夜晚，這一季占百分之五十一。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -2311,7 +2329,7 @@
       "lines": [
         {
           "id": "x140613",
-          "text": "高密度都市的夜晚，也從百分之五十九變成五十一。",
+          "text": "疫情前同季是百分之五十九。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -2327,8 +2345,8 @@
       "lines": [
         {
           "id": "x140614",
-          "text": "同一時候，房源總量又變了多少？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "這些都是第四季新訂夜晚的比例，不是全年旅客數。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -2348,8 +2366,8 @@
       "lines": [
         {
           "id": "x140615",
-          "text": "年底的活躍房源總量，則到了六百六十萬。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "text": "年底活躍房源總數則到了六百六十萬；房東名冊也一定相同嗎？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
@@ -2364,7 +2382,7 @@
       "lines": [
         {
           "id": "x140616",
-          "text": "比兩年前多，但無法從總量認出同一批房東。",
+          "text": "比兩年前多，仍無法從總數辨認同一批房東。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -2373,31 +2391,38 @@
       "id": "x14-b06-s17",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous traveler sees a partly changed route map beside a positive earnings folder, gentle indoor light",
+        "prompt": "Close-up: an anonymous accountant opens a sealed annual earnings folder beside a changed route map, gentle indoor light",
         "camera": "Close-up, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140617",
-          "text": "也就是說，獲利那年並非舊旅行的原樣複製。",
+          "text": "於是把年度損益簿翻開，結果和旅行路線一樣意外。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
     {
       "id": "x14-b06-s18",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Wide shot: an anonymous auditor keeps separate relief, staff, product and long-stay tokens outside a causal-proof tray, cool desk lamp",
-        "camera": "Wide shot, slow pan right",
-        "visual": "still"
+        "title": "2022 首個 GAAP 盈利年",
+        "stats": [
+          {
+            "value": "~US$1.9bn",
+            "label": "全年淨利"
+          }
+        ],
+        "source": "Airbnb 2022 Q4 shareholder letter"
       },
       "lines": [
         {
           "id": "x140618",
-          "text": "至於是補助、裁員、產品還是長住帶來多少淨利，資料無法逐項算出。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "text": "全年按 GAAP 計算的淨利，約十九億美元。",
+          "emotion": "台灣口語說書，清楚自然，正常語速",
+          "say": "全年按 一般公認會計原則 計算的淨利，約十九億美元。",
+          "say_for": "d644854d9f2a"
         }
       ]
     },
@@ -2405,14 +2430,14 @@
       "id": "x14-b06-s19",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: an anonymous planner gently aligns the host key token and guest suitcase token along the calendar path, muted afternoon light",
+        "prompt": "Medium close-up: an anonymous archivist sets that earnings folder beside a separate prior-year folder, muted afternoon light",
         "camera": "Medium close-up, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140619",
-          "text": "能看到的是：平台處理兩端，縮減開支，並順著改變的需求展示房源。",
+          "text": "公司把它列為首次全年盈利。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -2421,15 +2446,15 @@
       "id": "x14-b06-s20",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: an anonymous traveler follows a newly occupied calendar path past local and distant lodging pins, soft morning window light",
+        "prompt": "Overhead shot: an anonymous auditor keeps separate relief, staff, product and long-stay tokens outside a causal-proof tray, soft morning window light",
         "camera": "Overhead shot, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140620",
-          "text": "旅客訂單其後恢復，住宿組合又換了樣子。",
-          "emotion": "台灣口語說書，清楚自然，正常語速"
+          "text": "一邊是還沒復原的旅行比例，一邊是正數年報；哪項措施能獨占功勞？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
@@ -2443,17 +2468,17 @@
       "lines": [
         {
           "id": "x140621",
-          "text": "答案是：它處理兩端、縮減開支，需求也恢復；沒有單一救命按鈕。",
+          "text": "答案在重新配對：附近、長住與回來的遠行填進日曆，卻沒有證據把盈利獨算給某一招。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         },
         {
           "id": "x140622",
-          "text": "如果旅行再次急轉，你認為平台該先守住哪一端？",
+          "text": "如果旅程又突然停下，你會先守旅客的退款，還是房東的收入？",
           "emotion": "自然提問，尾音微上揚"
         },
         {
           "id": "x140623",
-          "text": "想把熟悉品牌背後的轉折看清楚，歡迎訂閱品牌故事。",
+          "text": "想看熟悉品牌如何走過真正的轉折，歡迎訂閱品牌故事。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]

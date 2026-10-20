@@ -22,13 +22,13 @@ for (const raw of readFileSync(path.join(dir, "drafts/shorts.md"), "utf8").split
 }
 if (sections.length !== 2 || sections.some(short => short.rows.length !== 8)) throw new Error("Expected two eight-line Shorts");
 const shots = [
-  ["x14-b01-s01", "x14-b02-s12", "x14-b04-s22", "x14-b04-s23", "x14-b04-s24", "x14-b04-s25", "x14-b04-s26", "x14-b01-s01"],
-  ["x14-b05-s05", "x14-b05-s09", "x14-b05-s08", "x14-b05-s16", "x14-b05-s18", "x14-b06-s09", "x14-b06-s06", "x14-b05-s05"],
+  ["x14-b04-s24", "x14-b02-s07", "x14-b01-s03", "x14-b04-s25", "x14-b04-s25", "x14-b04-s26", "x14-b04-s26", "x14-b04-s24"],
+  ["x14-b05-s18", "x14-b05-s09", "x14-b05-s08", "x14-b05-s14", "x14-b05-s17", "x14-b06-s08", "x14-b06-s18", "x14-b05-s18"],
 ];
 const beats = ["hook", "setup", "setup", "turn", "proof", "proof", "payoff", "loop"];
 const headlines = [
-  ["2020｜預訂被取消", "全年預訂 −41%", "淨虧損 ~US$4.6bn", "全是旅客沒出門？", "IPO 股份費用 ~US$2.8bn", "權證重估 ~US$0.87bn", "衝擊不等於全部淨損", "46 億 ≠ 取消帳單"],
-  ["2021｜長住變多", "Q4 長住夜晚 22%", "2019 Q4 是 16%", "就救成全年盈利？", "2021 全年仍虧", "2022 Q4 長住 21%", "2022 首個盈利年", "份額 ≠ 單獨功勞"],
+  ["虧 46 億美元＝退訂？", "全年淨預訂 −41%", "三、四月合計取消超新訂", "淨虧損還含上市費用", "IPO 股份費用 ~US$2.8bn", "全年權證重估 ~US$0.87bn", "46 億 ≠ 取消帳單", "不能自創疫情虧損"],
+  ["長住升，全年仍虧？", "2021 Q4 長住 22%", "2019 Q4 是 16%", ">90% 房源接受長住", "Q4 賺／全年虧", "2022 Q4 長住 21%", "2022 首個盈利年", "份額 ≠ 單獨功勞"],
 ];
 const sourceLinks = [
   [{ label: "Airbnb 2020 Form 10-K", url: "https://www.sec.gov/Archives/edgar/data/1559720/000155972021000010/airbnb-10k.htm" }],

@@ -157,8 +157,43 @@ const lights = ["soft overcast daylight", "gentle indoor light", "cool desk lamp
 
 export function visualCueCount(chapterIndex) { return cues[chapterIndex]?.length ?? 0; }
 
+// V2 narration keeps the approved per-chapter shot count while moving the
+// business events into one chronological thread. Reuse the original anonymous
+// props by meaning, not by their obsolete line position; hard overrides cover
+// moments for which the former shot had no suitable equivalent.
+const cueRemap = [
+  [0, 4, 2, 3, 5, 8, 6, 7, 8],
+  [0, 18, 2, 3, 9, 10, 11, 13, 12, 14, 20, 21, 22, 23, 14, 15, 15, 16, 17, 20, 18, 23, 24, 25, 25, 25],
+  [0, 2, 6, 7, 8, 9, 1, 2, 3, 5, 4, 12, 11, 13, 14, 15, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25],
+  [5, 6, 7, 9, 8, 9, 10, 11, 12, 19, 13, 14, 15, 16, 17, 14, 18, 18, 0, 0, 1, 2, 4, 21, 23, 25, 26],
+  [0, 0, 1, 2, 5, 4, 6, 7, 8, 9, 10, 11, 12, 12, 13, 15, 16, 17, 18, 19, 21, 22, 23, 23],
+  [1, 0, 1, 2, 3, 4, 7, 8, 9, 11, 10, 12, 12, 13, 14, 15, 5, 5, 6, 17, 18, 21, 22],
+];
+const overrides = new Map([
+  ["0:1", "an anonymous traveler packs a small suitcase while an anonymous lodging host keeps a plain unused room key beside a blank calendar"],
+  ["0:5", "an anonymous office manager studies a row of now-empty desks while a vacant guest-room key waits on the side table"],
+  ["0:6", "an anonymous remote worker stretches an unmarked lodging calendar across many blank squares beside a suitcase"],
+  ["0:7", "an anonymous archivist compares two year-end boards with similarly sized piles of keys but no way to match individual keys"],
+  ["1:0", "an anonymous guest and an anonymous lodging host face the same crossed-out blank reservation tile across a quiet desk"],
+  ["2:4", "an anonymous records clerk keeps a guest-refund tray apart from a host-support tray on opposite sides of a blank calendar"],
+  ["2:8", "an anonymous host-support clerk selects a narrow band of blank check-in calendar squares beside a plain host key"],
+  ["2:25", "an anonymous office finance clerk studies an empty booking calendar and a closed budget folder beside a plain room key"],
+  ["3:0", "an anonymous finance clerk opens a loan folder beside a half-empty booking calendar and a plain room key"],
+  ["3:3", "an anonymous office worker surveys several quiet desks beyond a closed loan folder"],
+  ["3:9", "an anonymous manager returns a plain room key to the middle of an uncluttered booking desk"],
+  ["3:17", "an anonymous product planner moves nearer lodging pins to the front of a blank app-like board without moving the houses"],
+  ["3:18", "an anonymous records clerk studies a diminished booking pile beside a year-end board of room keys"],
+  ["4:22", "an anonymous route planner studies a muted international route while a long availability ribbon remains on the booking calendar"],
+  ["5:0", "an anonymous traveler traces a longer route on a blank map toward a simple lodging pin"],
+  ["5:16", "an anonymous accountant opens a sealed annual earnings folder beside a changed route map"],
+]);
+
+if (cueRemap.some((chapter, index) => chapter.length !== visualCueCount(index) || chapter.some(old => old < 0 || old >= visualCueCount(index)))) {
+  throw new Error("Invalid Airbnb narration-to-visual mapping");
+}
+
 export function visualFor(chapterIndex, rowIndex) {
-  const phrase = cues[chapterIndex]?.[rowIndex];
+  const phrase = overrides.get(`${chapterIndex}:${rowIndex}`) ?? cues[chapterIndex]?.[cueRemap[chapterIndex]?.[rowIndex]];
   if (!phrase) throw new Error(`Missing visual cue for chapter ${chapterIndex + 1}, line ${rowIndex + 1}`);
   const shot = sizes[(chapterIndex * 2 + rowIndex) % sizes.length];
   return {
