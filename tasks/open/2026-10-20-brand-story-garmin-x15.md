@@ -32,7 +32,8 @@ The owner asks for another missing-brand video under the established 奇聞檔�
 - [x] Confirm no duplicate Garmin X-series worktree or PR; select verified catalogue idea C15 without changing the 100-topic plan.
 - [x] Fetch and hash six worker-readable SEC originals plus one oversized reviewer-only 10-K; draft source matrix, six-chapter treatment, and two standalone Short concepts.
 - [x] Have an independent agent redownload originals and audit this packet against exact hashes, periods, segment denominators, and the two story concepts; fix any HOLD findings. See `reviews/source-audit-independent.md` PASS on commit `af55507e`.
-- [ ] Build source-tagged full script, production JSON and two Shorts; run repository validation, then two fresh blind narrative reviews on identical frozen hashes.
+- [x] Build source-tagged six-chapter main script, production JSON and two independent Shorts. Freeze `video.json` SHA-256 `0a8ca399e47d274d0163b9268f4813f9f1037a7a40435feb5bcbb569065ff88a` and `shorts.json` SHA-256 `b216f9b598aa512148bd2f673e71e509c0c3fcc3f2ca64d0e9d6ffbb653e2da6` at `e0c97132`; video lint 0 errors/0 warnings, Shorts validator 0 problems, docs tests 236/236 and tasks check exit 0.
+- [ ] Have a different agent independently verify every spoken main and Short claim against G1–G6 originals, then obtain two fresh blind narrative ballots on the exact audited hashes; repair and repeat if either finds a material problem.
 - [ ] Produce and QA affordable media/animation/CC and actual links as available, then open a truthful PR and continue the next brand.
 
 ## How to verify
