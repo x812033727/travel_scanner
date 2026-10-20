@@ -1,0 +1,49 @@
+{
+  "slug": "curio-s52",
+  "input_sha256": {
+    "brief.md": "3463fced92403975e91bb624216370f9e56ac603348336c037929f4084efc5df",
+    "research.md": "644adc7e538ca85fe1e1b6e274293b7cc39c54c8bd94b0e8decb5466072b038a",
+    "claims.md": "aed770f9ac194db89305ff8aa4ac3fdf87e800c356a32280c189a2690b0fd977",
+    "video.json": "9ab5b5cc77ef6f0ea0fed5ce056a90e390964b6f63f44042657bd58c0f655068",
+    "script.md": "1764cc03aa5bb5ea402e89b7e21e163d676045c6e42611dfaa54fdc69fa62131"
+  },
+  "request_sha256": "fe9d19820038a4ef9eae279fb2624062743f0b5c80a1ba5ed003952b22c7225b",
+  "narration_sha256": "beec2a0fe24221200522dea4703f2cdd3a0575ca5042cf95a107daf4495f5c19",
+  "viewpoint_sha256": "4b160bb6de7d39b54a952a4d88842776d06a625351235bc4c6b3eb1c419f640a",
+  "initial_unregistered": {
+    "at": "2026-10-20T19:56:41.725Z",
+    "response": {
+      "stance": 0.67,
+      "demo": 0.24,
+      "advice": 0.01,
+      "sponsored": 0.26,
+      "passed": false,
+      "note": "Jev：符合立場 0.67、有示範 0.24、建議 0.01、業配 0.26；沒過（有示範低於 0.6）",
+      "questions": "tutorial",
+      "observation": null,
+      "disparage": null
+    },
+    "parsed": {
+      "ok": false,
+      "detail": "Jev：符合立場 0.67、有示範 0.24、建議 0.01、業配 0.26；沒過（有示範低於 0.6）"
+    }
+  },
+  "registered_explainer": {
+    "at": "2026-10-20T19:57:15.764Z",
+    "response": {
+      "stance": 0.67,
+      "demo": null,
+      "advice": 0.01,
+      "sponsored": 0.24,
+      "passed": true,
+      "note": "Jev：符合立場 0.67、有示範：不適用（解說）、建議 0.01、業配 0.24，通過",
+      "questions": "explainer",
+      "observation": null,
+      "disparage": null
+    },
+    "parsed": {
+      "ok": true,
+      "detail": "Jev：符合立場 0.67、有示範：不適用（解說）、建議 0.01、業配 0.24，通過"
+    }
+  }
+}

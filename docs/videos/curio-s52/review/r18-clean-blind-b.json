@@ -1,0 +1,104 @@
+{
+  "review": "r18-clean-blind-b",
+  "slug": "curio-s52",
+  "script": "docs/videos/curio-s52/script.md",
+  "script_sha256_before": "1a5d07020b2f15555f3359d31ecf6d90c6f8cb4780c8d3159e4c7cc2544d6857",
+  "script_sha256_after": "1a5d07020b2f15555f3359d31ecf6d90c6f8cb4780c8d3159e4c7cc2544d6857",
+  "answers": [
+    {
+      "id": "scene_first",
+      "answer": "yes",
+      "reason": "The first sentence places Cook at the Tahiti shore observatory on 3 June 1769, waiting for the event; Green and Solander are preparing beside him. [s52001] [s52002]",
+      "yes": true,
+      "evidence": "[s52001] 一七六九年六月三日，庫克在大溪地岸上的觀測處等候。"
+    },
+    {
+      "id": "no_spoiler",
+      "answer": "yes",
+      "reason": "The opening asks whether the three observers will agree and who else recorded the contacts, without giving the later discrepancy or records. [s52004] [s52007] [s52106] [s52122]",
+      "yes": true,
+      "evidence": "[s52004] 同一個接觸瞬間，三人記下的時刻能精確到同一秒嗎？"
+    },
+    {
+      "id": "one_line",
+      "answer": "yes",
+      "reason": "After the opening glimpse, the account proceeds from the Society's 1768 request to choosing the site, observing the transit, and the teams' return. [s52001] [s52009] [s52028] [s52082] [s52124]",
+      "yes": true,
+      "evidence": "[s52009] 為了抓準那個碰上太陽邊緣的瞬間，一七六八年二月，皇家學會向國王請求派船。"
+    },
+    {
+      "id": "no_toc",
+      "answer": "no",
+      "reason": "The narration explicitly announces what comes next: '接下來受考驗的，是金星靠近太陽圓邊的那一刻,' rather than simply moving into the event. [s52206]",
+      "yes": false,
+      "evidence": "[s52206] 天氣這一關過了；接下來受考驗的，是金星靠近太陽圓邊的那一刻。"
+    },
+    {
+      "id": "chapters_link",
+      "answer": "no",
+      "reason": "One chapter closes by asking which step the blur made hard, but the next chapter's first sentence merely restates that the shadow interfered with judging contact time, already identified as difficult at the inner contacts. It supplies no new consequence at the handoff. [s52097] [s52101] [s52102]",
+      "yes": false,
+      "evidence": "[s52101] 那層模糊，究竟讓哪一步變得難記？ [s52102] 庫克說，那層暗影干擾了接觸時刻的判定。"
+    },
+    {
+      "id": "open_loops",
+      "answer": "yes",
+      "reason": "Specific unanswered questions recur through the narration, including the observers' agreement, landing site, clock comparison, weather, shadow, original report, and final record coverage; these anchors are each less than 90 seconds from nearby hooks. [s52004] [s52019] [s52313] [s52081] [s52101] [s52121] [s52127]",
+      "yes": true,
+      "evidence": "[s52004] 同一個接觸瞬間，三人記下的時刻能精確到同一秒嗎？"
+    },
+    {
+      "id": "payoffs",
+      "answer": "no",
+      "reason": "The question about which step the blur made hard receives only a general restatement that the shadow interfered with contact-time judgment. The script had already said the two inner contacts were especially hard to judge, so this is not a new answer. [s52097] [s52101] [s52102]",
+      "yes": false,
+      "evidence": "[s52101] 那層模糊，究竟讓哪一步變得難記？ [s52102] 庫克說，那層暗影干擾了接觸時刻的判定。"
+    },
+    {
+      "id": "no_recap",
+      "answer": "no",
+      "reason": "The shore team's continued presence at the original bay is stated, then restated as the main station still being there and Cook still waiting there after the other teams leave, without a named callback. [s52063] [s52076] [s52080]",
+      "yes": false,
+      "evidence": "[s52076] 主觀測處還留在庫克選的海灣岸上。 [s52080] 兩隊離開後，庫克仍留在岸上等六月三日。"
+    },
+    {
+      "id": "chapters_are_events",
+      "answer": "yes",
+      "reason": "The chapter openings correspond to actions or revelations: the Society requests a ship, Cook chooses shore, instruments are set, teams leave, the transit occurs, the timings diverge, and teams return. [s52009] [s52028] [s52310] [s52069] [s52082] [s52106] [s52124]",
+      "yes": true,
+      "evidence": "[s52009] 為了抓準那個碰上太陽邊緣的瞬間，一七六八年二月，皇家學會向國王請求派船。"
+    },
+    {
+      "id": "outro_no_next",
+      "answer": "yes",
+      "reason": "The outro advises viewers to check whose historical number they are reading, asks a general question, and invites subscription; it does not name another video, episode, or file. [s52997] [s52998] [s52999]",
+      "yes": true,
+      "evidence": "[s52997] 下次看到精確到秒的歷史數字，先看它究竟是哪位觀測者留下的。"
+    },
+    {
+      "id": "opening_hooks",
+      "answer": "yes",
+      "reason": "After the observatory scene, the opening leaves at least four concrete matters unresolved: whether readings agree, why the voyage was commissioned, which two teams departed, and whose contact records exist beyond the later table. [s52001] [s52004] [s52005] [s52006] [s52007]",
+      "yes": true,
+      "evidence": "[s52004] 同一個接觸瞬間，三人記下的時刻能精確到同一秒嗎？ [s52005] 皇家學會為什麼要派船追這一刻？"
+    },
+    {
+      "id": "one_thread",
+      "answer": "yes",
+      "reason": "The central difficulty is recording the transit contact precisely. Site selection, clock calibration, backup observer teams, divergent readings, and incomplete tables each advance that difficulty through Cook's expedition. [s52003] [s52028] [s52314] [s52059] [s52106] [s52128]",
+      "yes": true,
+      "evidence": "[s52003] 三人要各自記下金星碰到太陽邊緣的時刻。"
+    },
+    {
+      "id": "no_detour",
+      "answer": "no",
+      "reason": "The account pauses for a separate observation of a Jupiter-satellite eclipse that clouds blocked, then switches to when the Venus instruments were installed without tying that failed observation back to the contact-timing problem. [s52307] [s52308] [s52053]",
+      "yes": false,
+      "evidence": "[s52307] 四月十七日，庫克和格林在岸上帳篷過夜，等木星第一顆衛星發生食。 [s52308] 但雲擋住了；那次天象，他們沒能看見。"
+    }
+  ],
+  "totals": {
+    "yes": 8,
+    "no": 5
+  }
+}

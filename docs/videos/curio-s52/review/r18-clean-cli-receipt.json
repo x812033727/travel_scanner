@@ -1,0 +1,133 @@
+{
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[s52001] fixes June 3, 1769 at Cook's Tahiti shore observatory; [s52002]-[s52004] put three observers into the act of timing a contact."
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[s52004]-[s52008] pose the timing, dispatched teams, and record questions without stating the later disagreement in [s52106]-[s52107]."
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[s52009], [s52028], [s52310], [s52069], [s52082], and [s52106] move the same contact-timing mission through petition, station, preparation, transit, and discrepancy; [s52116]-[s52122] investigate that"
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[s52005]-[s52008] ask event and record questions; [s52206] describes the next physical test at the Sun's edge rather than listing the video's sections."
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": false,
+      "evidence": "No: [s52101] asks which step the blur made difficult, but the next chapter's first sentence [s52102] merely says that the shadow disturbed contact-time judgment, already stated for the inner contacts "
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "Yes: [s52004] remains open until [s52106], while local questions such as [s52053], [s52064], [s52081], [s52205], and [s52116] keep the intervening stretches active."
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": false,
+      "evidence": "No: [s52101]'s question about what the blur made hard receives only the restatement [s52102]; [s52097] had already identified the hard-to-judge inner contacts. The answer adds no new result before [s5"
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "No: [s52087] defines first contact as Venus first touching the outer rim, and [s52090] repeats that same definition when giving the table's first time, without a marked callback."
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[s52009] names the petition, [s52028] the shore selection, [s52069] the first team's departure, and [s52124] the teams' return; the other chapter headings likewise name actions or the timing discrepan"
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[s52997]-[s52999] close on how to read a historical second count, a viewer question, and subscription; no later video or file is named."
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "After the initial scene in [s52001]-[s52004], [s52005] asks why a ship was sent, [s52006] asks about two departing teams, and [s52007] asks whose records lie outside the four-cell table; [s52008] adds"
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "The observers' difficulty in timing the transit is introduced in [s52003]-[s52004], drives the clock and team preparations in [s52311]-[s52064], and resolves through the differing readings and source "
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": false,
+      "evidence": "No: [s52307]-[s52308] spend a separate beat on an obscured eclipse of Jupiter's moon. [s52053] then jumps to May equipment setup without tying that failed observation to the Venus contact-timing quest"
+    }
+  ],
+  "failed": [
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": false,
+      "evidence": "No: [s52101] asks which step the blur made difficult, but the next chapter's first sentence [s52102] merely says that the shadow disturbed contact-time judgment, already stated for the inner contacts "
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": false,
+      "evidence": "No: [s52101]'s question about what the blur made hard receives only the restatement [s52102]; [s52097] had already identified the hard-to-judge inner contacts. The answer adds no new result before [s5"
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "No: [s52087] defines first contact as Venus first touching the outer rim, and [s52090] repeats that same definition when giving the table's first time, without a marked callback."
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": false,
+      "evidence": "No: [s52307]-[s52308] spend a separate beat on an obscured eclipse of Jupiter's moon. [s52053] then jumps to May equipment setup without tying that failed observation to the Venus contact-timing quest"
+    }
+  ],
+  "advisory": [],
+  "problems": [
+    "chapters_link：每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。（No: [s52101] asks which step the blur made difficult, but the next chapter's first sentence [s52102] merely says that the shadow disturbed contact-time judgment, already stated for the inner contacts ）",
+    "payoffs：每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。（No: [s52101]'s question about what the blur made hard receives only the restatement [s52102]; [s52097] had already identified the hard-to-judge inner contacts. The answer adds no new result before [s5）",
+    "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（No: [s52087] defines first contact as Venus first touching the outer rim, and [s52090] repeats that same definition when giving the table's first time, without a marked callback.）",
+    "no_detour：是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？（No: [s52307]-[s52308] spend a separate beat on an obscured eclipse of Jupiter's moon. [s52053] then jumps to May equipment setup without tying that failed observation to the Venus contact-timing quest）"
+  ]
+}

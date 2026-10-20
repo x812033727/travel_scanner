@@ -1,0 +1,114 @@
+{
+  "review_id": "r7-fresh-blind-b",
+  "scope": "Independent script-only narrative review of the 13 official questions returned by the narrative CLI. No brief, claims, video manifest, tasks, prior reviews, media, or site material was consulted.",
+  "source": {
+    "command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs narrative --slug curio-s52 --json",
+    "question_count": 13,
+    "assessment_basis": "narration_string_utf8_sha256",
+    "narration_string_utf8_sha256": "0d07f9a13fdaa0a4f56b83064209bdb750126692338888b41b7a1c96e1a708cd",
+    "script_file_bytes_sha256": "4baf82930dd2b3c4eb48e91d117400775697da91c001ef6a852779209c2c72b5",
+    "hash_note": "The narration-string hash is SHA-256 of JSON.parse(CLI stdout).narration encoded as UTF-8. The script-file hash is SHA-256 of script.md bytes; its prose was not opened for this review. The judgments below use only the CLI narration string."
+  },
+  "summary": {
+    "pass": 9,
+    "fail": 4,
+    "failed_question_ids": ["no_spoiler", "chapters_link", "no_recap", "no_detour"]
+  },
+  "questions": [
+    {
+      "id": "scene_first",
+      "criterion": "The first four lines start inside a concrete scene.",
+      "verdict": "pass",
+      "evidence_line_ids": ["s52001", "s52002", "s52003", "s52004"],
+      "finding": "The date, Tahiti sky, Cook's observing station, and Venus at the Sun's edge give time, place, actor, and action before any exposition."
+    },
+    {
+      "id": "no_spoiler",
+      "criterion": "The opening stops before later results.",
+      "verdict": "fail",
+      "evidence_line_ids": ["s52003", "s52081", "s52082", "s52084"],
+      "finding": "The opening explicitly says Cook saw the entire transit. The later June 3 scene asks what weather they would get and then reveals that the three observers saw the complete event. The full sighting is already a stated result, even though the later timing disagreement is withheld.",
+      "revision_hint": "Keep the cloudless observing moment and the contact-time question in the opening; hold the completed-observation result for the June 3 scene."
+    },
+    {
+      "id": "one_line",
+      "criterion": "One story line advances in event or discovery order.",
+      "verdict": "pass",
+      "evidence_line_ids": ["s52009", "s52028", "s52054", "s52069", "s52082", "s52106", "s52124"],
+      "finding": "After the permitted June 3 preview, the chronology runs from the 1768 request through site choice, preparation, June 1 dispatch, June 3 observation and discrepancy, and June 4 return. The discrepancy chapter adds the consequence of the observation rather than restarting the event."
+    },
+    {
+      "id": "no_toc",
+      "criterion": "No line announces the episode's coming structure.",
+      "verdict": "pass",
+      "evidence_line_ids": ["s52020", "s52021", "s52086", "s52094", "s52202"],
+      "finding": "The four contacts and the printed table are objects within the observation and its source, not a list of upcoming episode sections. The questions ask about the next event or measurement rather than announcing an outline."
+    },
+    {
+      "id": "chapters_link",
+      "criterion": "Every chapter's first line adds a consequence or answer to the preceding chapter.",
+      "verdict": "fail",
+      "evidence_line_ids": ["s52098", "s52099", "s52101", "s52102", "s52103"],
+      "finding": "The preceding chapter already says the edge is not a sharp line and asks what the blur makes hard. The next chapter's first line says the contact instant is not crisp, which restates that visual problem. The new consequence, that Cook says it disturbed the timing, arrives in the second line.",
+      "revision_hint": "Move the timing consequence into the first line of the discrepancy chapter, while retaining the concrete blurred edge as its cause."
+    },
+    {
+      "id": "open_loops",
+      "criterion": "An unresolved question or turn occurs at least every 90 seconds.",
+      "verdict": "pass",
+      "evidence_line_ids": ["s52004", "s52015", "s52019", "s52053", "s52078", "s52081", "s52089", "s52202", "s52205", "s52110", "s52116", "s52123"],
+      "finding": "The narration repeatedly opens a specific pending question across the request, site, preparation, dispatch, observation, conflicting readings, and return. No apparent stretch between those questions exceeds 90 seconds."
+    },
+    {
+      "id": "payoffs",
+      "criterion": "Pending questions receive concrete new answers, with recognizable callbacks after long gaps.",
+      "verdict": "pass",
+      "evidence_line_ids": ["s52005", "s52016", "s52006", "s52064", "s52069", "s52074", "s52007", "s52117", "s52118", "s52078", "s52127", "s52128", "s52110", "s52305"],
+      "finding": "The Society's motive receives the distance-measurement answer; the two instrument parties are named; the missing entries are identified as Cook's and Solander's; the departure-record question returns as a question about the two teams' timing differences and is answered by the absent four-contact readings. The same-magnification comparison also answers the magnification hook."
+    },
+    {
+      "id": "no_recap",
+      "criterion": "A fact is not stated twice without a named callback.",
+      "verdict": "fail",
+      "evidence_line_ids": ["s52003", "s52084", "s52098", "s52102"],
+      "finding": "The completed sighting appears in both the opening and the June 3 scene without an explicit callback to the opening. The indistinct edge/contact instant is also said again across the next chapter boundary without a new consequence in that first sentence.",
+      "revision_hint": "Either leave the completed sighting to the June 3 scene or explicitly name the opening moment when returning to it. Let the next chapter start with the timing consequence."
+    },
+    {
+      "id": "chapters_are_events",
+      "criterion": "Chapter titles name events or revelations.",
+      "verdict": "pass",
+      "evidence_line_ids": ["s52001", "s52009", "s52028", "s52054", "s52069", "s52082", "s52106", "s52124"],
+      "finding": "The eight headings identify seeing Venus, requesting a ship, choosing shore, practicing, dispatching teams, observing the transit, divergent readings, and the teams' return. None is a generic background or conclusion label."
+    },
+    {
+      "id": "outro_no_next",
+      "criterion": "The outro does not advertise a next video or file.",
+      "verdict": "pass",
+      "evidence_line_ids": ["s52997", "s52998", "s52999"],
+      "finding": "The closing advice, viewer question, and subscription request do not mention another episode. 'Next time you see a historical number' refers to the viewer's future reading, not a next video."
+    },
+    {
+      "id": "opening_hooks",
+      "criterion": "After the first scene, the opening leaves at least three later moments unresolved.",
+      "verdict": "pass",
+      "evidence_line_ids": ["s52004", "s52005", "s52006", "s52007", "s52008"],
+      "finding": "The opening withholds whether observers agree on timing, why the Society sent a ship, which two teams left, whose records are absent from the seconds table, and what still required eye judgment."
+    },
+    {
+      "id": "one_thread",
+      "criterion": "A recognizable problem carries through every chapter.",
+      "verdict": "pass",
+      "evidence_line_ids": ["s52004", "s52009", "s52025", "s52054", "s52078", "s52086", "s52106", "s52118", "s52128"],
+      "finding": "The thread is obtaining usable contact times for the Venus transit: commission the voyage, secure and equip observing sites, make the observations, then determine whose seconds can actually be compared."
+    },
+    {
+      "id": "no_detour",
+      "criterion": "Every passage advances the opening problem rather than leaving a self-contained aside.",
+      "verdict": "fail",
+      "evidence_line_ids": ["s52030", "s52035", "s52036", "s52038", "s52049"],
+      "finding": "The shore passage moves from cannon coverage to a marked perimeter, unarmed local visitors, and uncertainty over whether Cook was understood, then leaves those interactions behind when the ship moves. It establishes local context, but in this script the four-line sequence has no later effect on station operation or contact timing.",
+      "revision_hint": "Tie a specific shore interaction to how the observing station could be used, or compress the context while keeping the relevant fact."
+    }
+  ]
+}
