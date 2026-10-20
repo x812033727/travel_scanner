@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -105,6 +105,20 @@ test("adoption requires an explicit media workbase and a review for apply", asyn
   const noReview = await cli(b, "--apply");
   assert.equal(noReview.code, 2);
   assert.match(noReview.stderr, /needs --review/);
+  assert.deepEqual(tree(b.top), before);
+});
+
+test("dry run refuses a dangling story workdir symlink as an unsafe path", async t => {
+  const b = box(t);
+  symlinkSync(path.join(b.base, "missing-target"), b.workdir);
+  const before = tree(b.top);
+  const run = await cli(b, "--json");
+  assert.equal(run.code, 1, run.stdout + run.stderr);
+  const report = JSON.parse(run.stdout);
+  assert.equal(report.status, "refused");
+  assert.equal(report.checks.find(check => check.id === "explicit_real_workbase").ok, false);
+  assert.equal(report.checks.find(check => check.id === "explicit_real_workbase").code, "STORY_LEXICON_ADOPTION_WORKBASE_UNPROVEN");
+  assert.equal(lstatSync(b.workdir).isSymbolicLink(), true);
   assert.deepEqual(tree(b.top), before);
 });
 

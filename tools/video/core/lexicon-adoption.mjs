@@ -61,7 +61,8 @@ function workbaseProof(root, workdir) {
   if (isInside(workdir, root)) return "the media work directory is inside the repository";
   if (!existsSync(base) || !lstatSync(base).isDirectory() || lstatSync(base).isSymbolicLink()) return "the explicit media workbase must already be a real directory";
   if (realpathSync(base) !== path.resolve(base)) return "the media workbase must not pass through a symlink";
-  if (existsSync(workdir) && (!lstatSync(workdir).isDirectory() || lstatSync(workdir).isSymbolicLink())) return "the story work directory is not a real directory";
+  const workdirStat = lstatSync(workdir, { throwIfNoEntry: false });
+  if (workdirStat && (!workdirStat.isDirectory() || workdirStat.isSymbolicLink())) return "the story work directory is not a real directory";
   return null;
 }
 
