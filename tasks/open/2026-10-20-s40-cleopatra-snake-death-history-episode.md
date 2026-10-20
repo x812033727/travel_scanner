@@ -56,3 +56,5 @@ R1 independent script-only blind 8/13 and source/prompt audit are preserved as `
 2026-10-20 02:24 UTC：R4c exact-hash 劇本與旁白已依站主持續委託登錄本機核准（非站主親自試聽）；定點重配後全片 **84/84 句、音檢 0 旗標**。實際故事正文 **8:21.73**。83 張插圖最多三次的報價 **US$3.36**，549 秒配樂 **US$0.08**，整集圖樂上限 **US$3.44**；配樂已產生並實支 US$0.08，插圖尚未開畫。共享供應商時窗先留給 S04 修圖；後續逐張驗收與成片仍待完成。詳 [verify-7.md](../../docs/videos/curio-s40/verify-7.md)。
 
 2026-10-20 02:28 UTC：網站音訊卡已 `review-push --gate audio` 提交、狀態 pending。供應商新時窗重置後開始 83 景 `keyframes --takes 2`，屬已記錄 US$3.44 整集圖樂上限內；尚須等生成完並逐張看圖，不能把請求中當成成片。
+
+2026-10-20 03:40 UTC：首輪 83 張全尺寸審圖完成，機器 69 通過／14 `needs_review`，但另有 45 張機器通過圖帶現代或東亞服飾、燈具、家具等誤導性年代錯置。帳本共 119 次 image、117 次 judge，連配樂 US$1.6595／3.44。兩位審圖者交叉覆核 59 景的正面、來源安全修圖提示；僅改 `video.json` prompt，旁白 84/84、劇本與 claims 不動。新版 SHA `7bf3a70edcb09f8a74192511d1d33274c1a6dc82c2b9d62496921824aadc9b6f`；lint 0 錯誤／3 個為了防年代漂移而保留的重複年代詞警告。最終 JSON 的非 prompt 欄位與來源／年代定點覆核 **PASS**。**尚未重畫或合成**；S05 正用共用時窗，S40 待時窗後再在上限內正常重跑 `keyframes`，逐張驗收。詳 [verify-8.md](../../docs/videos/curio-s40/verify-8.md)。
