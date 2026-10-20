@@ -37,7 +37,7 @@ const metadata = [
   },
   {
     titles: ["Spotify 播客成本少 €21m，真省了多少？", "Spotify 2025 播客成本換欄：省錢還是改列？"],
-    description: "Spotify 2025 Q2 的 Ad-Supported 業務播客成本同比少 €21m，但新會員影片播客體驗的相關成本開始列到 Premium，其餘仍在 Ad-Supported。報表沒有拆出真節省與分類變動的比例，不能把 €21m 全算成播客省下的錢。匿名概念插畫；精確數字由後製排字。正式長片網址待真實上傳後回填。",
+    description: "Spotify 2025 Q2 的 Ad-Supported 業務播客成本同比少 €21m，但提供給 Premium 會員的新影片觀看體驗，其相關播客成本開始列到 Premium，其餘仍在 Ad-Supported。報表沒有拆出真節省與分類變動的比例，不能把 €21m 全算成播客省下的錢。匿名概念插畫；精確數字由後製排字。正式長片網址待真實上傳後回填。",
     links: [{ label: "Spotify S7 SEC 原件", url: "https://www.sec.gov/Archives/edgar/data/1639920/000163992025000012/spot-20250630x6xk.htm" }],
   },
 ];
@@ -59,7 +59,7 @@ const shorts = groups.map((lines, index) => ({
 const bytes = JSON.stringify(shorts, null, 2) + "\n";
 writeFileSync(path.join(dir, "shorts.json"), bytes);
 const sha = createHash("sha256").update(bytes).digest("hex");
-const mdLines = ["# X13 Spotify｜兩支獨立 Shorts 逐句稿 v4", "", `\`shorts.json\` SHA-256：\`${sha}\`。未配音、生成插畫、直式輸出或手機驗收；兩支各自從頭提出問題並回答。`];
+const mdLines = ["# X13 Spotify｜兩支獨立 Shorts 逐句稿 v5", "", `\`shorts.json\` SHA-256：\`${sha}\`。未配音、生成插畫、直式輸出或手機驗收；兩支各自從頭提出問題並回答。`];
 const sources = ["# X13 Spotify｜Shorts 作者來源索引", "", `\`shorts.json\` SHA-256：\`${sha}\`。作者標記，待獨立來源審查。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |"];
 for (const [i, lines] of groups.entries()) {
   mdLines.push("", `## Short ${i + 1}`, "");
@@ -71,11 +71,11 @@ for (const [i, lines] of groups.entries()) {
 writeFileSync(path.join(dir, "shorts-script.md"), mdLines.join("\n") + "\n");
 writeFileSync(path.join(dir, "shorts-source-matrix.md"), sources.join("\n") + "\n");
 const plan = [
-  "# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v4",
+  "# X13 Spotify｜兩支 Shorts 9:16 逐拍構圖計畫 v5",
   "",
   "這是**尚未生成畫面**的原生直式重構規格，不是裁切或手機 QA 通過收據。長片來源插畫要求中央 608px 焦點，但輸出仍須逐鏡驗真圖；來源數字卡在直式畫面重新由程式排字。",
   "",
-  "每拍輸入為 1920×1080，若是插畫先取 x=656–1264 的 608×1080 中央窗，再重排為 1080×1920。若是統計卡直接原生繪製 1080×1920，不裁橫版字。頭條安全區 x=78–902、y≤1380；可關閉繁中字幕預留 x=80–900、y=1430–1595；每拍在 360px 寬手機畫面檢查臉、手、主物、字與控制列不互相遮擋。",
+  "每拍輸入為 1920×1080，若是插畫先取 x=656–1264 的 608×1080 中央窗，再重排為 1080×1920。Short 1 兩種能力卡採中央上下堆疊，不放在兩側；Short 2 廣告與會員帳本也上下堆疊，先後鏡頭保持同一色序。若是統計卡直接原生繪製 1080×1920，不裁橫版字。頭條安全區 x=78–902、y≤1380；可關閉繁中字幕預留 x=80–900、y=1430–1595；每拍在 360px 寬手機畫面檢查臉、手、主物、字與控制列不互相遮擋。",
   "",
   "| Short／拍 | 長片來源 | 焦點／內容（直接取自來源鏡頭提示） | 橫版 x 起點 | 直式原生頭條 |",
   "| --- | --- | --- | ---: | --- |",
