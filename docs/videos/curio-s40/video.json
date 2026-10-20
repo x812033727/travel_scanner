@@ -108,17 +108,12 @@
       "what": "使者能否救下女王"
     },
     {
-      "setup": "cl055",
-      "payoff": "cl056",
-      "what": "籃子的蛇說從哪裡來"
-    },
-    {
       "setup": "cl062",
       "payoff": "cl063",
       "what": "屍身留下什麼"
     },
     {
-      "setup": "cl067",
+      "setup": "cl066",
       "payoff": "cl068",
       "what": "狄奧能否判定死法"
     },
@@ -267,11 +262,11 @@
     },
     {
       "id": "cl005",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Medium close shot of an imagined late Republican Roman triumph procession in an ancient stone street: two adult attendants in plain Roman tunics carry a portable wooden display board; the board clearly depicts a flat painted full-length queen figure in simple Greek dress with a small dark painted snake touching her forearm, soft overcast daylight.",
-        "camera": "track left",
-        "visual": "still"
+        "kicker": "普魯塔克《安東尼傳》·後來的圖像",
+        "text": "凱旋隊伍有**帶蛇的女王像**",
+        "sub": "蛇的形象，能倒推門內發生了什麼？"
       },
       "lines": [
         {
@@ -460,11 +455,11 @@
     },
     {
       "id": "cl017",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Extreme close-up shot inside a Ptolemaic Alexandrian limestone tomb, 30 BCE: one adult woman's hand grips the wooden hilt of a short ancient dagger tucked into the fold of her own plain Greek linen gown at her waist; a small section of the blade is visible as she begins to draw it, soft clay oil-lamp light.",
-        "camera": "drift left",
-        "visual": "still"
+        "kicker": "普魯塔克《安東尼傳》·意譯",
+        "text": "她剛**拔出匕首**",
+        "sub": "使者已從高窗進入；下一步尚未說出"
       },
       "lines": [
         {
@@ -621,11 +616,11 @@
     },
     {
       "id": "cl027",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Medium close side view inside a Ptolemaic Alexandrian limestone room: one adult Ptolemaic queen in a plain Greek linen chiton and narrow diadem stands behind one adult male steward in a simple tunic; her one clearly visible hand firmly grasps a small tuft of his short dark hair at the scalp as he bends over a tightly rolled unlettered papyrus inventory, soft clay-lamp light.",
-        "camera": "drift left",
-        "visual": "still"
+        "kicker": "普魯塔克《安東尼傳》·意譯",
+        "text": "她抓住**管家的頭髮**",
+        "sub": "財寶清單被指漏列；她接著解釋原因"
       },
       "lines": [
         {
@@ -913,33 +908,22 @@
       "template": "big",
       "data": {
         "kicker": "普魯塔克《安東尼傳》·意譯",
-        "text": "她把寫好的信**封起來**",
-        "sub": "所據英譯：a letter which she had written and sealed"
+        "text": "密封信**送出**；屋內只留**兩位女伴**",
+        "sub": "傳記稱她讓旁人退出，後段才記兩位女伴姓名"
       },
       "lines": [
         {
           "id": "cl045",
           "text": "用完餐，女王把一封寫好的信封起來，託人送給羅馬統帥。",
           "emotion": "自然說故事"
-        }
-      ],
-      "chapter": "密封信送出，門卻關上"
-    },
-    {
-      "id": "cl046",
-      "template": "big",
-      "data": {
-        "kicker": "普魯塔克《安東尼傳》·意譯",
-        "text": "她只留下**兩位女伴**",
-        "sub": "伊拉斯／卡爾米翁"
-      },
-      "lines": [
+        },
         {
           "id": "cl046",
           "text": "信送走後，普魯塔克說她讓別人離開，只留伊拉斯和卡爾米翁。",
           "emotion": "自然說故事"
         }
-      ]
+      ],
+      "chapter": "密封信送出，門卻關上"
     },
     {
       "id": "cl047",
@@ -991,11 +975,11 @@
     },
     {
       "id": "cl050",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Medium shot in a bare Ptolemaic Alexandrian limestone tomb chamber, 30 BCE: an adult Roman courier in a plain tunic halts at the doorway, looking toward the motionless adult Ptolemaic queen lying on a low ancient wooden couch; her eyes are closed, straight dark bob and narrow plain diadem clearly visible above royal draped Greek linen clothing, dim daylight.",
-        "camera": "track left",
-        "visual": "still"
+        "kicker": "普魯塔克《安東尼傳》·敘事",
+        "text": "使者進門，見她已**死去**",
+        "sub": "傳記稱女王身著王室裝束"
       },
       "lines": [
         {
@@ -1007,11 +991,11 @@
     },
     {
       "id": "cl051",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Slight high-angle wide shot of a bare Ptolemaic Alexandrian limestone tomb chamber, 30 BCE: three separate adult women are spaced along one low ancient couch; the motionless queen lies in the middle with closed eyes and a small plain diadem, one exhausted female attendant in draped Greek linen slumps on the floor at the far foot, and a second exhausted female attendant in draped Greek linen sits by the far head gently straightening the diadem, dim clay-lamp light.",
-        "camera": "push in",
-        "visual": "still"
+        "kicker": "普魯塔克《安東尼傳》·敘事",
+        "text": "伊拉斯床腳**奄奄一息**；卡爾米翁扶冠",
+        "sub": "這是傳記敘事，不是現場影像"
       },
       "lines": [
         {
@@ -1073,34 +1057,22 @@
       "id": "cl055",
       "template": "big",
       "data": {
-        "kicker": "普魯塔克《安東尼傳》·意譯",
-        "text": "衛兵讓**無花果籃**送了進去",
-        "sub": "所據英譯：bade him carry them in"
+        "kicker": "普魯塔克《安東尼傳》·敘事與傳聞",
+        "text": "籃子**進了門**；蛇說從哪裡來？",
+        "sub": "衛兵放行在敘事；後段才轉述蛇說"
       },
       "lines": [
         {
           "id": "cl055",
           "text": "使者只能看見結果。那個曾被衛兵放行的籃子，究竟被人怎麼解釋？",
           "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "cl056",
-      "template": "big",
-      "data": {
-        "kicker": "普魯塔克《安東尼傳》·轉述",
-        "text": "**有人說**，蛇藏在無花果葉下",
-        "sub": "作者隨後說：真相無人知道"
-      },
-      "lines": [
+        },
         {
           "id": "cl056",
           "text": "開頭那籃無花果，有人說當時的葉子下面還藏了一條毒蛇。",
           "emotion": "自然說故事"
         }
-      ],
-      "chapter": "無花果籃被說成藏了蛇"
+      ]
     },
     {
       "id": "cl057",
@@ -1138,27 +1110,16 @@
       "id": "cl059",
       "template": "big",
       "data": {
-        "kicker": "普魯塔克《安東尼傳》·另一說",
-        "text": "蛇在器皿裡；她拿**金紡錘**碰牠",
-        "sub": "作者並未判定這種說法為真"
+        "kicker": "普魯塔克《安東尼傳》·轉述",
+        "text": "另一說：器皿裡的蛇、金紡錘",
+        "sub": "作者接著判斷這些說法能否定案"
       },
       "lines": [
         {
           "id": "cl059",
           "text": "另有人說，蛇原本放在器皿裡，她拿金色的紡錘去碰牠。",
           "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "cl060",
-      "template": "big",
-      "data": {
-        "kicker": "普魯塔克《安東尼傳》·意譯",
-        "text": "真正發生什麼，**沒人知道**",
-        "sub": "所據英譯：what really took place is known to no one"
-      },
-      "lines": [
+        },
         {
           "id": "cl060",
           "text": "同一位作者沒有選出勝者，而是寫下：真正發生什麼，沒人知道。",
@@ -1186,7 +1147,7 @@
       "id": "cl062",
       "template": "shot",
       "data": {
-        "prompt": "Medium close shot inside a bare Ptolemaic Alexandrian limestone tomb in 30 BCE: a motionless adult Ptolemaic queen in draped royal Greek linen lies on a low ancient wooden couch, her eyes closed, straight dark bob and narrow plain diadem visible; her uncovered forearm rests still across the linen beside her, dim daylight.",
+        "prompt": "Close-up shot of a motionless adult woman in a sleeveless white Greek linen chiton lying on a low wooden couch in a 30 BCE Alexandrian stone tomb; her full bare forearm and open hand rest across the linen, with a straight dark bob and narrow plain diadem visible, dim clay-lamp light.",
         "camera": "drift left",
         "visual": "still"
       },
@@ -1250,27 +1211,16 @@
       "id": "cl066",
       "template": "big",
       "data": {
-        "kicker": "普魯塔克《安東尼傳》·轉述",
-        "text": "沙地**似有蛇跡**；手臂有**兩個淺針點**？",
-        "sub": "作者都以「有人說」引出，沒有定案"
+        "kicker": "古代作者對讀",
+        "text": "蛇跡與淺點，仍是**轉述**",
+        "sub": "普魯塔克沒有定案；接著看狄奧怎麼說"
       },
       "lines": [
         {
           "id": "cl066",
           "text": "沙地上的痕跡與手臂針點都是轉述；即使真有，也不能單靠它們判定致死工具。",
           "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "cl067",
-      "template": "big",
-      "data": {
-        "kicker": "兩位古代作者",
-        "text": "普魯塔克／狄奧",
-        "sub": "《安東尼傳》／《羅馬史》"
-      },
-      "lines": [
+        },
         {
           "id": "cl067",
           "text": "說法分成蛇與髮簪；後來的狄奧，又能判斷哪一個是真的嗎？",
@@ -1315,7 +1265,7 @@
       "id": "cl070",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a Ptolemaic Alexandrian palace, 30 BCE: an adult queen with straight dark bob, narrow plain diadem and simple Greek-style linen dress arranges plain travel ornaments on a low table while one adult Roman guard in a plain tunic watches from the doorway, soft afternoon light.",
+        "prompt": "Tight medium shot of an adult Ptolemaic queen in a sleeveless white Greek chiton placing two plain gold ornaments on a low table inside a stone Alexandrian palace in 30 BCE; one adult Roman guard in a plain tunic waits at the open doorway, soft afternoon light.",
         "camera": "track left",
         "visual": "still"
       },
@@ -1460,27 +1410,16 @@
       "id": "cl079",
       "template": "big",
       "data": {
-        "kicker": "普魯塔克《安東尼傳》·英譯節錄",
-        "text": "「在他的**凱旋式**裡……」",
-        "sub": "所據英譯：for in his triumph"
+        "kicker": "普魯塔克《安東尼傳》·意譯",
+        "text": "凱旋式展示**帶蛇的女王形象**",
+        "sub": "公開的勝利圖像，不是死因目擊"
       },
       "lines": [
         {
           "id": "cl079",
           "text": "普魯塔克又記，屋大維後來的凱旋隊伍展示一尊帶蛇的女王形象。",
           "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "cl080",
-      "template": "big",
-      "data": {
-        "kicker": "普魯塔克《安東尼傳》·意譯",
-        "text": "凱旋隊伍展示**帶蛇的女王像**",
-        "sub": "所據英譯：a figure of Cleopatra, with an asp clinging to her"
-      },
-      "lines": [
+        },
         {
           "id": "cl080",
           "text": "那尊像能證明一件事：蛇的版本已經成為公開的勝利圖像。",
