@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-brand-story-netflix-x03
 title: 製作 Netflix 郵寄 DVD 轉串流品牌故事 X03
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: codex-gpt6-x03-remediation
-claimed_at: 2026-10-20T18:08:15Z
+owner:
+claimed_at:
 created_at: 2026-10-20T10:42:12Z
 completed_at:
 branch: codex/brand-story-netflix-x03
