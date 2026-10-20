@@ -15,6 +15,8 @@ const src = {
   S3: "https://www.sec.gov/Archives/edgar/data/829224/000095013408021134/v50316e10vk.htm",
   S4: "https://www.sec.gov/Archives/edgar/data/829224/000095012309064772/v53316e10vk.htm",
   S5: "https://www.sec.gov/Archives/edgar/data/829224/000119312510266333/d10k.htm",
+  S7: "https://www.sec.gov/Archives/edgar/data/829224/000095012309058425/v53958exv99w1.htm",
+  S8: "https://www.sec.gov/Archives/edgar/data/829224/000119312510248069/dex991.htm",
 };
 const rows = [[], []];
 let active = -1;
@@ -54,7 +56,7 @@ const specs = [
     titles: ["星巴克同店從負 6% 到正 7%，只靠關店？", "星巴克 2010 同店翻正，關店能獨拿功勞嗎？"],
     headlines: ["2009：−6%", "2010：+7%", "關店一招？", "同店：滿 13 月", "第 53 週已排除", "交易與客單價↑", "店內也在改", "不能獨算關店"],
     description: "星巴克美國同店銷售由 FY2009 的 −6% 變成 FY2010 的 +7%。同店只算開滿 13 個月的直營店，FY2010 百分比排除多出的第 53 週。該年美國交易次數、平均每筆金額均上升；公司先提出改善顧客體驗的計畫，後來年報也談店內效率，不能把 +7% 的變化獨歸關店。畫面為匿名概念插畫，數字是後製字卡。正式長片網址待實際上傳後回填。",
-    refs: ["S1", "S4", "S5"],
+    refs: ["S1", "S4", "S5", "S7", "S8"],
   },
 ];
 const beat = ["hook", "setup", "turn", "proof", "proof", "proof", "proof", "payoff"];

@@ -13,11 +13,11 @@ x16s107 | S2 | 也看將來能否取得可接受回報。 | planner compares two
 x16s108 | S2 | 場址與市場也要考量；公告未列店齡為標準。 | planner moves plain storefront model on map
 
 ## Short 2: 負六到正七，關店一招夠嗎
-x16s201 | S4,S5 | 二〇〇九財年，星巴克美國同店銷售跌百分之六。 | barista studies thinning generic queue
-x16s202 | S5 | 二〇一〇財年，這個數字卻變成成長百分之七。 | barista welcomes anonymous customer
+x16s201 | S4,S7 | 二〇〇九財年，星巴克美國同店銷售跌百分之六。 | barista studies thinning generic queue
+x16s202 | S5,S8 | 二〇一〇財年，這個數字卻變成成長百分之七。 | barista welcomes anonymous customer
 x16s203 | editorial | 難道關掉一些店，就能讓留下的店賣得更好？ | owner weighs closed key beside mature tokens
 x16s204 | S5 | 同店只比較開滿十三個月的直營店。 | clerk encloses mature shop tokens apart from closed keys
-x16s205 | S5 | 二〇一〇年雖多了第五十三週，同店百分比已排除它。 | clerk moves extra leaf outside ring
-x16s206 | S5 | 美國交易次數增約三％，平均每筆金額增約四％。 | analyst joins queue and cup tokens
+x16s205 | S5,S8 | 二〇一〇年雖多了第五十三週，同店百分比已排除它。 | clerk moves extra leaf outside ring
+x16s206 | S5,S8 | 美國交易次數增約三％，平均每筆金額增約四％。 | analyst joins queue and cup tokens
 x16s207 | S1,S5 | 公司先計畫改善體驗，後來年報也談店內效率。 | barista adjusts plain counter tools
 x16s208 | editorial | 同時有多種改變，不能把正七％全算給關店。 | analyst keeps several plain factors on desk

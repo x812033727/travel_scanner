@@ -12,6 +12,9 @@ const sources = [
   { code: "S3", title: "Starbucks FY2008 Form 10-K", url: "https://www.sec.gov/Archives/edgar/data/829224/000095013408021134/v50316e10vk.htm", checked_on: "2026-10-20" },
   { code: "S4", title: "Starbucks FY2009 Form 10-K", url: "https://www.sec.gov/Archives/edgar/data/829224/000095012309064772/v53316e10vk.htm", checked_on: "2026-10-20" },
   { code: "S5", title: "Starbucks FY2010 Form 10-K", url: "https://www.sec.gov/Archives/edgar/data/829224/000119312510266333/d10k.htm", checked_on: "2026-10-20" },
+  { code: "S6", title: "Starbucks FY2008 results 8-K exhibit 99.1", url: "https://www.sec.gov/Archives/edgar/data/829224/000095013408020062/v50479exv99w1.htm", checked_on: "2026-10-20" },
+  { code: "S7", title: "Starbucks FY2009 results 8-K exhibit 99.1", url: "https://www.sec.gov/Archives/edgar/data/829224/000095012309058425/v53958exv99w1.htm", checked_on: "2026-10-20" },
+  { code: "S8", title: "Starbucks FY2010 results 8-K exhibit 99.1", url: "https://www.sec.gov/Archives/edgar/data/829224/000119312510248069/dex991.htm", checked_on: "2026-10-20" },
 ];
 const codes = new Set(sources.map(source => source.code));
 const lines = [[], [], [], [], [], []];
@@ -93,7 +96,8 @@ for (const [ci, chapter] of lines.entries()) {
       const portrait = selected.some(item => portraitSourceLines.has(item.id));
       const recurringCard = /\b(?:shop card|selection folio)\b/i.test(cue) ? " A recurring unmarked index card with one clipped corner rests by the focal prop; it bears no writing or symbol." : "";
       const angle = i % 4 === 0 ? "in front view, eyes toward viewer" : i % 4 === 1 ? "in three-quarter view" : i % 4 === 2 ? "in side-profile view" : "with head turned downward";
-      const prompt = `${camera[i % camera.length]} ${rooms[ci]}, one anonymous ${cue}, ${angle}, ${light[i % light.length]}.${recurringCard}${portrait ? portraitInstruction : ""} ${safeguards[i % safeguards.length]}`;
+      const room = ci === 2 ? ["at a modest assessment table", "beside a plain storefront", "in a records aisle"][i % 3] : rooms[ci];
+      const prompt = `${camera[i % camera.length]} ${room}, one anonymous ${cue}, ${angle}, ${light[i % light.length]}.${recurringCard}${portrait ? portraitInstruction : ""} ${safeguards[i % safeguards.length]}`;
       scene = { id, template: "shot", data: { prompt, camera: camera[i % camera.length], visual: "still" }, lines: selected.map(lineFor) };
     }
     if (si === 1) scene.chapter = titles[ci];
@@ -107,11 +111,10 @@ const loops = [
   { setup: "x160105", payoff: "x160201", what: "一月董事會如何改變展店速度" },
   { setup: "x160106", payoff: "x160321", what: "租約如何改變關門時程" },
   { setup: "x160107", payoff: "x160328", what: "關店對店員職位的影響" },
-  { setup: "x160108", payoff: "x160405", what: "為何年底直營淨店數反向增加" },
+  { setup: "x160108", payoff: "x160405", what: "年終直營總店數呈現什麼結果" },
   { setup: "x160109", payoff: "x160641", what: "七月名單最後的實關總數" },
   { setup: "x160205", payoff: "x160206", what: "店數和熟店銷售仍正為何要踩煞車" },
   { setup: "x160220", payoff: "x160329", what: "公司對受影響店員的安排希望" },
-  { setup: "x160226", payoff: "x160301", what: "單店獲利是公開的評估條件之一" },
   { setup: "x160227", payoff: "x160301", what: "七月公告給出單店獲利的新進展" },
   { setup: "x160308", payoff: "x160310", what: "公告還評估將來能否得到可接受回報" },
   { setup: "x160315", payoff: "x160316", what: "有無逐店選店原因" },
@@ -119,8 +122,7 @@ const loops = [
   { setup: "x160324", payoff: "x160325", what: "資產減損及遣散也列入預估" },
   { setup: "x160327a", payoff: "x160328", what: "關店計畫也影響店員職位" },
   { setup: "x160325d", payoff: "x160401", what: "列帳和實際關門進度不是同一個時點" },
-  { setup: "x160329d", payoff: "x160331a", what: "關店以外的 FY2009 美國直營新開店計畫" },
-  { setup: "x160331c", payoff: "x160405", what: "FY2008 關店是否先使美國直營淨店數縮小" },
+  { setup: "x160330", payoff: "x160331a", what: "關店以外的 FY2009 美國直營新開店計畫" },
   { setup: "x160332", payoff: "x160401", what: "九月底七月名單實際關店數" },
   { setup: "x160404", payoff: "x160405", what: "關店後年底美國直營淨數" },
   { setup: "x160409", payoff: "x160410", what: "年度淨擴張相對前一財年" },
@@ -130,9 +132,9 @@ const loops = [
   { setup: "x160510", payoff: "x160511", what: "關門之後的租約成本" },
   { setup: "x160514", payoff: "x160515", what: "美國直營店整體是否轉為淨減" },
   { setup: "x160518", payoff: "x160519", what: "關店後熟店是否即刻轉好" },
-  { setup: "x160525", payoff: "x160612", what: "關店是否獨力造成後來回暖" },
-  { setup: "x160604", payoff: "x160605", what: "2010 同店正成長是否來自第五十三週" },
-  { setup: "x160611", payoff: "x160613", what: "有無未關店的可比對照" },
+  { setup: "x160525", payoff: "x160616", what: "關店是否獨力造成後來回暖" },
+  { setup: "x160606", payoff: "x160610", what: "2010 熟店銷售來自交易還是客單" },
+  { setup: "x160611", payoff: "x160616", what: "所查申報能否隔離七月關店的效果" },
   { setup: "x160619", payoff: "x160641", what: "七月群組跨財年合計實際關店數" },
 ];
 const positions = new Map(allRows.map((row, i) => [row.id, i]));
