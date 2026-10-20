@@ -1,0 +1,1811 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s48",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，清楚自然說出大東號搜纜的日期、程序與不確定處；年份與史料層級稍放慢。",
+    "performance": "從 1865 年絕緣故障與沉線，順時序走到 1866 年新線先抵岸、舊線才上船驗通；張力推斷、肉眼見線與收訊分開。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sources": [
+    {
+      "title": "W. H. Russell, The Atlantic Telegraph (1865), fixed GITenberg text",
+      "url": "https://github.com/GITenberg/The-Atlantic-Telegraph_40948/blob/ba499c6bc32adef8c8a91a306dcb2d54bf7e898d/40948-0.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Henry M. Field, The Story of the Atlantic Telegraph (1898 impression), fixed GITenberg text",
+      "url": "https://github.com/GITenberg/The-Story-of-the-Atlantic-Telegraph_34765/blob/6b50b44d3cd2f3f1831e2c1a8fa052f53c51a4cd/34765.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "atl002",
+      "payoff": "atl045",
+      "what": "船首側向拉力會否使線斷落"
+    },
+    {
+      "setup": "atl003",
+      "payoff": "atl045",
+      "what": "第三次故障是否能找回壞段"
+    },
+    {
+      "setup": "atl004",
+      "payoff": "atl023",
+      "what": "第一段壞線的傷痕是什麼"
+    },
+    {
+      "setup": "atl005",
+      "payoff": "atl054",
+      "what": "1865 年張力判斷是否能證明鉤到了線"
+    },
+    {
+      "setup": "atl006",
+      "payoff": "atl077",
+      "what": "次年抓鉤能否把舊線帶出水面"
+    },
+    {
+      "setup": "atl007",
+      "payoff": "atl095",
+      "what": "次年舊線上船後還能否回應"
+    },
+    {
+      "setup": "atl008",
+      "payoff": "atl100",
+      "what": "沉線能否重新抵達對岸"
+    },
+    {
+      "setup": "atl017",
+      "payoff": "atl023",
+      "what": "首段故障如何出現"
+    },
+    {
+      "setup": "atl026",
+      "payoff": "atl027",
+      "what": "短暫斷訊能否恢復"
+    },
+    {
+      "setup": "atl029",
+      "payoff": "atl032",
+      "what": "第二段漏電位置的發現"
+    },
+    {
+      "setup": "atl035",
+      "payoff": "atl041",
+      "what": "第三次異常前又放出多長的線"
+    },
+    {
+      "setup": "atl037",
+      "payoff": "atl045",
+      "what": "第三次漏電後是否還能回收"
+    },
+    {
+      "setup": "atl047",
+      "payoff": "atl054",
+      "what": "1865 年海底抓鉤能否可靠證明有線"
+    },
+    {
+      "setup": "atl059",
+      "payoff": "atl067",
+      "what": "當年最後搜尋會否把電纜送上甲板"
+    },
+    {
+      "setup": "atl068",
+      "payoff": "atl069",
+      "what": "1866 年先鋪新線還是先撈舊線"
+    },
+    {
+      "setup": "atl074",
+      "payoff": "atl078",
+      "what": "次年張力是否代表實際鉤住整線"
+    },
+    {
+      "setup": "atl076",
+      "payoff": "atl080",
+      "what": "海面見到線後能否及時固定"
+    },
+    {
+      "setup": "atl084",
+      "payoff": "atl089",
+      "what": "最後一次抓鉤如何降低斷線風險"
+    },
+    {
+      "setup": "atl081",
+      "payoff": "atl082",
+      "what": "另一艘船帶回的究竟是哪一段"
+    },
+    {
+      "setup": "atl093",
+      "payoff": "atl095",
+      "what": "舊線上甲板後是否能收到對岸訊號"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "atl001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a large 1860s steamship bow, one telegraph line worker guides a plain dark rope over a wheel",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl001",
+          "text": "一八六五年八月二日，大東號的船首，正把一條跨海電纜從水裡拉回來。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ],
+      "chapter": "八月二日，線停在船首"
+    },
+    {
+      "id": "atl002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a vessel bow wheel, one engineer watches a taut dark undersea line descend into grey sea",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl002",
+          "text": "一端還通向愛爾蘭，另一端卻沉在幾千公尺深的海裡；大船一漂，拉力會怎麼變？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl003",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a dim 1860s ship test room, one engineer watches a tiny reflected light dot slide across an unnumbered scale beside a small mirror apparatus",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl003",
+          "text": "幾天前，船上的電流指示器已兩次離開正常位置；這次要怎麼把壞段找出來？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a 1860s steamer deck, one engineer studies the continuous dark sheath of a telegraph line segment on a bare worktable",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl004",
+          "text": "七月，第一段壞線攤到甲板上；工程師會先看到什麼？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a vessel bow, one crew member studies a taut grappling rope and blank gauge",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl005",
+          "text": "落海後，抓鉤在海底拖行，甲板上的張力計突然抬高；鉤上的是什麼？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl006",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a 1860s ship bow, one lookout studies a distant flag buoy and a coiled grappling rope above opaque sea",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl006",
+          "text": "隔年，船又朝浮標駛近；抓鉤這次能帶線出水嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl007",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a plain 1860s Irish telegraph office, one electrician watches a tiny reflected light dot on an unnumbered scale",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl007",
+          "text": "愛爾蘭端的電工盯著反光點；海上還會送來訊號嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl008",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a large 1860s vessel deck, one undersea line worker faces a dark undersea line disappearing into overcast sea",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl008",
+          "text": "沉在深海的這條線，最後還能通向對岸嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl009",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain 1850s telegraph room, one operator watches a blank paper strip by a brass key",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl009",
+          "text": "大東號這條新線，是為重建中斷的跨洋通訊而來；七年前，另一條線曾讓兩岸交換過電報。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ],
+      "chapter": "舊線停止回話，新線裝上船"
+    },
+    {
+      "id": "atl010",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an old telegraph desk, one operator pauses beside an unreadable blank message slip",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl010",
+          "text": "但到九月，紐芬蘭端不再傳來能讀懂的訊號；故障位置仍有不同說法。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl011",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1860s undersea line workshop, one craft worker holds a layered dark undersea line sample",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl011",
+          "text": "要再試一次，工程人員先把導線裹上絕緣層，再加外面的鐵絲保護。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl012",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a water testing tank, one engineer examines the sealed end of a cable",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl012",
+          "text": "它不是一根普通鐵索；只要海水碰到裡頭導體，岸上的訊號就可能跑掉。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl013",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a 1860s telegraph line shed, one engineer inspects a coiled dark telegraph line submerged in a plain tank",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl013",
+          "text": "新線存放在水槽裡，岸上和船上都能測有沒有漏；真正放進海裡，能一直過關嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl014",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a blank nautical chart, one planner measures a route with a simple divider",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl014",
+          "text": "愛爾蘭到紐芬蘭，橫渡海面大約一千六百海里；線得比這段路還長。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl015",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a huge 1860s steamship deck, one dock worker watches cable coils near a storage hatch",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl015",
+          "text": "這麼長又這麼重的線，要一次裝船，得用夠大的大東號。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the stern of a 1860s steamship, one telegraph line worker guides dark telegraph line toward grey water",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl016",
+          "text": "七月二十三日它離開愛爾蘭；船尾放線，船艙裡的電流測試會一直跟著走。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl017",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a dark vessel test room, one electrician watches a tiny light on a blank scale",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl017",
+          "text": "次日清晨，線才放出去八十多英里，測試室的光點就滑出了刻度。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ],
+      "chapter": "第一個光點越過刻度"
+    },
+    {
+      "id": "atl018",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a ship bow, one engineer prepares a plain hauling wheel beside a dark cable",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl018",
+          "text": "船停了，船員得把已入海的線拉回來，找出漏電的位置。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl019",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a wooden steamer desk, one engineer compares blank measurement pages",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl019",
+          "text": "但故障處不在眼前；不同計算給出的距離還相差很多。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl020",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on the bow of a large 1860s vessel, one helmsman studies a taut undersea line over grey water",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl020",
+          "text": "大船沒有前進速度時不好轉向，回收細線反而比放線更難。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl021",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot along a ship deck, one cable worker secures a dark rope beside a simple hauling drum",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl021",
+          "text": "他們把船尾的線繫到船首回收機，慢慢倒拉整夜。拉回的破口會長什麼樣？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl022",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a steamer deck, one engineer lifts a dark telegraph line segment from a plain wooden trough",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl022",
+          "text": "七月二十五日，拉回約十英里後，壞段終於到了甲板。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl023",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a workbench, one craft worker holds a short wire fragment beside the undersea line sheath",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl023",
+          "text": "破口裡刺著一小截鐵絲，長得跟外層保護鐵絲很像。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl024",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a ship workshop, one engineer studies a nicked cable sheath and a short iron wire at a bare workbench",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl024",
+          "text": "它是自己卡進去的，還是有人放的？當時沒人能從碎片直接證明。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl025",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a steamer deck, one telegraph line worker joins two dark telegraph line ends with plain tools",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl025",
+          "text": "工程人員把受損那段剪掉、重新接好，船尾又開始放線。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl026",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old vessel instrument room, one operator checks a silent blank receiver",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl026",
+          "text": "可剛恢復航行，測試室又失去岸上的訊號；這次問題在哪裡？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl027",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a ship instrument table, one electrician watches a reflected light dot return to an unnumbered scale",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl027",
+          "text": "一陣檢查後，訊號自己回來了；他們繼續向西，仍不知道短暫中斷的確切原因。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl028",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a steamer telegraph line tank, one worker watches a neat dark coil leave the water",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl028",
+          "text": "幾天裡，新線一圈圈從水槽滑出去，船上檢測一度看來很好。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ],
+      "chapter": "七百多海里後又漏電"
+    },
+    {
+      "id": "atl029",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a vessel test room, one electrician watches a reflected light dot slide beyond a blank scale beside a small mirror apparatus",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl029",
+          "text": "七月二十九日，已放出約七百多海里時，測試室又測到電流漏進海水。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl030",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a ship testing table, one engineer checks a plain cable sample",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl030",
+          "text": "這不是岸上說話慢一點；測試顯示絕緣層有嚴重缺口。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl031",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on an overcast steamer bow, one telegraph line worker turns a plain hauling wheel",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl031",
+          "text": "船又停住，把近船的一段線拉回，慢到一夜都還在拉。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl032",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a vessel workshop bench, one engineer peels back a dark undersea line sheath to inspect a short wire",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl032",
+          "text": "七月三十一日，剝開那段線，第二截鐵絲竟扎到導體附近。這能證明是人放的嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl033",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a ship cable tank, one supervisor watches a dark cable coil",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl033",
+          "text": "船上有人懷疑故意破壞，還把當班的水槽工人調去其他工作。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl034",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a 1860s steamer telegraph line tank, one watch keeper watches the outgoing coil during a quiet shift",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl034",
+          "text": "新換的監看人每兩小時接班，日夜守著水槽裡的線。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl035",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a simple vessel test room, one engineer examines an unreadable blank test sheet",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl035",
+          "text": "即使加了人手，線仍得一路放出去；下一次故障時，放線會跨過一千海里嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl036",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a 1860s ship cable tank, one worker guides a dark cable from a main tank toward an aft tank",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl036",
+          "text": "八月一日，水手開始把靠岸用的線移往船尾水槽；海上卻還有一段長路。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl037",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a dim steamer test room, one electrician watches a reflected light dot at the edge of an unnumbered scale",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl037",
+          "text": "隔天再亮起異常時，這一次線還拉得回來嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl038",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a vessel galvanometer, one engineer studies an off-scale light reflection",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl038",
+          "text": "八月二日早晨，光點又滑出刻度；船上的人再次決定收線修補。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ],
+      "chapter": "船首那一下讓線沉下去"
+    },
+    {
+      "id": "atl039",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a water-filled cable tank, one worker leans toward a coiled dark cable",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl039",
+          "text": "有人聽見水槽裡像鐵線擦過的聲響，但聲音和破口的關係當時無法定準。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl040",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a steamer worktable, one electrician tests a dark telegraph line end with plain brass instruments",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl040",
+          "text": "他們先在船上分段測試，確定漏電處已經離開了船尾。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl041",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a 1860s vessel stern, one undersea line worker secures a dark undersea line to a plain iron rope",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl041",
+          "text": "這時放線已超過一千海里。九點五十八分，班組切開線、繫上鐵索，再從船首拉回。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl042",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on an overcast ship bow, one navigator holds a blank depth chart above the sea",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl042",
+          "text": "書裡估海深約兩千噚；這是當時的估值，不是有人看見了海底。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl043",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a steamer bow, one engineer watches a taut dark telegraph line rub near an iron fitting",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl043",
+          "text": "船首接住線，前幾段也真的進來了；可大船一漂，線碰上艏部鐵件。還拉得回嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl044",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a vessel bow, one undersea line worker studies an angled rope crossing a plain wheel",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl044",
+          "text": "船不能隨意倒退，拉索和線又不是正對滑輪；側向張力慢慢增高。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl045",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a ship hauling wheel, one worker recoils as a dark cable slips away toward water",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl045",
+          "text": "一記猛拉後，索具跳出輪槽；黑線在回收機前突然斷開。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl046",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on an empty grey Atlantic, one lookout stands on a distant 1860s steamship bow",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl046",
+          "text": "電纜沉下去時，船距紐芬蘭還約六百英里，並非已看到港口。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl047",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a vessel bow, one engineer readies a plain multi-pronged grapnel over grey sea",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl047",
+          "text": "看不見線在哪裡，就先把船移到估計路徑的上風處；抓鉤能撈到嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl048",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a 1860s ship bow, one crew member lowers a plain multi-pronged iron hook",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl048",
+          "text": "同日下午，多爪鐵鉤從船首放下，靠繩索沉向看不見的海床。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ],
+      "chapter": "張力表顯示鉤子咬住"
+    },
+    {
+      "id": "atl049",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a steamer bow, one engineer studies a blank tension gauge and taut rope",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl049",
+          "text": "翌日清晨，張力計的數字升了，船頭也被索具稍微牽偏。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl050",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a 1860s vessel bow, one crew worker watches a tense rope",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl050",
+          "text": "船員喊「抓到了」；但當時真正看得到的，只有索具和儀表。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl051",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a hauling drum, one cable worker guides a dark rope around a plain wheel",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl051",
+          "text": "海底可能是電纜，也可能是別的阻力；船先一段段把繩索拉回來。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a steamer winch, one worker counts plain rope joints with gloved hands",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl052",
+          "text": "一條接頭上來，再一條接頭上來，像是離那條細線越來越近。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl053",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a vessel deck, one engineer watches a loose iron shackle beside a receding rope",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl053",
+          "text": "忽然，一個轉接鐵件斷了，鉤和拉起來的索又滑回海裡。要怎麼回頭找？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl054",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a ship bow over grey sea, one lookout scans the water near a hanging rope",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl054",
+          "text": "那次究竟鉤到了什麼，沒有人在甲板上看見線本身。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl055",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a steamer deck, one sailor lowers a plain flag buoy into overcast water",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl055",
+          "text": "船員接著放浮標，在茫茫海面留一個可再回頭找的標記。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl056",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one navigator marking an unlettered chart beside a small floating buoy",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl056",
+          "text": "浮標標的是推測的搜尋帶，不是一枚能指出海底端頭的針。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl057",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a stored cable coil in a ship hold, one engineer gently bends two protective wire offcuts",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl057",
+          "text": "羅素後來翻看船上儲放的線圈，發現護線鐵絲有的經得起彎折、有的會脆斷。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a steamer desk, one reporter examines a broken wire and a blank notebook",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl058",
+          "text": "這讓「有人放了碎片」的猜想弱了些，卻也不能反過來證明每一個破口都同因。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl059",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a large vessel bow, one undersea line worker prepares a fresh grapnel coil",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl059",
+          "text": "船上繼續找，那條線會先回來，還是更多索具會先斷？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl060",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a ship bow, one crew member watches a taut rope enter a drum",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl060",
+          "text": "八月八日，海底的抓鉤又帶起強張力，繩索已拉上一大段。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ],
+      "chapter": "一八六五年的最後一拉"
+    },
+    {
+      "id": "atl061",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a plain steamer capstan, one engineer sees a broken swivel beside dark rope",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl061",
+          "text": "它仍沒把電纜送到甲板；接頭又斷了，重物和鉤子再次掉下去。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl062",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on an overcast sea, one navigator watches a small anchored flag buoy",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl062",
+          "text": "船員留下一座浮標，對著估算位置準備最後一次。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl063",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a ship deck, one worker inspects a plain grapnel tangled with its own chain",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl063",
+          "text": "十一日，收上來的抓鉤沒帶線；它自己的鍊子反而纏住了鉤爪。船還會試嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a 1860s steamer deck, one rope maker prepares patched hemp and iron rope",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl064",
+          "text": "最後可用的索具東拼西接，船隊還是再把抓鉤放下去。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl065",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a vessel bow, one engineer watches a taut rope and blank tension gauge",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl065",
+          "text": "張力又升起，似乎有東西拖住船首；這次船員仍只看得見繩。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl066",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a dark ship bow, one cable worker steps back from a slack broken rope",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl066",
+          "text": "晚上，最後一段繩索突然裂開，抓鉤的搜索也停了。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a steamer writing desk, one reporter closes a blank logbook beside a plain sea chart",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl067",
+          "text": "浮標還在海上；羅素記下這趟失敗，那一年電纜沒再上船。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl068",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on an empty grey ocean, one lookout faces a distant vessel horizon",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl068",
+          "text": "要到下一年，船隊才可能再試；他們會先撈舊線嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl069",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 1860s ship cable tank, one worker checks a fresh dark cable coil",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl069",
+          "text": "一八六六年，船隊的第一步其實是另鋪一條新線，不是先救舊線。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ],
+      "chapter": "新線先抵達紐芬蘭"
+    },
+    {
+      "id": "atl070",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a small Newfoundland harbor, one telegraph line worker stands beside a newly landed dark telegraph line",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl070",
+          "text": "七月二十七日，新線抵達紐芬蘭一處名叫哈茲康騰特的海港；這條新線已能對岸回話。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl071",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a vessel undersea line hold, one engineer checks stored dark undersea line coils",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl071",
+          "text": "沉在海裡的那條仍沒回來，船上卻帶著前一年留下的線材。要對準哪兒放鉤？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl072",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a 1860s steamship departing a small harbor, one lookout faces the open sea",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl072",
+          "text": "八月九日，大東號和另一艘船再次出港，回到前一年丟線的海域。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl073",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a steamer bridge, one navigator aims a simple divider at distant flag buoys",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl073",
+          "text": "幾艘船靠浮標排出搜尋路線，再讓抓鉤橫越推定的線位。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl074",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a vessel bow, one engineer studies a heavy rope and blank force gauge",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl074",
+          "text": "繩索比去年更結實；張力計升起時，仍不能知道抓到的是完整電纜。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot over a ship rail, one cable worker watches a dark rope emerge from grey sea",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl075",
+          "text": "它必須先來到海面，才能排除只是石頭或一截殘索。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl076",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1860s steamer bow, one lookout watches a taut grappling rope vanish below opaque grey water, empty surrounding sea",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl076",
+          "text": "第一次真正看見舊線，船員會來得及把它固定嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl077",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a vessel bow, one engineer watches an old dark undersea line rise from grey water",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl077",
+          "text": "八月十七日，深海的抓鉤把舊電纜帶到海面，甲板上終於能用眼睛認。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ],
+      "chapter": "舊線露面五分鐘又走了"
+    },
+    {
+      "id": "atl078",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot over a ship rail, one cable worker observes an old mud-streaked dark cable",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl078",
+          "text": "線的一側沾著淺色海泥，另一側還看得出黑色外層；這回不是只看張力。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a steamer bow, one engineer prepares a plain stopper rope beside a lifted telegraph line",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl079",
+          "text": "可是線還掛在鉤上，若拉力太大，固定前就可能再斷。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl080",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot above grey water, one deck worker watches an old dark undersea line recede immediately after breaking beside the rail",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl080",
+          "text": "舊線在海面總共只看得見約五分鐘；船員還沒扣好索，它就折斷、立刻沉回海裡。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl081",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on an overcast Atlantic night, one lookout on a 1860s ship watches another vessel approach across dark water",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl081",
+          "text": "幾天後另艘船又發出「找到了」的消息；帶回的究竟是哪一段？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl082",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a steamer deck, one engineer holds a short dark telegraph line fragment beside a blank chart",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl082",
+          "text": "大東號靠近才確認：那是先前抓斷、約兩英里的殘段，不是仍連著愛爾蘭的長線。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl083",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a calm sea with flag buoys, one navigator studies a blank chart",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl083",
+          "text": "八月底，船隊移到稍淺的搜尋區；浮標、風向和張力都要重算。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl084",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a ship bow, one engineer watches a taut grappling line",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl084",
+          "text": "最後那次，抓鉤下去以後，索又開始拉緊；怎樣避免重演斷線？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl085",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a steamer capstan, one telegraph line worker guides a heavy rope onto a plain drum",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl085",
+          "text": "八月三十一日深夜，抓鉤再度咬住舊線；菲爾德書裡稱這是第三十次放鉤。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ],
+      "chapter": "兩艘船分擔深海的重量"
+    },
+    {
+      "id": "atl086",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a vessel writing table, one chronicler studies a blank expedition tally sheet",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl086",
+          "text": "這個「三十次」出自後出的記述，能確定的是作業已重複很多回。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl087",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on an overcast ship bow, one sailor studies a taut rope dropping into water",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl087",
+          "text": "幾小時後，他們拉起一大段繩索，線仍沉在海面下。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl088",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a plain anchored buoy, one crew member secures a heavy rope",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl088",
+          "text": "這回先把線暫繫在浮標上，船移到別處再鉤第二下。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl089",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a 1860s vessel deck, one navigator marks a two-vessel rope plan on blank paper",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl089",
+          "text": "兩處抓鉤把線托住，另一艘船又從西邊把其中一段拉斷，減少主船負擔。這下能上船嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl090",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a ship hauling wheel, one engineer watches a lighter rope enter the drum",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl090",
+          "text": "剩下那頭變輕了，主船才敢慢慢收線；還不能急拉。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl091",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a steamer bow, one telegraph line worker holds a plain stopper rope beside the rail",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl091",
+          "text": "甲板上的人預備短索，等舊線露頭就把它固定住。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl092",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a 1860s vessel deck, one engineer steadies an old dark undersea line beside a plain wheel",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl092",
+          "text": "九月二日凌晨，電纜終於越過船首，躺在大東號甲板上。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl093",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a ship instrument room, one electrician prepares an old cable end at a blank gauge",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl093",
+          "text": "但撈上來還只解決了位置問題；泡了一年，它還能傳訊嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl094",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a 1860s steamer test room, one observer waits beside an old telegraph line and a blank mirrored-light scale",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl094",
+          "text": "菲爾德引畫家記下：船上等了近一刻鐘，測試室才響起歡呼。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ],
+      "chapter": "舊線回話，再向西鋪"
+    },
+    {
+      "id": "atl095",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain 1860s telegraph office on the Irish shore, one electrician observes a reflected light dot on an unnumbered scale",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl095",
+          "text": "菲爾德另引《旁觀者》報導：愛爾蘭端的反光訊號，從亂跳變成規律傳送。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl096",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a ship test room, one engineer watches a reflected light dot on a blank mirror-galvanometer scale beside the old cable",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl096",
+          "text": "這比去年的張力推斷更強：線已上船，對岸也能透過它送出訊號。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl097",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the stern of a 1860s steamship, one telegraph line worker guides spliced dark telegraph line into grey water",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl097",
+          "text": "大東號再把舊線接上庫存，繼續向西放到紐芬蘭。這段路能走完嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl098",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1860s steamship stern in rough overcast water, one undersea line worker watches the newly joined dark undersea line pay out steadily",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl098",
+          "text": "接著三十六小時的暴風打在船上；才接好的線，能一路撐到岸嗎？",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl099",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a 1860s ship test room during a storm, one telegraph operator watches a reflected light dot on an unnumbered scale",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl099",
+          "text": "菲爾德引賽勒斯記下：暴風中，測試室傳來家人平安的訊息。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "atl100",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a small 1860s Newfoundland harbor, one telegraph line worker guides the landed dark telegraph line toward shore",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "atl100",
+          "text": "九月初，菲爾德引當事人記下：那條撈回續鋪的舊線終於也到了紐芬蘭。",
+          "emotion": "自然說書；年份與來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "丟進海裡的線，隔年接到對岸"
+        ]
+      },
+      "lines": [
+        {
+          "id": "atl999a",
+          "text": "如果你當時在船上，會在哪一刻才敢說：「找回來了」？",
+          "emotion": "收束清楚"
+        },
+        {
+          "id": "atl999b",
+          "text": "兩份固定版本的原文連結在說明欄。",
+          "emotion": "來源提示"
+        },
+        {
+          "id": "atl999c",
+          "text": "想繼續看有出處的歷史故事，訂閱奇聞檔案局。",
+          "emotion": "自然收束"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**海底撈線**",
+      "tag": "1865 年大東號",
+      "sub": "鉤住，還得驗通",
+      "shot": "atl043"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "大東號電纜斷在深海，隔年怎麼找回來？｜奇聞檔案局",
+    "description": "1865 年，大東號的跨洋電報電纜在回收時斷開，沉入大西洋。船隊憑浮標、抓鉤與張力尋找；1866 年先另鋪一條新線，再回頭找舊線。什麼時候只是推斷鉤到，什麼時候真的看見線、收到對岸訊號？\n\n本集依 1865 年隨船記者 William Howard Russell 當時記述，以及 Henry M. Field 後出的家族敘事及其內引參與者記錄編寫。船上曾懷疑有人故意損壞電纜；材料脆斷也有當時觀察，不能替誰定罪。畫面為 AI 卡通示意，不是現場照片、海底影像或原始電報。\n\n1865 年記述固定版：https://github.com/GITenberg/The-Atlantic-Telegraph_40948/blob/ba499c6bc32adef8c8a91a306dcb2d54bf7e898d/40948-0.txt\n1866 年後出記述固定版：https://github.com/GITenberg/The-Story-of-the-Atlantic-Telegraph_34765/blob/6b50b44d3cd2f3f1831e2c1a8fa052f53c51a4cd/34765.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\n\n資料截至 2026-10-20",
+    "tags": [
+      "大東號",
+      "跨大西洋電纜",
+      "海底電纜",
+      "1865年",
+      "1866年",
+      "電報史",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}
