@@ -1,0 +1,52 @@
+# S39 R4 旁白聽辨修稿待複核
+
+日期：2026-10-20。R3a 固定劇本的語音先全錄，再重錄標記句兩輪；第三輪 `check-audio` 仍有六句被 Jev 標記。本文交接最小幅度的 R4a 修稿、新版本獨立覆核與重啟音訊關卡。**新版音訊已達 0 標記；站台音訊審核仍待核准，目前不能生成插圖。**
+
+## 起因：同一版劇本兩輪定向重錄
+
+| 檢查 | 合成/重用 | `check-audio` 結果 |
+| --- | --- | --- |
+| 首輪 | 87 請求、2,218 計費字元 | 89/89 句檢查；15 句被標記 |
+| 第一次定向重錄 | 15 請求、386 計費字元、72 片沿用 | 7 句被標記 |
+| 第二次定向重錄 | 7 請求、172 計費字元、80 片沿用 | **6 句被標記，仍未過關** |
+
+第三輪音檔 `/workspace/.video-work/curio-s39/narration.wav` SHA-256 `8c2294e5db72a22786bc2ec4e4eb9601e1873f97806b256832621aaab466a977`，時間軸 SHA-256 `8bf64f7c0097496f93b4aff04378190bd360e66d808a30dbab26a182b4393eca`。全軌 561.4 秒，正文 `cs007` 第 1,234 格到 `cs086` 第 16,317 格，15,083 格／30 fps＝**502.77 秒（08:22.8）**。第三輪 `review/check.json` SHA-256 `f051f9ff963abb3288a6c1f03077930ef003d7df0a7d6781176273d99e0972a4`，`review/check-flags.json` SHA-256 `0d89e12b8b63147c95a090e6ad0dc7e7fd3b4e316c57e3cded44be94ad2735`，標記 `cs010`, `cs021`, `cs036`, `cs049`, `cs079`, `cs084`。這些音訊仍對應**舊 R3a 劇本**，不得拿來當 R4 的音訊證據。
+
+## R4 僅六句改寫
+
+R3a `video.json` SHA-256 `cefceb2ab42451f962bdad8f4910ac12b2aae849b927f6bc363c527e2d214264`、`script.md` SHA-256 `f0b16c8dc9b5525fd07097851f1ec0c1e89f0987541c255cc2ef180afc19af28`、`claims.md` SHA-256 `52a3a091510c84fff3985fa09e43379ddb15a4ef0f9206a03fdddd84d8935139`。
+
+| 檔案 | R4 SHA-256 |
+| --- | --- |
+| `video.json` | `ed76a93088503e94609fa061741637084be2da02e9ff9da29041adae6dec4c64` |
+| `script.md` | `ad30bd3659e2692611690d79a132f3797dd41b824876f1c7e3eb900e0a7bf2dc` |
+| `claims.md` | `13369d8549dfee807d204b80ed2b1dfe4d39b08e92bb282193b1220aea4ba302` |
+
+| ID | 新旁白 | 原引據與覆核重點 |
+| --- | --- | --- |
+| `cs010` | 三月十五日，元老們要在龐培的會議廳聚集。 | `SU-L:80.4`, `PL-C`；只把「龐培興建」簡為「龐培的」，避免 TTS 唸成「新建」。 |
+| `cs021` | 這時，另一位布魯圖斯來勸他：元老們已在等，不該讓整場會議落空。 | `SU-L:81.4`, `PL-C`；需確認「另一位」在兩名布魯圖斯的上下文中明指德奇姆斯。 |
+| `cs036` | 蘇埃托尼烏斯記下凱撒先喊：這是暴力。 | `SU-L:82.1`；維持第一刀前的話，不混作最後遺言。 |
+| `cs049` | 蘇埃托尼烏斯先寫，二十三次刺擊之間，凱撒沒有說出完整的話。 | `SU-L:82.2`；必須保留主敘述先於「有人說」的轉述、以及呻吟例外。 |
+| `cs079` | 註腳裡沒有現場逐字紀錄；「很可能」幾個字，說明這是編者的推測。 | `SU-T:F97`；需直接對照註腳原文，查明是否容許「沒有現場逐字紀錄」這個範圍及「很可能」的譯法。 |
+| `cs084` | 回頭看這份傳記的拉丁原文，找不到編者猜的那句拉丁問話。 | `SU-L:82.2`, `SU-T:F97`；此處「這份傳記」必須在上下文清楚回指蘇埃托尼烏斯。 |
+
+`git diff` 顯示只改這六個 `scenes[].lines[].text` 值、`claims.md` 同 ID 的六行、由工具重生的 `script.md` 六句和結尾雜湊，以及下述敘事回收點資料；沒有改提示詞、字卡、來源列表、鏡頭或配樂。`VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs script --slug curio-s39` 已重生劇本；`lint --slug curio-s39 --json`：**0 error／0 warning，89 句**。`brief.md`、`research.md` 雜湊仍等於 R3a。
+
+獨立 R4 盲讀先得 13/13 通過，但來源覆核者指出兩個既有 `loops` 回收點不夠精確：`cs005` 問「另一位布魯圖斯會站在哪裡」，`cs023` 只說德奇姆斯勸出門，真正回答在 `cs046` 馬爾庫斯拿刀站在眼前；`cs016` 問誰帶凱撒出門，R4 `cs021` 只說「另一位」，到 `cs023` 才明言德奇姆斯。故只將 `cs005` 的 `payoff` 由 `cs023` 改為 `cs046` 並將 `what` 改成原問題，將 `cs016` 的 `payoff` 由 `cs021` 改為 `cs023`。**沒有變動任何旁白、提示詞或主張**；`script.md` 雜湊也維持表列值。此精確 R4a `video.json` 須經獨立覆核者聚焦重查。
+
+`npm run test:docs-videos`：236/236 通過。`npm run check:tasks`：退出碼 0、驗證 2,097 份票；現有跨任務逾期或範圍重疊警告與本次 S39 的獨立範圍無關。
+
+## R4a 已完成的獨立關卡
+
+全新讀者先只看**精確 R4 劇本**，封存官方 13 題 **13/13 Yes**：`/tmp/curio_s39_r4_fresh_blind_seal.md` SHA-256 `2421aa0ceaa9f5d50ca07f3684e3bd14ac4db5818516d486e61a409aa5d26856`。讀者隨後重開固定版原文，五份固定原始檔的雜湊全與 `research.md` 一致；六句改寫及對應畫面、89/89 主張對齊均通過，惟先前兩個 `loops` 指標被擋下：`/tmp/curio_s39_r4_source_visual_audit.md` SHA-256 `a5c1c164611a5beda168301807158813ec82b33930c65d336b32b3465cbdfc55`。修正僅涉及 `loops`，精確 R4a 影片雜湊在 `/tmp/curio_s39_r4a_loop_focus_audit.md`（SHA-256 `fefa1a1fedf63c958e98c58f88552399a298013829a05f95aad9f50fb306cb04`）獲獨立**聚焦通過**，劇本、主張、提示詞不變。
+
+官方 `narrative` 匯入同位獨立讀者封存的 `/tmp/curio_s39_r4_narrative_answers.json`（SHA-256 `94ef7640f4fa901c1998c2d4653c3bd929ddba9e5600e9e5e665eabb2168888e`）：`review/narrative.json` 顯示 `passed: true`、`failed: []`、`round: 3`，綁 `script_hash: 81c139790885c3e8a7c9d09d9fa7d126f9386572f87d59c8e81e276bead071f4`。R4a 的 `approve --gate script` 按站主既有「以你推薦的就好不用問我；一直做完所以影片」委託授權登錄精確 `script.md` SHA-256 `ad30bd3659e2692611690d79a132f3797dd41b824876f1c7e3eb900e0a7bf2dc`；備註明說**站主未親自讀本稿**。
+
+重啟 `tts --dry-run`：87 個請求中的 **6 句**需新合成，約 156 個新增計費字元；全片約 2,225 字元、免費層 0.4%。實際新合成 **6 句、156 字元，81 個請求沿用**。R4a 首輪 `check-audio` 完整檢查 89 句後只剩 `cs036` 一個人名轉寫標記；再用同一版核准劇本定向重錄該句一次（18 計費字元、86 個請求沿用），第二次 `check-audio` **89/89 全過、0 標記**：71 句逐字相同、13 句僅同音字或填詞差異、5 句經 Jev 判斷可接受；退出碼 0。最終 `review/check.json` SHA-256 `1c2a5a8461280ce55b1b85682f79e3a8175b6d6f94c1828dc0f7f0b2895fdfe9`，`review/check-flags.json` SHA-256 `6227721e1e8ef65216f8437b2f17f02fb34c687b47a977de1f1d559108d7469f`，後者 `flags: []`。
+
+最終 R4a `narration.wav` SHA-256 `9bfdd923bdc783fd61b3b3afb0add20980ad558a4a475ceaa6a491024decc220`，`timeline.json` SHA-256 `c719846c3e9f06b1ea8cc5543d9d586bbfb95ed4cb2fe594628a9df89280b1a6`；全軌 16,908 格／30 fps＝**563.6 秒（09:23.6）**。正文 `cs007` 第 1,234 格到 `cs086` 第 16,383 格，**504.97 秒（08:25.0）**，符合至少八分鐘。`review-push --gate audio` 已送達站台；站台明示本集無 `auto.json`，屬手動提交，音訊關卡在站台仍 **pending**。依站主既有「以你推薦的就好不用問我；一直做完所以影片」委託授權，統籌同意製作代理於本機 `approve --gate audio` 登錄上述**精確時間軸 SHA**，備註明說此為代理登錄、**站主未親自聽過音軌**。本機核准時間 `2026-10-20T01:35:35Z`；站台待審狀態並未偽稱為已核准。
+
+R3a 的舊 `approve --gate script` SHA 與舊音軌不適用 R4a；現在以上述 R4a 核准、敘事判讀和最終音訊為準。對精確 R4a 音軌再次 dry-run：86 張插圖最多三次的上限 US$3.48，加 569 秒配樂約 US$0.08，合計 **US$3.56**。本機音訊核准後，`music --slug curio-s39` 已向 Gemini Lyria-3.5 生成一首無人聲配樂，媒體帳本記 **US$0.08**；`music/ac6b896fea5cdad0.mp3` SHA-256 `27c80ceda229272ddaa6f32617307bdc67d71a96b2fa4dfd49a8bc9e6bb7a658`。工具請求及 manifest 記 569 秒，實際 MP3 經 `ffprobe` 為 **176.09 秒**；組片工具在 `tools/video/assemble/drama.mjs` 使用 `-stream_loop -1` 重複配樂至全片，成片後須查聽迴圈接點。媒體帳本目前 US$0.08，MiniMax 插圖仍為 0 張、US$0.00，剩餘已報上限 **US$3.48**。
+
+共享 MiniMax 額度窗口在 01:35 UTC 是 33/240 筆，同時 S04 尚有約 45 張、S23 尚有約 14 張首輪圖與未定修圖需求；保守停點 200/240，故 S39 等待兩集首輪完成後再由統籌分配額度。若本窗不足，下一次重置約 02:23:28 UTC。這是**容量協調**，不是另向站主索取許可；站主已有「以你推薦的就好不用問我」的持續指示。
