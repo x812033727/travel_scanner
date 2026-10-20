@@ -50,6 +50,8 @@ scope:
 
 - **S24 R4 七句改寫後語音零旗標。** 對 R3 的七個轉寫疑點只改同七句口語，獨立讀者先盲讀確切新版劇本 **13／13**，再核英、拉、普魯塔克固定原文及畫面，來源通過；`script.md` SHA-256 `2ab08047be6dbc800ef54f02b6e9321518324f9ce8e0aaea0265430242c724af`，`video.json` SHA-256 `d3ed093b47ae63237d94f059b30cd6fcb484a13fe83b08149578e49169f28a47`，lint 0／0。Gemini 只合成 7 句、沿用 95 句；全 102 句 `check-audio` **0 旗標**、退出碼 0，實際正文 **8:25.73**。劇本及新版音檔已送站台 gate，音訊仍 **pending**，不能稱站主已親自試聽；沒有購買插圖。證據及音檔／逐句報告雜湊見 [`verify-6.md`](../../docs/videos/curio-s24/verify-6.md)。下一步：獨立全片提示詞預檢、排共享 MiniMax 生圖、逐張目視、再剪輯及品管。
 
+- **S24 99 景提示詞獨立預檢通過。** 只改 82 個提示詞，增加希臘化時期敘拉古、奧古斯都時代羅馬作者及羅馬時期希臘作者的服飾／場景錨點，移去不實的控訴書和折屏，分開滑輪與未知齒輪；正文文字及已過零旗標的語音沒有改。獨立讀者查出並覆核 `crown-r2-021` 整頂冠沒入水下、`crown-052`／`crown-060` 各自明寫滿水起點後，對確切 `video.json` SHA-256 `59624d323f19dc99bb04de6ded3e2c118b00dd11c7bf0727cfc37fae710302d7` 判 **PASS**，lint 0／0；三輪 99 張 MiniMax 插圖上限約 US$4.01，加已付配樂約 US$4.09。**付費圖仍 0 張**。依 [`visual-preflight-r1.md`](../../docs/videos/curio-s24/visual-preflight-r1.md)，下一步排共享配額生圖及逐張原尺寸目視。
+
 固定文本本地重開 SHA-256：S24 英譯 `7daafe23aeef2377fe9a99bc285c5dfc0673440487ab43f78387312b6799304d`、拉丁本 `b4fce89b0c304c7d1f26b299bf2dfcddbab8529c883f43ad1e75fae564daa861`；S25 Brewster 二手傳記 `ded5b6a706615f48b156dbf9f28ab18ac32edb32e16d25fedf1957eccbb94466`。
 
 ## Definition of done
