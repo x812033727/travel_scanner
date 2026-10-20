@@ -1,0 +1,18 @@
+{
+  "kind": "independent-visual-delta-review",
+  "reviewer": "/root",
+  "reviewed_on": "2026-10-20",
+  "status": "PASS",
+  "scope": "Prompt-only delta and bounded pilot eligibility; not generated-image or finished-video approval",
+  "video_json_sha256": "077a5a6b541cb9e5a181786b8ed2d3d00816263dc68a71db625a1a0c0520b12a",
+  "unchanged_shorts_json_sha256": "52e2812e2bbf409b3edab3e935dcf65f3768e79b0e9c0522a898e0b9d024dfd2",
+  "changed_shot_ids": ["x05-b01-s04", "x05-b03-s03", "x05-b06-s13"],
+  "finding": "Compared each scene by ID against the previous committed video.json, replacing only data.prompt in the old document for the three listed shots. The resulting documents are deeply equal. The corridor shot now specifies a complete worker and keeps the jar opaque while narration withholds the year-end headcount. The ad shot visually separates increased ad volume from lower price/revenue without figures or labels. The results shot specifies a complete worker, short positive result and no numerals. No changed prompt adds a historical claim or discloses an unrevealed answer. Existing source, narrative, timing, voice and Shorts reviews carry over; each generated image still needs judge and human checks.",
+  "pilot_shot_ids": ["x05-b01-s04", "x05-b03-s03", "x05-b06-s13"],
+  "pilot_max_image_calls": 9,
+  "pilot_max_judge_calls": 9,
+  "pilot_max_incremental_usd_at_previous_unit_price": 0.1215,
+  "requires_live_quote_quota_and_all_in_ledger_check": true,
+  "requires_main_workdir_stop": true,
+  "authorizes_full_art_or_publication": false
+}
