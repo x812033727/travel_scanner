@@ -191,7 +191,7 @@
       "headline": "**近192億**",
       "tag": "品牌故事",
       "brand": "META",
-      "shot": "x05-b01-s02"
+      "shot": "x05-b01-s07"
     }
   },
   "sources": [
@@ -244,11 +244,16 @@
     },
     {
       "id": "x05-b01-s02",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Close shot in a dim records room: an anonymous fingertip follows the newest annual report down to a positive company-outcome bar, while a folded page hides its amount. No legible writing, numerals, trademarks, or human faces appear on any prop.",
-        "camera": "tilt down",
-        "visual": "still"
+        "title": "FY2025｜公司營業損益",
+        "stats": [
+          {
+            "value": "正數",
+            "label": "全公司口徑｜最後金額待揭曉"
+          }
+        ],
+        "source": "Meta FY2025 Form 10-K，Segment profitability"
       },
       "lines": [
         {
@@ -262,11 +267,16 @@
     },
     {
       "id": "x05-b01-s03",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Overhead shot across an ad market counter: two unlabeled measuring rails for delivered placements and average price begin to diverge while their revenue tray stays under a flap. No words, numbers, logos, faces or copied app screens.",
-        "camera": "pan left",
-        "visual": "still"
+        "title": "FY2022｜廣告量與價",
+        "stats": [
+          {
+            "value": "不同方向",
+            "label": "廣告送達數 vs 平均每則廣告價格｜收入待揭曉"
+          }
+        ],
+        "source": "Meta FY2022 Form 10-K，Revenue / Advertising"
       },
       "lines": [
         {
@@ -280,7 +290,7 @@
       "id": "x05-b01-s04",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in an empty office hallway: a sealed layoff announcement is posted beside a covered year-end headcount ledger; keep the total hidden. No readable print, figures, corporate marks, real faces, or copied layouts.",
+        "prompt": "Medium view through an empty office corridor. A plain sealed envelope rests beside a row of intact desk chairs. The glass jar that could hold chair tokens is fully wrapped in dark cloth, so its contents cannot be seen. Bare walls and solid-colored objects.",
         "camera": "drift",
         "visual": "still"
       },
@@ -298,7 +308,7 @@
       "id": "x05-b01-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a company corridor as a fresh spring restructuring notice appears beside an older late-autumn notice; the later year-end headcount ledger remains closed. No readable print, figures, emblems or identifiable people.",
+        "prompt": "Medium view of the same corridor. A fresh sealed envelope sits in front of an older sealed envelope; both are blank and closed. A covered wooden box behind them keeps the future chair tokens hidden. Nothing is attached to the wall.",
         "camera": "push in",
         "visual": "still"
       },
@@ -314,7 +324,7 @@
       "id": "x05-b01-s06",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of two anonymous product sales rails beside plain eyeglass and headset forms; rails diverge but neither product is identified as the winner, and the research-loss cell stays covered. No labels, numerals, corporate marks, people or copied product designs.",
+        "prompt": "Wide view of a clean prototype bench. Plain eyeglass frames and a generic unbranded headset shell rest beside two diverging paths of smooth gray and blue blocks. Opaque cloth hides both endpoints and the shared research-result box remains closed.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -332,7 +342,7 @@
       "id": "x05-b01-s07",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot of the newest report: a rust division-loss marker and a pale positive company marker occupy separate scopes, while the intervening application column remains veiled. All surfaces stay free of words, totals, logos, faces, and known app designs.",
+        "prompt": "Overhead view of a tabletop puzzle. A small brick-colored weight pulls down one side of a balance, while a larger light green weight supports the other side. The dish between them remains covered, leaving the combined result unseen.",
         "camera": "static",
         "visual": "still"
       },
@@ -350,7 +360,7 @@
       "id": "x05-b02-s01",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of the opening operating-result ledger being flipped back to an older quarterly divider: two blank segment columns are first separated under a moving fingertip. Do not reproduce a real filing, brand, text, figure or identifiable person.",
+        "prompt": "Close shot of a wooden filing cabinet with two unmarked drawers sliding open side by side. One holds pale green ceramic pieces, the other rust ceramic pieces. A hand is out of frame; no folders or page surfaces appear.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -367,7 +377,7 @@
       "id": "x05-b02-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot beside a boardroom shelf: one featureless corporate nameplate lifts from a wooden base and another settles into its place near an older annual book. Show nonverbal shapes only; omit glyphs, digits, brand badges, identities, and recognizable user interfaces.",
+        "prompt": "Medium view of an empty boardroom shelf. One plain wooden block is carefully lifted away as another similarly sized block settles in its place. Both have perfectly smooth blank faces; the surrounding room remains the same.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -385,7 +395,7 @@
       "id": "x05-b02-s03",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot from a corporate archive doorway: a calendar leaf and a nameplate sit far from the ledger's reporting dividers, preventing their dates from standing in for a product's birth. No legible writing, numerals, trademarks, or human faces appear on any prop.",
+        "prompt": "Wide view through an archive doorway. Two smooth wooden name blocks sit on one shelf, while two distant drawers sit on another shelf with a clear gap between them. The objects for a name change stay visibly apart from the two reporting drawers.",
         "camera": "drift",
         "visual": "still"
       },
@@ -403,7 +413,7 @@
       "id": "x05-b02-s04",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at a public service counter: several distinct generic phone silhouettes and empty ad tiles gather in one pale green section of an annual ledger. Use anonymous objects with clear surfaces; exclude readable words, digits, company emblems, and real likenesses.",
+        "prompt": "Close shot at a plain service counter. Several distinct generic handset backs and small sage green ad-placement tiles flow into one open sage green tray. Every device faces away from the camera, showing only unmarked backs.",
         "camera": "push in",
         "visual": "still"
       },
@@ -421,7 +431,7 @@
       "id": "x05-b02-s05",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a research room: a transparent lens, plain headset shell, software disc, and content sleeve rest on separate shelves beside a rust-colored ledger section. Nothing carries printed type or figures, protected marks, recognizable people, or copied layouts.",
+        "prompt": "Wide view inside a tidy research room. Plain eyeglass frames, a generic headset shell, one smooth software disc and a solid-color content sleeve occupy brick-colored shelves. No product has a label or display.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -439,7 +449,7 @@
       "id": "x05-b02-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at the shared records table: one pale operating-profit bar rises above a rust loss band, and the company-total cell remains covered as their directions compete. Paper and products show abstract forms alone, with no numbers, brand insignia, portraits, or app replicas.",
+        "prompt": "Medium view at a wooden balance. Two identical closed ceramic jars wait beside its empty pans, their contents and weights concealed. A third opaque company-result vessel remains covered between them.",
         "camera": "static",
         "visual": "still"
       },
@@ -455,7 +465,7 @@
       "id": "x05-b02-s07",
       "template": "shot",
       "data": {
-        "prompt": "Close shot near an apartment window: a generic phone carries one empty ad placement while an anonymous buyer token moves toward a separate revenue tray. Avoid letters, numerals, commercial symbols, photographic humans, and reproduced software displays.",
+        "prompt": "Close shot beside an apartment window. A handset is seen from behind while a blank solid-color tile and a buyer token move toward a shallow ceramic cup. The device has no visible screen.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -471,7 +481,7 @@
       "id": "x05-b02-s08",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at an advertising counter: nearly all of a division revenue tray is filled by abstract ad-placement tiles, with a small remainder apart and no individual app totals. All surfaces stay free of words, totals, logos, faces, and known app designs.",
+        "prompt": "Medium view of two ceramic crocks on a market table. A large sage green crock is nearly filled by identical plain ad tiles; a much smaller crock holds a few different tiles. The division is shown by the physical proportions alone.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -489,7 +499,7 @@
       "id": "x05-b02-s09",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot at a sorting table: an incoming revenue tray and a separate operating-cost tray feed a net-profit cell only after their contents have been distinguished. Show nonverbal shapes only; omit glyphs, digits, brand badges, identities, and recognizable user interfaces.",
+        "prompt": "Overhead view of a sorting table. Ivory revenue beads enter a large carved compartment, blue expense stones are removed, and only the remaining light green beads reach a smaller uncovered compartment. Each action occupies its own clear area.",
         "camera": "drift",
         "visual": "still"
       },
@@ -507,7 +517,7 @@
       "id": "x05-b02-s10",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of the earliest annual ledger: a tall pale green profit bar rises from the application section while the rest of the page stays out of focus. Render blank physical props without script, values, trade dress, actual persons, or copied apps.",
+        "prompt": "Close shot of a pale green ceramic tower made of many smooth pieces on an older shelf. It stands high above an empty shallow vessel below; the camera focuses on the tower and its clean silhouette.",
         "camera": "push in",
         "visual": "still"
       },
@@ -525,7 +535,7 @@
       "id": "x05-b02-s11",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at a quiet research shelf: a rust loss band drops below its category line beside generic hardware, software, and content props. No legible writing, numerals, trademarks, or human faces appear on any prop.",
+        "prompt": "Wide view of a quiet research shelf. A terracotta-colored stone hangs lower than the level shelf beside plain eyeglass and headset shells, while sage green pieces remain in a compartment.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -572,7 +582,7 @@
       "id": "x05-b02-s13",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot by the same phone ad placement: covered rails for average price and delivery volume face the next annual book, whose company-total cell stays hidden. Use anonymous objects with clear surfaces; exclude readable words, digits, company emblems, and real likenesses.",
+        "prompt": "Medium view of the rear of a generic handset on a wooden market table. Two groups of ivory beads wait under small cloth covers beside a completely covered company-result bowl.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -588,7 +598,7 @@
       "id": "x05-b03-s01",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot on a generic ad tile: the delivery rail in the middle-year report lengthens against the earlier report, without marks or a literal count. Nothing carries printed type or figures, protected marks, recognizable people, or copied layouts.",
+        "prompt": "Overhead view of two neighboring wooden trays holding identical ad-placement tiles. The newer tray contains visibly more tiles, all plain and solid-colored, while the other market props stay still.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -605,7 +615,7 @@
       "id": "x05-b03-s02",
       "template": "shot",
       "data": {
-        "prompt": "Close shot by the phone ad tile: the average-price rail shortens in the middle-year report even as the separate delivery rail extends beyond it. Paper and products show abstract forms alone, with no numbers, brand insignia, portraits, or app replicas.",
+        "prompt": "Close shot of that market table. Many more plain ad tiles fill one tray, while a copper payment token rolls away from a smaller urn. The two movements visibly point in different directions.",
         "camera": "drift",
         "visual": "still"
       },
@@ -650,7 +660,7 @@
       "id": "x05-b03-s04",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at an accounting desk: a revenue ribbon dips only slightly between two annual books, but a separate operating-profit ribbon falls much farther in its own lane. Avoid letters, numerals, commercial symbols, photographic humans, and reproduced software displays.",
+        "prompt": "Wide view of two tabletop balances side by side. The revenue bin on the right is only slightly lighter than its counterpart, while a light green profit stack has become much shorter. Smooth physical objects tell the difference.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -668,7 +678,7 @@
       "id": "x05-b03-s05",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot down an anonymous office corridor: several leased office floor plans receive abstract proposed sublease, early-exit and abandonment marks; no completed lease action is shown. No words, figures, logos, faces or copied corporate interiors.",
+        "prompt": "Wide view down an empty office corridor. Three untouched rooms have chairs and desks inside; three small closed model buildings sit on a nearby planning table, one offered outward, one with an open exit door, one set aside. These are proposed options, not completed moves.",
         "camera": "static",
         "visual": "still"
       },
@@ -686,7 +696,7 @@
       "id": "x05-b03-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot through a bright workroom: the year-end staffing tray in the later annual book holds more anonymous seat markers than the prior book, while faces stay outside the frame. All surfaces stay free of words, totals, logos, faces, and known app designs.",
+        "prompt": "Medium view through an empty workroom. The newer open sage-green staffing jar contains more plain chair tokens than the older sage-green jar. A larger opaque company-wide jar remains fully wrapped beside a sealed envelope, hiding the year-end total.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -704,7 +714,7 @@
       "id": "x05-b03-s07",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at a data-center construction planning table: several unbranded building plans pivot to a newer blank design while other plans are closed and set aside. Avoid completed new sites, readable print, figures, logos, and people.",
+        "prompt": "Wide view of a construction-planning table with unbuilt miniature data-center models. Several models are rotated toward a fresh blank design made from simple blocks, while other proposed models are set aside unbuilt. No completed building appears.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -722,7 +732,7 @@
       "id": "x05-b03-s08",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: a sealed restructuring notice rests beside a year-end staffing snapshot whose neutral seat markers remain in place; a separate restructuring-cost ledger remains closed beside it. Show nonverbal shapes only; omit glyphs, digits, brand badges, identities, and recognizable user interfaces.",
+        "prompt": "Overhead view of a worktable. A sealed envelope lies beside a transparent jar whose chair tokens remain inside; a small rust-colored cost box stays firmly shut. The objects occupy distinct spaces.",
         "camera": "drift",
         "visual": "still"
       },
@@ -781,10 +791,10 @@
       "lines": [
         {
           "id": "m050305",
-          "text": "先看成本與費用總額：FoA 比前一年增加百分之二十二。",
+          "text": "FoA 的成本與費用總額比前一年增加百分之二十二。",
           "emotion": "說書語氣，自然有起伏",
-          "say": "先看成本與費用總額：艾夫歐欸 比前一年增加百分之二十二。",
-          "say_for": "d905ca6cd192"
+          "say": "艾夫歐欸 的成本與費用總額比前一年增加百分之二十二。",
+          "say_for": "a4a56ed13669"
         }
       ]
     },
@@ -819,7 +829,7 @@
       "id": "x05-b03-s12",
       "template": "shot",
       "data": {
-        "prompt": "Close shot across the research division's cost table: the inventory sleeve shrinks while personnel and development sleeves grow, leaving the rust operating-result cell covered. Render blank physical props without script, values, trade dress, actual persons, or copied apps.",
+        "prompt": "Close shot of three smooth terracotta trays in a research room. The inventory tray grows thinner, while the people-cost and development-cost trays become fuller; a final result dish remains covered.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -837,7 +847,7 @@
       "id": "x05-b03-s13",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a quiet laboratory: a later personnel-cost sleeve and a stack of development sketches both grow against their earlier counterparts beside generic tools. No legible writing, numerals, trademarks, or human faces appear on any prop.",
+        "prompt": "Medium view of an empty laboratory bench. More identical stool tokens gather beside a growing pile of plain prototype components. An earlier, smaller arrangement sits farther back for comparison.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -855,7 +865,7 @@
       "id": "x05-b03-s14",
       "template": "shot",
       "data": {
-        "prompt": "Close shot beside sealed supply crates: the inventory-cost sleeve becomes thinner, with the estimated commitment-loss packet smaller than before but still separate from cash. Use anonymous objects with clear surfaces; exclude readable words, digits, company emblems, and real likenesses.",
+        "prompt": "Close shot by sealed supply crates. A smaller brick-colored stone rests in the inventory tray; a second smaller stone for future commitments stays from an untouched cash basin. The crates remain closed.",
         "camera": "drift",
         "visual": "still"
       },
@@ -871,7 +881,7 @@
       "id": "x05-b03-s15",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot on adjacent annual reports: the research-division rust loss band extends farther in the later book despite a narrower inventory sleeve. Nothing carries printed type or figures, protected marks, recognizable people, or copied layouts.",
+        "prompt": "Wide view of two neighboring rust balance pans on a table. The later pan hangs visibly lower under its added stones, although its inventory pile alone is thinner. The contrast is clear without a scale.",
         "camera": "push in",
         "visual": "still"
       },
@@ -940,7 +950,7 @@
       "id": "x05-b04-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of generic phone ad slots multiplying across a public transit crowd shown only as anonymous silhouettes; a blank audience rail grows. No readable print, numbers, logos, identifiable people, or actual app screens.",
+        "prompt": "Medium view inside a public transit car. Anonymous silhouettes hold handsets seen only from behind while more plain ad-placement tiles appear in the foreground; the people remain featureless and unidentifiable.",
         "camera": "push in",
         "visual": "still"
       },
@@ -958,7 +968,7 @@
       "id": "x05-b04-s03",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot beside an ad placement: a fuller delivery rail rises while its price rail retreats, preparing a different revenue outcome than the year before. Paper and products show abstract forms alone, with no numbers, brand insignia, portraits, or app replicas.",
+        "prompt": "Overhead view of a market table. One tray gains many plain ad tiles while a copper-token cup becomes shallower; a third income cup stays covered, awaiting the result.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -974,7 +984,7 @@
       "id": "x05-b04-s04",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at an abstract ad market: more tiles move into a lower-price tray marked only by color, with the average-price rail falling. Do not draw a real short-video app interface, logo, legible text, numbers or people.",
+        "prompt": "Close shot of two unmarked baskets of ad tiles. More tiles move into the lower copper-token basket, and its single smooth copper payment bead sits lower than the other basket's bead. No app display is shown.",
         "camera": "static",
         "visual": "still"
       },
@@ -1017,7 +1027,7 @@
       "id": "x05-b04-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a unbranded company office: three closed staffing notices appear beside a spring calendar, still marked as plans rather than completed departures. No words, numbers, trademarks or identifiable people.",
+        "prompt": "Medium view of an empty company corridor. Three sealed plain envelopes sit in a neat row beside intact office chairs; a covered jar of future chair tokens remains closed. This is a plan awaiting later results.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1033,7 +1043,7 @@
       "id": "x05-b04-s07",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot comparing two year-end staffing ledgers: the later set of anonymous seat markers is smaller, with the earlier spring notices now filed as completed. No legible print, numbers, brands or people.",
+        "prompt": "Overhead view of two transparent jars of identical chair tokens. The newer jar holds visibly fewer tokens, while the three earlier sealed envelopes now sit behind the jars in a finished stack.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1049,7 +1059,7 @@
       "id": "x05-b04-s08",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot of two year-end staffing ledgers beside two separate marketing-expense sleeves; the later expense result stays covered for the next reveal. Show anonymous marks, no readable words, figures, trademarks or real people.",
+        "prompt": "Overhead view of a smaller jar of chair tokens beside two covered marketing-cost crocks. The newer crock is still under cloth; its size cannot yet be read.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1065,7 +1075,7 @@
       "id": "x05-b04-s09",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at a unbranded marketing desk: a later expense sleeve is noticeably slimmer than the earlier-year sleeve, while a separate ad-revenue tray stays in view. Avoid text, figures, logos, identifiable people and copied company materials.",
+        "prompt": "Close shot of a marketing worktable. An earlier dish of blue expense stones is fuller than the later dish; a different ivory ad-revenue dish sits off to the side.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1081,7 +1091,7 @@
       "id": "x05-b04-s10",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a marketing workspace: fewer anonymous promotion cards and fewer employee seat markers feed a thinner payroll sleeve. Exclude legible writing, numbers, brands, identifiable people and real office imagery.",
+        "prompt": "Medium view of an empty marketing studio. Fewer plain promotional tiles and fewer small chair tokens reach a shallower blue payroll vessel than in the earlier arrangement behind it.",
         "camera": "static",
         "visual": "still"
       },
@@ -1124,7 +1134,7 @@
       "id": "x05-b04-s12",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at a records table: the pale application bar has risen but the neighboring rust research-loss section stays under an opaque flap, delaying its answer. All surfaces stay free of words, totals, logos, faces, and known app designs.",
+        "prompt": "Close shot of a records table without documents. A tall sage green stack stands in the foreground, while the neighboring terracotta result bowl stays concealed under an opaque cloth.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1169,7 +1179,7 @@
       "id": "x05-b04-s14",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a research office: a thicker personnel-expense sleeve and a shorter incoming revenue ribbon sit in different rows beside the deeper rust loss band. Render blank physical props without script, values, trade dress, actual persons, or copied apps.",
+        "prompt": "Medium view in a quiet research office. More stool tokens feed a larger brick-colored expense urn while fewer ivory tokens arrive at a revenue urn. Their combined brick-colored result urn hangs lower beside them.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1212,7 +1222,7 @@
       "id": "x05-b04-s16",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot along a plain retail stock shelf: a generic headset shell stands beside a retreating sales-volume rail that leads toward the smaller research-revenue cell. No legible writing, numerals, trademarks, or human faces appear on any prop.",
+        "prompt": "Wide view along a plain stock shelf. A generic headset shell stands beside two unmarked boxes; fewer small headset models sit in the later open box than the earlier one. A research-revenue bin is shallower.",
         "camera": "static",
         "visual": "still"
       },
@@ -1230,7 +1240,7 @@
       "id": "x05-b04-s17",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: a rising pale application bar and a deeper rust research loss approach one still-covered company-total cell in the later-year report. Use anonymous objects with clear surfaces; exclude readable words, digits, company emblems, and real likenesses.",
+        "prompt": "Medium view of a wooden balance. A pale green stack grows on one side and a rust stone pulls lower on the other, while the central company-result dish remains completely covered.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1248,7 +1258,7 @@
       "id": "x05-b04-s18",
       "template": "shot",
       "data": {
-        "prompt": "Close shot: the later company-total bar appears above the positive line, its exact value absent while an older annual book waits nearby. Nothing carries printed type or figures, protected marks, recognizable people, or copied layouts.",
+        "prompt": "Close shot of a sage green company-result stack rising above the tabletop in a later arrangement. An older comparison stack waits a little farther away, and its exact difference remains hidden from view.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1264,7 +1274,7 @@
       "id": "x05-b04-s19",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot at two endpoint reports: the company-total bars nearly coincide, but their final small difference stays beneath a paper slip between the books. Paper and products show abstract forms alone, with no numbers, brand insignia, portraits, or app replicas.",
+        "prompt": "Overhead view of two nearly equal light green stacks on a plain table. A tiny loose ceramic bead between their bases remains beneath a smooth opaque cup, concealing the small difference.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1310,7 +1320,7 @@
       "id": "x05-b05-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: a pale application gain ribbon and a rust loss-growth ribbon, each measured between the same two endpoint books, almost overlap on a neutral mat. Avoid letters, numerals, commercial symbols, photographic humans, and reproduced software displays.",
+        "prompt": "Medium view of two equal-length rows of physical pieces on a neutral mat. Mint pieces arrive at one end as rust weights arrive at the other; their nearly matched movements oppose one another.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1328,7 +1338,7 @@
       "id": "x05-b05-s03",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot across three annual ledger books: the middle volume dips low between two nearly level endpoint bars, with the endpoint matching illusion visually broken. Avoid numbers, readable words, brands, faces and copied pages.",
+        "prompt": "Overhead view of three sage green stacks in a row. The middle stack is substantially lower, while the two outer stacks are almost level. No line or continuous path joins them.",
         "camera": "static",
         "visual": "still"
       },
@@ -1344,7 +1354,7 @@
       "id": "x05-b05-s04",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at the filing shelf: a newer endpoint book approaches an older one, their positive and negative section flaps still closed as the comparison waits. All surfaces stay free of words, totals, logos, faces, and known app designs.",
+        "prompt": "Wide view of a filing-room shelf made only of blank wood. Two closed opaque boxes from distant periods stand apart, each with a light green and brick-colored compartment under a lid; their contents await comparison.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1360,7 +1370,7 @@
       "id": "x05-b05-s05",
       "template": "shot",
       "data": {
-        "prompt": "Close shot: the application profit bar gains substantial length between the earlier endpoint report and the newest one, while its companion rust section stays in frame. Show nonverbal shapes only; omit glyphs, digits, brand badges, identities, and recognizable user interfaces.",
+        "prompt": "Close shot of two pale green ceramic stacks. The later stack is substantially taller, with a rust-colored compartment visible but unopened beside it.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1405,7 +1415,7 @@
       "id": "x05-b05-s07",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: the two endpoint books sit with a visible gap for the missing intermediate year, so no continuous line is drawn across them. Render blank physical props without script, values, trade dress, actual persons, or copied apps.",
+        "prompt": "Overhead view of two opaque year boxes separated by a visible empty space on the shelf. There is deliberately no connecting ribbon or path across the missing middle box.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1421,7 +1431,7 @@
       "id": "x05-b05-s08",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at an ad-buying counter: the newest annual book receives more ad-revenue tiles while its growing operating-cost sleeve still hides the final application-profit cell. No legible writing, numerals, trademarks, or human faces appear on any prop.",
+        "prompt": "Medium view at an ad-buying counter. Many ivory revenue beads arrive in one basin while a blue operating-cost basin also grows; a sage green result basin stays under a plain cover.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1439,7 +1449,7 @@
       "id": "x05-b05-s09",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot on two annual ad-market ledgers: both the delivery and average-price rails extend in the newer year, reversing the earlier split direction. Keep surfaces free of letters, numerals, corporate marks, faces and copied screens.",
+        "prompt": "Overhead view of two plain market tables. At the newer table both the number of ivory ad tiles and a group of copper payment tokens have grown; the older table has smaller groups of both.",
         "camera": "static",
         "visual": "still"
       },
@@ -1455,7 +1465,7 @@
       "id": "x05-b05-s10",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a generic ad-buying counter: anonymous measurement tools sharpen a blank campaign dial while more buyer tokens reach the ad-placement tray. Do not imply proven causation beyond company belief; no readable marks, numbers, logos or real users.",
+        "prompt": "Medium view of a quiet market counter. A simple unlabeled measuring lens rests by a generic handset back as more anonymous buyer tokens approach the ad-tile cup. The visual suggests a company explanation, not a proved cause.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1500,7 +1510,7 @@
       "id": "x05-b05-s12",
       "template": "shot",
       "data": {
-        "prompt": "Close shot beside a generic phone ad placement: the newest application-revenue tray fills more than the earlier one, with its profit cell on a separate row. Use anonymous objects with clear surfaces; exclude readable words, digits, company emblems, and real likenesses.",
+        "prompt": "Close shot beside the rear of a generic handset. The newer crock fills with more ivory ad-revenue beads than the older one, while a distinct light green profit crock sits at a different place on the table.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1516,7 +1526,7 @@
       "id": "x05-b05-s13",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot through a plain infrastructure aisle: equipment racks and an anonymous partner-arrangement packet add to a cost tray beside the newer application ledger. Nothing carries printed type or figures, protected marks, recognizable people, or copied layouts.",
+        "prompt": "Wide view through an infrastructure aisle. Plain equipment racks and a closed partner-supply crate both contribute blue stones to a cost bin; the pale green result dish waits farther away.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1532,7 +1542,7 @@
       "id": "x05-b05-s14",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot across a research shelf: generic eyeglass frames, a headset shell, a software disc, and content sleeves frame the division's revenue page without product-level totals. Paper and products show abstract forms alone, with no numbers, brand insignia, portraits, or app replicas.",
+        "prompt": "Medium view across a research shelf. Plain eyeglass frames, a generic headset shell, a smooth software disc and a plain content sleeve surround one shared revenue vessel. There are no product-result vessels.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1550,7 +1560,7 @@
       "id": "x05-b06-s01",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot on a plain product bench: the eyeglass sales-change rail extends while the headset rail retreats, neither carrying quantities or official product designs. All surfaces stay free of words, totals, logos, faces, and known app designs.",
+        "prompt": "Medium view of a prototype bench. More plain eyeglass frames sit in the later open box, while fewer generic headset shells sit in a later box. Earlier boxes stand behind for directional comparison only.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1563,13 +1573,13 @@
           "say_for": "6cee24ab1feb"
         }
       ],
-      "chapter": "二〇二五年，收入、成本與最後答案"
+      "chapter": "二〇二五年，兩類裝置走向相反"
     },
     {
       "id": "x05-b06-s02",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot of a single research-division revenue tray receiving anonymous product and content tiles, with individual product trays deliberately absent. Exclude readable words, figures, logos, faces and copied filing layouts.",
+        "prompt": "Overhead view of one large terracotta-colored research revenue bowl receiving plain eyeglass, headset, software and content tokens together. Four smaller individual bowls remain closed and empty of figures.",
         "camera": "static",
         "visual": "still"
       },
@@ -1610,7 +1620,7 @@
       "id": "x05-b06-s04",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a quiet research office: several expense trays stand between the division-level rust loss cell and multiple generic product props, leaving no single product to blame. Show nonverbal shapes only; omit glyphs, digits, brand badges, identities, and recognizable user interfaces.",
+        "prompt": "Wide view of a research workroom. Several blue expense urns stand between the single shared brick-colored result urn and generic eyeglass and headset props. Nothing connects an expense urn to one specific device.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1626,7 +1636,7 @@
       "id": "x05-b06-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot by an empty research workbench: the newer personnel-expense sleeve is thicker than its earlier counterpart beside generic tools. Render blank physical props without script, values, trade dress, actual persons, or copied apps.",
+        "prompt": "Medium view of an empty research bench. More plain stool tokens reach the newer people-cost bin than the older bin behind it; generic eyeglass frames sit aside without their own result bin.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1644,7 +1654,7 @@
       "id": "x05-b06-s06",
       "template": "shot",
       "data": {
-        "prompt": "Close shot inside a supply storeroom: sealed future inventory-purchase papers rest in an estimated-loss tray beside generic parts crates, with no sale or cash payment. No legible writing, numerals, trademarks, or human faces appear on any prop.",
+        "prompt": "Close shot inside a supply storeroom. Sealed blank component crates are committed to a future shelf, while an estimate stone rests in a rust loss dish. Cash and product-sale dishes remain untouched.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1662,7 +1672,7 @@
       "id": "x05-b06-s07",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot on a prototype workbench: technical-development sketches and generic components feed a third cost sleeve beside the personnel and inventory sleeves. Use anonymous objects with clear surfaces; exclude readable words, digits, company emblems, and real likenesses.",
+        "prompt": "Overhead view of a prototype bench. Additional loose technical components feed one blue development-cost basin beside people-cost and inventory-cost basins. The shared terracotta result basin sits beyond them.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1680,7 +1690,7 @@
       "id": "x05-b06-s08",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot before a cabinet of generic eyewear and headset shells: each product compartment remains closed while the only visible operating-result cell belongs to the whole research division. Nothing carries printed type or figures, protected marks, recognizable people, or copied layouts.",
+        "prompt": "Wide view of a cabinet with compartments for plain eyeglass frames and a generic headset shell. Both individual compartments are shut; only one shared brick-colored result cup is open in front.",
         "camera": "static",
         "visual": "still"
       },
@@ -1698,7 +1708,7 @@
       "id": "x05-b06-s09",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot down a research hallway: covered prototypes recede past undated calendar leaves beyond the current annual report, with no completed product outcome shown. Paper and products show abstract forms alone, with no numbers, brand insignia, portraits, or app replicas.",
+        "prompt": "Medium view down an empty research hallway. Several unfinished generic prototypes remain beneath plain cloth covers on progressively distant benches. There is no finished product at the far end.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1735,7 +1745,7 @@
       "id": "x05-b06-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: a company-level profit book rests on an upper table and a separate closed cash ledger on a lower shelf, with no path marking an earmarked transfer. Avoid letters, numerals, commercial symbols, photographic humans, and reproduced software displays.",
+        "prompt": "Medium view of two physically separated shelves. A pale green company-profit crock sits above; a different closed cash crock sits below, with clear empty space and no chute or tube between them.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1751,7 +1761,7 @@
       "id": "x05-b06-s12",
       "template": "shot",
       "data": {
-        "prompt": "Wide overhead shot of the newest annual report: a tall pale application profit bar and a shorter rust research loss band occupy two open columns, while the company-total cell stays beneath an opaque flap. All surfaces stay free of words, totals, logos, faces, and known app designs.",
+        "prompt": "Wide overhead view of a worktable. A tall sage green stack and a shorter terracotta weight stand apart; a third opaque company-result compartment stays covered between them. The two positions remain visually distinct.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1800,7 +1810,7 @@
       "id": "x05-b06-s14",
       "template": "shot",
       "data": {
-        "prompt": "Close shot on an ordinary home table: plain eyeglass and headset shells sit beside sealed product-level files and an annual division report, leaving each product's own result unknown. Show nonverbal shapes only; omit glyphs, digits, brand badges, identities, and recognizable user interfaces.",
+        "prompt": "Close shot of an ordinary home table. Plain eyeglass frames and a generic headset shell stand beside sealed blank boxes; one shared brick-colored research box sits farther back.",
         "camera": "static",
         "visual": "still"
       },
@@ -1816,7 +1826,7 @@
       "id": "x05-b06-s15",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot back at the opening records desk: the recurring annual ledger closes as morning light falls on open space reserved for the separate end-screen animation. Render blank physical props without script, values, trade dress, actual persons, or copied apps.",
+        "prompt": "Wide view back at the opening records room. A smooth unmarked wooden cabinet closes gently as morning light falls on clear empty space beside it, ready for an end-screen animation.",
         "camera": "tilt down",
         "visual": "still"
       },
