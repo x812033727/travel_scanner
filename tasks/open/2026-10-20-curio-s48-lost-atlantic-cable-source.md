@@ -55,3 +55,5 @@ R2 交接前再縮緊 `atl076`：提示詞只正面描繪抓鉤索、渾濁海�
 2026-10-20 另一人的 R3[獨立來源審稿回報摘要](../../docs/videos/curio-s48/review/r3-source-independent-reported.md)為**來源 HOLD、書面畫面 PASS**：Field 將 1866 年第二線抵岸寫成「Saturday, September 7」，但 9 月 7 日實為星期五；Russell 的 1,186 `miles` 此處未明定陸英里或海里。原始審稿全文未留，共享收據只據轉交結論記錄。作者已做 R4 小幅修訂：[verify-4.md](../../docs/videos/curio-s48/verify-4.md) 將抵岸改「九月初」、放線門檻改「超過一千海里」並交代兩種解讀皆成立，凍結五檔 SHA；`lint` 0 errors／0 warnings、103/103 句一致、325 單位／分正文 8:45.4。**R4 尚待另一人獨立來源／書面畫面差分和兩名全新盲讀**；無站台、TTS、插畫或組片成果。
 
 2026-10-20 R4：另一位製作人重開固定 Russell／Field 原文，按 1866-09-07 星期矛盾及 1,186 miles 單位歧義核對精確新版，判[史料／書面畫面差分 PASS](../../docs/videos/curio-s48/review/r4-source-independent.md)。R4 只說「九月初」「超過一千海里」，並公開換算與來源限制；仍須兩名真正全新讀者對 R4 敘事盲讀，Jev、網站與付費媒體未做。
+
+2026-10-20 R4 正式隔離雙盲：此前兩個看過 brief／claims 的 R4 首讀保留為編輯意見；另用 CLI 只含旁白與 13 題的 JSON 給兩位全新讀者，A、B 各 11/13，均判必答 `payoffs`、`no_recap` No，合併[正式敘事 FAIL](../../docs/videos/curio-s48/review/r4-official-panel.md)。主要是 `atl026→027` 承諾無法交代的故障原因、`atl005→054` 鉤物問答含糊，以及 `atl050→054`、`atl095→096` 事實重述。R5 修後須重跑獨立來源／畫面及真正新隔離盲讀；未進語音或付費媒體。
