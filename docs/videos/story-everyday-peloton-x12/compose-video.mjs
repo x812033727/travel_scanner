@@ -39,12 +39,16 @@ if (chapters.some(chapter => chapter.length < 8) || outro.length !== 3) throw ne
 const allRows = [...chapters.flat(), ...outro];
 if (new Set(allRows.map(row => row.id)).size !== allRows.length) throw new Error("Duplicate line id");
 for (const [ci, chapter] of chapters.entries()) {
-  for (const [ri, row] of chapter.entries()) {
-    const expected = `x12${String(ci + 1).padStart(2, "0")}${String(ri + 1).padStart(2, "0")}`;
-    if (row.id !== expected) throw new Error(`Nonsequential id: ${row.id}, expected ${expected}`);
+  let previous = 0;
+  for (const row of chapter) {
+    const match = new RegExp(`^x12${String(ci + 1).padStart(2, "0")}(\\d{2})$`).exec(row.id);
+    const number = Number(match?.[1]);
+    // Preserve source-review line IDs when an unnecessary line is cut in a later revision.
+    if (!match || number <= previous) throw new Error(`Invalid or unordered chapter line id: ${row.id}`);
+    previous = number;
   }
 }
-for (const [ri, row] of outro.entries()) if (row.id !== `x1206${String(chapters[5].length + ri + 1).padStart(2, "0")}`) throw new Error(`Bad closing id: ${row.id}`);
+for (const [ri, row] of outro.entries()) if (row.id !== `x1206${String(12 + ri).padStart(2, "0")}`) throw new Error(`Bad closing id: ${row.id}`);
 
 const cards = new Map(Object.entries({
   x120407: ["FY2021 → FY2022｜設備類收入", "US$3,149.6m → 2,187.5m", "收入，非單車台數", "K22"],
@@ -60,7 +64,7 @@ const lights = ["soft window light", "mild overhead light", "grey daylight", "de
 const sceneSettings = new Map([
   ["x120101", "clean tabletop Ohio factory diorama"], ["x120103", "clean tabletop Ohio factory diorama"],
   ["x120104", "clean tabletop Ohio factory diorama"], ["x120105", "clean tabletop Ohio factory diorama"],
-  ["x120106", "clean tabletop Ohio factory diorama"], ["x120107", "clean tabletop factory diorama"],
+  ["x120106", "clean tabletop unfinished assembly diagram"], ["x120107", "clean tabletop factory diorama"],
   ["x120108", "clean tabletop Ohio factory diorama"], ["x120109", "clean tabletop accounting diorama"],
   ["x120110", "clean tabletop Ohio factory diorama"], ["x120201", "clean tabletop factory diorama"],
   ["x120203", "clean concept-animation studio"],
@@ -100,22 +104,21 @@ const loops = [
   ["x120107", "x120501", "七月自有產線分工改成什麼"],
   ["x120108", "x120507", "自有廠造車工作與 Ohio 廠殼各往哪裡去"],
   ["x120109", "x120512", "Ohio 未投產時已投多少"],
-  ["x120109", "x120516", "Ohio 已投金額能換回多少"],
-  ["x120110", "x120612", "Ohio 從出車計畫走到出售狀態"],
+  ["x120109", "x120516", "九月年報是否報出 Ohio 出售回款"],
+  ["x120110", "x120612", "Ohio 從新增產能變成已干擾營運的處置負擔"],
   ["x120209", "x120211", "原有代工網可怎樣調整交貨"],
   ["x120213", "x120214", "多蓋新廠能否解除零件供應限制"],
-  ["x120217", "x120301", "已有 Precor 美國廠為何還要新廠"],
   ["x120221", "x120301", "新廠原本要補的產能"],
-  ["x120312", "x120313", "廠殼先好但機器未到能否出車"],
+  ["x120309", "x120312", "展示間與參觀門前的工程和設備阻礙"],
   ["x120316", "x120401", "無法立刻縮回的廠殼後來怎樣"],
   ["x120319", "x120401", "二月 Ohio 廠殼決定"],
   ["x120413", "x120501", "其他自有產線會怎樣"],
-  ["x120510", "x120516", "已投 Ohio 金額能否收回"],
+  ["x120510", "x120516", "九月年報有無報出已投 Ohio 的回款"],
   ["x120515", "x120516", "九月年報是否有成交回款"],
-  ["x120519", "x120605", "訂閱成長能否恢復 Ohio 造車任務"],
+  ["x120519", "x120605", "訂閱成長能否證明 Ohio 新機產能仍有需求"],
   ["x120603", "x120605", "訂閱成長是否代表新機訂單"],
   ["x120607", "x120608", "Ohio 出售是否出現新進度"],
-  ["x120611", "x120612", "截至 FY2023 是否有買家"],
+  ["x120611", "x120612", "FY2023 出售工作是否已干擾其他營運"],
 ].map(([setup, payoff, what]) => ({ setup, payoff, what }));
 const ids = new Map(allRows.map((row, i) => [row.id, i]));
 for (const loop of loops) if (!(ids.has(loop.setup) && ids.has(loop.payoff) && ids.get(loop.setup) < ids.get(loop.payoff))) throw new Error(`Invalid loop: ${JSON.stringify(loop)}`);
