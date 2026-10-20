@@ -15,7 +15,7 @@ const sourceUrls = [
   { code: "K23", title: "Peloton FY2023 Form 10-K", url: "https://www.sec.gov/Archives/edgar/data/1639825/000163982523000132/pton-20230630.htm", checked_on: "2026-10-20" },
 ];
 const chapterTitles = [
-  "一份俄亥俄建廠公告，三張待翻開的文件",
+  "已有美國廠，五月又宣布一座新廠",
   "設備訂單增加，交貨壓力跟上",
   "公司宣布俄亥俄 Output Park",
   "二月廠殼出售計畫，六月收入反轉",
@@ -62,9 +62,10 @@ const settings = ["plain office", "small workshop", "ordinary warehouse", "modes
 const lights = ["soft window light", "mild overhead light", "grey daylight", "desk lamp"];
 const sceneSettings = new Map([
   ["x120101", "clean tabletop Ohio factory diorama"], ["x120103", "clean tabletop Ohio factory diorama"],
-  ["x120104", "clean tabletop Ohio factory diorama"], ["x120105", "clean tabletop factory diorama"],
-  ["x120106", "clean concept-animation studio"], ["x120108", "clean tabletop Ohio factory diorama"],
-  ["x120109", "clean tabletop Ohio factory diorama"], ["x120201", "clean tabletop factory diorama"],
+  ["x120104", "clean tabletop Ohio factory diorama"], ["x120105", "clean tabletop Ohio factory diorama"],
+  ["x120106", "clean tabletop Ohio factory diorama"], ["x120107", "clean tabletop factory diorama"],
+  ["x120108", "clean tabletop Ohio factory diorama"], ["x120109", "clean tabletop accounting diorama"],
+  ["x120110", "clean tabletop Ohio factory diorama"], ["x120201", "clean tabletop factory diorama"],
   ["x120203", "clean concept-animation studio"],
   ["x120219", "clean tabletop factory diorama"], ["x120221", "clean tabletop factory diorama"],
   ["x120301", "clean tabletop factory diorama"], ["x120401", "clean tabletop Ohio factory diorama"],
@@ -96,15 +97,16 @@ scenes.push(...outro.map((row, ri) => ({
   lines: [lineFor(row)],
 })));
 const loops = [
-  ["x120104", "x120301", "未來工廠能補什麼產能"],
+  ["x120104", "x120301", "既有美國廠之外再蓋新廠的缺口"],
   ["x120105", "x120401", "二月重整怎麼處理 Ohio 廠殼"],
-  ["x120106", "x120407", "六月設備與訂閱收入如何分岔"],
-  ["x120107", "x120501", "七月外部產線接到何種分工"],
-  ["x120108", "x120512", "Ohio 未投產時已投多少"],
-  ["x120109", "x120613", "Ohio 從產能計畫走到哪一步"],
+  ["x120106", "x120401", "二月廠殼下一步是否造車"],
+  ["x120107", "x120501", "七月自有產線分工改成什麼"],
+  ["x120108", "x120507", "自有廠造車工作與 Ohio 廠殼各往哪裡去"],
+  ["x120109", "x120512", "Ohio 未投產時已投多少"],
+  ["x120110", "x120612", "Ohio 從增產計畫走到哪一步"],
   ["x120209", "x120211", "原有代工網可怎樣調整交貨"],
   ["x120221", "x120301", "新廠原本要補的產能"],
-  ["x120311", "x120401", "新廠需求變動後的處置"],
+  ["x120316", "x120401", "無法立刻縮回的廠殼後來怎樣"],
   ["x120319", "x120401", "二月 Ohio 廠殼決定"],
   ["x120405", "x120501", "Ohio 停造車後由誰接製造"],
   ["x120417", "x120501", "其他自有產線會怎樣"],
@@ -134,7 +136,7 @@ const video = {
   music: { prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 },
   loops,
   youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Peloton 四億美元新廠計畫，出車前發生了什麼？｜品牌故事", description, tags: ["Peloton", "品牌故事", "健身單車", "訂閱", "製造", "Ohio"], video_id: null },
-  thumbnail: { template: "thumb", data: { headline: "**廠沒開？**", tag: "品牌故事", brand: "Peloton", shot: "x12-b01-s08" } },
+  thumbnail: { template: "thumb", data: { headline: "**廠沒開？**", tag: "品牌故事", brand: "Peloton", shot: "x12-b01-s04" } },
   sources: sourceUrls.map(({ code, ...source }) => source), assets: [], scenes,
 };
 const bytes = JSON.stringify(video, null, 2) + "\n";

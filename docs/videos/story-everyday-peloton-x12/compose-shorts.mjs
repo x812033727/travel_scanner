@@ -34,10 +34,10 @@ const shorts = [
     ],
     scenes: [
       { beat: "hook", shot: "x12-b01-s01", headline: "Peloton 新廠變局", narration: ["二〇二一年，Peloton 在俄亥俄規劃新廠；最後花了多少、賣掉了嗎？"] },
-      { beat: "setup", shot: "x12-b01-s03", headline: "四億美元多年計畫", big: "US$400m", note: "多年規劃，非已支出", narration: ["原定二〇二三年造單車和跑步機，多年規劃約四億美元。"] },
+      { beat: "setup", shot: "x12-b01-s04", headline: "四億美元多年計畫", big: "US$400m", note: "多年規劃，非已支出", narration: ["原定二〇二三年造單車和跑步機，多年規劃約四億美元。"] },
       { beat: "setup", shot: "x12-b04-s01", headline: "2022 二月：擬出售", narration: ["二〇二二年二月重整先宣布：Ohio 廠殼做完後出售；這仍是計畫。"] },
-      { beat: "setup", shot: "x12-b01-s08", headline: "六月底已投入", big: "US$86.6m", note: "FY2022 年報披露", narration: ["截至二〇二二年六月底，Ohio 專案已投約八千六百六十萬美元。"] },
-      { beat: "turn", shot: "x12-b05-s01", headline: "七月全面退出自製", narration: ["七月再宣布退出整體自製，Rexon 將主造單車和跑步機。"] },
+      { beat: "setup", shot: "x12-b01-s09", headline: "六月底已投入", big: "US$86.6m", note: "FY2022 年報披露", narration: ["截至二〇二二年六月底，Ohio 專案已投約八千六百六十萬美元。"] },
+      { beat: "turn", shot: "x12-b05-s02", headline: "七月全面退出自製", narration: ["七月再宣布退出整體自製，Rexon 將主造單車和跑步機。"] },
       { beat: "proof", shot: "x12-b05-s11", headline: "九月有成交嗎？", narration: ["九月年報回看，二月說要賣的廠，現在成交了嗎？"] },
       { beat: "payoff", shot: "x12-b05-s16", headline: "仍在找買家", narration: ["沒有。年報只說仍在找買家、打算出售，沒有成交款。"] },
     ],
@@ -55,11 +55,11 @@ const shorts = [
     scenes: [
       { beat: "hook", shot: "x12-b03-s01", headline: "Peloton 新廠難題", narration: ["二〇二一年，Peloton 規劃俄亥俄造車廠；訂閱成長能讓它用上嗎？"] },
       { beat: "setup", shot: "x12-b04-s01", headline: "二月：廠殼擬出售", narration: ["隔年二月重整先宣布：廠殼做完後出售；不是已賣。"] },
-      { beat: "setup", shot: "x12-b04-s12", headline: "設備類收入下滑", body: ["FY2021｜約 31.5 億美元", "FY2022｜約 21.9 億美元"], narration: ["截至六月的財年，設備類收入降到約二十一點九億美元。"] },
+      { beat: "setup", shot: "x12-b04-s11", headline: "設備類收入下滑", body: ["FY2021｜約 31.5 億美元", "FY2022｜約 21.9 億美元"], narration: ["截至六月的財年，設備類收入降到約二十一點九億美元。"] },
       { beat: "turn", shot: "x12-b04-s06", headline: "訂閱類收入上升", body: ["FY2021｜約 8.7 億美元", "FY2022｜約 13.9 億美元"], narration: ["訂閱類卻升到約十三點九億美元。"] },
       { beat: "proof", shot: "x12-b06-s05", headline: "月費不是新機訂單", narration: ["不能。月費不是新機訂單；設備類收入也不能換成單車台數。"] },
-      { beat: "proof", shot: "x12-b04-s16", headline: "FY2022 設備類毛損", body: ["約 2.46 億美元", "分類毛損 ≠ 公司淨損"], narration: ["扣掉設備類收入成本，那年毛損約二點四六億美元。"] },
-      { beat: "proof", shot: "x12-b05-s01", headline: "七月再退出自製", narration: ["七月再宣布全面退出自有製造，Rexon 將主造。"] },
+      { beat: "proof", shot: "x12-b04-s15", headline: "FY2022 設備類毛損", body: ["約 2.46 億美元", "分類毛損 ≠ 公司淨損"], narration: ["扣掉設備類收入成本，那年毛損約二點四六億美元。"] },
+      { beat: "proof", shot: "x12-b05-s02", headline: "七月再退出自製", narration: ["七月再宣布全面退出自有製造，Rexon 將主造。"] },
       { beat: "payoff", shot: "x12-b05-s16", headline: "九月仍在找買家", narration: ["九月年報仍寫廠殼待售，Ohio 的造車任務沒有回來。"] },
     ],
   },
@@ -71,7 +71,7 @@ const portraitFocals = [
   ],
   [
     "Ohio 待建基地＋既有產線", "未投產廠殼＋未交換信封", "設備紙箱＋向下收入色帶；數字以後製卡呈現", "課程螢幕＋向上收入色帶；數字以後製卡呈現",
-    "既有連網單車＋數位課程螢幕；沒有新機出貨", "未啟用 Ohio 廠殼＋設備成本盒；分類毛損另以卡片呈現", "台灣外部產線＋工作分工信封", "Ohio 廠殼＋未簽交易／空收款盒",
+    "既有連網單車＋數位課程螢幕；沒有新機出貨", "港口貨箱＋倉庫紙箱；設備分類毛損另以卡片呈現，不能把整筆毛損全歸於物流", "台灣外部產線＋工作分工信封", "Ohio 廠殼＋未簽交易／空收款盒",
   ],
 ];
 for (const [i, short] of shorts.entries()) {
