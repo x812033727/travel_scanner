@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-curio-s46-elizabeth-blackwell-medical-college
 title: Curio S46 Elizabeth Blackwell medical college episode preproduction
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex/root
+claimed_at: 2026-10-20T16:08:37Z
 created_at: 2026-10-20T12:59:56Z
 completed_at:
 branch: codex/curio-s34-endurance-20261019
@@ -77,3 +77,7 @@ R4 書面畫面獨立覆核 [verify-8.md](../../docs/videos/curio-s46/verify-8.m
 2026-10-20 R10 前製關卡已完成：[獨立逐句史料與書面畫面覆核](../../docs/videos/curio-s46/review/r10-source-independent.md)兩項 PASS；[官方隔離敘事雙盲](../../docs/videos/curio-s46/review/r10-official-panel.md) A 12／13、B 13／13，唯一分歧 `no_toc`，固定合併規則判 **PASS**。原始答卷與合併 JSON 均留存，payload SHA `d4db0ed473049db32eb326d9eb57ba4e523d8fd67ed0eb157619d101543155c7`；五檔精確輸入 SHA 見兩份 R10 收據。交主工作者安排 Jev、網站精確版核准與付費媒體；目前未生成語音、插圖或成片，亦未核准網站劇本。
 
 2026-10-20 R10 [Jev 全稿政策收據](../../docs/videos/curio-s46/review/r10-policy.json)對同一精確劇本判 **FAIL**：sponsored 0.34，高於 0.30 門檻；stance 0.71、advice 0.02、demo null。請求 SHA `5ae05f9679f80f4587217f05466a2659dd89e622de3456b594c5cd34acead2a6`，收據 SHA `ef4883dfacbe0d474de49dc14ce7f6d56d11aad1e9d6e224f842dca06d2ace6b`。僅以 `review-push --report-only` 建立 explainer 類別站台列，零審查卡；沒有送出網站核准或做付費媒體。此 FAIL 尚未修稿，不能以來源／敘事 PASS 替代政策關卡；若改字須以新版重做相關審查。
+
+2026-10-20 R11 [作者政策窄修](../../docs/videos/curio-s46/verify-20.md)：只把 `bkw999c` 口頭訂閱句改成來源固定連結在說明欄的核對指引；畫面訂閱 CTA、歷史正文與提示詞、頻道／來源 URL 未改。新 `script.md` SHA `3cc22cc5b69a782a420a78396f715bc22670dddfda3cf3c7ddacaa352df7194a`、`video.json` `f59ec9508ce6f5d61f867e2d2a74c74166a3bde4282b4153c9b71f07469f752b`、`claims.md` `947e5afe656da6df441a4d053e895944342584d3c43c23caa729cbb0aba4d609`；120/120 對齊，lint 0 errors／1 個「未口播訂閱」warning，正文仍估約 8:06。Jev **未指出** R10 業配分數的來源，R11 此改法僅是合理候選，不是政策 PASS。下一人須獨立差分審核、兩名新讀者盲讀，再對精確 R11 做新 `explainer` 政策判讀；無 TTS、插圖、配樂、成片或網站核准。
+
+2026-10-20 R11 [另一位工作者獨立來源／書面畫面差分](../../docs/videos/curio-s46/review/r11-source-independent.md) **PASS**：固定原著 URL 確在上架說明欄，歷史 119 句與畫面不變，120/120 對齊；此 PASS 不代替兩名新讀者或新 Jev 政策，亦不核准網站／媒體。

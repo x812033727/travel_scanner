@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-curio-s45-nellie-bly-blackwell-island
 title: Curio S45 Nellie Bly Blackwell Island source-audited episode
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex/root
-claimed_at: 2026-10-20T15:38:20Z
+owner:
+claimed_at:
 created_at: 2026-10-20T12:11:49Z
 completed_at:
 branch: codex/curio-s34-endurance-20261019
@@ -74,3 +74,7 @@ R6 repaired `bly011–014` (back-parlor wait before room terms/payment), `bly017
 2026-10-20 R9：兩名真正隔離、只讀 CLI 旁白與十三題的新讀者各 12/13，A 的 `no_recap` No、B 的 `payoffs` No 沒有共同必答失敗，依工具合併規則[敘事 PASS](../../docs/videos/curio-s45/review/r9-official-panel.md)，原始 JSON 與逐題合併可查。R9 精確史料／書面畫面亦獨立 PASS；Jev、網站、R9 配音及圖像另待，R8 的 23 旗標未清。
 
 2026-10-20 R9 後續：[精確政策／本地委派劇本決定](../../docs/videos/curio-s45/verify-19.md)完成；站台 outline/script 仍 hand_pushed pending。實際合成 R9 23 句（其餘 79 沿用），三次完整音檢及兩輪只補錄被標句，旗標 **7→2→1**；實測開場 45.43 秒、正文 9:45.13，最後一個 `bly098` 把人名／書誤聽為「布萊德叔叔」，不能通過音訊關卡，詳[verify-20.md](../../docs/videos/curio-s45/verify-20.md)。R10 [作者定點改稿](../../docs/videos/curio-s45/verify-21.md)只重說 `bly098`，精確新 `script.md` SHA `b5354170966637ceea44ba6d2b96d27b052f3195db02ba91507af2dff984986c`，待另人史料／畫面差分、兩位新隔離讀者、R10 政策及精確劇本決定，然後只重配一行再做全片音檢。R9 的音訊／政策／核准不得直接當 R10 通過；無 MiniMax、配樂或成片。
+
+2026-10-20 R10 已通過[獨立來源／書面畫面](../../docs/videos/curio-s45/review/r10-source-independent.md)、兩名全新讀者各 13/13 的[正式雙盲](../../docs/videos/curio-s45/review/r10-official-panel.md)與[全稿 Jev explainer 政策](../../docs/videos/curio-s45/verify-22.md)。新 `bly098` 實際 TTS 加定點補錄後，全片 **102/102 官方音檢零旗標**；開場 45.43 秒、正文 9:45.63。網站 script/audio 卡仍 hand_pushed pending，本地依使用者委派記精確稿與時間軸選擇，不冒稱網站核准。整集 MiniMax 96 張最多三次加配樂本地 US$3.97 上限；首輪三景各一張總約 US$0.04，[原尺寸 0/3 KEEP](../../docs/videos/curio-s45/verify-23.md)：錯年代報館、年長男子渡船、多人孩童小船。付費放量、配樂與成片 **STOP**，待三景文字提示窄修、另一人覆核與第二次三景原生試圖；未有 S45 完整影片。
+
+R10-V2 書面提示詞曾被[獨立 HOLD](../../docs/videos/curio-s45/review/r10-v2-visual-independent.md)，未付費重試。R10-V3 僅修 `bly039/bly088` 後[獨立 PASS](../../docs/videos/curio-s45/review/r10-v3-visual-independent.md)；102 句口播與零旗標 WAV 雜湊不變。第二輪三景各一張累計約 US$0.08，[原尺寸又是 **0/3 KEEP**](../../docs/videos/curio-s45/verify-26.md)：1887 報館現代螢幕、高窗船艙變成山地大窗與老男子、記者未登船而背景有綠山和多人。依試畫前設定的 ≥2/3 門檻停止這套付費插圖、配樂和成片；站台 storyboard/final 無核准，沒有 S45 完整影片。保留音訊與來源收據供日後改用可靠畫面方案。

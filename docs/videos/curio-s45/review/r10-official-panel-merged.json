@@ -1,0 +1,529 @@
+{
+  "date": "2026-10-20",
+  "round": "R10",
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "cli_payload_sha256": "91ca0f3348b5d4f15610c855a179a2fed222f48fc6fdf3181b10472e1f0d3573",
+  "input_sha256": {
+    "brief.md": "965d4f46b1b90cad9d52882ca5187003c42ca9a897debc874fbc0937d5a40909",
+    "research.md": "97b91f2344190fbc424fd29eca17da2bee372673bdc7fd36e7161e13ef31ab65",
+    "video.json": "6339b421fd41c585039d5b3b8ef933513dff05b0fe9fbf56da82ab929d9537cb",
+    "script.md": "b5354170966637ceea44ba6d2b96d27b052f3195db02ba91507af2dff984986c",
+    "claims.md": "81f0d836ab7a5026a13654b88e3c5517a51fc8be124eaacfaba3a3f0c39e30f1"
+  },
+  "answer_sha256": {
+    "A": "8687058812b7feb8dcae7e02a3bfb2bcebd1121d203dfeff0ebc470f9ac55793",
+    "B": "d4b5cd645456235b31c2cdde5d606cddd53f357da18926f28644ff2f2948b498"
+  },
+  "readers": [
+    {
+      "passed": true,
+      "answers": [
+        {
+          "id": "scene_first",
+          "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly001] 以一八八七年九月二十二日布萊接到《世界報》委託的具體時刻開場；[bly002] 隨即交代她要做的事。"
+        },
+        {
+          "id": "no_spoiler",
+          "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly004] 進去後怎麼出來仍無確定辦法；[bly005][bly006][bly007] 法院、信和筆記本都停在疑問，未揭曉後續結果。"
+        },
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly001] 接委託後，[bly020] 到警局和法院，[bly039] 抵島，[bly080] 出院，[bly085] 再受大陪審團傳喚；事情按時間往前走。"
+        },
+        {
+          "id": "no_toc",
+          "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly008] 說調查得先找到進去的門，指的是故事中的入院難題；[bly009][bly010] 隨即寫她練習與選擇入島路徑，沒有列出節目章節。"
+        },
+        {
+          "id": "chapters_link",
+          "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly008][bly009] 從尋找入口接到準備假扮；[bly021][bly022] 法官去向接到法庭處置；[bly041][bly042] 入島後是否照常說話立即得到答案；[bly074][bly075] 等誰來接到律師；[bly084][bly085] 誰要她再說接到大陪審團。"
+        },
+        {
+          "id": "open_loops",
+          "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly004][bly021][bly041][bly062][bly074][bly084][bly097] 持續提出尚未解答的具體疑問，間隔都在九十秒內。"
+        },
+        {
+          "id": "payoffs",
+          "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly004][bly075][bly080] 出口疑問回收到律師來訪和放行；[bly006][bly065][bly067] 信引人追問回收到眾人想知道外界消息；[bly007][bly060][bly061] 筆記本疑問回收到多次索回仍未拿到；[bly097][bly098] 陪審團結果也有明確答案。"
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly085][bly086] 後段交代新發生的傳喚與作證，只用一句概述證詞範圍；[bly088][bly089] 接著推進到再訪時的新見聞，沒有重新敘述先前經歷。"
+        },
+        {
+          "id": "chapters_are_events",
+          "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+          "required": false,
+          "yes": true,
+          "evidence": "[bly009][bly010] 練習和取化名、[bly042] 入島後照常說話、[bly052][bly053] 晚餐吃不下、[bly075][bly080] 律師來訪後放行、[bly085][bly088] 受傳喚後再登島，均是章名所指的事件。"
+        },
+        {
+          "id": "outro_no_next",
+          "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly999a][bly999b][bly999c] 片尾停在對院內生活的期望、請觀眾反思與原著連結，沒有提下一支影片、下一集或下一份檔案。"
+        },
+        {
+          "id": "opening_hooks",
+          "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly005] 留下法院後會被送去哪的問題；[bly006] 留下信為何引人追問的問題；[bly007] 留下筆記本能否要回的問題。"
+        },
+        {
+          "id": "one_thread",
+          "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly001][bly002] 布萊受命調查收容所；[bly039][bly042] 她進島觀察；[bly080][bly083] 她離島並寫下見聞；[bly085][bly098] 她再為大陪審團說明調查。"
+        },
+        {
+          "id": "no_detour",
+          "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly008][bly020][bly039][bly061][bly080][bly098] 各段依次推進布萊如何進院、所見待遇、如何離院及調查後續，沒有無關段落或清單式羅列。"
+        }
+      ],
+      "failed": [],
+      "advisory": [],
+      "problems": []
+    },
+    {
+      "passed": true,
+      "answers": [
+        {
+          "id": "scene_first",
+          "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly001] gives the date and Bly receiving a newspaper assignment; [bly002] states the action she must take; [bly004] places her in a concrete exchange with the editor."
+        },
+        {
+          "id": "no_spoiler",
+          "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly004] leaves her exit unresolved; [bly005], [bly006], and [bly007] pose later moments as unanswered questions."
+        },
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly001] starts with the assignment, [bly020] reaches police and court, [bly039] reaches the island, [bly075] introduces the lawyer, [bly083] returns her to New York, and [bly085] begins the later gra"
+        },
+        {
+          "id": "no_toc",
+          "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly008] states Bly's immediate problem of finding a way in; [bly021] and [bly074] ask what happens next in the events rather than announcing a presentation outline."
+        },
+        {
+          "id": "chapters_link",
+          "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly008] leads into her preparation in [bly009]; [bly021] asks the judge's next move and [bly022] shows it; [bly041] asks how she will act on the island and [bly042] answers; [bly051] reaches the dinn"
+        },
+        {
+          "id": "open_loops",
+          "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+          "required": true,
+          "yes": true,
+          "evidence": "Unresolved questions keep appearing throughout: [bly004], [bly017], [bly021], [bly032], [bly036], [bly041], [bly046], [bly056], [bly062], [bly068], [bly075], [bly084], [bly091], and [bly097]."
+        },
+        {
+          "id": "payoffs",
+          "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+          "required": true,
+          "yes": true,
+          "evidence": "The opening exit question [bly004] receives the lawyer and release in [bly075]-[bly080]; the eye examination and destination in [bly005] lead to the pupil check and Bellevue in [bly026]-[bly028]; the "
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly010] introduces her alias, while [bly043] adds that she continues using it after ceasing the act; [bly086] says she testified about the earlier sequence without replaying that sequence to the audi"
+        },
+        {
+          "id": "chapters_are_events",
+          "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+          "required": false,
+          "yes": true,
+          "evidence": "The chapter openings enact successive happenings: assignment [bly001], preparation under an alias [bly009]-[bly010], the judge's decision [bly022], ordinary behavior on the island [bly042], the uneate"
+        },
+        {
+          "id": "outro_no_next",
+          "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+          "required": true,
+          "yes": true,
+          "evidence": "[bly999a] states Bly's hope, [bly999b] asks for reflection on this account, and [bly999c] points to the source; none mentions another video or installment."
+        },
+        {
+          "id": "opening_hooks",
+          "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+          "required": true,
+          "yes": true,
+          "evidence": "After the assignment scene, [bly005] asks where the court examination sends her, [bly006] asks why a letter draws questioning, and [bly007] asks whether she recovers her confiscated notebook."
+        },
+        {
+          "id": "one_thread",
+          "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+          "required": true,
+          "yes": true,
+          "evidence": "Bly's assignment and uncertain exit begin the thread [bly001]-[bly004]; she enters under an alias [bly010]-[bly020], experiences the island [bly042]-[bly073], exits with a lawyer [bly075]-[bly083], an"
+        },
+        {
+          "id": "no_detour",
+          "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+          "required": true,
+          "yes": true,
+          "evidence": "The language barrier [bly044]-[bly045], patient chores and confiscated notes [bly058]-[bly061], and the grand jury's changed observations [bly087]-[bly098] all develop what Bly encounters or how her a"
+        }
+      ],
+      "failed": [],
+      "advisory": [],
+      "problems": []
+    }
+  ],
+  "merged": {
+    "passed": true,
+    "answers": [
+      {
+        "id": "scene_first",
+        "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+        "required": true,
+        "yes": true,
+        "evidence": "[bly001] 以一八八七年九月二十二日布萊接到《世界報》委託的具體時刻開場；[bly002] 隨即交代她要做的事。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+        "required": true,
+        "yes": true,
+        "evidence": "[bly004] 進去後怎麼出來仍無確定辦法；[bly005][bly006][bly007] 法院、信和筆記本都停在疑問，未揭曉後續結果。",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_line",
+        "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+        "required": true,
+        "yes": true,
+        "evidence": "[bly001] 接委託後，[bly020] 到警局和法院，[bly039] 抵島，[bly080] 出院，[bly085] 再受大陪審團傳喚；事情按時間往前走。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_toc",
+        "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+        "required": true,
+        "yes": true,
+        "evidence": "[bly008] 說調查得先找到進去的門，指的是故事中的入院難題；[bly009][bly010] 隨即寫她練習與選擇入島路徑，沒有列出節目章節。",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_link",
+        "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+        "required": true,
+        "yes": true,
+        "evidence": "[bly008][bly009] 從尋找入口接到準備假扮；[bly021][bly022] 法官去向接到法庭處置；[bly041][bly042] 入島後是否照常說話立即得到答案；[bly074][bly075] 等誰來接到律師；[bly084][bly085] 誰要她再說接到大陪審團。",
+        "yes_readers": 2
+      },
+      {
+        "id": "open_loops",
+        "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+        "required": true,
+        "yes": true,
+        "evidence": "[bly004][bly021][bly041][bly062][bly074][bly084][bly097] 持續提出尚未解答的具體疑問，間隔都在九十秒內。",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+        "required": true,
+        "yes": true,
+        "evidence": "[bly004][bly075][bly080] 出口疑問回收到律師來訪和放行；[bly006][bly065][bly067] 信引人追問回收到眾人想知道外界消息；[bly007][bly060][bly061] 筆記本疑問回收到多次索回仍未拿到；[bly097][bly098] 陪審團結果也有明確答案。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_recap",
+        "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+        "required": true,
+        "yes": true,
+        "evidence": "[bly085][bly086] 後段交代新發生的傳喚與作證，只用一句概述證詞範圍；[bly088][bly089] 接著推進到再訪時的新見聞，沒有重新敘述先前經歷。",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_are_events",
+        "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+        "required": false,
+        "yes": true,
+        "evidence": "[bly009][bly010] 練習和取化名、[bly042] 入島後照常說話、[bly052][bly053] 晚餐吃不下、[bly075][bly080] 律師來訪後放行、[bly085][bly088] 受傳喚後再登島，均是章名所指的事件。",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+        "required": true,
+        "yes": true,
+        "evidence": "[bly999a][bly999b][bly999c] 片尾停在對院內生活的期望、請觀眾反思與原著連結，沒有提下一支影片、下一集或下一份檔案。",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+        "required": true,
+        "yes": true,
+        "evidence": "[bly005] 留下法院後會被送去哪的問題；[bly006] 留下信為何引人追問的問題；[bly007] 留下筆記本能否要回的問題。",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+        "required": true,
+        "yes": true,
+        "evidence": "[bly001][bly002] 布萊受命調查收容所；[bly039][bly042] 她進島觀察；[bly080][bly083] 她離島並寫下見聞；[bly085][bly098] 她再為大陪審團說明調查。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+        "required": true,
+        "yes": true,
+        "evidence": "[bly008][bly020][bly039][bly061][bly080][bly098] 各段依次推進布萊如何進院、所見待遇、如何離院及調查後續，沒有無關段落或清單式羅列。",
+        "yes_readers": 2
+      }
+    ],
+    "failed": [],
+    "advisory": [],
+    "problems": [],
+    "readers": [
+      {
+        "passed": true,
+        "answers": [
+          {
+            "id": "scene_first",
+            "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly001] 以一八八七年九月二十二日布萊接到《世界報》委託的具體時刻開場；[bly002] 隨即交代她要做的事。"
+          },
+          {
+            "id": "no_spoiler",
+            "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly004] 進去後怎麼出來仍無確定辦法；[bly005][bly006][bly007] 法院、信和筆記本都停在疑問，未揭曉後續結果。"
+          },
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly001] 接委託後，[bly020] 到警局和法院，[bly039] 抵島，[bly080] 出院，[bly085] 再受大陪審團傳喚；事情按時間往前走。"
+          },
+          {
+            "id": "no_toc",
+            "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly008] 說調查得先找到進去的門，指的是故事中的入院難題；[bly009][bly010] 隨即寫她練習與選擇入島路徑，沒有列出節目章節。"
+          },
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly008][bly009] 從尋找入口接到準備假扮；[bly021][bly022] 法官去向接到法庭處置；[bly041][bly042] 入島後是否照常說話立即得到答案；[bly074][bly075] 等誰來接到律師；[bly084][bly085] 誰要她再說接到大陪審團。"
+          },
+          {
+            "id": "open_loops",
+            "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly004][bly021][bly041][bly062][bly074][bly084][bly097] 持續提出尚未解答的具體疑問，間隔都在九十秒內。"
+          },
+          {
+            "id": "payoffs",
+            "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly004][bly075][bly080] 出口疑問回收到律師來訪和放行；[bly006][bly065][bly067] 信引人追問回收到眾人想知道外界消息；[bly007][bly060][bly061] 筆記本疑問回收到多次索回仍未拿到；[bly097][bly098] 陪審團結果也有明確答案。"
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly085][bly086] 後段交代新發生的傳喚與作證，只用一句概述證詞範圍；[bly088][bly089] 接著推進到再訪時的新見聞，沒有重新敘述先前經歷。"
+          },
+          {
+            "id": "chapters_are_events",
+            "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+            "required": false,
+            "yes": true,
+            "evidence": "[bly009][bly010] 練習和取化名、[bly042] 入島後照常說話、[bly052][bly053] 晚餐吃不下、[bly075][bly080] 律師來訪後放行、[bly085][bly088] 受傳喚後再登島，均是章名所指的事件。"
+          },
+          {
+            "id": "outro_no_next",
+            "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly999a][bly999b][bly999c] 片尾停在對院內生活的期望、請觀眾反思與原著連結，沒有提下一支影片、下一集或下一份檔案。"
+          },
+          {
+            "id": "opening_hooks",
+            "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly005] 留下法院後會被送去哪的問題；[bly006] 留下信為何引人追問的問題；[bly007] 留下筆記本能否要回的問題。"
+          },
+          {
+            "id": "one_thread",
+            "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly001][bly002] 布萊受命調查收容所；[bly039][bly042] 她進島觀察；[bly080][bly083] 她離島並寫下見聞；[bly085][bly098] 她再為大陪審團說明調查。"
+          },
+          {
+            "id": "no_detour",
+            "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly008][bly020][bly039][bly061][bly080][bly098] 各段依次推進布萊如何進院、所見待遇、如何離院及調查後續，沒有無關段落或清單式羅列。"
+          }
+        ],
+        "failed": [],
+        "advisory": [],
+        "problems": []
+      },
+      {
+        "passed": true,
+        "answers": [
+          {
+            "id": "scene_first",
+            "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly001] gives the date and Bly receiving a newspaper assignment; [bly002] states the action she must take; [bly004] places her in a concrete exchange with the editor."
+          },
+          {
+            "id": "no_spoiler",
+            "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly004] leaves her exit unresolved; [bly005], [bly006], and [bly007] pose later moments as unanswered questions."
+          },
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly001] starts with the assignment, [bly020] reaches police and court, [bly039] reaches the island, [bly075] introduces the lawyer, [bly083] returns her to New York, and [bly085] begins the later gra"
+          },
+          {
+            "id": "no_toc",
+            "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly008] states Bly's immediate problem of finding a way in; [bly021] and [bly074] ask what happens next in the events rather than announcing a presentation outline."
+          },
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly008] leads into her preparation in [bly009]; [bly021] asks the judge's next move and [bly022] shows it; [bly041] asks how she will act on the island and [bly042] answers; [bly051] reaches the dinn"
+          },
+          {
+            "id": "open_loops",
+            "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+            "required": true,
+            "yes": true,
+            "evidence": "Unresolved questions keep appearing throughout: [bly004], [bly017], [bly021], [bly032], [bly036], [bly041], [bly046], [bly056], [bly062], [bly068], [bly075], [bly084], [bly091], and [bly097]."
+          },
+          {
+            "id": "payoffs",
+            "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+            "required": true,
+            "yes": true,
+            "evidence": "The opening exit question [bly004] receives the lawyer and release in [bly075]-[bly080]; the eye examination and destination in [bly005] lead to the pupil check and Bellevue in [bly026]-[bly028]; the "
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly010] introduces her alias, while [bly043] adds that she continues using it after ceasing the act; [bly086] says she testified about the earlier sequence without replaying that sequence to the audi"
+          },
+          {
+            "id": "chapters_are_events",
+            "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+            "required": false,
+            "yes": true,
+            "evidence": "The chapter openings enact successive happenings: assignment [bly001], preparation under an alias [bly009]-[bly010], the judge's decision [bly022], ordinary behavior on the island [bly042], the uneate"
+          },
+          {
+            "id": "outro_no_next",
+            "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+            "required": true,
+            "yes": true,
+            "evidence": "[bly999a] states Bly's hope, [bly999b] asks for reflection on this account, and [bly999c] points to the source; none mentions another video or installment."
+          },
+          {
+            "id": "opening_hooks",
+            "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+            "required": true,
+            "yes": true,
+            "evidence": "After the assignment scene, [bly005] asks where the court examination sends her, [bly006] asks why a letter draws questioning, and [bly007] asks whether she recovers her confiscated notebook."
+          },
+          {
+            "id": "one_thread",
+            "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+            "required": true,
+            "yes": true,
+            "evidence": "Bly's assignment and uncertain exit begin the thread [bly001]-[bly004]; she enters under an alias [bly010]-[bly020], experiences the island [bly042]-[bly073], exits with a lawyer [bly075]-[bly083], an"
+          },
+          {
+            "id": "no_detour",
+            "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+            "required": true,
+            "yes": true,
+            "evidence": "The language barrier [bly044]-[bly045], patient chores and confiscated notes [bly058]-[bly061], and the grand jury's changed observations [bly087]-[bly098] all develop what Bly encounters or how her a"
+          }
+        ],
+        "failed": [],
+        "advisory": [],
+        "problems": []
+      }
+    ]
+  }
+}
