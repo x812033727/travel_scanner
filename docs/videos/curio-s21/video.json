@@ -29,7 +29,7 @@
   "loops": [
     {
       "setup": "tm106",
-      "payoff": "tm316",
+      "payoff": "tm317",
       "what": "那位植物學家談好七千盾，最後拿到多少"
     },
     {
@@ -44,12 +44,12 @@
     },
     {
       "setup": "tm109",
-      "payoff": "tm511",
+      "payoff": "tm512",
       "what": "翻檔案找破產的人，找到了沒有"
     },
     {
       "setup": "tm110",
-      "payoff": "tm519",
+      "payoff": "tm520",
       "what": "當時的荷蘭人真的瘋了嗎"
     },
     {
@@ -78,17 +78,17 @@
       "what": "政府怎麼說"
     },
     {
-      "setup": "tm312",
-      "payoff": "tm313",
+      "setup": "tm313",
+      "payoff": "tm314",
       "what": "合約最後怎麼了結"
     },
     {
-      "setup": "tm314",
-      "payoff": "tm316",
+      "setup": "tm315",
+      "payoff": "tm317",
       "what": "賣球根的植物學家收到錢了嗎"
     },
     {
-      "setup": "tm318",
+      "setup": "tm319",
       "payoff": "tm401",
       "what": "外頭的人怎麼看這些花商"
     },
@@ -109,7 +109,7 @@
     },
     {
       "setup": "tm436",
-      "payoff": "tm514",
+      "payoff": "tm515",
       "what": "荷蘭的商業真的受了重創嗎"
     },
     {
@@ -118,8 +118,8 @@
       "what": "後來有人回頭查過嗎"
     },
     {
-      "setup": "tm517",
-      "payoff": "tm518",
+      "setup": "tm518",
+      "payoff": "tm519",
       "what": "為什麼大家這麼愛講這個故事"
     }
   ],
@@ -338,7 +338,7 @@
       "lines": [
         {
           "id": "tm109",
-          "text": "一位歷史學者翻遍檔案，去找因為鬱金香破產的人。",
+          "text": "一位歷史學者鑽進荷蘭的檔案，去找因為鬱金香破產的人。",
           "emotion": "停在這裡"
         }
       ]
@@ -745,16 +745,31 @@
       ]
     },
     {
-      "id": "council",
+      "id": "court",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a city councillor in his sixties with grey sideburns, in a dark wool robe, pressing a wax seal onto a folded paper at a council table and looking at the onlooker, soft light from a skylight",
+        "prompt": "Medium close-up of a judge in his sixties with a long white beard, in a dark robe and a flat cap, pushing a folded sealed paper away across his bench and shaking his head at the onlooker, soft light from a skylight",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "tm312",
+          "text": "各地的法院，大多不肯受理這些合約。"
+        }
+      ]
+    },
+    {
+      "id": "council",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a city councillor in his sixties with grey sideburns, in a dark wool robe, pressing a wax seal onto a folded paper at a council table and looking toward the camera, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "tm313",
           "text": "那這筆差額，最後怎麼算？",
           "emotion": "問句"
         }
@@ -770,7 +785,7 @@
       },
       "lines": [
         {
-          "id": "tm313",
+          "id": "tm314",
           "text": "哈倫後來規定：買方付合約價的百分之三點五，就能解約。"
         }
       ]
@@ -779,13 +794,13 @@
       "id": "father-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an old botanist in his fifties with a short white beard, in a plain charcoal coat with a small linen collar in his study on a still, cloudy morning, holding an empty open coin purse and peering into it toward the camera, soft window light",
-        "camera": "push in",
+        "prompt": "Medium close-up of an old botanist in his fifties with a short white beard, in a plain charcoal coat with a small linen collar in his study on a still, cloudy morning, holding an empty open coin purse and peering into it at us, soft daylight",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "tm314",
+          "id": "tm315",
           "text": "那開頭那位賣球根的植物學家，收到錢了嗎？",
           "emotion": "問句"
         }
@@ -795,13 +810,13 @@
       "id": "father-deal",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an old botanist in his fifties with a short white beard, in a plain charcoal coat with a small linen collar at a study table on a mild day, holding up six fingers at us with a knowing look, a clay pot of three red-and-white striped tulips beside him, soft lamp light",
-        "camera": "drift",
+        "prompt": "Medium shot of an old botanist in his fifties with a short white beard, in a plain charcoal coat with a small linen collar at a study table on a mild day, holding up six fingers at the viewer with a knowing look, a clay pot of three red-and-white striped tulips beside him, soft lamp light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "tm315",
+          "id": "tm316",
           "text": "他當初跟買家說好：六個月內要是跌價，買家只要付一成。"
         }
       ]
@@ -816,7 +831,7 @@
       },
       "lines": [
         {
-          "id": "tm316",
+          "id": "tm317",
           "text": "結果，他白拿了七百盾，球根還在自己手上；",
           "emotion": "轉"
         }
@@ -826,13 +841,13 @@
       "id": "father-sigh",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an old botanist in his fifties with a short white beard, in a plain charcoal coat with a small linen collar looking down at a clay pot of three red-and-white striped tulips on his desk with a rueful sigh at the viewer, soft daylight",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of an old botanist in his fifties with a short white beard, in a plain charcoal coat with a small linen collar looking down at a clay pot of three red-and-white striped tulips on his desk with a rueful sigh toward the camera, mild light from an open doorway",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "tm317",
+          "id": "tm318",
           "text": "他兒子寫，父親其實寧可把球根交出去。"
         }
       ]
@@ -841,13 +856,13 @@
       "id": "laugh-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a poet in his thirties with a small pointed beard, in a dusty-blue jerkin at a writing desk on an overcast day, tapping the feather of his quill against his chin with a mischievous grin toward the camera, mild light from an open doorway",
-        "camera": "pan right",
+        "prompt": "Medium close-up of a poet in his thirties with a small pointed beard, in a dusty-blue jerkin at a writing desk on an overcast day, tapping the feather of his quill against his chin with a mischievous grin out at us, soft light from a skylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "tm318",
+          "id": "tm319",
           "text": "這場崩盤，後來被人寫成了什麼？",
           "emotion": "問句"
         }
@@ -858,8 +873,8 @@
       "chapter": "一六七二年，一位植物學家把鬱金香寫進植物書",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a printer in his forties with ink-stained sleeves and a leather apron, holding up a tied bundle of booklets wrapped in plain brown paper in a window-lit workshop on an overcast afternoon, grinning out at us, soft light from a skylight",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a printer in his forties with ink-stained sleeves and a leather apron, holding up a tied bundle of booklets wrapped in plain brown paper in a window-lit workshop on an overcast afternoon, grinning at the onlooker, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -888,8 +903,8 @@
       "id": "greed",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a plump man in his forties with rosy cheeks and a big feathered hat, in a showy slashed doublet sitting by a fireplace in a cosy room on a dull afternoon, raising a small glass of brandy and grinning greedily at the onlooker, soft lamp light",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a plump man in his forties with rosy cheeks and a big feathered hat, in a showy slashed doublet sitting by a fireplace in a cosy room on a dull afternoon, raising a small glass of brandy and grinning greedily toward the camera, soft lamp light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -904,8 +919,8 @@
       "id": "true",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a thin man in his fifties with a calm face and a short salt-and-pepper beard, in a plain wool jacket sitting by the same fireplace, one eyebrow raised and a dry little smile toward the camera, soft lamp light",
-        "camera": "pan left",
+        "prompt": "Medium close-up of a thin man in his fifties with a calm face and a short salt-and-pepper beard, in a plain wool jacket sitting by the same fireplace, one eyebrow raised and a dry little smile at us, soft lamp light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -920,8 +935,8 @@
       "id": "verse",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a poet in his thirties with a small pointed beard, in a dusty-blue jerkin at a writing desk on a quiet cloudy day, chuckling as he folds a finished sheet in half, the writing hidden, soft window light",
-        "camera": "push in",
+        "prompt": "Medium shot of a poet in his thirties with a small pointed beard, in a dusty-blue jerkin at a writing desk on a quiet cloudy day, chuckling as he folds a finished sheet in half, the writing hidden, soft daylight",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -971,8 +986,8 @@
       "id": "boat",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a boatman in his forties with a grey knitted cap, standing in a small wooden cargo boat on a canal on an overcast day, leaning on a long pole and smiling at us, mild light",
-        "camera": "drift",
+        "prompt": "Medium shot of a boatman in his forties with a grey knitted cap, standing in a small wooden cargo boat on a canal on an overcast day, leaning on a long pole and smiling at the viewer, mild light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -986,8 +1001,8 @@
       "id": "smug",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a bulb trader in his thirties with a curled moustache, in a slate-blue jacket with puffed sleeves and a tall felt hat in a plain room on a mild day, holding a single papery brown flower bulb up beside his face with a smug grin at the viewer, soft daylight",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of a bulb trader in his thirties with a curled moustache, in a slate-blue jacket with puffed sleeves and a tall felt hat in a plain room on a mild day, holding a single papery brown flower bulb up beside his face with a smug grin toward the camera, mild light from an open doorway",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1001,8 +1016,8 @@
       "id": "how",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive desk with chin in hand, looking up thoughtfully toward the camera, a stack of closed booklets beside them, mild light from an open doorway",
-        "camera": "pan right",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive desk with chin in hand, looking up thoughtfully out at us, a stack of closed booklets beside them, soft light from a skylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1017,8 +1032,8 @@
       "id": "munting",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a botanist in his forties with long wavy brown hair, in a dark coat with a wide linen collar writing with a quill at a large desk in a study full of potted plants on a quiet cloudy day, the page turned away from us, glancing up out at us, soft light from a skylight",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a botanist in his forties with long wavy brown hair, in a dark coat with a wide linen collar writing with a quill at a large desk in a study full of potted plants on a quiet cloudy day, the page turned away from us, glancing up at the onlooker, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1032,8 +1047,8 @@
       "id": "munting-young",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a botanist in his forties with long wavy brown hair, in a dark coat with a wide linen collar holding a thick closed leather-bound book against his chest, a thoughtful look at the onlooker, soft lamp light",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a botanist in his forties with long wavy brown hair, in a dark coat with a wide linen collar holding a thick closed leather-bound book against his chest, a thoughtful look toward the camera, soft lamp light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1047,8 +1062,8 @@
       "id": "sweep",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a chimney sweep in his thirties with a sooty face and a tall battered hat, holding a round brush on his shoulder and raising his eyebrows toward the camera, soft daylight",
-        "camera": "pan left",
+        "prompt": "Medium close-up of a chimney sweep in his thirties with a sooty face and a tall battered hat, holding a round brush on his shoulder and raising his eyebrows at us, soft daylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1078,8 +1093,8 @@
       "id": "no-boat",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a botanist in his forties with long wavy brown hair, in a dark coat with a wide linen collar at his desk holding a small wooden toy ship and setting it aside with a shrug at us, soft window light",
-        "camera": "push in",
+        "prompt": "Medium close-up of a botanist in his forties with long wavy brown hair, in a dark coat with a wide linen collar at his desk holding a small wooden toy ship and setting it aside with a shrug at the viewer, soft daylight",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1093,8 +1108,8 @@
       "id": "house-model",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive table holding a small wooden model house in one hand and a single papery brown flower bulb in the other, weighing them with a curious look at the viewer, pale diffuse light",
-        "camera": "drift",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive table holding a small wooden model house in one hand and a single papery brown flower bulb in the other, weighing them with a curious look toward the camera, pale diffuse light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1113,8 +1128,8 @@
       "id": "house-yes",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a botanist in his forties with long wavy brown hair, in a dark coat with a wide linen collar at his desk tapping a closed book and nodding toward the camera, soft daylight",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a botanist in his forties with long wavy brown hair, in a dark coat with a wide linen collar at his desk tapping a closed book and nodding out at us, mild light from an open doorway",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1147,8 +1162,8 @@
       "id": "beckmann",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a German professor in his fifties with a powdered white wig tied at the neck, in a dark plum coat at a cluttered study desk on a dull afternoon, writing with a quill, the page turned away from us, glancing out at us, mild light from an open doorway",
-        "camera": "pan right",
+        "prompt": "Medium shot of a German professor in his fifties with a powdered white wig tied at the neck, in a dark plum coat at a cluttered study desk on a dull afternoon, writing with a quill, the page turned away from us, glancing at the onlooker, soft light from a skylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1162,8 +1177,8 @@
       "id": "beck-deliver",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a German professor in his fifties with a powdered white wig tied at the neck, in a dark plum coat nodding firmly at the onlooker, a quill in one hand and a closed book under his arm, soft lamp light",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of a German professor in his fifties with a powdered white wig tied at the neck, in a dark plum coat nodding firmly toward the camera, a quill in one hand and a closed book under his arm, soft lamp light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1177,8 +1192,8 @@
       "id": "beck-void",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a German professor in his fifties with a powdered white wig tied at the neck, in a dark plum coat at his desk drawing a big cross in the air with his quill, a stern look toward the camera, gentle overcast light",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a German professor in his fifties with a powdered white wig tied at the neck, in a dark plum coat at his desk drawing a big cross in the air with his quill, a stern look at us, gentle overcast light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1197,8 +1212,8 @@
       "id": "beck-sailor",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a sailor in his twenties with a striped wool cap and a short dark pea jacket carrying a small wooden crate up a gangplank on a grey quayside, grinning at us, gentle overcast light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a sailor in his twenties with a striped wool cap and a short dark pea jacket carrying a small wooden crate up a gangplank on a grey quayside, grinning at the viewer, gentle overcast light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1212,8 +1227,8 @@
       "id": "onion",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a sailor in his twenties with a striped wool cap and a short dark pea jacket sitting on an upturned crate on the quay, biting into a round brown bulb with a herring in his other hand, cheerful at the viewer, soft daylight",
-        "camera": "push in",
+        "prompt": "Medium close-up of a sailor in his twenties with a striped wool cap and a short dark pea jacket sitting on an upturned crate on the quay, biting into a round brown bulb with a herring in his other hand, cheerful toward the camera, soft daylight",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1227,8 +1242,8 @@
       "id": "lesser",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a German professor in his fifties with a powdered white wig tied at the neck, in a dark plum coat at his desk raising one finger as if making a careful point, looking toward the camera, soft light from a skylight",
-        "camera": "drift",
+        "prompt": "Medium close-up of a German professor in his fifties with a powdered white wig tied at the neck, in a dark plum coat at his desk raising one finger as if making a careful point, looking out at us, soft window light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1243,8 +1258,8 @@
       "id": "mackay",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Victorian writer in his forties with dark side whiskers, in a charcoal frock coat and a loose cravat at a writing desk in a London study on a still, cloudy morning, dipping a pen into an inkwell and smiling out at us, the paper turned away from us, soft window light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a Victorian writer in his forties with dark side whiskers, in a charcoal frock coat and a loose cravat at a writing desk in a London study on a still, cloudy morning, dipping a pen into an inkwell and smiling at the onlooker, the paper turned away from us, soft daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1273,8 +1288,8 @@
       "id": "prison",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a sailor in his twenties with a striped wool cap and a short dark pea jacket sitting glumly on a wooden bench in a small whitewashed cell, soft daylight from a small barred window, looking at the onlooker",
-        "camera": "pan right",
+        "prompt": "Medium shot of a sailor in his twenties with a striped wool cap and a short dark pea jacket sitting glumly on a wooden bench in a small whitewashed cell, soft daylight from a small barred window, looking toward the camera",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1289,8 +1304,8 @@
       "id": "mackay-1635",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a Victorian writer in his forties with dark side whiskers, in a charcoal frock coat and a loose cravat holding a closed book up beside his face with a confident smile toward the camera, soft lamp light",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of a Victorian writer in his forties with dark side whiskers, in a charcoal frock coat and a loose cravat holding a closed book up beside his face with a confident smile at us, soft lamp light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1309,8 +1324,8 @@
       "id": "not-1635",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive desk shaking their head with a small smile at us, a closed folder in front of them, soft daylight",
-        "camera": "pull out",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive desk shaking their head with a small smile at the viewer, a closed folder in front of them, mild light from an open doorway",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1324,8 +1339,8 @@
       "id": "munting-if",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a botanist in his forties with long wavy brown hair, in a dark coat with a wide linen collar at his desk wagging one finger in warning at the viewer, mild light from an open doorway",
-        "camera": "pan left",
+        "prompt": "Medium close-up of a botanist in his forties with long wavy brown hair, in a dark coat with a wide linen collar at his desk wagging one finger in warning toward the camera, soft light from a skylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1339,8 +1354,8 @@
       "id": "mackay-shock",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Victorian writer in his forties with dark side whiskers, in a charcoal frock coat and a loose cravat standing by a tall window in his study on a dull afternoon, one hand pressed dramatically to his chest, a pained face toward the camera, mild light",
-        "camera": "push in",
+        "prompt": "Medium shot of a Victorian writer in his forties with dark side whiskers, in a charcoal frock coat and a loose cravat standing by a tall window in his study on a dull afternoon, one hand pressed dramatically to his chest, a pained face out at us, mild light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1355,8 +1370,8 @@
       "id": "checked",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive table lifting their glasses and squinting out at us, soft daylight",
-        "camera": "drift",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive table lifting their glasses and squinting at the onlooker, soft daylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1372,8 +1387,8 @@
       "chapter": "一九八九年，一位經濟學者重算鬱金香的價錢",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive table on an overcast day, placing flower bulbs one by one on a small brass balance scale, glancing at the onlooker, soft light from a skylight",
-        "camera": "tilt down",
+        "prompt": "Medium shot of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive table on an overcast day, placing flower bulbs one by one on a small brass balance scale, glancing toward the camera, soft window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1387,8 +1402,8 @@
       "id": "feb5",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest holding up one finger with raised eyebrows toward the camera, a small pot of striped tulips on the table, soft lamp light",
-        "camera": "pan right",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest holding up one finger with raised eyebrows at us, a small pot of striped tulips on the table, soft lamp light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1418,8 +1433,8 @@
       "id": "rare",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a bulb trader in his thirties with a curled moustache, in a slate-blue jacket with puffed sleeves and a tall felt hat in a plain room on a mild day, holding a clay pot of three red-and-white striped tulips and tipping his hat at us, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of a bulb trader in his thirties with a curled moustache, in a slate-blue jacket with puffed sleeves and a tall felt hat in a plain room on a mild day, holding a clay pot of three red-and-white striped tulips and tipping his hat at the viewer, soft daylight",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1433,8 +1448,8 @@
       "id": "common",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a market seller in her forties with a white linen cap and a grey shawl, holding up a wicker basket of plain brown flower bulbs with a startled face at the viewer, gentle overcast light",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a market seller in her forties with a white linen cap and a grey shawl, holding up a wicker basket of plain brown flower bulbs with a startled face toward the camera, gentle overcast light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1448,8 +1463,8 @@
       "id": "sweep-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a chimney sweep in his thirties with a sooty face and a tall battered hat, leaning on his brush on a cobbled street on a dull afternoon, scratching his head toward the camera, pale diffuse light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a chimney sweep in his thirties with a sooty face and a tall battered hat, leaning on his brush on a cobbled street on a dull afternoon, scratching his head out at us, pale diffuse light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1464,8 +1479,8 @@
       "id": "goldgar",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest in an archive room on an overcast afternoon, carrying a tall stack of tied folders and peeking around it out at us, soft daylight",
-        "camera": "push in",
+        "prompt": "Medium shot of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest in an archive room on an overcast afternoon, carrying a tall stack of tied folders and peeking around it at the onlooker, mild light from an open doorway",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1486,7 +1501,11 @@
       "lines": [
         {
           "id": "tm508",
-          "text": "她找到的，是三百五十人左右，大多是商人和工匠："
+          "text": "她找到的，是三百五十人左右，"
+        },
+        {
+          "id": "tm509",
+          "text": "她說這個數字一定偏低，因為她沒有每座城都翻；"
         }
       ]
     },
@@ -1494,14 +1513,14 @@
       "id": "cloth",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a cloth merchant in his forties with a short reddish beard, in a dark plum tunic and a wide-brimmed felt hat in a cloth shop on a mild day, unrolling a bolt of dark blue cloth across a counter and smiling at the onlooker, mild light from an open doorway",
-        "camera": "drift",
+        "prompt": "Medium close-up of a cloth merchant in his forties with a short reddish beard, in a dark plum tunic and a wide-brimmed felt hat in a cloth shop on a mild day, unrolling a bolt of dark blue cloth across a counter and smiling toward the camera, soft light from a skylight",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "tm509",
-          "text": "布商最多，還有一些烘焙師、釀酒師和旅店老闆。"
+          "id": "tm510",
+          "text": "這些人大多是商人和工匠：布商最多，還有一些烘焙師、釀酒師和旅店老闆。"
         }
       ]
     },
@@ -1509,13 +1528,13 @@
       "id": "bankrupt-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive desk tapping a pencil against their lips, a curious look toward the camera, soft daylight",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive desk tapping a pencil against their lips, a curious look at us, soft daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "tm510",
+          "id": "tm511",
           "text": "那破產的人呢？",
           "emotion": "問句"
         }
@@ -1525,13 +1544,13 @@
       "id": "no-wave",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest beside tall shelves of archive boxes on a still, cloudy morning, closing the lid of a box and shaking their head at us, gentle overcast light",
-        "camera": "pan right",
+        "prompt": "Medium shot of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest beside tall shelves of archive boxes on a still, cloudy morning, closing the lid of a box and shaking their head at the viewer, gentle overcast light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "tm511",
+          "id": "tm512",
           "text": "結果，她找不到一波破產潮；",
           "emotion": "篤定"
         }
@@ -1541,13 +1560,13 @@
       "id": "rich",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a cloth merchant in his forties with a short reddish beard, in a dark plum tunic and a wide-brimmed felt hat in his shop shrugging and jingling a fat leather coin purse, relaxed smile at the viewer, soft light from a skylight",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of a cloth merchant in his forties with a short reddish beard, in a dark plum tunic and a wide-brimmed felt hat in his shop shrugging and jingling a fat leather coin purse, relaxed smile toward the camera, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "tm512",
+          "id": "tm513",
           "text": "她說，賠得最多的人本來就有錢，賠個一千盾，不會出大事。"
         }
       ]
@@ -1556,13 +1575,13 @@
       "id": "shock-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a Victorian writer in his forties with dark side whiskers, in a charcoal frock coat and a loose cravat at his desk holding his pen in mid-air with a doubtful look toward the camera, soft lamp light",
-        "camera": "pull out",
+        "prompt": "Medium close-up of a Victorian writer in his forties with dark side whiskers, in a charcoal frock coat and a loose cravat at his desk holding his pen in mid-air with a doubtful look out at us, soft lamp light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "tm513",
+          "id": "tm514",
           "text": "那麥凱說的那場重創呢？",
           "emotion": "問句"
         }
@@ -1578,7 +1597,7 @@
       },
       "lines": [
         {
-          "id": "tm514",
+          "id": "tm515",
           "text": "她的原話是：就她看到的，對經濟根本沒有真正的影響。"
         }
       ]
@@ -1587,13 +1606,13 @@
       "id": "honour",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a bulb trader in his thirties with a curled moustache, in a slate-blue jacket with puffed sleeves and a tall felt hat standing alone by a window on a quiet cloudy day, holding his hat to his chest with a hurt, embarrassed face out at us, soft window light",
-        "camera": "pan left",
+        "prompt": "Medium close-up of a bulb trader in his thirties with a curled moustache, in a slate-blue jacket with puffed sleeves and a tall felt hat standing alone by a window on a quiet cloudy day, holding his hat to his chest with a hurt, embarrassed face at the onlooker, soft daylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "tm515",
+          "id": "tm516",
           "text": "可是她也說，傷到的，是名聲和人際關係；"
         }
       ]
@@ -1608,7 +1627,7 @@
       },
       "lines": [
         {
-          "id": "tm516",
+          "id": "tm517",
           "text": "也許不算金融危機，卻是一場社會和文化的危機。"
         }
       ]
@@ -1617,13 +1636,13 @@
       "id": "why-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive desk resting their chin on both hands, a wondering look at the onlooker, soft daylight",
-        "camera": "push in",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting in a cotton shirt and a knitted vest at an archive desk resting their chin on both hands, a wondering look toward the camera, mild light from an open doorway",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "tm517",
+          "id": "tm518",
           "text": "那為什麼，大家這麼愛講這個故事？",
           "emotion": "問句"
         }
@@ -1639,7 +1658,7 @@
       },
       "lines": [
         {
-          "id": "tm518",
+          "id": "tm519",
           "text": "高德加說：因為它讓人看起來很蠢。",
           "emotion": "平實"
         }
@@ -1655,7 +1674,7 @@
       },
       "lines": [
         {
-          "id": "tm519",
+          "id": "tm520",
           "text": "還記得開頭那場拍賣嗎？它的價目表跟那些笑話，一六四三年起就訂在同一本裡；這份檔案，存檔。",
           "emotion": "篤定，收尾乾脆"
         }
@@ -1673,12 +1692,12 @@
       },
       "lines": [
         {
-          "id": "tm520",
+          "id": "tm521",
           "text": "你第一次聽到鬱金香狂熱，是在課本、投資書，還是網路上？",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "tm521",
+          "id": "tm522",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }
