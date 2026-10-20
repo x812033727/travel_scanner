@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-uber-mobility-delivery-x19
 title: Produce Uber mobility to delivery reversal X19 preproduction
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-review
-claimed_at: 2026-10-20T23:17:05Z
+owner:
+claimed_at:
 created_at: 2026-10-20T22:39:56Z
 completed_at:
 branch: codex/brand-story-uber-x19
@@ -22,7 +22,7 @@ The brand-story sequence needs a distinct, evidence-backed next topic after X18.
 
 ## Definition of done
 
-- [x] A reproducible six-chapter Traditional Chinese X19 script, 30–60 second compressed opener, three final lines, 102 cute-mystery unbranded illustration slots, 12 native statistic cards, two different 9:16 Shorts, and per-line primary-source evidence are frozen for review.
+- [x] A reproducible six-chapter Traditional Chinese X19 script, 30–60 second compressed opener, three final lines, 98 cute-mystery unbranded illustration slots, 12 native statistic cards, two different 9:16 Shorts, and per-line primary-source evidence are frozen for review.
 - [ ] An independent fact audit and two blind narrative reviews PASS on the frozen files, with revisions and new hashes if needed.
 - [ ] Formal worker validates actual audio runtime, full US$25 cap, approved media, official bumpers, and real upload links before delivery.
 
@@ -33,7 +33,8 @@ The brand-story sequence needs a distinct, evidence-backed next topic after X18.
 - [x] Independently audit v2 and obtain two fresh first-reader ballots on its frozen SHA; archive the factual PASS and narrative HOLD.
 - [x] Revise and freeze v3 to address the shared Q8/Q13 and B's Q1/Q7 findings.
 - [x] Obtain new same-SHA source and dual-blind reviews on v3; both gates returned HOLD.
-- [ ] Repair v3 source date and shared narrative failures in v4, then obtain new same-SHA source and dual-blind reviews before PR.
+- [x] Repair v3 source date and shared narrative failures in v4, rebuild all derived files and freeze author package.
+- [ ] Obtain new same-SHA source and dual-blind reviews of v4 before PR.
 - [ ] Hand reviewed package to formal video worker, measure timing and audio QA, then create real YouTube IDs/links if the owner has supplied official assets and upload access.
 
 ## How to verify
@@ -60,3 +61,5 @@ v2 frozen `video.json` SHA-256 `3dca7d0e7701b763673c32e12fa6a371283cf2f829ebde18
 v3 frozen author `video.json` SHA-256 `377d045d160e46ddd2ed3eaa08d30b5ecfd45f02e6a20dd7f6f6e1526604ca48`, `shorts.json` `bc2c17924498699adc6f8267ae820589ec7321c2e0f2e63e9931e10357f44c64`; other hashes and checks are in [`README.md`](../../docs/videos/story-everyday-uber-x19/README.md). Lint 0/0, `episodeShortsProblems` empty, both Shorts CLI validations passed, docs-video tests 236/236, tasks check exit 0 and `git diff --check` passed. The v2 review files above remain the record for the old hash only; no v3 independent PASS is claimed.
 
 v3 independent [SEC audit](../../docs/videos/story-everyday-uber-x19/reviews/script-source-audit-v3-independent.md) re-fetched all ten S1–S8/S3a/S5a originals, matched bytes/SHA, and returned **HOLD** on `x190419`: S4 dates September only for grocery Gross Bookings' annualized run rate; the “over ten countries including Taiwan” statement is current at the 2020-11-05 third-quarter release, not explicitly September. The source matrix, narration and JSON need the same date repair. Fresh [blind A](../../docs/videos/story-everyday-uber-x19/reviews/blind-a-v3-independent.md) and [blind B](../../docs/videos/story-everyday-uber-x19/reviews/blind-b-v3-independent.md) both answered mandatory Q8 and Q13 **No**: a repeated 2021 Q4 ordering line and the merchant pickup/product-fact detour do not advance the driver-phone/bookings question. A additionally marked Q4 No. Both Shorts stand alone on paper. Thus v3 has a factual and narrative **HOLD**; v4 needs a new freeze, independent source audit and two fresh first-blind readers. No formal media worker import, measured TTS, official bumper assets, MP4, upload, true links or PR exists for X19.
+
+v4 [author response](../../docs/videos/story-everyday-uber-x19/reviews/v4-author-response.md) maps the exact date and Q4/Q8/Q13 repairs; it is not an independent vote. The 2020 Q3 S4 matrix and `x190419` now distinguish September's grocery Gross Bookings **annualized run rate** from the **2020-11-05 announcement-time** count of over ten countries including Taiwan. The repeated `x190516` sign and `x190606` ranking are removed; the unused `x190517–518` merchant/pickup metrics are removed. Opening Q4-style section cues are rewritten as events, and the driver/restaurant/site-order actions make the same illustrative phone more concrete. Six chapters, 114 lines, 98 stills, 12 native cards, 25 ordered loops, 187-character condensed opener and 2,581-character substantive body are frozen in `video.json` SHA-256 `5feac02ca62feb4625959c1bd8a48266d185e84ac3776783fdc3b3eddb628988`; unchanged `shorts.json` SHA-256 `bc2c17924498699adc6f8267ae820589ec7321c2e0f2e63e9931e10357f44c64` is revalidated against the new main-shot hash. Main lint 0 errors/0 warnings; both Short individual schemas and source hashes PASS; `episodeShortsProblems` empty; `test:docs-videos` 236/236 and `check:tasks` exit 0; `git diff --check` clean. All companion hashes are in README. **Next gate:** fresh independent SEC audit and two truly first-blind ballots on exact v4 JSON, then measured TTS and official media. No paid calls, MP4, true platform links or PR exist for X19.

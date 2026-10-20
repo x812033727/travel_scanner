@@ -1,4 +1,4 @@
-# X19 Uber｜逐句母稿 v3
+# X19 Uber｜逐句母稿 v4
 
 每列為 ID | SEC 來源代碼或 editorial | 台灣繁中旁白 | 無品牌示意鏡頭焦點。所有手機畫面、餐袋與車輛只是概念插畫，不指認任何真實司機或重畫 App。兩條空白派單線是同一個貫穿主物件；精確數字只在後製卡片。
 
@@ -9,9 +9,8 @@ x190103 | editorial | 同一支手機，一邊等乘客，一邊等餐廳的袋�
 x190104 | S2 | 城市活動收縮，這兩種需求卻往不同方向走。 | quiet street beside open restaurant counter
 x190105 | editorial | 如果六月餐袋真的衝到前面，那條路就賺錢了嗎？ | food bag approaches car on empty ledger while cash drawer stays closed
 x190106 | S3 | 七月，桌上又出現另一張還沒接入的外送網。 | second unmarked delivery map approaches empty negotiation table
-x190107 | editorial | 年底，那張網會接進司機手上的手機嗎？ | two blank delivery maps remain apart
+x190107 | editorial | 年底，兩張配送地圖挪到同一張桌上，中間那條接線被遮住。 | two plain delivery maps meet on table while their join is hidden by a hand
 x190108 | editorial | 等人們重新出門，那輛載客車又能開回前面嗎？ | plain car approaches a once quiet curb
-x190109 | editorial | 最後，車和餐袋能不能各自留下正數？ | blank phone between two separate empty account books
 
 ## b02: 原本遙遙領先的是載客訂單
 x190201 | S1,S2 | 司機能轉接餐袋，是因為優步早有外送網，只是當時載客遙遙領先。 | blank ledger beside plain car and small food bag
@@ -23,7 +22,7 @@ x190206 | S1 | 載客仍有一百零八點七四億，兩條線還沒交叉。 |
 x190207 | S1 | 外送比上年同季多五成二，載客少了百分之五。 | blank arrows diverge beside same phone
 x190208 | editorial | 這是一整個一到三月的季度，不能當作四月的照片。 | calendar turns from March to April beside phone
 x190209 | editorial | 真正難題是，當乘客忽然少了，司機該往哪裡去？ | anonymous driver waits by empty rear seat
-x190210 | S1 | 第一季，優步改進載客端 App，讓司機更容易接外送。 | hands choose one of two blank phone paths
+x190210 | S1 | 第一季，優步改進載客端 App；示意司機按下接單鍵，乘客路線旁多出一條外送路。 | hands choose one of two blank phone paths
 x190211 | editorial | 車和人仍在平台上，接到的任務卻可能不同。 | same anonymous driver beside car and bag
 x190212 | S1 | 公司還開出替零售商品送貨的服務。 | unmarked package leaves small shop
 x190213 | S1 | 也讓人透過平台寄送普通包裹給別人。 | plain parcel changes hands at doorway
@@ -32,7 +31,6 @@ x190215 | S1 | 五月初，優步還宣布退出八個虧損的外送市場。 |
 x190216 | S1 | 同時，公司在一些市場免收新餐廳啟用費，讓更多店能加入。 | closed market pins beside open unmarked restaurant doors
 x190217 | S1 | 新餐廳加入的流程，也被公司改得更快、更容易。 | new blank restaurant pins appear on route board
 x190218 | editorial | 手機上的派單，要接到餐廳門口，還得讓店家願意加入。 | delivery bag arrives beside anonymous driver and restaurant shelf
-x190219 | editorial | 退出八個市場，又有新餐廳加入，六月外送總額會往哪邊走？ | closed market pins beside growing open map
 x190220 | editorial | 這些做法各推高多少交易額，財報沒有拆出來。 | unmeasured route components beside separate blank ledgers
 x190221 | editorial | 也不能把手機上的派單變化，當作訂單額已經翻面。 | blank phone over two unrevealed columns
 x190222 | editorial | 司機開始改接餐袋，整個平台的金額真會換位嗎？ | food bag approaches car path on scale
@@ -40,10 +38,10 @@ x190222 | editorial | 司機開始改接餐袋，整個平台的金額真會換�
 ## b03: 六月底，外送跨過了載客
 x190301 | S2 | 六月季報揭曉：外送訂單額真的高過載客。 | food bag passes plain car on blank scale
 x190302 | S2 | 載客掉到三十點四六億美元，比一年前少了四分之三。 | short car column beside prior tall blank column
-x190303 | editorial | 同一季，手機另一頭的餐袋路呢？ | plain food bag approaches separate car route
+x190303 | editorial | 同一季，示意司機把手機放在餐廳取件架旁；另一頭的餐袋路跑到哪裡？ | plain food bag approaches separate car route
 x190304 | S2 | 外送訂單額升到六十九點六一億美元。 | food bag column rises past car column
 x190305 | S2 | 它同比增加一倍多，不只是載客變少造成的錯覺。 | two independently moving blank columns
-x190306 | editorial | 但觀眾要先問：這裡比的到底是哪一種錢？ | anonymous hand points to top of blank ledger
+x190306 | editorial | 六月那兩根柱子突然換位，司機手機上的錢和公司帳上的錢，究竟比的是哪一種？ | anonymous hand points to top of blank ledger
 x190307 | S2 | 這是平台完成交易的訂單額，並非優步全部收進口袋的營收。 | gross orders card separated from company cash drawer
 x190308 | S2 | 同季全公司訂單額一百零二點二四億，營收只列二十二點四一億。 | two blank ledgers of different sizes
 x190309 | editorial | 乘客需求急縮、既有外送額跳升；司機改派貢獻多少，財報無法拆算。 | receipt pile and separate company ledger
@@ -53,8 +51,8 @@ x190312 | S2 | 月活躍消費者比上年同季，由九千九百萬降到五�
 x190313 | S2 | 完成的行程數，也從去年同季十六點七七億降到七點三七億。 | sparse generic route ticks on blank map
 x190314 | editorial | 平台整體仍被拉低；更忙的外送路，留得下多少錢？ | food bag route bright inside dimmer network
 x190315 | S2 | 六月，外送合作餐廳已超過五十萬家。 | many anonymous restaurant doorways on map
-x190316 | editorial | 更多店能出現在手機裡，外送單才有地方落下。 | blank phone connects to generic eateries
-x190317 | S2 | 但外送部門調整後 EBITDA，仍虧兩點三二億美元。 | food bag beside distinct negative ledger
+x190316 | editorial | 在示意畫面裡，店員把袋子放上架、司機確認地址，再把它帶到下一個門口。 | blank phone connects to generic eateries
+x190317 | S2 | 開場那只餐袋雖跑在前，外送部門調整後 EBITDA 仍虧兩點三二億美元。 | food bag beside distinct negative ledger
 x190318 | S2 | 載客部門同尺度反而有五千萬美元正數。 | car beside separate small positive ledger
 x190319 | editorial | 部門數字方向相反，整家公司當季究竟怎樣？ | larger bag column beside loss marker
 x190320 | S2 | 整家公司照一般會計準則，當季仍淨損十七點七五億。 | company-wide ledger remains below zero
@@ -63,14 +61,14 @@ x190322 | editorial | 所以這個交叉點只是故事中段，不是獲利結�
 x190323 | editorial | 另一張外送網此時才上桌；它會是這次交叉的原因嗎？ | sealed acquisition folder approaches food bag
 
 ## b04: 七月簽約時，交叉早已發生
-x190401 | S3,S3a | 七月六日，優步簽約要買 Postmates，六月季度已結束。 | signed blank contract arrives after calendar turns
+x190401 | S3,S3a | 開場桌上那張還沒接入的外送網，是 Postmates；七月六日優步才簽約，六月季度早已結束。 | signed blank contract arrives after calendar turns
 x190402 | S3 | 約二十六點五億美元對價，約定全數用股票支付。 | generic share papers beside delivery route
 x190403 | editorial | 這是買下一個未來可用的網，不是買回六月的結果。 | new route map arrives behind crossed lines
 x190404 | S3 | 公司期待把兩邊的餐廳、商家與配送人力接起來。 | unmarked restaurant and courier nodes join
-x190405 | editorial | 合網只是簽約時的期待，不等於餐廳與配送員已經整合。 | crossed routes stand before unopened contract
+x190405 | editorial | 但這還不是完成整合：簽約只定了方向，餐廳與配送員還沒被接成同一張網。 | crossed routes stand before unopened contract
 x190406 | S4 | 第三季，既有外送網上的活躍合作餐廳，比上年同季多七成以上。 | new plain restaurant doorways appear along existing courier route
-x190407 | S4 | 公司還開放餐廳在自家網站接單，再由優步外送配送。 | plain restaurant doorway joins generic website order card and courier route
-x190408 | editorial | 餐廳入口擴了，車與餐袋在秋天各跑多遠？ | map route extends toward autumn calendar
+x190407 | S4 | 餐廳也能在自家網站接單，再把最後一段配送交給優步。 | plain restaurant doorway joins generic website order card and courier route
+x190408 | S4 | 店家網站的一筆單，變成司機手機上的取件地址；秋季載客能追回外送嗎？ | plain restaurant order card leads to a pickup point on featureless handset
 x190409 | S4 | 第三季載客回到五十九點零五億美元。 | car route lengthens from previous short path
 x190410 | S4 | 比上一季幾乎多九成四，恢復卻還不完整。 | car approaches former taller line
 x190411 | S4 | 同季外送再到八十五點五億，仍跑在載客前面。 | food bag stays ahead of recovering car
@@ -80,18 +78,18 @@ x190414 | S4 | 載客部門調整後 EBITDA，此時提高到兩點四五億。 
 x190415 | S4 | 外送部門仍是負一點八三億，虧損比第二季縮小。 | bag beside smaller negative account card
 x190416 | editorial | 外送訂單總金額較大，載客部門調整後卻仍較早為正。 | split ledger follows car and bag
 x190417 | S4 | 同季，優步在蘋果手機上的程式陸續把外送入口放在叫車旁。 | two blank phone paths appear side by side
-x190418 | editorial | 手機上的兩條路，也成了用戶眼前可切換的兩種服務。 | anonymous hand moves between car and food bag paths
-x190419 | S4 | 九月，雜貨配送已進到十多個國家，台灣也在名單裡。 | groceries and plain parcels join food bag
+x190418 | editorial | 示意用戶在兩個無字入口間切換；但這還不是全部，外送袋裡也換了東西。 | anonymous hand moves between car and food bag paths
+x190419 | S4 | 到第三季財報公布時，雜貨配送已進到十多個國家，台灣也在名單裡。 | groceries and plain parcels join food bag
 x190420 | editorial | 可送的東西變多，外送部門的調整後指標何時能轉正？ | courier route passes varied unmarked packages
 x190421 | editorial | 收購仍只是紙上的約定，另一套 App 還沒有接進來。 | sealed contract beside two separate blank phones
 x190422 | editorial | 到了年底，這兩張網真的合上了嗎？ | two delivery maps approach each other
 
 ## b05: 十二月交割，隔年用戶才遷移
-x190501 | S5,S5a | 十二月一日，Postmates 收購才正式完成。 | blank signed contract becomes joined route map
+x190501 | S5,S5a | 開場還留在桌上的第二張網，十二月一日才因 Postmates 收購完成進到優步。 | blank signed contract becomes joined route map
 x190502 | S5 | 美國兩邊的業務開始整合，並非已整合完畢。 | anonymous teams connect two route boards
 x190503 | S5 | 當時 Uber Eats 和 Postmates 兩個消費者 App 仍分開運行。 | two blank phones sit side by side
 x190504 | S5 | 背後的商家和配送網，才是要合起來的部分。 | phones connect to shared unmarked delivery network
-x190505 | editorial | 觀眾看到兩個入口，司機與餐廳面對的卻可能是一張大網。 | two phone entrances lead to one blank map
+x190505 | editorial | 消費者端看見兩個入口，配送員在後面面對的卻可能是一張逐漸合起的網。 | two phone entrances lead to one blank map
 x190506 | editorial | 開始接起來的商家與配送網，隔年能轉來多少原本的用戶？ | partly joined map waits beside calendar
 x190507 | S6 | 到二〇二一年第二季，公司說兩個 App 大致整合。 | two blank phones beside partly joined route map
 x190508 | S6 | 近五百萬名消費者，被移到 Uber Eats 的入口。 | anonymous crowd passes between blank phone outlines
@@ -102,12 +100,10 @@ x190512 | S6 | 外送卻還有一百二十九億，暫時保有領先。 | bag r
 x190513 | editorial | 收購完成、外送交易額領先，它的部門帳轉正了嗎？ | two large route columns face separate account books
 x190514 | S6 | 外送部門當季調整後 EBITDA 仍虧一點六一億。 | bag beside negative segment ledger
 x190515 | S6 | 在美國，雜貨、便利品等新配送的六月交易額，較二〇二〇年十二月近三倍。 | ordinary grocery bag joins food bag on blank route board
-x190516 | editorial | 司機手機上有更多可接的工作，外送部門帳卻尚未翻正。 | receipts move past an unfilled cash drawer
-x190517 | S6 | 外送平台活躍商家已超過七十五萬，含餐廳和新的配送類別。 | many unmarked restaurants and merchants join delivery route
-x190518 | S6 | 美國活躍餐廳裡，超過六成還開放消費者自行取餐。 | anonymous customer picks up plain bag at unmarked restaurant
-x190519 | S6 | 配送不再只有餐點，這時兩條路的客人會不會重疊？ | plain grocery and convenience parcels beside food bag
+x190516 | editorial | 示意司機取完餐袋，又靠到雜貨店門口；每次改派的貢獻仍無從拆算。 | anonymous courier carries plain bag from restaurant shelf toward grocery doorway
+x190519 | S6 | 司機可接不同工作；搭車的人，會不會也用外送服務？ | plain grocery and convenience parcels beside food bag
 x190520 | S6 | 公司說同時使用載客和外送的人，帶來近半的總訂單額。 | anonymous person uses two blank phone paths
-x190521 | editorial | 兩條線開始共用客群，卻仍是不同帳目。 | shared phone with separate car and bag ledgers
+x190521 | editorial | 公司算的是全平台訂單額的共用客群，並未揭露任何一位司機或一家店對反超貢獻多少。 | shared phone with separate car and bag ledgers
 x190522 | editorial | 到年底，外送能否靠自己的指標翻正？ | bag approaches zero line on separate ledger
 
 ## b06: 外送轉正，後來載客又開到前面
@@ -116,19 +112,18 @@ x190602 | S7 | 它是兩千五百萬美元，對一年前仍是負數。 | small
 x190603 | S7 | 這是外送部門單季的調整後 EBITDA，不是公司正式淨利。 | bag ledger stands apart from closed company ledger
 x190604 | editorial | 餐袋這條路留住了一點錢，交易額還在車道前面嗎？ | food bag and car columns face each other
 x190605 | S7 | 外送訂單額一百三十四點四四億，載客是一百一十三點四億。 | bag column still ahead of car column
-x190606 | editorial | 交叉之後一年半，兩種需求都在，排名還沒換回去。 | two busy routes continue side by side
 x190607 | S7 | 對上年同季，載客交易額增加百分之六十七，回來得更快。 | car route lengthens beside prior year blank line
 x190608 | S7 | 外送也增加百分之三十四，規模仍較大，增速卻較慢。 | bag route remains ahead as car route catches up
 x190609 | editorial | 如果餐袋能賺，載客那條路還會不會重新領先？ | car approaches bag route from behind
 x190610 | S8 | 到二〇二二年第四季，載客訂單額到一百四十八點九四億。 | car column lengthens past previous high
-x190611 | S8 | 外送也有一百四十三點一五億，卻被載客重新超過。 | car narrowly passes bag on blank scale
+x190611 | S8 | 開場那輛等乘客的車，這一季超過一百四十三點一五億的外送。 | car narrowly passes bag on blank scale
 x190612 | editorial | 這一季，車道和餐袋路都比那場危機的六月寬。 | two routes expand beyond former small frame
-x190613 | editorial | 當年空下的車，後來又接回乘客。 | plain car picks up anonymous silhouette
+x190613 | editorial | 回到路邊，那位示意司機又接到乘客；同一支手機另一側仍有餐袋取件路線。 | plain car picks up anonymous silhouette
 x190614 | editorial | 載客重新跑前面，外送那條路是縮小了嗎？ | bag still visible beside same blank phone
 x190615 | S8 | 和上一年同季相比，載客交易額增加百分之三十一。 | car route grows longer beside former route
 x190616 | S8 | 外送也增加百分之六；兩條路都長大，車道長得更快。 | car and bag grow at different speeds
-x190617 | editorial | 餐袋還在同一支手機裡，沒有被回來的乘客趕走。 | route columns switch positions through calendars
-x190624 | editorial | 最後看兩本部門帳：回來的車和留下的餐袋，能同時有正數嗎？ | same unmarked phone, plain car and food bag beside separate blank ledgers
+x190617 | editorial | 還記得六月那兩本部門帳？示意司機又停在路邊，手機上仍有乘客與餐袋兩種工作。 | anonymous driver stops beside plain car and featureless handset with two paths
+x190624 | editorial | 載客重新跑前面，那兩本部門帳能在同一季都轉正嗎？ | same unmarked phone, plain car and food bag beside separate blank ledgers
 
 ## outro: 最後三句
 x190625 | S8 | 到二〇二二年第四季，兩部門調整後 EBITDA 分別是十點一二億與二點四一億美元，都成了正數。 | car and bag routes meet in blank phone beside two positive ledgers

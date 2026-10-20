@@ -75,14 +75,14 @@ const locations = [
   ["a plain car waiting at a city curb", "inside a simple passenger car", "outside a small restaurant at pickup time"],
   ["an anonymous driver dispatch station", "a local shop counter", "an apartment delivery doorway"],
   ["a quiet street by a restaurant", "a small restaurant pickup shelf", "a plain accounting desk"],
-  ["a planning room with unsigned diagrams", "an unmarked courier vehicle", "a busy city delivery curb"],
+  ["a planning room with unsigned diagrams", "a plain courier depot", "a busy city delivery curb"],
   ["a shared sorting hub without signage", "a merchant handoff table", "a pair of ordinary handsets"],
   ["a city curb returning to ordinary traffic", "a restaurant counter after reopening", "an accounting desk beside the street"],
 ];
 const lights = ["soft window light", "diffuse morning light", "muted daylight", "warm overhead light", "gentle lamp light", "soft evening light"];
 const safeguards = [
-  "Featureless mobile screens; no corporate marks or lettering.",
-  "Plain vehicles and bags; no logos or real-person likeness.",
+  "Featureless mobile screens; no symbols or lettering.",
+  "Generic cars and bags; no insignia or real-person likeness.",
   "Ordinary props; no labels, words, or numbers.",
   "Fictional illustration; omit trademarks and recognizable interface designs.",
   "Anonymous setting; no readable signs or distinctive brand colors.",
@@ -112,7 +112,7 @@ for (const [ci, chapter] of chapters.entries()) {
     } else {
       const i = shotCount++;
       const portrait = shortAnchors.has(row.id) ? "Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop." : "";
-      const cue = shortAnchors.has(row.id) ? row.cue : row.cue.replaceAll("blank", ["empty", "unmarked", "plain"][i % 3]).replaceAll("phone", i % 2 ? "handset" : "mobile device");
+      const cue = shortAnchors.has(row.id) ? row.cue : row.cue.replaceAll("blank", ["empty", "featureless", "plain"][i % 3]).replaceAll("phone", i % 2 ? "handset" : "mobile device");
       const prompt = `${cameras[i % cameras.length]} at ${locations[ci][i % locations[ci].length]}; ${cue}; ${lights[i % lights.length]}. ${portrait} ${safeguards[i % safeguards.length]}`;
       scene = { id: sceneId, template: "shot", data: { prompt, camera: cameras[i % cameras.length], visual: "still" }, lines: selected.map(toLine) };
     }
@@ -127,18 +127,16 @@ const loops = [
   { setup: "x190106", payoff: "x190401", what: "七月收購發生在交叉前後" },
   { setup: "x190107", payoff: "x190502", what: "兩張外送網何時開始整合" },
   { setup: "x190108", payoff: "x190611", what: "載客訂單何時重新較大" },
-  { setup: "x190109", payoff: "x190625", what: "車和餐袋的部門指標能否同時為正" },
   { setup: "x190204", payoff: "x190301", what: "既有外送網遇危機能否反超" },
   { setup: "x190209", payoff: "x190210", what: "乘客減少後司機接什麼" },
   { setup: "x190214", payoff: "x190217", what: "如何讓更多餐廳加入派單手機" },
-  { setup: "x190219", payoff: "x190301", what: "退出部分市場又招新店後外送總額方向" },
   { setup: "x190222", payoff: "x190301", what: "轉派能否讓交易額換位" },
   { setup: "x190306", payoff: "x190307", what: "交叉比的是哪一種錢" },
   { setup: "x190311", payoff: "x190313", what: "平台消費者與行程縮小多少" },
   { setup: "x190314", payoff: "x190317", what: "較忙的外送是否賺錢" },
   { setup: "x190319", payoff: "x190320", what: "部門走勢相反時公司正式盈虧" },
   { setup: "x190323", payoff: "x190401", what: "收購是否造成六月交叉" },
-  { setup: "x190408", payoff: "x190411", what: "交割前第三季誰領先" },
+  { setup: "x190408", payoff: "x190411", what: "交割前的秋季，載客有沒有追回外送" },
   { setup: "x190413", payoff: "x190415", what: "載客或外送哪邊先留下部門利潤" },
   { setup: "x190420", payoff: "x190601", what: "外送何時讓部門調整後指標轉正" },
   { setup: "x190422", payoff: "x190501", what: "年底收購是否交割" },

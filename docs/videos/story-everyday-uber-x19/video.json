@@ -53,11 +53,6 @@
       "what": "載客訂單何時重新較大"
     },
     {
-      "setup": "x190109",
-      "payoff": "x190625",
-      "what": "車和餐袋的部門指標能否同時為正"
-    },
-    {
       "setup": "x190204",
       "payoff": "x190301",
       "what": "既有外送網遇危機能否反超"
@@ -71,11 +66,6 @@
       "setup": "x190214",
       "payoff": "x190217",
       "what": "如何讓更多餐廳加入派單手機"
-    },
-    {
-      "setup": "x190219",
-      "payoff": "x190301",
-      "what": "退出部分市場又招新店後外送總額方向"
     },
     {
       "setup": "x190222",
@@ -110,7 +100,7 @@
     {
       "setup": "x190408",
       "payoff": "x190411",
-      "what": "交割前第三季誰領先"
+      "what": "交割前的秋季，載客有沒有追回外送"
     },
     {
       "setup": "x190413",
@@ -251,7 +241,7 @@
       "id": "x19-b01-s01",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a plain car waiting at a city curb; anonymous driver stops plain car and lifts empty mobile device toward food bag; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
+        "prompt": "Medium shot, slow push in at a plain car waiting at a city curb; anonymous driver stops plain car and lifts empty mobile device toward food bag; soft window light.  Featureless mobile screens; no symbols or lettering.",
         "camera": "Medium shot, slow push in",
         "visual": "still"
       },
@@ -269,7 +259,7 @@
       "id": "x19-b01-s02",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at inside a simple passenger car; handset divides into two unmarked paths; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
+        "prompt": "Close-up, pull out at inside a simple passenger car; handset divides into two unmarked paths; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
         "camera": "Close-up, pull out",
         "visual": "still"
       },
@@ -354,16 +344,16 @@
       "id": "x19-b01-s07",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a plain car waiting at a city curb; two empty delivery maps remain apart; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
+        "prompt": "Medium shot, slow push in at a plain car waiting at a city curb; two plain delivery maps meet on table while their join is hidden by a hand; soft window light.  Featureless mobile screens; no symbols or lettering.",
         "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190107",
-          "text": "年底，那張網會接進司機手上的手機嗎？",
+          "text": "年底，兩張配送地圖挪到同一張桌上，中間那條接線被遮住。",
           "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；問句留半拍"
+          "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
         }
       ]
     },
@@ -371,7 +361,7 @@
       "id": "x19-b01-s08",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at inside a simple passenger car; plain car approaches a once quiet curb; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
+        "prompt": "Close-up, pull out at inside a simple passenger car; plain car approaches a once quiet curb; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
         "camera": "Close-up, pull out",
         "visual": "still"
       },
@@ -385,28 +375,11 @@
       ]
     },
     {
-      "id": "x19-b01-s09",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot, pan left at outside a small restaurant at pickup time; plain mobile device between two separate empty account books; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x190109",
-          "text": "最後，車和餐袋能不能各自留下正數？",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；問句留半拍"
-        }
-      ]
-    },
-    {
       "id": "x19-b02-s01",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at an anonymous driver dispatch station; empty ledger beside plain car and small food bag; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Wide shot, pan left at an apartment delivery doorway; plain ledger beside plain car and small food bag; muted daylight.  Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -469,8 +442,8 @@
       "id": "x19-b02-s04",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a local shop counter; older food bag waiting beside established car; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Overhead shot, pan right at an anonymous driver dispatch station; older food bag waiting beside established car; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -509,8 +482,8 @@
       "id": "x19-b02-s06",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an apartment delivery doorway; car path remains ahead of bag path; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium close-up, still at a local shop counter; car path remains ahead of bag path; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -526,8 +499,8 @@
       "id": "x19-b02-s07",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at an anonymous driver dispatch station; empty arrows diverge beside same mobile device; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Low-angle shot, tilt up at an apartment delivery doorway; plain arrows diverge beside same handset; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -543,8 +516,8 @@
       "id": "x19-b02-s08",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a local shop counter; calendar turns from March to April beside handset; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium shot, slow push in at an anonymous driver dispatch station; calendar turns from March to April beside mobile device; soft window light.  Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
@@ -560,8 +533,8 @@
       "id": "x19-b02-s09",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an apartment delivery doorway; anonymous driver waits by empty rear seat; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Close-up, pull out at a local shop counter; anonymous driver waits by empty rear seat; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -577,18 +550,18 @@
       "id": "x19-b02-s10",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at an anonymous driver dispatch station; hands choose one of two empty handset paths; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Wide shot, pan left at an apartment delivery doorway; hands choose one of two plain mobile device paths; muted daylight.  Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190210",
-          "text": "第一季，優步改進載客端 App，讓司機更容易接外送。",
+          "text": "第一季，優步改進載客端 App；示意司機按下接單鍵，乘客路線旁多出一條外送路。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度",
-          "say": "第一季，優步改進載客端 應用程式，讓司機更容易接外送。",
-          "say_for": "a3f294587ee5"
+          "say": "第一季，優步改進載客端 應用程式；示意司機按下接單鍵，乘客路線旁多出一條外送路。",
+          "say_for": "648c45d16b74"
         }
       ]
     },
@@ -596,8 +569,8 @@
       "id": "x19-b02-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a local shop counter; same anonymous driver beside car and bag; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Overhead shot, pan right at an anonymous driver dispatch station; same anonymous driver beside car and bag; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -619,8 +592,8 @@
       "id": "x19-b02-s12",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an apartment delivery doorway; plain parcel changes hands at doorway; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium close-up, still at a local shop counter; plain parcel changes hands at doorway; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -636,8 +609,8 @@
       "id": "x19-b02-s13",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at an anonymous driver dispatch station; three empty route cards beside restaurant pickup counter; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Low-angle shot, tilt up at an apartment delivery doorway; three plain route cards beside restaurant pickup counter; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -653,8 +626,8 @@
       "id": "x19-b02-s14",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a local shop counter; eight unmarked route pins are removed from map; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium shot, slow push in at an anonymous driver dispatch station; eight empty route pins are removed from map; soft window light.  Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
@@ -670,8 +643,8 @@
       "id": "x19-b02-s15",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an apartment delivery doorway; closed market pins beside open unmarked restaurant doors; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Close-up, pull out at a local shop counter; closed market pins beside open unmarked restaurant doors; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -687,8 +660,8 @@
       "id": "x19-b02-s16",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at an anonymous driver dispatch station; new empty restaurant pins appear on route board; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Wide shot, pan left at an apartment delivery doorway; new plain restaurant pins appear on route board; muted daylight.  Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -704,8 +677,8 @@
       "id": "x19-b02-s17",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a local shop counter; delivery bag arrives beside anonymous driver and restaurant shelf; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Overhead shot, pan right at an anonymous driver dispatch station; delivery bag arrives beside anonymous driver and restaurant shelf; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -721,25 +694,8 @@
       "id": "x19-b02-s18",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an apartment delivery doorway; closed market pins beside growing open map; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x190219",
-          "text": "退出八個市場，又有新餐廳加入，六月外送總額會往哪邊走？",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；問句留半拍"
-        }
-      ]
-    },
-    {
-      "id": "x19-b02-s19",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot, slow push in at an anonymous driver dispatch station; unmeasured route components beside separate empty ledgers; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Medium close-up, still at a local shop counter; unmeasured route components beside separate featureless ledgers; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -752,11 +708,11 @@
       ]
     },
     {
-      "id": "x19-b02-s20",
+      "id": "x19-b02-s19",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a local shop counter; unmarked handset over two unrevealed columns; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up at an apartment delivery doorway; plain handset over two unrevealed columns; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -769,11 +725,11 @@
       ]
     },
     {
-      "id": "x19-b02-s21",
+      "id": "x19-b02-s20",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an apartment delivery doorway; food bag approaches car path on scale; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, slow push in at an anonymous driver dispatch station; food bag approaches car path on scale; soft window light.  Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
@@ -789,8 +745,8 @@
       "id": "x19-b03-s01",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a quiet street by a restaurant; food bag passes plain car on blank scale; warm overhead light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Close-up, pull out at a small restaurant pickup shelf; food bag passes plain car on blank scale; diffuse morning light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -830,14 +786,14 @@
       "id": "x19-b03-s03",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a small restaurant pickup shelf; plain food bag approaches separate car route; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Wide shot, pan left at a plain accounting desk; plain food bag approaches separate car route; muted daylight.  Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190303",
-          "text": "同一季，手機另一頭的餐袋路呢？",
+          "text": "同一季，示意司機把手機放在餐廳取件架旁；另一頭的餐袋路跑到哪裡？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句留半拍"
         }
@@ -870,8 +826,8 @@
       "id": "x19-b03-s05",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a plain accounting desk; two independently moving blank columns; soft evening light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, pan right at a quiet street by a restaurant; two independently moving blank columns; warm overhead light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -887,14 +843,14 @@
       "id": "x19-b03-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a quiet street by a restaurant; anonymous hand points to top of blank ledger; soft window light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Medium close-up, still at a small restaurant pickup shelf; anonymous hand points to top of blank ledger; gentle lamp light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190306",
-          "text": "但觀眾要先問：這裡比的到底是哪一種錢？",
+          "text": "六月那兩根柱子突然換位，司機手機上的錢和公司帳上的錢，究竟比的是哪一種？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句留半拍"
         }
@@ -904,8 +860,8 @@
       "id": "x19-b03-s07",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a small restaurant pickup shelf; gross orders card separated from company cash drawer; diffuse morning light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up at a plain accounting desk; gross orders card separated from company cash drawer; soft evening light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -948,8 +904,8 @@
       "id": "x19-b03-s09",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a plain accounting desk; receipt pile and separate company ledger; muted daylight. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, slow push in at a quiet street by a restaurant; receipt pile and separate company ledger; soft window light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
@@ -965,8 +921,8 @@
       "id": "x19-b03-s10",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a quiet street by a restaurant; combined paths shrink though bag path grows; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Close-up, pull out at a small restaurant pickup shelf; combined paths shrink though bag path grows; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -982,8 +938,8 @@
       "id": "x19-b03-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a small restaurant pickup shelf; bag ahead of car within smaller overall frame; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Wide shot, pan left at a plain accounting desk; bag ahead of car within smaller overall frame; muted daylight.  Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -999,8 +955,8 @@
       "id": "x19-b03-s12",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a plain accounting desk; fewer anonymous people around plain handset icons; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, pan right at a quiet street by a restaurant; fewer anonymous people around empty handset icons; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1016,8 +972,8 @@
       "id": "x19-b03-s13",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a quiet street by a restaurant; sparse generic route ticks on empty map; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Medium close-up, still at a small restaurant pickup shelf; sparse generic route ticks on featureless map; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1033,8 +989,8 @@
       "id": "x19-b03-s14",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a small restaurant pickup shelf; food bag route bright inside dimmer network; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up at a plain accounting desk; food bag route bright inside dimmer network; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1050,8 +1006,8 @@
       "id": "x19-b03-s15",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a plain accounting desk; many anonymous restaurant doorways on map; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, slow push in at a quiet street by a restaurant; many anonymous restaurant doorways on map; soft window light.  Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
@@ -1067,14 +1023,14 @@
       "id": "x19-b03-s16",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a quiet street by a restaurant; empty handset connects to generic eateries; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Close-up, pull out at a small restaurant pickup shelf; featureless handset connects to generic eateries; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190316",
-          "text": "更多店能出現在手機裡，外送單才有地方落下。",
+          "text": "在示意畫面裡，店員把袋子放上架、司機確認地址，再把它帶到下一個門口。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
         }
@@ -1097,11 +1053,11 @@
       "lines": [
         {
           "id": "x190317",
-          "text": "但外送部門調整後 EBITDA，仍虧兩點三二億美元。",
+          "text": "開場那只餐袋雖跑在前，外送部門調整後 EBITDA 仍虧兩點三二億美元。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度",
-          "say": "但外送部門調整後 E B I T D A，仍虧兩點三二億美元。",
-          "say_for": "04b64054ee14"
+          "say": "開場那只餐袋雖跑在前，外送部門調整後 E B I T D A 仍虧兩點三二億美元。",
+          "say_for": "3dc1c886f6e0"
         }
       ]
     },
@@ -1109,8 +1065,8 @@
       "id": "x19-b03-s18",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a small restaurant pickup shelf; car beside separate small positive ledger; gentle lamp light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Wide shot, pan left at a plain accounting desk; car beside separate small positive ledger; muted daylight. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1126,8 +1082,8 @@
       "id": "x19-b03-s19",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a plain accounting desk; larger bag column beside loss marker; soft evening light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, pan right at a quiet street by a restaurant; larger bag column beside loss marker; warm overhead light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1143,8 +1099,8 @@
       "id": "x19-b03-s20",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a quiet street by a restaurant; company-wide ledger remains below zero; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Medium close-up, still at a small restaurant pickup shelf; company-wide ledger remains below zero; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1160,8 +1116,8 @@
       "id": "x19-b03-s21",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a small restaurant pickup shelf; two unmarked account books apart; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up at a plain accounting desk; two plain account books apart; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1177,8 +1133,8 @@
       "id": "x19-b03-s22",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a plain accounting desk; two route lines cross while cash drawer stays closed; muted daylight. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, slow push in at a quiet street by a restaurant; two route lines cross while cash drawer stays closed; soft window light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
@@ -1194,8 +1150,8 @@
       "id": "x19-b03-s23",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a quiet street by a restaurant; sealed acquisition folder approaches food bag; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Close-up, pull out at a small restaurant pickup shelf; sealed acquisition folder approaches food bag; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1211,18 +1167,18 @@
       "id": "x19-b04-s01",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at an unmarked courier vehicle; signed blank contract arrives after calendar turns; gentle lamp light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Wide shot, pan left at a busy city delivery curb; signed blank contract arrives after calendar turns; muted daylight. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190401",
-          "text": "七月六日，優步簽約要買 Postmates，六月季度已結束。",
+          "text": "開場桌上那張還沒接入的外送網，是 Postmates；七月六日優步才簽約，六月季度早已結束。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度",
-          "say": "七月六日，優步簽約要買 波斯特梅茲，六月季度已結束。",
-          "say_for": "b0a5e0b44ced"
+          "say": "開場桌上那張還沒接入的外送網，是 波斯特梅茲；七月六日優步才簽約，六月季度早已結束。",
+          "say_for": "68d0788aa8ea"
         }
       ],
       "chapter": "七月簽約時，交叉早已發生"
@@ -1254,8 +1210,8 @@
       "id": "x19-b04-s03",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a busy city delivery curb; new route map arrives behind crossed lines; soft evening light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, pan right at a planning room with unsigned diagrams; new route map arrives behind crossed lines; warm overhead light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1271,8 +1227,8 @@
       "id": "x19-b04-s04",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a planning room with unsigned diagrams; unmarked restaurant and courier nodes join; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Medium close-up, still at a plain courier depot; unmarked restaurant and courier nodes join; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1288,14 +1244,14 @@
       "id": "x19-b04-s05",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at an unmarked courier vehicle; crossed routes stand before unopened contract; diffuse morning light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up at a busy city delivery curb; crossed routes stand before unopened contract; soft evening light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190405",
-          "text": "合網只是簽約時的期待，不等於餐廳與配送員已經整合。",
+          "text": "但這還不是完成整合：簽約只定了方向，餐廳與配送員還沒被接成同一張網。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
         }
@@ -1305,8 +1261,8 @@
       "id": "x19-b04-s06",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a busy city delivery curb; new plain restaurant doorways appear along existing courier route; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, slow push in at a planning room with unsigned diagrams; new plain restaurant doorways appear along existing courier route; soft window light.  Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
@@ -1322,14 +1278,14 @@
       "id": "x19-b04-s07",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a planning room with unsigned diagrams; plain restaurant doorway joins generic website order card and courier route; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Close-up, pull out at a plain courier depot; plain restaurant doorway joins generic website order card and courier route; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190407",
-          "text": "公司還開放餐廳在自家網站接單，再由優步外送配送。",
+          "text": "餐廳也能在自家網站接單，再把最後一段配送交給優步。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
         }
@@ -1339,14 +1295,14 @@
       "id": "x19-b04-s08",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at an unmarked courier vehicle; map route extends toward autumn calendar; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Wide shot, pan left at a busy city delivery curb; plain restaurant order card leads to a pickup point on featureless handset; muted daylight.  Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190408",
-          "text": "餐廳入口擴了，車與餐袋在秋天各跑多遠？",
+          "text": "店家網站的一筆單，變成司機手機上的取件地址；秋季載客能追回外送嗎？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句留半拍"
         }
@@ -1356,8 +1312,8 @@
       "id": "x19-b04-s09",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a busy city delivery curb; car route lengthens from previous short path; soft evening light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, pan right at a planning room with unsigned diagrams; car route lengthens from previous short path; warm overhead light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1373,8 +1329,8 @@
       "id": "x19-b04-s10",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a planning room with unsigned diagrams; car approaches former taller line; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Medium close-up, still at a plain courier depot; car approaches former taller line; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1417,8 +1373,8 @@
       "id": "x19-b04-s12",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at an unmarked courier vehicle; delivery path broadens beside older thin route; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up at a busy city delivery curb; delivery path broadens beside older thin route; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1434,8 +1390,8 @@
       "id": "x19-b04-s13",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a busy city delivery curb; car and bag share road, bag slightly ahead; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, slow push in at a planning room with unsigned diagrams; car and bag share road, bag slightly ahead; soft window light.  Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
@@ -1451,8 +1407,8 @@
       "id": "x19-b04-s14",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a planning room with unsigned diagrams; car beside separate positive account card; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Close-up, pull out at a plain courier depot; car beside separate positive account card; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1470,8 +1426,8 @@
       "id": "x19-b04-s15",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at an unmarked courier vehicle; bag beside smaller negative account card; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Wide shot, pan left at a busy city delivery curb; bag beside smaller negative account card; muted daylight.  Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1487,8 +1443,8 @@
       "id": "x19-b04-s16",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a busy city delivery curb; split ledger follows car and bag; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, pan right at a planning room with unsigned diagrams; split ledger follows car and bag; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1504,8 +1460,8 @@
       "id": "x19-b04-s17",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a planning room with unsigned diagrams; two empty mobile device paths appear side by side; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Medium close-up, still at a plain courier depot; two featureless mobile device paths appear side by side; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1521,14 +1477,14 @@
       "id": "x19-b04-s18",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at an unmarked courier vehicle; anonymous hand moves between car and food bag paths; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up at a busy city delivery curb; anonymous hand moves between car and food bag paths; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190418",
-          "text": "手機上的兩條路，也成了用戶眼前可切換的兩種服務。",
+          "text": "示意用戶在兩個無字入口間切換；但這還不是全部，外送袋裡也換了東西。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
         }
@@ -1538,14 +1494,14 @@
       "id": "x19-b04-s19",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a busy city delivery curb; groceries and plain parcels join food bag; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, slow push in at a planning room with unsigned diagrams; groceries and plain parcels join food bag; soft window light.  Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190419",
-          "text": "九月，雜貨配送已進到十多個國家，台灣也在名單裡。",
+          "text": "到第三季財報公布時，雜貨配送已進到十多個國家，台灣也在名單裡。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
         }
@@ -1555,8 +1511,8 @@
       "id": "x19-b04-s20",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a planning room with unsigned diagrams; courier route passes varied unmarked packages; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Close-up, pull out at a plain courier depot; courier route passes varied unmarked packages; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1572,8 +1528,8 @@
       "id": "x19-b04-s21",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at an unmarked courier vehicle; sealed contract beside two separate blank phones; gentle lamp light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Wide shot, pan left at a busy city delivery curb; sealed contract beside two separate blank phones; muted daylight. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1591,8 +1547,8 @@
       "id": "x19-b04-s22",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a busy city delivery curb; two delivery maps approach each other; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, pan right at a planning room with unsigned diagrams; two delivery maps approach each other; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1608,18 +1564,18 @@
       "id": "x19-b05-s01",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a shared sorting hub without signage; blank signed contract becomes joined route map; soft window light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Medium close-up, still at a merchant handoff table; blank signed contract becomes joined route map; gentle lamp light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190501",
-          "text": "十二月一日，Postmates 收購才正式完成。",
+          "text": "開場還留在桌上的第二張網，十二月一日才因 Postmates 收購完成進到優步。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度",
-          "say": "十二月一日，波斯特梅茲 收購才正式完成。",
-          "say_for": "d129046b84dc"
+          "say": "開場還留在桌上的第二張網，十二月一日才因 波斯特梅茲 收購完成進到優步。",
+          "say_for": "d6869de1add6"
         }
       ],
       "chapter": "十二月交割，隔年用戶才遷移"
@@ -1628,8 +1584,8 @@
       "id": "x19-b05-s02",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a merchant handoff table; anonymous teams connect two route boards; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up at a pair of ordinary handsets; anonymous teams connect two route boards; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1645,8 +1601,8 @@
       "id": "x19-b05-s03",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a pair of ordinary handsets; two blank phones sit side by side; muted daylight. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, slow push in at a shared sorting hub without signage; two blank phones sit side by side; soft window light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
@@ -1664,8 +1620,8 @@
       "id": "x19-b05-s04",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a shared sorting hub without signage; phones connect to shared unmarked delivery network; warm overhead light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Close-up, pull out at a merchant handoff table; phones connect to shared unmarked delivery network; diffuse morning light. Keep the handset, vehicle or bag inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1681,14 +1637,14 @@
       "id": "x19-b05-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a merchant handoff table; two mobile device entrances lead to one unmarked map; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Wide shot, pan left at a pair of ordinary handsets; two mobile device entrances lead to one plain map; muted daylight.  Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190505",
-          "text": "觀眾看到兩個入口，司機與餐廳面對的卻可能是一張大網。",
+          "text": "消費者端看見兩個入口，配送員在後面面對的卻可能是一張逐漸合起的網。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
         }
@@ -1698,8 +1654,8 @@
       "id": "x19-b05-s06",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a pair of ordinary handsets; partly joined map waits beside calendar; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, pan right at a shared sorting hub without signage; partly joined map waits beside calendar; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1715,8 +1671,8 @@
       "id": "x19-b05-s07",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a shared sorting hub without signage; two empty mobile devices beside partly joined route map; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Medium close-up, still at a merchant handoff table; two featureless mobile devices beside partly joined route map; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1734,8 +1690,8 @@
       "id": "x19-b05-s08",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a merchant handoff table; anonymous crowd passes between unmarked handset outlines; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up at a pair of ordinary handsets; anonymous crowd passes between plain handset outlines; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1753,8 +1709,8 @@
       "id": "x19-b05-s09",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a pair of ordinary handsets; couriers and generic shops join new map; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, slow push in at a shared sorting hub without signage; couriers and generic shops join new map; soft window light.  Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
@@ -1770,8 +1726,8 @@
       "id": "x19-b05-s10",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a shared sorting hub without signage; route map shows open ends; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Close-up, pull out at a merchant handoff table; route map shows open ends; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1787,8 +1743,8 @@
       "id": "x19-b05-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a merchant handoff table; car path regains length; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Wide shot, pan left at a pair of ordinary handsets; car path regains length; muted daylight.  Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1831,8 +1787,8 @@
       "id": "x19-b05-s13",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a pair of ordinary handsets; two large route columns face separate account books; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, pan right at a shared sorting hub without signage; two large route columns face separate account books; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1848,8 +1804,8 @@
       "id": "x19-b05-s14",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a shared sorting hub without signage; bag beside negative segment ledger; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Medium close-up, still at a merchant handoff table; bag beside negative segment ledger; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1867,8 +1823,8 @@
       "id": "x19-b05-s15",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a merchant handoff table; ordinary grocery bag joins food bag on unmarked route board; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up at a pair of ordinary handsets; ordinary grocery bag joins food bag on plain route board; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1884,14 +1840,14 @@
       "id": "x19-b05-s16",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a pair of ordinary handsets; receipts move past an unfilled cash drawer; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, slow push in at a shared sorting hub without signage; anonymous courier carries plain bag from restaurant shelf toward grocery doorway; soft window light.  Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190516",
-          "text": "司機手機上有更多可接的工作，外送部門帳卻尚未翻正。",
+          "text": "示意司機取完餐袋，又靠到雜貨店門口；每次改派的貢獻仍無從拆算。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
         }
@@ -1901,16 +1857,16 @@
       "id": "x19-b05-s17",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a shared sorting hub without signage; many unmarked restaurants and merchants join delivery route; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Close-up, pull out at a merchant handoff table; plain grocery and convenience parcels beside food bag; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x190517",
-          "text": "外送平台活躍商家已超過七十五萬，含餐廳和新的配送類別。",
+          "id": "x190519",
+          "text": "司機可接不同工作；搭車的人，會不會也用外送服務？",
           "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
+          "emotion": "台灣自然國語說書；問句留半拍"
         }
       ]
     },
@@ -1918,42 +1874,8 @@
       "id": "x19-b05-s18",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a merchant handoff table; anonymous customer picks up plain bag at unmarked restaurant; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x190518",
-          "text": "美國活躍餐廳裡，超過六成還開放消費者自行取餐。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
-        }
-      ]
-    },
-    {
-      "id": "x19-b05-s19",
-      "template": "shot",
-      "data": {
-        "prompt": "Low-angle shot, tilt up at a pair of ordinary handsets; plain grocery and convenience parcels beside food bag; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x190519",
-          "text": "配送不再只有餐點，這時兩條路的客人會不會重疊？",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；問句留半拍"
-        }
-      ]
-    },
-    {
-      "id": "x19-b05-s20",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot, slow push in at a shared sorting hub without signage; anonymous person uses two empty mobile device paths; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Wide shot, pan left at a pair of ordinary handsets; anonymous person uses two plain mobile device paths; muted daylight.  Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1966,28 +1888,28 @@
       ]
     },
     {
-      "id": "x19-b05-s21",
+      "id": "x19-b05-s19",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a merchant handoff table; shared handset with separate car and bag ledgers; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, pan right at a shared sorting hub without signage; shared handset with separate car and bag ledgers; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190521",
-          "text": "兩條線開始共用客群，卻仍是不同帳目。",
+          "text": "公司算的是全平台訂單額的共用客群，並未揭露任何一位司機或一家店對反超貢獻多少。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
         }
       ]
     },
     {
-      "id": "x19-b05-s22",
+      "id": "x19-b05-s20",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a pair of ordinary handsets; bag approaches zero line on separate ledger; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium close-up, still at a merchant handoff table; bag approaches zero line on separate ledger; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -2003,8 +1925,8 @@
       "id": "x19-b06-s01",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a city curb returning to ordinary traffic; bag ledger crosses zero line; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Low-angle shot, tilt up at an accounting desk beside the street; bag ledger crosses zero line; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -2044,8 +1966,8 @@
       "id": "x19-b06-s03",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a restaurant counter after reopening; bag ledger stands apart from closed company ledger; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Medium shot, slow push in at a city curb returning to ordinary traffic; bag ledger stands apart from closed company ledger; soft window light.  Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
@@ -2063,8 +1985,8 @@
       "id": "x19-b06-s04",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an accounting desk beside the street; food bag and car columns face each other; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Close-up, pull out at a restaurant counter after reopening; food bag and car columns face each other; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -2080,8 +2002,8 @@
       "id": "x19-b06-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a city curb returning to ordinary traffic; bag column still ahead of car column; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Wide shot, pan left at an accounting desk beside the street; bag column still ahead of car column; muted daylight.  Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -2097,25 +2019,8 @@
       "id": "x19-b06-s06",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a restaurant counter after reopening; two busy routes continue side by side; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x190606",
-          "text": "交叉之後一年半，兩種需求都在，排名還沒換回去。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
-        }
-      ]
-    },
-    {
-      "id": "x19-b06-s07",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot, pan left at an accounting desk beside the street; car route lengthens beside prior year plain line; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at a city curb returning to ordinary traffic; car route lengthens beside prior year empty line; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -2128,11 +2033,11 @@
       ]
     },
     {
-      "id": "x19-b06-s08",
+      "id": "x19-b06-s07",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a city curb returning to ordinary traffic; bag route remains ahead as car route catches up; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at a restaurant counter after reopening; bag route remains ahead as car route catches up; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -2145,11 +2050,11 @@
       ]
     },
     {
-      "id": "x19-b06-s09",
+      "id": "x19-b06-s08",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a restaurant counter after reopening; car approaches bag route from behind; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at an accounting desk beside the street; car approaches bag route from behind; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -2162,11 +2067,11 @@
       ]
     },
     {
-      "id": "x19-b06-s10",
+      "id": "x19-b06-s09",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an accounting desk beside the street; car column lengthens past previous high; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, slow push in at a city curb returning to ordinary traffic; car column lengthens past previous high; soft window light.  Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
@@ -2179,7 +2084,7 @@
       ]
     },
     {
-      "id": "x19-b06-s11",
+      "id": "x19-b06-s10",
       "template": "stats",
       "data": {
         "title": "載客重新較大",
@@ -2199,7 +2104,24 @@
       "lines": [
         {
           "id": "x190611",
-          "text": "外送也有一百四十三點一五億，卻被載客重新超過。",
+          "text": "開場那輛等乘客的車，這一季超過一百四十三點一五億的外送。",
+          "pause_after_ms": 0,
+          "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
+        }
+      ]
+    },
+    {
+      "id": "x19-b06-s11",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, pull out at a restaurant counter after reopening; two routes expand beyond former small frame; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x190612",
+          "text": "這一季，車道和餐袋路都比那場危機的六月寬。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
         }
@@ -2209,20 +2131,14 @@
       "id": "x19-b06-s12",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, slow push in at a city curb returning to ordinary traffic; two routes expand beyond former small frame; soft window light.  Featureless mobile screens; no corporate marks or lettering.",
-        "camera": "Medium shot, slow push in",
+        "prompt": "Wide shot, pan left at an accounting desk beside the street; plain car picks up anonymous silhouette; muted daylight.  Ordinary props; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x190612",
-          "text": "這一季，車道和餐袋路都比那場危機的六月寬。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
-        },
-        {
           "id": "x190613",
-          "text": "當年空下的車，後來又接回乘客。",
+          "text": "回到路邊，那位示意司機又接到乘客；同一支手機另一側仍有餐袋取件路線。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
         }
@@ -2232,8 +2148,8 @@
       "id": "x19-b06-s13",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a restaurant counter after reopening; bag still visible beside same unmarked handset; diffuse morning light.  Plain vehicles and bags; no logos or real-person likeness.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, pan right at a city curb returning to ordinary traffic; bag still visible beside same empty handset; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -2249,8 +2165,8 @@
       "id": "x19-b06-s14",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an accounting desk beside the street; car route grows longer beside former route; muted daylight.  Ordinary props; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium close-up, still at a restaurant counter after reopening; car route grows longer beside former route; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -2266,8 +2182,8 @@
       "id": "x19-b06-s15",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a city curb returning to ordinary traffic; car and bag grow at different speeds; warm overhead light.  Fictional illustration; omit trademarks and recognizable interface designs.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Low-angle shot, tilt up at an accounting desk beside the street; car and bag grow at different speeds; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -2283,14 +2199,14 @@
       "id": "x19-b06-s16",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a restaurant counter after reopening; route columns switch positions through calendars; gentle lamp light.  Anonymous setting; no readable signs or distinctive brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Medium shot, slow push in at a city curb returning to ordinary traffic; anonymous driver stops beside plain car and featureless handset with two paths; soft window light.  Featureless mobile screens; no symbols or lettering.",
+        "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190617",
-          "text": "餐袋還在同一支手機裡，沒有被回來的乘客趕走。",
+          "text": "還記得六月那兩本部門帳？示意司機又停在路邊，手機上仍有乘客與餐袋兩種工作。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；分清訂單額、營收與不同獲利尺度"
         }
@@ -2300,14 +2216,14 @@
       "id": "x19-b06-s17",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an accounting desk beside the street; same unmarked handset, plain car and food bag beside separate plain ledgers; soft evening light.  Paperwork without legible marks; exclude actual faces and emblems.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Close-up, pull out at a restaurant counter after reopening; same unmarked handset, plain car and food bag beside separate featureless ledgers; diffuse morning light.  Generic cars and bags; no insignia or real-person likeness.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x190624",
-          "text": "最後看兩本部門帳：回來的車和留下的餐袋，能同時有正數嗎？",
+          "text": "載客重新跑前面，那兩本部門帳能在同一季都轉正嗎？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句留半拍"
         }
