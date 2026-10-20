@@ -772,8 +772,8 @@ describe("AdminVideoReviews", () => {
     }, all));
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     await screen.findByRole("article", { name: "可上架的影片" });
-    // The two groups that wait for the owner, then the catalog of every tutorial.
-    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["需要你", "可以上架", "全部影片"]);
+    // What is ready to upload, the catalog of every tutorial with its pages, then what waits for the owner.
+    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["可以上架", "全部影片", "需要你"]);
     const needs = screen.getByRole("region", { name: "需要你" });
     expect(needs.textContent).toContain("等語言的影片");
     expect(needs.textContent).toContain("等你決定語言");
@@ -1442,7 +1442,7 @@ describe("AdminVideoReviews", () => {
     Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const card = await screen.findByRole("article", { name: "上傳包影片" });
-    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["需要你", "可以上架", "全部影片"]);
+    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["可以上架", "全部影片", "需要你"]);
     const needs = screen.getByRole("region", { name: "需要你" });
     expect([...needs.querySelectorAll("button")].map((button) => button.textContent)).toEqual([expect.stringContaining("卡住的影片"), expect.stringContaining("AI 模型怎麼挑")]);
     expect(needs.textContent).toContain("卡住");

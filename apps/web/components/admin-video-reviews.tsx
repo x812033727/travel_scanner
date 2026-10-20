@@ -551,12 +551,12 @@ function Group({ title, children }: { title: string; children: ReactNode }) {
 
 /**
  * The tutorials (slides videos): dramas and Shorts live on their own tabs, and the list is asked
- * for without the Shorts, which would otherwise crowd the tutorials out of it. What waits for the owner
- * comes first (a decision, a stopped video, a finished cut whose languages are not chosen), then what is
- * ready to upload (docs/videos/HANDS-OFF.md, docs/videos/LANGUAGES.md); under the two, every tutorial
- * is in the catalog, one line each, with the category and state filters, a search and pages
- * (VideoBrowser). A video that needs the owner is in both: the group is the reminder, the catalog the
- * record. Above them all, the owner asks for a video of one site article and sees those requests
+ * for without the Shorts, which would otherwise crowd the tutorials out of it. What is ready to upload
+ * comes first (docs/videos/HANDS-OFF.md, docs/videos/LANGUAGES.md), then every tutorial in the catalog,
+ * one line each, with the category and state filters, a search and pages (VideoBrowser), and under the
+ * catalog's pages what waits for the owner (a decision, a stopped video, a finished cut whose languages
+ * are not chosen): the owner asked for it there, so the catalog is not pushed down the page. A video
+ * that needs the owner is in both: the group is the reminder, the catalog the record. Above them all, the owner asks for a video of one site article and sees those requests
  * (admin-video-slides-requests.tsx).
  */
 function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
@@ -579,9 +579,9 @@ function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   return <div className="grid gap-6" aria-label={t("listTitle")}>
     <SlidesRequests onOpen={onOpen} />
     {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
-    {groups.needs.length > 0 && <Group title={t("needsYou")}>{groups.needs.map((project) => <ProjectItem key={project.slug} project={project} onOpen={onOpen} />)}</Group>}
     {groups.ready.length > 0 && <Group title={t("readyToUpload")}>{groups.ready.map((project) => <ReadyCard key={project.slug} project={project} canManage={manage.allowed} connection={connection} onOpen={onOpen} onLinked={changed} />)}</Group>}
     <VideoBrowser onOpen={onOpen} revision={revision} />
+    {groups.needs.length > 0 && <Group title={t("needsYou")}>{groups.needs.map((project) => <ProjectItem key={project.slug} project={project} onOpen={onOpen} />)}</Group>}
   </div>;
 }
 
