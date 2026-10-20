@@ -39,7 +39,7 @@ from app.models import (
 )
 from app.problems import AppError, app_error_handler
 from app.video_media.models import VideoMediaJob
-from app.video_reviews.schemas import IMPORTED_DUB_LOCALES
+from app.video_reviews.schemas import ADDED_LOCALES
 from app.video_youtube import admin_api, connection, requests, sync
 from app.video_youtube.client import SCOPE, YoutubeClient, YoutubeError, error_from
 from app.video_youtube.errors import Refused
@@ -477,7 +477,7 @@ def test_every_title_ends_with_its_language_s_captions_tag_once() -> None:
     # A language without a tag of its own reads the English one.
     assert requests.captioned("t", "fr") == "t｜CC Subtitles"
     # The narration languages and the five a video may add titles and captions in.
-    assert set(requests.CAPTION_TAGS) == {*requests.NARRATION_LANGUAGES, *IMPORTED_DUB_LOCALES}
+    assert set(requests.CAPTION_TAGS) == {*requests.NARRATION_LANGUAGES, *ADDED_LOCALES}
     # A tag added by hand, or in another language, is replaced rather than added to.
     assert requests.captioned("Area 51｜ CC字幕", "en") == "Area 51｜CC Subtitles"
     assert requests.captioned("51 區｜ CC字幕｜CC字幕", "zh-TW") == "51 區｜CC字幕"
