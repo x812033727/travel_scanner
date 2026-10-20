@@ -1,0 +1,33 @@
+# S46 R2｜獨立原文與書面畫面覆核
+
+2026-10-20 UTC。對 `verify-3.md` 指定的**同一個 R2 凍結版**重新打開原文，逐景比對 131 句旁白、`claims.md` 的行號與 123 個書面 `shot` 提示；這是文字覆核，尚無生成圖片可驗。結論：**史料旁白 HOLD、書面畫面 HOLD**。兩類問題均可在付費媒體前修正；R1 的通過不移轉到本版。
+
+## 固定檔與形式檢查
+
+| 對象 | 本次重算 SHA-256 |
+| --- | --- |
+| 1895 年 Blackwell 原書，GITenberg commit `16787df4911754c8e0401d12c896b943768f5d8d`，本地 `/tmp/curio-s48-blackwell-primary/65496-0.txt` | `b52caf559d763349953fe31101016cfb2d68662f152c28a564b6a6b93cac8ec6` |
+| `research.md` | `ffcab3d4559ef2ded2ddb741e39f3e03042fcbfed801c94e1b2f9dba9925163f` |
+| `brief.md` | `9fef072acc33e819f722e6eb508ea97239b34e5793c1dd29ad0f4e56d00b945b` |
+| `claims.md` | `4327aa2e167f9cbb6d36ccecce8a3af0c6123322e3df4c590c622e73c4001782` |
+| `script.md` | `218e03aaa5998205b681bd692126c0a4729531cc12736cf3f1ba267480cfb6ea` |
+| `video.json` | `eced97ac03b2d84a8b49ce514de83c27c90b9c88dbc75466466a5cfd527d5866` |
+
+`VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s46 --json` 回報 0 errors、0 warnings；逐行程式比對 `video.json` 與 `claims.md`，131/131 句一致。這兩項只驗形式，不能代替下述原文覆核。
+
+## 史料旁白：HOLD
+
+1. **`bkw019` 把另一位教授的建議接成 Jackson 的話。** `bkw017–018` 正講 Jackson；緊接的「他建議她再試別的學校」自然仍指 Jackson。但 5 月 27 日日記說 Jackson 回報同事反對，接著是 **Dr. Horner** 建議 Filbert Street 與 Franklin 兩校；見固定原書 [L1984–1998](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L1984-L1998)。改成「另有教授建議她再試別的學校」或明寫 Horner。這是 R1 未指出的歸屬錯誤。
+2. **`bkw090–096` 把醫院董事派系協商寫成有明確投票程序。** Blackwell 說 Gilpin 友善接待，卻提醒由他這名 Whig 提案會遭另外兩派反對；她分訪各派領袖，將請願交到一次董事會，最後「unanimously admitted to reside in the hospital」；見 [L2524–2542](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2524-L2542)。原文未記一場「正式表決」或各董事如何投票。`bkw090` 的「院內的規矩」也把障礙誤說成規章，`bkw091`「他雖支持」和 `bkw093`「一位董事願幫忙」強過友善接待與提供建議的證據，`bkw093`「其他兩派真的會投同一票嗎」預設了票。可改為：董事會派系對立；Gilpin 友善接待並建議分頭爭取；她回憶請願在董事會提出後獲一致准許住院。同步修正 `research.md` P12 的「全票／董事會表決」表述、`claims.md` 和 `video.json`／重生劇本。1847 年**學生決議一致通過**有另段明文 [L2185–2204](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2185-L2204)，不得把兩事合併。
+3. **三組已說對的事件需要把引文行號補齊。** `bkw067–068` 的鎮民凝視、關上學院大門避開批評在 [L2326–2338](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2326-L2338)，超出 P09／`claims.md` 現列的 L2250–2324。`bkw113` 的重返 Geneva 在 [L2692–2695](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2692-L2695)；`bkw127–128` 的訪客與乘車離城在 [L2890–2894](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2890-L2894)。目前 P14／`claims.md` 只列 L2791–2805、L2840–2888。補 `research.md` P09、P14 與對應逐景連結；這些是**引文範圍缺口**，不是事件本身無來源。
+
+其餘 R2 改寫的主要主張可由原書支持：十二份申請而非十二封拒信 [L2141–2151](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2141-L2151)；私人藏書與可能關閉的學院資源 [L2072–2089](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2072-L2089)；夜間抵校、冷雨風與第一天無書 [L2210–2248](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2210-L2248)；醫師停填床頭卡、飢荒熱病、地板床位及論文 [L2657–2674](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2657-L2674)；考試、1 月 23 日領文憑與同學讓座 [L2791–2805](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2791-L2805)、[L2840–2888](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2840-L2888)。`bkw083–085` 也正確分出書中轉錄的歡迎決議與晚年回憶：被一些學生懷疑為敵校騙局的是**申請**，不是已證實的玩笑表決；見 [L2185–2207](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2185-L2207)、[L2436–2442](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2436-L2442)。1895 自傳收錄的信、日記、決議，仍須以該書的轉錄或回憶稱呼；未見獨立校方原件。
+
+## 書面畫面：HOLD
+
+- **`bkw102` 時間相反。** 旁白明說在她入院**前**住院醫師慣填床頭卡，原書為「hitherto been the custom」[L2660–2664](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2660-L2664)；提示卻放一名穿女裝、帶自己筆記本的 Blackwell 在當時病房桌前。改成一名 1840 年代住院醫師填**無可讀字**的床頭卡，或只畫空白卡片；她不要出現在「入院前」的動作畫面。
+- **角色身分提示需按日期統一。** `bkw127` 的修補後提示仍叫她 `female medical student`，但此景在 1 月 23 日領文憑後 [L2864–2868](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2864-L2868)；改為成年女子或新畢業醫師。全面掃描另見**入學前** `bkw015, bkw029, bkw036, bkw050` 已叫她 `female medical student`，以及**領文憑前** `bkw010, bkw024, bkw031, bkw045, bkw052, bkw059, bkw066, bkw073, bkw080, bkw087, bkw094, bkw101, bkw108, bkw115, bkw122` 已叫她 `woman physician`。原書按時序為 1847 年申請 [L1948–1963](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L1948-L1963)、入校登記學生第 130 號 [L2214–2219](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2214-L2219)、1849 年領文憑。用 `adult woman/medical applicant`、`female medical student`、`newly graduated physician` 分別涵蓋三段，避免模型提早畫出已具醫師身分的她。這是書面提示的風險，沒有聲稱已生成錯誤圖片。
+
+R1 所點出的 `bkw030`（條件性的圖書館障礙）、`bkw047–048`（男性醫學生而非申請者參與決議）、`bkw054`（11 P.M. 夜站燈）、`bkw055`（冷雨與風）、`bkw107`（單人病房筆記）在 R2 提示已對上旁白及原文；`bkw058` 的紀念物 [L2221–2225](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2221-L2225)、`bkw109` 的地板床位 [L2666–2669](https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt#L2666-L2669)也相符。`bkw083, bkw085` 用年長女子標示 1895 年回望，未把她畫進 1847 年學生會議。其餘提示為單人卡通示意與留白紙張；仍須在原生樣圖檢查成年性別、年代服裝、場景及無假文字。
+
+修正後須重算所有受影響檔案 SHA-256，重跑來源、書面畫面及 lint；若更動旁白，原定的兩名**全新**敘事盲讀者須讀新版本。此報告沒有核准聲音、圖片、配樂、站台稿或發布。

@@ -1,0 +1,267 @@
+{
+  "narrative_hash": "81416f49a4a64ed0",
+  "script_hash": "7e7a1e1fac6ea306c027e4fedf4dcf394ce426b27777bf580f94c369afd94994",
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "5269da5634823667e3b1b53312645a4dd49dd7d5da4d78661b47b9c2d4decdae",
+  "round": 1,
+  "passed": true,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[dn001] 一八三一年八月底，達爾文從北威爾斯的地質旅行回家。他後來回憶，家裡已有亨斯洛的信。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[dn008] 多年後，達爾文寫下：船長連他的鼻形都注意過。船長從中看出什麼？",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[dn057] 伍德收到的那封船長信，讓達爾文寫給姊姊：他又不去了。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[dn007] 九月五日，伍德收到船長回信；達爾文得知內容後，寫給姊姊的是好消息嗎？",
+      "yes_readers": 2
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": true,
+      "evidence": "[dn054] 亨斯洛幫他商量準備工作，卻叫他先別做最後決定。",
+      "yes_readers": 2
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[dn060] 船長信後，哪位原定旅伴的缺席，打開了艙位？",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": true,
+      "evidence": "[dn082] 達爾文回憶，船長從鼻形懷疑他缺少毅力，未必撐得住航程。",
+      "yes_readers": 1
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": true,
+      "evidence": "[dn077c] 他也開始訂購裝備，買了望遠鏡和羅盤；幾天前，他還說未定前什麼都不買。",
+      "yes_readers": 1
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[dn037] 這位舅舅叫喬賽亞．韋奇伍德；他願意替外甥和父親談。",
+      "yes_readers": 2
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[dn999c] 想用原文查清更多奇聞，訂閱奇聞檔案局。",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[dn005] 幾天後，他給亨斯洛回信；這封信是答應，還是拒絕？",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[dn087] 十二月二十七日，它終於從德文波特出海。達爾文也在船上。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": true,
+      "evidence": "[dn076] 船長怕跟新旅伴合不來，後來承認：伍德收到的那封信，是故意給計畫潑冷水。",
+      "yes_readers": 1
+    }
+  ],
+  "failed": [],
+  "advisory": [],
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[dn001] 一八三一年八月底，達爾文從北威爾斯的地質旅行回家。他後來回憶，家裡已有亨斯洛的信。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[dn008] 多年後，達爾文寫下：船長連他的鼻形都注意過。船長從中看出什麼？"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[dn057] 伍德收到的那封船長信，讓達爾文寫給姊姊：他又不去了。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[dn007] 九月五日，伍德收到船長回信；達爾文得知內容後，寫給姊姊的是好消息嗎？"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[dn054] 亨斯洛幫他商量準備工作，卻叫他先別做最後決定。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[dn060] 船長信後，哪位原定旅伴的缺席，打開了艙位？"
+        },
+        {
+          "id": "payoffs",
+          "yes": false,
+          "evidence": "[dn071] 不是。他最想確定的，是船究竟會不會駛向南太平洋群島。"
+        },
+        {
+          "id": "no_recap",
+          "yes": true,
+          "evidence": "[dn077c] 他也開始訂購裝備，買了望遠鏡和羅盤；幾天前，他還說未定前什麼都不買。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[dn037] 這位舅舅叫喬賽亞．韋奇伍德；他願意替外甥和父親談。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[dn999c] 想用原文查清更多奇聞，訂閱奇聞檔案局。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[dn005] 幾天後，他給亨斯洛回信；這封信是答應，還是拒絕？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[dn087] 十二月二十七日，它終於從德文波特出海。達爾文也在船上。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[dn076] 船長怕跟新旅伴合不來，後來承認：伍德收到的那封信，是故意給計畫潑冷水。"
+        }
+      ],
+      "failed": [
+        "payoffs"
+      ],
+      "advisory": []
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[dn001] 一八三一年八月底，達爾文從北威爾斯的地質旅行回家。他後來回憶，家裡已有亨斯洛的信。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[dn008] 多年後，達爾文寫下：船長連他的鼻形都注意過。船長從中看出什麼？"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[dn057] 伍德收到的那封船長信，讓達爾文寫給姊姊：他又不去了。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[dn023] 皮科克催他盡快回覆，當時預計九月底開船。達爾文在給亨斯洛的信裡怎麼回答？"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[dn010] 不能。當時皮科克正在替船長找自然研究者，就找亨斯洛推薦人選。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[dn065] 船長說，艙房與餐桌可以和他分享；他還會攤開哪些難處？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[dn082] 達爾文回憶，船長從鼻形懷疑他缺少毅力，未必撐得住航程。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[dn063] 達爾文說，兩人見面前約五分鐘，船長才得知切斯特不能成行。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[dn079] 達爾文在晚年自傳說：船長曾因他的鼻形猶豫，幾乎拒絕他。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[dn999c] 想用原文查清更多奇聞，訂閱奇聞檔案局。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[dn007] 九月五日，伍德收到船長回信；達爾文得知內容後，寫給姊姊的是好消息嗎？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[dn087] 十二月二十七日，它終於從德文波特出海。達爾文也在船上。"
+        },
+        {
+          "id": "no_detour",
+          "yes": false,
+          "evidence": "[dn074d2] 九月九日，家裡寄的包裹送到了；達爾文在給姊姊的信裡道謝。"
+        }
+      ],
+      "failed": [
+        "no_recap",
+        "no_detour"
+      ],
+      "advisory": []
+    }
+  ]
+}

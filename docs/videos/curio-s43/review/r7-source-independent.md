@@ -1,0 +1,7 @@
+# S43 R7 independent source and written visual delta
+
+Reviewed 2026-10-20. R7 SHA256 `video.json` `bcc662192de31052c4477236044b57f22c40e1c4691cca2579dfefabd68ae925`, `script.md` `5e9304251d8d99766859099e199ae1815e15879f566f9d696b7dd8baf3fc8b13`, `claims.md` `81697fb8d23cda1aeaa1d82fc7a5f4589d51395c763387543b5643adc6ff6fb4`, `research.md` `06a5fbec636bd1bc026b93437aa3fe4d11567fa0a95cf4ac370e3a9d2af9a9d4`. The exact R6 independent primary-source/written prompt audit is `/tmp/s43-r6-source-independent.md` (PASS, all 92 scenes and 106 citations).
+
+R6→R7 changes only the third spoken outro line `dn999c` and its matching claim row, replacing an explicit subscription pitch with “本集引用的書信與回憶版本，連結都在說明欄。” Current `video.json.youtube.description` visibly includes pinned URL lines for Darwin's 1831 correspondence and 1876 memoir plus the Voyage, and `video.json.sources` lists those editions. This is an accurate direction to the finished upload description, not a historical claim about a new source. No history narration, loop, visual prompt, card, title, 5-second intro placement or 21-second outro graphic changes; the visual subscribe circle remains a brand affordance. Thus R6's earlier source/written visual PASS transfers to all unchanged historical content. The current R7 policy and narrative remain separate exact-script gates.
+
+**Exact R7 source and written visual delta: PASS.** No generated pictures, audio or website gate is approved by this note.

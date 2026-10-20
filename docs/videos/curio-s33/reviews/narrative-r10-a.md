@@ -1,0 +1,29 @@
+# Curio S33 R10 — independent narrative blind read A
+
+## Scope and freeze
+
+- Read only `docs/videos/curio-s33/script.md`, `docs/videos/curio-s33/video.json`, and the official `narrative --slug curio-s33 --json` output. No S33 research, brief, claims, verification, tasks, or other reviews were consulted.
+- Verified before reading: script SHA256 `f730a8f8834253f648034b86cf590d27233d4f0500c746be6280fd9219549202`; video SHA256 `92e6262b08beb8255b5e7b3b4d62b0a76a7f0fb9c7d62839494cb96755751e7a`.
+- Official **speech-only** clock: opening chapter **00:00–00:44 (0:44)**; body **00:44–09:53 (9:09)**; outro begins **09:53**, with the final line starting **10:06**. The output does not give a final end time. `video.json` targets 9–11 minutes.
+
+## Official 13 questions: 12 Yes, 1 No
+
+| # / ID | Answer | Exact scene evidence and reason |
+| --- | --- | --- |
+| 1 `scene_first` | **Yes** | `hj001` (00:00): “一四四四年，實錄二月二十日，一封奏疏呈到世宗面前”; `hj002` identifies Choe Man-ri and fellow signers; `hj003–hj004` show the petition praising the new letters and then expressing doubt. This is a dated document in action. |
+| 2 `no_spoiler` | **Yes** | Opening `hj005` (00:21) asks if the court will still use the letters in official selection, `hj006` (00:30) asks why the petition discusses confessions, and `hj007` (00:37) asks if the signers can go home. None reveals the later exam order (`hj086`), legal argument (`hj036–hj042`), or detention (`hj066`). |
+| 3 `one_line` | **Yes** | The opening previews the 1444 petition; `hj008` explicitly steps back one year to the 28 letters, then `hj015` reaches the February 1444 order, `hj020–hj048` follows the petition, `hj049–hj067` the king's answer, and `hj068–hj091` release, 1446 completion, and exam adoption. It does not retell a completed stretch as a second plot. |
+| 4 `no_toc` | **Yes** | Spoken transitions are questions inside the chronology: `hj019` asks which court rule the petition cites, `hj035` asks about confessions, and `hj048` asks what the king answers first. `hj047` lists objections already heard within the petition (“外交、讀書、刑案、程序”), not a list of forthcoming video sections. `hj079` asks who will explain the finished book, a story action. |
+| 5 `chapters_link` | **Yes** | `hj007→hj008` moves from the summoned petitioners to the prior origin of the same new letters (“往前一年”); `hj019→hj020` answers the rule (“事大”); `hj035→hj036` answers the confession question with readability; `hj048→hj049` identifies the king's first issue as Idu; `hj067→hj068` follows detention with next-day release. |
+| 6 `open_loops` | **Yes** | Fresh unresolved prompts occur at `hj005–hj007` (00:21–00:37), `hj014` (01:20), `hj019` (01:47), `hj032` (03:09), `hj035` (03:26), `hj044` (04:25), `hj048` (04:49), `hj060` (05:54), `hj061c` (06:22), `hj065` (07:03), `hj074` (07:50), `hj079` (08:24), and `hj085` (09:03). The body has no 90-second interval without one. |
+| 7 `payoffs` | **No** | Most hooks do get results: `hj005→hj086` gives the 1446 exam order; `hj006→hj036–hj042` gives the confession dispute; `hj007→hj066` gives detention; `hj067→hj068–hj069` gives release and one dismissal. **One explicit long loop fails:** `hj032` (03:09) asks whether future officials will still study literary Chinese if new letters suffice for office. `video.json` marks `hj090` (09:36) as its payoff, but `hj090` only restates the fear (“官吏只靠新字往上走”). `hj091` says the exam order names no candidates; that answers who was selected, a different question. `hj033` immediately says this page does not record the prediction coming true, but supplies no later result about study habits. Thus the hanging question receives no clear new answer under the official rule. |
+| 8 `no_recap` | **Yes** | Repeated items are explicit returns with a new use: `hj077` says “把先前那二十八字接回來” when the 1446 preface explains purpose; `hj081` explicitly revisits the earlier criminal-case concern in a new preface; `hj090` says “回看那封奏疏” before revisiting the official-learning fear. This last callback is allowed as a recap even though it fails to pay off `hj032`. The two “是月” cautions at `hj010` and `hj073` concern different events and months. |
+| 9 `chapters_are_events` | **Yes** | Titles describe actions or revelations: a praise-then-objection petition, creation of 28 letters, Choe's diplomatic objection, his criminal-case objection, Sejong reading the petition, and the petitioners' release plus completion of the book. |
+| 10 `outro_no_next` | **Yes** | `hj999a–hj999c` (09:53 onward) sums up the petition's concern, asks the viewer a question, and points to the Sejong Sillok source link. It mentions no future video, episode, or file. |
+| 11 `opening_hooks` | **Yes** | After the dated petition scene, `hj005` leaves the later official exam outcome open, `hj006` leaves the criminal-confession issue open, and `hj007` leaves the petitioners' same-day fate open: three concrete later moments. |
+| 12 `one_thread` | **Yes** | The same disputed letters and petition drive every chapter: creation (`hj009`), assignment (`hj015`), objections (`hj020–hj048`), king's answer (`hj049–hj067`), consequences and continued use (`hj068–hj091`). |
+| 13 `no_detour` | **Yes** | Idu at `hj029–hj032` is the petitioners' practical alternative; criminal confessions at `hj035–hj043` show another objection; the king's rhyme-book and prince questions at `hj054–hj059` are his reply; the 1446 prefaces and exam order at `hj075–hj091` show what became of the disputed letters. No full paragraph leaves the opening conflict. |
+
+## Repair target
+
+`hj032` is framed as an empirical question but the later material cannot establish later study habits. Without new sourced evidence, it could be phrased as the petitioners' **prediction**, while `hj033` immediately states the source limit. Then `hj090` can remain an explicit callback to the prediction alongside the real exam-order result. This is a narrative suggestion, not an edit.
