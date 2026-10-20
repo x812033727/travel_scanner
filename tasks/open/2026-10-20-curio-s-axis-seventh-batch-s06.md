@@ -43,5 +43,5 @@ S12「關原之戰，家康真的開槍逼小早川倒戈？」（日本）、S2
 ## 進度（2026-10-20）
 
 - 三題查核（研究＋獨立覆核）、三集稿子（盲評全過、lint 0／0）、旁白、插圖都做完，旁白與分鏡已 `review-push`。
-- 剩下：本批沒有配樂的集數見下。本月 music 預算（60 tracks）用完，`music --slug` 回「本月的music預算不夠」。
+- 剩下：S20 沒有配樂（S06、S12 有）。本月 music 預算（60 tracks）用完，`music --slug` 回「本月的music預算不夠」。
   站主在 `/admin/videos` 設定分頁調高預算，或下個月，再對這幾集跑 `node tools/video/cli.mjs music --slug curio-<id>`，然後重送 `review-push --gate audio`。
