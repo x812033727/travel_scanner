@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-produce-lululemon-black-luon-x17-preproduction
 title: Produce Lululemon black Luon X17 preproduction package
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-review
+claimed_at: 2026-10-20T23:23:14Z
 created_at: 2026-10-20T22:21:12Z
 completed_at:
 branch: codex/brand-story-lululemon-x17
@@ -35,7 +35,8 @@ The approved X17 topic needs a source-bound preproduction package before indepen
 - [x] Independently audit v3 sources and obtain two truly fresh first-reader ballots on its frozen SHA; archive the HOLD reasons.
 - [x] Revise v4 and re-freeze the author package with synchronized docs, schemas and local checks.
 - [x] Repair v4 website conversion-rate source HOLD and re-freeze v5 with synchronized docs, schemas and local checks.
-- [ ] Obtain a fresh source PASS and two first-reader narrative ballots on the v5 freeze before a reviewable PR.
+- [x] Obtain a fresh source PASS and two first-reader narrative ballots on the v5 freeze; common narrative failures require revision.
+- [ ] Revise to v6 and obtain new same-SHA source and blind narrative passes before a reviewable PR.
 
 ## How to verify
 
@@ -58,3 +59,5 @@ V4 independent [SEC audit](../../docs/videos/story-everyday-lululemon-x17/review
 V5 [author response](../../docs/videos/story-everyday-lululemon-x17/reviews/v5-author-response.md) repairs `x170519` to「完成結帳的比例卻下降」and marks the conversion-rate denominator explicitly in the source matrix and reviewer handoff. Both composers were rerun; the two Shorts' narration and `shorts.json` bytes are unchanged. V5 independent SEC source and two fresh-context narrative gates remain pending. No paid media, upload, push or PR has occurred.
 
 V5 author freeze: `video.json` SHA-256 `66d584c4907cfa6041174ca0fd5d01cdb5cb868690e7804b84da02fde64e545a`; `shorts.json` `58ca34c872aa4addb210e4697a9ce45939a649d837e351f4657f989c9dfdb059`; `source-matrix.md` `8735a2d463863243de68ee689d2ee1d2a9444b8e95a83337d1b2fc84f3960106`; `drafts/narration.md` `d5515075414354a02d9846de5c7eddaa28d4ac5a13cba3655c6c9477f5a4de2e`; `visual-plan.md` `5a3c8d456e17998a1d53a5f756ec03640a8aef13715bfefa6703e942cef69351`. Paper substantive body is 2,480 Han/digits. Author lint 0/0, both Shorts schema/source hash checks and episode link check pass; `test:docs-videos` 236/236 and task-board check passes. Independent v5 PASS is not claimed.
+
+V5 independent [SEC audit](../../docs/videos/story-everyday-lululemon-x17/reviews/script-source-audit-v5-independent.md) re-fetched all six originals with identical bytes/SHA and passed the conversion-rate repair on the frozen lines, cards and Shorts. New [blind A](../../docs/videos/story-everyday-lululemon-x17/reviews/blind-a-v5-independent.md) / [blind B](../../docs/videos/story-everyday-lululemon-x17/reviews/blind-b-v5-independent.md) each locked an uninfluenced 7.0/10 and marked mandatory Q8 and Q13 **No**: `x170630` repeats the earlier inventory provision and test finding without an explicit callback, and `x170213`'s generic weekly distribution frequency is never used to resolve the black-Luon failure. B also marked Q7 No because `x170211` asks exactly which old tests were absent, while the original only establishes that not all relevant variables were covered. Both Shorts stand alone on paper. Thus v5 narrative is **HOLD**; v6 needs to repair those precise lines, retain source scope, and re-freeze before two truly fresh ballots. A timeline estimate of 12.21 minutes exceeds the JSON's 8–10 minute target; actual spoken body and finished duration remain unmeasured. No paid media, official bumper files, MP4, upload, links or PR exists for X17.
