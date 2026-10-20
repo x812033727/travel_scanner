@@ -54,12 +54,12 @@
     },
     {
       "setup": "cj111",
-      "payoff": "cj528",
+      "payoff": "cj526",
       "what": "那一年諸葛亮人在哪裡"
     },
     {
       "setup": "cj112",
-      "payoff": "cj535",
+      "payoff": "cj533",
       "what": "草船借箭其實不是諸葛亮嗎"
     },
     {
@@ -99,7 +99,7 @@
     },
     {
       "setup": "cj517",
-      "payoff": "cj523",
+      "payoff": "cj521",
       "what": "後來的史家信了哪一邊"
     }
   ],
@@ -447,7 +447,7 @@
       "lines": [
         {
           "id": "cj206",
-          "text": "諸葛亮只向魯肅借了二十隻船，每船三十個兵。"
+          "text": "開頭那二十隻草船，是他向魯肅借來的，每船只要三十個兵。"
         },
         {
           "id": "cj207",
@@ -650,7 +650,7 @@
     },
     {
       "id": "teller-stage",
-      "chapter": "七百年前，元朝說書人講到赤壁開戰前的江上",
+      "chapter": "七百年前，元朝說書人筆下有人下令掉轉船頭",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lively storyteller with a thin moustache in a brown jacket, a folding fan in one hand standing on a small wooden stage in a teahouse on an overcast morning, slapping a small wooden block on a table with a delighted grin toward the camera, soft light through a paper screen",
@@ -1437,40 +1437,21 @@
       ]
     },
     {
-      "id": "cao-withdraw",
+      "id": "sima-pause",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stout middle-aged warlord with a trimmed grey beard in a black robe and a tall dark cap standing at a riverside camp gate on a windy day, holding a folded letter with its blank back toward the camera and a wry, amused smile, mild light",
+        "prompt": "Medium close-up of an elderly statesman with a white beard in a dark purple robe and a black winged cap in a wooden hall in the morning, laying down his brush with narrowed, thoughtful eyes toward the camera, soft window light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cj521",
-          "text": "信的另一張紙寫：你不死，我不得安寧。"
-        },
-        {
-          "id": "cj522",
-          "text": "曹操說，孫權沒騙我，就撤兵了。"
-        }
-      ]
-    },
-    {
-      "id": "sima-pause",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of an elderly statesman with a white beard in a dark purple robe and a black winged cap in a wooden hall in the morning, laying down his brush with narrowed, thoughtful eyes out at the viewer, soft window light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cj523",
           "text": "偏偏《魏略》這艘受箭的船，他沒收；",
           "emotion": "轉折"
         },
         {
-          "id": "cj524",
+          "id": "cj522",
           "text": "《吳歷》的輕船和那道命令，他也沒收。"
         }
       ]
@@ -1479,17 +1460,17 @@
       "id": "arc-blank",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing by a filing cabinet in an archive on a quiet day, holding up a thin blank manila folder with a serious look straight ahead, soft light through a paper screen",
-        "camera": "pull out",
+        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing by a filing cabinet in an archive on a quiet day, holding up a thin blank manila folder with a serious look out at the viewer, soft light through a paper screen",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cj525",
+          "id": "cj523",
           "text": "為什麼？他沒有寫下理由。"
         },
         {
-          "id": "cj526",
+          "id": "cj524",
           "text": "只讀《資治通鑑》的人，也就不會知道濡須有過這艘船。",
           "say": "只讀《資治通鑑》的人，也就不會知道如需有過這艘船。",
           "say_for": "60337362c2ab"
@@ -1500,13 +1481,13 @@
       "id": "zhuge-wall",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing on a city wall on a cloudy afternoon, hands behind his back and the feather fan tucked in his belt, a calm look at the onlooker, soft light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing on a city wall on a cloudy afternoon, hands behind his back and the feather fan tucked in his belt, a calm look straight ahead, mild light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cj527",
+          "id": "cj525",
           "text": "還記得開頭那個問題嗎？建安十八年，諸葛亮人在哪裡？",
           "emotion": "問句，親近"
         }
@@ -1516,13 +1497,13 @@
       "id": "zhuge-jingzhou",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing at a city gate in the early afternoon, pointing down a long road with the feather fan and a steady look toward the camera, soft daylight",
-        "camera": "push in",
+        "prompt": "Medium shot of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing at a city gate in the early afternoon, pointing down a long road with the feather fan and a steady look at the onlooker, soft light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cj528",
+          "id": "cj526",
           "text": "他跟關羽一起鎮守荊州；那年正月，他不在濡須。",
           "say": "他跟關羽一起鎮守荊州；那年正月，他不在如需。",
           "say_for": "904a3971e97d"
@@ -1533,13 +1514,13 @@
       "id": "liu-letter",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a warlord with long earlobes and a short beard in a pale brown robe sitting in a hill fort hall at midday, reading a folded letter held with its blank back out at the viewer and a hesitant look, mild light from an open doorway",
-        "camera": "drift",
+        "prompt": "Medium shot of a warlord with long earlobes and a short beard in a pale brown robe sitting in a hill fort hall at midday, reading a folded letter held with its blank back toward the camera and a hesitant look, soft daylight from an open doorway",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cj529",
+          "id": "cj527",
           "text": "孫權那時還向劉備求救；劉備帶兵在益州，最後沒有來。"
         }
       ]
@@ -1548,17 +1529,17 @@
       "id": "zhuge-envoy",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing in a palace hall on a still afternoon, bowing slightly with the feather fan held to his chest and a polite smile straight ahead, soft window light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a calm strategist with a neat goatee in a pale ash-blue gown and a soft cloth cap, holding a white feather fan standing in a palace hall on a still afternoon, bowing slightly with the feather fan held to his chest and a polite smile out at the viewer, soft window light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cj530",
-          "text": "就連五年前的赤壁，正史寫放火燒船的是周瑜的部將黃蓋；"
+          "id": "cj528",
+          "text": "就連赤壁那一仗，正史寫放火燒船的是周瑜的部將黃蓋；"
         },
         {
-          "id": "cj531",
+          "id": "cj529",
           "text": "諸葛亮，是去談聯盟的使者。"
         }
       ]
@@ -1567,13 +1548,13 @@
       "id": "arc-sgz",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with short hair in a cotton shirt and a knitted vest sitting at a reading table on a quiet day, closing a thick book with both hands and a calm, certain look at the onlooker, soft light through a paper screen",
-        "camera": "pan right",
+        "prompt": "Medium close-up of an archivist with short hair in a cotton shirt and a knitted vest sitting at a reading table on a quiet day, closing a thick book with both hands and a calm, certain look straight ahead, soft light through a paper screen",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cj532",
+          "id": "cj530",
           "text": "整部《三國志》，都沒有借箭這回事。"
         }
       ]
@@ -1582,18 +1563,18 @@
       "id": "arc-model",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing at a window in an archive on a quiet day, holding a small wooden model war boat in both hands and looking down at it with a quiet, solemn expression, soft light from an open doorway",
-        "camera": "tilt up",
+        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing at a window in an archive on a quiet day, holding a small wooden model war boat in both hands and looking down at it with a quiet, solemn expression, mild light from an open doorway",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cj533",
+          "id": "cj531",
           "text": "那平話裡借到箭的周瑜呢？",
           "emotion": "問句"
         },
         {
-          "id": "cj534",
+          "id": "cj532",
           "text": "三年前，他就已經病逝了。"
         }
       ]
@@ -1602,32 +1583,14 @@
       "id": "file-stamped",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest sitting at a desk in an archive on a mild afternoon, stamping a blank manila folder with a rubber stamp and a small smile toward the camera, soft window light",
-        "camera": "pull out",
+        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest sitting at a desk in an archive on a mild afternoon, stamping a blank manila folder with a rubber stamp and a small smile at the onlooker, soft window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "cj535",
-          "text": "所以這份檔案存檔：讓船掉頭、換一面受箭的，最早是濡須的孫權，",
-          "say": "所以這份檔案存檔：讓船掉頭、換一面受箭的，最早是如需的孫權，",
-          "say_for": "af1dc8e38eda",
-          "emotion": "收尾，乾脆"
-        }
-      ]
-    },
-    {
-      "id": "file-shelved",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an archivist with short hair in a cotton shirt and a knitted vest standing at a tall archive shelf at midday, sliding the stamped manila folder into place with a satisfied smile out at the viewer, soft light through a paper screen",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cj536",
-          "text": "而且只有《魏略》這一本書這樣寫。",
+          "id": "cj533",
+          "text": "所以這份檔案存檔：草船借箭那一下掉頭，最早不在諸葛亮的船上，在孫權的船上。",
           "emotion": "收尾，乾脆"
         }
       ]
@@ -1645,12 +1608,12 @@
       },
       "lines": [
         {
-          "id": "cj537",
+          "id": "cj534",
           "text": "如果由你來寫這一幕，你會讓誰站在船頭？",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "cj538",
+          "id": "cj535",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }
