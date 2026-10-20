@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-prepare-x10-ebay-paypal-brand-story
 title: Prepare X10 eBay PayPal brand-story episode
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-x10
-claimed_at: 2026-10-20T19:02:00Z
+owner:
+claimed_at:
 created_at: 2026-10-20T18:04:54Z
 completed_at:
 branch: codex/brand-story-ebay-paypal-x10
