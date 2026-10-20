@@ -80,8 +80,8 @@ const humanAction = (cue, chapterIndex) => {
 // exact central crop that a 1920x1080 frame needs for 9:16 reuse; final images
 // still require a phone-size inspection before the crop can be accepted.
 const portraitFocal = new Map([
-  ["x150331", "an abstract question shape and a closed folio corner"],
-  ["x150104", "one thick revenue strand beside thin strands"],
+  ["x150331", "a blue revenue ribbon and a closed folio corner"],
+  ["x150104", "a thick blue revenue ribbon beside the two car screens"],
   ["x150302", "one coloured portion inside the surrounding whole"],
   ["x150412", "two overlapping unlettered folios"],
   ["x150425", "a phone silhouette beside a flat route line"],
@@ -93,7 +93,10 @@ const portraitFocal = new Map([
   ["x150502", "one plain wrist receiver"],
   ["x150505", "one sports watch; peripheral sports silhouettes may be cropped"],
   ["x150511", "one watch beside a wider fitness strand"],
-  ["x150540", "one broad revenue strand and smaller equipment shapes"],
+  ["x150540", "one broad blue revenue ribbon beside narrower ribbons"],
+  ["x150542", "two dated unlettered folios separated by closed folios"],
+  ["x150623", "two folios with visibly different blank dividers"],
+  ["x150601", "a new folio with two leading coloured ribbons"],
   ["x150633", "two broad revenue strands within a larger whole"],
   ["x150629", "one central meeting point of five abstract paths"],
   ["x150519", "two watches beside a broader group of equipment"],
@@ -102,18 +105,16 @@ const portraitFocal = new Map([
 // Each numerical card is hand-written from G1–G6 and anchored to a stable
 // narration ID; the spoken wording can change without losing its source card.
 const cardRules = [
-  ["x150202", { title: "2006 全年營收", stats: [{ value: "約 US$1.77bn", label: "全公司收入，非淨利" }], source: "G1｜Garmin FY2006 8-K" }],
-  ["x150205", { title: "2006 車用／行動事業", stats: [{ value: "約 US$1.10bn", label: "全年營收；年增 170%" }], source: "G1｜Garmin FY2006 8-K" }],
-  ["x150221", { title: "nüvi 占全公司收入", stats: [{ value: "約 28%", label: "2006 全年；不是市場占有率" }], source: "G2｜Garmin FY2008 10-K" }],
+  ["x150202", { title: "2006 車用／行動事業｜藍線", stats: [{ value: "約 US$1.10bn", label: "全年營收；年增 170%" }], source: "G1｜Garmin FY2006 8-K" }],
+  ["x150205", { title: "2006 全年營收", stats: [{ value: "約 US$1.77bn", label: "全公司收入，非淨利" }], source: "G1｜Garmin FY2006 8-K" }],
   ["x150222", { title: "nüvi 占全公司收入", stats: [{ value: "約 52%", label: "2007 全年；不是事業占比" }], source: "G2｜Garmin FY2008 10-K" }],
   ["x150301", { title: "nüvi 占全公司收入", stats: [{ value: "約 64%", label: "2008 全年；屬於車用／行動事業的一部分" }], source: "G2｜Garmin FY2008 10-K" }],
-  ["x150305", { title: "2008 車用／行動事業", stats: [{ value: "72.65%", label: "US$2,538.411m ÷ US$3,494.077m" }], source: "G3｜Garmin FY2008 8-K；本包計算" }],
-  ["x150401", { title: "車用／行動事業全年營收", stats: [{ value: "US$2.538bn", label: "2008" }, { value: "US$1.669bn", label: "2010；兩年對照，非 2010 年比" }], source: "G3/G4｜Garmin FY2008/FY2010 8-K" }],
+  ["x150304", { title: "2008 車用／行動事業｜藍線", stats: [{ value: "US$2.538bn", label: "占公司總營收 72.65%；不同於 nüvi 64%" }], source: "G3｜Garmin FY2008 8-K；本包計算" }],
+  ["x150401", { title: "同一條車用／行動藍線", stats: [{ value: "US$2.538bn", label: "2008" }, { value: "US$1.669bn", label: "2010；兩年對照，非 2010 年比" }], source: "G3/G4｜Garmin FY2008/FY2010 8-K" }],
   ["x150404", { title: "全公司全年營收", stats: [{ value: "US$3.494bn", label: "2008" }, { value: "US$2.690bn", label: "2010；名目美元" }], source: "G3/G4｜Garmin FY2008/FY2010 8-K" }],
   ["x150413", { title: "nüvi 占全公司收入", stats: [{ value: "約 48%", label: "2011 全年；非整個車用／行動事業" }], source: "G5｜Garmin FY2011 10-K" }],
-  ["x150415", { title: "車用／行動事業占全公司收入", stats: [{ value: "約 58%", label: "2011 全年；分子不同於 nüvi" }], source: "G5｜Garmin FY2011 10-K" }],
+  ["x150415", { title: "2011 車用／行動藍線", stats: [{ value: "約 58%", label: "占全公司收入；分子不同於 nüvi" }], source: "G5｜Garmin FY2011 10-K" }],
   ["x150510", { title: "2011 Fitness 事業", stats: [{ value: "+24%", label: "全年營收年比；非兩款錶銷量" }], source: "G5｜Garmin FY2011 10-K" }],
-  ["x150514", { title: "2011 Outdoor 事業", stats: [{ value: "+14%", label: "全年營收年比；非兩款錶銷量" }], source: "G5｜Garmin FY2011 10-K" }],
   ["x150602", { title: "2025 全年營收", stats: [{ value: "US$7.245519bn", label: "全公司收入，非淨利" }], source: "G6｜Garmin FY2025 8-K" }],
   ["x150608", { title: "2025 Fitness 事業", stats: [{ value: "US$2.357bn", label: "全年營收；非只有手錶" }], source: "G6｜Garmin FY2025 8-K" }],
   ["x150609", { title: "2025 Outdoor 事業", stats: [{ value: "US$2.054061bn", label: "全年營收；非只有手錶" }], source: "G6｜Garmin FY2025 8-K" }],
@@ -134,6 +135,11 @@ const lineFor = row => {
   if (say !== row.text) Object.assign(line, { say, say_for: textHash(row.text) });
   return line;
 };
+// The blue revenue ribbon is an explicit visual device, not a purported
+// historical object. Carry its unchanged shape across the dated report pages.
+const ribbonAnchors = new Set(["x150104", "x150201", "x150225", "x150331", "x150405", "x150540", "x150623"]);
+const openingCar = new Set(["x150101", "x150102", "x150103", "x150104"]);
+const archiveFolio = new Set(["x150105", "x150107", "x150108", "x150109", "x150110", "x150201", "x150225", "x150331", "x150540", "x150542", "x150601", "x150623"]);
 const scenes = [];
 let shotNo = 0;
 for (const [ci, chapter] of chapters.entries()) {
@@ -148,12 +154,26 @@ for (const [ci, chapter] of chapters.entries()) {
     const visualCue = selected.map(row => row.cue.replace(/\bgeneric\b/g, "plain").replace(/\bdevices\b/g, "units").replace(/\bdevice\b/g, "unit")).join("; ");
     const portraitTargets = selected.map(row => portraitFocal.get(row.id)).filter(Boolean);
     const portraitInstruction = portraitTargets.length ? ` For portrait reuse, keep ${portraitTargets.join(" and ")} entirely in the central 608px-wide vertical corridor of the 1920x1080 frame.` : "";
-    const [setting, role, action] = humanAction(visualCue, ci);
+    const isOpeningCar = selected.some(row => openingCar.has(row.id));
+    const isArchiveFolio = selected.some(row => archiveFolio.has(row.id));
+    const [setting, role, action] = isOpeningCar
+      ? [sceneNo === 1 ? "in a plain parked car" : "in the same plain parked car as the preceding opening shot", "driver", "comparing a standalone route screen with a phone"]
+      : isArchiveFolio
+      ? [current.id === "x150105" ? "at a plain archive table" : "at the same plain archive table established after the opening car scene", "researcher", "turning an unlettered annual folio beside the recurring rounded blue ribbon"]
+      : humanAction(visualCue, ci);
+    const ribbonInstruction = selected.some(row => ribbonAnchors.has(row.id))
+      ? " Show the recurring plain blue revenue ribbon with the same rounded end and no lettering; it is an editorial visual metaphor, never a reproduced company chart."
+      : "";
+    const boundaryInstruction = selected.some(row => row.id === "x150601" || row.id === "x150623")
+      ? " The old blue ribbon ends on a closed older folio; do not extend it into the differently divided new folio."
+      : "";
     const shotIndex = card ? shotNo : shotNo++;
-    const orientation = shotIndex % 4 === 0 ? `one anonymous ${role} facing the viewer and ${action}` : `one anonymous ${role} ${action}`;
+    const orientation = isOpeningCar || isArchiveFolio
+      ? `one anonymous ${role} with face outside frame ${action}`
+      : shotIndex % 4 === 0 ? `one anonymous ${role} facing the viewer and ${action}` : `one anonymous ${role} ${action}`;
     const scene = card ? { id, template: "stats", data: card, lines: selected.map(lineFor) } : {
       id, template: "shot", data: {
-        prompt: `${camera[shotIndex % camera.length]} ${setting}, ${orientation}. ${visualCue}. ${light[shotIndex % light.length]}.${portraitInstruction} ${safeguards[shotIndex % safeguards.length]}`,
+        prompt: `${camera[shotIndex % camera.length]} ${setting}, ${orientation}. ${visualCue}. ${isOpeningCar ? "Consistent muted daylight through the same side window" : light[shotIndex % light.length]}.${portraitInstruction}${ribbonInstruction}${boundaryInstruction} ${safeguards[shotIndex % safeguards.length]}`,
         camera: camera[shotIndex % camera.length], visual: "still",
       }, lines: selected.map(lineFor),
     };
@@ -162,17 +182,17 @@ for (const [ci, chapter] of chapters.entries()) {
     ri += selected.length;
   }
 }
-scenes.push({ id: "x15-outro", template: "outro", data: { title: "導航不只在車裡", cta: "訂閱品牌故事" }, lines: outro.map(lineFor) });
+scenes.push({ id: "x15-outro", template: "outro", data: { title: "2025 全年｜健身＋戶外 60.9%", cta: "訂閱品牌故事", lines: ["分母：公司總營收 US$7.245519bn", "兩事業合計 US$4.411061bn", "G6｜Garmin FY2025 8-K；依原始千美元計算"] }, lines: outro.map(lineFor) });
 
 // Setups point to a withheld outcome, with the answer in the actual line named
 // by payoff. Keep the opening's later moments open through the six-chapter body.
 const loops = [
-  { setup: "x150105", payoff: "x150426", what: "2008 可能變成 2011 已使成長停滯" },
   { setup: "x150107", payoff: "x150401", what: "2010 公告裡車用／行動收入的金額" },
-  { setup: "x150108", payoff: "x150501", what: "2011 新品頁揭曉跑者手腕的新用途" },
-  { setup: "x150109", payoff: "x150425", what: "2011 手機風險欄寫出的新判斷" },
+  { setup: "x150108", payoff: "x150426", what: "2011 手機風險欄寫出的新判斷" },
+  { setup: "x150109", payoff: "x150501", what: "2011 新品頁揭曉跑者手腕的新用途" },
   { setup: "x150110", payoff: "x150635", what: "車內導航競爭之後的公司收入來源" },
   { setup: "x150231", payoff: "x150301", what: "2008 nüvi 占全公司收入的比例" },
+  { setup: "x150313", payoff: "x150318", what: "全公司出貨增加時，年報仍記載降價壓力" },
   { setup: "x150335", payoff: "x150402", what: "七成事業的收入在兩年後是否維持" },
   { setup: "x150432", payoff: "x150501", what: "2011 新品頁讓 GPS 進入哪個場景" },
   { setup: "x150543", payoff: "x150601", what: "2025 最大收入欄是哪個事業" },

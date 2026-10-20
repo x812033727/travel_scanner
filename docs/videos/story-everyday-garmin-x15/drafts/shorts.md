@@ -1,4 +1,4 @@
-# X15 Garmin｜兩支獨立 Shorts 旁白工作稿 v5
+# X15 Garmin｜兩支獨立 Shorts 旁白工作稿 v6
 
 一行一個可配音句；`line id | source ids | narration | generic English visual cue`。兩支皆獨立提出問題並回答，不倚賴長片。字卡由後製製作原生 9:16；下列視覺提示不能生成商標、真產品外形、可讀文字或真地圖。
 
@@ -16,12 +16,12 @@ x15s109 | G2,G5 | 年報說的是成長停滯，沒算出手機單獨造成多�
 
 ## Short 2: GPS 從車上走到手腕
 
-x15s201 | G5 | 二〇一一年，Garmin 推出兩款 GPS 錶；車用還重要嗎？ | two generic watches beside a dashboard device
-x15s202 | G5 | 一只是觸控的 Forerunner 六一零。 | first generic watch on athlete wrist
-x15s203 | G5 | 另一只九一零 XT，記跑步、騎車與游泳。 | second generic watch near three sport silhouettes
-x15s204 | G5 | 同年，健身事業收入增加百分之二十四。 | growing fitness-colored bar
-x15s205 | G5 | 當年的車用與行動事業，仍占公司過半。 | large dashboard-colored bar beside watches
-x15s206 | G6 | 二〇二五年，健身與戶外合占約六成一。 | two broad bars joining on vertical card
-x15s207 | G6 | 那是兩個事業的收入，不只兩只錶。 | three smaller unmarked routes beyond two bars
-x15s208 | G5,G6 | 兩年的部門分法不同，不能直接拿占比相減。 | two watches resting beside varied generic gear
-x15s209 | G5,G6 | 收入結構變了，不能說是一只錶救的。 | road line branching to track, trail and sea
+x15s201 | G5,G6 | 二〇一一年，Garmin 推出兩款新 GPS 錶；後來收入主角換了嗎？ | two generic watches beside a dashboard device
+x15s202 | G5 | Forerunner 六一零，讓跑者用觸控看資料。 | first generic watch on athlete wrist
+x15s203 | G5 | 九一零 XT 又把跑、騎、游記在同一只錶裡。 | second generic watch near three sport silhouettes
+x15s204 | G5 | 同年，整個健身事業的收入增加百分之二十四。 | growing fitness-colored bar
+x15s205 | G5 | 但車用／行動事業仍占公司約五成八。 | large blue car-revenue ribbon beside watches
+x15s206 | G5,G6 | 再把文件翻到十四個財年後的二〇二五年。 | two dated folios separated by closed annual folders
+x15s207 | G5,G6 | 兩年的部門邊界不同，不能拿占比直接相減。 | two differently divided unlettered folios
+x15s208 | G6 | 在新表，健身排第一，戶外排第二。 | fitness and outdoor ribbons taking the first two positions
+x15s209 | G5,G6 | 兩項合占公司全年收入約六成一；主角換了，不能歸功單只錶。 | two broad ribbons joining one company-wide bar
