@@ -1,0 +1,1764 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s25",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "一顆蘋果往回追的偵探故事。開場樹下喝茶慢而溫暖，「同樣的情境」一句收住；預告句一句一停。手稿的三個「沒有」一個一個放慢；伏爾泰像說八卦；「打到頭」那段像揭穿小把戲；歐拉的信輕快；樹倒又生根帶點驚奇；結尾乾脆"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "ap106",
+      "payoff": "ap204",
+      "what": "樹下那一次到底發生了什麼"
+    },
+    {
+      "setup": "ap108",
+      "payoff": "ap210",
+      "what": "手稿少了哪三樣東西"
+    },
+    {
+      "setup": "ap109",
+      "payoff": "ap318",
+      "what": "牛頓晚年親手寫下的那一年"
+    },
+    {
+      "setup": "ap110",
+      "payoff": "ap404",
+      "what": "再版多出的那段話"
+    },
+    {
+      "setup": "ap111",
+      "payoff": "ap508",
+      "what": "被大風吹倒的那棵樹後來怎樣"
+    },
+    {
+      "setup": "ap112",
+      "payoff": "ap513",
+      "what": "那顆蘋果有沒有打到頭"
+    },
+    {
+      "setup": "ap208",
+      "payoff": "ap211",
+      "what": "蘋果有沒有碰到他"
+    },
+    {
+      "setup": "ap213",
+      "payoff": "ap214",
+      "what": "斯塔克利當天就記下蘋果了嗎"
+    },
+    {
+      "setup": "ap216",
+      "payoff": "ap301",
+      "what": "寫下蘋果的只有斯塔克利嗎"
+    },
+    {
+      "setup": "ap305",
+      "payoff": "ap307",
+      "what": "伏爾泰是聽誰說的"
+    },
+    {
+      "setup": "ap312",
+      "payoff": "ap313",
+      "what": "康杜特寫的是哪一年"
+    },
+    {
+      "setup": "ap315",
+      "payoff": "ap321",
+      "what": "牛頓親手寫過蘋果嗎"
+    },
+    {
+      "setup": "ap323",
+      "payoff": "ap401",
+      "what": "打到頭最早寫在哪裡"
+    },
+    {
+      "setup": "ap407",
+      "payoff": "ap408",
+      "what": "小冊子說是根據誰"
+    },
+    {
+      "setup": "ap410",
+      "payoff": "ap412",
+      "what": "彭伯頓的書裡有沒有蘋果"
+    },
+    {
+      "setup": "ap414",
+      "payoff": "ap417",
+      "what": "打到頭只出現在小冊子嗎"
+    },
+    {
+      "setup": "ap425",
+      "payoff": "ap501",
+      "what": "那棵樹最早什麼時候被指出來"
+    },
+    {
+      "setup": "ap503",
+      "payoff": "ap504",
+      "what": "是牛頓自己指認的嗎"
+    },
+    {
+      "setup": "ap507",
+      "payoff": "ap508",
+      "what": "倒下的樹剩下的部分"
+    },
+    {
+      "setup": "ap329",
+      "payoff": "ap310",
+      "what": "牛頓身邊還有誰留下紀錄"
+    },
+    {
+      "setup": "ap427",
+      "payoff": "ap421",
+      "what": "歐拉的信傳了多遠"
+    },
+    {
+      "setup": "ap428",
+      "payoff": "ap423",
+      "what": "讀到的人都信嗎"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "牛頓的蘋果是真的，那它有打到頭嗎？｜奇聞檔案局",
+    "description": "牛頓的蘋果大家都聽過，可是它有沒有打到他的頭？這一集只講紀錄裡找得到的。一七二六年四月十五日，醫生斯塔克利在倫敦肯辛頓陪八十三歲的牛頓在蘋果樹下喝茶；他一七五二年寫成的回憶錄手稿（一九三六年才出版）只寫蘋果掉下來，沒有地點、年份，也沒有打到頭。伏爾泰一七二七年的書、康杜特的草稿，也只寫蘋果掉下來；牛頓晚年親筆的筆記，只寫一六六六年開始想重力延伸到月亮，沒有蘋果。目前找得到最早的「打到頭」，是一本匿名小冊子一七四〇年前後的第二版（一七三九年第一版沒有），書上說根據彭伯頓，但彭伯頓一七二八年的書沒有蘋果；一七六〇年歐拉的信也這樣寫。伍爾索普那棵樹，一八〇六年就有人帶外地人去看，大約兩百年前被風吹倒，樹幹重新生根，今天還會開花結果。\n\n界線：外甥女那句是伏爾泰一七四一年新版才補的；「打到頭」只說目前找得到最早；斯塔克利日記是研究者轉引；樹倒的年份說法不一，不給年份；「將近四百歲」是推算。出處列在下方參考資料。「我們覺得」的句子是本頻道的看法。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；現代研究者不入畫。\n\n資料截至 2026-10-20",
+    "tags": [
+      "牛頓",
+      "牛頓的蘋果",
+      "蘋果打到頭",
+      "萬有引力",
+      "斯塔克利",
+      "伏爾泰",
+      "歐拉",
+      "伍爾索普",
+      "歷史謠言",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**蘋果**\n打到頭？",
+      "tag": "歷史謠言",
+      "sub": "一七五二年的手稿",
+      "shot": "the-question"
+    }
+  },
+  "sources": [
+    {
+      "title": "Stukeley, Memoirs of Sir Isaac Newton's Life (1752)，Newton Project",
+      "url": "https://www.newtonproject.ox.ac.uk/view/texts/normalized/OTHE00001",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "同上手稿掃描（1936 年贈皇家學會題字）",
+      "url": "https://archive.org/details/memoirs-of-sir-isaac-newtons-life",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Conduitt 傳記草稿 Keynes Ms. 130.04",
+      "url": "https://www.newtonproject.ox.ac.uk/view/texts/diplomatic/THEM00167",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Conduitt 傳記草稿 Keynes Ms. 129.01",
+      "url": "https://www.newtonproject.ox.ac.uk/view/texts/normalized/THEM00145",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Conduitt 傳記草稿 Keynes Ms. 129.02",
+      "url": "https://www.newtonproject.ox.ac.uk/view/texts/normalized/THEM00146",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Newton, MS Add. 3968 f. 85r（晚年筆記）",
+      "url": "https://www.newtonproject.ox.ac.uk/view/texts/diplomatic/NATP00385",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Voltaire, Essay upon the Epick Poetry (1727)",
+      "url": "https://archive.org/details/bim_eighteenth-century_an-essay-upon-the-civil-_voltaire_1727",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Voltaire, Letters on England（前言）",
+      "url": "https://www.gutenberg.org/cache/epub/2445/pg2445.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Voltaire, Éléments de la philosophie de Newton (1741)",
+      "url": "https://archive.org/details/bim_eighteenth-century_elements-de-la-philosop_voltaire_1741",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Pemberton, A View of Sir Isaac Newton's Philosophy (1728)",
+      "url": "https://archive.org/details/viewofsirisaacne00pemb",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Philalethes, A Philosophical Dissertation (1739)",
+      "url": "https://archive.org/details/philosophicaldis00londiala",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "同上，第二版 p. 76",
+      "url": "https://archive.org/details/bim_eighteenth-century_a-philosophical-disserta_philalethes_1740",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Euler, Lettres à une princesse d'Allemagne (1768)",
+      "url": "https://archive.org/details/lettresuneprinc02eulegoog",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Letters of Euler to a German Princess (1795)",
+      "url": "https://archive.org/details/letterseulertoa00eulegoog",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Haycock, William Stukeley (2002)",
+      "url": "https://www.newtonproject.ox.ac.uk/view/texts/normalized/OTHE00017",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Keesing, The history of Newton's apple tree (1998)",
+      "url": "https://www.york.ac.uk/media/physics-engineering-technology/about/newton-apple-tree/The%20history%20of%20Newtons%20apple%20tree%20by%20Richard%20G%20Keesing.pdf",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "University of York, Newton's apple tree",
+      "url": "https://www.york.ac.uk/physics-engineering-technology/about/newtons-apple-tree/",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "National Trust, Things to do at Woolsthorpe Manor",
+      "url": "https://www.nationaltrust.org.uk/visit/nottinghamshire-lincolnshire/woolsthorpe-manor/things-to-do-at-woolsthorpe-manor",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "National Trust, History of Woolsthorpe Manor",
+      "url": "https://www.nationaltrust.org.uk/visit/nottinghamshire-lincolnshire/woolsthorpe-manor/history-of-woolsthorpe-manor",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "door-visit",
+      "chapter": "一七二六年四月，兩個人在蘋果樹下喝茶",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump round-faced physician in his late thirties in a grey waistcoat and a short powdered wig standing at the front door of a brick townhouse in Kensington on a mild April afternoon in 1726, raising one hand to knock with a cheerful smile, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap101",
+          "text": "一七二六年四月十五日，倫敦肯辛頓，一位醫生去拜訪老朋友。",
+          "emotion": "沉穩開場，像在講一個午後"
+        }
+      ]
+    },
+    {
+      "id": "old-host",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap standing in a wood-panelled hallway, leaning on a walking cane and smiling warmly toward the camera, pale light from a side window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap102",
+          "text": "老朋友已經八十三歲，名字叫牛頓。"
+        }
+      ]
+    },
+    {
+      "id": "tea-garden",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump round-faced physician in his late thirties in a grey waistcoat and a short powdered wig sitting on a garden chair under apple trees in pale blossom on a warm hazy day, holding a teacup and saucer and smiling, a small tea table beside him, mild light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap103",
+          "text": "兩人單獨吃過飯，就到花園的蘋果樹下喝茶。"
+        }
+      ]
+    },
+    {
+      "id": "same-situation",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap sitting on a garden chair under an apple tree in pale blossom, holding a teacup in one hand and pointing up at the branches with the other, a faraway look, soft hazy light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap105",
+          "text": "聊著聊著，牛頓說：他當年想到重力，就是在同樣的情境裡。"
+        }
+      ]
+    },
+    {
+      "id": "what-happened",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plump round-faced physician in his late thirties in a grey waistcoat and a short powdered wig in a blossoming garden leaning forward on his chair with wide curious eyes, his teacup paused halfway to his mouth, gentle hazy light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap106",
+          "text": "那一次，到底發生了什麼？",
+          "emotion": "問句，輕輕停住"
+        }
+      ]
+    },
+    {
+      "id": "tease-manuscript",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump elderly physician in his sixties with a short powdered wig and round spectacles sitting at a writing desk in a quiet study on a rainy day, writing with a quill in a thick bound manuscript whose pages face away from us, warm lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap107",
+          "text": "但這還不是最怪的。",
+          "emotion": "轉，壓低"
+        },
+        {
+          "id": "ap108",
+          "text": "一七五二年，醫生把這個下午寫進手稿；手稿裡，少了三樣東西。",
+          "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "tease-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap sitting at a cluttered desk in a quiet study on an overcast morning, writing a note with a quill on a sheet turned away from us, a thoughtful frown, light from an open doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap109",
+          "text": "牛頓晚年，也親手寫下了他開始想重力的那一年。",
+          "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "tease-pamphlet",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a printer in an ink-stained apron and rolled-up sleeves standing at a wooden printing press in a workshop on a grey morning, lifting a small freshly printed sheet with its blank side toward us, raised eyebrows, daylight from a skylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap110",
+          "text": "他死後十幾年，一本小冊子再版，多了一段跟他有關的話。",
+          "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "tease-storm",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old gardener in a wide-brimmed hat and a leather apron standing in an orchard on a windy grey day, holding his hat on his head with one hand and looking up anxiously at a swaying old apple tree, mild light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap111",
+          "text": "牛頓老家的一棵老蘋果樹，大約兩百年前，被大風吹倒。",
+          "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "the-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar sitting under an apple tree in an autumn orchard on an overcast day, holding a small yellow apple with a red blush in his hand and looking straight at the viewer with a puzzled frown, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap112",
+          "text": "那顆蘋果，到底有沒有打到他的頭？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "doctor-name",
+      "chapter": "一七五二年，一位醫生寫下那個下午",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump round-faced physician in his late thirties in a grey waistcoat and a short powdered wig standing in a book-lined study on a quiet morning, holding a closed notebook to his chest and nodding toward the camera, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap201",
+          "text": "有沒有打到，那天在場的另一個人最清楚：醫生斯塔克利。"
+        }
+      ]
+    },
+    {
+      "id": "royal-society",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with little wire spectacles and a cardigan in a quiet archive reading room on an overcast afternoon, carefully lifting a thick old leather-bound manuscript out of a grey archive box, window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap202",
+          "text": "開頭那份一七五二年的手稿，就是他寫的牛頓回憶錄，今天收在英國皇家學會。"
+        }
+      ]
+    },
+    {
+      "id": "manuscript-says",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a librarian with little wire spectacles and a cardigan at a reading desk in the archive, turning a yellowed manuscript page with a gloved hand, the page facing away from us, a desk lamp beside her, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap203",
+          "text": "牛頓說的那個「同樣的情境」，手稿寫得清清楚楚："
+        }
+      ]
+    },
+    {
+      "id": "apple-quote",
+      "template": "big",
+      "data": {
+        "text": "「occasion'd by the fall of an apple, as he sat in a comtemplative mood」",
+        "kicker": "斯塔克利的牛頓回憶錄手稿，一七五二年",
+        "sub": "因為一顆蘋果落下，那時他正坐著沉思（comtemplative 原文如此）"
+      },
+      "lines": [
+        {
+          "id": "ap204",
+          "text": "從前有一次，他坐著沉思，一顆蘋果掉了下來。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "why-down",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar sitting on a wooden bench in a garden on a cloudy autumn day, holding an apple in his open palm and staring at it, an apple tree behind him, mild light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap205",
+          "text": "他心裡想：為什麼蘋果總是垂直落到地上？為什麼不往旁邊、不往上？"
+        }
+      ]
+    },
+    {
+      "id": "earth-pulls",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar kneeling on the grass in an orchard, pressing one palm flat on the ground beside a fallen apple with an amazed look, soft grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap206",
+          "text": "他的答案是：地球在拉它；"
+        }
+      ]
+    },
+    {
+      "id": "apple-pulls",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar holding an apple up at eye level between two fingers and grinning at the viewer, a clipped hedge behind him, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap207",
+          "text": "而且，蘋果也在拉地球。",
+          "emotion": "帶點驚喜"
+        }
+      ]
+    },
+    {
+      "id": "hearsay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump round-faced physician in his late thirties in a grey waistcoat and a short powdered wig sitting at a writing desk in a panelled room on a cloudy morning, pausing with his quill raised and squinting as he tries to remember, a sheet turned away from us, pale daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap217",
+          "text": "這是今天找得到、最接近牛頓親口說法的紀錄；不過，它仍是斯塔克利的轉述。"
+        }
+      ]
+    },
+    {
+      "id": "where-when",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with little wire spectacles and a cardigan at the archive desk on a rainy day, holding a magnifying glass over a manuscript page that faces away from us and frowning, lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap208",
+          "text": "那蘋果掉在哪裡？哪一年？有沒有碰到他？",
+          "emotion": "一個一個問"
+        }
+      ]
+    },
+    {
+      "id": "three-missing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with little wire spectacles and a cardigan standing beside a reading desk and holding up three fingers toward the camera, the open manuscript beside her with its pages turned away, light from an open doorway",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap209",
+          "text": "開頭說手稿少了三樣東西，就是這三樣："
+        },
+        {
+          "id": "ap210",
+          "text": "沒有地點，沒有年份，只說「從前」；",
+          "emotion": "一個一個放慢"
+        }
+      ]
+    },
+    {
+      "id": "no-head",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a librarian with little wire spectacles and a cardigan tapping the margin of the manuscript with a pencil and shaking her head with a small smile, the page turned away, soft light from a tall window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap211",
+          "text": "也沒有一個字，說蘋果打到了他的頭。"
+        }
+      ]
+    },
+    {
+      "id": "only-paragraph",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a librarian with little wire spectacles and a cardigan slipping a narrow paper bookmark between the pages of the thick manuscript, a calm look, daylight from a skylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap212",
+          "text": "整份手稿，蘋果只出現在這一段。"
+        }
+      ]
+    },
+    {
+      "id": "diary-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump round-faced physician in his late thirties in a grey waistcoat and a short powdered wig walking along a quiet London street on an overcast day, tucking a small notebook into his pocket with a thoughtful look, mild light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap213",
+          "text": "那斯塔克利，是不是當天回家，就把蘋果記下來了？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "diary",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump round-faced physician in his late thirties in a grey waistcoat and a short powdered wig sitting at a small table in a lodging room, writing one short line in a small pocket diary with its pages turned away, warm lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap214",
+          "text": "看來沒有。一位研究這棵樹的學者引過他的日記：那天寫的是，跟牛頓單獨吃飯；沒有蘋果。"
+        }
+      ]
+    },
+    {
+      "id": "years-card",
+      "template": "big",
+      "data": {
+        "text": "一百八十四年",
+        "kicker": "一七五二年寫成，一九三六年才出版",
+        "sub": "同一年，手稿送進英國皇家學會"
+      },
+      "lines": [
+        {
+          "id": "ap215",
+          "text": "這份手稿寫好以後，又等了一百八十四年，到一九三六年，才印成書。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "only-one",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap sitting in an armchair by a window on a grey day, a teacup on the side table, raising one finger toward the viewer as if about to tell a story, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap216",
+          "text": "可是，把這顆蘋果寫下來的，只有斯塔克利一個人嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "london-book",
+      "chapter": "一七二七年，牛頓過世那年，倫敦出了一本書",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bookseller in a canvas apron standing behind the counter of a small London bookshop on an overcast afternoon in 1727, stacking a few new books with plain covers, window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap301",
+          "text": "不只。一七二七年三月，牛頓過世；同一年，倫敦就出了一本英文書，寫到這顆蘋果。"
+        }
+      ]
+    },
+    {
+      "id": "voltaire",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin sharp-nosed Frenchman in his thirties in a long curled wig and a blue velvet jacket standing by a tall window in a London lodging on a cloudy day, holding a small book with a plain cover and raising one eyebrow toward the camera, pale daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap302",
+          "text": "作者是法國作家伏爾泰；牛頓過世的時候，他人就在英國。"
+        }
+      ]
+    },
+    {
+      "id": "voltaire-quote",
+      "template": "big",
+      "data": {
+        "text": "「upon seeing an Apple falling from a Tree」",
+        "kicker": "伏爾泰，一七二七年在倫敦出版的英文書",
+        "sub": "看見一顆蘋果從樹上掉下來"
+      },
+      "lines": [
+        {
+          "id": "ap303",
+          "text": "他寫：牛頓在花園裡散步，看見一顆蘋果從樹上掉下來，"
+        }
+      ]
+    },
+    {
+      "id": "walking",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar strolling along a gravel path in a garden on an overcast autumn day, hands clasped behind his back, glancing down at an apple lying on the path, mild light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap325",
+          "text": "就這樣，有了他那套重力學說的第一個念頭。"
+        },
+        {
+          "id": "ap304",
+          "text": "這一次，他是在散步，不是坐著。"
+        }
+      ]
+    },
+    {
+      "id": "who-told",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thin sharp-nosed Frenchman in his thirties in a long curled wig and a blue velvet jacket sitting at a writing desk, tapping a quill against his chin with a sly, curious look, warm lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap305",
+          "text": "伏爾泰，又是聽誰說的？",
+          "emotion": "像在說八卦"
+        }
+      ]
+    },
+    {
+      "id": "new-edition",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin sharp-nosed Frenchman in his forties in a long curled wig and a plum silk dressing gown sitting at a desk in a country house study on a rainy day, adding a line to a manuscript page turned away from us, rain on the window behind him, light from an open doorway",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap306",
+          "text": "這本書裡沒寫。十幾年後，一七四一年，他在另一本書的新版裡，才補上一句："
+        }
+      ]
+    },
+    {
+      "id": "niece-quote",
+      "template": "big",
+      "data": {
+        "text": "「à ce que m'a conté sa nièce」",
+        "kicker": "伏爾泰，另一本書的一七四一年新版",
+        "sub": "這是他的外甥女告訴我的"
+      },
+      "lines": [
+        {
+          "id": "ap307",
+          "text": "「這是他的外甥女告訴我的。」"
+        }
+      ]
+    },
+    {
+      "id": "niece-fruits",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a graceful lady in her late forties in a grey silk gown and a lace cap standing in a parlour on an overcast afternoon, holding a small basket of mixed fruit and smiling toward the camera, daylight from a skylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap326",
+          "text": "這位外甥女，替牛頓管過家；"
+        },
+        {
+          "id": "ap308",
+          "text": "只是這一段寫的是「果子」，沒說是蘋果。"
+        }
+      ]
+    },
+    {
+      "id": "conduitt-mint",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout middle-aged gentleman in a mustard waistcoat and a curled wig standing at a long table in a mint office on a grey morning, weighing a coin on a small brass balance with a careful frown, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap329",
+          "text": "那牛頓身邊，還有誰留下了紀錄？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ap309",
+          "text": "外甥女的丈夫康杜特，是牛頓在造幣廠的副手。"
+        }
+      ]
+    },
+    {
+      "id": "conduitt-drafts",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout middle-aged gentleman in a mustard waistcoat and a curled wig sitting at a desk covered in loose papers on a quiet afternoon, writing with a quill, the pages facing away from us, lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap310",
+          "text": "牛頓過世以後，他著手替牛頓寫傳記，留下了好幾份草稿。"
+        }
+      ]
+    },
+    {
+      "id": "plague-home",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar walking up a country lane toward a small stone farmhouse on an overcast autumn day, carrying a leather satchel of books over his shoulder, mild light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap311",
+          "text": "草稿說，那時瘟疫讓劍橋停課，牛頓回到了林肯郡的老家；"
+        }
+      ]
+    },
+    {
+      "id": "garden-apple",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar standing in a farmhouse garden on a misty morning, looking down in surprise at an apple that has just landed on the grass by his shoe, soft grey light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap327",
+          "text": "在那裡，他看見一顆蘋果，從樹上掉下來。"
+        }
+      ]
+    },
+    {
+      "id": "which-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stout middle-aged gentleman in a mustard waistcoat and a curled wig scratching his head with the feather end of his quill and frowning at two blank papers on his desk, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap312",
+          "text": "那是哪一年？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "year-card",
+      "template": "big",
+      "data": {
+        "text": "一六六五？一六六六？",
+        "kicker": "康杜特寫的牛頓傳記草稿",
+        "sub": "同一個人寫的稿子，年份對不上"
+      },
+      "lines": [
+        {
+          "id": "ap313",
+          "text": "有的寫一六六五年，有的寫一六六六年。",
+          "emotion": "兩個年份分開念"
+        }
+      ]
+    },
+    {
+      "id": "no-head-yet",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar standing under an apple tree in an autumn orchard, looking at an apple lying in the grass at his feet with calm attention, overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap314",
+          "text": "不管哪一年，這些人寫的，都沒有說它打到頭。"
+        }
+      ]
+    },
+    {
+      "id": "newton-papers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap sitting at a desk piled with stacks of papers in a study on a grey day, peering over the stacks at the viewer, window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap315",
+          "text": "那牛頓自己呢？他留下那麼多手稿，有沒有親手寫過這件事？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "remember-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap holding a quill and looking up with a slow, remembering smile, a small desk lamp beside him, warm lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap316",
+          "text": "還記得開頭說，牛頓晚年親手寫下的那一年嗎？"
+        }
+      ]
+    },
+    {
+      "id": "list-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap writing a list on a sheet turned away from us and counting on the fingers of his free hand, lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap317",
+          "text": "他在一份筆記裡，一件一件，列出自己年輕時做出來的東西；"
+        }
+      ]
+    },
+    {
+      "id": "moon-thought",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar sitting at a small farmhouse window on an overcast day, chin in hand, looking up at a pale moon in a grey daytime sky, mild light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap318",
+          "text": "寫到一六六六年，他說：那一年，我開始想，重力能不能一路延伸到月亮。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "wonders",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar sitting at a wooden desk in a farmhouse room at midday, scribbling sums on a sheet turned away from us, ink on his fingers and an eager smile, pale daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap328",
+          "text": "後人把這段日子，叫作「奇蹟年」。"
+        }
+      ]
+    },
+    {
+      "id": "prime-quote",
+      "template": "big",
+      "data": {
+        "text": "「the prime of my age for invention」",
+        "kicker": "牛頓晚年的筆記",
+        "sub": "那兩個瘟疫年，是我發明的黃金年紀"
+      },
+      "lines": [
+        {
+          "id": "ap319",
+          "text": "牛頓自己寫的是：那兩個瘟疫年，是我發明的黃金年紀。"
+        }
+      ]
+    },
+    {
+      "id": "young-age",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar leaning back from his desk and stretching his inky hands with a proud, tired grin, a stack of scribbled sheets turned face down, soft light from a small window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap320",
+          "text": "那時候，他才二十三、四歲。"
+        }
+      ]
+    },
+    {
+      "id": "no-apple-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap setting down his quill and gazing at the viewer with a calm, unreadable smile, a single sheet lying face down on the desk, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap321",
+          "text": "整份筆記，有月亮，沒有蘋果；"
+        },
+        {
+          "id": "ap322",
+          "text": "到今天，還找不到牛頓親筆寫的蘋果。"
+        }
+      ]
+    },
+    {
+      "id": "where-head",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with little wire spectacles and a cardigan standing between tall archive shelves on an overcast day, pulling out a thin old pamphlet with a plain cover and raising her eyebrows, light from an open doorway",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap323",
+          "text": "那「打到頭」，目前找得到最早，寫在哪裡？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "pamphlet",
+      "chapter": "一七四〇年前後，一本小冊子出了第二版",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a printer in an ink-stained apron and rolled-up sleeves in a small printing shop on a rainy day, tying a short stack of thin pamphlets with string, daylight from a skylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap401",
+          "text": "就在開頭那本再版的小冊子裡，一七四〇年前後印的。"
+        }
+      ]
+    },
+    {
+      "id": "first-ed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a librarian with little wire spectacles and a cardigan at the reading desk flipping through a thin old pamphlet with its pages turned away from us, shaking her head, lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap402",
+          "text": "它的第一版，一七三九年在倫敦出版，從頭到尾，沒提過牛頓。"
+        }
+      ]
+    },
+    {
+      "id": "second-ed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a wiry writer in a shabby black cloak with his hat pulled low sitting at a cramped desk in a garret on an overcast afternoon, dipping a quill with a mischievous grin, a sheet turned away, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap403",
+          "text": "到了第二版，多出一段："
+        }
+      ]
+    },
+    {
+      "id": "head-quote",
+      "template": "big",
+      "data": {
+        "text": "「an Apple which fell on his Head as he sat under the Tree」",
+        "kicker": "匿名小冊子第二版，一七四〇年前後",
+        "sub": "一顆蘋果，在他坐在樹下時，掉到他頭上"
+      },
+      "lines": [
+        {
+          "id": "ap404",
+          "text": "牛頓的引力學說，是他坐在樹下時，一顆蘋果掉到他頭上，給他的提示。",
+          "emotion": "像揭穿一個小把戲"
+        }
+      ]
+    },
+    {
+      "id": "mathematician",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a wiry writer in a shabby black cloak with his hat pulled low leaning back in his chair and wagging one finger toward the camera with a smug smile, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap405",
+          "text": "作者還補一句：可是，他得是個數學家才行；"
+        }
+      ]
+    },
+    {
+      "id": "orchard-fruit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sleepy farmer in a smock sitting under an apple tree in an autumn orchard on a grey day, rubbing the top of his head with a blank expression, apples lying on the grass around him, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap406",
+          "text": "不然，整個果園的果子都砸在他身上，他也只會覺得，又重又硬。",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "according-to",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a librarian with little wire spectacles and a cardigan leaning over a pamphlet with a pencil and squinting at one line, the page turned away from us, warm lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap407",
+          "text": "這段話，說是根據誰？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "pemberton",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a serious doctor in his thirties in a black suit and a small white wig sitting at a desk in a study on a cloudy morning, proofreading a thick manuscript with a quill tucked behind his ear, window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap408",
+          "text": "書上寫：根據彭伯頓。"
+        }
+      ]
+    },
+    {
+      "id": "pemberton-talk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a serious doctor in his thirties in a black suit and a small white wig standing by a bookcase and listening intently with one hand cupped near his ear, a small notebook in his other hand, pale daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap409",
+          "text": "彭伯頓替牛頓編過《原理》的第三版，親自跟牛頓談過，這個理論是怎麼來的。"
+        }
+      ]
+    },
+    {
+      "id": "pemb-book-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a serious doctor in his thirties in a black suit and a small white wig holding up a small book with a plain cover and looking at the viewer with a puzzled frown, soft light from a tall window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap410",
+          "text": "那彭伯頓自己的書裡，有這顆蘋果嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "pemb-garden",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar sitting alone on a stone bench in a quiet garden on an overcast day, deep in thought with his chin resting on his fist, a clipped hedge behind him, mild light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap411",
+          "text": "一七二八年，彭伯頓出了一本講牛頓學說的書；序裡寫，牛頓一個人坐在花園裡，想著重力。"
+        }
+      ]
+    },
+    {
+      "id": "pemb-card",
+      "template": "big",
+      "data": {
+        "text": "有花園，沒有蘋果",
+        "kicker": "彭伯頓，一七二八年那本書的序",
+        "sub": "全書找不到蘋果"
+      },
+      "lines": [
+        {
+          "id": "ap412",
+          "text": "有花園，有重力，就是沒有蘋果。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "source-missing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with little wire spectacles and a cardigan holding a thin pamphlet in one hand and a plain book in the other, comparing them with a sceptical look, light from an open doorway",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap413",
+          "text": "小冊子說的出處，在出處裡，找不到。"
+        }
+      ]
+    },
+    {
+      "id": "only-pamphlet",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a librarian with little wire spectacles and a cardigan running one finger along a row of old books with plain leather spines on an archive shelf, a searching look, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap414",
+          "text": "那打到頭的版本，只出現在這本小冊子裡嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "euler-writes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a kindly round-faced mathematician in his fifties in a dark house robe and a soft wrapped cap sitting at a writing desk in a study on an overcast autumn morning in 1760, writing a letter with a quill on a sheet turned away from us, a kind smile, daylight from a skylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap415",
+          "text": "不只。一七六〇年九月，數學家歐拉寫信給一位德國公主，也講到了牛頓。"
+        }
+      ]
+    },
+    {
+      "id": "euler-lying",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar lying on the grass under an apple tree in an autumn orchard on a hazy day, hands behind his head and eyes half closed, mild light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap416",
+          "text": "信裡說：這位英國的大哲學家、大數學家，有一天躺在花園裡的一棵蘋果樹下，"
+        }
+      ]
+    },
+    {
+      "id": "euler-quote",
+      "template": "big",
+      "data": {
+        "text": "「une pomme lui tomba sur la tête」",
+        "kicker": "歐拉寫給一位德國公主的信，一七六〇年",
+        "sub": "一顆蘋果，掉在他的頭上"
+      },
+      "lines": [
+        {
+          "id": "ap417",
+          "text": "一顆蘋果，掉在他的頭上。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "lying-this-time",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar lying on the grass and rubbing his forehead with a surprised face, an apple resting on the grass beside his head, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap418",
+          "text": "這一回，他是躺著的。",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "moon-not-fall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar lying under the apple tree and looking up at a pale moon in a grey daytime sky with a curious frown, mild light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap419",
+          "text": "歐拉接著寫：可是月亮，沒有掉到他頭上；"
+        },
+        {
+          "id": "ap420",
+          "text": "於是他想到，讓月亮不掉下來的，可能是它的運動。"
+        }
+      ]
+    },
+    {
+      "id": "how-far",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a kindly round-faced mathematician in his fifties in a dark house robe and a soft wrapped cap sealing a folded letter with red wax at his desk and smiling, a small brass seal in his hand, warm lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap427",
+          "text": "這封信，後來傳得多遠？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "printed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a printer in an ink-stained apron and rolled-up sleeves in a printing workshop on an overcast day, packing freshly bound books with plain covers into a wooden crate, mild light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap421",
+          "text": "這些信一七六八年印成書，後來又譯成了英文。"
+        }
+      ]
+    },
+    {
+      "id": "believers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a bespectacled French editor in a powdered wig and a striped waistcoat sitting at a desk in a Paris study on a rainy day, reading a thick book with its pages turned away and raising one doubtful eyebrow, lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap428",
+          "text": "可是，讀到這裡的人，都信嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ap422",
+          "text": "十八世紀末巴黎版的編者，在這裡加了一條註："
+        }
+      ]
+    },
+    {
+      "id": "editor-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bespectacled French editor in a powdered wig and a striped waistcoat writing a small footnote with a fine quill and pursing his lips in doubt, the page turned away from us, warm lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap423",
+          "text": "比起蘋果，牛頓說自己是「靠一直想」才想通的那個說法，更像真的。"
+        }
+      ]
+    },
+    {
+      "id": "nineteenth",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a schoolteacher in a high-collared jacket standing by a fireplace in a plain parlour on a grey morning, holding up an apple and tapping the top of his own head with a grin, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap429",
+          "text": "懷疑歸懷疑，到了十九世紀，打到頭已經是常見的講法。"
+        }
+      ]
+    },
+    {
+      "id": "tree-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old gardener in a wide-brimmed hat and a leather apron standing beside an old apple tree propped up with wooden poles in an orchard on an overcast day, patting its rough trunk and looking toward the camera, mild light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap424",
+          "text": "牛頓老家的一棵蘋果樹，也被人當成了「那一棵」。"
+        }
+      ]
+    },
+    {
+      "id": "tree-when",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old gardener in a wide-brimmed hat and a leather apron leaning on his rake beside the propped-up apple tree and squinting thoughtfully at its gnarled bark, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap425",
+          "text": "它最早，是在什麼時候被人指出來的？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "visitors-1806",
+      "chapter": "一八〇六年，有人帶外地人去看一棵樹",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a village woman in a bonnet and a woollen shawl standing at the garden gate of a stone farmhouse on an overcast autumn day in 1806, beckoning toward the camera with a welcoming smile, an old apple tree behind her, soft light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap501",
+          "text": "目前找得到最早的紀錄，是一八〇六年的一本地方志：那棵蘋果樹還在，會帶外地人去看。"
+        }
+      ]
+    },
+    {
+      "id": "eighty-years",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a curious traveller in a long riding cloak and a tricorn hat standing in a farmhouse garden on a cloudy day, looking up at the branches of an old apple tree with an awed face, mild light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap502",
+          "text": "這時，牛頓已經過世將近八十年。"
+        }
+      ]
+    },
+    {
+      "id": "newton-pointed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with little wire spectacles and a cardigan sitting at the archive desk on a grey day with an old engraving turned away from us, tapping her lip with one finger in doubt, lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap503",
+          "text": "這棵樹，是牛頓自己指認的嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "only-tree",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar standing in a small walled garden beside a single apple tree on an overcast day, hands on his hips and looking around the plain garden, mild light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap504",
+          "text": "沒有證據。研究這棵樹的學者認為，它被選中，是因為牛頓家的花園裡，只有這一棵蘋果樹。"
+        }
+      ]
+    },
+    {
+      "id": "kent-card",
+      "template": "big",
+      "data": {
+        "text": "肯特之花",
+        "kicker": "Flower of Kent",
+        "sub": "結青綠帶紅的蘋果，煮著吃的老品種"
+      },
+      "lines": [
+        {
+          "id": "ap505",
+          "text": "它的品種叫「肯特之花」，結的是青綠帶紅的蘋果，煮著吃的。"
+        }
+      ]
+    },
+    {
+      "id": "chair",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a carpenter in a canvas apron in a workshop on a grey morning, sanding the arm of a sturdy wooden chair with a proud smile, wood shavings on the floor, window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap506",
+          "text": "還記得開頭那場大風嗎？樹倒下以後，有一部分，被做成了一把椅子。"
+        }
+      ]
+    },
+    {
+      "id": "rest-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old gardener in a wide-brimmed hat and a leather apron standing beside a fallen apple trunk lying along the ground in an orchard on a misty morning, scratching his chin, mild light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap507",
+          "text": "那剩下的呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "re-rooted",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old gardener in a wide-brimmed hat and a leather apron kneeling by the fallen trunk and gently brushing soil away from fresh new roots, an amazed smile, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap508",
+          "text": "留在原地的樹幹，重新長出了根。",
+          "emotion": "帶點驚奇"
+        }
+      ]
+    },
+    {
+      "id": "blossom-today",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a gardener in a quilted jacket and work gloves pruning a low, leaning old apple tree covered in pale blossom inside a low wooden fence on an overcast spring day, mild light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap509",
+          "text": "管理這座莊園的英國國民信託說，它今天還在長，還會開花、結果。"
+        }
+      ]
+    },
+    {
+      "id": "four-hundred",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a gardener in a quilted jacket and work gloves holding a small cooking apple with a red blush in her palm and looking at the old tree with a thoughtful smile, autumn orchard behind her, soft light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap510",
+          "text": "如果它真是牛頓看過的那一棵，今年，已經將近四百歲；"
+        }
+      ]
+    },
+    {
+      "id": "rings",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gardener in a quilted jacket and work gloves crouching by the leaning trunk and running a gloved finger along its twisted bark with a puzzled look, gentle overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap511",
+          "text": "不過蘋果樹的年輪數不準，這個歲數，是推算出來的。"
+        }
+      ]
+    },
+    {
+      "id": "final-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap sitting under an apple tree in pale blossom with a teacup in his hand, looking straight at the viewer with a twinkle in his eye, soft hazy light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap512",
+          "text": "所以，開頭那個問題：那顆蘋果，有沒有打到牛頓的頭？",
+          "emotion": "問句，慢"
+        }
+      ]
+    },
+    {
+      "id": "closed-half",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian with little wire spectacles and a cardigan closing the lid of a grey archive box with both hands and nodding firmly, pale daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap513",
+          "text": "打到頭，在聽過牛頓親口講的人留下的紀錄裡，一次也沒出現；這一半，可以結案。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "open-half",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap sitting in an armchair and shrugging with both palms turned up, a teacup on the table beside him, warm lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap514",
+          "text": "結不了案的，是另一半：蘋果，有沒有真的讓他想通重力。"
+        }
+      ]
+    },
+    {
+      "id": "legend-self",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap telling a story with both hands raised dramatically and a sly smile, a fire screen behind his armchair, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap515",
+          "text": "有歷史學家認為，講起六十年前的事，晚年的牛頓，可能也在替自己塑造傳奇。"
+        }
+      ]
+    },
+    {
+      "id": "opinion",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar under an autumn apple tree holding an apple and laughing toward the camera, overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap516",
+          "text": "我們覺得，蘋果大概真的掉過；讓它打中腦袋的，是後來說故事的人。"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "big",
+      "data": {
+        "text": "蘋果有紀錄，打到頭是後來加的",
+        "kicker": "斯塔克利的手稿；匿名小冊子第二版；歐拉的信",
+        "sub": "目前找得到最早的「打到頭」：一七四〇年前後"
+      },
+      "lines": [
+        {
+          "id": "ap517",
+          "text": "蘋果有紀錄，打到頭是後來加的。這份檔案，存檔。",
+          "emotion": "收尾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "蘋果有紀錄，打到頭是後來加的"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ap518",
+          "text": "你小時候聽到的版本，那顆蘋果，有沒有打到他的頭？",
+          "emotion": "問句上揚，像在聊天"
+        },
+        {
+          "id": "ap519",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ]
+}
