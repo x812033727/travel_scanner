@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-bootstrap-pinned-story-lexicon-for-independently
 title: Bootstrap pinned story lexicon for independently reviewed manual drafts
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: codex-gpt6-netflix-bootstrap
+claimed_at: 2026-10-20T14:16:49Z
 created_at: 2026-10-20T13:57:02Z
 completed_at:
 branch: codex/brand-story-netflix-x03
@@ -28,6 +28,7 @@ X03 Netflix 是獨立審過的本機手稿，已有 `video.json`，但沒有工�
 
 - [x] 有獨立唯讀預檢及明確 `--apply` CLI；稿、系列、三份審查證據 SHA 必須一致，既有媒體或交易一律拒絕。
 - [x] 套用時雙租約、兩邊 intent、immutable genesis／provenance sidecar、嚴格讀回與 committed receipt；重跑不再改寫。
+- [x] 交易開始前、committed receipt 前重新比對六份輸入 SHA，並拒絕指回儲存庫的媒體路徑及其 symlink 祖先。
 - [x] 交易中斷前後可分辨：未 committed 保持 HOLD；已 committed 且 sidecar 相符者可用交易 UUID 恢復。
 - [x] 集中測試與相關工具檢查完成；本案交回 X03 製作票後才由協調者決定何時建立實際審查收據並套用。
 
@@ -46,3 +47,7 @@ X03 Netflix 是獨立審過的本機手稿，已有 `video.json`，但沒有工�
 2026-10-20：現有舊故事遷移的唯讀檢查對 X03 回 `STORY_LEXICON_MIGRATION_WORKDIR_UNPROVEN`，因 X03 根本沒有工人工作目錄；其 `video.json` SHA `b65241c55c35f6692cac89e3af4e5aa651b6664025c33890e497846346e722a4` 已被來源審查與兩份盲讀收據引用。一般 `initializeStoryLexicon` 因既有 `video.json` 回 `STORY_LEXICON_MIGRATION_REQUIRED`。新工具仍需 X03 獨立 reviewer 的結構化 bootstrap 收據才准 `--apply`，所以目前只用合成測試驗證，真實 X03 未寫入詞庫、未付費生成。
 
 同日驗證：新增集中測試 9/9 通過；`npm run test:tools` 2,586 通過、0 失敗、5 既定跳過；`npm run test:docs-videos` 236/236 通過；`npm run check:tasks` 通過（僅既有過期／重疊任務警告）；`git diff --check` 通過。其他代理既有 scope 覆蓋 `tools/video/cli.mjs`、`lexicon-store.mjs` 和舊 migration，故本票刻意使用獨立 CLI 及新模組。協調者接手時建立 `reviews/lexicon-bootstrap.json`（格式見設計文件）並先乾跑；`--apply` 只在仍無 X03 媒體的情況下執行。
+
+二次審查發現兩個競態邊界：`now()` callback 可在來源讀取後改稿，舊版仍可能寫出 `bootstrapped:true`；symlink 媒體 base 可讓字面上的儲存庫外路徑實際指進儲存庫。已補提交前兩次來源 SHA 比對與媒體路徑祖先/realpath 檢查；focused 回歸涵蓋六份檔案在這兩個提交時點各自漂移，以及 symlink 指向 repo 的 `--apply`/`--recover` 拒絕。真實 X03 仍未套用。
+
+修補後再驗：focused 12/12；`npm run test:docs-videos` 246/246；`npm run test:tools` 2,590 通過、0 失敗、5 既定跳過；`npm run check:tasks` 與 `git diff --check` 通過。實際 X03 CLI 僅做唯讀乾跑，安全路徑與空工作區檢查通過，因最終結構化審查收據尚未存在而如預期拒絕套用；未產生 X03 LEASE 或媒體。

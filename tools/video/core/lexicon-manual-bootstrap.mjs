@@ -2,7 +2,7 @@
 // This is deliberately separate from both worker genesis and the migration of old
 // worker chapters: neither path can prove the provenance of a manual video.json.
 import { createHash, randomUUID } from "node:crypto";
-import { closeSync, existsSync, fsyncSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, renameSync, unlinkSync, writeFileSync } from "node:fs";
+import { closeSync, existsSync, fsyncSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, realpathSync, renameSync, unlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { genesisBytes } from "./lexicon-migration.mjs";
@@ -49,8 +49,35 @@ function parsed(bytes, code) {
   try { return JSON.parse(bytes.toString("utf8")); } catch { fail(code); }
 }
 
-function workdirProblem(workdir, root, allowLease) {
+function pathSafetyProblem(workdir, root) {
   if (isInside(workdir, root)) return "the media work directory is inside the repository";
+  // Resolve the nearest existing ancestor before writing the project LEASE. A symlinked
+  // media base can point back into docs/ even when its lexical path looks external.
+  let nearest = path.resolve(workdir);
+  const missing = [];
+  while (true) {
+    try {
+      const stat = lstatSync(nearest);
+      if (stat.isSymbolicLink()) return `a media path ancestor is a symlink: ${nearest}`;
+      break;
+    } catch (error) {
+      if (error.code !== "ENOENT") throw error;
+      const parent = path.dirname(nearest);
+      if (parent === nearest) return "the media path has no existing ancestor";
+      missing.unshift(path.basename(nearest));
+      nearest = parent;
+    }
+  }
+  for (let ancestor = path.dirname(nearest); ; ancestor = path.dirname(ancestor)) {
+    if (lstatSync(ancestor).isSymbolicLink()) return `a media path ancestor is a symlink: ${ancestor}`;
+    if (path.dirname(ancestor) === ancestor) break;
+  }
+  const physical = path.resolve(realpathSync(nearest), ...missing);
+  if (isInside(physical, realpathSync(root))) return "the resolved media work directory is inside the repository";
+  return null;
+}
+
+function workdirProblem(workdir, allowLease) {
   let stat;
   try { stat = lstatSync(workdir); }
   catch (error) { if (error.code === "ENOENT") return null; throw error; }
@@ -110,8 +137,12 @@ export function inspectManualStoryBootstrap({ root, slug, workdir, reviewFile, a
   check("no_stop", "LEXICON_STOPPED", () => {
     if (stopRequested(workdir) || stopRequested(path.dirname(workdir))) fail("LEXICON_STOPPED");
   });
+  check("safe_workdir_path", "MANUAL_BOOTSTRAP_WORKDIR_UNSAFE", () => {
+    const unsafe = pathSafetyProblem(workdir, root);
+    if (unsafe) fail("MANUAL_BOOTSTRAP_WORKDIR_UNSAFE", unsafe);
+  });
   check("empty_workdir", "MANUAL_BOOTSTRAP_WORKDIR_NOT_EMPTY", () => {
-    const problem = workdirProblem(workdir, root, allowLease);
+    const problem = workdirProblem(workdir, allowLease);
     if (problem) fail("MANUAL_BOOTSTRAP_WORKDIR_NOT_EMPTY", problem);
   });
   const seriesBytes = check("series", "MANUAL_BOOTSTRAP_SERIES_INVALID", () => {
@@ -156,6 +187,30 @@ function admit(report) {
   }
 }
 
+/** Manual source files do not share the media lease, so pin their exact bytes again at each commit boundary. */
+function requireSourcesUnchanged({ root, slug, workdir, reviewFile, report }) {
+  if (stopRequested(workdir) || stopRequested(path.dirname(workdir))) fail("LEXICON_STOPPED");
+  const dir = docDir(slug, root);
+  const sources = [
+    ["video.json", path.join(dir, "video.json"), report.video_json_sha256],
+    ["series.json", path.join(dir, "series.json"), report.series_json_sha256],
+    ["review receipt", reviewFile, report.review_receipt_sha256],
+    ...report.evidence.map(entry => [entry.role, path.join(dir, entry.file), entry.sha256]),
+  ];
+  for (const [label, file, expected] of sources) {
+    let bytes;
+    try { bytes = regularBytes(file, "MANUAL_BOOTSTRAP_SOURCE_CHANGED"); }
+    catch (error) { fail("MANUAL_BOOTSTRAP_SOURCE_CHANGED", `${label}: ${error.message}`); }
+    if (digest(bytes) !== expected) fail("MANUAL_BOOTSTRAP_SOURCE_CHANGED", label);
+  }
+  // Also re-check the reviewed relationship and reject a symlinked reviews/ directory.
+  let review;
+  try { review = reviewEvidence({ dir, slug, reviewFile, videoSha: report.video_json_sha256, seriesSha: report.series_json_sha256 }); }
+  catch (error) { fail("MANUAL_BOOTSTRAP_SOURCE_CHANGED", `review evidence: ${error.message}`); }
+  if (review.review_sha256 !== report.review_receipt_sha256
+      || JSON.stringify(review.evidence) !== JSON.stringify(report.evidence)) fail("MANUAL_BOOTSTRAP_SOURCE_CHANGED", "review evidence");
+}
+
 /** Publish standard genesis bytes with an immutable manual-provenance sidecar. */
 export function bootstrapManualStoryLexicon({ root, slug, workdir, reviewFile, checkpoint = () => {}, now = () => new Date() }) {
   const before = inspectManualStoryBootstrap({ root, slug, workdir, reviewFile });
@@ -183,6 +238,8 @@ export function bootstrapManualStoryLexicon({ root, slug, workdir, reviewFile, c
         review_receipt_sha256: report.review_receipt_sha256, evidence: report.evidence,
         bootstrapped_at: now().toISOString(),
       });
+      lease.verify();
+      requireSourcesUnchanged({ root, slug, workdir, reviewFile, report });
       const id = randomUUID();
       const workIntent = path.join(intentsDir(workdir), `${id}.json`);
       const receiptFile = path.join(workdir, "story", "lexicon-transactions", `${id}.json`);
@@ -205,6 +262,8 @@ export function bootstrapManualStoryLexicon({ root, slug, workdir, reviewFile, c
       if (result.lexicon_sha256 !== snapshot.lexicon_sha256 || result.head_event_sha256 !== snapshot.head_event_sha256
           || digest(readFileSync(path.join(base, sidecarRelative(snapshot.head_event_sha256)))) !== intent.bootstrap_sha256)
         fail("LEXICON_COMMIT_READBACK_FAILED");
+      lease.verify();
+      requireSourcesUnchanged({ root, slug, workdir, reviewFile, report });
       durable(receiptFile, json({ ...intent, status: "committed", current_sha256: digest(current.bytes) }), { immutable: true });
       checkpoint("work-receipt");
       unlinkSync(pendingFile(dir));
@@ -218,6 +277,8 @@ export function bootstrapManualStoryLexicon({ root, slug, workdir, reviewFile, c
 /** Recovery is only for a committed transaction whose provenance sidecar still matches. */
 export function recoverCommittedManualBootstrap({ root, slug, workdir, transactionId }) {
   if (!UUID.test(transactionId)) fail("LEXICON_TRANSACTION_ID_INVALID");
+  const unsafe = pathSafetyProblem(workdir, root);
+  if (unsafe) fail("MANUAL_BOOTSTRAP_WORKDIR_UNSAFE", unsafe);
   const lease = acquireProjectLease(workdir, { owner: "manual-story-lexicon-recovery" });
   try {
     return withLexiconWriter(root, () => {

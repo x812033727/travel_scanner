@@ -23,7 +23,7 @@ Save a structured receipt under `docs/videos/<slug>/reviews/lexicon-bootstrap.js
 }
 ```
 
-The command checks that `series.json` is a story, that `video.json` has the same slug, series and episode, and that the script, plan, receipt and three evidence files are regular files inside the project with matching hashes. It refuses any existing work state, including `auto.json`, chapters, audio, timeline, approvals, media ledger, pending lexicon transaction or STOP. It never copies an existing pronunciation snapshot or changes `docs/videos/lexicon.json`.
+The command checks that `series.json` is a story, that `video.json` has the same slug, series and episode, and that the script, plan, receipt and three evidence files are regular files inside the project with matching hashes. It rejects media paths inside the repository, including paths whose ancestors are symlinks, before creating a lease. It refuses any existing work state, including `auto.json`, chapters, audio, timeline, approvals, media ledger, pending lexicon transaction or STOP. It never copies an existing pronunciation snapshot or changes `docs/videos/lexicon.json`.
 
 ## Command
 
@@ -44,7 +44,7 @@ node tools/video/lexicon-manual-bootstrap.mjs \
   --apply
 ```
 
-Without `--apply`, the command writes nothing, including no lease or work directory. `--apply` repeats admission under the project lease and the common lexicon-writer lease, then writes intents on both volumes, immutable genesis version/event and a provenance sidecar, selects `current.json`, reads the complete strict chain back, commits a work-volume receipt and only then clears the intents. The sidecar records the current shared dictionary hash, seeded name tokens, script and series hashes, review receipt hash and its three evidence hashes. The genesis event remains byte-identical to an ordinary new story; the strict reader accepts no alternative genesis format.
+Without `--apply`, the command writes nothing, including no lease or work directory. `--apply` repeats admission under the project lease and the common lexicon-writer lease, then writes intents on both volumes, immutable genesis version/event and a provenance sidecar, selects `current.json`, reads the complete strict chain back, commits a work-volume receipt and only then clears the intents. It re-reads the script, series, receipt and three evidence files immediately before the first intent and again before the committed receipt; a changed byte aborts, leaving an in-progress transaction held if publication has begun. The sidecar records the current shared dictionary hash, seeded name tokens, script and series hashes, review receipt hash and its three evidence hashes. The genesis event remains byte-identical to an ordinary new story; the strict reader accepts no alternative genesis format.
 
 After a crash **before** the committed receipt, the transaction stays held for operator review. A crash **after** the receipt can be recovered using its UUID, provided the sidecar, receipt, current pointer and immutable chain still match:
 

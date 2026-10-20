@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
+import { appendFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -146,6 +146,27 @@ test("an unsafe or missing review, and a workdir inside the repository, refuse w
   assert.equal(existsSync(b.workdir), false);
 });
 
+test("a symlinked media-base ancestor pointing into the repository is rejected before LEASE or intent", t => {
+  const b = fixture(t);
+  const inside = path.join(b.root, "empty-media-target");
+  const alias = path.join(b.top, "outside-looking-media-base");
+  mkdirSync(inside);
+  symlinkSync(inside, alias);
+  const workdir = path.join(alias, SLUG);
+  const report = inspectManualStoryBootstrap({ root: b.root, slug: SLUG, workdir, reviewFile: b.reviewFile });
+  assert.equal(report.status, "refused");
+  assert.equal(report.checks.find(check => check.id === "safe_workdir_path").code, "MANUAL_BOOTSTRAP_WORKDIR_UNSAFE");
+  const before = tree(b.root);
+  assert.throws(() => bootstrapManualStoryLexicon({ root: b.root, slug: SLUG, workdir, reviewFile: b.reviewFile }),
+    error("MANUAL_BOOTSTRAP_WORKDIR_UNSAFE"));
+  assert.equal(cli(b, "--review", b.reviewFile, "--workdir", alias, "--apply").code, 1);
+  assert.deepEqual(tree(b.root), before);
+  assert.equal(existsSync(path.join(inside, SLUG)), false);
+  assert.throws(() => recoverCommittedManualBootstrap({ root: b.root, slug: SLUG, workdir,
+    transactionId: "12345678-1234-1234-1234-123456789abc" }), error("MANUAL_BOOTSTRAP_WORKDIR_UNSAFE"));
+  assert.equal(existsSync(path.join(inside, SLUG)), false);
+});
+
 test("a symlinked review directory cannot supply source evidence from outside the story", t => {
   const b = fixture(t);
   const reviewsDir = path.join(b.dir, "reviews");
@@ -170,6 +191,39 @@ test("one evidence file cannot be counted as two independent review roles", t =>
   assert.equal(report.status, "refused");
   assert.equal(report.checks.find(check => check.id === "review_receipt").code, "MANUAL_BOOTSTRAP_REVIEW_INVALID");
   assert.equal(existsSync(b.workdir), false);
+});
+
+const sourceFiles = b => [
+  ["video.json", b.videoFile], ["series.json", b.seriesFile], ["review receipt", b.reviewFile],
+  ...b.evidence.map(entry => [entry.role, path.join(b.dir, entry.file)]),
+];
+
+test("a source changed by now() after the lease preflight fails before any transaction intent", t => {
+  for (const [index] of Array.from({ length: 6 }, (_, number) => [number])) {
+    const b = fixture(t);
+    const [label, file] = sourceFiles(b)[index];
+    assert.throws(() => bootstrapManualStoryLexicon({ root: b.root, slug: SLUG, workdir: b.workdir, reviewFile: b.reviewFile,
+      now: () => { appendFileSync(file, " "); return new Date("2026-10-20T13:00:00Z"); } }),
+    error("MANUAL_BOOTSTRAP_SOURCE_CHANGED"), label);
+    assert.equal(existsSync(path.join(b.dir, "story-lexicon")), false, label);
+    assert.equal(existsSync(path.join(b.workdir, "story", "lexicon-intents")), false, label);
+    assert.equal(existsSync(path.join(b.workdir, "LEASE")), false, label);
+  }
+});
+
+test("a source changed after the current pointer but before the committed receipt leaves a HOLD", t => {
+  for (const [index] of Array.from({ length: 6 }, (_, number) => [number])) {
+    const b = fixture(t);
+    const [label, file] = sourceFiles(b)[index];
+    assert.throws(() => bootstrapManualStoryLexicon({ root: b.root, slug: SLUG, workdir: b.workdir, reviewFile: b.reviewFile,
+      checkpoint: at => { if (at === "current-pointer") appendFileSync(file, " "); } }),
+    error("MANUAL_BOOTSTRAP_SOURCE_CHANGED"), label);
+    assert.equal(existsSync(path.join(b.dir, "story-lexicon", "pending.json")), true, label);
+    assert.equal(readdirSync(path.join(b.workdir, "story", "lexicon-intents")).length, 1, label);
+    assert.equal(existsSync(path.join(b.workdir, "story", "lexicon-transactions")), false, label);
+    assert.throws(() => videoLexicon({ root: b.root, slug: SLUG, workdir: b.workdir, requireSnapshot: true }),
+      error("LEXICON_TRANSACTION_INCOMPLETE"), label);
+  }
 });
 
 test("before a commit receipt, every crash point remains held and cannot be auto-recovered", t => {
