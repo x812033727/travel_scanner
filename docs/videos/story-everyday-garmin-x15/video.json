@@ -33,6 +33,11 @@
   },
   "loops": [
     {
+      "setup": "x150105",
+      "payoff": "x150635",
+      "what": "車用／行動收入碰上手機後的長期分布"
+    },
+    {
       "setup": "x150106",
       "payoff": "x150206",
       "what": "開場車用收入急升的幅度"
@@ -54,8 +59,8 @@
     },
     {
       "setup": "x150110",
-      "payoff": "x150635",
-      "what": "收入後來分布在哪些事業"
+      "payoff": "x150214",
+      "what": "早期車用收入成長的產品入口"
     },
     {
       "setup": "x150209",
@@ -89,8 +94,8 @@
     },
     {
       "setup": "x150543",
-      "payoff": "x150601",
-      "what": "哪張全年表能看之後的收入分布"
+      "payoff": "x150635",
+      "what": "多年後收入線合起來占多少"
     },
     {
       "setup": "x150607",
@@ -99,7 +104,7 @@
     },
     {
       "setup": "x150612",
-      "payoff": "x150616",
+      "payoff": "x150613",
       "what": "2025 全年能否只用手錶解釋"
     },
     {
@@ -212,7 +217,7 @@
       "id": "x15-b01-s03",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in an archive aisle, one anonymous researcher turning a sealed folio. a large single branch of colored revenue tokens. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
+        "prompt": "Wide shot, pan left in an archive aisle, one anonymous researcher turning a sealed folio. a large single branch of colored revenue tokens. Overcast afternoon sky. For portrait reuse, keep one thick revenue strand beside thin strands entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Any maps are schematic and unlabeled; no trademarks.",
         "camera": "Wide shot, pan left",
         "visual": "still"
       },
@@ -229,22 +234,18 @@
       "id": "x15-b01-s04",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in a plain parked vehicle, one anonymous driver holding a small route screen. small glowing screen dwarfed by a phone; rising line of empty boxes near a steering wheel. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
+        "prompt": "Medium close-up, pan right at a plain workbench, one anonymous customer holding a plain phone. small glowing screen dwarfed by a phone. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
         "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x150105",
-          "text": "那條最重的收入線，碰上手機後會怎樣？",
+          "text": "Garmin 那條最重的收入線，碰上手機後會怎樣？",
           "pause_after_ms": 0,
-          "emotion": "台灣口語說書，自然提問，正常語速"
-        },
-        {
-          "id": "x150106",
-          "text": "更早一份財報，車用那欄跑得有多快？",
-          "pause_after_ms": 0,
-          "emotion": "台灣口語說書，自然提問，正常語速"
+          "emotion": "台灣口語說書，自然提問，正常語速",
+          "say": "嘎明 那條最重的收入線，碰上手機後會怎樣？",
+          "say_for": "b0f91147cf02"
         }
       ]
     },
@@ -252,22 +253,16 @@
       "id": "x15-b01-s05",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down beside a running track, one anonymous runner facing the viewer and checking a plain wrist receiver. one colored stack getting shorter; two plain sports watches in an unopened drawer. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
+        "prompt": "Overhead shot, tilt down in a plain parked vehicle, one anonymous driver facing the viewer and holding a small route screen. rising line of empty boxes near a steering wheel. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
         "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x150107",
-          "text": "兩年後，那條收入線又會怎麼轉彎？",
+          "id": "x150106",
+          "text": "車窗前多了一塊獨立螢幕，報表的車用／行動收入也一路陡升。",
           "pause_after_ms": 0,
-          "emotion": "台灣口語說書，自然提問，正常語速"
-        },
-        {
-          "id": "x150108",
-          "text": "年報另一頁，兩只運動錶為何出現在故事裡？",
-          "pause_after_ms": 0,
-          "emotion": "台灣口語說書，自然提問，正常語速"
+          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
       ]
     },
@@ -275,16 +270,16 @@
       "id": "x15-b01-s06",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up on a small plain boat, one anonymous sailor touching a plain console. sealed folder with five hidden dividers. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "prompt": "Low-angle shot, tilt up in an archive aisle, one anonymous researcher turning a sealed folio. one colored stack getting shorter. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
         "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x150109",
-          "text": "那年全公司的收入，與多年後會差多少？",
+          "id": "x150107",
+          "text": "到二〇一〇年，那條線卻在公告裡掉頭。",
           "pause_after_ms": 0,
-          "emotion": "台灣口語說書，自然提問，正常語速"
+          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
       ]
     },
@@ -292,18 +287,52 @@
       "id": "x15-b01-s07",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a plain parked vehicle, one anonymous driver holding a small route screen. vehicle road splitting toward unseen places. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
+        "prompt": "Medium shot, push in beside a running track, one anonymous runner checking a plain wrist receiver. two plain sports watches in an unopened drawer. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
         "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x150110",
-          "text": "手機也能指路後，Garmin 的收入走到哪裡？",
+          "id": "x150108",
+          "text": "另一頁的新品欄，又出現兩只運動 GPS 錶。",
           "pause_after_ms": 0,
-          "emotion": "台灣口語說書，自然提問，正常語速",
-          "say": "手機也能指路後，嘎明 的收入走到哪裡？",
-          "say_for": "a7178f1a348a"
+          "emotion": "台灣口語說書，日期與數字清楚，正常語速",
+          "say": "另一頁的新品欄，又出現兩只運動 G P S 錶。",
+          "say_for": "1136fad516cc"
+        }
+      ]
+    },
+    {
+      "id": "x15-b01-s08",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, pull out on a small plain boat, one anonymous sailor touching a plain console. sealed folder with five hidden dividers. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Close-up, pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x150109",
+          "text": "二〇二五年的全年收入，比二〇〇八年的總額高多少？",
+          "pause_after_ms": 0,
+          "emotion": "台灣口語說書，自然提問，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x15-b01-s09",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, pan left at an anonymous electronics shop, one anonymous clerk facing the viewer and lifting a plain equipment box. plain standalone navigator beside a stack of anonymous boxes. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Wide shot, pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x150110",
+          "text": "那塊獨立螢幕背後，到底是什麼樣的生意？",
+          "pause_after_ms": 0,
+          "emotion": "台灣口語說書，自然提問，正常語速"
         }
       ]
     },
@@ -311,8 +340,8 @@
       "id": "x15-b02-s01",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in a small equipment workshop, one anonymous technician sorting plain cardboard cases. blank annual release beside a small receiver. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium close-up, pan right in a small equipment workshop, one anonymous technician sorting plain cardboard cases. blank annual release beside a small receiver. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -353,8 +382,8 @@
       "id": "x15-b02-s03",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a plain parked vehicle, one anonymous driver facing the viewer and holding a small route screen. second taller bar emerging from first; dashboard lane growing wider than others. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, tilt down in a plain parked vehicle, one anonymous driver holding a small route screen. second taller bar emerging from first; dashboard lane growing wider than others. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -398,8 +427,8 @@
       "id": "x15-b02-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. rapid stack of blank boxes; several thinner streams beside a broad one. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Low-angle shot, tilt up at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. rapid stack of blank boxes; several thinner streams beside a broad one. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -421,8 +450,8 @@
       "id": "x15-b02-s06",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in a plain parked vehicle, one anonymous driver holding a small route screen. dashboard stream surging past others; report page weighted by one colored strip. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium shot, push in in a plain parked vehicle, one anonymous driver facing the viewer and holding a small route screen. dashboard stream surging past others; report page weighted by one colored strip. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -444,8 +473,8 @@
       "id": "x15-b02-s07",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a plain parked vehicle, one anonymous driver holding a small route screen. plain standalone navigator in a car. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Close-up, pull out in a plain parked vehicle, one anonymous driver holding a small route screen. plain standalone navigator in a car. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -461,8 +490,8 @@
       "id": "x15-b02-s08",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a plain parked vehicle, one anonymous driver facing the viewer and holding a small route screen. hands placing an unmarked unit in a car. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Medium shot, push in",
+        "prompt": "Wide shot, pan left in a plain parked vehicle, one anonymous driver holding a small route screen. hands placing an unmarked unit in a car. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -478,8 +507,8 @@
       "id": "x15-b02-s09",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. three separate plain screens, no interfaces; boxed plain navigation unit on shelf. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium close-up, pan right at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. three separate plain screens, no interfaces; boxed plain navigation unit on shelf. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -501,8 +530,8 @@
       "id": "x15-b02-s10",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. several identical blank unit boxes. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, tilt down at an anonymous electronics shop, one anonymous clerk facing the viewer and lifting a plain equipment box. several identical blank unit boxes. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -520,8 +549,8 @@
       "id": "x15-b02-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in a small equipment workshop, one anonymous technician sorting plain cardboard cases. shelves of varied plain small units; abstract map shapes inside a blank unit. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Low-angle shot, tilt up in a small equipment workshop, one anonymous technician sorting plain cardboard cases. shelves of varied plain small units; abstract map shapes inside a blank unit. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -545,8 +574,8 @@
       "id": "x15-b02-s12",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at an anonymous electronics shop, one anonymous clerk facing the viewer and lifting a plain equipment box. plain units with varied blank screens; long shelf of anonymous boxes and blank map tiles. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium shot, push in at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. plain units with varied blank screens; long shelf of anonymous boxes and blank map tiles. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -568,8 +597,8 @@
       "id": "x15-b02-s13",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a small equipment workshop, one anonymous technician sorting plain cardboard cases. blank map tiles passing between two hands. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Close-up, pull out in a small equipment workshop, one anonymous technician sorting plain cardboard cases. blank map tiles passing between two hands. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -585,8 +614,8 @@
       "id": "x15-b02-s14",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a small equipment workshop, one anonymous technician sorting plain cardboard cases. price tokens resting beside blank map tiles. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Medium shot, push in",
+        "prompt": "Wide shot, pan left in a small equipment workshop, one anonymous technician facing the viewer and sorting plain cardboard cases. price tokens resting beside blank map tiles. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -646,8 +675,8 @@
       "id": "x15-b02-s17",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. retail shelf viewed from far away; revenue wheel tilting toward one slice. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium close-up, pan right at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. retail shelf viewed from far away; revenue wheel tilting toward one slice. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -669,8 +698,8 @@
       "id": "x15-b02-s18",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a plain parked vehicle, one anonymous driver facing the viewer and holding a small route screen. a scale with a unit on one pan; hands looking toward a plain dashboard unit. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, tilt down in a plain parked vehicle, one anonymous driver holding a small route screen. a scale with a unit on one pan; hands looking toward a plain dashboard unit. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -692,20 +721,14 @@
       "id": "x15-b02-s19",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. blank boxes and map tiles behind a screen; larger bar beside a dated blank folder. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Low-angle shot, tilt up at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. blank boxes and map tiles behind a screen. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x150227",
           "text": "公司報表看到的，卻是設備、地圖與成本。",
-          "pause_after_ms": 0,
-          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
-        },
-        {
-          "id": "x150228",
-          "text": "到這時，總收入繼續增到約三十五億。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
@@ -715,8 +738,8 @@
       "id": "x15-b02-s20",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in a small equipment workshop, one anonymous technician sorting plain cardboard cases. growing shadow of a plain screen. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium shot, push in in a small equipment workshop, one anonymous technician facing the viewer and sorting plain cardboard cases. growing shadow of a plain screen. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -732,8 +755,8 @@
       "id": "x15-b02-s21",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a small equipment workshop, one anonymous technician sorting plain cardboard cases. several narrow streams joining one broad stream. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Close-up, pull out in a small equipment workshop, one anonymous technician sorting plain cardboard cases. several narrow streams joining one broad stream. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -749,8 +772,8 @@
       "id": "x15-b02-s22",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a small equipment workshop, one anonymous technician facing the viewer and sorting plain cardboard cases. single large unlabeled slice awaiting reveal. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Medium shot, push in",
+        "prompt": "Wide shot, pan left in a small equipment workshop, one anonymous technician sorting plain cardboard cases. single large unlabeled slice awaiting reveal. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -778,7 +801,7 @@
       "lines": [
         {
           "id": "x150301",
-          "text": "二〇〇八年的答案，是百分之六十四。",
+          "text": "開頭那個二〇〇八年，答案是百分之六十四。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
@@ -789,8 +812,8 @@
       "id": "x15-b03-s02",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out beside a warehouse conveyor, one anonymous clerk separating anonymous parcels. a large colored portion of a whole bar. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium close-up, pan right beside a warehouse conveyor, one anonymous clerk separating anonymous parcels. a large colored portion of a whole bar. Muted skylight. For portrait reuse, keep one coloured portion inside the surrounding whole entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -808,8 +831,8 @@
       "id": "x15-b03-s03",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. a larger ring enclosing the first slice; one huge stack of blank cartons. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, tilt down at an anonymous electronics shop, one anonymous clerk facing the viewer and lifting a plain equipment box. a larger ring enclosing the first slice; one huge stack of blank cartons. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -853,8 +876,8 @@
       "id": "x15-b03-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right beside a warehouse conveyor, one anonymous clerk separating anonymous parcels. nested circles, not adjacent circles; a small shape nestled inside a larger one. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Low-angle shot, tilt up beside a warehouse conveyor, one anonymous clerk separating anonymous parcels. nested circles, not adjacent circles; a small shape nestled inside a larger one. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -876,8 +899,8 @@
       "id": "x15-b03-s06",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at an anonymous electronics shop, one anonymous clerk facing the viewer and lifting a plain equipment box. one thick cable holding a balance scale; active plain warehouse conveyer belt. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium shot, push in at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. one thick cable holding a balance scale; active plain warehouse conveyer belt. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -899,8 +922,8 @@
       "id": "x15-b03-s07",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. unmarked boxes moving faster on a belt. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Close-up, pull out at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. unmarked boxes moving faster on a belt. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -916,8 +939,8 @@
       "id": "x15-b03-s08",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. two stacks of anonymous product cartons. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Medium shot, push in",
+        "prompt": "Wide shot, pan left at an anonymous electronics shop, one anonymous clerk facing the viewer and lifting a plain equipment box. two stacks of anonymous product cartons. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -933,8 +956,8 @@
       "id": "x15-b03-s09",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. varied anonymous units among many boxes; rising boxes beside a caution-colored report page. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium close-up, pan right at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. varied anonymous units among many boxes; rising boxes beside a caution-colored report page. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -956,8 +979,8 @@
       "id": "x15-b03-s10",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous electronics shop, one anonymous clerk facing the viewer and lifting a plain equipment box. brightness fading from a blank report page; crowded shelf of plain units. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, tilt down at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. brightness fading from a blank report page; crowded shelf of plain units. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -979,8 +1002,8 @@
       "id": "x15-b03-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right beside a warehouse conveyor, one anonymous clerk separating anonymous parcels. growth curve flattening near a full parking lot; price tags without symbols drifting downward. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Low-angle shot, tilt up beside a warehouse conveyor, one anonymous clerk separating anonymous parcels. growth curve flattening near a full parking lot; price tags without symbols drifting downward. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1002,8 +1025,8 @@
       "id": "x15-b03-s12",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down beside a warehouse conveyor, one anonymous clerk separating anonymous parcels. two blank tags descending beside a unit; multiple blank screens approaching from distance. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium shot, push in at an anonymous electronics shop, one anonymous clerk facing the viewer and lifting a plain equipment box. two blank tags descending beside a unit; anonymous equipment cartons beside falling price markers. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1014,8 +1037,8 @@
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         },
         {
-          "id": "x150320",
-          "text": "而市面上的替代選擇，也正在增加。",
+          "id": "x150319",
+          "text": "就算件數再增加，每台收回的金額也可能變小。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
@@ -1025,11 +1048,17 @@
       "id": "x15-b03-s13",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a plain parked vehicle, one anonymous driver holding a small route screen. route line leaving a dashboard unit. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Close-up, pull out in a plain parked vehicle, one anonymous driver holding a small route screen. multiple blank screens approaching from distance; route line leaving a dashboard unit. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
+        {
+          "id": "x150320",
+          "text": "而市面上的替代選擇，也正在增加。",
+          "pause_after_ms": 0,
+          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
+        },
         {
           "id": "x150321",
           "text": "更麻煩的是，指路開始不只住在那台機器。",
@@ -1042,8 +1071,8 @@
       "id": "x15-b03-s14",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in at a plain workbench, one anonymous customer facing the viewer and holding a plain phone. blank phone showing abstract route shapes. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Medium shot, push in",
+        "prompt": "Wide shot, pan left at a plain workbench, one anonymous customer holding a plain phone. blank phone showing abstract route shapes. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1061,8 +1090,8 @@
       "id": "x15-b03-s15",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in a plain parked vehicle, one anonymous driver holding a small route screen. plain built-in dashboard screen lighting up; three unmarked screens over one abstract road. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium close-up, pan right in a plain parked vehicle, one anonymous driver holding a small route screen. plain built-in dashboard screen lighting up; three unmarked screens over one abstract road. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1084,8 +1113,8 @@
       "id": "x15-b03-s16",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a plain workbench, one anonymous customer holding a plain phone. phone silhouette moving toward a unit shelf; plain blank touchscreen prototype on a table. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, tilt down at a plain workbench, one anonymous customer facing the viewer and holding a plain phone. phone silhouette moving toward a unit shelf; plain blank touchscreen prototype on a table. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1109,8 +1138,8 @@
       "id": "x15-b03-s17",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at a plain workbench, one anonymous customer holding a plain phone. phone and route shapes merging abstractly; unopened plain product box beside a calendar. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Low-angle shot, tilt up at a plain workbench, one anonymous customer holding a plain phone. phone and route shapes merging abstractly; unopened plain product box beside a calendar. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1132,8 +1161,8 @@
       "id": "x15-b03-s18",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down beside a warehouse conveyor, one anonymous clerk facing the viewer and separating anonymous parcels. unopened box remaining behind a clear pane. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium shot, push in beside a warehouse conveyor, one anonymous clerk separating anonymous parcels. unopened box remaining behind a clear pane. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1149,8 +1178,8 @@
       "id": "x15-b03-s19",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a plain parked vehicle, one anonymous driver holding a small route screen. two branches of road meeting at phone silhouette. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Close-up, pull out in a plain parked vehicle, one anonymous driver holding a small route screen. two branches of road meeting at phone silhouette. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1166,8 +1195,8 @@
       "id": "x15-b03-s20",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in beside a warehouse conveyor, one anonymous clerk separating anonymous parcels. thin translucent question mark near report; dated folder left slightly open. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Medium shot, push in",
+        "prompt": "Wide shot, pan left beside a warehouse conveyor, one anonymous clerk facing the viewer and separating anonymous parcels. thin translucent question mark near report; dated folder left slightly open. Overcast afternoon sky. For portrait reuse, keep an abstract question shape and a closed folio corner entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1189,8 +1218,8 @@
       "id": "x15-b03-s21",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. overflowing warehouse fading into a calendar; heavy single cable becoming taut. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium close-up, pan right at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. overflowing warehouse fading into a calendar; heavy single cable becoming taut. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1212,8 +1241,8 @@
       "id": "x15-b03-s22",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left beside a warehouse conveyor, one anonymous clerk facing the viewer and separating anonymous parcels. broad colored line reaching a gap; next blank folder sliding onto a desk. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, tilt down beside a warehouse conveyor, one anonymous clerk separating anonymous parcels. broad colored line reaching a gap; next blank folder sliding onto a desk. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1262,8 +1291,25 @@
       "id": "x15-b04-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in a municipal reading room, one anonymous researcher turning a plain ledger. two blank year tabs separated by space. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Low-angle shot, tilt up in a municipal reading room, one anonymous researcher turning a plain ledger. two unlabeled revenue bars with a gap. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Low-angle shot, tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x150402",
+          "text": "和前面二〇〇八年那欄相比，兩年少約八億七千萬美元。",
+          "pause_after_ms": 0,
+          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x15-b04-s03",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, push in in a municipal reading room, one anonymous researcher facing the viewer and turning a plain ledger. two blank year tabs separated by space. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1276,7 +1322,7 @@
       ]
     },
     {
-      "id": "x15-b04-s03",
+      "id": "x15-b04-s04",
       "template": "stats",
       "data": {
         "title": "全公司全年營收",
@@ -1302,11 +1348,11 @@
       ]
     },
     {
-      "id": "x15-b04-s04",
+      "id": "x15-b04-s05",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in a plain parked vehicle, one anonymous driver holding a small route screen. empty phone silhouette beside other objects; crowded units and built-in dashboard. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Close-up, pull out in a plain parked vehicle, one anonymous driver holding a small route screen. empty phone silhouette beside other objects; crowded units and built-in dashboard. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1325,11 +1371,11 @@
       ]
     },
     {
-      "id": "x15-b04-s05",
+      "id": "x15-b04-s06",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a municipal reading room, one anonymous researcher turning a plain ledger. plain boxed unit beside falling blank tags; several translucent streams converging. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left in a municipal reading room, one anonymous researcher turning a plain ledger. plain boxed unit beside falling blank tags; several translucent streams converging. Overcast afternoon sky. For portrait reuse, keep multiple pressure streams converging beside a phone entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1348,11 +1394,11 @@
       ]
     },
     {
-      "id": "x15-b04-s06",
+      "id": "x15-b04-s07",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a municipal reading room, one anonymous researcher facing the viewer and turning a plain ledger. translucent streams without separate counters. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Medium shot, push in",
+        "prompt": "Medium close-up, pan right in a municipal reading room, one anonymous researcher turning a plain ledger. translucent streams without separate counters. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1365,11 +1411,11 @@
       ]
     },
     {
-      "id": "x15-b04-s07",
+      "id": "x15-b04-s08",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in a municipal reading room, one anonymous researcher turning a plain ledger. fresh unmarked report placed over older one. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, tilt down in a municipal reading room, one anonymous researcher facing the viewer and turning a plain ledger. fresh unmarked report placed over older one. Gentle indoor light. For portrait reuse, keep two overlapping unlettered folios entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1382,7 +1428,7 @@
       ]
     },
     {
-      "id": "x15-b04-s08",
+      "id": "x15-b04-s09",
       "template": "stats",
       "data": {
         "title": "nüvi 占全公司收入",
@@ -1406,11 +1452,11 @@
       ]
     },
     {
-      "id": "x15-b04-s09",
+      "id": "x15-b04-s10",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a municipal reading room, one anonymous researcher turning a plain ledger. two unequal nested rings. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up in a municipal reading room, one anonymous researcher turning a plain ledger. two unequal nested rings. Soft evening light. For portrait reuse, keep two nested unlettered rings entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1423,7 +1469,7 @@
       ]
     },
     {
-      "id": "x15-b04-s10",
+      "id": "x15-b04-s11",
       "template": "stats",
       "data": {
         "title": "車用／行動事業占全公司收入",
@@ -1445,11 +1491,11 @@
       ]
     },
     {
-      "id": "x15-b04-s11",
+      "id": "x15-b04-s12",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in a municipal reading room, one anonymous researcher turning a plain ledger. short bar beside previous-year bar. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Medium shot, push in in a municipal reading room, one anonymous researcher turning a plain ledger. short bar beside previous-year bar. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1462,11 +1508,11 @@
       ]
     },
     {
-      "id": "x15-b04-s12",
+      "id": "x15-b04-s13",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at an anonymous electronics shop, one anonymous clerk facing the viewer and lifting a plain equipment box. fewer anonymous product cartons beside blank price tags; level blank price markers above two stacks. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Close-up, pull out at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. fewer anonymous product cartons beside blank price tags; level blank price markers above two stacks. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1485,11 +1531,11 @@
       ]
     },
     {
-      "id": "x15-b04-s13",
+      "id": "x15-b04-s14",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a municipal reading room, one anonymous researcher turning a plain ledger. blank map tiles and traffic icons bundled with unit. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left in a municipal reading room, one anonymous researcher facing the viewer and turning a plain ledger. blank map tiles and traffic icons bundled with unit. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1502,11 +1548,11 @@
       ]
     },
     {
-      "id": "x15-b04-s14",
+      "id": "x15-b04-s15",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. plain bundle holding a horizontal marker; plain unit still visible on a shelf. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Medium shot, push in",
+        "prompt": "Medium close-up, pan right at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. plain bundle holding a horizontal marker; plain unit still visible on a shelf. Muted skylight. For portrait reuse, keep one plain navigation unit on a shelf entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1525,11 +1571,11 @@
       ]
     },
     {
-      "id": "x15-b04-s15",
+      "id": "x15-b04-s16",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in a municipal reading room, one anonymous researcher turning a plain ledger. formerly thick cable now sharing weight; matching blank paragraphs with one highlighted area. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, tilt down in a municipal reading room, one anonymous researcher turning a plain ledger. formerly thick cable now sharing weight; matching blank paragraphs with one highlighted area. Gentle indoor light. For portrait reuse, keep two abstract unlettered risk strips entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1548,11 +1594,11 @@
       ]
     },
     {
-      "id": "x15-b04-s16",
+      "id": "x15-b04-s17",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a plain parked vehicle, one anonymous driver facing the viewer and holding a small route screen. phone route crossing a plain car route; flat line ending in stillness. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up in a plain parked vehicle, one anonymous driver holding a small route screen. phone route crossing a plain car route; flat line ending in stillness. Soft evening light. For portrait reuse, keep a phone silhouette beside a flat route line entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1571,11 +1617,11 @@
       ]
     },
     {
-      "id": "x15-b04-s17",
+      "id": "x15-b04-s18",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. two blank paper strips in contrasting tones; populated shelf of plain navigation units. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Medium shot, push in at an anonymous electronics shop, one anonymous clerk facing the viewer and lifting a plain equipment box. two blank paper strips in contrasting tones; populated shelf of plain navigation units. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1594,11 +1640,11 @@
       ]
     },
     {
-      "id": "x15-b04-s18",
+      "id": "x15-b04-s19",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in a municipal reading room, one anonymous researcher turning a plain ledger. plain boxed unit and voice wave. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Close-up, pull out in a municipal reading room, one anonymous researcher turning a plain ledger. plain boxed unit and voice wave. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1611,11 +1657,11 @@
       ]
     },
     {
-      "id": "x15-b04-s19",
+      "id": "x15-b04-s20",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a plain parked vehicle, one anonymous driver holding a small route screen. anonymous truck cab with dedicated small screen. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left in a plain parked vehicle, one anonymous driver holding a small route screen. anonymous truck cab with dedicated small screen. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1628,11 +1674,11 @@
       ]
     },
     {
-      "id": "x15-b04-s20",
+      "id": "x15-b04-s21",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a plain parked vehicle, one anonymous driver facing the viewer and holding a small route screen. small screen beside a truck and simple analog gauges. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Medium shot, push in",
+        "prompt": "Medium close-up, pan right in a plain parked vehicle, one anonymous driver holding a small route screen. small screen beside a truck and simple analog gauges. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1645,11 +1691,11 @@
       ]
     },
     {
-      "id": "x15-b04-s21",
+      "id": "x15-b04-s22",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in a plain parked vehicle, one anonymous driver holding a small route screen. small screen moving from car to truck. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, tilt down in a plain parked vehicle, one anonymous driver facing the viewer and holding a small route screen. small screen moving from car to truck. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1662,11 +1708,11 @@
       ]
     },
     {
-      "id": "x15-b04-s22",
+      "id": "x15-b04-s23",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a municipal reading room, one anonymous researcher turning a plain ledger. another report page lifting from underneath. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up in a municipal reading room, one anonymous researcher turning a plain ledger. another report page lifting from underneath. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1684,8 +1730,8 @@
       "id": "x15-b05-s01",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right beside a running track, one anonymous runner checking a plain wrist receiver. two plain watches on an unmarked workbench. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Medium shot, push in beside a running track, one anonymous runner checking a plain wrist receiver. two plain watches on an unmarked workbench. Mild glow from a side window. For portrait reuse, keep two plain sports watches side by side entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1704,8 +1750,8 @@
       "id": "x15-b05-s02",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down beside a running track, one anonymous runner facing the viewer and checking a plain wrist receiver. first plain sports watch on running track. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Close-up, pull out beside a running track, one anonymous runner checking a plain wrist receiver. first plain sports watch on running track. Soft grey morning light. For portrait reuse, keep one plain wrist receiver entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1723,8 +1769,8 @@
       "id": "x15-b05-s03",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up beside a running track, one anonymous runner checking a plain wrist receiver. finger touching a blank watch face; second plain watch beside track and pool. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left beside a running track, one anonymous runner facing the viewer and checking a plain wrist receiver. finger touching a blank watch face; second plain watch beside track and pool. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1750,8 +1796,8 @@
       "id": "x15-b05-s04",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in beside a running track, one anonymous runner checking a plain wrist receiver. runner, cyclist and swimmer as simple silhouettes; runner circling a track apart from a car. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Medium shot, push in",
+        "prompt": "Medium close-up, pan right beside a running track, one anonymous runner checking a plain wrist receiver. runner, cyclist and swimmer as simple silhouettes; runner circling a track apart from a car. Muted skylight. For portrait reuse, keep one sports watch; peripheral sports silhouettes may be cropped entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1773,8 +1819,8 @@
       "id": "x15-b05-s05",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out on a winding trail, one anonymous hiker holding a plain handheld receiver. plain watch on moving wrist, abstract trail; abstract location signal moving from car to wrist. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, tilt down on a winding trail, one anonymous hiker holding a plain handheld receiver. plain watch on moving wrist, abstract trail; abstract location signal moving from car to wrist. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1796,8 +1842,8 @@
       "id": "x15-b05-s06",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left beside a running track, one anonymous runner facing the viewer and checking a plain wrist receiver. road line turning into a running loop. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up beside a running track, one anonymous runner checking a plain wrist receiver. road line turning into a running loop. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1835,8 +1881,8 @@
       "id": "x15-b05-s08",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right beside a running track, one anonymous runner checking a plain wrist receiver. long thin path beside a new watch; two anonymous watch shapes on broad product sheet. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Medium shot, push in beside a running track, one anonymous runner facing the viewer and checking a plain wrist receiver. long thin path beside a new watch; two anonymous watch shapes on broad product sheet. Mild glow from a side window. For portrait reuse, keep one watch beside a wider fitness strand entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1880,8 +1926,8 @@
       "id": "x15-b05-s10",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down on a winding trail, one anonymous hiker holding a plain handheld receiver. plain golf field and anonymous handheld unit; track and trail branching away from a road. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Close-up, pull out on a winding trail, one anonymous hiker holding a plain handheld receiver. plain golf field and anonymous handheld unit; track and trail branching away from a road. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1903,8 +1949,8 @@
       "id": "x15-b05-s11",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up beside a running track, one anonymous runner checking a plain wrist receiver. two wide bars containing many small shapes; watches resting near broader stacks of gear. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left beside a running track, one anonymous runner checking a plain wrist receiver. two wide bars containing many small shapes; watches resting near broader stacks of gear. Overcast afternoon sky. For portrait reuse, keep two watches beside a broader group of equipment entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1926,8 +1972,8 @@
       "id": "x15-b05-s12",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in beside a running track, one anonymous runner facing the viewer and checking a plain wrist receiver. varied units inside two broad bars; blank phone appearing beside sports gear. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Medium shot, push in",
+        "prompt": "Medium close-up, pan right beside a running track, one anonymous runner checking a plain wrist receiver. varied units inside two broad bars; blank phone appearing beside sports gear. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1949,8 +1995,8 @@
       "id": "x15-b05-s13",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a plain workbench, one anonymous customer holding a plain phone. unsigned acquisition folder beside phone. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, tilt down at a plain workbench, one anonymous customer facing the viewer and holding a plain phone. unsigned acquisition folder beside phone. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1968,8 +2014,8 @@
       "id": "x15-b05-s14",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a plain workbench, one anonymous customer holding a plain phone. rows of plain handheld units in a shop; blank smartphone with abstract route line. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up at a plain workbench, one anonymous customer holding a plain phone. rows of plain handheld units in a shop; blank smartphone with abstract route line. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1991,8 +2037,8 @@
       "id": "x15-b05-s15",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right beside a running track, one anonymous runner checking a plain wrist receiver. plain phone beside an exercise track. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Medium shot, push in beside a running track, one anonymous runner checking a plain wrist receiver. plain phone beside an exercise track. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -2010,8 +2056,8 @@
       "id": "x15-b05-s16",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down beside a running track, one anonymous runner facing the viewer and checking a plain wrist receiver. blank phone beside a running track; abstract signal inside a blank phone. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Close-up, pull out beside a running track, one anonymous runner checking a plain wrist receiver. blank phone beside a running track; abstract signal inside a blank phone. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -2035,8 +2081,8 @@
       "id": "x15-b05-s17",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up beside a running track, one anonymous runner checking a plain wrist receiver. abstract track metrics as blank shapes on phone; plain phone beside runner and watch. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left beside a running track, one anonymous runner facing the viewer and checking a plain wrist receiver. abstract track metrics as blank shapes on phone; plain phone beside runner and watch. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -2058,8 +2104,8 @@
       "id": "x15-b05-s18",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in beside a running track, one anonymous runner checking a plain wrist receiver. phone and watch sharing one abstract path. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Medium shot, push in",
+        "prompt": "Medium close-up, pan right beside a running track, one anonymous runner checking a plain wrist receiver. phone and watch sharing one abstract path. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -2075,8 +2121,8 @@
       "id": "x15-b05-s19",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out near a winding footpath, one anonymous walker holding an unmarked receiver. branching paths from a single compass needle; unidentifiable hands holding plain units. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, tilt down near a winding footpath, one anonymous walker holding an unmarked receiver. branching paths from a single compass needle; unidentifiable hands holding plain units. Gentle indoor light. For portrait reuse, keep several abstract paths branching from one centre entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -2098,20 +2144,14 @@
       "id": "x15-b05-s20",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left on a small plain boat, one anonymous sailor facing the viewer and touching a plain console. plain trail, boat console and cockpit; anonymous boat console and handheld radio. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up on a small plain boat, one anonymous sailor touching a plain console. plain trail, boat console and cockpit. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x150534",
-          "text": "手腕之外，哪兩個既有事業也在成長？",
-          "pause_after_ms": 0,
-          "emotion": "台灣口語說書，自然提問，正常語速"
-        },
-        {
-          "id": "x150535",
-          "text": "航海營收這年增加百分之十二。",
+          "text": "手腕與手機之外，同一份年報還望向海上與空中。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
@@ -2121,14 +2161,20 @@
       "id": "x15-b05-s21",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in a simple aircraft cockpit, one anonymous pilot looking down at a plain instrument panel. plain aircraft instrument panel. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Medium shot, push in on a small plain boat, one anonymous sailor facing the viewer and touching a plain console. anonymous boat console and handheld radio; plain aircraft instrument panel. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
         {
+          "id": "x150535",
+          "text": "航海與飛航兩塊事業，當年也都在成長。",
+          "pause_after_ms": 0,
+          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
+        },
+        {
           "id": "x150536",
-          "text": "飛航營收則增加百分之九。",
+          "text": "它們不是新發明的收入線。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
@@ -2138,14 +2184,14 @@
       "id": "x15-b05-s22",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down near a winding footpath, one anonymous walker holding an unmarked receiver. older paths continuing into a later horizon. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Close-up, pull out near a winding footpath, one anonymous walker holding an unmarked receiver. older paths continuing into a later horizon. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x150538",
-          "text": "前面那份二〇〇六年財報裡，航海與飛航就已有收入，不是因為運動錶才冒出來。",
+          "text": "前面那份二〇〇六年財報，已經列出海上與空中的收入。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
@@ -2155,22 +2201,16 @@
       "id": "x15-b05-s23",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up on a small plain boat, one anonymous sailor touching a plain console. trail, sea and sky paths around a car; small unit shapes beneath a much larger bar. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left on a small plain boat, one anonymous sailor touching a plain console. trail, sea and sky paths around a car. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x150539",
-          "text": "那些場景，從來不只靠車內的螢幕。",
+          "text": "車上、手上、海上、空中都有人在買；收入重心換了嗎？",
           "pause_after_ms": 0,
-          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
-        },
-        {
-          "id": "x150540",
-          "text": "可這些增加，還沒讓最重的收入欄位換人。",
-          "pause_after_ms": 0,
-          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
+          "emotion": "台灣口語說書，自然提問，正常語速"
         }
       ]
     },
@@ -2178,14 +2218,14 @@
       "id": "x15-b05-s24",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a plain parked vehicle, one anonymous driver facing the viewer and holding a small route screen. dashboard strand remains broad among others. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Medium shot, push in",
+        "prompt": "Medium close-up, pan right near a winding footpath, one anonymous walker holding an unmarked receiver. small unit shapes beneath a much larger bar. Muted skylight. For portrait reuse, keep one broad revenue strand and smaller equipment shapes entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x150541",
-          "text": "此時車用與行動事業，仍占過半。",
+          "id": "x150540",
+          "text": "還記得那個五成八嗎？最重的收入欄位當時還沒換人。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
@@ -2195,14 +2235,14 @@
       "id": "x15-b05-s25",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in a plain parked vehicle, one anonymous driver holding a small route screen. broad road with smaller diverging paths. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, tilt down in a plain parked vehicle, one anonymous driver facing the viewer and holding a small route screen. broad road with smaller diverging paths. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x150542",
-          "text": "但不能拿當年的部門增幅，去推算多年後的收入占比。",
+          "text": "一年的部門增幅，沒法替十多年後的收入結構填答案。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
@@ -2212,22 +2252,16 @@
       "id": "x15-b05-s26",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left on a small plain boat, one anonymous sailor touching a plain console. five sealed blank folders on a desk; later unopened annual report arriving. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up on a small plain boat, one anonymous sailor touching a plain console. five sealed blank folders on a desk. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x150543",
-          "text": "到底分散成什麼樣，哪張表能回答？",
+          "text": "這些早已存在的收入線，後來到底占了多少？",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，自然提問，正常語速"
-        },
-        {
-          "id": "x150544",
-          "text": "得看多年後完整的全年收入表。",
-          "pause_after_ms": 0,
-          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
       ]
     },
@@ -2235,8 +2269,8 @@
       "id": "x15-b06-s01",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at a bright planning studio, one anonymous analyst moving coloured wooden blocks. fresh blank annual report on a desk. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Medium shot, push in at a bright planning studio, one anonymous analyst moving coloured wooden blocks. fresh blank annual report on a desk. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -2277,8 +2311,8 @@
       "id": "x15-b06-s03",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at an anonymous electronics shop, one anonymous clerk facing the viewer and lifting a plain equipment box. high annual bar beside smaller past bars; varied anonymous product cartons filling a wide warehouse. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Close-up, pull out at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. high annual bar beside smaller past bars; varied anonymous product cartons filling a wide warehouse. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -2300,8 +2334,8 @@
       "id": "x15-b06-s04",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a bright planning studio, one anonymous analyst moving coloured wooden blocks. five ascending colored bars without labels. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left at a bright planning studio, one anonymous analyst facing the viewer and moving coloured wooden blocks. five ascending colored bars without labels. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -2317,8 +2351,8 @@
       "id": "x15-b06-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in at a bright planning studio, one anonymous analyst moving coloured wooden blocks. two bars from distant years, different colors. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Medium shot, push in",
+        "prompt": "Medium close-up, pan right at a bright planning studio, one anonymous analyst moving coloured wooden blocks. two bars from distant years, different colors. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -2334,8 +2368,8 @@
       "id": "x15-b06-s06",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a bright planning studio, one anonymous analyst moving coloured wooden blocks. single column dissolving into separate paths. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, tilt down at a bright planning studio, one anonymous analyst moving coloured wooden blocks. single column dissolving into separate paths. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -2395,20 +2429,14 @@
       "id": "x15-b06-s09",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous electronics shop, one anonymous clerk facing the viewer and lifting a plain equipment box. many plain wrist units on an anonymous shelf; blank quarter tab behind wrist units. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up at an anonymous electronics shop, one anonymous clerk lifting a plain equipment box. many plain wrist units on an anonymous shelf. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x150610",
-          "text": "第四季，健身線的穿戴裝置需求強。",
-          "pause_after_ms": 0,
-          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
-        },
-        {
-          "id": "x150611",
-          "text": "公司把它列為當季成長的重要原因。",
+          "text": "第四季，穿戴裝置的需求確實很強；那只是當季線索。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
@@ -2418,22 +2446,16 @@
       "id": "x15-b06-s10",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right on a small plain boat, one anonymous sailor touching a plain console. one small segment of an annual calendar; sea and sky paths beside a wrist unit. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Medium shot, push in at a bright planning studio, one anonymous analyst facing the viewer and moving coloured wooden blocks. one small segment of an annual calendar. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x150612",
-          "text": "可這一整張表，能只靠手錶說完嗎？",
+          "text": "可兩個部門的全年收入，能只用手錶解釋嗎？",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，自然提問，正常語速"
-        },
-        {
-          "id": "x150613",
-          "text": "不能，海上與空中還有各自的數字。",
-          "pause_after_ms": 0,
-          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
       ]
     },
@@ -2441,14 +2463,14 @@
       "id": "x15-b06-s11",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at a bright planning studio, one anonymous analyst moving coloured wooden blocks. varied plain gear beneath two broad bars. Gentle indoor light. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Close-up, pull out on a small plain boat, one anonymous sailor touching a plain console. sea and sky paths beside a wrist unit. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x150614",
-          "text": "健身和戶外，也不是兩種手錶的名字。",
+          "id": "x150613",
+          "text": "不能。健身和戶外是事業，不是兩種錶。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
@@ -2456,23 +2478,20 @@
     },
     {
       "id": "x15-b06-s12",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "2025 Marine 事業",
-        "stats": [
-          {
-            "value": "US$1.182615bn",
-            "label": "全年營收"
-          }
-        ],
-        "source": "G6｜Garmin FY2025 8-K"
+        "prompt": "Wide shot, pan left at a bright planning studio, one anonymous analyst moving coloured wooden blocks. varied plain gear beneath two broad bars. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Wide shot, pan left",
+        "visual": "still"
       },
       "lines": [
         {
-          "id": "x150615",
-          "text": "航海事業，超過十一億美元。",
+          "id": "x150614",
+          "text": "把手錶放下，GPS 訊號走到船上、再走進駕駛艙。",
           "pause_after_ms": 0,
-          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
+          "emotion": "台灣口語說書，日期與數字清楚，正常語速",
+          "say": "把手錶放下，G P S 訊號走到船上、再走進駕駛艙。",
+          "say_for": "64ad8801e28b"
         }
       ]
     },
@@ -2480,19 +2499,23 @@
       "id": "x15-b06-s13",
       "template": "stats",
       "data": {
-        "title": "2025 Aviation 事業",
+        "title": "2025 航海／飛航事業",
         "stats": [
           {
+            "value": "US$1.182615bn",
+            "label": "Marine 全年營收"
+          },
+          {
             "value": "US$987.161m",
-            "label": "全年營收"
+            "label": "Aviation 全年營收"
           }
         ],
-        "source": "G6｜Garmin FY2025 8-K"
+        "source": "G6｜Garmin FY2025 8-K；合計 US$2.169776bn"
       },
       "lines": [
         {
-          "id": "x150616",
-          "text": "飛航事業，將近十億美元。",
+          "id": "x150615",
+          "text": "剛才海上與空中那兩條舊線，二〇二五年合起來超過二十一億美元。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
@@ -2502,16 +2525,16 @@
       "id": "x15-b06-s14",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up on a winding trail, one anonymous hiker holding a plain handheld receiver. plain compact communicator on mountain trail. Soft evening light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium close-up, pan right in a simple aircraft cockpit, one anonymous pilot looking down at a plain instrument panel. plain cockpit panel beside another bar. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x150617",
-          "text": "戶外也不是全靠手錶；當季又推出什麼？",
+          "id": "x150616",
+          "text": "這不是兩款新品的銷售額，而是兩個既有事業的全年收入。",
           "pause_after_ms": 0,
-          "emotion": "台灣口語說書，自然提問，正常語速"
+          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
       ]
     },
@@ -2519,16 +2542,16 @@
       "id": "x15-b06-s15",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in on a winding trail, one anonymous hiker facing the viewer and holding a plain handheld receiver. abstract signal above a remote mountain ridge. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Medium shot, push in",
+        "prompt": "Overhead shot, tilt down on a winding trail, one anonymous hiker facing the viewer and holding a plain handheld receiver. plain compact communicator on mountain trail. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x150618",
-          "text": "一款能在手機無訊號處保持聯絡的衛星通訊設備。",
+          "id": "x150617",
+          "text": "同一張表的戶外欄，還藏著什麼非手腕用途？",
           "pause_after_ms": 0,
-          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
+          "emotion": "台灣口語說書，自然提問，正常語速"
         }
       ]
     },
@@ -2536,14 +2559,14 @@
       "id": "x15-b06-s16",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a bright planning studio, one anonymous analyst moving coloured wooden blocks. quarter calendar next to full-year bars. Soft grey morning light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up on a winding trail, one anonymous hiker holding a plain handheld receiver. abstract signal above a remote mountain ridge. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x150621",
-          "text": "它只是第四季新品，不能拆成全年收入。",
+          "id": "x150618",
+          "text": "第四季，它推出一款手機沒訊號也能聯絡的衛星設備。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
@@ -2553,23 +2576,40 @@
       "id": "x15-b06-s17",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a plain parked vehicle, one anonymous driver holding a small route screen. anonymous factory belt with car components. Overcast afternoon sky. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, push in at a bright planning studio, one anonymous analyst moving coloured wooden blocks. quarter calendar next to full-year bars. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x150623",
-          "text": "航海與飛航之外，車廠供應 Auto OEM 也留在表上。",
+          "id": "x150621",
+          "text": "那是當季新品，不能直接算成全年的部門收入。",
           "pause_after_ms": 0,
-          "emotion": "台灣口語說書，日期與數字清楚，正常語速",
-          "say": "航海與飛航之外，車廠供應 車廠供應部門 也留在表上。",
-          "say_for": "cde9aa8618f4"
+          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
       ]
     },
     {
       "id": "x15-b06-s18",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, pull out in a plain parked vehicle, one anonymous driver holding a small route screen. anonymous factory belt with car components. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Close-up, pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x150623",
+          "text": "車廠供應 Auto OEM 仍在表上，但這是供給車廠的系統。",
+          "pause_after_ms": 0,
+          "emotion": "台灣口語說書，日期與數字清楚，正常語速",
+          "say": "車廠供應 車廠供應部門 仍在表上，但這是供給車廠的系統。",
+          "say_for": "da15b85543c1"
+        }
+      ]
+    },
+    {
+      "id": "x15-b06-s19",
       "template": "stats",
       "data": {
         "title": "2025 Auto OEM 事業",
@@ -2584,18 +2624,18 @@
       "lines": [
         {
           "id": "x150624",
-          "text": "它這一年收入約六億六千萬美元。",
+          "text": "這欄這一年收入約六億六千萬美元。",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
       ]
     },
     {
-      "id": "x15-b06-s19",
+      "id": "x15-b06-s20",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at a bright planning studio, one anonymous analyst moving coloured wooden blocks. mismatched measuring rulers kept apart; two folders with different dividers. Muted skylight. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Wide shot, pan left at a bright planning studio, one anonymous analyst facing the viewer and moving coloured wooden blocks. mismatched measuring rulers kept apart; two folders with different dividers. Overcast afternoon sky. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -2614,11 +2654,11 @@
       ]
     },
     {
-      "id": "x15-b06-s20",
+      "id": "x15-b06-s21",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at a bright planning studio, one anonymous analyst facing the viewer and moving coloured wooden blocks. faceless speaker silhouette beside five bars; clean revenue bars without a causal arrow. Gentle indoor light. Displays show plain colour fields; no logos or legible lettering.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium close-up, pan right at a bright planning studio, one anonymous analyst moving coloured wooden blocks. faceless speaker silhouette beside five bars; clean revenue bars without a causal arrow. Muted skylight. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -2637,11 +2677,11 @@
       ]
     },
     {
-      "id": "x15-b06-s21",
+      "id": "x15-b06-s22",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a bright planning studio, one anonymous analyst moving coloured wooden blocks. five equal-height dividers holding varied bars; larger total bar behind older smaller bar. Soft evening light. Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, tilt down in a plain parked vehicle, one anonymous driver holding a small route screen. five equal-height dividers holding varied bars; old road line narrowing behind newer ones. Gentle indoor light. For portrait reuse, keep one central meeting point of five abstract paths entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. Any maps are schematic and unlabeled; no trademarks.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -2652,33 +2692,10 @@
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         },
         {
-          "id": "x150630",
-          "text": "而總額，比當年的總額高得多。",
-          "pause_after_ms": 0,
-          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x15-b06-s22",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot, push in in a plain parked vehicle, one anonymous driver holding a small route screen. old road line narrowing behind newer ones; five diverging roads carrying colored tokens. Mild glow from a side window. Any maps are schematic and unlabeled; no trademarks.",
-        "camera": "Medium shot, push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
           "id": "x150631",
           "text": "那麼，總表實際能回答什麼？",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，自然提問，正常語速"
-        },
-        {
-          "id": "x150632",
-          "text": "幾條路，最後都有了各自的收入。",
-          "pause_after_ms": 0,
-          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
         }
       ]
     },
@@ -2686,17 +2703,34 @@
       "id": "x15-b06-s23",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a bright planning studio, one anonymous analyst moving coloured wooden blocks. two broad bars sliding toward one another; blank percentage card not yet revealed. Soft grey morning light. All objects remain general, with no readable inscriptions or real model contours.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up at a bright planning studio, one anonymous analyst moving coloured wooden blocks. five diverging roads carrying colored tokens; two broad bars sliding toward one another. Soft evening light. For portrait reuse, keep two broad revenue strands within a larger whole entirely in the central 608px-wide vertical corridor of the 1920x1080 frame. All objects remain general, with no readable inscriptions or real model contours.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
+        {
+          "id": "x150632",
+          "text": "幾條路，最後都有了各自的收入。",
+          "pause_after_ms": 0,
+          "emotion": "台灣口語說書，日期與數字清楚，正常語速"
+        },
         {
           "id": "x150633",
           "text": "再把健身和戶外兩欄合起來看，",
           "pause_after_ms": 0,
           "emotion": "台灣口語說書，日期與數字清楚，正常語速"
-        },
+        }
+      ]
+    },
+    {
+      "id": "x15-b06-s24",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, push in at a bright planning studio, one anonymous analyst facing the viewer and moving coloured wooden blocks. blank percentage card not yet revealed. Mild glow from a side window. Displays show plain colour fields; no logos or legible lettering.",
+        "camera": "Medium shot, push in",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "x150634",
           "text": "你會得到一個最能回答開場的比例。",

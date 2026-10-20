@@ -1,6 +1,6 @@
 # X15 Garmin｜Shorts 逐句作者來源矩陣
 
-`shorts.json` SHA-256：`caf9364ac3282f2b7aedca4b5852610dda974d88f356ca329536c7c0a179c630`；主片 SHA-256：`f8a464a997424269e57e91f77d90fe2e5bde74cd8e618a979dbbbe7638166cef`。本表是作者標記，獨立逐句審查尚待完成；來源代碼見 [source-matrix.md](source-matrix.md)。
+`shorts.json` SHA-256：`b473ec1c522f5c3cb0e9239e7907d192511845d08cd51dbd6980feda5217b1fb`；主片 SHA-256：`c0019158d98130c1e456050f4d0f9716d4905115574b86d9fa540190dcb1b1d1`。本表是作者標記，獨立逐句審查尚待完成；來源代碼見 [source-matrix.md](source-matrix.md)。
 
 | Short | 句 ID | 旁白 | 作者來源標記 |
 | --- | --- | --- | --- |

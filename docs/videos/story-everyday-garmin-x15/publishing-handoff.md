@@ -1,11 +1,11 @@
 # X15 Garmin｜成片及上架交接
 
-**已有獨立 PASS 的來源企劃與 v2 凍結的離線主片／Shorts JSON；v1 逐句來源與兩份敘事盲讀 HOLD，v2 尚待新審；尚無正式影片或 YouTube ID。** 主片與兩支 Shorts 的真實上架連結必須由實際上傳後的回傳 ID 組成；`youtube.video_id` 在那之前保持 `null`。可點的 SEC 原始來源網址已列在 `source-matrix.md` 並寫入主片、Shorts 說明欄；正式互鏈要等真實網址。
+**已有獨立 PASS 的來源企劃與 v3 凍結的離線主片／Shorts JSON；v1、v2 逐句來源及敘事盲讀各有 HOLD，v3 尚待新審；尚無正式影片或 YouTube ID。** 主片與兩支 Shorts 的真實上架連結必須由實際上傳後的回傳 ID 組成；`youtube.video_id` 在那之前保持 `null`。可點的 SEC 原始來源網址已列在 `source-matrix.md` 並寫入主片、Shorts 說明欄；正式互鏈要等真實網址。
 
-1. v2 主片 JSON SHA-256 `f8a464a997424269e57e91f77d90fe2e5bde74cd8e618a979dbbbe7638166cef`，Shorts JSON SHA-256 `caf9364ac3282f2b7aedca4b5852610dda974d88f356ca329536c7c0a179c630`。由不是作者的代理重新看原始 SEC 資料，逐句核對來源、期間、產品／事業分母及片尾答案；`say` 的 Garmin、nüvi、Forerunner、NAVIGON、GPS、Auto OEM 初步念法亦須由另一人審聽，不能把離線 `say` 欄當已核准配音。兩名未讀先前評審的讀者對同一版 SHA 各做盲審；有共同必答 NO 要先修稿重審。v1 的 [來源 HOLD](reviews/script-source-audit-v1-independent.md)、[盲讀 A HOLD](reviews/blind-a-v1-independent.md)、[盲讀 B HOLD](reviews/blind-b-v1-independent.md)不外推為 v2 的判定。
+1. v3 主片 JSON SHA-256 `c0019158d98130c1e456050f4d0f9716d4905115574b86d9fa540190dcb1b1d1`，Shorts JSON SHA-256 `b473ec1c522f5c3cb0e9239e7907d192511845d08cd51dbd6980feda5217b1fb`。由不是作者的代理重新看原始 SEC 資料，逐句核對來源、期間、產品／事業分母、片尾答案與新增約 US$0.87bn 差額；`say` 的 Garmin、nüvi、Forerunner、NAVIGON、GPS、Auto OEM 初步念法亦須由另一人審聽，不能把離線 `say` 欄當已核准配音。兩名未讀先前評審的讀者對同一版 SHA 各做盲審；有共同必答 NO 要先修稿重審。保留 [v1 來源](reviews/script-source-audit-v1-independent.md)、[盲讀 A](reviews/blind-a-v1-independent.md)、[盲讀 B](reviews/blind-b-v1-independent.md)及 [v2 來源](reviews/script-source-audit-v2-independent.md)、[盲讀 A](reviews/blind-a-v2-independent.md)、[盲讀 B](reviews/blind-b-v2-independent.md)的 HOLD 收據，不能外推為 v3 判定。
 2. 通過後唯讀乾跑配對影片工具，確認可用圖像、評審、語音、音樂額度與本集費用上界。整支 US$25 含一切重試，若全站額度不足則停在可交接收據，不以別集額度補算或虛報零成本。
 3. TTS 逐句配音、轉錄／實聽複查，量 30–60 秒開場與扣除開場、末三句、5 秒片頭、21 秒片尾後至少 8:00 的實質正文。稿件加字或改事實必須重做來源與盲審；不能把朗讀放慢或空鏡當故事長度。
-4. 以 `image-01` 及精確 `cute-mystery` 小批試圖、評審與原尺寸檢查，保留被拒絕原因。真數字用程式後製，插畫避免假字、商標、真人、可辨識機型；場景至少七成插畫、卡片連續不超過三張。組正式選定的 5 秒片頭、21 秒片尾、授權音樂、可關閉繁中 CC，並把 Shorts 用原生 9:16 圖卡與真正音訊完成 25–55 秒。
+4. 以 `image-01` 及精確 `cute-mystery` 小批試圖、評審與原尺寸檢查，保留被拒絕原因。真數字用程式後製，插畫避免假字、商標、真人、可辨識機型；場景至少七成插畫、卡片連續不超過三張。組正式選定的 5 秒片頭、21 秒片尾、授權音樂、可關閉繁中 CC；Shorts 按 [直式構圖交接](shorts-portrait-plan.md)裁切，逐拍實測文字安全區與 360px 手機可讀性，並以真正音訊完成各 25–55 秒。這些是待驗項，不是已完成渲染。
 5. 主片及 Shorts 完整播放、核對來源、數字、實圖和音樂授權；YouTube Studio 的片尾可點訂閱／推薦影片元件須在實際上架後設置並回讀。獲真實網址後互相回填主片、Shorts、播放清單連結，保存輸出檔 SHA、QA 收據和整集帳本。
 
 PR 可交可追溯的製作包與進度，不能代替 MP4 或聲稱已上架。正式片頭片尾資產目前未在本雲端工作區，本站音樂額度與圖片評審額度亦須現場重讀。

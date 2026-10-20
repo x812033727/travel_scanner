@@ -37,7 +37,7 @@ for (const [si, short] of rows.entries()) {
 // between script revisions while the intended illustration remains the same.
 const shotLineMap = {
   1: ["x150331", "x150104", "x150302", "x150412", "x150425", "x150414", "x150421", "x150423", "x150410"],
-  2: ["x150501", "x150502", "x150505", "x150511", "x150541", "x150633", "x150629", "x150519", "x150532"],
+  2: ["x150501", "x150502", "x150505", "x150511", "x150540", "x150633", "x150629", "x150519", "x150532"],
 };
 const byShot = new Map(video.scenes.map(scene => [scene.id, scene]));
 const byLine = new Map(video.scenes.flatMap(scene => scene.lines.map(line => [line.id, scene])));
@@ -67,8 +67,10 @@ const specs = [
     refs: ["G2", "G5"],
   },
   {
-    titles: ["Garmin 導航機之外，GPS 又走到哪？", "Garmin 的 GPS 手錶不是唯一新收入線"],
-    headlines: ["2011：GPS 運動錶", "觸控運動錶", "多項運動錶", "健身部門 +24%", "車用仍占過半", "2025：約 60.9%", "另有三個部門", "不能全算兩只錶", "GPS 走向更多場景"],
+    titles: ["Garmin 導航機之外，GPS 又走到哪？", "Garmin 2025 年營收，手錶之外還有什麼？"],
+    headlines: ["2011：GPS 錶", "觸控運動錶", "多項運動錶", "健身部門 +24%", "車用仍占過半", "健身＋戶外", "另有三個部門", "不能全算兩只錶", "GPS 走向更多場景"],
+    big: { 4: "約58%", 5: "60.9%" }, kicker: { 4: "2011 全年營收", 5: "2025 全年營收" },
+    body: { 2: ["跑步／騎車／游泳"], 6: ["航海", "飛航", "車廠供應"] },
     description: "Garmin FY2011 10-K 記載 Forerunner 610 與 910XT GPS 運動錶新品，並列當年 Fitness 事業營收 +24%、Outdoor +14%。FY2025 全年財報列 Fitness 與 Outdoor 按原始金額合占約 60.9% 的總營收，另外還有 Marine、Aviation、Auto OEM；60.9% 是兩個事業，不能說全是手錶，亦不能宣稱兩款 2011 新品單獨造成 2025 結果。長片正式連結待上架後填入；畫面是匿名概念插畫。",
     refs: ["G5", "G6"],
   },
@@ -80,6 +82,9 @@ const shorts = rows.map((short, si) => ({
     beat: ri === 0 ? "hook" : ri === short.length - 1 ? "payoff" : ri < (si === 0 ? 3 : 4) ? "setup" : ri === (si === 0 ? 3 : 4) ? "turn" : "proof",
     shot: shotMap[si + 1][ri],
     headline: specs[si].headlines[ri],
+    ...(specs[si].big?.[ri] ? { big: specs[si].big[ri] } : {}),
+    ...(specs[si].kicker?.[ri] ? { kicker: specs[si].kicker[ri] } : {}),
+    ...(specs[si].body?.[ri] ? { body: specs[si].body[ri] } : {}),
     narration: [row.text],
   })),
 }));
@@ -98,5 +103,23 @@ writeFileSync(path.join(dir, "shorts-source-matrix.md"), [
   "# X15 Garmin｜Shorts 逐句作者來源矩陣", "", `\`shorts.json\` SHA-256：\`${sha}\`；主片 SHA-256：\`${videoSha}\`。本表是作者標記，獨立逐句審查尚待完成；來源代碼見 [source-matrix.md](source-matrix.md)。`, "",
   "| Short | 句 ID | 旁白 | 作者來源標記 |", "| --- | --- | --- | --- |",
   ...rows.flatMap((short, si) => short.map(row => `| ${si + 1} | \`${row.id}\` | ${row.text.replaceAll("|", "\\|")} | ${row.refs === "editorial" ? "敘事提問／概念示意／CTA" : row.refs.replaceAll(",", "、")} |`)), "",
+].join("\n"));
+const portraitFocus = {
+  1: [
+    "問號與未展開的財報角", "一粗數條細的收入色帶", "產品占公司收入的內外圈", "兩份重疊的無字年報", "手機與趨平的路線", "產品圈與事業圈同框", "貨架上仍在售的獨立設備", "兩條無字風險紙條", "手機旁交會的多股壓力線",
+  ],
+  2: [
+    "兩只匿名運動錶並排", "單只手腕裝置與跑道", "一只錶居中；三項運動由原生字卡承載", "手錶與較大的健身收入線", "粗車用收入線；原生約 58% 大字", "健身、戶外兩色帶；原生 60.9% 大字", "五條抽象路徑；三部門名稱改用原生字卡", "兩只錶與較廣的器材群", "從中心散開的多條 GPS 用途路徑",
+  ],
+};
+writeFileSync(path.join(dir, "shorts-portrait-plan.md"), [
+  "# X15 Garmin｜兩支 Shorts 的直式構圖交接", "",
+  `離線規劃，綁定主片 SHA-256 \`${videoSha}\` 與 Shorts SHA-256 \`${sha}\`。**尚無插畫、直式渲染或手機實測**；下列 x 座標是 16:9 生圖的指定構圖與首次裁切位置，生成後須逐鏡檢查並以實際主體位置修正。`, "",
+  "主片 1920×1080 的每張重用插畫，先把表中主體集中在中央 **x=656–1264、y=0–1080** 的 608×1080 走廊；第一版 `crop=608:1080:656:0`，再等比輸出 1080×1920。若生圖不守此區，選 x=0–1312 內的重裁並保留主體；不能保留時，仍在同集預算與已審劇本內重生該張。不能把橫式收入數字或報表字直接裁進 Short 作證據。", "",
+  "原生 9:16 字卡按工具既有版型：1080×1920，標題／大數字／資料列留在 **x=78–902、y≤1380**；字幕條 x=80–900、y=1430–1595，不放進底部操作區；品牌行 y=90、年份／分組行 y=174。標題原始字級 88px、字幕 49px；在 360px 手機寬度試看時約為 29px／16px，若兩行擠壓或對比不足，縮短字卡或加深遮罩，不能靠放大底圖造成裁切。數字、年份、部門名都由原生字卡顯示，插畫保持無可讀字與無商標。", "",
+  "| Short／拍 | 重用主片 shot | 608×1080 首選裁切 | 必須留在直式畫面的主體；讀不全時由原生文字承載 |",
+  "| --- | --- | --- | --- |",
+  ...shorts.flatMap((short, si) => short.scenes.map((scene, ri) => `| ${si + 1}／${ri + 1} | \`${scene.shot}\` | \`x=656, y=0\` | ${portraitFocus[si + 1][ri]}；原生「${scene.headline}」${scene.big ? `、大字「${scene.big}」` : ""}${scene.body ? `、資料列「${scene.body.join("／")}」` : ""} |`)),
+  "", "成片前逐張查看中央裁切與左右最壞偏移、360px 手機預覽、標題與字幕的安全區量測；Short 2 第 3 拍不要求三位運動人物都擠進 608px，三項運動已由原生字卡承載。兩支須以實際 TTS 與影片確認各 25–55 秒、可讀來源與片尾真連結；目前沒有這些量測或可點影片網址。", "",
 ].join("\n"));
 console.log(JSON.stringify({ video_sha256: videoSha, shorts_sha256: sha, shorts: shorts.map(short => ({ slug: short.slug, scenes: short.scenes.length, characters: short.scenes.flatMap(scene => scene.narration).join("").length })) }, null, 2));
