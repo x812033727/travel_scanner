@@ -20,7 +20,7 @@ const chapterTitles = [
   "公司宣布俄亥俄 Output Park",
   "二月廠殼出售計畫，六月收入反轉",
   "七月轉向代工，九月廠殼仍待售",
-  "二〇二三年，訂閱超過設備",
+  "二〇二三年，俄亥俄仍在找買家",
 ];
 const chapters = Array.from({ length: 6 }, () => []);
 const outro = [];
@@ -75,7 +75,7 @@ const sceneSettings = new Map([
   ["x120605", "clean conceptual living-room diorama"], ["x120608", "conceptual factory diorama"],
   ["x120611", "conceptual factory diorama"], ["x120612", "clean tabletop factory diorama"],
 ]);
-const sayWords = [["Peloton", "派樂騰"], ["Output Park", "歐普特帕克"], ["Precor", "普瑞科"], ["Rexon", "力山"], ["Tonic", "托尼克"], ["Tread+", "Tread Plus"], ["Tread", "Tread"], ["Bike", "Bike"]];
+const sayWords = [["Peloton", "派樂騰"], ["Output Park", "歐普特帕克"], ["Ohio", "俄亥俄"], ["Precor", "普瑞科"], ["Rexon", "力山"], ["Tonic", "托尼克"], ["Tread+", "Tread Plus"], ["Tread", "Tread"], ["Bike", "Bike"]];
 function lineFor(row) {
   const line = { id: row.id, text: row.text, emotion: row.text.endsWith("？") ? "台灣口語說書，自然提問，不刻意放慢" : "台灣口語說書，數字清楚，正常語速" };
   const say = sayWords.reduce((v, [a, b]) => v.replaceAll(a, b), row.text);
@@ -102,14 +102,14 @@ const loops = [
   ["x120107", "x120501", "七月外部產線接到何種分工"],
   ["x120108", "x120512", "Ohio 未投產時已投多少"],
   ["x120109", "x120613", "Ohio 從產能計畫走到哪一步"],
-  ["x120209", "x120413", "設備銷售增長是否等於毛利"],
+  ["x120209", "x120211", "原有代工網可怎樣調整交貨"],
   ["x120221", "x120301", "新廠原本要補的產能"],
   ["x120311", "x120401", "新廠需求變動後的處置"],
   ["x120319", "x120401", "二月 Ohio 廠殼決定"],
   ["x120405", "x120501", "Ohio 停造車後由誰接製造"],
   ["x120417", "x120501", "其他自有產線會怎樣"],
-  ["x120510", "x120512", "已投 Ohio 金額"],
-  ["x120519", "x120612", "原定出車年份的出售狀態"],
+  ["x120510", "x120518", "已投 Ohio 金額能否收回"],
+  ["x120519", "x120606", "訂閱成長能否恢復 Ohio 造車任務"],
   ["x120604", "x120606", "訂閱成長是否填滿實體產線"],
   ["x120611", "x120612", "截至 FY2023 是否有買家"],
 ].map(([setup, payoff, what]) => ({ setup, payoff, what }));
@@ -133,7 +133,7 @@ const video = {
   series: { slug: "brand-stories-everyday-reversals-extra", episode: 12, chapter: 1 },
   music: { prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 },
   loops,
-  youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Peloton 四億美元新廠計畫，為何還沒開就記下減損？｜品牌故事", description, tags: ["Peloton", "品牌故事", "健身單車", "訂閱", "製造", "Ohio"], video_id: null },
+  youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Peloton 四億美元新廠計畫，出車前發生了什麼？｜品牌故事", description, tags: ["Peloton", "品牌故事", "健身單車", "訂閱", "製造", "Ohio"], video_id: null },
   thumbnail: { template: "thumb", data: { headline: "**廠沒開？**", tag: "品牌故事", brand: "Peloton", shot: "x12-b01-s08" } },
   sources: sourceUrls.map(({ code, ...source }) => source), assets: [], scenes,
 };
@@ -151,6 +151,6 @@ writeFileSync(path.join(dir, "script.md"), [
   ...chapters.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${chapterTitles[ci]}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.map(row => `- \`${row.id}\` ${row.text}`), ""]),
   "## 片尾三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), "",
 ].join("\n"));
-writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 12, chapter: 1, title: "Peloton：Ohio 新廠未投產，年報為何先記減損？", logline: "從 2021 Ohio 產能計畫，到 2022 二月規劃完成廠殼後出售、七月整體退出自製，FY2023 仍尋買家。", names: ["Peloton", "Peloton Output Park", "Precor", "Rexon", "Tonic", "Bike", "Bike+", "Tread", "Tread+"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
+writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 12, chapter: 1, title: "Peloton：Ohio 四億美元新廠計畫，出車前發生了什麼？", logline: "從 2021 Ohio 產能計畫，到 2022 二月規劃完成廠殼後出售、七月整體退出自製，FY2023 仍尋買家。", names: ["Peloton", "Peloton Output Park", "Precor", "Rexon", "Tonic", "Bike", "Bike+", "Tread", "Tread+"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
 const body = chapters.slice(1).flat().map(row => row.text).join("");
 console.log(JSON.stringify({ scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, spoken_lines: allRows.length, hook_characters: chapters[0].map(row => row.text).join("").length, body_characters: body.length, body_estimate_minutes_at_250_cpm: +(body.length / 250).toFixed(2), body_estimate_minutes_at_300_cpm: +(body.length / 300).toFixed(2), loops: loops.length, video_sha256: sha }, null, 2));

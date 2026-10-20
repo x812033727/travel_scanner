@@ -13,9 +13,18 @@ const sec = {
   k22: "https://www.sec.gov/Archives/edgar/data/1639825/000163982522000117/pton-20220630.htm",
 };
 const common = { schema_version: 2, format: "shorts", locale: "zh-TW", line: "cut", series: "illustrated", source: { slug: base }, synthetic_media: true, hashtags: ["Peloton", "品牌故事", "健身單車"], tags: ["Peloton", "品牌故事", "健身單車", "訂閱", "製造"] };
+// Editorial 9:16 plan only: the referenced 16:9 shots have not been rendered or crop-tested.
+const portraitPlan = {
+  status: "planned_not_rendered", canvas_px: [1080, 1920], aspect: "9:16",
+  main_safe_box_px: { x: [80, 900], y: [258, 1378] },
+  captions_safe_box_px: { x: [80, 900], y: [1430, 1595] },
+  reserve_right_for_platform_px: 180,
+  minimum_type_px: { headline: 72, single_number: 168, comparison_row: 49, caption: 49 },
+  crop_rule: "先在 9:16 畫布重構或裁切匿名概念圖，保留每鏡兩個必要物件；若橫幅無法同框則重構，不能裁去事實物件。正式輸出還要逐鏡驗 360px 手機與 Shorts 實際介面。",
+};
 const shorts = [
   {
-    ...common, slug: `${base}-short-1`,
+    ...common, slug: `${base}-short-1`, portrait_plan: portraitPlan,
     titles: ["Peloton 四億美元新廠計畫，已投多少、賣掉了嗎？", "Peloton 俄亥俄新廠：四億計畫後來如何？"],
     description: "2021 年 Peloton 公告 Ohio Output Park 原定 2023 製造設備，多年規劃約 US$400m；2022 年 2 月重整已宣布 Ohio 廠殼完成後出售，這是計畫，不是當時已完成或成交。2022-07-12 公司再宣布退出整體自有製造，既有夥伴 Rexon 將主造 Bike／Tread。FY2022 年報稱 Ohio 仍在對外行銷、打算出售；截至 2022-06-30 專案已投約 US$86.6m。四億是計畫，八千六百六十萬是已投，都不是售價；資料沒有說 Ohio 已賣。完整事件見本集長片（正式網址待發布後填）；畫面為匿名概念插畫。來源：SEC 原始公告與年報。",
     links: [
@@ -34,7 +43,7 @@ const shorts = [
     ],
   },
   {
-    ...common, slug: `${base}-short-2`,
+    ...common, slug: `${base}-short-2`, portrait_plan: portraitPlan,
     titles: ["Peloton 訂閱收入上升，能讓 Ohio 新廠造車嗎？", "Peloton 月費增加，Ohio 原定造車任務回來了嗎？"],
     description: "Peloton 2021 年規劃 Ohio Output Park，原定 2023 年造單車和跑步機。2022 年 2 月重整已宣布完成 Ohio 廠殼後出售，仍屬計畫，不是已售。FY2022 Form 10-K 同表：Connected Fitness Products 收入由 FY2021 US$3,149.6m 降至 FY2022 US$2,187.5m；Subscription 由 US$872.2m 升至 US$1,394.7m；FY2022 設備類毛損 US$246.3m。訂閱課程可在已用的連網設備或數位服務觀看，月費收入增加不能直接當成新設備訂單；設備類還含配件、配送安裝、商用器材，不能把收入差額當單車台數；分類毛損不是公司淨損。FY2022 財年於 2022-06-30 結束；2022-07-12 公司再宣布退出整體自有製造，Rexon 將成為 Bike／Tread 硬體主要製造商。之後提交的 FY2022 年報說 Ohio 仍對外行銷、打算出售，沒有宣稱已售。這支 Short 按二月、六月、七月、九月順序說明兩步不同的製造轉向，**不把 FY2022 全年收入跌幅或訂閱成長當成二月決定的已證實成因**。完整脈絡見本集長片（正式網址待發布後填）；畫面為匿名概念插畫。來源：SEC 原始公告與年報。",
     links: [
@@ -55,6 +64,26 @@ const shorts = [
     ],
   },
 ];
+const portraitFocals = [
+  [
+    "Ohio 待建廠模＋無字公告", "Ohio 廠模＋四枚空白籌碼；寬景若裁不下須重構", "未投產廠殼＋未交換信封", "Ohio 廠模＋投入硬幣／帳本",
+    "台灣外部產線＋製造分工信封", "Ohio 廠殼＋無字年報；寬交易桌若裁不下須重構", "未簽交易信封＋空收款盒",
+  ],
+  [
+    "Ohio 待建基地＋既有產線", "未投產廠殼＋未交換信封", "設備紙箱＋向下收入色帶；數字以後製卡呈現", "課程螢幕＋向上收入色帶；數字以後製卡呈現",
+    "既有連網單車＋數位課程螢幕；沒有新機出貨", "未啟用 Ohio 廠殼＋設備成本盒；分類毛損另以卡片呈現", "台灣外部產線＋工作分工信封", "Ohio 廠殼＋未簽交易／空收款盒",
+  ],
+];
+for (const [i, short] of shorts.entries()) {
+  short.scenes.forEach((scene, j) => {
+    scene.portrait = {
+      status: "planned_not_rendered", crop_focus: portraitFocals[i][j],
+      text_box_px: { x: [80, 900], y: [258, 1378] }, captions_box_px: { x: [80, 900], y: [1430, 1595] },
+      card_text_px: scene.big ? 168 : scene.body ? 49 : 72,
+      constraint: "年份、幣別、單位、計畫／已投／未售關鍵字必須在手機寬 360px 下可讀；不能只藏在註腳。",
+    };
+  });
+}
 const bytes = JSON.stringify(shorts, null, 2) + "\n";
 writeFileSync(path.join(dir, "shorts.json"), bytes);
 const sha = createHash("sha256").update(bytes).digest("hex");
