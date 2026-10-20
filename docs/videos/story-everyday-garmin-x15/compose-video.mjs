@@ -115,10 +115,8 @@ const cardRules = [
   [/健身事業，收入增加百分之二十四/, { title: "2011 Fitness 事業", stats: [{ value: "+24%", label: "全年營收年比；非兩款錶銷量" }], source: "G5｜Garmin FY2011 10-K" }],
   [/戶外事業也增加百分之十四/, { title: "2011 Outdoor 事業", stats: [{ value: "+14%", label: "全年營收年比；非兩款錶銷量" }], source: "G5｜Garmin FY2011 10-K" }],
   [/最上方的總收入，約七十二億五千萬美元/, { title: "2025 全年營收", stats: [{ value: "US$7.245519bn", label: "全公司收入，非淨利" }], source: "G6｜Garmin FY2025 8-K" }],
-  [/最大一欄叫健身，約二十三億六千萬/, { title: "2025 Fitness 事業", stats: [{ value: "US$2.357bn", label: "全年營收；非只有手錶" }], source: "G6｜Garmin FY2025 8-K" }],
+  [/健身事業的全年收入，約二十三億六千萬/, { title: "2025 Fitness 事業", stats: [{ value: "US$2.357bn", label: "全年營收；非只有手錶" }], source: "G6｜Garmin FY2025 8-K" }],
   [/戶外也有約二十億五千萬/, { title: "2025 Outdoor 事業", stats: [{ value: "US$2.054061bn", label: "全年營收；非只有手錶" }], source: "G6｜Garmin FY2025 8-K" }],
-  [/海上與空中那兩條舊線，二〇二五年合起來超過二十一億美元/, { title: "2025 航海／飛航事業", stats: [{ value: "US$1.182615bn", label: "Marine 全年營收" }, { value: "US$987.161m", label: "Aviation 全年營收" }], source: "G6｜Garmin FY2025 8-K；合計 US$2.169776bn" }],
-  [/這欄這一年收入約六億六千萬美元/, { title: "2025 Auto OEM 事業", stats: [{ value: "US$664.682m", label: "全年營收；不可直接對比舊事業" }], source: "G6｜Garmin FY2025 8-K" }],
 ];
 const cards = new Map();
 for (const [pattern, data] of cardRules) {
@@ -144,7 +142,7 @@ for (const [ci, chapter] of chapters.entries()) {
   for (let ri = 0; ri < chapter.rows.length;) {
     const current = chapter.rows[ri];
     const next = chapter.rows[ri + 1];
-    const canPair = Boolean(next && !cards.has(current.id) && !cards.has(next.id) && current.text.length + next.text.length <= 36);
+    const canPair = Boolean(next && !cards.has(current.id) && !cards.has(next.id) && !(portraitFocal.has(current.id) && portraitFocal.has(next.id)) && current.text.length + next.text.length <= 36);
     const selected = canPair ? [current, next] : [current];
     const id = `x15-b${String(ci + 1).padStart(2, "0")}-s${String(++sceneNo).padStart(2, "0")}`;
     const card = cards.get(current.id);
@@ -170,22 +168,24 @@ scenes.push({ id: "x15-outro", template: "outro", data: { title: "導航不只�
 // Setups point to a withheld outcome, with the answer in the actual line named
 // by payoff. Keep the opening's later moments open through the six-chapter body.
 const loops = [
-  { setup: "x150105", payoff: "x150635", what: "車用／行動收入碰上手機後的長期分布" },
+  { setup: "x150105", payoff: "x150426", what: "年報對手機導航壓力的判斷如何改變" },
   { setup: "x150106", payoff: "x150206", what: "開場車用收入急升的幅度" },
   { setup: "x150107", payoff: "x150401", what: "開場同一事業兩年後降到多少" },
-  { setup: "x150108", payoff: "x150510", what: "開場運動錶如何接到另一事業收入" },
-  { setup: "x150109", payoff: "x150606", what: "開場多年後總營收是否約兩倍" },
-  { setup: "x150110", payoff: "x150214", what: "早期車用收入成長的產品入口" },
+  { setup: "x150108", payoff: "x150510", what: "開場運動錶推出那年健身事業的變化" },
+  { setup: "x150109", payoff: "x150426", what: "開場風險欄換成了什麼字" },
+  { setup: "x150110", payoff: "x150635", what: "離開車前螢幕後的收入結構" },
   { setup: "x150209", payoff: "x150214", what: "當年最醒目的車用產品系列" },
   { setup: "x150231", payoff: "x150301", what: "nüvi 在 2008 占全公司營收多少" },
   { setup: "x150308", payoff: "x150310", what: "2008 警訊是否等於當年貨賣不動" },
+  { setup: "x150320", payoff: "x150322", what: "手機是否也能成為導航選擇" },
   { setup: "x150335", payoff: "x150401", what: "高度依賴的車用事業能否維持原營收" },
-  { setup: "x150423", payoff: "x150426", what: "2011 年報的風險措辭怎麼變" },
+  { setup: "x150410", payoff: "x150411", what: "能否從總收入表拆出手機造成的落差" },
   { setup: "x150509", payoff: "x150510", what: "運動錶以外健身事業當年是否成長" },
-  { setup: "x150543", payoff: "x150635", what: "多年後收入線合起來占多少" },
-  { setup: "x150607", payoff: "x150629", what: "2025 是否仍是一個車用大欄撐收入" },
-  { setup: "x150612", payoff: "x150613", what: "2025 全年能否只用手錶解釋" },
-  { setup: "x150625", payoff: "x150626", what: "舊七成能否與新 Auto OEM 直線比較" },
+  { setup: "x150524", payoff: "x150525", what: "收購的導航公司是否也做手機應用" },
+  { setup: "x150539", payoff: "x150540", what: "2011 車用事業是否仍是最大收入欄" },
+  { setup: "x150543", payoff: "x150601", what: "多年後最大收入欄是誰" },
+  { setup: "x150612", payoff: "x150617", what: "2025 戶外事業還有什麼非手錶產品" },
+  { setup: "x150634", payoff: "x150635", what: "2025 健身與戶外在全年總收入的比重" },
 ];
 const linePosition = new Map(allRows.map((row, index) => [row.id, index]));
 for (const loop of loops) if (!(linePosition.has(loop.setup) && linePosition.has(loop.payoff) && linePosition.get(loop.setup) < linePosition.get(loop.payoff))) throw new Error(`Invalid loop: ${JSON.stringify(loop)}`);
