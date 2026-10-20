@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-prepare-x11-fedex-brand-story
 title: Prepare X11 FedEx brand story
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-x11-author
+claimed_at: 2026-10-20T19:02:58Z
 created_at: 2026-10-20T18:54:30Z
 completed_at:
 branch: codex/brand-story-fedex-x11
@@ -28,14 +28,18 @@ The owner wants more recognizable brand stories beyond the existing X01–X10 wo
 ## Steps
 
 - [x] Check source feasibility from FedEx FY2022–FY2026 original SEC 10-K filings and record the event chronology and caveats.
-- [ ] Obtain a second agent's claim-level review of the source-feasibility memo, then write a six-chapter Treatment and full narration.
+- [x] Obtain root's independent anchor check of the source-feasibility memo, then write a six-chapter Treatment and full narration.
 - [ ] Validate the manuscript and Shorts against exact source claims and story gates before paid generation.
 - [ ] Produce the bounded pilot, inspect it, and continue only if visual/audio quality passes.
 
 ## How to verify
 
-At this stage inspect `docs/videos/story-everyday-fedex-x11/source-feasibility.md` against the linked SEC filings; run `npm run check:tasks` and `npm run test:docs-videos` before a later PR. Future video tooling checks belong to the production steps.
+Inspect `docs/videos/story-everyday-fedex-x11/source-feasibility.md` and the author source matrix against the linked SEC filings. Rebuild `compose-video.mjs` and `compose-shorts.mjs`; run `node tools/video/cli.mjs lint --slug story-everyday-fedex-x11`, `npm run check:tasks` and `npm run test:docs-videos` before a later PR. The exact video/Shorts SHA-256 must be retained through independent source and blind-reader review; any script change invalidates those receipts. Future paid-media checks belong to the production steps.
 
 ## Notes
 
 The feasibility memo links five primary filings, records their download hashes and date-qualified excerpts, supplies a nonduplicate six-chapter event flow and two Short hooks, and keeps the 2026 Freight spin-off distinct from parcel Ground. SEC access was tested on 2026-10-20. Moleskine/D’Ieteren official domains for the C03 priority item were blocked by this cloud environment, so X11 is a supplemental episode and does not reorder C01–C20. No paid generation. A second source reviewer must not treat this memo as its own PASS receipt.
+
+Root independently verified the initial SEC memo. v3 source audit passed but [blind A](../../docs/videos/story-everyday-fedex-x11/reviews/blind-a-v3-independent.md) and [blind B](../../docs/videos/story-everyday-fedex-x11/reviews/blind-b-v3-independent.md) both failed narrative gates: unanswered station/segment questions, repeated 290/risk wording, and a seven-line Freight detour. The author revised v4 to follow a single concept parcel through actual network operations, moved Freight to the source-backed description, changed chapter handoffs and visual cue `x11-b02-s15`, and added primary FY2025/FY2026 network anchors. The [v4 author delta](../../docs/videos/story-everyday-fedex-x11/revision-v4.md) is not a review receipt.
+
+Current v4 candidate: `video.json` SHA-256 `b2226de5962c60ffa90ee177011a9203deb340d3ebbe2355d9be8c79d512d5b0`; `shorts.json` SHA-256 `7413df056023ae9dfc38f57fa34526c26b0e4d3e4206d911c92a7120db99ba45`. Current lint 0 errors/0 warnings: six chapters, 17 loops, 101 shots/6 stats cards/1 outro, ~8.37 minutes of substantive body at 300 Chinese characters/minute. Next: exact-hash independent source delta audit and two **new** narrative blind reviews; previous receipts bind only to v3. No paid generation or PR until those gates and later media QA.
