@@ -1,0 +1,10 @@
+Command (repository root):
+node tools/video/cli.mjs narrative --slug curio-s56 --answers docs/videos/curio-s56/review/r11-clean-blind-a/answers.json --workdir /tmp/curio-s56-r11-blind-a
+
+Exit code: 1
+Standard error: empty
+Standard output (verbatim):
+curio-s56: the storytelling panel failed; verdict in ../../tmp/curio-s56-r11-blind-a/curio-s56/review/narrative.json
+  FAIL  no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[s56036] 洛許說有些街段架得很高，底下也藏著木料。）
+
+The CLI-generated narrative.json was copied byte for byte from the stated temporary work directory into this review directory.

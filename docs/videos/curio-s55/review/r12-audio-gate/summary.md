@@ -10,4 +10,4 @@
 
 新合成合計 **422 計費字元**，站台乾跑顯示在 Gemini 當月免費層內。原樣 TTS／音檢輸出、逐句 `check.json`、每輪 `check-flags.json`、timeline 及 140 個 WAV 的重錄前後 SHA-256 清單均保存在本目錄。兩次重錄各**只**變動上述兩句的 WAV，沒有增加或刪除其他檔。最終 103 句逐字吻合，32 句僅同音字或口語填詞差，5 句由 Jev 判可接受，**0** 句旗標。這是工具結果，非人耳聽檢。
 
-R10 的 14 句殘餘旗標不轉移到 R12；本輪重新合成、全片複檢並實際歸零。2026-10-20 UTC 已執行 `review-push --gate outline` 與 `review-push --gate audio`；站台兩卡均為**待站主審核**，`review-pull --gate audio` 回 `audio: waiting for the owner`，不把機器 PASS 當站台核准。圖片 judge 與配樂月額度目前為零，整集插圖、配樂、組片、字幕、Shorts 及 YouTube 可點片尾仍待完成。
+R10 的 14 句殘餘旗標不轉移到 R12；本輪重新合成、全片複檢並實際歸零。2026-10-20 UTC 已執行 `review-push --gate outline`、`--gate script` 與 `--gate audio`；站台三卡均為**待站主審核**，`review-pull --gate script` 與 `--gate audio` 均回 `waiting for the owner`。推送劇本後重算 SHA-256，仍與 R12 凍結值相同；不把機器 PASS 當站台核准。圖片 judge 與配樂月額度目前為零，整集插圖、配樂、組片、字幕、Shorts 及 YouTube 可點片尾仍待完成。

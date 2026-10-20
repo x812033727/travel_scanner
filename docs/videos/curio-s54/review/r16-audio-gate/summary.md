@@ -6,4 +6,4 @@ R15 經兩輪重錄仍有 `s54002`、`s54013` 兩句旗標，當時已停工。R
 
 完整 `check-audio` 回傳退出碼 0：**112** 句逐字吻合、**27** 句僅同音字或口語填詞差、**9** 句經 Jev 判可接受、**0** 句旗標。本目錄保存原樣 TTS／音檢輸出、完整 `check.json`、`check-flags.json`、timeline、WAV 前後雜湊及執行摘要；77 MB 旁白 WAV 留在本機 `/workspace/.video-work/curio-s54/narration.wav`，沒有進 Git。兩句新音訊全片複檢後不再重錄。
 
-已執行 `review-push --gate outline` 與 `review-push --gate audio`；手動推送的兩張站台卡均**待站主審核**，`review-pull --gate audio` 回 `audio: waiting for the owner`。本月圖片 judge 20,000／20,000、配樂 60／60；插圖、配樂、組片、字幕、Shorts、私人 Studio 上傳及可點片尾尚未完成。
+已執行 `review-push --gate outline`、`--gate script` 與 `--gate audio`；手動推送的三張站台卡均**待站主審核**，`review-pull --gate script` 與 `--gate audio` 均回 `waiting for the owner`。推送劇本後重算 SHA-256，仍與 R16 凍結值相同。本月圖片 judge 20,000／20,000、配樂 60／60；插圖、配樂、組片、字幕、Shorts、私人 Studio 上傳及可點片尾尚未完成。

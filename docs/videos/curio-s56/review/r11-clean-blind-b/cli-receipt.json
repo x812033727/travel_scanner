@@ -1,0 +1,32 @@
+{
+  "kind": "curio-s56-r11-independent-blind-narrative-reader-b",
+  "recorded_at_utc": "2026-10-20T22:51:12.790033+00:00",
+  "read_boundary": "Episode content manually read only from docs/videos/curio-s56/script.md; questions and answer contract read only from tools/video/core/narrative.mjs lines 266-303. Official CLI loaded its normal project input internally; no project narration output was viewed.",
+  "script_path": "docs/videos/curio-s56/script.md",
+  "script_sha256_before_cli": "38ef6dfdbb71bd0b59a441a4d41fc4a89b2b3aed288899a28ec902193b792d2c",
+  "script_sha256_after_cli": "38ef6dfdbb71bd0b59a441a4d41fc4a89b2b3aed288899a28ec902193b792d2c",
+  "answers_path": "docs/videos/curio-s56/review/r11-clean-blind-b/answers.json",
+  "answers_sha256": "5f06fff0b9d27d4ce83e6582178f1aa3a550298ec10cc1e20160d6ea619745c0",
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "rubric_file_sha256": "63b631cea2c01f2a94b69252fdae7160253e906881b4fb37a4502603455cc387",
+  "official_cli_argv": [
+    "node",
+    "tools/video/cli.mjs",
+    "narrative",
+    "--slug",
+    "curio-s56",
+    "--answers",
+    "/workspace/travel_scanner/docs/videos/curio-s56/review/r11-clean-blind-b/answers.json",
+    "--workdir",
+    "/tmp/curio-s56-r11-blind-b-h4blgyni",
+    "--json"
+  ],
+  "official_cli_exit_code": 0,
+  "cli_verdict_sha256": "156a55589d612a37234859921249aa8a92a3cebcefdac9d0498d60b082f54b41",
+  "cli_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "official_narrative_record_path": "docs/videos/curio-s56/review/r11-clean-blind-b/official-narrative.json",
+  "official_narrative_record_sha256": "2e9d7f2a32749915a5278f1fd86942f53e7042b7bafdc13006c89cfd671d006d",
+  "script_footer_narrative_hash": "7673b92858cdf86b",
+  "official_record_narrative_hash": "7673b92858cdf86b",
+  "script_footer_matches_official_record": true
+}

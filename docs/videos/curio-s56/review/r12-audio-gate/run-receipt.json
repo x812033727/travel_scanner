@@ -1,0 +1,128 @@
+{
+  "slug": "curio-s56",
+  "round": "R12",
+  "status": "AUDIO_MACHINE_PASS_OWNER_REVIEW_PENDING",
+  "inputs_sha256": {
+    "brief.md": "09f731c13f1037c963aa5774b936a43e1a187b5c4ae8d09ba158581a705f1a52",
+    "research.md": "59549e98e6ae258cedfc5b43e6684ecaa1102284d0dee13b0beef6443e4a6fb7",
+    "claims.md": "ca09512c0398c94578f2acaa748cdc13c4b5ebff79ac80b6107ca600d65f6b11",
+    "video.json": "f54a4c830fb876e949f4f4910d025cb8f68331e40d27dc87ab9edf26f05bd479",
+    "script.md": "65ae866c1761da1c83d0941a92569c7b85ec0fddda0de17adc157bbc8d046f4f"
+  },
+  "speech_hash": "73ff0118c927f08f",
+  "pre_audio_gates": {
+    "source": {
+      "status": "PASS",
+      "file": "../r12-source-independent.md",
+      "sha256": "a9363c44c3fe74b3ca11ff49fa034d707db7c23ee65800b98abf52598a0f7e79"
+    },
+    "narrative": {
+      "status": "PASS",
+      "merged_questions": 13,
+      "file": "../r12-merge-policy/merged-narrative-cli-receipt.json",
+      "sha256": "234d48dd22ce3a1c9befc691464dbe3fe1c7212a3be1674473ec9c97e398fe8f"
+    },
+    "policy": {
+      "status": "PASS",
+      "requests_sent": 1,
+      "file": "../r12-merge-policy/policy-receipt.json",
+      "sha256": "bca1190eab363082493cfd91bb8b6bc6ba2d4c4a11ec864f2238a5cdd97ba787"
+    }
+  },
+  "pre_r12_preservation": {
+    "round": "R12",
+    "stop_present": true,
+    "stop_size_bytes": 0,
+    "stop_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stop_snapshot": "stop-before-r12.marker",
+    "pre_wav_count": 176,
+    "pre_wav_manifest_sha256": "a0aa641ae8935cb6559e89c179534d03847f35cf653353a5088d35f67514742b",
+    "r11_wav_manifest_equal": true,
+    "narration_wav_sha256": "966c10cce808330e3ba9c312d01e48a01b05fa246419b3c392200c649106bcaa",
+    "timeline_sha256": "9e1621e60f43c20fc247a86e09dcb792d82ada82475355b5a386578044eaff7a",
+    "captured_at_utc": "2026-10-20T23:19:42.556508+00:00"
+  },
+  "tts": {
+    "requests_total": 121,
+    "new_requests": 2,
+    "billable_characters": 37,
+    "reused_requests": 119,
+    "redo_rounds": 0
+  },
+  "audio_check": {
+    "checked": 154,
+    "total": 154,
+    "cache_rows_including_stale": 176,
+    "exact": 116,
+    "same_sound_or_filler": 33,
+    "jev_accepted": 5,
+    "flagged": 0,
+    "flag_ids": [],
+    "transcribed_now": 2,
+    "new_jev_calls": 0
+  },
+  "wav_scope_audit": {
+    "previous_count": 176,
+    "current_count": 176,
+    "expected_changed_ids": [
+      "s56096",
+      "s56174"
+    ],
+    "changed_ids": [
+      "s56096",
+      "s56174"
+    ],
+    "unexpected_changes": [],
+    "missing_expected_changes": [],
+    "unchanged_count": 174,
+    "missing_or_added_ids": []
+  },
+  "timing": {
+    "fps": 30,
+    "total_frames": 21950,
+    "total_seconds": 731.6666666666666,
+    "opening_frames": 1636,
+    "opening_seconds": 54.53333333333333,
+    "body_seconds": 677.1333333333333,
+    "narration_wav_sha256": "2ad5b6ab87b614ab1f6e8d083549ef3613b17db99809a2d616c32cd84574e826",
+    "timeline_sha256": "de89ba45e58b0af1dd1a64cfea2a6083f8edc814b267c81818d8c10159cb5f69"
+  },
+  "site_reviews": {
+    "outline": {
+      "push_exit_code": 0,
+      "pull_exit_code": 3,
+      "status": "PENDING_OWNER"
+    },
+    "script": {
+      "push_exit_code": 0,
+      "pull_exit_code": 3,
+      "status": "PENDING_OWNER"
+    },
+    "audio": {
+      "push_exit_code": 0,
+      "pull_exit_code": 3,
+      "status": "PENDING_OWNER"
+    }
+  },
+  "stop_present_after_audio": false,
+  "human_audio_review": "NOT_RUN",
+  "site_audio_approval": "NOT_CLAIMED",
+  "artifact_sha256": {
+    "tts-dry-run.txt": "30b2943e43e9cac54aba49fddaac32d6bf41455a0c3e0ccb924d2da6d7d16a7d",
+    "tts.txt": "4f402fb3b8d9bfba1a9dccac3a3a70e681842f0c6860310207b579022bcb7003",
+    "check-initial.txt": "3c1beb52135b848b3f99b358e8f42361d8ef62606ace33f5de58c09af40d0549",
+    "check-initial.json": "c308ad0223cade5877201099a194ec67f78134685a78edffe76e19ce2c572318",
+    "check-flags-initial.json": "a3f715fb9df5edac83f19e5dfabb2e268fcc617c8d35d6871dd1a144e4f15508",
+    "timeline-initial.json": "de89ba45e58b0af1dd1a64cfea2a6083f8edc814b267c81818d8c10159cb5f69",
+    "wav-sha256-before-r12.txt": "a0aa641ae8935cb6559e89c179534d03847f35cf653353a5088d35f67514742b",
+    "wav-sha256-initial.txt": "0841ae045e81fc189f8478867018fb0262041fdc51f8794bc6ba16cc0e8aca6f",
+    "r12-tts-scope-audit.json": "330d20afd8711cd82fc479b8073324da23a32900ab2d5cb7ea199c69fc2b38b3",
+    "pre-r12-preservation.json": "a42d8bdd4491a5297a05e15d42ffff20e73553fb8c55f043c97e463fd496c587",
+    "review-push-outline.txt": "92df55b6ff20e4a7c88a478b43a41c223002b32bab1a165a751d312c6f2479f2",
+    "review-push-script.txt": "7ffc6dfedc35705d333c479857133ec291d572c532e8cf74c6c6551d0bd66f19",
+    "review-push-audio.txt": "ebce4264d2fcbe53f24d5372e46efef774b14b41463963297ff6cb80d5fd3f1e",
+    "review-pull-outline.txt": "62a697b76c7f85c0b73b2ca571d036a4ef9bc00c5629931a321dbf8d7909dc88",
+    "review-pull-script.txt": "2bd950b17bdd9aaea4b8d91cba9e992bac59cb37522071f3e6a248fd2b98aa3d",
+    "review-pull-audio.txt": "9334b7387fa9adf94aff3fe484d04694783630b3231abf51ba585588b0d5f79b"
+  }
+}

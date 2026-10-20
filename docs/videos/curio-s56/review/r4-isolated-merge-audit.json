@@ -1,0 +1,636 @@
+{
+  "script_sha256": "b76995caa74f0a1f65b068d9e115659d7c48678600b80e9ff502e641a6505152",
+  "merge_function": "mergePanelVerdicts([panelVerdict(A), panelVerdict(B_normalized)])",
+  "input_files": [
+    {
+      "name": "A",
+      "file": "r4-isolated-blind-a.json",
+      "sha256": "81fe94721908ee8c878a88d6838d21d3d19b4c8eeca54ad0dd4c874cdc1985cf"
+    },
+    {
+      "name": "B",
+      "file": "r4-isolated-blind-b.json",
+      "sha256": "06e2c71d2bab8918b872df1b7a4eee619d0aee1ea297f02cf45f9ebdfa34c98c"
+    }
+  ],
+  "adaptation": "B frozen judgments and wording unchanged. For official parser citation syntax, prefixed one bracketed scene ID per B evidence entry; four entries without an ID in their frozen text use the named chapter/scene anchor recorded below. Raw blind files remain untouched.",
+  "adaptations": [
+    {
+      "id": "scene_first",
+      "prefix": "[s56001]",
+      "reason": "bracketed frozen line ID"
+    },
+    {
+      "id": "no_spoiler",
+      "prefix": "[s56006]",
+      "reason": "bracketed frozen line ID"
+    },
+    {
+      "id": "one_line",
+      "prefix": "[s56014]",
+      "reason": "chapter/scene anchor for uncited frozen evidence"
+    },
+    {
+      "id": "no_toc",
+      "prefix": "[s56009]",
+      "reason": "chapter/scene anchor for uncited frozen evidence"
+    },
+    {
+      "id": "chapters_link",
+      "prefix": "[s56014]",
+      "reason": "bracketed frozen line ID"
+    },
+    {
+      "id": "open_loops",
+      "prefix": "[s56029]",
+      "reason": "bracketed frozen line ID"
+    },
+    {
+      "id": "payoffs",
+      "prefix": "[s56073]",
+      "reason": "bracketed frozen line ID"
+    },
+    {
+      "id": "no_recap",
+      "prefix": "[s56073]",
+      "reason": "bracketed frozen line ID"
+    },
+    {
+      "id": "chapters_are_events",
+      "prefix": "[s56070]",
+      "reason": "chapter/scene anchor for uncited frozen evidence"
+    },
+    {
+      "id": "outro_no_next",
+      "prefix": "[s56172]",
+      "reason": "bracketed frozen line ID"
+    },
+    {
+      "id": "opening_hooks",
+      "prefix": "[s56007]",
+      "reason": "bracketed frozen line ID"
+    },
+    {
+      "id": "one_thread",
+      "prefix": "[s56001]",
+      "reason": "chapter/scene anchor for uncited frozen evidence"
+    },
+    {
+      "id": "no_detour",
+      "prefix": "[s56153]",
+      "reason": "bracketed frozen line ID"
+    }
+  ],
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56001] 福斯特站在南支河東岸；[s56002] 定在 1871 年十月八日；[s56003] 他剛走過橋；[s56004] 主火仍在對岸。前四句已是一個具體時刻。"
+        },
+        {
+          "id": "no_spoiler",
+          "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56006] 至 [s56013] 只問身後街道、磚石街區、下一座橋與天亮前的安全界線；東岸新火、橋起火與最後避難結果留到 [s56073]、[s56136]、[s56166]。"
+        },
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": true,
+          "evidence": "預告式開場後，[s56014] 回到前夜，再由 [s56040] 星期日晚、[s56145] 星期一早、[s56166] 星期二凌晨順行；兩位目擊者都追同場火沿安全界線推進。"
+        },
+        {
+          "id": "no_toc",
+          "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56009] 至 [s56013] 預告的是火在人物周圍將造成的具體疑問；[s56053]、[s56069]、[s56115] 也以事件和未解結果推進，沒有宣告章節順序或列出內容清單。"
+        },
+        {
+          "id": "chapters_link",
+          "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56041] 火鈴接到 [s56042] 福斯特放下書；[s56069] 河的疑問接 [s56070] 過河；[s56092] 磚石失守的疑問接 [s56093] 抵達商業區；[s56116] 洛許回屋接 [s56117] 房客搬行李；[s56144] 缺水疑問接 [s56145] 水廠燒毀。"
+        },
+        {
+          "id": "open_loops",
+          "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+          "required": true,
+          "yes": true,
+          "evidence": "正文相隔短於九十秒反覆留下待解問題，例如 [s56039] 木街面、[s56051] 哪片屋頂、[s56069] 河岸、[s56102] 行李、[s56144] 救火水量、[s56156] 乾草地。"
+        },
+        {
+          "id": "payoffs",
+          "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+          "required": true,
+          "yes": true,
+          "evidence": "較遠的開場懸念有點名回收：[s56007] 背後房屋由 [s56073]『還記得開頭』帶出新火；[s56012] 北側居民由 [s56129] 點名洛許所見；[s56011] 下一座橋由 [s56136] 橋起火回答。近距疑問如 [s56165] 的雨則在 [s56166] 直接回答。"
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s56090] 已說福斯特以為市中心堅固房屋會擋火；跨章後 [s56095] 又說他當時真以為火過不來。這是同一判斷的再次敘述，中間沒有點名回呼。"
+        },
+        {
+          "id": "chapters_are_events",
+          "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+          "required": false,
+          "yes": true,
+          "evidence": "章名都指向事件：『風把燃燒木塊送到前面』由 [s56042] 起，『水後方冒出另一處火』由 [s56070] 起，『北側的橋也成了火場』由 [s56117] 起，『抽水站毀後等到雨來』由 [s56145] 起；沒有功能型章名。"
+        },
+        {
+          "id": "outro_no_next",
+          "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+          "required": true,
+          "yes": true,
+          "evidence": "結尾 [s56172] 至 [s56176] 回答河作為界線的疑問並收在『站到河對岸，也不等於站到火的終點』，沒有提下一支影片、下一集或下一份檔案。"
+        },
+        {
+          "id": "opening_hooks",
+          "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+          "required": true,
+          "yes": true,
+          "evidence": "第一場景之後，[s56007] 問身後房屋是否先冒煙，[s56010] 問磚石街區能否擋火，[s56011] 問另一座橋是否安全，[s56012] 問北側居民回頭看見什麼；都停在後文結果之前。"
+        },
+        {
+          "id": "one_thread",
+          "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+          "required": true,
+          "yes": true,
+          "evidence": "具體難題是逃難者能否靠一條界線避火；[s56003] 福斯特過河，[s56090] 寄望磚石，[s56136] 北側橋起火，[s56156] 洛許又面對乾草地，至 [s56173] 至 [s56176] 回到界線的答案。"
+        },
+        {
+          "id": "no_detour",
+          "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56034] 至 [s56039] 木造街面交代飛火可燃處，[s56078] 至 [s56087] 新火把退路逼向市區，[s56157] 至 [s56167] 草地防線與雨回答最後一處避難是否守住；各段仍推進開場的安全界線問題。"
+        }
+      ],
+      "failed": [
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s56090] 已說福斯特以為市中心堅固房屋會擋火；跨章後 [s56095] 又說他當時真以為火過不來。這是同一判斷的再次敘述，中間沒有點名回呼。"
+        }
+      ],
+      "advisory": [],
+      "problems": [
+        "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[s56090] 已說福斯特以為市中心堅固房屋會擋火；跨章後 [s56095] 又說他當時真以為火過不來。這是同一判斷的再次敘述，中間沒有點名回呼。）"
+      ]
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56001] s56001–04 puts Foster on the east bank of the South Branch on 8 October 1871, having just crossed the bridge with the fire opposite him."
+        },
+        {
+          "id": "no_spoiler",
+          "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56006] s56006–13 asks whether fire will appear behind him and whether brick streets or another bridge will hold; the opening gives none of those outcomes."
+        },
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56014] After the permitted opening flashback, the same fire advances from the west bank through Foster's crossings and the North Side witnessed by Losch; events move forward in time."
+        },
+        {
+          "id": "no_toc",
+          "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56009] The opening and chapter bridges pose questions about concrete places and actions; they do not announce an outline or recite an upcoming list."
+        },
+        {
+          "id": "chapters_link",
+          "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56014] The next chapters take up the preceding object or question: the earlier river fire at s56014, Foster after the bell at s56042, the east bank at s56070, brick streets at s56093, Losch at s5611"
+        },
+        {
+          "id": "open_loops",
+          "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56029] Unanswered questions recur well inside 90 seconds, including the river at s56029, the roof at s56057, the east-bank fire at s56069, stone buildings at s56092, and the North Side bridge at s56"
+        },
+        {
+          "id": "payoffs",
+          "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56073] The house behind Foster catches at s56073–79, the church roof at s56058–63, stone buildings at s56103–08, the northern bridge at s56136–38, and the threatened grassland is spared by rain at s"
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56073] The repeated east-bank and northern-resident moments are named callbacks at s56073 and s56129, followed by new outcomes; later returns to flying debris occur in new locations rather than rete"
+        },
+        {
+          "id": "chapters_are_events",
+          "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+          "required": false,
+          "yes": true,
+          "evidence": "[s56070] Headings name developments such as a new fire behind the water, the stone city hall failing, and rain after the pumping station's loss."
+        },
+        {
+          "id": "outro_no_next",
+          "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56172] s56172–76 closes on the limits of the river as a safety line, with no mention of another episode or film."
+        },
+        {
+          "id": "opening_hooks",
+          "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56007] After the riverbank scene, s56007, s56010–11, and s56012 preview distinct later moments: houses behind Foster, the brick quarter and bridge, and a North Side resident's view; each withholds i"
+        },
+        {
+          "id": "one_thread",
+          "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s56001] The concrete problem is where a fleeing resident can stand beyond the advancing fire: Foster tests the river, stone district, and North Side, while Losch carries the same fire's northern adva"
+        },
+        {
+          "id": "no_detour",
+          "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s56153] s56153–71 spends about two minutes on Losch's grassland shelter, furrows, fence posts, wet clothes, rain, and sleep after the river-crossing mechanism and northern bridge are resolved at s560"
+        }
+      ],
+      "failed": [
+        {
+          "id": "no_detour",
+          "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s56153] s56153–71 spends about two minutes on Losch's grassland shelter, furrows, fence posts, wet clothes, rain, and sleep after the river-crossing mechanism and northern bridge are resolved at s560"
+        }
+      ],
+      "advisory": [],
+      "problems": [
+        "no_detour：是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？（[s56153] s56153–71 spends about two minutes on Losch's grassland shelter, furrows, fence posts, wet clothes, rain, and sleep after the river-crossing mechanism and northern bridge are resolved at s560）"
+      ]
+    }
+  ],
+  "merged": {
+    "passed": true,
+    "answers": [
+      {
+        "id": "scene_first",
+        "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+        "required": true,
+        "yes": true,
+        "evidence": "[s56001] 福斯特站在南支河東岸；[s56002] 定在 1871 年十月八日；[s56003] 他剛走過橋；[s56004] 主火仍在對岸。前四句已是一個具體時刻。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+        "required": true,
+        "yes": true,
+        "evidence": "[s56006] 至 [s56013] 只問身後街道、磚石街區、下一座橋與天亮前的安全界線；東岸新火、橋起火與最後避難結果留到 [s56073]、[s56136]、[s56166]。",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_line",
+        "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+        "required": true,
+        "yes": true,
+        "evidence": "預告式開場後，[s56014] 回到前夜，再由 [s56040] 星期日晚、[s56145] 星期一早、[s56166] 星期二凌晨順行；兩位目擊者都追同場火沿安全界線推進。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_toc",
+        "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+        "required": true,
+        "yes": true,
+        "evidence": "[s56009] 至 [s56013] 預告的是火在人物周圍將造成的具體疑問；[s56053]、[s56069]、[s56115] 也以事件和未解結果推進，沒有宣告章節順序或列出內容清單。",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_link",
+        "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+        "required": true,
+        "yes": true,
+        "evidence": "[s56041] 火鈴接到 [s56042] 福斯特放下書；[s56069] 河的疑問接 [s56070] 過河；[s56092] 磚石失守的疑問接 [s56093] 抵達商業區；[s56116] 洛許回屋接 [s56117] 房客搬行李；[s56144] 缺水疑問接 [s56145] 水廠燒毀。",
+        "yes_readers": 2
+      },
+      {
+        "id": "open_loops",
+        "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+        "required": true,
+        "yes": true,
+        "evidence": "正文相隔短於九十秒反覆留下待解問題，例如 [s56039] 木街面、[s56051] 哪片屋頂、[s56069] 河岸、[s56102] 行李、[s56144] 救火水量、[s56156] 乾草地。",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+        "required": true,
+        "yes": true,
+        "evidence": "較遠的開場懸念有點名回收：[s56007] 背後房屋由 [s56073]『還記得開頭』帶出新火；[s56012] 北側居民由 [s56129] 點名洛許所見；[s56011] 下一座橋由 [s56136] 橋起火回答。近距疑問如 [s56165] 的雨則在 [s56166] 直接回答。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_recap",
+        "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+        "required": true,
+        "yes": true,
+        "evidence": "[s56073] The repeated east-bank and northern-resident moments are named callbacks at s56073 and s56129, followed by new outcomes; later returns to flying debris occur in new locations rather than rete",
+        "yes_readers": 1
+      },
+      {
+        "id": "chapters_are_events",
+        "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+        "required": false,
+        "yes": true,
+        "evidence": "章名都指向事件：『風把燃燒木塊送到前面』由 [s56042] 起，『水後方冒出另一處火』由 [s56070] 起，『北側的橋也成了火場』由 [s56117] 起，『抽水站毀後等到雨來』由 [s56145] 起；沒有功能型章名。",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+        "required": true,
+        "yes": true,
+        "evidence": "結尾 [s56172] 至 [s56176] 回答河作為界線的疑問並收在『站到河對岸，也不等於站到火的終點』，沒有提下一支影片、下一集或下一份檔案。",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+        "required": true,
+        "yes": true,
+        "evidence": "第一場景之後，[s56007] 問身後房屋是否先冒煙，[s56010] 問磚石街區能否擋火，[s56011] 問另一座橋是否安全，[s56012] 問北側居民回頭看見什麼；都停在後文結果之前。",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+        "required": true,
+        "yes": true,
+        "evidence": "具體難題是逃難者能否靠一條界線避火；[s56003] 福斯特過河，[s56090] 寄望磚石，[s56136] 北側橋起火，[s56156] 洛許又面對乾草地，至 [s56173] 至 [s56176] 回到界線的答案。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+        "required": true,
+        "yes": true,
+        "evidence": "[s56034] 至 [s56039] 木造街面交代飛火可燃處，[s56078] 至 [s56087] 新火把退路逼向市區，[s56157] 至 [s56167] 草地防線與雨回答最後一處避難是否守住；各段仍推進開場的安全界線問題。",
+        "yes_readers": 1
+      }
+    ],
+    "failed": [],
+    "advisory": [],
+    "problems": [],
+    "readers": [
+      {
+        "passed": false,
+        "answers": [
+          {
+            "id": "scene_first",
+            "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56001] 福斯特站在南支河東岸；[s56002] 定在 1871 年十月八日；[s56003] 他剛走過橋；[s56004] 主火仍在對岸。前四句已是一個具體時刻。"
+          },
+          {
+            "id": "no_spoiler",
+            "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56006] 至 [s56013] 只問身後街道、磚石街區、下一座橋與天亮前的安全界線；東岸新火、橋起火與最後避難結果留到 [s56073]、[s56136]、[s56166]。"
+          },
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": true,
+            "evidence": "預告式開場後，[s56014] 回到前夜，再由 [s56040] 星期日晚、[s56145] 星期一早、[s56166] 星期二凌晨順行；兩位目擊者都追同場火沿安全界線推進。"
+          },
+          {
+            "id": "no_toc",
+            "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56009] 至 [s56013] 預告的是火在人物周圍將造成的具體疑問；[s56053]、[s56069]、[s56115] 也以事件和未解結果推進，沒有宣告章節順序或列出內容清單。"
+          },
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56041] 火鈴接到 [s56042] 福斯特放下書；[s56069] 河的疑問接 [s56070] 過河；[s56092] 磚石失守的疑問接 [s56093] 抵達商業區；[s56116] 洛許回屋接 [s56117] 房客搬行李；[s56144] 缺水疑問接 [s56145] 水廠燒毀。"
+          },
+          {
+            "id": "open_loops",
+            "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+            "required": true,
+            "yes": true,
+            "evidence": "正文相隔短於九十秒反覆留下待解問題，例如 [s56039] 木街面、[s56051] 哪片屋頂、[s56069] 河岸、[s56102] 行李、[s56144] 救火水量、[s56156] 乾草地。"
+          },
+          {
+            "id": "payoffs",
+            "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+            "required": true,
+            "yes": true,
+            "evidence": "較遠的開場懸念有點名回收：[s56007] 背後房屋由 [s56073]『還記得開頭』帶出新火；[s56012] 北側居民由 [s56129] 點名洛許所見；[s56011] 下一座橋由 [s56136] 橋起火回答。近距疑問如 [s56165] 的雨則在 [s56166] 直接回答。"
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s56090] 已說福斯特以為市中心堅固房屋會擋火；跨章後 [s56095] 又說他當時真以為火過不來。這是同一判斷的再次敘述，中間沒有點名回呼。"
+          },
+          {
+            "id": "chapters_are_events",
+            "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+            "required": false,
+            "yes": true,
+            "evidence": "章名都指向事件：『風把燃燒木塊送到前面』由 [s56042] 起，『水後方冒出另一處火』由 [s56070] 起，『北側的橋也成了火場』由 [s56117] 起，『抽水站毀後等到雨來』由 [s56145] 起；沒有功能型章名。"
+          },
+          {
+            "id": "outro_no_next",
+            "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+            "required": true,
+            "yes": true,
+            "evidence": "結尾 [s56172] 至 [s56176] 回答河作為界線的疑問並收在『站到河對岸，也不等於站到火的終點』，沒有提下一支影片、下一集或下一份檔案。"
+          },
+          {
+            "id": "opening_hooks",
+            "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+            "required": true,
+            "yes": true,
+            "evidence": "第一場景之後，[s56007] 問身後房屋是否先冒煙，[s56010] 問磚石街區能否擋火，[s56011] 問另一座橋是否安全，[s56012] 問北側居民回頭看見什麼；都停在後文結果之前。"
+          },
+          {
+            "id": "one_thread",
+            "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+            "required": true,
+            "yes": true,
+            "evidence": "具體難題是逃難者能否靠一條界線避火；[s56003] 福斯特過河，[s56090] 寄望磚石，[s56136] 北側橋起火，[s56156] 洛許又面對乾草地，至 [s56173] 至 [s56176] 回到界線的答案。"
+          },
+          {
+            "id": "no_detour",
+            "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56034] 至 [s56039] 木造街面交代飛火可燃處，[s56078] 至 [s56087] 新火把退路逼向市區，[s56157] 至 [s56167] 草地防線與雨回答最後一處避難是否守住；各段仍推進開場的安全界線問題。"
+          }
+        ],
+        "failed": [
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s56090] 已說福斯特以為市中心堅固房屋會擋火；跨章後 [s56095] 又說他當時真以為火過不來。這是同一判斷的再次敘述，中間沒有點名回呼。"
+          }
+        ],
+        "advisory": [],
+        "problems": [
+          "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[s56090] 已說福斯特以為市中心堅固房屋會擋火；跨章後 [s56095] 又說他當時真以為火過不來。這是同一判斷的再次敘述，中間沒有點名回呼。）"
+        ]
+      },
+      {
+        "passed": false,
+        "answers": [
+          {
+            "id": "scene_first",
+            "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56001] s56001–04 puts Foster on the east bank of the South Branch on 8 October 1871, having just crossed the bridge with the fire opposite him."
+          },
+          {
+            "id": "no_spoiler",
+            "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56006] s56006–13 asks whether fire will appear behind him and whether brick streets or another bridge will hold; the opening gives none of those outcomes."
+          },
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56014] After the permitted opening flashback, the same fire advances from the west bank through Foster's crossings and the North Side witnessed by Losch; events move forward in time."
+          },
+          {
+            "id": "no_toc",
+            "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56009] The opening and chapter bridges pose questions about concrete places and actions; they do not announce an outline or recite an upcoming list."
+          },
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56014] The next chapters take up the preceding object or question: the earlier river fire at s56014, Foster after the bell at s56042, the east bank at s56070, brick streets at s56093, Losch at s5611"
+          },
+          {
+            "id": "open_loops",
+            "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56029] Unanswered questions recur well inside 90 seconds, including the river at s56029, the roof at s56057, the east-bank fire at s56069, stone buildings at s56092, and the North Side bridge at s56"
+          },
+          {
+            "id": "payoffs",
+            "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56073] The house behind Foster catches at s56073–79, the church roof at s56058–63, stone buildings at s56103–08, the northern bridge at s56136–38, and the threatened grassland is spared by rain at s"
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56073] The repeated east-bank and northern-resident moments are named callbacks at s56073 and s56129, followed by new outcomes; later returns to flying debris occur in new locations rather than rete"
+          },
+          {
+            "id": "chapters_are_events",
+            "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+            "required": false,
+            "yes": true,
+            "evidence": "[s56070] Headings name developments such as a new fire behind the water, the stone city hall failing, and rain after the pumping station's loss."
+          },
+          {
+            "id": "outro_no_next",
+            "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56172] s56172–76 closes on the limits of the river as a safety line, with no mention of another episode or film."
+          },
+          {
+            "id": "opening_hooks",
+            "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56007] After the riverbank scene, s56007, s56010–11, and s56012 preview distinct later moments: houses behind Foster, the brick quarter and bridge, and a North Side resident's view; each withholds i"
+          },
+          {
+            "id": "one_thread",
+            "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+            "required": true,
+            "yes": true,
+            "evidence": "[s56001] The concrete problem is where a fleeing resident can stand beyond the advancing fire: Foster tests the river, stone district, and North Side, while Losch carries the same fire's northern adva"
+          },
+          {
+            "id": "no_detour",
+            "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s56153] s56153–71 spends about two minutes on Losch's grassland shelter, furrows, fence posts, wet clothes, rain, and sleep after the river-crossing mechanism and northern bridge are resolved at s560"
+          }
+        ],
+        "failed": [
+          {
+            "id": "no_detour",
+            "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s56153] s56153–71 spends about two minutes on Losch's grassland shelter, furrows, fence posts, wet clothes, rain, and sleep after the river-crossing mechanism and northern bridge are resolved at s560"
+          }
+        ],
+        "advisory": [],
+        "problems": [
+          "no_detour：是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？（[s56153] s56153–71 spends about two minutes on Losch's grassland shelter, furrows, fence posts, wet clothes, rain, and sleep after the river-crossing mechanism and northern bridge are resolved at s560）"
+        ]
+      }
+    ]
+  }
+}
