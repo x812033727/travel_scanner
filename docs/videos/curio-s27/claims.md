@@ -5,7 +5,7 @@
 FRANK、WARD、HKM《哈康之歌》、HEIMS《海姆斯克林拉》英譯、COMMONS、WP 維基百科，二手）；第 42–47 列是寫稿前依覆核補進表裡的（VIKING2021 的出土時間表、
 Doepler 的女武神設計稿、FRANK p. 205「反過來」、Ballantyne 原文）。查核日期一律 2026-10-20；網址在 `video.json` 的 `sources`。
 行號是 `s27_build.py` 重編後的輸出號碼。沒列出的句子是問句、轉場、回呼或鉤子（vk106、vk111、vk113、vk202、vk214、vk219、vk224、vk309、vk314、vk315、vk321、
-vk327、vk407、vk411、vk418、vk429、vk503、vk505、vk507、vk510、vk511、vk512），不帶新事實。
+vk327、vk407、vk411、vk418、vk429、vk503、vk505、vk507、vk508、vk509），不帶新事實。
 
 | 行 | 旁白（節錄） | 列 | 出處 | 狀態 |
 | --- | --- | --- | --- | --- |
@@ -71,5 +71,4 @@ vk327、vk407、vk411、vk418、vk429、vk503、vk505、vk507、vk510、vk511、
 | vk428 | 一九〇〇年，這對角已經成了維京人的招牌 | #38 | FRANK p. 200「By 1900, the one artifact that … was never connected with vikings had become their signal distinction.」 | 確認 |
 | vk501 vk502 | 一九六一年，美國的明尼蘇達維京人第一季開打，球員的頭盔側面就畫上了一對角 | #41 | WARD「painted horns on the side of the helmet」；覆核：WP〈Minnesota Vikings〉1961 年開打、角從首季就有 | 覆核：說「1961 年開打」，不說 1961 年取得球隊；不畫隊徽 |
 | vk504 | 史密森尼辦維京展，紀念品店想進一批維京商品，卻很難訂到沒有角的 | #41 | WARD「our museum sales shop had trouble ordering Viking-related merchandise that did not have horned helmets」 | 確認（回收 vk112）；第 41 列備註寫史密森尼 |
-| vk506 | 挪威的維京時代博物館說：維京人的戰鬥頭盔，從來沒有裝過角這麼不實用的東西 | #40 #12 | VTM「Viking battle helmets never had anything as impractical as horns.」 | 掛名的說法；不用旁白自己的口吻 |
-| vk508 vk509 | 因為維京人的頭盔，本來就沒有角；角，是十九世紀的人，從古書和舞台上，一路借過來的 | #12 #15 #16 #30 #36 #46 | 結檔句：S27.md (a) 依覆核改過的版本（不再說借自青銅祭器） | 存檔；結論只講這一次 |
+| vk506 | 它本來就沒少什麼；少的那對角，是十九世紀的人，後來才替維京人戴上的 | #12 #15 #16 #30 #36 #46 | 結檔句：S27.md (a) 依覆核改過的版本，濃縮成一句（不再說借自青銅祭器） | 存檔；結論只講這一次 |
