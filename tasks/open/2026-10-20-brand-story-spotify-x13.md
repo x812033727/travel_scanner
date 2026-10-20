@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-brand-story-spotify-x13
 title: Brand story Spotify X13
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: codex-review
+claimed_at: 2026-10-20T23:37:39Z
 created_at: 2026-10-20T20:01:30Z
 completed_at:
 branch: codex/brand-story-spotify-x13
@@ -39,7 +39,8 @@ The owner asks to continue making missing-brand films, with a new PR then the ne
 - [x] Independently audit v9 against SEC originals and obtain two wholly fresh blind narrative ballots on the same video/Shorts hashes; the shared Q8 NO requires another revision.
 - [x] Revise to v10, re-freeze and obtain new independent source and two genuinely blind story ballots; shared narrative failures require another revision.
 - [x] Revise to v11 and re-freeze the offline author packet after the v10 shared Q7/Q8/Q13 HOLD.
-- [ ] Obtain new independent source and two genuinely blind story ballots on v11 before a truthful draft PR.
+- [x] Obtain new independent source and two genuinely blind story ballots on v11; shared narrative Q8/Q13 failures require another revision.
+- [ ] Revise to v12 and obtain new exact-SHA source and two genuinely blind story ballots before a truthful draft PR.
 - [ ] Produce and QA film and Shorts with official branding/audio/CC within budget as available; submit a truthful draft PR for the approved offline packet, then continue the next missing brand.
 
 ## How to verify
@@ -85,3 +86,5 @@ Task-board coordination: v9 root used `claim --force` only because the Spotify t
 **V10 independent outcome:** [SEC audit](../../docs/videos/story-everyday-spotify-x13/reviews/script-source-audit-v10-independent.md) re-fetched S1–S9 with matching raw bytes/SHA and passed the frozen JSON, cards, Shorts and publishing claims, subject to targeted retrieval beyond the worker's 40k-character preview. Two truly fresh [blind A](../../docs/videos/story-everyday-spotify-x13/reviews/blind-a-v10-independent.md) / [blind B](../../docs/videos/story-everyday-spotify-x13/reviews/blind-b-v10-independent.md) both answered mandatory Q7, Q8 and Q13 **No**: long-range opener questions lack explicit return, €308m/+€42m are repeated without a marked callback, and the company-wide 2024 profit detour interrupts the podcast-retreat answer. A also answered Q3 and Q12 No. Both Shorts stand alone on paper. Therefore v10 narrative is **HOLD**; v11 should repair the common findings and ideally make the player/creator action more tangible without inventing a real show or unsupported causal link. Any edit needs a new freeze, source review, and two new first-blind votes. No paid media, finished film, real links or PR exists for X13.
 
 **V11 author checkpoint, 2026-10-20:** [response](../../docs/videos/story-everyday-spotify-x13/reviews/author-response-v11.md) records the exact v10 repair: explicit callbacks at `x130403`/`x130601`/`x130605`, no repeated €308m or +€42m spoken figures, no S6 full-company annual-result narration/card, and a more concrete illustrative recording/player action between chapters. S6/S8 remain source-matrix background only; Shorts scripts are unchanged and still map to valid main `shot` scenes. Frozen `video.json` SHA-256 `5d38f42b8c8de9af92d4c944fc2d56bb2bcebd822fdf2c81d11199e691aa4614`, `shorts.json` `cfc0e99620da3884f459283b0a2e68a97d6801b8b9b3b9b7c8bbf35e93be9f30`; companion SHA values in episode README. Compiler: 112 lines, 99 shots, nine cards, 233 opening / 2,537 substantive written characters, lint 2,503 spoken units (~8:20 at 300/min). Offline lint 0/0; `episodeShortsProblems=[]`; both Shorts CLI validations PASS; docs-video tests 236/236; tasks check exit 0 with unrelated pre-existing warnings; `git diff --check` clean. **Still HOLD:** another agent's fresh-original source audit and two *new* first-blind narrative votes on exactly v11; later formal worker targeted source ingestion, measured TTS body >=8:00, media/audio/CC QA, official animation files and platform link receipts. No paid media, finished film, upload or PR exists for X13.
+
+**V11 independent outcome:** [SEC audit](../../docs/videos/story-everyday-spotify-x13/reviews/script-source-audit-v11-independent.md) independently re-fetched S1–S9 with exact raw bytes/SHA and passed the frozen main, cards and Shorts facts, retaining the formal worker's >40k targeted-uptake requirement. Two truly fresh [blind A](../../docs/videos/story-everyday-spotify-x13/reviews/blind-a-v11-independent.md) / [blind B](../../docs/videos/story-everyday-spotify-x13/reviews/blind-b-v11-independent.md) each scored 6/10 and both answered mandatory Q8/Q13 **No**. `x130608` repeats the 2020 Ad-Supported classification without a named callback; B also flags `x130622` revoicing creator-payment eligibility. The long 2024 Ad-Supported/Premium margin passage explicitly cannot reveal whether a podcast program continued, and its music-ad/Premium asides interrupt the partial-retreat → new-video-program question. A also answered Q12 No because this passage loses the continuous podcast decision thread; B passed Q12. Both Shorts stand alone, though Short 2 should say its euro unit aloud. Thus v11 narrative is **HOLD**. V12 should reduce the 2024 non-podcast financial bridge to two or three bounded sentences, move promptly to documented 2025 creator/listener actions, remove unmarked fact repeats, preserve a substantive >=8-minute paper body using sourced story movement rather than more account recaps, and re-freeze for new source/two new blind votes. No paid media, official bumper assets, finished film, upload, true links or PR exists for X13.
