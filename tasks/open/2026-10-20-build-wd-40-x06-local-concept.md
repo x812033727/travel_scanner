@@ -111,7 +111,7 @@ re-read against the actual narration and curio-episode illustration rule found
 neither contradicted a spoken/source fact, showed legible print or logo, or
 drifted from cute-mystery. The initial strict gate is preserved as history;
 both selected frames are now provisionally usable, making **7/78** in total.
-Main media ledger is now
+At that stage the main media ledger was
 US$0.3780 (28 images, 28 judge calls, zero reservations), while STOP remains.
 The prior pilot's manifest, ledger, gate and vulnerable image filenames were
 archived under `review/local-preview/v1-pilot-evidence/` before merging the
@@ -130,3 +130,68 @@ US$0.1215 pilot ceiling. The current 10/78 selected frames include the exact
 prior seven takes unchanged. Main ledger: US$0.4590, 34 image/34 judge calls,
 zero reservations. Main STOP remains; any further drawing must use bounded
 shot allowlists in an isolated work volume and recheck live quota/budget first.
+
+Two serial isolated 12-shot batches followed without moving main STOP.
+Batch 1 spent 17 MiniMax/17 judge calls, US$0.2295, and all 12 selected frames
+passed judge and human viewing. Batch 2 spent 21 MiniMax/21 judge calls,
+US$0.2835; of its 12 selected frames, 10 are provisionally usable, one
+(`x06-b03-s07`) failed all three judge attempts because of a red signature-like
+watermark, and one (`x06-b03-s12`) is held on independent full-size inspection
+because a shop sign has clear Chinese-like characters despite judge PASS.
+All takes and the collision-prone historical files were retained with
+SHA-bound gates outside git. The current main ledger is **US$0.9720**
+(72 images, 72 judge calls, zero reservations); **32/78** illustrations are
+provisionally usable, two are HOLD and 44 are unattempted. Main STOP remains.
+
+A two-prompt v3 proposal at `reviews/visual-v3-offline-proposal.md` changes
+only the two HOLD shots, freezing new video SHA
+`931efad38297c832fd11a2aedfc12cc2ef5c61373e36632a1fcd916dbdf0fc68`.
+The 93-scene non-prompt JSON is deeply equal to the prior version, and lint
+reports 0 errors/0 warnings. The independent prompt-only PASS is
+`reviews/visual-v3-independent.md` (SHA `5ab635105dc384bbec80b4f32346697247c0ebdcdcff539391674f7b436c84a7`).
+A zero-cost bridge to visual hash `1ceea6211d4c482a` verified all 32
+previously usable take objects, prompts and original image hashes unchanged;
+the two old HOLD entries were archived and removed from the active manifest.
+Bridge receipt SHA `14f66c1f9177df1c01b82d72a9d6d88b175e80d385c9e52dddbf2a7e4669dbd2`;
+current manifest SHA `66e2f7a1d0fbbd28fc1b9392c06bd8511a96aa328db21b98b1722b37173a9d03`,
+current STOP gate SHA `8c0dcc76b7b48ceabc96a19636784f22f986ce933ef6f2e194a0abcf5c4e8e0f`.
+The ledger remains unchanged at US$0.9720, 72 image/72 judge calls, zero
+reservations. Site music quota
+remains zero; a matching owner-generated X03 Lyria track passed provenance
+dry-run for a labeled local concept reuse, not official music approval.
+After batch 2, live judge quota was 342; X06 worst-case remaining demand is
+132 for 44 new shots plus up to 6 for reviewed HOLD retries. X09 needs at least
+99 calls and X05 also uses the same site, so X06 paid stage stays paused until
+cross-episode capacity is established. X05 reported 300 remaining site judge
+calls at 19:40 UTC and will cap its next use near 63, preserving X06's 138
+worst-case calls and X09's 99. Check quota afresh before each isolated batch.
+No MP4 or Studio link exists.
+
+The v3 two-shot retry used exactly three MiniMax images and three judge calls
+for US$0.0405. `x06-b03-s07` take 2 is provisionally usable at SHA
+`34497aa6adbf808f7b5818d94fea011904121f97710e2bc31511f5f79266abc9`;
+the independent full-size read agreed the unlabeled Y-track graphic neither
+contradicts narration nor contains text, logo or watermark. `x06-b03-s12`
+take 1 passed the judge but remains HOLD at SHA
+`e87f305702162306a9f2c7e59219603cf4008edbc035d48e20d8c677c29cb5c0`:
+two childlike figures and a full-size counter imply an actual sale instead
+of the company's future plan. Main ledger is US$1.0125 (75 image/75 judge,
+no reservations), 33/78 frames provisionally usable, one HOLD, 44 untried;
+main STOP remains. The old held files, new take evidence and bounded merge
+receipt are in the media workdir, with exact hashes in
+`reviews/local-preview-art-gate.md`. A new prompt-only review is required
+before reattempting the held shot. A serial isolated 12-shot batch of
+untried scenes then stopped at the first safe boundary because two of its
+first three selected scenes each failed all three judge takes on incorrect
+people, props or actions. The fourth scene had one paid image but no judge
+call or manifest selection when STOP was seen; its original file and
+US$0.0035 cost are preserved. That batch spent 8 images/7 judge calls,
+US$0.0980, and only `x06-b03-s15b` passed both judge and full-size human
+viewing; the independent read also agreed. Main ledger is now **US$1.1105**
+(83 images, 82 judge calls, zero reservations), 34/78 provisional usable,
+3 HOLD (`s12`, `s16`, `s02`) and 41 unattempted. Main STOP remains. Exact
+media receipt, selected-file hashes and cost evidence are in
+`reviews/local-preview-art-gate.md`. The site judge quota was 246 after
+the stop: X06's remaining worst case 132 plus X09's 99 leaves only 15
+headroom, so no broader paid art batch is warranted without a reviewed
+prompt strategy and renewed shared quota plan.

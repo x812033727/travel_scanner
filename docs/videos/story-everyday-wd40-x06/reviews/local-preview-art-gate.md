@@ -128,3 +128,140 @@ manifest SHA-256
 前一輪 manifest、ledger、人工關卡另存於
 `review/local-preview/family-pilot-evidence/`。現在 10/78 張暫可用，
 主 STOP 及 68 張尚未完成的畫面關卡保留；不是最終畫面或發布核准。
+
+## 限定產圖第 1 批：12 鏡
+
+從同一個已審稿 SHA
+`d1ac6f93e15396813dda6ac2d76028f6539be2d746d647d1fd44e4790dd5d0c5`
+的未試鏡抽出 `x06-b01-s04,s06`、`x06-b02-s04,s05,s07,s07b,s08,s09,s10`
+及 `x06-b03-s01,s01b,s02`；隔離 `--shot` 12 鏡、`--takes 3`，
+乾跑確認最壞 36 張／36 評審、US$0.4860。實際 17 張／17 評審，
+增量 **US$0.2295**，12 鏡入選全部 judge PASS 且原尺寸人工檢查
+暫可用。`x06-b02-s08` 和 `x06-b03-s02` 都用到第 3 take，
+其餘未入選原 take 留存。`x06-b02-s09` 背景有不可辨的模糊店面筆畫，
+沒有清晰可讀字或商標，按系列準則保留。
+
+合回時核對舊 10 張選圖與 68 筆帳本前綴完全相同；11 個歷史影格
+檔名碰撞先封存原圖到 `review/local-preview/batch01-evidence/`
+再覆寫新 take。合回 ledger **US$0.6885／51 圖／51 評審／未結 0**，
+SHA-256 `685a5ea595407bc4aa293339183bcfc90da07fb7c7624083b71ce1cf29ec67ab`；
+manifest SHA-256
+`94c29ae0864674af1f021bda5f53a5e430ad77783ff8abc903cff85a9de4733f`；
+人工關卡 `review/local-preview/batch01-art-gate-2026-10-20.json`
+SHA-256 `9ad814b920a839e10a4b832486d884155d0cced5d9a6bc8a0b2c16c9d4abd2af`。
+全片當時 **22/78** 張暫可用，主 STOP 保留。
+
+## 限定產圖第 2 批：12 鏡、2 HOLD
+
+再以隔離 `--shot` 限 `x06-b03-s03,s04,s05,s05b,s07,s08,s10,s11,s12,s13,s14,s15`，
+每鏡最多三次；實際 21 張／21 評審，增量 **US$0.2835**。
+11 張入選 judge PASS，但其中一張被人工拒收；另一張三次都被
+機器判退：
+
+| 鏡頭 | 選圖 SHA-256／judge | 人工結論 |
+| --- | --- | --- |
+| `x06-b03-s07` | `23e5a22d5be03123e9b2ebdf494661859b0da73ec517a201e9deee3f3adec24a`／9.41 **FAIL** | 三張皆有右下紅色簽名樣 watermark；所選舊圖只作失敗證據，**HOLD／不可入片**。 |
+| `x06-b03-s12` | `27634002e04dd54132f3583351c7b10f887498fa8dc582cd04ced316239d780b`／9.29 PASS | 右上藍綠店招有兩個清晰漢字樣字形，獨立抽看也確認，**HOLD／不可入片**。 |
+
+其餘 10 張入選圖逐張原尺寸對照旁白與系列驗收標準，未見來源矛盾、
+可讀字／商標或畫風漂移，暫可用。合回前再次核對舊 22 個選圖物件
+與 102 筆舊帳相同；新 42 筆只屬這 12 鏡、未結 0。原 manifest、
+ledger、人工關卡在 `review/local-preview/batch02-evidence/`。
+主 ledger 現為 **US$0.9720／72 圖／72 評審／未結 0**，SHA-256
+`96f6ce31fb1cbe5cc25230b4042aba29855124c770118b544fc9b81e3ed44171`；
+manifest SHA-256
+`ed89706cd41410e1d5c90d847f7879292f84d7d79c786f589d5ecfdaba091c5a`；
+含全部 34 鏡逐張狀態的
+`review/local-preview/batch02-art-gate-2026-10-20.json` SHA-256
+`89e0595ad7198af86bfbededd8121e5beaecdc2e227315aba5046abf35ff80f7`。
+**32/78** 暫可用、2 HOLD、44 未試，主 STOP 保留。
+
+第二批後站點剩圖片 1,644、評審 342、配樂 0。44 未試若每鏡最多三次
+需要最多 132 次評審；兩個 HOLD 待新 prompt 獨立審查後若各三次，
+另需最多 6 次。X09 至少保留 99 次，X05 正在用同站額度，因此
+第三批在跨集容量核定前不啟動。兩鏡 prompt-only 改稿的差異、
+失敗原因與新 SHA 見 `visual-v3-offline-proposal.md`；舊圖不會因
+改稿而自動通過，仍待有界重試。
+
+## v3 提示詞審查與安全橋接
+
+獨立差異審查 `visual-v3-independent.md` 為 prompt-only PASS，SHA-256
+`5ab635105dc384bbec80b4f32346697247c0ebdcdcff539391674f7b436c84a7`；
+新主片 SHA-256
+`931efad38297c832fd11a2aedfc12cc2ef5c61373e36632a1fcd916dbdf0fc68`，
+視覺 hash 從 `75d7afe80701ca12` 變成 `1ceea6211d4c482a`。
+零成本橋接逐一核對 32 張原已暫可用鏡頭的提示詞、選圖物件、原檔 SHA
+均未變，保留其原圖和判定。兩個舊 HOLD 選圖與失敗原因原封封存在媒體
+工作區 `review/local-preview/v3-bridge-evidence/`，從當前 manifest
+撤下，不能入片，也不會自動換成新 prompt 的通過圖。橋接憑據
+`review/local-preview/v3-bridge.json` SHA-256
+`14f66c1f9177df1c01b82d72a9d6d88b175e80d385c9e52dddbf2a7e4669dbd2`；
+新 manifest SHA-256
+`66e2f7a1d0fbbd28fc1b9392c06bd8511a96aa328db21b98b1722b37173a9d03`；
+STOP 狀態人工關卡 SHA-256
+`8c0dcc76b7b48ceabc96a19636784f22f986ce933ef6f2e194a0abcf5c4e8e0f`。
+總帳沒有變，仍為 US$0.9720、72 圖／72 評審、未結 0，SHA-256
+`96f6ce31fb1cbe5cc25230b4042aba29855124c770118b544fc9b81e3ed44171`；
+主 STOP 留在原位。現行 manifest 32 張暫可用、46 鏡待畫，其中兩鏡
+已有舊版失敗紀錄。此橋接由製作端做雜湊與原檔讀回，不自稱新的獨立
+畫面驗收；進一步產圖仍受即時跨集額度與 US$25 上限約束。
+
+## v3 兩鏡限定重試
+
+即時站點剩 296 次評審、X05／X09 預留確認後，從橋接後主工作區複製
+隔離工作區，只開 `x06-b03-s07,x06-b03-s12`、每鏡最多三次。
+`s07` 第 2 take 獲 judge PASS 9.29，原尺寸圖 SHA-256
+`34497aa6adbf808f7b5818d94fea011904121f97710e2bc31511f5f79266abc9`：
+無字 Y 形路線槽和手中小圓柱是仍待決定的通路象徵；獨立抽看同意
+沒有標籤、浮水印、商標或旁白矛盾，暫可用。`s12` 第 1 take 雖得
+judge PASS 9.29，SHA-256
+`e87f305702162306a9f2c7e59219603cf4008edbc035d48e20d8c677c29cb5c0`，
+卻畫了完整店櫃及兩個孩童樣人物，成人拿瓶面向他們，像已在實際
+銷售；口播只說「公司計畫」，故人工與獨立抽看均 **HOLD**。不在同一
+prompt 盲目加到三次，下一輪須先做另一次 prompt-only 審查。
+
+本輪實耗 3 圖／3 評審、US$0.0405；合回後總帳 **US$1.0125**、
+75 圖／75 評審、未結 0，SHA-256
+`8bab398fc1f1300470abf27b5ab951ab7e7b9ec61928ff2eac0d5c1143c9ce2c`。
+原兩景舊版失敗檔名先封存；所有原 32 張選圖物件與 144 筆舊帳
+完全相同。新 manifest SHA-256
+`2fe364e2c0555b5fc75965b3255e2e212c96f0440e6a03e2936b1fd047ee245a`；
+人工 gate SHA-256
+`453f1be82b8d9c0fb9a46c14a3a378520168312ef41eb1cf09bb8382e29f80d7`；
+單批憑據 `review/local-preview/v3-retry-art-gate.json` SHA-256
+`b1a2f7c3c1a332e4d98e45cb3d96edc69e9945db6009dd5bf82014ed26f7903e`。
+目前 **33/78** 暫可用、1 HOLD、44 未試，主 STOP 保留。
+
+## 第 3 批安全早停：3 鏡已選、1 鏡未評審
+
+先核站點 judge 剩 277、X09 保留 99、X05 承諾在安全邊界停止，
+從主工作區複製獨立批次，只允許 12 個尚未畫過的鏡頭，最多三次。
+前 3 鏡只有 `x06-b03-s15b` judge PASS 9.29，原尺寸選圖 SHA-256
+`045996f50012fbdd6a19670ec81ba4a0559bd28d0aa7f1c61242851786eb4729`；
+買家在兩側貨架比較無字物件，未見清晰字、商標或敘事矛盾，暫可用。
+
+`x06-b03-s16` 三次 judge 全退：多餘人物、紙袋替代海綿、未做上架
+動作，末張另有浮水印／游離物件。選圖 SHA-256
+`1a2cdbbd31db99256078870bf3e2179593118d769825413fed47c75aa95c9109`
+仍 HOLD。`x06-b04-s02` 三次也全退：額外購物者、紙包代肥皂、
+黑邊；選圖 SHA-256
+`ede0dd5e07feb1e3677834be7bc9ad28ab13f7e96e4f22ef60a53b90b387d658`
+只站在籃子旁，沒有口播要求的放入動作，仍 HOLD。隨即在隔離批次
+放 STOP，工人安全退出；下一鏡 `x06-b04-s02b` 已付費取回原圖，
+尚未送 judge、未入 manifest，原圖 SHA-256
+`cab2a38a2df9292c6ccad99d128866a3a16540c51a59a46511945f3a8eeb1b2d`，
+只作帳本及失敗風險證據，不能入片。其餘 8 個 allowlist 鏡頭從未送圖。
+
+隔離批次實耗 **8 圖／7 評審、US$0.0980**；舊 34 個選圖物件、
+150 筆舊帳與原檔 SHA 均核同後合回，未評審圖也留檔。主 ledger
+**US$1.1105／83 圖／82 評審／未結 0**，SHA-256
+`f74f080e0c970330826a0176f719f537ab9208fe2fc41cb6655df799a2d16679`；
+manifest SHA-256
+`efd4feabc68b8567104b3169308751a4f40d0aa84d2303521725c94818de5422`；
+STOP 人工關卡 SHA-256
+`95604af13c0082258c2ece11cde5f420a158b83fcd4d5625fb312529f8296804`；
+批次憑據 `review/local-preview/batch03-art-gate-2026-10-20.json`
+SHA-256 `6cfbbe7031d6a05f7c8d51bf4adcae4b91f93a39c1403a688e4008e333cc125e`。
+目前 **34/78** 暫可用、3 HOLD、41 未試。X05 已停止付費，站點
+judge 剩 246；X06 對 41 未試＋3 HOLD 的最壞新一輪需求 132，
+X09 至少保留 99，跨集緩衝僅 15 次。主 STOP 保留，暫停後續付費圖。
