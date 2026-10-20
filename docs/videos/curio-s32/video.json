@@ -1,0 +1,1508 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s32",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，清楚、自然地講一份中世紀旅行記如何被查核；版本和誰說的話稍放慢。",
+    "performance": "跟著一張紙幣從序言、遊記、元史到校注，切換書中說法、早明官史、尤爾十九世紀導論與 1903 修訂版時讓觀眾聽清說話者。不得把卡通畫面說成歷史照片。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "mp004",
+      "payoff": "mp032",
+      "what": "破鈔換新在遊記中要付多少"
+    },
+    {
+      "setup": "mp005",
+      "payoff": "mp046",
+      "what": "官史的換鈔費用如何寫"
+    },
+    {
+      "setup": "mp006",
+      "payoff": "mp051",
+      "what": "編者停在何種地標的遺漏"
+    },
+    {
+      "setup": "mp007",
+      "payoff": "mp071",
+      "what": "杭州查稅句的版本差異"
+    },
+    {
+      "setup": "mp016",
+      "payoff": "mp037",
+      "what": "鍊金術般說法有無制度可對讀"
+    },
+    {
+      "setup": "mp017",
+      "payoff": "mp018",
+      "what": "工匠取桑樹哪一層"
+    },
+    {
+      "setup": "mp023",
+      "payoff": "mp079",
+      "what": "方括號中的紅印從哪一版來"
+    },
+    {
+      "setup": "mp033",
+      "payoff": "mp046",
+      "what": "元史如何記破鈔換新費用"
+    },
+    {
+      "setup": "mp050",
+      "payoff": "mp051",
+      "what": "遊記沉默該如何看"
+    },
+    {
+      "setup": "mp060",
+      "payoff": "mp069",
+      "what": "哪句話更直接主張親歷"
+    },
+    {
+      "setup": "mp075",
+      "payoff": "mp076",
+      "what": "編者如何組成英譯本"
+    },
+    {
+      "setup": "mp083",
+      "payoff": "mp999a",
+      "what": "一張紙可替足跡證明到哪裡"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "一張紙幣，能證明馬可波羅到過中國嗎？｜奇聞檔案局",
+    "description": "一二九八年成書的《馬可波羅遊記》自稱有親眼見聞，也有從他人聽來的材料。書中詳細寫大汗的紙幣、換鈔及杭州鹽稅；早明編修的《元史》也留下元代鈔法與鹽法。這些能互證制度，能否同時證明作者親臨？\n\n本集使用一九〇三年 Yule–Cordier 英譯校注本及《元史》四庫本固定數位轉錄，分清遊記正文、編者插入的異文、編者推測與官史制度記載。紙鈔蓋印及偽造刑在英譯本的 Ramusio 版本方括號內；杭州查稅句也有不同版本。畫面為 AI 生成可愛卡通示意，不是古人肖像、紙鈔原物或牢房照片。\n\n資料截至 2026-10-20",
+    "tags": [
+      "馬可波羅",
+      "元朝",
+      "紙鈔",
+      "元史",
+      "遊記",
+      "忽必烈",
+      "杭州",
+      "史料查核",
+      "歷史名場面",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "紙幣\n**證足跡？**",
+      "tag": "歷史名場面",
+      "sub": "《遊記》對讀《元史》",
+      "shot": "mp003"
+    }
+  },
+  "sources": [
+    {
+      "title": "The Travels of Marco Polo, Yule–Cordier 1903, Volume 1, GITenberg fixed text",
+      "url": "https://github.com/GITenberg/The-Travels-of-Marco-Polo---Volume-1_10636/blob/813d6dffb6c2968664c573ed0f24242b919dfcbf/10636.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The Travels of Marco Polo, Yule–Cordier 1903, Volume 2, GITenberg fixed text",
+      "url": "https://github.com/GITenberg/The-Travels-of-Marco-Polo---Volume-2_12410/blob/95709397a514799b8bb9262bd918f19be61b009c/12410.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《元史》卷九十三〈食貨一·鈔法〉，Kanripo 四庫全書底本",
+      "url": "https://github.com/kanripo/KR2a0036/blob/e2cf641b7f57ad9847edca32c2b851c0e875ee4c/KR2a0036_093.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《元史》卷九十四〈食貨二·鹽法〉，Kanripo 四庫全書底本",
+      "url": "https://github.com/kanripo/KR2a0036/blob/e2cf641b7f57ad9847edca32c2b851c0e875ee4c/KR2a0036_094.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "mp001",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a late-thirteenth-century Genoese stone cell beside a rough bench, 一名十三世紀威尼斯成年旅人扶著空白羊皮紙說話, pale light through an iron grille",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp001",
+          "text": "一二九八年，熱那亞的牢裡，一本遊記說馬可波羅正請人記下他的話。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ],
+      "chapter": "牢房裡的一張紙幣"
+    },
+    {
+      "id": "mp002",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a narrow medieval Genoese prison passage with a plain writing board, 一名十三世紀義大利成年書寫者俯身捲起空白紙卷, faint light reflected from an open doorway",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp002",
+          "text": "記錄的人叫魯斯蒂謙；序言把書裡的材料分成親見和聽聞。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp003",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Yuan-era Chinese paper workshop with plain timber frames, 一名元代成年官員拿著一片素色紙料端詳, gentle overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp003",
+          "text": "有一頁竟說，大汗能把樹皮做成人人拿來交易的錢。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp004",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a walled courtyard near a Mongol-era papermaking shed, 一名元代成年市民攤開一張磨舊的素色紙片, pale morning sun",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp004",
+          "text": "那張錢皺了，書說還能拿去換新；官府會收多少錢？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp005",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an early-Ming Chinese records hall beside bundled scrolls, 一名明初成年書吏把兩卷空白帳冊並放在桌上, cool dawn light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp005",
+          "text": "後來有人攤開元朝的鈔法，卻在換鈔費用那一行停住。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp006",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a late-nineteenth-century European library table between tall shelves, 一名十九世紀成年編者對著一頁空白旅行書沉思, gentle side light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp006",
+          "text": "十九世紀英譯者尤爾指出，這部遊記漏掉一座著名地標。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp007",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a small book restoration desk beside a stack of travel accounts, 一名十九世紀成年編者並排攤開兩本無字古書, muted morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp007",
+          "text": "還有杭州那句像親身查過稅的話，被編者放到另一部抄本旁。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp008",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a contemporary archive table with three separated source folders, 一名現代成年研究者把無字紙片放在兩冊舊書中間, neutral overhead light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp008",
+          "text": "這張紙幣，究竟能替馬可波羅的足跡證明到哪裡？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp009",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a worn writing corner inside a medieval Genoese enclosure, 一名十三世紀義大利成年書寫者指向分開的兩卷空白紙, low winter light across rough stone",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp009",
+          "text": "開場那份序言還補充：聽來的事，馬可自稱出自可信之人。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ],
+      "chapter": "序言承認書裡也有聽來的事"
+    },
+    {
+      "id": "mp010",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a simple prison alcove beside a parchment stand, 一名十三世紀威尼斯成年旅人合起一本無字小冊, soft grey light falling from the left",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp010",
+          "text": "寫書的人沒有說，每一則故事都由他親自站在現場看見。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp011",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a late-thirteenth-century Genoese stone cell beside a rough bench, 一名十三世紀義大利成年書寫者把無字紙卷綁起來, pale light through an iron grille",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp011",
+          "text": "序言承諾把親見和聽聞分開記，這份承諾也要靠後面的內容檢查。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp012",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a public library reading desk beside a magnifying lens, 一名現代成年研究者抽出一本打開的無字舊書, clear diffuse light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp012",
+          "text": "那一章紙幣，正好讓這個差別變得尖銳。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp013",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a covered trading stall in a late-thirteenth-century Chinese city, 一名元代成年官員走向城內一間素樸造紙工坊, diffuse market light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp013",
+          "text": "開場那張錢，寫在大汗都城的製幣章；材料指向樹木。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp014",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a broad wooden storehouse beside an East Asian street, 一名元代成年匠人把空白紙片從木框上輕輕揭起, bright cloud-filtered light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp014",
+          "text": "他說大汗每年做出大量紙錢，幾乎不花成本，卻能拿來付帳。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp015",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a narrow medieval Genoese prison passage with a plain writing board, 一名十三世紀義大利成年旅人看著素色紙片露出驚訝神情, faint light reflected from an open doorway",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp015",
+          "text": "遊記把這項技術比作大汗掌握了鍊金術。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp016",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a paper conservation bench with simple cotton supports, 一名現代成年研究者把素色紙片置於放大鏡下, soft morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp016",
+          "text": "可它寫的是能查到的制度，還是只為讀者增加驚奇？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp017",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a quiet workbench in a Yuan counting office, 一名元代成年匠人把粗紙料攤在木桌上, low side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp017",
+          "text": "紙片還沒交給商人；工匠先取桑樹的哪一層，才能做出它？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp018",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Mongol-era riverfront trading walkway, 一名元代成年匠人剝下一段桑樹的內皮, misty afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp018",
+          "text": "遊記說，工匠取桑樹木與外皮之間的細層。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ],
+      "chapter": "大汗讓樹皮變成錢"
+    },
+    {
+      "id": "mp019",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a Yuan-era Chinese paper workshop with plain timber frames, 一名元代成年匠人用手托起一張深色無字紙片, gentle overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp019",
+          "text": "處理後的材料被做成黑色、近似紙張的薄片。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp020",
+      "template": "big",
+      "data": {
+        "kicker": "《遊記》卷一第24章",
+        "text": "**紙當錢**",
+        "sub": "面額用歐洲錢幣比擬"
+      },
+      "lines": [
+        {
+          "id": "mp020",
+          "text": "紙片再裁成不同大小；書裡用好幾種歐洲錢幣來比它們的面值。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp021",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a walled courtyard near a Mongol-era papermaking shed, 一名元代成年匠人把小紙片和大紙片隔開擺放, pale morning sun",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp021",
+          "text": "小額的紙片旁，還排著以金幣比價的高額紙片；紙重並不決定面值。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp022",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet research table under pale overhead panels, 一名現代成年研究者將兩套大小不同的空白籌碼隔開, mild neutral light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp022",
+          "text": "這是寫給歐洲讀者聽的換算語言，不能照抄成元朝鈔上的單位。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp023",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an old European map room with a slanted reading stand, 一名十九世紀成年編者用鉛筆圈出書上的一段空白方框, cool indirect light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp023",
+          "text": "一段被後來編者放進方括號的文字，還寫官員簽名、蓋紅印；它來自哪一版？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp024",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a narrow archive aisle near a leather-bound travel volume, 一名十九世紀成年編者把帶方框的素色頁面翻起, warm afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp024",
+          "text": "同一段也說，偽造者會被處死；方括號的來處，後面還得查清。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp025",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a covered trading stall in a late-thirteenth-century Chinese city, 一名元代成年商人把一張素色紙片交向畫面外, diffuse market light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp025",
+          "text": "章中接著聲稱，這些紙片在大汗的領土裡可以用來買賣。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp026",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a broad wooden storehouse beside an East Asian street, 一名元代成年官員把素色紙片交給畫面外的商人, bright cloud-filtered light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp026",
+          "text": "他甚至說，權勢再大的人也不敢拒收，違者會受死刑。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp027",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet workbench in a Yuan counting office, 一名元代成年官員把一張素色紙片遞向木櫃臺上的寶石盒, low side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp027",
+          "text": "大汗買進金銀、寶石與珍珠時，也照遊記的說法用紙片付給商人。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp028",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a Mongol-era riverfront trading walkway, 一名元代成年行商把合起的珠寶盒放在木櫃臺, misty afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp028",
+          "text": "從印度等地到來的商人，照書中說法只能把這些寶物賣給大汗；拿到紙片後怎麼辦？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp029",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a Yuan-era Chinese paper workshop with plain timber frames, 一名元代成年行商提起輕薄的無字紙包上路, gentle overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp029",
+          "text": "商人再拿紙片去買東西，往返途中還比金屬輕得多。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp030",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a contemporary archive table with three separated source folders, 一名現代成年研究者收起一張示意市場草圖, neutral overhead light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp030",
+          "text": "這些是遊記對通行範圍與交易方式的說法，不是每個市場的收據。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp031",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a walled courtyard near a Mongol-era papermaking shed, 一名元代成年市民把磨舊的無字紙片放在木櫃臺, pale morning sun",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp031",
+          "text": "開場那張皺了的錢，遊記說可以交回製幣處換新。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp032",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a covered trading stall in a late-thirteenth-century Chinese city, 一名元代成年官吏用算珠核對一張磨舊的無字紙片, diffuse market light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp032",
+          "text": "但換新要付費，遊記給的是面值的百分之三。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp033",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest early-Ming archive with a wide bamboo writing mat, 一名明初成年書吏攤開一卷無字官冊, bright light from a side opening",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp033",
+          "text": "若這是一條實際規則，元朝自己的鈔法會怎樣記它？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp034",
+      "template": "big",
+      "data": {
+        "kicker": "《元史》卷九十三",
+        "text": "**鈔法**",
+        "sub": "宋濂等早明史官編修"
+      },
+      "lines": [
+        {
+          "id": "mp034",
+          "text": "《元史》卷九十三翻到〈鈔法〉，先把紙幣放進更長的貨幣史。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ],
+      "chapter": "《元史》記下另一種換鈔費"
+    },
+    {
+      "id": "mp035",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a secluded historian desk amid Chinese wooden cabinets, 一名明初成年史官把幾卷無字底稿疊到書案上, warm late-afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp035",
+          "text": "這份官史是明初史官後來編成，並不是馬可波羅旅行時的隨身筆記。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp036",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a covered records courtyard in early-Ming China, 一名明初成年史官將一段無字長卷展開, soft reflected light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp036",
+          "text": "它寫到唐、宋、金已有相近制度，紙鈔不是大汗突然變出的新發明。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp037",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a broad wooden storehouse beside an East Asian street, 一名元代成年官員在素布與空白紙片間比對, bright cloud-filtered light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp037",
+          "text": "到了世祖中統元年，記錄說官府製作以絲為本的交鈔。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp038",
+      "template": "big",
+      "data": {
+        "kicker": "《元史》〈鈔法〉",
+        "text": "**中統元寶鈔**",
+        "sub": "面額從文到貫"
+      },
+      "lines": [
+        {
+          "id": "mp038",
+          "text": "同年又造中統元寶鈔，面值有十文、幾十文，也有按貫算的。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp039",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet workbench in a Yuan counting office, 一名元代成年工匠把一塊無字木版換成銅版, low side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp039",
+          "text": "印鈔版從木板改用銅板。後來再造新鈔，舊鈔值多少？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp040",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a public library reading desk beside a magnifying lens, 一名現代成年研究者把兩把不同形狀的素色籌碼分盤放好, clear diffuse light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp040",
+          "text": "這些是官史用的文和貫，與遊記拿歐洲錢幣比的說法並不相同。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp041",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a Mongol-era riverfront trading walkway, 一名元代成年官員把新舊兩疊無字紙片並置, misty afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp041",
+          "text": "至元二十四年，官史記下一次改造；新鈔和舊鈔仍同時通行。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp042",
+      "template": "big",
+      "data": {
+        "kicker": "《元史》〈鈔法〉",
+        "text": "**至元一貫＝中統五貫**",
+        "sub": "原文：每一貫文當中統鈔五貫文"
+      },
+      "lines": [
+        {
+          "id": "mp042",
+          "text": "新鈔一貫可當舊鈔五貫；即使都叫紙鈔，也要分清是哪一批。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp043",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a Yuan-era Chinese paper workshop with plain timber frames, 一名元代成年商人低頭數著散在桌上的素色紙片, gentle overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp043",
+          "text": "官史說物價上漲、紙鈔不值錢，於是有了這次換制。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp044",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an early-Ming Chinese records hall beside bundled scrolls, 一名明初成年史官指向無字官冊旁的封印泥盒, cool dawn light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp044",
+          "text": "遊記方括號裡的偽造處死，官史同樣寫到這項處置。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp045",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a walled courtyard near a Mongol-era papermaking shed, 一名元代成年官吏把磨舊紙片換成平整紙片, pale morning sun",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp045",
+          "text": "破舊紙鈔可以換新，在兩份文本裡都找得到；官史又收多少工墨？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp046",
+      "template": "big",
+      "data": {
+        "kicker": "《元史》〈鈔法〉",
+        "text": "**工墨三十文**",
+        "sub": "三年減為二十文；二十二年復增如故"
+      },
+      "lines": [
+        {
+          "id": "mp046",
+          "text": "開場那筆換鈔費，官史叫工墨：三十文，後來減為二十文，再調回原額。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp047",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a covered trading stall in a late-thirteenth-century Chinese city, 一名元代成年官吏把磨舊的無字紙片放進封口木盒, diffuse market light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp047",
+          "text": "各地收回的舊鈔，官史還說要定期送交焚毀。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp048",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a paper conservation bench with simple cotton supports, 一名現代成年研究者把兩張不同刻度的空白算表分開, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp048",
+          "text": "遊記的百分之三，和官史的文數，不具備直接等同的單位。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp049",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet research table under pale overhead panels, 一名現代成年研究者把兩冊書打開在同一桌面, mild neutral light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp049",
+          "text": "換鈔存在這件事得到了互證，費率對照卻還沒有答案。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp050",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a late-nineteenth-century European library table between tall shelves, 一名十九世紀成年編者望著多卷旅行書出神, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp050",
+          "text": "就算制度確實存在，那本遊記沒寫的事又該怎麼看？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp051",
+      "template": "big",
+      "data": {
+        "kicker": "Yule 導論 §71",
+        "text": "**長城未見正文**",
+        "sub": "編者對其校本的觀察"
+      },
+      "lines": [
+        {
+          "id": "mp051",
+          "text": "開場那座沒被提到的地標是長城；尤爾說遊記正文沒有寫到。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ],
+      "chapter": "編者在書頁裡看到空白"
+    },
+    {
+      "id": "mp052",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a small book restoration desk beside a stack of travel accounts, 一名十九世紀成年編者把一張空白茶葉素描移到書旁, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp052",
+          "text": "他還列出茶和纏足；馬可經過的地方，為何沒留下這些描寫？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp053",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an old European map room with a slanted reading stand, 一名十九世紀成年編者收起一張問號形的無字書籤, cool indirect light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp053",
+          "text": "編者沒有把這個沉默直接判成「沒到過」。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp054",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a narrow archive aisle near a leather-bound travel volume, 一名十九世紀成年編者看著幾位不同服飾人物的素描卡, warm afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp054",
+          "text": "他的推測是，馬可在中國接觸的人，主要可能是外來者。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp055",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a late-nineteenth-century European library table between tall shelves, 一名十九世紀成年編者把三張無字地圖卡攤開, gentle side light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp055",
+          "text": "他注意到，書中的不少地名採蒙古、突厥或波斯讀法；這能說明他究竟遇見了誰嗎？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp056",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a contemporary archive table with three separated source folders, 一名現代成年研究者把一張人物圖卡放回資料夾, neutral overhead light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp056",
+          "text": "這個推測仍是編者的解釋，不是遊記自己交出的交友名單。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp057",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a small book restoration desk beside a stack of travel accounts, 一名十九世紀成年編者並排翻看兩卷無字手抄本, muted morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp057",
+          "text": "尤其這部遊記並非只有一份從頭到尾相同的文本。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp058",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an old European map room with a slanted reading stand, 一名十九世紀成年編者把第三本無字旅行記放上桌, cool indirect light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp058",
+          "text": "還記得開場那張紙嗎？編者另列出其他歐洲作者也寫過紙幣。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp059",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a public library reading desk beside a magnifying lens, 一名現代成年研究者把素色紙片和幾本書拉開距離, clear diffuse light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp059",
+          "text": "因此，紙幣細節值得比對，卻不是只有現場目擊者才可能聽來的消息。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp060",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a paper conservation bench with simple cotton supports, 一名現代成年研究者轉向另一冊打開的古書, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp060",
+          "text": "如果連這項知識都能傳開，有沒有一段話更直接說馬可曾替大汗辦事？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp061",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a Yuan-era Jiangnan canal market with plain cloth awnings, 一名元代成年行商走在有河道的江南市集旁, clear coastal morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp061",
+          "text": "卷二的杭州段，似乎找到一份更直接的履歷；先看它寫的大汗收入。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ],
+      "chapter": "杭州的查稅句換了說法"
+    },
+    {
+      "id": "mp062",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a shallow East Asian salt pan beside a low wooden shelter, 一名元代成年鹽商檢看一袋白色粗鹽, bright haze from the shore",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp062",
+          "text": "其中的鹽，被遊記形容為一筆龐大的進項。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp063",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a late-thirteenth-century Chinese harbor stall near moored boats, 一名元代成年鹽工用木耙整理淺鹽池, cool sea-reflected light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp063",
+          "text": "書中還描寫海邊鹽田、蒸發成鹽的做法；這段方括號也有版本邊界。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp064",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest early-Ming archive with a wide bamboo writing mat, 一名明初成年史官攤開一卷無字鹽課帳簿, bright light from a side opening",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp064",
+          "text": "官史卷九十四確有鹽法，也記江南歸元之後鹽課的重要。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp065",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a Mongol-era riverside salt office with a plain weighing bench, 一名元代成年鹽務官把素色鹽袋放到木秤旁, soft cloud-filtered light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp065",
+          "text": "兩浙設鹽運司及逐年辦鹽的記錄，也在官史裡。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp066",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a secluded historian desk amid Chinese wooden cabinets, 一名明初成年史官把不同厚度的兩冊無字鹽簿疊起, warm late-afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp066",
+          "text": "兩浙一年辦鹽的數量後來有增有減。遊記的帳能和官史直接對上嗎？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp067",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet research table under pale overhead panels, 一名現代成年研究者把兩套無字帳簿分開, mild neutral light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp067",
+          "text": "兩本書因此都說到鹽政，但帳目使用的單位並不一樣。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp068",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a contemporary archive table with three separated source folders, 一名現代成年研究者推開一張未完成的空白算表, neutral overhead light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp068",
+          "text": "沒有可靠換算，就不能說那筆收入的數目對得上。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp069",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Yuan-era Jiangnan canal market with plain cloth awnings, 一名元代成年官員獨自檢看一卷素色稅簿, clear coastal morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp069",
+          "text": "更關鍵的是，遊記有一版說馬可曾受大汗派遣，查過當地收入。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp070",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a public library reading desk beside a magnifying lens, 一名現代成年研究者把一張身份標籤卡放在書旁, clear diffuse light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp070",
+          "text": "這句若被當成履歷，聽起來比描述紙幣還像「本人到過」。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp071",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a narrow archive aisle near a leather-bound travel volume, 一名十九世紀成年編者用指尖停在一本無字書頁上, warm afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp071",
+          "text": "開場那句像親身查稅的話，校注說「受派」似乎只見一部法文校本；另一版怎麼寫？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp072",
+      "template": "big",
+      "data": {
+        "kicker": "第78章編者註",
+        "text": "**受派／聽聞**",
+        "sub": "Pauthier 與法文 G 本異文"
+      },
+      "lines": [
+        {
+          "id": "mp072",
+          "text": "另一個法文 G 本說的是：馬可多次聽人計算這些收入。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp073",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a paper conservation bench with simple cotton supports, 一名現代成年研究者把兩張空白人物定位卡分開, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp073",
+          "text": "「被派去查」和「聽見有人計算」，會把同一人放在不同位置。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp074",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a quiet research table under pale overhead panels, 一名現代成年研究者抽走一張無字官員名牌, mild neutral light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp074",
+          "text": "所以這句不能當成他確曾替可汗查稅的單一證明。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a late-nineteenth-century European library table between tall shelves, 一名十九世紀成年編者翻到舊書前言, gentle side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp075",
+          "text": "這部英譯本的前面，還留著尤爾自己說明譯法的一頁。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp076",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a small book restoration desk beside a stack of travel accounts, 一名十九世紀成年編者把兩冊無字底稿合放在桌上, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp076",
+          "text": "那位英譯編者說，他以剛才提到的法文校本為底，又從另一法文抄本補回有分量的內容。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ],
+      "chapter": "編者把方括號的來歷說明白"
+    },
+    {
+      "id": "mp077",
+      "template": "big",
+      "data": {
+        "kicker": "Yule 譯法說明",
+        "text": "**方括號**",
+        "sub": "選入 Ramusio 版特有文字"
+      },
+      "lines": [
+        {
+          "id": "mp077",
+          "text": "他認為另一個義大利版本獨有、又可信的段落，會放進方括號。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp078",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old European map room with a slanted reading stand, 一名十九世紀成年編者把一頁無字註解別在書側, cool indirect light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp078",
+          "text": "有些特有文字，他雖覺得有趣，卻只放在註解，不放進正文。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp079",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a narrow archive aisle near a leather-bound travel volume, 一名十九世紀成年編者指著被方框圍住的紅色素印, warm afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp079",
+          "text": "開頭紙鈔的官員簽名、紅印和偽造刑，就落在這種括號裡；能算各版共有嗎？",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp080",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a covered records courtyard in early-Ming China, 一名明初成年史官把一張素色賞鈔放到律令卷軸旁, soft reflected light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp080",
+          "text": "官史還說，告發造假者可得賞鈔；這一筆不在遊記方括號裡。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp081",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a contemporary archive table with three separated source folders, 一名現代成年研究者把多版本空白書頁錯開疊放, neutral overhead light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp081",
+          "text": "但那不會自動把括號裡的每個字變成所有早期遊記共有的原文。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp082",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a public library reading desk beside a magnifying lens, 一名現代成年研究者把無字紙片放在三冊打開的書前, clear diffuse light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp082",
+          "text": "紙鈔和鹽政的記載能跟官史相互對照，文字怎麼傳下來也得一併查。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "mp083",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a paper conservation bench with simple cotton supports, 一名現代成年研究者把素色紙片放進一只透明檔案袋, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mp083",
+          "text": "這張紙最後證明了什麼，現在才可以作答。",
+          "emotion": "自然說書，史料與異文稍停"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "紙鈔可互證制度，不能單獨證明足跡"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mp999a",
+          "text": "一張紙鈔可對照出元朝制度，卻不能單憑它證明馬可波羅本人踏過哪條路。",
+          "emotion": "答案放慢"
+        },
+        {
+          "id": "mp999b",
+          "text": "你讀一份旅行記時，會先查它寫對的細節，還是它漏掉的事？",
+          "emotion": "問句放慢"
+        },
+        {
+          "id": "mp999c",
+          "text": "想繼續從原文找歷史轉折，就訂閱奇聞檔案局。",
+          "emotion": "自然收束"
+        }
+      ]
+    }
+  ]
+}
