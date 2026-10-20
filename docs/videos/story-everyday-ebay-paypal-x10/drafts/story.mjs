@@ -39,7 +39,7 @@ export const chapters = [
     ],
   },
   {
-    title: "二〇一四年，支付網路長出平台之外",
+    title: "二〇一四年，年報攤開付款流向",
     rows: [
       ["十二年後，PayPal 已不是只跟著 eBay 的成交走。", ["B03", "B04"], "wide abstract marketplace with several anonymous sellers at separate unmarked stalls, daylight"],
       ["還有多少付款，是從 eBay 網站上的交易而來？", ["B04"], "at an accountant's worktable, one anonymous analyst opens a plain ledger with two unmarked columns, cool light"],
@@ -59,7 +59,7 @@ export const chapters = [
     ],
   },
   {
-    title: "二〇一五年，分家公司卻留下付款合約",
+    title: "二〇一五年，股權分派當天",
     rows: [
       ["二〇一五年，股權分派和付款協議在同一天落地。", ["B09", "B10"], "at a plain accounting table, one anonymous clerk arranges two stacks of wordless share papers, morning light"],
       ["原本握有 eBay 股票的人，每一股收到一股 PayPal 股票。", ["B09"], "close view of an anonymous hand placing one wordless certificate beside another, diffuse daylight"],
@@ -80,15 +80,15 @@ export const chapters = [
     ],
   },
   {
-    title: "二〇一八到二〇一九年，另一條路先小規模上線",
+    title: "二〇一八年，付款中介成為開發重點",
     rows: [
-      ["合約還在，eBay 的季報卻把付款中介列為開發重點。", ["B10", "B13"], "in a generic technology office, one anonymous developer opens a wordless payment-flow sketch beside a parcel, spring light"],
+      ["開頭那份二〇一八年季報，只把付款中介列為開發中的能力。", ["B13"], "in a generic technology office, one anonymous developer opens a wordless payment-flow sketch beside a parcel, spring light"],
       ["那時原本的營運協議，仍在初始期限裡。", ["B10"], "at a plain office table, an anonymous worker views two connected folders beside an unmarked calendar, mild daylight"],
       ["協議的例外條款，容許第三年後在有限地區小規模測試。", ["B12"], "overhead view of two tiny generic market booths highlighted on an otherwise blank map, no labels, morning light"],
       ["但文件沒說，後來每一步上線都靠這一條例外完成。", ["B12", "B14"], "one anonymous analyst keeps a contract folder and a separate rollout folder apart on a desk, cool light"],
       ["能確定的是，eBay 年報說，它自二〇一八年起開始中介付款。", ["B14"], "at a generic online seller's desk, an anonymous hand follows a new abstract checkout path on a blank screen, soft light"],
       ["這不是再買回 PayPal，而是替自家市集建立收款流程。", ["B09", "B13", "B14"], "two abstract marketplace payment routes on a neutral planning board, one old and one emerging, no text"],
-      ["這條路真的跑起來了，還是只停在工程清單上？", ["B13", "B14"], "at a payment test bench, one anonymous analyst compares a paper plan with a working wordless checkout terminal, morning light"],
+      ["這條路真的跑起來了，還是只停在工程清單上？", ["B13", "B14"], "at a payment test bench, one anonymous analyst compares a paper plan with an unpowered, unmarked checkout terminal, morning light"],
       ["到二〇一九年，美國賣家的採用加快。", ["B14"], "at a generic domestic market stall, several anonymous sellers use plain devices to prepare parcels, daylight"],
       ["同一年，這項服務也在德國推出。", ["B14"], "at a generic European-style parcel counter, one anonymous seller checks a blank payment screen, soft indoor light"],
       ["那年底，它累計替近兩萬五千名賣家處理付款。", ["B15"], card("截至 2019.12.31", "約 25,000", "使用 eBay 中介付款的賣家；非全站", "eBay FY2019 Form 10-K")],
@@ -100,7 +100,7 @@ export const chapters = [
     ],
   },
   {
-    title: "二〇二〇年，合約到期，賣家開始大規模搬遷",
+    title: "二〇二〇年，付款合作合約到期",
     rows: [
       ["二〇二〇年七月，兩家公司那份 PayPal 營運協議到期。", ["B16"], card("營運協議到期", "2020.07", "不等於付款選項立刻消失", "eBay FY2020 Form 10-K")],
       ["eBay 年報說，這之後，自管付款繼續往更多市場擴張。", ["B16"], "on a generic marketplace map with no place names, one anonymous planner extends several simple payment routes, morning light"],
@@ -113,14 +113,14 @@ export const chapters = [
       ["年底，活躍於自管付款的賣家超過一百萬。", ["B18"], card("截至 2020.12.31", ">1,000,000", "managed payments 活躍賣家", "eBay FY2020 Form 10-K")],
       ["公司還宣布，隔年第一季計畫擴往法國、義大利與西班牙。", ["B23"], "wide generic marketplace with many anonymous parcel booths now using a shared abstract payment route, daylight"],
       ["人數上來了，買賣雙方的體驗，公司又怎麼說？", ["B17", "B18"], "at a plain analytics desk, one anonymous analyst places two differently shaped blank counting cards side by side, soft light"],
-      ["eBay 說，新流程讓買家有更多付款選擇，賣家管理更簡單。", ["B16", "B17"], "at a generic online checkout scene, a buyer considers several unmarked payment icons while seller organizes parcels, soft light"],
-      ["那仍是公司的產品主張，不是已量到的每位買家體驗。", ["B16"], "one anonymous researcher watches a generic checkout demonstration without readable text, neutral light"],
+      ["eBay 說，自管付款讓買賣雙方走過更簡單的完整付款流程。", ["B24"], "at a generic online checkout scene, an anonymous buyer and seller watch one abstract payment route connect their blank screens, soft light"],
+      ["那仍是公司的產品主張，不是已量到的每位買家體驗。", ["B24"], "one anonymous researcher watches a generic checkout demonstration without readable text, neutral light"],
       ["當初買 PayPal 是為了移開付款障礙；現在 eBay 又在重畫自己的路。", ["B01", "B02", "B16"], "at the original package route, an anonymous planner redraws a simpler abstract path from buyer to seller, warm evening light"],
       ["但當時還有市場和交易，尚未完成遷移。", ["B18", "B19"], "wide abstract network with a few remaining disconnected market paths, anonymous figures, dusk light"],
     ],
   },
   {
-    title: "二〇二一年，收款回到平台手中",
+    title: "二〇二一年，收款遷移走向最後市場",
     rows: [
       ["二〇二一年，eBay 把新收款流程帶到前一年尚未覆蓋的市場。", ["B17", "B19"], "at a generic checkout operations room, one anonymous analyst opens a blank year-end folder, morning light"],
       ["eBay 當年年報說，所有市場的自管付款遷移已完成。", ["B19"], card("eBay FY2021 10-K", "所有市場", "managed payments 遷移完成", "eBay FY2021 Form 10-K")],
@@ -137,8 +137,8 @@ export const chapters = [
       ["所以這集能驗到流程和收入結構改變，不能宣稱分拆讓交易暴增。", ["B19", "B20"], "at an analysis table, one anonymous worker compares a steady parcel path with a changed payment path, no numbers, soft light"],
       ["開頭那張結帳頁，eBay 先讓支付公司獨立。", ["B09"], "at the original home checkout scene, buyer's wordless screen connects by a thin route to a seller's worktable, evening light"],
       ["多年後，它把市集收款流程逐步接回手裡。", ["B14", "B16", "B19"], "at a nearby small seller counter, one anonymous adult sees an abstract checkout route arrive beside a parcel, warm evening light"],
-      ["這一路，eBay 並沒有把 PayPal 公司重新買回來。", ["B09", "B19"], "wide view of two distinct anonymous offices and one generic market checkout route, calm late afternoon light"],
-      ["公司可以分開；市集仍要決定買賣雙方的結帳與收款怎麼走。", ["B09", "B10", "B16", "B19"], "outro"],
+      ["股權由誰持有，和結帳流程由誰設計，原來是兩種不同決策。", ["B09", "B19"], "wide view of two distinct anonymous offices and one generic market checkout route, calm late afternoon light"],
+      ["eBay 選擇自管，主張買家有更多付款選擇、賣家經營更簡便；這是它當時的產品理由。", ["B13", "B19", "B24"], "outro"],
       ["如果你經營市集，會把收款交給夥伴，還是自己掌握流程？", [], "outro"],
       ["訂閱品牌故事，下一次結帳時，也看看背後是誰在設計這段路。", [], "outro"],
     ],

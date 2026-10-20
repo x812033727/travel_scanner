@@ -27,6 +27,7 @@
 | B21 | eBay 2002 年收購 PayPal 前已有 Billpoint 支付服務，收購後公司計畫於 2003 年上半年逐步停止 Billpoint 營運。 | E02 `Business Combinations`／Billpoint | 是當時計畫；不寫 Billpoint 已於某日正式關閉。 |
 | B22 | 2015 年分拆說明書稱合約中的特定付款安排，旨在鼓勵 eBay 繼續支持 PayPal 作為核心市集的支付服務。 | P15 `Commercial Agreements`／`Operating Agreement` | 只解釋當時合約設計，不計算實際付款方式佔比。 |
 | B23 | eBay FY2020 年報稱公司已宣布計畫在 2021 年第一季把 managed payments 擴至法國、義大利、西班牙。 | E20 `Our Marketplace` | 是 2020 年末文件提及的計畫，不把預計推進當作已在當時完成。 |
+| B24 | eBay FY2020 年報主張自管付款可簡化買賣雙方的端到端付款體驗、給買家更多付款彈性與選擇，並使賣家經營方式更簡便。 | E20 `Our Marketplace` | 是公司提出的產品好處，不是獨立體驗實測；不得說已改善所有用戶，或由此證明分拆造成收入成長。 |
 
 ## 敘事邊界
 

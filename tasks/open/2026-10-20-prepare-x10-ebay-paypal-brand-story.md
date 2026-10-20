@@ -24,7 +24,7 @@ The brand-story series needs another recognizable, nonduplicate episode after X0
 
 - [ ] A six-body-chapter, source-bound X10 package includes 30–60 s condensed opening, at least 8 minutes of substantive spoken body by final TTS, three-line native ending, fixed 5 s/21 s branding handoff, two Shorts, and clickable-link checklist.
 - [ ] Final main/Shorts SHA has an independent line-level source audit and two independent script-only narrative blind reviews; free lint has zero errors/warnings.
-- [ ] Draft PR opened with clear preproduction status; no paid generation or finished-video claim.
+- [x] Draft PR opened with clear preproduction status; no paid generation or finished-video claim.
 
 ## Steps
 
@@ -33,8 +33,10 @@ The brand-story series needs another recognizable, nonduplicate episode after X0
 - [x] Draft six-body-chapter treatment, 105-line script and shot JSON, two Shorts, quote and publishing handoff.
 - [x] Freeze main/Shorts SHA and obtain independent SEC source audit, including exact shot-and-line Shorts checks.
 - [x] Obtain two independent script-only blind reads of the first SHA and resolve their shared findings in a revised candidate.
-- [ ] Re-audit the revised SHA against sources and obtain two new independent script-only blind passes.
-- [ ] Run repository checks, commit, push and open draft PR.
+- [x] Re-audit v3 SHA against sources and obtain two new blind reads; revise their shared `no_recap` finding, main-question payoff and visual spoilers.
+- [ ] Re-audit v4 SHA against sources and obtain two new independent script-only blind passes.
+- [x] Open draft PR #1627 with clear preproduction status and historical review receipts.
+- [x] Run v4 lint, docs-video tests, task check, claim/Shorts parity, then push the revised package to the draft PR.
 
 ## How to verify
 
@@ -52,6 +54,8 @@ Compare generated SHA-256 against all review receipts, check Shorts phrases and 
 
 ## Notes
 
-SEC archive and `data.sec.gov` pages are accessible; `ebayinc.com` and live YouTube were blocked in this cloud, so no factual claim relies on them. Relevant accessible documents and scope limits are recorded in `source-notes.md`. C10 OXO belongs to a separate twenty-episode plan; the existing X01–X09 angles do not include eBay/PayPal. The user authorized choosing recommended decisions and opening PRs, but this task intentionally makes no paid calls. Paired video-tool token works in this environment; official selected 5 s/21 s branding assets and clickable Studio URLs are still pending media handoff. Draft script estimate is ~8:58 substantive body, to be measured after TTS.
+SEC archive and `data.sec.gov` pages are accessible; `ebayinc.com` and live YouTube were blocked in this cloud, so no factual claim relies on them. Relevant accessible documents and scope limits are recorded in `source-notes.md`. C10 OXO belongs to a separate twenty-episode plan; the existing X01–X09 angles do not include eBay/PayPal. The user authorized choosing recommended decisions and opening PRs, but this task intentionally makes no paid calls. Paired video-tool token works in this environment; official selected 5 s/21 s branding assets and clickable Studio URLs are still pending media handoff. Draft script estimate is ~9:03 substantive body, to be measured after TTS.
 
 The independent SEC source receipt `reviews/source-review-v2-root.md` passed the earlier SHA `7cf5f20c…` main / `9c82557f…` Shorts. Two blind receipts on that SHA both failed shared `no_toc`, `chapters_link` and `no_recap` gates, so the narration, loops and Shorts were revised. Those historical receipts cannot pass the new SHA; independent delta source review and a new two-reader blind pass remain open. Draft PR #1627 is a review surface, not a finished episode.
+
+The v3 source delta receipt `reviews/source-review-v3-delta-root.md` passed main SHA `39edff49…` / Shorts `ae05695…`; its two new blind receipts both failed `no_recap`, and reader B also found the main why-question incompletely answered. v4 removes the repeated claims, saves the concrete company-stated buyer/seller benefit for the final answer, neutralizes early-reveal chapter/card and illustration prompts, and reanchors Short 2 as a standalone cut. v3 PASS and FAIL receipts are historical only; v4 needs its own exact-SHA checks.
