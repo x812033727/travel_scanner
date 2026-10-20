@@ -125,7 +125,7 @@ const matrix = [
   "| --- | --- | --- |",
   ...original.map(scene => {
     const refs = scene.claim_refs ?? [];
-    const sourceRefs = refs.length ? refs.map(number => `${sourceFor(number)} #${number}`).join("、") : "編輯邀請";
+    const sourceRefs = refs.length ? refs.map(number => `${sourceFor(number)} #${number}`).join("、") : scene.lines[0].id === "x020101" ? "敘事示意" : "編輯邀請";
     return `| \`${scene.lines[0].id}\` | ${escapeTable(scene.lines[0].text)} | ${sourceRefs} |`;
   }),
   "",
