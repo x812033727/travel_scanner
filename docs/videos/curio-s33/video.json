@@ -1,0 +1,1645 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s33",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，清楚、自然地說一封奏疏的故事；古文引句、不同人的立場與不確定的日期稍放慢。",
+    "performance": "跟著崔萬理等人的奏疏進宮；切換上疏、世宗答覆與兩年後御製序時，以語氣標明說話者。不可把來源轉錄演成當場逐字錄音。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "hj005",
+      "payoff": "hj015",
+      "what": "四天前誰受命處理新字"
+    },
+    {
+      "setup": "hj006",
+      "payoff": "hj041",
+      "what": "供詞可讀與刑獄公平的爭論"
+    },
+    {
+      "setup": "hj007",
+      "payoff": "hj066",
+      "what": "國王如何處置上疏者"
+    },
+    {
+      "setup": "hj014",
+      "payoff": "hj015",
+      "what": "新字交給誰辦"
+    },
+    {
+      "setup": "hj019",
+      "payoff": "hj024",
+      "what": "先讚後反的第一項疑慮"
+    },
+    {
+      "setup": "hj032",
+      "payoff": "hj090",
+      "what": "官吏學習與甄選的長線爭點"
+    },
+    {
+      "setup": "hj035",
+      "payoff": "hj041",
+      "what": "刑案論點的答案"
+    },
+    {
+      "setup": "hj048",
+      "payoff": "hj049",
+      "what": "世宗從哪項比較答起"
+    },
+    {
+      "setup": "hj065",
+      "payoff": "hj066",
+      "what": "上疏者被交義禁府"
+    },
+    {
+      "setup": "hj067",
+      "payoff": "hj069",
+      "what": "次日官員處置"
+    },
+    {
+      "setup": "hj079",
+      "payoff": "hj080",
+      "what": "誰做書的解說"
+    },
+    {
+      "setup": "hj085",
+      "payoff": "hj086",
+      "what": "是否納入制度採用"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "一位國王造字，大臣為何上書反對？｜奇聞檔案局",
+    "description": "1444 年，朝鮮世宗命人用新字處理《韻會》後，集賢殿副提學崔萬理等人呈上一封先稱讚、後反對的奏疏。爭點涉及對華關係、官吏學習、刑案供詞及政策推進；世宗逐項回答，史書也記下次日處置。兩年後，《訓民正音》成書，同年末進入吏員甄選。\n\n本集依固定《世宗實錄》原文數位轉錄整理，區分實錄敘事、奏疏主張、世宗答辯及御製序自述；資料來源為第三方鏡像，尚未與官方掃描核對。1443 和 1446 年相關條目寫「是月」，不應誤認為精確創制或出版日。畫面為 AI 生成可愛插畫，不是古人肖像或現場照片。\n\n資料截至 2026-10-20",
+    "tags": [
+      "世宗",
+      "訓民正音",
+      "崔萬理",
+      "集賢殿",
+      "朝鮮史",
+      "韓文字母",
+      "世宗實錄",
+      "歷史名場面",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "先讚\n**再反對？**",
+      "tag": "歷史名場面",
+      "sub": "一封奏疏，七位官員",
+      "shot": "hj003"
+    }
+  },
+  "sources": [
+    {
+      "title": "《世宗實錄》世宗二十五年，第三方保存之國史編纂委員會原文 XML",
+      "url": "https://github.com/ddokbaro/sillok/blob/96b837bb84afad9b038c5322d8720d33b0dc9363/rawdata/2nd_wda_125.xml",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《世宗實錄》世宗二十六年，第三方保存之國史編纂委員會原文 XML",
+      "url": "https://github.com/ddokbaro/sillok/blob/96b837bb84afad9b038c5322d8720d33b0dc9363/rawdata/2nd_wda_126.xml",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《世宗實錄》世宗二十八年，第三方保存之國史編纂委員會原文 XML",
+      "url": "https://github.com/ddokbaro/sillok/blob/96b837bb84afad9b038c5322d8720d33b0dc9363/rawdata/2nd_wda_128.xml",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "hj001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a low desk in a modest palace workroom, an adult Joseon court scholar carrying one folded blank mulberry-paper petition into an audience hall, mild overcast window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj001",
+          "text": "一四四四年，實錄二月二十日，一封奏疏呈到世宗面前。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ],
+      "chapter": "1444年二月，一封先讚後反的奏疏"
+    },
+    {
+      "id": "hj002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot along a covered timber palace passage, one middle-aged Joseon court scholar in a dark round-collar robe standing beside a low wooden desk, gentle afternoon daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj002",
+          "text": "署名的人，是集賢殿副提學崔萬理，還有幾位同僚。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj003",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet bare-earth court courtyard, one dark-robed court scholar carefully opening an entirely blank folded petition on a low desk, soft light from an open doorway",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj003",
+          "text": "開頭竟先稱，新造的文字非常神妙。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj004",
+      "template": "big",
+      "data": {
+        "kicker": "《世宗實錄》二月二十日",
+        "text": "**至爲神妙**",
+        "sub": "崔萬理等人先讚造字，接著提出反對"
+      },
+      "lines": [
+        {
+          "id": "hj004",
+          "text": "但翻到下一句，他們又說，仍有疑問，不敢不講。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj005",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a low desk in a modest palace workroom, one adult court scribe placing a closed unlettered paper roll on a palace worktable, mild overcast window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj005",
+          "text": "四天前，另一群學者才接到用新字處理韻書的王命。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj006",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along a covered timber palace passage, one dark-robed court scholar pausing with an unmarked court petition beside a clay oil lamp, gentle afternoon daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj006",
+          "text": "這封奏疏竟連刑案的供詞也談進來；一套新字，為何會碰到審案？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a quiet bare-earth court courtyard, one palace messenger holding a folded unlettered petition in a dim timber corridor, soft light from an open doorway",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj007",
+          "text": "等國王讀完，還有人會被帶往義禁府；紙上哪句話改變了氣氛？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj008",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a Joseon court workroom with plaster walls, one middle-aged Joseon monarch resting a hand beside blank paper and a brush on a low desk, soft morning daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj008",
+          "text": "往前一年，實錄只用短短一段，記下新字的起點。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ],
+      "chapter": "先有二十八字，才有反對聲"
+    },
+    {
+      "id": "hj009",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a plain wooden records shelf, one middle-aged Joseon monarch lifting a brush over a completely blank loose paper sheet, mild overcast window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj009",
+          "text": "它寫「是月」：世宗親自製作二十八個字。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot under a covered palace walkway, one court record keeper sorting separate unlettered paper leaves under window light, gentle afternoon daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj010",
+          "text": "這不是說十二月三十日那天才動手；記錄只指那個月。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj011",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by an unadorned timber doorway, one adult court scribe arranging three small entirely blank bamboo counters on a low wooden table, soft light from an open doorway",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj011",
+          "text": "史官還寫，初聲、中聲、終聲拼起來，才成一個字。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj012",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Joseon court workroom with plaster walls, one adult court scribe placing two separate tied unlettered paper rolls on a bare low desk, soft morning daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj012",
+          "text": "同一段還說，漢字的讀音與本地人平常說的話，都能用這套字寫下來。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a plain wooden records shelf, one middle-aged Joseon monarch closing an unlettered folded paper sheet at his desk, mild overcast window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj013",
+          "text": "這段能證明造字已被記下，卻還看不到朝廷怎麼用它。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj014",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot under a covered palace walkway, one adult palace messenger carrying a small tied unlettered paper bundle through a plain timber doorway, gentle afternoon daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj014",
+          "text": "下一個記錄裡，這套字會被交到誰手上？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj015",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot by an unadorned timber doorway, one young adult Joseon court scribe studying a closed unlettered paper roll at a low desk, soft light from an open doorway",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj015",
+          "text": "實錄二月十六日，世宗命崔恒等人用新字處理《韻會》。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a Joseon court workroom with plaster walls, one adult court scribe moving a blank folded document toward a separate empty desk, soft morning daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj016",
+          "text": "世子和兩位大君，也被記為監掌這項工作。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj017",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a plain wooden records shelf, one Joseon palace messenger placing a blank folded document on a modest official's desk, mild overcast window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj017",
+          "text": "這不只是桌邊私寫，而是王命交辦的工作。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj018",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot under a covered palace walkway, one middle-aged scholar in a dark robe walking toward a plain palace audience doorway, gentle afternoon daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj018",
+          "text": "然而，交給崔恒的事，四天後會撞上一位同在集賢殿的學者。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj019",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by an unadorned timber doorway, one dark-robed scholar resting his hand on a tightly folded blank petition, soft light from an open doorway",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj019",
+          "text": "崔萬理為何先說神妙，卻又要上疏反對？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj020",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a Joseon court study with low desks, one court scholar extending a folded unlettered petition toward an empty low stand, soft morning daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj020",
+          "text": "二月二十日，崔萬理等人的奏疏到了。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ],
+      "chapter": "崔萬理先談朝廷要往哪裡站"
+    },
+    {
+      "id": "hj021",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot by a modest plaster-walled records room, one scholar pointing at several blank loose petition leaves spread on a low wooden desk, mild overcast window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj021",
+          "text": "他們先稱新字巧妙，緊接著把擔心一項項寫下。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain timber court veranda, one middle-aged court scholar keeping an unlettered petition roll separate from a blank work order, gentle afternoon daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj022",
+          "text": "這個開頭很重要：上疏者沒有否認字造得巧；他們要爭的是朝廷該不該這樣推。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj023",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside an open palace workroom door, one dark-robed scholar looking across a plain palace courtyard from an open timber doorway, soft light from an open doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj023",
+          "text": "第一項不只談字形，更把朝鮮與明朝的關係拉了進來。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj024",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Joseon court study with low desks, one Joseon court official holding a closed unlettered scroll by a modest plaster wall, soft morning daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj024",
+          "text": "奏疏說，朝廷一向依循中國制度；此時另造文字，會驚動視聽。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj025",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a modest plaster-walled records room, one court scholar at a window holding a tied blank scroll with distant tiled rooftops beyond, mild overcast window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj025",
+          "text": "若新字流入中國，引來非議，朝廷會不會有愧於慕華的立場？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj026",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a plain timber court veranda, one dark-robed Joseon scholar aligning separate unmarked bamboo counters beside a closed paper roll, gentle afternoon daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj026",
+          "text": "他們也不滿新字把聲音拼成字；即使形體借古篆，寫法仍和舊制不同。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj027",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside an open palace workroom door, one record keeper closing an entirely blank paper roll on a bare wooden desk, soft light from an open doorway",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj027",
+          "text": "這是上疏者的憂慮，不是明朝已經抗議的紀錄。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj028",
+      "template": "big",
+      "data": {
+        "kicker": "崔萬理等人奏疏",
+        "text": "**事大慕華**",
+        "sub": "擔心另造文字損及既有外交與文化秩序"
+      },
+      "lines": [
+        {
+          "id": "hj028",
+          "text": "兩個字，把第一層憂慮說得很明白。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj029",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a modest plaster-walled records room, one middle-aged Joseon scholar sliding a plain tied paper roll toward himself on a low desk, mild overcast window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj029",
+          "text": "第二項，他們搬出官署已用的吏讀。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj030",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain timber court veranda, one Joseon office clerk sorting two closed blank paper rolls on a low worktable, gentle afternoon daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj030",
+          "text": "它借用漢字記語助詞，也用在官署簿冊；上疏者說，舊辦法多年來並未妨礙辦事。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside an open palace workroom door, one Joseon court scribe practicing with an unmarked brush above a blank paper sheet, soft light from an open doorway",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj031",
+          "text": "奏疏說，學吏讀的人先讀書，粗懂漢字後才拿它辦事。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj032",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a Joseon court study with low desks, one younger official glancing between two separate tightly tied blank paper rolls, soft morning daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj032",
+          "text": "要是只靠新字也能辦公，後進還會用功讀漢文嗎？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj033",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot by a modest plaster-walled records room, one record keeper separating two closed unlettered document rolls on a low table, mild overcast window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj033",
+          "text": "這是反對者的預測；史書這一頁沒有記下預測成真。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj034",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain timber court veranda, one dark-robed scholar lifting the next entirely blank petition leaf from a low desk, gentle afternoon daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj034",
+          "text": "但他們還沒有說完，下一頁換成更尖銳的問題。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj035",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside an open palace workroom door, one adult court clerk pausing beside a closed unlettered case document in a timber office, soft light from an open doorway",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj035",
+          "text": "如果供詞只差一個字，讀不懂的人會不會受冤？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj036",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Joseon court records room, one court clerk offering an entirely blank loose paper statement across a bare low desk, soft morning daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj036",
+          "text": "奏疏先替支持者說出理由：供詞用新字記，受審者比較容易懂。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ],
+      "chapter": "供詞容易讀，就一定公道嗎"
+    },
+    {
+      "id": "hj037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a low wooden legal-office desk, one dark-robed scholar examining the edge of a folded unlettered case document, mild overcast window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj037",
+          "text": "一個字看錯，可能委屈一個人；他們沒有略過這個疑慮。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj038",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a plaster-walled palace chamber, one court clerk staring at a closed unlettered case roll on a bare low desk, gentle afternoon daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj038",
+          "text": "問題是，看懂了那張紙，能不能擋住辦案者強迫認罪？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj039",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside an empty reed mat in a court office, one adult court clerk holding a closed blank case roll while a single empty reed mat lies ahead, soft light from an open doorway",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj039",
+          "text": "但崔萬理等人反駁：就算人看得懂記錄，也可能被官吏逼得認罪。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj040",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a Joseon court records room, one dark-robed court record keeper keeping a folded blank statement apart from an unmarked wooden court tablet, soft morning daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj040",
+          "text": "他們舉的例子是，懂吏讀的囚犯看出供詞不實，卻還是在棰楚下屈服。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj041",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a low wooden legal-office desk, one court scholar lowering a folded unlettered court file onto a bare desk, mild overcast window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj041",
+          "text": "他們的結論是，刑案公不公平，關鍵在辦案的人。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj042",
+      "template": "big",
+      "data": {
+        "kicker": "崔萬理等人奏疏",
+        "text": "**在於獄吏之如何**",
+        "sub": "反對者認為冤案關鍵在官吏"
+      },
+      "lines": [
+        {
+          "id": "hj042",
+          "text": "所以，他們把整場爭論壓到這一句。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj043",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside an empty reed mat in a court office, one record keeper placing a closed blank court roll beside a separate unmarked paper sheet, soft light from an open doorway",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj043",
+          "text": "這不能證明新字毫無用處；它說的是反對者當時怎樣看刑獄。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj044",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a Joseon court records room, one dark-robed scholar lining up several tightly tied blank source rolls on a low table, soft morning daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj044",
+          "text": "但下一段更往前一步：奏疏連世子的時間也要過問，國王會怎麼聽？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj045",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot by a low wooden legal-office desk, one court scholar holding a folded unlettered petition before a quiet audience-hall doorway, mild overcast window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj045",
+          "text": "他們說，沒有廣泛問過宰相、百官和國人，就急著命人學。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plaster-walled palace chamber, one young adult court scribe carrying a small tied unlettered paper roll beside a worktable, gentle afternoon daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj046",
+          "text": "他們又寫，世子應把時間放在經學，不該整天研究這套字。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj047",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside an empty reed mat in a court office, one adult court scholar gathering separate blank petition leaves into one bundle, soft light from an open doorway",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj047",
+          "text": "外交、讀書、刑案、程序，都塞在同一封奏疏裡。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj048",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Joseon court records room, one middle-aged Joseon monarch looking toward a folded unlettered petition on his low desk, soft morning daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj048",
+          "text": "國王會先回答哪一道難題？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside an unadorned timber column, one middle-aged Joseon monarch placing a small blank paper roll beside a larger tied roll, mild overcast window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj049",
+          "text": "世宗先抓住反對者用來比較的舊吏讀。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ],
+      "chapter": "世宗看完奏疏"
+    },
+    {
+      "id": "hj050",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a plain palace workroom desk, one middle-aged Joseon monarch gesturing toward a tightly tied unlettered source roll, gentle afternoon daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj050",
+          "text": "他問：薛聰的吏讀，難道不是為了方便百姓？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj051",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along a covered court passage, one middle-aged Joseon monarch resting an open hand over a completely blank loose paper sheet, soft light from an open doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj051",
+          "text": "既然舊法可以便民，現在的新字為何不能？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj052",
+      "template": "big",
+      "data": {
+        "kicker": "世宗答崔萬理等人",
+        "text": "**亦不爲便民乎**",
+        "sub": "用舊吏讀反問新字能否便利百姓"
+      },
+      "lines": [
+        {
+          "id": "hj052",
+          "text": "這是實錄留下的答問，不是我們補寫的口號。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj053",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside an unadorned timber column, one middle-aged Joseon monarch looking across two separate blank rolls on a bare low desk, mild overcast window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj053",
+          "text": "這個反問，正對奏疏拿舊吏讀當好例子的那一段。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj054",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain palace workroom desk, one middle-aged Joseon monarch lifting an unlettered folded study sheet beside a brush, gentle afternoon daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj054",
+          "text": "接著，世宗追問反對者懂不懂韻書和字母。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj055",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot along a covered court passage, one middle-aged monarch with an unlettered petition on a bare low desk and an open questioning hand, soft light from an open doorway",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj055",
+          "text": "他的語氣也轉了：反對者拿薛聰的舊吏讀當好例子，卻說君上正在做的事不對。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj056",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a Joseon palace audience hall, one middle-aged Joseon monarch pointing to a tightly closed blank paper bundle on his desk, soft morning daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj056",
+          "text": "他說，若不是自己校正韻書，又該由誰來做？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj057",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside an unadorned timber column, one middle-aged Joseon monarch folding a plain paper sheet with a firm expression, mild overcast window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj057",
+          "text": "奏疏說造字只是追求新奇，他也不接受。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain palace workroom desk, one middle-aged Joseon monarch sitting alone beside horizontal tied paper rolls, gentle afternoon daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj058",
+          "text": "實錄記下他說：自己年老，以書籍為友，不是厭舊喜新。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj059",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot along a covered court passage, one middle-aged Joseon monarch raising one hand over an unlettered official roll, soft light from an open doorway",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj059",
+          "text": "奏疏質疑世子耗時；他答，世子既掌理國事，也該參與。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj060",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Joseon palace audience hall, one dark-robed Joseon court scholar standing before a plain timber audience-hall column, soft morning daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj060",
+          "text": "可是，國王聽完所有答覆，真的只是在討論字該怎麼拼嗎？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj061",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside an unadorned timber column, one middle-aged Joseon monarch setting down a tightly folded unlettered petition, mild overcast window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj061",
+          "text": "世宗認為奏疏部分措辭越界，又質疑有人回話前後不一。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj062",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a plain palace workroom desk, one middle-aged Joseon monarch facing a single adult court scholar across a bare low table, gentle afternoon daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj062",
+          "text": "實錄記下他的說法：本來召人來，只想問奏疏中的一兩句，並非起初就要問罪。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj063",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along a covered court passage, one court scholar carrying a tightly tied blank moral-text roll across a workroom, soft light from an open doorway",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj063",
+          "text": "雙方爭的，甚至還有《三綱行實》譯成新字後，百姓會不會照做。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a Joseon palace audience hall, one dark-robed scholar holding a closed tied unlettered paper roll with a doubtful expression, soft morning daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj064",
+          "text": "世宗希望人讀得懂書中的榜樣；鄭昌孫卻不信翻譯就能改變人。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj065",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside an unadorned timber column, one palace messenger waiting beside an unadorned timber door to an audience hall, mild overcast window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj065",
+          "text": "說到這裡，國王會怎麼處置上疏的人？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj066",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain palace workroom desk, one court messenger walking along a plain bare-earth palace passage carrying a blank order roll, gentle afternoon daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj066",
+          "text": "實錄寫，崔萬理等七名具名官員被交到義禁府。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot along a covered court passage, one dark-robed scholar pausing before a simple closed timber gate in daylight, soft light from an open doorway",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj067",
+          "text": "被帶走之後，他們會就此失去官職嗎？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj068",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a Joseon court workroom, one Joseon court messenger opening a plain timber courtyard gate in daylight, soft morning daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj068",
+          "text": "第二天，實錄說世宗命令放人。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ],
+      "chapter": "反對後，新字還往前走嗎"
+    },
+    {
+      "id": "hj069",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a low wooden records shelf, one adult court scholar exiting a modest timber gate with a folded blank paper bundle, mild overcast window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj069",
+          "text": "只有鄭昌孫被免職；不能把七人說成全被流放。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a modest palace examination room, one court record keeper closing an unlettered case file at a bare low desk, gentle afternoon daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj070",
+          "text": "金汶因前後說詞，另受調查；次日記有按百杖之刑贖罪的處置。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj071",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a plain timber archive doorway, one adult Joseon scribe opening a low wooden workroom shutter to daylight, soft light from an open doorway",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj071",
+          "text": "那封反對書沒有讓造字停在這一年。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj072",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Joseon court workroom, one mature Joseon court scholar placing a tied blank paper bundle on a low desk, soft morning daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj072",
+          "text": "兩年後，實錄先說一句：這個月，《訓民正音》成了。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj073",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a low wooden records shelf, one record keeper sorting entirely blank loose sheets beneath a plain timber window, mild overcast window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj073",
+          "text": "它仍只說「是月」，不能拿條目編排日當成書的單日。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj074",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a modest palace examination room, one middle-aged Joseon monarch seated beside a completely blank unrolled paper sheet, gentle afternoon daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj074",
+          "text": "接著，世宗親自寫的序，會怎麼說明造字的緣由？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj075",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain timber archive doorway, one middle-aged Joseon monarch looking between two separate blank paper rolls on a low desk, soft light from an open doorway",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj075",
+          "text": "御製序把難題說在語音上：朝鮮語音和中國不同，與舊文字不相通。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj076",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a Joseon court workroom, one middle-aged Joseon monarch pausing with a brush beside an entirely blank loose paper sheet, soft morning daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj076",
+          "text": "序文還說，有人心裡有話，卻無法用那些字順利表達；這是他自己寫下的理由。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a low wooden records shelf, one middle-aged Joseon monarch resting a brush beside an entirely blank paper roll, mild overcast window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj077",
+          "text": "御製序說，他因此造二十八字，希望人容易學、便於日用。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj078",
+      "template": "big",
+      "data": {
+        "kicker": "《訓民正音》御製序",
+        "text": "**使人易習，便於日用**",
+        "sub": "世宗自述造字希望容易學、方便使用"
+      },
+      "lines": [
+        {
+          "id": "hj078",
+          "text": "這是世宗在成書時的自述，不是我們猜他的心思。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain timber archive doorway, one adult Joseon scribe lifting a tied unlettered paper roll from a low shelf, soft light from an open doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj079",
+          "text": "但一本書寫成，不代表每個人立刻會讀；接下來誰來解說？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj080",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a Joseon court workroom, one adult Joseon court scholar arranging several separate blank loose paper sheets, soft morning daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj080",
+          "text": "書末鄭麟趾的序，列出崔恒等人一起作解釋與例字。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj081",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a low wooden records shelf, one adult Joseon record keeper placing a blank case roll beside a separate unlettered study roll, mild overcast window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj081",
+          "text": "鄭麟趾也提到讀書難懂、審案難記；兩年前雙方爭過的刑獄，此時也出現在成書的序。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj082",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a modest palace examination room, one younger adult Joseon court scribe carrying two separate tied unlettered paper rolls, gentle afternoon daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj082",
+          "text": "崔恒在兩年前已奉命處理《韻會》，現在又進了成書名單。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj083",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a plain timber archive doorway, one middle-aged Joseon record keeper placing two distinct closed blank paper rolls far apart, soft light from an open doorway",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj083",
+          "text": "同一個集賢殿，既有上疏的崔萬理，也有參與編注的崔恒。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj084",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Joseon court workroom, one court record keeper watching two separate paper bundles on a low desk, soft morning daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj084",
+          "text": "所以，不該把整個集賢殿畫成同一種聲音。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a low wooden records shelf, one Joseon court examiner standing beside an empty low table in an exam hall, mild overcast window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj085",
+          "text": "書成之後，這套字只是留在書架上嗎？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj086",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a modest palace examination room, one Joseon court examiner setting an entirely blank test sheet on a bare low table, gentle afternoon daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj086",
+          "text": "同年年底，世宗命令選拔吏員時，也考《訓民正音》。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj087",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain timber archive doorway, one adult Joseon examinee arranging three unmarked bamboo counters on a low desk, soft light from an open doorway",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj087",
+          "text": "即使不通義理，能夠拼合字，也可以取用。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj088",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a Joseon court workroom, one Joseon court examiner pointing to an entirely blank loose exam sheet on a low table, soft morning daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj088",
+          "text": "這條只說吏科和吏典取才；能因此說當時每個孩子都學會了嗎？",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj089",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a low wooden records shelf, one Joseon court examiner closing an unlettered paper test bundle, mild overcast window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj089",
+          "text": "這證明朝廷下了採用命令，卻不能證明百姓當年已全面識字。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj090",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a modest palace examination room, one dark-robed court scholar looking toward a closed unlettered exam bundle, gentle afternoon daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj090",
+          "text": "回看那封奏疏，反對者最擔心的，正是官吏靠新字往上走。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj091",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain timber archive doorway, one middle-aged Joseon monarch viewing a closed unlettered paper bundle beside a quiet workroom window, soft light from an open doorway",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj091",
+          "text": "從先稱神妙，到成書和考試，這套新字走過的，不是一場一句話就結束的辯論。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "hj092",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a Joseon court workroom, one court record keeper placing a tied blank roll on a simple wooden archive shelf, soft morning daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hj092",
+          "text": "實錄留下的是朝廷怎樣開始用字；一般人何時廣泛學會，它沒有在這裡回答。",
+          "emotion": "自然說書，原文與轉折稍停"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "先稱神妙的奏疏，未讓新字停下"
+        ]
+      },
+      "lines": [
+        {
+          "id": "hj999a",
+          "text": "這封先讚神妙、再提反對的奏疏，沒擋住二十八字成書，也沒擋住吏員考試採用。",
+          "emotion": "答案放慢"
+        },
+        {
+          "id": "hj999b",
+          "text": "如果你是當時的大臣，會先問世宗哪一個問題？",
+          "emotion": "問句放慢"
+        },
+        {
+          "id": "hj999c",
+          "text": "想繼續從原文找歷史轉折，就訂閱奇聞檔案局。",
+          "emotion": "自然收束"
+        }
+      ]
+    }
+  ]
+}
