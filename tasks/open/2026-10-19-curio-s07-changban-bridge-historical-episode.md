@@ -1,7 +1,7 @@
 ---
 id: 2026-10-19-curio-s07-changban-bridge-historical-episode
 title: Curio S07 Changban bridge historical episode
-status: in-progress
+status: blocked
 priority: P2
 area: docs
 owner: codex-s07
@@ -80,3 +80,5 @@ node tools/video/cli.mjs narrative --slug curio-s07
 2026-10-20：上架文字對照 S34 現行包，修正 S07 描述的「對象」行，避免工具把 AI 插圖聲明錯排在開頭；原文與頻道 URL 均由上傳包附上。只改 `youtube.description`，`video.json` 新完整 SHA-256 **`ba6bfc13ad087665a9f68eec94f33cb46b795e6ed5eaf91164a08d73705b2426`**；86 景視覺 hash `8a732ad1b399d32b`、look hash `98a370ae40badbaf`、劇本與旁白時間軸未變，lint 0/0、音訊核准仍有效。預演說明有頻道 URL 1 條、固定史料 URL 5 條；濃縮開場 35.6 秒後插入 5 秒片頭，預估 21 秒片尾最後 16 秒需 Studio 匯入可點元素。開畫後至上架的逐步指令、時碼及驗收在 [`verify-13.md`](../../docs/videos/curio-s07/verify-13.md)。**S07 仍維持插圖 0 費用**，等 S26 製作者明確釋出共用 MiniMax 時窗才付款開畫。
 
 2026-10-20：依系列每集一支短片規格，已先草擬零付費的 [`shorts.json`](../../docs/videos/curio-s07/shorts.json)：7 景／8 句／138 字，單一事實是兩本文字均沒寫喊聲震斷橋，史書已有「據水斷橋」，小說則寫退敵後命人拆橋。純 schema、Curio 單支、原片 shot 身分、後設資料與呼籲用語預檢均 0 問題；尚未生圖，所以不能跑 keyframe hash 的正式 `from-episode --check`，也未合成 Short 旁白。固定來源、鏡頭、待補關卡詳 [`short-verify-1.md`](../../docs/videos/curio-s07/short-verify-1.md)。
+
+2026-10-20：S26 共用 MiniMax 時窗釋出後，按已核准的三景限量試畫 `bridge-004/032/067`，每景只付費一張 1K 圖和一次判圖。兩位製作者獨立看原尺寸，三張 **0/3 KEEP**：現代研究者成幼童且缺一本書、張飛童貌且橋未斷、小說跌馬沒有跌落也沒有書頁框。`bridge-032` 的機器 9.29 PASS 是假陽性。累計圖樂帳本 **US$0.1205／3.57**，本輪新增 US$0.0405，零預留；`/workspace/.video-work/curio-s07/STOP` 已設。依 2/3 KEEP 才續畫的止損線，**S07 狀態改為 blocked，停止所有新付費插圖及全 86 景繪製**。正式 `video.json` SHA `ba6bfc13…` 未動；留待可控 2D 圖像方案另行證明有效插圖比例並重核來源、成年人物與分鏡。詳細可重現圖片 SHA、機器及人工判定在 [`verify-14.md`](../../docs/videos/curio-s07/verify-14.md)。
