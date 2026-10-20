@@ -57,3 +57,5 @@ R5 fresh blind panel sealed 13/13 YES on the unchanged script SHA. Independent r
 2026-10-20 03:14 UTC：39 景 prompt-only 修正末段現代地圖桌、唐代戲劇景衣著和離鏡交接手，獨立定點覆核對現行 video SHA `66332b5b87fe2b3a3c26774398cb072b5e7838e066b35686a082f61365429372` **PASS**，lint 0／0；劇本／音訊不變，仍未畫圖。詳 [verify-10.md](../../docs/videos/curio-s31/verify-10.md)。
 
 2026-10-20 R8 開畫前逐鏡強化：相對 R7 精確版只改 **76/96 個 `scenes[].data.prompt`**，`video.json` 新 SHA `0b5e8dcc054c880127e49efd0ec0dd58f86f77c0a50530f2e094b2b8d0fbe762`；script/claims/research、97 句及音訊不變。另一名獨立審查者對**新 SHA 全 96 景**與固定來源逐鏡重查 **PASS**，lint 0／0，3-take dry-run 96 景均在上限內；圖樂最高 US$3.97，目前只有既支音樂 US$0.08，沒有付費圖片。生成後仍須原尺寸驗收。詳 [verify-11.md](../../docs/videos/curio-s31/verify-11.md)。
+
+2026-10-20 單支 `from-episode` Short 草稿已備：以杜牧詩、《新唐書》兩段和白居易原序辨明荔枝來路仍不可畫成完整驛線。八景均指向本集既有長片鏡位；格式／六拍／單支檢查零問題。這是零付費撰寫者自查，尚無長片網址及插圖 keyframe，不能製作或宣稱完成短片；詳 [shorts.json](../../docs/videos/curio-s31/shorts.json) 及 [short-verify-1.md](../../docs/videos/curio-s31/short-verify-1.md)。音訊站台 gate 仍 pending。

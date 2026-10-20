@@ -56,6 +56,8 @@ scope:
 
 - **S24 99 景提示詞獨立預檢通過。** 只改 82 個提示詞，增加希臘化時期敘拉古、奧古斯都時代羅馬作者及羅馬時期希臘作者的服飾／場景錨點，移去不實的控訴書和折屏，分開滑輪與未知齒輪；正文文字及已過零旗標的語音沒有改。獨立讀者查出並覆核 `crown-r2-021` 整頂冠沒入水下、`crown-052`／`crown-060` 各自明寫滿水起點後，對確切 `video.json` SHA-256 `59624d323f19dc99bb04de6ded3e2c118b00dd11c7bf0727cfc37fae710302d7` 判 **PASS**，lint 0／0；三輪 99 張 MiniMax 插圖上限約 US$4.01，加已付配樂約 US$4.09。**付費圖仍 0 張**。依 [`visual-preflight-r1.md`](../../docs/videos/curio-s24/visual-preflight-r1.md)，下一步排共享配額生圖及逐張原尺寸目視。
 
+- **S24 單支 Short 草稿已備。** [`shorts.json`](../../docs/videos/curio-s24/shorts.json) 只列一支 `from-episode` 候選：維特魯威書中的兩聲「找到了」並非現場目擊證詞。七景均指向本集既有長片鏡位；Short 格式／六拍／單支檢查零問題。這是零付費撰寫者自查，尚無長片網址及插圖 keyframe，不能製作或宣稱完成短片；詳 [`short-verify-1.md`](../../docs/videos/curio-s24/short-verify-1.md)。原有音訊站台 gate 仍 pending。
+
 固定文本本地重開 SHA-256：S24 英譯 `7daafe23aeef2377fe9a99bc285c5dfc0673440487ab43f78387312b6799304d`、拉丁本 `b4fce89b0c304c7d1f26b299bf2dfcddbab8529c883f43ad1e75fae564daa861`；S25 Brewster 二手傳記 `ded5b6a706615f48b156dbf9f28ab18ac32edb32e16d25fedf1957eccbb94466`。
 
 ## Definition of done
