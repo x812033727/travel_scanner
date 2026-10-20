@@ -157,7 +157,7 @@ const lights = ["soft overcast daylight", "gentle indoor light", "cool desk lamp
 
 export function visualCueCount(chapterIndex) { return cues[chapterIndex]?.length ?? 0; }
 
-// V2 narration keeps the approved per-chapter shot count while moving the
+// The narration keeps the approved per-chapter shot count while moving the
 // business events into one chronological thread. Reuse the original anonymous
 // props by meaning, not by their obsolete line position; hard overrides cover
 // moments for which the former shot had no suitable equivalent.
@@ -173,7 +173,7 @@ const overrides = new Map([
   ["0:1", "an anonymous traveler packs a small suitcase while an anonymous lodging host keeps a plain unused room key beside a blank calendar"],
   ["0:5", "an anonymous office manager studies a row of now-empty desks while a vacant guest-room key waits on the side table"],
   ["0:6", "an anonymous remote worker stretches an unmarked lodging calendar across many blank squares beside a suitcase"],
-  ["0:7", "an anonymous archivist compares two year-end boards with similarly sized piles of keys but no way to match individual keys"],
+  ["0:7", "an anonymous archivist compares two year-end boards of similarly sized mixed lodging and activity tokens, with no way to match individual listings"],
   ["1:0", "an anonymous guest and an anonymous lodging host face the same crossed-out blank reservation tile across a quiet desk"],
   ["2:4", "an anonymous records clerk keeps a guest-refund tray apart from a host-support tray on opposite sides of a blank calendar"],
   ["2:8", "an anonymous host-support clerk selects a narrow band of blank check-in calendar squares beside a plain host key"],
@@ -183,9 +183,13 @@ const overrides = new Map([
   ["3:9", "an anonymous manager returns a plain room key to the middle of an uncluttered booking desk"],
   ["3:17", "an anonymous product planner moves nearer lodging pins to the front of a blank app-like board without moving the houses"],
   ["3:18", "an anonymous records clerk studies a diminished booking pile beside a year-end board of room keys"],
+  ["3:20", "an anonymous auditor compares two year-end boards of mixed lodging and activity tokens, with individual listings impossible to match"],
+  ["3:21", "an anonymous auditor looks at two equally tall piles of mixed blank listing tiles whose individual identities remain hidden"],
+  ["3:22", "an anonymous support worker keeps a small host-support envelope apart from a mixed lodging-and-activity listing board"],
   ["4:22", "an anonymous route planner studies a muted international route while a long availability ribbon remains on the booking calendar"],
   ["5:0", "an anonymous traveler traces a longer route on a blank map toward a simple lodging pin"],
   ["5:16", "an anonymous accountant opens a sealed annual earnings folder beside a changed route map"],
+  ["5:15", "an anonymous records clerk compares earlier and later boards of mixed lodging and activity tokens without identifying the same provider"],
 ]);
 
 if (cueRemap.some((chapter, index) => chapter.length !== visualCueCount(index) || chapter.some(old => old < 0 || old >= visualCueCount(index)))) {

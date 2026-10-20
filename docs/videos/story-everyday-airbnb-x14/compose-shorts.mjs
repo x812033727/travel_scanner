@@ -22,13 +22,13 @@ for (const raw of readFileSync(path.join(dir, "drafts/shorts.md"), "utf8").split
 }
 if (sections.length !== 2 || sections.some(short => short.rows.length !== 8)) throw new Error("Expected two eight-line Shorts");
 const shots = [
-  ["x14-b04-s24", "x14-b02-s07", "x14-b01-s03", "x14-b04-s25", "x14-b04-s25", "x14-b04-s26", "x14-b04-s26", "x14-b04-s24"],
-  ["x14-b05-s18", "x14-b05-s09", "x14-b05-s08", "x14-b05-s14", "x14-b05-s17", "x14-b06-s08", "x14-b06-s18", "x14-b05-s18"],
+  ["x14-b04-s26", "x14-b02-s17", "x14-b01-s01", "x14-b02-s20", "x14-b04-s26", "x14-b02-s11", "x14-b04-s26", "x14-b01-s01"],
+  ["x14-b05-s05", "x14-b05-s07", "x14-b05-s06", "x14-b05-s13", "x14-b05-s19", "x14-b06-s09", "x14-b06-s17", "x14-b05-s20"],
 ];
 const beats = ["hook", "setup", "setup", "turn", "proof", "proof", "payoff", "loop"];
 const headlines = [
-  ["虧 46 億美元＝退訂？", "全年淨預訂 −41%", "三、四月合計取消超新訂", "淨虧損還含上市費用", "IPO 股份費用 ~US$2.8bn", "全年權證重估 ~US$0.87bn", "46 億 ≠ 取消帳單", "不能自創疫情虧損"],
-  ["長住升，全年仍虧？", "2021 Q4 長住 22%", "2019 Q4 是 16%", ">90% 房源接受長住", "Q4 賺／全年虧", "2022 Q4 長住 21%", "2022 首個盈利年", "份額 ≠ 單獨功勞"],
+  ["虧 46 億美元＝退訂？", "全年淨預訂 −41%", "三、四月合計取消超新訂", "淨虧損還含上市費用", "IPO 股份費用 ~US$2.8bn", "全年非現金變動 ~8.7億美元", "46 億 ≠ 取消帳單", "不能自創疫情虧損"],
+  ["長住升＝首次盈利？", "2021 Q4 長住 22%", "2019 Q4 是 16%", "逾九成活躍刊登可接長住", "Q4 賺／全年虧", "2022 Q4 長住 21%", "2022 首個盈利年", "份額 ≠ 單獨功勞"],
 ];
 const sourceLinks = [
   [{ label: "Airbnb 2020 Form 10-K", url: "https://www.sec.gov/Archives/edgar/data/1559720/000155972021000010/airbnb-10k.htm" }],
@@ -39,7 +39,7 @@ const sourceLinks = [
 ];
 const descriptions = [
   "Airbnb 2020 年淨預訂夜晚與體驗席位下降 41%，全年 GAAP 淨虧損約 US$4.6bn；其中含 IPO 觸發的約 US$2.8bn 股份費用及全年約 US$868.5m 非現金權證公允價值變動。不能把全部淨虧損說成取消訂單的代價，也不能扣兩項自創『真正疫情虧損』。匿名畫面是概念示意；長片正式網址待發布後補入。",
-  "Airbnb 2021 Q4 的 28 夜以上長住占當季 gross nights booked 22%，2019 Q4 同口徑是 16%；2021 Q4 有 US$55m 淨利，全年仍淨虧 US$352m。2022 Q4 長住占 21%，2022 全年 GAAP 淨利約 US$1.9bn。這組同期事實不能算出長住的獨立獲利貢獻。匿名畫面是概念示意；長片正式網址待發布後補入。",
+  "Airbnb 2021 Q4 的 28 夜以上長住占當季 gross nights booked 22%，2019 Q4 同口徑是 16%；2021 Q4 末超過九成活躍刊登項目（可為住宿或體驗）接受至少 28 夜預訂，這是可訂設定，不代表已入住。2021 Q4 有 US$55m 淨利，全年仍淨虧 US$352m。2022 Q4 長住占 21%，2022 全年 GAAP 淨利約 US$1.9bn。這組同期事實不能算出長住的獨立獲利貢獻。匿名畫面是概念示意；長片正式網址待發布後補入。",
 ];
 const common = { schema_version: 2, format: "shorts", locale: "zh-TW", line: "cut", series: "illustrated", source: { slug: video.slug }, synthetic_media: true, hashtags: ["Airbnb", "品牌故事", "旅遊"], tags: ["Airbnb", "品牌故事", "旅行", "商業史"] };
 const shorts = sections.map((section, i) => {
@@ -50,7 +50,7 @@ const shorts = sections.map((section, i) => {
   });
   const short = {
     ...common, slug: `${video.slug}-short-${i + 1}`,
-    titles: [section.title, i === 0 ? "Airbnb 2020 虧損，不等於旅客取消的帳單" : "Airbnb 長住占比提高，為何 2021 全年仍虧？"],
+    titles: [section.title, i === 0 ? "Airbnb 2020 虧損，不等於旅客取消的帳單" : "Airbnb 長住占比提高，能單獨解釋首次盈利嗎？"],
     description: descriptions[i], links: sourceLinks[i], scenes,
   };
   const chars = section.rows.map(row => row.text).join("").length;
