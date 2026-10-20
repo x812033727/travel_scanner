@@ -1,7 +1,7 @@
 ---
 id: 2026-10-20-brand-story-dominos-x02
 title: 製作 Domino's 品牌故事本機試看片
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-gpt6-dominos-x02
@@ -26,14 +26,14 @@ scope:
 - [x] 六章敘事、逐句來源與獨立審查、盲讀及零錯誤 lint 完成；四份 SEC 申報保留在說明欄。
 - [x] 依單片 US$25 硬上限控制，完成至少八分鐘正文、30–60 秒濃縮開場、繁中旁白、MiniMax 插圖、配樂、5 秒概念片頭、21 秒概念片尾與 1080p 本機試片；未拆帳費用保留為待核，不能宣稱全額已審計。
 - [x] 輸出可關閉繁中 SRT／VTT、縮圖、SHA 與重建說明；完成視覺、音訊與整檔影音技術 QA，將 14 張插圖、3 句旁白與正式素材／可點片尾待辦清楚交接。
-- [ ] 將完成的製作包開成獨立草稿 PR；正式音訊與頻道品牌未核准前不宣稱已上架。
+- [x] 將完成的製作包開成獨立草稿 PR #1620；正式音訊與頻道品牌未核准前不宣稱已上架。
 
 ## Steps
 
 - [x] 原件核查、稿件、視覺規格與預算乾跑；不付費的片頭片尾流程預驗。
 - [x] 依序生成 TTS、逐句音訊複查、最多三次插圖選圖、資料卡與配樂，逐批核對成本；保留 3 句音訊及 14 鏡視覺待人工正式審查。
 - [x] 合成本機試片與字幕，抽圖、整檔解碼、音量及字幕檢查；更新交接文件。
-- [ ] 跑 `npm run test:docs-videos`、`npm run check:tasks` 與檔案檢查；提交分支及開 PR。
+- [x] 跑 `npm run test:docs-videos`、`npm run check:tasks` 與檔案檢查；提交分支及開 PR。
 
 ## How to verify
 
@@ -48,3 +48,5 @@ scope:
 2026-10-20 13:52 UTC：63 張選圖已合併主工作區，manifest SHA-256 `62bd94e42972e1c0fd31a441f343c124c87e401a5f560ad8229e7961da70acc9`；63 個不同選圖檔皆驗 SHA、每鏡最多 3 次，無未結 jobs／預留。主工作區可見台帳 **US$1.7135**（圖片＋judge US$1.6335、配樂 US$0.08；未知語音／轉錄／複查／稅費另算）。獨立逐鏡 QA 見 `reviews/visual-qc.md`：14 張仍標 `needs_review`，`b04-s02` 和 `b05-s04` 尤有假字。嚴格預檢如實阻擋 14 張，明標概念模式預檢通過；10 張資訊卡及縮圖已渲染，概念片現正逐景編碼。**不要在此主工作區重跑完整 `keyframes`**：它可能重選已過 judge 的 take 而清除人工 QA 旗標；如需檢查只跑唯讀 `--dry-run`，聯絡表已有離線 `qc/contact-sheet-01..03.jpg`。
 
 2026-10-20 14:11 UTC：修正版本機概念 MP4 與字幕已輸出到 `/workspace/brand-story-preview/dominos-x02/`，影片 SHA-256 `ba430870cad347ccdc6275d21dc6a9cf2c52c8ae433f81b4ffd5a3eec1f4452d`。實際 16,363 影格／545.433 秒、H.264 High／BT.709、AAC 48 kHz；全檔影音解碼與逐格時間戳通過、−14.0 LUFS／−1.0 dBTP，95 則繁中 CC 與現稿逐位元組相同。見 `reviews/local-preview-qa.md`、`local-preview.md`，另有唯讀 QA checker 及結果 JSON。技術 PASS，正式發布 HOLD：14 張插圖、3 句旁白、正式品牌動畫與 YouTube 可點片尾仍待處理。
+
+2026-10-20 14:13 UTC：製作包已開[草稿 PR #1620](https://github.com/x812033727/travel_scanner/pull/1620)，task 轉為 review。`npm run test:docs-videos` 243／243、`npm run check:tasks` 通過；原始影音與交付副本的 SHA-256 相同。影片檔只在工作區交付目錄，PR 保留逐項待審旗標。
