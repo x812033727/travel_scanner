@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-prepare-krispy-kreme-mcdonalds-brand-x18
 title: Prepare Krispy Kreme McDonald’s brand-story X18
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: x18-brand-author
-claimed_at: 2026-10-20T22:40:38Z
+owner:
+claimed_at:
 created_at: 2026-10-20T22:40:36Z
 completed_at:
 branch: codex/brand-story-krispy-kreme-x18
@@ -36,7 +36,8 @@ The new twenty-film brand-story series needs a reviewable X18 about the Krispy K
 - [x] Draft six-chapter treatment, brief, narration, author line-source matrix and shot/card JSON with official 5-second intro and 21-second v4 outro handoff.
 - [x] Draft two independent Shorts, source matrix, 9:16 per-beat plan and source-anchored JSON; add production quote, publishing handoff and README.
 - [x] Run offline checks and freeze main/Shorts SHA in README and this task, commit initial package locally only.
-- [ ] Obtain independent source and narrative review on this frozen version; fix any HOLD findings, rebuild and review new SHA.
+- [x] Obtain independent source and narrative review of v1 and v2 frozen versions; archive the exact-SHA PASS/HOLD receipts and author response.
+- [ ] Revise shared v2 narrative blockers in v3, rebuild, and obtain a new independent SEC audit and two first-blind reviews on the v3 SHA.
 
 ## How to verify
 
@@ -60,3 +61,7 @@ sha256sum docs/videos/story-everyday-krispy-kreme-x18/{video,shorts}.json
 Candidate main contains 133 lines, 203-character opening, 2,747-character substantive body, 14 linked loops, 114 image-01 stills and 11 postproduction stats cards. Shorts are 198/214 characters. Actual TTS, image generation, finished film, platform URLs and independent review do not exist. Frozen author candidate `video.json` SHA-256 `d7fb2a16e4e7671d2fed585438f3a365fe4a450ef8267cb02a3bc62a6d07384e`; `shorts.json` SHA-256 `62c4c30c03082a0c0bcf631b0e56282bb44033483671ab499eb97febf1e6e7a2`. Any later revision needs new freeze and review.
 
 Author checks on this candidate: lint 0 errors/0 warnings; each Short CLI validate PASS; `episodeShortsProblems` PASS; `npm run test:docs-videos` 236/236 PASS; `npm run check:tasks` exit 0 (pre-existing stale-claim/scope warnings). `git diff --check` and commit id are recorded in git history. These do not constitute independent source or story PASS.
+
+v1 independent [SEC audit](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/script-source-audit-v1-independent.md) passed, but two fresh [A](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/blind-a-v1-independent.md) / [B](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/blind-b-v1-independent.md) narrative ballots shared mandatory Q4/Q7/Q8/Q10/Q13 NO. v2 author trimmed the financial tail, placed an anonymous physical tray action first, withheld Chicago until chapter three, returned the tray at the cost answer, and fixed Short 2's native map/keyframe source. Frozen v2 `video.json` SHA-256 `714dd069258b64b2fdb0da473ec9a4ed4d1162d2000a515bbae3f944d7c1b50b`, `shorts.json` `760e2eef6dc0f7a15adc42d1740ea49de6c06553f97c55a8bf6d943b446815f6`; lint 0/0, episode Shorts check empty, two Shorts validate, docs-video tests 236/236.
+
+v2 independent [SEC audit](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/script-source-audit-v2-independent.md) re-fetched all S1–S8 raw originals with matching byte counts and SHA and passed factual scope. Two truly fresh readers [A](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/blind-a-v2-independent.md) and [B](../../docs/videos/story-everyday-krispy-kreme-x18/reviews/blind-b-v2-independent.md) both answered mandatory Q8 and Q13 NO: route/delivery cost restatements and a company-wide finance tail after the partnership's answer. B additionally marked Q3 NO because chapter six rewinds from the July 2 termination back to the June 29 cutoff. Thus v2 narrative remains **HOLD**. v3 should keep the date distinction, but advance from June accounting into July termination without rewalking the same cutoff; let the daily tray have new states rather than repeating the daily-delivery premise; reduce the Q3/FY total-company result to a brief bounded coda or supporting material. Real TTS, official animations, paid media and platform links remain unverified.
