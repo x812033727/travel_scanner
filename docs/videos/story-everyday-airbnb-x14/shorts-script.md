@@ -1,6 +1,6 @@
 # X14 Airbnb｜兩支獨立 Shorts
 
-主片 SHA-256：`8c1b2fc9d699851e42d3cc7fe59d40ea0560ef393f3a8fe60eb462f9548bab0f`；Shorts SHA-256：`545a0844636cbc769afb9254824a6a68bbaf0006ebcbbe37b58344ae5a04252c`。各自有主角、事件、問題與結局；紙面時長須由正式 TTS 重測。Shot 引用長片的插畫位置，旁白按本 Short 獨立錄製。
+主片 SHA-256：`23f057225c826b5687559fb7a47ea58c5b00eeb342f460a9c8a5484de1b84a62`；Shorts SHA-256：`545a0844636cbc769afb9254824a6a68bbaf0006ebcbbe37b58344ae5a04252c`。各自有主角、事件、問題與結局；紙面時長須由正式 TTS 重測。Shot 引用長片的插畫位置，旁白按本 Short 獨立錄製。
 
 ## Short 1｜Airbnb 2020 虧 46 億，都是取消訂單害的？
 
