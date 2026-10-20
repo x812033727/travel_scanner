@@ -100,6 +100,7 @@
 | 自查 | — | 第 2 章首句沒有接住開場；讀本「一夜運竹木」重講開場的運料；「七天」三句；白紙牆回呼兩次；「後來很有名的蜂須賀小六」沒有出處；「同一個月，敵將才從那裡出兵」語意不對；prompt 裡 boyish、castle-style、writing、bright | 首句改「那位信長的家臣叫太田牛一…比那部讀本早了大約兩百年」；拿掉運竹木那句；問句改「那他打算怎麼趕出來？」、回收句加「剛剛誇口的」；結檔前的回呼改成喊天狗的美濃兵與一百七十年；改「有一個名字叫蜂須賀小六」；「才」改「還」；prompt 換字 |
 | lint 3 | 0 錯誤、0 警告 | — | 寫 brief.md 後；估 9.6 分鐘、107 句、2,305 字、loops 18；`script --slug` 產生 `script.md` |
 | 0 | 未跑 | — | 寫稿時照 S12（no_toc、payoffs、no_detour、no_recap）與 S21（章末問句、下一章首句用事實回答）先自查：`scene_first`、`no_spoiler`（開場不講有沒有藤吉郎、工期多長、哪一年、市府說什麼）、`chapters_link`、`payoffs`（只問答得出的）、`one_line`（照打開書的順序）、`no_detour`、`no_recap`、`opening_hooks`（四個預告）、`no_toc` |
+| 1 | 13／13 | — | 通過，已用 `narrative --answers` 記錄 |
 
 ## 沒放進稿子的事實
 
