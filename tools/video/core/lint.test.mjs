@@ -892,3 +892,25 @@ test("the translated titles' channel warnings sit under youtube/<locale>, which 
   assert.match(refused[0].message, /package refuses it/);
   assert.equal(captionsItem({ lintWarnings: refused, manifest: { locales: { "zh-TW": {}, en: {} } }, current: true, locales: ["zh-TW", "en"], hasCaptionFile: () => true }).ok, false);
 });
+
+// A tutorial's one promise sentence (teaching-flow.md §一, 2026-10-21): the two reference
+// tutorials open on what the viewer will be able to do; a table of contents still warns.
+test("a tutorial's promise sentence is not a table of contents; sections and ordinals still are", () => {
+  const opening = (text, category) => {
+    const long = closed(stretched());
+    if (category) long.category = category;
+    long.scenes[0].lines[0].text = text;
+    long.scenes[0].lines[1].text = "這一句是開場的第二句。";
+    return lintVideo(long, context()).warnings.filter((warning) => /table of contents/.test(warning.message)).map((warning) => warning.path);
+  };
+  const skill = "今天不講艱深的東西，就用一個生活上的比喻，帶你幾分鐘把 Skill 完全搞懂。最後再教你在網頁版自己加一本。";
+  const codex = "所以這支影片我會告訴你 Codex 是什麼，然後帶你學會四個一定要知道的基本功：專案、權限、上下文和 AGENTS.md。";
+  assert.deepEqual(opening(skill, "tutorial"), []);
+  assert.deepEqual(opening(codex, "tutorial"), []);
+  assert.deepEqual(opening(codex, "explainer"), ["scenes[0]"], "the story route keeps its condensation");
+  assert.deepEqual(opening(codex), ["scenes[0]"], "no category is the story route");
+  assert.deepEqual(opening(skill), [], "one deliverable and no list was never a table of contents");
+  assert.deepEqual(opening("接下來分成三段，帶你學會怎麼用。", "tutorial"), ["scenes[0]"], "sections named as such");
+  assert.deepEqual(opening("第一，先看價格。第二，再看額度。最後，教你怎麼選。", "tutorial"), ["scenes[0]"], "an ordinal run");
+  assert.deepEqual(opening("接下來我會告訴你，這個測驗在量什麼、為什麼公司還是照樣裁員，還有三個問題。", "tutorial"), ["scenes[0]"], "an announcement with no promise verb");
+});

@@ -69,6 +69,9 @@ const ORDINAL_RUN = [/第一[，、]/, /第二[，、]/, /(?:第三|最後)[，�
 const CLAUSE_START = "(?:^|[。！？，；：])";
 const FIRST_NEXT_LAST = [new RegExp(`${CLAUSE_START}先[^。！？，；：]`), new RegExp(`${CLAUSE_START}再[^。！？，；：]`), new RegExp(`${CLAUSE_START}最後[^。！？，；：]`)];
 const ANNOUNCEMENT = /這集|這支|這部|接下來|我帶你|帶你|跟我|我分|我們分/;
+// The verbs of a promise (what the viewer will be able to do) and the words that name a section.
+export const PROMISE_VERB = /學會|搞懂|做出|自己(?:加|寫|做|建|裝)|能(?:用|做|寫|自己)|教你/;
+export const SECTION_WORD = /[一二三四五六七八九十兩\d]+(?:段|部分|章|個部分|個段落)|分成|這一章|第[一二三四五六七八九十\d]+(?:段|章|部分)/;
 const LIST_MARKS = [/、/g, /還有|以及/g, new RegExp(`${CLAUSE_START}(?:再|最後)`, "g"), /[二三四五六七八九十兩\d]+(?:段|個|部分|點|件|步|道|關|張|題|項)/g];
 const LISTED_AND = /、[^。！？]*(?:與|和|跟)/;
 const SENTENCE_END = /(?<=[。！？])/;
@@ -336,7 +339,11 @@ export function episodeScriptProblems(doc, timeline, { outroCount = true } = {})
   const starts = new Map((timeline?.lines ?? []).map((line) => [line.id, line.start_frame]));
   const opening = [...eachLine(doc)].filter(({ line }) => (starts.get(line.id) ?? Infinity) < OPENING_SECONDS * FPS).map(({ line }) => line.text).join("");
   const runs = [ORDINAL_RUN, FIRST_NEXT_LAST].some((run) => run.every((pattern) => pattern.test(opening)));
-  if (OPENING_TOC.some((pattern) => pattern.test(opening)) || runs || announcesList(opening)) {
+  // A tutorial's one promise sentence (teaching-flow.md §一, 2026-10-21): what the viewer will be able
+  // to do or make, with a count or a deliverable, is not a table of contents; sections named as
+  // such (段、部分、章) or an ordinal run still are.
+  const promise = doc.category === "tutorial" && PROMISE_VERB.test(opening) && !runs && !SECTION_WORD.test(opening);
+  if (!promise && (OPENING_TOC.some((pattern) => pattern.test(opening)) || runs || announcesList(opening))) {
     warn("scenes[0]", `the first ${OPENING_SECONDS} s read a table of contents (「接下來分三段」「第一，…第二，…最後」「先…再…最後」「看完你會知道」「這集講 A、B，還有 C」); open on the question or the claim and a concrete number, date or name, and let the chapters announce themselves`);
   }
   doc.scenes.forEach((scene, index) => {

@@ -10,7 +10,7 @@ import path from "node:path";
 import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { isLongAnime } from "../core/anime-policy.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_CHARS, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_MAX_CHARS, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
-import { CONDENSATION_RULE, HEARD_RULES, NARRATIVE_RULES, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
+import { CONDENSATION_RULE, HEARD_RULES, NARRATIVE_RULES, REGISTER_RULES, TEACHING_FLOW_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
 import { EXPLAINER_SERIES_INSTRUCTIONS } from "./explainer-series.mjs";
 import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
@@ -234,6 +234,8 @@ export const INSTRUCTIONS = {
 
 ${TEACHING_RULES}
 
+${TEACHING_FLOW_RULES}
+
 ${VALUE_RULES}
 
 You are the planner. From "topics" (the site's recent checked articles, then official pages, then
@@ -302,6 +304,8 @@ ${REGISTER_RULES} ${TEMPLATE_GUIDE}`,
   writer: `${WRITING_COMMON}
 
 ${TEACHING_RULES}
+
+${TEACHING_FLOW_RULES}
 
 ${VALUE_RULES}
 
@@ -420,6 +424,8 @@ facts that expire soon with their date, opinion mismatches, and what you suspect
 
   listener: `${LISTENER_BASE}
 ${TEACHING_RULES}
+
+${TEACHING_FLOW_RULES}
 
 ${VALUE_RULES}
 

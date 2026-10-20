@@ -54,7 +54,23 @@ export const LABEL_OPENERS = [
 export const OPEN_LOOP_FAMILY = Object.freeze({
   forward: /等一下|等等會|先記住|先記著|之後(?:會|再)|晚一點|後面(?:會|再)|最後再|待會/,
   escalation: /但這還不是|還不是最|更怪的是|更離奇|更麻煩的是|問題來了|結果(?:呢|，|：)|沒想到|偏偏|奇怪的是|怪就怪在/,
+  // The tutorial's own hook (teaching-flow.md §三, 2026-10-21): the narrator says the objection the
+  // viewer is about to raise, then answers it (「你第一次看到可能會想」「到這裡你可能會有個疑惑」).
+  objection: /可能會(?:問|想|覺得|有個疑惑)|到這裡你|看到這邊(?:你)?可能|有人會問|你會不會覺得|很多人(?:會|應該)(?:覺得|想|以為)/,
 });
+/**
+ * A spoken interjection a person opens a sentence with (「好，」「所以，」「那，」); stripped before a
+ * chapter's first sentence is read for a label, because the interjection is how a person talks,
+ * not a section marker (teaching-flow.md §四, 2026-10-21).
+ */
+export const INTERJECTION = /^(?:好|所以|那|那麼|OK|欸|嗯)[，、,]\s*/;
+/**
+ * What a chapter's first sentence may carry besides its label and still be a progress sentence:
+ * the running example's state (「名單整理完、活動頁也做好了」「這四個基本功都搞定了」), a question the
+ * viewer is asking, or a callback to what came before. A label that carries none of these is a
+ * label (「接下來我們來看第二點」).
+ */
+export const PROGRESS_CARRIER = /(?:做好了|搞定了|整理完|寫好了|裝好了|跑完了|做完了|弄好了|有了|之後|你可能會|可能會有個疑惑|[？?]|還記得|前面說過|剛剛|開頭|一開始)/;
 const QUESTION = /[？?]\s*$/;
 /** A sentence that brings a fact back on purpose: not a repeat. */
 export const CALLBACK = /還記得|記得嗎|剛剛|剛才|前面|開頭|一開始|回到那/;
@@ -116,8 +132,11 @@ export function chapterOpenerProblems(doc, timeline) {
     const to = next ? (index.get(next.scene) ?? doc.scenes.length) : doc.scenes.length;
     const first = firstLine(doc, from, to);
     if (!first || first.scene.template === "outro") return;
-    const text = first.line.text.replace(/^[「『]/, "");
+    const text = first.line.text.replace(/^[「『]/, "").replace(INTERJECTION, "");
     if (!LABEL_OPENERS.some((pattern) => pattern.test(text))) return;
+    // A label that carries the running example's state, the viewer's question or a callback is a
+    // progress sentence, which is how the reference tutorials move between chapters.
+    if (PROGRESS_CARRIER.test(text)) return;
     problems.push({ path: first.label, message: `the chapter 「${chapter.title}」 opens on a label (「${text.slice(0, 14)}…」): open on the event itself, the consequence of what came before, or its answer; the label is what stitches sections instead of telling a story (script-writing.md §故事主線與鉤子)` });
   });
   return problems;
@@ -279,6 +298,32 @@ export const NARRATIVE_PANEL = Object.freeze([
   { id: "no_detour", required: true, question: "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？" },
 ]);
 
+/**
+ * The same thirteen checks worded for a tutorial (a slides video whose "category" is "tutorial":
+ * teaching cards, the subject something the viewer operates). Two popular tutorials read against
+ * the story wording on 2026-10-21 failed 10 and 8 of the 12 required questions while reading as
+ * one smooth lesson each; what they do instead is written in teaching-flow.md and here. Same ids,
+ * same required flags, so panelVerdict and the writer's revision loop are unchanged.
+ */
+export const TUTORIAL_PANEL_QUESTIONS = Object.freeze({
+  scene_first: "前四句（約 15 秒）是否已經有觀眾能指認的具體東西：一個日期或產品名、一個人用觀眾自己的話問的問題、或觀眾此刻的處境加一個張力，而不是問候、「在 AI 快速發展的時代」這種空話、或「今天要來分享」？",
+  no_spoiler: "開場是否沒有把主例的意外結果（量到的數字、那次失敗）在第一章就講完、正文再講一次？（承諾句點名觀眾最後會做出什麼不算講掉。）",
+  no_toc: "開場之後，是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）？開場可以有一句承諾句：點名觀眾看完會拿到的東西（最多四樣）和一個數字或成品，整支片只一次；正文中段把內容排成清單（「還沒解釋的是這四件事」）仍算宣告。",
+  chapters_link: "每一章第一句是否帶著東西往前走：主例走到哪裡了（「名單整理完、活動頁也做好了」）、觀眾正要問的問題（「到這裡你可能會有個疑惑」）、上一章留下的後果，或一句利害（「這也是新手最該搞懂的」）？「好，」「所以，」開頭是人講話的樣子，不算標籤；拿掉「接下來／現在／好」之後什麼都不剩的句子（「接下來我們來看第二點」「首先我們來說說它是什麼」）才是標籤，不算銜接。",
+  open_loops: "正文是否每 90 秒內至少有一個鉤子：旁白先講出觀眾下一個疑問再答（「你可能會想…」）、跟觀眾現在的做法對照（「ChatGPT 你得先把檔案丟上去」）、一句利害、前向、升級、或轉折？",
+  payoffs: "每一個講出來的疑問和承諾是否都兌現了：疑問緊接著答案；承諾句點名的東西，正文真的做出來、而且做出來的那一刻就是回收（「想加自己的說明書，就在這一頁按加號」），不必再用「還記得」？只重複問題、換句話說，或回答另一件事，都不算。",
+  no_recap: "同一個數字或事實是否沒有講超過一次？承諾句點名的東西、正文講到時不算重講；最後一個內容章如果是「現在先做這三件」的行動清單，每件是一個動作，也不算；把正文講過的事實再總結一遍、或正文回頭把開場那段再講一次（「就像剛剛那個故事講的」）才算。",
+  chapters_are_events: "章名是不是觀眾會搜尋的問題或做的事（「怎麼讓它只改一個資料夾」「寫一本找餐廳」），而不是功能標籤（背景、介面導覽、總結）？",
+  opening_hooks: "開場 60 秒內，是否至少有三個讓人想看下去的東西：一句利害（「它碰得到你的檔案，所以你得先學會駕馭它」）、一個用觀眾自己的話問的問題、一句帶數字或成品的承諾、或一個停在結果之前的主例時刻？（「接下來我們會看到」這種空宣告不算。）",
+  one_thread: "是否有一個例子從開場帶到結尾，每個新概念都先在這個例子裡發生才有名字，每一章都讓它往前走？開場那個問問題的人在片尾回來。一段集中的用途清單可以（每項不超過三句、都走同一個對照、講完主例接手），每章換一個不相干的例子不算。",
+  no_detour: "是否沒有岔出去的段落：每一段都在推進開場那個問題；一句話回答「我的工具能不能用」的支援清單可以，念分數、引言或誰說了什麼的對照清單、推銷別支影片的段落不行？",
+});
+/** The panel for a script: the tutorial wording for a tutorial, the story wording for everything else. */
+export function panelQuestions(doc) {
+  if (doc?.category !== "tutorial") return NARRATIVE_PANEL;
+  return NARRATIVE_PANEL.map((question) => (TUTORIAL_PANEL_QUESTIONS[question.id] ? { ...question, question: TUTORIAL_PANEL_QUESTIONS[question.id] } : question));
+}
+
 /** What the panel's reader is told, and nothing else: no brief, no sources, no standing instructions (the stage sends it bare). */
 export const PANEL_INSTRUCTIONS = `
 You are a blind reader of ONE zh-TW (Traditional Chinese, Taiwan) YouTube narration script. You
@@ -301,6 +346,7 @@ Markdown fence): {"answers": [{"id": "<question id>", "yes": true|false, "eviden
 export const PANEL_RULES_SHA256 = createHash("sha256").update(JSON.stringify({
   instructions: PANEL_INSTRUCTIONS,
   questions: NARRATIVE_PANEL.map(({ id, question, required }) => ({ id, question, required })),
+  tutorial_questions: TUTORIAL_PANEL_QUESTIONS,
   verdict_version: 1,
 })).digest("hex");
 
@@ -318,7 +364,7 @@ export function narrativeReviewMatches(check, doc) {
 
 /** The panel's payload: the script as text and the questions, nothing a reader could lean on. */
 export function panelPayload(doc, timeline) {
-  return { narration: narrationText(doc, timeline), questions: NARRATIVE_PANEL.map(({ id, question }) => ({ id, question })) };
+  return { narration: narrationText(doc, timeline), questions: panelQuestions(doc).map(({ id, question }) => ({ id, question })) };
 }
 
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);

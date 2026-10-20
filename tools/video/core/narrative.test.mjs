@@ -456,3 +456,46 @@ test("lint reads the storytelling of a narrated episode: the teaser is an error,
   assert.deepEqual(lintVideo(fixture(), context()).errors, []);
   assert.deepEqual(narrativeProblems(fixture(), estimateTimeline(fixture()), { minutes: 0.5 }).errors, []);
 });
+
+// The tutorial's flow (teaching-flow.md, 2026-10-21): two popular tutorials read against the story
+// wording failed 10 and 8 of the 12 required questions; a tutorial gets the same ids worded for a
+// lesson, a chapter may open on the running example's state, and a voiced objection is a hook.
+import { INTERJECTION, OPEN_LOOP_FAMILY, panelQuestions, PROGRESS_CARRIER, TUTORIAL_PANEL_QUESTIONS } from "./narrative.mjs";
+
+test("a tutorial reads the panel in its own wording, same ids and required flags; every other script keeps the story wording", () => {
+  const story = panelQuestions(fixture());
+  assert.deepEqual(story, NARRATIVE_PANEL);
+  const tutorial = panelQuestions({ ...fixture(), category: "tutorial" });
+  assert.deepEqual(tutorial.map((question) => question.id), NARRATIVE_PANEL.map((question) => question.id));
+  assert.deepEqual(tutorial.map((question) => question.required), NARRATIVE_PANEL.map((question) => question.required));
+  assert.equal(Object.keys(TUTORIAL_PANEL_QUESTIONS).length, 11, "outro_no_next and one_line keep the story wording");
+  assert.match(tutorial.find((question) => question.id === "no_toc").question, /承諾句/);
+  assert.match(tutorial.find((question) => question.id === "chapters_link").question, /「好，」「所以，」開頭/);
+  assert.match(tutorial.find((question) => question.id === "open_loops").question, /你可能會想/);
+  assert.doesNotMatch(story.find((question) => question.id === "no_toc").question, /承諾句/);
+  const payload = panelPayload({ ...fixture(), category: "tutorial" }, estimateTimeline(fixture()));
+  assert.equal(payload.questions.find((question) => question.id === "no_toc").question, TUTORIAL_PANEL_QUESTIONS.no_toc);
+  assert.equal(panelQuestions({ ...fixture(), category: "explainer" }), NARRATIVE_PANEL);
+});
+
+test("a chapter that opens on the running example's state or the viewer's question is a progress sentence, not a label", () => {
+  for (const opener of ["好，這四個基本功都搞定了，現在來看它實際能把這場講座做出什麼。", "接下來就是最關鍵的部分，我前面說過，一個能碰你電腦的東西，你得先學會駕馭它。", "所以，名單整理完、活動頁也做好了，接下來我會讓它先總結目前的狀態。", "接下來你可能會想，怎麼又要寫一個 markdown。", "好，那到底要怎麼用？"]) {
+    const doc = fixture();
+    doc.scenes[1].lines[0].text = opener;
+    assert.deepEqual(chapterOpenerProblems(doc, estimateTimeline(doc)), [], opener);
+  }
+  for (const label of ["好，接下來我們來看第二點。", "所以，再來是權限。", "那麼，先講它是什麼。"]) {
+    const doc = fixture();
+    doc.scenes[1].lines[0].text = label;
+    assert.equal(chapterOpenerProblems(doc, estimateTimeline(doc)).length, 1, label);
+  }
+  assert.equal("好，接下來我們來看第二點。".replace(INTERJECTION, ""), "接下來我們來看第二點。");
+  assert.equal(PROGRESS_CARRIER.test("接下來我們來看第二點。"), false);
+});
+
+test("a voiced objection is an open loop", () => {
+  for (const text of ["你第一次看到可能會想，怎麼又要寫一個 markdown。", "到這裡你可能會有個疑惑，那它跟 Memory 差在哪。", "看到這邊可能覺得很難，其實沒有。", "很多人應該想都沒想到，ChatGPT 現在也有 Skills 了。"]) {
+    assert.ok(Object.values(OPEN_LOOP_FAMILY).some((pattern) => pattern.test(text)), text);
+  }
+  assert.equal(OPEN_LOOP_FAMILY.objection.test("這一句只是把範例拉長到一集的長度。"), false);
+});
