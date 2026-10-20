@@ -99,30 +99,29 @@ const portraitFocal = new Map([
   ["x150519", "two watches beside a broader group of equipment"],
   ["x150532", "several abstract paths branching from one centre"],
 ]);
-// Each numerical card is hand-written from G1–G6, then anchored to one exact
-// narration beat. Matching a unique phrase keeps IDs stable if a hook moves.
+// Each numerical card is hand-written from G1–G6 and anchored to a stable
+// narration ID; the spoken wording can change without losing its source card.
 const cardRules = [
-  [/全公司收入約十七億七千萬美元/, { title: "2006 全年營收", stats: [{ value: "約 US$1.77bn", label: "全公司收入，非淨利" }], source: "G1｜Garmin FY2006 8-K" }],
-  [/那一欄達到約十一億美元/, { title: "2006 車用／行動事業", stats: [{ value: "約 US$1.10bn", label: "全年營收；年增 170%" }], source: "G1｜Garmin FY2006 8-K" }],
-  [/二〇〇六年，這系列占全公司收入約兩成八/, { title: "nüvi 占全公司收入", stats: [{ value: "約 28%", label: "2006 全年；不是市場占有率" }], source: "G2｜Garmin FY2008 10-K" }],
-  [/隔年，比例跳到五成二/, { title: "nüvi 占全公司收入", stats: [{ value: "約 52%", label: "2007 全年；不是事業占比" }], source: "G2｜Garmin FY2008 10-K" }],
-  [/答案是百分之六十四/, { title: "nüvi 占全公司收入", stats: [{ value: "約 64%", label: "2008 全年；屬於車用／行動事業的一部分" }], source: "G2｜Garmin FY2008 10-K" }],
-  [/占公司全年收入，大約百分之七十三/, { title: "2008 車用／行動事業", stats: [{ value: "72.65%", label: "US$2,538.411m ÷ US$3,494.077m" }], source: "G3｜Garmin FY2008 8-K；本包計算" }],
-  [/二〇一〇年，車用與行動收入約十六億七千萬/, { title: "車用／行動事業全年營收", stats: [{ value: "US$2.538bn", label: "2008" }, { value: "US$1.669bn", label: "2010；兩年對照，非 2010 年比" }], source: "G3/G4｜Garmin FY2008/FY2010 8-K" }],
-  [/全公司收入也從約三十五億，降到約二十七億/, { title: "全公司全年營收", stats: [{ value: "US$3.494bn", label: "2008" }, { value: "US$2.690bn", label: "2010；名目美元" }], source: "G3/G4｜Garmin FY2008/FY2010 8-K" }],
-  [/nüvi 占全公司收入的比重，變成約四成八/, { title: "nüvi 占全公司收入", stats: [{ value: "約 48%", label: "2011 全年；非整個車用／行動事業" }], source: "G5｜Garmin FY2011 10-K" }],
-  [/那個事業當年仍占約五成八/, { title: "車用／行動事業占全公司收入", stats: [{ value: "約 58%", label: "2011 全年；分子不同於 nüvi" }], source: "G5｜Garmin FY2011 10-K" }],
-  [/健身事業，收入增加百分之二十四/, { title: "2011 Fitness 事業", stats: [{ value: "+24%", label: "全年營收年比；非兩款錶銷量" }], source: "G5｜Garmin FY2011 10-K" }],
-  [/戶外事業也增加百分之十四/, { title: "2011 Outdoor 事業", stats: [{ value: "+14%", label: "全年營收年比；非兩款錶銷量" }], source: "G5｜Garmin FY2011 10-K" }],
-  [/最上方的總收入，約七十二億五千萬美元/, { title: "2025 全年營收", stats: [{ value: "US$7.245519bn", label: "全公司收入，非淨利" }], source: "G6｜Garmin FY2025 8-K" }],
-  [/健身事業的全年收入，約二十三億六千萬/, { title: "2025 Fitness 事業", stats: [{ value: "US$2.357bn", label: "全年營收；非只有手錶" }], source: "G6｜Garmin FY2025 8-K" }],
-  [/戶外也有約二十億五千萬/, { title: "2025 Outdoor 事業", stats: [{ value: "US$2.054061bn", label: "全年營收；非只有手錶" }], source: "G6｜Garmin FY2025 8-K" }],
+  ["x150202", { title: "2006 全年營收", stats: [{ value: "約 US$1.77bn", label: "全公司收入，非淨利" }], source: "G1｜Garmin FY2006 8-K" }],
+  ["x150205", { title: "2006 車用／行動事業", stats: [{ value: "約 US$1.10bn", label: "全年營收；年增 170%" }], source: "G1｜Garmin FY2006 8-K" }],
+  ["x150221", { title: "nüvi 占全公司收入", stats: [{ value: "約 28%", label: "2006 全年；不是市場占有率" }], source: "G2｜Garmin FY2008 10-K" }],
+  ["x150222", { title: "nüvi 占全公司收入", stats: [{ value: "約 52%", label: "2007 全年；不是事業占比" }], source: "G2｜Garmin FY2008 10-K" }],
+  ["x150301", { title: "nüvi 占全公司收入", stats: [{ value: "約 64%", label: "2008 全年；屬於車用／行動事業的一部分" }], source: "G2｜Garmin FY2008 10-K" }],
+  ["x150305", { title: "2008 車用／行動事業", stats: [{ value: "72.65%", label: "US$2,538.411m ÷ US$3,494.077m" }], source: "G3｜Garmin FY2008 8-K；本包計算" }],
+  ["x150401", { title: "車用／行動事業全年營收", stats: [{ value: "US$2.538bn", label: "2008" }, { value: "US$1.669bn", label: "2010；兩年對照，非 2010 年比" }], source: "G3/G4｜Garmin FY2008/FY2010 8-K" }],
+  ["x150404", { title: "全公司全年營收", stats: [{ value: "US$3.494bn", label: "2008" }, { value: "US$2.690bn", label: "2010；名目美元" }], source: "G3/G4｜Garmin FY2008/FY2010 8-K" }],
+  ["x150413", { title: "nüvi 占全公司收入", stats: [{ value: "約 48%", label: "2011 全年；非整個車用／行動事業" }], source: "G5｜Garmin FY2011 10-K" }],
+  ["x150415", { title: "車用／行動事業占全公司收入", stats: [{ value: "約 58%", label: "2011 全年；分子不同於 nüvi" }], source: "G5｜Garmin FY2011 10-K" }],
+  ["x150510", { title: "2011 Fitness 事業", stats: [{ value: "+24%", label: "全年營收年比；非兩款錶銷量" }], source: "G5｜Garmin FY2011 10-K" }],
+  ["x150514", { title: "2011 Outdoor 事業", stats: [{ value: "+14%", label: "全年營收年比；非兩款錶銷量" }], source: "G5｜Garmin FY2011 10-K" }],
+  ["x150602", { title: "2025 全年營收", stats: [{ value: "US$7.245519bn", label: "全公司收入，非淨利" }], source: "G6｜Garmin FY2025 8-K" }],
+  ["x150608", { title: "2025 Fitness 事業", stats: [{ value: "US$2.357bn", label: "全年營收；非只有手錶" }], source: "G6｜Garmin FY2025 8-K" }],
+  ["x150609", { title: "2025 Outdoor 事業", stats: [{ value: "US$2.054061bn", label: "全年營收；非只有手錶" }], source: "G6｜Garmin FY2025 8-K" }],
 ];
 const cards = new Map();
-for (const [pattern, data] of cardRules) {
-  const matches = allRows.filter(row => pattern.test(row.text));
-  if (matches.length !== 1) throw new Error(`Card anchor must match one narration line: ${pattern} (${matches.length})`);
-  cards.set(matches[0].id, data);
+for (const [id, data] of cardRules) {
+  if (!allRows.some(row => row.id === id)) throw new Error(`Card anchor missing narration line: ${id}`);
+  cards.set(id, data);
 }
 const sayWords = [
   ["Garmin Fit", "嘎明菲特"], ["Auto OEM", "車廠供應部門"],
@@ -168,24 +167,15 @@ scenes.push({ id: "x15-outro", template: "outro", data: { title: "導航不只�
 // Setups point to a withheld outcome, with the answer in the actual line named
 // by payoff. Keep the opening's later moments open through the six-chapter body.
 const loops = [
-  { setup: "x150105", payoff: "x150426", what: "年報對手機導航壓力的判斷如何改變" },
-  { setup: "x150106", payoff: "x150206", what: "開場車用收入急升的幅度" },
-  { setup: "x150107", payoff: "x150401", what: "開場同一事業兩年後降到多少" },
-  { setup: "x150108", payoff: "x150510", what: "開場運動錶推出那年健身事業的變化" },
-  { setup: "x150109", payoff: "x150426", what: "開場風險欄換成了什麼字" },
-  { setup: "x150110", payoff: "x150635", what: "離開車前螢幕後的收入結構" },
-  { setup: "x150209", payoff: "x150214", what: "當年最醒目的車用產品系列" },
-  { setup: "x150231", payoff: "x150301", what: "nüvi 在 2008 占全公司營收多少" },
-  { setup: "x150308", payoff: "x150310", what: "2008 警訊是否等於當年貨賣不動" },
-  { setup: "x150320", payoff: "x150322", what: "手機是否也能成為導航選擇" },
-  { setup: "x150335", payoff: "x150401", what: "高度依賴的車用事業能否維持原營收" },
-  { setup: "x150410", payoff: "x150411", what: "能否從總收入表拆出手機造成的落差" },
-  { setup: "x150509", payoff: "x150510", what: "運動錶以外健身事業當年是否成長" },
-  { setup: "x150524", payoff: "x150525", what: "收購的導航公司是否也做手機應用" },
-  { setup: "x150539", payoff: "x150540", what: "2011 車用事業是否仍是最大收入欄" },
-  { setup: "x150543", payoff: "x150601", what: "多年後最大收入欄是誰" },
-  { setup: "x150612", payoff: "x150617", what: "2025 戶外事業還有什麼非手錶產品" },
-  { setup: "x150634", payoff: "x150635", what: "2025 健身與戶外在全年總收入的比重" },
+  { setup: "x150105", payoff: "x150426", what: "2008 可能變成 2011 已使成長停滯" },
+  { setup: "x150107", payoff: "x150401", what: "2010 公告裡車用／行動收入的金額" },
+  { setup: "x150108", payoff: "x150501", what: "2011 新品頁揭曉跑者手腕的新用途" },
+  { setup: "x150109", payoff: "x150425", what: "2011 手機風險欄寫出的新判斷" },
+  { setup: "x150110", payoff: "x150635", what: "車內導航競爭之後的公司收入來源" },
+  { setup: "x150231", payoff: "x150301", what: "2008 nüvi 占全公司收入的比例" },
+  { setup: "x150335", payoff: "x150402", what: "七成事業的收入在兩年後是否維持" },
+  { setup: "x150432", payoff: "x150501", what: "2011 新品頁讓 GPS 進入哪個場景" },
+  { setup: "x150543", payoff: "x150601", what: "2025 最大收入欄是哪個事業" },
 ];
 const linePosition = new Map(allRows.map((row, index) => [row.id, index]));
 for (const loop of loops) if (!(linePosition.has(loop.setup) && linePosition.has(loop.payoff) && linePosition.get(loop.setup) < linePosition.get(loop.payoff))) throw new Error(`Invalid loop: ${JSON.stringify(loop)}`);
