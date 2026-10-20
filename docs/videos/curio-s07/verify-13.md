@@ -1,6 +1,6 @@
 # S07 長坂橋｜上架文字、品牌位置與開畫後交接
 
-2026-10-20；**未請求新的圖片、判圖或配樂**。開畫前的 86 景視覺稿保持 `visual_hash` **`8a732ad1b399d32b`**、look hash **`98a370ae40badbaf`**。`script.md` 仍為 SHA-256 `73ace39d6b07a68d59bf077b6bd6e30a565fb5d86baed910d6f774183eb169b2`，`timeline.json` 仍為 `72300a5d776aaa63761c1acc35f5e22fb0b1811d36e0cfa49097c3b71378e7e8`。只改 `video.json` 的 `youtube.description`，現行完整 SHA-256 **`ba6bfc13ad087665a9f68eec94f33cb46b795e6ed5eaf91164a08d73705b2426`**；相對舊版 `7ff83907…`，87 景、95 句及其視覺 hash 均不變。`lint` 仍 **0 errors／0 warnings**，本機企劃／劇本／旁白核准仍為現行版本。
+2026-10-20；**未請求新的圖片、判圖或配樂**。開畫前的 86 景視覺稿保持 `visual_hash` **`8a732ad1b399d32b`**、look hash **`98a370ae40badbaf`**。`script.md` 仍為 SHA-256 `73ace39d6b07a68d59bf077b6bd6e30a565fb5d86baed910d6f774183eb169b2`，`timeline.json` 仍為 `72300a5d776aaa63761c1acc35f5e22fb0b1811d36e0cfa49097c3b71378e7e8`。只改 `video.json` 的 `youtube.description`，現行完整 SHA-256 **`ba6bfc13ad087665a9f68eec94f33cb46b795e6ed5eaf91164a08d73705b2426`**；相對舊版 `7ff83907…`，86 景、95 句及其視覺 hash 均不變。`lint` 仍 **0 errors／0 warnings**，本機企劃／劇本／旁白核准仍為現行版本。
 
 ## 上架文字及連結審計
 
