@@ -1,0 +1,1787 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s12",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "像一個在霧裡追查一聲槍響的檔案員。開場霧與小雨低而慢，「虛歲十九」平實不煽情。信一封一封讀，引文放慢。軍記裡家康下令那句短促帶點戲，「還是沒有下山」停一拍。研究者的說法平穩不選邊。結尾兩半分開：存檔乾脆，未結誠懇。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "sk108",
+      "payoff": "sk215",
+      "what": "家康謝秀秋，謝的是什麼"
+    },
+    {
+      "setup": "sk109",
+      "payoff": "sk308",
+      "what": "咬斷指甲的家康下了什麼令"
+    },
+    {
+      "setup": "sk110",
+      "payoff": "sk417",
+      "what": "替黑田家寫史的儒者寫的三遍"
+    },
+    {
+      "setup": "sk111",
+      "payoff": "sk423",
+      "what": "軍記編者在書裡打的問號"
+    },
+    {
+      "setup": "sk112",
+      "payoff": "sk523",
+      "what": "家康真的朝松尾山開了槍嗎"
+    },
+    {
+      "setup": "sk106",
+      "payoff": "sk506",
+      "what": "今天故事裡「一槍就倒戈」的版本從哪來"
+    },
+    {
+      "setup": "sk102",
+      "payoff": "sk512",
+      "what": "那場霧後來被寫成多濃"
+    },
+    {
+      "setup": "sk207",
+      "payoff": "sk210",
+      "what": "別處的人聽到什麼"
+    },
+    {
+      "setup": "sk217",
+      "payoff": "sk220",
+      "what": "秀秋什麼時候倒戈"
+    },
+    {
+      "setup": "sk222",
+      "payoff": "sk521",
+      "what": "「交手的時候」是開打還是打到一半"
+    },
+    {
+      "setup": "sk223",
+      "payoff": "sk301",
+      "what": "這一槍最早在哪裡出現"
+    },
+    {
+      "setup": "sk310",
+      "payoff": "sk311",
+      "what": "山上的秀秋怎麼反應"
+    },
+    {
+      "setup": "sk314",
+      "payoff": "sk401",
+      "what": "那位福岡的儒者是誰"
+    },
+    {
+      "setup": "sk213",
+      "payoff": "sk215",
+      "what": "秀秋自己收到了什麼"
+    },
+    {
+      "setup": "sk409",
+      "payoff": "sk410",
+      "what": "家譜裡怎麼寫"
+    },
+    {
+      "setup": "sk413",
+      "payoff": "sk414",
+      "what": "家譜裡開槍之後的結果"
+    },
+    {
+      "setup": "sk515",
+      "payoff": "sk517",
+      "what": "今天的研究者怎麼看"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "關原之戰，家康真的開槍逼小早川倒戈？｜奇聞檔案局",
+    "description": "慶長五年九月十五日（1600 年 10 月 21 日，格里曆），關原起了大霧。今天的故事說，家康下令朝松尾山開槍，小早川秀秋才倒戈。這一槍，真的響過嗎？\n\n目前查到的那一年的信：家康當天給伊達政宗的捷報（有誇大）、吉川廣家的信稿「即時被乘崩」、近衛前久的「即時ニ切立」、戰後兩天家康部將連署狀的抄本、家康九月二十四日給秀秋的謝函「從最前之筋無相違」，都沒有提到這一槍。目前查到最早寫它的，是植木悅《慶長軍記》（抄本，序署寛文三年，另有寛文八年序），槍一響就見效；貝原益軒 1684 年的覺書沒有槍，約 1688 年完成的《黑田家譜》開了槍也沒用，《黑田記略》寫成事先約好的空槍信號；1713 年《關原軍記大成》的編者自己也拿不準；《德川實紀》附錄與 1893 年參謀本部《日本戰史 關原役》把一槍見效寫成標準版本。\n\n結論：開槍這一題存檔，目前查到的同時代信件沒有這一槍，多數研究者（白峰旬、呉座勇一、高橋陽介）認為是後來的創作，笠谷和比古持保留；秀秋何時倒戈仍未結。\n\n秀秋「虛歲十九」依近年研究的 1582 年生說，另有 1577 年說。連署狀、近衛前久書狀部分依日文維基與刊本轉引，原件沒看；《慶長軍記》只讀了一個抄本。旁白日期是舊曆；「我們覺得」是本頻道的看法；出處見下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；現代研究者不入畫，戰事不入畫。\n\n資料截至 2026-10-20",
+    "tags": [
+      "關原之戰",
+      "関ヶ原の戦い",
+      "小早川秀秋",
+      "德川家康",
+      "問鐵砲",
+      "慶長軍記",
+      "黑田家譜",
+      "日本史",
+      "戰國",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "那一槍\n**響過嗎？**",
+      "tag": "歷史名場面",
+      "sub": "慶長五年的檔案",
+      "shot": "legend-2"
+    }
+  },
+  "sources": [
+    {
+      "title": "《大日本古文書 伊達家文書之二》第七〇六號，家康致伊達政宗書狀（1908；NDL）",
+      "url": "https://dl.ndl.go.jp/pid/1908797",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《大日本古文書 吉川家文書之二》第九一三號，吉川廣家自筆書狀案（1926；NDL）",
+      "url": "https://dl.ndl.go.jp/pid/1915650",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《史徵墨寶考證》第二編第三卷，近衛前久書狀（1889；NDL）",
+      "url": "https://dl.ndl.go.jp/pid/852416",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "參謀本部《日本戰史 關原役 文書》，家康致秀秋書狀（1893；NDL）",
+      "url": "https://dl.ndl.go.jp/pid/771070",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "參謀本部《日本戰史 關原役》本編（1893；NDL）",
+      "url": "https://dl.ndl.go.jp/pid/771069",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《改定史籍集覽》第二十六冊〈慶長年中卜齋記〉（1907；NDL）",
+      "url": "https://dl.ndl.go.jp/pid/1920433",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "植木悅《慶長軍記》石崎文庫抄本（國書データベース）",
+      "url": "https://kokusho.nijl.ac.jp/biblio/300095302",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《益軒全集》卷五〈黑田先公忠義傳〉〈黑田家譜〉〈黑田記略〉（1911；NDL）",
+      "url": "https://dl.ndl.go.jp/pid/1023982",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "宮川尚古《關原軍記大成》三（1916；NDL）",
+      "url": "https://dl.ndl.go.jp/pid/948822",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《德川實紀》第壹編〈東照宮御實紀附錄〉卷十（1904；NDL）",
+      "url": "https://dl.ndl.go.jp/pid/1917811",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "板澤武雄編《新體皇國史教授備要》（1936；NDL）",
+      "url": "https://dl.ndl.go.jp/pid/1108827",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "白峰旬〈フィクションとしての「問鉄砲」〉摘要（2013；CiNii）",
+      "url": "https://cir.nii.ac.jp/crid/1390013021067468928",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "呉座勇一〈小早川秀秋は事前に裏切っていたか？〉（アゴラ，2023）",
+      "url": "https://agora-web.jp/archives/231127082504.html",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "高橋陽介〈関ヶ原の戦い〉通說評論（現代ビジネス，2025）",
+      "url": "https://gendai.media/articles/-/159156",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "日文維基〈関ヶ原の戦い〉（連署狀轉引、笠谷說；二手）",
+      "url": "https://ja.wikipedia.org/wiki/%E9%96%A2%E3%83%B6%E5%8E%9F%E3%81%AE%E6%88%A6%E3%81%84",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "日文維基〈小早川秀秋〉（生年；二手）",
+      "url": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%97%A9%E5%B7%9D%E7%A7%80%E7%A7%8B",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "日文維基〈黒田家譜〉（完成年；二手）",
+      "url": "https://ja.wikipedia.org/wiki/%E9%BB%92%E7%94%B0%E5%AE%B6%E8%AD%9C",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "maechan.net 和曆換算（說明欄的西曆）",
+      "url": "https://maechan.net/kanreki/",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "fog",
+      "chapter": "慶長五年九月十五日，關原起了大霧",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bald camp physician in his forties in a plain ash-coloured kimono standing at the edge of a misty field in light rain on an autumn morning, holding a paper umbrella and squinting toward the viewer into thick fog, soft misty light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk101",
+          "text": "慶長五年九月十五日，關原下著小雨，起了大霧。",
+          "emotion": "沉穩開場，語速放慢"
+        }
+      ]
+    },
+    {
+      "id": "doctor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a bald camp physician in his forties in a plain ash-coloured kimono kneeling under a canvas awning in misty rain, writing in a small notebook with a plain cover and glancing up to the front, pale diffused light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk102",
+          "text": "家康身邊的醫師記下：霧最濃時，九十公尺外就看不見。"
+        }
+      ]
+    },
+    {
+      "id": "listen",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a bald camp physician in his forties in a plain ash-coloured kimono under the canvas awning on a foggy morning, cupping one hand to his ear with wide, startled eyes at us, pale light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk103",
+          "text": "霧裡，只聽得見一片槍聲。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "hill",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono standing at a hilltop camp among bare brown trees on a misty day, arms folded, gazing our way with a calm, serious look, mild hazy light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk104",
+          "text": "松尾山上，小早川秀秋前一天就帶著上萬人上了山。"
+        }
+      ]
+    },
+    {
+      "id": "young",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono on a misty hilltop, tightening the cord of his jinbaori with a composed expression toward the viewer, mild light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk105",
+          "text": "依近年研究，他這年虛歲十九。"
+        }
+      ]
+    },
+    {
+      "id": "legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout middle-aged lord with round cheeks, a short salt-and-pepper beard and a dark brown jinbaori standing in a misty field camp, pointing firmly toward a distant hill with an impatient scowl to the front, soft cloud-filtered light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk106",
+          "text": "今天的故事說，家康等不及，下令朝山上開槍；"
+        }
+      ]
+    },
+    {
+      "id": "legend-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono standing at a hilltop camp among bare autumn trees in drifting mist, turning at us in surprise as a small puff of white smoke rises far below at the foot of the hill, soft misty light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk107",
+          "text": "槍一響，秀秋就倒戈，衝下了山。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "tease-thanks",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono kneeling in a plain castle hall on a dull day, holding a folded letter in both hands and smiling with relief our way, light through a paper screen",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk108",
+          "text": "可是戰後家康寫信謝秀秋，謝的是什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "tease-nail",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a stout middle-aged lord with round cheeks, a short salt-and-pepper beard and a dark brown jinbaori sitting on a camp stool in a misty field camp, biting the nail of his left forefinger with a fretful frown toward the viewer, pale diffused light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk109",
+          "text": "更怪的是，後來的軍記裡，家康急得咬斷了指甲。",
+          "emotion": "升級，停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "tease-eki",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin Edo scholar in his fifties with white-streaked hair tied at the back and a dark slate haori kneeling in a guest room in Edo under a white sky, raising one hand as he explains something, eyes lively to the front, light through a paper screen",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk110",
+          "text": "一位替黑田家寫史的儒者，把這一仗寫了三遍。"
+        }
+      ]
+    },
+    {
+      "id": "tease-miya",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump Edo editor with chubby cheeks and a brown haori kneeling among stacks of bound books whose pages face away from us in a study on a cloudy day, scratching his head at us with a puzzled look, light from a tall window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk111",
+          "text": "還有一位編者，在自己的書裡打了個問號。",
+          "emotion": "帶點好奇"
+        }
+      ]
+    },
+    {
+      "id": "the-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a long library table on a dull day, holding a plain manila folder against her chest and raising her eyebrows our way, window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk112",
+          "text": "家康，真的朝松尾山開了槍嗎？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "victory",
+      "chapter": "九月二十四日，家康寫信謝了秀秋",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout middle-aged lord with round cheeks, a short salt-and-pepper beard and a dark brown jinbaori kneeling at a low writing table inside a plain canvas camp tent on an overcast day, folding a finished letter shut and looking up toward the viewer with a satisfied smile, soft light through the canvas",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk201",
+          "text": "仗一打完，家康就寫了一封捷報。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "courier",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young courier in a short travel jacket and straw sandals jogging along a muddy country road under a heavy overcast sky, a folded letter tucked in his sash, glancing to the front with a determined expression",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk202",
+          "text": "收信的是伊達政宗；這封信的原件，傳了下來。"
+        }
+      ]
+    },
+    {
+      "id": "date-card",
+      "template": "big",
+      "data": {
+        "text": "今十五日午刻、於濃州山中及一戰",
+        "kicker": "德川家康致伊達政宗書狀，九月十五日（《大日本古文書 伊達家文書之二》第七〇六號）",
+        "sub": "今天午刻，在濃州山中打了一仗"
+      },
+      "lines": [
+        {
+          "id": "sk203",
+          "text": "信上說：今天午刻，在濃州山中打了一仗，敵人全數討平。",
+          "emotion": "加重"
+        }
+      ]
+    },
+    {
+      "id": "boast",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a stout middle-aged lord with round cheeks, a short salt-and-pepper beard and a dark brown jinbaori at the writing table in the camp tent in mild light, puffing out his chest with a proud grin at us",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk204",
+          "text": "還說他當天就到了佐和山，大垣城也拿下了。",
+          "emotion": "帶點得意"
+        }
+      ]
+    },
+    {
+      "id": "village",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout middle-aged lord with round cheeks, a short salt-and-pepper beard and a dark brown jinbaori walking along a wet village lane under a heavy overcast sky, his jinbaori damp from the rain, glancing back our way with a sheepish look",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk205",
+          "text": "可是那天晚上，家康其實移到了山中村；大垣城，是後來才開城的。"
+        }
+      ]
+    },
+    {
+      "id": "too-full",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading table under a cloudy sky, raising one eyebrow with a wry little smile toward the viewer, soft light from the windows",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk206",
+          "text": "這是一封寫得太滿的捷報；信裡，也沒有提到秀秋。"
+        }
+      ]
+    },
+    {
+      "id": "others-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses in a quiet records hall, tapping a pencil against her chin to the front with a curious look, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk207",
+          "text": "那別處的人，聽到的又是什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "hiroie",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lean lord in his late thirties with a thin moustache and a dark blue haori standing at a hillside camp among bare brown trees on a misty day, arms folded and listening at us with a tense expression, mild hazy light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk208",
+          "text": "吉川廣家的部隊，那天停在南宮山上，沒有動。"
+        }
+      ]
+    },
+    {
+      "id": "hiroie-write",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a lean lord in his late thirties with a thin moustache and a dark blue haori kneeling at a low table in a plain camp hut on a cloudy day, writing a draft on a blank sheet with a brush and glancing up our way, light through a paper screen",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk209",
+          "text": "他戰後寫的一份信稿，記下打聽來的消息："
+        }
+      ]
+    },
+    {
+      "id": "kikkawa-card",
+      "template": "big",
+      "data": {
+        "text": "案中山中之事即時被乘崩",
+        "kicker": "吉川廣家自筆書狀案（草稿），編者推定九月十七日（《大日本古文書 吉川家文書之二》第九一三號）",
+        "sub": "果然，山中那一仗，一下子就被打垮了"
+      },
+      "lines": [
+        {
+          "id": "sk210",
+          "text": "果然，山中那一仗，一下子就被打垮了。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "konoe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly Kyoto court noble in a pale grey court robe and a tall black cap sitting on the veranda of a Kyoto residence under a white sky, leaning forward to listen with wide eyes toward the viewer, pale soft light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk211",
+          "text": "九月二十日，人在京都的近衛前久，聽家康那邊來的人講完，也寫了信："
+        }
+      ]
+    },
+    {
+      "id": "konoe-card",
+      "template": "big",
+      "data": {
+        "text": "即時ニ切立、得大利候、ツガヒニ金吾手ヲカヘサレ候",
+        "kicker": "近衛前久書狀，九月二十日（《史徵墨寶考證》第二編第三卷）",
+        "sub": "一下子就打垮對方，大獲全勝；接著，金吾倒戈"
+      },
+      "lines": [
+        {
+          "id": "sk212",
+          "text": "一下子就打贏了；接著，金吾翻了手。",
+          "emotion": "加重"
+        }
+      ]
+    },
+    {
+      "id": "kingo",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono at the hilltop camp on a hazy morning, giving a small, steady nod to the front, mild light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk213",
+          "text": "金吾，指的就是秀秋；那秀秋自己，收到了什麼？"
+        }
+      ]
+    },
+    {
+      "id": "thanks",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono kneeling in a plain castle hall on a dull day, holding a folded letter in both hands and smiling with relief at us, light through a paper screen",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk214",
+          "text": "開頭說的那封謝函，寫在九月二十四日，收信的就是秀秋本人："
+        }
+      ]
+    },
+    {
+      "id": "thanks-card",
+      "template": "big",
+      "data": {
+        "text": "從最前之筋無相違儀、別而祝着存候",
+        "kicker": "德川家康致小早川秀秋書狀，九月廿四日（參謀本部《日本戰史 關原役 文書》翻刻）",
+        "sub": "跟當初說好的一樣，格外高興"
+      },
+      "lines": [
+        {
+          "id": "sk215",
+          "text": "跟當初說好的一樣，我格外高興。",
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "no-push",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a stout middle-aged lord with round cheeks, a short salt-and-pepper beard and a dark brown jinbaori kneeling at a low table in a plain castle room on a calm morning, hands resting on his knees with a warm, easy smile our way, light through a paper screen",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk216",
+          "text": "通篇是道謝，沒有一個字在催。"
+        }
+      ]
+    },
+    {
+      "id": "when-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a library table under a white sky, leaning forward on both elbows with narrowed, curious eyes toward the viewer, light from a tall window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk217",
+          "text": "那秀秋，到底是什麼時候倒戈的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "officer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a broad-shouldered castle officer with a short beard in a slate-blue haori kneeling at a low writing table in a castle office on a cloudy day, brush lifted over a blank sheet and glancing up to the front, light through a paper screen",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk218",
+          "text": "戰後兩天，家康的兩位部將轉報戰況；這封信傳下來的，是抄本。"
+        }
+      ]
+    },
+    {
+      "id": "officer-far",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a broad-shouldered castle officer with a short beard in a slate-blue haori standing on a castle wall walkway on a hazy morning, shading his eyes and looking far off, then turning at us, soft cloud-filtered light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk219",
+          "text": "他們自己，不在戰場的最前線。"
+        }
+      ]
+    },
+    {
+      "id": "signal",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono on a misty hilltop among bare autumn trees, raising one arm high with a determined expression our way, soft misty light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk220",
+          "text": "信裡說，兩軍交手的時候，小早川等四人倒戈，敵軍隨即潰敗。"
+        }
+      ]
+    },
+    {
+      "id": "torimusu-card",
+      "template": "big",
+      "data": {
+        "text": "とりむすひ候刻",
+        "kicker": "石川康通・彥坂元正連署狀（抄本），九月十七日；據日文維基轉引中野等 2017",
+        "sub": "兩軍交手的時候（白峰旬讀作「開戰的時候」）"
+      },
+      "lines": [
+        {
+          "id": "sk221",
+          "text": "研究者白峰旬，把「交手的時候」讀成開戰的時候。"
+        }
+      ]
+    },
+    {
+      "id": "when-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses in a quiet library, holding up a pencil like a clock hand with a puzzled frown toward the viewer, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk222",
+          "text": "可是交手，是開打的那一刻，還是打到一半？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "ch2-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a long reading table under a cloudy sky, laying out five folded letters in a row and looking up to the front with a thoughtful air, light from tall windows",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk223",
+          "text": "五封信讀完，松尾山下的那一槍，最早是在哪裡出現的？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "ueki",
+      "chapter": "寛文三年，一本軍記在駿河寫好了序",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lean Edo scholar in his forties with a shaved head and a faded brown work coat kneeling at a low table in a small wooden hut in a grove in drifting mist, writing with a brush on a blank sheet and glancing up at us, soft light through bare autumn trees",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk301",
+          "text": "目前查到最早寫它的，是植木悅的《慶長軍記》，序寫在寛文三年正月。",
+          "say": "目前查到最早寫它的，是植木悅的《慶長軍記》，序寫在寬文三年正月。",
+          "say_for": "25d214f46dc8",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "ueki-sign",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a lean Edo scholar in his forties with a shaved head and a faded brown work coat in the grove hut in mild light, setting down his brush with a quiet, satisfied bow of the head our way",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk302",
+          "text": "序的末尾寫著：在駿河的林子裡，恭敬寫下。"
+        }
+      ]
+    },
+    {
+      "id": "copyist",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an Edo copyist with a long chin in a charcoal kimono kneeling at a low desk in a plain room on an overcast day, copying from one bound book into another and glancing up toward the viewer, light through a paper screen",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk303",
+          "text": "它靠手抄流傳；也有抄本的序，寫的是寛文八年。",
+          "say": "它靠手抄流傳；也有抄本的序，寫的是寬文八年。",
+          "say_for": "8ce24933e37f"
+        }
+      ]
+    },
+    {
+      "id": "secret",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono at a hilltop camp on a misty day, holding one finger to his lips with a secretive little look to the front, pale diffused light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk304",
+          "text": "書裡說，秀秋要倒戈的事，連家老都沒商量，士兵更不知道。"
+        }
+      ]
+    },
+    {
+      "id": "squint",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout middle-aged lord with round cheeks, a short salt-and-pepper beard and a dark brown jinbaori standing in a misty field camp, shading his eyes and squinting toward a distant hill with a worried frown at us, mild hazy light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk305",
+          "text": "偏偏仗已經開打，松尾山上的人是敵是友，還沒人知道。"
+        }
+      ]
+    },
+    {
+      "id": "nail",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a stout middle-aged lord with round cheeks, a short salt-and-pepper beard and a dark brown jinbaori sitting on a camp stool in a misty field camp, biting the nail of his left forefinger with a fretful frown our way, soft cloud-filtered light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk306",
+          "text": "開頭說的那個家康，就在這一段："
+        },
+        {
+          "id": "sk307",
+          "text": "他急得把左手的指甲咬斷，焦躁起來，下令："
+        }
+      ]
+    },
+    {
+      "id": "teppo-card",
+      "template": "big",
+      "data": {
+        "text": "松尾山ノ方ヘ鉄炮ヲ打懸ヨ",
+        "kicker": "植木悅《慶長軍記》卷十五（石崎文庫抄本，序署寛文三年）",
+        "sub": "朝松尾山那邊開槍"
+      },
+      "lines": [
+        {
+          "id": "sk308",
+          "text": "朝松尾山那邊，開槍！",
+          "emotion": "短促，帶點戲"
+        }
+      ]
+    },
+    {
+      "id": "messenger",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young courier in a short travel jacket and straw sandals running across a misty field on an autumn morning, one hand raised to call out toward the viewer, soft misty light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk309",
+          "text": "傳令一到，藤堂和京極兩家的步兵，就朝山那邊放了槍。"
+        }
+      ]
+    },
+    {
+      "id": "hill-smoke",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono standing at a hilltop camp among bare autumn trees in drifting mist, turning to the front in surprise as a small puff of white smoke rises far below at the foot of the hill, pale diffused light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk310",
+          "text": "山上的秀秋，怎麼反應？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "stir",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono on a misty hilltop, turning sharply with a decisive look at us, one hand gripping the cord of his jinbaori, mild hazy light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk311",
+          "text": "他的部隊騷動起來，重新整好了陣，"
+        }
+      ]
+    },
+    {
+      "id": "charge",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono striding down a misty slope of bare brown trees, pointing ahead with a determined expression our way, soft cloud-filtered light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk312",
+          "text": "接著，和另外四支部隊一起，轉頭衝向大谷吉繼的陣。"
+        }
+      ]
+    },
+    {
+      "id": "works",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading table on a dull day, giving a slow, impressed nod toward the viewer, window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk313",
+          "text": "在這本書裡，這一槍，一開始就見效。"
+        }
+      ]
+    },
+    {
+      "id": "ch3-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin Edo scholar in his fifties with white-streaked hair tied at the back and a dark slate haori kneeling in a guest room in Edo under a white sky, raising one hand as he explains something, eyes lively to the front, light through a paper screen",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk314",
+          "text": "過了二十多年，一位福岡的儒者，也講起了這一仗。",
+          "emotion": "斷在這裡"
+        }
+      ]
+    },
+    {
+      "id": "eki-who",
+      "chapter": "貞享元年，一位儒者在江戶講了這一仗",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a thin Edo scholar in his fifties with white-streaked hair tied at the back and a dark slate haori kneeling in an Edo guest room on a cool overcast morning, folding his hands in his lap with a polite, scholarly smile at us, light through a paper screen",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk401",
+          "text": "他是貝原益軒，替福岡黑田家寫史的儒者。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "eki-memo",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin Edo scholar in his fifties with white-streaked hair tied at the back and a dark slate haori kneeling at a low desk in an Edo lodging on a cloudy day, writing on a blank sheet with a brush and glancing up our way, light through a paper screen",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk402",
+          "text": "貞享元年，他在江戶向兩位儒者說明黑田家的事，留下一份覺書。"
+        }
+      ]
+    },
+    {
+      "id": "eki-half",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a thin Edo scholar in his fifties with white-streaked hair tied at the back and a dark slate haori in the guest room in mild light, holding both hands out level like a balance with a thoughtful look toward the viewer",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk403",
+          "text": "裡面寫：仗打到一半，勝負還看不出來，敵方的旗色反而正盛；"
+        }
+      ]
+    },
+    {
+      "id": "as-agreed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono stepping forward on a misty hillside among bare brown trees, giving a firm nod to the front with resolve, soft misty light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk404",
+          "text": "秀秋照著先前的約定，帶大軍從松尾山衝下來。"
+        }
+      ]
+    },
+    {
+      "id": "no-gun",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a thin Edo scholar in his fifties with white-streaked hair tied at the back and a dark slate haori at his low desk on a dull day, shaking his head gently with a small smile at us, pale light through a paper screen",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk405",
+          "text": "這一份裡，沒有槍。",
+          "emotion": "短"
+        }
+      ]
+    },
+    {
+      "id": "complain",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin Edo scholar in his fifties with white-streaked hair tied at the back and a dark slate haori kneeling at his desk on a cloudy day, arms folded with an aggrieved frown our way, light through a paper screen",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk406",
+          "text": "同一份覺書，還抱怨了一件事："
+        }
+      ]
+    },
+    {
+      "id": "nagamasa-card",
+      "template": "big",
+      "data": {
+        "text": "長政才覺を以、筑前中納言殿裏切被仕",
+        "kicker": "貝原益軒〈黑田先公忠義傳〉，貞享元年的覺書（《益軒全集》卷五）",
+        "sub": "黑田家說：靠長政的本事，秀秋才倒戈"
+      },
+      "lines": [
+        {
+          "id": "sk407",
+          "text": "黑田家一向說，秀秋倒戈，是黑田長政的功勞；"
+        }
+      ]
+    },
+    {
+      "id": "books",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a thin Edo scholar in his fifties with white-streaked hair tied at the back and a dark slate haori beside a short stack of bound books whose spines face away from us, tapping the top cover with a sigh toward the viewer, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk408",
+          "text": "可是世上流傳的那幾本書，都沒有寫。"
+        }
+      ]
+    },
+    {
+      "id": "kafu-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses in a records hall under a cloudy sky, resting her chin on her fist with a curious look to the front, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk409",
+          "text": "那他替黑田家編的家譜，又怎麼寫？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "kafu",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin Edo scholar in his fifties with white-streaked hair tied at the back and a dark slate haori kneeling beside a tall stack of finished manuscripts in a plain study on an overcast day, patting the stack with a tired, proud smile at us, light through a paper screen",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk410",
+          "text": "《黑田家譜》在元祿元年前後完成；這一次，槍出現了。"
+        }
+      ]
+    },
+    {
+      "id": "rider",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a wiry samurai in a plain black jacket and black hakama kneeling on one knee in a misty field camp, reporting with an urgent look our way, pale diffused light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk411",
+          "text": "一個黑衣武士奔到家康面前：秀秋的旗色，看不出是敵是友。"
+        }
+      ]
+    },
+    {
+      "id": "order20",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout middle-aged lord with round cheeks, a short salt-and-pepper beard and a dark brown jinbaori on a camp stool in a misty field camp, raising two fingers as he gives a brisk order toward the viewer, mild hazy light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk412",
+          "text": "家康就叫福島隊的槍手二十人，朝松尾山連放兩輪。"
+        }
+      ]
+    },
+    {
+      "id": "still",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono sitting very still on a camp stool at a hilltop camp on a misty day, hands on his knees and looking to the front with an unreadable expression, a thin trail of white smoke far below, soft cloud-filtered light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk413",
+          "text": "結果呢？",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "nao-card",
+      "template": "big",
+      "data": {
+        "text": "然れども中納言の勢は猶山よりおろさず",
+        "kicker": "貝原益軒《黑田家譜》卷十一（《益軒全集》卷五）",
+        "sub": "可是中納言的部隊，還是沒有下山"
+      },
+      "lines": [
+        {
+          "id": "sk414",
+          "text": "秀秋的部隊，還是沒有下山。",
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "hiraoka",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern middle-aged retainer with a square jaw and a charcoal battle vest standing at a hilltop camp in drifting mist, arms folded with a calm, patient look at us, soft misty light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk415",
+          "text": "家老平岡石見說：時候還早，我在等。"
+        }
+      ]
+    },
+    {
+      "id": "hiraoka-go",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a stern middle-aged retainer with a square jaw and a charcoal battle vest on the misty hilltop, raising a short baton with white paper tassels high above his head our way with a fierce grin, pale diffused light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk416",
+          "text": "等到石田一方島左近的陣崩了，他才揮動采配，下令衝。"
+        }
+      ]
+    },
+    {
+      "id": "kiryaku",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin Edo scholar in his fifties with white-streaked hair tied at the back and a dark slate haori kneeling at a low desk on a quiet overcast morning, opening a slim bound book whose pages face away from us and glancing up toward the viewer, light through a paper screen",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk417",
+          "text": "更怪的是開頭說的第三遍：在他另一本年代不明的《黑田記略》裡。"
+        }
+      ]
+    },
+    {
+      "id": "blank",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a thin Edo scholar in his fifties with white-streaked hair tied at the back and a dark slate haori at his desk in mild light, holding up one empty open hand with a sly little smile to the front",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk418",
+          "text": "這一次，槍手從二十人變成五十人，開的是不裝彈的空槍。"
+        }
+      ]
+    },
+    {
+      "id": "aizu-card",
+      "template": "big",
+      "data": {
+        "text": "かねてより是を相圖にしてうら切を始めよと被仰遣たるなるべし",
+        "kicker": "貝原益軒《黑田記略》下（《益軒全集》卷五）",
+        "sub": "大概是事先吩咐好：以這個為信號，開始倒戈"
+      },
+      "lines": [
+        {
+          "id": "sk419",
+          "text": "書裡猜，這大概是事先約好的信號。"
+        }
+      ]
+    },
+    {
+      "id": "hiraoka-see",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a stern middle-aged retainer with a square jaw and a charcoal battle vest on a misty hilltop, spotting something far below and raising one hand with a sharp grin at us, mild hazy light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk420",
+          "text": "平岡一看到，就說：時候正好，下令出擊。"
+        }
+      ]
+    },
+    {
+      "id": "miya",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump Edo editor with chubby cheeks and a brown haori kneeling among stacks of bound books whose pages face away from us in a study on a cloudy day, scratching his head our way with a puzzled look, light from a tall window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk421",
+          "text": "那位在書裡打問號的編者，是宮川尚古；他的《關原軍記大成》，正德三年編成。"
+        }
+      ]
+    },
+    {
+      "id": "miya-pause",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a plump Edo editor with chubby cheeks and a brown haori at a low desk under a cloudy sky, brush lifted in mid-air and pausing with a doubtful pout toward the viewer, light from a tall window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk422",
+          "text": "寫到平岡和稻葉兩位家老，他停下來問："
+        }
+      ]
+    },
+    {
+      "id": "sasoi-card",
+      "template": "big",
+      "data": {
+        "text": "誘ひ鐵炮にや驚きけん。又は時刻を計りしにや",
+        "kicker": "宮川尚古《關原軍記大成》卷之二十五（正德三年編成；大正五年排印本）",
+        "sub": "是被誘鐵砲嚇到了？還是本來就在算時機？"
+      },
+      "lines": [
+        {
+          "id": "sk423",
+          "text": "是被那陣槍嚇到了？還是本來就在算時機？",
+          "emotion": "問句，放慢"
+        }
+      ]
+    },
+    {
+      "id": "miya-unsure",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a plump Edo editor with chubby cheeks and a brown haori in his study in mild light, tilting his head with a helpless little shrug to the front",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk424",
+          "text": "他自己也拿不準。"
+        }
+      ]
+    },
+    {
+      "id": "miya-far",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump Edo editor with chubby cheeks and a brown haori kneeling among his stacked books on an overcast day, holding his hands wide apart as if measuring a long distance, frowning at us, window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk425",
+          "text": "連開槍的是誰，他也懷疑：福島的陣地離松尾山那麼遠，怎麼會是他們？"
+        }
+      ]
+    },
+    {
+      "id": "miya-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a plump Edo editor with chubby cheeks and a brown haori at his desk on a cloudy day, writing a tiny note on a blank slip of paper with a knowing look our way, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk426",
+          "text": "他另記一說：槍是從藤堂的陣地開的，跟前面那本《慶長軍記》一樣。"
+        }
+      ]
+    },
+    {
+      "id": "ch4-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a dignified shogunate historian with a white topknot in a black kamishimo kneeling at a low desk in a shogunate library on a calm overcast morning, writing with a fine brush on a blank sheet and looking up toward the viewer with a solemn air, light through a paper screen",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk427",
+          "text": "到了十九世紀，幕府自己編的史書，也寫到了這一段。",
+          "emotion": "斷在這裡"
+        }
+      ]
+    },
+    {
+      "id": "jikki",
+      "chapter": "明治二十六年，參謀本部把這一槍寫進戰史",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a dignified shogunate historian with a white topknot in a black kamishimo at his low desk under a white sky, laying his brush down with a firm, final nod to the front, light through a paper screen",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk501",
+          "text": "那是《德川實紀》的附錄；它寫的，是一槍見效的版本。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "face",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a stout middle-aged lord with round cheeks, a short salt-and-pepper beard and a dark brown jinbaori on a camp stool in a misty field camp, suddenly scowling as he clenches one fist at us, soft cloud-filtered light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk502",
+          "text": "家康聽說秀秋旗色可疑，臉色一變，說："
+        }
+      ]
+    },
+    {
+      "id": "segare-card",
+      "template": "big",
+      "data": {
+        "text": "扨はせがれめに欺かれたるか",
+        "kicker": "〈東照宮御實紀附錄〉卷十，註引《天元實記》（《德川實紀》第壹編）",
+        "sub": "難道，被這小子騙了？"
+      },
+      "lines": [
+        {
+          "id": "sk503",
+          "text": "難道，被這小子騙了？",
+          "emotion": "咬牙，短"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono standing at a hilltop camp among bare autumn trees on a misty day, turning our way in surprise as a small puff of white smoke rises far below at the foot of the hill, soft misty light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk504",
+          "text": "他叫人到山腳下放槍試探；槍聲一起，秀秋的部隊才動起來，下了山。"
+        }
+      ]
+    },
+    {
+      "id": "official",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a dignified shogunate historian with a white topknot in a black kamishimo in the shogunate library on a calm morning, closing a thick bound volume and resting both hands on it toward the viewer with a satisfied look, pale light through a paper screen",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk505",
+          "text": "書裡註明，這一段引自《天元實記》。"
+        },
+        {
+          "id": "sk506",
+          "text": "開頭說的那個故事，就這樣寫進了幕府自己編的史書。"
+        }
+      ]
+    },
+    {
+      "id": "meiji",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Meiji army staff officer with a neat moustache in a dark navy uniform with no weapons sitting at a wide wooden desk in an army office on a dull day, closing a thick bound volume and looking up to the front with pride, soft light from the windows",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk507",
+          "text": "明治二十六年，陸軍參謀本部出版《日本戰史 關原役》。"
+        }
+      ]
+    },
+    {
+      "id": "meiji-noon",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a Meiji army staff officer with a neat moustache in a dark navy uniform with no weapons at his desk on a cloudy day, frowning at an open pocket watch held in one palm at us, light from a tall window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk508",
+          "text": "書裡寫，到了近中午，勝負還看不出來；"
+        }
+      ]
+    },
+    {
+      "id": "meiji-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a Meiji army staff officer with a neat moustache in a dark navy uniform with no weapons at his desk on a cloudy day, raising one hand flat as if describing a straight line of soldiers, eyes on us our way",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk509",
+          "text": "兩隊槍手奉命朝松尾山一齊射擊，秀秋這才傳令倒戈。"
+        }
+      ]
+    },
+    {
+      "id": "meiji-3",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a Meiji army staff officer with a neat moustache in a dark navy uniform with no weapons standing by a tall window in an army office under a white sky, hands clasped behind his back with a satisfied smile toward the viewer",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk510",
+          "text": "江戶書裡的一段故事，從此成了陸軍的官方戰史。"
+        }
+      ]
+    },
+    {
+      "id": "fog-recall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bald camp physician in his forties in a plain ash-coloured kimono standing at the edge of a misty field in light rain on an autumn morning, holding a paper umbrella and squinting to the front into thick fog, pale diffused light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk511",
+          "text": "還記得開頭那場霧嗎？",
+          "emotion": "語氣親近"
+        }
+      ]
+    },
+    {
+      "id": "teacher",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Showa-era schoolteacher in his forties in a dark suit and round glasses standing by a classroom window on a dull, cloudy day, holding a closed book against his chest and looking at us with an earnest expression, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk512",
+          "text": "昭和十一年，老師備課用的書寫：霧濃到一尺外都看不見；"
+        }
+      ]
+    },
+    {
+      "id": "teacher-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a Showa-era schoolteacher in his forties in a dark suit and round glasses in the classroom in mild light, sweeping one arm forward with a dramatic storyteller's look our way",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk513",
+          "text": "家康朝松尾山開槍催促，秀秋這才下了決心，衝下山。"
+        }
+      ]
+    },
+    {
+      "id": "opinion5",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading table in drifting mist, resting her cheek on one hand with an amused smile toward the viewer, light from a tall window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk514",
+          "text": "我們覺得，這一槍每被寫一次，霧也跟著濃一點。",
+          "emotion": "像跟朋友說自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "today-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses walking between tall archive shelves on a dull day, carrying a plain manila folder and glancing to the front with a curious look, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk515",
+          "text": "那今天的研究者，怎麼看？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "toi-card",
+      "template": "big",
+      "data": {
+        "text": "問鐵砲",
+        "kicker": "白峰旬 2013 年論文標題〈フィクションとしての「問鉄砲」〉",
+        "sub": "試探用的那一槍"
+      },
+      "lines": [
+        {
+          "id": "sk516",
+          "text": "後來的人，把這一槍叫做「問鐵砲」。"
+        }
+      ]
+    },
+    {
+      "id": "research",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading table under a cloudy sky, turning the page of a thin journal whose pages face away from us and nodding slowly at us, window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk517",
+          "text": "白峰旬二〇一三年細查了江戶的這些書，認為它不是史實，"
+        }
+      ]
+    },
+    {
+      "id": "research-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a library cart on a quiet overcast day, sliding a thin journal back onto a shelf and glancing our way with a knowing look, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk518",
+          "text": "是江戶時代神化家康的風氣裡，創作出來的。"
+        }
+      ]
+    },
+    {
+      "id": "reserve",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at a reading table under a white sky, raising one hand palm out with a careful, fair-minded look toward the viewer, soft light from the windows",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk519",
+          "text": "也有人保留：笠谷和比古認為，秀秋猶豫的事，不能全當成捏造。"
+        }
+      ]
+    },
+    {
+      "id": "letter-recall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a broad-shouldered castle officer with a short beard in a slate-blue haori kneeling at a low writing table in a castle office on a cloudy day, brush lifted over a blank sheet and glancing up to the front, light through a paper screen",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk520",
+          "text": "還記得那封抄本裡，「交手的時候」嗎？",
+          "emotion": "語氣親近"
+        }
+      ]
+    },
+    {
+      "id": "timing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slim, beardless young lord of about nineteen with a neat topknot and a wine-red jinbaori over a plain kimono standing at a hilltop camp as the mist thins toward midday, looking up at the pale sky with a thoughtful air at us, mild hazy light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk521",
+          "text": "白峰認為，那就是一開打；笠谷認為，秀秋拖到近中午才動。"
+        }
+      ]
+    },
+    {
+      "id": "verdict-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a long library table on a dull day, sitting up straight with a plain manila folder in her hands and a serious look our way, light from a tall window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk522",
+          "text": "那麼，開頭那個問題：家康，真的開了槍嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "verdict",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist in her thirties in a cardigan and big glasses at the long library table on a calm overcast day, laying one hand flat on the manila folder with quiet certainty toward the viewer, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk523",
+          "text": "這一槍，是在六十多年後的紙上，才第一次響起。",
+          "emotion": "誠懇，放慢"
+        }
+      ]
+    },
+    {
+      "id": "stamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in her thirties in a cardigan and big glasses at a wooden table on a misty day, pressing a rubber stamp onto the cover of a plain manila folder and smiling to the front, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sk524",
+          "text": "那一槍，這份檔案存檔；秀秋幾時倒戈，還沒結案。",
+          "emotion": "收尾，前半乾脆，後半誠懇"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "問鐵砲・存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "那一年的信，沒有一封提到這一槍"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sk525",
+          "text": "你第一次聽到小早川倒戈，聽的是哪一個版本？",
+          "emotion": "問句上揚，像在聊天"
+        },
+        {
+          "id": "sk526",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ]
+}
