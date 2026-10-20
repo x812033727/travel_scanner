@@ -15,6 +15,9 @@ const sources = [
   { code: "S6", title: "Starbucks FY2008 results 8-K exhibit 99.1", url: "https://www.sec.gov/Archives/edgar/data/829224/000095013408020062/v50479exv99w1.htm", checked_on: "2026-10-20" },
   { code: "S7", title: "Starbucks FY2009 results 8-K exhibit 99.1", url: "https://www.sec.gov/Archives/edgar/data/829224/000095012309058425/v53958exv99w1.htm", checked_on: "2026-10-20" },
   { code: "S8", title: "Starbucks FY2010 results 8-K exhibit 99.1", url: "https://www.sec.gov/Archives/edgar/data/829224/000119312510248069/dex991.htm", checked_on: "2026-10-20" },
+  { code: "S9", title: "Starbucks FY2009 Q1 Form 10-Q", url: "https://www.sec.gov/Archives/edgar/data/829224/000095013409001837/v51211e10vq.htm", checked_on: "2026-10-20" },
+  { code: "S10", title: "Starbucks FY2009 Q2 Form 10-Q", url: "https://www.sec.gov/Archives/edgar/data/829224/000095013409009696/v52354e10vq.htm", checked_on: "2026-10-20" },
+  { code: "S11", title: "Starbucks FY2009 Q3 Form 10-Q", url: "https://www.sec.gov/Archives/edgar/data/829224/000095012309029843/v52638e10vq.htm", checked_on: "2026-10-20" },
 ];
 const codes = new Set(sources.map(source => source.code));
 const lines = [[], [], [], [], [], []];
@@ -48,13 +51,12 @@ for (const chapter of [...lines, outro]) for (let i = 1; i < chapter.length; i++
 const cardRules = [
   [/要關約六百家美國直營店/, { title: "2008-07-01 宣布", stats: [{ value: "約 600 家", label: "美國直營店關閉計畫；含先前 100 家" }], source: "S2｜Starbucks 8-K exhibit" }],
   [/還成長百分之四/, { title: "美國同店銷售", stats: [{ value: "+4%", label: "FY2007；開滿 13 個月的直營店" }], source: "S3｜FY2008 10-K" }],
-  [/三點四八億/, { title: "關店預計稅前費用", stats: [{ value: "US$328m–348m", label: "2008-07 當時估計；非實支結果" }], source: "S2｜Starbucks 8-K exhibit" }],
+  [/三點四八億美元/, { title: "關店預計稅前費用", stats: [{ value: "US$328m–348m", label: "2008-07 當時估計；非實支結果" }], source: "S2｜Starbucks 8-K exhibit" }],
   [/實際關了二百零五家/, { title: "七月 600 家計畫的進度", stats: [{ value: "205 家", label: "FY2008 已關；非全年淨減" }], source: "S3｜FY2008 10-K" }],
   [/反而多了四百四十五/, { title: "美國直營店年度淨變化", stats: [{ value: "+445 家", label: "FY2008；6,793 → 7,238" }], source: "S3｜FY2008 10-K" }],
-  [/同年下滑百分之五/, { title: "美國同店銷售", stats: [{ value: "−5%", label: "FY2008；非所有新店的成績" }], source: "S3｜FY2008 10-K" }],
+  [/同店下滑百分之五/, { title: "美國同店銷售", stats: [{ value: "−5%", label: "FY2008；非所有新店的成績" }], source: "S3｜FY2008 10-K" }],
   [/關了一百八十三/, { title: "2009-01 另列約 200 家", stats: [{ value: "183 家", label: "FY2009 已關；與七月群組分屬兩批" }], source: "S4｜FY2009 10-K" }],
-  [/又比上年跌百分之六/, { title: "美國同店銷售", stats: [{ value: "−6%", label: "FY2009；13 個月以上直營店" }], source: "S4｜FY2009 10-K" }],
-  [/同店成長百分之七/, { title: "美國同店銷售", stats: [{ value: "+7%", label: "FY2010；排除第 53 週" }], source: "S5｜FY2010 10-K" }],
+  [/累計變成五百六十三/, { title: "七月原群組逐季實關", stats: [{ value: "384 → 503 → 563 家", label: "FY2009 Q1 → Q2 → Q3；各季末累計" }], source: "S9–S11｜FY2009 10-Q" }],
 ];
 const cards = new Map();
 for (const [pattern, card] of cardRules) {
@@ -73,7 +75,7 @@ const safeguards = [
   "Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
   "Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
 ];
-const portraitSourceLines = new Set(["x160101", "x160103", "x160104", "x160305", "x160302a", "x160309", "x160310", "x160311", "x160518", "x160606", "x160611", "x160603", "x160605", "x160610", "x160614", "x160616"]);
+const portraitSourceLines = new Set(["x160101", "x160103", "x160104", "x160305", "x160302a", "x160309", "x160310", "x160311", "x160606", "x160603", "x160605", "x160610", "x160614"]);
 const sceneSplitAfterIds = new Set(["x160603", "x160516"]);
 const portraitInstruction = " Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop.";
 const lineFor = row => ({ id: row.id, text: row.text, pause_after_ms: 0, emotion: row.text.endsWith("？") ? "台灣國語口語說書，留半拍讓問題落地" : "台灣國語口語說書，數字與年份清楚，正常語速" });
@@ -109,11 +111,12 @@ scenes.push({ id: "x16-outro", template: "outro", data: { title: "七月群組�
 const loops = [
   { setup: "x160104", payoff: "x160301", what: "七月公告公開的逐店評估條件" },
   { setup: "x160105", payoff: "x160201", what: "一月董事會如何改變展店速度" },
-  { setup: "x160106", payoff: "x160321", what: "租約如何改變關門時程" },
+  { setup: "x160106", payoff: "x160321", what: "入選門市為何不能即日落鎖" },
   { setup: "x160107", payoff: "x160328", what: "關店對店員職位的影響" },
   { setup: "x160108", payoff: "x160405", what: "年終直營總店數呈現什麼結果" },
   { setup: "x160109", payoff: "x160641", what: "七月名單最後的實關總數" },
   { setup: "x160205", payoff: "x160206", what: "店數和熟店銷售仍正為何要踩煞車" },
+  { setup: "x160211a", payoff: "x160301", what: "七月公告會用哪一種單店資料挑入選店" },
   { setup: "x160220", payoff: "x160329", what: "公司對受影響店員的安排希望" },
   { setup: "x160227", payoff: "x160301", what: "七月公告給出單店獲利的新進展" },
   { setup: "x160308", payoff: "x160310", what: "公告還評估將來能否得到可接受回報" },
@@ -122,27 +125,22 @@ const loops = [
   { setup: "x160324", payoff: "x160325", what: "資產減損及遣散也列入預估" },
   { setup: "x160327a", payoff: "x160328", what: "關店計畫也影響店員職位" },
   { setup: "x160325d", payoff: "x160401", what: "列帳和實際關門進度不是同一個時點" },
-  { setup: "x160330", payoff: "x160331a", what: "關店以外的 FY2009 美國直營新開店計畫" },
   { setup: "x160332", payoff: "x160401", what: "九月底七月名單實際關店數" },
   { setup: "x160404", payoff: "x160405", what: "關店後年底美國直營淨數" },
   { setup: "x160409", payoff: "x160410", what: "年度淨擴張相對前一財年" },
-  { setup: "x160417", payoff: "x160418", what: "熟店當年是否也賣得更好" },
+  { setup: "x160418", payoff: "x160420", what: "新開不久的店是否進入同店比較" },
   { setup: "x160424", payoff: "x160504", what: "隔年七月名單繼續執行" },
   { setup: "x160426", payoff: "x160501", what: "2009 一月新計畫是否併入七月群組" },
-  { setup: "x160510", payoff: "x160511", what: "關門之後的租約成本" },
   { setup: "x160514", payoff: "x160515", what: "美國直營店整體是否轉為淨減" },
-  { setup: "x160518", payoff: "x160519", what: "關店後熟店是否即刻轉好" },
-  { setup: "x160525", payoff: "x160616", what: "關店是否獨力造成後來回暖" },
-  { setup: "x160606", payoff: "x160610", what: "2010 熟店銷售來自交易還是客單" },
-  { setup: "x160611", payoff: "x160616", what: "所查申報能否隔離七月關店的效果" },
+  { setup: "x160527", payoff: "x160601", what: "2009 財年七月群組再關多少家" },
   { setup: "x160619", payoff: "x160641", what: "七月群組跨財年合計實際關店數" },
 ];
 const positions = new Map(allRows.map((row, i) => [row.id, i]));
 for (const loop of loops) if (!(positions.has(loop.setup) && positions.has(loop.payoff) && positions.get(loop.setup) < positions.get(loop.payoff))) throw new Error(`Unpaid loop: ${JSON.stringify(loop)}`);
 const description = [
-  "2008 年 7 月 1 日，星巴克宣布擬關閉約 600 家表現不佳的美國直營店，其中約七成入選店自 2006 財年起才開。這是被選中群組的特徵，公告未把店齡列作關店標準。本集追問公開的逐店評估條件與這批店的跨年實關數，再看熟店後來的銷售能否歸功於關店。",
+  "2008 年 7 月 1 日，星巴克宣布擬關閉約 600 家表現不佳的美國直營店，其中約七成入選店自 2006 財年起才開。這是被選中群組的特徵，公告未把店齡列作關店標準。本集跟隨七月入選群組，追問公開的逐店評估條件、宣布與落鎖的落差，以及截至 2009 財年兩年實際關閉多少。",
   "",
-  "約 600 家含先前的 100 家；七成的分母是入選關閉的店。2009 年另列的約 200 家是另一批，不能與七月群組的 588 家實績混算。FY2007／FY2008 的 1,065／445 是美國直營店年度淨增，不能單獨推算新開毛數。FY2010 同店增幅排除第 53 週；所查申報沒有未關店的對照結果，不能單獨推算關店效果。插畫是匿名概念畫面，並非任何特定店或店員；片中數字與文字卡由後製排版。資料檢查：2026-10-20。",
+  "約 600 家含先前的 100 家；七成的分母是入選關閉的店。2009 年另列的約 200 家是另一批，不能與七月群組的 588 家實績混算。FY2007／FY2008 的 1,065／445 是美國直營店年度淨增，不能單獨推算新開毛數。FY2009 三份季度申報的 384／503／563 都是七月原群組的季末累計；588 是跨 FY2008／FY2009 的實際關閉總數。插畫是匿名概念畫面，並非任何特定店或店員；片中數字與文字卡由後製排版。資料檢查：2026-10-20。",
   "",
   "SEC 原始資料：",
   ...sources.flatMap(source => [source.title, source.url]),
@@ -162,7 +160,7 @@ const video = {
 const bytes = JSON.stringify(video, null, 2) + "\n";
 writeFileSync(path.join(dir, "video.json"), bytes);
 const sha = createHash("sha256").update(bytes).digest("hex");
-writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 16, chapter: 1, planned_episodes: 20, title: "星巴克：七成很新的關店名單最後關了多少", logline: "2008 年約 600 家美國直營店入選關閉，追蹤一月策略轉向、七月選店標準與 2009 年實際進度，並區分後來熟店回暖的其他原因。", names: ["星巴克", "Starbucks", "Howard Schultz", "舒茲"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
+writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 16, chapter: 1, planned_episodes: 20, title: "星巴克：七成很新的關店名單最後關了多少", logline: "2008 年約 600 家美國直營店入選關閉，追蹤一月策略轉向、七月選店條件、跨年執行與 2009 財年的實關結果。", names: ["星巴克", "Starbucks", "Howard Schultz", "舒茲"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
 writeFileSync(path.join(dir, "script.md"), ["# X16 星巴克｜繁中逐句稿", "", `離線前製；\`video.json\` SHA-256：\`${sha}\`。本版尚未獨立逐句複核或新讀者盲評，也未配音或測量實際時長。第一章濃縮後接正式 5 秒片頭；最後三句後接 21 秒 v4 片尾。`, "", ...lines.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${titles[ci]}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
 writeFileSync(path.join(dir, "line-source-matrix.md"), ["# X16 星巴克｜逐句作者來源矩陣", "", `\`video.json\` SHA-256：\`${sha}\`。本表是作者標記，**不是獨立來源審核 PASS**。來源代碼、原文 URL 與口徑見 [source-matrix.md](source-matrix.md)。`, "", "| 句 ID | 旁白 | 作者來源標記 |", "| --- | --- | --- |", ...allRows.map(row => `| \`${row.id}\` | ${row.text.replaceAll("|", "\\|")} | ${row.refs.length ? row.refs.join("、") : "敘事提問／推理／CTA"} |`), ""].join("\n"));
 console.log(JSON.stringify({ video_sha256: sha, scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, lines: allRows.length, hook_chars: lines[0].map(row => row.text).join("").length, substantive_body_chars: lines.slice(1).flat().map(row => row.text).join("").length, loops: loops.length }, null, 2));

@@ -1,4 +1,4 @@
-# X16 Starbucks｜v7 逐句母稿
+# X16 Starbucks｜v8 逐句母稿
 
 每列為 `句 ID | 來源代碼或 editorial | 旁白 | 無品牌插畫動作提示`。來源代碼見 `source-matrix.md`。`editorial` 只放提問與由前句推出的解釋；匿名插畫不重建真實門市。
 
@@ -8,7 +8,7 @@ x160102 | S2 | 星巴克要關約六百家美國直營店。 | analyst sorts pla
 x160103 | S2 | 入選店裡，約七成自二〇〇六財年起才開。 | clerk holds new-looking plain shop key
 x160104 | editorial | 才開不久的店，怎麼也被選中？ | owner studies blank storefront plan
 x160105 | S1 | 公告底下，還壓著一月那張展店圖。 | director holds blank planning folio under selection paper
-x160106 | S2 | 房東的租約，讓關門日期沒那麼簡單。 | clerk places closed lease folder beside shop token
+x160106 | editorial | 入選的門還亮著；何時才會真正落鎖？ | clerk holds open-door shop key beside selection card
 x160107 | S2 | 店員的圍裙還掛著，職位怎麼辦？ | barista pauses beside unmarked apron
 x160108 | editorial | 年終的總店數，還藏著另一道算式。 | analyst holds closed annual store ledger
 x160109 | editorial | 這張名單怎麼來，最後又關了多少？ | analyst holds unmarked shop card before blank door
@@ -24,14 +24,14 @@ x160207 | S1 | 店面設計、新品與訓練，都列進計畫。 | barista arr
 x160207a | S1 | 原給美國展店的部分資金，也計畫轉向國際市場。 | planner moves plain coins between blank maps
 x160210 | editorial | 新店可少開，已開的門不會因此消失。 | barista stands at generic cafe doorway
 x160211 | editorial | 一月說的是方向，還不是執行成績。 | owner leaves results column blank
+x160211a | editorial | 可已經開門的店，下一張名單會挑誰？ | planner studies open-door shop cards beside plan folio
 x160212 | S1 | 董事會也宣布，將關部分表現差的店。 | analyst sets worn shop token beside shelf
 x160212a | S1 | 好把目光從展店速度，拉回每間店的帳。 | clerk moves shop card from map to ledger
-x160212b | editorial | 對已開門的示意店卡，這是另一種盤點。 | owner turns unmarked shop card over
-x160212c | editorial | 卡的一面是位置，另一面還有營運帳。 | analyst turns unmarked shop card from map to ledger
-x160212d | editorial | 新店開慢了，已開的店又該怎麼選？ | planner keeps open-door key beside plan folio
-x160213 | editorial | 但此時還沒有逐店可查的地址。 | owner studies blank individual shop cards
+x160212b | editorial | 那張已開門的店卡，從展店圖被搬到經營帳。 | clerk moves unmarked shop card from map to blank ledger
+x160212c | editorial | 它不是待開的新店，還有正在工作的店員。 | barista tends generic cafe counter beside shop card
+x160212d | editorial | 原有門市能不能留，還得另作一次選擇。 | owner holds open-door key over two plain trays
 x160214 | editorial | 那張示意店卡，會因哪一筆帳被圈？ | clerk sets unmarked shop card on desk
-x160215 | S1 | 一月公告，只把「表現不佳」圈出來。 | analyst encircles one worn shop token
+x160215 | editorial | 低表現會看今天，還是看未來回報？ | analyst compares current and future blank store ledgers
 x160216 | editorial | 一家店的帳，不會寫在總店數裡。 | clerk separates shop ledger from big shelf
 x160217 | editorial | 店愈開愈多，不代表每個地址划算。 | planner holds one key apart from shop shelf
 x160218 | S1 | 舒茲也說，沒有一招能隔夜解決問題。 | director sets several blank tools on desk
@@ -47,8 +47,8 @@ x160227 | editorial | 到了七月，公告先揭開哪種單店數字？ | anal
 x160301 | S2 | 七月公告，把單店獲利帳擺上選店桌。 | analyst opens separate blank shop ledger
 x160302 | S2 | 公告把範圍定在美國直營店。 | analyst checks separate generic store cards
 x160302a | S2 | 入選門市散在美國各大市場。 | planner spreads plain shop tokens across blank map
-x160302b | editorial | 這張示意卡，不指向西雅圖某個地址。 | clerk leaves address box on card blank
 x160303 | S2 | 先前約一百家，也包含在計畫內。 | planner nests small shop-token ring inside large ring
+x160303a | editorial | 所以不能把六百和先前一百直接相加。 | analyst keeps inner shop ring inside larger selection ring
 x160304 | S2 | 圈裡也有開得比二〇〇六財年早的店。 | planner nests an older shop key inside selection ring
 x160305 | editorial | 那個店齡比例，沒說每家為何入選。 | owner weighs new-looking key beside selection ring
 x160308 | editorial | 除了眼前利潤，這張店卡的未來還要看什麼？ | owner opens blank shop assessment folio
@@ -58,15 +58,15 @@ x160310 | S2 | 也看將來能否有可接受的回報。 | planner compares two
 x160311 | S2 | 地點和市場條件，也進入評估。 | planner moves plain storefront model on map
 x160312 | S2 | 當前及預期的經濟走向，同樣要算。 | analyst studies unmarked horizon chart
 x160312a | editorial | 地點若不理想，今天與明天的帳都會受牽動。 | planner weighs generic storefront model beside two ledgers
-x160312b | editorial | 但公司沒有公開每張店卡的逐項權重。 | analyst holds blank weighting folio beside card
-x160313 | editorial | 示意店卡，今天與未來得分開算。 | clerk holds current and future blank shop ledgers
+x160312b | editorial | 但公告沒有替各條件公開權重。 | analyst holds unweighted blank assessment folio
+x160313 | S2 | 今天沒賺的店，也得看未來能否有回報。 | owner compares current and future blank folios
 x160314 | editorial | 公告沒把店齡列作關店標準。 | owner sets new-looking key beside separate blank ledgers
 x160315 | editorial | 某家真店踩到哪一條，查得到嗎？ | analyst lifts blank individual shop cards
 x160316 | editorial | 公告沒有逐店獲利與預測表。 | clerk turns over empty individual cards
 x160317 | editorial | 所以不能替一個地址編出理由。 | planner keeps one generic key unlabelled
 x160317a | S2 | 公司說，要把心力留給較能改善體驗的店。 | planner moves effort tokens toward other plain shop blocks
 x160317b | editorial | 店卡被圈，不等於鑰匙立刻能交回。 | clerk holds generic shop key beside lease folder
-x160317c | editorial | 這張示意卡只讓我們追進度，不替真店作證。 | clerk keeps fictional shop card blank beside door
+x160317c | editorial | 這張店卡只標入選，還沒標已關。 | clerk leaves unmarked selection card beside open door
 x160318 | editorial | 可被圈進去，為何不能當天關門？ | barista looks at open generic doorway
 x160319 | S2 | 多數關店排在當年餘下時間， | analyst slides tokens along blank calendar
 x160320 | S2 | 或隔年上半年才執行。 | planner turns blank calendar page
@@ -74,28 +74,19 @@ x160320a | editorial | 對同一張入選卡，宣布日與落鎖日分開。 | 
 x160321 | S2 | 第三方協議沒談妥，日期仍會變。 | analyst closes plain lease folder
 x160322 | editorial | 店不賣咖啡了，退租還是可能花錢。 | planner rests closed key atop lease folder
 x160323 | S2 | 公司也把租約退出列進費用估算。 | planner moves plain coins beside lease folder
-x160323a | editorial | 離開一個地點，還得處理和第三方的約定。 | planner places closed shop key beside lease folder
 x160324 | editorial | 費用估算，還有什麼沒算到？ | analyst opens blank cost estimate ledger
 x160325 | S2 | 還有預計認列的資產減損和遣散。 | accountant sets plain cost tokens by blank ledger
 x160325a | S2 | 資產沖銷，預計記在當年第三季。 | accountant marks third blank calendar leaf
-x160325b | S2 | 退租費用多預計在第四季與隔年上半年入帳。 | clerk lays lease folder across two blank calendars
-x160325c | editorial | 同一扇門，落鎖日不等於所有費用入帳日。 | planner separates key and blank cost folios
+x160325b | S2 | 退租費多預計在第四季和隔年上半年入帳。 | accountant lays plain lease folder across two calendars
+x160325c | editorial | 財務入帳與實際落鎖，是兩個時點。 | clerk separates blank cost folio and closed key
 x160325d | editorial | 帳先動了，門要到何時才算真正關閉？ | owner weighs closed key beside cost folio
-x160326 | S2 | 稅前費用估三點二八到三點四八億。 | accountant sets red chips beside blank ledger
-x160327 | editorial | 這是七月預估，不是最後實支。 | clerk leaves result folio blank beside estimate
+x160326 | S2 | 稅前總費用，當時估三點二八到三點四八億美元。 | accountant sets measured plain chips beside folio
+x160327 | editorial | 這是宣布時的估算，不是最後實支。 | clerk keeps final cost folio blank
 x160327a | editorial | 錢之外，誰會先被關門波及？ | barista notices unmarked apron beside selected shop card
 x160328 | S2 | 關店處的全、兼職職位將被裁撤。 | barista folds plain apron at counter
-x160328a | S2 | 舒茲承認，關店會打亂員工的生活。 | barista rests unmarked apron on empty chair
-x160328b | editorial | 那張店卡背後，不只是一枚地圖圖釘。 | owner holds plain shop card beside apron
-x160328c | editorial | 一間店被圈上，職位的去向也跟著懸著。 | barista leaves plain apron beside blank route card
+x160328a | S2 | 舒茲承認，關店會打亂員工的生活。 | barista holds plain apron at anonymous counter
 x160329 | S2 | 公司希望把許多人安置到附近空缺。 | planner points toward second generic cafe
-x160329a | S2 | 公司也說，會指引顧客查找其他門市。 | customer studies blank unbranded route map
-x160329b | editorial | 若門關了，員工與顧客都面臨下一站。 | barista and customer face separate unmarked paths
-x160329c | S2 | 顧客有疑問，公司也留下客服管道。 | clerk sets plain customer-service handset beside map
-x160329d | editorial | 這些是安排方向，還沒有逐人結果。 | clerk leaves destination cards blank
-x160330 | editorial | 已開的店要處理，下年新店又怎麼辦？ | planner holds unopened shop keys beside old card
-x160331a | S2 | 隔年美國直營新店，當時預計少於兩百。 | planner leaves few blank keys on next calendar
-x160331b | editorial | 這是新開店計畫，也還不是實開數。 | clerk leaves next-year actual column blank
+x160329d | editorial | 安置是公司希望，還沒有逐人結果。 | clerk leaves employee destination card blank
 x160332 | editorial | 名單畫出後，實際關了幾扇門？ | clerk watches selected tokens on open ledger
 
 ## b04: 關掉兩百多家，年底卻還變多
@@ -110,22 +101,27 @@ x160405 | S3,S6 | 年底美國直營店數反而多了四百四十五。 | plann
 x160406 | S3 | 因為另有門市，在同一年開出來。 | clerk adds fresh shop blocks beside closed tray
 x160407 | editorial | 全年淨數，是所有開關店相抵的結果。 | analyst balances added and removed shop-token trays
 x160407a | editorial | 關店名單問這批關幾家；淨數問全美剩幾家。 | analyst separates selection tray from nationwide shelf
+x160408 | S3 | 上年九月底，美國直營共六千七百九十三家。 | analyst counts earlier nationwide storefront blocks
+x160408a | S3 | 這年期末，變成七千二百三十八家。 | clerk adds storefront blocks to later nationwide shelf
 x160409 | editorial | 年度淨擴張，和前一年比如何？ | planner compares two blank annual calendars
 x160410 | S3,S6 | 前一財年還淨增一千零六十五家。 | analyst lifts old tall block tower
 x160411 | editorial | 這次仍為正，幅度卻縮小許多。 | analyst points at shorter net-growth block tower
-x160412 | editorial | 這量的是淨變化，不是新開毛數。 | clerk separates net balance from opened-only tray
-x160413 | editorial | 店數還增，店裡的生意也變好嗎？ | barista studies generic cafe counter
-x160414 | S3 | 整體營收同年仍然成長。 | accountant holds larger plain annual folio
-x160415 | S3 | 直營營收增加，主要靠新增門市。 | planner arranges new shop blocks beside cup
-x160417 | editorial | 原有門市也賣得更好嗎？ | barista looks at familiar generic counter
-x160418 | S3,S6 | 美國同店銷售，同年下滑百分之五。 | barista turns plain sales tile downward
-x160419 | S3 | 同店只算開滿十三個月的直營店。 | analyst selects mature shop tokens
-x160420 | editorial | 才開不久的新店，不在這張同店表。 | clerk sets freshest shop key outside ring
-x160421 | editorial | 新店拉營收、熟店走弱可同時成立。 | analyst holds two unlike plain tiles
-x160422 | editorial | 但同店跌幅，不能替入選店作判決。 | owner holds mature-sales card apart from selection card
-x160423 | editorial | 年末，那張名單仍有店卡沒移走。 | clerk leaves selected shop tokens in tray
+x160413 | S3 | 直營營收雖增，主要靠新開的門市。 | planner adds new shop blocks beside revenue folio
+x160414 | S3,S6 | 熟店的帳卻不同：同年美國同店下滑百分之五。 | barista turns plain sales tile downward
+x160418 | editorial | 才開不久的新店，也在同店表裡嗎？ | analyst keeps mature-store tile apart from selection card
+x160419 | S3 | 同店只算開滿十三個月的直營店。 | analyst selects mature shop tokens for plain table
+x160420 | editorial | 才開不久的新店，不在這張同店表。 | clerk sets new-looking key aside from mature store ring
+x160421 | editorial | 新店拉營收、熟店走弱可同時成立。 | analyst balances new shop tokens and older store tiles
+x160422 | editorial | 但同店跌幅，不能替入選店作判決。 | owner holds mature-store tile apart from selection card
+x160423 | editorial | 九月底還沒關完；這批又會走多快？ | clerk leaves selected shop tokens in tray
 x160423a | editorial | 對還開著的入選店，租約和時程仍會左右下一步。 | planner leaves selection card beside open lease folio
-x160424 | editorial | 隔年，它們會移往哪一疊？ | analyst marks next blank calendar leaf
+x160423b | S9 | 到十二月二十八日，關店進度又往前推。 | clerk turns blank calendar to late December
+x160423c | S9 | 下一財年首季，七月那批另關一百七十九。 | analyst moves another set of original selection cards into closed box
+x160423d | S9 | 累計三百八十四家，還沒到公告約數。 | clerk holds original cohort tally beside open tray
+x160423e | editorial | 剛才的二百零五，也算在累計裡。 | analyst points back to earlier closure ledger
+x160423f | S9 | 公司當時預計，七月這批餘下的店， | planner leaves original selection cards on later calendar
+x160423g | S9 | 在這個財年末前關完。 | analyst moves last selected tokens toward fiscal-year endpoint
+x160424 | editorial | 第一批還沒關完，隔年為何又多張紙？ | planner holds unfinished original folio beside blank new folio
 x160425 | S4 | 隔年一月，桌上又多張關店紙。 | director puts fresh plain folio on desk
 x160426 | editorial | 這張新紙，會算進七月那一批嗎？ | clerk holds two distinct blank folios
 
@@ -133,45 +129,47 @@ x160426 | editorial | 這張新紙，會算進七月那一批嗎？ | clerk hold
 x160501 | S4 | 不會。隔年一月另列約兩百家。 | planner circles separate shop-token group
 x160502 | S4 | 這是第二批，不是七月名單的尾數。 | analyst sets second ring beside first
 x160503 | editorial | 七月那批的店卡，仍在另一疊。 | clerk opens first plain selection folio
-x160503a | editorial | 上一財年沒移走的卡，到了隔年繼續處理。 | planner shifts same shop card to next blank calendar
-x160504 | S4 | 二〇〇九財年，又關了三百八十三家。 | clerk empties first token tray further
-x160505 | editorial | 再加去年那部分，第一疊接近清空。 | analyst holds nearly empty first selection tray
-x160507 | editorial | 第二張名單，也等著自己的關店數。 | clerk opens separate second selection folio
+x160503a | editorial | 年報替這疊留下第二個財年的欄位。 | planner opens second-year column behind original shop card
+x160504 | S4 | 這一財年，七月那批仍在關店。 | clerk moves more original shop tokens toward closed tray
+x160505 | editorial | 第一疊繼續縮小，還沒有合計數。 | analyst leaves original selection total blank
+x160506 | S10 | 到三月二十九日，第二季又關一百一十九。 | analyst shifts first-cohort cards along March calendar
+x160506a | S10 | 第一張紙的累計，來到五百零三。 | clerk raises original cohort tally with blank number overlay
+x160507 | editorial | 第二張名單，此時也開始執行了嗎？ | clerk opens separate second selection folio
+x160507a | S10 | 第二季，一月那批只關了四家。 | planner moves four abstract tokens from second ring
+x160507b | editorial | 兩張紙起跑日不同，進度也不同。 | analyst sets two blank calendars side by side
+x160507g | S10 | 第二季文件預計，美國多數關店， | planner sets two selection folios beside fiscal calendar
+x160507h | S10 | 會在這個財年末前完成。 | clerk moves remaining shop cards to late-year calendar
+x160507i | S11 | 到六月二十八日，七月那批又關六十家。 | clerk shifts original selection tokens to June calendar
+x160507j | S11 | 第一張紙累計變成五百六十三；另一張呢？ | analyst updates original cohort tally with blank number overlay
+x160507k | S11 | 一月另批同季關一百零九家。 | planner moves tokens from separate second ring
+x160507l | S11 | 第二張紙這時累計一百一十三。 | clerk leaves separate second tally beside its folio
+x160507m | S11 | 把兩張紙合看，六月底美國已關六百七十六家。 | analyst brings two closure trays together beside June calendar
 x160508 | S4 | 一月另列的店，當年關了一百八十三。 | planner empties distinct second token tray
-x160510 | editorial | 門真的關上之後，舊租約就跟著結清了嗎？ | barista watches closed generic storefront
-x160511 | S4 | 當年重整仍有租約退出成本。 | accountant opens plain lease-exit folder
-x160511a | S4 | 年報說，關店增加，退租相關費用也更高。 | accountant stacks plain lease folders higher
-x160511b | editorial | 門關後，那張店卡還有成本留在帳上。 | clerk sets closed key atop unfinished cost folio
-x160511c | editorial | 退租的帳，跟關店的家數一樣，都跨過財年。 | accountant moves lease folder across blank calendar
-x160512 | editorial | 關門日和合約結束日，不是一回事。 | clerk compares blank calendars and lease folio
+x160509 | editorial | 一月公告是約數，這才是同財年的實關數。 | clerk moves actual tokens beneath second blank folio
+x160511 | S4 | 更多店實關，退租相關費用也增加。 | accountant moves lease folder beside closed shop keys
 x160514 | editorial | 美國直營的整體版圖，終於縮了嗎？ | owner points to shop-token shelf
 x160515 | S4,S7 | 美國直營年底淨減四百七十四家。 | planner removes a net group of shop blocks
+x160515a | editorial | 還記得去年的七千二百三十八家？ | analyst reopens earlier nationwide shelf count
+x160515b | S4 | 這年期末只剩六千七百六十四家。 | clerk removes shop blocks from nationwide shelf
 x160516 | editorial | 這是全年開關店互抵後的數。 | analyst balances added and removed tokens
 x160517 | editorial | 不是把兩張名單加起來的答案。 | clerk holds whole shelf apart from two rings
-x160518 | editorial | 名單接近關完，留下的店生意變好嗎？ | barista studies thinning generic queue
-x160519 | S4,S7 | 美國同店銷售又比上年跌百分之六。 | barista turns plain sales tile further down
-x160520 | S4 | 其中交易次數下滑約百分之四。 | clerk removes queue-shaped tokens
-x160521 | S4 | 每筆平均金額也低約百分之二。 | clerk moves fewer coins beside cup
-x160522 | editorial | 關店在推進，熟店卻還沒翻身。 | barista watches quiet generic counter
-x160523 | editorial | 關掉一間店，不等於替另一間拉客。 | barista watches quiet generic counter
-x160524 | editorial | 名單和客流，走在兩條不同的線上。 | analyst keeps shop ring beside queue tokens
-x160524a | editorial | 店卡可以移到已關盒，杯數卻要另外核對。 | clerk moves closed card beside untouched cup counter
-x160525 | editorial | 若下年轉正，能全算關店功勞嗎？ | owner weighs closed key beside full cup
-x160526 | editorial | 隔年，熟店櫃台又出現新的動靜。 | barista watches anonymous queue return
-x160527 | editorial | 下一份同店帳，究竟轉正了嗎？ | analyst studies mature-store selection ring
+x160519 | S4 | 年報把兩批關店合稱約八百家。 | clerk holds two blank selection folios together
+x160520 | S4 | 到這年九月底，幾乎都已落鎖。 | analyst moves most shop tokens into closed boxes
+x160527 | editorial | 七月名單跨到這一年，還關了幾家？ | clerk holds original selection folio beside later calendar
 
-## b06: 熟店轉正，七月店卡待結帳
-x160601 | S5,S8 | 二〇一〇年，美國同店成長百分之七。 | analyst flips plain sales tile upward
-x160603 | editorial | 還記得去年那張同店帳？關門的店不在裡面。 | clerk encloses mature shop tokens apart from closed keys
-x160605 | S5,S8 | 第五十三週，沒有算進同店百分比。 | clerk moves extra leaf outside ring
-x160606 | editorial | 熟店生意，是人變多，還是買更多？ | barista welcomes anonymous customer
-x160610 | S5,S8 | 交易次數與平均客單，一起推高熟店銷售。 | analyst joins queue and cup tokens
-x160611 | editorial | 那能從年報算出七月關店帶來多少嗎？ | owner weighs closed key beside mature tokens
-x160614 | S1,S5 | 一月計畫改善體驗，後來年報還談店內效率。 | barista adjusts plain counter tools
-x160616 | editorial | 所查申報，算不出關店獨有功勞。 | analyst keeps several plain factors on desk
-x160619 | editorial | 七月那批跨過兩個財年，最後實際關了多少家？ | analyst holds nearly empty selection folio
+## b06: 七月名單的第二筆實關數
+x160601 | S4 | 第一張紙在二〇〇九財年又關三百八十三家。 | clerk empties original shop-token tray further
+x160601a | S4,S11 | 從六月底累計五百六十三，到年結再多二十五。 | analyst shifts final original-cohort tokens between two blank calendars
+x160603 | S4,S9,S10,S11 | 每季新增實關數，從首季到年末一路變小。 | analyst aligns shrinking original-cohort token groups on calendar
+x160605 | editorial | 剛才那張一月新名單，要留在另一疊帳裡。 | clerk slides second blank folio to desk corner
+x160606 | S2,S4 | 七月一日到隔年九月底，已快十五個月。 | analyst turns long blank calendar beside original selection card
+x160606a | editorial | 宣布時的圈選，終於成了跨年關門紀錄。 | clerk moves selection cards across two yearly folios
+x160610 | editorial | 跨財年的兩筆，才屬於同一張七月店卡。 | clerk aligns two fiscal-year folios behind one card
+x160611 | S2 | 公告當時說的是「約六百」，不是精確六百。 | planner leaves approximate selection ring unsealed
+x160614 | editorial | 因此不能從公告約數倒推實際關店數。 | analyst moves planning folio away from results ledger
+x160619 | editorial | 回到開場那張七月店卡，兩年合計多少家？ | owner holds original unmarked card over two folios
 
 ## outro: 最後三句
-x160641 | S2,S3,S4 | 七月那批實關五百八十八家；公告未列店齡作為標準，列出單店獲利與預期回報等。 | owner closes nearly empty selection folio
+x160641 | S3,S4 | 從開場那張七月店卡算，截至二〇〇九財年實關五百八十八家。 | owner closes original selection folio after adding two years
 x160642 | editorial | 你會先查眼前獲利，還是未來回報？ | analyst offers blank ledger to viewer
 x160643 | editorial | 想看品牌數字背後的決策，歡迎訂閱。 | clerk closes plain folio toward viewer
