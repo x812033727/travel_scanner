@@ -138,7 +138,8 @@ async function renderFrames(doc, timeline, evidence, directory, channel, timing 
   // the cover and the frame the loop tail returns to (motion.mjs).
   const entering = new Set(sceneSpans(timeline).slice(1).map((span) => span.cues[0].index));
   const { chromium } = await import('@playwright/test');
-  const browser = await chromium.launch({ ...(channel ? { channel } : {}), headless: true, args: LAUNCH_ARGS });
+  const browserTarget = channel ? { channel } : process.env.CHROMIUM_BIN ? { executablePath: process.env.CHROMIUM_BIN } : {};
+  const browser = await chromium.launch({ ...browserTarget, headless: true, args: LAUNCH_ARGS });
   const open = async (javaScriptEnabled) => {
     const context = await browser.newContext({ viewport: { width: PROFILE.width, height: PROFILE.height }, deviceScaleFactor: 1, javaScriptEnabled });
     await context.route('**/*', route => route.abort());
@@ -279,7 +280,8 @@ async function renderFrames(doc, timeline, evidence, directory, channel, timing 
 /** One representative frame from each scene's segment, readable in a compact contact sheet. */
 async function contactSheet(doc, stills, directory, fontCss, channel) {
   const { chromium } = await import('@playwright/test');
-  const browser = await chromium.launch({ ...(channel ? { channel } : {}), headless: true });
+  const browserTarget = channel ? { channel } : process.env.CHROMIUM_BIN ? { executablePath: process.env.CHROMIUM_BIN } : {};
+  const browser = await chromium.launch({ ...browserTarget, headless: true });
   try {
     const context = await browser.newContext({ viewport: { width: 1080, height: Math.ceil(stills.length / 3) * 690 }, deviceScaleFactor: 1, javaScriptEnabled: false });
     await context.route('**/*', route => route.abort());
