@@ -1,0 +1,55 @@
+# X16 v1 independent blind narrative review — reader B
+
+## Blind boundary and file identity
+
+I formed and wrote the spoken-story verdict below before opening `visual-plan.md` or `shorts-portrait-plan.md`. Inputs for that verdict were only `video.json`, `shorts.json`, `.agents/skills/brand-story/SKILL.md`, and the relevant narrative sections of `.agents/skills/youtube-video/references/script-writing.md`. I did not read a brief, treatment, source document, author note, history, or another review. The sources *listed in* `video.json` identify SEC releases and annual reports; this is a narrative review, not an independent claim audit.
+
+- `video.json` SHA-256: `9f59ef1533c74c0347e40d5534bb390aa00310ab4b5274e9f6172e68bf3c58fc` — matches the requested identity.
+- `shorts.json` SHA-256: `1491b408cd15131425167b18093d1411af8ae8d979ee6082f923658bdfdc8498` — matches the requested identity.
+
+## Spoken-story verdict, fixed before visual-plan inspection
+
+**Do not pass the mandatory narrative gate yet: 3 of 12 required checks pass.** The opening is a verifiable dated action and the story has a useful central puzzle, but the script tells the direction of a later reveal, repeats several figures and explanations, and spends its final chapters on accounting comparisons that loosen the newly opened store question. The two Shorts each work independently and fall within the requested duration range by spoken-text estimate.
+
+| Required check from `script-writing.md` | Verdict | Spoken-script evidence |
+| --- | --- | --- |
+| 1. Concrete first four lines | **Yes** | `x16-b01-s01`–`s03` / `x160101`–`x160104` place the listener on 2008-07-01 in Seattle at the approximately 600-store announcement, give the seven-in-ten anomaly, and ask why new stores were selected. These are framed as the documented announcement, with no invented person or act in the narration. |
+| 2. Opening withholds later results | **No** | `x160106` says the September store count went “the other direction,” already giving the upward direction of the Chapter 4 turn named in its title and quantified at `x160407` (+445). The exact total is saved, but the outcome is not. |
+| 3. One forward-moving story without replay | **No** | The 2008 US same-store decline is delivered at `x160220` and again at `x160414`; the exclusion of new stores from the same-store comparison is explained at `x160213`, `x160416`, and `x160604`. The central list remains recognizable, but these re-explanations stall its progress. |
+| 4. No spoken outline or list of forthcoming sections | **Yes** | The preview lines `x160105`–`x160108` refer to board action, a report, a new group of stores, and a later metric, without “next we will cover” framing. No spoken chapter-number or agenda sentence appears in the body. This does not make every preview a successful concrete hook (see check 11). |
+| 5. Chapter first line answers or follows prior chapter | **No** | Chapter 1 ends `x160109` asking what business problem put new stores on the list; Chapter 2 starts `x160201` with “時間退回同年一月七日,” a time-navigation label rather than the consequence or answer. Later handoffs work better: `x160227`→`x160301`, `x160332`→`x160401`, `x160428`→`x160501`/`x160502`, and `x160528`→`x160601`. |
+| 6. Fresh unresolved question at least every 90 seconds | **No** | Chapter 2 runs about 419 Hanzi, roughly 97–109 seconds at 230–260 Hanzi/min. Its `x160210` question is answered at `x160211`, and `x160219` at `x160220`; the next question carried beyond its immediate answer is `x160227` at the chapter end. Chapters 3–5 likewise put their durable question at the end (`x160332`, `x160428`, `x160528`). The brand-story 30–45-second hook cadence is further away. Opening promises remain pending, but they do not supply fresh beats through these stretches. |
+| 7. Every distant setup gets a named, substantive payoff | **No** | Most of the ten declared `loops` point to a clear new result, for example `x160106`→`x160407` and `x160107`→`x160501`. But the main `x160109` question is assigned to `x160641`; by then single-store profit, acceptable return, and location criteria have already been given at `x160312`–`x160315` and repeated at `x160420`, `x160627`–`x160629`. The ending names an answer but adds no new payoff. |
+| 8. No repeated number or fact except purposeful callback | **No** | The 1,065 US net additions recur at `x160207`/`x160410`; the 7,238-store 2008 total at `x160405`/`x160511`; the FY2009 −6% same-store number at `x160518`/`x160602`; FY2009 operating profit at `x160522`/`x160612`. These later uses help build comparisons, but the rule asks for one spoken delivery of a fact. The repeated same-store definition at `x160213`, `x160416`, `x160604` is the more audible replay. |
+| 10. Outro does not mention another video | **Yes** | `x16-outro` / `x160641`–`x160643` answers, asks one audience question, and gives a subscription reason; it does not preview another video. |
+| 11. At least three later concrete unresolved moments after first scene | **No** | `x160105` has a board action and `x160107` a later selection; both stop short of the outcome. `x160106` gives away the later count's direction, and `x160108` only says a metric “will change again,” without an action or concrete unsettled event. Strictly, the opening has two qualifying later moments, not three. |
+| 12. One protagonist/object advances in every chapter | **No** | The closure-list cohort is a possible central object in Chapters 1, 3, and 5 (`x160103`, `x160309`, `x160504`), but Chapter 2 mostly moves through board policy and company-wide context, while much of Chapter 6 follows mature-store sales and consolidated earnings (`x160601`–`x160622`). No particular new store, cohort account, or list decision keeps changing through all six chapters. |
+| 13. No detour or spoken finance list | **No** | The central question is why newly opened stores entered a closure list. The late Chapter 6 run `x160611`–`x160622` inventories consolidated profit, a 53-week qualification, margin drivers, and margin percentages. It answers a different attribution question (`x160616`) and turns the final chapter into a financial comparison before returning to store selection at `x160626`–`x160630`. |
+
+Checklist item 9, chapter titles, is advisory rather than one of the 12 blockers. Several titles name events (`x16-b01-s01`, `x16-b04-s01`), while “答案卻不只一張名單” at `x16-b06-s01` describes an explanatory function more than an event.
+
+The cold open has 137 Hanzi in nine spoken lines: roughly 32–36 seconds at 230–260 Hanzi/min before pauses, plausibly about 35–45 seconds in TTS. It clears the 30–60-second length target. It has a strong dated anomaly at `x160101`–`x160104`, but check 2 and check 11 prevent a clean hook pass. The five substantive chapters have 2,186 Hanzi, about 8.4–9.5 minutes at those speech rates before pauses. That is enough material for an eight-minute body; it is not a timed audio measurement.
+
+Short 1 has 156 Hanzi across eight beats, about 36–41 seconds before transitions. It states its 2008 event, specifies the seven-in-ten denominator, gives the company's selection criteria, and lands a conditional payoff (`short-1` beats 1–8; shots `x16-b01-s01`, `x16-b01-s03`, `x16-b03-s05`–`s17`). Short 2 has 152 Hanzi, about 35–40 seconds before transitions. It gives both fiscal years and the −6%/+7% change, removes the extra-week explanation, and rejects an unsupported single-cause conclusion (`short-2` beats 1–8; shots `x16-b05-s13`, `x16-b06-s02`–`s16`). Both should remain within 25–55 seconds with normal pauses and each makes sense without the long video. The short scripts alone cannot prove a rendered duration.
+
+## Portrait production review
+
+I inspected `visual-plan.md` and `shorts-portrait-plan.md` only after recording the verdict above. The production design is detailed: it assigns all 16 Short beats to a long-video `shot` (all 16 references resolve, using 15 unique shots), gives each a 608×1080 crop with a legal x coordinate, a focal object, and a native vertical headline. It specifies a 1080×1920 output, headline region x=78–902 / bottom y≤1380, subtitle region x=80–900 / y=1430–1595, and a 360-pixel phone preview. The main video has 92 `shot` scenes, 11 `stats` cards, and one outro, matching the visual-plan count. Both plans keep exact figures and brand text in postproduction rather than asking the image model to draw them.
+
+The crop math is plausible: 608×1080 has almost the same aspect ratio as 1080×1920, and every listed x position falls within the legal 0–1312 source range. The requested crop shifts (x=610–700) move up to 46 pixels away from the x=656–1264 central corridor promised in the image prompts. That is a reasonable first pass, but the focal object must be checked on the generated image because the prompt is no guarantee of actual placement.
+
+**Shot-to-plan mismatches to resolve before rendering:**
+
+| Short beat | Portrait-plan focus | Referenced `video.json` shot prompt |
+| --- | --- | --- |
+| 1/3, `x16-b03-s09` | An owner with a key | An anonymous clerk studying a key; no owner is specified. |
+| 1/7, `x16-b03-s08` | A key beside a street model | A planner comparing two generic streets; no key is specified. |
+| 1/8, `x16-b03-s17` | A key over a ledger | A planner weighing a plain storefront model; neither key nor ledger is specified. |
+| 2/3, `x16-b06-s16` | Closed folio beside storefront model | A planner moves one piece among several; neither folio nor storefront is specified. |
+| 2/4, `x16-b06-s03` | Older shop token inside a ring | A clerk leaves a fresh shop token aside; the older token and ring are not specified. |
+| 2/6, `x16-b06-s07` | Barista serving a customer | A clerk counts coins beside a cup; no customer or service action is specified. |
+| 2/8, `x16-b06-s16` | Analyst fits several pieces | The same planner-moving-one-piece prompt used for beat 2/3. |
+
+Some mismatches are descriptive, but beats 1/7, 1/8, 2/3, and 2/6 name props or actions absent from their promised source image. In Short 2, beats 3 and 8 reuse exactly the same still with crop x=635 versus x=675. The plan says those crops will show an unfinished state and a completed state, but a 40-pixel lateral shift cannot itself create two states. A changed image, animation, or narration that treats the repeated image as one continuing moment would need confirmation after generation.
+
+**Actual-render QA status: pending, not passed.** `shorts-portrait-plan.md` explicitly says no illustrations, vertical renders, or phone test exist. No media artifact for this slug was found under `/workspace`. Therefore there is no evidence yet for subject visibility after crop, text contrast/readability at 360 pixels, subtitle clearance from platform controls, rendered 25–55-second lengths, image-artifact quality, audio timing, the long video's actual eight-minute body, or the claimed illustration share by *time*. Those checks require the generated assets and rendered output; the detailed plan does not substitute for them.
