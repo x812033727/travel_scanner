@@ -100,7 +100,6 @@ const portraitFocal = new Map([
   ["x150633", "two broad revenue strands within a larger whole"],
   ["x150629", "one central meeting point of five abstract paths"],
   ["x150519", "two watches beside a broader group of equipment"],
-  ["x150532", "several abstract paths branching from one centre"],
 ]);
 // Each numerical card is hand-written from G1–G6 and anchored to a stable
 // narration ID; the spoken wording can change without losing its source card.
@@ -140,6 +139,7 @@ const lineFor = row => {
 const ribbonAnchors = new Set(["x150104", "x150201", "x150225", "x150331", "x150405", "x150540", "x150623"]);
 const openingCar = new Set(["x150101", "x150102", "x150103", "x150104"]);
 const archiveFolio = new Set(["x150105", "x150107", "x150108", "x150109", "x150110", "x150201", "x150225", "x150331", "x150540", "x150542", "x150601", "x150623"]);
+const twoWatchOpening = new Set(["x150501"]);
 const scenes = [];
 let shotNo = 0;
 for (const [ci, chapter] of chapters.entries()) {
@@ -156,10 +156,13 @@ for (const [ci, chapter] of chapters.entries()) {
     const portraitInstruction = portraitTargets.length ? ` For portrait reuse, keep ${portraitTargets.join(" and ")} entirely in the central 608px-wide vertical corridor of the 1920x1080 frame.` : "";
     const isOpeningCar = selected.some(row => openingCar.has(row.id));
     const isArchiveFolio = selected.some(row => archiveFolio.has(row.id));
+    const isTwoWatchOpening = selected.some(row => twoWatchOpening.has(row.id));
     const [setting, role, action] = isOpeningCar
       ? [sceneNo === 1 ? "in a plain parked car" : "in the same plain parked car as the preceding opening shot", "driver", "comparing a standalone route screen with a phone"]
       : isArchiveFolio
       ? [current.id === "x150105" ? "at a plain archive table" : "at the same plain archive table established after the opening car scene", "researcher", "turning an unlettered annual folio beside the recurring rounded blue ribbon"]
+      : isTwoWatchOpening
+      ? ["beside a plain running track", "runner", "holding two plain unmarked sports watches side by side above the opened unlettered product folio"]
       : humanAction(visualCue, ci);
     const ribbonInstruction = selected.some(row => ribbonAnchors.has(row.id))
       ? " Show the recurring plain blue revenue ribbon with the same rounded end and no lettering; it is an editorial visual metaphor, never a reproduced company chart."
@@ -168,7 +171,7 @@ for (const [ci, chapter] of chapters.entries()) {
       ? " The old blue ribbon ends on a closed older folio; do not extend it into the differently divided new folio."
       : "";
     const shotIndex = card ? shotNo : shotNo++;
-    const orientation = isOpeningCar || isArchiveFolio
+    const orientation = isOpeningCar || isArchiveFolio || isTwoWatchOpening
       ? `one anonymous ${role} with face outside frame ${action}`
       : shotIndex % 4 === 0 ? `one anonymous ${role} facing the viewer and ${action}` : `one anonymous ${role} ${action}`;
     const scene = card ? { id, template: "stats", data: card, lines: selected.map(lineFor) } : {
@@ -187,10 +190,11 @@ scenes.push({ id: "x15-outro", template: "outro", data: { title: "2025 全年｜
 // Setups point to a withheld outcome, with the answer in the actual line named
 // by payoff. Keep the opening's later moments open through the six-chapter body.
 const loops = [
+  { setup: "x150105", payoff: "x150635", what: "手機可導航之後，Garmin 的晚期收入主角" },
   { setup: "x150107", payoff: "x150401", what: "2010 公告裡車用／行動收入的金額" },
   { setup: "x150108", payoff: "x150426", what: "2011 手機風險欄寫出的新判斷" },
   { setup: "x150109", payoff: "x150501", what: "2011 新品頁揭曉跑者手腕的新用途" },
-  { setup: "x150110", payoff: "x150635", what: "車內導航競爭之後的公司收入來源" },
+  { setup: "x150110", payoff: "x150201", what: "2006 車用／行動收入先猛增，形成開場的粗藍線" },
   { setup: "x150231", payoff: "x150301", what: "2008 nüvi 占全公司收入的比例" },
   { setup: "x150313", payoff: "x150318", what: "全公司出貨增加時，年報仍記載降價壓力" },
   { setup: "x150335", payoff: "x150402", what: "七成事業的收入在兩年後是否維持" },

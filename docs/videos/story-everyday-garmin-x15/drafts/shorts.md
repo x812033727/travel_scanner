@@ -1,4 +1,4 @@
-# X15 Garmin｜兩支獨立 Shorts 旁白工作稿 v6
+# X15 Garmin｜兩支獨立 Shorts 旁白工作稿 v7
 
 一行一個可配音句；`line id | source ids | narration | generic English visual cue`。兩支皆獨立提出問題並回答，不倚賴長片。字卡由後製製作原生 9:16；下列視覺提示不能生成商標、真產品外形、可讀文字或真地圖。
 

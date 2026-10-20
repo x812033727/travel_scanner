@@ -1,4 +1,4 @@
-# X15 Garmin｜六章繁中旁白工作稿 v6
+# X15 Garmin｜六章繁中旁白工作稿 v7
 
 一行一個可配音句；`line id | source ids | narration | generic English visual cue`。`editorial` 只用於不引入外部事實的設問或轉場。2008 車內駕駛是匿名用途示意，不是真人個案；文件場景只呈現已查核的公司文件，不能製造一場公司內部決策。年份與數字由後製卡片呈現。第一章後接正式 5 秒片頭；`outro` 三句後接正式 21 秒片尾。
 
@@ -8,11 +8,11 @@ x150101 | G2 | 二〇〇八年，一名駕駛坐進車裡，把路線交給獨�
 x150102 | G2 | 它指著路口；旁邊的手機，也開始有 GPS。 | driver looking between a plain screen and a phone
 x150103 | G2 | 同一段路，兩塊螢幕都想指給他看。 | two blank screens near the steering wheel
 x150104 | G2,G3 | 而 Garmin 當年的收入表，車用／行動那條藍線占公司逾七成。 | blue revenue ribbon over the dashboard, beside thinner ribbons
-x150105 | G2 | 年報卻說，手機導航「可能」拖慢它的成長。 | blank report near two competing screens
+x150105 | G2 | 年報卻只說手機導航「可能」拖慢成長；Garmin 後來靠什麼賺錢？ | blank risk report beside the two competing screens
 x150107 | G4 | 兩年後的全年公告攤開；車用／行動那欄會寫多少？ | closed unlettered annual folio beside a single blank bar
 x150108 | G2,G5 | 二〇一一年的風險欄，也重寫了手機那句話；「可能」還在嗎？ | two unlettered risk paragraphs, second concealed
 x150109 | G5 | 同年的新品頁翻開；GPS 又被帶進哪個場景？ | folded generic product page with an unrevealed object
-x150110 | G2,G6 | 當車裡不只一塊螢幕能指路，Garmin 後來靠什麼賺錢？ | plain standalone navigator beside diverging colored paths
+x150110 | G1,G2 | 那場競爭之前，Garmin 車用／行動收入是怎麼衝上來的？ | closed earlier annual folio beside the same blue revenue ribbon
 
 ## b02: 那台機器先把收入推高
 
@@ -95,7 +95,7 @@ x150432 | G5 | 可同一本年報的新品頁，又把 GPS 放到哪裡？ | ano
 
 ## b05: GPS 走到手腕，也借用了手機
 
-x150501 | G5 | 開場那頁新品，答案在跑者手腕上。 | the folded product folio opening beside a runner wrist
+x150501 | G5 | 開場那頁新品，答案在跑者手腕上。 | two plain sports watches side by side above an opened unlettered product folio beside a runner wrist
 x150502 | G5 | Forerunner 六一零讓人用觸控查看跑步資料。 | one plain wrist receiver on a running track
 x150504 | G5 | 九一零 XT 則把跑步、騎車和游泳記在同一只錶裡。 | second generic watch moving among track, cycle and pool
 x150505 | G5 | 一個人跑完一圈，要看的是時間、距離與自己的路徑。 | one sports watch with peripheral sports silhouettes
@@ -107,15 +107,11 @@ x150512 | G5 | 跑道之外，收入表還有哪條線也往上走？ | blue rev
 x150514 | G5 | 戶外事業同年也成長；年報把它和健身分開列。 | separate outdoor and fitness ribbons on one folio
 x150515 | G1,G5 | 健身與戶外不是這年才開始賣；更早的財報已有合併的收入欄。 | older blank report beneath newer fitness and outdoor paths
 x150519 | G5 | 所以新品頁只給出一個線索：定位能賣給開車以外的人。 | two watches beside a broader group of equipment
-x150522 | G5 | 手機這時又在 Garmin 的另一份紀錄裡出現。 | blank phone appearing beside sports gear
-x150523 | G5 | 七月，公司收購了德國的 NAVIGON。 | unsigned acquisition folder beside phone
-x150524 | G5 | 那家公司只賣獨立導航器嗎？ | rows of generic handheld devices beside a phone
-x150525 | G5 | 它也做手機導航應用，路線因此走進另一塊螢幕。 | blank phone with an abstract route line
-x150526 | G5 | 到十月，公司又宣布一款健身手機應用 Garmin Fit。 | generic phone beside an exercise track
-x150527 | G5 | 它直接借用手機裡的 GPS，記下速度和距離。 | blank phone beside a running track
-x150528 | G5 | 同一塊手機螢幕，既能搶車內的導航，也能成為工具。 | abstract signal inside a blank phone
-x150530 | G2,G5 | 可是工具多了，不等於舊主力一夜之間交出第一名。 | phone beside runner and a plain navigation unit
-x150532 | G5 | 它同時賣車用機器，也在健身與戶外取得收入。 | several abstract paths branching from one centre
+x150522 | G5 | 手機還在搶車裡的路；Garmin 自己也在上面做事嗎？ | blank phone beside a plain car receiver
+x150523 | G5 | 七月它收購 NAVIGON；這家公司也做手機導航應用。 | unsigned acquisition folder beside a plain phone route
+x150526 | G5 | 十月它又宣布 Garmin Fit，借用手機 GPS 記速度與距離。 | generic phone recording motion beside a running track
+x150528 | G2,G5 | 同一塊手機螢幕，既是競爭者的平台，也成了 Garmin 的工具。 | two abstract routes meeting on one blank phone
+x150530 | G2,G5 | 但這些行動沒有說明，車用那條收入線已交出第一名。 | phone and runner beside the old blue revenue ribbon
 x150539 | G5 | 到這年年底，最大收入欄到底換了嗎？ | trail and track paths around a car
 x150540 | G5 | 還沒有。那條車用／行動藍線，在這張舊表上仍是最大的一條。 | broad blue revenue ribbon beside narrower fitness and outdoor ribbons
 x150541 | G5,G6 | 這份年報之後到二〇二五年，相隔十四個財年。 | a row of unlettered annual folders with a long gap

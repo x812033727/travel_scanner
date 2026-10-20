@@ -1,15 +1,15 @@
 # X15｜Garmin：車裡兩塊螢幕，後來哪條收入線排第一？
 
-狀態：**v6 離線前製作者稿，待全新的獨立逐句 SEC 審查與兩名同版盲讀者。沒有付費媒體、成片、YouTube 連結或 PR。** 本集取材自已查核的 100 題清單 C15，作為 X15 獨立製作，不改 C15 的企劃或審稿雜湊；X01–X14 沒有 Garmin 主角。
+狀態：**v7 離線前製作者稿，待新一輪獨立來源核對與兩名同版盲讀者。沒有付費媒體、成片、YouTube 連結或 PR。** 本集取材自已查核的 100 題清單 C15，作為 X15 獨立製作，不改 C15 的企劃或審稿雜湊；X01–X14 沒有 Garmin 主角。
 
 主問題：2008 年 Garmin 的車用／行動事業占公司營收逾七成。手機與新車也能導航後，2010 年那條收入線走到哪裡、2011 年公司如何改寫手機風險，以及 2025 年的收入究竟由哪些事業構成？主片沿**一條無字藍色收入帶**走六章；它是作者的視覺隱喻，不是實際 Garmin 圖表，也不把舊部門硬接到新分部。
 
-[來源矩陣](source-matrix.md)列六份工人可讀的 SEC 原始 HTML、下載位元組與 SHA-256、支持範圍及禁區；[獨立企劃查核](reviews/source-audit-independent.md)對 G1–G7 重抓核算後 PASS。[v5 逐句來源查核](reviews/script-source-audit-v5-independent.md) HOLD：2008 的 27 款誤置於 2006、2026 公告誤稱開場已預告，以及衛星通訊誤叫定位。[v5 盲讀 A](reviews/blind-a-v5-independent.md) 8/12、[盲讀 B](reviews/blind-b-v5-independent.md) 10/12，均 HOLD：重複七成／五成八、第二章或最後一章的數字清單、缺少一個可一路追的物件，Short 2 結尾與視覺 JSON 也需改。這些收據都只綁 v5 SHA，不批准 v6；更早 v4 的逐句來源 PASS 與兩份 6/12 盲讀亦不外推。
+[來源矩陣](source-matrix.md)列六份工人可讀的 SEC 原始 HTML、下載位元組與 SHA-256、支持範圍及禁區；[獨立企劃查核](reviews/source-audit-independent.md)對 G1–G7 重抓核算後 PASS。[v6 逐句來源查核](reviews/script-source-audit-v6-independent.md) PASS。[v6 盲讀 A](reviews/blind-a-v6-independent.md) 10/12、[盲讀 B](reviews/blind-b-v6-independent.md) 11/12，均 HOLD：第一章問「後來靠什麼賺錢」，第二章卻先跳回 2006 年；A 另指出 2011 手機產品段落過長，B 指出兩支 Shorts 各一處分鏡提示不合。v7 已改這些點；v6 收據只綁舊 SHA，不能批准新版。
 
-v6 凍結檔案：`video.json` SHA-256 `a49639cb1cfdfc15bfd0a57e61bbbf7d052cb4019c35639645db196ecc555761`；`shorts.json` SHA-256 `cb7433a1c67cea6424ff526bc11dc81a7d5a4cd32afc1440f7f094e08c7ea3b9`。主片 128 句、101 張待生成匿名插畫、13 張原生後製 stats 卡、1 張明列 2025 Fitness＋Outdoor **60.9%** 與分母／來源的三句 `outro` 原生答案卡、9 個有句 ID 的掛問／回收。兩支 Shorts 各 9 拍，169／203 個稿文字元；[直式交接](shorts-portrait-plan.md)有每拍重用 shot、中央裁切和原生字卡安全區，**沒有實際 9:16 渲染或手機驗收**。[逐句作者來源標記](line-source-matrix.md)及 [Shorts 標記](shorts-source-matrix.md)只供下一位查核者使用，不能算獨立 PASS。
+v7 凍結檔案：`video.json` SHA-256 `044eea57afafbd7fa39d541c72fff0082cd5fee1af8824003afa064e46fc8d4c`；`shorts.json` SHA-256 `bd0618180c683be790c53be9fd40581967c6de0de796a831b435762f248d0620`。主片 124 句、98 張待生成匿名插畫、13 張原生後製 stats 卡、1 張明列 2025 Fitness＋Outdoor **60.9%** 與分母／來源的三句 `outro` 原生答案卡、10 個有句 ID 的掛問／回收。兩支 Shorts 各 9 拍，169／203 個稿文字元；[直式交接](shorts-portrait-plan.md)有每拍重用 shot、中央裁切和原生字卡安全區，**沒有實際 9:16 渲染或手機驗收**。[逐句作者來源標記](line-source-matrix.md)及 [Shorts 標記](shorts-source-matrix.md)只供下一位查核者使用，不能算新版的獨立 PASS。
 
-主片首章 216 個稿文字元；第二至第六章實質正文 2,544 個稿文字元，按每分鐘 300 字元約 **8:29**。lint 全片紙面估計約 11:21，另加正式 5 秒／21 秒動畫約 11:47；兩種估算都不是 TTS 或實際影片時長。正式剪輯朝約 10 分鐘調整，仍須實測扣除開場、末三句及動畫後的正文至少 8:00。Shorts 25–55 秒也仍需真音訊核定。
+主片首章 230 個稿文字元；第二至第六章實質正文 2,490 個稿文字元，按每分鐘 300 字元約 **8:18**。lint 全片紙面估計約 11:08，另加正式 5 秒／21 秒動畫約 11:34；兩種估算都不是 TTS 或實際影片時長。正式剪輯朝約 10 分鐘調整，仍須實測扣除開場、末三句及動畫後的正文至少 8:00；目前快速紙面基準只餘 18 秒，不能任意刪減。Shorts 25–55 秒也仍需真音訊核定。
 
-第 1 章從匿名 2008 車內導航競爭進入，讓 2010 全年公告、2011 風險欄與 2011 新品頁停在未揭結果；前三個 payoff 按這個順序在第 4、5 章逐一點名。第 2 章先發生 2006 車用收入年增，再讓觀眾看到開場藍帶如何長大。第 5 章說清 2011 與 2025 相隔十四個財年，手上文件不能重建每年換位；第 6 章揭曉 2025 新表，明說舊車用／行動不能接成新 Auto OEM。[Treatment](treatment.md)、[繁中逐句稿](script.md)、[視覺計畫](visual-plan.md)及 [US$25 護欄](production-quote.md)記錄執行細節。
+第 1 章從匿名 2008 車內導航競爭進入，先問 Garmin 後來靠什麼賺錢，讓 2010 全年公告、2011 風險欄與 2011 新品頁停在未揭結果；前三個 payoff 按這個順序在第 4、5 章逐一點名。首章末句改問競爭之前的車用收入如何衝高，第 2 章首句用 2006 年增 170% 回答。第 5 章說清 2011 與 2025 相隔十四個財年，手上文件不能重建每年換位；第 6 章揭曉 2025 新表，明說舊車用／行動不能接成新 Auto OEM。[Treatment](treatment.md)、[繁中逐句稿](script.md)、[視覺計畫](visual-plan.md)及 [US$25 護欄](production-quote.md)記錄執行細節。
 
 固定規格：MiniMax `image-01`、精確 `look: {"preset":"cute-mystery"}`、每 30–45 秒實質鉤子、濃縮開場後正式 5 秒片頭、最後三句後正式 21 秒 v4 片尾、可關閉繁中 CC、縮圖橘色大字 `Garmin`，整集付費硬上限 US$25。插畫不畫品牌名、商標、真機型、真地圖、可讀報表或真人個案；數字和年份由後製字卡承擔。真實媒體與影片互鏈只在實際產出／上傳後填入。
