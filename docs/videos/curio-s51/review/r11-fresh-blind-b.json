@@ -1,0 +1,91 @@
+{
+  "review": "r11-fresh-blind-b",
+  "basis": "Only the narration string and the 13 official questions returned by the narrative CLI; script.md was read as raw bytes solely to hash it.",
+  "source_command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs narrative --slug curio-s51 --json",
+  "script_byte_sha256": "b0aed4b7b269130a717b290386b32f095b55c8a94a444db27221b1d2bf7f2c8e",
+  "narration_string_sha256": "21f60ba546c6d8339262b50ddcd748dbdd97020ea6ce8a891b6c8825a9bc72c3",
+  "narration_line_numbering": "1-based lines of the CLI narration string, including title, headings, and blank lines",
+  "verdict": "fail",
+  "passed": 12,
+  "failed": 1,
+  "questions": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "pass": true,
+      "evidence": "L4–7 [cal001–004]: the first spoken sentence gives 14 April 1912, the Californian, the Atlantic ice, and its action of stopping; the next lines stay in that scene."
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "pass": true,
+      "evidence": "L4–11 [cal001–008]: the opening shows the stopped ship, nearby wireless, white rockets, and later moments as open questions. It does not give the inquiry’s identification or the decision not to sail (L128, L148 [cal114, cal132])."
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "pass": true,
+      "evidence": "After the opening preview, the account moves from the 19:30 warning and night watch (L14–29 [cal009–024]), through collision, distress, and dawn (L43–120 [cal036–106]), to the later inquiry (L123–149 [cal107–133]). The inquiry tests that same encounter."
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "pass": true,
+      "evidence": "The spoken transitions pose event questions, e.g. L29 [cal024], L56 [cal049], and L120 [cal106]; no spoken line lays out a chapter list or announces a narration plan."
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "pass": true,
+      "evidence": "All nine handoffs connect: L11→14 [cal008→009] returns to the Californian and the ice; L29→33 [cal024→025] answers the warning; L40→43 [cal035→036] turns to lights; L56→59 [cal049→050] turns to a distress signal; L71→74 [cal063→064] gives the rocket time; L86→89 [cal076→077] gives Stone’s report; L104→107 [cal092→093] answers the knowledge question; L120→123 [cal106→107] starts the identity inquiry; L134→137 [cal120→121] gives the distance evidence."
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "pass": true,
+      "evidence": "Unanswered event questions recur well within 90 seconds: L7–11 [cal004–008], L25–29 [cal020–024], L40/47/56 [cal035/040/049], L68–71 [cal059–063], L85–86 [cal075–076], L104/120/134/147 [cal092/106/120/131]."
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "pass": true,
+      "evidence": "Long loops are named and answered: the 23:30 earphones at L7→69 [cal004→060]; Stone’s report at L9→89–92 [cal006→077–080]; the dawn ship at L10→112–115 [cal007→098–101]; the decision at L11→148/151 [cal008→132/135]. Short handoffs answer the warning, rocket time, ship identity, and distance at L29→33, L71→74, L120→123, and L134→137. The final viewer question at L154 [cal999b] is an outro prompt, not a hanging story claim."
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "pass": false,
+      "evidence": "L93–94 [cal081–082] twice says the Morse attempt yielded no usable answer; L99 [cal087] repeats that the bridge obtained no name from the lamp without an explicit recall. L84–85 [cal074–075] also repeats the Californian watch’s sighting of white rockets before adding Stone’s name. These are restatements inside the body, outside the stated recall exceptions."
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "pass": true,
+      "evidence": "The ten headings at L3, L13, L31, L42, L58, L73, L88, L106, L122, and L136 name actions or discoveries: stopping, warning, setting down the receiver, dimming lights, distress, rockets, reports, disappearance, and inquiry comparisons."
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "pass": true,
+      "evidence": "L153–155 [cal999a–c] ends with the unresolved rescue count, a viewer question, and a general subscription invitation. It names no next video, episode, or file."
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "pass": true,
+      "evidence": "After the stopped-ship scene, L7 [cal004] leaves the headset gap unresolved; L9 [cal006] asks about the captain’s response; L10 [cal007] asks about the dawn ship; L11 [cal008] asks what the white lights lead the crew to do."
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "pass": true,
+      "evidence": "The Californian’s failure to respond is followed from its stop at L4 [cal001], through its watch seeing rockets at L84–85 [cal074–075], its report dispute at L89–103 [cal077–091], and the inquiry’s finding of no attempt at L148 [cal132]."
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "pass": true,
+      "evidence": "The Carpathia passage L64–69 [cal055–060] establishes a responding ship and the Californian’s silent receiver; the disputed identification L123–134 [cal107–120] and distance/ice analysis L137–149 [cal121–133] bear directly on why it did not come."
+    }
+  ]
+}

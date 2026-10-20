@@ -23,7 +23,7 @@ Amber Room S51 來源在本環境無法重開，因此原題暫緩，見 [Amber 
 ## Definition of done
 
 - [x] `docs/videos/curio-s51` 有 A／B 企劃、固定來源研究、逐句主張表、8 分鐘以上的繁中同一故事線稿、Curio 插圖分鏡 JSON、作者自檢與內容雜湊。
-- [ ] 獨立來源審核與兩位不同盲讀者審核**同一套 hash**；任何修訂後重新鎖版本。
+- [x] 獨立來源審核與兩位不同盲讀者審核**同一套 hash**；任何修訂後重新鎖版本。R14 精確稿三項均 PASS。
 - [ ] 網站大綱／劇本、音訊、分鏡與成片關卡完成；TTS 正文實測至少 8 分鐘、Studio 最後 16 秒元素可點。
 
 ## Steps
@@ -55,13 +55,31 @@ Amber Room S51 來源在本環境無法重開，因此原題暫緩，見 [Amber 
 - [x] 另一位工作者核對 R10 七格差分，來源、逐句主張與書面畫面三項 PASS。
 - [x] 兩位全新隔離讀者只讀未變的 R9 劇本做固定 13 題盲評，合併 R10 敘事 PASS；完整解說政策 PASS，網站精確劇本卡 hand-pushed pending，本地委派選擇另存。
 - [x] 真實 Sulafat 合成 134/134、完整音檢及兩輪定點重錄（18→8→6 旗標），逐輪私有封存四件原樣證據。
-- [ ] 六句來源忠實、易唸改稿；同版重新做獨立來源、兩位全新盲讀者、政策／網站及零旗標全片音檢，再考慮插圖。
+- [x] R11 改六句易誤聽口播；另一人獨立核出 `cal099` 錨點與 `cal021` 書面景兩處窄 HOLD；R12 作者只修兩處並重凍結。
+- [x] R12 來源／主張／書面畫面獨立 PASS；同版雙盲合併 `no_recap` FAIL。R13 作者收斂 `cal074/075` 與 `cal081/082/087` 的重述、重凍結。
+- [x] R13 由另一人重核來源／主張／書面畫面三項 PASS，兩名全新盲讀者同版正式合併 13/13 PASS。
+- [x] R14 解說政策 PASS（業配 0.09），本地委派編輯決定綁新版 SHA；10 句新合成、1 句定點補錄後，132/132 現稿音檢 0 旗標，實測正文 10:58.80，音訊已送網站待聆聽。
+- [ ] 網站手動劇本卡及音訊卡待站主審核；其後依整集插圖預算、分鏡、配樂、成片、字幕、QA 與上架包關卡續做。
 
 ## How to verify
 
-在 repo 根目錄執行 `node tools/video/cli.mjs lint --slug curio-s51 --json`，應為 0 errors／0 warnings；`sha256sum docs/videos/curio-s51/{brief,research,claims,script}.md docs/videos/curio-s51/video.json` 與最新的 `verify-10.md` 對照。腳本、主張表與 JSON 逐句同文；`npm run check:tasks` 驗證本票。後續實際生成旁白再檢查首 8 景後的正文長度，並在私人上傳後檢查 21 秒片尾末 16 秒元素。
+在 repo 根目錄執行 `node tools/video/cli.mjs lint --slug curio-s51 --json`，應為 0 errors／0 warnings；`sha256sum docs/videos/curio-s51/{brief,research,claims,script}.md docs/videos/curio-s51/video.json` 與最新的 `review/r14-author-freeze.md` 對照。腳本、主張表與 JSON 逐句同文；[R14 語音驗證](../../docs/videos/curio-s51/verify-14.md)列出實測時長、全稿 0 旗標及音訊雜湊；`npm run check:tasks` 驗證本票。私人上傳後再檢查 21 秒片尾末 16 秒元素。
 
 ## Notes
+
+- 2026-10-20：[R14 精確作者稿](../../docs/videos/curio-s51/review/r14-author-freeze.md)獨立來源／主張／書面畫面 PASS，同版雙盲正式敘事 13/13 PASS，完整解說政策 PASS（業配 0.09）。[實測音訊](../../docs/videos/curio-s51/verify-14.md)新合成 10 句、定點補錄 1 句後現稿 132/132、0 旗標，正文 10:58.80，音訊已送站台待聆聽。網站手動劇本卡仍 pending；未製作插圖、配樂、成片，未發布。
+
+- 2026-10-20：[R13 政策回條](../../docs/videos/curio-s51/review/r13-policy.md)對精確新版稿判 **HOLD**：分類正確為 `explainer`，立場 0.80、建議 0.01，但業配 0.31 超過門檻 0.30；原始去憑證回覆與五檔 hash 在 `r13-policy.json`。網站舊劇本卡 `hand_pushed pending`，未把 R10 本地委派選擇冒稱新版網站核准。R13 未啟動 TTS、音檢、插畫、配樂或成片；舊 134 句音檔不能作新版 132 句證據。
+
+- 2026-10-20：[R13 作者限縮凍結](../../docs/videos/curio-s51/review/r13-author-freeze.md)按 R12 雙盲合併 `no_recap` FAIL，`cal074` 明確改為**火箭前**吉布森所見的遠船甲板白光，`cal075` 才說史東所見白火箭與通報鉤子；書面景同步不再畫前句為火箭。刪 `cal082/087` 兩句／景／主張的無答覆重述，保留 `cal081` 的初次無答、`cal088` 向船長報告的**新動作**。132/132 對齊、129/129 shot、16/16 伏筆、lint 0/0，最快文字估時正文 8:31.17。相對 R10 舊音訊，八句須新合成、兩句移除、124 句可沿用；**來源／畫面獨立差分、新雙盲、政策／站台與新版音檢尚未做**，後續媒體 HOLD。
+
+- 2026-10-20：[R12 精確差分獨立覆核](../../docs/videos/curio-s51/review/r12-source-independent.md) **旁白史料／逐句主張／書面畫面三項 PASS**：五檔 SHA 吻合作者凍結；反向還原 `cal099` 錨點可重得 R11 claims SHA，還原 `cal021` 提示詞及說明欄可重得 R11 video SHA；G L3479 直接支持「大副」，G L3338–3342 支持夜間船長走入無線電室。134 句同文、131 shot、16 loops、lint 0／0；`script.md` 及敘事字串 SHA 與 R11 雙盲相同。R11 讀者 A 13／13、B 12／13（`no_recap` No）仍待官方合併，不能以來源 PASS 放行政策或媒體。
+
+- 2026-10-20：[R12 作者限縮凍結](../../docs/videos/curio-s51/review/r12-author-freeze.md)：`cal099` 的 G 主張錨點擴至 L3478–3491，涵蓋大副職務及四點接班報告；`cal021` 書面景改夜間船長進無線電室，`brief.md` 修 R9 過時狀態，說明欄移除過時製作狀態。R11 的 134 句旁白、`script.md` hash 均逐位元未變；R12 五檔 hash 見收據，lint 0／0。**僅作者候選**；需另一人核 R11→R12 精確差分、兩位新讀者、政策／站台重綁及新版零旗標音檢，插圖／配樂／成片 HOLD。
+
+- 2026-10-20：[R11 六句來源與書面畫面獨立覆核](../../docs/videos/curio-s51/review/r11-source-independent.md)：固定 G／B／A 原文與五檔 hash 吻合，六句新口播史料 PASS、134 句三檔對齊、131 景及 16 組伏筆、lint 0／0、三條固定史料連結回 200。**來源錨點窄 HOLD**：`cal099`「大副」的直接根據在 G L3479，現 claims 只引 L3483–3491；**書面畫面窄 HOLD**：`cal021` 已改為夜間船長走向無線電員，仍沿用白天調查桌船模畫面。另 `brief.md` 開頭狀態已過時。由作者最小修錨點、畫面提示詞與交接文字，重凍結五檔後請另一人核新差分；兩名新讀者、政策／站台與新版音訊仍待，不放行插圖。
+
+- 2026-10-20：[R11 六句易唸改稿與作者凍結](../../docs/videos/curio-s51/verify-12.md)只改 `cal021/049/073/096/099/120` 口播及相同主張列，`cal099` 的書面插圖由泛稱值班水手改為大副。固定 G 原文分別支持船長詢問 Evans、波克索爾約八枚、史東再保證白火箭、史都華接班與事後比對時間；不把證詞寫成已證船名。五檔 hash 見凍結收據，134/134 三檔逐句一致、131/131 shot、16/16 伏筆、lint 0/0，最快文字估時開場 36.37 秒、正文 8:38.60。**新版來源／畫面、兩名新盲讀、政策／站台與六句重錄／完整零旗標音檢均未做**，音訊與後續媒體仍 HOLD。
 
 - 2026-10-20：[R10 真實音訊收據](../../docs/videos/curio-s51/verify-11.md)完整 134/134 音檢三輪 **18→8→6** 旗標。初次 134 件合成；第一輪只重錄 18 件、第二輪只重錄 8 件，三輪 WAV/timeline/check/flags 私有原樣封存。最後六句 `cal021/049/073/096/099/120`，WAV SHA `cb752e2cfec41b7b77ee1d0022c256f2afde51ae70367f2e4dffbf20d8409ff2`；開場 47.63 秒、正文 11:03.77、總旁白 12:05.87。**音訊 HOLD，無插圖／配樂／成片**；下一步由作者精修六句並重新綁精確版下游 gate。網站劇本 pending 不是網站核准。
 - 2026-10-20：作者前製完成，精確內容與來源 SHA 見 `docs/videos/curio-s51/author-selfcheck.md`。英國調查原文承認 Stone、Gibson 與 Lord 的回報矛盾，也把船名與距離寫成調查判斷；稿子沒有把「五英里」或「能救全船」講成事實。
