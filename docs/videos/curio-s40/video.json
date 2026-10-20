@@ -29,18 +29,18 @@
   "loops": [
     {
       "setup": "cl003",
-      "payoff": "cl054",
-      "what": "無花果籃中是否有蛇"
+      "payoff": "cl057",
+      "what": "無花果籃有無毒蛇的見證"
     },
     {
       "setup": "cl004",
-      "payoff": "cl046",
+      "payoff": "cl047",
       "what": "密封信寫了什麼"
     },
     {
       "setup": "cl005",
-      "payoff": "cl080",
-      "what": "凱旋式蛇形象的來源"
+      "payoff": "cl083",
+      "what": "凱旋式蛇像能否證明死法"
     },
     {
       "setup": "cl008",
@@ -59,7 +59,7 @@
     },
     {
       "setup": "cl024",
-      "payoff": "cl028",
+      "payoff": "cl029",
       "what": "屋大維是否相信女王想活"
     },
     {
@@ -68,12 +68,12 @@
       "what": "清單缺項的原因"
     },
     {
-      "setup": "cl029",
-      "payoff": "cl030",
-      "what": "誰私下送消息"
+      "setup": "cl030",
+      "payoff": "cl031",
+      "what": "女王託付的年輕人是誰"
     },
     {
-      "setup": "cl032",
+      "setup": "cl033",
       "payoff": "cl052",
       "what": "女王能否與安東尼合葬"
     },
@@ -83,49 +83,64 @@
       "what": "探墓後準備什麼"
     },
     {
-      "setup": "cl042",
-      "payoff": "cl043",
+      "setup": "cl039",
+      "payoff": "cl040",
+      "what": "用餐時誰來到門外"
+    },
+    {
+      "setup": "cl043",
+      "payoff": "cl044",
       "what": "女王放行籃子後做什麼"
     },
     {
-      "setup": "cl047",
-      "payoff": "cl048",
+      "setup": "cl048",
+      "payoff": "cl049",
       "what": "使者能否救下女王"
     },
     {
-      "setup": "cl052",
-      "payoff": "cl058",
-      "what": "死法能否從傳記判定"
+      "setup": "cl054",
+      "payoff": "cl055",
+      "what": "籃子的蛇說從哪裡來"
     },
     {
-      "setup": "cl060",
-      "payoff": "cl061",
+      "setup": "cl061",
+      "payoff": "cl062",
       "what": "屍身留下什麼"
     },
     {
-      "setup": "cl065",
-      "payoff": "cl070",
-      "what": "狄奧是否能判定死法"
+      "setup": "cl066",
+      "payoff": "cl067",
+      "what": "狄奧能否判定死法"
     },
     {
-      "setup": "cl069",
-      "payoff": "cl071",
-      "what": "狄奧是否知道死法"
+      "setup": "cl071",
+      "payoff": "cl072",
+      "what": "鬆懈看守後的信交給誰"
     },
     {
-      "setup": "cl075",
-      "payoff": "cl082",
-      "what": "狄奧的痕跡能否定案"
-    },
-    {
-      "setup": "cl076",
-      "payoff": "cl078",
-      "what": "另一位作者怎麼寫救治"
+      "setup": "cl073",
+      "payoff": "cl074",
+      "what": "淺痕能否辨出蛇牙或髮針"
     },
     {
       "setup": "cl077",
       "payoff": "cl078",
-      "what": "蘇埃托尼烏斯的保留用詞"
+      "what": "救治能否證明死因"
+    },
+    {
+      "setup": "cl078",
+      "payoff": "cl079",
+      "what": "另一位作者怎麼寫救治"
+    },
+    {
+      "setup": "cl080",
+      "payoff": "cl081",
+      "what": "凱旋式帶出何物"
+    },
+    {
+      "setup": "cl083",
+      "payoff": "cl084",
+      "what": "有誰目擊蛇咬"
     }
   ],
   "youtube": {
@@ -260,7 +275,7 @@
       "id": "cl006",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of an injured Roman commander approaching a tall stone tomb doorway, muted daylight",
+        "prompt": "Wide shot of a wounded Roman general being carried in the arms of two servants toward a closed stone tomb door, muted daylight",
         "camera": "push in",
         "visual": "still"
       },
@@ -437,7 +452,7 @@
       "id": "cl017",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a helmeted sentinel holding a confiscated dagger beside a folded robe, soft lamplight",
+        "prompt": "Medium shot of a plain-robed official envoy holding a confiscated dagger beside a folded royal robe, soft lamplight",
         "camera": "drift left",
         "visual": "still"
       },
@@ -453,7 +468,7 @@
       "id": "cl018",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Roman attendant standing watch outside a queen's chamber, gentle daylight",
+        "prompt": "Medium shot of a Roman attendant standing watch outside a private royal chamber, gentle daylight",
         "camera": "pull back",
         "visual": "still"
       },
@@ -614,14 +629,14 @@
       "id": "cl028",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a victorious commander leaving a room with a reassured expression, soft corridor light",
+        "prompt": "Medium shot of a victorious commander gesturing toward a plain jewelry box beside a seated royal woman, soft indoor light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl028",
-          "text": "屋大維聽完，認定她終於想活。傳記卻說，他看錯了。",
+          "text": "屋大維准她留下那些東西，還許諾更好的待遇；他放心了嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -630,14 +645,14 @@
       "id": "cl029",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young cloaked courier pausing behind a stone pillar with a sealed blank note, muted light",
+        "prompt": "Close shot of a victorious commander leaving a room with a reassured expression, soft corridor light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl029",
-          "text": "可是這個判斷有一個前提：他不知道有人會私下傳消息給她。",
+          "text": "屋大維聽完，認定她終於想活。傳記卻說，他看錯了。",
           "emotion": "自然說故事"
         }
       ]
@@ -646,47 +661,47 @@
       "id": "cl030",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Roman young man offering a small unlettered note through a doorway, soft daylight",
+        "prompt": "Medium shot of a young Roman messenger pausing behind a stone pillar with a sealed blank note, muted light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl030",
-          "text": "那個人叫多拉貝拉。普魯塔克說，他照她的請求，悄悄送來消息。",
+          "text": "可普魯塔克接著寫，女王早就託過屋大維身邊的一個年輕人。那是誰？",
           "emotion": "自然說故事"
         }
-      ],
-      "chapter": "多拉貝拉帶來消息"
+      ]
     },
     {
       "id": "cl031",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a queen studying a blank note while three small travel bundles sit beside her, window light",
+        "prompt": "Medium shot of a Roman young man offering a small unlettered note through a doorway, soft overcast light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl031",
-          "text": "消息說，屋大維將經敘利亞返回，女王與孩子三天內會被送走。",
+          "text": "那人叫多拉貝拉；他現在照女王的請求，悄悄帶來消息。",
           "emotion": "自然說故事"
         }
-      ]
+      ],
+      "chapter": "多拉貝拉帶來消息"
     },
     {
       "id": "cl032",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a queen looking toward a distant stone tomb from a palace terrace, overcast soft afternoon light",
+        "prompt": "Close shot of a queen studying a blank note while three small travel bundles sit beside her, window light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl032",
-          "text": "如果真被帶離埃及，她還能和安東尼埋在一起嗎？",
+          "text": "消息說，屋大維將經敘利亞返回，女王與孩子三天內會被送走。",
           "emotion": "自然說故事"
         }
       ]
@@ -695,14 +710,14 @@
       "id": "cl033",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a queen asking a Roman official beside an unlettered scroll, morning light",
+        "prompt": "Wide shot of a queen looking toward a distant stone tomb from a palace terrace, overcast daylight",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl033",
-          "text": "她向屋大維要求去安東尼墓前獻祭，這次獲准。",
+          "text": "如果真被帶離埃及，她還能和安東尼埋在一起嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -711,14 +726,14 @@
       "id": "cl034",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of an Egyptian queen approaching a stone tomb with attendants in the distance, muted soft afternoon light",
+        "prompt": "Medium shot of a queen asking a military official beside an unlettered scroll, morning light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl034",
-          "text": "她由人送到墓前，陪同的是那兩位侍女。",
+          "text": "她向屋大維要求去安東尼墓前獻祭，這次獲准。",
           "emotion": "自然說故事"
         }
       ]
@@ -727,14 +742,14 @@
       "id": "cl035",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of an Egyptian queen resting a hand on a plain tomb wall beside a garland, soft morning light",
+        "prompt": "Wide shot of an Egyptian queen approaching a stone tomb with attendants in the distance, muted soft afternoon light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl035",
-          "text": "傳記寫她在墓前訴說：不願被遠遠帶走，還想與安東尼合葬。",
+          "text": "她由人送到墓前，女伴陪在一旁。",
           "emotion": "自然說故事"
         }
       ]
@@ -743,14 +758,14 @@
       "id": "cl036",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a queen placing one plain garland before a stone tomb, soft morning light",
+        "prompt": "Close shot of an Egyptian ruler resting a hand on a plain tomb wall beside a garland, soft morning light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl036",
-          "text": "花環放在墓前，她吻別墓石；回到住處後，用餐之前她先做了什麼？",
+          "text": "傳記寫她在墓前訴說：不願被遠遠帶走，還想與安東尼合葬。",
           "emotion": "自然說故事"
         }
       ]
@@ -759,14 +774,14 @@
       "id": "cl037",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a queen's hand setting a simple garland on a plain stone tomb, soft afternoon light",
+        "prompt": "Medium shot of a queen placing one plain garland before a stone tomb, soft morning light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl037",
-          "text": "她替墓前擺上花環，親吻墓石。離開後，她立刻吩咐準備什麼？",
+          "text": "她擺上花環，親吻墓石；離開這裡後，用餐前先做了什麼？",
           "emotion": "自然說故事"
         }
       ]
@@ -775,14 +790,14 @@
       "id": "cl038",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a queen sitting beside a low meal table after bathing, soft indoor soft afternoon light",
+        "prompt": "Close shot of a queen reaching toward a plain ceramic water basin inside a quiet chamber, soft afternoon light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl038",
-          "text": "接下來是沐浴，然後用餐。這是普魯塔克把時間接上的順序。",
+          "text": "她回去後吩咐準備洗浴。",
           "emotion": "自然說故事"
         }
       ]
@@ -791,14 +806,14 @@
       "id": "cl039",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a country carrier approaching a guarded doorway with a small wicker basket, soft daylight",
+        "prompt": "Medium shot of a queen sitting beside a low meal table after bathing, soft indoor daylight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl039",
-          "text": "門外那個鄉人，這時提著一只小籃子走來。",
+          "text": "沐浴之後，她坐下用了一頓豐盛的飯；門外又有誰來？",
           "emotion": "自然說故事"
         }
       ]
@@ -807,14 +822,14 @@
       "id": "cl040",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a guard inspecting figs under leaves inside a wicker basket, pale morning light",
+        "prompt": "Medium shot of a country carrier approaching a guarded doorway with a small wicker basket, soft overcast light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl040",
-          "text": "衛兵攔住他。他撥開葉子，讓人看籃裡的無花果。",
+          "text": "門外那個鄉人，這時提著一只小籃子走來。",
           "emotion": "自然說故事"
         }
       ]
@@ -823,14 +838,14 @@
       "id": "cl041",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a helmeted sentinel smiling at figs offered from a basket, soft afternoon light",
+        "prompt": "Close shot of a guard inspecting figs under leaves inside a wicker basket, pale morning light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl041",
-          "text": "衛兵還稱讚果子又大又好，卻沒有拿走一顆。",
+          "text": "衛兵攔住他。他撥開葉子，讓人看籃裡的無花果。",
           "emotion": "自然說故事"
         }
       ]
@@ -839,14 +854,14 @@
       "id": "cl042",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a country carrier passing a wicker basket through a guarded stone doorway, soft daylight",
+        "prompt": "Close shot of a Roman guard smiling at figs offered from a basket, daylight",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl042",
-          "text": "籃子因此被放進去。衛兵留在門外，女王接下來做了什麼？",
+          "text": "衛兵還稱讚果子又大又好，卻沒有拿走一顆。",
           "emotion": "自然說故事"
         }
       ]
@@ -855,13 +870,29 @@
       "id": "cl043",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a queen sealing an unlettered parchment sheet at a low table, soft indoor light",
+        "prompt": "Medium shot of a country carrier passing a wicker basket through a guarded stone doorway, soft overcast light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl043",
+          "text": "籃子因此被放進去。衛兵留在門外，女王接下來做了什麼？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "cl044",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a queen sealing an unlettered parchment sheet at a low table, soft indoor light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cl044",
           "text": "用完餐，女王把一封寫好的信封起來，交人送給屋大維。",
           "emotion": "自然說故事"
         }
@@ -869,33 +900,17 @@
       "chapter": "密封信送出，門卻關上"
     },
     {
-      "id": "cl044",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a queen closing a stone chamber door while two female attendants wait nearby, soft light",
-        "camera": "drift right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl044",
-          "text": "信送走後，普魯塔克說她讓別人離開，只留伊拉斯和卡爾米翁。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "cl045",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a closed stone door seen from an empty passage, mild daylight",
+        "prompt": "Medium shot of a queen closing a stone chamber door while two female attendants wait nearby, soft light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl045",
-          "text": "門關了。傳記沒有一名留下來的活口，能說出接下來每一步。",
+          "text": "信送走後，普魯塔克說她讓別人離開，只留伊拉斯和卡爾米翁。",
           "emotion": "自然說故事"
         }
       ]
@@ -904,14 +919,14 @@
       "id": "cl046",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a victorious commander opening a sealed blank parchment beside a lamp, soft afternoon light",
+        "prompt": "Close shot of a closed stone door seen from an empty passage, pale morning light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl046",
-          "text": "屋大維拆信，讀見她請求與安東尼同葬，立刻猜到出事。",
+          "text": "門關了。傳記沒有一名留下來的活口，能說出接下來每一步。",
           "emotion": "自然說故事"
         }
       ]
@@ -920,14 +935,14 @@
       "id": "cl047",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a cloaked courier hurrying toward a guarded stone doorway, soft overcast light",
+        "prompt": "Close shot of a victorious commander opening a sealed blank parchment beside a lamp, soft afternoon light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl047",
-          "text": "他先像要親自過去，隨即改派使者；衛兵還沒發覺異狀，能來得及救她嗎？",
+          "text": "屋大維拆信，讀見她請求與安東尼同葬，立刻猜到出事。",
           "emotion": "自然說故事"
         }
       ]
@@ -936,14 +951,14 @@
       "id": "cl048",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Roman messenger halted at the threshold of a chamber with a draped queen on a couch, dim light",
+        "prompt": "Medium shot of a Roman messenger hurrying toward a guarded stone doorway, soft daylight",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl048",
-          "text": "門一開，女王已經死去，身上穿著王室裝束。",
+          "text": "他先像要親自過去，隨即改派使者；衛兵還沒發覺異狀，能來得及救她嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -952,14 +967,14 @@
       "id": "cl049",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a weary female attendant adjusting a small diadem beside a draped couch, lamplight",
+        "prompt": "Medium shot of a cloaked courier halted at the threshold of a chamber with a draped queen on a couch, dim light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl049",
-          "text": "伊拉斯在床腳奄奄一息，卡爾米翁還扶著女王頭上的冠飾。",
+          "text": "門一開，女王已經死去，身上穿著王室裝束。",
           "emotion": "自然說故事"
         }
       ]
@@ -968,14 +983,14 @@
       "id": "cl050",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a faltering attendant facing a startled cloaked courier near a couch, soft lamplight",
+        "prompt": "Close shot of a weary female attendant adjusting a small diadem beside a draped couch, lamplight",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl050",
-          "text": "普魯塔克還寫卡爾米翁回答來人一句話，接著倒下。",
+          "text": "伊拉斯在床腳奄奄一息，卡爾米翁還扶著女王頭上的冠飾。",
           "emotion": "自然說故事"
         }
       ]
@@ -984,14 +999,14 @@
       "id": "cl051",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of an ancient reader pausing over a blank parchment page, soft desk light",
+        "prompt": "Medium shot of a faltering attendant facing a startled Roman messenger near a couch, soft lamplight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl051",
-          "text": "而她與另一位侍女很快也死了；一個也沒能留下來說清死前的動作。",
+          "text": "普魯塔克還寫卡爾米翁回答來人一句話，接著倒下。",
           "emotion": "自然說故事"
         }
       ]
@@ -1007,7 +1022,7 @@
       "lines": [
         {
           "id": "cl052",
-          "text": "使者來得太晚。屋大維後來准她與安東尼合葬；她究竟怎麼死？",
+          "text": "使者來得太晚，屋大維後來准她與安東尼合葬。",
           "emotion": "自然說故事"
         }
       ]
@@ -1016,14 +1031,14 @@
       "id": "cl053",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a historian comparing two unlettered scrolls beside a sealed basket, soft desk light",
+        "prompt": "Medium shot of a military official giving instructions beside two draped burial biers, soft overcast light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl053",
-          "text": "沒有活著的人在這些文本裡說：我看見女王被蛇咬。那死因從哪推？",
+          "text": "屋大維也下令安葬兩位女伴。",
           "emotion": "自然說故事"
         }
       ]
@@ -1032,47 +1047,47 @@
       "id": "cl054",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of an ancient writer drawing a tiny snake motif beside a blank parchment and fig basket, lamplight",
+        "prompt": "Close shot of a historian comparing two unlettered scrolls beside a sealed basket, soft desk light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl054",
-          "text": "普魯塔克接著列版本。第一種說法，毒蛇藏在無花果與葉子間。",
+          "text": "使者只能看見結果。那個曾被衛兵放行的籃子，究竟被人怎麼解釋？",
           "emotion": "自然說故事"
         }
-      ],
-      "chapter": "無花果籃被說成藏了蛇"
+      ]
     },
     {
       "id": "cl055",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an ancient storyteller pointing at an unlettered sketch of a basket and raised arm, warm desk light",
+        "prompt": "Close shot of an ancient writer drawing a tiny snake motif beside a blank parchment and fig basket, lamplight",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl055",
-          "text": "這一版還說，她拿開果子，看見蛇，伸出手臂讓它咬。",
+          "text": "開頭那籃無花果，有人說當時的葉子下面還藏了一條毒蛇。",
           "emotion": "自然說故事"
         }
-      ]
+      ],
+      "chapter": "無花果籃被說成藏了蛇"
     },
     {
       "id": "cl056",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of an ancient reader weighing a plain basket against a blank scroll on a table, soft overcast light",
+        "prompt": "Medium shot of an ancient storyteller pointing at an unlettered sketch of a basket and raised arm, warm desk light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl056",
-          "text": "但是傳記用的是「有人說」，不是「衛兵親眼看見」。",
+          "text": "這一版還說，她拿開果子，看見蛇，伸出手臂讓它咬。",
           "emotion": "自然說故事"
         }
       ]
@@ -1081,14 +1096,14 @@
       "id": "cl057",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a historian arranging a plain small vessel and spindle beside a blank parchment, soft lamplight",
+        "prompt": "Close shot of an ancient reader weighing a plain basket against a blank scroll on a table, soft daylight",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl057",
-          "text": "第二種說法，蛇原本在器皿裡，她用金色的紡錘去碰牠。",
+          "text": "但是傳記用的是「有人說」，不是「衛兵親眼看見」。",
           "emotion": "自然說故事"
         }
       ]
@@ -1097,14 +1112,14 @@
       "id": "cl058",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a thoughtful ancient biographer setting down a writing reed over a blank scroll, dawn light",
+        "prompt": "Close shot of a historian arranging a plain small vessel and spindle beside a blank parchment, soft lamplight",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl058",
-          "text": "同一位作者沒有選出勝者，而是寫下：真正發生什麼，沒人知道。",
+          "text": "另有人說，蛇原本放在器皿裡，她拿金色的紡錘去碰牠。",
           "emotion": "自然說故事"
         }
       ]
@@ -1113,14 +1128,14 @@
       "id": "cl059",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of an ancient writer examining a plain hairpin beside a blank scroll, neutral lamplight",
+        "prompt": "Medium shot of a thoughtful ancient biographer setting down a writing reed over a blank scroll, dawn light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl059",
-          "text": "還有另一條路：她也許把毒物藏在盤髮的中空髮簪裡。",
+          "text": "同一位作者沒有選出勝者，而是寫下：真正發生什麼，沒人知道。",
           "emotion": "自然說故事"
         }
       ]
@@ -1129,14 +1144,14 @@
       "id": "cl060",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a Roman messenger looking at a covered couch from a respectful distance, dim light",
+        "prompt": "Close shot of an ancient writer examining a plain hairpin beside a blank scroll, neutral lamplight",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl060",
-          "text": "這個版本也沒有留下確定的當場目擊人。那屍身能告訴我們什麼？",
+          "text": "還有另一條路：她也許把毒物藏在盤髮的中空髮簪裡。",
           "emotion": "自然說故事"
         }
       ]
@@ -1145,14 +1160,14 @@
       "id": "cl061",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an ancient investigator scanning a plain stone chamber beside a covered couch, soft light",
+        "prompt": "Close shot of a cloaked courier looking at a covered couch from a respectful distance, dim light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl061",
-          "text": "普魯塔克說，沒有明顯的毒物症狀，也沒在陵墓裡找到那條蛇。",
+          "text": "蛇之外又多了髮簪；女王身上的痕跡，能讓我們分清嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -1161,14 +1176,14 @@
       "id": "cl062",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of an ancient writer sketching a faint winding line on blank parchment beside sand, soft afternoon light",
+        "prompt": "Medium shot of an ancient investigator scanning a plain stone chamber beside a covered couch, soft light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl062",
-          "text": "有人說在朝海那側的沙地看見像蛇爬過的痕跡，注意仍是「有人說」。",
+          "text": "普魯塔克說，沒有明顯的毒物症狀，也沒人在陵墓裡見到那條蛇。",
           "emotion": "自然說故事"
         }
       ]
@@ -1177,14 +1192,14 @@
       "id": "cl063",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of an ancient scholar pointing at two tiny dots drawn on blank parchment, desk light",
+        "prompt": "Close shot of an ancient writer sketching a faint winding line on blank parchment beside sand, daylight",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl063",
-          "text": "另有人說，女王手臂有兩個不明顯的針點；傳記並未把它當定案。",
+          "text": "有人說在朝海那側的沙地看見像蛇爬過的痕跡，注意仍是「有人說」。",
           "emotion": "自然說故事"
         }
       ]
@@ -1193,14 +1208,14 @@
       "id": "cl064",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a reader comparing a plain small vessel and hairpin on a table, soft overcast light",
+        "prompt": "Close shot of an ancient scholar pointing at two tiny dots drawn on blank parchment, desk light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl064",
-          "text": "沒找到蛇，不足以證明絕無蛇；有針點，也不足以證明一定是蛇。",
+          "text": "另有人說，女王手臂有兩個不明顯的針點；傳記並未把它當定案。",
           "emotion": "自然說故事"
         }
       ]
@@ -1209,14 +1224,14 @@
       "id": "cl065",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a military official inspecting a small snake motif on a parade statue, grey morning light",
+        "prompt": "Medium shot of a reader comparing a plain small vessel and hairpin on a table, soft overcast light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl065",
-          "text": "說法分成蛇與髮簪；後來的狄奧，又能判斷哪一個是真的嗎？",
+          "text": "沙地上的痕跡與手臂針點都是轉述；即使真有，也不能單靠它們判定致死工具。",
           "emotion": "自然說故事"
         }
       ]
@@ -1225,47 +1240,47 @@
       "id": "cl066",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a later Roman historian arranging blank scrolls beside a small treasure chest, soft desk light",
+        "prompt": "Medium shot of a Roman official inspecting a small snake motif on a parade statue, grey daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl066",
-          "text": "狄奧較晚寫的故事，也把財寶、看守、密封信接到最後的死亡。",
+          "text": "說法分成蛇與髮簪；後來的狄奧，又能判斷哪一個是真的嗎？",
           "emotion": "自然說故事"
         }
-      ],
-      "chapter": "狄奧寫女王被帶回王宮"
+      ]
     },
     {
       "id": "cl067",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of an Egyptian queen entering a palace corridor watched by distant attendants, grey morning light",
+        "prompt": "Medium shot of a later Roman historian arranging blank scrolls beside a small treasure chest, soft desk light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl067",
-          "text": "他的版本裡，女王被從陵墓帶到王宮，屋大維還保留了她慣用的侍從。",
+          "text": "狄奧也答不出死法；但在他的記述裡，屋大維先讓女王離開陵墓。",
           "emotion": "自然說故事"
         }
-      ]
+      ],
+      "chapter": "狄奧寫女王被帶回王宮"
     },
     {
       "id": "cl068",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a queen arranging plain travel ornaments on a low table while one guard watches, soft afternoon light",
+        "prompt": "Wide shot of an Egyptian queen entering a palace corridor watched by distant attendants, grey morning light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl068",
-          "text": "他寫女王被嚴密照看，後來裝作願意跟著走，讓看守放鬆警覺。",
+          "text": "女王被安置到王宮，身邊慣用的侍從也留了下來。",
           "emotion": "自然說故事"
         }
       ]
@@ -1274,14 +1289,14 @@
       "id": "cl069",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a Roman attendant receiving a sealed blank letter at a chamber doorway, soft daylight",
+        "prompt": "Medium shot of a queen arranging plain travel ornaments on a low table while one guard watches, daylight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl069",
-          "text": "密封信又一次出現，託人轉交；送信的人離開後，狄奧能說出死法嗎？",
+          "text": "狄奧寫她把珍貴飾物整理成禮物，還說自己願意搭船。",
           "emotion": "自然說故事"
         }
       ]
@@ -1290,14 +1305,14 @@
       "id": "cl070",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a historian reading a blank scroll beside a folded royal robe, soft lamplight",
+        "prompt": "Medium shot of a palace attendant relaxing his watch beside a closed private chamber door, soft afternoon light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl070",
-          "text": "狄奧寫她穿上王室衣飾後死去，卻仍不知道具體用什麼方法。",
+          "text": "看守見她似乎已服從，警覺漸漸鬆了；她準備把信交給誰？",
           "emotion": "自然說故事"
         }
       ]
@@ -1306,14 +1321,14 @@
       "id": "cl071",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a later Roman historian lowering a writing reed over a blank scroll, desk light",
+        "prompt": "Close shot of a palace attendant receiving a sealed blank letter at a chamber doorway, soft overcast light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl071",
-          "text": "他明白寫著：沒有任何人清楚知道她如何喪命。",
+          "text": "狄奧寫女王把密封信交給看守者託他轉送；人一離開，她做了什麼？",
           "emotion": "自然說故事"
         }
       ]
@@ -1322,14 +1337,14 @@
       "id": "cl072",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a historian comparing a plain water jar with a small bunch of flowers, soft light",
+        "prompt": "Medium shot of a historian reading a blank scroll beside a folded royal robe, soft lamplight",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl072",
-          "text": "狄奧也列毒蛇，但他聽來的容器是水罐，或者花束。",
+          "text": "她穿上王室衣飾，就在看守鬆懈的時候死去。",
           "emotion": "自然說故事"
         }
       ]
@@ -1338,14 +1353,14 @@
       "id": "cl073",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of an ancient writer placing a plain hair needle beside a blank parchment, neutral light",
+        "prompt": "Close shot of a later Roman historian lowering a writing reed over a blank scroll, desk light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl073",
-          "text": "另一個版本，髮針上抹了毒，碰到血才發作。",
+          "text": "狄奧說遺體手臂只有淺痕；光看這個，能判斷是蛇牙還是髮針嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -1354,14 +1369,14 @@
       "id": "cl074",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a scholar comparing two different plain hairpins beside separate blank scrolls, soft lamplight",
+        "prompt": "Close shot of a historian comparing a plain water jar with a small bunch of flowers, soft light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl074",
-          "text": "這與普魯塔克的中空髮簪也不完全相同；兩位作者都在報告傳說。",
+          "text": "他沒有作出那個判斷，只說有人把蛇藏在水罐或花束裡。",
           "emotion": "自然說故事"
         }
       ]
@@ -1370,14 +1385,14 @@
       "id": "cl075",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a scholar drawing tiny shallow marks on blank parchment, soft desk light",
+        "prompt": "Close shot of an ancient writer placing a plain hair needle beside a blank parchment, neutral light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl075",
-          "text": "狄奧說遺體手臂只見淺淺的痕；這能單獨指認是哪種工具嗎？",
+          "text": "還有人說，髮針上抹了毒，碰到血才發作。",
           "emotion": "自然說故事"
         }
       ]
@@ -1386,14 +1401,14 @@
       "id": "cl076",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a ancient reader setting aside several blank scrolls before a closed chamber door, soft overcast light",
+        "prompt": "Medium shot of a scholar comparing two different plain hairpins beside separate blank scrolls, soft lamplight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl076",
-          "text": "狄奧寫屋大維聽訊後，還試著讓人救治女王；另一位作者怎麼記這件事？",
+          "text": "普魯塔克說中空髮簪，狄奧說沾毒髮針；連那件小工具也不完全相同。",
           "emotion": "自然說故事"
         }
       ]
@@ -1402,31 +1417,30 @@
       "id": "cl077",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a ancient biographer reading a blank scroll beside an empty parade cart, soft overcast light",
+        "prompt": "Close shot of a historian drawing tiny marks on blank parchment while a physician's bag rests nearby, soft desk light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl077",
-          "text": "蘇埃托尼烏斯也寫屋大維派人施救；他的記載多留了哪個關鍵字？",
+          "text": "屋大維見到遺體，又命人試著救她；這一步能證明死因嗎？",
           "emotion": "自然說故事"
         }
-      ],
-      "chapter": "屋大維派人救治，凱旋隊伍帶著蛇"
+      ]
     },
     {
       "id": "cl078",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Roman official summoning a healer toward a guarded doorway, daylight",
+        "prompt": "Medium shot of an ancient reader setting aside several blank scrolls before a closed chamber door, soft daylight",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl078",
-          "text": "當女王「被認為」遭蛇咬而死，屋大維請了普西利人來試著除毒。",
+          "text": "狄奧沒有用救治給出死因；另一位作者形容這一步時，用了什麼語氣？",
           "emotion": "自然說故事"
         }
       ]
@@ -1435,30 +1449,31 @@
       "id": "cl079",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an ancient physician carrying a small medicine satchel toward a chamber doorway, soft overcast light",
+        "prompt": "Medium shot of a military official summoning a healer toward a guarded doorway, soft afternoon light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl079",
-          "text": "狄奧也記屋大維派人施救；這種處置，能替屍身的淺痕下判斷嗎？",
+          "text": "蘇埃托尼烏斯寫，女王「被認為」遭蛇咬，屋大維於是找普西利人試著吸毒。",
           "emotion": "自然說故事"
         }
-      ]
+      ],
+      "chapter": "屋大維派人救治，凱旋隊伍帶著蛇"
     },
     {
       "id": "cl080",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a victory procession platform carrying a queen figure with a small snake motif, overcast soft afternoon light",
+        "prompt": "Medium shot of a procession attendant checking an empty display platform on a stone avenue, soft overcast light",
         "camera": "track left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl080",
-          "text": "普魯塔克又記，屋大維後來的凱旋隊伍展示一尊帶蛇的女王形象。",
+          "text": "屋大維沒能把她活著帶進凱旋式，卻有另一樣東西跟著隊伍出場。",
           "emotion": "自然說故事"
         }
       ]
@@ -1467,14 +1482,14 @@
       "id": "cl081",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a parade statue's small snake motif while onlookers stand blurred behind, daylight",
+        "prompt": "Wide shot of a Roman parade platform carrying a queen figure with a small snake motif, overcast daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl081",
-          "text": "那尊像能證明一件事：蛇的版本已經成為公開的勝利圖像。",
+          "text": "普魯塔克又記，屋大維後來的凱旋隊伍展示一尊帶蛇的女王形象。",
           "emotion": "自然說故事"
         }
       ]
@@ -1483,14 +1498,14 @@
       "id": "cl082",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an ancient reader studying a small parade statue replica beside a blank scroll, desk light",
+        "prompt": "Close shot of a parade statue's small snake motif while onlookers stand blurred behind, soft afternoon light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl082",
-          "text": "雕出蛇，不等於看見蛇咬。那三位古代作者，誰敢說自己目擊這一刻？",
+          "text": "那尊像能證明一件事：蛇的版本已經成為公開的勝利圖像。",
           "emotion": "自然說故事"
         }
       ]
@@ -1499,14 +1514,14 @@
       "id": "cl083",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a historian laying three unlettered scrolls side by side on a wooden table, soft light",
+        "prompt": "Medium shot of an ancient reader studying a small parade statue replica beside a blank scroll, desk light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl083",
-          "text": "所以題目問「一定嗎」：現存這三位作者，沒有一位給出確證。",
+          "text": "雕出蛇，不等於看見蛇咬。那三位古代作者，誰敢說自己目擊這一刻？",
           "emotion": "自然說故事"
         }
       ]
@@ -1515,20 +1530,36 @@
       "id": "cl084",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a reader looking between a wicker fig basket and a miniature parade statue, soft daylight",
+        "prompt": "Medium shot of a historian laying three unlettered scrolls side by side on a wooden table, soft light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cl084",
-          "text": "你原先最信哪一個畫面：無花果籃，還是凱旋隊伍裡那條蛇？",
+          "text": "所以題目問「一定嗎」：現存這三位作者，沒有一位給出確證。",
           "emotion": "自然說故事"
         }
       ]
     },
     {
       "id": "cl085",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a reader looking between a wicker fig basket and a miniature parade statue, soft overcast light",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cl085",
+          "text": "你原先最信哪一個畫面：無花果籃，還是凱旋隊伍裡那條蛇？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "cl086",
       "template": "outro",
       "data": {
         "title": "存檔",
@@ -1539,7 +1570,7 @@
       },
       "lines": [
         {
-          "id": "cl085",
+          "id": "cl086",
           "text": "想繼續沿著古代記錄查證歷史傳說，訂閱奇聞檔案局。"
         }
       ]

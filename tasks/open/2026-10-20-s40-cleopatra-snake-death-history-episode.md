@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-s40-cleopatra-snake-death-history-episode
 title: S40 Cleopatra snake death history episode
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-s40-r2
+claimed_at: 2026-10-20T00:28:52Z
 created_at: 2026-10-20T00:14:38Z
 completed_at:
 branch:
@@ -31,12 +31,13 @@ Make a source-bounded Curio S40 about whether Cleopatra VII definitely died by a
 
 - [x] Pin full Plutarch, Suetonius and Dio translations with SHA-256 and passage scope in `research.md`.
 - [x] Write `brief.md`, `video.json`, generated `script.md`, `claims.md`, and `verify-1.md` under `docs/videos/curio-s40`.
-- [ ] Resolve fresh blind and source reviewer findings, then re-run all gates for changed hash.
+- [x] Resolve R1 blind (8/13) and source/prompt reviewer findings in R2, then regenerate and re-run local gates.
+- [ ] Pass fresh R2 script-only blind and source/prompt audit on exact R2 hash.
 
 ## How to verify
 
-`VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s40 --json` must report 0 errors/0 warnings. Run `node tools/video/cli.mjs narrative --slug curio-s40` for a fresh script-only reviewer, then record its 13 answers formally. Run `npm run test:docs-videos` and `npm run check:tasks` before push. The script hash and known limits are in `docs/videos/curio-s40/verify-1.md`.
+`VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s40 --json` reports 0 errors/0 warnings on R2. Run `node tools/video/cli.mjs narrative --slug curio-s40` for a fresh script-only reviewer, then record its 13 answers formally. `npm run test:docs-videos` and `npm run check:tasks` passed; R2 hashes and known limits are in `docs/videos/curio-s40/verify-2.md`.
 
 ## Notes
 
-Preproduction only. `video.json` SHA-256 `0ba27dd49a63d8f8ed2abc6638bf8f9b772ca60470c460dd87a6aef6d70d9475` at draft: 85 spoken lines, 84 still shots + outro, estimated story body 8:41 and full length about 9:24, 20 loops, lint 0/0. Exact video hash must be refreshed if any later edit. Sources and line-level qualification in `research.md`; do not convert `what really took place is known to no one` to a no-snake claim. No paid media. Fresh independent blind/source audit requested from coordinator.
+R1 independent script-only blind 8/13 and source/prompt audit are preserved as `verify-r1-blind.md` and `verify-r1-source-visual.md`; R2 repair in `verify-2.md`. R2 `video.json` SHA-256 `d0b200ac4027daa5c578595d40a79b3c6cf9f0af36feb47db13bd7dfeba7433f`: 86 spoken lines, 85 still shots + outro, estimated story body 8:35 and full length about 9:19, 23 loops, lint 0/0. Exact hash must be refreshed after any later edit. Sources and line-level qualification in `research.md`; do not convert `what really took place is known to no one` to a no-snake claim. No paid media. Fresh independent R2 blind/source audit requested from coordinator.
