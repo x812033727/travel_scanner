@@ -57,25 +57,24 @@ const cardRules = new Map([
   ["x170513", { title: "公司整體營收", stats: [{ value: "+21%", label: "FY2013 Q1 對上年同季；US$345.8m" }], source: "S4/S5｜FY2013 Q1" }],
   ["x170520", { title: "公司整體毛利率", stats: [{ value: "55.0% → 49.4%", label: "上年同季 → FY2013 Q1；不能全歸撤貨" }], source: "S5｜FY2013 Q1" }],
   ["x170603", { title: "公司全年營收", stats: [{ value: "US$1.591bn", label: "FY2013；對 FY2012 +16%，兩年週數不同" }], source: "S6a｜FY2013" }],
-  ["x170605", { title: "可比門市銷售", stats: [{ value: "+2%", label: "FY2013；GAAP，同店口徑；上年 +16%" }], source: "S6a｜FY2013" }],
-  ["x170611", { title: "公司全年毛利率", stats: [{ value: "55.7% → 52.8%", label: "FY2012 → FY2013；總降 290 基點，非全數撤貨" }], source: "S6a｜FY2013" }],
+  ["x170610", { title: "公司全年毛利率", stats: [{ value: "55.7% → 52.8%", label: "FY2012 → FY2013；非全數撤貨" }], source: "S6a｜FY2013" }],
 ]);
 for (const id of cardRules.keys()) if (!allRows.some(row => row.id === id)) throw new Error(`Missing card anchor: ${id}`);
 const shortAnchors = new Set([
-  "x170101", "x170301", "x170405", "x170407", "x170409", "x170410", "x170416", "x170425",
+  "x170101", "x170301", "x170405", "x170408", "x170409", "x170410", "x170416", "x170425",
   "x170305", "x170310", "x170503", "x170504", "x170509", "x170510", "x170512", "x170519",
 ]);
 const single = new Set([...shortAnchors, ...cardRules.keys(), "x170521", ...chapters.map(chapter => chapter[0].id), ...chapters.map(chapter => chapter.at(-1).id)]);
-const cameras = ["Medium shot, slow push in", "Close-up, slow pull out", "Wide shot, pan left", "Overhead shot, pan right", "Medium close-up, still", "Low-angle shot, tilt up"];
-const locations = ["an unbranded apparel store", "a plain fabric and sewing workshop", "an anonymous back-room stock area", "a simple quality inspection table", "an unbranded apparel store", "a quiet accounting desk beside a garment rack"];
+const cameras = ["Medium shot, gentle push in", "Close-up, slow pull out", "Wide shot, pan left", "Overhead shot, pan right", "Medium close-up, still", "Low-angle shot, tilt up"];
+const locations = ["an unbranded apparel store", "a plain fabric and sewing workshop", "an anonymous back-room stock area", "a simple quality inspection table", "a simple store office beside a display wall", "a quiet accounting desk next to an unmarked hanger"];
 const lights = ["soft window light", "diffuse morning light", "soft overhead light", "muted daylight", "gentle lamp light", "soft evening light"];
 const safeguards = [
-  "Blank surfaces; no corporate insignia or lettering.",
-  "Plain fabric and props; no logos or real-person likeness.",
+  "Unlettered surfaces; no corporate insignia or lettering.",
+  "Plain material and props; no logos or real-person likeness.",
   "Unmarked apparel; no labels, words, or numbers.",
   "Fictional scene; omit trademarks and recognizable product design.",
   "Anonymous setting; no readable signage or brand colors.",
-  "All paperwork blank; exclude actual faces and marks.",
+  "All paperwork without writing; exclude actual faces and marks.",
 ];
 const toLine = row => {
   const line = { id: row.id, text: row.text, pause_after_ms: 0, emotion: row.text.endsWith("？") ? "台灣自然國語說書；問句留半拍" : "台灣自然國語說書；具體、平穩、不要把估計唸成實績" };
@@ -100,8 +99,9 @@ for (const [ci, chapter] of chapters.entries()) {
       scene = { id: sceneId, template: "stats", data: { ...cardRules.get(row.id), visual_note: "Typeset the exact figures in postproduction over a neutral silhouette of generic black athletic pants." }, lines: selected.map(toLine) };
     } else {
       const i = shotCount++;
-      const portrait = shortAnchors.has(row.id) ? "Hands and garment stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop." : "";
-      const prompt = `${cameras[i % cameras.length]} at ${locations[ci]}; ${row.cue}; ${lights[i % lights.length]}. ${portrait} ${safeguards[i % safeguards.length]}`;
+      const portrait = shortAnchors.has(row.id) ? "Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop." : "";
+      const variedCue = !shortAnchors.has(row.id) && i % 3 === 0 ? row.cue.replace(/\bpants\b/giu, "trousers").replace(/\bpant\b/giu, "trouser") : row.cue;
+      const prompt = `${cameras[i % cameras.length]} at ${locations[ci]}; ${variedCue}; ${lights[i % lights.length]}. ${portrait} ${safeguards[i % safeguards.length]}`;
       scene = { id: sceneId, template: "shot", data: { prompt, camera: cameras[i % cameras.length], visual: "still" }, lines: selected.map(toLine) };
     }
     if (si === 1) scene.chapter = titles[ci];
@@ -114,18 +114,19 @@ const loops = [
   { setup: "x170104", payoff: "x170408", what: "四月的檢驗檢討找到哪個缺口" },
   { setup: "x170105", payoff: "x170510", what: "空衣架何時補回" },
   { setup: "x170106", payoff: "x170506", what: "撤貨存貨寫入第一季哪一欄" },
-  { setup: "x170107", payoff: "x170513", what: "撤貨後總營收竟然仍成長" },
   { setup: "x170207", payoff: "x170410", what: "布樣與成衣差在哪" },
   { setup: "x170217", payoff: "x170303", what: "沿用多年的規格在店裡遇到什麼意外" },
   { setup: "x170224", payoff: "x170301", what: "涉事批次何時開始販售" },
+  { setup: "x170304", payoff: "x170306", what: "店外哪些銷售通路也要撤貨" },
   { setup: "x170308", payoff: "x170314", what: "倉庫及途中的受影響貨是否也在範圍" },
-  { setup: "x170321", payoff: "x170410", what: "調查找到哪些共同作用的因素" },
-  { setup: "x170407", payoff: "x170408", what: "原檢驗漏掉的布料變數" },
-  { setup: "x170323", payoff: "x170410", what: "透度由哪些因素交疊形成" },
+  { setup: "x170321", payoff: "x170401", what: "調查首個反常結論" },
+  { setup: "x170404", payoff: "x170408", what: "原檢驗漏掉的布料變數" },
   { setup: "x170428", payoff: "x170510", what: "多久才能重新上架" },
   { setup: "x170504", payoff: "x170505", what: "除了少賣預測還有哪筆帳" },
   { setup: "x170512", payoff: "x170517", what: "總營收成長為何能蓋住單品空缺" },
   { setup: "x170524", payoff: "x170603", what: "整個財年的公司營收如何變化" },
+  { setup: "x170606", payoff: "x170607", what: "年度公告是否有黑褲單獨少賣實績" },
+  { setup: "x170609", payoff: "x170612", what: "全年毛利是否能拆出黑褲份額" },
 ];
 const order = new Map(allRows.map((row, i) => [row.id, i]));
 for (const loop of loops) if (!(order.has(loop.setup) && order.has(loop.payoff) && order.get(loop.setup) < order.get(loop.payoff))) throw new Error(`Unpaid loop: ${JSON.stringify(loop)}`);
@@ -141,8 +142,8 @@ const description = [
   "主片、兩支 Shorts 與播放清單的真實網址待實際上傳後回填。",
 ].join("\n");
 const video = {
-  schema_version: 1, slug, format: "drama", category: "explainer", narration_locale: "zh-TW", target_minutes: [8, 12],
-  voice: { provider: "gemini", name: "Sulafat", style: "標準國語、台灣自然口音，平穩具體說書；目標每分鐘約二百八十到三百字，自然停頓。", performance: "依序看同一件示意黑褲的布樣、成衣、撤貨箱與成本帳；『可能符合』要保留可能，預估和入帳分開讀。TTS 後量實質正文至少八分鐘，不足須增補有來源的新進展。" },
+  schema_version: 1, slug, format: "drama", category: "explainer", narration_locale: "zh-TW", target_minutes: [8, 10],
+  voice: { provider: "gemini", name: "Sulafat", style: "標準國語、台灣自然口音，平穩具體說書；目標每分鐘約三百二十到三百三十個口語單位，自然停頓且不硬催速度。", performance: "依序看同一件示意黑褲的布樣、成衣、撤貨箱與成本帳；『可能符合』要保留可能，預估和入帳分開讀。TTS 後量實質正文至少八分鐘，不足須增補有來源的新進展。" },
   subtitles: { burn_in: false }, look: { preset: "cute-mystery" }, characters: [],
   series: { slug: "brand-stories-everyday-reversals-extra", episode: 17, chapter: 1 },
   music: { prompt: "light, curious, gently mysterious, no vocals", gain_db: -20, duck_db: -10 }, loops,
@@ -154,6 +155,6 @@ const bytes = JSON.stringify(video, null, 2) + "\n";
 writeFileSync(path.join(dir, "video.json"), bytes);
 const videoSha = createHash("sha256").update(bytes).digest("hex");
 writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 17, chapter: 1, planned_episodes: 20, title: "Lululemon：布料可能過測試，黑褲為何得下架", logline: "一條黑 Luon 褲從布料檢驗到成衣、撤貨與成本帳，追問公司如何查出透度原因，以及為何營收仍增時毛利受傷。", names: ["Lululemon", "Luon"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
-writeFileSync(path.join(dir, "script.md"), ["# X17 Lululemon｜台灣繁中逐句稿", "", `離線前製；\`video.json\` SHA-256：\`${videoSha}\`。本版正文紙面 ${bodyHanDigits} 個漢字／數字（${bodyChars} 可見字元），未經真實 TTS 測長，也未經 v2 獨立逐句或雙盲。第一章濃縮後接官方 5 秒片頭；最後三句後接官方 21 秒片尾。`, "", ...chapters.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${titles[ci]}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
+writeFileSync(path.join(dir, "script.md"), ["# X17 Lululemon｜台灣繁中逐句稿", "", `離線前製；\`video.json\` SHA-256：\`${videoSha}\`。本版正文紙面 ${bodyHanDigits} 個漢字／數字（${bodyChars} 可見字元），未經真實 TTS 測長，也未經 v3 獨立逐句或雙盲。第一章濃縮後接官方 5 秒片頭；最後三句後接官方 21 秒片尾。`, "", ...chapters.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${titles[ci]}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
 writeFileSync(path.join(dir, "line-source-matrix.md"), ["# X17 Lululemon｜逐句作者來源矩陣", "", `\`video.json\` SHA-256：\`${videoSha}\`。作者標記，**不是獨立來源審核 PASS**；原始網址、位元組、SHA 和口徑見 [source-matrix.md](source-matrix.md)。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |", ...allRows.map(row => `| \`${row.id}\` | ${row.text.replaceAll("|", "\\|")} | ${row.refs.length ? row.refs.join("、") : "敘事提問／依原件推理／CTA"} |`), ""].join("\n"));
 console.log(JSON.stringify({ video_sha256: videoSha, scenes: scenes.length, shots: shotCount, cards: cardRules.size, lines: allRows.length, opening_chars: chapters[0].map(row => row.text).join("").length, substantive_body_chars: bodyChars, substantive_body_han_digits: bodyHanDigits, loops: loops.length }, null, 2));
