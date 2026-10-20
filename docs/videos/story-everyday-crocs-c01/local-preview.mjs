@@ -1,12 +1,14 @@
-// Build an unreviewed body-only preview from the episode's real TTS, keyframes,
-// rendered cards and music. This deliberately does not run clips/assemble or write
-// their manifests, approvals, checks.json or final.mp4.
+// Build an unreviewed local preview from real TTS, keyframes, cards and music, with
+// visibly labelled concept bookends. This never counts as installed channel branding
+// or writes clips/assemble manifests, approvals, checks.json or final.mp4.
 import { existsSync, mkdirSync, renameSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { sha256File } from "../../../tools/video/core/approvals.mjs";
 import { audioEvidenceProblems } from "../../../tools/video/core/audio-evidence.mjs";
+import { shiftBrandingCues } from "../../../tools/video/core/branding.mjs";
+import { buildCues, checkCues, toSrt, toVtt } from "../../../tools/video/core/captions.mjs";
 import { lookHash, mixHash, resolveMusic } from "../../../tools/video/core/drama.mjs";
 import { isInside, readJson, resolveWorkdir, ROOT } from "../../../tools/video/core/paths.mjs";
 import { ARTIFACTS, keyframeProblems, lintProject, loadProject } from "../../../tools/video/core/state.mjs";
@@ -16,6 +18,7 @@ import { lastFrameArgs, layoutDrama, measureMixArgs, mixArgs, motionSegmentArgs,
 import { locateFfmpeg, runTool } from "../../../tools/video/assemble/ffmpeg.mjs";
 import { checkProbe, concatList, joinArgs, muxArgs, parseLoudnorm, probeArgs, segmentArgs, segmentKey } from "../../../tools/video/assemble/plan.mjs";
 import { themeHash } from "../../../tools/video/render/plan.mjs";
+import { INTRO_FRAMES, OUTRO_FRAMES, conceptBookendArgs, bookendedAudioArgs } from "./local-preview-bookends.mjs";
 
 const SLUG = "story-everyday-crocs-c01";
 const usage = "Usage: node docs/videos/story-everyday-crocs-c01/local-preview.mjs --workdir <media-base-outside-repo> [--dry-run] [--force]";
@@ -67,6 +70,9 @@ async function inspect(workdir) {
     try { layout = layoutDrama(doc, timeline, frames, null, keyframes); }
     catch (error) { issues.push(error.message); }
   }
+  if (timeline && layout && !layout.some((scene) => scene.start_frame === timeline.chapters?.[1]?.start_frame)) {
+    issues.push("the first chapter has no exact scene boundary for the concept intro");
+  }
   return { doc, timeline, frames, musicFile, layout, issues };
 }
 
@@ -110,8 +116,20 @@ async function encode({ doc, timeline, frames, musicFile, layout, workdir, previ
 
   const joinedList = path.join(previewDir, "segments.ffconcat");
   writeFileSync(joinedList, `ffconcat version 1.0\n${segments.map(ffconcatFile).join("\n")}\n`);
-  const video = path.join(previewDir, "body.mp4");
-  await runTool(ffmpeg, joinArgs(joinedList, video));
+  await runTool(ffmpeg, joinArgs(joinedList, path.join(previewDir, "body.mp4")));
+
+  const introAtFrame = timeline.chapters[1].start_frame;
+  const insertAt = layout.findIndex((scene) => scene.start_frame === introAtFrame);
+  if (insertAt < 1) throw new Error("the concept intro needs an opening chapter followed by a scene boundary");
+  const intro = path.join(previewDir, "concept-intro.mp4");
+  const outro = path.join(previewDir, "concept-outro.mp4");
+  await runTool(ffmpeg, conceptBookendArgs("intro", intro));
+  await runTool(ffmpeg, conceptBookendArgs("outro", outro));
+  const playback = [...segments.slice(0, insertAt), intro, ...segments.slice(insertAt), outro];
+  const playbackList = path.join(previewDir, "playback.ffconcat");
+  writeFileSync(playbackList, `ffconcat version 1.0\n${playback.map(ffconcatFile).join("\n")}\n`);
+  const video = path.join(previewDir, "playback.mp4");
+  await runTool(ffmpeg, joinArgs(playbackList, video));
 
   const audio = path.join(previewDir, "audio.m4a");
   const narration = fileAt(workdir, ARTIFACTS.narration);
@@ -119,14 +137,25 @@ async function encode({ doc, timeline, frames, musicFile, layout, workdir, previ
   const settings = resolveMusic(doc);
   const measured = parseLoudnorm((await runTool(ffmpeg, measureMixArgs(narration, musicFile, settings, seconds))).stderr);
   await runTool(ffmpeg, mixArgs(narration, musicFile, settings, seconds, measured, audio));
+  const playbackAudio = path.join(previewDir, "playback-audio.m4a");
+  await runTool(ffmpeg, bookendedAudioArgs(audio, musicFile, timeline.total_frames, introAtFrame, playbackAudio));
 
   const partial = path.join(previewDir, "preview.partial.mp4");
-  await runTool(ffmpeg, muxArgs(video, audio, partial));
+  await runTool(ffmpeg, muxArgs(video, playbackAudio, partial));
   const probe = JSON.parse((await runTool(ffprobe, probeArgs(partial))).stdout);
-  const problems = checkProbe(probe, { frames: timeline.total_frames });
+  const totalFrames = timeline.total_frames + INTRO_FRAMES + OUTRO_FRAMES;
+  const problems = checkProbe(probe, { frames: totalFrames });
   if (problems.length) throw new Error(`preview encoding check failed: ${problems.join("; ")}; inspect ${partial}`);
   renameSync(partial, output);
-  process.stdout.write(`${output}: ${timeline.total_frames} frames, ${seconds.toFixed(2)} s, 1920×1080/30 fps; body-only local preview, unreviewed\n`);
+  const texts = Object.fromEntries(doc.scenes.flatMap((scene) => (scene.lines ?? []).map((line) => [line.id, line.text])));
+  const { cues, missing } = buildCues(timeline, texts, "zh-TW");
+  if (missing.length) throw new Error(`preview captions are missing ${missing.length} line(s): ${missing.join(", ")}`);
+  const presentedCues = shiftBrandingCues(cues, { intro_frames: INTRO_FRAMES, intro_at_frame: introAtFrame });
+  writeFileSync(path.join(previewDir, "preview.zh-TW.srt"), toSrt(presentedCues));
+  writeFileSync(path.join(previewDir, "preview.zh-TW.vtt"), toVtt(presentedCues));
+  const captionProblems = checkCues(presentedCues, "zh-TW");
+  process.stdout.write(`${output}: ${totalFrames} frames, ${(totalFrames / 30).toFixed(2)} s, 1920×1080/30 fps; unreviewed local preview with concept bookends, not official branding\n`);
+  process.stdout.write(`preview zh-TW captions: ${presentedCues.length} cues, ${captionProblems.length} timing or reading-speed warnings\n`);
 }
 
 async function main() {
