@@ -1,17 +1,18 @@
 ---
 id: 2026-10-20-brand-story-spotify-x13
 title: Brand story Spotify X13
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: codex-x13
-claimed_at: 2026-10-20T20:01:33Z
+owner:
+claimed_at:
 created_at: 2026-10-20T20:01:30Z
 completed_at:
 branch: codex/brand-story-spotify-x13
 depends_on: []
 scope:
   - docs/videos/story-everyday-spotify-x13
+  - docs/videos/lexicon.json
   - tasks/open/2026-10-20-brand-story-spotify-x13.md
 ---
 
@@ -32,7 +33,7 @@ The owner asks to continue making missing-brand films, with a new PR then the ne
 - [x] Compare Spotify, Airbnb, Kellogg against 100-topic plan, C01–C20 and X01–X12; select Spotify on evidence depth, unique reversal and non-overlap.
 - [x] Fetch and hash SEC originals; write a six-chapter Treatment, exact source matrix and two independent Short concepts.
 - [x] Have another agent audit this Treatment against independently fetched originals; fix all material claims.
-- [ ] Draft line-sourced main script, visual plan, two Shorts and schemas; run content validation and two untouched blind reads of same frozen hashes. V3 drafts and reviews exist, but independent source audit HOLD and two fresh blind NO votes block production and PR.
+- [ ] Draft line-sourced main script, visual plan, two Shorts and schemas; run content validation and two untouched blind reads of same frozen hashes. **V4 draft and schemas are frozen for review, not approved:** new independent source audit and two new blind reads of v4 are still required; v3 HOLD/NO votes remain historical.
 - [ ] Produce and QA film and Shorts with official branding/audio/CC within budget, then submit PR and continue X14.
 
 ## How to verify
@@ -45,4 +46,6 @@ Read `docs/videos/story-everyday-spotify-x13/source-matrix.md`, redownload its n
 
 The last line-source PASS binds narration `e9753f33…`, Shorts `a732bb31…`, and visual plan `ad17d571…` in `reviews/script-source-audit-independent.md`; it is **stale** after the v3 revision and addition of S9. Earlier A/B/C narrative reports helped revision but their reviewers inherited upstream discussion, so they are editorial feedback, **not** the two required fresh blind receipts. D noticed the same context contamination and issued no verdict. See `reviews/review-provenance.md`. Actually isolated readers F1/F2 and F3/F4 all returned NO on earlier frozen hashes.
 
-V3 frozen SHA-256: source matrix `cb8d31b67262e2c03c946259f035a89531e8868cdb3b83937e0857a382fbba12`; Treatment `029f49e15055cc1aa67a295a6a72eaf0a909640bf0c7b85fa42719bafea54972`; narration `44b16a998bb5e35c1605d141d565705a0e4d124ba9d9dbd57b1d4bf6b9ada9b0`; Shorts `a732bb31101d5ec9facbecb015fcc70859c1025fe54c59b126f0fb12a65a27ef`; visual `f24711784fb4b9aae2df713061f9f483e63b2dfba4633a6d3a2bf1c2e2e99dac`. Independent audit `reviews/script-source-audit-v3-independent.md` fetched all nine SEC originals with matching hashes but returned **HOLD** for S9 July 25 availability being called same-quarter, unsupported age/visual details, and a chapter heading's quarterly-to-annual causal suggestion. Isolated F5 and F6 both returned **6/7, overall NO**, solely on a still chronological financial spine. Both found the number load, direct answer, six chapters, anonymous-card distinction and standalone Shorts acceptable on paper. Script remains unapproved; no JSON, paid calls, official media, upload or PR. `npm run test:docs-videos` passed 236/236 and `npm run check:tasks` exited 0 with existing repository warnings. V4 rewrite is deferred for a later wave; re-audit all modified hashes before production.
+V3 frozen SHA-256: source matrix `cb8d31b67262e2c03c946259f035a89531e8868cdb3b83937e0857a382fbba12`; Treatment `029f49e15055cc1aa67a295a6a72eaf0a909640bf0c7b85fa42719bafea54972`; narration `44b16a998bb5e35c1605d141d565705a0e4d124ba9d9dbd57b1d4bf6b9ada9b0`; Shorts `a732bb31101d5ec9facbecb015fcc70859c1025fe54c59b126f0fb12a65a27ef`; visual `f24711784fb4b9aae2df713061f9f483e63b2dfba4633a6d3a2bf1c2e2e99dac`. Independent audit `reviews/script-source-audit-v3-independent.md` fetched all nine SEC originals with matching hashes but returned **HOLD** for S9 July 25 availability being called same-quarter, unsupported age/visual details, and a chapter heading's quarterly-to-annual causal suggestion. Isolated F5 and F6 both returned **6/7, overall NO**, solely on a still chronological financial spine. Both found the number load, direct answer, six chapters, anonymous-card distinction and standalone Shorts acceptable on paper.
+
+**V4 author checkpoint, 2026-10-20:** independently re-fetched all nine SEC original HTML files; bytes and SHA match the source matrix (S3/S9 cached original files likewise hash-matched). Rewrote the long film around one testable question—can the two 2019 acquisitions be shown to have paid back?—with the same viewer-side evidence folder through all six chapters. Fixed all five v3 source audit blockers: S9 count belongs to the 2023-07-25 announcement time, not Q2 end; no invented old-content age, program schedule/count, 2019 video viewing path, or Q2-margin-to-full-year causality. Added deterministic `video.json`/two `shorts.json` schemas, 9:16 shot list, native-stat descriptions, source links, estimate and official-animation handoff. Frozen hashes and scope are in episode README: main `22e9a6f21ecddbce71066dd798843db7eec612030e53b69b2975198bf2dc9317`, Shorts `07950bc98a030f359d0137e733a531b45f8ba0ab8452864b01c7f6eb83562142`. Lint 0 errors/0 warnings; each Short validates; docs-video tests and tasks validation exit 0. These are author-side checks only. **Still HOLD:** new independent full-source audit and two blind reviews of these exact v4 hashes, then only if PASS can paid media begin. No media, official animation copies, upload, PR or real video links.
