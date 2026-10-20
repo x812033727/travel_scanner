@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-curio-s46-elizabeth-blackwell-medical-college
 title: Curio S46 Elizabeth Blackwell medical college episode preproduction
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex/root
-claimed_at: 2026-10-20T16:08:37Z
+owner:
+claimed_at:
 created_at: 2026-10-20T12:59:56Z
 completed_at:
 branch: codex/curio-s34-endurance-20261019
@@ -91,3 +91,5 @@ R4 書面畫面獨立覆核 [verify-8.md](../../docs/videos/curio-s46/verify-8.m
 2026-10-20 R14 [獨立來源／書面畫面](../../docs/videos/curio-s46/review/r14-source-independent.md) **PASS**、[兩位新讀者正式合併](../../docs/videos/curio-s46/review/r14-official-panel.md)各 13/13、[完整政策](../../docs/videos/curio-s46/review/r14-policy.md) PASS。真實 Sulafat [118/118 官方零旗標音檢](../../docs/videos/curio-s46/verify-26.md)，開場 43.93 秒、正文 10:42.17；本站精確劇本／音訊卡仍 `hand_pushed pending`，本機委派決定清楚註明不等於本站批准。依[整集 US$4.54 上限](../../docs/videos/curio-s46/review/r14-media-budget.md)只畫三景試圖，原生[0/3 KEEP](../../docs/videos/curio-s46/review/r14-art-pilot-native.md)，實花 US$0.0405；其餘 107 圖、配樂、分鏡與成片立即停。正按既定規則定點修三景書面提示詞，經獨立核對後在同上限內各重試一次；第二輪仍少於 2/3 即停止這條付費圖像方案。
 
 2026-10-20 R14 第二輪：[修訂三景提示詞的獨立史料／書面畫面差分](../../docs/videos/curio-s46/review/r14-pilot-prompt-independent.md) PASS 後，三景各重畫一次。[原生 1280×720 JPG 獨立驗收](../../docs/videos/curio-s46/review/r14-art-pilot-second-native.md)為 `bkw002` REJECT（多人物且無封好信封）、`bkw006` KEEP（講堂門外單人等候廣景）、`bkw007` REJECT（主要床頭卡懸浮，未接於床頭），即 **1/3 KEEP < 2/3**。兩輪帳本累計 **US$0.081**，依預定停損規則**停止此付費插圖方案**；其餘 107 圖、配樂、分鏡及成片仍不得續做或宣稱完成。本站精確劇本／音訊卡仍 pending；本任務維持 in-progress，後續需另議可行畫面路徑及網站關卡。
+
+2026-10-20 片尾 warning 定點判讀見 [R14 決定收據](../../docs/videos/curio-s46/review/r14-outro-warning-decision.md)：R10 有口播訂閱時政策 FAIL、R11 移除後 R14 政策 PASS，但未證實單句因果；現行口播 118／118 零旗標，畫面訂閱 CTA 與片尾兩推薦框／訂閱圈計畫仍在。**保留這一則 lint warning**，不為改警告而使劇本、政策和音訊精確綁定失效。插圖試畫停損 HOLD 不變。

@@ -33,6 +33,8 @@ The next Curio history long video needs a distinct, sourced story. S38 already f
 - [x] Independently recheck exact R5 source/brief/written-visual differential, ask two new script-only readers, and run one new full policy request only if those gates pass.
 - [ ] The site and production gates accept the revised script and completed video, including measured TTS body duration and final 16 second Studio end screen links.
 
+2026-10-20：片尾「無口頭訂閱」的唯一 lint warning 已於 [`r7-outro-warning-decision.md`](../../docs/videos/curio-s50/review/r7-outro-warning-decision.md)記錄。保留 R7 已通過政策／雙盲／119 句零旗標音訊的口播；畫面 CTA、說明欄頻道與史料連結已列，Studio 最後 16 秒可點元素仍待成片後安裝。此決定不把 1 warning 改稱 0 warnings。
+
 ## Steps
 
 - [x] Read series skills, compare S01–S49 topics, and keep S50 separate from S38/P17.
