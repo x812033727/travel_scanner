@@ -1,0 +1,1972 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s41",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，清楚、自然的說書語氣；讀古代史書時區分原文、後世追記與推論。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "qb005",
+      "payoff": "qb027",
+      "what": "史官哪類記錄被點名"
+    },
+    {
+      "setup": "qb006",
+      "payoff": "qb029",
+      "what": "《書》的持有者如何被區分"
+    },
+    {
+      "setup": "qb007",
+      "payoff": "qb065",
+      "what": "伏生找回了多少篇"
+    },
+    {
+      "setup": "qb015",
+      "payoff": "qb016",
+      "what": "李斯怎樣回應淳于越"
+    },
+    {
+      "setup": "qb024",
+      "payoff": "qb027",
+      "what": "焚書清單先指向哪份記錄"
+    },
+    {
+      "setup": "qb034",
+      "payoff": "qb035",
+      "what": "《書》與仿古爭論有何關聯"
+    },
+    {
+      "setup": "qb038",
+      "payoff": "qb039",
+      "what": "藏書者如何處置"
+    },
+    {
+      "setup": "qb041",
+      "payoff": "qb042",
+      "what": "命令給出多長期限"
+    },
+    {
+      "setup": "qb044",
+      "payoff": "qb045",
+      "what": "交出書後能否談詩書"
+    },
+    {
+      "setup": "qb050",
+      "payoff": "qb051",
+      "what": "嚴令末尾用哪四字開出例外"
+    },
+    {
+      "setup": "qb055",
+      "payoff": "qb056",
+      "what": "學法令改向誰學"
+    },
+    {
+      "setup": "qb058",
+      "payoff": "qb059",
+      "what": "被點名的《書》如何傳下"
+    },
+    {
+      "setup": "qb070",
+      "payoff": "qb071",
+      "what": "漢代藏書規矩有何變化"
+    },
+    {
+      "setup": "qb079",
+      "payoff": "qb080",
+      "what": "伏生所教如何傳下"
+    },
+    {
+      "setup": "qb083",
+      "payoff": "qb084",
+      "what": "漢代官府藏書是否完整"
+    },
+    {
+      "setup": "qb086",
+      "payoff": "qb089",
+      "what": "另一面牆的《書》比對後多出多少篇"
+    },
+    {
+      "setup": "qb091",
+      "payoff": "qb092",
+      "what": "新出古文能否立為官學"
+    },
+    {
+      "setup": "qb099",
+      "payoff": "qb100",
+      "what": "缺簡能記到什麼程度"
+    },
+    {
+      "setup": "qb103",
+      "payoff": "qb105",
+      "what": "異字脫字怎樣影響古代號令的理解"
+    },
+    {
+      "setup": "qb102",
+      "payoff": "qb103",
+      "what": "兩路傳本在缺簡之外有多少異字脫字"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "焚書令下，《書》怎麼留下來？｜奇聞檔案局",
+    "description": "《史記》記秦始皇三十四年，李斯提出嚴厲禁書：史官的非秦記、非博士官職掌的《詩》《書》與百家語，連同三十日期限與重刑。這集跟著被點名的《書》，讀伏生壁藏、漢代解除挾書律、孔子舊宅藏書與劉向校出的缺簡。傳世《史記》《漢書》是後來記錄，不能當秦令原件，也不能把所有缺篇算在焚書令上。畫面為 AI 卡通插圖，不是歷史現場。資料核對於 2026-10-20。\n\n來源：\n《史記》卷六〈秦始皇本紀〉固定轉錄：https://github.com/kanripo/KR2a0001/blob/1c19dc6fa970b1c530fced9e8e3697d19163c26c/KR2a0001_100.txt#L8827-L9199\n《史記》〈李斯列傳〉固定轉錄：https://github.com/kanripo/KR2a0001/blob/1c19dc6fa970b1c530fced9e8e3697d19163c26c/KR2a0001_500.txt#L19386-L19465\n《史記》〈儒林列傳〉伏生段：https://github.com/kanripo/KR2a0001/blob/1c19dc6fa970b1c530fced9e8e3697d19163c26c/KR2a0001_500.txt#L48655-L48708\n《漢書》卷二〈惠帝紀〉固定轉錄：https://github.com/kanripo/KR2a0007/blob/683113d4baf6febecaf2ccb7913df87c4d68d454/KR2a0007_002.txt#L88-L96\n《漢書》卷三十〈藝文志〉固定轉錄：https://github.com/kanripo/KR2a0007/blob/683113d4baf6febecaf2ccb7913df87c4d68d454/KR2a0007_030.txt#L12-L103\n《漢書》卷二十三〈刑法志〉後世黥刑名解說：https://github.com/kanripo/KR2a0007/blob/683113d4baf6febecaf2ccb7913df87c4d68d454/KR2a0007_023.txt#L202-L204\n《漢書》卷二十三〈刑法志〉城旦、棄市解說：https://github.com/kanripo/KR2a0007/blob/683113d4baf6febecaf2ccb7913df87c4d68d454/KR2a0007_023.txt#L303-L324\n《漢書》卷二十三〈刑法志〉族刑解說：https://github.com/kanripo/KR2a0007/blob/683113d4baf6febecaf2ccb7913df87c4d68d454/KR2a0007_023.txt#L392-L400\n《漢書》卷六〈武帝紀〉魯王餘卒年：https://github.com/kanripo/KR2a0007/blob/683113d4baf6febecaf2ccb7913df87c4d68d454/KR2a0007_006.txt#L159-L207\n《漢書》卷五十三〈景十三王傳〉魯王餘與孔子舊宅：https://github.com/kanripo/KR2a0007/blob/683113d4baf6febecaf2ccb7913df87c4d68d454/KR2a0007_053.txt#L67-L78",
+    "tags": [
+      "秦始皇",
+      "焚書",
+      "李斯",
+      "史記",
+      "漢書",
+      "伏生",
+      "挾書律",
+      "歷史迷思",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**牆裡有書**",
+      "tag": "秦始皇焚書",
+      "sub": "傳到了漢代？",
+      "shot": "qb060"
+    }
+  },
+  "sources": [
+    {
+      "title": "《史記》卷六〈秦始皇本紀〉固定轉錄",
+      "url": "https://github.com/kanripo/KR2a0001/blob/1c19dc6fa970b1c530fced9e8e3697d19163c26c/KR2a0001_100.txt#L8827-L9199",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《史記》〈李斯列傳〉固定轉錄",
+      "url": "https://github.com/kanripo/KR2a0001/blob/1c19dc6fa970b1c530fced9e8e3697d19163c26c/KR2a0001_500.txt#L19386-L19465",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《史記》〈儒林列傳〉伏生段",
+      "url": "https://github.com/kanripo/KR2a0001/blob/1c19dc6fa970b1c530fced9e8e3697d19163c26c/KR2a0001_500.txt#L48655-L48708",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《漢書》卷二〈惠帝紀〉固定轉錄",
+      "url": "https://github.com/kanripo/KR2a0007/blob/683113d4baf6febecaf2ccb7913df87c4d68d454/KR2a0007_002.txt#L88-L96",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《漢書》卷三十〈藝文志〉固定轉錄",
+      "url": "https://github.com/kanripo/KR2a0007/blob/683113d4baf6febecaf2ccb7913df87c4d68d454/KR2a0007_030.txt#L12-L103",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《漢書》卷二十三〈刑法志〉後世刑名解說（黥、城旦、棄市、族）",
+      "url": "https://github.com/kanripo/KR2a0007/blob/683113d4baf6febecaf2ccb7913df87c4d68d454/KR2a0007_023.txt#L202-L400",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《漢書》卷六〈武帝紀〉魯王餘卒年",
+      "url": "https://github.com/kanripo/KR2a0007/blob/683113d4baf6febecaf2ccb7913df87c4d68d454/KR2a0007_006.txt#L159-L207",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "《漢書》卷五十三〈景十三王傳〉魯王餘與孔子舊宅",
+      "url": "https://github.com/kanripo/KR2a0007/blob/683113d4baf6febecaf2ccb7913df87c4d68d454/KR2a0007_053.txt#L67-L78",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "qb001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one court minister standing beside plain low banquet tables in an ancient Chinese audience hall, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb001",
+          "text": "《史記》寫始皇三十四年，咸陽宮裡正在設宴。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "咸陽宮裡，另一位博士站起來"
+    },
+    {
+      "id": "qb002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one Qin-era official standing before a row of empty low banquet tables, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb002",
+          "text": "周青臣說秦把諸侯改成郡縣，從此沒有戰亂，秦制能傳萬世；皇帝聽得高興。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb003",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one learned court scholar in a simple robe raising one hand to speak in an audience hall, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb003",
+          "text": "另一位博士卻起身，說眼前的安穩未必長久。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one court official opening a plain archive chest during a hearing, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb004",
+          "text": "爭議原在談帝國制度，李斯的回答卻落到藏書上。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one archivist holding a sealed record case beside shelves, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb005",
+          "text": "這場爭論會讓李斯連史官手裡的記錄也要燒；被他指中的是哪一種？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb006",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one ancient court scholar standing beside two closed document boxes, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb006",
+          "text": "《書》也進了他的句子，可書名之前有個官職；那會改變誰能留著它？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb007",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one elderly Han teacher holding a closed teaching case at a low desk, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb007",
+          "text": "這個問題過了秦末兵亂也沒消失。一位秦廷舊官後來尋找藏起的《書》，究竟還能找回多少篇？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb008",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one modern reader comparing two plain facsimile pages at a desk, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb008",
+          "text": "焚書令下，被點名的《書》又怎麼留下來？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb009",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one learned scholar speaking from beside a plain low court table, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb009",
+          "text": "剛才站起的博士，叫淳于越。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "淳于越提出封子弟功臣"
+    },
+    {
+      "id": "qb010",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one court scholar placing two plain wooden region markers beside a larger marker on a low table, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb010",
+          "text": "他說殷周能延續千餘年，靠的是把封地給子弟和功臣。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb011",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one robed scholar moving small wooden markers around a central marker on a low table, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb011",
+          "text": "這些人因此能成為王室的支援。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb012",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one Qin court scholar gesturing toward a row of empty seats beside a low banquet table, mild window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb012",
+          "text": "秦的子弟如今只是平民；遇上田常、六卿那樣的強臣，誰來相救？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one court scholar holding a plain old wooden marker before a simple council desk, clouded afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb013",
+          "text": "他更說，不師古卻能長久的王朝，他從未聽過。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb014",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one ancient Chinese ruler listening from a raised seat in a quiet audience hall, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb014",
+          "text": "他甚至指責周青臣當面奉承，皇帝便把爭議交下去。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb015",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one high court official presenting a plain archive box in an audience hall, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb015",
+          "text": "等著回答的李斯，為什麼把仿古提議看成危險？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one court minister placing two plain wooden markers on a low audience table, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb016",
+          "text": "李斯先說，五帝與夏商周都沒有照抄彼此的制度。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "李斯把舊例變成私學問題"
+    },
+    {
+      "id": "qb017",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one scholar setting an old plain wooden marker apart from a new marker on a low table, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb017",
+          "text": "時代不同，治理方法就不必照著古人走。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb018",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one itinerant scholar approaching a city gate with a covered parcel, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb018",
+          "text": "從前諸侯爭立，會招攬四處遊學的人。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb019",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one ancient government clerk carrying a closed archive box before a shelf, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb019",
+          "text": "如今在他眼中，天下已定，法令應出於一處。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb020",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one ancient farmer setting down a simple tool beside an empty field, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb020",
+          "text": "百姓務農工，讀書人則該學習法令與禁令。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb021",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one teacher setting an untitled record case on an empty study desk, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb021",
+          "text": "可有人「不師今而學古」，拿古代標準批評眼前政令。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one ancient town resident speaking quietly to a neighbor in a narrow lane, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb022",
+          "text": "李斯擔心命令一出，朝中有人心裡非議，出門又在街巷各據所學議論。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb023",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one court minister watching a small group confer at the far end of an audience hall, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb023",
+          "text": "他更怕朝中結成黨與，讓上面的君權下降。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb024",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one court historian placing a sealed record case beside the audience hall threshold, mild window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb024",
+          "text": "這些話若連成黨與，史官掌著的哪一份記錄會先被牽連？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb025",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one robed official arranging plain legal markers beside a desk, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb025",
+          "text": "他的結論卻只有三字：「禁之便」。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb026",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one archivist opening a cabinet of wrapped unlettered bamboo-slip bundles, clouded afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb026",
+          "text": "從「禁」走到「燒」，李斯開始列出清單。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb027",
+      "template": "big",
+      "data": {
+        "kicker": "《史記》卷六",
+        "text": "**史官非秦記**",
+        "sub": "原文短引"
+      },
+      "lines": [
+        {
+          "id": "qb027",
+          "text": "《史記》原句寫：「臣請史官非秦記皆燒之」。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "李斯先要求燒非秦記"
+    },
+    {
+      "id": "qb028",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one archivist lifting a closed unlettered bamboo-slip case from a wooden chest, mild window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb028",
+          "text": "這是官府史官掌管的記錄；李斯連官府裡的某些書也要燒。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb029",
+      "template": "big",
+      "data": {
+        "kicker": "《史記》卷六",
+        "text": "**非博士官所職**",
+        "sub": "原文短引"
+      },
+      "lines": [
+        {
+          "id": "qb029",
+          "text": "史官記錄被點名後，李斯把《書》也拉進提議；書名前的官職叫「博士官」。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "李斯要藏書者把《書》交守尉"
+    },
+    {
+      "id": "qb030",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one court scholar in a simple robe comparing two closed archive boxes, mild window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb030",
+          "text": "這裡的博士是秦廷官職，不是今天的學位。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb031",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one ancient court scholar arranging plain records inside a government room, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb031",
+          "text": "對《書》而言，李斯才寫「非博士官所職」；不能把這個例外套到前面的史官條款。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb032",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one reader lifting a wrapped unlettered bamboo-slip bundle from a cabinet in a quiet study, muted morning light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb032",
+          "text": "後面點到《詩》《書》，還有百家語。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb033",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one court scholar holding a closed manuscript case against a plain wall, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb033",
+          "text": "《書》在這裡是書名，漢人也叫它《尚書》，不是「所有書」的統稱。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb034",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one modern researcher setting a closed scholarly edition beside a blank bamboo-slip facsimile, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb034",
+          "text": "這部書又怎麼碰到剛才那場仿古之爭？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb035",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one ancient scholar considering a closed manuscript box in a simple study, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb035",
+          "text": "〈藝文志〉說它記古代號令；淳于越剛拿古制發問，李斯就把它列上名單。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb036",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one household book keeper holding a closed manuscript case beside a doorway, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb036",
+          "text": "條款的動詞是「藏」；李斯管的是誰手裡持有這些書。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one teacher setting a wrapped record bundle on an empty study desk, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb037",
+          "text": "百家語指各家言論；李斯剛把私學議論視作威脅，書名和持有人一起被寫進清單。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb038",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one ancient reader carrying a covered archive box toward an official building, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb038",
+          "text": "同樣是《書》，不在那項官職內的藏書者，要怎麼辦？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb039",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one ancient household reader handing a wrapped manuscript case to a robed local official in a courtyard, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb039",
+          "text": "李斯要他們把書送到守、尉面前。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb040",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one local Qin official setting surrendered blank bamboo-slip bundles beside a small unlit brazier in a commandery office courtyard, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb040",
+          "text": "守、尉是地方官；送去以後，《史記》的文字緊接著說雜燒。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb041",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one official moving a small plain marker along an empty counting board, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb041",
+          "text": "如果藏書者不照辦，還能拖多久？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb042",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one clerk moving an unmarked counter on a wooden counting board, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb042",
+          "text": "從命令下達起，李斯只留三十天。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "李斯提出三十日燒書期限"
+    },
+    {
+      "id": "qb043",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one ancient clerk setting a plain unmarked order beside an empty desk, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb043",
+          "text": "期限到了仍不燒，提議是在臉上刺墨的黥刑，再服城旦勞役。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb044",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two ancient readers speaking quietly beside an unopened manuscript case in a courtyard, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb044",
+          "text": "交出書以後，兩個人若再談《詩》《書》，就安全了嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb045",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two robed readers facing each other in a plain study with a closed manuscript case, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb045",
+          "text": "李斯連兩人談《詩》《書》，都寫下「棄市」，也就是處死。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb046",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one court minister pointing to linked blank family tokens while proposing a rule in an audience hall, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb046",
+          "text": "若拿古代批評當世，他還寫下牽連家族的「族」。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb047",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one local clerk hesitating beside an unopened report case at a county office desk, mild window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb047",
+          "text": "官吏若知情卻沒有報告，會被放過嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb048",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one official pausing by a shuttered office door, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb048",
+          "text": "官吏知情卻不舉報，文字還要求同罪。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one modern reader holding two blank manuscript facsimiles apart, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb049",
+          "text": "但提議寫得嚴厲，不等於我們掌握每郡的執行情況。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb050",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one reader sorting three closed manuscript cases on a plain table, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb050",
+          "text": "嚴令寫到最後，哪四個字突然開了一道例外？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb051",
+      "template": "big",
+      "data": {
+        "kicker": "《史記》卷六",
+        "text": "**所不去者**",
+        "sub": "醫藥、卜筮、種樹之書"
+      },
+      "lines": [
+        {
+          "id": "qb051",
+          "text": "答案寫在同一段末尾：「所不去者」。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "李斯在嚴令末尾寫了例外"
+    },
+    {
+      "id": "qb052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one ancient physician examining plain medicinal leaves beside a blank slip bundle, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb052",
+          "text": "醫藥之書被明列在「不去」之中。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb053",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one ancient diviner placing plain counting sticks on a mat, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb053",
+          "text": "卜筮，也就是占卜之書，同樣不去。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb054",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one ancient gardener tending a small young tree beside a closed record case, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb054",
+          "text": "種樹之書也不去；原文沒有寫所有農學書。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb055",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one ancient learner facing a government office doorway with a closed bundle under one arm, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb055",
+          "text": "李斯還提出「以吏為師」；《書》能靠這句留下嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb056",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one government official showing an unlettered bamboo law bundle to an adult learner in an office, muted morning light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb056",
+          "text": "不能。那句只讓人向官吏學法令，沒有放寬《書》的交燒條款。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb057",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one ancient Chinese ruler turning his head toward a distant speaker across an audience hall, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb057",
+          "text": "《史記》隨後記始皇只答一個字：「可」；李斯的提議於是被接受。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb058",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one keeper carrying a closed manuscript case past archive shelves, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb058",
+          "text": "《書》卻仍在焚毀條款裡；若有篇章留下，是怎麼躲過這道命令？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb059",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one elderly scholar holding a wrapped manuscript case in a quiet room, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb059",
+          "text": "《史記》另記伏生：他曾是秦廷博士。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "伏生把《書》藏進牆裡"
+    },
+    {
+      "id": "qb060",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one ancient scholar closing a plain wall recess around a wrapped manuscript parcel, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb060",
+          "text": "秦時焚書，他把《書》藏進牆裡。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb061",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one ancient court scholar standing beside a small cabinet of plain bamboo strips, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb061",
+          "text": "但史書沒有交代，藏進牆的篇章是否原屬博士官職掌。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb062",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one displaced scholar traveling empty-handed down a quiet empty road, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb062",
+          "text": "接著兵亂爆發，伏生流亡在外；他藏過的《書》，要等戰亂後再尋。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb063",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one elderly Han scholar sorting several unmarked book bundles at an unnamed desk, soft overcast light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb063",
+          "text": "等到「漢定」，他尋找先前藏的《書》；史書沒寫找書地點，也沒給年月。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one modern scholar examining an empty gap between unmarked bamboo strip facsimiles, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb064",
+          "text": "他會找回多少篇？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb065",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one scholar separating two closed manuscript cases on a table, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb065",
+          "text": "數十篇已不見，他只找回二十九篇。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "伏生只找回二十九篇"
+    },
+    {
+      "id": "qb066",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one modern reader looking at an empty shelf space between closed untitled facsimile cases, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb066",
+          "text": "《史記》沒寫那數十篇究竟何時、如何遺失。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one elderly scholar pointing to a few bamboo strips in a quiet room, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb067",
+          "text": "伏生用找回的篇章，在齊魯之間教學生。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb068",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one elderly Han teacher handing plain bamboo strips to an adult student across a low table, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb068",
+          "text": "《史記》接著說，求學者因伏生而又能談《尚書》。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb069",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one Han teacher and an adult student studying plain bamboo strips together, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb069",
+          "text": "《史記》還說，山東諸大師也涉《尚書》以教；教它的人，已不只伏生。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one early Han clerk carrying a closed unlettered rule case toward an office doorway, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb070",
+          "text": "藏書的禁令，後來有人正式廢掉嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb071",
+      "template": "big",
+      "data": {
+        "kicker": "《漢書》惠帝紀",
+        "text": "**除挾書律**",
+        "sub": "惠帝四年三月"
+      },
+      "lines": [
+        {
+          "id": "qb071",
+          "text": "〈惠帝紀〉留下明確日期：惠帝四年三月，除挾書律。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "惠帝解除挾書律"
+    },
+    {
+      "id": "qb072",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one modern researcher holding a blank glossary card beside a closed edition of Han history, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb072",
+          "text": "後出的應劭注把「挾」解作「藏」；這是解除藏書禁令的紀錄。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb073",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one modern historian setting aside an unmarked law card beside an unopened source book, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb073",
+          "text": "這個日期沒有告訴我們伏生哪年找回書，更不能說他因除律才找回書。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb074",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one early Han official in a simple robe carrying a completely blank bamboo-slip bundle across a courtyard, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb074",
+          "text": "〈藝文志〉另說，漢初廣開獻書之路，官府開始收書。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one Han court official carrying a sealed plain inquiry case toward a quiet study, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb075",
+          "text": "朝廷後來會找到這位教《書》的老人嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb076",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one Han palace official looking over several closed teaching cases in a simple office, mild window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb076",
+          "text": "文帝想找能教《尚書》的人，遍尋未得，才聽說伏生。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "文帝派朝錯向伏生學《書》"
+    },
+    {
+      "id": "qb077",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one elderly Han scholar seated at a low desk beside an unused walking staff, muted morning light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb077",
+          "text": "那時伏生已年過九十，不能遠行。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb078",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one elderly Han teacher showing a few plain bamboo strips to a visiting government clerk in a quiet room, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb078",
+          "text": "於是文帝派掌故朝錯前去受教。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one ancient scholar looking up from plain bamboo strips in a simple study, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb079",
+          "text": "他之外，還有誰把伏生教的篇章接著傳下去？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb080",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one middle-aged Han teacher giving plain bamboo strips to a younger adult student, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb080",
+          "text": "伏生教張生、歐陽生；歐陽生又教兒寬。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "學生一代代教《書》"
+    },
+    {
+      "id": "qb081",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one modestly dressed Han student working in a plain household courtyard, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb081",
+          "text": "兒寬家貧，得替人做工；走路帶著經書，歇息就誦讀。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb082",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one modestly dressed Han student carrying a closed bamboo strip case along a quiet path, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb082",
+          "text": "兒寬後來又到博士孔安國門下；這位老師，也與另一面藏書牆有關。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb083",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one Han book keeper lifting a partially untied bundle of unlettered bamboo slips in a simple study, muted morning light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb083",
+          "text": "師生一代代教下去，到了武帝，書還會缺簡嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb084",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one archivist sorting plain bamboo strips on a wooden table, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb084",
+          "text": "〈藝文志〉說，直到武帝時，書仍有缺簡脫落。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "漢廷仍在尋書"
+    },
+    {
+      "id": "qb085",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one Han scholar entering a book room with a closed manuscript case, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb085",
+          "text": "朝廷因此設藏書與寫書的官，連諸子的著作也收進祕府。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb086",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one Han scholar looking into a plain opened wall recess of an unlabeled old house, a wrapped unlettered bundle visible, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb086",
+          "text": "〈藝文志〉還追記另一面牆；又有多少《書》出現？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb087",
+      "template": "big",
+      "data": {
+        "kicker": "《漢書》藝文志",
+        "text": "**古文尚書**",
+        "sub": "孔子舊宅 · 後世追記"
+      },
+      "lines": [
+        {
+          "id": "qb087",
+          "text": "〈藝文志〉還追記，魯共王拆孔子舊宅時，發現古文《尚書》。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "孔子舊宅又出古文《書》"
+    },
+    {
+      "id": "qb088",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one modern reader holding apart two plain unlettered wall cross-section sketches on a desk, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb088",
+          "text": "〈藝文志〉說它用古字寫成；這是孔子舊宅的故事，不是伏生那面牆。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb089",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one Han copyist aligning two distinct sets of blank bamboo strips at a desk, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb089",
+          "text": "剛才兒寬受教的孔安國，把牆中《書》和伏生那一路比照，據志書說多出十六篇。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb090",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one modern researcher comparing two closed facsimile cases beside an open blank catalog, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb090",
+          "text": "〈藝文志〉說孔子曾編《書》百篇；但這兩段牆藏記載，不能算出全部存世篇章。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb091",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one Han teacher standing at the doorway of a quiet schoolroom with an untitled bamboo slip case, soft overcast light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb091",
+          "text": "新出篇章能立刻進入官學，讓學生讀到嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb092",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one Han scholar placing a wrapped unlettered bamboo-slip bundle on a court receiving desk, an empty school doorway behind him, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb092",
+          "text": "孔安國把這份古文書獻給朝廷，卻遇上巫蠱事，沒能列入學官。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb093",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one Han school official placing a plain teaching case on a low lectern in a schoolroom, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb093",
+          "text": "到了宣帝，〈藝文志〉卻說歐陽、大小夏侯幾家《書》學已立於學官。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb094",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one Han archivist placing a closed bamboo slip case in a cabinet, with an empty school desk behind him, clouded afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb094",
+          "text": "書獻進宮，不等於立刻有人拿它教；保存一份書，和讓它流通是兩回事。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb095",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one Han copyist laying two separate stacks of blank bamboo strips side by side, mild window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb095",
+          "text": "《書》已有兩路傳本，到了成帝，還有書散失在外嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb096",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one Han official setting a completely blank slip bundle on an office table, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb096",
+          "text": "成帝時書仍有散失，陳農奉命到各地求遺書。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "劉向校出《書》的缺簡"
+    },
+    {
+      "id": "qb097",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one Han cataloger arranging untitled bamboo slip bundles beside an unmarked bamboo tally board, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb097",
+          "text": "劉向受命校對經傳和諸子；每校完一部，就列篇目、寫提要。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb098",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one Han scholar comparing two unmarked bamboo slip bundles under window light, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb098",
+          "text": "他拿古文《書》和歐陽、大小夏侯幾家傳本互校。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb099",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one Han copyist pointing to an empty place between plain bamboo strips laid in a row, muted morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb099",
+          "text": "他查到的缺口，能具體到哪一篇、哪一簡？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb100",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one Han copyist holding one loose blank bamboo strip above separate rows with visible gaps, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb100",
+          "text": "《酒誥》脫一簡，《召誥》脫兩簡。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb101",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one modern reader measuring space on a blank bamboo-strip facsimile with a plain ruler, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb101",
+          "text": "一簡不是一個字；〈藝文志〉說有的簡寫二十五字，有的寫二十二字。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb102",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one modern reader looking at an empty gap between plain bamboo strip facsimiles on a desk, mild window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb102",
+          "text": "少了一簡，讀者可能一次少掉整串話。可兩路傳本只差這幾簡嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb103",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one modern researcher sorting two stacks of unlettered comparison cards on a desk, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb103",
+          "text": "字句不同七百多處，脫字數十處。這些差異會妨礙什麼？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb104",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one modern history lecturer circling an empty gap in a row of unlettered message tiles on a modern classroom board, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb104",
+          "text": "還記得前面說《書》記古代號令？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb105",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one modern educator demonstrating an incomplete chain of blank instruction tiles to adult learners in a present-day classroom, muted morning light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb105",
+          "text": "號令給眾人施行，字句若不完整，聽命的人就不知道該怎麼做。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb106",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one modern language scholar comparing a current reference book with an unlettered bamboo-slip facsimile on a clearly modern desk, mild window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb106",
+          "text": "它還說，古文讀法要與《爾雅》相應，才能解通古今用語。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb107",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one present-day museum visitor studying an unlettered bamboo-slip facsimile through glass in a clearly modern exhibition, clouded afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb107",
+          "text": "找回篇章之後，傳下來的古字仍需要讀懂，才知道古代號令說了什麼。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb108",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one modern reader closing a source edition beside an incomplete row of blank bamboo-strip facsimiles, clouded afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "qb108",
+          "text": "《書》傳了下來，卻不是毫髮無損；這些缺口也不能全算在秦朝禁書上。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "qb999",
+      "template": "outro",
+      "data": {
+        "title": "牆裡的《書》",
+        "sub": "二十九篇，傳到漢代",
+        "cta": "訂閱奇聞檔案局"
+      },
+      "lines": [
+        {
+          "id": "qb999a",
+          "text": "還記得那二十九篇嗎？在《史記》裡，它是一條《書》傳承的線索，不是秦代所有書籍存亡的總帳。",
+          "emotion": "平穩收束"
+        },
+        {
+          "id": "qb999b",
+          "text": "同一部書，藏過、教過，卻仍會缺字。你覺得哪個環節最容易讓內容改變？歡迎留言。",
+          "emotion": "留白提問"
+        },
+        {
+          "id": "qb999c",
+          "text": "想繼續從原文查明歷史傳說，歡迎訂閱奇聞檔案局。",
+          "emotion": "自然收束"
+        }
+      ]
+    }
+  ]
+}
