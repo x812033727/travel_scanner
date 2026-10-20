@@ -38,7 +38,7 @@
       "what": "密封信寫了什麼"
     },
     {
-      "setup": "cl005",
+      "setup": "cl004",
       "payoff": "cl081",
       "what": "凱旋式蛇像能否證明死法"
     },
@@ -91,11 +91,6 @@
       "setup": "cl038",
       "payoff": "cl039",
       "what": "探墓後準備什麼"
-    },
-    {
-      "setup": "cl040",
-      "payoff": "cl041",
-      "what": "用餐時誰來到門外"
     },
     {
       "setup": "cl044",
@@ -173,7 +168,7 @@
       "headline": "毒蛇咬死？",
       "tag": "女王最後一封信",
       "sub": "古代作者寫「不知道」",
-      "shot": "cl002"
+      "shot": "cl058"
     }
   },
   "sources": [
@@ -199,7 +194,7 @@
       "id": "cl001",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot outside a closed limestone tomb in 30 BCE Alexandria: one bareheaded adult rural visitor in a plain undyed Greek linen tunic holds a wicker basket full of pear-shaped purple figs with both hands before a separate adult Roman sentinel in a simple bronze helmet and late Republican tunic; the sentinel stands empty-handed beside the doorway, soft overcast light.",
+        "prompt": "Medium shot outside a limestone royal mausoleum in 30 BCE Alexandria: a mature adult rural man with weathered adult facial features and full adult stature, as tall as the adult Roman sentinel, wears a plain undyed Greek linen tunic and carries a wicker basket full of pear-shaped purple figs with both hands toward the guard; the sentinel wears a simple bronze helmet and plain late Republican tunic, stands empty-handed beside the stone entrance, both adult faces clearly visible in soft daylight.",
         "camera": "push in",
         "visual": "still"
       },
@@ -210,20 +205,20 @@
           "emotion": "自然說故事"
         }
       ],
-      "chapter": "衛兵翻開無花果籃"
+      "chapter": "鄉人展示無花果籃"
     },
     {
       "id": "cl002",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Ptolemaic Alexandria, 30 BCE. Close shot of an adult Roman sentinel in a plain late Republican tunic and bronze helmet lifting a layer of fig leaves to reveal a full wicker basket with a mound of large pear-shaped purple figs with short stems beside a limestone tomb door.",
-        "camera": "drift left",
-        "visual": "still"
+        "kicker": "普魯塔克《安東尼傳》·意譯",
+        "text": "葉子一掀，籃裡是**無花果**",
+        "sub": "衛兵問籃裡裝什麼，眼前露出果實"
       },
       "lines": [
         {
           "id": "cl002",
-          "text": "衛兵要看籃子裡裝什麼。他掀開葉子，露出一堆果實。",
+          "text": "衛兵要看籃子裝什麼；葉子一掀，露出滿滿的無花果。",
           "emotion": "自然說故事"
         }
       ]
@@ -248,27 +243,16 @@
       "id": "cl004",
       "template": "big",
       "data": {
-        "kicker": "普魯塔克《安東尼傳》·意譯",
-        "text": "一封**密封信**送到羅馬統帥手上",
-        "sub": "傳記接著寫，他拆開信後又派人查看"
+        "kicker": "普魯塔克《安東尼傳》·敘事與後來圖像",
+        "text": "密封信到了；使者將看見什麼？",
+        "sub": "羅馬統帥派人回頭；陵墓的門仍緊閉"
       },
       "lines": [
         {
           "id": "cl004",
           "text": "不久，一封密封信送去屋大維手上；他立刻派人回頭。",
           "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "cl005",
-      "template": "big",
-      "data": {
-        "kicker": "普魯塔克《安東尼傳》·後來的圖像",
-        "text": "凱旋隊伍有**帶蛇的女王像**",
-        "sub": "蛇的形象，能倒推門內發生了什麼？"
-      },
-      "lines": [
+        },
         {
           "id": "cl005",
           "text": "使者將要推開門；後來凱旋隊伍裡的蛇形象，真能說出門內發生了什麼？",
@@ -287,7 +271,7 @@
       "lines": [
         {
           "id": "cl006",
-          "text": "先回到那扇門還關著的時候。安東尼負傷，被人送到陵墓下方。",
+          "text": "密信送出之前，陵墓的門緊閉著。負傷的安東尼被人抬到門下。",
           "emotion": "自然說故事"
         }
       ],
@@ -329,27 +313,16 @@
       "id": "cl009",
       "template": "big",
       "data": {
-        "kicker": "普魯塔克《安東尼傳》·意譯",
-        "text": "他怕失去陵墓裡的**財寶**",
-        "sub": "所據英譯：afraid of losing a great treasure"
+        "kicker": "普魯塔克與蘇埃托尼烏斯·對讀",
+        "text": "屋大維為何想**活捉女王**？",
+        "sub": "財寶是傳記記下一個理由；還有別的盤算"
       },
       "lines": [
         {
           "id": "cl009",
-          "text": "屋大維已逼近亞歷山卓。普魯塔克說，他怕失去陵墓裡的財寶，也想活捉女王。",
+          "text": "普魯塔克說，屋大維怕失去財寶，想活捉女王。",
           "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "cl010",
-      "template": "big",
-      "data": {
-        "kicker": "兩位古代傳記作者",
-        "text": "普魯塔克／蘇埃托尼烏斯",
-        "sub": "都記下活著的女王可能成為凱旋式的一部分"
-      },
-      "lines": [
+        },
         {
           "id": "cl010",
           "text": "兩位傳記作者都提到凱旋式：如果她活著，勝利隊伍就能帶她出場。",
@@ -825,29 +798,18 @@
     },
     {
       "id": "cl040",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Medium shot inside a Ptolemaic Alexandrian limestone chamber, 30 BCE: an adult queen with loose straight dark bob ending at the jaw, a narrow plain diadem and a simple draped Greek linen chiton sits at a low ancient wooden table before several shallow clay dishes holding flatbread, olives and roasted fish after bathing, looking toward the doorway, soft clay-lamp light.",
-        "camera": "track left",
-        "visual": "still"
+        "kicker": "普魯塔克《安東尼傳》·意譯",
+        "text": "飯後，門外又來了**誰**？",
+        "sub": "衛兵仍守著陵墓門口"
       },
       "lines": [
         {
           "id": "cl040",
-          "text": "沐浴之後，她坐下用了一頓豐盛的飯；門外又有誰來？",
+          "text": "沐浴之後，她享用了一頓豐盛的飯；門外又有誰來？",
           "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "cl041",
-      "template": "big",
-      "data": {
-        "kicker": "普魯塔克《安東尼傳》·意譯",
-        "text": "一名鄉人提著**小籃**到來",
-        "sub": "所據英譯：a country fellow brought her a little basket"
-      },
-      "lines": [
+        },
         {
           "id": "cl041",
           "text": "門外那個鄉人，這時提著一只小籃子走來。",
@@ -857,16 +819,16 @@
     },
     {
       "id": "cl042",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Close shot in Ptolemaic Alexandria, 30 BCE: an adult Roman sentinel in a plain tunic and bronze helmet parts fig leaves inside a wicker basket to inspect the large purple figs, mild daylight",
-        "camera": "drift left",
-        "visual": "still"
+        "kicker": "普魯塔克《安東尼傳》·意譯",
+        "text": "鄉人自己**撥開葉子**",
+        "sub": "衛兵在場，看見籃裡滿是無花果"
       },
       "lines": [
         {
           "id": "cl042",
-          "text": "衛兵攔住他。他撥開葉子，讓人看籃裡的無花果。",
+          "text": "衛兵攔住鄉人；鄉人親手撥開葉子，讓衛兵看見無花果。",
           "emotion": "自然說故事"
         }
       ]
@@ -908,13 +870,13 @@
       "template": "big",
       "data": {
         "kicker": "普魯塔克《安東尼傳》·意譯",
-        "text": "密封信**送出**；屋內只留**兩位女伴**",
-        "sub": "傳記稱她讓旁人退出，後段才記兩位女伴姓名"
+        "text": "一封**密封信**送出；門內還有誰？",
+        "sub": "傳記先寫信被送走，再寫她讓誰留下"
       },
       "lines": [
         {
           "id": "cl045",
-          "text": "用完餐，女王把一封寫好的信封起來，託人送給羅馬統帥。",
+          "text": "用完餐，女王託人把一封寫好、封好的信送給羅馬統帥。",
           "emotion": "自然說故事"
         },
         {
@@ -978,26 +940,15 @@
       "template": "big",
       "data": {
         "kicker": "普魯塔克《安東尼傳》·敘事",
-        "text": "使者進門，見她已**死去**",
-        "sub": "傳記稱女王身著王室裝束"
+        "text": "門一開，女王已經**死去**",
+        "sub": "兩位女伴的最後情形，傳記接著寫下"
       },
       "lines": [
         {
           "id": "cl050",
           "text": "門一開，女王已經死去，身上穿著王室裝束。",
           "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "cl051",
-      "template": "big",
-      "data": {
-        "kicker": "普魯塔克《安東尼傳》·敘事",
-        "text": "伊拉斯床腳**奄奄一息**；卡爾米翁扶冠",
-        "sub": "這是傳記敘事，不是現場影像"
-      },
-      "lines": [
+        },
         {
           "id": "cl051",
           "text": "伊拉斯在床腳奄奄一息，卡爾米翁還扶著女王頭上的冠飾。",
@@ -1212,13 +1163,13 @@
       "template": "big",
       "data": {
         "kicker": "古代作者對讀",
-        "text": "蛇跡與淺點，仍是**轉述**",
-        "sub": "普魯塔克沒有定案；接著看狄奧怎麼說"
+        "text": "事後痕跡，補不回**門內那一刻**",
+        "sub": "門關後沒有留下能說清每一步的證詞"
       },
       "lines": [
         {
           "id": "cl066",
-          "text": "沙地上的痕跡與手臂針點都是轉述；即使真有，也不能單靠它們判定致死工具。",
+          "text": "還記得門關上後，沒人能交代每一步嗎？事後痕跡也補不回那一刻。",
           "emotion": "自然說故事"
         },
         {
