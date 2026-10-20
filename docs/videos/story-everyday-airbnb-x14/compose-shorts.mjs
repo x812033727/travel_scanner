@@ -22,8 +22,8 @@ for (const raw of readFileSync(path.join(dir, "drafts/shorts.md"), "utf8").split
 }
 if (sections.length !== 2 || sections.some(short => short.rows.length !== 8)) throw new Error("Expected two eight-line Shorts");
 const shots = [
-  ["x14-b04-s26", "x14-b04-s22", "x14-b01-s01", "x14-b04-s26", "x14-b04-s26", "x14-b04-s26", "x14-b04-s26", "x14-b01-s01"],
-  ["x14-b05-s04", "x14-b05-s07", "x14-b05-s06", "x14-b05-s11", "x14-b05-s16", "x14-b06-s06", "x14-b06-s15", "x14-b06-s14"],
+  ["x14-b04-s26", "x14-b04-s23", "x14-b01-s01", "x14-b04-s26", "x14-b04-s26", "x14-b04-s26", "x14-b04-s26", "x14-b01-s01"],
+  ["x14-b05-s04", "x14-b05-s07", "x14-b05-s06", "x14-b05-s11", "x14-b05-s16", "x14-b06-s05", "x14-b06-s14", "x14-b06-s15"],
 ];
 const beats = ["hook", "setup", "setup", "turn", "proof", "proof", "payoff", "loop"];
 const headlines = [
@@ -46,7 +46,7 @@ const descriptions = [
 const portraitFocus = [
   [
     "審帳者打開全年虧損簿，取消訂單小堆留在簿外；手、簿、代幣同框",
-    "淨預訂下降色帶與收入色帶各留兩端，不讓 −41% 看起來像營收降幅",
+    "取 A1 的 2019→2020 全年淨預訂夜晚與體驗席位，重製原生直式 −41% 字卡；不把它寫成營收降幅",
     "旅客的手拿掉三月日曆上的一格，行李只露一角；保留拿掉的動作",
     "原生直式年度虧損卡：主值與全年 GAAP 口徑一起讀到",
     "依 A1 獨立重製原生直式 IPO 股份費用卡：位置承接上一拍，明示它包含在虧損中",
@@ -65,7 +65,7 @@ const portraitFocus = [
     "依 A3/A4 生成獨立直式插畫：審帳者把長住色帶放在全年損益簿旁，留空未填的單獨貢獻欄；不可假定主片跨境鏡頭能裁出此構圖",
   ],
 ];
-const nativeCards = new Set(["0:3", "0:4", "1:1", "1:2", "1:4", "1:5", "1:6"]);
+const nativeCards = new Set(["0:1", "0:3", "0:4", "1:1", "1:2", "1:4", "1:5", "1:6"]);
 const independentlySourced = new Set(["0:0", "0:3", "0:4", "0:5", "0:6", "1:7"]);
 function portraitFor(shortIndex, beatIndex) {
   const key = `${shortIndex}:${beatIndex}`;

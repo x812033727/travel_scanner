@@ -169,9 +169,8 @@ const cueRemap = [
   [0, 0, 1, 2, 5, 4, 6, 7, 8, 9, 10, 11, 12, 12, 13, 15, 16, 17, 18, 19, 21, 22, 23, 23],
   [1, 0, 1, 2, 3, 4, 7, 8, 9, 11, 10, 12, 12, 13, 14, 15, 5, 5, 6, 17, 18, 21, 22],
 ];
-// V7 keeps the illustrative cancellation and moves annual results to the end
-// of 2020. Surviving shots keep
-// their previous anonymous cue unless a meaning-based override replaces it.
+// V8 follows one explicitly hypothetical calendar. The remap preserves reusable
+// anonymous props; current-row overrides keep each visual with its new line.
 const removedOldRows = [[], [13, 18, 20], [4, 16, 17, 18], [13], [2, 6, 18, 23], [2, 4, 11, 18]];
 const activeIndices = cueRemap.map((chapter, index) => chapter.map((_, oldIndex) => oldIndex).filter(oldIndex => !removedOldRows[index].includes(oldIndex)));
 const overrides = new Map([
@@ -232,6 +231,41 @@ const overrides = new Map([
   ["5:8", "an anonymous traveler moves one blank route marker across a border shown only as a plain line on an unlettered map, a small suitcase beside the map"],
   ["5:19", "an anonymous booking clerk holds the original empty calendar beside a later calendar with separate guest and host tokens approaching one open square"],
 ]);
+const currentRowOverrides = new Map([
+  ["0:5", "an anonymous office planner opens a closed staff roster folder beside a neat row of office desks, with no chairs removed and no readable names"],
+  ["0:6", "an anonymous traveler opens an unlettered search map beside an even row of unlabeled lodging tiles, while a planner's hand pauses above the board without rearranging anything"],
+  ["1:7", "an anonymous lodging host opens an original cancellation-policy envelope beside the recurring canceled calendar square, keeping it separate from a service-fee envelope"],
+  ["1:9", "an anonymous lodging host places a plain cancellation-fee envelope beside a separate platform service-fee envelope on the recurring calendar"],
+  ["1:18", "an anonymous support clerk brings the same illustrative reservation tile to a plain emergency-policy folder beside a blocked traveler route"],
+  ["1:21", "an anonymous support clerk compares the known earlier booking leaf and late-month check-in leaf, with a guest suitcase on one side and a host key on the other"],
+  ["2:1", "an anonymous support clerk checks a blocked travel route and an earlier booking leaf against an unmarked emergency-policy folder"],
+  ["2:3", "an anonymous lodging host studies the original cancellation-fee envelope beside a plain unused key while the traveler refund token sits in a separate tray"],
+  ["2:8", "an anonymous host-support clerk checks the same booking tile against a plain emergency-policy folder beside a host key and a narrow stay-date strip"],
+  ["2:9", "an anonymous host-support clerk moves a later-month check-in tile outside the host-support tray while leaving the separate guest-refund tray untouched"],
+  ["2:15", "an anonymous records clerk opens a separate whole-year emergency-payments ledger while keeping the illustrative host-support token outside the ledger"],
+  ["2:19", "an anonymous lodging host opens a new stretch of available blank date-grid squares beside the canceled earlier square and a plain key"],
+  ["2:20", "an anonymous lodging host leaves a key beside a newly available blank square while a guest hand hovers over, but does not press, an unlettered reserve button; no relief token"],
+  ["3:10", "an anonymous lodging host opens one available date on the recurring date grid while an anonymous traveler searches a separate blank lodging map without seeing that listing yet"],
+  ["3:13", "an anonymous route planner compares two near-home arcs of different lengths on an unlettered map, a plain lodging key at each destination"],
+  ["3:14", "an anonymous lodging planner lays out a long consecutive run of available lodging nights beside one plain room key"],
+  ["3:15", "an anonymous traveler checks a nearby route while the earlier spring date-grid leaf remains visibly separate and blank"],
+  ["3:17", "an anonymous traveler notices one nearby lodging tile brought forward on a blank search board while a host key remains on the unclaimed date grid"],
+  ["3:21", "an anonymous archivist separates a board of mixed lodging-and-activity listing tiles from a tray of completed booking tiles"],
+  ["3:23", "an anonymous researcher holds the hypothetical host key outside a whole-year aggregate reservation ledger whose individual guests cannot be identified"],
+  ["3:24", "an anonymous researcher sees a smaller annual pile of completed booking tiles beside the same illustrative still-open calendar square"],
+  ["4:2", "an anonymous researcher keeps an anonymous hypothetical room key apart from a large platform-wide pile of completed booking tiles"],
+  ["4:13", "an anonymous lodging host opens a long stretch of blank lodging calendar squares while a guest finger hovers above a blank booking button without pressing it"],
+  ["4:14", "an anonymous researcher holds a large platform-wide pile of completed reservation tiles apart from one unclaimed illustrative host key"],
+  ["4:18", "an anonymous traveler turns a blank map toward the next annual calendar leaf while a cross-border route remains muted"],
+  ["5:1", "an anonymous lodging host points to consecutive available nights on the same illustrative calendar while a traveler traces a distant route on a separate unlettered map"],
+  ["5:2", "an anonymous analyst studies a quarterly lodging-nights sheet with separate long-stay and distant-route tokens but no readable figures"],
+  ["5:3", "an anonymous traveler holds a long-stay ribbon beside a distant route token, neither placed onto a completed reservation tile"],
+  ["5:10", "an anonymous traveler pauses a finger before an unlettered booking button over the illustrative calendar; no completed booking marker appears"],
+  ["5:11", "an anonymous accountant keeps a long-stay ribbon and a distant-route token beside a closed annual earnings folder"],
+  ["5:12", "an anonymous accountant reaches to open the annual earnings folder while the two different trip tokens remain separate"],
+  ["5:14", "an anonymous auditor holds separate long-stay, search-board, and loan tokens outside a complete annual earnings folder"],
+  ["5:15", "an anonymous analyst keeps one hypothetical open date-grid square beside a separate tray of completed platform-wide reservation tiles without joining them"],
+]);
 
 if (cueRemap.some((chapter, index) => chapter.some(old => old < 0 || old >= cues[index].length) || activeIndices[index].length === 0)) {
   throw new Error("Invalid Airbnb narration-to-visual mapping");
@@ -239,7 +273,7 @@ if (cueRemap.some((chapter, index) => chapter.some(old => old < 0 || old >= cues
 
 export function visualFor(chapterIndex, rowIndex) {
   const oldRowIndex = activeIndices[chapterIndex]?.[rowIndex];
-  const phrase = overrides.get(`${chapterIndex}:${oldRowIndex}`) ?? cues[chapterIndex]?.[cueRemap[chapterIndex]?.[oldRowIndex]];
+  const phrase = currentRowOverrides.get(`${chapterIndex}:${rowIndex}`) ?? overrides.get(`${chapterIndex}:${oldRowIndex}`) ?? cues[chapterIndex]?.[cueRemap[chapterIndex]?.[oldRowIndex]];
   if (!phrase) throw new Error(`Missing visual cue for chapter ${chapterIndex + 1}, line ${rowIndex + 1}`);
   const shot = sizes[(chapterIndex * 2 + rowIndex) % sizes.length];
   return {
