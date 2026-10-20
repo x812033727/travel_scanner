@@ -11,7 +11,6 @@ const sources = [
   ["S2", "Spotify 2020 Q1 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000156459020019718/ck0001639920-6k_20200429.htm"],
   ["S3", "Spotify 2023 Q2 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000163992023000010/spot-20230630x6xk.htm"],
   ["S5", "Spotify 2024 Q2 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000163992024000009/spot-20240630x6xk.htm"],
-  ["S6", "Spotify 2024 Q4 earnings exhibit", "https://www.sec.gov/Archives/edgar/data/1639920/000114036125002936/ef20042791_ex99-1.htm"],
   ["S7", "Spotify 2025 Q2 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000163992025000012/spot-20250630x6xk.htm"],
   ["S9", "Spotify 2023-07-25 Q2 earnings exhibit", "https://www.sec.gov/Archives/edgar/data/1639920/000114036123035965/brhc20056303_ex99-1.htm"],
 ].map(([code, title, url]) => ({ code, title, url, checked_on: "2026-10-20" }));
@@ -148,19 +147,6 @@ const statCards = new Map([
     }
   ],
   [
-    "x130515",
-    {
-      "title": "Spotify 全公司｜2024 全年",
-      "stats": [
-        {
-          "value": "首次營業獲利",
-          "label": "整家公司全年結果；非播客獨立獲利"
-        }
-      ],
-      "source": "S6｜2024 Q4 earnings exhibit"
-    }
-  ],
-  [
     "x130610",
     {
       "title": "廣告欄的播客成本",
@@ -259,17 +245,17 @@ const cues = [
     "music-shaped ad tiles bring the largest incoming pile to the green service lane",
     "podcast and self-service ad tiles enter one jointly marked conceptual tray without labels",
     "three distinct factors surround the rising green category line",
-    "a free listener keeps playing beside a sealed whole-company annual-results envelope",
+    "a free listener compares a still-open player with a broad category result, without pretending a closed show returned",
     "a warm orange member-service lane rises beside, but not inside, the green lane",
-    "a different member taps an anonymous audio tile on a plain phone",
-    "two broad service ledgers hold many content types, without show-level profit cells",
-    "a sealed whole-company annual-results folder enters a room separate from quarterly ledgers",
-    "a whole-company annual result card opens under a different wider frame",
-    "a calendar year ring surrounds a whole-company card, apart from quarter cards",
-    "the service results remain on a desk while a creator's studio door opens",
-    "an anonymous listener looks at an audio player then toward a new camera setup",
-    "a new unnamed creator fixes a simple camera above a plain microphone",
-    "a new blank video tile is placed on an unrelated creator desk",
+    "an unmarked player can switch between two service entry points while the account ledgers remain separate",
+    "anonymous monthly fee and free-play tokens stay outside a blank show-by-show result cell",
+    "a broad margin line stops before an anonymous empty show slot, without re-creating that show",
+    "an unnamed creator studies an unmarked empty compensation tray before making a new recording",
+    "the quarterly report closes while a separate future product window remains unopened",
+    "an unmarked video tile waits beside a simple upload button on a fictional listener screen",
+    "a fresh video tile sits apart from several unrelated closed audio slots",
+    "an unrelated unnamed creator fixes a simple camera above a plain microphone",
+    "the creator raises a blank video tile toward an unmarked upload slot",
     "an unopened creator-program envelope arrives beside the new video tile"
   ],
   [
@@ -315,7 +301,12 @@ const cueOverrides = new Map(Object.entries({
   "x130612": "only a limited new video experience cost token moves into the orange member lane, both lanes vertically stacked",
   "x130613": "green advertising lane retains other unrelated podcast-cost tiles beneath an orange member lane",
   "x130614": "a blank unknown-transfer cell rests between vertically stacked green and orange cost lanes",
-  "x130615": "an analyst removes an unsupported all-service savings sticker from a smaller green account"
+  "x130615": "an analyst removes an unsupported all-service savings sticker from a smaller green account",
+  "x130201": "the same clearly fictional creator recording light from the opening faces a plain upload doorway, centered on the next action",
+  "x130403": "the covered public content-change record from the opening is uncovered beside a limited anonymous asset stack, not an entire catalog",
+  "x130413": "an illustrative listener sets a generic closed-audio notice next to a distinct open-video catalog card, without identifying a show",
+  "x130517": "a generic video tile pauses immediately before an unmarked upload button beside the illustrative player",
+  "x130601": "the previously blank video-entry tile from the opening meets a new generic creator-program doorway, with no identifiable show"
 }));
 const camera = ["Medium shot, push in", "Close-up, pull out", "Wide shot, gentle pan left", "Overhead shot, tilt down", "Medium close-up, pan right", "Low-angle shot, lift gently"];
 const rooms = ["at a plain recording table", "between a recording booth and a listening nook", "beside a free-playback window and a cost register", "along a content-catalog aisle", "between a small listener cafe and a service counter", "inside a quiet video studio facing a living area"];
@@ -359,7 +350,8 @@ const loops = [
   ["x130324", "x130401", "2023 重整的是內容組合的一部分"],
   ["x130406", "x130407", "若干節目關閉後，公告仍列出大量可用影片播客"],
   ["x130416", "x130501", "2024 整個廣告業務毛利轉正"],
-  ["x130514", "x130515", "2024 全公司首個全年營業獲利"],
+  ["x130515", "x130603", "合格影片創作者可按觀看表現取得給付"],
+  ["x130520", "x130603", "停在上傳前的創作者後來有了合格影片觀看報酬入口"],
   ["x130521", "x130601", "2025 為合格影片創作者開新方案"],
   ["x130607", "x130612", "新影片會員觀看體驗相關成本列入 Premium"],
   ["x130611", "x130614", "廣告欄下降無法拆出搬移與真正節省"],
@@ -371,7 +363,7 @@ for (const loop of loops) if (!(position.has(loop.setup) && position.has(loop.pa
 const description = [
   "2019 年，Spotify 連續兩天收購 Anchor 與 Gimlet，分別取得播客創作／發布工具及節目製作能力；兩案收購對價合計 €308m，含股份獎酬。2023 年部分播客內容資產被沖銷、若干節目關閉。這代表 Spotify 全面放棄播客嗎？本集沿 SEC 原件看 2020 的廣告成本壓力、2023 的內容重整、2024 的分類回升與 2025 的影片播客合作方案。",
   "",
-  "2023 Q2 的 €30m 僅是部分播客內容資產沖銷；2023-07-25 公告當時平台可用影片播客超過十萬，不是同季末數，也無法對上被關節目的身分。2024 首個全年營業獲利屬全公司。2025 對合格影片播客創作者推出依觀看表現給付的 Partner Program；提供給 Premium 會員的新觀看體驗相關成本部分改列 Premium，其餘播客成本仍在 Ad-Supported。廣告欄 2025 Q2 播客成本同比少 €21m，不能全算真正節省。兩案是否回本無逐案公開收支可判。畫面是匿名概念插畫，數字由後製排字。查核日期：2026-10-20。",
+  "2023 Q2 的 €30m 僅是部分播客內容資產沖銷；2023-07-25 公告當時平台可用影片播客超過十萬，不是同季末數，也無法對上被關節目的身分。2024 Q2 的 +13% 是整條 Ad-Supported 業務毛利率，不是播客獨立獲利。2025 對合格影片播客創作者推出依觀看表現給付的 Partner Program；提供給 Premium 會員的新觀看體驗相關成本部分改列 Premium，其餘播客成本仍在 Ad-Supported。廣告欄 2025 Q2 播客成本同比少 €21m，不能全算真正節省。兩案是否回本無逐案公開收支可判。畫面是匿名概念插畫，數字由後製排字。查核日期：2026-10-20。",
   "",
   "SEC 原始資料：",
   ...sources.map(source => `${source.title}\n${source.url}`),
@@ -391,7 +383,7 @@ const video = {
 const bytes = JSON.stringify(video, null, 2) + "\n";
 writeFileSync(path.join(dir, "video.json"), bytes);
 const hash = createHash("sha256").update(bytes).digest("hex");
-writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 13, chapter: 1, planned_episodes: 20, title: "Spotify：播客重整後真的退場了嗎", logline: "2019 買進創作與製作能力，2020 廣告成本承壓，2023 部分內容資產沖銷與若干節目關閉；2024 業務毛利回升、全公司首次全年營業獲利，2025 又推出影片播客合作方案並讓部分相關成本進入 Premium。從服務措施判斷是否全面退出，不把分類變動誤當純節省。", names: ["Spotify", "Anchor", "Gimlet"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
-writeFileSync(path.join(dir, "script.md"), ["# X13 Spotify｜六章繁中逐句稿 v10", "", `離線前製；\`video.json\` SHA-256：\`${hash}\`。未獨立逐句審核、盲評、配音或測量實際時長。濃縮開場後接正式 5 秒片頭；最後三句後接正式 21 秒 v4 片尾。`, "", ...chapters.flatMap((rows, i) => [`## 第 ${i + 1} 章｜${titles[i]}${i === 0 ? "（開場濃縮）" : ""}`, "", ...rows.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
+writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 13, chapter: 1, planned_episodes: 20, title: "Spotify：播客重整後真的退場了嗎", logline: "2019 買進創作與製作能力，2020 廣告成本承壓，2023 部分內容資產沖銷與若干節目關閉；2024 廣告業務毛利率回升，2025 又推出影片播客合作方案並讓部分相關成本進入 Premium。從服務措施判斷是否全面退出，不把分類變動誤當純節省。", names: ["Spotify", "Anchor", "Gimlet"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
+writeFileSync(path.join(dir, "script.md"), ["# X13 Spotify｜六章繁中逐句稿 v11", "", `離線前製；\`video.json\` SHA-256：\`${hash}\`。未獨立逐句審核、盲評、配音或測量實際時長。濃縮開場後接正式 5 秒片頭；最後三句後接正式 21 秒 v4 片尾。`, "", ...chapters.flatMap((rows, i) => [`## 第 ${i + 1} 章｜${titles[i]}${i === 0 ? "（開場濃縮）" : ""}`, "", ...rows.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
 writeFileSync(path.join(dir, "line-source-matrix.md"), ["# X13 Spotify｜作者逐句來源索引", "", `\`video.json\` SHA-256：\`${hash}\`。作者標記不等於獨立來源審核；來源 URL 與邊界見 [source-matrix.md](source-matrix.md)。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |", ...allRows.map(row => `| \`${row.id}\` | ${row.text.replaceAll("|", "\\|")} | ${row.refs.join("、") || "敘事分析／提問"} |`), ""].join("\n"));
 console.log(JSON.stringify({ video_sha256: hash, lines: allRows.length, scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, opening_chars: chapters[0].map(row => row.text).join("").length, body_chars: chapters.slice(1).flat().map(row => row.text).join("").length }, null, 2));
