@@ -1,7 +1,7 @@
 ---
 id: 2026-10-19-worker-video-languages-five
 title: Video worker makes es, pt, id, vi, th captions, titles and dubs
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-opus-5.5-worker-dubs-five
