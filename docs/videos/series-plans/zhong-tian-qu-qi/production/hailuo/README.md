@@ -58,6 +58,15 @@
     - 要等各集的配音都組完才跑，因為 assemble-v4 每次都會重寫該集的 `segments-v4/lines`。
   - `youtube-locales/<locale>.json` 放各語言的劇名，以及每集和合集的標題、說明。
     - 只要某個語言有合集那一段，就會寫進 `.youtube.json` 的 `localizations`。
+    - 說明裡的「0:00 第1話」那幾行，時間會照這次成片的章節重寫，不用手改。
+  - 頭尾：站主 2026-10-20 定，合集前面接頻道片頭、後面接 21 秒的結束畫面片尾（`docs/videos/BRANDING.md`）。
+    - 素材讀 `<VIDEO_WORKDIR>/_branding/current.json`；`BRANDING=<pin.json>` 換一組，`BRANDING=none` 不接。
+    - 片頭片尾是 30 fps，各集是 24 fps：整支用各集的 24 fps 重新編碼一次（crf 18）。
+    - CC、章節、說明的時間與每個語言的配音，都往後移片頭的長度；配音的頭尾用片頭片尾原本的聲音。
+    - 每個語言的說明最後加訂閱連結 `https://www.youtube.com/@Mokaair?sub_confirmation=1`。
+    - 影片卡和訂閱鈕要在 Studio 設：「片尾」→「從影片匯入」選 `oxEtlA8GWas`，起點是片長減 17 秒。腳本會印出時間，也寫在 `.youtube.json` 的 `end_screen`。
+  - `local/prep-import.mjs 1-5` 會把合集的每個語言一起放進匯入資料夾：`dub.<l>.m4a`、`<l>.srt`、`description.<l>.txt`，接著跑 `import --languages`。
+  - 各集重剪過，合集就要重做（不要 `REUSE=1` 沿用舊的 parts）。
 
 ### 多語配音（2026-10-18 起八種語言）
 
