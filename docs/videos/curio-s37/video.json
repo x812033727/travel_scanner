@@ -1,0 +1,1661 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s37",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，清楚區分作者親歷、叔父死訊與他的推測。",
+    "performance": "順著叔父的船和母子的逃生前進；疑問留一拍，對來源界線不作戲劇化斷言。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "pl003",
+      "payoff": "pl017",
+      "what": "船去救誰"
+    },
+    {
+      "setup": "pl004",
+      "payoff": "pl067",
+      "what": "母親叫他先走時的選擇"
+    },
+    {
+      "setup": "pl005",
+      "payoff": "pl090",
+      "what": "海邊遺體與少年見證位置"
+    },
+    {
+      "setup": "pl006",
+      "payoff": "pl089",
+      "what": "作者親見與近時聽聞的界線"
+    },
+    {
+      "setup": "pl018",
+      "payoff": "pl024",
+      "what": "叔父船轉向哪裡"
+    },
+    {
+      "setup": "pl023",
+      "payoff": "pl027",
+      "what": "船能否靠岸"
+    },
+    {
+      "setup": "pl029",
+      "payoff": "pl030",
+      "what": "叔父是否真心鎮定"
+    },
+    {
+      "setup": "pl036",
+      "payoff": "pl037",
+      "what": "眾人選屋內還是戶外"
+    },
+    {
+      "setup": "pl042",
+      "payoff": "pl043",
+      "what": "叔父倒下的原因"
+    },
+    {
+      "setup": "pl046",
+      "payoff": "pl047",
+      "what": "叔父出事時少年在哪裡"
+    },
+    {
+      "setup": "pl053",
+      "payoff": "pl054",
+      "what": "房屋天亮後是否安全"
+    },
+    {
+      "setup": "pl059",
+      "payoff": "pl064",
+      "what": "黑雲延伸到哪裡"
+    },
+    {
+      "setup": "pl066",
+      "payoff": "pl067",
+      "what": "小普林尼是否放開母親"
+    },
+    {
+      "setup": "pl073",
+      "payoff": "pl074",
+      "what": "黑暗裡如何找人"
+    },
+    {
+      "setup": "pl076",
+      "payoff": "pl077",
+      "what": "米塞努姆的傳言真假"
+    },
+    {
+      "setup": "pl082",
+      "payoff": "pl083",
+      "what": "黑暗是否散去"
+    },
+    {
+      "setup": "pl087",
+      "payoff": "pl089",
+      "what": "少年如何知道叔父結局"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "火山爆發時，小普林尼人在龐貝嗎？｜奇聞檔案局",
+    "description": "維蘇威火山爆發時，小普林尼給塔西佗的兩封信，分別記述叔父帶船靠向斯塔比亞，以及自己與母親在米塞努姆逃避地震、黑雲與火山灰。本集區分他親眼所見、事後聽聞和自己的推測；確切月日仍有版本問題，不以此英譯本獨斷。插圖為卡通示意。資料查核於 2026-10-19。",
+    "tags": [
+      "小普林尼",
+      "老普林尼",
+      "維蘇威火山",
+      "龐貝",
+      "米塞努姆",
+      "斯塔比亞",
+      "古羅馬",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "他在龐貝？",
+      "tag": "維蘇威火山",
+      "sub": "兩封信的視角",
+      "shot": "pl002"
+    }
+  },
+  "sources": [
+    {
+      "title": "Pliny the Younger to Tacitus, Letters LXV–LXVI, GITenberg pinned English text",
+      "url": "https://github.com/GITenberg/Letters-of-Pliny_2811/blob/959ded9fab0f9d54768d2dbfad860b79c864c4c8/2811.txt#L3500-L3732",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "pl001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a the son in plain clothes holding his mother’s hand on a road outside a coastal town, a dark cloud over the bay, dim morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl001",
+          "text": "維蘇威火山爆發時，海灣對岸的路上，小普林尼握緊母親的手。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "灰雲下，少年的手沒有鬆開"
+    },
+    {
+      "id": "pl002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of the son in plain clothes looking toward a distant dark cloud over the sea, soft side light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl002",
+          "text": "他們前方有一團黑雲，身後的人群正往外擠。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl003",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of fleet commander in a plain cloak holding a ship railing in grey sky light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl003",
+          "text": "這封信後來會寫到一艘朝火山開去的船；它要救誰？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of worried mother in a plain shawl reaching toward her son beside a quiet road, soft grey light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl004",
+          "text": "還會寫到一位母親，叫兒子自己先走；他會放手嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl005",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of the son staring at a blank letter on a table, soft side light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl005",
+          "text": "海邊有人找到一具遺體；寫信的人看見了那一刻嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl006",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of teenage scholar in plain clothes looking across a bay toward a distant dark ridge, muted morning light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl006",
+          "text": "這些畫面寫在同一組信裡；他真正親眼看見的是哪一段？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of naval officer in a plain cloak standing at a modest coastal command house in morning light, soft grey light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl007",
+          "text": "這團雲最早引起注意時，叔父正在米塞努姆指揮艦隊。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "叔父先看見那團雲"
+    },
+    {
+      "id": "pl008",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of woman in a plain shawl pointing toward a distant rising cloud from a shaded courtyard, soft side light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl008",
+          "text": "小普林尼的母親叫叔父抬頭，看看遠處那個不尋常的形狀。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl009",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of grey-haired scholar in a plain cloak setting down a blank scroll on a simple desk, muted morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl009",
+          "text": "叔父剛吃過一點東西，原本已回到書桌。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a grey-haired scholar shading his eyes on a low terrace beneath a tall branching cloud, muted sky light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl010",
+          "text": "他走到高處看，雲向上直伸，又在頂端分岔，像松樹。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl011",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of grey-haired scholar in a plain cloak peering toward a hazy ridge across the bay, soft side light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl011",
+          "text": "距離太遠，他一開始甚至無法確定雲從哪座山升起。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl012",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an older scholar watching a cloud rise over a distant mountain across the water, soft grey light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl012",
+          "text": "後來才確認，那是維蘇威火山；但叔父要怎麼靠近？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of fleet commander in a plain cloak gesturing toward a small moored vessel, soft grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl013",
+          "text": "這位叔父想近看，先叫人準備一艘輕便的船。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl014",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of the son in plain clothes pausing beside a blank writing tablet, soft side light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl014",
+          "text": "他問侄子要不要同行。這是少年差一點走上的那條路。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl015",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the son in plain clothes bending over a blank wax tablet at a table, muted morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl015",
+          "text": "小普林尼選擇留下，繼續做叔父交給他的抄寫工作。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of naval officer in a plain cloak receiving a folded blank note in a doorway, soft grey light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl016",
+          "text": "可是還沒出門，一張求救字條送到了叔父手上。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl017",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of fleet commander in a plain cloak reading a blank note near a coastal window, soft side light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl017",
+          "text": "開頭那艘要往火山去的船，收到瑞克蒂娜的求救；她只能從海上逃。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl018",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of naval officer in a plain cloak turning from a desk toward anchored galleys, muted morning light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl018",
+          "text": "原本的觀察航程變成救人行動。他會把船開到哪裡？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl019",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of fleet commander in a plain cloak stepping aboard a galley in grey sky light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl019",
+          "text": "叔父下令軍艦出海，打算幫瑞克蒂娜和沿岸其他人。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "船往灰燼裡走"
+    },
+    {
+      "id": "pl020",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of the son watching a galley leave the harbor from shore, soft side light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl020",
+          "text": "小普林尼沒有登船。以下船上的經過，來自他的後來記述。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl021",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of fleet commander in a plain cloak dictating observations from a galley deck, muted daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl021",
+          "text": "船朝別人逃離的方向走，叔父一路口述自己看到的現象。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of naval officer in a plain cloak raising an arm against falling ash on deck, soft grey light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl022",
+          "text": "船越靠近山，熱灰、浮石和黑色石塊落得越密。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl023",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of fleet commander in a plain cloak studying a troubled shoreline from a galley, soft side light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl023",
+          "text": "海水忽然退去，岸邊又有岩塊擋路。這樣還靠得上岸嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl024",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of naval officer in a plain cloak pointing across a bay from a galley deck, muted daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl024",
+          "text": "舵手勸他回頭。叔父卻叫他轉向朋友所在的斯塔比亞。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl025",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a worried householder looking toward his luggage already on a moored boat, soft grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl025",
+          "text": "那位朋友叫龐波尼亞努斯，已把行李送上船。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl026",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of worried householder with a travel bag watching a moored boat in an onshore wind, soft side light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl026",
+          "text": "可是風往岸上吹，朋友的船出不了海。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl027",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of fleet commander in a plain cloak stepping from a galley onto a shore in grey light, muted daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl027",
+          "text": "風卻正好把叔父的船送到他身邊。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl028",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of naval officer in a plain cloak reassuring one anxious friend near a villa, soft overcast light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl028",
+          "text": "岸上的人驚慌，叔父抱住朋友，想讓他鎮定。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl029",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of fleet commander in a plain cloak seated alone before a simple evening meal, soft side light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl029",
+          "text": "他洗澡、吃晚餐，表現得很從容；心裡也這麼平靜嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl030",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a mature letter writer in a plain robe pausing over a blank letter in lamplight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl030",
+          "text": "小普林尼在信裡也保留了這個疑問：至少看起來如此。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of naval officer in a plain cloak pointing to distant firelight from a villa doorway, dim ash light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl031",
+          "text": "夜裡，山邊亮起火光。叔父對朋友說，那只是村落在燒。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "斯塔比亞的夜還沒有結束"
+    },
+    {
+      "id": "pl032",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of fleet commander in a plain cloak studying faraway light beyond dark rooftops, dim ash light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl032",
+          "text": "我們只知道他說了這句話，不能把那個解釋當成火光的測量。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl033",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a fleet commander asleep on a plain bed inside a dark villa, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl033",
+          "text": "他接著躺下睡著。僕人聽見他沉重的呼吸聲。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl034",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of household attendant noticing ash rising against a villa doorway, dim ash light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl034",
+          "text": "屋外的院子卻逐漸積滿落石與灰，再待下去就難走了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl035",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of fleet commander in a plain cloak rising beside a shaking wall at dawn, dim ash light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl035",
+          "text": "他們叫醒叔父。留下的屋子在震，外頭又一直落石。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl036",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of naval officer in a plain cloak looking between a doorway and a rocking wall, dim ash light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl036",
+          "text": "要躲在屋內，還是冒著落石走出去？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a fleet commander with a pillow tied around his head by cloth in an ash covered open field, weak lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl037",
+          "text": "眾人走到空地，用布把枕頭繫在頭上擋落石。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl038",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of naval officer in a plain cloak holding a small torch in thick ash darkness, dim ash light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl038",
+          "text": "明明已是白天，現場卻比深夜還暗，只能靠燈火辨路。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl039",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of grey-haired fleet commander in a plain cloak looking at rough waves from a dark shore, dim ash light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl039",
+          "text": "他們到海邊試看能否出航，浪還是太大。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl040",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of naval officer in a plain cloak resting on spread sailcloth near the shore, dim ash light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl040",
+          "text": "叔父躺在鋪開的帆布上，兩次要水喝。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl041",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of grey-haired fleet commander in a plain cloak rising as companions recede in smoky light, dim ash light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl041",
+          "text": "接著一股硫磺氣味伴著火光逼近，其他人往外散。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl042",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two household attendants supporting an older commander at the shoreline, dim ash light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl042",
+          "text": "兩名僕人扶他起身，他卻立刻倒下。究竟是什麼奪走性命？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl043",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of mature letter writer in a plain robe pausing over a blank letter at a desk, soft overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl043",
+          "text": "小普林尼猜是有害氣體，還提到叔父向來喉嚨不好。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl044",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of mature letter writer in a plain robe setting down a stylus beside a blank page, mild light from the left",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl044",
+          "text": "這是寫信人的推測，不是他在海邊親眼驗出的死因。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl045",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a household attendant looking down solemnly on a quiet shore, muted daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl045",
+          "text": "幾天後遺體被發現，外表沒有暴力傷痕，衣服也還在身上。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the son in plain clothes looking back toward his mother at a coastal house, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl046",
+          "text": "可是叔父出事時，小普林尼和母親又在經歷什麼？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl047",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of short-haired youth reading a blank scroll beside a coastal window, mild light from the left",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl047",
+          "text": "叔父離港後，小普林尼留在米塞努姆繼續讀書。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "另一邊，米塞努姆的地面開始搖"
+    },
+    {
+      "id": "pl048",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a teenage scholar waking in a small room as a lamp shakes, dim lamp light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl048",
+          "text": "他洗澡、吃飯，短短睡了一會兒，夜裡地震變得猛烈。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of worried mother in a plain shawl entering her son's room under lamplight, faint lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl049",
+          "text": "母親衝進他的房間要叫醒他，他也正想去叫母親。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl050",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of short-haired youth in plain clothes sitting with his mother in an open courtyard, faint lamp light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl050",
+          "text": "兩人到屋與海之間的小院坐下。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl051",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the son in a plain tunic holding a blank scroll in a trembling courtyard, faint lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl051",
+          "text": "他說那時自己十八歲，竟還拿起李維的書做摘錄。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of visitor in a plain travel cloak frowning at a young student with a blank scroll, faint lamp light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl052",
+          "text": "一位從西班牙來的叔父朋友，看見書就責備他太鎮定。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl053",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of short-haired youth glancing up from a scroll at shaking walls, faint lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl053",
+          "text": "小普林尼仍繼續讀。可是天亮後，房子能讓他讀下去嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl054",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of teenage scholar in a pale tunic looking at wavering buildings in grey dawn light, muted daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl054",
+          "text": "晨光又暗又模糊，周圍建築搖得厲害。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl055",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of short-haired youth in a pale tunic guiding his mother through a crowded lane, soft overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl055",
+          "text": "母子決定離開城鎮，驚慌的人群緊跟著擠上來。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl056",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of the son in a plain tunic bracing a rocking cart on level ground, mild light from the left",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl056",
+          "text": "到了較空曠的地方，馬車在平地上仍前後晃動。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl057",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of short-haired youth crouching beside a cart wheel and large stones, muted daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl057",
+          "text": "有人用石頭支住車輪，也沒能讓它穩下來。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of teenage scholar in a pale tunic staring at an exposed shore in dim daylight, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl058",
+          "text": "海面看起來退了，岸邊露出一些海中生物。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl059",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of short-haired youth in a pale tunic turning toward a huge cloud beyond the bay, mild light from the left",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl059",
+          "text": "車站不穩，海也退了；更大的黑雲正往哪裡去？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl060",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the son in a plain tunic shielding his eyes against flickering cloud light, muted daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl060",
+          "text": "另一邊，一團黑雲被閃光劈開，後面還看得見火光。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "黑雲遮住海灣"
+    },
+    {
+      "id": "pl061",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of visitor in a plain travel cloak urging one young student to leave a roadside, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl061",
+          "text": "那位西班牙朋友催母子快逃，說叔父也一定希望他們活著。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl062",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of short-haired youth holding his mother's arm beside the road, mild light from the left",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl062",
+          "text": "母子說，叔父生死未明，他們無法只想自己的安全。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl063",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of teenage scholar in a pale tunic watching one traveler recede down the road, muted daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl063",
+          "text": "朋友先離開了。接著雲慢慢蓋住海面。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of short-haired youth in a pale tunic peering toward a concealed island across the water, soft overcast light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl064",
+          "text": "卡普里島和米塞努姆岬角，都消失在雲幕後面。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl065",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of worried mother in a plain shawl gesturing for her son to leave on a road, mild light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl065",
+          "text": "開頭那位母親真的要求兒子先走；她覺得自己會拖慢他。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl066",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the son in a plain tunic hesitating with one hand still on his mother's, muted daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl066",
+          "text": "如果他真照做，這封逃生信會成為誰的故事？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of short-haired youth taking his mother's hand on a dim road, soft overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl067",
+          "text": "他拒絕，握住母親的手，要她一起走。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl068",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of worried mother in a plain shawl walking beside her son under a low grey sky, mild light from the left",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl068",
+          "text": "母親跟上，卻一路怪自己拖累了兒子。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl069",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of teenage scholar in a pale tunic looking behind him at drifting ash, muted daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl069",
+          "text": "灰開始落下，起初還不多。小普林尼回頭看。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of short-haired youth in a pale tunic watching a crowded road as dark mist approaches, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl070",
+          "text": "黑霧沿著道路追來；主路上又擠著人。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl071",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of the son in a plain tunic guiding his mother off a crowded road, mild light from the left",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl071",
+          "text": "他怕在黑暗中跌倒，被人群踩過去，便帶母親離開主路。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl072",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of short-haired youth sitting beside his mother in near darkness, barely visible ash darkness",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl072",
+          "text": "他們才坐下，四周突然黑得像房間裡所有燈都熄了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl073",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of teenage scholar in a pale tunic straining to hear in a dark open field, dim ash light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl073",
+          "text": "在這種黑裡，人要怎麼找到離散的親人？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl074",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of short-haired youth in a pale tunic listening to unseen voices in ash darkness, dim ash light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl074",
+          "text": "婦女尖叫，孩子哭喊，有人用聲音尋找父母或配偶。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "聲音留在黑暗裡"
+    },
+    {
+      "id": "pl075",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the son in a plain tunic looking up into an almost black sky, barely visible ash darkness",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl075",
+          "text": "有人以為世界就要一起結束；信裡寫的是當時的恐懼。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl076",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of short-haired youth listening to a worried traveler in darkness, dim ash light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl076",
+          "text": "另有人喊米塞努姆某處倒了、某處起火。這消息是真的嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a mature letter writer in a plain robe reviewing a blank letter at a desk, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl077",
+          "text": "小普林尼後來明說，那兩個消息是假的。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl078",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of teenage scholar in a pale tunic watching distant firelight from a dark field, barely visible ash darkness",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl078",
+          "text": "遠處一度亮了些，他們以為是火要燒近，而非白天回來。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of short-haired youth in a pale tunic drawing his mother closer under a darkening sky, dim ash light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl079",
+          "text": "火終究落在離他們較遠的地方，黑暗卻再次罩下。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl080",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of the son in a plain tunic brushing thick ash from a plain cloak, dim ash light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl080",
+          "text": "灰這次下得很重，兩人得不時站起來，把身上的灰抖掉。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl081",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of short-haired youth shaking ash from his mother's shoulder, dim ash light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl081",
+          "text": "他說不這樣做，灰可能把人壓住。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl082",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of teenage scholar in a pale tunic facing the hidden road with his mother, dim ash light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl082",
+          "text": "那片黑會不會再退？母子能否回到原來的城鎮？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl083",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of short-haired youth in a pale tunic looking toward a pale sun through haze, mild light from the left",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl083",
+          "text": "黑暗終於慢慢散去，太陽再露出來，光卻很暗淡。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "白天回來，消息仍沒有來"
+    },
+    {
+      "id": "pl084",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the son in a plain tunic touching ash on a low garden wall, muted daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl084",
+          "text": "他們看見周圍物件覆滿灰，像下了一場雪。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of short-haired youth entering a coastal house with his mother, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl085",
+          "text": "母子回到米塞努姆，勉強休息；地震仍在繼續。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl086",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of teenage scholar in a pale tunic sitting beside a quiet doorway as people pass, mild light from the left",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl086",
+          "text": "周圍還有人散布可怕預言，他們卻沒有再次離開。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl087",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a son waiting by a Misenum courtyard doorway with his mother, muted daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl087",
+          "text": "他們要等叔父的消息。海邊的結局，寫信人究竟怎麼知道？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl088",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mature letter writer in a plain robe composing a blank letter at a desk, soft window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl088",
+          "text": "後來塔西佗請小普林尼寫叔父之死。他得說清自己怎麼得知。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "兩封信，兩個見證位置"
+    },
+    {
+      "id": "pl089",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a mature letter writer in a plain robe placing two blank sheets side by side, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl089",
+          "text": "信末說，有的親眼看見，有的是事後立刻聽來；母子逃生是他的記憶。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl090",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a mature letter writer in a plain robe looking across a bay from a window, soft window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl090",
+          "text": "開頭海邊找到的遺體呢？少年不在斯塔比亞，那是事後消息。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl091",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mature letter writer in a plain robe writing a second blank letter by a window, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl091",
+          "text": "塔西佗又問他的遭遇，才有母子逃生的第二封信。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl092",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a son waiting beside his mother in a Misenum courtyard, soft grey daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl092",
+          "text": "第二封信停在母子回城等候；他們當時仍不知道叔父的下落。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl099",
+      "template": "outro",
+      "data": {
+        "title": "人在米塞努姆",
+        "sub": "見證有邊界",
+        "cta": "訂閱奇聞檔案局"
+      },
+      "lines": [
+        {
+          "id": "pl099",
+          "text": "小普林尼在米塞努姆，不在龐貝；叔父的末路，是他後來整理的見聞。",
+          "emotion": "自然說故事"
+        },
+        {
+          "id": "pl100",
+          "text": "你最意外的是哪一刻：叔父轉向救援，還是兒子沒有鬆開母親的手？",
+          "emotion": "自然說故事"
+        },
+        {
+          "id": "pl101",
+          "text": "想繼續用原始紀錄拆開歷史現場與後來傳說，歡迎訂閱奇聞檔案局。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "存檔"
+    }
+  ]
+}
