@@ -4,6 +4,8 @@ Mokaair 選定一組 1920×1080、30 fps 的固定素材：5 秒／150 格無標
 以及 21 秒／630 格的結束畫面片尾（下節）。片頭音軌沿用原素材的音效。
 媒體和選定的 `manifest.json` 留在 repository 外；Git 只保存工具、測試及規格。
 
+2026-10-20 奇聞檔案局歷史長片在雲端工作區另裝一組[原創本機候選](branding-release/2026-10-20-curio-local-bookends.md)，供尚未上傳的五支影片重剪。候選與先前核定的 v4 素材是不同的 bytes；各集以自己的 `branding.json` 和成片核准 hash 為準。
+
 畫面右上角的頻道浮水印是另一件事，它跟著程式碼走，見 [WATERMARK.md](WATERMARK.md)。
 片頭片尾本身不疊浮水印。
 
