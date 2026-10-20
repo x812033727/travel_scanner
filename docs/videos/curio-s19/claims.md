@@ -20,7 +20,7 @@
 | `et013` | 信裡的巴黎，有街道、河岸，還有古老的石造建築。 | [R57–63](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L57) |
 | `et014` | 在他們眼中，鐵製高塔一建成，這幅畫就會走樣。 | [R48–53](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L48), [R83–92](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L83) |
 | `ea102` | 他們還怪市府迎合「造機器的人」的商業想像，任巴黎受損。 | [R67–73](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L67) |
-| `et015` | 抗議信寫道，人們早把它叫作「巴別塔」。 | [R52–55](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L52) |
+| `et015` | 抗議者寫道，人們早把它叫作「巴別塔」。 | [R52–55](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L52) |
 | `et016` | 比起名字，他們更怕高塔會壓住哪些建築？ | [R83–92](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L83) |
 | `et017` | 一根巨大的黑色工廠煙囪，壓在巴黎上空。 | [R83–85](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L83) |
 | `et018` | 聖母院、羅浮宮和凱旋門，都被寫進陰影裡。 | [R83–88](https://github.com/orkeilius/gutenberg_fr_mirror/blob/a10e54e67c3f6945d1f0123d76732950889d1447/files/7/7/9/8/77985/77985.txt#L83) |

@@ -36,12 +36,14 @@ scope:
 - [x] R6 只改寫 12 個被標句及相同的 claims，重產精確劇本；字數／數字檢查與 lint 過關，未重新配音。
 - [x] R6 精確劇本交新讀者盲讀，13/13 通過；獨立來源及畫面覆核指出 `et027` 時序與片尾卡片歸屬兩項待修，原收據封存。
 - [x] R7 僅修 `et027` 時序與片尾卡片歸屬，重產精確劇本、逐句 claims；lint 與改寫限制再過。
-- [ ] 把 R7 精確劇本雜湊交新的來源隔離讀者盲讀 13 題，再做來源及卡片獨立覆核；通過後才更新本機劇本關卡。
-- [ ] R7 針對 12 句 TTS、check-audio 零旗標、實測正文至少 8 分鐘，再處理整集插圖上限與後續媒體。
+- [x] R7 精確劇本經新讀者來源隔離盲讀 13/13、獨立來源及卡片覆核通過；本機大綱及劇本關卡只記委託製作許可，並非站主本人審稿。
+- [x] R7 TTS 僅重錄十二句、其餘 97 次請求重用；110 句全檢剩 `et015` 一旗標，實測正文 511.2 秒。
+- [ ] R8 最後一輪只改 `et015`，待全新精確劇本盲讀及來源覆核後重錄該句，再全檢 110 句至零旗標、實測正文至少 8 分鐘。
+- [ ] 零音訊旗標及整集插圖／配樂上限確認後，處理插圖與後續媒體。
 
 ## How to verify
 
-史料入口及待決問題在 `docs/videos/curio-s19/research.md`；逐句對照在 `claims.md`。R7 `script.md` SHA-256 `9067354cd8409e3202d0562f12006374a05f297c6d95c645d220d2c8bed2d6df`，110 句、100 張預定插圖，`lint --slug curio-s19 --json` 為 0 errors／0 warnings。兩階段改寫、R6 退回與 R7 修正見 `audio-rewrite-round1.md`、`source-visual-round6.md`、`audio-r7-source-repair.md`；實測 R7 正文及音訊仍待完成。
+史料入口及待決問題在 `docs/videos/curio-s19/research.md`；逐句對照在 `claims.md`。R8 `script.md` SHA-256 `b9d5d83154f03f8aba0445b3c58ea92e81072527dbbeafa83726464682196293`，110 句、100 張預定插圖，`lint --slug curio-s19 --json` 為 0 errors／0 warnings。R7 精確盲讀、來源覆核、十二句 TTS、實測正文及單一剩餘旗標見 `verify-7.md`；最後一輪 `et015` 調整見 `audio-rewrite-round2.md`。R8 待獨立審讀，尚未 TTS。
 
 ## Notes
 
@@ -52,3 +54,4 @@ scope:
 - S05 仍在語音與成片製作；S19 只做無付費前期。根集要求避開目前 MiniMax 限流，付費製作時段由根集另行協調。
 - 2026-10-20：此票從先前 `codex-s05` 認領轉交 `codex-gpt6-s19-audio`，僅改 `docs/videos/curio-s19` 及本票。R5 的 `verify-5.md` 記下 110 句、實際正文 510.2 秒、兩輪重錄後 12 句旗標與配樂成果；其本機 script approval 綁舊 SHA，不能套到 R6。R6 以 [audio-rewrite-round1.md](../../docs/videos/curio-s19/audio-rewrite-round1.md) 列出十二句原文／轉寫／改寫，當時 R6 稿 SHA 為 `0ba634669a95b549f32e2d3fbc9250a68454ed69099e6940c1e819269836ea75`；`rewriteProblems` 0 違規、lint 0／0，TTS dry-run 僅 12 句約 274 字元待合成。本輪尚未送新 TTS 或 MiniMax；先等獨立盲讀與史料覆核。
 - 2026-10-20：R6 獨立盲讀 13/13，來源／視覺覆核 110/110 對照及 100/100 插圖提示詞通過，但 `et027` 的「刊出後」暗示未證的出版先後；片尾卡片把艾菲爾自述二十年經營權當成直接事實。兩份原收據保存在 `blind-seal-round6.md`、`source-visual-round6.md`。R7 修成「面對這封抗議信…」及「艾菲爾說：他有二十年經營權…」；[修正收據](../../docs/videos/curio-s19/audio-r7-source-repair.md) 列出舊／新完整 SHA、來源邊界和估算片長。R7 待全新盲讀／來源覆核，尚未 TTS 或畫圖。
+- 2026-10-20：R7 全新獨立盲讀 13/13、來源／畫面 110/110、130/130 固定連結、100/100 插圖提示詞與片尾卡片均過；憑根協調委託更新本機 outline/script gate，收據明言站主本人未讀。R7 TTS 只合成十二句 273 字元，音訊 567.567 秒，正文 511.2 秒；110 句全檢剩 `et015` 一旗標（Jev 0.04，`抗議信` 聽成 `康意興`），見 [第七輪收據](../../docs/videos/curio-s19/verify-7.md)。R8 最後一輪只把 `et015` 改成「抗議者寫道…」，舊劇本 gate 因此過期；新盲讀及來源覆核前不送 R8 TTS、音訊審核或圖片。
