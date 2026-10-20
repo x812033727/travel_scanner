@@ -32,7 +32,8 @@ The brand-story series needs another recognizable, nonduplicate episode after X0
 - [x] Read accessible SEC source documents and write source notes plus claim matrix.
 - [x] Draft six-body-chapter treatment, 105-line script and shot JSON, two Shorts, quote and publishing handoff.
 - [x] Freeze main/Shorts SHA and obtain independent SEC source audit, including exact shot-and-line Shorts checks.
-- [ ] Obtain two independent script-only blind reads; resolve supported findings and rebind any changed SHA.
+- [x] Obtain two independent script-only blind reads of the first SHA and resolve their shared findings in a revised candidate.
+- [ ] Re-audit the revised SHA against sources and obtain two new independent script-only blind passes.
 - [ ] Run repository checks, commit, push and open draft PR.
 
 ## How to verify
@@ -53,4 +54,4 @@ Compare generated SHA-256 against all review receipts, check Shorts phrases and 
 
 SEC archive and `data.sec.gov` pages are accessible; `ebayinc.com` and live YouTube were blocked in this cloud, so no factual claim relies on them. Relevant accessible documents and scope limits are recorded in `source-notes.md`. C10 OXO belongs to a separate twenty-episode plan; the existing X01–X09 angles do not include eBay/PayPal. The user authorized choosing recommended decisions and opening PRs, but this task intentionally makes no paid calls. Paired video-tool token works in this environment; official selected 5 s/21 s branding assets and clickable Studio URLs are still pending media handoff. Draft script estimate is ~8:58 substantive body, to be measured after TTS.
 
-The independent SEC source receipt `reviews/source-review-v2-root.md` passes exact SHA `7cf5f20c…` main / `9c82557f…` Shorts. The two narrative blind reads remain pending; the draft PR is a review surface, not a finished episode.
+The independent SEC source receipt `reviews/source-review-v2-root.md` passed the earlier SHA `7cf5f20c…` main / `9c82557f…` Shorts. Two blind receipts on that SHA both failed shared `no_toc`, `chapters_link` and `no_recap` gates, so the narration, loops and Shorts were revised. Those historical receipts cannot pass the new SHA; independent delta source review and a new two-reader blind pass remain open. Draft PR #1627 is a review surface, not a finished episode.

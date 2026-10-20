@@ -13,4 +13,4 @@
 
 **硬上限 US$25，含所有已花、已承諾、必要重試及稅費。** 生成前讀回當期模型單價，按整支實際請求數與失敗重試上限列總帳；總額若超過 US$25，先縮減可選重試與媒體範圍，再決定是否能保持至少八分鐘正文和必要 QA。不能漏算字幕、Shorts 或複查來湊過上限。若源稿或實測時長需改，變更後重新估價、重跑受影響的查核和審查。
 
-免費已可先做：`node docs/videos/story-everyday-ebay-paypal-x10/compose-video.mjs`、`node docs/videos/story-everyday-ebay-paypal-x10/compose-shorts.mjs`、`node tools/video/cli.mjs lint --file docs/videos/story-everyday-ebay-paypal-x10/video.json --json`、來源逐句對照和盲讀。稿面 8:58 正文只是估時；正式 TTS 後要用時間軸及音檔量出**實質正文至少八分鐘**，片頭、片尾、靜音、慢播都不能計入。
+免費已可先做：`node docs/videos/story-everyday-ebay-paypal-x10/compose-video.mjs`、`node docs/videos/story-everyday-ebay-paypal-x10/compose-shorts.mjs`、`node tools/video/cli.mjs lint --file docs/videos/story-everyday-ebay-paypal-x10/video.json --json`、來源逐句對照和盲讀。稿面約 9:00 正文只是估時；正式 TTS 後要用時間軸及音檔量出**實質正文至少八分鐘**，片頭、片尾、靜音、慢播都不能計入。
