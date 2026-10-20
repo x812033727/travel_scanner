@@ -4,8 +4,8 @@ title: S37 Pliny at Misenum history episode
 status: blocked
 priority: P2
 area: docs
-owner: codex-s37-r2
-claimed_at: 2026-10-20T00:10:22Z
+owner: codex-s37-r3
+claimed_at: 2026-10-20T00:27:06Z
 created_at: 2026-10-19T23:53:49Z
 completed_at:
 branch:
@@ -25,7 +25,7 @@ The next Curio history episode asks whether Pliny the Younger witnessed the Vesu
 - [x] Reopen and hash pinned LXV/LXVI, record claims and source limitations.
 - [x] Draft options, chosen brief, 8+ minute screenplay, 75–120 still shots and loop map.
 - [x] Pass video lint and relevant documentation checks.
-- [ ] Fresh independent 13 question blind read and final source/visual review of the **R2 exact hash** before any paid media; R1 independently found four required narrative failures and a source/prompt mismatch.
+- [ ] Fresh independent 13 question blind read and final source/visual review of the **R3 exact hash** before any paid media; R2 blind read reached 12/13 with `chapters_link` still blocked.
 - [ ] Owner reviews script and whole episode media budget, then continue approved production gates.
 
 ## Steps
@@ -33,7 +33,9 @@ The next Curio history episode asks whether Pliny the Younger witnessed the Vesu
 - [x] Create research, brief, claims, `video.json`, generated `script.md`, and verification handoff under `docs/videos/curio-s37`.
 - [x] Correct R1 independent source and visual findings; remove unsupported exact date and firsthand Pompeii imagery.
 - [x] Rebuild the story in chronological intercuts after R1 found a long rewind, repeated leave-behind line, and non-event chapters; correct `pl002` cloud position, `pl037` pillow placement, `pl026` bag, and remove the premature `pl066` held hand.
-- [ ] Run a **new R2** independent 13 question narrative panel and full pinned-source/visual pass; preserve the R1 failure in `verify-2.md`.
+- [x] Run an independent R2 13 question panel and full pinned-source/visual pass; preserve the 12/13 narrative failure and source/pass notes in `verify-3.md`.
+- [x] Revise the R3 first sentence after `[pl033]` to answer the boy's sleep question, remove the stale `[pl053] -> [pl054]` loop, and apply the independent precision notes.
+- [ ] Run a **new R3** script-only 13 question panel and full pinned-source/91-prompt pass against the exact new hashes.
 - [ ] Complete audio, stills, music, cut and QA only after gates and budget review.
 
 ## How to verify
@@ -42,7 +44,9 @@ Run `node tools/video/cli.mjs lint --slug curio-s37 --json`, `npm run test:docs-
 
 ## Notes
 
-Blocked on a fresh independent 13-question blind read and full source/visual pass of the **R2** exact hashes; no paid media until those results and the whole episode budget gate are recorded. The prior `verify-2.md` is a transparent failed R1 review, not R2 approval.
+Blocked on a fresh independent 13-question blind read and full source/visual pass of the **R3** exact hashes; no paid media until those results and the whole episode budget gate are recorded. `verify-2.md` records the failed R1 review, while `verify-3.md` records the independent R2 12/13 result and the R3 handoff; neither is R3 approval.
+
+R3 corrects the only remaining R2 narrative blocker: the new chapter's first line `[pl047]` now directly answers `[pl033]` before asking about the stronger quake, which `[pl048]` resolves. The loop table now has 21 valid entries; the stale `[pl053] -> [pl054]` entry is gone. The R2 source/prompt auditor found no historical blocker among 94 lines or 91 images, only five line-precision and three illustration-precision notes; R3 addresses all eight without changing the story outcome. `lint` is 0 errors/0 warnings; estimated story body is 513.7 seconds (8:33.7). R3 script SHA-256 `91697aaab93400a16b226308a3b45aee35e14bacadec53ca20f3711a5d956cc5`; video JSON SHA-256 `fd2e427bee1caff84dfe005cf4485bcedbbb38352db11244a30b7de1f2d4730c`; claims SHA-256 `21541e383cdbdc6249aac6b4c78c17701ddc4920342c8851820529a3eba0e68f`. No paid media has been ordered for this version.
 
 R2 reorganized the 94 lines in two-bank night and morning order, with 91 still prompts and 22 declared open loops; it no longer finishes the uncle's death and then rewinds to the nephew's departure. `pl047`, `pl046`, `pl020`, and `pl092` add only details present in the pinned LXV/LXVI letters (earlier tremors, his own doubt about reading Livy, the cloud's changing colour, and his own fear). The current `keyframes --dry-run --takes 3` quote is 91 stills, US$1.23 for one pass, US$3.69 at three takes; **no image generation or other paid media was run**. Music quote is unavailable before TTS timeline creation. Lint is 0 errors/0 warnings; local docs-video tests passed 236/236 and task check exited 0 with pre-existing and temporarily overlapping S37-review task warnings. Estimated body excluding opener/outro is over eight minutes, subject to real TTS measurement.
 

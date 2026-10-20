@@ -68,11 +68,6 @@
       "what": "眾人選屋內還是戶外"
     },
     {
-      "setup": "pl053",
-      "payoff": "pl054",
-      "what": "房屋天亮後是否安全"
-    },
-    {
       "setup": "pl073",
       "payoff": "pl074",
       "what": "黑暗裡如何找人"
@@ -89,7 +84,7 @@
     },
     {
       "setup": "pl033",
-      "payoff": "pl048",
+      "payoff": "pl047",
       "what": "米塞努姆少年睡得安穩嗎"
     },
     {
@@ -315,7 +310,7 @@
       "lines": [
         {
           "id": "pl009",
-          "text": "叔父剛吃過一點東西，原本已回到書桌。",
+          "text": "叔父剛吃過一點東西，本來又回去看書。",
           "emotion": "自然說故事"
         }
       ]
@@ -459,7 +454,7 @@
       "lines": [
         {
           "id": "pl017",
-          "text": "開頭那艘要往火山去的船，收到瑞克蒂娜的求救；她只能從海上逃。",
+          "text": "來信的是住在山腳的瑞克蒂娜；她唯一的逃路在海上。",
           "emotion": "自然說故事"
         }
       ]
@@ -701,7 +696,7 @@
       "lines": [
         {
           "id": "pl033",
-          "text": "他接著睡著，僕人聽見沉重的呼吸聲；海灣另一岸的少年，睡得安穩嗎？",
+          "text": "他接著睡著，屋外的人聽見沉重的呼吸聲；海灣另一岸的少年，睡得安穩嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -710,14 +705,14 @@
       "id": "pl047",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a teenage scholar beside a blank scroll as a small oil lamp trembles, soft lamplight",
+        "prompt": "Close shot of a teenage scholar waking on a simple bed as a small oil lamp trembles, soft lamplight",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pl047",
-          "text": "先前幾天，地面也震過；在坎帕尼亞，這樣的晃動不算稀奇。這一晚呢？",
+          "text": "少年也睡了，卻只睡了短暫、不安穩的一覺。醒來時，地面還像前幾天那樣嗎？",
           "emotion": "自然說故事"
         }
       ],
@@ -727,14 +722,14 @@
       "id": "pl048",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a teenage scholar waking in a small room as a lamp shakes, dim lamp light",
+        "prompt": "Medium shot of a worried mother in a plain shawl steadying a small lamp against a shaking wall, dim lamplight",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pl048",
-          "text": "少年洗澡、吃飯，睡得短暫又不安穩；深夜，米塞努姆的地面越搖越厲害。",
+          "text": "前幾天的地震在坎帕尼亞並不稀奇；這一夜，米塞努姆卻搖得格外厲害。",
           "emotion": "自然說故事"
         }
       ]
@@ -775,7 +770,7 @@
       "id": "pl051",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of the son in a plain tunic holding a blank scroll in a trembling courtyard, faint lamp light",
+        "prompt": "Wide shot of a teenage scholar copying from an unmarked papyrus scroll onto a plain wax tablet in a trembling courtyard, faint lamplight",
         "camera": "drift left",
         "visual": "still"
       },
@@ -807,7 +802,7 @@
       "id": "pl052",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of visitor in a plain travel cloak frowning at a young student with a blank scroll, faint lamp light",
+        "prompt": "Medium shot of a traveler in a plain cloak frowning toward an open unmarked papyrus scroll and wax tablet on a courtyard bench, faint lamplight",
         "camera": "drift right",
         "visual": "still"
       },
@@ -1356,14 +1351,14 @@
       "id": "pl078",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of teenage scholar in a pale tunic watching distant firelight from a dark field, barely visible ash darkness",
+        "prompt": "Medium shot of a teenage scholar watching a faint glow through dark ash haze, very dim ambient light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pl078",
-          "text": "遠處一度亮了些，他們以為是火要燒近，而非白天回來。",
+          "text": "四周一度亮了些，他們以為是火要燒近，而非白天回來。",
           "emotion": "自然說故事"
         }
       ]
@@ -1420,7 +1415,7 @@
       "id": "pl092",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a teenage son beside his mother under falling ash in deep darkness, faint torch light",
+        "prompt": "Close shot of a teenage son beside his mother under falling ash in deep darkness, subtle ambient light outlining their faces",
         "camera": "drift left",
         "visual": "still"
       },
