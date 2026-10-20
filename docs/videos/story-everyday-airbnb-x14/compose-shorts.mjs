@@ -22,8 +22,8 @@ for (const raw of readFileSync(path.join(dir, "drafts/shorts.md"), "utf8").split
 }
 if (sections.length !== 2 || sections.some(short => short.rows.length !== 8)) throw new Error("Expected two eight-line Shorts");
 const shots = [
-  ["x14-b04-s26", "x14-b02-s17", "x14-b01-s01", "x14-b02-s20", "x14-b04-s26", "x14-b02-s11", "x14-b04-s26", "x14-b01-s01"],
-  ["x14-b05-s05", "x14-b05-s07", "x14-b05-s06", "x14-b05-s13", "x14-b05-s19", "x14-b06-s09", "x14-b06-s17", "x14-b05-s20"],
+  ["x14-b04-s25", "x14-b02-s16", "x14-b01-s01", "x14-b04-s23", "x14-b04-s24", "x14-b02-s11", "x14-b04-s25", "x14-b01-s01"],
+  ["x14-b05-s04", "x14-b05-s10", "x14-b05-s05", "x14-b05-s11", "x14-b05-s17", "x14-b06-s07", "x14-b06-s14", "x14-b06-s16"],
 ];
 const beats = ["hook", "setup", "setup", "turn", "proof", "proof", "payoff", "loop"];
 const headlines = [

@@ -1,6 +1,6 @@
 # X14 Airbnb｜Shorts 逐句來源矩陣
 
-Shorts SHA-256：`545a0844636cbc769afb9254824a6a68bbaf0006ebcbbe37b58344ae5a04252c`。來源代碼見 `source-matrix.md`。
+Shorts SHA-256：`b581e9f717769bace170833d8ef48c36b7b499fcf306baaa40542dffbf31ac2e`。來源代碼見 `source-matrix.md`。
 
 ## Short 1
 
@@ -20,7 +20,7 @@ Shorts SHA-256：`545a0844636cbc769afb9254824a6a68bbaf0006ebcbbe37b58344ae5a0425
 | 句 ID | 旁白 | 來源 |
 | --- | --- | --- |
 | `x14short2-01` | Airbnb 的長住比例升了；它就是後來首次全年盈利的原因嗎？ | A3、A4 |
-| `x14short2-02` | 這年第四季，二十八夜以上占新訂住宿夜晚百分之二十二。 | A3 |
+| `x14short2-02` | 二〇二一年第四季，二十八夜以上占新訂住宿夜晚百分之二十二。 | A3 |
 | `x14short2-03` | 疫情前同季，只有百分之十六。 | A3 |
 | `x14short2-04` | 季末超過九成活躍刊登項目，可接受二十八夜以上預訂。 | A3 |
 | `x14short2-05` | 同季雖賺五千五百萬美元，全年仍虧三億五千兩百萬。 | A3 |

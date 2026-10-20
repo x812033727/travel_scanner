@@ -155,7 +155,7 @@ const sizes = ["Medium shot", "Close-up", "Wide shot", "Medium close-up", "Overh
 const moves = ["slow push in", "static", "slow pan right", "slow pull back", "slow pan left"];
 const lights = ["soft overcast daylight", "gentle indoor light", "cool desk lamp", "muted afternoon light", "soft morning window light"];
 
-export function visualCueCount(chapterIndex) { return cues[chapterIndex]?.length ?? 0; }
+export function visualCueCount(chapterIndex) { return activeIndices[chapterIndex]?.length ?? 0; }
 
 // The narration keeps the approved per-chapter shot count while moving the
 // business events into one chronological thread. Reuse the original anonymous
@@ -169,6 +169,10 @@ const cueRemap = [
   [0, 0, 1, 2, 5, 4, 6, 7, 8, 9, 10, 11, 12, 12, 13, 15, 16, 17, 18, 19, 21, 22, 23, 23],
   [1, 0, 1, 2, 3, 4, 7, 8, 9, 11, 10, 12, 12, 13, 14, 15, 5, 5, 6, 17, 18, 21, 22],
 ];
+// V5 removes repeated exposition. Keep the approved anonymous cue for each
+// surviving line, including its meaning-based override, at its former index.
+const removedOldRows = [[], [13, 18, 20], [4, 16, 17, 18], [13], [2, 6, 18, 23], [2, 4, 11, 18]];
+const activeIndices = cueRemap.map((chapter, index) => chapter.map((_, oldIndex) => oldIndex).filter(oldIndex => !removedOldRows[index].includes(oldIndex)));
 const overrides = new Map([
   ["0:1", "an anonymous traveler packs a small suitcase while an anonymous lodging host keeps a plain unused room key beside a blank calendar"],
   ["0:5", "an anonymous office manager studies a sealed budget folder while an unmarked guest calendar and an unused key wait on the desk"],
@@ -197,12 +201,13 @@ const overrides = new Map([
   ["5:12", "an anonymous booking clerk places a long-stay ribbon and a cross-border route token in different parts of the same blank calendar"],
 ]);
 
-if (cueRemap.some((chapter, index) => chapter.length !== visualCueCount(index) || chapter.some(old => old < 0 || old >= visualCueCount(index)))) {
+if (cueRemap.some((chapter, index) => chapter.some(old => old < 0 || old >= cues[index].length) || activeIndices[index].length === 0)) {
   throw new Error("Invalid Airbnb narration-to-visual mapping");
 }
 
 export function visualFor(chapterIndex, rowIndex) {
-  const phrase = overrides.get(`${chapterIndex}:${rowIndex}`) ?? cues[chapterIndex]?.[cueRemap[chapterIndex]?.[rowIndex]];
+  const oldRowIndex = activeIndices[chapterIndex]?.[rowIndex];
+  const phrase = overrides.get(`${chapterIndex}:${oldRowIndex}`) ?? cues[chapterIndex]?.[cueRemap[chapterIndex]?.[oldRowIndex]];
   if (!phrase) throw new Error(`Missing visual cue for chapter ${chapterIndex + 1}, line ${rowIndex + 1}`);
   const shot = sizes[(chapterIndex * 2 + rowIndex) % sizes.length];
   return {
