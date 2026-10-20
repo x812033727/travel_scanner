@@ -54,3 +54,5 @@ R1 independent script-only blind 8/13 and source/prompt audit are preserved as `
 2026-10-20 02:13 UTC：R4b 重配後全片只剩 `cl075`「試救／施救」同音字旗標；再重配一次仍在。R4c 僅將稿、JSON、claims 改為來源同樣支持的「施救」。新獨立官方盲讀 **13/13**、狄奧 LI.14 定點來源覆核 **PASS**，84／84 文字、83 景提示詞不變，lint 0／0。現可本機核准 R4c，再只重配一行及全片音檢；詳 [verify-7.md](../../docs/videos/curio-s40/verify-7.md)。
 
 2026-10-20 02:24 UTC：R4c exact-hash 劇本與旁白已依站主持續委託登錄本機核准（非站主親自試聽）；定點重配後全片 **84/84 句、音檢 0 旗標**。實際故事正文 **8:21.73**。83 張插圖最多三次的報價 **US$3.36**，549 秒配樂 **US$0.08**，整集圖樂上限 **US$3.44**；配樂已產生並實支 US$0.08，插圖尚未開畫。共享供應商時窗先留給 S04 修圖；後續逐張驗收與成片仍待完成。詳 [verify-7.md](../../docs/videos/curio-s40/verify-7.md)。
+
+2026-10-20 02:28 UTC：網站音訊卡已 `review-push --gate audio` 提交、狀態 pending。供應商新時窗重置後開始 83 景 `keyframes --takes 2`，屬已記錄 US$3.44 整集圖樂上限內；尚須等生成完並逐張看圖，不能把請求中當成成片。
