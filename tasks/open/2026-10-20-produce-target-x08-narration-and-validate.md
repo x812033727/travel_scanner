@@ -51,6 +51,7 @@ scope:
   - docs/videos/story-everyday-target-x08/reviews/source-audit-v13-independent.md
   - docs/videos/story-everyday-target-x08/reviews/blind-a-v13-independent.md
   - docs/videos/story-everyday-target-x08/reviews/blind-b-v13-independent.md
+  - docs/videos/story-everyday-target-x08/reviews/audio-qa-v14-selective-redo.md
   - docs/videos/story-everyday-target-x08/compose-shorts.mjs
   - docs/videos/story-everyday-target-x08/compose-video.mjs
   - docs/videos/story-everyday-target-x08/production-quote.md
@@ -61,22 +62,22 @@ scope:
 
 ## Why
 
-X08 Target Canada has a source- and narration-reviewed offline script plus a pinned pronunciation lexicon, but no real Sulafat audio or measured timeline. The owner's style requires a 30–60-second condensed opening and at least eight minutes of substantive body narration, and future image/ASR/Shorts/music/QA must fit the same US$25 all-in cap. This ticket produces and checks the local narration before any image batch or claim of a finished film.
+X08 Target Canada has a source- and narration-reviewed offline script plus a pinned pronunciation lexicon. Sulafat audio and a measured timeline now exist, but nine lines remain held by the serial transcript/Jev check and have not been ear-reviewed. The owner's style requires a 30–60-second condensed opening and at least eight minutes of substantive body narration; future image/ASR/Shorts/music/QA must fit the same US$25 all-in cap. This ticket records the local narration and open audio issues before any image batch or claim of a finished film.
 
 ## Definition of done
 
-- [ ] The exact pinned X08 script has current Sulafat audio and a measured timeline; serial transcript/listening QA is complete or any remaining flagged lines are recorded as a hold.
-- [ ] Opening and substantive body are measured against the 30–60-second and 8-minute requirements, with a source-safe remedy if either fails.
-- [ ] The media ledger and remaining work are accounted against the US$25 hard cap. No art batch starts until current image/judge quota and all-in cost can cover the whole 113-shot plan; official brand assets, final cut and Studio links are separate gates.
+- [x] The exact pinned X08 script has current Sulafat audio and a measured timeline; serial transcript/Jev QA is complete, with nine remaining flagged lines explicitly held. Ear listening is still pending.
+- [x] Opening and substantive body are measured against the 30–60-second and 8-minute requirements. Both timing gates pass on the current timeline.
+- [ ] The media ledger and remaining work are accounted against the US$25 hard cap. No art batch starts until current image/judge quota and all-in cost can cover the whole 114-shot plan; official brand assets, final cut and Studio links are separate gates.
 
 ## Steps
 
 - [x] Create narrow scoped ticket after the reviewed manual lexicon bootstrap was committed to draft PR #1625.
-- [x] Run first pinned Sulafat TTS (130 requests / 2,643 actual billable characters), with the paired tool; preserve actual clips and timeline hashes. Stable-ID v6 has ten new lines still to synthesize.
-- [ ] Run serial `check-audio` and resolve or explicitly hold real discrepancies without inventing new source claims.
-- [ ] Measure first chapter and substantive body from actual audio; document exact frame/time evidence and update the all-in budget gate.
-- [ ] If spoken body is shorter than eight minutes, add source-backed story material, rebuild and obtain new exact-SHA source plus two blind reviews before incremental TTS. v13 candidate is frozen for these new reviews; actual TTS timing is still pending.
-- [ ] Commit/push an honest X08 media receipt to draft PR #1625; keep future production dependencies explicit.
+- [x] Run first pinned Sulafat TTS (130 requests / 2,643 actual billable characters) with the paired tool; preserve actual clips and timeline hashes. Later v6/v13 additions were synthesized incrementally.
+- [x] Run serial `check-audio` and resolve or explicitly hold real discrepancies without inventing new source claims; nine final Jev flags remain held.
+- [x] Measure first chapter and substantive body from actual audio; document exact frame/time evidence and the remaining budget/quota gate.
+- [x] Check whether the spoken body is shorter than eight minutes; at 10:07.833 it is not, so no source-backed extension is needed.
+- [x] Commit/push an honest X08 media receipt to draft PR #1625; keep future production dependencies explicit.
 
 ## How to verify
 
@@ -99,3 +100,4 @@ Use X08 worktree `/workspace/travel_scanner_target_x08`, work base `/workspace/.
 - v12 candidate main `video.json` SHA-256 `b0b91c300c35e64bf0345dc3c9a91b027937f36068b75ec2ed32ff7ae914bdbc`; Shorts `060ddf682a17307c0747aa560916a2a0b8bcb151ffca60cccdc695fc231b862c`. Three long-form lines now ask only source-answerable questions: the preopening distribution-center count, first Canadian openings, and the next quarter’s enlarged comparable-store sample; and Short 1 ends on the source's lack of a same-day store-by-store closure record; see [author delta](../../docs/videos/story-everyday-target-x08/reviews/v12-author-delta.md). Same-SHA independent source delta, two untouched blind reads, incremental TTS, strict eight-minute body and Shorts timings are **pending**; no paid media until gates pass.
 - v12 subsequently received [independent source PASS](../../docs/videos/story-everyday-target-x08/reviews/source-audit-v12-independent.md), but both [blind A](../../docs/videos/story-everyday-target-x08/reviews/blind-a-v12-independent.md) and [blind B](../../docs/videos/story-everyday-target-x08/reviews/blind-b-v12-independent.md) found `no_detour` FAIL at the five-line accounting-classification branch and disconnected food-distribution list. A also flagged opening-paradox payoff and unmarked outro repetition; B accepted those but agreed the primary detour block. Receipts are v12-only.
 - v13 candidate main `video.json` SHA-256 `5d5372ded68cdda9fca560a6ae93e4467931239771bbc2b6f5567ff89269d6f8`; Shorts `463fd550cb6b57e79cbf260de183bd77b9ce9b4498389f12eb6df3287bd74a5f`. It cuts eight off-thread lines, adds source-backed store area/opening pace/Q2 loss specificity and a native area card, recuts Short 2 to 155 characters from retained main lines, and closes with an explicit 133-store callback. See [author delta](../../docs/videos/story-everyday-target-x08/reviews/v13-author-delta.md). Body paper estimate 2,545 characters at 300/min ≈ 8.48 minutes; a conservative old-audio reuse estimate is only around eight minutes, so actual TTS remains a hard gate. Same-SHA independent source delta, two untouched blind reads and actual media timing remain **pending**; no new paid media until gates pass.
+- Current v14 main SHA-256 `7a9010968d9fa96abb8bf9df73d79287951ea5a79f01a3596c435a7d9e3216aa`; v13 narration and Shorts are unchanged. The [v14 selective redo/audio QA receipt](../../docs/videos/story-everyday-target-x08/reviews/audio-qa-v14-selective-redo.md) records 14 retakes / 275 billable free-tier characters, 135/135 checked, **9 final Jev flags** and **17 raw `match:false` entries** (8 Jev judged fine), with no ear-listening approval. Machine-cleared IDs: `x080208`, `x080230`, `x080401`, `x080402`, `x080502`; audio HOLD IDs: `x080227`, `x080304`, `x080318`, `x080425`, `x080429`, `x080431`, `x080434`, `x080440`, `x080510`. New timeline SHA-256 `546aaca3f4d5799ff6d637d2faad68404a1dbc9bb6e4da3d66f4d9077727a1bc`: 46.367-second opening, 607.833-second substantive body, 671.600-second narration. All full-resolution audio and checks remain in the local work base; no X08 paid art. At the check, 171 site judge calls remained versus 342 worst-case for 114 illustrations, so the full-batch quota gate is closed. This final note supersedes the historical pending statements above for current status.

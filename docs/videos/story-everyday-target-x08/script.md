@@ -1,6 +1,6 @@
 # X08 Target Canada｜繁中逐句稿
 
-候選前製；`video.json` SHA-256：`7a9010968d9fa96abb8bf9df73d79287951ea5a79f01a3596c435a7d9e3216aa`。片頭與片尾不計入實質正文；本版的實際 TTS 秒數與驗收見 [media-production.md](reviews/media-production.md)。
+v14 候選前製；`video.json` SHA-256：`7a9010968d9fa96abb8bf9df73d79287951ea5a79f01a3596c435a7d9e3216aa`。片頭與片尾不計入實質正文；[選擇性重錄後的音訊 QA 收據](reviews/audio-qa-v14-selective-redo.md)記錄 135 句、14 句重錄、開場 46.367 秒、實質正文 607.833 秒及純旁白 671.600 秒。工具重查仍有 9 個 Jev 旗標（原始 `match:false` 17 句）；尚未有人耳聽音或音訊核准。
 
 ## 第 1 章｜法院收到申請，門店還開著（濃縮開場）
 
