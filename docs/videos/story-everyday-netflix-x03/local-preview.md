@@ -8,15 +8,16 @@
 | --- | --- | --- |
 | 濃縮開場 | 1,501 影格／50.03 秒 | 第一章，直接進入信箱、DVD 與電腦的問題。 |
 | 概念片頭 | 150 影格／5 秒 | 放在開場之後，畫面明標「本機概念試看片」。 |
-| 其餘口播正文 | 501.33 秒 | 六章主線與結語，超過八分鐘。 |
+| 故事正文（不含開場與結語三句） | 14,421 影格／480.70 秒 | 嚴格量得 8:00.70；重配音須重測。 |
+| 結語三句 | 619 影格／20.63 秒 | 回答、留言題與訂閱邀請；不計入故事正文。 |
 | 概念片尾 | 630 影格／21 秒 | 預留兩個影片元素與一個訂閱元素的位置；正式連結須在 Studio 設定。 |
 | 全片 | 17,321 影格／577.367 秒（9:37.37） | 1920×1080、30 fps；全檔解碼及連續影格時間戳檢查通過。 |
 
-現行逐句稿 [video.json](video.json) SHA-256 為 `08c931bb000f373fbf5778d02b0703ef1a8b5144c665bfa30afda7c44ed3e5ac`，時間軸 SHA-256 為 `e69b87e5e617e51025a26652d47c4412b324dba754f1dfb7a5cd7b39951e1ef8`。80 句旁白有逐句機械音訊證據，必要的人耳驗聽尚待完成。65 鏡插畫原始候選圖與模型評審保留；[人工選圖收據](reviews/manual-keyframe-selections-a0cbc1ff06c9.json)記錄 49 鏡概念圖替換，均仍標 `needs_review`，並由[視覺檢查](reviews/visual-qc.md)與[史實畫面檢查](reviews/factual-visual-qc.md)交叉審看。跨章重複使用筆記本、信封和人物概念插畫；正式版須逐鏡由編輯確認能否保留，或另選圖片替換。12 張原生數字卡和一張口播結語卡已繪製，配樂為 557 秒單曲。
+現行逐句稿 [video.json](video.json) SHA-256 為 `08c931bb000f373fbf5778d02b0703ef1a8b5144c665bfa30afda7c44ed3e5ac`，時間軸 SHA-256 為 `e69b87e5e617e51025a26652d47c4412b324dba754f1dfb7a5cd7b39951e1ef8`。80 句旁白有逐句機械音訊證據，必要的人耳驗聽尚待完成。65 鏡候選素材與模型評審保留；[人工選圖收據](reviews/manual-keyframe-selections-a0cbc1ff06c9.json)記錄 49 鏡概念圖替換，均仍標 `needs_review`，並由[視覺檢查](reviews/visual-qc.md)與[史實畫面檢查](reviews/factual-visual-qc.md)交叉審看。[後續視覺規格複核](reviews/visual-triage-20261020.md)確認其中 23 鏡是本機 SVG 衍生圖、現行 MiniMax 圖也使用了自訂畫風；本版不符合系列正式插畫規則，需依固定預設重製。跨章重複使用筆記本、信封和人物概念畫面。12 張原生數字卡和一張口播結語卡已繪製，配樂為 557 秒單曲。
 
 ## 目前進度與交付檔
 
-65/65 鏡素材、配樂、概念安全換圖與本機試片均已完成；[整檔技術 QA](reviews/local-preview-qa.md)為 **PASS**。可播放交付檔在 `/workspace/brand-story-preview/netflix-x03/`，原始媒體工作區在 `/workspace/.brand-video-workdir/story-everyday-netflix-x03`。大體積 MP4 不提交到 Git；技術 PASS 仍非正式影片核准。
+65/65 鏡概念素材、配樂、概念安全換圖與本機試片均已完成；[整檔技術 QA](reviews/local-preview-qa.md)為 **PASS**，[視覺規格複核](reviews/visual-triage-20261020.md)為 **未達正式畫面規格**。可播放交付檔在 `/workspace/brand-story-preview/netflix-x03/`，原始媒體工作區在 `/workspace/.brand-video-workdir/story-everyday-netflix-x03`。大體積 MP4 不提交到 Git；技術 PASS 仍非正式影片核准。
 
 | 檔案 | 狀態 | SHA-256 |
 | --- | --- | --- |
