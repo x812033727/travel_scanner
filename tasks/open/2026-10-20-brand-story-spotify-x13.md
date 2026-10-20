@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-brand-story-spotify-x13
 title: Brand story Spotify X13
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: codex-review
+claimed_at: 2026-10-20T23:24:36Z
 created_at: 2026-10-20T20:01:30Z
 completed_at:
 branch: codex/brand-story-spotify-x13
@@ -37,7 +37,8 @@ The owner asks to continue making missing-brand films, with a new PR then the ne
 - [x] Independently audit v7 against SEC originals and obtain two fresh blind narrative ballots on the same video/Shorts hashes; both blind readers found shared mandatory failures, so revise again.
 - [x] Independently audit v8 against SEC originals and obtain two wholly fresh blind narrative ballots on the same video/Shorts hashes; both readers found shared mandatory failures, so revise again.
 - [x] Independently audit v9 against SEC originals and obtain two wholly fresh blind narrative ballots on the same video/Shorts hashes; the shared Q8 NO requires another revision.
-- [ ] Revise to v10, re-freeze and obtain new independent source and two genuinely blind story ballots before a truthful draft PR.
+- [x] Revise to v10, re-freeze and obtain new independent source and two genuinely blind story ballots; shared narrative failures require another revision.
+- [ ] Revise to v11, re-freeze and obtain new independent source and two genuinely blind story ballots before a truthful draft PR.
 - [ ] Produce and QA film and Shorts with official branding/audio/CC within budget as available; submit a truthful draft PR for the approved offline packet, then continue the next missing brand.
 
 ## How to verify
@@ -79,3 +80,5 @@ V3 frozen SHA-256: source matrix `cb8d31b67262e2c03c946259f035a89531e8868cdb3b83
 Task-board coordination: v9 root used `claim --force` only because the Spotify ticket's `docs/videos/lexicon.json` scope overlaps a different task claimed on 2026-10-11 (more than 24 hours stale). Spotify had already added seven terms to that file; the scope therefore could not truthfully be narrowed. The active v9 reviewers changed distinct files under this episode directory; no other task's files were touched. The task will be released for v10 authorship.
 
 **V10 author checkpoint, 2026-10-20:** replaced the unanswerable recurring two-acquisition-payback mystery with the answerable question of whether the 2023 podcast content realignment amounted to Spotify abandoning podcasts. S3's partial €30m content-asset write-off and S9's Q2 show closures remain distinct from S9's **2023-07-25 announcement-time** >100,000 available video podcasts; S7's 2025 Partner Program and Premium cost classification are later actions, not proof that any closed show returned. The two 2019 acquisitions remain the origin; per-deal payback is an undetermined limit stated once. The manual brief, Treatment, visual plan, Shorts hooks, quote and publishing handoff now align with the v10 draft. Frozen author SHA-256: `video.json` `8d2e2ef6c8c6a59dfbac54c1086f79423e04d975dad9e2e5a5ca93d3fdff92e7`, `shorts.json` `cfc0e99620da3884f459283b0a2e68a97d6801b8b9b3b9b7c8bbf35e93be9f30`; companion hashes are in the episode README. Compiler: 112 lines, 98 shots, 10 native cards, 2,500 substantive body characters. Lint 0 errors／0 warnings, `episodeShortsProblems` empty, both Shorts validate, docs-video tests 236／236 and tasks check exit 0. **Still HOLD:** independent v10 source audit and two genuinely fresh blind receipts bound to these exact JSON hashes before any paid media or PR; measured audio, official bookend files and worker-source ingestion remain pending.
+
+**V10 independent outcome:** [SEC audit](../../docs/videos/story-everyday-spotify-x13/reviews/script-source-audit-v10-independent.md) re-fetched S1–S9 with matching raw bytes/SHA and passed the frozen JSON, cards, Shorts and publishing claims, subject to targeted retrieval beyond the worker's 40k-character preview. Two truly fresh [blind A](../../docs/videos/story-everyday-spotify-x13/reviews/blind-a-v10-independent.md) / [blind B](../../docs/videos/story-everyday-spotify-x13/reviews/blind-b-v10-independent.md) both answered mandatory Q7, Q8 and Q13 **No**: long-range opener questions lack explicit return, €308m/+€42m are repeated without a marked callback, and the company-wide 2024 profit detour interrupts the podcast-retreat answer. A also answered Q3 and Q12 No. Both Shorts stand alone on paper. Therefore v10 narrative is **HOLD**; v11 should repair the common findings and ideally make the player/creator action more tangible without inventing a real show or unsupported causal link. Any edit needs a new freeze, source review, and two new first-blind votes. No paid media, finished film, real links or PR exists for X13.
