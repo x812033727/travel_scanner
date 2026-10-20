@@ -127,6 +127,7 @@
 | lint 2–3 | 1 錯誤、3 警告 | thirty／beard／armour，再來 twenty／moustache／forty 太多 | 人物的年紀改用數字（late 30s、mid 20s）、鬍子與衣著換字（goatee、whiskers、chin beard、riding coat、padded coat、breastplate、war robe） |
 | lint 4 | 0 錯誤、0 警告 | — | 寫 brief.md；措辭再修（「讚到張飛」「曹操本人都沒露面」「陳壽的句子，斷橋在前、開口在後」「他這是怕了」「毛本倒是留著，只改了幾個字」「一個浮字」），結檔句縮成一句；矛改直立或橫在胸前、矛尖朝旁；估 9.4 分鐘、loops 22；`script --slug curio-s07` 已產生 |
 | 0 | 未跑（這一輪交代不跑盲評、不花錢） | — | 寫稿時先照 S21（一次過）的寫法、S06 四輪與 S02 三輪的失敗題自查：chapters_link（每章停在問句、下一章第一句直接答並帶年份或書名）、payoffs（只問答得出的問題、遠的回收點名）、one_line（照查出來的順序）、no_detour（拿掉趙雲、曹純、魯肅、萬人敵、周訪甘卓、水經注、裴松之、詩賦）、no_recap（結論只講一次、章末不先講答案、回呼都補新東西）、no_spoiler（預告與章名不放答案）、no_toc |
+| 1 | 13／13 | — | 通過，已用 `narrative --answers` 記錄 |
 
 ## 下一步
 
