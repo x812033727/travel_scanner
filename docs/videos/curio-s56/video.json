@@ -1,0 +1,2536 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    15
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。像跟朋友講有出處的歷史故事，不為人物編逐字對話。",
+    "performance": "福斯特的1871近時信抄本與洛許1925晚年回憶分開；南支與北側的兩次過河分開；不要把回憶中的反事實唸成定論。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "slug": "curio-s56",
+  "sources": [
+    {
+      "title": "Thomas D. Foster 1871-10-31信，1923依家人抄本刊印，固定版",
+      "url": "https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Frank J. Loesch 1925年親歷回憶，固定版",
+      "url": "https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "s56007",
+      "payoff": "s56079",
+      "what": "東岸背後的新火點"
+    },
+    {
+      "setup": "s56010",
+      "payoff": "s56103",
+      "what": "磚石街區是否守住"
+    },
+    {
+      "setup": "s56011",
+      "payoff": "s56119",
+      "what": "第二座橋的安全"
+    },
+    {
+      "setup": "s56012",
+      "payoff": "s56139",
+      "what": "北側居民回頭所見"
+    },
+    {
+      "setup": "s56021",
+      "payoff": "s56030",
+      "what": "前夜的木場火是否越河"
+    },
+    {
+      "setup": "s56039",
+      "payoff": "s56140",
+      "what": "焦油木街面是否成燃料"
+    },
+    {
+      "setup": "s56057",
+      "payoff": "s56058",
+      "what": "火落在主火前方的屋頂"
+    },
+    {
+      "setup": "s56066",
+      "payoff": "s56067",
+      "what": "車廂是否能保住行李"
+    },
+    {
+      "setup": "s56076",
+      "payoff": "s56079",
+      "what": "消防分兵之後的主火"
+    },
+    {
+      "setup": "s56082",
+      "payoff": "s56085",
+      "what": "東岸街邊的次生小火"
+    },
+    {
+      "setup": "s56102",
+      "payoff": "s56113",
+      "what": "旅館未及收好的物件"
+    },
+    {
+      "setup": "s56129",
+      "payoff": "s56140",
+      "what": "北側街面是否也燒起"
+    },
+    {
+      "setup": "s56144",
+      "payoff": "s56147",
+      "what": "北側供水中斷"
+    },
+    {
+      "setup": "s56156",
+      "payoff": "s56166",
+      "what": "乾草地避難處的安危"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s56001",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56001",
+          "text": "福斯特站在芝加哥南支河的東岸。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a young male traveler grips a low river railing as fire glows across the water, faint fire glow",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "chapter": "河對岸先有了火"
+    },
+    {
+      "id": "s56002",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56002",
+          "text": "一八七一年十月八日的火，已逼到這條河。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56003",
+          "text": "他才從西側走過橋，想把烈火留在身後。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a tan coat looks across a dark river toward a wide fire glow, dim cloudy light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56004",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56004",
+          "text": "主火還在對面，隔著一整條河水。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a tan coat looks across a broad dark river toward a distant roof fire, soft shadowed light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56005",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56005",
+          "text": "消防員正守著岸邊，他一度以為守得住。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a lone firefighter aims a hose beside a river railing, smoky firelight, no readable words",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56006",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56006",
+          "text": "幾個鐘頭前，他連幫人存物的車廂都沒守住。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a tan coat turns from a smoking rail car toward a river bridge, faint fire glow",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56007",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56007",
+          "text": "可他身後約四百碼，又冒出一處新火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56008",
+          "text": "他在信裡把兩處火分開寫；哪一處會先逼近？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler turns toward a separate glow behind a row of plain houses, dim cloudy light",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56009",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56009",
+          "text": "火怎麼到了這一岸？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the traveler points toward a smoking roof behind him, soft shadowed light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56010",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56010",
+          "text": "河若攔不住，前方的磚石街區能嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a tan coat faces a pale stone commercial block beyond a narrow street, smoky firelight, no readable words",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56011",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56011",
+          "text": "再過一座橋就安全嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the traveler holds a small case beside a wooden bridge approach, faint fire glow",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56012",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56012",
+          "text": "當另一位北側居民回頭看，他又會看到什麼？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a young male clerk looks south from a northern boarding house door, dim cloudy light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56013",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56013",
+          "text": "那天的兩位見證人，留下不同位置的答案。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler folds a blank sheet in a dim hotel room, low ember glow",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56014",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56014",
+          "text": "十月七日晚，福斯特也看過一場火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56015",
+          "text": "這段經歷，是他十月三十一日寫給家人的。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a tan coat pauses outside a hotel beneath a faint red evening sky, soft shadowed light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "chapter": "前夜的火停在河邊"
+    },
+    {
+      "id": "s56016",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s56016",
+          "text": "現在可見的文字，出自一九二三年的家人抄本印本。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "text": "1871／1923",
+        "kicker": "福斯特",
+        "sub": "十月信／家人抄本出版"
+      }
+    },
+    {
+      "id": "s56017",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56017",
+          "text": "編者說原信已不知去向，留下來的是家人的抄寫。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, an older editor at a 1920s desk sets a blank page beside an empty folder, soft lamp light, no readable words",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56018",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56018",
+          "text": "他從旅館出門，先見一棟木屋起火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a tan coat leaves a hotel toward a burning wooden house under a dark evening sky, low firelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56019",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56019",
+          "text": "附近的磚屋有人設法保住；他還沒回房。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56020",
+          "text": "有人喊西邊也失火，他又走向另一片紅光。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler watches a firefighter spray water toward a brick facade, soft shadowed light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56021",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56021",
+          "text": "那片火碰到木材場；還能止在河前嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the traveler carries a box away from a smoking lumber yard, faint fire glow",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56022",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56022",
+          "text": "福斯特留下來幫住戶，直到他覺得危險退去。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56023",
+          "text": "在他眼裡，大片木料與房舍都被火照亮了。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a tan coat carries a modest box from a wooden home, dim cloudy light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56024",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56024",
+          "text": "他幫人把東西搬出屋，後來才回旅館。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56025",
+          "text": "他當時甚至以為，已經看過此生最大的火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a tan coat sets a small box on a street curb, soft shadowed light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56026",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56026",
+          "text": "將近凌晨，他才從旅館窗前看見火光淡下。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a tan coat leans against a hotel window in early morning, faint fire glow",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56027",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56027",
+          "text": "另一位住在北側的洛許，也走到橋邊看火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a young male clerk peers from a bridge toward distant flames, dim cloudy light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56028",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56028",
+          "text": "洛許是電報公司的職員，住在北側的寄宿屋。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a dark vest enters a modest northern boarding house carrying a satchel, low ember glow",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56029",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s56029",
+          "text": "他回憶那晚無風；河還能守住第二次嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "text": "1925",
+        "kicker": "洛許回憶",
+        "sub": "五十多年後的另個視角"
+      }
+    },
+    {
+      "id": "s56030",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56030",
+          "text": "火在西側木場燒得猛烈，卻停在南支河前。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56031",
+          "text": "河對岸沒有接著起火，是他記下的差別。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a dark vest watches a river gap between a glowing lumber yard and unburned houses, smoky firelight, no readable words",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56032",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56032",
+          "text": "隔天，城裡的人仍在談前一晚的險境。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56033",
+          "text": "那晚河真擋住了火，卻只證明了那一次。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a dark vest listens to one neighbor outside a boarding house, soft smoke-filtered light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56034",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56034",
+          "text": "洛許說，那段乾熱日子讓東西都很易燃。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56035",
+          "text": "在他的回憶裡，北側房屋多是木造。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a dark vest presses a brittle dry leaf between his fingers, pale overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56036",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56036",
+          "text": "人走的道也鋪木板，還有高架的街段。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56037",
+          "text": "洛許說有些街段架得很高，底下也藏著木料。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a dark vest steps across a raised wooden sidewalk, grey daylight",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56038",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56038",
+          "text": "有些街面是松木塊，再塗上焦油。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56039",
+          "text": "腳下的木街面，下一晚也會跟屋子一起燒嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a dark vest bends to inspect dark coated wooden street blocks, soft smoke-filtered light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56040",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56040",
+          "text": "十月八日星期日晚，福斯特又聽見火鈴。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56041",
+          "text": "這回，他望出去的紅光會不會像前夜停住？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a tan coat lifts his head beside a hotel window as a bell sounds, smoky firelight, no readable words",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56042",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56042",
+          "text": "福斯特回到桌前，仍想把那本書讀完。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56043",
+          "text": "紅光卻越來越大，他終於把書放下。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a tan coat reads a plain book beside a hotel window, dim cloudy light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "chapter": "風把燃燒木塊送到前面"
+    },
+    {
+      "id": "s56044",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56044",
+          "text": "火場遠在兩英里外，他卻坐不安穩。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a tan coat watches a distant red sky from an indoor chair, soft shadowed light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56045",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56045",
+          "text": "他換上能擋寒與灰的衣服，走出旅館。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56046",
+          "text": "他在信裡記，出門是星期日晚十點十五分。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the traveler fastens an old coat at a hotel doorway, smoky firelight, no readable words",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56047",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56047",
+          "text": "這是他記下的出門時間，不是官方起火鐘點。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the traveler tucks the watch away as red light grows, dim cloudy light",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56048",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56048",
+          "text": "這一晚有強風；洛許也記得西南風。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a dark vest steadies his cap against wind on a city street, low ember glow",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56049",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56049",
+          "text": "福斯特走近後，熱得無法再靠近火頭。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56050",
+          "text": "他在信裡形容，眼前不是前夜那樣的一片火光。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler shields his face from heat at a street crossing, soft shadowed light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56051",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56051",
+          "text": "蒸汽消防車都趕到，哪片屋頂還會先起火？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a lone firefighter tends a steam fire engine on a smoky street, faint fire glow",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56052",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56052",
+          "text": "他在信裡數到三十輛，卻無法把飛火留在原地。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a lone firefighter turns toward a distant smoking roof, dim cloudy light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56053",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56053",
+          "text": "比火牆更難預料的東西，從風裡掉下來。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56054",
+          "text": "他看見燃燒木塊落在街上，也落到木屋頂。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the traveler looks upward at glowing fragments in the night air, low ember glow",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56055",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56055",
+          "text": "他說有的木塊足有兩英尺長，跟細小火星不同。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56056",
+          "text": "有些還砸到人頭上；他親眼看見這些。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler watches a long burning wood fragment strike an empty road, smoky firelight, no readable words",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56057",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56057",
+          "text": "主火還沒到，哪個屋頂會先冒煙？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a lone firefighter turns toward a small fire on a distant roof, dim cloudy light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56058",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56058",
+          "text": "一座教堂屋頂，離主火約三百碼，起火了。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56059",
+          "text": "那時主火還沒燒到教堂，屋頂已先冒煙。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a tan coat points at a smoking wooden church roof, low ember glow",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56060",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56060",
+          "text": "有人爬上屋頂想撲滅，煙還是變濃。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a lone adult climbs a wooden church roof toward smoke, smoky firelight, no readable words",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56061",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56061",
+          "text": "福斯特看著濃煙變成火，撤出的人只能讓開。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler steps away from a smoking church, faint fire glow",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56062",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56062",
+          "text": "消防車只好分一部分去處理第二處火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a lone firefighter runs toward a separate wooden church, dim cloudy light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56063",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56063",
+          "text": "福斯特在信裡說，兩片火後來連在一起。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56064",
+          "text": "他往火的前方走，怕退路被截斷。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the traveler looks down a street toward two merging fire glows, low ember glow",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56065",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56065",
+          "text": "此刻他不再是單純看熱鬧，開始計算回旅館的路。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the traveler studies an empty cross street toward a distant hotel, smoky firelight, no readable words",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56066",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56066",
+          "text": "有人把物品塞進空車廂，以為車能保住嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a tan coat carries a bundle toward stationary rail cars, faint fire glow",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56067",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56067",
+          "text": "可連停著的車廂，轉眼也著火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56068",
+          "text": "他退到南支河邊，走向另一岸。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler recoils from smoke at a stationary rail car, dim cloudy light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56069",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56069",
+          "text": "那條前夜守住的河，這次會留下什麼？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the traveler hesitates at a bridge beside the dark water, soft shadowed light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56070",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56070",
+          "text": "過橋後，福斯特在南側停下來看。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a tan coat stands on the east riverbank beside a bridge, smoky firelight, no readable words",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "chapter": "水後方冒出另一處火"
+    },
+    {
+      "id": "s56071",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s56071",
+          "text": "主火還在西側，隔著約八十碼的河水。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "text": "約 80 碼",
+        "kicker": "福斯特信中估計",
+        "sub": "主火隔著南支河水面"
+      }
+    },
+    {
+      "id": "s56072",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56072",
+          "text": "消防員努力守著岸邊，他一度覺得有希望。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a lone firefighter braces a hose along a riverbank, dim cloudy light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56073",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56073",
+          "text": "可他身後約四百碼的房屋間，出現新火點。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56074",
+          "text": "那是他所在的同一岸，不在河的西邊。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler turns toward a far-off smoke plume among small cottages, low ember glow",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56075",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56075",
+          "text": "他由此判斷，火已到河對岸。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the traveler raises his hand toward a new eastern-bank glow, smoky firelight, no readable words",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56076",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56076",
+          "text": "消防車一被分走，原來的岸邊守得住嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a lone firefighter turns a hose cart toward an eastern cottage, faint fire glow",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56077",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56077",
+          "text": "他的信記下兩處火，沒有記下任何一塊火屑的完整越河路徑。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the traveler looks between one fire plume across the river and another behind him on his own bank at night, dim fire glow",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56078",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56078",
+          "text": "他走向新火，才發現木屋一間間燒起。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a young man in a tan coat approaches a row of wooden houses newly burning on the eastern riverbank at night, low firelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56079",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56079",
+          "text": "他寫，主火後來也越河，與新火連在一起。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56080",
+          "text": "新火旁是一些木造小屋，火蔓延得很快。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler backs away as two nearby fire fronts meet, soft shadowed light",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56081",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56081",
+          "text": "他發現不遠處還有煤氣設施，便後退。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the traveler turns away from a plain gasworks building under a dark night sky, distant fire glow",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56082",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56082",
+          "text": "他敲門提醒人快走，路邊還會有哪處起火？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the man in a tan coat knocks on a wooden house door as smoke approaches along a night street, low ember glow",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56083",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56083",
+          "text": "他擔心房子在住戶出門以前就會被追上。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56084",
+          "text": "剛才安靜的街，這才有住戶陸續跑出來。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the traveler waits beside a closed wooden door as smoke approaches, low ember glow",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56085",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56085",
+          "text": "沿路又幫忙處理被火星點著的遮棚。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56086",
+          "text": "本來沒接到主火的街角，也不斷有小火要撲。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler splashes water on a small smoking cloth awning, smoky firelight, no readable words",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56087",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56087",
+          "text": "連木人行道的一角，也冒起火苗。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56088",
+          "text": "火不需要把整條河面燒亮，才能出現在背後。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the traveler stamps out a small flame on a wooden sidewalk, dim cloudy light",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56089",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56089",
+          "text": "福斯特繼續往市中心的磚石街區走。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56090",
+          "text": "他以為那片堅固的房屋會把火擋下。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the traveler walks toward a pale stone commercial district, soft shadowed light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56091",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56091",
+          "text": "可他離旅館只有一小段路了。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56092",
+          "text": "那一晚，連看似不會燒的地方都要失守嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler looks toward a hotel beyond the stone buildings, faint fire glow",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56093",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56093",
+          "text": "福斯特進到商業區，眼前多是磚與石。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56094",
+          "text": "他寫那一帶還有鐵與大理石建物，不似木屋區。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the traveler walks through a street of plain brick and stone buildings, low ember glow",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "chapter": "石造市政廳也守不住"
+    },
+    {
+      "id": "s56095",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56095",
+          "text": "他在信裡說，當時真以為火過不來。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56096",
+          "text": "可為了安心，他還是回旅館開始收行李。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the traveler rests his hand on a thick masonry wall, smoky firelight, no readable words",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56097",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56097",
+          "text": "他估算，火離旅館只剩大約四分之一英里。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56098",
+          "text": "他先放進一套好衣服、相簿和重視的小物。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler looks from a hotel window toward a growing fire glow, dim cloudy light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56099",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56099",
+          "text": "較大的箱子仍在房裡；他想多留一點時間。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the traveler reaches toward a large trunk in a hotel room, soft shadowed light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56100",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56100",
+          "text": "一名侍者說風向變了，旅館似乎沒危險。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a hotel waiter gestures toward a window by a closed suitcase, smoky firelight, no readable words",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56101",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56101",
+          "text": "在同一棟旅館裡，兩人對安全的判斷已經分歧。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56102",
+          "text": "他幾樣小物留在外面，還有時間回來拿嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the traveler keeps packing while a waiter stands near a window, faint fire glow",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56103",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56103",
+          "text": "他再出門，先前信任的石屋已經著火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56104",
+          "text": "他看見牆面裂開、建築坍下。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler peers at flame through a stone building window, low ember glow",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56105",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56105",
+          "text": "洛許在另一條街，也看見法院與市政廳起火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the clerk in a dark vest looks up at a smoking stone civic building, smoky firelight, no readable words",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56106",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56106",
+          "text": "洛許記得法院的鐘，在起火後自己響起。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a dark vest in a dark vest looks toward a large bell inside a smoking civic cupola, faint fire glow",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56107",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56107",
+          "text": "福斯特跑去看，見到它的頂部在燒。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the traveler looks up at a burning civic cupola from a night square, low firelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56108",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56108",
+          "text": "他拖著行李下樓，街上還找得到車嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the man in a tan coat carries a large trunk down a hotel staircase toward the street, low firelight through a window",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56109",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56109",
+          "text": "除自己的行李外，還有一只艾克羅伊德的大箱子。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler lifts a second large travel trunk onto a lobby floor, soft shadowed light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56110",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56110",
+          "text": "馬車有人開五十美元，他改找一輛小車。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56111",
+          "text": "車夫想先拿錢，他要等箱子上車才付。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a tan coat gestures to a lone wagon driver by a street curb, smoky firelight, no readable words",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56112",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56112",
+          "text": "那輛小車要五美元，他答應後才裝箱。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the man in a tan coat lifts a large trunk onto a light wagon beside a hotel entrance at night, low firelight",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56113",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56113",
+          "text": "箱子上車後他付了錢，離開時旅館才起火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the man in a tan coat pays a wagon driver beside a light wagon already loaded with trunks outside an unburned hotel at night, low distant firelight",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56114",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56114",
+          "text": "後面有人願意出更多錢，卻找不到車。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56115",
+          "text": "載著行李的車朝北側走，他又賭河會擋火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a tan coat looks back from the moving loaded wagon as the hotel behind him begins to burn and people crowd the curb at night, low firelight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56116",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56116",
+          "text": "然而，剛走過的橋會留在身後多久？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a tan coat glances back at a wooden bridge from a wagon, faint fire glow",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56117",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56117",
+          "text": "福斯特把行李暫放在北側一處屋裡。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56118",
+          "text": "他原以為火到湖邊就會耗盡，不再跨到北側。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the traveler sets a travel case inside a modest room, smoky predawn light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "chapter": "北側的橋也成了火場"
+    },
+    {
+      "id": "s56119",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56119",
+          "text": "他再去看火勢，卻看到剛過的橋著火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the traveler looks back toward smoke rising from a bridge, low fire glow",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56120",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s56120",
+          "text": "信裡記這一刻約在凌晨三點。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "text": "約凌晨 3 點",
+        "kicker": "福斯特自述",
+        "sub": "剛走過的橋已起火"
+      }
+    },
+    {
+      "id": "s56121",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56121",
+          "text": "原本以為安全的北側，也得重新逃。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56122",
+          "text": "他又搭車往西過橋；這次能守住行李嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler picks up his case and turns west, dim cloudy light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56123",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56123",
+          "text": "這次，他選的是更遠的西側空地，不是原來的旅館。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the traveler steps from a wagon onto broad open ground, smoky predawn light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56124",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56124",
+          "text": "到比較空曠的地方，他坐在行李上等天亮。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56125",
+          "text": "天亮後，他仍看見北側一大片黑煙往上翻。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a tan coat sits on a trunk beside a broad open ground, dim cloudy light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56126",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56126",
+          "text": "天亮時他還買到乾餅乾，才稍稍止住饑餓。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a tan coat eats a plain biscuit beside a small grocery, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56127",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56127",
+          "text": "同夜稍早，洛許從南側回到北側住處。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the young clerk emerges from a dark pedestrian passage onto a North Side street around midnight, distant fire glow",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56128",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56128",
+          "text": "他穿過地下步道，走的不是福斯特那座橋。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a dark vest walks through a dark pedestrian tunnel toward a distant firelit entrance at night",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56129",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56129",
+          "text": "房客忙著搬行李；北側的街面也會著火嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, one boarding-house lodger carries a trunk through a northern house hallway, night fire glow through a window",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56130",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56130",
+          "text": "窗外的空氣卻滿是被風吹來的燃燒木塊。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56131",
+          "text": "洛許一群人選擇往西走，沿北支河附近找路。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a dark vest shields his face from burning fragments while turning west along a wooden North Side street at night, ember light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56132",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56132",
+          "text": "他和同伴把箱子搬過幾個街區。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        },
+        {
+          "id": "s56133",
+          "text": "路上有人帶著孩子，也有人回屋裡搶救書本。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a dark vest drags a trunk along a crowded wooden sidewalk at night, distant fire glow",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56134",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56134",
+          "text": "也有人轉向湖邊，以為靠著水會較安全。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a dark vest watches a lone refugee walk toward a distant lakeshore at night, dim fire glow",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56135",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56135",
+          "text": "洛許後來再見到那名往湖邊走的婦人，她被熱灼傷。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a woman with singed hair steadies herself on an inland North Side wooden sidewalk at night, ember glow",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56136",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56136",
+          "text": "火愈來愈近，他還能再回屋拿書嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a dark vest gathers a few books near a boarding house staircase at night, fire glow through a window",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56137",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56137",
+          "text": "第三趟回到屋前，洛許發現街上幾乎沒人了。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the clerk returns toward his boarding house on an almost empty North Side street at night, distant fire glow",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56138",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56138",
+          "text": "他決定不再進屋，站上門外的高階。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a dark vest stops on the outside stair of his boarding house and looks south at night, intense fire glow",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56139",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56139",
+          "text": "從那裡，他看見前方幾個街區忽然一同著火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the clerk stares down a night street where several blocks of roofs ignite almost together, intense firelight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56140",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56140",
+          "text": "洛許說，連鋪面的街道與人行道也燒了。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a dark vest looks down at flames on wooden street paving and sidewalks at night, intense ember light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56141",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56141",
+          "text": "那一幕讓火不再只像是從一棟房跳向下一棟。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the clerk looks along a burning wooden road lined with houses at night, intense firelight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56142",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56142",
+          "text": "他用乾燥、焦油路面、飛落木塊解釋這幕。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a dark vest examines a tarred wooden paving block amid falling sparks at night, ember light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56143",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56143",
+          "text": "這是他的回憶與判斷，並非有炸藥爆炸。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the clerk watches a sudden sheet of flame from behind a wall at night, intense firelight",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56144",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56144",
+          "text": "福斯特說北側水不夠；那水從哪裡斷了？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the man in a tan coat sits on a trunk at Monday dawn and watches smoke rise from the distant North Side, dim predawn light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56145",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56145",
+          "text": "週一早晨，福斯特望向北側的黑煙。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the traveler stands on open ground looking toward black smoke, pale overcast light, no readable words",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "chapter": "抽水站毀後等到雨來"
+    },
+    {
+      "id": "s56146",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56146",
+          "text": "他在信裡說水廠燒了，北側救火缺水。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the man in a tan coat looks toward north-side smoke from an open field at Monday dawn, soft grey daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56147",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56147",
+          "text": "洛許也記，芝加哥大道的抽水站已毀。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, an elderly memoirist at a 1925 desk turns a blank notebook page, soft lamp light, no readable words",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56148",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56148",
+          "text": "洛許事後認為，消防車原可找來，卻缺了供水。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a lone refugee walks past burning wooden North Side houses on Monday morning, smoke-filtered daylight",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56149",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56149",
+          "text": "他認為此後北側難有足夠的水攔火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the young clerk walks along a smoking North Side wooden street on Monday morning, grey daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56150",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56150",
+          "text": "他說若有幾台消防車也許能止火，那是回想。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, an elderly memoirist in a 1925 study pauses over a blank notebook, soft lamp light, no readable words",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56151",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56151",
+          "text": "不能把沒有發生的救火結果拍成確定事實。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the elderly memoirist sets a blank notebook face down on a 1925 desk, soft lamp light, no readable words",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56152",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56152",
+          "text": "北側的房子、木街道和木籬仍接著燃燒。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a dark vest walks past smoking wooden fences and street blocks, soft smoke-filtered light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56153",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56153",
+          "text": "火還往北去，人們能在哪裡停下來？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the clerk pauses beside a wooden street near a bridge, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56154",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56154",
+          "text": "白天，逃難的人往北走，尋找更遠的住處。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a dark vest carries a small case along a northbound path, pale overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56155",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56155",
+          "text": "洛許記得，較遠的人有時間先搬走或埋起家具。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the clerk watches one adult carry a small cabinet toward a garden, soft smoke-filtered light, no readable words",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56156",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56156",
+          "text": "洛許暫住的地方，旁邊乾草地會不會也燒？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a dark vest stands beside a dry grassy field near a simple house, grey daylight",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56157",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56157",
+          "text": "日落前，三四十個人聚到這裡，商量要怎樣守住。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the clerk speaks to one neighbor at the edge of a dry field, low cloudy light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56158",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56158",
+          "text": "他們擔心火一旦燒過草地，住處也會失守。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a dark vest touches brittle grass at the edge of a field, fading afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56159",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56159",
+          "text": "有人找犁，在乾草地上挖出幾道溝。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a lone adult guides a plow through dry grass, low cloudy light",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56160",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56160",
+          "text": "那些犁溝只打算稍稍護住眼前草地，還沒受火考驗。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a dark vest inspects a shallow furrow across dry grass, fading afternoon light, no readable words",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56161",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56161",
+          "text": "另一些人拆開籬笆，把木料移離火線。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the clerk removes one plank from a plain fence, low cloudy light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56162",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56162",
+          "text": "洛許自己也被分去拔籬柱，手都磨傷了。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a dark vest pulls one fence post from hard ground, fading afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56163",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56163",
+          "text": "井水被盛進鍋裡；這份準備最後用得上嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the clerk fills a plain kettle from a well, low cloudy light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56164",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56164",
+          "text": "他們整晚看著南方，一排排房屋接近火。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a dark vest watches distant house fires from a field edge, fading afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56165",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56165",
+          "text": "最後幾排屋頂快被吞沒；雨會先到嗎？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the clerk watches the last nearby roofs glow before rain, low cloudy light, no readable words",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56166",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56166",
+          "text": "火還隔著最後幾排房子；星期二凌晨，洛許記得大雨先落下。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a dark vest raises his face as rain begins over the field, soft rainy night light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56167",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56167",
+          "text": "他寫約一點半；那是晚年回想的時刻。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the clerk shelters beneath a plain exterior stair in rain, dim rain-filtered firelight",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56168",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56168",
+          "text": "洛許終於在一座外階下找到能躺的地方。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a man in a dark vest lies sheltered beneath a plain exterior stair, soft rainy night light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56169",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56169",
+          "text": "他從星期日清晨起就沒睡，這才停下來。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the clerk closes his eyes beneath an exterior stair, dim rain-filtered firelight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56170",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56170",
+          "text": "至少對那處避難地，他覺得危險終於退了。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a dark vest looks across a wet grass field at dawn, soft rainy night light, no readable words",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56171",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56171",
+          "text": "星期二天亮，更多避難者已聚在那片草地。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, the clerk looks over a field of distant sheltered figures at dawn, soft grey morning light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56172",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56172",
+          "text": "這只說明此處安全；開頭那道河又為何失守？",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, a man in a dark vest holds a damp hat beside the sheltered field, pale rainy dawn light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56173",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56173",
+          "text": "兩人的經歷合起來，河只是其中一道界線。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, the traveler looks toward several separated river bridges, soft grey morning light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56174",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56174",
+          "text": "火會在界線外另起，守線的人也會被分走。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, a lone firefighter turns toward a separate roof fire, pale rainy dawn light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56175",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56175",
+          "text": "兩份私人記錄都沒找出十月八日最初點火者。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, the clerk places two blank papers side by side on a desk, soft grey morning light, no readable words",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s56176",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s56176",
+          "text": "站到河對岸，也不等於站到火的終點。",
+          "emotion": "自然說書；人物、來源層級和河道方位清楚分開"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, a man in a tan coat holds a small case beside a calm river at dawn, pale rainy dawn light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "過了河\n**還著火**",
+      "tag": "芝加哥・1871",
+      "sub": "一夜三次過河",
+      "shot": "s56004"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "1871 芝加哥大火：河水為何沒攔住火？｜奇聞檔案局",
+    "description": "1871 年 10 月，芝加哥的南支河前夜攔下一場木場火；次日晚，Thomas D. Foster 跨河後卻在自己這岸發現新火。他又離開石造商業區，帶著行李去北側，剛經過的橋也起火。Frank J. Loesch 的晚年回憶記下北側木街面、抽水站失效和星期二的雨。這一集沿兩人的不同位置，追蹤火怎樣讓一條又一條看似安全的界線失效。\n\nFoster 的信寫於 1871-10-31，1923 年才按家人抄本刊印，現存原信去向不明；Loesch 的回憶印於 1925 年，距事件逾五十年。兩份私人記錄不能推定最初點火者、飛火的逐格路徑或若水廠未毀時的結果。畫面是原創 AI 可愛插圖，不是火勢精確地圖或原始文件照片。資料截至 2026-10-20。\n\nFoster 信：https://github.com/GITenberg/A-Letter-from-the-Fire-Being-an-account-of-the-Great-Chicago-Fire_66472/blob/60c777551301c30942acf749d4bb37ca32752353/66472-0.txt\nLoesch 回憶：https://github.com/GITenberg/Personal-Experiences-During-the-Chicago-Fire-1871_66433/blob/08931a6f2629fd4b8be37b1ec548857d48d17eb9/66433-0.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q",
+    "tags": [
+      "芝加哥大火",
+      "1871",
+      "芝加哥河",
+      "歷史火災",
+      "Thomas D Foster",
+      "Frank J Loesch",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}

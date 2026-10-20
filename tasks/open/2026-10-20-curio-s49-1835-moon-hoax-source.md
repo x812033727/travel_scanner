@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-curio-s49-1835-moon-hoax-source
 title: Curio S49 1835 Moon Hoax source-audited preproduction
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-s49-r15-policy-tts
-claimed_at: 2026-10-20T19:49:06Z
+owner:
+claimed_at:
 created_at: 2026-10-20T15:07:01Z
 completed_at:
 branch: codex/curio-s34-endurance-20261019
@@ -62,7 +62,8 @@ scope:
 - [x] 另一位工作者按 R11 精確版差分重核固定來源／書面畫面 PASS。
 - [x] 兩位全新隔離讀者重做 R11 正式十三題雙盲：兩人均否決 `payoffs` 與 `no_recap`，官方合併 FAIL（11/13）。
 - [x] R12 作者按 R11 正式失分窄修並凍結五檔精確 SHA；保留史料範圍與圖像示意界線，lint 0/0。
-- [ ] 另一位工作者按 R12 凍結檔獨立重核來源／書面畫面；兩位全新、只讀腳本的讀者正式十三題雙盲並合併 PASS，再做必要後續關卡與新稿完整音檢。
+- [x] R12 凍結檔經獨立來源／書面畫面覆核及正式十三題雙盲 PASS；R12 音檢 HOLD 後窄修，R15 再經獨立查核、隔離雙盲、完整政策及 131/131 音檢 PASS。
+- [ ] 網站大綱／劇本／音訊卡仍待審；依精確 R15 稿完成整集插圖、分鏡、配樂、片頭片尾、成片與品管。
 
 ## How to verify
 
@@ -116,3 +117,5 @@ R9 [獨立固定來源／書面畫面差分覆核](../../docs/videos/curio-s49/r
 R12 [作者凍結](../../docs/videos/curio-s49/review/r12-author-freeze.md)、[獨立來源／畫面](../../docs/videos/curio-s49/review/r12-source-independent.md)均 PASS；[兩名全新讀者正式合併](../../docs/videos/curio-s49/review/r12-official-panel.md)依系列規則 13/13 PASS。精確 `script.md` SHA `ab8e840e2c74b283b60e65e62d62e41d79d6eea0ded323e4888a3940de80ab7e`。完整 [政策回條](../../docs/videos/curio-s49/review/r12-policy.md) PASS（立場 0.88、業配 0.20）。網站 `review-pull` 大綱／劇本仍顯示 `waiting for the owner`；依站主常設推薦編輯委派，已為 R12 精確 brief/script SHA 記本機委派批准，兩筆註記明說網站卡沒有核准。
 
 R12 [完整語音驗證](../../docs/videos/curio-s49/verify-13.md)：TTS 新合成 19 句／525 billable characters、重用 114 句；首輪全稿 133/133 音檢 3 旗標。兩輪定點補錄各 3 句／92 characters 後，再完整檢查兩次，旗標 **3→3→2**。最終 `moon019`「這次沒查到」與 `moon120`「引文」仍被聽錯；`moon122` 已清。最終 13:30.13 全旁白，正文 12:26.53，時長過線但**音訊 HOLD**；兩輪補錄上限已用完，不送 audio gate、不進插圖／配樂／成片。請作者只窄修 `moon019` 與 `moon120` 的易混詞並同步 claims，重做精確來源、敘事、政策、必要網站與音訊關卡；R12 既有 WAV 與音檢均不得移轉到新稿。
+
+R15 [完整語音驗證](../../docs/videos/curio-s49/verify-15.md)：精確 `script.md` SHA `82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a`，來源及書面畫面獨立 PASS、隔離雙讀者 13/13 PASS、完整政策 PASS。網站大綱／劇本卡 `hand_pushed` 待審，本機編輯批准與網站狀態分開記。TTS 新合成 6 句／176 字、重用 125 句；首次完整 131/131 音檢只標 `moon120`（0.22），定點補錄一次／36 字後完整 131/131 **0 旗標**。最終 WAV／timeline 13:21.43、開場濃縮 48.03 秒、正文 12:17.83。音訊卡已送網站，`review-pull` 顯示 outline／script／audio 均 `waiting for the owner`；未聲稱站主已聽或網站批准。插圖、配樂、最終成片尚待後續製作與驗收。

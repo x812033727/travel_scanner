@@ -1,0 +1,98 @@
+{
+  "panel": "S49 R9 fresh blind B",
+  "scope": "Official 13-question narrative review of CLI output only",
+  "basis": {
+    "narrative_command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs narrative --slug curio-s49 --json",
+    "narrative_string_sha256": "579d359cd086437f9363cacf655403cad71b5da8b22ec0104de832d89c1f5cc8",
+    "narrative_string_hash_method": "SHA-256 of the UTF-8 narration string parsed from the CLI JSON, not of serialized JSON",
+    "script_file": "docs/videos/curio-s49/script.md",
+    "script_file_sha256": "10f912c63ba438c676372469e8e44a52a8252113efc22f3af9fb74f91ae22354",
+    "script_file_hash_method": "sha256sum of file bytes; prose was not read",
+    "other_materials_read": false
+  },
+  "summary": {
+    "pass": 12,
+    "fail": 1,
+    "primary_issue": "no_recap: the unavailable-source point is stated several times in one stretch"
+  },
+  "questions": [
+    {
+      "id": "scene_first",
+      "verdict": "pass",
+      "line_ids": ["moon001", "moon002", "moon003", "moon004"],
+      "reason": "The first four lines place an August 1835 New York newspaper before readers, identify the purported Cape observer, and introduce the assistant's missing letter. They start inside the document and its immediate puzzle."
+    },
+    {
+      "id": "no_spoiler",
+      "verdict": "pass",
+      "line_ids": ["moon001", "moon004", "moon005", "moon006", "moon007", "moon008"],
+      "reason": "The opening asks about the letter, optics, corroborating observation, and editors' responses without stating their later answers."
+    },
+    {
+      "id": "one_line",
+      "verdict": "pass",
+      "line_ids": ["moon009", "moon019", "moon032", "moon056", "moon079", "moon100", "moon112", "moon117"],
+      "reason": "The thread follows the newspaper's borrowed authority, invented instrument, claimed lunar observations, fire, and then the later reprint's evidence of contemporary reactions. The 1859 reprint at moon112 is the way the earlier press response is uncovered at moon117, rather than a second story line."
+    },
+    {
+      "id": "no_toc",
+      "verdict": "pass",
+      "line_ids": ["moon008", "moon031", "moon055", "moon078", "moon111"],
+      "reason": "Transitions pose story questions or continue the reported actions; they do not announce an upcoming chapter list or explanatory plan."
+    },
+    {
+      "id": "chapters_link",
+      "verdict": "pass",
+      "line_ids": ["moon008", "moon009", "moon031", "moon032", "moon055", "moon056", "moon078", "moon079", "moon099", "moon100", "moon111", "moon112"],
+      "reason": "Each later chapter opens on a named item just left hanging: Herschel's name, the heavy tube, the first lunar image, the birdlike shape, the observatory smoke, or the other editors' reactions."
+    },
+    {
+      "id": "open_loops",
+      "verdict": "pass",
+      "line_ids": ["moon026", "moon038", "moon044", "moon050", "moon055", "moon061", "moon067", "moon073", "moon078", "moon083", "moon088", "moon094", "moon098", "moon104", "moon111", "moon116", "moon121", "moon126", "moon128"],
+      "reason": "Concrete unanswered questions recur well inside 90-second intervals across the body, including the source documents, optics, instrument, creatures, fire, and editorial response."
+    },
+    {
+      "id": "payoffs",
+      "verdict": "pass",
+      "line_ids": ["moon004", "moon023", "moon005", "moon041", "moon006", "moon118", "moon007", "moon111", "moon112", "moon115", "moon018", "moon027", "moon055", "moon056", "moon078", "moon079", "moon098", "moon100", "moon128", "moon129"],
+      "reason": "Long opening hooks return by their concrete subject: no located assistant letter at moon023, artificial light adding no lunar detail at moon041, no second independent observation in the cited press material at moon118, and both praise and disbelief at moon112–115. Later questions receive nearby new answers, such as image at moon056, winged figures at moon079, fire cause at moon100, and Jacoby's reprint source at moon129. The purported supplement's checkability is answered at moon027, not by the immediate restatement at moon019."
+    },
+    {
+      "id": "no_recap",
+      "verdict": "fail",
+      "line_ids": ["moon023", "moon024", "moon026", "moon027", "moon029"],
+      "reason": "The unavailable-source point recurs within about a minute: moon023 says the assistant's route is not an actual located letter; moon026–027 say the supplement, letter, and Royal Society material reach readers only through the report; moon029 again says the report has not supplied those documents. Moon029 repeats the conclusion at moon027 before the instrument story has added evidence."
+    },
+    {
+      "id": "chapters_are_events",
+      "verdict": "pass",
+      "line_ids": ["moon001", "moon009", "moon032", "moon056", "moon079", "moon100", "moon112"],
+      "reason": "The seven headings describe a paper appearing, a name being borrowed, a mirror being described, life appearing on the page, winged figures appearing, a fire, and a reprint revealing mixed responses. They name developments rather than section functions."
+    },
+    {
+      "id": "outro_no_next",
+      "verdict": "pass",
+      "line_ids": ["moon999a", "moon999b", "moon999c"],
+      "reason": "The close asks a question, points to source links, and invites subscription; it does not promise another video, episode, or dossier."
+    },
+    {
+      "id": "opening_hooks",
+      "verdict": "pass",
+      "line_ids": ["moon001", "moon004", "moon005", "moon006", "moon007"],
+      "reason": "After the initial newspaper scene, four separate unresolved moments ask about a letter, an optical fix, independent observation, and skeptical editors."
+    },
+    {
+      "id": "one_thread",
+      "verdict": "pass",
+      "line_ids": ["moon001", "moon008", "moon009", "moon056", "moon100", "moon111", "moon132"],
+      "reason": "The identifiable object is The Sun's lunar report, and the central problem is how it made invented observations look checkable. The sections develop its claimed source, instrument, sightings, interruption, and reception before moon132 names the mechanism."
+    },
+    {
+      "id": "no_detour",
+      "verdict": "pass",
+      "line_ids": ["moon007", "moon108", "moon111", "moon112", "moon123", "moon125", "moon128", "moon130"],
+      "reason": "The brief Saturn turn remains part of what the report claimed. The later press and sales material addresses the opening question about belief and separates selected quotations or publisher claims from independent evidence; it is not an unrelated list."
+    }
+  ]
+}

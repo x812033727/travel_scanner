@@ -1,0 +1,92 @@
+{
+  "slug": "curio-s49",
+  "round": "r11",
+  "merge_rule": "A question passes when either independent reader passes it.",
+  "reader_files": [
+    "r11-fresh-blind-a.json",
+    "r11-fresh-blind-b.json"
+  ],
+  "script_file_sha256": "a9fb4bcc6e271609d79e34d2f4278cdb2c797d0fc8af32b52d4f68b3b1629259",
+  "narration_utf8_sha256": "9811b993b5264414fec15d02ad36101985cfc856706afd9447baba8168dc9b5c",
+  "overall_pass": false,
+  "questions": [
+    {
+      "id": "scene_first",
+      "reader_a": true,
+      "reader_b": true,
+      "merged_yes": true
+    },
+    {
+      "id": "no_spoiler",
+      "reader_a": true,
+      "reader_b": true,
+      "merged_yes": true
+    },
+    {
+      "id": "one_line",
+      "reader_a": true,
+      "reader_b": true,
+      "merged_yes": true
+    },
+    {
+      "id": "no_toc",
+      "reader_a": true,
+      "reader_b": true,
+      "merged_yes": true
+    },
+    {
+      "id": "chapters_link",
+      "reader_a": true,
+      "reader_b": true,
+      "merged_yes": true
+    },
+    {
+      "id": "open_loops",
+      "reader_a": true,
+      "reader_b": true,
+      "merged_yes": true
+    },
+    {
+      "id": "payoffs",
+      "reader_a": false,
+      "reader_b": false,
+      "merged_yes": false
+    },
+    {
+      "id": "no_recap",
+      "reader_a": false,
+      "reader_b": false,
+      "merged_yes": false
+    },
+    {
+      "id": "chapters_are_events",
+      "reader_a": true,
+      "reader_b": true,
+      "merged_yes": true
+    },
+    {
+      "id": "outro_no_next",
+      "reader_a": true,
+      "reader_b": true,
+      "merged_yes": true
+    },
+    {
+      "id": "opening_hooks",
+      "reader_a": true,
+      "reader_b": true,
+      "merged_yes": true
+    },
+    {
+      "id": "one_thread",
+      "reader_a": true,
+      "reader_b": true,
+      "merged_yes": true
+    },
+    {
+      "id": "no_detour",
+      "reader_a": true,
+      "reader_b": true,
+      "merged_yes": true
+    }
+  ]
+}

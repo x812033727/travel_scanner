@@ -1,0 +1,104 @@
+{
+  "reviewer": "isolated-blind-b",
+  "round": "r7",
+  "script_sha256": "a5931c83a5fcd448b83a8be9d2865c904672fa09ce4f5bec6388d74fad3a58ec",
+  "rubric": "NARRATIVE_PANEL",
+  "answers": [
+    {
+      "id": "scene_first",
+      "required": true,
+      "pass": true,
+      "evidence": ["s53001", "s53002", "s53004"],
+      "reason": "前四句已落在一九〇七年六月的舊金山廣場：小屋仍在，公園委員會發出清場要求，住戶面臨搬去哪裡的具體困境。"
+    },
+    {
+      "id": "no_spoiler",
+      "required": true,
+      "pass": true,
+      "evidence": ["s53002", "s53007", "s53008", "s53071", "s53105"],
+      "reason": "開場提出期限、搬費與後來訪查的懸念，未先說出廣場未如期清空或訪查結果。"
+    },
+    {
+      "id": "one_line",
+      "required": true,
+      "pass": true,
+      "evidence": ["s53009", "s53010", "s53028", "s53049", "s53069", "s53101"],
+      "reason": "預告式開場後回到地震，隨後按建屋、取得小屋、搬離與訪查的順序追同一批小屋。"
+    },
+    {
+      "id": "no_toc",
+      "required": true,
+      "pass": true,
+      "evidence": ["s53006", "s53007", "s53008", "s53009"],
+      "reason": "開場以具體未解問題掛鉤；正文沒有宣告章節安排或列出影片內容清單。"
+    },
+    {
+      "id": "chapters_link",
+      "required": true,
+      "pass": true,
+      "evidence": ["s53009", "s53010", "s53027", "s53028", "s53048", "s53049", "s53068", "s53069", "s53083", "s53084", "s53100", "s53101"],
+      "reason": "各章首句接前章留下的落腳原因、動工倒數、取得小屋、搬屋條件、離營小屋或訪查動作；開場到地震的時間回跳有明確疑問銜接。"
+    },
+    {
+      "id": "open_loops",
+      "required": true,
+      "pass": true,
+      "evidence": ["s53023", "s53030", "s53048", "s53068", "s53083", "s53097", "s53116"],
+      "reason": "每個敘事區段都有待回答的具體問題或轉折，沒有可辨認的九十秒空窗。"
+    },
+    {
+      "id": "payoffs",
+      "required": true,
+      "pass": true,
+      "evidence": ["s53006", "s53058", "s53007", "s53073", "s53090", "s53091", "s53094", "s53094a", "s53116", "s53129", "s53130"],
+      "reason": "長距離懸念以小屋買賣、搬屋費及地租等原物件回呼並給新事實；近距離問答也有直接答案。"
+    },
+    {
+      "id": "no_recap",
+      "required": true,
+      "pass": false,
+      "evidence": ["s53105", "s53110"],
+      "reason": "六百八十份完整家庭紀錄在 s53105 說過，s53110 再說「在那六百八十戶裡」。後句仍可用「這批已訪家庭」指回分母，避免重念同一數字；現有字面沒有 rubric 明列的「還記得／剛剛那」回呼。"
+    },
+    {
+      "id": "chapters_are_events",
+      "required": false,
+      "pass": true,
+      "evidence": ["s53001", "s53010", "s53028", "s53049", "s53069", "s53084", "s53101"],
+      "reason": "章名描寫小屋仍佔廣場、帳棚落腳、木屋落成、契約改寫、期限到來、小屋搬走與訪查揭曉。"
+    },
+    {
+      "id": "outro_no_next",
+      "required": true,
+      "pass": true,
+      "evidence": ["outro"],
+      "reason": "片尾只回扣搬費與地點的抉擇並邀請訂閱，未提下一支影片、下一集或下一份檔案。"
+    },
+    {
+      "id": "opening_hooks",
+      "required": true,
+      "pass": true,
+      "evidence": ["s53002", "s53004", "s53006", "s53007", "s53008"],
+      "reason": "第一場景後有清場期限、繳款性質、搬屋費與後來訪查等至少三個尚未揭曉的具體時刻。"
+    },
+    {
+      "id": "one_thread",
+      "required": true,
+      "pass": true,
+      "evidence": ["s53004", "s53027", "s53060", "s53069", "s53098", "outro"],
+      "reason": "同一難題是住戶如何持有小屋、讓它離開有期限的公地並安在下一塊地上，直到片尾仍在推進。"
+    },
+    {
+      "id": "no_detour",
+      "required": true,
+      "pass": true,
+      "evidence": ["s53008", "s53033", "s53060", "s53077", "s53119", "s53125", "s53130"],
+      "reason": "分配、所有權、搬出困境及新址生活條件都屬開場提出的安置與訪查問題；沒有整段離開小屋去講旁支。"
+    }
+  ],
+  "summary": {
+    "pass_count": 12,
+    "fail_count": 1,
+    "required_failures": ["no_recap"]
+  }
+}
