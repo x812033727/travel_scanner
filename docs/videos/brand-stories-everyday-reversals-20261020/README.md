@@ -2,12 +2,17 @@
 
 2026-10-20 新系列規劃，依站主要求擴成 **20 支**；[完整順序、觀眾問題與逐集取證入口](20-episode-plan.md)。C01 Crocs 是首支本機試看片，C02–C20 為待查候選；20 題沒有匯入正式站、沒有啟動自動製作或預定上架日。八題（C01／C02／C03／C05／C08／C11／C15／C19）取自未查核的[備選題庫](../story-plans/brand-stories-100/reserve.json)，其餘十二題由本批另選。全部避開已核准 100 題、A01/B18、五支新包、五支改編及其他系列已占用的同核心題。
 
-站主後續提供[黑貓研究院頻道](https://www.youtube.com/@qiqiqushi0)作選題參考；另有[七個尚未涵蓋的品牌候選](channel-gap-candidates-20261020.md)（Beats、7-Zip、Meta、Casio、WD-40、金莎、金氏世界紀錄）。它們在既定 20 集之外，僅作待查選題，不改 C01–C20 排序，也不沿用參考影片的敘事或事實說法。
+站主後續提供[黑貓研究院頻道](https://www.youtube.com/@qiqiqushi0)作選題參考；另有[六個已辨識的缺口候選](channel-gap-candidates-20261020.md)（Beats、7-Zip、Meta、Casio、WD-40、金莎）。金氏世界紀錄與已核准的 A40 同核心，已從缺口清單移除。這六題在既定 20 集之外，僅作待查選題，不改 C01–C20 排序，也不沿用參考影片的敘事或事實說法。
+
+另依同樣的選題原則新增[六個獨立編輯候選](additional-brand-candidates-20261020.md)：Sony Walkman、Domino’s、Adobe Creative Cloud、Nintendo Wii、FedEx、Nespresso。倉庫的頻道紀錄沒有列出這六題，不能宣稱它們出自參考頻道；全部尚須讀一手原件才可排集。
+
+參考頻道的即時頁目前被雲端代理拒絕；要更新盤點所需的網域與設定衝突，見[存取交接](research-access-handoff.md)。
 
 | 目前成果 | 狀態 |
 | --- | --- |
 | 20 支製作規劃 | 已列工作順序、主線、畫面物件與每集原始資料入口；C02–C20 的故事主張尚未逐項查核。 |
-| [參考頻道選題缺口](channel-gap-candidates-20261020.md) | 追加 7 個待查候選，逐題記錄去重理由、原創問題與一手取證入口；未排正式集數。 |
+| [參考頻道選題缺口](channel-gap-candidates-20261020.md)及[一手來源初查](channel-gap-source-review-20261020.md) | 辨識 6 個待查候選；Beats、Meta、WD-40 已用 SEC 申報核對基本主線與限制，仍未排正式集數。 |
+| [獨立編輯新增題材](additional-brand-candidates-20261020.md)及[Adobe 一手來源初查](additional-brand-source-review-20261020.md) | 追加 6 個不同主線的待查品牌，明確與頻道缺口分開；Adobe 已核對四份 SEC 年報，其餘未排正式集數。 |
 | [C01 Crocs 原始申報查核](C01-crocs.md) | SEC 2008／2009／2010／2025 申報及 2026 Q2 季報已讀；97 句口播、七張字卡和四筆片中一手來源已由獨立代理核對。兩位敘事盲審均通過。 |
 | [C01 本機試看片](../story-everyday-crocs-c01/local-preview.md) | 97 句台灣口音旁白、90 張插畫、七張字卡與配樂已生成，逐句音訊檢查 97／97 通過；10:51.77 的 1080p 試看片及 109 則可關閉繁中字幕已輸出並通過本機 QA。正式站工人工作區與站主選定的 5 秒片頭、21 秒片尾仍未取得，因此使用同長度、明標的概念動畫。 |
 
