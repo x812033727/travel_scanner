@@ -33,3 +33,5 @@ Compare R3a file hashes with `docs/videos/curio-s39/verify-7.md`; inspect a stru
 ## Notes
 
 The independent R3 report is `/tmp/curio_s39_r3_source_visual_audit.md`. This task is a **focused prompt recheck**; the R3 narrative and source verdicts only carry forward if their artifact hashes remain identical.
+
+2026-10-20 03:17 UTC：86 張 still 的獨立史料／年代預檢無阻擋；六個 prompt-only 定點修訂處理凱撒雕像、未載石椅與刺殺動作，第二位讀者對現行 video SHA `da7103cb7f19ce07ca48956c46a7bdf26216d25f46a63cb4f3c4cba7e898308c` 覆核 PASS，lint 0／0。尚未購買插圖；詳 [verify-11.md](../../docs/videos/curio-s39/verify-11.md)。
