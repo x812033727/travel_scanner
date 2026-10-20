@@ -41,51 +41,69 @@
     "scenes": [
       {
         "beat": "hook",
-        "shot": "cl005",
-        "headline": "蛇像能證明死因？",
+        "headline": "凱旋蛇像能作證？",
         "narration": [
-          "屋大維的凱旋隊伍，擺出帶蛇的女王像。那就能證明蛇咬嗎？"
-        ]
+          "羅馬凱旋隊伍，有一尊帶蛇的女王像。",
+          "蛇像能證明她死於蛇咬嗎？"
+        ],
+        "asset": "keyframes/cl083-1-trim.jpg"
       },
       {
         "beat": "setup",
-        "shot": "cl002",
-        "headline": "衛兵查過果籃",
+        "shot": "cl001",
+        "headline": "一籃無花果送進陵墓",
         "narration": [
-          "普魯塔克寫，一籃無花果經衛兵查過，才送進陵墓。"
+          "普魯塔克記，有人送無花果籃進陵墓。"
         ]
       },
       {
         "beat": "turn",
-        "shot": "cl048",
-        "headline": "開門時已太晚",
+        "shot": "cl003",
+        "headline": "蛇藏在無花果籃？",
         "narration": [
-          "女王寄出密封信，關上門；使者開門時，她已死了。"
+          "有人說，蛇藏在無花果籃裡。"
+        ]
+      },
+      {
+        "beat": "proof",
+        "shot": "cl011",
+        "headline": "門關了，誰看見？",
+        "narration": [
+          "但門一關，沒人看見裡面的每一步。"
         ]
       },
       {
         "beat": "proof",
         "shot": "cl058",
-        "headline": "蛇只是其中一說",
+        "headline": "「有人說」不是親眼",
         "narration": [
-          "蛇藏果籃，只是「有人說」；陵墓裡也沒人看見蛇。"
+          "傳記用的是「有人說」，不是親眼看見。"
         ]
       },
       {
         "beat": "payoff",
-        "shot": "cl068",
-        "headline": "作者自己說不知",
+        "shot": "cl063",
+        "headline": "陵墓裡沒人見到蛇",
         "narration": [
-          "普魯塔克直說，真正發生什麼，沒人知道。"
+          "普魯塔克寫，陵墓裡沒人見到那條蛇。",
+          "他也沒判定女王真正怎麼死。"
         ]
       },
       {
         "beat": "loop",
-        "shot": "cl005",
-        "headline": "圖像能作證嗎？",
+        "headline": "籃子，還是蛇像？",
         "narration": [
-          "再看凱旋的蛇像：它能替密室最後一刻作證嗎？"
-        ]
+          "回頭看雕像上的那條蛇。",
+          "它能當密室的目擊者嗎？"
+        ],
+        "asset": "keyframes/cl083-1-trim.jpg"
+      }
+    ],
+    "synthetic_media": true,
+    "evidence": [
+      {
+        "path": "keyframes/cl083-1-trim.jpg",
+        "sha256": "39ab53ce36d843025f612270c567b404ff02db90d673659a0c41f28eb4d75f34"
       }
     ]
   }
