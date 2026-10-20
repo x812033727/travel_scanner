@@ -13,7 +13,7 @@ x18s107 | S5 | 但 Krispy Kreme 說，成本始終對不上單店需求。 | uni
 x18s108 | S5,editorial | 雙方二〇二五年七月二日終止合作；試點熱度，不會自動變成大規模利潤。 | delivery route ends at closed generic counter
 
 ## Short 2: 合作已宣布結束，財報為何還算進門市？
-x18s201 | S5,S6 | 每天送甜甜圈到麥當勞，喊停後財報怎還算兩千四百家？ | calendar page near doughnut ledger
+x18s201 | S5,S6 | 每天送甜甜圈到麥當勞，宣布喊停後財報怎還算兩千四百家？ | calendar page near doughnut ledger
 x18s202 | S6 | 第二季的結帳日，是二〇二五年六月二十九日。 | lit anonymous counters beneath a quarter-end marker
 x18s203 | S6 | 當天全球一萬八千一百一十三個銷售點，仍含這批門市。 | distinct storefront types encircle one plain tray
 x18s204 | S5 | 合作七月二日才正式終止，比季末晚三天。 | single route fades from anonymous breakfast map

@@ -1,6 +1,6 @@
 # X18 Krispy Kreme｜兩支 Shorts 的逐拍 9:16 規劃
 
-離線前製，綁定主片 `ba5500bc756135bd2a0d5093fd0a0d209b8c7b3bdcd3b087c0d205e76b852b43` 與 Shorts `ecb5cc1422695b11ebd62efae8a6369ec89c9cf481a4b18f71490b8367e23141`。目前沒有插畫、直式輸出或手機檢查，以下裁切需出圖後逐拍核對焦點。
+離線前製，綁定主片 `618ace68bc93f5bf2193d46107440ee83c43feb48ef7bd8e58c0e81772e593a2` 與 Shorts `f5fb28a75542631a4ca59417fbf444556a2b7f45b4724a9cbcb1654c730aaef2`。目前沒有插畫、直式輸出或手機檢查，以下裁切需出圖後逐拍核對焦點。
 
 每拍從一張不同的主片 1920×1080 插畫 `shot` 取 608×1080 視窗，按表列 x、y=0 裁切，再等比輸出 1080×1920；原畫面提示詞要求焦點落在中央 608px 走廊。若焦點出框，可在合法 x=0–1312 中移動；保不住才於 US$25 整片上限內重畫。所有品牌名、年份與數字均以後製原生字卡排版，不請 image-01 畫字。
 
@@ -12,9 +12,9 @@
 | 1／2 | `x18-b02-s03` | `x=640, y=0` | small group of storefronts on simple map | 肯塔基 160 家 |
 | 1／3 | `x18-b03-s16` | `x=672, y=0` | many storefront dots spread on blank map | 計畫 2026 全國 |
 | 1／4 | `x18-b02-s04` | `x=660, y=0` | sealed plain doughnut trays beside a kitchen door | 每天送三款 |
-| 1／5 | `x18-b03-s23` | `x=635, y=0` | growing map with calendar page curling | 約 2,400 家 |
-| 1／6 | `x18-b05-s06` | `x=656, y=0` | two unsigned business ledgers side by side | 麥當勞說達標 |
-| 1／7 | `x18-b05-s12` | `x=680, y=0` | unit-cost bars beside blank demand marks | 成本對不上需求 |
+| 1／5 | `x18-b03-s22` | `x=635, y=0` | growing map with calendar page curling | 約 2,400 家 |
+| 1／6 | `x18-b05-s05` | `x=656, y=0` | two unsigned business ledgers side by side | 麥當勞說達標 |
+| 1／7 | `x18-b05-s11` | `x=680, y=0` | unit-cost bars beside blank demand marks | 成本對不上需求 |
 | 1／8 | `x18-b06-s09` | `x=650, y=0` | delivery route ends at closed generic counter | 2025/7/2 終止 |
 | 2／1 | `x18-b06-s01` | `x=650, y=0` | calendar page near doughnut ledger | 店數還含麥當勞？ |
 | 2／2 | `x18-b06-s02` | `x=675, y=0` | lit anonymous counters beneath a quarter-end marker | Q2 截至 6/29 |

@@ -55,7 +55,12 @@
     {
       "setup": "x180209",
       "payoff": "x180217",
-      "what": "全國餐盤如何接到現有配送網"
+      "what": "新合作門市如何接到現有每日配送網"
+    },
+    {
+      "setup": "x180216",
+      "payoff": "x180308",
+      "what": "擴張準備費用落在哪本帳"
     },
     {
       "setup": "x180224",
@@ -69,8 +74,8 @@
     },
     {
       "setup": "x180320",
-      "payoff": "x180406",
-      "what": "兩張帳能否一起往前"
+      "payoff": "x180513",
+      "what": "每店需求與每日配送的帳"
     },
     {
       "setup": "x180407",
@@ -218,12 +223,6 @@
           "text": "兩家公司說，試點需求超出預期。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
-        },
-        {
-          "id": "x180104",
-          "text": "你以為這條配送線，只要往更多店鋪延長就好。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
       ]
     },
@@ -231,8 +230,25 @@
       "id": "x18-b01-s04",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a delivery staging area; blank regional map with one new route; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "prompt": "Overhead shot, pan right at an anonymous food-service interior; thin route line stretches away from one counter; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
         "camera": "Overhead shot, pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x180104",
+          "text": "試點賣得好；把餐盤天天送往更多櫃台，帳還會一樣好算嗎？",
+          "pause_after_ms": 0,
+          "emotion": "台灣自然國語說書；問句停半拍"
+        }
+      ]
+    },
+    {
+      "id": "x18-b01-s05",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up, still at a delivery staging area; blank regional map with one new route; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -245,11 +261,11 @@
       ]
     },
     {
-      "id": "x18-b01-s05",
+      "id": "x18-b01-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a small archive shelf; unsigned rollout calendar on table; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at a small archive shelf; unsigned rollout calendar on table; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -262,11 +278,11 @@
       ]
     },
     {
-      "id": "x18-b01-s06",
+      "id": "x18-b01-s07",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a small archive shelf; closed blank announcement folder; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at a small archive shelf; closed blank announcement folder; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -279,11 +295,11 @@
       ]
     },
     {
-      "id": "x18-b01-s07",
+      "id": "x18-b01-s08",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a small archive shelf; single tray beside an unopened ledger; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at a small archive shelf; single tray beside an unopened ledger; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -299,8 +315,8 @@
       "id": "x18-b02-s01",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at a plain records room; small Kentucky map on clean table; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at a plain records room; small Kentucky map on clean table; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -317,8 +333,8 @@
       "id": "x18-b02-s02",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous food-service interior; generic fast food counters clustered on simple map; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at an anonymous food-service interior; generic fast food counters clustered on simple map; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -334,8 +350,8 @@
       "id": "x18-b02-s03",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at an anonymous food-service interior; small group of storefronts on simple map; muted afternoon light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at an anonymous food-service interior; small group of storefronts on simple map; warm task light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -351,8 +367,8 @@
       "id": "x18-b02-s04",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a plain production and loading room; sealed plain doughnut trays beside a kitchen door; warm task light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at a plain production and loading room; sealed plain doughnut trays beside a kitchen door; soft evening light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -368,8 +384,8 @@
       "id": "x18-b02-s05",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a plain distribution wall; three plain doughnuts on one unmarked tray; soft evening light. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at a plain distribution wall; three plain doughnuts on one unmarked tray; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -385,8 +401,8 @@
       "id": "x18-b02-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a plain distribution wall; one plain tray and an unmarked six-slot box; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at a plain distribution wall; one plain tray and an unmarked six-slot box; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -402,8 +418,8 @@
       "id": "x18-b02-s07",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at an anonymous food-service interior; breakfast clock beside a nearly empty tray; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at an anonymous food-service interior; breakfast clock beside a nearly empty tray; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -419,8 +435,8 @@
       "id": "x18-b02-s08",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous food-service interior; an unmarked morning counter and an afternoon counter; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at an anonymous food-service interior; an unmarked morning counter and an afternoon counter; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -436,14 +452,14 @@
       "id": "x18-b02-s09",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at an anonymous food-service interior; plain breakfast trays multiply across an empty map; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at an anonymous food-service interior; plain breakfast trays multiply across an empty map; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180209",
-          "text": "一只小餐盤上櫃容易畫，全國每天有多少只會走同一條路？",
+          "text": "這批試點以外，新櫃台要怎麼接上原本每天送貨的網？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句停半拍"
         }
@@ -453,8 +469,8 @@
       "id": "x18-b02-s10",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a plain distribution wall; unsigned announcement paper unfolds; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at a plain distribution wall; unsigned announcement paper unfolds; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -470,8 +486,8 @@
       "id": "x18-b02-s11",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a plain records room; calendar blocks fill one region at a time; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at a plain records room; calendar blocks fill one region at a time; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -510,8 +526,8 @@
       "id": "x18-b02-s13",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at an anonymous food-service interior; one lit cluster beside distant empty storefront outlines; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at an anonymous food-service interior; one lit cluster beside distant empty storefront outlines; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -527,14 +543,14 @@
       "id": "x18-b02-s14",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at a plain records room; expanding blank points on abstract map; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at a plain records room; expanding blank points on abstract map; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180214",
-          "text": "公司預期，這項合作能讓自己的全球銷售點不只翻倍。",
+          "text": "公司還預期，合作能讓自己的全球銷售點不只翻倍；這是遠景，不是三月的實績。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -544,8 +560,8 @@
       "id": "x18-b02-s15",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous food-service interior; distant plain counter beyond an empty local street; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at an anonymous food-service interior; distant plain counter beyond an empty local street; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -563,14 +579,14 @@
       "id": "x18-b02-s16",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at an anonymous food-service interior; production room and remote counter separated by route; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at an anonymous food-service interior; production room and remote counter separated by route; warm task light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180216",
-          "text": "一個可買的點不是新工廠；甜甜圈怎麼跨到下一座城？",
+          "text": "跨到下一座城，設備、人手和車線都要跟上；這些準備又會落在哪本帳？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句停半拍"
         }
@@ -580,8 +596,8 @@
       "id": "x18-b02-s17",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a plain production and loading room; anonymous production racks feeding several plain routes; warm task light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at a plain production and loading room; anonymous production racks feeding several plain routes; soft evening light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -599,14 +615,14 @@
       "id": "x18-b02-s18",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a plain production and loading room; denser routes radiate from unmarked production racks; soft evening light. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at a plain production and loading room; denser routes radiate from unmarked production racks; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180218",
-          "text": "路線更密時，公司期待配送與製作能力用得更充分。",
+          "text": "公司期待門市接進既有每日配送網後，路線更密，製作與運送能力能用得更充分。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -616,8 +632,8 @@
       "id": "x18-b02-s19",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a plain production and loading room; blank equipment cases and delivery racks; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at a plain production and loading room; blank equipment cases and delivery racks; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -633,14 +649,14 @@
       "id": "x18-b02-s20",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at a plain production and loading room; blank training board beside plain cart; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at a plain production and loading room; blank training board beside plain cart; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180220",
-          "text": "新設備、技術和現場訓練，也得跟著準備。",
+          "text": "新設備、技術和現場訓練，也得跟著準備，才接得住不同市場的櫃台。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -650,8 +666,8 @@
       "id": "x18-b02-s21",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a plain production and loading room; setup hands place blank trays on cart; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at a plain production and loading room; setup hands place blank trays on cart; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -667,14 +683,14 @@
       "id": "x18-b02-s22",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a plain records room; pilot cluster remains lit as map widens; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at a plain records room; pilot cluster remains lit as map widens; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180222",
-          "text": "原本的肯塔基試點店，不會因為畫新地圖就退出。",
+          "text": "但這份擴張公告沒有逐店銷量，也沒有逐條配送路線的成本；能不能長久，仍得等真正開線。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -684,14 +700,14 @@
       "id": "x18-b02-s23",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at an anonymous food-service interior; cart pauses at an unmarked new counter; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; cart pauses at an unmarked new counter; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180223",
-          "text": "讓新城市加入，是讓餐盤真的抵達櫃台，不是只添一個圖釘。",
+          "text": "目標在日曆上，接下來要看新城市的櫃台是否真的收到每天的貨。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -701,8 +717,8 @@
       "id": "x18-b02-s24",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a delivery staging area; route pencil stops before an anonymous city silhouette; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at a delivery staging area; route pencil stops before an anonymous city silhouette; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -718,8 +734,8 @@
       "id": "x18-b03-s01",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a delivery staging area; unmarked city map receives first route; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at a delivery staging area; unmarked city map receives first route; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -736,14 +752,14 @@
       "id": "x18-b03-s02",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at a small archive shelf; dated but blank report lies over map; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at a delivery staging area; blank carrier proposals beside a broader route map; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180302",
-          "text": "十一月的季報，是回頭說十月已經起跑。",
+          "text": "同在十月九日，公司向全國與區域承運商徵案，準備擴大整體每日新鮮配送網。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -753,14 +769,14 @@
       "id": "x18-b03-s03",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a delivery staging area; route pencil points toward two neighboring regions; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at a delivery staging area; three different anonymous retail route shapes; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180303",
-          "text": "同一份公告說，下週會繼續鋪到俄亥俄、印第安納。",
+          "text": "徵案涵蓋超市、便利店和快餐店；這不是麥當勞專用的車隊。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -770,14 +786,14 @@
       "id": "x18-b03-s04",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a delivery staging area; one solid route and two dotted prospective routes; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at a delivery staging area; one solid route and two dotted prospective routes; warm task light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180304",
-          "text": "芝加哥那條已畫成實線，另外兩州當時還是虛線。",
+          "text": "到十一月季報，公司回頭確認：芝加哥十月已經開線。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -787,14 +803,14 @@
       "id": "x18-b03-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a delivery staging area; blank carrier proposals beside a broader route map; warm task light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at a delivery staging area; route pencil points toward two neighboring regions; soft evening light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180305",
-          "text": "同在十月，公司向承運商徵案，想擴大整體每日新鮮配送網。",
+          "text": "同份公告說，俄亥俄與印第安納要在下週接入；那時仍是安排，不是已達門市。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -804,14 +820,14 @@
       "id": "x18-b03-s06",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a delivery staging area; three different anonymous retail route shapes; soft evening light. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at a small archive shelf; dated but blank report lies over map; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180306",
-          "text": "徵案包括超市、便利店和快餐店，並非只為這項合作找車。",
+          "text": "地圖一頭畫已送達的櫃台，另一頭畫預計接入的門市；兩端不能算成同一筆。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -821,8 +837,8 @@
       "id": "x18-b03-s07",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a delivery staging area; early route beside an unmarked expense folder; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at a delivery staging area; early route beside an unmarked expense folder; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -840,14 +856,14 @@
       "id": "x18-b03-s08",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at a delivery staging area; two different blank expense folders beside route; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at a delivery staging area; two different blank expense folders beside route; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180308",
-          "text": "原因包括車輛事故索賠，也包括合作開線的起步成本。",
+          "text": "公司列出車輛事故索賠，也列出麥當勞合作開線的起步成本；兩筆不是同一個原因。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -857,14 +873,14 @@
       "id": "x18-b03-s09",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a small archive shelf; a plain tray beside unopened start-up cost folder; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at a small archive shelf; a plain tray beside unopened start-up cost folder; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180309",
-          "text": "新線才從試點往外拉，帳上已經記下一筆起步花費。",
+          "text": "所以這不是逐家餐廳的利潤表，卻提醒我們：新路線開始前，先有要支付的準備費用。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -874,8 +890,8 @@
       "id": "x18-b03-s10",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a small archive shelf; calendar beside nearly filled anonymous store grid; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at a small archive shelf; calendar beside nearly filled anonymous store grid; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -891,8 +907,8 @@
       "id": "x18-b03-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a small archive shelf; half-filled unmarked grid beside closed report; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at a small archive shelf; half-filled unmarked grid beside closed report; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -908,8 +924,8 @@
       "id": "x18-b03-s12",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; year-end calendar opens on storefront map; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at an anonymous food-service interior; year-end calendar opens on storefront map; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -938,7 +954,7 @@
       "lines": [
         {
           "id": "x180313",
-          "text": "每日配送已進入超過一千九百家麥當勞。",
+          "text": "每日配送已進入超過一千九百家麥當勞；還記得最初試點嗎？這已超過十倍。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -948,8 +964,8 @@
       "id": "x18-b03-s14",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a delivery staging area; real route crosses an earlier pale pencil sketch; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at a delivery staging area; real route crosses an earlier pale pencil sketch; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -965,8 +981,8 @@
       "id": "x18-b03-s15",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at a delivery staging area; plain tray moves along a longer route; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at a delivery staging area; plain tray moves along a longer route; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -982,8 +998,8 @@
       "id": "x18-b03-s16",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous food-service interior; many storefront dots spread on blank map; warm overcast light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at an anonymous food-service interior; many storefront dots spread on blank map; muted afternoon light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -999,8 +1015,8 @@
       "id": "x18-b03-s17",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a small archive shelf; blank global map with native-count placeholder; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at a small archive shelf; blank global map with native-count placeholder; warm task light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1016,8 +1032,8 @@
       "id": "x18-b03-s18",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at an anonymous food-service interior; different generic storefront silhouettes on map; warm task light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; different generic storefront silhouettes on map; soft evening light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1033,8 +1049,8 @@
       "id": "x18-b03-s19",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; blank footnote block beside mixed storefront silhouettes; soft evening light. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at an anonymous food-service interior; blank footnote block beside mixed storefront silhouettes; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -1050,14 +1066,14 @@
       "id": "x18-b03-s20",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a generic city delivery route; store grid beside separate unopened cost book; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at a generic city delivery route; store grid beside separate unopened cost book; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180320",
-          "text": "一張圖追進度，一張帳追經營；門市走多遠，兩張能否並行？",
+          "text": "地圖能算送到多少家，仍算不出每店需求能否攤平每日配送；後一本帳會由誰揭開？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句停半拍"
         }
@@ -1065,23 +1081,6 @@
     },
     {
       "id": "x18-b03-s21",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up, soft pull out at an anonymous food-service interior; counter grid and sealed unit ledger on table; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Close-up, soft pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x180321",
-          "text": "年底的報告回答了進度，沒揭開各門市的損益。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
-        }
-      ]
-    },
-    {
-      "id": "x18-b03-s22",
       "template": "shot",
       "data": {
         "prompt": "Wide shot, pan left at a delivery staging area; plain tray beside route continuing to blank region; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
@@ -1098,7 +1097,7 @@
       ]
     },
     {
-      "id": "x18-b03-s23",
+      "id": "x18-b03-s22",
       "template": "shot",
       "data": {
         "prompt": "Overhead shot, pan right at a small archive shelf; growing map with calendar page curling; muted afternoon light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No trademarks, store architecture, menu graphics, or branded colors.",
@@ -1257,7 +1256,7 @@
       "lines": [
         {
           "id": "x180409",
-          "text": "停的是新增預期，已有門市的早餐餐盤還在合作裡。",
+          "text": "五月按住的是接下來新增門市的預期；已有的兩千四百多家，仍是當時的合作路線。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -1284,59 +1283,8 @@
       "id": "x18-b04-s10",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a delivery staging area; route pencil rests on blank schedule; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "prompt": "Medium shot, gentle push in at a plain records room; distant calendar recedes behind an unsigned map; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
         "camera": "Medium shot, gentle push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x180411",
-          "text": "所以五月的公告不是終止通知，而是開線速度被拿回桌上。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
-        }
-      ]
-    },
-    {
-      "id": "x18-b04-s11",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up, soft pull out at a plain records room; distant calendar beside a cloudy generic window; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Close-up, soft pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x180412",
-          "text": "宏觀環境偏弱，部署時間也不確定；全年展望還能照舊嗎？",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；問句停半拍"
-        }
-      ]
-    },
-    {
-      "id": "x18-b04-s12",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot, pan left at a quiet scheduling nook; blank annual forecast removed from desk; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Wide shot, pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x180413",
-          "text": "因此，先前給出的全年展望被撤回，也暫不更新。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
-        }
-      ]
-    },
-    {
-      "id": "x18-b04-s13",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead shot, pan right at a plain records room; distant calendar recedes behind an unsigned map; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1349,11 +1297,11 @@
       ]
     },
     {
-      "id": "x18-b04-s14",
+      "id": "x18-b04-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a quiet scheduling nook; two still-open blank accounting books; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium close-up, still",
+        "prompt": "Close-up, soft pull out at a quiet scheduling nook; two still-open blank accounting books; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -1366,28 +1314,11 @@
       ]
     },
     {
-      "id": "x18-b04-s15",
+      "id": "x18-b04-s12",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a plain records room; plain tray pauses before two ledgers; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Low-angle shot, tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x180417",
-          "text": "看得到新區域被按住，卻還不知道那盤究竟卡在誰的帳。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
-        }
-      ]
-    },
-    {
-      "id": "x18-b04-s16",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot, gentle push in at an anonymous food-service interior; lit counter cluster beside sealed joint folder; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Wide shot, pan left at an anonymous food-service interior; lit counter cluster beside sealed joint folder; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1400,11 +1331,11 @@
       ]
     },
     {
-      "id": "x18-b04-s17",
+      "id": "x18-b04-s13",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at a plain records room; calendar turns toward an unopened summer folder; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Overhead shot, pan right at a plain records room; calendar turns toward an unopened summer folder; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1417,11 +1348,11 @@
       ]
     },
     {
-      "id": "x18-b04-s18",
+      "id": "x18-b04-s14",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a plain records room; June calendar page beside unopened notice; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium close-up, still at a plain records room; June calendar page beside unopened notice; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1437,8 +1368,8 @@
       "id": "x18-b05-s01",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a small archive shelf; two hands place a blank joint notice on table; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Low-angle shot, tilt up at a small archive shelf; two hands place a blank joint notice on table; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1478,14 +1409,14 @@
       "id": "x18-b05-s03",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a delivery staging area; plain tray on active route before an unmarked calendar page; warm task light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium close-up, still",
+        "prompt": "Medium shot, gentle push in at an anonymous food-service interior; wide map with highlighted generic storefronts; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x180503",
-          "text": "這時日期還在前方，那盤甜甜圈仍有合作櫃台可去。",
+          "id": "x180504",
+          "text": "聯名公告把當時規模記作約兩千四百家麥當勞門市。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -1495,25 +1426,8 @@
       "id": "x18-b05-s04",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; wide map with highlighted generic storefronts; soft evening light. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Low-angle shot, tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x180504",
-          "text": "公告說，這批麥當勞門市當時仍在合作裡。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
-        }
-      ]
-    },
-    {
-      "id": "x18-b05-s05",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot, gentle push in at an anonymous two-company records shelf; filled region ends before unmarked national outline; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at an anonymous two-company records shelf; filled region ends before unmarked national outline; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -1526,11 +1440,11 @@
       ]
     },
     {
-      "id": "x18-b05-s06",
+      "id": "x18-b05-s05",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at a small archive shelf; two unsigned business ledgers side by side; diffuse daylight. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at a small archive shelf; two unsigned business ledgers side by side; warm overcast light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1545,11 +1459,11 @@
       ]
     },
     {
-      "id": "x18-b05-s07",
+      "id": "x18-b05-s06",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous food-service interior; generic breakfast counter with plain tray; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at an anonymous food-service interior; generic breakfast counter with plain tray; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1568,11 +1482,11 @@
       ]
     },
     {
-      "id": "x18-b05-s08",
+      "id": "x18-b05-s07",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a small archive shelf; one ledger points toward another open ledger; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at a small archive shelf; one ledger points toward another open ledger; warm task light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1587,11 +1501,11 @@
       ]
     },
     {
-      "id": "x18-b05-s09",
+      "id": "x18-b05-s08",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at an anonymous food-service interior; plain tray slides from counter toward unmarked ledger; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; plain tray slides from counter toward unmarked ledger; soft evening light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1604,11 +1518,11 @@
       ]
     },
     {
-      "id": "x18-b05-s10",
+      "id": "x18-b05-s09",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a plain production and loading room; anonymous training board beside delivery rack; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at a plain production and loading room; anonymous training board beside delivery rack; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -1623,11 +1537,11 @@
       ]
     },
     {
-      "id": "x18-b05-s11",
+      "id": "x18-b05-s10",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at an anonymous food-service interior; rows of generic counter trays; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at an anonymous food-service interior; rows of generic counter trays; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -1640,28 +1554,30 @@
       ]
     },
     {
-      "id": "x18-b05-s12",
+      "id": "x18-b05-s11",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at a delivery staging area; plain daily-delivery tray and unit-cost bars beside blank demand marks; diffuse daylight. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at a delivery staging area; plain daily-delivery tray and unit-cost bars beside blank demand marks; warm overcast light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180513",
-          "text": "但開頭那盤每天送達的甜甜圈，成本仍對不上單店需求。",
+          "text": "還記得那本沒揭開的帳嗎？Krispy Kreme 說，每店需求撐不起每天配送的成本。",
           "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
+          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效",
+          "say": "還記得那本沒揭開的帳嗎？克里斯皮克林 說，每店需求撐不起每天配送的成本。",
+          "say_for": "ee97ce448650"
         }
       ]
     },
     {
-      "id": "x18-b05-s13",
+      "id": "x18-b05-s12",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a small archive shelf; ledger remains unbalanced beside tray; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at a small archive shelf; ledger remains unbalanced beside tray; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1674,11 +1590,11 @@
       ]
     },
     {
-      "id": "x18-b05-s14",
+      "id": "x18-b05-s13",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a small archive shelf; one tray between two distinct blank ledgers; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at a small archive shelf; one tray between two distinct blank ledgers; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1691,11 +1607,11 @@
       ]
     },
     {
-      "id": "x18-b05-s15",
+      "id": "x18-b05-s14",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at an anonymous food-service interior; sealed store-level ledger beside active counters; warm task light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; sealed store-level ledger beside active counters; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1708,11 +1624,11 @@
       ]
     },
     {
-      "id": "x18-b05-s16",
+      "id": "x18-b05-s15",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; small plain tray beside much wider unmarked breakfast counter; soft evening light. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at an anonymous food-service interior; small plain tray beside much wider unmarked breakfast counter; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -1725,11 +1641,11 @@
       ]
     },
     {
-      "id": "x18-b05-s17",
+      "id": "x18-b05-s16",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at an anonymous food-service interior; wide anonymous breakfast counter beyond the small tray; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at an anonymous food-service interior; wide anonymous breakfast counter beyond the small tray; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -1742,11 +1658,11 @@
       ]
     },
     {
-      "id": "x18-b05-s18",
+      "id": "x18-b05-s17",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at an anonymous food-service interior; small counter inset beside much larger delivery map; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at an anonymous food-service interior; small counter inset beside much larger delivery map; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1759,11 +1675,11 @@
       ]
     },
     {
-      "id": "x18-b05-s19",
+      "id": "x18-b05-s18",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a small archive shelf; future calendar page beside closing quarter-end folder; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at a small archive shelf; future calendar page beside closing quarter-end folder; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1779,8 +1695,8 @@
       "id": "x18-b06-s01",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a plain records room; calendar page near doughnut ledger; muted afternoon light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at a plain records room; calendar page near doughnut ledger; warm task light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1797,8 +1713,8 @@
       "id": "x18-b06-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at an anonymous food-service interior; lit anonymous counters beneath a quarter-end marker; warm task light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; lit anonymous counters beneath a quarter-end marker; soft evening light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1814,8 +1730,8 @@
       "id": "x18-b06-s03",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; blank map with fewer highlighted counters than national plan; soft evening light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at an anonymous food-service interior; blank map with fewer highlighted counters than national plan; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -1854,8 +1770,8 @@
       "id": "x18-b06-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at an anonymous food-service interior; distinct storefront types encircle one plain tray; soft morning window light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at an anonymous food-service interior; distinct storefront types encircle one plain tray; diffuse daylight. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -1871,14 +1787,14 @@
       "id": "x18-b06-s06",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at a delivery staging area; delivery cost folder beside quarter-end report; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at a delivery staging area; delivery cost folder beside quarter-end report; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180606",
-          "text": "第二季報告也把合作成本，列為調整後利潤率的壓力之一。",
+          "text": "第二季報告也把麥當勞合作成本，列為公司調整後利潤率承壓的原因之一。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -1888,8 +1804,8 @@
       "id": "x18-b06-s07",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a plain records room; two separate unmarked expense folders; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at a plain records room; two separate unmarked expense folders; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1905,8 +1821,8 @@
       "id": "x18-b06-s08",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a plain records room; quarter-end folder closes as calendar turns forward; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at a plain records room; quarter-end folder closes as calendar turns forward; warm task light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1922,8 +1838,8 @@
       "id": "x18-b06-s09",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at an anonymous food-service interior; delivery route ends at closed generic counter; warm task light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; delivery route ends at closed generic counter; soft evening light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1939,8 +1855,8 @@
       "id": "x18-b06-s10",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous food-service interior; single route fades from anonymous breakfast map; soft evening light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at an anonymous food-service interior; single route fades from anonymous breakfast map; soft morning window light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -1956,8 +1872,8 @@
       "id": "x18-b06-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a delivery staging area; hands lift an unmarked cost folder from route table; soft morning window light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at a delivery staging area; hands lift an unmarked cost folder from route table; diffuse daylight. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
@@ -1975,14 +1891,14 @@
       "id": "x18-b06-s12",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at a delivery staging area; plain tray turns toward a different unmarked retail route; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at a delivery staging area; plain tray turns toward a different unmarked retail route; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180613",
-          "text": "它要把每日新鮮配送，轉向能獲利的高銷量零售點。",
+          "text": "公司說，要把每日配送轉向高銷量、能獲利的零售點；那還不是逐店利潤證明。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -1992,8 +1908,8 @@
       "id": "x18-b06-s13",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous food-service interior; one generic cart changes direction away from breakfast counter; warm overcast light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at an anonymous food-service interior; one generic cart changes direction away from breakfast counter; muted afternoon light. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -2009,8 +1925,8 @@
       "id": "x18-b06-s14",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a delivery staging area; lingering blank expense page near empty route; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at a delivery staging area; lingering blank expense page near empty route; warm task light. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -2026,8 +1942,8 @@
       "id": "x18-b06-s15",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a delivery staging area; closed route chart beside an opening later-quarter folder; warm task light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Medium close-up, still",
+        "prompt": "Low-angle shot, tilt up at a delivery staging area; closed route chart beside an opening later-quarter folder; soft evening light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -2066,14 +1982,14 @@
       "id": "x18-b06-s17",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a plain records room; new quarter-end map with fewer dots; soft evening light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, gentle push in at a plain records room; new quarter-end map with fewer dots; soft morning window light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180618",
-          "text": "公司註腳確認，這季退出約兩千四百個合作點。",
+          "text": "公司在第三季註腳確認，這季退出約兩千四百個麥當勞合作點。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -2083,16 +1999,16 @@
       "id": "x18-b06-s18",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a plain production and loading room; a plain delivery cart follows a different retail route; soft morning window light. All paper and packaging unprinted; precise figures are native postproduction cards.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, soft pull out at a plain production and loading room; a plain delivery cart follows a different retail route; diffuse daylight. Fictional anonymous setting; no real-person faces or identifiable chain design.",
+        "camera": "Close-up, soft pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180619",
-          "text": "九月公告說，合作成本已移除，美國配送網仍朝可獲利的零售點擴張。",
+          "text": "九月公司說，合作成本已移除；但新配送網的逐店利潤有公布嗎？",
           "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
+          "emotion": "台灣自然國語說書；問句停半拍"
         }
       ]
     },
@@ -2100,8 +2016,8 @@
       "id": "x18-b06-s19",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, soft pull out at a plain records room; two total-map ledgers kept apart; diffuse daylight. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No trademarks, store architecture, menu graphics, or branded colors.",
-        "camera": "Close-up, soft pull out",
+        "prompt": "Wide shot, pan left at a plain records room; two total-map ledgers kept apart; warm overcast light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paper and packaging unprinted; precise figures are native postproduction cards.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -2117,14 +2033,14 @@
       "id": "x18-b06-s20",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a plain records room; two mixed-channel maps beside closed unit ledger; warm overcast light. No logos, signage, uniforms, labels, numbers, or readable lettering.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, pan right at a plain records room; two mixed-channel maps beside closed unit ledger; muted afternoon light. No trademarks, store architecture, menu graphics, or branded colors.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x180621",
-          "text": "至於逐店盈虧，這兩張只記點數的地圖，根本沒有那一欄。",
+          "text": "還記得六月那本沒打開的逐店帳嗎？這兩張只記點數的地圖，仍沒有那一欄。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；清楚區分預期、已達與終止生效"
         }
@@ -2134,8 +2050,8 @@
       "id": "x18-b06-s21",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at an anonymous food-service interior; unmarked breakfast counter and folded route map, no tray remains; muted afternoon light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional anonymous setting; no real-person faces or identifiable chain design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium close-up, still at an anonymous food-service interior; unmarked breakfast counter and folded route map, no tray remains; warm task light. Keep the action inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. No logos, signage, uniforms, labels, numbers, or readable lettering.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
