@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const base = "story-everyday-garmin-x15";
+const protectedName = /\b(?:Garmin|Forerunner|NAVIGON|Auto OEM)\b|nüvi|佳明|高民環|GPSMAP/iu;
 const videoBytes = readFileSync(path.join(dir, "video.json"));
 const video = JSON.parse(videoBytes);
 const videoSha = createHash("sha256").update(videoBytes).digest("hex");
@@ -19,6 +20,7 @@ for (const raw of readFileSync(path.join(dir, "drafts/shorts.md"), "utf8").split
   if (current < 0 || parts.length !== 4) throw new Error(`Malformed Short row: ${raw}`);
   const [id, refsText, text, cue] = parts;
   if (!text || !cue) throw new Error(`Missing Short narration or visual cue: ${id}`);
+  if (protectedName.test(cue)) throw new Error(`Short visual cue contains a protected name: ${id}`);
   if (!/^(?:G[1-6](?:,G[1-6])*|editorial)$/.test(refsText)) throw new Error(`Invalid Short source: ${id}`);
   rows[current].push({ id, refs: refsText, text, cue });
 }
@@ -32,8 +34,8 @@ for (const [si, short] of rows.entries()) {
 // Use existing long-video illustrations only after hand-picking story-appropriate shots.
 // Keep this mapping distinct from landscape stats cards: vertical cards are native overlays.
 const shotMap = {
-  1: [],
-  2: [],
+  1: ["x15-b03-s21", "x15-b01-s03", "x15-b03-s02", "x15-b04-s08", "x15-b04-s17", "x15-b04-s10", "x15-b04-s15", "x15-b04-s16", "x15-b04-s07"],
+  2: ["x15-b05-s01", "x15-b05-s02", "x15-b05-s04", "x15-b05-s08", "x15-b05-s26", "x15-b06-s23", "x15-b06-s21", "x15-b05-s13", "x15-b05-s21"],
 };
 const byShot = new Map(video.scenes.map(scene => [scene.id, scene]));
 for (const [si, short] of rows.entries()) {
@@ -52,11 +54,13 @@ const common = { schema_version: 2, format: "shorts", locale: "zh-TW", line: "cu
 const specs = [
   {
     titles: ["Garmin 年報三年之間改了哪個字？", "Garmin：手機導航從可能威脅到已發生壓力"],
+    headlines: ["2008：可能", "車用／行動逾七成", "nüvi 約六成四", "三年後", "2011：成長停滯", "nüvi 約四成八", "機器未突然消失", "風險已成事實", "無法獨算手機"],
     description: "Garmin FY2008 10-K 稱手機 GPS 與導航軟體可能拖慢成長；當時 automotive/mobile 事業占公司營收逾七成，nüvi 產品線約占全公司 64%。FY2011 10-K 改稱手機導航的接受度已使成長停滯，nüvi 當年約占全公司 48%。這是公司風險披露，不表示手機獨自造成所有收入下降。完整長片連結待實際發布後回填；畫面是匿名概念插畫。",
     refs: ["G2", "G5"],
   },
   {
     titles: ["Garmin 導航機之外，GPS 又走到哪？", "Garmin 的 GPS 手錶不是唯一新收入線"],
+    headlines: ["2011：GPS 運動錶", "觸控運動錶", "多項運動錶", "健身部門 +24%", "車用仍占過半", "2025：約 60.9%", "另有三個部門", "不能全算兩只錶", "GPS 走向更多場景"],
     description: "Garmin FY2011 10-K 記載 Forerunner 610 與 910XT GPS 運動錶新品，並列當年 Fitness 事業營收 +24%、Outdoor +14%。FY2025 全年財報列 Fitness 與 Outdoor 按原始金額合占約 60.9% 的總營收，另外還有 Marine、Aviation、Auto OEM；60.9% 是兩個事業，不能說全是手錶，亦不能宣稱兩款 2011 新品單獨造成 2025 結果。長片正式連結待上架後填入；畫面是匿名概念插畫。",
     refs: ["G5", "G6"],
   },
@@ -65,9 +69,9 @@ const shorts = rows.map((short, si) => ({
   ...common, slug: `${base}-short-${si + 1}`, titles: specs[si].titles, description: specs[si].description,
   links: specs[si].refs.map(ref => ({ label: `Garmin ${ref} SEC 原件`, url: sec[ref] })),
   scenes: short.map((row, ri) => ({
-    beat: ri === 0 ? "hook" : ri === short.length - 1 ? "payoff" : ri === Math.floor(short.length / 2) ? "turn" : "development",
+    beat: ri === 0 ? "hook" : ri === short.length - 1 ? "payoff" : ri < (si === 0 ? 3 : 4) ? "setup" : ri === (si === 0 ? 3 : 4) ? "turn" : "proof",
     shot: shotMap[si + 1][ri],
-    headline: row.text.slice(0, 14),
+    headline: specs[si].headlines[ri],
     narration: [row.text],
   })),
 }));
@@ -81,5 +85,10 @@ const sha = createHash("sha256").update(bytes).digest("hex");
 writeFileSync(path.join(dir, "shorts-script.md"), [
   "# X15 Garmin｜兩支獨立 Shorts 逐句稿", "", `長片 SHA-256：\`${videoSha}\`；Shorts SHA-256：\`${sha}\`。離線前製，未配音、剪輯或實測；正式長片網址待上架後回填。每支使用長片匿名插畫，但文字、順序和結尾自成一個故事；5 秒片頭及 21 秒片尾只屬正式長片。`, "",
   ...shorts.flatMap((short, si) => [`## Short ${si + 1}｜${short.titles[0]}`, "", ...short.scenes.map((scene, ri) => `- \`${rows[si][ri].id}\` [${rows[si][ri].refs}] ${scene.narration[0]}（\`${scene.shot}\`）`), "", `一手資料：${short.links.map(link => `[${link.label}](${link.url})`).join("、")}`, ""]),
+].join("\n"));
+writeFileSync(path.join(dir, "shorts-source-matrix.md"), [
+  "# X15 Garmin｜Shorts 逐句作者來源矩陣", "", `\`shorts.json\` SHA-256：\`${sha}\`；主片 SHA-256：\`${videoSha}\`。本表是作者標記，獨立逐句審查尚待完成；來源代碼見 [source-matrix.md](source-matrix.md)。`, "",
+  "| Short | 句 ID | 旁白 | 作者來源標記 |", "| --- | --- | --- | --- |",
+  ...rows.flatMap((short, si) => short.map(row => `| ${si + 1} | \`${row.id}\` | ${row.text.replaceAll("|", "\\|")} | ${row.refs === "editorial" ? "敘事提問／概念示意／CTA" : row.refs.replaceAll(",", "、")} |`)), "",
 ].join("\n"));
 console.log(JSON.stringify({ video_sha256: videoSha, shorts_sha256: sha, shorts: shorts.map(short => ({ slug: short.slug, scenes: short.scenes.length, characters: short.scenes.flatMap(scene => scene.narration).join("").length })) }, null, 2));

@@ -44,7 +44,7 @@ x150224 | G2 | 不是。這是它在自家收入裡的重量。 | revenue wheel 
 x150225 | G2 | 車內那台機器，成了報表裡最重的一端。 | a scale with a device on one pan
 x150226 | G2 | 你在車裡看到的是路線。 | hands looking toward a generic dashboard device
 x150227 | G2 | 公司報表看到的，卻是設備、地圖與成本。 | blank boxes and map tiles behind a screen
-x150228 | G3 | 到二〇〇八年，總收入繼續增到約三十五億。 | larger bar beside a dated blank folder
+x150228 | G3 | 到這時，總收入繼續增到約三十五億。 | larger bar beside a dated blank folder
 x150229 | G2 | 但在報表裡，專用設備的影子也越來越大。 | growing shadow of a generic screen
 x150230 | G2 | 成長越快，分出去的重量卻越少。 | several narrow streams joining one broad stream
 x150231 | G2 | 一個產品系列，究竟能占到公司收入多少？ | single large unlabeled slice awaiting reveal
@@ -56,7 +56,7 @@ x150302 | G2 | 這是 nüvi 系列，占全公司收入的比重。 | a large co
 x150303 | G3 | 更大的一圈，是整個車用與行動事業。 | a larger ring enclosing the first slice
 x150304 | G3 | 它賣了約二十五億四千萬美元。 | one huge stack of blank cartons
 x150305 | G3 | 占公司全年收入，大約百分之七十三。 | one broad colored bar beside smaller bars
-x150306 | G2,G3 | 六十四不是加在七十三上面。 | nested circles, not adjacent circles
+x150306 | G2,G3 | 產品占比，不能再加到整個事業上面。 | nested circles, not adjacent circles
 x150307 | G2,G3 | 那個產品系列，本來就在這個事業裡。 | a small shape nestled inside a larger one
 x150308 | G2 | 年報說高度依賴它；貨已經賣不動了嗎？ | one thick cable holding a balance scale
 x150309 | G2 | 但那一年，貨還沒有賣不動。 | active generic warehouse conveyer belt
@@ -76,13 +76,13 @@ x150322 | G2 | 手機越來越常有 GPS，也有人做手機導航軟體。 | b
 x150323 | G2 | 新車也能把導航裝進原本的車身。 | generic built-in dashboard screen lighting up
 x150324 | G2 | 同一條路，可能有三塊不同的螢幕在爭。 | three unmarked screens over one abstract road
 x150325 | G2 | 面對手機，Garmin 自己站在哪一邊？ | phone silhouette moving toward a device shelf
-x150326 | G2 | 二〇〇八年，它公布一款觸控手機計畫。 | generic blank touchscreen prototype on a table
+x150326 | G2 | 同一年，它公布一款觸控手機計畫。 | generic blank touchscreen prototype on a table
 x150327 | G2 | 那台計畫中的設備，想把電話和導航合在一起。 | phone and route shapes merging abstractly
 x150328 | G2 | 年報當時說，預計隔年才上市。 | unopened generic product box beside a calendar
 x150329 | G2 | 這只證明公布計畫，不能當成已經賣出。 | unopened box remaining behind a clear pane
 x150330 | G2 | 光是同一家公司要試這條路，就夠耐人尋味。 | two branches of road meeting at phone silhouette
 x150331 | G2 | 年報用的字還很保守：可能拖慢成長。 | thin translucent question mark near report
-x150332 | G2 | 因為那是二〇〇八年的風險，不是結案。 | dated folder left slightly open
+x150332 | G2 | 因為那是當時的風險，不是結案。 | dated folder left slightly open
 x150333 | G2 | 這時若你只看賣出多少，還看不見後面。 | overflowing warehouse fading into a calendar
 x150334 | G2 | 真正待測的，是一旦增長慢下來， | heavy single cable becoming taut
 x150335 | G2 | 那條占七成的收入線，能撐住嗎？ | broad colored line reaching a gap
@@ -101,7 +101,7 @@ x150408 | G2,G5 | 年報還提到市場成熟與新車內建導航。 | crowded 
 x150409 | G2,G5 | 價格變化，也牽動那台獨立設備的生意。 | generic boxed device beside falling blank tags
 x150410 | G2,G5 | 幾種壓力重疊，手機那一份能算清嗎？ | several translucent streams converging
 x150411 | G2,G5 | 不能。年報沒有替每種壓力拆帳。 | translucent streams without separate counters
-x150412 | G5 | 二〇一一年，公司再交出一份年報。 | fresh unmarked report placed over older one
+x150412 | G5 | 隔年，公司再交出一份年報。 | fresh unmarked report placed over older one
 x150413 | G5 | nüvi 占全公司收入的比重，變成約四成八。 | colored wheel with less than half shaded
 x150414 | G5 | 它不是整個車用與行動事業的比重。 | two unequal nested rings
 x150415 | G5 | 那個事業當年仍占約五成八。 | separate segment bar just over half width
@@ -128,7 +128,7 @@ x150435 | G5 | 那不是紙上的遠期構想，而是當年的新品。 | two g
 
 ## b05: GPS 走出駕駛座
 
-x150501 | G5 | 二〇一一年，新品頁列出兩只運動 GPS 錶。 | two generic watches on an unmarked workbench
+x150501 | G5 | 同年，新品頁列出兩只運動 GPS 錶。 | two generic watches on an unmarked workbench
 x150502 | G5 | 一只是 Forerunner 六一零。 | first generic sports watch on running track
 x150503 | G5 | 它是這個系列第一只觸控 GPS 錶。 | finger touching a blank watch face
 x150504 | G5 | 另一只是九一零 XT，多項運動用。 | second generic watch beside track and pool
@@ -139,7 +139,7 @@ x150508 | G5 | 指路的技術，在這裡多了一種工作。 | abstract locat
 x150509 | G5 | 這只是兩只錶，還是部門也動了？ | road line turning into a running loop
 x150510 | G5 | 同年的健身事業，收入增加百分之二十四。 | fitness-colored annual bar rising
 x150511 | G5 | 這條線其實早就存在，不是今年才開張。 | long thin path beside a new watch
-x150512 | G5 | 新錶只是當年產品表上的兩個具體動作。 | two anonymous watch shapes on broad product sheet
+x150512 | G5 | 新錶只是當年兩個動作；還有什麼？ | two anonymous watch shapes on broad product sheet
 x150513 | G5 | 同年還有入門款自行車紀錄器，供騎士使用。 | anonymous cycle computer on a bicycle handlebar
 x150514 | G5 | 戶外事業也增加百分之十四。 | outdoor-colored annual bar rising beside it
 x150515 | G5 | 戶外產品頁還有高爾夫球場用的定位器。 | generic golf field and anonymous handheld device
@@ -168,7 +168,7 @@ x150537 | G5 | 那一年，航海與飛航收入也各自成長。 | two smaller
 x150538 | G5 | 這兩條路，並不是多年後才憑空出現。 | older paths continuing into a later horizon
 x150539 | G5 | 那些場景，從來不只靠車內的螢幕。 | trail, sea and sky paths around a car
 x150540 | G5 | 但不能因此宣稱哪一款救了公司。 | small device shapes beneath a much larger bar
-x150541 | G5 | 二〇一一年，車用與行動事業仍占過半。 | dashboard strand remains broad among others
+x150541 | G5 | 此時車用與行動事業，仍占過半。 | dashboard strand remains broad among others
 x150542 | G5 | 那條舊路還在走，新路也只是開始有數字。 | broad road with smaller diverging paths
 x150543 | G5 | 到底分散成什麼樣，哪張表能回答？ | five sealed blank folders on a desk
 x150544 | G6 | 得看多年後完整的全年收入表。 | later unopened annual report arriving
@@ -180,7 +180,7 @@ x150602 | G6 | 最上方的總收入，約七十二億五千萬美元。 | one l
 x150603 | G6 | 公司說，這是它創下的全年收入新高。 | high annual bar beside smaller past bars
 x150604 | G6 | 全年出貨超過兩千萬件，也創了紀錄。 | varied anonymous product cartons filling a wide warehouse
 x150605 | G6 | 五個部門，各自也刷新全年收入紀錄。 | five ascending colored bars without labels
-x150606 | G3,G6 | 換成名目美元，約為二〇〇八年的兩倍。 | two bars from distant years, different colors
+x150606 | G3,G6 | 和前面二〇〇八年財報相比，名目美元約兩倍。 | two bars from distant years, different colors
 x150607 | G6 | 但這還不是答案；收入還壓在車用一欄嗎？ | single column dissolving into separate paths
 x150608 | G6 | 最大一欄叫健身，約二十三億六千萬。 | fitness-colored bar, unmarked visual
 x150609 | G6 | 戶外也有約二十億五千萬。 | outdoor-colored bar rising beside it
@@ -199,7 +199,7 @@ x150621 | G6 | 這些是第四季動作，不能拆成全年營收。 | quarter 
 x150622 | G6 | 最後還有哪個收入欄位？ | generic car assembly line and fifth bar
 x150623 | G6 | 那是替車廠供應系統的 Auto OEM。 | anonymous factory belt with car components
 x150624 | G6 | 它這一年收入約六億六千萬美元。 | fifth smaller bar beside factory line
-x150625 | G2,G6 | 這欄能和二〇〇八年的七成直接比較嗎？ | mismatched measuring rulers kept apart
+x150625 | G2,G6 | 這欄能和舊事業的七成直接比較嗎？ | mismatched measuring rulers kept apart
 x150626 | G2,G6 | 不能，兩年的部門邊界不同。 | two folders with different dividers
 x150627 | G6 | 執行長把這份表現歸於市場多元化。 | faceless speaker silhouette beside five bars
 x150628 | G6 | 那是公司的歸因，我們只拿實際收入核對。 | clean revenue bars without a causal arrow
@@ -213,5 +213,5 @@ x150634 | G6 | 你會得到一個最能回答開場的比例。 | blank percenta
 ## outro: 回答、留言、訂閱
 
 x150635 | G6 | 答案是：健身與戶外合占約六成一，還有航海、飛航及車廠供應。 | five colored streams joining one total bar
-x150636 | editorial | 如果你握著二〇一一年的導航機，下一個 GPS 場景會選哪裡？ | hand holding a generic device at a forked road
+x150636 | editorial | 如果你握著那時的導航機，下一個 GPS 場景會選哪裡？ | hand holding a generic device at a forked road
 x150637 | editorial | 想繼續追查熟悉品牌怎麼轉彎，歡迎訂閱品牌故事。 | warm abstract studio shelf with generic objects

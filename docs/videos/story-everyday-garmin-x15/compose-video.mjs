@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { textHash } from "../../../tools/video/core/schema.mjs";
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const slug = "story-everyday-garmin-x15";
@@ -50,30 +51,110 @@ for (const [ri, row] of outro.entries()) {
   if (row.id !== expected) throw new Error(`Expected ${expected}; found ${row.id}`);
 }
 
-const camera = ["Medium shot, slow push in", "Close-up, static", "Wide shot, slow pan", "Medium close-up, gentle parallax"];
-const noText = "No logos, labels, letters, numbers, readable maps, exact product designs, or identifiable real people.";
-// A card is inserted only when an editor specifies exact source-backed copy below.
-// Key: narration line ID. All other lines use anonymous illustrations.
-const cards = new Map(Object.entries({
-  // x1503NN: { title: "FY2008", stats: [{ value: "72.65%", label: "automotive/mobile 占公司全年營收" }], source: "Garmin FY2008 8-K" },
-}));
-const lineFor = row => ({ id: row.id, text: row.text, emotion: row.text.endsWith("？") ? "台灣口語說書，自然提問，正常語速" : "台灣口語說書，日期與數字清楚，正常語速" });
-const scenes = chapters.flatMap((chapter, ci) => chapter.rows.map((row, ri) => {
-  const id = `x15-b${String(ci + 1).padStart(2, "0")}-s${String(ri + 1).padStart(2, "0")}`;
-  const card = cards.get(row.id);
-  const scene = card ? { id, template: "stats", data: card, lines: [lineFor(row)] } : {
-    id, template: "shot", data: {
-      prompt: `${camera[ri % camera.length]}: ${row.cue}. ${noText}`,
-      camera: camera[ri % camera.length], visual: "still",
-    }, lines: [lineFor(row)],
-  };
-  if (ri === 0) scene.chapter = chapter.title;
-  return scene;
-}));
+const camera = ["Medium shot, push in", "Close-up, pull out", "Wide shot, pan left", "Medium close-up, pan right", "Overhead shot, tilt down", "Low-angle shot, tilt up"];
+const light = ["Mild glow from a side window", "Soft grey morning light", "Overcast afternoon sky", "Muted skylight", "Gentle indoor light", "Soft evening light"];
+const safeguards = [
+  "Displays show plain colour fields; no logos or legible lettering.",
+  "Paper surfaces have unreadable shapes; no brand marks or realistic machine styling.",
+  "Any maps are schematic and unlabeled; no trademarks.",
+  "All objects remain general, with no readable inscriptions or real model contours.",
+];
+const humanAction = cue => {
+  if (/boat|chartplotter|sea/.test(cue)) return ["on a small plain boat", "sailor", "touching a plain console"];
+  if (/cockpit|aircraft/.test(cue)) return ["in a simple aircraft cockpit", "pilot", "looking down at a plain instrument panel"];
+  if (/mountain|trail|hiker|outdoor/.test(cue)) return ["on a winding trail", "hiker", "holding a plain handheld receiver"];
+  if (/running|runner|track|fitness|watch|sport/.test(cue)) return ["beside a running track", "runner", "checking a plain wrist receiver"];
+  if (/truck|dashboard|steering|car|vehicle|road/.test(cue)) return ["in a plain parked vehicle", "driver", "holding a small route screen"];
+  if (/phone|smartphone/.test(cue)) return ["at a plain workbench", "customer", "holding a plain phone"];
+  if (/shelf|boxes|cartons|warehouse|device/.test(cue)) return ["at an anonymous electronics shop", "clerk", "lifting a plain equipment box"];
+  return ["at an archive desk", "analyst", "turning an unwritten annual-report page"];
+};
+// Each numerical card is hand-written from G1–G6, then anchored to one exact
+// narration beat. Matching a unique phrase keeps IDs stable if a hook moves.
+const cardRules = [
+  [/全公司收入約十七億七千萬美元/, { title: "2006 全年營收", stats: [{ value: "約 US$1.77bn", label: "全公司收入，非淨利" }], source: "G1｜Garmin FY2006 8-K" }],
+  [/那一欄達到約十一億美元/, { title: "2006 車用／行動事業", stats: [{ value: "約 US$1.10bn", label: "全年營收；年增 170%" }], source: "G1｜Garmin FY2006 8-K" }],
+  [/二〇〇六年，這系列占全公司收入約兩成八/, { title: "nüvi 占全公司收入", stats: [{ value: "約 28%", label: "2006 全年；不是市場占有率" }], source: "G2｜Garmin FY2008 10-K" }],
+  [/隔年，比例跳到五成二/, { title: "nüvi 占全公司收入", stats: [{ value: "約 52%", label: "2007 全年；不是事業占比" }], source: "G2｜Garmin FY2008 10-K" }],
+  [/答案，是百分之六十四/, { title: "nüvi 占全公司收入", stats: [{ value: "約 64%", label: "2008 全年；屬於車用／行動事業的一部分" }], source: "G2｜Garmin FY2008 10-K" }],
+  [/占公司全年收入，大約百分之七十三/, { title: "2008 車用／行動事業", stats: [{ value: "72.65%", label: "US$2,538.411m ÷ US$3,494.077m" }], source: "G3｜Garmin FY2008 8-K；本包計算" }],
+  [/二〇一〇年，車用與行動收入約十六億七千萬/, { title: "車用／行動事業全年營收", stats: [{ value: "US$2.538bn", label: "2008" }, { value: "US$1.669bn", label: "2010；兩年對照，非 2010 年比" }], source: "G3/G4｜Garmin FY2008/FY2010 8-K" }],
+  [/全公司收入也從約三十五億，降到約二十七億/, { title: "全公司全年營收", stats: [{ value: "US$3.494bn", label: "2008" }, { value: "US$2.690bn", label: "2010；名目美元" }], source: "G3/G4｜Garmin FY2008/FY2010 8-K" }],
+  [/nüvi 占全公司收入的比重，變成約四成八/, { title: "nüvi 占全公司收入", stats: [{ value: "約 48%", label: "2011 全年；非整個車用／行動事業" }], source: "G5｜Garmin FY2011 10-K" }],
+  [/那個事業當年仍占約五成八/, { title: "車用／行動事業占全公司收入", stats: [{ value: "約 58%", label: "2011 全年；分子不同於 nüvi" }], source: "G5｜Garmin FY2011 10-K" }],
+  [/健身事業，收入增加百分之二十四/, { title: "2011 Fitness 事業", stats: [{ value: "+24%", label: "全年營收年比；非兩款錶銷量" }], source: "G5｜Garmin FY2011 10-K" }],
+  [/戶外事業也增加百分之十四/, { title: "2011 Outdoor 事業", stats: [{ value: "+14%", label: "全年營收年比；非兩款錶銷量" }], source: "G5｜Garmin FY2011 10-K" }],
+  [/最上方的總收入，約七十二億五千萬美元/, { title: "2025 全年營收", stats: [{ value: "US$7.245519bn", label: "全公司收入，非淨利" }], source: "G6｜Garmin FY2025 8-K" }],
+  [/最大一欄叫健身，約二十三億六千萬/, { title: "2025 Fitness 事業", stats: [{ value: "US$2.357bn", label: "全年營收；非只有手錶" }], source: "G6｜Garmin FY2025 8-K" }],
+  [/戶外也有約二十億五千萬/, { title: "2025 Outdoor 事業", stats: [{ value: "US$2.054061bn", label: "全年營收；非只有手錶" }], source: "G6｜Garmin FY2025 8-K" }],
+  [/航海事業，超過十一億美元/, { title: "2025 Marine 事業", stats: [{ value: "US$1.182615bn", label: "全年營收" }], source: "G6｜Garmin FY2025 8-K" }],
+  [/飛航事業，將近十億美元/, { title: "2025 Aviation 事業", stats: [{ value: "US$987.161m", label: "全年營收" }], source: "G6｜Garmin FY2025 8-K" }],
+  [/它這一年收入約六億六千萬美元/, { title: "2025 Auto OEM 事業", stats: [{ value: "US$664.682m", label: "全年營收；不可直接對比舊事業" }], source: "G6｜Garmin FY2025 8-K" }],
+];
+const cards = new Map();
+for (const [pattern, data] of cardRules) {
+  const matches = allRows.filter(row => pattern.test(row.text));
+  if (matches.length !== 1) throw new Error(`Card anchor must match one narration line: ${pattern} (${matches.length})`);
+  cards.set(matches[0].id, data);
+}
+const sayWords = [
+  ["Garmin Fit", "嘎明菲特"], ["Auto OEM", "車廠供應部門"],
+  ["Forerunner", "佛瑞納"], ["NAVIGON", "納維根"],
+  ["Garmin", "嘎明"], ["nüvi", "紐維"], ["GPS", "G P S"], ["XT", "艾克斯提"],
+];
+const lineFor = row => {
+  const line = { id: row.id, text: row.text, emotion: row.text.endsWith("？") ? "台灣口語說書，自然提問，正常語速" : "台灣口語說書，日期與數字清楚，正常語速" };
+  const say = sayWords.reduce((value, [written, spoken]) => value.replaceAll(written, spoken), row.text);
+  if (say !== row.text) Object.assign(line, { say, say_for: textHash(row.text) });
+  return line;
+};
+const scenes = [];
+let shotNo = 0;
+for (const [ci, chapter] of chapters.entries()) {
+  let sceneNo = 0;
+  for (let ri = 0; ri < chapter.rows.length;) {
+    const current = chapter.rows[ri];
+    const next = chapter.rows[ri + 1];
+    const canPair = Boolean(next && !cards.has(current.id) && !cards.has(next.id) && current.text.length + next.text.length <= 36);
+    const selected = canPair ? [current, next] : [current];
+    const id = `x15-b${String(ci + 1).padStart(2, "0")}-s${String(++sceneNo).padStart(2, "0")}`;
+    const card = cards.get(current.id);
+    const visualCue = selected.map(row => row.cue.replace(/\bgeneric\b/g, "plain").replace(/\bdevices\b/g, "units").replace(/\bdevice\b/g, "unit")).join("; ");
+    const [setting, role, action] = humanAction(visualCue);
+    const shotIndex = card ? shotNo : shotNo++;
+    const orientation = shotIndex % 4 === 0 ? `one anonymous ${role} facing the viewer and ${action}` : `one anonymous ${role} ${action}`;
+    const scene = card ? { id, template: "stats", data: card, lines: selected.map(lineFor) } : {
+      id, template: "shot", data: {
+        prompt: `${camera[shotIndex % camera.length]} ${setting}, ${orientation}. ${visualCue}. ${light[shotIndex % light.length]}. ${safeguards[shotIndex % safeguards.length]}`,
+        camera: camera[shotIndex % camera.length], visual: "still",
+      }, lines: selected.map(lineFor),
+    };
+    if (sceneNo === 1) scene.chapter = chapter.title;
+    scenes.push(scene);
+    ri += selected.length;
+  }
+}
 scenes.push({ id: "x15-outro", template: "outro", data: { title: "導航不只在車裡", cta: "訂閱品牌故事" }, lines: outro.map(lineFor) });
 
-// Narrative loops will be anchored to exact new-draft IDs after the writer freezes lines.
-const loops = [];
+// Setups point to a withheld outcome, with the answer in the actual line named
+// by payoff. Keep the opening's later moments open through the six-chapter body.
+const loops = [
+  { setup: "x150106", payoff: "x150206", what: "開場車用收入急升的幅度" },
+  { setup: "x150107", payoff: "x150401", what: "開場同一事業兩年後降到多少" },
+  { setup: "x150108", payoff: "x150510", what: "開場運動錶如何接到另一事業收入" },
+  { setup: "x150109", payoff: "x150606", what: "開場多年後總營收是否約兩倍" },
+  { setup: "x150110", payoff: "x150635", what: "收入後來分布在哪些事業" },
+  { setup: "x150209", payoff: "x150214", what: "當年最醒目的車用產品系列" },
+  { setup: "x150231", payoff: "x150301", what: "nüvi 在 2008 占全公司營收多少" },
+  { setup: "x150308", payoff: "x150310", what: "2008 警訊是否等於當年貨賣不動" },
+  { setup: "x150335", payoff: "x150401", what: "高度依賴的車用事業能否維持原營收" },
+  { setup: "x150423", payoff: "x150426", what: "2011 年報的風險措辭怎麼變" },
+  { setup: "x150509", payoff: "x150510", what: "運動錶以外健身事業當年是否成長" },
+  { setup: "x150543", payoff: "x150601", what: "哪張全年表能看之後的收入分布" },
+  { setup: "x150607", payoff: "x150629", what: "2025 是否仍是一個車用大欄撐收入" },
+  { setup: "x150612", payoff: "x150616", what: "2025 全年能否只用手錶解釋" },
+  { setup: "x150625", payoff: "x150626", what: "舊七成能否與新 Auto OEM 直線比較" },
+];
 const linePosition = new Map(allRows.map((row, index) => [row.id, index]));
 for (const loop of loops) if (!(linePosition.has(loop.setup) && linePosition.has(loop.payoff) && linePosition.get(loop.setup) < linePosition.get(loop.payoff))) throw new Error(`Invalid loop: ${JSON.stringify(loop)}`);
 
@@ -95,7 +176,7 @@ const video = {
   music: { prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 },
   loops,
   youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Garmin 一度七成營收靠車用業務，手機來了怎麼辦？｜品牌故事", description, tags: ["Garmin", "品牌故事", "GPS", "導航機", "運動手錶", "年報"], video_id: null },
-  thumbnail: { template: "thumb", data: { headline: "**導航機退場？**", tag: "品牌故事", brand: "Garmin", shot: "x15-b01-s01" } },
+  thumbnail: { template: "thumb", data: { headline: "導航機退場？", tag: "品牌故事", brand: "Garmin", shot: "x15-b01-s01" } },
   sources: sourceUrls.map(({ code, ...source }) => source), assets: [], scenes,
 };
 const bytes = JSON.stringify(video, null, 2) + "\n";

@@ -31,7 +31,7 @@ The owner asks for another missing-brand video under the established 奇聞檔�
 
 - [x] Confirm no duplicate Garmin X-series worktree or PR; select verified catalogue idea C15 without changing the 100-topic plan.
 - [x] Fetch and hash six worker-readable SEC originals plus one oversized reviewer-only 10-K; draft source matrix, six-chapter treatment, and two standalone Short concepts.
-- [ ] Have an independent agent redownload originals and audit this packet against exact hashes, periods, segment denominators, and the two story concepts; fix any HOLD findings.
+- [x] Have an independent agent redownload originals and audit this packet against exact hashes, periods, segment denominators, and the two story concepts; fix any HOLD findings. See `reviews/source-audit-independent.md` PASS on commit `af55507e`.
 - [ ] Build source-tagged full script, production JSON and two Shorts; run repository validation, then two fresh blind narrative reviews on identical frozen hashes.
 - [ ] Produce and QA affordable media/animation/CC and actual links as available, then open a truthful PR and continue the next brand.
 
@@ -41,4 +41,4 @@ Read `docs/videos/story-everyday-garmin-x15/source-matrix.md`, independently HTT
 
 ## Notes
 
-2026-10-20 source-first packet lives in `docs/videos/story-everyday-garmin-x15/`. SEC downloads G1–G6 each returned HTTP 200 and are under 3 MiB; 2023 10-K is 3,683,117 bytes and therefore reviewer-only. 2008 automotive/mobile is broader than car navigation, and 2025 Auto OEM is not the same historical division. The 2025 total is US$7,245.519m revenue, not profit. The original C15 story/review remain unchanged. No paid generation, finished film, YouTube ID or PR exists at this packet stage. Official branding assets and current site music quota remain unavailable in this cloud workspace; do not fabricate them or upload links.
+2026-10-20 source-first packet lives in `docs/videos/story-everyday-garmin-x15/`. SEC downloads G1–G6 each returned HTTP 200 and are under 3 MiB; 2023 10-K is 3,683,117 bytes and therefore reviewer-only. Independent source packet audit PASS was committed as `1897396a`. 2008 automotive/mobile is broader than car navigation, and 2025 Auto OEM is not the same historical division. The 2025 total is US$7,245.519m revenue, not profit. The original C15 story/review remain unchanged. No paid generation, finished film, YouTube ID or PR exists. Official branding assets and current site music quota remain unavailable in this cloud workspace; do not fabricate them or upload links.
