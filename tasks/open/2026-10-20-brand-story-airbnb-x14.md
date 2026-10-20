@@ -25,15 +25,16 @@ The owner wants another missing-brand film, one reviewable episode per PR, under
 
 - [ ] Source-verified main film with measured substantive body at least 8:00 (about 10 minutes target), a meaningful hook every 30–45 seconds, two independent 25–55-second Shorts, official 5-second / 21-second bookends, Traditional Chinese optional CC, and reviewable source, script, and visual evidence.
 - [ ] Keep paid media and retries within the owner-authorized US$25 per episode cap; record real upload URLs only after upload.
-- [ ] Submit a draft PR for this episode only after an independent source audit and two fresh blind reviews of the frozen script and Shorts.
+- [x] Submit a draft preproduction PR for this episode only after an independent source audit and two fresh blind reviews of the frozen script and Shorts: #1634.
 
 ## Steps
 
 - [x] Confirm non-overlap with the 100-title bank and X01–X13; create isolated X14 branch/worktree.
 - [x] Fetch and hash original SEC filings/exhibits; draft source matrix, six-chapter Treatment, and two standalone Short concepts.
-- [x] Independent agent re-fetched originals and audited the source packet; corrected the period and host-retention HOLD items. V1–V8 full-script audits and reviews are historical; V9 now needs a fresh audit bound to its own hashes.
-- [x] Write source-bound full narration, two standalone Shorts, visual plan, and production schemas; revise after V1–V8 blind review HOLD/NO votes and run local content checks. Two fresh V9 blind reads remain pending.
-- [ ] Produce and QA the episode and Shorts within the approved cost, then open the episode PR.
+- [x] Independent agent re-fetched originals and audited the source packet; corrected the period and host-retention HOLD items. V1–V8 full-script audits and reviews are historical; V9 independent audit is PASS on its frozen hashes.
+- [x] Write source-bound full narration, two standalone Shorts, visual plan, and production schemas; revise after V1–V8 blind review HOLD/NO votes and run local content checks. Two fresh V9 blind reads are complete: A 11/12 and B 12/12, with no jointly failed mandatory item.
+- [x] Open draft preproduction PR #1634 after V9 independent source and two blind reviews.
+- [ ] Produce and QA the actual episode and Shorts within the approved cost; add only real published URLs afterward.
 
 ## How to verify
 
@@ -78,3 +79,5 @@ V8 local checks on the frozen JSON: video lint 0 errors／0 warnings; both eight
 2026-10-20 V9 frozen for **new** independent source/image audit and two clean first-blind readers: `video.json` SHA-256 `5d59e04a741c1fa5ff5022b09aa76d98c7597fb7bced88d6693c86889ab9a6c1`; `shorts.json` SHA-256 `0b5533d07ca24834b16e005a049c68bcfcd73d063ae0cba76dbb581251f1e8cb`; `source-matrix.md` SHA-256 `3c84410b30b11a8aea7a530a621da33dd6e0b27fc51e7891a48413d2e9f1c43d`. The platform's recurring booking calendar is the story object; the hypothetical March booking remains explicitly fictional and its guest/host are **never** portrayed as having actually rebooked. Chapter 2 starts with the cancellation's immediate consequence; chapter 6 immediately answers that long stays persisted when cross-border trips returned. Removed spoken procedural signposts, compressed repeat loan/late-booking comparisons and the 2021 finance enumeration while preserving 24 loops and the supported 2022 aggregate payoff. The `40 → 10` card now says 房東原取消費 → 房東支援, the US$205.1m card says **公司付予顧客，主要給房東**, and Short 2's >90% vertical card cites the actual main-film source card `x14-b05-s12`. Short 1's illustrative traveler shots require an in-frame 「假設訂單示意」 overlay. Deterministic offline build: 120 spoken lines, 16 native cards, 101 planned anonymous illustrations, 212-character opening, 2,595-character substantive body (8.65-minute estimate at 300 characters/minute; actual TTS pending), two standalone Shorts of 169／204 characters, and 7 planned vertical illustrations plus 9 planned native vertical cards. Neither these plans nor the US$25 quote imply generated media, rendered Shorts, published links or paid spend.
 
 V9 local preflight on that frozen JSON: video lint **0 errors／0 warnings**; both eight-beat Shorts validate and all 16 referenced shots resolve; 9 vertical numeric-card plans and the exactly three-line close were checked; `npm run test:docs-videos` **236／236**; `npm run check:tasks` exit 0 (unrelated existing warnings); `git diff --check` clean. Independent source/image and two new blind reads must bind the V9 hashes before PR or paid media.
+
+2026-10-20 V9 review and PR: `reviews/script-source-audit-v9-independent.md` independently re-fetched A1–A5 and passed the frozen source/visual check. Fresh first-blind A `632e9945` voted 11/12 (Q13 NO for late profit aside), B `9e71be70` voted 12/12; `reviews/narrative-v9-adjudication.md` records that there is no shared mandatory NO under the channel rule. Draft PR [#1634](https://github.com/x812033727/travel_scanner/pull/1634) contains the offline preproduction package only. Real TTS, images, portrait renders, official bookends, captions, MP4, runtime QA and public YouTube links remain open; status remains in-progress.
