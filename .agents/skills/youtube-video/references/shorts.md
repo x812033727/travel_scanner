@@ -9,7 +9,7 @@ Shorts 是 1080×1920、30 fps、25–55 秒（Shorts 設定的 `seconds_min`／
 | 內容線 | 誰做、怎麼做 | 還沒有的 |
 | --- | --- | --- |
 | **實測**（`lab`，系列 `daily`、`blind`、`prompts`） | 主機工人照題庫自己做（Shorts 設定「讓主機工人自己做 Shorts」開著、選了受測模型）；本機也可以照腳本 `build` | 要看圖、修圖、執行程式、生圖的題目工人不做（`tools/video/shorts/lab.mjs` 的 `UNSUPPORTED`），題庫標「缺素材或工具」 |
-| **長片精華**（`cut`，系列是來源長片） | 本機：`from-episode` 從有 shot 的長片（原來如此事務所、插圖投影片）切兩支；別的工具做好的成片用 `import` | 工人的精華步驟（票 `2026-09-28-video-shorts-worker-cut`）還沒有。伺服器已經替公開的教學長片自動開精華題目，但工人與排片都先跳過 |
+| **長片精華**（`cut`，系列是來源長片） | 本機：`from-episode` 從有 shot 的長片切精華；奇聞檔案局每集一支，其他來源每集兩支。別的工具做好的成片用 `import` | 工人的精華步驟（票 `2026-09-28-video-shorts-worker-cut`）還沒有。伺服器已經替公開的教學長片自動開精華題目，但工人與排片都先跳過 |
 | **漫劇直式短篇**（`drama`） | 本機：`from-drama` 從已核准的 16:9 成片剪一段，9:16 視窗跟著主角（每鏡問一次站上的 `locate`），字幕走 Shorts 的字幕層；別的工具做好的成片用 `import`。`build` 仍拒絕 `line: "drama"` | 原生 9:16 的漫劇產線（票 `2026-09-28-video-shorts-worker-drama`）與工人的漫劇步驟還沒有 |
 
 不管誰做的，送上站之後都走同一條：成片審核（13 項自動品管）→ 上傳包審核（4 項）→ 片庫 → 月曆的時段 → YouTube。
@@ -94,9 +94,9 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 
 **長片精華**：
 
-- 有 shot 的長片：長片撰稿時工人順手寫 `docs/videos/<slug>/shorts.json`（兩支，`slug` 是 `<長片>-short-1|2`）。`from-episode --slug <長片> --check` 先確認每張關鍵影格的雜湊；再 `from-episode --slug <長片> --workdir <VIDEO_WORKDIR>` 建兩個成品（旁白預設 `server`），之後每個成品照主幹 3–7。系列依長片決定（`sothatswhy` 或 `illustrated`），規格在 `docs/videos/so-thats-why/README.md` §Shorts。要在長片的工作檔被清掉（上架滿 7 天）之前做。
+- 有 shot 的長片：長片撰稿時寫 `docs/videos/<slug>/shorts.json`。奇聞檔案局 `curio-*` 每集寫一支「一個驚人事實」（`<長片>-short-1`；見 `docs/videos/history-curiosity/README.md` §Shorts），其他來源長片寫兩支（`<長片>-short-1|2`）。`from-episode --slug <長片> --check` 先確認每張關鍵影格的雜湊；再 `from-episode --slug <長片> --workdir <VIDEO_WORKDIR>` 建成品（旁白預設 `server`），之後每支照主幹 3–7。系列依長片決定（`sothatswhy` 或 `illustrated`）。要在長片的工作檔被清掉（上架滿 7 天）之前做。
 - 長片要已經公開，或成片已核准，`evidence` 才會過；長片還沒有 YouTube id 時說明欄缺完整影片連結，`metadata` 與 `links` 不過，等它上架再 `package`、`push`。
-- 一支長片最多兩支精華，兩支講不同的事。
+- 一支長片最多兩支精華；奇聞檔案局定為一支，兩支規格的來源須講不同的事。
 
 **漫劇直式短篇（後製，`from-drama`）**：不生圖、不重畫，從已核准的 16:9 成片直接裁 9:16（設計在 `docs/videos/SHORTS.md` §工具端的 `from-drama.mjs`）。
 
