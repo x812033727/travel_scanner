@@ -1,0 +1,1739 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s47",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，清楚自然地敘述萊特兄弟的試飛經過；測量與來源界線稍放慢。",
+    "performance": "從引擎與軸的問題順時序講到十二月十七日四趟；電報 57 秒與後述 59 秒分開歸屬。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sources": [
+    {
+      "title": "Orville and Wilbur Wright, The Early History of the Airplane, fixed GITenberg text",
+      "url": "https://github.com/GITenberg/The-Early-History-of-the-Airplane_25420/blob/85d336f5a53986caf06e063025ca8189980962f3/25420.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "U.S. National Park Service, Wright Brothers National Memorial booklet, fixed GITenberg text",
+      "url": "https://github.com/GITenberg/Wright-Brothers-National-Memorial-North-Carolina_57725/blob/063e08af43aae0605c0ad9f32f5ed08fa771fc29/57725-0.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "wr003",
+      "payoff": "wr015",
+      "what": "現成引擎是否合用"
+    },
+    {
+      "setup": "wr004",
+      "payoff": "wr030",
+      "what": "馬達第一次裝機試轉時螺旋槳軸能否撐住"
+    },
+    {
+      "setup": "wr005",
+      "payoff": "wr048",
+      "what": "十二月十四日山坡試飛最後落在哪裡"
+    },
+    {
+      "setup": "wr006",
+      "payoff": "wr063",
+      "what": "救生員能否拍到機器從平地離軌"
+    },
+    {
+      "setup": "wr007",
+      "payoff": "wr092",
+      "what": "給父親的電報把最長飛行寫成幾秒"
+    },
+    {
+      "setup": "wr011",
+      "payoff": "wr020",
+      "what": "初估機器連駕駛五百五十磅之後能否放寬總重"
+    },
+    {
+      "setup": "wr021",
+      "payoff": "wr022",
+      "what": "動力如何傳到兩具螺旋槳"
+    },
+    {
+      "setup": "wr026",
+      "payoff": "wr029",
+      "what": "傳動損耗是否吃掉餘力"
+    },
+    {
+      "setup": "wr034",
+      "payoff": "wr038",
+      "what": "空心軸再裂後如何趕上試飛"
+    },
+    {
+      "setup": "wr051",
+      "payoff": "wr055",
+      "what": "下一次能否在平地起飛"
+    },
+    {
+      "setup": "wr064",
+      "payoff": "wr065",
+      "what": "首趟忽高忽低時奧維爾的前舵操控難在哪裡"
+    },
+    {
+      "setup": "wr068",
+      "payoff": "wr069",
+      "what": "首趟之後是否繼續試"
+    },
+    {
+      "setup": "wr079",
+      "payoff": "wr080",
+      "what": "正午是否再試"
+    },
+    {
+      "setup": "wr087",
+      "payoff": "wr088",
+      "what": "這一年真正停止試飛的原因"
+    },
+    {
+      "setup": "wr090",
+      "payoff": "wr091",
+      "what": "給父親的電報如何報喜"
+    },
+    {
+      "setup": "wr093",
+      "payoff": "wr094",
+      "what": "轉錄電報是否報出第四趟的地面距離與相同秒數"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "wr001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium illustrative shot at a simple 1902 coastal camp worktable, one adult inventor studies a plain wing frame beside a blank sheet, pale dune light; no completed 1903 machine or readable text",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr001",
+          "text": "一九〇二年離開海邊營地前，兩兄弟已在設計能靠馬達飛的下一架機器。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ],
+      "chapter": "開始設計動力機"
+    },
+    {
+      "id": "wr002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a workshop desk, one craft worker marks a blank technical page with a pencil, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr002",
+          "text": "奧維爾後來說，滑翔試驗讓他們敢估算新機器的表現；估算還不等於飛得起來。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr003",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a bicycle workshop, one inventor weighs a small metal motor part, soft grey gentle window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr003",
+          "text": "他們需要一具夠輕、夠有力的引擎。市場上的貨，能裝進這架機器嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr004",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up shot at a coastal assembly shed, one adult mechanic inspects intact metal propeller shafts mounted beside a compact motor, side daylight; no crack or damaged part",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr004",
+          "text": "隔年回到海邊，馬達第一次在機器上帶動螺旋槳；那批軸能撐住嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr005",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide illustrative shot on a pale sand slope, one pilot lies prone on a simple twin wing powered flyer with two rear propellers and skids, low overcast light; no wheels or modern cockpit",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr005",
+          "text": "十二月十四日，威爾伯俯臥在沙丘斜坡上的動力機上；這一趟會在哪裡落地？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr006",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on an open coastal field, one adult life saver stands ready beside a box camera aimed at a simple twin wing powered flyer near a short rail, soft sky light; no photographed result or readable text",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr006",
+          "text": "再過三天，救生員守在相機旁，能拍下從平地離軌的那一刻嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr007",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a telegraph desk, one clerk holds a blank telegram sheet beside a brass key, warm lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr007",
+          "text": "當天還有一封給父親的電報；最長那趟，它寫的是幾秒？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr008",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet workshop, one workshop builder looks from a small engine toward a simple wing frame, muted diffuse light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr008",
+          "text": "誰能替他們造出合用的引擎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr009",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden desk, one inventor seals a blank business letter, soft window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr009",
+          "text": "他們先寫信問汽車和引擎製造商，要能帶人起飛的動力。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ],
+      "chapter": "自行造一具引擎"
+    },
+    {
+      "id": "wr010",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a workbench, one craft worker compares a small motor and a balance scale, diffuse soft side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr010",
+          "text": "條件很苛刻：至少八匹煞車馬力，整具重量不超過兩百磅。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr011",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a workshop table, one adult inventor studies an unmarked full wing frame drawing, soft window light; no readable numbers",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr011",
+          "text": "奧維爾後來寫，機器連駕駛原估五百五十磅；若引擎多出力，總重能放寬嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr012",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a bicycle shop, one inventor unfolds a blank reply letter beside a small engine sketch, soft diffuse light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr012",
+          "text": "多數廠商說正忙；有一家願賣一具標稱八匹、較輕的引擎。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr013",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a workshop table, one mechanic measures a plain metal cylinder with calipers, window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr013",
+          "text": "可兄弟看了汽缸尺寸，懷疑標稱馬力會被高估。他們會直接買嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr014",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a Dayton bicycle workshop, one adult mechanic tends a simple air-cooled shop motor beside plain tools, soft side light; no 1903 aircraft reconstruction",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr014",
+          "text": "此前他們只造過一具汽油機，用來帶動車行的機械；這次的要求不同。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr015",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a bicycle workshop, one machinist shapes a metal cylinder at a lathe, mild lamp light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr015",
+          "text": "於是他們改畫四汽缸引擎，讓自家車行的機械工查理・泰勒加工。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr016",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a bicycle shop, one machinist smooths a freshly cut metal cylinder, diffuse light from one window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr016",
+          "text": "奧維爾在回憶裡寫，泰勒替他們做了店裡全部的機械加工。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr017",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up shot in the workshop, one adult inventor inspects a compact engine on a plain test block, soft window light; no named test operator or readable gauge",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr017",
+          "text": "靠著這些加工，初版馬達從設計到上試驗架只花六週。第一次短試能出多少力？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr018",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an engine bench, one workshop builder watches a plain test gauge, diffused soft side light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr018",
+          "text": "短試得到約九匹；兄弟因此繼續完成圖面上的馬達。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr019",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a workbench, one craft worker studies a simple instrument needle beside a compact engine, soft gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr019",
+          "text": "完工後，它能短暫衝到十六匹，一分鐘後則約十二匹。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr020",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot across a bicycle workshop, one adult inventor examines a partially assembled wooden wing frame beside a compact engine, soft window light; no readable weight labels",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr020",
+          "text": "有了這份出力，奧維爾回憶，他們把機器連人的容許重量放寬到七百五十或八百磅。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr021",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a workshop, one inventor reaches toward a loose chain near a propeller hub, mild window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr021",
+          "text": "這數字讓他們高興，但力量還得傳到螺旋槳；怎麼傳？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr022",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a simple workshop, one mechanic stands beside a bare twin propeller drive on a wooden frame, soft soft side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr022",
+          "text": "兩人選了左右兩具反轉的槳，想抵消部分旋轉影響，再用鏈條帶動。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ],
+      "chapter": "兄弟選定雙槳"
+    },
+    {
+      "id": "wr023",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a simple twin wing frame, one workshop builder positions a compact engine beside a pilot space, soft light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr023",
+          "text": "他們也把馬達安在駕駛側邊，避免機頭著地時重物從正上方壓下。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr024",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide illustrative shot at a coastal camp, one adult builder inspects an old wooden shed visibly shifted off its foundation posts after a storm, overcast sky light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr024",
+          "text": "九月底抵達北卡羅來納州海邊，舊棚早被風暴吹離基座；得先修工作場地。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr025",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a coastal shed roof, one worker steadies a loose coat while holding a hammer, grey side light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr025",
+          "text": "零件又碰上暴風。奧維爾回憶，風把外套捲到頭上，連屋頂的釘子都敲不準。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr026",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a workbench, one inventor lifts a loose drive chain beside a brass sprocket, mild soft side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr026",
+          "text": "棚子修好，輪到傳動鏈。它會吃掉多少動力？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr027",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain workshop, one visitor points at a blank calculation sheet, soft window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr027",
+          "text": "來訪的沙紐特說，設計機械時，傳動損失往往要留約兩成。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr028",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a workshop table, one craft worker puts small sandbags by a hanging chain, diffuse diffuse light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr028",
+          "text": "兄弟原本只估百分之五；若差到兩成，留給起飛的餘力就沒了。怎麼量？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr029",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a workshop, one mechanic balances a chain over a sprocket with sandbags, mild window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr029",
+          "text": "他們用掛在鏈條兩側的沙袋比力，算出損耗仍接近自己的估計。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr030",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a workshop, one workshop builder inspects an irregular mark on a metal shaft, neutral lamp light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr030",
+          "text": "然而裝到機上試轉，螺旋槳軸又露出先前未見的缺陷。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a coastal workshop door, one adult craft worker receives a wrapped bundle of metal propeller shafts, overcast gentle light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr031",
+          "text": "這批軸送回俄亥俄州修理，兩週後、十一月二十日才運回海邊。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr032",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a wooden bench, one mechanic grips a loose sprocket on a plain metal shaft, soft diffuse light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr032",
+          "text": "裝回去試，齒盤又在軸上鬆開。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr033",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a workshop, one workshop builder applies warmed tire cement to a metal thread, lamp light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr033",
+          "text": "他們想起車行用的輪胎膠，便加熱螺紋，把齒盤重新鎖緊。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr034",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot near a compact engine, one craft worker holds a newly cracked hollow shaft, muted soft side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr034",
+          "text": "這個問題暫時停了。十一月二十八日，軸卻又裂，還能趕上冬天嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr035",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a workbench, one mechanic aligns a stopwatch and a simple wind gauge, mild gentle window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr035",
+          "text": "為了量飛行，他們還做了會一起啟停的錶、風速器與轉數計；現在卻連轉軸都不可靠。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr036",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a machine shop, one machinist turns a narrow solid steel shaft, soft industrial window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr036",
+          "text": "奧維爾回到代頓，改做可以稍微彈性的實心鋼軸。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ],
+      "chapter": "空心軸撐不住"
+    },
+    {
+      "id": "wr037",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a workbench, one workshop builder compares a hollow tube and a narrow solid shaft, mild light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr037",
+          "text": "他們原來的空心軸不是抗不了平均推力，而是受不了馬達不均的衝擊。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr038",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside a simple coastal shed, one traveler carries a wrapped shaft toward the door, overcast sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr038",
+          "text": "威爾伯留守沙丘營地；奧維爾帶著新軸，直到十二月十一日才回來。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr039",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a coastal shed, one craft worker closes a door against rain while holding a tool, grey gentle window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr039",
+          "text": "這段等待間，冷雨、雪和強風也讓有些日子根本無法在戶外裝機。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr040",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a flat sandy field, one mechanic sets a short single rail beside a twin wing flyer, pale sky light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr040",
+          "text": "隔天機器又能試了，可平地短軌遇上弱風。要把軌道移去哪裡？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr041",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a simple coastal shed, one workshop builder coils a short rail cable at late muted sky light, soft light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr041",
+          "text": "太陽落下前又來不及搬上坡，他們只好等到下一個可試的日子。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr042",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a sand hill, one helper carries a length of narrow rail uphill, diffused soft side light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr042",
+          "text": "兩天後的十四日天氣晴，他們決定把軌道搬上沙丘斜坡。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr043",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a coastal slope, one life saver steadies a wooden rail, soft gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr043",
+          "text": "救生站的人也來幫忙；軌道沿著山坡向下。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr044",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a sandy slope, one pilot checks a plain front control surface, diffuse diffuse light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr044",
+          "text": "山坡替機器補上了平地沒有的起步速度，試飛卻仍得靠人操控它別抬頭。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr045",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a sandy hill, one pilot catches a tossed coin in his palm, overcast light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr045",
+          "text": "兩兄弟擲硬幣，威爾伯贏得第一個駕駛機會。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the slope, one craft worker releases a taut restraining wire beside a simple twin wing flyer, soft grey sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr046",
+          "text": "他們讓機器扣在軌道上，發動引擎，再放開牽線。這次能離軌嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr047",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot above a low sand slope, one pilot lies on a bare twin wing flyer pitching upward, soft gentle window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr047",
+          "text": "滑過一小段後，機器真的離軌；可機頭抬得太高。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr048",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot near a low sand hill, one pilot holds a flyer skid after a short landing, mild diffuse light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr048",
+          "text": "它失去升力，幾秒後落在比出發處更低的位置。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr049",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a sandy field, one adult mechanic checks a broken wooden skid beside a simple stopwatch, diffuse sky light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr049",
+          "text": "奧維爾的錶量到約三秒半；左翼先觸地，一根滑橇和其他零件受損。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr050",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a sand slope, one pilot studies a short rail and a damaged skid, soft soft side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr050",
+          "text": "這趟證明從坡上能把機器放出去，卻還不能證明它能在平地靠自己持續飛。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr051",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a coastal shed, one workshop builder fits a repaired wooden skid, soft late gentle window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr051",
+          "text": "修理用了兩天。若風仍不夠，下一次起飛又要搬上山嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a coastal shed, one visitor studies a bare twin wing flyer, soft dusk light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr052",
+          "text": "十六日傍晚，一名路人還問他們機器能不能飛；兩人說得等「合適的風」。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr053",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside a plain coastal shed, one craft worker tests a thin icy puddle with a boot, grey morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr053",
+          "text": "十七日清晨，營地水坑結冰；北風吹得比山坡試飛時強。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ],
+      "chapter": "十二月十七日北風刮起"
+    },
+    {
+      "id": "wr054",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden shed doorway, one inventor watches a wind flag through the door, overcast morning light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr054",
+          "text": "兩人先等風減弱，到十點仍沒有，才決定把機器推出去。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr055",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a flat sandy field, one mechanic aligns a short rail into stiff wind, pale sky light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr055",
+          "text": "強風讓短軌道上的平地起飛有機會，也讓空中的操控更難。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr056",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot near a coastal life saving station, one attendant raises a simple blank signal cloth, cloudy light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr056",
+          "text": "他們掛出訊號，救生站幾個人和另兩名旁觀者來到場邊。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr057",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a flat field, one workshop builder holds a small hand wind gauge into the breeze, cloudy muted sky light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr057",
+          "text": "奧維爾用手持風速器量了量，首趟前的風約每小時二十四到二十七英里。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a simple coastal shed, one helper warms hands near a safe enclosed stove, grey window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr058",
+          "text": "大家在冷風裡架軌道，手凍了還得回棚裡靠臨時火爐暖一暖。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr059",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a simple twin wing flyer, one pilot adjusts a plain cap before climbing aboard, soft morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr059",
+          "text": "第一趟輪到奧維爾；前次山坡已是威爾伯先試。誰能替他拍下離軌？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr060",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a sandy field, one pilot positions a box camera on a simple tripod, soft morning light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr060",
+          "text": "他先把相機放上腳架，請丹尼爾斯在機器升起時按快門。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr061",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a flat field, one man runs holding a twin wing flyer tip beside a narrow rail, grey muted sky light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr061",
+          "text": "機器面向北風；威爾伯扶住機翼，跟著它在軌道旁跑。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr062",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the end of a short rail, one pilot lies on the lower wing as a bare flyer lifts low, diffuse sky light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr062",
+          "text": "迎風時它前進得很慢，約滑過四十英尺才離軌。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr063",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a sandy field, one life saver presses a box camera shutter, soft light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr063",
+          "text": "救生員丹尼爾斯在它離軌不久，按下那張著名照片的快門。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot above level sand, one prone pilot works the forward control frame on a low twin-wing flyer with two rear propellers and skids, soft overcast light; illustrated motion only, no modern cockpit or wheels",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr064",
+          "text": "畫面定格在低空，機上卻一會兒衝高、一會兒俯下來。奧維爾的控制難在哪裡？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr065",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up shot of a powered flyer's forward elevator control frame, one adult pilot studies the plain controls; no loose hinge or broken part, muted daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr065",
+          "text": "奧維爾後來說，前舵太靠近平衡中心，起動後很容易轉過頭。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr066",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a sandy field, one observer compares a simple wind gauge with a blank calculation page, soft sky light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr066",
+          "text": "奧維爾還按風速換算：這一趟在無風條件下，約等於前進五百四十英尺。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a level sand field, one pilot watches a low flying machine beside a takeoff marker, cloudy light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr067",
+          "text": "先前在坡上那趟，落點比出發處低；這次則從平地靠馬達離軌。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr068",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a sandy field, one pilot steadies a simple wooden skid after landing, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr068",
+          "text": "十二秒後，它落回與起點差不多高的地面。這是當天終點嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr069",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a short rail, one helper drags a simple twin wing flyer toward the start, soft muted sky light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr069",
+          "text": "不是。大家把機器搬回起點，做了快修，讓威爾伯接手。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ],
+      "chapter": "再起飛的兩兄弟"
+    },
+    {
+      "id": "wr070",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot over a low sand field, one pilot lies on a simple twin wing flyer in shallow flight, grey sky light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr070",
+          "text": "十一點二十分左右，威爾伯的第二趟也忽高忽低。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr071",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a sandy field, one observer measures a farther landing mark with a blank ribbon, mild gentle window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr071",
+          "text": "這次比第一趟略久，落地位置也更遠；仍談不上穩穩飛。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr072",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a sandy field, one observer watches a moving wind sock by a short rail, grey diffuse light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr072",
+          "text": "奧維爾說少了些逆風，威爾伯的機器在地面看來也走得比較快。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr073",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot over a flat coastal field, one pilot controls a simple twin wing flyer close to ground, soft muted sky light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr073",
+          "text": "接著換回奧維爾。第三趟起初比前兩趟平順。側風會放過它嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr074",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot above a sandy field, one pilot tilts on a twin wing flyer in a crosswind, muted soft side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr074",
+          "text": "突然一陣側風把它抬高，還把機身推歪。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr075",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the lower wing of a simple flyer, one pilot moves a plain control lever, diffuse gentle window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr075",
+          "text": "奧維爾扭動翼端，想把左右重新拉平；修正會不會過頭？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr076",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a flat field, one pilot steps from a low flyer beside one touched wingtip, soft diffuse light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr076",
+          "text": "機器雖被拉平，原本較高的那側卻降過頭，右翼先碰到地面。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the sandy ground, one observer places a measuring stake by a wingtip mark, overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr077",
+          "text": "第三趟約十五秒，地面前進稍超過兩百英尺。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr078",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium illustrative shot beside a grounded twin wing powered flyer, one adult pilot examines the wing-warping control frame; no bent wingtip or visible damage, soft daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr078",
+          "text": "奧維爾後來直說，這架新機的側向控制，比他原先想的更有力。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium illustrative shot on coastal sand, one adult observer checks a plain pocket watch beside the grounded twin-wing flyer, soft overcast light; no readable watch face",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr079",
+          "text": "小冊把奧維爾這趟的起飛記在十一點四十分；威爾伯還會接手嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr080",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot over the same flat sandy field, one pilot lies on a twin wing flyer in low flight, grey midday light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr080",
+          "text": "正午，威爾伯又從同一處起飛；開始也有上下起伏。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ],
+      "chapter": "威爾伯正午再次起飛"
+    },
+    {
+      "id": "wr081",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot above a coastal field, one pilot steadies a simple twin wing flyer close to ground, diffuse muted sky light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr081",
+          "text": "飛到約三百英尺後，機器漸漸比較聽使喚。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr082",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot over level sand, one pilot keeps a simple twin wing flyer almost level, cloudy soft side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr082",
+          "text": "後面四、五百英尺，路線少了先前三趟的劇烈高低。這能撐多久？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr083",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on the far side of a sandy field, one pilot lands a simple twin wing flyer on skids, soft sky light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr083",
+          "text": "約八百英尺處，機器又開始俯仰，最後碰到地面。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr084",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a field marker, one observer checks a plain measuring cord beside a pocket watch, mild diffuse light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr084",
+          "text": "奧維爾後來記述，地面量得八百五十二英尺，空中待了五十九秒。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium illustrative shot on flat coastal sand, one adult pilot shields their eyes from wind beside a grounded twin-wing powered flyer with rear propellers and skids, soft overcast light; no modern cockpit or wheels",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr085",
+          "text": "小冊說，兄弟不想讓陌生的新機在強風中飛太高；有時還沒修正俯仰，地面已到了。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr086",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a grounded flyer, one workshop builder examines a broken front wooden support, cloudy light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr086",
+          "text": "落地後，前舵支架壞得很明顯；機體主要部分卻沒有受傷。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr087",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside a coastal camp, one adult pilot looks over the grounded powered flyer after its last landing, overcast daylight; no spare part or repair underway",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr087",
+          "text": "奧維爾估計，一兩天就能修好再飛。可眾人還站在機旁，真的會有下一趟嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr088",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside a coastal shed, one helper grabs a twin wing flyer frame as wind catches it, grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr088",
+          "text": "忽然一陣更大的風從眾人身邊掃過，把停著的機器掀起。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr089",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a collapsed wooden wing frame, one life saver sits up holding his arm, overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr089",
+          "text": "丹尼爾斯被捲進支架，受了瘀傷；飛機滾得更壞，那一年再也飛不了。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr090",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a coastal telegraph office, one messenger places a blank paper on a desk, warm indoor light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr090",
+          "text": "飛機停了，成功的消息還沒到家；給父親的電報會怎麼寫？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr091",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a telegraph desk, one clerk slides a blank telegram page forward, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr091",
+          "text": "國家公園的小冊轉錄了那天發給父親的電報：開頭就是「成功，四趟飛行」。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ],
+      "chapter": "兄弟發出報喜電報"
+    },
+    {
+      "id": "wr092",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a telegraph office, one clerk compares two blank telegram slips, mild indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr092",
+          "text": "它把最長一趟寫成五十七秒；連奧維爾的名字也拼錯了。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr093",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a telegraph office, one messenger carries a folded blank paper past a closed door, lamp light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr093",
+          "text": "消息從電報局外流。回看剛才那趟八百五十二英尺、五十九秒，電報說全了嗎？",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr094",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a study desk, one adult reader places two blank paper sheets beside a plain measuring rule; no legible text, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr094",
+          "text": "沒有。小冊轉錄的電報沒報地面距離，最長時間還比奧維爾後述少兩秒。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr095",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet archive, one reader compares two blank document sheets, diffused gentle window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr095",
+          "text": "小冊作者認為是傳送時弄錯；本集沒有核對電報原紙。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr096",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an early newspaper printing desk, one adult clerk handles an unreadable typeset page beside blank telegram slips, soft window light; no legible article",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr096",
+          "text": "小冊說，後續報導誤傳了飛行的距離和時間，電報裡的資料幾乎沒有被採用。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wr097",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium illustrative shot beside a coastal shed, one adult inventor studies a grounded twin-wing powered flyer, soft overcast light; no speech bubble or readable text",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wr097",
+          "text": "小冊引威爾伯說：新機練習不到一分鐘；懂當時條件的人，反而驚訝它飛得長。",
+          "emotion": "自然說書；來源差異稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "十二秒之後，還有三趟"
+        ]
+      },
+      "lines": [
+        {
+          "id": "wr999a",
+          "text": "在你記得的第一趟之外，那天哪一次修正最令你意外？",
+          "emotion": "收束問句"
+        },
+        {
+          "id": "wr999b",
+          "text": "兩種秒數的來源連結，都放在影片說明欄。",
+          "emotion": "來源提示"
+        },
+        {
+          "id": "wr999c",
+          "text": "想繼續看有出處的歷史故事，訂閱奇聞檔案局。",
+          "emotion": "自然收束"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**不只12秒**",
+      "tag": "1903 年試飛",
+      "sub": "同日四次，兩種秒數",
+      "shot": "wr071"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "萊特兄弟只飛十二秒？那天還飛了三次｜奇聞檔案局",
+    "description": "一九〇三年十二月十七日，奧維爾・萊特第一趟只飛了十二秒。但兄弟當天沒有停下：第二、第三、第四趟各發生了什麼？為何給父親的電報轉錄作五十七秒，奧維爾後來的記述卻寫五十九秒？\n\n本集依參與者後來的第一人稱記述與美國國家公園管理局小冊製作。小冊轉錄電報並認為秒數差異是傳送時出錯；本集未核對電報原紙。畫面全是 AI 卡通示意，不是原機、當日照片或文件影像。\n\n原著固定版：https://github.com/GITenberg/The-Early-History-of-the-Airplane_25420/blob/85d336f5a53986caf06e063025ca8189980962f3/25420.txt\n國家公園小冊固定版：https://github.com/GITenberg/Wright-Brothers-National-Memorial-North-Carolina_57725/blob/063e08af43aae0605c0ad9f32f5ed08fa771fc29/57725-0.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\n\n資料截至 2026-10-20",
+    "tags": [
+      "萊特兄弟",
+      "第一次飛行",
+      "1903年",
+      "十二秒",
+      "飛行史",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}
