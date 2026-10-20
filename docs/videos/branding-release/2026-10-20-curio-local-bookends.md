@@ -37,3 +37,9 @@ S34、S30、S03、S02、S28 五支成片已重剪；原版檢查及上架資訊�
 另一名只讀覆核者逐集比對 `upload/final.mp4`、根目錄 `final.mp4` 與 `upload/metadata.json` 的 SHA-256，七集全相符；逐集 `checks.json` 均無問題，畫格數皆等於故事段加 150 格片頭及 630 格片尾。實際查看素材 contact sheet，片頭從檔案櫃轉至卷宗與印章，片尾動畫逐步露出兩個影片框和訂閱圈，最後持續顯示至結束。這裡的 32–47 秒濃縮開場是長片的一段，**不是獨立直式 Short**。
 
 七份 `description.zh-TW.txt` 與上傳 metadata 相同，章節均從 `00:00` 起，皆有一條頻道網址；S34／S30／S03／S02／S28／S04／S23 依序另有 12／3／4／4／5／4／5 條史料網址，沒有格式錯誤或占位網址。每份 `UPLOAD.md` 都列出範本 `oxEtlA8GWas` 和各自最後 16 秒的三元素起訖時碼。此複核確認本機內容與上傳說明，**不代表**私人上傳、Studio 可點元素已儲存或雲端可連線驗證 YouTube 頻道網址。
+
+## 第八支本機交付：S05〈三顧茅廬〉
+
+S05 現行長片另於 [本集驗收](../curio-s05/verify-21.md) 記錄：1920×1080、18,524 格／10:17.5，46.27 秒濃縮開場後接同一版 150 格／5 秒片頭，尾段為 630 格／21 秒動畫，最後 16 秒保留兩張推薦影片框與訂閱圈。`final.mp4` 和 `upload/final.mp4` SHA-256 均為 `349e716a174dd5fa28ab8ac687b426f04d3a0e665ede3d7a4b1a822be85eb5c6`，上傳包檢查 4／4，頻道連結仍受此環境 YouTube CONNECT 403 限制。Studio 範本 `oxEtlA8GWas` 三元素應由 `10:01:14` 到 `10:17:14`，私人上傳後才可安裝及點測。
+
+快速檢視用的 73 秒 720p 剪輯在 `/workspace/.video-work/curio-s05/review/bookends-proof.mp4`，包含成片開頭 52 秒與最後 21 秒；SHA-256 `a2c94a097e98c2fb67697c9f00c83ca1cf95251cfdab4864b06ac69b9224b345`。這份小檔僅供觀看，正式上傳仍用上段 exact-hash 的 `upload/final.mp4`。S05 的站台 final 與 publish 卡仍是 **pending**，不把本機委派核准或這份預覽當成站主審核、YouTube 上傳或可點片尾已完成。
