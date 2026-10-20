@@ -11,6 +11,7 @@ import { fileURLToPath } from "node:url";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { readApprovals } from "../core/approvals.mjs";
+import { CURIO_MUSIC } from "../core/curio.mjs";
 import { clipsHash, drawnShotScenes, EXPLAINER_PRESET, hasCast, isExplainer, lookHash, mixHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { explainerFixture, sandbox, storyFixture, storySeries, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { validateLexicon } from "../core/lexicon.mjs";
@@ -52,6 +53,7 @@ import {
   readChapterAnswer,
   SCRIPT_NOTE,
   STORY_CHAPTERS_DIR,
+  STORY_MUSIC,
   storyCast,
   storyBrief,
   cuteStoryVisualProblems,
@@ -530,7 +532,7 @@ test("a writer's chapter is made the worker's: stills only, narrator lines, hand
 
 // --- the flow -------------------------------------------------------------------------------------------
 
-test("the five-film and v2 pilot visual gate counts body illustrations and cards at exact scene paths", () => {
+test("the cute story batches and v2 pilots count body illustrations and cards at exact scene paths", () => {
   const shot = (id) => ({ id, template: "shot" });
   const card = (id) => ({ id, template: "stat" });
   const bookend = (id, template) => ({ id, template });
@@ -549,44 +551,58 @@ test("the five-film and v2 pilot visual gate counts body illustrations and cards
   assert.deepEqual(cuteStoryVisualProblems({ slug, look, scenes: [bookend("outro", "outro")] }).map((problem) => problem.path), ["scenes[0]"], "the body cannot be empty");
   assert.deepEqual(cuteStoryVisualProblems({ slug, look: { ...look, negative: "photorealistic" }, scenes: boundary }).map((problem) => problem.path), ["look"], "a look override blocks the five-story route");
   assert.deepEqual(cuteStoryVisualProblems({ slug, look: { preset: "custom", style: "cute" }, scenes: boundary }).map((problem) => problem.path), ["look"]);
-  for (const pilot of ["story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]) {
-    assert.deepEqual(cuteStoryVisualProblems({ slug: pilot, look, scenes: boundary }), [], `${pilot}: the boundary passes`);
-    assert.deepEqual(cuteStoryVisualProblems({ slug: pilot, look, scenes: failing }).map((problem) => problem.path), ["scenes[11]", "scenes[11]"], `${pilot}: the preimage gate blocks bad visual pacing`);
-    assert.deepEqual(cuteStoryVisualProblems({ slug: pilot, look: { ...look, style: "custom" }, scenes: boundary }).map((problem) => problem.path), ["look"]);
+  for (const selected of [
+    "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2",
+    "story-new-20261020-muji-no-brand", "story-new-20261020-ikea-flatpack",
+    "story-new-20261020-garmin-after-smartphones", "story-new-20261020-uniqlo-everyday-clothes",
+    "story-new-20261020-giant-own-name",
+  ]) {
+    assert.deepEqual(cuteStoryVisualProblems({ slug: selected, look, scenes: boundary }), [], `${selected}: the boundary passes`);
+    assert.deepEqual(cuteStoryVisualProblems({ slug: selected, look, scenes: failing }).map((problem) => problem.path), ["scenes[11]", "scenes[11]"], `${selected}: the preimage gate blocks bad visual pacing`);
+    assert.deepEqual(cuteStoryVisualProblems({ slug: selected, look: { ...look, style: "custom" }, scenes: boundary }).map((problem) => problem.path), ["look"]);
   }
+  const future = { slug: "story-future-brand", series: { slug: "brand-stories-new-20261020", episode: 6, chapter: 1 }, look };
+  assert.deepEqual(cuteStoryVisualProblems({ ...future, scenes: boundary }), [], "new episodes in the same series retain the visual gate");
+  assert.deepEqual(cuteStoryVisualProblems({ ...future, scenes: failing }).map((problem) => problem.path), ["scenes[11]", "scenes[11]"]);
+  assert.deepEqual(cuteStoryVisualProblems({ ...future, look: { preset: "custom" }, scenes: boundary }).map((problem) => problem.path), ["look"]);
   for (const legacy of [SLUG, "story-rolling-suitcase", "story-conveyor-belt-sushi"]) {
     assert.deepEqual(cuteStoryVisualProblems({ slug: legacy, scenes: failing }), [], `${legacy}: the original custom story route keeps its own rules`);
   }
 });
 
-test("a complete cute pilot script sends visual failures to the chapter before drawing keyframes", async () => {
-  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
-  const episode = { ...EPISODE, slug: "story-rolling-suitcase-v2" };
-  const answers = standardAnswers({ "writer:story": (body) => {
-    const chapter = chapterAnswer(body.payload.chapter.key, body.payload);
-    chapter.scenes.forEach((scene, index) => { if (scene.template === "shot") scene.data.camera = index % 2 ? "slow pan left" : "slow push in"; });
-    return chapter;
-  } });
-  const world = storyWorld({ series, episode, answers });
-  await world.automation.step();
-  const written = await steps(world.automation, 6);
-  assert.match(written.at(-1), /six are merged into video\.json/, written.join("\n"));
-  assert.equal(world.state().story.chapters.idea.lint, null, "the six unedited chapters pass");
+test("a complete cute pilot or new-brand script sends visual failures to the chapter before drawing keyframes", async () => {
+  for (const [seriesSlug, slug] of [
+    ["brand-stories-curio-pilot-v2", "story-rolling-suitcase-v2"],
+    ["brand-stories-new-20261020", "story-new-20261020-muji-no-brand"],
+  ]) {
+    const series = { ...SERIES, slug: seriesSlug, target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+    const episode = { ...EPISODE, slug };
+    const answers = standardAnswers({ "writer:story": (body) => {
+      const chapter = chapterAnswer(body.payload.chapter.key, body.payload);
+      chapter.scenes.forEach((scene, index) => { if (scene.template === "shot") scene.data.camera = index % 2 ? "slow pan left" : "slow push in"; });
+      return chapter;
+    } });
+    const world = storyWorld({ series, episode, answers });
+    await world.automation.step();
+    const written = await steps(world.automation, 6);
+    assert.match(written.at(-1), /six are merged into video\.json/, `${slug}: ${written.join("\n")}`);
+    assert.equal(world.state().story.chapters.idea.lint, null, `${slug}: the six unedited chapters pass`);
 
-  // Simulate a later saved-chapter edit. The writer currently writes only shots, but the merged
-  // script must still refuse a card-heavy chapter before the paid keyframes stage.
-  for (const key of ["origin", "idea"]) {
-    const file = path.join(world.workdir, STORY_CHAPTERS_DIR, `${key}.json`);
-    const chapter = readJson(file);
-    for (const scene of chapter.scenes) scene.template = "stat";
-    writeFileSync(file, JSON.stringify(chapter));
+    // Simulate a later saved-chapter edit. The writer currently writes only shots, but the merged
+    // script must still refuse a card-heavy chapter before the paid keyframes stage.
+    for (const key of ["origin", "idea"]) {
+      const file = path.join(world.workdir, STORY_CHAPTERS_DIR, `${key}.json`);
+      const chapter = readJson(file);
+      for (const scene of chapter.scenes) scene.template = "stat";
+      writeFileSync(file, JSON.stringify(chapter));
+    }
+    const result = await advanceStory(world.automation, world.state(), "script passes lint");
+    assert.match(result, /merged story fails lint in/, slug);
+    const errors = world.state().story.chapters.idea.lint.join("\n");
+    assert.match(errors, /scenes\[5\]: 8 of 12 body scenes are illustrated shots \(66%\)/, slug);
+    assert.match(errors, /scenes\[5\]: 4 cards in a row \(origin-01 → origin-02 → idea-01 → idea-02\)/, slug);
+    assert.equal(world.runs.some((command) => command.startsWith("keyframes ")), false, slug);
   }
-  const result = await advanceStory(world.automation, world.state(), "script passes lint");
-  assert.match(result, /merged story fails lint in/);
-  const errors = world.state().story.chapters.idea.lint.join("\n");
-  assert.match(errors, /scenes\[5\]: 8 of 12 body scenes are illustrated shots \(66%\)/);
-  assert.match(errors, /scenes\[5\]: 4 cards in a row \(origin-01 → origin-02 → idea-01 → idea-02\)/);
-  assert.equal(world.runs.some((command) => command.startsWith("keyframes ")), false);
 });
 
 test("the two pilot editorial reference hashes still match their independently PASS-reviewed Markdown", () => {
@@ -935,6 +951,21 @@ test("the ten-minute preset is preserved by the story file and video composer", 
   assert.deepEqual(video.look, { preset: "cute-mystery" });
   assert.deepEqual(video.target_minutes, [9, 11]);
   assert.deepEqual(video.subtitles, { burn_in: false, style: "drama" }, "new brand stories use switchable zh-TW CC");
+});
+
+test("only the new cute-mystery brand series uses the curio music bed", () => {
+  const cuteSeries = { ...SERIES, slug: "brand-stories-new-20261020", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const cuteInfo = storySeriesFile({ series: cuteSeries, episode: EPISODE, plan: PLAN, cast: [] });
+  const otherCuteInfo = storySeriesFile({ series: { ...cuteSeries, slug: "brand-stories-curio-pilot-v2" }, episode: EPISODE, plan: PLAN, cast: [] });
+  const regularInfo = storySeriesFile({ series: SERIES, episode: EPISODE, plan: PLAN, cast: [] });
+  const wrongLookInfo = storySeriesFile({ series: { ...cuteSeries, look: LOOK }, episode: EPISODE, plan: PLAN, cast: [] });
+  const compose = (info, drama = {}) => composeStory({ slug: SLUG, info, chapters: {}, voice: SERIES.voice, drama, root: "." });
+
+  assert.deepEqual(compose(cuteInfo).music, CURIO_MUSIC);
+  for (const info of [otherCuteInfo, regularInfo, wrongLookInfo]) {
+    assert.deepEqual(compose(info).music, { prompt: STORY_MUSIC, gain_db: -20, duck_db: -10 });
+  }
+  assert.equal(Object.hasOwn(compose(cuteInfo, { music_enabled: false }), "music"), false);
 });
 
 test("only A01 writes to an eight-minute budget while the shared pilot series stays ten", async () => {

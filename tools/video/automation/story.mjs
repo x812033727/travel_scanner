@@ -36,6 +36,7 @@ import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
 
 import { approve } from "../core/approvals.mjs";
+import { CURIO_MUSIC } from "../core/curio.mjs";
 import { A01_COMPACT_BODY_SECONDS, isA01CompactStory, isA01PilotStory } from "../core/duration.mjs";
 import { initializeStoryLexicon, proposeStoryLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { lintVideo } from "../core/lint.mjs";
@@ -735,7 +736,9 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     look: isCuteStoryLook(look) ? { preset: "cute-mystery" } : { preset: "custom", style: clip(look.style ?? "", 600), negative: clip(look.negative ?? "", 400), ...(isText(look.motion) ? { motion: clip(look.motion, 300) } : {}) },
     characters: info.characters ?? [],
     series: { slug: info.slug, episode: info.episode, chapter: 1 },
-    ...(drama.music_enabled === false ? {} : { music: { prompt: STORY_MUSIC, gain_db: -20, duck_db: -10 } }),
+    ...(drama.music_enabled === false ? {} : { music: info.slug === "brand-stories-new-20261020" && isCuteStoryLook(look)
+      ? { ...CURIO_MUSIC }
+      : { prompt: STORY_MUSIC, gain_db: -20, duck_db: -10 } }),
     // Keep the picture clean so zh-TW CC can be switched off when another voice is selected.
     subtitles: { burn_in: false, style: "drama" },
     youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: clip(info.title ?? plan.subject, 100), description: `${info.logline || plan.subject}\n\n${plan.question}`, tags: storyTags(plan), video_id: videoId },
@@ -889,7 +892,10 @@ export function pilotScriptReviewProblem({ slug, root, workdir }) {
 }
 
 export function cuteStoryVisualProblems(doc) {
-  if (!/^story-five-/.test(doc?.slug ?? "") && !CUTE_PILOT_SLUGS.has(doc?.slug)) return [];
+  // Select by batch or series, not its look: a wrong or missing look must also fail. Future
+  // episodes appended to this series keep the gate even if their video slugs use a new prefix.
+  if (!/^story-(?:five-|new-20261020-)/.test(doc?.slug ?? "") &&
+      !CUTE_PILOT_SLUGS.has(doc?.slug) && doc?.series?.slug !== "brand-stories-new-20261020") return [];
   const problems = [];
   const look = doc.look;
   if (!look || typeof look !== "object" || Array.isArray(look) || look.preset !== "cute-mystery" || Object.keys(look).length !== 1) {
