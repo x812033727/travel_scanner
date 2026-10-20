@@ -25,7 +25,7 @@ Make a source-bounded Curio S40 about whether Cleopatra VII definitely died by a
 - [x] Reopen fixed Plutarch full text and at least one separate ancient author; record versions and witness limits.
 - [x] Draft two historically sound options, a 8+ minute story body, claims, shots and loop map, with lint at 0 errors and warnings.
 - [x] Pass new independent script-only 13-question blind read and a separate source/prompt audit of exact script hash.
-- [ ] Only after gates and whole-episode budget record, progress paid TTS, stills, music and final package.
+- [x] Only after gates and whole-episode budget record, progress paid TTS, stills, music and final package.
 
 ## Steps
 
@@ -76,3 +76,5 @@ R1 independent script-only blind 8/13 and source/prompt audit are preserved as `
 2026-10-20 09:38 UTC：站台已對現行劇本 SHA `a7071cd5f52211d142ce832f20930beb27f53e3b6bc7fff3b3c2e3c30ea2b373` 作真正人工核准。本機只重配 `cl002,cl006,cl009,cl040,cl042,cl045,cl066` 七句，其他 77 個 WAV 位元雜湊不變；`cl042` 首次把「親手」聽成「輕手」，一次定點重配後正式 `check-audio` **84/84、0 旗標**。新 timeline SHA `92606e2305b362fb7f28a7db06b1438f404dfd87b0bccae7c10f9b33972b221f`，正文 8:11.63；22 張來源卡實際跨度最長 14.167 秒，均未超過 15 秒。依站主持續委託記錄本機音訊核准，並向站台 `review-push --gate audio`，**站主音訊審核仍 pending**。S40 插圖帳簿仍 US$3.3875／US$3.44，圖片三景 `cl001/062/070` 尚未補畫；不與 S31 共用圖片時窗重疊。詳 [verify-15.md](../../docs/videos/curio-s40/verify-15.md)。
 
 2026-10-20 10:14 UTC：S40 R16 三張最後補圖 `cl001/062/070` 已依獨立來源與年代覆核、root 授權，在 S31 停畫窗口各做一次正常圖片加機評；原尺寸逐張 PASS（`cl062` 只有可愛畫風細節 WATCH）。現行 `video.json` SHA `5f8d6af62b3bd93550ea00effc44d9a9faf31dd4a513d31d3eb27599c8fbc2e2`，入選 manifest SHA `6c7f299de031819e0da8e610402612e5b3a386d69f2630125b43981b2891406f`，**52/52** 張畫面 SHA 有效且正常機評通過、無待覆核；正文 **52/74 插圖＝70.27%**，最長兩連卡。官方 contact sheets 已以零新增付費請求重建。整集圖樂帳本 **US$3.428／3.44**、預約 0。現行分鏡已正常 `review-push --gate storyboard`，站台回覆 **pending 站主決定**，不作已核准或成片宣稱；待現行站台結果讀回後才進入影片剪輯／品牌片頭片尾／上架包。圖、來源、帳本、審核憑證詳 [verify-16.md](../../docs/videos/curio-s40/verify-16.md)。
+
+2026-10-20 10:55 UTC：站台在 10:29:13 UTC 已**真正核准現行分鏡**；`review-pull` 精確綁定 manifest `6c7f299d…`。現行長片 SHA `cca8cb61…`，9:19.4、1920×1080，34.53 秒濃縮開場後 5 秒原創片頭，末 21 秒原創片尾且後 16 秒留兩影片框／訂閱圈；繁中 88 條字幕與七章、來源／頻道連結均已入包。官方 QA **10/11**（只有雲端 YouTube URL CONNECT403；Jev 業配 0.28 通過），上傳包 **4/4**，圖樂仍 US$3.428／3.44。原尺寸 `cl062` 仍有張眼如清醒的 WATCH，不宣稱證實死亡樣貌或死因。站台 final、publish 兩關 `hand_pushed` 仍 **pending**；依站主持續委託只做了清楚註記的本機 final 委派核准，沒有 YouTube 上傳或可點片尾。詳 [verify-17.md](../../docs/videos/curio-s40/verify-17.md)。
