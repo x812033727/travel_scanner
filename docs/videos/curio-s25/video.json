@@ -118,14 +118,14 @@
       "what": "是牛頓自己指認的嗎"
     },
     {
-      "setup": "ap331",
-      "payoff": "ap332",
-      "what": "第一次算月亮算對了嗎"
-    },
-    {
       "setup": "ap329",
       "payoff": "ap310",
       "what": "牛頓身邊還有誰留下紀錄"
+    },
+    {
+      "setup": "ap431",
+      "payoff": "ap419",
+      "what": "蘋果跟月亮有什麼關係"
     },
     {
       "setup": "ap427",
@@ -143,7 +143,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "牛頓的蘋果是真的，那它有打到頭嗎？｜奇聞檔案局",
-    "description": "牛頓的蘋果大家都聽過，可是它有沒有打到他的頭？這一集只講紀錄裡找得到的。一七二六年四月十五日，醫生斯塔克利在倫敦肯辛頓陪八十三歲的牛頓在蘋果樹下喝茶；他一七五二年寫成的回憶錄手稿（一九三六年才出版）只寫蘋果掉下來，沒有地點、年份，也沒有打到頭。伏爾泰一七二七年的書、康杜特的草稿，也只寫蘋果掉下來；牛頓晚年親筆的筆記，只寫一六六六年開始想重力延伸到月亮，沒有蘋果。目前找得到最早的「打到頭」，是一本匿名小冊子一七四〇年前後的第二版（一七三九年第一版沒有），書上說根據彭伯頓，但彭伯頓一七二八年的書沒有蘋果；一七六〇年歐拉的信也這樣寫。伍爾索普那棵樹，一八〇六年就有人帶外地人去看，大約兩百年前被風吹倒，樹幹重新生根，今天還會開花結果。\n\n界線：外甥女那句是伏爾泰一七四一年新版才補的；「打到頭」只說目前找得到最早；斯塔克利日記是研究者轉引；樹倒的年份說法不一，不給年份；也沒有證據是牛頓自己指認了這棵樹。出處列在下方參考資料。「我們覺得」的句子是本頻道的看法。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；現代研究者不入畫。\n\n資料截至 2026-10-20",
+    "description": "牛頓的蘋果大家都聽過，可是它有沒有打到他的頭？這一集只講紀錄裡找得到的。一七二六年四月十五日，醫生斯塔克利在倫敦肯辛頓陪八十三歲的牛頓在蘋果樹下喝茶；他一七五二年寫成的回憶錄手稿（一九三六年才出版）只寫蘋果掉下來，沒有地點、年份，也沒有打到頭。伏爾泰一七二七年的書、康杜特的草稿，也只寫蘋果掉下來；牛頓晚年親筆的筆記，只寫一六六六年開始想重力延伸到月亮，沒有蘋果。目前找得到最早的「打到頭」，是一本匿名小冊子一七四〇年前後的第二版（一七三九年第一版沒有），書上說根據彭伯頓，但彭伯頓一七二八年的書沒有蘋果；一七六〇年歐拉的信也這樣寫。伍爾索普那棵樹，一八〇六年就有人帶外地人去看，大約兩百年前被風吹倒，樹幹重新生根，今天還會開花結果。\n\n界線：外甥女那句是伏爾泰一七四一年新版才補的；「打到頭」只說目前找得到最早；斯塔克利日記是研究者轉引；樹倒的年份說法不一，不給年份；也沒有證據是牛頓自己指認了這棵樹。出處列在下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；現代研究者不入畫。\n\n資料截至 2026-10-20",
     "tags": [
       "牛頓",
       "牛頓的蘋果",
@@ -211,11 +211,6 @@
     {
       "title": "Voltaire, Éléments de la philosophie de Newton (1741)",
       "url": "https://archive.org/details/bim_eighteenth-century_elements-de-la-philosop_voltaire_1741",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "Greene, The Principles of the Philosophy of the Expansive and Contractive Forces (1727)",
-      "url": "https://archive.org/details/bim_eighteenth-century_the-principles-of-the-ph_green-robert-fellow-of_1727",
       "checked_on": "2026-10-20"
     },
     {
@@ -522,7 +517,7 @@
       "lines": [
         {
           "id": "ap206",
-          "text": "他的答案是：地球在拉它；"
+          "text": "他的答案是：地球在拉它；物質裡，一定有一種拉力；"
         }
       ]
     },
@@ -640,17 +635,32 @@
       ]
     },
     {
-      "id": "diary",
+      "id": "two-dinner",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a plump round-faced physician in his late thirties in a grey waistcoat and a short powdered wig sitting at a small table in a lodging room, writing one short line in a small pocket diary with its pages turned away, warm lamp light",
+        "prompt": "Medium close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap sitting alone at a small dining table set for two in a panelled room, raising a glass with a gentle smile toward the camera, soft daylight",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ap214",
-          "text": "看來沒有。一位研究這棵樹的學者引過他的日記：那天寫的是，跟牛頓單獨吃飯；沒有蘋果。"
+          "text": "看來沒有。還記得那頓只有兩個人的飯嗎？"
+        }
+      ]
+    },
+    {
+      "id": "diary",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plump round-faced physician in his late thirties in a grey waistcoat and a short powdered wig sitting at a small table in a lodging room, writing one short line in a small pocket diary with its pages turned away, warm lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap218",
+          "text": "一位研究這棵樹的學者引過他那天的日記：日記裡有這頓飯，沒有蘋果。"
         }
       ]
     },
@@ -675,7 +685,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap sitting in an armchair by a window on a grey day, a teacup on the side table, raising one finger toward the viewer as if about to tell a story, soft daylight",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -692,7 +702,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a bookseller in a canvas apron standing behind the counter of a small London bookshop on an overcast afternoon in 1727, stacking a few new books with plain covers, window light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -707,7 +717,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a thin sharp-nosed Frenchman in his thirties in a long curled wig and a blue velvet jacket standing by a tall window in a London lodging on a cloudy day, holding a small book with a plain cover and raising one eyebrow toward the camera, pale daylight",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -737,7 +747,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar strolling along a gravel path in a garden on an overcast autumn day, hands clasped behind his back, glancing down at an apple lying on the path, mild light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -756,7 +766,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a thin sharp-nosed Frenchman in his thirties in a long curled wig and a blue velvet jacket sitting at a writing desk, tapping a quill against his chin with a sly, curious look, warm lamp light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -772,7 +782,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a thin sharp-nosed Frenchman in his forties in a long curled wig and a plum silk dressing gown sitting at a desk in a country house study on a rainy day, adding a line to a manuscript page turned away from us, rain on the window behind him, light from an open doorway",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -798,21 +808,47 @@
       ]
     },
     {
+      "id": "niece-scene",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar standing in a country orchard on a cloudy day, gazing down at a few fruits lying in the grass with a far-off, thoughtful look, mild light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap331",
+          "text": "那一段說：有一天，牛頓在鄉下，看見果子從樹上掉下來，就想得出神："
+        }
+      ]
+    },
+    {
+      "id": "niece-centre",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar kneeling in the orchard grass and pointing straight down at the ground with a wondering frown, a fallen fruit beside his knee, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap332",
+          "text": "是什麼，讓所有東西，都朝著差不多是地球中心的方向落下？"
+        }
+      ]
+    },
+    {
       "id": "niece-fruits",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a graceful lady in her late forties in a grey silk gown and a lace cap standing in a parlour on an overcast afternoon, holding a small basket of mixed fruit and smiling toward the camera, daylight from a skylight",
-        "camera": "drift",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ap326",
-          "text": "這位外甥女，替牛頓管過家；"
-        },
-        {
-          "id": "ap308",
-          "text": "只是這一段寫的是「果子」，沒說是蘋果。"
+          "text": "這位外甥女，替牛頓管過家。"
         }
       ]
     },
@@ -821,7 +857,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stout middle-aged gentleman in a mustard waistcoat and a curled wig standing at a long table in a mint office on a grey morning, weighing a coin on a small brass balance with a careful frown, soft daylight",
-        "camera": "tilt down",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -841,7 +877,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a stout middle-aged gentleman in a mustard waistcoat and a curled wig sitting at a desk covered in loose papers on a quiet afternoon, writing with a quill, the pages facing away from us, lamp light",
-        "camera": "pan right",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -856,7 +892,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar walking up a country lane toward a small stone farmhouse on an overcast autumn day, carrying a leather satchel of books over his shoulder, mild light",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -871,7 +907,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar standing in a farmhouse garden on a misty morning, looking down in surprise at an apple that has just landed on the grass by his shoe, soft grey light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -886,7 +922,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a stout middle-aged gentleman in a mustard waistcoat and a curled wig scratching his head with the feather end of his quill and frowning at two blank papers on his desk, soft lamp light",
-        "camera": "pan left",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -914,41 +950,11 @@
       ]
     },
     {
-      "id": "greene",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a gaunt Cambridge scholar in a black academic gown sitting at a college desk on a cloudy morning, writing in a thick book whose pages face away from us, a quiet proud look, pale daylight",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ap335",
-          "text": "一七二七年，劍橋的學者格林也在書裡寫：這個理論，是從一顆蘋果開始的；"
-        }
-      ]
-    },
-    {
-      "id": "folkes",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of a genial gentleman in a velvet waistcoat and a grey periwig standing by a fireplace in a club room on a cloudy afternoon, leaning in and whispering behind one hand with a grin, warm lamp light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ap336",
-          "text": "是皇家學會的福克斯告訴他的。"
-        }
-      ]
-    },
-    {
       "id": "no-head-yet",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar standing under an apple tree in an autumn orchard, looking at an apple lying in the grass at his feet with calm attention, overcast light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -963,7 +969,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap sitting at a desk piled with stacks of papers in a study on a grey day, peering over the stacks at the viewer, window light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -979,7 +985,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap holding a quill and looking up with a slow, remembering smile, a small desk lamp beside him, warm lamp light",
-        "camera": "tilt up",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -994,7 +1000,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap writing a list on a sheet turned away from us and counting on the fingers of his free hand, lamp light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1009,7 +1015,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar sitting at a small farmhouse window on an overcast day, chin in hand, looking up at a pale moon in a grey daytime sky, mild light",
-        "camera": "pan left",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1021,95 +1027,11 @@
       ]
     },
     {
-      "id": "calc-question",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar frowning at a page of long sums turned away from us and chewing the end of his quill, a stub of pencil beside him, soft grey light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ap331",
-          "text": "這一算，算對了嗎？",
-          "emotion": "問句"
-        },
-        {
-          "id": "ap332",
-          "text": "康杜特的草稿說：沒有。他手邊沒有書，"
-        }
-      ]
-    },
-    {
-      "id": "sixty-miles",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a weathered sailor in a knitted cap standing on a ship's deck on a grey day, holding up a brass sextant and squinting along it, mild light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ap333",
-          "text": "只好用地理學家和水手常用的估計：緯度一度，六十英里；"
-        },
-        {
-          "id": "ap334",
-          "text": "算出來，跟他的想法對不上。"
-        }
-      ]
-    },
-    {
-      "id": "wonders",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar sitting at a wooden desk in a farmhouse room at midday, scribbling sums on a sheet turned away from us, ink on his fingers and an eager smile, pale daylight",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ap328",
-          "text": "後人把這段日子，叫作「奇蹟年」。"
-        }
-      ]
-    },
-    {
-      "id": "prime-quote",
-      "template": "big",
-      "data": {
-        "text": "「the prime of my age for invention」",
-        "kicker": "牛頓晚年的筆記",
-        "sub": "那兩個瘟疫年，是我發明的黃金年紀"
-      },
-      "lines": [
-        {
-          "id": "ap319",
-          "text": "牛頓自己寫的是：那兩個瘟疫年，是我發明的黃金年紀。"
-        }
-      ]
-    },
-    {
-      "id": "young-age",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar leaning back from his desk and stretching his inky hands with a proud, tired grin, a stack of scribbled sheets turned face down, soft light from a small window",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ap320",
-          "text": "那時候，他才二十三、四歲。"
-        }
-      ]
-    },
-    {
       "id": "no-apple-note",
       "template": "shot",
       "data": {
         "prompt": "Close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap setting down his quill and gazing at the viewer with a calm, unreadable smile, a single sheet lying face down on the desk, soft lamp light",
-        "camera": "tilt up",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1128,7 +1050,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a librarian with little wire spectacles and a cardigan standing between tall archive shelves on an overcast day, pulling out a thin old pamphlet with a plain cover and raising her eyebrows, light from an open doorway",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1145,7 +1067,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a printer in an ink-stained apron and rolled-up sleeves in a small printing shop on a rainy day, tying a short stack of thin pamphlets with string, daylight from a skylight",
-        "camera": "pan left",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1160,7 +1082,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a librarian with little wire spectacles and a cardigan at the reading desk flipping through a thin old pamphlet with its pages turned away from us, shaking her head, lamp light",
-        "camera": "push in",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1175,7 +1097,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a wiry writer in a shabby black cloak with his hat pulled low sitting at a cramped desk in a garret on an overcast afternoon, dipping a quill with a mischievous grin, a sheet turned away, soft daylight",
-        "camera": "drift",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1206,7 +1128,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a wiry writer in a shabby black cloak with his hat pulled low leaning back in his chair and wagging one finger toward the camera with a smug smile, soft lamp light",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1221,7 +1143,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a sleepy farmer in a smock sitting under an apple tree in an autumn orchard on a grey day, rubbing the top of his head with a blank expression, apples lying on the grass around him, overcast light",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1237,7 +1159,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a librarian with little wire spectacles and a cardigan leaning over a pamphlet with a pencil and squinting at one line, the page turned away from us, warm lamp light",
-        "camera": "tilt up",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1253,7 +1175,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a serious doctor in his thirties in a black suit and a small white wig sitting at a desk in a study on a cloudy morning, proofreading a thick manuscript with a quill tucked behind his ear, window light",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1268,7 +1190,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a serious doctor in his thirties in a black suit and a small white wig standing by a bookcase and listening intently with one hand cupped near his ear, a small notebook in his other hand, pale daylight",
-        "camera": "pan left",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1283,7 +1205,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a serious doctor in his thirties in a black suit and a small white wig holding up a small book with a plain cover and looking at the viewer with a puzzled frown, soft light from a tall window",
-        "camera": "push in",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1299,7 +1221,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar sitting alone on a stone bench in a quiet garden on an overcast day, deep in thought with his chin resting on his fist, a clipped hedge behind him, mild light",
-        "camera": "drift",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1330,7 +1252,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a librarian with little wire spectacles and a cardigan running one finger along a row of old books with plain leather spines on an archive shelf, a searching look, soft overcast light",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1346,7 +1268,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a kindly round-faced mathematician in his fifties in a dark house robe and a soft wrapped cap sitting at a writing desk in a study on an overcast autumn morning in 1760, writing a letter with a quill on a sheet turned away from us, a kind smile, daylight from a skylight",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1361,7 +1283,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar lying on the grass under an apple tree in an autumn orchard on a hazy day, hands behind his head and eyes half closed, mild light",
-        "camera": "tilt up",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1392,7 +1314,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar lying on the grass and rubbing his forehead with a surprised face, an apple resting on the grass beside his head, soft overcast light",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1400,6 +1322,11 @@
           "id": "ap418",
           "text": "這一回，他是躺著的。",
           "emotion": "帶點好笑"
+        },
+        {
+          "id": "ap431",
+          "text": "這跟月亮，又有什麼關係？",
+          "emotion": "問句"
         }
       ]
     },
@@ -1408,7 +1335,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar lying under the apple tree and looking up at a pale moon in a grey daytime sky with a curious frown, mild light",
-        "camera": "pan left",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1423,11 +1350,26 @@
       ]
     },
     {
+      "id": "ignorance",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a kindly round-faced mathematician in his fifties in a dark house robe and a soft wrapped cap leaning back in his chair with his hands folded on his belly and chuckling toward the camera, a finished letter turned face down on the desk, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ap430",
+          "text": "他還寫：要是牛頓沒躺在那棵樹下，蘋果沒有剛好掉在他頭上，我們說不定到現在還不懂。"
+        }
+      ]
+    },
+    {
       "id": "how-far",
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a kindly round-faced mathematician in his fifties in a dark house robe and a soft wrapped cap sealing a folded letter with red wax at his desk and smiling, a small brass seal in his hand, warm lamp light",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1443,13 +1385,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a printer in an ink-stained apron and rolled-up sleeves in a printing workshop on an overcast day, packing freshly bound books with plain covers into a wooden crate, mild light",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ap421",
-          "text": "這些信一七六八年印成書，後來又譯成了英文。"
+          "text": "這些信一七六八年印成書；一七九五年的英譯本，也照樣寫蘋果掉在他頭上。"
         }
       ]
     },
@@ -1458,7 +1400,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a bespectacled French editor in a powdered wig and a striped waistcoat sitting at a desk in a Paris study on a rainy day, reading a thick book with its pages turned away and raising one doubtful eyebrow, lamp light",
-        "camera": "tilt down",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1478,7 +1420,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a bespectacled French editor in a powdered wig and a striped waistcoat writing a small footnote with a fine quill and pursing his lips in doubt, the page turned away from us, warm lamp light",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1493,7 +1435,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a schoolteacher in a high-collared jacket standing by a fireplace in a plain parlour on a grey morning, holding up an apple and tapping the top of his own head with a grin, soft daylight",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1508,7 +1450,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an old gardener in a wide-brimmed hat and a leather apron standing beside an old apple tree propped up with wooden poles in an orchard on an overcast day, patting its rough trunk and looking toward the camera, mild light",
-        "camera": "pull out",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1523,7 +1465,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an old gardener in a wide-brimmed hat and a leather apron leaning on his rake beside the propped-up apple tree and squinting thoughtfully at its gnarled bark, soft grey light",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1540,7 +1482,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a village woman in a bonnet and a woollen shawl standing at the garden gate of a stone farmhouse on an overcast autumn day in 1806, beckoning toward the camera with a welcoming smile, an old apple tree behind her, soft light",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1555,13 +1497,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a curious traveller in a long riding cloak and a tricorn hat standing in a farmhouse garden on a cloudy day, looking up at the branches of an old apple tree with an awed face, mild light",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ap502",
-          "text": "這時，牛頓已經過世將近八十年。"
+          "text": "這時，牛頓已經過世將近八十年，比印出打到頭的那本小冊子，又晚了六十多年。"
         }
       ]
     },
@@ -1570,7 +1512,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a librarian with little wire spectacles and a cardigan sitting at the archive desk on a grey day with an old engraving turned away from us, tapping her lip with one finger in doubt, lamp light",
-        "camera": "tilt down",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1586,7 +1528,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man of about twenty-three with long dark hair, a plain dark doublet and a lace collar standing in a small walled garden beside a single apple tree on an overcast day, hands on his hips and looking around the plain garden, mild light",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1601,7 +1543,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a gardener in a quilted jacket and work gloves pruning a low, leaning old apple tree covered in pale blossom inside a low wooden fence on an overcast spring day, mild light",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1613,26 +1555,11 @@
       ]
     },
     {
-      "id": "same-pattern",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of a librarian with little wire spectacles and a cardigan holding a thin pamphlet in one hand and a small dried apple-tree twig in the other, weighing them with a knowing smile, soft overcast light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ap530",
-          "text": "我們覺得，這棵樹跟打到頭很像：找不到牛頓自己這樣說過，都是後來的人補上的。"
-        }
-      ]
-    },
-    {
       "id": "final-question",
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap sitting under an apple tree in pale blossom with a teacup in his hand, looking straight at the viewer with a twinkle in his eye, soft hazy light",
-        "camera": "pan left",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1648,7 +1575,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap sitting in an armchair and shrugging with both palms turned up, a teacup on the table beside him, warm lamp light",
-        "camera": "push in",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1663,7 +1590,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of a frail silver-haired old gentleman in his eighties in a long plum-coloured robe and a soft velvet cap telling a story with both hands raised dramatically and a sly smile, a fire screen behind his armchair, soft lamp light",
-        "camera": "drift",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
