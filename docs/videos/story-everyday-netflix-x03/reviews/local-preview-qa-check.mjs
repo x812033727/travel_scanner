@@ -18,6 +18,7 @@ import { lintProject, loadProject } from "../../../../tools/video/core/state.mjs
 import { speechHash, visualHash } from "../../../../tools/video/core/timeline.mjs";
 import { readLedger, totalsOf } from "../../../../tools/video/media/ledger.mjs";
 import { themeHash } from "../../../../tools/video/render/plan.mjs";
+import { verifyPreviewReviewLineage } from "./local-preview-provenance.mjs";
 
 const SLUG = "story-everyday-netflix-x03";
 const INTRO = 150;
@@ -61,27 +62,8 @@ async function main() {
   const { doc, lexicon } = project;
   const scriptSha = await sha256File(docFile);
   const seriesFile = path.join(project.dir, "series.json");
-  const bootstrapFile = path.join(project.dir, "reviews", "lexicon-bootstrap.json");
-  const bootstrap = read(bootstrapFile);
-  assert.equal(bootstrap.kind, "manual_story_lexicon_bootstrap_review", "manual source-review receipt kind");
-  assert.equal(bootstrap.decision, "pin_unspoken_manual_draft", "manual source-review decision");
-  assert.equal(bootstrap.video_json_sha256, scriptSha, "manual source-review script SHA drift");
-  assert.equal(bootstrap.series_json_sha256, await sha256File(seriesFile), "manual source-review series SHA drift");
-  assert.deepEqual(new Set(bootstrap.evidence.map((item) => item.role)), new Set(["source", "narrative_a", "narrative_b"]), "source and narrative evidence roles");
-  const reviewEvidence = [];
-  for (const entry of bootstrap.evidence) {
-    const file = path.resolve(project.dir, entry.file);
-    assert.ok(isInside(file, path.join(project.dir, "reviews")), "review evidence escapes reviews/: " + entry.file);
-    assert.equal(await sha256File(file), entry.sha256, "review evidence SHA drift: " + entry.file);
-    reviewEvidence.push({ role: entry.role, file: entry.file, sha256: entry.sha256 });
-  }
-  const currentLexicon = read(path.join(project.dir, "story-lexicon", "current.json"));
-  const manualBootstrapFile = path.join(project.dir, "story-lexicon", "manual-bootstraps", `${currentLexicon.head_event_sha256}.json`);
-  const manualBootstrap = read(manualBootstrapFile);
-  assert.equal(manualBootstrap.video_json_sha256, scriptSha, "pinned manual bootstrap script SHA drift");
-  assert.equal(manualBootstrap.series_json_sha256, bootstrap.series_json_sha256, "pinned manual bootstrap series SHA drift");
-  assert.equal(manualBootstrap.review_receipt_sha256, await sha256File(bootstrapFile), "pinned manual bootstrap review SHA drift");
-  assert.deepEqual(manualBootstrap.evidence, bootstrap.evidence, "pinned manual bootstrap evidence drift");
+  const seriesSha = await sha256File(seriesFile);
+  const reviewLineage = verifyPreviewReviewLineage({ projectDir: project.dir, currentVideoSha: scriptSha, seriesSha });
   const timelineFile = within(workdir, "timeline.json");
   const timeline = read(timelineFile);
   assert.equal(timeline.fps, FPS, "timeline must use 30 fps");
@@ -166,7 +148,7 @@ async function main() {
     approval: "UNAPPROVED_CONCEPT",
     official_branding: false,
     workdir,
-    source: { video_json_sha256: scriptSha, series_json_sha256: bootstrap.series_json_sha256, lexicon_bootstrap_review_sha256: await sha256File(bootstrapFile), pinned_manual_bootstrap_sha256: await sha256File(manualBootstrapFile), review_evidence: reviewEvidence, timeline_sha256: await sha256File(timelineFile), keyframes_manifest_sha256: await sha256File(keyframeFile), frames_manifest_sha256: await sha256File(framesFile), music_manifest_sha256: await sha256File(musicFile), rendered_card_files: cardFiles, thumbnail_sha256: await sha256File(thumbnailFile) },
+    source: { video_json_sha256: scriptSha, series_json_sha256: seriesSha, review_lineage: reviewLineage, timeline_sha256: await sha256File(timelineFile), keyframes_manifest_sha256: await sha256File(keyframeFile), frames_manifest_sha256: await sha256File(framesFile), music_manifest_sha256: await sha256File(musicFile), rendered_card_files: cardFiles, thumbnail_sha256: await sha256File(thumbnailFile) },
     expected: { body_frames: timeline.total_frames, output_frames: expectedFrames, seconds: Number((expectedFrames / FPS).toFixed(3)), concept_intro_frames: INTRO, concept_outro_frames: OUTRO, intro: [introAt, introAt + INTRO], outro: [timeline.total_frames + INTRO, expectedFrames], chapters: timeline.chapters.map((chapter, index) => chapter.start_frame + (index ? INTRO : 0)), cues: cues.length, caption_sha256: Object.fromEntries(Object.entries(expectedCaptions).map(([name, bytes]) => [name, digest(bytes)])) },
     media: { selected_pictures: shotScenes.length, review_needed: flagged, review_spots: reviewSpots, ledger: totals, caveat: "Ledger covers visible media jobs, not unlisted TTS, transcription, tax or provider charges. The US$25 full-episode cap needs separate accounting." },
   };
