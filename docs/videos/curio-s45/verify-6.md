@@ -1,0 +1,40 @@
+# S45｜R5 敘事修訂與來源差異自查
+
+2026-10-20 UTC。這是撰稿者的**本地自查／精確凍結送審版本**，不代表獨立 R5 來源與敘事合格，也不代表站台 `hand_pushed` 大綱／劇本核准。R4 的獨立來源與書面畫面覆核 [PASS](verify-5.md)；但兩位全新盲讀者的 [/tmp/s45-r4-blind-a.md](/tmp/s45-r4-blind-a.md) 與 [/tmp/s45-r4-blind-b.md](/tmp/s45-r4-blind-b.md) 均判 `no_recap` 失敗（`bly012–013` 連續說錢）。A 另指出早餐提問沒有直接答覆，B 另指出開場 `bly007` 和舊題名透露她出院又回島，削弱 `bly004` 的出口懸念。
+
+| 同組凍結輸入 | R5 SHA-256 |
+| --- | --- |
+| `research.md` | `0830b621c0c060542733d72237e3702bced7b425be677480cceb1559d1cfc3b2` |
+| `brief.md` | `0b9d7f8a52821ed06bfe06b192e6b761fb997aa4d73838f281ed687b56bc5c8b` |
+| `video.json` | `a92a471a317d6aee20e5cbf182179248d442380d8e7a98a54e7073259e55d9a4` |
+| `script.md` | `45e4fd610e673efbdc1e80d15f4e350c2a205d4c52cf7abc0501949ee62258dc` |
+| `claims.md` | `439e93f7c9953bdf0fa3c48876a9e01a187eb85b38c882d31b68bcb32a28d08e` |
+
+`script.md` 由此版 `video.json` 執行 `node tools/video/cli.mjs script --slug curio-s45` 產生。唯一敘事一手文本仍是 Nellie Bly, *Ten Days in a Mad-House* (1887) 的 [固定 GITenberg commit `c3904b5064d2bafb7e13486489dfe98b560611b5`](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt)；本地 `/tmp/s45-bly-59899.txt` SHA-256 `bc03f9cdb9a845bd4d9babaa8652c4c93e415dd09c7b54ca20c07143e5e2d5b3`。
+
+## R4 盲讀共通失敗與單人提醒
+
+- `bly012` 現只說暫住處收 **30 美分一晚**及她支付當晚房費，問她為何希望錢快用完；`bly013` 才揭示出門時總共帶約 **70 美分**及她期待被住處請走的盤算。這兩句是付款與策略，沒有重說「只帶少量錢」。[原文 L325–337](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L325-L337)。
+- `bly056` 現只問「那片麵包她吃了嗎？」；`bly057` 直接答 Bly 自述取得無奶油麵包後見到蜘蛛，**沒吃那片**，燕麥與茶也難入口。[原文 L2125–2135](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L2125-L2135)。插圖仍只是成人拿普通麵包，不生成蜘蛛或不潔細節。
+- 題名改問「誰能帶她出來？」、縮圖改「出口？」；`bly007` 改為筆記本被拿走、能否取回的預告，由 `bly061` 的未取回答覆，[原文 L2151–2166](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L2151-L2166)。開場沒有預告她能出院或再次登島。返訪船隻在 `bly087–089` 按發生順序才出現，`bly088` 引到新船與舊船據說停修的差異，[L3052–3068](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L3052-L3068)。
+
+## 為何補寫正文，新增事實的原文位置
+
+前份 [verify-4.md](verify-4.md) 把每分鐘 300 spoken units 的正文估成 8:10，該估值算錯。本輪只做前三處窄修時，使用 `estimateTimeline(doc, 300)` 從 `bly009` 起至 `outro` 前重算，正文只有 **451.4 秒（7:31）**，達不到至少 8 分鐘。為保持敘事與史料界線，R5 從原文補入下列**不同的新動作或可觀察細節**，不以重述增加時長。每景的精確引文另在 `claims.md`。
+
+| R5 正文增補 | 原文錨點及界線 |
+| --- | --- |
+| `bly011、014、018–019`：單人房已滿、在後客廳等候與後來房間少見日光；一位同住女性帶她喝咖啡、吃麵包，陪她過夜，清晨裹毯。 | [L280–288](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L280-L288)、[L314–342](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L314-L342)、[L598–635](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L598-L635)。不把後客廳和後來的房間說成同一室；該女性不知道報導策略。 |
+| `bly031–035`：Bellevue 櫃檯先問話、醫師說文件已備；星期日院內稱供暖要到十月，醫師提醒低溫；記者和尋找失蹤女孩的訪客可能認出她，訪客看過臉也未認出。 | [L1044–1052](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L1044-L1052)、[L1365–1421](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L1365-L1421)、[L1431–1445](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L1431-L1445)。仍不說「無人問診」。 |
+| `bly039、045、049`：第一趟船艙窄窗關閉；德語女性問話時護士稱只會一點德語、最後只問出丈夫工作；晚餐前兩度在開窗與樓梯口等候。 | [L1511–1548](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L1511-L1548)、[L1640–1664](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L1640-L1664)、[L1826–1852](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L1826-L1852)。不替任何人下診斷。 |
+| `bly054、058–061`：先有人拿走她桌上的麵包，另一人提出分享；她記病人連護理員的房間和衣物也整理；筆記本、長鉛筆本為記憶，索取多次而未歸還。 | [L1865–1873](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L1865-L1873)、[L2137–2142](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L2137-L2142)、[L2151–2166](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L2151-L2166)。取走麵包明說「布萊寫」，插圖不演出爭奪。 |
+| `bly080、091、096`：獲釋時她正隨隊散步；返訪廚房門邊有兩桶鹽；先前認識的人，有人據說由親屬帶離，也有幾人移往別處。 | [L3016–3023](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L3016-L3023)、[L3114–3120](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L3114-L3120)、[L3124–3139](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L3124-L3139)。返訪物件與他人去向只按 Bly 書中記述，不證明長期改革。 |
+
+`bly012→013`、`bly032→033`、`bly058→059` 是為 45 秒鉤子節奏加入的具體提問，下一景均由 [住宿策略 L330–337](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L330-L337)、[醫師問話 L1397–1421](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L1397-L1421)、[病人做事 L2137–2142](https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt#L2137-L2142) 答覆；沒有臆測醫師內心、律師來源或院方後來行為。
+
+## 本地驗證與未過關項目
+
+- `node tools/video/cli.mjs lint --slug curio-s45`：**0 errors、0 warnings**。99 正文景中 96 插圖景（97.0%）、3 來源卡，14 條先設伏後回收的 `loops`；`script.md` 與 `video.json`、`claims.md` **99/99 逐字一致**，99/99 主張列都有固定 commit 行號。
+- `estimateTimeline`：250 spoken units/minute 時濃縮開場 **46.97 秒**、正文 **578.73 秒（9:39）**、純劇本含片尾 **10:44**；較快的 300 時開場 **40.40 秒**、正文 **496.40 秒（8:16）**、純劇本含片尾 **9:12**。這些是估算，語音合成後仍須以實際 `check-audio` 和組片時間核對正文至少 8 分鐘。
+- R5 改過的視覺提示詞仍限一名成年人物一個動作。`bly007` 為空白筆記本，`bly018–019` 為普通早餐處與毯子，`bly031` 為空白接待夾，`bly039` 為樸素木造河船艙；縮圖改用 `bly004` 的辦公室門邊畫面。沒有可讀文件或具名肖像，也未畫蜘蛛、病人傷害或來源以外的結果。所有插圖仍只是待製作的卡通示意，尚未做原生尺寸驗收。
+- **待下一關：另一位工作者獨立覆核 R5 所改場景的來源與書面畫面；兩位真正全新、隔離研究與前幾輪意見的讀者按同一組精確 `video.json`／`script.md` 做十三題盲讀。** 任何候選檔再修改都需重新凍結雜湊與重讀。站台 `hand_pushed` 大綱／劇本關卡、付費語音與插圖、音樂、審核推送、組片、上架和 Git 提交／推送均未在本階段執行。
