@@ -158,7 +158,12 @@ current STOP gate SHA `8c0dcc76b7b48ceabc96a19636784f22f986ce933ef6f2e194a0abcf5
 The ledger remains unchanged at US$0.9720, 72 image/72 judge calls, zero
 reservations. Site music quota
 remains zero; a matching owner-generated X03 Lyria track passed provenance
-dry-run for a labeled local concept reuse, not official music approval.
+checks and was copied only into `review/local-preview/` for a labeled local
+concept reuse, not official music approval. Its source and copied MP3 SHA are
+`452887ff91f0f6956d350b9c902cc273b82cc3c1fdae9a7524e330ddcda7b2de`;
+the concept sidecar SHA is
+`12bcc14a6a23355660832acde3005fba51f31553131b773379188c581a817805`.
+No X06 music quota or new fee was used; official `music/manifest.json` is absent.
 After batch 2, live judge quota was 342; X06 worst-case remaining demand is
 132 for 44 new shots plus up to 6 for reviewed HOLD retries. X09 needs at least
 99 calls and X05 also uses the same site, so X06 paid stage stays paused until
