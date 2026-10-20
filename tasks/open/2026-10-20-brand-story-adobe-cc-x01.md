@@ -1,7 +1,7 @@
 ---
 id: 2026-10-20-brand-story-adobe-cc-x01
 title: 製作 Adobe Creative Cloud 品牌故事本機試看片
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-gpt6-adobe-x01
