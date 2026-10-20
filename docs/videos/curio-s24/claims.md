@@ -37,7 +37,7 @@ ar406、ar412、ar419、ar505、ar513、ar516、ar517、ar518），不帶新事�
 | ar222 | 工匠後來怎樣？原文沒寫，故事就停在這裡 | #12 | praef. 12 停在「manifestum furtum redemptoris」 | 確認；不說工匠受罰 |
 | ar224 ar225 ar226 | 第九書的開頭是一篇替作家抱不平的文章：運動員得到的榮耀，作家也該有，而且要更多；阿基米德這一段是他舉的例子之一（回收 ar109） | #2 | praef. 1「admiror quid ita non scriptoribus eidem honores etiamque maiores sint tributi」；praef. 3「I will cite a few examples」 | 確認；同一段的柏拉圖、畢達哥拉斯不講（岔題） |
 | ar301 | 至少在他流傳到今天的著作裡，一個字也沒提到王冠，也沒有浴缸 | #20 | HEATH 全書 OCR 檢索「crown」「bath」只在 Heath 自己的導論與註；SCIAM「Archimedes himself never wrote about this episode」 | 確認；說「流傳到今天的」，不說「他從沒寫過」 |
-| ar302 | 他是西元前三世紀的人；寫過的書，有的失傳了，有的很僥倖地留了下來 | #16 #17 #23 | HEATH p. xv；HEATH 導論「Lost works」；《浮體論》「only preserved in a Latin translation」 | 確認 |
+| ar302 | 他寫過的書，有的失傳了，有的很僥倖地留了下來 | #16 #17 #23 | HEATH p. xv；HEATH 導論「Lost works」；《浮體論》「only preserved in a Latin translation」 | 確認 |
 | ar303 | 其中一本《浮體論》，講的正好是東西泡進水裡會怎樣 | #21 | HEATH pp. 258–261 | 確認 |
 | ar304 ar305 | 比水重的東西放進水裡秤會變輕；輕掉的，正好是它排開的那些水的重量 | #21 | HEATH p. 258 命題 7「be lighter than its true weight by the weight of the fluid displaced」 | 確認；卡片標「Heath 英譯（改寫）」 |
 | ar306 | 這就是今天說的浮力；他講的，是在水裡秤重 | #21 #22 | 第 21 列備註；WP「upthrust」 | 確認 |
