@@ -21,7 +21,7 @@ import { cadenceProblems, cadenceSummary, illustrationShare, MAX_PICTURE_SECONDS
 import { burnIn, drawnShotScenes, illustrated, isDrama, needsMinimumLength, subtitlesHash } from "../core/drama.mjs";
 import { checkYoutubeFields } from "../core/metadata.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
+import { DEFAULT_LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
 import { alwaysLocales, captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
 import { isStory } from "../core/story.mjs";
@@ -195,7 +195,7 @@ async function compilationQa(ctx, { project, lint, workdir, workBase }) {
     command: "compile",
     stale: `other cuts or cards${!brandingMatches ? ", or another branding selection" : ""}${uncleared.length ? ` (episodes not cleared for upload: ${uncleared.join(", ")})` : ""}`,
   }));
-  items.push(compilationCaptionsItem({ lintWarnings: lint.warnings, manifest: captions, current: Boolean(expected) && captions?.compilation_hash === expected && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: LOCALES, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))) }));
+  items.push(compilationCaptionsItem({ lintWarnings: lint.warnings, manifest: captions, current: Boolean(expected) && captions?.compilation_hash === expected && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: DEFAULT_LOCALES, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))) }));
   items.push(metadataItem({
     problems: metadataProblems,
     tagProblems: checkYoutubeFields({ title: "", description: "", tags: metadata.tags }, "youtube"),

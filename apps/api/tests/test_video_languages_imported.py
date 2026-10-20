@@ -2,8 +2,9 @@
 
 The owner added Latin-American Spanish, Brazilian Portuguese, Indonesian, Vietnamese and Thai for
 種田娶妻打天下 on 2026-10-18, an imported series whose files are made outside the pipeline
-(docs/videos/LANGUAGES.md). Only a video ``tools/video/cli.mjs import`` put on the site may choose
-them; the worker's three and every other video stay as they were.
+(docs/videos/LANGUAGES.md). Since 2026-10-20 every video may choose their titles and captions
+(tests/test_video_languages_worker.py); a dub in them is still only for a video
+``tools/video/cli.mjs import`` put on the site.
 """
 
 from __future__ import annotations
@@ -21,8 +22,8 @@ from app.problems import AppError
 from app.video_reviews import admin_service as service
 from app.video_reviews.schemas import (
     DUB_LOCALES,
-    IMPORTED_LOCALES,
-    WORKER_LOCALES,
+    IMPORTED_DUB_LOCALES,
+    WORKER_DUB_LOCALES,
     LocalesIn,
     ReviewIn,
 )
@@ -68,9 +69,9 @@ async def _view(site: Site) -> Any:
 
 
 def test_the_eight_languages_list_the_worker_s_three_first() -> None:
-    assert WORKER_LOCALES == ("en", "ja", "ko")
-    assert IMPORTED_LOCALES == ("es", "pt", "id", "vi", "th")
-    assert DUB_LOCALES == (*WORKER_LOCALES, *IMPORTED_LOCALES)
+    assert WORKER_DUB_LOCALES == ("en", "ja", "ko")
+    assert IMPORTED_DUB_LOCALES == ("es", "pt", "id", "vi", "th")
+    assert DUB_LOCALES == (*WORKER_DUB_LOCALES, *IMPORTED_DUB_LOCALES)
 
 
 @pytest.mark.asyncio
@@ -123,18 +124,20 @@ async def test_an_imported_video_chooses_eight_languages_and_its_batch_reads_rea
 
 
 @pytest.mark.asyncio
-async def test_a_pipeline_video_keeps_three_languages_and_refuses_the_five(site: Site) -> None:
+async def test_a_pipeline_video_refuses_a_dub_in_the_five(site: Site) -> None:
     await _seed(site, imported=False)
-    assert (await _view(site)).locale_options == ["en", "ja", "ko"]
+    assert (await _view(site)).locale_options == list(DUB_LOCALES)
     with pytest.raises(AppError) as refused:
-        await _save(site, {"en": EVERYTHING, "es": {"metadata": True}, "th": {"captions": True}})
+        await _save(site, {"en": EVERYTHING, "es": EVERYTHING, "th": {"dub": True}})
     assert refused.value.status == 422
-    assert refused.value.code == "video_locales_imported_only"
+    assert refused.value.code == "video_locales_dub_imported_only"
     assert "es、th" in refused.value.detail
     assert (await _view(site)).locales_decided_at is None, "nothing was stored"
 
-    saved = await _save(site, {"ko": EVERYTHING, "en": {"metadata": True}})
-    assert list(saved.locales) == ["en", "ko"], "en, ja and ko behave as before"
+    saved = await _save(
+        site, {"ko": EVERYTHING, "en": {"metadata": True}, "th": {"captions": True}}
+    )
+    assert list(saved.locales) == ["en", "ko", "th"], "titles and captions in the five are fine"
 
 
 @pytest.mark.asyncio

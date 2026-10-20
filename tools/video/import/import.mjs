@@ -23,7 +23,7 @@ import { locateFfmpeg, runTool } from "../assemble/ffmpeg.mjs";
 import { ebur128Args, HEIGHT, LOUDNESS, LOUDNESS_TOLERANCE, parseEbur128, probeArgs, WIDTH } from "../assemble/plan.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { LOCALES, NARRATION_LOCALE, VIDEO_CATEGORIES } from "../core/schema.mjs";
+import { TARGET_LOCALES, NARRATION_LOCALE, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { FPS, formatClock } from "../core/timeline.mjs";
 import { previewArgs } from "../review/sync.mjs";
 import { upload } from "../shorts/push.mjs";
@@ -205,12 +205,12 @@ export async function importLong({ from, workdir, env = process.env, home, force
   return { slug: meta.slug, status: review.status, seconds, problems };
 }
 
-// The languages an imported video may carry besides zh-TW, in the panel's order: the pipeline's
-// three (core/schema.mjs LOCALES) and the five the owner added on 2026-10-18 for 種田娶妻打天下,
-// which only an imported video may choose (apps/api/app/video_reviews/schemas.py
-// IMPORTED_LOCALES; docs/videos/LANGUAGES.md). The files keep the site's short codes: es is
-// Latin-American Spanish and pt Brazilian Portuguese.
-export const IMPORT_LOCALES = Object.freeze([...LOCALES.filter((each) => each !== NARRATION_LOCALE), "es", "pt", "id", "vi", "th"]);
+// The languages an imported video may carry besides zh-TW, in the panel's order: every one a
+// video can carry (core/schema.mjs TARGET_LOCALES), en, ja and ko and the five the owner added on
+// 2026-10-18 for 種田娶妻打天下 (docs/videos/LANGUAGES.md). Since 2026-10-20 the worker makes the
+// five's captions and titles too; their dubs are still made only outside the pipeline. The files
+// keep the site's short codes: es is Latin-American Spanish and pt Brazilian Portuguese.
+export const IMPORT_LOCALES = Object.freeze(TARGET_LOCALES.filter((each) => each !== NARRATION_LOCALE));
 
 // The audio types the review store takes for a dub track, as review-push sends them (review/sync.mjs DUB_TYPES).
 const DUB_TYPES = { m4a: "audio/mp4", mp3: "audio/mpeg", wav: "audio/wav" };

@@ -43,8 +43,8 @@
 | `video_projects.locales_decided_at` | 站主第一次儲存語言面板的時間（含「只出繁體中文」）；`null` 就是還沒決定 |
 | `video_projects.dub_locales` | 不再讀寫；遷移把它搬進 `locales`（三個部件都 true），欄位留著不刪（同 `subscription_max_usage_percent` 的做法） |
 | 遷移 | 已在 YouTube 上的、或 `dub_locales` 非空的影片，`locales_decided_at` 設成遷移時間；其餘留 `null`，站主要決定一次 |
-| `PUT /admin/videos/{slug}/languages` | `{"locales": {…}}`；收 en、ja、ko，匯入的影片另收 es、pt、id、vi、th（其他影片 422 `video_locales_imported_only`，見下面「匯入影片的另外五種語言」）；勾 dub 就強制 captions；觀念解說（`explainer`）可選，品牌故事（`story`）可在成片前預選且只寫入選擇；其他漫劇拒收 dub（422 `video_locales_dub_not_for_drama`）；寫 `locales_decided_at`（第一次）與 audit `video_locales_set`；已放棄的影片拒絕。取代 `PUT …/dubs` |
-| `ProjectSummary`／`ProjectOut` | 帶 `locales`、`locale_options`（面板列哪些語言：en、ja、ko，匯入的影片再加五種）、`locales_decided_at`、`languages`（每個語言每個部件 `ready`｜`working`｜`skipped: <原因>`｜`uploaded`，伺服器從還算數的 `languages` 審核算出：等站主的與已核准的，舊到新，後面的批次蓋過前面的；被退回、被取代的不算）；工人從既有的影片清單就看得到。2026-10-10 起多兩欄 `dub_retries`、`dub_retry_blocked`（下面「跳過的配音再做一次」） |
+| `PUT /admin/videos/{slug}/languages` | `{"locales": {…}}`；收 en、ja、ko、es、pt、id、vi、th 的標題說明與 CC；es、pt、id、vi、th 的配音只收匯入的影片（其他影片 422 `video_locales_dub_imported_only`，見下面「產線影片的另外五種語言」）；勾 dub 就強制 captions；觀念解說（`explainer`）可選，品牌故事（`story`）可在成片前預選且只寫入選擇；其他漫劇拒收 dub（422 `video_locales_dub_not_for_drama`）；寫 `locales_decided_at`（第一次）與 audit `video_locales_set`；已放棄的影片拒絕。取代 `PUT …/dubs` |
+| `ProjectSummary`／`ProjectOut` | 帶 `locales`、`locale_options`（面板列哪些語言：2026-10-20 起每支影片都是八種）、`locales_decided_at`、`languages`（每個語言每個部件 `ready`｜`working`｜`skipped: <原因>`｜`uploaded`，伺服器從還算數的 `languages` 審核算出：等站主的與已核准的，舊到新，後面的批次蓋過前面的；被退回、被取代的不算）；工人從既有的影片清單就看得到。2026-10-10 起多兩欄 `dub_retries`、`dub_retry_blocked`（下面「跳過的配音再做一次」） |
 | `ProjectOut` 的故事配音旗標 | `story_dub_preselectable` 表示可在後台先儲存品牌故事配音意向；`dub_allowed` 表示目前成片已通過綁定雜湊的完整無燒錄字幕 QA，可開始製作。後者只供 worker 讀取，缺值視為不准製作 |
 | 審核 gate `languages` | 取代 `dubs`（`Gate` 留著 `dubs` 讓舊列讀得出來，CHECK 加 `languages`）。payload `{ locales: { en: { metadata: "ready", captions: "ready", dub: "ready" }, ja: { …, dub: "skipped", reason } } }`，檔案：說明欄 `.txt`、字幕 `.srt`、音軌（role `dub_<locale>`，m4a、mp3 或 wav，照配音做出來的格式），加上當下的 `metadata.json`（role `metadata`）與綁定核准來源的語言清單（role `languages_manifest`，雜湊就是審核的 content hash；YouTube 同步只收有這兩份的批次，見 [`APPROVED-LANGUAGE-PACKAGE.md`](APPROVED-LANGUAGE-PACKAGE.md)）。配音做好的語言，那一格旁邊還可能有 `kept_lines`（句子 id 的陣列：重錄塞不進視窗、沿用原本那次錄音的句子，`DUBS.md` 的 `--keep-fitting`）。**沒有配音的批次伺服器直接核准**（沒有站主要做的事）；有配音的等站主在 Studio 上傳後按「已上傳」 |
 | `video_projects.dub_retries` | JSON（不是 jsonb），預設 `{}`，migration 0131。每個語言一筆，只留最新的那次「再做一次」要求與它怎麼結束，見下面「跳過的配音再做一次」 |
@@ -155,13 +155,33 @@
 
 | 規則 | 做法 |
 | --- | --- |
-| 只開給匯入的影片 | 報告的 checklist 有 `imported`（`tools/video/import` 寫的）的影片，`locale_options` 是八種；其他影片仍是 en、ja、ko，`PUT …/languages` 收到五語回 422 `video_locales_imported_only`。工人不會翻譯、配音這五種（`tools/video/core/schema.mjs` 的 `LOCALES` 沒變），開給產線影片只會讓那幾格永遠「尚未完成」 |
+| 開給誰 | 2026-10-18 只開給報告的 checklist 有 `imported`（`tools/video/import` 寫的）的影片；2026-10-20 起標題說明與 CC 開給每支影片（下一節），配音仍只開給匯入的影片 |
 | 檔案怎麼上站 | `import --from DIR --languages` 照勾的部件送 `description.<l>.txt`、`<l>.srt`、`dub.<l>.m4a`，跟英日韓同一批（hand_pushed，站主核准） |
-| 預設與費用 | 設定分頁的預先勾選（`caption_locales`、`drama_caption_locales`）、Shorts 的語言、自動產線都不變：不多花翻譯或語音的錢 |
-| 再做一次 | 只收 en、ja、ko：配音是工人重做的，這五種沒有工人 |
+| 預設與費用 | 2026-10-18 時設定分頁的預先勾選、Shorts 的語言、自動產線都不變；2026-10-20 的改動見下一節 |
+| 再做一次 | 只收 en、ja、ko：配音是工人重做的，工人還不做這五種的配音 |
 | 旁白語言 | 仍只能是 zh-TW、en、ja、ko |
 | YouTube 上的代碼 | 網站存短代碼，送 YouTube 時 es → `es-419`、pt → `pt-BR`，其餘照寫（`apps/api/app/video_youtube/requests.py` `YOUTUBE_LANGUAGES`；字幕與 `localizations` 都是） |
 | 標題的字幕字樣 | 各語言的在地搜尋詞：es「｜CC」、pt「｜Legendado」、id「｜Sub Indo」、vi「｜Vietsub」、th「｜ซับไทย」（`CAPTION_TAGS`）。已經寫了「配音＋字幕」的標題（例如合集的「Dub + Sub Indo」）原樣保留；英日韓的規則不變 |
+
+## 產線影片的另外五種語言（2026-10-20）
+
+站主 2026-10-20 決定讓工人也做 es、pt、id、vi、th，分三期（票 `2026-10-19-worker-video-languages-five`，計畫、上限的位置與成本都在票裡）：第一期標題說明與 CC，第二期配音（先做 pt 與 th 各一支），第三期 Shorts。這一節寫第一期做了什麼。
+
+| 規則 | 做法 |
+| --- | --- |
+| 哪些影片 | 每個分類都有：品牌故事、解說與教學、漫劇。漫劇只有標題說明與 CC（多角色配音仍是 `DUBS.md` 的第二期） |
+| 面板與 API | `locale_options` 每支影片都是八種；產線影片勾五語的標題說明與 CC 會收，勾五語的配音回 422 `video_locales_dub_imported_only`（匯入的影片照舊都收）；再做一次配音仍只收 en、ja、ko |
+| 設定分頁的預先勾選 | 站主的決定：`caption_locales` 與 `drama_caption_locales` 預先勾八種的標題說明與 CC，配音永遠不預先勾。資料遷移把正式站已存的設定改成八種；改了只影響面板打開時勾什麼，存檔之前什麼都不會做。品牌故事的語言由伺服器照 `drama_caption_locales` 決定，所以之後的品牌故事會做八種的標題說明與 CC |
+| 語言清單 | `tools/video/core/schema.mjs` 把舊的 `LOCALES` 拆成兩個：`NARRATION_LOCALES`（zh-TW、en、ja、ko：旁白與配音只能是這四種）與 `TARGET_LOCALES`（再加五種：翻譯、CC、標題說明、語言縮圖）。沒有選擇的影片（面板之前的上傳包、手動跑、範例）與合集照舊只做四種（`DEFAULT_LOCALES`） |
+| 翻譯 | 翻譯、字幕審稿、縮短、改寫四段提示各語言都有語氣與每句長度：es 中性拉美西文用 tú（不用 vosotros、不用 voseo）、pt 巴西葡文用 você、id 雅加達日常印尼文用 kamu、vi 河內標準越文用 bạn、th 曼谷泰文，旁白是女聲，句尾的 ค่ะ／นะคะ 少量用、不用 ครับ；西葡印越每句約 80 字，泰文約 60 字（不算寫在字母上下的母音與聲調符號） |
+| 文字檢查 | `i18n-merge` 檢查每句、標題、說明、章節名用的是那個語言的文字：拉丁字母的語言不能有漢字、假名、諺文或泰文；泰文要有泰文；日、韓、繁中也一樣。產品名照原文的拉丁字母不算錯。不合的句子不併入，工人重問那一段 |
+| CC | 西葡印越每行 42 字、兩行、每秒 17 字；泰文每行 35 字、兩行、每秒 15 字。泰文詞與詞之間沒有空格，斷行用 `Intl.Segmenter` 找詞界、優先斷在空格（泰文用空格分句）；寬度不算母音與聲調符號（U+0E31、U+0E34–0E3A、U+0E47–0E4E），越文分解寫法的聲調符號也不算 |
+| 標題與說明 | 說明欄的段落標題（章節、完整文章、參考資料、圖片來源）五語各一套；標題的字幕字樣同上一節；合集的章節後備名稱 Episodio n、Episódio n、Episode n、Tập n、ตอนที่ n |
+| 語言縮圖 | 泰文用新加的 Noto Sans Thai（`@fontsource-variable/noto-sans-thai`，`ops/video/package.json` 也加了）；西葡印越用 Noto Sans TC 本來就有的拉丁與越南文字集 |
+| VPS 上傳器 | Studio 下拉選單的名稱：Spanish (Latin America)、Portuguese (Brazil)、Indonesian、Vietnamese、Thai，還沒在真的 Studio 對過；一次最多 20 個檔（成片、縮圖、九種 CC、八條配音） |
+| 第一期沒做的 | 五語的配音（語速、配音語氣、伺服器的聽寫提示、Whisper 的語言、越文聲調的比對）、月額度調高、Shorts、合集的五語 |
+
+試做：一支做好的影片勾五語的標題說明與 CC，泰文與越文的 CC 先請懂的人（或另一個模型）看過，再讓面板大量勾。
 
 ## 上架流程：一張卡、五個狀態
 
@@ -223,3 +243,4 @@
 
 - 2026-10-09：站主把 zh-CN 從影片的語言拿掉（「預計四語就好」）：一支影片是 zh-TW 旁白，可加 en、ja、ko 三種語言的標題說明、CC 與配音。已經在 YouTube 上掛了 zh-CN 標題或字幕的影片照舊留著，站只會加、不會刪。網站本身仍是五個語系（文章、介面、`apps/api/app/i18n.py`），影片的語言表不再跟它（`tools/video/core/schema.mjs` 的 `LOCALES`）。
 - 2026-10-19：匯入的影片可以另外加 es、pt、id、vi、th（上面「匯入影片的另外五種語言」）；自動產線仍是 zh-TW 加 en、ja、ko。
+- 2026-10-20：工人也做 es、pt、id、vi、th 的標題說明與 CC，每個分類都有；設定分頁預先勾八種（上面「產線影片的另外五種語言」）。配音是第二期。

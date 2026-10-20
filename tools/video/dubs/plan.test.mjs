@@ -6,7 +6,7 @@ import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
 import { enBrief, enFixture, fixture, fixtureBrief, fixtureLexicon } from "../core/fixtures/load.mjs";
-import { eachLine, LOCALES, textHash } from "../core/schema.mjs";
+import { eachLine, NARRATION_LOCALES, textHash } from "../core/schema.mjs";
 import { dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
 import { estimateTimeline, FPS, framesFor, msToSamples, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash } from "../core/timeline.mjs";
 import { checkFiles, dubLexicon as checkerDubLexicon, lexiconFor, spokenForm } from "../tts/check.mjs";
@@ -60,7 +60,7 @@ test("only full letter spellings of non-capitalized words lose their alias outsi
   assert.deepEqual(dubLexicon(undefined).terms, {});
 });
 
-for (const locale of LOCALES) {
+for (const locale of NARRATION_LOCALES) {
   test(`${locale} request text and checked spoken form use the same pronunciation`, () => {
     const selected = speechLexicon(RAW, locale);
     const [request] = planRequests(script(WORDS), selected);

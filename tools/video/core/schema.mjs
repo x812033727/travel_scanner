@@ -17,13 +17,24 @@ import { localizationPlanProblems } from "../production/retention.mjs";
 export const SCHEMA_VERSION = 1;
 // drama: AI-generated shots instead of slides (docs/videos/DRAMA.md); its rules live in drama.mjs.
 export const FORMATS = ["slides", "screencast", DRAMA_FORMAT];
-// The languages a video can carry (docs/videos/LANGUAGES.md): zh-TW is the narration language,
-// the other three are the ones the owner may add. The site itself has five locales
-// (apps/api/app/i18n.py, with zh-CN); the owner dropped zh-CN from videos on 2026-10-09.
-export const LOCALES = ["zh-TW", "en", "ja", "ko"];
+// The languages a video can be narrated (and dubbed) in (docs/videos/LANGUAGES.md): zh-TW, the
+// channel's own, and en, ja and ko, the four the owner fixed on 2026-10-09. The site itself has
+// five locales (apps/api/app/i18n.py, with zh-CN); the owner dropped zh-CN from videos then.
+export const NARRATION_LOCALES = ["zh-TW", "en", "ja", "ko"];
+// The languages a video can carry captions, a title and a description in: the four, and the
+// five the owner added on 2026-10-20 for every pipeline video (es-419 Latin-American Spanish,
+// pt-BR Brazilian Portuguese, Indonesian, Vietnamese, Thai; YouTube gets es and pt under the
+// tags apps/api/app/video_youtube/requests.py YOUTUBE_LANGUAGES gives them). A translation, a
+// caption file, a localized title or thumbnail can be in any of these; a narration or a dub only
+// in NARRATION_LOCALES (dubs in the five are phase two of the 2026-10-19 worker-languages task).
+export const TARGET_LOCALES = [...NARRATION_LOCALES, "es", "pt", "id", "vi", "th"];
+// What a video is made in when nobody chose its languages (a package from before the language
+// panel, a hand run outside the site, the examples), and what a compilation's captions and titles
+// are made in: the four, as before the five joined. Only a choice on the site asks for the five.
+export const DEFAULT_LOCALES = [...NARRATION_LOCALES];
 export const NARRATION_LOCALE = "zh-TW";
 /** The locale a video is narrated in: its `narration_locale`, zh-TW when it has none or an unknown one. */
-export const narrationLocale = (doc) => (LOCALES.includes(doc?.narration_locale) ? doc.narration_locale : NARRATION_LOCALE);
+export const narrationLocale = (doc) => (NARRATION_LOCALES.includes(doc?.narration_locale) ? doc.narration_locale : NARRATION_LOCALE);
 export const TEMPLATES = [
   "title",
   "chapter",
@@ -321,8 +332,8 @@ export function validateVideo(doc) {
     errors.push({ path: "slug", message: "must be lowercase words joined by hyphens" });
   }
   if (!FORMATS.includes(doc.format)) errors.push({ path: "format", message: `must be one of ${FORMATS.join(", ")}` });
-  if (doc.narration_locale !== undefined && !LOCALES.includes(doc.narration_locale)) {
-    errors.push({ path: "narration_locale", message: `must be one of ${LOCALES.join(", ")}; leave it out for ${NARRATION_LOCALE}` });
+  if (doc.narration_locale !== undefined && !NARRATION_LOCALES.includes(doc.narration_locale)) {
+    errors.push({ path: "narration_locale", message: `must be one of ${NARRATION_LOCALES.join(", ")}; leave it out for ${NARRATION_LOCALE}` });
   }
   const locale = narrationLocale(doc);
   if (doc.localization_plan !== undefined) {

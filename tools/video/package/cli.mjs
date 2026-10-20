@@ -15,7 +15,7 @@ import { compilationChecksCurrent, isCompilation } from "../core/compilation.mjs
 import { COMPILATION_REVIEW_FILE, publicTexts, reviewCurrent } from "../core/compilation-review.mjs";
 import { illustrated, isDrama, keyframesHash, lookHash, mixHash, sfxHash, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { LOCALES, NARRATION_LOCALE, narrationLocale } from "../core/schema.mjs";
+import { DEFAULT_LOCALES, NARRATION_LOCALE, narrationLocale, TARGET_LOCALES } from "../core/schema.mjs";
 import { captionLocalesOf, dubLocalesOf, dubsForUpload, metadataLocalesOf, readLanguages, runCaptions } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, loadProject, recordStage } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
@@ -30,7 +30,7 @@ import { localeThumbnailFile } from "../render/plan.mjs";
  * the captions stage left out (missing or older than zh-TW), or that no translation exists at
  * all. The package check accepts either as a reason. `locales` are the caption locales wanted.
  */
-export function skippedCaptionLocales(manifest, written, { locales = LOCALES, compilation = false } = {}) {
+export function skippedCaptionLocales(manifest, written, { locales = DEFAULT_LOCALES, compilation = false } = {}) {
   const skipped = {};
   for (const locale of locales) {
     if (written.includes(`captions/${locale}.srt`)) continue;
@@ -223,7 +223,7 @@ export async function run(command, args, ctx) {
   const variants = thumbnail ? thumbnailVariants(frames) : [];
   for (const file of variants) if (existsSync(path.join(workdir, file))) copyFileSync(path.join(workdir, file), path.join(upload, file));
   // Each other language's own thumbnail, for Studio's 「語言」 page; it sits beside thumbnail.jpg there.
-  const youtubeLocales = LOCALES.filter((locale) => locale !== narration && (captionLocales.includes(locale) || metadataLocales?.includes(locale) || dubLocales.includes(locale)));
+  const youtubeLocales = TARGET_LOCALES.filter((locale) => locale !== narration && (captionLocales.includes(locale) || metadataLocales?.includes(locale) || dubLocales.includes(locale)));
   const localized = thumbnail ? localeThumbnails({ doc, translations: project.translations, manifest: frames, workdir, locales: youtubeLocales }) : { files: {}, skipped: {} };
   for (const file of Object.values(localized.files)) {
     mkdirSync(path.join(upload, path.dirname(file)), { recursive: true });

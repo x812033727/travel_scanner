@@ -49,25 +49,33 @@ ContentType = Literal[
     "application/json",
 ]
 YOUTUBE_VIDEO_ID_PATTERN = r"^[A-Za-z0-9_-]{11}$"
-# The languages a video can be made in besides zh-TW, in the order the page lists them. The
-# owner decided on 2026-10-09 that a video's languages are four: narrated in zh-TW, with en, ja
-# and ko to add; the site keeps its five locales, the videos do not. These three are the ones
-# the worker makes (tools/video/core/schema.mjs LOCALES).
-WorkerLocale = Literal["en", "ja", "ko"]
-WORKER_LOCALES: tuple[WorkerLocale, ...] = get_args(WorkerLocale)
+# The languages a video can be made in besides zh-TW, in the order the page lists them
+# (docs/videos/LANGUAGES.md). The owner decided on 2026-10-09 that a video's languages are
+# zh-TW narration plus en, ja and ko; the site keeps its five locales, the videos do not. These
+# three are the ones the worker also dubs and narrates in (tools/video/core/schema.mjs
+# NARRATION_LOCALES), so a dub retry and a package's narration language are one of them.
+WorkerDubLocale = Literal["en", "ja", "ko"]
+WORKER_DUB_LOCALES: tuple[WorkerDubLocale, ...] = get_args(WorkerDubLocale)
 # On 2026-10-18 the owner added Latin-American Spanish, Brazilian Portuguese, Indonesian,
-# Vietnamese and Thai for 種田娶妻打天下, an imported series whose dubs, CC and titles are made
-# outside the pipeline. Only a video ``tools/video/cli.mjs import`` put on the site may choose
-# them (``locale_options``): the worker makes none of them. YouTube gets each under its own tag
-# (app/video_youtube/requests.py YOUTUBE_LANGUAGES).
-ImportedLocale = Literal["es", "pt", "id", "vi", "th"]
-IMPORTED_LOCALES: tuple[ImportedLocale, ...] = get_args(ImportedLocale)
-DubLocale = Literal[WorkerLocale, ImportedLocale]
-DUB_LOCALES: tuple[DubLocale, ...] = (*WORKER_LOCALES, *IMPORTED_LOCALES)
+# Vietnamese and Thai, first for 種田娶妻打天下, an imported series made outside the pipeline.
+# On 2026-10-20 they opened them to every video: the worker makes their titles, descriptions
+# and captions (tools/video/core/schema.mjs TARGET_LOCALES), but not yet their dubs (phase two
+# of tasks/open/2026-10-19-worker-video-languages-five.md). So a dub in one of these comes only
+# from ``tools/video/cli.mjs import``, and the panel refuses it on any other video. YouTube gets
+# each under its own tag (app/video_youtube/requests.py YOUTUBE_LANGUAGES).
+ImportedDubLocale = Literal["es", "pt", "id", "vi", "th"]
+IMPORTED_DUB_LOCALES: tuple[ImportedDubLocale, ...] = get_args(ImportedDubLocale)
+# Every language a video may add, whatever of it is made: the panel's rows, a stored choice's
+# keys and a languages batch's locales.
+DubLocale = Literal[WorkerDubLocale, ImportedDubLocale]
+DUB_LOCALES: tuple[DubLocale, ...] = (*WORKER_DUB_LOCALES, *IMPORTED_DUB_LOCALES)
+# What the worker makes titles, descriptions and captions in: all of them, for every category
+# (``admin_service.locale_options``).
+WORKER_CAPTION_LOCALES: tuple[DubLocale, ...] = DUB_LOCALES
 
 
-def _worker_locales() -> list[DubLocale]:
-    return [*WORKER_LOCALES]
+def _worker_caption_locales() -> list[DubLocale]:
+    return [*WORKER_CAPTION_LOCALES]
 
 
 # The checklist key tools/video/import reports on a video it put on the site (import.mjs IMPORTED).
@@ -360,9 +368,10 @@ class ProjectSummary(BaseModel):
     locales_decided_at: datetime | None = None
     languages: dict[DubLocale, dict[LocalePart, LanguagePartOut]] = Field(default_factory=dict)
     ready_to_upload: bool = False
-    # The languages the panel offers this video, in its order: en, ja and ko, and for an imported
-    # video the five made outside the pipeline as well (IMPORTED_LOCALES).
-    locale_options: list[DubLocale] = Field(default_factory=_worker_locales)
+    # The languages the panel offers this video, in its order: all eight for every video
+    # (WORKER_CAPTION_LOCALES); a dub in es, pt, id, vi or th only on an imported one
+    # (IMPORTED_DUB_LOCALES).
+    locale_options: list[DubLocale] = Field(default_factory=_worker_caption_locales)
     # The owner's requests to make a skipped dub again (migration 0131): the latest per locale,
     # only for a dub that is chosen now; and, for a chosen dub that reads skipped with no open
     # request, why it cannot be asked for again. Both empty for a Short.

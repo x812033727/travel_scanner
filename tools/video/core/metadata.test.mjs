@@ -181,7 +181,15 @@ test("every title ends with its language's captions tag, added once", () => {
   assert.equal(withCaptionTag("AI 모델 고르기", "ko"), "AI 모델 고르기｜CC 자막");
   assert.equal(withCaptionTag("AI 模型怎麼挑｜CC字幕 ", "zh-TW"), "AI 模型怎麼挑｜CC字幕", "not twice");
   assert.equal(withCaptionTag("t", "fr"), "t｜CC Subtitles", "an untabled locale reads the English tag");
-  assert.deepEqual(Object.keys(CAPTION_TAGS).sort(), ["en", "ja", "ko", "zh-TW"]);
+  assert.deepEqual(Object.keys(CAPTION_TAGS).sort(), ["en", "es", "id", "ja", "ko", "pt", "th", "vi", "zh-TW"]);
+  // es, pt, id, vi and th (2026-10-20): the word viewers search for subtitled videos in each.
+  assert.equal(withCaptionTag("Cómo elegir un modelo", "es"), "Cómo elegir un modelo｜CC");
+  assert.equal(withCaptionTag("Como escolher um modelo", "pt"), "Como escolher um modelo｜Legendado");
+  assert.equal(withCaptionTag("Cara memilih model", "id"), "Cara memilih model｜Sub Indo");
+  assert.equal(withCaptionTag("Cách chọn mô hình", "vi"), "Cách chọn mô hình｜Vietsub");
+  assert.equal(withCaptionTag("วิธีเลือกโมเดล", "th"), "วิธีเลือกโมเดล｜ซับไทย");
+  assert.equal(withCaptionTag("วิธีเลือกโมเดล｜ซับไทย", "th"), "วิธีเลือกโมเดล｜ซับไทย", "not twice");
+  assert.equal(withCaptionTag("Cara memilih model | Sub Indo", "vi"), "Cara memilih model｜Vietsub", "another language's tag is replaced");
   // A tag added by hand, or in another language, is replaced rather than added to.
   assert.equal(withCaptionTag("Area 51｜ CC字幕", "en"), "Area 51｜CC Subtitles");
   assert.equal(withCaptionTag("51 區｜ CC字幕｜CC字幕", "zh-TW"), "51 區｜CC字幕");

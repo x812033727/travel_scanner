@@ -11,7 +11,7 @@ import { lintProject, loadProject } from "../core/state.mjs";
 import { estimateTimeline, speechHash } from "../core/timeline.mjs";
 import { localizedThumbnail, sourceHashes, thumbnailGap, thumbnailSourceHash, thumbnailStatus } from "../core/translations.mjs";
 import { cuePieces } from "../core/captions.mjs";
-import { buildSheet, CONTEXT_KEYS, mergeSheet, sheetContext, sheetTodo, translationContext, withoutContext } from "./cli.mjs";
+import { buildSheet, CONTEXT_KEYS, mergeSheet, scriptProblem, sheetContext, sheetTodo, translationContext, withoutContext } from "./cli.mjs";
 
 function context(box) {
   const out = { stdout: "", stderr: "" };
@@ -356,4 +356,32 @@ test("i18n-sheet carries the glossary and the narration's cue boundaries, says s
   const plain = buildSheet(project.doc, null, "en");
   assert.equal("glossary" in plain || "boundaries" in plain, false);
   assert.doesNotMatch(plain.note, /glossary/);
+});
+
+test("a translation into es, pt, id, vi or th in another language's script is not merged; product names in Latin letters are", () => {
+  // Latin-letter locales carry no Chinese, kana, Hangul or Thai.
+  assert.equal(scriptProblem("es", "Elige el modelo con tres preguntas.", "用三個問題挑模型。"), null);
+  assert.match(scriptProblem("es", "用三個問題挑模型。", "用三個問題挑模型。"), /another language's script; es is written in Latin letters/);
+  assert.match(scriptProblem("vi", "Chọn mô hình 모델", "挑模型"), /another language's script/);
+  assert.match(scriptProblem("pt", "Escolha o modelo ค่ะ", "挑模型"), /another language's script/);
+  // Thai must be in Thai script, unless the source carried nothing but names and numbers.
+  assert.equal(scriptProblem("th", "เลือกโมเดลด้วยสามคำถามค่ะ", "用三個問題挑模型。"), null);
+  assert.match(scriptProblem("th", "Choose the model with three questions.", "用三個問題挑模型。"), /not written in Thai script, as th is/);
+  assert.match(scriptProblem("th", "เลือก模型", "挑模型"), /another language's script; th is written in Thai script/);
+  assert.equal(scriptProblem("th", "Gemini 3.5 Flash", "Gemini 3.5 Flash。"), null, "a line that is a product name alone");
+  assert.equal(scriptProblem("th", "ChatGPT", "ChatGPT", { need: false }), null);
+  // The locales from before keep merging as they did.
+  for (const locale of ["en", "ja", "ko", "zh-TW"]) assert.equal(scriptProblem(locale, "EN line", "用三個問題挑模型。"), null);
+
+  const doc = fixture();
+  const ids = [...eachLine(doc)].map(({ line }) => line.id);
+  const sheet = filled(buildSheet(doc, null, "th"));
+  const thai = { ...sheet, title: { ...sheet.title, text: "วิธีเลือกโมเดล AI" }, description: { ...sheet.description, text: "สามคำถามก่อนดูอันดับ" }, chapters: sheet.chapters.map((chapter) => ({ ...chapter, text: `บท ${chapter.scene}` })), lines: sheet.lines.map((line, index) => ({ ...line, text: index === 0 ? line.source : `บรรทัด ${line.id}` })) };
+  const { translation, problems } = mergeSheet(doc, thai, null);
+  assert.deepEqual(problems, [`${ids[0]}: written with another language's script; th is written in Thai script`], "the line left in Chinese, and only it");
+  assert.equal(translation.lines[ids[0]], undefined);
+  assert.equal(translation.lines[ids[1]].text, `บรรทัด ${ids[1]}`);
+  const english = mergeSheet(doc, sheet, null);
+  assert.ok(english.problems.includes("title: not written in Thai script, as th is"), "an English title on a th sheet");
+  assert.ok(english.problems.some((problem) => problem.startsWith(`${ids[1]}: not written in Thai script`)));
 });
