@@ -169,16 +169,23 @@ const cueRemap = [
   [0, 0, 1, 2, 5, 4, 6, 7, 8, 9, 10, 11, 12, 12, 13, 15, 16, 17, 18, 19, 21, 22, 23, 23],
   [1, 0, 1, 2, 3, 4, 7, 8, 9, 11, 10, 12, 12, 13, 14, 15, 5, 5, 6, 17, 18, 21, 22],
 ];
-// V5 removes repeated exposition. Keep the approved anonymous cue for each
-// surviving line, including its meaning-based override, at its former index.
+// V6 preserves the scene indices while replacing exposition with a single
+// illustrative cancellation and more direct callbacks. Surviving shots keep
+// their previous anonymous cue unless a meaning-based override replaces it.
 const removedOldRows = [[], [13, 18, 20], [4, 16, 17, 18], [13], [2, 6, 18, 23], [2, 4, 11, 18]];
 const activeIndices = cueRemap.map((chapter, index) => chapter.map((_, oldIndex) => oldIndex).filter(oldIndex => !removedOldRows[index].includes(oldIndex)));
 const overrides = new Map([
-  ["0:1", "an anonymous traveler packs a small suitcase while an anonymous lodging host keeps a plain unused room key beside a blank calendar"],
-  ["0:5", "an anonymous office manager studies a sealed budget folder while an unmarked guest calendar and an unused key wait on the desk"],
-  ["0:6", "an anonymous traveler pauses over several unmarked routes and a closed calendar, undecided where the next booking will go"],
-  ["0:7", "an anonymous archivist keeps a sealed year-end report above a tray of mixed lodging and activity tokens whose identities cannot yet be seen"],
-  ["1:0", "an anonymous booking clerk delivers a plain cancellation notice to a traveler while a lodging host studies the planned check-in square"],
+  ["0:0", "an anonymous traveler removes one reservation tile from a late-month square on an unlettered lodging calendar, a suitcase set beside the table"],
+  ["0:1", "an anonymous lodging host looks at one fresh cancellation notification icon without readable text beside a plain unused key and the same unlettered calendar"],
+  ["0:3", "an anonymous traveler holds an unmarked refund request card while the host holds an unmarked cancellation-policy envelope on opposite sides of the vacant square"],
+  ["0:4", "an anonymous finance clerk works with a closed loan folder beside the vacant booking calendar, with no figures or signatures visible"],
+  ["0:5", "an anonymous office manager looks over a thinning row of staff desk tokens, keeping a separate host key token outside the row"],
+  ["0:6", "an anonymous product planner rearranges unlabeled lodging tiles on a blank search board as a traveler narrows an unlettered map"],
+  ["0:7", "an anonymous traveler hesitates with one booking tile above an unlettered calendar while an anonymous host leaves an available key beside it"],
+  ["0:8", "an anonymous booking clerk holds a guest suitcase token and a host key token above one still-open path toward the unlettered calendar"],
+  ["1:0", "an anonymous lodging host studies the already vacant check-in square beside a plain unused key and a small cancellation-policy envelope"],
+  ["1:1", "an anonymous traveler and lodging host wait on opposite sides of the same unmarked cancellation request board"],
+  ["1:3", "an anonymous accountant keeps an unrecognized service-fee envelope beside a vacant check-in square on the recurring unlettered calendar"],
   ["2:4", "an anonymous records clerk keeps a guest-refund tray apart from a host-support tray on opposite sides of a blank calendar"],
   ["2:8", "an anonymous host-support clerk selects a narrow band of blank check-in calendar squares beside a plain host key"],
   ["2:25", "an anonymous office finance clerk studies an empty booking calendar and a closed budget folder beside a plain room key"],
@@ -189,7 +196,8 @@ const overrides = new Map([
   ["3:18", "an anonymous records clerk studies a diminished booking pile beside a covered year-end board of mixed lodging and activity listing tokens"],
   ["3:20", "an anonymous auditor compares two year-end boards of mixed lodging and activity tokens, with individual listings impossible to match"],
   ["3:21", "an anonymous auditor looks at two equally tall piles of mixed blank listing tiles whose individual identities remain hidden"],
-  ["3:22", "an anonymous support worker keeps a small host-support envelope apart from a mixed lodging-and-activity listing board"],
+  ["3:22", "an anonymous auditor opens a whole-year loss ledger while keeping a small canceled-booking pile separate from the ledger"],
+  ["3:25", "an anonymous auditor studies a whole-year loss ledger with one isolated blank warrant-valuation column, keeping canceled-booking tokens in a separate tray"],
   ["4:22", "an anonymous route planner studies a muted international route while a long availability ribbon remains on the booking calendar"],
   ["4:10", "an anonymous traveler stretches a lodging ribbon across at least seven nights of unmarked calendar squares, including exactly seven nights"],
   ["4:20", "an anonymous analyst keeps a long-stay availability ribbon apart from a muted cross-border route line on a blank map"],
@@ -197,8 +205,10 @@ const overrides = new Map([
   ["4:23", "an anonymous records clerk opens the next blank quarterly nights-booked report beside a route map, with no figures visible"],
   ["5:0", "an anonymous traveler traces a longer route on a blank map toward a simple lodging pin"],
   ["5:16", "an anonymous accountant opens a sealed annual earnings folder beside a changed route map"],
-  ["5:15", "an anonymous records clerk compares earlier and later boards of mixed lodging and activity tokens without identifying the same provider"],
+  ["5:15", "an anonymous records clerk holds a year-end board of mixed lodging and activity listing tokens apart from a separate tray of completed booking tiles"],
   ["5:12", "an anonymous booking clerk places a long-stay ribbon and a cross-border route token in different parts of the same blank calendar"],
+  ["5:8", "an anonymous traveler moves one blank route marker across a border shown only as a plain line on an unlettered map, a small suitcase beside the map"],
+  ["5:19", "an anonymous booking clerk holds the original empty calendar beside a later calendar with separate guest and host tokens approaching one open square"],
 ]);
 
 if (cueRemap.some((chapter, index) => chapter.some(old => old < 0 || old >= cues[index].length) || activeIndices[index].length === 0)) {

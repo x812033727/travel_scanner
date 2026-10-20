@@ -22,8 +22,8 @@ for (const raw of readFileSync(path.join(dir, "drafts/shorts.md"), "utf8").split
 }
 if (sections.length !== 2 || sections.some(short => short.rows.length !== 8)) throw new Error("Expected two eight-line Shorts");
 const shots = [
-  ["x14-b04-s25", "x14-b02-s16", "x14-b01-s01", "x14-b04-s23", "x14-b04-s24", "x14-b02-s11", "x14-b04-s25", "x14-b01-s01"],
-  ["x14-b05-s04", "x14-b05-s10", "x14-b05-s05", "x14-b05-s11", "x14-b05-s17", "x14-b06-s07", "x14-b06-s14", "x14-b06-s16"],
+  ["x14-b04-s22", "x14-b02-s16", "x14-b01-s01", "x14-b04-s23", "x14-b04-s24", "x14-b04-s25", "x14-b04-s22", "x14-b01-s01"],
+  ["x14-b05-s04", "x14-b05-s07", "x14-b05-s06", "x14-b05-s11", "x14-b05-s17", "x14-b06-s06", "x14-b06-s15", "x14-b06-s14"],
 ];
 const beats = ["hook", "setup", "setup", "turn", "proof", "proof", "payoff", "loop"];
 const headlines = [
@@ -41,12 +41,52 @@ const descriptions = [
   "Airbnb 2020 年淨預訂夜晚與體驗席位下降 41%，全年 GAAP 淨虧損約 US$4.6bn；其中含 IPO 觸發的約 US$2.8bn 股份費用及全年約 US$868.5m 非現金權證公允價值變動。不能把全部淨虧損說成取消訂單的代價，也不能扣兩項自創『真正疫情虧損』。匿名畫面是概念示意；長片正式網址待發布後補入。",
   "Airbnb 2021 Q4 的 28 夜以上長住占當季 gross nights booked 22%，2019 Q4 同口徑是 16%；2021 Q4 末超過九成活躍刊登項目（可為住宿或體驗）接受至少 28 夜預訂，這是可訂設定，不代表已入住。2021 Q4 有 US$55m 淨利，全年仍淨虧 US$352m。2022 Q4 長住占 21%，2022 全年 GAAP 淨利約 US$1.9bn。這組同期事實不能算出長住的獨立獲利貢獻。匿名畫面是概念示意；長片正式網址待發布後補入。",
 ];
+// A source shot is a semantic reference, not a claim that a 16:9 frame has
+// already been cropped or rendered. Every beat carries its own vertical plan.
+const portraitFocus = [
+  [
+    "審帳者打開全年虧損簿，取消訂單小堆留在簿外；手、簿、代幣同框",
+    "淨預訂下降色帶與收入色帶各留兩端，不讓 −41% 看起來像營收降幅",
+    "旅客的手拿掉三月日曆上的一格，行李只露一角；保留拿掉的動作",
+    "原生直式年度虧損卡：主值與全年 GAAP 口徑一起讀到",
+    "原生直式 IPO 股份費用卡：位置承接上一拍，明示它包含在虧損中",
+    "無字年度損益簿與獨立的權證重估欄；取消訂單代幣留在另一側，不能畫成分碗訂單",
+    "回到審帳者與全年虧損簿，取消訂單小堆仍在簿外，構成首拍回呼",
+    "回到同一位旅客拿掉的日曆格，空格與行李角落都可辨",
+  ],
+  [
+    "旅客把行李代幣往連續日曆格推，保留起點、終點與手勢",
+    "原生直式 2021 Q4 長住卡：22% 與至少 28 夜／當季 gross nights 同框",
+    "原生直式 2019 Q4 同口徑比較卡：16% 和年份完整可讀；不借遠端工作者圖",
+    "房東打開長段可訂日曆；只畫開放設定，不能畫成已入住",
+    "季損益簿與年損益簿分開；先亮單季淨利，再換成年淨虧",
+    "原生直式 2022 Q4 長住卡：21% 與至少 28 夜／當季 gross nights 同框",
+    "原生直式 2022 全年 GAAP 淨利卡：先亮首次全年盈利，再亮約十九億美元",
+    "審帳者把長住色帶放在全年損益簿旁，留空未填的單獨貢獻欄；不暗示已算出因果",
+  ],
+];
+const nativeCards = new Set(["0:3", "0:4", "1:1", "1:2", "1:5", "1:6"]);
+function portraitFor(shortIndex, beatIndex) {
+  const native = nativeCards.has(`${shortIndex}:${beatIndex}`);
+  return {
+    status: "planned",
+    rendered: false,
+    canvas_px: { width: 1080, height: 1920 },
+    source_use: native ? "values-and-period-only" : "semantic-reference-for-new-portrait-art",
+    crop_or_rebuild: native ? "rebuild-native-9:16-card" : "reframe-around-action-or-regenerate-9:16-if-crop-loses-required-objects",
+    focus: portraitFocus[shortIndex][beatIndex],
+    headline_safe_px: { x: 100, y: 280, width: 780, height: 910 },
+    cc_clear_px: { x: 100, y: 1260, width: 780, height: 180 },
+    controls_clear_px: { x: 880, y: 0, width: 200, height: 1920 },
+    crop_check: "Review at phone size; keep the described action and all required objects visible. Rebuild instead of forcing a center crop.",
+  };
+}
 const common = { schema_version: 2, format: "shorts", locale: "zh-TW", line: "cut", series: "illustrated", source: { slug: video.slug }, synthetic_media: true, hashtags: ["Airbnb", "品牌故事", "旅遊"], tags: ["Airbnb", "品牌故事", "旅行", "商業史"] };
 const shorts = sections.map((section, i) => {
   const scenes = section.rows.map((row, j) => {
     const shot = shots[i][j];
     if (!shotIds.has(shot)) throw new Error(`Missing long-video shot ${shot}`);
-    return { beat: beats[j], shot, headline: headlines[i][j], narration: [row.text] };
+    return { beat: beats[j], shot, headline: headlines[i][j], narration: [row.text], portrait: portraitFor(i, j) };
   });
   const short = {
     ...common, slug: `${video.slug}-short-${i + 1}`,

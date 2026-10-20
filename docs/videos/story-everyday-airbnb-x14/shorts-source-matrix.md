@@ -1,6 +1,6 @@
 # X14 Airbnb｜Shorts 逐句來源矩陣
 
-Shorts SHA-256：`b581e9f717769bace170833d8ef48c36b7b499fcf306baaa40542dffbf31ac2e`。來源代碼見 `source-matrix.md`。
+Shorts SHA-256：`b9bf67b88b1a16211ac76ffbebace8fdd39b8794582722956b9eb270f3c2395f`。來源代碼見 `source-matrix.md`。
 
 ## Short 1
 

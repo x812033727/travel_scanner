@@ -33,28 +33,33 @@
   },
   "loops": [
     {
+      "setup": "x140104",
+      "payoff": "x140301",
+      "what": "開場旅客退款路徑"
+    },
+    {
       "setup": "x140105",
-      "payoff": "x140312",
-      "what": "開場房東取消費的分母"
+      "payoff": "x140402",
+      "what": "四月貸款實際金額"
     },
     {
       "setup": "x140106",
-      "payoff": "x140402",
-      "what": "公司先取得周轉資金"
+      "payoff": "x140405",
+      "what": "五月縮編實際規模"
     },
     {
       "setup": "x140107",
       "payoff": "x140416",
-      "what": "附近住宿的產品呈現"
+      "what": "搜尋頁究竟突出什麼"
     },
     {
-      "setup": "x140108",
-      "payoff": "x140420",
-      "what": "總量不是同批名冊"
+      "setup": "x140109",
+      "payoff": "x140617",
+      "what": "下一筆交易如何接上"
     },
     {
       "setup": "x140205",
-      "payoff": "x140206",
+      "payoff": "x140207",
       "what": "全年淨預訂量"
     },
     {
@@ -121,19 +126,14 @@
       "setup": "x140614",
       "payoff": "x140615",
       "what": "2022 首個全年盈利"
-    },
-    {
-      "setup": "x140616",
-      "payoff": "x140617",
-      "what": "單招盈利不可歸因"
     }
   ],
   "youtube": {
     "category_id": 27,
     "made_for_kids": false,
     "default_language": "zh-TW",
-    "title": "Airbnb：取消壓過預訂後，怎樣迎來首個盈利年？｜品牌故事",
-    "description": "2020 年三、四月合計，Airbnb 的取消夜晚與體驗席位超過同期新預訂；到了 2022 年卻首次按 GAAP 計算全年盈利。這支品牌故事從平台兩端的取消與支援、公司收縮、附近及長住需求，走到旅行恢復時的不同住宿組合。\n\n期間與分母：三、四月是合計比較，不代表兩個月份各自成立。2019、2020 年末約 560 萬活躍刊登項目是含住宿或體驗的總量，不能據此證明同一批房東留下或補助帶來留存。2021／2022 長住與跨境比例限各年 Q4 gross nights booked。2020 年 GAAP 淨虧損含 IPO 相關非現金費用，不是取消訂單的單一代價。片中日曆與匿名人物是概念示意，非真實個案。資料查核日期：2026-10-20。\n\n一手資料（Airbnb SEC 原始申報與股東信）\nAirbnb 2020 Form 10-K\nhttps://www.sec.gov/Archives/edgar/data/1559720/000155972021000010/airbnb-10k.htm\nAirbnb 2020 Q4 shareholder letter\nhttps://www.sec.gov/Archives/edgar/data/1559720/000119312521056952/d147144dex991.htm\nAirbnb 2021 Q4 shareholder letter\nhttps://www.sec.gov/Archives/edgar/data/1559720/000119312522043371/d251410dex991.htm\nAirbnb 2022 Q4 shareholder letter\nhttps://www.sec.gov/Archives/edgar/data/1559720/000119312523039008/d451233dex991.htm",
+    "title": "Airbnb：取消壓過新訂後，下一筆交易怎麼回來？｜品牌故事",
+    "description": "2020 年三、四月合計，Airbnb 的取消夜晚與體驗席位超過同期新預訂；到了 2022 年卻首次按 GAAP 計算全年盈利。這支品牌故事從一筆明示為示意的取消單出發，追蹤退款、有限房東支援、借款縮支、附近與長住需求，再看下一筆交易如何重新可能。\n\n期間與分母：三、四月是合計比較，不代表兩個月份各自成立。2019、2020 年末約 560 萬活躍刊登項目是含住宿或體驗的總量，不能據此證明同一批房東留下或補助帶來留存。2021／2022 長住與跨境比例限各年 Q4 gross nights booked。2020 年 GAAP 淨虧損含 IPO 相關非現金費用，不是取消訂單的單一代價。片中 2020 年 3 月 20 日的取消日曆與匿名人物，是依財報機制構造的代表性示意，非真實個案。資料查核日期：2026-10-20。\n\n一手資料（Airbnb SEC 原始申報與股東信）\nAirbnb 2020 Form 10-K\nhttps://www.sec.gov/Archives/edgar/data/1559720/000155972021000010/airbnb-10k.htm\nAirbnb 2020 Q4 shareholder letter\nhttps://www.sec.gov/Archives/edgar/data/1559720/000119312521056952/d147144dex991.htm\nAirbnb 2021 Q4 shareholder letter\nhttps://www.sec.gov/Archives/edgar/data/1559720/000119312522043371/d251410dex991.htm\nAirbnb 2022 Q4 shareholder letter\nhttps://www.sec.gov/Archives/edgar/data/1559720/000119312523039008/d451233dex991.htm",
     "tags": [
       "Airbnb",
       "品牌故事",
@@ -181,14 +181,14 @@
       "id": "x14-b01-s01",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous traveler touches one removed reservation tile on a blank paper lodging calendar, a small suitcase beside the table, soft overcast daylight",
+        "prompt": "Medium shot: an anonymous traveler removes one reservation tile from a late-month square on an unlettered lodging calendar, a suitcase set beside the table, soft overcast daylight",
         "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140101",
-          "text": "二〇二〇年春，一張住宿日曆劃掉預訂。",
+          "text": "二〇二〇年三月二十日，想像一位旅客取消月底的住宿。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ],
@@ -198,14 +198,14 @@
       "id": "x14-b01-s02",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous traveler packs a small suitcase while an anonymous lodging host keeps a plain unused room key beside a blank calendar, gentle indoor light",
+        "prompt": "Close-up: an anonymous lodging host looks at one fresh cancellation notification icon without readable text beside a plain unused key and the same unlettered calendar, gentle indoor light",
         "camera": "Close-up, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140102",
-          "text": "旅客收行李，房東握著鑰匙。",
+          "text": "房東收到通知，鑰匙仍在桌上；這筆訂單純屬示意。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -221,10 +221,10 @@
       "lines": [
         {
           "id": "x140103",
-          "text": "Airbnb 說，三、四月合計，取消夜晚與體驗席位多過同期新訂。",
+          "text": "真實的三、四月合計，Airbnb 取消夜晚與體驗席位多過新訂。",
           "emotion": "台灣口語說書，清楚自然，正常語速",
-          "say": "愛彼迎 說，三、四月合計，取消夜晚與體驗席位多過同期新訂。",
-          "say_for": "d2efbbb17c52"
+          "say": "真實的三、四月合計，愛彼迎 取消夜晚與體驗席位多過新訂。",
+          "say_for": "16386f4732d0"
         }
       ]
     },
@@ -232,14 +232,14 @@
       "id": "x14-b01-s04",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: an anonymous analyst holds two blank monthly calendar leaves together, muted afternoon light",
+        "prompt": "Medium close-up: an anonymous traveler holds an unmarked refund request card while the host holds an unmarked cancellation-policy envelope on opposite sides of the vacant square, muted afternoon light",
         "camera": "Medium close-up, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140104",
-          "text": "新訂補不了空格；誰受損？",
+          "text": "旅客問怎麼退；房東原可收的錢又怎麼辦？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -248,15 +248,15 @@
       "id": "x14-b01-s05",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: an anonymous support clerk opens a blank relief envelope beside an unfinished reservation card, soft morning window light",
+        "prompt": "Overhead shot: an anonymous finance clerk works with a closed loan folder beside the vacant booking calendar, with no figures or signatures visible, soft morning window light",
         "camera": "Overhead shot, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140105",
-          "text": "旅客看疫情取消頁；房東取消費怎麼算？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "四月，公司籌定期貸款；日曆還空著。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -264,15 +264,15 @@
       "id": "x14-b01-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous office manager studies a sealed budget folder while an unmarked guest calendar and an unused key wait on the desk, soft overcast daylight",
+        "prompt": "Medium shot: an anonymous office manager looks over a thinning row of staff desk tokens, keeping a separate host key token outside the row, soft overcast daylight",
         "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140106",
-          "text": "四月，籌資案上桌；錢從哪來？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "五月，公司裁減員工；這次動刀的卻不是房東。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -280,15 +280,15 @@
       "id": "x14-b01-s07",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous traveler pauses over several unmarked routes and a closed calendar, undecided where the next booking will go, gentle indoor light",
+        "prompt": "Close-up: an anonymous product planner rearranges unlabeled lodging tiles on a blank search board as a traveler narrows an unlettered map, gentle indoor light",
         "camera": "Close-up, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140107",
-          "text": "下半年，旅客再搜尋；哪種住宿先被看見？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "下半年，搜尋頁重排房源，旅客把地圖縮近。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -296,15 +296,15 @@
       "id": "x14-b01-s08",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous archivist keeps a sealed year-end report above a tray of mixed lodging and activity tokens whose identities cannot yet be seen, cool desk lamp",
+        "prompt": "Wide shot: an anonymous traveler hesitates with one booking tile above an unlettered calendar while an anonymous host leaves an available key beside it, cool desk lamp",
         "camera": "Wide shot, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140108",
-          "text": "年底總表能認出原來的提供者嗎？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "但空格要等新訂單才會消失。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
     },
@@ -312,17 +312,17 @@
       "id": "x14-b01-s09",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: an anonymous booking clerk holds a key token and a suitcase token above two separate paths toward the calendar, muted afternoon light",
+        "prompt": "Medium close-up: an anonymous booking clerk holds a guest suitcase token and a host key token above one still-open path toward the unlettered calendar, muted afternoon light",
         "camera": "Medium close-up, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140109",
-          "text": "Airbnb 怎讓下一筆交易成立？",
+          "text": "Airbnb 怎讓下一筆住宿有旅客下訂，也有房東接待？",
           "emotion": "自然提問，尾音微上揚",
-          "say": "愛彼迎 怎讓下一筆交易成立？",
-          "say_for": "794b4911b811"
+          "say": "愛彼迎 怎讓下一筆住宿有旅客下訂，也有房東接待？",
+          "say_for": "6bbdcd818a6a"
         }
       ]
     },
@@ -330,14 +330,14 @@
       "id": "x14-b02-s01",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous booking clerk delivers a plain cancellation notice to a traveler while a lodging host studies the planned check-in square, gentle indoor light",
+        "prompt": "Wide shot: an anonymous lodging host studies the already vacant check-in square beside a plain unused key and a small cancellation-policy envelope, gentle indoor light",
         "camera": "Wide shot, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140201",
-          "text": "取消通知送到旅客，房東卻還看著原定入住的那一晚。",
+          "text": "那張示意日曆上的入住夜已經空了，房東原定可收的錢得重新算。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ],
@@ -347,14 +347,14 @@
       "id": "x14-b02-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: an anonymous traveler holds an unused room key beside an open suitcase, cool desk lamp",
+        "prompt": "Medium close-up: an anonymous traveler and lodging host wait on opposite sides of the same unmarked cancellation request board, cool desk lamp",
         "camera": "Medium close-up, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140202",
-          "text": "這筆住宿不會照原計畫入住，原來的收款也得重新算。",
+          "text": "旅客也在同一張取消頁等處理；平台不能只顧其中一端。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -370,10 +370,10 @@
       "lines": [
         {
           "id": "x140203",
-          "text": "Airbnb 夾在兩端：房東提供住宿或體驗，旅客下訂，平台收服務費。",
+          "text": "房東提供住宿或體驗，旅客下訂，Airbnb 向兩端收服務費。",
           "emotion": "台灣口語說書，清楚自然，正常語速",
-          "say": "愛彼迎 夾在兩端：房東提供住宿或體驗，旅客下訂，平台收服務費。",
-          "say_for": "b18fe510f164"
+          "say": "房東提供住宿或體驗，旅客下訂，愛彼迎 向兩端收服務費。",
+          "say_for": "0249e7fef637"
         }
       ]
     },
@@ -381,14 +381,14 @@
       "id": "x14-b02-s04",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous traveler places a small suitcase token on the other side of that board, soft morning window light",
+        "prompt": "Medium shot: an anonymous accountant keeps an unrecognized service-fee envelope beside a vacant check-in square on the recurring unlettered calendar, soft morning window light",
         "camera": "Medium shot, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140204",
-          "text": "預訂卡停在取消頁面，房東那筆錢和平台服務費都懸著。",
+          "text": "住宿服務費要等旅客入住才認列，取消把這一步也截斷。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -404,7 +404,7 @@
       "lines": [
         {
           "id": "x140205",
-          "text": "如果把這些空格放滿一年，最後還剩多少預訂？",
+          "text": "像這樣的空格累積下來，全年最後還剩多少淨預訂？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -462,7 +462,7 @@
       "lines": [
         {
           "id": "x140208",
-          "text": "這是扣掉取消和更改後的全年淨量，含住宿夜晚與體驗席位。",
+          "text": "這是扣掉取消和更改後的全年淨量，合計住宿夜晚與體驗席位。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -478,7 +478,7 @@
       "lines": [
         {
           "id": "x140209",
-          "text": "它不是三、四月的新訂單，也不是一點九三二億名旅客。",
+          "text": "它不是旅客人頭，也不能拿來充作三、四月的新訂量。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -494,7 +494,7 @@
       "lines": [
         {
           "id": "x140210",
-          "text": "房東失去的住宿夜晚，平台又怎麼寫進自己的收入？",
+          "text": "那麼留下的交易裡，旅客付出的房款和平台收入怎麼分？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -510,7 +510,7 @@
       "lines": [
         {
           "id": "x140211",
-          "text": "旅客付的一整筆錢，還有房東收入、清潔費與稅項。",
+          "text": "旅客付出的總額，還包括房東收入、清潔費與稅項。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -544,7 +544,7 @@
       "lines": [
         {
           "id": "x140213",
-          "text": "住宿服務費要到旅客入住時才認列。",
+          "text": "一晚沒入住，這筆原定服務費就不會照原計畫入帳。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -597,7 +597,7 @@
       "lines": [
         {
           "id": "x140216",
-          "text": "淨預訂量少四成一，每一淨預訂單位的總額也變小嗎？",
+          "text": "淨預訂量少四成一，營收卻少三成；兩條線為何不同步？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -618,7 +618,7 @@
       "lines": [
         {
           "id": "x140217",
-          "text": "公司還說，每一淨預訂單位對應的訂房總額增加百分之六。",
+          "text": "每一淨預訂單位對應的訂房總額，反而增加百分之六。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -634,7 +634,7 @@
       "lines": [
         {
           "id": "x140218",
-          "text": "那不是服務費率漲六個百分點，也不足以單獨拆出兩條線的差距。",
+          "text": "這個變化不能讀成平台費率上升，只能解釋營收差距的一部分。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -650,7 +650,7 @@
       "lines": [
         {
           "id": "x140219",
-          "text": "若原取消規則讓房東可收一筆費，誰來處理它？",
+          "text": "帳本還沒替那張取消單解套：原政策若讓房東可收費，誰來處理？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -716,7 +716,7 @@
       "lines": [
         {
           "id": "x140223",
-          "text": "同一筆取消單，旅客與房東會各拿到什麼？",
+          "text": "那筆示意訂單，旅客與房東各會拿到什麼？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -732,10 +732,10 @@
       "lines": [
         {
           "id": "x140301",
-          "text": "開場那張取消頁，Airbnb 把疫情納入例外政策，旅客有了退款路。",
+          "text": "那筆示意訂單進了取消頁，Airbnb 把疫情納入例外政策，旅客有了退款路。",
           "emotion": "台灣口語說書，清楚自然，正常語速",
-          "say": "開場那張取消頁，愛彼迎 把疫情納入例外政策，旅客有了退款路。",
-          "say_for": "27f48048e2c4"
+          "say": "那筆示意訂單進了取消頁，愛彼迎 把疫情納入例外政策，旅客有了退款路。",
+          "say_for": "bab5c1508f67"
         }
       ],
       "chapter": "退款啟動，房東另等支援"
@@ -838,7 +838,7 @@
       "lines": [
         {
           "id": "x140307",
-          "text": "房東先查下訂時間：要與剛才旅客退款的日期門檻相同。",
+          "text": "但旅客合資格，房東未必合資格；房東這邊還要查下訂時間。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -923,7 +923,7 @@
       "lines": [
         {
           "id": "x140312",
-          "text": "開場房東取消費的答案：支援取原政策本可得額的四分之一。",
+          "text": "房東原本能收的取消費，支援只取那筆金額的四分之一。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1077,7 +1077,7 @@
       "lines": [
         {
           "id": "x140321",
-          "text": "公司也警告，補償的金額與期間都有上限。",
+          "text": "而且這項支援的金額與期間都有上限。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1109,10 +1109,8 @@
       "lines": [
         {
           "id": "x140401",
-          "text": "開場四月那份籌資方案，Airbnb 最後換到的是定期貸款。",
-          "emotion": "台灣口語說書，清楚自然，正常語速",
-          "say": "開場四月那份籌資方案，愛彼迎 最後換到的是定期貸款。",
-          "say_for": "b32a753babe9"
+          "text": "開場四月籌的貸款，簽下後帶來了周轉資金。",
+          "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ],
       "chapter": "公司縮了身，旅客開始找近處"
@@ -1188,7 +1186,7 @@
       "lines": [
         {
           "id": "x140405",
-          "text": "五月，公司減少約一千八百名全職員工。",
+          "text": "開場五月那次縮編，減少約一千八百名全職員工。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1348,7 +1346,7 @@
       "lines": [
         {
           "id": "x140415",
-          "text": "這是下半年的轉向，不能改說成全年每個月都在增加。",
+          "text": "這波變化從下半年算起，上半年的空格沒有被抹掉。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1364,7 +1362,7 @@
       "lines": [
         {
           "id": "x140416",
-          "text": "開場那張搜尋頁，此時更突出附近、非都會住宿。",
+          "text": "開場那張重排的搜尋頁，此時更突出附近、非都會住宿。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1396,7 +1394,7 @@
       "lines": [
         {
           "id": "x140418",
-          "text": "旅客看見附近住宿後，年底那張刊登總表又會呈現什麼？",
+          "text": "旅客開始找近處住宿，平台年底還有多少刊登項目可供挑選？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -1433,7 +1431,7 @@
       "lines": [
         {
           "id": "x140420",
-          "text": "兩張總表只數出平台可見項目，無法對上同一批提供者。",
+          "text": "兩個年底的項目總量差不多，沒有跟淨預訂量一起大跌。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1449,7 +1447,7 @@
       "lines": [
         {
           "id": "x140421",
-          "text": "因此，也不能從它算出支援留住了多少房東。",
+          "text": "但它不是房東名冊，算不出同一批人是否留下，更算不出支援效果。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1458,14 +1456,14 @@
       "id": "x14-b04-s22",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous support worker keeps a small host-support envelope apart from a mixed lodging-and-activity listing board, soft morning window light",
+        "prompt": "Wide shot: an anonymous auditor opens a whole-year loss ledger while keeping a small canceled-booking pile separate from the ledger, soft morning window light",
         "camera": "Wide shot, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140422",
-          "text": "另一張全年帳本打開，才見平台自己的巨大缺口。",
+          "text": "另一張全年帳本打開，虧損也不能直接當那張取消單的價格。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1518,14 +1516,14 @@
       "id": "x14-b04-s25",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous auditor refuses to balance the canceled-booking pile against the whole loss folder, cool desk lamp",
+        "prompt": "Medium shot: an anonymous auditor studies a whole-year loss ledger with one isolated blank warrant-valuation column, keeping canceled-booking tokens in a separate tray, cool desk lamp",
         "camera": "Medium shot, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140425",
-          "text": "所以整筆虧損不能叫作旅客取消訂單的賠償單。",
+          "text": "另有全年約八億六千八百五十萬美元非現金權證重估；整筆虧損不能叫作取消帳單。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -1692,7 +1690,7 @@
       "lines": [
         {
           "id": "x140508",
-          "text": "分母是第四季新訂住宿夜晚，不是旅客人數；至少住一週的又占多少？",
+          "text": "這兩個比例只數當季新訂住宿夜晚；若把門檻縮到七夜呢？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -2024,7 +2022,7 @@
       "id": "x14-b06-s07",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: an anonymous analyst compares that ribbon with an earlier, shorter quarter ribbon, gentle indoor light",
+        "prompt": "Close-up: an anonymous traveler moves one blank route marker across a border shown only as a plain line on an unlettered map, a small suitcase beside the map, gentle indoor light",
         "camera": "Close-up, static",
         "visual": "still"
       },
@@ -2130,14 +2128,14 @@
       "id": "x14-b06-s13",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot: an anonymous records clerk compares earlier and later boards of mixed lodging and activity tokens without identifying the same provider, cool desk lamp",
+        "prompt": "Wide shot: an anonymous records clerk holds a year-end board of mixed lodging and activity listing tokens apart from a separate tray of completed booking tiles, cool desk lamp",
         "camera": "Wide shot, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140613",
-          "text": "總量比兩年前多，仍辨不出是否同一批提供者。",
+          "text": "但這個數字只是供給端的截面；真正下訂，才會進入前面的淨預訂量。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         }
       ]
@@ -2187,15 +2185,17 @@
       "id": "x14-b06-s16",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: an anonymous auditor keeps separate relief, staff, product and long-stay tokens outside a causal-proof tray, soft overcast daylight",
+        "prompt": "Medium shot: an anonymous booking clerk holds the original empty calendar beside a later calendar with separate guest and host tokens approaching one open square, soft overcast daylight",
         "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x140616",
-          "text": "從退款到附近住宿的呈現，能指出哪一步單獨帶來多少利潤嗎？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "開場那晚不會回來；Airbnb 先處理合資格旅客退款與有限房東支援，再借款縮支維持平台。",
+          "emotion": "台灣口語說書，清楚自然，正常語速",
+          "say": "開場那晚不會回來；愛彼迎 先處理合資格旅客退款與有限房東支援，再借款縮支維持平台。",
+          "say_for": "bfb423dfe5ee"
         }
       ]
     },
@@ -2209,7 +2209,7 @@
       "lines": [
         {
           "id": "x140617",
-          "text": "旅客再入住、房東再接待，平台全年由虧轉盈；哪一步獨自賺了多少，財報算不出。",
+          "text": "附近住宿被看見，需求回來後新訂單接上兩端；哪一步賺了多少，財報算不出。",
           "emotion": "台灣口語說書，清楚自然，正常語速"
         },
         {

@@ -35,25 +35,25 @@ const find = (pattern, after = -1) => {
   return [rows[index].id, index];
 };
 const loopPatterns = [
-  [/房東取消費怎麼算/, /支援取原政策本可得額的四分之一/, "開場房東取消費的分母"],
-  [/錢從哪來/, /籌到二十億美元定期貸款/, "公司先取得周轉資金"],
-  [/哪種住宿先被看見/, /搜尋頁，此時更突出附近/, "附近住宿的產品呈現"],
-  [/能認出原來的提供者嗎/, /無法對上同一批提供者/, "總量不是同批名冊"],
-  [/最後還剩多少預訂/, /淨預訂夜晚與體驗席位是三點二六九億/, "全年淨預訂量"],
-  [/怎麼寫進自己的收入/, /主要是向旅客和房東收的服務費/, "住宿訂單與平台收入"],
-  [/每一淨預訂單位的總額也變小嗎/, /每一淨預訂單位對應的訂房總額增加/, "單位淨預訂價值的變化"],
-  [/誰來處理它/, /支援取原政策本可得額的四分之一/, "房東取消費的支援計算"],
-  [/各拿到什麼/, /房東得到十元/, "旅客退款與房東支援"],
-  [/房價的四分之一嗎/, /支援取原政策本可得額的四分之一/, "房東支援的正確分母"],
+  [/旅客問怎麼退/, /Airbnb 把疫情納入例外政策/, "開場旅客退款路徑"],
+  [/公司籌定期貸款/, /籌到二十億美元定期貸款/, "四月貸款實際金額"],
+  [/五月，公司裁減員工/, /減少約一千八百名全職員工/, "五月縮編實際規模"],
+  [/搜尋頁重排房源/, /更突出附近、非都會住宿/, "搜尋頁究竟突出什麼"],
+  [/怎讓下一筆住宿有旅客下訂/, /新訂單接上兩端/, "下一筆交易如何接上"],
+  [/全年最後還剩多少淨預訂/, /疫情那年是一點九三二億/, "全年淨預訂量"],
+  [/平台收入怎麼分/, /主要是向旅客和房東收的服務費/, "住宿訂單與平台收入"],
+  [/兩條線為何不同步/, /訂房總額，反而增加百分之六/, "單位淨預訂價值的變化"],
+  [/誰來處理/, /支援只取那筆金額的四分之一/, "房東取消費的支援計算"],
+  [/各會拿到什麼/, /房東得到十元/, "旅客退款與房東支援"],
+  [/房價的四分之一嗎/, /支援只取那筆金額的四分之一/, "房東支援的正確分母"],
   [/那一年的帳又記了什麼/, /兩億零五百一十萬美元/, "承諾上限與列帳付款不同"],
-  [/剩下的房源要如何被看見/, /搜尋頁，此時更突出附近/, "近處住宿的產品呈現"],
+  [/剩下的房源要如何被看見/, /更突出附近、非都會住宿/, "近處住宿的產品呈現"],
   [/隔年旅客會怎樣把日曆重新填上/, /比例增加到百分之二十二/, "2021 住宿長度變化"],
   [/多少刊登項目開放這麼長的日期/, /超過九成活躍刊登項目接受二十八夜/, "長住可訂刊登項目"],
   [/當季損益又變了什麼/, /第四季，Airbnb 淨賺/, "2021 單季盈利"],
   [/這類長住會從整體比例消失嗎/, /仍占新訂夜晚百分之二十一/, "遠行恢復後的長住"],
   [/排回疫情前的樣子嗎/, /疫情前同季是百分之四十七/, "旅行組合仍不同"],
   [/回暖的日曆最後寫出什麼/, /首次全年盈利/, "2022 首個全年盈利"],
-  [/哪一步單獨帶來多少利潤嗎/, /財報算不出/, "單招盈利不可歸因"],
 ];
 const loops = loopPatterns.map(([setup, payoff, what]) => {
   const [a, ai] = find(setup); const [b, bi] = find(payoff, ai);
@@ -115,9 +115,9 @@ const closing = scenes.splice(-3, 3);
 if (closing.some(scene => scene.template !== "shot" || scene.lines.length !== 1)) throw new Error("Closing CTA must be three solo shots");
 scenes.push({ id: "x14-outro", template: "outro", data: { title: "一張日曆，兩端的生意", cta: "訂閱品牌故事" }, lines: closing.flatMap(scene => scene.lines) });
 const description = [
-  "2020 年三、四月合計，Airbnb 的取消夜晚與體驗席位超過同期新預訂；到了 2022 年卻首次按 GAAP 計算全年盈利。這支品牌故事從平台兩端的取消與支援、公司收縮、附近及長住需求，走到旅行恢復時的不同住宿組合。",
+  "2020 年三、四月合計，Airbnb 的取消夜晚與體驗席位超過同期新預訂；到了 2022 年卻首次按 GAAP 計算全年盈利。這支品牌故事從一筆明示為示意的取消單出發，追蹤退款、有限房東支援、借款縮支、附近與長住需求，再看下一筆交易如何重新可能。",
   "",
-  "期間與分母：三、四月是合計比較，不代表兩個月份各自成立。2019、2020 年末約 560 萬活躍刊登項目是含住宿或體驗的總量，不能據此證明同一批房東留下或補助帶來留存。2021／2022 長住與跨境比例限各年 Q4 gross nights booked。2020 年 GAAP 淨虧損含 IPO 相關非現金費用，不是取消訂單的單一代價。片中日曆與匿名人物是概念示意，非真實個案。資料查核日期：2026-10-20。",
+  "期間與分母：三、四月是合計比較，不代表兩個月份各自成立。2019、2020 年末約 560 萬活躍刊登項目是含住宿或體驗的總量，不能據此證明同一批房東留下或補助帶來留存。2021／2022 長住與跨境比例限各年 Q4 gross nights booked。2020 年 GAAP 淨虧損含 IPO 相關非現金費用，不是取消訂單的單一代價。片中 2020 年 3 月 20 日的取消日曆與匿名人物，是依財報機制構造的代表性示意，非真實個案。資料查核日期：2026-10-20。",
   "",
   "一手資料（Airbnb SEC 原始申報與股東信）",
   ...sourceUrls.flatMap(source => [source.title, source.url]),
@@ -128,7 +128,7 @@ const video = {
   subtitles: { burn_in: false }, look: { preset: "cute-mystery" }, characters: [],
   series: { slug: "brand-stories-everyday-reversals-extra", episode: 14, chapter: 1 },
   music: { prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 }, loops,
-  youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Airbnb：取消壓過預訂後，怎樣迎來首個盈利年？｜品牌故事", description, tags: ["Airbnb", "品牌故事", "房東", "旅遊", "長住", "商業史"], video_id: null },
+  youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Airbnb：取消壓過新訂後，下一筆交易怎麼回來？｜品牌故事", description, tags: ["Airbnb", "品牌故事", "房東", "旅遊", "長住", "商業史"], video_id: null },
   thumbnail: { template: "thumb", data: { headline: "取消比新訂多", tag: "品牌故事", brand: "Airbnb", shot: "x14-b01-s01" } },
   sources: sourceUrls, assets: [], scenes,
 };
@@ -145,6 +145,6 @@ writeFileSync(path.join(dir, "script.md"), [
   "# X14 Airbnb｜繁中逐句稿", "", `離線前製；\`video.json\` SHA-256：\`${videoSha}\`。首章、結尾三句、正式片頭和片尾不計入實質正文；正式 TTS 尚未測量。`, "",
   ...chapters.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${chapter.title}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.rows.map((row, ri) => `- \`${idFor(ci, ri)}\` ${row.text}`), ""]),
 ].join("\n"));
-writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 14, chapter: 1, title: "Airbnb：取消壓過預訂後，怎樣迎來首個盈利年？", logline: "2020 年合計兩月的取消量超過同期新增預訂，Airbnb 如何在平台兩端、公司成本與旅行需求變化間走到 2022 首個盈利年。", names: ["Airbnb", "Superhost", "GAAP"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
+writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 14, chapter: 1, title: "Airbnb：取消壓過新訂後，下一筆交易怎麼回來？", logline: "2020 年合計兩月的取消量超過同期新增預訂，Airbnb 處理兩端取消、維持平台運轉，並在需求改變後看見下一筆交易回來。", names: ["Airbnb", "Superhost", "GAAP"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
 const body = chapters.slice(1).flatMap(chapter => chapter.rows).slice(0, -3).map(row => row.text).join("");
 console.log(JSON.stringify({ scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, spoken_lines: rows.length, hook_characters: chapters[0].rows.map(row => row.text).join("").length, body_characters: body.length, body_estimate_minutes_at_300_cpm: +(body.length / 300).toFixed(2), loops: loops.length, video_sha256: videoSha }, null, 2));
