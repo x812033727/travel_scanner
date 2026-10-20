@@ -2,11 +2,11 @@
 
 每一句帶事實的旁白對到 [`../history-curiosity/topic-checks/S25.md`](../history-curiosity/topic-checks/S25.md) 的一列（〔#n〕）。
 來源代號見 S25.md〈用了哪些來源〉（STUK-NP 斯塔克利手稿轉寫、STUK-MS 手稿掃描、COND 康杜特草稿、VOLT-1727 伏爾泰 1727 年英文書、VOLT-LET《英國書簡》前言、
-VOLT-ELEM《牛頓哲學原理》、PEMB 彭伯頓 1728、PHIL1740 小冊子第二版、EULER 歐拉的信、HAYCOCK、KEES、YORK、NT、BREW1831、WP 維基百科，二手）；
+VOLT-ELEM《牛頓哲學原理》、GREENE 格林 1727、PEMB 彭伯頓 1728、PHIL1740 小冊子第二版、EULER 歐拉的信、HAYCOCK、KEES、YORK、NT、BREW1831、WP 維基百科，二手）；
 第 41–43 列另用覆核補開的 NATP00385（牛頓 MS Add. 3968 f. 85r）、小冊子 1739 年第一版（`philosophicaldis00londiala`）、伏爾泰 1738／1741 年本。
 查核日期一律 2026-10-20；網址在 `video.json` 的 `sources`。沒列出的句子是問句、轉場、回呼或鉤子（ap106、ap107、ap112、ap208、ap209、ap213、ap216、ap305、ap312、
-ap315、ap316、ap323、ap329、ap403、ap407、ap410、ap414、ap418、ap425、ap427、ap428、ap503、ap507、ap512、ap514、ap518、ap519），不帶新事實；
-ap516 是本頻道的看法（「我們覺得」）。
+ap315、ap316、ap323、ap329、ap331、ap403、ap407、ap410、ap414、ap418、ap425、ap427、ap428、ap503、ap512、ap518、ap519），不帶新事實；
+ap530 是本頻道的看法（「我們覺得」）。
 
 | 行 | 旁白（節錄） | 列 | 出處 | 狀態 |
 | --- | --- | --- | --- | --- |
@@ -40,8 +40,10 @@ ap516 是本頻道的看法（「我們覺得」）。
 | ap310 | 牛頓過世以後，他著手替牛頓寫傳記，留下了好幾份草稿 | #9 #10 | COND 三份（Keynes Ms. 130.04 c. 1727–8；129.01、129.02 mid-1727） | 確認 |
 | ap311 ap327 | 草稿說，瘟疫讓劍橋停課，牛頓回到林肯郡的老家；在那裡看見一顆蘋果從樹上掉下來 | #9 #10 #19 | COND 130.04「retired again from Cambridge on acct of the plague to his mother at Boothby in Lincolnshire」；129.01「observing an apple fall from a tree」 | 確認 |
 | ap313 | 有的寫一六六五年，有的寫一六六六年 | #9 #10 | COND 130.04「1666 {sic}」；129.01、129.02「in the year 1665」 | 確認（年份互相矛盾）；不說死某一年 |
+| ap335 ap336 | 一七二七年，劍橋的學者格林也在書裡寫：這個理論，是從一顆蘋果開始的；是皇家學會的福克斯告訴他的 | #17 | GREENE p. 972「Quae Sententia Celeberrima, Originem ducit … a Pomo; id quod Accepi ab … Martino Folkes Armigero, Regiæ vero Societatis Socio Meritissimo」 | 覆核：照覆核給的措辭；福克斯只說「皇家學會的」，不說會長 |
 | ap314 | 不管哪一年，這些人寫的，都沒有說它打到頭 | #24 | 第 24 列（伏爾泰、康杜特的引文都沒有打到頭） | 確認 |
 | ap317 ap318 | 他在一份筆記裡列出年輕時做出來的東西；寫到一六六六年：那一年，我開始想，重力能不能一路延伸到月亮（回收 ap109） | #15 #41 | NATP00385 f. 85r「the next year in Ianuary had the Theory of colours & in May following … And the same year I began to think of gravity extending to ye orb of the Moon」 | 依覆核新增的列；覆核：牛頓自己記的是 1666 |
+| ap332 ap333 ap334 | 康杜特的草稿說：沒有；他手邊沒有書，只好用地理學家和水手常用的估計，緯度一度六十英里；算出來，跟他的想法對不上 | #11 | COND 130.04 f. 6v「being absent from books & taking the common estimate in use among Geographers & our sea men … that 60 English miles were contained in one degree of latitude his computation did not agree with his Theory」 | 確認；69½ 是彭伯頓的數字，不用（盲評第 1 輪後補的主線事實） |
 | ap328 | 後人把這段日子，叫作「奇蹟年」 | #20 | NT〈History〉「remembered as his 'Year of Wonders'」 | 照第 20 列措辭（緊接牛頓自己說的「兩個瘟疫年」） |
 | ap319 | 牛頓自己寫的是：那兩個瘟疫年，是我發明的黃金年紀 | #15 #20 | NATP00385「All this was in the two plague years of 1665 & 1666 / For in those days I was in the prime of my age for invention」 | 覆核：「for invention」對，WP 的「of invention」錯 |
 | ap320 | 那時候，他才二十三、四歲 | #21 | STUK-NP 族譜；NT「all before he was 24 years old」 | 確認 |
@@ -53,8 +55,7 @@ ap516 是本頻道的看法（「我們覺得」）。
 | ap405 ap406 | 他得是個數學家才行；不然整個果園的果子都砸在他身上，他也只會覺得又重又硬 | #25 | PHIL1740 p. 76「but he must have been a Mathematician … otherwise all the Fruit in the Orchard might have struck him, without any other Advertisement than that of their Weight and Hardness」 | 確認 |
 | ap408 | 書上寫：根據彭伯頓 | #25 | PHIL1740「according to Pemberton」 | 覆核：「說是根據」，不說「假託」 |
 | ap409 | 彭伯頓替牛頓編過《原理》的第三版，親自跟牛頓談過這個理論是怎麼來的 | #18 | S25.md 來源表 PEMB 備註；BREW1855 註「who received from Newton himself the History of his first Ideas of Gravity」 | 確認 |
-| ap411 ap412 | 一七二八年，彭伯頓的書；序裡寫牛頓一個人坐在花園裡，想著重力；有花園，有重力，就是沒有蘋果 | #18 | PEMB 序「As he sat alone in a garden, he fell into a speculation on the power of gravity」；覆核「全書『apple』0 次」 | 確認 |
-| ap413 | 小冊子說的出處，在出處裡，找不到 | #25 #18 | 第 25 列備註「彭伯頓 1728 年的序只有『sat alone in a garden』，沒有蘋果，所以這個出處是錯的」 | 確認；不說故意 |
+| ap411 ap412 | 一七二八年，彭伯頓的書；序裡寫牛頓一個人坐在花園裡，想著重力；有花園，有重力，就是沒有蘋果；小冊子說的出處，在出處裡找不到 | #18 #25 | PEMB 序「As he sat alone in a garden, he fell into a speculation on the power of gravity」；覆核「全書『apple』0 次」；第 25 列備註「這個出處是錯的」 | 確認；不說故意（盲評第 1 輪：兩句併成一句） |
 | ap415 | 一七六〇年九月，數學家歐拉寫信給一位德國公主，也講到了牛頓 | #26 | EULER Lettre LII，信末「le 3 Septembre 1760」 | 確認 |
 | ap416 ap417 | 這位英國的大哲學家、大數學家，有一天躺在花園裡的一棵蘋果樹下，一顆蘋果掉在他的頭上 | #26 | EULER 1768 p. 208「Ce grand Philosophe & Mathématicien Anglois, se trouvant un jour couché dans un jardin, sous un pommier, une pomme lui tomba sur la tête」 | 確認（頁影像） |
 | ap418 | 這一回，他是躺著的 | #26 | 第 26 列備註「而且是『躺在』樹下」 | 確認 |
@@ -66,11 +67,8 @@ ap516 是本頻道的看法（「我們覺得」）。
 | ap501 | 目前找得到最早的紀錄，是一八〇六年的一本地方志：那棵蘋果樹還在，會帶外地人去看 | #28 | Turnor 1806 p. 160 註（KEES、YORK 轉引，措辭不一） | 二手；照第 28 列不加引號 |
 | ap502 | 這時，牛頓已經過世將近八十年 | #28 #34 | 算術（1727 到 1806） | 確認 |
 | ap504 | 沒有證據；研究這棵樹的學者認為，它被選中，是因為牛頓家的花園裡只有這一棵蘋果樹 | #29 | KEES「There is no evidence to suggest that Newton identified a particular apple tree … the apple tree was the only one in his garden」 | 學者推論，掛在「學者認為」 |
-| ap505 | 它的品種叫「肯特之花」，結青綠帶紅的蘋果，煮著吃的 | #35 | NT「a 'Flower of Kent' apple tree … cooking apples which are green with a red flush」 | 確認 |
-| ap506 | 樹倒下以後，有一部分，被做成了一把椅子（回呼 ap111） | #33 | BREW1831「preserved it in the form of a chair」；KEES（只有一部分做成椅子） | 確認 |
-| ap508 | 留在原地的樹幹，重新長出了根 | #31 | YORK「a large portion of the tree was left and re-rooted」 | 確認；「同一棵」是學者推論 |
-| ap509 | 管理這座莊園的英國國民信託說，它今天還在長，還會開花、結果 | #31 | NT「it continues to grow and bear blossom and fruit」 | 確認 |
-| ap510 ap511 | 如果它真是牛頓看過的那一棵，今年已經將近四百歲；不過蘋果樹的年輪數不準，這個歲數是推算出來的 | #32 | NT「around 400 years ago」；KEES「apple is not a good subject for dendrochronology」 | DISPUTED：照第 32 列的措辭，不說「科學證實」 |
-| ap513 | 打到頭，在聽過牛頓親口講的人留下的紀錄裡，一次也沒出現；這一半，可以結案 | #24 | 第 24 列 | 確認；結論照覆核「打到頭是後來加的」 |
+| ap508 | 還記得開頭那場大風嗎？倒下的樹幹又長出了根；今天，它還在莊園裡開花、結果（回收 ap111） | #30 #31 | YORK「a large portion of the tree was left and re-rooted」；NT「it continues to grow and bear blossom and fruit」 | 確認；不給倒下的年份；「同一棵」是學者推論 |
+| ap530 | 我們覺得，這棵樹跟打到頭很像：找不到牛頓自己這樣說過，都是後來的人補上的 | #24 #28 #29 | 本頻道的看法，依據第 24 列（聽過的人都沒寫打到頭）、第 29 列（沒有證據是牛頓指認） | 意見，標「我們覺得」 |
+| ap514 | 蘋果有沒有真的讓他想通重力，紀錄沒辦法結案 | #22 #23 | 第 23 列（學者看法分歧） | 確認 |
 | ap515 | 有歷史學家認為，講起六十年前的事，晚年的牛頓，可能也在替自己塑造傳奇 | #22 | HAYCOCK「Newton … may well have been indulging in some self-fashioning of his own myth」；1666 到 1726 是 60 年 | 學者看法；不掛 Westfall |
-| ap517 | 蘋果有紀錄，打到頭是後來加的。這份檔案，存檔 | #3 #24 #25 #42 | 同上各列 | 結檔句；卡片寫「目前找得到最早的『打到頭』：一七四〇年前後」 |
+| ap517 ap520 | 可是打到頭這一半，可以結案：蘋果有紀錄，打到頭是後來加的。這份檔案，存檔（回收 ap112） | #3 #24 #25 #42 | 同上各列 | 結檔句只講這一次（盲評第 1 輪）；卡片寫「目前找得到最早的『打到頭』：一七四〇年前後」 |
