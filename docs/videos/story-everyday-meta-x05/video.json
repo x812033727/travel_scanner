@@ -634,6 +634,22 @@
     },
     {
       "id": "x05-b03-s03",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a wooden market table. A newer tray holds more smooth ivory ad tiles while its copper payment cup is shallower. Beside them, the later ad-revenue basin holds slightly fewer plain ivory beads than the earlier basin; neither has a scale or markings.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m050303",
+          "text": "送得更多仍沒抵過降價，廣告收入反而比前一年少。",
+          "emotion": "說書語氣，自然有起伏"
+        }
+      ]
+    },
+    {
+      "id": "x05-b03-s04",
       "template": "stats",
       "data": {
         "title": "FY2022｜廣告量、價與收入",
@@ -652,22 +668,6 @@
           }
         ],
         "source": "Meta FY2022 Form 10-K，Revenue / Advertising"
-      },
-      "lines": [
-        {
-          "id": "m050303",
-          "text": "送得更多仍沒抵過降價，廣告收入反而比前一年少。",
-          "emotion": "說書語氣，自然有起伏"
-        }
-      ]
-    },
-    {
-      "id": "x05-b03-s04",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide view of two tabletop balances side by side. The revenue bin on the right is only slightly lighter than its counterpart, while a light green profit stack has become much shorter. Smooth physical objects tell the difference.",
-        "camera": "pan right",
-        "visual": "still"
       },
       "lines": [
         {
@@ -1009,20 +1009,11 @@
     },
     {
       "id": "x05-b04-s05",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "FY2023｜量與價的結果",
-        "stats": [
-          {
-            "value": "−9%",
-            "label": "平均每則廣告價格｜相較 FY2022"
-          },
-          {
-            "value": "+16%",
-            "label": "廣告收入｜相較 FY2022"
-          }
-        ],
-        "source": "Meta FY2023 Form 10-K，Revenue / Advertising"
+        "prompt": "Overhead view of a market table. More plain ad tiles flow toward a broad later revenue bowl despite a smaller copper-price cup. The later ivory revenue bowl is visibly fuller than the earlier one, with no scale, digits or papers.",
+        "camera": "push in",
+        "visual": "still"
       },
       "lines": [
         {
@@ -1098,11 +1089,24 @@
     },
     {
       "id": "x05-b04-s10",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Medium view of an empty marketing studio. Fewer plain promotional tiles and fewer small chair tokens reach a shallower blue payroll vessel than in the earlier arrangement behind it.",
-        "camera": "static",
-        "visual": "still"
+        "title": "FY2023｜量價與行銷費用",
+        "stats": [
+          {
+            "value": "−9%",
+            "label": "平均每則廣告價格｜相較 FY2022"
+          },
+          {
+            "value": "+16%",
+            "label": "廣告收入｜相較 FY2022"
+          },
+          {
+            "value": "近 −30 億美元",
+            "label": "行銷與銷售費｜相較 FY2022"
+          }
+        ],
+        "source": "Meta FY2023 Form 10-K，Revenue / Advertising；Marketing and Sales"
       },
       "lines": [
         {
@@ -1159,6 +1163,24 @@
     },
     {
       "id": "x05-b04-s13",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of two brick-colored research-result vessels on a plain worktable. The later vessel hangs visibly lower than the earlier one under smooth weights, while a scale and any exact values stay out of view.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m050407",
+          "text": "二〇二三年，RL 營業虧損反而擴大到約一百六十一億美元。",
+          "emotion": "說書語氣，自然有起伏",
+          "say": "二〇二三年，阿爾艾爾 營業虧損反而擴大到約一百六十一億美元。",
+          "say_for": "1ba6eae6d04a"
+        }
+      ]
+    },
+    {
+      "id": "x05-b04-s14",
       "template": "stats",
       "data": {
         "title": "FY2023｜RL 營業虧損",
@@ -1173,24 +1195,6 @@
           }
         ],
         "source": "Meta FY2023 Form 10-K，Segment profitability"
-      },
-      "lines": [
-        {
-          "id": "m050407",
-          "text": "二〇二三年，RL 營業虧損反而擴大到約一百六十一億美元。",
-          "emotion": "說書語氣，自然有起伏",
-          "say": "二〇二三年，阿爾艾爾 營業虧損反而擴大到約一百六十一億美元。",
-          "say_for": "1ba6eae6d04a"
-        }
-      ]
-    },
-    {
-      "id": "x05-b04-s14",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium view in a quiet research office. More stool tokens feed a larger brick-colored expense urn while fewer ivory tokens arrive at a revenue urn. Their combined brick-colored result urn hangs lower beside them.",
-        "camera": "push in",
-        "visual": "still"
       },
       "lines": [
         {
@@ -1602,16 +1606,11 @@
     },
     {
       "id": "x05-b06-s03",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "FY2025｜RL 營業虧損變化",
-        "stats": [
-          {
-            "value": "約 +14.6 億美元",
-            "label": "虧損幅度｜相較 FY2024"
-          }
-        ],
-        "source": "Meta FY2025 Form 10-K，Segment profitability"
+        "prompt": "Medium view in a quiet research room. A later terracotta result bowl hangs lower than an earlier bowl, while three distinct blue expense urns remain covered behind them. All objects are unmarked and without a scale.",
+        "camera": "drift",
+        "visual": "still"
       },
       "lines": [
         {
@@ -1641,11 +1640,16 @@
     },
     {
       "id": "x05-b06-s05",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Medium view of an empty research bench. More plain stool tokens reach the newer people-cost bin than the older bin behind it; generic eyeglass frames sit aside without their own result bin.",
-        "camera": "drift",
-        "visual": "still"
+        "title": "FY2025｜RL 營業虧損變化",
+        "stats": [
+          {
+            "value": "約 +14.6 億美元",
+            "label": "虧損幅度｜相較 FY2024"
+          }
+        ],
+        "source": "Meta FY2025 Form 10-K，Segment profitability"
       },
       "lines": [
         {
@@ -1771,10 +1775,10 @@
       "lines": [
         {
           "id": "m050613",
-          "text": "回到開場：FoA 約一千零二十五億營業利益，對上 RL 近一百九十二億虧損。",
+          "text": "開場那筆 RL 營業虧損近一百九十二億；FoA 同年營業利益約一千零二十五億。",
           "emotion": "說書語氣，自然有起伏",
-          "say": "回到開場：艾夫歐欸 約一千零二十五億營業利益，對上 阿爾艾爾 近一百九十二億虧損。",
-          "say_for": "b8be1bd333f7"
+          "say": "開場那筆 阿爾艾爾 營業虧損近一百九十二億；艾夫歐欸 同年營業利益約一千零二十五億。",
+          "say_for": "f5a6b5633e9a"
         }
       ]
     },
@@ -1782,7 +1786,7 @@
       "id": "x05-b06-s13",
       "template": "shot",
       "data": {
-        "prompt": "Wide overhead view of a worktable. A tall sage-green stack and a shorter terracotta weight face each other. A third company-result compartment between them is still closed, while a hand reaches toward its latch; the combined result is invisible.",
+        "prompt": "Wide overhead view of a worktable. A tall sage-green stack and a shorter terracotta weight face each other. Between them, a hand has just opened the company-result compartment to reveal a positive pale green stack. It has no ruler, marks or numerals, so its exact amount remains unseen.",
         "camera": "push in",
         "visual": "still"
       },
