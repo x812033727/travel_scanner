@@ -38,12 +38,12 @@ scope:
 - [x] R7 僅修 `et027` 時序與片尾卡片歸屬，重產精確劇本、逐句 claims；lint 與改寫限制再過。
 - [x] R7 精確劇本經新讀者來源隔離盲讀 13/13、獨立來源及卡片覆核通過；本機大綱及劇本關卡只記委託製作許可，並非站主本人審稿。
 - [x] R7 TTS 僅重錄十二句、其餘 97 次請求重用；110 句全檢剩 `et015` 一旗標，實測正文 511.2 秒。
-- [ ] R8 最後一輪只改 `et015`，待全新精確劇本盲讀及來源覆核後重錄該句，再全檢 110 句至零旗標、實測正文至少 8 分鐘。
+- [ ] R8b 最後一輪保留 `et015` 音訊修詞、補四句敘事回呼，待全新精確劇本盲讀及來源覆核後重錄五句，再全檢 110 句至零旗標、實測正文至少 8 分鐘。
 - [ ] 零音訊旗標及整集插圖／配樂上限確認後，處理插圖與後續媒體。
 
 ## How to verify
 
-史料入口及待決問題在 `docs/videos/curio-s19/research.md`；逐句對照在 `claims.md`。R8 `script.md` SHA-256 `b9d5d83154f03f8aba0445b3c58ea92e81072527dbbeafa83726464682196293`，110 句、100 張預定插圖，`lint --slug curio-s19 --json` 為 0 errors／0 warnings。R7 精確盲讀、來源覆核、十二句 TTS、實測正文及單一剩餘旗標見 `verify-7.md`；最後一輪 `et015` 調整見 `audio-rewrite-round2.md`。R8 待獨立審讀，尚未 TTS。
+史料入口及待決問題在 `docs/videos/curio-s19/research.md`；逐句對照在 `claims.md`。R8b `script.md` SHA-256 `5cd4402a833139ea9e4c0c4b6458f347eddcc4b441762033f9f0026cf4ef8a49`，110 句、100 張預定插圖，`lint --slug curio-s19 --json` 為 0 errors／0 warnings。R7 精確盲讀、來源覆核、十二句 TTS、實測正文及單一剩餘旗標見 `verify-7.md`；最後一輪 `et015` 調整見 `audio-rewrite-round2.md`。R8 兩位獨立讀者在 `no_recap` 都答否，R8b 四句回呼修正見 `audio-r8b-narrative-repair.md`；R8b 待獨立審讀，尚未 TTS。
 
 ## Notes
 
@@ -55,3 +55,5 @@ scope:
 - 2026-10-20：此票從先前 `codex-s05` 認領轉交 `codex-gpt6-s19-audio`，僅改 `docs/videos/curio-s19` 及本票。R5 的 `verify-5.md` 記下 110 句、實際正文 510.2 秒、兩輪重錄後 12 句旗標與配樂成果；其本機 script approval 綁舊 SHA，不能套到 R6。R6 以 [audio-rewrite-round1.md](../../docs/videos/curio-s19/audio-rewrite-round1.md) 列出十二句原文／轉寫／改寫，當時 R6 稿 SHA 為 `0ba634669a95b549f32e2d3fbc9250a68454ed69099e6940c1e819269836ea75`；`rewriteProblems` 0 違規、lint 0／0，TTS dry-run 僅 12 句約 274 字元待合成。本輪尚未送新 TTS 或 MiniMax；先等獨立盲讀與史料覆核。
 - 2026-10-20：R6 獨立盲讀 13/13，來源／視覺覆核 110/110 對照及 100/100 插圖提示詞通過，但 `et027` 的「刊出後」暗示未證的出版先後；片尾卡片把艾菲爾自述二十年經營權當成直接事實。兩份原收據保存在 `blind-seal-round6.md`、`source-visual-round6.md`。R7 修成「面對這封抗議信…」及「艾菲爾說：他有二十年經營權…」；[修正收據](../../docs/videos/curio-s19/audio-r7-source-repair.md) 列出舊／新完整 SHA、來源邊界和估算片長。R7 待全新盲讀／來源覆核，尚未 TTS 或畫圖。
 - 2026-10-20：R7 全新獨立盲讀 13/13、來源／畫面 110/110、130/130 固定連結、100/100 插圖提示詞與片尾卡片均過；憑根協調委託更新本機 outline/script gate，收據明言站主本人未讀。R7 TTS 只合成十二句 273 字元，音訊 567.567 秒，正文 511.2 秒；110 句全檢剩 `et015` 一旗標（Jev 0.04，`抗議信` 聽成 `康意興`），見 [第七輪收據](../../docs/videos/curio-s19/verify-7.md)。R8 最後一輪只把 `et015` 改成「抗議者寫道…」，舊劇本 gate 因此過期；新盲讀及來源覆核前不送 R8 TTS、音訊審核或圖片。
+- 2026-10-20：R8 `et015` 來源及視覺覆核通過，但兩位獨立、只讀劇本的讀者都對 `no_recap` 答否，分別指出塔尚未建成及名勝／無用的回述缺回呼。原答卷、CLI 失敗收據與逐行來源表留存於 [R8b 修正收據](../../docs/videos/curio-s19/audio-r8b-narrative-repair.md)。R8b 在**尚未合成的最後一輪**另修 `et062`、`et066`、`et067`、`et071`，改一張未畫的分鏡提示詞；目前 dry-run 五句約 101 字元，先等新的精確盲讀與來源覆核，不能沿用 R8 史料結果或 R7 本機劇本 gate。
+- 2026-10-20：R8b 新讀者在精確 SHA `5cd4402a833139ea9e4c0c4b6458f347eddcc4b441762033f9f0026cf4ef8a49` 的劇本上 13/13 通過，CLI 第十輪正式收據與原答卷都已存檔；四句變動及一張提示詞的獨立來源／視覺覆核仍待完成，故尚未更新 script gate 或送五句 TTS。
