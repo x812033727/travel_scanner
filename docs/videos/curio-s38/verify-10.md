@@ -1,0 +1,13 @@
+# S38 R8b period-art repair before further image spending
+
+2026-10-20. R8a's independently checked static prompts, story, claims and **112/112 zero-flag audio** are recorded in [verify-8.md](verify-8.md) and [verify-9.md](verify-9.md). The first two MiniMax pilot stills were generated at 01:02–01:03 UTC under that version. Both received automatic pass scores (`pf001` 9.29, `pf002` 10), but human visual inspection **rejected** them: `pf001` shows childlike figures in East Asian dress rather than adult 1666 London officials, and `pf002` shows a childlike modern figure holding a hole-riddled Swiss-style cheese rather than Pepys's hard Parmesan. The images are preserved under `/workspace/.video-work/curio-s38/review/rejected/` with SHA-256 `350c6024d0482f9564e37c43b0ec638f5a8d31b283d951dce0e5f9de1078129a` and `ce2f224c0c769d055e6730084f999809a6068c83c639783a9d91d834e8e022a1` respectively. Neither is accepted into a final cut. The run was interrupted before paying for further complete stills.
+
+The media ledger has music US$0.08 and two image-plus-judge pairs US$0.027 charged, plus one US$0.0035 image reservation for `pf003` whose submitted outcome was not recorded at interruption. The reservation remains held and counted toward the whole-episode **US$4.58 image-plus-music ceiling**; it has not been called free or released. Before more art, the coordinating agent changed **only the 111 `data.prompt` still descriptions** in [video.json](video.json). Twelve alternating source-safe material-culture descriptions tell the generator that visible people are grown 1660s British/English residents in period dress with hand-built wood, brick, plaster or stone surroundings, while preserving each shot's original action, location, light and camera. Six pit/cheese/diary prompts also explicitly require adult officials/readers and hard Parmesan with smooth rind and no holes. These are visual instructions, not additions to the spoken historical claims.
+
+| Frozen file | SHA-256 |
+| --- | --- |
+| `video.json` R8b | `ab93cbc5def915fcd082c5021be566c586c1e240daa40bd2b4cbed5de1f4eedb` |
+| `script.md` R8, unchanged | `e59ec137e3de3871e3b0e5063d8f6504d3eb2adb5fe22265eb3faa3d613d5951` |
+| `claims.md` R8, unchanged | `f9de8d2771b62cc327f4e599f002af8f3278cfb0f39dbed201e7fdc857201d42` |
+
+`lint --slug curio-s38 --json` reports **0 errors and 0 warnings**. The R8b prompts **await independent source/style review** on this exact JSON hash, followed by a small new image pilot with manual visual inspection. Only if that pilot depicts the correct period and object should the remaining still queue resume. The prior R8a 111-prompt audit applies to its older hash and does not constitute review of R8b.
