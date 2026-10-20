@@ -5801,9 +5801,21 @@ Ran: Node v24.13.0, Windows, in the worktree at `e456f3782` (clean): the baselin
 Non-claims: this is a 1-file incremental source duration review. It does not re-review the other 107 bound files or the unbound files the branch changes, including the component `admin-video-reviews.tsx` that moves the group; it does not judge whether the waiting group belongs below the catalog or the page's pagination, and it does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Fractional-frame brand-intro caption boundary increment: 2 files (2026-10-20)
+
+Reviewer: `codex-duration-independent-review`. Author: `codex-branding-boundary-fix`. Scope: DURATION_ONLY for `tools/video/core/branding.mjs` and `tools/video/core/branding.test.mjs` in `b2510746` (Crocs local preview and brand-topic gap commit). The reviewer did not write either source change and edits only this report and its receipt. `git show b2510746 --` for those two files was read in full. Their parent-commit hashes match the prior receipt and table (`da1e6352…` for the implementation, `1430f36c…` for the test); the current hashes are `d341aaba…` and `97a554bd…`. Before this increment, `node tools/video/long-form/cli.mjs check` failed on exactly those two stale bindings, with no plan or other source drift.
+
+The implementation change is confined to `shiftBrandingCues`: its existing `frameToMs(intro_frames)` offset and `introAtFrame(branding)` insertion point remain unchanged. It rounds that insertion point to integer milliseconds before comparing it to caption start times, which were already rounded to milliseconds by caption creation. The inverse comparison uses the rounded shifted boundary. The returned cue timestamps still use the same `Math.round(cue.start_ms + by)` and `Math.round(cue.end_ms + by)` expressions. At frame 1,357, the raw boundary is 45,233.333 ms but a cue starting there is recorded as 45,233 ms; previously it missed the comparison and displayed over the 5-second intro. It now shifts to 50,233 ms and returns to 45,233 ms on inversion. The new test covers both 150- and 151-frame intros and confirms that a cue before the boundary is unchanged. The moved cue's own span is preserved.
+
+No changed line sets a video frame count, body length, presentation duration, target, eight-minute or 480-second floor, 14,400-frame QA floor, measured-duration evidence, approval gate, or plan input. `presentationTimeline` and the duration policy files are byte-identical to the previously reviewed versions. A 5-second intro still adds 150 frames; this fix only determines which already-timed subtitle cues begin after it. Therefore the change cannot make an undersized body pass by borrowing branding time, or change a source catalog's planned runtime. No duration correction is required.
+
+Validation before rebinding: `node --test tools/video/core/branding.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs` passed 35/35 on Node v24.19.0. After updating the two SHA bindings and the report receipt, `node tools/video/long-form/cli.mjs check` passed all 473 plans and `node --test tools/video/long-form/review.test.mjs` passed 2/2. This review does not accept the Crocs media, source facts, branding artwork, YouTube links, or publication.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, and then the video review list order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the A01 duration increment was integrated with the story dub QA and thumbnail brand increments, then the stalled-video clause particle test increment, then the story waiting-cap increment, then the translator answer mending increment, then the curio hook cadence and music warning increment (main's latest increment, merged through #1577), then the curio host music bed and two-reader panel increment, then the PR #1589 merge with main after #1577, then the imported video eight-language panel increment, then the worker five-language titles and captions increment, then the worker five-language dubs increment, and then the video review list order increment, and now the fractional-frame brand-intro caption boundary increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5868,8 +5880,8 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
 | `tools/video/core/approvals.mjs` | `d97e182fb942071e49cbd9fb64a35efcb327251048945c388fa8678c28065577` |
 | `tools/video/core/approvals.test.mjs` | `51c4a632685a36221dcaf6ac926d5256879c1540f709b708945770d9e5e6adaf` |
-| `tools/video/core/branding.mjs` | `da1e635285601e1398d7e4233c20f8fab2e9f752c693c67e82512f2dffd4adaa` |
-| `tools/video/core/branding.test.mjs` | `1430f36cb542ce42548f9e8ee7182694b8679069cf9f64d446a4fdb56f3e5b89` |
+| `tools/video/core/branding.mjs` | `d341aaba2cc148e1c7c92e40396d432da52560cc5a3d9636a2b68f3aaf74a319` |
+| `tools/video/core/branding.test.mjs` | `97a554bdd2a4564e0cef66a3d60088378d92c82f20f22a2859fe2573b0d7efdf` |
 | `tools/video/core/drama.mjs` | `1977b6c69471aa60923eb18ddfd6ef0323284bef96d9cf3a88c5ff5d220dcd83` |
 | `tools/video/core/drama.test.mjs` | `d24c6bc6a247f8ad33a102687078fc5dae0da5f30e87861008eb3db550c35b17` |
 | `tools/video/core/duration.mjs` | `df4874326d1d098d19a8df5ed4010cc3454537cbc96217a4c4192dc622caea1d` |
