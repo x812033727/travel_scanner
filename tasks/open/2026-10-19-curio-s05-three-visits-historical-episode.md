@@ -26,7 +26,7 @@ scope:
 - [x] `video.json` 與 `script.md` 通過奇聞檔案局 lint；逐句主張可追到史料層級。
 - [x] 記錄最終稿的獨立盲讀與委派編輯劇本核准。
 - [x] R22 更新過的旁白逐句機器聽辨 97/97、0 flag，實測正文 8:55.833；原有配樂可重用。
-- [ ] 插圖、成片與上架包完成。
+- [x] 插圖、成片與本機上架包完成；站台 final/publish 仍待站主，YouTube 尚未上傳。
 
 ## Steps
 
@@ -42,7 +42,7 @@ scope:
 - [x] 對最新 R22 完成新讀者精確稿盲讀、委派劇本核准、受影響 TTS、全 97 句語音核對（0 flag）。
 - [x] 在共用額度時段內完成最終版 78 張插圖與原生尺寸覆核；保守帳本 US$2.321，低於含配樂的整集 US$3.56 上限。
 - [x] 完成單支六拍來源短片 `shorts.json`；精確稿、六張既有插圖雜湊與獨立 SG35 覆核通過，`from-episode --check` 免付費通過。
-- [ ] 取得站台分鏡審核後完成 clips、品牌組裝、字幕、成片 QA 與上架包。
+- [x] 取得站台分鏡審核後完成 clips、品牌組裝、字幕、成片 QA 與上架包。
 - [x] 製作 S05 Short 本機試片、6/6 逐句聽核、四語字幕與獨立直式畫面覆核；QA 10/13、上架包 3/4，剩餘項真實依賴長片核准與 YouTube 網址。
 - [ ] 長片通過站台 final 並取得真實影片網址後重跑 Short QA／上架包，再進入 Short 正式審核。
 - [ ] 完成媒體與交付，並在同一 PR 將票結案。
@@ -96,3 +96,5 @@ scope:
 - 2026-10-20：S05 單支 Short 以正文「凡三往」對照裴注引《魏略》「亮乃北行見備」，另明說裴援〈出師表〉反駁及異說傳話來源未明。`shorts.json` 精確 SHA `e48b28a92631fc36c1d0fd321fcc39a437ce64b5d1d9259051c5f2662e5d9e76`，六拍／6 句／146 字元；六張已接受的長片關鍵影格 SHA 由 `from-episode --check` 核過，獨立來源與刪除重複問句的窄覆核 PASS。無付費 Short 媒體；S34／S28 聲線時段先行，詳 [`verify-20.md`](../../docs/videos/curio-s05/verify-20.md)。
 
 - 2026-10-20：S28 釋出聲線後完成 S05 Short 31.57 秒本機直式試片（MP4 SHA `a1b6d0bac28565c7389423574f090b250fd2a62f8cf0cf46c529687765c50a60`）；語音 6/6、0 flags，獨立四語字幕語義與成片畫面 PASS。只以可逆 `client.report` 建 `cut` 草稿，站台讀回無 review／無 YouTube ID；未送正式審核。QA 10/13 只差長片未 final approved、長片無真實網址造成的 metadata／links，package 3/4 只差同一網址。詳 [`short-delivery.md`](../../docs/videos/curio-s05/short-delivery.md)。
+
+- 2026-10-20：站台已核准當前分鏡，78 張 still 的 `clips` manifest 零付費建立；本機 1080p 成片與品牌片頭片尾完成，SHA `349e716a174dd5fa28ab8ac687b426f04d3a0e665ede3d7a4b1a822be85eb5c6`，濃縮開場 46.27 秒、片頭 5 秒、片尾 21 秒；104 條繁中字幕、六章、成片檢查 `problems=[]`。獨立實際畫面和接點抽驗 PASS；QA 10/11 唯一未過項是雲端對頻道 URL 的 CONNECT 403，上傳包 4/4。依站主本對話委派採推薦方案記錄**本機精確 MP4 final 驗收**，不聲稱站台或站主本人核准；站台 `hand_pushed` final/publish 兩卡均待站主，YouTube 未上傳，Short 仍待真實長片網址。完整證據見 [`verify-21.md`](../../docs/videos/curio-s05/verify-21.md)。
