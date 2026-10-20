@@ -29,13 +29,13 @@
   "loops": [
     {
       "setup": "ef103",
-      "payoff": "ef516",
+      "payoff": "ef511",
       "what": "報告交給的「繼任者」，後來怎麼處理這座塔"
     },
     {
       "setup": "ef105",
       "payoff": "ef206",
-      "what": "1887 年合約裡的期限是什麼、到期交還什麼"
+      "what": "1887 年合約裡的期限，到期交還什麼"
     },
     {
       "setup": "ef106",
@@ -44,7 +44,7 @@
     },
     {
       "setup": "ef107",
-      "payoff": "ef311",
+      "payoff": "ef310",
       "what": "從塔上發往先賢祠的信號，收不收得到"
     },
     {
@@ -54,13 +54,13 @@
     },
     {
       "setup": "ef109",
-      "payoff": "ef512",
+      "payoff": "ef508",
       "what": "說鐵塔地基進水、可能會倒的那則外電：大水裡真正被淹的是什麼"
     },
     {
       "setup": "ef110",
-      "payoff": "ef501",
-      "what": "網路上說的 1909 年，塔下其實在忙什麼"
+      "payoff": "ef502",
+      "what": "網路上說它差點在 1909 年被拆，是不是真的"
     },
     {
       "setup": "ef208",
@@ -83,8 +83,8 @@
       "what": "遊客少了，艾菲爾拿塔做什麼"
     },
     {
-      "setup": "ef310",
-      "payoff": "ef311",
+      "setup": "ef309",
+      "payoff": "ef310",
       "what": "先賢祠收不收得到"
     },
     {
@@ -108,23 +108,28 @@
       "what": "「全世界獨一無二」說的是什麼"
     },
     {
-      "setup": "ef425",
-      "payoff": "ef501",
-      "what": "1909 年塔下在忙什麼"
-    },
-    {
-      "setup": "ef503",
-      "payoff": "ef504",
+      "setup": "ef426",
+      "payoff": "ef427",
       "what": "為什麼要報時"
     },
     {
-      "setup": "ef511",
-      "payoff": "ef512",
+      "setup": "ef428",
+      "payoff": "ef503",
+      "what": "美國小鎮報紙說它幾年內會被拆：是真的嗎"
+    },
+    {
+      "setup": "ef429",
+      "payoff": "ef501",
+      "what": "1910 年 1 月 1 日期限到了，鐵塔會怎樣"
+    },
+    {
+      "setup": "ef507",
+      "payoff": "ef508",
       "what": "大水裡真正泡水的是什麼"
     },
     {
-      "setup": "ef513",
-      "payoff": "ef514",
+      "setup": "ef509",
+      "payoff": "ef510",
       "what": "第一次報時等到什麼時候"
     }
   ],
@@ -453,7 +458,7 @@
       "lines": [
         {
           "id": "ef206",
-          "text": "期滿那天是一九一〇年一月一日；交還給巴黎市的，只是經營權，"
+          "text": "期滿的時候，交還給巴黎市的，只是經營權，"
         }
       ]
     },
@@ -816,31 +821,16 @@
       ]
     },
     {
-      "id": "drop",
+      "id": "ducretet",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged engineer with a neatly trimmed salt-and-pepper goatee, in a dark three-piece suit leaning over an iron railing high up early on a cloudy day, letting go of a small flat metal plate and glancing toward the camera as it falls, soft light from a pale sky",
+        "prompt": "Medium shot of an instrument maker in late middle age with a white goatee and round spectacles, in a beige workshop coat on a railed platform high above the misty rooftops of Paris on a quiet cloudy day, setting one plain wooden box with a single brass knob on a small stool and looking toward the camera, soft diffuse light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ef307",
-          "text": "從一九〇二年起，他還在塔上讓東西往下掉，量空氣的阻力。"
-        }
-      ]
-    },
-    {
-      "id": "ducretet",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an instrument maker in late middle age with a white goatee and round spectacles, in a beige workshop coat on a railed platform high above the misty rooftops of Paris on a quiet cloudy day, setting one plain wooden box with a single brass knob on a small stool and looking out at us, soft diffuse light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ef308",
           "text": "還記得開頭那串，從塔上發往先賢祠的信號嗎？",
           "emotion": "問句"
         }
@@ -850,13 +840,13 @@
       "id": "ducretet-key",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an instrument maker in late middle age with a white goatee and round spectacles, in a beige workshop coat pressing the brass knob of one plain wooden box with a single brass knob with one finger, concentrating at the onlooker, mild light",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of an instrument maker in late middle age with a white goatee and round spectacles, in a beige workshop coat pressing the brass knob of one plain wooden box with a single brass knob with one finger, concentrating out at us, soft light from a pale sky",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ef309",
+          "id": "ef308",
           "text": "一八九八年十月二十六日，發信號的，是一個叫杜克雷泰的人。"
         }
       ]
@@ -865,13 +855,13 @@
       "id": "pantheon",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a clean-shaven young telegraph operator in his twenties with neatly combed hair and a headset over his ears, in a buttoned waistcoat on a stone balcony on a misty afternoon, a great stone dome rising behind him, sitting beside one plain wooden box with a single brass knob with one hand pressed to his headset, wide eyes straight out at us, pale even light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a clean-shaven young telegraph operator in his twenties with neatly combed hair and a headset over his ears, in a buttoned waistcoat on a stone balcony on a misty afternoon, a great stone dome rising behind him, sitting beside one plain wooden box with a single brass knob with one hand pressed to his headset, wide eyes at the onlooker, pale even light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ef310",
+          "id": "ef309",
           "text": "中間隔著四公里，還有一大片高樓；先賢祠那頭，收得到嗎？",
           "emotion": "問句"
         }
@@ -887,7 +877,7 @@
       },
       "lines": [
         {
-          "id": "ef311",
+          "id": "ef310",
           "text": "收得到，而且一直很清楚，連起了濃霧也一樣。",
           "emotion": "篤定"
         }
@@ -897,13 +887,13 @@
       "id": "reverse",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a clean-shaven young telegraph operator in his twenties with neatly combed hair and a headset over his ears, in a buttoned waistcoat on the stone balcony pressing the knob of one plain wooden box with a single brass knob and frowning in puzzlement toward the lens, soft light from a pale sky",
-        "camera": "pan left",
+        "prompt": "Medium close-up of a clean-shaven young telegraph operator in his twenties with neatly combed hair and a headset over his ears, in a buttoned waistcoat on the stone balcony pressing the knob of one plain wooden box with a single brass knob and frowning in puzzlement straight out at us, soft light from a pale sky",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ef312",
+          "id": "ef311",
           "text": "偏偏反過來，從先賢祠發到塔上，什麼都收不到。",
           "emotion": "轉"
         }
@@ -913,13 +903,13 @@
       "id": "academy",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an instrument maker in late middle age with a white goatee and round spectacles, in a beige workshop coat at a lectern in a tall academy hall by a big window on a dull afternoon, holding a closed folder and bowing slightly at the viewer, mild light from an open doorway",
-        "camera": "push in",
+        "prompt": "Medium shot of an instrument maker in late middle age with a white goatee and round spectacles, in a beige workshop coat at a lectern in a tall academy hall by a big window on a dull afternoon, holding a closed folder and bowing slightly toward the lens, mild light from an open doorway",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ef313",
+          "id": "ef312",
           "text": "十一月七日，他把這兩個結果，都寫進給法國科學院的報告。"
         }
       ]
@@ -928,15 +918,30 @@
       "id": "height",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an instrument maker in late middle age with a white goatee and round spectacles, in a beige workshop coat on the high railed platform, looking down over the railing at the misty city far below and then back at us with a thoughtful smile, gentle overcast light",
+        "prompt": "Medium shot of an instrument maker in late middle age with a white goatee and round spectacles, in a beige workshop coat on the high railed platform, looking down over the railing at the misty city far below and then back at the viewer with a thoughtful smile, gentle overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef313",
+          "text": "我們覺得，這是這座塔第一次，靠它的高度，替自己說話。",
+          "emotion": "輕輕的"
+        }
+      ]
+    },
+    {
+      "id": "drop",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged engineer with a neatly trimmed salt-and-pepper goatee, in a dark three-piece suit leaning over an iron railing high up early on a cloudy day, letting go of a small flat metal plate and glancing at us as it falls, mild light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ef314",
-          "text": "我們覺得，這是這座塔第一次，靠它的高度，替自己說話。",
-          "emotion": "輕輕的"
+          "text": "從一九〇二年起，艾菲爾還在塔上讓東西往下掉，量空氣的阻力。"
         }
       ]
     },
@@ -1283,54 +1288,22 @@
       "lines": [
         {
           "id": "ef423",
-          "text": "五月十五日，經營權再延十一年，到一九二六年。"
+          "text": "一九〇八年五月十五日，經營權再延十一年，到一九二六年。"
         }
       ]
     },
     {
-      "id": "no-longer",
+      "id": "dig",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table on a damp afternoon, closing a thick bound volume with both hands and raising their eyebrows toward the lens, soft window light",
+        "prompt": "Medium shot of a freckled clean-shaven army sapper in his twenties with a round face, in canvas work overalls and a cloth cap at the edge of a wide trench in a park lawn on a hazy forenoon, the tall lattice tower rising behind him in the haze, leaning on a shovel and grinning toward the lens, pale even light",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ef424",
-          "text": "一九三六年一篇法學論文說，到了這時候，已經沒有人在談留還是拆了。"
-        }
-      ]
-    },
-    {
-      "id": "busy-q",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at the archive table, turning a tiny metal tower souvenir model slowly in one hand and peering at its base with a curious look at the viewer, soft daylight",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ef425",
-          "text": "那開頭說的一九〇九年，塔下在忙什麼？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "dig",
-      "chapter": "一九一〇年一月，塞納河淹進戰神廣場",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a freckled clean-shaven army sapper in his twenties with a round face, in canvas work overalls and a cloth cap at the edge of a wide trench in a park lawn on a hazy forenoon, the tall lattice tower rising behind him in the haze, leaning on a shovel and grinning at us, pale even light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ef501",
-          "text": "在挖地洞。陸軍的地下電台，就蓋在離塔大約兩百公尺的草坪底下；"
+          "text": "到了一九〇九年，陸軍的地下電台，正在離塔大約兩百公尺的草坪底下施工；"
         }
       ]
     },
@@ -1338,13 +1311,13 @@
       "id": "longitude",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an astronomer in his sixties with a long white beard, in a long dark coat in an observatory room by a big window on an overcast afternoon, beside a tall wooden pendulum clock seen from the side, holding up a pocket chronometer toward the camera, mild light from an open doorway",
-        "camera": "tilt down",
+        "prompt": "Medium shot of an astronomer in his sixties with a long white beard, in a long dark coat in an observatory room by a big window on a damp afternoon, beside a tall wooden pendulum clock seen from the side, holding up a pocket chronometer at the viewer, soft window light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ef502",
+          "id": "ef425",
           "text": "同一年，經度局出面安排：讓塔上的電台，每天發兩次報時信號。"
         }
       ]
@@ -1353,49 +1326,19 @@
       "id": "ship-time",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a weathered ship's captain in his sixties with a white beard, in a dark wool pea coat and a peaked cap on the deck of a ship on a misty sea morning, holding a pocket watch to his ear and squinting out at us, soft light from a pale sky",
-        "camera": "pan right",
+        "prompt": "Medium shot of a weathered ship's captain in his sixties with a white beard, in a dark wool pea coat and a peaked cap on the deck of a ship on a misty sea morning, holding a pocket watch to his ear and squinting at us, soft light from a pale sky",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ef503",
+          "id": "ef426",
           "text": "為什麼要報時？",
           "emotion": "問句"
         },
         {
-          "id": "ef504",
-          "text": "為了讓海上的船對時、算經度；"
-        }
-      ]
-    },
-    {
-      "id": "clock-cable",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of an astronomer in his sixties with a long white beard, in a long dark coat kneeling by a small hatch in a stone floor on a mild day, feeding a thick cable down into it and glancing up at the onlooker, soft light from a skylight",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ef505",
-          "text": "報時的鐘在巴黎天文台，用地下電纜，接到塔下的電台。"
-        }
-      ]
-    },
-    {
-      "id": "windlab",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an elderly engineer in his seventies with a short white beard, in a dark three-piece suit inside a plain wooden shed at the foot of the tower on a quiet cloudy day, holding a small flat plate in front of a large electric fan, his beard blowing, a delighted look straight out at us, soft window light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ef506",
-          "text": "那年八月，艾菲爾也在塔旁蓋了一間空氣動力實驗室；電，由鐵塔供應。"
+          "id": "ef427",
+          "text": "為了讓海上的船對時、算經度。"
         }
       ]
     },
@@ -1403,15 +1346,78 @@
       "id": "rumor",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a small-town press editor in his fifties with rolled shirtsleeves and a celluloid visor leaning back in a wooden chair by a window on a mild day, chewing a pencil with a doubtful squint toward the lens, soft daylight",
+        "prompt": "Medium shot of a small-town press editor in his fifties with rolled shirtsleeves and a celluloid visor leaning back in a wooden chair by a window on a mild day, chewing a pencil with a doubtful squint toward the camera, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef428",
+          "text": "偏偏那年八月，美國一份小鎮報紙還在傳：它大概再過幾年，就會被拆掉。",
+          "emotion": "一本正經"
+        }
+      ]
+    },
+    {
+      "id": "busy-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at the archive table, turning a tiny metal tower souvenir model slowly in one hand and peering at its base with a curious look out at us, mild light from an open doorway",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef429",
+          "text": "那合約原本的期限，一九一〇年一月一日，到了那天，鐵塔會怎樣？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "new-year",
+      "chapter": "一九一〇年一月，塞納河淹進戰神廣場",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a city councillor in his fifties with mutton-chop whiskers and pince-nez, in a dark frock coat at the wide desk by the tall window on a quiet still morning, leaning back with folded hands and a calm smile at the onlooker, soft light from a skylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef501",
+          "text": "不會怎樣。那天到期的，只是艾菲爾原本的經營權，而它早就延到了一九二六年。"
+        }
+      ]
+    },
+    {
+      "id": "no-vote",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at the archive table on an overcast afternoon, turning a tiny metal tower souvenir model slowly in one hand and shaking their head straight out at us, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ef502",
+          "text": "開頭網路上說的一九〇九年，我們翻到的紀錄裡，沒有任何拆塔的計畫、提案或表決；"
+        }
+      ]
+    },
+    {
+      "id": "rumor-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a small-town press editor in his fifties with rolled shirtsleeves and a celluloid visor at a cluttered desk in a small press office on a quiet cloudy day, shrugging sheepishly with the pencil behind his ear, a guilty grin toward the lens, soft daylight",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ef507",
-          "text": "偏偏同一個月，美國一份小鎮報紙還寫：它大概再過幾年，就會被拆掉。",
-          "emotion": "一本正經"
+          "id": "ef503",
+          "text": "那份美國小報說的「快拆了」，只是傳聞。",
+          "emotion": "輕描淡寫"
         }
       ]
     },
@@ -1419,14 +1425,14 @@
       "id": "opening",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a freckled clean-shaven army sapper in his twenties with a round face, in canvas work overalls and a cloth cap at the top of stone steps leading down to a low cellar door in a park on a dull afternoon, carrying one plain wooden box with a single brass knob in both arms and smiling at the viewer, gentle overcast light",
+        "prompt": "Medium shot of a freckled clean-shaven army sapper in his twenties with a round face, in canvas work overalls and a cloth cap at the top of stone steps leading down to a low cellar door in a park on a mild day, carrying one plain wooden box with a single brass knob in both arms and smiling at the viewer, gentle overcast light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ef508",
-          "text": "報時，原本預定隔年年初開始。"
+          "id": "ef504",
+          "text": "塔下的電台，原本預定這時候，開始對外報時。"
         }
       ]
     },
@@ -1440,7 +1446,7 @@
       },
       "lines": [
         {
-          "id": "ef509",
+          "id": "ef505",
           "text": "沒想到，一九一〇年一月底，塞納河淹大水；",
           "emotion": "轉"
         }
@@ -1456,7 +1462,7 @@
       },
       "lines": [
         {
-          "id": "ef510",
+          "id": "ef506",
           "text": "開頭那則說它可能會倒的外電，就是這時候發出來的。",
           "emotion": "緊張"
         }
@@ -1472,7 +1478,7 @@
       },
       "lines": [
         {
-          "id": "ef511",
+          "id": "ef507",
           "text": "真正泡在水裡的，是什麼？",
           "emotion": "問句"
         }
@@ -1488,7 +1494,7 @@
       },
       "lines": [
         {
-          "id": "ef512",
+          "id": "ef508",
           "text": "是那座地下電台：下水道一破，整個電台都淹了，儀器多少都壞了。"
         }
       ]
@@ -1497,13 +1503,13 @@
       "id": "wait-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a freckled clean-shaven army sapper in his twenties with a round face, in canvas work overalls and a cloth cap on a bench outside on a still, cloudy morning, drying one plain wooden box with a single brass knob with a cloth and glancing hopefully at the onlooker, soft light from a pale sky",
+        "prompt": "Medium close-up of a freckled clean-shaven army sapper in his twenties with a round face, in canvas work overalls and a cloth cap on a bench outside on a quiet cloudy day, drying one plain wooden box with a single brass knob with a cloth and glancing hopefully at the onlooker, soft light from a pale sky",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ef513",
+          "id": "ef509",
           "text": "那第一次報時，要等到什麼時候？",
           "emotion": "問句"
         }
@@ -1519,7 +1525,7 @@
       },
       "lines": [
         {
-          "id": "ef514",
+          "id": "ef510",
           "text": "等到五月二十三日，塔上的電台，才第一次對外發出報時。",
           "emotion": "放慢"
         }
@@ -1535,13 +1541,8 @@
       },
       "lines": [
         {
-          "id": "ef515",
-          "text": "還記得那份報告交給的繼任者嗎？",
-          "emotion": "問句"
-        },
-        {
-          "id": "ef516",
-          "text": "法國審計法院後來寫，經營權一延再延，延到了一九八〇年；這份檔案，存檔。",
+          "id": "ef511",
+          "text": "還記得那些繼任者嗎？他們沒拆，經營權還一延再延，延到了一九八〇年；這份檔案，存檔。",
           "emotion": "篤定，收尾乾脆"
         }
       ]
@@ -1558,12 +1559,12 @@
       },
       "lines": [
         {
-          "id": "ef517",
+          "id": "ef512",
           "text": "你第一次聽到艾菲爾鐵塔差點被拆，是在哪裡？",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "ef518",
+          "id": "ef513",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }

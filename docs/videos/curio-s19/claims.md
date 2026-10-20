@@ -4,8 +4,8 @@
 來源代號見 S19.md〈用了哪些來源〉（CONV1887 1887 年 1 月 8 日合約印本、TEMPS1887《Le Temps》1887 年 2 月 14 日、EIFFEL1900 艾菲爾《La Tour de trois cents mètres》、
 EIFFEL-AIR 艾菲爾 1910 年空氣動力書、MORICE1936 Morice 法學論文（逐字引市議會文件）、TURPAIN1908、ROTHE1913、BDL1915 經度局、LOC 當年美國報紙）；
 第 41–45 列是寫稿前依覆核補進表裡的（第 41 列的 COUR1956 法國審計法院報告寫在列內）。查核日期一律 2026-10-20；網址在 `video.json` 的 `sources`。
-行號是 `s19_build.py` 重編後的輸出號碼。沒列出的句子是問句、轉場、回呼或鉤子（ef104、ef110、ef208、ef217、ef226、ef304、ef308、ef310、ef315、ef402、ef408、
-ef414、ef420、ef425、ef503、ef511、ef513、ef515、ef517、ef518），不帶新事實；ef314 是標明「我們覺得」的意見。
+行號是 `s19_build.py` 重編後的輸出號碼。沒列出的句子是問句、轉場、回呼或鉤子（ef104、ef110、ef208、ef217、ef226、ef304、ef307、ef315、ef402、ef408、
+ef414、ef420、ef426、ef507、ef509、ef512、ef513），不帶新事實；ef313 是標明「我們覺得」的意見。
 
 | 行 | 旁白（節錄） | 列 | 出處 | 狀態 |
 | --- | --- | --- | --- | --- |
@@ -22,7 +22,7 @@ ef414、ef420、ef425、ef503、ef511、ef513、ef515、ef517、ef518），不�
 | ef202 | 代表國家的部長洛克華，代表巴黎市的塞納省長普貝爾，還有艾菲爾自己 | #3 | CONV1887「M. Édouard Lockroy, Ministre du commerce et de l'industrie … agissant au nom de l'État」「M. Eugène Poubelle, préfet de la Seine, agissant au nom de la Ville de Paris」「M. Eiffel … agissant en son nom personnel」 | 確認 |
 | ef203 ef204 | 一百五十萬法郎，再加上博覽會那一年，跟從一八九〇年一月一日起，二十年的經營權 | #4 | CONV1887 第 7 條「une somme de 1,500,000 francs … la jouissance de l'exploitation de la tour pendant l'année de l'Exposition et pendant les vingt années qui suivront, à dater du 1er janvier 1890」 | 確認；jouissance 譯「經營權」 |
 | ef205 | 博覽會一結束，就歸巴黎市所有 | #5 | CONV1887 第 11 條「Après l'Exposition et dès la remise du parc du Champ de Mars, la Ville deviendra propriétaire de la tour」 | 確認 |
-| ef206 | 期滿那天是一九一〇年一月一日；交還給巴黎市的，只是經營權 | #5 #33 | 第 11 條「cette jouissance fera retour à la Ville de Paris」；MORICE1936 p. 104「devait expirer le 1er janvier 1910」 | CHANGED 的收法：交還的是經營權，不是塔（回收 ef105） |
+| ef206 | 期滿的時候，交還給巴黎市的，只是經營權 | #5 | CONV1887 第 11 條「cette jouissance fera retour à la Ville de Paris」 | CHANGED 的收法：交還的是經營權，不是塔（回收 ef105）；期滿日留到 ef429 才說 |
 | ef207 | 合約要他把塔保養好，再交回去 | #5 | 第 11 條「en bon état d'usage et d'entretien」 | 確認 |
 | ef209 | 沒有。全文唯一讓國家可以拆的一條，是艾菲爾蓋不完的時候 | #6 | CONV1887 第 15 條「L'État peut aussi démolir les constructions effectuées」（前提是艾菲爾不履約或停工） | CHANGED：合約沒有期滿拆除條款；第 2 條轉述的訴狀不是條款 |
 | ef210 | 每一層樓，都留一間專用的房間，給科學或軍事實驗用 | #8 | CONV1887 第 8 條「M. Eiffel réservera à chaque étage une salle spéciale」「expériences scientifiques ou militaires」 | 確認 |
@@ -42,12 +42,12 @@ ef414、ef420、ef425、ef503、ef511、ef513、ef515、ef517、ef518），不�
 | ef303 | 到了一八九八年，一年只剩十八萬三千多 | #21 | EIFFEL1900 第五部〈Tableau général des recettes〉1898 年「183.391」 | 依覆核：看過頁面圖，183,391 是 1898 年 |
 | ef305 | 塔一蓋好，塔頂那個直徑一點六公尺的小平台，就放上了氣象儀器 | #24 | EIFFEL1900「dès l'origine de la construction, en 1889 … un service de météorologie」「la petite plate-forme de 1,60 m de diamètre」 | 確認 |
 | ef306 | 數據再用電纜，送到旁邊的中央氣象局 | #24 | 第 24 列備註（EIFFEL1900 第六部第 II 章） | 確認 |
-| ef307 | 從一九〇二年起，他還在塔上讓東西往下掉，量空氣的阻力 | #36 | EIFFEL-AIR〈Complément〉「expériences faites à la Tour Eiffel avec un appareil à chute libre (1902-1906)」；MORICE1936 p. 90「la résistance de l'air pendant la chute des corps」 | 確認 |
-| ef309 | 一八九八年十月二十六日，發信號的，是一個叫杜克雷泰的人 | #25 | EIFFEL1900 轉載 Ducretet「que j'ai commencés le 26 octobre」 | 確認；不說 11 月 5 日、不說打電話 |
-| ef310 | 中間隔著四公里，還有一大片高樓 | #25 | 同上「La distance franchie est de 4 km et l'intervalle est occupé par un grand nombre de constructions élevées」 | 確認 |
-| ef311 | 收得到，而且一直很清楚，連起了濃霧也一樣 | #25 | 同上「les signaux reçus au Panthéon ont toujours été très nets, même par un brouillard assez épais」 | 確認（回收 ef107） |
-| ef312 | 從先賢祠發到塔上，什麼都收不到 | #25 | 同上「le Panthéon devenant transmetteur et la Tour Eiffel réceptrice, on n'obtient aucune réception d'ondes」 | 確認 |
-| ef313 | 十一月七日，他把這兩個結果，都寫進給法國科學院的報告 | #25 | EIFFEL1900「Nous en reproduisons le compte rendu (7 novembre 1898)」 | 確認；科學院原刊 UNOPENED，卡片標「艾菲爾 1900 年書中轉載」 |
+| ef308 | 一八九八年十月二十六日，發信號的，是一個叫杜克雷泰的人 | #25 | EIFFEL1900 轉載 Ducretet「que j'ai commencés le 26 octobre」 | 確認；不說 11 月 5 日、不說打電話 |
+| ef309 | 中間隔著四公里，還有一大片高樓 | #25 | 同上「La distance franchie est de 4 km et l'intervalle est occupé par un grand nombre de constructions élevées」 | 確認 |
+| ef310 | 收得到，而且一直很清楚，連起了濃霧也一樣 | #25 | 同上「les signaux reçus au Panthéon ont toujours été très nets, même par un brouillard assez épais」 | 確認（回收 ef107） |
+| ef311 | 從先賢祠發到塔上，什麼都收不到 | #25 | 同上「le Panthéon devenant transmetteur et la Tour Eiffel réceptrice, on n'obtient aucune réception d'ondes」 | 確認 |
+| ef312 | 十一月七日，他把這兩個結果，都寫進給法國科學院的報告 | #25 | EIFFEL1900「Nous en reproduisons le compte rendu (7 novembre 1898)」 | 確認；科學院原刊 UNOPENED，卡片標「艾菲爾 1900 年書中轉載」 |
+| ef314 | 從一九〇二年起，艾菲爾還在塔上讓東西往下掉，量空氣的阻力 | #36 | EIFFEL-AIR〈Complément〉「expériences faites à la Tour Eiffel avec un appareil à chute libre (1902-1906)」；MORICE1936 p. 90「la résistance de l'air pendant la chute des corps」 | 確認；放在 1898 年之後，照年份往前走 |
 | ef401 | 一九〇三年，塞納省長寫信給專管鐵塔的委員會 | #26 | MORICE1936 p. 89「M. le Préfet de la Seine l'informe qu'il serait heureux de connaître les observations que la Commission peut avoir à lui soumettre」 | 確認（回收 ef315） |
 | ef402 | 合約到期的時候，這座塔，要保留，還是拆除？ | #26 | 同上「au sujet de la question de la conservation ou de la suppression de la Tour, à l'échéance du traité actuel」 | 確認（卡片引原文） |
 | ef403 | 十月十日開會，委員會全票認為：保留它，有真正的好處 | #26 | 1903 年 10 月 10 日紀錄；p. 91「La Commission estime à l'unanimité que … la conservation de la Tour aurait un véritable intérêt」 | 確認 |
@@ -66,16 +66,18 @@ ef414、ef420、ef425、ef503、ef511、ef513、ef515、ef517、ef518），不�
 | ef419 | 同一年，陸軍部要把天線，直接掛上塔頂 | #31 | MORICE1936 pp. 94–96（1908 年 4 月 3 日決議、陸軍部說明）；第 27 列 MORICE1936 p. 99「supports d'antennes」 | 確認；「有人當真了」是點名接回 ef225 的說法，不說 1903 年艾菲爾自掏腰包 |
 | ef421 | 以它的形狀，加上緊鄰塞納河，它是目前全世界獨一無二的天線支架 | #31 | MORICE1936 pp. 93–94「La tour Eiffel est, par sa forme et sa situation au voisinage de la Seine, un support d'antennes, pour le moment, unique au monde.」 | 確認（回收 ef108；卡片引原文） |
 | ef422 | 陸軍的許可，就綁在鐵塔公司的經營權上 | #43 | MORICE1936 p. 95「Ladite autorisation est accordée jusqu'à l'expiration de la concession accordée à la Société de la tour Eiffel」 | 依覆核新增 |
-| ef423 | 五月十五日，經營權再延十一年，到一九二六年 | #31 | MORICE1936 p. 102 省長令「est prorogée … pour une période de onze années à partir du 1er janvier 1915, c'est-à-dire jusqu'au 1er janvier 1926」 | 確認 |
-| ef424 | 一九三六年一篇法學論文說，到了這時候，已經沒有人在談留還是拆了 | #31 | MORICE1936 p. 93「Il n'est plus question ni de l'harmonie du jardin du Champ-de-Mars, ni de la conservation ou de la démolition de la tour Eiffel.」 | 掛名 1936 年論文 |
-| ef501 | 陸軍的地下電台，就蓋在離塔大約兩百公尺的草坪底下 | #31 #37 #33 | 第 31 列備註（地下電台蓋在離塔約 200 公尺的草坪下）；ROTHE1913「les travaux d'installation du souterrain commencèrent. Ils étaient terminés en 1910」 | 確認（回收 ef110、ef425）：1909 年塔下在施工，沒有拆除計畫（第 33 列） |
-| ef502 | 同一年，經度局出面安排：讓塔上的電台，每天發兩次報時信號 | #37 | BDL1915「In 1909 the Bureau des Longitudes … took the initiative … for the transmission of time signals twice daily」 | 確認 |
-| ef504 ef505 | 為了讓海上的船對時、算經度；報時的鐘在巴黎天文台，用地下電纜，接到塔下的電台 | #37 | 第 37 列備註 | 確認 |
-| ef506 | 那年八月，艾菲爾也在塔旁蓋了一間空氣動力實驗室；電，由鐵塔供應 | #36 | EIFFEL-AIR〈Complément〉「laboratoire du Champ-de-Mars (août 1909 à août 1911)」；〈Avant-propos〉「dans le voisinage de la Tour, dont le service électrique lui transmet la puissance mécanique de 70 chevaux」 | 確認 |
-| ef507 | 同一個月，美國一份小鎮報紙還寫：它大概再過幾年，就會被拆掉 | #34 | *Rawlins Republican*（Wyo.）1909-08-28 p. 3「the Eiffel tower, which, however, probably will be torn down in a few years」 | 當時的傳聞，掛「報紙還寫」，不當決定 |
-| ef508 | 報時，原本預定隔年年初開始 | #37 | ROTHE1913「Le service devait être inauguré vers le début de l'année 1910」 | 確認 |
-| ef509 | 一九一〇年一月底，塞納河淹大水 | #37 | ROTHE1913「crue de la Seine, fin janvier 1910」 | 確認 |
-| ef510 | 開頭那則說它可能會倒的外電，就是這時候發出來的 | #44 | *New-York Tribune* 1910-01-23 p. 4（AP，巴黎 1 月 22 日電） | 依覆核：只當外電（回收 ef109） |
-| ef512 | 是那座地下電台：下水道一破，整個電台都淹了，儀器多少都壞了 | #37 | ROTHE1913「Tout le poste fut submergé par suite de la rupture d'un égout」「tous les appareils furent plus ou moins endommagés」 | 確認 |
-| ef514 | 等到五月二十三日，塔上的電台，才第一次對外發出報時 | #37 | ROTHE1913「ce n'est que le 23 mai que le premier envoi de l'heure put avoir lieu」 | 確認 |
-| ef516 | 法國審計法院後來寫，經營權一延再延，延到了一九八〇年；這份檔案，存檔 | #41 #32 | COUR1956 pp. 88–89「par deux fois, en 1906 et en 1908, prolongea」「exigea une prorogation de vingt ans」「la ville dut lui consentir le droit d'exploiter la tour jusqu'en 1980」 | 依覆核：四段累加，不說「1910 年續約七十年」；點名回呼 ef103 的繼任者，結檔句只講一次 |
+| ef423 | 一九〇八年五月十五日，經營權再延十一年，到一九二六年 | #31 | MORICE1936 p. 102 省長令「est prorogée … pour une période de onze années à partir du 1er janvier 1915, c'est-à-dire jusqu'au 1er janvier 1926」 | 確認 |
+| ef424 | 到了一九〇九年，陸軍的地下電台，正在離塔大約兩百公尺的草坪底下施工 | #31 #37 #33 | 第 31 列備註（地下電台蓋在離塔約 200 公尺的草坪下）；ROTHE1913「les travaux d'installation du souterrain commencèrent. Ils étaient terminés en 1910」；第 33 列「1909 年時…陸軍地下電台正在施工」 | 確認 |
+| ef425 | 同一年，經度局出面安排：讓塔上的電台，每天發兩次報時信號 | #37 | BDL1915「In 1909 the Bureau des Longitudes … took the initiative … for the transmission of time signals twice daily」 | 確認 |
+| ef427 | 為了讓海上的船對時、算經度 | #37 | 第 37 列備註 | 確認（回收 ef426） |
+| ef428 | 那年八月，美國一份小鎮報紙還在傳：它大概再過幾年，就會被拆掉 | #34 | *Rawlins Republican*（Wyo.）1909-08-28 p. 3「the Eiffel tower, which, however, probably will be torn down in a few years」 | 當時的傳聞，用「還在傳」框住，ef503 點破 |
+| ef429 | 那合約原本的期限，一九一〇年一月一日，到了那天，鐵塔會怎樣？ | #33 | MORICE1936 p. 104「la concession d'exploitation de la tour Eiffel devait expirer le 1er janvier 1910」 | 問句帶期滿日（ef501 回答） |
+| ef501 | 不會怎樣。那天到期的，只是艾菲爾原本的經營權，而它早就延到了一九二六年 | #5 #29 #31 #33 | 第 11 條（到期的是經營權）；MORICE1936 p. 104「Par l'arrêté préfectoral du 1er décembre 1906, le terme en fut reculé jusqu'au 1er janvier 1915. Les conventions de 1908 … onze années supplémentaires」 | CHANGED 的收法：標題的答案（回收 ef429） |
+| ef502 | 開頭網路上說的一九〇九年，我們翻到的紀錄裡，沒有任何拆塔的計畫、提案或表決 | #33 | 第 33 列判定與備註；〈獨立覆核〉第 2 點「找不到任何一份拆塔的計畫、提案或表決，1909 年沒有，其他年份也沒有」 | 依覆核；點名回呼 ef110 的標題問題，答在這裡 |
+| ef503 | 那份美國小報說的「快拆了」，只是傳聞 | #34 | 第 34 列「都是美國小報轉載的通稿，傳聞不是決定」 | 點破 ef428 |
+| ef504 | 塔下的電台，原本預定這時候，開始對外報時 | #37 | ROTHE1913「Le service devait être inauguré vers le début de l'année 1910」 | 確認 |
+| ef505 | 一九一〇年一月底，塞納河淹大水 | #37 | ROTHE1913「crue de la Seine, fin janvier 1910」 | 確認 |
+| ef506 | 開頭那則說它可能會倒的外電，就是這時候發出來的 | #44 | *New-York Tribune* 1910-01-23 p. 4（AP，巴黎 1 月 22 日電） | 依覆核：只當外電（點名回呼 ef109） |
+| ef508 | 是那座地下電台：下水道一破，整個電台都淹了，儀器多少都壞了 | #37 | ROTHE1913「Tout le poste fut submergé par suite de la rupture d'un égout」「tous les appareils furent plus ou moins endommagés」 | 確認（回收 ef109） |
+| ef510 | 等到五月二十三日，塔上的電台，才第一次對外發出報時 | #37 | ROTHE1913「ce n'est que le 23 mai que le premier envoi de l'heure put avoir lieu」 | 確認 |
+| ef511 | 還記得那些繼任者嗎？他們沒拆，經營權還一延再延，延到了一九八〇年；這份檔案，存檔 | #41 #32 #33 | COUR1956 pp. 88–89「par deux fois, en 1906 et en 1908, prolongea」「exigea une prorogation de vingt ans」「la ville dut lui consentir le droit d'exploiter la tour jusqu'en 1980」 | 依覆核：四段累加，不說「1910 年續約七十年」，審計法院掛在卡片 kicker；點名回呼 ef103 的繼任者，結檔句只講一次，一句答標題（他們沒拆）並補 1980 年 |
