@@ -25,6 +25,7 @@ scope:
 - [x] A／B 企劃推薦 A、固定來源 URL/SHA 與精確段落，標出重印本／後出分析界線。
 - [x] 30–60 秒濃縮、原版 5 秒片頭位置、正文保守至少八分鐘的繁中逐句稿及 `video.json` 對應。
 - [x] 逐句來源與書面畫面提示、lint 0 error／0 warning、作者自檢與未完成關卡交接。
+- [x] R1 獨立覆核 HOLD 的來源錨點、旁白及書面畫面 R2 差分修復；作者收據記精確 SHA，保持待獨立重核。
 
 ## Steps
 
@@ -32,11 +33,16 @@ scope:
 - [x] 固定下載 Locke 1859／Jacoby 1902 全文、記 SHA 與來源限制。
 - [x] 生成 133 景、136 句／12 個 loops，重生 `script.md`，檢查同文與時間。
 - [x] 執行 lint 與 task 檢查、記六份交付的精確 SHA 後釋出本票。
+- [x] R2 對照 R1 逐項修復，重生劇本並重核 136 句逐字一致、保守正文八分鐘及畫面比例。
 
 ## How to verify
 
-在 repo 根目錄跑 `VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s49 --json`、`npm run check:tasks`；精確來源與輸出雜湊、逐句核對結果見 [`docs/videos/curio-s49/verify-1.md`](../../docs/videos/curio-s49/verify-1.md)。前製 lint 不等於獨立查核或 TTS 實測。
+在 repo 根目錄跑 `VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s49 --json`、`npm run check:tasks`；R2 精確來源與輸出雜湊、逐句核對結果見 [`docs/videos/curio-s49/verify-2.md`](../../docs/videos/curio-s49/verify-2.md)。前製 lint 不等於獨立查核或 TTS 實測。
 
 ## Notes
 
-截至 2026-10-20，只有作者自檢，**沒有**獨立來源／書面畫面覆核、兩位盲讀、網站 A／劇本關卡、TTS、圖像、配樂與成片。1859 重印本含出版社序與對 1835 報紙反應選錄；Jacoby 的報紙引句又取自該重印本，不構成對 1835 原紙的第二份獨立見證。六萬冊與銷量五倍只歸屬 1859 出版者。帶月面生物與巨鏡的畫面都是報導內容的卡通示意。本文保守文字估正文 2,653 單位／325 單位每分約 8:10，須等實際音訊覆核；品牌片頭及 Studio 片尾框只有計畫。
+截至 2026-10-20，已有 R1 獨立來源／書面畫面覆核但結論 **HOLD**；R2 目前只有作者差分修復與自檢，**尚無 R2 獨立結論**，亦無兩位盲讀、網站 A／劇本關卡、TTS、圖像、配樂與成片。1859 重印本含出版社序與對 1835 報紙反應選錄；Jacoby 的報紙引句又取自該重印本，不構成對 1835 原紙的第二份獨立見證。六萬冊與發行量五倍只歸屬 1859 出版者。帶月面生物與巨鏡的畫面都是報導內容的卡通示意。R2 保守文字估正文 2,660 單位／325 單位每分約 8:11，須等實際音訊覆核；品牌片頭及 Studio 片尾框只有計畫。
+
+2026-10-20 獨立來源與書面畫面覆核已落在 [`docs/videos/curio-s49/review/r1-source-independent.md`](../../docs/videos/curio-s49/review/r1-source-independent.md)，結論 **HOLD**：`moon083` 將原文「不像鳥」說反；`moon066` 與 `moon079` 書面提示分別指定無角動物、單隻翼人，與原文及當句旁白衝突；`moon123` 發行量數字連到錯的 `P13`，應改 `P02`。其餘需補的逐句錨點與用語見覆核；修正後重核，尚未生成或驗收圖片。
+
+R2 作者修復已對照上述 R1 全部發現，詳見 [`docs/videos/curio-s49/verify-2.md`](../../docs/videos/curio-s49/verify-2.md) 的差分、靜態檢查與 SHA。R1 **HOLD** 保持到另一人按 R2 精確雜湊重核；本站與媒體關卡均未放行。
