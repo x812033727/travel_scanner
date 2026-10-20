@@ -84,8 +84,6 @@ from app.video_reviews.producer_state import worker_view
 from app.video_reviews.schemas import (
     BROWSE_STATES,
     DUB_LOCALES,
-    IMPORTED_CHECKLIST_KEY,
-    IMPORTED_DUB_LOCALES,
     LOCALE_PARTS,
     VIDEO_CATEGORY_CODES,
     WORKER_CAPTION_LOCALES,
@@ -399,21 +397,12 @@ def locale_choices(project: VideoProject) -> dict[str, LocaleChoice]:
     return {str(locale): choice for locale, choice in chosen.items()}
 
 
-def imported(project: VideoProject) -> bool:
-    """Whether ``tools/video/cli.mjs import`` put this video on the site: its report's checklist
-    carries the ``imported`` key (tools/video/import/import.mjs IMPORTED)."""
-    return any(
-        isinstance(item, dict) and item.get("key") == IMPORTED_CHECKLIST_KEY
-        for item in project.checklist or []
-    )
-
-
 def locale_options(project: VideoProject) -> list[DubLocale]:
     """The languages the panel offers this video (docs/videos/LANGUAGES.md): all eight, for
     every category and an imported video alike, since 2026-10-20 the worker makes titles,
-    descriptions and captions in each (WORKER_CAPTION_LOCALES). What of a language may be
-    chosen is ``_apply_locales``'s rule: a dub in es, pt, id, vi or th only on an imported
-    video (IMPORTED_DUB_LOCALES)."""
+    descriptions and captions in each (WORKER_CAPTION_LOCALES), and since 2026-10-20 dubs
+    them too (WORKER_DUB_LOCALES). What of a language may be chosen is ``_apply_locales``'s
+    rule: no dub on a drama whose characters speak."""
     _ = project
     return list(WORKER_CAPTION_LOCALES)
 
@@ -2075,26 +2064,14 @@ async def _apply_locales(
 ) -> None:
     """Store the owner's language choice, note when they first decided, and log the change.
 
-    Every video may choose titles and captions in all eight languages. A dub in es, pt, id, vi
-    or th only on an imported video: the worker does not dub those yet (phase two of
-    tasks/open/2026-10-19-worker-video-languages-five.md), so a ticked one would stay
-    "working" forever. Explainer dubs keep their narrator-only category rule. A brand story may
-    store a dub choice early; the worker still needs the exact approved cut's switchable-CC QA
-    before starting any language production.
+    Every video may choose titles, captions and dubs in all eight languages: the worker dubs
+    es, pt, id, vi and th as well since phase two of
+    tasks/open/2026-10-19-worker-video-languages-five.md (an imported video's tracks are still
+    made outside the pipeline). Explainer dubs keep their narrator-only category rule, and a
+    drama whose characters speak is refused a dub in any language. A brand story may store a
+    dub choice early; the worker still needs the exact approved cut's switchable-CC QA before
+    starting any language production.
     """
-    if not imported(project):
-        undubbed = [
-            locale
-            for locale, choice in payload.locales.items()
-            if choice.dub and locale in IMPORTED_DUB_LOCALES
-        ]
-        if undubbed:
-            raise AppError(
-                422,
-                "video_locales_dub_imported_only",
-                f"{'、'.join(undubbed)} 的配音自動產線還不會做，只有匯入的影片"
-                "（tools/video/cli.mjs import）能選；這幾種語言先只能選標題說明與 CC",
-            )
     if (project.format or "slides") == "drama" and any(
         choice.dub for choice in payload.locales.values()
     ):

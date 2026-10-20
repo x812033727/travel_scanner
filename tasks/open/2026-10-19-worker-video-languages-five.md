@@ -4,60 +4,34 @@ title: Video worker makes es, pt, id, vi, th captions, titles and dubs
 status: in-progress
 priority: P2
 area: tools
-owner: claude-opus-5.5-worker-languages-phase1
-claimed_at: 2026-10-20T00:01:42Z
+owner: claude-opus-5.5-worker-dubs-five
+claimed_at: 2026-10-20T05:30:03Z
 created_at: 2026-10-19T23:53:40Z
 completed_at:
-branch: claude/worker-video-languages-five
+branch: claude/worker-video-dubs-five
 depends_on: []
 scope:
-  - tools/video/core
-  - tools/video/i18n
+  - tools/video/core/schema.mjs
+  - tools/video/core/stages.mjs
+  - tools/video/core/narration-locale.test.mjs
   - tools/video/dubs
   - tools/video/tts
-  - tools/video/render/fonts.mjs
-  - tools/video/automation/prompts.mjs
-  - tools/video/shorts
-  - tools/video/review/language-contract.mjs
-  - tools/video/production/retention.mjs
-  - tools/video/automation/flow.mjs
-  - tools/video/automation/compilation.mjs
-  - tools/video/automation/automation.test.mjs
-  - tools/video/automation/compilation.test.mjs
-  - tools/video/automation/compilation-spoilers.test.mjs
-  - tools/video/compile
-  - tools/video/import
-  - tools/video/package
-  - tools/video/qa
-  - tools/video/render
-  - tools/video/review/sync.mjs
-  - tools/video/review/renewal.mjs
-  - tools/video/review/renewal-handoff.mjs
-  - .agents/skills/youtube-video/references/prompts
-  - ops/video/package.json
-  - apps/api/app/video_youtube
-  - apps/api/migrations/versions/0136_video_languages_eight.py
-  - apps/api/tests/test_migration_0136_video_languages_eight.py
+  - tools/video/automation/tidy.mjs
+  - tools/video/automation/tidy.test.mjs
+  - apps/api/app/video_speech
+  - apps/api/app/video_reviews/schemas.py
+  - apps/api/app/video_reviews/admin_service.py
+  - apps/api/app/video_reviews/admin_api.py
+  - apps/api/app/video_youtube/requests.py
+  - apps/api/tests/test_video_languages_worker.py
   - apps/api/tests/test_video_languages_imported.py
   - apps/api/tests/test_video_youtube.py
-  - apps/api/app/video_reviews/admin_api.py
+  - apps/api/tests/test_migration_0136_video_languages_eight.py
+  - apps/api/tests/test_video_speech_check.py
   - apps/web/components/admin-video-reviews.tsx
   - apps/web/components/admin-video-review-card.tsx
   - apps/web/components/admin-video-reviews.test.tsx
-  - apps/api/app/video_automation/schemas.py
-  - apps/api/app/video_automation/models.py
-  - apps/api/app/video_reviews/schemas.py
-  - apps/api/app/video_reviews/admin_service.py
-  - apps/api/app/video_speech/checking.py
-  - apps/api/app/video_speech/schemas.py
-  - apps/api/app/video_shorts/schemas.py
-  - apps/api/tests/test_video_languages_worker.py
-  - apps/web/components/admin-video-settings.tsx
-  - apps/web/components/admin-video-shorts-data.ts
   - apps/web/messages
-  - services/youtube-uploader/src/contract.mjs
-  - package.json
-  - package-lock.json
   - docs/videos/LANGUAGES.md
   - docs/videos/DUBS.md
   - docs/videos/long-form/review.md
@@ -207,9 +181,13 @@ Phase 1: **captions and titles** (no TTS spend).
       widely.
 
 Phase 2: **dubs** (TTS spend starts).
-- [ ] `RATE_RATIOS`, `DEFAULT_RATES` and `DUB_STYLES` from the tables above.
-- [ ] Server transcription prompts and `TrackLanguage`, the Whisper second-opinion languages, and
+- [x] `RATE_RATIOS`, `DEFAULT_RATES` and `DUB_STYLES` from the tables above.
+- [x] A dub-locale list of its own (`DUB_TARGET_LOCALES`), followed by every importer.
+- [x] Server transcription prompts and `TrackLanguage`, the Whisper second-opinion languages, and
       the vi tone-mark fold in `comparable()`.
+- [x] API and panel: the 422 `video_locales_dub_imported_only` and the greyed dub boxes go; the
+      dub retry takes the eight. Dramas whose characters speak stay refused.
+- [x] DUBS.md, LANGUAGES.md, the duration receipt increment.
 - [ ] Pilot: one 10-minute video dubbed in pt (the hardest fit) and th (the new script) with
       `--line-by-line`. Record its characters, requests, shortening rounds and measured rates in
       this file.
@@ -295,3 +273,43 @@ After the deploy:
   - **Pilot: not done; it is the owner's next step after the deploy.** Choose es, pt, id, vi and
     th titles and captions on one finished video. Then have a native speaker or a second model
     read the th and vi captions before the panel is used widely.
+- 2026-10-20 (claude-opus-5.5-worker-dubs-five), phase 2's code on branch
+  `claude/worker-video-dubs-five` from origin/main 8e613894e (phase 1 live). Re-claimed with
+  `release` then `claim --force`: the phase-1 owner's session had finished (#1611 merged), and
+  the five overlapping claims are older than 24 hours or their code is merged. The scope is now
+  only what phase 2 touches (listed above).
+  - **A fourth list, `DUB_TARGET_LOCALES`** (`core/schema.mjs`, the nine of `TARGET_LOCALES`).
+    `dubs/plan.mjs` `DUB_LOCALES`/`dubLocales`, `dub --locale`, `tts/check.mjs` `DUB_LOCALES`
+    and `parseDubLocale`, and `automation/tidy.mjs` (through `DUB_LOCALES`) read it.
+    `NARRATION_LOCALES` stays the four, so `narration_locale` can never be one of the five.
+  - **The default dubs stay en, ja and ko.** `DEFAULT_DUB_LOCALES`/`defaultDubLocales` now come
+    from `DEFAULT_LOCALES`, not from the dub list: a package from before the panel, or `dub`
+    without `--locale`, would otherwise start paying for five more tracks. `stages.mjs`
+    `dubLocalesOf` needed no change (the chosen ones, or that default).
+  - `state.mjs` `dubsStatus` lists the five as "missing" until made; `cli.mjs status` already
+    hides "missing", and the worker reads only the chosen locales. The worker's language round
+    (`flow.mjs`) and the shorten/reword prompts (`TARGET_REGISTERS`, phase 1) needed no change.
+  - **vi fold:** `comparable(text, locale)` moves each syllable's tone mark (NFD U+0300, 0301,
+    0303, 0309, 0323) to the syllable's end for vi, so hoà/hòa and thuỷ/thủy compare equal while
+    má/mà, a dropped tone, â/a and đ/d still differ. Only `matchKind`'s "exact" uses it; the rest
+    is Jev's, as for en/ja/ko.
+  - **Thai budget count:** dub budgets count every code point (`[...text].length`), Thai combining
+    marks included, as the 種田娶妻 rates did. The phase-1 caption line length counts Thai
+    without them; the two are separate numbers. Watch in the pilot whether the shorten pass's
+    `max_chars` for th is read the same way by the translator.
+  - **API:** `video_reviews/schemas.py` names the lists by role: `NARRATION_LOCALES` (en, ja, ko),
+    `ADDED_LOCALES` (the five), `DUB_LOCALES` (eight), `WORKER_DUB_LOCALES` = the eight.
+    `IMPORTED_DUB_LOCALES`, `WorkerDubLocale`, `imported()` and `IMPORTED_CHECKLIST_KEY` went with
+    the 422. `retry_dub` takes `DubLocale`. `video_youtube/requests.py` reads `NARRATION_LOCALES`
+    for the narration languages and `ADDED_LOCALES` for the combined-title rule (unchanged
+    behaviour).
+  - **Panel:** the five's dub boxes are no longer greyed and `dubWorkerLater` left the five
+    `admin.json` files. An imported video still offers "再做一次" only for en, ja and ko, as
+    before (its five tracks are made outside the pipeline).
+  - Production runs Whisper `medium` (`WHISPER_MODEL`, DUBS.md), which also has the five.
+  - **Owner's next steps, not done here:** (1) after the deploy, the pilot above: one 10-minute
+    video dubbed in pt and th with `--line-by-line`, recording characters, requests, shortening
+    rounds and measured rates in this file; (2) raising
+    `VIDEO_SPEECH_GEMINI_MONTHLY_CHARACTER_LIMIT` to 1,500,000 in the host `.env`, only with the
+    owner's explicit approval. Deploy order is as in phase 1: the worker image with the API, or
+    before it, or a ticked five-language dub stays "working" on an old worker.

@@ -42,7 +42,7 @@ import { pinyin } from "pinyin-pro";
 import { isKnownTerm } from "../core/lexicon.mjs";
 import { requireStorySpeechLexicon } from "../core/lexicon-store.mjs";
 import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
-import { eachLine, NARRATION_LOCALES, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
+import { DUB_TARGET_LOCALES, eachLine, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { speechLexicon } from "../dubs/plan.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
@@ -64,13 +64,14 @@ export const DEFAULT_THRESHOLD = 0.5;
 // itself is down, and the run stops instead of spending minutes of retries on every line left.
 export const GIVE_UP_AFTER = 3;
 const TRANSCRIBE_RATE = 16_000;
-// The languages a dub can be in: every caption locale but the narration's (docs/videos/DUBS.md).
-export const DUB_LOCALES = NARRATION_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
+// The languages a dub can be in: every caption locale but the narration's (docs/videos/DUBS.md),
+// es, pt, id, vi and th among them since 2026-10-20 (core/schema.mjs DUB_TARGET_LOCALES).
+export const DUB_LOCALES = DUB_TARGET_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 const CHINESE = new Set([NARRATION_LOCALE]);
 
 /** A `--locale` value: a caption locale other than the narration's, or a usage error naming them. */
 export function parseDubLocale(value, narration = NARRATION_LOCALE) {
-  const dubs = NARRATION_LOCALES.filter((locale) => locale !== narration);
+  const dubs = DUB_TARGET_LOCALES.filter((locale) => locale !== narration);
   if (!dubs.includes(value)) {
     throw new UsageError(`--locale must be one of ${dubs.join(", ")}: a dubbed track; the narration is checked without --locale`);
   }
@@ -92,13 +93,31 @@ export function checkFiles(locale = NARRATION_LOCALE, narration = NARRATION_LOCA
   return { cache: path.join("review", `check${suffix}.json`), flags: path.join("review", `check-flags${suffix}.json`) };
 }
 
+// Vietnamese tone marks as combining characters (NFD): grave, acute, tilde, hook above, dot below.
+// The vowel marks (circumflex, breve, horn) are letters of their own and stay where they are.
+const VI_TONE = /[\u0300\u0301\u0303\u0309\u0323]/gu;
+
+/**
+ * A Vietnamese text with each syllable's tone mark moved to the syllable's end: the old and the
+ * new placement rules put it on different vowels (hoà and hòa, thuỷ and thủy), and a transcript
+ * may write either, but the tone itself still has to match (ma, má and mà stay three words).
+ */
+export function foldVietnameseTones(text) {
+  return String(text)
+    .normalize("NFD")
+    .replace(/[\p{L}\p{M}]+/gu, (syllable) => syllable.replace(VI_TONE, "") + (syllable.match(VI_TONE) ?? []).join(""))
+    .normalize("NFC");
+}
+
 /**
  * The text with only its words left: NFKC, lower case, no punctuation, symbols or spaces. That
  * is what every locale's transcript is compared on: case and punctuation in English, full-width
- * forms and spacing in Japanese and Korean, punctuation in Chinese.
+ * forms and spacing in Japanese, Korean and Thai, punctuation in Chinese, and in Vietnamese also
+ * where a syllable's tone mark sits (foldVietnameseTones).
  */
-export function comparable(text) {
-  return String(text).normalize("NFKC").toLowerCase().replace(/[\p{P}\p{S}\p{Z}\s]/gu, "");
+export function comparable(text, locale = null) {
+  const folded = locale === "vi" ? foldVietnameseTones(text) : String(text);
+  return folded.normalize("NFKC").toLowerCase().replace(/[\p{P}\p{S}\p{Z}\s]/gu, "");
 }
 
 /** How a line was meant to sound: the dictionary's spoken forms in place of its terms. */
@@ -167,8 +186,8 @@ export function reading(text) {
  */
 export function matchKind(heard, line, lexicon, locale = NARRATION_LOCALE) {
   const forms = [line.text, spokenText(line), spokenForm(line, lexicon)];
-  const said = comparable(heard);
-  if (forms.some((form) => comparable(form) === said)) return "exact";
+  const said = comparable(heard, locale);
+  if (forms.some((form) => comparable(form, locale) === said)) return "exact";
   // Same-sound characters and filler particles are Mandarin's; in another language, whatever
   // differs beyond spelling is Jev's to judge.
   if (!CHINESE.has(locale)) return null;
