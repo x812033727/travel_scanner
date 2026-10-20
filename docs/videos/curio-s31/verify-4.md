@@ -7,10 +7,10 @@
 | 產物 | SHA-256 |
 | --- | --- |
 | script.md | `cfc5a32d15d7e5cca20f972aca6dfdb2810a96fe8791d23c70da2188d20dfb5a` |
-| video.json | `9847d87ff094cd3b84c399c997f8de2c437264a4f78d54aed5c38c4eb75bc8b5` |
+| video.json | `a5fdecb15ee4e4eb273db018ec3b6db6a30c4ed27d37d2c315460bf477b527a7` |
 | claims.md | `addcf78f2ded2e3a8778b7c59b176151a15742c09de52ea9803534c53a03f72f` |
 
-固定古籍版本、全文 SHA-256 與每種文本的證據上限沿用 [research.md](research.md)。R3 沒有另添史料或改變核心結論。`script.md`、`video.json`、`claims.md` 的 97 個旁白 ID 與字串一一對齊；正文 96 景均為 still shot，另有片尾一景。18 條問題與回收仍在；系列 lint 為 0 errors、0 warnings，估全片 9.3 分鐘，片頭約 45 秒，正文約 8 分 30 秒。
+固定古籍版本、全文 SHA-256 與每種文本的證據上限沿用 [research.md](research.md)。R3 沒有另添史料或改變核心結論。`script.md`、`video.json`、`claims.md` 的 97 個旁白 ID 與字串一一對齊；正文 96 景均為 still shot，另有片尾一景。10 條已配對的問題與回收保留，正文另有每 30–45 秒的文本提問；系列 lint 為 0 errors、0 warnings，估全片 9.3 分鐘，片頭約 45 秒，正文約 8 分 30 秒。
 
 ## R2 盲讀指出的重複與 R3 修法
 
@@ -25,5 +25,5 @@ R2 敘事盲讀的獨立封存回執位於 `/tmp/curio_s31_r2_narrative_blind.md
 ## 本輪本地核對
 
 - `VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s31`：0 errors、0 warnings；章節從 00:45 至 08:02 接續，估全片 9.3 分鐘。
-- 逐項比較 `script.md`、`claims.md`、`video.json`：97/97 ID 順序與旁白字串相同；96/96 正文 still shot、18 條 loops。
+- 逐項比較 `script.md`、`claims.md`、`video.json`：97/97 ID 順序與旁白字串相同；96/96 正文 still shot、10 條 loops。原 R3 提交保留 18 條，其中有多個相同回收；後續只精簡 `video.json` 的 loop metadata，script 和 claims 的 SHA 未變。
 - `npm run test:docs-videos`：236 pass、0 fail。`npm run check:tasks`：exit 0；其他工作票有既存的持有時間／範圍警告。`git diff --check`：無空白錯誤。
