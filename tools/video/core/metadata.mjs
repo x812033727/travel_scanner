@@ -54,6 +54,34 @@ export const CAPTION_TAGS = {
 export const SHORT_CAPTION_TAG = "｜CC";
 const TAG_TAIL = /\s*[|｜]\s*(?:CC\s*字幕|CC\s*Subtitles|字幕付き|CC\s*자막|Legendado|Sub\s*Indo|Vietsub|ซับไทย|CC)\s*$/i;
 
+// What a brand story's title says before its captions tag, per locale, so the series shows in
+// the search results (the owner's rule of 2026-10-20: 品牌故事標題加「| 品牌故事」, worded per
+// language): 「…？｜品牌故事｜CC字幕」.
+export const STORY_TAGS = {
+  "zh-TW": "｜品牌故事",
+  en: "｜Brand Story",
+  ja: "｜ブランドストーリー",
+  ko: "｜브랜드 스토리",
+  es: "｜Historia de marca",
+  pt: "｜História de marca",
+  id: "｜Kisah Merek",
+  vi: "｜Câu chuyện thương hiệu",
+  th: "｜เรื่องราวแบรนด์",
+};
+const STORY_TAIL = /\s*[|｜]\s*(?:品牌故事|Brand\s*Story|ブランドストーリー|브랜드\s*스토리|Historia\s*de\s*marca|História\s*de\s*marca|Kisah\s*Merek|Câu\s*chuyện\s*thương\s*hiệu|เรื่องราวแบรนด์)\s*$/i;
+
+/**
+ * A brand story's `title` ending with its locale's story tag, once, ready for withCaptionTag: a
+ * captions tag or story tag already there, in any language or spacing, is taken off first. The
+ * tag is left off when, with it, even the short captions tag would pass TITLE_MAX_CHARS.
+ */
+export function withStoryTag(title, locale) {
+  let bare = title.trimEnd();
+  for (let stripped = bare.replace(TAG_TAIL, "").replace(STORY_TAIL, ""); stripped !== bare; stripped = bare.replace(TAG_TAIL, "").replace(STORY_TAIL, "")) bare = stripped;
+  const tagged = `${bare}${STORY_TAGS[locale] ?? STORY_TAGS.en}`;
+  return [...tagged].length + [...SHORT_CAPTION_TAG].length <= TITLE_MAX_CHARS ? tagged : bare;
+}
+
 /**
  * `title` ending with its locale's captions tag, once: a tag already there, in any language or
  * spacing, is replaced. When the full tag would pass TITLE_MAX_CHARS the short one is used; when
