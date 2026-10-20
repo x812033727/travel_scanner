@@ -15,7 +15,9 @@ scope:
   - docs/videos/story-everyday-target-x08/drafts/visual-cues.mjs
   - docs/videos/story-everyday-target-x08/compose-video.mjs
   - docs/videos/story-everyday-target-x08/video.json
+  - docs/videos/story-everyday-target-x08/shorts.json
   - docs/videos/story-everyday-target-x08/script.md
+  - docs/videos/story-everyday-target-x08/shorts-script.md
   - docs/videos/story-everyday-target-x08/line-source-matrix.md
   - docs/videos/story-everyday-target-x08/source-matrix.md
   - docs/videos/story-everyday-target-x08/source-notes.md
@@ -34,6 +36,11 @@ scope:
   - docs/videos/story-everyday-target-x08/reviews/source-audit-v8-visual.md
   - docs/videos/story-everyday-target-x08/reviews/source-audit-v9-delta.md
   - docs/videos/story-everyday-target-x08/reviews/v10-author-delta.md
+  - docs/videos/story-everyday-target-x08/reviews/source-audit-v10-independent.md
+  - docs/videos/story-everyday-target-x08/reviews/blind-a-v10-independent.md
+  - docs/videos/story-everyday-target-x08/reviews/blind-b-v10-independent.md
+  - docs/videos/story-everyday-target-x08/reviews/v11-author-delta.md
+  - docs/videos/story-everyday-target-x08/reviews/source-audit-v11-independent.md
   - docs/videos/story-everyday-target-x08/production-quote.md
   - tasks/open/2026-10-20-produce-target-x08-narration-and-validate.md
 ---
@@ -56,7 +63,7 @@ X08 Target Canada has a source- and narration-reviewed offline script plus a pin
 - [x] Run first pinned Sulafat TTS (130 requests / 2,643 actual billable characters), with the paired tool; preserve actual clips and timeline hashes. Stable-ID v6 has ten new lines still to synthesize.
 - [ ] Run serial `check-audio` and resolve or explicitly hold real discrepancies without inventing new source claims.
 - [ ] Measure first chapter and substantive body from actual audio; document exact frame/time evidence and update the all-in budget gate.
-- [ ] If spoken body is shorter than eight minutes, add source-backed story material, rebuild and obtain new exact-SHA source plus two blind reviews before incremental TTS.
+- [ ] If spoken body is shorter than eight minutes, add source-backed story material, rebuild and obtain new exact-SHA source plus two blind reviews before incremental TTS. v11 candidate is frozen for these new reviews; actual TTS timing is still pending.
 - [ ] Commit/push an honest X08 media receipt to draft PR #1625; keep future production dependencies explicit.
 
 ## How to verify
@@ -74,3 +81,5 @@ Use X08 worktree `/workspace/travel_scanner_target_x08`, work base `/workspace/.
 - X05 is completing eight targeted semantic retakes and then incremental audio QA; its next planned load is 66 MiniMax images. X06 is preparing media separately. Shared judge quota previously around 924; all three 3-take worst cases (66 + 78 + 113 shots) could consume 771 judgments. Recheck remaining quota and full-batch feasibility before X08 image generation. This ticket is audio-only.
 - Historical v7 independent source audit passed; v8 visual source audit failed an exit-fee timing implication; v9 chapter-title-only source delta passed. v9 blind A failed payoff and detour, blind B passed spoken required items, and both identified visual reveal-order problems. Their receipts remain version-bound and are not v10 approvals.
 - v10 candidate main `video.json` SHA-256 `51185ca049c60cac3f009457a833b449f66bfafeb10fae8a5dee6076a94ea619`; Shorts remains `440ceee9649b30af2bd64ff1205bf38bff47d0be381b1b544cccff4601e2d543`. Third-chapter REDcard detour is replaced with source-backed 124-store/14.2m-sqft opening and FY2012–FY2014 margin/SG&A/depreciation/interest evidence. `x080312` now asks whether next-year merchandise margin catches SG&A; `x080438` answers US$714m→US$548m gap. Cards/prompts fix v9 early reveals. Lint 0/0 and docs-video tests pass; new independent v10 source and two blind receipts, incremental TTS and actual eight-minute body measurement are **pending**. No paid media while these gates remain open.
+- v10's subsequent [independent source receipt](../../docs/videos/story-everyday-target-x08/reviews/source-audit-v10-independent.md) was PASS, while both [blind A](../../docs/videos/story-everyday-target-x08/reviews/blind-a-v10-independent.md) and [blind B](../../docs/videos/story-everyday-target-x08/reviews/blind-b-v10-independent.md) were FAIL. Those verdicts are historical and apply only to v10 hashes; the previous bullet records the state before those reviews arrived.
+- v11 candidate main `video.json` SHA-256 `41bc67de909571a37bf4ae7a843d6dec0b4e1ed735bcae4bfc6fd5eed01e7001`; Shorts `704e07f972b24b7d79c2660e830d69d85cd7087a1fda26db6f8c1fe31ef7b4e3`. It moves FY2012 opening costs into pre-opening chronology, removes v10's repeated FY2013 SG&A/numeric run, adds source-backed FY2014 Q1–Q3 operating changes, orders January decision and exit fee before May closure, hides the Chapter 5 answer, and gives Short 2 an answered final beat. The [author delta](../../docs/videos/story-everyday-target-x08/reviews/v11-author-delta.md) records the sources and limitations; [v11 independent source delta](../../docs/videos/story-everyday-target-x08/reviews/source-audit-v11-independent.md) is PASS on these exact hashes. Two fresh blind reads, incremental TTS, strict eight-minute body and Shorts timings remain **pending**; no paid media until the new gates pass.

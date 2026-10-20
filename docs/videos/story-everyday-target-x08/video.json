@@ -78,11 +78,6 @@
       "what": "次年商品毛利能否追上銷售管理費"
     },
     {
-      "setup": "x0803a10",
-      "payoff": "x080409",
-      "what": "清理過剩庫存是否延續到第二年"
-    },
-    {
       "setup": "x080318",
       "payoff": "x080401",
       "what": "次年改善跡象"
@@ -205,7 +200,7 @@
       "id": "x08-b01-s02",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: One anonymous clerk carries ordinary goods toward an operating checkout during a wind-down, muted window light",
+        "prompt": "Close-up: One anonymous clerk carries ordinary goods toward an operating checkout during routine business hours, muted window light",
         "camera": "Close-up, static",
         "visual": "still"
       },
@@ -697,14 +692,14 @@
       "id": "x08-b02-s22",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: One anonymous accountant opens a preopening cost ledger while the retail entrance beyond the window remains unoccupied, calm light",
+        "prompt": "Medium close-up: One anonymous analyst turns the first short quarterly ledger page at an archive table, muted office lamplight",
         "camera": "Medium close-up, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x080222",
-          "text": "人員、第三方服務、折舊與利息都在帳裡。",
+          "text": "銷售管理費已有二點七二億美元，還包含開店前薪酬、福利和第三方服務。",
           "emotion": "台灣口語說書，數字清楚，正常語速"
         }
       ]
@@ -1151,15 +1146,15 @@
       "id": "x08-b03-a01",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: One anonymous model maker arranges many small unbranded retail buildings across a broad tabletop plan, pale daylight",
+        "prompt": "Overhead shot: One anonymous bookkeeper holds a sealed operating-cost folder beside a newly opened retail model, result hidden, soft lamplight",
         "camera": "Overhead shot, static",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x0803a01",
-          "text": "這一百二十四間新店，合計一千四百二十萬平方英呎賣場。",
-          "emotion": "台灣口語說書，數字清楚，正常語速"
+          "text": "還記得開店前的人員與服務成本嗎？門市開了，它們會立刻退場嗎？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
@@ -1167,163 +1162,14 @@
       "id": "x08-b03-a02",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: One anonymous planner places newly opened building blocks along successive blank calendar pages, gentle window light",
+        "prompt": "Medium shot: One anonymous bookkeeper opens payroll and service folders beside a newly opened retail model, warm lamp light",
         "camera": "Medium shot, slow pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x0803a02",
-          "text": "店分批開門，當年的銷售只涵蓋各店實際營業的月份。",
-          "emotion": "台灣口語說書，數字清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x08-b03-a03",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up: One anonymous bookkeeper holds a sealed opening-cost folder beside a newly opened retail model, result hidden, soft lamplight",
-        "camera": "Close-up, slow pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x0803a03",
-          "text": "可是門開了，開店前的支出就退場了嗎？",
-          "emotion": "自然提問，尾音微上揚"
-        }
-      ]
-    },
-    {
-      "id": "x08-b03-a04",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot: One anonymous bookkeeper opens an earlier expense ledger beside an unopened retail model, mild office light",
-        "camera": "Wide shot, slow pull back",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x0803a04",
-          "text": "沒有。二〇一二財年尚未開店，加拿大銷售管理費已有二點七二億美元。",
-          "emotion": "台灣口語說書，數字清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x08-b03-a05",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up: One anonymous bookkeeper sorts plain personnel and service folders beside a still-open operating ledger, warm lamp light",
-        "camera": "Medium close-up, slow push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x0803a05",
-          "text": "二〇一三財年，這欄升到九點一億，仍含人員、福利和第三方服務等啟動成本。",
-          "emotion": "台灣口語說書，數字清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x08-b03-a06",
-      "template": "stats",
-      "data": {
-        "title": "FY2013｜加拿大部門",
-        "stats": [
-          {
-            "value": "US$714m",
-            "label": "商品毛利低於 SG&A 的差額"
-          }
-        ],
-        "source": "Target FY2014 10-K，Note 6"
-      },
-      "lines": [
-        {
-          "id": "x0803a06",
-          "text": "單看毛利和銷售管理費，缺口就達七點一四億美元。",
-          "emotion": "台灣口語說書，數字清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x08-b03-a07",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot: One anonymous accountant places a depreciation folder beside a retail-building model, cool side light",
-        "camera": "Medium shot, slow pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x0803a07",
-          "text": "但這還不是全部：開店前一財年，加拿大折舊九千七百萬；開店年度升到二點二七億美元。",
-          "emotion": "台灣口語說書，數字清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x08-b03-a08",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up: One anonymous finance clerk places an interest folder beside a plain accounting volume, soft lamplight",
-        "camera": "Close-up, slow pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x0803a08",
-          "text": "兩年利息分別七千八百萬和七千七百萬美元，幾乎沒有減少。",
-          "emotion": "台灣口語說書，數字清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x08-b03-a09",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot: One anonymous accountant keeps depreciation and interest folders beside a separate margin-cost difference folder, no figures visible, gentle lamplight",
-        "camera": "Wide shot, slow pull back",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x0803a09",
-          "text": "剛剛那筆缺口，還沒扣掉折舊和利息。",
-          "emotion": "台灣口語說書，數字清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x08-b03-a10",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up: One anonymous stock worker studies surplus cartons beside a sealed future-quarter folder, result hidden, diffuse light",
-        "camera": "Medium close-up, slow push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x0803a10",
-          "text": "下一財年，清理庫存還會拖住毛利嗎？",
-          "emotion": "自然提問，尾音微上揚"
-        }
-      ]
-    },
-    {
-      "id": "x08-b03-s16",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead shot: One anonymous inventory clerk reaches for a surplus carton in a back room where routine shelves are stocked, diffuse ceiling light",
-        "camera": "Overhead shot, static",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x080316",
-          "text": "銷售要追上這些成本，商品組合與庫存也得更合顧客期待。",
+          "text": "不會。年報說，開店年度的銷售管理費仍含這些啟動支出。",
           "emotion": "台灣口語說書，數字清楚，正常語速"
         }
       ]
@@ -1520,6 +1366,38 @@
       ]
     },
     {
+      "id": "x08-b04-a01",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: One anonymous analyst compares two unmarked expense-rate columns at an archive table, muted daylight",
+        "camera": "Medium shot, slow push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x0804a01",
+          "text": "費用占銷售的比率，比去年同季明顯下降。",
+          "emotion": "台灣口語說書，數字清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x08-b04-a02",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: One anonymous operations planner places more retail models beside a folder of earlier opening costs, gentle side light",
+        "camera": "Medium shot, slow pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x0804a02",
+          "text": "公司說，店網規模擴大，加上去年開店前費用較高，造成這種變化。",
+          "emotion": "台灣口語說書，數字清楚，正常語速"
+        }
+      ]
+    },
+    {
       "id": "x08-b04-s10",
       "template": "shot",
       "data": {
@@ -1703,6 +1581,22 @@
       ]
     },
     {
+      "id": "x08-b04-a03",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: One anonymous bookkeeper compares two sealed quarterly operating folders at a plain records counter, outcome kept subtle, cool indoor light",
+        "camera": "Medium shot, slow pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x0804a03",
+          "text": "同一季，加拿大部門的虧損還比去年同期擴大。",
+          "emotion": "台灣口語說書，數字清楚，正常語速"
+        }
+      ]
+    },
+    {
       "id": "x08-b04-s21",
       "template": "shot",
       "data": {
@@ -1798,7 +1692,7 @@
       "lines": [
         {
           "id": "x080426",
-          "text": "整體銷售比去年同期增加四成多，公司仍說低於預期。",
+          "text": "但這還不是獲利答案：整體銷售比去年同期增加四成多，公司仍說低於預期。",
           "emotion": "台灣口語說書，數字清楚，正常語速"
         }
       ]
@@ -1825,6 +1719,22 @@
       ]
     },
     {
+      "id": "x08-b04-a04",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: One anonymous analyst moves a newer quarterly loss folder beside an older thicker one at a desk, ordinary office light",
+        "camera": "Medium shot, slow pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x0804a04",
+          "text": "但和去年同季相比，這季虧損幅度已有所縮小。",
+          "emotion": "台灣口語說書，數字清楚，正常語速"
+        }
+      ]
+    },
+    {
       "id": "x08-b04-s28",
       "template": "shot",
       "data": {
@@ -1835,7 +1745,7 @@
       "lines": [
         {
           "id": "x080428",
-          "text": "毛利率百分之十九點五，還受清貨拖累。",
+          "text": "毛利率升到百分之十九點五，比去年同季高，卻還受清貨拖累。",
           "emotion": "台灣口語說書，數字清楚，正常語速"
         }
       ]
@@ -1898,7 +1808,7 @@
         "stats": [
           {
             "value": "US$1.902b",
-            "label": "全年銷售；FY2013 US$1.317b 為部分年度"
+            "label": "全年銷售；前一年為部分年度"
           }
         ],
         "source": "Target FY2014 10-K，Note 6"
@@ -1952,7 +1862,7 @@
       "id": "x08-b04-s35",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: One anonymous planner moves a sales tally token toward a cost stack that remains larger on an accounts table, muted light",
+        "prompt": "Medium shot: One anonymous bookkeeper sets a merchandise-margin folder beside a sealed general-expense folder, comparison hidden, warm desk light",
         "camera": "Medium shot, slow pan left",
         "visual": "still"
       },
@@ -1989,7 +1899,7 @@
       "id": "x08-b04-s38",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up: One anonymous bookkeeper holds a merchandise-margin folder below a much thicker operating-expense folder, soft side light",
+        "prompt": "Medium close-up: One anonymous bookkeeper keeps merchandise-margin and operating-expense folders closed beside each other, comparison hidden, soft side light",
         "camera": "Medium close-up, static",
         "visual": "still"
       },
@@ -2100,7 +2010,7 @@
           "emotion": "台灣口語說書，數字清楚，正常語速"
         }
       ],
-      "chapter": "董事會批准停止加拿大營運"
+      "chapter": "一月十四日，董事會作出決議"
     },
     {
       "id": "x08-b05-s02",
@@ -2148,6 +2058,54 @@
         {
           "id": "x080504",
           "text": "公告時仍開著的門店，接著要走清算程序。",
+          "emotion": "台灣口語說書，數字清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x08-b05-a01",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: One anonymous retail coordinator keeps an operating checkout ready during an orderly wind-down, calm indoor light",
+        "camera": "Medium shot, slow pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x0805a01",
+          "text": "母公司承諾，待法院批准，提供過渡融資支撐清算期間的營運。",
+          "emotion": "台灣口語說書，數字清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x08-b05-a02",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: One anonymous clerk holds an unopened credit folder beside an active retail model, funds not depicted as spent, soft indoor light",
+        "camera": "Medium shot, slow push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x0805a02",
+          "text": "上限一點七五億美元，是可借額度，不是已花掉的現金。",
+          "emotion": "台灣口語說書，數字清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x08-b05-a03",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: One anonymous court clerk receives an unmarked monitor-appointment folder beside a liquidation file, pale office light",
+        "camera": "Medium shot, slow pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x0805a03",
+          "text": "公司也請法院指派監督人，負責監督清算與收尾。",
           "emotion": "台灣口語說書，數字清楚，正常語速"
         }
       ]
@@ -2203,6 +2161,22 @@
       ]
     },
     {
+      "id": "x08-b05-a04",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: One anonymous payroll clerk sets a staff-benefit folder beside an employee leaving an ordinary break room, warm lamp light",
+        "camera": "Medium shot, slow pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x0805a04",
+          "text": "不必留到整段清算結束的員工，也在這項保障設計裡。",
+          "emotion": "台灣口語說書，數字清楚，正常語速"
+        }
+      ]
+    },
+    {
       "id": "x08-b05-s08",
       "template": "shot",
       "data": {
@@ -2235,54 +2209,17 @@
       ]
     },
     {
-      "id": "x08-b05-s10",
-      "template": "stats",
-      "data": {
-        "title": "截至 2015-05-02",
-        "stats": [
-          {
-            "value": "全數關閉",
-            "label": "加拿大門市"
-          }
-        ],
-        "source": "Target FY2015 Q1 10-Q，Note 2"
-      },
-      "lines": [
-        {
-          "id": "x080510",
-          "text": "截至五月二日，季報寫明所有加拿大門店都已關閉。",
-          "emotion": "台灣口語說書，數字清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x08-b05-s11",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up: One anonymous filing clerk shelves a later quarterly report beside a closed retail model, soft spring light",
-        "camera": "Medium close-up, slow pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x080511",
-          "text": "原件沒有說每間店在同一天關門。",
-          "emotion": "台灣口語說書，數字清楚，正常語速"
-        }
-      ]
-    },
-    {
       "id": "x08-b05-s12",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: One anonymous clerk holds a sealed unmarked account volume beside a January calendar, contents hidden under a plain cover, low lamp light",
+        "prompt": "Overhead shot: One anonymous clerk holds a sealed unmarked account volume beside a January calendar, amount hidden under a plain cover, low lamp light",
         "camera": "Overhead shot, slow pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x080512",
-          "text": "但回到一月的退出決定，那個財年先列了哪筆帳？",
+          "text": "那這項退出決定，先在財報留下多少費用？",
           "emotion": "自然提問，尾音微上揚"
         }
       ]
@@ -2448,15 +2385,15 @@
       "id": "x08-b06-s10",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot: One anonymous bookkeeper places a cash drawer beside two distinct accounting volumes without mixing them, warm side light",
+        "prompt": "Overhead shot: One anonymous accountant opens a large exit-cost volume in a quiet financial archive, cool side light",
         "camera": "Overhead shot, slow pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x080610",
-          "text": "或有負債也不是已經全部付出的現金。",
-          "emotion": "台灣口語說書，數字清楚，正常語速"
+          "text": "那兩年的營運虧損，也算在這筆退出費裡嗎？",
+          "emotion": "自然提問，尾音微上揚"
         }
       ]
     },
@@ -2464,15 +2401,15 @@
       "id": "x08-b06-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: One anonymous accountant opens a large exit-cost volume in a quiet financial archive, cool side light",
+        "prompt": "Medium shot: One anonymous analyst separates two years of operating ledgers from a later exit-cost volume in a records room, even daylight",
         "camera": "Medium shot, slow push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x080611",
-          "text": "那兩年的營運虧損，又該放在哪裡？",
-          "emotion": "自然提問，尾音微上揚"
+          "text": "不算。營運虧損要放在另一張帳。",
+          "emotion": "台灣口語說書，數字清楚，正常語速"
         }
       ]
     },
@@ -2480,8 +2417,8 @@
       "id": "x08-b06-s12",
       "template": "shot",
       "data": {
-        "prompt": "Close-up: One anonymous analyst separates two years of operating ledgers from a later exit-cost volume in a records room, even daylight",
-        "camera": "Close-up, static",
+        "prompt": "Close-up: One anonymous bookkeeper pins a routine checkout receipt to a daily-operations board while a sealed exit folder rests apart, warm indoor light",
+        "camera": "Close-up, slow pan left",
         "visual": "still"
       },
       "lines": [
@@ -2509,6 +2446,43 @@
         {
           "id": "x080614",
           "text": "不能把兩者合成一筆「燒掉的現金」。",
+          "emotion": "台灣口語說書，數字清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x08-b05-s10",
+      "template": "stats",
+      "data": {
+        "title": "截至 2015-05-02",
+        "stats": [
+          {
+            "value": "全數關閉",
+            "label": "加拿大門市"
+          }
+        ],
+        "source": "Target FY2015 Q1 10-Q，Note 2"
+      },
+      "lines": [
+        {
+          "id": "x080510",
+          "text": "截至五月二日，季報寫明所有加拿大門店都已關閉。",
+          "emotion": "台灣口語說書，數字清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x08-b05-s11",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot: One anonymous planner turns calendar leaves from winter toward spring beside a row of closing location blocks, mild daylight",
+        "camera": "Medium shot, slow pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x080511",
+          "text": "原件沒有說每間店在同一天關門。",
           "emotion": "台灣口語說書，數字清楚，正常語速"
         }
       ]

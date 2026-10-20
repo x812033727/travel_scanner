@@ -44,12 +44,11 @@ const cardRules = [
   [/一百二十四間店開業/, ["FY2013｜分批開店", "124", "實際開設門市", "Target FY2013 10-K，MD&A"]],
   [/百分之十四點九/, ["FY2013｜加拿大部門", "14.9%", "毛利率；原因待揭曉", "Target FY2013 10-K，Canadian Segment"]],
   [/一點九六億美元/, ["FY2013｜加拿大部門", "US$196m", "當年商品毛利", "Target FY2014 10-K，Note 6"]],
-  [/缺口就達七點一四億美元/, ["FY2013｜加拿大部門", "US$714m", "商品毛利低於 SG&A 的差額", "Target FY2014 10-K，Note 6"]],
   [/百分之十八點七/, ["FY2014 Q1｜加拿大部門", "18.7%", "加拿大部門季度毛利率", "Target FY2014 Q1 原始業績公告"]],
   [/下降百分之十一點四/, ["FY2014 Q2｜同店銷售", "−11.4%", "僅 48 間成熟門市", "Target FY2014 Q2 原始業績公告"]],
   [/增加百分之一點六/, ["FY2014 Q3｜同店銷售", "+1.6%", "涵蓋 82 間成熟門市", "Target FY2014 Q3 原始業績公告"]],
   [/二點一一億美元/, ["FY2014 Q3｜加拿大部門", "−US$211m", "當季 EBIT；不是全年虧損", "Target FY2014 Q3 原始業績公告"]],
-  [/十九點零二億美元/, ["FY2014｜加拿大", "US$1.902b", "全年銷售；FY2013 US$1.317b 為部分年度", "Target FY2014 10-K，Note 6"]],
+  [/十九點零二億美元/, ["FY2014｜加拿大", "US$1.902b", "全年銷售；前一年為部分年度", "Target FY2014 10-K，Note 6"]],
   [/八點六九億美元/, ["FY2014｜加拿大", "−US$869m", "稅前營運虧損；非退出費用", "Target FY2014 10-K，Note 6"]],
   [/至少二〇二一年/, ["2015-01-15｜管理層當時判斷", "2021", "至少此前沒有可信獲利情境", "Target 2015-01-15 公告"]],
   [/五月二日/, ["截至 2015-05-02", "全數關閉", "加拿大門市", "Target FY2015 Q1 10-Q，Note 2"]],
@@ -74,16 +73,38 @@ const lineFor = (id, value) => {
   return line;
 };
 const chapters = readChapters();
-// The ten Chapter 3 additions use new IDs; unchanged later lines retain their
-// original IDs and exact TTS takes instead of being rerecorded after insertion.
+// Preserve original line IDs when short source-backed passages are inserted or
+// the later closure evidence moves after the exit charge.
 const chapter3InsertAt = 15;
-const chapter3Added = 10;
+const chapter3Added = 2;
+const chapter4InsertAt = 9;
+const chapter4Added = 2;
 function identityFor(ci, ri) {
   if (ci === 2 && ri >= chapter3InsertAt && ri < chapter3InsertAt + chapter3Added) {
     const added = String(ri - chapter3InsertAt + 1).padStart(2, "0");
     return { line: `x0803a${added}`, scene: `x08-b03-a${added}`, visualIndex: 100 + ri - chapter3InsertAt };
   }
-  const originalRi = ci === 2 && ri >= chapter3InsertAt + chapter3Added ? ri - chapter3Added : ri;
+  if (ci === 3 && ri >= chapter4InsertAt && ri < chapter4InsertAt + chapter4Added) {
+    const added = String(ri - chapter4InsertAt + 1).padStart(2, "0");
+    return { line: `x0804a${added}`, scene: `x08-b04-a${added}`, visualIndex: 100 + ri - chapter4InsertAt };
+  }
+  if (ci === 3 && ri === 22) return { line: "x0804a03", scene: "x08-b04-a03", visualIndex: 102 };
+  if (ci === 3 && ri === 30) return { line: "x0804a04", scene: "x08-b04-a04", visualIndex: 103 };
+  if (ci === 4 && ri >= 4 && ri <= 6) {
+    const added = String(ri - 3).padStart(2, "0");
+    return { line: `x0805a${added}`, scene: `x08-b05-a${added}`, visualIndex: 100 + ri - 4 };
+  }
+  if (ci === 4 && ri === 10) return { line: "x0805a04", scene: "x08-b05-a04", visualIndex: 103 };
+  if (ci === 4 && ri === 13) return { line: "x080512", scene: "x08-b05-s12", visualIndex: 11 };
+  if (ci === 5 && ri === 14) return { line: "x080510", scene: "x08-b05-s10", visualIndex: 9 };
+  if (ci === 5 && ri === 15) return { line: "x080511", scene: "x08-b05-s11", visualIndex: 10 };
+  const originalRi = ci === 2 && ri >= chapter3InsertAt + chapter3Added ? ri - chapter3Added + 1
+    : ci === 3 && ri >= 31 ? ri - 4
+      : ci === 3 && ri >= 23 ? ri - 3
+        : ci === 3 && ri >= chapter4InsertAt + chapter4Added ? ri - chapter4Added
+      : ci === 4 && ri >= 7 && ri <= 9 ? ri - 3
+        : ci === 4 && ri >= 11 && ri <= 12 ? ri - 4
+      : ci === 5 && ri >= 16 ? ri - 2 : ri;
   const suffix = `${String(ci + 1).padStart(2, "0")}${String(originalRi + 1).padStart(2, "0")}`;
   return { line: `x08${suffix}`, scene: `x08-b${String(ci + 1).padStart(2, "0")}-s${String(originalRi + 1).padStart(2, "0")}`, visualIndex: originalRi };
 }
@@ -135,12 +156,11 @@ const anchors = [
   [/收入能趕上嗎/, /銷售十三點一七億美元/, "首年銷售能否跟上展店"],
   [/漂亮的首季比率/, /毛利率只剩百分之十四點九/, "首季比率與全年結果"],
   [/明年銷售若增加/, /前一年毛利比這項費用少/, "次年商品毛利能否追上銷售管理費"],
-  [/下一財年，清理庫存還會拖住毛利嗎/, /交期較長的進貨/, "清理過剩庫存是否延續到第二年"],
   [/下一年，這批店會先出現改善嗎/, /初步改善跡象/, "次年改善跡象"],
   [/下一季會怎樣/, /同店銷售增加百分之一點六/, "季度同店比較"],
   [/改掉更大的虧損嗎/, /全年稅前營運仍虧/, "同店回升是否讓公司轉盈"],
   [/董事會會繼續等嗎/, /董事會在一月十四日/, "管理層如何處置虧損"],
-  [/那個財年先列了哪筆帳/, /退出費用，稅前共/, "一月退出決定後列出的費用"],
+  [/先在財報留下多少費用/, /退出費用，稅前共/, "一月退出決定後列出的費用"],
   [/為什麼要減到幾乎是零/, /股權價值因此接近零/, "非現金減損的原因"],
 ];
 const loops = anchors.map(([setup, payoff, what]) => {
