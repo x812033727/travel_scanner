@@ -4,8 +4,8 @@ title: 製作 Netflix 郵寄 DVD 轉串流品牌故事 X03
 status: in-progress
 priority: P1
 area: docs
-owner: codex-gpt6-netflix-x03
-claimed_at: 2026-10-20T14:13:46Z
+owner: codex-gpt6-x03-remediation
+claimed_at: 2026-10-20T18:08:15Z
 created_at: 2026-10-20T10:42:12Z
 completed_at:
 branch: codex/brand-story-netflix-x03
@@ -60,3 +60,5 @@ scope:
 2026-10-20 16:11 UTC：本機概念試片已交付 `/workspace/brand-story-preview/netflix-x03/`。最後 49 鏡安全概念圖替換有來源／視覺檢查與 SHA 綁定收據，原圖及評審未覆寫；49 鏡仍標 `needs_review`。整檔技術 QA **PASS**：H.264 1920×1080／30 fps，17,321 影格／577.367 秒（9:37.37），完整音畫解碼與連續 PTS、92 句繁中 SRT／VTT 位元組一致、−14 LUFS／−1 dBFS 真峰值；MP4 SHA-256 `28237f52f5deacd7bbe1ea2c90cf2616cc48d1e57cb296c65c407e587b8cd728`。概念旁檔保持 `approved:false`、`official_branding:false`；[QA 原始結果](../../docs/videos/story-everyday-netflix-x03/reviews/local-preview-qa-result.json)與[審閱紀錄](../../docs/videos/story-everyday-netflix-x03/reviews/local-preview-qa.md)已入包。票仍開著：尚缺站主 49 鏡與人工聽審、正式 5 秒片頭與 21 秒片尾、語音／轉錄／稅費全額結算，以及 YouTube Studio 兩個影片元素與訂閱元素實點驗證；本地動畫上的框線不能點擊。
 
 2026-10-20 視覺規格補查：見[逐鏡複核](../../docs/videos/story-everyday-netflix-x03/reviews/visual-triage-20261020.md)。49 鏡替代圖中 **23 鏡由本機 SVG 製成 PNG**，使實際 MiniMax 插圖最多 **42／77＝54.5%**；現稿另有自訂 `look.style`，會覆蓋固定 `cute-mystery` 預設。故本機試片僅供概念審看，按既定規格需移除畫風覆寫並在新媒體工作區重製 **65 鏡 MiniMax 圖**。嚴格故事正文實測 **8:00.70**，僅多門檻 0.70 秒；重配音不能加快後直接沿用長度判定。另缺兩支 25–55 秒 `from-episode` Shorts。65 鏡三次乾跑估最多 **US$2.63**，現有可見台帳 US$1.7135，但語音／轉錄／稅費未拆帳，尚不能確認全片 US$25 內；此輪未啟動任何付費重製。正式視覺、成本、Shorts 與上架關卡均仍未完成。
+
+2026-10-20 18:08 UTC：協調者指派新的 X03 修復代理接手本票與現有 #1621 草稿 PR；原持有代理已結束、工作樹乾淨，故使用 `claim --force` 接手，沒有碰其他 session 工作區。已把固定畫風候選及兩支來源對照 Shorts 放在隔離的 [`remake/`](../../docs/videos/story-everyday-netflix-x03/remake/readiness.md)；候選主片 SHA `4ba2b467…` **逐位元組等於**先前由獨立來源／視覺複查 PASS 的 25 鏡修訂版，只從現行概念稿移除 `/look/style`。65/77＝84.4% 只是在 65 鏡都重畫為真正 MiniMax 時的目標；Shorts 157／166 字僅粗估 37.7／39.8 秒，媒體與獨立盲讀仍待做。舊 MP4、當前 `video.json` 和所有原始收據保留；因完整供應商成本未知，沒有付費重畫、不能宣稱同規格成片。下一步先核清全額預算，再以新工作區出圖、實測正文和 Shorts、驗聽及正式品牌／可點連結。
