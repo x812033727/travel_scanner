@@ -83,7 +83,7 @@
       "what": "原檢驗漏掉的布料變數"
     },
     {
-      "setup": "x170428",
+      "setup": "x170429",
       "payoff": "x170510",
       "what": "多久才能重新上架"
     },
@@ -98,18 +98,23 @@
       "what": "總營收成長為何能蓋住單品空缺"
     },
     {
-      "setup": "x170524",
-      "payoff": "x170603",
-      "what": "整個財年的公司營收如何變化"
+      "setup": "x170522",
+      "payoff": "x170524",
+      "what": "毛利率降幅是否全由黑褲造成"
     },
     {
-      "setup": "x170606",
-      "payoff": "x170607",
+      "setup": "x170527",
+      "payoff": "x170604",
+      "what": "全年成績能否算出黑褲收入影響"
+    },
+    {
+      "setup": "x170602",
+      "payoff": "x170604",
       "what": "年度公告是否有黑褲單獨少賣實績"
     },
     {
       "setup": "x170609",
-      "payoff": "x170612",
+      "payoff": "x170611",
       "what": "全年毛利是否能拆出黑褲份額"
     }
   ],
@@ -236,14 +241,14 @@
       "id": "x17-b01-s04",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at an unbranded apparel store; trousers move past three blank shop tokens; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
+        "prompt": "Overhead shot, pan right at an unbranded apparel store; empty rack beside a closed delivery door; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
         "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170105",
-          "text": "倉庫與運送途中也有受影響的貨，店裡要等多久？",
+          "text": "六月，公司公布黑褲回店的進度；空衣架究竟等了多久？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句留半拍"
         }
@@ -399,7 +404,7 @@
       "lines": [
         {
           "id": "x170206",
-          "text": "布樣的檢驗單記著布料表現，卻沒有替整條褲子的穿著透度寫下答案。",
+          "text": "年報列的是一般布料檢驗，不能當作涉事黑褲已通過測試的紀錄。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -484,7 +489,7 @@
       "lines": [
         {
           "id": "x170211",
-          "text": "檢驗桌、製衣桌各有一張表；掛上衣架前，誰來看整條成衣的結果？",
+          "text": "檢驗桌上的測試項目列得整齊；布料還有哪些變化沒量到？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句留半拍"
         }
@@ -564,16 +569,16 @@
       "id": "x17-b02-s16",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a plain fabric and sewing workshop; stretched swatch beside plain pattern; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
+        "prompt": "Medium close-up, still at a plain fabric and sewing workshop; anonymous inspector places black pants beside swatch; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
         "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170216",
-          "text": "年年沿用的尺，遇上新做出的成衣，還能量到最後穿起來的樣子嗎？",
+          "text": "公司當年強調，商品品質是它與別家區分的關鍵。",
           "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；問句留半拍"
+          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
       ]
     },
@@ -596,22 +601,16 @@
     },
     {
       "id": "x17-b02-s18",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "撤貨前的公司",
-        "stats": [
-          {
-            "value": "211 家",
-            "label": "FY2012 期末；北美與澳洲門市"
-          }
-        ],
-        "source": "S1/S2｜FY2012",
-        "visual_note": "Typeset the exact figures in postproduction over a neutral silhouette of generic black athletic pants."
+        "prompt": "Medium shot, gentle push in at a plain fabric and sewing workshop; closed blank calendar beside trousers; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
+        "camera": "Medium shot, gentle push in",
+        "visual": "still"
       },
       "lines": [
         {
-          "id": "x170218",
-          "text": "二〇一二財年結束時，公司有二百一十一家店。",
+          "id": "x170220",
+          "text": "二月三日，上一財年已關帳；三月的這批黑褲會走進新一季的紀錄。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -621,16 +620,18 @@
       "id": "x17-b02-s19",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a plain fabric and sewing workshop; growing rack blocks beside same trousers; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Close-up, slow pull out at a plain fabric and sewing workshop; covered box of plain black pants by rack; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
+        "camera": "Close-up, slow pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x170219",
-          "text": "當年營收十三點七億美元，生意仍在長大。",
+          "id": "x170223",
+          "text": "到了二〇一三年三月，一批黑色 Luon 商品出現在門市。",
           "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
+          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績",
+          "say": "到了二〇一三年三月，一批黑色 路昂 商品出現在門市。",
+          "say_for": "3d40a7b00bb3"
         }
       ]
     },
@@ -638,78 +639,8 @@
       "id": "x17-b02-s20",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, slow pull out at a plain fabric and sewing workshop; closed blank calendar beside pants; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
-        "camera": "Close-up, slow pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x170220",
-          "text": "二〇一二財年在二〇一三年二月三日結束，報表先在這裡畫了句點。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
-        }
-      ]
-    },
-    {
-      "id": "x17-b02-s21",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot, pan left at a plain fabric and sewing workshop; closed annual ledger faces empty rack; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
+        "prompt": "Wide shot, pan left at a plain fabric and sewing workshop; hand touches unopened black pants box; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
         "camera": "Wide shot, pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x170221",
-          "text": "因此三月的衣架空缺，不在這份年度成績裡。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
-        }
-      ]
-    },
-    {
-      "id": "x17-b02-s22",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead shot, pan right at a plain fabric and sewing workshop; calendar turns from closed ledger to new box; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
-        "camera": "Overhead shot, pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x170222",
-          "text": "二月的帳結束了，供應與配送卻仍在走；下一箱商品將落在新的季度。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
-        }
-      ]
-    },
-    {
-      "id": "x17-b02-s23",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up, still at a plain fabric and sewing workshop; covered box of plain black pants by rack; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
-        "camera": "Medium close-up, still",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x170223",
-          "text": "年報截止以後，門市又等來新一批黑色 Luon 商品。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績",
-          "say": "年報截止以後，門市又等來新一批黑色 路昂 商品。",
-          "say_for": "0292b54d07aa"
-        }
-      ]
-    },
-    {
-      "id": "x17-b02-s24",
-      "template": "shot",
-      "data": {
-        "prompt": "Low-angle shot, tilt up at a plain fabric and sewing workshop; hand touches unopened black pants box; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
-        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -725,8 +656,8 @@
       "id": "x17-b03-s01",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at an anonymous back-room stock area; black pants move from box to rack; soft window light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Unlettered surfaces; no corporate insignia or lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Overhead shot, pan right at an anonymous back-room stock area; black pants move from box to rack; muted daylight. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional scene; omit trademarks and recognizable product design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -743,8 +674,8 @@
       "id": "x17-b03-s02",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, slow pull out at an anonymous back-room stock area; one selected pair beside full rack; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
-        "camera": "Close-up, slow pull out",
+        "prompt": "Medium close-up, still at an anonymous back-room stock area; one selected pair beside full rack; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -760,8 +691,8 @@
       "id": "x17-b03-s03",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous back-room stock area; inspector holds selected plain black pants; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up at an anonymous back-room stock area; inspector holds selected plain black pants; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -779,8 +710,8 @@
       "id": "x17-b03-s04",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at an anonymous back-room stock area; one pair before row of plain boxes; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium shot, gentle push in at an anonymous back-room stock area; one pair before row of plain boxes; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -796,8 +727,8 @@
       "id": "x17-b03-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at an anonymous back-room stock area; hand removes selected pants from hanger; gentle lamp light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Anonymous setting; no readable signage or brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Close-up, slow pull out at an anonymous back-room stock area; hand removes selected pants from hanger; diffuse morning light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Plain material and props; no logos or real-person likeness.",
+        "camera": "Close-up, slow pull out",
         "visual": "still"
       },
       "lines": [
@@ -815,8 +746,8 @@
       "id": "x17-b03-s06",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous back-room stock area; pants pass three unmarked shelves; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left at an anonymous back-room stock area; pants pass three unmarked shelves; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -838,8 +769,8 @@
       "id": "x17-b03-s07",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at an anonymous back-room stock area; closed box beside blank checklist; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Overhead shot, pan right at an anonymous back-room stock area; closed box beside blank checklist; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -855,8 +786,8 @@
       "id": "x17-b03-s08",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, slow pull out at an anonymous back-room stock area; gap in rack and closed delivery door; diffuse morning light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Plain material and props; no logos or real-person likeness.",
-        "camera": "Close-up, slow pull out",
+        "prompt": "Medium close-up, still at an anonymous back-room stock area; gap in rack and closed delivery door; gentle lamp light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Anonymous setting; no readable signage or brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -872,8 +803,8 @@
       "id": "x17-b03-s09",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous back-room stock area; fabric roll passes to second sewing bench; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up at an anonymous back-room stock area; fabric roll passes to second sewing bench; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -895,8 +826,8 @@
       "id": "x17-b03-s10",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at an anonymous back-room stock area; empty hanger before slow blank clock; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium shot, gentle push in at an anonymous back-room stock area; empty hanger before slow blank clock; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -912,8 +843,8 @@
       "id": "x17-b03-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at an anonymous back-room stock area; pants boxes span shelf, warehouse, plain cart; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Close-up, slow pull out at an anonymous back-room stock area; pants boxes span shelf, warehouse, plain cart; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
+        "camera": "Close-up, slow pull out",
         "visual": "still"
       },
       "lines": [
@@ -929,8 +860,8 @@
       "id": "x17-b03-s12",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous back-room stock area; worker sorts unmarked pants boxes; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left at an anonymous back-room stock area; worker sorts unmarked pants boxes; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -992,8 +923,8 @@
       "id": "x17-b03-s15",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at an anonymous back-room stock area; two blank forecast cards apart from closed ledger; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Overhead shot, pan right at an anonymous back-room stock area; two blank forecast cards apart from closed ledger; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1009,8 +940,8 @@
       "id": "x17-b03-s16",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, slow pull out at an anonymous back-room stock area; selected pants box beside unopened cost book; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
-        "camera": "Close-up, slow pull out",
+        "prompt": "Medium close-up, still at an anonymous back-room stock area; selected pants box beside unopened cost book; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1026,8 +957,8 @@
       "id": "x17-b03-s17",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous back-room stock area; checkout tray and pants box on split desk; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up at an anonymous back-room stock area; checkout tray and pants box on split desk; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1043,8 +974,8 @@
       "id": "x17-b03-s18",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at an anonymous back-room stock area; fabric swatch and finished trousers face each other; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium shot, gentle push in at an anonymous back-room stock area; fabric swatch and finished trousers face each other; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -1060,8 +991,8 @@
       "id": "x17-b04-s01",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a simple quality inspection table; anonymous inspector opens blank report; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Close-up, slow pull out at a simple quality inspection table; anonymous inspector opens blank report; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
+        "camera": "Close-up, slow pull out",
         "visual": "still"
       },
       "lines": [
@@ -1078,18 +1009,16 @@
       "id": "x17-b04-s02",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a simple quality inspection table; old blank measuring card beside newer swatch; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left at a simple quality inspection table; old blank measuring card beside newer swatch; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170402",
-          "text": "原來的 Luon 規格從二〇〇六年沿用，後來沒有重大修改。",
+          "text": "還記得二〇〇六年那套檢驗尺？公司說規格與程序後來沒大改。",
           "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績",
-          "say": "原來的 路昂 規格從二〇〇六年沿用，後來沒有重大修改。",
-          "say_for": "3db531141a0c"
+          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
       ]
     },
@@ -1097,14 +1026,14 @@
       "id": "x17-b04-s03",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a simple quality inspection table; several black fabric swatches vary in stretch; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Overhead shot, pan right at a simple quality inspection table; several black fabric swatches vary in stretch; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170403",
-          "text": "涉事布料位在舊標準容許範圍比較低的一端。",
+          "text": "涉事布料落在公司可接受範圍的低端，靠近那條界線。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -1114,8 +1043,8 @@
       "id": "x17-b04-s04",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, slow pull out at a simple quality inspection table; swatch rests at edge of blank scale; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
-        "camera": "Close-up, slow pull out",
+        "prompt": "Medium close-up, still at a simple quality inspection table; swatch rests at edge of blank scale; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1131,8 +1060,8 @@
       "id": "x17-b04-s05",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a simple quality inspection table; plain gauge points near lower edge; soft overhead light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Unmarked apparel; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up at a simple quality inspection table; plain gauge points near lower edge; soft evening light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paperwork without writing; exclude actual faces and marks.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1150,8 +1079,42 @@
       "id": "x17-b04-s06",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a simple quality inspection table; blank checklist beside moving fabric roll; muted daylight. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional scene; omit trademarks and recognizable product design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium shot, gentle push in at a simple quality inspection table; unmarked fabric gauge beside finished trousers; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
+        "camera": "Medium shot, gentle push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x170406",
+          "text": "舊測試即使量到了幾項布料性質，也不等於把所有影響成衣的變化問完。",
+          "pause_after_ms": 0,
+          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
+        }
+      ]
+    },
+    {
+      "id": "x17-b04-s07",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, slow pull out at a simple quality inspection table; closed garment box beside reopened blank test card; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
+        "camera": "Close-up, slow pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x170407",
+          "text": "三月先撤下成衣，四月才重新檢討布料測試；處置與找原因不是同一天完成。",
+          "pause_after_ms": 0,
+          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
+        }
+      ]
+    },
+    {
+      "id": "x17-b04-s08",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, pan left at a simple quality inspection table; blank checklist beside moving fabric roll; soft overhead light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Unmarked apparel; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1164,28 +1127,28 @@
       ]
     },
     {
-      "id": "x17-b04-s07",
+      "id": "x17-b04-s09",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a simple quality inspection table; pattern pieces shift slightly on black fabric; gentle lamp light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Anonymous setting; no readable signage or brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Overhead shot, pan right at a simple quality inspection table; pattern pieces shift slightly on black fabric; muted daylight. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Fictional scene; omit trademarks and recognizable product design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170409",
-          "text": "裁成褲子時，版型又有細微變動。",
+          "text": "裁成褲子時，版型又有細微變動；問題會只落在布料測試嗎？",
           "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
+          "emotion": "台灣自然國語說書；問句留半拍"
         }
       ]
     },
     {
-      "id": "x17-b04-s08",
+      "id": "x17-b04-s10",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a simple quality inspection table; fabric swatch overlays garment pattern; soft evening light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paperwork without writing; exclude actual faces and marks.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium close-up, still at a simple quality inspection table; fabric swatch overlays garment pattern; gentle lamp light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Anonymous setting; no readable signage or brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1198,11 +1161,11 @@
       ]
     },
     {
-      "id": "x17-b04-s09",
+      "id": "x17-b04-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a simple quality inspection table; anonymous hands compare flat swatch and gently stretched finished leg; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Low-angle shot, tilt up at a simple quality inspection table; anonymous hands compare flat swatch and gently stretched finished leg; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1215,11 +1178,11 @@
       ]
     },
     {
-      "id": "x17-b04-s10",
+      "id": "x17-b04-s12",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, slow pull out at a simple quality inspection table; three unlabeled chips beside one finished pair; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
-        "camera": "Close-up, slow pull out",
+        "prompt": "Medium shot, gentle push in at a simple quality inspection table; three unlabeled chips beside one finished pair; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -1232,11 +1195,11 @@
       ]
     },
     {
-      "id": "x17-b04-s11",
+      "id": "x17-b04-s13",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a simple quality inspection table; several plain tools surround one black pair; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Close-up, slow pull out at a simple quality inspection table; several plain tools surround one black pair; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
+        "camera": "Close-up, slow pull out",
         "visual": "still"
       },
       "lines": [
@@ -1251,11 +1214,11 @@
       ]
     },
     {
-      "id": "x17-b04-s12",
+      "id": "x17-b04-s14",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a simple quality inspection table; long table links roll, pattern, trousers; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Wide shot, pan left at a simple quality inspection table; long table links roll, pattern, pants; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1268,11 +1231,11 @@
       ]
     },
     {
-      "id": "x17-b04-s13",
+      "id": "x17-b04-s15",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a simple quality inspection table; inspector compares swatch with finished leg panel; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Overhead shot, pan right at a simple quality inspection table; inspector compares swatch with finished leg panel; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1285,45 +1248,45 @@
       ]
     },
     {
-      "id": "x17-b04-s14",
+      "id": "x17-b04-s16",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a simple quality inspection table; worker stretches swatch beside blank ruler; soft evening light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. All paperwork without writing; exclude actual faces and marks.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium close-up, still at a simple quality inspection table; worker stretches swatch beside blank ruler; gentle lamp light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Anonymous setting; no readable signage or brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170416",
-          "text": "公司因此修訂伸展模數的測試，去看布被拉開時的反應。",
+          "text": "公司改測布被拉開時受力與伸長的關係，去看它怎麼回應。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
       ]
     },
     {
-      "id": "x17-b04-s15",
+      "id": "x17-b04-s17",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a simple quality inspection table; swatch sits on plain unmarked scale; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Low-angle shot, tilt up at a simple quality inspection table; swatch sits on plain unmarked scale; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170417",
-          "text": "重量與公差，也被列入新的檢查。",
+          "text": "布料重量，以及允許有多少偏差，也放進新檢查。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
       ]
     },
     {
-      "id": "x17-b04-s16",
+      "id": "x17-b04-s18",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, slow pull out at a simple quality inspection table; swatch moves across three blank gauges; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
-        "camera": "Close-up, slow pull out",
+        "prompt": "Medium shot, gentle push in at a simple quality inspection table; swatch moves across three blank gauges; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
@@ -1336,11 +1299,11 @@
       ]
     },
     {
-      "id": "x17-b04-s17",
+      "id": "x17-b04-s19",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a simple quality inspection table; test gauges sit beside finished pants; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Close-up, slow pull out at a simple quality inspection table; test gauges sit beside finished pants; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
+        "camera": "Close-up, slow pull out",
         "visual": "still"
       },
       "lines": [
@@ -1353,11 +1316,11 @@
       ]
     },
     {
-      "id": "x17-b04-s18",
+      "id": "x17-b04-s20",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a simple quality inspection table; anonymous worker inspects garment at bench; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Wide shot, pan left at a simple quality inspection table; anonymous worker inspects garment at bench; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1370,11 +1333,11 @@
       ]
     },
     {
-      "id": "x17-b04-s19",
+      "id": "x17-b04-s21",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a simple quality inspection table; several anonymous hands review plain pattern; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Overhead shot, pan right at a simple quality inspection table; several anonymous hands review plain pattern; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
+        "camera": "Overhead shot, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1387,11 +1350,11 @@
       ]
     },
     {
-      "id": "x17-b04-s20",
+      "id": "x17-b04-s22",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a simple quality inspection table; hands place new blank test cards on table; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium close-up, still at a simple quality inspection table; hands place new blank test cards on table; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1404,51 +1367,17 @@
       ]
     },
     {
-      "id": "x17-b04-s21",
+      "id": "x17-b04-s23",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a simple quality inspection table; one unfinished pair beside open test folder; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
-        "camera": "Medium shot, gentle push in",
+        "prompt": "Low-angle shot, tilt up at a simple quality inspection table; anonymous hands join three plain blank process cards; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170423",
-          "text": "檢驗台和工廠都開始改；四月的文件能給空衣架一個確定補貨日嗎？",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；問句留半拍"
-        }
-      ]
-    },
-    {
-      "id": "x17-b04-s22",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up, slow pull out at a simple quality inspection table; inspector examines complete plain black pants; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
-        "camera": "Close-up, slow pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x170424",
-          "text": "沒有。查到要改什麼，不等於製衣廠已把替代褲子縫好並送進店。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
-        }
-      ]
-    },
-    {
-      "id": "x17-b04-s23",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot, pan left at a simple quality inspection table; black pants box faces empty rack; soft overhead light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Unmarked apparel; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x170425",
-          "text": "店裡等的是能重新掛上衣架的商品，不是檢查表上已寫好的工作項目。",
+          "text": "公司還宣布補強內部領導與跨部門團隊，把品質、原料和製作串起來。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -1458,16 +1387,16 @@
       "id": "x17-b04-s24",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a simple quality inspection table; worker carries fresh plain trousers toward rack; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium shot, gentle push in at a simple quality inspection table; one unfinished pair beside open test folder; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x170426",
-          "text": "供布、縫製、配送還得再走一輪；查到原因與補好貨，跑的是兩個時鐘。",
+          "id": "x170424",
+          "text": "三條工作線啟動後，三月給出的財務預測有沒有跟著改？",
           "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
+          "emotion": "台灣自然國語說書；問句留半拍"
         }
       ]
     },
@@ -1475,14 +1404,14 @@
       "id": "x17-b04-s25",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a simple quality inspection table; empty slot remains beside other plain garments; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Close-up, slow pull out at a simple quality inspection table; inspector examines complete plain black pants; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
+        "camera": "Close-up, slow pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x170427",
-          "text": "空缺不只影響衣架，還會一路走進這一季的營收與存貨帳。",
+          "id": "x170425",
+          "text": "沒有。公司四月仍維持三月的財測；但替代褲子還沒因此送到空衣架前。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -1492,13 +1421,64 @@
       "id": "x17-b04-s26",
       "template": "shot",
       "data": {
+        "prompt": "Wide shot, pan left at a simple quality inspection table; black pants box faces empty rack; soft overhead light. Hands and the clothing item stay inside the central 608-pixel corridor of a 1920x1080 frame for 9:16 crop. Unmarked apparel; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x170426",
+          "text": "新的檢驗方法與趕製替代商品，是當時同時在跑的兩件事。",
+          "pause_after_ms": 0,
+          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
+        }
+      ]
+    },
+    {
+      "id": "x17-b04-s27",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot, pan right at a simple quality inspection table; worker carries fresh plain trousers toward rack; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
+        "camera": "Overhead shot, pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x170427",
+          "text": "布料、縫製、配送仍要走完各自的一段，成衣才會再到店。",
+          "pause_after_ms": 0,
+          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
+        }
+      ]
+    },
+    {
+      "id": "x17-b04-s28",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up, still at a simple quality inspection table; empty slot remains beside other plain garments; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
+        "camera": "Medium close-up, still",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x170428",
+          "text": "空缺不只影響衣架，還會一路走進這一季的營收與存貨帳。",
+          "pause_after_ms": 0,
+          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
+        }
+      ]
+    },
+    {
+      "id": "x17-b04-s29",
+      "template": "shot",
+      "data": {
         "prompt": "Low-angle shot, tilt up at a simple quality inspection table; hand pauses with pants before hanger; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
         "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x170428",
+          "id": "x170429",
           "text": "從撤下到重掛，公司到底花了多久？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句留半拍"
@@ -1513,7 +1493,7 @@
         "stats": [
           {
             "value": "7 週",
-            "label": "FY2013 Q1 後七週；店內與網站"
+            "label": "FY2013 Q1 最後七週；店內與網站"
           }
         ],
         "source": "S4｜FY2013 Q1",
@@ -1522,7 +1502,7 @@
       "lines": [
         {
           "id": "x170501",
-          "text": "到第一季報告，公司說缺貨拖了那季後七週。",
+          "text": "到第一季報告，公司說這批褲子在第一季最後七週缺貨。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -1540,7 +1520,7 @@
       "lines": [
         {
           "id": "x170502",
-          "text": "七週不是後場一扇門沒打開；店裡和網站同時少了這批能賣的黑褲。",
+          "text": "五月五日這季結束時，帳本先關上，店裡與網站都已少賣了這批貨。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -1557,7 +1537,7 @@
       "lines": [
         {
           "id": "x170503",
-          "text": "公司說，店裡和網路上的短缺都壓了銷售。",
+          "text": "公司說，短缺壓了銷售，也伴隨額外成本；代價不只落在收銀機。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -1631,7 +1611,7 @@
       "lines": [
         {
           "id": "x170507",
-          "text": "受影響存貨有些在店，有些還在倉庫或途中；都得納進這次價值調整。",
+          "text": "還記得倉庫與途中的箱子？季報把它們連同店內受影響貨一起調低到市價。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -1815,7 +1795,7 @@
       "lines": [
         {
           "id": "x170518",
-          "text": "甚至受影響商品在網路停售時，直達消費者通路營收仍增四成。",
+          "text": "網站通路營收仍增四成；但轉換率與客單價下降，公司說主要受撤貨影響。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -1832,7 +1812,7 @@
       "lines": [
         {
           "id": "x170519",
-          "text": "同一季可以同時多賣其他貨、少賣這批褲；毛利這一面會怎樣？",
+          "text": "網站來的人更多，結帳卻變少、單次花費也下降；毛利帳又如何？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句留半拍"
         }
@@ -1872,7 +1852,7 @@
       "lines": [
         {
           "id": "x170521",
-          "text": "整個收入盤子變大，每一元收入留下的毛利比例卻縮小了。",
+          "text": "毛利額是總共留下多少，毛利率是每賣一元留下多少；兩個方向可以不同。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -1882,16 +1862,16 @@
       "id": "x17-b05-s21",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a simple store office beside a display wall; profit ledger stays closed beside pants box; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
+        "prompt": "Medium close-up, still at a simple store office beside a display wall; full rack and boxed pants beside one ledger; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
         "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170522",
-          "text": "全部降幅不能算在黑褲頭上；能指認的，是它已入銷貨成本的存貨準備。",
+          "text": "公司整體多賣貨、成本也多了；毛利率的降幅能全算在這箱黑褲上嗎？",
           "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
+          "emotion": "台灣自然國語說書；問句留半拍"
         }
       ]
     },
@@ -1899,14 +1879,14 @@
       "id": "x17-b05-s22",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a simple store office beside a display wall; fresh black pants above archived cost ledger; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
+        "prompt": "Low-angle shot, tilt up at a simple store office beside a display wall; profit ledger stays closed beside pants box; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
         "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170523",
-          "text": "季報把收入拆成門市、直達消費者和其他通路，沒有一欄叫這批黑褲。",
+          "text": "季報說，存貨準備增加影響毛利率；其中包含撤下黑褲那筆，卻不只那一筆。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -1916,14 +1896,65 @@
       "id": "x17-b05-s23",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, gentle push in at a simple store office beside a display wall; annual ledger closes under hanging trousers; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
+        "prompt": "Medium shot, gentle push in at a simple store office beside a display wall; mixed garment silhouettes beside ledger; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
         "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170524",
-          "text": "一季的代價清楚了，整個財年又怎麼看？",
+          "text": "高毛利核心商品比重下降、舊季商品折價也有影響；整段降幅不能全算黑褲。",
+          "pause_after_ms": 0,
+          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
+        }
+      ]
+    },
+    {
+      "id": "x17-b05-s24",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, slow pull out at a simple store office beside a display wall; fresh black pants above archived cost ledger; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
+        "camera": "Close-up, slow pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x170525",
+          "text": "季報把收入拆成門市、直達消費者和其他通路，沒有一欄叫這批黑褲。",
+          "pause_after_ms": 0,
+          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
+        }
+      ]
+    },
+    {
+      "id": "x17-b05-s25",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, pan left at a simple store office beside a display wall; closed annual ledger beside forecast envelope; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
+        "camera": "Wide shot, pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x170526",
+          "text": "這本季報有可追的存貨成本，卻不能把原先預估的少賣額變成一張實際收據。",
+          "pause_after_ms": 0,
+          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
+        }
+      ]
+    },
+    {
+      "id": "x17-b05-s26",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot, pan right at a simple store office beside a display wall; annual ledger closes under hanging trousers; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
+        "camera": "Overhead shot, pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x170527",
+          "text": "那整個財年結束後，這條褲子的真正收入影響能算出來嗎？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句留半拍"
         }
@@ -1933,8 +1964,8 @@
       "id": "x17-b06-s01",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, slow pull out at a quiet accounting desk next to an unmarked hanger; annual calendar beside restored rack; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
-        "camera": "Close-up, slow pull out",
+        "prompt": "Medium close-up, still at a quiet accounting desk next to an unmarked hanger; annual calendar beside restored rack; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
+        "camera": "Medium close-up, still",
         "visual": "still"
       },
       "lines": [
@@ -1951,14 +1982,14 @@
       "id": "x17-b06-s02",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a quiet accounting desk next to an unmarked hanger; black pants beside full annual ledger; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up at a quiet accounting desk next to an unmarked hanger; black pants beside full annual ledger; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170602",
-          "text": "年度表從二月開始，把缺貨的一季和後來回補的月份合在同一本帳裡。",
+          "text": "翻開年度表，缺貨那季和回補後的月份被合成一個營收數字。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -1991,14 +2022,14 @@
       "id": "x17-b06-s04",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, pan right at a quiet accounting desk next to an unmarked hanger; one black pair apart from many generic garments; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
-        "camera": "Overhead shot, pan right",
+        "prompt": "Medium shot, gentle push in at a quiet accounting desk next to an unmarked hanger; one black pair apart from many generic garments; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
+        "camera": "Medium shot, gentle push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170604",
-          "text": "十六趴是各門市、各種商品合計的結果，沒有把涉事黑褲獨立算出來。",
+          "text": "沒有。公告列的是全公司收入，沒有另列這批褲子全年究竟少賣多少。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -2008,14 +2039,14 @@
       "id": "x17-b06-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, still at a quiet accounting desk next to an unmarked hanger; 53rd blank calendar tile set aside; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
-        "camera": "Medium close-up, still",
+        "prompt": "Close-up, slow pull out at a quiet accounting desk next to an unmarked hanger; 53rd blank calendar tile set aside; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
+        "camera": "Close-up, slow pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x170605",
-          "text": "前一年比這一財年多一週，兩個年度營收總額的時間窗並不完全等長。",
+          "text": "上年有五十三週，這年五十二週；兩年的比較窗口也不同。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
@@ -2025,57 +2056,6 @@
       "id": "x17-b06-s06",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a quiet accounting desk next to an unmarked hanger; one black pair beside closed annual ledger; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
-        "camera": "Low-angle shot, tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x170606",
-          "text": "那三月預估的全年少賣額，到年度公告裡有沒有變成一張結算收據？",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；問句留半拍"
-        }
-      ]
-    },
-    {
-      "id": "x17-b06-s07",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot, gentle push in at a quiet accounting desk next to an unmarked hanger; anonymous reader scans blank annual summary; soft window light.  Unlettered surfaces; no corporate insignia or lettering.",
-        "camera": "Medium shot, gentle push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x170607",
-          "text": "沒有；這份短公告未另列這批黑褲的全年實際少賣營收。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
-        }
-      ]
-    },
-    {
-      "id": "x17-b06-s08",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up, slow pull out at a quiet accounting desk next to an unmarked hanger; black pants apart from store ledger; diffuse morning light.  Plain material and props; no logos or real-person likeness.",
-        "camera": "Close-up, slow pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x170608",
-          "text": "不能從公司全年增長的總額，倒算一條褲子真正少賣了多少。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
-        }
-      ]
-    },
-    {
-      "id": "x17-b06-s09",
-      "template": "shot",
-      "data": {
         "prompt": "Wide shot, pan left at a quiet accounting desk next to an unmarked hanger; parcel token joins mature store tokens; soft overhead light.  Unmarked apparel; no labels, words, or numbers.",
         "camera": "Wide shot, pan left",
         "visual": "still"
@@ -2083,14 +2063,14 @@
       "lines": [
         {
           "id": "x170609",
-          "text": "那已經入帳的那批貨，在全年毛利率裡又能被單獨認出來嗎？",
+          "text": "那已入帳的那箱貨，能解釋整個年度的毛利變化嗎？",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；問句留半拍"
         }
       ]
     },
     {
-      "id": "x17-b06-s10",
+      "id": "x17-b06-s07",
       "template": "stats",
       "data": {
         "title": "公司全年毛利率",
@@ -2113,7 +2093,7 @@
       ]
     },
     {
-      "id": "x17-b06-s11",
+      "id": "x17-b06-s08",
       "template": "shot",
       "data": {
         "prompt": "Overhead shot, pan right at a quiet accounting desk next to an unmarked hanger; mixed plain cost chips around black trousers box; muted daylight.  Fictional scene; omit trademarks and recognizable product design.",
@@ -2123,41 +2103,7 @@
       "lines": [
         {
           "id": "x170611",
-          "text": "這個比例混合了所有商品和成本，沒有替黑褲單獨留一欄。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
-        }
-      ]
-    },
-    {
-      "id": "x17-b06-s12",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up, still at a quiet accounting desk next to an unmarked hanger; one black pair beside many garments on sales tray; gentle lamp light.  Anonymous setting; no readable signage or brand colors.",
-        "camera": "Medium close-up, still",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x170612",
-          "text": "短公告也沒有拆出撤貨對全年毛利變化的完整份額。",
-          "pause_after_ms": 0,
-          "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
-        }
-      ]
-    },
-    {
-      "id": "x17-b06-s13",
-      "template": "shot",
-      "data": {
-        "prompt": "Low-angle shot, tilt up at a quiet accounting desk next to an unmarked hanger; same black pants beside swatch box and restored rack; soft evening light.  All paperwork without writing; exclude actual faces and marks.",
-        "camera": "Low-angle shot, tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x170613",
-          "text": "可指認的第一季存貨準備，不能放大成整個年度毛利降幅。",
+          "text": "也不能。全年毛利率混合各項商品與成本，公告沒有拆出黑褲的完整份額。",
           "pause_after_ms": 0,
           "emotion": "台灣自然國語說書；具體、平穩、不要把估計唸成實績"
         }
