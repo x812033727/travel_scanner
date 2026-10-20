@@ -1,7 +1,7 @@
 ---
 id: 2026-10-19-curio-s31-r2-source-and-prompt
 title: Curio S31 source and prompt corrections through R5a
-status: in-progress
+status: blocked
 priority: P2
 area: docs
 owner: codex-root
@@ -59,3 +59,5 @@ R5 fresh blind panel sealed 13/13 YES on the unchanged script SHA. Independent r
 2026-10-20 R8 開畫前逐鏡強化：相對 R7 精確版只改 **76/96 個 `scenes[].data.prompt`**，`video.json` 新 SHA `0b5e8dcc054c880127e49efd0ec0dd58f86f77c0a50530f2e094b2b8d0fbe762`；script/claims/research、97 句及音訊不變。另一名獨立審查者對**新 SHA 全 96 景**與固定來源逐鏡重查 **PASS**，lint 0／0，3-take dry-run 96 景均在上限內；圖樂最高 US$3.97，目前只有既支音樂 US$0.08，沒有付費圖片。生成後仍須原尺寸驗收。詳 [verify-11.md](../../docs/videos/curio-s31/verify-11.md)。
 
 2026-10-20 單支 `from-episode` Short 草稿已備：以杜牧詩、《新唐書》兩段和白居易原序辨明荔枝來路仍不可畫成完整驛線。八景均指向本集既有長片鏡位；格式／六拍／單支檢查零問題。這是零付費撰寫者自查，尚無長片網址及插圖 keyframe，不能製作或宣稱完成短片；詳 [shorts.json](../../docs/videos/curio-s31/shorts.json) 及 [short-verify-1.md](../../docs/videos/curio-s31/short-verify-1.md)。音訊站台 gate 仍 pending。
+
+2026-10-20 R9 原尺寸畫面止損：首 49 景的 22 張機器 PASS 中，人工只有 `ly018` 可直接留用，5 張待覆核；經 25 景 source-safe prompt 審查後，最後再將 `ly001` 空門、`ly006` 雙空白道具、`ly014` 無人紅塵各付費試畫一次。三張都獲機器 9.29 PASS，**原尺寸 0/3 KEEP**（門洞／門柱多幼童、路程紙缺失），達到預先設定的停止條件。`STOP` 已恢復，帳本 US$0.853／US$3.97、零預留；所有 26 個未驗證 prompt 差異僅封存補丁，正式 `video.json` 回復 R8 已提交 SHA `0b5e8dcc054c880127e49efd0ec0dd58f86f77c0a50530f2e094b2b8d0fbe762`。**不要再對 S31 付費生成**；先提出可控 2D 示意圖加少量後製來源卡的替代方案，證明至少 68/96 正文鏡頭仍是有效插畫、最多連卡三張，再重做來源／敘事與分鏡審核。詳 [verify-12.md](../../docs/videos/curio-s31/verify-12.md)。長片、片頭片尾、Short 成片及上傳包仍未完成；先轉投其他來源與畫面可行的集數。
