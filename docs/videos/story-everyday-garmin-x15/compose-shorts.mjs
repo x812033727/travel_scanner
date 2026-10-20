@@ -36,7 +36,7 @@ for (const [si, short] of rows.entries()) {
 // Anchor cuts to spoken line IDs, not scene numbers: scene packing can change
 // between script revisions while the intended illustration remains the same.
 const shotLineMap = {
-  1: ["x150331", "x150104", "x150302", "x150412", "x150425", "x150414", "x150421", "x150423", "x150410"],
+  1: ["x150331", "x150104", "x150302", "x150412", "x150425", "x150214", "x150421", "x150423", "x150410"],
   2: ["x150501", "x150502", "x150505", "x150511", "x150540", "x150542", "x150623", "x150601", "x150633"],
 };
 const byShot = new Map(video.scenes.map(scene => [scene.id, scene]));

@@ -85,7 +85,7 @@ const portraitFocal = new Map([
   ["x150302", "one coloured portion inside the surrounding whole"],
   ["x150412", "two overlapping unlettered folios"],
   ["x150425", "a phone silhouette beside a flat route line"],
-  ["x150414", "two nested unlettered rings"],
+  ["x150214", "one small product ring inside a larger business ring"],
   ["x150421", "one plain navigation unit on a shelf"],
   ["x150423", "two abstract unlettered risk strips"],
   ["x150410", "multiple pressure streams converging beside a phone"],
@@ -98,7 +98,6 @@ const portraitFocal = new Map([
   ["x150623", "two folios with visibly different blank dividers"],
   ["x150601", "a new folio with two leading coloured ribbons"],
   ["x150633", "two broad revenue strands within a larger whole"],
-  ["x150629", "one central meeting point of five abstract paths"],
   ["x150519", "two watches beside a broader group of equipment"],
 ]);
 // Each numerical card is hand-written from G1–G6 and anchored to a stable
@@ -138,8 +137,14 @@ const lineFor = row => {
 // historical object. Carry its unchanged shape across the dated report pages.
 const ribbonAnchors = new Set(["x150104", "x150201", "x150225", "x150331", "x150405", "x150540", "x150623"]);
 const openingCar = new Set(["x150101", "x150102", "x150103", "x150104"]);
-const archiveFolio = new Set(["x150105", "x150107", "x150108", "x150109", "x150110", "x150201", "x150225", "x150331", "x150540", "x150542", "x150601", "x150623"]);
+const archiveFolio = new Set(["x150105", "x150110", "x150201", "x150225", "x150331", "x150540", "x150542", "x150601", "x150623"]);
 const twoWatchOpening = new Set(["x150501"]);
+const withheldRunner = new Set(["x150109"]);
+const accountingRings = new Set(["x150214"]);
+const remoteNeed = new Set(["x150610"]);
+const factorySystem = new Set(["x150617"]);
+const oldNewComparison = new Set(["x150620"]);
+const useMontage = new Set(["x150629"]);
 const scenes = [];
 let shotNo = 0;
 for (const [ci, chapter] of chapters.entries()) {
@@ -157,12 +162,30 @@ for (const [ci, chapter] of chapters.entries()) {
     const isOpeningCar = selected.some(row => openingCar.has(row.id));
     const isArchiveFolio = selected.some(row => archiveFolio.has(row.id));
     const isTwoWatchOpening = selected.some(row => twoWatchOpening.has(row.id));
+    const isWithheldRunner = selected.some(row => withheldRunner.has(row.id));
+    const isAccountingRings = selected.some(row => accountingRings.has(row.id));
+    const isRemoteNeed = selected.some(row => remoteNeed.has(row.id));
+    const isFactorySystem = selected.some(row => factorySystem.has(row.id));
+    const isOldNewComparison = selected.some(row => oldNewComparison.has(row.id));
+    const isUseMontage = selected.some(row => useMontage.has(row.id));
     const [setting, role, action] = isOpeningCar
       ? [sceneNo === 1 ? "in a plain parked car" : "in the same plain parked car as the preceding opening shot", "driver", "comparing a standalone route screen with a phone"]
       : isArchiveFolio
       ? [current.id === "x150105" ? "at a plain archive table" : "at the same plain archive table established after the opening car scene", "researcher", "turning an unlettered annual folio beside the recurring rounded blue ribbon"]
       : isTwoWatchOpening
       ? ["beside a plain running track", "runner", "holding two plain unmarked sports watches side by side above the opened unlettered product folio"]
+      : isWithheldRunner
+      ? ["at a plain running track finish", "runner", "pausing after a lap with both hands below the frame and no watch or device visible"]
+      : isAccountingRings
+      ? ["at a plain archive table", "researcher", "placing one small blank product ring inside a larger blank business ring"]
+      : isRemoteNeed
+      ? ["on a remote plain mountain trail", "hiker", "looking at an unmarked phone with no signal and no other device yet visible"]
+      : isFactorySystem
+      ? ["at a generic vehicle-system assembly area", "technician", "holding one unmarked factory-supply component"]
+      : isOldNewComparison
+      ? ["at a plain equipment workbench", "technician", "comparing an unmarked personal route screen with a separate factory-supply module"]
+      : isUseMontage
+      ? ["in a three-panel car, running track and remote trail montage", "users", "a driver looking at a plain route screen, a runner checking a plain wrist receiver, and a hiker holding a plain communicator"]
       : humanAction(visualCue, ci);
     const ribbonInstruction = selected.some(row => ribbonAnchors.has(row.id))
       ? " Show the recurring plain blue revenue ribbon with the same rounded end and no lettering; it is an editorial visual metaphor, never a reproduced company chart."
@@ -171,7 +194,9 @@ for (const [ci, chapter] of chapters.entries()) {
       ? " The old blue ribbon ends on a closed older folio; do not extend it into the differently divided new folio."
       : "";
     const shotIndex = card ? shotNo : shotNo++;
-    const orientation = isOpeningCar || isArchiveFolio || isTwoWatchOpening
+    const orientation = isUseMontage
+      ? `three anonymous ${role} with faces outside frame: ${action}`
+      : isOpeningCar || isArchiveFolio || isTwoWatchOpening || isWithheldRunner || isAccountingRings || isRemoteNeed || isFactorySystem || isOldNewComparison
       ? `one anonymous ${role} with face outside frame ${action}`
       : shotIndex % 4 === 0 ? `one anonymous ${role} facing the viewer and ${action}` : `one anonymous ${role} ${action}`;
     const scene = card ? { id, template: "stats", data: card, lines: selected.map(lineFor) } : {
@@ -197,7 +222,7 @@ const loops = [
   { setup: "x150110", payoff: "x150201", what: "2006 車用／行動收入先猛增，形成開場的粗藍線" },
   { setup: "x150231", payoff: "x150301", what: "2008 nüvi 占全公司收入的比例" },
   { setup: "x150313", payoff: "x150318", what: "全公司出貨增加時，年報仍記載降價壓力" },
-  { setup: "x150335", payoff: "x150402", what: "七成事業的收入在兩年後是否維持" },
+  { setup: "x150331", payoff: "x150402", what: "2008 與 2010 同一車用／行動事業的收入差額" },
   { setup: "x150432", payoff: "x150501", what: "2011 新品頁讓 GPS 進入哪個場景" },
   { setup: "x150543", payoff: "x150601", what: "2025 最大收入欄是哪個事業" },
 ];

@@ -1,4 +1,4 @@
-# X15 Garmin｜六章繁中旁白工作稿 v7
+# X15 Garmin｜六章繁中旁白工作稿 v8
 
 一行一個可配音句；`line id | source ids | narration | generic English visual cue`。`editorial` 只用於不引入外部事實的設問或轉場。2008 車內駕駛是匿名用途示意，不是真人個案；文件場景只呈現已查核的公司文件，不能製造一場公司內部決策。年份與數字由後製卡片呈現。第一章後接正式 5 秒片頭；`outro` 三句後接正式 21 秒片尾。
 
@@ -9,9 +9,9 @@ x150102 | G2 | 它指著路口；旁邊的手機，也開始有 GPS。 | driver 
 x150103 | G2 | 同一段路，兩塊螢幕都想指給他看。 | two blank screens near the steering wheel
 x150104 | G2,G3 | 而 Garmin 當年的收入表，車用／行動那條藍線占公司逾七成。 | blue revenue ribbon over the dashboard, beside thinner ribbons
 x150105 | G2 | 年報卻只說手機導航「可能」拖慢成長；Garmin 後來靠什麼賺錢？ | blank risk report beside the two competing screens
-x150107 | G4 | 兩年後的全年公告攤開；車用／行動那欄會寫多少？ | closed unlettered annual folio beside a single blank bar
-x150108 | G2,G5 | 二〇一一年的風險欄，也重寫了手機那句話；「可能」還在嗎？ | two unlettered risk paragraphs, second concealed
-x150109 | G5 | 同年的新品頁翻開；GPS 又被帶進哪個場景？ | folded generic product page with an unrevealed object
+x150107 | G4 | 兩年後，車裡仍有路要指；那條藍線會記下多少收入？ | car route screen beside a blue revenue ribbon with its far end hidden
+x150108 | G2,G5 | 到二〇一一年，手機導航仍擠在同一條路上；Garmin 還只說「可能」嗎？ | anonymous driver looking from a car route screen to a plain phone
+x150109 | G5 | 同年，一名跑者跑完一圈，想看成績；GPS 會出現在身上哪裡？ | anonymous runner stopping at a track with hands still outside frame
 x150110 | G1,G2 | 那場競爭之前，Garmin 車用／行動收入是怎麼衝上來的？ | closed earlier annual folio beside the same blue revenue ribbon
 
 ## b02: 那台機器先把收入推高
@@ -23,10 +23,10 @@ x150204 | G1 | 總收入也上升，但車用那條線跑在前面。 | one blue
 x150205 | G1 | 全公司這年約十七億七千萬美元；藍線只是其中一塊。 | a whole annual bar containing one blue part
 x150206 | G1 | 公司也靠車外的 GPS 用途賺錢；只是這一年，它們沒搶走車用的速度。 | other narrow revenue ribbons already on the same page
 x150207 | G1 | 可你若只看這一年的快慢，視線會先被車內那台機器拉走。 | car receiver in foreground with revenue ribbon behind it
-x150209 | G1,G2 | 是什麼讓車裡那塊螢幕，賣成這麼大的生意？ | anonymous hand positioning a plain receiver in a car
-x150210 | G2 | 你只要開車前把路線交給獨立導航器，它就能在車裡指路。 | generic standalone navigator in a car
-x150211 | G2 | 這不是車子原有的儀表，是一件可以單獨買的設備。 | hands placing an unmarked device in a car
-x150212 | G2 | Garmin 把其中一個產品系列叫 nüvi；名字貼在機器上，收入卻要記在公司帳上。 | one plain receiver beside the blue revenue folio
+x150209 | G2 | 不用換車，駕駛怎麼把另一塊指路螢幕帶進車裡？ | anonymous hand positioning a plain receiver in a car
+x150210 | G2 | 他可以單買一台獨立導航器，先交給它路線，再放進車裡指路。 | generic standalone navigator in a car
+x150211 | G2 | 這塊螢幕由人自己添上，不是車子原有的儀表。 | hands placing an unmarked device in a car
+x150212 | G2 | Garmin 的 nüvi，就是這類獨立導航器的一個產品系列。 | one plain receiver beside the blue revenue folio
 x150214 | G2 | 這個系列只是車用／行動事業的一部分，不能把兩個圈當成同一個數。 | one small ring inside a larger blue ring
 x150218 | G2 | 那這個系列，會把公司的收入表推到什麼位置？ | small inner ring approaching half of a whole ring
 x150222 | G2 | 到二〇〇七年，nüvi 已占全公司收入五成二。 | one product slice swelling to half the whole revenue wheel
@@ -41,7 +41,6 @@ x150301 | G2 | 開頭那個二〇〇八年，答案是百分之六十四。 | cl
 x150302 | G2 | 這是 nüvi 系列，占全公司收入的比重。 | a large colored portion inside a surrounding whole
 x150303 | G3 | 如果把它放回整個車用／行動事業，外圈又有多大？ | a larger ring enclosing the first slice
 x150304 | G3 | 開場那條藍線，實際裝著約二十五億四千萬美元。 | blue ribbon running through a dated annual report
-x150306 | G2,G3 | 產品系列的內圈已包在事業外圈，兩個數不能相加。 | nested circles, not adjacent circles
 x150308 | G2 | 看見這麼粗的收入線，你可能以為另一塊螢幕已讓訂單停住。 | blue ribbon beside two competing screens
 x150309 | G2 | 可那一年，全公司的出貨還在增加。 | active generic warehouse conveyor belt
 x150310 | G2 | 賣出的產品件數，比前一年多三成八。 | unmarked boxes moving faster on a belt
@@ -56,34 +55,31 @@ x150319 | G2 | 每台賣得少一點，多賣幾台也未必補得回。 | anony
 x150320 | G2 | 再看開場的另一塊螢幕，它怎麼搶這條路？ | customer choosing between a plain phone and route screen
 x150321 | G2 | 手機裝上 GPS 之後，導航軟體也能在那裡指路。 | route line moving from a dashboard unit to a phone
 x150322 | G2 | 新車則把導航裝進車身，不必另放一台機器。 | generic built-in dashboard screen lighting up
-x150323 | G2 | 同一個轉彎，顧客有了三種地方可以看。 | three unmarked screens over one abstract road
+x150323 | G2 | 同一個轉彎可以在三種螢幕上出現；駕駛不必只靠那台獨立機器來看路。 | three unmarked screens over one abstract road
 x150325 | G2 | Garmin 自己也碰手機嗎？ | phone silhouette moving toward a device shelf
 x150326 | G2 | 那年，它公布一款把電話和導航合在一起的觸控手機計畫。 | generic blank touchscreen prototype on a table
 x150328 | G2 | 年報當時只預計隔年上市，還不能當成已賣出的成績。 | unopened generic product box beside a calendar
 x150330 | G2 | 它既賣專用機器，也試著站進另一塊螢幕。 | two branches of road meeting at phone silhouette
-x150331 | G2 | 那張風險頁仍沒回答：另一塊螢幕會讓藍線細到什麼地步？ | blue ribbon disappearing behind a closed folio corner
-x150335 | G2 | 占七成的收入欄，往後還能保持原來的金額嗎？ | broad colored line reaching a gap
-x150336 | G4 | 兩年後，那份全年公告到了。 | next blank folder sliding onto a desk
+x150331 | G2,G4 | 兩年後，車用藍線跟此刻相比，會差多少錢？ | blue ribbon disappearing behind a closed folio corner
 
 ## b04: 金額下滑，風險用語也變了
 
-x150401 | G3,G4 | 開場那份公告裡，二〇一〇年車用與行動收入約十六億七千萬。 | shortened dashboard-colored bar
+x150401 | G3,G4 | 二〇一〇年，車用與行動收入約十六億七千萬美元。 | shortened dashboard-colored bar
 x150402 | G3,G4 | 跟開場那年的同一欄比，兩年少約八億七千萬美元。 | two unlabeled revenue bars with a gap
 x150404 | G3,G4 | 公司總收入也往下走；藍線的差額不是一個人少買一台機器那麼簡單。 | two whole-company bars and a separate blue ribbon
 x150405 | G3,G4 | 那台機器不會因為這個差額就從車裡消失。 | generic receiver still fixed in a car
 x150408 | G2,G5 | 市場成熟、新車內建導航和手機軟體，都在年報的壓力名單裡。 | crowded devices and built-in dashboard
 x150410 | G2,G5 | 哪一種壓力造成多少美元的落差？ | multiple pressure streams converging beside a phone
 x150411 | G2,G5 | 這張收入表分不出來；它只量到了整欄變小。 | translucent streams without separate counters
-x150412 | G5 | 二〇一一財年的新年報，又壓到桌上。 | two overlapping unlettered annual folios
+x150412 | G5 | 二〇一一年，nüvi 這個系列在公司收入裡縮到哪裡？ | two overlapping unlettered annual folios
 x150413 | G5 | nüvi 占全公司收入的比重，變成約四成八。 | colored wheel with less than half shaded
-x150414 | G5 | 這還不是整個車用／行動事業的占比。 | two nested unlettered rings
-x150415 | G5 | 整個車用／行動事業仍占約五成八；藍線比產品系列的圈大。 | blue segment ribbon enclosing a smaller product ring
+x150415 | G5 | 整個車用／行動事業，同年仍占全公司收入約五成八。 | blue segment ribbon enclosing a smaller product ring
 x150416 | G5 | 它比前一年收入少了百分之五；機器少賣了嗎？ | short bar beside previous-year bar
 x150417 | G5 | 件數也少了百分之五。 | fewer anonymous product cartons
 x150418 | G5 | 平均售價倒是大致持平。 | level blank price markers above two stacks
 x150419 | G5 | 年報說，地圖與交通資訊的組合幫它撐住價格。 | blank map tiles and traffic icons bundled with unit
 x150421 | G5 | 收入縮了，專用機器卻仍在貨架上。 | one plain navigation unit on a shelf
-x150423 | G2,G5 | 開場那份風險欄，對手機改了什麼字？ | two abstract unlettered risk strips
+x150423 | G2,G5 | 開場那個「可能」，到了這一年還站得住嗎？ | two abstract unlettered risk strips
 x150424 | G5 | Garmin 說，消費者接受手機上的 GPS 和導航軟體， | phone route crossing a generic car route
 x150425 | G5 | 已使它的成長停滯。 | phone silhouette beside a flat route line
 x150426 | G2,G5 | 開場的「可能」，在這份年報成了「已經」。 | two blank paper strips in contrasting tones
@@ -91,11 +87,11 @@ x150427 | G5 | 不過，公司當年也仍在推出專用車用導航器。 | tr
 x150429 | G5 | 貨車用的版本，還按貨車限速來指路。 | anonymous truck cab with dedicated small screen
 x150430 | G5 | 那台貨車導航器，還能記司機的工作時數。 | small screen beside truck and simple analog gauges
 x150431 | G5 | 專用機器要解決的，於是不只下一個轉彎。 | anonymous truck cab beside a plain route screen
-x150432 | G5 | 可同一本年報的新品頁，又把 GPS 放到哪裡？ | another report page lifting from underneath
+x150432 | G5 | 貨車司機要記工時；跑者不開車，Garmin 又把 GPS 放在哪裡？ | truck route screen beside an empty running track
 
 ## b05: GPS 走到手腕，也借用了手機
 
-x150501 | G5 | 開場那頁新品，答案在跑者手腕上。 | two plain sports watches side by side above an opened unlettered product folio beside a runner wrist
+x150501 | G5 | 開場跑道邊的疑問，答案在跑者手腕上。 | two plain sports watches side by side above an opened unlettered product folio beside a runner wrist
 x150502 | G5 | Forerunner 六一零讓人用觸控查看跑步資料。 | one plain wrist receiver on a running track
 x150504 | G5 | 九一零 XT 則把跑步、騎車和游泳記在同一只錶裡。 | second generic watch moving among track, cycle and pool
 x150505 | G5 | 一個人跑完一圈，要看的是時間、距離與自己的路徑。 | one sports watch with peripheral sports silhouettes
@@ -115,8 +111,8 @@ x150530 | G2,G5 | 但這些行動沒有說明，車用那條收入線已交出�
 x150539 | G5 | 到這年年底，最大收入欄到底換了嗎？ | trail and track paths around a car
 x150540 | G5 | 還沒有。那條車用／行動藍線，在這張舊表上仍是最大的一條。 | broad blue revenue ribbon beside narrower fitness and outdoor ribbons
 x150541 | G5,G6 | 這份年報之後到二〇二五年，相隔十四個財年。 | a row of unlettered annual folders with a long gap
-x150542 | G5,G6 | 我們沒有逐年追查每次換位，不能替中間補一場勝利宣言。 | several closed blank folders between two open ones
-x150543 | G5,G6 | 二〇二五年的全年公告，會把哪一欄放到最前面？ | five sealed blank folders on a desk
+x150542 | G5,G6 | 兩端只看見起點和終點；中間哪年換位，眼前的數字沒有答案。 | several closed blank folders between two open ones
+x150543 | G5,G6 | 隔了十四個財年，Garmin 收入最高的事業會是哪個？ | five sealed blank folders on a desk
 
 ## b06: 二〇二五年的收入表換了排法
 
@@ -126,18 +122,16 @@ x150603 | G6 | 這是公司公布的全年新高；跟開場那年的總收入�
 x150604 | G3,G6 | 名目美元的公司總收入，約是當年的兩倍。 | two annual bars from distant years, different colors
 x150605 | G3,G6 | 兩個年份間的產品和部門都變了，不能畫成同一條車用曲線。 | old and new blank reports with different dividers
 x150608 | G6 | 健身事業的全年收入，約二十三億六千萬。 | fitness-colored bar, unmarked visual
-x150609 | G6 | 戶外緊跟其後。這個部門只賣手錶嗎？ | outdoor-colored bar rising beside fitness
-x150610 | G6 | 翻到同一份公告的新品段，就能看見另一種用途。 | two broad streams beyond two tiny generic watches
-x150611 | G6 | 同年第四季，新品頁又放上一台衛星通訊設備。 | generic compact communicator on a mountain trail
+x150609 | G6 | 戶外緊跟其後，全年約二十億五千萬美元；這一欄只賣手錶嗎？ | outdoor-colored bar rising beside fitness
+x150610 | G6 | 山路走到沒手機訊號的地方，人還得想辦法傳出訊息。 | anonymous hiker facing a remote trail without a phone signal
+x150611 | G6 | 那年第四季，Garmin 介紹一款新的衛星通訊設備。 | generic compact communicator on a mountain trail
 x150612 | G6 | 離開手機訊號，它仍能讓人聯絡；這是戶外通訊，不是車內導航。 | abstract signal above a remote mountain ridge
 x150613 | G2,G6 | 車裡那台回答下一個轉彎，這台在偏遠路上回答能否傳出訊息。 | plain car receiver and compact communicator on separate paths
-x150614 | G6 | 那車相關的收入，在新表被放在哪裡？ | blank dashboard unit near new annual report
-x150617 | G6 | 新表另列供應車廠系統的事業，仍有收入。 | generic compact car component in a factory
-x150618 | G2,G6 | 它能直接接成舊車用／行動事業的一小段嗎？ | mismatched measuring rulers kept apart
-x150623 | G2,G6 | 不能。開場那條藍線合著車用與行動；新表改了分隔頁，不能替它硬畫延長線。 | old blue revenue folio set beside a new differently divided folio
-x150625 | G1,G6 | 新表也有更早就存在的航海與飛航收入。 | simple boat console and anonymous cockpit
-x150626 | G6 | 公司說，這五個事業當年各自刷新了全年收入紀錄。 | five unlettered bars extending beyond earlier marks
-x150629 | G6 | 五個事業合起來，才是這一年的公司總收入。 | one central meeting point of five abstract paths
+x150617 | G6 | 新表也有供應車廠系統的收入；它還是開場那條車用藍線嗎？ | generic compact car component in a factory
+x150620 | G2,G6 | 舊欄裡有賣給個人的導航器；新欄說的是供應車廠的系統，收進來的東西不同。 | plain personal route screen beside an anonymous factory system
+x150623 | G2,G6 | 舊藍線合著車用與行動；新表分隔不同，它就在舊帳本邊緣停下。 | old blue revenue folio set beside a new differently divided folio
+x150626 | G6 | Garmin 說，五個事業這年都各創全年收入紀錄；健身不是唯一往上的一欄。 | five unlettered bars extending beyond earlier marks
+x150629 | G2,G5,G6 | 開場駕駛要看下一個轉彎；跑者看自己的距離，山路上的人盼訊息傳出去。 | anonymous driver runner and hiker linked by three separate use paths
 x150633 | G6 | 把最大的健身和戶外合在一起，用公司全年總收入當分母， | two broad revenue strands within a larger whole
 x150634 | G6 | 它們占這年全公司多少？ | blank percentage card not yet revealed
 
