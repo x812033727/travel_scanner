@@ -1,16 +1,16 @@
 # X10｜製作成本與付費前關卡
 
-**狀態：旁白已合成、零付費插畫前製。** 本集 105 句 Gemini Sulafat 已使用 2,456 個免費額度計費字元合成；目前沒有 MiniMax 圖、音樂、影片生成或完成影片。來源審查與兩份獨立敘事盲讀已通過，實測[正文時長](reviews/tts-timing-v9.md)達標；音訊逐句複查仍在進行。新付費媒體須先核對實價、共享配額與單集全包預算。
+**狀態：旁白已合成、零付費插畫前製。** 本集 105 句 Gemini Sulafat 已使用 2,833 個免費額度計費字元（含三輪定點重錄）；目前沒有 MiniMax 圖、音樂、影片生成或完成影片。來源審查與兩份獨立敘事盲讀已通過，實測[正文時長](reviews/audio-qa-v9-selective-redo.md)達標；逐句音檢仍有 3 句待人耳確認。新付費媒體須先核對實價、共享配額與單集全包預算。
 
 | 待生成項 | 目前規劃數量 | 計價前核對 |
 | --- | ---: | --- |
 | MiniMax `image-01` 概念插畫 | 89 個 shot；每鏡最多 3 次，理論請求上限 267 張 | 最新單價、評審／重試費；13 張原生數字卡不當作付費插畫。 |
-| Gemini Sulafat 台灣華語旁白 | 105 句已合成；2,456 個免費額度計費字元 | 音訊旗標如需局部重錄須另記字元與成本；兩支 Shorts 優先沿用主片 take。 |
-| 音訊轉錄及品質複查 | 以 105 句 TTS 和實際疑點計 | 轉錄、第二意見與評審費都計入。 |
+| Gemini Sulafat 台灣華語旁白 | 105 句已合成；含 16 次重錄共 2,833 個免費額度計費字元 | 三輪重錄及餘下旗標見音檢收據；兩支 Shorts 優先沿用主片 take。 |
+| 音訊轉錄及品質複查 | 121 clips 新轉錄、3 次 Jev 批次呼叫；3 句仍待實聽 | 轉錄、第二意見與評審費都計入。 |
 | 一首無人聲配樂 | 1 首 | 實價、重試及授權範圍。 |
 | 主片與兩支 Shorts 剪輯 | 1 主片、2 支 9:16 | 本地編譯不買新圖；若需新增聲音或影像，一樣入總帳。 |
 | 稅費／尾差 | 依實際供應商 | 在 US$25 硬上限內預留。 |
 
 **硬上限 US$25，含所有已花、已承諾、必要重試及稅費。** 生成前讀回當期模型單價，按整支實際請求數與失敗重試上限列總帳；總額若超過 US$25，先縮減可選重試與媒體範圍，再決定是否能保持至少八分鐘正文和必要 QA。不能漏算字幕、Shorts 或複查來湊過上限。若源稿或實測時長需改，變更後重新估價、重跑受影響的查核和審查。
 
-本地重建與檢查可使用 `node docs/videos/story-everyday-ebay-paypal-x10/compose-video.mjs`、`node docs/videos/story-everyday-ebay-paypal-x10/compose-shorts.mjs`、`node tools/video/cli.mjs lint --file docs/videos/story-everyday-ebay-paypal-x10/video.json --json`。v9 時間軸已量得開場 **00:50.433**、實質正文 **08:40.567**；片頭、片尾、靜音及慢播都不計入正文。音訊未經逐句驗收，這份實測不代表成片或上架已完成。
+本地重建與檢查可使用 `node docs/videos/story-everyday-ebay-paypal-x10/compose-video.mjs`、`node docs/videos/story-everyday-ebay-paypal-x10/compose-shorts.mjs`、`node tools/video/cli.mjs lint --file docs/videos/story-everyday-ebay-paypal-x10/video.json --json`。目前時間軸已量得開場 **00:50.433**、實質正文 **08:42.633**；片頭、片尾、靜音及慢播都不計入正文。三個音訊疑點未經人耳驗收，這份實測不代表成片或上架已完成。

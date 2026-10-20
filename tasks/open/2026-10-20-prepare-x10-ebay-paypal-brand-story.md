@@ -26,8 +26,8 @@ The brand-story series needs another recognizable, nonduplicate episode after X0
 
 ## Definition of done
 
-- [ ] A six-body-chapter, source-bound X10 package includes 30–60 s condensed opening, at least 8 minutes of substantive spoken body by final TTS, three-line native ending, fixed 5 s/21 s branding handoff, two Shorts, and clickable-link checklist.
-- [ ] Final main/Shorts SHA has an independent line-level source audit and two independent script-only narrative blind reviews; free lint has zero errors/warnings.
+- [x] A six-body-chapter, source-bound X10 package includes 30–60 s condensed opening, at least 8 minutes of substantive spoken body by final TTS, three-line native ending, fixed 5 s/21 s branding handoff, two Shorts, and clickable-link checklist.
+- [x] Final main/Shorts SHA has an independent line-level source audit and two independent script-only narrative blind reviews; free lint has zero errors/warnings.
 - [x] Draft PR opened with clear preproduction status; no paid generation or finished-video claim.
 
 ## Steps
@@ -52,7 +52,9 @@ The brand-story series needs another recognizable, nonduplicate episode after X0
 - [x] Run v8 lint, docs-video tests, task check and claim/Shorts parity; push the revised package to the draft PR.
 - [x] Run v9 lint, docs-video tests, task check and claim/Shorts parity; push the revised package to the draft PR.
 - [x] Add an X10-only manual lexicon adoption command with exact-byte review, media-workbase admission and local refusal/recovery tests.
-- [ ] Independently verify no X10 speech exists in the actual media workbase or elsewhere, fill the adoption review, then dry-run and apply the pin before any paid TTS.
+- [x] Independently verify no known X10 speech exists in accessible local workspaces, fill the adoption review, then dry-run and apply the pin before TTS.
+- [x] Transcribe all 105 lines, archive each flagged batch, selectively redo 9 + 6 + 1 lines, and record the remaining three audio flags without claiming human listening approval.
+- [ ] Resolve the three remaining audio flags with authorized listening or evidenced correction; then obtain official branding, illustration/music capacity, render main film and Shorts, verify CC and real links.
 
 ## How to verify
 
@@ -70,7 +72,7 @@ Compare generated SHA-256 against all review receipts, check Shorts phrases and 
 
 ## Notes
 
-SEC archive and `data.sec.gov` pages are accessible; `ebayinc.com` and live YouTube were blocked in this cloud, so no factual claim relies on them. Relevant accessible documents and scope limits are recorded in `source-notes.md`. C10 OXO belongs to a separate twenty-episode plan; the existing X01–X09 angles do not include eBay/PayPal. The user authorized choosing recommended decisions and opening PRs, but this task intentionally makes no paid calls. Paired video-tool token works in this environment; official selected 5 s/21 s branding assets and clickable Studio URLs are still pending media handoff. Draft script estimate is ~9:03 substantive body, to be measured after TTS.
+SEC archive and `data.sec.gov` pages are accessible; `ebayinc.com` and live YouTube were blocked in this cloud, so no factual claim relies on them. Relevant accessible documents and scope limits are recorded in `source-notes.md`. C10 OXO belongs to a separate twenty-episode plan; the existing X01–X09 angles do not include eBay/PayPal. The user authorized choosing recommended decisions and opening PRs. The paired video-tool token works here; later sections record free-tier TTS and audio checks. Official selected 5 s/21 s branding assets and clickable Studio URLs are still pending media handoff. The initial draft timing estimate has been superseded by measured TTS timings below.
 
 The independent SEC source receipt `reviews/source-review-v2-root.md` passed the earlier SHA `7cf5f20c…` main / `9c82557f…` Shorts. Two blind receipts on that SHA both failed shared `no_toc`, `chapters_link` and `no_recap` gates, so the narration, loops and Shorts were revised. Those historical receipts cannot pass the new SHA; independent delta source review and a new two-reader blind pass remain open. Draft PR #1627 is a review surface, not a finished episode.
 
@@ -97,4 +99,4 @@ The subsequent [v9 source delta](../../docs/videos/story-everyday-ebay-paypal-x1
 
 The X10-only `story-lexicon-adopt` route is documented in [story-lexicon-adoption.md](../../docs/videos/story-lexicon-adoption.md). Its local test fixture proves dry-run/refusal byte preservation, hash-bound independent review, dual-lease adoption, strict speech admission and committed-crash recovery; a dangling-symlink admission defect was fixed with a regression test. An [independent scoped local review](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/manual-lexicon-adoption-independent.md) found no known prior X10 speech in the accessible `/workspace` and `/tmp` workspaces and issued a hash-bound review receipt. The exact [adoption execution record](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/manual-lexicon-adoption-applied.md) shows 12/12 preflight checks passed and the immutable X10 pronunciation snapshot was pinned. This does not make a claim about inaccessible external hosts.
 
-Gemini Sulafat then synthesized 105/105 narration requests (2,456 free-tier billable characters; 0 reused). [Measured timing](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/tts-timing-v9.md) is opening **00:50.433**, substantive body **08:40.567**, last three lines **00:20.233**, total **09:51.233** before the official 5-second intro and 21-second outro. The `timeline.json` SHA-256 is `0d654dc9792cda1cb2336f9be4ff9b2b0d410b326601fbbedb992845f741547f`. `check-audio` is running; no human listening approval, images, music, subtitles, official animations, MP4, Shorts runtime or upload links are claimed. Shared judge quota and the all-in US$25 budget must be rechecked before any paid art.
+Gemini Sulafat then synthesized 105/105 narration requests (2,456 free-tier billable characters; 0 reused). The original [measured timing](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/tts-timing-v9.md) is historical after selective retakes. The [current audio QA receipt](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/audio-qa-v9-selective-redo.md) records 9 + 6 + 1 free-tier retakes, 105/105 checked lines, three remaining Jev flags (`x100413`, `x100502`, `x100713`), and final measured opening **00:50.433**, substantive body **08:42.633**, last three lines **00:20.233**, pure narration **09:53.300**. The current `timeline.json` SHA-256 is `f969a7732a02a8310f750db24099c9831d9c126f4615dbe71f0515c5900e4201`. No human listening approval, images, music, subtitles, official animations, MP4, Shorts runtime or upload links are claimed. Shared judge quota and the all-in US$25 budget must be rechecked before any paid art.
