@@ -1,0 +1,23 @@
+{
+  "kind": "independent-visual-delta-review",
+  "status": "PASS",
+  "scope": "Prompt-only source and narrative impact, not image or finished-video approval",
+  "reviewer": "/root",
+  "reviewed_on": "2026-10-20",
+  "old_video_json_sha256": "4c9215b06364b3fb96cd9249054c6e7c15de381b4e8717a39a11fb9ad62bf1ba",
+  "video_json_sha256": "907f8e3ff45f3edf0bbed64a54216c761696e8e954d51c315a8a228069e204d1",
+  "delta_note_sha256": "0fd90519f31c996c207d5ea3ef52b2900fe416dfd092a163c10eb5972f871ab2",
+  "prior_source_review_sha256": "2b386249fdb86d2747ef0d25f36f621da109a0890e98d2dd5ef5c909b724599c",
+  "prior_blind_a_sha256": "553c6f7bc007f36923901b675ff59844a74e5d027e1ae58eebfb10abcf8727c1",
+  "prior_blind_b_sha256": "4482bb7c207e6d4dbf8f379adebde6d77a85e6ccb1edd2bfaa21b9f177f0c7c9",
+  "finding": "I compared old and new scene IDs and stripped only data.prompt from both video JSON documents. The remaining JSON structures are equal. Exactly 74 of 78 shot prompts changed, while four previously human-usable shots retain their original prompt. No narration, say text, factual numbers, chapter text, loop, source URL, Shorts or audio/visual look field changed. The revised prompts describe generic objects and actions, not new historical evidence. The three pilot prompts still support their associated spoken claims: a shipping route, a stiff hinge, and port exports. Thus the prior source and narrative decisions can be carried across this strictly visual delta; generated art still needs independent per-image judge and human review.",
+  "pilot_shot_ids": ["x06-b02-s01", "x06-b02-s02", "x06-b02-s06"],
+  "pilot_max_image_calls": 9,
+  "pilot_max_judge_calls": 9,
+  "pilot_max_usd": 0.1215,
+  "spent_usd_before_pilot": 0.2835,
+  "max_visible_usd_after_pilot": 0.405,
+  "requires_live_budget_and_quota_check": true,
+  "requires_unchanged_stop_for_other_shots": true,
+  "authorizes_final_art_or_publication": false
+}

@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 import { textHash } from "../../../tools/video/core/schema.mjs";
 import { spokenUnits } from "../../../tools/video/core/timeline.mjs";
 import { chapters } from "./drafts/story.mjs";
+import { safeVisuals } from "./drafts/visual-safety.mjs";
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const slug = "story-everyday-wd40-x06";
@@ -120,6 +121,12 @@ scenes.push({
   data: { title: "品牌與通路", cta: "訂閱品牌故事" },
   lines: closing.flatMap(scene => scene.lines),
 });
+const shotIds = new Set(scenes.filter(scene => scene.template === "shot").map(scene => scene.id));
+for (const id of shotIds) {
+  if (typeof safeVisuals[id] !== "string" || !safeVisuals[id].trim()) throw new Error(`Missing safe visual prompt: ${id}`);
+}
+for (const id of Object.keys(safeVisuals)) if (!shotIds.has(id)) throw new Error(`Obsolete safe visual prompt: ${id}`);
+for (const scene of scenes) if (scene.template === "shot") scene.data.prompt = safeVisuals[scene.id];
 const ids = new Map(scenes.flatMap((scene, index) => scene.lines.map(line => [line.id, index])));
 const loop = (setup, payoff, what) => {
   if (ids.get(setup) === undefined || ids.get(payoff) === undefined || ids.get(setup) >= ids.get(payoff)) throw new Error(`Invalid loop ${setup} → ${payoff}`);
