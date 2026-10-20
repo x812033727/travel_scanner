@@ -48,6 +48,8 @@ scope:
 - **S24 人物脈絡另有獨立傳世文本。** [普魯塔克〈馬塞勒斯傳〉固定版](https://github.com/GITenberg/Plutarch-Lives-of-the-noble-Grecians-and-Romans_674/blob/6aea7c6d83ee3596f9106d2d832d705aa4ed4620/674.txt#L19090-L19133) 提到阿基米德應希羅請求將幾何構想變成機械；該段沒有金冠與洗澡場面。它可交叉核對兩人關係的傳述脈絡，**沉默不能當成浴盆事件不存在的證明**。此書完整文本本地 SHA-256 `11a1bb9a5d5a8436f2d4d7adf3ad91ec05bb8aef850e564ce255cf9ba2fabdd1`。
 - **S24 R3 前期包已過獨立盲評，語音待複聽。** R2 新讀者 13 題有 12 題「是」；`no_recap` 指出銀塊整件浸沒與取出後補水各講兩次。R3 刪除重複的 `ac045`、`ar203` 兩景，保留各一次完整說明，並讓量杯鏡頭明確畫水倒回盆緣。新的獨立讀者對 R3 劇本評為 **13／13**，史料、102 句旁白與 99 張插圖鏡頭配對通過，lint 0／0。R3 `script.md` SHA-256 `232d24e94abccafa1501a3924f86bd3f4bacacab745a75e27c489637119dd185`；R2 失敗收據已原樣存入 `narrative-r2-failed.json`。英、拉、普魯塔克三份固定來源可重開。`script` gate 只記錄既有委託下繼續配音的授權，**站主尚未親自閱讀劇本或聽過音檔**。配音實測全片 9:24.93、排除開場和片尾的正文 **8:24.10**；逐句檢查 102／102，有 7 個轉寫差異待複聽，音訊 gate 未核准。無人聲配樂已生成，帳本 US$0.08；付費插圖 0 張，依共用配額暫緩。證據見 [`verify-4.md`](../../docs/videos/curio-s24/verify-4.md)、[`verify-5.md`](../../docs/videos/curio-s24/verify-5.md)。
 
+- **S24 R4 七句改寫後語音零旗標。** 對 R3 的七個轉寫疑點只改同七句口語，獨立讀者先盲讀確切新版劇本 **13／13**，再核英、拉、普魯塔克固定原文及畫面，來源通過；`script.md` SHA-256 `2ab08047be6dbc800ef54f02b6e9321518324f9ce8e0aaea0265430242c724af`，`video.json` SHA-256 `d3ed093b47ae63237d94f059b30cd6fcb484a13fe83b08149578e49169f28a47`，lint 0／0。Gemini 只合成 7 句、沿用 95 句；全 102 句 `check-audio` **0 旗標**、退出碼 0，實際正文 **8:25.73**。劇本及新版音檔已送站台 gate，音訊仍 **pending**，不能稱站主已親自試聽；沒有購買插圖。證據及音檔／逐句報告雜湊見 [`verify-6.md`](../../docs/videos/curio-s24/verify-6.md)。下一步：獨立全片提示詞預檢、排共享 MiniMax 生圖、逐張目視、再剪輯及品管。
+
 固定文本本地重開 SHA-256：S24 英譯 `7daafe23aeef2377fe9a99bc285c5dfc0673440487ab43f78387312b6799304d`、拉丁本 `b4fce89b0c304c7d1f26b299bf2dfcddbab8529c883f43ad1e75fae564daa861`；S25 Brewster 二手傳記 `ded5b6a706615f48b156dbf9f28ab18ac32edb32e16d25fedf1957eccbb94466`。
 
 ## Definition of done
