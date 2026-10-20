@@ -5,7 +5,7 @@ const cues = [
   [
     "an anonymous traveler touches one removed reservation tile on a blank paper lodging calendar, a small suitcase beside the table",
     "an anonymous lodging host studies empty squares spreading across the same blank calendar, one plain key beside the page",
-    "an anonymous records clerk moves canceled cream tiles past a smaller pile of new teal tiles beside the calendar",
+    "an anonymous records clerk moves canceled blank tiles past a smaller pile of new tiles beside the calendar",
     "an anonymous analyst holds two blank monthly calendar leaves together",
     "an anonymous host holds a plain key while an empty guest chair faces the booking desk",
     "an anonymous support clerk opens a blank relief envelope beside an unfinished reservation card",
