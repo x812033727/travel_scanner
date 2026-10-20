@@ -376,4 +376,4 @@
 旁白（收尾，誠懇）：這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。
 
 narrative 760e81a85e0fbbf6
-speech c35ac24bfe00c24f
+speech 1a7d8f57c32db97f
