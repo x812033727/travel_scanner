@@ -34,7 +34,8 @@ The approved X17 topic needs a source-bound preproduction package before indepen
 - [x] Run local validation, record hashes and commit the package for independent audits.
 - [x] Independently audit v3 sources and obtain two truly fresh first-reader ballots on its frozen SHA; archive the HOLD reasons.
 - [x] Revise v4 and re-freeze the author package with synchronized docs, schemas and local checks.
-- [ ] Obtain a fresh source PASS and two first-reader narrative ballots on the v4 freeze before a reviewable PR.
+- [x] Repair v4 website conversion-rate source HOLD and re-freeze v5 with synchronized docs, schemas and local checks.
+- [ ] Obtain a fresh source PASS and two first-reader narrative ballots on the v5 freeze before a reviewable PR.
 
 ## How to verify
 
@@ -53,3 +54,7 @@ V3 frozen `video.json` SHA-256 `bb9677cbbf9830be8a116c4edf7ff5743b1384a165f823b1
 V4 [author revision map](../../docs/videos/story-everyday-lululemon-x17/reviews/v4-author-response.md) addresses those three independent HOLDs, without converting any old ballot to a PASS. `video.json` SHA-256 `5103c7a52e118c17cdea8dbb627564f08365a6c15d7a7a3014ad53f97037bc44` and `shorts.json` `58ca34c872aa4addb210e4697a9ce45939a649d837e351f4657f989c9dfdb059` are the new author freeze. V4 has 2,475 substantive Han/digits, 115 lines, 100 still shots, 8 native cards and 17 declared loops; local main lint is 0 errors/0 warnings and both Shorts validate against the new main SHA. Fresh SEC source and two fresh-context narrative votes must bind these exact files. TTS duration, generated visuals, official bookends, live links and production costs are still unmeasured; no paid media, host import, push or PR has occurred.
 
 V4 independent [SEC audit](../../docs/videos/story-everyday-lululemon-x17/reviews/script-source-audit-v4-independent.md) re-downloaded all six necessary originals with matching raw bytes/SHA and confirmed the v3「第一季最後七週」repair, but returned **HOLD** on `x170519`: S4 reports increased site traffic and a lower **conversion rate**;「結帳卻變少」implies an unsupported fall in the absolute number of completed checkouts. Change to「完成結帳的比例卻下降」or equally precise wording, regenerate every derived file, freeze v5, and repeat source/dual-blind review on the new hashes. No v4 narrative ballot was commissioned because the source blocker was found first.
+
+V5 [author response](../../docs/videos/story-everyday-lululemon-x17/reviews/v5-author-response.md) repairs `x170519` to「完成結帳的比例卻下降」and marks the conversion-rate denominator explicitly in the source matrix and reviewer handoff. Both composers were rerun; the two Shorts' narration and `shorts.json` bytes are unchanged. V5 independent SEC source and two fresh-context narrative gates remain pending. No paid media, upload, push or PR has occurred.
+
+V5 author freeze: `video.json` SHA-256 `66d584c4907cfa6041174ca0fd5d01cdb5cb868690e7804b84da02fde64e545a`; `shorts.json` `58ca34c872aa4addb210e4697a9ce45939a649d837e351f4657f989c9dfdb059`; `source-matrix.md` `8735a2d463863243de68ee689d2ee1d2a9444b8e95a83337d1b2fc84f3960106`; `drafts/narration.md` `d5515075414354a02d9846de5c7eddaa28d4ac5a13cba3655c6c9477f5a4de2e`; `visual-plan.md` `5a3c8d456e17998a1d53a5f756ec03640a8aef13715bfefa6703e942cef69351`. Paper substantive body is 2,480 Han/digits. Author lint 0/0, both Shorts schema/source hash checks and episode link check pass; `test:docs-videos` 236/236 and task-board check passes. Independent v5 PASS is not claimed.

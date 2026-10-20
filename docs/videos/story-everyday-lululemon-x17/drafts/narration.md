@@ -1,4 +1,4 @@
-# X17 Lululemon｜逐句母稿 v4
+# X17 Lululemon｜逐句母稿 v5
 
 每列 `ID | SEC 代碼或 editorial | 台灣繁中旁白 | 無品牌示意畫面焦點`。`editorial` 是由前述事實推出的問題或轉場，不替真實工廠、員工、客人編台詞。黑色運動褲是**同一件示意物件**，不是可辨識的真實商品。
 
@@ -106,7 +106,7 @@ x170515 | S5 | 第一季末已有二百一十八家店；黑褲只是其中一�
 x170516 | S4 | 公司說，既有商品線與新商品，主要帶動了可比門市的銷售增長。 | plain parcel tiles rise beside black pants
 x170517 | editorial | 受影響的黑褲離架，其他商品仍穿過收銀台；總營收因此可以繼續長。 | full assorted rack beside one empty slot
 x170518 | S4,S5 | 網站通路營收仍增四成；但轉換率與客單價下降，公司說主要受撤貨影響。 | one black pair beside many garment silhouettes
-x170519 | editorial | 網站來的人更多，結帳卻變少、單次花費也下降；毛利帳又如何？ | revenue book turns to cost page
+x170519 | editorial | 網站來的人更多，完成結帳的比例卻下降、單次花費也下降；毛利帳又如何？ | revenue book turns to cost page
 x170520 | S4,S5 | 毛利額仍比上年同季高，毛利率卻從百分之五十五降到四十九點四。 | cost page beside two plain gauge positions
 x170521 | editorial | 毛利額是總共留下多少，毛利率是每賣一元留下多少；兩個方向可以不同。 | smaller profit token beside full rack
 x170522 | editorial | 公司整體多賣貨、成本也多了；毛利率的降幅能全算在這箱黑褲上嗎？ | full rack and boxed pants beside one ledger
