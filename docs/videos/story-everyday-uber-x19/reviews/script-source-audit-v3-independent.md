@@ -1,0 +1,20 @@
+# X19 Uber v3｜獨立 SEC 原件與逐句查核
+
+**事實 HOLD：`x190419` 把公告時點的營運範圍提前到九月。** 本票只審事實、分母、日期與媒體說明，不代替兩位敘事盲讀或實際成音／成片驗收。凍結對象 SHA-256：`video.json` `377d045d160e46ddd2ed3eaa08d30b5ecfd45f02e6a20dd7f6f6e1526604ca48`；`shorts.json` `bc2c17924498699adc6f8267ae820589ec7321c2e0f2e63e9931e10357f44c64`；`source-matrix.md` `8859bbef63c8d44a8de48ae42f6e01202e65115b81d23736775392fe7ce6c1db`；`drafts/narration.md` `19975257b2780bd39d825bfbf1103beca8b98de03b5d92fd21bd833d18f45cd1`；`visual-plan.md` `0544ece63a49b47ad5c87f85a9c3500b560a241821eca2a269db5234a9b58ec2`；`line-source-matrix.md` `57c98a9e0d1da96ddfefd8c3a0fdf2468134d143af2d4fec8fb55c0f13a44b7d`；`shorts-source-matrix.md` `bcec1083ae2ea96e7a4d7c21f4449566028d88939afb138b90e70c0fd9a4d1d5`。
+
+2026-10-20，我另從 [`source-matrix.md`](../source-matrix.md) 所列十個 SEC 發行人附件 URL 逐一重新 HTTP GET，保持原始位元組而非重排後的 HTML，十份均回 200、低於 3 MiB，byte 數與 SHA-256 均吻合：S1 548,307／`62ae39afd36f2ae05259806367d6f2501791dba93239d674ae82ff8f03611a9c`；S2 829,739／`56a2a1a93d26227b18c8cd66f3beab747322f745806821ea493c1a30b8427a7a`；S3 53,755／`09dce79d280c8487d15f21143e7ef6831718dd633b159bdbe8a59d3e937a5c44`；S3a 37,477／`6a039db45bf31d666d2223c1a5d31324110639b9f89413ffcb788463321fdc74`；S4 512,044／`fe864c5d4a2776e3346ca9b17334e03b41f35ebcb4bd3f382fe5f555640d933e`；S5 8,683／`11f3911af6a22458d48c478cb704d53369c524d454a557f7308e232111788ab4`；S5a 33,735／`4b58ef2b356ae9c39f2fd2cac21a39a6c02ead8a0b1e5e378a4753dd236f2170`；S6 499,870／`79a8914e82146c35228fa643b152219ff263b7e942e7725e9513c5ecd039d975`；S7 520,384／`afba881d480d8d8ab8a3974c1887cf87d471f5cfc489f24c1dfa2ba5f20b3f06`；S8 583,069／`0deb0103252070de3283d03b1f76659794d9f6de824984bdce70c76467321579`。下列核對的關鍵文字在 S4 等頁解析後前約 13,000 字內；這是人工檢視，不等於正式工人已匯入。
+
+## 必修日期
+
+S4 的頁首日期為 **2020-11-05**，公告描述 2020-09-30 結束的 Q3。雜貨段落原文是「**Grocery Gross Bookings exceeded $1 billion annualized run-rate in September with the Grocery offering now live in over 10 countries, including Australia, UK, Japan, France, Taiwan, Canada, Chile & Brazil.**」文法上 *in September* 明確修飾的是年化 Gross Bookings 速度；*now live* 則是 11 月 5 日公告時的現況。`x190419`、逐句母稿和 `line-source-matrix.md` 目前寫「**九月，雜貨配送已進到十多個國家，台灣也在名單裡**」，`source-matrix.md` 的 S4 摘要也同樣提前日期。原件不能證明十多國與台灣**在九月**已達成。建議統一改成「**到第三季財報公布時，雜貨配送已進到十多個國家，台灣也在名單裡。**」若要保留九月，另起一句才可說九月雜貨 Gross Bookings 年化速度超過 US$1bn，並不得把年化數字當九月實際收入。重編 JSON 後重新綁 SHA、複核改字；源矩陣也要改。
+
+## 其餘已核對事實與邊界
+
+- S1 把司機端更易接 Eats 的 App 改進放在 Q1，把美加近 40% 活躍載客司機跨接 Eats 放在**四月**；稿件 `x190101–102`、`x190210` 保持分開。五月初退出八個虧損市場、免部分新餐廳啟用費、加快店家加入流程，以及 Direct／Connect 配送敘述可支持 `x190212–217`。開場司機、手機和餐袋是已標示的匿名示意，不是原件指名的一趟派單。
+- S2 的 2019 Q2 Mobility／Delivery 對照 US$12.188bn／US$3.386bn、2020 Q2 US$3.046bn／US$6.961bn、報告幣別 −75%／+106%、全平台 US$10.224bn、營收 US$2.241bn、Delivery／Mobility 部門 adjusted EBITDA −US$232m／+US$50m、公司 GAAP 淨損 US$1.775bn，支持第二、三章及對應數字卡的口徑。這是 **Gross Bookings 金額**交叉，沒有寫成交易筆數、公司營收或獲利。S2 也支持六月餐廳逾 50 萬、月活躍消費者和 Trips 同比下滑；沒有把司機轉派量化為單獨因果。
+- S3/S3a 支持 **2020-07-06 簽約**，S5/S5a 支持 **2020-12-01 完成**。S4 Q3 Delivery US$8.550bn 大於 Mobility US$5.905bn，尚在完成交割以前；主片與 Short 2 沒倒算 Postmates 為六月反超原因。S4 也支持活躍合作餐廳同比逾 70%、餐廳自家網站接單可交由 Uber Eats 配送、iOS Uber App 入口調整與 Q3 兩部門 adjusted EBITDA +US$245m／−US$183m；除上述 `x190419` 日期外，未見口徑越界。
+- S5 只說兩個消費者 App 繼續分開、底層商家與配送網開始合；S6 才說 App 大致整合、近 500 萬消費者、16 萬配送員及逾 2.5 萬商家遷移。`x190503–510` 的「公司說」「大致」「不等於所有用戶都留下」保留限度。S6 的 2021 Q2 Mobility／Delivery US$8.6bn／US$12.9bn、Delivery adjusted EBITDA −US$161m、美國 New Verticals 六月 Gross Bookings 對 2020 十二月近三倍、商家逾 75 萬、美國餐廳逾 60% 提供自取、雙服務客群貢獻近半平台訂單額，也與 `x190511–520` 對應；三倍不是整個 Delivery 的增幅。
+- S7 支持 2021 Q4 Delivery **單季部門 adjusted EBITDA +US$25m**、Delivery／Mobility Gross Bookings US$13.444bn／US$11.340bn，不能讀成 Uber 全公司 GAAP 利潤。S8 支持 2022 Q4 Mobility／Delivery Gross Bookings US$14.894bn／US$14.315bn、同比 +31%／+6%、兩部門 Segment Adjusted EBITDA +US$1.012bn／+US$241m。主片只說那一季載客**重新較大**，沒聲稱是首次重超，也沒有把片尾兩個部門正數說成公司淨利。
+- 兩支 `shorts.json` 的字卡、旁白、說明、SEC 來源連結均照 S2–S5a 的金額與先後；長片和短片的來源 URL 可核，但真正主片／播放清單 URL 仍待上架，文件沒有捏造連結。`video.json` 的各統計卡來源欄、無品牌插畫提示、後製排字和 `visual-plan.md` 的呈現規則未見額外事實錯置。
+
+**Gate：HOLD。** 只要修正 `x190419`、逐句與兩份來源表中的九月／公告時點歸屬，再以改後精確 SHA 做獨立差異事實審，就可重評；其他已核對項目是這版限定範圍內的支持證據，不預判改版敘事票。正式 TTS 秒數、工人來源攝取、官方 5 秒／21 秒動畫、插畫與配樂成本、繁中 CC、MP4、Shorts 手機檢視及真實上架連結尚未驗收。
