@@ -15,12 +15,12 @@ const sourceUrls = [
   { code: "K23", title: "Peloton FY2023 Form 10-K", url: "https://www.sec.gov/Archives/edgar/data/1639825/000163982523000132/pton-20230630.htm", checked_on: "2026-10-20" },
 ];
 const chapterTitles = [
-  "Ohio 工廠的計畫與另一份年報",
-  "一台設備接上一筆月費",
-  "新工廠被畫進產線地圖",
-  "同一份年報裡的兩條收入線",
+  "俄亥俄廠未投產，年報先記減損",
+  "設備訂單增加，交貨壓力跟上",
+  "公司宣布俄亥俄 Output Park",
+  "設備收入轉降，訂閱收入續升",
   "自製方案被收起來",
-  "訂閱走高，製造方式換了",
+  "隔年產能風險仍未散",
 ];
 const chapters = Array.from({ length: 6 }, () => []);
 const outro = [];
@@ -59,20 +59,23 @@ const cards = new Map(Object.entries({
   x120516: ["FY2022｜Ohio 相關資產減損", "US$40.3m", "含相關製造資產，非售價", "K22"],
   x120601: ["FY2023｜設備類收入", "US$1,130.2m", "收入，非台數", "K23"],
   x120602: ["FY2023｜訂閱收入", "US$1,670.1m", "收入，非利潤", "K23"],
-  x120605: ["FY2023｜訂閱類毛利", "+US$1,122.1m", "分類毛利", "K23"],
   x120606: ["FY2023｜設備類毛利", "-US$198.6m", "分類毛損", "K23"],
-  x120608: ["FY2023｜公司淨損", "-US$1,261.7m", "全公司，不是單一分類", "K23"],
 }));
 const cameras = ["Medium shot, slow push in", "Close-up, static", "Wide shot, pan right", "Medium shot, parallax"];
 const settings = ["plain office", "small workshop", "ordinary warehouse", "modest living room"];
 const lights = ["soft window light", "mild overhead light", "grey daylight", "desk lamp"];
 const sceneSettings = new Map([
-  ["x120105", "clean tabletop factory diorama"], ["x120106", "clean concept-animation studio"],
-  ["x120201", "clean tabletop factory diorama"], ["x120203", "clean concept-animation studio"],
+  ["x120101", "clean tabletop Ohio factory diorama"], ["x120103", "clean tabletop Ohio factory diorama"],
+  ["x120104", "clean tabletop Ohio factory diorama"], ["x120105", "clean tabletop factory diorama"],
+  ["x120106", "clean concept-animation studio"], ["x120108", "clean tabletop Ohio factory diorama"],
+  ["x120109", "clean tabletop Ohio factory diorama"], ["x120201", "clean tabletop factory diorama"],
+  ["x120203", "clean concept-animation studio"],
   ["x120219", "clean tabletop factory diorama"], ["x120221", "clean tabletop factory diorama"],
   ["x120301", "clean tabletop factory diorama"], ["x120507", "conceptual Taiwan factory diorama"],
   ["x120508", "conceptual split-screen comparison studio"], ["x120509", "clean tabletop factory diorama"],
-  ["x120519", "clean tabletop accounting diorama"], ["x120610", "conceptual factory diorama"],
+  ["x120514", "clean tabletop Ohio factory diorama"], ["x120519", "clean tabletop accounting diorama"],
+  ["x120605", "clean conceptual living-room diorama"], ["x120608", "conceptual factory diorama"],
+  ["x120610", "conceptual factory diorama"],
   ["x120611", "conceptual factory diorama"], ["x120613", "clean tabletop factory diorama"],
 ]);
 const sayWords = [["Peloton", "派樂騰"], ["Output Park", "歐普特帕克"], ["Precor", "普瑞科"], ["Rexon", "力山"], ["Tonic", "托尼克"], ["Tread+", "Tread Plus"], ["Tread", "Tread"], ["Bike", "Bike"]];
@@ -97,8 +100,10 @@ scenes.push(...outro.map((row, ri) => ({
 })));
 const loops = [
   ["x120105", "x120301", "既有產線外為何另規劃 Ohio"],
+  ["x120104", "x120516", "未投產 Ohio 專案相關減損有多少"],
   ["x120106", "x120405", "設備與訂閱收入誰先變"],
   ["x120107", "x120503", "製造轉由誰承擔"],
+  ["x120108", "x120515", "Ohio 未投產時已投多少"],
   ["x120109", "x120514", "Ohio 從產能計畫到尋買家"],
   ["x120210", "x120412", "設備銷售增長是否等於毛利"],
   ["x120221", "x120301", "新廠原本要補的產能"],
@@ -107,13 +112,14 @@ const loops = [
   ["x120425", "x120503", "下一個造車人是誰"],
   ["x120523", "x120601", "FY2023 收入線怎麼走"],
   ["x120523", "x120613", "Ohio 到 FY2023 的出售狀態"],
-  ["x120604", "x120608", "訂閱成長是否代表整體獲利"],
+  ["x120604", "x120607", "訂閱成長是否填滿實體產線"],
+  ["x120610", "x120611", "產能過剩如何影響毛利"],
 ].map(([setup, payoff, what]) => ({ setup, payoff, what }));
 const ids = new Map(allRows.map((row, i) => [row.id, i]));
 for (const loop of loops) if (!(ids.has(loop.setup) && ids.has(loop.payoff) && ids.get(loop.setup) < ids.get(loop.payoff))) throw new Error(`Invalid loop: ${JSON.stringify(loop)}`);
 
 const description = [
-  "2021 年，Peloton 宣布在 Ohio 規劃一座專用工廠，原定 2023 製造連網健身設備、多年預計投入約 US$400m；FY2022 年報卻說公司正在尋找買家。這支品牌故事沿著 Output Park 一座工廠，追設備與訂閱收入、庫存成本和製造分工的轉向。",
+  "2021 年，Peloton 宣布在 Ohio 規劃一座專用工廠，原定 2023 製造連網健身設備、多年預計投入約 US$400m；FY2022 年報卻記下一筆涉及這座未投產工廠的減損，隨後說公司正在尋找買家。這支品牌故事沿著 Output Park 一座工廠，追設備與訂閱收入、庫存成本和製造分工的轉向。",
   "",
   "約 US$400m 是 2021 年計畫，不是已支出；截至 2022-06-30 專案已投入約 US$86.6m，也不是出售價格。FY2022 硬體類收入包括配件、配送安裝等，不能直接換算單車台數；分類毛利不能當公司淨利。2022-07-12 公告停運的是台灣 Tonic 設施，Rexon 將主造 Bike／Tread；Ohio 到 FY2023 年報仍是尋買家，本文不宣稱後來已售。畫面為匿名概念插畫，不是實際廠房、器材或人物。資料查核日期：2026-10-20。",
   "",
@@ -129,7 +135,7 @@ const video = {
   series: { slug: "brand-stories-everyday-reversals-extra", episode: 12, chapter: 1 },
   music: { prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 },
   loops,
-  youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Peloton 四億美元新廠計畫，為何隔年尋找買家？｜品牌故事", description, tags: ["Peloton", "品牌故事", "健身單車", "訂閱", "製造", "Ohio"], video_id: null },
+  youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Peloton 四億美元新廠計畫，為何還沒開就記下減損？｜品牌故事", description, tags: ["Peloton", "品牌故事", "健身單車", "訂閱", "製造", "Ohio"], video_id: null },
   thumbnail: { template: "thumb", data: { headline: "**廠沒開？**", tag: "品牌故事", brand: "Peloton", shot: "x12-b01-s04" } },
   sources: sourceUrls.map(({ code, ...source }) => source), assets: [], scenes,
 };
@@ -147,6 +153,6 @@ writeFileSync(path.join(dir, "script.md"), [
   ...chapters.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${chapterTitles[ci]}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.map(row => `- \`${row.id}\` ${row.text}`), ""]),
   "## 片尾三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), "",
 ].join("\n"));
-writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 12, chapter: 1, title: "Peloton：Ohio 工廠為何還沒投產就尋買家？", logline: "從 2021 Ohio 產能計畫到 2022 退出自製、FY2023 仍尋買家，追硬體與訂閱收入分岔。", names: ["Peloton", "Peloton Output Park", "Precor", "Rexon", "Tonic", "Bike", "Bike+", "Tread", "Tread+"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
+writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 12, chapter: 1, title: "Peloton：Ohio 新廠未投產，年報為何先記減損？", logline: "從 2021 Ohio 產能計畫到 2022 退出自製、FY2023 仍尋買家，追硬體與訂閱收入分岔。", names: ["Peloton", "Peloton Output Park", "Precor", "Rexon", "Tonic", "Bike", "Bike+", "Tread", "Tread+"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
 const body = chapters.slice(1).flat().map(row => row.text).join("");
 console.log(JSON.stringify({ scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, spoken_lines: allRows.length, hook_characters: chapters[0].map(row => row.text).join("").length, body_characters: body.length, body_estimate_minutes_at_250_cpm: +(body.length / 250).toFixed(2), body_estimate_minutes_at_300_cpm: +(body.length / 300).toFixed(2), loops: loops.length, video_sha256: sha }, null, 2));
