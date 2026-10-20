@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-curio-s43-darwin-beagle-audited-script
 title: Curio S43 Darwin Beagle audited script preproduction
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-root-s43-r11-audio
-claimed_at: 2026-10-20T14:57:17Z
+owner:
+claimed_at:
 created_at: 2026-10-20T09:26:23Z
 completed_at:
 branch: codex/curio-s34-endurance-20261019
@@ -80,3 +80,5 @@ R10 author narrowed exactly the 16 still-flagged spoken lines; no scene order, v
 2026-10-20 另一人重新核本集固定 1831 年選編書信與晚年自傳，對只改 `dn999a` 的精確 R11 判[來源與書面畫面差分 PASS](../../docs/videos/curio-s43/review/r11-source-independent.md)。此結論限 R11 上列 hash，尚不是兩名新讀者的敘事 PASS；R9 的 16 個音檢旗標仍在，未配 R11 語音或畫圖。
 
 2026-10-20 R11 新門檻：[獨立史料與書面畫面](../../docs/videos/curio-s43/review/r11-source-independent.md) PASS；兩名真正隔離的新讀者 [A](../../docs/videos/curio-s43/review/r11-blind-a.md) 與 [B](../../docs/videos/curio-s43/review/r11-blind-b.md) 在同一精確版各給 13/13 Yes，正式敘事 PASS，合併見 [verify-4.md](../../docs/videos/curio-s43/verify-4.md)。Jev 政策同版 PASS，R11 本地受委派劇本決定已綁 `ff3f5888...`；網站精確 R11 劇本卡 `hand_pushed pending`，不稱網站核准。`tts --dry-run` 顯示 99 句中需新合成 16 句、492 免費層可計字元；正式語音與完整音檢進行中，R9 的 16 個音檢旗標仍是前一輪事實，插圖／配樂繼續 STOP。
+
+2026-10-20 R11 實音與原生試圖見 [verify-5.md](../../docs/videos/curio-s43/verify-5.md)：16 個改句已合成、舊 83 句沿用，一句語意相反的「海軍部／海軍不」定點重錄後，99/99 全量音檢 **0 旗標**；57.03 秒濃縮開頭、603.07 秒正文。音訊網站卡 `hand_pushed pending`，本地精確版受委派決定不冒稱站主聽過。三張 MiniMax 原圖均被原尺寸檢看判 **0/3 KEEP**（幼態人物／無船），帳本 US$0.0405；低於原先 ≥2/3 試圖門檻，**停止付費繪圖與配樂**，沒有片頭片尾合成或成片。後續只可先窄修三景提示詞、獨立書面畫面查核，再重新決定有界試圖；不得直接畫餘下 93 張。
