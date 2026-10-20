@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-curio-s43-darwin-beagle-audited-script
 title: Curio S43 Darwin Beagle audited script preproduction
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-root-s43-r11-audio
+claimed_at: 2026-10-20T14:57:17Z
 created_at: 2026-10-20T09:26:23Z
 completed_at:
 branch: codex/curio-s34-endurance-20261019
@@ -28,8 +28,9 @@ S43 source feasibility is complete in task `2026-10-20-curio-s43-darwin-beagle-n
 - [x] Revised B brief sent to the genuine site outline gate as pending; the old A approval is preserved as history, not reused for B.
 - [ ] Record the site's exact B selection if approved; do not treat the pending review or Jev recommendation as approval.
 - [x] No script gate, TTS, paid imagery/music, render, or upload has been performed during this audit.
-- [ ] R10 candidate: get independent exact-source/written-visual final PASS and **two newly isolated** 13-question narrative reads; then record fresh local delegated script decision and re-submit genuine site script card as pending.
-- [ ] R10 audio: `tts --dry-run`, synthesize only changed lines after gates, rerun full `check-audio` until zero official flags with credible audio verification; do not begin art on a nonzero result.
+- [x] R10 exact-source/written-visual PASS and two isolated 13-question narrative reads completed; both were 12/13 with the same mandatory `no_recap` No, so R10 was rejected and not synthesized.
+- [ ] R11 candidate: obtain two **newly isolated** 13-question narrative reads on the exact R11 hashes; then record a fresh local delegated script decision and resubmit the genuine site script card as pending.
+- [ ] R11 audio: `tts --dry-run`, synthesize changed lines only after gates, rerun full `check-audio` until zero official flags with credible audio verification; do not begin art on a nonzero result.
 
 ## Steps
 
@@ -73,3 +74,9 @@ Run `node --input-type=module -e 'import {outlineOptions} from "./tools/video/re
 2026-10-20 R9 audio and R10 handoff: User's standing “use recommended choices, no routine questions, keep making videos” authorized a **transparent local delegated** exact B outline/script decision for R9 only; site B outline and script cards are `hand_pushed pending`, old genuine A outline approval does not transfer. R9 Gemini Sulafat TTS 99/99 lines, 2,727 billable characters; audio worktree `/workspace/.video-work/curio-s43` outside Git. Actual 30fps timeline: opener `dn001–dn009` 57.03s, body `dn010` to outro 603.0s, total narration 678.83s. Official full audio checks returned **20 → 17 → 16 flags** after two scoped high-risk redos (257 + 170 additional billable chars); three exact check/flags pairs and meaning-risk table are in `review/audio-r9-gate.md`. No independent Whisper model was available in this cloud; machine transcript is not a second human ear. No art, music, render or upload. Art `keyframes --dry-run` quoted 96 MiniMax images one take US$1.30 / three takes whole cap US$3.89, plus music about US$0.15: full cap US$4.04. Native pilot 3 scenes `dn008/dn082/dn087a`, require >=2/3 original-size KEEP before full art, **only after zero audio flags**; see `verify-2.md`.
 
 R10 author narrowed exactly the 16 still-flagged spoken lines; no scene order, visual, camera, loop, voice, metadata or shot-count changes versus frozen R9. After independent source reviewer identified two wording risks, `dn074f` now says Darwin was unsure about reaching South Pacific islands, and `dn999a` avoids an exclusive-record inference. Final candidate SHA-256: script `152623a7c93c1dbeeef4c1db25ae760f7ad66d0ac5b7e6cae84f73b0929b0cbf`, video `eb26b1c742280f597e78eba2f7445aa2492c341c810a32827b7128f3dfc0739e`, claims `ea167a1c92c50402860b49da3608aa211146509646be6a043b37158d1689e518`; brief/research unchanged from `verify-2.md`. Claim lines 96/96 match, lint 0 errors/4 carried warnings, exact [Jev policy](../../docs/videos/curio-s43/review/r10-jev-policy.json) PASS (.68 stance/.02 sponsored/.02 advice). The [fresh fixed-source/written-visual audit](../../docs/videos/curio-s43/review/r10-source-independent.md) is PASS; the reviewer re-downloaded the three pinned primary texts and explicitly discloses inherited context, so it does not stand in for blind narrative or actual-image review. Author delta `review/r10-author-audio-delta.md`. The earlier R10 Jev pass is archived as stale, not reused. **R10 has no TTS yet**, R9 voice is stale for modified lines. A first attempted R10 blind child recused because it inherited prior conversation; it wrote no report. Get two genuinely fresh `fork_turns="none"` readers. After narrative gates, record a new R10 local delegated exact script decision (not site owner approval), push exact site script card pending, then run R10 TTS and official full audio check. No new art while any audio flag remains.
+
+2026-10-20 R10 FAIL / R11 checkpoint: Two subsequent truly isolated R10 readers were each 12/13, with the same mandatory `no_recap` No: `dn999a` repeated `dn079`'s later nose recollection and `dn087`'s embarkation. Separate forwarded original verdicts and the formal shared FAIL are in `review/r10-blind-{a,b}.md` and `review/r10-narrative-fail.md`. R11 alters **only `dn999a`**, keeping the fixed 1831 letter limit and adding the new conclusion that a private concern is insufficient evidence for a formal rejection; no memoir or embarkation recap. Final R11 hashes: script `ff3f5888ce8c81ac8aaea2dfc1e4cb9e937051fc7c228b5d9b87537236a0404c`, video `1cb2dfdeb05ee249afdd86e9317396d7f5f143e5d2539ed6f00f36c597440906`, claims `624290eb63b010ee558f347c3e9f51a4719c842bebeaa2baf6b97c63a151d915`; brief/research unchanged. R11 `script` regenerated; 96/96 body claims match, lint 0 errors/4 carried warnings. Strict text estimate: opener 56.57s, body 616.93s, outro 19s; no R11 actual audio. Exact [Jev policy](../../docs/videos/curio-s43/review/r11-jev-policy.json) PASS (.67 stance/.02 sponsored/.01 advice). Author-only fixed-source delta `review/r11-author-delta.md` and handoff `verify-3.md`; neither substitutes for two **new** isolated readers. R10 audio was never made; R9 audio has 16 flags. No art, music, final cut or upload.
+
+2026-10-20 另一人重新核本集固定 1831 年選編書信與晚年自傳，對只改 `dn999a` 的精確 R11 判[來源與書面畫面差分 PASS](../../docs/videos/curio-s43/review/r11-source-independent.md)。此結論限 R11 上列 hash，尚不是兩名新讀者的敘事 PASS；R9 的 16 個音檢旗標仍在，未配 R11 語音或畫圖。
+
+2026-10-20 R11 新門檻：[獨立史料與書面畫面](../../docs/videos/curio-s43/review/r11-source-independent.md) PASS；兩名真正隔離的新讀者 [A](../../docs/videos/curio-s43/review/r11-blind-a.md) 與 [B](../../docs/videos/curio-s43/review/r11-blind-b.md) 在同一精確版各給 13/13 Yes，正式敘事 PASS，合併見 [verify-4.md](../../docs/videos/curio-s43/verify-4.md)。Jev 政策同版 PASS，R11 本地受委派劇本決定已綁 `ff3f5888...`；網站精確 R11 劇本卡 `hand_pushed pending`，不稱網站核准。`tts --dry-run` 顯示 99 句中需新合成 16 句、492 免費層可計字元；正式語音與完整音檢進行中，R9 的 16 個音檢旗標仍是前一輪事實，插圖／配樂繼續 STOP。

@@ -103,6 +103,6 @@
 
 ## 片尾三句的界線
 
-- `dn999a`：片尾的新判斷是「鼻子沒有讓他落選」：他確實出海，見 [1845 年航海記 V147–153](https://github.com/GITenberg/The-Voyage-of-the-Beagle_944/blob/a26cbdcdc1449627d1594dac877ad11396167791/944.txt#L147-L153)，而「差點」只見 [晚年回憶](https://github.com/GITenberg/The-Autobiography-of-Charles-Darwin_2010/blob/906f72376c2153899e7482609fb915eda282e661/2010.txt#L891-L899)；本集所引當年信未見鼻形退件，不能推論世界上絕無別的材料。
+- `dn999a`：片尾的新判斷是「正式鼻形淘汰的證據不足」：本集所引 [1831 年當年書信 L5620–6255](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L5620-L6255)沒有鼻形拒絕的記載；[晚年回憶 A891–899](https://github.com/GITenberg/The-Autobiography-of-Charles-Darwin_2010/blob/906f72376c2153899e7482609fb915eda282e661/2010.txt#L891-L899)說的是後來聽到船長曾有的顧慮，不是當年正式淘汰文件。這只能界定本集固定材料，不能推論世界上絕無別的材料；口播不重講 `dn079` 的回憶內容或 `dn087` 的登船結果。
 - `dn999b`：對觀眾的假設性提問；9 月 9 日信前段航線未定、後段本人決定去，但沒有正式航路答覆，見 [L6137–6153](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L6137-L6153) 與 [L6220–6231](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L6220-L6231)。
 - `dn999c`：只指向本集說明欄已列出的編選書信與晚年回憶版本；沒有新史實或訂閱口播。21 秒視覺片尾仍保留頻道訂閱 CTA 與可點影片區。

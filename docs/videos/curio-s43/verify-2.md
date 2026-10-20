@@ -19,3 +19,5 @@ R9 新[獨立史料與文字畫面審核](review/r9-source-independent.md)為 PA
 R9 首輪 20、首次定點重錄後 17、第二次定點重錄後 16 個官方音檢旗標，三輪皆 exit 1；兩輪定點重錄合計 427 Gemini 計費字元。高風險五句直到第三輪仍涉及書信證據、疑問句、續寫次序或結論。所有完整原始收據與分類見 [R9 音檢報告](review/audio-r9-gate.md)。**沒有啟動插圖、配樂、片頭片尾或成片。**
 
 為消除反覆的同音、專名與過短語意歧義，已在 `video.json` 只改寫第三輪被標記的 16 句，重產 `script.md` 並同步 96/96 正文主張表，命名 R10 **候選稿**。獨立來源覆核者指出兩處過強說法後，已在其中的 `dn074f` 精確保留「達爾文尚不確定航路」，並從 `dn999a` 去掉可能暗示唯一史料的「才」。精確 R10 SHA-256：`video.json` `eb26b1c742280f597e78eba2f7445aa2492c341c810a32827b7128f3dfc0739e`、`script.md` `152623a7c93c1dbeeef4c1db25ae760f7ad66d0ac5b7e6cae84f73b0929b0cbf`、`claims.md` `ea167a1c92c50402860b49da3608aa211146509646be6a043b37158d1689e518`；brief/research 未變。`lint` 0 errors／4 個沿前版的畫面用語與片尾警告；純文字估時約 11:34（全片），仍需 R10 實音重新量測。精確版的[站台 Jev 政策回條](review/r10-jev-policy.json) PASS（立場 .68、業配 .02、建議 .02）；前一個尚未收窄來源措辭的 Jev 回條另[存作歷史](review/r10-before-source-fix-jev-policy.json)，不借用。[獨立重查固定史料／文字畫面](review/r10-source-independent.md)已 PASS（16 句皆覆核、96/96 台詞主張一致、未驗生成圖）；**兩位真正隔離的新盲讀仍待做**，不借用 R9 成績。R10 語音、圖片支出目前 **US$0.00**。
+
+後續 R10 兩名隔離讀者已完成，因共同 `no_recap` No 而退稿；R11 的單句修正與最新待辦見 [verify-3.md](verify-3.md)。
