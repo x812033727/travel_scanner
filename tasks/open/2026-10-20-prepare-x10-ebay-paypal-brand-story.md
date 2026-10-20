@@ -12,6 +12,10 @@ branch: codex/brand-story-ebay-paypal-x10
 depends_on: []
 scope:
   - docs/videos/story-everyday-ebay-paypal-x10
+  - docs/videos/story-lexicon-adoption.md
+  - tools/video/core/lexicon-adoption.mjs
+  - tools/video/core/lexicon-adoption.test.mjs
+  - tools/video/cli.mjs
 ---
 
 # Prepare X10 eBay PayPal brand-story episode
@@ -47,6 +51,8 @@ The brand-story series needs another recognizable, nonduplicate episode after X0
 - [x] Run v7 lint, docs-video tests, task check, claim/Shorts parity, then push the revised package to the draft PR.
 - [x] Run v8 lint, docs-video tests, task check and claim/Shorts parity; push the revised package to the draft PR.
 - [x] Run v9 lint, docs-video tests, task check and claim/Shorts parity; push the revised package to the draft PR.
+- [x] Add an X10-only manual lexicon adoption command with exact-byte review, media-workbase admission and local refusal/recovery tests.
+- [ ] Independently verify no X10 speech exists in the actual media workbase or elsewhere, fill the adoption review, then dry-run and apply the pin before any paid TTS.
 
 ## How to verify
 
@@ -87,4 +93,6 @@ The independent [v8 source delta](../../docs/videos/story-everyday-ebay-paypal-x
 
 v9 author delta is in [v9-author-delta.md](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/v9-author-delta.md). Only x100407 changes, to “分拆後的營運協議，讓 PayPal 的付款服務繼續留在 eBay 市集。” The same 36-codepoint phrase flows to Short 1 from the same illustration shot. Main SHA-256 `f5c7ec99142c4508d06ef58c8e5e0c136bd7e556a4254dba940d4328f804757c`; Shorts SHA-256 `27eb3c634095994f1f97dfbb549d2019d1c082257f28cbd59e1226c64fb7186b`. Script estimate: 51.0 s opening, 542.2 s substantive body, 22.1 s spoken outro, 10:15 total narration; Short 1 now 203 characters, Short 2 unchanged content at 192. This is not a timed TTS result. Independent v9 source delta and two fresh untouched blind reads are still required before paid media.
 
-The subsequent [v9 source delta](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/source-review-v9-independent.md) is PASS. Fresh [blind A](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/blind-a-v9-independent.md) scored 10/12 and [blind B](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/blind-b-v9-independent.md) 12/12. No required criterion received two NO votes; both Shorts passed standalone. [Combined receipt](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/combined-v9-independent.md) retains A's chapter-transition and recap concerns for editing. TTS dry-run currently stops at `STORY_LEXICON_MIGRATION_REQUIRED`: this manually composed story has no pinned per-story pronunciation snapshot, and the worker-only migration correctly refuses a nonexistent worker workspace. A safe manual-story genesis route is under review; no paid X10 speech was sent and no worker state was fabricated.
+The subsequent [v9 source delta](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/source-review-v9-independent.md) is PASS. Fresh [blind A](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/blind-a-v9-independent.md) scored 10/12 and [blind B](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/blind-b-v9-independent.md) 12/12. No required criterion received two NO votes; both Shorts passed standalone. [Combined receipt](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/combined-v9-independent.md) retains A's chapter-transition and recap concerns for editing. TTS dry-run currently stops at `STORY_LEXICON_MIGRATION_REQUIRED`: this manually composed story has no pinned per-story pronunciation snapshot, and the worker-only migration correctly refuses a nonexistent worker workspace. The X10-only manual adoption route is implemented but has not been run; no paid X10 speech was sent and no worker state was fabricated.
+
+The X10-only `story-lexicon-adopt` route is documented in [story-lexicon-adoption.md](../../docs/videos/story-lexicon-adoption.md). Its local test fixture proves dry-run/refusal byte preservation, hash-bound independent review, dual-lease adoption, strict speech admission and committed-crash recovery. It has **not** been applied to X10. An independent operator still must establish the actual media workbase and confirm that no X10 speech was previously synthesized there or elsewhere before signing its exact-byte review receipt. This task does not authorize paid narration.

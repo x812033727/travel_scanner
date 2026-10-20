@@ -12,6 +12,7 @@ import { parseArgs } from "node:util";
 
 import { tidiedNote } from "./automation/tidy.mjs";
 import { approve, GATES } from "./core/approvals.mjs";
+import { adoptManualStoryLexicon, inspectManualStoryAdoption } from "./core/lexicon-adoption.mjs";
 import { inspectStartedStoryMigration, migrateStartedStoryLexicon } from "./core/lexicon-migration.mjs";
 import { applyStoryLexiconRevision, inspectStoryLexiconRevision } from "./core/lexicon-revision.mjs";
 import { NARRATIVE_REVIEW, narrativeRecord, panelPayload, panelVerdict } from "./core/narrative.mjs";
@@ -84,6 +85,9 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    pin a story started before per-story dictionaries that has no narration yet
                                                    (docs/videos/story-lexicon-migration.md); without --apply it only prints each
                                                    precondition and the snapshot SHA-256; exits 1 when refused
+  story-lexicon-adopt --slug S --workdir D [--review F] [--apply] [--json]
+                                                   pin the manually composed, never-synthesized X10 story from an explicit media
+                                                   workbase (docs/videos/story-lexicon-adoption.md); dry run prints a review template
   story-lexicon-revise --slug S [--workdir D] [--proposal SHA]... [--review F] [--apply] [--json]
                                                    review a story's pronunciation proposals (docs/videos/story-lexicon-revision.md):
                                                    without --review it lists them and prints a receipt to fill in; with --review it
@@ -304,6 +308,39 @@ async function cmdStoryLexiconMigrate(args, ctx) {
   return EXIT.ok;
 }
 
+/** X10's docs-only composition has no worker state; it needs its own reviewed first-speech admission. */
+async function cmdStoryLexiconAdopt(args, ctx) {
+  const values = parse(args, { slug: { type: "string" }, workdir: { type: "string" }, review: { type: "string" }, apply: { type: "boolean" }, json: { type: "boolean" } });
+  if (!values.slug || !values.workdir) throw new UsageError("story-lexicon-adopt needs --slug and an explicit --workdir media workbase");
+  if (values.apply && !values.review) throw new UsageError("story-lexicon-adopt --apply needs --review FILE");
+  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: values.slug, root: ctx.root });
+  let reviewBytes = null;
+  if (values.review) {
+    try { reviewBytes = readFileSync(path.resolve(values.review)); }
+    catch (error) { throw new UsageError(`cannot read review ${values.review}: ${error.message}`); }
+  }
+  const report = inspectManualStoryAdoption({ root: ctx.root, slug: values.slug, workdir, reviewBytes, now: ctx.now });
+  let applied = null;
+  let failure = null;
+  if (values.apply && report.status === "allowed") {
+    try { applied = adoptManualStoryLexicon({ root: ctx.root, slug: values.slug, workdir, reviewFile: path.resolve(values.review), now: ctx.now }); }
+    catch (error) { if (!error?.code) throw error; failure = error; }
+  }
+  if (values.json) {
+    ctx.stdout.write(`${JSON.stringify({ ...report, workdir, apply: Boolean(values.apply), applied: applied && { lexicon_sha256: applied.lexicon_sha256, head_event_sha256: applied.head_event_sha256, transaction_id: applied.transaction_id ?? null, adopted: applied.adopted }, error: failure && { code: failure.code, message: failure.message } }, null, 2)}\n`);
+  } else {
+    ctx.stdout.write(`${values.slug}: ${report.status}; workdir ${workdir}${report.lexicon_sha256 ? `; snapshot sha256 ${report.lexicon_sha256}` : ""}\n`);
+    for (const check of report.checks) ctx.stdout.write(`  ${check.ok ? "ok  " : "FAIL"}  ${check.id}${check.ok ? "" : ` -> ${check.code}${check.detail ? ` (${check.detail})` : ""}`}\n`);
+    if (report.shared_sha256 !== undefined && report.status !== "already_pinned") ctx.stdout.write(`  shared lexicon sha256 ${report.shared_sha256 ?? "(none)"}; seeded ${report.seeded_terms.length ? report.seeded_terms.join(", ") : "nothing"}\n`);
+    if (report.template && !values.review) ctx.stdout.write(`review template (fill the confirmation, independent reviewer and time; no files written):\n${JSON.stringify(report.template, null, 2)}\n`);
+    if (applied) ctx.stdout.write(`pinned ${values.slug}: lexicon ${applied.lexicon_sha256}, event ${applied.head_event_sha256}, transaction ${applied.transaction_id}\n`);
+    else if (failure) ctx.stdout.write(`not pinned: ${failure.message}\n`);
+    else if (report.status === "allowed") ctx.stdout.write("dry run: nothing written; run again with --review FILE --apply to pin it\n");
+  }
+  if (failure || report.status === "refused") return EXIT.lint;
+  return EXIT.ok;
+}
+
 /** docs/videos/story-lexicon-revision.md: list proposals and a receipt template, or check (and with --apply publish) a filled receipt. */
 async function cmdStoryLexiconRevise(args, ctx) {
   const values = parse(args, { slug: { type: "string" }, workdir: { type: "string" }, proposal: { type: "string", multiple: true }, review: { type: "string" }, apply: { type: "boolean" }, json: { type: "boolean" } });
@@ -359,7 +396,7 @@ async function delegate(command, args, ctx) {
   return module.run(command, args, { ...ctx, EXIT });
 }
 
-const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, narrative: cmdNarrative, script: cmdScript, captions: cmdCaptions, "story-lexicon-migrate": cmdStoryLexiconMigrate, "story-lexicon-revise": cmdStoryLexiconRevise };
+const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, narrative: cmdNarrative, script: cmdScript, captions: cmdCaptions, "story-lexicon-migrate": cmdStoryLexiconMigrate, "story-lexicon-adopt": cmdStoryLexiconAdopt, "story-lexicon-revise": cmdStoryLexiconRevise };
 
 export async function main(argv, overrides = {}) {
   const ctx = { root: ROOT, here: HERE, env: process.env, stdout: process.stdout, stderr: process.stderr, now: () => new Date(), ...overrides };
