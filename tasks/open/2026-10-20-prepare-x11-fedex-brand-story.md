@@ -22,14 +22,15 @@ The owner wants more recognizable brand stories beyond the existing X01–X10 wo
 
 ## Definition of done
 
-- [ ] A source-checked six-chapter script, two standalone Shorts and shot package pass the brand-story lint and two independent narrative blind reviews.
-- [ ] Paid media, audio, and local preview pass the per-video US$25 ledger, human visual/audio QA, and the series bookend/caption/link rules; create an honest draft PR handoff.
+- [x] A source-checked six-chapter script, two standalone Shorts and shot package pass the brand-story lint and two independent narrative blind reviews.
+- [ ] Open an honest draft PR for the reviewed preproduction package.
+- [ ] Paid media, audio, and local preview pass the per-video US$25 ledger, human visual/audio QA, and the series bookend/caption/link rules.
 
 ## Steps
 
 - [x] Check source feasibility from FedEx FY2022–FY2026 original SEC 10-K filings and record the event chronology and caveats.
 - [x] Obtain root's independent anchor check of the source-feasibility memo, then write a six-chapter Treatment and full narration.
-- [ ] Validate the manuscript and Shorts against exact source claims and story gates before paid generation.
+- [x] Validate the manuscript and Shorts against exact source claims and story gates before paid generation.
 - [ ] Produce the bounded pilot, inspect it, and continue only if visual/audio quality passes.
 
 ## How to verify
@@ -49,3 +50,5 @@ Frozen v5 review input was `video.json` SHA-256 `3d2a7d1d422105802fd1d755fa8f90f
 The [v5 source audit](../../docs/videos/story-everyday-fedex-x11/reviews/source-audit-v5-independent.md) put one claim on HOLD: the FY2026 current use of employee couriers and service providers must be explicitly limited to **U.S. surface operations** at `x110612`; its `x11-b06-s12` image must not imply both types worked at one depot. [Blind A v5](../../docs/videos/story-everyday-fedex-x11/reviews/blind-a-v5-independent.md) passed 11/12 required story checks, with visual clarity failing because Express/Ground and Canada/U.S. have no persistent visual identity in the pivotal paired shots. [v6 author delta](../../docs/videos/story-everyday-fedex-x11/revision-v6.md) records the narrow repair; no independent v6 PASS yet.
 
 Current v6 candidate: `video.json` SHA-256 `e8aa68f3aef2a8d8d1068152fe5cf024cfc9e91590103c37b586b338ba10d240`; `shorts.json` SHA-256 `7d352677b785667866b6ef09e7c4f4934d6659fb966f334c8d98c4ac063dcaa6` (same Shorts JSON bytes, but main-source image prompts changed). Lint 0 errors/0 warnings; six chapters, 15 loops, 99 shots/6 stats cards/1 outro, 122 lines and 2,017 normalized spoken units of substantive body, ~8.07 minutes at planned normal 250 units/minute before pauses. Next: exact-pair independent source delta and two **new** blind reads. No paid generation, push or PR until those gates and media QA.
+
+The [v6 independent source/visual delta](../../docs/videos/story-everyday-fedex-x11/reviews/source-audit-v6-independent.md) is PASS for the explicit U.S. surface-operations scope and 27 prompt changes. Fresh [blind A](../../docs/videos/story-everyday-fedex-x11/reviews/blind-a-v6-independent.md) and [blind B](../../docs/videos/story-everyday-fedex-x11/reviews/blind-b-v6-independent.md) both scored 12/12 on the exact pair; [combined receipt](../../docs/videos/story-everyday-fedex-x11/reviews/combined-v6-independent.md) records the script-level PASS and the limits of estimated timing. An honest draft PR can now carry this preproduction package; no TTS, illustrations, licensed music, official animations, MP4 or YouTube links exist yet. Strict body duration still needs actual Sulafat audio, and the US$25 all-in budget plus shared image/judge quota must be checked before paid work.
