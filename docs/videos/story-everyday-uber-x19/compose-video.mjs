@@ -67,7 +67,7 @@ const cardRules = new Map([
 for (const id of cardRules.keys()) if (!allRows.some(row => row.id === id)) throw new Error(`Missing card anchor: ${id}`);
 const shortAnchors = new Set([
   "x190301", "x190305", "x190306", "x190307", "x190309", "x190318", "x190319", "x190322",
-  "x190401", "x190403", "x190407", "x190409", "x190421", "x190501", "x190503", "x190504",
+  "x190401", "x190403", "x190405", "x190409", "x190421", "x190501", "x190503", "x190504",
 ]);
 const single = new Set([...shortAnchors, ...cardRules.keys(), ...chapters.map(chapter => chapter[0].id), ...chapters.map(chapter => chapter.at(-1).id)]);
 const cameras = ["Medium shot, slow push in", "Close-up, pull out", "Wide shot, pan left", "Overhead shot, pan right", "Medium close-up, still", "Low-angle shot, tilt up"];
@@ -123,18 +123,18 @@ for (const [ci, chapter] of chapters.entries()) {
 }
 scenes.push({ id: "x19-outro", template: "outro", data: { title: "同一支手機，兩種需求", cta: "訂閱品牌故事" }, lines: outro.map(toLine) });
 const loops = [
-  { setup: "x190105", payoff: "x190301", what: "六月究竟是哪條線領先" },
+  { setup: "x190105", payoff: "x190317", what: "六月外送交易額較大是否代表外送部門轉正" },
   { setup: "x190106", payoff: "x190401", what: "七月收購發生在交叉前後" },
   { setup: "x190107", payoff: "x190502", what: "兩張外送網何時開始整合" },
   { setup: "x190108", payoff: "x190611", what: "載客訂單何時重新較大" },
-  { setup: "x190109", payoff: "x190625", what: "外送為何先超過載客" },
+  { setup: "x190109", payoff: "x190625", what: "車和餐袋的部門指標能否同時為正" },
   { setup: "x190204", payoff: "x190301", what: "既有外送網遇危機能否反超" },
   { setup: "x190209", payoff: "x190210", what: "乘客減少後司機接什麼" },
-  { setup: "x190214", payoff: "x190217", what: "餐廳加入流程能否跟上派單" },
+  { setup: "x190214", payoff: "x190217", what: "如何讓更多餐廳加入派單手機" },
   { setup: "x190219", payoff: "x190301", what: "退出部分市場又招新店後外送總額方向" },
   { setup: "x190222", payoff: "x190301", what: "轉派能否讓交易額換位" },
   { setup: "x190306", payoff: "x190307", what: "交叉比的是哪一種錢" },
-  { setup: "x190311", payoff: "x190313", what: "外送反超是否令平台活動增加" },
+  { setup: "x190311", payoff: "x190313", what: "平台消費者與行程縮小多少" },
   { setup: "x190314", payoff: "x190317", what: "較忙的外送是否賺錢" },
   { setup: "x190319", payoff: "x190320", what: "部門走勢相反時公司正式盈虧" },
   { setup: "x190323", payoff: "x190401", what: "收購是否造成六月交叉" },
@@ -142,14 +142,14 @@ const loops = [
   { setup: "x190413", payoff: "x190415", what: "載客或外送哪邊先留下部門利潤" },
   { setup: "x190420", payoff: "x190601", what: "外送何時讓部門調整後指標轉正" },
   { setup: "x190422", payoff: "x190501", what: "年底收購是否交割" },
-  { setup: "x190506", payoff: "x190509", what: "交割後用戶遷移" },
+  { setup: "x190506", payoff: "x190509", what: "交割後消費者、配送員與商家遷移" },
   { setup: "x190513", payoff: "x190514", what: "整合後外送是否賺錢" },
   { setup: "x190519", payoff: "x190520", what: "兩條服務路線的客人是否重疊" },
   { setup: "x190522", payoff: "x190601", what: "外送年底是否轉正" },
   { setup: "x190604", payoff: "x190605", what: "部門轉正時外送交易額是否仍領先" },
   { setup: "x190609", payoff: "x190611", what: "載客能否重新領先" },
   { setup: "x190614", payoff: "x190616", what: "載客領先時外送交易額是否縮小" },
-  { setup: "x190618", payoff: "x190620", what: "整個平台還有多少活躍用戶與接單者" },
+  { setup: "x190624", payoff: "x190625", what: "兩個部門的調整後指標能否同時為正" },
 ];
 const order = new Map(allRows.map((row, i) => [row.id, i]));
 for (const loop of loops) if (!(order.has(loop.setup) && order.has(loop.payoff) && order.get(loop.setup) < order.get(loop.payoff))) throw new Error(`Unpaid loop: ${JSON.stringify(loop)}`);
@@ -157,7 +157,7 @@ if (shotCount < 75 || shotCount > 120) throw new Error(`Illustration count out o
 const description = [
   "2020 年春天，Uber 讓載客司機更容易接外送。第二季外送 Gross Bookings 高過載客，為什麼訂單額較大的那條路仍虧錢？這支故事跟著同一支匿名派單手機，從司機改接餐袋、七月簽約收購 Postmates、十二月整合，到 2022 年載客金額重新較大。",
   "",
-  "所有比較都是平台訂單額，不是 Uber 確認營收或獲利。Postmates 收購在六月季度之後才簽約、十二月才完成；公司淨利也包括股權投資重估，不能全算成外送賺的。情境畫面是無品牌概念插畫，數字由後製字卡呈現。資料檢查：2026-10-20。",
+  "外送與載客的反超比較是平台訂單額，不是 Uber 確認營收或獲利。Postmates 收購在六月季度之後才簽約、十二月才完成。2022 Q4 兩部門調整後 EBITDA 同為正數，仍不能當成公司 GAAP 正式淨利。情境畫面是無品牌概念插畫，數字由後製字卡呈現。資料檢查：2026-10-20。",
   "",
   "SEC 原始資料：",
   ...sources.flatMap(source => [source.title, source.url]),

@@ -38,7 +38,7 @@ for (const [si, short] of rows.entries()) {
 const lineToScene = new Map(video.scenes.flatMap(scene => scene.lines.map(line => [line.id, scene])));
 const anchors = [
   ["x190301", "x190305", "x190306", "x190307", "x190319", "x190318", "x190309", "x190322"],
-  ["x190401", "x190403", "x190407", "x190409", "x190501", "x190503", "x190504", "x190421"],
+  ["x190401", "x190403", "x190405", "x190409", "x190501", "x190503", "x190504", "x190421"],
 ];
 const crops = [[656, 640, 672, 660, 635, 656, 680, 650], [650, 675, 656, 645, 670, 656, 685, 640]];
 const beats = ["hook", "setup", "turn", "proof", "proof", "proof", "proof", "payoff"];
