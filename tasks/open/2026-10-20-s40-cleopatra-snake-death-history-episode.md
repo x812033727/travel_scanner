@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-s40-cleopatra-snake-death-history-episode
 title: S40 Cleopatra snake death history episode
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-s40-r2
-claimed_at: 2026-10-20T00:28:52Z
+owner:
+claimed_at:
 created_at: 2026-10-20T00:14:38Z
 completed_at:
 branch:
