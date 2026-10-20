@@ -13,7 +13,7 @@ x17s107 | S3 | 公司改測伸展、重量、公差，也派人進工廠。 | wo
 x17s108 | editorial | 看布樣之外，最後還得看做好的那條褲子。 | black pants box faces empty rack
 
 ## Short 2: 撤貨後營收還增，錢去哪了？
-x17s201 | S1 | 黑褲下架，公司營收為何還能增加？ | hand removes selected pants from hanger
+x17s201 | S5 | 黑褲下架，公司營收為何還能增加？ | hand removes selected pants from hanger
 x17s202 | S1 | 三月預估，全年將少賣五千七到六千七百萬美元。 | gap in rack and closed delivery door
 x17s203 | editorial | 那是當時的預測，不是最後量到的損失。 | empty shelf faces blank web product tile
 x17s204 | S4 | 店裡與網站，第一季後七週都缺這批貨。 | ledger opens beside boxed black pants

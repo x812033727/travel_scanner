@@ -49,7 +49,8 @@ const specs = [
   },
   {
     titles: ["Lululemon 撤下黑褲，營收怎麼還增兩成一？", "撤貨代價藏在財報哪一行？"],
-    headlines: ["下架還增收？", "US$57–67m 預估", "預測≠實損", "缺貨七週", "US$17.5m 入帳", "是成本，不是少賣", "營收 +21%", "毛利率也受傷"],
+    headlines: ["下架還增收？", "三月當時預估", "預測≠實損", "缺貨七週", "存貨成本入帳", "是成本，不是少賣", "公司總營收", "毛利率也受傷"],
+    big: { 1: "US$57–67m", 4: "US$17.5m", 6: "+21%" },
     description: "2013 年 3 月，Lululemon 預估 FY2013 全年會因黑 Luon 褲事件少賣 US$57–67m；這是預測，不是最終量到的失去營收。FY2013 Q1 缺貨七週，另有 US$17.5m 存貨準備實列成本。同季公司整體營收仍增 21%，毛利率由上年同季 55.0% 降至 49.4%；不能把全部降幅歸於撤貨。畫面為概念插畫，精確數字由後製排字；正式長片網址待上傳後回填。",
     refs: ["S1", "S4", "S5"],
   },
@@ -63,7 +64,7 @@ const shorts = rows.map((short, si) => ({
     const scene = lineToScene.get(anchors[si][ri]);
     if (!scene || scene.template !== "shot") throw new Error(`Short ${si + 1} beat ${ri + 1} lacks a shot: ${anchors[si][ri]}`);
     if (!scene.data.prompt.toLowerCase().includes(row.focus.toLowerCase())) throw new Error(`Short focus does not match shot: ${scene.id}`);
-    return { beat: beats[ri], shot: scene.id, headline: specs[si].headlines[ri], narration: [row.text] };
+    return { beat: beats[ri], shot: scene.id, headline: specs[si].headlines[ri], ...(specs[si].big?.[ri] ? { big: specs[si].big[ri] } : {}), narration: [row.text] };
   }),
 }));
 for (const short of shorts) {
@@ -80,10 +81,10 @@ writeFileSync(path.join(dir, "shorts-portrait-plan.md"), [
   "# X17 Lululemon｜兩支 Shorts 的逐拍 9:16 規劃", "",
   `離線前製，綁定主片 \`${videoSha}\` 與 Shorts \`${shortsSha}\`。目前沒有插畫、直式輸出或手機檢查，以下裁切需出圖後逐拍核對焦點。`, "",
   "每拍從一張不同的主片 1920×1080 插畫 `shot` 取 608×1080 視窗，按表列 x、y=0 裁切，再等比輸出 1080×1920；原畫面提示詞要求焦點在中央 608px 走廊。若焦點出框，可在合法 x=0–1312 中移動；保不住才於 US$25 整片上限內重畫。所有品牌名、年份與數字均以後製原生字卡排版，不請 image-01 畫字。", "",
-  "直式文字安全區：畫布 1080×1920；headline x=78–902、下緣 y≤1380；字幕 x=80–900、y=1430–1595；底部操作區保留。產出後於 360px 寬手機逐拍看字卡、字幕與手／褲焦點，測兩支均為 25–55 秒。Shorts 不套長片片頭片尾，也不預填虛構 watch URL。", "",
-  "| Short／拍 | 重用主片 shot | 608×1080 左上角 | 直式焦點 | 原生 headline |",
-  "| --- | --- | --- | --- | --- |",
-  ...shorts.flatMap((short, si) => short.scenes.map((scene, ri) => `| ${si + 1}／${ri + 1} | \`${scene.shot}\` | \`x=${crops[si][ri]}, y=0\` | ${rows[si][ri].focus} | ${scene.headline} |`)),
+  "直式文字安全區：畫布 1080×1920；headline x=78–902、下緣 y≤1380；`big` 數字置於同安全寬度內，先在 360px 手機驗完整字形；字幕 x=80–900、y=1430–1595；底部操作區保留。產出後逐拍看字卡、字幕與手／褲焦點，測兩支均為 25–55 秒。Shorts 不套長片片頭片尾，也不預填虛構 watch URL。", "",
+  "| Short／拍 | 重用主片 shot | 608×1080 左上角 | 直式焦點 | 原生 headline | 原生大數字 |",
+  "| --- | --- | --- | --- | --- | --- |",
+  ...shorts.flatMap((short, si) => short.scenes.map((scene, ri) => `| ${si + 1}／${ri + 1} | \`${scene.shot}\` | \`x=${crops[si][ri]}, y=0\` | ${rows[si][ri].focus} | ${scene.headline} | ${scene.big ?? "—"} |`)),
   "", "焦點與 shot prompt 在編譯時逐字核對，正式裁切在真實插畫生成後才驗。", "",
 ].join("\n"));
 console.log(JSON.stringify({ video_sha256: videoSha, shorts_sha256: shortsSha, shorts: shorts.map(short => ({ slug: short.slug, beats: short.scenes.length, chars: short.scenes.flatMap(scene => scene.narration).join("").length })) }, null, 2));
