@@ -64,3 +64,5 @@ is 176.09 seconds although the request/manifest says 569 seconds. Review
 the loop seams in the final mix. The site audio card is pending; a local
 approval on the exact timeline was recorded under the owner's delegated
 instruction, clearly noting that the owner did not personally listen.
+
+Budget precision (2026-10-20): 86 × 3 × US$0.0135 + US$0.08 music = US$3.563, slightly above the existing **US$3.56** hard stop because the site's US$3.48 image quote is rounded. Keep that stop: charge at most **257 of 258** possible image attempts and check the ledger before retries. Current ledger is US$0.08 music and US$0.00 images; see `docs/videos/curio-s39/verify-10.md`. No approval-bound file changes.
