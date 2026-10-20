@@ -564,3 +564,60 @@ test("translated cues under a measured narration line change when the narration'
   assert.equal(srt(timedLines, english, other), srt(timedLines, english, null), "a narration text the characters were not measured on");
   assert.equal(srt(timedLines, english, { locale: "zh-TW", texts: {} }), srt(timedLines, english, null), "a line the narration has no text for");
 });
+
+// es, pt, id, vi and th (2026-10-20). Thai writes no space between words and its vowel and tone
+// marks sit above or below the letter; Vietnamese may arrive with its diacritics decomposed.
+const th = LOCALE_RULES.th;
+const vi = LOCALE_RULES.vi;
+const THAI_LINE = "โมเดลใหม่นี้ราคาเริ่มต้นที่ 300 บาทต่อเดือน และใช้งานได้ทันทีโดยไม่ต้องติดตั้งอะไรเพิ่มเติมเลยค่ะ ลองดูกันนะคะ";
+const THAI_WORDS = [...new Intl.Segmenter("th", { granularity: "word" }).segment(THAI_LINE)];
+const atWordBreak = (text, at) => at === 0 || at === text.length || THAI_WORDS.some(({ index }) => index === at);
+
+test("a Thai cue's width leaves out the vowel and tone marks above and below its letters", () => {
+  // ที่นี่: ท and น, each with a vowel and a tone mark stacked on it.
+  assert.equal([..."ที่นี่"].length, 6);
+  assert.equal(measure("ที่นี่", th), 2);
+  assert.equal(measure("ค่ะ", th), 2, "ค and ะ; the tone mark takes no width");
+  assert.equal(measure("Thai 300", th), 8);
+});
+
+test("a Thai line is cut and wrapped between its words, best at the space that ends a phrase, never inside a number and its unit", () => {
+  const pieces = cuePieces(THAI_LINE, "th");
+  assert.equal(pieces.length, 2);
+  assert.ok(pieces[0].endsWith("ต่อเดือน"), "the first cue ends at the space after a phrase, not mid-phrase");
+  assert.equal(pieces.join(" "), THAI_LINE);
+  let offset = 0;
+  for (const piece of pieces) {
+    const at = THAI_LINE.indexOf(piece, offset);
+    assert.ok(atWordBreak(THAI_LINE, at) && atWordBreak(THAI_LINE, at + piece.length), `"${piece}" starts and ends on a word break`);
+    offset = at + piece.length;
+    const wrapped = wrapCue(piece, th);
+    const lines = wrapped.split("\n");
+    assert.ok(lines.length <= th.maxLines);
+    for (const line of lines) assert.ok(measure(line, th) <= th.maxChars, `"${line}" fits ${th.maxChars}`);
+    if (lines.length === 2) {
+      const cut = THAI_LINE.indexOf(lines[1], at);
+      assert.ok(atWordBreak(THAI_LINE, cut), `the line break before "${lines[1]}" falls between words`);
+    }
+  }
+  assert.ok(pieces.some((piece) => piece.includes("300 บาท")), "300 บาท stays together");
+  assert.equal(wrapCue("ราคา 300บาท", { ...th, maxChars: 7 }), "ราคา\n300บาท", "a number keeps a unit written without a space");
+});
+
+test("a Vietnamese line with its diacritics stacked as combining marks measures and wraps like the composed one", () => {
+  const composed = "Mô hình mới này có giá khởi điểm 300 nghìn đồng mỗi tháng và dùng được ngay mà không cần cài đặt thêm gì cả.";
+  const stacked = composed.normalize("NFD");
+  assert.ok([...stacked].length > [...composed].length, "the decomposed text carries its marks as characters of their own");
+  assert.equal(measure(stacked, vi), measure(composed, vi));
+  assert.deepEqual(cuePieces(stacked, "vi").map((piece) => piece.normalize("NFC")), cuePieces(composed, "vi"));
+  for (const piece of cuePieces(stacked, "vi")) for (const line of wrapCue(piece, vi).split("\n")) assert.ok(measure(line, vi) <= vi.maxChars);
+  assert.ok(cuePieces(composed, "vi").some((piece) => piece.includes("300 nghìn")), "a number keeps its unit word");
+});
+
+test("es, pt, id and vi take 42 characters, two lines and 17 a second; th 35, two lines and 15", () => {
+  for (const locale of ["es", "pt", "id", "vi"]) assert.deepEqual(LOCALE_RULES[locale], { maxChars: 42, maxLines: 2, maxCps: 17, words: true });
+  assert.deepEqual(th, { maxChars: 35, maxLines: 2, maxCps: 15, words: true, segmenter: "th" });
+  const cues = [{ start_ms: 0, end_ms: 1000, text: "ราคาเริ่มต้นที่ 300 บาทต่อเดือนนะคะ", line: "x" }];
+  assert.deepEqual(checkCues(cues, "th").filter((problem) => /wider|lines/.test(problem)), []);
+  assert.match(checkCues(cues, "th").join(), /characters a second, above 15/);
+});

@@ -37,6 +37,9 @@ EXPECTED = {
     "zh-tw-narration": ({"en", "ko"}, {"zh-TW", "en", "ja", "ko"}),
     "zh-tw-dubbed": (set(), {"zh-TW", "ja"}),
     "en-narration": ({"zh-TW", "ja"}, {"en", "zh-TW", "ja"}),
+    # The five the worker makes since 2026-10-20, under the site's short codes; requests.py
+    # sends es and pt to YouTube as es-419 and pt-BR.
+    "zh-tw-five-languages": ({"es", "pt", "vi", "th"}, {"zh-TW", "es", "id", "vi", "th"}),
 }
 
 

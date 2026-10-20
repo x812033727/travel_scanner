@@ -1,14 +1,14 @@
 ---
 id: 2026-10-19-worker-video-languages-five
 title: Video worker makes es, pt, id, vi, th captions, titles and dubs
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5.5-worker-languages-phase1
+claimed_at: 2026-10-20T00:01:42Z
 created_at: 2026-10-19T23:53:40Z
 completed_at:
-branch:
+branch: claude/worker-video-languages-five
 depends_on: []
 scope:
   - tools/video/core
@@ -20,6 +20,30 @@ scope:
   - tools/video/shorts
   - tools/video/review/language-contract.mjs
   - tools/video/production/retention.mjs
+  - tools/video/automation/flow.mjs
+  - tools/video/automation/compilation.mjs
+  - tools/video/automation/automation.test.mjs
+  - tools/video/automation/compilation.test.mjs
+  - tools/video/automation/compilation-spoilers.test.mjs
+  - tools/video/compile
+  - tools/video/import
+  - tools/video/package
+  - tools/video/qa
+  - tools/video/render
+  - tools/video/review/sync.mjs
+  - tools/video/review/renewal.mjs
+  - tools/video/review/renewal-handoff.mjs
+  - .agents/skills/youtube-video/references/prompts
+  - ops/video/package.json
+  - apps/api/app/video_youtube
+  - apps/api/migrations/versions/0136_video_languages_eight.py
+  - apps/api/tests/test_migration_0136_video_languages_eight.py
+  - apps/api/tests/test_video_languages_imported.py
+  - apps/api/tests/test_video_youtube.py
+  - apps/api/app/video_reviews/admin_api.py
+  - apps/web/components/admin-video-reviews.tsx
+  - apps/web/components/admin-video-review-card.tsx
+  - apps/web/components/admin-video-reviews.test.tsx
   - apps/api/app/video_automation/schemas.py
   - apps/api/app/video_automation/models.py
   - apps/api/app/video_reviews/schemas.py

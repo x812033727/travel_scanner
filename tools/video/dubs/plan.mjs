@@ -11,13 +11,13 @@ import { createHash } from "node:crypto";
 
 import { CHANNEL_ACCENT_EN } from "../core/accent.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
-import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, spokenText, textHash } from "../core/schema.mjs";
+import { eachLine, NARRATION_LOCALES, NARRATION_LOCALE, narrationLocale, spokenText, textHash } from "../core/schema.mjs";
 import { FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, framesFor, msToSamples } from "../core/timeline.mjs";
 import { planRequests } from "../tts/requests.mjs";
 
-export const DUB_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
+export const DUB_LOCALES = NARRATION_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 /** The locales one video can be dubbed in: every caption locale but the one it is narrated in. */
-export const dubLocales = (doc) => LOCALES.filter((locale) => locale !== narrationLocale(doc));
+export const dubLocales = (doc) => NARRATION_LOCALES.filter((locale) => locale !== narrationLocale(doc));
 // The locales whose dictionary aliases may be written in Chinese characters ("P 九十五"). Only
 // zh-TW since the owner dropped zh-CN from videos (2026-10-09); kept a set for the callers.
 export const CHINESE_LOCALES = new Set([NARRATION_LOCALE]);

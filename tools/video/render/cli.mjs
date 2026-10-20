@@ -35,7 +35,7 @@ import { captureRef, SIZE, THUMB_SIZE, THUMB_VARIANT_IDS, thumbnailVariants } fr
 import { openRenderer, RendererError } from "./browser.mjs";
 import { contactSheetHtml, SHEET_WIDTH } from "./contact.mjs";
 import { bundledCoverage, uncovered } from "./fonts.mjs";
-import { LOCALES } from "../core/schema.mjs";
+import { TARGET_LOCALES } from "../core/schema.mjs";
 import { localeThumbnailFile, renderPlan, renderProblems, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
 import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, subtitlePlan } from "./subtitles.mjs";
 import { BrowserMissing } from "../screencast/browser.mjs";
@@ -178,7 +178,7 @@ async function drawLocalized(renderer, localized, workdir) {
     writeFileSync(path.join(workdir, own.file), thumb.still);
     localized.drawn[own.locale] = { file: own.file, hash: own.hash };
   }
-  for (const locale of LOCALES) {
+  for (const locale of TARGET_LOCALES) {
     const file = path.join(workdir, localeThumbnailFile(locale));
     if (!localized.drawn[locale] && existsSync(file)) rmSync(file);
   }

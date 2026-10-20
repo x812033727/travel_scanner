@@ -16,13 +16,13 @@ import re
 from datetime import UTC, datetime
 from typing import Any, cast
 
-from app.video_reviews.schemas import IMPORTED_LOCALES, WORKER_LOCALES
+from app.video_reviews.schemas import IMPORTED_DUB_LOCALES, WORKER_DUB_LOCALES
 
 # The narration language of a package that names none: every video made before the dubs.
 DEFAULT_LANGUAGE = "zh-TW"
-# What a package may be narrated in: the languages the site makes videos in. The five an
-# imported video may add (schemas.IMPORTED_LOCALES) are never a narration.
-NARRATION_LANGUAGES: tuple[str, ...] = (DEFAULT_LANGUAGE, *WORKER_LOCALES)
+# What a package may be narrated in: zh-TW and the languages the worker dubs. es, pt, id, vi and
+# th (schemas.IMPORTED_DUB_LOCALES) are titles, captions or an imported dub, never a narration.
+NARRATION_LANGUAGES: tuple[str, ...] = (DEFAULT_LANGUAGE, *WORKER_DUB_LOCALES)
 # The tag YouTube gets for a site language whose short code would name another variety: the
 # owner's Spanish is Latin American and the Portuguese Brazilian (2026-10-18). Every other
 # language goes as the site writes it.
@@ -60,9 +60,10 @@ CAPTION_TAGS = {
     "en": "｜CC Subtitles",
     "ja": "｜字幕付き",
     "ko": "｜CC 자막",
-    # An imported video's other languages (2026-10-18): the word viewers search for subtitled
-    # videos in each, as the series' translated titles already end. The worker's table
-    # (tools/video/core/metadata.mjs) has only the four languages it makes.
+    # The five added for an imported series on 2026-10-18 and opened to every video on
+    # 2026-10-20: the word viewers search for subtitled videos in each, as the series'
+    # translated titles already end. The worker's table (tools/video/core/metadata.mjs) uses
+    # the same words.
     "es": "｜CC",
     "pt": "｜Legendado",
     "id": "｜Sub Indo",
@@ -79,10 +80,11 @@ _TAG_TAIL = re.compile(
     r"|ซับไทย|CC)\s*$",
     re.IGNORECASE,
 )
-# A title of an imported video's other languages whose last segment already says it is subtitled
-# together with something else ("Dub + Sub Indo", "Dublado + Legendado", the 1–5 compilation's):
-# it keeps its words, since replacing the segment would drop the dub. en, ja and ko titles are
-# tagged as they were before those languages came.
+# A title in one of the five whose last segment already says it is subtitled together with
+# something else ("Dub + Sub Indo", "Dublado + Legendado", the 1–5 compilation's): only an
+# imported video carries a dub in those languages (schemas.IMPORTED_DUB_LOCALES), and it keeps
+# its words, since replacing the segment would drop the dub. en, ja and ko titles are tagged as
+# they were before those languages came.
 _COMBINED_TAIL = re.compile(
     r"[|｜][^|｜]*\+\s*(?:CC(?:\s*(?:字幕|Subtitles|자막))?|字幕付き|Legendado|Sub\s*Indo|Vietsub"
     r"|ซับไทย)\s*$",
@@ -100,13 +102,13 @@ def captioned(title: str, language: str) -> str:
 
     A tag already there, in any language or spacing, is replaced by this language's. When the
     full tag would take the title past TITLE_MAX_CHARS the short one is used; when even that does
-    not fit, the full tag stays so the length check says by how much the title is over. An
-    imported language's title that already ends with a combined segment ("Dub + Sub Indo") is
-    left as it is.
+    not fit, the full tag stays so the length check says by how much the title is over. A title in
+    es, pt, id, vi or th that already ends with a combined segment ("Dub + Sub Indo") is left as
+    it is.
     """
     bare = title.rstrip()
     if (
-        language in IMPORTED_LOCALES
+        language in IMPORTED_DUB_LOCALES
         and _COMBINED_TAIL.search(bare)
         and len(bare) <= TITLE_MAX_CHARS
     ):

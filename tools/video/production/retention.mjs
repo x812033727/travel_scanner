@@ -10,7 +10,7 @@ export const LOCALIZATION_RETENTION_FILE = "localization-retention.json";
 const POLICY = "retain-until-explicit-owner-release";
 const HASH = /^[a-f0-9]{64}$/;
 const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,58}[a-z0-9])?$/;
-// The languages a cast mix may be planned in: core/schema.mjs LOCALES but zh-TW (schema.mjs
+// The languages a cast mix may be planned in: core/schema.mjs NARRATION_LOCALES but zh-TW (schema.mjs
 // imports this module, so the list is spelled out here).
 const LOCALES = ["en", "ja", "ko"];
 const object = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
