@@ -1,6 +1,6 @@
 # X08 Target Canada｜繁中逐句稿
 
-候選前製；`video.json` SHA-256：`5d5372ded68cdda9fca560a6ae93e4467931239771bbc2b6f5567ff89269d6f8`。片頭與片尾不計入實質正文；本版的實際 TTS 秒數與驗收見 [media-production.md](reviews/media-production.md)。
+候選前製；`video.json` SHA-256：`7a9010968d9fa96abb8bf9df73d79287951ea5a79f01a3596c435a7d9e3216aa`。片頭與片尾不計入實質正文；本版的實際 TTS 秒數與驗收見 [media-production.md](reviews/media-production.md)。
 
 ## 第 1 章｜法院收到申請，門店還開著（濃縮開場）
 

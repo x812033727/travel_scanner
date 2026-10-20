@@ -2,7 +2,7 @@
 
 由 `compose-video.mjs` 從 `drafts/narration.md` 生成，主張 ID 詳見 [source-matrix.md](source-matrix.md)。每次改稿必須重編、重新查核。
 
-- `video.json` SHA-256：`5d5372ded68cdda9fca560a6ae93e4467931239771bbc2b6f5567ff89269d6f8`
+- `video.json` SHA-256：`7a9010968d9fa96abb8bf9df73d79287951ea5a79f01a3596c435a7d9e3216aa`
 
 | 句 ID | 旁白 | 主張 |
 | --- | --- | --- |

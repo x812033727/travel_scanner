@@ -229,6 +229,9 @@ export function visualFor(text, chapterIndex, rowIndex) {
   if (chapterIndex === 1 && /開店前已有幾座配送中心/.test(text)) {
     return { prompt: "Overhead shot: One anonymous planner studies a blank route sheet beside a closed lease folder on an office table, distribution count hidden, cool daylight", camera: "Overhead shot, slow push in" };
   }
+  if (chapterIndex === 1 && /公司當時已有三座加拿大配送中心/.test(text)) {
+    return { prompt: "Medium close-up: One anonymous logistics planner places a third miniature distribution warehouse beside two separate miniature warehouse models on a plain tabletop; all three buildings have loading bays and remain fully visible, with no storefronts, shelves, geographic pins, labels, numerals or logos, calm industrial light", camera: "Medium close-up, slow pull back" };
+  }
   if (chapterIndex === 2 && rowIndex >= 100 && rowIndex < 102) {
     const directCostCues = [
       "one anonymous bookkeeper holds a sealed operating-cost folder beside a newly opened retail model, result hidden, soft lamplight",
@@ -281,7 +284,16 @@ export function visualFor(text, chapterIndex, rowIndex) {
     return { prompt: "Close-up: One anonymous analyst moves a few plain shop models toward an older group on a table while the results ledger stays closed, diffused daylight", camera: "Close-up, slow pull back" };
   }
   if (chapterIndex === 3 && /當年商品毛利三點六一億美元/.test(text)) {
-    return { prompt: "Medium shot: One anonymous bookkeeper sets a merchandise-margin folder beside a sealed general-expense folder, comparison hidden, warm desk light", camera: "Medium shot, slow pan left" };
+    return { prompt: "Medium shot: One anonymous bookkeeper slides a short stack of identical blank wooden tokens beside a plain merchandise carton into an open tray on the right of a desk; a taller stack beside simple shop-and-office expense props waits in an equally sized tray at the far left for a slow leftward reveal, no text, numerals or logos, warm desk light", camera: "Medium shot, slow pan left" };
+  }
+  if (chapterIndex === 3 && /這兩欄還沒算折舊與利息/.test(text)) {
+    return { prompt: "Wide shot: One anonymous accountant moves two plain blank expense tokens into a separate tray outside the already visible unequal merchandise-margin and general-expense trays; a worn store fixture and an unmarked financing envelope sit beside the separate tray as conceptual depreciation and interest cues, no figures, readable text or logos, cool lamp light", camera: "Wide shot, slow push in" };
+  }
+  if (chapterIndex === 3 && /前一年毛利比這項費用少七點一四億/.test(text)) {
+    return { prompt: "Medium close-up: One anonymous bookkeeper aligns two side-by-side pairs of equally sized open trays in left-to-right earlier-to-later order; in each pair a merchandise-margin stack beside a plain carton is shorter than a general-expense stack beside simple shop-and-office props, while the gap in the later pair is visibly smaller but remains, all tokens identical and blank, no exact counts, text, dates, numerals or logos, soft side light", camera: "Medium close-up, static" };
+  }
+  if (chapterIndex === 3 && /購物季沒有出現所需的躍升/.test(text)) {
+    return { prompt: "Medium shot: One anonymous manager studies a completely blank results sheet beside an empty prospective planning board in a quiet office after seasonal decorations have been packed away, clear midwinter light; no figures, charts, readable text, dates, numerals or logos", camera: "Medium shot, slow pan left" };
   }
   if (chapterIndex === 5 && /為什麼要減到幾乎是零/.test(text)) {
     return { prompt: "Close-up: One anonymous analyst examines two closed asset and liability folders without revealing their contents, quiet lamplight", camera: "Close-up, slow push in" };
