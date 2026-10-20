@@ -1,0 +1,1407 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s23",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，清楚解釋數字和時間；像向朋友說一件有史料的故事，問句自然上揚。",
+    "performance": "開場先停在 1765 年法案的十海里與三十海里。回頭按航海原理、父子海試、新法案條件、格林威治爭執、1773 年追加獎勵一路走，不演當事人的內心。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "hs002",
+      "payoff": "hs040",
+      "what": "試航報告究竟記下多少經度誤差"
+    },
+    {
+      "setup": "hs004",
+      "payoff": "hs051",
+      "what": "海試過關為何還要複製同類鐘"
+    },
+    {
+      "setup": "hs005",
+      "payoff": "hs061",
+      "what": "哈里森怎麼回應法案條件"
+    },
+    {
+      "setup": "hs013",
+      "payoff": "hs018",
+      "what": "哪一只鐘能受得住海上晃動"
+    },
+    {
+      "setup": "hs017",
+      "payoff": "hs018",
+      "what": "帶去哪一只鐘"
+    },
+    {
+      "setup": "hs019",
+      "payoff": "hs048",
+      "what": "前三件為何後來也要交付"
+    },
+    {
+      "setup": "hs025",
+      "payoff": "hs034",
+      "what": "第一次試航會否直接領最高獎"
+    },
+    {
+      "setup": "hs029",
+      "payoff": "hs033",
+      "what": "不同計算觀點下官方如何評定"
+    },
+    {
+      "setup": "hs036",
+      "payoff": "hs040",
+      "what": "第二趟航試的結果"
+    },
+    {
+      "setup": "hs043",
+      "payoff": "hs070",
+      "what": "同類時計能否再造出來"
+    },
+    {
+      "setup": "hs044",
+      "payoff": "hs048",
+      "what": "被拆開的獎金要怎麼領"
+    },
+    {
+      "setup": "hs052",
+      "payoff": "hs066",
+      "what": "測試數量及方式爭論如何發展"
+    },
+    {
+      "setup": "hs056",
+      "payoff": "hs057",
+      "what": "交付之後錶由誰保管"
+    },
+    {
+      "setup": "hs061",
+      "payoff": "hs063",
+      "what": "哈里森怎麼反駁測法"
+    },
+    {
+      "setup": "hs066",
+      "payoff": "hs074",
+      "what": "議會後來是否另授權獎勵"
+    },
+    {
+      "setup": "hs078",
+      "payoff": "hs063",
+      "what": "調過錶後怎麼解讀舊走速"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "哈里森的航海鐘差了幾海里，獎金怎麼算？｜奇聞檔案局",
+    "description": "1765 年，英國議會把哈里森的航海鐘試航結果寫進法案。這只錶在大西洋上究竟差了幾海里？法案為何還要求公開構造、做出同類時計？本集從 1714 年經度獎、兒子威廉的兩次西印度航試，說到 1765 年獎金條件、1767 年哈里森對測試的公開抗議與 1773 年的追加獎勵。\n\n來源主要是 1765／1773 年英國國會法案的固定版 OCR，以及哈里森 1767 年的小冊子。法案中的 geographical miles 約等於海里；十海里是議會記錄的航試結果，本集未重算原始航海日誌。哈里森對委員會與馬斯基林的批評是他的說法，不把它當獨立裁決。候選題的國王介入未在本集已讀原件中查到，故不入片。插圖是 AI 卡通示意，不重建精確 H4 機芯或可讀公文。\n\n資料截至 2026-10-19。",
+    "tags": [
+      "約翰哈里森",
+      "航海鐘",
+      "經度獎",
+      "H4",
+      "巴貝多",
+      "牙買加",
+      "經度",
+      "科學史",
+      "歷史名場面",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**差幾里？**",
+      "tag": "歷史名場面",
+      "sub": "哈里森的航海鐘",
+    "shot": "hs002"
+    }
+  },
+  "sources": [
+    {
+      "title": "英國國會《5 Geo III c.20》（1765）第39頁（固定 OCR）",
+      "url": "https://github.com/Anterotesis/statutes/blob/eb9f01613383da6020f6a10b8c600dc92bcb5361/Ruffhead-separate-pages/Ruffhead-10-separate-pages/Ruffhead-10-0089.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英國國會《5 Geo III c.20》（1765）第40頁（固定 OCR）",
+      "url": "https://github.com/Anterotesis/statutes/blob/eb9f01613383da6020f6a10b8c600dc92bcb5361/Ruffhead-separate-pages/Ruffhead-10-separate-pages/Ruffhead-10-0090.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英國國會《5 Geo III c.20》（1765）第41頁（固定 OCR）",
+      "url": "https://github.com/Anterotesis/statutes/blob/eb9f01613383da6020f6a10b8c600dc92bcb5361/Ruffhead-separate-pages/Ruffhead-10-separate-pages/Ruffhead-10-0091.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "John Harrison《Remarks on a Pamphlet Lately published by the Rev. Mr. Maskelyne》（1767）",
+      "url": "https://github.com/GITenberg/Remarks-on-a-Pamphlet-Lately-published-by-the-Rev.-Mr.-Maskelyne-Under-the-Authority-of-the-B__37321/blob/24326a3040d42d57765f01b864279f1705aad4d4/37321-0.txt",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英國國會《13 Geo III c.77》（1773）第882頁（固定 OCR）",
+      "url": "https://github.com/Anterotesis/statutes/blob/eb9f01613383da6020f6a10b8c600dc92bcb5361/Ruffhead-separate-pages/Ruffhead-11-separate-pages/Ruffhead-11-0882.txt",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "hs001",
+      "template": "shot",
+      "chapter": "1765 年：議會把試航寫進法案",
+      "data": {
+        "prompt": "Medium shot eighteenth century clerk placing a blank report beside a pocket marine chronometer on a wooden table, daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs001",
+          "text": "一七六五年，英國議會把哈里森航海鐘的試航結果寫進法案。",
+          "emotion": "放慢法案與試航"
+        }
+      ]
+    },
+    {
+      "id": "hs002",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, Full-frame wide storybook scene of an eighteenth-century navigator studying a plain unlettered sea chart spread flat on a table, small ship token near two simple compass rings, complete figure and hands visible, soft morning light edge to edge, no numerals",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs002",
+          "text": "最高獎金的門檻是經度誤差約三十海里；這只錶究竟差了多少？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs003",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a wood-panelled British parliamentary chamber in 1765, one Georgian clerk in a buttoned waistcoat and white cravat unrolling a blank parchment statute beside a small wooden coin chest",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs003",
+          "text": "可法案下一段，卻把審查推向另一道問題。",
+          "emotion": "壓低轉折"
+        }
+      ]
+    },
+    {
+      "id": "hs004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, Full-frame storybook illustration of a clockmaker examining an unfinished instrument case at a workbench, warm daylight fills the picture edge to edge, clean dark outlines",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs004",
+          "text": "一趟海上測試究竟回答了什麼，為何還要造出同樣的航海鐘？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly eighteenth-century clockmaker in a Georgian waistcoat reading a plain folded statute parchment at a bare wooden bench by a window, empty wall, no clocks, dials or writing",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs005",
+          "text": "哈里森為這只錶花了多年工夫；對法案的新條件，他會怎麼回應？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs006",
+      "template": "shot",
+      "chapter": "一七一四年：海上的時間難題變成懸賞",
+      "data": {
+        "prompt": "Close shot on the timber deck of an early-1700s British sailing ship, one adult seafarer with tied-back hair and a plain three-cornered hat scanning the open grey sea from a wooden rail",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs006",
+          "text": "法案裡的海試要回答的難題，是船往西走時，海面上沒有標經度的路牌。",
+          "emotion": "從海面自然開始"
+        }
+      ]
+    },
+    {
+      "id": "hs007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult British navigator in a tricorn hat studying a single brass sundial on a stone quay beneath the bright midday sun",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs007",
+          "text": "但太陽每天都會經過頭頂；不同的地方，正午不在同一刻。"
+        }
+      ]
+    },
+    {
+      "id": "hs008",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot simple illustrated globe with unlettered meridian lines, soft museum light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs008",
+          "text": "地球轉一圈是二十四小時，地圖把這一圈分成三百六十度。",
+          "emotion": "放慢二十四與三百六十"
+        }
+      ]
+    },
+    {
+      "id": "hs009",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot two blank clock faces pointing to slightly different positions, flat studio light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs009",
+          "text": "哈里森算得直白：兩地若差一度，正午就差約四分鐘。",
+          "emotion": "四分鐘咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "hs010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot navigator holding a simple sun sight instrument on a ship deck, bright morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs010",
+          "text": "只看眼前的太陽，船員知道這裡是什麼時候；出發港呢？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs011",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up still-life shot inside a plank-walled 1760s sailing-ship cabin, a small closed brass sea-watch case resting beside a folded unmarked parchment sea chart on a plain oak table beneath a square daylight window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs011",
+          "text": "哈里森要讓錶從出發港帶著當地時間上船，在海上也接著走。"
+        }
+      ]
+    },
+    {
+      "id": "hs012",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult eighteenth-century ship navigator holding a closed brass marine timekeeper case beside a sea chart on a wooden ship table",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs012",
+          "text": "把船上眼前的正午，和錶保留的港口時刻一比，就能算出往東或往西走了多少。",
+          "emotion": "慢慢交代兩地時間"
+        }
+      ]
+    },
+    {
+      "id": "hs013",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, full-frame storybook view from the rolling timber deck of a mid-1700s British sailing ship, empty wooden rails leaning against a large grey wave, rope rigging and canvas sail blowing sideways in misty daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs013",
+          "text": "問題是，船會搖、氣候會變；岸上會走的鐘，上船後還守得住嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs014",
+      "template": "big",
+      "data": {
+        "kicker": "1765 年法案追述",
+        "text": "**1714 年懸賞**",
+        "sub": "不同方法可接受海上試驗"
+      },
+      "lines": [
+        {
+          "id": "hs014",
+          "text": "一七一四年的法案因此懸賞，讓各種方法都來接受海上試驗。"
+        }
+      ]
+    },
+    {
+      "id": "hs015",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot Parliament clerk arranging three differently sized unlabeled coin piles, soft indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs015",
+          "text": "賞金分好幾級，找得越接近真實位置，金額就越高。"
+        }
+      ]
+    },
+    {
+      "id": "hs016",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a small stack of unmarked gold coins on a bare wooden table, coins only, no map, papers, writing or people",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs016",
+          "text": "開場提到的最高門檻，對應的獎金是兩萬英鎊。",
+          "emotion": "兩萬英鎊放慢"
+        }
+      ]
+    },
+    {
+      "id": "hs017",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a Georgian clockmaker workshop, one elderly craftsman with curled grey hair, a buttoned waistcoat and white cravat opening an oak drawer of cloth-wrapped clock parts beside a timber workbench",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs017",
+          "text": "那麼，哈里森拿去試的究竟是哪一只鐘？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs018",
+      "template": "shot",
+      "chapter": "第四件作品，交到兒子手裡",
+      "data": {
+        "prompt": "Close shot elderly clockmaker holding a fourth small timepiece beside three covered mechanisms, warm window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs018",
+          "text": "哈里森先後做了三件計時機器，後來又做出第四件：一只可以帶走的錶。",
+          "emotion": "第四件稍停半拍"
+        }
+      ]
+    },
+    {
+      "id": "hs019",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot clockmaker covering three older timekeeper cases on a workshop shelf, warm morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs019",
+          "text": "前三件機器仍留在他手上，後來還會被列進交付條件。"
+        }
+      ]
+    },
+    {
+      "id": "hs020",
+      "template": "big",
+      "data": {
+        "kicker": "哈里森的第四件",
+        "text": "**可帶走的錶**",
+        "sub": "目標是在搖晃的海上守時"
+      },
+      "lines": [
+        {
+          "id": "hs020",
+          "text": "它不是把牆上的擺鐘搬上船；海上的搖晃正是要克服的事。"
+        }
+      ]
+    },
+    {
+      "id": "hs021",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one older eighteenth-century clockmaker holding a folded blank petition at a plain wooden committee table",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs021",
+          "text": "為了這只錶，他和經度委員會往返多年，終於申請正式航試。"
+        }
+      ]
+    },
+    {
+      "id": "hs022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of adult William Harrison in an eighteenth-century travel coat carrying a closed wooden instrument chest along a stone quay toward a wooden sailing ship",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs022",
+          "text": "這次上船的人是兒子威廉；他能把錶平安帶回來嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs023",
+      "template": "big",
+      "data": {
+        "kicker": "哈里森記述",
+        "text": "**5 個月**",
+        "sub": "威廉在樸茨茅斯等命令"
+      },
+      "lines": [
+        {
+          "id": "hs023",
+          "text": "威廉先被派到樸茨茅斯，等正式命令，等了足足五個月。",
+          "emotion": "五個月放慢"
+        }
+      ]
+    },
+    {
+      "id": "hs024",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one older eighteenth-century clockmaker holding a folded blank petition at a plain wooden committee table",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs024",
+          "text": "父親人在岸上，錶卻已經交到即將出海的船邊。"
+        }
+      ]
+    },
+    {
+      "id": "hs025",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a small closed wooden marine timekeeper box secured with plain rope on an old wooden sailing ship deck, no people, letters or numbers",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs025",
+          "text": "若第一趟試航就夠準，會直接拿到最高獎金嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs026",
+      "template": "shot",
+      "chapter": "牙買加：先拿到一筆較小的錢",
+      "data": {
+        "prompt": "Medium shot of an adult eighteenth-century sailor on the deck of a square-rigged wooden sailing ship looking across open ocean",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs026",
+          "text": "威廉帶著錶登上「德普特福德」號，從英國駛向牙買加。",
+          "emotion": "用出航的節奏"
+        }
+      ]
+    },
+    {
+      "id": "hs027",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of another eighteenth-century square-rigged wooden sailing vessel crossing open sea under afternoon sky, no people, rowboats or modern craft",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs027",
+          "text": "回程，他改搭另一艘船，把那只錶帶回來。"
+        }
+      ]
+    },
+    {
+      "id": "hs028",
+      "template": "big",
+      "data": {
+        "kicker": "哈里森記述",
+        "text": "**兩地觀測**",
+        "sub": "樸茨茅斯與牙買加的資料待核"
+      },
+      "lines": [
+        {
+          "id": "hs028",
+          "text": "接著比兩地的天文觀測與鐘上時間；兩邊會算出同一結果嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs029",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult eighteenth-century clockmaker comparing two folded observation papers on a wooden desk beside brass dividers",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs029",
+          "text": "他手裡也有兩地的觀測資料，自己算出的看法不同。"
+        }
+      ]
+    },
+    {
+      "id": "hs030",
+      "template": "big",
+      "data": {
+        "kicker": "哈里森記述",
+        "text": "**核算遭拒**",
+        "sub": "他想自派人員檢查計算"
+      },
+      "lines": [
+        {
+          "id": "hs030",
+          "text": "哈里森想派自己信任的人核對計算；他在回憶裡說，委員會沒有答應。",
+          "emotion": "強調是哈里森回憶"
+        }
+      ]
+    },
+    {
+      "id": "hs031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Georgian records room, one adult clerk with tied-back hair, white cravat and cuffed coat comparing two stitched blank parchment folios tied with ribbon on an oak desk",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs031",
+          "text": "只憑哈里森單方面的敘述，還不能判定誰錯；議會後來怎麼記？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs032",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a mid-1700s British archive room, one adult clerk in a buttoned frock coat lifting plain folded calculation folios from a small wooden document chest under daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs032",
+          "text": "哈里森說，直到多年後他才看到委員會當時用的計算。"
+        }
+      ]
+    },
+    {
+      "id": "hs033",
+      "template": "big",
+      "data": {
+        "kicker": "1765 年法案",
+        "text": "**相當用處**",
+        "sub": "對牙買加航試的判定"
+      },
+      "lines": [
+        {
+          "id": "hs033",
+          "text": "留在正式法案裡的判定更窄：這只錶「有相當用處」。",
+          "emotion": "相當用處加輕引號語氣"
+        }
+      ]
+    },
+    {
+      "id": "hs034",
+      "template": "big",
+      "data": {
+        "kicker": "1765 年法案",
+        "text": "**£2,500**",
+        "sub": "先付，列入後續可得獎金"
+      },
+      "lines": [
+        {
+          "id": "hs034",
+          "text": "委員會先給哈里森兩千五百英鎊，也說這筆會算進後來的獎金。",
+          "emotion": "兩千五百英鎊放慢"
+        }
+      ]
+    },
+    {
+      "id": "hs035",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot closed strongbox beside a wrapped marine chronometer, cool daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs035",
+          "text": "但剛才說的最高獎，這時還沒有被正式判給他。"
+        }
+      ]
+    },
+    {
+      "id": "hs036",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an eighteenth-century square-rigged wooden ship sailing toward a low Caribbean island coast with palm trees, no map, modern ship or writing",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs036",
+          "text": "第一次測試留下了爭議；下一趟再去西印度，結果能不能更明白？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs037",
+      "template": "shot",
+      "chapter": "巴貝多：低於十海里的法案判定",
+      "data": {
+        "prompt": "Close shot of one small closed wooden marine timekeeper case strapped to a shelf inside a wooden sailing ship cabin, no people, digital devices or lettering",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs037",
+          "text": "哈里森再請求一次海試，威廉又帶著同一只錶出發。"
+        }
+      ]
+    },
+    {
+      "id": "hs038",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot sailing ship nearing a Caribbean harbor with low buildings, sunlit haze",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs038",
+          "text": "這次目的地是巴貝多的布里奇敦，從樸茨茅斯一路橫渡大西洋。"
+        }
+      ]
+    },
+    {
+      "id": "hs039",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one mid-1700s British parliamentary clerk in a Georgian waistcoat placing a blank folded statute on a plain oak desk in a wood-panelled chamber",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs039",
+          "text": "這次海上測試的結果送進議會，寫進一部新的法律。",
+          "emotion": "回到法案"
+        }
+      ]
+    },
+    {
+      "id": "hs040",
+      "template": "big",
+      "data": {
+        "kicker": "1765 年法案",
+        "text": "**≤10 地理英里**",
+        "sub": "巴貝多航試的經度偏差"
+      },
+      "lines": [
+        {
+          "id": "hs040",
+          "text": "船用這只錶定經度，偏差沒有超過十個地理英里，約可當成十海里。",
+          "emotion": "十個地理英里咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "hs041",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult eighteenth-century clerk placing two blue ribbon strips of clearly different lengths on a bare wooden desk",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs041",
+          "text": "這比最高獎門檻的三十還小；然而法案還沒把整筆錢付清。",
+          "emotion": "點出開場回扣"
+        }
+      ]
+    },
+    {
+      "id": "hs042",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one mid-1700s British parliamentary clerk in a Georgian waistcoat placing a blank folded statute on a plain oak desk in a wood-panelled chamber",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs042",
+          "text": "哈里森以為海上測試已回答關鍵問題；國會卻又設另一道門檻。"
+        }
+      ]
+    },
+    {
+      "id": "hs043",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a Georgian clockmaker workshop, one elderly craftsman with grey curled hair and white cravat comparing a small brass marine watch movement with loose brass cogwheels on an oak workbench",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs043",
+          "text": "單獨一只錶成功，後來還能照著做出其他航海鐘嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs044",
+      "template": "big",
+      "data": {
+        "kicker": "1765 年法案",
+        "text": "**公開原理**",
+        "sub": "先交代航海錶的構造"
+      },
+      "lines": [
+        {
+          "id": "hs044",
+          "text": "法案先要求的，是交出設計。"
+        }
+      ]
+    },
+    {
+      "id": "hs045",
+      "template": "big",
+      "chapter": "一七六五年：獎金被分成兩段",
+      "data": {
+        "kicker": "1765 年法案",
+        "text": "**分成兩半**",
+        "sub": "原定最高獎金另設支付條件"
+      },
+      "lines": [
+        {
+          "id": "hs045",
+          "text": "新法案把原本的最高獎一分為二；第一半要先達什麼條件？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one elderly British clockmaker in a mid-1700s cuffed frock coat and white cravat lifting the lid of one small oak instrument case on a bare timber workbench, plain plaster wall",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs046",
+          "text": "議會說，只有方法被完整解釋、同類錶能做出來，它才可能普遍使用。"
+        }
+      ]
+    },
+    {
+      "id": "hs047",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult eighteenth-century parliamentary clerk presenting a rolled statute parchment beside a small sandglass on a wooden table",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs047",
+          "text": "這部法律還限他在六個月內，把設計原理交代清楚。",
+          "emotion": "六個月期限稍停"
+        }
+      ]
+    },
+    {
+      "id": "hs048",
+      "template": "big",
+      "data": {
+        "kicker": "1765 年法案",
+        "text": "**4 件時計**",
+        "sub": "前三件機器與這只航海錶的產權，須轉交委員會"
+      },
+      "lines": [
+        {
+          "id": "hs048",
+          "text": "前半筆要先說清構造，還要把前三件機器和這只航海錶的產權轉交委員會，供公眾使用。",
+          "emotion": "拆開原理與交付"
+        }
+      ]
+    },
+    {
+      "id": "hs049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot treasurer moving a small coin pile from one tray into another, soft light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs049",
+          "text": "牙買加先給的那筆，會從前半獎金扣掉；剩下那半又該怎麼拿？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs050",
+      "template": "big",
+      "data": {
+        "kicker": "1765 年法案",
+        "text": "**同類時計**",
+        "sub": "後半筆須由其他時計達標"
+      },
+      "lines": [
+        {
+          "id": "hs050",
+          "text": "法案沒有指名接手造錶的工匠，但後半筆必須用同類時計證明。"
+        }
+      ]
+    },
+    {
+      "id": "hs051",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult eighteenth-century clockmaker comparing a closed brass sea watch case and an exposed unfinished brass mechanism on a wooden bench",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs051",
+          "text": "後半筆要等別的同類時計做成，再測到同一個最高門檻內。",
+          "emotion": "半度與三十海里分開讀"
+        }
+      ]
+    },
+    {
+      "id": "hs052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one elderly British clockmaker in a mid-1700s cuffed frock coat and white cravat lifting the lid of one small oak instrument case on a bare timber workbench, plain plaster wall",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs052",
+          "text": "法案沒直接寫要做幾只、怎麼測完；哈里森會怎麼抗議？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs053",
+      "template": "big",
+      "data": {
+        "kicker": "哈里森的說法",
+        "text": "**航試之後**",
+        "sub": "領獎條件又變了"
+      },
+      "lines": [
+        {
+          "id": "hs053",
+          "text": "哈里森說，這等於在走完航程後，又換了一套領獎辦法。",
+          "emotion": "歸屬給哈里森"
+        }
+      ]
+    },
+    {
+      "id": "hs054",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one elderly Georgian clockmaker showing small brass gears inside an opened marine watch case to one adult observer in a mid-1700s coat at an oak table",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs054",
+          "text": "哈里森說，他在委員會指派的人面前拆開錶，當場講解構造。",
+          "emotion": "拆錶動作說清楚"
+        }
+      ]
+    },
+    {
+      "id": "hs055",
+      "template": "big",
+      "data": {
+        "kicker": "哈里森記述",
+        "text": "**威廉帶錶到場**",
+        "sub": "父親接到交錶命令"
+      },
+      "lines": [
+        {
+          "id": "hs055",
+          "text": "威廉帶著錶完成交付，這只錶先離開父親手邊。"
+        }
+      ]
+    },
+    {
+      "id": "hs056",
+      "template": "big",
+      "data": {
+        "kicker": "哈里森記述",
+        "text": "**前半筆到手**",
+        "sub": "他在 1767 年小冊子中回顧"
+      },
+      "lines": [
+        {
+          "id": "hs056",
+          "text": "哈里森說，前半筆獎金到手了；交出去的錶接著歸誰保管？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs057",
+      "template": "shot",
+      "chapter": "格林威治：同一只錶，又有另一種測法",
+      "data": {
+        "prompt": "Close shot of a small closed wooden marine watch case on a shelf inside an eighteenth-century Admiralty storage cabinet, door ajar, no people, writing or modern devices",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs057",
+          "text": "哈里森說，錶先由海軍部保管，後來又送往格林威治皇家天文台。",
+          "emotion": "強調哈里森說"
+        }
+      ]
+    },
+    {
+      "id": "hs058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one Georgian-era British observer in a Georgian coat setting a closed wooden timekeeper case on an oak table inside a timber observatory room with tall mullioned windows",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs058",
+          "text": "在那裡，這只錶開始接受一場陸地上的測試。"
+        }
+      ]
+    },
+    {
+      "id": "hs059",
+      "template": "big",
+      "data": {
+        "kicker": "1766 年",
+        "text": "**馬斯基林**",
+        "sub": "格林威治的陸地測試"
+      },
+      "lines": [
+        {
+          "id": "hs059",
+          "text": "一七六六年，皇家天文學家馬斯基林接手，連日記錄它走快還是走慢。",
+          "emotion": "馬斯基林名字放慢"
+        }
+      ]
+    },
+    {
+      "id": "hs060",
+      "template": "big",
+      "data": {
+        "kicker": "哈里森記述",
+        "text": "**不滿測試結論**",
+        "sub": "馬斯基林的看法引來反駁"
+      },
+      "lines": [
+        {
+          "id": "hs060",
+          "text": "他公布的看法讓哈里森不滿；哈里森會怎麼回應？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs061",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one elderly Georgian clockmaker laying a small blank stitched pamphlet beside a closed brass timekeeper case on an oak workbench, daylight from a leaded window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs061",
+          "text": "隔年，哈里森印了小冊子，集中反駁測法與計算。",
+          "emotion": "語氣稍收"
+        }
+      ]
+    },
+    {
+      "id": "hs062",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot surveyor drawing a steady diagonal line on blank graph paper, soft lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs062",
+          "text": "這正是哈里森反駁測試的方法：先算走速，再校正時間。",
+          "emotion": "重點落在算走速"
+        }
+      ]
+    },
+    {
+      "id": "hs078",
+      "template": "big",
+      "data": {
+        "kicker": "哈里森 1767 年說法",
+        "text": "**走速已調整**",
+        "sub": "舊走速不能直接沿用"
+      },
+      "lines": [
+        {
+          "id": "hs078",
+          "text": "即使錶每天固定走快，也能扣回已知偏差；但調過錶後，還能沿用舊走速嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs063",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a sunlit oak workbench in a mid-1700s clockmaker shop, one elderly craftsman in a waistcoat and white cravat adjusting a small screw on a brass watch balance wheel",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs063",
+          "text": "哈里森說，自己交錶前特地改過走速，不能拿航試時的速度來判它。",
+          "emotion": "歸屬給哈里森"
+        }
+      ]
+    },
+    {
+      "id": "hs064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one grey-haired eighteenth-century adult man comparing two small plain pamphlets at a wooden desk",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs064",
+          "text": "他寫下的是自己的反駁，不能只靠這本小冊子判定對方的測試有錯。",
+          "emotion": "平實說明證據界線"
+        }
+      ]
+    },
+    {
+      "id": "hs065",
+      "template": "big",
+      "data": {
+        "kicker": "哈里森記述",
+        "text": "**借錶遭拒**",
+        "sub": "他想讓工匠依原錶仿製"
+      },
+      "lines": [
+        {
+          "id": "hs065",
+          "text": "他還請委員會把錶借回，讓其他工匠照著做；他說請求遭到拒絕。"
+        }
+      ]
+    },
+    {
+      "id": "hs066",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one eighteenth-century British clerk in a Georgian waistcoat laying a small blank pamphlet beside a sealed wooden instrument chest on an oak desk",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs066",
+          "text": "數量和測法之爭寫進小冊子；議會後來還會再給他一筆獎勵嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs067",
+      "template": "shot",
+      "chapter": "一七七三年：議會授權追加獎勵",
+      "data": {
+        "prompt": "Medium shot of one adult Georgian parliamentary clerk in a white cravat seated alone at an oak table, holding two distinct folded blank reports above a simple unlettered maritime sketch in a British timber chamber",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs067",
+          "text": "多年後，議會又把哈里森的名字寫進另一部法案。",
+          "emotion": "轉入晚年"
+        }
+      ]
+    },
+    {
+      "id": "hs068",
+      "template": "big",
+      "data": {
+        "kicker": "1773 年法案寫道",
+        "text": "**48 年**",
+        "sub": "哈里森投入航海計時的時間"
+      },
+      "lines": [
+        {
+          "id": "hs068",
+          "text": "法案說，他為航海計時工作了四十八年。",
+          "emotion": "四十八年放慢"
+        }
+      ]
+    },
+    {
+      "id": "hs069",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot clockmaker pointing at an unlettered mechanism sketch on a workshop bench, warm daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs069",
+          "text": "議會寫道，他已公開構造原理；還記得，其他航海鐘造得出來嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one grey-haired Georgian official in a dark frock coat examining two closed rectangular wooden instrument cases on a bare table",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs070",
+          "text": "法案回答有：同類時計已經做成，而且走得相當準。",
+          "emotion": "同類時計咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "hs079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult Georgian parliamentary clerk in a white cravat seated alone at an oak table, holding two distinct folded blank reports above a simple unlettered maritime sketch in a British timber chamber",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs079",
+          "text": "但這部法律沒列出後來的鐘各自在海上差多少，也沒寫由誰做成。"
+        }
+      ]
+    },
+    {
+      "id": "hs071",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one eighteenth-century British parliamentary clerk in a Georgian waistcoat holding a blank folded bill in a wood-panelled chamber with oak benches",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs071",
+          "text": "議會相信這方法能幫助航運與貿易，於是授權一筆新獎勵。"
+        }
+      ]
+    },
+    {
+      "id": "hs072",
+      "template": "big",
+      "data": {
+        "kicker": "1773 年法案",
+        "text": "**£8,750**",
+        "sub": "授權追加獎勵的最高金額"
+      },
+      "lines": [
+        {
+          "id": "hs072",
+          "text": "授權金額最多八千七百五十英鎊；這算原獎的後半嗎？",
+          "emotion": "問句上揚，停半拍等答案"
+        }
+      ]
+    },
+    {
+      "id": "hs073",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot, Full-frame top-down storybook still life of two complete folded blank parchment documents layered on a wooden desk, the later document resting partly atop the earlier one, no people, hands, letters or numbers, clear side light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs073",
+          "text": "條文稱這是「進一步的獎勵」，加在先前所得之外。"
+        }
+      ]
+    },
+    {
+      "id": "hs074",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot historian arranging two distinct unlettered statute pages on a table, neutral light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hs074",
+          "text": "但條文沒有列出原獎兩半各實付多少；不能從這筆新獎倒推舊帳。"
+        }
+      ]
+    },
+    {
+      "id": "hs075",
+      "template": "big",
+      "data": {
+        "kicker": "1773 年法案指定",
+        "text": "**海軍財務官**",
+        "sub": "負責支付法案授權的追加獎勵"
+      },
+      "lines": [
+        {
+          "id": "hs075",
+          "text": "最後，法案把支付這筆追加獎勵的責任交給海軍財務官。",
+          "emotion": "收在財務官的付款責任"
+        }
+      ]
+    },
+    {
+      "id": "hs076",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "海試達標，公開做法與複製另有條件"
+        ],
+        "prompt": ""
+      },
+      "lines": [
+        {
+          "id": "hs076",
+          "text": "如果由你來評獎，會先看一趟海試，還是等同類時計也做出來？"
+        },
+        {
+          "id": "hs077",
+          "text": "訂閱奇聞檔案局，一起把歷史的問號打開。"
+        }
+      ]
+    }
+  ]
+}
