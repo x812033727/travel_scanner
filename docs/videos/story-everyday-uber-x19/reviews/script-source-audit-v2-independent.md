@@ -1,0 +1,13 @@
+# X19 Uber v2｜獨立 SEC 原件與分母查核
+
+**完整原件事實 PASS；敘事盲評與成片另驗。** 本票綁 `video.json` SHA-256 `3dca7d0e7701b763673c32e12fa6a371283cf2f829ebde188e5b0839e4fd12cc`、`shorts.json` `2f67f9983a8bb393d5fc71e735bc586f5f9821f864dcf2923a2b30ff98e038a3`、`source-matrix.md` `6c6a83dc33f50bf399e6eb3a4f95a69fbb2d49eb270f9f8eb32cabd6e69a1537`、`drafts/narration.md` `f9bc530d0ea55ac5052ef99162ed5842e2be3468b1d0a25fe177ce8e955c6a46`、`visual-plan.md` `37472eb765801c1d9e410aae3f988e7391fa79e6984daf8623ce5a7ca11c55f0`；v1 的來源 HOLD 不能轉移到這組新檔案。
+
+2026-10-20 審稿者從 SEC 發行人網址獨立重取 S1–S8、S3a、S5a 十份原件；全為 HTTP 200、各低於 3 MiB，原始回應 bytes／SHA-256 與來源矩陣逐份一致：S1 548,307 / `62ae39afd36f2ae05259806367d6f2501791dba93239d674ae82ff8f03611a9c`；S2 829,739 / `56a2a1a93d26227b18c8cd66f3beab747322f745806821ea493c1a30b8427a7a`；S3 53,755 / `09dce79d280c8487d15f21143e7ef6831718dd633b159bdbe8a59d3e937a5c44`；S3a 37,477 / `6a039db45bf31d666d2223c1a5d31324110639b9f89413ffcb788463321fdc74`；S4 512,044 / `fe864c5d4a2776e3346ca9b17334e03b41f35ebcb4bd3f382fe5f555640d933e`；S5 8,683 / `11f3911af6a22458d48c478cb704d53369c524d454a557f7308e232111788ab4`；S5a 33,735 / `4b58ef2b356ae9c39f2fd2cac21a39a6c02ead8a0b1e5e378a4753dd236f2170`；S6 499,870 / `79a8914e82146c35228fa643b152219ff263b7e942e7725e9513c5ecd039d975`；S7 520,384 / `afba881d480d8d8ab8a3974c1887cf87d471f5cfc489f24c1dfa2ba5f20b3f06`；S8 583,069 / `0deb0103252070de3283d03b1f76659794d9f6de824984bdce70c76467321579`。必要引文均在各頁解析文字前約 16k 字內。
+
+v1 三處來源 HOLD 已在 v2 修正：`x190101` 只把接單功能調整稱為二〇二〇年春／Q1，`x190102` 才另述**四月**美加近四成當月活躍載客司機也接 Eats；`x190215` 把八個虧損 Eats 市場退出說為**五月初公告**，不塞進 Q1；`x190309` 和 `x190625` 明說司機改派貢獻未拆算，沒有把同時發生的跨接直接量化成六月反超原因。S1 也支持在一些市場免新餐廳啟用費、加快加入流程（`x190216–217`）。
+
+分類與日序保持可核：S2 的 2020 Q2 Mobility／Delivery Gross Bookings US$3.046bn／US$6.961bn 是**平台訂單額**，同季 Uber 公司收入 US$2.241bn、Delivery 調整後 EBITDA −US$232m、Mobility +US$50m，不能混成單量或獲利（`x190301–320`、Short 1）。S3/S3a 的 7 月 6 日 Postmates **簽約**及 S5/S5a 的 12 月 1 日**完成**都晚於 Q2；S4 的 Q3 Delivery US$8.550bn 仍高於 Mobility US$5.905bn 也早於完成交割，Short 2 已口播兩個分母及時序。S4 的 iOS Uber App 把 Eats 入口擺到叫車旁，是當時產品進度，不能算成該季反超的獨立貢獻。S5 說兩個消費者 App 當時仍分開，後台商家與配送網開始整合，與單一 Uber App 的入口調整不應畫成同一個系統已合併。
+
+S6 的 2021 Q2 活躍商家逾 75 萬、美國活躍餐廳逾六成提供自取，以及 Delivery 調整後 EBITDA −US$161m 支持後段所述的服務與成本界線。S7 的 2021 Q4 Mobility／Delivery 訂單額同比 +67%／+34% 是**報告幣別**，Delivery +US$25m 為單季部門 adjusted EBITDA；S8 的 2022 Q4 同比分別 +31%／+6%，兩邊都長大但 Mobility 訂單額再高於 Delivery。S8 的 1.31 億月活躍消費者及 540 萬月活躍司機／配送員是整個平台、不能證明任何一條路單獨造成超越。v2 沒把 2020 Q2 之後的 Postmates、產品調整或 2022 年人數誤作 2020 Q2 反超的單一因果。
+
+上述是**事實 PASS**；第六章的總平台人數是否為必要敘事、重複六月反超有無新資訊，應由兩位第一讀者獨立判斷。正式 TTS 時長、工人來源攝取、正式 5 秒／21 秒動畫、插畫、配樂、CC、MP4、兩支直式手機 QA 和真實平台連結均不在此票的驗收範圍；任何 JSON 修訂都需要重新綁 SHA。
