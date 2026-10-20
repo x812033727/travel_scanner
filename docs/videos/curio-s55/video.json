@@ -1,0 +1,2271 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s55",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    15
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。像朋友講有出處的歷史故事，不為人物編逐字對話。",
+    "performance": "熱氣球與氫氣球、繫留與自由飛行、目擊與耳聞明確分開；日期校勘用平實口吻。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sources": [
+    {
+      "title": "富蘭克林致 Joseph Banks 五封信，1907 年編校固定版",
+      "url": "https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Fulgence Marion 1870 年後出歷史整理固定版",
+      "url": "https://github.com/GITenberg/Wonderful-Balloon-Ascents--Or-The-Conquest-of-the-Skies--13-A-History-of-Balloons-and-Balloon-V__899/blob/c3f6d020de7d9a0ad864aabcf89138476680574e/899-0.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "大英百科第九版 Aeronautics 後出年表固定版",
+      "url": "https://github.com/TU-plogan/kp-editions/blob/504c6cb32cf7c33a6c40f4de191a429cf1619ccd/eb09/TXT/a1/kp-eb0901-018501-0202m.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "s55002",
+      "payoff": "s55112",
+      "what": "樹梢事故的階段"
+    },
+    {
+      "setup": "s55007",
+      "payoff": "s55016",
+      "what": "八月球為何不算載人"
+    },
+    {
+      "setup": "s55008",
+      "payoff": "s55145",
+      "what": "信的日期錯位"
+    },
+    {
+      "setup": "s55043",
+      "payoff": "s55044",
+      "what": "凡爾賽先上去的是誰"
+    },
+    {
+      "setup": "s55063",
+      "payoff": "s55110",
+      "what": "繩索的安全作用"
+    },
+    {
+      "setup": "s55093",
+      "payoff": "s55111",
+      "what": "脫繩前的意外"
+    },
+    {
+      "setup": "s55114",
+      "payoff": "s55125",
+      "what": "離地後的乘員操控"
+    },
+    {
+      "setup": "s55138",
+      "payoff": "s55143",
+      "what": "自由飛行的日期"
+    },
+    {
+      "setup": "s55124",
+      "payoff": "s55125",
+      "what": "下方不宜降落時如何再升起"
+    },
+    {
+      "setup": "s55018",
+      "payoff": "s55032",
+      "what": "八月球皮能否撐到落地"
+    },
+    {
+      "setup": "s55073",
+      "payoff": "s55074",
+      "what": "皮拉特離開載台後氣球是否停住"
+    },
+    {
+      "setup": "s55005",
+      "payoff": "s55110",
+      "what": "樹梢事故時地面能否拉回乘員"
+    },
+    {
+      "setup": "s55005",
+      "payoff": "s55125",
+      "what": "脫繩之後乘員如何自行控制升降"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s55001",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55001",
+          "text": "富蘭克林站在巴黎近郊的花園，看著一顆有人在上面的熱氣球。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in La Muette garden during the tethered trial, an elderly observer watches a tall hot air fabric envelope, soft daylit sky",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "chapter": "繩還沒解，球先碰上樹"
+    },
+    {
+      "id": "s55002",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55002",
+          "text": "籐編的載台突然擦到樹梢，整顆球往旁邊歪去。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in La Muette garden during the tethered trial, a wicker gallery caught in tree branches, two taut ropes visibly leading down to handlers on the ground, soft daylit sky",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55003",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55003",
+          "text": "球底下還有火；他擔心，兩個人會不會被甩出去。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view in La Muette garden during the tethered trial, two riders grip a tilted wicker railing beside a contained fire grate, two intact tethers visibly reach the ground crew, soft daylit sky",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55004",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55004",
+          "text": "火會不會碰到內壁，把整顆球點著？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in La Muette garden before release, a contained fire grate glows below the leaning fabric envelope while two riders grip the wicker gallery, intact ropes remain below, soft daylit sky",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55005",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55005",
+          "text": "地面的人還拉得住嗎？真要放手，兩個人又靠什麼回來？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in La Muette garden during the tethered trial, two tether handlers look up at the leaning flying craft, soft daylit sky",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55006",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55006",
+          "text": "更奇怪的是，巴黎早已有另一顆氣球升空。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        },
+        {
+          "id": "s55007",
+          "text": "那顆球為什麼不算第一次載人飛行？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at the Champ de Mars launch in August, an empty sealed round gas sphere climbs away from the Champ de Mars field, late-day light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55008",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55008",
+          "text": "還有，這封見證信的日期，本身竟然有一個錯位。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view on a neutral table with a plain letter and two blank calendar leaves, a plain folded letter and two blank calendar leaves sit apart, no readable writing or dated numbers, even indoor light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55009",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55009",
+          "text": "幾個月前，富蘭克林在巴黎戰神廣場，等著看另一顆球升空。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view at the Champ de Mars launch in August, an empty sealed sphere vanishes into clouds above the Champ de Mars field, late-day light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55010",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55010",
+          "text": "那是一七八三年八月二十七日；查爾斯的球正等著放飛。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at Champ de Mars, an elderly observer reaches a broad field crowded with onlookers, mild natural light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "chapter": "雲裡消失的是空球"
+    },
+    {
+      "id": "s55011",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55011",
+          "text": "富蘭克林看著工作人員，用繩暫時把球壓在地面。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at Champ de Mars, a round sealed flying craft strains upward against one holding rope, mild natural light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55012",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55012",
+          "text": "球皮抹上油膠、封住接縫；這樣就不會漏氣嗎？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view at Champ de Mars, craftspeople seal the seams of a silk balloon envelope, mild natural light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55013",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55013",
+          "text": "富蘭克林寫下：球身重二十五磅，還能另外拉起三十九磅。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view at Champ de Mars, a sealed sphere tugs upward against a small weight on a rope, mild natural light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55014",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55014",
+          "text": "這能證明球向上拉，還不能證明乘客落地會平安。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at Champ de Mars, an elderly observer weighs a small model sphere against a plain counterweight, soft daylight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55015",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55015",
+          "text": "它不是燒稻草的熱氣球，球囊裝的是當時所稱的可燃空氣。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at Champ de Mars, workers steady a sealed fabric sphere beside simple gas vessels, mild natural light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55016",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55016",
+          "text": "今天可以稱作氫氣；這顆球裡沒有乘客。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at Champ de Mars, an empty sealed balloon lifts away without any basket or rider, mild natural light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55018",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55018",
+          "text": "富蘭克林記下，球身只有約十二英尺寬；球皮能撐到落地嗎？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at Champ de Mars, a small round fabric envelope is measured against a few standing adults, mild natural light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55021",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55021",
+          "text": "球一早就到廣場，卻等到下午五點；它還能順利升空嗎？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at Champ de Mars, an early fabric envelope waits tethered while the sun crosses the field, morning daylight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55022",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55022",
+          "text": "等待時，工作人員還得補回流失的可燃空氣。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at Champ de Mars, ground crew tend a sealed flying craft before launch, mild natural light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55025",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55025",
+          "text": "到了傍晚，兩聲砲響提醒廣場和河對岸的觀眾：固定的繩要鬆開了。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at Champ de Mars, two distant cannon release puffs of smoke by a crowded field, low late-day sun",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55026",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55026",
+          "text": "球往上升；下過雨的表面，在光裡微微發亮。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view at Champ de Mars, a damp sealed sphere reflects a soft sliver of sunlight, low late-day sun",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55027",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55027",
+          "text": "富蘭克林看它像橘子般沒入雲中；那它會落在哪？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view at Champ de Mars, an elderly observer follows a tiny sphere entering low clouds, low late-day sun",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55028",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55028",
+          "text": "球上繫了防雨紙條，記著出發時間與地點，請拾獲者回報球的狀況。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at Champ de Mars, a plain protected note hangs from an empty sealed balloon, low late-day sun",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55029",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55029",
+          "text": "他親眼看到了起飛，卻沒有跟著球飛到落點。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at Champ de Mars, an observer stands still while a fabric envelope vanishes far above, low late-day sun",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55030",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55030",
+          "text": "隔天才有消息傳回：它落在巴黎郊外的戈內斯。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a quiet private study after the launch, a messenger approaches an elderly observer with a blank folded note, gentle window light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55031",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55031",
+          "text": "消息說它六點多才落地，從鬆繩算起已飄了一個多小時。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a separate reported Gonesse scene, a damaged empty balloon rests far outside Paris after evening descent, no observer from the launch site present, muted light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55032",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55032",
+          "text": "傳回的消息說球身破裂；信裡記下一種推測：內部氣體膨脹。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view in a quiet private study after the launch, an elderly observer studies a blank messenger note, with the torn empty sphere confined to a separate faint report inset, gentle window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55033",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55033",
+          "text": "這不是已查明的原因；落地時富蘭克林本人不在那裡。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view in a quiet private study after the launch, an elderly observer considers a blank report, the distant reported landing seen only in a separate inset, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55034",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55034",
+          "text": "同一封信緊接著留下更冒險的問題：誰要親自上球？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a private study after the August launch, an elderly observer reads a blank letter beside a separate symbolic balloon proposal vignette, soft window light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55035",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55035",
+          "text": "皮拉特・德羅齊耶想親自乘上孟格菲家的新大球。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a neutral symbolic workshop vignette, a young experimenter studies a much larger unmarked fabric balloon under construction, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55036",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55036",
+          "text": "他向科學院提出申請，要在球上做實驗。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view in a neutral symbolic scholarly vignette, a young applicant gestures toward an unmarked balloon model before indistinct scholars, no Franklin present, muted indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55037",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55037",
+          "text": "科學院讚他有勇氣，卻勸他先等操控更安全。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a neutral symbolic scholarly vignette, indistinct scholars gesture for patience beside an unmarked balloon model, no Franklin present, muted indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55038",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55038",
+          "text": "那顆新球直徑約三十八英尺，比先前查爾斯放飛的無人小球大出許多。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a separate reported workshop, one large fabric balloon under construction beside a much smaller sealed sphere model, no readable measurements, diffuse daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55039",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55039",
+          "text": "富蘭克林聽說它改用布和紙，填充方式也比酸碰鐵屑便宜。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a separate reported workshop, plain linen and paper hang beside an unfinished open-bottom balloon envelope, diffuse daylight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55040",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55040",
+          "text": "可球變大了，乘上去的人又該怎麼平安落地？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a symbolic workshop, a young applicant looks at an empty passenger gallery beneath a large unfinished balloon, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55041",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55041",
+          "text": "科學院也為這顆更大的球出資，不只是聽取乘坐申請。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a neutral scholarly vignette, a young applicant waits beside a blank petition and an unmarked balloon model, muted indoor light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55042",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55042",
+          "text": "人還在等，凡爾賽的另一顆熱氣球卻已準備起飛。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a separate framed Versailles preparation vignette, a large open-bottom hot-air balloon is made ready before a reported animal trial, gentle daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55043",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55043",
+          "text": "當它離地，籃裡會是等候的皮拉特嗎？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a separate framed Versailles preparation vignette, an empty wicker animal basket hangs below an unfinished hot-air balloon, its passengers still out of frame, gentle daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55044",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55044",
+          "text": "沒有；先進籃子的是羊、鴨和公雞。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view in a framed reported Versailles scene, a sheep a duck and a rooster stand inside a plain wicker basket beneath an open-bottom hot-air balloon, gentle daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "chapter": "動物先升空，志願者先等"
+    },
+    {
+      "id": "s55045",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55045",
+          "text": "這顆球底部敞開，火焰直接加熱裡面的空氣。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a framed reported Versailles scene, straw burns below the open bottom of a large fabric envelope, no passenger in view, gentle daylight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55046",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55046",
+          "text": "到十月八日，原本預告的印行詳報還沒出來，細節仍難核對。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a private study away from Versailles, an elderly observer waits beside an empty shelf reserved for an expected bound report, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55047",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55047",
+          "text": "富蘭克林於是把手上的小冊子寄給班克斯；他說，內容沒滿足原先的期待。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a private study away from Versailles, an elderly observer prepares to send a thin plain booklet to a distant correspondent, no readable text or copied historical document, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55048",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55048",
+          "text": "其中一個傳來的數字仍只是估計：球據說升到約兩百土瓦茲，接近四百公尺。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a separate framed reported Versailles animal-flight vignette, an open-bottom hot-air balloon rises high above the grounds with a small basket below, distant scale only and no measured altitude marker, gentle daylight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55049",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55049",
+          "text": "可從那樣的高度降下來，羊、鴨和公雞最後有沒有受傷？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a separate framed reported Versailles animal-flight vignette, a small wicker animal basket hangs below a descending hot-air balloon, the landing and animals' condition remain unseen, gentle daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55050",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55050",
+          "text": "他明白寫下：凡爾賽這場實驗，他本人沒有到場。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view in a quiet study away from Versailles, an elderly observer receives a blank messenger note in a private study, Versailles animal flight visible only as a separate faint inset, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55051",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55051",
+          "text": "他聽說，稻草燒了約十分鐘，球就充起來。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a clearly framed reported Versailles scene, straw burns below an open-bottom balloon while the envelope fills, gentle daylight",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55052",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55052",
+          "text": "有人說火中加水，另有人說加了別的東西；細節並不一致。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a private study away from Versailles, an elderly observer compares two blank reports about a straw fire, no launch in the room, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55053",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55053",
+          "text": "更要緊的是：熱空氣冷下來時，籃子會怎樣下降？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view in a framed reported Versailles scene, an animal basket approaches the ground below a gently cooling balloon, gentle daylight",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55054",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55054",
+          "text": "熱起來的空氣把球撐大，球就帶著籃子往上。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view in a framed reported scene on Versailles grounds, an open bottom hot air fabric envelope swells above a small animal basket, gentle natural light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55055",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55055",
+          "text": "富蘭克林聽到的版本裡，球在高處沒停太久，風又把它帶向一旁。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a framed reported Versailles scene, a high animal balloon drifts sideways with the breeze, gentle daylight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55056",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55056",
+          "text": "球隨風橫移、空氣變涼，慢慢下降；三隻都平安嗎？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a framed reported scene on Versailles grounds, an animal basket drifts sideways beneath a gradually sinking balloon, gentle natural light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55057",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55057",
+          "text": "消息裡羊和鴨沒有受傷，可公雞落下時受了傷。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a framed reported scene on Versailles grounds, a rooster rests apart with a ruffled wing while a sheep and a duck stand nearby in a reported aftermath, gentle natural light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55058",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55058",
+          "text": "光有一場成功上升，還無法把載人風險一筆勾銷。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at an unspecified preparation yard, a young experimenter studies tether ropes and a fire grate, pale daylight",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55059",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55059",
+          "text": "兩條路線的難題也不同：密封輕氣球怕漏，熱氣球怕冷。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view as two clearly separated panels for Champ de Mars and Versailles, left panel a sealed unmanned gas sphere at Champ de Mars, right panel an open-bottom hot-air craft at Versailles, no shared ground, even diagram light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55060",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55060",
+          "text": "可真讓人站上載台，下降時還能把他拉回來嗎？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a symbolic October preparation scene, a young aeronaut studies an occupied wicker gallery while a ground crew prepares long ropes, diffuse daylight",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55061",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55061",
+          "text": "想讓人站上熱氣球，又不立刻隨風飛遠，還有一招。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a later historical study, a historian examines an unmarked sketch of a person beneath an open-bottom balloon restrained by long ropes, soft lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55062",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55062",
+          "text": "繩子可以讓乘客離地，卻暫時留在地面能拉回的範圍。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in an October garden, a young aeronaut rises in a wicker gallery as thick ropes run down to handlers, diffuse sunlight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55063",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55063",
+          "text": "但繩子究竟能替他們擋下多少危險？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot of a thick October launch rope tightening in wind, a handler steadies the line below a distant hot-air balloon, diffuse daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55064",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55064",
+          "text": "十月十五日，後出的記述說，皮拉特升空後平安回到地面。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view in a later historical bookroom in 1870, a later historian examines plain bound books in an 1870 study, no person from 1783 present, soft library light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "chapter": "十月：人升空，繩還在"
+    },
+    {
+      "id": "s55065",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55065",
+          "text": "這不是富蘭克林的目擊；後出的書說，這次試升撐了多久？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a later historical bookroom in 1870, a later historian examines a plain book in an 1870 room, no Franklin and no October launch in the same scene, soft library light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55066",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55066",
+          "text": "皮拉特站在載台上，頭頂是裝滿熱空氣的大球。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at an October tethered-flight ground, a young experimenter stands in a wicker gallery below an open-bottom hot-air fabric envelope held by heavy ropes, diffuse sunlight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55067",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55067",
+          "text": "那天的繩長超過八十英尺，球升到繩端。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a later 1870 historical bookroom, an unmarked sketch of a balloon with a long tether lies beside a plain volume, no readable numbers, soft library light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55068",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55068",
+          "text": "球停了四分二十五秒，皮拉特沒有不適。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        },
+        {
+          "id": "s55069",
+          "text": "熱空氣漸漸散失，載台開始朝地面靠近。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view at an October tethered-flight ground, a tethered balloon pauses above a garden while ground handlers hold its intact ropes, diffuse sunlight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55070",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55070",
+          "text": "他們真正要確認的是：熱氣一弱，球會緩緩降，還是猛地墜下？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot near an October garden landing area, a hot-air envelope descends above two handlers holding long lines, diffuse sunlight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55071",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55071",
+          "text": "後出的記述說，球緩緩下降，並沒有猛然墜落。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at an October tethered-flight ground, a hot air balloon descends within the reach of its tethers, diffuse sunlight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55072",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55072",
+          "text": "下降時球囊仍撐開，沒有突然癟掉。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at an October tethered-flight ground, a full rounded hot-air envelope descends while long ropes stay taut, diffuse sunlight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55073",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55073",
+          "text": "當皮拉特走出載台，這顆球會乖乖停住嗎？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at an October tethered-flight ground, a young aeronaut steps down from a lowered wicker gallery while the tether stays visible, diffuse sunlight",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55074",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55074",
+          "text": "後出的記述說，他一跳出去，球又浮起一兩英尺。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view near a landing rope in an October garden, an empty wicker gallery rebounds just above the ground after its occupant steps away, diffuse sunlight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55075",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55075",
+          "text": "但下一輪不只看載重；兩天後的風會把球搖成什麼樣？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a separate October garden vignette, a calm tethered balloon faces a distant gathering breeze across the grounds, diffuse daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55076",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55076",
+          "text": "十月十七日，風變強，拉在繩上的力也更大。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view at an October tethered-flight ground, ropes pull at a swaying tethered flying craft in a breezy garden, diffuse sunlight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55077",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55077",
+          "text": "後出的記述說，球晃得不穩，這次不如前一回順利。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view at an October tethered-flight ground, a young experimenter steadies himself in a tethered swaying gallery, diffuse sunlight",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55078",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55078",
+          "text": "十九日風較平靜，又改測火勢與載台平衡。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in an October garden on a calmer day, an open-bottom balloon is prepared with a balanced gallery and a quiet fire grate, diffuse sunlight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55079",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55079",
+          "text": "後出的記述說，皮拉特獨站時，載台另一側放了一百一十磅配重，讓兩側平衡。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at an October tethered-flight ground, a young aeronaut stands opposite a plain counterweight in the wicker gallery, ropes anchored below, diffuse sunlight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55080",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55080",
+          "text": "火籃裡六分鐘沒有續火，皮拉特仍停在繩端，觀察球會怎樣變化。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view at an October tethered-flight ground, an aeronaut watches a quiet fire grate while a large balloon remains restrained by ropes, diffuse sunlight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55081",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55081",
+          "text": "下一輪球向地面靠近；皮拉特要在哪一刻補火？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at an October tethered-flight ground, an aeronaut watches a tethered gallery descend while a quiet fire grate sits beside him, diffuse sunlight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55082",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55082",
+          "text": "快碰到地面時，皮拉特投入燃料，球又升回原來的高度。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at an October tethered-flight ground, an aeronaut adds fuel to a grate inside a tethered gallery, diffuse sunlight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55083",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55083",
+          "text": "若火能讓一人再升，換成兩人又會如何？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in an October garden, two early aeronauts stand side by side in a wicker gallery as the ground crew remains visible below, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55084",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55084",
+          "text": "一名叫德維萊特的乘客，隨皮拉特站上同一圈載台。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view at an October tethered-flight ground, two aeronauts ride a tethered fabric envelope while a ground crew watches, diffuse sunlight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55085",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55085",
+          "text": "遠處的人幾乎看不清兩位乘員，卻能看見整顆大球。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot from far across an October garden, a large tethered balloon hangs high while its two riders appear tiny and hard to distinguish, diffuse sunlight",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55086",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55086",
+          "text": "後出的記述說，兩人在高處停了九分鐘；落地後，他們都說自己沒有不適。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at an October tethered-flight ground, two aeronauts remain in an elevated wicker gallery with long ropes held by a ground crew, diffuse sunlight",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55087",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55087",
+          "text": "達爾朗德侯爵後來也與皮拉特同乘繫留球，才接上脫繩的挑戰。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view at an October tethered-flight ground, a new aeronaut takes a turn aboard a tethered wicker gallery, diffuse sunlight",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55088",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55088",
+          "text": "兩個人都上去了，這就是等了許久的自由航行嗎？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at an October tethered-flight ground, a close view shows a thick tether stretching down from a high gallery, diffuse sunlight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55089",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55089",
+          "text": "還不算。還記得十月的繩嗎？它還繫著；脫繩前，他們又遇到什麼？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot beside a tied rope at an October garden, an observer sees that the gallery still cannot leave the ground crew behind, diffuse sunlight",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55091",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55091",
+          "text": "接著，新的試升在拉穆埃特花園開始。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        },
+        {
+          "id": "s55092",
+          "text": "富蘭克林住得近，這一次他就在現場。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view in La Muette garden during the tethered trial, a tethered balloon waits with ropes reaching handlers, an elderly observer watches from the garden edge, soft daylit sky",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55093",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55093",
+          "text": "可真正鬆繩之前，還差一次意外的考試。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in La Muette garden during the tethered trial, a tethered flying craft approaches a line of garden trees, soft daylit sky",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55094",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55094",
+          "text": "這次試升，風突然把球推向花園的一列樹。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in La Muette garden during the tethered trial, wind drives an occupied hot-air balloon toward a row of clipped treetops while ground ropes remain visible, soft daylit sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "chapter": "十一月：籐台掛住樹梢"
+    },
+    {
+      "id": "s55095",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55095",
+          "text": "球底敞開，火籃裡燒著稻草與短柴。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        },
+        {
+          "id": "s55096",
+          "text": "籐編載台環繞球體下方，兩個人站在裡面。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in La Muette garden during the tethered trial, straw and twigs burn in a grate below an open-bottom balloon, two riders stand on a circular wicker gallery around it, soft daylit sky",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55097",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55097",
+          "text": "每人附近都有投料口，能把稻草送進火裡。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view in La Muette garden during the tethered trial, two separate straw-feeding openings flank the grate beside the riders, no one shown passing straw, soft daylit sky",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55098",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55098",
+          "text": "他在信裡另記：球越過眾人頭頂時看得見火，沒指明是哪次升空。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a quiet study after the La Muette observations, an elderly observer regards a small symbolic open-bottom balloon model with a glowing grate, soft indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55100",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55100",
+          "text": "剛剛那陣風，會先讓球身還是乘員站的籐台撞上硬枝？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in La Muette garden during the tethered trial, a wicker gallery nears stiff branches without contact, the round envelope above it and a tether still attached, soft daylit sky",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55101",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55101",
+          "text": "兩個人等於要一邊飛，一邊守著這團火。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view in La Muette garden during the tethered trial, two aeronauts stand beside the burning grate on a wicker gallery, straw bundles within reach but no fuel being added, soft daylit sky",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55102",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55102",
+          "text": "富蘭克林還提到，他們各備一桶水，火籃就在乘客身邊。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view in La Muette garden during the tethered trial, aeronauts keep a water bucket beside bundled straw in the gallery, soft daylit sky",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55103",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55103",
+          "text": "載台上還堆著續燒用的稻草，火不能失控。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in La Muette garden during the tethered trial, bundled straw and a plain water bucket rest apart from a fire grate on a wicker gallery, soft daylit sky",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55104",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55104",
+          "text": "籐台掛進頂端硬枝，球身越過樹梢，向另一側傾。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in La Muette garden during the tethered trial, a wicker gallery catches on rigid branches and the envelope leans away, two taut ropes reach handlers below, soft daylit sky",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55105",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55105",
+          "text": "那排樹的枝頂曾修剪過，才會這樣硬硬地擋在半空。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in La Muette garden during the tethered trial, trimmed tree branches catch a wicker gallery while its intact tether ropes remain visible, soft daylit sky",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55106",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55106",
+          "text": "富蘭克林當場想：人會不會被甩出去？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        },
+        {
+          "id": "s55107",
+          "text": "球身一歪，火會不會碰到內壁，把整顆球點著？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view in La Muette garden during the tethered trial, an elderly observer worries as a tilted gallery with two men hangs above a contained fire grate, intact tethers reach the ground, soft daylit sky",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55108",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55108",
+          "text": "這些是他那一刻的擔憂，不是已經發生的火災。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        },
+        {
+          "id": "s55109",
+          "text": "還好，連著球的繩子仍在。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in La Muette garden during the tethered trial, an observer watches a tilted envelope that has not caught fire; intact ropes visibly run to ground crew, soft daylit sky",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55110",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55110",
+          "text": "花園裡的人用仍連著球的繩子把球拉直，再讓它降回原來的地方。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in La Muette garden during the tethered trial, handlers pull a leaning balloon upright with its intact ropes, soft daylit sky",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55111",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55111",
+          "text": "試升出了岔子，球也受了損，得先帶回去處理。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        },
+        {
+          "id": "s55112",
+          "text": "這就是開頭那棵樹；它攔住的是試升。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view in La Muette garden after the tethered trial, a visibly damaged fabric envelope and wicker gallery rest on the ground for repair, soft daylit sky",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55113",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55113",
+          "text": "修好之後，最後一條繩才有可能真正解開。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        },
+        {
+          "id": "s55114",
+          "text": "一旦放手，地上的人還能替他們做什麼？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in La Muette garden after the repair, a repaired balloon stands upright with a checked wicker gallery and intact tethers, two riders prepare to depart, soft daylit sky",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55115",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55115",
+          "text": "修好後，地面的人終於解開繩子，只能目送氣球離開。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view beside La Muette garden as the free flight begins, handlers let go of the last ground ropes while two aeronauts depart in a wicker gallery, early afternoon sun",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "chapter": "兩人脫繩，城市在腳下"
+    },
+    {
+      "id": "s55116",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55116",
+          "text": "皮拉特與達爾朗德在載台上，火在球底燒。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        },
+        {
+          "id": "s55117",
+          "text": "球愈飄愈遠，兩人只能自己顧火，隨風前行。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view beside La Muette garden as the free flight begins, a hot-air balloon with two riders and a contained fire grate departs while an elderly observer remains on the ground, early afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55118",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55118",
+          "text": "球離開花園後，富蘭克林怎麼知道兩人在高處看到了什麼？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot above and beside La Muette garden as the free flight begins, an elderly observer remains on the garden ground as the free flying craft recedes, no passenger-view scene mixed in, early afternoon sun",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55119",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55119",
+          "text": "他後來寫下乘員說法：人在上面，能看見巴黎周圍與河流的走向。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a stylized passenger-view illustration above Paris, two aeronauts gaze across a stylized Paris skyline from wicker, diffuse afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55120",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55120",
+          "text": "他們到想要的高度便減小火勢，任球隨風橫移，自己卻幾乎感不到迎面風。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view in a stylized passenger-view illustration above Paris, aeronauts drift with gentle wind above generic Paris rooftops, diffuse afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55121",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55121",
+          "text": "其中一段，他們一度弄不清自己飛到城市哪裡。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view in a stylized passenger-view illustration above Paris, two aeronauts scan unfamiliar rooftops far below, diffuse afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55122",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55122",
+          "text": "直到看見榮軍院的圓頂，才重新認出方向。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a stylized passenger-view illustration above Paris, an aeronaut spots a single distant domed landmark across rooftops, diffuse afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55123",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55123",
+          "text": "富蘭克林猜，他們忙著顧火時，球也可能轉過方向。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a stylized passenger-view illustration above Paris, ghosted duplicate fabric envelope silhouettes suggest a possible turn while rider silhouettes tend the grate, not a fixed route, diffuse afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55124",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55124",
+          "text": "熱氣散去，球會慢慢下降；若下方不適合降落呢？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a stylized passenger-view illustration above Paris, a hot air flying craft gently dips as its central flame wanes, diffuse afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55125",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55125",
+          "text": "這時乘員可以再投稻草，讓火變旺。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        },
+        {
+          "id": "s55126",
+          "text": "球再升一點，風就帶他們往前。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view in a separate symbolic mechanism illustration, a generic hot-air balloon rider adds straw to a fire grate beneath the open envelope above an unmarked landscape, diffuse daylight",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55127",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55127",
+          "text": "地面有人鼓掌，也有人擔心：兩人能安全落地嗎？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in La Muette garden as the free balloon departs, spectators clap while a few look anxiously at a departing flying craft, diffuse afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55128",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55128",
+          "text": "城裡更多人看見球經過，卻因為太高，看不清乘員。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on Paris streets under a very high balloon, distant Parisians point toward a high balloon with tiny riders, diffuse afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55129",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55129",
+          "text": "富蘭克林沒有看見降落；他要怎麼知道兩人是否平安？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a quiet private room, no landing in view, an elderly observer waits indoors near a window, no landing fabric envelope visible anywhere, warm evening lamplight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55130",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55130",
+          "text": "到了晚上，達爾朗德侯爵與孟格菲來拜訪他。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view inside a quiet private room after the riders return, two returned visitors arrive at an elderly observer doorway after dark, no descent shown, warm evening lamplight",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55131",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55131",
+          "text": "他在信裡寫，看到乘員安然走進來，自己才真正放心。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view inside a quiet private room after the riders return, an elderly observer welcomes a safe aeronaut at the door, warm evening lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55132",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55132",
+          "text": "乘員親口告訴他：他們落得很輕，沒有撞擊。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a quiet private room after the riders return, an aeronaut calmly recounts a smooth landing to an elderly observer, warm evening lamplight",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55133",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55133",
+          "text": "和開頭的樹梢試升不同，乘員說這趟航行的球只受到一點損傷。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a quiet private room after the riders return, an aeronaut gestures toward a small round paper model with one slight crease as an elderly observer listens, warm evening lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55134",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55134",
+          "text": "可記下這趟飛行的見證信，日期還有一處對不上：它寫的是哪一天？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a neutral reference desk, an elderly observer has a blank letter beside a small symbolic balloon silhouette, no readable date or manuscript text, warm indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55135",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55135",
+          "text": "信頭標十一月二十一日，正文卻說試驗發生在「昨天」。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a neutral reference desk, a blank folded letter and two unnumbered calendar leaves appear slightly misaligned, no readable manuscript text, even indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55136",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55136",
+          "text": "照字面算，航行就得落在二十日。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view on a neutral reference desk, a plain calendar leaf sits beside a small free-flight silhouette, no readable date or manuscript text, even indoor light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55137",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55137",
+          "text": "但這與後出的年表不合；究竟該校正哪一處？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a separate later reference study, an editor examines a blank calendar beside an unmarked bound encyclopedia, no 1783 flight scene, soft library light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55138",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55138",
+          "text": "一九〇七年的編者依當年壓印副本刊信，在校記裡指出日期的矛盾。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a neutral reference desk with blank calendars, a plain folded letter and two blank date markers placed apart, no readable manuscript text, even indoor light",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55139",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55139",
+          "text": "編者認為，寫錯的不是航程，而是信頭的那個日期。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a later editorial study, an editor compares two blank date cards and a bound encyclopedia in separate spaces, soft indoor light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55140",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55140",
+          "text": "信應標二十二日；這樣「昨天」才和航行日對上。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "High angle view in a later editor library in 1907, a later editor checks two blank calendar leaves in a 1907 library, no 1783 flight scene, soft library light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55141",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55141",
+          "text": "百科年表獨立列出航行日期：十一月二十一日。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle view on a later reference desk with blank calendars, two blank calendar leaves and a small free-flight silhouette on a later reference desk, even indoor light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55142",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55142",
+          "text": "另一本後出的英譯史書卻把月份寫成十月；難道那時另有自由飛行？",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a later historical bookroom in 1870, a later historian compares two plain books with no readable writing in an 1870 room, soft library light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55143",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55143",
+          "text": "還記得十月的試升？百科列它仍受繩索限制，並非另一趟自由航行。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on a neutral later reference desk, two later reference volumes with blank pages flank an unnumbered calendar symbol, no 1783 observer, even indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55144",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55144",
+          "text": "十二月一日，查爾斯與羅貝爾才乘另一種載人氫氣球升空。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a distinctly later December 1783 Paris setting, two riders depart in a sealed hydrogen balloon with no fire grate, pale winter daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s55145",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s55145",
+          "text": "還記得開頭那棵樹？那是試升；修好脫繩後，皮拉特與達爾朗德才完成首次載人自由飛行。",
+          "emotion": "自然說書；來源歸屬與關鍵界線略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot as two panels separated by a clear gap, tethered trial left and free flight right, left panel a gallery snags a tree while intact tethers reach the ground, right panel two riders depart freely with no ropes, neutral illustration light",
+        "camera": "pull out",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "繩一鬆，故事才開始",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "哪一次才算第一次？"
+        ]
+      },
+      "lines": [
+        {
+          "id": "s55998",
+          "text": "你覺得哪一步最難跨過？留言說說你的理由。",
+          "emotion": "溫和收束"
+        },
+        {
+          "id": "s55999",
+          "text": "想繼續看有出處的歷史故事，訂閱奇聞檔案局。",
+          "emotion": "溫和收束"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "先卡樹\n**再飛？**",
+      "tag": "巴黎・1783",
+      "sub": "第一次自由飛行之前",
+      "shot": "s55002"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "第一次載人氣球自由飛行前，載台先卡在樹上？｜1783 巴黎｜奇聞檔案局",
+    "description": "1783 年巴黎，先升空的是無人的氫氣球，後來熱氣球載動物、人坐繩索試升。11 月 La Muette 的載人熱氣球在脫繩前，籐台掛住樹梢；拉正修復後，皮拉特・德羅齊耶與達爾朗德侯爵才乘熱氣球自由航行。12 月查爾斯與羅貝爾另乘載人氫氣球升空，作為兩種球的簡短對照。本集沿富蘭克林當時信件，分清他目擊、乘員轉告、其他人的傳聞，還有後世編者校正的日期。\n\n富蘭克林的信是 1907 年據當年壓印副本編刊；1870 年 Marion 英文轉述把自由飛行誤作 10 月 21 日。信的抬頭與「昨天」也對不上，1907 編者及大英百科後出年表均列 11 月 21 日。十月的繫留與十一月的自由航行不能混為一談。畫面是原創 AI 可愛插圖，並非現場照片、原信、精確航線或逐字對話。資料截至 2026-10-20。\n\n富蘭克林五封信：https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt\nMarion 後出歷史整理：https://github.com/GITenberg/Wonderful-Balloon-Ascents--Or-The-Conquest-of-the-Skies--13-A-History-of-Balloons-and-Balloon-V__899/blob/c3f6d020de7d9a0ad864aabcf89138476680574e/899-0.txt\n大英百科後出年表：https://github.com/TU-plogan/kp-editions/blob/504c6cb32cf7c33a6c40f4de191a429cf1619ccd/eb09/TXT/a1/kp-eb0901-018501-0202m.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q",
+    "tags": [
+      "氣球史",
+      "1783",
+      "第一次載人飛行",
+      "熱氣球",
+      "氫氣球",
+      "富蘭克林",
+      "巴黎",
+      "歷史疑問",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}

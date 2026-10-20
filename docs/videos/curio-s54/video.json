@@ -1,0 +1,2553 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s54",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    15
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。像跟朋友講有出處的歷史故事，不為匿名寄信人編對話。",
+    "performance": "一月費率、五月開售、五月准用分開唸；希爾回憶與日記數字明確歸屬，法案只說授權。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sources": [
+    {
+      "title": "1839 British Postage Duties Act, 2 & 3 Vict. c.52 (fixed OCR)",
+      "url": "https://github.com/Anterotesis/statutes/blob/eb9f01613383da6020f6a10b8c600dc92bcb5361/Butterworths-short-s/Butterworths-1839.txt#L9188-L9309",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The Life of Sir Rowland Hill and the History of Penny Postage, vol. 1 (1880, fixed text)",
+      "url": "https://github.com/GITenberg/The-Life-of-Sir-Rowland-Hill-and-the-History-of-Penny-Postage-Vol-I-of-2_59390/blob/b508867f1e1390093789dd72b1d84bcd6bbdaa58/59390-0.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Joshua Leavitt, Cheap Postage (1848, fixed text)",
+      "url": "https://github.com/GITenberg/Cheap-Postage_27196/blob/df94d1d290d2b99b1af422c3595438dea38fbdd8/27196-0.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "s54003",
+      "payoff": "s54072",
+      "what": "一月沒有郵票怎樣預付"
+    },
+    {
+      "setup": "s54004",
+      "payoff": "s54090",
+      "what": "日記中的寄件數量"
+    },
+    {
+      "setup": "s54007",
+      "payoff": "s54121",
+      "what": "配發指示漏字"
+    },
+    {
+      "setup": "s54002",
+      "payoff": "s54114",
+      "what": "郵票何時來到"
+    },
+    {
+      "setup": "s54008",
+      "payoff": "s54009",
+      "what": "希爾家舊費率多貴"
+    },
+    {
+      "setup": "s54019",
+      "payoff": "s54039",
+      "what": "舊費率看路程，新費率改看重量"
+    },
+    {
+      "setup": "s54021",
+      "payoff": "s54022",
+      "what": "希爾的預付方案"
+    },
+    {
+      "setup": "s54029",
+      "payoff": "s54137",
+      "what": "原本備用的附膠紙片是否更常用"
+    },
+    {
+      "setup": "s54035",
+      "payoff": "s54048",
+      "what": "先付錢後如何證明"
+    },
+    {
+      "setup": "s54042",
+      "payoff": "s54043",
+      "what": "由誰決定生效日"
+    },
+    {
+      "setup": "s54054",
+      "payoff": "s54055",
+      "what": "十二月過渡費率"
+    },
+    {
+      "setup": "s54069",
+      "payoff": "s54083",
+      "what": "四便士之後會否降到一便士"
+    },
+    {
+      "setup": "s54071",
+      "payoff": "s54072",
+      "what": "一便士費率日是否已有郵票"
+    },
+    {
+      "setup": "s54074",
+      "payoff": "s54075",
+      "what": "核准的郵票何時可用"
+    },
+    {
+      "setup": "s54081",
+      "payoff": "s54094",
+      "what": "現金預付遇上大量寄件"
+    },
+    {
+      "setup": "s54099",
+      "payoff": "s54101",
+      "what": "首日高峰回落後窗口是否暢通"
+    },
+    {
+      "setup": "s54104",
+      "payoff": "s54105",
+      "what": "窗口等哪種憑證分擔現金"
+    },
+    {
+      "setup": "s54108",
+      "payoff": "s54117",
+      "what": "郵票何時可從貨品變成郵資"
+    },
+    {
+      "setup": "s54119",
+      "payoff": "s54120",
+      "what": "准用後的窗口庫存"
+    },
+    {
+      "setup": "s54111",
+      "payoff": "s54112",
+      "what": "部門對總局售票的最初反應"
+    },
+    {
+      "setup": "s54124",
+      "payoff": "s54125",
+      "what": "印出的封套如何分給窗口"
+    },
+    {
+      "setup": "s54136",
+      "payoff": "s54137",
+      "what": "哪種憑證需求超過印刷機"
+    },
+    {
+      "setup": "s54141",
+      "payoff": "s54142",
+      "what": "發售約一個月後倫敦收件所是否得到郵票"
+    },
+    {
+      "setup": "s54133",
+      "payoff": "s54134",
+      "what": "希爾是否請財政大臣介入封套分發"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s54001",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54001",
+          "text": "想像一八四〇年一月十日，一名寄信人把信放在郵局櫃台。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot by a January 1840 letter window, a sender places a sealed plain letter beside a coin on a counter, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "chapter": "1840 年一月，窗口先收一便士"
+    },
+    {
+      "id": "s54002",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54002",
+          "text": "低郵資已上路，眼前卻找不到能貼的郵票。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot by a January 1840 letter window, a sender examines an empty stamp tray, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54003",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54003",
+          "text": "職員把信放上磅秤；這封信要怎樣算已付？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot by a January 1840 letter window, a postal worker weighs a blank envelope, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54004",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54004",
+          "text": "希爾隔天的日記，會寫下一個驚人的寄件數字。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot by a January 1840 letter window, a counter attendant studies a tall stack of blank letters, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54005",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54005",
+          "text": "那晚湧進郵局的人，大廳收郵資的辦法撐得住嗎？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot by a January 1840 letter window, a sender waits before a crowded counter, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54006",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54006",
+          "text": "幾個月後，希爾會在一封指示信裡發現少了一個字。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot by a January 1840 letter window, a counter attendant checks an empty supply tray, muted afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54007",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54007",
+          "text": "一個字讓命令反轉；他究竟發現少了什麼？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot by a January 1840 letter window, a postal worker studies a sealed plain letter, dim lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54008",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54008",
+          "text": "在舊費率下，希爾家收一封倫敦來信，得付多少？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot by a January 1840 letter window, a sender pinches a thin plain envelope, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54009",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54009",
+          "text": "伯明罕收到倫敦的單張信，希爾家最低要付九便士。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a Birmingham household in the 1830s, a householder opens a plain envelope, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "chapter": "九便士的來信與繞路的包裹"
+    },
+    {
+      "id": "s54010",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s54010",
+          "text": "多夾一件小東西，收費會怎樣？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "kicker": "郵資時間線",
+        "text": "9 便士",
+        "sub": "H 8761–8773"
+      }
+    },
+    {
+      "id": "s54011",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54011",
+          "text": "一下就翻到十八便士；信卻重得多嗎？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a Birmingham household in the 1830s, a householder slips a small blank paper into an envelope, dim lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54012",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54012",
+          "text": "希爾說，連夾帶物算上，這封倫敦來信可能不到四分之一盎司。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a Birmingham household in the 1830s, a householder balances a light envelope on one finger, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54013",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54013",
+          "text": "還有給什魯斯伯里親戚的信；希爾家又改走哪條路？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a Birmingham household in the 1830s, a householder folds a fresh letter, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54014",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54014",
+          "text": "一名商人每週會寄包裹，便替他們夾帶往來的信。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a Birmingham merchant shop in the 1830s, a trader places a blank letter in a parcel, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54015",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54015",
+          "text": "那包裹本來就會往來，不是郵局為希爾家另開的郵班。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a Birmingham merchant shop in the 1830s, a trader closes a plain weekly parcel, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54016",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54016",
+          "text": "希爾家還得把信帶上半英里多，親手交給商人。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a Birmingham street in the 1830s, a householder carries a letter toward a shop, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54017",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54017",
+          "text": "回信由商人在伯明罕投寄，只收當地的一便士費率。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a Birmingham post office in the 1830s, a trader posts a blank letter at a town counter, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54018",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54018",
+          "text": "這是另一組通信，不是把倫敦九便士那封偷偷轉送。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a Birmingham household in the 1830s, a householder separates two plain letters, muted afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54019",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54019",
+          "text": "既然寄信人肯繞路，真正卡住他們的是哪條收費規則？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a Birmingham household in the 1830s, a householder studies two different routes on a blank map, dim lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54020",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54020",
+          "text": "羅伯特・華萊士早已要求，別再照郵局繞行路線加價。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a Birmingham household in the 1830s, a reformer sets aside a winding blank route board, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54021",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54021",
+          "text": "路程可以少算；郵差在收件人門口等錢，又怎樣省掉？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a Birmingham household in the 1830s, a postal worker waits by a closed front door, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54022",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54022",
+          "text": "在希爾草擬的辦法裡，寄件人最好先付郵資。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a reformer's study in the late 1830s, a reformer places a coin beside an envelope, muted afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "chapter": "希爾原想讓封套當主角"
+    },
+    {
+      "id": "s54023",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54023",
+          "text": "他一度預期，預先印好付款標記的封套會比較常用。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a reformer's study in the late 1830s, a reformer lifts a plain premarked cover, dim lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54024",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54024",
+          "text": "附膠的小紙片呢？起初只是處理例外的辦法。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a reformer's study in the late 1830s, a reformer cuts a tiny blank paper square, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54025",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54025",
+          "text": "他想到有人帶著寫好的信到窗口，卻不會重新寫封套。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a late 1830s post office, a sender holds a sealed letter at a counter, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54026",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54026",
+          "text": "他可能不會寫字，信卻已經寫好。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a late 1830s post office, a sender holds a sealed letter beside a plain cover, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54027",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54027",
+          "text": "若櫃台只賣預印封套，就得有人再把地址寫上去。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a reformer's study in the late 1830s, a postal worker compares a plain cover with a sealed letter, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54028",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54028",
+          "text": "若給他一片背面帶膠的紙，貼上就不用重寫地址。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a reformer's study in the late 1830s, an office assistant moistens a blank paper label, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54029",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54029",
+          "text": "原本只是備用的附膠紙片，最後會比封套常用嗎？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a reformer's study in the late 1830s, a reformer compares a cover and a loose label, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54030",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54030",
+          "text": "真正要緊的是：郵資能否在投寄前完成支付。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a late 1830s post office, a sender places a coin next to a sealed envelope, muted afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54031",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54031",
+          "text": "希爾希望郵局免去收郵資，以及與收款有關的帳目。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a reformer's study in the late 1830s, a reformer closes an unmarked account book, dim lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54033",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54033",
+          "text": "但他在最初方案裡，沒有要求每封信立刻強制預付。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a reformer's study in the late 1830s, a reformer leaves two plain payment forms side by side, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54034",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54034",
+          "text": "在他的草案裡，未預付仍沿用較高舊費率，讓先付更有吸引力。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a reformer's study in the late 1830s, an office assistant compares two plain payment trays, muted afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54035",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54035",
+          "text": "錢先收了，要靠哪張紙證明這封信已付？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a reformer's study in the late 1830s, a postal worker studies a blank cover, dim lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54036",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54036",
+          "text": "封套和小紙片都能做憑證，能不能使用卻要靠命令。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a reformer's study in the late 1830s, a reformer places two blank payment samples side by side, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54037",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54037",
+          "text": "一八三九年八月，議會通過新的郵資法案。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a reformer's study in the late 1830s, a postal worker opens a plain parliamentary volume, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54038",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54038",
+          "text": "法案先寫下按重量統一降到一便士的方向。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a reformer's study in the late 1830s, an office assistant weighs a plain envelope, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54039",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54039",
+          "text": "它把「距離走了幾英里」從新費率的計算基準移開。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a reformer's study in the late 1830s, a postal worker sets aside an unmarked route board, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54040",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54040",
+          "text": "命令還能規定，是寄件人先付，或收件人收到再付。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a reformer's study in the late 1830s, an office assistant compares two blank payment trays, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54041",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54041",
+          "text": "但授權和櫃台當天收多少錢，還是兩件事。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a reformer's study in the late 1830s, a postal worker separates a law folder from a cash tray, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54042",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54042",
+          "text": "如果法律已寫好方向，誰來決定真正開始的日期？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a reformer's study in the late 1830s, an office assistant opens a blank calendar beside a law folder, muted afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54043",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s54043",
+          "text": "決定生效日的是財政部；八月十七日只是法案日期。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "kicker": "郵資時間線",
+        "text": "1839・8・17",
+        "sub": "A 9188–9222"
+      },
+      "chapter": "八月法案留下的三種付款路"
+    },
+    {
+      "id": "s54044",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54044",
+          "text": "命令得提前至少十天登《倫敦憲報》，才輪到窗口換價。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a legislative archive in August 1839, an office assistant places a blank gazette beside a calendar, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54045",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54045",
+          "text": "新制改用重量級距，也可處理較重的信。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a legislative archive in August 1839, a postal worker places two different envelopes on a balance, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54046",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54046",
+          "text": "說「一便士」時，得先問這封信落在哪個重量內。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a legislative archive in August 1839, an office assistant lifts a light envelope from a balance, muted afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54047",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54047",
+          "text": "有了新費率，寄件人怎樣在投寄前留下付款憑證？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a legislative archive in August 1839, a postal worker lays out blank stationery samples, dim lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54048",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54048",
+          "text": "法條允許把付款標記先做在紙張或封套上。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a legislative archive in August 1839, an office assistant compares an unmarked sheet and cover, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54049",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54049",
+          "text": "也容許日後命令，准許把郵票貼附到信上。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a legislative archive in August 1839, an office assistant holds a tiny blank paper label, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54050",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54050",
+          "text": "郵票面額還待命令；用過一回，又能再貼嗎？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a legislative archive in August 1839, an office assistant measures a blank label beside a coin, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54051",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54051",
+          "text": "法條還要求，貼附的郵票以前不能用過。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a legislative archive in August 1839, a postal worker checks a clean paper label, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54052",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54052",
+          "text": "面額不足或曾用過，仍要照命令另收郵資。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a legislative archive in August 1839, an office assistant sets a worn-looking blank label aside, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54053",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54053",
+          "text": "這些都是准許日後採用的方式，沒有說三種同日備齊。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a legislative archive in August 1839, a postal worker places three samples in separate trays, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54054",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54054",
+          "text": "先有法律的工具箱；哪裡的寄件人先付較低郵資？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a legislative archive in August 1839, an office assistant reaches for a blank rate board, muted afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54055",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54055",
+          "text": "希爾提出先改倫敦部分預付信，再處理其他地區。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a December 1839 mail sorting floor, a postal worker marks a blank district map, dim lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "chapter": "十二月先練習四便士"
+    },
+    {
+      "id": "s54056",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s54056",
+          "text": "他給其他地區的一般單張內陸信，提了四便士上限。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "kicker": "郵資時間線",
+        "text": "4 便士上限",
+        "sub": "H 12939–13060"
+      }
+    },
+    {
+      "id": "s54057",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54057",
+          "text": "這不是全國每封信都固定收四便士。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on a December 1839 mail sorting floor, a postal worker sorts light and heavy envelopes, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54058",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54058",
+          "text": "希爾說，政府研究後讓這套安排十二月五日生效。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a December 1839 mail sorting floor, an office assistant turns a blank December calendar, muted afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54059",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54059",
+          "text": "郵票可能被偽造，財政部為此反覆開會。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a late 1839 government planning office, a postal planner examines several blank payment samples, dim lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54060",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54060",
+          "text": "預印紙、封套和附膠票到這時才獲得財政部同意。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a late 1839 government planning office, a postal planner compares three blank payment samples, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54061",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54061",
+          "text": "倫敦部分預付信先用上一便士；其他地方仍在過渡。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a December 1839 mail sorting floor, a London clerk accepts a coin for a letter, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54062",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54062",
+          "text": "這段過渡，要讓櫃台先練會哪件事？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on a December 1839 mail sorting floor, a country clerk studies a plain rate board, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54063",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54063",
+          "text": "他解釋，這是讓櫃台先練按重量計費。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on a December 1839 mail sorting floor, a postal worker tries a small letter balance, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54064",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54064",
+          "text": "真正預期的大批寄件人，還沒一起湧來。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a December 1839 mail sorting floor, an office assistant looks over a quiet postal hall, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54065",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54065",
+          "text": "希爾記財政大臣還懷疑，預付是否安全、省事。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a late 1839 government planning office, a reformer reviews a blank cash record, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54066",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54066",
+          "text": "試行才過一週多，希爾日記記下主管回報：每二十封信，最多只有一封得上秤。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on a December 1839 mail sorting floor, a counter attendant tests a small letter balance, muted afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54067",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54067",
+          "text": "他也說信量增加，手下暫時不用加人。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a December 1839 mail sorting floor, a postal worker sorts a stack of plain letters, dim lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54068",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54068",
+          "text": "另一名主管只多了兩人；兩人都說預付沒有讓投遞變危險。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on a December 1839 mail sorting floor, a counter attendant studies two blank staff rosters, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54069",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54069",
+          "text": "公眾卻懷疑：四便士會不會就是最後的降價？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on a December 1839 mail sorting floor, a reader studies a plain rate notice, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54070",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54070",
+          "text": "希爾回憶，有些報紙還指他背棄原來的主張。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a late 1839 government planning office, a reformer closes a blank newspaper, muted afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54071",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54071",
+          "text": "公眾等著一便士；那一天，郵票能一起到嗎？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on a December 1839 mail sorting floor, a sender holds a coin before a counter, dim lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54072",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54072",
+          "text": "希爾原本提議：郵票沒備妥，就先收現金。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on a December 1839 mail sorting floor, an office assistant points to a cash tray and an empty stamp tray, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54073",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54073",
+          "text": "收款辦法還在挑；希爾說多種提案沒有一種能單獨解決難題。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a late 1839 government planning office, a reformer compares several blank payment samples, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54074",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54074",
+          "text": "財政部最後正式採用預付；郵票能立刻用嗎？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a late 1839 government planning office, a reformer closes several unreadable proposal folders, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54075",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54075",
+          "text": "郵票還得等印製；這段時間，硬幣先到櫃台。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on a December 1839 mail sorting floor, a sender carries a coin while holding a blank letter, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54076",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54076",
+          "text": "新的命令要把全國費率推到一月十日。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a December 1839 mail sorting floor, an office assistant advances an unmarked calendar, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54077",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54077",
+          "text": "財政部在十二月二十八日，正式刊出相關命令。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on a December 1839 mail sorting floor, a postal worker places an unreadable gazette beside a calendar, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54078",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54078",
+          "text": "沒先付的信要加倍收；先付現金才拿得到低郵資。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on a December 1839 mail sorting floor, a counter attendant separates two payment trays, muted afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54079",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54079",
+          "text": "為預備大批來信，倫敦窗口正常收信的截止時間，暫時提前一小時。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a December 1839 mail sorting floor, a postal worker adjusts an unreadable closing-time notice, dim lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54080",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54080",
+          "text": "鄉間郵局也做相應安排，但收取逾時信件的最晚時間照舊。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on a December 1839 mail sorting floor, a country postal worker turns an unmarked wall clock, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54081",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54081",
+          "text": "但一個窗口收很多枚硬幣，會不會拖住整個郵局？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on a December 1839 mail sorting floor, a postal worker eyes a growing line of plain letters, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54082",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s54082",
+          "text": "一月十日，希爾引報紙說，預付寄信的人擠滿郵局。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "kicker": "郵資時間線",
+        "text": "1840・1・10",
+        "sub": "H 13208–13250"
+      },
+      "chapter": "一月十日，人潮先到"
+    },
+    {
+      "id": "s54083",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54083",
+          "text": "全國一便士費率剛上路；希爾會猜當晚寄出多少封？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a reformer home study in January 1840, a reformer opens an unreadable diary at home, dim lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54084",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54084",
+          "text": "希爾當天日記裡猜，當晚寄件不少於十萬封；若更少，他會失望。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a later archive, a later researcher turns an unreadable diary page, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54085",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54085",
+          "text": "他還估，這將是前一年同日的三倍以上。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a later archive, a later researcher studies an unreadable diary page, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54086",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54086",
+          "text": "他聽說當晚還寄出不少通函。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a crowded January 1840 letter hall, a counter attendant sorts plain circulars, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54087",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54087",
+          "text": "他怕自己到場添亂，當晚沒有去郵局。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a reformer home study in January 1840, a reformer stays beside a writing desk, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54088",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54088",
+          "text": "希爾回憶，那夜大廳的人為他和郵局職員各歡呼三聲。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a crowded January 1840 letter hall, a small crowd cheers toward anonymous postal workers, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54089",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54089",
+          "text": "第二天的日記，會寫下多少封？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a reformer home study in January 1840, a reformer reaches for a closed diary, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54090",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s54090",
+          "text": "希爾隔天記，前一晚寄出十一萬兩千封，超過他原先預料。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "kicker": "郵資時間線",
+        "text": "112,000 封",
+        "sub": "H 13208–13250"
+      }
+    },
+    {
+      "id": "s54091",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54091",
+          "text": "日記沒說那個郵局在哪，也不是全國逐站合計。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a later archive, a later researcher closes an unreadable diary beside a blank map, dim lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54092",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54092",
+          "text": "其中約一萬三到一萬四千封，希爾說並未預付。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a crowded January 1840 letter hall, an office assistant separates a smaller pile of letters, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54093",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54093",
+          "text": "餘下大多預付，不能因此說它們貼了郵票。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a crowded January 1840 letter hall, a postal worker accepts coins beside unstamped letters, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54094",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54094",
+          "text": "希爾隔天記：大廳收郵資的辦法不夠，現場一片混亂。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a crowded January 1840 letter hall, a counter attendant manages a crowded cash counter, muted afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54095",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54095",
+          "text": "剛說的是寄出；隔天早上，鄉間寄進的又有多少？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a crowded January 1840 letter hall, a postal worker sorts coins beside several letters, dim lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54096",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54096",
+          "text": "同一頁日記又記，隔天早上從鄉間收到近八萬封。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a crowded January 1840 letter hall, an office assistant opens a sack of plain letters, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54097",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54097",
+          "text": "其中一些仍按舊費率寄出；切換不是每封同步完成。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a crowded January 1840 letter hall, a postal worker sorts two different stacks of letters, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54098",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54098",
+          "text": "這是當事人日記中的現場印象，不是獨立業務表。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a later archive, a researcher examines a plain diary, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54099",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54099",
+          "text": "兩天後希爾再記約七萬封寄出；首日高峰退了，窗口就不擠了嗎？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a reformer home study in January 1840, a reformer turns a diary page, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54100",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54100",
+          "text": "一月十四日，他又記寄出、寄入各約九萬封。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a reformer home study in January 1840, a reformer studies an unreadable diary page, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54101",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54101",
+          "text": "有人擠不到窗口，趕不上投寄。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a crowded January 1840 letter hall, a postal worker clears a crowded mail counter, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54102",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54102",
+          "text": "財政大臣答應致信警察主管，請他保持郵局通道暢通。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot outside a January 1840 post office, a counter attendant studies a plain route near a post office entrance, muted afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54103",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54103",
+          "text": "寄件數量若先衝上來，收錢的速度就變成瓶頸。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a crowded January 1840 letter hall, a postal worker reaches between coin tray and letter stack, dim lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54104",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54104",
+          "text": "若不想每封信都停在收錢窗口，還得等哪種憑證？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside an early 1840 planning office, a postal planner studies an empty cash tray beside a sealed letter, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54105",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54105",
+          "text": "還記得希爾備用的那片附膠紙嗎？現在窗口等的正是它。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside an early 1840 planning office, a postal planner compares a blank paper sample with a coin tray, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54106",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54106",
+          "text": "所以還得等財政部決定，哪一天可拿郵票預付。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside an early 1840 planning office, a postal planner turns an undated calendar page, muted afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54107",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54107",
+          "text": "只是「印出來」，還不等於每個寄件人能用。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside an early 1840 printshop, a printer checks a sheet of blank labels, dim lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54108",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54108",
+          "text": "這張小紙片究竟何時從貨品變成郵資？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a crowded January 1840 letter hall, a sender holds a plain unstamped envelope beside an empty supply tray, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54109",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54109",
+          "text": "希爾回憶，四月二十二日財政部定下新時點。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside an April 1840 government planning office, an office assistant opens a blank calendar, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "chapter": "五月，郵票終於能跟信走"
+    },
+    {
+      "id": "s54110",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54110",
+          "text": "財政大臣一度想要只收郵票，希爾卻主張現金繼續並行。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a spring 1840 government planning office, a reformer sets a cash tray beside a blank label tray, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54111",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54111",
+          "text": "三個總局售票的提議，部門一開始怎麼看？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a spring 1840 government planning office, a postal planner considers three unmarked sale trays, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54112",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54112",
+          "text": "希爾記部門起初反對在三個總局賣郵票。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a spring 1840 government planning office, a postal planner reviews three unmarked supply trays, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54113",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54113",
+          "text": "他列的是倫敦、都柏林與愛丁堡三處總局。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a later archive, a later researcher studies three unreadable office folders, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54114",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s54114",
+          "text": "五月一日先開賣郵票。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "kicker": "郵資時間線",
+        "text": "1840・5・1 開售",
+        "sub": "H 13328–13353"
+      }
+    },
+    {
+      "id": "s54115",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54115",
+          "text": "當天，希爾記郵票局售出兩千五百英鎊。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside the May 1840 Stamp Office sales hall, a stamp seller opens a tray of plain labels, dim lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54116",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54116",
+          "text": "買家能付錢，收件所能否拿到票，還得看分發。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a spring 1840 government planning office, a postal planner moves sealed blank packets across an unmarked delivery board, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54117",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s54117",
+          "text": "五月六日，郵票才准用來預付郵資。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "kicker": "郵資時間線",
+        "text": "1840・5・6 准用",
+        "sub": "希爾回憶記 5 月 6 日；利維特交叉記證"
+      }
+    },
+    {
+      "id": "s54118",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54118",
+          "text": "現金預付也繼續保留；買到票並非唯一寄法。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a May 1840 stamp seller shop, a sender compares a coin and a blank label, muted afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54119",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54119",
+          "text": "准用隔天，希爾卻聽到什麼配發消息？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a London receiving house in May 1840, a postal worker reaches toward a closed unmarked supply ledger, dim lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54120",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54120",
+          "text": "希爾說，倫敦各收件所仍沒領到郵票。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a London receiving house in May 1840, a counter attendant checks an empty shelf, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54121",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54121",
+          "text": "指示信原本說別等前置程序，卻漏掉一個英文「不」。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a spring 1840 government planning office, a reformer handles an unreadable instruction folder, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54122",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54122",
+          "text": "少了這個字，信裡竟變成「要等前置程序」。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a London receiving house in May 1840, a counter attendant pauses beside a blank supply list, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54123",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54123",
+          "text": "這是希爾後來的回憶；那封指示信原件沒有核到。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a later archive, a later researcher opens an unreadable memoir at a desk, dim lamp light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54124",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54124",
+          "text": "預印封套印成整張，交貨前還少哪一步？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a stamp printing works in spring 1840, a printer lifts an uncut sheet of plain covers, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54125",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54125",
+          "text": "得先裁成單張；希爾記郵票局沒備好切紙機器。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a stamp printing works in spring 1840, a printer examines an idle cutting table, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54126",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54126",
+          "text": "郵票局想交整張，郵局又不肯分發未裁的封套。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a stamp printing works in spring 1840, a printer holds an uncut sheet of plain covers, muted afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54127",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54127",
+          "text": "裁切最後連星期日都得趕工；希爾又找來額外機器。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a stamp printing works in spring 1840, a printer works beside a simple cutting machine, dim lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54128",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54128",
+          "text": "趕工時，郵票不少落入私人賣家手裡；他們會怎麼開價？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a May 1840 postal street stall, a private seller in May 1840 checks a tray of plain labels, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54129",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54129",
+          "text": "希爾說，有人趁著大家急需郵票，拿貨加價轉售。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a May 1840 postal street stall, a buyer in May 1840 holds coins by a plain label, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54130",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54130",
+          "text": "裁切加了機器，封套仍得送到收件所；希爾說，延誤已惹出不滿。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a London receiving house in May 1840, a counter attendant sees an empty cover tray, muted afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54131",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54131",
+          "text": "又過一週，郵局說，自己無力分發預印封套。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a London receiving house in May 1840, a postal worker studies an unmarked supply plan, dim lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54132",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54132",
+          "text": "希爾追問，卻始終沒問出究竟卡在哪一步。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a May 1840 reformer's study, a reformer examines two closed folders, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54133",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54133",
+          "text": "財政大臣忙得幾乎見不到，希爾要不要請他出面？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a May 1840 reformer's study, a reformer sorts plain supply folders at a desk, muted afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54134",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54134",
+          "text": "他不願請財政大臣出面，只能一再催促；他說，過了一段時間才有進展。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a May 1840 reformer's study, a reformer arranges several unreadable reminder notes, gentle window light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54135",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54135",
+          "text": "另一頭的印刷廠也被需求逼緊：先前備下的大批封套，居然派不上多少用場。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a May 1840 printing works, a printer stacks plain prepaid covers near a press, muted afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54136",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54136",
+          "text": "那麼，印刷機最先追不上的又是哪一種憑證？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a May 1840 printing works, a printer compares plain covers with loose labels near a press, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54137",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54137",
+          "text": "在買家手中，能貼在普通信上的附膠郵票，反倒比封套更受歡迎。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a May 1840 stamp seller shop, a sender chooses a plain adhesive label, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54138",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54138",
+          "text": "他記印刷機每天做出五十多萬枚郵票，還是不夠。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a stamp printing works in May 1840, a printer tends a running press of blank labels, muted afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54139",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54139",
+          "text": "他說工人已輪班晝夜印製，想立刻增加產量也辦不到。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a stamp printing works in May 1840, a printer works beside a running press in dim lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54140",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54140",
+          "text": "可是印刷機做出的數量，還不是倫敦收件所能夠拿到的數量。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a London receiving house in May 1840, a clerk looks at an unfilled shelf for labels, gentle window light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54141",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54141",
+          "text": "發售約一個月，印出的郵票真的到了倫敦各收件所嗎？",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a London receiving house in early June 1840, a postal worker checks an empty tray for labels, muted afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54142",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54142",
+          "text": "希爾回憶，那時倫敦各收件所仍未得到郵票供應。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a London receiving house in early June 1840, a counter attendant stands beside an empty supply shelf, gentle window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54143",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54143",
+          "text": "郵局說，自己無法取得分發所需的郵票。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a London postal office in early June 1840, a postal worker studies a blank inventory folder, dim lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54144",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54144",
+          "text": "郵票局卻說，收到多少要求都已照做，甚至給得更多。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a stamp supply office in early June 1840, a clerk closes a plain inventory folder beside a stack of blank labels, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54145",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54145",
+          "text": "兩個部門都惱火，希爾問起細節也不容易。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside an early June 1840 reformer's study, a reformer examines two closed department folders, muted afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s54146",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s54146",
+          "text": "希爾說，可以確定某處有人失責，卻很難判定責任到底落在哪邊。",
+          "emotion": "自然說書；日期與來源歸屬略放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside an early June 1840 reformer's study, a reformer puts aside two unreadable supply folders, gentle window light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "一便士，兩段時鐘",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "費率先到，郵票後到"
+        ]
+      },
+      "lines": [
+        {
+          "id": "s54997",
+          "text": "看到一封沒貼郵票、卻已付郵資的信，你還會覺得奇怪嗎？",
+          "emotion": "清楚收束"
+        },
+        {
+          "id": "s54998",
+          "text": "原文連結在說明欄，兩個日期都能直接核對。",
+          "emotion": "清楚收束"
+        },
+        {
+          "id": "s54999",
+          "text": "想繼續看有出處的歷史故事，訂閱奇聞檔案局。",
+          "emotion": "清楚收束"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "先收錢\n**後貼票？**",
+      "tag": "英國・1840",
+      "sub": "一便士的兩個日期",
+      "shot": "s54003"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "1840 年一便士郵資已開始，郵票為何晚四個月？｜奇聞檔案局",
+    "description": "1840 年 1 月 10 日，全國一便士郵資開始；希爾記載，郵票卻到 5 月 1 日才開賣，5 月 6 日才准用。這段時間寄件人怎樣預付？本集沿著希爾家的昂貴來信、1839 年授權法案、四便士過渡費率、一月郵局人潮、五月印製和配發問題，拆開「價錢」「付款」「可貼的憑證」三件事。\n\n一便士指合重量條件的內陸信；112,000 封是希爾 1 月 11 日日記記下的前夜一間未指明地點郵局的寄件數，並非全國總量。漏字、印量與配發困難是希爾的事後回憶，未查到原指示信或每日郵局帳本。1848 年利維特（Joshua Leavitt）另列費率與郵票啟用日期；後續供應爭議取自希爾的事後回憶，不能推成全國逐站供貨統計。畫面是原創 AI 可愛插圖，不重建真正 Penny Black 肖像、法案頁或個別寄信人。資料截至 2026-10-20。\n\n1839 年法案：https://github.com/Anterotesis/statutes/blob/eb9f01613383da6020f6a10b8c600dc92bcb5361/Butterworths-short-s/Butterworths-1839.txt#L9188-L9309\n希爾回憶錄：https://github.com/GITenberg/The-Life-of-Sir-Rowland-Hill-and-the-History-of-Penny-Postage-Vol-I-of-2_59390/blob/b508867f1e1390093789dd72b1d84bcd6bbdaa58/59390-0.txt\nLeavitt 1848：https://github.com/GITenberg/Cheap-Postage_27196/blob/df94d1d290d2b99b1af422c3595438dea38fbdd8/27196-0.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q",
+    "tags": [
+      "一便士郵票",
+      "一便士郵資",
+      "羅蘭希爾",
+      "英國郵政",
+      "Penny Black",
+      "1840",
+      "歷史疑問",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}

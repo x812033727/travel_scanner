@@ -1,0 +1,643 @@
+{
+  "script_sha256": "d3d85c6b69290596690a83e28acd8cdf95c07a912f25d98abc718f57406e20db",
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "a_raw_sha256": "1df5c53b229b08d4b03ccb1c03aa143ab03cb55fa60870a89c796327947f7a0f",
+  "b_raw_sha256": "99cafabd1a48464f065c7169ff4be331d89c3dd656eafe5e5a1ac076f467b06b",
+  "b_conversion": "Reader B supplied pass/line_ids/reason; normalized yes=pass and evidence=its cited scene line plus its reason; raw response retained verbatim.",
+  "individual": {
+    "a": {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54001] 想像一八四〇年一月十日，一名寄信人把信放在郵局櫃台。"
+        },
+        {
+          "id": "no_spoiler",
+          "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54006] 幾個月後，希爾會在一封指示信裡發現少了一個字。"
+        },
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？"
+        },
+        {
+          "id": "no_toc",
+          "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+          "required": true,
+          "yes": false,
+          "evidence": "[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？"
+        },
+        {
+          "id": "chapters_link",
+          "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54022] 在希爾草擬的辦法裡，寄件人最好先付郵資。"
+        },
+        {
+          "id": "open_loops",
+          "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54098] 兩天後希爾再記約七萬封寄出；首日高峰退了，窗口就不擠了嗎？"
+        },
+        {
+          "id": "payoffs",
+          "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54120] 指示信原本說別等前置程序，卻漏掉一個英文「不」。"
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。"
+        },
+        {
+          "id": "chapters_are_events",
+          "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+          "required": false,
+          "yes": true,
+          "evidence": "[s54082] 果然，希爾隔天記大廳收錢辦法不足，現場混亂。"
+        },
+        {
+          "id": "outro_no_next",
+          "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+          "required": true,
+          "yes": true,
+          "evidence": "[outro] 想繼續看有出處的歷史故事，訂閱奇聞檔案局。"
+        },
+        {
+          "id": "opening_hooks",
+          "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54006] 幾個月後，希爾會在一封指示信裡發現少了一個字。"
+        },
+        {
+          "id": "one_thread",
+          "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54104] 還記得希爾備用的那片附膠紙嗎？現在窗口等的正是它。"
+        },
+        {
+          "id": "no_detour",
+          "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s54018] 這是另一組通信，不是把倫敦九便士那封偷偷轉送。"
+        }
+      ],
+      "failed": [
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？"
+        },
+        {
+          "id": "no_toc",
+          "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+          "required": true,
+          "yes": false,
+          "evidence": "[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？"
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。"
+        },
+        {
+          "id": "no_detour",
+          "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s54018] 這是另一組通信，不是把倫敦九便士那封偷偷轉送。"
+        }
+      ],
+      "advisory": [],
+      "problems": [
+        "one_line：全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？（[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？）",
+        "no_toc：是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）（[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？）",
+        "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。）",
+        "no_detour：是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？（[s54018] 這是另一組通信，不是把倫敦九便士那封偷偷轉送。）"
+      ]
+    },
+    "b": {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54001] 想像一八四〇年一月十日，一名寄信人把信放在郵局櫃台。 — The first sentence places a sender at a post office counter on 10 January 1840; the clerk weighs the letter by the third sentence. It begins in an action rather t"
+        },
+        {
+          "id": "no_spoiler",
+          "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54001] 想像一八四〇年一月十日，一名寄信人把信放在郵局櫃台。 — The opening gives the premise of low postage without a stamp, then stops before revealing the diary count, the payment trouble, the missing word, or the old rate."
+        },
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？ — Within the body, s54082 jumps to Hill's next-day diary and the chaotic hall. s54083 explicitly returns to 10 January, then s54088–s54089 reaches the next-day d"
+        },
+        {
+          "id": "no_toc",
+          "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54042] 如果法律已寫好方向，誰來決定真正開始的日期？ — Transitions ask what happens in the postal story and answer it in the next chapter. There is no announcement of the video's chapter order or a list of upcoming sectio"
+        },
+        {
+          "id": "chapters_link",
+          "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54008] 在舊費率下，希爾家收一封倫敦來信，得付多少？ — Each chapter's first line picks up the prior chapter's concrete question: the nine-penny letter, prepayment, who sets the effective date, where lower prepaid postage "
+        },
+        {
+          "id": "open_loops",
+          "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54004] 希爾隔天的日記，會寫下一個驚人的寄件數字。 — The narration keeps concrete unanswered questions active across the run, including the next-day count, whether glued stamps beat envelopes, the January cash bottleneck"
+        },
+        {
+          "id": "payoffs",
+          "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54004] 希爾隔天的日記，會寫下一個驚人的寄件數字。 — The long waits return to their objects and add answers: Hill's next-day diary gives 112,000 letters; the instruction letter lost the English negative; demand favors gl"
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。 — The central fact that cash prepayment made the low January rate work is stated repeatedly: coins reach the counter before stamps, cash prepayment is required for"
+        },
+        {
+          "id": "chapters_are_events",
+          "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+          "required": false,
+          "yes": true,
+          "evidence": "[s54001] 想像一八四〇年一月十日，一名寄信人把信放在郵局櫃台。 — The headings describe an old nine-penny letter and diverted parcel, Hill's envelope plan, the August act, December's trial, January's crowds, and May's stamp use."
+        },
+        {
+          "id": "outro_no_next",
+          "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54997] 看到一封沒貼郵票、卻已付郵資的信，你還會覺得奇怪嗎？ — The ending asks about a prepaid unstamped letter, points to source links, and asks for a subscription. It does not mention a next video, episode, or file."
+        },
+        {
+          "id": "opening_hooks",
+          "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54001] 想像一八四〇年一月十日，一名寄信人把信放在郵局櫃台。 — After the counter scene, the opening withholds at least three later results: Hill's next-day count, the crowd's payment trouble, and the missing word in an instru"
+        },
+        {
+          "id": "one_thread",
+          "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54003] 職員把信放上磅秤；這封信要怎樣算已付？ — The same practical problem runs through the episode: how a cheaper letter can be charged and shown as paid. Old rates lead to Hill's prepayment plan, legal authority, a "
+        },
+        {
+          "id": "no_detour",
+          "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+          "required": true,
+          "yes": true,
+          "evidence": "[s54013] 還有給什魯斯伯里親戚的信；希爾家又改走哪條路？ — The parcel workaround illustrates the old charging problem; the December trial tests whether prepayment and weighing can work; cutting, supply, and later mailbox use"
+        }
+      ],
+      "failed": [
+        {
+          "id": "one_line",
+          "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？ — Within the body, s54082 jumps to Hill's next-day diary and the chaotic hall. s54083 explicitly returns to 10 January, then s54088–s54089 reaches the next-day d"
+        },
+        {
+          "id": "no_recap",
+          "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+          "required": true,
+          "yes": false,
+          "evidence": "[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。 — The central fact that cash prepayment made the low January rate work is stated repeatedly: coins reach the counter before stamps, cash prepayment is required for"
+        }
+      ],
+      "advisory": [],
+      "problems": [
+        "one_line：全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？（[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？ — Within the body, s54082 jumps to Hill's next-day diary and the chaotic hall. s54083 explicitly returns to 10 January, then s54088–s54089 reaches the next-day d）",
+        "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。 — The central fact that cash prepayment made the low January rate work is stated repeatedly: coins reach the counter before stamps, cash prepayment is required for）"
+      ]
+    }
+  },
+  "official_or": {
+    "passed": false,
+    "answers": [
+      {
+        "id": "scene_first",
+        "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+        "required": true,
+        "yes": true,
+        "evidence": "[s54001] 想像一八四〇年一月十日，一名寄信人把信放在郵局櫃台。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+        "required": true,
+        "yes": true,
+        "evidence": "[s54006] 幾個月後，希爾會在一封指示信裡發現少了一個字。",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_line",
+        "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？；讀者二：[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？ — Within the body, s54082 jumps to Hill's next-day diary and the chaotic hall. s54083 explicitly returns to 10 January, then s54088–s54089 reaches the next-day d",
+        "yes_readers": 0
+      },
+      {
+        "id": "no_toc",
+        "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+        "required": true,
+        "yes": true,
+        "evidence": "[s54042] 如果法律已寫好方向，誰來決定真正開始的日期？ — Transitions ask what happens in the postal story and answer it in the next chapter. There is no announcement of the video's chapter order or a list of upcoming sectio",
+        "yes_readers": 1
+      },
+      {
+        "id": "chapters_link",
+        "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+        "required": true,
+        "yes": true,
+        "evidence": "[s54022] 在希爾草擬的辦法裡，寄件人最好先付郵資。",
+        "yes_readers": 2
+      },
+      {
+        "id": "open_loops",
+        "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+        "required": true,
+        "yes": true,
+        "evidence": "[s54098] 兩天後希爾再記約七萬封寄出；首日高峰退了，窗口就不擠了嗎？",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+        "required": true,
+        "yes": true,
+        "evidence": "[s54120] 指示信原本說別等前置程序，卻漏掉一個英文「不」。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_recap",
+        "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。；讀者二：[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。 — The central fact that cash prepayment made the low January rate work is stated repeatedly: coins reach the counter before stamps, cash prepayment is required for",
+        "yes_readers": 0
+      },
+      {
+        "id": "chapters_are_events",
+        "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+        "required": false,
+        "yes": true,
+        "evidence": "[s54082] 果然，希爾隔天記大廳收錢辦法不足，現場混亂。",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+        "required": true,
+        "yes": true,
+        "evidence": "[outro] 想繼續看有出處的歷史故事，訂閱奇聞檔案局。",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+        "required": true,
+        "yes": true,
+        "evidence": "[s54006] 幾個月後，希爾會在一封指示信裡發現少了一個字。",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+        "required": true,
+        "yes": true,
+        "evidence": "[s54104] 還記得希爾備用的那片附膠紙嗎？現在窗口等的正是它。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+        "required": true,
+        "yes": true,
+        "evidence": "[s54013] 還有給什魯斯伯里親戚的信；希爾家又改走哪條路？ — The parcel workaround illustrates the old charging problem; the December trial tests whether prepayment and weighing can work; cutting, supply, and later mailbox use",
+        "yes_readers": 1
+      }
+    ],
+    "failed": [
+      {
+        "id": "one_line",
+        "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？；讀者二：[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？ — Within the body, s54082 jumps to Hill's next-day diary and the chaotic hall. s54083 explicitly returns to 10 January, then s54088–s54089 reaches the next-day d",
+        "yes_readers": 0
+      },
+      {
+        "id": "no_recap",
+        "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+        "required": true,
+        "yes": false,
+        "evidence": "讀者一：[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。；讀者二：[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。 — The central fact that cash prepayment made the low January rate work is stated repeatedly: coins reach the counter before stamps, cash prepayment is required for",
+        "yes_readers": 0
+      }
+    ],
+    "advisory": [],
+    "problems": [
+      "one_line：全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？（讀者一：[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？；讀者二：[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？ — Within the body, s54082 jumps to Hill's next-day diary and the chaotic hall. s54083 explicitly returns to 10 January, then s54088–s54089 reaches the next-day d）",
+      "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（讀者一：[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。；讀者二：[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。 — The central fact that cash prepayment made the low January rate work is stated repeatedly: coins reach the counter before stamps, cash prepayment is required for）"
+    ],
+    "readers": [
+      {
+        "passed": false,
+        "answers": [
+          {
+            "id": "scene_first",
+            "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54001] 想像一八四〇年一月十日，一名寄信人把信放在郵局櫃台。"
+          },
+          {
+            "id": "no_spoiler",
+            "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54006] 幾個月後，希爾會在一封指示信裡發現少了一個字。"
+          },
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？"
+          },
+          {
+            "id": "no_toc",
+            "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+            "required": true,
+            "yes": false,
+            "evidence": "[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？"
+          },
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54022] 在希爾草擬的辦法裡，寄件人最好先付郵資。"
+          },
+          {
+            "id": "open_loops",
+            "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54098] 兩天後希爾再記約七萬封寄出；首日高峰退了，窗口就不擠了嗎？"
+          },
+          {
+            "id": "payoffs",
+            "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54120] 指示信原本說別等前置程序，卻漏掉一個英文「不」。"
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。"
+          },
+          {
+            "id": "chapters_are_events",
+            "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+            "required": false,
+            "yes": true,
+            "evidence": "[s54082] 果然，希爾隔天記大廳收錢辦法不足，現場混亂。"
+          },
+          {
+            "id": "outro_no_next",
+            "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+            "required": true,
+            "yes": true,
+            "evidence": "[outro] 想繼續看有出處的歷史故事，訂閱奇聞檔案局。"
+          },
+          {
+            "id": "opening_hooks",
+            "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54006] 幾個月後，希爾會在一封指示信裡發現少了一個字。"
+          },
+          {
+            "id": "one_thread",
+            "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54104] 還記得希爾備用的那片附膠紙嗎？現在窗口等的正是它。"
+          },
+          {
+            "id": "no_detour",
+            "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s54018] 這是另一組通信，不是把倫敦九便士那封偷偷轉送。"
+          }
+        ],
+        "failed": [
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？"
+          },
+          {
+            "id": "no_toc",
+            "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+            "required": true,
+            "yes": false,
+            "evidence": "[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？"
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。"
+          },
+          {
+            "id": "no_detour",
+            "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s54018] 這是另一組通信，不是把倫敦九便士那封偷偷轉送。"
+          }
+        ],
+        "advisory": [],
+        "problems": [
+          "one_line：全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？（[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？）",
+          "no_toc：是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）（[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？）",
+          "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。）",
+          "no_detour：是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？（[s54018] 這是另一組通信，不是把倫敦九便士那封偷偷轉送。）"
+        ]
+      },
+      {
+        "passed": false,
+        "answers": [
+          {
+            "id": "scene_first",
+            "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54001] 想像一八四〇年一月十日，一名寄信人把信放在郵局櫃台。 — The first sentence places a sender at a post office counter on 10 January 1840; the clerk weighs the letter by the third sentence. It begins in an action rather t"
+          },
+          {
+            "id": "no_spoiler",
+            "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54001] 想像一八四〇年一月十日，一名寄信人把信放在郵局櫃台。 — The opening gives the premise of low postage without a stamp, then stops before revealing the diary count, the payment trouble, the missing word, or the old rate."
+          },
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？ — Within the body, s54082 jumps to Hill's next-day diary and the chaotic hall. s54083 explicitly returns to 10 January, then s54088–s54089 reaches the next-day d"
+          },
+          {
+            "id": "no_toc",
+            "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54042] 如果法律已寫好方向，誰來決定真正開始的日期？ — Transitions ask what happens in the postal story and answer it in the next chapter. There is no announcement of the video's chapter order or a list of upcoming sectio"
+          },
+          {
+            "id": "chapters_link",
+            "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54008] 在舊費率下，希爾家收一封倫敦來信，得付多少？ — Each chapter's first line picks up the prior chapter's concrete question: the nine-penny letter, prepayment, who sets the effective date, where lower prepaid postage "
+          },
+          {
+            "id": "open_loops",
+            "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54004] 希爾隔天的日記，會寫下一個驚人的寄件數字。 — The narration keeps concrete unanswered questions active across the run, including the next-day count, whether glued stamps beat envelopes, the January cash bottleneck"
+          },
+          {
+            "id": "payoffs",
+            "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54004] 希爾隔天的日記，會寫下一個驚人的寄件數字。 — The long waits return to their objects and add answers: Hill's next-day diary gives 112,000 letters; the instruction letter lost the English negative; demand favors gl"
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。 — The central fact that cash prepayment made the low January rate work is stated repeatedly: coins reach the counter before stamps, cash prepayment is required for"
+          },
+          {
+            "id": "chapters_are_events",
+            "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+            "required": false,
+            "yes": true,
+            "evidence": "[s54001] 想像一八四〇年一月十日，一名寄信人把信放在郵局櫃台。 — The headings describe an old nine-penny letter and diverted parcel, Hill's envelope plan, the August act, December's trial, January's crowds, and May's stamp use."
+          },
+          {
+            "id": "outro_no_next",
+            "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54997] 看到一封沒貼郵票、卻已付郵資的信，你還會覺得奇怪嗎？ — The ending asks about a prepaid unstamped letter, points to source links, and asks for a subscription. It does not mention a next video, episode, or file."
+          },
+          {
+            "id": "opening_hooks",
+            "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54001] 想像一八四〇年一月十日，一名寄信人把信放在郵局櫃台。 — After the counter scene, the opening withholds at least three later results: Hill's next-day count, the crowd's payment trouble, and the missing word in an instru"
+          },
+          {
+            "id": "one_thread",
+            "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54003] 職員把信放上磅秤；這封信要怎樣算已付？ — The same practical problem runs through the episode: how a cheaper letter can be charged and shown as paid. Old rates lead to Hill's prepayment plan, legal authority, a "
+          },
+          {
+            "id": "no_detour",
+            "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+            "required": true,
+            "yes": true,
+            "evidence": "[s54013] 還有給什魯斯伯里親戚的信；希爾家又改走哪條路？ — The parcel workaround illustrates the old charging problem; the December trial tests whether prepayment and weighing can work; cutting, supply, and later mailbox use"
+          }
+        ],
+        "failed": [
+          {
+            "id": "one_line",
+            "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？ — Within the body, s54082 jumps to Hill's next-day diary and the chaotic hall. s54083 explicitly returns to 10 January, then s54088–s54089 reaches the next-day d"
+          },
+          {
+            "id": "no_recap",
+            "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+            "required": true,
+            "yes": false,
+            "evidence": "[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。 — The central fact that cash prepayment made the low January rate work is stated repeatedly: coins reach the counter before stamps, cash prepayment is required for"
+          }
+        ],
+        "advisory": [],
+        "problems": [
+          "one_line：全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？（[s54083] 回到一月十日：全國一便士剛上路，希爾會猜那一夜寄出多少封？ — Within the body, s54082 jumps to Hill's next-day diary and the chaotic hall. s54083 explicitly returns to 10 January, then s54088–s54089 reaches the next-day d）",
+          "no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（[s54146] 一月先用現金把低郵資辦起來；郵票才讓付款證明跟著信走。 — The central fact that cash prepayment made the low January rate work is stated repeatedly: coins reach the counter before stamps, cash prepayment is required for）"
+        ]
+      }
+    ]
+  }
+}

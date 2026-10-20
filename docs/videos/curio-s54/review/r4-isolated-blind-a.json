@@ -1,0 +1,104 @@
+{
+  "reviewer": "R4 isolated blind A",
+  "scope": "script.md and NARRATIVE_PANEL only",
+  "script_sha256": "cef9c47c8a7bc980b327e4753041821a7e35ac2b9fe1ec17581f70441ea40b2d",
+  "panel": "NARRATIVE_PANEL, tools/video/core/narrative.mjs:266-280",
+  "verdict": "fail",
+  "yes_count": 9,
+  "question_count": 13,
+  "required_yes_count": 8,
+  "required_question_count": 12,
+  "results": [
+    {
+      "id": "scene_first",
+      "required": true,
+      "yes": true,
+      "evidence": ["s54001", "s54002"],
+      "reason": "The first line places a sender at a post office counter on 10 January 1840, taking an action before the problem appears."
+    },
+    {
+      "id": "no_spoiler",
+      "required": true,
+      "yes": false,
+      "evidence": ["s54006", "s54119", "s54120", "s54121"],
+      "reason": "The opening states that an instruction missing one word left receiving offices without stamps. The later May chapter presents that shortage and its omitted word as the incident's result. The opening does not stop before that result."
+    },
+    {
+      "id": "one_line",
+      "required": true,
+      "yes": true,
+      "evidence": ["s54008", "s54009", "s54030", "s54049", "s54064", "s54087", "s54111"],
+      "reason": "After the January teaser, the story starts with the old fees and moves through Hill's proposal, the August law, December transition, January cash prepayment, and May stamps. No episode is retold as a second storyline."
+    },
+    {
+      "id": "no_toc",
+      "required": true,
+      "yes": true,
+      "evidence": ["s54008", "s54029", "s54048", "s54109"],
+      "reason": "The chapter turns ask specific story questions. They do not announce the video's sequence or enumerate upcoming sections."
+    },
+    {
+      "id": "chapters_link",
+      "required": true,
+      "yes": true,
+      "evidence": ["s54008", "s54009", "s54029", "s54030", "s54048", "s54049", "s54063", "s54064", "s54085", "s54086", "s54109", "s54110"],
+      "reason": "Each next chapter begins with the prior question's object or an action that advances its answer: old London fee, Hill's payment plan, Treasury start date, first regional transition, counter cash trouble, and Treasury's April timing decision."
+    },
+    {
+      "id": "open_loops",
+      "required": true,
+      "yes": true,
+      "evidence": ["s54004", "s54007", "s54023", "s54041", "s54063", "s54085", "s54092", "s54109", "s54118", "s54133", "s54142"],
+      "reason": "Unanswered concrete questions recur throughout the body, with no apparent 90-second span left without one."
+    },
+    {
+      "id": "payoffs",
+      "required": true,
+      "yes": false,
+      "evidence": ["s54113", "s54114", "s54116"],
+      "reason": "The question asks whether the department will permit direct stamp sales at the three General Post Offices. The answer only says it initially opposed that sale. The later sales figure is for the Stamp Office, so the three-office decision is never resolved."
+    },
+    {
+      "id": "no_recap",
+      "required": true,
+      "yes": false,
+      "evidence": ["s54111", "s54116", "s54118", "s54145", "s54146"],
+      "reason": "May 1 sales and May 6 permitted use are stated at s54111 and repeated at s54116 and s54118. The final two body scenes also restate the same low-rate-before-stamps conclusion without a marked callback."
+    },
+    {
+      "id": "chapters_are_events",
+      "required": false,
+      "yes": true,
+      "evidence": ["s54001", "s54009", "s54030", "s54049", "s54064", "s54086", "s54110"],
+      "reason": "The headings identify a counter collecting one penny, costly letters and a detoured parcel, Hill favoring envelopes, a law opening payment routes, the four-penny trial, a January crowd, and stamps becoming usable in May."
+    },
+    {
+      "id": "outro_no_next",
+      "required": true,
+      "yes": true,
+      "evidence": ["outro"],
+      "reason": "The outro asks which original text the viewer would check and invites a subscription; it does not promise another video, episode, or file."
+    },
+    {
+      "id": "opening_hooks",
+      "required": true,
+      "yes": true,
+      "evidence": ["s54004", "s54005", "s54007", "s54008"],
+      "reason": "After the first counter scene, the opening holds back Hill's diary number, the cash-collection trouble, the missing word, and the old London rate."
+    },
+    {
+      "id": "one_thread",
+      "required": true,
+      "yes": true,
+      "evidence": ["s54002", "s54034", "s54081", "s54087", "s54111", "s54143"],
+      "reason": "The identifiable problem is how to prepay the lower rate without a ready stamp. The sticky paper proposal, interim cash collection, authorization date, and later mailbox use all advance that problem."
+    },
+    {
+      "id": "no_detour",
+      "required": true,
+      "yes": false,
+      "evidence": ["s54024", "s54025", "s54026", "s54027", "s54028", "s54068", "s54069"],
+      "reason": "The Wallace and committee passage spends five scenes on authorship, report count, local correspondence, daytime mail service, and distance pricing. Those details do not advance why the January rate preceded usable stamps. The added bridge, border, and London-boundary charges likewise do not explain that delay."
+    }
+  ]
+}
