@@ -103,6 +103,21 @@
       "what": "資產減損及遣散也列入預估"
     },
     {
+      "setup": "x160325d",
+      "payoff": "x160401",
+      "what": "列帳和實際關門進度不是同一個時點"
+    },
+    {
+      "setup": "x160329d",
+      "payoff": "x160331a",
+      "what": "關店以外的 FY2009 美國直營新開店計畫"
+    },
+    {
+      "setup": "x160331c",
+      "payoff": "x160405",
+      "what": "FY2008 關店是否先使美國直營淨店數縮小"
+    },
+    {
       "setup": "x160332",
       "payoff": "x160401",
       "what": "九月底七月名單實際關店數"
@@ -300,7 +315,7 @@
       "id": "x16-b01-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in a plain small office, one anonymous director holds blank planning folio under selection paper, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "prompt": "Medium close-up, pan right in a plain small office, one anonymous director holds blank planning folio under selection paper, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
         "camera": "Medium close-up, pan right",
         "visual": "still"
       },
@@ -387,11 +402,34 @@
       "id": "x16-b02-s02",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at an anonymous cafe counter, one anonymous clerk adds shop blocks to plain shelf, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "prompt": "Close-up, pull out at an anonymous cafe counter, one anonymous planner moves older shop blocks across blank map, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
         "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
+        {
+          "id": "x160202a",
+          "text": "他上次任執行長時，公司走過上市與擴張。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b02-s03",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, pan left at an anonymous cafe counter, one anonymous director turns from map to open storefront, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160202b",
+          "text": "當年擴張的掌舵人，這回要面對已開的店。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
         {
           "id": "x160203",
           "text": "前一財年，美國直營店仍在增加。",
@@ -401,7 +439,7 @@
       ]
     },
     {
-      "id": "x16-b02-s03",
+      "id": "x16-b02-s04",
       "template": "stats",
       "data": {
         "title": "美國同店銷售",
@@ -423,11 +461,11 @@
       ]
     },
     {
-      "id": "x16-b02-s04",
+      "id": "x16-b02-s05",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous cafe counter, one anonymous planner studies two differently sized ledgers, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium close-up, pan right at an anonymous cafe counter, one anonymous planner studies two differently sized ledgers, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -446,11 +484,11 @@
       ]
     },
     {
-      "id": "x16-b02-s05",
+      "id": "x16-b02-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at an anonymous cafe counter, one anonymous barista arranges unmarked tools and cups, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Overhead shot, tilt down at an anonymous cafe counter, one anonymous barista arranges unmarked tools and cups, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -469,11 +507,11 @@
       ]
     },
     {
-      "id": "x16-b02-s06",
+      "id": "x16-b02-s07",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at an anonymous cafe counter, one anonymous director places coins in second unmarked tray, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Low-angle shot, tilt up at an anonymous cafe counter, one anonymous director places coins in second unmarked tray, with head turned downward, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -492,11 +530,11 @@
       ]
     },
     {
-      "id": "x16-b02-s07",
+      "id": "x16-b02-s08",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous cafe counter, one anonymous clerk leaves results column blank, with head turned downward, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, push in at an anonymous cafe counter, one anonymous clerk leaves results column blank, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -515,46 +553,17 @@
       ]
     },
     {
-      "id": "x16-b02-s08",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot, push in at an anonymous cafe counter, one anonymous clerk studies blank individual shop cards, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
-        "camera": "Medium shot, push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x160213",
-          "text": "但此時還沒有逐店可查的地址。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160214",
-          "text": "那張示意店卡，會因哪一筆帳被圈？",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，留半拍讓問題落地"
-        }
-      ]
-    },
-    {
       "id": "x16-b02-s09",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at an anonymous cafe counter, one anonymous analyst encircles one worn shop token, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "prompt": "Close-up, pull out at an anonymous cafe counter, one anonymous clerk moves shop card from map to ledger, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
         "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160215",
-          "text": "一月公告，只把「表現不佳」圈出來。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160216",
-          "text": "一家店的帳，不會寫在總店數裡。",
+          "id": "x160212a",
+          "text": "好把目光從展店速度，拉回每間店的帳。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -564,20 +573,20 @@
       "id": "x16-b02-s10",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous cafe counter, one anonymous planner holds one key apart from shop shelf, in side-profile view, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "prompt": "Wide shot, pan left at an anonymous cafe counter, one anonymous owner turns unmarked shop card over, in side-profile view, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
         "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160217",
-          "text": "店愈開愈多，不代表每個地址划算。",
+          "id": "x160212b",
+          "text": "對已開門的示意店卡，這是另一種盤點。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
         {
-          "id": "x160218",
-          "text": "舒茲也說，沒有一招能隔夜解決問題。",
+          "id": "x160213",
+          "text": "但此時還沒有逐店可查的地址。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -587,14 +596,83 @@
       "id": "x16-b02-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at an anonymous cafe counter, one anonymous barista opens generic cafe doorway, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "prompt": "Medium close-up, pan right at an anonymous cafe counter, one anonymous clerk sets unmarked shop card on desk, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
         "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
         {
+          "id": "x160214",
+          "text": "那張示意店卡，會因哪一筆帳被圈？",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+        },
+        {
+          "id": "x160215",
+          "text": "一月公告，只把「表現不佳」圈出來。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b02-s12",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot, tilt down at an anonymous cafe counter, one anonymous clerk separates shop ledger from big shelf, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160216",
+          "text": "一家店的帳，不會寫在總店數裡。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160217",
+          "text": "店愈開愈多，不代表每個地址划算。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b02-s13",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot, tilt up at an anonymous cafe counter, one anonymous director sets several blank tools on desk, in three-quarter view, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160218",
+          "text": "舒茲也說，沒有一招能隔夜解決問題。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160218a",
+          "text": "他說，成敗還得看這些目標如何執行。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b02-s14",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, push in at an anonymous cafe counter, one anonymous barista opens generic cafe doorway, in side-profile view, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
           "id": "x160219",
-          "text": "計畫說要開慢，舊店卻仍開著門。",
+          "text": "計畫說要開慢，已開的店仍開著門。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
@@ -607,11 +685,11 @@
       ]
     },
     {
-      "id": "x16-b02-s12",
+      "id": "x16-b02-s15",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at an anonymous cafe counter, one anonymous barista practises with plain counter tool, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Close-up, pull out at an anonymous cafe counter, one anonymous barista practises with plain counter tool, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -630,11 +708,11 @@
       ]
     },
     {
-      "id": "x16-b02-s13",
+      "id": "x16-b02-s16",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous cafe counter, one anonymous clerk balances unmarked shop card between folios, in three-quarter view, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left at an anonymous cafe counter, one anonymous clerk balances unmarked shop card between folios, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -653,11 +731,11 @@
       ]
     },
     {
-      "id": "x16-b02-s14",
+      "id": "x16-b02-s17",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in at an anonymous cafe counter, one anonymous analyst holds blank ruler beside shop card, in side-profile view, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Medium close-up, pan right at an anonymous cafe counter, one anonymous analyst holds blank ruler beside shop card, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -676,11 +754,11 @@
       ]
     },
     {
-      "id": "x16-b02-s15",
+      "id": "x16-b02-s18",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at an anonymous cafe counter, one anonymous analyst places plain ruler beside selection ring, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, tilt down at an anonymous cafe counter, one anonymous analyst places plain ruler beside selection ring, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -696,8 +774,8 @@
       "id": "x16-b03-s01",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a city planning studio, one anonymous clerk lays unmarked shop card on assessment table, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous clerk lays unmarked shop card on assessment table, with head turned downward, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -720,8 +798,31 @@
       "id": "x16-b03-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous planner nests small shop-token ring inside large ring, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Medium shot, push in in a city planning studio, one anonymous planner spreads plain shop tokens across blank map, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160302a",
+          "text": "入選門市散在美國各大市場。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160302b",
+          "text": "這張示意卡，不指向西雅圖某個地址。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s03",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, pull out in a city planning studio, one anonymous planner nests small shop-token ring inside large ring, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -740,11 +841,11 @@
       ]
     },
     {
-      "id": "x16-b03-s03",
+      "id": "x16-b03-s04",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous owner weighs new-looking key in palm, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Wide shot, pan left in a city planning studio, one anonymous owner weighs new-looking key in palm, in side-profile view, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -757,11 +858,11 @@
       ]
     },
     {
-      "id": "x16-b03-s04",
+      "id": "x16-b03-s05",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous analyst encloses selected shop tokens, with head turned downward, soft evening light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous analyst encloses selected shop tokens, with head turned downward, soft lamp light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -774,11 +875,11 @@
       ]
     },
     {
-      "id": "x16-b03-s05",
+      "id": "x16-b03-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a city planning studio, one anonymous planner leaves many tokens outside ring, in front view, eyes toward viewer, mild window light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous planner leaves many tokens outside ring, in front view, eyes toward viewer, overcast daylight. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -791,11 +892,11 @@
       ]
     },
     {
-      "id": "x16-b03-s06",
+      "id": "x16-b03-s07",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in a city planning studio, one anonymous owner opens blank shop assessment folio, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous owner opens blank shop assessment folio, in three-quarter view, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -804,15 +905,21 @@
           "text": "公司真正拿來評估的是什麼？",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，留半拍讓問題落地"
+        },
+        {
+          "id": "x160308a",
+          "text": "管理層與各地營運主管做了廣泛盤點。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
     {
-      "id": "x16-b03-s07",
+      "id": "x16-b03-s08",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a city planning studio, one anonymous analyst opens separate blank shop ledger, in side-profile view, muted afternoon light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, push in in a city planning studio, one anonymous analyst opens separate blank shop ledger, in side-profile view, mild window light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -825,11 +932,11 @@
       ]
     },
     {
-      "id": "x16-b03-s08",
+      "id": "x16-b03-s09",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous planner compares two blank future ledgers, with head turned downward, soft lamp light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Close-up, pull out in a city planning studio, one anonymous planner compares two blank future ledgers, with head turned downward, soft grey morning light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -842,11 +949,11 @@
       ]
     },
     {
-      "id": "x16-b03-s09",
+      "id": "x16-b03-s10",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous planner moves plain storefront model on map, in front view, eyes toward viewer, overcast daylight. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Wide shot, pan left in a city planning studio, one anonymous planner moves plain storefront model on map, in front view, eyes toward viewer, muted afternoon light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -859,11 +966,11 @@
       ]
     },
     {
-      "id": "x16-b03-s10",
+      "id": "x16-b03-s11",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous analyst studies unmarked horizon chart, in three-quarter view, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous analyst studies unmarked horizon chart, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -882,11 +989,11 @@
       ]
     },
     {
-      "id": "x16-b03-s11",
+      "id": "x16-b03-s12",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a city planning studio, one anonymous owner sets new-looking key beside separate blank ledgers, in side-profile view, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous owner sets new-looking key beside separate blank ledgers, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -905,11 +1012,11 @@
       ]
     },
     {
-      "id": "x16-b03-s12",
+      "id": "x16-b03-s13",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in a city planning studio, one anonymous clerk turns over empty individual cards, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous clerk turns over empty individual cards, with head turned downward, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -928,11 +1035,34 @@
       ]
     },
     {
-      "id": "x16-b03-s13",
+      "id": "x16-b03-s14",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a city planning studio, one anonymous barista looks at open generic doorway, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, push in in a city planning studio, one anonymous planner moves effort tokens toward other plain shop blocks, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160317a",
+          "text": "公司說，要把心力留給較能改善體驗的店。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160317b",
+          "text": "店卡被圈，不等於鑰匙立刻能交回。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s15",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, pull out in a city planning studio, one anonymous barista looks at open generic doorway, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -951,11 +1081,11 @@
       ]
     },
     {
-      "id": "x16-b03-s14",
+      "id": "x16-b03-s16",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous planner turns blank calendar page, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Wide shot, pan left in a city planning studio, one anonymous planner turns blank calendar page, in side-profile view, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -974,11 +1104,11 @@
       ]
     },
     {
-      "id": "x16-b03-s15",
+      "id": "x16-b03-s17",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous planner rests closed key atop lease folder, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous planner rests closed key atop lease folder, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -997,11 +1127,11 @@
       ]
     },
     {
-      "id": "x16-b03-s16",
+      "id": "x16-b03-s18",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous analyst opens blank cost estimate ledger, with head turned downward, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous analyst opens blank cost estimate ledger, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1020,7 +1150,64 @@
       ]
     },
     {
-      "id": "x16-b03-s17",
+      "id": "x16-b03-s19",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous accountant marks third blank calendar leaf, in three-quarter view, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160325a",
+          "text": "資產沖銷，預計記在當年第三季。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160325b",
+          "text": "退租費用多預計在第四季與隔年上半年入帳。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s20",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, push in in a city planning studio, one anonymous planner separates key and blank cost folios, in side-profile view, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160325c",
+          "text": "同一扇門，落鎖日不等於所有費用入帳日。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s21",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, pull out in a city planning studio, one anonymous owner weighs closed key beside cost folio, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160325d",
+          "text": "帳先動了，門要到何時才算真正關閉？",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s22",
       "template": "stats",
       "data": {
         "title": "關店預計稅前費用",
@@ -1042,11 +1229,11 @@
       ]
     },
     {
-      "id": "x16-b03-s18",
+      "id": "x16-b03-s23",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a city planning studio, one anonymous clerk leaves result folio blank beside estimate, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Wide shot, pan left in a city planning studio, one anonymous clerk leaves result folio blank beside estimate, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1058,18 +1245,41 @@
         },
         {
           "id": "x160328",
-          "text": "全職與兼職員工的職位都會受影響。",
+          "text": "關店處的全、兼職職位將被裁撤。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
     {
-      "id": "x16-b03-s19",
+      "id": "x16-b03-s24",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in a city planning studio, one anonymous planner points toward second generic cafe, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous barista rests unmarked apron on empty chair, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160328a",
+          "text": "舒茲承認，關店會打亂員工的生活。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160328b",
+          "text": "那張店卡背後，不只是一枚地圖圖釘。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s25",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous planner points toward second generic cafe, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1080,6 +1290,52 @@
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
         {
+          "id": "x160329a",
+          "text": "公司也說，會指引顧客查找其他門市。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s26",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous barista and customer face separate unmarked paths, with head turned downward, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160329b",
+          "text": "若門關了，員工與顧客都面臨下一站。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160329c",
+          "text": "顧客有疑問，公司也留下客服管道。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s27",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, push in in a city planning studio, one anonymous planner holds unopened shop keys beside old card, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160329d",
+          "text": "已開的店要處理，下年新店又怎麼辦？",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+        },
+        {
           "id": "x160330",
           "text": "希望不是已經安置完的名單。",
           "pause_after_ms": 0,
@@ -1088,11 +1344,11 @@
       ]
     },
     {
-      "id": "x16-b03-s20",
+      "id": "x16-b03-s28",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a city planning studio, one anonymous clerk carries unmarked shop card beside lease folder, in side-profile view, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Close-up, pull out in a city planning studio, one anonymous clerk carries unmarked shop card beside lease folder, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1102,6 +1358,46 @@
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
+        {
+          "id": "x160331a",
+          "text": "隔年美國直營新店，當時預計少於兩百。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s29",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, pan left in a city planning studio, one anonymous clerk leaves next-year actual column blank, in side-profile view, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160331b",
+          "text": "這是新開店計畫，也還不是實開數。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160331c",
+          "text": "但回到當年，關店會讓版圖先縮嗎？",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s30",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous clerk watches selected tokens on open ledger, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "x160332",
           "text": "名單畫出後，實際關了幾扇門？",
@@ -1137,8 +1433,31 @@
       "id": "x16-b04-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at a street corner storefront, one anonymous clerk separates closed and still-open shop tokens, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Overhead shot, tilt down at a street corner storefront, one anonymous clerk shifts selected tokens on blank calendar, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160401a",
+          "text": "年報說，這批關店在當年第四季才啟動。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160401b",
+          "text": "從公告到落鎖，名單已走過一段時間。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b04-s03",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot, tilt up at a street corner storefront, one anonymous clerk separates closed and still-open shop tokens, in three-quarter view, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1157,11 +1476,11 @@
       ]
     },
     {
-      "id": "x16-b04-s03",
+      "id": "x16-b04-s04",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at a street corner storefront, one anonymous owner looks at crowded shop-token shelf, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium shot, push in at a street corner storefront, one anonymous owner looks at crowded shop-token shelf, in side-profile view, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1174,7 +1493,7 @@
       ]
     },
     {
-      "id": "x16-b04-s04",
+      "id": "x16-b04-s05",
       "template": "stats",
       "data": {
         "title": "美國直營店年度淨變化",
@@ -1196,11 +1515,11 @@
       ]
     },
     {
-      "id": "x16-b04-s05",
+      "id": "x16-b04-s06",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a street corner storefront, one anonymous clerk adds fresh shop blocks beside closed tray, in three-quarter view, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Close-up, pull out at a street corner storefront, one anonymous clerk adds fresh shop blocks beside closed tray, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1219,11 +1538,11 @@
       ]
     },
     {
-      "id": "x16-b04-s06",
+      "id": "x16-b04-s07",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in at a street corner storefront, one anonymous planner compares two blank annual calendars, in side-profile view, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Wide shot, pan left at a street corner storefront, one anonymous planner compares two blank annual calendars, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1242,11 +1561,11 @@
       ]
     },
     {
-      "id": "x16-b04-s07",
+      "id": "x16-b04-s08",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a street corner storefront, one anonymous analyst points at shorter net-growth block tower, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium close-up, pan right at a street corner storefront, one anonymous analyst points at shorter net-growth block tower, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1265,11 +1584,34 @@
       ]
     },
     {
-      "id": "x16-b04-s08",
+      "id": "x16-b04-s09",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a street corner storefront, one anonymous barista studies generic cafe counter, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, tilt down at a street corner storefront, one anonymous planner overlays open shop blocks on closed tray, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160412a",
+          "text": "只翻版圖那頁，已關的店會被新店蓋住。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160412b",
+          "text": "示意卡的去留，得回七月那疊追。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b04-s10",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot, tilt up at a street corner storefront, one anonymous barista studies generic cafe counter, with head turned downward, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1288,11 +1630,11 @@
       ]
     },
     {
-      "id": "x16-b04-s09",
+      "id": "x16-b04-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at a street corner storefront, one anonymous planner arranges new shop blocks beside cup, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Medium shot, push in at a street corner storefront, one anonymous planner arranges new shop blocks beside cup, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1311,7 +1653,7 @@
       ]
     },
     {
-      "id": "x16-b04-s10",
+      "id": "x16-b04-s12",
       "template": "stats",
       "data": {
         "title": "美國同店銷售",
@@ -1333,11 +1675,11 @@
       ]
     },
     {
-      "id": "x16-b04-s11",
+      "id": "x16-b04-s13",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at a street corner storefront, one anonymous analyst selects mature shop tokens, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Close-up, pull out at a street corner storefront, one anonymous analyst selects mature shop tokens, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1356,11 +1698,11 @@
       ]
     },
     {
-      "id": "x16-b04-s12",
+      "id": "x16-b04-s14",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a street corner storefront, one anonymous analyst holds two unlike plain tiles, with head turned downward, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left at a street corner storefront, one anonymous analyst holds two unlike plain tiles, in side-profile view, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1379,11 +1721,11 @@
       ]
     },
     {
-      "id": "x16-b04-s13",
+      "id": "x16-b04-s15",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in at a street corner storefront, one anonymous clerk leaves selected shop tokens in tray, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Medium close-up, pan right at a street corner storefront, one anonymous clerk leaves selected shop tokens in tray, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1402,11 +1744,11 @@
       ]
     },
     {
-      "id": "x16-b04-s14",
+      "id": "x16-b04-s16",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a street corner storefront, one anonymous director puts fresh plain folio on desk, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, tilt down at a street corner storefront, one anonymous director puts fresh plain folio on desk, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1428,8 +1770,8 @@
       "id": "x16-b05-s01",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in an unbranded archive aisle, one anonymous planner circles separate shop-token group, in side-profile view, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up in an unbranded archive aisle, one anonymous planner circles separate shop-token group, in three-quarter view, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1452,8 +1794,8 @@
       "id": "x16-b05-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in an unbranded archive aisle, one anonymous clerk opens first plain selection folio, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Medium shot, push in in an unbranded archive aisle, one anonymous clerk opens first plain selection folio, in side-profile view, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1475,8 +1817,8 @@
       "id": "x16-b05-s03",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in an unbranded archive aisle, one anonymous analyst holds nearly empty first selection tray, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Close-up, pull out in an unbranded archive aisle, one anonymous analyst holds nearly empty first selection tray, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1520,8 +1862,8 @@
       "id": "x16-b05-s05",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in an unbranded archive aisle, one anonymous analyst holds two rings separately, in three-quarter view, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Wide shot, pan left in an unbranded archive aisle, one anonymous analyst holds two rings separately, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1543,14 +1885,37 @@
       "id": "x16-b05-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in an unbranded archive aisle, one anonymous accountant opens plain lease-exit folder, in side-profile view, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Medium close-up, pan right in an unbranded archive aisle, one anonymous accountant opens plain lease-exit folder, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160511",
           "text": "當年重整仍有租約退出成本。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160511a",
+          "text": "年報說，關店增加，退租相關費用也更高。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b05-s07",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot, tilt down in an unbranded archive aisle, one anonymous clerk sets closed key atop unfinished cost folio, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160511b",
+          "text": "門關後，那張店卡還有成本留在帳上。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
@@ -1563,11 +1928,11 @@
       ]
     },
     {
-      "id": "x16-b05-s07",
+      "id": "x16-b05-s08",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in an unbranded archive aisle, one anonymous owner points to shop-token shelf, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up in an unbranded archive aisle, one anonymous owner points to shop-token shelf, with head turned downward, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1586,11 +1951,11 @@
       ]
     },
     {
-      "id": "x16-b05-s08",
+      "id": "x16-b05-s09",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in an unbranded archive aisle, one anonymous analyst balances added and removed tokens, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, push in in an unbranded archive aisle, one anonymous analyst balances added and removed tokens, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1603,11 +1968,11 @@
       ]
     },
     {
-      "id": "x16-b05-s09",
+      "id": "x16-b05-s10",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in an unbranded archive aisle, one anonymous clerk holds whole shelf apart from two rings, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Close-up, pull out in an unbranded archive aisle, one anonymous clerk holds whole shelf apart from two rings, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1620,11 +1985,11 @@
       ]
     },
     {
-      "id": "x16-b05-s10",
+      "id": "x16-b05-s11",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in an unbranded archive aisle, one anonymous barista studies thinning generic queue, in side-profile view, overcast daylight. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Wide shot, pan left in an unbranded archive aisle, one anonymous barista studies thinning generic queue, in side-profile view, muted afternoon light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1637,7 +2002,7 @@
       ]
     },
     {
-      "id": "x16-b05-s11",
+      "id": "x16-b05-s12",
       "template": "stats",
       "data": {
         "title": "美國同店銷售",
@@ -1659,11 +2024,11 @@
       ]
     },
     {
-      "id": "x16-b05-s12",
+      "id": "x16-b05-s13",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in an unbranded archive aisle, one anonymous clerk removes queue-shaped tokens, with head turned downward, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium close-up, pan right in an unbranded archive aisle, one anonymous clerk removes queue-shaped tokens, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1682,11 +2047,11 @@
       ]
     },
     {
-      "id": "x16-b05-s13",
+      "id": "x16-b05-s14",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in an unbranded archive aisle, one anonymous barista watches quiet generic counter, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Overhead shot, tilt down in an unbranded archive aisle, one anonymous barista watches quiet generic counter, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1705,11 +2070,11 @@
       ]
     },
     {
-      "id": "x16-b05-s14",
+      "id": "x16-b05-s15",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in an unbranded archive aisle, one anonymous analyst keeps shop ring beside queue tokens, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up in an unbranded archive aisle, one anonymous analyst keeps shop ring beside queue tokens, in three-quarter view, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1728,11 +2093,11 @@
       ]
     },
     {
-      "id": "x16-b05-s15",
+      "id": "x16-b05-s16",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in an unbranded archive aisle, one anonymous barista watches anonymous queue return, in side-profile view, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, push in in an unbranded archive aisle, one anonymous barista watches anonymous queue return, in side-profile view, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1777,8 +2142,8 @@
       "id": "x16-b06-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right beside a quiet neighborhood sidewalk, one anonymous clerk encloses mature shop tokens, with head turned downward, soft lamp light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Close-up, pull out beside a quiet neighborhood sidewalk, one anonymous clerk encloses mature shop tokens, with head turned downward, soft grey morning light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1794,8 +2159,8 @@
       "id": "x16-b06-s03",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down beside a quiet neighborhood sidewalk, one anonymous planner leaves closed keys beside separate folio, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Wide shot, pan left beside a quiet neighborhood sidewalk, one anonymous planner leaves closed keys beside separate folio, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1811,8 +2176,8 @@
       "id": "x16-b06-s04",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up beside a quiet neighborhood sidewalk, one anonymous analyst touches extra blank calendar leaf, in three-quarter view, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium close-up, pan right beside a quiet neighborhood sidewalk, one anonymous analyst touches extra blank calendar leaf, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1828,8 +2193,8 @@
       "id": "x16-b06-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in beside a quiet neighborhood sidewalk, one anonymous clerk moves extra leaf outside ring, in side-profile view, mild window light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Overhead shot, tilt down beside a quiet neighborhood sidewalk, one anonymous clerk moves extra leaf outside ring, in side-profile view, overcast daylight. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1845,8 +2210,8 @@
       "id": "x16-b06-s06",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out beside a quiet neighborhood sidewalk, one anonymous barista welcomes anonymous customer, with head turned downward, soft grey morning light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up beside a quiet neighborhood sidewalk, one anonymous barista welcomes anonymous customer, with head turned downward, soft evening light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1862,8 +2227,8 @@
       "id": "x16-b06-s07",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left beside a quiet neighborhood sidewalk, one anonymous analyst holds queue and cup tokens, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, push in beside a quiet neighborhood sidewalk, one anonymous analyst holds queue and cup tokens, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1885,8 +2250,8 @@
       "id": "x16-b06-s08",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right beside a quiet neighborhood sidewalk, one anonymous clerk sets extra coins beside plain cup, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Close-up, pull out beside a quiet neighborhood sidewalk, one anonymous clerk sets extra coins beside plain cup, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1902,8 +2267,8 @@
       "id": "x16-b06-s09",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down beside a quiet neighborhood sidewalk, one anonymous analyst joins queue and cup tokens, in side-profile view, overcast daylight. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Wide shot, pan left beside a quiet neighborhood sidewalk, one anonymous analyst joins queue and cup tokens, in side-profile view, muted afternoon light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1919,8 +2284,8 @@
       "id": "x16-b06-s10",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up beside a quiet neighborhood sidewalk, one anonymous owner weighs closed key beside mature tokens, with head turned downward, soft evening light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium close-up, pan right beside a quiet neighborhood sidewalk, one anonymous owner weighs closed key beside mature tokens, with head turned downward, soft lamp light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1936,8 +2301,8 @@
       "id": "x16-b06-s11",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in beside a quiet neighborhood sidewalk, one anonymous analyst leaves closed tokens outside comparison, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Overhead shot, tilt down beside a quiet neighborhood sidewalk, one anonymous analyst leaves closed tokens outside comparison, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1959,8 +2324,8 @@
       "id": "x16-b06-s12",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out beside a quiet neighborhood sidewalk, one anonymous barista adjusts plain counter tools, in three-quarter view, soft grey morning light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up beside a quiet neighborhood sidewalk, one anonymous barista adjusts plain counter tools, in three-quarter view, soft evening light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1976,8 +2341,8 @@
       "id": "x16-b06-s13",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left beside a quiet neighborhood sidewalk, one anonymous barista serves anonymous customer efficiently, in side-profile view, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, push in beside a quiet neighborhood sidewalk, one anonymous barista serves anonymous customer efficiently, in side-profile view, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1993,8 +2358,8 @@
       "id": "x16-b06-s14",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right beside a quiet neighborhood sidewalk, one anonymous analyst keeps several plain factors on desk, with head turned downward, soft lamp light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Close-up, pull out beside a quiet neighborhood sidewalk, one anonymous analyst keeps several plain factors on desk, with head turned downward, soft grey morning light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -2010,8 +2375,31 @@
       "id": "x16-b06-s15",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down beside a quiet neighborhood sidewalk, one anonymous clerk moves selected tokens into closed tray, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Wide shot, pan left beside a quiet neighborhood sidewalk, one anonymous owner sets closed key beside sales ledger, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers show no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160616a",
+          "text": "店卡於是有兩個問題：關了嗎，有何效果？",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+        },
+        {
+          "id": "x160616b",
+          "text": "前者能核對，後者還缺那條對照線。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b06-s16",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up, pan right beside a quiet neighborhood sidewalk, one anonymous clerk moves selected tokens into closed tray, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -2030,11 +2418,11 @@
       ]
     },
     {
-      "id": "x16-b06-s16",
+      "id": "x16-b06-s17",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up beside a quiet neighborhood sidewalk, one anonymous analyst sets two blank annual folios side by side, in three-quarter view, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, tilt down beside a quiet neighborhood sidewalk, one anonymous analyst sets two blank annual folios side by side, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -2053,11 +2441,11 @@
       ]
     },
     {
-      "id": "x16-b06-s17",
+      "id": "x16-b06-s18",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in beside a quiet neighborhood sidewalk, one anonymous clerk moves more selected cards into closed tray, in side-profile view, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Low-angle shot, tilt up beside a quiet neighborhood sidewalk, one anonymous clerk moves more selected cards into closed tray, with head turned downward, soft evening light. Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -2076,11 +2464,11 @@
       ]
     },
     {
-      "id": "x16-b06-s18",
+      "id": "x16-b06-s19",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out beside a quiet neighborhood sidewalk, one anonymous planner holds separate second ring outside first, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium shot, push in beside a quiet neighborhood sidewalk, one anonymous planner holds separate second ring outside first, in front view, eyes toward viewer, mild window light. Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -2093,7 +2481,7 @@
       ]
     },
     {
-      "id": "x16-b06-s19",
+      "id": "x16-b06-s20",
       "template": "stats",
       "data": {
         "title": "七月 600 家計畫",

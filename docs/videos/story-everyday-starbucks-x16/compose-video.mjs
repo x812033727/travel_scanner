@@ -25,7 +25,7 @@ for (const raw of readFileSync(path.join(dir, "drafts/narration.md"), "utf8").sp
     if (current < 6) titles[current] = header[2].replace("（濃縮開場）", "");
     continue;
   }
-  if (!/^x16\d{4}\s*\|/.test(raw)) continue;
+  if (!/^x16\d{4}[a-z]?\s*\|/.test(raw)) continue;
   const parts = raw.split("|").map(part => part.trim());
   if (parts.length !== 4 || current < 0) throw new Error(`Malformed narration row: ${raw}`);
   const [id, refsText, text, cue] = parts;
@@ -67,7 +67,7 @@ const safeguards = [
   "Paper surfaces are unprinted; cups are unmarked; the appearance is invented.",
   "Documents display only colour blocks; no print, trademarks, or recognizable person.",
   "Labels are absent; clothing and containers show no brand marks or real-world likeness.",
-  "Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+  "Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity resemblance.",
   "Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
   "Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
 ];
@@ -117,6 +117,9 @@ const loops = [
   { setup: "x160315", payoff: "x160316", what: "有無逐店選店原因" },
   { setup: "x160318", payoff: "x160319", what: "為何宣布選店並非即日關門" },
   { setup: "x160324", payoff: "x160325", what: "資產減損及遣散也列入預估" },
+  { setup: "x160325d", payoff: "x160401", what: "列帳和實際關門進度不是同一個時點" },
+  { setup: "x160329d", payoff: "x160331a", what: "關店以外的 FY2009 美國直營新開店計畫" },
+  { setup: "x160331c", payoff: "x160405", what: "FY2008 關店是否先使美國直營淨店數縮小" },
   { setup: "x160332", payoff: "x160401", what: "九月底七月名單實際關店數" },
   { setup: "x160404", payoff: "x160405", what: "關店後年底美國直營淨數" },
   { setup: "x160409", payoff: "x160410", what: "年度淨擴張相對前一財年" },
