@@ -6,8 +6,8 @@ The media ledger has music US$0.08 and two image-plus-judge pairs US$0.027 charg
 
 | Frozen file | SHA-256 |
 | --- | --- |
-| `video.json` R8b | `ab93cbc5def915fcd082c5021be566c586c1e240daa40bd2b4cbed5de1f4eedb` |
+| `video.json` R8b2 | `ca2bb866b0fb452607f20764f652c715f1447bc226f9df0a28bfc3b1d73cb1fc` |
 | `script.md` R8, unchanged | `e59ec137e3de3871e3b0e5063d8f6504d3eb2adb5fe22265eb3faa3d613d5951` |
 | `claims.md` R8, unchanged | `f9de8d2771b62cc327f4e599f002af8f3278cfb0f39dbed201e7fdc857201d42` |
 
-`lint --slug curio-s38 --json` reports **0 errors and 0 warnings**. The R8b prompts **await independent source/style review** on this exact JSON hash, followed by a small new image pilot with manual visual inspection. Only if that pilot depicts the correct period and object should the remaining still queue resume. The prior R8a 111-prompt audit applies to its older hash and does not constitute review of R8b.
+Before freezing R8b2, a separate reviewer noticed that a rotating suffix about a timber *interior* landed on an outdoor pit, Tower platform, riverboat and Moorfields. The coordinating agent made those suffixes conditional on the base shot's actual setting. The source sweep then caught inherited prompt risks: `pf005`/`pf073` put a physical cheese beside a diary reader after burial, which could imply its undocumented recovery; `pf012` placed a note beside oral hearsay; `pf006` said “young” though the maid's age is not in the diary; `pf007`/`pf053` used bare “nightgown,” which may become a modern dress. R8b2 changes those six prompts to an empty diary desk, oral listening, an adult maid, and a man's 1660s dressing gown. No spoken line, timing or claim changed. `lint --slug curio-s38 --json` reports **0 errors and 0 warnings**. An independent reviewer checked **111/111 prompts against sources and narration**, verified that the structured diff changes only 111 `data.prompt` leaves, and passed this exact JSON hash; see [verify-10-audit.md](verify-10-audit.md). A two-shot pilot is in progress and still needs manual visual inspection. The prior R8a 111-prompt audit applies to its older hash and does not constitute review of R8b2.
