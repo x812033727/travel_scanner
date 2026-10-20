@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-10-20T09:59:12Z
 completed_at:
-branch:
+branch: codex/brand-stories-20261020
 depends_on: []
 scope:
   - tools/video/automation/story.mjs
