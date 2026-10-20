@@ -1,0 +1,62 @@
+// Local script/metadata composition; no video or paid calls.
+import { createHash } from "node:crypto";
+import { writeFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const dir = path.dirname(fileURLToPath(import.meta.url));
+const base = "story-everyday-peloton-x12";
+const sec = {
+  a21: "https://www.sec.gov/Archives/edgar/data/1639825/000163982521000174/pton-may24announcement.htm",
+  a22: "https://www.sec.gov/Archives/edgar/data/1639825/000163982522000091/ex991pressrelease.htm",
+  k22: "https://www.sec.gov/Archives/edgar/data/1639825/000163982522000117/pton-20220630.htm",
+};
+const common = { schema_version: 2, format: "shorts", locale: "zh-TW", line: "cut", series: "illustrated", source: { slug: base }, synthetic_media: true, hashtags: ["Peloton", "品牌故事", "健身單車"], tags: ["Peloton", "品牌故事", "健身單車", "訂閱", "製造"] };
+const shorts = [
+  {
+    ...common, slug: `${base}-short-1`,
+    titles: ["Peloton 四億美元新廠計畫，隔年為何找買家？", "Peloton 俄亥俄新廠：計畫四億，已投多少？"],
+    description: "2021 年 Peloton 公告 Ohio Output Park 原定 2023 製造設備，多年規劃約 US$400m；2022 年宣布退出自有製造、由既有夥伴 Rexon 主造 Bike／Tread。FY2022 年報稱 Ohio 正在尋找買家，截至 2022-06-30 專案已投約 US$86.6m。四億是計畫，八千六百六十萬是已投，都不是售價；資料沒有說 Ohio 已賣。完整事件見本集長片（正式網址待發布後填）；畫面為匿名概念插畫。來源：SEC 原始公告與年報。",
+    links: [
+      { label: "Peloton 2021-05-24 原公告", url: sec.a21 },
+      { label: "Peloton 2022-07-12 原公告", url: sec.a22 },
+      { label: "Peloton FY2022 Form 10-K", url: sec.k22 },
+    ],
+    scenes: [
+      { beat: "hook", shot: "x12-b01-s01", headline: "2021｜Ohio 新廠計畫", narration: ["二〇二一年，Peloton 在俄亥俄州規劃一座新工廠。"] },
+      { beat: "setup", shot: "x12-b01-s03", headline: "約 US$400m｜多年計畫", narration: ["原定二〇二三年製造單車和跑步機，多年規劃約四億美元。"] },
+      { beat: "turn", shot: "x12-b01-s04", headline: "下一份年報：尋找買家", narration: ["下一份年報卻說，正在找買家；為什麼？"] },
+      { beat: "proof", shot: "x12-b05-s02", headline: "2022-07｜退出自有製造", narration: ["公司宣布退出自有製造，擴大既有夥伴 Rexon 的工作。"] },
+      { beat: "proof", shot: "x12-b05-s03", headline: "主要硬體改由夥伴製造", narration: ["單車與跑步機，改由這個夥伴主造。"] },
+      { beat: "proof", shot: "x12-b05-s15", headline: "截至 2022-06-30｜已投約 US$86.6m", narration: ["截至六月底，Ohio 專案已投約八千六百六十萬美元。"] },
+      { beat: "payoff", shot: "x12-b05-s22", headline: "計畫、已投、售價是三件事", narration: ["製造角色變了，Ohio 被列為尋買家的專案；四億是計畫，已投也不是售價。"] },
+    ],
+  },
+  {
+    ...common, slug: `${base}-short-2`,
+    titles: ["Peloton 2022：硬體毛損、訂閱毛利是多少？", "Peloton 的月費在長，單車收入卻下降？"],
+    description: "Peloton FY2022 Form 10-K 同表：Connected Fitness Products 收入由 FY2021 US$3,149.6m 降至 FY2022 US$2,187.5m；Subscription 由 US$872.2m 升至 US$1,394.7m。FY2022 設備類毛損 US$246.3m、訂閱類毛利 US$944.7m；這是分類毛利，不是公司淨利。設備收入還包含配件、配送安裝等，不等於單車台數。完整脈絡見本集長片（正式網址待發布後填）；畫面為匿名概念插畫。來源：Peloton FY2022 Form 10-K。",
+    links: [{ label: "Peloton FY2022 Form 10-K", url: sec.k22 }],
+    scenes: [
+      { beat: "hook", shot: "x12-b04-s03", headline: "FY2022｜兩條收入線反方向", narration: ["Peloton 二〇二二財年，設備收入下滑，訂閱卻上升。"] },
+      { beat: "setup", shot: "x12-b04-s02", headline: "設備 US$3,149.6m → 2,187.5m", narration: ["設備類，從約三十一點五億降到約二十一點九億美元。"] },
+      { beat: "setup", shot: "x12-b04-s03", headline: "訂閱 US$872.2m → 1,394.7m", narration: ["訂閱類，從約八點七億升到約十三點九億。"] },
+      { beat: "turn", shot: "x12-b04-s13", headline: "毛利又是哪邊？", narration: ["可是收入不是毛利，哪一邊留下得比較多？"] },
+      { beat: "proof", shot: "x12-b04-s14", headline: "設備毛損 US$246.3m", narration: ["設備類出現約二點四六億美元毛損。"] },
+      { beat: "proof", shot: "x12-b04-s15", headline: "訂閱毛利 US$944.7m", narration: ["訂閱類則有約九點四五億美元毛利。"] },
+      { beat: "payoff", shot: "x12-b04-s19", headline: "分類毛利 ≠ 公司淨利", narration: ["這只是兩個分類的毛利，不是公司淨利，也不是單車賣出幾台。"] },
+    ],
+  },
+];
+const bytes = JSON.stringify(shorts, null, 2) + "\n";
+writeFileSync(path.join(dir, "shorts.json"), bytes);
+const sha = createHash("sha256").update(bytes).digest("hex");
+writeFileSync(path.join(dir, "shorts-script.md"), [
+  "# X12 Peloton｜兩支長片精華 Shorts", "", `離線前製；\`shorts.json\` SHA-256：\`${sha}\`。兩支都取自同一集來源與鏡頭設計；尚未配音、計時或剪成直式片。正式長片 URL 待發布後填入，現有 SEC 原件連結可點。`, "",
+  ...shorts.flatMap((short, i) => [`## Short ${i + 1}｜${short.titles[0]}`, "", ...short.scenes.map(scene => `- **${scene.beat}／${scene.shot}** ${scene.narration.join(" ")}`), "", `資料：${short.links.map(link => `[${link.label}](${link.url})`).join("、")}`, ""]),
+].join("\n"));
+for (const [i, short] of shorts.entries()) {
+  const chars = short.scenes.flatMap(s => s.narration).join("").length;
+  console.log(`Short ${i + 1}: ${chars} Chinese chars, ${(chars / 250 * 60).toFixed(1)} s at 250 cpm, ${short.scenes.length} scenes`);
+}
+console.log(`shorts_sha256: ${sha}`);
