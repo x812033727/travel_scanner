@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-prepare-starbucks-2008-store-reversal-brand
 title: Prepare Starbucks 2008 store reversal brand-story X16
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-review
+claimed_at: 2026-10-20T23:35:32Z
 created_at: 2026-10-20T21:23:47Z
 completed_at:
 branch: codex/brand-story-starbucks-x16
@@ -48,7 +48,8 @@ The new 20-video brand-story series needs an X16 Starbucks episode about the Jul
 - [x] Rewrite v8 around the July original cohort and quarterly execution, add S9–S11 first-party 10-Qs, remove the rental spoiler, late FY2010 long-form detour, unreconciled FY2009 new-store forecast and customer-service aside; freeze new SHA-linked offline evidence.
 - [x] Archive v8's same-hash independent SEC factual PASS and two first-blind story HOLD receipts (shared Q7/Q8/Q13); record source scope and the narrative fixes required.
 - [x] Rewrite v9 with a worker-readable January 2009 Starbucks 8-K exhibit explaining the second plan, cut its quarterly/combined arithmetic, strengthen the opening action and keep the July original cohort as the sole running count. Freeze new SHA-linked offline evidence.
-- [ ] Obtain a fresh independent same-hash SEC audit and two fresh first-blind story reads for v9. Actual spoken-body duration remains unverified until TTS.
+- [x] Obtain a fresh independent same-hash SEC audit and two fresh first-blind story reads for v9; the shared Q3/Q8/Q13 narrative failures require another revision.
+- [ ] Revise to v10 and obtain new same-hash SEC and two fresh first-blind narrative passes before PR. Actual spoken-body duration remains unverified until TTS.
 
 ## How to verify
 
@@ -92,3 +93,5 @@ Frozen v8 author candidate: `video.json` SHA-256 `10f38665b46c8f0dce0b8a5689ff1c
 V8 independent [SEC audit](../../docs/videos/story-everyday-starbucks-x16/reviews/script-source-audit-v8-independent.md) re-fetched all S1–S11 with exact raw bytes/SHA and gave a **factual PASS**, retaining the worker `reviewer_only` boundary. Two truly fresh [blind A](../../docs/videos/story-everyday-starbucks-x16/reviews/blind-a-v8-independent.md) and [blind B](../../docs/videos/story-everyday-starbucks-x16/reviews/blind-b-v8-independent.md) readers scored 6.0/10 and 6.5/10. Both voted mandatory Q7 **NO** because `x160424` asks *why* the January second list arose and the story only establishes *that* it is separate; both voted Q8 **NO** on repeated ~600/563 and second-cohort boundaries; both voted Q13 **NO** because January's quarterly 4/109/113 and combined 676 draw attention from the original July group. B additionally voted Q1/Q3 NO for a static first scene and second-cohort arithmetic, while A voted those YES; Q9 chapter label is advisory NO for both. Merged required narrative verdict is therefore **HOLD**. Repair the unanswered why-question by narrowing it to an answerable cohort-identity question unless a primary source supports a cause; remove January quarterly/676 detour and redundant restatement, keep one separate-cohort boundary, and strengthen the first physical action and chapter title if possible. `x160601a` also lets a viewer derive 588 before the final line; preserve payoff without inventing suspense. Keep a substantive >=8-minute paper body after trimming and measure actual TTS later. Freeze v9 and obtain new same-SHA fact and two fresh blind tickets before PR; v8 votes never transfer.
 
 Frozen v9 author candidate: `video.json` SHA-256 `d8e09768665f3ad1783a9a43d62c2ede5a374f35682642cba45521dd7b32ef67`; `shorts.json` `bae123630bfaf9cb49c97998515ecd0f12720beec3bab2d2658d124fff053c37`; `source-matrix.md` `8e07e20539fb22796e24681abafd901e688f1904b14ffbc232f242482641619e`. [Author remediation](../../docs/videos/story-everyday-starbucks-x16/reviews/v9-author-remediation.md) records fixes and limits. New S12 is Starbucks's 2009-01-28 SEC 8-K exhibit 99.1, 176,639 raw bytes, SHA-256 `8a60643e78f1e0326f941a402f7a19ee97996d4d39457fefba0876f6e7008e7c`; its first 3k parsed characters explain weaker consumer conditions, continuing store review and the additional, separate ~200 U.S. stores. The spoken long film removes the second cohort's quarter counts, combined 676 and premature 383/25 finale equation. It has 154 lines, 148-character opening, 2,351-character/2,090-unit substantive body, 26 loops, 94 planned illustrations and 8 cards. Paper body with pauses at 250/300 Chinese units per minute is 9:29.7/8:04.5; actual >=8:00 still needs TTS. Two standalone Shorts are each 8 beats. Lint 0/0, episode Shorts checks `[]`, two individual Shorts schema/source checks, docs-video 236/236 and task check passed. New independent same-hash source and blind receipts are required; no paid media, TTS, MP4, upload or real YouTube URL exists.
+
+v9 independent [SEC audit](../../docs/videos/story-everyday-starbucks-x16/reviews/script-source-audit-v9-independent.md) re-fetched S1–S12 with identical bytes/SHA and passed the frozen line/card/Shorts facts, while retaining the formal worker's >40k targeted-evidence caveat for S3/S4/S5. Truly fresh [blind A](../../docs/videos/story-everyday-starbucks-x16/reviews/blind-a-v9-independent.md) and [blind B](../../docs/videos/story-everyday-starbucks-x16/reviews/blind-b-v9-independent.md) independently marked mandatory Q3, Q8 and Q13 **No**; advisory Q9 also No for both. Chapter six rewinds to repeat 179/119/60 already told in chapters four/five; selected-versus-closed and early announced counts are repeated without explicit callback; the international funding and five-scene comparable-sales explanation pull away from the July cohort's closure progress. Both Shorts work standalone on paper. Thus v9 narrative is **HOLD**. V10 should place the quarter-slowdown inference beside the 563 update without rereading counts, remove redundant selected/closed statements, compress adjacent comparable-sales material and international aside, name chapter six after its actual lease/closure turn, keep >=8:00 substantive paper buffer and re-freeze for independent source and two new blind ballots. No TTS, official bookend files, paid media, MP4, true links or PR exists for X16.
