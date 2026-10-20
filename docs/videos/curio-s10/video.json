@@ -68,9 +68,9 @@
       "what": "連本能寺在哪都不知道"
     },
     {
-      "setup": "hn322",
+      "setup": "hn318",
       "payoff": "hn409",
-      "what": "有人問了，他才說"
+      "what": "士兵先開口問，光秀才答"
     },
     {
       "setup": "hn315",
@@ -655,7 +655,7 @@
       "lines": [
         {
           "id": "hn222",
-          "text": "大約一六二〇年代寫成的《川角太閤記》，記下了接下來那一刻。"
+          "text": "接下來那一刻，寫在一本更早的書裡：大約一六二〇年代寫成的《川角太閤記》。"
         }
       ]
     },
@@ -761,33 +761,17 @@
       ]
     },
     {
-      "id": "books-row",
+      "id": "chew",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses at a reading-room table in the afternoon, resting her hands on a pile of closed old books and giving a puzzled shrug toward the viewer, soft light from tall windows",
+        "prompt": "Close-up of an archivist in her twenties in a cardigan and big glasses's face, chewing the end of a pencil with a puzzled look toward the viewer, mild window light",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "hn231",
-          "text": "我們讀到的這幾份紀錄裡，沒有一個人記下「敵在本能寺」。",
-          "emotion": "放慢"
-        }
-      ]
-    },
-    {
-      "id": "chew",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an archivist in her twenties in a cardigan and big glasses's face, chewing the end of a pencil with a puzzled look to the front, mild window light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "hn232",
-          "text": "在場的人都沒寫，那是誰，先把它寫進了書裡？",
+          "text": "我們讀到的紀錄裡，沒人記下這一句；那是誰，先把它寫進了書裡？",
           "emotion": "問句，停一拍"
         }
       ]
@@ -797,8 +781,8 @@
       "chapter": "寬永十八年，一位儒者把書呈給將軍",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses in a reading room, lifting a slim old book with a plain brown cover and smiling at us, soft daylight",
-        "camera": "pan left",
+        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses in a reading room, lifting a slim old book with a plain brown cover and smiling to the front, soft daylight",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -813,8 +797,8 @@
       "id": "razan",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly Edo Confucian scholar with a shaved head and a dark scholar's robe kneeling in a castle hall in the afternoon, holding out a closed bound book with both hands in a respectful bow and looking our way, soft light through a paper screen",
-        "camera": "push in",
+        "prompt": "Medium shot of an elderly Edo Confucian scholar with a shaved head and a dark scholar's robe kneeling in a castle hall in the afternoon, holding out a closed bound book with both hands in a respectful bow and looking at us, soft light through a paper screen",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -828,8 +812,8 @@
       "id": "old-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a very old man with thin white hair, a wispy beard and a plain brown kimono kneeling at a low table in a farmhouse room in the afternoon, writing slowly with a brush and glancing up toward the viewer with misty eyes, soft window light",
-        "camera": "drift",
+        "prompt": "Medium shot of a very old man with thin white hair, a wispy beard and a plain brown kimono kneeling at a low table in a farmhouse room in the afternoon, writing slowly with a brush and glancing up our way with misty eyes, soft window light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -843,8 +827,8 @@
       "id": "shunsai",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Edo scholar in a plain blue robe with a small topknot kneeling at a low writing desk in the afternoon, writing with a brush and glancing up to the front with a modest smile, soft light through a paper screen",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a middle-aged Edo scholar in a plain blue robe with a small topknot kneeling at a low writing desk in the afternoon, writing with a brush and glancing up toward the viewer with a modest smile, soft light through a paper screen",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -858,8 +842,8 @@
       "id": "father-son",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly Edo Confucian scholar with a shaved head and a dark scholar's robe sitting on a castle veranda in mild overcast light, nodding approvingly with a closed bound book on his lap at us",
-        "camera": "pan right",
+        "prompt": "Medium shot of an elderly Edo Confucian scholar with a shaved head and a dark scholar's robe sitting on a castle veranda in mild overcast light, nodding approvingly with a closed bound book on his lap to the front",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -873,8 +857,8 @@
       "id": "sorry",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in her twenties in a cardigan and big glasses's face in a reading room, tilting her head with an apologetic smile our way, soft light from tall windows",
-        "camera": "tilt up",
+        "prompt": "Close-up of an archivist in her twenties in a cardigan and big glasses's face in a reading room, tilting her head with an apologetic smile at us, soft light from tall windows",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -888,8 +872,8 @@
       "id": "printer",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a cheerful Edo-era woodblock printer in a cotton apron in a print shop in the afternoon, lifting a freshly printed blank sheet off a wooden block and grinning toward the viewer, soft window light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a cheerful Edo-era woodblock printer in a cotton apron in a print shop in the afternoon, lifting a freshly printed blank sheet off a wooden block and grinning our way, soft window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -908,8 +892,8 @@
       "id": "renga",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate kneeling at a poetry gathering in a temple room at midday, a blank sheet of paper on the low table before him, looking up suddenly to the front with a distracted stare, soft light through a paper screen",
-        "camera": "pan left",
+        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate kneeling at a poetry gathering in a temple room at midday, a blank sheet of paper on the low table before him, looking up suddenly toward the viewer with a distracted stare, soft light through a paper screen",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -923,8 +907,8 @@
       "id": "dumpling",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate biting into a leaf-wrapped rice dumpling without unwrapping it, staring at us with a lost look, soft light by a paper screen",
-        "camera": "push in",
+        "prompt": "Medium close-up of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate biting into a leaf-wrapped rice dumpling without unwrapping it, staring to the front with a lost look, soft light by a paper screen",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -943,8 +927,8 @@
       "id": "five",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate kneeling in a castle room in soft lamp light, holding up one open hand with five fingers spread and a grave face our way",
-        "camera": "drift",
+        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate kneeling in a castle room in soft lamp light, holding up one open hand with five fingers spread and a grave face at us",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -958,8 +942,8 @@
       "id": "bow",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate kneeling and bowing his head low with both fists on the mat, eyes closed in resolve toward the viewer, soft lamp light",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate kneeling and bowing his head low with both fists on the mat, eyes closed in resolve our way, soft lamp light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -979,8 +963,8 @@
       "id": "fear",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate's face in soft lamp light, eyes wide with worry and one hand gripping his collar to the front",
-        "camera": "pan right",
+        "prompt": "Close-up of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate's face in soft lamp light, eyes wide with worry and one hand gripping his collar toward the viewer",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -995,8 +979,8 @@
       "id": "order",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate on a brown horse in a castle courtyard, raising one hand to give an order with a confident smile at us, mild haze",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate on a brown horse in a castle courtyard, raising one hand to give an order with a confident smile to the front, mild haze",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1010,8 +994,8 @@
       "id": "priest-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a bearded European missionary priest in a plain black cassock sitting at a wooden desk in a small mission house in the afternoon, writing a long letter with a quill, the paper turned away from us, and glancing up our way with a worried look, mild window light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a bearded European missionary priest in a plain black cassock sitting at a wooden desk in a small mission house in the afternoon, writing a long letter with a quill, the paper turned away from us, and glancing up at us with a worried look, mild window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1025,8 +1009,8 @@
       "id": "ask",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young foot soldier in a wide straw-coloured hat and a simple padded jacket on a mountain path in soft misty light, scratching his head and calling out a question toward the viewer",
-        "camera": "pan left",
+        "prompt": "Medium shot of a young foot soldier in a wide straw-coloured hat and a simple padded jacket on a mountain path in soft misty light, scratching his head and calling out a question our way",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1061,8 +1045,8 @@
       "id": "shock",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young foot soldier in a wide straw-coloured hat and a simple padded jacket on a mountain path in soft misty light, frozen with his mouth open in shock to the front",
-        "camera": "push in",
+        "prompt": "Medium shot of a young foot soldier in a wide straw-coloured hat and a simple padded jacket on a mountain path in soft misty light, frozen with his mouth open in shock toward the viewer",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1073,47 +1057,16 @@
       ]
     },
     {
-      "id": "listen",
+      "id": "sanyo-brush",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses in a reading room, cupping a hand behind her ear with a knowing smile at us, soft daylight",
-        "camera": "drift",
+        "prompt": "Medium shot of a Kyoto historian in a plain grey kimono with a topknot and ink-stained fingers at a low desk in the afternoon, dipping a brush into an ink stone and looking up to the front with a sly smile, soft window light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "hn322",
-          "text": "在這本書裡，它不是喊出來的口號，是一個回答：有人問了，他才說。"
-        }
-      ]
-    },
-    {
-      "id": "think",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses leaning on a reading-room table at midday, chin propped on both hands with a dreamy smile our way, soft light from tall windows",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "hn323",
-          "text": "我們覺得，光秀的這句台詞，就是在一問一答裡誕生的。",
-          "emotion": "像跟朋友說自己的看法"
-        }
-      ]
-    },
-    {
-      "id": "sanyo-brush",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a Kyoto historian in a plain grey kimono with a topknot and ink-stained fingers at a low desk in the afternoon, dipping a brush into an ink stone and looking up toward the viewer with a sly smile, soft window light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "hn324",
           "text": "一百八十多年後，同一幕，又被人寫了一次。",
           "emotion": "斷在這裡"
         }
@@ -1124,8 +1077,8 @@
       "chapter": "文政十年，一部史書送到松平定信手上",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Kyoto historian in a plain grey kimono with a topknot and ink-stained fingers kneeling beside a wooden chest in a study in the afternoon, lifting out a stack of closed bound books with a proud little smile to the front, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a Kyoto historian in a plain grey kimono with a topknot and ink-stained fingers kneeling beside a wooden chest in a study in the afternoon, lifting out a stack of closed bound books with a proud little smile at us, soft window light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1139,8 +1092,8 @@
       "id": "sadanobu",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly retired lord in a formal dark haori sitting in a quiet garden room in the afternoon, receiving a thick bundle of books wrapped in plain cloth with a pleased smile at us, soft light",
-        "camera": "pull out",
+        "prompt": "Medium shot of an elderly retired lord in a formal dark haori sitting in a quiet garden room in the afternoon, receiving a thick bundle of books wrapped in plain cloth with a pleased smile our way, soft light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1154,8 +1107,8 @@
       "id": "sanyo-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a Kyoto historian in a plain grey kimono with a topknot and ink-stained fingers kneeling in his study in soft daylight, tapping a closed book against his palm with a sly look our way",
-        "camera": "pan left",
+        "prompt": "Medium close-up of a Kyoto historian in a plain grey kimono with a topknot and ink-stained fingers kneeling in his study in soft daylight, tapping a closed book against his palm with a sly look toward the viewer",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1170,8 +1123,8 @@
       "id": "west",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate standing in a castle courtyard in mild haze, sweeping one open hand toward the west and speaking loudly toward the viewer",
-        "camera": "push in",
+        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate standing in a castle courtyard in mild haze, sweeping one open hand toward the west and speaking loudly to the front",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1185,8 +1138,8 @@
       "id": "pass",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate on a brown horse climbing a steep pass in soft misty light, leaning forward in the saddle and looking to the front",
-        "camera": "drift",
+        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate on a brown horse climbing a steep pass in soft misty light, leaning forward in the saddle and looking at us",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1200,8 +1153,8 @@
       "id": "fork-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate on a brown horse where a mountain path splits in two around a big old pine tree, looking from one path to the other and then at us with a thoughtful frown, soft misty light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate on a brown horse where a mountain path splits in two around a big old pine tree, looking from one path to the other and then our way with a thoughtful frown, soft misty light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1216,8 +1169,8 @@
       "id": "jump",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a young foot soldier in a wide straw-coloured hat and a simple padded jacket on a downhill path in soft misty light, jumping back in surprise with both hands up our way",
-        "camera": "pan right",
+        "prompt": "Medium close-up of a young foot soldier in a wide straw-coloured hat and a simple padded jacket on a downhill path in soft misty light, jumping back in surprise with both hands up toward the viewer",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1236,8 +1189,8 @@
       "id": "ford",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate on a brown horse wading across a shallow river in the pale light before dawn, water rippling around the hooves, looking toward the viewer with a set jaw",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate on a brown horse wading across a shallow river in the pale light before dawn, water rippling around the hooves, looking to the front with a set jaw",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1251,8 +1204,8 @@
       "id": "whip",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate on a brown horse, raising a riding whip high toward faraway hills with his mouth open in a shout, eyes to the front, soft misty light before dawn",
-        "camera": "pull out",
+        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate on a brown horse, raising a riding whip high toward faraway hills with his mouth open in a shout, eyes at us, soft misty light before dawn",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1283,8 +1236,8 @@
       "id": "same-half",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses at a reading-room table in the afternoon, holding two closed old books side by side and looking from one to the other with raised eyebrows at us, mild window light",
-        "camera": "pan left",
+        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses at a reading-room table in the afternoon, holding two closed old books side by side and looking from one to the other with raised eyebrows our way, mild window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1298,8 +1251,8 @@
       "id": "same-half2",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist in her twenties in a cardigan and big glasses in a reading room, laying a finger on a closed book and raising her eyebrows in surprise our way, mild window light",
-        "camera": "push in",
+        "prompt": "Medium close-up of an archivist in her twenties in a cardigan and big glasses in a reading room, laying a finger on a closed book and raising her eyebrows in surprise toward the viewer, mild window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1340,12 +1293,12 @@
       "lines": [
         {
           "id": "hn415",
-          "text": "在那本書裡，是走到大江山，士兵先問，光秀才答；",
+          "text": "還記得一六四一年那本書嗎？那一句說在大江山；這裡，搬到了桂川。",
           "reveal": 1
         },
         {
           "id": "hn416",
-          "text": "到了這裡，換成桂川，問句不見了，答案變成了宣告。",
+          "text": "台詞也從一句回答，變成了一句宣告。",
           "reveal": 2
         }
       ]
@@ -1354,8 +1307,8 @@
       "id": "brushstroke",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a Kyoto historian in a plain grey kimono with a topknot and ink-stained fingers's face at his desk, adding one more brushstroke with a satisfied grin toward the viewer, soft window light",
-        "camera": "drift",
+        "prompt": "Close-up of a Kyoto historian in a plain grey kimono with a topknot and ink-stained fingers's face at his desk, adding one more brushstroke with a satisfied grin to the front, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1374,8 +1327,8 @@
       "id": "index",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses in a reading room, holding an open book upright so its pages face her, peeking over the top with a delighted gasp to the front, soft daylight",
-        "camera": "tilt down",
+        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses in a reading room, holding an open book upright so its pages face her, peeking over the top with a delighted gasp at us, soft daylight",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1390,8 +1343,8 @@
       "id": "five-again",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate kneeling in a castle room in soft lamp light, holding up one open hand with five fingers spread and a grave face at us",
-        "camera": "pan right",
+        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate kneeling in a castle room in soft lamp light, holding up one open hand with five fingers spread and a grave face our way",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1405,8 +1358,8 @@
       "id": "fear-again",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate's face in soft lamp light, eyes wide with worry and one hand gripping his collar our way",
-        "camera": "tilt up",
+        "prompt": "Close-up of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate's face in soft lamp light, eyes wide with worry and one hand gripping his collar toward the viewer",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1420,8 +1373,8 @@
       "id": "sanyo-writes",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Kyoto historian in a plain grey kimono with a topknot and ink-stained fingers kneeling at a low desk in the afternoon, writing with a flourish of the brush and a focused face toward the viewer, mild light through a paper screen",
-        "camera": "pull out",
+        "prompt": "Medium shot of a Kyoto historian in a plain grey kimono with a topknot and ink-stained fingers kneeling at a low desk in the afternoon, writing with a flourish of the brush and a focused face to the front, mild light through a paper screen",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1431,7 +1384,7 @@
         },
         {
           "id": "hn423",
-          "text": "我們覺得，一個回答，就是在這裡變成了一句宣言。",
+          "text": "我們覺得，一句台詞要變成名句，缺的就是這個場面。",
           "emotion": "像跟朋友說自己的看法"
         }
       ]
@@ -1440,8 +1393,8 @@
       "id": "student",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era student in a dark high-collared school uniform sitting on a wooden bench under a pale sky, reading a thick book held up so its pages face him, eyes wide with excitement to the front",
-        "camera": "pan left",
+        "prompt": "Medium shot of a Meiji-era student in a dark high-collared school uniform sitting on a wooden bench under a pale sky, reading a thick book held up so its pages face him, eyes wide with excitement at us",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1455,8 +1408,8 @@
       "id": "where-q",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in her twenties in a cardigan and big glasses's face in a reading room, resting her chin on one hand with a curious look at us, soft light from tall windows",
-        "camera": "push in",
+        "prompt": "Close-up of an archivist in her twenties in a cardigan and big glasses's face in a reading room, resting her chin on one hand with a curious look our way, soft light from tall windows",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1472,8 +1425,8 @@
       "chapter": "明治二十八年，這句話成了一句成語",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era schoolteacher in a dark Western suit and round spectacles standing at a wooden lectern in a lecture hall in the afternoon, wagging one finger knowingly with a smile our way, soft window light",
-        "camera": "drift",
+        "prompt": "Medium shot of a Meiji-era schoolteacher in a dark Western suit and round spectacles standing at a wooden lectern in a lecture hall in the afternoon, wagging one finger knowingly with a smile toward the viewer, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1503,8 +1456,8 @@
       "id": "textbook",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Meiji-era student in a dark high-collared school uniform sitting at a wooden school desk at midday, hugging a closed textbook with a plain cover to his chest with a cheeky grin toward the viewer, mild window light",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a Meiji-era student in a dark high-collared school uniform sitting at a wooden school desk at midday, hugging a closed textbook with a plain cover to his chest with a cheeky grin to the front, mild window light",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1518,8 +1471,8 @@
       "id": "smile",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses leaning back in a reading-room chair in the afternoon, arms folded with an amused smile to the front, soft daylight",
-        "camera": "pan right",
+        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses leaning back in a reading-room chair in the afternoon, arms folded with an amused smile at us, soft daylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1534,8 +1487,8 @@
       "id": "who-q",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist in her twenties in a cardigan and big glasses's face in a reading room at midday, tapping a pencil against her lips with a thoughtful look at us, soft daylight",
-        "camera": "tilt up",
+        "prompt": "Close-up of an archivist in her twenties in a cardigan and big glasses's face in a reading room at midday, tapping a pencil against her lips with a thoughtful look our way, soft daylight",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1566,8 +1519,8 @@
       "id": "alone",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate kneeling alone in a quiet room in soft afternoon light, gazing past us with an unreadable expression, turned slightly our way",
-        "camera": "pull out",
+        "prompt": "Medium shot of a middle-aged Sengoku general with a narrow jaw, a neat moustache and a plain dark lacquered breastplate kneeling alone in a quiet room in soft afternoon light, gazing past us with an unreadable expression, turned slightly toward the viewer",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1582,8 +1535,8 @@
       "id": "no-theory",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of an archivist in her twenties in a cardigan and big glasses in a reading room at midday, holding a stack of plain index cards and shaking her head gently toward the viewer, mild window light",
-        "camera": "pan left",
+        "prompt": "Medium close-up of an archivist in her twenties in a cardigan and big glasses in a reading room at midday, holding a stack of plain index cards and shaking her head gently to the front, mild window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -1597,8 +1550,8 @@
       "id": "stamp",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses at a wooden desk in the afternoon, pressing a rubber stamp onto the cover of a plain manila folder and smiling to the front, soft window light",
-        "camera": "push in",
+        "prompt": "Medium shot of an archivist in her twenties in a cardigan and big glasses at a wooden desk in the afternoon, pressing a rubber stamp onto the cover of a plain manila folder and smiling at us, soft window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
