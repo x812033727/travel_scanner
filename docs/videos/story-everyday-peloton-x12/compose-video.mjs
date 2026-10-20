@@ -52,9 +52,9 @@ const cards = new Map(Object.entries({
   x120305: ["2021-05｜Ohio 新廠計畫", "約 US$400m", "多年規劃，非已支出", "A21"],
   x120402: ["FY2021 → FY2022｜設備類收入", "US$3,149.6m → 2,187.5m", "收入，非單車台數", "K22"],
   x120403: ["FY2021 → FY2022｜訂閱收入", "US$872.2m → 1,394.7m", "同表口徑", "K22"],
-  x120414: ["FY2022｜設備類毛利", "-US$246.3m", "分類毛損，非公司淨損", "K22"],
-  x120415: ["FY2022｜訂閱類毛利", "+US$944.7m", "分類毛利，非公司淨利", "K22"],
-  x120416: ["FY2021 → FY2022｜設備類毛利率", "29.0% → -11.3%", "收入扣產品成本，非淨利率", "K22"],
+  x120412: ["FY2022｜設備類毛利", "-US$246.3m", "分類毛損，非公司淨損", "K22"],
+  x120413: ["FY2022｜訂閱類毛利", "+US$944.7m", "分類毛利，非公司淨利", "K22"],
+  x120414: ["FY2021 → FY2022｜設備類毛利率", "29.0% → -11.3%", "收入扣產品成本，非淨利率", "K22"],
   x120515: ["截至 2022-06-30｜Ohio 專案", "約 US$86.6m", "已投資，非出售價格", "K22"],
   x120516: ["FY2022｜Ohio 相關資產減損", "US$40.3m", "含相關製造資產，非售價", "K22"],
   x120601: ["FY2023｜設備類收入", "US$1,130.2m", "收入，非台數", "K23"],
@@ -66,6 +66,15 @@ const cards = new Map(Object.entries({
 const cameras = ["Medium shot, slow push in", "Close-up, static", "Wide shot, pan right", "Medium shot, parallax"];
 const settings = ["plain office", "small workshop", "ordinary warehouse", "modest living room"];
 const lights = ["soft window light", "mild overhead light", "grey daylight", "desk lamp"];
+const sceneSettings = new Map([
+  ["x120105", "clean tabletop factory diorama"], ["x120106", "clean concept-animation studio"],
+  ["x120201", "clean tabletop factory diorama"], ["x120203", "clean concept-animation studio"],
+  ["x120219", "clean tabletop factory diorama"], ["x120221", "clean tabletop factory diorama"],
+  ["x120301", "clean tabletop factory diorama"], ["x120507", "conceptual Taiwan factory diorama"],
+  ["x120508", "conceptual split-screen comparison studio"], ["x120509", "clean tabletop factory diorama"],
+  ["x120519", "clean tabletop accounting diorama"], ["x120610", "conceptual factory diorama"],
+  ["x120611", "conceptual factory diorama"], ["x120613", "clean tabletop factory diorama"],
+]);
 const sayWords = [["Peloton", "派樂騰"], ["Output Park", "歐普特帕克"], ["Precor", "普瑞科"], ["Rexon", "力山"], ["Tonic", "托尼克"], ["Tread+", "Tread Plus"], ["Tread", "Tread"], ["Bike", "Bike"]];
 function lineFor(row) {
   const line = { id: row.id, text: row.text, emotion: row.text.endsWith("？") ? "台灣口語說書，自然提問，不刻意放慢" : "台灣口語說書，數字清楚，正常語速" };
@@ -77,7 +86,7 @@ const scenes = chapters.flatMap((chapter, ci) => chapter.map((row, ri) => {
   const id = `x12-b${String(ci + 1).padStart(2, "0")}-s${String(ri + 1).padStart(2, "0")}`;
   const card = cards.get(row.id);
   const scene = card ? { id, template: "stats", data: { title: card[0], stats: [{ value: card[1], label: card[2] }], source: sourceUrls.find(s => s.code === card[3]).title }, lines: [lineFor(row)] }
-    : { id, template: "shot", data: { prompt: `${cameras[ri % cameras.length]} in a ${settings[(ri + ci) % settings.length]}: ${row.cue}，所有文件、招牌與器材皆無字無標誌，${lights[(ri + ci) % lights.length]}`, camera: cameras[ri % cameras.length], visual: "still" }, lines: [lineFor(row)] };
+    : { id, template: "shot", data: { prompt: `${cameras[ri % cameras.length]} in a ${sceneSettings.get(row.id) ?? settings[(ri + ci) % settings.length]}: ${row.cue}，所有文件、招牌與器材皆無字無標誌，${lights[(ri + ci) % lights.length]}`, camera: cameras[ri % cameras.length], visual: "still" }, lines: [lineFor(row)] };
   if (ri === 0) scene.chapter = chapterTitles[ci];
   return scene;
 }));
@@ -87,17 +96,17 @@ scenes.push(...outro.map((row, ri) => ({
   lines: [lineFor(row)],
 })));
 const loops = [
-  ["x120105", "x120314", "既有產線外為何另規劃 Ohio"],
+  ["x120105", "x120301", "既有產線外為何另規劃 Ohio"],
   ["x120106", "x120405", "設備與訂閱收入誰先變"],
   ["x120107", "x120503", "製造轉由誰承擔"],
   ["x120109", "x120514", "Ohio 從產能計畫到尋買家"],
-  ["x120210", "x120414", "設備銷售增長是否等於毛利"],
-  ["x120221", "x120310", "新廠原本要補的產能"],
+  ["x120210", "x120412", "設備銷售增長是否等於毛利"],
+  ["x120221", "x120301", "新廠原本要補的產能"],
   ["x120319", "x120402", "增長中的設備收入隔年如何變"],
-  ["x120426", "x120502", "固定製造基地是否仍是下一步"],
-  ["x120427", "x120503", "下一個造車人是誰"],
+  ["x120424", "x120502", "固定製造基地是否仍是下一步"],
+  ["x120425", "x120503", "下一個造車人是誰"],
   ["x120523", "x120601", "FY2023 收入線怎麼走"],
-  ["x120523", "x120615", "Ohio 到 FY2023 的出售狀態"],
+  ["x120523", "x120613", "Ohio 到 FY2023 的出售狀態"],
   ["x120604", "x120608", "訂閱成長是否代表整體獲利"],
 ].map(([setup, payoff, what]) => ({ setup, payoff, what }));
 const ids = new Map(allRows.map((row, i) => [row.id, i]));
