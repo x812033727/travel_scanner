@@ -17,3 +17,5 @@
 正式 `qa` 是 **10/11**：政策門檻通過（重送 final 審片時 Jev 業配 0.01），僅頻道網址 `https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q` 在這個雲端的代理遭 CONNECT 403，無法網路開啟。說明欄有四筆固定版本史料網址、頻道網址、六章時間碼及 AI 畫面揭露。`package` 的精確檔案檢查 **4/4**；`upload/metadata.json` SHA-256 `4d69ff14ade73e36422034fe4644ff5a4c212013e68ad04d017aabde46221e96`。`upload/UPLOAD.md` 記私人上傳後在 YouTube Studio 匯入範本 `oxEtlA8GWas`，把兩個可點影片元素及訂閱元素放在 **08:34:19–08:50:19**；目前畫面外框尚不是可點連結。
 
 現行 MP4 已 `review-push --gate final`，站台回覆 **pending**；本機在上述 QA 和獨立抽驗後另記**精確 MP4 的代理 final 核准**，才製作上傳包。`review-push --gate publish` 已提交，站台亦回覆 **pending**。這不表示站主親自看過、網站 final／publish 已核准、影片已私人上傳、取得真實 YouTube 影片 ID，或 Studio 可點片尾已安裝。現行 storytelling panel 因片尾口播變動顯示 stale；先前 13/13 屬舊的精確腳本，不冒稱是本版盲讀。
+
+文件驗證：`npm run test:docs-videos` **236/236** 通過；`npm run check:tasks` 驗證 **2112** 張任務票通過，僅既存的跨票認領範圍／時長警告；S26 `lint` 零錯誤，六個提示詞／片尾口播風格警告如實保留。
