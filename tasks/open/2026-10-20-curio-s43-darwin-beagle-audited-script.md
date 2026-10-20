@@ -34,7 +34,7 @@ S43 source feasibility is complete in task `2026-10-20-curio-s43-darwin-beagle-n
 - [ ] Draft A script and manifest; preserve edited-letter versus retrospective-memory attribution.
 - [ ] Run local lint and duration check; remove unsupported visuals and padding.
 - [ ] Arrange two blind first-viewer reads and a separate source/visual audit of the frozen version.
-- [ ] Submit report-only site registration and manual outline review, then pull pending status; record receipt.
+- [x] Submit report-only site registration and manual outline review, then pull pending status; record receipt.
 
 ## How to verify
 
@@ -43,3 +43,5 @@ Run `node --input-type=module -e 'import {outlineOptions} from "./tools/video/re
 ## Notes
 
 2026-10-20: Parent specifically requested continuation after scoped source research commit `d9d5154a`. A is an editorial candidate, not an owner-approved outline. The fixed witness set is in `research.md`. `brief.md` now has two parser-ready `### 選項 A／B` sections, each with `一行說明` and `開場鉤子`. User's broad permission to keep making recommended episodes does not turn the site's exact-file manual gates into local approvals.
+
+2026-10-20: Manual outline handoff is live at `/admin/videos`. `review-push --report-only` passed, `review-push --gate outline` submitted the two options and Jev recommended A (0.92), but this hand-pushed episode still requires the site's owner decision. `review-pull --gate outline` returned `waiting for the owner`, exit 3, on `brief.md` SHA `00b591b66f75f90899af6e9dd21ec5e88083c69cb7f27e85f7eec3391c178ec6`. Receipt: `docs/videos/curio-s43/verify-site-gates.md`. No script gate or media activity. A candidate is being drafted locally; do not treat it as approved while the outline is pending.
