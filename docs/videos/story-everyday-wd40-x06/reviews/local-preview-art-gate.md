@@ -276,8 +276,10 @@ X09 至少保留 99，跨集緩衝僅 15 次。主 STOP 保留，暫停後續付
 `acfeb244c3d67578223516a749617c89b2dad8f3df28766f85bae4e6f460ccb4`；
 深比 93 景全部非 prompt 欄位相同，僅 `x06-b03-s12`、
 `x06-b03-s16`、`x06-b04-s02` 三個 `data.prompt` 不同。
-新視覺 hash `2f613d75fac3591d`。**套用後的獨立覆核仍待簽收**，
-不因提案 PASS 就解除 STOP。
+新視覺 hash `2f613d75fac3591d`。套用後獨立覆核
+`visual-v4-postapply-independent.md` 已 PASS，SHA-256
+`99ee92559c6fbd66463b5b96063d726044db0fd7a45a8ee45fb30e240fbcb55a`；
+只核提示詞差異與零成本橋接，**沒有解除 STOP 或授權新付費圖**。
 
 零成本橋接逐張核對 34 張原已暫可用鏡頭的未改提示詞、選圖物件、
 圖檔 SHA 全相同；三個舊 HOLD 及選圖檔封存在媒體工作區

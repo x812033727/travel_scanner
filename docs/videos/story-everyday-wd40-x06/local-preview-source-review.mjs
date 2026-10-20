@@ -11,6 +11,11 @@ const SECOND_VISUAL_SCRIPT = "d1ac6f93e15396813dda6ac2d76028f6539be2d746d647d1fd
 const THIRD_VISUAL_SCRIPT = "931efad38297c832fd11a2aedfc12cc2ef5c61373e36632a1fcd916dbdf0fc68";
 const THIRD_VISUAL_RECEIPT = "5ab635105dc384bbec80b4f32346697247c0ebdcdcff539391674f7b436c84a7";
 const THIRD_VISUAL_PROPOSAL = "a7a1033bffe6293a53cf8d4911f3a2d27724bfd94cbb337f8b70a689d0b94239";
+const FOURTH_VISUAL_SCRIPT = "acfeb244c3d67578223516a749617c89b2dad8f3df28766f85bae4e6f460ccb4";
+const FOURTH_VISUAL_PROPOSAL = "b697f096e66f2e82eda849ea16166049dc66443aba26346f6554e070212d9219";
+const FOURTH_OFFLINE_REVIEW = "58569e6d6377a24c45d2aadb12c8bef676d3473eb254ea3d105e0779a08e6beb";
+const FOURTH_POSTAPPLY_RECEIPT = "99ee92559c6fbd66463b5b96063d726044db0fd7a45a8ee45fb30e240fbcb55a";
+const FOURTH_BRIDGE_RECEIPT = "fc0054acbb4ac8f95dee244c0d6b3191fda77772383171b778b49bb7d9075ae8";
 const PRIOR = {
   "source-audit-final.md": ["prior_source_review_sha256", "2b386249fdb86d2747ef0d25f36f621da109a0890e98d2dd5ef5c909b724599c"],
   "blind-a-final.md": ["prior_blind_a_sha256", "553c6f7bc007f36923901b675ff59844a74e5d027e1ae58eebfb10abcf8727c1"],
@@ -79,6 +84,26 @@ export function inspectIndependentVisualReview({ dir, scriptSha }) {
     || ![SECOND_VISUAL_SCRIPT, THIRD_VISUAL_SCRIPT, THIRD_VISUAL_PROPOSAL, "x06-b03-s07", "x06-b03-s12"].every((value) => thirdText.includes(value))) {
     issues.push("visual-v3 review does not bind the frozen two-shot prompt-only proposal");
   }
-  if (scriptSha !== THIRD_VISUAL_SCRIPT) issues.push("visual-v3 receipt belongs to another video.json");
-  return { issues, sha256: hash(thirdBytes), receipt: { kind: "independent-visual-delta-review", status: "PASS", reviewer: "/root" } };
+  if (scriptSha === THIRD_VISUAL_SCRIPT) {
+    return { issues, sha256: hash(thirdBytes), receipt: { kind: "independent-visual-delta-review", status: "PASS", reviewer: "/root" } };
+  }
+
+  const fourthFile = path.join(reviewsDir, "visual-v4-postapply-independent.md");
+  const fourthProposal = path.join(reviewsDir, "visual-v4-offline-proposal.md");
+  const fourthOffline = path.join(reviewsDir, "visual-v4-independent.md");
+  if (![fourthFile, fourthProposal, fourthOffline].every(existsSync)) {
+    return { issues: [...issues, "independent visual-v4 review chain is missing"], sha256: null, receipt: null };
+  }
+  const fourthBytes = readFileSync(fourthFile);
+  const fourthText = fourthBytes.toString("utf8");
+  if (hash(fourthBytes) !== FOURTH_POSTAPPLY_RECEIPT
+    || hash(readFileSync(fourthProposal)) !== FOURTH_VISUAL_PROPOSAL
+    || hash(readFileSync(fourthOffline)) !== FOURTH_OFFLINE_REVIEW
+    || !fourthText.includes("**PASS（提示詞差異與零成本橋接；主影片仍 STOP）。**")
+    || ![THIRD_VISUAL_SCRIPT, FOURTH_VISUAL_SCRIPT, FOURTH_VISUAL_PROPOSAL, FOURTH_BRIDGE_RECEIPT,
+      "x06-b03-s12", "x06-b03-s16", "x06-b04-s02", "34/34"].every((value) => fourthText.includes(value))) {
+    issues.push("visual-v4 post-apply review does not bind the frozen three-shot bridge");
+  }
+  if (scriptSha !== FOURTH_VISUAL_SCRIPT) issues.push("visual-v4 receipt belongs to another video.json");
+  return { issues, sha256: hash(fourthBytes), receipt: { kind: "independent-visual-delta-review", status: "PASS", reviewer: "/root" } };
 }

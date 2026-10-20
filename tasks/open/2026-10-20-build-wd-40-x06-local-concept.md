@@ -224,6 +224,10 @@ preserved the US$1.1105 ledger plus unjudged paid image. New visual hash
 STOP gate SHA `c48c604145128b5b98bb02ba9d3a5b2ba31ab6f478a2aba9541e9b248d6b7b5d`,
 and bridge receipt SHA
 `fc0054acbb4ac8f95dee244c0d6b3191fda77772383171b778b49bb7d9075ae8`.
-The v4 **post-apply** independent review is still pending. No new image,
-judge call, audio change or paid transaction occurred under this SHA; both
-main STOP and the cross-episode quota hold remain.
+The v4 **post-apply** independent review has since passed at
+`reviews/visual-v4-postapply-independent.md` (SHA
+`99ee92559c6fbd66463b5b96063d726044db0fd7a45a8ee45fb30e240fbcb55a`).
+It confirms exact three-prompt deep diff and 34/34 selected-media hashes,
+not permission for paid art or publication. No new image, judge call, audio
+change or paid transaction occurred under this SHA; both main STOP and the
+cross-episode quota hold remain.

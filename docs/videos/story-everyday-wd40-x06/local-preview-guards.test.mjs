@@ -34,12 +34,13 @@ test("a judge pass cannot override a human-held illustration", () => {
   }
 });
 
-test("three independent visual receipts bind only their reviewed scripts", () => {
+test("four independent visual receipts bind only their reviewed scripts", () => {
   const dir = path.dirname(new URL(import.meta.url).pathname);
   const current = createHash("sha256").update(readFileSync(path.join(dir, "video.json"))).digest("hex");
   const review = inspectIndependentVisualReview({ dir, scriptSha: current });
   assert.deepEqual(review.issues, []);
-  assert.equal(review.sha256, "5ab635105dc384bbec80b4f32346697247c0ebdcdcff539391674f7b436c84a7");
+  assert.equal(review.sha256, "99ee92559c6fbd66463b5b96063d726044db0fd7a45a8ee45fb30e240fbcb55a");
+  assert.deepEqual(inspectIndependentVisualReview({ dir, scriptSha: "931efad38297c832fd11a2aedfc12cc2ef5c61373e36632a1fcd916dbdf0fc68" }).issues, []);
   assert.deepEqual(inspectIndependentVisualReview({ dir, scriptSha: "d1ac6f93e15396813dda6ac2d76028f6539be2d746d647d1fd44e4790dd5d0c5" }).issues, []);
   assert.deepEqual(inspectIndependentVisualReview({ dir, scriptSha: "907f8e3ff45f3edf0bbed64a54216c761696e8e954d51c315a8a228069e204d1" }).issues, []);
   assert.match(inspectIndependentVisualReview({ dir, scriptSha: "other" }).issues.join("; "), /another video.json/);
