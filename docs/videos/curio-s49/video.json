@@ -1,0 +1,2295 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s49",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語、自然清楚；始終分清報紙聲稱、1859 重印本與 1902 天文學家分析。",
+    "performance": "像陪一位讀者翻完這篇報導；先跟著紙上故事走，最後把原文與後出評論分開。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sources": [
+    {
+      "title": "Richard Adams Locke, The Moon Hoax (1859 reprint of 1835 New York Sun articles), fixed GITenberg text",
+      "url": "https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Harold Jacoby, Practical Talks by an Astronomer (1902), The Moon Hoax, fixed GITenberg text",
+      "url": "https://github.com/GITenberg/Practical-Talks-by-an-Astronomer_53396/blob/073dd7dd24b8515dec681441a1cde79477fabf08/53396-0.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "moon004",
+      "payoff": "moon023",
+      "what": "虛構助手的信能否驗證"
+    },
+    {
+      "setup": "moon005",
+      "payoff": "moon042",
+      "what": "人工光解法的問題"
+    },
+    {
+      "setup": "moon006",
+      "payoff": "moon081",
+      "what": "有翼人的唯一目擊者來源"
+    },
+    {
+      "setup": "moon007",
+      "payoff": "moon122",
+      "what": "報紙反應並非一致"
+    },
+    {
+      "setup": "moon008",
+      "payoff": "moon131",
+      "what": "報導的可信感結構"
+    },
+    {
+      "setup": "moon031",
+      "payoff": "moon047",
+      "what": "巨鏡細節"
+    },
+    {
+      "setup": "moon053",
+      "payoff": "moon056",
+      "what": "望遠鏡帶出地形"
+    },
+    {
+      "setup": "moon054",
+      "payoff": "moon056",
+      "what": "第一個月面景"
+    },
+    {
+      "setup": "moon076",
+      "payoff": "moon082",
+      "what": "誰住在紙上的月面"
+    },
+    {
+      "setup": "moon078",
+      "payoff": "moon082",
+      "what": "有翼生物的形貌"
+    },
+    {
+      "setup": "moon098",
+      "payoff": "moon099",
+      "what": "後續觀測中斷的敘事"
+    },
+    {
+      "setup": "moon111",
+      "payoff": "moon122",
+      "what": "各報反應"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "moon001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on an 1830s New York street, one adult newspaper bookshop visitor lifts an unfolded clean broadsheet, soft overcast daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon001",
+          "text": "一八三五年八月，紐約一張《太陽報》擺到讀者面前。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ],
+      "chapter": "1835 年的讀者看見一行大字"
+    },
+    {
+      "id": "moon002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a newspaper stall, one adult curious customer stares at the unmarked top of a broad paper, soft morning light from the left",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon002",
+          "text": "它說一位正在好望角的天文學家，有了驚人的新發現。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon003",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a nineteenth century reading room, one adult reader points at a plain globe, mild window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon003",
+          "text": "報上的名字是赫歇爾；這位科學家，當時真的遠在南方。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon004",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a wooden desk, one adult editor lifts a clean folded letter, soft lamp light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon004",
+          "text": "紙上還有一位自稱送來消息的助手；他的信在哪裡？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a reading room, one adult historian examines an unmarked telescope sketch on a sheet, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon005",
+          "text": "它又說，望遠鏡能看清月面的細小東西；光線難題怎麼解？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon006",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one reader imagining a small winged silhouette above a blank newspaper page, muted indoor daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon006",
+          "text": "再往後，紙上竟出現一群有翅膀的身影；誰看見的？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an old newspaper desk, one adult editor pauses with a clean broadsheet in hand, soft overcast daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon007",
+          "text": "別家報紙看見這份稿，會轉載，還是追問它的出處？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon008",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an old reading table, one adult newspaper buyer leans over an unmarked broadsheet, gentle lamp light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon008",
+          "text": "這張紙，究竟怎麼把一段故事寫得像天文觀測？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon009",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot near a southern observatory, one nineteenth century astronomer adjusts a small plain telescope, soft dawn light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon009",
+          "text": "赫歇爾的確到了好望角；這件真事，給了假報導第一層支撐。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ],
+      "chapter": "真天文學家的名字被借走"
+    },
+    {
+      "id": "moon010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a simple observatory, one astronomer marks star points on a clean chart, soft lamp light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon010",
+          "text": "他帶著儀器，研究南半球的星空，不是月球居民。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon011",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a southern observatory, one astronomer rotates a plain star chart, soft night lamp",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon011",
+          "text": "南天有許多北方不易觀察的星區，這正是他遠行的工作。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon012",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one astronomer making marks on an unlettered star chart, gentle lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon012",
+          "text": "他在當地編列雙星與星雲；報紙借走的是這趟真旅程。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon013",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a 1902 study, one astronomer closes a plain star atlas, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon013",
+          "text": "後來的天文學家雅各比，特別把兩件事分開。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon014",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an 1830s print room, one compositor holds an unmarked headline strip over a paper form, mild daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon014",
+          "text": "但《太陽報》的文章，直接把那個真實名字放在最顯眼處。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon015",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a newspaper stall, one older reader raises an eyebrow at a blank page, soft street light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon015",
+          "text": "但赫歇爾的真名，能替下一句話作證嗎？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden desk, one adult newspaper buyer reaches for a plain thin booklet beside a newspaper, soft lamp light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon016",
+          "text": "報導沒有只靠名氣；它又搬來一份學術刊物的增刊。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon017",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one bookshop visitor scanning the unmarked top of a large newspaper, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon017",
+          "text": "報導開頭先讚揚這會是不朽的天文發現，語氣像公告。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon018",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a library, one reader checks a plain journal shelf against a newspaper, mild daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon018",
+          "text": "可那份被點名的增刊，讀者能從哪裡翻到？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon019",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one editor placing a clean booklet next to a clean broadsheet, gentle window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon019",
+          "text": "那份所謂《愛丁堡科學期刊》增刊，是文章自己宣稱的出處。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon020",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an imagined observatory desk, one adult clerk seals an unmarked envelope, soft daytime light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon020",
+          "text": "再加上一位叫格蘭特的助手，說消息由南方觀測站寄來。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon021",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an imagined observatory desk, one adult illustrator sketches on a blank sheet, soft lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon021",
+          "text": "文中還把插圖說成另一位工作者在現場照著觀測畫的。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon022",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one student laying out clean name cards beside an unopened letter, soft daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon022",
+          "text": "每個名字都像見證者；他們真的各自留下原始材料嗎？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon023",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a reading table, one adult astronomy enthusiast turns an empty envelope over, mild lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon023",
+          "text": "注意，這是報導裡的角色與傳遞路線，不是查到的實際信件。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon024",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an old print room, one adult editor places a blank stack of papers beyond reach, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon024",
+          "text": "文章甚至說，真正的詳盡資料還在皇家學會手上。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon025",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one bookshop visitor reaching toward a distant plain folder, overcast indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon025",
+          "text": "這句話把可檢查的細節推遠了；眼前卻先給讀者完整敘述。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon026",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a nineteenth century library, one adult curious customer scans sparse book shelves, soft daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon026",
+          "text": "增刊、助手、皇家學會文件，哪一份就在讀者手裡？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon027",
+      "template": "big",
+      "data": {
+        "text": "洛克名義／Gowans 出版",
+        "kicker": "1859 重印本",
+        "sub": "不是 1835 原紙影像"
+      },
+      "lines": [
+        {
+          "id": "moon027",
+          "text": "今天能直接核對的，是一八五九年以洛克名義重印的文字。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon028",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one print worker holding a small book apart from a large clean broadsheet, soft daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon028",
+          "text": "這不是當年的紙張照片，所以字體與版面不能照重印本還原。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon029",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one historian following a line in an open plain book, gentle lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon029",
+          "text": "但文章的主張、轉折與自稱出處，都能在這個固定版逐行查。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon030",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a study, one adult reader compares two blank paper formats, mild daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon030",
+          "text": "書封上的作者名，不等於一八三五年的報紙當時就署了名。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon031",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one astronomy enthusiast turning from a clean title page to a telescope sketch, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon031",
+          "text": "那篇報導接著做更有力的一步：把「怎麼看到」說得很細。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon032",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a small observatory, one adult observer shades an eye beside a modest telescope, soft night lamp",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon032",
+          "text": "它先承認一個難題：把望遠鏡倍率加大，影像會變暗。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ],
+      "chapter": "不存在的巨鏡被寫得像工程記錄"
+    },
+    {
+      "id": "moon033",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a reading desk, one reader circles an empty area of a plain diagram, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon033",
+          "text": "先給真難題，再亮出奇蹟解法，是整段說服力的關鍵。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon034",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a reading table, one curious customer taps a plain telescope diagram, mild lamp light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon034",
+          "text": "這句像真的科學限制，讓後面的解法聽起來很值得期待。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon035",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one imagined scholar gesturing toward an unmarked optics sketch, soft indoor daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon035",
+          "text": "然後報導安排赫歇爾與布魯斯特，討論一種新裝置。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon036",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an imagined lab, one adult technician holds a small lamp beside a plain lens, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon036",
+          "text": "文中說，兩人要把人工光送進望遠鏡的成像位置。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one imagined scholar raising both hands beside a clean lens diagram, soft indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon037",
+          "text": "這場對話裡，另一位科學家甚至高興得跳起來。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon038",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one student smiling at an unmarked dialogue block on paper, gentle lamplight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon038",
+          "text": "這場熱鬧對話，真的解決了光線不足嗎？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon039",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an imagined worktable, one adult reader holds a small magnifying glass near a blank moon sketch, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon039",
+          "text": "還借顯微鏡的光，說遠方微弱的月面圖像也能照亮。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon040",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a wooden desk, one adult newspaper buyer traces a plain unlabeled lens diagram, soft window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon040",
+          "text": "這一段用了折射角、反射鏡和焦點，像一份器材說明。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon041",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a study, one adult bookshop visitor holds a lamp away from a distant small moon seen through a window, gentle night light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon041",
+          "text": "問題是，照亮桌上的影像，不會替月亮送回更多細節。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon042",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1902 study, one astronomer crosses a blank optics diagram with a pencil, soft desk lamp",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon042",
+          "text": "雅各比後來直說：這場對話只把光學術語拼在一起。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon043",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 1902 study, one astronomer sets a plain lens aside, soft desk light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon043",
+          "text": "他特別指出，說得熱鬧不代表那些詞能構成工作原理。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon044",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one historian checking an empty instrument ledger, soft window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon044",
+          "text": "若這套辦法真的可行，獨立的儀器與觀測紀錄在哪裡？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon045",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a real small observatory, one astronomer adjusts a modest plain telescope, overcast daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon045",
+          "text": "他並沒有把這架巨鏡當成赫歇爾真正使用的器材。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon046",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a print desk, one compositor arranges clean numeral blocks beside a lens sketch, soft daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon046",
+          "text": "可那篇報導還接著報重量、鏡片直徑與放大倍數。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon047",
+      "template": "big",
+      "data": {
+        "text": "24 英尺鏡片",
+        "kicker": "報紙聲稱",
+        "sub": "虛構器材數字"
+      },
+      "lines": [
+        {
+          "id": "moon047",
+          "text": "它把巨鏡寫成有二十四英尺口徑，鏡片重近七噸。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon048",
+      "template": "big",
+      "data": {
+        "text": "42,000 倍",
+        "kicker": "報紙聲稱",
+        "sub": "不是赫歇爾器材紀錄"
+      },
+      "lines": [
+        {
+          "id": "moon048",
+          "text": "還聲稱可放大四萬兩千倍，能辨出月面極小的物件。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one historian turning over an empty equipment card, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon049",
+          "text": "請記住：這三個數字來自虛構報導，不是器材清冊。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon050",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a reading room, one curious customer studies an unmarked measurement ledger, soft window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon050",
+          "text": "數字越密，越像工場帳；可這些數字是從哪裡來的？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon051",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one reader turning a blank ledger to find no matching entry, gentle lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon051",
+          "text": "但一個數字若只出現在這篇假文章裡，就不是儀器紀錄。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon052",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside a modest southern observatory, one astronomer faces a starry sky, mild night light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon052",
+          "text": "赫歇爾真的研究南天，卻沒有靠這套奇特裝置看見月人。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon053",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an old print press, one compositor draws a fresh without any writing sheet from the press, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon053",
+          "text": "報導把真人、真地點和假技術縫在同一段；下一步要展示什麼？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon054",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a reader's desk, one adult reader holds a blank round moon chart, soft indoor light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon054",
+          "text": "如果紙上的望遠鏡無所不能，第一眼應該先有什麼？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon055",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one astronomy enthusiast imagining rough moonlike rocks within a clean page border, mild lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon055",
+          "text": "文章沒有立刻把有翼人推出來；它先讓讀者看地形。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon056",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one newspaper buyer imagining angular crystals inside an unmarked newspaper page, soft lamp light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon056",
+          "text": "紙上的鏡頭先掃過石頭、山谷，還有閃亮的晶體。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ],
+      "chapter": "紙上的月面開始長出生命"
+    },
+    {
+      "id": "moon057",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one reader sliding a plain round viewing frame across a moon sketch, soft lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon057",
+          "text": "文章把視野寫成慢慢移動，讓讀者跟著等下一個景物。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one imagined observer peering at a plain crystal drawing, soft night light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon058",
+          "text": "文中甚至讓觀測者先誤認一排晶體，像人造的尖塔。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon059",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one archive visitor rubbing out a tiny tower outline on an unmarked sketch, mild indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon059",
+          "text": "這裡沒有直接宣布文明；它先提出可能，再讓角色否定。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon060",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one reader placing a crystal sketch beside a tower sketch, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon060",
+          "text": "再由赫歇爾判斷：那只是巨大的紫晶，不是建築。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon061",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a reading desk, one historian erases a mark on a clean sketch, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon061",
+          "text": "先看錯、再修正之後，這架紙上的鏡子還會看到什麼？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon062",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one student imagining a miniature moon valley rising from an unmarked paper page, soft indoor daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon062",
+          "text": "接著，紙上的山外出現樹、瀑布，還有一大片水。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon063",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one reader adding a tiny tree to a blank moon landscape sketch, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon063",
+          "text": "每個新景物，都讓下一個更荒唐的景物顯得沒那麼突兀。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon064",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an old desk, one newspaper buyer draws an imagined stream on a clean moon sketch, soft window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon064",
+          "text": "畫面越來越像地球；但所有景色只在文章的文字裡。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon065",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one bookshop visitor imagining a small shaggy animal within an unmarked page frame, gentle lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon065",
+          "text": "下一頁，牠們來了：像小野牛的動物，在林蔭下成群。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon066",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one reader pointing at a simplified hornless animal sketch on paper, soft indoor light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon066",
+          "text": "報導還替牠們寫出額頭上的肉瓣，彷彿能擋強光。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon067",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one archive visitor examining a plain animal sketch through a small magnifier, soft lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon067",
+          "text": "作者說肉瓣能擋光；可有什麼標本能讓人查？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon068",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one print worker sketching a small goatlike animal with a single horn on without any writing paper, soft daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon068",
+          "text": "另一種小獸只有一支角；原文並沒有稱牠神話裡的單角獸。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon069",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one reader comparing a simple goatlike animal sketch with a blank card, soft lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon069",
+          "text": "這個小差別很重要：後來的講法，不該替原文再加神話。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon070",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one adult student squinting at a clean broadsheet, gentle lamp light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon070",
+          "text": "每多一個局部特徵，讀者離真正的觀測證據卻沒有更近。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon071",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one astronomy enthusiast imagining a small upright beaver holding a cub within a paper border, soft lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon071",
+          "text": "後來又有兩腳走路的海狸，抱著幼崽，旁邊還有冒煙的小屋。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon072",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one reader imagining a small smoke wisp above a hut sketch, mild daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon072",
+          "text": "文中由煙，直接推說海狸懂得用火；這一步也是推論。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon073",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one bookshop visitor lifting an imagined hut drawing away from a clean newspaper, gentle lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon073",
+          "text": "紙上的屋子依然只是想像；一縷煙能證明文明嗎？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon074",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one curious customer drawing a plain tiny hut on the margin of an unmarked sheet, soft window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon074",
+          "text": "這些細節把「有生命」推成「會生活」，故事也就更難停下。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an empty museum table, one reader sets down a blank newspaper, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon075",
+          "text": "但是報導說得再仔細，也無法讓想像中的海狸變成標本。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon076",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a reading table, one print worker turns toward an unfinished clean figure sketch, gentle lamp light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon076",
+          "text": "若月面有森林、有屋子，讀者自然會問：住的是誰？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon077",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one historian imagining a rocky cliff emerging from an open newspaper, mild indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon077",
+          "text": "作者終於讓望遠鏡越過山崖，停在一片平原。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon078",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one reader leaning toward small winged silhouettes inside a blank page border, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon078",
+          "text": "此刻紙上又慢了一拍；山崖後出現的形狀，像鳥嗎？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one astronomy enthusiast imagining a single small winged figure alighting inside a paper frame, gentle window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon079",
+          "text": "報導說，四群帶翅膀的生物從山崖落到平地。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ],
+      "chapter": "有翼人落在報紙上"
+    },
+    {
+      "id": "moon080",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one newspaper buyer turning over an unmarked image card, mild daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon080",
+          "text": "它沒有交給讀者原始底片；它交出的是「觀測者說看見」。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon081",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one reader looking from a blank letter to a winged sketch, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon081",
+          "text": "那個觀測者，仍是這篇報導自己安排的人物視角。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon082",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one curious customer sketching one upright winged figure on a clean sheet, soft lamp light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon082",
+          "text": "牠們收起翅膀、直立走路，文中的觀測者才說像人。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon083",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one archive visitor adjusting a plain magnifying lens over a winged silhouette sketch, soft indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon083",
+          "text": "先說遠處像鳥，拉近才像人；它還能看得多清楚？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon084",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one reader tracing a simple path across a blank moon map, mild daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon084",
+          "text": "原文還寫成三隊可細數的人影，連行走方向都交代。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon085",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one adult historian reacting with surprise over an clean page, soft indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon085",
+          "text": "越是這種日常小動作，越讓不可思議的畫面像現場筆記。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon086",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one imagined observer adjusting a plain lens beside an unmarked figure sketch, soft night lamp",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon086",
+          "text": "接著它讓鏡片再放大，說能看到身上的短毛和薄翅。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon087",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one reader drawing two small gesture marks beside a single winged figure sketch, soft lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon087",
+          "text": "又說牠們彼此比手勢；於是推論牠們有理性、能做工藝。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon088",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one newspaper buyer staring at a gesture sketch with a puzzled expression, mild lamplight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon088",
+          "text": "隔著一張紙看手勢，能直接證明牠們會做工藝嗎？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon089",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one bookshop visitor arranging without any writing paper sketches from animal to figure to hut, mild daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon089",
+          "text": "這是文章自己從想像畫面，跨到想像中的社會。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon090",
+      "template": "big",
+      "data": {
+        "text": "Vespertilio-homo",
+        "kicker": "報紙造詞",
+        "sub": "虛構命名"
+      },
+      "lines": [
+        {
+          "id": "moon090",
+          "text": "最後，它替牠們取學名，意思就是「蝙蝠人」。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon091",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a small library, one adult archive visitor holds a clean taxonomy card, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon091",
+          "text": "名字一旦像分類學，假的發現又多了一層科學外衣。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon092",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a reading table, one print worker shuts an unmarked folder marked only by color, gentle lamplight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon092",
+          "text": "報導卻說，牠們更多奇特的習性，留待赫歇爾自己的書再公開。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon093",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one reader placing two blank folders side by side, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon093",
+          "text": "這個「以後會公布」的說法，和前面的皇家學會文件互相呼應。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon094",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one student reaching for two closed plain folders, gentle lamplight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon094",
+          "text": "兩份尚未拿到的東西，到底替誰的主張作證？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon095",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one astronomy enthusiast looking toward an empty shelf space, mild indoor daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon095",
+          "text": "那本將來的書，讓當下沒有呈出的證據，看似只是還沒出版。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon096",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one reader imagining a triangular hall within a blank page border, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon096",
+          "text": "故事仍往前寫：另一片月面有三角形神殿，居民在那裡吃果子。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon097",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one bookshop visitor lifting a clean illustrated sheet, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon097",
+          "text": "這不是建築遺址的觀測資料，只是同一篇虛構文字的下一頁。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon098",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a newspaper desk, one adult editor pauses over an unmarked telescope sketch, overcast daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon098",
+          "text": "既然紙上能看見神殿，讀者會不會要求真正的驗證？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon099",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one reader noticing an imagined shaft of light on a blank observatory sketch, soft indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon099",
+          "text": "文章於是寫出一場意外，解釋為何觀測忽然中斷。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon100",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one print worker imagining a large upright plain lens within a paper border, soft morning light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon100",
+          "text": "在報導裡，巨型鏡片沒有照規矩放平，早晨聚住陽光。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ],
+      "chapter": "巨鏡在故事裡起火"
+    },
+    {
+      "id": "moon101",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one historian imagining a scorched without any writing canvas within a paper frame, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon101",
+          "text": "它讓光束燒穿觀測室的布幕，還說旁邊的樹也起火。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon102",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one reader sketching a wisp of smoke above a blank observatory drawing, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon102",
+          "text": "紙上的觀測室被點燃，工人得趕來修理。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon103",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a real modest observatory, one astronomer opens a plain shutter, overcast daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon103",
+          "text": "這是虛構報導裡的火，不是赫歇爾真實觀測站的火災紀錄。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon104",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one newspaper buyer holding a folded newspaper beside an empty sketch frame, soft lamp light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon104",
+          "text": "說機器壞了，新的月面觀測到底何時能補上？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon105",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one reader flipping a simple moon calendar card with no writing, mild indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon105",
+          "text": "文章說一週後器材修好，月亮卻已不適合那個月再看。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon106",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one curious customer looking at a simple clean moon phase strip, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon106",
+          "text": "修好之後又得等月相，於是讀者暫時也等不到續報。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon107",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a print desk, one compositor lays an unmarked page over a calendar grid, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon107",
+          "text": "等不到月亮，這篇報導接著還能寫什麼？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon108",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one reader imagining a small ringed planet above a blank page, gentle lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon108",
+          "text": "然後筆鋒轉去土星，照樣報出另一串驚人的「發現」。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon109",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one historian comparing a clean star chart and a numerical looking but unreadable paper, mild light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon109",
+          "text": "它不只一次把未知變成肯定句，還讓肯定句帶上精確數字。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon110",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one adult editor searching a shelf for a thin journal, soft window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon110",
+          "text": "問題不在它寫得是否生動，而在可查的來源究竟在哪裡。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon111",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a newspaper office, one adult editor holds a blank broadsheet in midair, overcast daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon111",
+          "text": "等這些文字傳到別的編輯桌上，反應真的只有相信嗎？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon112",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 1859 bookshop, one newspaper buyer opens a small plain book, soft window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon112",
+          "text": "那本重印書，也保存一組當年報紙反應的選錄。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ],
+      "chapter": "重印本留下不一樣的回音"
+    },
+    {
+      "id": "moon113",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one adult bookshop visitor aligning two without any writing clipping shapes inside an open book, gentle lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon113",
+          "text": "裡面有《每日廣告報》稱讚，也有報紙覺得它像真文件。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon114",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an archive room, one historian examines a single small book among empty shelves, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon114",
+          "text": "但這是重印者挑出的引文，不能當成完整的全國報紙清單。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon115",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one editor setting aside a clean broadsheet with a doubtful expression, mild indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon115",
+          "text": "同一本書還說，《商業日報》不相信這些月球發現。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon116",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one print worker setting one without any writing dissenting clipping beside a book, soft daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon116",
+          "text": "重印者都收進反對聲音；《太陽報》怎麼回應？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon117",
+      "template": "big",
+      "data": {
+        "text": "1835-09-01《太陽報》",
+        "kicker": "重印本引文",
+        "sub": "未核對原報影像"
+      },
+      "lines": [
+        {
+          "id": "moon117",
+          "text": "《太陽報》九月一日的文字，反把懷疑者說成不懂科學。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon118",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one editor turning a plain broadsheet to its clean reverse, gentle lamp light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon118",
+          "text": "它沒有在那段防衛文字裡，拿出可讓別人重做的月面觀測。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon119",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one astronomy enthusiast smiling skeptically over an open without any writing newspaper, gentle lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon119",
+          "text": "另一家《晚郵報》的「月球有翼人」說法，讀起來是在反諷。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon120",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one reader holding a plain travel tale book next to a newspaper, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon120",
+          "text": "它拿另一部有飛人的虛構遊記來比，並非交出第二份觀測。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon121",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 1902 study, one astronomer taps a clean quotation card, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon121",
+          "text": "雅各比讀出諷刺；它還能算成相信的票嗎？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon122",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one curious customer arranging three without any writing clipping shapes on a desk, mild light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon122",
+          "text": "所以同一批選錄，已經有贊同、質疑，還有笑它的聲音。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon123",
+      "template": "big",
+      "data": {
+        "text": "發行量五倍",
+        "kicker": "出版者自述",
+        "sub": "缺獨立帳簿"
+      },
+      "lines": [
+        {
+          "id": "moon123",
+          "text": "重印本的出版者另說，報紙發行量增加了五倍。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon124",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one bookseller checking a clean sales ledger, gentle window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon124",
+          "text": "他也說，六萬份小冊子不到一個月賣完；這是出版者宣傳。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon125",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one historian turning an unmarked ledger page, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon125",
+          "text": "沒有獨立的帳本，就不能把那兩個數字當成測過的銷量。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon126",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1859 bookshop, one bookseller places a small plain book in a window, mild daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon126",
+          "text": "二十四年後的出版宣傳，足以說所有人當時都信了嗎？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon127",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a reading room, one adult astronomy enthusiast studies a book while other desks remain indistinct, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon127",
+          "text": "更不能只靠選錄，說所有讀者都相信，或者全城都被騙。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon128",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one astronomer examining a plain lens sketch, soft study lamp",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon128",
+          "text": "後來雅各比看那場假光學對話，抓到的是方法上的空洞。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon129",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a reading desk, one reader places a plain star chart beside a blank newspaper, mild window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon129",
+          "text": "赫歇爾的真旅程讓故事有入口，假的增刊和助手替它開了門。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon130",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one curious customer stacking clean telescope, tree and winged figure sketches, soft lamplight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon130",
+          "text": "巨鏡、月面的樹與翼人層層出現；最後能證明什麼？",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon131",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an archive room, one archive visitor sets down the open 1859 book, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon131",
+          "text": "這份檔案能回答的不是「多少人被騙」，而是它怎麼裝成證據。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon132",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one reader laying a blank journal, letter and moon sketch in a row, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon132",
+          "text": "關鍵不是翼人畫得多奇，而是每一個說法都借前一個說法站穩。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "moon133",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one historian opening a plain source book beside a newspaper, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "moon133",
+          "text": "下次看見「權威說」「研究說」，先找那份能親自翻開的原文。",
+          "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "月球有翼人，是一張紙的故事"
+        ]
+      },
+      "lines": [
+        {
+          "id": "moon999a",
+          "text": "這篇月球報導，哪一個「看似有出處」的細節最讓你想查？",
+          "emotion": "收束提問"
+        },
+        {
+          "id": "moon999b",
+          "text": "兩份固定版本的原文連結，放在影片說明欄。",
+          "emotion": "來源提示"
+        },
+        {
+          "id": "moon999c",
+          "text": "想繼續看有出處的歷史故事，訂閱奇聞檔案局。",
+          "emotion": "自然收束"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**月球人？**",
+      "tag": "1835 年太陽報",
+      "sub": "一封信，誰寫的",
+      "shot": "moon006"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "一八三五年《太陽報》怎麼把月球寫成有人住？｜奇聞檔案局",
+    "description": "1835 年，《紐約太陽報》說天文學家赫歇爾在月球看到森林、動物與有翼居民。這篇報導把真人真地點、虛構學術增刊、假助理書信與一架不可能的巨鏡串起來；當時選錄的報紙反應有贊同，也有質疑和反諷。為什麼一段故事會像天文觀測？\n\n本集逐句以 1859 年 Richard Adams Locke 名下重印本，以及 Harold Jacoby 1902 年〈The Moon Hoax〉核對。1859 書不是 1835 年原報影像；其「發行量五倍、六萬冊」是出版者自述，缺獨立銷售帳簿。本集的月面與巨鏡畫面均為 AI 卡通示意，代表當年文章聲稱，不是真實觀測或器材。\n\n1859 重印本固定版：https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt\n1902 Jacoby 固定版：https://github.com/GITenberg/Practical-Talks-by-an-Astronomer_53396/blob/073dd7dd24b8515dec681441a1cde79477fabf08/53396-0.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\n\n資料截至 2026-10-20",
+    "tags": [
+      "月球大騙局",
+      "Moon Hoax",
+      "紐約太陽報",
+      "赫歇爾",
+      "1835",
+      "假新聞史",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}
