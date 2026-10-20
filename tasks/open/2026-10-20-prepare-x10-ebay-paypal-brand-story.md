@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-prepare-x10-ebay-paypal-brand-story
 title: Prepare X10 eBay PayPal brand-story episode
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-x10-v8
+claimed_at: 2026-10-20T19:25:02Z
 created_at: 2026-10-20T18:04:54Z
 completed_at:
 branch: codex/brand-story-ebay-paypal-x10
@@ -37,12 +37,14 @@ The brand-story series needs another recognizable, nonduplicate episode after X0
 - [x] Re-audit v4 SHA against sources and obtain one new script-only blind read; both identified specific failures, preserved as historical receipts.
 - [x] Re-audit v5 SHA against sources and obtain two independent script-only blind reads; source and blind A passed, blind B identified `scene_first` and `no_recap` failures.
 - [x] Re-audit v6 SHA against sources and obtain two independent script-only blind reads; source passed, both blinds identified `no_recap` failures.
-- [ ] Re-audit final v7 SHA against sources and obtain two independent script-only blind passes.
+- [x] Re-audit v7 SHA against sources and obtain two independent script-only blind reads; source passed, both readers failed `no_recap` at distinct line pairs.
+- [ ] Re-audit final v8 SHA against sources and obtain two untouched script-only blind passes.
 - [x] Open draft PR #1627 with clear preproduction status and historical review receipts.
 - [x] Run v4 lint, docs-video tests, task check, claim/Shorts parity, then push the revised package to the draft PR.
 - [x] Run v5 lint, docs-video tests, task check, claim/Shorts parity, then push the revised package to the draft PR.
 - [x] Run v6 lint, docs-video tests, task check, claim/Shorts parity, then push the revised package to the draft PR.
 - [x] Run v7 lint, docs-video tests, task check, claim/Shorts parity, then push the revised package to the draft PR.
+- [x] Run v8 lint, docs-video tests, task check and claim/Shorts parity; push the revised package to the draft PR.
 
 ## How to verify
 
@@ -72,4 +74,8 @@ v6 candidate: `video.json` SHA-256 `ff55b13fe19506d4f79586567fe47887f77dcb1b5b8d
 
 v6 received an independent [source PASS](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/source-review-v6-independent.md). Both [blind A](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/blind-a-v6-independent.md) and [blind B](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/blind-b-v6-independent.md) failed only `no_recap`: A flagged adjacent repetition of 2020 agreement expiry, B flagged the final answer repeating the buyer/seller product claim and partner-comparison caveat. Their source SHA is historical, not v7 approval.
 
-v7 candidate: `video.json` SHA-256 `d0e77292c9b3547c8a34c19a034d1d400b18a157af8ecd846136019c6c398d6d`; `shorts.json` SHA-256 `15fa00305f4ad52d79b05fd9bbf4e0743923330a23f37792d1963c5ed9216a22`. `x100602` now advances to more markets without repeating the preceding expiry; `x100614` keeps the per-user measurement limit in the body, while `x100717` introduces the untested continued-PayPal comparison as the new closing limit. The opening visual shows a generic payment click and parcel beside a separate seller. Local lint returned 0 errors/0 warnings, with estimated hook 51.0 seconds and body 542.9 seconds; Shorts shot-line pairs 13/13 and source matrix 105/105. `npm run test:docs-videos` passed 236/236 and `npm run check:tasks` exited 0 with unrelated queue warnings. Source audit, blind reviews, and actual TTS durations remain open.
+v7 candidate: `video.json` SHA-256 `d0e77292c9b3547c8a34c19a034d1d400b18a157af8ecd846136019c6c398d6d`; `shorts.json` SHA-256 `15fa00305f4ad52d79b05fd9bbf4e0743923330a23f37792d1963c5ed9216a22`. `x100602` now advances to more markets without repeating the preceding expiry; `x100614` keeps the per-user measurement limit in the body, while `x100717` introduces the untested continued-PayPal comparison as the new closing limit. The opening visual shows a generic payment click and parcel beside a separate seller. Local lint returned 0 errors/0 warnings, with estimated hook 51.0 seconds and body 542.9 seconds; Shorts shot-line pairs 13/13 and source matrix 105/105. `npm run test:docs-videos` passed 236/236 and `npm run check:tasks` exited 0 with unrelated queue warnings. Source audit, blind reviews, and actual TTS durations were then open.
+
+The v7 [independent source audit](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/source-review-v7-independent.md) passed. Untouched [blind B](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/blind-b-v7-isolated.md) and [blind C](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/blind-c-v7-clean.md) each scored 11/12, both `no_recap` No: B at the repeated 2019 US$2 billion amount, C at the 2015 cooperation recap. Their same-criterion failure blocks v7. The extra [blind A diagnostic](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/blind-a-v7-isolated.md) disclosed brief historical-review snippet exposure and does not count as a formal reader. C also found Short 2's why-hook payoff incomplete.
+
+v8 author delta is in [v8-author-delta.md](../../docs/videos/story-everyday-ebay-paypal-x10/reviews/v8-author-delta.md). `video.json` SHA-256 `3f20fbcf4fa8143b21b227ea12a629c39d6ec2929999c95bffde67a57392a73d`; `shorts.json` SHA-256 `dde413de5eac00fd74c6ab6b200a60f92e05bc454ce29de7ce6453552ea17ff1`. The new `x100413` asks a contract exception question answered by `x100414`–`x100415`; `x100512` distinguishes processed volume from income without repeating the number. Short 1 gains the contract incentive, and Short 2 asks who manages payment, establishes post-split PayPal continuity, then ends with the FY2022 filing's 2021-end result. Three loop metadata payoffs now point to their actual answer lines. Free script estimate: 51.0 s opening, 541.2 s body, 22.1 s native outro, 10:14 total narration; this is **not** a measured TTS duration. `lint` 0 errors/0 warnings, `npm run test:docs-videos` 236/236, `npm run check:tasks` exit 0 with unrelated existing warnings. Exact-SHA source delta review, two fresh blind reads and paid-media gates remain open.
