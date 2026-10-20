@@ -24,13 +24,13 @@ scope:
 
 - [x] 固定可重開的原著版本，記錄轉錄信件、學生決議與晚年回憶的證據界線。
 - [x] A／B 選案與推薦 A、來源主張表、8 分鐘以上正文及可畫的 `video.json`／`script.md` 可供獨立覆核。
-- [ ] 獨立逐句史料／分鏡覆核與兩名新讀者盲讀通過，交主工作者安排後續媒體關卡。
+- [x] 獨立逐句史料／分鏡覆核與兩名新讀者盲讀通過，交主工作者安排後續媒體關卡。
 
 ## Steps
 
 - [x] 領取狹窄檔案範圍，固定 1895 原書與 P01–P14。
 - [x] 完成 `research.md`、`brief.md`、`claims.md`、`video.json`、`script.md` 及 `verify-1.md`。
-- [ ] 按獨立覆核意見修正並重新凍結；後續 TTS／插圖／組片由主工作者安排。
+- [x] 按獨立覆核意見修正並重新凍結；後續 TTS／插圖／組片由主工作者安排。
 
 ## How to verify
 
@@ -73,3 +73,7 @@ R4 書面畫面獨立覆核 [verify-8.md](../../docs/videos/curio-s46/verify-8.m
 2026-10-20 R9：[作者窄修與來源自查](../../docs/videos/curio-s46/verify-18.md)刪去沒有後續答案的 `bkw060` 醫書景與主張列，`bkw097` 直接提出「真正進病房後，臨床資訊還拿得到嗎？」而不重述 `bkw096` 已給的許可；`bkw069` 刪重述，改說原書未記個別投票理由。精確 `script.md` SHA `044658dcc14548f4abd066037e0125da4bdb4c004682301f4e67e1586a53f51c`、`video.json` `1a8eea0a21dbecb60786bd11d15428e4e77c641c5b8f2f9982c729de4077e4ed`、`claims.md` `35c2f299bb94e8394f4bf89f62af3cb29b6db25c8c2b8a092e25dd0627e77fdc`；120/120 逐句相符、19 loops、lint 0／0、靜態正文 2,187 漢字按 4.5 字／秒約 8:06。仍須新獨立來源／畫面覆核、兩位真正新讀者敘事盲讀、政策／站台關卡；無付費媒體或成片。
 
 2026-10-20 R9 [獨立全句史料與書面畫面覆核](../../docs/videos/curio-s46/review/r9-source-independent.md)對原精確版判 **來源 HOLD／書面畫面 HOLD**：`bkw044` 將申請信日期當作送達日；`bkw016` 將 Allen 私人解剖學校畫成學院講堂。R10 [作者定點改稿與原書自查](../../docs/videos/curio-s46/verify-19.md)以 10 月 3 日只稱**申請信日期**，提示詞改私人教室，P06 與 A 綱同步澄清；`script.md` SHA `02bdc64cce814b1962d3984f8b898b7beb7f51cf273cce7150ec8fdffdbaef8c`、`video.json` `afbb36551c7fd49f0a001ed0e01e8de03d69cdc628c68cda62b08694716aaff6`、`claims.md` `f75d6a2c08e6292fb5a15398fbc5615249f037508db88b2d9a42f59958d444e2`，120/120 相符、lint 0／0、正文靜態約 8:06。R10 須另一位獨立來源／書面畫面覆核、兩名全新盲讀者及後續政策／站台關卡；未做媒體。
+
+2026-10-20 R10 前製關卡已完成：[獨立逐句史料與書面畫面覆核](../../docs/videos/curio-s46/review/r10-source-independent.md)兩項 PASS；[官方隔離敘事雙盲](../../docs/videos/curio-s46/review/r10-official-panel.md) A 12／13、B 13／13，唯一分歧 `no_toc`，固定合併規則判 **PASS**。原始答卷與合併 JSON 均留存，payload SHA `d4db0ed473049db32eb326d9eb57ba4e523d8fd67ed0eb157619d101543155c7`；五檔精確輸入 SHA 見兩份 R10 收據。交主工作者安排 Jev、網站精確版核准與付費媒體；目前未生成語音、插圖或成片，亦未核准網站劇本。
+
+2026-10-20 R10 [Jev 全稿政策收據](../../docs/videos/curio-s46/review/r10-policy.json)對同一精確劇本判 **FAIL**：sponsored 0.34，高於 0.30 門檻；stance 0.71、advice 0.02、demo null。請求 SHA `5ae05f9679f80f4587217f05466a2659dd89e622de3456b594c5cd34acead2a6`，收據 SHA `ef4883dfacbe0d474de49dc14ce7f6d56d11aad1e9d6e224f842dca06d2ace6b`。僅以 `review-push --report-only` 建立 explainer 類別站台列，零審查卡；沒有送出網站核准或做付費媒體。此 FAIL 尚未修稿，不能以來源／敘事 PASS 替代政策關卡；若改字須以新版重做相關審查。

@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-curio-s45-nellie-bly-blackwell-island
 title: Curio S45 Nellie Bly Blackwell Island source-audited episode
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex/root
+claimed_at: 2026-10-20T15:38:20Z
 created_at: 2026-10-20T12:11:49Z
 completed_at:
 branch: codex/curio-s34-endurance-20261019
@@ -72,3 +72,5 @@ R6 repaired `bly011–014` (back-parlor wait before room terms/payment), `bly017
 2026-10-20 R9 [獨立史料與書面畫面差分](../../docs/videos/curio-s45/review/r9-source-independent.md) **PASS**，只綁 `script.md` SHA `cd51d875c9ccee9b6d99caf4da66a06d0b8f8ac22f2160a8de0d8ad33905e2c8`／`video.json` SHA `f0a29e1116363409392af7dca68c32e6d7ec6f9a08fe937aaadb42e36cddecec`：獨立重讀固定原著覆核 23 句變更，核對書面提示詞、卡片、縮圖和說明欄；不含實際生成圖、R9 敘事盲讀、政策、站台或音訊核准。
 
 2026-10-20 R9：兩名真正隔離、只讀 CLI 旁白與十三題的新讀者各 12/13，A 的 `no_recap` No、B 的 `payoffs` No 沒有共同必答失敗，依工具合併規則[敘事 PASS](../../docs/videos/curio-s45/review/r9-official-panel.md)，原始 JSON 與逐題合併可查。R9 精確史料／書面畫面亦獨立 PASS；Jev、網站、R9 配音及圖像另待，R8 的 23 旗標未清。
+
+2026-10-20 R9 後續：[精確政策／本地委派劇本決定](../../docs/videos/curio-s45/verify-19.md)完成；站台 outline/script 仍 hand_pushed pending。實際合成 R9 23 句（其餘 79 沿用），三次完整音檢及兩輪只補錄被標句，旗標 **7→2→1**；實測開場 45.43 秒、正文 9:45.13，最後一個 `bly098` 把人名／書誤聽為「布萊德叔叔」，不能通過音訊關卡，詳[verify-20.md](../../docs/videos/curio-s45/verify-20.md)。R10 [作者定點改稿](../../docs/videos/curio-s45/verify-21.md)只重說 `bly098`，精確新 `script.md` SHA `b5354170966637ceea44ba6d2b96d27b052f3195db02ba91507af2dff984986c`，待另人史料／畫面差分、兩位新隔離讀者、R10 政策及精確劇本決定，然後只重配一行再做全片音檢。R9 的音訊／政策／核准不得直接當 R10 通過；無 MiniMax、配樂或成片。
