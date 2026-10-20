@@ -1,0 +1,40 @@
+# Spotify X13 v8 — independent first-reader narrative review
+
+**True fresh-context blind.** My initial exposure was only `video.json` and `shorts.json` at the frozen paths below. I fixed the subjective score and judgments before reading `AGENTS.md`, the brand-story skill, the narrative panel, lint code, prior reviews, author notes, source matrices, commits, or PR discussion. I did not read prior versions or other reviews for this report.
+
+| Frozen input | SHA-256 verified before review |
+| --- | --- |
+| `docs/videos/story-everyday-spotify-x13/video.json` | `70963bccd37b68aa67163a1d31b5f1db48d52bd772ccdf55f41be90615a7f928` |
+| `docs/videos/story-everyday-spotify-x13/shorts.json` | `8b0c0d88e1f568154e2ba076feab755657fd422a971da504b8562bcb38afe1ec` |
+
+**First-reader score: 6/10.** The central question—whether two 2019 podcast acquisitions paid back—has a clear investigative route through the later public accounts. The script carefully distinguishes acquisition consideration, Ad-Supported gross margin, Premium cost classification, and whole-company results. It also pays off most chapter-end questions promptly. But the opening states an acquisition before making a person or decision feel urgent, and the story's visible actions become a long sequence of anonymous folders, blank cells, and colored ledgers. The viewer learns the accounting limits; there is little sense of a decision changing someone's fate. By the final return to two empty boxes, the honest answer feels expected rather than discovered.
+
+The six chapters move in a legible 2019 → 2020 → 2023 → 2024 → 2025/26 sequence. Chapter handoffs are especially clear at `x13-b03-s01` (the ad margin cannot stay positive), `x13-b04-s01` (the reorganized assets cannot be tied to either deal), `x13-b05-s01` (the margin reaches +13%), and `x13-b06-s01` (the ad account looks lighter after a classification change). The problem is density, not lack of hooks: 115 scenes in an estimated 11.16 minutes, with many adjacent shots of a researcher moving cards between accounts. `x13-b03-s09`–`s21`, `x13-b05-s13`–`s22`, and `x13-b06-s10`–`s23` are the most repetitive visual stretches. A few scene actions involving the creator, advertiser, or member would make each accounting discovery feel caused by a concrete choice.
+
+## Q1–Q13 narrative panel
+
+Q9 is advisory; all other rows are required. “No” is a first-reader editorial judgment even when the static checks pass.
+
+| ID | Answer | Evidence and, for a No, specific repair |
+| --- | --- | --- |
+| Q1 `scene_first` | **Yes** | `x13-b01-s01` `[x130101]` “二〇一九年二月十四日，Spotify 買下播客創作工具 Anchor。” The dated purchase is an action in the first sentence; `x13-b01-s02` puts a show card on the recording desk within the first four. |
+| Q2 `no_spoiler` | **No** | `x13-b01-s07` `[x130107]` “再後來，有些節目關閉” states the later closure that `x13-b04-s12` otherwise reveals. Show the arrival of an unexplained program-change notice and the researcher reaching for the contracts, then disclose the closures in chapter 4. |
+| Q3 `one_line` | **Yes** | `x13-b03-s22` `[x130323]` “三年後，公司直接動手整理播客內容組合。” It advances from the 2020 cost problem to the 2023 response; subsequent chapters continue forward to 2025/26. The return from the opening montage to 2019 is intelligible. |
+| Q4 `no_toc` | **Yes** | `x13-b04-s14` `[x130420]` “一年後，同一條廣告業務帳重新公布結果。” This is an event in the investigation, not a spoken list of sections; no narration announces the video's outline. |
+| Q5 `chapters_link` | **Yes** | `x13-b02-s17` `[x130217]` asks whether the ad line stays positive; `x13-b03-s01` `[x130301]` answers “接不住”. `x13-b03-s23` → `x13-b04-s01`, `x13-b04-s16` → `x13-b05-s01`, and `x13-b05-s26` → `x13-b06-s01` likewise answer the immediately preceding question. |
+| Q6 `open_loops` | **Yes** | `x13-b03-s10` `[x130310]` asks whether costs outrun ad revenue; `x13-b03-s17` `[x130318]` narrows the question to podcast's share. The 45-second tight-cadence static check found no gap. |
+| Q7 `payoffs` | **No** | `x13-b01-s02` `[x130102]` asks “買到工具，等於買到聽眾嗎？” No later line establishes whether Anchor caused additional listeners; `x13-b02-s04`–`s05` only explain that publishing and an ad sale are different. `x13-b01-s06` `[x130106]` asks whether that ad slot *can sell*, but `x13-b02-s05` answers conditionally, “廣告商若買下曝光”. Reframe these setups as answerable mechanism questions—“上架就有收入嗎？” and “播放怎麼變成收入？”—or supply sourced outcomes that directly settle the original questions. |
+| Q8 `no_recap` | **No** | `x13-b04-s04` `[x130404]` reveals “負百分之六”; `x13-b04-s05` explains it, then `x13-b04-s13`, `s16`, and `x13-b05-s02` return to the same figure without an explicit “還記得” callback. `x13-b04-s03`'s €30m also returns in `x13-b04-s11`, and `x13-b06-s11`'s €21m returns in `s14`. State each figure once; subsequent lines can say “那筆沖銷／那條負毛利線／這筆下降”, or explicitly cue a callback when the number must be heard again. |
+| Q9 `chapters_are_events` **(advisory)** | **Yes** | `x13-b04-s01`'s chapter title “內容資產被沖銷，兩案沒有標籤” names a change and a discovery. The other titles likewise name purchases, a loss, a rebound, or a cost transfer; the final title also poses the resulting question. |
+| Q10 `outro_no_next` | **Yes** | `x13-outro` `[x130626]` invites subscription to “熟悉品牌的決策與真正能證明它的數字” without naming any next video. |
+| Q11 `opening_hooks` | **Yes** | After the first scene, `x13-b01-s05` `[x130105]` leaves the return column empty, `x13-b01-s06` `[x130106]` puts an unsold ad slot beside a play action, and `x13-b01-s08` `[x130108]` leaves the cost of a new member video view unresolved. These preview three later questions. The closure line at `s07` should be revised as noted in Q2. |
+| Q12 `one_thread` | **Yes** | `x13-b01-s05` `[x130105]` establishes the two empty deal-return columns; `x13-b06-s22` `[x130622]` leaves them empty after separating differently scoped evidence. The recurring contracts and researcher keep the same concrete accounting problem alive. |
+| Q13 `no_detour` | **No** | `x13-b05-s15`–`s19` spends five scenes on Premium margin, +€578m revenue, member and ARPU growth, a playlist, and audiobook licensing, although none can be assigned to the two acquisitions. `x13-b06-s16`–`s17` adds two service-scale statistics before again saying scale is not deal payback. Compress the Premium passage to one scoped observation that sets up the 2025 cost transfer; use at most one service-scale counterexample before returning to the two deal-return columns. |
+
+**Panel result: 4 required No answers (Q2, Q7, Q8, Q13); Q9 advisory Yes.** The static narrative check reported zero errors and zero warnings with `TIGHT_CADENCE`; it checks hook spacing and repeated number patterns, while these calls depend on what the viewer understands. The 17 declared loops exceed the estimated-length requirement. The review is of the frozen JSON narration and prompts, not rendered pictures or recorded audio; 11.16 minutes is an estimate.
+
+## Shorts and close
+
+Both Shorts pass `episodeShortsProblems`. Short 1 has a standalone question at its second beat—“為什麼一家做節目，另一家做工具？”—and the creator/studio cards in `x13-b02-s02`/`s03` give its answer. The `x13-b02-s04` payoff visually merges the two supply routes. Its nine beats spend several proof steps before stating the answer, so moving that question into the first narrated beat and trimming the “當時的期待” beat would make the cut more immediate. Short 2 is tighter: the −€21m hook, the `x13-b06-s08` cost-token transfer, and the `x13-b06-s14` unreported split produce a distinct reveal. Both preserve the crucial scope limits in their copy.
+
+The three outro lines each do their assigned job: `x130624` answers the opening (“兩案各自的累計淨回收未公開”), `x130625` asks a related comment question about which service should bear the new video experience, and `x130626` gives a reason to subscribe. The comment question is more about the last chapter than the acquisition mystery; if the ending is tightened, asking what deal-level recovery figure a platform buyer would require would bring the viewer back to the two empty contract columns.
