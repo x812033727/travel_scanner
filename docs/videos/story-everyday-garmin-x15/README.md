@@ -1,12 +1,12 @@
 # X15｜Garmin：車裡兩塊螢幕，後來哪條收入線排第一？
 
-狀態：**v8 離線前製作者稿，待新一輪獨立來源核對與兩名同版盲讀者。沒有付費媒體、成片、YouTube 連結或 PR。** 本集取材自已查核的 100 題清單 C15，作為 X15 獨立製作，不改 C15 的企劃或審稿雜湊；X01–X14 沒有 Garmin 主角。
+狀態：**v8 離線前製稿已通過獨立來源核對及兩名同版盲讀者的合併判定；真實媒體與成片尚未完成。** 本集取材自已查核的 100 題清單 C15，作為 X15 獨立製作，不改 C15 的企劃或審稿雜湊；X01–X14 沒有 Garmin 主角。
 
 主問題：2008 年 Garmin 的車用／行動事業占公司營收逾七成。手機與新車也能導航後，2010 年那條收入線走到哪裡、2011 年公司如何改寫手機風險，以及 2025 年的收入究竟由哪些事業構成？主片沿**一條無字藍色收入帶**走六章；它是作者的視覺隱喻，不是實際 Garmin 圖表，也不把舊部門硬接到新分部。
 
-[來源矩陣](source-matrix.md)列六份工人可讀的 SEC 原始 HTML、下載位元組與 SHA-256、支持範圍及禁區；[獨立企劃查核](reviews/source-audit-independent.md)對 G1–G7 重抓核算後 PASS。[v7 逐句來源查核](reviews/script-source-audit-v7-independent.md) PASS。[v7 盲讀 A](reviews/blind-a-v7-independent.md) 9/12、[盲讀 B](reviews/blind-b-v7-independent.md) 8/12，均 HOLD：文件式開場／翻頁、問「為何賣大」卻只答功能、以及重複產品與事業口徑。B 另指出結尾分部清單。v8 改成三個具體後續時刻、可由來源回答的產品問題，並壓縮口徑與最後一章；v7 收據只綁舊 SHA，不能批准新版。
+[來源矩陣](source-matrix.md)列六份工人可讀的 SEC 原始 HTML、下載位元組與 SHA-256、支持範圍及禁區；[獨立企劃查核](reviews/source-audit-independent.md)對 G1–G7 重抓核算後 PASS。[v8 獨立逐句來源查核](reviews/script-source-audit-v8-independent.md)重抓 G1–G6，對同版主片、Shorts 及視覺計畫 PASS。[v8 盲讀 A](reviews/blind-a-v8-independent.md) 12/12、[盲讀 B](reviews/blind-b-v8-independent.md) 11/12，唯一 Q8 歧見及開場問句密度見[合併裁定](reviews/narrative-v8-adjudication.md)；依兩人須同題都 NO 才退稿的頻道規則，稿件階段 PASS。v7 來源與盲讀票只屬歷史版本。
 
-v8 凍結檔案：`video.json` SHA-256 `90cb2e911a02a32ce624be67f1a17b4e32c09ac6d192b554c1f187df9738634e`；`shorts.json` SHA-256 `fa5dfbed68a46eab986036c9cc1b4c16e877ffa137f27fcd489c224bfd52cabb`。主片 118 句、95 張待生成匿名插畫、13 張原生後製 stats 卡、1 張明列 2025 Fitness＋Outdoor **60.9%** 與分母／來源的三句 `outro` 原生答案卡、10 個有句 ID 的掛問／回收。兩支 Shorts 各 9 拍，169／206 個稿文字元；[直式交接](shorts-portrait-plan.md)有每拍重用 shot、中央裁切和原生字卡安全區，**沒有實際 9:16 渲染或手機驗收**。[逐句作者來源標記](line-source-matrix.md)及 [Shorts 標記](shorts-source-matrix.md)只供下一位查核者使用，不能算新版的獨立 PASS。
+v8 凍結檔案：`video.json` SHA-256 `90cb2e911a02a32ce624be67f1a17b4e32c09ac6d192b554c1f187df9738634e`；`shorts.json` SHA-256 `fa5dfbed68a46eab986036c9cc1b4c16e877ffa137f27fcd489c224bfd52cabb`。主片 118 句、95 張待生成匿名插畫、13 張原生後製 stats 卡、1 張明列 2025 Fitness＋Outdoor **60.9%** 與分母／來源的三句 `outro` 原生答案卡、10 個有句 ID 的掛問／回收。兩支 Shorts 各 9 拍，169／206 個稿文字元；[直式交接](shorts-portrait-plan.md)有每拍重用 shot、中央裁切和原生字卡安全區，**沒有實際 9:16 渲染或手機驗收**。[逐句作者來源標記](line-source-matrix.md)及 [Shorts 標記](shorts-source-matrix.md)供製作時回查，獨立 PASS 以審核票為準。
 
 主片首章 247 個稿文字元；第二至第六章實質正文 2,466 個稿文字元，按每分鐘 300 字元約 **8:13**。lint 全片紙面估計約 10:58，另加正式 5 秒／21 秒動畫約 11:24；兩種估算都不是 TTS 或實際影片時長。正式剪輯朝約 10 分鐘調整，仍須實測扣除開場、末三句及動畫後的正文至少 8:00；目前快速紙面基準只餘 13 秒，不能再刪正文。Shorts 25–55 秒也仍需真音訊核定。
 
