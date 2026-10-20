@@ -10,7 +10,7 @@
 
 - 看過（在產品自己的介面上看到）：沒有。十三次都是不開畫面的 session；`/skills`、`/context`、`/skill-doctor`、斜線選單、Claude 應用程式的 Customize 頁都沒有看過，片中沒有做成畫面，講到的都標引用。
 - 跑過：c1–c6、c8–c11、c14、c18、c20。主線三臂各三次，旁白講「三次」；描述含糊三次；斜線一次，旁白講「那一次」。
-- 引用：c7（公告的用途與日期）、c12（三層載入）、c13（位置表、Codex 的位置）、c15（`/skills`）、c16（「被觸發只代表找到它」）、c19（描述怎麼寫、上限）、c21（沒觸發的查法）、c22（兩種關法）、c23（版控、移除、應用程式六個欄位、程式碼執行）、c24（Codex 讀同一種檔）、c25（`allowed-tools` 與 `${CLAUDE_SKILL_DIR}`）。卡片的出處各自標頁名或「引用」。
+- 引用：c7（公告的用途與日期）、c12（三層載入）、c13（位置表、Codex 的位置）、c15（`/skills`）、c16（「被觸發只代表找到它」）、c19（描述怎麼寫、上限）、c21（沒觸發的查法）、c22（兩種關法）、c23（版控、移除、應用程式六個欄位、網頁版上傳 ZIP 的步驟、沙箱）、c24（Codex 讀同一種檔）、c25（`allowed-tools` 與 `${CLAUDE_SKILL_DIR}`）。卡片的出處各自標頁名或「引用」。
 - 站主的做法（意見，旁白標「我」或「我寧願」）：c9 的「以前每個月貼的那一段」、c11 的「我寧願交給腳本」、c17 的練習。
 
 ## 示範紀錄（輸入、動作、預期、實際、證據）
@@ -72,7 +72,7 @@ c21｜沒觸發的查法：描述有沒有使用者會說的詞；問 What skill
 
 c22｜兩種關法：`disable-model-invocation: true`（Claude 不能自己叫，只能 `/name`）；`skillOverrides` 設 `"off"`；卡片上的 deploy 例子是官方頁的｜https://code.claude.com/docs/en/skills（Control who invokes a skill 的 deploy 例子；Override skill visibility from settings 的 JSON 例子）｜2026-10-20｜switch-off
 
-c23｜進版控（Project 列：Commit it so your team gets it too）；刪掉資料夾就是移除；上傳到 claude.ai 只收 `name`、`description`、`license`、`compatibility`、`metadata`、`allowed-tools` 六個欄位；應用程式要先開 code execution 才看得到 Skills｜https://code.claude.com/docs/en/skills（Remove a skill；Using skill frontmatter outside Claude Code）；https://support.claude.com/en/articles/12512180-using-skills-in-claude（Skills section not visible：Ensure code execution is enabled）｜2026-10-20｜keep
+c23｜進版控（Project 列：Commit it so your team gets it too）；刪掉資料夾就是移除；上傳到 claude.ai 只收 `name`、`description`、`license`、`compatibility`、`metadata`、`allowed-tools` 六個欄位；網頁版的步驟：Settings > Capabilities 開 Code execution and file creation（Free、Pro、Max）→ 整個資料夾壓成 ZIP → Customize > Skills → + → Upload a skill → 清單裡開關；上傳後的腳本跑在 Anthropic 的沙箱裡（站內文章：API 與應用程式的技能跑在沙箱，Claude Code 的跟你電腦上的程式一樣）；這支沒有實際上傳，卡片標引用｜https://code.claude.com/docs/en/skills（Remove a skill；Using skill frontmatter outside Claude Code）；https://support.claude.com/en/articles/12512180-using-skills-in-claude（Skills section not visible：Ensure code execution is enabled）｜2026-10-20｜keep
 
 c24｜Codex 讀同一種 SKILL.md（必須有 name 與 description）、放 `.agents/skills`｜https://developers.openai.com/codex/skills｜2026-10-20｜keep、where-table
 
@@ -82,7 +82,9 @@ c25｜`allowed-tools: Bash(${CLAUDE_SKILL_DIR}/scripts/render.sh *)` 是官方�
 
 - 企劃的計分表寫貼規則「六次都想寫 Python」，那是第二輪的結果；第三輪（正式）是六次手算、其中四次先想寫 Python（b1–b3、p2）。稿子與企劃的執行紀錄都照第三輪。
 - 企劃第 4 章列了 `name` 預設與 `when_to_use`；稿子只講 `name` 預設，`when_to_use` 併進描述的上限那一句。
-- 企劃的 cta 在第 7 章；稿子放第 5 章末（主例之後、片子中段）。
+- 企劃的 cta 在第 7 章；稿子放第 5 章中段（主例之後、片子中段，盲評要求不切斷章末的鉤子）。
+- 盲評第一輪退了四題（目錄句、重述、章名寫功能、cta 切斷鉤子），都改了：第 4、7、8 章改名、片尾不再重唸數字、cta 移位。
+- 參考片第 6 章講網頁版上傳 ZIP，這支補成第 7 章的一張步驟卡（引用說明中心）。
 
 ## 我懷疑但沒動的事
 
@@ -92,4 +94,4 @@ c25｜`allowed-tools: Bash(${CLAUDE_SKILL_DIR}/scripts/render.sh *)` 是官方�
 
 ## 進度
 
-33 個場景全部寫好；lint 零錯誤零警告；loops 8 個；旁白 94 句、約 2,280 字、估 8.4 分鐘。
+34 個場景全部寫好；lint 零錯誤零警告；loops 8 個；旁白 96 句、約 2,330 字、估 8.6 分鐘。

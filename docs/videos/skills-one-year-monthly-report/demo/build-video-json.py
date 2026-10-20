@@ -66,7 +66,7 @@ S('typed', 'stats', {'title': '每個月要打幾個字，開場多帶幾個 tok
     {'value': f"+{N['tok_s']}", 'label': 'Skill：第一個請求多出的 token', 'note': f"什麼都不給是 {N['tok_b']:,}"},
     {'value': f"+{N['tok_p']}", 'label': '貼規則：第一個請求多出的 token'}],
     'source': f'{RUN}｜串流第一個回應的 usage'},
-  [L('差別先看兩個數字：每個月打十二個字，還是三百多個字。', reveal=2),
+  [L('差別是兩個數字：每個月打的字，和開場多帶的 token。', reveal=2),
    L(f"開場多帶的 token，Skill 是{N['tok_s_zh']}個，貼規則是{N['tok_p_zh']}個。", reveal=2, emotion='數字一個一個講')],
   claims=['c4'])
 S('bare-reply', 'quote', {'kicker': '什麼都不給的那一次，它的回覆開頭', 'quote': N['bare_quote'], 'source': f'{RUN}｜{N["bare_quote_run"]} 的回覆'},
@@ -78,12 +78,11 @@ S('bare-reply', 'quote', {'kicker': '什麼都不給的那一次，它的回覆�
 
 # ---------- 3 腳本 ----------
 S('how', 'compare', {'title': '同一句要求，算數是誰算的',
-    'left': {'heading': '貼規則、什麼都不給', 'points': ['六次都是手算，這次都對', '其中四次先想寫 Python 跑', '沒有預先核准，被擋下']},
+    'left': {'heading': '貼規則、什麼都不給', 'points': ['六次都是手算，這次都對', '什麼都不給：三次都先試 Python', '貼規則：一次試 Python，兩次直接算']},
     'right': {'heading': '寫成 Skill', 'points': ['呼叫 monthly-report', '跑資料夾裡的 sum.mjs', '數字照腳本算的填']},
     'verdict': '腳本跟著資料夾走，規則貼不出腳本', 'source': f'{RUN}｜各 3 次'},
-  [L('貼規則和什麼都不給的六次，數字全是手算的。', reveal=1),
-   L('其中四次先想寫一支 Python 跑，沒被核准，才改成手算。'),
-   L('Skill 那一邊，三次都是呼叫它，跑資料夾裡那支算數的腳本。', reveal=1),
+  [L('貼規則那邊也一樣是手算：三次裡一次試了 Python，兩次讀了檔直接算。', reveal=1),
+   L('Skill 那一邊，數字是資料夾裡那支算數的腳本算的。', reveal=1),
    L('每一次的費用都在兩到七美分之間，貼規則那一邊最貴的一次七美分。'),
    L('規則我可以貼，腳本貼進對話是跑不起來的。', emotion='「跑不起來」放慢')],
   chapter='貼規則也全中，Skill 贏在帶得走的腳本', claims=['c5', 'c6'])
@@ -92,7 +91,7 @@ S('run-script', 'terminal', {'title': 'Skill 那一次跑的腳本（輸出節�
     'output': ['{\n  "total": 85290,\n  "items": [\n    {\n      "item": "咖啡豆 200g",\n      "amount": 31200\n    },'],
     'ran_on': TODAY, 'tool_version': 'Node.js v22.22.0'},
   [L('這支腳本讀那十二筆，算總營收、品項小計、退貨、大筆交易。', reveal=1),
-   L('總營收八萬五千兩百九十，是它算的，不是模型心算的。', emotion='「它算的」加重')],
+   L('剛剛那個總營收，是它算的，不是模型心算的。', emotion='「它算的」加重')],
   claims=['c6'])
 S('exec-quote', 'quote', {'kicker': 'Skill 公開那一天就寫明的用途',
     'quote': 'Skills can include executable code for tasks where traditional programming is more reliable than token generation.',
@@ -107,7 +106,7 @@ S('tree', 'terminal', {'title': 'Skill 資料夾裡的三個檔', 'command': 'fi
     'output': ['.claude/skills/monthly-report/SKILL.md\n.claude/skills/monthly-report/scripts/sum.mjs\n.claude/skills/monthly-report/template.md'],
     'ran_on': TODAY, 'tool_version': 'sort (GNU coreutils) 9.4'},
   [L('一個資料夾、三個檔：說明、腳本、範本。', reveal=1, emotion='一個一個數')],
-  chapter='資料夾裡的三個檔：SKILL.md、腳本、範本', claims=['c8'])
+  chapter='打開資料夾：一萬元的門檻寫在腳本裡，不靠模型記', claims=['c8'])
 S('skill-head', 'code', {'title': 'SKILL.md 的開頭四行', 'language': 'yaml', 'code': lines_of(SKILL, 1, 4), 'highlight': [3],
     'caption': 'SKILL.md 17 行裡的第 1–4 行；全檔在說明欄的 demo 資料夾'},
   [L('開頭三行夾在兩條橫線裡：一個名稱，一句描述。'),
@@ -117,7 +116,7 @@ S('skill-head', 'code', {'title': 'SKILL.md 的開頭四行', 'language': 'yaml'
   claims=['c9'])
 S('skill-body', 'code', {'language': 'markdown', 'code': lines_of(SKILL, 7, 17), 'highlight': [3, 4, 10, 11],
     'caption': 'SKILL.md 的第 7–17 行：五條規則，就是以前每個月貼的那一段'},
-  [L('正文是五條規則，就是我以前每個月貼的那一段。'),
+  [L('正文是五條規則，每一條都是這家店自己的規矩。'),
    L('亮起來的第二條，叫它先跑腳本，數字一律用腳本算的。'),
    L('最後那一條把回覆的最後一行釘死，之後每個月都長一樣。', emotion='「釘死」加重'),
    L('正文一旦被讀進對話，這一輪之後都還在，不用再讀一次。')],
@@ -134,13 +133,15 @@ S('script-b', 'code', {'language': 'javascript', 'code': lines_of(SCRIPT, 15, 24
   [L('這幾行算總營收和品項小計，再挑出退貨和超過一萬元的交易。'),
    L('一萬元這個門檻寫在腳本裡，不靠模型每個月記得。', emotion='「不靠模型」加重')],
   claims=['c11'])
+S('cta', 'cta', {'kicker': '說明欄的文章', 'title': '技能、專案、個人指令、MCP 怎麼分', 'sub': 'Claude Skills 是什麼：把重複流程包成可重用的技能'},
+  [L('規則、腳本、範本放在一起，這跟專案、個人指令差在哪，說明欄那篇文章有一張表。')], claims=['c17'])
 S('layers', 'steps', {'title': 'Skill 分三層進到對話', 'steps': [
     {'title': '開機', 'detail': '只讀名稱與描述'}, {'title': '用到', 'detail': '才讀正文那五條'}, {'title': '執行', 'detail': '用到哪個附檔才打開哪個'}],
     'source': 'Claude Code skills 頁；agentskills.io｜2026-10-20'},
-  [L('Skill 分三層進到對話。開機時 Claude 只拿到名稱和描述。', reveal=1),
-   L('它判斷用得上，才讀正文那五條。', reveal=1),
-   L('範本和腳本，用到哪一個才打開哪一個。', reveal=1),
-   L(f"這就是開場只多{N['tok_s_zh']}個 token 的原因。", emotion='「只多」輕一點')],
+  [L('這兩行之所以夠用，是因為正文和附檔都是用到才讀。', reveal=1),
+   L('正文那五條，它判斷用得上才讀進來。', reveal=1),
+   L('範本和腳本更晚，用到哪一個才打開哪一個。', reveal=1),
+   L(f"剛剛那{N['tok_s_zh']}個 token，就是開機時只讀的這兩行。", emotion='「剛剛那」輕一點')],
   claims=['c12'])
 S('where', 'screencast', {'title': '官方頁：Skill 放哪裡，誰載得到', 'caption': 'Claude Code 文件｜skills｜Choose where skills load｜2026-10-20 擷取',
     'steps': [{'action': 'goto', 'url': 'https://code.claude.com/docs/en/skills#where-skills-live'},
@@ -180,8 +181,6 @@ S('trigger-quote', 'quote', {'quote': 'Seeing a skill trigger tells you Claude f
   [L('被呼叫，只代表它找到了；做對沒有，要看檔案。', reveal=1, emotion='「找到了」停半拍'),
    L('那如果我把描述那一行寫壞呢？', emotion='問句上揚，收住')],
   claims=['c16'])
-S('cta', 'cta', {'kicker': '說明欄的文章', 'title': '技能、專案、個人指令、MCP 怎麼分', 'sub': 'Claude Skills 是什麼：把重複流程包成可重用的技能'},
-  [L('技能跟專案、個人指令怎麼分工，說明欄那篇文章有一張表。')], claims=['c17'])
 
 # ---------- 6 description 與 validate ----------
 S('vague-head', 'code', {'title': '把描述換成一句廢話', 'language': 'yaml', 'code': lines_of(VAGUE, 1, 4), 'highlight': [3], 'caption': '正文 13 行一個字不動，只改第 3 行'},
@@ -230,14 +229,21 @@ S('keep', 'steps', {'title': '留下來、帶走', 'steps': [
   [L('留下來很簡單：資料夾進版控，刪掉就是移除。', reveal=2),
    L('同一個資料夾上傳到 Claude 應用程式也能用，開頭只收六個欄位。', reveal=1),
    L('這支只用了兩個，剛好都在裡面。'),
-   L('應用程式那邊要先打開程式碼執行，技能那一頁才會出現。'),
    L('放進 Codex 讀的那個資料夾，同一份檔就能用。', reveal=1)],
-  chapter='留下來、帶走、換成你自己的那一段', claims=['c23', 'c24'])
-S('allowed', 'quote', {'kicker': '貼規則那一邊被擋下的 Python，在 Skill 裡有解',
+  chapter='同一個資料夾，放進應用程式和 Codex 照樣用', claims=['c23', 'c24'])
+S('upload', 'steps', {'title': '不會打指令：同一個資料夾上傳到 Claude 網頁版', 'steps': [
+    {'title': '開功能', 'detail': 'Settings › Capabilities 開 Code execution'}, {'title': '壓成 ZIP', 'detail': '整個 monthly-report 資料夾'},
+    {'title': '上傳', 'detail': 'Customize › Skills › + › Upload a skill'}, {'title': '開關', 'detail': '清單裡打開它'}],
+    'source': 'Claude 說明中心 Using skills in Claude｜2026-10-20｜引用'},
+  [L('不會打指令的人走另一條路：整個資料夾壓成一個 ZIP。', reveal=2),
+   L('在自訂裡的技能那一頁上傳，清單裡打開，就能在對話裡用。', reveal=2, emotion='平實'),
+   L('腳本在那邊會跑在它的沙箱裡，不碰你的電腦。')],
+  claims=['c23'])
+S('allowed', 'quote', {'kicker': '被擋下的 Python，在 Skill 裡有解',
     'quote': 'allowed-tools: Bash(${CLAUDE_SKILL_DIR}/scripts/render.sh *)',
     'translation': '開頭多這一行：替自己資料夾裡的腳本預先核准，跑的時候不用再問',
     'source': 'Claude Code 文件｜skills｜string substitutions｜引用'},
-  [L('還記得貼規則那一邊被擋下的 Python 嗎？', emotion='問句上揚'),
+  [L('還記得那些被擋下的 Python 嗎？', emotion='問句上揚'),
    L('Skill 的開頭可以替自己的腳本預先核准，跑的時候不用再問。', reveal=1),
    L('這支沒有寫這一行；腳本跑得了，是因為那次的核准清單本來就有它。', emotion='平實')],
   claims=['c25'])
@@ -245,18 +251,18 @@ S('practice', 'chat', {'title': '換成你的那一段', 'messages': [
     {'side': 'right', 'text': '把你每個月重貼的規則，貼進 SKILL.md 的正文'},
     {'side': 'left', 'text': '開頭補名稱和描述，跑一次驗證指令'},
     {'side': 'right', 'text': '用一句不提名字的話叫它，看紀錄有沒有那一筆'}]},
-  [L('練習只有三步：把你每個月貼的那一段，放進正文。', reveal=1),
+  [L('練習只有三步：你自己的規則，放進正文。', reveal=1),
    L('開頭補名稱和描述，跑一次驗證。', reveal=1),
    L('用一句不提名字的話叫它，紀錄裡要有那一筆呼叫。', reveal=1)],
   claims=['c9', 'c14'])
 
 # ---------- 8 結尾 ----------
-S('closing', 'outro', {'title': '一個資料夾、三行開頭、12 個字', 'cta': '你每個月重貼的那一段是什麼？留言告訴我',
+S('closing', 'outro', {'title': '一句描述，\nClaude 就自己接手', 'cta': '你每個月重貼的那一段是什麼？留言告訴我',
     'lines': ['什麼都不給 0／6、貼規則 6／6、Skill 6／6，各 3 次', '描述寫成廢話照樣被呼叫：名字對上了', '腳本跟著資料夾走，規則貼不出腳本']},
-  [L('Skill 就是一個資料夾、三行開頭，加上你本來就在貼的那段規則，三次全中。', emotion='放穩，一句講完'),
+  [L('同一句十二個字，三次，報表三次都寫出來了，接手的是那個資料夾。', emotion='放穩，一句講完'),
    L('你每個月重貼的那一段是什麼？留言告訴我。', emotion='問句上揚'),
    L('每一支都這樣跑給你看，訂閱就不會漏掉。')],
-  chapter='一個資料夾、三行開頭、十二個字', claims=['c3'])
+  chapter='一句描述，Claude 就自己接手', claims=['c3'])
 
 # loops
 def lid(scene, idx): return [s for s in scenes if s['id'] == scene][0]['lines'][idx]['id']
