@@ -44,7 +44,7 @@ scope:
 ## 進度（2026-10-21）
 
 - 三題查核（研究＋獨立覆核）都做完：S07 45 列（覆核推翻第 17 列胡三省音注的推論）、S15 43 列（找不到 1590 年白衣的記載，本次查到最早是 1934 年通俗書；YouTube 標題改問「真的穿著壽衣去見秀吉嗎？」）、S19 40 列（1909 年沒有拆塔的計畫，到期的只是經營權）。
-- 三集稿子盲評全過（S07 一輪、S19 三輪、S15 三輪），lint 0／0；旁白錄好並跑過 `check-audio`（S07 10:07、S19 9:42、S15 10:03），重錄過明顯讀錯的句子，剩下的旗標多是日文人名與同音字的轉寫誤差。
+- 三集稿子盲評全過（S07 一輪、S19 三輪、S15 三輪），lint 0／0；旁白錄好並跑過 `check-audio`（S07 10:07、S19 9:42、S15 10:06），重錄過明顯讀錯的句子，剩下的旗標多是日文人名與同音字的轉寫誤差。
 - 卡住：插圖。`keyframes --slug curio-s07` 回「本月的 judge 次數預算（20000 次）用完了」。配樂也一樣沒額度（本月 music 60 tracks 用完）。
   站主在 `/admin/videos` 設定分頁調高 judge 與 music 預算後，對三集各跑
   `node tools/video/cli.mjs keyframes --slug curio-<id> --takes 3`、`music --slug curio-<id>`，再 `review-push --gate audio` 與 `--gate storyboard`。
