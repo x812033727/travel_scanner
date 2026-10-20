@@ -9,8 +9,8 @@ export const safeVisuals = {
   "x06-b01-s05": "Medium shot at an office table, one anonymous analyst moves one blank asset folder beside another, quiet window light",
   "x06-b01-s06": "Wide shot in a bare hardware aisle, one worker pauses with a smooth metal cylinder before two vacant shelf cubbies, low evening light",
 
-  "x06-b02-s01": "Wide shot in a simple shipping room with uncluttered walls, one adult clerk sets a smooth metal cylinder onto a wooden handcart, morning window light",
-  "x06-b02-s02": "Close shot at a home repair bench, one adult mechanic turns a stiff metal hinge with both hands, soft daylight",
+  "x06-b02-s01": "Close shot at a clear shipping doorway, one adult clerk places a palm-sized steel aerosol can with a tiny spray nozzle onto a shallow wooden tray, its smooth metal back facing the viewer, morning light",
+  "x06-b02-s02": "Close shot at a clear wooden workbench against an empty wall, one adult mechanic pivots the two leaves of a palm-sized door hinge around its central pin with one hand, soft daylight",
   "x06-b02-s03": "Close shot at a 1995 accounts desk, one anonymous clerk studies a plain UK subsidiary ledger beside a small stack of overseas invoices, soft daylight",
   "x06-b02-s04": "Medium shot at a bare shipping table, one adult clerk moves a wooden counter along one branch of a forked cord, window light",
   "x06-b02-s05": "Wide shot in a sparse stockroom, one adult shipper rolls a wooden handcart toward a second open doorway, mild daylight",

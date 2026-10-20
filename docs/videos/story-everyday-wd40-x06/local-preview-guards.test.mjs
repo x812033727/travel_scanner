@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -33,9 +34,12 @@ test("a judge pass cannot override a human-held illustration", () => {
   }
 });
 
-test("current independent visual receipt binds the exact script", () => {
+test("two independent visual receipts bind the exact current script", () => {
   const dir = path.dirname(new URL(import.meta.url).pathname);
-  const current = "907f8e3ff45f3edf0bbed64a54216c761696e8e954d51c315a8a228069e204d1";
-  assert.deepEqual(inspectIndependentVisualReview({ dir, scriptSha: current }).issues, []);
+  const current = createHash("sha256").update(readFileSync(path.join(dir, "video.json"))).digest("hex");
+  const review = inspectIndependentVisualReview({ dir, scriptSha: current });
+  assert.deepEqual(review.issues, []);
+  assert.equal(review.sha256, "b0f8d00eada61391a518dc8c952619b70e7100df91233035e21c73b182411c56");
+  assert.deepEqual(inspectIndependentVisualReview({ dir, scriptSha: "907f8e3ff45f3edf0bbed64a54216c761696e8e954d51c315a8a228069e204d1" }).issues, []);
   assert.match(inspectIndependentVisualReview({ dir, scriptSha: "other" }).issues.join("; "), /another video.json/);
 });

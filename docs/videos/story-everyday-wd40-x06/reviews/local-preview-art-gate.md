@@ -63,3 +63,33 @@ ledger SHA-256 `f8f5eef2cdd263baea1624d3411154ead0346d8db3992c07a179959c563e9eaa
 新逐鏡關卡 `review/local-preview/pilot-art-gate-2026-10-20.json` SHA-256
 `57abd75f565bafbc447e82dd909a41dfd32e6268f5825ed0584798e45942c3bd`。
 完整原圖、失敗 take、評審意見和新帳本留在媒體工作區，不進 git。
+
+## 第二輪兩鏡小試：仍維持 STOP
+
+`reviews/visual-v2-independent.json` 由獨立審查者把第二輪僅兩個 prompt 的
+變動綁到 `video.json` SHA-256
+`d1ac6f93e15396813dda6ac2d76028f6539be2d746d647d1fd44e4790dd5d0c5`；
+口播、卡片、來源、其餘 76 個提示詞未變。正式主工作區的 STOP 保留，
+隔離 `--shot x06-b02-s01,x06-b02-s02 --takes 3` 乾跑後才送圖。
+送圖前站點剩餘圖片 1,891、評審 591，本集已花 US$0.3375、未結 0。
+隔離執行實際新增三張 MiniMax 和三次評審，US$0.0405，未用滿
+六張／六評審／US$0.081 的上限。兩張入選圖都由人工看過：
+
+| 鏡頭 | 入選 take／機器 | 人工結果與可見問題 |
+| --- | --- | --- |
+| `x06-b02-s01` | 1，9.29 PASS；SHA-256 `9a5de8a924bd3b9684e8679e0e3e66d9bfca3182150a893ca4fd890e9534ba71` | **HOLD**：兩人而非一名店員；罐仍拿在手上、托盤空著；背景箱面有淡淡類印字筆畫。 |
+| `x06-b02-s02` | 2，9.29 PASS；SHA-256 `26ad3a56885e25b06fc7ca817621c92a80f5e6e6d06b756fb0343e3b9251263e` | **HOLD**：人物呈童貌，沒有成年技工線索；雙手握直立器具，看不出鉸鏈兩片葉繞軸轉動。第一次 take 6.88 FAIL。 |
+
+五張舊的暫可用圖，其 prompt、take 與檔案 SHA-256 均未改；兩張新圖
+不能入片，因此全片仍只有 **5/78** 張暫可用。原來的小試 manifest、
+ledger、人工關卡與兩鏡原圖在媒體工作區
+`review/local-preview/v1-pilot-evidence/` 先封存，再合入這輪帳本。
+目前主工作區 ledger 為 **US$0.3780／28 圖／28 評審／未結 0**，SHA-256
+`72828f3a8c236ba09f14a51da2f6154a099a6a0526fd6cc5285098430f51fb94`；
+manifest SHA-256
+`549d991ff7588c09c7c1b3f819757b31031ad5fd7e3e14618d7c119d23ffa5aa`。
+SHA 綁定的人工關卡 `review/local-preview/v2-art-gate-2026-10-20.json`
+SHA-256 為
+`88a53c046838844b76239e4c2da897f20b8aa14c20888aa8754b7991399adeb4`，
+並已作為當前 `art-review.json`；其狀態仍是 STOPPED，所有原圖都留在
+媒體工作區。此關卡證明沒有把機器 PASS 當人工通過，並不核准合成或發布。

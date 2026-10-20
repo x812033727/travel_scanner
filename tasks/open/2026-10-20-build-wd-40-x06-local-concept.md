@@ -97,3 +97,22 @@ Only `x06-b02-s06` is provisionally usable. The merged main ledger is
 US$0.3375 (25 images, 25 judge calls, zero reservations), and the main STOP
 never moved. See `reviews/local-preview-art-gate.md`; next work is an offline
 prompt strategy before any more paid generation.
+
+The independent second visual delta binds only the two revised prompts
+`x06-b02-s01` and `x06-b02-s02` to video SHA
+`d1ac6f93e15396813dda6ac2d76028f6539be2d746d647d1fd44e4790dd5d0c5`.
+The source/blind findings and five provisionally usable image takes stay bound
+through the exact visual-review chain. A fresh paired-site quota and US$25
+all-in ledger check preceded an isolated two-shot pilot capped at three takes
+each. The pilot generated three images and three judge calls for US$0.0405;
+both selected images passed the model judge (9.29), but manual viewing held
+both for action/object errors and faint background pseudo-print on `s01`.
+Only 5/78 illustrations remain provisionally usable. Main media ledger is now
+US$0.3780 (28 images, 28 judge calls, zero reservations), while STOP remains.
+The prior pilot's manifest, ledger, gate and vulnerable image filenames were
+archived under `review/local-preview/v1-pilot-evidence/` before merging the
+second pilot. The current gate SHA and per-image reasons are in
+`reviews/local-preview-art-gate.md`. No MP4, source-cleared music, final art
+approval, official branding assets or Studio end-screen setup exists. Next:
+offline visual strategy; do not widen paid art until its human acceptance rate
+improves and a new exact-source review allows a bounded test.

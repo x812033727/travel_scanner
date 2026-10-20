@@ -1,0 +1,20 @@
+{
+  "kind": "independent-visual-delta-review",
+  "status": "PASS",
+  "scope": "Two prompt-only changes; no generated-image or finished-video approval",
+  "reviewer": "/root",
+  "reviewed_on": "2026-10-20",
+  "old_video_json_sha256": "907f8e3ff45f3edf0bbed64a54216c761696e8e954d51c315a8a228069e204d1",
+  "video_json_sha256": "d1ac6f93e15396813dda6ac2d76028f6539be2d746d647d1fd44e4790dd5d0c5",
+  "offline_proposal_sha256": "6ddb574d1bcb16c6c89703d375605882bf11f93390bf85e20d9f028064cbe6fc",
+  "changed_shot_ids": ["x06-b02-s01", "x06-b02-s02"],
+  "finding": "I compared HEAD's video.json with the new file by scene ID, then removed only data.prompt from each shot. Both resulting documents are deeply equal across all 93 scenes. The two changed prompts match the offline proposal exactly: a palm-sized aerosol can being placed on a tray, and a hand pivoting the two leaves of a door hinge. Both support their unchanged narration; neither introduces a new historical claim or prematurely reveals a result. The five previously provisionally usable prompts are unchanged. Source, narration, Shorts, timing, look and prior blind conclusions therefore carry across this visual-only edit; actual images still require per-image judge and human review.",
+  "pilot_shot_ids": ["x06-b02-s01", "x06-b02-s02"],
+  "pilot_max_image_calls": 6,
+  "pilot_max_judge_calls": 6,
+  "pilot_max_incremental_usd": 0.081,
+  "spent_usd_before_pilot": 0.3375,
+  "requires_live_budget_and_quota_check": true,
+  "requires_unchanged_stop_for_other_shots": true,
+  "authorizes_final_art_or_publication": false
+}

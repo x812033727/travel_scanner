@@ -4,6 +4,9 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 const OLD_SCRIPT = "4c9215b06364b3fb96cd9249054c6e7c15de381b4e8717a39a11fb9ad62bf1ba";
+const FIRST_VISUAL_SCRIPT = "907f8e3ff45f3edf0bbed64a54216c761696e8e954d51c315a8a228069e204d1";
+const SECOND_VISUAL_RECEIPT = "b0f8d00eada61391a518dc8c952619b70e7100df91233035e21c73b182411c56";
+const SECOND_VISUAL_PROPOSAL = "6ddb574d1bcb16c6c89703d375605882bf11f93390bf85e20d9f028064cbe6fc";
 const PRIOR = {
   "source-audit-final.md": ["prior_source_review_sha256", "2b386249fdb86d2747ef0d25f36f621da109a0890e98d2dd5ef5c909b724599c"],
   "blind-a-final.md": ["prior_blind_a_sha256", "553c6f7bc007f36923901b675ff59844a74e5d027e1ae58eebfb10abcf8727c1"],
@@ -22,7 +25,7 @@ export function inspectIndependentVisualReview({ dir, scriptSha }) {
     || receipt.reviewer !== "/root" || receipt.authorizes_final_art_or_publication !== false) {
     issues.push("visual-change receipt is not an independent prompt-only PASS");
   }
-  if (receipt.old_video_json_sha256 !== OLD_SCRIPT || receipt.video_json_sha256 !== scriptSha) {
+  if (receipt.old_video_json_sha256 !== OLD_SCRIPT || receipt.video_json_sha256 !== FIRST_VISUAL_SCRIPT) {
     issues.push("visual-change receipt belongs to another video.json");
   }
   const note = path.join(reviewsDir, "visual-prompt-delta.md");
@@ -37,5 +40,25 @@ export function inspectIndependentVisualReview({ dir, scriptSha }) {
       issues.push(`original source/blind receipt changed: ${name}`);
     }
   }
-  return { issues, sha256: hash(bytes), receipt };
+  if (scriptSha === FIRST_VISUAL_SCRIPT) return { issues, sha256: hash(bytes), receipt };
+
+  const nextFile = path.join(reviewsDir, "visual-v2-independent.json");
+  if (!existsSync(nextFile)) return { issues: [...issues, "independent visual-v2 review is missing"], sha256: null, receipt: null };
+  const nextBytes = readFileSync(nextFile);
+  const next = JSON.parse(nextBytes.toString("utf8"));
+  if (hash(nextBytes) !== SECOND_VISUAL_RECEIPT || next.kind !== "independent-visual-delta-review"
+    || next.status !== "PASS" || next.reviewer !== "/root"
+    || next.authorizes_final_art_or_publication !== false) {
+    issues.push("visual-v2 receipt is not the frozen independent prompt-only PASS");
+  }
+  if (next.old_video_json_sha256 !== FIRST_VISUAL_SCRIPT || next.video_json_sha256 !== scriptSha) {
+    issues.push("visual-v2 receipt belongs to another video.json");
+  }
+  const proposal = path.join(reviewsDir, "visual-v2-offline-proposal.md");
+  if (!existsSync(proposal) || hash(readFileSync(proposal)) !== SECOND_VISUAL_PROPOSAL
+    || next.offline_proposal_sha256 !== SECOND_VISUAL_PROPOSAL
+    || JSON.stringify(next.changed_shot_ids) !== JSON.stringify(["x06-b02-s01", "x06-b02-s02"])) {
+    issues.push("visual-v2 receipt does not bind the two-shot offline proposal");
+  }
+  return { issues, sha256: hash(nextBytes), receipt: next };
 }

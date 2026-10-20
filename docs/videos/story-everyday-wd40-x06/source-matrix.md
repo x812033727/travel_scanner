@@ -2,7 +2,7 @@
 
 本表由 `drafts/story.mjs` 的 `claim_refs` 生成。主張與使用界限見 [source-notes.md](source-notes.md)。行內時間、收入與策略均須以所列期間讀；純示意場景與留言邀請另標。
 
-- `video.json` SHA-256：`907f8e3ff45f3edf0bbed64a54216c761696e8e954d51c315a8a228069e204d1`
+- `video.json` SHA-256：`d1ac6f93e15396813dda6ac2d76028f6539be2d746d647d1fd44e4790dd5d0c5`
 - `#` 連至 `source-notes.md` 的可用主張；對應 SEC 文件縮寫見該檔。
 
 | 句 ID | 旁白 | 主張編號 |
