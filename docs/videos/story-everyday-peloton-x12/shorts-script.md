@@ -1,6 +1,6 @@
 # X12 Peloton｜兩支長片精華 Shorts
 
-離線前製；`shorts.json` SHA-256：`103aa91869d2996e8ed6c33e7279db72a252ebb7f60726bbaa7fb1ed3f272ed4`。兩支都取自同一集來源與鏡頭設計；尚未配音、計時或剪成直式片。正式長片 URL 待發布後填入，現有 SEC 原件連結可點。
+離線前製；`shorts.json` SHA-256：`197babe5aeb46a8fddbe122fa94f77329f9ba0f069d6b2c1c9090141b036575e`。兩支都取自同一集來源與鏡頭設計；尚未配音、計時或剪成直式片。正式長片 URL 待發布後填入，現有 SEC 原件連結可點。
 
 ## Short 1｜Peloton 四億美元新廠計畫，隔年為何找買家？
 
@@ -8,9 +8,9 @@
 - **setup／x12-b01-s03** 原定二〇二三年製造單車和跑步機，多年規劃約四億美元。
 - **turn／x12-b01-s04** 下一份年報卻說，正在找買家；為什麼？
 - **proof／x12-b05-s02** 公司宣布退出自有製造，擴大既有夥伴 Rexon 的工作。
-- **proof／x12-b05-s03** 單車與跑步機，改由這個夥伴主造。
+- **proof／x12-b05-s03** 公司宣布，單車與跑步機將由這個夥伴主造。
 - **proof／x12-b05-s15** 截至六月底，Ohio 專案已投約八千六百六十萬美元。
-- **payoff／x12-b05-s22** 製造角色變了，Ohio 被列為尋買家的專案；四億是計畫，已投也不是售價。
+- **payoff／x12-b05-s22** 製造計畫轉向，Ohio 被列為尋買家的專案；四億是計畫，已投也不是售價。
 
 資料：[Peloton 2021-05-24 原公告](https://www.sec.gov/Archives/edgar/data/1639825/000163982521000174/pton-may24announcement.htm)、[Peloton 2022-07-12 原公告](https://www.sec.gov/Archives/edgar/data/1639825/000163982522000091/ex991pressrelease.htm)、[Peloton FY2022 Form 10-K](https://www.sec.gov/Archives/edgar/data/1639825/000163982522000117/pton-20220630.htm)
 

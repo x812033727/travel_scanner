@@ -16,7 +16,7 @@ const shorts = [
   {
     ...common, slug: `${base}-short-1`,
     titles: ["Peloton 四億美元新廠計畫，隔年為何找買家？", "Peloton 俄亥俄新廠：計畫四億，已投多少？"],
-    description: "2021 年 Peloton 公告 Ohio Output Park 原定 2023 製造設備，多年規劃約 US$400m；2022 年宣布退出自有製造、由既有夥伴 Rexon 主造 Bike／Tread。FY2022 年報稱 Ohio 正在尋找買家，截至 2022-06-30 專案已投約 US$86.6m。四億是計畫，八千六百六十萬是已投，都不是售價；資料沒有說 Ohio 已賣。完整事件見本集長片（正式網址待發布後填）；畫面為匿名概念插畫。來源：SEC 原始公告與年報。",
+    description: "2021 年 Peloton 公告 Ohio Output Park 原定 2023 製造設備，多年規劃約 US$400m；2022 年公告退出自有製造，既有夥伴 Rexon 將主造 Bike／Tread。FY2022 年報稱 Ohio 正在尋找買家，截至 2022-06-30 專案已投約 US$86.6m。四億是計畫，八千六百六十萬是已投，都不是售價；資料沒有說 Ohio 已賣。完整事件見本集長片（正式網址待發布後填）；畫面為匿名概念插畫。來源：SEC 原始公告與年報。",
     links: [
       { label: "Peloton 2021-05-24 原公告", url: sec.a21 },
       { label: "Peloton 2022-07-12 原公告", url: sec.a22 },
@@ -27,14 +27,14 @@ const shorts = [
       { beat: "setup", shot: "x12-b01-s03", headline: "約 US$400m｜多年計畫", narration: ["原定二〇二三年製造單車和跑步機，多年規劃約四億美元。"] },
       { beat: "turn", shot: "x12-b01-s04", headline: "下一份年報：尋找買家", narration: ["下一份年報卻說，正在找買家；為什麼？"] },
       { beat: "proof", shot: "x12-b05-s02", headline: "2022-07｜退出自有製造", narration: ["公司宣布退出自有製造，擴大既有夥伴 Rexon 的工作。"] },
-      { beat: "proof", shot: "x12-b05-s03", headline: "主要硬體改由夥伴製造", narration: ["單車與跑步機，改由這個夥伴主造。"] },
+      { beat: "proof", shot: "x12-b05-s03", headline: "宣布：夥伴將主造硬體", narration: ["公司宣布，單車與跑步機將由這個夥伴主造。"] },
       { beat: "proof", shot: "x12-b05-s15", headline: "截至 2022-06-30｜已投約 US$86.6m", narration: ["截至六月底，Ohio 專案已投約八千六百六十萬美元。"] },
-      { beat: "payoff", shot: "x12-b05-s22", headline: "計畫、已投、售價是三件事", narration: ["製造角色變了，Ohio 被列為尋買家的專案；四億是計畫，已投也不是售價。"] },
+      { beat: "payoff", shot: "x12-b05-s22", headline: "計畫、已投、售價是三件事", narration: ["製造計畫轉向，Ohio 被列為尋買家的專案；四億是計畫，已投也不是售價。"] },
     ],
   },
   {
     ...common, slug: `${base}-short-2`,
-    titles: ["Peloton 2022：硬體毛損、訂閱毛利是多少？", "Peloton 的月費在長，單車收入卻下降？"],
+    titles: ["Peloton 2022：硬體毛損、訂閱毛利是多少？", "Peloton 訂閱收入上升，設備類收入卻下降？"],
     description: "Peloton FY2022 Form 10-K 同表：Connected Fitness Products 收入由 FY2021 US$3,149.6m 降至 FY2022 US$2,187.5m；Subscription 由 US$872.2m 升至 US$1,394.7m。FY2022 設備類毛損 US$246.3m、訂閱類毛利 US$944.7m；這是分類毛利，不是公司淨利。設備收入還包含配件、配送安裝等，不等於單車台數。完整脈絡見本集長片（正式網址待發布後填）；畫面為匿名概念插畫。來源：Peloton FY2022 Form 10-K。",
     links: [{ label: "Peloton FY2022 Form 10-K", url: sec.k22 }],
     scenes: [
