@@ -28,3 +28,5 @@
 切換時先保存舊概念稿及其收據，再將候選檔移到 `../video.json`，在**新的** X03 媒體工作區重新乾跑、生成、審查、合成與記錄候選 SHA；切勿從舊工作區續跑。候選稿的既有審查鏈只核准文字與提示詞，Shorts 的新敘事仍待獨立盲讀收據綁定 `shorts.json` SHA。
 
 **付費明細的唯讀複查：** 本機配對工具 `media-status --json` 的 X03 總額 US$1.7135 分解為 122 張 MiniMax 圖 US$0.4235、121 次 Gemini 畫面評審 US$1.21、1 首 Lyria US$0.08；其 `totals` 沒有語音、逐句轉錄、語音評審或稅費。`tts --dry-run` 回既有語音 2,332 計費字元、目前待合成 0 字及月字數額度，沒有美元帳；站台 `/speech/status` 的資料結構也只列字元與額度。這些資料仍無法封閉整集 US$25 上限，因此維持 HOLD。
+
+不能單靠公開定價推翻 HOLD：X03 不是站上有逐次美元結算的 pilot slug。`apps/api/app/video_speech/admin_api.py` 對非 pilot 轉錄不設 4,096 output-token pilot 上限；`apps/api/app/video_speech/checking.py` 送出的 `max_output_tokens` 為 `None`，本機的 `review/check*.json` 留下文字而非每次 `usageMetadata`。Gemini 3.8 Flash 公開模型最大 65,536 output tokens，以程式記載的 US$3.75／百萬 output tokens 算，每次最壞可達 US$0.24576；首輪 80 句、15 句重錄再查、12 句改詞再查，光這約 107 次轉錄的最壞 output 上界就約 **US$26.30**，尚未加 input、TTS、畫面與稅。實際費用很可能低許多，但可見逐字稿長度無法限制供應商內部 output／thinking tokens；沒有完整 usage 收據時不能宣稱 US$25 已確保。
