@@ -57,8 +57,8 @@
     },
     {
       "setup": "atl005",
-      "payoff": "atl054",
-      "what": "1865 年張力判斷是否能證明鉤到了線"
+      "payoff": "atl050",
+      "what": "1865 年張力升起時能否確認鉤到舊線"
     },
     {
       "setup": "atl006",
@@ -102,8 +102,8 @@
     },
     {
       "setup": "atl047",
-      "payoff": "atl054",
-      "what": "1865 年海底抓鉤能否可靠證明有線"
+      "payoff": "atl053",
+      "what": "1865 年抓鉤能否把舊線拉上船"
     },
     {
       "setup": "atl059",
@@ -218,7 +218,7 @@
       "lines": [
         {
           "id": "atl005",
-          "text": "落海後，抓鉤在海底拖行，甲板上的張力計突然抬高；鉤上的是什麼？",
+          "text": "落海後，抓鉤在海底拖行，甲板上的張力計突然抬高；船上能確認鉤到舊線嗎？",
           "emotion": "自然說書；年份與來源層級稍放慢"
         }
       ]
@@ -556,7 +556,7 @@
       "lines": [
         {
           "id": "atl026",
-          "text": "可剛恢復航行，測試室又失去岸上的訊號；這次問題在哪裡？",
+          "text": "可剛恢復航行，測試室又失去岸上的訊號；船還能收到回應嗎？",
           "emotion": "自然說書；年份與來源層級稍放慢"
         }
       ]
@@ -572,7 +572,7 @@
       "lines": [
         {
           "id": "atl027",
-          "text": "一陣檢查後，訊號自己回來了；他們繼續向西，仍不知道短暫中斷的確切原因。",
+          "text": "電工檢查時，反光訊號突然重現；確切原因沒查出來，船才繼續向西。",
           "emotion": "自然說書；年份與來源層級稍放慢"
         }
       ]
@@ -894,7 +894,7 @@
       "lines": [
         {
           "id": "atl047",
-          "text": "看不見線在哪裡，就先把船移到估計路徑的上風處；抓鉤能撈到嗎？",
+          "text": "看不見線在哪裡，就先把船移到估計路徑的上風處；這次能把舊線拉上船嗎？",
           "emotion": "自然說書；年份與來源層級稍放慢"
         }
       ]
@@ -943,7 +943,7 @@
       "lines": [
         {
           "id": "atl050",
-          "text": "船員喊「抓到了」；但當時真正看得到的，只有索具和儀表。",
+          "text": "還記得開場那次抓鉤嗎？船員喊「抓到了」，卻仍不能確認鉤住的是舊線。",
           "emotion": "自然說書；年份與來源層級稍放慢"
         }
       ]
@@ -959,7 +959,7 @@
       "lines": [
         {
           "id": "atl051",
-          "text": "海底可能是電纜，也可能是別的阻力；船先一段段把繩索拉回來。",
+          "text": "回收機於是轉動，船員把繩索一段段拉回來，想看鉤下的東西。",
           "emotion": "自然說書；年份與來源層級稍放慢"
         }
       ]
@@ -1000,14 +1000,14 @@
       "id": "atl054",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot from a ship bow over grey sea, one lookout scans the water near a hanging rope",
+        "prompt": "Medium shot on a steamer bow, one cable worker fastens a spare wire rope to another iron grapnel",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "atl054",
-          "text": "那次究竟鉤到了什麼，沒有人在甲板上看見線本身。",
+          "text": "斷索後，坎寧叫人把備用鐵索接上另一個抓鉤，準備再試。",
           "emotion": "自然說書；年份與來源層級稍放慢"
         }
       ]
@@ -1506,7 +1506,7 @@
       "lines": [
         {
           "id": "atl085",
-          "text": "八月三十一日深夜，抓鉤再度咬住舊線；菲爾德書裡稱這是第三十次放鉤。",
+          "text": "八月三十一日深夜，船員這回先緩緩收繩，讓鉤住的重量一點一點往上升。",
           "emotion": "自然說書；年份與來源層級稍放慢"
         }
       ],
@@ -1516,14 +1516,14 @@
       "id": "atl086",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a vessel writing table, one chronicler studies a blank expedition tally sheet",
+        "prompt": "Medium shot at a vessel bow, one engineer studies a blank tension gauge beside a taut rope",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "atl086",
-          "text": "這個「三十次」出自後出的記述，能確定的是作業已重複很多回。",
+          "text": "菲爾德後出的書把這次記為第三十次放鉤；每收上一百噚，張力計的讀數還在升。",
           "emotion": "自然說書；年份與來源層級稍放慢"
         }
       ]
@@ -1669,22 +1669,6 @@
         {
           "id": "atl095",
           "text": "菲爾德另引《旁觀者》報導：愛爾蘭端的反光訊號，從亂跳變成規律傳送。",
-          "emotion": "自然說書；年份與來源層級稍放慢"
-        }
-      ]
-    },
-    {
-      "id": "atl096",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot in a ship test room, one engineer watches a reflected light dot on a blank mirror-galvanometer scale beside the old cable",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "atl096",
-          "text": "這比去年的張力推斷更強：線已上船，對岸也能透過它送出訊號。",
           "emotion": "自然說書；年份與來源層級稍放慢"
         }
       ]
