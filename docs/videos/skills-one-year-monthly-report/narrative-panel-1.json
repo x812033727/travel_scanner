@@ -1,0 +1,15 @@
+{"answers": [
+{"id": "scene_first", "yes": true, "evidence": "[r23m] 十月一號、小店、十二筆紀錄躺在資料夾；[aaeb] 我打了十二個字；[pgw7][g8y7] Claude 呼叫 Skill、跑腳本、寫出報表。前四句都在一個具體時刻裡做事，沒有打招呼或預告。"},
+{"id": "no_spoiler", "yes": true, "evidence": "第一章只講掉開場那一次的結果（[g8y7] 總營收），後面的三個實驗都停在結果之前：[nz8f] 什麼都不給會得到什麼、[e3p7] 描述改成廢話再跑三次、[6b5i] 引號沒關的 SKILL.md 丟給驗證指令，零、六、六、名字救了它、驗證報錯都留到後面才揭曉。"},
+{"id": "one_line", "yes": true, "evidence": "一條線：打一句話→三種做法的結果（[6nfy]–[3894]）→為什麼 Skill 贏（[ziq6]–[6fge]）→資料夾裡的三個檔→怎麼驗證→把描述寫壞→帶走。第三章與第七章再回到同一批跑法時各加了新事實（[ziq6][scej] 手算方式與費用、[7sjg][wbqb] 預先核准），不是重講。"},
+{"id": "no_toc", "yes": true, "evidence": "沒有「接下來」「先講」「第一第二」之類的宣告；[grnk]「只有這三個檔」與 [226x] 範本的欄位是在描述畫面上的檔案本身，[22ig]–[rwfp] 與 [tu2a]–[fuhi] 是給觀眾抄的檢查步驟，屬內容不是目錄。"},
+{"id": "chapters_link", "yes": true, "evidence": "[6nfy] 接 [nz8f] 的「什麼都不給會得到什麼」；[ziq6] 接 [punu] 開始比兩邊怎麼算；[grnk] 接 [3i9y]「資料夾裡有什麼」；[w36q] 接 [rb7e]「怎麼知道真的用了」；[qgki] 接 [8wbc]「把描述寫壞」；[vdej] 接 [d9yd]「怎麼留下來帶走」；[yhpv] 接 [si22]「紀錄裡要有那一筆呼叫」。"},
+{"id": "open_loops", "yes": true, "evidence": "掛鉤間隔皆在 90 秒內：[668c] 00:43、[punu] 01:36、[3i9y] 02:21、[fgpi] 03:26、[rb7e] 04:33、[8wbc] 05:24、[d9yd] 06:43、[7f4p] 07:30。"},
+{"id": "payoffs", "yes": true, "evidence": "[nz8f]→[6nfy][i72x]；[e3p7]→[qgki][ffwe][ft26] 點名「描述換成…正文不動」再給結果；[6b5i]→[kszc][v39w] 點名引號沒關再給報錯內容；[punu]→[7ttk][4muh][96bi]；[fgpi]→[pxe3][djmj]；[rb7e]→[zz8n][9jq2]；[7f4p]→[7sjg][wbqb] 用「還記得」點名被擋下的 Python 後給出預先核准這個新事實。"},
+{"id": "no_recap", "yes": true, "evidence": "重複出現的數字都用回呼點名：[z6rq]「剛剛那三百四十六個字」、[fumr]「剛剛那個總營收」、[esv4]「剛剛那五十三個 token」、[fuhi]「剛剛那個驗證指令」、[f5j3]「剛剛那一行描述」；[2vfb] 緊接 [djmj] 補的是門檻寫在腳本裡這個新事實，[zz8n] 對 [pgw7] 補的是紀錄裡的證據與參數。"},
+{"id": "chapters_are_events", "yes": true, "evidence": "章名都是發生或揭曉的事：「12 個字叫出一份月結報表」「三種做法各跑三次：零、六、六」「貼規則也全中，Skill 贏在帶得走的腳本」「一萬元的門檻寫在腳本裡」「描述寫成廢話照樣被呼叫」「同一種 SKILL.md，應用程式和 Codex 也收」，沒有「背景」「結論」這類功能名。"},
+{"id": "outro_no_next", "yes": true, "evidence": "片尾 [yhpv][nac2][ydxv] 只有留言與訂閱，沒有提到下一支影片、下一集或下一份檔案。"},
+{"id": "opening_hooks", "yes": true, "evidence": "第一個場景之後丟出四個未揭曉的時刻：[nz8f] 什麼都不給會得到什麼、[e3p7] 描述改成廢話再跑三次（停在結果前）、[6b5i] 引號沒關的檔丟給驗證指令（停在結果前）、[668c] Skill 到底是什麼怎麼寫。"},
+{"id": "one_thread", "yes": true, "evidence": "主角是 monthly-report 這個資料夾與「一句話叫出月報」這個難題，從 [r23m] 到 [yhpv] 每章都推它：結果比較、贏在腳本、三個檔的內容、紀錄裡的呼叫、把描述寫壞、帶去應用程式與 Codex，沒有換成別的例子。"},
+{"id": "no_detour", "yes": true, "evidence": "沒有整段離題：[6fge] 公開日期與 [g5mm] 說明欄那張表各只有一句，用來支撐當下的論點；[cjc4]–[cdti] 的 ZIP 上傳與 [y2n8] Codex 都在回答 [d9yd]「怎麼帶走」，沒有產品、分數或引述的清單。"}
+]}
