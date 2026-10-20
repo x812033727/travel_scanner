@@ -23,7 +23,7 @@ The new 20-video brand-story series needs an X16 Starbucks episode about the Jul
 ## Definition of done
 
 - [x] An X16 six-chapter long-film script and two independent Shorts exist with linked source originals, exact line references, paid loops, illustrated storyboard, and 9:16 per-beat crop/safe-area plan.
-- [x] The script states the 600-includes-100 and 70%-of-selected-group limits; 205+383=588 is separate from the January 2009 ~200 cohort; U.S. comp, 53rd-week, and consolidated operating-income scopes are explicit.
+- [x] The script states the 600-includes-100 and 70%-of-selected-group limits; 205+383=588 is separate from the January 2009 ~200 cohort; U.S. comp, 53rd-week, and net-store scopes are explicit.
 - [x] Offline generators, lint, Shorts schema/source checks, docs tests, task check, source hashes and a US$25 whole-episode quote are recorded. No paid media or YouTube artifact is claimed.
 - [ ] A different agent performs a fresh line-by-line SEC audit against the frozen JSON SHA; two fresh independent readers blind-review the same narration and Shorts. Revisions require new SHA-linked reviews.
 - [ ] After those reviews, the owner may authorize actual priced media work; real TTS, CC, MP4, 9:16 phone QA, branding manifest and platform URLs remain separate delivery gates.
@@ -35,7 +35,9 @@ The new 20-video brand-story series needs an X16 Starbucks episode about the Jul
 - [x] Draft and compile `docs/videos/story-everyday-starbucks-x16/` with 20-series X16 metadata, script, Shorts and source/visual handoffs.
 - [x] Check lint, Shorts, docs-videos tests and task board; freeze current JSON hashes; commit initial package only.
 - [x] Archive v1's independent SEC HOLD and two frozen narrative blind reports; revise the source claims, structure, and portrait matches in v2.
-- [ ] Obtain a fresh independent same-hash SEC audit and two fresh narrative blind reads for v2; keep their receipts in the episode folder.
+- [x] Obtain a fresh independent same-hash SEC audit and two fresh narrative blind reads for v2; archive source PASS and both narrative HOLD receipts.
+- [x] Rewrite the narrative as v3 around the supported selection criteria and actual July-cohort progress; remove the late operating-profit catalog and the Short 2 profit-to-same-store proof mismatch.
+- [ ] Obtain a fresh independent same-hash SEC audit and two fresh narrative blind reads for v3; keep their receipts in the episode folder.
 
 ## How to verify
 
@@ -56,4 +58,6 @@ sha256sum docs/videos/story-everyday-starbucks-x16/{video,shorts}.json
 
 Frozen v1 author candidate: `video.json` SHA-256 `9f59ef1533c74c0347e40d5534bb390aa00310ab4b5274e9f6172e68bf3c58fc`; `shorts.json` SHA-256 `1491b408cd15131425167b18093d1411af8ae8d979ee6082f923658bdfdc8498`. Independent v1 SEC audit was HOLD; blind A passed 6/12 and blind B 3/12 narrative checks. Receipts and the [v2 author remediation map](../../docs/videos/story-everyday-starbucks-x16/reviews/v2-remediation.md) are archived; none is a v2 PASS.
 
-Frozen v2 author candidate: `video.json` SHA-256 `792a1007cd083bf035ff8127b889a91d40c018c5b923d34f820735848762b430`; `shorts.json` SHA-256 `11e9ea6515d500e0202e2b58506e606dca0211dc1c3ff264e758935e039b4066`. Main script is 157 lines, 160-character opening, 2,428-character substantive body, 14 loop links, 92 planned illustrations, and 11 number cards. Each Short has eight distinct cue-matched illustrated beats. These are author checks pending independent v2 review. No paid provider call, MP4, upload, publish approval, or true YouTube watch URL exists.
+Frozen v2 author candidate: `video.json` SHA-256 `792a1007cd083bf035ff8127b889a91d40c018c5b923d34f820735848762b430`; `shorts.json` SHA-256 `11e9ea6515d500e0202e2b58506e606dca0211dc1c3ff264e758935e039b4066`. Independent SEC audit PASS, but blind A and B rejected the documentary-led, accounting-heavy narrative. Source and blind receipts are in `reviews/`.
+
+Frozen v3 author candidate: `video.json` SHA-256 `3374c911b1a023b3906c8ff318b5ec37c1bbfdeb1915b20135e761a6cc151721`; `shorts.json` SHA-256 `2c3b4beb163618e9140c8bb97693efa669301f8ec2777ca380f0aafe9db28428`. It has 154 lines, a 158-character opening, 2,209-character substantive body, 25 linked loops, 87 planned illustrations and 10 number cards; Shorts have 176/164 characters. Lint has zero errors and zero warnings; sources and two new blind reads still need independent review. New same-hash independent reviews remain open. No paid provider call, MP4, upload, publish approval, or true YouTube watch URL exists.
