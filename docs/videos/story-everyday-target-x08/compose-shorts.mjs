@@ -37,7 +37,7 @@ const common = index => ({
 const shorts = [
   {
     ...common(1),
-    titles: ["Target 宣布退出那天，133 家店真的都關了？", "Target 加拿大 133 店宣布退出，何時才全關？"],
+    titles: ["Target 宣布退出那天，133 家店真的都關了？", "Target 加拿大撤退：公告日 133 店還在營業"],
     description: "2015-01-15 Target 宣布退出加拿大，加拿大子公司申請 CCAA；當時的 133 間門市在清算期間仍營業。後續季報只證實截至 2015-05-02 全數關閉，沒有給最後一店的確切關閉日。管理層在公告時認為 2021 年前沒有可信獲利情境。完整事件與財報脈絡請看本集長片。資料：Target 2015-01-15 原公告與 FY2015 Q1 Form 10-Q；畫面為匿名概念插畫。",
     links: [
       { label: "Target 2015-01-15 原公告", url: "https://www.sec.gov/Archives/edgar/data/27419/000002741915000005/exhibit99atargetcorporatio.htm" },
@@ -49,7 +49,7 @@ const shorts = [
       beat("turn", "x08-b05-s04", "公告日，門市仍開著", ["x080102", "x080504"]),
       beat("proof", "x08-b05-s11", "截至 5 月 2 日已全關", ["x080510"]),
       beat("payoff", "x08-b04-s41", "管理層看不到近年獲利", ["x080441"]),
-      beat("loop", "x08-b01-s10", "開 133 店，為何仍撤？", ["x080110"]),
+      beat("loop", "x08-b05-s11", "原件未說同日全關", ["x080511"]),
     ],
   },
   {

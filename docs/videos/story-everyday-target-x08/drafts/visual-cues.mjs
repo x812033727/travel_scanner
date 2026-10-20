@@ -226,6 +226,9 @@ export function visualFor(text, chapterIndex, rowIndex) {
   if (chapterIndex === 1 && /年報規劃隔年在加拿大開/.test(text)) {
     return { prompt: "Wide shot: One anonymous planner arranges unopened retail models beside a future calendar on a planning table, soft studio light", camera: "Wide shot, slow pan left" };
   }
+  if (chapterIndex === 1 && /開店前已有幾座配送中心/.test(text)) {
+    return { prompt: "Overhead shot: One anonymous planner studies a blank route sheet beside a closed lease folder on an office table, distribution count hidden, cool daylight", camera: "Overhead shot, slow push in" };
+  }
   if (chapterIndex === 2 && rowIndex >= 100 && rowIndex < 102) {
     const directCostCues = [
       "one anonymous bookkeeper holds a sealed operating-cost folder beside a newly opened retail model, result hidden, soft lamplight",
@@ -273,6 +276,9 @@ export function visualFor(text, chapterIndex, rowIndex) {
   }
   if (chapterIndex === 3 && /這點正成長，能改掉更大的虧損嗎/.test(text)) {
     return { prompt: "Medium shot: One anonymous analyst keeps an annual-results folder sealed beside a small rising sales token, outcome hidden, muted daylight", camera: "Medium shot, slow push in" };
+  }
+  if (chapterIndex === 3 && /樣本擴大後，同店銷售會怎樣/.test(text)) {
+    return { prompt: "Close-up: One anonymous analyst moves a few plain shop models toward an older group on a table while the results ledger stays closed, diffused daylight", camera: "Close-up, slow pull back" };
   }
   if (chapterIndex === 3 && /當年商品毛利三點六一億美元/.test(text)) {
     return { prompt: "Medium shot: One anonymous bookkeeper sets a merchandise-margin folder beside a sealed general-expense folder, comparison hidden, warm desk light", camera: "Medium shot, slow pan left" };
