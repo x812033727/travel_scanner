@@ -34,6 +34,7 @@ The X05 Meta preproduction package is source-reviewed and has a draft PR, but it
 - [x] Pilot three v14 object-based prompts with one MiniMax `image-01` take each; inspect every generated image. Two failed the judge, and the third needs visual review; retain the paid-generation STOP.
 - [x] Replace only those three prompts in v15, freeze the exact JSON hash, and obtain independent visual-only delta PASS.
 - [x] In an isolated workdir, retry those three scenes and reconcile the paid pilot; all three are provisionally usable. Continue a bounded batch, stop cleanly at shared quota reserve, and preserve paid image cache and complete ledger in the main STOP workdir. See `reviews/image-pilot-v15.md` and `reviews/art-batch-v15-checkpoint.md`.
+- [x] Freeze and independently review an offline nine-scene prompt repair; apply only those nine TSV/JSON visual fields in v16 and independently verify a zero-cost bridge of 24 unchanged accepted frames. Keep the full v15 paid evidence archived and the main STOP in place.
 - [ ] Resolve visual defects and 24 human-ear narration flags. If prompts or narration change, repeat the corresponding exact-SHA independent reviews. Only then complete the 64-shot illustrated set (at most three actual takes per shot), render, and assemble passed images.
 - [ ] Save local preview and handoff receipts; run video-doc tests, task checks, and diff checks before pushing.
 
@@ -58,3 +59,5 @@ Three revised v14 object prompts were tested at one MiniMax `image-01` take each
 v15 修正只涉及 `x05-b01-s04`、`x05-b03-s03`、`x05-b06-s13` 的畫面提示詞；`video.json` SHA-256 為 `077a5a6b541cb9e5a181786b8ed2d3d00816263dc68a71db625a1a0c0520b12a`，Shorts SHA-256 仍為 `52e2812e2bbf409b3edab3e935dcf65f3768e79b0e9c0522a898e0b9d024dfd2`。作者差異證據在 `reviews/visual-prompt-v15-author.md`。`compose-video.mjs` 的既有 CARD-row assert 目前阻止從 TSV 全量重生；請只讀修訂場景欄與現稿 JSON，不把全量重生當成已完成。
 
 2026-10-20 後續：v15 獨立視覺差異審查已 PASS，三鏡各一 take 重試並合帳，原尺寸人工暫可用。接續批次在共享評審配額邊界前乾淨 STOP；64 景中 33 已試、24 暫可用、9 待修／複核、31 未試。三個自動評審 PASS 的鏡頭 `x05-b02-s06`, `x05-b03-s12`, `x05-b04-s03` 經作者及獨立複看人工 HOLD，不能進影片。完整鏡頭 ID、畫面問題和帳本見 `reviews/art-batch-v15-checkpoint.md`。本集帳本 **US$0.9485，71 圖／70 評審、預留 0**；主工作區 `STOP` 保留，還沒有成片 MP4。此時全站評審剩 246，X06 最壞續畫 132、X09 首輪保留 99，只餘 15 次共享餘裕；X05 不續費試圖。任何下一版提示詞須先有 prompt-only 差異和獨立審查。
+
+同日零成本 v16：九景離線修圖提案經獨立語義審查 PASS，僅套用九個 `shot.data.prompt`／TSV `visual` 欄，再由獨立審閱者比對 PASS。新 `video.json` SHA-256 `a412c6b2e9a78f8eda90238336d7ccb87521dff8f87d8ae31842b508bce0b40d`，Shorts 不變；主 manifest 只橋接 24 景未改提示詞且已通過評審／人審的圖，v15 全 33 景原 manifest 和舊 HOLD 圖另存保留。帳本／cache 位元組未動，STOP 仍在，未做新圖、音樂或成片。證據見 `reviews/visual-prompt-v16-author.md` 與 `reviews/visual-v16-postapply-independent.md`。

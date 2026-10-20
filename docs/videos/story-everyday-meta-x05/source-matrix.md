@@ -2,7 +2,7 @@
 
 由 `drafts/lines.tsv` 的來源欄產生。這是作者對照，不代替獨立逐句審查；SEC 原文與限制見 [source-notes.md](source-notes.md)，四份原文獨立抽核見 [source-audit.md](reviews/source-audit.md)。
 
-- `video.json` SHA-256：`077a5a6b541cb9e5a181786b8ed2d3d00816263dc68a71db625a1a0c0520b12a`（v15 僅三景提示詞不同，逐句內容未變）
+- `video.json` SHA-256：`a412c6b2e9a78f8eda90238336d7ccb87521dff8f87d8ae31842b508bce0b40d`（v16 僅九景提示詞不同，逐句內容未變）
 - M21／M22／M23／M25 分別對應 FY2021／FY2022／FY2023／FY2025 Form 10-K；`editorial` 是不主張財報事實的觀眾互動。
 - 口播中的約數換算請回到原始百萬美元表格；字幕不可抹去『營業』或年度。
 
