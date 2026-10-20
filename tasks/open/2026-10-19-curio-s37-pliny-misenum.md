@@ -4,8 +4,8 @@ title: S37 Pliny at Misenum history episode
 status: blocked
 priority: P2
 area: docs
-owner: codex-s37-r4
-claimed_at: 2026-10-20T00:36:17Z
+owner: codex-s37-r5
+claimed_at: 2026-10-20T00:47:40Z
 created_at: 2026-10-19T23:53:49Z
 completed_at:
 branch:
@@ -25,7 +25,7 @@ The next Curio history episode asks whether Pliny the Younger witnessed the Vesu
 - [x] Reopen and hash pinned LXV/LXVI, record claims and source limitations.
 - [x] Draft options, chosen brief, 8+ minute screenplay, 75–120 still shots and loop map.
 - [x] Pass video lint and relevant documentation checks.
-- [ ] Fresh independent 13 question blind read and final source/visual review of the **R4 exact hash** before any paid media; R3 blind read reached 11/13 with `one_line` and `no_recap` blocked.
+- [ ] Fresh independent 13 question blind read and final source/visual review of the **R5 exact hash** before any paid media; R4 blind read reached 10/13 with `no_spoiler`, `one_line`, and `no_recap` blocked.
 - [ ] Owner reviews script and whole episode media budget, then continue approved production gates.
 
 ## Steps
@@ -37,7 +37,9 @@ The next Curio history episode asks whether Pliny the Younger witnessed the Vesu
 - [x] Revise the R3 first sentence after `[pl033]` to answer the boy's sleep question, remove the stale `[pl053] -> [pl054]` loop, and apply the independent precision notes.
 - [x] Run independent R3 script-only 13 question panel and full pinned-source/91-prompt audit; preserve the 11/13 narrative failure and four daylight contradictions in `verify-4.md`.
 - [x] Rebuild R4 as the nephew's continuous Misenum route, then reveal the uncle's end as a short reported outcome after the return; correct all four afternoon prompts and source chronology notes.
-- [ ] Run a **new R4** script-only 13 question panel and full pinned-source/91-prompt pass against the exact new hashes.
+- [x] Run independent R4 script-only 13 question panel and full pinned-source/91-prompt audit; preserve the 10/13 narrative failure and two source/prompt issues in `verify-5.md`.
+- [x] Rebuild R5 as one continuous Misenum route with a short letter-writing conclusion, remove the opening discovery spoiler and immediate courtyard/Livy repetition; fix `pl036` source causation and `pl086` night lighting.
+- [ ] Run a **new R5** script-only 13 question panel and full pinned-source/88-prompt pass against the exact new hashes.
 - [ ] Complete audio, stills, music, cut and QA only after gates and budget review.
 
 ## How to verify
@@ -46,7 +48,11 @@ Run `node tools/video/cli.mjs lint --slug curio-s37 --json`, `npm run test:docs-
 
 ## Notes
 
-Blocked on a fresh independent 13-question blind read and full source/visual pass of the **R4** exact hashes; no paid media until those results and the whole episode budget gate are recorded. `verify-2.md` records failed R1, `verify-3.md` records R2 12/13, and `verify-4.md` records the independent R3 11/13 and R4 handoff. None is R4 approval.
+Blocked on a fresh independent 13-question blind read and full source/visual pass of the **R5** exact hashes; no paid media until those results and the whole episode budget gate are recorded. `verify-2.md` records failed R1, `verify-3.md` records R2 12/13, `verify-4.md` records R3 11/13, and `verify-5.md` records the independent R4 10/13 plus R5 handoff. None is R5 approval.
+
+R5 removes R4's opening body-discovery spoiler and the second chronological uncle track. After the uncle departs, the plot follows the nephew and mother through Misenum; the later writing desk conveys only the reported outcome, third-day discovery, conjectured cause, and source boundary. It removes the duplicate courtyard position and places the boy's continued Livy reading only after the visitor's rebuke. Source-backed additions are study until bathing, prepared chariots and pause beyond the houses, and the night prediction runners. `pl036` no longer claims ash caused weakened eyes; `pl086` now uses night oil-lamp light. The independent R4 audit and R5 correction ledger are in `verify-5.md`.
+
+R5 has 91 aligned spoken lines/claims, 88 still prompts, 22 ordered loops, 8 event chapters; estimated total 9:23.37 and story body 8:27.1. Lint 0 errors/0 warnings, docs-video tests 236/236. New keyframes dry-run could not reach the quote endpoint, so there is no R5 media quote and no generation. Exact SHA-256: script `8a829acacf47da294a6fbd94ecd8e21527ced6362bbef6ca4db16974ea406db0`; video JSON `569b86421281b05ffee663d96f1010daf5d4e066ffaa66b03394a150e18eebcd`; claims `ebf270fe19d7bc8d50a80f895c57d6f018bcd3dc4f8ecf4fe6787de1067ce7e9`. The pinned English translation is unchanged, SHA-256 `9f5fd6bc997d9386987a0d5ae184961f2c0f88f9a8912baa0cd7848687da4995` at GITenberg commit `959ded9fab0f9d54768d2dbfad860b79c864c4c8`.
 
 R4 narrows the on-screen timeline to one path: after the uncle's ship leaves, the plot stays with the nephew and mother from the Misenum earthquake through their return. When Tacitus later asks about the uncle, a short letter-bound report resolves the opening ship/body questions. The repeated witness-location assertions at old `[pl042]`, `[pl044]`, `[pl090]` are gone; only `[pl089]` attributes the beach discovery to near-time hearsay. All four afternoon `pl007/pl009/pl015/pl018` prompts now say afternoon; the old cross-bay instant chronology is no longer implied. The uncle's wake-up actor is omitted, sulfur smell explicitly precedes flames, and third-day body timing is tied to the uncle's fall. R4 has 94 aligned lines/claims, 91 still prompts and 21 ordered loops; estimate total 9:30.2 and story body 8:32.3. Lint 0 errors/0 warnings. Keyframes dry-run still quotes US$1.23 for one MiniMax take and US$3.69 at most for three; no generation occurred.
 

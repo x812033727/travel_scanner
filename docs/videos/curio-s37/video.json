@@ -12,7 +12,7 @@
     "provider": "gemini",
     "name": "Sulafat",
     "style": "標準國語，清楚區分作者親歷、叔父死訊與他的推測。",
-    "performance": "順著叔父的船和母子的逃生前進；疑問留一拍，對來源界線不作戲劇化斷言。"
+    "performance": "沿著少年與母親在米塞努姆的經歷前進；結尾以他事後寫信交代叔父結局和親見界線，疑問留一拍。"
   },
   "subtitles": {
     "burn_in": false
@@ -39,8 +39,8 @@
     },
     {
       "setup": "pl005",
-      "payoff": "pl089",
-      "what": "遺體發現是不是小普林尼親眼所見"
+      "payoff": "pl088",
+      "what": "少年能否再次見到叔父"
     },
     {
       "setup": "pl006",
@@ -110,12 +110,7 @@
     {
       "setup": "pl087",
       "payoff": "pl088",
-      "what": "誰請小普林尼寫叔父之死"
-    },
-    {
-      "setup": "pl088",
-      "payoff": "pl024",
-      "what": "寫信時叔父的船轉向哪裡"
+      "what": "叔父出海後的結局"
     },
     {
       "setup": "pl079",
@@ -128,9 +123,19 @@
       "what": "黑暗中出現的光是不是白天"
     },
     {
-      "setup": "pl041",
-      "payoff": "pl045",
-      "what": "叔父倒下後何時找到遺體"
+      "setup": "pl045",
+      "payoff": "pl043",
+      "what": "叔父倒下的原因是否查明"
+    },
+    {
+      "setup": "pl043",
+      "payoff": "pl089",
+      "what": "少年是否目睹叔父最後時刻"
+    },
+    {
+      "setup": "pl026",
+      "payoff": "pl056",
+      "what": "離開房屋後地面能否站穩"
     }
   ],
   "youtube": {
@@ -238,14 +243,14 @@
       "id": "pl005",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of an adult letter writer in a plain robe looking at a blank letter on a table, soft side light",
+        "prompt": "Close shot of a young Roman student in a plain tunic waiting by a coastal doorway and looking toward the distant bay, grey volcanic daylight",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pl005",
-          "text": "海邊有人找到一具遺體；寫信的人看見了那一刻嗎？",
+          "text": "叔父離港後，少年還能再見到他嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -492,6 +497,22 @@
       ]
     },
     {
+      "id": "pl114",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young Roman student in a plain tunic studying an unmarked scroll beside a window in fading grey afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl114",
+          "text": "叔父離港後，少年把剩下的時間用來讀書，直到洗澡時才停下。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
       "id": "pl047",
       "template": "shot",
       "data": {
@@ -502,7 +523,7 @@
       "lines": [
         {
           "id": "pl047",
-          "text": "少年洗澡、吃飯後，睡得短暫又不安穩；那夜的地面還像前幾天嗎？",
+          "text": "洗完澡、吃過晚飯，他睡得短暫又不安穩；那夜的地面，還像前幾天那樣嗎？",
           "emotion": "自然說故事"
         }
       ],
@@ -573,22 +594,6 @@
       ]
     },
     {
-      "id": "pl022",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a teenage scholar standing in a narrow courtyard between a coastal house and the sea, faint oil lamp light",
-        "camera": "drift left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "pl022",
-          "text": "那小院雖在露天，仍夾在屋子與海之間，四周十分狹窄。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
       "id": "pl051",
       "template": "shot",
       "data": {
@@ -647,7 +652,7 @@
       "lines": [
         {
           "id": "pl023",
-          "text": "他責備母親太鎮定，也責備少年不當回事；少年卻繼續讀。",
+          "text": "他責備母親太鎮定，也責備少年在險境裡還拿著書。",
           "emotion": "自然說故事"
         }
       ]
@@ -656,14 +661,14 @@
       "id": "pl053",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a teenage scholar lifting his eyes from an unmarked papyrus scroll toward shaking walls, faint grey dawn light",
+        "prompt": "Close shot of a young Roman student lifting his eyes from an unmarked papyrus scroll toward shaking walls, faint grey dawn light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pl053",
-          "text": "他繼續翻李維的書；清晨，這個小院還安全嗎？",
+          "text": "責備沒有讓少年放下書；等到天亮，小院還能留嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -728,7 +733,23 @@
       "lines": [
         {
           "id": "pl026",
-          "text": "身後的人群一邊逃一邊推擠，像要替母子決定該往哪裡走。",
+          "text": "身後的人群一邊逃一邊推擠，像要替母子決定該往哪裡走。離開房屋後，就能站穩嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pl115",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a son and his mother pausing beside a waiting Roman carriage well clear of coastal buildings in faint grey dawn light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pl115",
+          "text": "先前叫人備好的馬車也拉了出來；離房屋稍遠，母子才停下腳步。",
           "emotion": "自然說故事"
         }
       ]
@@ -744,7 +765,7 @@
       "lines": [
         {
           "id": "pl056",
-          "text": "到了較空曠的地方，馬車在平地上仍前後晃動。",
+          "text": "馬車即使停在平地，也不停地前後晃動。",
           "emotion": "自然說故事"
         }
       ]
@@ -937,7 +958,7 @@
       "lines": [
         {
           "id": "pl065",
-          "text": "開頭那位母親真的要求兒子先走；她說出了自己的理由。",
+          "text": "母親先懇求、再催促，最後命令兒子獨自逃。",
           "emotion": "自然說故事"
         }
       ]
@@ -1001,7 +1022,7 @@
       "lines": [
         {
           "id": "pl068",
-          "text": "母親跟上，卻一路怪自己拖累了兒子。",
+          "text": "母親不情願地跟上，一路怪自己拖累了兒子。",
           "emotion": "自然說故事"
         }
       ]
@@ -1380,14 +1401,14 @@
       "id": "pl036",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a teenage scholar rubbing ash from his tired eyes beside a plain wall, muted daylight",
+        "prompt": "Medium shot of a tired young Roman scholar blinking at ash-covered objects beside a coastal road in muted returning daylight",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pl036",
-          "text": "灰讓他們的眼睛難受，眼前每件東西都像換了樣子。",
+          "text": "他們的眼睛已經十分疲弱；眼前的東西看起來都變了樣。",
           "emotion": "自然說故事"
         }
       ]
@@ -1460,14 +1481,14 @@
       "id": "pl086",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of teenage scholar in a pale tunic sitting beside a quiet doorway as people pass, mild light from the left",
+        "prompt": "Medium shot of a teenage scholar and his mother at a Misenum doorway as a frightened person hurries along the lane, low night oil-lamp light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pl086",
-          "text": "周圍還有人散布可怕預言，他們卻沒有再次離開。",
+          "text": "還有人在街上來回奔跑，向親友喊出可怕的預言；母子卻沒有再次離開。",
           "emotion": "自然說故事"
         }
       ]
@@ -1483,7 +1504,7 @@
       "lines": [
         {
           "id": "pl087",
-          "text": "母子留下等叔父的消息。再後來，誰請小普林尼把叔父之死寫下來？",
+          "text": "母子留在米塞努姆等叔父的消息；小普林尼後來寫下了什麼結局？",
           "emotion": "自然說故事"
         }
       ]
@@ -1499,88 +1520,24 @@
       "lines": [
         {
           "id": "pl088",
-          "text": "塔西佗請他寫叔父的結局；寫到那艘船時，叔父轉向哪裡？",
+          "text": "小普林尼事後寫下：叔父在斯塔比亞的海邊倒下，再也沒有回到米塞努姆。",
           "emotion": "自然說故事"
         }
       ],
-      "chapter": "塔西佗請他寫叔父之死"
-    },
-    {
-      "id": "pl024",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an adult letter writer in a plain robe pausing over a blank page beside a coastal window, soft daylight",
-        "camera": "drift right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "pl024",
-          "text": "信裡記下：岸邊被岩塊阻住後，叔父轉向斯塔比亞的朋友。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "pl039",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of an older fleet commander in a plain cloak looking at high waves from an ash-dark shore, dim grey daylight",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "pl039",
-          "text": "朋友的船被風困住；叔父到海邊試航，浪又太大。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "pl040",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an older fleet commander lying on sail cloth and reaching toward a plain water cup, dim grey daylight",
-        "camera": "drift left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "pl040",
-          "text": "他躺在鋪開的帆布上，兩次要冷水喝。",
-          "emotion": "自然說故事"
-        }
-      ]
-    },
-    {
-      "id": "pl041",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of two attendants helping an older fleet commander rise near an ash-dark coast, distant glow behind ash haze",
-        "camera": "pull back",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "pl041",
-          "text": "先聞到硫磺氣味，隨後火光逼近；兩名僕人扶他起身，他立刻倒下。要多久才有人找到他？",
-          "emotion": "自然說故事"
-        }
-      ]
+      "chapter": "小普林尼寫下叔父的結局"
     },
     {
       "id": "pl045",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a household attendant looking down solemnly on a quiet shore, muted daylight",
+        "prompt": "Close shot of an adult letter writer in a plain robe studying an unmarked sheet at a desk, soft window light",
         "camera": "drift right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "pl045",
-          "text": "叔父倒下後第三天，遺體被找到：衣服仍在，外表也沒有暴力傷痕。",
+          "text": "叔父倒下後第三天，人們才找到他的遺體；衣服仍在，身上也沒有暴力傷痕。他為何倒下？",
           "emotion": "自然說故事"
         }
       ]
@@ -1596,7 +1553,7 @@
       "lines": [
         {
           "id": "pl043",
-          "text": "小普林尼猜叔父死於有害氣體，也提到他原本喉嚨不好；這不是已查明的死因。",
+          "text": "小普林尼猜是有害氣體，也提到叔父喉嚨原本就不好；這只是推測。他見過海邊那一刻嗎？",
           "emotion": "自然說故事"
         }
       ]
@@ -1612,7 +1569,7 @@
       "lines": [
         {
           "id": "pl089",
-          "text": "信末說，有些是自己親眼見，有些是事後立刻聽來；海邊找到遺體，屬於後者。",
+          "text": "他在信末劃清界線：有些是親眼所見，有些是災後很快聽來；叔父的最後時刻屬於後者。",
           "emotion": "自然說故事"
         }
       ]
@@ -1628,7 +1585,7 @@
       "lines": [
         {
           "id": "pl091",
-          "text": "塔西佗又請他寫自己的遭遇，於是有了第二封信。",
+          "text": "塔西佗又問起他自己的遭遇，少年在米塞努姆經歷的一切，才寫成第二封信。",
           "emotion": "自然說故事"
         }
       ]
