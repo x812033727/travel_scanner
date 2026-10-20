@@ -1,11 +1,11 @@
 ---
 id: 2026-10-20-bootstrap-pinned-story-lexicon-for-independently
 title: Bootstrap pinned story lexicon for independently reviewed manual drafts
-status: in-progress
+status: open
 priority: P2
 area: tools
-owner: codex-gpt6-netflix-bootstrap
-claimed_at: 2026-10-20T13:57:05Z
+owner:
+claimed_at:
 created_at: 2026-10-20T13:57:02Z
 completed_at:
 branch: codex/brand-story-netflix-x03
