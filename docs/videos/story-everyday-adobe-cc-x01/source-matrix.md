@@ -2,7 +2,7 @@
 
 本矩陣由 `drafts/part1.json`、`drafts/part2.json` 的 `claim_refs` 產生；主張原文與限制詳見 [source-notes.md](source-notes.md)。旁白以 `video.json` 為準。此表是作者對照，仍需獨立查核。
 
-- `video.json` SHA-256：`be319d27a67caff10e5fe6f1c6d84ea5888ce7328b98ccf300c2981da409e436`
+- `video.json` SHA-256：`dfb2f9479fd15bae89352e3c796d59f75232d6c42acece758d5ef33e924ae253`
 - S12、S13、S15、S25 對應 `video.json.sources` 的四份 SEC 10-K；S26Q3 僅供背景複核，沒有進入旁白。
 - `#` 是 `source-notes.md` 的編號；結尾互動句屬編輯邀請，不主張歷史事實。
 

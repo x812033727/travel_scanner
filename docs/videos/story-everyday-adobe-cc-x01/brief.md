@@ -1,6 +1,6 @@
 # X01 Adobe Creative Cloud｜製作簡報
 
-**狀態：逐句來源審核、故事盲評、87 句旁白及兩輪自動音訊複查已完成；4 個近義轉錄旗標待人工聽核，插畫與本機試片製作中。** X01 是「日用品的意外轉身」20 集之外的獨立新增候選，不取代仍待一手資料的 C03 Moleskine，也不改 C01–C20 的順序或自動匯入正式站。來源審核見 [source-notes](source-notes.md)、[source-matrix](source-matrix.md) 與 [獨立核查](reviews/verify-1.md)，故事盲評見 [narrative](reviews/narrative.md)，音訊旗標見 [audio-check](reviews/audio-check.md)。
+**狀態：現行劇本 SHA-256 `dfb2f9479fd15bae89352e3c796d59f75232d6c42acece758d5ef33e924ae253`；逐句來源審核、故事盲評、87 句旁白及兩輪自動音訊複查已完成。4 個近義轉錄旗標待人工聽核；最終靜態視覺 QA 已通過，本機概念試片已輸出，整檔影音技術 QA 已通過。** X01 是「日用品的意外轉身」20 集之外的獨立新增候選，不取代仍待一手資料的 C03 Moleskine，也不改 C01–C20 的順序或自動匯入正式站。來源審核見 [source-notes](source-notes.md)、[source-matrix](source-matrix.md) 與 [獨立核查](reviews/verify-1.md)，故事盲評見 [narrative](reviews/narrative.md)，視覺修訂與新增後製卡的獨立承接見 [visual-amendment](reviews/visual-amendment.md)，音訊旗標見 [audio-check](reviews/audio-check.md)。
 
 ## 問題
 
@@ -16,17 +16,16 @@ Adobe 年報解釋，轉向按合約期間認列的訂閱使當期營收承壓�
 
 ## 觀眾問題與主線
 
-**Adobe：Creative Cloud 付費訂閱數增加，營收為何反而下降？** 以 [Adobe 2013 財年年報](https://www.sec.gov/Archives/edgar/data/796343/000079634314000004/adbe10kfy13.htm)的一組反差開場：財年末付費 Creative Cloud 訂閱數從前一年末 30 萬增至 140 萬，Adobe **全公司**營收卻從 US$4,403.7 million 降至 US$4,055.2 million（約 -8%），淨利從 US$832.8 million 降至 US$290.0 million（-65%）。第四章才交代 Adobe 在年報中的解釋：永久授權收入隨轉型下降，訂閱收入依原有規則按合約期間認列，成本與營運費用也上升。再看 2014–2015 年收入分類與 CS6 供應方式，結尾回望 2025 年 **Adobe 全公司**的收入結構。訂閱數是合約／服務計數，不等於不重複的人數；公司收入占比也不是 Photoshop 或 Creative Cloud 單品業績。所有入稿數值及因果已由另一代理依四份 SEC 原件逐項複核，核查綁定 [video.json](video.json) 的 SHA-256 `be319d27a67caff10e5fe6f1c6d84ea5888ce7328b98ccf300c2981da409e436`。
+**Adobe：Creative Cloud 付費訂閱數增加，營收為何反而下降？** 以 [Adobe 2013 財年年報](https://www.sec.gov/Archives/edgar/data/796343/000079634314000004/adbe10kfy13.htm)的一組反差開場：財年末付費 Creative Cloud 訂閱數從前一年末 30 萬增至 140 萬，Adobe **全公司**營收卻從 US$4,403.7 million 降至 US$4,055.2 million（約 -8%），淨利從 US$832.8 million 降至 US$290.0 million（-65%）。第四章才交代 Adobe 在年報中的解釋：永久授權收入隨轉型下降，訂閱收入依原有規則按合約期間認列，成本與營運費用也上升。再看 2014–2015 年收入分類與 CS6 供應方式，結尾回望 2025 年 **Adobe 全公司**的收入結構。訂閱數是合約／服務計數，不等於不重複的人數；公司收入占比也不是 Photoshop 或 Creative Cloud 單品業績。所有入稿數值及因果已由另一代理依四份 SEC 原件逐項複核；原審查綁定 SHA-256 `be319d27a67caff10e5fe6f1c6d84ea5888ce7328b98ccf300c2981da409e436`，後續提示詞修訂、新增 2013 財年產品收入 **61%** 資料卡及 2013／2014 轉折卡均由 [視覺修訂審查](reviews/visual-amendment.md)承接。現行 87 景為 **74 張插圖＋13 張後製卡**，含一張中立的結尾選擇卡。
 
 目標觀眾是曾用過版本制軟體、想知道「訂閱增加，營收怎會下滑」的人。觀眾看完應能分清：桌面軟體是否還需安裝、永久授權與會員服務的不同收入節奏、營收下滑和淨利下滑的不同成因，以及 Adobe 全公司收入分類和單一產品銷售之別。
 
-暫定標題三案：
+現行上架標題採 [`video.json`](video.json) 的「**訂閱數暴增，營收卻跌？Adobe 轉向 Creative Cloud 的那一年｜品牌故事**」。前製時的兩個備選方向：
 
-1. **Adobe：訂閱數翻了四倍多，營收為何反而下降？**（首選；以年報原件可核對的反差提問）
-2. **Creative Cloud 付費訂閱數增加，Adobe 營收卻少了 8%？**
-3. **Adobe 從一次授權走向訂閱，為何淨利先跌了 65%？**
+1. **Creative Cloud 付費訂閱數增加，Adobe 營收卻少了 8%？**
+2. **Adobe 從一次授權走向訂閱，為何淨利先跌了 65%？**
 
-縮圖假設：左上以後製大字寫 `ADOBE`，主標「訂閱↑／營收↓」，右側是一份無字年報、朝相反方向移動的兩枚無字紙籤。**不畫 Adobe／Photoshop 商標或可讀介面文字**；品牌名與數字只放後製字卡與縮圖排版，不進 MiniMax 提示詞。這個題材來自本系列的[獨立編輯候選](../brand-stories-everyday-reversals-20261020/additional-brand-candidates-20261020.md)，不能說成參考頻道做過或推薦的故事。
+現行縮圖版面用 `x01-b01-s04` 的安裝桌插圖，後製疊上品牌名 `Adobe`、主標「訂閱漲／營收跌」和「品牌故事」標籤。**不讓 MiniMax 畫 Adobe／Photoshop 商標或可讀介面文字**；品牌名與數字只放後製字卡與縮圖排版。縮圖檔仍須按最終輸出做手機尺寸檢查。這個題材來自本系列的[獨立編輯候選](../brand-stories-everyday-reversals-20261020/additional-brand-candidates-20261020.md)，不能說成參考頻道做過或推薦的故事。
 
 ## 一手資料與敘事邊界
 

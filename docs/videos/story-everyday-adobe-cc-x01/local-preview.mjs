@@ -85,16 +85,25 @@ async function encode({ doc, timeline, frames, musicFile, layout, workdir, previ
   const mark = resolveWatermark(frames.watermark);
   const segments = [];
   const keys = [];
-
   for (const [index, scene] of layout.entries()) {
     const previousKey = scene.transition === "dissolve" && index > 0 ? keys[index - 1] : null;
     const key = scene.kind === "motion"
       ? motionSegmentKey(scene, scene.move, null, previousKey, mark)
       : segmentKey(scene);
     keys.push(key);
-    const segment = path.join(segmentsDir, `${scene.id}-${key}.mp4`);
-    segments.push(segment);
-    if (existsSync(segment)) continue;
+    segments.push(path.join(segmentsDir, `${scene.id}-${key}.mp4`));
+  }
+
+  const completed = Array(layout.length);
+  let nextScene = 0;
+  const encodeScene = async (index) => {
+    const scene = layout[index];
+    const key = keys[index];
+    const segment = segments[index];
+    const previousKey = scene.transition === "dissolve" && index > 0 ? keys[index - 1] : null;
+    // A dissolve reads the previous segment's last frame; cuts are independent.
+    if (previousKey) await completed[index - 1];
+    if (existsSync(segment)) return;
     const partial = `${segment}.partial.mp4`;
     if (scene.kind === "motion") {
       const picture = fileAt(workdir, scene.keyframe.file);
@@ -112,7 +121,17 @@ async function encode({ doc, timeline, frames, musicFile, layout, workdir, previ
     } else throw new Error(`unsupported scene kind: ${scene.kind}`);
     renameSync(partial, segment);
     process.stdout.write(`encoded ${index + 1}/${layout.length}: ${scene.id}\n`);
-  }
+  };
+  const encodeWorker = async () => {
+    while (nextScene < layout.length) {
+      const index = nextScene++;
+      completed[index] = encodeScene(index);
+      await completed[index];
+    }
+  };
+  const workers = await Promise.allSettled(Array.from({ length: Math.min(2, layout.length) }, () => encodeWorker()));
+  const failed = workers.find((worker) => worker.status === "rejected");
+  if (failed) throw failed.reason;
 
   const joinedList = path.join(previewDir, "segments.ffconcat");
   writeFileSync(joinedList, `ffconcat version 1.0\n${segments.map(ffconcatFile).join("\n")}\n`);
