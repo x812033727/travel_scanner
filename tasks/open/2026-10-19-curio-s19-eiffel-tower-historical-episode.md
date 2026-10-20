@@ -4,8 +4,8 @@ title: Curio S19 Eiffel Tower historical episode
 status: in-progress
 priority: P2
 area: docs
-owner: codex-s05
-claimed_at: 2026-10-19T20:17:20Z
+owner: codex-gpt6-s19-audio
+claimed_at: 2026-10-20T00:45:37Z
 created_at: 2026-10-19T20:17:17Z
 completed_at:
 branch: codex/curio-s34-endurance-20261019
@@ -30,13 +30,16 @@ scope:
 
 - [x] 查同題是否已認領，開窄 scope 票，建立原始文件入口與風險清單。
 - [x] 依當代報紙另寫保守 A 案企劃：先問 1887 年抗議者與艾菲爾各怎麼說「二十年」，再用 1913 年無線電報導作後來用途的可查例子。
-- [ ] 若要加上 1909 年精確條款或「無線電救塔」因果，先取得 1887 年協議第 11 條、官方無線電史頁和市府決議的固定可讀文本；目前代理伺服器 CONNECT 403。
-- [x] 完成來源安全的企劃、101 句劇本、逐句來源對照及 0／0 lint；S19 目前不得付費製作。
-- [ ] 把精確劇本雜湊交獨立讀者盲讀 13 題，再依回饋修稿並核准。
+- [x] 1909 年精確條款與「無線電救塔」因果缺固定可讀原文，因此不寫入旁白；協議與官方史頁目前仍回 CONNECT 403。
+- [x] R5 完成來源安全的 110 句劇本、110/110 逐句來源對照、13/13 獨立盲讀與 0／0 lint；本機劇本關卡是委託製作許可，並非站主親自讀稿。
+- [x] R5 旁白 110 句已合成，重錄兩輪後仍有 12 句被 Jev 標記；本機 Whisper 模型下載遭代理伺服器 HTTP 403，沒有第二轉錄。
+- [x] R6 只改寫 12 個被標句及相同的 claims，重產精確劇本；字數／數字檢查與 lint 過關，未重新配音。
+- [ ] 把 R6 精確劇本雜湊交新的來源隔離讀者盲讀 13 題，並對新句與固定來源做獨立覆核；通過後才更新本機劇本關卡。
+- [ ] R6 針對 12 句 TTS、check-audio 零旗標、實測正文至少 8 分鐘，再處理整集插圖上限與後續媒體。
 
 ## How to verify
 
-史料入口及待決問題在 `docs/videos/curio-s19/research.md`；逐句對照在 `claims.md`。`node tools/video/cli.mjs lint --slug curio-s19 --json` 已 0 errors／0 warnings、101 句、估 8.46 分鐘、90 張插圖鏡頭。盲讀尚待來源隔離讀者核對精確 `script.md` SHA。
+史料入口及待決問題在 `docs/videos/curio-s19/research.md`；逐句對照在 `claims.md`。R6 `script.md` SHA-256 `0ba634669a95b549f32e2d3fbc9250a68454ed69099e6940c1e819269836ea75`，110 句、100 張預定插圖，`lint --slug curio-s19 --json` 為 0 errors／0 warnings。改寫與檢查見 `audio-rewrite-round1.md`；實測新版本正文及音訊仍待完成。
 
 ## Notes
 
@@ -45,3 +48,4 @@ scope:
 - 2026-10-19：`brief.md` 用較安全的題目「抗議書喊出『二十年』，艾菲爾怎麼回答？」；原抗議書只說未來二十年會看見鐵塔陰影，**沒有寫只准站二十年**。艾菲爾的經營權說法明標當事人說法，1913 年無線電明標後來用途，均不補造 1909 年拆除命令。
 - 2026-10-19：已按兩份固定當代報紙轉錄寫成 101 句、90 張 still／1 片尾、估 8.47 分鐘的 `video.json`／`script.md`，`claims.md` 逐句 101/101 連回原文行；lint 0 errors／0 warnings。現稿精確 `script.md` SHA-256 `319a09ace6f2face0fc40ebeda8c93cfe7b60deef241a747fd6b0ab3bbb1a339`，獨立盲讀未進行，劇本與媒體均未核准。這一版沒有說 1909 年曾下拆塔令、契約全文絕無拆除條款，或無線電單獨阻止拆除。
 - S05 仍在語音與成片製作；S19 只做無付費前期。根集要求避開目前 MiniMax 限流，付費製作時段由根集另行協調。
+- 2026-10-20：此票從先前 `codex-s05` 認領轉交 `codex-gpt6-s19-audio`，僅改 `docs/videos/curio-s19` 及本票。R5 的 `verify-5.md` 記下 110 句、實際正文 510.2 秒、兩輪重錄後 12 句旗標與配樂成果；其本機 script approval 綁舊 SHA，不能套到 R6。R6 以 [audio-rewrite-round1.md](../../docs/videos/curio-s19/audio-rewrite-round1.md) 列出十二句原文／轉寫／改寫，現稿 SHA 為 `0ba634669a95b549f32e2d3fbc9250a68454ed69099e6940c1e819269836ea75`；`rewriteProblems` 0 違規、lint 0／0，TTS dry-run 僅 12 句約 274 字元待合成。本輪尚未送新 TTS 或 MiniMax；先等獨立盲讀與史料覆核。
