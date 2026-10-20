@@ -63,6 +63,16 @@
       "what": "新店入選背後的單店回報問題"
     },
     {
+      "setup": "x160214",
+      "payoff": "x160312",
+      "what": "同店表之外用哪把尺量新店"
+    },
+    {
+      "setup": "x160314",
+      "payoff": "x160641",
+      "what": "眼前利潤之外還看哪些未來條件"
+    },
+    {
       "setup": "x160227",
       "payoff": "x160301",
       "what": "七月公告是否擴大原先關店計畫"
@@ -78,9 +88,19 @@
       "what": "隔年新名單是否屬於另一批"
     },
     {
+      "setup": "x160426",
+      "payoff": "x160504",
+      "what": "跨年之後七月名單又關了多少"
+    },
+    {
       "setup": "x160528",
       "payoff": "x160601",
       "what": "留下的成熟店有沒有轉好"
+    },
+    {
+      "setup": "x160610",
+      "payoff": "x160619",
+      "what": "店數能否單獨解釋後來改善"
     }
   ],
   "youtube": {
@@ -191,7 +211,18 @@
           "text": "名單上，約七成是二〇〇六財年開始後才開的。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
+        }
+      ]
+    },
+    {
+      "id": "x16-b01-s04",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, pan left in a plain small office, one anonymous owner studies blank storefront plan, in side-profile view, muted afternoon light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "x160104",
           "text": "新店怎麼會先進了關店名單？",
@@ -201,11 +232,11 @@
       ]
     },
     {
-      "id": "x16-b01-s04",
+      "id": "x16-b01-s05",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a plain small office, one anonymous director opens blank planning folio, in side-profile view, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium close-up, pan right in a plain small office, one anonymous director opens blank planning folio, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -218,17 +249,17 @@
       ]
     },
     {
-      "id": "x16-b01-s05",
+      "id": "x16-b01-s06",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in a plain small office, one anonymous analyst turns blank ledger page, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Overhead shot, tilt down in a plain small office, one anonymous analyst opens two unlabeled annual ledger columns, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160106",
-          "text": "到了九月底，年報的店數卻朝另一邊走。",
+          "text": "九月底，年報把關店進度和總店數並排。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
@@ -241,17 +272,17 @@
       ]
     },
     {
-      "id": "x16-b01-s06",
+      "id": "x16-b01-s07",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in a plain small office, one anonymous clerk compares two unmarked ledgers, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Low-angle shot, tilt up in a plain small office, one anonymous clerk removes extra leaf from plain calendar, in three-quarter view, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160108",
-          "text": "二〇一〇年的同店成績，還會再變一次。",
+          "text": "二〇一〇年，同店表又剔除一個特殊週次。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
@@ -267,14 +298,14 @@
       "id": "x16-b02-s01",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous cafe counter, one anonymous clerk opens calendar with blank pages, in three-quarter view, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, push in at an anonymous cafe counter, one anonymous clerk opens conceptual selection ledger to earlier blank page, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160201",
-          "text": "時間退回同年一月七日。",
+          "text": "要讀懂七月名單，先看一月七日那腳煞車。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
@@ -291,28 +322,17 @@
       "id": "x16-b02-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in at an anonymous cafe counter, one anonymous planner slides shop blocks apart, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Close-up, pull out at an anonymous cafe counter, one anonymous planner spaces shop blocks farther apart, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160203",
-          "text": "開頭那份一月決議，要美國展店踩煞車。",
+          "text": "董事會要求放慢美國門市的開張速度。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x16-b02-s03",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up, pull out at an anonymous cafe counter, one anonymous barista sets plain cup on counter, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
-        "visual": "still"
-      },
-      "lines": [
+        },
         {
           "id": "x160204",
           "text": "他們也要把顧客在店裡的體驗拉回中心。",
@@ -322,24 +342,24 @@
       ]
     },
     {
-      "id": "x16-b02-s04",
+      "id": "x16-b02-s03",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous cafe counter, one anonymous analyst leaves blank results page closed, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "prompt": "Wide shot, pan left at an anonymous cafe counter, one anonymous barista arranges plain tools and cups, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
         "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160205",
-          "text": "這是管理層當時要做的事，成績還沒出來。",
+          "text": "新品、店面設計和員工訓練，都寫進計畫。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
     {
-      "id": "x16-b02-s05",
+      "id": "x16-b02-s04",
       "template": "stats",
       "data": {
         "title": "美國同店銷售",
@@ -361,7 +381,7 @@
       ]
     },
     {
-      "id": "x16-b02-s06",
+      "id": "x16-b02-s05",
       "template": "shot",
       "data": {
         "prompt": "Medium close-up, pan right at an anonymous cafe counter, one anonymous planner adds small shop blocks to shelf, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
@@ -378,24 +398,24 @@
       ]
     },
     {
-      "id": "x16-b02-s07",
+      "id": "x16-b02-s06",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at an anonymous cafe counter, one anonymous analyst holds larger revenue block, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "prompt": "Overhead shot, tilt down at an anonymous cafe counter, one anonymous analyst holds large plain revenue block, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
         "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160208",
-          "text": "那時美國業務約占全公司營收四分之三。",
+          "text": "到了二〇〇八財年，美國業務占營收近四分之三。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
     {
-      "id": "x16-b02-s08",
+      "id": "x16-b02-s07",
       "template": "shot",
       "data": {
         "prompt": "Low-angle shot, tilt up at an anonymous cafe counter, one anonymous director steadies broad plain ledger, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
@@ -412,7 +432,7 @@
       ]
     },
     {
-      "id": "x16-b02-s09",
+      "id": "x16-b02-s08",
       "template": "shot",
       "data": {
         "prompt": "Medium shot, push in at an anonymous cafe counter, one anonymous commuter enters generic cafe doorway, in front view, eyes toward viewer, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
@@ -435,7 +455,7 @@
       ]
     },
     {
-      "id": "x16-b02-s10",
+      "id": "x16-b02-s09",
       "template": "shot",
       "data": {
         "prompt": "Close-up, pull out at an anonymous cafe counter, one anonymous analyst compares one shop across two blank pages, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
@@ -458,31 +478,20 @@
       ]
     },
     {
-      "id": "x16-b02-s11",
+      "id": "x16-b02-s10",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous cafe counter, one anonymous planner weighs plain key and coins, in side-profile view, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "prompt": "Wide shot, pan left at an anonymous cafe counter, one anonymous planner keeps fresh shop key beside closed ledger, in side-profile view, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
         "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160214",
-          "text": "它能不能自己賺到合理回報，是另一道題。",
+          "text": "這批新店的生意，要從哪張帳追？",
           "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x16-b02-s12",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up, pan right at an anonymous cafe counter, one anonymous director moves aside worn shop block, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
-        "visual": "still"
-      },
-      "lines": [
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+        },
         {
           "id": "x160215",
           "text": "一月公告已提到，要關掉一些表現不好的店。",
@@ -492,11 +501,11 @@
       ]
     },
     {
-      "id": "x16-b02-s13",
+      "id": "x16-b02-s11",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at an anonymous cafe counter, one anonymous analyst checks separate blank ledgers, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium close-up, pan right at an anonymous cafe counter, one anonymous analyst checks separate blank ledgers, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -515,67 +524,51 @@
       ]
     },
     {
-      "id": "x16-b02-s14",
+      "id": "x16-b02-s12",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at an anonymous cafe counter, one anonymous barista arranges plain tools at counter, in three-quarter view, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, tilt down at an anonymous cafe counter, one anonymous planner shifts plain capital tokens between maps, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160218",
-          "text": "同一份計畫還提到新品、店面設計與訓練。",
+          "text": "還計畫把部分美國展店資金，轉向海外。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x16-b02-s15",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot, push in at an anonymous cafe counter, one anonymous customer pauses at generic cafe door, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
-        "visual": "still"
-      },
-      "lines": [
+        },
         {
           "id": "x160219",
-          "text": "可是客人，還像前一年那樣走進店裡嗎？",
+          "text": "顧客體驗要改，眼前客流先撐得住嗎？",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，留半拍讓問題落地"
         }
       ]
     },
     {
-      "id": "x16-b02-s16",
-      "template": "stats",
+      "id": "x16-b02-s13",
+      "template": "shot",
       "data": {
-        "title": "美國同店銷售",
-        "stats": [
-          {
-            "value": "−5%",
-            "label": "FY2008；不是所有新店的成績"
-          }
-        ],
-        "source": "S3｜FY2008 10-K"
+        "prompt": "Low-angle shot, tilt up at an anonymous cafe counter, one anonymous clerk turns plain sales tile downward, in three-quarter view, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
+        "visual": "still"
       },
       "lines": [
         {
           "id": "x160220",
-          "text": "到二〇〇八財年，美國同店已轉成下滑百分之五。",
+          "text": "到了二〇〇八財年，美國熟店銷售開始往下。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
     {
-      "id": "x16-b02-s17",
+      "id": "x16-b02-s14",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at an anonymous cafe counter, one anonymous barista watches sparse anonymous queue, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium shot, push in at an anonymous cafe counter, one anonymous barista watches sparse anonymous queue, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -594,42 +587,42 @@
       ]
     },
     {
-      "id": "x16-b02-s18",
+      "id": "x16-b02-s15",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at an anonymous cafe counter, one anonymous analyst compares two unlabeled keys, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Close-up, pull out at an anonymous cafe counter, one anonymous analyst keeps old and fresh shop tokens apart, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160223",
-          "text": "舊店客流變少，新店還要證明自己。",
+          "text": "熟店先亮紅燈，新店還得證明自己的帳。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
         {
           "id": "x160224",
-          "text": "一月那腳煞車，現在有了更難的背景。",
+          "text": "一月才宣布做法，結果還得往後看。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
     {
-      "id": "x16-b02-s19",
+      "id": "x16-b02-s16",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at an anonymous cafe counter, one anonymous analyst sorts different plain storefronts, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Wide shot, pan left at an anonymous cafe counter, one anonymous analyst compares two plain storefront models, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160225",
-          "text": "但要砍哪一家，不能只看它新不新。",
+          "text": "同在美國，哪些店會被圈進名單？",
           "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
         },
         {
           "id": "x160226",
@@ -640,11 +633,11 @@
       ]
     },
     {
-      "id": "x16-b02-s20",
+      "id": "x16-b02-s17",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at an anonymous cafe counter, one anonymous director lifts plain measuring stick, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium close-up, pan right at an anonymous cafe counter, one anonymous director lifts plain measuring stick, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -660,8 +653,8 @@
       "id": "x16-b03-s01",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous analyst fans plain storefront cards, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous analyst fans plain storefront cards, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -684,8 +677,8 @@
       "id": "x16-b03-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a city planning studio, one anonymous planner nests small group in larger group, in front view, eyes toward viewer, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous planner nests small group in larger group, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -707,8 +700,8 @@
       "id": "x16-b03-s03",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in a city planning studio, one anonymous planner moves tokens along blank calendar, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium shot, push in in a city planning studio, one anonymous planner moves tokens along blank calendar, in front view, eyes toward viewer, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -730,8 +723,8 @@
       "id": "x16-b03-s04",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a city planning studio, one anonymous planner closes plain lease folder, in side-profile view, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Close-up, pull out in a city planning studio, one anonymous planner closes plain lease folder, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -753,20 +746,14 @@
       "id": "x16-b03-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous analyst encloses selected shop tokens, with head turned downward, soft lamp light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Wide shot, pan left in a city planning studio, one anonymous analyst encloses selected shop tokens, in side-profile view, muted afternoon light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160309",
           "text": "開頭那個七成，分母是六百家入選的店。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160310",
-          "text": "不是全美門市，更不是所有新開門市。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -776,16 +763,16 @@
       "id": "x16-b03-s06",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous analyst points across unlabeled map, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous planner leaves many tokens outside ring, with head turned downward, soft lamp light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160311",
-          "text": "這些店跨主要市場，難道只憑開業日期挑？",
+          "id": "x160310",
+          "text": "不是全美門市，更不是所有新開門市。",
           "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
@@ -793,22 +780,16 @@
       "id": "x16-b03-s07",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous analyst opens separate blank ledger, in three-quarter view, soft evening light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous analyst points across an unlabeled map, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160312",
-          "text": "那把選店尺，先量單店是不是賺錢。",
+          "id": "x160311",
+          "text": "這些店跨主要市場，難道只憑開業日挑？",
           "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160313",
-          "text": "還看未來能否取得可接受的回報。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
         }
       ]
     },
@@ -816,20 +797,14 @@
       "id": "x16-b03-s08",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a city planning studio, one anonymous planner compares two generic streets, in side-profile view, mild window light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous analyst opens separate blank shop ledger, in three-quarter view, soft evening light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160314",
-          "text": "地點與市場本身，也在判斷裡。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160315",
-          "text": "當時與預期的經濟走勢，同樣被考慮。",
+          "id": "x160312",
+          "text": "選店尺的第一面，是單店能不能獲利。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -839,14 +814,14 @@
       "id": "x16-b03-s09",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in a city planning studio, one anonymous clerk studies fresh-looking shop key, with head turned downward, soft grey morning light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium shot, push in in a city planning studio, one anonymous planner holds one plain measuring face up, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160316",
-          "text": "所以開得晚，不等於只因為年輕才被關。",
+          "id": "x160313",
+          "text": "但眼前的利潤，只是幾項條件之一。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -856,8 +831,48 @@
       "id": "x16-b03-s10",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a city planning studio, one anonymous analyst groups newer plain keys, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "prompt": "Close-up, pull out in a city planning studio, one anonymous planner compares two unmarked street models, with head turned downward, soft grey morning light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160314",
+          "text": "如果眼前還能撐，未來又怎麼判？",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s11",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, pan left in a city planning studio, one anonymous analyst leaves one plain ledger flap closed, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
         "camera": "Wide shot, pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160315",
+          "text": "眼前利潤，還填不滿這張選店帳。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160316",
+          "text": "所以開得晚，不等於只因為年輕才被關。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s12",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous analyst groups newer plain keys, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -870,11 +885,11 @@
       ]
     },
     {
-      "id": "x16-b03-s11",
+      "id": "x16-b03-s13",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous planner leaves many fresh keys outside ring, in three-quarter view, soft lamp light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous planner leaves many fresh keys outside ring, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -883,30 +898,41 @@
           "text": "比例驚人，卻不能倒推所有新店都失敗。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160319",
-          "text": "一個地方的生意，得回到那個地方算。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
     {
-      "id": "x16-b03-s12",
+      "id": "x16-b03-s14",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous planner holds plain lease folder, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous clerk sees blank individual shop cards, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160320",
-          "text": "更麻煩的是，關店本身也得先付一筆帳。",
+          "id": "x160319",
+          "text": "公告沒有逐店公開，各店究竟碰到哪條線。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
+        {
+          "id": "x160320",
+          "text": "把門一關，租約成本就立刻消失嗎？",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s15",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, push in in a city planning studio, one anonymous analyst moves red wooden chips to ledger, in front view, eyes toward viewer, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "x160321",
           "text": "公告估算，稅前費用會達三點二八",
@@ -916,7 +942,7 @@
       ]
     },
     {
-      "id": "x16-b03-s13",
+      "id": "x16-b03-s16",
       "template": "stats",
       "data": {
         "title": "關店預計稅前費用",
@@ -938,11 +964,11 @@
       ]
     },
     {
-      "id": "x16-b03-s14",
+      "id": "x16-b03-s17",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous barista folds plain apron by counter, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Close-up, pull out in a city planning studio, one anonymous barista folds plain apron by counter, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -961,11 +987,11 @@
       ]
     },
     {
-      "id": "x16-b03-s15",
+      "id": "x16-b03-s18",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in a city planning studio, one anonymous barista holds plain shop key, in front view, eyes toward viewer, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Wide shot, pan left in a city planning studio, one anonymous barista holds plain shop key, in side-profile view, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -974,21 +1000,32 @@
           "text": "對店員來說，名單不只是一條財報數字。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
+        }
+      ]
+    },
+    {
+      "id": "x16-b03-s19",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous analyst places blank estimate folio aside, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "x160326",
-          "text": "這還只是計畫當時的估計。",
+          "text": "這些費用只是七月估計，不是支出收據。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
     {
-      "id": "x16-b03-s16",
+      "id": "x16-b03-s20",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in a city planning studio, one anonymous planner carries fewer shop blocks, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous planner carries fewer shop blocks, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1007,45 +1044,34 @@
       ]
     },
     {
-      "id": "x16-b03-s17",
+      "id": "x16-b03-s21",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in a city planning studio, one anonymous planner weighs one plain storefront model, in side-profile view, muted afternoon light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Low-angle shot, tilt up in a city planning studio, one anonymous planner moves shop tokens one at a time, in three-quarter view, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160329",
-          "text": "開店不再只求多，還得問每個地址划不划算。",
+          "text": "新店開得少，舊名單仍要一店一店處理。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x16-b03-s18",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up, pan right in a city planning studio, one anonymous clerk closes blank ledger without total, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
-        "visual": "still"
-      },
-      "lines": [
+        },
         {
           "id": "x160330",
-          "text": "名單拿出來，成效卻不能在七月當天結帳。",
+          "text": "因此七月的宣告，還不是完結數字。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
     {
-      "id": "x16-b03-s19",
+      "id": "x16-b03-s22",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in a city planning studio, one anonymous analyst turns annual ledger page, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium shot, push in in a city planning studio, one anonymous analyst turns annual ledger page, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1090,8 +1116,8 @@
       "id": "x16-b04-s02",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a street corner storefront, one anonymous clerk puts selected tokens in box, in three-quarter view, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Close-up, pull out at a street corner storefront, one anonymous clerk puts selected tokens in box, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1107,8 +1133,8 @@
       "id": "x16-b04-s03",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in at a street corner storefront, one anonymous planner compares big and small nested sets, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Wide shot, pan left at a street corner storefront, one anonymous planner compares big and small nested sets, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1130,8 +1156,8 @@
       "id": "x16-b04-s04",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a street corner storefront, one anonymous clerk lays many plain shop tokens, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium close-up, pan right at a street corner storefront, one anonymous clerk lays many plain shop tokens, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
@@ -1175,8 +1201,8 @@
       "id": "x16-b04-s06",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a street corner storefront, one anonymous barista walks between two generic storefronts, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Overhead shot, tilt down at a street corner storefront, one anonymous barista walks between two generic storefronts, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1198,20 +1224,20 @@
       "id": "x16-b04-s07",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at a street corner storefront, one anonymous clerk sees tall earlier token tower, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Low-angle shot, tilt up at a street corner storefront, one anonymous analyst compares tall and shorter block towers, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160410",
-          "text": "上一年美國淨增還有一千零六十五家。",
+          "text": "和前一年比，淨增的腳步已放慢。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
         {
           "id": "x160411",
-          "text": "店數還長，熟店的銷售也跟著長嗎？",
+          "text": "店數還長，總營收也會跟著長嗎？",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，留半拍讓問題落地"
         }
@@ -1221,8 +1247,8 @@
       "id": "x16-b04-s08",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at a street corner storefront, one anonymous accountant raises plain annual ledger, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium shot, push in at a street corner storefront, one anonymous accountant raises plain annual ledger, in front view, eyes toward viewer, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1231,24 +1257,29 @@
           "text": "更意外的是，全公司年度總營收仍高於上年。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160413",
+          "text": "新增門市等銷售，撐住了總盤子。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
     {
       "id": "x16-b04-s09",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a street corner storefront, one anonymous planner adds small tokens around cup, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
-        "visual": "still"
+        "title": "美國同店銷售",
+        "stats": [
+          {
+            "value": "−5%",
+            "label": "FY2008；不是所有新店的成績"
+          }
+        ],
+        "source": "S3｜FY2008 10-K"
       },
       "lines": [
-        {
-          "id": "x160413",
-          "text": "新店與其他銷售，把總盤子撐在上方。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
         {
           "id": "x160414",
           "text": "同店卻在同一財年下滑百分之五。",
@@ -1261,20 +1292,20 @@
       "id": "x16-b04-s10",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in at a street corner storefront, one anonymous analyst splits old and new shop rings, in front view, eyes toward viewer, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Close-up, pull out at a street corner storefront, one anonymous analyst holds two unlike plain tiles, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160415",
-          "text": "這不是所有門市收入都跌五個百分點。",
+          "text": "總營收在加，熟店卻少賣了。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
         {
           "id": "x160416",
-          "text": "那張熟店表，本來就不收新開店。",
+          "text": "兩張表不同，不能替彼此下結論。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -1284,14 +1315,20 @@
       "id": "x16-b04-s11",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out at a street corner storefront, one anonymous analyst holds two differently moving tiles, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Wide shot, pan left at a street corner storefront, one anonymous clerk opens blank individual shop cards, in side-profile view, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160417",
-          "text": "所以同店跌與總營收增，能在同一年發生。",
+          "text": "選店帳冊仍缺每一家未來的公開數字。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160418",
+          "text": "只靠兩張總表，分不出哪家新店最弱。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -1301,16 +1338,22 @@
       "id": "x16-b04-s12",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left at a street corner storefront, one anonymous clerk holds fresh key outside ring, in side-profile view, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium close-up, pan right at a street corner storefront, one anonymous owner weighs one plain shop key, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160418",
-          "text": "因此剛開那批店的表現，不藏在這個比率裡。",
+          "id": "x160419",
+          "text": "年終店數，替不了名單裡每家的判斷。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160420",
+          "text": "那第一批關完後，名單還剩多少未結？",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
         }
       ]
     },
@@ -1318,16 +1361,22 @@
       "id": "x16-b04-s13",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right at a street corner storefront, one anonymous owner weighs shop key over blank account, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Overhead shot, tilt down at a street corner storefront, one anonymous planner leaves many selected tokens on ledger, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160419",
-          "text": "那張名單要問的是：每一家能否養活自己？",
+          "id": "x160421",
+          "text": "九月底，這張清單大多還在執行途中。",
           "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160422",
+          "text": "它的進度，和全美店數不是同一條線。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
@@ -1335,20 +1384,20 @@
       "id": "x16-b04-s14",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down at a street corner storefront, one anonymous analyst measures plain shop token, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Low-angle shot, tilt up at a street corner storefront, one anonymous clerk turns to next blank calendar leaf, in three-quarter view, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160420",
-          "text": "七月的標準，就把單店利潤和回報列上去。",
+          "id": "x160423",
+          "text": "那條關店線還要跨過下一個財年。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
         {
-          "id": "x160421",
-          "text": "同店跌，說舊店的壓力；新店入選，",
+          "id": "x160424",
+          "text": "單看總店數，關店進度就被蓋住。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -1358,22 +1407,22 @@
       "id": "x16-b04-s15",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up at a street corner storefront, one anonymous owner moves one shop token aside, in three-quarter view, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium shot, push in at a street corner storefront, one anonymous analyst lifts sheet to reveal fresh tokens, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160422",
-          "text": "說一部分新址的帳也過不了關。",
+          "id": "x160425",
+          "text": "單看關店，又忘了這年還有新開。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
         {
-          "id": "x160423",
-          "text": "更麻煩的是，這兩張表範圍根本不同。",
+          "id": "x160426",
+          "text": "剩下的目標店，隔年會處理到哪裡？",
           "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
         }
       ]
     },
@@ -1381,71 +1430,20 @@
       "id": "x16-b04-s16",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in at a street corner storefront, one anonymous barista sees shorter anonymous queue, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x160424",
-          "text": "年報還記著當年美國客流持續轉弱。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160425",
-          "text": "它把美國景氣壓力也寫進解釋裡。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x16-b04-s17",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up, pull out at a street corner storefront, one anonymous barista opens plain cafe door, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "prompt": "Close-up, pull out at a street corner storefront, one anonymous director opens separate plain folio, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
         "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160426",
-          "text": "公司能挑掉低回報店，卻不能命令客人回來。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x16-b04-s18",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot, pan left at a street corner storefront, one anonymous director opens new blank folder, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
           "id": "x160427",
-          "text": "然後二〇〇九財年，又多了一份關店決定。",
+          "text": "隔年一月，公司又提出另一批關店。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x16-b04-s19",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up, pan right at a street corner storefront, one anonymous analyst holds two overlapping blank folders, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
-        "visual": "still"
-      },
-      "lines": [
+        },
         {
           "id": "x160428",
-          "text": "這份新名單，和七月那批是同一批嗎？",
+          "text": "第二批，會混進七月那頁帳嗎？",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，留半拍讓問題落地"
         }
@@ -1455,20 +1453,14 @@
       "id": "x16-b05-s01",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in an unbranded archive aisle, one anonymous planner selects fresh shop tokens, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Wide shot, pan left in an unbranded archive aisle, one anonymous planner circles a separate group of shop tokens, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160501",
-          "text": "開頭隔年那份名單，另關約兩百家。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160502",
-          "text": "這是另一批美國店，並非七月名單的尾數。",
+          "text": "開頭隔年那份，是另約兩百家的關店計畫。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -1479,8 +1471,25 @@
       "id": "x16-b05-s02",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in an unbranded archive aisle, one anonymous clerk misaligns then separates rings, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Medium close-up, pan right in an unbranded archive aisle, one anonymous analyst sets second ring beside first, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160502",
+          "text": "這是另一批美國店，並非七月名單的尾數。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b05-s03",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot, tilt down in an unbranded archive aisle, one anonymous clerk misaligns then separates rings, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1493,11 +1502,11 @@
       ]
     },
     {
-      "id": "x16-b05-s03",
+      "id": "x16-b05-s04",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in an unbranded archive aisle, one anonymous clerk empties first token tray further, in front view, eyes toward viewer, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Low-angle shot, tilt up in an unbranded archive aisle, one anonymous clerk empties first token tray further, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1510,7 +1519,7 @@
       ]
     },
     {
-      "id": "x16-b05-s04",
+      "id": "x16-b05-s05",
       "template": "stats",
       "data": {
         "title": "七月 600 家計畫",
@@ -1532,11 +1541,11 @@
       ]
     },
     {
-      "id": "x16-b05-s05",
+      "id": "x16-b05-s06",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in an unbranded archive aisle, one anonymous planner encloses first group alone, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium shot, push in in an unbranded archive aisle, one anonymous planner encloses first group alone, in front view, eyes toward viewer, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
@@ -1549,7 +1558,7 @@
       ]
     },
     {
-      "id": "x16-b05-s06",
+      "id": "x16-b05-s07",
       "template": "stats",
       "data": {
         "title": "2009-01 另列約 200 家",
@@ -1571,11 +1580,11 @@
       ]
     },
     {
-      "id": "x16-b05-s07",
+      "id": "x16-b05-s08",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in an unbranded archive aisle, one anonymous analyst keeps two ledgers open apart, in side-profile view, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Close-up, pull out in an unbranded archive aisle, one anonymous analyst keeps two ledgers open apart, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1588,11 +1597,11 @@
       ]
     },
     {
-      "id": "x16-b05-s08",
+      "id": "x16-b05-s09",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in an unbranded archive aisle, one anonymous planner reaches for larger ledger, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Wide shot, pan left in an unbranded archive aisle, one anonymous planner reaches for larger ledger, in side-profile view, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1605,34 +1614,34 @@
       ]
     },
     {
-      "id": "x16-b05-s09",
+      "id": "x16-b05-s10",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in an unbranded archive aisle, one anonymous clerk places remaining shop tokens, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium close-up, pan right in an unbranded archive aisle, one anonymous clerk places remaining shop tokens, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160510",
-          "text": "二〇〇九年底，美國直營還有六千七百六十四家。",
+          "text": "這一財年末，美國直營還有六千七百六十四家。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
     {
-      "id": "x16-b05-s10",
+      "id": "x16-b05-s11",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up in an unbranded archive aisle, one anonymous analyst points to previous token row, in three-quarter view, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, tilt down in an unbranded archive aisle, one anonymous analyst compares two blank year-end shelves, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160511",
-          "text": "前一年則是七千二百三十八家。",
+          "text": "跟上年相比，版圖第一次往回收。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
@@ -1645,46 +1654,23 @@
       ]
     },
     {
-      "id": "x16-b05-s11",
+      "id": "x16-b05-s12",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in an unbranded archive aisle, one anonymous analyst compares ring with whole shelf, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Low-angle shot, tilt up in an unbranded archive aisle, one anonymous clerk balances added and removed tokens, in three-quarter view, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160513",
-          "text": "淨減不是某一批實際關閉的數目。",
+          "text": "這是所有開與關之後的淨變化。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
         {
           "id": "x160514",
-          "text": "因為年度裡，也可能有別家新開。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x16-b05-s12",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up, pull out in an unbranded archive aisle, one anonymous accountant closes balanced blank ledger, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x160515",
-          "text": "財報正是把開與關合在一起報淨數。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160516",
-          "text": "那張負四百七十四的表，記的是版圖縮小。",
+          "text": "不是五百八十八加一百八十三的總和。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -1694,8 +1680,31 @@
       "id": "x16-b05-s13",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in an unbranded archive aisle, one anonymous analyst turns to plain downward tile, in front view, eyes toward viewer, muted afternoon light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, push in in an unbranded archive aisle, one anonymous planner turns two separate ledger leaves, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160515",
+          "text": "七月那批與一月那批，各有自己的進度。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160516",
+          "text": "那張選店帳越來越厚，版圖卻縮了。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b05-s14",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, pull out in an unbranded archive aisle, one anonymous analyst turns to plain downward tile, with head turned downward, soft grey morning light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1708,7 +1717,7 @@
       ]
     },
     {
-      "id": "x16-b05-s14",
+      "id": "x16-b05-s15",
       "template": "stats",
       "data": {
         "title": "美國同店銷售",
@@ -1730,11 +1739,11 @@
       ]
     },
     {
-      "id": "x16-b05-s15",
+      "id": "x16-b05-s16",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right in an unbranded archive aisle, one anonymous analyst lowers queue-shaped tokens, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Wide shot, pan left in an unbranded archive aisle, one anonymous analyst lowers queue-shaped tokens, in front view, eyes toward viewer, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
@@ -1753,46 +1762,17 @@
       ]
     },
     {
-      "id": "x16-b05-s16",
+      "id": "x16-b05-s17",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down in an unbranded archive aisle, one anonymous barista watches thin generic queue, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium close-up, pan right in an unbranded archive aisle, one anonymous barista watches thin generic queue, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160521",
-          "text": "店變少，舊店的客人也沒有立刻回來。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160522",
-          "text": "當年公司整體仍有五億六千二百萬美元",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x16-b05-s17",
-      "template": "shot",
-      "data": {
-        "prompt": "Low-angle shot, tilt up in an unbranded archive aisle, one anonymous director closes corporate ledger, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x160523",
-          "text": "營業利益；不是全公司倒閉或沒有獲利。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160524",
-          "text": "可是能賺錢，不表示這批店都值得留。",
+          "text": "店變少，熟店的客人也沒有立刻回來。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -1802,14 +1782,20 @@
       "id": "x16-b05-s18",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in in an unbranded archive aisle, one anonymous planner moves shop tokens one by one, in front view, eyes toward viewer, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Overhead shot, tilt down in an unbranded archive aisle, one anonymous accountant opens whole-company plain ledger, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160525",
-          "text": "七月的單店回報問題，還在名單裡逐家處理。",
+          "id": "x160522",
+          "text": "公司整體當年仍有營業利益。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160523",
+          "text": "那卻不是名單上某一家店的帳。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -1819,16 +1805,22 @@
       "id": "x16-b05-s19",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out in an unbranded archive aisle, one anonymous analyst keeps two ledgers separate, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Low-angle shot, tilt up in an unbranded archive aisle, one anonymous owner weighs individual plain keys, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160526",
-          "text": "關店能減少壞帳，熟店銷售能跟著轉正嗎？",
+          "id": "x160524",
+          "text": "公司有獲利，不表示每個地址都該留。",
           "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160525",
+          "text": "關店進度變長，新店的疑問仍未解。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
@@ -1836,17 +1828,34 @@
       "id": "x16-b05-s20",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left in an unbranded archive aisle, one anonymous clerk lifts new annual folio, in side-profile view, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Medium shot, push in in an unbranded archive aisle, one anonymous analyst keeps shop and mature-sales ledgers separate, in front view, eyes toward viewer, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
         {
+          "id": "x160526",
+          "text": "收掉低回報店，熟店銷售能轉正嗎？",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+        },
+        {
           "id": "x160527",
-          "text": "到下一份年報，同店那欄終於換了方向。",
+          "text": "下一份年報，把同店那欄再翻出來。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
+        }
+      ]
+    },
+    {
+      "id": "x16-b05-s21",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, pull out in an unbranded archive aisle, one anonymous barista watches cafe door open, in three-quarter view, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "x160528",
           "text": "舊店裡的生意，真的轉好了嗎？",
@@ -1882,20 +1891,14 @@
       "id": "x16-b06-s02",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right beside a quiet neighborhood sidewalk, one anonymous clerk sets prior tile beside new tile, with head turned downward, soft lamp light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Wide shot, pan left beside a quiet neighborhood sidewalk, one anonymous analyst flips plain upward tile beside older one, in side-profile view, muted afternoon light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160602",
-          "text": "前一年，是負百分之六。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160603",
-          "text": "這是同一類成熟直營店的銷售比較。",
+          "text": "這是留下的熟店，不是關店名單的成績。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -1905,14 +1908,14 @@
       "id": "x16-b06-s03",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down beside a quiet neighborhood sidewalk, one anonymous clerk leaves fresh shop token aside, in front view, eyes toward viewer, overcast daylight. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium close-up, pan right beside a quiet neighborhood sidewalk, one anonymous clerk compares mature shop tokens with selection folio, with head turned downward, soft lamp light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160604",
-          "text": "新店沒有進這張同店成績單。",
+          "id": "x160603",
+          "text": "七月那本選店帳，仍不能靠它直接結案。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -1922,11 +1925,17 @@
       "id": "x16-b06-s04",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up beside a quiet neighborhood sidewalk, one anonymous analyst adds extra blank calendar leaf, in three-quarter view, soft evening light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, tilt down beside a quiet neighborhood sidewalk, one anonymous planner turns mature-shop token toward new tile, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
+        {
+          "id": "x160604",
+          "text": "它只說明，熟店生意的方向變了。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
         {
           "id": "x160605",
           "text": "可正七％，會不會只是多出了一週？",
@@ -1939,8 +1948,8 @@
       "id": "x16-b06-s05",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in beside a quiet neighborhood sidewalk, one anonymous clerk moves extra leaf outside ring, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Low-angle shot, tilt up beside a quiet neighborhood sidewalk, one anonymous clerk moves extra leaf outside ring, in three-quarter view, soft evening light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
@@ -1956,14 +1965,14 @@
       "id": "x16-b06-s06",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out beside a quiet neighborhood sidewalk, one anonymous analyst aligns comparable tiles, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium shot, push in beside a quiet neighborhood sidewalk, one anonymous analyst aligns comparable calendar leaves, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160607",
-          "text": "所以負六到正七，不能說全靠多一週。",
+          "text": "排掉多的一週，同店還是轉了方向。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
@@ -1979,8 +1988,8 @@
       "id": "x16-b06-s07",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left beside a quiet neighborhood sidewalk, one anonymous clerk counts coins beside plain cup, in front view, eyes toward viewer, muted afternoon light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Close-up, pull out beside a quiet neighborhood sidewalk, one anonymous clerk sets queue tokens beside coins and cup, with head turned downward, soft grey morning light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
@@ -1989,12 +1998,6 @@
           "text": "另四％來自平均每筆交易金額增加。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160610",
-          "text": "客人與客單價一起動，店數還能解釋多少？",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，留半拍讓問題落地"
         }
       ]
     },
@@ -2002,27 +2005,44 @@
       "id": "x16-b06-s08",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right beside a quiet neighborhood sidewalk, one anonymous accountant opens whole-company ledger, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "prompt": "Wide shot, pan left beside a quiet neighborhood sidewalk, one anonymous analyst sets queue and cup beside shop models, in front view, eyes toward viewer, muted afternoon light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160610",
+          "text": "客人和客單價都變，店數能解釋多少？",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+        }
+      ]
+    },
+    {
+      "id": "x16-b06-s09",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up, pan right beside a quiet neighborhood sidewalk, one anonymous accountant opens whole-company ledger apart, in three-quarter view, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
         "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160611",
-          "text": "公司的合併營業利益也往上走。",
+          "text": "全公司營業利益也升，卻是另一本帳。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
         {
           "id": "x160612",
-          "text": "二〇〇九年是五億六千二百萬美元。",
+          "text": "剛剛那年，營業利益是五億六千二百萬。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
     {
-      "id": "x16-b06-s09",
+      "id": "x16-b06-s10",
       "template": "stats",
       "data": {
         "title": "全公司營業利益",
@@ -2041,24 +2061,7 @@
       "lines": [
         {
           "id": "x160613",
-          "text": "隔年是十四億一千九百四十萬。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        }
-      ]
-    },
-    {
-      "id": "x16-b06-s10",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead shot, tilt down beside a quiet neighborhood sidewalk, one anonymous accountant separates ledgers by scope, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "x160614",
-          "text": "這是全公司營業利益，不是美國門市營收。",
+          "text": "隔年，是十四億一千九百四十萬。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -2068,14 +2071,20 @@
       "id": "x16-b06-s11",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up beside a quiet neighborhood sidewalk, one anonymous planner leaves extra calendar leaf in ledger, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, tilt down beside a quiet neighborhood sidewalk, one anonymous accountant separates large and small ledgers, in side-profile view, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
         {
+          "id": "x160614",
+          "text": "這是全公司利益，不能代替單店回報。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
           "id": "x160615",
-          "text": "而且那筆年度利益，沒有扣除多出的一週。",
+          "text": "年度利益，卻沒有剔除多出的一週。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -2085,20 +2094,20 @@
       "id": "x16-b06-s12",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in beside a quiet neighborhood sidewalk, one anonymous analyst closes calculation folio, in front view, eyes toward viewer, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Low-angle shot, tilt up beside a quiet neighborhood sidewalk, one anonymous analyst closes calculation folio, with head turned downward, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160616",
-          "text": "營業利益多了，能全算在關店頭上嗎？",
+          "text": "那能把利益增加都算在關店頭上嗎？",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，留半拍讓問題落地"
         },
         {
           "id": "x160617",
-          "text": "公司把利潤改善連到更高的銷售槓桿，",
+          "text": "年報還連到銷售增加與店內效率。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -2108,20 +2117,14 @@
       "id": "x16-b06-s13",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out beside a quiet neighborhood sidewalk, one anonymous clerk rearranges plain tools at counter, in three-quarter view, soft grey morning light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Documents display only colour blocks; no print, trademarks, or recognizable person.",
-        "camera": "Close-up, pull out",
+        "prompt": "Medium shot, push in beside a quiet neighborhood sidewalk, one anonymous clerk arranges plain tools and unmarked crates, in front view, eyes toward viewer, mild window light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "x160618",
-          "text": "還有店內效率、供應鏈與成本控制。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160619",
-          "text": "重整費用變少，也幫助營業利潤率。",
+          "text": "供應鏈、成本控制與較少重整費用也在內。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -2131,20 +2134,14 @@
       "id": "x16-b06-s14",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, pan left beside a quiet neighborhood sidewalk, one anonymous analyst sets two plain bars side by side, in side-profile view, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
-        "camera": "Wide shot, pan left",
+        "prompt": "Close-up, pull out beside a quiet neighborhood sidewalk, one anonymous accountant places several plain factors side by side, in three-quarter view, soft grey morning light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160620",
-          "text": "全公司營業利潤率從百分之五點七，",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
-          "id": "x160621",
-          "text": "升到百分之十三點三。",
+          "id": "x160619",
+          "text": "這些變化，不能由單一關店名單包辦。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -2154,14 +2151,20 @@
       "id": "x16-b06-s15",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up, pan right beside a quiet neighborhood sidewalk, one anonymous planner assembles several plain wooden pieces, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
-        "camera": "Medium close-up, pan right",
+        "prompt": "Wide shot, pan left beside a quiet neighborhood sidewalk, one anonymous analyst turns back to individual shop folio, in side-profile view, muted afternoon light. Labels are absent; clothing and containers have no brand marks or real-world likeness.",
+        "camera": "Wide shot, pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160622",
-          "text": "美國分部收入，也因同店走強而增加。",
+          "id": "x160620",
+          "text": "回看七月選店帳，還缺哪道判斷？",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+        },
+        {
+          "id": "x160621",
+          "text": "熟店反彈，是之後的市場結果。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -2171,20 +2174,20 @@
       "id": "x16-b06-s16",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, tilt down beside a quiet neighborhood sidewalk, one anonymous planner moves one piece among several, in front view, eyes toward viewer, overcast daylight. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
-        "camera": "Overhead shot, tilt down",
+        "prompt": "Medium close-up, pan right beside a quiet neighborhood sidewalk, one anonymous planner returns to fresh shop tokens, with head turned downward, soft lamp light. Pages and façades contain empty areas; exclude lettering, corporate insignia, or celebrity likeness.",
+        "camera": "Medium close-up, pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160623",
-          "text": "關店是這場轉向的一步，並非全部原因。",
+          "id": "x160622",
+          "text": "新店入選，卻是當年逐店做的決定。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
         {
-          "id": "x160624",
-          "text": "美國直營店淨數，當年還減五十七家。",
+          "id": "x160623",
+          "text": "兩件事相隔兩年，不能畫上等號。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -2194,22 +2197,22 @@
       "id": "x16-b06-s17",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle shot, tilt up beside a quiet neighborhood sidewalk, one anonymous barista welcomes anonymous customer, in three-quarter view, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
-        "camera": "Low-angle shot, tilt up",
+        "prompt": "Overhead shot, tilt down beside a quiet neighborhood sidewalk, one anonymous analyst removes a small token group, in front view, eyes toward viewer, overcast daylight. Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
+        "camera": "Overhead shot, tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160625",
-          "text": "店少了，成熟店卻賣得更好。",
+          "id": "x160624",
+          "text": "美國直營店淨數，那年還減五十七家。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },
         {
-          "id": "x160626",
-          "text": "可這能證明那些新店都該關嗎？",
+          "id": "x160625",
+          "text": "版圖繼續縮，熟店卻賣得更好。",
           "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，留半拍讓問題落地"
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
       ]
     },
@@ -2217,20 +2220,20 @@
       "id": "x16-b06-s18",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, push in beside a quiet neighborhood sidewalk, one anonymous analyst checks one plain shop ledger, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
-        "camera": "Medium shot, push in",
+        "prompt": "Low-angle shot, tilt up beside a quiet neighborhood sidewalk, one anonymous clerk holds new-looking shop key, in three-quarter view, soft evening light. Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
+        "camera": "Low-angle shot, tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160627",
-          "text": "七月公告挑的，是單店回報不理想的位置。",
+          "id": "x160626",
+          "text": "這能證明當初被挑的新店都該關嗎？",
           "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+          "emotion": "台灣國語口語說書，留半拍讓問題落地"
         },
         {
-          "id": "x160628",
-          "text": "它沒有算出所有新店後來的成敗。",
+          "id": "x160627",
+          "text": "公告沒揭露每家店各碰上哪道門檻。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -2240,20 +2243,37 @@
       "id": "x16-b06-s19",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, pull out beside a quiet neighborhood sidewalk, one anonymous owner holds several different plain keys, with head turned downward, soft grey morning light. Documents display only colour blocks; no print, trademarks, or recognizable person.",
+        "prompt": "Medium shot, push in beside a quiet neighborhood sidewalk, one anonymous planner compares selected ring with many outside keys, in side-profile view, mild window light. Paper surfaces stay blank; cups lack emblems; the appearance is invented.",
+        "camera": "Medium shot, push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x160628",
+          "text": "後來的同店表，也沒逐店追蹤這些入選者。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        },
+        {
+          "id": "x160629",
+          "text": "眼前利潤，是公告列出的第一把尺。",
+          "pause_after_ms": 0,
+          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
+        }
+      ]
+    },
+    {
+      "id": "x16-b06-s20",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, pull out beside a quiet neighborhood sidewalk, one anonymous clerk rests new-looking key on closed ledger, with head turned downward, soft grey morning light. Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop. Documents display only colour blocks; no print, trademarks, or recognizable person.",
         "camera": "Close-up, pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "x160629",
-          "text": "店齡也不是公司公布的唯一選店標準。",
-          "pause_after_ms": 0,
-          "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
-        },
-        {
           "id": "x160630",
-          "text": "那張名單，最後停在每家店自己的帳前。",
+          "text": "剩下那把尺，才讓問題回到未來。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         }
@@ -2269,7 +2289,7 @@
       "lines": [
         {
           "id": "x160641",
-          "text": "答案是：新店也得通過單店獲利、回報與場址評估。",
+          "text": "答案是：還看未來回報、場址與當地景氣。",
           "pause_after_ms": 0,
           "emotion": "台灣國語口語說書，數字與年份清楚，正常語速"
         },

@@ -36,8 +36,8 @@ for (const [si, short] of rows.entries()) {
 const lineToScene = new Map(video.scenes.flatMap(scene => scene.lines.map(line => [line.id, scene])));
 // Each source is an actual illustrated scene, never a landscape stats card.
 const anchors = [
-  ["x160101", "x160103", "x160316", "x160309", "x160318", "x160312", "x160314", "x160329"],
-  ["x160517", "x160602", "x160623", "x160604", "x160605", "x160609", "x160618", "x160623"],
+  ["x160101", "x160103", "x160104", "x160309", "x160310", "x160312", "x160314", "x160630"],
+  ["x160517", "x160602", "x160610", "x160603", "x160606", "x160609", "x160618", "x160619"],
 ];
 const crops = [
   [656, 630, 680, 700, 610, 656, 690, 640],
@@ -66,10 +66,12 @@ const shorts = rows.map((short, si) => ({
   scenes: short.map((row, ri) => {
     const scene = lineToScene.get(anchors[si][ri]);
     if (!scene || scene.template !== "shot") throw new Error(`Short ${si + 1} beat ${ri + 1} lacks an illustrated shot: ${anchors[si][ri]}`);
+    if (!scene.data.prompt.toLowerCase().includes(row.focus.toLowerCase())) throw new Error(`Short ${si + 1} beat ${ri + 1} focus does not match source shot: ${scene.id}`);
     return { beat: beat[ri], shot: scene.id, headline: specs[si].headlines[ri], narration: [row.text] };
   }),
 }));
 for (const short of shorts) {
+  if (new Set(short.scenes.map(scene => scene.shot)).size !== short.scenes.length) throw new Error(`${short.slug}: repeated still cannot depict a changed state`);
   const chars = short.scenes.flatMap(scene => scene.narration).join("").length;
   if (chars < 105 || chars > 225) throw new Error(`${short.slug}: ${chars} characters outside 25–55s paper range`);
 }
@@ -86,6 +88,6 @@ writeFileSync(path.join(dir, "shorts-portrait-plan.md"), [
   "| Short／拍 | 重用 shot | 608×1080 裁切左上角 | 直式焦點 | 原生 headline（在安全區） |",
   "| --- | --- | --- | --- | --- |",
   ...shorts.flatMap((short, si) => short.scenes.map((scene, ri) => `| ${si + 1}／${ri + 1} | \`${scene.shot}\` | \`x=${crops[si][ri]}, y=0\` | ${rows[si][ri].focus} | ${scene.headline} |`)),
-  "", "Short 2 第 3／8 拍刻意重用同一張多塊拼圖的插畫，首拍裁左 x=635 呈現未合上，尾拍裁右 x=675 呈現整體；正式剪輯靠後製字卡與鏡頭推移區分，不宣稱兩張不同素材。兩支不套長片片頭片尾，繁中字幕由工具另出，不把字幕燒進長片畫面。", "",
+  "", "每拍重用一張各自不同的主片插畫，表內焦點與對應 shot 提示詞逐字核對；裁切座標仍須在正式出圖後逐拍驗看。兩支不套長片片頭片尾，繁中字幕由工具另出，不把字幕燒進長片畫面。", "",
 ].join("\n"));
 console.log(JSON.stringify({ video_sha256: videoSha, shorts_sha256: sha, shorts: shorts.map(short => ({ slug: short.slug, beats: short.scenes.length, chars: short.scenes.flatMap(scene => scene.narration).join("").length })) }, null, 2));

@@ -45,7 +45,7 @@ for (const chapter of [...lines, outro]) for (let i = 1; i < chapter.length; i++
 const cardRules = [
   [/約六百家美國直營店/, { title: "2008-07-01 宣布", stats: [{ value: "約 600 家", label: "美國直營店關閉計畫；含先前 100 家" }], source: "S2｜Starbucks 8-K exhibit" }],
   [/百分之四。/, { title: "美國同店銷售", stats: [{ value: "+4%", label: "FY2007；開滿 13 個月的直營店" }], source: "S3｜FY2008 10-K" }],
-  [/已轉成下滑百分之五。/, { title: "美國同店銷售", stats: [{ value: "−5%", label: "FY2008；不是所有新店的成績" }], source: "S3｜FY2008 10-K" }],
+  [/同一財年下滑百分之五。/, { title: "美國同店銷售", stats: [{ value: "−5%", label: "FY2008；不是所有新店的成績" }], source: "S3｜FY2008 10-K" }],
   [/三點四八億美元/, { title: "關店預計稅前費用", stats: [{ value: "US$328m–348m", label: "2008-07 當時估計；非實支結果" }], source: "S2｜Starbucks 8-K exhibit" }],
   [/實際關掉二百零五家/, { title: "七月 600 家計畫的進度", stats: [{ value: "205 家", label: "FY2008 已關；非全年淨減" }], source: "S3｜FY2008 10-K" }],
   [/淨數竟增加四百四十五家/, { title: "美國直營店年度淨變化", stats: [{ value: "+445 家", label: "FY2008；6,793 → 7,238" }], source: "S3｜FY2008 10-K" }],
@@ -72,7 +72,8 @@ const safeguards = [
   "Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
   "Fixtures have no titles, digits, or lettering; no insignia or real person's identity.",
 ];
-const portraitSourceLines = new Set(["x160101", "x160103", "x160316", "x160309", "x160318", "x160312", "x160314", "x160329", "x160517", "x160602", "x160623", "x160604", "x160605", "x160609", "x160618"]);
+const portraitSourceLines = new Set(["x160101", "x160103", "x160104", "x160309", "x160310", "x160312", "x160314", "x160630", "x160517", "x160602", "x160610", "x160603", "x160606", "x160609", "x160618", "x160619"]);
+const sceneSplitAfterIds = new Set(["x160521"]); // A mature-store queue cannot also depict consolidated operating profit.
 const portraitInstruction = " Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop.";
 const lineFor = row => ({ id: row.id, text: row.text, pause_after_ms: 0, emotion: row.text.endsWith("？") ? "台灣國語口語說書，留半拍讓問題落地" : "台灣國語口語說書，數字與年份清楚，正常語速" });
 const scenes = [];
@@ -82,7 +83,7 @@ for (const [ci, chapter] of lines.entries()) {
   for (let ri = 0; ri < chapter.length;) {
     const row = chapter[ri];
     const next = chapter[ri + 1];
-    const pair = Boolean(next && !cards.has(row.id) && !cards.has(next.id) && !portraitSourceLines.has(next.id) && row.text.length + next.text.length <= 35);
+    const pair = Boolean(next && !cards.has(row.id) && !cards.has(next.id) && !sceneSplitAfterIds.has(row.id) && !portraitSourceLines.has(row.id) && !portraitSourceLines.has(next.id) && row.text.length + next.text.length <= 35);
     const selected = pair ? [row, next] : [row];
     const id = `x16-b${String(ci + 1).padStart(2, "0")}-s${String(++si).padStart(2, "0")}`;
     const card = cards.get(row.id);
@@ -109,10 +110,14 @@ const loops = [
   { setup: "x160107", payoff: "x160501", what: "隔年另列多少家美國店" },
   { setup: "x160108", payoff: "x160601", what: "二〇一〇年美國同店怎麼變" },
   { setup: "x160109", payoff: "x160641", what: "新店入選背後的單店回報問題" },
+  { setup: "x160214", payoff: "x160312", what: "同店表之外用哪把尺量新店" },
+  { setup: "x160314", payoff: "x160641", what: "眼前利潤之外還看哪些未來條件" },
   { setup: "x160227", payoff: "x160301", what: "七月公告是否擴大原先關店計畫" },
   { setup: "x160332", payoff: "x160401", what: "財年截止時實際關掉幾家" },
   { setup: "x160428", payoff: "x160502", what: "隔年新名單是否屬於另一批" },
+  { setup: "x160426", payoff: "x160504", what: "跨年之後七月名單又關了多少" },
   { setup: "x160528", payoff: "x160601", what: "留下的成熟店有沒有轉好" },
+  { setup: "x160610", payoff: "x160619", what: "店數能否單獨解釋後來改善" },
 ];
 const positions = new Map(allRows.map((row, i) => [row.id, i]));
 for (const loop of loops) if (!(positions.has(loop.setup) && positions.has(loop.payoff) && positions.get(loop.setup) < positions.get(loop.payoff))) throw new Error(`Unpaid loop: ${JSON.stringify(loop)}`);
@@ -140,6 +145,6 @@ const bytes = JSON.stringify(video, null, 2) + "\n";
 writeFileSync(path.join(dir, "video.json"), bytes);
 const sha = createHash("sha256").update(bytes).digest("hex");
 writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 16, chapter: 1, planned_episodes: 20, title: "星巴克：剛開的店為何進入關店名單", logline: "從 2008 年約 600 家美國直營店關閉公告，到 2009 年實際進度與 2010 年同店轉正，追問快速展店和單店回報的落差。", names: ["星巴克", "Starbucks", "Howard Schultz", "舒茲"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
-writeFileSync(path.join(dir, "script.md"), ["# X16 星巴克｜繁中逐句稿", "", `離線前製；\`video.json\` SHA-256：\`${sha}\`。未獨立逐句審核、盲讀、配音或測量實際時長。第一章濃縮後接正式 5 秒片頭；最後三句後接 21 秒 v4 片尾。`, "", ...lines.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${titles[ci]}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
+writeFileSync(path.join(dir, "script.md"), ["# X16 星巴克｜繁中逐句稿", "", `離線前製；\`video.json\` SHA-256：\`${sha}\`。本版尚未獨立逐句複核或新讀者盲評，也未配音或測量實際時長。第一章濃縮後接正式 5 秒片頭；最後三句後接 21 秒 v4 片尾。`, "", ...lines.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${titles[ci]}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
 writeFileSync(path.join(dir, "line-source-matrix.md"), ["# X16 星巴克｜逐句作者來源矩陣", "", `\`video.json\` SHA-256：\`${sha}\`。本表是作者標記，**不是獨立來源審核 PASS**。來源代碼、原文 URL 與口徑見 [source-matrix.md](source-matrix.md)。`, "", "| 句 ID | 旁白 | 作者來源標記 |", "| --- | --- | --- |", ...allRows.map(row => `| \`${row.id}\` | ${row.text.replaceAll("|", "\\|")} | ${row.refs.length ? row.refs.join("、") : "敘事提問／推理／CTA"} |`), ""].join("\n"));
 console.log(JSON.stringify({ video_sha256: sha, scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, lines: allRows.length, hook_chars: lines[0].map(row => row.text).join("").length, substantive_body_chars: lines.slice(1).flat().map(row => row.text).join("").length, loops: loops.length }, null, 2));
