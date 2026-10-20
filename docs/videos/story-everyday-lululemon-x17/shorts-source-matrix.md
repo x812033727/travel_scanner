@@ -1,6 +1,6 @@
 # X17 Lululemon｜Shorts 逐句作者來源矩陣
 
-`shorts.json` SHA-256：`58ca34c872aa4addb210e4697a9ce45939a649d837e351f4657f989c9dfdb059`；`video.json` SHA-256：`39b6d9ffc3b1abe987d3f7b233333be6f2f11e6539c6233115679e81db4140ff`。作者標記，不是獨立審核 PASS。
+`shorts.json` SHA-256：`8ce8f5995b08e94ed9e864ada67233af1fd1b1aaf2311e82974ad339c5961915`；`video.json` SHA-256：`206ac3e85da49521a7b09a5bc6b8ba3bb4a4de92d5f74e2ebef7c03011ba7983`。作者標記，不是獨立審核 PASS。
 
 | Short／拍 | 句 ID | 旁白 | 作者來源 |
 | --- | --- | --- | --- |

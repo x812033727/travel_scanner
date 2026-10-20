@@ -1,6 +1,6 @@
 # X17 Lululemon｜兩支 Shorts 的逐拍 9:16 規劃
 
-離線前製，綁定主片 `39b6d9ffc3b1abe987d3f7b233333be6f2f11e6539c6233115679e81db4140ff` 與 Shorts `58ca34c872aa4addb210e4697a9ce45939a649d837e351f4657f989c9dfdb059`。目前沒有插畫、直式輸出或手機檢查，以下裁切需出圖後逐拍核對焦點。
+離線前製，綁定主片 `206ac3e85da49521a7b09a5bc6b8ba3bb4a4de92d5f74e2ebef7c03011ba7983` 與 Shorts `8ce8f5995b08e94ed9e864ada67233af1fd1b1aaf2311e82974ad339c5961915`。目前沒有插畫、直式輸出或手機檢查，以下裁切需出圖後逐拍核對焦點。
 
 每拍從一張不同的主片 1920×1080 插畫 `shot` 取 608×1080 視窗，按表列 x、y=0 裁切，再等比輸出 1080×1920；原畫面提示詞要求焦點在中央 608px 走廊。若焦點出框，可在合法 x=0–1312 中移動；保不住才於 US$25 整片上限內重畫。所有品牌名、年份與數字均以後製原生字卡排版，不請 image-01 畫字。
 
@@ -15,9 +15,9 @@
 | 1／5 | `x17-b04-s09` | `x=635, y=0` | pattern pieces shift slightly on black fabric | 版型又變動 | — |
 | 1／6 | `x17-b04-s10` | `x=656, y=0` | fabric swatch overlays garment pattern | 因素疊起來 | — |
 | 1／7 | `x17-b04-s16` | `x=680, y=0` | worker stretches swatch beside blank ruler | 重測三項 | — |
-| 1／8 | `x17-b04-s26` | `x=650, y=0` | black pants box faces empty rack | 還要看成衣 | — |
+| 1／8 | `x17-b04-s24` | `x=650, y=0` | black pants box faces empty rack | 還要看成衣 | — |
 | 2／1 | `x17-b03-s05` | `x=650, y=0` | hand removes selected pants from hanger | 下架還增收？ | — |
-| 2／2 | `x17-b03-s08` | `x=675, y=0` | gap in rack and closed delivery door | 三月當時預估 | US$57–67m |
+| 2／2 | `x17-b03-s09` | `x=675, y=0` | gap in rack and closed delivery door | 三月當時預估 | US$57–67m |
 | 2／3 | `x17-b05-s03` | `x=656, y=0` | empty shelf faces blank web product tile | 預測≠實損 | — |
 | 2／4 | `x17-b05-s04` | `x=645, y=0` | ledger opens beside boxed black pants | 首季最後七週 | — |
 | 2／5 | `x17-b05-s09` | `x=670, y=0` | forecast envelope and booked cost chip apart | 存貨成本入帳 | US$17.5m |
