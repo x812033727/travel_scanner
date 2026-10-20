@@ -58,6 +58,8 @@ scope:
 
 - **S24 單支 Short 草稿已備。** [`shorts.json`](../../docs/videos/curio-s24/shorts.json) 只列一支 `from-episode` 候選：維特魯威書中的兩聲「找到了」並非現場目擊證詞。七景均指向本集既有長片鏡位；Short 格式／六拍／單支檢查零問題。這是零付費撰寫者自查，尚無長片網址及插圖 keyframe，不能製作或宣稱完成短片；詳 [`short-verify-1.md`](../../docs/videos/curio-s24/short-verify-1.md)。原有音訊站台 gate 仍 pending。
 
+- **S24 R4 三景試畫止損（2026-10-20）。** `brief.md` 已更新至現行 102／102 音訊零旗標，推薦 A 案本機委派選用；站台現行 outline 仍待站主，最新站台 audio 卡仍綁另一時間線，並未冒稱親自核准。一次設定整集圖樂硬上限 US$4.35，只購買 `crown-005`／`crown-047`／`crown-r2-021` 各一張、各一次評審；帳本 US$0.1205（含原音樂 US$0.08），預留 0。三張機評均 9.29 PASS，但兩人原尺寸覆看判 **0／3 真正可留**：主角年齡／身份、水未達盆緣、皇冠半露出水等關鍵錯誤。專案工作目錄已設 `STOP`，不開 99 張全量批次，亦不追加付費補畫。封存圖片、帳本及站台／本機關卡界線見 [`verify-7.md`](../../docs/videos/curio-s24/verify-7.md)、[`verify-8.md`](../../docs/videos/curio-s24/verify-8.md)。
+
 固定文本本地重開 SHA-256：S24 英譯 `7daafe23aeef2377fe9a99bc285c5dfc0673440487ab43f78387312b6799304d`、拉丁本 `b4fce89b0c304c7d1f26b299bf2dfcddbab8529c883f43ad1e75fae564daa861`；S25 Brewster 二手傳記 `ded5b6a706615f48b156dbf9f28ab18ac32edb32e16d25fedf1957eccbb94466`。
 
 ## Definition of done
