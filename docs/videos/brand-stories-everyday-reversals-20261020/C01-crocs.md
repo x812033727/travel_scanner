@@ -21,4 +21,4 @@
 4. [Crocs 2025 Form 10-K](https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm)，2026-02-12 申報，部門資料及綜合損益：Crocs 品牌與 HEYDUDE 分開列示；2025 年集團受 HEYDUDE 商譽、商標減損影響。
 5. [Crocs 2026 Q2 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1334036/000133403626000052/crox-20260630.htm)，2026-07-30 申報，部門資料及綜合損益：截至 2026-06-30 的最新半年數字；不能把半年當全年。
 
-逐句稿、分鏡數字與因果句已由[另一代理綁定內容雜湊審核](../story-everyday-crocs-c01/verify-1.md)，[敘事盲審](../story-everyday-crocs-c01/reviews/narrative-reader-1.json)及[第二位盲審](../story-everyday-crocs-c01/reviews/narrative-reader-2.json)均通過。旁白實測約 10 分 25 秒，濃縮開場約 45 秒；97 句音訊檢查通過。本機試看片 10:51.77，影音、109 則字幕及概念片頭片尾已通過輸出 QA；正式站主看片及品牌素材接入另行交接。新系列另外 19 題仍是企劃候選，不能沿用本集的來源查核。
+逐句稿、分鏡數字與因果句已由[另一代理綁定內容雜湊審核](../story-everyday-crocs-c01/verify-1.md)，[敘事盲審](../story-everyday-crocs-c01/reviews/narrative-reader-1.json)及[第二位盲審](../story-everyday-crocs-c01/reviews/narrative-reader-2.json)均通過。旁白實測約 10 分 25 秒，濃縮開場約 45 秒；97 句音訊檢查通過。本機試看片 10:51.77，影音、109 則字幕及概念片頭片尾已通過輸出 QA；正式站主看片及品牌素材接入另行交接。C02 特百惠已另行[核對來源並製作本機試片](../story-everyday-tupperware-c02/local-preview.md)；其餘 18 題仍是企劃候選，不能沿用本集的來源查核。
