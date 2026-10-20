@@ -18,6 +18,7 @@ const sources = [
   { code: "S9", title: "Starbucks FY2009 Q1 Form 10-Q", url: "https://www.sec.gov/Archives/edgar/data/829224/000095013409001837/v51211e10vq.htm", checked_on: "2026-10-20" },
   { code: "S10", title: "Starbucks FY2009 Q2 Form 10-Q", url: "https://www.sec.gov/Archives/edgar/data/829224/000095013409009696/v52354e10vq.htm", checked_on: "2026-10-20" },
   { code: "S11", title: "Starbucks FY2009 Q3 Form 10-Q", url: "https://www.sec.gov/Archives/edgar/data/829224/000095012309029843/v52638e10vq.htm", checked_on: "2026-10-20" },
+  { code: "S12", title: "Starbucks 2009-01-28 FY2009 Q1 results 8-K exhibit 99.1", url: "https://www.sec.gov/Archives/edgar/data/829224/000095013409001273/v51210exv99w1.htm", checked_on: "2026-10-20" },
 ];
 const codes = new Set(sources.map(source => source.code));
 const lines = [[], [], [], [], [], []];
@@ -55,8 +56,8 @@ const cardRules = [
   [/實際關了二百零五家/, { title: "七月 600 家計畫的進度", stats: [{ value: "205 家", label: "FY2008 已關；非全年淨減" }], source: "S3｜FY2008 10-K" }],
   [/反而多了四百四十五/, { title: "美國直營店年度淨變化", stats: [{ value: "+445 家", label: "FY2008；6,793 → 7,238" }], source: "S3｜FY2008 10-K" }],
   [/同店下滑百分之五/, { title: "美國同店銷售", stats: [{ value: "−5%", label: "FY2008；非所有新店的成績" }], source: "S3｜FY2008 10-K" }],
-  [/關了一百八十三/, { title: "2009-01 另列約 200 家", stats: [{ value: "183 家", label: "FY2009 已關；與七月群組分屬兩批" }], source: "S4｜FY2009 10-K" }],
-  [/累計變成五百六十三/, { title: "七月原群組逐季實關", stats: [{ value: "384 → 503 → 563 家", label: "FY2009 Q1 → Q2 → Q3；各季末累計" }], source: "S9–S11｜FY2009 10-Q" }],
+  [/年底淨減四百七十四家/, { title: "美國直營店年度淨變化", stats: [{ value: "−474 家", label: "FY2009；7,238 → 6,764；非七月群組實關" }], source: "S4｜FY2009 10-K" }],
+  [/累計五百六十三/, { title: "七月原群組逐季實關", stats: [{ value: "384 → 503 → 563 家", label: "FY2009 Q1 → Q2 → Q3；各季末累計" }], source: "S9–S11｜FY2009 10-Q" }],
 ];
 const cards = new Map();
 for (const [pattern, card] of cardRules) {
@@ -75,7 +76,7 @@ const safeguards = [
   "Objects bear no inscriptions or pictograms; the character is anonymous and fictional.",
   "Fixtures carry no titles, digits, or lettering; no insignia or real person's identity.",
 ];
-const portraitSourceLines = new Set(["x160101", "x160103", "x160104", "x160305", "x160302a", "x160309", "x160310", "x160311", "x160606", "x160603", "x160605", "x160610", "x160614"]);
+const portraitSourceLines = new Set(["x160101", "x160103", "x160104", "x160305", "x160302a", "x160309", "x160310", "x160311", "x160606a", "x160603", "x160605", "x160610", "x160614"]);
 const sceneSplitAfterIds = new Set(["x160603", "x160516"]);
 const portraitInstruction = " Keep the person's face, hands, and focal prop inside the central 608-pixel corridor of a 1920x1080 frame for a later 9:16 crop.";
 const lineFor = row => ({ id: row.id, text: row.text, pause_after_ms: 0, emotion: row.text.endsWith("？") ? "台灣國語口語說書，留半拍讓問題落地" : "台灣國語口語說書，數字與年份清楚，正常語速" });
@@ -98,7 +99,7 @@ for (const [ci, chapter] of lines.entries()) {
       const portrait = selected.some(item => portraitSourceLines.has(item.id));
       const recurringCard = /\b(?:shop card|selection folio)\b/i.test(cue) ? " A recurring unmarked index card with one clipped corner rests by the focal prop; it bears no writing or symbol." : "";
       const angle = i % 4 === 0 ? "in front view, eyes toward viewer" : i % 4 === 1 ? "in three-quarter view" : i % 4 === 2 ? "in side-profile view" : "with head turned downward";
-      const room = ci === 2 ? ["at a modest assessment table", "beside a plain storefront", "in a records aisle"][i % 3] : rooms[ci];
+      const room = ci === 2 ? ["at a modest assessment table", "beside a plain cafe doorway", "in a records aisle"][i % 3] : rooms[ci];
       const prompt = `${camera[i % camera.length]} ${room}, one anonymous ${cue}, ${angle}, ${light[i % light.length]}.${recurringCard}${portrait ? portraitInstruction : ""} ${safeguards[i % safeguards.length]}`;
       scene = { id, template: "shot", data: { prompt, camera: camera[i % camera.length], visual: "still" }, lines: selected.map(lineFor) };
     }
@@ -116,7 +117,6 @@ const loops = [
   { setup: "x160108", payoff: "x160405", what: "年終直營總店數呈現什麼結果" },
   { setup: "x160109", payoff: "x160641", what: "七月名單最後的實關總數" },
   { setup: "x160205", payoff: "x160206", what: "店數和熟店銷售仍正為何要踩煞車" },
-  { setup: "x160211a", payoff: "x160301", what: "七月公告會用哪一種單店資料挑入選店" },
   { setup: "x160220", payoff: "x160329", what: "公司對受影響店員的安排希望" },
   { setup: "x160227", payoff: "x160301", what: "七月公告給出單店獲利的新進展" },
   { setup: "x160308", payoff: "x160310", what: "公告還評估將來能否得到可接受回報" },
@@ -129,10 +129,12 @@ const loops = [
   { setup: "x160404", payoff: "x160405", what: "關店後年底美國直營淨數" },
   { setup: "x160409", payoff: "x160410", what: "年度淨擴張相對前一財年" },
   { setup: "x160418", payoff: "x160420", what: "新開不久的店是否進入同店比較" },
-  { setup: "x160424", payoff: "x160504", what: "隔年七月名單繼續執行" },
-  { setup: "x160426", payoff: "x160501", what: "2009 一月新計畫是否併入七月群組" },
+  { setup: "x160424", payoff: "x160425", what: "隔年另提哪一批關店計畫" },
+  { setup: "x160427", payoff: "x160501", what: "2009 一月新計畫是否併入七月群組" },
   { setup: "x160514", payoff: "x160515", what: "美國直營店整體是否轉為淨減" },
-  { setup: "x160527", payoff: "x160601", what: "2009 財年七月群組再關多少家" },
+  { setup: "x160507j", payoff: "x160641", what: "七月原群組年末精確實關數" },
+  { setup: "x160527", payoff: "x160601", what: "更多實關店的退租費用結果" },
+  { setup: "x160606a", payoff: "x160607", what: "六月之後原群組是否還有實際關閉" },
   { setup: "x160619", payoff: "x160641", what: "七月群組跨財年合計實際關店數" },
 ];
 const positions = new Map(allRows.map((row, i) => [row.id, i]));

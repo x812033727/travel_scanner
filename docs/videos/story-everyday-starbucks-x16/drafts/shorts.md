@@ -3,7 +3,7 @@
 每列 `句 ID | 來源代碼或 editorial | 旁白 | 直式主體提示`。文字卡的年份、品牌與數字由後製排字，插畫不畫可讀字。
 
 ## Short 1: 新店為何進關店名單
-x16s101 | S2 | 二〇〇八年七月，星巴克宣布要關約六百家美國直營店。 | clerk pins unmarked shop card beneath blank notice at cafe doorway
+x16s101 | S2 | 二〇〇八年七月，星巴克宣布要關約六百家美國直營店。 | clerk opens blank notice beside generic cafe doorway
 x16s102 | S2 | 這些入選店裡，約七成自二〇〇六財年起才開。 | clerk holds new-looking plain shop key
 x16s103 | editorial | 七成入選店很新，公司按什麼挑？ | owner studies blank storefront plan
 x16s104 | S2 | 先看分母：七成是這六百家「入選店」裡的比例。 | owner weighs new-looking key beside selection ring
