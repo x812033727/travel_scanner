@@ -41,6 +41,7 @@ function readChapters() {
 const cardRules = [
   [/一百三十三間店/, ["2015-01-15｜當時加拿大", "133", "當時的加拿大門市", "Target 2015-01-15 公告"]],
   [/一百八十九個據點/, ["2011｜租賃權益", "189", "Zellers 據點租賃權，不是已開店數", "Target FY2013 10-K，Note 7"]],
+  [/一千四百二十萬平方英尺/, ["FY2013｜124 間已開門市", "14.2m sq ft", "合計零售面積；非逐店平均", "Target FY2013 10-K，Canadian Segment"]],
   [/一百二十四間店開業/, ["FY2013｜分批開店", "124", "實際開設門市", "Target FY2013 10-K，MD&A"]],
   [/百分之十四點九/, ["FY2013｜加拿大部門", "14.9%", "毛利率；原因待揭曉", "Target FY2013 10-K，Canadian Segment"]],
   [/一點九六億美元/, ["FY2013｜加拿大部門", "US$196m", "當年商品毛利", "Target FY2014 10-K，Note 6"]],
@@ -73,8 +74,8 @@ const lineFor = (id, value) => {
   return line;
 };
 const chapters = readChapters();
-// Preserve original line IDs when short source-backed passages are inserted or
-// the later closure evidence moves after the exit charge.
+// Preserve original line IDs when passages are inserted or cut; the later
+// closure evidence keeps its Chapter 5 source IDs after the exit charge.
 const chapter3InsertAt = 15;
 const chapter3Added = 2;
 const chapter4InsertAt = 9;
@@ -96,22 +97,23 @@ function identityFor(ci, ri) {
   }
   if (ci === 4 && ri === 10) return { line: "x0805a04", scene: "x08-b05-a04", visualIndex: 103 };
   if (ci === 4 && ri === 13) return { line: "x080512", scene: "x08-b05-s12", visualIndex: 11 };
-  if (ci === 5 && ri === 14) return { line: "x080510", scene: "x08-b05-s10", visualIndex: 9 };
-  if (ci === 5 && ri === 15) return { line: "x080511", scene: "x08-b05-s11", visualIndex: 10 };
-  const originalRi = ci === 2 && ri >= chapter3InsertAt + chapter3Added ? ri - chapter3Added + 1
+  if (ci === 5 && ri === 9) return { line: "x080510", scene: "x08-b05-s10", visualIndex: 9 };
+  if (ci === 5 && ri === 10) return { line: "x080511", scene: "x08-b05-s11", visualIndex: 10 };
+  const originalRi = ci === 1 && ri >= 12 ? ri + 3
+    : ci === 2 && ri >= chapter3InsertAt + chapter3Added ? ri - chapter3Added + 1
     : ci === 3 && ri >= 31 ? ri - 4
       : ci === 3 && ri >= 23 ? ri - 3
         : ci === 3 && ri >= chapter4InsertAt + chapter4Added ? ri - chapter4Added
       : ci === 4 && ri >= 7 && ri <= 9 ? ri - 3
         : ci === 4 && ri >= 11 && ri <= 12 ? ri - 4
-      : ci === 5 && ri >= 16 ? ri - 2 : ri;
+      : ci === 5 && ri >= 11 ? ri + 3 : ri;
   const suffix = `${String(ci + 1).padStart(2, "0")}${String(originalRi + 1).padStart(2, "0")}`;
   return { line: `x08${suffix}`, scene: `x08-b${String(ci + 1).padStart(2, "0")}-s${String(originalRi + 1).padStart(2, "0")}`, visualIndex: originalRi };
 }
 const authored = chapters.flatMap((chapter, ci) => chapter.rows.map((row, ri) => {
   const identity = identityFor(ci, ri);
   const line = lineFor(identity.line, row.text);
-  const card = cardFor(row.text, row.refs);
+  const card = ci === chapters.length - 1 && ri >= chapter.rows.length - 3 ? null : cardFor(row.text, row.refs);
   const scene = {
     id: identity.scene,
     template: card ? "stats" : "shot",
@@ -127,7 +129,6 @@ for (const [firstId, secondId] of [
   ["x08-b02-s18", "x08-b02-s19"],
   ["x08-b03-s13", "x08-b03-s14"],
   ["x08-b04-s35", "x08-b04-s36"],
-  ["x08-b06-s12", "x08-b06-s13"],
 ]) {
   const index = authored.findIndex(scene => scene.id === firstId);
   if (index < 0 || authored[index + 1]?.id !== secondId || authored[index].template !== "shot" || authored[index + 1].template !== "shot") {
