@@ -72,6 +72,8 @@ const sceneSettings = new Map([
   ["x120301", "clean tabletop factory diorama"], ["x120507", "conceptual Taiwan factory diorama"],
   ["x120508", "conceptual split-screen comparison studio"], ["x120509", "clean tabletop factory diorama"],
   ["x120514", "clean tabletop Ohio factory diorama"], ["x120520", "clean tabletop accounting diorama"],
+  ["x120422", "clean tabletop Ohio factory diorama"], ["x120423", "clean tabletop Ohio factory diorama"],
+  ["x120424", "clean tabletop Ohio factory diorama"], ["x120501", "clean conceptual manufacturing-plan studio"],
   ["x120605", "clean conceptual living-room diorama"], ["x120608", "conceptual factory diorama"],
   ["x120610", "conceptual factory diorama"],
   ["x120611", "conceptual factory diorama"], ["x120613", "clean tabletop factory diorama"],
@@ -106,7 +108,7 @@ const loops = [
   ["x120210", "x120412", "設備銷售增長是否等於毛利"],
   ["x120221", "x120301", "新廠原本要補的產能"],
   ["x120319", "x120402", "增長中的設備收入隔年如何變"],
-  ["x120424", "x120502", "固定製造基地是否仍是下一步"],
+  ["x120424", "x120502", "二月 Ohio 廠殼出售計畫後製造調整是否繼續"],
   ["x120425", "x120503", "下一個造車人是誰"],
   ["x120521", "x120601", "FY2023 收入線怎麼走"],
   ["x120521", "x120614", "Ohio 到 FY2023 的出售狀態"],
@@ -117,9 +119,9 @@ const ids = new Map(allRows.map((row, i) => [row.id, i]));
 for (const loop of loops) if (!(ids.has(loop.setup) && ids.has(loop.payoff) && ids.get(loop.setup) < ids.get(loop.payoff))) throw new Error(`Invalid loop: ${JSON.stringify(loop)}`);
 
 const description = [
-  "2021 年，Peloton 宣布在 Ohio 規劃一座專用工廠，原定 2023 製造連網健身設備、多年預計投入約 US$400m；FY2022 年報卻記下一筆涉及這座未投產工廠的減損，隨後說公司正在尋找買家。這支品牌故事沿著 Output Park 一座工廠，追設備與訂閱收入、庫存成本和製造分工的轉向。",
+  "2021 年，Peloton 宣布在 Ohio 規劃一座專用工廠，原定 2023 製造連網健身設備、多年預計投入約 US$400m；2022 年 2 月重整已宣布完成 Ohio 廠殼後出售，這仍是計畫，不是已成交。7 月公司才進一步宣布退出整體自有製造。FY2022 年報記下一筆涉及未投產 Ohio 及相關製造資產的減損，9 月提交時仍說正在對外行銷並打算出售。這支品牌故事沿著 Output Park 一座工廠，追設備與訂閱收入、庫存成本和兩步製造轉向。",
   "",
-  "約 US$400m 是 2021 年計畫，不是已支出；截至 2022-06-30 專案已投入約 US$86.6m，也不是出售價格。FY2022 硬體類收入包括配件、配送安裝等，不能直接換算單車台數；分類毛利不能當公司淨利。2022-07-12 公告停運的是台灣 Tonic 設施，Rexon 將主造 Bike／Tread；Ohio 到 FY2023 年報仍是尋買家，本文不宣稱後來已售。畫面為匿名概念插畫，不是實際廠房、器材或人物。資料查核日期：2026-10-20。",
+  "約 US$400m 是 2021 年計畫，不是已支出；截至 2022-06-30 專案已投入約 US$86.6m，也不是出售價格。FY2022 硬體類收入包括配件、配送安裝等，不能直接換算單車台數；分類毛利不能當公司淨利。2 月 Ohio 廠殼完成後出售的公告不等於當時已完工或已售；2022-07-12 公告停運的是台灣 Tonic 設施，Rexon 將主造 Bike／Tread；Ohio 到 FY2023 年報仍是尋買家，本文不宣稱後來已售。畫面為匿名概念插畫，不是實際廠房、器材或人物。資料查核日期：2026-10-20。",
   "",
   "一手資料（SEC 原始歸檔）",
   ...sourceUrls.flatMap(source => [source.title, source.url]),
@@ -151,6 +153,6 @@ writeFileSync(path.join(dir, "script.md"), [
   ...chapters.flatMap((chapter, ci) => [`## 第 ${ci + 1} 章｜${chapterTitles[ci]}${ci === 0 ? "（濃縮開場）" : ""}`, "", ...chapter.map(row => `- \`${row.id}\` ${row.text}`), ""]),
   "## 片尾三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), "",
 ].join("\n"));
-writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 12, chapter: 1, title: "Peloton：Ohio 新廠未投產，年報為何先記減損？", logline: "從 2021 Ohio 產能計畫到 2022 退出自製、FY2023 仍尋買家，追硬體與訂閱收入分岔。", names: ["Peloton", "Peloton Output Park", "Precor", "Rexon", "Tonic", "Bike", "Bike+", "Tread", "Tread+"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
+writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 12, chapter: 1, title: "Peloton：Ohio 新廠未投產，年報為何先記減損？", logline: "從 2021 Ohio 產能計畫，到 2022 二月規劃完成廠殼後出售、七月整體退出自製，FY2023 仍尋買家。", names: ["Peloton", "Peloton Output Park", "Precor", "Rexon", "Tonic", "Bike", "Bike+", "Tread", "Tread+"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
 const body = chapters.slice(1).flat().map(row => row.text).join("");
 console.log(JSON.stringify({ scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, spoken_lines: allRows.length, hook_characters: chapters[0].map(row => row.text).join("").length, body_characters: body.length, body_estimate_minutes_at_250_cpm: +(body.length / 250).toFixed(2), body_estimate_minutes_at_300_cpm: +(body.length / 300).toFixed(2), loops: loops.length, video_sha256: sha }, null, 2));
