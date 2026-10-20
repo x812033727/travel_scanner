@@ -195,3 +195,12 @@ media receipt, selected-file hashes and cost evidence are in
 the stop: X06's remaining worst case 132 plus X09's 99 leaves only 15
 headroom, so no broader paid art batch is warranted without a reviewed
 prompt strategy and renewed shared quota plan.
+
+An **offline-only** three-HOLD prompt proposal is at
+`reviews/visual-v4-offline-proposal.md` (SHA
+`b697f096e66f2e82eda849ea16166049dc66443aba26346f6554e070212d9219`).
+It replaces the false in-store sale, extra people/sack, and shopper/packet
+failures with unlabeled planning or category-object comparisons. The old
+prompts and narration were checked byte-for-byte against the unchanged v3
+script; no new video SHA, manifest bridge or image generation has occurred.
+It awaits independent source/visual review before any script edit.
