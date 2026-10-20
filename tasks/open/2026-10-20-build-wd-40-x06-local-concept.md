@@ -209,3 +209,21 @@ failures with unlabeled planning or category-object comparisons. The old
 prompts and narration were checked byte-for-byte against the unchanged v3
 script; no new video SHA, manifest bridge or image generation has occurred.
 It awaits independent source/visual review before any script edit.
+
+The independent **offline-proposal** review has since passed at
+`reviews/visual-v4-independent.md` (SHA
+`58569e6d6377a24c45d2aadb12c8bef676d3473eb254ea3d105e0779a08e6beb`).
+Exactly those three reviewed prompts were applied; `video.json` is now SHA
+`acfeb244c3d67578223516a749617c89b2dad8f3df28766f85bae4e6f460ccb4`.
+Deep comparison found no other field change, and lint has 0 errors/warnings.
+A zero-cost bridge retained all 34 unchanged provisionally usable takes and
+their file hashes, retired the three old HOLD selections to evidence, and
+preserved the US$1.1105 ledger plus unjudged paid image. New visual hash
+`2f613d75fac3591d`, manifest SHA
+`39635fc22fc2dec9b71e736fc61137d0f50c22baff1adbcac127a821e5488080`,
+STOP gate SHA `c48c604145128b5b98bb02ba9d3a5b2ba31ab6f478a2aba9541e9b248d6b7b5d`,
+and bridge receipt SHA
+`fc0054acbb4ac8f95dee244c0d6b3191fda77772383171b778b49bb7d9075ae8`.
+The v4 **post-apply** independent review is still pending. No new image,
+judge call, audio change or paid transaction occurred under this SHA; both
+main STOP and the cross-episode quota hold remain.

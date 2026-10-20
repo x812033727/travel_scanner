@@ -265,3 +265,32 @@ SHA-256 `6cfbbe7031d6a05f7c8d51bf4adcae4b91f93a39c1403a688e4008e333cc125e`。
 目前 **34/78** 暫可用、3 HOLD、41 未試。X05 已停止付費，站點
 judge 剩 246；X06 對 41 未試＋3 HOLD 的最壞新一輪需求 132，
 X09 至少保留 99，跨集緩衝僅 15 次。主 STOP 保留，暫停後續付費圖。
+
+## v4 三鏡離線修稿與零成本橋接
+
+獨立**提案**審查 `visual-v4-independent.md` SHA-256
+`58569e6d6377a24c45d2aadb12c8bef676d3473eb254ea3d105e0779a08e6beb`
+接受三個 HOLD 鏡頭的文字策略；提案 SHA-256
+`b697f096e66f2e82eda849ea16166049dc66443aba26346f6554e070212d9219`。
+逐字套用後主片 SHA-256
+`acfeb244c3d67578223516a749617c89b2dad8f3df28766f85bae4e6f460ccb4`；
+深比 93 景全部非 prompt 欄位相同，僅 `x06-b03-s12`、
+`x06-b03-s16`、`x06-b04-s02` 三個 `data.prompt` 不同。
+新視覺 hash `2f613d75fac3591d`。**套用後的獨立覆核仍待簽收**，
+不因提案 PASS 就解除 STOP。
+
+零成本橋接逐張核對 34 張原已暫可用鏡頭的未改提示詞、選圖物件、
+圖檔 SHA 全相同；三個舊 HOLD 及選圖檔封存在媒體工作區
+`review/local-preview/v4-bridge-evidence/` 並從當前 manifest 撤下，
+原本已付費但未評審的 `x06-b04-s02b` 原圖 SHA
+`cab2a38a2df9292c6ccad99d128866a3a16540c51a59a46511945f3a8eeb1b2d`
+亦保留。新 manifest SHA-256
+`39635fc22fc2dec9b71e736fc61137d0f50c22baff1adbcac127a821e5488080`；
+STOP 人工 gate SHA-256
+`c48c604145128b5b98bb02ba9d3a5b2ba31ab6f478a2aba9541e9b248d6b7b5d`；
+橋接憑據 `review/local-preview/v4-bridge.json` SHA-256
+`fc0054acbb4ac8f95dee244c0d6b3191fda77772383171b778b49bb7d9075ae8`。
+總帳未變，仍 US$1.1105／83 圖／82 評審／未結 0，SHA-256
+`f74f080e0c970330826a0176f719f537ab9208fe2fc41cb6655df799a2d16679`。
+目前當前 manifest 為 34 張暫可用、44 鏡待畫，其中三鏡有舊版
+失敗紀錄；主 STOP 保留，未送 v4 新圖或評審。
