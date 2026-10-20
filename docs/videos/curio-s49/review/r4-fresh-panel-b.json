@@ -1,0 +1,124 @@
+{
+  "reviewer": "fresh-panel-b",
+  "script": "docs/videos/curio-s49/script.md",
+  "script_sha256": "da1dca236ce6b26d4785177f018d945df76f4fd1e149b547b808b3408d6e350d",
+  "rubric": "tools/video/core/narrative.mjs NARRATIVE_PANEL (13 questions)",
+  "result": {
+    "required_yes": 7,
+    "required_total": 12,
+    "all_yes": 8,
+    "all_total": 13,
+    "passes_required_gate": false
+  },
+  "answers": [
+    {
+      "id": "scene_first",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon001] 一八三五年八月，紐約一張《太陽報》擺到讀者面前。",
+      "reason": "The first line places a newspaper before a reader in a dated, located moment."
+    },
+    {
+      "id": "no_spoiler",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon006] 再往後，紙上竟出現一群有翅膀的身影；誰看見的？",
+      "reason": "The opening previews a later sighting but leaves its witness and the report's mechanism unresolved."
+    },
+    {
+      "id": "one_line",
+      "required": true,
+      "yes": false,
+      "evidence": "[moon013] 後來的天文學家雅各比，特別把兩件事分開。",
+      "reason": "The 1835 newspaper sequence jumps to a later critic here, returns to the newspaper at moon014, and revisits that critic at moon042-045. The explanation repeatedly leaves and re-enters the same 1835 stage."
+    },
+    {
+      "id": "no_toc",
+      "required": true,
+      "yes": false,
+      "evidence": "[moon033] 先給真難題，再亮出奇蹟解法，是整段說服力的關鍵。",
+      "reason": "This sentence announces the coming problem-then-solution layout before the report's device is allowed to unfold."
+    },
+    {
+      "id": "chapters_link",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon056] 紙上的鏡頭先掃過石頭、山谷，還有閃亮的晶體。",
+      "reason": "This chapter opening directly answers moon055's question about what appears when the imagined instrument is unveiled; the other chapter openings also pick up their preceding question or action."
+    },
+    {
+      "id": "open_loops",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon078] 此刻紙上又慢了一拍；山崖後出現的形狀，像鳥嗎？",
+      "reason": "Concrete unresolved questions recur throughout the body, including the instrument at moon055, the cliff at moon078, the fire at moon098, and other editors at moon111."
+    },
+    {
+      "id": "payoffs",
+      "required": true,
+      "yes": false,
+      "evidence": "[moon007] 別家報紙看見這份稿，會轉載，還是追問它的出處？",
+      "reason": "The last chapter gives praise, disbelief and satire, but never establishes whether another newspaper reprinted the story or pursued its source. That explicit opening fork lacks a direct payoff."
+    },
+    {
+      "id": "no_recap",
+      "required": true,
+      "yes": false,
+      "evidence": "[moon034] 這句像真的科學限制，讓後面的解法聽起來很值得期待。",
+      "reason": "Moon032 states the light problem and moon033 already says the real difficulty makes the later fix persuasive; moon034 repeats that point before the story advances."
+    },
+    {
+      "id": "chapters_are_events",
+      "required": false,
+      "yes": true,
+      "evidence": "[moon100] 在報導裡，巨型鏡片沒有照規矩放平，早晨聚住陽光。",
+      "reason": "The chapter title '巨鏡在故事裡起火' names the event introduced in this line; the other chapter titles likewise name an action or reveal."
+    },
+    {
+      "id": "outro_no_next",
+      "required": true,
+      "yes": true,
+      "evidence": "[outro] 想繼續看有出處的歷史故事，訂閱奇聞檔案局。",
+      "reason": "The outro invites subscription without naming a next video, episode or file."
+    },
+    {
+      "id": "opening_hooks",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon005] 它又說，望遠鏡能看清月面的細小東西；光線難題怎麼解？",
+      "reason": "After the first scene, moon004-007 plant four later moments: the assistant's letter, the instrument, winged figures and other papers' response."
+    },
+    {
+      "id": "one_thread",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon131] 回頭看最初那張《太陽報》：它把未交出的文件，寫得像已核對過的觀測。",
+      "reason": "The same newspaper and its credibility claim remain identifiable from the opening through the closing assessment."
+    },
+    {
+      "id": "no_detour",
+      "required": true,
+      "yes": false,
+      "evidence": "[moon028] 這不是當年的紙張照片，所以字體與版面不能照重印本還原。",
+      "reason": "This spoken production caveat about reproducing type and layout does not advance how the report made its claim persuasive or how other newspapers responded."
+    }
+  ],
+  "isolation": {
+    "prior_review_or_verify_reports_read": false,
+    "git_history_read": false,
+    "other_agents_comments_read": false,
+    "story_evidence_files": [
+      "docs/videos/curio-s49/brief.md",
+      "docs/videos/curio-s49/script.md"
+    ],
+    "instruction_files_read": [
+      "AGENTS.md",
+      ".agents/skills/curio-episode/SKILL.md",
+      ".agents/skills/youtube-video/SKILL.md",
+      ".agents/skills/youtube-video/references/script-writing.md",
+      "tools/video/core/narrative.mjs NARRATIVE_PANEL",
+      "cloud-environment-onboarding:setup SKILL.md"
+    ],
+    "note": "No cross-review contamination. The assignment asked me to read brief.md, so this was not a literal script-only reading under PANEL_INSTRUCTIONS; verdicts use script lines as evidence."
+  }
+}

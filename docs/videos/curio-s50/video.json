@@ -57,93 +57,148 @@
   "loops": [
     {
       "setup": "fire002",
-      "payoff": "fire108",
-      "what": "最早火如何接觸燃物"
+      "payoff": "fire013",
+      "what": "火出巷後先往哪裡走"
+    },
+    {
+      "setup": "fire004",
+      "payoff": "fire014",
+      "what": "橋腳教堂能否擋火"
     },
     {
       "setup": "fire005",
       "payoff": "fire029",
-      "what": "塔樓誰提供起火屋地址"
+      "what": "塔後誰告知布丁巷地址"
     },
     {
       "setup": "fire006",
       "payoff": "fire049",
-      "what": "為何拆屋命令追不上火"
+      "what": "市長如何回應拆屋建議"
     },
     {
       "setup": "fire007",
       "payoff": "fire095",
-      "what": "烘焙師後來如何解釋餘燼"
+      "what": "屋主說哪處仍有火"
     },
     {
       "setup": "fire008",
-      "payoff": "fire078",
-      "what": "是否整座倫敦都燒毀"
+      "payoff": "fire116",
+      "what": "一戶屋能否解釋全城損失"
+    },
+    {
+      "setup": "fire012",
+      "payoff": "fire015",
+      "what": "橋頭使火轉往何處"
+    },
+    {
+      "setup": "fire016",
+      "payoff": "fire017",
+      "what": "風把泰晤士街火勢推向何處"
     },
     {
       "setup": "fire019",
-      "payoff": "fire029",
-      "what": "天亮誰報出布丁巷"
+      "payoff": "fire020",
+      "what": "佩皮斯窗邊誰叫醒他"
     },
     {
       "setup": "fire023",
       "payoff": "fire027",
-      "what": "七點以為火變小後再看見什麼"
+      "what": "七點遠火判斷能否相信"
     },
     {
       "setup": "fire028",
       "payoff": "fire032",
-      "what": "橋上熟人家是否保住"
+      "what": "橋上熟人房屋是否尚在"
+    },
+    {
+      "setup": "fire031",
+      "payoff": "fire032",
+      "what": "河上能否找回熟人屋"
+    },
+    {
+      "setup": "fire036",
+      "payoff": "fire038",
+      "what": "河岸還留哪些可燃貨物"
     },
     {
       "setup": "fire041",
       "payoff": "fire049",
-      "what": "誰能趕在火前拆屋"
+      "what": "誰能及時拆屋阻火"
     },
     {
       "setup": "fire047",
-      "payoff": "fire049",
-      "what": "市長手上還有人力嗎"
+      "payoff": "fire050",
+      "what": "市長是否已開始拆屋"
+    },
+    {
+      "setup": "fire051",
+      "payoff": "fire052",
+      "what": "什麼堵住市長面前街道"
     },
     {
       "setup": "fire055",
       "payoff": "fire056",
-      "what": "飛火越過空地會落在哪裡"
+      "what": "飛火跨多遠仍能引燃"
     },
     {
       "setup": "fire061",
       "payoff": "fire062",
-      "what": "九月三日河岸通道是否順暢"
+      "what": "塔丘道路是否通暢"
     },
     {
       "setup": "fire064",
       "payoff": "fire066",
-      "what": "塔街拆屋能否局部阻火"
+      "what": "塔街拆屋是否阻住局部火勢"
     },
     {
       "setup": "fire067",
-      "payoff": "fire070",
-      "what": "局部止火後別處是否安全"
+      "payoff": "fire068",
+      "what": "隔天辦公室是否尚在"
     },
     {
-      "setup": "fire073",
+      "setup": "fire071",
+      "payoff": "fire072",
+      "what": "火燒到哪一天才停"
+    },
+    {
+      "setup": "fire076",
       "payoff": "fire077",
-      "what": "城內還有沒有未燒的地"
+      "what": "城牆內留下多少未燒地"
     },
     {
       "setup": "fire082",
-      "payoff": "fire087",
-      "what": "調查最先聽到誰的說法"
+      "payoff": "fire083",
+      "what": "誰成為另一組記錄者"
     },
     {
-      "setup": "fire091",
-      "payoff": "fire104",
-      "what": "自白能否成為最終證明"
+      "setup": "fire090",
+      "payoff": "fire091",
+      "what": "自白者當夜在場有無見證"
     },
     {
-      "setup": "fire103",
-      "payoff": "fire107",
-      "what": "兩份說法能否互相驗證"
+      "setup": "fire093",
+      "payoff": "fire095",
+      "what": "屋主承認哪處留火"
+    },
+    {
+      "setup": "fire098",
+      "payoff": "fire099",
+      "what": "屋主怎麼回答門窗風問題"
+    },
+    {
+      "setup": "fire104",
+      "payoff": "fire105",
+      "what": "報告送上後議會有無判斷"
+    },
+    {
+      "setup": "fire108",
+      "payoff": "fire109",
+      "what": "烤爐火星可能性欠何種證據"
+    },
+    {
+      "setup": "fire112",
+      "payoff": "fire113",
+      "what": "屋址能否推算城區災損"
     }
   ],
   "scenes": [
@@ -151,14 +206,14 @@
       "id": "fire001",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot on a narrow 1660s London lane before dawn, one night watchman outside a smoking timber house looking up, lamp light from a doorway",
+        "prompt": "Medium shot inside a plain London home before dawn, one neighbor sleeps beside a shuttered window as smoke rises outside, soft lamp light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire001",
-          "text": "一六六六年九月二日凌晨，布丁巷一戶麵包師的屋子起火。",
+          "text": "一六六六年九月二日凌晨，布丁巷的人還在睡，一戶麵包師的屋子突然起火。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ],
@@ -175,7 +230,7 @@
       "lines": [
         {
           "id": "fire002",
-          "text": "火從這裡開始，可是第一團火究竟碰到了什麼？",
+          "text": "從這條巷出來，火最先會朝哪個方向衝？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -184,14 +239,14 @@
       "id": "fire003",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a plain room of a baker's house by lamplight, one baker looks toward a simple fireplace, brick floor underfoot",
+        "prompt": "Wide shot on a sloping London street before dawn, one watchman looks toward a stone church at a distant bridge foot, mild lamplight",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire003",
-          "text": "幾個月後，屋主說半夜巡過房間，只留下一處有火的壁爐。",
+          "text": "坡路下方，聖馬格努斯教堂擋在倫敦橋腳。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -200,14 +255,14 @@
       "id": "fire004",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in the same plain room by lamplight, one baker looks at glowing embers in a simple fireplace, brick floor visible",
+        "prompt": "Medium shot beside a stone church near a river bridge before dawn, one bell ringer watches smoke in the distance, soft grey light",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire004",
-          "text": "他說已把那處火撥進餘燼。那這間屋為何還會起火？",
+          "text": "連這座教堂，也會被火越過嗎？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -223,7 +278,7 @@
       "lines": [
         {
           "id": "fire005",
-          "text": "天亮後佩皮斯登塔，誰把最早的地址告訴他？",
+          "text": "天亮後佩皮斯登上倫敦塔；誰會把最早的地址告訴他？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -239,7 +294,7 @@
       "lines": [
         {
           "id": "fire006",
-          "text": "他向國王提出拆屋，火線又為何沒有立刻停下？",
+          "text": "佩皮斯會把拆屋建議送到國王面前；市長怎麼回應？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -255,7 +310,7 @@
       "lines": [
         {
           "id": "fire007",
-          "text": "委員會又把屋主叫去問話，他能說清點火那一刻嗎？",
+          "text": "幾個月後，委員會叫來屋主；他會描述夜裡哪一處還有火？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -271,7 +326,7 @@
       "lines": [
         {
           "id": "fire008",
-          "text": "測量員後來數出一萬三千兩百棟燒毀的房屋。真是一個爐子毀了倫敦嗎？",
+          "text": "測量員後來留下城區受損數字；一間麵包屋，真的毀了倫敦嗎？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -280,14 +335,14 @@
       "id": "fire009",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a plain seventeenth-century print shop, one printer lifts an unmarked page, soft morning light",
+        "prompt": "Close shot on a narrow London lane before dawn, one watchman raises a lamp toward smoke beside a timber house, gentle lamp light",
         "camera": "pull back",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire009",
-          "text": "一六六七年刊出的證詞集，把起火時間記成凌晨一點到兩點之間。",
+          "text": "開場那戶布丁巷屋子，事後證詞把起火時段記在凌晨一點到兩點。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ],
@@ -297,14 +352,14 @@
       "id": "fire010",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot inside a plain bakehouse by day, one baker carries a flour sack toward a worktable, soft light from a window",
+        "prompt": "Medium shot outside a narrow London bakehouse before dawn, one watchman passes its shuttered door while smoke rises, gentle lamp light",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire010",
-          "text": "那份刊本把屋主的姓拼作法里納；他以烘焙維生。",
+          "text": "那戶屋子的主人，後來在刊本裡被記作法里納。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -313,14 +368,14 @@
       "id": "fire011",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot on a compact London lane at dawn, one watchman turns toward smoke over one house, cool sky light",
+        "prompt": "Medium shot on a compact London lane before dawn, one watchman looks at closed doors as smoke rises, cool sky light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire011",
-          "text": "它指認了哪一戶、哪條巷，卻沒看見火星離開哪裡。",
+          "text": "火先把附近幾間屋捲了進去，沒有停在最初那戶。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -329,14 +384,14 @@
       "id": "fire012",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a simple writing desk by day, one minister holds a blank sheet over a book, light from the right",
+        "prompt": "Medium shot on a sloping London street before dawn, one watchman looks toward smoke near a river bridge, soft grey light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire012",
-          "text": "隔年牧師文森特也寫，火從布丁巷的烘焙屋起。",
+          "text": "文森特事後寫下火線：到了橋頭，它會轉向哪裡？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -352,7 +407,7 @@
       "lines": [
         {
           "id": "fire013",
-          "text": "他的敘述裡，火先沿坡道衝向倫敦橋的方向。",
+          "text": "它接著沿坡道朝倫敦橋衝去。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -368,7 +423,7 @@
       "lines": [
         {
           "id": "fire014",
-          "text": "橋腳的聖馬格努斯教堂，能擋住往河岸走的火嗎？",
+          "text": "開場那座教堂沒攔住火；文森特寫它侵入教堂，橋上屋也倒了。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -384,7 +439,7 @@
       "lines": [
         {
           "id": "fire015",
-          "text": "火接著又沿泰晤士街向西，碰上另一排緊貼的建物。",
+          "text": "橋上的路被阻，火轉進泰晤士街，迎面是緊貼的屋子。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -400,7 +455,7 @@
       "lines": [
         {
           "id": "fire016",
-          "text": "文森特說那條路上可燃的貨物很多，風也在背後推。",
+          "text": "文森特說街上可燃的貨物很多；風會把火往哪個方向推？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -409,14 +464,14 @@
       "id": "fire017",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a writing table by day, one minister sets down a quill beside a plain blank page, soft light from above",
+        "prompt": "Medium shot on a narrow riverside London street by day, one porter hurries past smoky timber houses, diffuse daylight",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire017",
-          "text": "這是他事後寫的路線，不是站在麵包屋裡看見點火。",
+          "text": "它沿著泰晤士街向西，幾乎沒受到抵抗。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -425,14 +480,14 @@
       "id": "fire018",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of two blank papers on a wooden desk, one clerk puts a finger between them, gentle window light",
+        "prompt": "Medium shot inside a modest London room before dawn, one diarist sleeps beside a window, faint grey light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire018",
-          "text": "兩份材料都能指向起點；卻都沒有交出那一刻的目擊者。",
+          "text": "另一份當天日記，從佩皮斯家的那扇窗接上這場火。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -441,14 +496,14 @@
       "id": "fire019",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a city gate in grey dawn, one watchman shades his eyes toward the bridge, cool sky light",
+        "prompt": "Medium shot in a plain bedroom before dawn, one diarist stirs as a voice comes from the window, pale light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire019",
-          "text": "如果這些材料沒交出點火目擊者，天亮後誰先報出那條巷？",
+          "text": "有人在窗邊叫了起來；床上的佩皮斯還不知道橋頭燒成什麼樣。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -513,7 +568,7 @@
       "lines": [
         {
           "id": "fire023",
-          "text": "約七點他又看一眼，還覺得火似乎更小、更遠。",
+          "text": "約七點再看，他仍覺得火更小更遠；登塔會看到同一幅景象嗎？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -577,7 +632,7 @@
       "lines": [
         {
           "id": "fire027",
-          "text": "塔上，他親眼看見橋附近的屋子正在燃燒。",
+          "text": "塔上，他親眼看見橋附近的屋子仍在燃燒。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -609,7 +664,7 @@
       "lines": [
         {
           "id": "fire029",
-          "text": "下塔後，一位倫敦塔官員告訴他：火從國王麵包師的布丁巷屋子起。",
+          "text": "開頭那個地址，是下塔後塔官告訴他的：布丁巷國王麵包師的屋子。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -625,7 +680,7 @@
       "lines": [
         {
           "id": "fire030",
-          "text": "這是佩皮斯聽到的地址；他並沒有看見爐火跳出來。",
+          "text": "塔上隔著一段路，他還看不清橋上熟人的那間屋。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -802,7 +857,7 @@
       "lines": [
         {
           "id": "fire041",
-          "text": "他眼前很多人在撤物；若要拆屋，誰能趕在火前動手？",
+          "text": "火仍往前走；誰能趕在它前面拆出一道空隙？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -834,7 +889,7 @@
       "lines": [
         {
           "id": "fire043",
-          "text": "佩皮斯不能只在船上看；有人得趕快把拆屋的建議送去。",
+          "text": "這些景象逼得佩皮斯把拆屋建議帶往白廳。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -850,7 +905,7 @@
       "lines": [
         {
           "id": "fire044",
-          "text": "佩皮斯離開河面，趕到國王查理二世那裡報告。",
+          "text": "在白廳，他向國王查理二世報告河上的火勢。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ],
@@ -899,7 +954,7 @@
       "lines": [
         {
           "id": "fire047",
-          "text": "約克公爵還願意提供士兵；人手到場來得及嗎？",
+          "text": "約克公爵願提供士兵；市長那邊已經動手了嗎？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -931,7 +986,7 @@
       "lines": [
         {
           "id": "fire049",
-          "text": "市長在日記裡的回答是：人不聽命，火追得比拆屋快。",
+          "text": "開頭那道拆屋建議送到市長面前；日記記他說，人不聽命，自己已累垮。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -947,7 +1002,7 @@
       "lines": [
         {
           "id": "fire050",
-          "text": "他說自己已試著拆屋，卻不斷被火線超過。",
+          "text": "他說已試著拆屋，可火線總在工人前面。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -963,7 +1018,7 @@
       "lines": [
         {
           "id": "fire051",
-          "text": "不是沒有人想到阻火；命令、工人和街道已被速度拉開。",
+          "text": "佩皮斯帶到國王的口信；市長眼前那條街，又是誰堵住的？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -979,7 +1034,7 @@
       "lines": [
         {
           "id": "fire052",
-          "text": "教堂裡堆著撤出的家當，街上車和行人又互相擋路。",
+          "text": "教堂已堆著撤出的家當，車與行人還在街上互相擋路。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -995,7 +1050,7 @@
       "lines": [
         {
           "id": "fire053",
-          "text": "若拆得慢一點，下一排木屋就可能先接到火。",
+          "text": "市長沒法等道路清空；佩皮斯離開後，又從河上看見新的危險。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1011,7 +1066,7 @@
       "lines": [
         {
           "id": "fire054",
-          "text": "而當天下午，佩皮斯又看見火如何越過屋子。",
+          "text": "當天下午，他再次乘船；岸邊的人還在把家當往遠處搬。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1027,7 +1082,7 @@
       "lines": [
         {
           "id": "fire055",
-          "text": "就是佩皮斯在船上看見的飛火；它會落到哪裡？",
+          "text": "風捲起一塊燒著的碎片，會落在多遠外的屋頂？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1108,7 +1163,7 @@
       "lines": [
         {
           "id": "fire060",
-          "text": "那不是一條能指回「某一顆火星」的線，而是許多房屋正同時燃燒。",
+          "text": "有人把早晨搬出的家當，又朝更遠的地方搬。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1156,7 +1211,7 @@
       "lines": [
         {
           "id": "fire063",
-          "text": "「麵包店燒了城市」這句話，從這裡就少了風與街區。",
+          "text": "鄰居也用車和小船搬物，隊伍還在增多。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1172,7 +1227,7 @@
       "lines": [
         {
           "id": "fire064",
-          "text": "但拆屋畢竟不是全無作用；火到塔街時會有一次測試。",
+          "text": "九月四日，火還朝塔街逼來；有人準備用更猛的方式拆屋。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1188,7 +1243,7 @@
       "lines": [
         {
           "id": "fire065",
-          "text": "九月四日，佩皮斯寫塔街兩側的火正逼近住處。",
+          "text": "塔街兩側的火，逼近佩皮斯的住處。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1213,14 +1268,14 @@
       "id": "fire067",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot by the Tower at dusk, one watchman faces a distant smoke plume beyond the local cleared strip",
+        "prompt": "Medium shot in a plain room at dusk, one diarist looks toward a smoky lane outside a window, muted light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire067",
-          "text": "可若這一帶停了，倫敦城別處是否也一樣安全？",
+          "text": "第二天，佩皮斯還要回看辦公室；它還站著嗎？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1278,14 +1333,14 @@
       "id": "fire071",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot beside a church parapet by day, one diarist studies a standing lane and distant ruins, diffuse light",
+        "prompt": "Medium shot on a damaged London street by day, one diarist walks past burned house frames, diffuse light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire071",
-          "text": "擋住一段火線，和救下一座城，是兩種不同的結果。",
+          "text": "他走過已成灰的街道；火會到哪一天才停？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1294,14 +1349,14 @@
       "id": "fire072",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a print shop by day, one printer aligns blank sheets on a table, window light",
+        "prompt": "Wide shot of a burned London street after the fire, one clerk carries a blank folder through rubble, grey sky light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire072",
-          "text": "一六六七年的刊本說，這場火一直燒到九月六日。",
+          "text": "火一直燒到九月六日；這是後來刊出的證詞集留下的日期。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1310,14 +1365,14 @@
       "id": "fire073",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot inside a plain 1660s print shop by day, one printer stacks unmarked sheets, soft window light",
+        "prompt": "Medium shot at a plain desk in seventeenth-century London, one reader holds open an unmarked printed booklet, soft window light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire073",
-          "text": "刊本開頭不只數燒掉多少，還記了城牆內有多少地沒燒？",
+          "text": "同一本證詞集還記下測量員的另一組數字：燒過的土地。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1333,7 +1388,7 @@
       "lines": [
         {
           "id": "fire074",
-          "text": "測量員把城牆內、城牆外的燒損分開記錄。",
+          "text": "他們把城牆內與城牆外分開記，兩邊都留下數字。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1397,7 +1452,7 @@
       "lines": [
         {
           "id": "fire078",
-          "text": "所以城內確有地方倖存；「整座倫敦燒光」與數字對不上。",
+          "text": "若不看未燒的數字，後面的房屋總數就容易被聽成『整城都沒了』。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1418,7 +1473,7 @@
       "lines": [
         {
           "id": "fire079",
-          "text": "最容易記住的數字，是燒毀一萬三千兩百棟房屋。",
+          "text": "房屋一項，他們記了燒毀一萬三千兩百棟。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1434,7 +1489,7 @@
       "lines": [
         {
           "id": "fire080",
-          "text": "那是測量員的城區損失統計，不是烤爐火星的鑑定。",
+          "text": "這個數字只量房屋損失；要追最初那晚，還得問活著的人。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1450,7 +1505,7 @@
       "lines": [
         {
           "id": "fire081",
-          "text": "誰能把起點、擴大條件與點火方式，分別說清楚？",
+          "text": "若要追問那一夜，下議院還得聽證人開口。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1466,7 +1521,7 @@
       "lines": [
         {
           "id": "fire082",
-          "text": "幾週後，下議院真的派人去問；他們先聽了誰？",
+          "text": "九月二十五日，這起大火有了另一組記錄者。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1482,11 +1537,11 @@
       "lines": [
         {
           "id": "fire083",
-          "text": "九月二十五日，下議院任命委員會追查起火原因。",
+          "text": "下議院任命委員會，開始蒐集人們對起火屋的說法。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ],
-      "chapter": "刊本把自白與烘焙師擺在一起"
+      "chapter": "委員會聽見自白，又叫來屋主"
     },
     {
       "id": "fire084",
@@ -1499,7 +1554,7 @@
       "lines": [
         {
           "id": "fire084",
-          "text": "它蒐集人的說法，隔年一月才送出報告。",
+          "text": "它要找起火原因；其中有人自稱知道那一夜的答案。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1508,14 +1563,14 @@
       "id": "fire085",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a seventeenth-century print shop by day, one printer sets down a blank title sheet, grey window light",
+        "prompt": "Medium shot in a plain hearing room by day, one witness sits before an unmarked sheet, grey window light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire085",
-          "text": "後來印出的刊本，封面同時寫著大火證詞和宗教指控。",
+          "text": "這人叫羅伯特・休伯特；證詞後來被印進刊本。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1524,14 +1579,14 @@
       "id": "fire086",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of one clerk closing an unmarked pamphlet beside an empty hearing chair, soft light",
+        "prompt": "Close shot at a hearing table by day, one clerk holds a blank testimony sheet while a witness sits out of focus, soft side light",
         "camera": "drift left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire086",
-          "text": "書被印出來，仍不等於議會已對每段證詞作出判決。",
+          "text": "他帶來的不是爐邊物證，而是自己的一段話。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1547,7 +1602,7 @@
       "lines": [
         {
           "id": "fire087",
-          "text": "刊出的證詞裡，羅伯特・休伯特說火是自己點的。",
+          "text": "他告訴委員會，火是自己點的。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1595,7 +1650,7 @@
       "lines": [
         {
           "id": "fire090",
-          "text": "認出一個事後仍有人談論的地址，能證明他當晚就在場嗎？",
+          "text": "指出廢墟和目擊縱火，中間還缺了哪一步？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1611,7 +1666,7 @@
       "lines": [
         {
           "id": "fire091",
-          "text": "他自稱放火，證明的是有人這樣說；真有目擊證明嗎？",
+          "text": "刊本在這一段只寫認屋與供詞，沒有附上當晚在場的見證。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1643,7 +1698,7 @@
       "lines": [
         {
           "id": "fire093",
-          "text": "因此他們傳來屋主法里納，直接問他。",
+          "text": "開頭等的那位屋主被傳來了；他承認屋裡還有哪處有火？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1707,7 +1762,7 @@
       "lines": [
         {
           "id": "fire097",
-          "text": "他說處理那處餘火時，自己做得很仔細。",
+          "text": "他還說自己把火撥成餘燼；委員於是盯上房間的門窗。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1755,7 +1810,7 @@
       "lines": [
         {
           "id": "fire100",
-          "text": "這能證明他在調查時怎麼答，卻不能補出缺席的火場鑑定。",
+          "text": "刊本留下這句答話，沒有留下任何人在爐邊重看餘燼的紀錄。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1771,7 +1826,7 @@
       "lines": [
         {
           "id": "fire101",
-          "text": "委員聽完他的解釋，仍沒有一個點火瞬間可拿來核對。",
+          "text": "他的下一句話，卻把矛頭轉向另一種原因。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1803,7 +1858,7 @@
       "lines": [
         {
           "id": "fire103",
-          "text": "一邊是自白，一邊是屋主否認；兩句話能互相驗證嗎？",
+          "text": "屋主的話被記下，和休伯特的自白一起進入委員會的材料。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1819,7 +1874,7 @@
       "lines": [
         {
           "id": "fire104",
-          "text": "刊本說，議會休會前並沒有對那份報告作出判斷。",
+          "text": "隔年一月，委員把報告交上去；議會會判定起火原因嗎？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1835,24 +1890,24 @@
       "lines": [
         {
           "id": "fire105",
-          "text": "它記錄了委員會成立、報告送出，還有判斷沒有完成。",
+          "text": "二月休會前，議會沒有對報告作出判斷；證詞卻照樣印成了一冊。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ],
-      "chapter": "報告沒有替那一夜畫下句號"
+      "chapter": "議會休會，證詞仍被印出"
     },
     {
       "id": "fire106",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a hearing table by day, one clerk closes a blank testimony folio, soft window light",
+        "prompt": "Medium shot in a seventeenth-century print shop by day, one printer sets down a blank title sheet, grey window light",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire106",
-          "text": "所以不能把屋主的自辯，叫作證明烤爐絕對無辜。",
+          "text": "這冊書的封面，把大火證詞與宗教指控放在同一個題名裡。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1861,14 +1916,14 @@
       "id": "fire107",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a hearing room by day, one clerk lays a plain folder face down, grey side light",
+        "prompt": "Medium shot at a writing desk by day, one reader turns a plain booklet page, soft window light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "fire107",
-          "text": "也不能把那人的自白，直接畫成有人闖進布丁巷放火。",
+          "text": "紙張能把相隔數月的說法放在一起，卻不能把它們變成同時發生的現場。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1884,7 +1939,7 @@
       "lines": [
         {
           "id": "fire108",
-          "text": "倫敦博物館提出烤爐火星的可能；它能證明那一夜嗎？",
+          "text": "如今倫敦博物館把烤爐火星列為可能；這個可能還差什麼才是證據？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1900,7 +1955,7 @@
       "lines": [
         {
           "id": "fire109",
-          "text": "「可能」回答的是點火途徑，還不是那晚究竟發生什麼。",
+          "text": "得找出火星從爐內到第一件燃物的痕跡；這些紀錄沒有那個環節。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1916,7 +1971,7 @@
       "lines": [
         {
           "id": "fire110",
-          "text": "至於起點，刊本與佩皮斯聽到的地址都指向布丁巷。",
+          "text": "還記得塔官報給佩皮斯的屋址嗎？它把人帶到起點，帶不到點火動作。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1932,7 +1987,7 @@
       "lines": [
         {
           "id": "fire111",
-          "text": "至於擴大，日記裡有乾燥、強風、密屋和撤物的人潮。",
+          "text": "文森特的街道路線，則從火已衝出那戶屋子之後開始。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1948,7 +2003,7 @@
       "lines": [
         {
           "id": "fire112",
-          "text": "拆屋追不上火，飛火又越屋；真能只算在一個烤爐身上嗎？",
+          "text": "可是，那間屋的地址，能斷定城裡每條街都遭殃嗎？",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1964,7 +2019,7 @@
       "lines": [
         {
           "id": "fire113",
-          "text": "有的街區守住了，有的沒有；測量員才會寫下那個巨大屋數。",
+          "text": "測量員記下的那片未燒土地，讓「全城燒光」有了邊界。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1980,7 +2035,7 @@
       "lines": [
         {
           "id": "fire114",
-          "text": "答案是：火從麵包師屋子起，烤爐是否點火仍無定論。",
+          "text": "那間屋子的地址、第一顆火星、最後的損失，需要三種不同的證據。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -1996,7 +2051,7 @@
       "lines": [
         {
           "id": "fire115",
-          "text": "倫敦城的大損失，是火遇上風、街屋與阻火困難的結果。",
+          "text": "倫敦城的災情要沿每段火線計算，不能倒寫成一個人的爐子造成全部結果。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -2012,7 +2067,7 @@
       "lines": [
         {
           "id": "fire116",
-          "text": "把全城災難只算在一個烤爐頭上，超過了這些紀錄能證明的事。",
+          "text": "開場那間麵包師的屋子確是起點；烤爐火星無從證實，也不能單獨解釋城市的大損失。",
           "emotion": "自然說書；來源層級稍放慢"
         }
       ]
@@ -2030,7 +2085,7 @@
       "lines": [
         {
           "id": "fire999a",
-          "text": "一間屋的起點有記錄；一顆烤爐火星，還沒有被證實。",
+          "text": "這一頁，蓋上「未結」章。",
           "emotion": "清楚收束"
         },
         {
@@ -2040,7 +2095,7 @@
         },
         {
           "id": "fire999c",
-          "text": "想從當年的記錄分清傳說與證據，訂閱奇聞檔案局。",
+          "text": "當年的日記和證詞刊本固定版連結，都放在說明欄供你核對。",
           "emotion": "自然收束"
         }
       ]
@@ -2060,7 +2115,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "一間麵包店真的燒毀倫敦？1666 年大火的起點與火源｜奇聞檔案局",
-    "description": "1666 年倫敦大火從布丁巷 Thomas Farriner 的屋子開始，這和「一個烤爐火星毀了倫敦」是同一句話嗎？佩皮斯的日記看見風、飛火與拆屋困難；1667 年的證詞集留下烘焙師的否認，卻沒有留下點火瞬間或國會判決。\n\n本集依當年日記與印刷品撰稿。畫面為原創 AI 卡通示意，不是現場影像、真實手稿或火源重建。London Museum 與 London Gazette 的說法參照 2026-10-12 既有來源查核；2026-10-20 雲端代理連線兩站遭 CONNECT 403，正式來源覆核仍待完成。\n\n佩皮斯日記固定版：https://github.com/GITenberg/The-Diary-of-Samuel-Pepys---Complete_4200/blob/68fcf49f70ee793b989a6fd0464264d55beb4451/4200.txt\n1667 年委員會證詞刊本固定版：https://github.com/textcreationpartnership/A63385/blob/4ac29739d661a1c7f2a34f51ffb8a1811176f146/A63385.xml\n文森特 1667 年記述固定版：https://github.com/textcreationpartnership/A64990/blob/e15ce8bba340e6089deec4ff85b486842e568434/A64990.xml\nLondon Gazette 第 85 號：https://www.thegazette.co.uk/London/issue/85/data.pdf\nLondon Museum：https://www.londonmuseum.org.uk/collections/london-stories/great-fire-of-london/\n\n資料截至 2026-10-20",
+    "description": "1666 年倫敦大火從布丁巷 Thomas Farriner 的屋子開始，這和「一個烤爐火星毀了倫敦」是同一句話嗎？佩皮斯的日記看見風、飛火與拆屋困難；1667 年的證詞集留下烘焙師關於餘火的自辯與休伯特的自白，卻沒有留下點火瞬間或議會判決。\n\n本集依當年日記與印刷品撰稿。畫面為原創 AI 卡通示意，不是現場影像、真實手稿或火源重建。London Museum 與 London Gazette 的說法參照 2026-10-12 既有來源查核；2026-10-20 雲端代理連線兩站遭 CONNECT 403，正式來源覆核仍待完成。\n\n佩皮斯日記固定版：https://github.com/GITenberg/The-Diary-of-Samuel-Pepys---Complete_4200/blob/68fcf49f70ee793b989a6fd0464264d55beb4451/4200.txt\n1667 年委員會證詞刊本固定版：https://github.com/textcreationpartnership/A63385/blob/4ac29739d661a1c7f2a34f51ffb8a1811176f146/A63385.xml\n文森特 1667 年記述固定版：https://github.com/textcreationpartnership/A64990/blob/e15ce8bba340e6089deec4ff85b486842e568434/A64990.xml\nLondon Gazette 第 85 號：https://www.thegazette.co.uk/London/issue/85/data.pdf\nLondon Museum：https://www.londonmuseum.org.uk/collections/london-stories/great-fire-of-london/\n\n奇聞檔案局頻道：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\n\n資料截至 2026-10-20",
     "tags": [
       "倫敦大火",
       "1666年",

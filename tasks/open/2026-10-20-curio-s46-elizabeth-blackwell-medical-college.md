@@ -81,3 +81,5 @@ R4 書面畫面獨立覆核 [verify-8.md](../../docs/videos/curio-s46/verify-8.m
 2026-10-20 R11 [作者政策窄修](../../docs/videos/curio-s46/verify-20.md)：只把 `bkw999c` 口頭訂閱句改成來源固定連結在說明欄的核對指引；畫面訂閱 CTA、歷史正文與提示詞、頻道／來源 URL 未改。新 `script.md` SHA `3cc22cc5b69a782a420a78396f715bc22670dddfda3cf3c7ddacaa352df7194a`、`video.json` `f59ec9508ce6f5d61f867e2d2a74c74166a3bde4282b4153c9b71f07469f752b`、`claims.md` `947e5afe656da6df441a4d053e895944342584d3c43c23caa729cbb0aba4d609`；120/120 對齊，lint 0 errors／1 個「未口播訂閱」warning，正文仍估約 8:06。Jev **未指出** R10 業配分數的來源，R11 此改法僅是合理候選，不是政策 PASS。下一人須獨立差分審核、兩名新讀者盲讀，再對精確 R11 做新 `explainer` 政策判讀；無 TTS、插圖、配樂、成片或網站核准。
 
 2026-10-20 R11 [另一位工作者獨立來源／書面畫面差分](../../docs/videos/curio-s46/review/r11-source-independent.md) **PASS**：固定原著 URL 確在上架說明欄，歷史 119 句與畫面不變，120/120 對齊；此 PASS 不代替兩名新讀者或新 Jev 政策，亦不核准網站／媒體。
+
+2026-10-20 R11 語音實製及不明確音檢見 [verify-21](../../docs/videos/curio-s46/verify-21.md)：120 句初合成、16 句及 8 句各一次定點重唸，第三次完整覆核在 `bkw044` 轉寫遇 HTTP 504 並留 `held` journal；不能宣稱音訊 PASS，不能重送同音檔。R12 [作者單句改稿](../../docs/videos/curio-s46/verify-22.md)換新 `bkw044` 文字，原請求仍保留；其獨立來源／畫面、雙盲、政策與站台精確版關卡仍待過。未做插圖、配樂、成片或公開上傳。
