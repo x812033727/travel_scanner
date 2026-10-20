@@ -543,7 +543,7 @@ describe("AdminVideoReviews", () => {
     } });
   });
 
-  it("offers a pipeline video eight languages, titles and captions in all of them, and dubs only in en, ja and ko", async () => {
+  it("offers a pipeline video eight languages, with titles, captions and a dub in each", async () => {
     const puts: Array<{ url: string; body: unknown }> = [];
     let locales: Record<string, unknown> = {};
     const eight = ["en", "ja", "ko", "es", "pt", "id", "vi", "th"];
@@ -568,20 +568,26 @@ describe("AdminVideoReviews", () => {
     const panel = await screen.findByRole("region", { name: "這支影片的語言" });
     const box = (name: string) => within(panel).getByRole("checkbox", { name }) as HTMLInputElement;
     expect(panel.querySelectorAll("tbody tr")).toHaveLength(8);
+    // Since 2026-10-20 the worker dubs the five as well: no box is greyed out.
     for (const name of ["西班牙文（拉丁美洲）", "葡萄牙文（巴西）", "印尼文", "越南文", "泰文"]) {
       expect(box(`${name} 標題與說明`).disabled, name).toBe(false);
       expect(box(`${name} CC 字幕`).disabled, name).toBe(false);
-      expect(box(`${name} 配音`).disabled, name).toBe(true);
-      expect(box(`${name} 配音`).closest("label")?.getAttribute("title")).toContain("只有匯入的影片能選");
+      expect(box(`${name} 配音`).disabled, name).toBe(false);
+      expect(box(`${name} 配音`).closest("label")?.getAttribute("title"), name).toBeNull();
     }
     expect(box("日文 配音").disabled).toBe(false);
 
+    // The defaults never tick a dub; a dub ticked by hand is saved with its captions.
     fireEvent.click(within(panel).getByRole("button", { name: "照預設勾選" }));
     await waitFor(() => expect(box("泰文 CC 字幕").checked).toBe(true));
+    expect(box("泰文 配音").checked).toBe(false);
+    fireEvent.click(box("泰文 配音"));
+    fireEvent.click(box("葡萄牙文（巴西） 配音"));
     fireEvent.click(within(panel).getByRole("button", { name: "儲存" }));
     await waitFor(() => expect(puts).toHaveLength(1));
     const both = { metadata: true, captions: true, dub: false };
-    expect(puts[0].body).toEqual({ locales: Object.fromEntries(eight.map((locale) => [locale, both])) });
+    const dubbed = { metadata: true, captions: true, dub: true };
+    expect(puts[0].body).toEqual({ locales: Object.fromEntries(eight.map((locale) => [locale, ["pt", "th"].includes(locale) ? dubbed : both])) });
   });
 
   it("does not infer a story's final approval from early locale choices or an older cut", () => {
