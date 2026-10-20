@@ -1,0 +1,2073 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s52",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，自然歷史說書；大溪地人和英國船長的來源層級要說清楚。",
+    "performance": "跟著皇家學會派船、海灣觀測處、分遣隊、六月三日的接觸時刻走；不把後出傳記當第二次觀測。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sources": [
+    {
+      "title": "James Cook first-voyage journal, Wharton 1893 transcription; fixed GITenberg text",
+      "url": "https://github.com/GITenberg/Captain-Cook-s-Journal-During-His-First-Voyage-Round-the-World--13-Made-in-H.-M.-Bark--Endeavo__8106/blob/2db69c74a62f35649149b141a437a05fc0f9fdab/8106.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Andrew Kippis late-eighteenth-century narrative; fixed GITenberg text",
+      "url": "https://github.com/GITenberg/Narrative-of-the-Voyages-Round-the-World-Performed-by-Captain-James-Cook--13-With-an-Account-o__7777/blob/4e42d95f91cc87a616b030b0f1e2e58776332fd1/7777.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Green and Cook 1771 Royal Society transit observations, fixed Royal Society Corpus transcription (OCR; numeric table columns not independently verified)",
+      "url": "https://github.com/markjhill/2025-helsinki_cascade/blob/2ac861600a431e8cb2e2eae3b1cdcd33b7350207/data/rsc/Royal_Society_Corpus_open_v6.0_texts_txt/Royal_Society_Corpus_open_v6.0_text_106113.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "s52005",
+      "payoff": "s52016",
+      "what": "皇家學會為何派人遠航"
+    },
+    {
+      "setup": "s52006",
+      "payoff": "s52069",
+      "what": "哪兩支隊伍"
+    },
+    {
+      "setup": "s52007",
+      "payoff": "s52122",
+      "what": "後出單人表之外的兩人觀測紀錄"
+    },
+    {
+      "setup": "s52008",
+      "payoff": "s52009",
+      "what": "誰向國王請求派船"
+    },
+    {
+      "setup": "s52015",
+      "payoff": "s52016",
+      "what": "怎麼會值得一趟漫長"
+    },
+    {
+      "setup": "s52053",
+      "payoff": "s52310",
+      "what": "五月觀測儀器何時安置妥當"
+    },
+    {
+      "setup": "s52057",
+      "payoff": "s52058",
+      "what": "為什麼臨時還要教會"
+    },
+    {
+      "setup": "s52078",
+      "payoff": "s52128",
+      "what": "這份日誌能否比對三處逐人的接觸秒數"
+    },
+    {
+      "setup": "s52081",
+      "payoff": "s52083",
+      "what": "天氣，會是什麼樣子"
+    },
+    {
+      "setup": "s52205",
+      "payoff": "s52097",
+      "what": "哪兩次接觸最難看清"
+    },
+    {
+      "setup": "s52101",
+      "payoff": "s52102",
+      "what": "暗影令哪一步難記"
+    },
+    {
+      "setup": "s52105",
+      "payoff": "s52106",
+      "what": "結果能對上嗎"
+    },
+    {
+      "setup": "s52116",
+      "payoff": "s52118",
+      "what": "能算出秒差嗎"
+    },
+    {
+      "setup": "s52123",
+      "payoff": "s52125",
+      "what": "回來時會怎麼說"
+    },
+    {
+      "setup": "s52019",
+      "payoff": "s52026",
+      "what": "請求書候選地點與最後落腳處"
+    },
+    {
+      "setup": "s52202",
+      "payoff": "s52204",
+      "what": "下午兩次接觸時間"
+    },
+    {
+      "setup": "s52127",
+      "payoff": "s52128",
+      "what": "成功能否算兩隊逐人秒差"
+    },
+    {
+      "setup": "s52064",
+      "payoff": "s52074",
+      "what": "兩支外派隊伍往哪裡"
+    },
+    {
+      "setup": "s52313",
+      "payoff": "s52314",
+      "what": "觀測鐘每日變慢如何校對"
+    },
+    {
+      "setup": "s52319",
+      "payoff": "s52320",
+      "what": "庫克與格林是否記下真正邊緣的瞬間"
+    },
+    {
+      "setup": "s52321",
+      "payoff": "s52322",
+      "what": "微弱亮線何時才算斷掉"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s52001",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside an open observation canopy on transit day, one anonymous observer studies a plain sun disk diagram beside a shaded shelter, gentle window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52001",
+          "text": "一七六九年六月三日，庫克在大溪地岸上的觀測處等候。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ],
+      "chapter": "六月三日，觀測處等待接觸"
+    },
+    {
+      "id": "s52002",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a shaded Tahitian shore observatory on transit day, three anonymous observers prepare near separate covered generic instruments, diffuse daylight; no direct sun viewing or precise apparatus reconstruction",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52002",
+          "text": "格林和索蘭德也在這裡，準備觀測金星走過太陽。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52003",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a research table with blank transit charts, one anonymous observer traces a small dot toward the rim of a blank circle, mild shaded light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52003",
+          "text": "三人要各自記下金星碰到太陽邊緣的時刻。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52004",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a plain observation shelter on transit day, one document curator holds two blank timing slips apart, late afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52004",
+          "text": "同一個接觸瞬間，三人的秒數會一樣嗎？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an eighteenth-century archive room by day, one anonymous clerk places a sealed blank petition beside a plain Sun disk diagram, gentle window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52005",
+          "text": "而皇家學會，為什麼會派人到南太平洋追這一刻？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52006",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a quiet shoreline in June 1769, one anonymous boat crew member carries a plain instrument box toward a small boat, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52006",
+          "text": "又是哪兩支隊伍，帶著儀器離開了這裡？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52007",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a research table with blank transit charts, one journal editor examines a single blank ruled timing sheet, diffuse daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52007",
+          "text": "後出那張四格表之外，還有誰的接觸記錄？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52008",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a simple observation shelter on transit day, one anonymous observer studies an unmarked route chart beside a blank clock face, mild shaded light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52008",
+          "text": "這場讀秒任務，最初是誰向國王提出派船請求？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52009",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an eighteenth-century archive room by day, one source researcher turns a blank calendar page on a desk, late afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52009",
+          "text": "為了抓準那個碰上太陽邊緣的瞬間，一七六八年二月，皇家學會向國王請求派船。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ],
+      "chapter": "一七六八年，皇家學會請求派船"
+    },
+    {
+      "id": "s52010",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an eighteenth-century archive room by day, one anonymous clerk holds a sealed blank petition, soft overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52010",
+          "text": "船要把觀測人員送到南太平洋，才有機會記下接觸時刻。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52011",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an eighteenth-century archive room by day, one anonymous clerk turns a blank February calendar page, gentle window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52011",
+          "text": "請求書定在二月十五日，這時航程還未開始。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52012",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an eighteenth-century archive room by day, one anonymous clerk sets several blank royal seals beside a plain petition, diffuse daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52012",
+          "text": "請求書還說，歐洲其他宮廷也在關注這次觀測。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52013",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an eighteenth-century archive room by day, one anonymous clerk places a blank observer roster beside a sealed paper, mild shaded light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52013",
+          "text": "國王同意派船，觀測者由皇家學會挑選。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52014",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an eighteenth-century archive room by day, one anonymous dock worker carries a plain crate beside a ship, late afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52014",
+          "text": "四月三日，學會接到消息：船已經找到了。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52015",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an eighteenth-century archive room by day, one journal editor compares a blank map and a circular sky chart, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52015",
+          "text": "這項任務怎麼會值得一趟漫長的航行？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52016",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a later archive room by day, one document curator points between a paper Earth disk and a Sun disk, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52016",
+          "text": "十九世紀編者解釋，當時想改進日地距離估算。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52017",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a later archive room by day, one source researcher draws a line between two plain orbital circles, diffuse daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52017",
+          "text": "他稱日地距離，是其他天文測量的重要基線。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52018",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a later archive room by day, one map historian places a later book beside an older journal, mild shaded light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52018",
+          "text": "這是後來的編者說明，不是庫克當天的話。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52301",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an eighteenth-century archive table by day, one anonymous researcher arranges two unlabelled South Sea island sketches beside a sealed petition, warm side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52301",
+          "text": "基皮斯記當時候選有馬克薩斯，以及被稱作友誼群島的幾座島。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52019",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a later maritime archive table by day, one anonymous researcher places two blank island sketches beside an unmarked ship model, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52019",
+          "text": "請求書列的候選島嶼還不是大溪地；最後會在哪裡落腳？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52020",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a plain observation shelter on transit day, one document curator draws a plain circle and one small dot, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52020",
+          "text": "太陽在示意圖裡是一個圓，金星是一個小點。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52021",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside an open observation canopy on transit day, one source researcher moves a small dark token across a paper circle, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52021",
+          "text": "小點進到圓內，又從另一邊離開；哪一刻該記？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52022",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an anonymous reading table by day, one map historian lifts a blank ruled timing page, diffuse daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52022",
+          "text": "表上要記的，不只是「我看到了」。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52023",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an anonymous reading table by day, one journal editor points to four unmarked ticks around a drawn circle, mild shaded light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52023",
+          "text": "還要把小點進入與離開圓盤時的接觸分開記。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52024",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain observation shelter on transit day, one document curator aligns two blank timing strips, late afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52024",
+          "text": "這些時刻如果看得不一樣，數字就難以對照。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52025",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an eighteenth-century archive room by day, one anonymous sailor studies a shaded coastal chart, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52025",
+          "text": "不管去哪座島，隊伍都得找到可設觀測站的岸地。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52026",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a populated coastal bay in April 1769 by day, one anonymous Tahitian adult carries a basket along the lived-in bay, gentle window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52026",
+          "text": "船到了大溪地海灣；岸上已有當地人往來，觀測站會佔哪一段？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52028",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a populated coastal bay in April 1769 by day, one anonymous sailor looks over an open sandy shore beside the water, mild shaded light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52028",
+          "text": "四月十五日，庫克選了這座海灣東北角的岸地。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ],
+      "chapter": "四月十五日，選定觀測岸地"
+    },
+    {
+      "id": "s52029",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a populated coastal bay in April 1769 by day, one anonymous sailor looks over a flat observation shore beside the water, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52029",
+          "text": "他的日誌說，這位置適合觀測金星。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52035",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a populated coastal bay in April 1769 by day, one anonymous sailor marks a line in sand beside a plain tent, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52035",
+          "text": "他們搭起帳篷，又在沙地標出要佔的範圍。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52307",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a simple shore tent on 17 April 1769 night, two anonymous observers wait beside covered generic instruments, dim lamplight; no identifiable portraits or exact telescope reconstruction",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52307",
+          "text": "四月十七日，庫克和格林在岸上帳篷過夜，等木星第一顆衛星發生食。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52308",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of clouds beyond a dark tent opening on 17 April 1769 night, a generic covered instrument rests inside; no reconstructed eclipse or direct solar viewing",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52308",
+          "text": "但雲擋住了；那次天象，他們沒能看見。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52053",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a shaded shore observatory in early May 1769, one anonymous observer checks a covered instrument box, mild shaded light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52053",
+          "text": "到了五月，儀器何時才安置好？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52310",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot under a plain shore observation tent, one anonymous observer secures a covered instrument case beside a unmarked report page, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52310",
+          "text": "一七七一年刊出的觀測原報說：到五月十日，儀器才安置妥當。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ],
+      "chapter": "五月，鐘和觀測者就位"
+    },
+    {
+      "id": "s52311",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a shaded observation tent, one anonymous attendant carefully checks a clock enclosed by simple wooden frames, soft light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52311",
+          "text": "帳篷一端放著天文鐘；鐘固定在木架上，外頭還圍一層木架，以免意外碰動。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52312",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside an observation tent, one anonymous researcher studies unmarked instrument inventory cards next to a simple covered clock, overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52312",
+          "text": "報告還列出兩具望遠鏡和一座天文象限儀；這次要記的是鐘上的時刻。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52313",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a shaded research table, one anonymous reader compares two unmarked clock charts with a finger, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52313",
+          "text": "如果鐘每天慢一點，精確到秒的記錄還能直接拿來比嗎？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52314",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a plain archive by day, one researcher points to an unlettered ruled chart beside an abstract sun arc, diffuse daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52314",
+          "text": "原報附有用太陽等高度校鐘的長表，六月三日那一欄也在其中。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52054",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a shaded shore observation station in late May 1769, one anonymous observer opens a covered instrument case near an unmarked journal, bright gentle daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52054",
+          "text": "五月三十日，器材雖已就位，庫克仍記隊伍正忙著準備觀測。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52055",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a shaded shore observation station in late May 1769, one anonymous instructor demonstrates a generic covered instrument case to another adult, soft indirect daylight; no reconstructed optics",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52055",
+          "text": "同一天，受訓的不只留在本站的人。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52056",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a shaded shore observatory in late May 1769, one anonymous learner packs a blank chart beside a case, gentle window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52056",
+          "text": "庫克在教預定到其他地點觀測的人使用儀器。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52057",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a shaded shore observatory in late May 1769, one anonymous observer offers a blank worksheet to another person, diffuse daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52057",
+          "text": "這些人為什麼要離開主觀測處？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52058",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a shaded shore observatory in late May 1769, one anonymous sailor packs an unmarked instrument case for travel, mild shaded light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52058",
+          "text": "庫克打算讓他們帶上儀器，分到別處觀測。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52059",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a shaded shore observatory in late May 1769, one anonymous observer studies an uncertain weather sketch, late afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52059",
+          "text": "原因寫在日誌裡：他怕本站失手。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52063",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a research table with blank transit charts, one journal editor sets three plain observer markers by a shore map, mild shaded light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52063",
+          "text": "留在岸邊的一組，則由庫克、格林和索蘭德觀測。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52064",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a quiet shoreline in June 1769, one anonymous sailor places two small markers on a coastal chart, late afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52064",
+          "text": "另兩組要把儀器帶往哪裡？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52309",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a modern explanatory table, one source researcher places a blank longboat marker beside a plain May 31 calendar card, diffuse light; conceptual, no vessel reconstruction",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52309",
+          "text": "五月三十一日傍晚，庫克記前往別處的長艇剛完工。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52067",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a quiet shoreline in June 1769, one anonymous rower steadies a small boat near a quiet shore, diffuse daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52067",
+          "text": "六月一日，第一支船隊先離岸。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52068",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a quiet shoreline in June 1769, one anonymous sailor lifts a covered box aboard a boat, mild shaded light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52068",
+          "text": "它帶走的不只是船員，還有觀測儀器。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52069",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a quiet shoreline in June 1769, one anonymous rower steers toward a nearby island across muted water, late afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52069",
+          "text": "庫克派戈爾一行前往鄰近的伊美奧島。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ],
+      "chapter": "六月一至二日，兩隊出發"
+    },
+    {
+      "id": "s52070",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a quiet shoreline in June 1769, one anonymous observer hands a plain instrument box to a boat crew member, soft overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52070",
+          "text": "格林替他們備了儀器。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52071",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a quiet shoreline in June 1769, one anonymous Tahitian adult steps into a boat with a basket, gentle window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52071",
+          "text": "班克斯和一些大溪地人，也搭同一艘長艇過去。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52074",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a quiet shoreline early on 2 June 1769, one anonymous rower guides a second small boat toward the east coast, cool early-morning light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52074",
+          "text": "隔天清早，希克斯又往大溪地東面走。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a quiet shoreline in June 1769, one anonymous sailor secures another covered box in a boat, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52075",
+          "text": "希克斯接到的命令，是在東邊找合適地點觀測。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52076",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a populated coastal bay in early June 1769 by day, one anonymous observer waits beside a plain shore shelter, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52076",
+          "text": "主觀測處還留在庫克選的海灣岸上。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52077",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a quiet shoreline in June 1769, one source researcher sets three unmarked dots on a simple island map, diffuse daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52077",
+          "text": "於是三個地點，都在等同一天的天象。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52078",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a small reading room with paper diagrams, one map historian holds three blank timing slips with one missing, mild shaded light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52078",
+          "text": "但只看這幾天的庫克日誌，三處逐人的接觸秒數能互相對上嗎？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52079",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a quiet shoreline in June 1769, one journal editor compares a route sketch with one ruled time sheet, late afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52079",
+          "text": "出發的記錄只說人和儀器去了哪裡，還沒給三處逐人的讀時表。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52080",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a quiet shoreline in June 1769, one anonymous observer closes an equipment case beside a tent, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52080",
+          "text": "兩隊離開後，庫克仍留在岸上等六月三日。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52303",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a simple eighteenth-century shelter on the night before transit day, one anonymous observer sits awake beside covered instruments, dim lamplight; no claim about the night weather",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52303",
+          "text": "基皮斯後來形容，觀測前夜眾人擔心天氣，睡得不安穩。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52081",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside an open observation canopy on transit day, one anonymous observer checks the clear sky indirectly through a shaded shelter, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52081",
+          "text": "他們能得到的天氣，會是什麼樣子？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52082",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a small reading room with paper diagrams, one map historian opens the journal at a plain June calendar, diffuse daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52082",
+          "text": "六月三日，庫克寫天氣好得像為觀測而來。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ],
+      "chapter": "六月三日，金星走進太陽圓盤"
+    },
+    {
+      "id": "s52083",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a research table with blank transit charts, one anonymous observer stands under a shaded roof with a clear sky beyond, mild shaded light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52083",
+          "text": "庫克還記下空氣極清、那天幾乎無風。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52206",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a shaded observation shelter on transit day, one anonymous observer points to the rim of a plain paper sun disk beside a blank timing slip, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52206",
+          "text": "天氣這一關過了；接下來受考驗的，是金星靠近太陽圓邊的那一刻。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52084",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain observation shelter on transit day, one document curator slides a small dark token across a white circle, late afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52084",
+          "text": "三人看見金星走過太陽圓盤的完整過程。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52086",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an anonymous reading table by day, one anonymous observer points to a paper sun diagram indoors, gentle window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52086",
+          "text": "從剛碰上，到完全離開，一共要記四種接觸。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52087",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an anonymous reading table by day, one journal editor places a small token against the outer rim of a paper circle, diffuse daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52087",
+          "text": "金星剛沾上圓盤外緣，是第一個接觸。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52088",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an anonymous reading table by day, one document curator moves the dark token wholly inside a paper circle, mild shaded light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52088",
+          "text": "它完全進入圓盤，才是第一個內接觸。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52089",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside an open observation canopy on transit day, one later researcher studies the dot against a softly marked rim, late afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52089",
+          "text": "記下這一刻時，他們眼裡的邊有多清楚？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52304",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a modern explanatory table, one source researcher compares a schematic dark dot touching a plain circle edge with a blank clock face, diffuse daylight; diagram only, no direct solar viewing",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52304",
+          "text": "在這張示意圖裡，每個人得自己判定小點與圓邊何時剛好相碰。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52094",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an anonymous reading table by day, one map historian points to four blank ruled rows in a later book, late afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52094",
+          "text": "基皮斯把這四個接觸時刻，印成一張表。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52090",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an anonymous reading table by day, one map historian points to one marked first row on a timing card, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52090",
+          "text": "第一格寫上午九點二十五分四十二秒，是金星剛碰到外緣。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52202",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a later reading table by day, one source researcher studies an unmarked four-row timing page beside an abstract Sun disk edge sketch, diffuse daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52202",
+          "text": "等金星走到另一側，最後一次接觸又是何時？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52092",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an anonymous reading table by day, one document curator moves the token toward the opposite inner rim, diffuse daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52092",
+          "text": "它開始離開圓盤時，先出現第二次內接觸。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52093",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an anonymous reading table by day, one source researcher lifts the token clear of the paper circle, mild shaded light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52093",
+          "text": "再往後，金星才完全離開太陽的圓面。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52204",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an anonymous reading table by day, one source researcher indicates the fourth blank ruled row beside an abstract planet dot, gentle window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52204",
+          "text": "格林那張表的最後一格是下午三點三十二分十秒。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52205",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a later reading table by day, one document curator traces a long unnumbered span beside four blank timing rows, diffuse daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52205",
+          "text": "四格看似都很精確；庫克說哪兩格最難看清？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52095",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a research table with blank transit charts, one journal editor aligns a precise ruled table with three separated markers, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52095",
+          "text": "秒數排得很細，不表示每個人都認定同一秒。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52097",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside an open observation canopy on transit day, one anonymous observer studies the two inner-rim positions on a diagram, diffuse daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52097",
+          "text": "庫克說，尤其難判的是兩次內接觸。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52098",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a small reading room with paper diagrams, one map historian studies a soft dark edge on a schematic drawing, mild shaded light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52098",
+          "text": "圓點與邊緣剛好相切，眼前並非銳利一線。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52099",
+      "template": "big",
+      "data": {
+        "text": "「大氣或暗影」",
+        "kicker": "庫克六月三日日誌",
+        "sub": "原文 Atmosphere or Dusky shade"
+      },
+      "lines": [
+        {
+          "id": "s52099",
+          "text": "他看到金星周圍有「大氣或暗影」。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52100",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a plain observation shelter on transit day, one document curator sets a question marker beside a quoted journal page, soft overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52100",
+          "text": "這是他用的詞，不是我們已證實的成因。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52101",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside an open observation canopy on transit day, one source researcher moves a marker toward a blurred circle rim, gentle window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52101",
+          "text": "那層模糊，究竟讓哪一步變得難記？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52102",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a modern explanatory table, one source researcher points from a schematic dusky dot edge to an unnumbered timing row, diffuse daylight; no precise historical instrument",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52102",
+          "text": "庫克說，那層暗影干擾了接觸時刻的判定。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ],
+      "chapter": "接觸時刻，三人記得不一樣"
+    },
+    {
+      "id": "s52103",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain journal table by day, one anonymous reader points to three unmarked note slips alongside a closed telescope case, gentle daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52103",
+          "text": "庫克接著在日誌裡，把三人的讀時放在同一句。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52105",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside an open observation canopy on transit day, one source researcher arranges three blank timing slips side by side, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52105",
+          "text": "這些各自記下的時間，會得出一樣的結果嗎？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52106",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a small reading room with paper diagrams, one map historian separates three unmarked time cards, gentle window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52106",
+          "text": "庫克寫，自己、格林和索蘭德記的時刻不同。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52107",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a research table with blank transit charts, one journal editor looks at three unevenly placed clock markers, diffuse daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52107",
+          "text": "差距比他們預料的還大。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52109",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside an open observation canopy on transit day, one source researcher holds a full path drawing beside a single rim mark, late afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52109",
+          "text": "可看完整段天象，與抓準邊緣一刻，是兩件事。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52110",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a small reading room with paper diagrams, one later researcher compares two unmarked viewing circles, soft overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52110",
+          "text": "分歧會不會只跟望遠鏡倍率有關？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52111",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a research table with blank transit charts, one journal editor compares two generic circles of different sizes on paper, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52111",
+          "text": "庫克還說，三人的望遠鏡倍率也不全一樣。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52112",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a plain observation shelter on transit day, one document curator points to a larger circle beside two equal circles, diffuse daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52112",
+          "text": "索蘭德的倍率，比庫克和格林的更大。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52113",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside an open observation canopy on transit day, one source researcher compares two equal simple viewing circles on paper, mild shaded light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52113",
+          "text": "庫克與格林的兩具，倍率則一樣。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52305",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a modern source desk, one historian aligns two equal schematic viewing circles beside two different unnumbered time slips, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52305",
+          "text": "同倍率的庫克與格林，也在庫克筆下列為接觸讀時不同的兩人。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52114",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a small reading room with paper diagrams, one map historian leaves a causal arrow on a diagram unfinished, late afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52114",
+          "text": "但日誌沒有說，倍率就是分歧的唯一原因。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52115",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a research table with blank transit charts, one journal editor closes an unlabeled modern handbook, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52115",
+          "text": "把它直接叫作某個現代效應，也超出了這段文字。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52116",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a later reading table by day, one document curator opens a plain book beside three blank observation slips, gentle window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52116",
+          "text": "還記得基皮斯那張表嗎？只靠它，真能算出三人相差幾秒嗎？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52117",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a later reading table by day, one source researcher points to a blank prose line above four ruled time rows, diffuse daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52117",
+          "text": "基皮斯在表前只註明：這四個時刻依格林的記錄。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52118",
+      "template": "big",
+      "data": {
+        "text": "格林一人・四個時刻",
+        "kicker": "Kippis 後出轉錄",
+        "sub": "這張表不是三人秒差"
+      },
+      "lines": [
+        {
+          "id": "s52118",
+          "text": "只靠這張表不行；庫克和索蘭德的秒數都沒列在這裡。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52306",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a modern reading room, one document curator lifts a later biography to reveal a separate old blank report volume, diffuse daylight; no readable historical text",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52306",
+          "text": "但基皮斯的後出轉錄，並不是這趟觀測留下的全部記錄。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52121",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an archive reading room, one document curator opens a plain report volume beside a later biography, gentle window light; blank pages without readable text",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52121",
+          "text": "一七七一年的原報轉錄，會不會給出另兩人的記法？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52122",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a quiet archive by day, one researcher arranges three blank observation slips separately beside a source volume, diffuse daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52122",
+          "text": "會。皇家學會的刊物把格林、庫克與索蘭德的觀測分別列出。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52316",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an archive by day, one source reader points at a unmarked sun-and-dot diagram while a single unmarked table lies closed, mild light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52316",
+          "text": "原報中的「碰到」，究竟指哪一道邊？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52317",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a plain observation diagram, one researcher traces a pale ring and a tiny unmarked dot, diffuse daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52317",
+          "text": "原報不只列實體邊緣的時刻，還寫暗影與一絲亮光怎樣出現。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52318",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot under an observation canopy, one anonymous observer studies an abstract dot with a soft halo approaching a unmarked circle, shaded daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52318",
+          "text": "庫克說，最初看見的只是暗影；金星真正的邊緣，要晚幾秒才碰上太陽。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52319",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a research table, one anonymous historian pauses a pencil above a unmarked second-hand chart, soft window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52319",
+          "text": "那晚幾秒，他與格林能不能補記一個準確時刻？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52320",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a plain archive desk, one document curator leaves a unmarked cell between two ruled marks, overcast daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52320",
+          "text": "原報說，兩人都看見了那個瞬間，卻都沒有把時間記下來。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52321",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a transit diagram, one anonymous observer follows a faint thin gap beside a dark dot, soft shaded daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52321",
+          "text": "到了內接觸，微弱亮線一會兒可見、一會兒不見；哪一下才算斷掉？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52322",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on an abstract transit sketch, one anonymous scholar points to a fading narrow gap on a unmarked sun disk, mild light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52322",
+          "text": "亮線不是一下子斷掉；庫克記的是它完全消失的時刻，自己仍說有幾秒拿不準。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52323",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a quiet archive, one researcher studies two nearly touching unmarked circles with a hazy rim, diffuse daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52323",
+          "text": "到最後離開太陽時，他也說，金星的邊與暗影難分，精準時刻無法完全確定。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52324",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a research table, one anonymous historian places a marked uncertainty symbol beside a unmarked timing slip and a simple circle diagram, soft daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52324",
+          "text": "同一晴空下，讀時仍取決於認出哪一道邊、哪一絲光；原報連不確定的地方都留下了。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52123",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a coastal bay in June 1769 by day, one anonymous observer waits at the shore looking toward returning boats, mild shaded light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52123",
+          "text": "至於外派的兩隊，庫克會怎麼記他們的歸來？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52124",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a coastal bay in June 1769 by day, one anonymous rower brings a small boat back toward the bay, late afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52124",
+          "text": "六月四日傍晚，分出去的人返回。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ],
+      "chapter": "六月四日，隊伍帶回消息"
+    },
+    {
+      "id": "s52125",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a coastal bay in June 1769 by day, one source researcher points to a line in a journal beside a returning-boat sketch, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52125",
+          "text": "庫克在日誌裡說，他們帶著成功回來。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52127",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a research table with blank transit charts, one later researcher weighs a blank timing sheet beside a transit sketch, diffuse daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52127",
+          "text": "六月四日的「成功」，能把三處的接觸秒數補齊嗎？",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "s52128",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a research table by day, one document curator places a returning boat sketch beside two unfilled off-site timing columns, mild shaded light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "s52128",
+          "text": "不能；這份日誌只寫隊伍成功返回，這份原報也沒有列外派兩隊逐人的四格時刻。",
+          "emotion": "自然歷史說書；日期及來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "晴空下的差異",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "先看數字由誰留下"
+        ]
+      },
+      "lines": [
+        {
+          "id": "s52997",
+          "text": "下次看到精確到秒的歷史數字，先看它究竟是哪位觀測者留下的。",
+          "emotion": "清楚收束"
+        },
+        {
+          "id": "s52998",
+          "text": "你遇過哪件看得清楚、卻量不準的事？",
+          "emotion": "清楚收束"
+        },
+        {
+          "id": "s52999",
+          "text": "想繼續讀有出處的歷史疑問，訂閱奇聞檔案局。",
+          "emotion": "清楚收束"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "晴天卻讀不準",
+      "tag": "大溪地・1769",
+      "sub": "庫克的金星凌日記錄",
+      "shot": "s52003"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "天空無雲，庫克為何仍記不準金星凌日？｜奇聞檔案局",
+    "description": "1769 年 6 月 3 日，大溪地整天無雲。庫克、格林和索蘭德看見金星完整走過太陽，接觸時刻卻記得不一樣。本集跟著英國的觀測任務、岸上觀測處、兩支分遣隊與當天日誌，讀出「看見凌日」和「讀準接觸時刻」之間的差別。\n\n4 月 15 日英國守衛隊開槍打死一名大溪地人，庫克當時不在帳篷現場。這段敘述來自他的日誌；三份固定文本都不能代表死者或大溪地人的獨立證詞。畫面是原創卡通及天象示意，不是肖像、現場照片、觀測器具重建或裸眼觀日示範。本集對照 Kippis 後出轉錄與 1771 年皇家學會觀測原報的文字轉錄；後者列格林、庫克及索蘭德的觀測，掃描轉錄中的數字欄位未經原版面逐格校對，因此影片不計算三人精確秒差；本片也不把庫克所說的「大氣或暗影」判為某一個現代光學成因。資料核對至 2026-10-20。\n\n庫克日誌固定全文：https://github.com/GITenberg/Captain-Cook-s-Journal-During-His-First-Voyage-Round-the-World--13-Made-in-H.-M.-Bark--Endeavo__8106/blob/2db69c74a62f35649149b141a437a05fc0f9fdab/8106.txt\nKippis 後出敘述固定全文：https://github.com/GITenberg/Narrative-of-the-Voyages-Round-the-World-Performed-by-Captain-James-Cook--13-With-an-Account-o__7777/blob/4e42d95f91cc87a616b030b0f1e2e58776332fd1/7777.txt\nGreen／Cook 1771 年原報文字轉錄：https://github.com/markjhill/2025-helsinki_cascade/blob/2ac861600a431e8cb2e2eae3b1cdcd33b7350207/data/rsc/Royal_Society_Corpus_open_v6.0_texts_txt/Royal_Society_Corpus_open_v6.0_text_106113.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q",
+    "tags": [
+      "金星凌日",
+      "庫克",
+      "大溪地",
+      "1769",
+      "天文史",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}

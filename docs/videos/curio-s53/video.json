@@ -1,0 +1,2205 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s53",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    15
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一段有出處的歷史故事；有起伏，但不替個別住戶配心理或對話。",
+    "performance": "沿著示意小屋的建造、契約、清場與遷後調查前進；數字的母體停半拍，清場要求歸屬於一九一三年報告。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sources": [
+    {
+      "title": "San Francisco Relief Survey (1913), fixed GITenberg text",
+      "url": "https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Charles Morris ed., The San Francisco Calamity (1906), fixed GITenberg text",
+      "url": "https://github.com/GITenberg/The-San-Francisco-Calamity-by-Earthquake-and-Fire_1560/blob/7720f6008349283e7a5e72d2cd52ebfbd4b9b815/1560-0.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "s53006",
+      "payoff": "s53058",
+      "what": "租金變契約"
+    },
+    {
+      "setup": "s53007",
+      "payoff": "s53091",
+      "what": "搬遷費由誰付"
+    },
+    {
+      "setup": "s53008",
+      "payoff": "s53107",
+      "what": "訪查員找到多少"
+    },
+    {
+      "setup": "s53009",
+      "payoff": "s53011",
+      "what": "地震後人們為何暫住公園廣場"
+    },
+    {
+      "setup": "s53032",
+      "payoff": "s53033",
+      "what": "小屋分配先後"
+    },
+    {
+      "setup": "s53048",
+      "payoff": "s53049",
+      "what": "住屋契約"
+    },
+    {
+      "setup": "s53068",
+      "payoff": "s53069",
+      "what": "搬屋先要證明有新地"
+    },
+    {
+      "setup": "s53083",
+      "payoff": "s53086",
+      "what": "搬往何處"
+    },
+    {
+      "setup": "s53100",
+      "payoff": "s53108",
+      "what": "地址為何落空"
+    },
+    {
+      "setup": "s53129",
+      "payoff": "s53130",
+      "what": "失訪部分扣屋"
+    },
+    {
+      "setup": "s53104",
+      "payoff": "s53105",
+      "what": "地址帶來多少完整訪查"
+    },
+    {
+      "setup": "s53111",
+      "payoff": "s53115",
+      "what": "未買地的落腳方式"
+    },
+    {
+      "setup": "s53097",
+      "payoff": "s53107",
+      "what": "搬離營地的小屋，訪查究竟追到多少"
+    },
+    {
+      "setup": "s53116",
+      "payoff": "s53130",
+      "what": "租地繳不起地租後的小屋去向"
+    },
+    {
+      "setup": "s53113a",
+      "payoff": "s53114",
+      "what": "買地戶的已付價款比例"
+    },
+    {
+      "setup": "s53042",
+      "payoff": "s53043",
+      "what": "小屋完工後所餘清場時間"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s53001",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53001",
+          "text": "一九〇七年六月，舊金山的廣場裡，木造救災小屋還在。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "chapter": "一九〇七年，廣場裡的小屋還在",
+      "data": {
+        "prompt": "Medium shot at a public square in 1907, an anonymous adult studies a small stationary cottage from the square path, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53002",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53002",
+          "text": "六月，公園委員會要求救濟機構：八月十七日前清空廣場。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a public square in 1907, an anonymous clerk holds a blank calendar sheet beside a wooden house sketch, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53003",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53003",
+          "text": "搬離的期限就在那年夏天，一排排救災小屋卻還在廣場上。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a public square in 1907, an anonymous park worker points toward a row of plain cottages, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53004",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53004",
+          "text": "有住戶每月繳款，卻還不確定這棟屋到期後能去哪裡。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a public square in 1907, an anonymous resident holds an unmarked folded paper beside a plain wooden house, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53005",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53005",
+          "text": "後來的一九一三年救濟調查，把這道清場要求記了下來。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a 1913 archive desk, an anonymous clerk opens an unmarked survey volume beside a simple cottage drawing, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53006",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53006",
+          "text": "那些按月繳的錢，究竟是在租屋，還是在買屋？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a public square in 1907, an anonymous clerk turns over two blank paper forms, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53007",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53007",
+          "text": "小屋離開營地時，搬遷費會由誰付？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a public square in 1907, an anonymous adult sets coins beside a blank moving-company slip, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53008",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53008",
+          "text": "隔年八月，訪查員去找搬出的屋，又會發現什麼？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a neighborhood street in 1908, an anonymous field worker studies an unmarked city map, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53009",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53009",
+          "text": "他們當初，為何在公園與廣場落腳？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a public square in 1907, an anonymous adult rests a hand on a cottage doorway, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53010",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53010",
+          "text": "一九〇六年四月十八日清晨，地震之後又起大火。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "chapter": "火後，帳棚先佔了空地",
+      "data": {
+        "prompt": "Medium shot at a refuge after the 1906 fire, an unnamed resident shields their eyes beside a distant smoke plume, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53011",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53011",
+          "text": "許多失去住處的人，先在公園與廣場暫住。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a public square after the 1906 fire, an anonymous adult carries a plain blanket toward a canvas tent, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53014",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53014",
+          "text": "營地裡的帳篷，讓人暫時躲雨、休息。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a refuge after the 1906 fire, an unnamed resident straightens a plain canvas tent, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53015",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53015",
+          "text": "但帳棚能讓人一直住到天氣轉壞嗎？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a refuge after the 1906 fire, an anonymous adult checks the edge of a canvas shelter, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53017",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53017",
+          "text": "雨季接近，它決定在營地蓋分開的小屋。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a refuge after the 1906 fire, an anonymous builder sets a plain wooden board beside a simple plan, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53018",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53018",
+          "text": "南公園面積太小，連這種安排都放不下。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a refuge after the 1906 fire, an anonymous surveyor studies a small blank lot diagram, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53020",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53020",
+          "text": "八月一日，救濟機構公開建屋計畫。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a refuge after the 1906 fire, an anonymous clerk carries an unmarked folder toward a work table, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53021",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53021",
+          "text": "這些空地多是公地，卻不歸救濟機構所有。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a public square in August 1906, an anonymous clerk studies an unmarked land plan beside a plain canvas tent, mild overcast light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53023",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53023",
+          "text": "可這些公園廣場，真的能讓救災小屋一直住下去嗎？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a public square in 1906, an anonymous relief worker studies a blank map of park blocks beside cottage sketches, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53024",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53024",
+          "text": "於是它向公園委員會，詢問能否使用那些空地。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a relief office in 1906, an anonymous clerk holds a blank park map before a plain table, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53025",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53025",
+          "text": "委員會無權正式准許，只同意從那年八月起一年內不干預。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a civic office in 1906, an anonymous official studies a blank one-year calendar beside a plain park sketch, soft grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53027",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53027",
+          "text": "木屋還沒動工，場地期限卻已開始倒數。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at an empty 1906 cottage work site, an anonymous worker studies a blank calendar beside a plain pile of boards, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53028",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53028",
+          "text": "九月十日，小屋工程開始。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a refuge after the 1906 fire, an anonymous carpenter measures a plain board at a wooden house site, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "chapter": "木屋排成街，名額卻有順序"
+    },
+    {
+      "id": "s53029",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53029",
+          "text": "六天後，漢密爾頓廣場先完成二十棟。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a refuge after the 1906 fire, an anonymous builder checks a finished cottage doorway, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53030",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53030",
+          "text": "可等著換進木屋的人，還要再等多久？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at a refuge after the 1906 fire, an unnamed resident watches carpenters work on another wooden house, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53031",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53031",
+          "text": "大批小屋，得再過兩三個月才備妥。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a refuge after the 1906 fire, an anonymous adult waits outside an unfinished row of cottages, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53032",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53032",
+          "text": "而小屋蓋好之後，誰能先住進去？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a refuge after the 1906 fire, an anonymous camp worker studies two blank application slips, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53033",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53033",
+          "text": "官方營地住戶，有優先分配小屋的資格。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at an official cottage camp, an anonymous resident points toward a plain wooden cottage among a row of small huts, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53034",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53034",
+          "text": "營地外搭棚的人排在後面，得等官方營地先分完。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot outside an official cottage camp, an unnamed resident folds a plain canvas tent beside a stationary wooden house, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53036",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53036",
+          "text": "也有沒被燒毀住處、卻需要改善住房的人領到小屋。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a cramped 1906 room, an anonymous adult studies a blank cottage application while seated near a plain bed, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53037",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53037",
+          "text": "其中有人領屋後，直接搬往自有或承租的地。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot beside a stationary cottage on a small lot, an anonymous adult studies a blank land diagram, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53048",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53048",
+          "text": "可留在營地的人，該怎樣取得自己住的那棟屋？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at an official building site, an anonymous resident opens an unmarked folder, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53049",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53049",
+          "text": "起初，救濟機構想向小屋住戶收低額租金。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "chapter": "租屋的打算，改寫成買屋",
+      "data": {
+        "prompt": "Medium shot inside a relief office by a park, an anonymous clerk counts a few coins beside a blank lease form, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53050",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53050",
+          "text": "它的早期租約還寫著：按時付款，才可能取得屋子。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a relief office by a park, an unnamed resident studies an unmarked contract page, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53051",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53051",
+          "text": "到期若沒取得所有權，就得讓出小屋。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a relief office by a park, an anonymous adult pauses beside a cottage doorway, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53052",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53052",
+          "text": "取得所有權後，也要自費在期限前搬離營地。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a relief office by a park, an anonymous resident looks toward an unmarked city map, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53053",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53053",
+          "text": "這是早期租約的設計，還不是最後的收款方式。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a relief office by a park, an anonymous clerk places an earlier blank form aside, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53054",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53054",
+          "text": "二房小屋原擬每月收四美元。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a relief office by a park, an anonymous clerk puts a few coins beside a small wooden house model, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53055",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53055",
+          "text": "三房小屋原擬每月收六美元。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a relief office by a park, an anonymous clerk puts a few coins beside a larger cottage model, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53056",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53056",
+          "text": "在市有地上，這筆租金真的收得成嗎？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a relief office by a park, an anonymous clerk pauses before a closed rent ledger, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53057",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53057",
+          "text": "但市有地上的收租，遭市長反對，並被特別條例禁止。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a relief office by a park, an anonymous clerk closes a blank rent ledger, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53058",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53058",
+          "text": "救濟機構改用小屋的分期買賣契約。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a relief office by a park, an anonymous clerk opens a second unmarked contract form, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53059",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53059",
+          "text": "住戶每月付的金額，仍與原擬租金相同。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a relief office by a park, an anonymous adult sets coins beside a blank payment ledger, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53060",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53060",
+          "text": "買的是小屋，不是小屋底下的公園土地。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a relief office by a park, an unnamed resident touches a wooden house wall while viewing a bare lot map, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53061",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53061",
+          "text": "先付過的屋款，日後還有可能拿回來嗎？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a relief office by a park, an anonymous adult studies an unmarked payment receipt, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53062",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53062",
+          "text": "符合買地條件的住戶，後來還獲退回已付屋款。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a relief office by a park, an anonymous clerk places coins in a plain return envelope, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53063",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53063",
+          "text": "所以不能說每一戶都是當場免費拿到房子。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot inside a relief office by a park, an anonymous adult holds an unmarked payment slip, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53038",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53038",
+          "text": "工程直到隔年三月十九日才做完。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at an official building site, an anonymous builder checks a completed wooden house wall, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53039",
+      "template": "stats",
+      "lines": [
+        {
+          "id": "s53039",
+          "text": "官方各營地合計建成五千六百一十棟小屋。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "title": "官方各營地小屋",
+        "stats": [
+          {
+            "value": "5,610",
+            "label": "棟建成"
+          }
+        ],
+        "source": "1913 救濟調查，住房篇"
+      }
+    },
+    {
+      "id": "s53040",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53040",
+          "text": "木屋蓋好，臨時公地的期限卻沒跟著延長。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at an official cottage camp in 1907, an unnamed resident studies a completed small wooden house and a blank calendar, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53041",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53041",
+          "text": "小屋成批建成；搬走時，各戶還得想辦法找下一塊地。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at an official cottage camp in 1907, an anonymous adult points to an unmarked city lot map beside a stationary cottage, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53042",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53042",
+          "text": "工程完工時，留給各戶搬離公地的時間還有多少？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at an official camp in March 1907, an anonymous resident holds an unmarked calendar beside a stationary cottage, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53043",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53043",
+          "text": "從三月十九日算到那道夏末期限，已不到五個月。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at an official camp in March 1907, an anonymous resident points to a plain calendar beside a stationary cottage, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53068",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53068",
+          "text": "期限逼近，屋主要憑什麼把小屋搬出營地？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a relief office by a park, an unnamed resident looks toward another empty lot on a map, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53069",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53069",
+          "text": "調查說，住戶想搬屋，得先證明已買或租到另一塊地。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "chapter": "八月期限到了，廣場沒有立刻空",
+      "data": {
+        "prompt": "Wide shot at a relief office in 1907, an anonymous clerk studies a blank lot deed beside a plain cottage sketch, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53070",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53070",
+          "text": "委員會要求清空各處公園與廣場，不只金門公園。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a public square in 1907, an anonymous park worker studies several unmarked park blocks on a plain city map, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53071",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53071",
+          "text": "到了開場那道八月期限，廣場仍未清空。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at an occupied public square in 1907, an anonymous park worker surveys a still-occupied cottage row, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53073",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53073",
+          "text": "而且，通常得自己負擔搬屋費。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at an occupied public square in 1907, an anonymous adult sets coins beside a simple cottage drawing, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53074",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53074",
+          "text": "買地租地都不容易，期限能照表走嗎？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at an occupied public square in 1907, an unnamed resident studies a sparse lot map beside a calendar, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53075",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53075",
+          "text": "找不到其他住處的人，向管理者請求延期。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at an occupied public square in 1907, an anonymous adult waits outside a relief office holding a blank form, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53076",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53076",
+          "text": "報告也記下少數驅離，甚至把屋拆掉的情況。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at an occupied public square in 1907, an anonymous archivist studies a plain drawing of a cleared lot, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53077",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53077",
+          "text": "並不是每戶都能自願、順利地把屋子帶走。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at an occupied public square in 1907, an anonymous adult looks at both a cottage and a vacant lot, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53078",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53078",
+          "text": "洛博斯廣場營地，留得比其他營地久。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at an occupied public square in 1907, an anonymous camp worker walks between simple wooden houses at an illustrative square, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53079",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53079",
+          "text": "這座營地為什麼沒有跟著先清空？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at an occupied public square in 1907, an anonymous aid worker studies the remaining cottage row, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53080",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53080",
+          "text": "報告把原因連到貧困家庭的安置。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at an occupied public square in 1907, an anonymous aid worker studies blank assistance cards, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53081",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53081",
+          "text": "還有當時對衛生管理的顧慮。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot at an occupied public square in 1907, an anonymous health worker checks a plain water station, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53082",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53082",
+          "text": "洛博斯廣場直到一九〇八年六月三十日才完全結束。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at an emptied Lobos Square in 1908, an anonymous caretaker studies a vacant cottage plot, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53083",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53083",
+          "text": "可其他小屋，已經從營地出去；它們去往哪裡？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at an occupied public square in 1907, an anonymous adult studies scattered unmarked lots on a map, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53084",
+      "template": "stats",
+      "lines": [
+        {
+          "id": "s53084",
+          "text": "調查記下，離開官方營地的小屋有五千三百四十三棟。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "chapter": "小屋離開營地，帳單跟著走",
+      "data": {
+        "title": "營地搬出",
+        "stats": [
+          {
+            "value": "5,343",
+            "label": "棟小屋"
+          }
+        ],
+        "source": "1913 救濟調查，營地篇"
+      }
+    },
+    {
+      "id": "s53085",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53085",
+          "text": "絕大多數搬走後，繼續當住宅使用。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot beside a small wooden house on a rented lot, an anonymous adult stands by a stationary cottage on a new lot, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53086",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53086",
+          "text": "有些搬到市內別區，也有些到了周邊城鎮。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot beside a small wooden house on a rented lot, an anonymous surveyor traces an unmarked route across a simple map, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53087",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53087",
+          "text": "這是搬出的小屋數，不能等於買到地的家庭數。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot beside a small wooden house on a rented lot, an anonymous archivist separates house and land sketch cards, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53088",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53088",
+          "text": "一般搬家公司收的費用，隨距離與地點變動。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot beside a small wooden house on a rented lot, an anonymous worker studies a blank moving-company ledger, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53089",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53089",
+          "text": "調查列出的常見區間，是十二塊半到二十五美元。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot beside a small wooden house on a rented lot, an anonymous clerk counts coins beside a blank price card, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53090",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53090",
+          "text": "這筆錢，最後都得住戶自己掏嗎？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot beside a small wooden house on a rented lot, an unnamed resident pauses over a plain envelope, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53091",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53091",
+          "text": "有人自己付，有人由親友幫忙。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot beside a small wooden house on a rented lot, an anonymous resident accepts a plain envelope from a hand at frame edge, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53092",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53092",
+          "text": "也有房東先墊付，再向住戶收每月地租。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot beside a small wooden house on a rented lot, an anonymous landlord places a plain envelope beside a bare lot diagram, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53093",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53093",
+          "text": "房子可以搬去租地，也可以搬去買下的地。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot beside a small wooden house on a rented lot, an anonymous adult studies two unlabeled lot diagrams, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53094",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53094",
+          "text": "可是救濟部門，會讓地產商把小屋成批收走嗎？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a 1907 relief office, an anonymous official studies a blank bulk-purchase request beside a plain cottage sketch, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53094a",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53094a",
+          "text": "救濟部門拒絕地產商成批買屋，怕再形成一片新營地。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a 1907 relief office, an anonymous official sets aside a blank bulk-purchase request beside a cottage sketch, muted afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53094b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53094b",
+          "text": "但大空地仍被分租，個別屋主把小屋安在上面。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on a large vacant lot in 1907, an anonymous resident studies a blank small-lot diagram beside stationary cottages, soft grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53095",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53095",
+          "text": "對帶孩子的寡婦，以及家中主要工作者失能的家庭，慈善機構另有協助。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot beside a small wooden house on a rented lot, an anonymous aid worker carries a blank assistance folder, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53096",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53096",
+          "text": "慈善機構協助搬運和修繕部分小屋，直到一九〇八年六月下旬。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot beside a small wooden house on a rented lot, an anonymous carpenter repairs a stationary wooden house wall, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53097",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53097",
+          "text": "至於各處營地搬走的那批小屋，訪查能追到多少下落？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot beside a small wooden house on a rented lot, an anonymous field worker studies a closed address folder, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53098",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53098",
+          "text": "從營地到新地點，小屋留下來了，地租卻可能剛開始。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot beside a small wooden house on a rented lot, an unnamed resident studies a wooden house on a rented lot, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53099",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53099",
+          "text": "訪查員依照遷屋後的地址，尋找小屋裡的家庭。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot beside a small wooden house on a rented lot, an anonymous field worker opens an unmarked address book, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53100",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53100",
+          "text": "可是到了訪查時，地址未必還對得上原來那棟屋。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot beside a small wooden house on a rented lot, an anonymous field worker looks at a vacant lot on an unmarked map, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53101",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53101",
+          "text": "這項訪查從一九〇八年八月開始，持續約三個月。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "chapter": "訪查員追到的，只是部分小屋",
+      "data": {
+        "prompt": "Close shot on a neighborhood street in 1908, an anonymous field worker prepares blank interview sheets, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53102",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53102",
+          "text": "研究者向家庭訪談，也查詢其他紀錄。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a survey room in 1908, an anonymous researcher compares blank interview and ledger pages, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53103",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53103",
+          "text": "他們依搬屋時留下的地址，嘗試尋訪一千一百三十七棟。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on a neighborhood street in 1908, an anonymous field worker studies an unmarked address list, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53104",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53104",
+          "text": "搬屋時留下的地址，究竟能讓他們找到多少家庭？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on a neighborhood street in 1908, an anonymous field worker studies an old address card, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53105",
+      "template": "stats",
+      "lines": [
+        {
+          "id": "s53105",
+          "text": "最後得到六百八十份比較完整的家庭紀錄。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "title": "訪查所得",
+        "stats": [
+          {
+            "value": "680",
+            "label": "份較完整紀錄"
+          }
+        ],
+        "source": "1913 救濟調查，住房篇"
+      }
+    },
+    {
+      "id": "s53106",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53106",
+          "text": "還有多少地址，查不到完整下落？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on a neighborhood street in 1908, an anonymous field worker studies an address card at a closed gate, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53107",
+      "template": "stats",
+      "lines": [
+        {
+          "id": "s53107",
+          "text": "另外四百五十七個地址，沒有取得完整紀錄。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "title": "未取得完整紀錄",
+        "stats": [
+          {
+            "value": "457",
+            "label": "個搬屋地址"
+          }
+        ],
+        "source": "1913 救濟調查，住房篇"
+      }
+    },
+    {
+      "id": "s53108",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53108",
+          "text": "有的屋子沒到原登記地址，有的後來再次搬走。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on a neighborhood street in 1908, an anonymous field worker compares two unmarked map points, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53109",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53109",
+          "text": "因此，訪到的家庭不能代表所有搬出的房子。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a survey room in 1908, an anonymous researcher separates found and unfound blank folders, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53110",
+      "template": "stats",
+      "lines": [
+        {
+          "id": "s53110",
+          "text": "在那六百八十戶裡，只有七十戶買下了地。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "title": "受訪家庭買地",
+        "stats": [
+          {
+            "value": "70 / 680",
+            "label": "戶"
+          }
+        ],
+        "source": "1913 救濟調查，住房篇"
+      }
+    },
+    {
+      "id": "s53111",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53111",
+          "text": "沒買地的家庭，讓小屋落在哪種地上？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a neighborhood in 1908, an anonymous resident studies a house beside an unmarked lot diagram, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53112",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53112",
+          "text": "即使買地，也未必已經付清土地價款。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a neighborhood in 1908, an unnamed resident studies a blank installment ledger, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53112a",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53112a",
+          "text": "調查時，還在分期買地的人，每月要付八到二十五美元。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a 1908 neighborhood, an unnamed resident counts coins beside a stationary cottage on a narrow lot, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53113",
+      "template": "stats",
+      "lines": [
+        {
+          "id": "s53113",
+          "text": "這批買地家庭，調查時只有七戶已經付清。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "title": "買地且已付清",
+        "stats": [
+          {
+            "value": "7 / 70",
+            "label": "戶"
+          }
+        ],
+        "source": "1913 救濟調查，住房篇"
+      }
+    },
+    {
+      "id": "s53113a",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53113a",
+          "text": "其餘買地戶的分期，已經付到哪裡？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a 1908 neighborhood, an anonymous adult turns a plain ledger page beside a stationary cottage, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53114",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53114",
+          "text": "約一半付的地價，還不超過總價的四分之一。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a neighborhood in 1908, an unnamed resident studies a partly filled payment ledger, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53114a",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53114a",
+          "text": "甚至有人每月只勉強付到利息，土地欠款幾乎沒有減少。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a 1908 cottage, an anonymous adult turns a small coin purse beside a plain ledger, gentle window light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53115",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53115",
+          "text": "未買地的住戶，有人簽多年租約，也有人按月付租。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a neighborhood in 1908, an anonymous clerk sorts two blank lease forms, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53115a",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53115a",
+          "text": "前一種租約，通常約定兩到五年。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a 1908 survey room, an anonymous researcher studies a blank multi-year lease form, gentle window light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53115b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53115b",
+          "text": "這種地的月租，是六到十五美元。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot beside a stationary cottage in 1908, an anonymous adult counts a few coins beside a blank lease form, muted afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53115c",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53115c",
+          "text": "按月租地的住戶，月租則多在三到八美元。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot beside a stationary cottage in 1908, an anonymous adult studies a blank monthly rent ledger, soft grey daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53116",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53116",
+          "text": "搬到租地的住戶，若交不起地租，小屋又會怎樣？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a neighborhood in 1908, an unnamed resident holds an unmarked land rent bill beside a stationary wooden house, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53117",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53117",
+          "text": "答案不在完整訪查裡；報告另記下失訪地址的線索。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a survey room in 1908, an anonymous researcher sorts unmarked interview records beside a separate stack of missing address pages, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53118",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53118",
+          "text": "搬出的屋子，有時又在大空地上密密排在一起。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a neighborhood in 1908, an unnamed resident looks along a closely spaced wooden house row, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53119",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53119",
+          "text": "約七成受訪住戶的地塊上，還有至少另一棟小屋。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a survey room in 1908, an anonymous researcher studies a plain shared-lot diagram, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53120",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53120",
+          "text": "有些普通大小的地塊，排進四、五棟小屋。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a neighborhood in 1908, an anonymous resident walks between four closely spaced wooden houses, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53121",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53121",
+          "text": "甚至有整個街廓大小的地塊，擠了六十棟以上。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a neighborhood in 1908, an anonymous surveyor views a large tract crowded with small houses, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53122",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53122",
+          "text": "有些家庭加蓋門廊、房間；也有人幾乎沒改動。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a neighborhood in 1908, an anonymous carpenter adds a porch to a stationary wooden house, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53123",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53123",
+          "text": "外牆有了，新地點的水也能直接進屋嗎？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on a neighborhood lot in 1908, an anonymous adult studies an outdoor water hydrant beside a stationary cottage, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53124",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53124",
+          "text": "可屋子搬走，並不表示立刻接上自來水。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a neighborhood in 1908, an unnamed resident carries a water pail toward a stationary wooden house, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53125",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53125",
+          "text": "調查時，樣本中只有約四成小屋接上水管。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a survey room in 1908, an anonymous researcher checks a blank water-connection sheet, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53126",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53126",
+          "text": "其餘住戶要從附近的水栓取水。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a neighborhood in 1908, an unnamed resident fills a pail at a shared water tap, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53127",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53127",
+          "text": "有些屋還在高坡，取水得沿陡坡往上搬。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot in a neighborhood in 1908, an anonymous resident carries a water pail uphill toward a wooden house, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53128",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53128",
+          "text": "調查說，這段上坡路有時長達五十到一百英尺。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a neighborhood in 1908, an anonymous resident pauses with a pail halfway up a steep footpath, gentle window light",
+        "camera": "tilt down",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53129",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53129",
+          "text": "還記得那筆地租嗎？完整訪查之外，報告還記下什麼？",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on a neighborhood street in 1908, an anonymous field worker studies an unfinished address page, muted afternoon light",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53130",
+      "template": "stats",
+      "lines": [
+        {
+          "id": "s53130",
+          "text": "報告另知二十三戶付不起或拒付地租，房屋遭地主取走。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "title": "失訪部分已知",
+        "stats": [
+          {
+            "value": "23",
+            "label": "起地租扣屋"
+          }
+        ],
+        "source": "1913 救濟調查，住房篇"
+      }
+    },
+    {
+      "id": "s53131",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53131",
+          "text": "這是失訪部分已知的情形，不在已訪得的家庭樣本裡。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot in a survey room in 1908, an anonymous archivist separates a small folder from a larger survey stack, dim lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s53132",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s53132",
+          "text": "也不能拿已知個案，推算全市同類事故有多少。",
+          "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot in a survey room in 1908, an anonymous researcher studies a folder marked only by a blank tab, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "小屋離開之後",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "房子能搬，土地還得另找"
+        ]
+      },
+      "lines": [
+        {
+          "id": "s53997",
+          "text": "還記得那道清場期限嗎？若搬到租地，仍要按月付地租。",
+          "emotion": "清楚收束"
+        },
+        {
+          "id": "s53998",
+          "text": "如果是你，會先存搬屋費，還是先找能安放它的地？",
+          "emotion": "清楚收束"
+        },
+        {
+          "id": "s53999",
+          "text": "想繼續讀有出處的歷史疑問，訂閱奇聞檔案局。",
+          "emotion": "清楚收束"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "屋能搬\n**地呢？**",
+      "tag": "舊金山・1907",
+      "sub": "救災小屋的期限",
+      "shot": "s53005"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "1906 舊金山救災小屋，為何要整棟搬走？｜奇聞檔案局",
+    "description": "1907 年舊金山的公共廣場到了清場期限。救災小屋可以按契約由住戶取得，土地卻只是臨時使用。本集沿著一棟示意小屋的行政命運，追到建屋、契約改寫、搬遷費與 1908 年訪查。\n\n1908 年訪查嘗試追查 1,137 個搬屋地址，只得到 680 份較完整紀錄；70 戶買地屬這 680 戶。另 457 個地址未取得完整紀錄，報告在其中得知 23 起因地租問題被地主取屋。兩組不能混算。5,610 是官方各營地建屋數，5,343 是搬出營地數，都不是金門公園單一營地。清場期限與統計主要依 1913 年救濟調查，它不是震災當日逐戶原檔；1906 年新聞編書只列研究背景，這版沒有用它的營地敘述作口播證據。搬屋的機械方法沒有從固定來源證成。畫面是原創可愛插圖與概念卡，非特定家庭實景或歷史照片。\n\n資料核對至 2026-10-20。\n\n1913 年救濟調查固定全文：https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt\n1906 年新聞編書固定全文：https://github.com/GITenberg/The-San-Francisco-Calamity-by-Earthquake-and-Fire_1560/blob/7720f6008349283e7a5e72d2cd52ebfbd4b9b815/1560-0.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q",
+    "tags": [
+      "1906 舊金山地震",
+      "舊金山大火",
+      "救災小屋",
+      "relief cottages",
+      "歷史",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "reviewer": "r2-fresh-blind-a",
+  "scope": "script-only blind review of narrative CLI output and its 13 embedded questions",
+  "script_sha256": "b8fba10ed2e143eb677aaf389bb2c4d088cf7ecda8e376386788afe198852df4",
+  "score": {
+    "passed": 11,
+    "total": 13
+  },
+  "criteria": [
+    {
+      "id": "scene_first",
+      "pass": true,
+      "evidence": "s53001-s53004 place the cottages in a San Francisco plaza in June 1907 and show the Park Commission setting an August 17 deadline."
+    },
+    {
+      "id": "no_spoiler",
+      "pass": true,
+      "evidence": "s53006-s53009 ask about the contract, moving costs, and later survey without giving their outcomes."
+    },
+    {
+      "id": "one_line",
+      "pass": true,
+      "evidence": "After the 1907 cold open, the narrative follows the cottages from 1906 construction through contracts, removal, and the 1908 survey. s53065 adds an earlier deadline premise without replaying an earlier scene."
+    },
+    {
+      "id": "no_toc",
+      "pass": true,
+      "evidence": "The narration uses story questions and events; it does not announce a chapter plan or enumerate what it will cover."
+    },
+    {
+      "id": "chapters_link",
+      "pass": true,
+      "evidence": "The post-teaser earthquake establishes the cottages' origin; later handoffs include s53032 to s53033 (who gets a cottage), s53048 to s53049 (contract terms), and s53083 to s53084-s53086 (departing cottages)."
+    },
+    {
+      "id": "open_loops",
+      "pass": true,
+      "evidence": "Unresolved questions recur throughout, for example s53023, s53027, s53048, s53068, s53083, s53097, s53116, and s53129; no 90-second stretch lacks one."
+    },
+    {
+      "id": "payoffs",
+      "pass": false,
+      "evidence": "s53097 asks whether surveyors later traced every cottage repaired by the charity. s53103-s53107 report results for 1,137 addresses of moved cottages generally; the narration never establishes how many charity-repaired cottages were in that set or what happened to that subset. The specific question is left unanswered."
+    },
+    {
+      "id": "no_recap",
+      "pass": true,
+      "evidence": "The deadline returns as an explicit cold-open callback at s53069 and s53997. The later mention of 457 addresses at s53129 and of 23 cases at s53131 points back to those groups while adding the subsequent finding or its denominator."
+    },
+    {
+      "id": "chapters_are_events",
+      "pass": true,
+      "evidence": "Titles describe scenes or developments: tents fill open space, rental becomes purchase, the plaza misses its deadline, cottages move out, and visitors trace only some of them."
+    },
+    {
+      "id": "outro_no_next",
+      "pass": true,
+      "evidence": "s53997-s53999 revisit the land-cost question and invite subscription without mentioning another video, episode, or file."
+    },
+    {
+      "id": "opening_hooks",
+      "pass": true,
+      "evidence": "After the first scene, s53006-s53009 hold back at least three later answers: why rent became installments, who paid to move, what the survey found, and whether land and cost were resolved."
+    },
+    {
+      "id": "one_thread",
+      "pass": true,
+      "evidence": "The cottages and the problem of placing them on land connect the opening deadline to construction, allocation, title, removal, and later households."
+    },
+    {
+      "id": "no_detour",
+      "pass": false,
+      "evidence": "s53020-s53031 spend about a minute on lumber prices, shipping, carters, planing mills, and construction timing. That sustained logistics sequence does not advance the opening problem of why occupied cottages had to move or how owners could secure land and pay for relocation."
+    }
+  ]
+}
