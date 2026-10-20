@@ -72,7 +72,7 @@ ef414、ef420、ef426、ef507、ef509、ef512、ef513），不帶新事實；ef3
 | ef427 | 為了讓海上的船對時、算經度 | #37 | 第 37 列備註 | 確認（回收 ef426） |
 | ef428 | 那年八月，美國一份小鎮報紙還在傳：它大概再過幾年，就會被拆掉 | #34 | *Rawlins Republican*（Wyo.）1909-08-28 p. 3「the Eiffel tower, which, however, probably will be torn down in a few years」 | 當時的傳聞，用「還在傳」框住，ef503 點破 |
 | ef429 | 那合約原本的期限，一九一〇年一月一日，到了那天，鐵塔會怎樣？ | #33 | MORICE1936 p. 104「la concession d'exploitation de la tour Eiffel devait expirer le 1er janvier 1910」 | 問句帶期滿日（ef501 回答） |
-| ef501 | 不會怎樣。那天到期的，只是艾菲爾原本的經營權，而它早就延到了一九二六年 | #5 #29 #31 #33 | 第 11 條（到期的是經營權）；MORICE1936 p. 104「Par l'arrêté préfectoral du 1er décembre 1906, le terme en fut reculé jusqu'au 1er janvier 1915. Les conventions de 1908 … onze années supplémentaires」 | CHANGED 的收法：標題的答案（回收 ef429） |
+| ef501 | 不會怎樣。還記得剛剛那次延十一年嗎？到了這一天，它早就不是期限了 | #5 #29 #31 #33 | 第 11 條（到期的是經營權）；MORICE1936 p. 104「Par l'arrêté préfectoral du 1er décembre 1906, le terme en fut reculé jusqu'au 1er janvier 1915. Les conventions de 1908 … onze années supplémentaires」 | CHANGED 的收法：標題的答案（回收 ef429） |
 | ef502 | 開頭網路上說的一九〇九年，我們翻到的紀錄裡，沒有任何拆塔的計畫、提案或表決 | #33 | 第 33 列判定與備註；〈獨立覆核〉第 2 點「找不到任何一份拆塔的計畫、提案或表決，1909 年沒有，其他年份也沒有」 | 依覆核；點名回呼 ef110 的標題問題，答在這裡 |
 | ef503 | 那份美國小報說的「快拆了」，只是傳聞 | #34 | 第 34 列「都是美國小報轉載的通稿，傳聞不是決定」 | 點破 ef428 |
 | ef504 | 塔下的電台，原本預定這時候，開始對外報時 | #37 | ROTHE1913「Le service devait être inauguré vers le début de l'année 1910」 | 確認 |
