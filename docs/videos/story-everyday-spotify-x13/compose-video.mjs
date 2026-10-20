@@ -10,11 +10,9 @@ const sources = [
   ["S1", "Spotify 2019 Q1 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000156459019013731/ck0001639920-6k_20190429.htm"],
   ["S2", "Spotify 2020 Q1 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000156459020019718/ck0001639920-6k_20200429.htm"],
   ["S3", "Spotify 2023 Q2 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000163992023000010/spot-20230630x6xk.htm"],
-  ["S4", "Spotify 2023-12-04 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000114036123055913/ef20015890_6k.htm"],
   ["S5", "Spotify 2024 Q2 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000163992024000009/spot-20240630x6xk.htm"],
   ["S6", "Spotify 2024 Q4 earnings exhibit", "https://www.sec.gov/Archives/edgar/data/1639920/000114036125002936/ef20042791_ex99-1.htm"],
   ["S7", "Spotify 2025 Q2 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000163992025000012/spot-20250630x6xk.htm"],
-  ["S8", "Spotify 2026 Q2 6-K", "https://www.sec.gov/Archives/edgar/data/1639920/000162828026052543/spot-20260630x6xk.htm"],
   ["S9", "Spotify 2023-07-25 Q2 earnings exhibit", "https://www.sec.gov/Archives/edgar/data/1639920/000114036123035965/brhc20056303_ex99-1.htm"],
 ].map(([code, title, url]) => ({ code, title, url, checked_on: "2026-10-20" }));
 
@@ -45,85 +43,292 @@ const allRows = [...chapters.flat(), ...outro];
 if (new Set(allRows.map(row => row.id)).size !== allRows.length) throw new Error("Duplicate line IDs");
 
 const statCards = new Map([
-  ["x130104", { title: "兩案收購對價", stats: [{ value: "€308m", label: "2019 Anchor＋Gimlet；兩案合計" }], source: "S1｜2019 Q1 6-K" }],
-  ["x130315", { title: "整個廣告業務｜2020 Q1 同比", stats: [{ value: "+€22m", label: "收入增額；不是播客獨立收入" }], source: "S2｜2020 Q1 6-K" }],
-  ["x130316", { title: "整個廣告業務｜2020 Q1 同比", stats: [{ value: "+€42m", label: "總成本增額；不是播客獨立成本" }], source: "S2｜2020 Q1 6-K" }],
-  ["x130319", { title: "播客內容成本｜2020 Q1 同比", stats: [{ value: "+€12m", label: "整個廣告業務成本中的一項；非播客淨利" }], source: "S2｜2020 Q1 6-K" }],
-  ["x130403", { title: "部分播客內容資產沖銷", stats: [{ value: "€30m", label: "2023 Q2；非全部播客投資損失" }], source: "S3｜2023 Q2 6-K" }],
-  ["x130404", { title: "整個廣告業務毛利率", stats: [{ value: "+1% → −6%", label: "2022 Q2 → 2023 Q2" }], source: "S3｜2023 Q2 6-K" }],
-  ["x130501", { title: "整個廣告業務毛利率", stats: [{ value: "−6% → +13%", label: "2023 Q2 → 2024 Q2" }], source: "S5｜2024 Q2 6-K" }],
-  ["x130522", { title: "Spotify 全公司｜2024 全年", stats: [{ value: "首次營業獲利", label: "整家公司全年結果；非播客獨立回報" }], source: "S6｜2024 Q4 earnings exhibit" }],
-  ["x130611", { title: "廣告欄的播客成本", stats: [{ value: "−€21m", label: "2025 Q2 同比；Ad-Supported 播客成本" }], source: "S7｜2025 Q2 6-K" }],
-  ["x130616", { title: "Anchor 收購對價", stats: [{ value: "€136m", label: "2019；含現金及股份獎酬" }], source: "S1｜2019 Q1 6-K" }],
-  ["x130617", { title: "Gimlet 收購對價", stats: [{ value: "€172m", label: "2019；含現金及股份獎酬" }], source: "S1｜2019 Q1 6-K" }],
+  [
+    "x130104",
+    {
+      "title": "兩案收購對價",
+      "stats": [
+        {
+          "value": "€308m",
+          "label": "2019 Anchor＋Gimlet；合計，含現金及股份獎酬"
+        }
+      ],
+      "source": "S1｜2019 Q1 6-K"
+    }
+  ],
+  [
+    "x130311",
+    {
+      "title": "整個廣告業務｜2020 Q1 同比",
+      "stats": [
+        {
+          "value": "+€22m",
+          "label": "Ad-Supported 收入增額；非播客獨立收入"
+        }
+      ],
+      "source": "S2｜2020 Q1 6-K"
+    }
+  ],
+  [
+    "x130312",
+    {
+      "title": "整個廣告業務｜2020 Q1 同比",
+      "stats": [
+        {
+          "value": "+€42m",
+          "label": "Ad-Supported 總成本增額；非播客成本"
+        }
+      ],
+      "source": "S2｜2020 Q1 6-K"
+    }
+  ],
+  [
+    "x130315",
+    {
+      "title": "播客內容成本｜2020 Q1 同比",
+      "stats": [
+        {
+          "value": "+€12m",
+          "label": "Ad-Supported 總成本變動中的一項"
+        }
+      ],
+      "source": "S2｜2020 Q1 6-K"
+    }
+  ],
+  [
+    "x130403",
+    {
+      "title": "部分播客內容資產沖銷",
+      "stats": [
+        {
+          "value": "€30m",
+          "label": "2023 Q2；非全部播客投資損失"
+        }
+      ],
+      "source": "S3｜2023 Q2 6-K"
+    }
+  ],
+  [
+    "x130407",
+    {
+      "title": "平台可用影片播客",
+      "stats": [
+        {
+          "value": ">100,000",
+          "label": "2023-07-25 公告當時；非 6 月 30 日數"
+        }
+      ],
+      "source": "S9｜2023 Q2 earnings exhibit"
+    }
+  ],
+  [
+    "x130410",
+    {
+      "title": "整個廣告業務毛利率",
+      "stats": [
+        {
+          "value": "+1% → −6%",
+          "label": "2022 Q2 → 2023 Q2；Ad-Supported"
+        }
+      ],
+      "source": "S3｜2023 Q2 6-K"
+    }
+  ],
+  [
+    "x130501",
+    {
+      "title": "整個廣告業務毛利率",
+      "stats": [
+        {
+          "value": "+13%",
+          "label": "2024 Q2；Ad-Supported，前一年同季為負"
+        }
+      ],
+      "source": "S5｜2024 Q2 6-K"
+    }
+  ],
+  [
+    "x130515",
+    {
+      "title": "Spotify 全公司｜2024 全年",
+      "stats": [
+        {
+          "value": "首次營業獲利",
+          "label": "整家公司全年結果；非播客獨立獲利"
+        }
+      ],
+      "source": "S6｜2024 Q4 earnings exhibit"
+    }
+  ],
+  [
+    "x130610",
+    {
+      "title": "廣告欄的播客成本",
+      "stats": [
+        {
+          "value": "−€21m",
+          "label": "2025 Q2 同比；Ad-Supported 播客成本"
+        }
+      ],
+      "source": "S7｜2025 Q2 6-K"
+    }
+  ]
 ]);
 
 const cues = [
-  ["an unmarked acquisition folder beside an anonymous creator recording tool on a desk", "fictional creator using a plain microphone and an unbranded distribution tray", "a separate unmarked studio acquisition folder placed beside the first", "a large blank ledger page beside two small folders", "two distinct capability cards, one near recording tools and one near a studio desk", "a content-asset record opens to a covered adjustment field with no visible result", "a sealed whole-company year-end ledger with its result line left blank", "a video cost token poised between two blank service ledgers, not yet assigned", "one anonymous researcher holding an unanswered blank folder"],
-  ["two acquisition routes lead to the same unbranded listener player", "anonymous creator records with a plain microphone and carries audio toward a player", "a separate studio desk creates a different anonymous audio card", "two unrelated audio cards from separate desks enter one centered unbranded player", "a listener presses play while two broad service ledgers wait nearby", "an ad coin appears beside a free listening screen and a closed green ledger", "music and audio ad tokens enter one broad green service ledger", "a monthly member coin enters a separate orange service ledger", "two broad service ledgers have no row for either acquisition folder", "creator-tool and content folders beside an empty future-income tray", "an anonymous listener and two purchase folders face an unanswered return tray", "music and audio ad cards enter one broad green ledger", "one monthly member coin serves several unnamed content cards", "plain cash coins and unmarked award tokens side by side", "a purchase-consideration card beside later revenue and operating-cost trays", "a podcast content-cost token approaches the green advertising ledger", "a broad advertising balance remains concealed as the ledger opens"],
-  ["the broad green advertising ledger drops below a blank baseline", "a podcast content-cost token joins the broad green ledger", "music, audio and other cost tokens share the same large account", "income coins meet a larger outgoing cost tray within one account", "two broad account trays balanced as an unanswered possibility", "a listener count pile grows faster than incoming ad coins", "podcast content-cost tokens increase beside a growing listener pile", "original acquisition folders stay apart from the broad advertising result", "a missing show-specific results sheet beside the broad advertising ledger", "broad ad revenue and total-cost lanes face each other", "the same green advertising ledger opens to a quarterly page", "free and member listeners hear audio while cost classification stays on one account", "a podcast content-cost token enters the broad green ledger", "a podcast content-cost pile rises from one quarter to another", "incoming ad coins on the broad green ledger", "outgoing total-cost tokens on the same broad green ledger", "two comparable broad-ledger change stacks show the expense side taller", "a covered segment within the broad cost pile asks for its podcast share", "podcast content-cost stack revealed as a subset of broad total cost", "music and other cost tokens remain mixed around the podcast cost subset", "the broad ad account under pressure, with deal folders still separate", "two acquisition folders lack individual advertising-income rows", "a later content-portfolio folder comes onto the desk", "acquisition folders beside a separate portfolio folder with no connecting label"],
-  ["a broad podcast content-portfolio folder opens, apart from old acquisition folders", "part of a broad anonymous content-asset stack is removed", "a partial content-asset adjustment card faces the broad portfolio", "two dated broad ad-margin bars occupy one ledger", "a broad advertising cost stack stands higher than its revenue tray", "content-asset, contract and staffing folders appear within one restructuring", "termination papers and empty staff chairs mark separate cost types", "old acquisition folders remain apart from unnamed content-asset cards", "one content-asset card is kept separate from a purchase-consideration card", "blank show identity slots under a broad portfolio folder", "a partial asset adjustment cannot cancel a purchase folder directly", "some anonymous audio cards close without individual names or schedule", "last year's broad ad-margin baseline remains on the desk", "the next year's broad ad ledger arrives beside last year's", "a future cost tray and income tray remain closed", "the prior negative broad margin line faces a still-covered next-year result"],
-  ["green advertising ledger with a rising abstract balance", "same green ledger at two distinct dated slots left blank", "a previous-period cost packet kept separate", "a current-period desk without matching packet", "a reduced outgoing-cost pile in the whole ad ledger", "an anonymous producer working with a smaller generic supply stack", "a different licensing-cost tray increases slightly", "accountant turns from costs to incoming coins", "new advertising coins enter green ledger", "music-shaped abstract tiles outside podcast card rack", "two differently coloured advertising trays kept together", "a green ledger showing several factors moving at once", "original acquisition folders remain unanswered beside whole ad ledger", "an orange member ledger with generic music and book shapes", "orange member ledger showing an upward abstract balance", "many unbranded member tokens enter an orange tray", "a subscriber token and an average-revenue token side by side", "incoming member coins grow beside licensing costs", "a generic book-shaped cost tile offsets part of the gain", "two old acquisition folders too small to resolve from broad orange ledger", "a sealed whole-company year-end folder enters the desk", "large whole-company ledger opens in front of researcher", "broad company ledger kept distinct from podcast cards", "one blank podcast-only results sheet still empty", "unbranded audio player remains on an anonymous table", "new unrelated video creator cards appear on a separate workbench", "a researcher asks which of two coloured ledgers receives new costs"],
-  ["a green advertising ledger looks deceptively lighter while a new video folder approaches", "an unmarked video creator program folder opens on a desk", "a fictional video creator with a plain camera frame", "creator receives an unmarked compensation token", "anonymous member watches a blank video frame without interruptions", "two separate creator and member cards on a desk", "one historical cost lane sits beside a newly opened member ledger", "one limited video-experience cost token moves to orange member ledger, no member-age grouping", "green ad ledger keeps the remaining generic podcast tokens", "one question folder stands between green and orange ledgers", "a green ledger with smaller podcast cost pile", "an analyst compares one service column against an unseen whole-service total", "one cost token moves between ledgers while the unmeasured remainder stays covered", "blank transfer amount field with no digits or text", "anonymous accountant leaves an unmeasured savings box open", "member income kept apart from podcast-only evidence box", "both ledgers contain several unrelated content token types", "two old acquisition folders lacking individual result sheets", "creator and member on distinct sides of a conceptual service desk", "an unbranded program continues operating beside old acquisition folders", "three separate evidence cards for assets, whole company, and ad service", "three genuine but incompatible evidence cards around one question folder", "anonymous researcher leaves one investment-return answer area empty"],
+  [
+    "a plain recording tool lies beside one blank acquisition envelope",
+    "a second blank envelope arrives beside an unrelated anonymous production studio",
+    "two separated unmarked worktables with a microphone on one and an audio reel on the other",
+    "two closed purchase envelopes with an empty space between them",
+    "an unnamed creator presses record while a distant listener's player lights up",
+    "a hand touches play on a plain free audio player beside an empty ad slot",
+    "an outside researcher opens an unlabeled content-change notice but keeps the result covered",
+    "a different creator raises a plain camera as a member touches a blank video tile",
+    "two separate playback icons face one still-covered future decision"
+  ],
+  [
+    "two distinct unbranded worktables open toward a shared blank player",
+    "an unnamed creator trims an audio waveform on a plain editing desk",
+    "unbranded creator tools are packed into a simple distribution tray",
+    "an unrelated studio crew passes an anonymous audio reel toward the listener side",
+    "creator workbench and studio workbench send different audio tiles toward a plain player",
+    "a public statement sheet sits beside growing creator and production workspaces",
+    "a closed cash drawer waits beside a blank play button",
+    "a free listener taps play while a blank ad placement waits for a buyer",
+    "an anonymous advertiser places a coin at the unmarked ad slot",
+    "music and spoken-audio symbols occupy separate spaces in one broad green service lane",
+    "a member puts a monthly coin beside an orange listening screen",
+    "two listeners press play on different service screens, green and orange",
+    "a producer replaces a plain microphone windscreen while cost tokens accumulate off to one side",
+    "cash coins and unmarked share-award tokens sit beside a purchase folder",
+    "a new anonymous creator starts another recording in a different room",
+    "a line of playback lights grows beside broad service income and cost trays",
+    "the incoming and outgoing streams meet at a covered quarterly result"
+  ],
+  [
+    "the broad green service line dips below its neutral mark",
+    "an audio-cost tile moves into the green advertising service lane",
+    "music and audio tiles share one broad advertising lane without show names",
+    "a listener presses play as a broad cost pile rises outside the device",
+    "many blank play lights appear faster than advertising coins",
+    "a broad green report page opens with income on one side and total service cost on the other",
+    "a prior-quarter green account has a small positive gap between income and cost",
+    "the current-quarter income and cost trays cross, leaving a negative gap",
+    "the researcher moves two dated broad service cards into a direct comparison",
+    "the green whole-service income tray grows beside a still-covered total-cost tray",
+    "the green whole-service total-cost tray grows further than the income tray",
+    "two broad change bars show a larger cost rise than income rise",
+    "a covered portion of the total cost pile is separated for inspection",
+    "a small audio-content cost pile is placed inside the large service-cost field",
+    "a separate royalty-cost pile stands beside, not on top of, the audio-cost pile",
+    "the researcher carefully leaves the larger whole-service cost pile intact",
+    "a free listener still uses a plain player while the broad green service line hangs low",
+    "several anonymous audio tiles remain distinct beneath one category line",
+    "the still-active play button and a below-zero category line appear in different areas",
+    "a creator turns off a generic recording light after finishing an unnamed episode",
+    "a later unmarked content-portfolio notice enters a different records shelf",
+    "the new content folder and old green quarterly card sit on separate desks",
+    "an anonymous content shelf opens with some positions hidden"
+  ],
+  [
+    "the broad content-portfolio shelf opens, holding many unrelated unnamed assets",
+    "the researcher unfolds a public portfolio notice without a show-by-show list",
+    "part of a generic content-asset stack is removed from a larger shelf",
+    "the remaining asset shelf stays partly occupied after a partial removal",
+    "several blank audio slots close without names or show-cover art",
+    "the notice shows no individual show identity, only empty label areas",
+    "a separate video catalog shelf holds many blank tiles at an announcement date",
+    "closed audio slots and open video tiles stay visibly separate, never the same tile",
+    "an outside viewer compares the two distinct catalog shelves without linking any title",
+    "a broad green service margin lane falls below neutral",
+    "content-asset, contract and staffing folders enter one broad reorganization tray",
+    "a broad advertising category card is set apart from all individual show tiles",
+    "different anonymous listeners still hold headphones near generic devices",
+    "an unrelated video creator faces a fresh unmarked camera frame",
+    "a broad negative-margin sheet lies beside a future empty slot",
+    "a new quarter card approaches the old broad green service line"
+  ],
+  [
+    "the whole green service margin line crosses into positive space",
+    "last-year negative card and current positive card sit in one category frame",
+    "an old reorganization packet is put away beside a current-quarter clean desk",
+    "a generic production workbench uses a smaller staffing and materials pile",
+    "an outgoing-cost pile shrinks beside an unopened stream of incoming advertising tokens",
+    "advertising coins arrive from several unbranded buyers",
+    "music-shaped ad tiles bring the largest incoming pile to the green service lane",
+    "podcast and self-service ad tiles enter one jointly marked conceptual tray without labels",
+    "three distinct factors surround the rising green category line",
+    "a free listener keeps playing beside a sealed whole-company annual-results envelope",
+    "a warm orange member-service lane rises beside, but not inside, the green lane",
+    "a different member taps an anonymous audio tile on a plain phone",
+    "two broad service ledgers hold many content types, without show-level profit cells",
+    "a sealed whole-company annual-results folder enters a room separate from quarterly ledgers",
+    "a whole-company annual result card opens under a different wider frame",
+    "a calendar year ring surrounds a whole-company card, apart from quarter cards",
+    "the service results remain on a desk while a creator's studio door opens",
+    "an anonymous listener looks at an audio player then toward a new camera setup",
+    "a new unnamed creator fixes a simple camera above a plain microphone",
+    "a new blank video tile is placed on an unrelated creator desk",
+    "an unopened creator-program envelope arrives beside the new video tile"
+  ],
+  [
+    "a fresh creator-program doorway opens near a plain camera",
+    "four unlabeled market tiles surround a newly opened partnership door",
+    "an eligible unnamed video creator receives a generic view-based compensation token",
+    "the different new creator uploads an unmarked video frame",
+    "an anonymous member watches a blank video tile without a midstream break symbol",
+    "the creator and member appear on separate sides of a service hallway",
+    "a new video-experience cost token waits between green and orange service lanes",
+    "the old green lane contains all generic podcast content-cost tiles",
+    "the member presses play as two colored cost lanes remain unopened",
+    "the green advertising lane reveals a smaller podcast-cost area",
+    "an outside reader holds the lighter green service card without claiming total savings",
+    "an orange member lane receives only the relevant new video-experience cost token",
+    "the green lane keeps the unrelated remaining podcast-cost tokens",
+    "a transfer amount cell remains blank between green and orange lanes",
+    "the analyst leaves the overall podcast-savings label blank",
+    "two differently colored service lanes still both contain anonymous audio tiles",
+    "a creator camera and audio microphone remain distinct instead of merging all shows",
+    "the program door admits eligible new video creators but leaves other anonymous formats outside",
+    "a new unnamed creator records video while a separate member watches",
+    "one old purchase envelope is put aside from a still-active playback screen",
+    "earlier closed audio slots and a newer creator-program door occupy distinct shelves",
+    "a listener touches a new blank video play icon on an ordinary device",
+    "partly closed old content shelf faces a clearly open new creator-program door"
+  ]
 ];
-const cueOverrides = new Map([
-  ["x130101", "an anonymous fictional creator's hand reaches toward a plain microphone beside a blank purchase folder, both centered"],
-  ["x130102", "the outside fictional researcher puts a blank anonymous audio-program card into a plain creator-tool tray while a separate income tray stays empty"],
-  ["x130103", "two acquisition folders stacked vertically inside the central frame, one near a creator tool and one near a studio card"],
-  ["x130105", "a purchase-price folder faces an empty future-return tray, both centered"],
-  ["x130106", "a fictional free listener presses play on a plain audio player while a generic unfilled ad-placement tray waits beside it, no real program shown"],
-  ["x130107", "a generic public record about an unspecified podcast-content realignment arrives on an outside fictional researcher's desk, while the researcher reaches toward two old purchase folders; no show closure or result visible"],
-  ["x130108", "a fictional video creator sends an unbranded blank video card to a member's viewing screen while an unassigned cost token waits between two service ledgers; no real show imagery"],
-  ["x130109", "the outside fictional researcher leans toward two old purchase folders and an empty return tray, leaving the answer covered"],
-  ["x130201", "a fictional free listener presses a plain player while an unfilled advertising-inventory tray waits for a buyer token, with no actual named show"],
-  ["x130204", "two unrelated anonymous audio cards converge from creator and studio desks into one unbranded player, all centered"],
-  ["x130213", "an anonymous outside reader watches an outgoing cost tray begin to overtake a generic service-income tray, with no printed figures"],
-  ["x130214", "plain cash coins and unmarked award tokens side by side in the central frame"],
-  ["x130322", "the outside fictional researcher places two comparable quarterly increase cards side by side and reaches for a later separate public-record folder"],
-  ["x130310", "the outside fictional researcher places a broad green income tray beside the same broad account's total-cost tray, both still empty"],
-  ["x130312", "an outside fictional researcher opens two consecutive dated pages of one broad advertising ledger, the earlier balance positive and later balance below a blank baseline"],
-  ["x130313", "a growing plain stream pile stands near a generic rights-cost tray in the broad advertising account"],
-  ["x130320", "the outside fictional researcher keeps a rights-cost stack beside but separate from a podcast-cost stack inside one broad account"],
-  ["x130408", "the outside fictional researcher holds a partial content-asset card near the old acquisition folders, hesitates, and does not attach it"],
-  ["x130411", "the outside fictional researcher moves the partial content-asset card back under a broad portfolio folder, away from both purchase folders"],
-  ["x130419", "the outside fictional researcher pins a negative broad-ad-margin line beside an empty future-period slot, without repeating any numerical label"],
-  ["x130420", "two still-closed evidence envelopes for prior costs and new ad income"],
-  ["x130421", "an analyst holds an empty income tray beside an empty cost tray"],
-  ["x130505", "an anonymous accountant examines an ordinary production-cost folder after a prior expense packet"],
-  ["x130507", "a lower production-cost tray kept separate from a still-closed advertising-income tray"],
-  ["x130513", "the broad green advertising ledger closes while the orange member-service ledger opens beside it"],
-  ["x130514", "a fictional Premium member opens an anonymous podcast card on a plain player while a monthly fee token is already in a broad orange service tray"],
-  ["x130516", "the outside fictional researcher moves a broad orange member ledger next to a broad green advertising ledger, both with improving abstract balances"],
-  ["x130517", "one new unlabeled video-experience cost token waits between green and orange service ledgers, with its destination not yet visible"],
-  ["x130518", "a sealed broad whole-company annual-results folder arrives on the outside fictional researcher's desk after the two quarterly ledgers"],
-  ["x130519", "the outside fictional researcher sets two quarterly service cards aside and reaches to open a separate whole-company year-end folder"],
-  ["x130520", "green and orange quarterly ledgers face one sealed annual company folder"],
-  ["x130524", "a new video-creator payment folder appears beside, not inside, an old podcast folder"],
-  ["x130525", "a fictional creator and a fictional member stand at two ends of a conceptual video service desk"],
-  ["x130526", "one unassigned video-experience cost token waits between green and orange ledgers"],
-  ["x130608", "green advertising ledger stacked above orange member ledger in the central frame, one limited video-experience cost token moving between them, no member-age grouping"],
-  ["x130610", "green advertising ledger stacked above orange member ledger in the central frame, a blank cost-comparison space between them"],
-  ["x130612", "the outside fictional researcher pins a smaller green advertising-cost card beside an empty space reserved for an orange member-service card, both centered"],
-  ["x130614", "the outside fictional researcher examines an empty transfer-amount cell in the orange member ledger while the green advertising ledger remains separate"],
-  ["x130615", "the outside fictional researcher removes an unmarked savings sticker from a smaller green cost tray and leaves an empty place for a truthful label"],
-  ["x130618", "two separate purchase-price cards face two still-empty lifetime-return columns on an outside fictional researcher's desk"],
-  ["x130619", "separate anonymous content-asset, whole-company-year and video-cost-classification evidence cards are tried beside two old purchase folders"],
-  ["x130620", "two old purchase-price cards can be combined while three later differently scoped evidence cards cannot be assigned to either return column"],
-  ["x130621", "the outside fictional researcher looks for a separate cumulative-income tray and cumulative-expense tray beside each old purchase folder, with all answer cells empty"],
-  ["x130622", "the outside fictional researcher pulls three differently scoped evidence cards apart instead of adding them, leaving two purchase-return trays empty"],
-]);
+const cueOverrides = new Map(Object.entries({
+  "x130401": "a broad anonymous content-portfolio shelf opens in the central frame, with separate blank audio tiles and no identifiable program",
+  "x130405": "several generic unmarked audio slots close in the central frame, with no show name or cover art",
+  "x130406": "a public notice with no readable lettering faces anonymous closed audio slots, all in the central crop",
+  "x130404": "a partly removed generic content stack and a larger remaining stack sit side by side in the central crop",
+  "x130408": "closed audio slots and open video catalog tiles stack vertically, never implying they are the same program",
+  "x130409": "two separate catalog shelves, one with some closed audio slots and one with available video tiles, stay centered",
+  "x130601": "a fresh video creator program doorway opens beside a plain camera and microphone in the center",
+  "x130603": "an eligible anonymous video creator receives an unmarked view-based payment token in the center",
+  "x130605": "a Premium member watches an unbranded blank video tile without an ad interruption symbol, centered",
+  "x130616": "green advertising and orange member ledgers stack vertically, each holding anonymous podcast cost tiles",
+  "x130619": "a new anonymous creator records video while a different member presses play, both inside a central vertical composition",
+  "x130611": "a lighter green advertising podcast-cost card sits over an unopened orange member card in the central frame",
+  "x130607": "an unassigned new video cost token waits between vertically stacked green and orange service lanes",
+  "x130612": "only a limited new video experience cost token moves into the orange member lane, both lanes vertically stacked",
+  "x130613": "green advertising lane retains other unrelated podcast-cost tiles beneath an orange member lane",
+  "x130614": "a blank unknown-transfer cell rests between vertically stacked green and orange cost lanes",
+  "x130615": "an analyst removes an unsupported all-service savings sticker from a smaller green account"
+}));
 const camera = ["Medium shot, push in", "Close-up, pull out", "Wide shot, gentle pan left", "Overhead shot, tilt down", "Medium close-up, pan right", "Low-angle shot, lift gently"];
-const rooms = ["in an anonymous research room", "in a plain recording booth", "in an accounts library", "along a records aisle", "in a service hall", "beside a review shelf"];
+const rooms = ["at a plain recording table", "between a recording booth and a listening nook", "beside a free-playback window and a cost register", "along a content-catalog aisle", "between a small listener cafe and a service counter", "inside a quiet video studio facing a living area"];
 const promptTails = [
-  "Unidentified people only; no readable writing, corporate insignia, copyrighted illustrations or celebrity likeness. Reserve open space for editor-applied titles.",
-  "All objects are unbranded and without print; avoid numbers, lettering and trademark shapes. Show the important gesture in full view.",
+  "Unidentified people only; no readable writing, corporate insignia, copyrighted illustrations or celebrity likeness. Reserve open background for editor-applied titles.",
+  "All objects are plain and without print; avoid numbers, lettering and trademark shapes. Show the important gesture in full view.",
   "Do not imitate a named host, published series imagery, historical contract or company emblem. Arrange scene elements distinctly on camera.",
   "Conceptual rather than archival: empty paper surfaces and invented characters only. Compose a clear action.",
   "No generated glyphs or brand marks; exact dates and figures are added in postproduction as typeset copy.",
-  "Unmarked props, generic adults and no protected visual works. Leave clear background for typeset copy.",
+  "Unmarked props, fictional adults and no protected visual works. Leave an open background for typeset copy.",
 ];
 const portraitTail = " Place hands and focal props in the central 608-pixel corridor of the 1920x1080 image for 9:16 reframing.";
-const shortSourceLines = new Set(["x130101", "x130103", "x130105", "x130202", "x130203", "x130204", "x130210", "x130214", "x130215", "x130610", "x130612", "x130603", "x130605", "x130608", "x130614", "x130615"]);
+const shortSourceLines = new Set(["x130401", "x130404", "x130405", "x130406", "x130408", "x130409", "x130601", "x130603", "x130605", "x130616", "x130619", "x130607", "x130611", "x130612", "x130613", "x130614", "x130615"]);
 const lineFor = row => ({ id: row.id, text: row.text, pause_after_ms: 0, emotion: row.text.endsWith("？") ? "台灣國語自然說書，問題落地稍停" : "台灣國語自然說書，年份與分母清楚" });
 const scenes = [];
 for (const [ci, rows] of chapters.entries()) {
@@ -142,34 +347,31 @@ for (const [ci, rows] of chapters.entries()) {
     i += selected.length;
   }
 }
-scenes.push({ id: "x13-outro", template: "outro", data: { title: "回本，要看對的帳", cta: "訂閱品牌故事" }, lines: outro.map(lineFor) });
+scenes.push({ id: "x13-outro", template: "outro", data: { title: "播客沒有全面退場", cta: "訂閱品牌故事" }, lines: outro.map(lineFor) });
 const loops = [
-  ["x130104", "x130214", "兩案對價不是全額現金"],
-  ["x130106", "x130205", "免費端播放仍要賣出廣告曝光才有收入"],
+  ["x130106", "x130209", "免費端播放仍須廣告商買下曝光才有收入"],
   ["x130107", "x130403", "內容調整紀錄揭出部分播客內容資產沖銷"],
-  ["x130108", "x130608", "新影片觀看體驗的相關成本進Premium"],
-  ["x130109", "x130624", "無獨立損益則不能判定兩案回本"],
-  ["x130217", "x130301", "整個廣告業務首季毛利轉負"],
-  ["x130310", "x130316", "同一廣告業務總成本增額超過收入增額"],
-  ["x130318", "x130319", "播客內容成本增額為一千二百萬歐元"],
-  ["x130324", "x130401", "重整的是整個播客內容組合，無法指認原兩案"],
-  ["x130422", "x130501", "廣告毛利率轉成正十三"],
-  ["x130508", "x130510", "音樂廣告是主要廣告增額"],
-  ["x130513", "x130515", "同季會員服務毛利率也提高，但非播客獨立帳"],
-  ["x130520", "x130522", "首個全年營業獲利屬全公司"],
-  ["x130527", "x130614", "廣告欄下降含未拆出的成本分類變化"],
-  ["x130613", "x130614", "搬往會員帳的金額沒有單列"],
-  ["x130610", "x130611", "廣告欄播客成本同比少兩千一百萬歐元"],
-  ["x130618", "x130621", "買價可逐案列明，卻仍缺各案累計進帳與費用"],
-  ["x130623", "x130624", "收購回本無法從公開分類判定"],
+  ["x130108", "x130601", "更晚出現影片播客創作者的新方案"],
+  ["x130109", "x130624", "關閉部分節目後並未全面放棄播客"],
+  ["x130217", "x130301", "2020 廣告業務毛利轉負"],
+  ["x130310", "x130312", "同一業務總成本增額超過收入增額"],
+  ["x130314", "x130315", "播客內容成本是總成本增額的一項"],
+  ["x130324", "x130401", "2023 重整的是內容組合的一部分"],
+  ["x130406", "x130407", "若干節目關閉後，公告仍列出大量可用影片播客"],
+  ["x130416", "x130501", "2024 整個廣告業務毛利轉正"],
+  ["x130514", "x130515", "2024 全公司首個全年營業獲利"],
+  ["x130521", "x130601", "2025 為合格影片創作者開新方案"],
+  ["x130607", "x130612", "新影片會員觀看體驗相關成本列入 Premium"],
+  ["x130611", "x130614", "廣告欄下降無法拆出搬移與真正節省"],
+  ["x130623", "x130624", "內容收縮但新影片合作啟動，不是全面退出"],
 ].map(([setup, payoff, what]) => ({ setup, payoff, what }));
 const position = new Map(allRows.map((row, index) => [row.id, index]));
 for (const loop of loops) if (!(position.has(loop.setup) && position.has(loop.payoff) && position.get(loop.setup) < position.get(loop.payoff))) throw new Error(`Broken loop: ${JSON.stringify(loop)}`);
 
 const description = [
-  "Spotify 在 2019 年兩天內買進播客創作／發行工具與節目製作公司，Anchor 的收購對價 €136m、Gimlet €172m，兩案合計 €308m。2023 年公司重整播客內容組合，2024 年又首次實現全公司全年營業獲利。這能證明兩筆收購或播客業務回本嗎？本集沿一手 SEC 原件把每筆數字的期間、範圍和能證明的事分清楚。",
+  "2019 年，Spotify 連續兩天收購 Anchor 與 Gimlet，分別取得播客創作／發布工具及節目製作能力；兩案收購對價合計 €308m，含股份獎酬。2023 年部分播客內容資產被沖銷、若干節目關閉。這代表 Spotify 全面放棄播客嗎？本集沿 SEC 原件看 2020 的廣告成本壓力、2023 的內容重整、2024 的分類回升與 2025 的影片播客合作方案。",
   "",
-  "2023 Q2 有部分播客內容資產沖銷，同季也有若干節目關閉；公告沒有逐檔清單，不能回推到當年兩筆收購。2025 年提供給 Premium 會員的新影片觀看體驗，相關播客成本部分改列 Premium；其餘播客內容成本仍在 Ad-Supported。公開報表仍沒有播客獨立損益。畫面是匿名概念插畫，數字卡由後製排版。查核日期：2026-10-20。",
+  "2023 Q2 的 €30m 僅是部分播客內容資產沖銷；2023-07-25 公告當時平台可用影片播客超過十萬，不是同季末數，也無法對上被關節目的身分。2024 首個全年營業獲利屬全公司。2025 對合格影片播客創作者推出依觀看表現給付的 Partner Program；提供給 Premium 會員的新觀看體驗相關成本部分改列 Premium，其餘播客成本仍在 Ad-Supported。廣告欄 2025 Q2 播客成本同比少 €21m，不能全算真正節省。兩案是否回本無逐案公開收支可判。畫面是匿名概念插畫，數字由後製排字。查核日期：2026-10-20。",
   "",
   "SEC 原始資料：",
   ...sources.map(source => `${source.title}\n${source.url}`),
@@ -178,18 +380,18 @@ const description = [
 ].join("\n");
 const video = {
   schema_version: 1, slug, format: "drama", category: "explainer", narration_locale: "zh-TW", target_minutes: [8, 12],
-  voice: { provider: "gemini", name: "Sulafat", style: "標準國語，台灣自然口音，像向朋友追一筆投資的公開紀錄；日期、季度、業務範圍清楚。", performance: "兩案對價、廣告／會員分類及全公司獲利分開讀；每份新證據帶出一個新問題。" },
+  voice: { provider: "gemini", name: "Sulafat", style: "標準國語，台灣自然口音，像向朋友追一條播客服務的公開變化；日期、季度、業務範圍清楚。", performance: "從創作者錄音、聽眾按播放走向內容調整與影片合作；每個數字清楚講其分母，不把抽象帳冊念成故事主角。" },
   subtitles: { burn_in: false }, look: { preset: "cute-mystery" }, characters: [],
   series: { slug: "brand-stories-everyday-reversals-extra", episode: 13, chapter: 1 },
   music: { prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 }, loops,
-  youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Spotify 買兩家播客公司，財報能證明回本嗎？｜品牌故事", description, tags: ["Spotify", "播客", "品牌故事", "Anchor", "Gimlet", "商業故事"], video_id: null },
-  thumbnail: { template: "thumb", data: { headline: "播客\n回本？", tag: "品牌故事", brand: "Spotify", shot: "x13-b01-s01" } },
+  youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: "Spotify 關掉節目，真的放棄播客了嗎？｜品牌故事", description, tags: ["Spotify", "播客", "品牌故事", "Anchor", "Gimlet", "商業故事"], video_id: null },
+  thumbnail: { template: "thumb", data: { headline: "播客\n被放棄？", tag: "品牌故事", brand: "Spotify", shot: "x13-b01-s01" } },
   sources: sources.map(({ code, ...source }) => source), assets: [], scenes,
 };
 const bytes = JSON.stringify(video, null, 2) + "\n";
 writeFileSync(path.join(dir, "video.json"), bytes);
 const hash = createHash("sha256").update(bytes).digest("hex");
-writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 13, chapter: 1, planned_episodes: 20, title: "Spotify：兩筆播客收購能否判定回本", logline: "從 2019 年兩筆播客收購一路核對 2020 廣告分類、2023 內容重整、2024 全公司獲利與 2025 影片成本改列，再拆出兩案各自的買價，釐清公開紀錄能否證明回本。", names: ["Spotify", "Anchor", "Gimlet"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
-writeFileSync(path.join(dir, "script.md"), ["# X13 Spotify｜六章繁中逐句稿 v9", "", `離線前製；\`video.json\` SHA-256：\`${hash}\`。未獨立逐句審核、盲評、配音或測量實際時長。濃縮開場後接正式 5 秒片頭；最後三句後接正式 21 秒 v4 片尾。`, "", ...chapters.flatMap((rows, i) => [`## 第 ${i + 1} 章｜${titles[i]}${i === 0 ? "（開場濃縮）" : ""}`, "", ...rows.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
+writeFileSync(path.join(dir, "series.json"), JSON.stringify({ kind: "story", slug: "brand-stories-everyday-reversals-extra", episode: 13, chapter: 1, planned_episodes: 20, title: "Spotify：播客重整後真的退場了嗎", logline: "2019 買進創作與製作能力，2020 廣告成本承壓，2023 部分內容資產沖銷與若干節目關閉；2024 業務毛利回升、全公司首次全年營業獲利，2025 又推出影片播客合作方案並讓部分相關成本進入 Premium。從服務措施判斷是否全面退出，不把分類變動誤當純節省。", names: ["Spotify", "Anchor", "Gimlet"], characters: [], target_minutes: 10, image_model: "image-01", style_preset: "custom", look: { preset: "cute-mystery" }, visual_tier: "stills", compilation: false }, null, 2) + "\n");
+writeFileSync(path.join(dir, "script.md"), ["# X13 Spotify｜六章繁中逐句稿 v10", "", `離線前製；\`video.json\` SHA-256：\`${hash}\`。未獨立逐句審核、盲評、配音或測量實際時長。濃縮開場後接正式 5 秒片頭；最後三句後接正式 21 秒 v4 片尾。`, "", ...chapters.flatMap((rows, i) => [`## 第 ${i + 1} 章｜${titles[i]}${i === 0 ? "（開場濃縮）" : ""}`, "", ...rows.map(row => `- \`${row.id}\` ${row.text}`), ""]), "## 最後三句", "", ...outro.map(row => `- \`${row.id}\` ${row.text}`), ""].join("\n"));
 writeFileSync(path.join(dir, "line-source-matrix.md"), ["# X13 Spotify｜作者逐句來源索引", "", `\`video.json\` SHA-256：\`${hash}\`。作者標記不等於獨立來源審核；來源 URL 與邊界見 [source-matrix.md](source-matrix.md)。`, "", "| 句 ID | 旁白 | 作者來源 |", "| --- | --- | --- |", ...allRows.map(row => `| \`${row.id}\` | ${row.text.replaceAll("|", "\\|")} | ${row.refs.join("、") || "敘事分析／提問"} |`), ""].join("\n"));
 console.log(JSON.stringify({ video_sha256: hash, lines: allRows.length, scenes: scenes.length, shots: scenes.filter(scene => scene.template === "shot").length, cards: scenes.filter(scene => scene.template === "stats").length, opening_chars: chapters[0].map(row => row.text).join("").length, body_chars: chapters.slice(1).flat().map(row => row.text).join("").length }, null, 2));
