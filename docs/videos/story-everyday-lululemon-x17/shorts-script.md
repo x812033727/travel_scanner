@@ -1,6 +1,6 @@
 # X17 Lululemon｜兩支獨立 Shorts 逐句稿
 
-主片 SHA-256：`66d584c4907cfa6041174ca0fd5d01cdb5cb868690e7804b84da02fde64e545a`；Shorts SHA-256：`58ca34c872aa4addb210e4697a9ce45939a649d837e351f4657f989c9dfdb059`。離線前製，未配音、剪輯、實測或發布；兩支各自完整，均不使用主片 5 秒／21 秒官方書擋。
+主片 SHA-256：`39b6d9ffc3b1abe987d3f7b233333be6f2f11e6539c6233115679e81db4140ff`；Shorts SHA-256：`58ca34c872aa4addb210e4697a9ce45939a649d837e351f4657f989c9dfdb059`。離線前製，未配音、剪輯、實測或發布；兩支各自完整，均不使用主片 5 秒／21 秒官方書擋。
 
 ## Short 1｜Lululemon：布可能達標，褲子為何太透？
 

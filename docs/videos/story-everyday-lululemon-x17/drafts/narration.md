@@ -1,4 +1,4 @@
-# X17 Lululemon｜逐句母稿 v5
+# X17 Lululemon｜逐句母稿 v6
 
 每列 `ID | SEC 代碼或 editorial | 台灣繁中旁白 | 無品牌示意畫面焦點`。`editorial` 是由前述事實推出的問題或轉場，不替真實工廠、員工、客人編台詞。黑色運動褲是**同一件示意物件**，不是可辨識的真實商品。
 
@@ -23,12 +23,11 @@ x170207 | editorial | 一張布料檢驗單，能替最後穿上的透度作保�
 x170208 | S2 | 布料由外部供應，衣物也交由外部廠商製作；兩段工作還得彼此銜接。 | anonymous hands pass fabric roll to sewing table
 x170209 | S2 | 年報說，製衣廠從事先核可的供應商取得布料，再把布做成公司的商品。 | blank ruler bridges roll and folded pants
 x170210 | editorial | 供布端交出的布到了製衣端，才變成裁片與接縫；每次交接都可能改變最後的模樣。 | black pants beside several unmarked hands
-x170211 | editorial | 檢驗桌上的測試項目列得整齊；布料還有哪些變化沒量到？ | separate blank checklists beside finished pants
-x170212 | S2 | 公司自己不經營製衣工廠，得靠合作方把布做成衣服。 | delayed fabric roll before empty sewing bench
-x170213 | S2 | 年報也說，成衣從配送中心出發，通常一週數次經外部配送送到門市。 | anonymous courier moves plain garment box from distribution shelf
+x170211 | editorial | 這張布料清單，真的測盡了影響成衣的變數嗎？ | separate blank checklists beside finished pants
+x170212 | S2,S3 | 公司沒有自己的製衣廠；檢驗方法若要改，還得教給製造夥伴。 | delayed fabric roll before empty sewing bench
 x170214 | S3 | Luon 的規格與檢驗程序，早在二〇〇六年設下。 | old blank test card beside swatch
-x170215 | editorial | 從供布、縫製到配送，紙上的規格走過很長一段路，店裡才看得到那條褲子。 | pattern paper beside black fabric
-x170216 | S1 | 公司當年強調，商品品質是它與別家區分的關鍵。 | anonymous inspector places black pants beside swatch
+x170215 | editorial | 從供布到縫製，紙上的規格要走過不同合作方，店裡才看得到那條褲子。 | pattern paper beside black fabric
+x170216 | editorial | 布樣檢驗與成衣透度隔著製衣關口；同一份布料結果無法直接描述穿上的樣子。 | anonymous inspector places black pants beside swatch
 x170217 | editorial | 當這套規格走到新一批貨上，店裡會發現什麼意外？ | inspector lifts blank test card
 x170220 | S2 | 二月三日，上一財年已關帳；三月的這批黑褲會走進新一季的紀錄。 | closed blank calendar beside pants
 x170223 | S4 | 到了二〇一三年三月，一批黑色 Luon 商品出現在門市。 | covered box of plain black pants by rack
@@ -60,7 +59,7 @@ x170321 | editorial | 黑褲進了撤貨箱，公司接著同查布料和版型�
 x170401 | S3 | 四月三日，公司說涉事布料可能符合舊測試，做好的褲子卻太透。 | anonymous inspector opens blank report
 x170402 | S3 | 還記得二〇〇六年那套檢驗尺？公司說規格與程序後來沒大改。 | old blank measuring card beside newer swatch
 x170403 | S3 | 涉事布料落在公司可接受範圍的低端，靠近那條界線。 | several black fabric swatches vary in stretch
-x170404 | editorial | 容許範圍還在，成衣卻不能賣；一張布料檢驗表到底少看了什麼？ | swatch rests at edge of blank scale
+x170404 | editorial | 還記得那張布料清單？它真的把影響成衣透度的變化都量到了嗎？ | swatch rests at edge of blank scale
 x170405 | S3 | Luon 製程有多種投入；布料雖是關鍵，並不是最後唯一的變數。 | plain gauge points near lower edge
 x170406 | editorial | 舊測試即使量到了幾項布料性質，也不等於把所有影響成衣的變化問完。 | unmarked fabric gauge beside finished pants
 x170407 | S1,S3 | 三月先撤下成衣，四月才重新檢討布料測試；處置與找原因不是同一天完成。 | closed garment box beside reopened blank test card
@@ -127,6 +126,6 @@ x170610 | S6a | 全年毛利率從上年的百分之五十五點七，降到五�
 x170611 | S6a | 也不能。全年毛利率混合各項商品與成本，公告沒有拆出黑褲的完整份額。 | mixed plain cost chips around black pants box
 
 ## outro: 最後三句
-x170630 | S3,S4 | 公司認為布料可能合舊標準，缺測與版型變動讓褲太透；撤貨另列一千七百五十萬美元存貨準備。 | black pants between swatch and blank ledger
+x170630 | S3,S4 | 回到開場的空衣架：布料可能合舊標準，缺測與版型變動仍讓褲太透；那箱撤貨也留下存貨準備。 | black pants between swatch and blank ledger
 x170631 | editorial | 你買運動褲時，最想先檢查布料，還是穿起來的樣子？ | anonymous buyer examines plain hem
 x170632 | editorial | 想看產品決定如何寫進財報，歡迎訂閱品牌故事。 | folded black pants beside plain ending frame
