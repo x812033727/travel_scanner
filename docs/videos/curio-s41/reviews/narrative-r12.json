@@ -1,0 +1,264 @@
+{
+  "narrative_hash": "8323894e514fb7fb",
+  "script_hash": "8f89b266ba07a198cd9ddbb8b281aba0f7195c71b537dec5ded276cc23abc218",
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "f94ac3eacea7fdd36f178db09f9d303fe33cc60e22f81ee9c673c6172fbccf26",
+  "round": 2,
+  "passed": true,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[qb001] 《史記》寫始皇三十四年，咸陽宮裡正在設宴。 [qb002] 周青臣說秦把諸侯改成郡縣，從此沒有戰亂，秦制能傳萬世；皇帝聽得高興。 The first four lines place speakers acting at a specific court event, with no greeting or topic announcement.",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[qb007] 這個問題過了秦末兵亂也沒消失。一位秦廷舊官後來尋找藏起的《書》，究竟還能找回多少篇？ This previews the search and withholds the twenty-nine-chapter result. [qb006] similarly withholds the role-based answer.",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[qb089] 剛才兒寬受教的孔安國，把牆中《書》和伏生那一路比照，據志書說多出十六篇。 The second wall is introduced through the already established 《書》 transmission line, then moves to later comparison. The narrative runs from Qin's proposal",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[qb005] 這場爭論會讓李斯連史官手裡的記錄也要燒；被他指中的是哪一種？ This is a concrete unresolved action, not an announcement of the video's sections. No spoken line gives a first/second/last itinerary or a list of upcoming secti",
+      "yes_readers": 2
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": true,
+      "evidence": "[qb096] 〈藝文志〉說，書籍仍有散失；成帝派陳農到各地求遺書。 It directly answers preceding [qb095] (“到了成帝，漢朝收集的書籍都齊全了嗎？”) and moves to a consequence. The other handoffs are concrete as well: [qb009] names the doctor from the o",
+      "yes_readers": 2
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[qb050] 嚴令寫到最後，哪四個字突然開了一道例外？ The script uses such unresolved questions throughout. hookCadenceProblems on the frozen JSON reports no gaps over 45 seconds at 250, 300, or 325 spoken units/minute; the 9",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": true,
+      "evidence": "[qb007] …究竟還能找回多少篇？ → [qb063] 等到「漢定」，他尋找先前藏的《書》… → [qb065] 數十篇已不見，他只找回二十九篇。 The long-opening loop returns to the same hidden copy and yields a new result. Other material questions receive specific ans",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": true,
+      "evidence": "[qb999a] 《書》留下來，指的是漢代仍能教讀、互校的篇章；後世記錄不能證明秦前原卷也完整留存。 The first clause gathers earlier teaching/collation evidence, but the second adds a distinct limit on what a Han-era surviving text proves about a pr",
+      "yes_readers": 1
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[qb059] 《史記》另記伏生：他曾是秦廷博士。 Chapter title 伏生把《書》藏進牆裡 names an action, as do 淳于越提出封子弟功臣, 文帝派朝錯向伏生學《書》, and 劉向校出《書》的缺簡. None is a generic “background/conclusion” label.",
+      "yes_readers": 2
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[qb999c] 這些傳下來的文字，仍值得回到原文慢慢核對。 The outro never names a next episode or file.",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[qb005] …史官手裡的記錄也要燒；被他指中的是哪一種？ [qb006] 《書》也進了李斯的提議；書名前那個秦廷職位，會改變誰能留著它？ [qb007] …一位秦廷舊官後來尋找藏起的《書》，究竟還能找回多少篇？ These are three distinct later reveals, all stopped before the answers.",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[qb029] 史官記錄被點名後，李斯把《書》也拉進提議… and [qb098] 他拿古文《書》和歐陽、大小夏侯幾家傳本互校。 The same object, 《書》, carries the story from the ban into transmission and comparison.",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": true,
+      "evidence": "[qb073] 這個日期沒有告訴我們伏生哪年找回書，更不能說他因除律才找回書。 The Hui law passage stays tied to whether possessing this book later changed, while avoiding an invented causal claim. The long legal passage explains the scope",
+      "yes_readers": 2
+    }
+  ],
+  "failed": [],
+  "advisory": [],
+  "readers": [
+    {
+      "passed": true,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[qb001] 《史記》寫始皇三十四年，咸陽宮裡正在設宴。 [qb002] 周青臣說秦把諸侯改成郡縣，從此沒有戰亂，秦制能傳萬世；皇帝聽得高興。 The first four lines place speakers acting at a specific court event, with no greeting or topic announcement."
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[qb007] 這個問題過了秦末兵亂也沒消失。一位秦廷舊官後來尋找藏起的《書》，究竟還能找回多少篇？ This previews the search and withholds the twenty-nine-chapter result. [qb006] similarly withholds the role-based answer."
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[qb089] 剛才兒寬受教的孔安國，把牆中《書》和伏生那一路比照，據志書說多出十六篇。 The second wall is introduced through the already established 《書》 transmission line, then moves to later comparison. The narrative runs from Qin's proposal"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[qb005] 這場爭論會讓李斯連史官手裡的記錄也要燒；被他指中的是哪一種？ This is a concrete unresolved action, not an announcement of the video's sections. No spoken line gives a first/second/last itinerary or a list of upcoming secti"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[qb096] 〈藝文志〉說，書籍仍有散失；成帝派陳農到各地求遺書。 It directly answers preceding [qb095] (“到了成帝，漢朝收集的書籍都齊全了嗎？”) and moves to a consequence. The other handoffs are concrete as well: [qb009] names the doctor from the o"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[qb050] 嚴令寫到最後，哪四個字突然開了一道例外？ The script uses such unresolved questions throughout. hookCadenceProblems on the frozen JSON reports no gaps over 45 seconds at 250, 300, or 325 spoken units/minute; the 9"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[qb007] …究竟還能找回多少篇？ → [qb063] 等到「漢定」，他尋找先前藏的《書》… → [qb065] 數十篇已不見，他只找回二十九篇。 The long-opening loop returns to the same hidden copy and yields a new result. Other material questions receive specific ans"
+        },
+        {
+          "id": "no_recap",
+          "yes": true,
+          "evidence": "[qb999a] 《書》留下來，指的是漢代仍能教讀、互校的篇章；後世記錄不能證明秦前原卷也完整留存。 The first clause gathers earlier teaching/collation evidence, but the second adds a distinct limit on what a Han-era surviving text proves about a pr"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[qb059] 《史記》另記伏生：他曾是秦廷博士。 Chapter title 伏生把《書》藏進牆裡 names an action, as do 淳于越提出封子弟功臣, 文帝派朝錯向伏生學《書》, and 劉向校出《書》的缺簡. None is a generic “background/conclusion” label."
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[qb999c] 這些傳下來的文字，仍值得回到原文慢慢核對。 The outro never names a next episode or file."
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[qb005] …史官手裡的記錄也要燒；被他指中的是哪一種？ [qb006] 《書》也進了李斯的提議；書名前那個秦廷職位，會改變誰能留著它？ [qb007] …一位秦廷舊官後來尋找藏起的《書》，究竟還能找回多少篇？ These are three distinct later reveals, all stopped before the answers."
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[qb029] 史官記錄被點名後，李斯把《書》也拉進提議… and [qb098] 他拿古文《書》和歐陽、大小夏侯幾家傳本互校。 The same object, 《書》, carries the story from the ban into transmission and comparison."
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[qb073] 這個日期沒有告訴我們伏生哪年找回書，更不能說他因除律才找回書。 The Hui law passage stays tied to whether possessing this book later changed, while avoiding an invented causal claim. The long legal passage explains the scope"
+        }
+      ],
+      "failed": [],
+      "advisory": []
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[qb002] 周青臣說秦把諸侯改成郡縣，從此沒有戰亂，秦制能傳萬世；皇帝聽得高興。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[qb007] 這個問題過了秦末兵亂也沒消失。一位秦廷舊官後來尋找藏起的《書》，究竟還能找回多少篇？"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[qb059] 《史記》另記伏生：他曾是秦廷博士。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[qb007] 這個問題過了秦末兵亂也沒消失。一位秦廷舊官後來尋找藏起的《書》，究竟還能找回多少篇？"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[qb076] 文帝想找能教《尚書》的人，遍尋未得，才聽說伏生。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[qb095] 《書》已有兩路傳本；到了成帝，漢朝收集的書籍都齊全了嗎？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[qb065] 數十篇已不見，他只找回二十九篇。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[qb999a] 《書》留下來，指的是漢代仍能教讀、互校的篇章；後世記錄不能證明秦前原卷也完整留存。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[qb051] 「所不去者」是醫藥、占卜、種樹之書；《書》不在這三類裡。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[qb999c] 這些傳下來的文字，仍值得回到原文慢慢核對。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[qb007] 這個問題過了秦末兵亂也沒消失。一位秦廷舊官後來尋找藏起的《書》，究竟還能找回多少篇？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[qb089] 剛才兒寬受教的孔安國，把牆中《書》和伏生那一路比照，據志書說多出十六篇。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[qb082] 兒寬又到博士孔安國門下；這位老師，跟另一面牆裡的《書》有什麼關係？"
+        }
+      ],
+      "failed": [
+        "no_recap"
+      ],
+      "advisory": []
+    }
+  ]
+}
