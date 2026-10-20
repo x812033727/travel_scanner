@@ -1,0 +1,113 @@
+{
+  "reviewer": "r5-fresh-blind-a",
+  "script": "docs/videos/curio-s53/script.md",
+  "script_sha256": "5f944532562e9e6072efe08cd8d1e3c4caa64f380d4497adccf276df50f3a07d",
+  "rubric": "tools/video/core/narrative.mjs NARRATIVE_PANEL; .agents/skills/curio-episode/SKILL.md",
+  "verdict": "FAIL",
+  "answers": [
+    {
+      "id": "scene_first",
+      "required": true,
+      "yes": true,
+      "verdict": "PASS",
+      "evidence": "[s53002] 六月，公園委員會要求救濟機構：八月十七日前清空廣場。",
+      "reason": "前兩句把時間、地點與委員會的清場行動放進具體場景。"
+    },
+    {
+      "id": "no_spoiler",
+      "required": true,
+      "yes": true,
+      "verdict": "PASS",
+      "evidence": "[s53008] 隔年八月，訪查員去找搬出的屋，又會發現什麼？",
+      "reason": "開場只提出訪查將發生，沒有交代結果。"
+    },
+    {
+      "id": "one_line",
+      "required": true,
+      "yes": true,
+      "verdict": "PASS",
+      "evidence": "[s53041] 小屋成批建成；搬走時，各戶還得想辦法找下一塊地。",
+      "reason": "建屋、取得小屋、清場、搬遷與訪查沿同一個公地難題推進；開場預告後回到起點可以辨認。"
+    },
+    {
+      "id": "no_toc",
+      "required": true,
+      "yes": true,
+      "verdict": "PASS",
+      "evidence": "[s53048] 可留在營地的人，該怎樣取得自己住的那棟屋？",
+      "reason": "過場以故事中的具體問題推進，沒有宣告影片的講述順序。"
+    },
+    {
+      "id": "chapters_link",
+      "required": true,
+      "yes": true,
+      "verdict": "PASS",
+      "evidence": "[s53069] 調查說，住戶想搬屋，得先證明已買或租到另一塊地。",
+      "reason": "章首接續上一章的搬屋資格問題；其餘章首也承接小屋、營地或訪查的動作與物件。"
+    },
+    {
+      "id": "open_loops",
+      "required": true,
+      "yes": true,
+      "verdict": "PASS",
+      "evidence": "[s53116] 搬到租地的住戶，若交不起地租，小屋又會怎樣？",
+      "reason": "全文頻繁留下具體問題，長段落也有未解的地租問題維持懸念。"
+    },
+    {
+      "id": "payoffs",
+      "required": true,
+      "yes": true,
+      "verdict": "PASS",
+      "evidence": "[s53130] 報告另知二十三戶付不起或拒付地租，房屋遭地主取走。",
+      "reason": "較長的地租懸念在明確回呼後得到新結果；其餘開場與章間問題也各有後續答案。"
+    },
+    {
+      "id": "no_recap",
+      "required": true,
+      "yes": false,
+      "verdict": "FAIL",
+      "evidence": "[s53003] 期限落在這個夏天，小屋卻還排在原地。",
+      "reason": "開場第一句 s53001 已說一九〇七年六月廣場裡的小屋還在；這句立即重述同一個小屋仍在原地的事實，沒有以回呼標示。"
+    },
+    {
+      "id": "chapters_are_events",
+      "required": false,
+      "yes": true,
+      "verdict": "PASS",
+      "evidence": "[s53057] 但市有地上的收租，遭市長反對，並被特別條例禁止。",
+      "reason": "章名對應清場、建屋、契約改寫、搬遷與訪查等事件或揭曉。"
+    },
+    {
+      "id": "outro_no_next",
+      "required": true,
+      "yes": true,
+      "verdict": "PASS",
+      "evidence": "[outro] 想繼續讀有出處的歷史疑問，訂閱奇聞檔案局。",
+      "reason": "片尾邀請訂閱，沒有預告下一支影片、下一集或下一份檔案。"
+    },
+    {
+      "id": "opening_hooks",
+      "required": true,
+      "yes": true,
+      "verdict": "PASS",
+      "evidence": "[s53007] 小屋離開營地時，搬遷費會由誰付？",
+      "reason": "第一個場景後另有按月付款性質、搬遷費、訪查結果及為何落腳公地四個問題。"
+    },
+    {
+      "id": "one_thread",
+      "required": true,
+      "yes": true,
+      "verdict": "PASS",
+      "evidence": "[s53060] 買的是小屋，不是小屋底下的公園土地。",
+      "reason": "小屋能否離開限期公地、去何處安放，是從開場到結尾可辨認的難題。"
+    },
+    {
+      "id": "no_detour",
+      "required": true,
+      "yes": false,
+      "verdict": "FAIL",
+      "evidence": "[s53128] 調查說，這段上坡路有時長達五十到一百英尺。",
+      "reason": "s53116 提出付不起地租的後果，s53117 指向失訪線索，之後卻轉入擁擠、加蓋、接水與取水坡道，直到 s53129 才回呼地租；坡道長度沒有推進所懸的地租與搬遷難題。"
+    }
+  ]
+}

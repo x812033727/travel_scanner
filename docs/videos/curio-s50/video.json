@@ -1,0 +1,2130 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s50",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，自然歷史說書；人名、日期與「親見／聽聞／事後證詞」稍放慢。",
+    "performance": "跟著布丁巷起火、城市擴散與隔年證詞走；烤爐火星只說可能，不把自白、否認或卡通畫面當定論。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sources": [
+    {
+      "title": "Samuel Pepys, Diary 1666 Sep 2-6, GITenberg fixed text",
+      "url": "https://github.com/GITenberg/The-Diary-of-Samuel-Pepys---Complete_4200/blob/68fcf49f70ee793b989a6fd0464264d55beb4451/4200.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "A True and Faithful Account... 1667, TCP fixed transcription",
+      "url": "https://github.com/textcreationpartnership/A63385/blob/4ac29739d661a1c7f2a34f51ffb8a1811176f146/A63385.xml",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Thomas Vincent, Gods Terrible Voice in the City 1667, TCP fixed transcription",
+      "url": "https://github.com/textcreationpartnership/A64990/blob/e15ce8bba340e6089deec4ff85b486842e568434/A64990.xml",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "London Gazette issue 85, official PDF; P17 checked 2026-10-12, current proxy CONNECT 403",
+      "url": "https://www.thegazette.co.uk/London/issue/85/data.pdf",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "London Museum, Great Fire of London; P17 checked 2026-10-12, current proxy CONNECT 403",
+      "url": "https://www.londonmuseum.org.uk/collections/london-stories/great-fire-of-london/",
+      "checked_on": "2026-10-12"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "fire002",
+      "payoff": "fire013",
+      "what": "火出巷後先往哪裡走"
+    },
+    {
+      "setup": "fire004",
+      "payoff": "fire014",
+      "what": "橋腳教堂能否擋火"
+    },
+    {
+      "setup": "fire005",
+      "payoff": "fire029",
+      "what": "塔後誰告知布丁巷地址"
+    },
+    {
+      "setup": "fire006",
+      "payoff": "fire049",
+      "what": "市長如何回應拆屋建議"
+    },
+    {
+      "setup": "fire007",
+      "payoff": "fire095",
+      "what": "屋主說哪處仍有火"
+    },
+    {
+      "setup": "fire008",
+      "payoff": "fire116",
+      "what": "一戶屋能否解釋全城損失"
+    },
+    {
+      "setup": "fire012",
+      "payoff": "fire015",
+      "what": "橋頭使火轉往何處"
+    },
+    {
+      "setup": "fire016",
+      "payoff": "fire017",
+      "what": "風把泰晤士街火勢推向何處"
+    },
+    {
+      "setup": "fire019",
+      "payoff": "fire020",
+      "what": "誰在凌晨叫醒佩皮斯"
+    },
+    {
+      "setup": "fire023",
+      "payoff": "fire027",
+      "what": "七點遠火判斷能否相信"
+    },
+    {
+      "setup": "fire028",
+      "payoff": "fire032",
+      "what": "橋上熟人房屋是否尚在"
+    },
+    {
+      "setup": "fire031",
+      "payoff": "fire032",
+      "what": "河上能否找回熟人屋"
+    },
+    {
+      "setup": "fire036",
+      "payoff": "fire038",
+      "what": "河岸還留哪些可燃貨物"
+    },
+    {
+      "setup": "fire041",
+      "payoff": "fire049",
+      "what": "誰能及時拆屋阻火"
+    },
+    {
+      "setup": "fire047",
+      "payoff": "fire050",
+      "what": "市長是否已開始拆屋"
+    },
+    {
+      "setup": "fire051",
+      "payoff": "fire052",
+      "what": "什麼堵住市長面前街道"
+    },
+    {
+      "setup": "fire055",
+      "payoff": "fire056",
+      "what": "飛火跨多遠仍能引燃"
+    },
+    {
+      "setup": "fire061",
+      "payoff": "fire062",
+      "what": "倫敦塔旁通道是否通暢"
+    },
+    {
+      "setup": "fire064",
+      "payoff": "fire066",
+      "what": "塔街拆屋是否阻住局部火勢"
+    },
+    {
+      "setup": "fire067",
+      "payoff": "fire068",
+      "what": "隔天辦公室是否尚在"
+    },
+    {
+      "setup": "fire071",
+      "payoff": "fire072",
+      "what": "火燒到哪一天才停"
+    },
+    {
+      "setup": "fire076",
+      "payoff": "fire077",
+      "what": "城牆內留下多少未燒地"
+    },
+    {
+      "setup": "fire082",
+      "payoff": "fire083",
+      "what": "誰成為另一組記錄者"
+    },
+    {
+      "setup": "fire090",
+      "payoff": "fire091",
+      "what": "自白者當夜在場有無見證"
+    },
+    {
+      "setup": "fire093",
+      "payoff": "fire095",
+      "what": "屋主承認哪處留火"
+    },
+    {
+      "setup": "fire098",
+      "payoff": "fire099",
+      "what": "屋主怎麼回答門窗風問題"
+    },
+    {
+      "setup": "fire104",
+      "payoff": "fire105",
+      "what": "報告送上後議會有無判斷"
+    },
+    {
+      "setup": "fire108",
+      "payoff": "fire109",
+      "what": "烤爐火星可能性欠何種證據"
+    },
+    {
+      "setup": "fire112",
+      "payoff": "fire113",
+      "what": "屋址能否推算城區災損"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "fire001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a modest 1666 London timber home before dawn, exactly one middle-aged adult neighbor in a linen nightshirt sleeping in a simple wooden bed; through a small leaded casement with a partly open wooden shutter, a thin plume of smoke rises beyond nearby timber rooftops, soft candlelight from the bedside",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire001",
+          "text": "一六六六年九月二日凌晨，布丁巷的人還在睡，一戶麵包師的屋子突然起火。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ],
+      "chapter": "九月二日，布丁巷的屋子起火"
+    },
+    {
+      "id": "fire002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a timber house wall before dawn, one night watchman studies a darkened window frame, soft lamp light from the side",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire002",
+          "text": "從這條巷出來，火最先會朝哪個方向衝？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire003",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a sloping London street before dawn, one watchman looks toward a stone church at a distant bridge foot, mild lamplight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire003",
+          "text": "坡路下方，聖馬格努斯教堂擋在倫敦橋腳。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a stone church near a river bridge before dawn, one bell ringer watches smoke in the distance, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire004",
+          "text": "連這座教堂，也會被火越過嗎？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire005",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tower stair in grey morning light, one diarist climbs toward a high opening holding his hat",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire005",
+          "text": "天亮後佩皮斯登上倫敦塔；誰會把最早的地址告訴他？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire006",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain royal room by day, one messenger stands with his hat in hand before an empty chair, light from a tall window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire006",
+          "text": "佩皮斯會把拆屋建議送到國王面前；市長怎麼回應？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain seventeenth-century hearing room, one baker seated before a blank paper, grey light from a window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire007",
+          "text": "幾個月後，委員會叫來屋主；他會描述夜裡哪一處還有火？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire008",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot over damaged London rooftops by day, one surveyor looks across the city from a high walkway, soft grey light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire008",
+          "text": "測量員後來留下城區受損數字；一間麵包屋，真的毀了倫敦嗎？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire009",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a narrow London lane before dawn, one watchman raises a lamp toward smoke beside a timber house, gentle lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire009",
+          "text": "開場那戶布丁巷屋子，事後證詞把起火時段記在凌晨一點到兩點。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ],
+      "chapter": "一點到兩點，火往橋邊走"
+    },
+    {
+      "id": "fire010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a narrow London bakehouse before dawn, one watchman passes its shuttered door while smoke rises, gentle lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire010",
+          "text": "那戶屋子的主人，後來在刊本裡被記作法里納。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire011",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a compact London lane before dawn, one watchman looks at closed doors as smoke rises, cool sky light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire011",
+          "text": "火先把附近幾間屋捲了進去，沒有停在最初那戶。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire012",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a sloping London street before dawn, one watchman looks toward smoke near a river bridge, soft grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire012",
+          "text": "文森特事後寫下火線：到了橋頭，它會轉向哪裡？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire013",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot down a narrow sloping street lined with timber houses in 1666 London, the old stone-arched London Bridge with houses on it ahead; exactly one adult porter in a plain wool coat pulls a wooden handcart by its handles, glancing back at a low trail of smoke moving toward the bridge, soft grey morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire013",
+          "text": "它接著沿坡道朝倫敦橋衝去。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire014",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a stone church near a river bridge by day, one bell ringer looks at smoke approaching the church roof, soft sky light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire014",
+          "text": "開場那座教堂沒攔住火；文森特寫它侵入教堂，橋上屋也倒了。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire015",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a riverside street by day, one warehouse keeper shuts a wooden door beside stacked barrels, overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire015",
+          "text": "烈焰在橋邊停下，轉進泰晤士街，迎面是一排緊挨著的屋子。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire016",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a quay warehouse by day, one porter drags a covered barrel away from a smoky lane, light from the open quay",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire016",
+          "text": "文森特說街上可燃的貨物很多；風會把火往哪個方向推？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire017",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a narrow riverside London street by day, one porter hurries past smoky timber houses, diffuse daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire017",
+          "text": "它沿著泰晤士街向西，幾乎沒受到抵抗。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire018",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a modest London room before dawn, one diarist sleeps beside a window, faint grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire018",
+          "text": "另一份當天日記，從佩皮斯家的那扇窗接上這場火。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire019",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain bedroom before dawn, one diarist stirs in bed as an unseen person calls to him, pale light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire019",
+          "text": "有人叫了起來；床上的佩皮斯還不知道橋頭燒成什麼樣。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire020",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a modest London room before dawn, one housemaid points toward a distant glow outside a window, pale early light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire020",
+          "text": "九月二日凌晨約三點，女僕珍妮叫醒佩皮斯，說城裡有場大火。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ],
+      "chapter": "三點醒來，七點還像遠火"
+    },
+    {
+      "id": "fire021",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a bedroom window before dawn, one diarist in a robe studies the distant glow, soft light from outside",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire021",
+          "text": "他穿上睡袍望出去，以為火離自己仍很遠。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a dim bedroom at dawn, one diarist sits on a bed turning away from the window, grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire022",
+          "text": "於是他回床上睡了；這不是城裡火勢已受控的證據。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire023",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at the same window in morning grey light, one diarist leans forward with a puzzled expression",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire023",
+          "text": "約七點再看，他仍覺得火更小更遠；登塔會看到同一幅景象嗎？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire024",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a window by day, one housemaid reports aloud with open hands, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire024",
+          "text": "但女僕帶回來的消息，與窗外那一眼對不上。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire025",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a window in morning light, one housemaid raises a worried hand while speaking",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire025",
+          "text": "她聽說已有三百多間屋燒掉；那是傳聞，不是清點。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire026",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a street leading toward the Tower of London by day, one diarist walks toward its gate, overcast sky",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire026",
+          "text": "佩皮斯只好往倫敦塔走，從高處再看一次。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire027",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot atop a stone tower by day, one diarist grips a parapet while smoke rises near a bridge, soft daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire027",
+          "text": "塔上，他親眼看見橋附近的屋子仍在燃燒。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire028",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one diarist's worried face above a stone parapet, a river bridge blurred behind him, grey daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire028",
+          "text": "他還惦記住在橋上的熟人；他們的房子還在嗎？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire029",
+      "template": "big",
+      "data": {
+        "text": "布丁巷｜國王麵包師的屋子",
+        "kicker": "佩皮斯日記・9月2日",
+        "sub": "塔樓官員告知；佩皮斯未親見起火"
+      },
+      "lines": [
+        {
+          "id": "fire029",
+          "text": "開頭那個地址，是下塔後塔官告訴他的：布丁巷國王麵包師的屋子。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire030",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one diarist holding a blank notebook by a tower window, soft grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire030",
+          "text": "塔上隔著一段路，他還看不清橋上熟人的那間屋。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire031",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a riverside landing by day, one diarist steps into a small boat, bridge in the background",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire031",
+          "text": "隨後，他改從河面靠近；那戶熟人的屋子還能找著嗎？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire032",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from a boat under a bridge by day, one diarist looks toward a blackened riverfront house, grey daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire032",
+          "text": "佩皮斯坐船經過倫敦橋，才看見熟人的房屋已經燒掉。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ],
+      "chapter": "河上的風把距離拉短"
+    },
+    {
+      "id": "fire033",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a busy riverside quay by day, one resident loads a plain chest onto a small cargo boat, diffuse daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire033",
+          "text": "沿岸有人把能帶的家當搬上小船，也有人趕得太晚。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire034",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a boat by day, one diarist watches smoke lean over rows of houses, grey sky light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire034",
+          "text": "佩皮斯看著火往更多街屋伸去，風又把它推向城內。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire035",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one diarist touching a dry wooden rail beside a boat, hazy daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire035",
+          "text": "他記下久旱之後，連平常不會那麼快燒的東西都容易著火。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire036",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a boat by day, one resident carries a small chest along the quay under distant smoke, pale sky light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire036",
+          "text": "他眼前很多人在撤物；可還有什麼留在河岸上？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a narrow timber-lined street by day, one carpenter studies closely spaced upper floors, muted daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire037",
+          "text": "官方公報也說那一帶木屋緊密，屋身還有易燃材料。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire038",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a riverside warehouse by day, one storekeeper moves a sealed barrel away from a timber wall, side light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire038",
+          "text": "泰晤士街附近還有焦油、油、酒等可燃貨物。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire039",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot over riverside rooftops by day, one boatman looks toward smoke passing beyond a lane, grey sky light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire039",
+          "text": "河岸的貨物也能助燃，火勢不必只靠相連的房屋蔓延。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire040",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a small boat by day, one diarist watches smoke reach a riverside warehouse farther along, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire040",
+          "text": "他停在船上約一小時，火已燒到鋼院一帶。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire041",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a small boat by day, one diarist watches a riverboat piled with belongings at the riverbank, muted daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire041",
+          "text": "火仍往前走；誰能趕在它前面拆出一道空隙？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire042",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a small boat by day, one diarist looks toward smoke around a church steeple in the city, grey sky light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire042",
+          "text": "他從河上還看到一座教堂的尖塔起火，最後塌落。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire043",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a riverside landing by day, one diarist steps ashore holding his hat, pale daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire043",
+          "text": "這些景象逼得佩皮斯把拆屋建議帶往白廳。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire044",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain hall by day, one diarist takes off his hat at a doorway, light from a tall window",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire044",
+          "text": "在白廳，他向國王查理二世報告河上的火勢。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ],
+      "chapter": "拆屋命令追不上火"
+    },
+    {
+      "id": "fire045",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain royal chamber by day, one diarist speaks with an outstretched hand, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire045",
+          "text": "他主張趕快拆掉火前面的屋子，製造一道空隙。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a royal chamber by day, one messenger receives a spoken instruction, a single figure facing camera, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire046",
+          "text": "國王要他把話帶給市長：不要捨不得拆屋。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire047",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a hall window by day, one officer holds a plain folded glove while looking toward the city, window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire047",
+          "text": "約克公爵願提供士兵；市長那邊已經動手了嗎？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire048",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a London street by day, one diarist squeezes past a handcart under hazy light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire048",
+          "text": "佩皮斯穿過載滿財物的人群，找到市長。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a street by day, one exhausted mayor leans against a wall with a handkerchief, grey sky light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire049",
+          "text": "開頭那道拆屋建議送到市長面前；日記記他說，人不聽命，自己已累垮。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire050",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one mayor's tired face in a smoky street by day, diffuse light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire050",
+          "text": "他說已試著拆屋，可火線總在工人前面。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire051",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a narrow street by day, one carpenter holds a long hook before a row of houses, smoky daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire051",
+          "text": "佩皮斯帶到國王的口信；市長眼前那條街，又是誰堵住的？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a stone church doorway by day, one resident brings in a plain chest, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire052",
+          "text": "教堂已堆著撤出的家當，車與行人還在街上互相擋路。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire053",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one carpenter raising a long hook toward a timber wall, smoky light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire053",
+          "text": "市長沒法等道路清空；佩皮斯離開後，又從河上看見新的危險。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire054",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a small boat by day, one diarist watches glowing flecks cross above rooftops, hazy river light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire054",
+          "text": "當天下午，他再次乘船；岸邊的人還在把家當往遠處搬。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire055",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one diarist shielding his eyes on a boat, drifting sparks far above the rail, muted daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire055",
+          "text": "風捲起一塊燒著的碎片，會落在多遠外的屋頂？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire056",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot across closely spaced roofs by day, one resident points toward a second column of smoke, grey sky light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire056",
+          "text": "日記說，燃燒碎片隔了三、四間，甚至五、六間屋仍能引火。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ],
+      "chapter": "飛火越過街口"
+    },
+    {
+      "id": "fire057",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a cleared patch in a street by day, one carpenter looks toward smoke beyond it, overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire057",
+          "text": "所以空隙能幫忙，卻得比風送火的距離更有效。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a small boat by day, one diarist pulls his cloak over his face, hazy light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire058",
+          "text": "他在河上難以久留，煙與熱都跟著風來。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire059",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from the opposite bank at dusk, one diarist stands beside a moored boat watching a broad distant glow",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire059",
+          "text": "到了傍晚，他從對岸看見整片相連的火光。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire060",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a dusk riverbank, one diarist watches multiple smoking roofs, soft fading light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire060",
+          "text": "有人把早晨搬出的家當，又朝更遠的地方搬。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire061",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a riverside landing by day, one resident carries a plain chest toward a small cargo boat, grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire061",
+          "text": "九月三日，佩皮斯家也開始往河邊搬；路還通得過嗎？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire062",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside Tower Hill by day, one porter holds a small chest before a crowded gate, grey daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire062",
+          "text": "倫敦塔旁堆滿家當，人潮堵得連小門都過不去。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire063",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a quay by day, one boatman gestures toward rows of timber houses under smoke, diffuse light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire063",
+          "text": "鄰居也用車和小船搬物，隊伍還在增多。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on Tower Street by day, one carpenter stands before a timber frontage with a hook, grey daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire064",
+          "text": "九月四日，火還朝塔街逼來；有人準備用更猛的方式拆屋。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire065",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along Tower Street by day, one diarist looks toward smoke on both sides of the lane, overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire065",
+          "text": "塔街兩側的火，逼近佩皮斯的住處。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire066",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a cleared frontage by day, one watchman looks toward a line of smoke ending at rubble, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire066",
+          "text": "他見到房屋被炸倒，在那一帶，火真的停住了。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain room at dusk, one diarist looks toward a smoky lane outside a window, muted light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire067",
+          "text": "第二天，佩皮斯還要回看辦公室；它還站著嗎？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire068",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a plain office by morning light, one diarist studies the standing doorway under a smoky sky",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire068",
+          "text": "九月五日，佩皮斯回看自家辦公室，它還站著。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ],
+      "chapter": "一處停火，城內仍成灰"
+    },
+    {
+      "id": "fire069",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a cleared street by day, one workman sets down a long hook beside rubble, pale sky light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire069",
+          "text": "日記把附近的轉機，歸於炸屋與趕來的工人。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire070",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a church tower by day, one diarist looks toward multiple damaged streets, grey sky light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire070",
+          "text": "可是他登上教堂高處，又看見別處仍有大片火。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire071",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a damaged London street by day, one diarist walks past burned house frames, diffuse light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire071",
+          "text": "他走過已成灰的街道；火會到哪一天才停？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire072",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a burned London street after the fire, one clerk carries a blank folder through rubble, grey sky light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire072",
+          "text": "火一直燒到九月六日；這是後來刊出的證詞集留下的日期。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire073",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain desk in seventeenth-century London, one reader holds open an unmarked printed booklet, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire073",
+          "text": "同一本證詞集還記下測量員的另一組數字：燒過的土地。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire074",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a London city wall by day, one surveyor looks toward damaged buildings near a gate, muted daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire074",
+          "text": "他們把城牆內與城牆外分開記，兩邊都留下數字。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire075",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot within a London city wall by day, one surveyor walks past burned timber house frames, grey sky light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire075",
+          "text": "城牆內，約三百七十三英畝的土地被記作燒毀。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire076",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside a city wall by day, one surveyor studies damaged buildings near a gate, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire076",
+          "text": "城牆外，另有六十多英畝受損；牆內還留下多少？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a writing desk by day, one reader opens a plain booklet with blank pages, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire077",
+          "text": "同一段記載還說，城牆內有超過七十五英畝的地沒有燒。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire078",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a standing London street by day, one surveyor looks toward intact houses beyond damaged blocks, overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire078",
+          "text": "房屋損失再大，也不能把它說成整座城都燒光。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire079",
+      "template": "stats",
+      "data": {
+        "title": "測量員記錄的房屋損失",
+        "stats": [
+          {
+            "value": "13,200",
+            "label": "棟房屋燒毀"
+          }
+        ],
+        "source": "Moore／Gatrix，1667 年刊本"
+      },
+      "lines": [
+        {
+          "id": "fire079",
+          "text": "房屋一項，他們記了燒毀一萬三千兩百棟。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire080",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a print shop by day, one reader closes a plain booklet with blank pages, muted window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire080",
+          "text": "這個數字只量房屋損失；要追最初那晚，還得問活著的人。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire081",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot outside a civic hall by day, one messenger carries a blank folder toward the entrance, grey sky light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire081",
+          "text": "若要追問那一夜，下議院還得聽證人開口。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire082",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a hearing room by day, one clerk lays a blank page on a desk, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire082",
+          "text": "九月二十五日，這起大火有了另一組記錄者。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire083",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a parliamentary corridor by day, one clerk carries an unmarked folder, high window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire083",
+          "text": "下議院任命委員會，開始蒐集人們對起火屋的說法。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ],
+      "chapter": "委員會聽見自白，又叫來屋主"
+    },
+    {
+      "id": "fire084",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a hearing table by day, one clerk stacks plain unmarked papers, grey window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire084",
+          "text": "它要找起火原因；其中有人自稱知道那一夜的答案。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain hearing room by day, one witness sits before an unmarked sheet, grey window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire085",
+          "text": "這人叫羅伯特・休伯特；證詞後來被印進刊本。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire086",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a hearing table by day, one clerk holds a blank testimony sheet while a witness sits out of focus, soft side light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire086",
+          "text": "他帶來的不是爐邊物證，而是自己的一段話。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire087",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain hearing room by day, one witness sits before an unmarked paper, soft side light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire087",
+          "text": "他告訴委員會，火是自己點的。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire088",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a damaged London lane by day, one guard stands by a plain doorway, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire088",
+          "text": "獄卒還帶休伯特回布丁巷，請他指出起火的那戶。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire089",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a damaged street by day, one witness points toward a ruined frontage, soft grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire089",
+          "text": "他指向已燒掉的一處屋址，堅持這就是那間屋。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire090",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a hearing room by day, one clerk considers a blank testimony page with a questioning expression, window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire090",
+          "text": "指出廢墟和目擊縱火，中間還缺了哪一步？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire091",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one clerk listening with a quill above a blank sheet, overcast window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire091",
+          "text": "刊本在這一段只寫認屋與供詞，沒有附上當晚在場的見證。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire092",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a hearing room by day, one clerk turns toward another empty chair, soft light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire092",
+          "text": "委員會也聽到另一種聲音：有人說這屋的火是意外。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire093",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a hearing room doorway by day, one baker takes off his cap, window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire093",
+          "text": "開頭等的那位屋主被傳來了；他承認屋裡還有哪處有火？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire094",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain bakehouse at night, one baker carries a lamp past a wooden worktable",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire094",
+          "text": "他說午夜過後，自己走過屋裡每一個房間。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire095",
+      "template": "big",
+      "data": {
+        "text": "只剩一處壁爐有火",
+        "kicker": "法里納事後證詞・1667 年刊本",
+        "sub": "他自稱已處理餘火；不是起火目擊"
+      },
+      "lines": [
+        {
+          "id": "fire095",
+          "text": "他只承認有一處壁爐還有火，說自己已處理餘火。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire096",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a modest 1666 London room with timber walls and a broad brick-paved floor, exactly one middle-aged adult baker in a linen shirt and apron standing alone and pointing one clear index finger down to the floor bricks in front of his boots, a small fireplace recess in the far wall, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire096",
+          "text": "他說那處壁爐所在的房間，地面鋪的是磚。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire097",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain bakehouse at night, one baker draws embers inward with a small tool, lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire097",
+          "text": "他還說自己把火撥成餘燼；委員於是盯上房間的門窗。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire098",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a hearing table by day, one clerk raises a hand toward a window, soft daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire098",
+          "text": "委員追問：門或窗會不會讓風吹動那堆餘燼？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire099",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one baker's earnest face in a hearing room by day, light from a side window",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire099",
+          "text": "屋主回答：不可能，風根本吹不動那堆餘燼。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire100",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one clerk weighing two unmarked papers at a desk by day, muted daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire100",
+          "text": "刊本留下這句答話，沒有留下任何人在爐邊重看餘燼的紀錄。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire101",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a hearing room doorway by day, one clerk stands beside an empty chair, soft light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire101",
+          "text": "他的下一句話，卻把矛頭轉向另一種原因。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire102",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a hearing room by day, one baker raises a palm above a blank paper, soft light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire102",
+          "text": "他還堅持：這火不可能是意外，一定有人故意放火。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire103",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a hearing room by day, one clerk stands between two empty chairs and a blank table, grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire103",
+          "text": "屋主的話被記下，和休伯特的自白一起進入委員會的材料。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire104",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a closed meeting room door by day, one clerk holds a folder close to his chest, soft light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire104",
+          "text": "隔年一月，委員把報告交上去；議會會判定起火原因嗎？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire105",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of one clerk closing an unmarked register at a desk by day, muted window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire105",
+          "text": "二月休會前，議會沒有對報告作出判斷；證詞卻照樣印成了一冊。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ],
+      "chapter": "議會休會，證詞仍被印出"
+    },
+    {
+      "id": "fire106",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a seventeenth-century print shop by day, one printer sets down a blank title sheet, grey window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire106",
+          "text": "這冊書的封面，把大火證詞與宗教指控放在同一個題名裡。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire107",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a writing desk by day, one reader turns a plain booklet page, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire107",
+          "text": "紙張能把相隔數月的說法放在一起，卻不能把它們變成同時發生的現場。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire108",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet reading room by day, one researcher studies a plain blank notebook, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire108",
+          "text": "如今倫敦博物館把烤爐火星列為可能；這個可能還差什麼才是證據？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire109",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a desk by day, one researcher points to an empty space on a blank page, window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire109",
+          "text": "得找出火星從爐內到第一件燃物的痕跡；這些紀錄沒有那個環節。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire110",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along Pudding Lane by day, one city clerk studies closely spaced houses, diffuse light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire110",
+          "text": "還記得塔官報給佩皮斯的屋址嗎？它把人帶到起點，帶不到點火動作。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire111",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a riverside street by day, one watchman looks toward smoke between timber houses, hazy sky light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire111",
+          "text": "文森特的街道路線，則從火已衝出那戶屋子之後開始。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire112",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot across a cleared lane by day, one carpenter watches smoke rise beyond the gap, grey daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire112",
+          "text": "可是，那間屋的地址，能斷定城裡每條街都遭殃嗎？",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire113",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a surviving lane by day, one surveyor looks toward distant damaged blocks, overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire113",
+          "text": "測量員記下的那片未燒土地，讓「全城燒光」有了邊界。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire114",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a plain bakehouse by day, one researcher closes a blank notebook, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire114",
+          "text": "那間屋子的地址、第一顆火星、最後的損失，需要三種不同的證據。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire115",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot over a London riverside skyline in grey morning light, one boatman watches damaged and surviving streets",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire115",
+          "text": "倫敦城的災情要沿每段火線計算，不能倒寫成一個人的爐子造成全部結果。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "fire116",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a writing table by day, one clerk sets two plain blank pages apart, soft window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "fire116",
+          "text": "開場那間麵包師的屋子確是起點；烤爐火星無從證實，也不能單獨解釋城市的大損失。",
+          "emotion": "自然說書；來源層級稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "未結",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "屋址確定，點火未解"
+        ]
+      },
+      "lines": [
+        {
+          "id": "fire999a",
+          "text": "這一頁，蓋上「未結」章。",
+          "emotion": "清楚收束"
+        },
+        {
+          "id": "fire999b",
+          "text": "你以前聽到這場大火，最先想到的是哪個畫面？",
+          "emotion": "自然提問"
+        },
+        {
+          "id": "fire999c",
+          "text": "當年的日記和證詞刊本固定版連結，都放在說明欄供你核對。",
+          "emotion": "自然收束"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**烤爐？**",
+      "tag": "1666 倫敦大火",
+      "sub": "起點確定，火星未證",
+      "shot": "fire001"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "一間麵包店真的燒毀倫敦？1666 年大火的起點與火源｜奇聞檔案局",
+    "description": "1666 年倫敦大火從布丁巷 Thomas Farriner 的屋子開始，這和「一個烤爐火星毀了倫敦」是同一句話嗎？佩皮斯的日記看見風、飛火與拆屋困難；1667 年的證詞集留下烘焙師關於餘火的自辯與休伯特的自白，卻沒有留下點火瞬間或議會判決。\n\n本集依當年日記與印刷品撰稿。畫面為原創 AI 卡通示意，不是現場影像、真實手稿或火源重建。London Museum 與 London Gazette 的說法參照 2026-10-12 既有來源查核；2026-10-20 雲端代理連線兩站遭 CONNECT 403，正式來源覆核仍待完成。\n\n佩皮斯日記固定版：https://github.com/GITenberg/The-Diary-of-Samuel-Pepys---Complete_4200/blob/68fcf49f70ee793b989a6fd0464264d55beb4451/4200.txt\n1667 年委員會證詞刊本固定版：https://github.com/textcreationpartnership/A63385/blob/4ac29739d661a1c7f2a34f51ffb8a1811176f146/A63385.xml\n文森特 1667 年記述固定版：https://github.com/textcreationpartnership/A64990/blob/e15ce8bba340e6089deec4ff85b486842e568434/A64990.xml\nLondon Gazette 第 85 號：https://www.thegazette.co.uk/London/issue/85/data.pdf\nLondon Museum：https://www.londonmuseum.org.uk/collections/london-stories/great-fire-of-london/\n\n奇聞檔案局頻道：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\n\n資料截至 2026-10-20",
+    "tags": [
+      "倫敦大火",
+      "1666年",
+      "布丁巷",
+      "佩皮斯",
+      "Thomas Farriner",
+      "歷史謎團",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}

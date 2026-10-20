@@ -1,0 +1,93 @@
+---
+id: 2026-10-20-curio-s46-elizabeth-blackwell-medical-college
+title: Curio S46 Elizabeth Blackwell medical college episode preproduction
+status: in-progress
+priority: P2
+area: docs
+owner: codex/root
+claimed_at: 2026-10-20T16:08:37Z
+created_at: 2026-10-20T12:59:56Z
+completed_at:
+branch: codex/curio-s34-endurance-20261019
+depends_on: []
+scope:
+  - docs/videos/curio-s46
+---
+
+# Curio S46 Elizabeth Blackwell medical college episode preproduction
+
+## Why
+
+為新的奇聞檔案局歷史長片選獨立題目，避免與 S45 Blackwell Island 混淆；把 Elizabeth Blackwell 1847 年醫學院入學票的流行「玩笑」說法縮到原文可證範圍，準備可獨立審核的 8 分鐘以上劇本。
+
+## Definition of done
+
+- [x] 固定可重開的原著版本，記錄轉錄信件、學生決議與晚年回憶的證據界線。
+- [x] A／B 選案與推薦 A、來源主張表、8 分鐘以上正文及可畫的 `video.json`／`script.md` 可供獨立覆核。
+- [x] 獨立逐句史料／分鏡覆核與兩名新讀者盲讀通過，交主工作者安排後續媒體關卡。
+
+## Steps
+
+- [x] 領取狹窄檔案範圍，固定 1895 原書與 P01–P14。
+- [x] 完成 `research.md`、`brief.md`、`claims.md`、`video.json`、`script.md` 及 `verify-1.md`。
+- [x] 按獨立覆核意見修正並重新凍結；後續 TTS／插圖／組片由主工作者安排。
+
+## How to verify
+
+`VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s46 --json`：0 error／0 warning。`VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs script --slug curio-s46`：可重生定稿。`npm run test:docs-videos`：236/236；`npm run check:tasks`：2116 張通過。版本與其餘細節見 [S46 前製驗證](../../docs/videos/curio-s46/verify-1.md)。
+
+## Notes
+
+站主已給「採推薦、持續完成」方向；本地選 A，但網站大綱／劇本仍未核准。未做付費媒體、站台推送或 Git commit。不能把晚年「申請被懷疑是騙局」寫成學生開玩笑表決；不能以 1895 書中轉錄冒稱已查獨立校方原件。R1 的史料旁白 PASS、畫面 HOLD 及兩名盲讀問題已記在 `verify-2.md` 與本地盲讀收據；R2 新稿固定雜湊與修正表見 [verify-3.md](../../docs/videos/curio-s46/verify-3.md)，需以此**新版**重新獨立覆核與全新盲讀，不沿用 R1 通過結果。
+
+R2 獨立史料與書面畫面覆核見 [verify-4.md](../../docs/videos/curio-s46/verify-4.md)：兩項均 HOLD。指出 `bkw019` 教授歸屬、`bkw090–096` 醫院董事程序誇述與 P12 說明；`bkw067–068, bkw113, bkw127–128` 原書行號缺口；`bkw102` 入院前畫面及多處提早／過晚使用的醫師／學生提示詞。這些是 verify-3 所記的 **R2 舊版** 問題，不可沿用 R1／R2 的通過項。
+
+2026-10-20 R4：`bkw008` 1849 文憑典禮畫面改稱成人女性，唯一書面畫面 HOLD 已由另一位[獨立差分覆核](../../docs/videos/curio-s46/verify-8.md)判 PASS；R3 的 131 句史料 PASS 維持。R4 精確 `video.json` SHA `af80b750d864fdd634ce0d6002f0edcf484b78959ae2ccee97d31c6863dd2061`、`script.md` SHA `6db66fc2bc2f671c76d28982162d6c7c304c9722bbde41aed8a67e58c607c918`。兩名真正全新的敘事盲讀仍待回報；不得宣稱影片或站台通過。
+
+2026-10-20 R4 雙盲已回：[A 9/13、B 8/13](../../docs/videos/curio-s46/verify-9.md)，共同必答 No 為 `one_line`、`no_toc`、`chapters_link`、`no_recap`，故正式敘事 **FAIL**。R5 要對時序、`bkw010` 目錄式承接、`bkw059/061` 重述做集中修正；再獨立覆核並用兩名新讀者重審。R4 的來源／畫面 PASS 不轉移到改稿；付費媒體及網站核准仍無。
+
+2026-10-20 R5：[作者改稿](../../docs/videos/curio-s46/verify-10.md)凍結後，另一位覆核者按固定自傳與 R4 基線核對[史料及書面畫面差分 PASS](../../docs/videos/curio-s46/verify-11.md)。R5 新雙盲仍未完成；網站、音訊、圖像與成片都未開始。
+
+以上 HOLD 已依 [R3 製作人修補紀錄](../../docs/videos/curio-s46/verify-5.md)修改並重凍結；`verify-5.md` 列新的精確 SHA-256 與待核項。R3 仍待獨立來源／書面畫面覆核及兩名全新盲讀者對同一版原旁白的裁決，未開始付費媒體。
+
+R3 獨立差分覆核結果見 [verify-6.md](../../docs/videos/curio-s46/verify-6.md)：**史料旁白 PASS、書面畫面 HOLD**。R2 的史料歸屬、Blockley 程序、引文範圍和大部分提示問題已修；但 `bkw008` 是倒敘至 1849 年教堂畢業典禮，R3 新提示卻稱她 `medical applicant`。請把該景改成女醫學生或成年女子，重算版本雜湊、重跑 lint 並重審畫面。R3 原旁白史料 PASS 僅適用於 verify-6 所列精確旁白版本。
+
+R4 僅把 `bkw008` 畫面角色改稱 `one adult woman in plain 1840s clothing`；結構比對確認除此 `data.prompt` 外無變動，五檔精確雜湊及 lint 0／0 見 [verify-7.md](../../docs/videos/curio-s46/verify-7.md)。`script.md` 仍是 R3 同一 SHA，史料旁白 PASS 適用；**R4 畫面尚待獨立確認，兩名全新敘事盲讀者尚未評定**。無付費媒體。
+
+R4 書面畫面獨立覆核 [verify-8.md](../../docs/videos/curio-s46/verify-8.md) 已 PASS；但兩名新讀者對同一 R4 劇本在 [verify-9.md](../../docs/videos/curio-s46/verify-9.md) 共同否決時序、目錄式轉場、章節銜接與重述，故 **R4 敘事 FAIL**。R5 按五月二十四日→二十七日→六月二日重排、把晚年「申請被疑騙局」回憶嵌回到校脈絡、刪鑰匙孔岔題並修正重述／伏筆 payoff；新五檔 SHA、逐項來源、45.37 秒開場、8:44 保守正文及 lint 0／0 見 [verify-10.md](../../docs/videos/curio-s46/verify-10.md)。R5 是**作者自查版**，史料／畫面須重新獨立覆核，敘事須另兩名全新讀者盲讀；不得沿用 R4 PASS 開始媒體製作。無付費媒體或站台推送。
+
+2026-10-20 R5 史料及書面畫面已由另一位按原書[獨立覆核 PASS](../../docs/videos/curio-s46/verify-11.md)，但兩位真正新讀者的[雙盲裁決](../../docs/videos/curio-s46/verify-12.md)為 A 10/13、B 9/13，均判必答 `no_recap`、`no_detour` No，故 **R5 敘事 FAIL**。R6 需刪相鄰重述、壓縮病院董事岔段，令床頭卡開場懸念與實際結果相合，片尾回到有界的投票判斷；重新固定版號與獨立查核，未通過前不做付費語音、插圖或站台劇本核准。
+
+2026-10-20 R6 [作者窄修與來源自查](../../docs/videos/curio-s46/verify-13.md)：回到 10 月院長信時先給前夜首次教授會的新資訊；刪 `bkw075/080/085` 等重述，把董事派系七句縮成取得病房許可所需的四句；`bkw007→103` 精確連到床頭卡停寫後她自己的臨床記錄。片尾用書中**沒有逐人投票理由**得出「玩笑表決無從證實」的有界結論。精確 `script.md` SHA `12877154c9cc34c62385f31248e5c19db703e2655597761f39b445978af4bf4d`、`video.json` `19eba5b4c06fc98520a5aa05fecdedf68c44871408a54fddc971932fae472f73`、`claims.md` `57a6488933197126309a13a7bcfbe5c9fb81814f914abb3004dfef7538061fb4`；124/124 逐句相符、18 loops、lint 0 errors／0 warnings。開場靜態約 0:47、正文 2,247 漢字按 4.5 字／秒估 8:19，**非 TTS 實測**。R6 僅為作者候選，須獨立原書／書面畫面差分及兩名此前未讀的盲讀者；無網站核准、付費媒體、成片或可點連結。
+
+2026-10-20 R6 [獨立來源與書面畫面](../../docs/videos/curio-s46/verify-14.md) PASS，但[兩名新讀者的正式雙盲](../../docs/videos/curio-s46/verify-15.md)共同 `no_detour` No，敘事 **FAIL**。主問若只問「玩笑票」，後半醫院、論文與文憑成了離題；A 另指出開場演示與床頭卡沒有點名回看，B 另指出 Jackson「為什麼學醫」無原文答案且 loop 標錯。R7 [作者定點修訂](../../docs/videos/curio-s46/verify-16.md)把主問改為「被說成玩笑的票，真讓她學完醫學嗎」，`bkw004→122` 直到文憑才回收；演示／卡片明示開場回呼；Jackson 問其入學答覆，下一句按日記答；刪領文憑後的三景。精確 R7 `script.md` SHA `6377bf48886d8e5c26c5a52b51b2277c92fa06dcef4df2ba85df0859c02bfb31`、`video.json` `992733fac5a14384614451fc252d908c8c2653957b2ecb9aa4447bfd9e73a659`、`claims.md` `670ad3d5fbd611bfd9d6105037ec18bf7ad51ee6f980d2bb7930006f2aaf7fb0`。121/121 逐句一致、19 loops、lint 0／0；靜態開場 0:49、正文 2,221 漢字按 4.5 字／秒約 8:14。**R7 仍待另一人獨立來源／文字畫面覆核與兩名真正新讀者敘事盲讀**；先前 PASS 不移用，媒體支出 US$0，無站台核准或成片。
+
+2026-10-20 R6：另一位製作人重開固定 1895 自傳逐項核對，**史料與書面畫面 PASS**，範圍及精確雜湊見 [verify-14.md](../../docs/videos/curio-s46/verify-14.md)。兩名新讀者的 R6 盲讀仍須合併裁決；此 PASS 不授權付費媒體。
+
+2026-10-20 R8：[作者來源窄修](../../docs/videos/curio-s46/verify-17.md)處理 R7 獨立覆核的兩個 HOLD。標題／說明／縮圖不再稱那張學生票「被說成玩笑」；只把原書的敵校騙局疑慮歸於**入學申請**，並寫明無個別投票理由。`bkw023` 以口頭談話取代原書沒有的信件道具。R8 `script.md` SHA `53b0a0e601262558f68cdb754b341aaf18d9bfcaefab112ad334bf2691cd73c4`、`video.json` `1f9e16b7b352f5e3ba5daf0353f8e427838134db04fc9291da6ba32972b7b32e`、`claims.md` `670ad3d5fbd611bfd9d6105037ec18bf7ad51ee6f980d2bb7930006f2aaf7fb0`。旁白未改，121/121 主張吻合，lint 0／0；仍待新獨立來源／畫面核對及兩位真正新讀者盲讀，未做網站核准或付費媒體。
+
+2026-10-20 R7 另一位查核者在[原報轉錄](../../docs/videos/curio-s46/review/r7-source-independent.md)對票的玩笑歸屬及 `bkw023` 虛構提問信判兩項 HOLD；R8 作者刪去兩點後，另一位製作人重開固定 1895 原書，對精確新標題／說明和單人面談提示作[獨立差分](../../docs/videos/curio-s46/review/r8-source-independent.md)，**來源 PASS、書面畫面 PASS**，精確 SHA 見兩份收據與 [verify-17.md](../../docs/videos/curio-s46/verify-17.md)。R8 仍須兩名真正新讀者敘事、Jev、站台及媒體關卡；無付費製作。
+
+2026-10-20 R8 雙盲正式合併：兩名真正新讀者均 11/13，共同判 `payoffs`、`no_recap` No；見 [A 直接回報存證](../../docs/videos/curio-s46/review/r8-blind-a-reported.md)、[B 親筆逐題報告](../../docs/videos/curio-s46/review/r8-blind-b.md) 與[合併裁決](../../docs/videos/curio-s46/review/r8-blind-merged.md)。敘事 **FAIL**；S46 R9 應收回 `bkw060` 醫學書問題並刪 `bkw096→097` 重複許可。尚無音訊、插圖或影片。
+
+2026-10-20 R9：[作者窄修與來源自查](../../docs/videos/curio-s46/verify-18.md)刪去沒有後續答案的 `bkw060` 醫書景與主張列，`bkw097` 直接提出「真正進病房後，臨床資訊還拿得到嗎？」而不重述 `bkw096` 已給的許可；`bkw069` 刪重述，改說原書未記個別投票理由。精確 `script.md` SHA `044658dcc14548f4abd066037e0125da4bdb4c004682301f4e67e1586a53f51c`、`video.json` `1a8eea0a21dbecb60786bd11d15428e4e77c641c5b8f2f9982c729de4077e4ed`、`claims.md` `35c2f299bb94e8394f4bf89f62af3cb29b6db25c8c2b8a092e25dd0627e77fdc`；120/120 逐句相符、19 loops、lint 0／0、靜態正文 2,187 漢字按 4.5 字／秒約 8:06。仍須新獨立來源／畫面覆核、兩位真正新讀者敘事盲讀、政策／站台關卡；無付費媒體或成片。
+
+2026-10-20 R9 [獨立全句史料與書面畫面覆核](../../docs/videos/curio-s46/review/r9-source-independent.md)對原精確版判 **來源 HOLD／書面畫面 HOLD**：`bkw044` 將申請信日期當作送達日；`bkw016` 將 Allen 私人解剖學校畫成學院講堂。R10 [作者定點改稿與原書自查](../../docs/videos/curio-s46/verify-19.md)以 10 月 3 日只稱**申請信日期**，提示詞改私人教室，P06 與 A 綱同步澄清；`script.md` SHA `02bdc64cce814b1962d3984f8b898b7beb7f51cf273cce7150ec8fdffdbaef8c`、`video.json` `afbb36551c7fd49f0a001ed0e01e8de03d69cdc628c68cda62b08694716aaff6`、`claims.md` `f75d6a2c08e6292fb5a15398fbc5615249f037508db88b2d9a42f59958d444e2`，120/120 相符、lint 0／0、正文靜態約 8:06。R10 須另一位獨立來源／書面畫面覆核、兩名全新盲讀者及後續政策／站台關卡；未做媒體。
+
+2026-10-20 R10 前製關卡已完成：[獨立逐句史料與書面畫面覆核](../../docs/videos/curio-s46/review/r10-source-independent.md)兩項 PASS；[官方隔離敘事雙盲](../../docs/videos/curio-s46/review/r10-official-panel.md) A 12／13、B 13／13，唯一分歧 `no_toc`，固定合併規則判 **PASS**。原始答卷與合併 JSON 均留存，payload SHA `d4db0ed473049db32eb326d9eb57ba4e523d8fd67ed0eb157619d101543155c7`；五檔精確輸入 SHA 見兩份 R10 收據。交主工作者安排 Jev、網站精確版核准與付費媒體；目前未生成語音、插圖或成片，亦未核准網站劇本。
+
+2026-10-20 R10 [Jev 全稿政策收據](../../docs/videos/curio-s46/review/r10-policy.json)對同一精確劇本判 **FAIL**：sponsored 0.34，高於 0.30 門檻；stance 0.71、advice 0.02、demo null。請求 SHA `5ae05f9679f80f4587217f05466a2659dd89e622de3456b594c5cd34acead2a6`，收據 SHA `ef4883dfacbe0d474de49dc14ce7f6d56d11aad1e9d6e224f842dca06d2ace6b`。僅以 `review-push --report-only` 建立 explainer 類別站台列，零審查卡；沒有送出網站核准或做付費媒體。此 FAIL 尚未修稿，不能以來源／敘事 PASS 替代政策關卡；若改字須以新版重做相關審查。
+
+2026-10-20 R11 [作者政策窄修](../../docs/videos/curio-s46/verify-20.md)：只把 `bkw999c` 口頭訂閱句改成來源固定連結在說明欄的核對指引；畫面訂閱 CTA、歷史正文與提示詞、頻道／來源 URL 未改。新 `script.md` SHA `3cc22cc5b69a782a420a78396f715bc22670dddfda3cf3c7ddacaa352df7194a`、`video.json` `f59ec9508ce6f5d61f867e2d2a74c74166a3bde4282b4153c9b71f07469f752b`、`claims.md` `947e5afe656da6df441a4d053e895944342584d3c43c23caa729cbb0aba4d609`；120/120 對齊，lint 0 errors／1 個「未口播訂閱」warning，正文仍估約 8:06。Jev **未指出** R10 業配分數的來源，R11 此改法僅是合理候選，不是政策 PASS。下一人須獨立差分審核、兩名新讀者盲讀，再對精確 R11 做新 `explainer` 政策判讀；無 TTS、插圖、配樂、成片或網站核准。
+
+2026-10-20 R11 [另一位工作者獨立來源／書面畫面差分](../../docs/videos/curio-s46/review/r11-source-independent.md) **PASS**：固定原著 URL 確在上架說明欄，歷史 119 句與畫面不變，120/120 對齊；此 PASS 不代替兩名新讀者或新 Jev 政策，亦不核准網站／媒體。
+
+2026-10-20 R11 語音實製及不明確音檢見 [verify-21](../../docs/videos/curio-s46/verify-21.md)：120 句初合成、16 句及 8 句各一次定點重唸，第三次完整覆核在 `bkw044` 轉寫遇 HTTP 504 並留 `held` journal；不能宣稱音訊 PASS，不能重送同音檔。R12 [作者單句改稿](../../docs/videos/curio-s46/verify-22.md)換新 `bkw044` 文字，原請求仍保留；其獨立來源／畫面、雙盲、政策與站台精確版關卡仍待過。未做插圖、配樂、成片或公開上傳。
+
+2026-10-20 R12 [120/120 官方音檢紀錄](../../docs/videos/curio-s46/verify-23.md)：`bkw044` 新句合成並通過，原 R11 HTTP 504 `held` journal 未動；整集仍有 `bkw016, bkw027, bkw074, bkw076, bkw077` 五句 flagged，故**音訊 HOLD**。R13 [作者五句改稿及凍結](../../docs/videos/curio-s46/verify-24.md)只改上述五句旁白／主張並重生劇本，其他 115 句與全部畫面不變。R13 `video.json` SHA `fe56a4db9704cfbc0305476160209b6dd04eb4e0877e15a8ee37bbd048adba88`、`script.md` `c3631099b2b2013104196ddc63d81e970356af40a74c2d3aebcdf2202b3154b7`、`claims.md` `4eea6ee564a3c872a5124e63ea0425b3f2771a87548c8e198c7c12d55e7d77e2`；120/120 對齊、lint 0 errors／1 既有片尾 warning、靜態正文約 8:17。下一步須獨立來源／書面畫面差分、兩名新版盲讀、`explainer` 政策與網站精確版關卡；通過後才合成新句並重新音檢 120/120。R13 尚未獲音訊核准，沒有插圖、配樂或成片；不可重送舊 `held` 請求或重唸 R12 相同台詞。
+
+2026-10-20 R13 [獨立來源／書面畫面](../../docs/videos/curio-s46/review/r13-source-independent.md) PASS；[兩名新讀者正式合併](../../docs/videos/curio-s46/review/r13-official-panel-merged.json)卻共同在 `bkw086` 目錄式橋句與 `bkw058` 租屋紀念物岔段答 No，敘事 **FAIL**，A 另指出 `bkw104` 重述女病房許可。R14 [作者窄修](../../docs/videos/curio-s46/verify-25.md)刪 `bkw058`／`bkw086` 及後者 loop，將 `bkw104` 縮成護士相處的新資訊並改其單人護士提示詞。新 `video.json` SHA `e6db00932cd190a614de70e56abb577d1c7fe3fd7b3ffc2df0a0f123d0335577`、`script.md` `d5d01d3c96327060df9e7531aba796af45bedeaa25b8124c5993de528f7a8e40`、`claims.md` `3bb23f35174a424e1f6981cd70926491edb521c758b562bb9a499d19298cfbe8`；118/118 對齊、18 loops、lint 0 errors／1 既有片尾 warning，正文靜態約 8:04。R14 待新獨立來源／畫面覆核、兩名新盲讀者、政策與網站精確版關卡；未做新 TTS、插圖、配樂或成片。
+
+2026-10-20 R14 [獨立來源／書面畫面](../../docs/videos/curio-s46/review/r14-source-independent.md) **PASS**、[兩位新讀者正式合併](../../docs/videos/curio-s46/review/r14-official-panel.md)各 13/13、[完整政策](../../docs/videos/curio-s46/review/r14-policy.md) PASS。真實 Sulafat [118/118 官方零旗標音檢](../../docs/videos/curio-s46/verify-26.md)，開場 43.93 秒、正文 10:42.17；本站精確劇本／音訊卡仍 `hand_pushed pending`，本機委派決定清楚註明不等於本站批准。依[整集 US$4.54 上限](../../docs/videos/curio-s46/review/r14-media-budget.md)只畫三景試圖，原生[0/3 KEEP](../../docs/videos/curio-s46/review/r14-art-pilot-native.md)，實花 US$0.0405；其餘 107 圖、配樂、分鏡與成片立即停。正按既定規則定點修三景書面提示詞，經獨立核對後在同上限內各重試一次；第二輪仍少於 2/3 即停止這條付費圖像方案。
+
+2026-10-20 R14 第二輪：[修訂三景提示詞的獨立史料／書面畫面差分](../../docs/videos/curio-s46/review/r14-pilot-prompt-independent.md) PASS 後，三景各重畫一次。[原生 1280×720 JPG 獨立驗收](../../docs/videos/curio-s46/review/r14-art-pilot-second-native.md)為 `bkw002` REJECT（多人物且無封好信封）、`bkw006` KEEP（講堂門外單人等候廣景）、`bkw007` REJECT（主要床頭卡懸浮，未接於床頭），即 **1/3 KEEP < 2/3**。兩輪帳本累計 **US$0.081**，依預定停損規則**停止此付費插圖方案**；其餘 107 圖、配樂、分鏡及成片仍不得續做或宣稱完成。本站精確劇本／音訊卡仍 pending；本任務維持 in-progress，後續需另議可行畫面路徑及網站關卡。

@@ -1,0 +1,47 @@
+Official panel merge and isolated CLI receipt — S53 R8
+
+Script SHA-256: 209c65b528aed2c36083588ed11c5be2869434571d405367bef2e1f1ef4a0d8d
+Panel rules SHA-256: 5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75
+Panel narration SHA-256: b6878452dd4a69bbeeb7dcc6acb53f26aaa4f0553478748b70b598570f30e335
+
+Official functions: panelVerdict(reader A), panelVerdict(reader B), mergePanelVerdicts([A, B]) in tools/video/core/narrative.mjs. The output was serialized as r8-isolated-merged-verdict.json, and its per-item yes/evidence was serialized as r8-isolated-merged-answers.json for the official CLI.
+
+Reader A: passed=false; failed=no_recap
+Reader B: passed=false; failed=one_line,no_recap
+Official OR merge: passed=false; failed=no_recap
+
+scene_first: yes (2/2 readers yes)
+no_spoiler: yes (2/2 readers yes)
+one_line: yes (1/2 readers yes)
+no_toc: yes (2/2 readers yes)
+chapters_link: yes (2/2 readers yes)
+open_loops: yes (2/2 readers yes)
+payoffs: yes (2/2 readers yes)
+no_recap: no (0/2 readers yes)
+chapters_are_events: yes (2/2 readers yes)
+outro_no_next: yes (2/2 readers yes)
+opening_hooks: yes (2/2 readers yes)
+one_thread: yes (2/2 readers yes)
+no_detour: yes (2/2 readers yes)
+
+Command:
+VIDEO_WORKDIR=/tmp/s53-r8-panel-AP4kak node tools/video/cli.mjs narrative --slug curio-s53 --answers docs/videos/curio-s53/review/r8-isolated-merged-answers.json
+
+Working directory: /workspace/travel_scanner
+Exit code: 1 (expected for a required-panel failure)
+Output:
+curio-s53: the storytelling panel failed; verdict in ../../tmp/s53-r8-panel-AP4kak/curio-s53/review/narrative.json
+  FAIL  no_recap：同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？（讀者一：[s53003] says residents must first find land where the cottage can go; [s53041] says that after mass construction residents still must find another plot when moving. The land prerequisite is repea）
+
+Official record: /tmp/s53-r8-panel-AP4kak/curio-s53/review/narrative.json
+Official record SHA-256: 4b64613eb398c8008865a208eee40b68df17349ac2bf1e7ee39e7bbf4783110c
+Official record round: 1
+Official record passed: false
+Official record failed: ["no_recap"]
+Official record advisory: []
+
+Raw reader files remained unchanged after freezing:
+47459df5ccd6b171e4ad617e27e2c67915571aedcc970d19b461d09ffa0922dc  docs/videos/curio-s53/review/r8-isolated-blind-a.json
+a9f814018001aaaa40984ac6ab9046f900221dd150654842d771493f4e3a8af2  docs/videos/curio-s53/review/r8-isolated-blind-a.md
+91c6dc9586b560630b43c323e17003e7b5d488792835fd8000305b50de72087a  docs/videos/curio-s53/review/r8-isolated-blind-b.json
+38dd0007496426584bba4088ec2803380c2ee8bb6e7664d8f1425c8e8c7c0712  docs/videos/curio-s53/review/r8-isolated-blind-b.md

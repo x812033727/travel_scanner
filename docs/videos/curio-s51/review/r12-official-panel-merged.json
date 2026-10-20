@@ -1,0 +1,287 @@
+{
+  "slug": "curio-s51",
+  "review_id": "r12-official-panel",
+  "script_file_bytes_sha256": "b0aed4b7b269130a717b290386b32f095b55c8a94a444db27221b1d2bf7f2c8e",
+  "narration_string_utf8_sha256": "21f60ba546c6d8339262b50ddcd748dbdd97020ea6ce8a891b6c8825a9bc72c3",
+  "merge_rule": "A/B failed-ID union; any reader no means official no",
+  "panel_a": "r11-fresh-blind-a.json",
+  "panel_b": "r11-fresh-blind-b.json",
+  "source_visual": "r12-source-independent.md PASS",
+  "result": "fail",
+  "passed": 12,
+  "failed": 1,
+  "questions": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "a_pass": true,
+      "b_pass": true,
+      "pass": true,
+      "a_evidence_ids": [
+        "cal001",
+        "cal002",
+        "cal003",
+        "cal004"
+      ],
+      "a_reason": "前四句立即給出一九一二年四月十四日、加州人號停在大西洋浮冰前、船橋見燈及電報員摘下耳機等具體動作。",
+      "b_evidence": "L4–7 [cal001–004]: the first spoken sentence gives 14 April 1912, the Californian, the Atlantic ice, and its action of stopping; the next lines stay in that scene.",
+      "cli_evidence": "[cal001 00:00] 一九一二年四月十四日深夜，加州人號停在大西洋的浮冰前。｜前四句立即給出一九一二年四月十四日、加州人號停在大西洋浮冰前、船橋見燈及電報員摘下耳機等具體動作。"
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "a_pass": true,
+      "b_pass": true,
+      "pass": true,
+      "a_evidence_ids": [
+        "cal003",
+        "cal004",
+        "cal005",
+        "cal006",
+        "cal007",
+        "cal008",
+        "cal114"
+      ],
+      "a_reason": "開場只說鐵達尼號應在附近，預示耳機、火箭與清晨船影，並把回話、辨認及決定留為疑問；調查辨認遠船的結果到 cal114 才揭曉。",
+      "b_evidence": "L4–11 [cal001–008]: the opening shows the stopped ship, nearby wireless, white rockets, and later moments as open questions. It does not give the inquiry’s identification or the decision not to sail (L128, L148 [cal114, cal132]).",
+      "cli_evidence": "[cal003 00:13] 無線電員卻說，鐵達尼號應該就在附近。｜開場只說鐵達尼號應在附近，預示耳機、火箭與清晨船影，並把回話、辨認及決定留為疑問；調查辨認遠船的結果到 cal114 才揭曉。"
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "a_pass": true,
+      "b_pass": true,
+      "pass": true,
+      "a_evidence_ids": [
+        "cal009",
+        "cal025",
+        "cal036",
+        "cal050",
+        "cal064",
+        "cal077",
+        "cal093",
+        "cal107",
+        "cal121"
+      ],
+      "a_reason": "預告後回到同日晚間，依序走過停船、收報空檔、船燈、求救、火箭、船橋回報和清晨消息，再按調查如何認定船影與距離推進。後段比對舊時刻帶出新判斷，沒有重講整段事故。",
+      "b_evidence": "After the opening preview, the account moves from the 19:30 warning and night watch (L14–29 [cal009–024]), through collision, distress, and dawn (L43–120 [cal036–106]), to the later inquiry (L123–149 [cal107–133]). The inquiry tests that same encounter.",
+      "cli_evidence": "[cal009 00:44] 傍晚七點半，加州人號向另一艘船發冰山警告。｜預告後回到同日晚間，依序走過停船、收報空檔、船燈、求救、火箭、船橋回報和清晨消息，再按調查如何認定船影與距離推進。後段比對舊時刻帶出新判斷，沒有重講整段事故。"
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "a_pass": true,
+      "b_pass": true,
+      "pass": true,
+      "a_evidence_ids": [
+        "cal014",
+        "cal049",
+        "cal106",
+        "cal120"
+      ],
+      "a_reason": "轉場以冰情、求救訊號、船名及距離等故事中的具體疑問推動；沒有宣布篇章安排或列出後文清單。",
+      "b_evidence": "The spoken transitions pose event questions, e.g. L29 [cal024], L56 [cal049], and L120 [cal106]; no spoken line lays out a chapter list or announces a narration plan.",
+      "cli_evidence": "[cal014 01:10] 船長停船等天亮；別的船還會收到冰情嗎？｜轉場以冰情、求救訊號、船名及距離等故事中的具體疑問推動；沒有宣布篇章安排或列出後文清單。"
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "a_pass": true,
+      "b_pass": true,
+      "pass": true,
+      "a_evidence_ids": [
+        "cal008",
+        "cal009",
+        "cal024",
+        "cal025",
+        "cal035",
+        "cal036",
+        "cal049",
+        "cal050",
+        "cal063",
+        "cal064",
+        "cal076",
+        "cal077",
+        "cal092",
+        "cal093",
+        "cal106",
+        "cal107",
+        "cal120",
+        "cal121"
+      ],
+      "a_reason": "預告後以同船的冰山警告回溯起點；後續章首直接承接上一章的警告內容、變暗的燈、求救訊號、首枚火箭、首次回報、船名疑問與距離疑問。",
+      "b_evidence": "All nine handoffs connect: L11→14 [cal008→009] returns to the Californian and the ice; L29→33 [cal024→025] answers the warning; L40→43 [cal035→036] turns to lights; L56→59 [cal049→050] turns to a distress signal; L71→74 [cal063→064] gives the rocket time; L86→89 [cal076→077] gives Stone’s report; L104→107 [cal092→093] answers the knowledge question; L120→123 [cal106→107] starts the identity inquiry; L134→137 [cal120→121] gives the distance evidence.",
+      "cli_evidence": "[cal008 00:39] 那幾道白光，會讓停在冰前的人做出什麼決定？｜預告後以同船的冰山警告回溯起點；後續章首直接承接上一章的警告內容、變暗的燈、求救訊號、首枚火箭、首次回報、船名疑問與距離疑問。"
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "a_pass": true,
+      "b_pass": true,
+      "pass": true,
+      "a_evidence_ids": [
+        "cal004",
+        "cal014",
+        "cal024",
+        "cal035",
+        "cal049",
+        "cal063",
+        "cal076",
+        "cal089",
+        "cal103",
+        "cal112",
+        "cal123",
+        "cal131"
+      ],
+      "a_reason": "正文持續拋出下一個具體未解問題；按標記時間計，帶問號的敘事鉤子相鄰最長間隔為 40 秒（cal123 至 cal131），低於 90 秒。",
+      "b_evidence": "Unanswered event questions recur well within 90 seconds: L7–11 [cal004–008], L25–29 [cal020–024], L40/47/56 [cal035/040/049], L68–71 [cal059–063], L85–86 [cal075–076], L104/120/134/147 [cal092/106/120/131].",
+      "cli_evidence": "[cal004 00:18] 十一點半，他摘下耳機休息；這個空檔會發生什麼？｜正文持續拋出下一個具體未解問題；按標記時間計，帶問號的敘事鉤子相鄰最長間隔為 40 秒（cal123 至 cal131），低於 90 秒。"
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "a_pass": true,
+      "b_pass": true,
+      "pass": true,
+      "a_evidence_ids": [
+        "cal004",
+        "cal060",
+        "cal006",
+        "cal077",
+        "cal078",
+        "cal007",
+        "cal098",
+        "cal100",
+        "cal101",
+        "cal008",
+        "cal132",
+        "cal134",
+        "cal135",
+        "cal120",
+        "cal121",
+        "cal125",
+        "cal131",
+        "cal132",
+        "cal999b"
+      ],
+      "a_reason": "長程開場鉤子由「十一點半摘下耳機」到無人收求救電文、由火箭回報到船長反問、由清晨來船到辨認混淆、由白光與決定到沒有起航指示；距離及報告能確定什麼也得到具體答案。cal999b 是向觀眾索取選擇的片尾互動，並未預告待揭曉的史實。",
+      "b_evidence": "Long loops are named and answered: the 23:30 earphones at L7→69 [cal004→060]; Stone’s report at L9→89–92 [cal006→077–080]; the dawn ship at L10→112–115 [cal007→098–101]; the decision at L11→148/151 [cal008→132/135]. Short handoffs answer the warning, rocket time, ship identity, and distance at L29→33, L71→74, L120→123, and L134→137. The final viewer question at L154 [cal999b] is an outro prompt, not a hanging story claim.",
+      "cli_evidence": "[cal004 00:18] 十一點半，他摘下耳機休息；這個空檔會發生什麼？｜長程開場鉤子由「十一點半摘下耳機」到無人收求救電文、由火箭回報到船長反問、由清晨來船到辨認混淆、由白光與決定到沒有起航指示；距離及報告能確定什麼也得到具體答案。cal999b 是向觀眾索取選擇的片尾互動，並未預告待揭曉的史實。"
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "a_pass": true,
+      "b_pass": false,
+      "pass": false,
+      "a_evidence_ids": [
+        "cal004",
+        "cal060",
+        "cal090",
+        "cal136",
+        "cal046",
+        "cal108",
+        "cal093",
+        "cal104"
+      ],
+      "a_reason": "重提耳機及「只聽過一枚」時明說「還記得」；調查重用撞冰時刻是為對照新證據，清晨再說沉船是船方此時才收到消息，均增加事件或認知。",
+      "b_evidence": "L93–94 [cal081–082] twice says the Morse attempt yielded no usable answer; L99 [cal087] repeats that the bridge obtained no name from the lamp without an explicit recall. L84–85 [cal074–075] also repeats the Californian watch’s sighting of white rockets before adding Stone’s name. These are restatements inside the body, outside the stated recall exceptions.",
+      "cli_evidence": "[cal087 07:03] 船橋仍沒有從摩斯燈取得對方船名。｜L93–94 [cal081–082] twice says the Morse attempt yielded no usable answer; L99 [cal087] repeats that the bridge obtained no name from the lamp without an explicit recal"
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "a_pass": true,
+      "b_pass": true,
+      "pass": true,
+      "a_evidence_ids": [
+        "cal001",
+        "cal009",
+        "cal025",
+        "cal036",
+        "cal050",
+        "cal064",
+        "cal077",
+        "cal093",
+        "cal107",
+        "cal121"
+      ],
+      "a_reason": "各章標題指向停船、警告、摘耳機、燈變少、發求救電文、升火箭、回報分歧、船影消失，以及調查對上時刻和對照船位；都是具體發生的事或揭曉。",
+      "b_evidence": "The ten headings at L3, L13, L31, L42, L58, L73, L88, L106, L122, and L136 name actions or discoveries: stopping, warning, setting down the receiver, dimming lights, distress, rockets, reports, disappearance, and inquiry comparisons.",
+      "cli_evidence": "[cal001 00:00] 一九一二年四月十四日深夜，加州人號停在大西洋的浮冰前。｜各章標題指向停船、警告、摘耳機、燈變少、發求救電文、升火箭、回報分歧、船影消失，以及調查對上時刻和對照船位；都是具體發生的事或揭曉。"
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "a_pass": true,
+      "b_pass": true,
+      "pass": true,
+      "a_evidence_ids": [
+        "cal999a",
+        "cal999b",
+        "cal999c"
+      ],
+      "a_reason": "片尾談史料無法回答的救援人數、詢問觀眾會採取哪一步並邀請訂閱，沒有提下一支影片、下一集或下一份檔案。",
+      "b_evidence": "L153–155 [cal999a–c] ends with the unresolved rescue count, a viewer question, and a general subscription invitation. It names no next video, episode, or file.",
+      "cli_evidence": "[cal999a 11:21] 若當夜出航，究竟能救多少人，史料無法回答。｜片尾談史料無法回答的救援人數、詢問觀眾會採取哪一步並邀請訂閱，沒有提下一支影片、下一集或下一份檔案。"
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "a_pass": true,
+      "b_pass": true,
+      "pass": true,
+      "a_evidence_ids": [
+        "cal001",
+        "cal004",
+        "cal006",
+        "cal007",
+        "cal008"
+      ],
+      "a_reason": "第一個停船場景後至少有四個未揭曉的具體時刻：耳機放下的後果、火箭回報的回話、清晨來船能否認出、白光將導致何種決定。",
+      "b_evidence": "After the stopped-ship scene, L7 [cal004] leaves the headset gap unresolved; L9 [cal006] asks about the captain’s response; L10 [cal007] asks about the dawn ship; L11 [cal008] asks what the white lights lead the crew to do.",
+      "cli_evidence": "[cal001 00:00] 一九一二年四月十四日深夜，加州人號停在大西洋的浮冰前。｜第一個停船場景後至少有四個未揭曉的具體時刻：耳機放下的後果、火箭回報的回話、清晨來船能否認出、白光將導致何種決定。"
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "a_pass": true,
+      "b_pass": true,
+      "pass": true,
+      "a_evidence_ids": [
+        "cal001",
+        "cal014",
+        "cal022",
+        "cal060",
+        "cal075",
+        "cal103",
+        "cal114",
+        "cal135"
+      ],
+      "a_reason": "同一難題是加州人號為何沒來：停在冰前、知道附近有鐵達尼號但無法確認船影、錯過無線電、看到火箭、清晨才收到沉船消息，最後由調查和船長指示回應。",
+      "b_evidence": "The Californian’s failure to respond is followed from its stop at L4 [cal001], through its watch seeing rockets at L84–85 [cal074–075], its report dispute at L89–103 [cal077–091], and the inquiry’s finding of no attempt at L148 [cal132].",
+      "cli_evidence": "[cal001 00:00] 一九一二年四月十四日深夜，加州人號停在大西洋的浮冰前。｜同一難題是加州人號為何沒來：停在冰前、知道附近有鐵達尼號但無法確認船影、錯過無線電、看到火箭、清晨才收到沉船消息，最後由調查和船長指示回應。"
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "a_pass": true,
+      "b_pass": true,
+      "pass": true,
+      "a_evidence_ids": [
+        "cal055",
+        "cal056",
+        "cal057",
+        "cal058",
+        "cal060",
+        "cal121",
+        "cal125",
+        "cal127",
+        "cal132"
+      ],
+      "a_reason": "卡帕西亞號的回應用來交代其他船收到求救時的行動，並帶回較近的加州人號；距離和冰區段落回答加州人號能否航行，沒有無關整段或清單式羅列。",
+      "b_evidence": "The Carpathia passage L64–69 [cal055–060] establishes a responding ship and the Californian’s silent receiver; the disputed identification L123–134 [cal107–120] and distance/ice analysis L137–149 [cal121–133] bear directly on why it did not come.",
+      "cli_evidence": "[cal055 04:25] 其中一艘回覆的，是五十八英里外的卡帕西亞號。｜卡帕西亞號的回應用來交代其他船收到求救時的行動，並帶回較近的加州人號；距離和冰區段落回答加州人號能否航行，沒有無關整段或清單式羅列。"
+    }
+  ]
+}

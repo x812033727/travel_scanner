@@ -1,0 +1,159 @@
+# S51｜旁白逐句主張表
+
+逐字對齊 `video.json`；每行的 R 編號解釋、固定來源行段與限制在 [research.md](research.md)。這是**作者標注**，不是獨立史料覆核。插畫只作示意，不當文件或肖像。
+
+| ID | 旁白 | 研究錨點 |
+| --- | --- | --- |
+| cal001 | 一九一二年四月十四日深夜，加州人號停在大西洋的浮冰前。 | [研究 R01](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal002 | 船橋看見另一艘船的燈；那是誰，還不能靠肉眼叫出名字。 | [研究 R02](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal003 | 無線電員卻說，鐵達尼號應該就在附近。 | [研究 R02](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal004 | 十一點半，他摘下耳機休息；這個空檔會發生什麼？ | [研究 R03](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal005 | 午夜後，遠處夜空升起白色火箭。 | [研究 R06](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal006 | 值班員稍後向船長報告火箭，會換來什麼回話？ | [研究 R07](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal007 | 清晨，另一艘船又出現在海面；船長會認得嗎？ | [研究 R10](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal008 | 那幾道白光，會讓停在冰前的人做出什麼決定？ | [研究 R07、R13](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal009 | 傍晚七點半，加州人號向另一艘船發冰山警告。 | [研究 R01](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal010 | 訊息說附近有幾座大冰山，鐵達尼號也攔收到。 | [研究 R01](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal011 | 這代表兩船的無線電，當晚確實碰得上。 | [研究 R01](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal012 | 但冰區不只一塊漂來的冰山。 | [研究 R01](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal013 | 晚間十點多，加州人號往前看不到冰區盡頭。 | [研究 R01](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal014 | 船長停船等天亮；別的船還會收到冰情嗎？ | [研究 R01](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal015 | 船沒有乘客，當晚船橋仍照常有人值班。 | [研究 R01](research.md#可說的事與不能跨越的推論)記無乘客；[英國調查 G L3362–3364](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3362-L3364)、[L3399–3401](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3399-L3401)記格羅夫斯與史東的船橋值班交接。 |
+| cal016 | 夜裡，值班的人看見一艘船從東方靠近。 | [研究 R02](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal017 | 先是幾盞燈；有人認為，那輪廓像客船。 | [研究 R02](research.md#可說的事與不能跨越的推論)記遠船燈；[英國調查 G L3362–3373](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3362-L3373)記格羅夫斯認為是客輪。 |
+| cal018 | 值班員格羅夫斯說，兩盞桅燈讓他認為那是客輪。 | [研究 R04](research.md#可說的事與不能跨越的推論)；[英國調查 G L3366–3373](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3366-L3373)記他見兩盞桅燈並報告自己判為客輪；並未證明遠船實為客輪。 |
+| cal019 | 船長後來瞥見它，卻說不像客輪。 | [研究 R04](research.md#可說的事與不能跨越的推論)；[英國調查 G L3379–3383](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3379-L3383)依格羅夫斯證詞記船長登船橋後說不像客輪。 |
+| cal020 | 那艘船沒有貼近到能看清船名；無線電至少知道誰在附近嗎？ | [研究 R02](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal021 | 船長於是去問無線電員。 | [研究 R02](research.md#可說的事與不能跨越的推論)；[英國調查 G L3338–3342](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3338-L3342)明記船長到無線電員 Evans 房間詢問附近船隻。 |
+| cal022 | 電報員說，鐵達尼號訊號很近，卻不能替眼前船影點名。 | [研究 R02](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal023 | 於是加州人號送出最後一則冰情提醒。 | [研究 R03](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal024 | 鐵達尼號回了訊；加州人號剛才送出的警告說了什麼？ | [研究 R03](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal025 | 那則提醒說，這艘船停住了，周圍都是冰。 | [研究 R03](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal026 | 鐵達尼號回的大意是：別插進來。 | [研究 R03](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal027 | 英國調查解釋，近船訊號蓋過遠處的收報聲。 | [研究 R03](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal028 | 那時鐵達尼號正和遠方的瑞斯角電台通訊。 | [研究 R03](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal029 | 這不是兩位船長面對面吵架。 | [研究 R03](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal030 | 也不表示鐵達尼號已知道自己快撞冰。 | [研究 R03](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal031 | 加州人號的電報員聽到對方繼續發報；還要接班嗎？ | [研究 R03](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal033 | 船上沒有第二名無線電員接班；求救電文來時，誰會聽？ | [研究 R05](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal035 | 無線電安靜了，橋上的眼睛還看得見什麼？ | [研究 R04](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal036 | 約十一點四十，遠處那艘船的燈忽然少了。 | [研究 R04](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal037 | 格羅夫斯說甲板燈變暗，航行燈仍看得見。 | [研究 R04](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal038 | 一位值班員認為，它像是停止前進。 | [研究 R04](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal039 | 他也猜，甲板燈或許為夜間航行關掉了。 | [研究 R04](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal040 | 但船一轉向，也可能遮住某些燈；呼叫能辨認嗎？ | [研究 R04](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal041 | 因此，變暗不是全船真的關燈的證據。 | [研究 R04](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal042 | 值班員拿摩斯燈，朝那個方向試著呼叫。 | [研究 R04](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal043 | 他一度以為看見回應，卻沒讀出可靠訊息。 | [研究 R04](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal044 | 史東接班盯著無名船影；桅燈會回答嗎？ | [研究 R04](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal045 | 實習生起初以為桅燈在打摩斯，後來又覺得只是閃爍。 | [研究 R07](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal046 | 另一邊，鐵達尼號就在這時撞上冰山。 | [研究 R11](research.md#可說的事與不能跨越的推論)；[英國調查 G L3525–3528](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3525-L3528)明記鐵達尼號 23:40 撞冰，與加州人號目擊遠船停下同時。 |
+| cal047 | 這場碰撞，當時還沒有傳到加州人號。 | [研究 R05](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal048 | 遠船究竟怎麼了，燈光給不了答案。 | [研究 R04](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal049 | 那麼，還有什麼訊號能讓別人明白，船上正在求救？ | [研究 R05](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal050 | 過了午夜，鐵達尼號開始以無線電求救。 | [研究 R05](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal051 | 最初的求救訊號，是依船長命令送出的。 | [研究 R05](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal052 | 求救電碼傳到其他船；誰能回應？ | [研究 R05](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal053 | 幾分鐘後，他們又補發船的位置。 | [研究 R05](research.md#可說的事與不能跨越的推論)；英國報告 G L3163–3197 記約十二點二十五補報正確船位，不重念已在 `cal046` 說過的碰冰。 |
+| cal054 | 報文還催附近的船立刻來援。 | [研究 R05](research.md#可說的事與不能跨越的推論)；保留求援動作，不重念相鄰句或前文的撞冰事實。 |
+| cal055 | 其中一艘回覆的，是五十八英里外的卡帕西亞號。 | [研究 R05](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal056 | 卡帕西亞號回電說正趕來，消息傳回鐵達尼號甲板。 | [研究 R14](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal057 | 它收到訊息後立即轉向，準備趕往現場。 | [研究 R14](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal058 | 它也得穿過冰山海面，才能趕來。 | [研究 R14](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal059 | 那艘更近的加州人號，此刻有人在耳機旁嗎？ | [研究 R05](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal060 | 沒有。還記得十一點半摘下的耳機嗎？求救電文來時，這裡沒人接收。 | [研究 R03、R05](research.md#可說的事與不能跨越的推論)；R03 記十一點半休班，R05 記當夜無線電員未接到求救電文；是對 `cal004/033` 的具體回呼。 |
+| cal062 | 鐵達尼號甲板還有白色求救火箭。 | [研究 R06](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal063 | 第一枚在幾點升空？ | [研究 R06](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal064 | 約十二點四十五，鐵達尼號開始放求救火箭。 | [研究 R06](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal065 | 它們從緊急艇旁的發射座升起。 | [研究 R06](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal066 | 報告寫它們在空中炸開，落下白色星點。 | [研究 R06](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal067 | 調查把它們稱為海上通用的求救火箭。 | [研究 R06](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal068 | 倖存者畢斯利親眼看見一道光劃上夜空。 | [研究 R06](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal069 | 他說甲板上的人，這時懂了火箭是在求救。 | [研究 R06](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal070 | 他看見火箭；另一艘船橋是否也看見？ | [研究 R06](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal071 | 鐵達尼號的四副波克索爾，還向遠處船燈打摩斯。 | [研究 R06](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal072 | 他沒讀到確定的答覆。 | [研究 R06](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal073 | 英國調查報告說，波克索爾大約放了八枚火箭。 | [研究 R06](research.md#可說的事與不能跨越的推論)；[英國調查 G L3189–3193](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3189-L3193)以 about eight 記波克索爾放出的火箭，僅是約數。 |
+| cal074 | 更早些時候，加州人號實習生吉布森注意到遠船甲板上的白光。 | [英國調查 G L3420–3427](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3420-L3427)記吉布森約十二點二十分注意到遠船甲板白光；這是火箭前的船燈／甲板光，不當成火箭。 |
+| cal075 | 二副史東看到白色火箭接連升空；他會回報嗎？ | [研究 R07](research.md#可說的事與不能跨越的推論)；[英國調查 G L3427–3433](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3427-L3433)記史東在火箭升起後約一點十分向船長回報五枚；證詞層級仍是史東的說法。 |
+| cal076 | 會。他拿起通話管；第一次向船長報的，到底是幾枚？ | [研究 R07](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal077 | 二副史東說，他約一點十分已向船長報五枚。 | [研究 R07](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal078 | 他說船長反問，會不會是那家公司的訊號。 | [研究 R07](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal079 | 史東回答，他只看得出那是白色火箭。 | [研究 R07](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal080 | 依他說法，船長要他繼續打摩斯燈。 | [研究 R07](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal134 | 船長對下一次回報，還交代了什麼？ | [研究 R07](research.md#可說的事與不能跨越的推論)；承接史東對第一次回報的證詞，提問的是尚未說出的實習生後續回報指示，由 `cal135` 回答。 |
+| cal135 | 史東說，船長要他有新消息就派實習生來報；當時沒有起航指示。 | [G L3428–3435](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3428-L3435)、[研究 R07、R13](research.md#可說的事與不能跨越的推論)；實習生是**史東版本**的新細節；只說這段回話無起航指示，不推論船長心態。 |
+| cal081 | 實習生吉布森接手，依然沒有收到回答。 | [研究 R08](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal083 | 他又看見三枚；新總數有報到船長那裡嗎？ | [研究 R08](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal084 | 吉布森後來說，有報到；但那只是他的證詞。 | [研究 R08](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal085 | 但遠船的燈影變得不對勁，像要從水面消失。 | [研究 R08](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal086 | 史東要吉布森務必叫醒船長，報上火箭總數。 | [研究 R08](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal088 | 約兩點零五分，他說自己把合計八枚與摩斯燈無答一併報給船長。 | [研究 R08](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal089 | 但船長洛德記得的，又是幾枚？ | [研究 R09](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal090 | 他說自己只聽過一枚，後來的回報沒有記憶。 | [研究 R09](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal091 | 事後留下的證詞，彼此仍然矛盾。 | [研究 R09](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal092 | 矛盾沒解開時，能不能直接說他明知船名？ | [研究 R09](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal093 | 不能。矛盾證詞不能證明船長當夜知道船名。約兩點二十，鐵達尼號沉沒。 | [研究 R09、R10](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal094 | 稍後，史東說遠處的燈影完全消失。 | [研究 R10](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal095 | 他再報給船長，對方追問火箭是否全是白的。 | [研究 R10](research.md#可說的事與不能跨越的推論)記遠船消失；[英國調查 G L3470–3474](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3470-L3474)依史東說法記 02:40 再報及船長追問顏色，與船長證詞存在歧異。 |
+| cal096 | 他再次保證，自己看到的火箭全是白色。 | [英國調查 G L3470–3474](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3470-L3474)直接錄史東再次保證「全是白色火箭」；此為史東自述。 |
+| cal097 | 加州人號仍留原處；天亮能認得夜裡的船嗎？ | [研究 R10](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal098 | 四點後，船橋看見另一艘船從海上來。 | [研究 R10](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal099 | 接班的大副，這時聽到夜班的火箭報告。 | [研究 R10](research.md#可說的事與不能跨越的推論)；[英國調查 G L3478–3491](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3478-L3491)在 L3479 稱史都華為大副，L3483–3491 記他約四點接史東的班並聽到夜間火箭報告。 |
+| cal100 | 船長一度以為，這就是夜裡放火箭那艘。 | [研究 R10](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal101 | 值班員卻說，他覺得不是同一艘。 | [研究 R10](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal102 | 這個混淆，讓夜裡的船影更難對上名字。 | [研究 R10](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal133 | 卡帕西亞號到四點十分、天剛亮時，才接上第一艘救生艇。 | [研究 R14](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal103 | 稍晚，加州人號船長叫醒無線電員；會傳來什麼？ | [研究 R10](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal104 | 約六點，無線電傳來鐵達尼號沉船的消息。 | [研究 R10](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal105 | 加州人號這才穿過冰區，朝報來的位置走。 | [研究 R10](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal106 | 夜裡那艘船早已不見；船名還能怎麼查？ | [研究 R10、R11](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal107 | 到了七月底，英國正式調查報告逐一對照船橋證詞。 | [G L143–166](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L143-L166) 記 7 月 30 日報告日期；[研究 R11](research.md#可說的事與不能跨越的推論)記證詞對照；[G L205–210](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L205-L210) 記 5 月 2 日已開庭。 |
+| cal108 | 遠船停住時，鐵達尼號正撞上冰山。 | [研究 R11](research.md#可說的事與不能跨越的推論)；英國報告 G L3525–3528 對照兩船時間；這是報告歸納，不是船橋當夜辨出船名。 |
+| cal110 | 鐵達尼號放火箭後，加州人號也在同一時段看見白光。 | [研究 R11](research.md#可說的事與不能跨越的推論)；英國報告 G L3527–3535 對照火箭時段。 |
+| cal111 | 報告認為，兩邊記下的火箭數量也對得上。 | [研究 R11](research.md#可說的事與不能跨越的推論)；英國報告 G L3527–3533 的「約八枚」是報告歸納，不抹平史東與船長的證詞差異。 |
+| cal112 | 遠船消失，又貼近沉船時刻；這會是同一艘嗎？ | [研究 R11](research.md#可說的事與不能跨越的推論)；英國報告 G L3533–3542 對照消失／沉沒，船名由下一句才歸於報告判斷。 |
+| cal114 | 調查據此認定，所見的船就是鐵達尼號。 | [研究 R11](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal115 | 它也檢視了「可能還有另一艘船」的說法。 | [研究 R11](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal116 | 報告說，沒有找到符合這段火箭時間的第三艘船。 | [研究 R11](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal117 | 這是調查的判斷，不是船員當夜看清船名。 | [研究 R11](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal118 | 畢斯利在書裡，還懷疑過另外一艘未知船。 | [研究 R11](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal119 | 他也不願在沒有更多資料前，斷言有人故意不理。 | [研究 R15](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal120 | 若要靠比對時間推測遠船是誰，距離又能估得多準？ | [研究 R11、R12](research.md#可說的事與不能跨越的推論)；[英國調查 G L3525–3542](https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt#L3525-L3542)以事件時間推斷遠船身分，並另估距離；兩者都是事後判斷。 |
+| cal121 | 加州人號自己記下的停船位置，約在十九英里外。 | [研究 R12](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal122 | 但船長估他看見的燈，當時大約五英里。 | [研究 R12](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal123 | 英國調查說船方位置不準；那還能估距離嗎？ | [研究 R12](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal124 | 船方海圖位置，和船長目測本來就對不上。 | [研究 R12](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal125 | 它推估距離可能更遠，卻不超過八到十英里。 | [研究 R12](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal126 | 所以船長的目測，不能當成精準的實測距離。 | [研究 R12](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal127 | 調查更進一步判斷，冰區應該能穿過。 | [研究 R13](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal128 | 它推估往鐵達尼號方向的鬆冰，不超過兩三英里。 | [研究 R13](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal129 | 報告還提到夜色清朗、海面平穩。 | [研究 R13](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal130 | 若首枚火箭後出航，可能救到很多人。 | [研究 R13](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal131 | 這是反事實推算；報告究竟能確定什麼？ | [研究 R13](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal132 | 報告正式寫下的結果是：加州人號當夜沒有嘗試。 | [研究 R13](research.md#可說的事與不能跨越的推論)；見該列行段與限制。 |
+| cal999a | 若當夜出航，究竟能救多少人，史料無法回答。 | [研究 R13](research.md#可說的事與不能跨越的推論)；英國報告只稱可能救下多人，沒有可證的反事實人數。 |
+| cal999b | 如果你在船橋，會先採取哪一步？ | 觀眾互動題，不宣稱船長當夜知道船名。 |
+| cal999c | 想繼續從原文查明歷史疑問，歡迎訂閱。 | 以頻道的史料對讀作訂閱理由，不新增史實，也不提贊助商、商品或下一集。 |
+
+## R15 首 23 景視覺修補描述
+
+
+下列只記畫面提示詞；上表 131 行旁白及其來源錨點逐字不改。這些道具與模型是示意，不把抽象調查桌畫成當夜目擊或認定遠船船名。
+
+
+| 景 ID | 畫面描述（與 `video.json` 的 `data.prompt` 逐字一致） |
+| --- | --- |
+| cal003 | Medium shot inside a 1912 wooden wireless cabin at night, one middle-aged male operator in a plain waistcoat with bare head studies a narrow blank telegram slip at an oak desk, a small brass Morse key and copper wire coil nearby, soft oil-lamp light |
+| cal005 | Wide shot at night from a 1912 cargo ship bridge, one small white maritime signal firework rising vertically from the sea horizon, a short thin sparkling stem directly below its tiny bright white burst, one watch sailor looks on |
+| cal008 | Wide shot at night from a stopped 1912 cargo steamship bridge, one watch mariner gazes past a wooden rail toward a few distant small white flare bursts above dark sea, low ice floes near the ship, no other vessel identified |
+| cal009 | Wide shot at a plain 1912 maritime inquiry table by day, one anonymous clerk places a narrow blank wireless warning slip beside a small model of several icebergs on bare wood, soft daylight from a small sash window |
+| cal010 | Medium shot inside a 1912 cargo steamship wireless cabin at dusk, one wireless operator studies a narrow blank message slip beside a brass Morse key and simple wired headphones on a bare wooden desk, soft lamplight |
+| cal011 | Wide shot at a plain 1912 maritime inquiry table by day, one older anonymous clerk looks down at a narrow completely blank paper slip lying flat between two separate unmarked wooden model steamships on bare tabletop, soft window daylight |
+| cal014 | Wide side view of an unmarked 1912 cargo steamship on dark sea at night, its short wake fading into still water as the ship stops before scattered low ice, no other vessel or readable markings |
+| cal015 | Medium shot inside a 1912 wooden cargo ship bridge at night, one adult watch sailor in plain uniform stands beside a bare wooden chart table, three bridge windows behind showing dark sea, soft lamplight |
+| cal016 | Medium shot on a 1912 cargo ship bridge at night, one watch mariner raises binoculars toward a distant dark vessel silhouette approaching across the sea with a few small steady running lights, dim bridge light |
+| cal018 | Close shot on a dark 1912 sea at night, exactly two separate small white masthead lights at different heights above one low unmarked distant vessel silhouette, empty dark sky and sea around the single ship |
+| cal021 | Medium shot inside a 1912 cargo steamship wireless cabin at night, one shipmaster in a plain peaked cap steps through a hinged wooden doorway toward a bare desk with a brass Morse key, simple wired headphones and a narrow blank paper slip, dim lamplight |
+| cal022 | Medium shot inside a 1912 cargo steamship wireless cabin at night, one wireless operator alone holds a narrow rectangular blank paper telegram slip between two fingers and points to it above a bare wooden desk, soft lamplight |
+| cal023 | Close shot inside a 1912 wireless cabin at night, one adult operator index finger presses the round dark knob of a short horizontal brass Morse lever fixed to a tiny wooden base, narrow blank paper slip lying flat beside it on a bare oak desk, oil-lamp light |

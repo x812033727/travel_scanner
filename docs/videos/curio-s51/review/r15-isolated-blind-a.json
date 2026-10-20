@@ -1,0 +1,94 @@
+{
+  "reviewer": "isolated-blind-a",
+  "script_sha256": "cbc5a1891deacd029e081b61eb316e076e422cdb45ebceb4b072fa875e55ce83",
+  "scope": "Read only the frozen script and the 13 NARRATIVE_PANEL questions at tools/video/core/narrative.mjs:266-280. Narrative judgments only.",
+  "answers": [
+    {
+      "id": "scene_first",
+      "pass": true,
+      "scenes": ["cal001", "cal002", "cal003", "cal004"],
+      "evidence": "The first four lines place Californian in Atlantic ice late on 14 April 1912, show bridge officers seeing another vessel, and end with the operator leaving his headphones."
+    },
+    {
+      "id": "no_spoiler",
+      "pass": true,
+      "scenes": ["cal001", "cal003", "cal005", "cal006", "cal007", "cal008"],
+      "evidence": "The opener previews nearby Titanic radio signals, rockets, a report to the captain, and a dawn vessel, but does not identify the night vessel by sight, reveal the captain's response, or state the inquiry's finding."
+    },
+    {
+      "id": "one_line",
+      "pass": true,
+      "scenes": ["cal009", "cal064", "cal093", "cal107", "cal108", "cal110", "cal112", "cal121"],
+      "evidence": "After the teaser, the account moves from 7:30 p.m. through the sinking and dawn response, then explicitly enters the late-July inquiry. cal108/cal110/cal112 compare previously narrated events to make a new identification; they do not stage a second night-time story. The final distance section remains within that inquiry."
+    },
+    {
+      "id": "no_toc",
+      "pass": true,
+      "scenes": ["cal008", "cal009", "cal106", "cal107"],
+      "evidence": "Transitions pose concrete story questions or resume events; none announces a coming list of sections or a presentation plan."
+    },
+    {
+      "id": "chapters_link",
+      "pass": true,
+      "scenes": ["cal008", "cal009", "cal024", "cal025", "cal035", "cal036", "cal049", "cal050", "cal063", "cal064", "cal076", "cal077", "cal092", "cal093", "cal106", "cal107", "cal120", "cal121"],
+      "evidence": "Successive chapter openings answer the prior chapter's concrete question: warning content, dimming lights, distress signals, rocket time, rocket report, knowledge of the vessel, later identification, and distance. cal009 is the weakest join: the 7:30 p.m. warning returns to the same ice-stopped ship but does not explicitly say it predates the opener's white lights."
+    },
+    {
+      "id": "open_loops",
+      "pass": true,
+      "scenes": ["cal004", "cal020", "cal035", "cal049", "cal063", "cal076", "cal089", "cal106", "cal120", "cal131"],
+      "evidence": "Questions about the unattended radio, ship identity, bridge signals, rockets, conflicting reports, and inquiry findings recur throughout; no long section appears to go roughly 90 seconds without one."
+    },
+    {
+      "id": "payoffs",
+      "pass": true,
+      "scenes": ["cal004", "cal059", "cal060", "cal063", "cal064", "cal076", "cal077", "cal081", "cal082", "cal088", "cal090", "cal091", "cal106", "cal114", "cal120", "cal125", "cal131", "cal132"],
+      "evidence": "The long radio loop receives an explicit 11:30-headphones callback at cal060; rocket timing, report count, inquiry identification, distance, and attempted response receive new facts. The cal081 question about whether the later total reached the captain resolves only at the evidence level: Gibson/Stone say it did, Lord remembers no later report, and cal091 calls the testimony contradictory. This is a qualified answer, not a known fact about delivery."
+    },
+    {
+      "id": "no_recap",
+      "pass": true,
+      "scenes": ["cal060", "cal079", "cal095", "cal096", "cal107", "cal108", "cal110", "cal111", "cal112"],
+      "evidence": "The explicit headset callback and repeated question about white rockets serve later decisions. The July inquiry briefly mentions collision, rockets, and disappearance again to add the new finding that their timing matches. This section is close to a recap, but its comparison is necessary evidence rather than a second telling of the night."
+    },
+    {
+      "id": "chapters_are_events",
+      "pass": true,
+      "scenes": ["cal001", "cal009", "cal025", "cal036", "cal050", "cal064", "cal077", "cal093", "cal107", "cal121"],
+      "evidence": "The ten chapter titles describe a stop, warning, radio shutdown, light change, distress call, rockets, conflicting reports, disappearance, inquiry comparison, or position comparison."
+    },
+    {
+      "id": "outro_no_next",
+      "pass": true,
+      "scenes": ["outro"],
+      "evidence": "The ending asks the viewer what they would do and invites subscription; it does not promise a next video, episode, or file."
+    },
+    {
+      "id": "opening_hooks",
+      "pass": true,
+      "scenes": ["cal004", "cal005", "cal006", "cal007", "cal008"],
+      "evidence": "After the first concrete scene, the opener withholds what happens while the radio is unattended, how the captain answers the rocket report, whether the dawn vessel is recognized, and what decision the white lights provoke."
+    },
+    {
+      "id": "one_thread",
+      "pass": true,
+      "scenes": ["cal001", "cal060", "cal075", "cal090", "cal114", "cal132"],
+      "evidence": "The continuing problem is why Californian did not act on nearby distress: radio silence, uncertain sighting, bridge reports, and the inquiry's later reconstruction all bear on that same ship's response."
+    },
+    {
+      "id": "no_detour",
+      "pass": true,
+      "scenes": ["cal055", "cal058", "cal118", "cal119", "cal121", "cal132"],
+      "evidence": "Carpathia establishes who did receive a call and the timing of rescue; Beesley's alternative vessel and the distance evidence test whether Californian could have been the observed ship and attempted a response. No full chapter leaves the opening problem."
+    }
+  ],
+  "summary": {
+    "passed": 13,
+    "total": 13,
+    "qualified_points": [
+      "cal009 connects the teaser to the earlier ice-warning scene mostly by ship and setting; an explicit temporal callback would make the transition stronger.",
+      "cal081-cal091 pays off a question with conflicting testimony rather than certainty about whether the captain actually received the final count.",
+      "cal107-cal112 recounts three night-time facts, but does so as a dated July inquiry's new timing comparison; on this reading it does not break chronological narrative or become an unsupported recap."
+    ]
+  }
+}
